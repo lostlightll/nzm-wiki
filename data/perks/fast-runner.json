@@ -1,0 +1,24 @@
+{
+  "id": "fast-runner",
+  "name": "疾跑者",
+  "category": "辅助类",
+  "effects": [
+    {
+      "slot": 1,
+      "description": "移动速度+5%"
+    },
+    {
+      "slot": 2,
+      "description": "移动速度+10%"
+    },
+    {
+      "slot": 3,
+      "description": "移动速度+15%"
+    },
+    {
+      "slot": 4,
+      "description": "移动速度+20%，冲刺不消耗体力"
+    }
+  ],
+  "description": "提升机动性，快速转场"
+}

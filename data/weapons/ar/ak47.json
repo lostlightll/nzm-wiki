@@ -1,0 +1,19 @@
+{
+  "id": "ak47",
+  "name": "AK-47",
+  "type": "突击步枪",
+  "elementType": "物理",
+  "tags": ["穿透"],
+  "rarity": "稀有",
+  "stats": {
+    "damage": 42,
+    "fireRate": 600,
+    "magazine": 30,
+    "totalAmmo": 180,
+    "accuracy": 70,
+    "stability": 65,
+    "weaknessMultiplier": 2.0
+  },
+  "skills": [],
+  "description": "经典突击步枪，伤害稳定，适合中近距离作战"
+}

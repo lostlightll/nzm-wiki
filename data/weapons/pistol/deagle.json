@@ -1,0 +1,19 @@
+{
+  "id": "deagle",
+  "name": "沙漠之鹰",
+  "type": "手枪",
+  "elementType": "物理",
+  "tags": ["穿透"],
+  "rarity": "稀有",
+  "stats": {
+    "damage": 65,
+    "fireRate": 200,
+    "magazine": 7,
+    "totalAmmo": 35,
+    "accuracy": 75,
+    "stability": 45,
+    "weaknessMultiplier": 2.5
+  },
+  "skills": [],
+  "description": "大口径手枪，单发伤害极高"
+}

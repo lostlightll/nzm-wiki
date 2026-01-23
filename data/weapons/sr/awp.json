@@ -1,0 +1,19 @@
+{
+  "id": "awp",
+  "name": "AWP",
+  "type": "狙击步枪",
+  "elementType": "物理",
+  "tags": ["高倍镜", "穿透"],
+  "rarity": "史诗",
+  "stats": {
+    "damage": 150,
+    "fireRate": 40,
+    "magazine": 10,
+    "totalAmmo": 30,
+    "accuracy": 95,
+    "stability": 50,
+    "weaknessMultiplier": 3.0
+  },
+  "skills": [],
+  "description": "高伤害狙击步枪，一击致命"
+}

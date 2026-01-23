@@ -1,0 +1,19 @@
+{
+  "id": "spas12",
+  "name": "SPAS-12",
+  "type": "霰弹枪",
+  "elementType": "物理",
+  "tags": [],
+  "rarity": "稀有",
+  "stats": {
+    "damage": 120,
+    "fireRate": 80,
+    "magazine": 8,
+    "totalAmmo": 32,
+    "accuracy": 40,
+    "stability": 55,
+    "weaknessMultiplier": 1.5
+  },
+  "skills": [],
+  "description": "近距离大杀器，适合清理成群敌人"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "mp5",
+  "name": "MP5",
+  "type": "冲锋枪",
+  "elementType": "物理",
+  "tags": ["连发"],
+  "rarity": "普通",
+  "stats": {
+    "damage": 25,
+    "fireRate": 800,
+    "magazine": 30,
+    "totalAmmo": 150,
+    "accuracy": 65,
+    "stability": 75,
+    "weaknessMultiplier": 1.8
+  },
+  "skills": [],
+  "description": "高射速冲锋枪，机动性强"
+}

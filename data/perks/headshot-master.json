@@ -1,0 +1,24 @@
+{
+  "id": "headshot-master",
+  "name": "爆头大师",
+  "category": "伤害类",
+  "effects": [
+    {
+      "slot": 1,
+      "description": "爆头伤害+10%"
+    },
+    {
+      "slot": 2,
+      "description": "爆头伤害+20%"
+    },
+    {
+      "slot": 3,
+      "description": "爆头伤害+30%"
+    },
+    {
+      "slot": 4,
+      "description": "爆头伤害+50%"
+    }
+  ],
+  "description": "提升爆头伤害，适合精准射手"
+}

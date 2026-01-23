@@ -1,0 +1,19 @@
+{
+  "id": "dragon",
+  "name": "火龙喷射器",
+  "type": "喷火器",
+  "elementType": "火焰",
+  "tags": [],
+  "rarity": "传说",
+  "stats": {
+    "damage": 15,
+    "fireRate": 1200,
+    "magazine": 100,
+    "totalAmmo": 300,
+    "accuracy": 30,
+    "stability": 80,
+    "weaknessMultiplier": 1.2
+  },
+  "skills": [],
+  "description": "持续火焰伤害，可点燃敌人"
+}

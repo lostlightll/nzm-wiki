@@ -1,0 +1,19 @@
+{
+  "id": "m249",
+  "name": "M249",
+  "type": "机枪",
+  "elementType": "物理",
+  "tags": ["穿透", "连发"],
+  "rarity": "史诗",
+  "stats": {
+    "damage": 35,
+    "fireRate": 750,
+    "magazine": 100,
+    "totalAmmo": 300,
+    "accuracy": 55,
+    "stability": 50,
+    "weaknessMultiplier": 1.8
+  },
+  "skills": [],
+  "description": "大容量机枪，持续火力输出"
+}

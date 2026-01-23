@@ -1,0 +1,19 @@
+{
+  "id": "sks",
+  "name": "SKS",
+  "type": "射手步枪",
+  "elementType": "物理",
+  "tags": ["高倍镜", "穿透"],
+  "rarity": "稀有",
+  "stats": {
+    "damage": 75,
+    "fireRate": 300,
+    "magazine": 20,
+    "totalAmmo": 80,
+    "accuracy": 85,
+    "stability": 60,
+    "weaknessMultiplier": 2.5
+  },
+  "skills": [],
+  "description": "半自动射手步枪，精准度高"
+}
