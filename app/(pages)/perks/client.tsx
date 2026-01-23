@@ -161,12 +161,11 @@ export default function PerksPageClient({
   const showGrouped = selectedSlots.size === 0;
 
   return (
-    <div className="min-h-screen bg-zinc-900 px-4 py-8">
-      <div className="mx-auto max-w-7xl">
-        <h1 className="mb-8 text-3xl font-bold text-white">插件图鉴</h1>
+    <>
+      <h1 className="mb-8 text-3xl font-bold text-white">插件图鉴</h1>
 
-        {/* Filter section */}
-        <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
+      {/* Filter section */}
+      <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
           <div className="mb-6">
             <h2 className="mb-3 text-lg font-semibold text-zinc-300">稀有度</h2>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
@@ -241,7 +240,6 @@ export default function PerksPageClient({
             没有符合条件的插件
           </div>
         )}
-      </div>
-    </div>
+    </>
   );
 }
