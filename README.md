@@ -12,3 +12,7 @@ First, run `pnpm i` to install the dependencies.
 Then, run `pnpm dev` to start the development server.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Extra
+
+For more about Nizhan: Future, See my notes at https://qiekn.notion.site/nzm
