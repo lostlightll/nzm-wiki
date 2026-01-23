@@ -2,93 +2,19 @@
 
 import type { Weapon, WeaponType, ElementType, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
+import { FilterSection } from "@/components/Filter";
 import {
   WEAPON_TYPES,
   ELEMENT_TYPES,
-  RARITY_TYPES,
-  RARITY_COLORS,
+  RARITY_OPTIONS,
+  RARITY_BG_COLORS,
   ELEMENT_COLORS,
   STAT_FIELDS,
 } from "@/constants/weapons";
 
-function FilterCheckbox({
-  label,
-  icon,
-  checked,
-  onChange,
-  colorClass,
-}: {
-  label: string;
-  icon?: string;
-  checked: boolean;
-  onChange: () => void;
-  colorClass?: string;
-}) {
-  return (
-    <label
-      className={`flex cursor-pointer items-center justify-between rounded border px-3 py-2 transition-colors ${
-        checked
-          ? "border-zinc-500 bg-zinc-700"
-          : "border-zinc-700 bg-zinc-800 hover:border-zinc-600"
-      }`}
-    >
-      <span
-        className={`flex items-center gap-2 ${colorClass || "text-zinc-300"}`}
-      >
-        {icon && <span>{icon}</span>}
-        <span>{label}</span>
-      </span>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={onChange}
-        className={`h-4 w-4 appearance-none rounded border ${
-          checked
-            ? "border-zinc-400 bg-zinc-500"
-            : "border-zinc-500 bg-zinc-700"
-        }`}
-      />
-    </label>
-  );
-}
-
-interface FilterSectionProps<T extends string> {
-  title: string;
-  items: { type: T; icon?: string; color?: string }[];
-  selected: Set<T>;
-  onToggle: (item: T) => void;
-  gridClass?: string;
-}
-
-function FilterSection<T extends string>({
-  title,
-  items,
-  selected,
-  onToggle,
-  gridClass = "grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6",
-}: FilterSectionProps<T>) {
-  return (
-    <div className="mb-6">
-      <h2 className="mb-3 text-lg font-semibold text-zinc-300">{title}</h2>
-      <div className={gridClass}>
-        {items.map((item) => (
-          <FilterCheckbox
-            key={item.type}
-            label={item.type}
-            icon={item.icon}
-            checked={selected.has(item.type)}
-            onChange={() => onToggle(item.type)}
-            colorClass={item.color}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function WeaponCard({ weapon }: { weapon: Weapon }) {
-  const rarityColor = RARITY_COLORS[weapon.rarity] || "bg-gray-500";
-  const elementColor = ELEMENT_COLORS[weapon.elementType] || "text-gray-300";
+  const rarityColor = RARITY_BG_COLORS[weapon.rarity];
+  const elementColor = ELEMENT_COLORS[weapon.elementType];
 
   return (
     <div className="rounded-lg border border-zinc-700 bg-zinc-800 p-4">
@@ -150,7 +76,7 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
       <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
         <FilterSection
           title="稀有度"
-          items={RARITY_TYPES}
+          items={RARITY_OPTIONS}
           selected={rarityState.selected}
           onToggle={rarityState.toggle}
         />

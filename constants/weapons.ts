@@ -1,4 +1,8 @@
-import type { WeaponType, ElementType, Rarity, WeaponStats } from "@/types";
+import type { WeaponType, WeaponStats } from "@/types";
+import { ELEMENT_COLORS } from "./common";
+
+export { ELEMENT_COLORS };
+export { RARITY_OPTIONS, RARITY_BG_COLORS } from "./common";
 
 export const WEAPON_TYPES: { type: WeaponType; icon: string }[] = [
   { type: "突击步枪", icon: "🔫" },
@@ -15,34 +19,13 @@ export const WEAPON_TYPES: { type: WeaponType; icon: string }[] = [
   { type: "喷火器", icon: "🔥" },
 ];
 
-export const ELEMENT_TYPES: { type: ElementType; icon: string; color: string }[] = [
-  { type: "火焰", icon: "🔥", color: "text-orange-400" },
-  { type: "寒冷", icon: "❄️", color: "text-cyan-400" },
-  { type: "电弧", icon: "⚡", color: "text-yellow-400" },
-  { type: "腐蚀", icon: "☣️", color: "text-green-400" },
-  { type: "物理", icon: "✧", color: "text-gray-300" },
+export const ELEMENT_TYPES: { type: keyof typeof ELEMENT_COLORS; icon: string; color: string }[] = [
+  { type: "火焰", icon: "🔥", color: ELEMENT_COLORS["火焰"] },
+  { type: "寒冷", icon: "❄️", color: ELEMENT_COLORS["寒冷"] },
+  { type: "电弧", icon: "⚡", color: ELEMENT_COLORS["电弧"] },
+  { type: "腐蚀", icon: "☣️", color: ELEMENT_COLORS["腐蚀"] },
+  { type: "物理", icon: "✧", color: ELEMENT_COLORS["物理"] },
 ];
-
-export const RARITY_TYPES: { type: Rarity; color: string }[] = [
-  { type: "稀有", color: "text-[#578caf]" },
-  { type: "史诗", color: "text-[#ac69b6]" },
-  { type: "传说", color: "text-[#d0ab67]" },
-];
-
-export const RARITY_COLORS: Record<Rarity, string> = {
-  普通: "bg-gray-500",
-  稀有: "bg-blue-500",
-  史诗: "bg-purple-500",
-  传说: "bg-orange-500",
-};
-
-export const ELEMENT_COLORS: Record<ElementType, string> = {
-  物理: "text-gray-300",
-  火焰: "text-orange-400",
-  寒冷: "text-cyan-400",
-  电弧: "text-yellow-400",
-  腐蚀: "text-green-400",
-};
 
 export const STAT_FIELDS: {
   label: string;

@@ -1,5 +1,5 @@
 import { getAllWeapons } from "@/lib/weapons";
-import WeaponsClient from "./WeaponsClient";
+import WeaponsClient from "./client";
 
 export default function WeaponsPage() {
   const weapons = getAllWeapons();
