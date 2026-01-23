@@ -7,7 +7,7 @@ TechStack: React, Next.js, TypeScript, Tailwindcss
 
 ## Development
 
-Frist, run `pnpm i` to install the dependencies.
+First, run `pnpm i` to install the dependencies.
 
 Then, run `pnpm dev` to start the development server.
 
