@@ -1,8 +1,33 @@
 import Link from "next/link";
 import Image from "next/image";
 
+// 1. 定义 props 的类型接口
+interface NavCardProps {
+  href: string;
+  icon: string;
+  title: string;
+}
+
+const NAV_ITEMS = [
+  { href: "/weapons", icon: "🔫", title: "武器列表" },
+  { href: "/perks", icon: "⚡", title: "插件图鉴" },
+];
+
 const isProd = process.env.NODE_ENV === "production";
 const basePath = isProd ? "/nzm-wiki" : "";
+
+// 2. 在组件参数里使用该类型 (: NavCardProps)
+function NavCard({ href, icon, title }: NavCardProps) {
+  return (
+    <Link
+      href={href}
+      className="flex h-32 w-48 flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800 transition-colors hover:border-zinc-500 hover:bg-zinc-700"
+    >
+      <span className="text-3xl">{icon}</span>
+      <span className="mt-2 text-lg font-medium text-white">{title}</span>
+    </Link>
+  );
+}
 
 export default function Home() {
   return (
@@ -17,20 +42,14 @@ export default function Home() {
       />
       <h1 className="mb-8 text-4xl font-bold text-white">逆战未来 维基</h1>
       <div className="grid gap-4 sm:grid-cols-2">
-        <Link
-          href="/weapons"
-          className="flex h-32 w-48 flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800 transition-colors hover:border-zinc-500 hover:bg-zinc-700"
-        >
-          <span className="text-3xl">🔫</span>
-          <span className="mt-2 text-lg font-medium text-white">武器列表</span>
-        </Link>
-        <Link
-          href="/perks"
-          className="flex h-32 w-48 flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800 transition-colors hover:border-zinc-500 hover:bg-zinc-700"
-        >
-          <span className="text-3xl">⚡</span>
-          <span className="mt-2 text-lg font-medium text-white">插件图鉴</span>
-        </Link>
+        {NAV_ITEMS.map((item) => (
+          <NavCard
+            key={item.href}
+            href={item.href}
+            icon={item.icon}
+            title={item.title}
+          />
+        ))}
       </div>
     </div>
   );
