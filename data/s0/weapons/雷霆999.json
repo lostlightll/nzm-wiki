@@ -1,0 +1,20 @@
+{
+  "id": "雷霆999",
+  "name": "雷霆999",
+  "type": "霰弹枪",
+  "elementType": "电弧",
+  "tags": ["破甲"],
+  "rarity": "史诗",
+  "stats": {
+    "damage": 135,
+    "fireRate": 75,
+    "magazine": 6,
+    "totalAmmo": 36,
+    "accuracy": 42,
+    "stability": 50,
+    "weaknessMultiplier": 1.9
+  },
+  "skillCooldown": 25,
+  "skills": [],
+  "description": "电弧霰弹枪，雷电轰击"
+}

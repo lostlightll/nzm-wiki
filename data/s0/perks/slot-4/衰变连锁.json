@@ -1,0 +1,15 @@
+{
+  "id": "衰变连锁",
+  "name": "衰变连锁",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "衰变连锁效果描述待补充"
+    }
+  ],
+  "description": null
+}

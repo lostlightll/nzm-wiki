@@ -1,0 +1,20 @@
+{
+  "id": "雷霆之影",
+  "name": "雷霆之影",
+  "type": "狙击步枪",
+  "elementType": "电弧",
+  "tags": ["高倍镜", "穿透"],
+  "rarity": "传说",
+  "stats": {
+    "damage": 250,
+    "fireRate": 38,
+    "magazine": 6,
+    "totalAmmo": 30,
+    "accuracy": 96,
+    "stability": 48,
+    "weaknessMultiplier": 3.2
+  },
+  "skillCooldown": 38,
+  "skills": [],
+  "description": "电弧狙击步枪，雷电贯穿"
+}

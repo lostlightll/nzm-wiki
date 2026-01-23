@@ -1,0 +1,15 @@
+{
+  "id": "弹跳风暴",
+  "name": "弹跳风暴",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "弹跳风暴效果描述待补充"
+    }
+  ],
+  "description": null
+}

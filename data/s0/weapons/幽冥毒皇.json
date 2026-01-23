@@ -1,0 +1,20 @@
+{
+  "id": "幽冥毒皇",
+  "name": "幽冥毒皇",
+  "type": "冲锋枪",
+  "elementType": "腐蚀",
+  "tags": ["连发"],
+  "rarity": "传说",
+  "stats": {
+    "damage": 32,
+    "fireRate": 850,
+    "magazine": 40,
+    "totalAmmo": 240,
+    "accuracy": 68,
+    "stability": 72,
+    "weaknessMultiplier": 2.0
+  },
+  "skillCooldown": 30,
+  "skills": [],
+  "description": "腐蚀元素冲锋枪，附加持续毒伤"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "聚能速度",
+  "name": "聚能速度",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "聚能速度效果描述待补充"
+    }
+  ],
+  "description": null
+}

@@ -1,0 +1,15 @@
+{
+  "id": "危机充能",
+  "name": "危机充能",
+  "slot": 2,
+  "rarity": "稀有",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "危机充能效果描述待补充"
+    }
+  ],
+  "description": null
+}

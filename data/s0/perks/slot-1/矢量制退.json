@@ -1,0 +1,15 @@
+{
+  "id": "矢量制退",
+  "name": "矢量制退",
+  "slot": 1,
+  "rarity": "史诗",
+  "category": "辅助类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "矢量制退效果描述待补充"
+    }
+  ],
+  "description": null
+}

@@ -1,0 +1,15 @@
+{
+  "id": "备弹返流",
+  "name": "备弹返流",
+  "slot": 2,
+  "rarity": "史诗",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "备弹返流效果描述待补充"
+    }
+  ],
+  "description": null
+}

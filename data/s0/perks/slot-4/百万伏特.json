@@ -1,0 +1,15 @@
+{
+  "id": "百万伏特",
+  "name": "百万伏特",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "百万伏特效果描述待补充"
+    }
+  ],
+  "description": null
+}

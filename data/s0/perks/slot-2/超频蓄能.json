@@ -1,0 +1,15 @@
+{
+  "id": "超频蓄能",
+  "name": "超频蓄能",
+  "slot": 2,
+  "rarity": "传说",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "超频蓄能效果描述待补充"
+    }
+  ],
+  "description": null
+}

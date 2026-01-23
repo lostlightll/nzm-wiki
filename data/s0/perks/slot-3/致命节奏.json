@@ -1,0 +1,15 @@
+{
+  "id": "致命节奏",
+  "name": "致命节奏",
+  "slot": 3,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "致命节奏效果描述待补充"
+    }
+  ],
+  "description": null
+}

@@ -1,0 +1,15 @@
+{
+  "id": "层积涌流",
+  "name": "层积涌流",
+  "slot": 2,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "层积涌流效果描述待补充"
+    }
+  ],
+  "description": null
+}

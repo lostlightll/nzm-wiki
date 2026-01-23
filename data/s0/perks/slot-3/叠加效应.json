@@ -1,0 +1,15 @@
+{
+  "id": "叠加效应",
+  "name": "叠加效应",
+  "slot": 3,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "叠加效应效果描述待补充"
+    }
+  ],
+  "description": null
+}

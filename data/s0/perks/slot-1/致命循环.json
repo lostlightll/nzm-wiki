@@ -1,0 +1,15 @@
+{
+  "id": "致命循环",
+  "name": "致命循环",
+  "slot": 1,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "致命循环效果描述待补充"
+    }
+  ],
+  "description": null
+}

@@ -1,0 +1,15 @@
+{
+  "id": "超频",
+  "name": "超频",
+  "slot": 4,
+  "rarity": "传说",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "超频效果描述待补充"
+    }
+  ],
+  "description": null
+}

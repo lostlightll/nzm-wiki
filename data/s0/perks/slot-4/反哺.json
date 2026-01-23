@@ -1,0 +1,15 @@
+{
+  "id": "反哺",
+  "name": "反哺",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "生存类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "反哺效果描述待补充"
+    }
+  ],
+  "description": null
+}

@@ -1,0 +1,15 @@
+{
+  "id": "余震速装",
+  "name": "余震速装",
+  "slot": 1,
+  "rarity": "传说",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "余震速装效果描述待补充"
+    }
+  ],
+  "description": null
+}

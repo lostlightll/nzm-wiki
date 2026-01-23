@@ -1,0 +1,15 @@
+{
+  "id": "蚀烁装填",
+  "name": "蚀烁装填",
+  "slot": 1,
+  "rarity": "史诗",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "蚀烁装填效果描述待补充"
+    }
+  ],
+  "description": null
+}

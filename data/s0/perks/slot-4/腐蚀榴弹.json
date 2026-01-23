@@ -1,0 +1,15 @@
+{
+  "id": "腐蚀榴弹",
+  "name": "腐蚀榴弹",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "腐蚀榴弹效果描述待补充"
+    }
+  ],
+  "description": null
+}

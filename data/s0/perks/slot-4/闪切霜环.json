@@ -1,0 +1,15 @@
+{
+  "id": "闪切霜环",
+  "name": "闪切霜环",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "闪切霜环效果描述待补充"
+    }
+  ],
+  "description": null
+}

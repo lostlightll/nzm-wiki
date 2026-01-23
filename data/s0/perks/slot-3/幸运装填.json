@@ -1,0 +1,15 @@
+{
+  "id": "幸运装填",
+  "name": "幸运装填",
+  "slot": 3,
+  "rarity": "稀有",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "幸运装填效果描述待补充"
+    }
+  ],
+  "description": null
+}

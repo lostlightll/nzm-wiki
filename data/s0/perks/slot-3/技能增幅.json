@@ -1,0 +1,15 @@
+{
+  "id": "技能增幅",
+  "name": "技能增幅",
+  "slot": 3,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "技能增幅效果描述待补充"
+    }
+  ],
+  "description": null
+}

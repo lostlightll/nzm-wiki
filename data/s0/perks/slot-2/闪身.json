@@ -1,0 +1,15 @@
+{
+  "id": "闪身",
+  "name": "闪身",
+  "slot": 2,
+  "rarity": "稀有",
+  "category": "生存类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "闪身效果描述待补充"
+    }
+  ],
+  "description": null
+}

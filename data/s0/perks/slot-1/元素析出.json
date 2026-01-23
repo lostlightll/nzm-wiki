@@ -1,0 +1,15 @@
+{
+  "id": "元素析出",
+  "name": "元素析出",
+  "slot": 1,
+  "rarity": "传说",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "元素析出效果描述待补充"
+    }
+  ],
+  "description": null
+}

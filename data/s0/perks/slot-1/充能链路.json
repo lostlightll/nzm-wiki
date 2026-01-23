@@ -1,0 +1,15 @@
+{
+  "id": "充能链路",
+  "name": "充能链路",
+  "slot": 1,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "充能链路效果描述待补充"
+    }
+  ],
+  "description": null
+}

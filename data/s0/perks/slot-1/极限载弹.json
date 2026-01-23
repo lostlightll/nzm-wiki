@@ -1,0 +1,15 @@
+{
+  "id": "极限载弹",
+  "name": "极限载弹",
+  "slot": 1,
+  "rarity": "稀有",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "极限载弹效果描述待补充"
+    }
+  ],
+  "description": null
+}

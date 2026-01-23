@@ -1,0 +1,15 @@
+{
+  "id": "层积裂变",
+  "name": "层积裂变",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "层积裂变效果描述待补充"
+    }
+  ],
+  "description": null
+}

@@ -1,0 +1,15 @@
+{
+  "id": "蚀化速装",
+  "name": "蚀化速装",
+  "slot": 1,
+  "rarity": "史诗",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "蚀化速装效果描述待补充"
+    }
+  ],
+  "description": null
+}

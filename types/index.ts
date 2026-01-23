@@ -93,6 +93,7 @@ export interface Weapon {
   rarity: Rarity                // 稀有度
   unlockTime?: string           // 解锁时间（可选）
   stats: WeaponStats            // 嵌套的属性对象
+  skillCooldown: number         // 技能冷却时间（秒）
   skills: WeaponSkill[]         // 技能数组
   image?: string                // 武器图片路径
   description?: string          // 武器描述
@@ -139,6 +140,8 @@ export interface PerkEffect {
 export interface Perk {
   id: string;
   name: string; // 如 "幸运装填"
+  slot: PerkSlot; // 插件所属槽位
+  rarity: Rarity; // 插件稀有度
   category: PerkCategory;
   icon?: string;
   effects: PerkEffect[]; // 在不同槽位的效果

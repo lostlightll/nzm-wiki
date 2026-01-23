@@ -1,0 +1,15 @@
+{
+  "id": "弹容共振",
+  "name": "弹容共振",
+  "slot": 3,
+  "rarity": "史诗",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "弹容共振效果描述待补充"
+    }
+  ],
+  "description": null
+}

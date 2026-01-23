@@ -1,0 +1,15 @@
+{
+  "id": "帽子戏法",
+  "name": "帽子戏法",
+  "slot": 1,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "帽子戏法效果描述待补充"
+    }
+  ],
+  "description": null
+}

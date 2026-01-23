@@ -1,0 +1,15 @@
+{
+  "id": "追猎齐射",
+  "name": "追猎齐射",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "追猎齐射效果描述待补充"
+    }
+  ],
+  "description": null
+}

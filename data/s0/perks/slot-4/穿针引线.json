@@ -1,0 +1,15 @@
+{
+  "id": "穿针引线",
+  "name": "穿针引线",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "穿针引线效果描述待补充"
+    }
+  ],
+  "description": null
+}

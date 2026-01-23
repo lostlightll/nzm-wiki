@@ -1,0 +1,20 @@
+{
+  "id": "苍色暴风",
+  "name": "苍色暴风",
+  "type": "突击步枪",
+  "elementType": "寒冷",
+  "tags": ["穿透"],
+  "rarity": "史诗",
+  "stats": {
+    "damage": 45,
+    "fireRate": 650,
+    "magazine": 35,
+    "totalAmmo": 210,
+    "accuracy": 72,
+    "stability": 68,
+    "weaknessMultiplier": 2.0
+  },
+  "skillCooldown": 18,
+  "skills": [],
+  "description": "寒冷元素突击步枪，可减缓敌人移动速度"
+}

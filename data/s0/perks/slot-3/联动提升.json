@@ -1,0 +1,15 @@
+{
+  "id": "联动提升",
+  "name": "联动提升",
+  "slot": 3,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "联动提升效果描述待补充"
+    }
+  ],
+  "description": null
+}

@@ -1,0 +1,15 @@
+{
+  "id": "归途",
+  "name": "归途",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "辅助类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "归途效果描述待补充"
+    }
+  ],
+  "description": null
+}

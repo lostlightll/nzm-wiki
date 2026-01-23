@@ -1,0 +1,15 @@
+{
+  "id": "概率绝杀",
+  "name": "概率绝杀",
+  "slot": 3,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "概率绝杀效果描述待补充"
+    }
+  ],
+  "description": null
+}

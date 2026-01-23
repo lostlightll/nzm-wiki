@@ -1,0 +1,15 @@
+{
+  "id": "虹吸充能",
+  "name": "虹吸充能",
+  "slot": 2,
+  "rarity": "传说",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "虹吸充能效果描述待补充"
+    }
+  ],
+  "description": null
+}

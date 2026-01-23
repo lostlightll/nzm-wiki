@@ -1,0 +1,15 @@
+{
+  "id": "同调稳持",
+  "name": "同调稳持",
+  "slot": 1,
+  "rarity": "史诗",
+  "category": "辅助类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "同调稳持效果描述待补充"
+    }
+  ],
+  "description": null
+}

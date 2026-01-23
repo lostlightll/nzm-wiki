@@ -1,0 +1,15 @@
+{
+  "id": "超载弹匣",
+  "name": "超载弹匣",
+  "slot": 1,
+  "rarity": "稀有",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "超载弹匣效果描述待补充"
+    }
+  ],
+  "description": null
+}

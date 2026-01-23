@@ -1,0 +1,15 @@
+{
+  "id": "弹雨协奏",
+  "name": "弹雨协奏",
+  "slot": 1,
+  "rarity": "稀有",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "弹雨协奏效果描述待补充"
+    }
+  ],
+  "description": null
+}

@@ -1,0 +1,20 @@
+{
+  "id": "乘风快递",
+  "name": "乘风快递",
+  "type": "冲锋枪",
+  "elementType": "物理",
+  "tags": ["连发"],
+  "rarity": "史诗",
+  "stats": {
+    "damage": 28,
+    "fireRate": 900,
+    "magazine": 45,
+    "totalAmmo": 270,
+    "accuracy": 65,
+    "stability": 70,
+    "weaknessMultiplier": 1.8
+  },
+  "skillCooldown": 12,
+  "skills": [],
+  "description": "高射速冲锋枪，近距离火力压制"
+}

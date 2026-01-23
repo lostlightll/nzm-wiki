@@ -1,0 +1,15 @@
+{
+  "id": "战术强击",
+  "name": "战术强击",
+  "slot": 3,
+  "rarity": "稀有",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "战术强击效果描述待补充"
+    }
+  ],
+  "description": null
+}

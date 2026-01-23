@@ -1,0 +1,15 @@
+{
+  "id": "爆破校调",
+  "name": "爆破校调",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "爆破校调效果描述待补充"
+    }
+  ],
+  "description": null
+}

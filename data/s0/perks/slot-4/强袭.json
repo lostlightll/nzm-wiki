@@ -1,0 +1,15 @@
+{
+  "id": "强袭",
+  "name": "强袭",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "强袭效果描述待补充"
+    }
+  ],
+  "description": null
+}

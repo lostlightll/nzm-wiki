@@ -1,0 +1,20 @@
+{
+  "id": "纯白圣上",
+  "name": "纯白圣上",
+  "type": "突击步枪",
+  "elementType": "电弧",
+  "tags": ["三连发"],
+  "rarity": "传说",
+  "stats": {
+    "damage": 52,
+    "fireRate": 550,
+    "magazine": 30,
+    "totalAmmo": 180,
+    "accuracy": 78,
+    "stability": 75,
+    "weaknessMultiplier": 2.2
+  },
+  "skillCooldown": 15,
+  "skills": [],
+  "description": "电弧元素突击步枪，可连锁电击附近敌人"
+}

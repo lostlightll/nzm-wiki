@@ -1,0 +1,15 @@
+{
+  "id": "协防阵列",
+  "name": "协防阵列",
+  "slot": 3,
+  "rarity": "史诗",
+  "category": "生存类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "协防阵列效果描述待补充"
+    }
+  ],
+  "description": null
+}

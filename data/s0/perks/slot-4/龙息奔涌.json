@@ -1,0 +1,15 @@
+{
+  "id": "龙息奔涌",
+  "name": "龙息奔涌",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "龙息奔涌效果描述待补充"
+    }
+  ],
+  "description": null
+}

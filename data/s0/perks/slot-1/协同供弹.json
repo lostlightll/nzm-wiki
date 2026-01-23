@@ -1,0 +1,15 @@
+{
+  "id": "协同供弹",
+  "name": "协同供弹",
+  "slot": 1,
+  "rarity": "史诗",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "协同供弹效果描述待补充"
+    }
+  ],
+  "description": null
+}

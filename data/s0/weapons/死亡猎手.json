@@ -1,0 +1,20 @@
+{
+  "id": "死亡猎手",
+  "name": "死亡猎手",
+  "type": "狙击步枪",
+  "elementType": "物理",
+  "tags": ["高倍镜", "穿透"],
+  "rarity": "史诗",
+  "stats": {
+    "damage": 220,
+    "fireRate": 40,
+    "magazine": 7,
+    "totalAmmo": 35,
+    "accuracy": 95,
+    "stability": 50,
+    "weaknessMultiplier": 3.0
+  },
+  "skillCooldown": 25,
+  "skills": [],
+  "description": "精准狙击步枪，专为猎杀设计"
+}

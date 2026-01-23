@@ -1,0 +1,15 @@
+{
+  "id": "战斗续能",
+  "name": "战斗续能",
+  "slot": 2,
+  "rarity": "稀有",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "战斗续能效果描述待补充"
+    }
+  ],
+  "description": null
+}

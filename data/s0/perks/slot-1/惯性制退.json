@@ -1,0 +1,15 @@
+{
+  "id": "惯性制退",
+  "name": "惯性制退",
+  "slot": 1,
+  "rarity": "传说",
+  "category": "辅助类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "惯性制退效果描述待补充"
+    }
+  ],
+  "description": null
+}

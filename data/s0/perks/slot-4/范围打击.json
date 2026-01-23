@@ -1,0 +1,15 @@
+{
+  "id": "范围打击",
+  "name": "范围打击",
+  "slot": 4,
+  "rarity": "稀有",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "范围打击效果描述待补充"
+    }
+  ],
+  "description": null
+}

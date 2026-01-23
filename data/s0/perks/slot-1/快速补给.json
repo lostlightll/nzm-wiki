@@ -1,0 +1,15 @@
+{
+  "id": "快速补给",
+  "name": "快速补给",
+  "slot": 1,
+  "rarity": "稀有",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "快速补给效果描述待补充"
+    }
+  ],
+  "description": null
+}

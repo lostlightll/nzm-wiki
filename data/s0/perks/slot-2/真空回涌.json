@@ -1,0 +1,15 @@
+{
+  "id": "真空回涌",
+  "name": "真空回涌",
+  "slot": 2,
+  "rarity": "史诗",
+  "category": "装填类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "真空回涌效果描述待补充"
+    }
+  ],
+  "description": null
+}

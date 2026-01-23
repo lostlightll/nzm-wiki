@@ -1,0 +1,15 @@
+{
+  "id": "共鸣射击",
+  "name": "共鸣射击",
+  "slot": 2,
+  "rarity": "传说",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "共鸣射击效果描述待补充"
+    }
+  ],
+  "description": null
+}

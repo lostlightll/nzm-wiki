@@ -1,0 +1,20 @@
+{
+  "id": "火山口",
+  "name": "火山口",
+  "type": "喷火器",
+  "elementType": "火焰",
+  "tags": [],
+  "rarity": "史诗",
+  "stats": {
+    "damage": 30,
+    "fireRate": 1100,
+    "magazine": 80,
+    "totalAmmo": 320,
+    "accuracy": 48,
+    "stability": 75,
+    "weaknessMultiplier": 1.4
+  },
+  "skillCooldown": 15,
+  "skills": [],
+  "description": "高温喷火器，如火山喷发"
+}

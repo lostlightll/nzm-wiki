@@ -1,0 +1,15 @@
+{
+  "id": "闪电袭击",
+  "name": "闪电袭击",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "闪电袭击效果描述待补充"
+    }
+  ],
+  "description": null
+}

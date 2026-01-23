@@ -2,50 +2,16 @@ import fs from "fs";
 import path from "path";
 import type { Weapon } from "@/types";
 
-const WEAPONS_DATA_DIR = path.join(process.cwd(), "data/weapons");
-
-const WEAPON_CATEGORIES = [
-  "ar",
-  "sr",
-  "shg",
-  "smg",
-  "rocket",
-  "flamethrower",
-  "grenade-single",
-  "grenade-auto",
-  "pistol",
-  "lmg",
-  "dmr",
-];
+const WEAPONS_DATA_DIR = path.join(process.cwd(), "data/s0/weapons");
 
 export function getAllWeapons(): Weapon[] {
   const weapons: Weapon[] = [];
 
-  for (const category of WEAPON_CATEGORIES) {
-    const categoryPath = path.join(WEAPONS_DATA_DIR, category);
-    if (!fs.existsSync(categoryPath)) continue;
+  if (!fs.existsSync(WEAPONS_DATA_DIR)) return weapons;
 
-    const files = fs.readdirSync(categoryPath).filter((f) => f.endsWith(".json"));
-    for (const file of files) {
-      const filePath = path.join(categoryPath, file);
-      const content = fs.readFileSync(filePath, "utf-8");
-      const weapon = JSON.parse(content) as Weapon;
-      weapons.push(weapon);
-    }
-  }
-
-  return weapons;
-}
-
-export function getWeaponsByCategory(category: string): Weapon[] {
-  const categoryPath = path.join(WEAPONS_DATA_DIR, category);
-  if (!fs.existsSync(categoryPath)) return [];
-
-  const weapons: Weapon[] = [];
-  const files = fs.readdirSync(categoryPath).filter((f) => f.endsWith(".json"));
-
+  const files = fs.readdirSync(WEAPONS_DATA_DIR).filter((f) => f.endsWith(".json"));
   for (const file of files) {
-    const filePath = path.join(categoryPath, file);
+    const filePath = path.join(WEAPONS_DATA_DIR, file);
     const content = fs.readFileSync(filePath, "utf-8");
     const weapon = JSON.parse(content) as Weapon;
     weapons.push(weapon);
@@ -54,18 +20,19 @@ export function getWeaponsByCategory(category: string): Weapon[] {
   return weapons;
 }
 
-export function getWeaponById(id: string): Weapon | null {
-  for (const category of WEAPON_CATEGORIES) {
-    const categoryPath = path.join(WEAPONS_DATA_DIR, category);
-    if (!fs.existsSync(categoryPath)) continue;
+export function getWeaponsByType(type: string): Weapon[] {
+  return getAllWeapons().filter((w) => w.type === type);
+}
 
-    const files = fs.readdirSync(categoryPath).filter((f) => f.endsWith(".json"));
-    for (const file of files) {
-      const filePath = path.join(categoryPath, file);
-      const content = fs.readFileSync(filePath, "utf-8");
-      const weapon = JSON.parse(content) as Weapon;
-      if (weapon.id === id) return weapon;
-    }
+export function getWeaponById(id: string): Weapon | null {
+  if (!fs.existsSync(WEAPONS_DATA_DIR)) return null;
+
+  const files = fs.readdirSync(WEAPONS_DATA_DIR).filter((f) => f.endsWith(".json"));
+  for (const file of files) {
+    const filePath = path.join(WEAPONS_DATA_DIR, file);
+    const content = fs.readFileSync(filePath, "utf-8");
+    const weapon = JSON.parse(content) as Weapon;
+    if (weapon.id === id) return weapon;
   }
 
   return null;

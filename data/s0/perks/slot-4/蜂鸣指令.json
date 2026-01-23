@@ -1,0 +1,15 @@
+{
+  "id": "蜂鸣指令",
+  "name": "蜂鸣指令",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "蜂鸣指令效果描述待补充"
+    }
+  ],
+  "description": null
+}

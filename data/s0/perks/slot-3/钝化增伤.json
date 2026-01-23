@@ -1,0 +1,15 @@
+{
+  "id": "钝化增伤",
+  "name": "钝化增伤",
+  "slot": 3,
+  "rarity": "传说",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "钝化增伤效果描述待补充"
+    }
+  ],
+  "description": null
+}

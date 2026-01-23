@@ -1,0 +1,15 @@
+{
+  "id": "技能扩散",
+  "name": "技能扩散",
+  "slot": 4,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 4,
+      "description": "技能扩散效果描述待补充"
+    }
+  ],
+  "description": null
+}

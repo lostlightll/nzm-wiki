@@ -1,0 +1,15 @@
+{
+  "id": "能量循环",
+  "name": "能量循环",
+  "slot": 2,
+  "rarity": "稀有",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "能量循环效果描述待补充"
+    }
+  ],
+  "description": null
+}

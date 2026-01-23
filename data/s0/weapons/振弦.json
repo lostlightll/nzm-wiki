@@ -1,0 +1,20 @@
+{
+  "id": "振弦",
+  "name": "振弦",
+  "type": "弓箭",
+  "elementType": "电弧",
+  "tags": ["穿透"],
+  "rarity": "传说",
+  "stats": {
+    "damage": 200,
+    "fireRate": 55,
+    "magazine": 1,
+    "totalAmmo": 25,
+    "accuracy": 92,
+    "stability": 88,
+    "weaknessMultiplier": 3.0
+  },
+  "skillCooldown": 40,
+  "skills": [],
+  "description": "电弧弓箭，箭矢带有雷电之力"
+}

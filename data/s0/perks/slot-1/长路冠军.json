@@ -1,0 +1,15 @@
+{
+  "id": "长路冠军",
+  "name": "长路冠军",
+  "slot": 1,
+  "rarity": "稀有",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 1,
+      "description": "长路冠军效果描述待补充"
+    }
+  ],
+  "description": null
+}

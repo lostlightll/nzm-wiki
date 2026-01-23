@@ -1,0 +1,15 @@
+{
+  "id": "迁跃回路",
+  "name": "迁跃回路",
+  "slot": 2,
+  "rarity": "史诗",
+  "category": "辅助类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "迁跃回路效果描述待补充"
+    }
+  ],
+  "description": null
+}

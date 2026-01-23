@@ -1,0 +1,15 @@
+{
+  "id": "强击火力",
+  "name": "强击火力",
+  "slot": 3,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "强击火力效果描述待补充"
+    }
+  ],
+  "description": null
+}

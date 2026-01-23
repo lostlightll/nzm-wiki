@@ -1,0 +1,15 @@
+{
+  "id": "导弹供能",
+  "name": "导弹供能",
+  "slot": 2,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "导弹供能效果描述待补充"
+    }
+  ],
+  "description": null
+}

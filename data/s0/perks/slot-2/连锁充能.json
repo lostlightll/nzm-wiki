@@ -1,0 +1,15 @@
+{
+  "id": "连锁充能",
+  "name": "连锁充能",
+  "slot": 2,
+  "rarity": "史诗",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 2,
+      "description": "连锁充能效果描述待补充"
+    }
+  ],
+  "description": null
+}

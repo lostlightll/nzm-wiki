@@ -1,0 +1,15 @@
+{
+  "id": "正中红心",
+  "name": "正中红心",
+  "slot": 3,
+  "rarity": "稀有",
+  "category": "伤害类",
+  "icon": null,
+  "effects": [
+    {
+      "slot": 3,
+      "description": "正中红心效果描述待补充"
+    }
+  ],
+  "description": null
+}
