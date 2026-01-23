@@ -1,15 +1,11 @@
 {
-  "id": "回响充能",
-  "name": "回响充能",
-  "slot": 2,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "回响充能效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "回响充能效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "回响充能",
+   "rarity" : "史诗",
+   "slot" : 2
 }

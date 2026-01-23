@@ -1,15 +1,11 @@
 {
-  "id": "战术转移",
-  "name": "战术转移",
-  "slot": 2,
-  "rarity": "稀有",
-  "category": "辅助类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "战术转移效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "辅助类",
+   "description" : null,
+   "effect" : {
+      "description" : "战术转移效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "战术转移",
+   "rarity" : "稀有",
+   "slot" : 2
 }

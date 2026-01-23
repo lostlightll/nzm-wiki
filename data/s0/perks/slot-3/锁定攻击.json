@@ -1,15 +1,11 @@
 {
-  "id": "锁定攻击",
-  "name": "锁定攻击",
-  "slot": 3,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 3,
-      "description": "锁定攻击效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "锁定攻击效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "锁定攻击",
+   "rarity" : "史诗",
+   "slot" : 3
 }

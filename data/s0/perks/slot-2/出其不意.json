@@ -1,15 +1,11 @@
 {
-  "id": "出其不意",
-  "name": "出其不意",
-  "slot": 2,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "出其不意效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "出其不意效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "出其不意",
+   "rarity" : "稀有",
+   "slot" : 2
 }

@@ -1,15 +1,11 @@
 {
-  "id": "快速蓄力",
-  "name": "快速蓄力",
-  "slot": 2,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "快速蓄力效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "快速蓄力效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "快速蓄力",
+   "rarity" : "稀有",
+   "slot" : 2
 }

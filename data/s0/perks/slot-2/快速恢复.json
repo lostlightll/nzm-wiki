@@ -1,15 +1,11 @@
 {
-  "id": "快速恢复",
-  "name": "快速恢复",
-  "slot": 2,
-  "rarity": "稀有",
-  "category": "生存类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "快速恢复效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "生存类",
+   "description" : null,
+   "effect" : {
+      "description" : "快速恢复效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "快速恢复",
+   "rarity" : "稀有",
+   "slot" : 2
 }

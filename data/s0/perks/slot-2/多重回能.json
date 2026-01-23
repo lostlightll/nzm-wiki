@@ -1,15 +1,11 @@
 {
-  "id": "多重回能",
-  "name": "多重回能",
-  "slot": 2,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "多重回能效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "多重回能效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "多重回能",
+   "rarity" : "史诗",
+   "slot" : 2
 }

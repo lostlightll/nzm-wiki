@@ -1,20 +1,22 @@
 {
-  "id": "乘风破浪",
-  "name": "乘风破浪",
-  "type": "机枪",
-  "elementType": "物理",
-  "tags": ["穿透", "连发"],
-  "rarity": "传说",
-  "stats": {
-    "damage": 42,
-    "fireRate": 800,
-    "magazine": 150,
-    "totalAmmo": 450,
-    "accuracy": 52,
-    "stability": 58,
-    "weaknessMultiplier": 1.7
-  },
-  "skillCooldown": 50,
-  "skills": [],
-  "description": "超大弹夹机枪，火力全开"
+   "name": "乘风破浪",
+   "description": "超大弹夹机枪，火力全开",
+   "elementType": "物理",
+   "tags": [
+      "穿透",
+      "连发"
+   ],
+   "rarity": "传说",
+   "skillCooldown": 50,
+   "skills": [],
+   "stats": {
+      "damage": 42,
+      "weaknessMultiplier": 1.7,
+      "fireRate": 800,
+      "magazine": 150,
+      "totalAmmo": 450,
+      "accuracy": 52,
+      "stability": 58
+   },
+   "type": "机枪"
 }

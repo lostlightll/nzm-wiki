@@ -1,15 +1,11 @@
 {
-  "id": "聚能弹药",
-  "name": "聚能弹药",
-  "slot": 4,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 4,
-      "description": "聚能弹药效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "聚能弹药效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "聚能弹药",
+   "rarity" : "史诗",
+   "slot" : 4
 }

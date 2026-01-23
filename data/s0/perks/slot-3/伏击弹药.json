@@ -1,15 +1,11 @@
 {
-  "id": "伏击弹药",
-  "name": "伏击弹药",
-  "slot": 3,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 3,
-      "description": "伏击弹药效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "伏击弹药效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "伏击弹药",
+   "rarity" : "稀有",
+   "slot" : 3
 }

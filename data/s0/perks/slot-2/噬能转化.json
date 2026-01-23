@@ -1,15 +1,11 @@
 {
-  "id": "噬能转化",
-  "name": "噬能转化",
-  "slot": 2,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "噬能转化效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "噬能转化效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "噬能转化",
+   "rarity" : "史诗",
+   "slot" : 2
 }

@@ -1,15 +1,11 @@
 {
-  "id": "重装弹头",
-  "name": "重装弹头",
-  "slot": 3,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 3,
-      "description": "重装弹头效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "重装弹头效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "重装弹头",
+   "rarity" : "史诗",
+   "slot" : 3
 }

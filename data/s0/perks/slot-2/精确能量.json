@@ -1,15 +1,11 @@
 {
-  "id": "精确能量",
-  "name": "精确能量",
-  "slot": 2,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "精确能量效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "精确能量效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "精确能量",
+   "rarity" : "史诗",
+   "slot" : 2
 }

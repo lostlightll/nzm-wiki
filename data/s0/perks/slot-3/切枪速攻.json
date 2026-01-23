@@ -1,15 +1,11 @@
 {
-  "id": "切枪速攻",
-  "name": "切枪速攻",
-  "slot": 3,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 3,
-      "description": "切枪速攻效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "切枪速攻效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "切枪速攻",
+   "rarity" : "史诗",
+   "slot" : 3
 }

@@ -1,15 +1,11 @@
 {
-  "id": "攻守自如",
-  "name": "攻守自如",
-  "slot": 3,
-  "rarity": "史诗",
-  "category": "辅助类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 3,
-      "description": "攻守自如效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "辅助类",
+   "description" : null,
+   "effect" : {
+      "description" : "攻守自如效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "攻守自如",
+   "rarity" : "史诗",
+   "slot" : 3
 }

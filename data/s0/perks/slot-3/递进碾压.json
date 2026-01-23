@@ -1,15 +1,11 @@
 {
-  "id": "递进碾压",
-  "name": "递进碾压",
-  "slot": 3,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 3,
-      "description": "递进碾压效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "递进碾压效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "递进碾压",
+   "rarity" : "稀有",
+   "slot" : 3
 }

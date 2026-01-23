@@ -1,15 +1,11 @@
 {
-  "id": "杀戮连锁",
-  "name": "杀戮连锁",
-  "slot": 4,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 4,
-      "description": "杀戮连锁效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "杀戮连锁效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "杀戮连锁",
+   "rarity" : "史诗",
+   "slot" : 4
 }

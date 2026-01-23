@@ -1,20 +1,21 @@
 {
-  "id": "钢铁骑士",
-  "name": "钢铁骑士",
-  "type": "霰弹枪",
-  "elementType": "物理",
-  "tags": ["破甲"],
-  "rarity": "史诗",
-  "stats": {
-    "damage": 120,
-    "fireRate": 80,
-    "magazine": 8,
-    "totalAmmo": 48,
-    "accuracy": 45,
-    "stability": 55,
-    "weaknessMultiplier": 1.8
-  },
-  "skillCooldown": 25,
-  "skills": [],
-  "description": "重型霰弹枪，近距离破甲利器"
+   "name": "钢铁骑士",
+   "description": "重型霰弹枪，近距离破甲利器",
+   "elementType": "物理",
+   "tags": [
+      "破甲"
+   ],
+   "rarity": "史诗",
+   "skillCooldown": 25,
+   "skills": [],
+   "stats": {
+      "damage": 120,
+      "weaknessMultiplier": 1.8,
+      "fireRate": 80,
+      "magazine": 8,
+      "totalAmmo": 48,
+      "accuracy": 45,
+      "stability": 55
+   },
+   "type": "霰弹枪"
 }

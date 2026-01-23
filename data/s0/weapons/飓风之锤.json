@@ -1,20 +1,21 @@
 {
-  "id": "飓风之锤",
-  "name": "飓风之锤",
-  "type": "机枪",
-  "elementType": "物理",
-  "tags": ["穿透"],
-  "rarity": "史诗",
-  "stats": {
-    "damage": 38,
-    "fireRate": 750,
-    "magazine": 100,
-    "totalAmmo": 400,
-    "accuracy": 55,
-    "stability": 60,
-    "weaknessMultiplier": 1.8
-  },
-  "skillCooldown": 18,
-  "skills": [],
-  "description": "重型机枪，持续火力压制"
+   "name": "飓风之锤",
+   "description": "重型机枪，持续火力压制",
+   "elementType": "物理",
+   "tags": [
+      "穿透"
+   ],
+   "rarity": "史诗",
+   "skillCooldown": 18,
+   "skills": [],
+   "stats": {
+      "damage": 38,
+      "weaknessMultiplier": 1.8,
+      "fireRate": 750,
+      "magazine": 100,
+      "totalAmmo": 400,
+      "accuracy": 55,
+      "stability": 60
+   },
+   "type": "机枪"
 }

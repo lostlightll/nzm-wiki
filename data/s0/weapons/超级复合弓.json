@@ -1,20 +1,21 @@
 {
-  "id": "超级复合弓",
-  "name": "超级复合弓",
-  "type": "弓箭",
-  "elementType": "物理",
-  "tags": ["穿透"],
-  "rarity": "史诗",
-  "stats": {
-    "damage": 180,
-    "fireRate": 60,
-    "magazine": 1,
-    "totalAmmo": 30,
-    "accuracy": 90,
-    "stability": 85,
-    "weaknessMultiplier": 2.8
-  },
-  "skillCooldown": 30,
-  "skills": [],
-  "description": "高伤害复合弓，箭矢可穿透多个目标"
+   "name": "超级复合弓",
+   "description": "高伤害复合弓，箭矢可穿透多个目标",
+   "elementType": "物理",
+   "tags": [
+      "穿透"
+   ],
+   "rarity": "史诗",
+   "skillCooldown": 30,
+   "skills": [],
+   "stats": {
+      "damage": 180,
+      "weaknessMultiplier": 2.8,
+      "fireRate": 60,
+      "magazine": 1,
+      "totalAmmo": 30,
+      "accuracy": 90,
+      "stability": 85
+   },
+   "type": "弓箭"
 }

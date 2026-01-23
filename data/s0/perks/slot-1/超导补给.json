@@ -1,15 +1,11 @@
 {
-  "id": "超导补给",
-  "name": "超导补给",
-  "slot": 1,
-  "rarity": "史诗",
-  "category": "装填类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 1,
-      "description": "超导补给效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "装填类",
+   "description" : null,
+   "effect" : {
+      "description" : "超导补给效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "超导补给",
+   "rarity" : "史诗",
+   "slot" : 1
 }

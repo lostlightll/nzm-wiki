@@ -1,20 +1,21 @@
 {
-  "id": "沙丘之怒",
-  "name": "沙丘之怒",
-  "type": "火箭发射器",
-  "elementType": "火焰",
-  "tags": ["爆炸"],
-  "rarity": "传说",
-  "stats": {
-    "damage": 450,
-    "fireRate": 30,
-    "magazine": 1,
-    "totalAmmo": 12,
-    "accuracy": 70,
-    "stability": 40,
-    "weaknessMultiplier": 1.5
-  },
-  "skillCooldown": 35,
-  "skills": [],
-  "description": "火焰火箭发射器，范围爆炸伤害"
+   "name": "沙丘之怒",
+   "description": "火焰火箭发射器，范围爆炸伤害",
+   "elementType": "火焰",
+   "tags": [
+      "爆炸"
+   ],
+   "rarity": "传说",
+   "skillCooldown": 35,
+   "skills": [],
+   "stats": {
+      "damage": 450,
+      "weaknessMultiplier": 1.5,
+      "fireRate": 30,
+      "magazine": 1,
+      "totalAmmo": 12,
+      "accuracy": 70,
+      "stability": 40
+   },
+   "type": "火箭发射器"
 }

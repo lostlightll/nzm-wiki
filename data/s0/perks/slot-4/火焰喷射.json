@@ -1,15 +1,11 @@
 {
-  "id": "火焰喷射",
-  "name": "火焰喷射",
-  "slot": 4,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 4,
-      "description": "火焰喷射效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "火焰喷射效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "火焰喷射",
+   "rarity" : "稀有",
+   "slot" : 4
 }

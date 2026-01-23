@@ -1,15 +1,11 @@
 {
-  "id": "异态共鸣",
-  "name": "异态共鸣",
-  "slot": 3,
-  "rarity": "传说",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 3,
-      "description": "异态共鸣效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "异态共鸣效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "异态共鸣",
+   "rarity" : "传说",
+   "slot" : 3
 }

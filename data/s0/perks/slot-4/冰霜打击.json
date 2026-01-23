@@ -1,15 +1,11 @@
 {
-  "id": "冰霜打击",
-  "name": "冰霜打击",
-  "slot": 4,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 4,
-      "description": "冰霜打击效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "冰霜打击效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "冰霜打击",
+   "rarity" : "稀有",
+   "slot" : 4
 }

@@ -1,15 +1,11 @@
 {
-  "id": "随时待命",
-  "name": "随时待命",
-  "slot": 2,
-  "rarity": "稀有",
-  "category": "辅助类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "随时待命效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "辅助类",
+   "description" : null,
+   "effect" : {
+      "description" : "随时待命效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "随时待命",
+   "rarity" : "稀有",
+   "slot" : 2
 }

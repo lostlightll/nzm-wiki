@@ -1,20 +1,21 @@
 {
-  "id": "天鹅之舞",
-  "name": "天鹅之舞",
-  "type": "突击步枪",
-  "elementType": "寒冷",
-  "tags": ["连发"],
-  "rarity": "传说",
-  "stats": {
-    "damage": 48,
-    "fireRate": 700,
-    "magazine": 40,
-    "totalAmmo": 240,
-    "accuracy": 75,
-    "stability": 72,
-    "weaknessMultiplier": 2.1
-  },
-  "skillCooldown": 47,
-  "skills": [],
-  "description": "优雅的寒冷突击步枪，冻结敌人"
+   "name": "天鹅之舞",
+   "description": "优雅的寒冷突击步枪，冻结敌人",
+   "elementType": "寒冷",
+   "tags": [
+      "连发"
+   ],
+   "rarity": "传说",
+   "skillCooldown": 47,
+   "skills": [],
+   "stats": {
+      "damage": 48,
+      "weaknessMultiplier": 2.1,
+      "fireRate": 700,
+      "magazine": 40,
+      "totalAmmo": 240,
+      "accuracy": 75,
+      "stability": 72
+   },
+   "type": "突击步枪"
 }

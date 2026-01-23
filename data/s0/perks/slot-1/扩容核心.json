@@ -1,15 +1,11 @@
 {
-  "id": "扩容核心",
-  "name": "扩容核心",
-  "slot": 1,
-  "rarity": "史诗",
-  "category": "装填类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 1,
-      "description": "扩容核心效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "装填类",
+   "description" : null,
+   "effect" : {
+      "description" : "扩容核心效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "扩容核心",
+   "rarity" : "史诗",
+   "slot" : 1
 }

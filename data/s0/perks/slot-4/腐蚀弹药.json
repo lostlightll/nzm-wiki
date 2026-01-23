@@ -1,15 +1,11 @@
 {
-  "id": "腐蚀弹药",
-  "name": "腐蚀弹药",
-  "slot": 4,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 4,
-      "description": "腐蚀弹药效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "腐蚀弹药效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "腐蚀弹药",
+   "rarity" : "稀有",
+   "slot" : 4
 }

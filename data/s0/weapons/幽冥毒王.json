@@ -1,20 +1,21 @@
 {
-  "id": "幽冥毒王",
-  "name": "幽冥毒王",
-  "type": "突击步枪",
-  "elementType": "腐蚀",
-  "tags": ["穿透"],
-  "rarity": "传说",
-  "stats": {
-    "damage": 55,
-    "fireRate": 600,
-    "magazine": 35,
-    "totalAmmo": 210,
-    "accuracy": 71,
-    "stability": 66,
-    "weaknessMultiplier": 2.2
-  },
-  "skillCooldown": 45,
-  "skills": [],
-  "description": "腐蚀突击步枪，剧毒侵蚀"
+   "name": "幽冥毒王",
+   "description": "腐蚀突击步枪，剧毒侵蚀",
+   "elementType": "腐蚀",
+   "tags": [
+      "穿透"
+   ],
+   "rarity": "传说",
+   "skillCooldown": 45,
+   "skills": [],
+   "stats": {
+      "damage": 55,
+      "weaknessMultiplier": 2.2,
+      "fireRate": 600,
+      "magazine": 35,
+      "totalAmmo": 210,
+      "accuracy": 71,
+      "stability": 66
+   },
+   "type": "突击步枪"
 }

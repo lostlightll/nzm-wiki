@@ -1,20 +1,19 @@
 {
-  "id": "飓风之龙",
-  "name": "飓风之龙",
-  "type": "喷火器",
-  "elementType": "火焰",
-  "tags": [],
-  "rarity": "传说",
-  "stats": {
-    "damage": 35,
-    "fireRate": 1200,
-    "magazine": 100,
-    "totalAmmo": 400,
-    "accuracy": 50,
-    "stability": 80,
-    "weaknessMultiplier": 1.5
-  },
-  "skillCooldown": 25,
-  "skills": [],
-  "description": "火焰喷射器，持续造成燃烧伤害"
+   "name": "飓风之龙",
+   "description": "火焰喷射器，持续造成燃烧伤害",
+   "elementType": "火焰",
+   "tags": [],
+   "rarity": "传说",
+   "skillCooldown": 25,
+   "skills": [],
+   "stats": {
+      "damage": 35,
+      "weaknessMultiplier": 1.5,
+      "fireRate": 1200,
+      "magazine": 100,
+      "totalAmmo": 400,
+      "accuracy": 50,
+      "stability": 80
+   },
+   "type": "喷火器"
 }

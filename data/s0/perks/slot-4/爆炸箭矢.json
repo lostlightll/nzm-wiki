@@ -1,15 +1,11 @@
 {
-  "id": "爆炸箭矢",
-  "name": "爆炸箭矢",
-  "slot": 4,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 4,
-      "description": "爆炸箭矢效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "爆炸箭矢效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "爆炸箭矢",
+   "rarity" : "稀有",
+   "slot" : 4
 }

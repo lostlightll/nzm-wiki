@@ -1,20 +1,21 @@
 {
-  "id": "生命线",
-  "name": "生命线",
-  "type": "冲锋枪",
-  "elementType": "物理",
-  "tags": ["连发"],
-  "rarity": "史诗",
-  "stats": {
-    "damage": 30,
-    "fireRate": 880,
-    "magazine": 50,
-    "totalAmmo": 300,
-    "accuracy": 62,
-    "stability": 68,
-    "weaknessMultiplier": 1.8
-  },
-  "skillCooldown": 35,
-  "skills": [],
-  "description": "高容量冲锋枪，持续输出"
+   "name": "生命线",
+   "description": "高容量冲锋枪，持续输出",
+   "elementType": "物理",
+   "tags": [
+      "连发"
+   ],
+   "rarity": "史诗",
+   "skillCooldown": 35,
+   "skills": [],
+   "stats": {
+      "damage": 30,
+      "weaknessMultiplier": 1.8,
+      "fireRate": 880,
+      "magazine": 50,
+      "totalAmmo": 300,
+      "accuracy": 62,
+      "stability": 68
+   },
+   "type": "冲锋枪"
 }

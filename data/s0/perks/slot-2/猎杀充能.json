@@ -1,15 +1,11 @@
 {
-  "id": "猎杀充能",
-  "name": "猎杀充能",
-  "slot": 2,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "猎杀充能效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "猎杀充能效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "猎杀充能",
+   "rarity" : "稀有",
+   "slot" : 2
 }

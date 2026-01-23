@@ -1,15 +1,11 @@
 {
-  "id": "战术装填",
-  "name": "战术装填",
-  "slot": 1,
-  "rarity": "稀有",
-  "category": "装填类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 1,
-      "description": "战术装填效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "装填类",
+   "description" : null,
+   "effect" : {
+      "description" : "战术装填效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "战术装填",
+   "rarity" : "稀有",
+   "slot" : 1
 }

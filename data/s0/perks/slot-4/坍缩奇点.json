@@ -1,15 +1,11 @@
 {
-  "id": "坍缩奇点",
-  "name": "坍缩奇点",
-  "slot": 4,
-  "rarity": "传说",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 4,
-      "description": "坍缩奇点效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "坍缩奇点效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "坍缩奇点",
+   "rarity" : "传说",
+   "slot" : 4
 }

@@ -1,15 +1,11 @@
 {
-  "id": "霜冻协议",
-  "name": "霜冻协议",
-  "slot": 4,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 4,
-      "description": "霜冻协议效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "霜冻协议效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "霜冻协议",
+   "rarity" : "史诗",
+   "slot" : 4
 }

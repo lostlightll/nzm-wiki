@@ -1,15 +1,11 @@
 {
-  "id": "弱点供能",
-  "name": "弱点供能",
-  "slot": 2,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "弱点供能效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "弱点供能效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "弱点供能",
+   "rarity" : "稀有",
+   "slot" : 2
 }

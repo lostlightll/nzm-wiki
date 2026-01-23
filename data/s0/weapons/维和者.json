@@ -1,20 +1,21 @@
 {
-  "id": "维和者",
-  "name": "维和者",
-  "type": "霰弹枪",
-  "elementType": "物理",
-  "tags": ["破甲"],
-  "rarity": "传说",
-  "stats": {
-    "damage": 140,
-    "fireRate": 70,
-    "magazine": 7,
-    "totalAmmo": 42,
-    "accuracy": 48,
-    "stability": 52,
-    "weaknessMultiplier": 1.9
-  },
-  "skillCooldown": 40,
-  "skills": [],
-  "description": "强力霰弹枪，维护和平"
+   "name": "维和者",
+   "description": "强力霰弹枪，维护和平",
+   "elementType": "物理",
+   "tags": [
+      "破甲"
+   ],
+   "rarity": "传说",
+   "skillCooldown": 40,
+   "skills": [],
+   "stats": {
+      "damage": 140,
+      "weaknessMultiplier": 1.9,
+      "fireRate": 70,
+      "magazine": 7,
+      "totalAmmo": 42,
+      "accuracy": 48,
+      "stability": 52
+   },
+   "type": "霰弹枪"
 }

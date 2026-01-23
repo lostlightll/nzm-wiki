@@ -1,20 +1,22 @@
 {
-  "id": "梦魇",
-  "name": "梦魇",
-  "type": "狙击步枪",
-  "elementType": "腐蚀",
-  "tags": ["高倍镜", "穿透"],
-  "rarity": "传说",
-  "stats": {
-    "damage": 240,
-    "fireRate": 36,
-    "magazine": 5,
-    "totalAmmo": 25,
-    "accuracy": 94,
-    "stability": 46,
-    "weaknessMultiplier": 3.1
-  },
-  "skillCooldown": 40,
-  "skills": [],
-  "description": "腐蚀狙击步枪，噩梦降临"
+   "name": "梦魇",
+   "description": "腐蚀狙击步枪，噩梦降临",
+   "elementType": "腐蚀",
+   "tags": [
+      "高倍镜",
+      "穿透"
+   ],
+   "rarity": "传说",
+   "skillCooldown": 40,
+   "skills": [],
+   "stats": {
+      "damage": 240,
+      "weaknessMultiplier": 3.1,
+      "fireRate": 36,
+      "magazine": 5,
+      "totalAmmo": 25,
+      "accuracy": 94,
+      "stability": 46
+   },
+   "type": "狙击步枪"
 }

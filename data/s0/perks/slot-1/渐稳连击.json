@@ -1,15 +1,11 @@
 {
-  "id": "渐稳连击",
-  "name": "渐稳连击",
-  "slot": 1,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 1,
-      "description": "渐稳连击效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "渐稳连击效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "渐稳连击",
+   "rarity" : "稀有",
+   "slot" : 1
 }

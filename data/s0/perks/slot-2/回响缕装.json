@@ -1,15 +1,11 @@
 {
-  "id": "回响缕装",
-  "name": "回响缕装",
-  "slot": 2,
-  "rarity": "史诗",
-  "category": "装填类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "回响缕装效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "装填类",
+   "description" : null,
+   "effect" : {
+      "description" : "回响缕装效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "回响缕装",
+   "rarity" : "史诗",
+   "slot" : 2
 }

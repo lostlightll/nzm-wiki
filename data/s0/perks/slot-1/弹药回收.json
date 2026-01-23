@@ -1,15 +1,11 @@
 {
-  "id": "弹药回收",
-  "name": "弹药回收",
-  "slot": 1,
-  "rarity": "稀有",
-  "category": "装填类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 1,
-      "description": "弹药回收效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "装填类",
+   "description" : null,
+   "effect" : {
+      "description" : "弹药回收效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "弹药回收",
+   "rarity" : "稀有",
+   "slot" : 1
 }

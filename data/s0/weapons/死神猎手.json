@@ -1,20 +1,22 @@
 {
-  "id": "死神猎手",
-  "name": "死神猎手",
-  "type": "狙击步枪",
-  "elementType": "物理",
-  "tags": ["高倍镜", "穿透"],
-  "rarity": "传说",
-  "stats": {
-    "damage": 280,
-    "fireRate": 35,
-    "magazine": 5,
-    "totalAmmo": 25,
-    "accuracy": 98,
-    "stability": 45,
-    "weaknessMultiplier": 3.5
-  },
-  "skillCooldown": 150,
-  "skills": [],
-  "description": "传说级狙击步枪，拥有强大的穿透能力"
+   "name": "死神猎手",
+   "description": "传说级狙击步枪，拥有强大的穿透能力",
+   "elementType": "物理",
+   "tags": [
+      "高倍镜",
+      "穿透"
+   ],
+   "rarity": "传说",
+   "skillCooldown": 150,
+   "skills": [],
+   "stats": {
+      "damage": 280,
+      "weaknessMultiplier": 3.5,
+      "fireRate": 35,
+      "magazine": 5,
+      "totalAmmo": 25,
+      "accuracy": 98,
+      "stability": 45
+   },
+   "type": "狙击步枪"
 }

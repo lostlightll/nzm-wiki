@@ -1,20 +1,21 @@
 {
-  "id": "黎明之光",
-  "name": "黎明之光",
-  "type": "突击步枪",
-  "elementType": "火焰",
-  "tags": ["连发"],
-  "rarity": "史诗",
-  "stats": {
-    "damage": 46,
-    "fireRate": 680,
-    "magazine": 32,
-    "totalAmmo": 192,
-    "accuracy": 73,
-    "stability": 70,
-    "weaknessMultiplier": 2.0
-  },
-  "skillCooldown": 30,
-  "skills": [],
-  "description": "火焰突击步枪，带来黎明的曙光"
+   "name": "黎明之光",
+   "description": "火焰突击步枪，带来黎明的曙光",
+   "elementType": "火焰",
+   "tags": [
+      "连发"
+   ],
+   "rarity": "史诗",
+   "skillCooldown": 30,
+   "skills": [],
+   "stats": {
+      "damage": 46,
+      "weaknessMultiplier": 2,
+      "fireRate": 680,
+      "magazine": 32,
+      "totalAmmo": 192,
+      "accuracy": 73,
+      "stability": 70
+   },
+   "type": "突击步枪"
 }

@@ -1,15 +1,11 @@
 {
-  "id": "剧毒速袭",
-  "name": "剧毒速袭",
-  "slot": 4,
-  "rarity": "史诗",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 4,
-      "description": "剧毒速袭效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "剧毒速袭效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "剧毒速袭",
+   "rarity" : "史诗",
+   "slot" : 4
 }

@@ -1,15 +1,11 @@
 {
-  "id": "持续供能",
-  "name": "持续供能",
-  "slot": 2,
-  "rarity": "稀有",
-  "category": "伤害类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "持续供能效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "伤害类",
+   "description" : null,
+   "effect" : {
+      "description" : "持续供能效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "持续供能",
+   "rarity" : "稀有",
+   "slot" : 2
 }

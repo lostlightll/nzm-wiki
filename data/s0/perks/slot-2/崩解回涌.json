@@ -1,15 +1,11 @@
 {
-  "id": "崩解回涌",
-  "name": "崩解回涌",
-  "slot": 2,
-  "rarity": "史诗",
-  "category": "装填类",
-  "icon": null,
-  "effects": [
-    {
-      "slot": 2,
-      "description": "崩解回涌效果描述待补充"
-    }
-  ],
-  "description": null
+   "category" : "装填类",
+   "description" : null,
+   "effect" : {
+      "description" : "崩解回涌效果描述待补充"
+   },
+   "icon" : null,
+   "name" : "崩解回涌",
+   "rarity" : "史诗",
+   "slot" : 2
 }
