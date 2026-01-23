@@ -1,11 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const isProd = process.env.NODE_ENV === "production";
+const basePath = isProd ? "/nzm-wiki" : "";
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-900 px-4">
       <Image
-        src="/logo.png"
+        src={`${basePath}/logo.png`}
         alt="逆战未来 维基"
         width={200}
         height={200}

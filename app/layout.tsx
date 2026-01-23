@@ -12,11 +12,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const isProd = process.env.NODE_ENV === "production";
+const basePath = isProd ? "/nzm-wiki" : "";
+
 export const metadata: Metadata = {
   title: "逆战未来 维基",
   description: "逆战未来游戏资料站",
   icons: {
-    icon: "/icon.png",
+    icon: `${basePath}/icon.png`,
   },
 };
 
