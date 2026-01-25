@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import Image from "next/image";
 import type { Perk, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
@@ -21,19 +22,23 @@ function PerkCard({ perk }: { perk: Perk }) {
   const rarityKey = RARITY_KEY_MAP[rarityStr] || "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
 
-  const iconSrc = perk.icon
-    ? `/icons/perks/${perk.icon}.png`
-    : "https://placehold.co/64x64/374151/9ca3af?text=?";
-
   return (
     <div
       className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4`}
     >
-      <img
-        src={iconSrc}
-        alt={perk.name}
-        className="h-20 w-20 object-contain"
-      />
+      {perk.icon ? (
+        <Image
+          src={`/icons/perks/${perk.icon}.png`}
+          alt={perk.name}
+          width={80}
+          height={80}
+          className="h-20 w-20 object-contain"
+        />
+      ) : (
+        <div className="flex h-20 w-20 items-center justify-center bg-zinc-700 text-zinc-400">
+          ?
+        </div>
+      )}
       <h3 className="mt-2 text-center text-sm font-medium leading-tight text-white">
         {perk.name}
       </h3>
