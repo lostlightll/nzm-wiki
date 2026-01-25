@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import Image from "next/image";
+import { getAssetPath } from "@/lib/path";
 import type { Perk, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
@@ -28,7 +29,7 @@ function PerkCard({ perk }: { perk: Perk }) {
     >
       {perk.icon ? (
         <Image
-          src={`/icons/perks/${perk.icon}.png`}
+          src={getAssetPath(`/icons/perks/${perk.icon}.png`)}
           alt={perk.name}
           width={80}
           height={80}
