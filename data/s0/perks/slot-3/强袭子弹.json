@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "强袭子弹效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "强袭子弹",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "",
+  "name": "强袭子弹",
+  "slot": 3,
+  "rarity": 2,
+  "description": "",
+  "icon": "1315151001",
+  "weapon_type": []
 }

@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "锁定攻击效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "锁定攻击",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "",
+  "name": "锚定攻击",
+  "slot": 3,
+  "rarity": 3,
+  "description": "",
+  "icon": "1315109001",
+  "weapon_type": []
 }

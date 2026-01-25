@@ -1,11 +1,12 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "压制火力效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "压制火力",
-   "rarity" : "稀有",
-   "slot" : 3
+  "id": "20703040113",
+  "name": "压制火力",
+  "slot": 3,
+  "rarity": 3,
+  "description": "持续开火时，每射出一发子弹，武器破韧强度增加{GPModifier:111010074:BaseValue:0:2:1}，最多叠加60层，换弹后清空。",
+  "icon": "1315133001",
+  "weapon_type": [
+    1,
+    6
+  ]
 }

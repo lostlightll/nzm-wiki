@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "层积涌流效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "层积涌流",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "20703040129",
+  "name": "层积涌流",
+  "slot": 2,
+  "rarity": 3,
+  "description": "当直接为敌人施加一层元素异常，武器技能获得3%充能，每1秒最多触发一次。",
+  "icon": "1314132001",
+  "weapon_type": []
 }

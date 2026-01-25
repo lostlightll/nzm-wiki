@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "穿针引线效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "穿针引线",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040051",
+  "name": "穿针引线",
+  "slot": 4,
+  "rarity": 3,
+  "description": "主动技能冷却期间，穿透命中目标可以为主动技能充能，每命中一个目标恢复3%的能量",
+  "icon": "1316115001",
+  "weapon_type": []
 }

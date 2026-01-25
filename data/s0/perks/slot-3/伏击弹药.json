@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "伏击弹药效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "伏击弹药",
-   "rarity" : "稀有",
-   "slot" : 3
+  "id": "20703040037",
+  "name": "伏击弹药",
+  "slot": 3,
+  "rarity": 3,
+  "description": "武器处于后台10秒后，下一发伤害提高50%。",
+  "icon": "1315112001",
+  "weapon_type": []
 }

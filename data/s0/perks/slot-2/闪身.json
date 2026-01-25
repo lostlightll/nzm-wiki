@@ -1,11 +1,9 @@
 {
-   "category" : "生存类",
-   "description" : null,
-   "effect" : {
-      "description" : "闪身效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "闪身",
-   "rarity" : "稀有",
-   "slot" : 2
+  "id": "20703040015",
+  "name": "闪身",
+  "slot": 2,
+  "rarity": 3,
+  "description": "当前武器的主动技能替换为<T002>冲刺</>，冷却15秒。",
+  "icon": "1314102001",
+  "weapon_type": []
 }

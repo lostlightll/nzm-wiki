@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "穿甲扩散效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "穿甲扩散",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040058",
+  "name": "穿甲扩散",
+  "slot": 4,
+  "rarity": 3,
+  "description": "",
+  "icon": "1316122001",
+  "weapon_type": []
 }

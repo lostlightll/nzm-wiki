@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "噬能转化效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "噬能转化",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "20703040130",
+  "name": "噬能转化",
+  "slot": 2,
+  "rarity": 3,
+  "description": "击杀带有与当前武器属性相同的元素异常的敌人会依据其异常层数获得武器技能充能，最高5层，每层获得4%，每1秒最多触发一次。",
+  "icon": "1314133001",
+  "weapon_type": []
 }

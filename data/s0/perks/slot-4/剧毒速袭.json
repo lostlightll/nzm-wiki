@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "剧毒速袭效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "剧毒速袭",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "",
+  "name": "剧毒速袭",
+  "slot": 4,
+  "rarity": 3,
+  "description": "",
+  "icon": "1316124001",
+  "weapon_type": []
 }

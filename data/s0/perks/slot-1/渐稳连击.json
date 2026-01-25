@@ -1,11 +1,13 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "渐稳连击效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "渐稳连击",
-   "rarity" : "稀有",
-   "slot" : 1
+  "id": "20703040063",
+  "name": "渐稳连击",
+  "slot": 1,
+  "rarity": 3,
+  "description": "持续开火时，射击8发后，开始降低武器后坐力8%，每8发叠加一层，最多8层。",
+  "icon": "1313118001",
+  "weapon_type": [
+    5,
+    1,
+    6
+  ]
 }

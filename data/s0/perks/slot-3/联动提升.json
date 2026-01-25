@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "联动提升效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "联动提升",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "20703040028",
+  "name": "联动提升",
+  "slot": 3,
+  "rarity": 3,
+  "description": "激活当前武器技能后，当前武器的暴击概率提高{GPModifier:111010010:BaseValue:0:2:1}，持续10秒。",
+  "icon": "1315103001",
+  "weapon_type": []
 }

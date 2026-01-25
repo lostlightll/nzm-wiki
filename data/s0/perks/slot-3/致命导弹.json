@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "致命导弹效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "致命导弹",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "",
+  "name": "致命导弹",
+  "slot": 3,
+  "rarity": 3,
+  "description": "",
+  "icon": "1315152001",
+  "weapon_type": []
 }

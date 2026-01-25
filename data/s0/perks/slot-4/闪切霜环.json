@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "闪切霜环效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "闪切霜环",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "",
+  "name": "闪切霜环",
+  "slot": 4,
+  "rarity": 3,
+  "description": "",
+  "icon": "1316151001",
+  "weapon_type": []
 }

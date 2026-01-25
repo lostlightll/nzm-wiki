@@ -1,11 +1,15 @@
 {
-   "category" : "辅助类",
-   "description" : null,
-   "effect" : {
-      "description" : "迁跃回路效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "迁跃回路",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "20703040149",
+  "name": "迁跃回路",
+  "slot": 2,
+  "rarity": 3,
+  "description": "切换到该武器后，5秒内，每命中1名敌人，为另一槽位武器充能1%能量。",
+  "icon": "1314137001",
+  "weapon_type": [
+    3,
+    4,
+    8,
+    16,
+    12
+  ]
 }

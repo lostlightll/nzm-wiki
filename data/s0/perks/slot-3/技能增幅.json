@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "技能增幅效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "技能增幅",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "20703030003",
+  "name": "技能增幅",
+  "slot": 3,
+  "rarity": 2,
+  "description": "",
+  "icon": "1315148001",
+  "weapon_type": []
 }

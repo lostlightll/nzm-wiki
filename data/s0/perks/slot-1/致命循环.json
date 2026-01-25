@@ -1,11 +1,14 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "致命循环效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "致命循环",
-   "rarity" : "史诗",
-   "slot" : 1
+  "id": "20703040100",
+  "name": "致命循环",
+  "slot": 1,
+  "rarity": 3,
+  "description": "每次暴击增加下次装填速度{GPModifier:111010069:BaseValue:0:2:1}，层数最多可叠加3层，每次装填消耗一层。",
+  "icon": "1313133001",
+  "weapon_type": [
+    14,
+    2,
+    3,
+    7
+  ]
 }

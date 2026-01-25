@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "正中红心效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "正中红心",
-   "rarity" : "稀有",
-   "slot" : 3
+  "id": "20703040036",
+  "name": "正中红心",
+  "slot": 3,
+  "rarity": 3,
+  "description": "每次命中弱点获得1点能量，每个目标仅触发一次。使用武器技能或触发技能伤害时，消耗所有能量并增强武器技能伤害，每消耗1点能量增加{GPModifier:111010016:CoefValue:0:2:1}的技能伤害，最高累积100点能量。",
+  "icon": "1315111001",
+  "weapon_type": []
 }

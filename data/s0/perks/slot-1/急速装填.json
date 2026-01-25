@@ -1,11 +1,9 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "急速装填效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "急速装填",
-   "rarity" : "史诗",
-   "slot" : 1
+  "id": "",
+  "name": "急速装填",
+  "slot": 1,
+  "rarity": 2,
+  "description": "",
+  "icon": "1313148001",
+  "weapon_type": []
 }

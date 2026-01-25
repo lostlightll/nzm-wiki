@@ -1,11 +1,13 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "元素析出效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "元素析出",
-   "rarity" : "传说",
-   "slot" : 1
+  "id": "20703040124",
+  "name": "元素析出",
+  "slot": 1,
+  "rarity": 3,
+  "description": "武器射击或技能击杀带有与当前武器属性相同的元素异常的敌人，会依据其异常层数为武器填装子弹，每层3发，最高15发。",
+  "icon": "1313137001",
+  "weapon_type": [
+    5,
+    1,
+    6
+  ]
 }

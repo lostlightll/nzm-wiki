@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "命中返能效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "命中返能",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "",
+  "name": "命中返能",
+  "slot": 2,
+  "rarity": 1,
+  "description": "",
+  "icon": "1314138001",
+  "weapon_type": []
 }

@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "多重激返效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "多重激返",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "20703040068",
+  "name": "多重激返",
+  "slot": 2,
+  "rarity": 3,
+  "description": "一次开火触发多次伤害时，为主动技能进行充能3%，冷却时间1秒。",
+  "icon": "1314118001",
+  "weapon_type": []
 }

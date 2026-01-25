@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "蜂鸣指令效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "蜂鸣指令",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "",
+  "name": "蜂鸣指令",
+  "slot": 4,
+  "rarity": 3,
+  "description": "",
+  "icon": "1316150001",
+  "weapon_type": []
 }

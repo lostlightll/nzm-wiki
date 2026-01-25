@@ -1,11 +1,12 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "共鸣射击效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "共鸣射击",
-   "rarity" : "传说",
-   "slot" : 2
+  "id": "20703040103",
+  "name": "共鸣射击",
+  "slot": 2,
+  "rarity": 3,
+  "description": "每5次命中，额外消耗1枚弹药，并恢复1.6%武器技能能量。",
+  "icon": "1314127001",
+  "weapon_type": [
+    5,
+    1
+  ]
 }

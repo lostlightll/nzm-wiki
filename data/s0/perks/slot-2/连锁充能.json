@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "连锁充能效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "连锁充能",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "",
+  "name": "连锁充能",
+  "slot": 2,
+  "rarity": 2,
+  "description": "",
+  "icon": "1314141001",
+  "weapon_type": []
 }

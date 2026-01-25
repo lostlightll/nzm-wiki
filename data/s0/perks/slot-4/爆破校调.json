@@ -1,11 +1,14 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "爆破校调效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "爆破校调",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040045",
+  "name": "爆破校调",
+  "slot": 4,
+  "rarity": 3,
+  "description": "激活武器技能后，爆炸范围+50%，暴击概率增加13%，持续10秒。",
+  "icon": "1316109001",
+  "weapon_type": [
+    4,
+    8,
+    16,
+    12
+  ]
 }

@@ -1,11 +1,12 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "链式反应效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "链式反应",
-   "rarity" : "传说",
-   "slot" : 3
+  "id": "20703040109",
+  "name": "链式反应",
+  "slot": 3,
+  "rarity": 3,
+  "description": "换弹后，6秒内武器伤害增加{GPModifier:111010070:BaseValue:0:2:1}，最多可叠加5层。",
+  "icon": "1315129001",
+  "weapon_type": [
+    5,
+    1
+  ]
 }

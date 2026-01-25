@@ -1,11 +1,9 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "扩容核心效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "扩容核心",
-   "rarity" : "史诗",
-   "slot" : 1
+  "id": "",
+  "name": "扩容核心",
+  "slot": 1,
+  "rarity": 2,
+  "description": "",
+  "icon": "1313147001",
+  "weapon_type": []
 }

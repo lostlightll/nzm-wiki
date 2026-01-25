@@ -1,6 +1,11 @@
 import type { PerkSlot } from "@/types";
 
-export { RARITY_OPTIONS, RARITY_KEY_MAP, RARITY_CARD_STYLES } from "./common";
+export {
+  RARITY_OPTIONS,
+  RARITY_KEY_MAP,
+  RARITY_CARD_STYLES,
+  RARITY_NUM_MAP,
+} from "./common";
 
 export const SLOT_OPTIONS: { type: PerkSlot; label: string }[] = [
   { type: 1, label: "1号槽位" },

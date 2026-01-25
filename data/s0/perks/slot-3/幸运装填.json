@@ -1,11 +1,13 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "幸运装填效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "幸运装填",
-   "rarity" : "稀有",
-   "slot" : 3
+  "id": "20703040001",
+  "name": "幸运装填",
+  "slot": 3,
+  "rarity": 3,
+  "description": "换弹时有33%的概率不消耗备弹，武器伤害增加{GPModifier:111010001:BaseValue:0:2:1}，换弹或切枪后效果消失。",
+  "icon": "1313101001",
+  "weapon_type": [
+    5,
+    1,
+    6
+  ]
 }

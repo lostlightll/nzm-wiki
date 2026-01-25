@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "连锁电环效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "连锁电环",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "",
+  "name": "连锁电环",
+  "slot": 4,
+  "rarity": 1,
+  "description": "",
+  "icon": "1316145001",
+  "weapon_type": []
 }

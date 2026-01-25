@@ -1,11 +1,14 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "裁决充能效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "裁决充能",
-   "rarity" : "传说",
-   "slot" : 3
+  "id": "20703040116",
+  "name": "裁决充能",
+  "slot": 3,
+  "rarity": 3,
+  "description": "手持该武器时，每0.15秒获得{GPModifier:111010076:BaseValue:0:2:1}暴击率与{GPModifier:111010076:BaseValue:1:2:1}暴击伤害加成直至100%暴击率，命中或切枪后清除。",
+  "icon": "1315136001",
+  "weapon_type": [
+    14,
+    2,
+    3,
+    7
+  ]
 }

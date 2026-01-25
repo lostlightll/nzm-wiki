@@ -1,11 +1,9 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "崩解回涌效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "崩解回涌",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "20703040132",
+  "name": "崩解回涌",
+  "slot": 2,
+  "rarity": 3,
+  "description": "敌人破盾后，获得25%充能。",
+  "icon": "1314135001",
+  "weapon_type": []
 }

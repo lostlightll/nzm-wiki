@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "弹跳风暴效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "弹跳风暴",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040059",
+  "name": "弹跳风暴",
+  "slot": 4,
+  "rarity": 3,
+  "description": "爆炸伤害增加20%，在主动技能激活时，可弹射榴弹的弹射次数增加2次",
+  "icon": "1316123001",
+  "weapon_type": []
 }

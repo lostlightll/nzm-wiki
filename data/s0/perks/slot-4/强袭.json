@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "强袭效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "强袭",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040186",
+  "name": "强袭",
+  "slot": 4,
+  "rarity": 3,
+  "description": "处于浮游模式攻击时有10% 概率额外发射一道激光，激光可穿透最多4 个敌人，造成40%浮游炮普通攻击伤害。",
+  "icon": "1312047001",
+  "weapon_type": []
 }

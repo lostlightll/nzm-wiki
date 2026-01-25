@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "多重回能效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "多重回能",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "",
+  "name": "多重回能",
+  "slot": 2,
+  "rarity": 2,
+  "description": "",
+  "icon": "1314142001",
+  "weapon_type": []
 }

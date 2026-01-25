@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "技能扩散效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "技能扩散",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040055",
+  "name": "技能扩散",
+  "slot": 4,
+  "rarity": 3,
+  "description": "使用主动技能后，持续15秒，击败敌人会造成一次当前武器的元素爆炸，造成{GPNUMERICALID:11010046:HPCALScale:2:1}伤害，每0.3秒最多触发一次。",
+  "icon": "1316119001",
+  "weapon_type": []
 }

@@ -1,11 +1,11 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "电环疾驰效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "电环疾驰",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "",
+  "name": "电环疾驰",
+  "slot": 4,
+  "rarity": 3,
+  "description": "",
+  "icon": "1315110001",
+  "weapon_type": [
+    3
+  ]
 }

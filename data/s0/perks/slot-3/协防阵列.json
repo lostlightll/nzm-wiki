@@ -1,11 +1,11 @@
 {
-   "category" : "生存类",
-   "description" : null,
-   "effect" : {
-      "description" : "协防阵列效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "协防阵列",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "20703040110",
+  "name": "协防阵列",
+  "slot": 3,
+  "rarity": 3,
+  "description": "换弹后，如果8米半径范围内存在队友，提高武器伤害{GPModifier:111010071:BaseValue:0:2:1}，持续8秒。",
+  "icon": "1315130001",
+  "weapon_type": [
+    5
+  ]
 }

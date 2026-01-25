@@ -1,11 +1,12 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "弹容爆破效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "弹容爆破",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040119",
+  "name": "弹容爆破",
+  "slot": 4,
+  "rarity": 3,
+  "description": "换弹后，以自身为中心释放<T002>冰环</>，依据武器弹容量造成伤害，每有1发弹容增加2%伤害。",
+  "icon": "1316136001",
+  "weapon_type": [
+    1,
+    6
+  ]
 }

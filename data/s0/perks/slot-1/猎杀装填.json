@@ -1,11 +1,12 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "猎杀装填效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "猎杀装填",
-   "rarity" : "稀有",
-   "slot" : 1
+  "id": "20703040005",
+  "name": "猎杀装填",
+  "slot": 1,
+  "rarity": 3,
+  "description": "击败10米外的敌人后，为当前武器装填4发弹药，冷却2秒。",
+  "icon": "1313107001",
+  "weapon_type": [
+    14,
+    2
+  ]
 }

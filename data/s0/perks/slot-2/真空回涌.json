@@ -1,11 +1,11 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "真空回涌效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "真空回涌",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "20703040104",
+  "name": "真空回涌",
+  "slot": 2,
+  "rarity": 3,
+  "description": "清空弹匣后，恢复弹匣容量40%的能量。",
+  "icon": "1314128001",
+  "weapon_type": [
+    6
+  ]
 }

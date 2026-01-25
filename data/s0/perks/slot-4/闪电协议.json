@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "闪电协议效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "闪电协议",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "",
+  "name": "闪电协议",
+  "slot": 4,
+  "rarity": 2,
+  "description": "",
+  "icon": "1316148001",
+  "weapon_type": []
 }

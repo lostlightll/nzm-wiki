@@ -1,11 +1,12 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "川流不息效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "川流不息",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "20703040102",
+  "name": "川流不息",
+  "slot": 2,
+  "rarity": 3,
+  "description": "武器持续开火时，每发增加{GPModifier:111010090:BaseValue:0:2:1}充能速度，最高100层，停止开火或换弹时清空。",
+  "icon": "1314126001",
+  "weapon_type": [
+    1,
+    6
+  ]
 }

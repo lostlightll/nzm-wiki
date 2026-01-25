@@ -1,11 +1,13 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "危机装填效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "危机装填",
-   "rarity" : "稀有",
-   "slot" : 1
+  "id": "20703040004",
+  "name": "危机装填",
+  "slot": 1,
+  "rarity": 3,
+  "description": "击败10米内的敌人后，为当前武器装填3发弹药，冷却2秒。",
+  "icon": "1313106001",
+  "weapon_type": [
+    5,
+    3,
+    4
+  ]
 }

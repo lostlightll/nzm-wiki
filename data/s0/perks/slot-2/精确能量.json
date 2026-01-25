@@ -1,11 +1,12 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "精确能量效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "精确能量",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "20703040021",
+  "name": "精确能量",
+  "slot": 2,
+  "rarity": 3,
+  "description": "每次命中弱点，为当前武器技能充能2.5%，冷却1秒。",
+  "icon": "1314108001",
+  "weapon_type": [
+    7,
+    14
+  ]
 }

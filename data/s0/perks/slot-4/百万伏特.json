@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "百万伏特效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "百万伏特",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040088",
+  "name": "百万伏特",
+  "slot": 4,
+  "rarity": 3,
+  "description": "武器累积造成100次伤害后，对自身10米范围内的敌人造成50%攻击力伤害。",
+  "icon": "1316103001",
+  "weapon_type": []
 }

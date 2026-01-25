@@ -1,11 +1,9 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "解构装填效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "解构装填",
-   "rarity" : "史诗",
-   "slot" : 1
+  "id": "20703040127",
+  "name": "解构装填",
+  "slot": 1,
+  "rarity": 3,
+  "description": "敌人破盾后，为当前武器填装100%弹药，可过充。",
+  "icon": "1313140001",
+  "weapon_type": []
 }

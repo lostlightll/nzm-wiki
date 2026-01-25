@@ -7,24 +7,34 @@ import { FilterSection } from "@/components/Filter";
 import {
   RARITY_KEY_MAP,
   RARITY_CARD_STYLES,
+  RARITY_NUM_MAP,
   SLOT_OPTIONS,
   RARITY_OPTIONS,
 } from "@/constants/perks";
 
 function PerkCard({ perk }: { perk: Perk }) {
-  const rarityKey = RARITY_KEY_MAP[perk.rarity];
+  // 处理数字或字符串格式的稀有度
+  const rarityStr =
+    typeof perk.rarity === "number"
+      ? RARITY_NUM_MAP[perk.rarity] || "普通"
+      : perk.rarity;
+  const rarityKey = RARITY_KEY_MAP[rarityStr] || "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
+
+  const iconSrc = perk.icon
+    ? `/icons/perks/${perk.icon}.png`
+    : "https://placehold.co/64x64/374151/9ca3af?text=?";
 
   return (
     <div
-      className={`rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3`}
+      className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4`}
     >
       <img
-        src="https://placehold.co/64x64/374151/9ca3af?text=icon"
+        src={iconSrc}
         alt={perk.name}
-        className="mx-auto mb-2 h-16 w-16 rounded-lg border border-zinc-600"
+        className="h-20 w-20 object-contain"
       />
-      <h3 className="text-center text-sm font-medium leading-tight text-white">
+      <h3 className="mt-2 text-center text-sm font-medium leading-tight text-white">
         {perk.name}
       </h3>
     </div>
@@ -45,9 +55,14 @@ export default function PerksPageClient({
     return initialPerks.filter((perk) => {
       const slotMatch =
         slotState.selected.size === 0 || slotState.selected.has(perk.slot);
+      // 处理数字或字符串格式的稀有度
+      const perkRarity =
+        typeof perk.rarity === "number"
+          ? RARITY_NUM_MAP[perk.rarity]
+          : perk.rarity;
       const rarityMatch =
         rarityState.selected.size === 0 ||
-        rarityState.selected.has(perk.rarity);
+        rarityState.selected.has(perkRarity);
       return slotMatch && rarityMatch;
     });
   }, [initialPerks, slotState.selected, rarityState.selected]);
@@ -109,8 +124,8 @@ export default function PerksPageClient({
                   gridTemplateColumns: "repeat(auto-fill, minmax(128px, 128px))",
                 }}
               >
-                {slotPerks.map((perk) => (
-                  <PerkCard key={perk.id} perk={perk} />
+                {slotPerks.map((perk, index) => (
+                  <PerkCard key={perk.id || `${perk.name}-${index}`} perk={perk} />
                 ))}
               </div>
             </section>
@@ -124,8 +139,8 @@ export default function PerksPageClient({
               gridTemplateColumns: "repeat(auto-fill, minmax(128px, 128px))",
             }}
           >
-            {filteredPerks.map((perk) => (
-              <PerkCard key={perk.id} perk={perk} />
+            {filteredPerks.map((perk, index) => (
+              <PerkCard key={perk.id || `${perk.name}-${index}`} perk={perk} />
             ))}
           </div>
         </section>

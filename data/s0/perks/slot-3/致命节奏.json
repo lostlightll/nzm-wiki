@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "致命节奏效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "致命节奏",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "20703040029",
+  "name": "致命节奏",
+  "slot": 3,
+  "rarity": 2,
+  "description": "若1秒内触发4次暴击，暴击伤害+0.4x，持续4秒(可叠加10层)",
+  "icon": "1315150001",
+  "weapon_type": []
 }

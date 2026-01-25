@@ -1,11 +1,9 @@
 {
-   "category" : "辅助类",
-   "description" : null,
-   "effect" : {
-      "description" : "惯性制退效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "惯性制退",
-   "rarity" : "传说",
-   "slot" : 1
+  "id": "",
+  "name": "惯性制退",
+  "slot": 1,
+  "rarity": 1,
+  "description": "",
+  "icon": "1313145001",
+  "weapon_type": []
 }

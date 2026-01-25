@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "杀戮连锁效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "杀戮连锁",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040041",
+  "name": "杀戮连锁",
+  "slot": 4,
+  "rarity": 3,
+  "description": "每次开火，有17%概率增加一条弹道。",
+  "icon": "1316104001",
+  "weapon_type": []
 }

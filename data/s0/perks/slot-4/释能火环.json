@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "释能火环效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "释能火环",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "",
+  "name": "释能火环",
+  "slot": 4,
+  "rarity": 2,
+  "description": "",
+  "icon": "1316146001",
+  "weapon_type": []
 }

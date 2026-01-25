@@ -1,11 +1,11 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "亲密距离效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "亲密距离",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040040",
+  "name": "亲密距离",
+  "slot": 4,
+  "rarity": 3,
+  "description": "一发弹药的所有弹片均命中同一敌人时，触发一次落雷击中该目标，造成{GPNUMERICALID:11010064:HPCALScale:2:1}伤害，冷却2秒。",
+  "icon": "1316102001",
+  "weapon_type": [
+    3
+  ]
 }

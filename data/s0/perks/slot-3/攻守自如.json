@@ -1,11 +1,9 @@
 {
-   "category" : "辅助类",
-   "description" : null,
-   "effect" : {
-      "description" : "攻守自如效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "攻守自如",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "20703040087",
+  "name": "攻守自如",
+  "slot": 3,
+  "rarity": 3,
+  "description": "触发扔枪后，武器伤害提升30%，伤害减免15%，持续20秒。",
+  "icon": "1316131001",
+  "weapon_type": []
 }

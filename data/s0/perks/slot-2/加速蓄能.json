@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "加速蓄能效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "加速蓄能",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "",
+  "name": "加速蓄能",
+  "slot": 2,
+  "rarity": 1,
+  "description": "",
+  "icon": "1314139001",
+  "weapon_type": []
 }

@@ -1,11 +1,12 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "帽子戏法效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "帽子戏法",
-   "rarity" : "史诗",
-   "slot" : 1
+  "id": "20703040095",
+  "name": "帽子戏法",
+  "slot": 1,
+  "rarity": 3,
+  "description": "换弹后6秒内，下一次换弹速度加快{GPModifier:111010068:BaseValue:0:2:1}，可叠层5层。",
+  "icon": "1313128001",
+  "weapon_type": [
+    5,
+    1
+  ]
 }

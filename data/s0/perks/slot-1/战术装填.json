@@ -1,11 +1,9 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "战术装填效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "战术装填",
-   "rarity" : "稀有",
-   "slot" : 1
+  "id": "20703040003",
+  "name": "战术装填",
+  "slot": 1,
+  "rarity": 3,
+  "description": "击杀敌人后，40%概率装填1发弹药。",
+  "icon": "1313105001",
+  "weapon_type": []
 }

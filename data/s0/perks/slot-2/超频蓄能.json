@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "超频蓄能效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "超频蓄能",
-   "rarity" : "传说",
-   "slot" : 2
+  "id": "",
+  "name": "超频蓄能",
+  "slot": 2,
+  "rarity": 3,
+  "description": "",
+  "icon": "1314130001",
+  "weapon_type": []
 }

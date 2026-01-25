@@ -1,11 +1,11 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "极限载弹效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "极限载弹",
-   "rarity" : "稀有",
-   "slot" : 1
+  "id": "20703040076",
+  "name": "极限载弹",
+  "slot": 1,
+  "rarity": 3,
+  "description": "弹夹容量最大值增加{GPModifier:111010058:BaseValue:0:1:1}发。",
+  "icon": "1313116001",
+  "weapon_type": [
+    4
+  ]
 }

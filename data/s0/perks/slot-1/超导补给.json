@@ -1,11 +1,12 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "超导补给效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "超导补给",
-   "rarity" : "史诗",
-   "slot" : 1
+  "id": "20703040096",
+  "name": "超导补给",
+  "slot": 1,
+  "rarity": 3,
+  "description": "换弹完成时，消耗技能槽至多10%，为弹匣填充所消耗能量6倍的等比例弹药，可过充。",
+  "icon": "1313129001",
+  "weapon_type": [
+    1,
+    6
+  ]
 }

@@ -1,11 +1,13 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "狂暴装填效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "狂暴装填",
-   "rarity" : "史诗",
-   "slot" : 1
+  "id": "20703040012",
+  "name": "狂暴装填",
+  "slot": 1,
+  "rarity": 3,
+  "description": "武器累计<T002>暴击</>8次时，向主弹夹中填装6发子弹。",
+  "icon": "1313114001",
+  "weapon_type": [
+    7,
+    14,
+    2
+  ]
 }

@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "精确导弹效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "精确导弹",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "",
+  "name": "精确导弹",
+  "slot": 4,
+  "rarity": 2,
+  "description": "",
+  "icon": "1316149001",
+  "weapon_type": []
 }

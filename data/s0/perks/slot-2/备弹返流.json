@@ -1,11 +1,12 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "备弹返流效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "备弹返流",
-   "rarity" : "史诗",
-   "slot" : 2
+  "id": "20703040066",
+  "name": "备弹返流",
+  "slot": 2,
+  "rarity": 3,
+  "description": "每次<T002>换弹</>，恢复9%的主动技能能量。",
+  "icon": "1314116001",
+  "weapon_type": [
+    3,
+    14
+  ]
 }

@@ -1,11 +1,12 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "弹雨协奏效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "弹雨协奏",
-   "rarity" : "稀有",
-   "slot" : 1
+  "id": "20703040094",
+  "name": "弹雨协奏",
+  "slot": 1,
+  "rarity": 3,
+  "description": "2秒内命中敌人20次后，下一次换弹速度加快{GPModifier:111010067:BaseValue:0:2:1}。",
+  "icon": "1313127001",
+  "weapon_type": [
+    5,
+    1
+  ]
 }

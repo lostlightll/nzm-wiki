@@ -1,11 +1,9 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "负压弹匣效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "负压弹匣",
-   "rarity" : "史诗",
-   "slot" : 1
+  "id": "",
+  "name": "负压弹匣",
+  "slot": 1,
+  "rarity": 2,
+  "description": "",
+  "icon": "1313149001",
+  "weapon_type": []
 }

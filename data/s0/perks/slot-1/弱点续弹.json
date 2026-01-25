@@ -1,11 +1,13 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "弱点续弹效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "弱点续弹",
-   "rarity" : "稀有",
-   "slot" : 1
+  "id": "20703040078",
+  "name": "弱点续弹",
+  "slot": 1,
+  "rarity": 3,
+  "description": "每命中2次弱点，装填1发子弹在弹匣内，每次攻击每个目标仅触发1次。",
+  "icon": "1313126001",
+  "weapon_type": [
+    7,
+    14,
+    1
+  ]
 }

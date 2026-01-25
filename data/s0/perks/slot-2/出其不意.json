@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "出其不意效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "出其不意",
-   "rarity" : "稀有",
-   "slot" : 2
+  "id": "20703040086",
+  "name": "出其不意",
+  "slot": 2,
+  "rarity": 3,
+  "description": "当前武器主动技能替换为扔枪换弹：将武器投掷出去，命中敌人可造成半径2米范围伤害并自动补满弹夹。",
+  "icon": "1316132001",
+  "weapon_type": []
 }

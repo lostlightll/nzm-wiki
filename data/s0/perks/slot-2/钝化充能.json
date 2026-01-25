@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "钝化充能效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "钝化充能",
-   "rarity" : "传说",
-   "slot" : 2
+  "id": "20703040080",
+  "name": "钝化充能",
+  "slot": 2,
+  "rarity": 3,
+  "description": "命中<T002>减速</>的敌人，恢复能量5%，冷却2秒。",
+  "icon": "1314124001",
+  "weapon_type": []
 }

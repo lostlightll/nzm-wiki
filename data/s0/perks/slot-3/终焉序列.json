@@ -1,11 +1,12 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "终焉序列效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "终焉序列",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "20703040150",
+  "name": "终焉序列",
+  "slot": 3,
+  "rarity": 3,
+  "description": "弹匣内最后10发子弹，子弹射击伤害增加{GPModifier:111010087:BaseValue:0:2:1}。",
+  "icon": "1315144001",
+  "weapon_type": [
+    5,
+    1
+  ]
 }

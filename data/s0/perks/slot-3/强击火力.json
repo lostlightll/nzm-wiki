@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "强击火力效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "强击火力",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "20703040137",
+  "name": "强击火力",
+  "slot": 3,
+  "rarity": 3,
+  "description": "当前武器破韧效率增加{GPModifier:111010083:BaseValue:0:2:1}。",
+  "icon": "1315140001",
+  "weapon_type": []
 }

@@ -1,11 +1,9 @@
 {
-   "category" : "辅助类",
-   "description" : null,
-   "effect" : {
-      "description" : "矢量制退效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "矢量制退",
-   "rarity" : "史诗",
-   "slot" : 1
+  "id": "",
+  "name": "矢量制退",
+  "slot": 1,
+  "rarity": 2,
+  "description": "",
+  "icon": "1313150001",
+  "weapon_type": []
 }

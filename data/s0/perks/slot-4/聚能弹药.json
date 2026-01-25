@@ -1,11 +1,13 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "聚能弹药效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "聚能弹药",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040043",
+  "name": "聚能弹药",
+  "slot": 4,
+  "rarity": 3,
+  "description": "爆炸范围{GPModifier:111010033:BaseValue:0:2:1}，伤害增加{GPModifier:111010022:BaseValue:0:2:1}。",
+  "icon": "1316107001",
+  "weapon_type": [
+    4,
+    8,
+    16
+  ]
 }

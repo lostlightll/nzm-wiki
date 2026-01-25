@@ -1,11 +1,13 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "弱点供能效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "弱点供能",
-   "rarity" : "稀有",
-   "slot" : 2
+  "id": "20703040079",
+  "name": "弱点供能",
+  "slot": 2,
+  "rarity": 3,
+  "description": "连续命中敌人弱点超过3次时，每次恢复主动技能3%，每0.7秒仅触发一次。",
+  "icon": "1314123001",
+  "weapon_type": [
+    7,
+    1,
+    6
+  ]
 }

@@ -1,11 +1,13 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "渐入佳境效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "渐入佳境",
-   "rarity" : "史诗",
-   "slot" : 3
+  "id": "20703040085",
+  "name": "渐入佳境",
+  "slot": 3,
+  "rarity": 3,
+  "description": "持续开火时，每射出一发子弹，武器伤害增加{GPModifier:111010062:BaseValue:0:2:1}，最多叠加60层，停止开火超过1秒后，每秒清空10层。",
+  "icon": "1315125001",
+  "weapon_type": [
+    5,
+    1,
+    6
+  ]
 }

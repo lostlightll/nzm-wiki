@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "腐蚀榴弹效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "腐蚀榴弹",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040093",
+  "name": "腐蚀榴弹",
+  "slot": 4,
+  "rarity": 3,
+  "description": "榴弹的直接命中伤害增加250%，榴弹爆炸命中目标后可以额外叠加35层<T002>腐蚀之力</>",
+  "icon": "1312038001",
+  "weapon_type": []
 }

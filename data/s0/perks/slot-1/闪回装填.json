@@ -1,11 +1,15 @@
 {
-   "category" : "装填类",
-   "description" : null,
-   "effect" : {
-      "description" : "闪回装填效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "闪回装填",
-   "rarity" : "史诗",
-   "slot" : 1
+  "id": "20703040148",
+  "name": "闪回装填",
+  "slot": 1,
+  "rarity": 3,
+  "description": "切换到该武器后，下一次换弹速度增加{GPModifier:111010086:BaseValue:0:2:1}，切枪后消失。",
+  "icon": "1313143001",
+  "weapon_type": [
+    3,
+    4,
+    8,
+    16,
+    12
+  ]
 }

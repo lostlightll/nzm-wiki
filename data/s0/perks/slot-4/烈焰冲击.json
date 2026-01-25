@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "烈焰冲击效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "烈焰冲击",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040033",
+  "name": "烈焰冲击",
+  "slot": 4,
+  "rarity": 3,
+  "description": "使用该武器主动技能后6秒内，每2秒周期向四周释放一道火环，造成{GPNUMERICALID:11010041:HPCALScale:2:1}伤害。",
+  "icon": "1315108001",
+  "weapon_type": []
 }

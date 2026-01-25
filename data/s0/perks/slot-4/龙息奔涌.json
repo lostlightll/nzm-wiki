@@ -1,11 +1,9 @@
 {
-   "category" : "伤害类",
-   "description" : null,
-   "effect" : {
-      "description" : "龙息奔涌效果描述待补充"
-   },
-   "icon" : null,
-   "name" : "龙息奔涌",
-   "rarity" : "史诗",
-   "slot" : 4
+  "id": "20703040183",
+  "name": "龙息奔涌",
+  "slot": 4,
+  "rarity": 3,
+  "description": "将每次开火的龙炎弹数量由5减少至4，但龙炎弹飞行距离增加70%",
+  "icon": "1312032002",
+  "weapon_type": []
 }
