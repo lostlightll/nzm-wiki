@@ -34,6 +34,7 @@ jobs:
           cache: "pnpm"
 
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
         with:
           static_site_generator: next
@@ -43,6 +44,10 @@ jobs:
 
       - name: Build with Next.js
         run: pnpm build
+        env:
+          # 动态注入 GitHub Pages 的基础路径
+          # 如果你的仓库是 username/repo，这里会自动变成 "/repo"
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
