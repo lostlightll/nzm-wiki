@@ -104,8 +104,8 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
 
       {/* 武器列表 */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredWeapons.map((weapon) => (
-          <WeaponCard key={weapon.id} weapon={weapon} />
+        {filteredWeapons.map((weapon, index) => (
+          <WeaponCard key={weapon.id || `${weapon.name}-${index}`} weapon={weapon} />
         ))}
       </div>
 
