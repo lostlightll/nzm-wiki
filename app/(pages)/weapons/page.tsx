@@ -1,8 +1,8 @@
-import { getAllWeapons } from "@/lib/weapons";
+import { getAllWeaponsFromNotion } from "@/lib/weapons-notion";
 import WeaponsClient from "./client";
 
-export default function WeaponsPage() {
-  const weapons = getAllWeapons();
+export default async function WeaponsPage() {
+  const weapons = await getAllWeaponsFromNotion();
 
   return <WeaponsClient weapons={weapons} />;
 }

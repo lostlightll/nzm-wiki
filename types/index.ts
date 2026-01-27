@@ -80,6 +80,11 @@ export interface WeaponSkill {
 }
 
 /**
+ * 瞄准镜类型
+ */
+export type ScopeType = "低倍镜" | "中倍镜" | "高倍镜";
+
+/**
  * 完整武器数据接口
  */
 
@@ -91,6 +96,7 @@ export interface Weapon {
   elementType: ElementType      // 元素类型
   tags: WeaponTag[]             // 标签数组，[] 表示数组类型
   rarity: Rarity                // 稀有度
+  scope?: ScopeType             // 瞄准镜类型（可选）
   unlockTime?: string           // 解锁时间（可选）
   stats: WeaponStats            // 嵌套的属性对象
   skillCooldown: number         // 技能冷却时间（秒）
