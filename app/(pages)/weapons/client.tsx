@@ -7,24 +7,20 @@ import {
   WEAPON_TYPES,
   ELEMENT_TYPES,
   RARITY_OPTIONS,
-  RARITY_BG_COLORS,
   ELEMENT_COLORS,
   STAT_FIELDS,
 } from "@/constants/weapons";
+import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
 
 function WeaponCard({ weapon }: { weapon: Weapon }) {
-  const rarityColor = RARITY_BG_COLORS[weapon.rarity];
+  const rarityKey = RARITY_KEY_MAP[weapon.rarity] || "common";
+  const rarityStyle = RARITY_CARD_STYLES[rarityKey];
   const elementColor = ELEMENT_COLORS[weapon.elementType];
 
   return (
-    <div className="rounded-lg border border-zinc-700 bg-zinc-800 p-4">
-      <div className="mb-2 flex items-center justify-between">
+    <div className={`rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-4`}>
+      <div className="mb-2">
         <h3 className="text-lg font-semibold text-white">{weapon.name}</h3>
-        <span
-          className={`rounded px-2 py-0.5 text-xs font-medium text-white ${rarityColor}`}
-        >
-          {weapon.rarity}
-        </span>
       </div>
 
       <div className="mb-3 flex gap-2 text-sm">
