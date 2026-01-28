@@ -5,6 +5,7 @@ import Image from "next/image";
 import type { Weapon, WeaponType, ElementType, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
+import { getAssetPath } from "@/lib/path";
 import {
   WEAPON_TYPES,
   ELEMENT_TYPES,
@@ -23,21 +24,32 @@ const ELEMENT_ICONS: Record<ElementType, string> = {
   物理: "/icons/elements/kinetic.png",
 };
 
-function WeaponImage({ src, alt }: { src: string; alt: string }) {
+function WeaponImage({ name }: { name: string }) {
+  const [src, setSrc] = useState(`/icons/weapons/large/${name}.png`);
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
     return null;
   }
 
+  const handleError = () => {
+    // 如果 large 找不到，尝试 normal
+    if (src.includes("/large/")) {
+      setSrc(`/icons/weapons/normal/${name}.png`);
+    } else {
+      // normal 也找不到，隐藏图片
+      setHasError(true);
+    }
+  };
+
   return (
     <div className="relative mb-3 h-32 w-full">
       <Image
-        src={src}
-        alt={alt}
+        src={getAssetPath(src)}
+        alt={name}
         fill
         className="object-contain"
-        onError={() => setHasError(true)}
+        onError={handleError}
       />
     </div>
   );
@@ -52,7 +64,7 @@ function WeaponCard({ weapon }: { weapon: Weapon }) {
     <div className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-4`}>
       {elementIcon && (
         <div className="absolute right-3 top-3 z-10">
-          <Image src={elementIcon} alt={weapon.elementType} width={24} height={24} />
+          <Image src={getAssetPath(elementIcon)} alt={weapon.elementType} width={24} height={24} />
         </div>
       )}
 
@@ -60,7 +72,7 @@ function WeaponCard({ weapon }: { weapon: Weapon }) {
         <h3 className="text-lg font-semibold text-white">{weapon.name}</h3>
       </div>
 
-      {weapon.image && <WeaponImage src={weapon.image} alt={weapon.name} />}
+      {weapon.name && <WeaponImage name={weapon.name} />}
 
       <div className="mb-3 text-sm">
         <span className="text-zinc-400">

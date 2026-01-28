@@ -150,8 +150,6 @@ function mapNotionPageToWeapon(page: NotionPage): Weapon {
     },
     skillCooldown: 0,
     skills: [],
-    // 图片路径由武器名称生成
-    image: `/icons/weapons/large/${name}.png`,
     description: undefined,
   };
 }

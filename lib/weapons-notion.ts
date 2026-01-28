@@ -37,8 +37,6 @@ function mapNotionPageToWeapon(page: PageObjectResponse): Weapon {
     },
     skillCooldown: 0,
     skills: [],
-    // 图片路径由武器名称生成，实际是否存在由前端处理
-    image: `/icons/weapons/large/${name}.png`,
     description: undefined,
   };
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { getAssetPath } from "@/lib/path";
 
 export function FilterCheckbox({
   label,
@@ -28,7 +29,7 @@ export function FilterCheckbox({
       <span
         className={`flex items-center gap-2 ${colorClass || "text-zinc-300"}`}
       >
-        {iconSrc && <Image src={iconSrc} alt={label} width={20} height={20} />}
+        {iconSrc && <Image src={getAssetPath(iconSrc)} alt={label} width={20} height={20} />}
         {icon && !iconSrc && <span>{icon}</span>}
         <span>{label}</span>
       </span>
