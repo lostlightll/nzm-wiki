@@ -62,13 +62,13 @@ function WeaponCard({ weapon }: { weapon: Weapon }) {
         <h3 className="text-lg font-semibold text-white">{weapon.name}</h3>
       </div>
 
-      {weapon.name && <WeaponImage name={weapon.name} />}
-
       <div className="mb-3 text-sm">
         <span className="text-zinc-400">
           {[weapon.type, weapon.scope, ...weapon.tags].filter(Boolean).join(" | ")}
         </span>
       </div>
+
+      {weapon.name && <WeaponImage name={weapon.name} />}
 
       <div className="grid grid-cols-2 gap-2 text-sm">
         {STAT_FIELDS.map(({ label, key, suffix }) => (
