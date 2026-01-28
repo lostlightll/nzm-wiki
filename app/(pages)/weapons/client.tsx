@@ -31,7 +31,7 @@ function WeaponImage({ src, alt }: { src: string; alt: string }) {
   }
 
   return (
-    <div className="relative mb-3 h-24 w-full">
+    <div className="relative mb-3 h-32 w-full">
       <Image
         src={src}
         alt={alt}
