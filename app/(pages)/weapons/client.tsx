@@ -25,31 +25,21 @@ const ELEMENT_ICONS: Record<ElementType, string> = {
 };
 
 function WeaponImage({ name }: { name: string }) {
-  const [src, setSrc] = useState(`/icons/weapons/large/${name}.png`);
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
     return null;
   }
 
-  const handleError = () => {
-    // 如果 large 找不到，尝试 normal
-    if (src.includes("/large/")) {
-      setSrc(`/icons/weapons/normal/${name}.png`);
-    } else {
-      // normal 也找不到，隐藏图片
-      setHasError(true);
-    }
-  };
-
   return (
     <div className="relative mb-3 h-32 w-full">
       <Image
-        src={getAssetPath(src)}
+        src={getAssetPath(`/icons/weapons/normal/${name}.png`)}
         alt={name}
-        fill
-        className="object-contain"
-        onError={handleError}
+        width={320}
+        height={160}
+        className="mx-auto object-contain"
+        onError={() => setHasError(true)}
       />
     </div>
   );
