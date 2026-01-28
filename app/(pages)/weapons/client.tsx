@@ -31,7 +31,7 @@ function WeaponCard({ weapon }: { weapon: Weapon }) {
   return (
     <div className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-4`}>
       {elementIcon && (
-        <div className="absolute right-3 top-3">
+        <div className="absolute right-3 top-3 z-10">
           <Image src={elementIcon} alt={weapon.elementType} width={24} height={24} />
         </div>
       )}
@@ -39,6 +39,18 @@ function WeaponCard({ weapon }: { weapon: Weapon }) {
       <div className="mb-2">
         <h3 className="text-lg font-semibold text-white">{weapon.name}</h3>
       </div>
+
+      {weapon.image && (
+        <div className="relative mb-3 h-24 w-full">
+          <Image
+            src={weapon.image}
+            alt={weapon.name}
+            fill
+            className="object-contain"
+            unoptimized
+          />
+        </div>
+      )}
 
       <div className="mb-3 text-sm">
         <span className="text-zinc-400">
