@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import type { Weapon, WeaponType, ElementType, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
@@ -22,10 +23,29 @@ const ELEMENT_ICONS: Record<ElementType, string> = {
   物理: "/icons/elements/kinetic.png",
 };
 
+function WeaponImage({ src, alt }: { src: string; alt: string }) {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return null;
+  }
+
+  return (
+    <div className="relative mb-3 h-24 w-full">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-contain"
+        onError={() => setHasError(true)}
+      />
+    </div>
+  );
+}
+
 function WeaponCard({ weapon }: { weapon: Weapon }) {
   const rarityKey = RARITY_KEY_MAP[weapon.rarity] || "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-  const elementColor = ELEMENT_COLORS[weapon.elementType];
   const elementIcon = ELEMENT_ICONS[weapon.elementType];
 
   return (
@@ -40,17 +60,7 @@ function WeaponCard({ weapon }: { weapon: Weapon }) {
         <h3 className="text-lg font-semibold text-white">{weapon.name}</h3>
       </div>
 
-      {weapon.image && (
-        <div className="relative mb-3 h-24 w-full">
-          <Image
-            src={weapon.image}
-            alt={weapon.name}
-            fill
-            className="object-contain"
-            unoptimized
-          />
-        </div>
-      )}
+      {weapon.image && <WeaponImage src={weapon.image} alt={weapon.name} />}
 
       <div className="mb-3 text-sm">
         <span className="text-zinc-400">

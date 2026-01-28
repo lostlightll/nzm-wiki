@@ -7,7 +7,6 @@ import {
   getNumber,
   getSelect,
   getMultiSelect,
-  getFiles,
 } from "./notion";
 
 const WEAPONS_DATABASE_ID = process.env.NOTION_WEAPONS_DATABASE_ID;
@@ -15,14 +14,11 @@ const WEAPONS_DATABASE_ID = process.env.NOTION_WEAPONS_DATABASE_ID;
 // Map Notion page to Weapon type
 function mapNotionPageToWeapon(page: PageObjectResponse): Weapon {
   const props = page.properties;
-
-  // Get icon from Notion files or fallback to local path
-  const iconFiles = props.icon_large ? getFiles(props.icon_large) : [];
-  const iconUrl = iconFiles[0] || undefined;
+  const name = getTitle(props.Name);
 
   return {
     id: getRichText(props.id) || page.id,
-    name: getTitle(props.Name), // Title column is 'Name' in Notion
+    name,
     type: getSelect(props.weaponType) as WeaponType,
     elementType: getSelect(props.elementType) as ElementType,
     tags: getMultiSelect(props.tags) as WeaponTag[],
@@ -41,7 +37,8 @@ function mapNotionPageToWeapon(page: PageObjectResponse): Weapon {
     },
     skillCooldown: 0,
     skills: [],
-    image: iconUrl,
+    // 图片路径由武器名称生成，实际是否存在由前端处理
+    image: `/icons/weapons/large/${name}.png`,
     description: undefined,
   };
 }

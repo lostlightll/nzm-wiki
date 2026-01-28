@@ -1,39 +1,45 @@
 import fs from "fs";
 import path from "path";
 import type { Weapon } from "@/types";
+import { CURRENT_SEASON } from "@/constants/season";
 
-const WEAPONS_DATA_DIR = path.join(process.cwd(), "data/s0/weapons");
+const WEAPONS_JSON_PATH = path.join(process.cwd(), `data/${CURRENT_SEASON}/weapons.json`);
 
-export function getAllWeapons(): Weapon[] {
-  const weapons: Weapon[] = [];
-
-  if (!fs.existsSync(WEAPONS_DATA_DIR)) return weapons;
-
-  const files = fs.readdirSync(WEAPONS_DATA_DIR).filter((f) => f.endsWith(".json"));
-  for (const file of files) {
-    const filePath = path.join(WEAPONS_DATA_DIR, file);
-    const content = fs.readFileSync(filePath, "utf-8");
-    const weapon = JSON.parse(content) as Weapon;
-    weapons.push(weapon);
+/**
+ * 从 JSON 文件获取所有武器数据（用于生产环境）
+ */
+export function getAllWeaponsFromJSON(): Weapon[] {
+  if (!fs.existsSync(WEAPONS_JSON_PATH)) {
+    console.warn(`Weapons JSON not found: ${WEAPONS_JSON_PATH}`);
+    return [];
   }
 
-  return weapons;
+  const content = fs.readFileSync(WEAPONS_JSON_PATH, "utf-8");
+  return JSON.parse(content) as Weapon[];
 }
 
-export function getWeaponsByType(type: string): Weapon[] {
-  return getAllWeapons().filter((w) => w.type === type);
-}
+/**
+ * 统一的数据获取函数
+ * - 开发环境 (pnpm dev): 从 Notion 实时获取
+ * - 生产环境 (pnpm build): 从 JSON 文件获取
+ */
+export async function getAllWeapons(): Promise<Weapon[]> {
+  const isDev = process.env.NODE_ENV === "development";
 
-export function getWeaponById(id: string): Weapon | null {
-  if (!fs.existsSync(WEAPONS_DATA_DIR)) return null;
-
-  const files = fs.readdirSync(WEAPONS_DATA_DIR).filter((f) => f.endsWith(".json"));
-  for (const file of files) {
-    const filePath = path.join(WEAPONS_DATA_DIR, file);
-    const content = fs.readFileSync(filePath, "utf-8");
-    const weapon = JSON.parse(content) as Weapon;
-    if (weapon.id === id) return weapon;
+  if (isDev && process.env.NOTION_API_KEY && process.env.NOTION_WEAPONS_DATABASE_ID) {
+    // 开发环境：从 Notion 获取实时数据
+    const { getAllWeaponsFromNotion } = await import("./weapons-notion");
+    return getAllWeaponsFromNotion();
   }
 
-  return null;
+  // 生产环境：从 JSON 文件获取
+  return getAllWeaponsFromJSON();
+}
+
+export function getWeaponsByType(weapons: Weapon[], type: string): Weapon[] {
+  return weapons.filter((w) => w.type === type);
+}
+
+export function getWeaponById(weapons: Weapon[], id: string): Weapon | null {
+  return weapons.find((w) => w.id === id) ?? null;
 }
