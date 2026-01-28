@@ -1,14 +1,18 @@
 "use client";
 
+import Image from "next/image";
+
 export function FilterCheckbox({
   label,
   icon,
+  iconSrc,
   checked,
   onChange,
   colorClass,
 }: {
   label: string;
   icon?: string;
+  iconSrc?: string;
   checked: boolean;
   onChange: () => void;
   colorClass?: string;
@@ -24,7 +28,8 @@ export function FilterCheckbox({
       <span
         className={`flex items-center gap-2 ${colorClass || "text-zinc-300"}`}
       >
-        {icon && <span>{icon}</span>}
+        {iconSrc && <Image src={iconSrc} alt={label} width={20} height={20} />}
+        {icon && !iconSrc && <span>{icon}</span>}
         <span>{label}</span>
       </span>
       <input
@@ -43,7 +48,7 @@ export function FilterCheckbox({
 
 interface FilterSectionProps<T> {
   title: string;
-  items: { type: T; icon?: string; color?: string; label?: string }[];
+  items: { type: T; icon?: string; iconSrc?: string; color?: string; label?: string }[];
   selected: Set<T>;
   onToggle: (item: T) => void;
   gridClass?: string;
@@ -65,6 +70,7 @@ export function FilterSection<T>({
             key={String(item.type) || index}
             label={item.label ?? String(item.type)}
             icon={item.icon}
+            iconSrc={item.iconSrc}
             checked={selected.has(item.type)}
             onChange={() => onToggle(item.type)}
             colorClass={item.color}

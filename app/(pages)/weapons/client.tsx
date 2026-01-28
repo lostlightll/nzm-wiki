@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { Weapon, WeaponType, ElementType, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
@@ -12,25 +13,42 @@ import {
 } from "@/constants/weapons";
 import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
 
+// 元素类型图标路径
+const ELEMENT_ICONS: Record<ElementType, string> = {
+  火焰: "/icons/elements/fire.png",
+  寒冷: "/icons/elements/cryo.png",
+  电弧: "/icons/elements/shock.png",
+  腐蚀: "/icons/elements/corossive.png",
+  物理: "/icons/elements/kinetic.png",
+};
+
 function WeaponCard({ weapon }: { weapon: Weapon }) {
   const rarityKey = RARITY_KEY_MAP[weapon.rarity] || "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
   const elementColor = ELEMENT_COLORS[weapon.elementType];
+  const elementIcon = ELEMENT_ICONS[weapon.elementType];
 
   return (
-    <div className={`rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-4`}>
+    <div className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-4`}>
+      {elementIcon && (
+        <div className="absolute right-3 top-3">
+          <Image src={elementIcon} alt={weapon.elementType} width={24} height={24} />
+        </div>
+      )}
+
       <div className="mb-2">
         <h3 className="text-lg font-semibold text-white">{weapon.name}</h3>
       </div>
 
-      <div className="mb-3 flex gap-2 text-sm">
-        <span className="text-zinc-400">{weapon.type}</span>
-        <span className={elementColor}>{weapon.elementType}</span>
+      <div className="mb-3 text-sm">
+        <span className="text-zinc-400">
+          {[weapon.type, weapon.scope, ...weapon.tags].filter(Boolean).join(" | ")}
+        </span>
       </div>
 
       <div className="grid grid-cols-2 gap-2 text-sm">
         {STAT_FIELDS.map(({ label, key, suffix }) => (
-          <div key={key} className="flex justify-between">
+          <div key={key} className="flex items-center justify-between">
             <span className="text-zinc-400">{label}</span>
             <span className="text-white">
               {weapon.stats[key]}

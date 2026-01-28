@@ -19,12 +19,12 @@ export const WEAPON_TYPES: { type: WeaponType; icon: string }[] = [
   { type: "喷火器", icon: "🔥" },
 ];
 
-export const ELEMENT_TYPES: { type: keyof typeof ELEMENT_COLORS; icon: string; color: string }[] = [
-  { type: "火焰", icon: "🔥", color: ELEMENT_COLORS["火焰"] },
-  { type: "寒冷", icon: "❄️", color: ELEMENT_COLORS["寒冷"] },
-  { type: "电弧", icon: "⚡", color: ELEMENT_COLORS["电弧"] },
-  { type: "腐蚀", icon: "☣️", color: ELEMENT_COLORS["腐蚀"] },
-  { type: "物理", icon: "✧", color: ELEMENT_COLORS["物理"] },
+export const ELEMENT_TYPES: { type: keyof typeof ELEMENT_COLORS; iconSrc: string; color: string }[] = [
+  { type: "火焰", iconSrc: "/icons/elements/fire.png", color: ELEMENT_COLORS["火焰"] },
+  { type: "寒冷", iconSrc: "/icons/elements/cryo.png", color: ELEMENT_COLORS["寒冷"] },
+  { type: "电弧", iconSrc: "/icons/elements/shock.png", color: ELEMENT_COLORS["电弧"] },
+  { type: "腐蚀", iconSrc: "/icons/elements/corossive.png", color: ELEMENT_COLORS["腐蚀"] },
+  { type: "物理", iconSrc: "/icons/elements/kinetic.png", color: ELEMENT_COLORS["物理"] },
 ];
 
 export const STAT_FIELDS: {
@@ -38,5 +38,6 @@ export const STAT_FIELDS: {
   { label: "总弹量", key: "totalAmmo" },
   { label: "精准度", key: "accuracy" },
   { label: "稳定度", key: "stability" },
-  { label: "弱点倍率", key: "weaknessMultiplier", suffix: "x" },
+  { label: "弱点倍率", key: "weaknessMultiplier" },
+  { label: "破韧伤害", key: "toughnessBase" },
 ];
