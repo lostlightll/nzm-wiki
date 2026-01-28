@@ -65,6 +65,7 @@ export interface WeaponStats {
   stability: number        // 稳定度 (0-100)
   weaknessMultiplier: number  // 弱点倍率
   toughnessBase: number    // 破韧伤害
+  reloadTime: number       // 换弹时间
 }
 
 /**

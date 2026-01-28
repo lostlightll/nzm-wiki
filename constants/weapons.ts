@@ -40,4 +40,5 @@ export const STAT_FIELDS: {
   { label: "稳定度", key: "stability" },
   { label: "弱点倍率", key: "weaknessMultiplier" },
   { label: "破韧伤害", key: "toughnessBase" },
+  { label: "换弹时间", key: "reloadTime" },
 ];

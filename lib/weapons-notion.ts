@@ -37,6 +37,7 @@ function mapNotionPageToWeapon(page: PageObjectResponse): Weapon {
       stability: getNumber(props.stability),
       weaknessMultiplier: getNumber(props.weeknessMulti),
       toughnessBase: getNumber(props.toughnessBase),
+      reloadTime: getNumber(props.reloadTime),
     },
     skillCooldown: 0,
     skills: [],
