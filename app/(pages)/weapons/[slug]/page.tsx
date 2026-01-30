@@ -10,7 +10,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 export async function generateStaticParams() {
   const items = getMDXList("s0/weapons");
   return items.map((item) => ({
-    slug: encodeURIComponent(item.slug),
+    slug: item.slug,
   }));
 }
 
