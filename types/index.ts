@@ -135,3 +135,21 @@ export interface DamageResult {
     type: "add" | "multiply"
   }[]
 }
+
+// ------------------------------------------------------------
+// 陷阱 (Trap) 相关类型
+// ------------------------------------------------------------
+
+export type TrapType = "地面" | "墙壁" | "天空";
+
+export interface Trap {
+  slug: string;
+  title: string;
+  position?: TrapType;
+  attack?: number | string;
+  range?: number | string;
+  defense?: number | string;
+  price?: number | string;
+  area?: number | string;
+  description?: string;
+}

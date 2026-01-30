@@ -1,3 +1,7 @@
+// ============================================================
+// 武器 Schema
+// ============================================================
+
 // 1. 定义字段在编辑器中的显示顺序 (及保存顺序)
 export const FIELD_ORDER = [
   "title",
@@ -85,4 +89,76 @@ export const FIELD_OPTIONS: Record<string, string[]> = {
   element: ["物理", "火焰", "寒冷", "电弧", "腐蚀"],
   scope: ["不可开镜", "低倍镜", "中倍镜", "高倍镜"],
   toughness_type: ["冲击", "贯穿", "爆炸"],
+  trap_type: ["地面", "墙壁", "天空"],
+  position: ["地面", "墙壁", "天空"],
 };
+
+// ============================================================
+// 陷阱 Schema
+// ============================================================
+
+export const TRAP_FIELD_ORDER = [
+  "title",
+  "position",
+  "attack",
+  "range",
+  "defense",
+  "price",
+  "area",
+  "description",
+];
+
+export const TRAP_FIELD_TYPES: Record<string, string> = {
+  position: "select",
+  attack: "number",
+  range: "number",
+  defense: "number",
+  price: "number",
+  // area 是文本类型 (如 1x1, 2x2, 4x4, 2x4)
+};
+
+// ============================================================
+// 插件 Schema
+// ============================================================
+
+export const PERK_FIELD_ORDER = [
+  "title",
+  "id",
+  "slot",
+  "rarity",
+  "icon",
+  "weaponType",
+  "description",
+];
+
+export const PERK_FIELD_TYPES: Record<string, string> = {
+  slot: "number",
+  rarity: "number",
+};
+
+// ============================================================
+// 根据路径获取 schema
+// ============================================================
+
+export function getSchemaForPath(path: string) {
+  if (path.includes("traps/") || path.includes("traps\\")) {
+    return {
+      fieldOrder: TRAP_FIELD_ORDER,
+      fieldTypes: { ...TRAP_FIELD_TYPES },
+      fieldOptions: FIELD_OPTIONS,
+    };
+  }
+  if (path.includes("perks/") || path.includes("perks\\")) {
+    return {
+      fieldOrder: PERK_FIELD_ORDER,
+      fieldTypes: { ...PERK_FIELD_TYPES },
+      fieldOptions: FIELD_OPTIONS,
+    };
+  }
+  // 默认武器 schema
+  return {
+    fieldOrder: FIELD_ORDER,
+    fieldTypes: FIELD_TYPES,
+    fieldOptions: FIELD_OPTIONS,
+  };
+}

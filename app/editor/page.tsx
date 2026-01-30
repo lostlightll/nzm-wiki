@@ -6,7 +6,7 @@ import React, {
   useRef,
   useCallback,
 } from "react";
-import { FIELD_ORDER, FIELD_TYPES, FIELD_OPTIONS } from "@/constants/schema";
+import { getSchemaForPath, FIELD_OPTIONS } from "@/constants/schema";
 
 // --- 新增：标签输入组件 ---
 const TagInput = ({
@@ -474,8 +474,9 @@ export default function EditorPage() {
       });
       const json = await res.json();
 
+      const schema = getSchemaForPath(path);
       const initData: any = {};
-      FIELD_ORDER.forEach((key) => {
+      schema.fieldOrder.forEach((key) => {
         initData[key] = json.frontmatter[key] ?? "";
       });
       setFormData({ ...initData, ...json.frontmatter });
@@ -596,13 +597,19 @@ export default function EditorPage() {
     [tree, searchTerm],
   );
 
+  // 根据当前选中的文件路径获取 schema
+  const currentSchema = useMemo(
+    () => getSchemaForPath(selectedPath || ""),
+    [selectedPath],
+  );
+
   const formatLabel = (key: string) => key.replace(/_/g, " ");
 
   // --- 渲染字段 ---
   const renderField = (key: string) => {
     const value = formData[key];
-    const type = FIELD_TYPES[key] || "text";
-    const options = FIELD_OPTIONS[key];
+    const type = currentSchema.fieldTypes[key] || "text";
+    const options = currentSchema.fieldOptions[key];
 
     const labelClass =
       "block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1.5 ml-1";
@@ -891,7 +898,7 @@ export default function EditorPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      {FIELD_ORDER.map((key) => {
+                      {currentSchema.fieldOrder.map((key) => {
                         // pellets 只在霰弹枪时显示
                         if (key === "pellets" && formData.weapon_type !== "霰弹枪") {
                           return null;
