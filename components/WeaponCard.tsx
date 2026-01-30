@@ -93,21 +93,21 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
   return (
     <Link href={`/weapons/${encodeURIComponent(weapon.slug)}`}>
       <div
-        className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-4 transition-transform hover:scale-[1.02]`}
+        className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5 transition-transform hover:scale-[1.02] min-w-[360px]`}
       >
         {elementIcon && (
-          <div className="absolute right-3 top-3 z-10">
+          <div className="absolute right-4 top-4 z-10">
             <Image
               src={getAssetPath(elementIcon)}
               alt={weapon.element}
-              width={24}
-              height={24}
+              width={28}
+              height={28}
             />
           </div>
         )}
 
-        <h3 className="text-lg font-semibold text-white">{weapon.title}</h3>
-        <div className="mb-3 flex flex-wrap items-center gap-1 text-xs text-zinc-400">
+        <h3 className="text-xl font-semibold text-white">{weapon.title}</h3>
+        <div className="mt-1 mb-4 flex flex-wrap items-center gap-1.5 text-sm text-zinc-400">
           {weapon.use_type && <span>{weapon.use_type}</span>}
           {weapon.weapon_type && <span>· {weapon.weapon_type}</span>}
           {weapon.scope && <span>· {weapon.scope}</span>}
@@ -117,9 +117,18 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
             ))}
         </div>
 
-        <WeaponImage name={weapon.title} />
+        <div className="flex justify-center">
+          <Image
+            src={getAssetPath(`/icons/weapons/normal/${weapon.title}.png`)}
+            alt={weapon.title}
+            width={320}
+            height={160}
+            className="object-contain"
+            style={{ width: 320, height: 'auto' }}
+          />
+        </div>
 
-        <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+        <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-base">
           <div className="flex justify-between">
             <span className="text-zinc-500">单发伤害</span>
             <span className="text-white">{formatDamage(weapon.damage.base, weapon.pellets)}</span>
