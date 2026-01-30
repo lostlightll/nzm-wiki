@@ -17,6 +17,17 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
   const elementState = useSelection<ElementType>();
   const rarityState = useSelection<Rarity>();
 
+  const hasFilter =
+    typeState.selected.size > 0 ||
+    elementState.selected.size > 0 ||
+    rarityState.selected.size > 0;
+
+  const resetFilters = () => {
+    typeState.clear();
+    elementState.clear();
+    rarityState.clear();
+  };
+
   const filteredWeapons = weapons.filter((weapon) => {
     const typeMatch =
       typeState.selected.size === 0 ||
@@ -65,6 +76,15 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
           onToggle={elementState.toggle}
           gridClass="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5"
         />
+
+        {hasFilter && (
+          <button
+            onClick={resetFilters}
+            className="mt-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
+          >
+            重置筛选
+          </button>
+        )}
       </div>
 
       {/* 结果统计 */}

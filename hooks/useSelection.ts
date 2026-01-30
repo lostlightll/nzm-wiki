@@ -14,5 +14,7 @@ export function useSelection<T>() {
     });
   };
 
-  return { selected, toggle };
+  const clear = () => setSelected(new Set());
+
+  return { selected, toggle, clear };
 }
