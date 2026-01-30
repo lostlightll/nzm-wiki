@@ -21,7 +21,7 @@ export type WeaponType =
   | "射手步枪"
   | "连发榴弹";
 
-export type ElementType = "物理" | "火焰" | "冰冻" | "电弧" | "腐蚀";
+export type ElementType = "物理" | "火焰" | "寒冷" | "电弧" | "腐蚀";
 
 export type WeaponTag = "高倍镜" | "穿透" | "破甲" | "爆炸" | "连发" | "三连发" | "自瞄" | "快速连发";
 
@@ -68,6 +68,9 @@ export interface Weapon {
   explosion_range?: number | string;
   ignore_shield: boolean;
   element_add_rate: number;
+  skill_cooldown?: number | string;
+  skill_damage?: number | string;
+  pellets?: number;
 }
 
 // ------------------------------------------------------------
