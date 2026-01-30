@@ -24,30 +24,20 @@
 // ============================================================
 
 import { getMDXDetail, getMDXList } from "@/lib/mdx";
+import { WeaponStats } from "@/types";
 import { MDXRemote } from "next-mdx-remote/rsc";
-
-// 定义 frontmatter 的类型
-interface WeaponMeta {
-  title: string;
-  damage?: number;
-  fireRate?: number;
-  weaknessMultiplier?: number;
-  magazine?: number;
-}
 
 // ============================================================
 // generateStaticParams - 静态路径生成
 // ============================================================
-// 作用：在 build 时告诉 Next.js 需要生成哪些页面
-// 返回值：[{ slug: "死神猎手" }, { slug: "M416" }, ...]
-// 结果：生成 /weapons/死神猎手/index.html, /weapons/M416/index.html 等
+// 描述：Next.js 的特殊函数，框架在构建时自动调用，其作用是在 pnpm build 时告诉 Next.js 需要生成哪些页面
+// 返回值：[{ slug: "死神猎手" }, { slug: "飓风之龙" }, ...]
+// 结果：生成 /weapons/死神猎手/index.html, /weapons/飓风之龙/index.html 等
 export async function generateStaticParams() {
   const items = getMDXList("s0/weapons");
-  // 返回编码后的 slug，因为浏览器访问时 URL 会被编码
   const params = items.map((item) => ({
-    slug: encodeURIComponent(item.slug),
+    slug: encodeURIComponent(item.slug), // 处理中文 URL 问题
   }));
-  console.log("[generateStaticParams] params:", params);
   return params;
 }
 
@@ -55,6 +45,12 @@ export async function generateStaticParams() {
 // 页面组件
 // ============================================================
 // Next.js 15+ 中 params 是 Promise，需要 await
+
+// MDX frontmatter 类型，复用 WeaponStats 中的属性
+interface WeaponFrontmatter extends Partial<WeaponStats> {
+  title: string;
+}
+
 export default async function WeaponDetailPage({
   params,
 }: {
@@ -62,7 +58,7 @@ export default async function WeaponDetailPage({
 }) {
   const { slug } = await params;
   const { content, metadata } = getMDXDetail("s0/weapons", slug);
-  const meta = metadata as WeaponMeta;
+  const meta = metadata as WeaponFrontmatter;
 
   return (
     <div className="max-w-3xl mx-auto p-10">
