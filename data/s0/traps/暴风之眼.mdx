@@ -1,5 +1,25 @@
 ---
 title: 暴风之眼
-description: ''
+range: 6
+position: 天花板
+attack: ''
+defense: 1000
+price: 1000
+area: 1x1
+description: 在天花板部署的陷阱，能自动地瞄准和攻击敌人，并通过闪电链攻击附近敌人，阵列摆放伤害更高。
 ---
+<LevelTable
+  headers={["等级", "连锁伤害", "DPS(对单)", "DPS(对群)", "16个均伤", "DPS"]}
+  data={[
+    [1, "490 / 245 / 122.5", 82, 144, 631, 105],
+    [2, "610 / 305 / 152.5", 100, 177, 873, 145],
+    [3, "760 / 380 / 190.0", 127, 222, 979, 163],
+    [4, "950 / 475 / 237.5", 158, 264, 1224, 204],
+  ]}
+/>
 
+<Callout>闪电连锁的距离是2个格子，每次衰减50%伤害，最多同时对3名敌人造成伤害</Callout>
+
+<Callout>攻击CD为6秒，连接增幅10%，平面摆放最多获得4次增幅， `baseDamage × (1 + 10% × 4)` </Callout>
+
+<Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1SEktBAEpj" title="BV1SEktBAEpj" />

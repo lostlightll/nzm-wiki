@@ -3,11 +3,13 @@ import { getTrapBySlug } from "@/lib/traps";
 import { TrapDetailCard } from "@/components/TrapCard";
 import { Credit } from "@/components/Credit";
 import { LevelTable } from "@/components/LevelTable";
+import { Callout } from "@/components/Callout";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
 const mdxComponents = {
   Credit,
   LevelTable,
+  Callout,
 };
 
 export async function generateStaticParams() {
