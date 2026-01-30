@@ -60,8 +60,8 @@ export const RARITY_CARD_STYLES: Record<
 // 元素类型颜色
 export const ELEMENT_COLORS: Record<ElementType, string> = {
   物理: "text-gray-300",
-  火焰: "text-orange-400",
-  寒冷: "text-cyan-400",
-  电弧: "text-yellow-400",
-  腐蚀: "text-green-400",
+  火焰: "text-[#f8c618]",
+  冰冻: "text-[#90f5ff]",
+  电弧: "text-[rgb(160,158,255)]",
+  腐蚀: "text-[#c3db2a]",
 };

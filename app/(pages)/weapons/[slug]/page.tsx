@@ -1,12 +1,8 @@
-// 武器详情页
-
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
-import { getAllWeapons } from "@/lib/weapons";
+import { getWeaponBySlug } from "@/lib/weapons";
 import { WeaponDetailCard } from "@/components/WeaponCard";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
-// generateStaticParams - 静态路径生成
-// Next.js 在 build 时自动调用，告诉框架需要生成哪些页面
 export async function generateStaticParams() {
   const items = getMDXList("s0/weapons");
   return items.map((item) => ({
@@ -20,23 +16,24 @@ export default async function WeaponDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const decodedSlug = decodeURIComponent(slug);
 
-  // 从 weapons.json 获取完整武器数据（用于 WeaponDetailCard）
-  const weapons = await getAllWeapons();
-  const weapon = weapons.find((w) => w.name === decodedSlug);
-
-  // 从 MDX 获取正文内容
+  const weapon = await getWeaponBySlug(slug);
   const { content } = getMDXDetail("s0/weapons", slug);
 
-  return (
-    <div className="max-w-3xl mx-auto p-10">
-      {/* 武器卡片 */}
-      {weapon && <WeaponDetailCard weapon={weapon} />}
+  if (!weapon) {
+    return (
+      <div className="mx-auto max-w-3xl p-10">
+        <p className="text-zinc-500">武器不存在</p>
+      </div>
+    );
+  }
 
-      {/* MDX 正文内容 */}
+  return (
+    <div className="mx-auto max-w-3xl p-10">
+      <WeaponDetailCard weapon={weapon} />
+
       {content.trim() && (
-        <article className="prose prose-lg dark:prose-invert max-w-none mt-8">
+        <article className="prose prose-lg prose-invert mt-8 max-w-none">
           <MDXRemote source={content} />
         </article>
       )}

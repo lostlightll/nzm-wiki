@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { Weapon, WeaponType, ElementType, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
@@ -11,25 +12,35 @@ import {
 } from "@/constants/weapons";
 
 export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
+  const [showDetails, setShowDetails] = useState(true);
   const typeState = useSelection<WeaponType>();
   const elementState = useSelection<ElementType>();
   const rarityState = useSelection<Rarity>();
 
   const filteredWeapons = weapons.filter((weapon) => {
     const typeMatch =
-      typeState.selected.size === 0 || typeState.selected.has(weapon.type);
+      typeState.selected.size === 0 ||
+      (weapon.weapon_type && typeState.selected.has(weapon.weapon_type));
     const elementMatch =
       elementState.selected.size === 0 ||
-      elementState.selected.has(weapon.elementType);
+      elementState.selected.has(weapon.element);
     const rarityMatch =
       rarityState.selected.size === 0 ||
-      rarityState.selected.has(weapon.rarity);
+      (weapon.rarity && rarityState.selected.has(weapon.rarity));
     return typeMatch && elementMatch && rarityMatch;
   });
 
   return (
     <>
-      <h1 className="mb-8 text-3xl font-bold text-white">武器列表</h1>
+      <div className="mb-8 flex items-center justify-between">
+        <h1 className="text-3xl font-bold text-white">武器列表</h1>
+        <button
+          onClick={() => setShowDetails(!showDetails)}
+          className="rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700"
+        >
+          {showDetails ? "简洁模式" : "详细模式"}
+        </button>
+      </div>
 
       {/* 筛选区域 */}
       <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
@@ -62,9 +73,9 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
       </p>
 
       {/* 武器列表 */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredWeapons.map((weapon, index) => (
-          <WeaponCard key={weapon.id || `${weapon.name}-${index}`} weapon={weapon} />
+      <div className={`grid gap-4 ${showDetails ? "sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"}`}>
+        {filteredWeapons.map((weapon) => (
+          <WeaponCard key={weapon.slug} weapon={weapon} showDetails={showDetails} />
         ))}
       </div>
 
