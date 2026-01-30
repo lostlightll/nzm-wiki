@@ -31,7 +31,7 @@ export function LevelTable({ headers, data }: LevelTableProps) {
     <div className="not-prose my-4 overflow-hidden rounded-xl border border-zinc-700">
       <table className="w-full text-sm">
         <colgroup>
-          <col className="w-3" />
+          <col className="w-6" />
           {headers.map((_, i) => (
             <col key={i} />
           ))}
@@ -60,9 +60,8 @@ export function LevelTable({ headers, data }: LevelTableProps) {
               >
                 {/* 装饰竖条 */}
                 <td className="relative p-0">
-                  <div className="absolute left-1 top-1 bottom-1 flex gap-[2px]">
-                    <div className={`w-[3px] ${colorClass}`} />
-                    <div className={`w-[1px] ${colorClass} opacity-60`} />
+                  <div className="absolute left-4 top-1.5 bottom-1.5">
+                    <div className={`w-1 h-full rounded-full ${colorClass}`} />
                   </div>
                 </td>
                 {row.map((cell, cellIndex) => (

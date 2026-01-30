@@ -41,9 +41,6 @@ export function TrapCard({ trap }: { trap: Trap }) {
           <TrapImage name={trap.title} />
         </div>
         <h3 className="text-center text-lg font-semibold text-white">{trap.title}</h3>
-        {trap.position && (
-          <p className="mt-1 text-center text-sm text-zinc-400">{trap.position}</p>
-        )}
       </div>
     </Link>
   );
@@ -55,48 +52,61 @@ export function TrapCard({ trap }: { trap: Trap }) {
 export function TrapDetailCard({ trap }: { trap: Trap }) {
   const formatValue = (val: number | string | null | undefined) => {
     if (val === null || val === undefined || val === "" || val === -1) return "-";
+    if (typeof val === "string") {
+      return val.replace(/(\d+)\s*[xX]\s*(\d+)/g, "$1×$2");
+    }
     return val;
   };
 
   return (
     <div className="rounded-lg border-2 border-zinc-700 bg-zinc-800/50 p-6">
-      {/* 头部 */}
-      <div className="mb-4">
-        <h1 className="text-2xl font-bold text-white">{trap.title}</h1>
-        {trap.position && (
-          <p className="mt-1 text-sm text-zinc-400">{trap.position}</p>
-        )}
-      </div>
+      {/* 头部：左侧信息 + 右侧图片 */}
+      <div className="flex gap-6">
+        {/* 左侧信息 */}
+        <div className="flex-1">
+          <h1 className="text-2xl font-bold text-white">{trap.title}</h1>
+          {trap.position && (
+            <p className="mt-1 text-sm text-zinc-400">{trap.position}</p>
+          )}
 
-      {/* 图片 */}
-      <div className="mb-6 flex justify-center">
-        <TrapImage name={trap.title} size={256} />
-      </div>
+          {/* 描述 */}
+          {trap.description && (
+            <p className="mt-4 text-sm text-zinc-300 leading-relaxed">
+              {trap.description}
+            </p>
+          )}
 
-      {/* 属性 */}
-      <div>
-        <h2 className="mb-2 text-sm font-semibold text-zinc-400">陷阱属性</h2>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-3">
-          <div className="flex justify-between">
-            <span className="text-zinc-500">攻击</span>
-            <span className="text-white">{formatValue(trap.attack)}</span>
+          {/* 属性 */}
+          <div className="mt-4">
+            <h2 className="mb-2 text-sm font-semibold text-zinc-400">陷阱属性</h2>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+              <div className="flex justify-between">
+                <span className="text-zinc-500">攻击</span>
+                <span className="text-white">{formatValue(trap.attack)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">射程</span>
+                <span className="text-white">{formatValue(trap.range)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">防御</span>
+                <span className="text-white">{formatValue(trap.defense)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">价格</span>
+                <span className="text-white">{formatValue(trap.price)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">面积</span>
+                <span className="text-white">{formatValue(trap.area)}</span>
+              </div>
+            </div>
           </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">射程</span>
-            <span className="text-white">{formatValue(trap.range)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">防御</span>
-            <span className="text-white">{formatValue(trap.defense)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">价格</span>
-            <span className="text-white">{formatValue(trap.price)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">面积</span>
-            <span className="text-white">{formatValue(trap.area)}</span>
-          </div>
+        </div>
+
+        {/* 右侧图片 */}
+        <div className="flex-shrink-0">
+          <TrapImage name={trap.title} size={192} />
         </div>
       </div>
     </div>
