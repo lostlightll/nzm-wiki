@@ -23,6 +23,9 @@ export const FIELD_ORDER = [
   "explosion_range",
   "ignore_shield",
   "element_add_rate",
+  "skill_cooldown",
+  "skill_damage",
+  "pellets",
 ];
 
 // 2. 定义字段类型 (告诉前端渲染什么组件)
@@ -56,6 +59,9 @@ export const FIELD_TYPES: Record<string, string> = {
   range: "number",
   explosion_range: "number",
   element_add_rate: "number",
+  skill_cooldown: "number",
+  skill_damage: "number",
+  pellets: "number",
 };
 
 // 3. 定义下拉菜单的具体选项 (你的最新定义)

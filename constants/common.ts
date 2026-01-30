@@ -61,7 +61,7 @@ export const RARITY_CARD_STYLES: Record<
 export const ELEMENT_COLORS: Record<ElementType, string> = {
   物理: "text-gray-300",
   火焰: "text-[#f8c618]",
-  冰冻: "text-[#90f5ff]",
+  寒冷: "text-[#90f5ff]",
   电弧: "text-[rgb(160,158,255)]",
   腐蚀: "text-[#c3db2a]",
 };

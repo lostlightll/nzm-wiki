@@ -891,7 +891,18 @@ export default function EditorPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      {FIELD_ORDER.map((key) => renderField(key))}
+                      {FIELD_ORDER.map((key) => {
+                        // pellets 只在霰弹枪时显示
+                        if (key === "pellets" && formData.weapon_type !== "霰弹枪") {
+                          return null;
+                        }
+                        // explosion_range 只在单发榴弹、连发榴弹、火箭发射器时显示
+                        if (key === "explosion_range" &&
+                            !["单发榴弹", "连发榴弹", "火箭发射器"].includes(formData.weapon_type)) {
+                          return null;
+                        }
+                        return renderField(key);
+                      })}
                     </div>
                   </div>
 

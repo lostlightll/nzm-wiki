@@ -9,11 +9,19 @@ import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
 
 const ELEMENT_ICONS: Record<ElementType, string> = {
   火焰: "/icons/elements/fire.png",
-  冰冻: "/icons/elements/cryo.png",
+  寒冷: "/icons/elements/cryo.png",
   电弧: "/icons/elements/shock.png",
   腐蚀: "/icons/elements/corossive.png",
   物理: "/icons/elements/kinetic.png",
 };
+
+function formatDamage(base: number, pellets?: number): string {
+  const damage = Math.round(base * 500);
+  if (pellets && pellets > 1) {
+    return `${damage} x ${pellets}`;
+  }
+  return String(damage);
+}
 
 function WeaponImage({ name, size = "normal" }: { name: string; size?: "small" | "normal" }) {
   const [hasError, setHasError] = useState(false);
@@ -114,7 +122,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
         <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
           <div className="flex justify-between">
             <span className="text-zinc-500">单发伤害</span>
-            <span className="text-white">{Math.round(weapon.damage.base * 500)}</span>
+            <span className="text-white">{formatDamage(weapon.damage.base, weapon.pellets)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">射速</span>
@@ -142,7 +150,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">技能冷却</span>
-            <span className="text-white">-</span>
+            <span className="text-white">{formatValue(weapon.skill_cooldown)}</span>
           </div>
         </div>
       </div>
@@ -222,7 +230,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
         <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-3">
           <div className="flex justify-between">
             <span className="text-zinc-500">单发伤害</span>
-            <span className="text-white">{Math.round(weapon.damage.base * 500)}</span>
+            <span className="text-white">{formatDamage(weapon.damage.base, weapon.pellets)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">冲击伤害</span>
@@ -269,7 +277,11 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">技能冷却</span>
-            <span className="text-white">-</span>
+            <span className="text-white">{formatValue(weapon.skill_cooldown)}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-zinc-500">技能伤害</span>
+            <span className="text-white">{formatValue(weapon.skill_damage)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">精准度</span>

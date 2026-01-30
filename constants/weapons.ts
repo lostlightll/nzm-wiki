@@ -21,7 +21,7 @@ export const WEAPON_TYPES: { type: WeaponType; icon: string }[] = [
 
 export const ELEMENT_TYPES: { type: keyof typeof ELEMENT_COLORS; iconSrc: string; color: string }[] = [
   { type: "火焰", iconSrc: "/icons/elements/fire.png", color: ELEMENT_COLORS["火焰"] },
-  { type: "冰冻", iconSrc: "/icons/elements/cryo.png", color: ELEMENT_COLORS["冰冻"] },
+  { type: "寒冷", iconSrc: "/icons/elements/cryo.png", color: ELEMENT_COLORS["寒冷"] },
   { type: "电弧", iconSrc: "/icons/elements/shock.png", color: ELEMENT_COLORS["电弧"] },
   { type: "腐蚀", iconSrc: "/icons/elements/corossive.png", color: ELEMENT_COLORS["腐蚀"] },
   { type: "物理", iconSrc: "/icons/elements/kinetic.png", color: ELEMENT_COLORS["物理"] },
