@@ -15,6 +15,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Open [http://localhost:3000/editor](http://localhost:3000/editor) to editor wiki mdx files.
 
+<img alt="editor-preview" src="https://github.com/user-attachments/assets/f9a7e58f-d30f-4907-8895-667c28a406fb" />
+
+
 ## Extra
 
 For more about Nizhan: Future, See my notes at https://qiekn.notion.site/nzm
