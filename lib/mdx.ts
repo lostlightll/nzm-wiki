@@ -7,13 +7,9 @@ const baseDir = path.join(process.cwd(), "data");
 //  获取某个分类下的所有文章（用于列表页）
 export function getMDXList(folder: string) {
   const dirPath = path.join(baseDir, folder);
-  console.log("[getMDXList] baseDir:", baseDir);
-  console.log("[getMDXList] dirPath:", dirPath);
-  console.log("[getMDXList] exists:", fs.existsSync(dirPath));
   if (!fs.existsSync(dirPath)) return [];
 
   const files = fs.readdirSync(dirPath);
-  console.log("[getMDXList] files:", files);
 
   const result = files
     .filter((file) => file.endsWith(".mdx"))
@@ -27,7 +23,6 @@ export function getMDXList(folder: string) {
       };
     });
 
-  console.log("[getMDXList] result:", result);
   return result;
 }
 
