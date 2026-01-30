@@ -1,9 +1,0 @@
-{
-  "id": "20703040145",
-  "name": "追猎齐射",
-  "slot": 4,
-  "rarity": 3,
-  "description": "破盾后，向破盾目标发射3发飞弹，造成{GPNUMERICALID:160000014:HPCALScale:2:1}伤害。",
-  "icon": "1316142001",
-  "weapon_type": []
-}

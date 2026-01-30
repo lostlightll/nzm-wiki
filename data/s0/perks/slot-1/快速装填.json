@@ -1,9 +1,0 @@
-{
-  "id": "20703040002",
-  "name": "快速装填",
-  "slot": 1,
-  "rarity": 3,
-  "description": "弹匣容量{GPModifier:111010002:BaseValue:0:2:1}，换弹速度增加{GPModifier:111010002:BaseValue:1:2:1}。",
-  "icon": "1313102001",
-  "weapon_type": []
-}

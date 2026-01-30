@@ -1,9 +1,0 @@
-{
-  "id": "20703040092",
-  "name": "反哺",
-  "slot": 4,
-  "rarity": 3,
-  "description": "连续命中弱点{Passive:1312046001:1:Threshold}次，使武器进入{Passive:1312046001:1:BuffDuration:5}的急速狂热状态。触发后进入冷却，冷却时间{Passive:1312046001:1:CDSecond:5}。",
-  "icon": "1312046001",
-  "weapon_type": []
-}

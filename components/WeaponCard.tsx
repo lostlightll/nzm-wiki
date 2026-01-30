@@ -37,57 +37,72 @@ export function WeaponImage({ name }: { name: string }) {
   );
 }
 
-export function WeaponCard({ weapon }: { weapon: Weapon }) {
+// 武器卡片内部内容（不含 Link）
+function WeaponCardContent({ weapon }: { weapon: Weapon }) {
   const rarityKey = RARITY_KEY_MAP[weapon.rarity] || "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
   const elementIcon = ELEMENT_ICONS[weapon.elementType];
 
   return (
-    <Link href={`/weapons/${encodeURIComponent(weapon.name)}`}>
-      <div
-        className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-4 transition-transform hover:scale-[1.02]`}
-      >
-        {elementIcon && (
-          <div className="absolute right-3 top-3 z-10">
-            <Image
-              src={getAssetPath(elementIcon)}
-              alt={weapon.elementType}
-              width={24}
-              height={24}
-            />
+    <div
+      className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-4`}
+    >
+      {elementIcon && (
+        <div className="absolute right-3 top-3 z-10">
+          <Image
+            src={getAssetPath(elementIcon)}
+            alt={weapon.elementType}
+            width={24}
+            height={24}
+          />
+        </div>
+      )}
+
+      <div className="mb-2">
+        <h3 className="text-lg font-semibold text-white">{weapon.name}</h3>
+      </div>
+
+      <div className="mb-3 text-sm">
+        <span className="text-zinc-400">
+          {[weapon.type, weapon.scope, ...weapon.tags]
+            .filter(Boolean)
+            .join(" | ")}
+        </span>
+      </div>
+
+      {weapon.name && <WeaponImage name={weapon.name} />}
+
+      <div className="grid grid-cols-2 gap-2 text-sm">
+        {STAT_FIELDS.map(({ label, key, suffix }) => (
+          <div key={key} className="flex items-center justify-between">
+            <span className="text-zinc-400">{label}</span>
+            <span className="text-white">
+              {weapon.stats[key]}
+              {suffix}
+            </span>
           </div>
-        )}
+        ))}
+      </div>
 
-        <div className="mb-2">
-          <h3 className="text-lg font-semibold text-white">{weapon.name}</h3>
-        </div>
+      {weapon.description && (
+        <p className="mt-3 text-sm text-zinc-500">{weapon.description}</p>
+      )}
+    </div>
+  );
+}
 
-        <div className="mb-3 text-sm">
-          <span className="text-zinc-400">
-            {[weapon.type, weapon.scope, ...weapon.tags]
-              .filter(Boolean)
-              .join(" | ")}
-          </span>
-        </div>
-
-        {weapon.name && <WeaponImage name={weapon.name} />}
-
-        <div className="grid grid-cols-2 gap-2 text-sm">
-          {STAT_FIELDS.map(({ label, key, suffix }) => (
-            <div key={key} className="flex items-center justify-between">
-              <span className="text-zinc-400">{label}</span>
-              <span className="text-white">
-                {weapon.stats[key]}
-                {suffix}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {weapon.description && (
-          <p className="mt-3 text-sm text-zinc-500">{weapon.description}</p>
-        )}
+// 列表页用的卡片（带 Link）
+export function WeaponCard({ weapon }: { weapon: Weapon }) {
+  return (
+    <Link href={`/weapons/${encodeURIComponent(weapon.name)}`}>
+      <div className="transition-transform hover:scale-[1.02]">
+        <WeaponCardContent weapon={weapon} />
       </div>
     </Link>
   );
+}
+
+// 详情页用的卡片（不带 Link）
+export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
+  return <WeaponCardContent weapon={weapon} />;
 }

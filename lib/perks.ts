@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 import type { Perk, PerkSlot, Rarity } from "@/types";
 
 const PERKS_DATA_DIR = path.join(process.cwd(), "data/s0/perks");
@@ -14,11 +15,22 @@ export function getAllPerks(): Perk[] {
     const slotDir = path.join(PERKS_DATA_DIR, `slot-${slot}`);
     if (!fs.existsSync(slotDir)) continue;
 
-    const files = fs.readdirSync(slotDir).filter((f) => f.endsWith(".json"));
+    const files = fs.readdirSync(slotDir).filter((f) => f.endsWith(".mdx"));
     for (const file of files) {
       const filePath = path.join(slotDir, file);
       const content = fs.readFileSync(filePath, "utf-8");
-      const perk = JSON.parse(content) as Perk;
+      const { data } = matter(content);
+      // 将 frontmatter 映射到 Perk 类型，用文件名作为 id
+      const perk: Perk = {
+        id: file.replace(".mdx", ""),
+        name: data.title,
+        slot: data.slot as PerkSlot,
+        rarity: data.rarity as Rarity,
+        category: data.category || "其他",
+        icon: data.icon,
+        effects: [],
+        description: data.description,
+      };
       perks.push(perk);
     }
   }
@@ -26,13 +38,26 @@ export function getAllPerks(): Perk[] {
   return perks;
 }
 
-export function getPerkById(id: string): Perk | null {
+export function getPerkByName(name: string): Perk | null {
   // 在所有槽位目录中查找
   for (let slot = 1; slot <= 4; slot++) {
-    const filePath = path.join(PERKS_DATA_DIR, `slot-${slot}`, `${id}.json`);
+    const slotDir = path.join(PERKS_DATA_DIR, `slot-${slot}`);
+    if (!fs.existsSync(slotDir)) continue;
+
+    const filePath = path.join(slotDir, `${name}.mdx`);
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, "utf-8");
-      return JSON.parse(content) as Perk;
+      const { data } = matter(content);
+      return {
+        id: name,
+        name: data.title,
+        slot: data.slot as PerkSlot,
+        rarity: data.rarity as Rarity,
+        category: data.category || "其他",
+        icon: data.icon,
+        effects: [],
+        description: data.description,
+      };
     }
   }
   return null;

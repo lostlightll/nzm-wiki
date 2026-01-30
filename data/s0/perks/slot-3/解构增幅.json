@@ -1,9 +1,0 @@
-{
-  "id": "20703040140",
-  "name": "解构增幅",
-  "slot": 3,
-  "rarity": 3,
-  "description": "敌人破盾后，8秒内，当前武器伤害增加{GPModifier:111010084:BaseValue:0:2:1}。",
-  "icon": "1315143001",
-  "weapon_type": []
-}

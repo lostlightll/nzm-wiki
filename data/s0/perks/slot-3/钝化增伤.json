@@ -1,9 +1,0 @@
-{
-  "id": "20703040081",
-  "name": "钝化增伤",
-  "slot": 3,
-  "rarity": 3,
-  "description": "命中减速的敌人，造成额外的{GPModifier:111010060:BaseValue:0:2:1}伤害。",
-  "icon": "1315126001",
-  "weapon_type": []
-}

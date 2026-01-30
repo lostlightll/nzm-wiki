@@ -1,9 +1,0 @@
-{
-  "id": "20703040128",
-  "name": "同调稳持",
-  "slot": 1,
-  "rarity": 3,
-  "description": "命中带有当前武器对应元素护盾的敌人，武器稳定性提升{GPModifier:111010079:BaseValue:1:2:1}，换弹速度提升{GPModifier:111010079:BaseValue:0:2:1}，可叠加3层，持续15秒。",
-  "icon": "1313141001",
-  "weapon_type": []
-}

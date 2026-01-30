@@ -1,9 +1,0 @@
-{
-  "id": "20703040026",
-  "name": "随时待命",
-  "slot": 2,
-  "rarity": 3,
-  "description": "武器处于后台时，技能充能效率提高{GPModifier:111010036:BaseValue:0:2:1}。",
-  "icon": "1314113001",
-  "weapon_type": []
-}
