@@ -19,20 +19,9 @@ export function getAllWeaponsFromJSON(): Weapon[] {
 }
 
 /**
- * 统一的数据获取函数
- * - 开发环境 (pnpm dev): 从 Notion 实时获取
- * - 生产环境 (pnpm build): 从 JSON 文件获取
+ * 获取所有武器数据
  */
 export async function getAllWeapons(): Promise<Weapon[]> {
-  const isDev = process.env.NODE_ENV === "development";
-
-  if (isDev && process.env.NOTION_API_KEY && process.env.NOTION_WEAPONS_DATABASE_ID) {
-    // 开发环境：从 Notion 获取实时数据
-    const { getAllWeaponsFromNotion } = await import("./weapons-notion");
-    return getAllWeaponsFromNotion();
-  }
-
-  // 生产环境：从 JSON 文件获取
   return getAllWeaponsFromJSON();
 }
 

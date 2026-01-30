@@ -42,12 +42,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      # - name: Export data from Notion
-      #   run: pnpm update:weapons
-      #   env:
-      #     NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-      #     NOTION_WEAPONS_DATABASE_ID: ${{ secrets.NOTION_WEAPONS_DATABASE_ID }}
-
       - name: Build with Next.js
         run: pnpm build
         env:
