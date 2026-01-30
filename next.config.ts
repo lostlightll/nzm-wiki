@@ -4,8 +4,11 @@ import type { NextConfig } from "next";
 // 如果在本地开发，这个变量通常不存在，默认为空字符串，正好符合本地开发需求
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+const isDev = process.env.NODE_ENV === "development";
+
 const nextConfig: NextConfig = {
-  output: "export",
+  output: isDev ? undefined : "export",
+  // output: "export",
 
   // 使用读取到的路径
   basePath: basePath,
