@@ -1,4 +1,4 @@
-import type { Rarity, ElementType } from "@/types";
+import type { Rarity, ElementType, TDEnemyType } from "@/types";
 
 // 稀有度数字 -> 中文映射
 export const RARITY_NUM_MAP: Record<number, Rarity> = {
@@ -64,4 +64,29 @@ export const ELEMENT_COLORS: Record<ElementType, string> = {
   寒冷: "text-[#90f5ff]",
   电弧: "text-[rgb(160,158,255)]",
   腐蚀: "text-[#c3db2a]",
+};
+
+// 塔防敌人类型卡片样式
+export const TD_ENEMY_CARD_STYLES: Record<
+  TDEnemyType,
+  { border: string; bg: string; text: string; label: string }
+> = {
+  normal: {
+    border: "border-gray-600/50",
+    bg: "bg-gray-700/20",
+    text: "text-gray-300",
+    label: "普通",
+  },
+  elite: {
+    border: "border-[#a65aae]/60",
+    bg: "bg-[#a65aae]/10",
+    text: "text-[#a65aae]",
+    label: "精英",
+  },
+  boss: {
+    border: "border-[#d1ac69]/60",
+    bg: "bg-[#d1ac69]/10",
+    text: "text-[#d1ac69]",
+    label: "首领",
+  },
 };

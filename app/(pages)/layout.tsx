@@ -2,7 +2,8 @@ import Link from "next/link";
 
 const NAV_ITEMS = [
   { href: "/weapons", label: "武器图鉴" },
-  { href: "/traps", label: "陷阱图鉴" },
+  { href: "/traps", label: "塔防陷阱" },
+  { href: "/enemies/td", label: "塔防敌人" },
   { href: "/perks", label: "插件图鉴" },
 ];
 
