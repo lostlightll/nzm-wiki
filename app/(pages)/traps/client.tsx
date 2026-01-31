@@ -31,7 +31,7 @@ export default function TrapsClient({ traps }: { traps: Trap[] }) {
   return (
     <>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white">陷阱列表</h1>
+        <h1 className="text-3xl font-bold text-white">陷阱图鉴</h1>
       </div>
 
       {/* 筛选区域 */}
