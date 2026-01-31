@@ -9,7 +9,8 @@ interface NavCardProps {
 }
 
 const NAV_ITEMS = [
-  { href: "/weapons", icon: "🔫", title: "武器列表" },
+  { href: "/weapons", icon: "🔫", title: "武器图鉴" },
+  { href: "/traps", icon: "🪤", title: "陷阱图鉴" },
   { href: "/perks", icon: "⚡", title: "插件图鉴" },
 ];
 

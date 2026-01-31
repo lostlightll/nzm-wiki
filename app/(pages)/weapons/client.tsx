@@ -44,7 +44,7 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
   return (
     <>
       <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-white">武器列表</h1>
+        <h1 className="text-3xl font-bold text-white">武器图鉴</h1>
         <button
           onClick={() => setShowDetails(!showDetails)}
           className="rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700"
