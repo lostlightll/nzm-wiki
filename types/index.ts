@@ -148,7 +148,7 @@ export interface Trap {
   position?: TrapType;
   attack?: number | string;
   range?: number | string;
-  defense?: number | string;
+  hp?: number | string;
   price?: number | string;
   area?: number | string;
   description?: string;
