@@ -140,7 +140,7 @@ export interface DamageResult {
 // 陷阱 (Trap) 相关类型
 // ------------------------------------------------------------
 
-export type TrapType = "地面" | "墙壁" | "天空";
+export type TrapType = "地面" | "墙壁" | "天花板";
 
 export interface Trap {
   slug: string;

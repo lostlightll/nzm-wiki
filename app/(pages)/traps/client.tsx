@@ -9,7 +9,7 @@ import { TrapCard } from "@/components/TrapCard";
 const TRAP_TYPES: { type: TrapType }[] = [
   { type: "地面" },
   { type: "墙壁" },
-  { type: "天空" },
+  { type: "天花板" },
 ];
 
 export default function TrapsClient({ traps }: { traps: Trap[] }) {
