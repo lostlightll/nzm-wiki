@@ -3,18 +3,24 @@ title: 毒刺
 range: ''
 position: 地面
 attack: ''
-hp: 1000
+hp: ''
 price: 1000
 area: 1x1
 description: 在地面部署的陷阱，周期性弹出淬毒地刺，对经过的敌人造成伤害同时让敌人持续流血。
 ---
 
 <LevelTable
-  headers={["陷阱等级", "技能攻击力", "DPS"]}
+  headers={["陷阱等级", "直接伤害","技能攻击力(毒属性总伤)"]}
   data={[
-    [1, 325, "xxx"],
-    [2, 375, "xxx"],
-    [3, 450, "xxx"],
-    [4, 550, "xxx"],
+    [1, 390, 325],
+    [2, 450, 375],
+    [3, 540, 450],
+    [4, 660, 550]
   ]}
 />
+
+<Callout>毒刺击中怪物会首先造成物理伤害，然后附加 5秒毒属性Debuff，每消耗一层并造成 20% 技能攻击力的伤害，当身上已经有毒属性 Debuff 时，再次被毒刺陷阱攻击，会立刻结算剩余的毒属性 Debuff，造成伤害，并附加新的毒属性 Debuff，但此时直接物理伤害丢失 (以上内容来自冷风影_ UP 的视频)</Callout>
+
+<Callout>上述直接物理伤害为 冷风影_ 测得。技能攻击力为解包配置文件所得，与 UP 估测的结果一致</Callout>
+
+<Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1986qBZEJZ" title="BV1986qBZEJZ" />
