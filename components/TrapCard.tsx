@@ -6,14 +6,14 @@ import Link from "next/link";
 import type { Trap } from "@/types";
 import { getAssetPath } from "@/lib/path";
 
-function TrapImage({ name, size = 128 }: { name: string; size?: number }) {
+function TrapImage({ name, size = 128, className }: { name: string; size?: number; className?: string }) {
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
     return (
       <div
-        className="flex items-center justify-center bg-zinc-800 text-zinc-500"
-        style={{ width: size, height: size }}
+        className={`flex items-center justify-center bg-zinc-800 text-zinc-500 ${className ?? ""}`}
+        style={className ? undefined : { width: size, height: size }}
       >
         No Image
       </div>
@@ -24,10 +24,10 @@ function TrapImage({ name, size = 128 }: { name: string; size?: number }) {
     <Image
       src={getAssetPath(`/icons/traps/${name}.png`)}
       alt={name}
-      width={size}
-      height={size}
-      className="object-contain"
-      style={{ width: size, height: size }}
+      width={192}
+      height={192}
+      className={`object-contain ${className ?? ""}`}
+      style={className ? undefined : { width: size, height: size }}
       onError={() => setHasError(true)}
     />
   );
@@ -61,7 +61,7 @@ export function TrapDetailCard({ trap }: { trap: Trap }) {
   return (
     <div className="rounded-lg border-2 border-zinc-700 bg-zinc-800/50 p-6">
       {/* 头部：左侧信息 + 右侧图片 */}
-      <div className="flex gap-6">
+      <div className="flex flex-col-reverse sm:flex-row gap-4 sm:gap-6">
         {/* 左侧信息 */}
         <div className="flex-1">
           <h1 className="text-2xl font-bold text-white">{trap.title}</h1>
@@ -105,8 +105,8 @@ export function TrapDetailCard({ trap }: { trap: Trap }) {
         </div>
 
         {/* 右侧图片 */}
-        <div className="flex-shrink-0">
-          <TrapImage name={trap.title} size={192} />
+        <div className="flex-shrink-0 self-center sm:self-start">
+          <TrapImage name={trap.title} className="w-32 h-32 sm:w-48 sm:h-48" />
         </div>
       </div>
     </div>
