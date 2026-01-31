@@ -1,6 +1,6 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
-import { getTrapBySlug } from "@/lib/traps";
-import { TrapDetailCard } from "@/components/TrapCard";
+import { getTDEnemyBySlug } from "@/lib/td-enemies";
+import { TDEnemyDetailCard } from "@/components/TDEnemyCard";
 import { Credit } from "@/components/Credit";
 import { LevelTable } from "@/components/LevelTable";
 import { Callout } from "@/components/Callout";
@@ -13,34 +13,33 @@ const mdxComponents = {
 };
 
 export async function generateStaticParams() {
-  const items = getMDXList("s0/traps");
+  const items = getMDXList("s0/enemies/td");
   return items.map((item) => ({
     slug: item.slug,
   }));
 }
 
-export default async function TrapDetailPage({
+export default async function TDEnemyDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
 
-  const trap = await getTrapBySlug(slug);
+  const enemy = await getTDEnemyBySlug(slug);
+  const { content } = getMDXDetail("s0/enemies/td", slug);
 
-  if (!trap) {
+  if (!enemy) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-6 sm:p-10">
-        <p className="text-zinc-500">陷阱不存在</p>
+        <p className="text-zinc-500">敌人不存在</p>
       </div>
     );
   }
 
-  const { content } = getMDXDetail("s0/traps", slug);
-
   return (
     <div className="mx-auto max-w-3xl px-4 py-6 sm:p-10">
-      <TrapDetailCard trap={trap} />
+      <TDEnemyDetailCard enemy={enemy} />
 
       {content.trim() && (
         <article className="prose prose-lg prose-invert mt-8 max-w-none">

@@ -153,3 +153,21 @@ export interface Trap {
   area?: number | string;
   description?: string;
 }
+
+// ------------------------------------------------------------
+// 塔防敌人 (TDEnemy) 相关类型
+// ------------------------------------------------------------
+
+export type TDEnemyType = "normal" | "elite" | "boss";
+
+export interface TDEnemy {
+  slug: string;
+  title: string;
+  nickname?: string;
+  type: TDEnemyType;
+  attack?: number | string;
+  hp?: number | string;
+  weight?: number | string;
+  speed?: number | string;
+  description?: string;
+}

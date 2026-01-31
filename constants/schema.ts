@@ -91,6 +91,7 @@ export const FIELD_OPTIONS: Record<string, string[]> = {
   toughness_type: ["冲击", "贯穿", "爆炸"],
   trap_type: ["地面", "墙壁", "天花板"],
   position: ["地面", "墙壁", "天花板"],
+  type: ["normal", "elite", "boss"],
 };
 
 // ============================================================
@@ -102,7 +103,7 @@ export const TRAP_FIELD_ORDER = [
   "position",
   "attack",
   "range",
-  "defense",
+  "hp",
   "price",
   "area",
   "description",
@@ -112,9 +113,32 @@ export const TRAP_FIELD_TYPES: Record<string, string> = {
   position: "select",
   attack: "number",
   range: "number",
-  defense: "number",
+  hp: "number",
   price: "number",
   // area 是文本类型 (如 1x1, 2x2, 4x4, 2x4)
+};
+
+// ============================================================
+// 塔防敌人 Schema
+// ============================================================
+
+export const TD_ENEMY_FIELD_ORDER = [
+  "title",
+  "nickname",
+  "type",
+  "attack",
+  "hp",
+  "weight",
+  "speed",
+  "description",
+];
+
+export const TD_ENEMY_FIELD_TYPES: Record<string, string> = {
+  type: "select",
+  attack: "number",
+  hp: "number",
+  weight: "number",
+  speed: "number",
 };
 
 // ============================================================
@@ -145,6 +169,13 @@ export function getSchemaForPath(path: string) {
     return {
       fieldOrder: TRAP_FIELD_ORDER,
       fieldTypes: { ...TRAP_FIELD_TYPES },
+      fieldOptions: FIELD_OPTIONS,
+    };
+  }
+  if (path.includes("enemies/td/") || path.includes("enemies\\td\\")) {
+    return {
+      fieldOrder: TD_ENEMY_FIELD_ORDER,
+      fieldTypes: { ...TD_ENEMY_FIELD_TYPES },
       fieldOptions: FIELD_OPTIONS,
     };
   }
