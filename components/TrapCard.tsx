@@ -50,13 +50,26 @@ export function TrapCard({ trap }: { trap: Trap }) {
  * 详情页陷阱卡片
  */
 export function TrapDetailCard({ trap }: { trap: Trap }) {
-  const formatValue = (val: number | string | null | undefined) => {
-    if (val === null || val === undefined || val === "" || val === -1) return "-";
+  const isEmpty = (val: number | string | null | undefined) => {
+    return val === null || val === undefined || val === "" || val === "-";
+  };
+
+  const formatValue = (val: number | string) => {
     if (typeof val === "string") {
       return val.replace(/(\d+)\s*[xX]\s*(\d+)/g, "$1×$2");
     }
     return val;
   };
+
+  const stats: { label: string; value: number | string | undefined }[] = [
+    { label: "攻击", value: trap.attack },
+    { label: "射程", value: trap.range },
+    { label: "血量", value: trap.hp },
+    { label: "价格", value: trap.price },
+    { label: "面积", value: trap.area },
+  ];
+
+  const visibleStats = stats.filter((s) => !isEmpty(s.value));
 
   return (
     <div className="rounded-lg border-2 border-zinc-700 bg-zinc-800/50 p-6">
@@ -77,31 +90,19 @@ export function TrapDetailCard({ trap }: { trap: Trap }) {
           )}
 
           {/* 属性 */}
-          <div className="mt-4">
-            <h2 className="mb-2 text-sm font-semibold text-zinc-400">陷阱属性</h2>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-zinc-500">攻击</span>
-                <span className="text-white">{formatValue(trap.attack)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">射程</span>
-                <span className="text-white">{formatValue(trap.range)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">防御</span>
-                <span className="text-white">{formatValue(trap.defense)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">价格</span>
-                <span className="text-white">{formatValue(trap.price)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">面积</span>
-                <span className="text-white">{formatValue(trap.area)}</span>
+          {visibleStats.length > 0 && (
+            <div className="mt-4">
+              <h2 className="mb-2 text-sm font-semibold text-zinc-400">陷阱属性</h2>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                {visibleStats.map((stat) => (
+                  <div key={stat.label} className="flex justify-between">
+                    <span className="text-zinc-500">{stat.label}</span>
+                    <span className="text-white">{formatValue(stat.value!)}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* 右侧图片 */}
