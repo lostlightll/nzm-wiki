@@ -1,5 +1,5 @@
 ---
-title: 维修站
+title: 修理站 (维修)
 range: 1.5
 position: 地面
 attack: ''
@@ -9,15 +9,15 @@ area: 1x1
 description: 部署在地面的修理站，可部署在输出陷阱旁边，自动修理附近生命值不足的陷阱， 也可修理自身，修理过程中可获得少量金币。
 ---
 <LevelTable
-  headers={["等级", "血量", "回血"]}
+  headers={["等级", "血量", "维修速度 (HP/S)"]}
   data={[
-    [1, 90, "10/s"],
-    [2, 110, "12/s"],
-    [3, 130, "15/s"],
-    [4, 150, "20/s"],
+    [1, 90, "10"],
+    [2, 110, "12"],
+    [3, 130, "15"],
+    [4, 150, "20"],
   ]}
 />
 
-<Callout>维修时金币生成间隔为 1.0 秒，维修范围为 1 格</Callout>
+<Callout>维修时金币生成间隔为 1.0 秒，只有紧邻自己的周围8个格子可维修到</Callout>
 
 <Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1p8zTBWEKR" title="BV1p8zTBWEKR" />
