@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import type { Weapon } from "@/types";
 import { CURRENT_SEASON } from "@/constants/season";
+import { RARITY_ORDER } from "@/constants/common";
 
 const WEAPONS_DIR = path.join(process.cwd(), `data/${CURRENT_SEASON}/weapons`);
 
@@ -17,17 +18,23 @@ export async function getAllWeapons(): Promise<Weapon[]> {
 
   const files = fs.readdirSync(WEAPONS_DIR).filter((f) => f.endsWith(".mdx"));
 
-  return files.map((file) => {
-    const filePath = path.join(WEAPONS_DIR, file);
-    const content = fs.readFileSync(filePath, "utf-8");
-    const { data } = matter(content);
-    const slug = file.replace(/\.mdx$/, "");
+  return files
+    .map((file) => {
+      const filePath = path.join(WEAPONS_DIR, file);
+      const content = fs.readFileSync(filePath, "utf-8");
+      const { data } = matter(content);
+      const slug = file.replace(/\.mdx$/, "");
 
-    return {
-      slug,
-      ...data,
-    } as Weapon;
-  });
+      return {
+        slug,
+        ...data,
+      } as Weapon;
+    })
+    .sort((a, b) => {
+      const orderA = a.rarity ? RARITY_ORDER[a.rarity] : 0;
+      const orderB = b.rarity ? RARITY_ORDER[b.rarity] : 0;
+      return orderB - orderA;
+    });
 }
 
 /**

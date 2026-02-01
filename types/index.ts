@@ -25,7 +25,7 @@ export type ElementType = "物理" | "火焰" | "寒冷" | "电弧" | "腐蚀";
 
 export type WeaponTag = "高倍镜" | "穿透" | "破甲" | "爆炸" | "连发" | "三连发" | "自瞄" | "快速连发";
 
-export type Rarity = "普通" | "稀有" | "史诗" | "传说";
+export type Rarity = "稀有" | "史诗" | "传说";
 
 export type ScopeType = "低倍镜" | "中倍镜" | "高倍镜";
 
