@@ -68,16 +68,13 @@ export function Callout({ children, color = "gray" }: CalloutProps) {
   };
 
   return (
-    <div className={`not-prose my-4 rounded-xl border ${colors.border} ${colors.bg} px-4 py-3`}>
-      <div className="flex items-start gap-3">
-        <div className={`h-full w-1 flex-shrink-0 rounded-full ${colors.bar} self-stretch`} />
-        <div className="text-sm text-zinc-300 leading-relaxed">
-          {Array.isArray(children)
-            ? children.map((child, i) => (
-                <span key={i}>{processChildren(child)}</span>
-              ))
-            : processChildren(children)}
-        </div>
+    <div className={`not-prose my-4 overflow-hidden rounded-xl border ${colors.border} ${colors.bg} px-4 py-3`}>
+      <div className="text-sm text-zinc-300 leading-relaxed">
+        {Array.isArray(children)
+          ? children.map((child, i) => (
+              <span key={i}>{processChildren(child)}</span>
+            ))
+          : processChildren(children)}
       </div>
     </div>
   );
