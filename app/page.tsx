@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { href: "/perks", icon: "⚡", title: "插件图鉴" },
   { href: "/traps", icon: "🪤", title: "塔防陷阱" },
   { href: "/enemies/td", icon: "👾", title: "塔防敌人" },
+  { href: "/posts", icon: "📄", title: "文章归档" },
 ];
 
 const isProd = process.env.NODE_ENV === "production";

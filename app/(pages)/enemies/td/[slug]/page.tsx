@@ -1,16 +1,9 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { getTDEnemyBySlug } from "@/lib/td-enemies";
 import { TDEnemyDetailCard } from "@/components/TDEnemyCard";
-import { Credit } from "@/components/Credit";
-import { LevelTable } from "@/components/LevelTable";
-import { Callout } from "@/components/Callout";
 import { MDXRemote } from "next-mdx-remote/rsc";
-
-const mdxComponents = {
-  Credit,
-  LevelTable,
-  Callout,
-};
+import remarkGfm from "remark-gfm";
+import { mdxComponents } from "@/lib/mdx-components";
 
 export async function generateStaticParams() {
   const items = getMDXList("s0/enemies/td");
@@ -43,7 +36,11 @@ export default async function TDEnemyDetailPage({
 
       {content.trim() && (
         <article className="prose prose-lg prose-invert mt-8 max-w-none">
-          <MDXRemote source={content} components={mdxComponents} />
+          <MDXRemote
+            source={content}
+            components={mdxComponents}
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+          />
         </article>
       )}
     </div>
