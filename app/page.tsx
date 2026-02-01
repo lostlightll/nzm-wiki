@@ -34,13 +34,14 @@ function NavCard({ href, icon, title }: NavCardProps) {
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-900 px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4">
       <Image
         src={`${basePath}/logo.png`}
         alt="逆战未来 维基"
         width={200}
         height={200}
         className="mb-6"
+        style={{ width: 200, height: "auto" }}
         priority
       />
       <h1 className="mb-8 text-4xl font-bold text-white">逆战未来 维基</h1>

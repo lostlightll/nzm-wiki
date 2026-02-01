@@ -1,3 +1,5 @@
+import { CALLOUT_BOLD_COLOR } from "@/constants/colors";
+
 /**
  * 自动在中文和数字/英文/百分号之间添加空格
  * 如果已有空格则不重复添加
@@ -68,8 +70,11 @@ export function Callout({ children, color = "gray" }: CalloutProps) {
   };
 
   return (
-    <div className={`not-prose my-4 overflow-hidden rounded-xl border ${colors.border} ${colors.bg} px-4 py-3`}>
-      <div className="text-sm text-zinc-300 leading-relaxed">
+    <div className={`my-4 overflow-hidden rounded-xl border ${colors.border} ${colors.bg} px-4 py-3`}>
+      <style>{`
+        .callout strong { color: ${CALLOUT_BOLD_COLOR}; }
+      `}</style>
+      <div className="callout text-sm text-foreground leading-relaxed [&>p]:m-0">
         {Array.isArray(children)
           ? children.map((child, i) => (
               <span key={i}>{processChildren(child)}</span>
