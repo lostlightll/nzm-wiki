@@ -92,7 +92,7 @@ export function TableOfContents({ enabled = true }: TableOfContentsProps) {
 
       {/* 展开状态：完整目录 */}
       <div
-        className={`absolute left-0 top-0 bg-zinc-800/95 backdrop-blur rounded-lg border border-zinc-700 py-2 px-1 transition-all duration-200 origin-top-left ${
+        className={`absolute left-0 top-0 min-w-36 bg-zinc-800/95 backdrop-blur rounded-lg border border-zinc-700 py-2 px-1 transition-all duration-200 origin-top-left ${
           isHovered
             ? "opacity-100 scale-100"
             : "opacity-0 scale-95 pointer-events-none"
