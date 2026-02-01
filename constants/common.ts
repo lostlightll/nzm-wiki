@@ -14,9 +14,15 @@ export const RARITY_OPTIONS: { type: Rarity; color: string }[] = [
   { type: "传说", color: "text-[#d1ac69]" },
 ];
 
+// 稀有度排序权重（值越大越靠前）
+export const RARITY_ORDER: Record<Rarity, number> = {
+  稀有: 1,
+  史诗: 2,
+  传说: 3,
+};
+
 // 稀有度中文 -> 英文映射
 export const RARITY_KEY_MAP: Record<Rarity, string> = {
-  普通: "common",
   稀有: "rare",
   史诗: "epic",
   传说: "legendary",
@@ -24,7 +30,6 @@ export const RARITY_KEY_MAP: Record<Rarity, string> = {
 
 // 稀有度背景色（用于标签/徽章）
 export const RARITY_BG_COLORS: Record<Rarity, string> = {
-  普通: "bg-gray-500",
   稀有: "bg-[#5589ab]",
   史诗: "bg-[#a65aae]",
   传说: "bg-[#d1ac69]",
