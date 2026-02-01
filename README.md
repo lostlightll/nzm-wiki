@@ -13,7 +13,7 @@ Then, run `pnpm dev` to start the development server.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Open [http://localhost:3000/editor](http://localhost:3000/editor) to editor wiki mdx files.
+Open [http://localhost:3000/editor](http://localhost:3000/editor) to edit wiki mdx files.
 
 <img alt="editor-preview" src="https://github.com/user-attachments/assets/f9a7e58f-d30f-4907-8895-667c28a406fb" />
 
