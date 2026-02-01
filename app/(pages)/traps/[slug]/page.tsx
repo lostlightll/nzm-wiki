@@ -1,16 +1,9 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { getTrapBySlug } from "@/lib/traps";
 import { TrapDetailCard } from "@/components/TrapCard";
-import { Credit } from "@/components/Credit";
-import { LevelTable } from "@/components/LevelTable";
-import { Callout } from "@/components/Callout";
 import { MDXRemote } from "next-mdx-remote/rsc";
-
-const mdxComponents = {
-  Credit,
-  LevelTable,
-  Callout,
-};
+import remarkGfm from "remark-gfm";
+import { mdxComponents } from "@/lib/mdx-components";
 
 export async function generateStaticParams() {
   const items = getMDXList("s0/traps");
@@ -44,7 +37,11 @@ export default async function TrapDetailPage({
 
       {content.trim() && (
         <article className="prose prose-lg prose-invert mt-8 max-w-none">
-          <MDXRemote source={content} components={mdxComponents} />
+          <MDXRemote
+            source={content}
+            components={mdxComponents}
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+          />
         </article>
       )}
     </div>

@@ -16,11 +16,49 @@ function autoSpace(text: string): string {
   return result;
 }
 
+type CalloutColor = "gray" | "blue" | "green" | "yellow" | "red" | "purple";
+
+const COLOR_MAP: Record<CalloutColor, { bg: string; border: string; bar: string }> = {
+  gray: {
+    bg: "bg-zinc-800/30",
+    border: "border-zinc-700",
+    bar: "bg-zinc-500",
+  },
+  blue: {
+    bg: "bg-blue-500/10",
+    border: "border-blue-500/30",
+    bar: "bg-blue-500",
+  },
+  green: {
+    bg: "bg-green-500/10",
+    border: "border-green-500/30",
+    bar: "bg-green-500",
+  },
+  yellow: {
+    bg: "bg-yellow-500/10",
+    border: "border-yellow-500/30",
+    bar: "bg-yellow-500",
+  },
+  red: {
+    bg: "bg-red-500/10",
+    border: "border-red-500/30",
+    bar: "bg-red-500",
+  },
+  purple: {
+    bg: "bg-purple-500/10",
+    border: "border-purple-500/30",
+    bar: "bg-purple-500",
+  },
+};
+
 interface CalloutProps {
   children: React.ReactNode;
+  color?: CalloutColor;
 }
 
-export function Callout({ children }: CalloutProps) {
+export function Callout({ children, color = "gray" }: CalloutProps) {
+  const colors = COLOR_MAP[color];
+
   // 递归处理子元素中的文本节点
   const processChildren = (node: React.ReactNode): React.ReactNode => {
     if (typeof node === "string") {
@@ -30,9 +68,9 @@ export function Callout({ children }: CalloutProps) {
   };
 
   return (
-    <div className="not-prose my-4 rounded-xl border border-zinc-700 bg-zinc-800/30 px-4 py-3">
+    <div className={`not-prose my-4 rounded-xl border ${colors.border} ${colors.bg} px-4 py-3`}>
       <div className="flex items-start gap-3">
-        <div className="h-full w-1 flex-shrink-0 rounded-full bg-zinc-500 self-stretch" />
+        <div className={`h-full w-1 flex-shrink-0 rounded-full ${colors.bar} self-stretch`} />
         <div className="text-sm text-zinc-300 leading-relaxed">
           {Array.isArray(children)
             ? children.map((child, i) => (

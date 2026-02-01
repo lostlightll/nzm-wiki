@@ -30,3 +30,62 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Callout / Blockquote 样式 */
+.prose blockquote {
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 4px solid #3b82f6;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  font-style: normal;
+  quotes: none;
+}
+
+.prose blockquote::before,
+.prose blockquote::after {
+  content: none;
+}
+
+.prose blockquote p {
+  margin: 0.25rem 0;
+}
+
+.prose blockquote strong {
+  color: #60a5fa;
+}
+
+/* Heading 装饰符号 */
+.prose h2 {
+  position: relative;
+  scroll-margin-top: 5rem;
+}
+
+.prose h2::before {
+  content: "";
+  position: absolute;
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1em;
+  background: #f59e0b;
+  border-radius: 2px;
+}
+
+.prose h3 {
+  position: relative;
+  scroll-margin-top: 5rem;
+}
+
+.prose h3::before {
+  content: "";
+  position: absolute;
+  left: -0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 1em;
+  background: #6b7280;
+  border-radius: 2px;
+}

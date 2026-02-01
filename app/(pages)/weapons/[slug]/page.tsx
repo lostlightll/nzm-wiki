@@ -2,6 +2,8 @@ import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { getWeaponBySlug } from "@/lib/weapons";
 import { WeaponDetailCard } from "@/components/WeaponCard";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
 
 export async function generateStaticParams() {
   const items = getMDXList("s0/weapons");
@@ -18,7 +20,8 @@ export default async function WeaponDetailPage({
   const { slug } = await params;
 
   const weapon = await getWeaponBySlug(slug);
-  const { content } = getMDXDetail("s0/weapons", slug);
+  const { content, metadata } = getMDXDetail("s0/weapons", slug);
+  const showToc = metadata.toc !== false;
 
   if (!weapon) {
     return (
@@ -29,14 +32,21 @@ export default async function WeaponDetailPage({
   }
 
   return (
-    <div className="mx-auto max-w-3xl p-10">
-      <WeaponDetailCard weapon={weapon} />
+    <>
+      <TableOfContents enabled={showToc} />
+      <div className="mx-auto max-w-3xl p-10">
+        <WeaponDetailCard weapon={weapon} />
 
-      {content.trim() && (
-        <article className="prose prose-lg prose-invert mt-8 max-w-none">
-          <MDXRemote source={content} />
-        </article>
-      )}
-    </div>
+        {content.trim() && (
+          <article className="prose prose-lg prose-invert mt-8 max-w-none">
+            <MDXRemote
+              source={content}
+              components={mdxComponents}
+              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            />
+          </article>
+        )}
+      </div>
+    </>
   );
 }
