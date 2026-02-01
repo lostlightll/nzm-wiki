@@ -28,7 +28,7 @@ export const HIGHLIGHT_COLORS = {
 } as const;
 
 // Callout 加粗颜色
-export const CALLOUT_BOLD_COLOR = "#baa24a";
+export const CALLOUT_BOLD_COLOR = "#60a5fa";
 
 export type TextColor = keyof typeof TEXT_COLORS;
 export type HighlightColor = keyof typeof HIGHLIGHT_COLORS;
