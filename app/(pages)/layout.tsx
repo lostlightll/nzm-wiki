@@ -29,7 +29,7 @@ function GitHubIcon() {
 
 function NavBar() {
   return (
-    <nav className="sticky top-0 z-50 border-b border-zinc-700 bg-zinc-900/95 backdrop-blur">
+    <nav className="sticky top-0 z-50 border-b border-zinc-700 bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
         <div className="flex items-center gap-6">
           <Link
@@ -71,7 +71,7 @@ export default function PagesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-zinc-900">
+    <div className="min-h-screen bg-background">
       <NavBar />
       <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
     </div>

@@ -5,7 +5,7 @@ import matter from "gray-matter";
 const baseDir = path.join(process.cwd(), "data");
 
 /**
- * 获取某个分类下的所有文章（用于列表页）
+ * 递归获取某个分类下的所有文章（用于列表页）
  */
 export function getMDXList(folder: string) {
   const dirPath = path.join(baseDir, folder);
@@ -15,21 +15,32 @@ export function getMDXList(folder: string) {
     return [];
   }
 
-  const files = fs.readdirSync(dirPath);
+  const results: Array<{ slug: string; [key: string]: unknown }> = [];
 
-  return files
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => {
-      const filePath = path.join(dirPath, file);
-      const fileContent = fs.readFileSync(filePath, "utf-8");
-      const { data } = matter(fileContent);
+  function scanDir(currentPath: string, slugPrefix: string = "") {
+    const entries = fs.readdirSync(currentPath, { withFileTypes: true });
 
-      return {
-        // slug 保持为原始中文文件名，不包含 .mdx
-        slug: file.replace(/\.mdx$/, ""),
-        ...data,
-      };
-    });
+    for (const entry of entries) {
+      const fullPath = path.join(currentPath, entry.name);
+
+      if (entry.isDirectory()) {
+        // 递归扫描子目录
+        scanDir(fullPath, slugPrefix ? `${slugPrefix}/${entry.name}` : entry.name);
+      } else if (entry.name.endsWith(".mdx")) {
+        const fileContent = fs.readFileSync(fullPath, "utf-8");
+        const { data } = matter(fileContent);
+        const fileName = entry.name.replace(/\.mdx$/, "");
+
+        results.push({
+          slug: slugPrefix ? `${slugPrefix}/${fileName}` : fileName,
+          ...data,
+        });
+      }
+    }
+  }
+
+  scanDir(dirPath);
+  return results;
 }
 
 /**

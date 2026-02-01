@@ -1,0 +1,163 @@
+{
+  "berserker": {
+    "slug": "berserker",
+    "title": "疯狂战士",
+    "type": "buff",
+    "icon": "/icons/cards/berserker.png",
+    "effect": "己方血量越低攻击力越高（最多可翻倍）"
+  },
+  "blademaster": {
+    "slug": "blademaster",
+    "title": "狂战士祝福",
+    "type": "buff",
+    "icon": "/icons/cards/blademaster.png",
+    "effect": "己方升级攻击力时连升300%"
+  },
+  "boss-vampire": {
+    "slug": "boss-vampire",
+    "title": "BOSS吸血",
+    "type": "debuff",
+    "icon": "/icons/cards/boss-vampire.png",
+    "effect": "对方BOSS攻击命中时回复血量"
+  },
+  "buff-mob": {
+    "slug": "buff-mob",
+    "title": "怪物强化",
+    "type": "debuff",
+    "icon": "/icons/cards/buff-mob.png",
+    "effect": "对方非精英怪血量和移速提升"
+  },
+  "critical-hit-crazy": {
+    "slug": "critical-hit-crazy",
+    "title": "弱点狂热",
+    "type": "buff",
+    "icon": "/icons/cards/critical-hit-crazy-gun.png",
+    "effect": "己方弱点攻击提升攻击和攻速"
+  },
+  "critical-hit-money": {
+    "slug": "critical-hit-money",
+    "title": "收割弱点",
+    "type": "buff",
+    "icon": "/icons/cards/critical-hit-money.png",
+    "effect": "己方弱点击杀经济提升1000%"
+  },
+  "delayed-resource": {
+    "slug": "delayed-resource",
+    "title": "零存整取",
+    "type": "buff",
+    "icon": "/icons/cards/delayed-resource.png",
+    "effect": "己方本区经济降低至30%，进入下区域时获得200% 本区实际经济"
+  },
+  "double-gold": {
+    "slug": "double-gold",
+    "title": "财富赌局",
+    "type": "buff",
+    "icon": "/icons/cards/double-gold.png",
+    "effect": "己方击杀怪物经济变为200%"
+  },
+  "doublelevel": {
+    "slug": "doublelevel",
+    "title": "升级飞跃",
+    "type": "buff",
+    "icon": "/icons/cards/doublelevel.png",
+    "effect": "己方升级攻击力时70%概率连升3级"
+  },
+  "easy-toughness": {
+    "slug": "easy-toughness",
+    "title": "破刃加快",
+    "type": "buff",
+    "icon": "/icons/cards/easy-toughness-01.png",
+    "effect": "己方破韧效率变为200%"
+  },
+  "element-invasion": {
+    "slug": "element-invasion",
+    "title": "元素入侵",
+    "type": "buff",
+    "icon": "/icons/cards/element-01.png",
+    "effect": "己方每击杀10次怪物时为一名对方队员施加随机元素异常"
+  },
+  "elite-strengthen": {
+    "slug": "elite-strengthen",
+    "title": "精英加强",
+    "type": "debuff",
+    "icon": "/icons/cards/elite-strengthen.png",
+    "effect": "对方精英怪移速提升，护盾提升100%，血量提升 100%"
+  },
+  "elite-times-shield": {
+    "slug": "elite-times-shield",
+    "title": "鳞甲外壳",
+    "type": "debuff",
+    "icon": "/icons/cards/elite-times-shield.png",
+    "effect": "对方精英怪自带次数盾（无元素盾）"
+  },
+  "exchange-burster-alt": {
+    "slug": "exchange-burster-alt",
+    "title": "冲锋精英",
+    "type": "debuff",
+    "icon": "/icons/cards/exchange-chaser-alt.png",
+    "effect": "对方精英怪和部分小怪变成冲锋者且活力无限"
+  },
+  "exchange-burster": {
+    "slug": "exchange-burster",
+    "title": "自爆改造",
+    "type": "debuff",
+    "icon": "/icons/cards/exchange-burster.png",
+    "effect": "对方普通小怪变成自爆怪"
+  },
+  "exchange-chaser": {
+    "slug": "exchange-chaser",
+    "title": "致命快递",
+    "type": "buff",
+    "icon": "/icons/cards/more-elite.png",
+    "effect": "己方每消灭45个怪时在对方一名玩家附近召唤怪物"
+  },
+  "exchange-lives": {
+    "slug": "exchange-lives",
+    "title": "幸灾乐祸",
+    "type": "buff",
+    "icon": "/icons/cards/exchange-lives.png",
+    "effect": "对手每次死亡时己方玩家获得5000金币"
+  },
+  "golden-monster": {
+    "slug": "golden-monster",
+    "title": "黄金献祭",
+    "type": "buff",
+    "icon": "/icons/cards/golden-monster-b-1.png",
+    "effect": "己方必定遭遇黄金怪"
+  },
+  "invalid-card": {
+    "slug": "invalid-card",
+    "title": "无懈可击",
+    "type": "buff",
+    "icon": "/icons/cards/invalid-card.png",
+    "effect": "对方本回合卡牌失效"
+  },
+  "lock-toughness": {
+    "slug": "lock-toughness",
+    "title": "永驻之壳",
+    "type": "debuff",
+    "icon": "/icons/cards/lock-toughness.png",
+    "effect": "对方BOSS锁韧"
+  },
+  "pause-shield": {
+    "slug": "pause-shield",
+    "title": "护盾干扰",
+    "type": "debuff",
+    "icon": "/icons/cards/pause-shield.png",
+    "effect": "对方护盾无法自动恢复"
+  },
+  "resource": {
+    "slug": "resource",
+    "title": "点少钱多",
+    "type": "buff",
+    "icon": "/icons/cards/resource.png",
+    "effect": "己方战术点获取降低50%，金币获取提升150%"
+  },
+  "weak-point-boost": {
+    "slug": "weak-point-boost",
+    "title": "弱点约束",
+    "type": "buff",
+    "icon": "/icons/cards/weak-point-boost-01.png",
+    "effect": "己方造成的弱点伤害提升350%，非弱点伤害降低 30%"
+  }
+}
