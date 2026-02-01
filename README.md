@@ -21,8 +21,6 @@ Open [http://localhost:3000/editor](http://localhost:3000/editor) to edit wiki m
 
 ### Callout
 
-提示框组件，支持多种颜色。
-
 ```mdx
 <Callout>默认灰色提示</Callout>
 <Callout color="blue">蓝色提示</Callout>
@@ -33,8 +31,6 @@ Open [http://localhost:3000/editor](http://localhost:3000/editor) to edit wiki m
 ```
 
 ### Highlight
-
-荧光笔高亮效果，支持多种颜色。
 
 ```mdx
 <Highlight>默认 sunny 黄色高亮</Highlight>
@@ -47,8 +43,6 @@ Open [http://localhost:3000/editor](http://localhost:3000/editor) to edit wiki m
 ```
 
 ### Text Colors
-
-文字颜色组件。
 
 ```mdx
 <Red>Red - #cf5148</Red>
@@ -63,8 +57,6 @@ Open [http://localhost:3000/editor](http://localhost:3000/editor) to edit wiki m
 ```
 
 ### Element Colors
-
-元素属性颜色。
 
 ```mdx
 <Fire>Fire - #f8c618</Fire>
