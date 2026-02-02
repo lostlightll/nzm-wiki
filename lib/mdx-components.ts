@@ -3,6 +3,7 @@ import { Callout } from "@/components/Callout";
 import { LevelTable } from "@/components/LevelTable";
 import { DataTable } from "@/components/DataTable";
 import { Credit } from "@/components/Credit";
+import { BossCard, BossCardGrid } from "@/components/BossCard";
 import { BuffCard, BuffCardGrid, BuffDetail, CardRef } from "@/components/BuffCard";
 import {
   Red,
@@ -28,6 +29,8 @@ export const mdxComponents = {
   LevelTable,
   DataTable,
   Credit,
+  BossCard,
+  BossCardGrid,
   BuffCard,
   BuffCardGrid,
   BuffDetail,
