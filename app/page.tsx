@@ -55,6 +55,9 @@ export default function Home() {
           />
         ))}
       </div>
+      <p className="mt-6 text-sm text-zinc-500">
+        移动端尚未完全适配，推荐使用 PC 浏览器查看
+      </p>
     </div>
   );
 }
