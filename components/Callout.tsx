@@ -74,7 +74,7 @@ export function Callout({ children, color = "gray" }: CalloutProps) {
       <style>{`
         .callout strong { color: ${CALLOUT_BOLD_COLOR}; }
       `}</style>
-      <div className="callout text-sm text-foreground leading-relaxed [&>p]:m-0">
+      <div className="callout text-base text-foreground leading-relaxed [&>p]:m-0">
         {Array.isArray(children)
           ? children.map((child, i) => (
               <span key={i}>{processChildren(child)}</span>
