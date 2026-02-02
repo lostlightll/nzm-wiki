@@ -54,7 +54,7 @@ export interface Weapon {
   rarity?: Rarity;
   tags?: WeaponTag[] | string;
   scope?: ScopeType | string;
-  damage: WeaponDamage;
+  damage: WeaponDamage | null;
   toughness_type: ToughnessType;
   enable_critical: boolean;
   weekness_multiplier: number;

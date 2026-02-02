@@ -15,7 +15,8 @@ const ELEMENT_ICONS: Record<ElementType, string> = {
   物理: "/icons/elements/kinetic.png",
 };
 
-function formatDamage(base: number, pellets?: number): string {
+function formatDamage(base: number | undefined | null, pellets?: number): string {
+  if (base === null || base === undefined) return "-";
   const damage = Math.round(base * 500);
   if (pellets && pellets > 1) {
     return `${damage} x ${pellets}`;
@@ -131,7 +132,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
         <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-base">
           <div className="flex justify-between">
             <span className="text-zinc-500">单发伤害</span>
-            <span className="text-white">{formatDamage(weapon.damage.base, weapon.pellets)}</span>
+            <span className="text-white">{formatDamage(weapon.damage?.base, weapon.pellets)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">射速</span>
@@ -151,7 +152,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">破韧伤害</span>
-            <span className="text-white">{weapon.damage.toughness}</span>
+            <span className="text-white">{formatValue(weapon.damage?.toughness)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">换弹时间</span>
@@ -239,23 +240,23 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
         <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-3">
           <div className="flex justify-between">
             <span className="text-zinc-500">单发伤害</span>
-            <span className="text-white">{formatDamage(weapon.damage.base, weapon.pellets)}</span>
+            <span className="text-white">{formatDamage(weapon.damage?.base, weapon.pellets)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">冲击伤害</span>
-            <span className="text-white">{weapon.damage.impulse}</span>
+            <span className="text-white">{formatValue(weapon.damage?.impulse)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">破韧伤害</span>
-            <span className="text-white">{weapon.damage.toughness}</span>
+            <span className="text-white">{formatValue(weapon.damage?.toughness)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">血肉伤害</span>
-            <span className="text-white">{weapon.damage.flesh}</span>
+            <span className="text-white">{formatValue(weapon.damage?.flesh)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">受伤伤害</span>
-            <span className="text-white">{weapon.damage.hurtable}</span>
+            <span className="text-white">{formatValue(weapon.damage?.hurtable)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">弱点倍率</span>
