@@ -6,7 +6,7 @@ import remarkGfm from "remark-gfm";
 import { mdxComponents } from "@/lib/mdx-components";
 
 export async function generateStaticParams() {
-  const items = getMDXList("s0/lc");
+  const items = getMDXList("s0/lc/boss");
   return items.map((item) => ({
     slug: item.slug,
   }));
@@ -20,7 +20,7 @@ export default async function BossDetailPage({
   const { slug } = await params;
 
   const boss = await getBossBySlug(slug);
-  const { content } = getMDXDetail("s0/lc", slug);
+  const { content } = getMDXDetail("s0/lc/boss", slug);
 
   if (!boss) {
     return (

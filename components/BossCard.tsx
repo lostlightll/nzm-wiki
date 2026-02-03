@@ -36,7 +36,7 @@ function BossImage({
 
   return (
     <Image
-      src={getAssetPath(`/icons/enemies/boss/${name}.png`)}
+      src={getAssetPath(`/icons/enemies/lc/boss/${name}.png`)}
       alt={name}
       width={256}
       height={256}
