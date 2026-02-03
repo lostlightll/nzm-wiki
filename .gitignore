@@ -43,4 +43,5 @@ next-env.d.ts
 
 # for qiekn
 /refs
-CLAUDE.md
+/CLAUDE.md
+/log.txt
