@@ -66,6 +66,11 @@ Open [http://localhost:3000/editor](http://localhost:3000/editor) to edit wiki m
 <Kinetic>Kinetic - #becacc</Kinetic>
 ```
 
+## Scripts
+
+Decode CG: `python3 ./scripts/convert.py "/e/games/WeGameApps/rail_apps/逆战：未来(2002130)/NZM/Content/Movies"`
+Decrypt: for example`./scripts/decrypt.sh NZM/Content/AIBehavior/`
+
 ## Extra
 
 For more about Nizhan: Future, See my notes at https://qiekn.notion.site/nzm
