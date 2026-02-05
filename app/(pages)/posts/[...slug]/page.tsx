@@ -21,6 +21,11 @@ const PAGE_WIDTH_CLASSES: Record<string, string> = {
   full: "max-w-7xl",
 };
 
+// Check if value is a custom width (e.g., "1024px", "80rem")
+function isCustomWidth(value: string): boolean {
+  return /^\d+(px|rem|em|vw|%)$/.test(value);
+}
+
 export default async function PostPage({
   params,
 }: {
@@ -31,16 +36,27 @@ export default async function PostPage({
   const { content, metadata } = getMDXDetail("posts", slugPath);
   const showToc = metadata.toc !== false;
 
-  // Get page width class from frontmatter, default to lg (max-w-3xl)
+  // Get page width from frontmatter, default to lg (max-w-3xl)
   const pageWidth = metadata["page-width"] as string | undefined;
-  const widthClass = pageWidth && PAGE_WIDTH_CLASSES[pageWidth]
-    ? PAGE_WIDTH_CLASSES[pageWidth]
-    : "max-w-3xl";
+  const isCustom = pageWidth && isCustomWidth(pageWidth);
+  const widthClass = isCustom
+    ? ""
+    : pageWidth && PAGE_WIDTH_CLASSES[pageWidth]
+      ? PAGE_WIDTH_CLASSES[pageWidth]
+      : "max-w-3xl";
+
+  // Custom width style: specified width on desktop, full width on mobile
+  const customStyle = isCustom
+    ? { maxWidth: pageWidth }
+    : undefined;
 
   return (
     <>
       <TableOfContents enabled={showToc} />
-      <div className={`mx-auto ${widthClass} p-10`}>
+      <div
+        className={`mx-auto ${widthClass} p-10 ${isCustom ? "max-md:max-w-full" : ""}`}
+        style={customStyle}
+      >
         <article className="prose prose-lg prose-invert max-w-none">
           {metadata.title && <h1>{metadata.title}</h1>}
           <MDXRemote
