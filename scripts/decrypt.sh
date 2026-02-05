@@ -55,6 +55,6 @@ echo "----------------------------------------"
 # -f: Applies the filter logic
 # -F: Keeps your original format string "{}.pak"
 # We wrap variables in quotes to handle potential spaces in paths
-"$QBMS_EXE" -f "$FILTER_FLAG" -F "{}.pak" "$BMS_SCRIPT" "$INPUT_DIR" "$OUTPUT_DIR"
+"$QBMS_EXE" -o -f "$FILTER_FLAG" -F "{}.pak" "$BMS_SCRIPT" "$INPUT_DIR" "$OUTPUT_DIR"
 
 echo "Execution complete!"
