@@ -121,7 +121,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
         <div className="flex justify-center">
           <Image
             src={getAssetPath(`/icons/weapons/normal/${weapon.title}.png`)}
-            alt={weapon.title}
+            alt={weapon.title || ""}
             width={320}
             height={160}
             className="object-contain"
@@ -227,7 +227,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
       <div className="relative mb-6 h-32 w-full">
         <Image
           src={getAssetPath(`/icons/weapons/normal/${weapon.title}.png`)}
-          alt={weapon.title}
+          alt={weapon.title || ""}
           width={320}
           height={160}
           className="mx-auto object-contain"
