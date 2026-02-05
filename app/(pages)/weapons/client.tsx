@@ -9,26 +9,34 @@ import {
   WEAPON_TYPES,
   ELEMENT_TYPES,
   RARITY_OPTIONS,
+  WEAPON_SLOTS,
+  type WeaponSlot,
 } from "@/constants/weapons";
 
 export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
   const [showDetails, setShowDetails] = useState(true);
+  const slotState = useSelection<WeaponSlot>(["主武器"]);
   const typeState = useSelection<WeaponType>();
   const elementState = useSelection<ElementType>();
-  const rarityState = useSelection<Rarity>();
+  const rarityState = useSelection<Rarity>(["传说"]);
 
   const hasFilter =
+    slotState.selected.size > 0 ||
     typeState.selected.size > 0 ||
     elementState.selected.size > 0 ||
     rarityState.selected.size > 0;
 
   const resetFilters = () => {
+    slotState.clear();
     typeState.clear();
     elementState.clear();
     rarityState.clear();
   };
 
   const filteredWeapons = weapons.filter((weapon) => {
+    const slotMatch =
+      slotState.selected.size === 0 ||
+      (weapon.use_type && slotState.selected.has(weapon.use_type as WeaponSlot));
     const typeMatch =
       typeState.selected.size === 0 ||
       (weapon.weapon_type && typeState.selected.has(weapon.weapon_type));
@@ -38,7 +46,7 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
     const rarityMatch =
       rarityState.selected.size === 0 ||
       (weapon.rarity && rarityState.selected.has(weapon.rarity));
-    return typeMatch && elementMatch && rarityMatch;
+    return slotMatch && typeMatch && elementMatch && rarityMatch;
   });
 
   return (
@@ -60,6 +68,15 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
           items={RARITY_OPTIONS}
           selected={rarityState.selected}
           onToggle={rarityState.toggle}
+          gridClass="grid grid-cols-3 gap-2 max-w-md"
+        />
+
+        <FilterSection
+          title="武器槽位"
+          items={WEAPON_SLOTS}
+          selected={slotState.selected}
+          onToggle={slotState.toggle}
+          gridClass="grid grid-cols-3 gap-2 max-w-md"
         />
 
         <FilterSection

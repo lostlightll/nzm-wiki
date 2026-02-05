@@ -4,6 +4,14 @@ import { ELEMENT_COLORS } from "./common";
 export { ELEMENT_COLORS };
 export { RARITY_OPTIONS, RARITY_BG_COLORS } from "./common";
 
+export type WeaponSlot = "主武器" | "副武器" | "近战武器";
+
+export const WEAPON_SLOTS: { type: WeaponSlot }[] = [
+  { type: "主武器" },
+  { type: "副武器" },
+  { type: "近战武器" },
+];
+
 export const WEAPON_TYPES: { type: WeaponType; icon: string }[] = [
   { type: "突击步枪", icon: "" },
   { type: "狙击步枪", icon: "" },

@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-export function useSelection<T>() {
-  const [selected, setSelected] = useState<Set<T>>(new Set());
+export function useSelection<T>(initial?: T[]) {
+  const [selected, setSelected] = useState<Set<T>>(new Set(initial));
 
   const toggle = (item: T) => {
     setSelected((prev) => {
