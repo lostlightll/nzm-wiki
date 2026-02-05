@@ -22,8 +22,10 @@ import {
   Kinetic,
   Highlight,
 } from "@/components/TextStyle";
+import { MDXImage } from "@/components/MDXImage";
 
 export const mdxComponents = {
+  img: MDXImage,
   table: ProseTable,
   Callout,
   LevelTable,
