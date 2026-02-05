@@ -5,7 +5,7 @@ import { getAssetPath } from "@/lib/path";
 type MDXImageProps = React.ImgHTMLAttributes<HTMLImageElement>;
 
 export function MDXImage({ src, alt, ...props }: MDXImageProps) {
-  if (!src) return null;
+  if (!src || typeof src !== "string") return null;
 
   // Only process local paths (starting with /)
   const imageSrc = src.startsWith("/") ? getAssetPath(src) : src;
