@@ -9,17 +9,18 @@ area: 1x1
 description: 部署在墙壁上的火焰发射器，可以周期性向前方喷射火焰，对敌人造成持续伤害并附带灼烧效果。
 ---
 <LevelTable
-  headers={["陷阱等级", "技能攻击力", "DPS"]}
+  headers={["等级", "技能攻击力", "减速效果"]}
   data={[
-    [1, 200, "xxx"],
-    [2, 240, "xxx"],
-    [3, 290, "xxx"],
-    [4, 350, "xxx"],
+    [1, 200, "50%"],
+    [2, 240, "40%"],
+    [3, 290, "50%"],
+    [4, 350, "55%"],
   ]}
 />
 
-<Callout>火墙的攻击有5段直接伤害和2段后续灼烧伤害，攻击持续时间2秒，冷却时间6秒。</Callout>
-
-<Callout>看上去有些奇怪，暂时作为一个参考，后续去寻找陷阱伤害的配置文件。</Callout>
+- 攻击冷却： **8 秒**
+- 攻击持续时间： **2 秒**
+- 伤害触发间隔： **0.4 秒**
+- 火焰伤害 + 附加 **TrapFire** 灼烧 BUFF
 
 <Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1Y7zFBEEc6" title="BV1Y7zFBEEc6" />

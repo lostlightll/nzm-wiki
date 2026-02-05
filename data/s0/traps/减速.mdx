@@ -8,9 +8,15 @@ price: 400
 area: 1x1
 description: 部署在地面的减速陷阱，敌人经过时会被减速一段时间。
 ---
+<LevelTable
+  headers={["等级"]}
+  data={[
+    [1],
+    [2],
+    [3],
+    [4],
+  ]}
+/>
 
-<Callout>
-升 2 级花费 4000  
-升 3 级花费 7000  
-升 4 级花费 10000
-</Callout>
+- 生效间隔： **0.25 秒**
+- 给予敌人 **TrapSlowDown** 减速 Buff

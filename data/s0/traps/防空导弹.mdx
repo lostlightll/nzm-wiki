@@ -8,9 +8,8 @@ price: 600
 area: 1x1
 description: 部署在地面的防空导弹，专门针对飞行敌人设计，可以锁定敌人发射追踪飞弹，是空中突袭怪的克星，但无法攻击地面目标。
 ---
-
 <LevelTable
-  headers={["陷阱等级", "技能攻击力", "伤害", "攻击间隔(秒)"]}
+  headers={["等级", "技能攻击力", "伤害", "攻击冷却"]}
   data={[
     [1, 150, "500 × 2", 5],
     [2, 200, "500 × 2", 3.5],
@@ -19,15 +18,10 @@ description: 部署在地面的防空导弹，专门针对飞行敌人设计，�
   ]}
 />
 
-<Callout>升级不增加血量，始终是 100 HP</Callout>
+- 只攻击空中单位
+- 升级不增加血量，始终是 **100 HP**
+- 每次发射 **2枚** 追踪导弹，两枚炮弹射击间隔为 **0.3 秒**
 
-<Callout>防空导弹每次攻击会连续射出 **两枚** 跟踪导弹</Callout>
-
-<Callout>结合飞机的血量，自爆飞机 100 HP，飞鱼 1000 HP (一次攻击就可以击落,飞碟则需要 14 次攻击)</Callout>
-
-<Callout>To-do: 确定防空导弹陷阱放置后需要等待多长时间才开始进入攻击状态</Callout>
-
-<Callout>To-do: 是否会出现一架在射程内的飞机把所有防空导弹都骗出来的情况</Callout>
-
+<Callout>结合飞机的血量，自爆飞机 100 HP，飞鱼 1000 HP（一次攻击就可以击落，飞碟则需要 14 次攻击）</Callout>
 
 <Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1JqkjBnEvo" title="BV1JqkjBnEvo" />
