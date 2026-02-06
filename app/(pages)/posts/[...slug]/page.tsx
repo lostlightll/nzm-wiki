@@ -46,15 +46,13 @@ export default async function PostPage({
       : "max-w-3xl";
 
   // Custom width style: specified width on desktop, full width on mobile
-  const customStyle = isCustom
-    ? { maxWidth: pageWidth }
-    : undefined;
+  const customStyle = isCustom ? { maxWidth: pageWidth } : undefined;
 
   return (
     <>
       <TableOfContents enabled={showToc} />
       <div
-        className={`mx-auto ${widthClass} p-10 ${isCustom ? "max-md:max-w-full" : ""}`}
+        className={`mx-auto ${widthClass} py-6 md:p-10 ${isCustom ? "max-md:max-w-full" : ""}`}
         style={customStyle}
       >
         <article className="prose prose-lg prose-invert max-w-none">
