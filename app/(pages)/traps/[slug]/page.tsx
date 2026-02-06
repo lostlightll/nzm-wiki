@@ -23,7 +23,7 @@ export default async function TrapDetailPage({
 
   if (!trap) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-6 sm:p-10">
+      <div className="mx-auto max-w-3xl py-6 sm:p-10">
         <p className="text-zinc-500">陷阱不存在</p>
       </div>
     );
@@ -32,7 +32,7 @@ export default async function TrapDetailPage({
   const { content } = getMDXDetail("s0/traps", slug);
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6 sm:p-10">
+    <div className="mx-auto max-w-3xl py-6 sm:p-10">
       <TrapDetailCard trap={trap} />
 
       {content.trim() && (
