@@ -25,7 +25,7 @@ export default async function WeaponDetailPage({
 
   if (!weapon) {
     return (
-      <div className="mx-auto max-w-3xl p-10">
+      <div className="mx-auto max-w-3xl py-6">
         <p className="text-zinc-500">武器不存在</p>
       </div>
     );
@@ -34,7 +34,7 @@ export default async function WeaponDetailPage({
   return (
     <>
       <TableOfContents enabled={showToc} />
-      <div className="mx-auto max-w-3xl p-10">
+      <div className="mx-auto max-w-3xl py-6">
         <WeaponDetailCard weapon={weapon} />
 
         {content.trim() && (

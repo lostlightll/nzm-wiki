@@ -24,14 +24,14 @@ export default async function TDEnemyDetailPage({
 
   if (!enemy) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-6 sm:p-10">
+      <div className="mx-auto max-w-3xl py-6 sm:p-10">
         <p className="text-zinc-500">敌人不存在</p>
       </div>
     );
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6 sm:p-10">
+    <div className="mx-auto max-w-3xl py-6 sm:p-10">
       <TDEnemyDetailCard enemy={enemy} />
 
       {content.trim() && (
