@@ -63,8 +63,8 @@ export function DataTable({ headers, align, nowrap, iconSize = 24, data }: DataT
   const nowrapSet = new Set(nowrap || []);
 
   return (
-    <div className="not-prose my-4 overflow-hidden rounded-xl border border-zinc-700">
-      <table className="w-full text-sm">
+    <div className="not-prose my-4 overflow-x-auto rounded-xl border border-zinc-700">
+      <table className="w-full min-w-max text-sm">
         <thead>
           <tr className="bg-zinc-800/80">
             {headers.map((header, i) => (
