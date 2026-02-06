@@ -23,9 +23,11 @@ import {
   Highlight,
 } from "@/components/TextStyle";
 import { MDXImage } from "@/components/MDXImage";
+import { MDXLink } from "@/components/MDXLink";
 
 export const mdxComponents = {
   img: MDXImage,
+  a: MDXLink,
   table: ProseTable,
   Callout,
   LevelTable,
