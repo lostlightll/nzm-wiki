@@ -67,8 +67,7 @@ export default function PerksPageClient({
           ? RARITY_NUM_MAP[perk.rarity]
           : perk.rarity;
       const rarityMatch =
-        rarityState.selected.size === 0 ||
-        rarityState.selected.has(perkRarity);
+        rarityState.selected.size === 0 || rarityState.selected.has(perkRarity);
       return slotMatch && rarityMatch;
     });
   }, [initialPerks, slotState.selected, rarityState.selected]);
@@ -86,6 +85,12 @@ export default function PerksPageClient({
   return (
     <>
       <h1 className="mb-8 text-3xl font-bold text-white">插件图鉴</h1>
+
+      <div className="p-4 rounded-2xl border border-zinc-700 my-4">
+        <span>
+          目前插件没有太多可讲的，暂时只看游戏内的插件图鉴就好了。后续如果能找到插件的具体实现逻辑再更新此页面
+        </span>
+      </div>
 
       {/* Filter section */}
       <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
@@ -127,11 +132,15 @@ export default function PerksPageClient({
               <div
                 className="grid gap-3"
                 style={{
-                  gridTemplateColumns: "repeat(auto-fill, minmax(128px, 128px))",
+                  gridTemplateColumns:
+                    "repeat(auto-fill, minmax(128px, 128px))",
                 }}
               >
                 {slotPerks.map((perk, index) => (
-                  <PerkCard key={perk.id || `${perk.name}-${index}`} perk={perk} />
+                  <PerkCard
+                    key={perk.id || `${perk.name}-${index}`}
+                    perk={perk}
+                  />
                 ))}
               </div>
             </section>
