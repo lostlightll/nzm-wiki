@@ -24,7 +24,7 @@ export const WEAPON_TYPES: { type: WeaponType; icon: string }[] = [
   { type: "弓箭", icon: "" },
   { type: "射手步枪", icon: "" },
   { type: "连发榴弹", icon: "" },
-  { type: "喷火器", icon: "" },
+  { type: "喷射器", icon: "" },
 ];
 
 export const ELEMENT_TYPES: { type: keyof typeof ELEMENT_COLORS; iconSrc: string; color: string }[] = [
