@@ -5,12 +5,13 @@ import { Calculator as CalculatorIcon, Eraser, X } from "lucide-react";
 
 // 帮助信息
 const HELP_TEXT = [
-  "支持: + - * / ^ () 和变量",
-  "示例: 2+3, x=10, x*2, _+1, x=1",
+  "支持: + - * / ^ () % 和变量",
+  "示例: 2+3, x=10, x*2, _+1, 25%",
   "_ 表示上次结果",
   "",
   "命令: ",
-  "- 清屏: clear/cl",
+  "- 清屏: clear/cl (保留变量)",
+  "- 重置: reset (清屏+清空变量)",
   "- 显示帮助: help",
   "- 退出: exit/q",
 ];
@@ -247,7 +248,11 @@ export function Calculator({
     };
   }, [isResizing]);
 
-  const clearHistory = useCallback(() => {
+  const clearScreen = useCallback(() => {
+    setHistory([]);
+  }, []);
+
+  const resetAll = useCallback(() => {
     setHistory([]);
     setVariables({ _: 0 });
   }, []);
@@ -258,7 +263,13 @@ export function Calculator({
 
     // 处理命令
     if (trimmed === "clear" || trimmed === "cl") {
-      clearHistory();
+      clearScreen();
+      setInput("");
+      return;
+    }
+
+    if (trimmed === "reset") {
+      resetAll();
       setInput("");
       return;
     }
@@ -319,7 +330,7 @@ export function Calculator({
     setHistory((prev) => [...prev, { input: originalInput, output, isError, isAssignment }]);
     setInput("");
     setHistoryIndex(-1);
-  }, [input, variables, clearHistory, setIsOpen]);
+  }, [input, variables, clearScreen, resetAll, setIsOpen]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
@@ -441,9 +452,9 @@ export function Calculator({
           </span>
           <div className="flex gap-1" onMouseDown={(e) => e.stopPropagation()}>
             <button
-              onClick={clearHistory}
+              onClick={resetAll}
               className="rounded p-1 text-zinc-500 hover:bg-zinc-700 hover:text-zinc-300"
-              title="清空"
+              title="重置 (清屏+清空变量)"
             >
               <Eraser className="h-4 w-4" />
             </button>
