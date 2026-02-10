@@ -107,7 +107,7 @@ export function Calculator({
   const [position, setPosition] = useState({ right: 16, bottom: 16 });
   const [size, setSize] = useState({ width: 320, height: 300 });
   const [isDragging, setIsDragging] = useState(false);
-  const [isResizing, setIsResizing] = useState(false);
+  const [isResizing, setIsResizing] = useState<false | "nw" | "se">(false);
   const dragStartRef = useRef({ mouseX: 0, mouseY: 0, right: 0, bottom: 0 });
   const resizeStartRef = useRef({ mouseX: 0, mouseY: 0, width: 0, height: 0 });
   const hasDraggedRef = useRef(false);
@@ -205,8 +205,8 @@ export function Calculator({
     }
   }, [setIsOpen]);
 
-  // 调整大小开始
-  const handleResizeMouseDown = useCallback(
+  // 调整大小开始（左上角）
+  const handleResizeNWMouseDown = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
@@ -216,7 +216,23 @@ export function Calculator({
         width: size.width,
         height: size.height,
       };
-      setIsResizing(true);
+      setIsResizing("nw");
+    },
+    [size],
+  );
+
+  // 调整大小开始（右下角）
+  const handleResizeSEMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      resizeStartRef.current = {
+        mouseX: e.clientX,
+        mouseY: e.clientY,
+        width: size.width,
+        height: size.height,
+      };
+      setIsResizing("se");
     },
     [size],
   );
@@ -229,14 +245,30 @@ export function Calculator({
       const deltaX = resizeStartRef.current.mouseX - e.clientX;
       const deltaY = resizeStartRef.current.mouseY - e.clientY;
 
-      const newWidth = Math.max(
-        280,
-        Math.min(600, resizeStartRef.current.width + deltaX),
-      );
-      const newHeight = Math.max(
-        200,
-        Math.min(500, resizeStartRef.current.height + deltaY),
-      );
+      let newWidth: number;
+      let newHeight: number;
+
+      if (isResizing === "nw") {
+        // 左上角：鼠标向左/上移动增大
+        newWidth = Math.max(280, Math.min(600, resizeStartRef.current.width + deltaX));
+        newHeight = Math.max(200, Math.min(500, resizeStartRef.current.height + deltaY));
+      } else {
+        // 右下角：鼠标向右/下移动增大，同时调整 position 保持右下角固定
+        newWidth = Math.max(280, Math.min(600, resizeStartRef.current.width - deltaX));
+        newHeight = Math.max(200, Math.min(500, resizeStartRef.current.height - deltaY));
+
+        // 计算宽度和高度的实际变化量
+        const widthDelta = newWidth - size.width;
+        const heightDelta = newHeight - size.height;
+
+        // 调整 position 来补偿大小变化，保持右下角固定
+        if (widthDelta !== 0 || heightDelta !== 0) {
+          setPosition(prev => ({
+            right: Math.max(16, prev.right - widthDelta),
+            bottom: Math.max(16, prev.bottom - heightDelta),
+          }));
+        }
+      }
 
       setSize({ width: newWidth, height: newHeight });
     };
@@ -252,7 +284,7 @@ export function Calculator({
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [isResizing]);
+  }, [isResizing, size]);
 
   const clearScreen = useCallback(() => {
     setHistory([]);
@@ -441,9 +473,17 @@ export function Calculator({
         {/* 左上角调整大小手柄 - 四分之一圆弧 */}
         <div
           className="absolute left-1 top-1 w-4 h-4 cursor-nwse-resize z-10 group"
-          onMouseDown={handleResizeMouseDown}
+          onMouseDown={handleResizeNWMouseDown}
         >
           <div className="absolute left-0 top-0 w-3 h-3 border-l-2 border-t-2 border-zinc-600 rounded-tl-md opacity-40 group-hover:opacity-80 transition-opacity" />
+        </div>
+
+        {/* 右下角调整大小手柄 - 四分之一圆弧 */}
+        <div
+          className="absolute right-1 bottom-1 w-4 h-4 cursor-nwse-resize z-10 group"
+          onMouseDown={handleResizeSEMouseDown}
+        >
+          <div className="absolute right-0 bottom-0 w-3 h-3 border-r-2 border-b-2 border-zinc-600 rounded-br-md opacity-40 group-hover:opacity-80 transition-opacity" />
         </div>
 
         {/* 标题栏 - 可拖拽 */}
