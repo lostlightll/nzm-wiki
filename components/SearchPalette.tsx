@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { Search, FileText, ArrowRight } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
-import { matchPinyin } from "@/lib/pinyin";
 
 interface SearchItem {
   title: string;
@@ -11,6 +10,7 @@ interface SearchItem {
   path: string;
   category: string;
   keywords: string[];
+  pinyin: string[];  // 预计算的拼音
 }
 
 // 默认显示的快捷入口（无搜索内容时显示）
@@ -23,12 +23,21 @@ const DEFAULT_ENTRIES = [
 ];
 
 function matchSearch(item: SearchItem, query: string): boolean {
-  // 匹配标题（支持拼音）
-  if (matchPinyin(item.title, query)) return true;
+  const lowerQuery = query.toLowerCase();
 
-  // 匹配关键词（支持拼音）
+  // 匹配标题
+  if (item.title.toLowerCase().includes(lowerQuery)) return true;
+
+  // 匹配关键词
   for (const keyword of item.keywords) {
-    if (matchPinyin(String(keyword), query)) return true;
+    if (String(keyword).toLowerCase().includes(lowerQuery)) return true;
+  }
+
+  // 匹配预计算的拼音
+  if (item.pinyin) {
+    for (const py of item.pinyin) {
+      if (py.includes(lowerQuery)) return true;
+    }
   }
 
   return false;
@@ -90,6 +99,7 @@ export function SearchPalette() {
       ...entry,
       slug: entry.path,
       keywords: [],
+      pinyin: [],
     }));
   }, [query, filteredItems]);
 
