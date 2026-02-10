@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { Calculator as CalculatorIcon, Eraser, X } from "lucide-react";
 
 // 帮助信息
 const HELP_TEXT = [
@@ -72,14 +73,41 @@ interface HistoryItem {
   isSystem?: boolean;
 }
 
-export function Calculator() {
-  const [isOpen, setIsOpen] = useState(false);
+interface CalculatorProps {
+  externalOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
+
+export function Calculator({
+  externalOpen,
+  onOpenChange,
+}: CalculatorProps = {}) {
+  const [internalOpen, setInternalOpen] = useState(false);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [variables, setVariables] = useState<Record<string, number>>({ _: 0 });
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [position, setPosition] = useState({ right: 16, bottom: 16 });
+  const [size, setSize] = useState({ width: 320, height: 300 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [isResizing, setIsResizing] = useState(false);
+  const dragStartRef = useRef({ mouseX: 0, mouseY: 0, right: 0, bottom: 0 });
+  const resizeStartRef = useRef({ mouseX: 0, mouseY: 0, width: 0, height: 0 });
+  const hasDraggedRef = useRef(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const historyRef = useRef<HTMLDivElement>(null);
+
+  // 支持外部控制和内部控制
+  const isOpen = externalOpen !== undefined ? externalOpen : internalOpen;
+  const setIsOpen = useCallback(
+    (open: boolean) => {
+      if (onOpenChange) {
+        onOpenChange(open);
+      }
+      setInternalOpen(open);
+    },
+    [onOpenChange],
+  );
 
   // 自动滚动到底部
   useEffect(() => {
@@ -91,9 +119,123 @@ export function Calculator() {
   // 打开时聚焦输入框
   useEffect(() => {
     if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+      // 延迟聚焦，等待动画完成
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
+
+  // 拖拽开始
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      hasDraggedRef.current = false;
+      dragStartRef.current = {
+        mouseX: e.clientX,
+        mouseY: e.clientY,
+        right: position.right,
+        bottom: position.bottom,
+      };
+      setIsDragging(true);
+    },
+    [position],
+  );
+
+  // 拖拽移动和结束
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const deltaX = dragStartRef.current.mouseX - e.clientX;
+      const deltaY = dragStartRef.current.mouseY - e.clientY;
+
+      // 如果移动超过 5px，标记为拖拽
+      if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+        hasDraggedRef.current = true;
+      }
+
+      const newRight = Math.max(
+        0,
+        Math.min(window.innerWidth - 60, dragStartRef.current.right + deltaX),
+      );
+      const newBottom = Math.max(
+        0,
+        Math.min(window.innerHeight - 60, dragStartRef.current.bottom + deltaY),
+      );
+
+      setPosition({ right: newRight, bottom: newBottom });
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isDragging]);
+
+  // 处理点击打开（区分拖拽和点击）
+  const handleButtonClick = useCallback(() => {
+    if (!hasDraggedRef.current) {
+      setIsOpen(true);
+    }
+  }, [setIsOpen]);
+
+  // 调整大小开始
+  const handleResizeMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      resizeStartRef.current = {
+        mouseX: e.clientX,
+        mouseY: e.clientY,
+        width: size.width,
+        height: size.height,
+      };
+      setIsResizing(true);
+    },
+    [size],
+  );
+
+  // 调整大小移动和结束
+  useEffect(() => {
+    if (!isResizing) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const deltaX = resizeStartRef.current.mouseX - e.clientX;
+      const deltaY = resizeStartRef.current.mouseY - e.clientY;
+
+      const newWidth = Math.max(
+        280,
+        Math.min(600, resizeStartRef.current.width + deltaX),
+      );
+      const newHeight = Math.max(
+        200,
+        Math.min(500, resizeStartRef.current.height + deltaY),
+      );
+
+      setSize({ width: newWidth, height: newHeight });
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isResizing]);
 
   const clearHistory = useCallback(() => {
     setHistory([]);
@@ -165,7 +307,7 @@ export function Calculator() {
     setHistory((prev) => [...prev, { input: originalInput, output, isError }]);
     setInput("");
     setHistoryIndex(-1);
-  }, [input, variables, clearHistory]);
+  }, [input, variables, clearHistory, setIsOpen]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
@@ -203,151 +345,177 @@ export function Calculator() {
   // 获取当前定义的变量（排除 _）
   const userVars = Object.entries(variables).filter(([k]) => k !== "_");
 
+  // 计算窗口的安全位置，确保在可视范围内
+  const getWindowStyle = useCallback(() => {
+    if (typeof window === "undefined") {
+      return { right: position.right, bottom: position.bottom };
+    }
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    // 计算窗口右下角的位置
+    let right = position.right;
+    let bottom = position.bottom;
+
+    // 确保窗口不会超出左边界
+    if (right > viewportWidth - size.width) {
+      right = viewportWidth - size.width - 16;
+    }
+
+    // 确保窗口不会超出上边界
+    if (bottom > viewportHeight - size.height) {
+      bottom = viewportHeight - size.height - 16;
+    }
+
+    // 确保不小于 0
+    right = Math.max(16, right);
+    bottom = Math.max(16, bottom);
+
+    return { right, bottom };
+  }, [position, size]);
+
   return (
-    <div className="fixed right-4 bottom-4 z-50">
-      {/* 折叠按钮 */}
-      {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-800 text-zinc-300 shadow-lg ring-1 ring-zinc-700 transition-all hover:bg-zinc-700 hover:text-white"
-          title="计算器"
+    <>
+      {/* 折叠按钮 - 可拖拽 */}
+      <div
+        className={`fixed z-50 ${isDragging ? "select-none" : ""}`}
+        style={{ right: position.right, bottom: position.bottom }}
+      >
+        <div
+          className={`transition-all duration-300 ease-out ${
+            isOpen
+              ? "pointer-events-none scale-50 opacity-0"
+              : "scale-100 opacity-100"
+          }`}
         >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-            />
-          </svg>
-        </button>
-      )}
-
-      {/* 展开的计算器 */}
-      {isOpen && (
-        <div className="flex w-80 flex-col overflow-hidden rounded-lg bg-zinc-900 shadow-2xl ring-1 ring-zinc-700">
-          {/* 标题栏 */}
-          <div className="flex items-center justify-between border-b border-zinc-700 bg-zinc-800 px-3 py-2">
-            <span className="text-sm font-medium text-zinc-300">计算器</span>
-            <div className="flex gap-1">
-              <button
-                onClick={clearHistory}
-                className="rounded p-1 text-zinc-500 hover:bg-zinc-700 hover:text-zinc-300"
-                title="清空"
-              >
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                  />
-                </svg>
-              </button>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="rounded p-1 text-zinc-500 hover:bg-zinc-700 hover:text-zinc-300"
-                title="关闭"
-              >
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* 变量显示区 */}
-          {userVars.length > 0 && (
-            <div className="flex flex-wrap gap-1 border-b border-zinc-800 bg-zinc-850 px-2 py-1.5">
-              {userVars.map(([name, val]) => (
-                <span
-                  key={name}
-                  className="rounded bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-400"
-                >
-                  {name}={val}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* 历史记录 */}
           <div
-            ref={historyRef}
-            className="max-h-60 min-h-[120px] overflow-y-auto bg-zinc-950 p-2 font-mono text-sm"
+            onMouseDown={handleMouseDown}
+            onClick={handleButtonClick}
+            className={`flex h-12 w-12 items-center justify-center rounded-full bg-zinc-800 text-zinc-300 shadow-lg ring-1 ring-zinc-700 transition-all hover:bg-zinc-700 hover:text-white hover:scale-110 ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
+            title="计算器 (Ctrl+Shift+P)"
           >
-            {history.length === 0 ? (
-              <div className="text-xs text-zinc-600">
-                <p>支持: + - * / ^ () 和变量</p>
-                <p>输入 <span className="text-zinc-400">help</span> 查看详细帮助</p>
-                <p>示例: 2+3, x=10, x*2, _+1, x=1</p>
-                <p className="text-zinc-700">_ 表示上次结果</p>
-              </div>
-            ) : (
-              history.map((item, i) => (
-                <div key={i} className="mb-1">
-                  <div className="text-zinc-400">
-                    <span className="text-zinc-600">&gt; </span>
-                    {item.input}
-                  </div>
-                  {Array.isArray(item.output) ? (
-                    <div className="text-zinc-500">
-                      {item.output.map((line, j) => (
-                        <div key={j}>{line || "\u00A0"}</div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div
-                      className={
-                        item.isError ? "text-red-400" : "text-amber-200"
-                      }
-                    >
-                      {item.output}
-                    </div>
-                  )}
-                </div>
-              ))
-            )}
-          </div>
-
-          {/* 输入框 */}
-          <div className="border-t border-zinc-800 bg-zinc-900 p-2">
-            <div className="flex items-center gap-2">
-              <span className="text-zinc-600">&gt;</span>
-              <input
-                ref={inputRef}
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                className="flex-1 bg-transparent font-mono text-sm text-zinc-200 outline-none placeholder:text-zinc-700"
-                placeholder="输入表达式或命令..."
-                autoComplete="off"
-                spellCheck={false}
-              />
-            </div>
+            <CalculatorIcon className="h-6 w-6 pointer-events-none" />
           </div>
         </div>
-      )}
-    </div>
+      </div>
+
+      {/* 展开的计算器 - 独立定位 */}
+      <div
+        className={`fixed z-50 flex flex-col overflow-hidden rounded-lg bg-zinc-900 shadow-2xl ring-1 ring-zinc-700 ${
+          isOpen
+            ? "scale-100 opacity-100"
+            : "pointer-events-none scale-75 opacity-0"
+        } ${isDragging || isResizing ? "select-none" : ""} ${!isDragging && !isResizing ? "transition-all duration-300 ease-out" : ""}`}
+        style={{ width: size.width, height: size.height, ...getWindowStyle() }}
+      >
+        {/* 左上角调整大小手柄 - 四分之一圆弧 */}
+        <div
+          className="absolute left-1 top-1 w-4 h-4 cursor-nwse-resize z-10 group"
+          onMouseDown={handleResizeMouseDown}
+        >
+          <div className="absolute left-0 top-0 w-3 h-3 border-l-2 border-t-2 border-zinc-600 rounded-tl-md opacity-40 group-hover:opacity-80 transition-opacity" />
+        </div>
+
+        {/* 标题栏 - 可拖拽 */}
+        <div
+          className={`flex items-center justify-between border-b border-zinc-700 bg-zinc-800 px-3 py-2 ${
+            isDragging ? "cursor-grabbing" : "cursor-grab"
+          }`}
+          onMouseDown={handleMouseDown}
+        >
+          <span className="text-sm font-medium text-zinc-300 select-none">
+            计算器
+          </span>
+          <div className="flex gap-1" onMouseDown={(e) => e.stopPropagation()}>
+            <button
+              onClick={clearHistory}
+              className="rounded p-1 text-zinc-500 hover:bg-zinc-700 hover:text-zinc-300"
+              title="清空"
+            >
+              <Eraser className="h-4 w-4" />
+            </button>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="rounded p-1 text-zinc-500 hover:bg-zinc-700 hover:text-zinc-300"
+              title="关闭 (Esc)"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* 变量显示区 */}
+        {userVars.length > 0 && (
+          <div className="flex flex-wrap gap-1 border-b border-zinc-800 bg-zinc-850 px-2 py-1.5">
+            {userVars.map(([name, val]) => (
+              <span
+                key={name}
+                className="rounded bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-400"
+              >
+                {name}={val}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* 历史记录 */}
+        <div
+          ref={historyRef}
+          className="flex-1 overflow-y-auto bg-zinc-950 p-2 font-mono text-sm"
+        >
+          {history.length === 0 ? (
+            <div className="text-xs text-zinc-600">
+              <p>
+                输入: <span className="text-zinc-400">help</span> 查看详细帮助
+              </p>
+              <p>支持: + - * / ^ () 和变量</p>
+              <p>注意: _ 为默认变量，表示上次计算结果</p>
+              <p>示例: 2+3, x=10, x*2, _+1, x=1</p>
+            </div>
+          ) : (
+            history.map((item, i) => (
+              <div key={i} className="mb-1">
+                <div className="text-zinc-400">
+                  <span className="text-zinc-600">&gt; </span>
+                  {item.input}
+                </div>
+                {Array.isArray(item.output) ? (
+                  <div className="text-zinc-500">
+                    {item.output.map((line, j) => (
+                      <div key={j}>{line || "\u00A0"}</div>
+                    ))}
+                  </div>
+                ) : (
+                  <div
+                    className={item.isError ? "text-red-400" : "text-amber-200"}
+                  >
+                    {item.output}
+                  </div>
+                )}
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* 输入框 */}
+        <div className="border-t border-zinc-800 bg-zinc-900 p-2">
+          <div className="flex items-center gap-2">
+            <span className="text-zinc-600">&gt;</span>
+            <input
+              ref={inputRef}
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="flex-1 bg-transparent font-mono text-sm text-zinc-200 outline-none placeholder:text-zinc-700"
+              placeholder="输入表达式或命令..."
+              autoComplete="off"
+              spellCheck={false}
+            />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
