@@ -1,7 +1,8 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
-import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
+import { getMdxComponents, TableOfContents } from "@/lib/mdx-components";
+import { getAllBosses } from "@/lib/bosses";
 
 export async function generateStaticParams() {
   const items = getMDXList("posts");
@@ -35,6 +36,11 @@ export default async function PostPage({
   const slugPath = slug.map(decodeURIComponent).join("/");
   const { content, metadata } = getMDXDetail("posts", slugPath);
   const showToc = metadata.toc !== false;
+
+  // 加载 boss 数据，转换为 title -> Boss 的映射
+  const bosses = await getAllBosses();
+  const bossData = Object.fromEntries(bosses.map((b) => [b.title, b]));
+  const mdxComponents = getMdxComponents(bossData);
 
   // Get page width from frontmatter, default to lg (max-w-3xl)
   const pageWidth = metadata["page-width"] as string | undefined;
