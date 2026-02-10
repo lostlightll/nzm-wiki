@@ -1,0 +1,3223 @@
+[
+  {
+    "title": "财富赌局",
+    "slug": "cards/double-gold",
+    "path": "/cards/double-gold",
+    "category": "卡牌",
+    "keywords": [
+      "double-gold",
+      "财富赌局",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "冲锋精英",
+    "slug": "cards/exchange-burster-alt",
+    "path": "/cards/exchange-burster-alt",
+    "category": "卡牌",
+    "keywords": [
+      "exchange-burster-alt",
+      "冲锋精英",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "点少钱多",
+    "slug": "cards/resource",
+    "path": "/cards/resource",
+    "category": "卡牌",
+    "keywords": [
+      "resource",
+      "点少钱多",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "疯狂战士",
+    "slug": "cards/berserker",
+    "path": "/cards/berserker",
+    "category": "卡牌",
+    "keywords": [
+      "berserker",
+      "疯狂战士",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "怪物强化",
+    "slug": "cards/buff-mob",
+    "path": "/cards/buff-mob",
+    "category": "卡牌",
+    "keywords": [
+      "buff-mob",
+      "怪物强化",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "护盾干扰",
+    "slug": "cards/pause-shield",
+    "path": "/cards/pause-shield",
+    "category": "卡牌",
+    "keywords": [
+      "pause-shield",
+      "护盾干扰",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "黄金献祭",
+    "slug": "cards/golden-monster",
+    "path": "/cards/golden-monster",
+    "category": "卡牌",
+    "keywords": [
+      "golden-monster",
+      "黄金献祭",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "精英加强",
+    "slug": "cards/elite-strengthen",
+    "path": "/cards/elite-strengthen",
+    "category": "卡牌",
+    "keywords": [
+      "elite-strengthen",
+      "精英加强",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "狂战士祝福",
+    "slug": "cards/blademaster",
+    "path": "/cards/blademaster",
+    "category": "卡牌",
+    "keywords": [
+      "blademaster",
+      "狂战士祝福",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "鳞甲外壳",
+    "slug": "cards/elite-times-shield",
+    "path": "/cards/elite-times-shield",
+    "category": "卡牌",
+    "keywords": [
+      "elite-times-shield",
+      "鳞甲外壳",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "零存整取",
+    "slug": "cards/delayed-resource",
+    "path": "/cards/delayed-resource",
+    "category": "卡牌",
+    "keywords": [
+      "delayed-resource",
+      "零存整取",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "破刃加快",
+    "slug": "cards/easy-toughness",
+    "path": "/cards/easy-toughness",
+    "category": "卡牌",
+    "keywords": [
+      "easy-toughness",
+      "破刃加快",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "弱点狂热",
+    "slug": "cards/critical-hit-crazy",
+    "path": "/cards/critical-hit-crazy",
+    "category": "卡牌",
+    "keywords": [
+      "critical-hit-crazy",
+      "弱点狂热",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "弱点约束",
+    "slug": "cards/weak-point-boost",
+    "path": "/cards/weak-point-boost",
+    "category": "卡牌",
+    "keywords": [
+      "weak-point-boost",
+      "弱点约束",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "升级飞跃",
+    "slug": "cards/doublelevel",
+    "path": "/cards/doublelevel",
+    "category": "卡牌",
+    "keywords": [
+      "doublelevel",
+      "升级飞跃",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "收割弱点",
+    "slug": "cards/critical-hit-money",
+    "path": "/cards/critical-hit-money",
+    "category": "卡牌",
+    "keywords": [
+      "critical-hit-money",
+      "收割弱点",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "无懈可击",
+    "slug": "cards/invalid-card",
+    "path": "/cards/invalid-card",
+    "category": "卡牌",
+    "keywords": [
+      "invalid-card",
+      "无懈可击",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "幸灾乐祸",
+    "slug": "cards/exchange-lives",
+    "path": "/cards/exchange-lives",
+    "category": "卡牌",
+    "keywords": [
+      "exchange-lives",
+      "幸灾乐祸",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "永驻之壳",
+    "slug": "cards/lock-toughness",
+    "path": "/cards/lock-toughness",
+    "category": "卡牌",
+    "keywords": [
+      "lock-toughness",
+      "永驻之壳",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "元素入侵",
+    "slug": "cards/element-invasion",
+    "path": "/cards/element-invasion",
+    "category": "卡牌",
+    "keywords": [
+      "element-invasion",
+      "元素入侵",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "致命快递",
+    "slug": "cards/exchange-chaser",
+    "path": "/cards/exchange-chaser",
+    "category": "卡牌",
+    "keywords": [
+      "exchange-chaser",
+      "致命快递",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "自爆改造",
+    "slug": "cards/exchange-burster",
+    "path": "/cards/exchange-burster",
+    "category": "卡牌",
+    "keywords": [
+      "exchange-burster",
+      "自爆改造",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "BOSS吸血",
+    "slug": "cards/boss-vampire",
+    "path": "/cards/boss-vampire",
+    "category": "卡牌",
+    "keywords": [
+      "boss-vampire",
+      "BOSS吸血",
+      "猎场竞速"
+    ]
+  },
+  {
+    "title": "白胡子鱼王",
+    "slug": "s0/lc/boss/白胡子鱼王",
+    "path": "/lc/boss/白胡子鱼王",
+    "category": "首领",
+    "keywords": [
+      "白胡子鱼王"
+    ]
+  },
+  {
+    "title": "白毛狼王",
+    "slug": "s0/lc/boss/白毛狼王",
+    "path": "/lc/boss/白毛狼王",
+    "category": "首领",
+    "keywords": [
+      "白毛狼王"
+    ]
+  },
+  {
+    "title": "变异Z博士",
+    "slug": "s0/lc/boss/变异Z博士",
+    "path": "/lc/boss/变异Z博士",
+    "category": "首领",
+    "keywords": [
+      "变异Z博士"
+    ]
+  },
+  {
+    "title": "大壮",
+    "slug": "s0/lc/boss/大壮",
+    "path": "/lc/boss/大壮",
+    "category": "首领",
+    "keywords": [
+      "大壮"
+    ]
+  },
+  {
+    "title": "二壮",
+    "slug": "s0/lc/boss/二壮",
+    "path": "/lc/boss/二壮",
+    "category": "首领",
+    "keywords": [
+      "二壮"
+    ]
+  },
+  {
+    "title": "机械沙虫",
+    "slug": "s0/lc/boss/机械沙虫",
+    "path": "/lc/boss/机械沙虫",
+    "category": "首领",
+    "keywords": [
+      "机械沙虫"
+    ]
+  },
+  {
+    "title": "金牌打手",
+    "slug": "s0/lc/boss/金牌打手",
+    "path": "/lc/boss/金牌打手",
+    "category": "首领",
+    "keywords": [
+      "金牌打手"
+    ]
+  },
+  {
+    "title": "精绝奴隶主",
+    "slug": "s0/lc/boss/精绝奴隶主",
+    "path": "/lc/boss/精绝奴隶主",
+    "category": "首领",
+    "keywords": [
+      "精绝奴隶主"
+    ]
+  },
+  {
+    "title": "精绝女王",
+    "slug": "s0/lc/boss/精绝女王",
+    "path": "/lc/boss/精绝女王",
+    "category": "首领",
+    "keywords": [
+      "精绝女王"
+    ]
+  },
+  {
+    "title": "精绝主祭司",
+    "slug": "s0/lc/boss/精绝主祭司",
+    "path": "/lc/boss/精绝主祭司",
+    "category": "首领",
+    "keywords": [
+      "精绝主祭司"
+    ]
+  },
+  {
+    "title": "巨目蛇王",
+    "slug": "s0/lc/boss/巨目蛇王",
+    "path": "/lc/boss/巨目蛇王",
+    "category": "首领",
+    "keywords": [
+      "巨目蛇王"
+    ]
+  },
+  {
+    "title": "兰斯D博士",
+    "slug": "s0/lc/boss/兰斯D博士",
+    "path": "/lc/boss/兰斯D博士",
+    "category": "首领",
+    "keywords": [
+      "兰斯D博士"
+    ]
+  },
+  {
+    "title": "芮文",
+    "slug": "s0/lc/boss/芮文",
+    "path": "/lc/boss/芮文",
+    "category": "首领",
+    "keywords": [
+      "芮文"
+    ]
+  },
+  {
+    "title": "蛇神",
+    "slug": "s0/lc/boss/蛇神",
+    "path": "/lc/boss/蛇神",
+    "category": "首领",
+    "keywords": [
+      "蛇神"
+    ]
+  },
+  {
+    "title": "蛇神假",
+    "slug": "s0/lc/boss/蛇神假",
+    "path": "/lc/boss/蛇神假",
+    "category": "首领",
+    "keywords": [
+      "蛇神假"
+    ]
+  },
+  {
+    "title": "蛇神之眼",
+    "slug": "s0/lc/boss/蛇神之眼",
+    "path": "/lc/boss/蛇神之眼",
+    "category": "首领",
+    "keywords": [
+      "蛇神之眼"
+    ]
+  },
+  {
+    "title": "尸龙-弗莱皮",
+    "slug": "s0/lc/boss/尸龙-弗莱皮",
+    "path": "/lc/boss/尸龙-弗莱皮",
+    "category": "首领",
+    "keywords": [
+      "尸龙-弗莱皮"
+    ]
+  },
+  {
+    "title": "尸香魔芋",
+    "slug": "s0/lc/boss/尸香魔芋",
+    "path": "/lc/boss/尸香魔芋",
+    "category": "首领",
+    "keywords": [
+      "尸香魔芋"
+    ]
+  },
+  {
+    "title": "问号",
+    "slug": "s0/lc/boss/问号",
+    "path": "/lc/boss/问号",
+    "category": "首领",
+    "keywords": [
+      "问号"
+    ]
+  },
+  {
+    "title": "蚁后",
+    "slug": "s0/lc/boss/蚁后",
+    "path": "/lc/boss/蚁后",
+    "category": "首领",
+    "keywords": [
+      "蚁后"
+    ]
+  },
+  {
+    "title": "幽魂骑士",
+    "slug": "s0/lc/boss/幽魂骑士",
+    "path": "/lc/boss/幽魂骑士",
+    "category": "首领",
+    "keywords": [
+      "幽魂骑士"
+    ]
+  },
+  {
+    "title": "蜘蛛女王",
+    "slug": "s0/lc/boss/蜘蛛女王",
+    "path": "/lc/boss/蜘蛛女王",
+    "category": "首领",
+    "keywords": [
+      "蜘蛛女王"
+    ]
+  },
+  {
+    "title": "Z博士",
+    "slug": "s0/lc/boss/Z博士",
+    "path": "/lc/boss/Z博士",
+    "category": "首领",
+    "keywords": [
+      "Z博士"
+    ]
+  },
+  {
+    "title": "波江",
+    "slug": "s0/enemies/td/波江",
+    "path": "/enemies/td/波江",
+    "category": "塔防敌人",
+    "keywords": [
+      "波江"
+    ]
+  },
+  {
+    "title": "飞鱼",
+    "slug": "s0/enemies/td/飞鱼",
+    "path": "/enemies/td/飞鱼",
+    "category": "塔防敌人",
+    "keywords": [
+      "飞鱼"
+    ]
+  },
+  {
+    "title": "机甲暴龙",
+    "slug": "s0/enemies/td/机甲暴龙",
+    "path": "/enemies/td/机甲暴龙",
+    "category": "塔防敌人",
+    "keywords": [
+      "机甲暴龙"
+    ]
+  },
+  {
+    "title": "机械自爆犬",
+    "slug": "s0/enemies/td/机械自爆犬",
+    "path": "/enemies/td/机械自爆犬",
+    "category": "塔防敌人",
+    "keywords": [
+      "机械自爆犬"
+    ]
+  },
+  {
+    "title": "剑盾赛博格",
+    "slug": "s0/enemies/td/剑盾赛博格",
+    "path": "/enemies/td/剑盾赛博格",
+    "category": "塔防敌人",
+    "keywords": [
+      "剑盾赛博格"
+    ]
+  },
+  {
+    "title": "巨力赛博格",
+    "slug": "s0/enemies/td/巨力赛博格",
+    "path": "/enemies/td/巨力赛博格",
+    "category": "塔防敌人",
+    "keywords": [
+      "巨力赛博格"
+    ]
+  },
+  {
+    "title": "巨猩赛博格",
+    "slug": "s0/enemies/td/巨猩赛博格",
+    "path": "/enemies/td/巨猩赛博格",
+    "category": "塔防敌人",
+    "keywords": [
+      "巨猩赛博格",
+      "猴子"
+    ]
+  },
+  {
+    "title": "巨型异形",
+    "slug": "s0/enemies/td/巨型异形",
+    "path": "/enemies/td/巨型异形",
+    "category": "塔防敌人",
+    "keywords": [
+      "巨型异形"
+    ]
+  },
+  {
+    "title": "苦工",
+    "slug": "s0/enemies/td/苦工",
+    "path": "/enemies/td/苦工",
+    "category": "塔防敌人",
+    "keywords": [
+      "苦工"
+    ]
+  },
+  {
+    "title": "猎犬",
+    "slug": "s0/enemies/td/猎犬",
+    "path": "/enemies/td/猎犬",
+    "category": "塔防敌人",
+    "keywords": [
+      "猎犬"
+    ]
+  },
+  {
+    "title": "脉冲",
+    "slug": "s0/enemies/td/脉冲",
+    "path": "/enemies/td/脉冲",
+    "category": "塔防敌人",
+    "keywords": [
+      "脉冲"
+    ]
+  },
+  {
+    "title": "铁鹰",
+    "slug": "s0/enemies/td/铁鹰",
+    "path": "/enemies/td/铁鹰",
+    "category": "塔防敌人",
+    "keywords": [
+      "铁鹰"
+    ]
+  },
+  {
+    "title": "武装赛博格",
+    "slug": "s0/enemies/td/武装赛博格",
+    "path": "/enemies/td/武装赛博格",
+    "category": "塔防敌人",
+    "keywords": [
+      "武装赛博格"
+    ]
+  },
+  {
+    "title": "蝎虎",
+    "slug": "s0/enemies/td/蝎虎",
+    "path": "/enemies/td/蝎虎",
+    "category": "塔防敌人",
+    "keywords": [
+      "蝎虎"
+    ]
+  },
+  {
+    "title": "迅捷苦工",
+    "slug": "s0/enemies/td/迅捷苦工",
+    "path": "/enemies/td/迅捷苦工",
+    "category": "塔防敌人",
+    "keywords": [
+      "迅捷苦工"
+    ]
+  },
+  {
+    "title": "迅捷猎犬",
+    "slug": "s0/enemies/td/迅捷猎犬",
+    "path": "/enemies/td/迅捷猎犬",
+    "category": "塔防敌人",
+    "keywords": [
+      "迅捷猎犬"
+    ]
+  },
+  {
+    "title": "指挥官",
+    "slug": "s0/enemies/td/指挥官",
+    "path": "/enemies/td/指挥官",
+    "category": "塔防敌人",
+    "keywords": [
+      "指挥官"
+    ]
+  },
+  {
+    "title": "仲裁者",
+    "slug": "s0/enemies/td/仲裁者",
+    "path": "/enemies/td/仲裁者",
+    "category": "塔防敌人",
+    "keywords": [
+      "仲裁者",
+      "飞碟"
+    ]
+  },
+  {
+    "title": "重力使徒",
+    "slug": "s0/enemies/td/重力使徒",
+    "path": "/enemies/td/重力使徒",
+    "category": "塔防敌人",
+    "keywords": [
+      "重力使徒"
+    ]
+  },
+  {
+    "title": "自爆飞机",
+    "slug": "s0/enemies/td/自爆飞机",
+    "path": "/enemies/td/自爆飞机",
+    "category": "塔防敌人",
+    "keywords": [
+      "自爆飞机"
+    ]
+  },
+  {
+    "title": "自爆苦工",
+    "slug": "s0/enemies/td/自爆苦工",
+    "path": "/enemies/td/自爆苦工",
+    "category": "塔防敌人",
+    "keywords": [
+      "自爆苦工"
+    ]
+  },
+  {
+    "title": "IO量产型",
+    "slug": "s0/enemies/td/IO量产型",
+    "path": "/enemies/td/IO量产型",
+    "category": "塔防敌人",
+    "keywords": [
+      "IO量产型"
+    ]
+  },
+  {
+    "title": "百万伏特",
+    "slug": "s0/perks/slot-4/百万伏特",
+    "path": "/perks/slot-4/百万伏特",
+    "category": "特性",
+    "keywords": [
+      "百万伏特",
+      "3"
+    ]
+  },
+  {
+    "title": "暴击涌流",
+    "slug": "s0/perks/slot-2/暴击涌流",
+    "path": "/perks/slot-2/暴击涌流",
+    "category": "特性",
+    "keywords": [
+      "暴击涌流",
+      "3"
+    ]
+  },
+  {
+    "title": "爆破校调",
+    "slug": "s0/perks/slot-4/爆破校调",
+    "path": "/perks/slot-4/爆破校调",
+    "category": "特性",
+    "keywords": [
+      "爆破校调",
+      "3"
+    ]
+  },
+  {
+    "title": "备弹返流",
+    "slug": "s0/perks/slot-2/备弹返流",
+    "path": "/perks/slot-2/备弹返流",
+    "category": "特性",
+    "keywords": [
+      "备弹返流",
+      "3"
+    ]
+  },
+  {
+    "title": "崩解回涌",
+    "slug": "s0/perks/slot-2/崩解回涌",
+    "path": "/perks/slot-2/崩解回涌",
+    "category": "特性",
+    "keywords": [
+      "崩解回涌",
+      "3"
+    ]
+  },
+  {
+    "title": "并发充能",
+    "slug": "s0/perks/slot-2/并发充能",
+    "path": "/perks/slot-2/并发充能",
+    "category": "特性",
+    "keywords": [
+      "并发充能",
+      "3"
+    ]
+  },
+  {
+    "title": "裁决充能",
+    "slug": "s0/perks/slot-3/裁决充能",
+    "path": "/perks/slot-3/裁决充能",
+    "category": "特性",
+    "keywords": [
+      "裁决充能",
+      "3"
+    ]
+  },
+  {
+    "title": "层积裂变",
+    "slug": "s0/perks/slot-4/层积裂变",
+    "path": "/perks/slot-4/层积裂变",
+    "category": "特性",
+    "keywords": [
+      "层积裂变",
+      "3"
+    ]
+  },
+  {
+    "title": "层积强袭",
+    "slug": "s0/perks/slot-3/层积强袭",
+    "path": "/perks/slot-3/层积强袭",
+    "category": "特性",
+    "keywords": [
+      "层积强袭",
+      "3"
+    ]
+  },
+  {
+    "title": "层积涌流",
+    "slug": "s0/perks/slot-2/层积涌流",
+    "path": "/perks/slot-2/层积涌流",
+    "category": "特性",
+    "keywords": [
+      "层积涌流",
+      "3"
+    ]
+  },
+  {
+    "title": "超导补给",
+    "slug": "s0/perks/slot-1/超导补给",
+    "path": "/perks/slot-1/超导补给",
+    "category": "特性",
+    "keywords": [
+      "超导补给",
+      "3"
+    ]
+  },
+  {
+    "title": "超频",
+    "slug": "s0/perks/slot-4/超频",
+    "path": "/perks/slot-4/超频",
+    "category": "特性",
+    "keywords": [
+      "超频",
+      "3"
+    ]
+  },
+  {
+    "title": "超频蓄能",
+    "slug": "s0/perks/slot-2/超频蓄能",
+    "path": "/perks/slot-2/超频蓄能",
+    "category": "特性",
+    "keywords": [
+      "超频蓄能",
+      "3"
+    ]
+  },
+  {
+    "title": "超载弹匣",
+    "slug": "s0/perks/slot-1/超载弹匣",
+    "path": "/perks/slot-1/超载弹匣",
+    "category": "特性",
+    "keywords": [
+      "超载弹匣",
+      "3"
+    ]
+  },
+  {
+    "title": "充能弹药",
+    "slug": "s0/perks/slot-1/充能弹药",
+    "path": "/perks/slot-1/充能弹药",
+    "category": "特性",
+    "keywords": [
+      "充能弹药",
+      "3"
+    ]
+  },
+  {
+    "title": "充能链路",
+    "slug": "s0/perks/slot-1/充能链路",
+    "path": "/perks/slot-1/充能链路",
+    "category": "特性",
+    "keywords": [
+      "充能链路",
+      "3"
+    ]
+  },
+  {
+    "title": "出其不意",
+    "slug": "s0/perks/slot-2/出其不意",
+    "path": "/perks/slot-2/出其不意",
+    "category": "特性",
+    "keywords": [
+      "出其不意",
+      "3"
+    ]
+  },
+  {
+    "title": "川流不息",
+    "slug": "s0/perks/slot-2/川流不息",
+    "path": "/perks/slot-2/川流不息",
+    "category": "特性",
+    "keywords": [
+      "川流不息",
+      "3"
+    ]
+  },
+  {
+    "title": "穿甲扩散",
+    "slug": "s0/perks/slot-4/穿甲扩散",
+    "path": "/perks/slot-4/穿甲扩散",
+    "category": "特性",
+    "keywords": [
+      "穿甲扩散",
+      "3"
+    ]
+  },
+  {
+    "title": "穿针引线",
+    "slug": "s0/perks/slot-4/穿针引线",
+    "path": "/perks/slot-4/穿针引线",
+    "category": "特性",
+    "keywords": [
+      "穿针引线",
+      "3"
+    ]
+  },
+  {
+    "title": "弹容爆破",
+    "slug": "s0/perks/slot-4/弹容爆破",
+    "path": "/perks/slot-4/弹容爆破",
+    "category": "特性",
+    "keywords": [
+      "弹容爆破",
+      "3"
+    ]
+  },
+  {
+    "title": "弹容共振",
+    "slug": "s0/perks/slot-3/弹容共振",
+    "path": "/perks/slot-3/弹容共振",
+    "category": "特性",
+    "keywords": [
+      "弹容共振",
+      "3"
+    ]
+  },
+  {
+    "title": "弹跳风暴",
+    "slug": "s0/perks/slot-4/弹跳风暴",
+    "path": "/perks/slot-4/弹跳风暴",
+    "category": "特性",
+    "keywords": [
+      "弹跳风暴",
+      "3"
+    ]
+  },
+  {
+    "title": "弹雨协奏",
+    "slug": "s0/perks/slot-1/弹雨协奏",
+    "path": "/perks/slot-1/弹雨协奏",
+    "category": "特性",
+    "keywords": [
+      "弹雨协奏",
+      "3"
+    ]
+  },
+  {
+    "title": "导弹供能",
+    "slug": "s0/perks/slot-2/导弹供能",
+    "path": "/perks/slot-2/导弹供能",
+    "category": "特性",
+    "keywords": [
+      "导弹供能",
+      "3"
+    ]
+  },
+  {
+    "title": "导弹装填",
+    "slug": "s0/perks/slot-1/导弹装填",
+    "path": "/perks/slot-1/导弹装填",
+    "category": "特性",
+    "keywords": [
+      "导弹装填",
+      "3"
+    ]
+  },
+  {
+    "title": "递进膛压",
+    "slug": "s0/perks/slot-3/递进膛压",
+    "path": "/perks/slot-3/递进膛压",
+    "category": "特性",
+    "keywords": [
+      "递进膛压",
+      "3"
+    ]
+  },
+  {
+    "title": "电环疾驰",
+    "slug": "s0/perks/slot-4/电环疾驰",
+    "path": "/perks/slot-4/电环疾驰",
+    "category": "特性",
+    "keywords": [
+      "电环疾驰",
+      "3"
+    ]
+  },
+  {
+    "title": "叠浪效应",
+    "slug": "s0/perks/slot-3/叠浪效应",
+    "path": "/perks/slot-3/叠浪效应",
+    "category": "特性",
+    "keywords": [
+      "叠浪效应",
+      "2"
+    ]
+  },
+  {
+    "title": "钝化充能",
+    "slug": "s0/perks/slot-2/钝化充能",
+    "path": "/perks/slot-2/钝化充能",
+    "category": "特性",
+    "keywords": [
+      "钝化充能",
+      "3"
+    ]
+  },
+  {
+    "title": "钝化增伤",
+    "slug": "s0/perks/slot-3/钝化增伤",
+    "path": "/perks/slot-3/钝化增伤",
+    "category": "特性",
+    "keywords": [
+      "钝化增伤",
+      "3"
+    ]
+  },
+  {
+    "title": "多重回能",
+    "slug": "s0/perks/slot-2/多重回能",
+    "path": "/perks/slot-2/多重回能",
+    "category": "特性",
+    "keywords": [
+      "多重回能",
+      "2"
+    ]
+  },
+  {
+    "title": "多重激返",
+    "slug": "s0/perks/slot-2/多重激返",
+    "path": "/perks/slot-2/多重激返",
+    "category": "特性",
+    "keywords": [
+      "多重激返",
+      "3"
+    ]
+  },
+  {
+    "title": "反哺",
+    "slug": "s0/perks/slot-4/反哺",
+    "path": "/perks/slot-4/反哺",
+    "category": "特性",
+    "keywords": [
+      "反哺",
+      "3"
+    ]
+  },
+  {
+    "title": "蜂鸣指令",
+    "slug": "s0/perks/slot-4/蜂鸣指令",
+    "path": "/perks/slot-4/蜂鸣指令",
+    "category": "特性",
+    "keywords": [
+      "蜂鸣指令",
+      "3"
+    ]
+  },
+  {
+    "title": "伏击弹药",
+    "slug": "s0/perks/slot-3/伏击弹药",
+    "path": "/perks/slot-3/伏击弹药",
+    "category": "特性",
+    "keywords": [
+      "伏击弹药",
+      "3"
+    ]
+  },
+  {
+    "title": "腐蚀榴弹",
+    "slug": "s0/perks/slot-4/腐蚀榴弹",
+    "path": "/perks/slot-4/腐蚀榴弹",
+    "category": "特性",
+    "keywords": [
+      "腐蚀榴弹",
+      "3"
+    ]
+  },
+  {
+    "title": "负压弹匣",
+    "slug": "s0/perks/slot-1/负压弹匣",
+    "path": "/perks/slot-1/负压弹匣",
+    "category": "特性",
+    "keywords": [
+      "负压弹匣",
+      "2"
+    ]
+  },
+  {
+    "title": "概率坍缩",
+    "slug": "s0/perks/slot-3/概率坍缩",
+    "path": "/perks/slot-3/概率坍缩",
+    "category": "特性",
+    "keywords": [
+      "概率坍缩",
+      "3"
+    ]
+  },
+  {
+    "title": "攻守自如",
+    "slug": "s0/perks/slot-3/攻守自如",
+    "path": "/perks/slot-3/攻守自如",
+    "category": "特性",
+    "keywords": [
+      "攻守自如",
+      "3"
+    ]
+  },
+  {
+    "title": "共鸣射击",
+    "slug": "s0/perks/slot-2/共鸣射击",
+    "path": "/perks/slot-2/共鸣射击",
+    "category": "特性",
+    "keywords": [
+      "共鸣射击",
+      "3"
+    ]
+  },
+  {
+    "title": "惯性制退",
+    "slug": "s0/perks/slot-1/惯性制退",
+    "path": "/perks/slot-1/惯性制退",
+    "category": "特性",
+    "keywords": [
+      "惯性制退",
+      "1"
+    ]
+  },
+  {
+    "title": "归途",
+    "slug": "s0/perks/slot-4/归途",
+    "path": "/perks/slot-4/归途",
+    "category": "特性",
+    "keywords": [
+      "归途",
+      "3"
+    ]
+  },
+  {
+    "title": "过载膛压",
+    "slug": "s0/perks/slot-3/过载膛压",
+    "path": "/perks/slot-3/过载膛压",
+    "category": "特性",
+    "keywords": [
+      "过载膛压",
+      "3"
+    ]
+  },
+  {
+    "title": "虹吸充能",
+    "slug": "s0/perks/slot-2/虹吸充能",
+    "path": "/perks/slot-2/虹吸充能",
+    "category": "特性",
+    "keywords": [
+      "虹吸充能",
+      "3"
+    ]
+  },
+  {
+    "title": "回响充能",
+    "slug": "s0/perks/slot-2/回响充能",
+    "path": "/perks/slot-2/回响充能",
+    "category": "特性",
+    "keywords": [
+      "回响充能",
+      "2"
+    ]
+  },
+  {
+    "title": "回响续装",
+    "slug": "s0/perks/slot-2/回响续装",
+    "path": "/perks/slot-2/回响续装",
+    "category": "特性",
+    "keywords": [
+      "回响续装",
+      "3"
+    ]
+  },
+  {
+    "title": "火力回转",
+    "slug": "s0/perks/slot-2/火力回转",
+    "path": "/perks/slot-2/火力回转",
+    "category": "特性",
+    "keywords": [
+      "火力回转",
+      "3"
+    ]
+  },
+  {
+    "title": "极限载弹",
+    "slug": "s0/perks/slot-1/极限载弹",
+    "path": "/perks/slot-1/极限载弹",
+    "category": "特性",
+    "keywords": [
+      "极限载弹",
+      "3"
+    ]
+  },
+  {
+    "title": "急速蓄能",
+    "slug": "s0/perks/slot-2/急速蓄能",
+    "path": "/perks/slot-2/急速蓄能",
+    "category": "特性",
+    "keywords": [
+      "急速蓄能",
+      "2"
+    ]
+  },
+  {
+    "title": "急速装填",
+    "slug": "s0/perks/slot-1/急速装填",
+    "path": "/perks/slot-1/急速装填",
+    "category": "特性",
+    "keywords": [
+      "急速装填",
+      "2"
+    ]
+  },
+  {
+    "title": "技能扩散",
+    "slug": "s0/perks/slot-4/技能扩散",
+    "path": "/perks/slot-4/技能扩散",
+    "category": "特性",
+    "keywords": [
+      "技能扩散",
+      "3"
+    ]
+  },
+  {
+    "title": "技能增幅",
+    "slug": "s0/perks/slot-3/技能增幅",
+    "path": "/perks/slot-3/技能增幅",
+    "category": "特性",
+    "keywords": [
+      "技能增幅",
+      "2"
+    ]
+  },
+  {
+    "title": "技能增涌",
+    "slug": "s0/perks/slot-3/技能增涌",
+    "path": "/perks/slot-3/技能增涌",
+    "category": "特性",
+    "keywords": [
+      "技能增涌",
+      "3"
+    ]
+  },
+  {
+    "title": "加速蓄能",
+    "slug": "s0/perks/slot-2/加速蓄能",
+    "path": "/perks/slot-2/加速蓄能",
+    "category": "特性",
+    "keywords": [
+      "加速蓄能",
+      "1"
+    ]
+  },
+  {
+    "title": "加速装填",
+    "slug": "s0/perks/slot-1/加速装填",
+    "path": "/perks/slot-1/加速装填",
+    "category": "特性",
+    "keywords": [
+      "加速装填",
+      "1"
+    ]
+  },
+  {
+    "title": "歼灭速装",
+    "slug": "s0/perks/slot-1/歼灭速装",
+    "path": "/perks/slot-1/歼灭速装",
+    "category": "特性",
+    "keywords": [
+      "歼灭速装",
+      "3"
+    ]
+  },
+  {
+    "title": "渐入佳境",
+    "slug": "s0/perks/slot-3/渐入佳境",
+    "path": "/perks/slot-3/渐入佳境",
+    "category": "特性",
+    "keywords": [
+      "渐入佳境",
+      "3"
+    ]
+  },
+  {
+    "title": "渐稳连击",
+    "slug": "s0/perks/slot-1/渐稳连击",
+    "path": "/perks/slot-1/渐稳连击",
+    "category": "特性",
+    "keywords": [
+      "渐稳连击",
+      "3"
+    ]
+  },
+  {
+    "title": "解构增幅",
+    "slug": "s0/perks/slot-3/解构增幅",
+    "path": "/perks/slot-3/解构增幅",
+    "category": "特性",
+    "keywords": [
+      "解构增幅",
+      "3"
+    ]
+  },
+  {
+    "title": "解构装填",
+    "slug": "s0/perks/slot-1/解构装填",
+    "path": "/perks/slot-1/解构装填",
+    "category": "特性",
+    "keywords": [
+      "解构装填",
+      "3"
+    ]
+  },
+  {
+    "title": "近距增幅",
+    "slug": "s0/perks/slot-3/近距增幅",
+    "path": "/perks/slot-3/近距增幅",
+    "category": "特性",
+    "keywords": [
+      "近距增幅",
+      "3"
+    ]
+  },
+  {
+    "title": "精密追击",
+    "slug": "s0/perks/slot-3/精密追击",
+    "path": "/perks/slot-3/精密追击",
+    "category": "特性",
+    "keywords": [
+      "精密追击",
+      "3"
+    ]
+  },
+  {
+    "title": "精确导弹",
+    "slug": "s0/perks/slot-4/精确导弹",
+    "path": "/perks/slot-4/精确导弹",
+    "category": "特性",
+    "keywords": [
+      "精确导弹",
+      "2"
+    ]
+  },
+  {
+    "title": "精确能量",
+    "slug": "s0/perks/slot-2/精确能量",
+    "path": "/perks/slot-2/精确能量",
+    "category": "特性",
+    "keywords": [
+      "精确能量",
+      "3"
+    ]
+  },
+  {
+    "title": "剧毒速袭",
+    "slug": "s0/perks/slot-4/剧毒速袭",
+    "path": "/perks/slot-4/剧毒速袭",
+    "category": "特性",
+    "keywords": [
+      "剧毒速袭",
+      "3"
+    ]
+  },
+  {
+    "title": "聚能弹药",
+    "slug": "s0/perks/slot-4/聚能弹药",
+    "path": "/perks/slot-4/聚能弹药",
+    "category": "特性",
+    "keywords": [
+      "聚能弹药",
+      "3"
+    ]
+  },
+  {
+    "title": "聚能速度",
+    "slug": "s0/perks/slot-4/聚能速度",
+    "path": "/perks/slot-4/聚能速度",
+    "category": "特性",
+    "keywords": [
+      "聚能速度",
+      "3"
+    ]
+  },
+  {
+    "title": "快速装填",
+    "slug": "s0/perks/slot-1/快速装填",
+    "path": "/perks/slot-1/快速装填",
+    "category": "特性",
+    "keywords": [
+      "快速装填",
+      "3"
+    ]
+  },
+  {
+    "title": "狂暴装填",
+    "slug": "s0/perks/slot-1/狂暴装填",
+    "path": "/perks/slot-1/狂暴装填",
+    "category": "特性",
+    "keywords": [
+      "狂暴装填",
+      "3"
+    ]
+  },
+  {
+    "title": "扩容核心",
+    "slug": "s0/perks/slot-1/扩容核心",
+    "path": "/perks/slot-1/扩容核心",
+    "category": "特性",
+    "keywords": [
+      "扩容核心",
+      "2"
+    ]
+  },
+  {
+    "title": "连锁充能",
+    "slug": "s0/perks/slot-2/连锁充能",
+    "path": "/perks/slot-2/连锁充能",
+    "category": "特性",
+    "keywords": [
+      "连锁充能",
+      "2"
+    ]
+  },
+  {
+    "title": "连锁电环",
+    "slug": "s0/perks/slot-4/连锁电环",
+    "path": "/perks/slot-4/连锁电环",
+    "category": "特性",
+    "keywords": [
+      "连锁电环",
+      "1"
+    ]
+  },
+  {
+    "title": "连锁增伤",
+    "slug": "s0/perks/slot-3/连锁增伤",
+    "path": "/perks/slot-3/连锁增伤",
+    "category": "特性",
+    "keywords": [
+      "连锁增伤",
+      "1"
+    ]
+  },
+  {
+    "title": "联动提升",
+    "slug": "s0/perks/slot-3/联动提升",
+    "path": "/perks/slot-3/联动提升",
+    "category": "特性",
+    "keywords": [
+      "联动提升",
+      "3"
+    ]
+  },
+  {
+    "title": "链式反应",
+    "slug": "s0/perks/slot-3/链式反应",
+    "path": "/perks/slot-3/链式反应",
+    "category": "特性",
+    "keywords": [
+      "链式反应",
+      "3"
+    ]
+  },
+  {
+    "title": "烈焰冲击",
+    "slug": "s0/perks/slot-4/烈焰冲击",
+    "path": "/perks/slot-4/烈焰冲击",
+    "category": "特性",
+    "keywords": [
+      "烈焰冲击",
+      "3"
+    ]
+  },
+  {
+    "title": "猎杀充能",
+    "slug": "s0/perks/slot-2/猎杀充能",
+    "path": "/perks/slot-2/猎杀充能",
+    "category": "特性",
+    "keywords": [
+      "猎杀充能",
+      "3"
+    ]
+  },
+  {
+    "title": "猎杀装填",
+    "slug": "s0/perks/slot-1/猎杀装填",
+    "path": "/perks/slot-1/猎杀装填",
+    "category": "特性",
+    "keywords": [
+      "猎杀装填",
+      "3"
+    ]
+  },
+  {
+    "title": "龙息奔涌",
+    "slug": "s0/perks/slot-4/龙息奔涌",
+    "path": "/perks/slot-4/龙息奔涌",
+    "category": "特性",
+    "keywords": [
+      "龙息奔涌",
+      "3"
+    ]
+  },
+  {
+    "title": "龙炎推进",
+    "slug": "s0/perks/slot-4/龙炎推进",
+    "path": "/perks/slot-4/龙炎推进",
+    "category": "特性",
+    "keywords": [
+      "龙炎推进",
+      "3"
+    ]
+  },
+  {
+    "title": "锚定攻击",
+    "slug": "s0/perks/slot-3/锚定攻击",
+    "path": "/perks/slot-3/锚定攻击",
+    "category": "特性",
+    "keywords": [
+      "锚定攻击",
+      "3"
+    ]
+  },
+  {
+    "title": "帽子戏法",
+    "slug": "s0/perks/slot-1/帽子戏法",
+    "path": "/perks/slot-1/帽子戏法",
+    "category": "特性",
+    "keywords": [
+      "帽子戏法",
+      "3"
+    ]
+  },
+  {
+    "title": "命中返能",
+    "slug": "s0/perks/slot-2/命中返能",
+    "path": "/perks/slot-2/命中返能",
+    "category": "特性",
+    "keywords": [
+      "命中返能",
+      "1"
+    ]
+  },
+  {
+    "title": "迁跃回路",
+    "slug": "s0/perks/slot-2/迁跃回路",
+    "path": "/perks/slot-2/迁跃回路",
+    "category": "特性",
+    "keywords": [
+      "迁跃回路",
+      "3"
+    ]
+  },
+  {
+    "title": "强击火力",
+    "slug": "s0/perks/slot-3/强击火力",
+    "path": "/perks/slot-3/强击火力",
+    "category": "特性",
+    "keywords": [
+      "强击火力",
+      "3"
+    ]
+  },
+  {
+    "title": "强袭",
+    "slug": "s0/perks/slot-4/强袭",
+    "path": "/perks/slot-4/强袭",
+    "category": "特性",
+    "keywords": [
+      "强袭",
+      "3"
+    ]
+  },
+  {
+    "title": "强袭子弹",
+    "slug": "s0/perks/slot-3/强袭子弹",
+    "path": "/perks/slot-3/强袭子弹",
+    "category": "特性",
+    "keywords": [
+      "强袭子弹",
+      "2"
+    ]
+  },
+  {
+    "title": "切枪速攻",
+    "slug": "s0/perks/slot-3/切枪速攻",
+    "path": "/perks/slot-3/切枪速攻",
+    "category": "特性",
+    "keywords": [
+      "切枪速攻",
+      "3"
+    ]
+  },
+  {
+    "title": "亲密距离",
+    "slug": "s0/perks/slot-4/亲密距离",
+    "path": "/perks/slot-4/亲密距离",
+    "category": "特性",
+    "keywords": [
+      "亲密距离",
+      "3"
+    ]
+  },
+  {
+    "title": "弱点供能",
+    "slug": "s0/perks/slot-2/弱点供能",
+    "path": "/perks/slot-2/弱点供能",
+    "category": "特性",
+    "keywords": [
+      "弱点供能",
+      "3"
+    ]
+  },
+  {
+    "title": "弱点续弹",
+    "slug": "s0/perks/slot-1/弱点续弹",
+    "path": "/perks/slot-1/弱点续弹",
+    "category": "特性",
+    "keywords": [
+      "弱点续弹",
+      "3"
+    ]
+  },
+  {
+    "title": "杀戮连锁",
+    "slug": "s0/perks/slot-4/杀戮连锁",
+    "path": "/perks/slot-4/杀戮连锁",
+    "category": "特性",
+    "keywords": [
+      "杀戮连锁",
+      "3"
+    ]
+  },
+  {
+    "title": "闪电轰击",
+    "slug": "s0/perks/slot-4/闪电轰击",
+    "path": "/perks/slot-4/闪电轰击",
+    "category": "特性",
+    "keywords": [
+      "闪电轰击",
+      "3"
+    ]
+  },
+  {
+    "title": "闪电协议",
+    "slug": "s0/perks/slot-4/闪电协议",
+    "path": "/perks/slot-4/闪电协议",
+    "category": "特性",
+    "keywords": [
+      "闪电协议",
+      "2"
+    ]
+  },
+  {
+    "title": "闪回装填",
+    "slug": "s0/perks/slot-1/闪回装填",
+    "path": "/perks/slot-1/闪回装填",
+    "category": "特性",
+    "keywords": [
+      "闪回装填",
+      "3"
+    ]
+  },
+  {
+    "title": "闪切霜环",
+    "slug": "s0/perks/slot-4/闪切霜环",
+    "path": "/perks/slot-4/闪切霜环",
+    "category": "特性",
+    "keywords": [
+      "闪切霜环",
+      "3"
+    ]
+  },
+  {
+    "title": "闪身",
+    "slug": "s0/perks/slot-2/闪身",
+    "path": "/perks/slot-2/闪身",
+    "category": "特性",
+    "keywords": [
+      "闪身",
+      "3"
+    ]
+  },
+  {
+    "title": "蚀化速装",
+    "slug": "s0/perks/slot-1/蚀化速装",
+    "path": "/perks/slot-1/蚀化速装",
+    "category": "特性",
+    "keywords": [
+      "蚀化速装",
+      "3"
+    ]
+  },
+  {
+    "title": "蚀烬装填",
+    "slug": "s0/perks/slot-1/蚀烬装填",
+    "path": "/perks/slot-1/蚀烬装填",
+    "category": "特性",
+    "keywords": [
+      "蚀烬装填",
+      "3"
+    ]
+  },
+  {
+    "title": "矢量制退",
+    "slug": "s0/perks/slot-1/矢量制退",
+    "path": "/perks/slot-1/矢量制退",
+    "category": "特性",
+    "keywords": [
+      "矢量制退",
+      "2"
+    ]
+  },
+  {
+    "title": "释能火环",
+    "slug": "s0/perks/slot-4/释能火环",
+    "path": "/perks/slot-4/释能火环",
+    "category": "特性",
+    "keywords": [
+      "释能火环",
+      "2"
+    ]
+  },
+  {
+    "title": "噬能转化",
+    "slug": "s0/perks/slot-2/噬能转化",
+    "path": "/perks/slot-2/噬能转化",
+    "category": "特性",
+    "keywords": [
+      "噬能转化",
+      "3"
+    ]
+  },
+  {
+    "title": "衰变连锁",
+    "slug": "s0/perks/slot-4/衰变连锁",
+    "path": "/perks/slot-4/衰变连锁",
+    "category": "特性",
+    "keywords": [
+      "衰变连锁",
+      "3"
+    ]
+  },
+  {
+    "title": "霜滞协议",
+    "slug": "s0/perks/slot-4/霜滞协议",
+    "path": "/perks/slot-4/霜滞协议",
+    "category": "特性",
+    "keywords": [
+      "霜滞协议",
+      "2"
+    ]
+  },
+  {
+    "title": "随时待命",
+    "slug": "s0/perks/slot-2/随时待命",
+    "path": "/perks/slot-2/随时待命",
+    "category": "特性",
+    "keywords": [
+      "随时待命",
+      "3"
+    ]
+  },
+  {
+    "title": "坍缩奇点",
+    "slug": "s0/perks/slot-4/坍缩奇点",
+    "path": "/perks/slot-4/坍缩奇点",
+    "category": "特性",
+    "keywords": [
+      "坍缩奇点",
+      "3"
+    ]
+  },
+  {
+    "title": "同调稳持",
+    "slug": "s0/perks/slot-1/同调稳持",
+    "path": "/perks/slot-1/同调稳持",
+    "category": "特性",
+    "keywords": [
+      "同调稳持",
+      "3"
+    ]
+  },
+  {
+    "title": "同调装填",
+    "slug": "s0/perks/slot-1/同调装填",
+    "path": "/perks/slot-1/同调装填",
+    "category": "特性",
+    "keywords": [
+      "同调装填",
+      "3"
+    ]
+  },
+  {
+    "title": "同频装填",
+    "slug": "s0/perks/slot-1/同频装填",
+    "path": "/perks/slot-1/同频装填",
+    "category": "特性",
+    "keywords": [
+      "同频装填",
+      "3"
+    ]
+  },
+  {
+    "title": "危机充能",
+    "slug": "s0/perks/slot-2/危机充能",
+    "path": "/perks/slot-2/危机充能",
+    "category": "特性",
+    "keywords": [
+      "危机充能",
+      "3"
+    ]
+  },
+  {
+    "title": "危机装填",
+    "slug": "s0/perks/slot-1/危机装填",
+    "path": "/perks/slot-1/危机装填",
+    "category": "特性",
+    "keywords": [
+      "危机装填",
+      "3"
+    ]
+  },
+  {
+    "title": "威慑环爆",
+    "slug": "s0/perks/slot-4/威慑环爆",
+    "path": "/perks/slot-4/威慑环爆",
+    "category": "特性",
+    "keywords": [
+      "威慑环爆",
+      "3"
+    ]
+  },
+  {
+    "title": "相位强袭",
+    "slug": "s0/perks/slot-3/相位强袭",
+    "path": "/perks/slot-3/相位强袭",
+    "category": "特性",
+    "keywords": [
+      "相位强袭",
+      "3"
+    ]
+  },
+  {
+    "title": "协防阵列",
+    "slug": "s0/perks/slot-3/协防阵列",
+    "path": "/perks/slot-3/协防阵列",
+    "category": "特性",
+    "keywords": [
+      "协防阵列",
+      "3"
+    ]
+  },
+  {
+    "title": "协频共振",
+    "slug": "s0/perks/slot-3/协频共振",
+    "path": "/perks/slot-3/协频共振",
+    "category": "特性",
+    "keywords": [
+      "协频共振",
+      "3"
+    ]
+  },
+  {
+    "title": "协同供弹",
+    "slug": "s0/perks/slot-1/协同供弹",
+    "path": "/perks/slot-1/协同供弹",
+    "category": "特性",
+    "keywords": [
+      "协同供弹",
+      "3"
+    ]
+  },
+  {
+    "title": "幸运装填",
+    "slug": "s0/perks/slot-3/幸运装填",
+    "path": "/perks/slot-3/幸运装填",
+    "category": "特性",
+    "keywords": [
+      "幸运装填",
+      "3"
+    ]
+  },
+  {
+    "title": "压制火力",
+    "slug": "s0/perks/slot-3/压制火力",
+    "path": "/perks/slot-3/压制火力",
+    "category": "特性",
+    "keywords": [
+      "压制火力",
+      "3"
+    ]
+  },
+  {
+    "title": "异态共鸣",
+    "slug": "s0/perks/slot-3/异态共鸣",
+    "path": "/perks/slot-3/异态共鸣",
+    "category": "特性",
+    "keywords": [
+      "异态共鸣",
+      "3"
+    ]
+  },
+  {
+    "title": "余震速装",
+    "slug": "s0/perks/slot-1/余震速装",
+    "path": "/perks/slot-1/余震速装",
+    "category": "特性",
+    "keywords": [
+      "余震速装",
+      "3"
+    ]
+  },
+  {
+    "title": "元素析出",
+    "slug": "s0/perks/slot-1/元素析出",
+    "path": "/perks/slot-1/元素析出",
+    "category": "特性",
+    "keywords": [
+      "元素析出",
+      "3"
+    ]
+  },
+  {
+    "title": "战术强击",
+    "slug": "s0/perks/slot-3/战术强击",
+    "path": "/perks/slot-3/战术强击",
+    "category": "特性",
+    "keywords": [
+      "战术强击",
+      "3"
+    ]
+  },
+  {
+    "title": "战术装填",
+    "slug": "s0/perks/slot-1/战术装填",
+    "path": "/perks/slot-1/战术装填",
+    "category": "特性",
+    "keywords": [
+      "战术装填",
+      "3"
+    ]
+  },
+  {
+    "title": "长跑冠军",
+    "slug": "s0/perks/slot-1/长跑冠军",
+    "path": "/perks/slot-1/长跑冠军",
+    "category": "特性",
+    "keywords": [
+      "长跑冠军",
+      "3"
+    ]
+  },
+  {
+    "title": "真空回涌",
+    "slug": "s0/perks/slot-2/真空回涌",
+    "path": "/perks/slot-2/真空回涌",
+    "category": "特性",
+    "keywords": [
+      "真空回涌",
+      "3"
+    ]
+  },
+  {
+    "title": "正中红心",
+    "slug": "s0/perks/slot-3/正中红心",
+    "path": "/perks/slot-3/正中红心",
+    "category": "特性",
+    "keywords": [
+      "正中红心",
+      "3"
+    ]
+  },
+  {
+    "title": "致命导弹",
+    "slug": "s0/perks/slot-3/致命导弹",
+    "path": "/perks/slot-3/致命导弹",
+    "category": "特性",
+    "keywords": [
+      "致命导弹",
+      "3"
+    ]
+  },
+  {
+    "title": "致命节奏",
+    "slug": "s0/perks/slot-3/致命节奏",
+    "path": "/perks/slot-3/致命节奏",
+    "category": "特性",
+    "keywords": [
+      "致命节奏",
+      "2"
+    ]
+  },
+  {
+    "title": "致命射击",
+    "slug": "s0/perks/slot-3/致命射击",
+    "path": "/perks/slot-3/致命射击",
+    "category": "特性",
+    "keywords": [
+      "致命射击",
+      "1"
+    ]
+  },
+  {
+    "title": "致命循环",
+    "slug": "s0/perks/slot-1/致命循环",
+    "path": "/perks/slot-1/致命循环",
+    "category": "特性",
+    "keywords": [
+      "致命循环",
+      "3"
+    ]
+  },
+  {
+    "title": "终焉序列",
+    "slug": "s0/perks/slot-3/终焉序列",
+    "path": "/perks/slot-3/终焉序列",
+    "category": "特性",
+    "keywords": [
+      "终焉序列",
+      "3"
+    ]
+  },
+  {
+    "title": "重装弹头",
+    "slug": "s0/perks/slot-3/重装弹头",
+    "path": "/perks/slot-3/重装弹头",
+    "category": "特性",
+    "keywords": [
+      "重装弹头",
+      "3"
+    ]
+  },
+  {
+    "title": "追猎齐射",
+    "slug": "s0/perks/slot-4/追猎齐射",
+    "path": "/perks/slot-4/追猎齐射",
+    "category": "特性",
+    "keywords": [
+      "追猎齐射",
+      "3"
+    ]
+  },
+  {
+    "title": "追身导弹",
+    "slug": "s0/perks/slot-4/追身导弹",
+    "path": "/perks/slot-4/追身导弹",
+    "category": "特性",
+    "keywords": [
+      "追身导弹",
+      "1"
+    ]
+  },
+  {
+    "title": "20号星港",
+    "slug": "posts/20hxg",
+    "path": "/posts/20hxg",
+    "category": "文章",
+    "keywords": [
+      "20hxg",
+      "20号星港",
+      "塔防",
+      "地图"
+    ]
+  },
+  {
+    "title": "冰点源起",
+    "slug": "posts/bdyq",
+    "path": "/posts/bdyq",
+    "category": "文章",
+    "keywords": [
+      "bdyq",
+      "冰点源起",
+      "猎场",
+      "地图"
+    ]
+  },
+  {
+    "title": "大都会",
+    "slug": "posts/ddh",
+    "path": "/posts/ddh",
+    "category": "文章",
+    "keywords": [
+      "ddh",
+      "大都会",
+      "猎场",
+      "地图"
+    ]
+  },
+  {
+    "title": "黑暗复活节",
+    "slug": "posts/hafhj",
+    "path": "/posts/hafhj",
+    "category": "文章",
+    "keywords": [
+      "hafhj",
+      "黑暗复活节",
+      "猎场",
+      "地图"
+    ]
+  },
+  {
+    "title": "精绝古城",
+    "slug": "posts/jjgc",
+    "path": "/posts/jjgc",
+    "category": "文章",
+    "keywords": [
+      "jjgc",
+      "精绝古城",
+      "猎场",
+      "地图"
+    ]
+  },
+  {
+    "title": "精绝古城解密",
+    "slug": "posts/jjgc-puzzle",
+    "path": "/posts/jjgc-puzzle",
+    "category": "文章",
+    "keywords": [
+      "jjgc-puzzle",
+      "精绝古城解密",
+      "攻略",
+      "猎场",
+      "解密"
+    ]
+  },
+  {
+    "title": "空间站",
+    "slug": "posts/kjz",
+    "path": "/posts/kjz",
+    "category": "文章",
+    "keywords": [
+      "kjz",
+      "空间站",
+      "塔防",
+      "地图"
+    ]
+  },
+  {
+    "title": "昆仑神宫",
+    "slug": "posts/klsg",
+    "path": "/posts/klsg",
+    "category": "文章",
+    "keywords": [
+      "klsg",
+      "昆仑神宫",
+      "猎场",
+      "地图"
+    ]
+  },
+  {
+    "title": "联盟大厦",
+    "slug": "posts/lmds",
+    "path": "/posts/lmds",
+    "category": "文章",
+    "keywords": [
+      "lmds",
+      "联盟大厦",
+      "塔防",
+      "地图"
+    ]
+  },
+  {
+    "title": "猎场竞速",
+    "slug": "posts/hunting-speedrun",
+    "path": "/posts/hunting-speedrun",
+    "category": "文章",
+    "keywords": [
+      "hunting-speedrun",
+      "猎场竞速",
+      "猎场"
+    ]
+  },
+  {
+    "title": "猎场赛季技能",
+    "slug": "posts/season-skill",
+    "path": "/posts/season-skill",
+    "category": "文章",
+    "keywords": [
+      "season-skill",
+      "猎场赛季技能",
+      "猎场"
+    ]
+  },
+  {
+    "title": "猎场商店升级攻击力所需金币",
+    "slug": "posts/hunting-atk",
+    "path": "/posts/hunting-atk",
+    "category": "文章",
+    "keywords": [
+      "hunting-atk",
+      "猎场商店升级攻击力所需金币",
+      "猎场"
+    ]
+  },
+  {
+    "title": "伤害计算",
+    "slug": "posts/damage-calculation",
+    "path": "/posts/damage-calculation",
+    "category": "文章",
+    "keywords": [
+      "damage-calculation",
+      "伤害计算",
+      "攻略"
+    ]
+  },
+  {
+    "title": "首领血量",
+    "slug": "posts/boss-hp",
+    "path": "/posts/boss-hp",
+    "category": "文章",
+    "keywords": [
+      "boss-hp",
+      "首领血量",
+      "猎场"
+    ]
+  },
+  {
+    "title": "元素机制",
+    "slug": "posts/element",
+    "path": "/posts/element",
+    "category": "文章",
+    "keywords": [
+      "element",
+      "元素机制",
+      "猎场",
+      "塔防"
+    ]
+  },
+  {
+    "title": "百炼钢管",
+    "slug": "s0/weapons/百炼钢管",
+    "path": "/weapons/百炼钢管",
+    "category": "武器",
+    "keywords": [
+      "百炼钢管",
+      "电弧",
+      "史诗"
+    ]
+  },
+  {
+    "title": "棒球棍",
+    "slug": "s0/weapons/棒球棍",
+    "path": "/weapons/棒球棍",
+    "category": "武器",
+    "keywords": [
+      "棒球棍",
+      "物理",
+      "稀有"
+    ]
+  },
+  {
+    "title": "冰川尼泊尔",
+    "slug": "s0/weapons/冰川尼泊尔",
+    "path": "/weapons/冰川尼泊尔",
+    "category": "武器",
+    "keywords": [
+      "冰川尼泊尔",
+      "寒冷",
+      "史诗"
+    ]
+  },
+  {
+    "title": "冰点双峰",
+    "slug": "s0/weapons/冰点双峰",
+    "path": "/weapons/冰点双峰",
+    "category": "武器",
+    "keywords": [
+      "冰点双峰",
+      "火焰",
+      "传说"
+    ]
+  },
+  {
+    "title": "裁决之眼",
+    "slug": "s0/weapons/裁决之眼",
+    "path": "/weapons/裁决之眼",
+    "category": "武器",
+    "keywords": [
+      "裁决之眼",
+      "正面效果",
+      "狙击步枪",
+      "电弧",
+      "史诗"
+    ]
+  },
+  {
+    "title": "超级复合弓",
+    "slug": "s0/weapons/超级复合弓",
+    "path": "/weapons/超级复合弓",
+    "category": "武器",
+    "keywords": [
+      "超级复合弓",
+      "元素切换",
+      "弓箭",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "乘风快递",
+    "slug": "s0/weapons/乘风快递",
+    "path": "/weapons/乘风快递",
+    "category": "武器",
+    "keywords": [
+      "乘风快递",
+      "浮空",
+      "手枪",
+      "腐蚀",
+      "史诗"
+    ]
+  },
+  {
+    "title": "春雷震",
+    "slug": "s0/weapons/春雷震",
+    "path": "/weapons/春雷震",
+    "category": "武器",
+    "keywords": [
+      "春雷震",
+      "单发榴弹",
+      "火焰",
+      "传说"
+    ]
+  },
+  {
+    "title": "纯白至上",
+    "slug": "s0/weapons/纯白至上",
+    "path": "/weapons/纯白至上",
+    "category": "武器",
+    "keywords": [
+      "纯白至上",
+      "动态射速",
+      "机枪",
+      "寒冷",
+      "传说"
+    ]
+  },
+  {
+    "title": "刺锋",
+    "slug": "s0/weapons/刺锋",
+    "path": "/weapons/刺锋",
+    "category": "武器",
+    "keywords": [
+      "刺锋",
+      "腐蚀",
+      "稀有"
+    ]
+  },
+  {
+    "title": "杜瓦瓶",
+    "slug": "s0/weapons/杜瓦瓶",
+    "path": "/weapons/杜瓦瓶",
+    "category": "武器",
+    "keywords": [
+      "杜瓦瓶"
+    ]
+  },
+  {
+    "title": "渡鸦剑",
+    "slug": "s0/weapons/渡鸦剑",
+    "path": "/weapons/渡鸦剑",
+    "category": "武器",
+    "keywords": [
+      "渡鸦剑",
+      "火焰",
+      "史诗"
+    ]
+  },
+  {
+    "title": "短剑",
+    "slug": "s0/weapons/短剑",
+    "path": "/weapons/短剑",
+    "category": "武器",
+    "keywords": [
+      "短剑",
+      "物理",
+      "稀有"
+    ]
+  },
+  {
+    "title": "防暴棍",
+    "slug": "s0/weapons/防暴棍",
+    "path": "/weapons/防暴棍",
+    "category": "武器",
+    "keywords": [
+      "防暴棍",
+      "物理",
+      "稀有"
+    ]
+  },
+  {
+    "title": "钢脊",
+    "slug": "s0/weapons/钢脊",
+    "path": "/weapons/钢脊",
+    "category": "武器",
+    "keywords": [
+      "钢脊",
+      "电弧",
+      "史诗"
+    ]
+  },
+  {
+    "title": "钢铁轰鸣",
+    "slug": "s0/weapons/钢铁轰鸣",
+    "path": "/weapons/钢铁轰鸣",
+    "category": "武器",
+    "keywords": [
+      "钢铁轰鸣",
+      "穿透",
+      "连发榴弹",
+      "火焰",
+      "传说"
+    ]
+  },
+  {
+    "title": "钢铁骑士",
+    "slug": "s0/weapons/钢铁骑士",
+    "path": "/weapons/钢铁骑士",
+    "category": "武器",
+    "keywords": [
+      "钢铁骑士",
+      "冲锋枪",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "共晶点",
+    "slug": "s0/weapons/共晶点",
+    "path": "/weapons/共晶点",
+    "category": "武器",
+    "keywords": [
+      "共晶点",
+      "元素异常",
+      "冲锋枪",
+      "寒冷",
+      "史诗"
+    ]
+  },
+  {
+    "title": "鬼铜蚀",
+    "slug": "s0/weapons/鬼铜蚀",
+    "path": "/weapons/鬼铜蚀",
+    "category": "武器",
+    "keywords": [
+      "鬼铜蚀",
+      "喷射器",
+      "腐蚀",
+      "传说"
+    ]
+  },
+  {
+    "title": "黑克勒45",
+    "slug": "s0/weapons/黑克勒45",
+    "path": "/weapons/黑克勒45",
+    "category": "武器",
+    "keywords": [
+      "黑克勒45",
+      "元素异常",
+      "冲锋枪",
+      "火焰",
+      "史诗"
+    ]
+  },
+  {
+    "title": "黄沙风暴",
+    "slug": "s0/weapons/黄沙风暴",
+    "path": "/weapons/黄沙风暴",
+    "category": "武器",
+    "keywords": [
+      "黄沙风暴",
+      "破韧",
+      "射手步枪",
+      "火焰",
+      "传说"
+    ]
+  },
+  {
+    "title": "魂杵",
+    "slug": "s0/weapons/魂杵",
+    "path": "/weapons/魂杵",
+    "category": "武器",
+    "keywords": [
+      "魂杵",
+      "火焰",
+      "史诗"
+    ]
+  },
+  {
+    "title": "火山口",
+    "slug": "s0/weapons/火山口",
+    "path": "/weapons/火山口",
+    "category": "武器",
+    "keywords": [
+      "火山口",
+      "突击步枪",
+      "火焰",
+      "史诗"
+    ]
+  },
+  {
+    "title": "精绝兽神",
+    "slug": "s0/weapons/精绝兽神",
+    "path": "/weapons/精绝兽神",
+    "category": "武器",
+    "keywords": [
+      "精绝兽神",
+      "额外爆炸",
+      "突击步枪",
+      "火焰",
+      "传说"
+    ]
+  },
+  {
+    "title": "飓风之锤",
+    "slug": "s0/weapons/飓风之锤",
+    "path": "/weapons/飓风之锤",
+    "category": "武器",
+    "keywords": [
+      "飓风之锤",
+      "霰弹枪",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "飓风之龙",
+    "slug": "s0/weapons/飓风之龙",
+    "path": "/weapons/飓风之龙",
+    "category": "武器",
+    "keywords": [
+      "飓风之龙",
+      "快速连发",
+      "霰弹枪",
+      "火焰",
+      "传说"
+    ]
+  },
+  {
+    "title": "军用手斧",
+    "slug": "s0/weapons/军用手斧",
+    "path": "/weapons/军用手斧",
+    "category": "武器",
+    "keywords": [
+      "军用手斧",
+      "物理",
+      "稀有"
+    ]
+  },
+  {
+    "title": "雷霆999",
+    "slug": "s0/weapons/雷霆999",
+    "path": "/weapons/雷霆999",
+    "category": "武器",
+    "keywords": [
+      "雷霆999",
+      "弹夹容量",
+      "机枪",
+      "电弧",
+      "史诗"
+    ]
+  },
+  {
+    "title": "雷霆之影",
+    "slug": "s0/weapons/雷霆之影",
+    "path": "/weapons/雷霆之影",
+    "category": "武器",
+    "keywords": [
+      "雷霆之影",
+      "正面效果",
+      "手枪",
+      "电弧",
+      "史诗"
+    ]
+  },
+  {
+    "title": "黎明之光",
+    "slug": "s0/weapons/黎明之光",
+    "path": "/weapons/黎明之光",
+    "category": "武器",
+    "keywords": [
+      "黎明之光",
+      "冲锋枪",
+      "电弧",
+      "史诗"
+    ]
+  },
+  {
+    "title": "利齿",
+    "slug": "s0/weapons/利齿",
+    "path": "/weapons/利齿",
+    "category": "武器",
+    "keywords": [
+      "利齿",
+      "火焰",
+      "史诗"
+    ]
+  },
+  {
+    "title": "裂风",
+    "slug": "s0/weapons/裂风",
+    "path": "/weapons/裂风",
+    "category": "武器",
+    "keywords": [
+      "裂风",
+      "物理",
+      "稀有"
+    ]
+  },
+  {
+    "title": "梦魇",
+    "slug": "s0/weapons/梦魇",
+    "path": "/weapons/梦魇",
+    "category": "武器",
+    "keywords": [
+      "梦魇",
+      "额外爆炸",
+      "机枪",
+      "火焰",
+      "史诗"
+    ]
+  },
+  {
+    "title": "秘魇锤",
+    "slug": "s0/weapons/秘魇锤",
+    "path": "/weapons/秘魇锤",
+    "category": "武器",
+    "keywords": [
+      "秘魇锤",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "密林杀机",
+    "slug": "s0/weapons/密林杀机",
+    "path": "/weapons/密林杀机",
+    "category": "武器",
+    "keywords": [
+      "密林杀机",
+      "正面效果",
+      "狙击步枪",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "冥河之矛",
+    "slug": "s0/weapons/冥河之矛",
+    "path": "/weapons/冥河之矛",
+    "category": "武器",
+    "keywords": [
+      "冥河之矛",
+      "动态射速",
+      "机枪",
+      "电弧",
+      "传说"
+    ]
+  },
+  {
+    "title": "能源之影",
+    "slug": "s0/weapons/能源之影",
+    "path": "/weapons/能源之影",
+    "category": "武器",
+    "keywords": [
+      "能源之影",
+      "掷枪",
+      "手枪",
+      "电弧",
+      "传说"
+    ]
+  },
+  {
+    "title": "撬棍",
+    "slug": "s0/weapons/撬棍",
+    "path": "/weapons/撬棍",
+    "category": "武器",
+    "keywords": [
+      "撬棍",
+      "物理",
+      "稀有"
+    ]
+  },
+  {
+    "title": "沙暴冷锋",
+    "slug": "s0/weapons/沙暴冷锋",
+    "path": "/weapons/沙暴冷锋",
+    "category": "武器",
+    "keywords": [
+      "沙暴冷锋",
+      "寒冷",
+      "传说"
+    ]
+  },
+  {
+    "title": "沙丘之怒",
+    "slug": "s0/weapons/沙丘之怒",
+    "path": "/weapons/沙丘之怒",
+    "category": "武器",
+    "keywords": [
+      "沙丘之怒",
+      "火箭发射器",
+      "火焰",
+      "史诗"
+    ]
+  },
+  {
+    "title": "沙蚀重刃",
+    "slug": "s0/weapons/沙蚀重刃",
+    "path": "/weapons/沙蚀重刃",
+    "category": "武器",
+    "keywords": [
+      "沙蚀重刃",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "蛇神之剑",
+    "slug": "s0/weapons/蛇神之剑",
+    "path": "/weapons/蛇神之剑",
+    "category": "武器",
+    "keywords": [
+      "蛇神之剑",
+      "腐蚀",
+      "传说"
+    ]
+  },
+  {
+    "title": "蛇神之矛",
+    "slug": "s0/weapons/蛇神之矛",
+    "path": "/weapons/蛇神之矛",
+    "category": "武器",
+    "keywords": [
+      "蛇神之矛",
+      "电弧",
+      "传说"
+    ]
+  },
+  {
+    "title": "生命公司",
+    "slug": "s0/weapons/生命公司",
+    "path": "/weapons/生命公司",
+    "category": "武器",
+    "keywords": [
+      "生命公司",
+      "机枪",
+      "腐蚀",
+      "传说"
+    ]
+  },
+  {
+    "title": "生命线",
+    "slug": "s0/weapons/生命线",
+    "path": "/weapons/生命线",
+    "category": "武器",
+    "keywords": [
+      "生命线",
+      "命中爆炸",
+      "单发榴弹",
+      "寒冷",
+      "史诗"
+    ]
+  },
+  {
+    "title": "胜利誓约",
+    "slug": "s0/weapons/胜利誓约",
+    "path": "/weapons/胜利誓约",
+    "category": "武器",
+    "keywords": [
+      "胜利誓约",
+      "弹射",
+      "突击步枪",
+      "腐蚀",
+      "史诗"
+    ]
+  },
+  {
+    "title": "尸龙战斧",
+    "slug": "s0/weapons/尸龙战斧",
+    "path": "/weapons/尸龙战斧",
+    "category": "武器",
+    "keywords": [
+      "尸龙战斧",
+      "寒冷",
+      "史诗"
+    ]
+  },
+  {
+    "title": "收割者",
+    "slug": "s0/weapons/收割者",
+    "path": "/weapons/收割者",
+    "category": "武器",
+    "keywords": [
+      "收割者",
+      "命中爆炸",
+      "单发榴弹",
+      "火焰",
+      "史诗"
+    ]
+  },
+  {
+    "title": "甩棍",
+    "slug": "s0/weapons/甩棍",
+    "path": "/weapons/甩棍",
+    "category": "武器",
+    "keywords": [
+      "甩棍",
+      "物理",
+      "稀有"
+    ]
+  },
+  {
+    "title": "死神镰刀",
+    "slug": "s0/weapons/死神镰刀",
+    "path": "/weapons/死神镰刀",
+    "category": "武器",
+    "keywords": [
+      "死神镰刀",
+      "腐蚀",
+      "传说"
+    ]
+  },
+  {
+    "title": "死神猎手",
+    "slug": "s0/weapons/死神猎手",
+    "path": "/weapons/死神猎手",
+    "category": "武器",
+    "keywords": [
+      "死神猎手",
+      "穿透",
+      "射手步枪",
+      "物理",
+      "传说"
+    ]
+  },
+  {
+    "title": "死亡猎手",
+    "slug": "s0/weapons/死亡猎手",
+    "path": "/weapons/死亡猎手",
+    "category": "武器",
+    "keywords": [
+      "死亡猎手",
+      "穿透",
+      "射手步枪",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "死亡之拥",
+    "slug": "s0/weapons/死亡之拥",
+    "path": "/weapons/死亡之拥",
+    "category": "武器",
+    "keywords": [
+      "死亡之拥",
+      "物理",
+      "传说"
+    ]
+  },
+  {
+    "title": "苔色暴风",
+    "slug": "s0/weapons/苔色暴风",
+    "path": "/weapons/苔色暴风",
+    "category": "武器",
+    "keywords": [
+      "苔色暴风",
+      "备点回复",
+      "手枪",
+      "火焰",
+      "史诗"
+    ]
+  },
+  {
+    "title": "天鹅之舞",
+    "slug": "s0/weapons/天鹅之舞",
+    "path": "/weapons/天鹅之舞",
+    "category": "武器",
+    "keywords": [
+      "天鹅之舞",
+      "快速连发",
+      "突击步枪",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "铁骨",
+    "slug": "s0/weapons/铁骨",
+    "path": "/weapons/铁骨",
+    "category": "武器",
+    "keywords": [
+      "铁骨",
+      "物理",
+      "稀有"
+    ]
+  },
+  {
+    "title": "维和者",
+    "slug": "s0/weapons/维和者",
+    "path": "/weapons/维和者",
+    "category": "武器",
+    "keywords": [
+      "维和者",
+      "弹匣回复",
+      "连发榴弹",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "武装斧头",
+    "slug": "s0/weapons/武装斧头",
+    "path": "/weapons/武装斧头",
+    "category": "武器",
+    "keywords": [
+      "武装斧头",
+      "物理",
+      "传说"
+    ]
+  },
+  {
+    "title": "星海狂想",
+    "slug": "s0/weapons/星海狂想",
+    "path": "/weapons/星海狂想",
+    "category": "武器",
+    "keywords": [
+      "星海狂想",
+      "动态射速",
+      "突击步枪",
+      "寒冷",
+      "传说"
+    ]
+  },
+  {
+    "title": "血怨",
+    "slug": "s0/weapons/血怨",
+    "path": "/weapons/血怨",
+    "category": "武器",
+    "keywords": [
+      "血怨",
+      "物理",
+      "传说"
+    ]
+  },
+  {
+    "title": "幽冥毒皇",
+    "slug": "s0/weapons/幽冥毒皇",
+    "path": "/weapons/幽冥毒皇",
+    "category": "武器",
+    "keywords": [
+      "幽冥毒皇",
+      "多模式",
+      "机枪",
+      "腐蚀",
+      "传说"
+    ]
+  },
+  {
+    "title": "幽冥毒王",
+    "slug": "s0/weapons/幽冥毒王",
+    "path": "/weapons/幽冥毒王",
+    "category": "武器",
+    "keywords": [
+      "幽冥毒王",
+      "多模式",
+      "机枪",
+      "腐蚀",
+      "史诗"
+    ]
+  },
+  {
+    "title": "元宵来袭",
+    "slug": "s0/weapons/元宵来袭",
+    "path": "/weapons/元宵来袭",
+    "category": "武器",
+    "keywords": [
+      "元宵来袭",
+      "冲锋枪",
+      "物理",
+      "传说"
+    ]
+  },
+  {
+    "title": "再生冷却",
+    "slug": "s0/weapons/再生冷却",
+    "path": "/weapons/再生冷却",
+    "category": "武器",
+    "keywords": [
+      "再生冷却",
+      "霰弹枪",
+      "寒冷",
+      "传说"
+    ]
+  },
+  {
+    "title": "战锋",
+    "slug": "s0/weapons/战锋",
+    "path": "/weapons/战锋",
+    "category": "武器",
+    "keywords": [
+      "战锋",
+      "物理",
+      "稀有"
+    ]
+  },
+  {
+    "title": "战争矩阵",
+    "slug": "s0/weapons/战争矩阵",
+    "path": "/weapons/战争矩阵",
+    "category": "武器",
+    "keywords": [
+      "战争矩阵",
+      "浮空",
+      "手枪",
+      "物理",
+      "传说"
+    ]
+  },
+  {
+    "title": "振弦",
+    "slug": "s0/weapons/振弦",
+    "path": "/weapons/振弦",
+    "category": "武器",
+    "keywords": [
+      "振弦",
+      "蓄力",
+      "弓箭",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "震沙锏",
+    "slug": "s0/weapons/震沙锏",
+    "path": "/weapons/震沙锏",
+    "category": "武器",
+    "keywords": [
+      "震沙锏",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "Z型步枪",
+    "slug": "s0/weapons/Z型步枪",
+    "path": "/weapons/Z型步枪",
+    "category": "武器",
+    "keywords": [
+      "Z型步枪",
+      "自瞄",
+      "突击步枪",
+      "物理",
+      "史诗"
+    ]
+  },
+  {
+    "title": "暴风之眼",
+    "slug": "s0/traps/暴风之眼",
+    "path": "/traps/暴风之眼",
+    "category": "陷阱",
+    "keywords": [
+      "暴风之眼"
+    ]
+  },
+  {
+    "title": "地刺",
+    "slug": "s0/traps/地刺",
+    "path": "/traps/地刺",
+    "category": "陷阱",
+    "keywords": [
+      "地刺"
+    ]
+  },
+  {
+    "title": "电击",
+    "slug": "s0/traps/电击",
+    "path": "/traps/电击",
+    "category": "陷阱",
+    "keywords": [
+      "电击"
+    ]
+  },
+  {
+    "title": "毒刺",
+    "slug": "s0/traps/毒刺",
+    "path": "/traps/毒刺",
+    "category": "陷阱",
+    "keywords": [
+      "毒刺"
+    ]
+  },
+  {
+    "title": "防空导弹",
+    "slug": "s0/traps/防空导弹",
+    "path": "/traps/防空导弹",
+    "category": "陷阱",
+    "keywords": [
+      "防空导弹"
+    ]
+  },
+  {
+    "title": "岗哨机枪",
+    "slug": "s0/traps/岗哨机枪",
+    "path": "/traps/岗哨机枪",
+    "category": "陷阱",
+    "keywords": [
+      "岗哨机枪"
+    ]
+  },
+  {
+    "title": "高能激光",
+    "slug": "s0/traps/高能激光",
+    "path": "/traps/高能激光",
+    "category": "陷阱",
+    "keywords": [
+      "高能激光"
+    ]
+  },
+  {
+    "title": "火墙",
+    "slug": "s0/traps/火墙",
+    "path": "/traps/火墙",
+    "category": "陷阱",
+    "keywords": [
+      "火墙"
+    ]
+  },
+  {
+    "title": "激光发射器",
+    "slug": "s0/traps/激光发射器",
+    "path": "/traps/激光发射器",
+    "category": "陷阱",
+    "keywords": [
+      "激光发射器"
+    ]
+  },
+  {
+    "title": "歼灭者",
+    "slug": "s0/traps/歼灭者",
+    "path": "/traps/歼灭者",
+    "category": "陷阱",
+    "keywords": [
+      "歼灭者"
+    ]
+  },
+  {
+    "title": "减速",
+    "slug": "s0/traps/减速",
+    "path": "/traps/减速",
+    "category": "陷阱",
+    "keywords": [
+      "减速"
+    ]
+  },
+  {
+    "title": "巨型弹板",
+    "slug": "s0/traps/巨型弹板",
+    "path": "/traps/巨型弹板",
+    "category": "陷阱",
+    "keywords": [
+      "巨型弹板"
+    ]
+  },
+  {
+    "title": "聚能炮",
+    "slug": "s0/traps/聚能炮",
+    "path": "/traps/聚能炮",
+    "category": "陷阱",
+    "keywords": [
+      "聚能炮"
+    ]
+  },
+  {
+    "title": "狂风",
+    "slug": "s0/traps/狂风",
+    "path": "/traps/狂风",
+    "category": "陷阱",
+    "keywords": [
+      "狂风"
+    ]
+  },
+  {
+    "title": "破坏者",
+    "slug": "s0/traps/破坏者",
+    "path": "/traps/破坏者",
+    "category": "陷阱",
+    "keywords": [
+      "破坏者"
+    ]
+  },
+  {
+    "title": "天启",
+    "slug": "s0/traps/天启",
+    "path": "/traps/天启",
+    "category": "陷阱",
+    "keywords": [
+      "天启"
+    ]
+  },
+  {
+    "title": "天网",
+    "slug": "s0/traps/天网",
+    "path": "/traps/天网",
+    "category": "陷阱",
+    "keywords": [
+      "天网"
+    ]
+  },
+  {
+    "title": "小型弹板",
+    "slug": "s0/traps/小型弹板",
+    "path": "/traps/小型弹板",
+    "category": "陷阱",
+    "keywords": [
+      "小型弹板"
+    ]
+  },
+  {
+    "title": "修理站",
+    "slug": "s0/traps/修理站",
+    "path": "/traps/修理站",
+    "category": "陷阱",
+    "keywords": [
+      "修理站",
+      "维修"
+    ]
+  },
+  {
+    "title": "诱捕",
+    "slug": "s0/traps/诱捕",
+    "path": "/traps/诱捕",
+    "category": "陷阱",
+    "keywords": [
+      "诱捕"
+    ]
+  },
+  {
+    "title": "战防炮",
+    "slug": "s0/traps/战防炮",
+    "path": "/traps/战防炮",
+    "category": "陷阱",
+    "keywords": [
+      "战防炮"
+    ]
+  },
+  {
+    "title": "智能枪塔",
+    "slug": "s0/traps/智能枪塔",
+    "path": "/traps/智能枪塔",
+    "category": "陷阱",
+    "keywords": [
+      "智能枪塔"
+    ]
+  },
+  {
+    "title": "自修复磁暴塔",
+    "slug": "s0/traps/自修复磁暴塔",
+    "path": "/traps/自修复磁暴塔",
+    "category": "陷阱",
+    "keywords": [
+      "自修复磁暴塔"
+    ]
+  }
+]
