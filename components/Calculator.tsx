@@ -65,13 +65,19 @@ function evaluate(
   }
 }
 
-// 解析赋值语句 x = 123 或 x = 1 + 2（支持中文变量名）
+// 解析赋值语句 x = 123 或 x = 1 + 2 或 x 123（支持中文变量名）
 function parseAssignment(
   input: string,
 ): { varName: string; expr: string } | null {
-  const match = input.match(/^([a-zA-Z_\u4e00-\u9fff][a-zA-Z0-9_\u4e00-\u9fff]*)\s*=\s*(.+)$/);
-  if (match) {
-    return { varName: match[1], expr: match[2] };
+  // 标准赋值: x = 123
+  const matchEquals = input.match(/^([a-zA-Z_\u4e00-\u9fff][a-zA-Z0-9_\u4e00-\u9fff]*)\s*=\s*(.+)$/);
+  if (matchEquals) {
+    return { varName: matchEquals[1], expr: matchEquals[2] };
+  }
+  // 省略等号: x 123 (变量名后跟空格和数字/表达式)
+  const matchSpace = input.match(/^([a-zA-Z_\u4e00-\u9fff][a-zA-Z0-9_\u4e00-\u9fff]*)\s+(\d.*)$/);
+  if (matchSpace) {
+    return { varName: matchSpace[1], expr: matchSpace[2] };
   }
   return null;
 }
