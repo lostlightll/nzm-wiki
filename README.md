@@ -3,21 +3,83 @@
 > [!NOTE]
 > 正在施工中
 
-TechStack: React, Next.js, TypeScript, Tailwindcss, [MDX](https://mdxjs.com/)
+技术栈: React, Next.js, TypeScript, Tailwind CSS, [MDX](https://mdxjs.com/)
 
-## Development
+## 特性 (Features)
 
-First, run `pnpm i` to install the dependencies.
+### 搜索面板 (Search Pannel)
 
-Then, run `pnpm dev` to start the development server.
+按 `Ctrl/Cmd + p` 或点击搜索框打开搜索面板，支持：
+- 拼音搜索（全拼、首字母缩写）
+- 模糊匹配
+- 键盘导航（↑↓ 选择，Enter 跳转，Esc 关闭）
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 命令面板 (Command Pannel)
 
-Open [http://localhost:3000/editor](http://localhost:3000/editor) to edit wiki mdx files.
+按 `Ctrl/Cmd + Shift + p` 打开命令面板，可快速执行：
+- 打开计算器
+- 跳转到 Github 文件页面 (只在 MDX 页面生效，方便快速修改)
+
+### 计算器 (Floating Calculator)
+
+计算器悬浮窗口，可以自由拖动，支持：
+- 基础运算：`+ - * / ^ ()`
+- 百分号：`25%` → `0.25`
+- 中文变量：`攻击力 = 500`
+- 公式变量：变量存储公式，引用时自动重新计算
+- 循环引用检测
+
+命令：
+- `clear` / `cl` - 清屏（保留变量）
+- `reset` - 清屏并清空变量
+- `show <变量名>` - 查看公式定义
+- `help` - 显示帮助
+- `exit` / `quit` / q` - 关闭
+
+示例：
+```
+> 基础伤害 200
+> 伤害倍率 0.8
+> 最终伤害 = 基础伤害 * 伤害倍率
+> 最终伤害 = 160
+> 基础伤害 100
+> 最终伤害 = 80    # 自动重新计算
+```
+
+## 开发 (Development)
+
+安装依赖：
+
+```bash
+pnpm i
+```
+
+启动开发服务器：
+
+```bash
+pnpm dev
+```
+
+打开 [http://localhost:3000](http://localhost:3000) 查看网站。
+
+打开 [http://localhost:3000/editor](http://localhost:3000/editor) 编辑 MDX 文件。
 
 <img alt="editor-preview" src="https://github.com/user-attachments/assets/f9a7e58f-d30f-4907-8895-667c28a406fb" />
 
-## MDX Components
+## MDX 可用组件 (Components)
+
+### Frontmatter
+
+MDX 文件支持以下 frontmatter 字段：
+
+| 字段 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| `title` | string | - | 页面标题 |
+| `tag` | string | - | 分类标签 |
+| `toc` | boolean | `true` | 是否显示目录 |
+| `page-width` | string | `lg` | 页面宽度 |
+
+`page-width` 可选值：`sm`、`md`、`lg`、`xl`、`2xl`、`3xl`、`full`，也支持自定义值如 `1200px`。
 
 ### Callout
 
@@ -42,7 +104,7 @@ Open [http://localhost:3000/editor](http://localhost:3000/editor) to edit wiki m
 <Highlight color="hazy">hazy - #d3d3d3</Highlight>
 ```
 
-### Text Colors
+### Text Color
 
 ```mdx
 <Red>Red - #cf5148</Red>
@@ -56,8 +118,6 @@ Open [http://localhost:3000/editor](http://localhost:3000/editor) to edit wiki m
 <Pink>Pink - #c14c8a</Pink>
 ```
 
-### Element Colors
-
 ```mdx
 <Fire>Fire - #f8c618</Fire>
 <Ice>Ice - #90f5ff</Ice>
@@ -66,11 +126,18 @@ Open [http://localhost:3000/editor](http://localhost:3000/editor) to edit wiki m
 <Kinetic>Kinetic - #becacc</Kinetic>
 ```
 
-## Scripts
+## 脚本 (Scripts)
 
-Decode CG: `python3 ./scripts/convert.py "/e/games/WeGameApps/rail_apps/逆战：未来(2002130)/NZM/Content/Movies"`
-Decrypt: for example`./scripts/decrypt.sh NZM/Content/AIBehavior/`
+解码 CG：
+```bash
+python3 ./scripts/convert.py "/e/games/WeGameApps/rail_apps/逆战：未来(2002130)/NZM/Content/Movies"
+```
 
-## Extra
+解包 Pak：
+```bash
+./scripts/decrypt.sh NZM/Content/AIBehavior/
+```
 
-For more about Nizhan: Future, See my notes at https://qiekn.notion.site/nzm
+## 更多 (About)
+
+更多关于逆战未来的内容，见 https://qiekn.notion.site/nzm
