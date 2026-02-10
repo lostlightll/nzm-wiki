@@ -28,10 +28,13 @@ function evaluate(
     processed = processed.replace(/=+\s*$/, "");
 
     // 替换所有变量（包括 _）
-    for (const [name, val] of Object.entries(variables)) {
-      // 使用单词边界来精确匹配变量名
+    // 按变量名长度降序排列，避免短变量名先匹配导致长变量名无法匹配
+    const sortedVars = Object.entries(variables).sort((a, b) => b[0].length - a[0].length);
+    for (const [name, val] of sortedVars) {
+      // 使用前后断言来精确匹配变量名（支持中文）
+      const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const regex = new RegExp(
-        `\\b${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
+        `(?<![a-zA-Z0-9_\u4e00-\u9fff])${escapedName}(?![a-zA-Z0-9_\u4e00-\u9fff])`,
         "g",
       );
       processed = processed.replace(regex, `(${val})`);
@@ -58,11 +61,11 @@ function evaluate(
   }
 }
 
-// 解析赋值语句 x = 123 或 x = 1 + 2
+// 解析赋值语句 x = 123 或 x = 1 + 2（支持中文变量名）
 function parseAssignment(
   input: string,
 ): { varName: string; expr: string } | null {
-  const match = input.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+)$/);
+  const match = input.match(/^([a-zA-Z_\u4e00-\u9fff][a-zA-Z0-9_\u4e00-\u9fff]*)\s*=\s*(.+)$/);
   if (match) {
     return { varName: match[1], expr: match[2] };
   }
