@@ -104,9 +104,10 @@ export function Calculator({
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [variables, setVariables] = useState<Record<string, number>>({ _: 0 });
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const [position, setPosition] = useState({ right: 16, bottom: 16 });
+  const [iconPosition, setIconPosition] = useState({ right: 16, bottom: 16 });
+  const [windowPosition, setWindowPosition] = useState({ right: 16, bottom: 16 });
   const [size, setSize] = useState({ width: 320, height: 300 });
-  const [isDragging, setIsDragging] = useState(false);
+  const [isDragging, setIsDragging] = useState<false | "icon" | "window">(false);
   const [isResizing, setIsResizing] = useState<false | "nw" | "se">(false);
   const dragStartRef = useRef({ mouseX: 0, mouseY: 0, right: 0, bottom: 0 });
   const resizeStartRef = useRef({ mouseX: 0, mouseY: 0, width: 0, height: 0 });
@@ -144,20 +145,35 @@ export function Calculator({
     }
   }, [isOpen]);
 
-  // 拖拽开始
-  const handleMouseDown = useCallback(
+  // Icon 拖拽开始
+  const handleIconMouseDown = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
       hasDraggedRef.current = false;
       dragStartRef.current = {
         mouseX: e.clientX,
         mouseY: e.clientY,
-        right: position.right,
-        bottom: position.bottom,
+        right: iconPosition.right,
+        bottom: iconPosition.bottom,
       };
-      setIsDragging(true);
+      setIsDragging("icon");
     },
-    [position],
+    [iconPosition],
+  );
+
+  // 窗口拖拽开始
+  const handleWindowMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      dragStartRef.current = {
+        mouseX: e.clientX,
+        mouseY: e.clientY,
+        right: windowPosition.right,
+        bottom: windowPosition.bottom,
+      };
+      setIsDragging("window");
+    },
+    [windowPosition],
   );
 
   // 拖拽移动和结束
@@ -168,7 +184,7 @@ export function Calculator({
       const deltaX = dragStartRef.current.mouseX - e.clientX;
       const deltaY = dragStartRef.current.mouseY - e.clientY;
 
-      // 如果移动超过 5px，标记为拖拽
+      // 如果移动超过 5px，标记为拖拽（仅对 icon 有意义）
       if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
         hasDraggedRef.current = true;
       }
@@ -182,7 +198,11 @@ export function Calculator({
         Math.min(window.innerHeight - 60, dragStartRef.current.bottom + deltaY),
       );
 
-      setPosition({ right: newRight, bottom: newBottom });
+      if (isDragging === "icon") {
+        setIconPosition({ right: newRight, bottom: newBottom });
+      } else {
+        setWindowPosition({ right: newRight, bottom: newBottom });
+      }
     };
 
     const handleMouseUp = () => {
@@ -263,7 +283,7 @@ export function Calculator({
 
         // 调整 position 来补偿大小变化，保持右下角固定
         if (widthDelta !== 0 || heightDelta !== 0) {
-          setPosition(prev => ({
+          setWindowPosition(prev => ({
             right: Math.max(16, prev.right - widthDelta),
             bottom: Math.max(16, prev.bottom - heightDelta),
           }));
@@ -409,15 +429,15 @@ export function Calculator({
   // 计算窗口的安全位置，确保在可视范围内
   const getWindowStyle = useCallback(() => {
     if (typeof window === "undefined") {
-      return { right: position.right, bottom: position.bottom };
+      return { right: windowPosition.right, bottom: windowPosition.bottom };
     }
 
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
     // 计算窗口右下角的位置
-    let right = position.right;
-    let bottom = position.bottom;
+    let right = windowPosition.right;
+    let bottom = windowPosition.bottom;
 
     // 确保窗口不会超出左边界
     if (right > viewportWidth - size.width) {
@@ -434,14 +454,14 @@ export function Calculator({
     bottom = Math.max(16, bottom);
 
     return { right, bottom };
-  }, [position, size]);
+  }, [windowPosition, size]);
 
   return (
     <>
       {/* 折叠按钮 - 可拖拽 */}
       <div
-        className={`fixed z-50 ${isDragging ? "select-none" : ""}`}
-        style={{ right: position.right, bottom: position.bottom }}
+        className={`fixed z-50 ${isDragging === "icon" ? "select-none" : ""}`}
+        style={{ right: iconPosition.right, bottom: iconPosition.bottom }}
       >
         <div
           className={`transition-all duration-300 ease-out ${
@@ -451,9 +471,9 @@ export function Calculator({
           }`}
         >
           <div
-            onMouseDown={handleMouseDown}
+            onMouseDown={handleIconMouseDown}
             onClick={handleButtonClick}
-            className={`flex h-12 w-12 items-center justify-center rounded-full bg-zinc-800 text-zinc-300 shadow-lg ring-1 ring-zinc-700 transition-all hover:bg-zinc-700 hover:text-white hover:scale-110 ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
+            className={`flex h-12 w-12 items-center justify-center rounded-full bg-zinc-800 text-zinc-300 shadow-lg ring-1 ring-zinc-700 transition-all hover:bg-zinc-700 hover:text-white hover:scale-110 ${isDragging === "icon" ? "cursor-grabbing" : "cursor-grab"}`}
             title="计算器 (Ctrl+Shift+P)"
           >
             <CalculatorIcon className="h-6 w-6 pointer-events-none" />
@@ -489,9 +509,9 @@ export function Calculator({
         {/* 标题栏 - 可拖拽 */}
         <div
           className={`flex items-center justify-between border-b border-zinc-700 bg-zinc-800 px-3 py-2 ${
-            isDragging ? "cursor-grabbing" : "cursor-grab"
+            isDragging === "window" ? "cursor-grabbing" : "cursor-grab"
           }`}
-          onMouseDown={handleMouseDown}
+          onMouseDown={handleWindowMouseDown}
         >
           <span className="text-sm font-medium text-zinc-300 select-none">
             计算器
