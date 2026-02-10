@@ -71,6 +71,7 @@ interface HistoryItem {
   output: string | string[];
   isError: boolean;
   isSystem?: boolean;
+  isAssignment?: boolean; // 是否是赋值语句（不显示输出）
 }
 
 interface CalculatorProps {
@@ -276,6 +277,7 @@ export function Calculator({
 
     // 检查是否是赋值语句
     const assignment = parseAssignment(originalInput);
+    let isAssignment = false;
 
     if (assignment) {
       const { varName, expr } = assignment;
@@ -286,6 +288,7 @@ export function Calculator({
         isError = true;
       } else {
         output = String(result.value);
+        isAssignment = true; // 标记为赋值语句
         setVariables((prev) => ({
           ...prev,
           [varName]: result.value,
@@ -304,7 +307,7 @@ export function Calculator({
       }
     }
 
-    setHistory((prev) => [...prev, { input: originalInput, output, isError }]);
+    setHistory((prev) => [...prev, { input: originalInput, output, isError, isAssignment }]);
     setInput("");
     setHistoryIndex(-1);
   }, [input, variables, clearHistory, setIsOpen]);
@@ -480,18 +483,21 @@ export function Calculator({
                   <span className="text-zinc-600">&gt; </span>
                   {item.input}
                 </div>
-                {Array.isArray(item.output) ? (
-                  <div className="text-zinc-500">
-                    {item.output.map((line, j) => (
-                      <div key={j}>{line || "\u00A0"}</div>
-                    ))}
-                  </div>
-                ) : (
-                  <div
-                    className={item.isError ? "text-red-400" : "text-amber-200"}
-                  >
-                    {item.output}
-                  </div>
+                {/* 赋值语句成功时不显示输出 */}
+                {!item.isAssignment && (
+                  Array.isArray(item.output) ? (
+                    <div className="text-zinc-500">
+                      {item.output.map((line, j) => (
+                        <div key={j}>{line || "\u00A0"}</div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div
+                      className={item.isError ? "text-red-400" : "text-amber-200"}
+                    >
+                      {item.output}
+                    </div>
+                  )
                 )}
               </div>
             ))
