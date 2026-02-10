@@ -6,9 +6,6 @@ import Link from "next/link";
 import type { Boss } from "@/types";
 import { getAssetPath } from "@/lib/path";
 
-// 统一金色背景
-const THEME_COLOR = "#d1ac69";
-
 function BossImage({ name, className }: { name: string; className?: string }) {
   const [hasError, setHasError] = useState(false);
   const src = getAssetPath(`/icons/enemies/lc/boss/${name}.png`);
