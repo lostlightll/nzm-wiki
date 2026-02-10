@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { Search, FileText, ArrowRight } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
+import { matchPinyin } from "@/lib/pinyin";
 
 interface SearchItem {
   title: string;
@@ -21,66 +22,13 @@ const DEFAULT_ENTRIES = [
   { title: "文章归档", path: "/posts", category: "导航" },
 ];
 
-// 简单的拼音首字母匹配（常用字）
-const pinyinMap: Record<string, string> = {
-  武: "w",
-  器: "q",
-  特: "t",
-  性: "x",
-  陷: "x",
-  阱: "j",
-  首: "s",
-  领: "l",
-  塔: "t",
-  防: "f",
-  敌: "d",
-  人: "r",
-  卡: "k",
-  牌: "p",
-  文: "w",
-  章: "z",
-  火: "h",
-  冰: "b",
-  电: "d",
-  腐: "f",
-  蚀: "s",
-  物: "w",
-  理: "l",
-  传: "c",
-  说: "s",
-  史: "s",
-  诗: "s",
-  稀: "x",
-  有: "y",
-  普: "p",
-  通: "t",
-};
-
-function getPinyinInitials(text: string): string {
-  return text
-    .split("")
-    .map((char) => pinyinMap[char] || char.toLowerCase())
-    .join("");
-}
-
 function matchSearch(item: SearchItem, query: string): boolean {
-  const lowerQuery = query.toLowerCase();
+  // 匹配标题（支持拼音）
+  if (matchPinyin(item.title, query)) return true;
 
-  // 直接匹配标题
-  if (item.title.toLowerCase().includes(lowerQuery)) return true;
-
-  // 匹配关键词
+  // 匹配关键词（支持拼音）
   for (const keyword of item.keywords) {
-    if (String(keyword).toLowerCase().includes(lowerQuery)) return true;
-  }
-
-  // 拼音首字母匹配
-  const titlePinyin = getPinyinInitials(item.title);
-  if (titlePinyin.includes(lowerQuery)) return true;
-
-  for (const keyword of item.keywords) {
-    const keywordPinyin = getPinyinInitials(String(keyword));
-    if (keywordPinyin.includes(lowerQuery)) return true;
+    if (matchPinyin(String(keyword), query)) return true;
   }
 
   return false;
