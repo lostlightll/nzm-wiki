@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { pinyin } from "pinyin-pro";
 
 interface SearchItem {
   title: string;
@@ -8,6 +9,7 @@ interface SearchItem {
   path: string;
   category: string;
   keywords: string[];
+  pinyin: string[];  // 预计算的拼音
 }
 
 const baseDir = path.join(process.cwd(), "data");
@@ -141,12 +143,25 @@ function scanDirectory(dirPath: string, relativePath: string = ""): SearchItem[]
         }
       }
 
+      // 生成拼音索引（全拼和首字母）
+      const allText = [data.title || fileName, ...keywords].filter(Boolean);
+      const pinyinSet = new Set<string>();
+      for (const text of allText) {
+        // 全拼
+        const fullPinyin = pinyin(String(text), { toneType: "none", type: "array" }).join("");
+        if (fullPinyin) pinyinSet.add(fullPinyin.toLowerCase());
+        // 首字母
+        const initials = pinyin(String(text), { pattern: "first", toneType: "none", type: "array" }).join("");
+        if (initials) pinyinSet.add(initials.toLowerCase());
+      }
+
       results.push({
         title: data.title || fileName,
         slug,
         path: urlPath,
         category,
-        keywords: [...new Set(keywords.filter(Boolean).map(String))], // 去重、过滤空值、转字符串
+        keywords: [...new Set(keywords.filter(Boolean).map(String))],
+        pinyin: [...pinyinSet],
       });
     }
   }
