@@ -9,11 +9,11 @@ interface NavCardProps {
 }
 
 const NAV_ITEMS = [
-  { href: "/weapons", icon: "🔫", title: "武器图鉴", description: "全武器数据与技能" },
-  { href: "/perks", icon: "⚡", title: "插件图鉴", description: "角色插件效果一览" },
-  { href: "/traps", icon: "🪤", title: "塔防陷阱", description: "陷阱属性与升级数据" },
-  { href: "/enemies/td", icon: "👾", title: "塔防敌人", description: "敌人类型与属性" },
-  { href: "/posts", icon: "📄", title: "文章归档", description: "攻略与机制解析" },
+  { href: "/weapons", icon: "🔫", title: "武器图鉴" },
+  { href: "/perks", icon: "⚡", title: "插件图鉴" },
+  { href: "/traps", icon: "🪤", title: "塔防陷阱" },
+  { href: "/enemies/td", icon: "👾", title: "塔防敌人" },
+  { href: "/posts", icon: "📄", title: "文章归档" },
 ];
 
 const isProd = process.env.NODE_ENV === "production";
