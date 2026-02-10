@@ -1,63 +1,84 @@
 import Link from "next/link";
 import Image from "next/image";
 
-// 1. 定义 props 的类型接口
 interface NavCardProps {
   href: string;
   icon: string;
   title: string;
+  description?: string;
 }
 
 const NAV_ITEMS = [
-  { href: "/weapons", icon: "🔫", title: "武器图鉴" },
-  { href: "/perks", icon: "⚡", title: "插件图鉴" },
-  { href: "/traps", icon: "🪤", title: "塔防陷阱" },
-  { href: "/enemies/td", icon: "👾", title: "塔防敌人" },
-  { href: "/posts", icon: "📄", title: "文章归档" },
+  { href: "/weapons", icon: "🔫", title: "武器图鉴", description: "全武器数据与技能" },
+  { href: "/perks", icon: "⚡", title: "插件图鉴", description: "角色插件效果一览" },
+  { href: "/traps", icon: "🪤", title: "塔防陷阱", description: "陷阱属性与升级数据" },
+  { href: "/enemies/td", icon: "👾", title: "塔防敌人", description: "敌人类型与属性" },
+  { href: "/posts", icon: "📄", title: "文章归档", description: "攻略与机制解析" },
 ];
 
 const isProd = process.env.NODE_ENV === "production";
 const basePath = isProd ? "/nzm-wiki" : "";
 
-// 2. 在组件参数里使用该类型 (: NavCardProps)
-function NavCard({ href, icon, title }: NavCardProps) {
+function NavCard({ href, icon, title, description }: NavCardProps) {
   return (
     <Link
       href={href}
-      className="flex h-32 w-48 flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800 transition-colors hover:border-zinc-500 hover:bg-zinc-700"
+      className="group flex flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800/50 p-4 transition-all hover:border-zinc-500 hover:bg-zinc-700/50 hover:scale-[1.02] active:scale-[0.98]"
     >
-      <span className="text-3xl">{icon}</span>
-      <span className="mt-2 text-lg font-medium text-white">{title}</span>
+      <span className="text-2xl sm:text-3xl">{icon}</span>
+      <span className="mt-2 text-base sm:text-lg font-medium text-white">{title}</span>
+      {description && (
+        <span className="mt-1 text-xs text-zinc-500 text-center hidden sm:block">
+          {description}
+        </span>
+      )}
     </Link>
   );
 }
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4">
-      <Image
-        src={`${basePath}/logo.png`}
-        alt="逆战未来 维基"
-        width={200}
-        height={200}
-        className="mb-6"
-        style={{ width: 200, height: "auto" }}
-        priority
-      />
-      <h1 className="mb-8 text-4xl font-bold text-white">逆战未来 维基</h1>
-      <div className="grid gap-4 sm:grid-cols-2">
-        {NAV_ITEMS.map((item) => (
-          <NavCard
-            key={item.href}
-            href={item.href}
-            icon={item.icon}
-            title={item.title}
-          />
-        ))}
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-8">
+      {/* Logo 和标题 */}
+      <div className="flex flex-col items-center mb-8">
+        <Image
+          src={`${basePath}/logo.png`}
+          alt="逆战未来 维基"
+          width={160}
+          height={160}
+          className="mb-4 sm:mb-6"
+          style={{ width: "clamp(120px, 30vw, 160px)", height: "auto" }}
+          priority
+        />
+        <h1 className="text-2xl sm:text-4xl font-bold text-white">逆战未来 维基</h1>
       </div>
-      <p className="mt-6 text-sm text-zinc-500">
-        移动端尚未完全适配，推荐使用 PC 浏览器查看
-      </p>
+
+      {/* 导航卡片网格 - 固定 2 列 */}
+      <div className="w-full max-w-md">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {NAV_ITEMS.map((item) => (
+            <NavCard
+              key={item.href}
+              href={item.href}
+              icon={item.icon}
+              title={item.title}
+              description={item.description}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* 快捷键提示 - 仅桌面端显示 */}
+      <div className="mt-8 hidden sm:flex flex-wrap justify-center gap-4 text-xs text-zinc-500">
+        <span className="flex items-center gap-1">
+          <kbd className="rounded bg-zinc-800 px-1.5 py-0.5">Ctrl+P</kbd>
+          <span>搜索</span>
+        </span>
+        <span className="flex items-center gap-1">
+          <kbd className="rounded bg-zinc-800 px-1.5 py-0.5">Ctrl+Shift+P</kbd>
+          <span>命令面板</span>
+        </span>
+      </div>
     </div>
   );
 }
