@@ -191,7 +191,7 @@ export function SearchPalette() {
       />
 
       {/* 搜索面板 */}
-      <div className="relative w-full max-w-xl overflow-hidden rounded-xl bg-zinc-900 shadow-2xl ring-1 ring-zinc-700 animate-in fade-in slide-in-from-top-4 duration-200">
+      <div className="relative w-full max-w-xl mx-4 overflow-hidden rounded-xl bg-zinc-900 shadow-2xl ring-1 ring-zinc-700 animate-in fade-in slide-in-from-top-4 duration-200">
         {/* 搜索框 */}
         <div className="flex items-center gap-3 border-b border-zinc-800 px-4 py-3">
           <Search className="h-5 w-5 text-zinc-500" />
