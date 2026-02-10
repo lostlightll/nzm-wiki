@@ -41,13 +41,17 @@ function moveDirectory(src: string, dest: string): void {
 try {
   console.log("[START] Preparing for static build...");
 
-  // 1. 删除 .next 缓存 (必须步骤)
+  // 1. 生成搜索索引
+  console.log("[INDEX] Generating search index...");
+  execSync("pnpm exec tsx scripts/generate-search-index.ts", { stdio: "inherit", shell: true } as any);
+
+  // 2. 删除 .next 缓存 (必须步骤)
   if (fs.existsSync(NEXT_CACHE_DIR)) {
     console.log("[CLEAN] Removing .next cache to prevent stale type errors...");
     fs.rmSync(NEXT_CACHE_DIR, { recursive: true, force: true });
   }
 
-  // 2. 隐藏文件夹
+  // 3. 隐藏文件夹
   DIRS_TO_HIDE.forEach((dirName) => {
     const { original, hidden } = getPaths(dirName);
     // 清理残留
@@ -61,7 +65,7 @@ try {
     moveDirectory(original, hidden);
   });
 
-  // 3. 执行构建命令
+  // 4. 执行构建命令
   console.log("[BUILD] Running Next.js build with pnpm...");
 
   execSync("pnpm exec next build", { stdio: "inherit", shell: true } as any);
@@ -71,7 +75,7 @@ try {
   console.error("\n[ERROR] Build failed.");
   process.exit(1);
 } finally {
-  // 4. 还原文件夹
+  // 5. 还原文件夹
   console.log("[CLEANUP] Restoring directories...");
 
   DIRS_TO_HIDE.forEach((dirName) => {
