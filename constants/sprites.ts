@@ -42,7 +42,7 @@ export const WEAPON_TYPE_SPRITES: Record<WeaponType, SpriteConfig> = {
   手枪: { x: 0, y: 192, width: 64, height: 32, sheet: "weapon_type" },
   单发榴弹: { x: 0, y: 224, width: 64, height: 32, sheet: "weapon_type" },
   弓箭: { x: 0, y: 256, width: 64, height: 32, sheet: "weapon_type" },
-  喷火器: { x: 0, y: 288, width: 64, height: 32, sheet: "weapon_type" },
+  喷射器: { x: 0, y: 288, width: 64, height: 32, sheet: "weapon_type" },
   射手步枪: { x: 0, y: 320, width: 64, height: 32, sheet: "weapon_type" },
   连发榴弹: { x: 0, y: 352, width: 64, height: 32, sheet: "weapon_type" },
 };
