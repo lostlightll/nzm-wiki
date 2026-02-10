@@ -8,21 +8,23 @@ const HELP_TEXT = [
   "支持: + - * / ^ () % 和变量",
   "示例: 2+3, x=10, x*2, _+1, 25%",
   "_ 表示上次结果",
+  "变量存储公式，引用时自动重新计算",
   "",
   "命令: ",
   "- 清屏: clear/cl (保留变量)",
   "- 重置: reset (清屏+清空变量)",
+  "- 查看公式: show <变量名>",
   "- 显示帮助: help",
   "- 退出: exit/q",
 ];
 
-// 简单的表达式解析器，支持四则运算、幂运算、变量和 _ 表示上一次结果
+// 简单的表达式解析器，支持四则运算、幂运算、公式变量和 _ 表示上一次结果
 function evaluate(
   expr: string,
-  variables: Record<string, number>,
+  formulas: Record<string, string>,
+  evaluating: Set<string> = new Set(), // 正在求值的变量，用于检测循环引用
 ): { value: number; error?: string } {
   try {
-    // 替换变量
     let processed = expr.trim();
 
     // 移除尾部多余的等号
@@ -31,17 +33,36 @@ function evaluate(
     // 处理百分号：25% -> 0.25
     processed = processed.replace(/(\d+(?:\.\d+)?)\s*%/g, (_, num) => `(${parseFloat(num) / 100})`);
 
-    // 替换所有变量（包括 _）
+    // 递归展开所有变量
     // 按变量名长度降序排列，避免短变量名先匹配导致长变量名无法匹配
-    const sortedVars = Object.entries(variables).sort((a, b) => b[0].length - a[0].length);
-    for (const [name, val] of sortedVars) {
-      // 使用前后断言来精确匹配变量名（支持中文）
+    const sortedFormulas = Object.entries(formulas).sort((a, b) => b[0].length - a[0].length);
+
+    for (const [name, formula] of sortedFormulas) {
       const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const regex = new RegExp(
         `(?<![a-zA-Z0-9_\u4e00-\u9fff])${escapedName}(?![a-zA-Z0-9_\u4e00-\u9fff])`,
         "g",
       );
-      processed = processed.replace(regex, `(${val})`);
+
+      if (regex.test(processed)) {
+        // 检测循环引用
+        if (evaluating.has(name)) {
+          return { value: NaN, error: `循环引用: ${name}` };
+        }
+
+        // 递归求值该变量的公式
+        const subResult = evaluate(formula, formulas, new Set([...evaluating, name]));
+        if (subResult.error) {
+          return subResult;
+        }
+
+        // 重新创建 regex（因为 test 会改变 lastIndex）
+        const replaceRegex = new RegExp(
+          `(?<![a-zA-Z0-9_\u4e00-\u9fff])${escapedName}(?![a-zA-Z0-9_\u4e00-\u9fff])`,
+          "g",
+        );
+        processed = processed.replace(replaceRegex, `(${subResult.value})`);
+      }
     }
 
     // 支持 ^ 作为幂运算
@@ -102,7 +123,7 @@ export function Calculator({
   const [internalOpen, setInternalOpen] = useState(false);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<HistoryItem[]>([]);
-  const [variables, setVariables] = useState<Record<string, number>>({ _: 0 });
+  const [formulas, setFormulas] = useState<Record<string, string>>({ _: "0" });
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [iconPosition, setIconPosition] = useState({ right: 16, bottom: 16 });
   const [windowPosition, setWindowPosition] = useState({ right: 16, bottom: 16 });
@@ -311,7 +332,7 @@ export function Calculator({
 
   const resetAll = useCallback(() => {
     setHistory([]);
-    setVariables({ _: 0 });
+    setFormulas({ _: "0" });
   }, []);
 
   const handleSubmit = useCallback(() => {
@@ -347,6 +368,22 @@ export function Calculator({
       return;
     }
 
+    // show 命令：查看公式定义
+    if (trimmed.startsWith("show ")) {
+      const varName = input.trim().slice(5).trim(); // 使用原始大小写
+      const formula = formulas[varName];
+      const showOutput = formula !== undefined
+        ? `${varName} = ${formula}`
+        : `变量 ${varName} 未定义`;
+      setHistory((prev) => [
+        ...prev,
+        { input: input.trim(), output: showOutput, isError: formula === undefined, isSystem: true },
+      ]);
+      setInput("");
+      setHistoryIndex(-1);
+      return;
+    }
+
     // 恢复原始大小写进行计算
     const originalInput = input.trim();
     let output: string;
@@ -358,7 +395,7 @@ export function Calculator({
 
     if (assignment) {
       const { varName, expr } = assignment;
-      const result = evaluate(expr, variables);
+      const result = evaluate(expr, formulas);
 
       if (result.error) {
         output = result.error;
@@ -366,28 +403,29 @@ export function Calculator({
       } else {
         output = String(result.value);
         isAssignment = true; // 标记为赋值语句
-        setVariables((prev) => ({
+        // 存储公式字符串而非计算结果
+        setFormulas((prev) => ({
           ...prev,
-          [varName]: result.value,
-          _: result.value,
+          [varName]: expr,
+          _: String(result.value),
         }));
       }
     } else {
-      const result = evaluate(originalInput, variables);
+      const result = evaluate(originalInput, formulas);
 
       if (result.error) {
         output = result.error;
         isError = true;
       } else {
         output = String(result.value);
-        setVariables((prev) => ({ ...prev, _: result.value }));
+        setFormulas((prev) => ({ ...prev, _: String(result.value) }));
       }
     }
 
     setHistory((prev) => [...prev, { input: originalInput, output, isError, isAssignment }]);
     setInput("");
     setHistoryIndex(-1);
-  }, [input, variables, clearScreen, resetAll, setIsOpen]);
+  }, [input, formulas, clearScreen, resetAll, setIsOpen]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
@@ -422,8 +460,13 @@ export function Calculator({
     }
   };
 
-  // 获取当前定义的变量（排除 _）
-  const userVars = Object.entries(variables).filter(([k]) => k !== "_");
+  // 获取当前定义的公式（排除 _），并计算当前值
+  const userFormulas = Object.entries(formulas)
+    .filter(([k]) => k !== "_")
+    .map(([name, formula]) => {
+      const result = evaluate(formula, formulas);
+      return { name, formula, value: result.error ? "?" : result.value };
+    });
 
   // 计算窗口的安全位置，确保在可视范围内
   const getWindowStyle = useCallback(() => {
@@ -534,14 +577,15 @@ export function Calculator({
         </div>
 
         {/* 变量显示区 */}
-        {userVars.length > 0 && (
+        {userFormulas.length > 0 && (
           <div className="flex flex-wrap gap-1 border-b border-zinc-800 bg-zinc-850 px-2 py-1.5">
-            {userVars.map(([name, val]) => (
+            {userFormulas.map(({ name, value }) => (
               <span
                 key={name}
                 className="rounded bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-400"
+                title={`show ${name} 查看公式`}
               >
-                {name}={val}
+                {name}={value}
               </span>
             ))}
           </div>
@@ -571,16 +615,20 @@ export function Calculator({
                     {item.input}
                   </div>
                 ) : item.isSystem ? (
-                  // 系统命令（如 help）
+                  // 系统命令（如 help, show）
                   <>
                     <div className="text-zinc-400">
                       <span className="text-zinc-600">&gt; </span>
                       {item.input}
                     </div>
-                    <div className="text-zinc-500">
-                      {Array.isArray(item.output) && item.output.map((line, j) => (
-                        <div key={j}>{line || "\u00A0"}</div>
-                      ))}
+                    <div className={item.isError ? "text-red-400" : "text-zinc-500"}>
+                      {Array.isArray(item.output) ? (
+                        item.output.map((line, j) => (
+                          <div key={j}>{line || "\u00A0"}</div>
+                        ))
+                      ) : (
+                        <div>{item.output}</div>
+                      )}
                     </div>
                   </>
                 ) : (
