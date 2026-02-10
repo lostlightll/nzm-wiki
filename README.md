@@ -71,7 +71,7 @@ pnpm dev
 添加或修改 MDX 文件后，下面命令可以手动重新生成搜索索引（`pnpm build` 时是会自动执行的）：
 
 ```bash
-pnpm search-index
+pnpm index
 ```
 
 添加新图片后，需要转换为 webp 格式 (png 原图会保留，下面的命令会在 `/public/webp` 下存放所有的压缩后的 webp 格式，为了加快加载速度)：
