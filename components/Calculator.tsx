@@ -24,6 +24,9 @@ function evaluate(
     // 替换变量
     let processed = expr.trim();
 
+    // 移除尾部多余的等号
+    processed = processed.replace(/=+\s*$/, "");
+
     // 替换所有变量（包括 _）
     for (const [name, val] of Object.entries(variables)) {
       // 使用单词边界来精确匹配变量名
@@ -479,25 +482,35 @@ export function Calculator({
           ) : (
             history.map((item, i) => (
               <div key={i} className="mb-1">
-                <div className="text-zinc-400">
-                  <span className="text-zinc-600">&gt; </span>
-                  {item.input}
-                </div>
-                {/* 赋值语句成功时不显示输出 */}
-                {!item.isAssignment && (
-                  Array.isArray(item.output) ? (
+                {item.isAssignment ? (
+                  // 赋值语句：只显示输入
+                  <div className="text-zinc-400">
+                    <span className="text-zinc-600">&gt; </span>
+                    {item.input}
+                  </div>
+                ) : item.isSystem ? (
+                  // 系统命令（如 help）
+                  <>
+                    <div className="text-zinc-400">
+                      <span className="text-zinc-600">&gt; </span>
+                      {item.input}
+                    </div>
                     <div className="text-zinc-500">
-                      {item.output.map((line, j) => (
+                      {Array.isArray(item.output) && item.output.map((line, j) => (
                         <div key={j}>{line || "\u00A0"}</div>
                       ))}
                     </div>
-                  ) : (
-                    <div
-                      className={item.isError ? "text-red-400" : "text-amber-200"}
-                    >
+                  </>
+                ) : (
+                  // 普通表达式：输入 = 结果 在同一行
+                  <div className="text-zinc-400">
+                    <span className="text-zinc-600">&gt; </span>
+                    {item.input}
+                    <span className="text-zinc-600"> = </span>
+                    <span className={item.isError ? "text-red-400" : "text-amber-200"}>
                       {item.output}
-                    </div>
-                  )
+                    </span>
+                  </div>
                 )}
               </div>
             ))
