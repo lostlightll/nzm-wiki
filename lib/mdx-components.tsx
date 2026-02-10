@@ -5,6 +5,7 @@ import { DataTable } from "@/components/DataTable";
 import { Credit } from "@/components/Credit";
 import { BossCard, BossCardGrid } from "@/components/BossCard";
 import { BuffCard, BuffCardGrid, BuffDetail, CardRef } from "@/components/BuffCard";
+import { PeekabooGrid } from "@/components/PeekabooGrid";
 import {
   Red,
   Yellow,
@@ -40,6 +41,7 @@ export const mdxComponents = {
   BuffCardGrid,
   BuffDetail,
   CardRef,
+  PeekabooGrid,
   Red,
   Yellow,
   Green,
