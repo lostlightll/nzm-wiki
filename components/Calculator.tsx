@@ -256,10 +256,12 @@ export function Calculator({
         mouseY: e.clientY,
         width: size.width,
         height: size.height,
+        right: windowPosition.right,
+        bottom: windowPosition.bottom,
       };
       setIsResizing("nw");
     },
-    [size],
+    [size, windowPosition],
   );
 
   // 调整大小开始（右下角）
