@@ -34,7 +34,7 @@
 - `reset` - 清屏并清空变量
 - `show <变量名>` - 查看公式定义
 - `help` - 显示帮助
-- `exit` / `quit` / q` - 关闭
+- `exit` / `quit` / `q` - 关闭
 
 示例：
 ```
@@ -66,20 +66,50 @@ pnpm dev
 
 <img alt="editor-preview" src="https://github.com/user-attachments/assets/f9a7e58f-d30f-4907-8895-667c28a406fb" />
 
+### 注意事项
+
+添加或修改 MDX 文件后，下面命令可以手动重新生成搜索索引（`pnpm build` 时是会自动执行的）：
+
+```bash
+pnpm search-index
+```
+
+添加新图片后，需要转换为 webp 格式 (png 原图会保留，下面的命令会在 `/public/webp` 下存放所有的压缩后的 webp 格式，为了加快加载速度)：
+
+```bash
+pnpm webp
+```
+
 ## MDX 可用组件 (Components)
 
 ### Frontmatter
 
 MDX 文件支持以下 frontmatter 字段：
 
-| 字段 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-| `title` | string | - | 页面标题 |
-| `tag` | string | - | 分类标签 |
-| `toc` | boolean | `true` | 是否显示目录 |
-| `page-width` | string | `lg` | 页面宽度 |
+| 字段         | 类型                 | 默认值 | 说明                   |
+| :---         | :---                 | :---   | :---                   |
+| `title`      | string               | -      | 页面标题               |
+| `tag`        | string               | -      | 分类标签               |
+| `toc`        | boolean              | `true` | 是否显示目录           |
+| `page-width` | string               | `lg`   | 页面宽度               |
+| `keywords`   | string 或者 string[] | -      | 自定义额外的搜索关键词 |
+| `nickname`   | string               | -      | 别名（用于搜索）       |
 
-`page-width` 可选值：`sm`、`md`、`lg`、`xl`、`2xl`、`3xl`、`full`，也支持自定义值如 `1200px`。
+`page-width` 可选值：
+
+| 值     | Tailwind class | 宽度   |
+| :---   | :---           | :---   |
+| `sm`   | max-w-xl       | 576px  |
+| `md`   | max-w-2xl      | 672px  |
+| `lg`   | max-w-3xl      | 768px  |
+| `xl`   | max-w-4xl      | 896px  |
+| `2xl`  | max-w-5xl      | 1024px |
+| `3xl`  | max-w-6xl      | 1152px |
+| `full` | max-w-7xl      | 1280px |
+
+也支持自定义宽度值（如 `1200px`、`80rem`），移动端会自动撑满屏幕。
+
+搜索会自动索引：`title`、`keywords`、`nickname`、`tags`、`weapon_type`、`element`、`rarity`、`tag` 等字段。
 
 ### Callout
 
@@ -137,6 +167,8 @@ python3 ./scripts/convert.py "/e/games/WeGameApps/rail_apps/逆战：未来(2002
 ```bash
 ./scripts/decrypt.sh NZM/Content/AIBehavior/
 ```
+
+更详细介绍请看此视频 [BV1fVfXB8EkT](https://www.bilibili.com/video/BV1fVfXB8EkT)
 
 ## 更多 (About)
 

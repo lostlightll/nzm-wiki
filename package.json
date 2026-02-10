@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "webp": "pnpm exec tsx ./scripts/optimize-images.ts public/",
-    "search-index": "tsx scripts/generate-search-index.ts"
+    "index": "tsx scripts/generate-search-index.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
