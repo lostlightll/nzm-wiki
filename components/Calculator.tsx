@@ -110,7 +110,7 @@ export function Calculator({
   const [isDragging, setIsDragging] = useState<false | "icon" | "window">(false);
   const [isResizing, setIsResizing] = useState<false | "nw" | "se">(false);
   const dragStartRef = useRef({ mouseX: 0, mouseY: 0, right: 0, bottom: 0 });
-  const resizeStartRef = useRef({ mouseX: 0, mouseY: 0, width: 0, height: 0 });
+  const resizeStartRef = useRef({ mouseX: 0, mouseY: 0, width: 0, height: 0, right: 0, bottom: 0 });
   const hasDraggedRef = useRef(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const historyRef = useRef<HTMLDivElement>(null);
@@ -251,10 +251,12 @@ export function Calculator({
         mouseY: e.clientY,
         width: size.width,
         height: size.height,
+        right: windowPosition.right,
+        bottom: windowPosition.bottom,
       };
       setIsResizing("se");
     },
-    [size],
+    [size, windowPosition],
   );
 
   // 调整大小移动和结束
@@ -272,25 +274,22 @@ export function Calculator({
         // 左上角：鼠标向左/上移动增大
         newWidth = Math.max(280, Math.min(600, resizeStartRef.current.width + deltaX));
         newHeight = Math.max(200, Math.min(500, resizeStartRef.current.height + deltaY));
+        setSize({ width: newWidth, height: newHeight });
       } else {
-        // 右下角：鼠标向右/下移动增大，同时调整 position 保持右下角固定
+        // 右下角：鼠标向右/下移动增大
         newWidth = Math.max(280, Math.min(600, resizeStartRef.current.width - deltaX));
         newHeight = Math.max(200, Math.min(500, resizeStartRef.current.height - deltaY));
 
-        // 计算宽度和高度的实际变化量
-        const widthDelta = newWidth - size.width;
-        const heightDelta = newHeight - size.height;
+        // 基于初始位置计算新位置，保持右下角固定
+        const widthDelta = newWidth - resizeStartRef.current.width;
+        const heightDelta = newHeight - resizeStartRef.current.height;
 
-        // 调整 position 来补偿大小变化，保持右下角固定
-        if (widthDelta !== 0 || heightDelta !== 0) {
-          setWindowPosition(prev => ({
-            right: Math.max(16, prev.right - widthDelta),
-            bottom: Math.max(16, prev.bottom - heightDelta),
-          }));
-        }
+        setSize({ width: newWidth, height: newHeight });
+        setWindowPosition({
+          right: Math.max(16, resizeStartRef.current.right - widthDelta),
+          bottom: Math.max(16, resizeStartRef.current.bottom - heightDelta),
+        });
       }
-
-      setSize({ width: newWidth, height: newHeight });
     };
 
     const handleMouseUp = () => {
@@ -304,7 +303,7 @@ export function Calculator({
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [isResizing, size]);
+  }, [isResizing]);
 
   const clearScreen = useCallback(() => {
     setHistory([]);
