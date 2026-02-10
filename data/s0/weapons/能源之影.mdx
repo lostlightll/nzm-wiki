@@ -10,12 +10,12 @@ scope: 低倍镜
 damage:
   base: 0.238
   impulse: 3.5
-  toughness: 0.3
+  toughness: 3.5
   flesh: 3.7
   hurtable: 3.7
 toughness_type: 冲击
 enable_critical: true
-weekness_multiplier: -4
+weekness_multiplier: 1.3
 file_rate: 260
 magazine: 18
 total_ammo: 162
@@ -26,8 +26,8 @@ range: null
 explosion_range: null
 ignore_shield: null
 element_add_rate: 0.227
-skill_cooldown: null
-skill_damage: null
+skill_cooldown: 45
+skill_damage: 350
 pellets: null
 ---
 
@@ -37,3 +37,8 @@ pellets: null
 | 掷枪爆炸 | 270  | 5.4      | 27%              |
 | 浮游炮   | 350  | 0        | 0                |
 | 插件激光 | 350  | 0        | 0                |
+
+
+主动技能伤害为 **350**, 持续时间 **20** 秒，冷却时间 **45** 秒。期间射击 **30**次，射速约为 **90** 每分钟，折合 **1.5** 发每秒 <Grey>浮游炮伤害计算为 **角色攻击力 500 × 模式系数 × 0.7**，所有增加角色攻击力的增益均对能源之影浮游炮生效</Grey>
+
+使用 <Yellow>超频</Yellow> 插件，浮游模式持续时间增加 **50%** 后，总持续时间为 **30** 秒，射击次数 **46** 次
