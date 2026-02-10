@@ -136,3 +136,12 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #4b5563 transparent;
 }
+
+/* 全屏模式样式 */
+:fullscreen {
+  background: var(--background);
+}
+
+::backdrop {
+  background: var(--background);
+}
