@@ -27,6 +27,9 @@ function evaluate(
     // 移除尾部多余的等号
     processed = processed.replace(/=+\s*$/, "");
 
+    // 处理百分号：25% -> 0.25
+    processed = processed.replace(/(\d+(?:\.\d+)?)\s*%/g, (_, num) => `(${parseFloat(num) / 100})`);
+
     // 替换所有变量（包括 _）
     // 按变量名长度降序排列，避免短变量名先匹配导致长变量名无法匹配
     const sortedVars = Object.entries(variables).sort((a, b) => b[0].length - a[0].length);
