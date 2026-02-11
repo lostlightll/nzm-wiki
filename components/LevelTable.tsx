@@ -28,8 +28,8 @@ const LEVEL_COLORS: Record<number, string> = {
 
 export function LevelTable({ headers, data }: LevelTableProps) {
   return (
-    <div className="not-prose my-4 overflow-hidden rounded-xl border border-zinc-700">
-      <table className="w-full text-sm">
+    <div className="not-prose my-4 overflow-x-auto rounded-xl border border-zinc-700">
+      <table className="w-full min-w-max text-sm">
         <colgroup>
           <col className="w-6" />
           {headers.map((_, i) => (
