@@ -94,12 +94,13 @@ MDX 文件支持以下 frontmatter 字段：
 
 | 字段         | 类型                 | 默认值 | 说明                   |
 | :---         | :---                 | :---   | :---                   |
-| `title`      | string               | -      | 页面标题               |
-| `tag`        | string               | -      | 分类标签               |
-| `toc`        | boolean              | `true` | 是否显示目录           |
-| `page-width` | string               | `lg`   | 页面宽度               |
-| `keywords`   | string 或者 string[] | -      | 自定义额外的搜索关键词 |
-| `nickname`   | string               | -      | 别名（用于搜索）       |
+| `title`      | string               | -       | 页面标题                              |
+| `tag`        | string               | -       | 分类标签                              |
+| `toc`        | boolean              | `true`  | 是否显示目录                          |
+| `draft`      | boolean              | `false` | 草稿模式（仅 dev 可见，build 时排除） |
+| `page-width` | string               | `lg`    | 页面宽度                              |
+| `keywords`   | string 或者 string[] | -       | 自定义额外的搜索关键词                |
+| `nickname`   | string               | -       | 别名（用于搜索）                      |
 
 `page-width` 可选值：
 

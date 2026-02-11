@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 
 const baseDir = path.join(process.cwd(), "data");
+const isDev = process.env.NODE_ENV === "development";
 
 /**
  * 递归获取某个分类下的所有文章（用于列表页）
@@ -34,6 +35,10 @@ export function getMDXList(folder: string) {
       } else if (entry.name.endsWith(".mdx")) {
         const fileContent = fs.readFileSync(fullPath, "utf-8");
         const { data } = matter(fileContent);
+
+        // draft 文章仅在开发环境可见
+        if (data.draft && !isDev) continue;
+
         const fileName = entry.name.replace(/\.mdx$/, "");
 
         results.push({
@@ -107,6 +112,11 @@ export function getMDXDetail(folder: string, slug: string) {
   // 4. 解析文件内容
   const filestream = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(filestream);
+
+  // draft 文章仅在开发环境可见
+  if (data.draft && !isDev) {
+    throw new Error(`Draft post not available in production: ${decodedSlug}`);
+  }
 
   return {
     slug: decodedSlug,
