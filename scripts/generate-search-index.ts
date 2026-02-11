@@ -16,22 +16,22 @@ const baseDir = path.join(process.cwd(), "data");
 
 // 分类映射
 const categoryMap: Record<string, string> = {
-  "s0/weapons": "武器",
-  "s0/perks": "特性",
-  "s0/traps": "陷阱",
-  "s0/lc/boss": "首领",
-  "s0/enemies/td": "塔防敌人",
+  weapons: "武器",
+  perks: "特性",
+  traps: "陷阱",
+  "enemies/lc/boss": "首领",
+  "enemies/td": "塔防敌人",
   cards: "卡牌",
   posts: "文章",
 };
 
 // 路径映射（用于生成实际的访问路径）
 const pathMap: Record<string, string> = {
-  "s0/weapons": "/weapons",
-  "s0/perks": "/perks",
-  "s0/traps": "/traps",
-  "s0/lc/boss": "/lc/boss",
-  "s0/enemies/td": "/enemies/td",
+  weapons: "/weapons",
+  perks: "/perks",
+  traps: "/traps",
+  "enemies/lc/boss": "/enemies/lc",
+  "enemies/td": "/enemies/td",
   cards: "/cards",
   posts: "/posts",
 };

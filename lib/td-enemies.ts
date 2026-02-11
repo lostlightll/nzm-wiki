@@ -2,12 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import type { TDEnemy, Enemy } from "@/types";
-import { CURRENT_SEASON } from "@/constants/season";
-
-const TD_ENEMIES_DIR = path.join(
-  process.cwd(),
-  `data/${CURRENT_SEASON}/enemies/td`
-);
+const TD_ENEMIES_DIR = path.join(process.cwd(), "data/enemies/td");
 
 /**
  * 从 MDX frontmatter 获取所有塔防敌人数据

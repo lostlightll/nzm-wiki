@@ -8,11 +8,11 @@ const GITHUB_REPO_URL = "https://github.com/qiekn/nzm-wiki/blob/main";
 
 // URL 路径到 data 目录的映射
 const PATH_TO_DATA_MAP: Record<string, string> = {
-  "/weapons": "data/s0/weapons",
-  "/perks": "data/s0/perks",
-  "/traps": "data/s0/traps",
-  "/lc/boss": "data/s0/lc/boss",
-  "/enemies/td": "data/s0/enemies/td",
+  "/weapons": "data/weapons",
+  "/perks": "data/perks",
+  "/traps": "data/traps",
+  "/enemies/lc": "data/enemies/lc/boss",
+  "/enemies/td": "data/enemies/td",
   "/cards": "data/cards",
   "/posts": "data/posts",
 };

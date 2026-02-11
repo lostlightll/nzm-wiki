@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import type { Perk, PerkSlot, Rarity } from "@/types";
 
-const PERKS_DATA_DIR = path.join(process.cwd(), "data/s0/perks");
+const PERKS_DATA_DIR = path.join(process.cwd(), "data/perks");
 
 export function getAllPerks(): Perk[] {
   if (!fs.existsSync(PERKS_DATA_DIR)) return [];

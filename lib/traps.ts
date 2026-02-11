@@ -2,9 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import type { Trap } from "@/types";
-import { CURRENT_SEASON } from "@/constants/season";
-
-const TRAPS_DIR = path.join(process.cwd(), `data/${CURRENT_SEASON}/traps`);
+const TRAPS_DIR = path.join(process.cwd(), "data/traps");
 
 /**
  * 从 MDX frontmatter 获取所有陷阱数据
