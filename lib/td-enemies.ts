@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import type { TDEnemy } from "@/types";
+import type { TDEnemy, Enemy } from "@/types";
 import { CURRENT_SEASON } from "@/constants/season";
 
 const TD_ENEMIES_DIR = path.join(
@@ -51,4 +51,12 @@ export async function getTDEnemyBySlug(slug: string): Promise<TDEnemy | null> {
     slug: decodedSlug,
     ...data,
   } as TDEnemy;
+}
+
+export function tdEnemyToEnemy(enemy: TDEnemy): Enemy {
+  return {
+    ...enemy,
+    iconPrefix: `td/${enemy.type}`,
+    linkPrefix: "/enemies/td",
+  };
 }

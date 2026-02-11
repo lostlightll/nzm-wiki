@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import type { Boss } from "@/types";
+import type { Boss, Enemy } from "@/types";
 import { CURRENT_SEASON } from "@/constants/season";
 
 const BOSSES_DIR = path.join(process.cwd(), `data/${CURRENT_SEASON}/lc/boss`);
@@ -48,4 +48,13 @@ export async function getBossBySlug(slug: string): Promise<Boss | null> {
     slug: decodedSlug,
     ...data,
   } as Boss;
+}
+
+export function bossToEnemy(boss: Boss): Enemy {
+  return {
+    ...boss,
+    type: "boss",
+    iconPrefix: "lc/boss",
+    linkPrefix: "/enemies/lc",
+  };
 }

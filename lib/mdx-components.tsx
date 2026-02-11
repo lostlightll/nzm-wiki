@@ -3,7 +3,7 @@ import { Callout } from "@/components/Callout";
 import { LevelTable } from "@/components/LevelTable";
 import { DataTable } from "@/components/DataTable";
 import { Credit } from "@/components/Credit";
-import { BossCard, BossCardGrid } from "@/components/BossCard";
+import { EnemyCard, EnemyCardGrid } from "@/components/EnemyCard";
 import { BuffCard, BuffCardGrid, BuffDetail, CardRef } from "@/components/BuffCard";
 import { PeekabooGrid } from "@/components/PeekabooGrid";
 import {
@@ -26,6 +26,7 @@ import {
 import { MDXImage } from "@/components/MDXImage";
 import { MDXLink } from "@/components/MDXLink";
 import type { Boss } from "@/types";
+import { bossToEnemy } from "@/lib/bosses";
 
 export const mdxComponents = {
   img: MDXImage,
@@ -35,8 +36,8 @@ export const mdxComponents = {
   LevelTable,
   DataTable,
   Credit,
-  BossCard,
-  BossCardGrid,
+  BossCard: EnemyCard,
+  BossCardGrid: EnemyCardGrid,
   BuffCard,
   BuffCardGrid,
   BuffDetail,
@@ -69,7 +70,7 @@ export function getMdxComponents(bossData?: Record<string, Boss>) {
   return {
     ...mdxComponents,
     // 服务端解析 title，直接传递完整的 boss 对象给客户端
-    BossCard: ({ title, boss, showMap }: { title?: string; boss?: Boss; showMap?: boolean }) => {
+    BossCard: ({ title, boss }: { title?: string; boss?: Boss }) => {
       const resolvedBoss = boss ?? (title ? bossData[title] : undefined);
       if (!resolvedBoss) {
         return (
@@ -78,7 +79,7 @@ export function getMdxComponents(bossData?: Record<string, Boss>) {
           </div>
         );
       }
-      return <BossCard boss={resolvedBoss} showMap={showMap} />;
+      return <EnemyCard enemy={bossToEnemy(resolvedBoss)} />;
     },
   };
 }

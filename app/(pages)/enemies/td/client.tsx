@@ -1,86 +1,40 @@
 "use client";
 
-import type { TDEnemy, TDEnemyType } from "@/types";
-import { useState } from "react";
-import { useSelection } from "@/hooks/useSelection";
-import { FilterSection } from "@/components/Filter";
-import { TDEnemyCard } from "@/components/TDEnemyCard";
+import type { Enemy, EnemyType } from "@/types";
+import { EnemyCard, EnemyCardGrid } from "@/components/EnemyCard";
+import { ENEMY_CARD_STYLES } from "@/constants/common";
 
-const ENEMY_TYPES: { type: TDEnemyType; label: string }[] = [
-  { type: "normal", label: "普通" },
-  { type: "elite", label: "精英" },
-  { type: "boss", label: "首领" },
-];
+const ENEMY_TYPE_ORDER: EnemyType[] = ["normal", "elite", "boss"];
 
-export default function TDEnemiesClient({ enemies }: { enemies: TDEnemy[] }) {
-  const typeState = useSelection<TDEnemyType>();
-  const [showDetails, setShowDetails] = useState(true);
-
-  const hasFilter = typeState.selected.size > 0;
-
-  const resetFilters = () => {
-    typeState.clear();
-  };
-
-  const typeOrder: Record<TDEnemyType, number> = { normal: 0, elite: 1, boss: 2 };
-
-  const filteredEnemies = enemies
-    .filter((enemy) => {
-      const typeMatch =
-        typeState.selected.size === 0 || typeState.selected.has(enemy.type);
-      return typeMatch;
-    })
-    .sort((a, b) => typeOrder[a.type] - typeOrder[b.type]);
+export default function TDEnemiesClient({ enemies }: { enemies: Enemy[] }) {
+  const grouped = ENEMY_TYPE_ORDER.map((type) => ({
+    type,
+    label: ENEMY_CARD_STYLES[type].label,
+    enemies: enemies.filter((e) => e.type === type),
+  })).filter((g) => g.enemies.length > 0);
 
   return (
-    <>
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-white">塔防敌人图鉴</h1>
-        <button
-          onClick={() => setShowDetails(!showDetails)}
-          className="rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700"
-        >
-          {showDetails ? "简洁模式" : "详细模式"}
-        </button>
-      </div>
+    <div className="mx-auto max-w-4xl">
+      <h1 className="mb-8 text-3xl font-bold text-white">塔防敌人图鉴</h1>
 
-      {/* 筛选区域 */}
-      <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
-        <FilterSection
-          title="敌人类型"
-          items={ENEMY_TYPES}
-          selected={typeState.selected}
-          onToggle={typeState.toggle}
-          gridClass="grid grid-cols-3 gap-2"
-        />
+      {grouped.map((group) => (
+        <section key={group.type} className="mb-10">
+          <h2 className="mb-4 text-xl font-bold text-zinc-300">
+            {group.label}
+          </h2>
+          <EnemyCardGrid>
+            {group.enemies.map((enemy) => (
+              <EnemyCard key={enemy.slug} enemy={enemy} />
+            ))}
+          </EnemyCardGrid>
+        </section>
+      ))}
 
-        {hasFilter && (
-          <button
-            onClick={resetFilters}
-            className="mt-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
-          >
-            重置筛选
-          </button>
-        )}
-      </div>
-
-      {/* 结果统计 */}
-      <p className="mb-4 text-sm text-zinc-500">
-        共 {filteredEnemies.length} 个敌人
-      </p>
-
-      {/* 敌人列表 */}
-      <div className={`grid gap-4 ${showDetails ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-3" : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"}`}>
-        {filteredEnemies.map((enemy) => (
-          <TDEnemyCard key={enemy.slug} enemy={enemy} showDetails={showDetails} />
-        ))}
-      </div>
-
-      {filteredEnemies.length === 0 && (
+      {enemies.length === 0 && (
         <div className="py-16 text-center text-zinc-500">
-          没有符合条件的敌人
+          没有敌人数据
         </div>
       )}
-    </>
+    </div>
   );
 }

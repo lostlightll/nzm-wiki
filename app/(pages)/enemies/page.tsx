@@ -8,10 +8,10 @@ const ENEMY_CATEGORIES = [
     available: true,
   },
   {
-    title: "僵尸猎场敌人",
-    description: "僵尸猎场模式中出现的各类敌人",
-    href: "/enemies/hunt",
-    available: false,
+    title: "猎场首领",
+    description: "僵尸猎场模式中出现的各类首领",
+    href: "/enemies/lc",
+    available: true,
   },
 ];
 
