@@ -132,6 +132,8 @@ export function TDEnemyDetailCard({ enemy }: { enemy: TDEnemy }) {
   const stats: { label: string; value: number | string | undefined }[] = [
     { label: "攻击", value: enemy.attack },
     { label: "血量", value: enemy.hp },
+    { label: "击退条", value: enemy.hitback_hp },
+    { label: "韧性条", value: enemy.hardstraight_hp },
     { label: "体重", value: enemy.weight },
     { label: "速度", value: enemy.speed },
   ];
