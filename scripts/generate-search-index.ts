@@ -62,6 +62,9 @@ function scanDirectory(dirPath: string, relativePath: string = ""): SearchItem[]
       const fileContent = fs.readFileSync(fullPath, "utf-8");
       const { data } = matter(fileContent);
 
+      // draft 文章不加入搜索索引
+      if (data.draft) continue;
+
       const fileName = entry.name.replace(/\.mdx$/, "");
       const slug = relativePath ? `${relativePath}/${fileName}` : fileName;
 
