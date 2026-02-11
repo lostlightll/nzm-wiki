@@ -62,7 +62,6 @@ export default function Home() {
               href={item.href}
               icon={item.icon}
               title={item.title}
-              description={item.description}
             />
           ))}
         </div>
