@@ -1,6 +1,6 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
-import { getBossBySlug } from "@/lib/bosses";
-import { BossDetailCard } from "@/components/BossCard";
+import { getBossBySlug, bossToEnemy } from "@/lib/bosses";
+import { EnemyDetailCard } from "@/components/EnemyCard";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { mdxComponents } from "@/lib/mdx-components";
@@ -32,7 +32,7 @@ export default async function BossDetailPage({
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6 sm:p-10">
-      <BossDetailCard boss={boss} />
+      <EnemyDetailCard enemy={bossToEnemy(boss)} />
 
       {content.trim() && (
         <article className="prose prose-lg prose-invert mt-8 max-w-none">

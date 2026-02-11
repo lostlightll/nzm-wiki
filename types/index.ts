@@ -167,6 +167,30 @@ export interface Trap {
 }
 
 // ------------------------------------------------------------
+// 统一敌人类型
+// ------------------------------------------------------------
+
+export type EnemyType = "normal" | "elite" | "boss";
+
+export interface Enemy {
+  slug: string;
+  title: string;
+  nickname?: string;
+  type: EnemyType;
+  iconPrefix: string;
+  linkPrefix: string;
+  hp?: string | number;
+  hp2?: string;
+  attack?: string | number;
+  map?: string;
+  description?: string;
+  hitback_hp?: string | number;
+  hardstraight_hp?: string | number;
+  weight?: string | number;
+  speed?: string | number;
+}
+
+// ------------------------------------------------------------
 // 塔防敌人 (TDEnemy) 相关类型
 // ------------------------------------------------------------
 

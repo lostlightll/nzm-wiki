@@ -1,6 +1,6 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
-import { getTDEnemyBySlug } from "@/lib/td-enemies";
-import { TDEnemyDetailCard } from "@/components/TDEnemyCard";
+import { getTDEnemyBySlug, tdEnemyToEnemy } from "@/lib/td-enemies";
+import { EnemyDetailCard } from "@/components/EnemyCard";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { mdxComponents } from "@/lib/mdx-components";
@@ -32,7 +32,7 @@ export default async function TDEnemyDetailPage({
 
   return (
     <div className="mx-auto max-w-3xl py-6 sm:p-10">
-      <TDEnemyDetailCard enemy={enemy} />
+      <EnemyDetailCard enemy={tdEnemyToEnemy(enemy)} />
 
       {content.trim() && (
         <article className="prose prose-lg prose-invert mt-8 max-w-none">

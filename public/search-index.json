@@ -8,6 +8,13 @@
       "double-gold",
       "财富赌局",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "caifuduju",
+      "cfdj",
+      "double-gold",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -19,6 +26,13 @@
       "exchange-burster-alt",
       "冲锋精英",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "chongfengjingying",
+      "cfjy",
+      "exchange-burster-alt",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -30,6 +44,13 @@
       "resource",
       "点少钱多",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "dianshaoqianduo",
+      "dsqd",
+      "resource",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -41,6 +62,13 @@
       "berserker",
       "疯狂战士",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "fengkuangzhanshi",
+      "fkzs",
+      "berserker",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -52,6 +80,13 @@
       "buff-mob",
       "怪物强化",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "guaiwuqianghua",
+      "gwqh",
+      "buff-mob",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -63,6 +98,13 @@
       "pause-shield",
       "护盾干扰",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "hudunganrao",
+      "hdgr",
+      "pause-shield",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -74,6 +116,13 @@
       "golden-monster",
       "黄金献祭",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "huangjinxianji",
+      "hjxj",
+      "golden-monster",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -85,6 +134,13 @@
       "elite-strengthen",
       "精英加强",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "jingyingjiaqiang",
+      "jyjq",
+      "elite-strengthen",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -96,6 +152,13 @@
       "blademaster",
       "狂战士祝福",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "kuangzhanshizhufu",
+      "kzszf",
+      "blademaster",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -107,6 +170,13 @@
       "elite-times-shield",
       "鳞甲外壳",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "linjiawaike",
+      "ljwk",
+      "elite-times-shield",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -118,6 +188,13 @@
       "delayed-resource",
       "零存整取",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "lingcunzhengqu",
+      "lczq",
+      "delayed-resource",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -129,6 +206,13 @@
       "easy-toughness",
       "破刃加快",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "porenjiakuai",
+      "prjk",
+      "easy-toughness",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -140,6 +224,13 @@
       "critical-hit-crazy",
       "弱点狂热",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "ruodiankuangre",
+      "rdkr",
+      "critical-hit-crazy",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -151,6 +242,13 @@
       "weak-point-boost",
       "弱点约束",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "ruodianyueshu",
+      "rdys",
+      "weak-point-boost",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -162,6 +260,13 @@
       "doublelevel",
       "升级飞跃",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "shengjifeiyue",
+      "sjfy",
+      "doublelevel",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -173,6 +278,13 @@
       "critical-hit-money",
       "收割弱点",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "shougeruodian",
+      "sgrd",
+      "critical-hit-money",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -184,6 +296,13 @@
       "invalid-card",
       "无懈可击",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "wuxiekeji",
+      "wxkj",
+      "invalid-card",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -195,6 +314,13 @@
       "exchange-lives",
       "幸灾乐祸",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "xingzailehuo",
+      "xzlh",
+      "exchange-lives",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -206,6 +332,13 @@
       "lock-toughness",
       "永驻之壳",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "yongzhuzhike",
+      "yzzk",
+      "lock-toughness",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -217,6 +350,13 @@
       "element-invasion",
       "元素入侵",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "yuansuruqin",
+      "ysrq",
+      "element-invasion",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -228,6 +368,13 @@
       "exchange-chaser",
       "致命快递",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "zhimingkuaidi",
+      "zmkd",
+      "exchange-chaser",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -239,6 +386,13 @@
       "exchange-burster",
       "自爆改造",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "zibaogaizao",
+      "zbgz",
+      "exchange-burster",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -250,6 +404,13 @@
       "boss-vampire",
       "BOSS吸血",
       "猎场竞速"
+    ],
+    "pinyin": [
+      "bossxixue",
+      "bossxx",
+      "boss-vampire",
+      "liechangjingsu",
+      "lcjs"
     ]
   },
   {
@@ -259,6 +420,10 @@
     "category": "首领",
     "keywords": [
       "白胡子鱼王"
+    ],
+    "pinyin": [
+      "baihuziyuwang",
+      "bhzyw"
     ]
   },
   {
@@ -268,6 +433,10 @@
     "category": "首领",
     "keywords": [
       "白毛狼王"
+    ],
+    "pinyin": [
+      "baimaolangwang",
+      "bmlw"
     ]
   },
   {
@@ -277,6 +446,10 @@
     "category": "首领",
     "keywords": [
       "变异Z博士"
+    ],
+    "pinyin": [
+      "bianyizboshi",
+      "byzbs"
     ]
   },
   {
@@ -286,6 +459,10 @@
     "category": "首领",
     "keywords": [
       "大壮"
+    ],
+    "pinyin": [
+      "dazhuang",
+      "dz"
     ]
   },
   {
@@ -295,6 +472,10 @@
     "category": "首领",
     "keywords": [
       "二壮"
+    ],
+    "pinyin": [
+      "erzhuang",
+      "ez"
     ]
   },
   {
@@ -304,6 +485,10 @@
     "category": "首领",
     "keywords": [
       "机械沙虫"
+    ],
+    "pinyin": [
+      "jixieshachong",
+      "jxsc"
     ]
   },
   {
@@ -313,6 +498,10 @@
     "category": "首领",
     "keywords": [
       "金牌打手"
+    ],
+    "pinyin": [
+      "jinpaidashou",
+      "jpds"
     ]
   },
   {
@@ -322,6 +511,10 @@
     "category": "首领",
     "keywords": [
       "精绝奴隶主"
+    ],
+    "pinyin": [
+      "jingjuenulizhu",
+      "jjnlz"
     ]
   },
   {
@@ -331,6 +524,10 @@
     "category": "首领",
     "keywords": [
       "精绝女王"
+    ],
+    "pinyin": [
+      "jingjuenüwang",
+      "jjnw"
     ]
   },
   {
@@ -340,6 +537,10 @@
     "category": "首领",
     "keywords": [
       "精绝主祭司"
+    ],
+    "pinyin": [
+      "jingjuezhujisi",
+      "jjzjs"
     ]
   },
   {
@@ -349,6 +550,10 @@
     "category": "首领",
     "keywords": [
       "巨目蛇王"
+    ],
+    "pinyin": [
+      "jumushewang",
+      "jmsw"
     ]
   },
   {
@@ -358,6 +563,10 @@
     "category": "首领",
     "keywords": [
       "兰斯D博士"
+    ],
+    "pinyin": [
+      "lansidboshi",
+      "lsdbs"
     ]
   },
   {
@@ -367,6 +576,10 @@
     "category": "首领",
     "keywords": [
       "芮文"
+    ],
+    "pinyin": [
+      "ruiwen",
+      "rw"
     ]
   },
   {
@@ -376,6 +589,10 @@
     "category": "首领",
     "keywords": [
       "蛇神"
+    ],
+    "pinyin": [
+      "sheshen",
+      "ss"
     ]
   },
   {
@@ -385,6 +602,10 @@
     "category": "首领",
     "keywords": [
       "蛇神假"
+    ],
+    "pinyin": [
+      "sheshenjia",
+      "ssj"
     ]
   },
   {
@@ -394,6 +615,10 @@
     "category": "首领",
     "keywords": [
       "蛇神之眼"
+    ],
+    "pinyin": [
+      "sheshenzhiyan",
+      "sszy"
     ]
   },
   {
@@ -403,6 +628,10 @@
     "category": "首领",
     "keywords": [
       "尸龙-弗莱皮"
+    ],
+    "pinyin": [
+      "shilong-fulaipi",
+      "sl-flp"
     ]
   },
   {
@@ -412,6 +641,10 @@
     "category": "首领",
     "keywords": [
       "尸香魔芋"
+    ],
+    "pinyin": [
+      "shixiangmoyu",
+      "sxmy"
     ]
   },
   {
@@ -421,6 +654,10 @@
     "category": "首领",
     "keywords": [
       "问号"
+    ],
+    "pinyin": [
+      "wenhao",
+      "wh"
     ]
   },
   {
@@ -430,6 +667,10 @@
     "category": "首领",
     "keywords": [
       "蚁后"
+    ],
+    "pinyin": [
+      "yihou",
+      "yh"
     ]
   },
   {
@@ -439,6 +680,10 @@
     "category": "首领",
     "keywords": [
       "幽魂骑士"
+    ],
+    "pinyin": [
+      "youhunqishi",
+      "yhqs"
     ]
   },
   {
@@ -448,6 +693,10 @@
     "category": "首领",
     "keywords": [
       "蜘蛛女王"
+    ],
+    "pinyin": [
+      "zhizhunüwang",
+      "zznw"
     ]
   },
   {
@@ -457,6 +706,23 @@
     "category": "首领",
     "keywords": [
       "Z博士"
+    ],
+    "pinyin": [
+      "zboshi",
+      "zbs"
+    ]
+  },
+  {
+    "title": "爆破手",
+    "slug": "s0/enemies/td/爆破手",
+    "path": "/enemies/td/爆破手",
+    "category": "塔防敌人",
+    "keywords": [
+      "爆破手"
+    ],
+    "pinyin": [
+      "baoposhou",
+      "bps"
     ]
   },
   {
@@ -466,6 +732,23 @@
     "category": "塔防敌人",
     "keywords": [
       "波江"
+    ],
+    "pinyin": [
+      "bojiang",
+      "bj"
+    ]
+  },
+  {
+    "title": "鳄鱼祭司",
+    "slug": "s0/enemies/td/鳄鱼祭司",
+    "path": "/enemies/td/鳄鱼祭司",
+    "category": "塔防敌人",
+    "keywords": [
+      "鳄鱼祭司"
+    ],
+    "pinyin": [
+      "eyujisi",
+      "eyjs"
     ]
   },
   {
@@ -475,6 +758,23 @@
     "category": "塔防敌人",
     "keywords": [
       "飞鱼"
+    ],
+    "pinyin": [
+      "feiyu",
+      "fy"
+    ]
+  },
+  {
+    "title": "工程师",
+    "slug": "s0/enemies/td/工程师",
+    "path": "/enemies/td/工程师",
+    "category": "塔防敌人",
+    "keywords": [
+      "工程师"
+    ],
+    "pinyin": [
+      "gongchengshi",
+      "gcs"
     ]
   },
   {
@@ -484,6 +784,10 @@
     "category": "塔防敌人",
     "keywords": [
       "机甲暴龙"
+    ],
+    "pinyin": [
+      "jijiabaolong",
+      "jjbl"
     ]
   },
   {
@@ -493,6 +797,10 @@
     "category": "塔防敌人",
     "keywords": [
       "机械自爆犬"
+    ],
+    "pinyin": [
+      "jixiezibaoquan",
+      "jxzbq"
     ]
   },
   {
@@ -502,6 +810,10 @@
     "category": "塔防敌人",
     "keywords": [
       "剑盾赛博格"
+    ],
+    "pinyin": [
+      "jiandunsaiboge",
+      "jdsbg"
     ]
   },
   {
@@ -511,6 +823,10 @@
     "category": "塔防敌人",
     "keywords": [
       "巨力赛博格"
+    ],
+    "pinyin": [
+      "julisaiboge",
+      "jlsbg"
     ]
   },
   {
@@ -521,6 +837,12 @@
     "keywords": [
       "巨猩赛博格",
       "猴子"
+    ],
+    "pinyin": [
+      "juxingsaiboge",
+      "jxsbg",
+      "houzi",
+      "hz"
     ]
   },
   {
@@ -530,6 +852,10 @@
     "category": "塔防敌人",
     "keywords": [
       "巨型异形"
+    ],
+    "pinyin": [
+      "juxingyixing",
+      "jxyx"
     ]
   },
   {
@@ -539,6 +865,10 @@
     "category": "塔防敌人",
     "keywords": [
       "苦工"
+    ],
+    "pinyin": [
+      "kugong",
+      "kg"
     ]
   },
   {
@@ -548,6 +878,10 @@
     "category": "塔防敌人",
     "keywords": [
       "猎犬"
+    ],
+    "pinyin": [
+      "liequan",
+      "lq"
     ]
   },
   {
@@ -557,6 +891,10 @@
     "category": "塔防敌人",
     "keywords": [
       "脉冲"
+    ],
+    "pinyin": [
+      "maichong",
+      "mc"
     ]
   },
   {
@@ -566,6 +904,10 @@
     "category": "塔防敌人",
     "keywords": [
       "铁鹰"
+    ],
+    "pinyin": [
+      "tieying",
+      "ty"
     ]
   },
   {
@@ -575,6 +917,10 @@
     "category": "塔防敌人",
     "keywords": [
       "武装赛博格"
+    ],
+    "pinyin": [
+      "wuzhuangsaiboge",
+      "wzsbg"
     ]
   },
   {
@@ -584,6 +930,10 @@
     "category": "塔防敌人",
     "keywords": [
       "蝎虎"
+    ],
+    "pinyin": [
+      "xiehu",
+      "xh"
     ]
   },
   {
@@ -593,6 +943,10 @@
     "category": "塔防敌人",
     "keywords": [
       "迅捷苦工"
+    ],
+    "pinyin": [
+      "xunjiekugong",
+      "xjkg"
     ]
   },
   {
@@ -602,6 +956,10 @@
     "category": "塔防敌人",
     "keywords": [
       "迅捷猎犬"
+    ],
+    "pinyin": [
+      "xunjieliequan",
+      "xjlq"
     ]
   },
   {
@@ -611,6 +969,10 @@
     "category": "塔防敌人",
     "keywords": [
       "指挥官"
+    ],
+    "pinyin": [
+      "zhihuiguan",
+      "zhg"
     ]
   },
   {
@@ -621,6 +983,12 @@
     "keywords": [
       "仲裁者",
       "飞碟"
+    ],
+    "pinyin": [
+      "zhongcaizhe",
+      "zcz",
+      "feidie",
+      "fd"
     ]
   },
   {
@@ -630,6 +998,10 @@
     "category": "塔防敌人",
     "keywords": [
       "重力使徒"
+    ],
+    "pinyin": [
+      "zhonglishitu",
+      "zlst"
     ]
   },
   {
@@ -639,6 +1011,10 @@
     "category": "塔防敌人",
     "keywords": [
       "自爆飞机"
+    ],
+    "pinyin": [
+      "zibaofeiji",
+      "zbfj"
     ]
   },
   {
@@ -648,6 +1024,10 @@
     "category": "塔防敌人",
     "keywords": [
       "自爆苦工"
+    ],
+    "pinyin": [
+      "zibaokugong",
+      "zbkg"
     ]
   },
   {
@@ -657,6 +1037,10 @@
     "category": "塔防敌人",
     "keywords": [
       "IO量产型"
+    ],
+    "pinyin": [
+      "ioliangchanxing",
+      "iolcx"
     ]
   },
   {
@@ -666,6 +1050,11 @@
     "category": "特性",
     "keywords": [
       "百万伏特",
+      "3"
+    ],
+    "pinyin": [
+      "baiwanfute",
+      "bwft",
       "3"
     ]
   },
@@ -677,6 +1066,11 @@
     "keywords": [
       "暴击涌流",
       "3"
+    ],
+    "pinyin": [
+      "baojiyongliu",
+      "bjyl",
+      "3"
     ]
   },
   {
@@ -686,6 +1080,11 @@
     "category": "特性",
     "keywords": [
       "爆破校调",
+      "3"
+    ],
+    "pinyin": [
+      "baopoxiaotiao",
+      "bpxt",
       "3"
     ]
   },
@@ -697,6 +1096,11 @@
     "keywords": [
       "备弹返流",
       "3"
+    ],
+    "pinyin": [
+      "beitanfanliu",
+      "btfl",
+      "3"
     ]
   },
   {
@@ -706,6 +1110,11 @@
     "category": "特性",
     "keywords": [
       "崩解回涌",
+      "3"
+    ],
+    "pinyin": [
+      "bengjiehuiyong",
+      "bjhy",
       "3"
     ]
   },
@@ -717,6 +1126,11 @@
     "keywords": [
       "并发充能",
       "3"
+    ],
+    "pinyin": [
+      "bingfachongneng",
+      "bfcn",
+      "3"
     ]
   },
   {
@@ -726,6 +1140,11 @@
     "category": "特性",
     "keywords": [
       "裁决充能",
+      "3"
+    ],
+    "pinyin": [
+      "caijuechongneng",
+      "cjcn",
       "3"
     ]
   },
@@ -737,6 +1156,11 @@
     "keywords": [
       "层积裂变",
       "3"
+    ],
+    "pinyin": [
+      "cengjiliebian",
+      "cjlb",
+      "3"
     ]
   },
   {
@@ -746,6 +1170,11 @@
     "category": "特性",
     "keywords": [
       "层积强袭",
+      "3"
+    ],
+    "pinyin": [
+      "cengjiqiangxi",
+      "cjqx",
       "3"
     ]
   },
@@ -757,6 +1186,11 @@
     "keywords": [
       "层积涌流",
       "3"
+    ],
+    "pinyin": [
+      "cengjiyongliu",
+      "cjyl",
+      "3"
     ]
   },
   {
@@ -766,6 +1200,11 @@
     "category": "特性",
     "keywords": [
       "超导补给",
+      "3"
+    ],
+    "pinyin": [
+      "chaodaobuji",
+      "cdbj",
       "3"
     ]
   },
@@ -777,6 +1216,11 @@
     "keywords": [
       "超频",
       "3"
+    ],
+    "pinyin": [
+      "chaopin",
+      "cp",
+      "3"
     ]
   },
   {
@@ -786,6 +1230,11 @@
     "category": "特性",
     "keywords": [
       "超频蓄能",
+      "3"
+    ],
+    "pinyin": [
+      "chaopinxuneng",
+      "cpxn",
       "3"
     ]
   },
@@ -797,6 +1246,11 @@
     "keywords": [
       "超载弹匣",
       "3"
+    ],
+    "pinyin": [
+      "chaozaitanxia",
+      "cztx",
+      "3"
     ]
   },
   {
@@ -806,6 +1260,11 @@
     "category": "特性",
     "keywords": [
       "充能弹药",
+      "3"
+    ],
+    "pinyin": [
+      "chongnengdanyao",
+      "cndy",
       "3"
     ]
   },
@@ -817,6 +1276,11 @@
     "keywords": [
       "充能链路",
       "3"
+    ],
+    "pinyin": [
+      "chongnenglianlu",
+      "cnll",
+      "3"
     ]
   },
   {
@@ -826,6 +1290,11 @@
     "category": "特性",
     "keywords": [
       "出其不意",
+      "3"
+    ],
+    "pinyin": [
+      "chuqibuyi",
+      "cqby",
       "3"
     ]
   },
@@ -837,6 +1306,11 @@
     "keywords": [
       "川流不息",
       "3"
+    ],
+    "pinyin": [
+      "chuanliubuxi",
+      "clbx",
+      "3"
     ]
   },
   {
@@ -846,6 +1320,11 @@
     "category": "特性",
     "keywords": [
       "穿甲扩散",
+      "3"
+    ],
+    "pinyin": [
+      "chuanjiakuosan",
+      "cjks",
       "3"
     ]
   },
@@ -857,6 +1336,11 @@
     "keywords": [
       "穿针引线",
       "3"
+    ],
+    "pinyin": [
+      "chuanzhenyinxian",
+      "czyx",
+      "3"
     ]
   },
   {
@@ -866,6 +1350,11 @@
     "category": "特性",
     "keywords": [
       "弹容爆破",
+      "3"
+    ],
+    "pinyin": [
+      "tanrongbaopo",
+      "trbp",
       "3"
     ]
   },
@@ -877,6 +1366,11 @@
     "keywords": [
       "弹容共振",
       "3"
+    ],
+    "pinyin": [
+      "tanronggongzhen",
+      "trgz",
+      "3"
     ]
   },
   {
@@ -886,6 +1380,11 @@
     "category": "特性",
     "keywords": [
       "弹跳风暴",
+      "3"
+    ],
+    "pinyin": [
+      "tantiaofengbao",
+      "ttfb",
       "3"
     ]
   },
@@ -897,6 +1396,11 @@
     "keywords": [
       "弹雨协奏",
       "3"
+    ],
+    "pinyin": [
+      "tanyuxiezou",
+      "tyxz",
+      "3"
     ]
   },
   {
@@ -906,6 +1410,11 @@
     "category": "特性",
     "keywords": [
       "导弹供能",
+      "3"
+    ],
+    "pinyin": [
+      "daodangongneng",
+      "ddgn",
       "3"
     ]
   },
@@ -917,6 +1426,11 @@
     "keywords": [
       "导弹装填",
       "3"
+    ],
+    "pinyin": [
+      "daodanzhuangtian",
+      "ddzt",
+      "3"
     ]
   },
   {
@@ -926,6 +1440,11 @@
     "category": "特性",
     "keywords": [
       "递进膛压",
+      "3"
+    ],
+    "pinyin": [
+      "dijintangya",
+      "djty",
       "3"
     ]
   },
@@ -937,6 +1456,11 @@
     "keywords": [
       "电环疾驰",
       "3"
+    ],
+    "pinyin": [
+      "dianhuanjichi",
+      "dhjc",
+      "3"
     ]
   },
   {
@@ -946,6 +1470,11 @@
     "category": "特性",
     "keywords": [
       "叠浪效应",
+      "2"
+    ],
+    "pinyin": [
+      "dielangxiaoying",
+      "dlxy",
       "2"
     ]
   },
@@ -957,6 +1486,11 @@
     "keywords": [
       "钝化充能",
       "3"
+    ],
+    "pinyin": [
+      "dunhuachongneng",
+      "dhcn",
+      "3"
     ]
   },
   {
@@ -966,6 +1500,11 @@
     "category": "特性",
     "keywords": [
       "钝化增伤",
+      "3"
+    ],
+    "pinyin": [
+      "dunhuazengshang",
+      "dhzs",
       "3"
     ]
   },
@@ -977,6 +1516,11 @@
     "keywords": [
       "多重回能",
       "2"
+    ],
+    "pinyin": [
+      "duochonghuineng",
+      "dchn",
+      "2"
     ]
   },
   {
@@ -986,6 +1530,11 @@
     "category": "特性",
     "keywords": [
       "多重激返",
+      "3"
+    ],
+    "pinyin": [
+      "duochongjifan",
+      "dcjf",
       "3"
     ]
   },
@@ -997,6 +1546,11 @@
     "keywords": [
       "反哺",
       "3"
+    ],
+    "pinyin": [
+      "fanbu",
+      "fb",
+      "3"
     ]
   },
   {
@@ -1006,6 +1560,11 @@
     "category": "特性",
     "keywords": [
       "蜂鸣指令",
+      "3"
+    ],
+    "pinyin": [
+      "fengmingzhiling",
+      "fmzl",
       "3"
     ]
   },
@@ -1017,6 +1576,11 @@
     "keywords": [
       "伏击弹药",
       "3"
+    ],
+    "pinyin": [
+      "fujidanyao",
+      "fjdy",
+      "3"
     ]
   },
   {
@@ -1026,6 +1590,11 @@
     "category": "特性",
     "keywords": [
       "腐蚀榴弹",
+      "3"
+    ],
+    "pinyin": [
+      "fushiliudan",
+      "fsld",
       "3"
     ]
   },
@@ -1037,6 +1606,11 @@
     "keywords": [
       "负压弹匣",
       "2"
+    ],
+    "pinyin": [
+      "fuyatanxia",
+      "fytx",
+      "2"
     ]
   },
   {
@@ -1046,6 +1620,11 @@
     "category": "特性",
     "keywords": [
       "概率坍缩",
+      "3"
+    ],
+    "pinyin": [
+      "gailütansuo",
+      "glts",
       "3"
     ]
   },
@@ -1057,6 +1636,11 @@
     "keywords": [
       "攻守自如",
       "3"
+    ],
+    "pinyin": [
+      "gongshouziru",
+      "gszr",
+      "3"
     ]
   },
   {
@@ -1066,6 +1650,11 @@
     "category": "特性",
     "keywords": [
       "共鸣射击",
+      "3"
+    ],
+    "pinyin": [
+      "gongmingsheji",
+      "gmsj",
       "3"
     ]
   },
@@ -1077,6 +1666,11 @@
     "keywords": [
       "惯性制退",
       "1"
+    ],
+    "pinyin": [
+      "guanxingzhitui",
+      "gxzt",
+      "1"
     ]
   },
   {
@@ -1086,6 +1680,11 @@
     "category": "特性",
     "keywords": [
       "归途",
+      "3"
+    ],
+    "pinyin": [
+      "guitu",
+      "gt",
       "3"
     ]
   },
@@ -1097,6 +1696,11 @@
     "keywords": [
       "过载膛压",
       "3"
+    ],
+    "pinyin": [
+      "guozaitangya",
+      "gzty",
+      "3"
     ]
   },
   {
@@ -1106,6 +1710,11 @@
     "category": "特性",
     "keywords": [
       "虹吸充能",
+      "3"
+    ],
+    "pinyin": [
+      "hongxichongneng",
+      "hxcn",
       "3"
     ]
   },
@@ -1117,6 +1726,11 @@
     "keywords": [
       "回响充能",
       "2"
+    ],
+    "pinyin": [
+      "huixiangchongneng",
+      "hxcn",
+      "2"
     ]
   },
   {
@@ -1126,6 +1740,11 @@
     "category": "特性",
     "keywords": [
       "回响续装",
+      "3"
+    ],
+    "pinyin": [
+      "huixiangxuzhuang",
+      "hxxz",
       "3"
     ]
   },
@@ -1137,6 +1756,11 @@
     "keywords": [
       "火力回转",
       "3"
+    ],
+    "pinyin": [
+      "huolihuizhuan",
+      "hlhz",
+      "3"
     ]
   },
   {
@@ -1146,6 +1770,11 @@
     "category": "特性",
     "keywords": [
       "极限载弹",
+      "3"
+    ],
+    "pinyin": [
+      "jixianzaitan",
+      "jxzt",
       "3"
     ]
   },
@@ -1157,6 +1786,11 @@
     "keywords": [
       "急速蓄能",
       "2"
+    ],
+    "pinyin": [
+      "jisuxuneng",
+      "jsxn",
+      "2"
     ]
   },
   {
@@ -1166,6 +1800,11 @@
     "category": "特性",
     "keywords": [
       "急速装填",
+      "2"
+    ],
+    "pinyin": [
+      "jisuzhuangtian",
+      "jszt",
       "2"
     ]
   },
@@ -1177,6 +1816,11 @@
     "keywords": [
       "技能扩散",
       "3"
+    ],
+    "pinyin": [
+      "jinengkuosan",
+      "jnks",
+      "3"
     ]
   },
   {
@@ -1186,6 +1830,11 @@
     "category": "特性",
     "keywords": [
       "技能增幅",
+      "2"
+    ],
+    "pinyin": [
+      "jinengzengfu",
+      "jnzf",
       "2"
     ]
   },
@@ -1197,6 +1846,11 @@
     "keywords": [
       "技能增涌",
       "3"
+    ],
+    "pinyin": [
+      "jinengzengyong",
+      "jnzy",
+      "3"
     ]
   },
   {
@@ -1206,6 +1860,11 @@
     "category": "特性",
     "keywords": [
       "加速蓄能",
+      "1"
+    ],
+    "pinyin": [
+      "jiasuxuneng",
+      "jsxn",
       "1"
     ]
   },
@@ -1217,6 +1876,11 @@
     "keywords": [
       "加速装填",
       "1"
+    ],
+    "pinyin": [
+      "jiasuzhuangtian",
+      "jszt",
+      "1"
     ]
   },
   {
@@ -1226,6 +1890,11 @@
     "category": "特性",
     "keywords": [
       "歼灭速装",
+      "3"
+    ],
+    "pinyin": [
+      "jianmiesuzhuang",
+      "jmsz",
       "3"
     ]
   },
@@ -1237,6 +1906,11 @@
     "keywords": [
       "渐入佳境",
       "3"
+    ],
+    "pinyin": [
+      "jianrujiajing",
+      "jrjj",
+      "3"
     ]
   },
   {
@@ -1246,6 +1920,11 @@
     "category": "特性",
     "keywords": [
       "渐稳连击",
+      "3"
+    ],
+    "pinyin": [
+      "jianwenlianji",
+      "jwlj",
       "3"
     ]
   },
@@ -1257,6 +1936,11 @@
     "keywords": [
       "解构增幅",
       "3"
+    ],
+    "pinyin": [
+      "jiegouzengfu",
+      "jgzf",
+      "3"
     ]
   },
   {
@@ -1266,6 +1950,11 @@
     "category": "特性",
     "keywords": [
       "解构装填",
+      "3"
+    ],
+    "pinyin": [
+      "jiegouzhuangtian",
+      "jgzt",
       "3"
     ]
   },
@@ -1277,6 +1966,11 @@
     "keywords": [
       "近距增幅",
       "3"
+    ],
+    "pinyin": [
+      "jinjuzengfu",
+      "jjzf",
+      "3"
     ]
   },
   {
@@ -1286,6 +1980,11 @@
     "category": "特性",
     "keywords": [
       "精密追击",
+      "3"
+    ],
+    "pinyin": [
+      "jingmizhuiji",
+      "jmzj",
       "3"
     ]
   },
@@ -1297,6 +1996,11 @@
     "keywords": [
       "精确导弹",
       "2"
+    ],
+    "pinyin": [
+      "jingquedaodan",
+      "jqdd",
+      "2"
     ]
   },
   {
@@ -1306,6 +2010,11 @@
     "category": "特性",
     "keywords": [
       "精确能量",
+      "3"
+    ],
+    "pinyin": [
+      "jingquenengliang",
+      "jqnl",
       "3"
     ]
   },
@@ -1317,6 +2026,11 @@
     "keywords": [
       "剧毒速袭",
       "3"
+    ],
+    "pinyin": [
+      "judusuxi",
+      "jdsx",
+      "3"
     ]
   },
   {
@@ -1326,6 +2040,11 @@
     "category": "特性",
     "keywords": [
       "聚能弹药",
+      "3"
+    ],
+    "pinyin": [
+      "junengdanyao",
+      "jndy",
       "3"
     ]
   },
@@ -1337,6 +2056,11 @@
     "keywords": [
       "聚能速度",
       "3"
+    ],
+    "pinyin": [
+      "junengsudu",
+      "jnsd",
+      "3"
     ]
   },
   {
@@ -1346,6 +2070,11 @@
     "category": "特性",
     "keywords": [
       "快速装填",
+      "3"
+    ],
+    "pinyin": [
+      "kuaisuzhuangtian",
+      "kszt",
       "3"
     ]
   },
@@ -1357,6 +2086,11 @@
     "keywords": [
       "狂暴装填",
       "3"
+    ],
+    "pinyin": [
+      "kuangbaozhuangtian",
+      "kbzt",
+      "3"
     ]
   },
   {
@@ -1366,6 +2100,11 @@
     "category": "特性",
     "keywords": [
       "扩容核心",
+      "2"
+    ],
+    "pinyin": [
+      "kuoronghexin",
+      "krhx",
       "2"
     ]
   },
@@ -1377,6 +2116,11 @@
     "keywords": [
       "连锁充能",
       "2"
+    ],
+    "pinyin": [
+      "liansuochongneng",
+      "lscn",
+      "2"
     ]
   },
   {
@@ -1386,6 +2130,11 @@
     "category": "特性",
     "keywords": [
       "连锁电环",
+      "1"
+    ],
+    "pinyin": [
+      "liansuodianhuan",
+      "lsdh",
       "1"
     ]
   },
@@ -1397,6 +2146,11 @@
     "keywords": [
       "连锁增伤",
       "1"
+    ],
+    "pinyin": [
+      "liansuozengshang",
+      "lszs",
+      "1"
     ]
   },
   {
@@ -1406,6 +2160,11 @@
     "category": "特性",
     "keywords": [
       "联动提升",
+      "3"
+    ],
+    "pinyin": [
+      "liandongtisheng",
+      "ldts",
       "3"
     ]
   },
@@ -1417,6 +2176,11 @@
     "keywords": [
       "链式反应",
       "3"
+    ],
+    "pinyin": [
+      "lianshifanying",
+      "lsfy",
+      "3"
     ]
   },
   {
@@ -1426,6 +2190,11 @@
     "category": "特性",
     "keywords": [
       "烈焰冲击",
+      "3"
+    ],
+    "pinyin": [
+      "lieyanchongji",
+      "lycj",
       "3"
     ]
   },
@@ -1437,6 +2206,11 @@
     "keywords": [
       "猎杀充能",
       "3"
+    ],
+    "pinyin": [
+      "lieshachongneng",
+      "lscn",
+      "3"
     ]
   },
   {
@@ -1446,6 +2220,11 @@
     "category": "特性",
     "keywords": [
       "猎杀装填",
+      "3"
+    ],
+    "pinyin": [
+      "lieshazhuangtian",
+      "lszt",
       "3"
     ]
   },
@@ -1457,6 +2236,11 @@
     "keywords": [
       "龙息奔涌",
       "3"
+    ],
+    "pinyin": [
+      "longxibenyong",
+      "lxby",
+      "3"
     ]
   },
   {
@@ -1466,6 +2250,11 @@
     "category": "特性",
     "keywords": [
       "龙炎推进",
+      "3"
+    ],
+    "pinyin": [
+      "longyantuijin",
+      "lytj",
       "3"
     ]
   },
@@ -1477,6 +2266,11 @@
     "keywords": [
       "锚定攻击",
       "3"
+    ],
+    "pinyin": [
+      "maodinggongji",
+      "mdgj",
+      "3"
     ]
   },
   {
@@ -1486,6 +2280,11 @@
     "category": "特性",
     "keywords": [
       "帽子戏法",
+      "3"
+    ],
+    "pinyin": [
+      "maozixifa",
+      "mzxf",
       "3"
     ]
   },
@@ -1497,6 +2296,11 @@
     "keywords": [
       "命中返能",
       "1"
+    ],
+    "pinyin": [
+      "mingzhongfanneng",
+      "mzfn",
+      "1"
     ]
   },
   {
@@ -1506,6 +2310,11 @@
     "category": "特性",
     "keywords": [
       "迁跃回路",
+      "3"
+    ],
+    "pinyin": [
+      "qianyuehuilu",
+      "qyhl",
       "3"
     ]
   },
@@ -1517,6 +2326,11 @@
     "keywords": [
       "强击火力",
       "3"
+    ],
+    "pinyin": [
+      "qiangjihuoli",
+      "qjhl",
+      "3"
     ]
   },
   {
@@ -1526,6 +2340,11 @@
     "category": "特性",
     "keywords": [
       "强袭",
+      "3"
+    ],
+    "pinyin": [
+      "qiangxi",
+      "qx",
       "3"
     ]
   },
@@ -1537,6 +2356,11 @@
     "keywords": [
       "强袭子弹",
       "2"
+    ],
+    "pinyin": [
+      "qiangxizidan",
+      "qxzd",
+      "2"
     ]
   },
   {
@@ -1546,6 +2370,11 @@
     "category": "特性",
     "keywords": [
       "切枪速攻",
+      "3"
+    ],
+    "pinyin": [
+      "qieqiangsugong",
+      "qqsg",
       "3"
     ]
   },
@@ -1557,6 +2386,11 @@
     "keywords": [
       "亲密距离",
       "3"
+    ],
+    "pinyin": [
+      "qinmijuli",
+      "qmjl",
+      "3"
     ]
   },
   {
@@ -1566,6 +2400,11 @@
     "category": "特性",
     "keywords": [
       "弱点供能",
+      "3"
+    ],
+    "pinyin": [
+      "ruodiangongneng",
+      "rdgn",
       "3"
     ]
   },
@@ -1577,6 +2416,11 @@
     "keywords": [
       "弱点续弹",
       "3"
+    ],
+    "pinyin": [
+      "ruodianxutan",
+      "rdxt",
+      "3"
     ]
   },
   {
@@ -1586,6 +2430,11 @@
     "category": "特性",
     "keywords": [
       "杀戮连锁",
+      "3"
+    ],
+    "pinyin": [
+      "shaluliansuo",
+      "slls",
       "3"
     ]
   },
@@ -1597,6 +2446,11 @@
     "keywords": [
       "闪电轰击",
       "3"
+    ],
+    "pinyin": [
+      "shandianhongji",
+      "sdhj",
+      "3"
     ]
   },
   {
@@ -1606,6 +2460,11 @@
     "category": "特性",
     "keywords": [
       "闪电协议",
+      "2"
+    ],
+    "pinyin": [
+      "shandianxieyi",
+      "sdxy",
       "2"
     ]
   },
@@ -1617,6 +2476,11 @@
     "keywords": [
       "闪回装填",
       "3"
+    ],
+    "pinyin": [
+      "shanhuizhuangtian",
+      "shzt",
+      "3"
     ]
   },
   {
@@ -1626,6 +2490,11 @@
     "category": "特性",
     "keywords": [
       "闪切霜环",
+      "3"
+    ],
+    "pinyin": [
+      "shanqieshuanghuan",
+      "sqsh",
       "3"
     ]
   },
@@ -1637,6 +2506,11 @@
     "keywords": [
       "闪身",
       "3"
+    ],
+    "pinyin": [
+      "shanshen",
+      "ss",
+      "3"
     ]
   },
   {
@@ -1646,6 +2520,11 @@
     "category": "特性",
     "keywords": [
       "蚀化速装",
+      "3"
+    ],
+    "pinyin": [
+      "shihuasuzhuang",
+      "shsz",
       "3"
     ]
   },
@@ -1657,6 +2536,11 @@
     "keywords": [
       "蚀烬装填",
       "3"
+    ],
+    "pinyin": [
+      "shijinzhuangtian",
+      "sjzt",
+      "3"
     ]
   },
   {
@@ -1666,6 +2550,11 @@
     "category": "特性",
     "keywords": [
       "矢量制退",
+      "2"
+    ],
+    "pinyin": [
+      "shiliangzhitui",
+      "slzt",
       "2"
     ]
   },
@@ -1677,6 +2566,11 @@
     "keywords": [
       "释能火环",
       "2"
+    ],
+    "pinyin": [
+      "shinenghuohuan",
+      "snhh",
+      "2"
     ]
   },
   {
@@ -1686,6 +2580,11 @@
     "category": "特性",
     "keywords": [
       "噬能转化",
+      "3"
+    ],
+    "pinyin": [
+      "shinengzhuanhua",
+      "snzh",
       "3"
     ]
   },
@@ -1697,6 +2596,11 @@
     "keywords": [
       "衰变连锁",
       "3"
+    ],
+    "pinyin": [
+      "shuaibianliansuo",
+      "sbls",
+      "3"
     ]
   },
   {
@@ -1706,6 +2610,11 @@
     "category": "特性",
     "keywords": [
       "霜滞协议",
+      "2"
+    ],
+    "pinyin": [
+      "shuangzhixieyi",
+      "szxy",
       "2"
     ]
   },
@@ -1717,6 +2626,11 @@
     "keywords": [
       "随时待命",
       "3"
+    ],
+    "pinyin": [
+      "suishidaiming",
+      "ssdm",
+      "3"
     ]
   },
   {
@@ -1726,6 +2640,11 @@
     "category": "特性",
     "keywords": [
       "坍缩奇点",
+      "3"
+    ],
+    "pinyin": [
+      "tansuoqidian",
+      "tsqd",
       "3"
     ]
   },
@@ -1737,6 +2656,11 @@
     "keywords": [
       "同调稳持",
       "3"
+    ],
+    "pinyin": [
+      "tongdiaowenchi",
+      "tdwc",
+      "3"
     ]
   },
   {
@@ -1746,6 +2670,11 @@
     "category": "特性",
     "keywords": [
       "同调装填",
+      "3"
+    ],
+    "pinyin": [
+      "tongdiaozhuangtian",
+      "tdzt",
       "3"
     ]
   },
@@ -1757,6 +2686,11 @@
     "keywords": [
       "同频装填",
       "3"
+    ],
+    "pinyin": [
+      "tongpinzhuangtian",
+      "tpzt",
+      "3"
     ]
   },
   {
@@ -1766,6 +2700,11 @@
     "category": "特性",
     "keywords": [
       "危机充能",
+      "3"
+    ],
+    "pinyin": [
+      "weijichongneng",
+      "wjcn",
       "3"
     ]
   },
@@ -1777,6 +2716,11 @@
     "keywords": [
       "危机装填",
       "3"
+    ],
+    "pinyin": [
+      "weijizhuangtian",
+      "wjzt",
+      "3"
     ]
   },
   {
@@ -1786,6 +2730,11 @@
     "category": "特性",
     "keywords": [
       "威慑环爆",
+      "3"
+    ],
+    "pinyin": [
+      "weishehuanbao",
+      "wshb",
       "3"
     ]
   },
@@ -1797,6 +2746,11 @@
     "keywords": [
       "相位强袭",
       "3"
+    ],
+    "pinyin": [
+      "xiangweiqiangxi",
+      "xwqx",
+      "3"
     ]
   },
   {
@@ -1806,6 +2760,11 @@
     "category": "特性",
     "keywords": [
       "协防阵列",
+      "3"
+    ],
+    "pinyin": [
+      "xiefangzhenlie",
+      "xfzl",
       "3"
     ]
   },
@@ -1817,6 +2776,11 @@
     "keywords": [
       "协频共振",
       "3"
+    ],
+    "pinyin": [
+      "xiepingongzhen",
+      "xpgz",
+      "3"
     ]
   },
   {
@@ -1826,6 +2790,11 @@
     "category": "特性",
     "keywords": [
       "协同供弹",
+      "3"
+    ],
+    "pinyin": [
+      "xietonggongtan",
+      "xtgt",
       "3"
     ]
   },
@@ -1837,6 +2806,11 @@
     "keywords": [
       "幸运装填",
       "3"
+    ],
+    "pinyin": [
+      "xingyunzhuangtian",
+      "xyzt",
+      "3"
     ]
   },
   {
@@ -1846,6 +2820,11 @@
     "category": "特性",
     "keywords": [
       "压制火力",
+      "3"
+    ],
+    "pinyin": [
+      "yazhihuoli",
+      "yzhl",
       "3"
     ]
   },
@@ -1857,6 +2836,11 @@
     "keywords": [
       "异态共鸣",
       "3"
+    ],
+    "pinyin": [
+      "yitaigongming",
+      "ytgm",
+      "3"
     ]
   },
   {
@@ -1866,6 +2850,11 @@
     "category": "特性",
     "keywords": [
       "余震速装",
+      "3"
+    ],
+    "pinyin": [
+      "yuzhensuzhuang",
+      "yzsz",
       "3"
     ]
   },
@@ -1877,6 +2866,11 @@
     "keywords": [
       "元素析出",
       "3"
+    ],
+    "pinyin": [
+      "yuansuxichu",
+      "ysxc",
+      "3"
     ]
   },
   {
@@ -1886,6 +2880,11 @@
     "category": "特性",
     "keywords": [
       "战术强击",
+      "3"
+    ],
+    "pinyin": [
+      "zhanshuqiangji",
+      "zsqj",
       "3"
     ]
   },
@@ -1897,6 +2896,11 @@
     "keywords": [
       "战术装填",
       "3"
+    ],
+    "pinyin": [
+      "zhanshuzhuangtian",
+      "zszt",
+      "3"
     ]
   },
   {
@@ -1906,6 +2910,11 @@
     "category": "特性",
     "keywords": [
       "长跑冠军",
+      "3"
+    ],
+    "pinyin": [
+      "changpaoguanjun",
+      "cpgj",
       "3"
     ]
   },
@@ -1917,6 +2926,11 @@
     "keywords": [
       "真空回涌",
       "3"
+    ],
+    "pinyin": [
+      "zhenkonghuiyong",
+      "zkhy",
+      "3"
     ]
   },
   {
@@ -1926,6 +2940,11 @@
     "category": "特性",
     "keywords": [
       "正中红心",
+      "3"
+    ],
+    "pinyin": [
+      "zhengzhonghongxin",
+      "zzhx",
       "3"
     ]
   },
@@ -1937,6 +2956,11 @@
     "keywords": [
       "致命导弹",
       "3"
+    ],
+    "pinyin": [
+      "zhimingdaodan",
+      "zmdd",
+      "3"
     ]
   },
   {
@@ -1946,6 +2970,11 @@
     "category": "特性",
     "keywords": [
       "致命节奏",
+      "2"
+    ],
+    "pinyin": [
+      "zhimingjiezou",
+      "zmjz",
       "2"
     ]
   },
@@ -1957,6 +2986,11 @@
     "keywords": [
       "致命射击",
       "1"
+    ],
+    "pinyin": [
+      "zhimingsheji",
+      "zmsj",
+      "1"
     ]
   },
   {
@@ -1966,6 +3000,11 @@
     "category": "特性",
     "keywords": [
       "致命循环",
+      "3"
+    ],
+    "pinyin": [
+      "zhimingxunhuan",
+      "zmxh",
       "3"
     ]
   },
@@ -1977,6 +3016,11 @@
     "keywords": [
       "终焉序列",
       "3"
+    ],
+    "pinyin": [
+      "zhongyanxulie",
+      "zyxl",
+      "3"
     ]
   },
   {
@@ -1986,6 +3030,11 @@
     "category": "特性",
     "keywords": [
       "重装弹头",
+      "3"
+    ],
+    "pinyin": [
+      "zhongzhuangtantou",
+      "zztt",
       "3"
     ]
   },
@@ -1997,6 +3046,11 @@
     "keywords": [
       "追猎齐射",
       "3"
+    ],
+    "pinyin": [
+      "zhuilieqishe",
+      "zlqs",
+      "3"
     ]
   },
   {
@@ -2006,6 +3060,11 @@
     "category": "特性",
     "keywords": [
       "追身导弹",
+      "1"
+    ],
+    "pinyin": [
+      "zhuishendaodan",
+      "zsdd",
       "1"
     ]
   },
@@ -2019,6 +3078,14 @@
       "20号星港",
       "塔防",
       "地图"
+    ],
+    "pinyin": [
+      "20haoxinggang",
+      "20hxg",
+      "tafang",
+      "tf",
+      "ditu",
+      "dt"
     ]
   },
   {
@@ -2031,6 +3098,14 @@
       "冰点源起",
       "猎场",
       "地图"
+    ],
+    "pinyin": [
+      "bingdianyuanqi",
+      "bdyq",
+      "liechang",
+      "lc",
+      "ditu",
+      "dt"
     ]
   },
   {
@@ -2043,6 +3118,14 @@
       "大都会",
       "猎场",
       "地图"
+    ],
+    "pinyin": [
+      "dadouhui",
+      "ddh",
+      "liechang",
+      "lc",
+      "ditu",
+      "dt"
     ]
   },
   {
@@ -2056,6 +3139,17 @@
       "躲藏",
       "道具",
       "躲猫猫"
+    ],
+    "pinyin": [
+      "duomaomaowupin",
+      "dmmwp",
+      "peekaboo",
+      "duocang",
+      "dc",
+      "daoju",
+      "dj",
+      "duomaomao",
+      "dmm"
     ]
   },
   {
@@ -2068,6 +3162,14 @@
       "黑暗复活节",
       "猎场",
       "地图"
+    ],
+    "pinyin": [
+      "heianfuhuojie",
+      "hafhj",
+      "liechang",
+      "lc",
+      "ditu",
+      "dt"
     ]
   },
   {
@@ -2080,6 +3182,14 @@
       "精绝古城",
       "猎场",
       "地图"
+    ],
+    "pinyin": [
+      "jingjuegucheng",
+      "jjgc",
+      "liechang",
+      "lc",
+      "ditu",
+      "dt"
     ]
   },
   {
@@ -2093,6 +3203,17 @@
       "攻略",
       "猎场",
       "解密"
+    ],
+    "pinyin": [
+      "jingjueguchengjiemi",
+      "jjgcjm",
+      "jjgc-puzzle",
+      "gonglüe",
+      "gl",
+      "liechang",
+      "lc",
+      "jiemi",
+      "jm"
     ]
   },
   {
@@ -2105,6 +3226,14 @@
       "空间站",
       "塔防",
       "地图"
+    ],
+    "pinyin": [
+      "kongjianzhan",
+      "kjz",
+      "tafang",
+      "tf",
+      "ditu",
+      "dt"
     ]
   },
   {
@@ -2117,6 +3246,14 @@
       "昆仑神宫",
       "猎场",
       "地图"
+    ],
+    "pinyin": [
+      "kunlunshengong",
+      "klsg",
+      "liechang",
+      "lc",
+      "ditu",
+      "dt"
     ]
   },
   {
@@ -2129,6 +3266,14 @@
       "联盟大厦",
       "塔防",
       "地图"
+    ],
+    "pinyin": [
+      "lianmengdasha",
+      "lmds",
+      "tafang",
+      "tf",
+      "ditu",
+      "dt"
     ]
   },
   {
@@ -2140,6 +3285,13 @@
       "hunting-speedrun",
       "猎场竞速",
       "猎场"
+    ],
+    "pinyin": [
+      "liechangjingsu",
+      "lcjs",
+      "hunting-speedrun",
+      "liechang",
+      "lc"
     ]
   },
   {
@@ -2151,6 +3303,13 @@
       "season-skill",
       "猎场赛季技能",
       "猎场"
+    ],
+    "pinyin": [
+      "liechangsaijijineng",
+      "lcsjjn",
+      "season-skill",
+      "liechang",
+      "lc"
     ]
   },
   {
@@ -2162,6 +3321,13 @@
       "hunting-atk",
       "猎场商店升级攻击力所需金币",
       "猎场"
+    ],
+    "pinyin": [
+      "liechangshangdianshengjigongjilisuoxujinbi",
+      "lcsdsjgjlsxjb",
+      "hunting-atk",
+      "liechang",
+      "lc"
     ]
   },
   {
@@ -2173,6 +3339,13 @@
       "damage-calculation",
       "伤害计算",
       "攻略"
+    ],
+    "pinyin": [
+      "shanghaijisuan",
+      "shjs",
+      "damage-calculation",
+      "gonglüe",
+      "gl"
     ]
   },
   {
@@ -2184,6 +3357,13 @@
       "boss-hp",
       "首领血量",
       "猎场"
+    ],
+    "pinyin": [
+      "shoulingxueliang",
+      "slxl",
+      "boss-hp",
+      "liechang",
+      "lc"
     ]
   },
   {
@@ -2196,6 +3376,15 @@
       "元素机制",
       "猎场",
       "塔防"
+    ],
+    "pinyin": [
+      "yuansujizhi",
+      "ysjz",
+      "element",
+      "liechang",
+      "lc",
+      "tafang",
+      "tf"
     ]
   },
   {
@@ -2207,6 +3396,14 @@
       "百炼钢管",
       "电弧",
       "史诗"
+    ],
+    "pinyin": [
+      "bailiangangguan",
+      "blgg",
+      "dianhu",
+      "dh",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2218,6 +3415,14 @@
       "棒球棍",
       "物理",
       "稀有"
+    ],
+    "pinyin": [
+      "bangqiugun",
+      "bqg",
+      "wuli",
+      "wl",
+      "xiyou",
+      "xy"
     ]
   },
   {
@@ -2229,6 +3434,14 @@
       "冰川尼泊尔",
       "寒冷",
       "史诗"
+    ],
+    "pinyin": [
+      "bingchuanniboer",
+      "bcnbe",
+      "hanleng",
+      "hl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2240,6 +3453,14 @@
       "冰点双峰",
       "火焰",
       "传说"
+    ],
+    "pinyin": [
+      "bingdianshuangfeng",
+      "bdsf",
+      "huoyan",
+      "hy",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2253,6 +3474,18 @@
       "狙击步枪",
       "电弧",
       "史诗"
+    ],
+    "pinyin": [
+      "caijuezhiyan",
+      "cjzy",
+      "zhengmianxiaoguo",
+      "zmxg",
+      "jujibuqiang",
+      "jjbq",
+      "dianhu",
+      "dh",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2266,6 +3499,18 @@
       "弓箭",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "chaojifuhegong",
+      "cjfhg",
+      "yuansuqiehuan",
+      "ysqh",
+      "gongjian",
+      "gj",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2279,6 +3524,18 @@
       "手枪",
       "腐蚀",
       "史诗"
+    ],
+    "pinyin": [
+      "chengfengkuaidi",
+      "cfkd",
+      "fukong",
+      "fk",
+      "shouqiang",
+      "sq",
+      "fushi",
+      "fs",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2291,6 +3548,16 @@
       "单发榴弹",
       "火焰",
       "传说"
+    ],
+    "pinyin": [
+      "chunleizhen",
+      "clz",
+      "danfaliudan",
+      "dfld",
+      "huoyan",
+      "hy",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2304,6 +3571,18 @@
       "机枪",
       "寒冷",
       "传说"
+    ],
+    "pinyin": [
+      "chunbaizhishang",
+      "cbzs",
+      "dongtaishesu",
+      "dtss",
+      "jiqiang",
+      "jq",
+      "hanleng",
+      "hl",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2315,6 +3594,14 @@
       "刺锋",
       "腐蚀",
       "稀有"
+    ],
+    "pinyin": [
+      "cifeng",
+      "cf",
+      "fushi",
+      "fs",
+      "xiyou",
+      "xy"
     ]
   },
   {
@@ -2324,6 +3611,10 @@
     "category": "武器",
     "keywords": [
       "杜瓦瓶"
+    ],
+    "pinyin": [
+      "duwaping",
+      "dwp"
     ]
   },
   {
@@ -2335,6 +3626,14 @@
       "渡鸦剑",
       "火焰",
       "史诗"
+    ],
+    "pinyin": [
+      "duyajian",
+      "dyj",
+      "huoyan",
+      "hy",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2346,6 +3645,14 @@
       "短剑",
       "物理",
       "稀有"
+    ],
+    "pinyin": [
+      "duanjian",
+      "dj",
+      "wuli",
+      "wl",
+      "xiyou",
+      "xy"
     ]
   },
   {
@@ -2357,6 +3664,14 @@
       "防暴棍",
       "物理",
       "稀有"
+    ],
+    "pinyin": [
+      "fangbaogun",
+      "fbg",
+      "wuli",
+      "wl",
+      "xiyou",
+      "xy"
     ]
   },
   {
@@ -2368,6 +3683,14 @@
       "钢脊",
       "电弧",
       "史诗"
+    ],
+    "pinyin": [
+      "gangji",
+      "gj",
+      "dianhu",
+      "dh",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2381,6 +3704,18 @@
       "连发榴弹",
       "火焰",
       "传说"
+    ],
+    "pinyin": [
+      "gangtiehongming",
+      "gthm",
+      "chuantou",
+      "ct",
+      "lianfaliudan",
+      "lfld",
+      "huoyan",
+      "hy",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2393,6 +3728,16 @@
       "冲锋枪",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "gangtieqishi",
+      "gtqs",
+      "chongfengqiang",
+      "cfq",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2406,6 +3751,18 @@
       "冲锋枪",
       "寒冷",
       "史诗"
+    ],
+    "pinyin": [
+      "gongjingdian",
+      "gjd",
+      "yuansuyichang",
+      "ysyc",
+      "chongfengqiang",
+      "cfq",
+      "hanleng",
+      "hl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2418,6 +3775,16 @@
       "喷射器",
       "腐蚀",
       "传说"
+    ],
+    "pinyin": [
+      "guitongshi",
+      "gts",
+      "pensheqi",
+      "psq",
+      "fushi",
+      "fs",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2431,6 +3798,18 @@
       "冲锋枪",
       "火焰",
       "史诗"
+    ],
+    "pinyin": [
+      "heikele45",
+      "hkl45",
+      "yuansuyichang",
+      "ysyc",
+      "chongfengqiang",
+      "cfq",
+      "huoyan",
+      "hy",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2444,6 +3823,18 @@
       "射手步枪",
       "火焰",
       "传说"
+    ],
+    "pinyin": [
+      "huangshafengbao",
+      "hsfb",
+      "poren",
+      "pr",
+      "sheshoubuqiang",
+      "ssbq",
+      "huoyan",
+      "hy",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2455,6 +3846,14 @@
       "魂杵",
       "火焰",
       "史诗"
+    ],
+    "pinyin": [
+      "hunchu",
+      "hc",
+      "huoyan",
+      "hy",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2467,6 +3866,16 @@
       "突击步枪",
       "火焰",
       "史诗"
+    ],
+    "pinyin": [
+      "huoshankou",
+      "hsk",
+      "tujibuqiang",
+      "tjbq",
+      "huoyan",
+      "hy",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2480,6 +3889,18 @@
       "突击步枪",
       "火焰",
       "传说"
+    ],
+    "pinyin": [
+      "jingjueshoushen",
+      "jjss",
+      "ewaibaozha",
+      "ewbz",
+      "tujibuqiang",
+      "tjbq",
+      "huoyan",
+      "hy",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2492,6 +3913,16 @@
       "霰弹枪",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "jufengzhichui",
+      "jfzc",
+      "xiandanqiang",
+      "xdq",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2505,6 +3936,18 @@
       "霰弹枪",
       "火焰",
       "传说"
+    ],
+    "pinyin": [
+      "jufengzhilong",
+      "jfzl",
+      "kuaisulianfa",
+      "kslf",
+      "xiandanqiang",
+      "xdq",
+      "huoyan",
+      "hy",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2516,6 +3959,14 @@
       "军用手斧",
       "物理",
       "稀有"
+    ],
+    "pinyin": [
+      "junyongshoufu",
+      "jysf",
+      "wuli",
+      "wl",
+      "xiyou",
+      "xy"
     ]
   },
   {
@@ -2529,6 +3980,18 @@
       "机枪",
       "电弧",
       "史诗"
+    ],
+    "pinyin": [
+      "leiting999",
+      "lt999",
+      "danjiarongliang",
+      "djrl",
+      "jiqiang",
+      "jq",
+      "dianhu",
+      "dh",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2542,6 +4005,18 @@
       "手枪",
       "电弧",
       "史诗"
+    ],
+    "pinyin": [
+      "leitingzhiying",
+      "ltzy",
+      "zhengmianxiaoguo",
+      "zmxg",
+      "shouqiang",
+      "sq",
+      "dianhu",
+      "dh",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2554,6 +4029,16 @@
       "冲锋枪",
       "电弧",
       "史诗"
+    ],
+    "pinyin": [
+      "limingzhiguang",
+      "lmzg",
+      "chongfengqiang",
+      "cfq",
+      "dianhu",
+      "dh",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2565,6 +4050,14 @@
       "利齿",
       "火焰",
       "史诗"
+    ],
+    "pinyin": [
+      "lichi",
+      "lc",
+      "huoyan",
+      "hy",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2576,6 +4069,14 @@
       "裂风",
       "物理",
       "稀有"
+    ],
+    "pinyin": [
+      "liefeng",
+      "lf",
+      "wuli",
+      "wl",
+      "xiyou",
+      "xy"
     ]
   },
   {
@@ -2589,6 +4090,18 @@
       "机枪",
       "火焰",
       "史诗"
+    ],
+    "pinyin": [
+      "mengyan",
+      "my",
+      "ewaibaozha",
+      "ewbz",
+      "jiqiang",
+      "jq",
+      "huoyan",
+      "hy",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2600,6 +4113,14 @@
       "秘魇锤",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "miyanchui",
+      "myc",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2613,6 +4134,18 @@
       "狙击步枪",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "milinshaji",
+      "mlsj",
+      "zhengmianxiaoguo",
+      "zmxg",
+      "jujibuqiang",
+      "jjbq",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2626,6 +4159,18 @@
       "机枪",
       "电弧",
       "传说"
+    ],
+    "pinyin": [
+      "minghezhimao",
+      "mhzm",
+      "dongtaishesu",
+      "dtss",
+      "jiqiang",
+      "jq",
+      "dianhu",
+      "dh",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2639,6 +4184,18 @@
       "手枪",
       "电弧",
       "传说"
+    ],
+    "pinyin": [
+      "nengyuanzhiying",
+      "nyzy",
+      "zhiqiang",
+      "zq",
+      "shouqiang",
+      "sq",
+      "dianhu",
+      "dh",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2650,6 +4207,14 @@
       "撬棍",
       "物理",
       "稀有"
+    ],
+    "pinyin": [
+      "qiaogun",
+      "qg",
+      "wuli",
+      "wl",
+      "xiyou",
+      "xy"
     ]
   },
   {
@@ -2661,6 +4226,14 @@
       "沙暴冷锋",
       "寒冷",
       "传说"
+    ],
+    "pinyin": [
+      "shabaolengfeng",
+      "sblf",
+      "hanleng",
+      "hl",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2673,6 +4246,16 @@
       "火箭发射器",
       "火焰",
       "史诗"
+    ],
+    "pinyin": [
+      "shaqiuzhinu",
+      "sqzn",
+      "huojianfasheqi",
+      "hjfsq",
+      "huoyan",
+      "hy",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2684,6 +4267,14 @@
       "沙蚀重刃",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "shashizhongren",
+      "sszr",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2695,6 +4286,14 @@
       "蛇神之剑",
       "腐蚀",
       "传说"
+    ],
+    "pinyin": [
+      "sheshenzhijian",
+      "sszj",
+      "fushi",
+      "fs",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2706,6 +4305,14 @@
       "蛇神之矛",
       "电弧",
       "传说"
+    ],
+    "pinyin": [
+      "sheshenzhimao",
+      "sszm",
+      "dianhu",
+      "dh",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2718,6 +4325,16 @@
       "机枪",
       "腐蚀",
       "传说"
+    ],
+    "pinyin": [
+      "shengminggongsi",
+      "smgs",
+      "jiqiang",
+      "jq",
+      "fushi",
+      "fs",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2731,6 +4348,18 @@
       "单发榴弹",
       "寒冷",
       "史诗"
+    ],
+    "pinyin": [
+      "shengmingxian",
+      "smx",
+      "mingzhongbaozha",
+      "mzbz",
+      "danfaliudan",
+      "dfld",
+      "hanleng",
+      "hl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2744,6 +4373,18 @@
       "突击步枪",
       "腐蚀",
       "史诗"
+    ],
+    "pinyin": [
+      "shenglishiyue",
+      "slsy",
+      "tanshe",
+      "ts",
+      "tujibuqiang",
+      "tjbq",
+      "fushi",
+      "fs",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2755,6 +4396,14 @@
       "尸龙战斧",
       "寒冷",
       "史诗"
+    ],
+    "pinyin": [
+      "shilongzhanfu",
+      "slzf",
+      "hanleng",
+      "hl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2768,6 +4417,18 @@
       "单发榴弹",
       "火焰",
       "史诗"
+    ],
+    "pinyin": [
+      "shougezhe",
+      "sgz",
+      "mingzhongbaozha",
+      "mzbz",
+      "danfaliudan",
+      "dfld",
+      "huoyan",
+      "hy",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2779,6 +4440,14 @@
       "甩棍",
       "物理",
       "稀有"
+    ],
+    "pinyin": [
+      "shuaigun",
+      "sg",
+      "wuli",
+      "wl",
+      "xiyou",
+      "xy"
     ]
   },
   {
@@ -2790,6 +4459,14 @@
       "死神镰刀",
       "腐蚀",
       "传说"
+    ],
+    "pinyin": [
+      "sishenliandao",
+      "ssld",
+      "fushi",
+      "fs",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2803,6 +4480,18 @@
       "射手步枪",
       "物理",
       "传说"
+    ],
+    "pinyin": [
+      "sishenlieshou",
+      "ssls",
+      "chuantou",
+      "ct",
+      "sheshoubuqiang",
+      "ssbq",
+      "wuli",
+      "wl",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2816,6 +4505,18 @@
       "射手步枪",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "siwanglieshou",
+      "swls",
+      "chuantou",
+      "ct",
+      "sheshoubuqiang",
+      "ssbq",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2827,6 +4528,14 @@
       "死亡之拥",
       "物理",
       "传说"
+    ],
+    "pinyin": [
+      "siwangzhiyong",
+      "swzy",
+      "wuli",
+      "wl",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2840,6 +4549,18 @@
       "手枪",
       "火焰",
       "史诗"
+    ],
+    "pinyin": [
+      "taisebaofeng",
+      "tsbf",
+      "beidianhuifu",
+      "bdhf",
+      "shouqiang",
+      "sq",
+      "huoyan",
+      "hy",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2853,6 +4574,18 @@
       "突击步枪",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "tianezhiwu",
+      "tezw",
+      "kuaisulianfa",
+      "kslf",
+      "tujibuqiang",
+      "tjbq",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2864,6 +4597,14 @@
       "铁骨",
       "物理",
       "稀有"
+    ],
+    "pinyin": [
+      "tiegu",
+      "tg",
+      "wuli",
+      "wl",
+      "xiyou",
+      "xy"
     ]
   },
   {
@@ -2877,6 +4618,18 @@
       "连发榴弹",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "weihezhe",
+      "whz",
+      "tanxiahuifu",
+      "txhf",
+      "lianfaliudan",
+      "lfld",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2888,6 +4641,14 @@
       "武装斧头",
       "物理",
       "传说"
+    ],
+    "pinyin": [
+      "wuzhuangfutou",
+      "wzft",
+      "wuli",
+      "wl",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2901,6 +4662,18 @@
       "突击步枪",
       "寒冷",
       "传说"
+    ],
+    "pinyin": [
+      "xinghaikuangxiang",
+      "xhkx",
+      "dongtaishesu",
+      "dtss",
+      "tujibuqiang",
+      "tjbq",
+      "hanleng",
+      "hl",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2912,6 +4685,14 @@
       "血怨",
       "物理",
       "传说"
+    ],
+    "pinyin": [
+      "xueyuan",
+      "xy",
+      "wuli",
+      "wl",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2925,6 +4706,18 @@
       "机枪",
       "腐蚀",
       "传说"
+    ],
+    "pinyin": [
+      "youmingduhuang",
+      "ymdh",
+      "duomoshi",
+      "dms",
+      "jiqiang",
+      "jq",
+      "fushi",
+      "fs",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2938,6 +4731,18 @@
       "机枪",
       "腐蚀",
       "史诗"
+    ],
+    "pinyin": [
+      "youmingduwang",
+      "ymdw",
+      "duomoshi",
+      "dms",
+      "jiqiang",
+      "jq",
+      "fushi",
+      "fs",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -2950,6 +4755,16 @@
       "冲锋枪",
       "物理",
       "传说"
+    ],
+    "pinyin": [
+      "yuanxiaolaixi",
+      "yxlx",
+      "chongfengqiang",
+      "cfq",
+      "wuli",
+      "wl",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2962,6 +4777,16 @@
       "霰弹枪",
       "寒冷",
       "传说"
+    ],
+    "pinyin": [
+      "zaishenglengque",
+      "zslq",
+      "xiandanqiang",
+      "xdq",
+      "hanleng",
+      "hl",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2973,6 +4798,14 @@
       "战锋",
       "物理",
       "稀有"
+    ],
+    "pinyin": [
+      "zhanfeng",
+      "zf",
+      "wuli",
+      "wl",
+      "xiyou",
+      "xy"
     ]
   },
   {
@@ -2986,6 +4819,18 @@
       "手枪",
       "物理",
       "传说"
+    ],
+    "pinyin": [
+      "zhanzhengjuzhen",
+      "zzjz",
+      "fukong",
+      "fk",
+      "shouqiang",
+      "sq",
+      "wuli",
+      "wl",
+      "chuanshuo",
+      "cs"
     ]
   },
   {
@@ -2999,6 +4844,18 @@
       "弓箭",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "zhenxian",
+      "zx",
+      "xuli",
+      "xl",
+      "gongjian",
+      "gj",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -3010,6 +4867,14 @@
       "震沙锏",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "zhenshajian",
+      "zsj",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -3023,6 +4888,18 @@
       "突击步枪",
       "物理",
       "史诗"
+    ],
+    "pinyin": [
+      "zxingbuqiang",
+      "zxbq",
+      "zimiao",
+      "zm",
+      "tujibuqiang",
+      "tjbq",
+      "wuli",
+      "wl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -3032,6 +4909,10 @@
     "category": "陷阱",
     "keywords": [
       "暴风之眼"
+    ],
+    "pinyin": [
+      "baofengzhiyan",
+      "bfzy"
     ]
   },
   {
@@ -3041,6 +4922,10 @@
     "category": "陷阱",
     "keywords": [
       "地刺"
+    ],
+    "pinyin": [
+      "dici",
+      "dc"
     ]
   },
   {
@@ -3050,6 +4935,10 @@
     "category": "陷阱",
     "keywords": [
       "电击"
+    ],
+    "pinyin": [
+      "dianji",
+      "dj"
     ]
   },
   {
@@ -3059,6 +4948,10 @@
     "category": "陷阱",
     "keywords": [
       "毒刺"
+    ],
+    "pinyin": [
+      "duci",
+      "dc"
     ]
   },
   {
@@ -3068,6 +4961,10 @@
     "category": "陷阱",
     "keywords": [
       "防空导弹"
+    ],
+    "pinyin": [
+      "fangkongdaodan",
+      "fkdd"
     ]
   },
   {
@@ -3077,6 +4974,10 @@
     "category": "陷阱",
     "keywords": [
       "岗哨机枪"
+    ],
+    "pinyin": [
+      "gangshaojiqiang",
+      "gsjq"
     ]
   },
   {
@@ -3086,6 +4987,10 @@
     "category": "陷阱",
     "keywords": [
       "高能激光"
+    ],
+    "pinyin": [
+      "gaonengjiguang",
+      "gnjg"
     ]
   },
   {
@@ -3095,6 +5000,10 @@
     "category": "陷阱",
     "keywords": [
       "火墙"
+    ],
+    "pinyin": [
+      "huoqiang",
+      "hq"
     ]
   },
   {
@@ -3104,6 +5013,10 @@
     "category": "陷阱",
     "keywords": [
       "激光发射器"
+    ],
+    "pinyin": [
+      "jiguangfasheqi",
+      "jgfsq"
     ]
   },
   {
@@ -3113,6 +5026,10 @@
     "category": "陷阱",
     "keywords": [
       "歼灭者"
+    ],
+    "pinyin": [
+      "jianmiezhe",
+      "jmz"
     ]
   },
   {
@@ -3122,6 +5039,10 @@
     "category": "陷阱",
     "keywords": [
       "减速"
+    ],
+    "pinyin": [
+      "jiansu",
+      "js"
     ]
   },
   {
@@ -3131,6 +5052,10 @@
     "category": "陷阱",
     "keywords": [
       "巨型弹板"
+    ],
+    "pinyin": [
+      "juxingtanban",
+      "jxtb"
     ]
   },
   {
@@ -3140,6 +5065,10 @@
     "category": "陷阱",
     "keywords": [
       "聚能炮"
+    ],
+    "pinyin": [
+      "junengpao",
+      "jnp"
     ]
   },
   {
@@ -3149,6 +5078,10 @@
     "category": "陷阱",
     "keywords": [
       "狂风"
+    ],
+    "pinyin": [
+      "kuangfeng",
+      "kf"
     ]
   },
   {
@@ -3158,6 +5091,10 @@
     "category": "陷阱",
     "keywords": [
       "破坏者"
+    ],
+    "pinyin": [
+      "pohuaizhe",
+      "phz"
     ]
   },
   {
@@ -3167,6 +5104,10 @@
     "category": "陷阱",
     "keywords": [
       "天启"
+    ],
+    "pinyin": [
+      "tianqi",
+      "tq"
     ]
   },
   {
@@ -3176,6 +5117,10 @@
     "category": "陷阱",
     "keywords": [
       "天网"
+    ],
+    "pinyin": [
+      "tianwang",
+      "tw"
     ]
   },
   {
@@ -3185,6 +5130,10 @@
     "category": "陷阱",
     "keywords": [
       "小型弹板"
+    ],
+    "pinyin": [
+      "xiaoxingtanban",
+      "xxtb"
     ]
   },
   {
@@ -3195,6 +5144,12 @@
     "keywords": [
       "修理站",
       "维修"
+    ],
+    "pinyin": [
+      "xiulizhan",
+      "xlz",
+      "weixiu",
+      "wx"
     ]
   },
   {
@@ -3204,6 +5159,10 @@
     "category": "陷阱",
     "keywords": [
       "诱捕"
+    ],
+    "pinyin": [
+      "youbu",
+      "yb"
     ]
   },
   {
@@ -3213,6 +5172,10 @@
     "category": "陷阱",
     "keywords": [
       "战防炮"
+    ],
+    "pinyin": [
+      "zhanfangpao",
+      "zfp"
     ]
   },
   {
@@ -3222,6 +5185,10 @@
     "category": "陷阱",
     "keywords": [
       "智能枪塔"
+    ],
+    "pinyin": [
+      "zhinengqiangta",
+      "znqt"
     ]
   },
   {
@@ -3231,6 +5198,10 @@
     "category": "陷阱",
     "keywords": [
       "自修复磁暴塔"
+    ],
+    "pinyin": [
+      "zixiufucibaota",
+      "zxfcbt"
     ]
   }
 ]
