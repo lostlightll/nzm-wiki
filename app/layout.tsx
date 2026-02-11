@@ -13,8 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const isProd = process.env.NODE_ENV === "production";
-const basePath = isProd ? "/nzm-wiki" : "";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export const metadata: Metadata = {
   title: "逆战未来 维基",
