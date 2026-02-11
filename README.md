@@ -1,5 +1,10 @@
 # 逆战未来 维基
 
+[![GitHub Pages](https://github.com/qiekn/nzm-wiki/actions/workflows/deploy.yml/badge.svg)](https://github.com/qiekn/nzm-wiki/actions/workflows/deploy.yml)
+[![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-deployed-orange?logo=cloudflare)](https://nzm-wiki.pages.dev)
+
+在线访问：[GitHub Pages](https://qiekn.github.io/nzm-wiki) | [Cloudflare Pages](https://nzm-wiki.pages.dev)
+
 > [!NOTE]
 > 正在施工中
 
