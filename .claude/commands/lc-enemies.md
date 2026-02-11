@@ -30,7 +30,7 @@
 
 ### 4. 创建 MDX 文件
 
-在 `data/s0/enemies/td/<Name>.mdx` 创建文件，frontmatter 格式如下：
+在 `data/enemies/td/<Name>.mdx` 创建文件，frontmatter 格式如下：
 
 ```yaml
 ---

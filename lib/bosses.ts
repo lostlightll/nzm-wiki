@@ -2,9 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import type { Boss, Enemy } from "@/types";
-import { CURRENT_SEASON } from "@/constants/season";
-
-const BOSSES_DIR = path.join(process.cwd(), `data/${CURRENT_SEASON}/lc/boss`);
+const BOSSES_DIR = path.join(process.cwd(), "data/enemies/lc/boss");
 
 /**
  * 从 MDX frontmatter 获取所有猎场首领数据

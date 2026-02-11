@@ -21,7 +21,7 @@ function getFileTree(dir: string, base: string = ""): any[] {
   const files = fs.readdirSync(dir, { withFileTypes: true });
 
   return files.map((file) => {
-    const relPath = path.join(base, file.name); // 例如: "s0/weapons/死神猎手.mdx"
+    const relPath = path.join(base, file.name); // 例如: "weapons/死神猎手.mdx"
 
     if (file.isDirectory()) {
       return {

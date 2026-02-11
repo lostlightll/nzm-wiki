@@ -6,7 +6,7 @@ import remarkGfm from "remark-gfm";
 import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
 
 export async function generateStaticParams() {
-  const items = getMDXList("s0/weapons");
+  const items = getMDXList("weapons");
   return items.map((item) => ({
     slug: item.slug,
   }));
@@ -20,7 +20,7 @@ export default async function WeaponDetailPage({
   const { slug } = await params;
 
   const weapon = await getWeaponBySlug(slug);
-  const { content, metadata } = getMDXDetail("s0/weapons", slug);
+  const { content, metadata } = getMDXDetail("weapons", slug);
   const showToc = metadata.toc !== false;
 
   if (!weapon) {

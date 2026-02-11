@@ -6,7 +6,7 @@ import remarkGfm from "remark-gfm";
 import { mdxComponents } from "@/lib/mdx-components";
 
 export async function generateStaticParams() {
-  const items = getMDXList("s0/enemies/td");
+  const items = getMDXList("enemies/td");
   return items.map((item) => ({
     slug: item.slug,
   }));
@@ -20,7 +20,7 @@ export default async function TDEnemyDetailPage({
   const { slug } = await params;
 
   const enemy = await getTDEnemyBySlug(slug);
-  const { content } = getMDXDetail("s0/enemies/td", slug);
+  const { content } = getMDXDetail("enemies/td", slug);
 
   if (!enemy) {
     return (

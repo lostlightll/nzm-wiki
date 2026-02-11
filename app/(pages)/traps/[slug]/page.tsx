@@ -6,7 +6,7 @@ import remarkGfm from "remark-gfm";
 import { mdxComponents } from "@/lib/mdx-components";
 
 export async function generateStaticParams() {
-  const items = getMDXList("s0/traps");
+  const items = getMDXList("traps");
   return items.map((item) => ({
     slug: item.slug,
   }));
@@ -29,7 +29,7 @@ export default async function TrapDetailPage({
     );
   }
 
-  const { content } = getMDXDetail("s0/traps", slug);
+  const { content } = getMDXDetail("traps", slug);
 
   return (
     <div className="mx-auto max-w-3xl py-6 sm:p-10">

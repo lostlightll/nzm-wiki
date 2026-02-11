@@ -92,7 +92,7 @@ function findMDXFile(dirPath: string, slug: string): string | null {
 
 /**
  * 获取单篇文章详情（用于详情页）
- * @param folder 分类文件夹 (如 "s0/weapons")
+ * @param folder 分类文件夹 (如 "weapons")
  * @param slug 传入的路径参数 (可能是中文，也可能是 URL 编码后的字符串)
  */
 export function getMDXDetail(folder: string, slug: string) {

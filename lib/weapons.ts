@@ -2,10 +2,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import type { Weapon } from "@/types";
-import { CURRENT_SEASON } from "@/constants/season";
 import { RARITY_ORDER } from "@/constants/common";
 
-const WEAPONS_DIR = path.join(process.cwd(), `data/${CURRENT_SEASON}/weapons`);
+const WEAPONS_DIR = path.join(process.cwd(), "data/weapons");
 
 /**
  * 从 MDX frontmatter 获取所有武器数据
