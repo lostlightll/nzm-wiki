@@ -16,8 +16,7 @@ const NAV_ITEMS = [
   { href: "/posts", icon: "📄", title: "文章归档" },
 ];
 
-const isProd = process.env.NODE_ENV === "production";
-const basePath = isProd ? "/nzm-wiki" : "";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 function NavCard({ href, icon, title, description }: NavCardProps) {
   return (
