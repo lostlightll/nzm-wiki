@@ -179,6 +179,8 @@ export interface TDEnemy {
   type: TDEnemyType;
   attack?: number | string;
   hp?: number | string;
+  hitback_hp?: number | string;
+  hardstraight_hp?: number | string;
   weight?: number | string;
   speed?: number | string;
   description?: string;

@@ -45,3 +45,5 @@ next-env.d.ts
 /refs
 /CLAUDE.md
 /log.txt
+
+!.claude/commands/lc-enemies.md
