@@ -289,6 +289,12 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
             <span className="text-zinc-500">技能冷却</span>
             <span className="text-white">{formatValue(weapon.skill_cooldown)}</span>
           </div>
+          {weapon.skill_cooldown && weapon.skill_cooldown !== "" && weapon.skill_cooldown !== -1 && (
+            <div className="flex justify-between">
+              <span className="text-zinc-500">充能速率</span>
+              <span className="text-white">{(100 / Number(weapon.skill_cooldown)).toFixed(2)}%</span>
+            </div>
+          )}
           <div className="flex justify-between">
             <span className="text-zinc-500">技能伤害</span>
             <span className="text-white">{formatValue(weapon.skill_damage)}</span>
