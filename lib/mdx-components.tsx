@@ -25,6 +25,7 @@ import {
 } from "@/components/TextStyle";
 import { MDXImage } from "@/components/MDXImage";
 import { MDXLink } from "@/components/MDXLink";
+import { VideoGif } from "@/components/VideoGif";
 import type { Boss } from "@/types";
 import { bossToEnemy } from "@/lib/bosses";
 
@@ -58,6 +59,7 @@ export const mdxComponents = {
   Corrosive,
   Kinetic,
   Highlight,
+  VideoGif,
 };
 
 /**
