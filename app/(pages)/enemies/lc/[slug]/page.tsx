@@ -1,6 +1,7 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { getBossBySlug, bossToEnemy } from "@/lib/bosses";
 import { EnemyDetailCard } from "@/components/EnemyCard";
+import { TableOfContents } from "@/components/TableOfContents";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { mdxComponents } from "@/lib/mdx-components";
@@ -20,7 +21,8 @@ export default async function BossDetailPage({
   const { slug } = await params;
 
   const boss = await getBossBySlug(slug);
-  const { content } = getMDXDetail("enemies/lc/boss", slug);
+  const { content, metadata } = getMDXDetail("enemies/lc/boss", slug);
+  const showToc = metadata.toc !== false;
 
   if (!boss) {
     return (
@@ -31,18 +33,21 @@ export default async function BossDetailPage({
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6 sm:p-10">
-      <EnemyDetailCard enemy={bossToEnemy(boss)} />
+    <>
+      <TableOfContents enabled={showToc} />
+      <div className="mx-auto max-w-3xl px-4 py-6 sm:p-10">
+        <EnemyDetailCard enemy={bossToEnemy(boss)} />
 
-      {content.trim() && (
-        <article className="prose prose-lg prose-invert mt-8 max-w-none">
-          <MDXRemote
-            source={content}
-            components={mdxComponents}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
-          />
-        </article>
-      )}
-    </div>
+        {content.trim() && (
+          <article className="prose prose-lg prose-invert mt-8 max-w-none">
+            <MDXRemote
+              source={content}
+              components={mdxComponents}
+              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            />
+          </article>
+        )}
+      </div>
+    </>
   );
 }
