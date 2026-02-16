@@ -26,6 +26,7 @@ import {
 import { MDXImage } from "@/components/MDXImage";
 import { MDXLink } from "@/components/MDXLink";
 import { VideoGif } from "@/components/VideoGif";
+import { AtkChart } from "@/components/AtkChart";
 import type { Boss } from "@/types";
 import { bossToEnemy } from "@/lib/bosses";
 
@@ -60,6 +61,7 @@ export const mdxComponents = {
   Kinetic,
   Highlight,
   VideoGif,
+  AtkChart,
 };
 
 /**
