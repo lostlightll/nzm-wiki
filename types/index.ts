@@ -188,6 +188,7 @@ export interface Enemy {
   hardstraight_hp?: string | number;
   weight?: string | number;
   speed?: string | number;
+  kill_money?: number;
 }
 
 // ------------------------------------------------------------
@@ -207,5 +208,6 @@ export interface TDEnemy {
   hardstraight_hp?: number | string;
   weight?: number | string;
   speed?: number | string;
+  kill_money?: number;
   description?: string;
 }

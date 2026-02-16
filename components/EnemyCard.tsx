@@ -198,6 +198,7 @@ export function EnemyDetailCard({ enemy }: { enemy: Enemy }) {
     { label: "韧性条", value: enemy.hardstraight_hp },
     { label: "体重", value: enemy.weight },
     { label: "速度", value: enemy.speed },
+    { label: "击杀金币", value: enemy.kill_money, color: "text-[#f5c842]" },
     { label: "所属地图", value: enemy.map },
   ];
 
