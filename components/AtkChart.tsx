@@ -106,7 +106,7 @@ export function AtkChart() {
             tickLine={{ stroke: "#3f3f46" }}
             width={42}
           />
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={CustomTooltip} />
           <Area
             type="linear"
             dataKey="cost"

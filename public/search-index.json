@@ -3117,6 +3117,24 @@
     ]
   },
   {
+    "title": "猎场金币获取",
+    "slug": "posts/hunting-money",
+    "path": "/posts/hunting-money",
+    "category": "文章",
+    "keywords": [
+      "hunting-money",
+      "猎场金币获取",
+      "猎场"
+    ],
+    "pinyin": [
+      "liechangjinbihuoqu",
+      "lcjbhq",
+      "hunting-money",
+      "liechang",
+      "lc"
+    ]
+  },
+  {
     "title": "猎场竞速",
     "slug": "posts/hunting-speedrun",
     "path": "/posts/hunting-speedrun",
@@ -3171,18 +3189,18 @@
     ]
   },
   {
-    "title": "猎场升级所需经验",
+    "title": "猎场升级等级所需经验",
     "slug": "posts/hunting-exp",
     "path": "/posts/hunting-exp",
     "category": "文章",
     "keywords": [
       "hunting-exp",
-      "猎场升级所需经验",
+      "猎场升级等级所需经验",
       "猎场"
     ],
     "pinyin": [
-      "liechangshengjisuoxujingyan",
-      "lcsjsxjy",
+      "liechangshengjidengjisuoxujingyan",
+      "lcsjdjsxjy",
       "hunting-exp",
       "liechang",
       "lc"
