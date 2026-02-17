@@ -68,9 +68,9 @@ function BaseSkillItem({
   );
 }
 
-/// 主被动技能组件 (暴露给 MDX 使用)
+// 技能组件 (暴露给 MDX 使用)
 
-// 主动技能：纯白底黑字，提高质感与对比度
+// 主动技能
 export function ActiveSkill(props: Omit<BaseSkillProps, "tagColor">) {
   return (
     <BaseSkillItem
@@ -81,7 +81,13 @@ export function ActiveSkill(props: Omit<BaseSkillProps, "tagColor">) {
   );
 }
 
-// 被动技能：默认深灰底浅灰字
+// 被动技能
 export function PassiveSkill(props: Omit<BaseSkillProps, "tagColor">) {
-  return <BaseSkillItem tagColor="bg-slate-800 text-slate-300" {...props} />;
+  return (
+    <BaseSkillItem
+      // tag="被动技能"
+      // tagColor="bg-[#30393e] text-slate-300"
+      {...props}
+    />
+  );
 }

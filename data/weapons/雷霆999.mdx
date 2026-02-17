@@ -7,9 +7,6 @@ rarity: 史诗
 tags:
   - 弹夹容量
 scope: 中倍镜
-weapon_type_id: 1
-prototype_id: '20001000019'
-active_skill_id: 5000301
 damage:
   base: 0.095
   impulse: 1.2
@@ -24,7 +21,7 @@ magazine: 999
 total_ammo: 999
 accuracy: 78
 stability: 55
-reload_time: ''
+reload_time: 0
 range: 49
 explosion_range: -1
 ignore_shield: false
@@ -32,21 +29,26 @@ element_add_rate: 0.077
 skill_cooldown: 15
 skill_damage: ''
 pellets: ''
+weapon_type_id: 1
+prototype_id: '20001000019'
+active_skill_id: 5000301
 ---
 
 <WeaponSkill>
   <ActiveSkill
     name="闪电锁链"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20101000018_1.png"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000301.png"
+    duration={15}
+    cooldown={25}
+    count={1}
   >
     技能持续期间，使用雷霆999射击命中时，对附近敌人造成电属性连锁伤害。
   </ActiveSkill>
 
   <PassiveSkill
     name="威猛火力"
-    tag="弹夹容量"
     icon="/icons/weapons/skills/T_Weapon_Skill_20101000018_1.png"
   >
-    雷霆999拥有极大的主弹匣。
+    雷霆999拥有极大的主弹匣。<Grey>弹夹容量始终是<Yellow>999</Yellow>也意味着增加或减少弹容的Buff都不起作用</Grey>
   </PassiveSkill>
 </WeaponSkill>

@@ -35,12 +35,21 @@ pellets: null
 ---
 
 <WeaponSkill>
+  <ActiveSkill
+    name="狂热射击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000101.png"
+    duration={8}
+    cooldown={40}
+    count={1}
+  >
+    进入狂热射击状态，期间使用武器射击会直接消耗备弹，且射速提高<Yellow>??</Yellow>。
+  </ActiveSkill>
+
   <PassiveSkill
     name="发散射击"
-    tag="破韧"
     icon="/icons/weapons/skills/T_Weapon_Skill_20014000004_1.png"
   >
-    随着弹匣内子弹减少，弹道数量会逐渐增加。
+    随着弹夹内弹药量的降低，开火时发射的子弹数量逐渐增加，且不会额外消耗弹药。
   </PassiveSkill>
 </WeaponSkill>
 

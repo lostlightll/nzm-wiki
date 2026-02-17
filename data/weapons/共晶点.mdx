@@ -24,7 +24,7 @@ magazine: 34
 total_ammo: 884
 accuracy: 71
 stability: 52
-reload_time: ''
+reload_time: '1.4'
 range: ''
 explosion_range: ''
 ignore_shield: false
@@ -35,11 +35,20 @@ pellets: ''
 ---
 
 <WeaponSkill>
-  <PassiveSkill
-    name="越战越勇"
-    tag="元素异常"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000007_1.png"
+  <ActiveSkill
+    name="连环冻结"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000007_2.png"
+    duration={15}
+    cooldown={35}
+    count={1}
   >
-    击杀敌人可获得武器伤害加成和充能速度加成，可叠加多层，每层buff持续一定时间。
+    玩家击杀被<Blue>冻结</Blue>的目标时，离该敌人最近的一个随机敌人被<Blue>冻结</Blue>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="低温界面"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000007_3.png"
+  >
+    使用共晶点给怪物重复附加冰元素异常效果时，会触发<Blue>冻结</Blue>。
   </PassiveSkill>
 </WeaponSkill>
