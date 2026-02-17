@@ -7,6 +7,7 @@ export interface SpriteConfig {
   width: number;
   height: number;
   sheet: "common" | "hud" | "weapon_type";
+  rotated?: boolean; // 精灵图中是否旋转存储（顺时针90度）
 }
 
 // 元素类型图标坐标 (common.png)
@@ -30,21 +31,29 @@ export const STAT_SPRITES: Record<string, SpriteConfig> = {
   magazine: { x: 816, y: 160, width: 32, height: 32, sheet: "common" },    // 弹夹
 };
 
-// 武器类型图标坐标 (weapon_type.png)
-// TODO: 需要根据实际的 weapon_type.png 精灵图调整坐标
+// 武器类型图标坐标 (weapon_type.png, 748x1360)
+// 坐标来自 UE PaperSprite 的 BakedSourceUV / BakedSourceDimension
+// rotated=true 表示精灵图中宽高互换（顺时针旋转90度存储）
 export const WEAPON_TYPE_SPRITES: Record<WeaponType, SpriteConfig> = {
-  突击步枪: { x: 0, y: 0, width: 64, height: 32, sheet: "weapon_type" },
-  狙击步枪: { x: 0, y: 32, width: 64, height: 32, sheet: "weapon_type" },
-  霰弹枪: { x: 0, y: 64, width: 64, height: 32, sheet: "weapon_type" },
-  火箭发射器: { x: 0, y: 96, width: 64, height: 32, sheet: "weapon_type" },
-  冲锋枪: { x: 0, y: 128, width: 64, height: 32, sheet: "weapon_type" },
-  机枪: { x: 0, y: 160, width: 64, height: 32, sheet: "weapon_type" },
-  手枪: { x: 0, y: 192, width: 64, height: 32, sheet: "weapon_type" },
-  单发榴弹: { x: 0, y: 224, width: 64, height: 32, sheet: "weapon_type" },
-  弓箭: { x: 0, y: 256, width: 64, height: 32, sheet: "weapon_type" },
-  喷射器: { x: 0, y: 288, width: 64, height: 32, sheet: "weapon_type" },
-  射手步枪: { x: 0, y: 320, width: 64, height: 32, sheet: "weapon_type" },
-  连发榴弹: { x: 0, y: 352, width: 64, height: 32, sheet: "weapon_type" },
+  喷射器:     { x: 1, y: 1,    width: 438, height: 148, sheet: "weapon_type" },            // Blaster
+  机枪:       { x: 1, y: 151,  width: 438, height: 148, sheet: "weapon_type" },            // MG
+  连发榴弹:   { x: 1, y: 301,  width: 438, height: 148, sheet: "weapon_type" },            // MultiGrenade
+  手枪:       { x: 1, y: 451,  width: 438, height: 148, sheet: "weapon_type" },            // Pistol
+  突击步枪:   { x: 1, y: 601,  width: 438, height: 148, sheet: "weapon_type" },            // Rifle
+  霰弹枪:     { x: 1, y: 751,  width: 438, height: 148, sheet: "weapon_type" },            // ShotGun
+  单发榴弹:   { x: 1, y: 901,  width: 438, height: 148, sheet: "weapon_type" },            // SingleGrenade
+  冲锋枪:     { x: 1, y: 1051, width: 438, height: 148, sheet: "weapon_type" },            // SMG
+  狙击步枪:   { x: 1, y: 1201, width: 438, height: 148, sheet: "weapon_type" },            // Sniper
+  弓箭:       { x: 441, y: 1,    width: 438, height: 148, sheet: "weapon_type", rotated: true }, // Bow
+  射手步枪:   { x: 441, y: 441,  width: 438, height: 148, sheet: "weapon_type", rotated: true }, // DMR
+  火箭发射器: { x: 441, y: 881,  width: 438, height: 148, sheet: "weapon_type", rotated: true }, // Launcher
+};
+
+// 武器槽位图标（复用武器类型精灵）
+export const WEAPON_SLOT_SPRITES: Record<string, SpriteConfig> = {
+  主武器:   WEAPON_TYPE_SPRITES["突击步枪"],   // Rifle
+  副武器:   WEAPON_TYPE_SPRITES["手枪"],       // Pistol
+  近战武器: { x: 591, y: 881, width: 438, height: 148, sheet: "weapon_type", rotated: true }, // Melee
 };
 
 // 精灵图路径

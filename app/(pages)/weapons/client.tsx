@@ -69,6 +69,7 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
           selected={rarityState.selected}
           onToggle={rarityState.toggle}
           gridClass="grid grid-cols-3 gap-2 max-w-md"
+          centerClass="justify-center"
         />
 
         <FilterSection
@@ -76,7 +77,8 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
           items={WEAPON_SLOTS}
           selected={slotState.selected}
           onToggle={slotState.toggle}
-          gridClass="grid grid-cols-3 gap-2 max-w-md"
+          gridClass="grid grid-cols-3 gap-2 max-w-2xl"
+          iconOnlyOnMobile
         />
 
         <FilterSection
@@ -84,6 +86,7 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
           items={WEAPON_TYPES}
           selected={typeState.selected}
           onToggle={typeState.toggle}
+          centerClass="sm:justify-center"
         />
 
         <FilterSection
