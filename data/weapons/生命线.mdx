@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 命中爆炸
 scope: 低倍镜
+weapon_type_id: 8
+prototype_id: '20008000002'
+active_skill_id: 5100801
 damage:
   base: 0.3935
   impulse: 9.84
@@ -30,6 +33,24 @@ skill_cooldown: 35
 skill_damage: '170'
 pellets: ''
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="严寒之触"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20108000002_02.png"
+  >
+    丢出一颗冰冻核心，碰撞或一定时间后爆炸，爆炸后会在原地留下一颗冰壶，冰壶每<Yellow>3秒</Yellow>喷发一次冰雾，共喷发<Yellow>3次</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="如履薄冰"
+    tag="命中爆炸"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20108000002_01.png"
+  >
+    生命线射出的榴弹，爆炸时将在地面上造成半径为<Yellow>4米</Yellow>的冰池，进入冰池的敌人将持续受到伤害。
+  </PassiveSkill>
+</WeaponSkill>
+
 <Callout color="yellow">赛季天赋极速狂热触发时可以按住连发，收割者不行。</Callout>
 
 命中伤害 **216.75**，爆炸伤害 **393.5**，破韧伤害都是 **9.84**

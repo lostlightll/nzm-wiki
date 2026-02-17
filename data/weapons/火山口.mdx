@@ -6,6 +6,9 @@ element: 火焰
 rarity: 史诗
 tags: ''
 scope: ''
+weapon_type_id: 1
+prototype_id: '20001000010'
+active_skill_id: 5001002
 damage:
   base: 0.124
   impulse: 1.9
@@ -29,5 +32,21 @@ skill_cooldown: 15
 skill_damage: '800'
 pellets: ''
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="多重燃烧手雷"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000901.png"
+  >
+    扔出一颗手雷，可造成范围燃烧伤害，半径<Yellow>3米</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="熔岩充能"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20101000001_1.png"
+  >
+    释放火山口主动技能时，为副武器主动技能充能<Yellow>15%</Yellow>。释放副武器主动技能时，为火山口主动技能充能<Yellow>45%</Yellow>。
+  </PassiveSkill>
+</WeaponSkill>
 
 主动技能手雷伤害 **800**，添加元素异常概率为 **100%**

@@ -7,6 +7,9 @@ rarity: 传说
 tags:
   - 快速连发
 scope: 不可开镜
+weapon_type_id: 3
+prototype_id: '20003000011'
+active_skill_id: 5101501
 damage:
   base: 0.11
   impulse: 1
@@ -30,6 +33,23 @@ skill_cooldown: 25
 skill_damage: ''
 pellets: 6
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="飓龙连击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000011_2.png"
+  >
+    飓风之龙立即充满能量，射击时将会消耗武器子弹和武器能量打出四连发。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="炙热龙炎"
+    tag="快速连发"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000011_1.png"
+  >
+    切换至龙炎弹模式时，武器迸发龙炎之力，造成范围伤害。
+  </PassiveSkill>
+</WeaponSkill>
 
 主动技能为消耗性，可以进行4次三连发，期间可以使用触发能量恢复插件的效果
 

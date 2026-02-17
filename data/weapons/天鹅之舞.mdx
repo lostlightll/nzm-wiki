@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 快速连发
 scope: 低倍镜
+weapon_type_id: 10
+prototype_id: '20010000001'
+active_skill_id: 5001401
 damage:
   base: 0.134
   impulse: 2.1
@@ -31,3 +34,19 @@ skill_damage: ''
 pellets: ''
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="战术力场"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20110000001_02.png"
+  >
+    原地释放一个战术力场，提高范围内我方角色暴击率<Yellow>36%</Yellow>，并且产生暴击时会治疗自己。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="猎手"
+    tag="快速连发"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20110000001_01.png"
+  >
+    三连发射击的第三发子弹<Yellow>100%</Yellow>造成暴击，并且可穿透<Yellow>3层</Yellow>目标，伤害无衰减。
+  </PassiveSkill>
+</WeaponSkill>

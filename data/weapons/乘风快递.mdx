@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 浮空
 scope: 低倍镜
+weapon_type_id: 7
+prototype_id: '20007000009'
+active_skill_id: 5000801
 damage:
   base: 0.657
   impulse: 9.8
@@ -30,5 +33,22 @@ skill_cooldown: null
 skill_damage: null
 pellets: null
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="闪身"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20107000007_2.png"
+  >
+    向移动方向进行一次快速冲刺。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="乘风而起"
+    tag="浮空"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20107000007_1.png"
+  >
+    开火的命中点如果在角色自身一定范围内，角色会被向后弹飞。
+  </PassiveSkill>
+</WeaponSkill>
 
 # 新建文档

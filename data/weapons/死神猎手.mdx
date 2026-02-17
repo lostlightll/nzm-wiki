@@ -7,6 +7,9 @@ rarity: 传说
 tags:
   - 穿透
 scope: 高倍镜
+weapon_type_id: 14
+prototype_id: '20014000005'
+active_skill_id: 5102101
 damage:
   base: 0.396
   impulse: 5.4
@@ -31,3 +34,23 @@ skill_damage: ''
 pellets: ''
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="死神之光"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20014000005_2.png"
+    duration={-1}
+    cooldown={150}
+    costRatio={1.0}
+    chargeStackCount={1}
+  >
+    发射缓慢向前飞行的"死神之光"，<Yellow>2.5秒</Yellow>后爆炸，在半径<Yellow>20米</Yellow>范围内造成<Yellow>2000</Yellow>伤害。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="穿射充能"
+    tag="穿透"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20014000005_1.png"
+  >
+    死神猎手的攻击可以<Blue>穿透</Blue>目标，无穿透上限。每次<Blue>穿透</Blue>敌人时获得<Yellow>0.15%</Yellow>主动技能充能（单次射击最多<Yellow>0.6%</Yellow>），仅命中单个敌人时获得<Yellow>0.2%</Yellow>主动技能充能，当对应主动技能充能满时，提升死神猎手<Yellow>40%</Yellow>射速与<Yellow>36%</Yellow>换弹速度。
+  </PassiveSkill>
+</WeaponSkill>

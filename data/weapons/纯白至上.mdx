@@ -7,6 +7,9 @@ rarity: 传说
 tags:
   - 动态射速
 scope: 中倍镜
+weapon_type_id: 6
+prototype_id: '20006000003'
+active_skill_id: 5000902
 damage:
   base: 0.114
   impulse: 1.8
@@ -31,3 +34,19 @@ skill_damage: ''
 pellets: ''
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="磐石身躯"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000801.png"
+  >
+    展开拒止力场，持续<Yellow>15秒</Yellow>，期间获得<Yellow>30%</Yellow>伤害减免，且持续射击命中每<Yellow>0.5秒</Yellow>获得<Yellow>6%</Yellow>增伤，最多叠加<Yellow>12层</Yellow>。停止射击后增伤效果逐渐降低至无。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="强力冲击"
+    tag="动态射速"
+    icon="/icons/weapons/skills/T_Weapon_Skill_effect_11.png"
+  >
+    持续射击时，射速逐渐提升，最高提升至<Yellow>2.2倍</Yellow>初始射速。
+  </PassiveSkill>
+</WeaponSkill>

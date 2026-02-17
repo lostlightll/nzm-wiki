@@ -6,6 +6,9 @@ element: 电弧
 rarity: 史诗
 tags: ''
 scope: 低倍镜
+weapon_type_id: 5
+prototype_id: '20005000001'
+active_skill_id: 5003001
 damage:
   base: 0.079
   impulse: 1.3
@@ -30,3 +33,18 @@ skill_damage: ''
 pellets: ''
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="双重奏"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000001_2.png"
+  >
+    技能激活期间，开火时<Yellow>100%</Yellow>概率额外增加弹道且额外消耗弹药。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="武器大师"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000001_1.png"
+  >
+    换弹时将枪械抛出，命中敌人造成半径<Yellow>2</Yellow>m的闪电范围伤害并补满弹夹。
+  </PassiveSkill>
+</WeaponSkill>

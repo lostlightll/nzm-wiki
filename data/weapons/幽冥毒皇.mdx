@@ -7,6 +7,9 @@ rarity: 传说
 tags:
   - 多模式
 scope: 中倍镜
+weapon_type_id: 6
+prototype_id: '20006000006'
+active_skill_id: 5102201
 damage:
   base: 0.115
   impulse: 1.5
@@ -30,6 +33,23 @@ skill_cooldown: 30
 skill_damage: ''
 pellets: ''
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="腐蚀爆发"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20006000006_2.png"
+  >
+    幽冥毒皇激活技能后，立即回复全部榴弹，并提升全队幽冥毒皇受到<Blue>腐蚀之力</Blue>的增益，同时小队内的幽冥毒王也能受到<Blue>腐蚀之力</Blue>影响。机甲战中仅对自己生效。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="腐蚀毒液"
+    tag="多模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20006000006_1.png"
+  >
+    幽冥毒皇可以在<Blue>机枪</Blue>和<Blue>榴弹枪</Blue>之间切换。至多可存储<Yellow>10枚</Yellow>榴弹。榴弹命中敌人后留下毒池，降低<Yellow>70%</Yellow>（塔防<Yellow>32%</Yellow>）移动速度和攻击速度。机枪命中<Yellow>35次</Yellow>恢复<Yellow>1枚</Yellow>榴弹。命中后附加<Blue>腐蚀之力</Blue>效果，提高榴弹与机枪伤害。
+  </PassiveSkill>
+</WeaponSkill>
 
 ## 腐蚀榴弹
 

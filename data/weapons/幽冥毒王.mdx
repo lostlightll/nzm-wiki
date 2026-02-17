@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 多模式
 scope: 中倍镜
+weapon_type_id: 6
+prototype_id: '20006000004'
+active_skill_id: 5001301
 damage:
   base: 0.092
   impulse: 1.5
@@ -30,3 +33,21 @@ skill_cooldown: 45
 skill_damage: ''
 pellets: ''
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="剧毒力场"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20106000004_02.png"
+  >
+    原地释放一个能量力场，立即回复幽冥毒王全部榴弹，并使<Yellow>6米</Yellow>范围内我方角色腐蚀属性武器的伤害增加。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="阴晴不定"
+    tag="多模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20106000004_02.png"
+  >
+    幽冥毒王可以在<Blue>机枪</Blue>和<Blue>榴弹枪</Blue>之间切换。幽冥毒王至多可存储<Yellow>4枚</Yellow>榴弹。榴弹命中敌人后，将在爆炸点的地面上留下毒池，进入毒池的敌人将受到少量伤害并降低移动速度。机枪模式下，命中敌人<Yellow>50次</Yellow>可以恢复<Yellow>1枚</Yellow>榴弹。
+  </PassiveSkill>
+</WeaponSkill>
+

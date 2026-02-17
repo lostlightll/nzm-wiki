@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 额外爆炸
 scope: 低倍镜
+weapon_type_id: 6
+prototype_id: '20006000001'
+active_skill_id: 5000903
 damage:
   base: 0.118
   impulse: 2.2
@@ -30,4 +33,21 @@ skill_cooldown: 40
 skill_damage: ''
 pellets: ''
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="拒止力场"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20016000001.png"
+  >
+    展开拒止力场，期间获得伤害减免，且持续射击命中每<Yellow>1秒</Yellow>获得增伤，停止射击后，增伤效果逐渐清零。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="巡航飞弹"
+    tag="额外爆炸"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20016000001.png"
+  >
+    命中<Yellow>20次</Yellow>时会自动射出一颗飞弹。
+  </PassiveSkill>
+</WeaponSkill>
 

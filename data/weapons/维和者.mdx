@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 弹匣回复
 scope: 低倍镜
+weapon_type_id: 16
+prototype_id: '20016000002'
+active_skill_id: 5000101
 damage:
   base: 0.415
   impulse: 4.48
@@ -30,6 +33,23 @@ skill_cooldown: ''
 skill_damage: ''
 pellets: ''
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="狂热射击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20016000002_2.png"
+  >
+    进入狂热射击状态，期间使用武器射击会直接消耗备弹，且射速提高。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="爆弹供养"
+    tag="弹匣回复"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20016000002_1.png"
+  >
+    每次开火造成的爆炸同时炸到<Yellow>2个</Yellow>以上敌人时，将<Yellow>1颗</Yellow>备弹填装到主弹匣。
+  </PassiveSkill>
+</WeaponSkill>
 
 命中伤害 **103.75**，爆炸伤害 **207.5**，破韧伤害都是 **4.48**
 

@@ -6,6 +6,9 @@ element: 物理
 rarity: 史诗
 tags: ''
 scope: 不可开镜
+weapon_type_id: 3
+prototype_id: '20003000008'
+active_skill_id: 5001501
 damage:
   base: 0.076
   impulse: 1.1
@@ -30,3 +33,18 @@ skill_damage: ''
 pellets: 6
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="风暴连击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20105000005_01.png"
+  >
+    飓风之锤立即充满能量，射击时将会消耗武器子弹和武器能量打出四连发。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="连战连胜"
+    icon="/icons/weapons/skills/连战连胜.png"
+  >
+    每次开火若有<Yellow>3颗</Yellow>及以上弹丸命中，则有<Yellow>35%</Yellow>几率向主弹匣额外装填<Yellow>1发</Yellow>弹药。
+  </PassiveSkill>
+</WeaponSkill>
