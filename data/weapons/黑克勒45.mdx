@@ -37,10 +37,21 @@ pellets: ''
 <WeaponSkill>
   <ActiveSkill
     name="燃烧手雷"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20105000002_1.png"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000901.png"
+    duration={-1}
+    cooldown={50}
+    count={1}
   >
     扔出一颗燃烧手雷，造成一次半径为<Yellow>6米</Yellow>的范围燃烧伤害。
   </ActiveSkill>
+
+  <PassiveSkill
+    name="击杀充能"
+    tag="元素异常"
+    icon="/icons/weapons/skills/T_Weapon_Skill_effect_14.png"
+  >
+    黑克勒45比其他火元素武器更容易造成灼热异常，且能造成更高的灼热异常伤害。该武器开火造成击杀时，减少其主动技能<Yellow>8秒</Yellow>充能时间。
+  </PassiveSkill>
 </WeaponSkill>
 
 > 黑克勒45 比其他火元素武器更容易造成 **灼热异常**，且能造成 **更高** 的灼热异常伤害
