@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 穿透
 scope: 高倍镜
+weapon_type_id: 2
+prototype_id: '20002000012'
+active_skill_id: 5100701
 damage:
   base: 0.318
   impulse: 4.3
@@ -31,3 +34,19 @@ skill_damage: ''
 pellets: ''
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="急速狂热"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20002000012_2.png"
+  >
+    使死亡猎手进入急速狂热状态，射击不消耗弹药，且射速提高<Yellow>50%</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="强力弹药"
+    tag="穿透"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20002000012_1.png"
+  >
+    子弹可以穿透敌人，默认穿透<Yellow>6层</Yellow>目标，伤害无衰减；每命中<Yellow>5个</Yellow>敌人，立即装填弹匣容量<Yellow>10%</Yellow>的子弹。
+  </PassiveSkill>
+</WeaponSkill>

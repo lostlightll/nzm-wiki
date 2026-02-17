@@ -7,6 +7,9 @@ rarity: 传说
 tags:
   - 穿透
 scope: 低倍镜
+weapon_type_id: 16
+prototype_id: '20016000004'
+active_skill_id: 5101601
 damage:
   base: 0.298
   impulse: 4.92
@@ -30,6 +33,20 @@ skill_cooldown: ''
 skill_damage: ''
 pellets: ''
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="连环爆炸"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20116000001_02.png"
+  >
+    发射的榴弹能够额外<Blue>反弹</Blue><Yellow>2次</Yellow>，每次<Blue>反弹</Blue>均能产生爆炸
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="劫掠时刻"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20116000001_01.png"
+  >发射的榴弹能够<Blue>穿透</Blue>敌人并造成伤害，第一次<Blue>穿透</Blue>敌人时将额外造成一次爆炸。</PassiveSkill>
+</WeaponSkill>
 
 命中伤害 **74.5**， 添加元素异常概率为 **39.25%**， 破韧伤害为 **4.92**  
 穿透时发生额外爆炸<Grey>(其他榴弹是命中或碰到障碍物后爆炸)</Grey>，伤害为 **149.0**，添加元素异常概率为 **23.55%** 

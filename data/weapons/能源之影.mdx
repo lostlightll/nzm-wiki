@@ -7,6 +7,9 @@ rarity: 传说
 tags:
   - 掷枪
 scope: 低倍镜
+weapon_type_id: 7
+prototype_id: '20007000015'
+active_skill_id: 5102001
 damage:
   base: 0.238
   impulse: 3.5
@@ -30,6 +33,24 @@ skill_cooldown: 45
 skill_damage: 350
 pellets: null
 ---
+
+
+<WeaponSkill>
+  <ActiveSkill
+    name="浮游模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20007000015_2.png"
+  >
+    技能开启后，能源之影变形为浮游炮，自动瞄准敌人并开火。浮游炮激活期间，可以正常使用其他武器。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="能源之息"
+    tag="掷枪"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20007000015_1.png"
+  >
+    换弹时，将枪械扔出，命中敌人时造成半径<Yellow>2米</Yellow>的范围闪电伤害。
+  </PassiveSkill>
+</WeaponSkill>
 
 
 | 伤害类型 | 伤害 | 破韧伤害 | 添加元素异常概率 |

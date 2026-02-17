@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 备点回复
 scope: 低倍镜
+weapon_type_id: 7
+prototype_id: '20007000005'
+active_skill_id: 5000601
 damage:
   base: 0.176
   impulse: 2.6
@@ -31,3 +34,19 @@ skill_damage: null
 pellets: null
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="多重装填"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000502.png"
+  >
+    为背包内主武器回复<Yellow>50%</Yellow>特殊弹药，并且填装弹药。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="回收利用"
+    tag="备弹回复"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20107000003_2.png"
+  >
+    命中敌人时，有<Yellow>10%</Yellow>几率为主武器回复<Yellow>1</Yellow>颗备用弹药。
+  </PassiveSkill>
+</WeaponSkill>

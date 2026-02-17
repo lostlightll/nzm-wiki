@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 弹射
 scope: 中倍镜
+weapon_type_id: 1
+prototype_id: '20001000009'
+active_skill_id: 5001101
 damage:
   base: 0.13
   impulse: 2
@@ -31,3 +34,19 @@ skill_damage: ''
 pellets: ''
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="酸液手雷"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1001301.png"
+  >
+    扔出一颗酸液手雷，造成一次半径为<Yellow>6米</Yellow>的范围腐蚀伤害。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="分裂弹药"
+    tag="弹射"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20101000011_02.png"
+  >
+    命中目标时有<Yellow>50%</Yellow>概率分裂出一颗子弹，该子弹从命中点<Blue>弹射</Blue>至附近<Yellow>15米</Yellow>内随机敌人并造成伤害。
+  </PassiveSkill>
+</WeaponSkill>

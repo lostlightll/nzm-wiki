@@ -6,6 +6,9 @@ element: 寒冷
 rarity: 传说
 tags: null
 scope: 不可开镜
+weapon_type_id: 3
+prototype_id: '20003000012'
+active_skill_id: 5002901
 damage:
   base: 0.121
   impulse: 1.5
@@ -30,3 +33,18 @@ skill_damage: null
 pellets: 6
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="冷却飞弹"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000012_2.png"
+  >
+    全部都给我冻住！
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="强力破冰"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000012_1.png"
+  >
+    开火命中被冻结的敌人时，敌人解冻并且造成范围碎冰爆炸伤害。
+  </PassiveSkill>
+</WeaponSkill>

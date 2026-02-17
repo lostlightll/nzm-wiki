@@ -27,6 +27,11 @@ import { MDXImage } from "@/components/MDXImage";
 import { MDXLink } from "@/components/MDXLink";
 import { VideoGif } from "@/components/VideoGif";
 import { AtkChart } from "@/components/AtkChart";
+import {
+  WeaponSkill,
+  ActiveSkill,
+  PassiveSkill,
+} from "@/components/WeaponSkill";
 import type { Boss } from "@/types";
 import { bossToEnemy } from "@/lib/bosses";
 
@@ -62,6 +67,9 @@ export const mdxComponents = {
   Highlight,
   VideoGif,
   AtkChart,
+  WeaponSkill,
+  ActiveSkill,
+  PassiveSkill,
 };
 
 /**

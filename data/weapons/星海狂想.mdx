@@ -7,6 +7,9 @@ rarity: 传说
 tags:
   - 动态射速
 scope: ''
+weapon_type_id: 1
+prototype_id: '20001000004'
+active_skill_id: 5100501
 damage:
   base: 0.111
   impulse: 1.3
@@ -31,3 +34,19 @@ skill_damage: ''
 pellets: ''
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="深寒冲击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1100101.png"
+  >
+    抽取水汽凝结生成大型冰锥，对<Yellow>3米</Yellow>范围内敌人造成伤害。接下来的<Yellow>8秒</Yellow>射速提升至<Yellow>3.3倍</Yellow>，且射击不消耗弹药。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="涡轮增压"
+    tag="动态射速"
+    icon="/icons/weapons/skills/T_Weapon_Skill_effect_11.png"
+  >
+    星海狂想在持续开火过程中，射速会逐渐提升，最高达到<Yellow>2.2</Yellow>倍初始射速，停火后射速恢复初始值。星海狂想在命中敌人时有<Yellow>50%</Yellow>概率恢复<Yellow>1发</Yellow>子弹至弹夹。
+  </PassiveSkill>
+</WeaponSkill>

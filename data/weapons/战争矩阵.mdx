@@ -7,6 +7,9 @@ rarity: 传说
 tags:
   - 浮空
 scope: 低倍镜
+weapon_type_id: 7
+prototype_id: '20007000024'
+active_skill_id: 5102601
 damage:
   base: 0.22
   toughness: 2.9
@@ -31,4 +34,19 @@ skill_damage: 250
 pellets: null
 ---
 
-能量球伤害 **250**
+<WeaponSkill>
+  <ActiveSkill
+    name="光能矩阵"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20007000024_2.png"
+  >
+    发射一个光能体，光能体每秒会周期性地攻击附近的随机敌人，伤害为 <Yellow>250</Yellow>，触发时最多同时攻击三个敌人。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="增幅矩阵"
+    tag="浮空"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20007000024_1.png"
+  >
+    开火时发射三道能量激光，具备更高的破韧效率。
+  </PassiveSkill>
+</WeaponSkill>

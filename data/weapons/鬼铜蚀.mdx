@@ -6,6 +6,9 @@ element: 腐蚀
 rarity: 传说
 tags: null
 scope: 不可开镜
+weapon_type_id: 15
+prototype_id: '20015000006'
+active_skill_id: 5102501
 damage:
   base: 0.038
   impulse: 0.8
@@ -29,6 +32,22 @@ skill_cooldown: null
 skill_damage: null
 pellets: null
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="变压毒气"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20015000006_2.png"
+  >
+    使用鼠标滚轮调整喷射压力，喷射范围的角度和距离随压力变化。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="罐装毒液"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20015000006_1.png"
+  >
+    换弹时将毒液罐丢出，造成爆炸伤害，并留下一个持续造成毒属性伤害的区域。
+  </PassiveSkill>
+</WeaponSkill>
 
 该武器具有范围伤害
 

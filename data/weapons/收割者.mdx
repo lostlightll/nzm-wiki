@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 命中爆炸
 scope: 低倍镜
+weapon_type_id: 8
+prototype_id: '20008000001'
+active_skill_id: 5000701
 damage:
   base: 0.4335
   impulse: 10.84
@@ -30,6 +33,24 @@ skill_cooldown: 40
 skill_damage: ''
 pellets: ''
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="扩充装填"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000601.png"
+  >
+    技能持续期间内，增加武器自身的主弹匣容量至<Yellow>3</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="收割时分"
+    tag="命中爆炸"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20108000001.png"
+  >
+    对目标造成伤害时，使其进入火元素异常状态。
+  </PassiveSkill>
+</WeaponSkill>
+
 命中伤害 **216.75**，爆炸伤害 **433.5**，破韧伤害都是 **10.84**，添加元素异常的概率都是 **100%**
 
 主动技能 **扩充填充** 效果为弹容量增加至 **3** 发，持续时间 **10秒**， 冷却时间 **40秒**

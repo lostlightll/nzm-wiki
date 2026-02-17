@@ -6,6 +6,9 @@ element: 腐蚀
 rarity: 传说
 tags: ''
 scope: ''
+weapon_type_id: 6
+prototype_id: '20006000002'
+active_skill_id: 5101801
 damage:
   base: 0.167
   impulse: 2.2
@@ -27,3 +30,18 @@ ignore_shield: false
 element_add_rate: 0.141
 ---
 
+<WeaponSkill>
+  <ActiveSkill
+    name="战术领域"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20106000002_2.png"
+  >
+    在面前放置一道能量壁垒，阻挡所有敌方射弹。壁垒存在时，生命公司拥有自瞄效果，且角色在壁垒附近能获得临时护盾。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="生命注入"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20106000002_2.png"
+  >
+    造成击杀时，有<Yellow>33%</Yellow>概率将<Yellow>6</Yellow>发备弹填充至主弹匣内。
+  </PassiveSkill>
+</WeaponSkill>

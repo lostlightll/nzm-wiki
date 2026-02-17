@@ -74,12 +74,12 @@ body {
 }
 
 /* Heading 装饰符号 */
-.prose h2 {
+.prose h2:not(.not-prose *) {
   position: relative;
   scroll-margin-top: 5rem;
 }
 
-.prose h2::before {
+.prose h2:not(.not-prose *)::before {
   content: "";
   position: absolute;
   left: -1rem;
@@ -91,12 +91,12 @@ body {
   border-radius: 2px;
 }
 
-.prose h3 {
+.prose h3:not(.not-prose *) {
   position: relative;
   scroll-margin-top: 5rem;
 }
 
-.prose h3::before {
+.prose h3:not(.not-prose *)::before {
   content: "";
   position: absolute;
   left: -0.8rem;

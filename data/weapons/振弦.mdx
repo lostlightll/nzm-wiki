@@ -7,6 +7,9 @@ rarity: 史诗
 tags:
   - 蓄力
 scope: 高倍镜
+weapon_type_id: 12
+prototype_id: '20012000002'
+active_skill_id: 5004501
 damage:
   base: 1.632
   impulse: 22.3
@@ -30,6 +33,23 @@ skill_cooldown: 40
 skill_damage: null
 pellets: null
 ---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="狂暴模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20012000002_3.png"
+  >
+    进入狂暴模式，持续<Yellow>15秒</Yellow>，期间暴击率提升<Yellow>25%</Yellow>，暴击伤害增加<Yellow>50%</Yellow>。
+    </ActiveSkill>
+  <PassiveSkill
+    name="急速杀戮"
+    tag="蓄力"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20109000001_2.png"
+  >
+    当前背包中有该武器时，每次击杀敌人将获得<Yellow>1层</Yellow>开火速度、换弹速度、切枪速度的加成效果，该效果可叠加多层。持续一定时间没有击杀将移除该效果。
+  </PassiveSkill>
+</WeaponSkill>
+
 <Callout>
 技能持续时间 **15秒**， 冷却时间 **40秒**
 </Callout>
