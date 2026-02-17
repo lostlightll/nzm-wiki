@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { getAssetPath } from "@/lib/path";
 
 // 外层容器
 export function WeaponSkill({ children }: { children: React.ReactNode }) {
@@ -31,7 +32,7 @@ function BaseSkillItem({
       {/* 技能图标 */}
       <div className="shrink-0 w-16 h-16 relative mt-1">
         <Image
-          src={icon}
+          src={getAssetPath(icon)}
           alt={name}
           fill
           className="object-contain drop-shadow-md"
