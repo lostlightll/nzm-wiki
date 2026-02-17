@@ -488,6 +488,15 @@ export default function EditorPage() {
     }
   }, []);
 
+  // URL ?file= 参数自动打开文件
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
+    if (file) {
+      loadFile(file);
+    }
+  }, [loadFile]);
+
   // 3. 保存文件
   const handleSave = async () => {
     if (!selectedPath) return;
