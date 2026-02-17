@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { Calculator, Search, Github } from "lucide-react";
+import { Calculator, Search, Github, Pencil } from "lucide-react";
 
 // GitHub 仓库基础 URL
 const GITHUB_REPO_URL = "https://github.com/qiekn/nzm-wiki/blob/main";
@@ -18,9 +18,9 @@ const PATH_TO_DATA_MAP: Record<string, string> = {
 };
 
 /**
- * 根据当前 URL 路径获取对应的 GitHub 编辑链接
+ * 解析当前 URL 路径，返回 data 目录路径和 slug
  */
-function getGitHubEditUrl(): string | null {
+function resolveDataPath(): { dataPath: string; slug: string } | null {
   if (typeof window === "undefined") return null;
 
   const pathname = window.location.pathname;
@@ -31,20 +31,37 @@ function getGitHubEditUrl(): string | null {
     ? pathname.slice(basePath.length)
     : pathname;
 
-  // 尝试匹配路径
   for (const [urlPrefix, dataPath] of Object.entries(PATH_TO_DATA_MAP)) {
     if (relativePath.startsWith(urlPrefix + "/")) {
-      // 提取文件名部分
       const slug = relativePath.slice(urlPrefix.length + 1);
       if (slug) {
-        // 解码 URL 编码的中文
-        const decodedSlug = decodeURIComponent(slug);
-        return `${GITHUB_REPO_URL}/${dataPath}/${decodedSlug}.mdx`;
+        return { dataPath, slug: decodeURIComponent(slug) };
       }
     }
   }
 
   return null;
+}
+
+/**
+ * 根据当前 URL 路径获取对应的 GitHub 编辑链接
+ */
+function getGitHubEditUrl(): string | null {
+  const resolved = resolveDataPath();
+  if (!resolved) return null;
+  return `${GITHUB_REPO_URL}/${resolved.dataPath}/${resolved.slug}.mdx`;
+}
+
+/**
+ * 根据当前 URL 路径获取对应的 Editor 链接（仅 dev 模式）
+ */
+function getEditorUrl(): string | null {
+  if (process.env.NODE_ENV !== "development") return null;
+  const resolved = resolveDataPath();
+  if (!resolved) return null;
+  // editor API 的 file 参数是相对于 data/ 的路径
+  const relativePath = resolved.dataPath.replace(/^data\//, "");
+  return `/editor?file=${encodeURIComponent(`${relativePath}/${resolved.slug}.mdx`)}`;
 }
 
 interface Command {
@@ -65,18 +82,32 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [githubEditUrl, setGithubEditUrl] = useState<string | null>(null);
+  const [editorUrl, setEditorUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // 打开时检测当前页面的 GitHub 编辑链接
+  // 打开时检测当前页面的编辑链接
   useEffect(() => {
     if (isOpen) {
       setGithubEditUrl(getGitHubEditUrl());
+      setEditorUrl(getEditorUrl());
     }
   }, [isOpen]);
 
-  // 合并命令列表（包括动态的 GitHub 编辑命令）
+  // 合并命令列表（包括动态命令）
   const allCommands = useMemo(() => {
     const cmds = [...commands];
+
+    if (editorUrl) {
+      cmds.push({
+        id: "editor",
+        name: "在编辑器中打开",
+        description: "在内置编辑器中编辑当前页面",
+        icon: <Pencil className="h-4 w-4" />,
+        action: () => {
+          window.location.href = editorUrl;
+        },
+      });
+    }
 
     if (githubEditUrl) {
       cmds.push({
@@ -91,7 +122,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
     }
 
     return cmds;
-  }, [commands, githubEditUrl]);
+  }, [commands, githubEditUrl, editorUrl]);
 
   // 过滤命令
   const filteredCommands = allCommands.filter(
