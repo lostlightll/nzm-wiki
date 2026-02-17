@@ -15,10 +15,10 @@ import {
 
 export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
   const [showDetails, setShowDetails] = useState(true);
-  const slotState = useSelection<WeaponSlot>(["主武器"]);
-  const typeState = useSelection<WeaponType>();
-  const elementState = useSelection<ElementType>();
-  const rarityState = useSelection<Rarity>(["传说"]);
+  const slotState = useSelection<WeaponSlot>("slot", ["主武器"]);
+  const typeState = useSelection<WeaponType>("type");
+  const elementState = useSelection<ElementType>("element");
+  const rarityState = useSelection<Rarity>("rarity", ["传说"]);
 
   const hasFilter =
     slotState.selected.size > 0 ||

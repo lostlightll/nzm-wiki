@@ -54,8 +54,8 @@ interface PerksPageClientProps {
 export default function PerksPageClient({
   initialPerks,
 }: PerksPageClientProps) {
-  const slotState = useSelection<PerkSlot>();
-  const rarityState = useSelection<Rarity>();
+  const slotState = useSelection<PerkSlot>("slot", undefined, Number as (v: string) => PerkSlot);
+  const rarityState = useSelection<Rarity>("rarity");
 
   const filteredPerks = useMemo(() => {
     return initialPerks.filter((perk) => {
