@@ -3171,24 +3171,6 @@
     ]
   },
   {
-    "title": "猎场商店升级攻击力所需金币",
-    "slug": "posts/hunting-atk",
-    "path": "/posts/hunting-atk",
-    "category": "文章",
-    "keywords": [
-      "hunting-atk",
-      "猎场商店升级攻击力所需金币",
-      "猎场"
-    ],
-    "pinyin": [
-      "liechangshangdianshengjigongjilisuoxujinbi",
-      "lcsdsjgjlsxjb",
-      "hunting-atk",
-      "liechang",
-      "lc"
-    ]
-  },
-  {
     "title": "猎场升级等级所需经验",
     "slug": "posts/hunting-exp",
     "path": "/posts/hunting-exp",
@@ -3202,6 +3184,24 @@
       "liechangshengjidengjisuoxujingyan",
       "lcsjdjsxjy",
       "hunting-exp",
+      "liechang",
+      "lc"
+    ]
+  },
+  {
+    "title": "猎场升级攻击力所需金币",
+    "slug": "posts/hunting-atk",
+    "path": "/posts/hunting-atk",
+    "category": "文章",
+    "keywords": [
+      "hunting-atk",
+      "猎场升级攻击力所需金币",
+      "猎场"
+    ],
+    "pinyin": [
+      "liechangshengjigongjilisuoxujinbi",
+      "lcsjgjlsxjb",
+      "hunting-atk",
       "liechang",
       "lc"
     ]
@@ -3240,6 +3240,28 @@
       "boss-hp",
       "liechang",
       "lc"
+    ]
+  },
+  {
+    "title": "塔防金币获取",
+    "slug": "posts/td-money",
+    "path": "/posts/td-money",
+    "category": "文章",
+    "keywords": [
+      "td-money",
+      "塔防金币获取",
+      "td",
+      "money",
+      "塔防"
+    ],
+    "pinyin": [
+      "tafangjinbihuoqu",
+      "tfjbhq",
+      "td-money",
+      "td",
+      "money",
+      "tafang",
+      "tf"
     ]
   },
   {
@@ -3486,11 +3508,23 @@
     "path": "/weapons/杜瓦瓶",
     "category": "武器",
     "keywords": [
-      "杜瓦瓶"
+      "杜瓦瓶",
+      "弹夹容量",
+      "喷射器",
+      "寒冷",
+      "史诗"
     ],
     "pinyin": [
       "duwaping",
-      "dwp"
+      "dwp",
+      "danjiarongliang",
+      "djrl",
+      "pensheqi",
+      "psq",
+      "hanleng",
+      "hl",
+      "shishi",
+      "ss"
     ]
   },
   {
@@ -3631,6 +3665,31 @@
     "pinyin": [
       "gongjingdian",
       "gjd",
+      "yuansuyichang",
+      "ysyc",
+      "chongfengqiang",
+      "cfq",
+      "hanleng",
+      "hl",
+      "shishi",
+      "ss"
+    ]
+  },
+  {
+    "title": "光荣之路",
+    "slug": "weapons/光荣之路",
+    "path": "/weapons/光荣之路",
+    "category": "武器",
+    "keywords": [
+      "光荣之路",
+      "元素异常",
+      "冲锋枪",
+      "寒冷",
+      "史诗"
+    ],
+    "pinyin": [
+      "guangrongzhilu",
+      "grzl",
       "yuansuyichang",
       "ysyc",
       "chongfengqiang",
@@ -4187,28 +4246,6 @@
       "sszm",
       "dianhu",
       "dh",
-      "chuanshuo",
-      "cs"
-    ]
-  },
-  {
-    "title": "生命公司",
-    "slug": "weapons/生命公司",
-    "path": "/weapons/生命公司",
-    "category": "武器",
-    "keywords": [
-      "生命公司",
-      "机枪",
-      "腐蚀",
-      "传说"
-    ],
-    "pinyin": [
-      "shengminggongsi",
-      "smgs",
-      "jiqiang",
-      "jq",
-      "fushi",
-      "fs",
       "chuanshuo",
       "cs"
     ]
