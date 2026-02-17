@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import type { Trap, TrapType } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
@@ -13,7 +12,7 @@ const TRAP_TYPES: { type: TrapType }[] = [
 ];
 
 export default function TrapsClient({ traps }: { traps: Trap[] }) {
-  const typeState = useSelection<TrapType>();
+  const typeState = useSelection<TrapType>("type");
 
   const hasFilter = typeState.selected.size > 0;
 
