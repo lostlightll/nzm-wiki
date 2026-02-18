@@ -31,13 +31,16 @@ skill_damage: ''
 pellets: ''
 weapon_type_id: 1
 prototype_id: '20001000022'
-active_skill_id: 0
+active_skill_id: 5001601
 ---
 
 <WeaponSkill>
   <ActiveSkill
     name="战术聚焦"
     icon="/icons/weapons/skills/T_Weapon_Skill_20106000002_1.png"
+    duration={10}
+    cooldown={45}
+    count={1}
   >
     开启战术聚焦后，屏幕上出现小范围的锁定区域，该区域内的目标将被<Blue>自动瞄准</Blue>。
   </ActiveSkill>
