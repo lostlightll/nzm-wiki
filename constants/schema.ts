@@ -28,7 +28,6 @@ export const FIELD_ORDER = [
   "ignore_shield",
   "element_add_rate",
   "skill_cooldown",
-  "skill_damage",
   "pellets",
 ];
 
@@ -64,7 +63,6 @@ export const FIELD_TYPES: Record<string, string> = {
   explosion_range: "number",
   element_add_rate: "number",
   skill_cooldown: "number",
-  skill_damage: "number",
   pellets: "number",
 };
 

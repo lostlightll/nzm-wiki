@@ -69,7 +69,6 @@ export interface Weapon {
   ignore_shield: boolean;
   element_add_rate: number;
   skill_cooldown?: number | string;
-  skill_damage?: number | string;
   pellets?: number;
 }
 

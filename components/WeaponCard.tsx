@@ -296,10 +296,6 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
             </div>
           )}
           <div className="flex justify-between">
-            <span className="text-zinc-500">技能伤害</span>
-            <span className="text-white">{formatValue(weapon.skill_damage)}</span>
-          </div>
-          <div className="flex justify-between">
             <span className="text-zinc-500">精准度</span>
             <span className="text-white">{formatValue(weapon.accuracy)}</span>
           </div>
