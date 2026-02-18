@@ -17,7 +17,47 @@ interface BaseSkillProps {
   tag?: string;
   tagColor?: string;
   icon: string;
+  duration?: number;
+  cooldown?: number;
+  count?: number;
   children?: React.ReactNode;
+}
+
+function SkillMeta({
+  duration,
+  cooldown,
+  count,
+}: {
+  duration?: number;
+  cooldown?: number;
+  count?: number;
+}) {
+  const items: { label: string; value: string }[] = [];
+
+  if (duration != null && duration > 0) {
+    items.push({ label: "持续", value: `${duration}秒` });
+  }
+  if (cooldown != null && cooldown > 0) {
+    items.push({ label: "冷却", value: `${cooldown}秒` });
+  }
+  if (count != null && count > 1) {
+    items.push({ label: "可累积", value: `${count}次` });
+  }
+
+  if (items.length === 0) return null;
+
+  return (
+    <>
+      {items.map((item) => (
+        <span
+          key={item.label}
+          className="text-[12px] px-2 py-0.5 rounded-sm font-bold tracking-wider flex items-center justify-center bg-[#30393e] text-slate-300"
+        >
+          {item.label} <span className="text-slate-300">{item.value}</span>
+        </span>
+      ))}
+    </>
+  );
 }
 
 function BaseSkillItem({
@@ -25,6 +65,9 @@ function BaseSkillItem({
   tag,
   tagColor,
   icon,
+  duration,
+  cooldown,
+  count,
   children,
 }: BaseSkillProps) {
   return (
@@ -42,7 +85,7 @@ function BaseSkillItem({
       {/* 技能信息 */}
       <div className="flex flex-col grow">
         {/* 标题栏 */}
-        <div className="flex items-center gap-3 mb-3.5">
+        <div className="flex items-center gap-3 mb-3.5 flex-wrap">
           {/* 左侧竖线装饰 */}
           <div className="w-0.75 h-4.5 bg-gray-200 rounded-full shadow-sm"></div>
 
@@ -58,6 +101,9 @@ function BaseSkillItem({
               {tag}
             </span>
           )}
+
+          {/* 技能参数 */}
+          <SkillMeta duration={duration} cooldown={cooldown} count={count} />
         </div>
 
         {/* 技能描述 */}
@@ -72,7 +118,7 @@ function BaseSkillItem({
 // 技能组件 (暴露给 MDX 使用)
 
 // 主动技能
-export function ActiveSkill(props: Omit<BaseSkillProps, "tagColor">) {
+export function ActiveSkill(props: Omit<BaseSkillProps, "tagColor" | "tag">) {
   return (
     <BaseSkillItem
       tag="主动技能"
