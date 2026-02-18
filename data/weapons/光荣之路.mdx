@@ -34,10 +34,19 @@ pellets: null
 ---
 
 <WeaponSkill>
+  <ActiveSkill
+    name="光荣之路"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20108000002_01.png"
+    duration={10}
+    cooldown={20}
+    count={1}
+  >
+    技能激活期间，每隔<Yellow>2.5秒</Yellow>在角色位置生成一个半径为<Yellow>5米</Yellow>的冰属性区域。该区域持续<Yellow>5秒</Yellow>。敌人置于其上时将受到伤害和冰异常效果。
+  </ActiveSkill>
+
   <PassiveSkill
     name="疾速追能"
-    tag="元素异常"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20105000003.png"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000701.png"
   >
     角色处于<Blue>疾跑</Blue>状态时，光荣之路的主动技能充能速度加倍。
   </PassiveSkill>
