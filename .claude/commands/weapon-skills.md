@@ -19,7 +19,7 @@ Grep 搜索 `WeaponPrototypeConfig.json` 中 `武器名":` 获取：
 1. **主动技能参数** → Grep `SkillConfigTable_Weapon_PVE.json` 搜 ActiveSkillID
    - cooldown = ChargeNeedTime
    - count = SkillCount
-   - duration = Parameters.BuffDuration（没有则写 -1）
+   - duration = Parameters 中 Tags 含 `SkillParamConfig.EffectDuration` 或 `SkillParamConfig.SummonerDuration` 的字段值（字段名可能是 BuffDuration、FieldDuration、LifeTime 等，都表示持续时间）。都没有则写 -1
    - 额外 Parameters 中的距离/范围等写入描述（100 units = 1米）
 
 2. **主动技能描述+图标** → Grep `MGE/DT_GPMGESkillDesConfigTable_Main.json` 搜 ActiveSkillID
