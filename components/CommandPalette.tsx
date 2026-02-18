@@ -49,7 +49,7 @@ function resolveDataPath(): { dataPath: string; slug: string } | null {
 function getGitHubEditUrl(): string | null {
   const resolved = resolveDataPath();
   if (!resolved) return null;
-  return `${GITHUB_REPO_URL}/${resolved.dataPath}/${resolved.slug}.mdx`;
+  return `${GITHUB_REPO_URL}/${resolved.dataPath}/${resolved.slug}.mdx?plain=1`;
 }
 
 /**
