@@ -5,7 +5,7 @@ import { Calculator as CalculatorIcon, Eraser, X } from "lucide-react";
 
 // 帮助信息
 const HELP_TEXT = [
-  "支持: + - * / ^ () % 和变量",
+  "支持: + - * × / ^ () % 和变量",
   "示例: 2+3, x=10, x*2, _+1, 25%",
   "_ 表示上次结果",
   "变量存储公式，引用时自动重新计算",
@@ -64,6 +64,9 @@ function evaluate(
         processed = processed.replace(replaceRegex, `(${subResult.value})`);
       }
     }
+
+    // 支持 × 作为乘法
+    processed = processed.replace(/×/g, "*");
 
     // 支持 ^ 作为幂运算
     processed = processed.replace(/\^/g, "**");
