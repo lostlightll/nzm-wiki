@@ -83,7 +83,8 @@ function evaluate(
       return { value: NaN, error: "计算错误" };
     }
 
-    return { value: result };
+    // 修正浮点精度问题（保留 10 位有效数字）
+    return { value: parseFloat(result.toPrecision(10)) };
   } catch {
     return { value: NaN, error: "语法错误" };
   }
