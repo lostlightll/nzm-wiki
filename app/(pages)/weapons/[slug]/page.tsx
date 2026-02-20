@@ -12,6 +12,21 @@ export async function generateStaticParams() {
   }));
 }
 
+// Tailwind max-width classes mapping
+const PAGE_WIDTH_CLASSES: Record<string, string> = {
+  sm: "max-w-xl",
+  md: "max-w-2xl",
+  lg: "max-w-3xl",
+  xl: "max-w-4xl",
+  "2xl": "max-w-5xl",
+  "3xl": "max-w-6xl",
+  full: "max-w-7xl",
+};
+
+function isCustomWidth(value: string): boolean {
+  return /^\d+(px|rem|em|vw|%)$/.test(value);
+}
+
 export default async function WeaponDetailPage({
   params,
 }: {
@@ -22,6 +37,15 @@ export default async function WeaponDetailPage({
   const weapon = await getWeaponBySlug(slug);
   const { content, metadata } = getMDXDetail("weapons", slug);
   const showToc = metadata.toc !== false;
+
+  const pageWidth = metadata["page-width"] as string | undefined;
+  const isCustom = pageWidth && isCustomWidth(pageWidth);
+  const widthClass = isCustom
+    ? ""
+    : pageWidth && PAGE_WIDTH_CLASSES[pageWidth]
+      ? PAGE_WIDTH_CLASSES[pageWidth]
+      : "max-w-3xl";
+  const customStyle = isCustom ? { maxWidth: pageWidth } : undefined;
 
   if (!weapon) {
     return (
@@ -34,7 +58,10 @@ export default async function WeaponDetailPage({
   return (
     <>
       <TableOfContents enabled={showToc} />
-      <div className="mx-auto max-w-3xl py-6">
+      <div
+        className={`mx-auto ${widthClass} py-6 ${isCustom ? "max-md:max-w-full" : ""}`}
+        style={customStyle}
+      >
         <WeaponDetailCard weapon={weapon} />
 
         {content.trim() && (
