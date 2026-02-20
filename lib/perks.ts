@@ -20,9 +20,9 @@ export function getAllPerks(): Perk[] {
       const filePath = path.join(slotDir, file);
       const content = fs.readFileSync(filePath, "utf-8");
       const { data } = matter(content);
-      // 将 frontmatter 映射到 Perk 类型，用文件名作为 id
       const perk: Perk = {
         id: file.replace(".mdx", ""),
+        slug: `slot-${slot}/${file.replace(".mdx", "")}`,
         name: data.title,
         slot: data.slot as PerkSlot,
         rarity: data.rarity as Rarity,
@@ -50,6 +50,7 @@ export function getPerkByName(name: string): Perk | null {
       const { data } = matter(content);
       return {
         id: name,
+        slug: `slot-${slot}/${name}`,
         name: data.title,
         slot: data.slot as PerkSlot,
         rarity: data.rarity as Rarity,

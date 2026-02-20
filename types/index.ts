@@ -95,6 +95,7 @@ export interface PerkEffect {
 
 export interface Perk {
   id: string;
+  slug: string;
   name: string;
   slot: PerkSlot;
   rarity: Rarity;
