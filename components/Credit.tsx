@@ -4,7 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { getAssetPath } from "@/lib/path";
 
-type Platform = "bilibili" | "youtube" | "twitter" | "github" | "douyin" | "link";
+type Platform =
+  | "bilibili"
+  | "youtube"
+  | "twitter"
+  | "github"
+  | "douyin"
+  | "tieba"
+  | "link";
 
 const PLATFORM_ICONS: Record<Platform, string | null> = {
   bilibili: "/icons/social/bilibili.svg",
@@ -12,6 +19,7 @@ const PLATFORM_ICONS: Record<Platform, string | null> = {
   twitter: "/icons/social/twitter.svg",
   github: "/icons/social/github.svg",
   douyin: "/icons/social/douyin.svg",
+  tieba: "/icons/social/tieba.svg",
   link: null,
 };
 
@@ -21,6 +29,8 @@ const PLATFORM_COLORS: Record<Platform, string> = {
   twitter: "text-white",
   github: "text-white",
   douyin: "text-white",
+  tieba: "text-[#503ac2]",
+  // tieba: "text-[#4E6EF2]",
   link: "text-zinc-400",
 };
 
