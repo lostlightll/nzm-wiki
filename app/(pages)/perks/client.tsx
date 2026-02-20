@@ -126,13 +126,7 @@ export default function PerksPageClient({
                   ({slotPerks.length}个)
                 </span>
               </div>
-              <div
-                className="grid gap-3"
-                style={{
-                  gridTemplateColumns:
-                    "repeat(auto-fill, minmax(128px, 128px))",
-                }}
-              >
+              <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
                 {slotPerks.map((perk, index) => (
                   <PerkCard
                     key={perk.id || `${perk.name}-${index}`}
@@ -145,12 +139,7 @@ export default function PerksPageClient({
         })
       ) : (
         <section>
-          <div
-            className="grid gap-3"
-            style={{
-              gridTemplateColumns: "repeat(auto-fill, minmax(128px, 128px))",
-            }}
-          >
+          <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
             {filteredPerks.map((perk, index) => (
               <PerkCard key={perk.id || `${perk.name}-${index}`} perk={perk} />
             ))}
