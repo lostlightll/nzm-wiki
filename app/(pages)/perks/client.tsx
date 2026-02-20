@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { getAssetPath } from "@/lib/path";
 import type { Perk, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
@@ -24,9 +25,10 @@ function PerkCard({ perk }: { perk: Perk }) {
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
 
   return (
-    <div
-      className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4`}
-    >
+    <Link href={`/perks/${perk.slug.split("/").map(encodeURIComponent).join("/")}`}>
+      <div
+        className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4 transition-transform hover:scale-[1.05]`}
+      >
       {perk.icon ? (
         <Image
           src={getAssetPath(`/icons/perks/${perk.icon}.png`)}
@@ -43,7 +45,8 @@ function PerkCard({ perk }: { perk: Perk }) {
       <h3 className="mt-2 text-center text-sm font-medium leading-tight text-white">
         {perk.name}
       </h3>
-    </div>
+      </div>
+    </Link>
   );
 }
 
@@ -85,12 +88,6 @@ export default function PerksPageClient({
   return (
     <>
       <h1 className="mb-8 text-3xl font-bold text-white">插件图鉴</h1>
-
-      <div className="p-4 rounded-2xl border border-zinc-700 my-4">
-        <span>
-          目前插件没有太多可讲的，暂时只看游戏内的插件图鉴就好了。后续如果能找到插件的具体实现逻辑再更新此页面
-        </span>
-      </div>
 
       {/* Filter section */}
       <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
