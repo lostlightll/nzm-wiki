@@ -106,9 +106,13 @@ async function convertImage(
 ): Promise<{ saved: number; skipped: boolean }> {
   const webpPath = getWebpOutputPath(pngPath);
 
-  // 跳过已存在的 webp
+  // 跳过未变更的：webp 已存在且比 png 新
   if (fs.existsSync(webpPath)) {
-    return { saved: 0, skipped: true };
+    const pngMtime = fs.statSync(pngPath).mtimeMs;
+    const webpMtime = fs.statSync(webpPath).mtimeMs;
+    if (webpMtime >= pngMtime) {
+      return { saved: 0, skipped: true };
+    }
   }
 
   const originalSize = fs.statSync(pngPath).size;
