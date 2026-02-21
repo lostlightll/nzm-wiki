@@ -194,7 +194,7 @@ function InputField({
 
   return (
     <div>
-      <label className="mb-1.5 block text-xs text-zinc-500">{label}</label>
+      <label className="mb-1.5 block text-xs text-zinc-400">{label}</label>
       <div className="flex items-center gap-1">
         <div className="relative flex-1">
           <input
