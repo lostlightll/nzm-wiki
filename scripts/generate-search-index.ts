@@ -200,3 +200,85 @@ function generateSearchIndex() {
 }
 
 generateSearchIndex();
+generateWeaponStats();
+
+function generateWeaponStats() {
+  console.log("Generating weapon stats...");
+
+  const weaponsDir = path.join(baseDir, "weapons");
+  if (!fs.existsSync(weaponsDir)) {
+    console.log("No weapons directory found, skipping.");
+    return;
+  }
+
+  const files = fs.readdirSync(weaponsDir).filter((f) => f.endsWith(".mdx"));
+
+  interface WeaponStat {
+    title: string;
+    use_type: string | null;
+    weapon_type: string | null;
+    element: string | null;
+    rarity: string | null;
+    damage_base: number | null;
+    weekness_multiplier: number | null;
+    file_rate: number | null;
+    magazine: number | null;
+    reload_time: number | null;
+    enable_critical: boolean | null;
+    pinyin: string[];
+  }
+
+  const weapons: WeaponStat[] = [];
+
+  for (const file of files) {
+    const content = fs.readFileSync(path.join(weaponsDir, file), "utf-8");
+    const { data } = matter(content);
+
+    const title = data.title || file.replace(/\.mdx$/, "");
+
+    // 过滤近战武器
+    if (data.use_type === "近战武器") continue;
+
+    // 拼音
+    const pinyinSet = new Set<string>();
+    const fullPy = pinyin(String(title), { toneType: "none", type: "array" }).join("");
+    if (fullPy) pinyinSet.add(fullPy.toLowerCase());
+    const initials = pinyin(String(title), { pattern: "first", toneType: "none", type: "array" }).join("");
+    if (initials) pinyinSet.add(initials.toLowerCase());
+
+    weapons.push({
+      title,
+      use_type: data.use_type || null,
+      weapon_type: data.weapon_type || null,
+      element: data.element || null,
+      rarity: data.rarity || null,
+      damage_base: data.damage?.base ?? null,
+      weekness_multiplier: typeof data.weekness_multiplier === "number" ? data.weekness_multiplier : null,
+      file_rate: typeof data.file_rate === "number" ? data.file_rate : null,
+      magazine: typeof data.magazine === "number" ? data.magazine : null,
+      reload_time: typeof data.reload_time === "number" ? data.reload_time : null,
+      enable_critical: data.enable_critical ?? null,
+      pinyin: [...pinyinSet],
+    });
+  }
+
+  weapons.sort((a, b) => {
+    // 一级：稀有度降序（传说 > 史诗 > 稀有）
+    const rarityOrder: Record<string, number> = { "传说": 3, "史诗": 2, "稀有": 1 };
+    const ra = rarityOrder[a.rarity ?? ""] ?? 0;
+    const rb = rarityOrder[b.rarity ?? ""] ?? 0;
+    if (ra !== rb) return rb - ra;
+    // 二级：use_type 主武器优先
+    const ua = a.use_type === "主武器" ? 0 : 1;
+    const ub = b.use_type === "主武器" ? 0 : 1;
+    if (ua !== ub) return ua - ub;
+    // 三级：中文名排序
+    return a.title.localeCompare(b.title, "zh-CN");
+  });
+
+  const outputPath = path.join(process.cwd(), "public", "weapon-stats.json");
+  fs.writeFileSync(outputPath, JSON.stringify(weapons, null, 2), "utf-8");
+
+  console.log(`Generated weapon stats with ${weapons.length} items`);
+  console.log(`Output: ${outputPath}`);
+}

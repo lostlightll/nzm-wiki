@@ -3,8 +3,8 @@ import { getBossBySlug, bossToEnemy } from "@/lib/bosses";
 import { EnemyDetailCard } from "@/components/EnemyCard";
 import { TableOfContents } from "@/components/TableOfContents";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
 import { mdxComponents } from "@/lib/mdx-components";
+import { mdxOptions } from "@/lib/mdx-options";
 
 export async function generateStaticParams() {
   const items = getMDXList("enemies/lc/boss");
@@ -43,7 +43,7 @@ export default async function BossDetailPage({
             <MDXRemote
               source={content}
               components={mdxComponents}
-              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+              options={mdxOptions}
             />
           </article>
         )}

@@ -2,8 +2,8 @@ import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { getTDEnemyBySlug, tdEnemyToEnemy } from "@/lib/td-enemies";
 import { EnemyDetailCard } from "@/components/EnemyCard";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
 import { mdxComponents } from "@/lib/mdx-components";
+import { mdxOptions } from "@/lib/mdx-options";
 
 export async function generateStaticParams() {
   const items = getMDXList("enemies/td");
@@ -39,7 +39,7 @@ export default async function TDEnemyDetailPage({
           <MDXRemote
             source={content}
             components={mdxComponents}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            options={mdxOptions}
           />
         </article>
       )}

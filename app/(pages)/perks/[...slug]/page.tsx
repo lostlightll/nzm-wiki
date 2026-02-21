@@ -1,7 +1,7 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
 import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
+import { mdxOptions } from "@/lib/mdx-options";
 import { PerkDetailCard } from "@/components/PerkCard";
 import { RARITY_NUM_MAP } from "@/constants/common";
 import type { Rarity } from "@/types";
@@ -80,7 +80,7 @@ export default async function PerkDetailPage({
             <MDXRemote
               source={content}
               components={mdxComponents}
-              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+              options={mdxOptions}
             />
           </article>
         )}
