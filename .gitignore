@@ -46,4 +46,8 @@ next-env.d.ts
 /CLAUDE.md
 /log.txt
 
+# generated indexes
+/public/search-index.json
+/public/weapon-stats.json
+
 !.claude/commands/lc-enemies.md
