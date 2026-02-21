@@ -2,8 +2,8 @@ import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { getWeaponBySlug } from "@/lib/weapons";
 import { WeaponDetailCard } from "@/components/WeaponCard";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
 import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
+import { mdxOptions } from "@/lib/mdx-options";
 
 export async function generateStaticParams() {
   const items = getMDXList("weapons");
@@ -69,7 +69,7 @@ export default async function WeaponDetailPage({
             <MDXRemote
               source={content}
               components={mdxComponents}
-              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+              options={mdxOptions}
             />
           </article>
         )}

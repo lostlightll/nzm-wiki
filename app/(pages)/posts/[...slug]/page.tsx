@@ -1,7 +1,7 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
 import { getMdxComponents, TableOfContents } from "@/lib/mdx-components";
+import { mdxOptions } from "@/lib/mdx-options";
 import { getAllBosses } from "@/lib/bosses";
 
 export async function generateStaticParams() {
@@ -66,7 +66,7 @@ export default async function PostPage({
           <MDXRemote
             source={content}
             components={mdxComponents}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            options={mdxOptions}
           />
         </article>
       </div>

@@ -2,8 +2,8 @@ import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { getTrapBySlug } from "@/lib/traps";
 import { TrapDetailCard } from "@/components/TrapCard";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import remarkGfm from "remark-gfm";
 import { mdxComponents } from "@/lib/mdx-components";
+import { mdxOptions } from "@/lib/mdx-options";
 
 export async function generateStaticParams() {
   const items = getMDXList("traps");
@@ -40,7 +40,7 @@ export default async function TrapDetailPage({
           <MDXRemote
             source={content}
             components={mdxComponents}
-            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            options={mdxOptions}
           />
         </article>
       )}
