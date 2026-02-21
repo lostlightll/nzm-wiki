@@ -52,6 +52,13 @@ export default async function PerkDetailPage({
       ? RARITY_NUM_MAP[metadata.rarity]
       : metadata.rarity;
 
+  const descriptionNode = metadata.description ? (
+    <MDXRemote
+      source={metadata.description}
+      components={mdxComponents}
+    />
+  ) : undefined;
+
   return (
     <>
       <TableOfContents enabled={showToc} />
@@ -64,7 +71,7 @@ export default async function PerkDetailPage({
           icon={metadata.icon}
           slot={metadata.slot}
           rarity={rarity}
-          description={metadata.description}
+          description={descriptionNode}
           weaponType={metadata.weaponType}
         />
 

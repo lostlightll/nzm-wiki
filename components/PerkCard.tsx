@@ -15,7 +15,7 @@ interface PerkDetailCardProps {
   icon?: string;
   slot: PerkSlot;
   rarity?: Rarity;
-  description?: string;
+  description?: React.ReactNode;
   weaponType?: number[];
 }
 
@@ -67,9 +67,9 @@ export function PerkDetailCard({
       </div>
 
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-zinc-300">
+        <div className="mt-4 text-base leading-relaxed text-zinc-300">
           {description}
-        </p>
+        </div>
       )}
     </div>
   );
