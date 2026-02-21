@@ -107,6 +107,8 @@ export function DamageCalculator() {
 
   const [perkExpr, setPerkExpr] = useState("1");
   const [perkLastValid, setPerkLastValid] = useState(1);
+  const [perkLabel, setPerkLabel] = useState("插件乘区");
+  const [editingPerkLabel, setEditingPerkLabel] = useState(false);
 
   const [fireRate, setFireRate] = useState(600);
   const [reloadTime, setReloadTime] = useState(2.0);
@@ -355,7 +357,28 @@ export function DamageCalculator() {
       {/* 插件乘区 */}
       <div className="mt-3">
         <ExprField
-          label="插件乘区"
+          label={
+            editingPerkLabel ? (
+              <input
+                type="text"
+                className="w-20 rounded border border-zinc-600/80 bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-300 outline-none focus:border-zinc-400"
+                value={perkLabel}
+                onChange={(e) => setPerkLabel(e.target.value)}
+                onBlur={() => setEditingPerkLabel(false)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") setEditingPerkLabel(false);
+                }}
+                autoFocus
+              />
+            ) : (
+              <span
+                className="cursor-pointer hover:text-zinc-300"
+                onClick={() => setEditingPerkLabel(true)}
+              >
+                {perkLabel || "插件乘区"}
+              </span>
+            )
+          }
           value={perkExpr}
           onChange={handlePerkChange}
           invalid={perkInvalid}
@@ -766,7 +789,7 @@ function ExprField({
   invalid,
   parsedHint,
 }: {
-  label?: string;
+  label?: ReactNode;
   value: string;
   onChange: (v: string) => void;
   invalid: boolean;
