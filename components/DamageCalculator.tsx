@@ -10,6 +10,8 @@ import {
 } from "react";
 import { getAssetPath } from "@/lib/path";
 import { RARITY_OPTIONS } from "@/constants/common";
+import { STAT_SPRITES } from "@/constants/sprites";
+import { SpriteIcon } from "@/components/SpriteIcon";
 import type { Rarity } from "@/types";
 
 /**
@@ -226,7 +228,7 @@ export function DamageCalculator() {
   };
 
   return (
-    <div className="not-prose my-6 rounded-lg border border-zinc-700/80 bg-zinc-900/80 p-4 sm:p-5">
+    <div className="not-prose rounded-lg border border-zinc-700/80 bg-zinc-900/80 p-4 sm:p-5">
       {/* 武器选择 */}
       {weapons.length > 0 && (
         <div className="mb-3">
@@ -237,7 +239,7 @@ export function DamageCalculator() {
       {/* 固定输入行 */}
       <div className="grid grid-cols-2 gap-3">
         <InputField
-          label="武器基础伤害"
+          label={<StatLabel icon="damage" text="武器基础伤害" />}
           value={baseDmg}
           onChange={setBaseDmg}
           min={0}
@@ -245,7 +247,7 @@ export function DamageCalculator() {
           step={1}
         />
         <InputField
-          label="弱点倍率"
+          label={<StatLabel icon="weaknessMultiplier" text="弱点倍率" />}
           value={weakpointMul}
           onChange={setWeakpointMul}
           min={1.0}
@@ -257,7 +259,7 @@ export function DamageCalculator() {
 
       <div className="mt-3 grid grid-cols-2 gap-3">
         <InputField
-          label="射击命中率"
+          label={<StatLabel icon="hitRate" text="射击命中率" />}
           unit="%"
           value={hitRate}
           onChange={setHitRate}
@@ -266,7 +268,7 @@ export function DamageCalculator() {
           step={5}
         />
         <InputField
-          label="弱点命中率"
+          label={<StatLabel icon="weakpointHitRate" text="弱点命中率" />}
           unit="%"
           value={weakpointHitRate}
           onChange={setWeakpointHitRate}
@@ -278,7 +280,7 @@ export function DamageCalculator() {
 
       <div className="mt-3 grid grid-cols-2 gap-3">
         <InputField
-          label="射速"
+          label={<StatLabel icon="fireRate" text="射速" />}
           unit="发/分钟"
           value={fireRate}
           onChange={setFireRate}
@@ -290,7 +292,7 @@ export function DamageCalculator() {
 
       <div className="mt-3 grid grid-cols-2 gap-3">
         <InputField
-          label="弹夹容量"
+          label={<StatLabel icon="magazine" text="弹夹容量" />}
           value={magSize}
           onChange={setMagSize}
           min={1}
@@ -298,8 +300,8 @@ export function DamageCalculator() {
           step={1}
         />
         <InputField
-          label="换弹时间"
-          unit="s"
+          label={<StatLabel icon="reloadTime" text="换弹时间" />}
+          unit="秒"
           value={reloadTime}
           onChange={setReloadTime}
           min={0}
@@ -310,40 +312,45 @@ export function DamageCalculator() {
       </div>
 
       {/* 暴击区域 */}
-      {critMode === "direct" ? (
-        <div className="mt-3 grid grid-cols-2 gap-3">
-          <InputField
-            label={<CritModeToggle mode={critMode} onToggle={handleCritModeToggle} />}
-            unit="%"
-            value={critBoostPct}
-            onChange={setCritBoostPct}
-            min={0}
-            max={500}
-            step={5}
-          />
+      <div className="mt-3">
+        <div className="mb-1.5">
+          <CritModeToggle mode={critMode} onToggle={handleCritModeToggle} />
         </div>
-      ) : (
-        <div className="mt-3 grid grid-cols-2 gap-3">
-          <InputField
-            label={<CritModeToggle mode={critMode} onToggle={handleCritModeToggle} />}
-            unit="%"
-            value={critRate}
-            onChange={setCritRate}
-            min={0}
-            max={100}
-            step={5}
-          />
-          <InputField
-            label="暴击伤害"
-            unit="%"
-            value={critDmg}
-            onChange={setCritDmg}
-            min={100}
-            max={500}
-            step={5}
-          />
-        </div>
-      )}
+        {critMode === "direct" ? (
+          <div className="grid grid-cols-2 gap-3">
+            <InputField
+              label="暴击等效增伤"
+              unit="%"
+              value={critBoostPct}
+              onChange={setCritBoostPct}
+              min={0}
+              max={500}
+              step={5}
+            />
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-3">
+            <InputField
+              label="暴击率"
+              unit="%"
+              value={critRate}
+              onChange={setCritRate}
+              min={0}
+              max={100}
+              step={5}
+            />
+            <InputField
+              label="暴击伤害"
+              unit="%"
+              value={critDmg}
+              onChange={setCritDmg}
+              min={100}
+              max={500}
+              step={5}
+            />
+          </div>
+        )}
+      </div>
 
       {/* 插件乘区 */}
       <div className="mt-3">
@@ -359,11 +366,11 @@ export function DamageCalculator() {
       {/* 额外乘区 */}
       {extras.length > 0 && (
         <div className="mt-3 space-y-2">
-          <div className="text-xs text-zinc-500">
+          <div className="text-xs text-zinc-400">
             {editingSectionName ? (
               <input
                 type="text"
-                className="w-20 rounded border border-zinc-600/80 bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-400 outline-none focus:border-zinc-400"
+                className="w-20 rounded border border-zinc-600/80 bg-zinc-800 px-1.5 py-0.5 text-xs text-zinc-300 outline-none focus:border-zinc-400"
                 value={extraSectionName}
                 onChange={(e) => setExtraSectionName(e.target.value)}
                 onBlur={() => setEditingSectionName(false)}
@@ -504,7 +511,7 @@ function InputField({
 
   return (
     <div>
-      <label className="mb-1.5 block text-xs text-zinc-500">{label}</label>
+      <label className="mb-1.5 block text-xs text-zinc-400">{label}</label>
       <div className="flex items-center gap-1">
         <div className="relative flex-1">
           <input
@@ -569,7 +576,14 @@ function CritModeToggle({
 }) {
   return (
     <span className="inline-flex items-center gap-1.5">
-      <span className="text-xs text-zinc-500">暴击</span>
+      <span className="inline-flex items-center gap-1 text-xs text-zinc-400">
+        <SpriteIcon
+          sprite={STAT_SPRITES.crit}
+          size={14}
+          className="opacity-80"
+        />
+        暴击
+      </span>
       <span className="inline-flex overflow-hidden rounded border border-zinc-600/80 text-[10px] leading-none">
         <button
           type="button"
@@ -679,12 +693,12 @@ function WeaponSelect({
 
   return (
     <div ref={containerRef} className="relative">
-      <label className="mb-1.5 block text-xs text-zinc-500">武器模板</label>
+      <label className="mb-1.5 block text-xs text-zinc-400">武器模板</label>
       <input
         ref={inputRef}
         type="text"
         className="w-full rounded-md border border-zinc-600/80 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-100 outline-none transition-colors focus:border-zinc-400"
-        placeholder={selected ?? "搜索武器名称或拼音..."}
+        placeholder={selected ?? "搜索武器名称或拼音缩写"}
         value={query}
         onChange={(e) => {
           setQuery(e.target.value);
@@ -732,6 +746,19 @@ function WeaponSelect({
   );
 }
 
+function StatLabel({ icon, text }: { icon: string; text: string }) {
+  return (
+    <span className="inline-flex items-center gap-1">
+      <SpriteIcon
+        sprite={STAT_SPRITES[icon]}
+        size={14}
+        className="opacity-80"
+      />
+      {text}
+    </span>
+  );
+}
+
 function ExprField({
   label,
   value,
@@ -748,7 +775,7 @@ function ExprField({
   return (
     <div>
       {label && (
-        <label className="mb-1.5 block text-xs text-zinc-500">{label}</label>
+        <label className="mb-1.5 block text-xs text-zinc-400">{label}</label>
       )}
       <div className="relative">
         <input
