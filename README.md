@@ -6,29 +6,26 @@
 
 在线访问：[GitHub Pages](https://qiekn.github.io/nzm-wiki) | [Cloudflare Pages](https://nzm-wiki.pages.dev)
 
-> [!NOTE]
-> 正在施工中
-
 技术栈: React, Next.js, TypeScript, Tailwind CSS, [MDX](https://mdxjs.com/)
 
-## 特性 (Features)
+## 特性
 
-### 搜索面板 (Search Pannel)
+### 搜索面板
 
 按 `Ctrl/Cmd + p` 或点击搜索框打开搜索面板，支持：
 - 拼音搜索（全拼、首字母缩写）
 - 模糊匹配
 - 键盘导航（↑↓ 选择，Enter 跳转，Esc 关闭）
 
-### 命令面板 (Command Pannel)
+### 命令面板
 
 按 `Ctrl/Cmd + Shift + p` 打开命令面板，可快速执行：
 - 打开计算器
 - 跳转到 Github 文件页面 (只在 MDX 页面生效，方便快速修改)
 
-### 计算器 (Floating Calculator)
+### 悬浮计算器
 
-计算器悬浮窗口，可以自由拖动，支持：
+PC 浏览器可以自由拖动，支持：
 - 基础运算：`+ - * / ^ ()`
 - 百分号：`25%` → `0.25`
 - 中文变量：`攻击力 = 500`
@@ -52,7 +49,7 @@
 > 最终伤害 = 80    # 自动重新计算
 ```
 
-## 开发 (Development)
+## 开发指南
 
 安装依赖：
 
@@ -68,13 +65,13 @@ pnpm dev
 
 打开 [http://localhost:3000](http://localhost:3000) 查看网站。
 
-打开 [http://localhost:3000/editor](http://localhost:3000/editor) 编辑 MDX 文件。
+打开 [http://localhost:3000/editor](http://localhost:3000/editor) 使用一个内置编辑器编辑 MDX 文件 (另外本地开发环境下，也就是启用 `pnpm dev` 服务器时，可以在 MDX 页面上使用命令面板，快速跳转的该文件的内置编辑器编辑页面)。
 
 <img alt="editor-preview" src="https://github.com/user-attachments/assets/f9a7e58f-d30f-4907-8895-667c28a406fb" />
 
 ### 注意事项
 
-添加或修改 MDX 文件后，下面命令可以手动重新生成搜索索引（`pnpm build` 时是会自动执行的）：
+添加或修改 MDX 文件后，下面命令可以手动重新生成搜索索引（`pnpm build` 和 `pnpm dev` 时都是会自动执行的，仅当你手动添加了新文件又要开发环境下使用搜索面板搜索的时候才需要手动执行以下）：
 
 ```bash
 pnpm index
@@ -86,7 +83,7 @@ pnpm index
 pnpm webp
 ```
 
-## MDX 可用组件 (Components)
+## 可用于 MDX 文档的 React 组件
 
 ### Frontmatter
 
@@ -178,7 +175,7 @@ MDX 文件支持以下 frontmatter 字段：
 | `alt`   | string | 否   | 无障碍描述                    |
 | `width` | number | 否   | 视频宽度（px）                |
 
-## 脚本 (Scripts)
+## 脚本
 
 解码 CG：
 ```bash
@@ -190,8 +187,8 @@ python3 ./scripts/convert.py "/e/games/WeGameApps/rail_apps/逆战：未来(2002
 ./scripts/decrypt.sh NZM/Content/AIBehavior/
 ```
 
-更详细介绍请看此视频 [BV1fVfXB8EkT](https://www.bilibili.com/video/BV1fVfXB8EkT)
+详细介绍移步此视频 [BV1fVfXB8EkT](https://www.bilibili.com/video/BV1fVfXB8EkT)
 
-## 更多 (About)
+## 更多内容
 
-更多关于逆战未来的内容，见 https://qiekn.notion.site/nzm
+更多关于逆战未来的内容，见 https://qiekn.notion.site/nzm (我的一些随手记，类似于草稿纸)
