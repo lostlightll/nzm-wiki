@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import { Calculator, Search, Github, Pencil } from "lucide-react";
+import { Calculator, Search, Github, Pencil, History } from "lucide-react";
 
 // GitHub 仓库基础 URL
 const GITHUB_REPO_URL = "https://github.com/qiekn/nzm-wiki/blob/main";
+const GITHUB_COMMITS_URL = "https://github.com/qiekn/nzm-wiki/commits/main";
 
 // URL 路径到 data 目录的映射
 const PATH_TO_DATA_MAP: Record<string, string> = {
@@ -64,6 +65,15 @@ function getEditorUrl(): string | null {
   return `/editor?file=${encodeURIComponent(`${relativePath}/${resolved.slug}.mdx`)}`;
 }
 
+/**
+ * 根据当前 URL 路径获取对应的 GitHub 提交历史链接
+ */
+function getGitHubCommitsUrl(): string | null {
+  const resolved = resolveDataPath();
+  if (!resolved) return null;
+  return `${GITHUB_COMMITS_URL}/${resolved.dataPath}/${resolved.slug}.mdx`;
+}
+
 interface Command {
   id: string;
   name: string;
@@ -82,6 +92,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [githubEditUrl, setGithubEditUrl] = useState<string | null>(null);
+  const [githubCommitsUrl, setGithubCommitsUrl] = useState<string | null>(null);
   const [editorUrl, setEditorUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -89,6 +100,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
   useEffect(() => {
     if (isOpen) {
       setGithubEditUrl(getGitHubEditUrl());
+      setGithubCommitsUrl(getGitHubCommitsUrl());
       setEditorUrl(getEditorUrl());
     }
   }, [isOpen]);
@@ -121,8 +133,20 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
       });
     }
 
+    if (githubCommitsUrl) {
+      cmds.push({
+        id: "history",
+        name: "查看更新记录",
+        description: "查看当前页面的 Git 提交历史",
+        icon: <History className="h-4 w-4" />,
+        action: () => {
+          window.open(githubCommitsUrl, "_blank");
+        },
+      });
+    }
+
     return cmds;
-  }, [commands, githubEditUrl, editorUrl]);
+  }, [commands, githubEditUrl, githubCommitsUrl, editorUrl]);
 
   // 过滤命令
   const filteredCommands = allCommands.filter(
