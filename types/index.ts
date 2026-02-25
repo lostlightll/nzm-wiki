@@ -70,6 +70,7 @@ export interface Weapon {
   element_add_rate: number;
   skill_cooldown?: number | string;
   pellets?: number;
+  draft?: boolean;
 }
 
 // ------------------------------------------------------------

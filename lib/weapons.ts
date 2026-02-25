@@ -5,6 +5,7 @@ import type { Weapon } from "@/types";
 import { RARITY_ORDER } from "@/constants/common";
 
 const WEAPONS_DIR = path.join(process.cwd(), "data/weapons");
+const isDev = process.env.NODE_ENV === "development";
 
 /**
  * 从 MDX frontmatter 获取所有武器数据
@@ -29,6 +30,7 @@ export async function getAllWeapons(): Promise<Weapon[]> {
         ...data,
       } as Weapon;
     })
+    .filter((w) => !w.draft || isDev)
     .sort((a, b) => {
       const orderA = a.rarity ? RARITY_ORDER[a.rarity] : 0;
       const orderB = b.rarity ? RARITY_ORDER[b.rarity] : 0;
