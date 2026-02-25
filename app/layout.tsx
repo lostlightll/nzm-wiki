@@ -15,10 +15,25 @@ const geistMono = Geist_Mono({
 });
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const siteUrl = "https://nzm-wiki.pages.dev";
 
 export const metadata: Metadata = {
-  title: "逆战未来 维基",
-  description: "逆战未来游戏资料站",
+  title: {
+    default: "逆战未来 维基",
+    template: "%s | 逆战未来 维基",
+  },
+  description: "逆战未来游戏资料站 — 武器、特性、陷阱、敌人等全面攻略",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "zh_CN",
+    siteName: "逆战未来 维基",
+    title: "逆战未来 维基",
+    description: "逆战未来游戏资料站 — 武器、特性、陷阱、敌人等全面攻略",
+  },
   icons: {
     icon: `${basePath}/icon.png`,
   },
@@ -30,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

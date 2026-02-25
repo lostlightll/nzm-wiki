@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nzm-wiki.pages.dev/sitemap.xml

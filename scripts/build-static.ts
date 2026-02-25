@@ -41,9 +41,11 @@ function moveDirectory(src: string, dest: string): void {
 try {
   console.log("[START] Preparing for static build...");
 
-  // 1. 生成搜索索引
+  // 1. 生成搜索索引和 sitemap
   console.log("[INDEX] Generating search index...");
   execSync("pnpm exec tsx scripts/generate-search-index.ts", { stdio: "inherit", shell: true } as any);
+  console.log("[SITEMAP] Generating sitemap...");
+  execSync("pnpm exec tsx scripts/generate-sitemap.ts", { stdio: "inherit", shell: true } as any);
 
   // 2. 删除 .next 缓存 (必须步骤)
   if (fs.existsSync(NEXT_CACHE_DIR)) {

@@ -1,0 +1,252 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+nzm-wiki is a wiki website for the pve fps game "逆战未来" (Nizhan: Future), built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4.
+
+## Note
+
+始终考虑移动端适配，但是 PC 的显示的效果优先
+
+这里是 windows msys2 ucrt64 terminal (home is C:\msys64\home\user\)
+
+pnpm 路径: `/c/Users/user/AppData/Roaming/npm//pnpm`
+
+更多路径参考我的 Msys2 ZSH path
+
+```shell
+# This is for Windowds MSYS2 UCRT Environment
+if [[ -n "$MSYSTEM" || "$(uname -s)" =~ (MSYS|MINGW|UCRT|CYGWIN) ]]; then
+  export XDG_CONFIG_HOME="$HOME/.config"
+  export XDG_DATA_HOME="$HOME/.local/share"
+  export XDG_STATE_HOME="$HOME/.local/state"
+  export XDG_CACHE_HOME="$HOME/.cache"
+
+  # Env
+  export YAZI_CONFIG_HOME="$HOME/.config/yazi"
+
+  # PATH
+  export WINHOME="/c/Users/user"
+
+  export PATH=$PATH:"/c/Program Files/Git/cmd"
+  export PATH=$PATH:"/c/Program Files/dotnet/"
+  export PATH=$PATH:"/c/Apps/MiKTex/texmfs/install/miktex/bin/x64"
+  export PATH=$PATH:"/c/Apps/SumatraPDF/"
+  export PATH=$PATH:"/c/Apps/nodejs/"
+  export PATH=$PATH:"/c/Apps/Go/bin"
+  export PATH=$PATH:"/c/Users/user/AppData/Roaming/npm/"
+  export PATH=$PATH:"/c/Apps/shortcuts/"
+  export PATH=$PATH:"$HOME/.local/share/pnpm"
+  export PATH=$PATH:"$HOME/.local/bin/"
+  export PATH=$PATH:"$HOME/.local/bin/"
+  export PATH=$PATH:"$WINHOME/.local/bin/"
+
+  # Compiler
+  export CC=clang
+  export CXX=clang++
+
+
+  # Alias
+  alias make="mingw32-make"
+  alias lg="lazygit"
+
+  alias winhome="cd $WINHOME"
+  alias desktop="cd $WINHOME/Desktop"
+  alias code="$WINHOME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code" # vscode
+
+  function windata() { cd $APPDATA }
+
+fi
+```
+
+如果你执行命令的时候失败了，就让我自己手动执行就好了
+
+当我发给你 NZM/Content/ 这样的路径是，对应的位置是 ./refs/Exports/NZM/Content/
+
+## Development Commands
+
+```bash
+pnpm i          # Install dependencies
+pnpm dev        # Start development server (http://localhost:3000)
+pnpm build      # Production build
+pnpm start      # Start production server
+pnpm lint       # Run ESLint
+```
+
+## Architecture
+
+### Routing Structure
+Uses Next.js App Router with route groups:
+- `app/page.tsx` - Home page
+- `app/(pages)/weapons/page.tsx` - Weapons listing
+- `app/(pages)/perks/page.tsx` - Perks listing
+
+The `(pages)` folder is a route group (not part of URL path).
+
+### Type Definitions
+All data types are centralized in `types/index.ts`:
+- **Weapon types**: `Weapon`, `WeaponStats`, `WeaponSkill`, `WeaponType`, `WeaponTag`, `Rarity`
+- **Perk types**: `Perk`, `PerkEffect`, `PerkSlot`, `PerkCategory`
+- **Calculator types**: `DamageCalculation`, `DamageResult`
+
+### Path Aliases
+Use `@/*` to import from project root (configured in tsconfig.json).
+
+## Code Style
+
+- ESLint configured with Next.js Core Web Vitals and TypeScript rules
+- Tailwind CSS v4 for styling (using PostCSS plugin)
+
+## MDX Frontmatter
+
+MDX 文件支持以下 frontmatter 字段：
+
+| 字段 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| `title` | string | - | 页面标题 |
+| `tag` | string | - | 分类标签 |
+| `toc` | boolean | `true` | 是否显示目录 |
+| `draft` | boolean | `false` | 草稿模式（仅 dev 可见，build 时排除） |
+| `page-width` | string | `lg` | 页面宽度 |
+| `keywords` | string \| string[] | - | 搜索关键词（用于 Ctrl+P 搜索） |
+
+`page-width` 可选值：
+
+| 值 | Tailwind class | 宽度 |
+| :--- | :--- | :--- |
+| `sm` | max-w-xl | 576px |
+| `md` | max-w-2xl | 672px |
+| `lg` | max-w-3xl | 768px |
+| `xl` | max-w-4xl | 896px |
+| `2xl` | max-w-5xl | 1024px |
+| `3xl` | max-w-6xl | 1152px |
+| `full` | max-w-7xl | 1280px |
+
+也支持自定义宽度值（如 `1024px`、`80rem`），移动端会自动撑满屏幕：
+
+```yaml
+---
+page-width: 1200px
+---
+```
+
+## MDX 组件
+
+### VideoGif
+
+以类似 GIF 的方式展示 mp4 视频（自动播放、循环、静音、无控制栏）。视频文件放在 `public/videos/` 目录下。
+
+```mdx
+<VideoGif src="/videos/snake-god-slash.mp4" />
+<VideoGif src="/videos/demo.mp4" alt="技能演示" width={400} />
+```
+
+| 属性 | 类型 | 必填 | 说明 |
+| :--- | :--- | :--- | :--- |
+| `src` | string | 是 | mp4 路径，如 `"/videos/xxx.mp4"` |
+| `alt` | string | 否 | 无障碍描述 |
+| `width` | number | 否 | 视频宽度（px） |
+
+## GitHub Pages 图片路径
+
+部署到 GitHub Pages 时，URL 为 `qiekn.github.io/nzm-wiki`，需要处理 basePath。
+
+**重要：所有图片路径必须使用 `getAssetPath()` 函数包装！**
+
+```typescript
+import { getAssetPath } from "@/lib/path";
+
+// 正确
+<Image src={getAssetPath("/icons/elements/fire.png")} ... />
+<Image src={getAssetPath(weapon.image)} ... />
+
+// 错误 - 不要直接使用路径
+<Image src="/icons/elements/fire.png" ... />
+<Image src={weapon.image} ... />
+```
+
+工作原理：
+- `lib/path.ts` 中的 `getAssetPath()` 会自动添加 basePath 前缀
+- 本地开发：basePath 为空，路径为 `/icons/...`
+- GitHub Pages：basePath 为 `/nzm-wiki`，路径为 `/nzm-wiki/icons/...`
+
+## 搜索功能
+
+使用 `Ctrl+P`（Mac 为 `Cmd+P`）打开全局搜索。
+
+搜索会匹配以下内容：
+- `title` - 页面标题
+- `keywords` - 自定义搜索关键词
+- 文件名
+- `nickname` - 别名（陷阱、敌人等）
+- `tags` - 标签（武器）
+- `weapon_type` - 武器类型
+- `element` - 元素类型
+- `rarity` - 稀有度
+
+支持拼音首字母搜索（常用字）。
+
+### 自定义搜索关键词
+
+在 MDX frontmatter 中添加 `keywords` 字段：
+
+```yaml
+---
+title: 首领血量
+keywords:
+  - boss hp
+  - 血量表
+  - 猎场boss
+---
+```
+
+### 生成搜索索引
+
+搜索索引在构建时自动生成。手动生成：
+
+```bash
+pnpm search-index
+```
+
+## SEO
+
+主域名为 `https://nzm-wiki.pages.dev`（Cloudflare Pages），所有 canonical URL 以此为基准。
+
+### 修改路由或页面结构时必须同步更新：
+
+1. **`scripts/generate-sitemap.ts`** — `pathMap` 对象和 `staticPages` 数组需要与实际路由保持一致
+2. **`scripts/generate-search-index.ts`** — `pathMap` 和 `categoryMap` 同理
+3. **新的详情页（动态路由）** 必须导出 `generateMetadata()` 函数，包含 `title`、`description`、`alternates.canonical`
+4. **新的列表页（静态路由）** 需要手动加入 `generate-sitemap.ts` 的 `staticPages`
+
+### 现有 SEO 配置
+
+| 文件 | 作用 |
+| :--- | :--- |
+| `app/layout.tsx` | 全局 metadata（title template、metadataBase、OpenGraph） |
+| `public/robots.txt` | 爬虫规则，指向 sitemap |
+| `scripts/generate-sitemap.ts` | 构建时生成 `public/sitemap.xml` |
+| 各 `[slug]/page.tsx` | 每个详情页的 `generateMetadata()` |
+
+### generateMetadata 模板
+
+```typescript
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const { metadata } = getMDXDetail("folder", slug);
+  const title = metadata.title || slug;
+  return {
+    title,
+    description: `${title} — 逆战未来xxx详情`,
+    alternates: { canonical: `/route/${slug}` },
+  };
+}
+```

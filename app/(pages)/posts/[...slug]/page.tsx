@@ -3,12 +3,29 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getMdxComponents, TableOfContents } from "@/lib/mdx-components";
 import { mdxOptions } from "@/lib/mdx-options";
 import { getAllBosses } from "@/lib/bosses";
+import type { Metadata } from "next";
 
 export async function generateStaticParams() {
   const items = getMDXList("posts");
   return items.map((item) => ({
     slug: item.slug.split("/"),
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const slugPath = slug.map(decodeURIComponent).join("/");
+  const { metadata } = getMDXDetail("posts", slugPath);
+  const title = metadata.title || slugPath;
+  return {
+    title,
+    description: `${title} — 逆战未来攻略文章`,
+    alternates: { canonical: `/posts/${slugPath}` },
+  };
 }
 
 // Tailwind max-width classes mapping
