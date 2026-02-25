@@ -5,12 +5,29 @@ import { mdxOptions } from "@/lib/mdx-options";
 import { PerkDetailCard } from "@/components/PerkCard";
 import { RARITY_NUM_MAP } from "@/constants/common";
 import type { Rarity } from "@/types";
+import type { Metadata } from "next";
 
 export async function generateStaticParams() {
   const items = getMDXList("perks");
   return items.map((item) => ({
     slug: item.slug.split("/"),
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const slugPath = slug.map(decodeURIComponent).join("/");
+  const { metadata } = getMDXDetail("perks", slugPath);
+  const title = metadata.title || slugPath;
+  return {
+    title,
+    description: `${title} — 逆战未来特性详情`,
+    alternates: { canonical: `/perks/${slugPath}` },
+  };
 }
 
 const PAGE_WIDTH_CLASSES: Record<string, string> = {
