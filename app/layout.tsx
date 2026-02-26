@@ -22,7 +22,8 @@ export const metadata: Metadata = {
     default: "逆战未来 维基",
     template: "%s | 逆战未来 维基",
   },
-  description: "逆战未来游戏资料站 — 武器、特性、陷阱、敌人等全面攻略",
+  description:
+    "逆战未来 武器、陷阱道具、敌人，以及僵尸猎场、塔防等模式详细数据资料",
   metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
