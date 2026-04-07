@@ -1,0 +1,56 @@
+---
+title: 猪猪榴弹发射器
+use_type: 主武器
+weapon_type: 冲锋枪
+element: 物理
+rarity: 传说
+tags: null
+scope: 低倍镜
+weapon_type_id: 0
+prototype_id: '00000000000'
+active_skill_id: 0
+damage:
+  base: 0.867
+  impulse: 10.84
+  toughness: 10.84
+  flesh: 28.2
+  hurtable: 8.46
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 25
+magazine: 1
+total_ammo: 10
+accuracy: 67
+stability: 32
+reload_time: 1.8
+range: 0
+explosion_range: -1
+ignore_shield: false
+element_add_rate: 0
+skill_cooldown: 0
+pellets: null
+---
+
+> TODO(qiekn): 修改技能图标，冷却时间
+
+<WeaponSkill>
+  <ActiveSkill
+    name="猪猪照相机"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
+    duration={-1}
+    cooldown={-1}
+    count={-1}
+  >
+    据说，使用猪猪照相机拍照的逆行者，也会变成猪猪哦。拍照成功后，全队玩家武器伤害提高 <Yellow>6%</Yellow>，持续 <Yellow>20</Yellow> 秒。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="猪猪发把枪"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+  >
+    丢枪时随机丢出一把金品阶武器，但是请不要轻易尝试。
+  </PassiveSkill>
+</WeaponSkill>
+
+榴弹命中造成 **43.35%** 攻击力伤害
