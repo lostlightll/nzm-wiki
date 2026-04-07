@@ -12,58 +12,9 @@ nzm-wiki is a wiki website for the pve fps game "逆战未来" (Nizhan: Future),
 
 这里是 windows msys2 ucrt64 terminal (home is C:\msys64\home\user\)
 
-pnpm 路径: `/c/Users/user/AppData/Roaming/npm//pnpm`
+如果你执行命令的时候失败了，向我求助
 
-更多路径参考我的 Msys2 ZSH path
-
-```shell
-# This is for Windowds MSYS2 UCRT Environment
-if [[ -n "$MSYSTEM" || "$(uname -s)" =~ (MSYS|MINGW|UCRT|CYGWIN) ]]; then
-  export XDG_CONFIG_HOME="$HOME/.config"
-  export XDG_DATA_HOME="$HOME/.local/share"
-  export XDG_STATE_HOME="$HOME/.local/state"
-  export XDG_CACHE_HOME="$HOME/.cache"
-
-  # Env
-  export YAZI_CONFIG_HOME="$HOME/.config/yazi"
-
-  # PATH
-  export WINHOME="/c/Users/user"
-
-  export PATH=$PATH:"/c/Program Files/Git/cmd"
-  export PATH=$PATH:"/c/Program Files/dotnet/"
-  export PATH=$PATH:"/c/Apps/MiKTex/texmfs/install/miktex/bin/x64"
-  export PATH=$PATH:"/c/Apps/SumatraPDF/"
-  export PATH=$PATH:"/c/Apps/nodejs/"
-  export PATH=$PATH:"/c/Apps/Go/bin"
-  export PATH=$PATH:"/c/Users/user/AppData/Roaming/npm/"
-  export PATH=$PATH:"/c/Apps/shortcuts/"
-  export PATH=$PATH:"$HOME/.local/share/pnpm"
-  export PATH=$PATH:"$HOME/.local/bin/"
-  export PATH=$PATH:"$HOME/.local/bin/"
-  export PATH=$PATH:"$WINHOME/.local/bin/"
-
-  # Compiler
-  export CC=clang
-  export CXX=clang++
-
-
-  # Alias
-  alias make="mingw32-make"
-  alias lg="lazygit"
-
-  alias winhome="cd $WINHOME"
-  alias desktop="cd $WINHOME/Desktop"
-  alias code="$WINHOME/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code" # vscode
-
-  function windata() { cd $APPDATA }
-
-fi
-```
-
-如果你执行命令的时候失败了，就让我自己手动执行就好了
-
-当我发给你 NZM/Content/ 这样的路径是，对应的位置是 ./refs/Exports/NZM/Content/
+当我发送的前缀为 NZM/Content/ 的路径，实际对应的位置是 ./refs/Exports/NZM/Content/
 
 ## Development Commands
 
@@ -229,6 +180,7 @@ pnpm search-index
 | `public/robots.txt` | 爬虫规则，指向 sitemap |
 | `scripts/generate-sitemap.ts` | 构建时生成 `public/sitemap.xml` |
 | 各 `[slug]/page.tsx` | 每个详情页的 `generateMetadata()` |
+
 
 ### generateMetadata 模板
 
