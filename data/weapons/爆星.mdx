@@ -1,0 +1,56 @@
+---
+title: 爆星
+use_type: 主武器
+weapon_type: 冲锋枪
+element: 物理
+rarity: 传说
+tags:
+  - 暗器
+  - 黏弹
+scope: 不可开镜
+damage:
+  base: 0.104
+  impulse: 1.52
+  toughness: 1.52
+  flesh: 3
+  hurtable: 0.9
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 85
+magazine: 9
+total_ammo: 99
+accuracy: 56
+stability: 80
+reload_time: 2
+range: 0
+explosion_range: 2.5
+ignore_shield: false
+element_add_rate: 0
+skill_cooldown: 30
+pellets: null
+weapon_type_id: 0
+prototype_id: '00000000000'
+active_skill_id: 0
+---
+
+> TODO(qiekn): 技能图标 冷却时间
+
+<WeaponSkill>
+  <ActiveSkill
+    name="齐射爆星"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
+    duration={-1}
+    cooldown={-1}
+    count={-1}
+  >
+    <Blue>爆星</Blue>的散射角度大幅减小，并且射速提升<Yellow>30%</Yellow>，同时<Blue>爆星</Blue>的挂载上限提升至<Yellow>9枚</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="扩散爆星"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+  >
+    向前方扇形范围投掷出三枚<Blue>爆星</Blue>，<Blue>爆星</Blue>会挂载在目标身上延时<Yellow>1.15秒</Yellow>后爆炸。爆炸时，目标身上每有一枚<Blue>爆星</Blue>伤害额外提高<Yellow>8%</Yellow>。每个目标最多挂载<Yellow>6枚</Yellow><Blue>爆星</Blue>，挂载数量达到上限时会立即引爆全部<Blue>爆星</Blue>。
+  </PassiveSkill>
+</WeaponSkill>
