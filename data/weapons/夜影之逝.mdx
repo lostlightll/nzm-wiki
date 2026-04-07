@@ -1,0 +1,67 @@
+---
+title: 夜影之逝
+use_type: 主武器
+weapon_type: 霰弹枪
+element: 电击
+rarity: 传说
+tags:
+  # - 可切刀
+  - 连斩
+  # - 剑气
+  # - 近战回血
+scope: 低倍镜
+weapon_type_id: 0
+prototype_id: '00000000000'
+active_skill_id: 0
+damage:
+  base: 0.089
+  impulse: 1.1
+  toughness: 1.1
+  flesh: 0.9
+  hurtable: 0.9
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.2
+file_rate: 181
+magazine: 16
+total_ammo: 144
+accuracy: 59
+stability: 64
+reload_time: 2.5
+range: 30
+explosion_range: -1
+ignore_shield: false
+element_add_rate: 0.062
+skill_cooldown: 30
+pellets: 6
+---
+
+> TODO(qiekn): 技能图标
+
+<WeaponSkill>
+  <ActiveSkill
+    name="切刀近战"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
+    duration={10}
+    cooldown={30}
+    count={1}
+  >
+    可切换近战形态，支持右键重击与连续斩击。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="剑气追击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+  >
+    近战可触发剑气伤害，命中后还带有回血效果。
+  </PassiveSkill>
+</WeaponSkill>
+
+<Callout>
+  开火单发弹丸 **44.5**  
+  右键近战 **982.5**  
+  切刀近战 **750**  
+  连斩前 7 刀单刀 **135**，第 8 刀 **285**  
+  剑气插件 **3150**  
+  近战回血系数为 **0.3**
+</Callout>
