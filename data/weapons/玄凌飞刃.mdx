@@ -1,0 +1,54 @@
+---
+title: 玄凌飞刃
+use_type: 主武器
+weapon_type: 冲锋枪
+element: 物理
+rarity: 传说
+tags: null
+scope: 低倍镜
+weapon_type_id: 0
+prototype_id: '00000000000'
+active_skill_id: 0
+damage:
+  base: 0.223
+  impulse: 5.2
+  toughness: 5.2
+  flesh: 4.1
+  hurtable: 4.1
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 181
+magazine: 18
+total_ammo: 234
+accuracy: 79
+stability: 65
+reload_time: 2.1
+range: 30
+explosion_range: -1
+ignore_shield: false
+element_add_rate: 0
+skill_cooldown: 30
+pellets: null
+---
+
+> TODO(qiekn): 添加技能图标
+
+<WeaponSkill>
+  <ActiveSkill
+    name="铁索连环"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
+    duration={-1}
+    cooldown={-1}
+    count={-1}
+  >
+    技能持续期间，**玄凌飞刃** 命中敌人后，附加 **链接** 异常状态。 当处于 **链接** 状态的敌人受到直接伤害时，该伤害的 <Yellow>15%</Yellow> 会传导至周围最多 **4** 名具有相同异常状态的敌人。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="弹射"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+  >
+    玄凌飞刃可以在敌人之间弹射 <Yellow>3</Yellow> 次。该效果在火力乱斗和机甲战中不生效
+  </PassiveSkill>
+</WeaponSkill>
