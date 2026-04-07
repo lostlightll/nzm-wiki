@@ -1,0 +1,60 @@
+---
+title: 刺隐
+use_type: 主武器
+weapon_type: 冲锋枪
+element: 电击
+rarity: 传说
+tags:
+  - 可切刀
+  - 右键近战
+scope: 不可开镜
+weapon_type_id: 0
+prototype_id: '00000000000'
+active_skill_id: 0
+damage:
+  base: 0.098
+  impulse: 1.5
+  toughness: 1.5
+  flesh: 1.2
+  hurtable: 1.2
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.2
+file_rate: 150
+magazine: 12
+total_ammo: 144
+accuracy: 59
+stability: 64
+reload_time: 0.3
+range: -1
+explosion_range: -1
+ignore_shield: false
+element_add_rate: 0.086
+skill_cooldown: 30
+pellets: null
+---
+
+> TODO(qiekn): 技能图标 冷却时间
+
+<WeaponSkill>
+  <ActiveSkill
+    name="刺隐之袭"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
+    duration={10}
+    cooldown={30}
+    count={1}
+  >
+    激活技能后，角色隐身<Yellow>10秒</Yellow>，下次刺隐开火伤害增加<Yellow>200%</Yellow>，且必暴击。一旦开火，立刻退出隐身。如果这次特殊开火的所有弹丸都命中同一个敌人，则立即缩短<Yellow>22秒</Yellow>主动技能冷却时间。刺隐在角色隐身期间，准心收窄。火力乱斗模式中，无法触发暴击效果。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="百川归海"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+  >
+    当一次开火所有弹丸命中同一个目标时，必定产生暴击。火力乱斗模式中，无法触发暴击效果。
+  </PassiveSkill>
+</WeaponSkill>
+
+<Callout>
+  攻击力按 **500 × 系数** 计算。开火单发约 **49**；开火弱点约 **58.8**；右键近战约 **786**；右键近战弱点约 **943.2**。
+</Callout>
