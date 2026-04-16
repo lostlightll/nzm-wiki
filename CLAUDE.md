@@ -10,7 +10,11 @@ nzm-wiki is a wiki website for the pve fps game "逆战未来" (Nizhan: Future),
 
 始终考虑移动端适配，但是 PC 的显示的效果优先
 
-这里是 windows msys2 ucrt64 terminal (home is C:\msys64\home\user\)
+这里是 Windows msys2 ucrt64 环境。Claude Code 的 Bash 工具运行在 Windows 原生路径下，**不识别 msys2 虚拟路径**：
+- 正确：`C:/msys64/home/user/projects/nzm-wiki`
+- 错误：`/home/user/projects/nzm-wiki`（msys2 虚拟路径，Bash 工具无法识别）
+
+执行 cd 或引用文件时，始终使用 `C:/msys64/...` 开头的 Windows 路径。
 
 如果你执行命令的时候失败了，向我求助
 
