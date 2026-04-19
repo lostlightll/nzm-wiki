@@ -6,9 +6,9 @@ element: 火焰
 rarity: 传说
 tags: null
 scope: 低倍镜
-weapon_type_id: 0
-prototype_id: '00000000000'
-active_skill_id: 0
+weapon_type_id: 9
+prototype_id: '20009000004'
+active_skill_id: 5003701
 damage:
   base: 0.096
   impulse: 1.4
@@ -28,19 +28,17 @@ range: 30
 explosion_range: -1
 ignore_shield: false
 element_add_rate: 0.091
-skill_cooldown: 30
+skill_cooldown: 50
 pellets: null
 ---
-
-> TODO(qiekn): 更新技能图标和冷却
 
 <WeaponSkill>
   <ActiveSkill
     name="增幅过载"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20009000004_2.png"
     duration={-1}
-    cooldown={-1}
-    count={-1}
+    cooldown={50}
+    count={1}
   >
     韶光樱影命中队友后能够穿透队友，并且场上每有一个队友持有<Blue>韶光</Blue>，韶光樱影的伤害提升<Yellow>34%</Yellow>。
     持有<Blue>韶光</Blue>的队友最多记为<Yellow>3人</Yellow>。
@@ -48,7 +46,7 @@ pellets: null
 
   <PassiveSkill
     name="韶光增幅"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20009000004_1.png"
   >
     射击命中队友时，队友会获得增益<Blue>韶光</Blue>，<Blue>韶光</Blue>能够提升<Yellow>15%</Yellow>伤害并持续<Yellow>30秒</Yellow>。持有<Blue>韶光</Blue>的队友对目标造成伤害或击杀目标获得金钱后，玩家自己也能额外获得<Yellow>5%</Yellow>的金钱。
   </PassiveSkill>
