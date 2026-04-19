@@ -6,9 +6,9 @@ element: 火焰
 rarity: 传说
 tags: 元素异常
 scope: 低倍镜
-weapon_type_id: 0
-prototype_id: '00000000000'
-active_skill_id: 0
+weapon_type_id: 5
+prototype_id: '20005000034'
+active_skill_id: 5102701
 damage:
   base: 0.07
   impulse: 0.8
@@ -34,19 +34,19 @@ pellets: null
 
 <WeaponSkill>
   <ActiveSkill
-    name="主动技能待补充"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
-    duration={-1}
-    cooldown={-1}
-    count={-1}
+    name="漫游模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000034_2.png"
+    duration={12}
+    cooldown={30}
+    count={1}
   >
-    技能数据待补充
+    技能开启后，移速增加且子弹伤害无距离衰减。
   </ActiveSkill>
 
   <PassiveSkill
-    name="被动技能待补充"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+    name="燃魂"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000034_1.png"
   >
-    技能数据待补充
+    手持该武器时，自身造成的火焰伤害增加<Yellow>??</Yellow>。队友造成的火焰伤害增加<Yellow>??</Yellow>，该效果无法叠加。
   </PassiveSkill>
 </WeaponSkill>
