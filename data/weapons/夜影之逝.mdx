@@ -10,9 +10,9 @@ tags:
   # - 剑气
   # - 近战回血
 scope: 低倍镜
-weapon_type_id: 0
-prototype_id: '00000000000'
-active_skill_id: 0
+weapon_type_id: 3
+prototype_id: '20003000024'
+active_skill_id: 5103001
 damage:
   base: 0.089
   impulse: 1.1
@@ -32,7 +32,7 @@ range: 30
 explosion_range: -1
 ignore_shield: false
 element_add_rate: 0.062
-skill_cooldown: 30
+skill_cooldown: 35
 pellets: 6
 ---
 
@@ -41,21 +41,21 @@ pellets: 6
 <WeaponSkill>
   <ActiveSkill
     name="逝影连斩"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
-    duration={10}
-    cooldown={30}
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000024_2.png"
+    duration={-1}
+    cooldown={35}
     count={1}
   >
-    迅速挥砍，角色面前 8 米范围内的扇形区域所有敌人都将受到近战伤害。若该斩击只命中一个敌人，则斩击伤害增加 300%。
+    迅速挥砍，角色面前<Yellow>8米</Yellow>范围内的扇形区域所有敌人都将受到近战伤害。若该斩击只命中一个敌人，则斩击伤害增加<Yellow>300%</Yellow>。
   </ActiveSkill>
 
   <PassiveSkill
     name="剑影枪声"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000024_1.png"
   >
-    开火命中目标时，会向目标施加一个持续 5 秒的效果：当对方再受到夜影之逝的近战攻击时，受到的伤害增加 60%。
-    近战命中目标时，能为角色回复 30% 护盾，冷却 5 秒。
-    切枪的近战斩击冷却时间为 1 秒。
+    夜影之逝开火命中目标时，会向目标施加一个持续<Yellow>5秒</Yellow>的效果：当对方再受到夜影之逝的近战攻击时，受到的伤害增加<Yellow>60%</Yellow>。
+    夜影之逝近战命中目标时，能为角色回复<Yellow>30%</Yellow>护盾，冷却<Yellow>5秒</Yellow>。
+    夜影之逝切枪的近战斩击冷却时间<Yellow>1秒</Yellow>。
   </PassiveSkill>
 </WeaponSkill>
 
