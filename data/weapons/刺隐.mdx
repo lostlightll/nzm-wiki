@@ -6,9 +6,9 @@ element: 电弧
 rarity: 传说
 tags: 隐身
 scope: 不可开镜
-weapon_type_id: 0
-prototype_id: '00000000000'
-active_skill_id: 0
+weapon_type_id: 3
+prototype_id: '20003000030'
+active_skill_id: 5004801
 damage:
   base: 0.098
   impulse: 1.5
@@ -32,24 +32,25 @@ skill_cooldown: 30
 pellets: 6
 ---
 
-> TODO(qiekn): 技能图标 冷却时间
-
 <WeaponSkill>
   <ActiveSkill
     name="刺隐之袭"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
-    duration={10}
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000025_2.png"
+    duration={-1}
     cooldown={30}
     count={1}
   >
-    激活技能后，角色隐身<Yellow>10秒</Yellow>，下次刺隐开火伤害增加<Yellow>200%</Yellow>，且必暴击。一旦开火，立刻退出隐身。如果这次特殊开火的所有弹丸都命中同一个敌人，则立即缩短<Yellow>22秒</Yellow>主动技能冷却时间。刺隐在角色隐身期间，准心收窄。火力乱斗模式中，无法触发暴击效果。
+    激活技能后，角色隐身<Yellow>10秒</Yellow>，下次刺隐开火伤害增加<Yellow>200%</Yellow>，且必暴击。一旦开火，立刻退出隐身。
+    如果这次特殊开火的所有弹丸都命中同一个敌人，则立即缩短<Yellow>22秒</Yellow>主动技能冷却时间。
+    刺隐在角色隐身期间，准心收窄。火力乱斗模式中，无法触发暴击效果。
   </ActiveSkill>
 
   <PassiveSkill
     name="百川归海"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000025_1.png"
   >
-    当一次开火所有弹丸命中同一个目标时，必定产生暴击。火力乱斗模式中，无法触发暴击效果。
+    当一次开火所有弹丸命中同一个目标时，必定产生暴击。
+    火力乱斗模式中，无法触发暴击效果。
   </PassiveSkill>
 </WeaponSkill>
 
