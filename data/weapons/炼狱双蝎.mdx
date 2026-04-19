@@ -6,9 +6,9 @@ element: 火焰
 rarity: 史诗
 tags: 元素异常
 scope: 不可开镜
-weapon_type_id: 0
-prototype_id: '00000000000'
-active_skill_id: 0
+weapon_type_id: 5
+prototype_id: '20005000010'
+active_skill_id: 5004101
 damage:
   base: 0.046
   impulse: 0.8
@@ -28,27 +28,25 @@ range: 30
 explosion_range: -1
 ignore_shield: false
 element_add_rate: 0.05
-skill_cooldown: 30
+skill_cooldown: 20
 pellets: null
 ---
-
-> TODO(qiekn): 技能图标和冷却
 
 <WeaponSkill>
   <ActiveSkill
     name="狱火冲击"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000010_2.png"
     duration={-1}
-    cooldown={-1}
-    count={-1}
+    cooldown={20}
+    count={1}
   >
     从自身释放一个快速向外扩散的火焰圆环，对自身周围<Yellow>8米</Yellow>范围内敌人造成<Yellow>176.0%</Yellow>攻击力伤害并施加<Yellow>3层</Yellow>燃烧异常状态。燃烧异常效果在火力乱斗模式中不生效。
   </ActiveSkill>
 
   <PassiveSkill
     name="余烬"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000010_1.png"
   >
-    用该武器命中燃烧的敌人后，下次射击子弹具有穿透效果，最多穿透 <Yellow>3</Yellow> 人。
+    用该武器命中燃烧的敌人后，下次射击子弹具有穿透效果，最多穿透<Yellow>3</Yellow>人。
   </PassiveSkill>
 </WeaponSkill>
