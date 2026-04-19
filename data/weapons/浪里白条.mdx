@@ -32,7 +32,7 @@ skill_cooldown: 40
 pellets: null
 ---
 
-> TODO(qiekn): 修复主动技能图标, prototype_id, active_skill_id
+> TODO(qiekn): 被动技能图标不准确（被动不是主动图标，待修正）
 
 <WeaponSkill>
   <ActiveSkill
@@ -49,8 +49,8 @@ pellets: null
     name="感电反应"
     icon="/icons/weapons/skills/T_Weapon_Skill_20109000001_01.png"
   >
-    浪里白条开火时会在持续射击一段时间后打出一次爆发伤害。持续射击时，每次命中目标会给自身增加一层<Blue>命中层数</Blue>，打出爆发伤害时会根据<Blue>命中层数</Blue>增加伤害，每层<Blue>命中层数</Blue>能够增加 <Yellow>6%</Yellow> 伤害。  
-    主动技能开启后进入增幅状态，命中敌人可获得<Yellow>2层</Yellow><Blue>命中层数</Blue>，命中弱点或暴击时可获得<Yellow>3层</Yellow><Blue>命中层数</Blue>。
+    浪里白条开火时会在持续射击一段时间后打出一次爆发伤害。持续射击时，每次命中目标会给自身增加一层<Blue>命中层数</Blue>，打出爆发伤害时会根据<Blue>命中层数</Blue>增加伤害，每层<Blue>命中层数</Blue>能够增加<Yellow>6%</Yellow>伤害。
+    命中弱点或暴击时，<Blue>额外</Blue>增加一层<Blue>命中层数</Blue>。
   </PassiveSkill>
 </WeaponSkill>
 
