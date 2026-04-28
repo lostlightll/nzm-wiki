@@ -190,6 +190,8 @@ export interface Enemy {
   weight?: string | number;
   speed?: string | number;
   kill_money?: number;
+  attack_range?: string | number;
+  search_range?: string | number;
 }
 
 // ------------------------------------------------------------
@@ -210,5 +212,7 @@ export interface TDEnemy {
   weight?: number | string;
   speed?: number | string;
   kill_money?: number;
+  attack_range?: number | string;
+  search_range?: number | string;
   description?: string;
 }
