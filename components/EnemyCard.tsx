@@ -191,7 +191,7 @@ export function EnemyDetailCard({ enemy }: { enemy: Enemy }) {
     <div
       className={`not-prose relative overflow-hidden rounded-lg border ${style.border} ${style.bg} p-6 shadow-sm`}
     >
-      <div className="flex flex-col-reverse gap-8 sm:flex-row sm:items-center">
+      <div className="flex flex-col-reverse gap-8 sm:flex-row sm:items-start">
         <div className="flex-1 space-y-4">
           <div
             className="border-l-4 pl-4"
@@ -224,7 +224,7 @@ export function EnemyDetailCard({ enemy }: { enemy: Enemy }) {
           <h2
             className={`mb-4 text-xs font-bold tracking-[0.2em] uppercase ${style.text} opacity-80`}
           >
-            Enemy Attributes / 敌人属性
+            敌人属性信息
           </h2>
 
           {/* 属性 Grid */}
@@ -236,7 +236,7 @@ export function EnemyDetailCard({ enemy }: { enemy: Enemy }) {
                     {stat.label}
                   </span>
                   <span
-                    className={`font-mono text-lg font-bold tabular-nums tracking-tight ${stat.color ?? "text-white"}`}
+                    className={`font-mono text-xl leading-none font-semibold tabular-nums tracking-tight ${stat.color ?? "text-white"}`}
                   >
                     {stat.value}
                   </span>
@@ -248,7 +248,7 @@ export function EnemyDetailCard({ enemy }: { enemy: Enemy }) {
         </div>
 
         {/* 右侧图片区 */}
-        <div className="flex shrink-0 justify-center self-center sm:justify-end">
+        <div className="flex shrink-0 justify-center self-start sm:justify-end sm:self-start">
           <div
             className={`relative h-48 w-48 shrink-0 overflow-hidden rounded border ${style.divider} bg-black/20 sm:h-56 sm:w-56`}
           >
