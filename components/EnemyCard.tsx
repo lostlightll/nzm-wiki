@@ -112,30 +112,20 @@ export function EnemyCard({ enemy }: { enemy: Enemy }) {
           <div className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1 text-sm">
             {enemy.hp && (
               <>
-                <span className="text-zinc-500 font-medium text-xs">血量</span>
+                <span className="text-xs font-medium text-zinc-500">血量</span>
                 <span
-                  className={`font-mono ${style.text} text-base tabular-nums tracking-wide whitespace-nowrap overflow-hidden text-ellipsis`}
+                  className={`font-mono ${style.text} overflow-hidden text-ellipsis whitespace-nowrap text-base tabular-nums tracking-wide`}
                 >
                   {enemy.hp}
                 </span>
               </>
             )}
-            {enemy.hp2 && (
-              <>
-                <span className="text-zinc-500 font-medium text-xs">
-                  阶段二
-                </span>
-                <span className="font-mono text-red-400 text-base tabular-nums tracking-wide whitespace-nowrap overflow-hidden text-ellipsis">
-                  {enemy.hp2}
-                </span>
-              </>
-            )}
             {enemy.attack && (
               <>
-                <span className="text-zinc-500 font-medium text-xs">
+                <span className="text-xs font-medium text-zinc-500">
                   攻击力
                 </span>
-                <span className="font-mono text-zinc-300 text-base tabular-nums tracking-wide whitespace-nowrap overflow-hidden text-ellipsis">
+                <span className="font-mono overflow-hidden text-ellipsis whitespace-nowrap text-base tabular-nums tracking-wide text-zinc-300">
                   {enemy.attack}
                 </span>
               </>
@@ -145,18 +135,14 @@ export function EnemyCard({ enemy }: { enemy: Enemy }) {
 
         {/* 右上角三角装饰 */}
         {enemy.type !== "normal" && (
-        <div className="absolute top-0 right-0 p-1 opacity-50">
-          <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
-            <path
-              d="M0 0H10V10L0 0Z"
-              fill={
-                enemy.type === "boss"
-                  ? "#d1ac69"
-                  : "#a65aae"
-              }
-            />
-          </svg>
-        </div>
+          <div className="absolute top-0 right-0 p-1 opacity-50">
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none">
+              <path
+                d="M0 0H10V10L0 0Z"
+                fill={enemy.type === "boss" ? "#d1ac69" : "#a65aae"}
+              />
+            </svg>
+          </div>
         )}
       </div>
     </Link>
@@ -192,14 +178,11 @@ export function EnemyDetailCard({ enemy }: { enemy: Enemy }) {
     color?: string;
   }[] = [
     { label: "血量 (HP)", value: enemy.hp },
-    { label: "阶段二血量 (P2)", value: enemy.hp2, color: "text-[#ff4d4f]" },
     { label: "攻击力 (ATK)", value: enemy.attack },
-    { label: "击退条", value: enemy.hitback_hp },
-    { label: "韧性条", value: enemy.hardstraight_hp },
-    { label: "体重", value: enemy.weight },
-    { label: "速度", value: enemy.speed },
     { label: "击杀金币", value: enemy.kill_money, color: "text-[#f5c842]" },
-    { label: "所属地图", value: enemy.map },
+    { label: "攻击范围", value: enemy.attack_range },
+    { label: "索敌范围", value: enemy.search_range },
+    { label: "重量", value: enemy.weight },
   ];
 
   const visibleStats = stats.filter((s) => !isEmpty(s.value));
@@ -209,10 +192,9 @@ export function EnemyDetailCard({ enemy }: { enemy: Enemy }) {
       className={`not-prose relative overflow-hidden rounded-lg border ${style.border} ${style.bg} p-6 shadow-sm`}
     >
       <div className="flex flex-col-reverse gap-8 sm:flex-row sm:items-center">
-        {/* 左侧信息区 */}
         <div className="flex-1 space-y-4">
           <div
-            className={`border-l-4 pl-4`}
+            className="border-l-4 pl-4"
             style={{
               borderColor:
                 enemy.type === "boss"
@@ -233,15 +215,14 @@ export function EnemyDetailCard({ enemy }: { enemy: Enemy }) {
             )}
           </div>
 
-          {/* 描述 */}
           {enemy.description && (
-            <p className="text-sm text-zinc-300 leading-relaxed">
+            <p className="text-sm leading-relaxed text-zinc-300">
               {enemy.description}
             </p>
           )}
 
           <h2
-            className={`mb-4 text-xs font-bold uppercase tracking-[0.2em] ${style.text} opacity-80`}
+            className={`mb-4 text-xs font-bold tracking-[0.2em] uppercase ${style.text} opacity-80`}
           >
             Enemy Attributes / 敌人属性
           </h2>
