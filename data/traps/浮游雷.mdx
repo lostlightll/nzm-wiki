@@ -1,6 +1,6 @@
 ---
 title: 浮游雷
-range: -1
+range: 1.5
 position: 地面
 attack: ''
 hp: ''
@@ -9,4 +9,23 @@ area: 1x1
 description: 部署在地面的浮游雷，在怪物进入其攻击范围后，每隔一段时间将会升起一枚浮游雷，爆炸并造成范围伤害。消耗的浮游雷需要较长时间进行恢复和装填，升级浮游雷可提升爆炸伤害。
 ---
 
-> TODO(qiekn): 更新陷阱数据
+<LevelTable
+  headers={["等级", "伤害", "前五颗DPS", "长期DPS"]}
+  data={[
+    [1, 460, 128, 106],
+    [2, 550, 153, 127],
+    [3, 660, 183, 153],
+    [4, 795, 221, 184],
+  ]}
+/>
+
+- 爆炸 CD 3.6 秒
+- 生成 CD 21.6 秒
+
+<Credit
+  platform="bilibili"
+  author="冷风影_"
+  url="https://www.bilibili.com/video/BV12tD4B1Efk"
+  title="BV12tD4B1Efk"
+/>
+
