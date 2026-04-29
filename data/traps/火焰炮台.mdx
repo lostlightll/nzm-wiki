@@ -1,12 +1,31 @@
 ---
 title: 火焰炮台
-range: -1
+range: 4
 position: 墙壁
 attack: ''
-hp: ''
+hp: 225
 price: 1000
 area: 1x1
 description: 部署在地面的火焰炮台，拥有较长的攻击范围，在怪物进入其攻击范围后将会对敌人喷射火焰，被攻击的敌人将会受到持续一段时间的灼烧伤害。
 ---
 
-> TODO(qiekn): 更新陷阱数据
+<LevelTable
+  headers={["等级", "血量", "伤害", "灼烧伤害", "冷却时间(秒)"]}
+  data={[
+    [1, 225, "140 × 7", "40 × 4", 4],
+    [2, 225, "165 × 7", "48 × 4", 4],
+    [3, 225, "200 × 7", "58 × 4", 4],
+    [4, 225, "240 × 7", "70 × 4", 4],
+  ]}
+/>
+
+- 喷火时长为 3.5 秒
+- 索敌 3 格
+- 实际打到 4.5 格
+
+<Credit
+  platform="bilibili"
+  author="冷风影_"
+  url="https://www.bilibili.com/video/BV1z2QcBhETG"
+  title="BV1z2QcBhETG"
+/>
