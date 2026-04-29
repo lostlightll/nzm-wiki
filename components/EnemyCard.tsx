@@ -60,6 +60,8 @@ function EnemyImage({
 
 export function EnemyCard({ enemy }: { enemy: Enemy }) {
   const style = ENEMY_CARD_STYLES[enemy.type];
+  const hasValue = (v: number | string | undefined) =>
+    v !== undefined && v !== null && v !== "";
 
   return (
     <Link
@@ -110,7 +112,7 @@ export function EnemyCard({ enemy }: { enemy: Enemy }) {
           </div>
 
           <div className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-1 text-sm">
-            {enemy.hp && (
+            {hasValue(enemy.hp) && (
               <>
                 <span className="text-xs font-medium text-zinc-500">血量</span>
                 <span
@@ -120,7 +122,7 @@ export function EnemyCard({ enemy }: { enemy: Enemy }) {
                 </span>
               </>
             )}
-            {enemy.attack && (
+            {hasValue(enemy.attack) && (
               <>
                 <span className="text-xs font-medium text-zinc-500">
                   攻击力
