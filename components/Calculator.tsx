@@ -508,7 +508,7 @@ export function Calculator({
     <>
       {/* 折叠按钮 - 可拖拽 */}
       <div
-        className={`fixed z-50 ${isDragging === "icon" ? "select-none" : ""}`}
+        className={`hidden md:block fixed z-50 ${isDragging === "icon" ? "select-none" : ""}`}
         style={{ right: iconPosition.right, bottom: iconPosition.bottom }}
       >
         <div
@@ -531,7 +531,7 @@ export function Calculator({
 
       {/* 展开的计算器 - 独立定位 */}
       <div
-        className={`fixed z-50 flex flex-col overflow-hidden rounded-lg bg-zinc-900 shadow-2xl ring-1 ring-zinc-700 ${
+        className={`hidden md:flex fixed z-50 flex-col overflow-hidden rounded-lg bg-zinc-900 shadow-2xl ring-1 ring-zinc-700 ${
           isOpen
             ? "scale-100 opacity-100"
             : "pointer-events-none scale-75 opacity-0"
