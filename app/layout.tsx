@@ -49,6 +49,18 @@ export default function RootLayout({
     <html lang="zh-CN">
       <head>
         <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "逆战未来 维基",
+              alternateName: ["逆战未来维基", "NZM Wiki"],
+              url: siteUrl,
+            }),
+          }}
+        />
+        <script
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "179c48561851407d96f802690e2f1514"}'
