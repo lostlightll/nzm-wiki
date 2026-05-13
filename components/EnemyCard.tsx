@@ -238,7 +238,7 @@ export function EnemyDetailCard({ enemy }: { enemy: Enemy }) {
                     {stat.label}
                   </span>
                   <span
-                    className={`font-mono text-xl leading-none font-semibold tabular-nums tracking-tight ${stat.color ?? "text-white"}`}
+                    className={`font-mono text-base leading-none font-semibold tabular-nums tracking-wide ${stat.color ?? "text-white"}`}
                   >
                     {stat.value}
                   </span>
