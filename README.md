@@ -85,6 +85,9 @@ pnpm webp
 
 ## 可用于 MDX 文档的 React 组件
 
+<details>
+<summary>点击展开组件文档</summary>
+
 ### Frontmatter
 
 MDX 文件支持以下 frontmatter 字段：
@@ -343,6 +346,8 @@ Buff/Debuff 卡片系统，数据来自 `data/cards-data.json`。
 <DamageCalculator />  {/* 武器伤害计算器 */}
 <PeekabooGrid />      {/* 捉迷藏物品图鉴网格 */}
 ```
+
+</details>
 
 ## 脚本
 
