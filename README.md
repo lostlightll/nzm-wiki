@@ -175,6 +175,175 @@ MDX 文件支持以下 frontmatter 字段：
 | `alt`   | string | 否   | 无障碍描述                    |
 | `width` | number | 否   | 视频宽度（px）                |
 
+### Credit
+
+致谢来源卡片，通常放在页面末尾。
+
+```mdx
+<Credit platform="bilibili" author="逆战未来" url="https://www.bilibili.com/video/BV1x4QgBKEoR" title="BV1x4QgBKEoR" />
+<Credit platform="douyin" author="逆战未来" url="https://v.douyin.com/mv1-Ieg5xjQ/" title="mv1-Ieg5xjQ" />
+<Credit author="某作者" url="https://example.com" title="参考文章" />
+```
+
+| 属性       | 类型   | 默认值   | 说明                   |
+| :---       | :---   | :---     | :---                   |
+| `platform` | string | `"link"` | 平台                   |
+| `author`   | string | -        | 作者名                 |
+| `url`      | string | -        | 链接地址               |
+| `title`    | string | -        | 标题（显示在作者名旁） |
+
+`platform` 可选：`bilibili`, `youtube`, `twitter`, `github`, `douyin`, `tieba`, `link`
+
+### LevelTable
+
+带等级色条的表格，用于展示陷阱/技能的等级数据。等级 1-4 分别有不同颜色标识。数据支持 `"400x3=1200"` 格式，会自动将 `x` 转换为 `×`。
+
+```mdx
+<LevelTable
+  headers={["等级", "伤害", "冷却", "DPS"]}
+  data={[
+    [1, "400×3=1200", "5.5秒", 218],
+    [2, "480×3=1440", "2.5秒", 576],
+    [3, "600×3=1800", "2.5秒", 720],
+    [4, "720×3=2160", "2.5秒", 864],
+  ]}
+/>
+```
+
+| 属性      | 类型                  | 说明                            |
+| :---      | :---                  | :---                            |
+| `headers` | string[]              | 表头                            |
+| `data`    | (string\|number)[][] | 行数据，第一列为等级（1-4）     |
+
+### DataTable
+
+通用数据表格，支持图标列、对齐方式和 `**加粗**` 高亮。
+
+```mdx
+<DataTable
+  headers={["元素类型", "最多层数", "效果", "持续时间"]}
+  align={["left", "center", "left", "left"]}
+  data={[
+    { icon: "/icons/elements/fire.png", cells: ["火焰(灼烧)", 5, "每 **2** 秒承受 **10 × 层数** 的伤害", "每 **2** 秒衰减 **1** 层"] },
+    { icon: "/icons/elements/cryo.png", cells: ["寒冷(冰缓)", 3, "移速逐级降低", "**10** 秒未刷新直接消失"] },
+  ]}
+/>
+```
+
+| 属性       | 类型                                | 默认值 | 说明                  |
+| :---       | :---                                | :---   | :---                  |
+| `headers`  | string[]                            | -      | 表头                  |
+| `align`    | `("left"\|"center"\|"right")[]`     | -      | 各列对齐方式          |
+| `nowrap`   | number[]                            | -      | 不换行的列索引        |
+| `iconSize` | number                              | 24     | 图标尺寸（px）        |
+| `data`     | RowData[]                           | -      | 行数据                |
+
+RowData 格式：
+- 简单行 `CellValue[]` — 直接是每列的值
+- 带图标行 `{ icon: string, cells: CellValue[] }` — icon 在最左列显示
+
+CellValue 为 `string | number | ReactNode`。字符串中 `**text**` 会自动高亮。
+
+### WeaponSkill / ActiveSkill / PassiveSkill
+
+武器技能展示组件。`WeaponSkill` 是外层容器，内部放 `ActiveSkill` 和 `PassiveSkill`。
+
+```mdx
+<WeaponSkill>
+  <ActiveSkill
+    name="飓龙连击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000011_2.png"
+    duration={-1}
+    cooldown={25}
+    count={1}
+  >
+    技能描述文字
+  </ActiveSkill>
+  <PassiveSkill
+    name="炙热龙炎"
+    tag="快速连发"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000011_1.png"
+  >
+    被动技能描述
+  </PassiveSkill>
+</WeaponSkill>
+```
+
+ActiveSkill 属性：
+
+| 属性       | 类型      | 说明                          |
+| :---       | :---      | :---                          |
+| `name`     | string    | 技能名称                      |
+| `icon`     | string    | 图标路径                      |
+| `duration` | number    | 持续时间（秒），-1 表示无限   |
+| `cooldown` | number    | 冷却时间（秒）                |
+| `count`    | number    | 可累积次数                    |
+| `children` | ReactNode | 技能描述                      |
+
+PassiveSkill 属性同 ActiveSkill，额外支持 `tag`（自定义标签文字，如"快速连发"）。
+
+### BossCard / BossCardGrid
+
+Boss 卡片组件。`BossCard` 通过 `title` 属性匹配 boss 数据自动渲染卡片。`BossCardGrid` 是网格容器。
+
+```mdx
+<BossCardGrid>
+  <BossCard title="金牌打手" />
+  <BossCard title="Z博士" />
+  <BossCard title="变异Z博士" />
+</BossCardGrid>
+```
+
+| 属性    | 类型   | 说明                       |
+| :---    | :---   | :---                       |
+| `title` | string | Boss 名称（匹配数据源）    |
+
+### BuffCard / BuffCardGrid / CardRef / BuffDetail
+
+Buff/Debuff 卡片系统，数据来自 `data/cards-data.json`。
+
+```mdx
+<BuffCardGrid defaultSize={140}>
+  <CardRef slug="element-invasion" />
+  <CardRef slug="weak-point-boost" />
+  <CardRef slug="easy-toughness" />
+</BuffCardGrid>
+```
+
+`CardRef` 属性：
+
+| 属性   | 类型   | 说明                                |
+| :---   | :---   | :---                                |
+| `slug` | string | 卡片的 slug（对应 cards-data.json） |
+
+`BuffCardGrid` 属性：
+
+| 属性          | 类型      | 说明              |
+| :---          | :---      | :---              |
+| `defaultSize` | number    | 卡片默认尺寸（px） |
+| `children`    | ReactNode | CardRef 列表      |
+
+`BuffDetail` 属性（单独展示某个 buff/debuff 详情）：
+
+| 属性       | 类型              | 说明           |
+| :---       | :---              | :---           |
+| `name`     | string            | 名称           |
+| `icon`     | string            | 图标路径       |
+| `type`     | `"buff"\|"debuff"` | 类型           |
+| `effect`   | string            | 效果描述       |
+| `children` | ReactNode         | 详细说明       |
+
+### 无属性工具组件
+
+直接使用，无需传参：
+
+```mdx
+<AtkChart />          {/* 武器攻击力强化等级 / 消耗折线图 */}
+<CritCalculator />    {/* 暴击期望计算器（含概率坍缩机制） */}
+<DamageCalculator />  {/* 武器伤害计算器 */}
+<PeekabooGrid />      {/* 捉迷藏物品图鉴网格 */}
+```
+
 ## 脚本
 
 解码 CG：
