@@ -87,6 +87,41 @@ page-width: 1200px
 ---
 ```
 
+### 武器 Frontmatter 扩展
+
+武器 MDX 除通用字段外，支持以下字段（配合 `lib/weapons.ts` 的 `transformWeapon` 使用）：
+
+| 字段 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| `prototype_id` | string | - | WeaponPrototypeConfig 的 PrototypeID，用于匹配游戏数据 |
+| `damage_label` | number | `0` | 非主模式伤害标签：`0`=命中伤害，`1`=爆炸伤害，`2`=自定义 |
+| `damage_label_text` | string | `"爆炸伤害"` | `damage_label=2` 时的自定义标签文字 |
+| `extra_modes` | array | - | 不在 WeaponPrototypeConfig 中的技能模式。每项：`name`(模式名)、`numerical_id`(NumericalID)、`fire_interval`(可选，默认继承主模式射速) |
+
+示例：
+```yaml
+extra_modes:
+  - name: 浮游模式
+    numerical_id: 120700152
+    fire_interval: 0.65
+```
+
+### 武器数据管线
+
+`lib/weapons.ts` 的 `transformWeapon` 优先从游戏解包数据注入数值，查不到则回退 MDX 旧字段：
+
+1. MDX `title` → `WeaponPrototypeConfig` → `ASCTypeID` + `NumericalID`
+2. `ASCTypeID` → `attr_weapon_asc`（射速/弹匣/弹丸）+ `WeaponFeelParamTable`（换弹）
+3. `NumericalID` → `numerical_config_composite`（伤害/元素/弱点/破韧）
+
+`lib/weapon-data.ts` 提供三个手动覆盖表，处理游戏数据与社区约定的差异：
+
+| 覆盖表 | 作用 | 示例 |
+| :--- | :--- | :--- |
+| `MODE_NAME_OVERRIDES` | 模式显示名 | `精绝兽神: {0:"速射模式",1:"爆发模式",2:"秘法榴弹"}` |
+| `SKILL_NUMERICAL_OVERRIDES` | 技能伤害用不同 NumericalID | `精绝兽神: {2:120100242}`（秘法榴弹读 WeaponSkillDamage 表） |
+| 模式分类规则 | 与主模式不同 NumericalID → `damageModes`；相同 → `extraModes`（技能/特殊攻击） |
+
 ## MDX 组件
 
 ### VideoGif

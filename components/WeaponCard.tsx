@@ -3,8 +3,14 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import type { Weapon, ElementType } from "@/types";
+import type { Weapon, ElementType, DamageMode } from "@/types";
 import { getAssetPath } from "@/lib/path";
+import {
+  calcRPM,
+  calcFullReload,
+  calcTacticalReload,
+  calcChargeRate,
+} from "@/lib/weapon-calcs";
 import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
 
 const ELEMENT_ICONS: Record<ElementType, string> = {
@@ -15,13 +21,23 @@ const ELEMENT_ICONS: Record<ElementType, string> = {
   物理: "/icons/elements/kinetic.png",
 };
 
-function formatDamage(base: number | undefined | null, pellets?: number): string {
-  if (base === null || base === undefined) return "-";
-  const damage = Math.round(base * 500);
-  if (pellets && pellets > 1) {
-    return `${damage} x ${pellets}`;
+/** 安全保留 1 位小数，避免 IEEE 754 toFixed 陷阱（如 0.15→0.1） */
+function round1(n: number): string {
+  return (Math.round(n * 10) / 10).toFixed(1);
+}
+
+/** 最多保留 2 位小数，尾部 0 去掉，至少保 1 位 */
+function formatPrecise(n: number): string {
+  const fixed = (Math.round(n * 100) / 100).toFixed(2);
+  return fixed.replace(/0+$/, "").replace(/\.$/, ".0");
+}
+
+function formatDamage(mode: DamageMode): string {
+  const damage = round1(mode.damage.base * 500);
+  if (mode.pellets && mode.pellets > 1) {
+    return `${damage} × ${mode.pellets}`;
   }
-  return String(damage);
+  return damage;
 }
 
 function WeaponImage({ name, size = "normal" }: { name: string; size?: "small" | "normal" }) {
@@ -47,13 +63,21 @@ function WeaponImage({ name, size = "normal" }: { name: string; size?: "small" |
   );
 }
 
+function formatValue(val: number | undefined): string {
+  if (val === undefined || val === -1) return "-";
+  return String(val);
+}
+
 /**
  * 简洁模式卡片 - 只有名称、图片、元素图标
  */
 function SimpleCard({ weapon }: { weapon: Weapon }) {
+  const mode = weapon.damageModes[0];
+  if (!mode) return <div className="text-zinc-500">武器数据异常</div>;
+
   const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-  const elementIcon = ELEMENT_ICONS[weapon.element];
+  const elementIcon = ELEMENT_ICONS[mode.element];
 
   return (
     <Link href={`/weapons/${encodeURIComponent(weapon.slug)}`}>
@@ -64,7 +88,7 @@ function SimpleCard({ weapon }: { weapon: Weapon }) {
           <div className="absolute right-2 top-2 z-10">
             <Image
               src={getAssetPath(elementIcon)}
-              alt={weapon.element}
+              alt={mode.element}
               width={20}
               height={20}
             />
@@ -81,15 +105,13 @@ function SimpleCard({ weapon }: { weapon: Weapon }) {
  * 详细模式卡片 - 显示更多属性
  */
 function DetailedCard({ weapon }: { weapon: Weapon }) {
+  const mode = weapon.damageModes[0];
+  if (!mode) return <div className="text-zinc-500">武器数据异常</div>;
+
   const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-  const elementIcon = ELEMENT_ICONS[weapon.element];
-  const tags = Array.isArray(weapon.tags) ? weapon.tags : [];
-
-  const formatValue = (val: number | string | null | undefined) => {
-    if (val === null || val === undefined || val === "" || val === -1) return "-";
-    return val;
-  };
+  const elementIcon = ELEMENT_ICONS[mode.element];
+  const tags = weapon.tags || [];
 
   return (
     <Link href={`/weapons/${encodeURIComponent(weapon.slug)}`}>
@@ -100,7 +122,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
           <div className="absolute right-4 top-4 z-10">
             <Image
               src={getAssetPath(elementIcon)}
-              alt={weapon.element}
+              alt={mode.element}
               width={28}
               height={28}
             />
@@ -112,10 +134,9 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
           {weapon.use_type && <span>{weapon.use_type}</span>}
           {weapon.weapon_type && <span>· {weapon.weapon_type}</span>}
           {weapon.scope && <span>· {weapon.scope}</span>}
-          {tags.length > 0 &&
-            tags.map((tag) => (
-              <span key={tag}>· {tag}</span>
-            ))}
+          {tags.map((tag) => (
+            <span key={tag}>· {tag}</span>
+          ))}
         </div>
 
         <div className="flex justify-center">
@@ -125,18 +146,18 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
             width={320}
             height={160}
             className="object-contain"
-            style={{ width: 320, height: 'auto' }}
+            style={{ width: 320, height: "auto" }}
           />
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-base">
           <div className="flex justify-between">
             <span className="text-zinc-500">单发伤害</span>
-            <span className="text-white">{formatDamage(weapon.damage?.base, weapon.pellets)}</span>
+            <span className="text-white">{formatDamage(mode)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">射速</span>
-            <span className="text-white">{formatValue(weapon.file_rate)}</span>
+            <span className="text-white">{Math.round(calcRPM(mode))} RPM</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">弹夹</span>
@@ -144,23 +165,35 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">总弹量</span>
-            <span className="text-white">{formatValue(weapon.total_ammo)}</span>
+            <span className="text-white">{formatValue(weapon.totalAmmo)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">弱点倍率</span>
-            <span className="text-white">{weapon.weekness_multiplier}</span>
+            <span className="text-white">{mode.weaknessMultiplier}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">破韧伤害</span>
-            <span className="text-white">{formatValue(weapon.damage?.toughness)}</span>
+            <span className="text-white">{formatValue(mode.damage.toughness)}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-zinc-500">换弹时间</span>
-            <span className="text-white">{formatValue(weapon.reload_time)}</span>
+            <span className="text-zinc-500">战术换弹</span>
+            <span className="text-white">
+              {weapon.changeClip
+                ? `${(Math.ceil(calcTacticalReload(weapon.changeClip)! * 10) / 10).toFixed(1)}s`
+                : "-"}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-zinc-500">完整换弹</span>
+            <span className="text-white">
+              {weapon.changeClip
+                ? `${(Math.ceil(calcFullReload(weapon.changeClip)! * 10) / 10).toFixed(1)}s`
+                : "-"}
+            </span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">技能冷却</span>
-            <span className="text-white">{formatValue(weapon.skill_cooldown)}</span>
+            <span className="text-white">{formatValue(weapon.skillCooldown)}</span>
           </div>
         </div>
       </div>
@@ -179,18 +212,150 @@ export function WeaponCard({ weapon, showDetails = false }: { weapon: Weapon; sh
 }
 
 /**
+ * 单个模式属性面板（标准 9 字段网格）
+ */
+function ModeStats({
+  mode,
+  showName,
+  compact,
+}: {
+  mode: DamageMode;
+  showName: boolean;
+  compact?: boolean;
+}) {
+  const rpm = Math.round(calcRPM(mode));
+
+  return (
+    <div className="mb-3">
+      {showName && (
+        <h3 className="mb-1.5 text-sm font-semibold text-zinc-300">{mode.name}</h3>
+      )}
+
+      {compact ? (
+        <div className="grid grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
+          <Stat label="射速" value={String(rpm)} />
+          <Stat
+            label="单发耗时"
+            value={
+              mode.fireIntervalBase
+                ? `${mode.fireIntervalBase.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s`
+                : "-"
+            }
+          />
+        </div>
+      ) : mode.fireIntervalBase === 0 ? (
+        <div className="grid grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
+          <Stat label={mode.damageLabel || "命中伤害"} value={formatDamage(mode)} />
+          <Stat label="单发破韧值" value={formatPrecise(mode.damage.toughness)} />
+          <Stat label="弱点倍率" value={mode.enableWeakness ? String(mode.weaknessMultiplier) : "-"} />
+          <Stat
+            label="元素异常概率"
+            value={
+              mode.elementAddRate > 0
+                ? `${round1(mode.elementAddRate * 100)}%`
+                : "-"
+            }
+          />
+          <Stat label="暴击" value={mode.enableCritical ? "可暴击" : "否"} />
+          <Stat label="弱点" value={mode.enableWeakness ? "可弱点" : "否"} />
+        </div>
+      ) : (
+        <div className="grid grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
+          <Stat label={mode.damageLabel || "命中伤害"} value={formatDamage(mode)} />
+          <Stat label="单发破韧值" value={formatPrecise(mode.damage.toughness)} />
+          <Stat label="弱点倍率" value={mode.enableWeakness ? String(mode.weaknessMultiplier) : "-"} />
+          <Stat
+            label="元素异常概率"
+            value={
+              mode.elementAddRate > 0
+                ? `${round1(mode.elementAddRate * 100)}%`
+                : "-"
+            }
+          />
+          <Stat label="暴击" value={mode.enableCritical ? "可暴击" : "否"} />
+          <Stat label="弱点" value={mode.enableWeakness ? "可弱点" : "否"} />
+          <Stat label="射速" value={String(rpm)} />
+          <Stat
+            label="单发耗时"
+            value={mode.fireIntervalBase ? `${mode.fireIntervalBase.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s` : "-"}
+          />
+          <Stat label="破韧类型" value={mode.toughnessType} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex justify-between gap-1">
+      <span className="text-zinc-500 shrink-0">{label}</span>
+      <span className="text-white text-right">{value}</span>
+    </div>
+  );
+}
+
+function SkillSection({ weapon }: { weapon: Weapon }) {
+  const [expanded, setExpanded] = useState(false);
+  const modes = weapon.extraModes!;
+  const collapsible = modes.length >= 3;
+  const visible = collapsible && !expanded ? modes.slice(0, 2) : modes;
+  const hiddenCount = modes.length - 2;
+
+  return (
+    <div className="mb-3">
+      <h2 className="mb-2 text-sm font-semibold text-zinc-400">
+        技能 / 特殊攻击
+      </h2>
+      {visible.map((m, i) => {
+        const isVariant = weapon.damageModes.some(
+          (dm) => dm.damage.base === m.damage.base
+        );
+        return <ModeStats key={i} mode={m} showName compact={isVariant} />;
+      })}
+      {collapsible && !expanded && (
+        <div className="text-center">
+          <button
+            onClick={() => setExpanded(true)}
+            className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+          >
+            展开更多 ({hiddenCount})
+          </button>
+        </div>
+      )}
+      {collapsible && expanded && (
+        <div className="text-center">
+          <button
+            onClick={() => setExpanded(false)}
+            className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+          >
+            收起
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/**
  * 详情页武器卡片 - 完整版
  */
 export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
+  const mode = weapon.damageModes[0];
+  if (!mode) {
+    return (
+      <div className="rounded-lg border-2 border-zinc-700 bg-zinc-900 p-6 text-center text-zinc-500">
+        武器数据异常
+      </div>
+    );
+  }
+
   const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-  const elementIcon = ELEMENT_ICONS[weapon.element];
-  const tags = Array.isArray(weapon.tags) ? weapon.tags : [];
+  const elementIcon = ELEMENT_ICONS[mode.element];
+  const tags = weapon.tags || [];
 
-  const formatValue = (val: number | string | null | undefined) => {
-    if (val === null || val === undefined || val === "" || val === -1) return "-";
-    return val;
-  };
+  const chargeRate = calcChargeRate(weapon.skillCooldown);
 
   return (
     <div className={`rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-6`}>
@@ -202,21 +367,20 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
             {weapon.use_type && <span>{weapon.use_type}</span>}
             {weapon.weapon_type && <span>· {weapon.weapon_type}</span>}
             {weapon.scope && <span>· {weapon.scope}</span>}
-            {tags.length > 0 &&
-              tags.map((tag) => (
-                <span key={tag} className="flex items-center gap-2">
-                  <span>·</span>
-                  <span className="rounded bg-zinc-700 px-2 py-0.5 text-xs text-zinc-300">
-                    {tag}
-                  </span>
+            {tags.map((tag) => (
+              <span key={tag} className="flex items-center gap-2">
+                <span>·</span>
+                <span className="rounded bg-zinc-700 px-2 py-0.5 text-xs text-zinc-300">
+                  {tag}
                 </span>
-              ))}
+              </span>
+            ))}
           </div>
         </div>
         {elementIcon && (
           <Image
             src={getAssetPath(elementIcon)}
-            alt={weapon.element}
+            alt={mode.element}
             width={32}
             height={32}
           />
@@ -234,102 +398,67 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
         />
       </div>
 
-      {/* 伤害数据 */}
-      <div className="mb-4">
-        <h2 className="mb-2 text-sm font-semibold text-zinc-400">伤害数据</h2>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-3">
-          <div className="flex justify-between">
-            <span className="text-zinc-500">单发伤害</span>
-            <span className="text-white">{formatDamage(weapon.damage?.base, weapon.pellets)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">冲击伤害</span>
-            <span className="text-white">{formatValue(weapon.damage?.impulse)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">破韧伤害</span>
-            <span className="text-white">{formatValue(weapon.damage?.toughness)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">血肉伤害</span>
-            <span className="text-white">{formatValue(weapon.damage?.flesh)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">受伤伤害</span>
-            <span className="text-white">{formatValue(weapon.damage?.hurtable)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">弱点倍率</span>
-            <span className="text-white">{weapon.weekness_multiplier}</span>
-          </div>
+      {/* 射击模式 */}
+      {weapon.damageModes.length > 1 ? (
+        weapon.damageModes.map((m, i) => (
+          <ModeStats key={i} mode={m} showName />
+        ))
+      ) : (
+        <div className="mb-3">
+          <h2
+            className={
+              "mb-2 text-sm font-semibold " +
+              (weapon.extraModes && weapon.extraModes.length > 0
+                ? "text-zinc-300"
+                : "text-zinc-400")
+            }
+          >
+            射击模式
+          </h2>
+          <ModeStats mode={weapon.damageModes[0]} showName={false} />
         </div>
-      </div>
+      )}
+
+      {/* 技能 / 特殊攻击 */}
+      {weapon.extraModes && weapon.extraModes.length > 0 && (
+        <SkillSection weapon={weapon} />
+      )}
 
       {/* 武器属性 */}
       <div className="mb-4">
         <h2 className="mb-2 text-sm font-semibold text-zinc-400">武器属性</h2>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-3">
-          <div className="flex justify-between">
-            <span className="text-zinc-500">射速</span>
-            <span className="text-white">{formatValue(weapon.file_rate)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">弹夹</span>
-            <span className="text-white">{formatValue(weapon.magazine)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">总弹量</span>
-            <span className="text-white">{formatValue(weapon.total_ammo)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">换弹时间</span>
-            <span className="text-white">{formatValue(weapon.reload_time)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">技能冷却</span>
-            <span className="text-white">{formatValue(weapon.skill_cooldown)}</span>
-          </div>
-          {weapon.skill_cooldown && weapon.skill_cooldown !== "" && weapon.skill_cooldown !== -1 && (
-            <div className="flex justify-between">
-              <span className="text-zinc-500">充能速率</span>
-              <span className="text-white">{(100 / Number(weapon.skill_cooldown)).toFixed(2)}%</span>
-            </div>
-          )}
-          <div className="flex justify-between">
-            <span className="text-zinc-500">精准度</span>
-            <span className="text-white">{formatValue(weapon.accuracy)}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">稳定度</span>
-            <span className="text-white">{formatValue(weapon.stability)}</span>
-          </div>
+        <div className="grid grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
+          <Stat label="弹夹" value={formatValue(weapon.magazine)} />
+          <Stat label="总弹量" value={formatValue(weapon.totalAmmo)} />
+          <Stat label="精准度" value={formatValue(weapon.accuracy)} />
+          <Stat label="稳定度" value={formatValue(weapon.stability)} />
+          <Stat
+            label="战术换弹"
+            value={
+              weapon.changeClip
+                ? `${(Math.ceil(calcTacticalReload(weapon.changeClip)! * 10) / 10).toFixed(1)}s`
+                : "-"
+            }
+          />
+          <Stat
+            label="完整换弹"
+            value={
+              weapon.changeClip
+                ? `${(Math.ceil(calcFullReload(weapon.changeClip)! * 10) / 10).toFixed(1)}s`
+                : "-"
+            }
+          />
+          <Stat
+            label="技能冷却"
+            value={weapon.skillCooldown != null ? `${weapon.skillCooldown}s` : "-"}
+          />
+          <Stat
+            label="充能速率"
+            value={chargeRate != null ? `${chargeRate}%/s` : "-"}
+          />
         </div>
       </div>
 
-      {/* 特殊属性 */}
-      <div>
-        <h2 className="mb-2 text-sm font-semibold text-zinc-400">特殊属性</h2>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-3">
-          <div className="flex justify-between">
-            <span className="text-zinc-500">破韧类型</span>
-            <span className="text-white">{weapon.toughness_type}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">可以暴击</span>
-            <span className="text-white">{weapon.enable_critical ? "是" : "否"}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">无视护盾</span>
-            <span className="text-white">{weapon.ignore_shield ? "是" : "否"}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">元素异常概率</span>
-            <span className="text-white">
-              {weapon.element_add_rate > 0 ? `${(weapon.element_add_rate * 100).toFixed(1)}%` : "-"}
-            </span>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
