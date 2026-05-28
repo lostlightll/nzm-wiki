@@ -23,11 +23,32 @@
 
 查询链路：
 ```
-MDX title → WeaponPrototypeConfig → ASCTypeID + NumericalID
-  ├─ ASCTypeID → attr_weapon_asc (FireIntervalBase / ClipAmmo / SplinterNum)
-  ├─ ASCTypeID → WeaponFeelParamTable (ChangeClipTimeBase / EndToFireTime)
-  └─ NumericalID → numerical_config (HpCalScale / Element / Weakness / Toughness)
+武器名 (中文)
+    │
+    ▼
+WeaponPrototypeConfig ──→ ASCTypeID ──→ attr_weapon_asc ──→ FireIntervalBase
+    │                  │                │                     ClipAmmoCountBase
+    │                  │                │                     MaxAmmoCount
+    │                  │                │                     SplinterNum
+    │                  │                │
+    │                  │                └──→ WeaponFeelParamTable ──→ WeaponChangeClipTimeBase
+    │                  │                                              WeaponChangeClipEndToFireTime
+    │                  │
+    │                  └──→ NumericalID ──→ numerical_config ──→ HpCalScale (base 伤害)
+    │                                       (key: {ID}_{Level})   ImpulseBase (冲击)
+    │                                                            ToughnessBase (破韧)
+    │                                                            FleshDamageBase (血肉)
+    │                                                            HurtableBase (受伤)
+    │                                                            WeaknessDamageAddScale
+    │                                                            ElementType (元素类型)
+    │                                                            ElementAddRate (元素异常率)
+    │                                                            bEnableCriticalDamage (暴击)
+    │                                                            bDamageIgnoreShield (无视护盾)
+    │                                                            ToughnessDamageType (破韧类型)
+    │                                                            EnableWeaknessDamage (弱点开关)
 ```
+
+数值数据优先查 `numerical_config_composite`（联合 equip + playerskill + monsterskill + others），查不到回退 `numerical_config_equip`。
 
 三个手动覆盖表（`lib/weapon-data.ts`）：
 
