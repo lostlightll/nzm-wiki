@@ -43,33 +43,65 @@ export interface WeaponDamage {
 }
 
 /**
- * 完整武器数据接口（匹配 MDX frontmatter）
+ * 射击模式 — 表示一种射击模式（普通射击 / 技能射击 / 技能改造后）
+ */
+export interface DamageMode {
+  name: string;
+  damage: WeaponDamage;
+  element: ElementType;
+  elementAddRate: number;
+  weaknessMultiplier: number;
+  enableWeakness: boolean;
+  enableCritical: boolean;
+  fireIntervalBase: number;
+  fireIntervalBase2?: number;
+  pellets?: number;
+  toughnessType: ToughnessType;
+  ignoreShield: boolean;
+  /** 伤害类型标签，默认"命中伤害"，可覆盖为"爆炸伤害"等 */
+  damageLabel?: string;
+}
+
+/**
+ * 换弹时间数据
+ * 完整换弹 = timeBase + endToFireTime
+ * 战术换弹 = timeBase
+ */
+export interface WeaponChangeClip {
+  timeBase: number;
+  endToFireTime: number;
+}
+
+/**
+ * 完整武器数据接口
  */
 export interface Weapon {
   slug: string;
   title: string;
   use_type?: string;
   weapon_type?: WeaponType;
-  element: ElementType;
   rarity?: Rarity;
-  tags?: WeaponTag[] | string;
+  tags?: WeaponTag[];
   scope?: ScopeType | string;
-  damage: WeaponDamage | null;
-  toughness_type: ToughnessType;
-  enable_critical: boolean;
-  weekness_multiplier: number;
-  file_rate?: number | string;
-  magazine?: number | string;
-  total_ammo?: number | string;
-  accuracy?: number | string;
-  stability?: number | string;
-  reload_time?: number | string | null;
-  range?: number | string;
-  explosion_range?: number | string;
-  ignore_shield: boolean;
-  element_add_rate: number;
-  skill_cooldown?: number | string;
-  pellets?: number;
+
+  // 通用属性
+  magazine?: number;
+  totalAmmo?: number;
+  accuracy?: number;
+  stability?: number;
+  range?: number;
+  explosionRange?: number;
+  skillCooldown?: number;
+
+  // 换弹
+  changeClip?: WeaponChangeClip;
+
+  // 射击模式
+  damageModes: DamageMode[];
+
+  // 额外射击模式（如技能切换）
+  extraModes?: DamageMode[];
+
   draft?: boolean;
 }
 
