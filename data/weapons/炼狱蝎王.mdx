@@ -32,13 +32,39 @@ skill_cooldown: 30
 pellets: null
 extra_modes:
   - name: 腾炎
-    numerical_id: 120500341
     fire_interval: 0
     label: 技能伤害
+    damage:
+      base: 3.6
+      impulse: 0.36
+      toughness: 0.36
+      flesh: 36
+      hurtable: 36
+    element: 火焰
+    element_add_rate: 1.8
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
   - name: 蝎刺
-    numerical_id: 120500342
     fire_interval: 0
     label: 技能伤害
+    damage:
+      base: 0.3
+      impulse: 0.058
+      toughness: 0.058
+      flesh: 5.8
+      hurtable: 5.8
+    element: 火焰
+    element_add_rate: 0.29
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 ---
 
 <WeaponSkill>

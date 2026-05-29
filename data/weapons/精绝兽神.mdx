@@ -1,5 +1,6 @@
 ---
 title: 精绝兽神
+prototype_id: '20001000024'
 use_type: 主武器
 weapon_type: 突击步枪
 element: 火焰
@@ -7,9 +8,63 @@ rarity: 传说
 tags:
   - 额外爆炸
 scope: 中倍镜
-weapon_type_id: 1
-prototype_id: '20001000024'
-active_skill_id: 5101701
+mode_names:
+  '0': 速射模式
+  '1': 爆发模式
+  '2': 秘法榴弹
+damage_modes:
+  - mode: 0
+    name: 速射模式
+    fire_interval: 0.1
+    damage:
+      base: 0.133
+      impulse: 1.7
+      toughness: 1.7
+      flesh: 1.3
+      hurtable: 1.3
+    element: 火焰
+    element_add_rate: 0.107
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 爆发模式
+    fire_interval: 0.45
+    damage:
+      base: 0.53
+      impulse: 6
+      toughness: 6
+      flesh: 4.8
+      hurtable: 4.8
+    element: 火焰
+    element_add_rate: 0.381
+    weakness_multiplier: 1.5
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 秘法榴弹
+    fire_interval: 0.12
+    label: 爆炸伤害
+    damage:
+      base: 1.5
+      impulse: 0.15
+      toughness: 0.15
+      flesh: 15
+      hurtable: 15
+    element: 火焰
+    element_add_rate: 0.15
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 damage:
   base: 0.133
   impulse: 1.7
@@ -31,7 +86,8 @@ ignore_shield: false
 element_add_rate: 0.107
 skill_cooldown: 10
 pellets: null
-damage_label: 1
+weapon_type_id: 1
+active_skill_id: 5101701
 page-width: xl
 ---
 

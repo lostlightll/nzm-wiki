@@ -49,6 +49,7 @@ interface RawNumericalEntry {
   EnableWeaknessDamage: boolean;
   WeaknessDamageAddScale: number;
   ToughnessDamageType: string;
+  ElementDebuffTypeID: number;
 }
 
 // ── Enum Mappings ──────────────────────────────────
@@ -182,6 +183,7 @@ function loadNumericalConfig(): void {
         EnableWeaknessDamage: Boolean(e.EnableWeaknessDamage),
         WeaknessDamageAddScale: Number(e.WeaknessDamageAddScale ?? 0),
         ToughnessDamageType: String(e.ToughnessDamageType ?? ""),
+        ElementDebuffTypeID: Number(e.ElementDebuffTypeID ?? 0),
       });
     }
   }
@@ -206,8 +208,7 @@ export interface PrototypeModeEntry {
 // ── Mode Name Overrides ────────────────────────────
 
 const MODE_NAME_OVERRIDES: Record<string, Record<number, string>> = {
-  精绝兽神: { 0: "速射模式", 1: "爆发模式", 2: "秘法榴弹" },
-  飓风之龙: { 0: "霰弹射击" },
+  // 精绝兽神 / 飓风之龙 模式名已转 MDX mode_names
 };
 
 /**
@@ -215,7 +216,7 @@ const MODE_NAME_OVERRIDES: Record<string, Record<number, string>> = {
  * 武器本体伤害，实际技能伤害在 numerical_config_playerskill 的其他 ID 下。
  */
 const SKILL_NUMERICAL_OVERRIDES: Record<string, Record<number, number>> = {
-  精绝兽神: { 2: 120100242 }, // 秘法榴弹爆炸伤害
+  // 精绝兽神 秘法榴弹已转 MDX extra_modes
 };
 
 
@@ -226,12 +227,12 @@ const SKILL_NUMERICAL_OVERRIDES: Record<string, Record<number, number>> = {
 export function getModeName(
   fullName: string,
   baseWeaponName: string,
-  mode: number
+  mode: number,
+  mdxNames?: Record<number, string>
 ): string {
+  if (mdxNames?.[mode] !== undefined) return mdxNames[mode];
   const overrides = MODE_NAME_OVERRIDES[baseWeaponName];
-  if (overrides && overrides[mode] !== undefined) {
-    return overrides[mode];
-  }
+  if (overrides?.[mode] !== undefined) return overrides[mode];
   if (mode === 0) return "普通射击";
   return extractModeName(fullName, baseWeaponName);
 }
@@ -377,6 +378,7 @@ export function lookupNumerical(
   enableWeakness: boolean;
   weaknessMultiplier: number;
   toughnessType: string;
+  elementDebuffTypeId: number;
 } | undefined {
   ensureAllLoaded();
   const key = `${numericalId}_${level}`;
@@ -395,5 +397,6 @@ export function lookupNumerical(
     enableWeakness: entry.EnableWeaknessDamage,
     weaknessMultiplier: Math.round((1.0 + entry.WeaknessDamageAddScale) * 100) / 100,
     toughnessType: mapToughness(entry.ToughnessDamageType),
+    elementDebuffTypeId: entry.ElementDebuffTypeID,
   };
 }

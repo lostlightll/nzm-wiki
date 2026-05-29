@@ -227,6 +227,765 @@ const Icons = {
   ),
 };
 
+// --- 伤害标签下拉组件 ---
+const DAMAGE_LABEL_OPTIONS = [
+  { value: 0, label: "命中伤害" },
+  { value: 1, label: "爆炸伤害" },
+  { value: 2, label: "自定义" },
+];
+
+const DamageLabelSelect = ({
+  value,
+  onChange,
+}: {
+  value: number;
+  onChange: (val: number) => void;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const current = DAMAGE_LABEL_OPTIONS.find((o) => o.value === value);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative w-full" ref={containerRef}>
+      <div
+        className="w-full h-10 bg-zinc-900 border border-zinc-800 rounded-md px-3 flex items-center justify-between cursor-pointer hover:border-zinc-700 transition-colors"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="text-sm text-zinc-200 truncate">
+          {current ? `${current.label} (${current.value})` : "选择伤害标签..."}
+        </span>
+        <div
+          className={`text-zinc-500 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+        >
+          <Icons.ChevronDown />
+        </div>
+      </div>
+      {isOpen && (
+        <div className="absolute z-50 w-full mt-1 bg-zinc-800 border border-zinc-700 rounded-md shadow-xl custom-scrollbar">
+          {DAMAGE_LABEL_OPTIONS.map((opt) => (
+            <div
+              key={opt.value}
+              className={`flex items-center px-3 py-2 cursor-pointer text-sm transition-colors ${
+                value === opt.value
+                  ? "bg-blue-600/20 text-blue-400"
+                  : "text-zinc-300 hover:bg-zinc-700"
+              }`}
+              onClick={() => {
+                onChange(opt.value);
+                setIsOpen(false);
+              }}
+            >
+              <span className="flex-1 truncate">{opt.label}</span>
+              <span className="text-xs text-zinc-500 ml-2">{opt.value}</span>
+              {value === opt.value && <Icons.Check />}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// --- 额外模式编辑器组件 ---
+type ExtraModeEntry = {
+  name: string;
+  fire_interval?: number;
+  label?: string;
+  damage?: {
+    base: number;
+    impulse: number;
+    toughness: number;
+    flesh: number;
+    hurtable: number;
+  };
+  element?: string;
+  element_add_rate?: number;
+  weakness_multiplier?: number;
+  enable_critical?: boolean;
+  enable_weakness?: boolean;
+  toughness_type?: string;
+  ignore_shield?: boolean;
+  element_debuff_type_id?: number;
+};
+
+const ExtraModesEditor = ({
+  value = [],
+  onChange,
+}: {
+  value: ExtraModeEntry[];
+  onChange: (val: ExtraModeEntry[]) => void;
+}) => {
+  const modes = Array.isArray(value) ? value : [];
+
+  const addMode = () => {
+    onChange([
+      ...modes,
+      {
+        name: "",
+        damage: { base: 0, impulse: 0, toughness: 0, flesh: 0, hurtable: 0 },
+      },
+    ]);
+  };
+
+  const removeMode = (idx: number) => {
+    onChange(modes.filter((_, i) => i !== idx));
+  };
+
+  const updateMode = (idx: number, field: string, fieldValue: unknown) => {
+    const updated = modes.map((m, i) =>
+      i === idx ? { ...m, [field]: fieldValue } : m,
+    );
+    onChange(updated);
+  };
+
+  const updateDamage = (
+    idx: number,
+    subField: string,
+    fieldValue: number,
+  ) => {
+    const updated = modes.map((m, i) => {
+      if (i !== idx) return m;
+      return {
+        ...m,
+        damage: { ...(m.damage || { base: 0, impulse: 0, toughness: 0, flesh: 0, hurtable: 0 }), [subField]: fieldValue },
+      };
+    });
+    onChange(updated);
+  };
+
+  const inputClass =
+    "w-full h-9 bg-zinc-900 border border-zinc-800 rounded px-2.5 text-sm text-zinc-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder-zinc-600";
+  const damageLabelClass = "text-[9px] text-zinc-500 uppercase block mb-1 font-bold pl-1";
+
+  return (
+    <div className="space-y-3">
+      {modes.map((mode, idx) => (
+        <div
+          key={idx}
+          className="bg-zinc-900/30 border border-zinc-800/50 rounded-lg p-3 relative"
+        >
+          <button
+            className="absolute top-2 right-2 text-zinc-500 hover:text-red-500 transition-colors p-1"
+            onClick={() => removeMode(idx)}
+            title="删除模式"
+          >
+            <Icons.Trash />
+          </button>
+          <div className="grid grid-cols-2 gap-2.5">
+            <div>
+              <span className={damageLabelClass}>模式名</span>
+              <input
+                type="text"
+                className={inputClass}
+                value={mode.name || ""}
+                onChange={(e) => updateMode(idx, "name", e.target.value)}
+                placeholder="e.g. 浮游模式"
+              />
+            </div>
+            <div>
+              <span className={damageLabelClass}>射速 (可选)</span>
+              <input
+                type="number"
+                className={inputClass}
+                value={mode.fire_interval ?? ""}
+                onChange={(e) =>
+                  updateMode(
+                    idx,
+                    "fire_interval",
+                    e.target.value ? parseFloat(e.target.value) : undefined,
+                  )
+                }
+                placeholder="继承主模式"
+              />
+            </div>
+            <div>
+              <span className={damageLabelClass}>伤害标签 (可选)</span>
+              <input
+                type="text"
+                className={inputClass}
+                value={mode.label || ""}
+                onChange={(e) =>
+                  updateMode(idx, "label", e.target.value || undefined)
+                }
+                placeholder="e.g. 爆炸伤害"
+              />
+            </div>
+            <div>
+              <span className={damageLabelClass}>元素</span>
+              <select
+                className={inputClass}
+                value={mode.element || ""}
+                onChange={(e) =>
+                  updateMode(idx, "element", e.target.value || undefined)
+                }
+              >
+                <option value="">(继承主武器)</option>
+                {(FIELD_OPTIONS["element"] || []).map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Damage sub-object */}
+          <div className="mt-3 pt-3 border-t border-zinc-800/50">
+            <span className="text-[9px] text-zinc-500 uppercase block mb-2 font-bold pl-1">
+              伤害
+            </span>
+            <div className="grid grid-cols-3 gap-2">
+              {(["base", "impulse", "toughness", "flesh", "hurtable"] as const).map(
+                (key) => (
+                  <div key={key}>
+                    <span className={damageLabelClass}>{key}</span>
+                    <input
+                      type="number"
+                      className={inputClass}
+                      value={mode.damage?.[key] ?? ""}
+                      onChange={(e) =>
+                        updateDamage(
+                          idx,
+                          key,
+                          e.target.value ? parseFloat(e.target.value) : 0,
+                        )
+                      }
+                    />
+                  </div>
+                ),
+              )}
+            </div>
+          </div>
+
+          {/* Property fields */}
+          <div className="mt-3 pt-3 border-t border-zinc-800/50">
+            <div className="grid grid-cols-3 gap-2.5">
+              <div>
+                <span className={damageLabelClass}>元素异常概率</span>
+                <input
+                  type="number"
+                  className={inputClass}
+                  value={mode.element_add_rate ?? ""}
+                  onChange={(e) =>
+                    updateMode(
+                      idx,
+                      "element_add_rate",
+                      e.target.value ? parseFloat(e.target.value) : undefined,
+                    )
+                  }
+                />
+              </div>
+              <div>
+                <span className={damageLabelClass}>弱点倍率</span>
+                <input
+                  type="number"
+                  className={inputClass}
+                  value={mode.weakness_multiplier ?? ""}
+                  onChange={(e) =>
+                    updateMode(
+                      idx,
+                      "weakness_multiplier",
+                      e.target.value ? parseFloat(e.target.value) : undefined,
+                    )
+                  }
+                />
+              </div>
+              <div>
+                <span className={damageLabelClass}>破韧类型</span>
+                <select
+                  className={inputClass}
+                  value={mode.toughness_type || ""}
+                  onChange={(e) =>
+                    updateMode(idx, "toughness_type", e.target.value || undefined)
+                  }
+                >
+                  <option value="">(继承)</option>
+                  {(FIELD_OPTIONS["toughness_type"] || []).map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 mt-3 flex-wrap">
+              <label className="flex items-center gap-1.5 text-xs text-zinc-400 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={mode.enable_critical ?? false}
+                  onChange={(e) =>
+                    updateMode(idx, "enable_critical", e.target.checked)
+                  }
+                  className="rounded-sm bg-zinc-800 border-zinc-700 checked:bg-blue-500"
+                />
+                可暴击
+              </label>
+              <label className="flex items-center gap-1.5 text-xs text-zinc-400 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={mode.enable_weakness ?? false}
+                  onChange={(e) =>
+                    updateMode(idx, "enable_weakness", e.target.checked)
+                  }
+                  className="rounded-sm bg-zinc-800 border-zinc-700 checked:bg-blue-500"
+                />
+                弱点伤害
+              </label>
+              <label className="flex items-center gap-1.5 text-xs text-zinc-400 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={mode.ignore_shield ?? false}
+                  onChange={(e) =>
+                    updateMode(idx, "ignore_shield", e.target.checked)
+                  }
+                  className="rounded-sm bg-zinc-800 border-zinc-700 checked:bg-blue-500"
+                />
+                无视护盾
+              </label>
+            </div>
+            {/* Hidden storage field: element_debuff_type_id */}
+            <div className="mt-2 pt-2 border-t border-zinc-800/30">
+              <details className="group">
+                <summary className="text-[10px] text-zinc-600 hover:text-zinc-400 cursor-pointer select-none">
+                  高级 (存储但不显示)
+                </summary>
+                <div className="mt-2 grid grid-cols-2 gap-2">
+                  <div>
+                    <span className={damageLabelClass}>Element Debuff Type ID</span>
+                    <input
+                      type="number"
+                      className={inputClass}
+                      value={mode.element_debuff_type_id ?? ""}
+                      onChange={(e) =>
+                        updateMode(
+                          idx,
+                          "element_debuff_type_id",
+                          e.target.value ? parseInt(e.target.value) : undefined,
+                        )
+                      }
+                    />
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      ))}
+      <button
+        onClick={addMode}
+        className="w-full py-2 border border-dashed border-zinc-700 rounded-lg text-xs text-zinc-500 hover:text-zinc-300 hover:border-zinc-600 transition-colors flex items-center justify-center gap-1.5"
+      >
+        <Icons.Plus />
+        添加额外模式
+      </button>
+    </div>
+  );
+};
+
+// --- 多模式数据编辑器组件 ---
+
+type DamageModeEntry = {
+  mode: number;
+  name: string;
+  fire_interval?: number;
+  label?: string;
+  pellets?: number;
+  damage?: {
+    base: number;
+    impulse: number;
+    toughness: number;
+    flesh: number;
+    hurtable: number;
+  };
+  element?: string;
+  element_add_rate?: number;
+  weakness_multiplier?: number;
+  enable_critical?: boolean;
+  enable_weakness?: boolean;
+  toughness_type?: string;
+  ignore_shield?: boolean;
+  element_debuff_type_id?: number;
+};
+
+const DamageModesEditor = ({
+  value = [],
+  onChange,
+}: {
+  value: DamageModeEntry[];
+  onChange: (val: DamageModeEntry[]) => void;
+}) => {
+  const modes = Array.isArray(value) ? value : [];
+
+  const addMode = () => {
+    onChange([
+      ...modes,
+      {
+        mode: 1,
+        name: "",
+        damage: { base: 0, impulse: 0, toughness: 0, flesh: 0, hurtable: 0 },
+      },
+    ]);
+  };
+
+  const removeMode = (idx: number) => {
+    onChange(modes.filter((_, i) => i !== idx));
+  };
+
+  const updateMode = (idx: number, field: string, fieldValue: unknown) => {
+    const updated = modes.map((m, i) =>
+      i === idx ? { ...m, [field]: fieldValue } : m,
+    );
+    onChange(updated);
+  };
+
+  const updateDamage = (
+    idx: number,
+    subField: string,
+    fieldValue: number,
+  ) => {
+    const updated = modes.map((m, i) => {
+      if (i !== idx) return m;
+      return {
+        ...m,
+        damage: { ...(m.damage || { base: 0, impulse: 0, toughness: 0, flesh: 0, hurtable: 0 }), [subField]: fieldValue },
+      };
+    });
+    onChange(updated);
+  };
+
+  const inputClass =
+    "w-full h-9 bg-zinc-900 border border-zinc-800 rounded px-2.5 text-sm text-zinc-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder-zinc-600";
+  const damageLabelClass = "text-[9px] text-zinc-500 uppercase block mb-1 font-bold pl-1";
+
+  return (
+    <div className="space-y-3">
+      {modes.map((mode, idx) => (
+        <div
+          key={idx}
+          className="bg-zinc-900/30 border border-zinc-800/50 rounded-lg p-3 relative"
+        >
+          <button
+            className="absolute top-2 right-2 text-zinc-500 hover:text-red-500 transition-colors p-1"
+            onClick={() => removeMode(idx)}
+            title="删除模式"
+          >
+            <Icons.Trash />
+          </button>
+          <div className="grid grid-cols-2 gap-2.5">
+            <div>
+              <span className={damageLabelClass}>Mode 索引 (对应 PrototypeConfig)</span>
+              <input
+                type="number"
+                className={inputClass}
+                value={mode.mode ?? ""}
+                onChange={(e) =>
+                  updateMode(idx, "mode", e.target.value ? parseInt(e.target.value) : 0)
+                }
+              />
+            </div>
+            <div>
+              <span className={damageLabelClass}>模式名</span>
+              <input
+                type="text"
+                className={inputClass}
+                value={mode.name || ""}
+                onChange={(e) => updateMode(idx, "name", e.target.value)}
+                placeholder="e.g. 爆发模式"
+              />
+            </div>
+            <div>
+              <span className={damageLabelClass}>射速 (可选)</span>
+              <input
+                type="number"
+                className={inputClass}
+                value={mode.fire_interval ?? ""}
+                onChange={(e) =>
+                  updateMode(
+                    idx,
+                    "fire_interval",
+                    e.target.value ? parseFloat(e.target.value) : undefined,
+                  )
+                }
+                placeholder="继承主模式"
+              />
+            </div>
+            <div>
+              <span className={damageLabelClass}>弹丸数 (可选)</span>
+              <input
+                type="number"
+                className={inputClass}
+                value={mode.pellets ?? ""}
+                onChange={(e) =>
+                  updateMode(
+                    idx,
+                    "pellets",
+                    e.target.value ? parseInt(e.target.value) : undefined,
+                  )
+                }
+                placeholder="继承主模式"
+              />
+            </div>
+            <div>
+              <span className={damageLabelClass}>伤害标签 (可选)</span>
+              <input
+                type="text"
+                className={inputClass}
+                value={mode.label || ""}
+                onChange={(e) =>
+                  updateMode(idx, "label", e.target.value || undefined)
+                }
+                placeholder="e.g. 爆炸伤害"
+              />
+            </div>
+            <div>
+              <span className={damageLabelClass}>元素</span>
+              <select
+                className={inputClass}
+                value={mode.element || ""}
+                onChange={(e) =>
+                  updateMode(idx, "element", e.target.value || undefined)
+                }
+              >
+                <option value="">(继承主武器)</option>
+                {(FIELD_OPTIONS["element"] || []).map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Damage sub-object */}
+          <div className="mt-3 pt-3 border-t border-zinc-800/50">
+            <span className="text-[9px] text-zinc-500 uppercase block mb-2 font-bold pl-1">
+              伤害
+            </span>
+            <div className="grid grid-cols-3 gap-2">
+              {(["base", "impulse", "toughness", "flesh", "hurtable"] as const).map(
+                (key) => (
+                  <div key={key}>
+                    <span className={damageLabelClass}>{key}</span>
+                    <input
+                      type="number"
+                      className={inputClass}
+                      value={mode.damage?.[key] ?? ""}
+                      onChange={(e) =>
+                        updateDamage(
+                          idx,
+                          key,
+                          e.target.value ? parseFloat(e.target.value) : 0,
+                        )
+                      }
+                    />
+                  </div>
+                ),
+              )}
+            </div>
+          </div>
+
+          {/* Property fields */}
+          <div className="mt-3 pt-3 border-t border-zinc-800/50">
+            <div className="grid grid-cols-3 gap-2.5">
+              <div>
+                <span className={damageLabelClass}>元素异常概率</span>
+                <input
+                  type="number"
+                  className={inputClass}
+                  value={mode.element_add_rate ?? ""}
+                  onChange={(e) =>
+                    updateMode(
+                      idx,
+                      "element_add_rate",
+                      e.target.value ? parseFloat(e.target.value) : undefined,
+                    )
+                  }
+                />
+              </div>
+              <div>
+                <span className={damageLabelClass}>弱点倍率</span>
+                <input
+                  type="number"
+                  className={inputClass}
+                  value={mode.weakness_multiplier ?? ""}
+                  onChange={(e) =>
+                    updateMode(
+                      idx,
+                      "weakness_multiplier",
+                      e.target.value ? parseFloat(e.target.value) : undefined,
+                    )
+                  }
+                />
+              </div>
+              <div>
+                <span className={damageLabelClass}>破韧类型</span>
+                <select
+                  className={inputClass}
+                  value={mode.toughness_type || ""}
+                  onChange={(e) =>
+                    updateMode(idx, "toughness_type", e.target.value || undefined)
+                  }
+                >
+                  <option value="">(继承)</option>
+                  {(FIELD_OPTIONS["toughness_type"] || []).map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 mt-3 flex-wrap">
+              <label className="flex items-center gap-1.5 text-xs text-zinc-400 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={mode.enable_critical ?? false}
+                  onChange={(e) =>
+                    updateMode(idx, "enable_critical", e.target.checked)
+                  }
+                  className="rounded-sm bg-zinc-800 border-zinc-700 checked:bg-blue-500"
+                />
+                可暴击
+              </label>
+              <label className="flex items-center gap-1.5 text-xs text-zinc-400 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={mode.enable_weakness ?? false}
+                  onChange={(e) =>
+                    updateMode(idx, "enable_weakness", e.target.checked)
+                  }
+                  className="rounded-sm bg-zinc-800 border-zinc-700 checked:bg-blue-500"
+                />
+                弱点伤害
+              </label>
+              <label className="flex items-center gap-1.5 text-xs text-zinc-400 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={mode.ignore_shield ?? false}
+                  onChange={(e) =>
+                    updateMode(idx, "ignore_shield", e.target.checked)
+                  }
+                  className="rounded-sm bg-zinc-800 border-zinc-700 checked:bg-blue-500"
+                />
+                无视护盾
+              </label>
+            </div>
+            <div className="mt-2 pt-2 border-t border-zinc-800/30">
+              <details className="group">
+                <summary className="text-[10px] text-zinc-600 hover:text-zinc-400 cursor-pointer select-none">
+                  高级 (存储但不显示)
+                </summary>
+                <div className="mt-2 grid grid-cols-2 gap-2">
+                  <div>
+                    <span className={damageLabelClass}>Element Debuff Type ID</span>
+                    <input
+                      type="number"
+                      className={inputClass}
+                      value={mode.element_debuff_type_id ?? ""}
+                      onChange={(e) =>
+                        updateMode(
+                          idx,
+                          "element_debuff_type_id",
+                          e.target.value ? parseInt(e.target.value) : undefined,
+                        )
+                      }
+                    />
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      ))}
+      <button
+        onClick={addMode}
+        className="w-full py-2 border border-dashed border-zinc-700 rounded-lg text-xs text-zinc-500 hover:text-zinc-300 hover:border-zinc-600 transition-colors flex items-center justify-center gap-1.5"
+      >
+        <Icons.Plus />
+        添加多模式
+      </button>
+    </div>
+  );
+};
+
+// --- 模式名编辑器组件 ---
+const ModeNamesEditor = ({
+  value,
+  onChange,
+}: {
+  value: Record<string, string>;
+  onChange: (val: Record<string, string>) => void;
+}) => {
+  const entries = value && typeof value === "object" ? value : {};
+  const list = Object.entries(entries);
+
+  const updateEntry = (oldKey: string, newKey: string, name: string) => {
+    const next: Record<string, string> = {};
+    for (const [k, v] of Object.entries(entries)) {
+      if (k === oldKey) {
+        if (newKey) next[newKey] = name;
+      } else {
+        next[k] = v;
+      }
+    }
+    onChange(next);
+  };
+
+  const addEntry = () => {
+    const nextKey = String(list.length);
+    onChange({ ...entries, [nextKey]: "" });
+  };
+
+  const removeEntry = (key: string) => {
+    const next: Record<string, string> = {};
+    for (const [k, v] of Object.entries(entries)) {
+      if (k !== key) next[k] = v;
+    }
+    onChange(next);
+  };
+
+  const inputClass =
+    "w-full h-8 bg-zinc-900 border border-zinc-800 rounded px-2 text-sm text-zinc-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder-zinc-600";
+
+  return (
+    <div className="space-y-2">
+      {list.map(([k, v]) => (
+        <div key={k} className="flex items-center gap-2">
+          <span className="text-[10px] text-zinc-500 w-12 text-right shrink-0">
+            Mode {k}
+          </span>
+          <input
+            type="text"
+            className={inputClass}
+            value={v || ""}
+            onChange={(e) => updateEntry(k, k, e.target.value)}
+            placeholder="模式显示名"
+          />
+          <button
+            className="text-zinc-500 hover:text-red-500 transition-colors shrink-0 p-1"
+            onClick={() => removeEntry(k)}
+            title="删除"
+          >
+            <Icons.Trash />
+          </button>
+        </div>
+      ))}
+      <button
+        onClick={addEntry}
+        className="w-full py-1.5 border border-dashed border-zinc-700 rounded-lg text-xs text-zinc-500 hover:text-zinc-300 hover:border-zinc-600 transition-colors flex items-center justify-center gap-1"
+      >
+        <Icons.Plus />
+        添加模式名
+      </button>
+    </div>
+  );
+};
+
 // --- 自定义下拉组件 ---
 const CustomSelect = ({
   value,
@@ -625,6 +1384,54 @@ export default function EditorPage() {
     const inputBaseClass =
       "w-full h-10 bg-zinc-900 border border-zinc-800 rounded-md px-3 text-sm text-zinc-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all placeholder-zinc-600";
 
+    if (type === "damage_label") {
+      return (
+        <div key={key}>
+          <label className={labelClass}>{formatLabel(key)}</label>
+          <DamageLabelSelect
+            value={typeof value === "number" ? value : 0}
+            onChange={(val) => handleChange(key, val)}
+          />
+        </div>
+      );
+    }
+
+    if (type === "extra_modes") {
+      return (
+        <div key={key} className="col-span-1 md:col-span-2">
+          <label className={labelClass}>{formatLabel(key)}</label>
+          <ExtraModesEditor
+            value={Array.isArray(value) ? value : []}
+            onChange={(val) => handleChange(key, val)}
+          />
+        </div>
+      );
+    }
+
+    if (type === "damage_modes") {
+      return (
+        <div key={key} className="col-span-1 md:col-span-2">
+          <label className={labelClass}>{formatLabel(key)}</label>
+          <DamageModesEditor
+            value={Array.isArray(value) ? value : []}
+            onChange={(val) => handleChange(key, val)}
+          />
+        </div>
+      );
+    }
+
+    if (type === "mode_names") {
+      return (
+        <div key={key} className="col-span-1 md:col-span-2">
+          <label className={labelClass}>{formatLabel(key)}</label>
+          <ModeNamesEditor
+            value={value && typeof value === "object" ? value : {}}
+            onChange={(val) => handleChange(key, val)}
+          />
+        </div>
+      );
+    }
+
     if (type === "select" && options) {
       const hasIcons = key === "element";
       return (
@@ -908,13 +1715,14 @@ export default function EditorPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       {currentSchema.fieldOrder.map((key) => {
-                        // pellets 只在霰弹枪时显示
                         if (key === "pellets" && formData.weapon_type !== "霰弹枪") {
                           return null;
                         }
-                        // explosion_range 只在单发榴弹、连发榴弹、火箭发射器时显示
                         if (key === "explosion_range" &&
                             !["单发榴弹", "连发榴弹", "火箭发射器"].includes(formData.weapon_type)) {
+                          return null;
+                        }
+                        if (key === "damage_label_text" && formData.damage_label !== 2) {
                           return null;
                         }
                         return renderField(key);
