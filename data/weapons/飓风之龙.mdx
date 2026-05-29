@@ -36,14 +36,96 @@ ignore_shield: false
 element_add_rate: 0.06
 skill_cooldown: 25
 pellets: 6
+mode_names:
+  0: 霰弹射击
+  1: 龙炎弹
+  2: 霰弹四连发
+  3: 龙炎弹四连发
+damage_modes:
+  - mode: 1
+    name: 龙炎弹
+    fire_interval: 0.75
+    pellets: 5
+    damage:
+      base: 0.3
+      impulse: 3
+      toughness: 3
+      flesh: 3
+      hurtable: 3
+    element: 火焰
+    element_add_rate: 0.15
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 extra_modes:
   - name: 龙炎弹爆炸
-    numerical_id: 120300112
     fire_interval: 0
     label: 爆炸伤害
+    damage:
+      base: 0.05
+      impulse: 0.5
+      toughness: 0.5
+      flesh: 0.5
+      hurtable: 0.5
+    element: 火焰
+    element_add_rate: 0.025
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
   - name: 索命龙炎
-    numerical_id: 120300113
     fire_interval: 0
+    damage:
+      base: 0.18
+      impulse: 1.8
+      toughness: 1.8
+      flesh: 1.8
+      hurtable: 1.8
+    element: 火焰
+    element_add_rate: 0.09
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - name: 霰弹四连发
+    fire_interval: 0.33
+    damage:
+      base: 0.11
+      impulse: 1
+      toughness: 1
+      flesh: 0.8
+      hurtable: 0.8
+    element: 火焰
+    element_add_rate: 0.06
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - name: 龙炎弹四连发
+    fire_interval: 0.5
+    damage:
+      base: 0.3
+      impulse: 3
+      toughness: 3
+      flesh: 3
+      hurtable: 3
+    element: 火焰
+    element_add_rate: 0.15
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 weapon_type_id: 3
 prototype_id: '20003000011'
 active_skill_id: 5101501

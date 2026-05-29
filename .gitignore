@@ -45,6 +45,7 @@ next-env.d.ts
 /refs
 /CLAUDE.md
 /log.txt
+/MD
 
 # generated indexes
 /public/search-index.json

@@ -5,13 +5,20 @@
 // 1. 定义字段在编辑器中的显示顺序 (及保存顺序)
 export const FIELD_ORDER = [
   "title",
+  "prototype_id",
   "use_type",
   "weapon_type",
   "element",
   "rarity",
   "tags",
   "scope",
-  // 核心数值放在中间
+  // 伤害标签与额外模式
+  "damage_label",
+  "damage_label_text",
+  "mode_names",
+  "damage_modes",
+  "extra_modes",
+  // 旧字段（游戏数据缺失时的回退值）
   "damage",
   "toughness_type",
   "enable_critical",
@@ -40,8 +47,14 @@ export const FIELD_TYPES: Record<string, string> = {
   // 数组 (Tags 输入框)
   tags: "array",
 
-  // 复杂对象 (5个数值输入框)
+  // 复杂对象
   damage: "damage_object",
+  extra_modes: "extra_modes",
+  damage_modes: "damage_modes",
+  mode_names: "mode_names",
+
+  // 伤害标签下拉
+  damage_label: "damage_label",
 
   // 下拉菜单 (Select) - 必须在这里标记为 'select'
   rarity: "select",

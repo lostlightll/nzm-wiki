@@ -30,9 +30,22 @@ skill_cooldown: 20
 pellets: ''
 extra_modes:
   - name: 酸液手雷
-    numerical_id: 1400110101
     fire_interval: 0
     label: 技能伤害
+    damage:
+      base: 0.5
+      impulse: 2
+      toughness: 0.05
+      flesh: 0
+      hurtable: 5
+    element: 腐蚀
+    element_add_rate: 1
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 weapon_type_id: 1
 prototype_id: '20001000009'
 active_skill_id: 5001101

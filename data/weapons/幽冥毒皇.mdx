@@ -9,6 +9,25 @@ tags:
 scope: 中倍镜
 weapon_type_id: 6
 prototype_id: '20006000006'
+damage_modes:
+  - mode: 1
+    name: 榴弹模式
+    label: 爆炸伤害
+    fire_interval: 0.8
+    damage:
+      base: 0.45
+      impulse: 3
+      toughness: 3
+      flesh: 3
+      hurtable: 3
+    element: 腐蚀
+    element_add_rate: 0.3
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 active_skill_id: 5102201
 damage:
   base: 0.115
