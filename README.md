@@ -4,7 +4,7 @@
 
 > Fork 自 [qiekn/nzm-wiki](https://github.com/qiekn/nzm-wiki)，原作者 [@qiekn](https://github.com/qiekn) 保留版权。原项目更新节奏较慢且部分枪械数据不够清晰，于是分叉出来按自己的需求调整。
 
-在线访问：[nzm-wiki.pages.dev](https://nzm-wiki.pages.dev)
+在线访问：暂无打算
 
 ## 技术栈
 
