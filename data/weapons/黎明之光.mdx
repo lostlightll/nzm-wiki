@@ -1,14 +1,32 @@
 ---
 title: 黎明之光
+prototype_id: '20005000001'
 use_type: 主武器
 weapon_type: 冲锋枪
 element: 电弧
 rarity: 史诗
 tags: ''
 scope: 低倍镜
-weapon_type_id: 5
-prototype_id: '20005000001'
-active_skill_id: 5003001
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.15
+    damage:
+      base: 0.079
+      impulse: 1.3
+      toughness: 1.3
+      flesh: 1.1
+      hurtable: 1.1
+    element: 电弧
+    element_add_rate: 0.084
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 damage:
   base: 0.079
   impulse: 1.3
@@ -30,6 +48,8 @@ ignore_shield: false
 element_add_rate: 0.084
 skill_cooldown: 30
 pellets: ''
+weapon_type_id: 5
+active_skill_id: 5003001
 ---
 
 <WeaponSkill>

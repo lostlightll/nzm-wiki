@@ -1,18 +1,135 @@
 ---
 title: 夜影之逝
+prototype_id: '20003000024'
 use_type: 主武器
 weapon_type: 霰弹枪
 element: 电弧
 rarity: 传说
 tags:
-  # - 可切刀
   - 连斩
-  # - 剑气
-  # - 近战回血
 scope: 低倍镜
-weapon_type_id: 3
-prototype_id: '20003000024'
-active_skill_id: 5103001
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  '1': 右键近战
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.33
+    pellets: 6
+    damage:
+      base: 0.089
+      impulse: 1.1
+      toughness: 1.1
+      flesh: 0.9
+      hurtable: 0.9
+    element: 电弧
+    element_add_rate: 0.062
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 右键近战
+    damage:
+      base: 1.965
+      impulse: 24.3
+      toughness: 24.3
+      flesh: 19.9
+      hurtable: 19.9
+    element: 电弧
+    element_add_rate: 1.3689
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+extra_modes:
+  - name: 切刀近战
+    damage:
+      base: 1.5
+      impulse: 22.3
+      toughness: 22.3
+      flesh: 18.2
+      hurtable: 18.2
+    element: 电弧
+    element_add_rate: 1.0
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+  - name: 贯长虹剑气
+    damage:
+      base: 13
+      impulse: 56.5
+      toughness: 56.5
+      flesh: 46.2
+      hurtable: 46.2
+    element: 电弧
+    element_add_rate: 1.0
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+  - name: 连斩前7刀
+    damage:
+      base: 0.27
+      impulse: 13.8
+      toughness: 13.8
+      flesh: 11.3
+      hurtable: 11.3
+    element: 电弧
+    element_add_rate: 0.7792
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+  - name: 连斩第8刀
+    damage:
+      base: 0.57
+      impulse: 28.8
+      toughness: 28.8
+      flesh: 23.6
+      hurtable: 23.6
+    element: 电弧
+    element_add_rate: 1.0
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+  - name: 近战回血
+    label: 护盾回复
+    damage:
+      base: 0.3
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
 damage:
   base: 0.089
   impulse: 1.1
@@ -34,6 +151,8 @@ ignore_shield: false
 element_add_rate: 0.062
 skill_cooldown: 35
 pellets: 6
+weapon_type_id: 3
+active_skill_id: 5103001
 ---
 
 > TODO(qiekn): 技能图标
@@ -64,6 +183,6 @@ pellets: 6
   右键近战 **982.5**  
   切刀近战 **750**  
   连斩前 7 刀单刀 **135**，第 8 刀 **285**  
-  剑气插件 **3150**  
+  剑气插件 **6500**  
   近战回血系数为 **0.3**
 </Callout>

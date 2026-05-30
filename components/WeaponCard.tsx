@@ -26,6 +26,13 @@ function round1(n: number): string {
   return (Math.round(n * 10) / 10).toFixed(1);
 }
 
+/** 百分比格式化：整数去小数，非整数1位 */
+function formatPercent(rate: number): string {
+  const pct = Math.round(rate * 100 * 10) / 10; // round to 1 decimal
+  if (Math.abs(pct - Math.round(pct)) < 0.001) return String(Math.round(pct));
+  return pct.toFixed(1);
+}
+
 /** 最多保留 2 位小数，尾部 0 去掉，至少保 1 位 */
 function formatPrecise(n: number): string {
   const fixed = (Math.round(n * 100) / 100).toFixed(2);
@@ -157,7 +164,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">射速</span>
-            <span className="text-white">{Math.round(calcRPM(mode))} RPM</span>
+            <span className="text-white">{Math.round(calcRPM(mode))}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">弹夹</span>
@@ -252,7 +259,7 @@ function ModeStats({
             label="元素异常概率"
             value={
               mode.elementAddRate > 0
-                ? `${round1(mode.elementAddRate * 100)}%`
+                ? `${formatPercent(mode.elementAddRate)}%`
                 : "-"
             }
           />
@@ -268,7 +275,7 @@ function ModeStats({
             label="元素异常概率"
             value={
               mode.elementAddRate > 0
-                ? `${round1(mode.elementAddRate * 100)}%`
+                ? `${formatPercent(mode.elementAddRate)}%`
                 : "-"
             }
           />
@@ -298,7 +305,7 @@ function Stat({ label, value }: { label: string; value: string }) {
 function SkillSection({ weapon }: { weapon: Weapon }) {
   const [expanded, setExpanded] = useState(false);
   const modes = weapon.extraModes!;
-  const collapsible = modes.length >= 3;
+  const collapsible = modes.length > 3;
   const visible = collapsible && !expanded ? modes.slice(0, 2) : modes;
   const hiddenCount = modes.length - 2;
 
@@ -413,7 +420,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
                 : "text-zinc-400")
             }
           >
-            射击模式
+            普通射击
           </h2>
           <ModeStats mode={weapon.damageModes[0]} showName={false} />
         </div>

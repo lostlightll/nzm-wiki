@@ -1,14 +1,68 @@
 ---
 title: 再生冷却
+prototype_id: '20003000012'
 use_type: 主武器
 weapon_type: 霰弹枪
 element: 寒冷
 rarity: 传说
 tags: null
 scope: 不可开镜
-weapon_type_id: 3
-prototype_id: '20003000012'
-active_skill_id: 5002901
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.4
+    pellets: 6
+    damage:
+      base: 0.121
+      impulse: 1.5
+      toughness: 1.5
+      flesh: 1.2
+      hurtable: 1.2
+    element: 寒冷
+    element_add_rate: 0.057
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 冰弹命中
+    label: 技能伤害
+    damage:
+      base: 0.2
+      impulse: 0
+      toughness: 0
+      flesh: 2
+      hurtable: 2
+    element: 寒冷
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+  - name: 碎冰
+    label: 技能伤害
+    damage:
+      base: 0.6
+      impulse: 0
+      toughness: 0
+      flesh: 6
+      hurtable: 6
+    element: 寒冷
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
 damage:
   base: 0.121
   impulse: 1.5
@@ -30,6 +84,8 @@ ignore_shield: false
 element_add_rate: 0.057
 skill_cooldown: 30
 pellets: 6
+weapon_type_id: 3
+active_skill_id: 5002901
 ---
 
 <WeaponSkill>

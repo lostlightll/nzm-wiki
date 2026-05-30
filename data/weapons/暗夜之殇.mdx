@@ -1,11 +1,53 @@
 ---
 title: 暗夜之殇
+prototype_id: '20005000018'
 use_type: 副武器
 weapon_type: 手枪
 element: 火焰
 rarity: 传说
-tags: 快速连发
+tags:
+  - 快速连发
 scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  '1': 爆炸弹
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.07
+    damage:
+      base: 0.723
+      impulse: 6
+      toughness: 6
+      flesh: 8.9
+      hurtable: 8.9
+    element: 火焰
+    element_add_rate: 0.385
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 爆炸弹
+    label: 技能伤害
+    damage:
+      base: 0.7
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 火焰
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
 damage:
   base: 0.723
   impulse: 6
@@ -27,24 +69,7 @@ ignore_shield: false
 element_add_rate: 0.385
 skill_cooldown: 30
 pellets: null
-extra_modes:
-  - name: 爆炸弹
-    damage:
-      base: 0.7
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 火焰
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
 weapon_type_id: 0
-prototype_id: '00000000000'
 active_skill_id: 0
 ---
 
@@ -68,4 +93,3 @@ active_skill_id: 0
     弹仓内的第一发子弹为爆炸弹，造成 <Yellow>70%</Yellow> 攻击力伤害，并且让敌人受到的豁然伤害提升 <Yellow>5%</Yellow>，持续 <Yellow>6s</Yellow>。
   </PassiveSkill>
 </WeaponSkill>
-

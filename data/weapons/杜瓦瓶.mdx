@@ -1,5 +1,6 @@
 ---
 title: 杜瓦瓶
+prototype_id: '20015000001'
 use_type: 主武器
 weapon_type: 喷射器
 element: 寒冷
@@ -7,6 +8,26 @@ rarity: 史诗
 tags:
   - 弹夹容量
 scope: 不可开镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.05
+    damage:
+      base: 0.032
+      impulse: 0.8
+      toughness: 0.8
+      flesh: 0.7
+      hurtable: 0.7
+    element: 寒冷
+    element_add_rate: 0.035
+    weakness_multiplier: 1.1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 damage:
   base: 0.032
   impulse: 0.8
@@ -29,7 +50,6 @@ element_add_rate: 0.035
 skill_cooldown: 30
 pellets: null
 weapon_type_id: 15
-prototype_id: '20015000001'
 active_skill_id: 5101101
 ---
 

@@ -1,14 +1,49 @@
 ---
 title: 元宵来袭
+prototype_id: '20005000018'
 use_type: 主武器
 weapon_type: 冲锋枪
 element: 物理
 rarity: 传说
 tags: null
 scope: 低倍镜
-weapon_type_id: 5
-prototype_id: '20005000018'
-active_skill_id: 5002801
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.07
+    damage:
+      base: 0.086
+      impulse: 1.2
+      toughness: 1.2
+      flesh: 1.0
+      hurtable: 1.0
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 汤圆命中
+    fire_interval: 0
+    damage:
+      base: 0.137
+      impulse: 1.9
+      toughness: 1.9
+      flesh: 1.6
+      hurtable: 1.6
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 damage:
   base: 0.086
   impulse: 1.2
@@ -30,6 +65,8 @@ ignore_shield: false
 element_add_rate: 0
 skill_cooldown: 35
 pellets: null
+weapon_type_id: 5
+active_skill_id: 5002801
 ---
 
 <WeaponSkill>

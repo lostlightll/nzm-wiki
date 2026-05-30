@@ -1,5 +1,6 @@
 ---
 title: 战争矩阵
+prototype_id: '20007000024'
 use_type: 副武器
 weapon_type: 手枪
 element: 物理
@@ -7,9 +8,26 @@ rarity: 传说
 tags:
   - 浮空
 scope: 低倍镜
-weapon_type_id: 7
-prototype_id: '20007000024'
-active_skill_id: 5102601
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.166
+    damage:
+      base: 0.22
+      impulse: 2.9
+      toughness: 2.9
+      flesh: 2.7
+      hurtable: 2.7
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 damage:
   base: 0.22
   toughness: 2.9
@@ -31,6 +49,8 @@ ignore_shield: flase
 element_add_rate: 0
 skill_cooldown: 20
 pellets: null
+weapon_type_id: 7
+active_skill_id: 5102601
 ---
 
 <WeaponSkill>

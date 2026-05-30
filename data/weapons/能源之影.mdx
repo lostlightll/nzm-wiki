@@ -1,5 +1,6 @@
 ---
 title: 能源之影
+prototype_id: '20007000015'
 use_type: 副武器
 weapon_type: 手枪
 element: 电弧
@@ -7,9 +8,76 @@ rarity: 传说
 tags:
   - 掷枪
 scope: 低倍镜
-weapon_type_id: 7
-prototype_id: '20007000015'
-active_skill_id: 5102001
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.23
+    damage:
+      base: 0.238
+      impulse: 3.5
+      toughness: 3.5
+      flesh: 3.7
+      hurtable: 3.7
+    element: 电弧
+    element_add_rate: 0.227
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 浮游模式
+    fire_interval: 0.65
+    damage:
+      base: 0.7
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 电弧
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - name: 换弹爆炸
+    label: 爆炸伤害
+    damage:
+      base: 0.54
+      impulse: 5.4
+      toughness: 5.4
+      flesh: 5.4
+      hurtable: 5.4
+    element: 电弧
+    element_add_rate: 0.27
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+  - name: 强袭激光
+    damage:
+      base: 0.7
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 电弧
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
 damage:
   base: 0.238
   impulse: 3.5
@@ -31,23 +99,8 @@ ignore_shield: null
 element_add_rate: 0.227
 skill_cooldown: 45
 pellets: null
-extra_modes:
-  - name: 浮游模式
-    fire_interval: 0.65
-    damage:
-      base: 0.7
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 电弧
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
+weapon_type_id: 7
+active_skill_id: 5102001
 ---
 
 

@@ -1,5 +1,6 @@
 ---
 title: 黑克勒45
+prototype_id: '20005000002'
 use_type: 主武器
 weapon_type: 冲锋枪
 element: 火焰
@@ -7,9 +8,26 @@ rarity: 史诗
 tags:
   - 元素异常
 scope: 低倍镜
-weapon_type_id: 5
-prototype_id: '20005000002'
-active_skill_id: 5001001
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.08
+    damage:
+      base: 0.062
+      impulse: 1.3
+      toughness: 1.3
+      flesh: 1
+      hurtable: 1
+    element: 火焰
+    element_add_rate: 0.161
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 1
 damage:
   base: 0.062
   impulse: 1.3
@@ -31,6 +49,8 @@ ignore_shield: false
 element_add_rate: 0.161
 skill_cooldown: 50
 pellets: ''
+weapon_type_id: 5
+active_skill_id: 5001001
 ---
 
 <WeaponSkill>

@@ -1,5 +1,6 @@
 ---
 title: 生命线
+prototype_id: '20008000002'
 use_type: 副武器
 weapon_type: 单发榴弹
 element: 寒冷
@@ -7,9 +8,60 @@ rarity: 史诗
 tags:
   - 命中爆炸
 scope: 低倍镜
-weapon_type_id: 8
-prototype_id: '20008000002'
-active_skill_id: 5100801
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  '0': 榴弹命中
+  '1': 榴弹爆炸
+damage_modes:
+  - mode: 0
+    name: 榴弹命中
+    fire_interval: 0.6
+    damage:
+      base: 0.3935
+      impulse: 9.84
+      toughness: 9.84
+      flesh: 25.6
+      hurtable: 7.68
+    element: 寒冷
+    element_add_rate: 0.3495
+    weakness_multiplier: 1.1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 榴弹爆炸
+    label: 爆炸伤害
+    damage:
+      base: 0.787
+      impulse: 9.84
+      toughness: 9.84
+      flesh: 0
+      hurtable: 7.68
+    element: 寒冷
+    element_add_rate: 0.2097
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+extra_modes:
+  - name: 冰池Dot
+    damage:
+      base: 0.04
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 寒冷
+    element_add_rate: 0
+    enable_critical: false
+    fire_interval: 0
+    label: 灼烧伤害
 damage:
   base: 0.3935
   impulse: 9.84
@@ -31,6 +83,8 @@ ignore_shield: false
 element_add_rate: 0.5245
 skill_cooldown: 35
 pellets: ''
+weapon_type_id: 8
+active_skill_id: 5100801
 ---
 
 <WeaponSkill>
@@ -55,7 +109,7 @@ pellets: ''
 
 <Callout color="yellow">赛季天赋极速狂热触发时可以按住连发，收割者不行。</Callout>
 
-命中伤害 **216.75**，爆炸伤害 **393.5**，破韧伤害都是 **9.84**
+命中伤害 **196.75**，爆炸伤害 **393.5**，破韧伤害都是 **9.84**
 
 被动 **如履薄冰** 榴弹爆炸时在地上留下一个半径 **4** 米的冰池，进入冰池的敌人每秒受到 **20** 伤害
 
