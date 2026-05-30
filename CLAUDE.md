@@ -20,6 +20,15 @@ nzm-wiki is a wiki website for the pve fps game "逆战未来" (Nizhan: Future),
 
 当我发送的前缀为 NZM/Content/ 的路径，实际对应的位置是 ./refs/Exports/NZM/Content/
 
+## 项目文档
+
+`MD/` 目录存放项目规划、设计记录等文档。当前索引：
+
+| 文件 | 说明 |
+|:---|:---|
+| [MD/PLAN-WEAPON.md](MD/PLAN-WEAPON.md) | 武器数据管线改造规划与进度 |
+| [MD/IDEAS.md](MD/IDEAS.md) | 灵感记录，每条一句话 |
+
 ## Development Commands
 
 ```bash

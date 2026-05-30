@@ -42,7 +42,7 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
       (weapon.weapon_type && typeState.selected.has(weapon.weapon_type));
     const elementMatch =
       elementState.selected.size === 0 ||
-      elementState.selected.has(weapon.element);
+      elementState.selected.has(weapon.damageModes[0]?.element);
     const rarityMatch =
       rarityState.selected.size === 0 ||
       (weapon.rarity && rarityState.selected.has(weapon.rarity));
