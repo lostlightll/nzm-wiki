@@ -1,14 +1,53 @@
 ---
 title: 春雷震
+prototype_id: '20016000006'
 use_type: 主武器
 weapon_type: 单发榴弹
 element: 火焰
 rarity: 传说
 tags: null
 scope: 低倍镜
-weapon_type_id: 16
-prototype_id: '20016000006'
-active_skill_id: 5003101
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  '0': 榴弹命中
+  '1': 榴弹爆炸
+damage_modes:
+  - mode: 0
+    name: 榴弹命中
+    fire_interval: 0.5
+    damage:
+      base: 0
+      impulse: 0
+      toughness: 0
+      flesh: 9
+      hurtable: 2.7
+    element: 火焰
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 榴弹爆炸
+    label: 爆炸伤害
+    damage:
+      base: 0.419
+      impulse: 4.48
+      toughness: 4.48
+      flesh: 0
+      hurtable: 2.7
+    element: 火焰
+    element_add_rate: 0.2151
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
 damage:
   base: 0.419
   impulse: 4.48
@@ -30,6 +69,8 @@ ignore_shield: null
 element_add_rate: 0.2151
 skill_cooldown: null
 pellets: null
+weapon_type_id: 16
+active_skill_id: 5003101
 ---
 
 <WeaponSkill>

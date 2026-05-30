@@ -303,21 +303,15 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
     // New NumericalID → weapon fire mode (damageModes)
     // Already-seen NumericalID → fire-rate variant / alt-fire (extraModes)
     if (primaryDamageMode) {
-      const seenIds = new Set([primaryMode.numericalId]);
-      const otherModes = protoModes.filter((m) => m !== primaryMode);
-
-      for (const m of otherModes) {
-        const mdxData = damageModesMDX.get(m.mode);
-        const built = mdxData
-          ? buildModeFromMDXEntry(mdxData, primaryDamageMode.fireIntervalBase)
-          : buildModeFromGameData(m, weaponTitle, m.mode, modeNames);
-        if (!built) continue;
-        if (seenIds.has(m.numericalId)) {
-          (extraModes ??= []).push(built);
-        } else {
-          seenIds.add(m.numericalId);
-          damageModes.push(built);
-        }
+      // Process damage_modes entries not in PrototypeConfig (e.g. ExplosionNumericalID components)
+      const protoModeIndices = new Set(protoModes.map((m) => m.mode));
+      for (const [modeIdx, mdxData] of damageModesMDX) {
+        if (protoModeIndices.has(modeIdx)) continue;
+        const built = buildModeFromMDXEntry(
+          mdxData,
+          primaryDamageMode.fireIntervalBase
+        );
+        if (built) damageModes.push(built);
       }
     }
 
@@ -328,11 +322,7 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
         .map((s) => buildModeFromMDXEntry(s, defaultInterval))
         .filter((m): m is DamageMode => m !== null);
       if (built.length > 0) {
-        const mdxNames = new Set(built.map((m) => m.name));
-        const filteredGameModes = (extraModes || []).filter(
-          (m) => !mdxNames.has(m.name)
-        );
-        extraModes = [...built, ...filteredGameModes];
+        extraModes = built;
       }
     }
   } else {

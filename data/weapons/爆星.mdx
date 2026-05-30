@@ -1,5 +1,6 @@
 ---
 title: 爆星
+prototype_id: '20019000004'
 use_type: 主武器
 weapon_type: 暗器
 element: 物理
@@ -8,6 +9,45 @@ tags:
   - 暗器
   - 黏弹
 scope: 不可开镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 黏弹射击
+    fire_interval: 0.4
+    pellets: 3
+    damage:
+      base: 0.104
+      impulse: 1.52
+      toughness: 1.52
+      flesh: 3
+      hurtable: 0.9
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 黏弹爆炸
+    fire_interval: 0
+    label: 爆炸伤害
+    damage:
+      base: 0.208
+      impulse: 1.52
+      toughness: 1.52
+      flesh: 0
+      hurtable: 0.9
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 damage:
   base: 0.104
   impulse: 1.52
@@ -30,7 +70,6 @@ element_add_rate: 0
 skill_cooldown: 50
 pellets: null
 weapon_type_id: 19
-prototype_id: '20019000004'
 active_skill_id: 5004501
 ---
 

@@ -1,14 +1,32 @@
 ---
 title: 钢铁骑士
+prototype_id: '20005000008'
 use_type: 主武器
 weapon_type: 冲锋枪
 element: 物理
 rarity: 史诗
 tags: ''
 scope: ''
-weapon_type_id: 5
-prototype_id: '20005000008'
-active_skill_id: 5002001
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.0923
+    damage:
+      base: 0.111
+      impulse: 1.6
+      toughness: 1.6
+      flesh: 1.3
+      hurtable: 1.3
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 damage:
   base: 0.111
   impulse: 1.6
@@ -30,6 +48,8 @@ ignore_shield: false
 element_add_rate: 0
 skill_cooldown: 25
 pellets: ''
+weapon_type_id: 5
+active_skill_id: 5002001
 ---
 
 <WeaponSkill>

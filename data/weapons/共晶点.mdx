@@ -1,5 +1,6 @@
 ---
 title: 共晶点
+prototype_id: '20005000007'
 use_type: 主武器
 weapon_type: 冲锋枪
 element: 寒冷
@@ -7,9 +8,26 @@ rarity: 史诗
 tags:
   - 元素异常
 scope: 低倍镜
-weapon_type_id: 5
-prototype_id: '20005000007'
-active_skill_id: 5001801
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.075
+    damage:
+      base: 0.112
+      impulse: 1.3
+      toughness: 1.3
+      flesh: 1
+      hurtable: 1
+    element: 寒冷
+    element_add_rate: 0.055
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 damage:
   base: 0.112
   impulse: 1.3
@@ -31,6 +49,8 @@ ignore_shield: false
 element_add_rate: 0.055
 skill_cooldown: 35
 pellets: ''
+weapon_type_id: 5
+active_skill_id: 5001801
 ---
 
 <WeaponSkill>

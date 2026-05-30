@@ -8,6 +8,8 @@ rarity: 传说
 tags:
   - 额外爆炸
 scope: 中倍镜
+damage_label: ''
+damage_label_text: ''
 mode_names:
   '0': 速射模式
   '1': 爆发模式
@@ -65,6 +67,23 @@ extra_modes:
     toughness_type: 冲击
     ignore_shield: false
     element_debuff_type_id: 0
+  - name: 秘法榴弹分裂弹
+    label: 技能伤害
+    damage:
+      base: 0.7
+      impulse: 0.07
+      toughness: 0.07
+      flesh: 7.0
+      hurtable: 7.0
+    element: 火焰
+    element_add_rate: 0.07
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
 damage:
   base: 0.133
   impulse: 1.7

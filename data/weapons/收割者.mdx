@@ -1,5 +1,6 @@
 ---
 title: 收割者
+prototype_id: '20008000001'
 use_type: 副武器
 weapon_type: 单发榴弹
 element: 火焰
@@ -7,9 +8,47 @@ rarity: 史诗
 tags:
   - 命中爆炸
 scope: 低倍镜
-weapon_type_id: 8
-prototype_id: '20008000001'
-active_skill_id: 5000701
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  '0': 榴弹命中
+  '1': 榴弹爆炸
+damage_modes:
+  - mode: 0
+    name: 榴弹命中
+    fire_interval: 0.6
+    damage:
+      base: 0.4335
+      impulse: 10.84
+      toughness: 10.84
+      flesh: 28.2
+      hurtable: 8.46
+    element: 火焰
+    element_add_rate: 1.0
+    weakness_multiplier: 1.1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 榴弹爆炸
+    label: 爆炸伤害
+    damage:
+      base: 0.867
+      impulse: 10.84
+      toughness: 10.84
+      flesh: 0
+      hurtable: 8.46
+    element: 火焰
+    element_add_rate: 1.0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
 damage:
   base: 0.4335
   impulse: 10.84
@@ -31,6 +70,8 @@ ignore_shield: false
 element_add_rate: 1.0
 skill_cooldown: 40
 pellets: ''
+weapon_type_id: 8
+active_skill_id: 5000701
 ---
 
 <WeaponSkill>
@@ -56,4 +97,3 @@ pellets: ''
 命中伤害 **216.75**，爆炸伤害 **433.5**，破韧伤害都是 **10.84**，添加元素异常的概率都是 **100%**
 
 主动技能 **扩充填充** 效果为弹容量增加至 **3** 发，持续时间 **10秒**， 冷却时间 **40秒**
-

@@ -1,5 +1,6 @@
 ---
 title: 纯白至上
+prototype_id: '20006000003'
 use_type: 主武器
 weapon_type: 机枪
 element: 寒冷
@@ -7,9 +8,43 @@ rarity: 传说
 tags:
   - 动态射速
 scope: 中倍镜
-weapon_type_id: 6
-prototype_id: '20006000003'
-active_skill_id: 5000902
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.2
+    damage:
+      base: 0.114
+      impulse: 1.8
+      toughness: 1.8
+      flesh: 1.4
+      hurtable: 1.4
+    element: 寒冷
+    element_add_rate: 0.077
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 被动射速
+    fire_interval: 0.0909
+    damage:
+      base: 0.114
+      impulse: 1.8
+      toughness: 1.8
+      flesh: 1.4
+      hurtable: 1.4
+    element: 寒冷
+    element_add_rate: 0.077
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 damage:
   base: 0.114
   impulse: 1.8
@@ -31,6 +66,8 @@ ignore_shield: false
 element_add_rate: 0.077
 skill_cooldown: 15
 pellets: ''
+weapon_type_id: 6
+active_skill_id: 5000902
 ---
 
 <WeaponSkill>

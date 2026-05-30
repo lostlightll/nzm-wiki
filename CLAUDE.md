@@ -95,7 +95,11 @@ MDX 文件支持以下 frontmatter 字段：
 page-width: 1200px
 ---
 ```
+### 不要无编码原则
 
+- MDX 不存放任何需要查 `refs/` 才能理解的魔术数字
+- `prototype_id` 例外——它是武器身份标识，必须保留
+- 新加武器时，从 refs 提取数据填入 MDX，不写 `numerical_id` 外键
 ### 武器 Frontmatter 扩展
 
 武器 MDX 除通用字段外，支持以下字段（配合 `lib/weapons.ts` 的 `transformWeapon` 使用）：
