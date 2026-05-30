@@ -50,7 +50,8 @@ function buildModeFromGameData(
     ? T
     : never,
   baseWeaponName: string,
-  modeIndex: number
+  modeIndex: number,
+  mdxNames?: Record<number, string>
 ): DamageMode | null {
   const asc = lookupASC(modeEntry.ascTypeId);
   const effectiveId = getEffectiveNumericalId(
@@ -62,7 +63,7 @@ function buildModeFromGameData(
 
   if (!asc && !num) return null;
 
-  const name = getModeName(modeEntry.name, baseWeaponName, modeEntry.mode);
+  const name = getModeName(modeEntry.name, baseWeaponName, modeEntry.mode, mdxNames);
 
   const damage: WeaponDamage = {
     base: num?.hpCalScale ?? 0,
@@ -96,35 +97,75 @@ function buildModeFromGameData(
 
 function buildSyntheticMode(synth: {
   name: string;
-  numericalId: number;
   fireIntervalBase: number;
-}): DamageMode | null {
-  const num = lookupNumerical(synth.numericalId, 1);
-  if (!num) return null;
-
-  const damage: WeaponDamage = {
-    base: num.hpCalScale,
-    impulse: num.impulseBase,
-    toughness: num.toughnessBase,
-    flesh: num.fleshBase,
-    hurtable: num.hurtableBase,
-  };
-
+  damage: WeaponDamage;
+  element?: ElementType;
+  elementAddRate?: number;
+  weaknessMultiplier?: number;
+  enableCritical?: boolean;
+  enableWeakness?: boolean;
+  toughnessType?: ToughnessType;
+  ignoreShield?: boolean;
+  pellets?: number;
+}): DamageMode {
   const mode: DamageMode = {
     name: synth.name,
-    damage,
-    element: (num.elementType as ElementType) || "物理",
-    elementAddRate: num.elementAddRate,
-    weaknessMultiplier: num.weaknessMultiplier,
-    enableWeakness: num.enableWeakness,
-    enableCritical: num.enableCritical,
+    damage: synth.damage,
+    element: synth.element || "物理",
+    elementAddRate: synth.elementAddRate ?? 0,
+    weaknessMultiplier: synth.weaknessMultiplier ?? 1,
+    enableWeakness: synth.enableWeakness ?? false,
+    enableCritical: synth.enableCritical ?? false,
     fireIntervalBase: synth.fireIntervalBase,
-    toughnessType: (num.toughnessType as ToughnessType) || "冲击",
-    ignoreShield: num.ignoreShield,
+    toughnessType: synth.toughnessType || "冲击",
+    ignoreShield: synth.ignoreShield ?? false,
   };
 
   if (synth.pellets && synth.pellets > 1) {
     mode.pellets = synth.pellets;
+  }
+
+  return mode;
+}
+
+// ── Build DamageMode from MDX inline data (shared by extra_modes & damage_modes) ─
+
+function buildModeFromMDXEntry(
+  s: Record<string, unknown>,
+  defaultInterval: number
+): DamageMode | null {
+  const name = typeof s.name === "string" ? s.name : "";
+  if (!name) return null;
+  const hasInterval = "fire_interval" in s;
+  const interval = hasInterval
+    ? Number(s.fire_interval ?? 0)
+    : defaultInterval;
+
+  const rawDamage = (s.damage as Record<string, unknown>) || {};
+  const damage: WeaponDamage = {
+    base: Number(rawDamage.base ?? 0),
+    impulse: Number(rawDamage.impulse ?? 0),
+    toughness: Number(rawDamage.toughness ?? 0),
+    flesh: Number(rawDamage.flesh ?? 0),
+    hurtable: Number(rawDamage.hurtable ?? 0),
+  };
+
+  const mode = buildSyntheticMode({
+    name,
+    fireIntervalBase: interval,
+    damage,
+    element: typeof s.element === "string" ? (s.element as ElementType) : undefined,
+    elementAddRate: typeof s.element_add_rate === "number" ? s.element_add_rate : undefined,
+    weaknessMultiplier: typeof s.weakness_multiplier === "number" ? s.weakness_multiplier : undefined,
+    enableCritical: typeof s.enable_critical === "boolean" ? s.enable_critical : undefined,
+    enableWeakness: typeof s.enable_weakness === "boolean" ? s.enable_weakness : undefined,
+    toughnessType: typeof s.toughness_type === "string" ? (s.toughness_type as ToughnessType) : undefined,
+    ignoreShield: typeof s.ignore_shield === "boolean" ? s.ignore_shield : undefined,
+    pellets: typeof s.pellets === "number" ? s.pellets : undefined,
+  });
+
+  if (typeof s.label === "string") {
+    mode.damageLabel = s.label;
   }
 
   return mode;
@@ -201,6 +242,12 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
   const explosionRange = toNum(raw.explosion_range);
   const draft = Boolean(raw.draft);
 
+  // MDX 模式名覆盖: mode_index → display_name
+  const modeNames: Record<number, string> | undefined =
+    raw.mode_names && typeof raw.mode_names === "object"
+      ? (raw.mode_names as Record<number, string>)
+      : undefined;
+
   let damageModes: DamageMode[];
   let extraModes: DamageMode[] | undefined;
   let changeClip: WeaponChangeClip | undefined;
@@ -224,9 +271,9 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
       changeClip = { timeBase: clip.timeBase, endToFireTime: clip.endToFireTime };
     }
 
-    const primaryDamageMode = buildModeFromGameData(primaryMode, weaponTitle, 0);
-    if (primaryDamageMode) {
-      damageModes = [primaryDamageMode];
+    const gamePrimary = buildModeFromGameData(primaryMode, weaponTitle, 0, modeNames);
+    if (gamePrimary) {
+      damageModes = [gamePrimary];
     } else {
       // Game data had prototype entry but no numerical/ASC → fall back to MDX
       damageModes = [buildModeFromMDX(raw)];
@@ -234,6 +281,23 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
       magazine = toNum(raw.magazine);
       totalAmmo = toNum(raw.total_ammo);
     }
+
+    // Parse damage_modes from MDX (mode index → inline data)
+    const damageModesMDX = new Map<number, Record<string, unknown>>();
+    if (Array.isArray(raw.damage_modes)) {
+      for (const entry of raw.damage_modes as Record<string, unknown>[]) {
+        const modeIdx = Number(entry.mode ?? -1);
+        if (modeIdx >= 0) damageModesMDX.set(modeIdx, entry);
+      }
+    }
+
+    // Override primary mode from MDX damage_modes[0] if present
+    if (damageModesMDX.has(0)) {
+      const mdxPrimary = buildModeFromMDXEntry(damageModesMDX.get(0)!, 0);
+      if (mdxPrimary) damageModes = [mdxPrimary];
+    }
+
+    const primaryDamageMode = damageModes[0] ?? null;
 
     // Classify non-primary modes
     // New NumericalID → weapon fire mode (damageModes)
@@ -243,7 +307,10 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
       const otherModes = protoModes.filter((m) => m !== primaryMode);
 
       for (const m of otherModes) {
-        const built = buildModeFromGameData(m, weaponTitle, m.mode);
+        const mdxData = damageModesMDX.get(m.mode);
+        const built = mdxData
+          ? buildModeFromMDXEntry(mdxData, primaryDamageMode.fireIntervalBase)
+          : buildModeFromGameData(m, weaponTitle, m.mode, modeNames);
         if (!built) continue;
         if (seenIds.has(m.numericalId)) {
           (extraModes ??= []).push(built);
@@ -256,30 +323,16 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
 
     // Read extra_modes from MDX frontmatter (prepended before PrototypeConfig extra modes)
     if (primaryDamageMode && Array.isArray(raw.extra_modes)) {
-      const synthList = raw.extra_modes as Record<string, unknown>[];
       const defaultInterval = primaryDamageMode.fireIntervalBase;
-      const built = synthList
-        .map((s) => {
-          const name = typeof s.name === "string" ? s.name : "";
-          const numId = Number(s.numerical_id ?? 0);
-          const hasInterval = "fire_interval" in s;
-          const interval = hasInterval
-            ? Number(s.fire_interval ?? 0)
-            : defaultInterval;
-          if (!name || !numId) return null;
-          const mode = buildSyntheticMode({
-            name,
-            numericalId: numId,
-            fireIntervalBase: interval,
-          });
-          if (mode && typeof s.label === "string") {
-            mode.damageLabel = s.label;
-          }
-          return mode;
-        })
+      const built = (raw.extra_modes as Record<string, unknown>[])
+        .map((s) => buildModeFromMDXEntry(s, defaultInterval))
         .filter((m): m is DamageMode => m !== null);
       if (built.length > 0) {
-        extraModes = [...built, ...(extraModes || [])];
+        const mdxNames = new Set(built.map((m) => m.name));
+        const filteredGameModes = (extraModes || []).filter(
+          (m) => !mdxNames.has(m.name)
+        );
+        extraModes = [...built, ...filteredGameModes];
       }
     }
   } else {
