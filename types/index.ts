@@ -94,6 +94,11 @@ export interface Weapon {
   range?: number;
   explosionRange?: number;
   skillCooldown?: number;
+  skillDuration?: number;
+  skillBlocking?: boolean;
+  showDuration?: boolean;
+  shootingEnergy?: boolean;
+  shootingEnergyCount?: number;
 
   // 换弹
   changeClip?: WeaponChangeClip;
