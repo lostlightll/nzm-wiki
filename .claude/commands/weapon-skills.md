@@ -1,5 +1,5 @@
 用户会提供一个或多个武器名称: $ARGUMENTS
-如果没有参数则检查所有武器。武器 MDX 在 data/weapons/，跳过近战武器（只有被动无主动）。
+如果没有参数则检查所有武器。武器 MDX 在 data/weapons/，跳过近战武器（近战技能用其他方式处理）。
 
 所有数据表路径相对于 `refs/Exports/NZM/Content/DataTables/`
 
@@ -9,6 +9,7 @@
 - **少取上下文**：`-A 15` 够，不要 `-A 50+`
 - **不死磕模板变量**：`{GPModifier:...}`、`{GPNumericalID:...}` 等无法从 json 解析的，直接 `??` 占位
 - **保留原 MDX 已填数值**：若 MDX 原有数值（如 `200%`、`60%`），描述替换后保留，不写成 `??`
+- **不碰标准化字段**：武器已全部按 MDX-SPEC 标准化，`damage_label`、`damage_label_text`、`damage_modes`、`extra_modes`、`mode_names` 这些字段**不要动**。Skill 只操作 `<WeaponSkill>` 组件段落和末尾的 `weapon_type_id` / `active_skill_id`
 
 ## Step 1: 查基础 ID（1 次 Grep）
 
@@ -89,14 +90,14 @@ pattern: "武器1":|"武器2":|...
 
 若原 MDX 描述已填数值（`200%`、`60%`、`34%`、`176%` 等），**替换时保留**。这些是已人工校验的值。
 
-### front-matter（scope 后、damage 前）
+### front-matter（文件末尾）
 
-缺失则添加：
+缺失则追加到 frontmatter **最末尾**（`weapon_type_id` → `active_skill_id` 顺序，在 `pellets` 等字段之后）：
+
 - `weapon_type_id: {从 PrototypeID 提取}`
-- `prototype_id: '{PrototypeID}'`（带引号保字符串）
 - `active_skill_id: {SkillID}`
 
-若 `skill_cooldown` 与查到的 ChargeNeedTime 不同，同步更新。
+`prototype_id` 全部武器已有，不需补。
 
 ### WeaponSkill 组件
 
@@ -125,6 +126,8 @@ pattern: "武器1":|"武器2":|...
 - `<qiangdiao>值</>` → `<Yellow>值</Yellow>`
 - `<T002>关键词</>` → `<Blue>关键词</Blue>`
 - 去掉末尾 `\n`
+
+> **注意**：`PassiveSkill` 不再自动显示"被动技能"标签。如需标签用 `tag` 属性显式指定（如 `tag="快速连发"`）。
 
 ## 已知坑
 
