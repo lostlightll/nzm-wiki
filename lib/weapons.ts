@@ -13,14 +13,6 @@ import type {
   WeaponType,
 } from "@/types";
 import { RARITY_ORDER } from "@/constants/common";
-import {
-  lookupPrototypeModes,
-  lookupASC,
-  lookupChangeClip,
-  lookupNumerical,
-  getModeName,
-  getEffectiveNumericalId,
-} from "@/lib/weapon-data";
 
 const WEAPONS_DIR = path.join(process.cwd(), "data/weapons");
 const isDev = process.env.NODE_ENV === "development";
@@ -41,56 +33,6 @@ function parseTags(rawTags: unknown): WeaponTag[] {
     return [rawTags as WeaponTag];
   }
   return [];
-}
-
-// ── DamageMode builder from game data ────────────────
-
-function buildModeFromGameData(
-  modeEntry: ReturnType<typeof lookupPrototypeModes> extends (infer T)[] | undefined
-    ? T
-    : never,
-  baseWeaponName: string,
-  modeIndex: number,
-  mdxNames?: Record<number, string>
-): DamageMode | null {
-  const asc = lookupASC(modeEntry.ascTypeId);
-  const effectiveId = getEffectiveNumericalId(
-    baseWeaponName,
-    modeEntry.mode,
-    modeEntry.numericalId
-  );
-  const num = lookupNumerical(effectiveId, 1);
-
-  if (!asc && !num) return null;
-
-  const name = getModeName(modeEntry.name, baseWeaponName, modeEntry.mode, mdxNames);
-
-  const damage: WeaponDamage = {
-    base: num?.hpCalScale ?? 0,
-    impulse: num?.impulseBase ?? 0,
-    toughness: num?.toughnessBase ?? 0,
-    flesh: num?.fleshBase ?? 0,
-    hurtable: num?.hurtableBase ?? 0,
-  };
-
-  const mode: DamageMode = {
-    name,
-    damage,
-    element: (num?.elementType as ElementType) || "物理",
-    elementAddRate: num?.elementAddRate ?? 0,
-    weaknessMultiplier: num?.weaknessMultiplier ?? 1,
-    enableWeakness: num?.enableWeakness ?? true,
-    enableCritical: num?.enableCritical ?? false,
-    fireIntervalBase: asc?.fireIntervalBase ?? 0,
-    toughnessType: (num?.toughnessType as ToughnessType) || "冲击",
-    ignoreShield: num?.ignoreShield ?? false,
-  };
-
-  if (asc && asc.splinterNum > 1) {
-    mode.pellets = asc.splinterNum;
-  }
-
-  return mode;
 }
 
 // ── Synthetic mode builder (no ASC lookup, hardcoded fireIntervalBase) ─
@@ -227,7 +169,6 @@ function buildChangeClipFromMDX(raw: Record<string, unknown>): WeaponChangeClip 
 
 function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
   const weaponTitle = String(raw.title ?? slug);
-  const prototypeId = raw.prototype_id ? String(raw.prototype_id) : undefined;
 
   // MDX metadata (always from frontmatter)
   const useType = typeof raw.use_type === "string" ? raw.use_type : undefined;
@@ -242,81 +183,43 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
   const explosionRange = toNum(raw.explosion_range);
   const draft = Boolean(raw.draft);
 
-  // MDX 模式名覆盖: mode_index → display_name
-  const modeNames: Record<number, string> | undefined =
-    raw.mode_names && typeof raw.mode_names === "object"
-      ? (raw.mode_names as Record<number, string>)
-      : undefined;
-
-  let damageModes: DamageMode[];
+  // Always build from MDX frontmatter
+  let damageModes: DamageMode[] = [buildModeFromMDX(raw)];
   let extraModes: DamageMode[] | undefined;
-  let changeClip: WeaponChangeClip | undefined;
-  let magazine: number | undefined;
-  let totalAmmo: number | undefined;
+  const changeClip = buildChangeClipFromMDX(raw);
+  const magazine = toNum(raw.magazine);
+  const totalAmmo = toNum(raw.total_ammo);
 
-  // Try game data
-  const protoModes = lookupPrototypeModes(weaponTitle, prototypeId);
-
-  if (protoModes && protoModes.length > 0) {
-    // Primary mode (Mode 0)
-    const primaryMode = protoModes.find((m) => m.mode === 0) ?? protoModes[0];
-    const asc = lookupASC(primaryMode.ascTypeId);
-    const clip = lookupChangeClip(primaryMode.ascTypeId);
-
-    if (asc) {
-      magazine = asc.clipAmmo;
-      totalAmmo = asc.maxAmmo;
+  // Parse damage_modes from MDX (mode index → inline data)
+  const damageModesMDX = new Map<number, Record<string, unknown>>();
+  if (Array.isArray(raw.damage_modes)) {
+    for (const entry of raw.damage_modes as Record<string, unknown>[]) {
+      const modeIdx = Number(entry.mode ?? -1);
+      if (modeIdx >= 0) damageModesMDX.set(modeIdx, entry);
     }
-    if (clip) {
-      changeClip = { timeBase: clip.timeBase, endToFireTime: clip.endToFireTime };
-    }
+  }
 
-    const gamePrimary = buildModeFromGameData(primaryMode, weaponTitle, 0, modeNames);
-    if (gamePrimary) {
-      damageModes = [gamePrimary];
-    } else {
-      // Game data had prototype entry but no numerical/ASC → fall back to MDX
-      damageModes = [buildModeFromMDX(raw)];
-      changeClip = buildChangeClipFromMDX(raw);
-      magazine = toNum(raw.magazine);
-      totalAmmo = toNum(raw.total_ammo);
-    }
+  // Override mode 0 from damage_modes[0] if present
+  if (damageModesMDX.has(0)) {
+    const mdxPrimary = buildModeFromMDXEntry(damageModesMDX.get(0)!, 0);
+    if (mdxPrimary) damageModes = [mdxPrimary];
+  }
 
-    // Parse damage_modes from MDX (mode index → inline data)
-    const damageModesMDX = new Map<number, Record<string, unknown>>();
-    if (Array.isArray(raw.damage_modes)) {
-      for (const entry of raw.damage_modes as Record<string, unknown>[]) {
-        const modeIdx = Number(entry.mode ?? -1);
-        if (modeIdx >= 0) damageModesMDX.set(modeIdx, entry);
-      }
+  const primaryDamageMode = damageModes[0] ?? null;
+
+  // Add non-mode-0 damage_modes entries
+  if (primaryDamageMode) {
+    for (const [modeIdx, mdxData] of damageModesMDX) {
+      if (modeIdx === 0) continue;
+      const built = buildModeFromMDXEntry(
+        mdxData,
+        primaryDamageMode.fireIntervalBase
+      );
+      if (built) damageModes.push(built);
     }
 
-    // Override primary mode from MDX damage_modes[0] if present
-    if (damageModesMDX.has(0)) {
-      const mdxPrimary = buildModeFromMDXEntry(damageModesMDX.get(0)!, 0);
-      if (mdxPrimary) damageModes = [mdxPrimary];
-    }
-
-    const primaryDamageMode = damageModes[0] ?? null;
-
-    // Classify non-primary modes
-    // New NumericalID → weapon fire mode (damageModes)
-    // Already-seen NumericalID → fire-rate variant / alt-fire (extraModes)
-    if (primaryDamageMode) {
-      // Process damage_modes entries not in PrototypeConfig (e.g. ExplosionNumericalID components)
-      const protoModeIndices = new Set(protoModes.map((m) => m.mode));
-      for (const [modeIdx, mdxData] of damageModesMDX) {
-        if (protoModeIndices.has(modeIdx)) continue;
-        const built = buildModeFromMDXEntry(
-          mdxData,
-          primaryDamageMode.fireIntervalBase
-        );
-        if (built) damageModes.push(built);
-      }
-    }
-
-    // Read extra_modes from MDX frontmatter (prepended before PrototypeConfig extra modes)
-    if (primaryDamageMode && Array.isArray(raw.extra_modes)) {
+    // Read extra_modes from MDX frontmatter
+    if (Array.isArray(raw.extra_modes)) {
       const defaultInterval = primaryDamageMode.fireIntervalBase;
       const built = (raw.extra_modes as Record<string, unknown>[])
         .map((s) => buildModeFromMDXEntry(s, defaultInterval))
@@ -325,12 +228,6 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
         extraModes = built;
       }
     }
-  } else {
-    // Fallback: use old MDX fields
-    damageModes = [buildModeFromMDX(raw)];
-    changeClip = buildChangeClipFromMDX(raw);
-    magazine = toNum(raw.magazine);
-    totalAmmo = toNum(raw.total_ammo);
   }
 
   // Apply MDX damage label override: 0=命中(默认), 1=爆炸, 2=自定义

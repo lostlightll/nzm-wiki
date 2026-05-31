@@ -51,7 +51,7 @@ The `(pages)` folder is a route group (not part of URL path).
 
 ### Type Definitions
 All data types are centralized in `types/index.ts`:
-- **Weapon types**: `Weapon`, `WeaponStats`, `WeaponSkill`, `WeaponType`, `WeaponTag`, `Rarity`
+- **Weapon types**: `Weapon`, `DamageMode`, `WeaponDamage`, `WeaponChangeClip`, `WeaponType`, `WeaponTag`, `Rarity`
 - **Perk types**: `Perk`, `PerkEffect`, `PerkSlot`, `PerkCategory`
 - **Calculator types**: `DamageCalculation`, `DamageResult`
 
@@ -95,45 +95,28 @@ MDX 文件支持以下 frontmatter 字段：
 page-width: 1200px
 ---
 ```
-### 不要无编码原则
+### 数据原则
 
-- MDX 不存放任何需要查 `refs/` 才能理解的魔术数字
-- `prototype_id` 例外——它是武器身份标识，必须保留
-- 新加武器时，从 refs 提取数据填入 MDX，不写 `numerical_id` 外键
+- MDX frontmatter 是武器数据的唯一来源，不做构建时自动注入
+- 所有数值直接写在 MDX 里，不依赖外部数据源
+- 新加武器时，可用 `scripts/extract-weapon-data.ts` 从 refs 提取数据填入 MDX
+
 ### 武器 Frontmatter 扩展
 
 武器 MDX 除通用字段外，支持以下字段（配合 `lib/weapons.ts` 的 `transformWeapon` 使用）：
 
 | 字段 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| `prototype_id` | string | - | WeaponPrototypeConfig 的 PrototypeID，用于匹配游戏数据 |
 | `damage_label` | number | `0` | 非主模式伤害标签：`0`=命中伤害，`1`=爆炸伤害，`2`=自定义 |
 | `damage_label_text` | string | `"爆炸伤害"` | `damage_label=2` 时的自定义标签文字 |
-| `extra_modes` | array | - | 不在 WeaponPrototypeConfig 中的技能模式。每项：`name`(模式名)、`numerical_id`(NumericalID)、`fire_interval`(可选，默认继承主模式射速) |
+| `extra_modes` | array | - | 额外技能模式。每项：`name`(模式名)、`fire_interval`(可选，默认继承主模式射速) |
 
 示例：
 ```yaml
 extra_modes:
   - name: 浮游模式
-    numerical_id: 120700152
     fire_interval: 0.65
 ```
-
-### 武器数据管线
-
-`lib/weapons.ts` 的 `transformWeapon` 优先从游戏解包数据注入数值，查不到则回退 MDX 旧字段：
-
-1. MDX `title` → `WeaponPrototypeConfig` → `ASCTypeID` + `NumericalID`
-2. `ASCTypeID` → `attr_weapon_asc`（射速/弹匣/弹丸）+ `WeaponFeelParamTable`（换弹）
-3. `NumericalID` → `numerical_config_composite`（伤害/元素/弱点/破韧）
-
-`lib/weapon-data.ts` 提供三个手动覆盖表，处理游戏数据与社区约定的差异：
-
-| 覆盖表 | 作用 | 示例 |
-| :--- | :--- | :--- |
-| `MODE_NAME_OVERRIDES` | 模式显示名 | `精绝兽神: {0:"速射模式",1:"爆发模式",2:"秘法榴弹"}` |
-| `SKILL_NUMERICAL_OVERRIDES` | 技能伤害用不同 NumericalID | `精绝兽神: {2:120100242}`（秘法榴弹读 WeaponSkillDamage 表） |
-| 模式分类规则 | 与主模式不同 NumericalID → `damageModes`；相同 → `extraModes`（技能/特殊攻击） |
 
 ## MDX 组件
 
