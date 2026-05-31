@@ -183,12 +183,16 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
             <span className="text-white">{formatValue(mode.damage.toughness)}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-zinc-500">战术换弹</span>
+            <span className="text-zinc-500">元素异常概率</span>
             <span className="text-white">
-              {weapon.changeClip
-                ? `${(Math.ceil(calcTacticalReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
+              {mode.elementAddRate > 0
+                ? `${formatPercent(mode.elementAddRate)}%`
                 : "-"}
             </span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-zinc-500">技能冷却</span>
+            <span className="text-white">{formatValue(weapon.skillCooldown)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">完整换弹</span>
@@ -199,8 +203,12 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
             </span>
           </div>
           <div className="flex justify-between">
-            <span className="text-zinc-500">技能冷却</span>
-            <span className="text-white">{formatValue(weapon.skillCooldown)}</span>
+            <span className="text-zinc-500">战术换弹</span>
+            <span className="text-white">
+              {weapon.changeClip
+                ? `${(Math.ceil(calcTacticalReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
+                : "-"}
+            </span>
           </div>
         </div>
       </div>
