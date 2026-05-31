@@ -186,7 +186,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
             <span className="text-zinc-500">战术换弹</span>
             <span className="text-white">
               {weapon.changeClip
-                ? `${(Math.ceil(calcTacticalReload(weapon.changeClip)! * 10) / 10).toFixed(1)}s`
+                ? `${(Math.ceil(calcTacticalReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
                 : "-"}
             </span>
           </div>
@@ -194,7 +194,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
             <span className="text-zinc-500">完整换弹</span>
             <span className="text-white">
               {weapon.changeClip
-                ? `${(Math.ceil(calcFullReload(weapon.changeClip)! * 10) / 10).toFixed(1)}s`
+                ? `${(Math.ceil(calcFullReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
                 : "-"}
             </span>
           </div>
@@ -443,7 +443,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
             label="战术换弹"
             value={
               weapon.changeClip
-                ? `${(Math.ceil(calcTacticalReload(weapon.changeClip)! * 10) / 10).toFixed(1)}s`
+                ? `${(Math.ceil(calcTacticalReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
                 : "-"
             }
           />
@@ -451,7 +451,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
             label="完整换弹"
             value={
               weapon.changeClip
-                ? `${(Math.ceil(calcFullReload(weapon.changeClip)! * 10) / 10).toFixed(1)}s`
+                ? `${(Math.ceil(calcFullReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
                 : "-"
             }
           />
