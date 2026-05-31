@@ -9,10 +9,9 @@ const NAV_ITEMS = [
   { href: "/traps", label: "塔防陷阱" },
   { href: "/enemies/td", label: "塔防敌人" },
   { href: "/perks", label: "插件图鉴" },
-  { href: "/posts", label: "文章归档" },
 ];
 
-const GITHUB_REPO = "https://github.com/qiekn/nzm-wiki";
+const GITHUB_REPO = "https://github.com/lostlightll/nzm-wiki";
 
 // 触发全局快捷键
 function triggerShortcut(key: string, ctrlKey = true, shiftKey = false) {
