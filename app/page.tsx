@@ -1,36 +1,32 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Sword, Zap, Target, Skull, Github } from "lucide-react";
+import { getAssetPath } from "@/lib/path";
+
+const GITHUB_UPSTREAM = "https://github.com/qiekn/nzm-wiki";
+const GITHUB_FORK = "https://github.com/lostlightll/nzm-wiki";
 
 interface NavCardProps {
   href: string;
-  icon: string;
+  icon: React.ReactNode;
   title: string;
-  description?: string;
 }
 
 const NAV_ITEMS = [
-  { href: "/weapons", icon: "🔫", title: "武器图鉴" },
-  { href: "/perks", icon: "⚡", title: "插件图鉴" },
-  { href: "/traps", icon: "🪤", title: "塔防陷阱" },
-  { href: "/enemies/td", icon: "👾", title: "塔防敌人" },
-  { href: "/posts", icon: "📄", title: "文章归档" },
+  { href: "/weapons", icon: <Sword className="h-8 w-8 sm:h-10 sm:w-10" />, title: "武器图鉴" },
+  { href: "/perks", icon: <Zap className="h-8 w-8 sm:h-10 sm:w-10" />, title: "插件图鉴" },
+  { href: "/traps", icon: <Target className="h-8 w-8 sm:h-10 sm:w-10" />, title: "塔防陷阱" },
+  { href: "/enemies/td", icon: <Skull className="h-8 w-8 sm:h-10 sm:w-10" />, title: "塔防敌人" },
 ];
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
-function NavCard({ href, icon, title, description }: NavCardProps) {
+function NavCard({ href, icon, title }: NavCardProps) {
   return (
     <Link
       href={href}
-      className="group flex flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800/50 p-4 transition-all hover:border-zinc-500 hover:bg-zinc-700/50 hover:scale-[1.02] active:scale-[0.98]"
+      className="group flex flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800/50 p-4 transition-colors hover:border-zinc-500 hover:bg-zinc-700/50 hover:scale-[1.02] active:scale-[0.98]"
     >
-      <span className="text-2xl sm:text-3xl">{icon}</span>
+      <span className="text-zinc-400 group-hover:text-white transition-colors">{icon}</span>
       <span className="mt-2 text-base sm:text-lg font-medium text-white">{title}</span>
-      {description && (
-        <span className="mt-1 text-xs text-zinc-500 text-center hidden sm:block">
-          {description}
-        </span>
-      )}
     </Link>
   );
 }
@@ -41,7 +37,7 @@ export default function Home() {
       {/* Logo 和标题 */}
       <div className="flex flex-col items-center mb-8">
         <Image
-          src={`${basePath}/logo.png`}
+          src={getAssetPath("/logo.png")}
           alt="逆战未来 维基"
           width={160}
           height={160}
@@ -64,6 +60,38 @@ export default function Home() {
             />
           ))}
         </div>
+      </div>
+
+      {/* Fork 声明 */}
+      <div className="mt-8 px-5 py-4 rounded-xl border border-zinc-800 bg-zinc-800/30 max-w-md">
+        <p className="text-sm text-zinc-300 leading-relaxed">
+          本站 Fork 自{" "}
+          <a
+            href={GITHUB_UPSTREAM}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-200 hover:text-white underline underline-offset-2 transition-colors font-medium"
+          >
+            qiekn/nzm-wiki
+          </a>
+          。
+        </p>
+        <p className="mt-2 text-xs text-zinc-500 leading-relaxed">
+          原站武器伤害机制信息不够准确，且原作者较少维护，于是决定创建此站
+        </p>
+        <p className="mt-3 text-xs text-zinc-600 leading-relaxed">
+          <a
+            href={GITHUB_FORK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-zinc-500 hover:text-zinc-300 transition-colors"
+          >
+            <Github className="h-3 w-3" />
+            查看 Fork 仓库
+          </a>
+          {" · "}
+          继续完善中，欢迎反馈
+        </p>
       </div>
 
       {/* 快捷键提示 - 仅桌面端显示 */}
