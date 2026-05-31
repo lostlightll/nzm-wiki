@@ -9,7 +9,6 @@ import {
   calcRPM,
   calcFullReload,
   calcTacticalReload,
-  calcChargeRate,
 } from "@/lib/weapon-calcs";
 import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
 
@@ -323,7 +322,8 @@ function SkillSection({ weapon }: { weapon: Weapon }) {
         技能 / 特殊攻击
       </h2>
       {visible.map((m, i) => {
-        const isVariant = weapon.damageModes.some(
+        const damageAllZero = Object.values(m.damage).every((v) => v === 0);
+        const isVariant = damageAllZero || weapon.damageModes.some(
           (dm) => dm.damage.base === m.damage.base
         );
         return <ModeStats key={i} mode={m} showName compact={isVariant} />;
@@ -370,7 +370,12 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
   const elementIcon = ELEMENT_ICONS[mode.element];
   const tags = weapon.tags || [];
 
-  const chargeRate = calcChargeRate(weapon.skillCooldown);
+  const cycleTime =
+    weapon.skillCooldown != null
+      ? weapon.skillBlocking && weapon.skillDuration != null
+        ? weapon.skillCooldown + weapon.skillDuration
+        : weapon.skillCooldown
+      : null;
 
   return (
     <div className={`rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-6`}>
@@ -467,10 +472,24 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
             label="技能冷却"
             value={weapon.skillCooldown != null ? `${weapon.skillCooldown}s` : "-"}
           />
-          <Stat
-            label="充能速率"
-            value={chargeRate != null ? `${chargeRate}%/s` : "-"}
-          />
+          {weapon.shootingEnergy && (
+            <Stat
+              label="射击耗能"
+              value={weapon.shootingEnergyCount != null ? `${weapon.shootingEnergyCount}次` : "-"}
+            />
+          )}
+          {weapon.showDuration && (
+            <Stat
+              label="持续时间"
+              value={weapon.skillDuration != null ? `${weapon.skillDuration}s` : "-"}
+            />
+          )}
+          {weapon.showDuration && (
+            <Stat
+              label="周期时长"
+              value={cycleTime != null ? `${cycleTime}s` : "-"}
+            />
+          )}
         </div>
       </div>
 

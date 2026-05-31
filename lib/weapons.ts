@@ -177,6 +177,11 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
   const tags = parseTags(raw.tags);
   const scope = raw.scope as string | undefined;
   const skillCooldown = toNum(raw.skill_cooldown);
+  const skillDuration = toNum(raw.skill_duration);
+  const skillBlocking = Boolean(raw.skill_blocking);
+  const showDuration = Boolean(raw.show_duration);
+  const shootingEnergy = Boolean(raw.shooting_energy);
+  const shootingEnergyCount = toNum(raw.shooting_energy_count);
   const accuracy = toNum(raw.accuracy);
   const stability = toNum(raw.stability);
   const range = toNum(raw.range);
@@ -262,6 +267,11 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
     range,
     explosionRange,
     skillCooldown,
+    skillDuration,
+    skillBlocking,
+    showDuration,
+    shootingEnergy,
+    shootingEnergyCount,
     changeClip,
     damageModes,
     extraModes,
