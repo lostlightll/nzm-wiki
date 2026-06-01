@@ -246,7 +246,7 @@ function ModeStats({
       )}
 
       {compact ? (
-        <div className="grid grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
           <Stat label="射速" value={String(rpm)} />
           <Stat
             label="单发耗时"
@@ -258,7 +258,7 @@ function ModeStats({
           />
         </div>
       ) : mode.fireIntervalBase === 0 ? (
-        <div className="grid grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
           <Stat label={mode.damageLabel || "命中伤害"} value={formatDamage(mode)} />
           <Stat label="单发破韧值" value={formatPrecise(mode.damage.toughness)} />
           <Stat label="弱点倍率" value={mode.enableWeakness ? String(mode.weaknessMultiplier) : "-"} />
@@ -274,7 +274,7 @@ function ModeStats({
           <Stat label="弱点" value={mode.enableWeakness ? "可弱点" : "否"} />
         </div>
       ) : (
-        <div className="grid grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
           <Stat label={mode.damageLabel || "命中伤害"} value={formatDamage(mode)} />
           <Stat label="单发破韧值" value={formatPrecise(mode.damage.toughness)} />
           <Stat label="弱点倍率" value={mode.enableWeakness ? String(mode.weaknessMultiplier) : "-"} />
@@ -447,7 +447,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
       {/* 武器属性 */}
       <div className="mb-4">
         <h2 className="mb-2 text-sm font-semibold text-zinc-400">武器属性</h2>
-        <div className="grid grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
           <Stat label="弹夹" value={formatValue(weapon.magazine)} />
           <Stat label="总弹量" value={formatValue(weapon.totalAmmo)} />
           <Stat label="精准度" value={formatValue(weapon.accuracy)} />
