@@ -494,7 +494,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
       )}
 
       {/* 武器衰减 */}
-      {(weapon.attenuation_begin != null || weapon.attenuation_end != null) && (
+      {weapon.attenuation_begin != null && weapon.attenuation_end != null && Number(weapon.attenuation_end) > Number(weapon.attenuation_begin) && (
         <div className="mb-4">
           <h2 className="mb-2 text-sm font-semibold text-zinc-400">武器衰减</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
