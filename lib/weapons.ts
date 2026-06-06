@@ -153,14 +153,15 @@ function buildModeFromMDX(raw: Record<string, unknown>): DamageMode {
 function buildChangeClipFromMDX(raw: Record<string, unknown>): WeaponChangeClip | undefined {
   if (raw.changeClip && typeof raw.changeClip === "object") {
     const cc = raw.changeClip as Record<string, unknown>;
+    const reloadRecovery = cc.reloadRecovery !== undefined ? Number(cc.reloadRecovery) : Number(cc.endToFireTime ?? 0);
     return {
       timeBase: Number(cc.timeBase ?? 0),
-      endToFireTime: Number(cc.endToFireTime ?? 0),
+      reloadRecovery,
     };
   }
   const reloadTime = toNum(raw.reload_time);
   if (reloadTime !== undefined) {
-    return { timeBase: reloadTime, endToFireTime: 0 };
+    return { timeBase: reloadTime, reloadRecovery: 0 };
   }
   return undefined;
 }

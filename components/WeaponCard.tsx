@@ -8,7 +8,8 @@ import { getAssetPath } from "@/lib/path";
 import {
   calcRPM,
   calcFullReload,
-  calcTacticalReload,
+  calcReloadTime,
+  calcReloadRecovery,
 } from "@/lib/weapon-calcs";
 import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
 
@@ -114,6 +115,8 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
   const mode = weapon.damageModes[0];
   if (!mode) return <div className="text-zinc-500">武器数据异常</div>;
 
+  const [showReloadDetail, setShowReloadDetail] = useState(false);
+
   const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
   const elementIcon = ELEMENT_ICONS[mode.element];
@@ -201,14 +204,31 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
                 : "-"}
             </span>
           </div>
-          <div className="flex justify-between">
-            <span className="text-zinc-500">战术换弹</span>
-            <span className="text-white">
-              {weapon.changeClip
-                ? `${(Math.ceil(calcTacticalReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
-                : "-"}
+          <div
+            className="flex justify-between cursor-pointer"
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowReloadDetail(!showReloadDetail); }}
+          >
+            <span className="text-zinc-500">
+              换弹详情 {showReloadDetail ? "▴" : "▸"}
             </span>
+            <span className="text-white">&nbsp;</span>
           </div>
+          {showReloadDetail && weapon.changeClip && (
+            <>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">换弹动画</span>
+                <span className="text-zinc-300">
+                  {calcReloadTime(weapon.changeClip)!.toFixed(2)}s
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">换弹后摇</span>
+                <span className="text-zinc-300">
+                  {calcReloadRecovery(weapon.changeClip)!.toFixed(2)}s
+                </span>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </Link>
@@ -370,6 +390,8 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
   const elementIcon = ELEMENT_ICONS[mode.element];
   const tags = weapon.tags || [];
 
+  const [showReloadDetail, setShowReloadDetail] = useState(false);
+
   const cycleTime =
     weapon.skillCooldown != null
       ? weapon.skillBlocking && weapon.skillDuration != null
@@ -452,22 +474,40 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
           <Stat label="总弹量" value={formatValue(weapon.totalAmmo)} />
           <Stat label="精准度" value={formatValue(weapon.accuracy)} />
           <Stat label="稳定度" value={formatValue(weapon.stability)} />
-          <Stat
-            label="战术换弹"
-            value={
-              weapon.changeClip
-                ? `${(Math.ceil(calcTacticalReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
-                : "-"
-            }
-          />
-          <Stat
-            label="完整换弹"
-            value={
-              weapon.changeClip
-                ? `${(Math.ceil(calcFullReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
-                : "-"
-            }
-          />
+          {showReloadDetail && weapon.changeClip ? (
+            <>
+              <div className="flex justify-between gap-1 text-sm">
+                <span className="text-zinc-500 shrink-0">换弹动画</span>
+                <span className="text-white text-right">
+                  {calcReloadTime(weapon.changeClip)!.toFixed(2)}s
+                </span>
+              </div>
+              <div className="flex justify-between gap-1 text-sm">
+                <span className="text-zinc-500 shrink-0">换弹后摇</span>
+                <span className="text-white text-right">
+                  {calcReloadRecovery(weapon.changeClip)!.toFixed(2)}s
+                </span>
+              </div>
+            </>
+          ) : (
+            <Stat
+              label="完整换弹"
+              value={
+                weapon.changeClip
+                  ? `${(Math.ceil(calcFullReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
+                  : "-"
+              }
+            />
+          )}
+          <div
+            className="flex justify-between gap-1 text-sm cursor-pointer"
+            onClick={() => setShowReloadDetail(!showReloadDetail)}
+          >
+            <span className="text-zinc-500 shrink-0">
+              换弹详情 {showReloadDetail ? "▴" : "▸"}
+            </span>
+            <span className="text-white text-right">&nbsp;</span>
+          </div>
           <Stat
             label="技能冷却"
             value={weapon.skillCooldown != null ? `${weapon.skillCooldown}s` : "-"}

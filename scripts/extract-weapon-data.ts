@@ -127,7 +127,6 @@ interface RawASC {
 
 interface RawFeel {
   WeaponChangeClipTimeBase: number;
-  WeaponChangeClipEndToFireTime: number;
 }
 
 interface RawNumerical {
@@ -284,7 +283,9 @@ function main() {
         pellets: (asc && asc.SplinterNum > 1) ? asc.SplinterNum : undefined,
         // Feel param
         reload_time_base: feelMap.get(proto.ASCTypeID)?.WeaponChangeClipTimeBase ?? null,
-        reload_end_to_fire: feelMap.get(proto.ASCTypeID)?.WeaponChangeClipEndToFireTime ?? null,
+        // 需从 Appearance/<WeaponType>/<SkinDir>/1P/*_1P_M_ChangeClipEnd.json
+        // 提取 EarlyExitFromReloadAnim_C LinkValue
+        reload_recovery: null,
         // Numerical data
         damage: num ? {
           base: num.HpCalScale,
