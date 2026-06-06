@@ -16,6 +16,8 @@ const CORE_CONTRIBUTORS = [
     url: "https://github.com/lostlightll",
     description: "本项目维护者",
     githubUser: "lostlightll",
+    extraLink: "https://lostlightll.github.io/",
+    extraLabel: "个人主页",
   },
   {
     name: "qiekn",

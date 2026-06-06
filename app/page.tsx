@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Sword, Zap, Target, Skull, Github, Heart } from "lucide-react";
+import { Sword, Zap, Target, Skull, Github } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
 
 const GITHUB_UPSTREAM = "https://github.com/qiekn/nzm-wiki";
@@ -65,16 +65,17 @@ export default function Home() {
       </div>
 
       {/* 致谢 */}
-      <Link
-        href="/credits"
-        className="mt-5 inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
-      >
-        <Heart className="h-3.5 w-3.5" />
-        致谢
-      </Link>
+      <div className="mt-5 flex items-center justify-center w-full max-w-md">
+        <Link
+          href="/credits"
+          className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+        >
+          致谢名单
+        </Link>
+      </div>
 
       {/* Fork 声明 */}
-      <div className="mt-5 px-5 py-4 rounded-xl border border-zinc-800 bg-zinc-800/30 max-w-md">
+      <div className="mt-3 px-5 py-4 rounded-xl border border-zinc-800 bg-zinc-800/30 max-w-md">
         <p className="text-sm text-zinc-300 leading-relaxed">
           本站 Fork 自{" "}
           <a

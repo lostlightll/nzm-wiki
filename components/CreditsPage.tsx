@@ -14,6 +14,8 @@ interface CoreContributor {
   description: string;
   avatarUrl: string | null;
   fallbackAvatarUrl?: string | null;
+  extraLink?: string;
+  extraLabel?: string;
 }
 
 interface ContentContributor {
@@ -85,14 +87,10 @@ function Avatar({
 
 function CoreCard({ person }: { person: CoreContributor }) {
   const hasDesc = person.description.length > 0;
+  const hasExtra = !!(person.extraLink && person.extraLabel);
 
   return (
-    <Link
-      href={person.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-800/40 hover:bg-zinc-800/70 hover:border-zinc-700 transition-colors p-4"
-    >
+    <div className="group flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-800/40 hover:bg-zinc-800/70 hover:border-zinc-700 transition-colors p-4">
       <Avatar
         src={person.avatarUrl}
         fallbackSrc={person.fallbackAvatarUrl}
@@ -100,7 +98,12 @@ function CoreCard({ person }: { person: CoreContributor }) {
         platform={person.platform}
       />
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2">
+        <a
+          href={person.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 hover:text-white transition-colors"
+        >
           <span className="font-semibold text-zinc-200 group-hover:text-white transition-colors truncate">
             {person.name}
           </span>
@@ -117,14 +120,24 @@ function CoreCard({ person }: { person: CoreContributor }) {
               d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
             />
           </svg>
-        </div>
+        </a>
         {hasDesc && (
           <p className="text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors mt-0.5">
             {person.description}
           </p>
         )}
+        {hasExtra && (
+          <a
+            href={person.extraLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-0.5 text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+          >
+            {person.extraLabel} →
+          </a>
+        )}
       </div>
-    </Link>
+    </div>
   );
 }
 
