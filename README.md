@@ -6,12 +6,15 @@
 
 在线访问：[武器图鉴](https://lostlightll.github.io/nzm-wiki/weapons)
 
-## 感谢
+## 致谢名单
 
 - [@qiekn](https://github.com/qiekn) — 原始项目 [nzm-wiki](https://github.com/qiekn/nzm-wiki)，本项目 Fork 自此
 - [@YousaHay](https://github.com/YousaHay) — 解包思路与交流
-- DeepSeek 模型真的便宜
-- WorkBuddy 免费额度真的很多
+- [抖音 PinkGame](https://www.douyin.com/user/MS4wLjABAAAAOpgmjGpIJfgLikMiBBV2iD8IcS-7DjOmqjpMxmoG5S14MqnBKu5sQK5k72Rpxytd) — 解包思路与交流
+- [抖音 阿秋](https://www.douyin.com/user/MS4wLjABAAAAuR82F-F_U4ywRmTAAMtc5ssvsFdhZn62EF4f7YWJe1M) — 游戏内实测数据
+- [B站 乐意如多](https://space.bilibili.com/52220706)
+- [B站 正人君执](https://space.bilibili.com/15114153)
+- [B站 小小米河](https://space.bilibili.com/3546669903775781)
 
 ## 技术栈
 
