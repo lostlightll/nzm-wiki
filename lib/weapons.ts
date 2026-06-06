@@ -189,6 +189,9 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
   const stability = toNum(raw.stability);
   const range = toNum(raw.range);
   const explosionRange = toNum(raw.explosion_range);
+  const attenuationBegin = raw.attenuation_begin !== undefined ? raw.attenuation_begin as number | string | null : undefined;
+  const attenuationEnd = raw.attenuation_end !== undefined ? raw.attenuation_end as number | string | null : undefined;
+  const attenuationScale = raw.attenuation_scale !== undefined ? raw.attenuation_scale as number | string | null : undefined;
   const draft = Boolean(raw.draft);
 
   // Always build from MDX frontmatter
@@ -269,6 +272,9 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
     stability,
     range,
     explosionRange,
+    attenuation_begin: attenuationBegin,
+    attenuation_end: attenuationEnd,
+    attenuation_scale: attenuationScale,
     skillCooldown,
     skillDuration,
     skillBlocking,

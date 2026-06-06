@@ -94,6 +94,9 @@ export interface Weapon {
   stability?: number;
   range?: number;
   explosionRange?: number;
+  attenuation_begin?: number | string | null;
+  attenuation_end?: number | string | null;
+  attenuation_scale?: number | string | null;
   skillCooldown?: number;
   skillDuration?: number;
   skillBlocking?: boolean;
