@@ -1,0 +1,136 @@
+---
+title: 星海狂想
+prototype_id: 20001000004
+use_type: 主武器
+weapon_type: 突击步枪
+element: 寒冷
+rarity: 传说
+tags:
+  - 动态射速
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.16
+    damage:
+      base: 0.111
+      impulse: 1.3
+      toughness: 1.3
+      flesh: 1.5
+      hurtable: 1.5
+    element: 寒冷
+    element_add_rate: 0.054
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 被动射速
+    fire_interval: 0.0727
+    damage:
+      base: 0.111
+      impulse: 1.3
+      toughness: 1.3
+      flesh: 1.5
+      hurtable: 1.5
+    element: 寒冷
+    element_add_rate: 0.054
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - name: 大型冰锥
+    label: 技能伤害
+    damage:
+      base: 3.5
+      impulse: 2
+      toughness: 0.35
+      flesh: 0
+      hurtable: 35
+    element: 寒冷
+    element_add_rate: 1
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+  - name: 霜华冰锥
+    label: 技能伤害
+    damage:
+      base: 1.5
+      impulse: 0.15
+      toughness: 0.15
+      flesh: 15
+      hurtable: 15
+    element: 寒冷
+    element_add_rate: 0.15
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+damage:
+  base: 0.111
+  impulse: 1.3
+  toughness: 1.3
+  flesh: 1.5
+  hurtable: 1.5
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 747
+magazine: 46
+total_ammo: 506
+accuracy: 77
+stability: 55
+changeClip:
+  timeBase: 1.4
+  reloadRecovery: 0.437
+range: ''
+explosion_range: ''
+attenuation_begin: 38
+attenuation_end: 60
+attenuation_scale: 0.5
+ignore_shield: false
+element_add_rate: 0.054
+skill_cooldown: 25
+pellets: ''
+weapon_type_id: 1
+active_skill_id: 5100501
+skill_duration: 8
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="深寒冲击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1100101.png"
+    duration={-1}
+    cooldown={25}
+    count={1}
+  >
+    抽取水汽凝结生成大型冰锥，对<Yellow>3米</Yellow>范围内敌人造成伤害。接下来的<Yellow>8秒</Yellow>射速提升至<Yellow>3.3倍</Yellow>，且射击不消耗弹药。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="涡轮增压"
+    tag="动态射速"
+    icon="/icons/weapons/skills/T_Weapon_Skill_effect_11.png"
+  >
+    星海狂想在持续开火过程中，射速会逐渐提升，最高达到<Yellow>2.2</Yellow>倍初始射速，停火后射速恢复初始值。星海狂想在命中敌人时有<Yellow>50%</Yellow>概率恢复<Yellow>1发</Yellow>子弹至弹夹。
+  </PassiveSkill>
+</WeaponSkill>
+
+主动技能为50%的角色狂热，能源可吃加成

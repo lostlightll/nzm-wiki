@@ -1,0 +1,87 @@
+---
+title: 超级复合弓
+prototype_id: 20012000001
+use_type: 副武器
+weapon_type: 弓箭
+element: 物理
+rarity: 史诗
+tags:
+  - 元素切换
+scope: 高倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.3
+    damage:
+      base: 1.632
+      impulse: 21.3
+      toughness: 21.3
+      flesh: 22.1
+      hurtable: 22.1
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.5
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 1.632
+  impulse: 21.3
+  toughness: 21.3
+  flesh: 22.1
+  hurtable: 22.1
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.5
+file_rate: 35
+magazine: 1
+total_ammo: 18
+accuracy: 77
+stability: 74
+changeClip:
+  timeBase: 0.55
+  reloadRecovery: 0
+range: null
+explosion_range: null
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+ignore_shield: null
+element_add_rate: 0.408
+skill_cooldown: 30
+pellets: null
+weapon_type_id: 12
+active_skill_id: 5000102
+skill_duration: 8
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <PassiveSkill
+    name="复合战术"
+    tag="元素切换"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20112000001_01.png"
+  >
+    超级复合弓可以切换多种箭头，包括爆炸箭、贯穿箭、燃烧箭、急冻箭和腐蚀箭，每种箭头具有不同的战斗效果。<Blue>部分箭头需获得相应道具后，方可在局内使用。</Blue>
+  </PassiveSkill>
+</WeaponSkill>
+
+<Callout>
+只有贯穿箭头有弱点伤害，上面的数据为贯穿箭头数据
+
+除贯穿箭头，其他箭头命中伤害为 **220.32**， 箭头爆炸伤害为 204，冲击伤害和破韧伤害为 **8.52**
+
+冰冻箭头命中添加元素异常的概率为 **68%**，其他元素箭头为 **40.8%**
+
+毒液/寒冰箭头留下的区域无伤害，但 **100%** 概率给敌人添加元素异常，会累计(每多少秒添加一层暂时未找到具体数据)
+</Callout>
+
+<Callout>
+技能持续 **8秒**，冷却时间 **30秒**，射速提升 **30%** (射速不可叠加，只取最高加成)
+</Callout>

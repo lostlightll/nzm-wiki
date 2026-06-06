@@ -1,0 +1,100 @@
+---
+title: 冥河之矛
+prototype_id: 20006000017
+use_type: 主武器
+weapon_type: 机枪
+element: 电弧
+rarity: 传说
+tags:
+  - 动态射速
+scope: 中倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.21
+    damage:
+      base: 0.12
+      impulse: 1.7
+      toughness: 1.7
+      flesh: 1.3
+      hurtable: 1.3
+    element: 电弧
+    element_add_rate: 0.107
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 被动射速
+    fire_interval: 0.07
+    damage:
+      base: 0.12
+      impulse: 1.7
+      toughness: 1.7
+      flesh: 1.3
+      hurtable: 1.3
+    element: 电弧
+    element_add_rate: 0.107
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 0.12
+  impulse: 1.7
+  toughness: 1.7
+  flesh: 1.3
+  hurtable: 1.3
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 285
+magazine: 100
+total_ammo: 1200
+accuracy: 80
+stability: 56
+changeClip:
+  timeBase: 4.3
+  reloadRecovery: 0.377
+range: null
+explosion_range: null
+attenuation_begin: 49
+attenuation_end: 60
+attenuation_scale: 0.6
+ignore_shield: false
+element_add_rate: 0.107
+skill_cooldown: 120
+pellets: null
+weapon_type_id: 6
+active_skill_id: 5102301
+skill_duration: 20
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="锁魂骨矛"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20006000017_2.png"
+    duration={-1}
+    cooldown={120}
+    count={1}
+  >
+    枪管变型为骨矛射向敌人，并且能够自动追踪首领和精英。骨矛命中敌人后会挂载在敌人身上，最多持续<Yellow>20秒</Yellow>（挂载敌人为首领时，持续时间将额外延长）。骨矛挂载在敌人身上时，冥河之矛开火将产生电流攻击挂载敌人和路径上的其他敌人，并对挂载敌人造成的伤害额外提高<Yellow>35%</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="幽魂紫电"
+    tag="动态射速"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20006000017_1.png"
+  >
+    冥河之矛在射击时会逐渐增加射速，最高提升至初始射速的<Yellow>3倍</Yellow>，随着射速变快，枪械子弹会变成持续的电流。
+  </PassiveSkill>
+</WeaponSkill>

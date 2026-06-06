@@ -1,0 +1,126 @@
+---
+title: 生命线
+prototype_id: 20008000002
+use_type: 副武器
+weapon_type: 单发榴弹
+element: 寒冷
+rarity: 史诗
+tags:
+  - 命中爆炸
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  0: 榴弹命中
+  1: 榴弹爆炸
+damage_modes:
+  - mode: 0
+    name: 榴弹命中
+    fire_interval: 0.6
+    damage:
+      base: 0.3935
+      impulse: 9.84
+      toughness: 9.84
+      flesh: 25.6
+      hurtable: 7.68
+    element: 寒冷
+    element_add_rate: 0.3495
+    weakness_multiplier: 1.1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 榴弹爆炸
+    label: 爆炸伤害
+    damage:
+      base: 0.3148
+      impulse: 9.84
+      toughness: 9.84
+      flesh: 0
+      hurtable: 7.68
+    element: 寒冷
+    element_add_rate: 0.2097
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+extra_modes:
+  - name: 冰池Dot
+    damage:
+      base: 0.04
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 寒冷
+    element_add_rate: 0
+    enable_critical: false
+    fire_interval: 0
+    label: 灼烧伤害
+    toughness_type: 冲击
+damage:
+  base: 0.3935
+  impulse: 9.84
+  toughness: 9.84
+  flesh: 25.6
+  hurtable: 7.68
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.1
+file_rate: 30
+magazine: 1
+total_ammo: 11
+accuracy: 67
+stability: 32
+changeClip:
+  timeBase: 1.4
+  reloadRecovery: 0.206
+range: ''
+explosion_range: 2.5
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+ignore_shield: false
+element_add_rate: 0.5245
+skill_cooldown: 35
+pellets: ''
+weapon_type_id: 8
+active_skill_id: 5100801
+skill_duration: 10
+skill_blocking: false
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="严寒之触"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20108000002_02.png"
+    duration={-1}
+    cooldown={35}
+    count={1}
+  >
+    丢出一颗冰冻核心，碰撞或一定时间后爆炸，爆炸后会在原地留下一颗冰壶，冰壶每<Yellow>3秒</Yellow>喷发一次冰雾，共喷发<Yellow>3次</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="如履薄冰"
+    tag="命中爆炸"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20108000002_01.png"
+  >
+    生命线射出的榴弹，爆炸时将在地面上造成半径为<Yellow>4米</Yellow>的冰池，进入冰池的敌人将持续受到伤害。
+  </PassiveSkill>
+</WeaponSkill>
+
+<Callout color="yellow">赛季天赋极速狂热触发时可以按住连发，收割者不行。</Callout>
+
+命中伤害 **196.75**，爆炸伤害 **393.5**，破韧伤害都是 **9.84**
+
+被动 **如履薄冰** 榴弹爆炸时在地上留下一个半径 **4** 米的冰池，进入冰池的敌人每秒受到 **20** 伤害
+
+主动 **严寒之触** 冰冻核心爆炸伤害为 **170**，添加元素异常概率为 **100%**，之后每 **3** 秒发射一次冰雾共三次，每次伤害为 **75**，添加元素异常概率为 **50%**

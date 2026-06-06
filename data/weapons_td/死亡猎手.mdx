@@ -1,0 +1,81 @@
+---
+title: 死亡猎手
+prototype_id: 20002000012
+use_type: 主武器
+weapon_type: 射手步枪
+element: 物理
+rarity: 史诗
+tags:
+  - 穿透
+scope: 高倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.3
+    damage:
+      base: 0.191
+      impulse: 4.3
+      toughness: 4.3
+      flesh: 3.5
+      hurtable: 3.5
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.5
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 0.318
+  impulse: 4.3
+  toughness: 4.3
+  flesh: 3.5
+  hurtable: 3.5
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.5
+file_rate: 200
+magazine: 20
+total_ammo: 240
+accuracy: 88
+stability: 70
+changeClip:
+  timeBase: 2.6
+  reloadRecovery: 0.3653
+range: ''
+explosion_range: ''
+attenuation_begin: 70
+attenuation_end: 100
+attenuation_scale: 0.6
+ignore_shield: false
+element_add_rate: 0
+skill_cooldown: 25
+pellets: ''
+weapon_type_id: 2
+active_skill_id: 5100701
+shooting_energy: true
+shooting_energy_count: 40
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="急速狂热"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1100701.png"
+    duration={-1}
+    cooldown={25}
+    count={1}
+  >
+    使死亡猎手进入急速狂热状态，射击不消耗弹药，且射速提高<Yellow>50%</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="强力弹药"
+    icon="/icons/weapons/skills/T_Weapon_Skill_effect_03.png"
+  >
+    子弹可以穿透敌人，默认穿透<Yellow>6层</Yellow>目标，伤害无衰减；每命中<Yellow>5个</Yellow>敌人，立即装填弹匣容量<Yellow>10%</Yellow>的子弹。
+  </PassiveSkill>
+</WeaponSkill>

@@ -1,0 +1,98 @@
+---
+title: 黄沙风暴
+prototype_id: 20014000004
+use_type: 主武器
+weapon_type: 射手步枪
+element: 火焰
+rarity: 传说
+tags:
+  - 破韧
+scope: 高倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.27
+    damage:
+      base: 0.105
+      impulse: 2.6
+      toughness: 2.6
+      flesh: 1.6
+      hurtable: 1.6
+    element: 火焰
+    element_add_rate: 0.085
+    weakness_multiplier: 1.5
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 0.105
+  impulse: 2.6
+  toughness: 2.6
+  flesh: 1.6
+  hurtable: 1.6
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.5
+file_rate: 222
+magazine: 15
+total_ammo: 240
+accuracy: 63
+stability: 53
+changeClip:
+  timeBase: 2.5
+  reloadRecovery: 0.0714
+range: null
+explosion_range: null
+attenuation_begin: 60
+attenuation_end: 200
+attenuation_scale: 0.5
+ignore_shield: null
+element_add_rate: 0.085
+skill_cooldown: 40
+pellets: null
+weapon_type_id: 14
+active_skill_id: 5000103
+skill_duration: 8
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="狂热射击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000101.png"
+    duration={8}
+    cooldown={40}
+    count={1}
+  >
+    进入狂热射击状态，期间使用武器射击会直接消耗备弹，且射速提高<Yellow>30%</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="发散射击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20014000004_1.png"
+  >
+    随着弹夹内弹药量的降低，开火时发射的子弹数量逐渐增加，且不会额外消耗弹药。
+  </PassiveSkill>
+</WeaponSkill>
+
+## 狂热射击
+
+获得 **30%** 射速提升，持续时间 **8** 秒射击时直接消耗备弹
+
+## 发散射击
+
+3 发子弹一个量级
+
+| 弹匣子弹数   | 弹道数 |
+| -        | -      |
+| [13, 15] | 1 弹道 |
+| [10, 12] | 2 弹道 |
+| [7,  9]  | 3 弹道 |
+| [4,  6]  | 4 弹道 |
+| [1,  3]  | 5 弹道 |

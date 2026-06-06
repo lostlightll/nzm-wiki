@@ -1,0 +1,81 @@
+---
+title: 苔色暴风
+prototype_id: 20007000005
+use_type: 副武器
+weapon_type: 手枪
+element: 火焰
+rarity: 史诗
+tags:
+  - 备弹回复
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.166
+    damage:
+      base: 0.176
+      impulse: 2.6
+      toughness: 2.6
+      flesh: 2.7
+      hurtable: 2.7
+    element: 火焰
+    element_add_rate: 0.167
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 0.176
+  impulse: 2.6
+  toughness: 2.6
+  flesh: 2.7
+  hurtable: 2.7
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.2
+file_rate: 361
+magazine: 24
+total_ammo: 216
+accuracy: 72
+stability: 57
+changeClip:
+  timeBase: 1.2
+  reloadRecovery: 0.3594
+range: null
+explosion_range: null
+attenuation_begin: 18
+attenuation_end: 40
+attenuation_scale: 0.5
+ignore_shield: null
+element_add_rate: null
+skill_cooldown: 18
+pellets: null
+weapon_type_id: 7
+active_skill_id: 5000601
+show_duration: false
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="多重装填"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000502.png"
+    duration={-1}
+    cooldown={18}
+    count={1}
+  >
+    为背包内主武器回复<Yellow>50%</Yellow>特殊弹药，并且填装弹药。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="回收利用"
+    tag="备弹回复"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20107000003_2.png"
+  >
+    命中敌人时，有<Yellow>10%</Yellow>几率为主武器回复<Yellow>1</Yellow>颗备用弹药。
+  </PassiveSkill>
+</WeaponSkill>
