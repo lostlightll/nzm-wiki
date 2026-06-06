@@ -93,6 +93,7 @@ function generateSitemap() {
     { url: "/enemies/td" },
     { url: "/posts" },
     { url: "/damage" },
+    { url: "/credits" },
   ];
 
   const allPages = [...staticPages, ...pages];

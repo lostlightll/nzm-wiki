@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Sword, Zap, Target, Skull, Github } from "lucide-react";
+import { Sword, Zap, Target, Skull, Github, Heart } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
 
 const GITHUB_UPSTREAM = "https://github.com/qiekn/nzm-wiki";
@@ -39,16 +39,18 @@ export default function Home() {
         <Image
           src={getAssetPath("/logo.png")}
           alt="逆战未来 维基"
-          width={160}
-          height={160}
-          className="mb-4 sm:mb-6"
-          style={{ width: "clamp(120px, 30vw, 160px)", height: "auto" }}
+          width={180}
+          height={180}
+          className="mb-5 sm:mb-6"
+          style={{ width: "clamp(130px, 28vw, 180px)", height: "auto" }}
           priority
         />
-        <h1 className="text-2xl sm:text-4xl font-bold text-white">逆战未来 维基</h1>
+        <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+          逆战未来 维基
+        </h1>
       </div>
 
-      {/* 导航卡片网格 - 固定 2 列 */}
+      {/* 导航卡片网格 */}
       <div className="w-full max-w-md">
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {NAV_ITEMS.map((item) => (
@@ -62,8 +64,17 @@ export default function Home() {
         </div>
       </div>
 
+      {/* 致谢 */}
+      <Link
+        href="/credits"
+        className="mt-5 inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+      >
+        <Heart className="h-3.5 w-3.5" />
+        致谢
+      </Link>
+
       {/* Fork 声明 */}
-      <div className="mt-8 px-5 py-4 rounded-xl border border-zinc-800 bg-zinc-800/30 max-w-md">
+      <div className="mt-5 px-5 py-4 rounded-xl border border-zinc-800 bg-zinc-800/30 max-w-md">
         <p className="text-sm text-zinc-300 leading-relaxed">
           本站 Fork 自{" "}
           <a
@@ -94,8 +105,8 @@ export default function Home() {
         </p>
       </div>
 
-      {/* 快捷键提示 - 仅桌面端显示 */}
-      <div className="mt-8 hidden sm:flex flex-wrap justify-center gap-4 text-xs text-zinc-500">
+      {/* 快捷键提示 */}
+      <div className="mt-6 hidden sm:flex flex-wrap justify-center gap-4 text-xs text-zinc-500">
         <span className="flex items-center gap-1">
           <kbd className="rounded bg-zinc-800 px-1.5 py-0.5">Ctrl+P</kbd>
           <span>搜索</span>

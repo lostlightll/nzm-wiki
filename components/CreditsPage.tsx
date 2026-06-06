@@ -1,0 +1,225 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Credit } from "@/components/Credit";
+import { getAssetPath } from "@/lib/path";
+
+interface CoreContributor {
+  name: string;
+  platform: "github" | "bilibili" | "douyin";
+  url: string;
+  description: string;
+  avatarUrl: string | null;
+  fallbackAvatarUrl?: string | null;
+}
+
+interface ContentContributor {
+  platform: "bilibili" | "douyin" | "github" | "tieba";
+  author: string;
+  url: string;
+  title: string;
+}
+
+const PLATFORM_ICONS: Record<string, string> = {
+  github: "/icons/social/github.svg",
+  bilibili: "/icons/social/bilibili.svg",
+  douyin: "/icons/social/douyin.svg",
+};
+
+function Avatar({
+  src,
+  fallbackSrc,
+  alt,
+  platform,
+}: {
+  src: string | null;
+  fallbackSrc?: string | null;
+  alt: string;
+  platform: string;
+}) {
+  const iconPath = PLATFORM_ICONS[platform];
+
+  if (src) {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        width={48}
+        height={48}
+        className="h-12 w-12 rounded-full object-cover flex-shrink-0"
+        unoptimized
+        onError={(e) => {
+          if (fallbackSrc) {
+            (e.target as HTMLImageElement).src = fallbackSrc;
+          }
+        }}
+      />
+    );
+  }
+
+  // Fallback: 平台图标
+  if (iconPath) {
+    return (
+      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-700/50 flex-shrink-0">
+        <Image
+          src={getAssetPath(iconPath)}
+          alt={platform}
+          width={28}
+          height={28}
+          className="object-contain"
+        />
+      </div>
+    );
+  }
+
+  // 兜底：首字母圆圈
+  return (
+    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-700/50 text-zinc-400 text-lg font-bold flex-shrink-0">
+      {alt.charAt(0)}
+    </div>
+  );
+}
+
+function CoreCard({ person }: { person: CoreContributor }) {
+  const hasDesc = person.description.length > 0;
+
+  return (
+    <Link
+      href={person.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-800/40 hover:bg-zinc-800/70 hover:border-zinc-700 transition-colors p-4"
+    >
+      <Avatar
+        src={person.avatarUrl}
+        fallbackSrc={person.fallbackAvatarUrl}
+        alt={person.name}
+        platform={person.platform}
+      />
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2">
+          <span className="font-semibold text-zinc-200 group-hover:text-white transition-colors truncate">
+            {person.name}
+          </span>
+          <svg
+            className="h-4 w-4 flex-shrink-0 text-zinc-500 group-hover:text-zinc-300 transition-colors"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            />
+          </svg>
+        </div>
+        {hasDesc && (
+          <p className="text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors mt-0.5">
+            {person.description}
+          </p>
+        )}
+      </div>
+    </Link>
+  );
+}
+
+function Pagination({
+  page,
+  total,
+  onPageChange,
+}: {
+  page: number;
+  total: number;
+  onPageChange: (p: number) => void;
+}) {
+  return (
+    <div className="flex items-center justify-center gap-3 pt-8">
+      <button
+        onClick={() => onPageChange(page - 1)}
+        disabled={page <= 1}
+        className="flex items-center justify-center h-9 w-9 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+        aria-label="上一页"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <span className="text-sm text-zinc-500 tabular-nums select-none">
+        {page} / {total}
+      </span>
+      <button
+        onClick={() => onPageChange(page + 1)}
+        disabled={page >= total}
+        className="flex items-center justify-center h-9 w-9 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+        aria-label="下一页"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
+    </div>
+  );
+}
+
+interface CreditsPageProps {
+  coreContributors: CoreContributor[];
+  contentContributors: ContentContributor[];
+}
+
+export function CreditsPage({
+  coreContributors,
+  contentContributors,
+}: CreditsPageProps) {
+  const [page, setPage] = useState(1);
+  const totalPages = 2;
+
+  return (
+    <div className="mx-auto max-w-3xl py-6 md:py-10 px-4">
+      {/* 标题 */}
+      <h1 className="text-2xl font-bold text-white mb-2">致谢</h1>
+      <p className="text-zinc-400 mb-8">
+        感谢为逆战未来 Wiki 做出贡献的每一位玩家和创作者
+      </p>
+
+      {/* 翻页内容 */}
+      <div className="min-h-[400px]">
+        {page === 1 && (
+          <div className="animate-in fade-in duration-200">
+            <h2 className="text-sm font-medium text-zinc-500 mb-4 tracking-wide">
+              核心致谢
+            </h2>
+            <div className="space-y-3">
+              {coreContributors.map((person) => (
+                <CoreCard key={person.name} person={person} />
+              ))}
+            </div>
+          </div>
+        )}
+        {page === 2 && (
+          <div className="animate-in fade-in duration-200">
+            <h2 className="text-sm font-medium text-zinc-500 mb-3 tracking-wide">
+              内容致谢
+            </h2>
+            <div className="grid gap-2 sm:grid-cols-2 [&>*]:my-0">
+              {contentContributors.map((c) => (
+                <Credit
+                  key={`${c.author}-${c.title}`}
+                  platform={c.platform}
+                  author={c.author}
+                  url={c.url}
+                  title={c.title}
+                />
+              ))}
+            </div>
+            <p className="mt-4 text-sm text-zinc-500 text-center">
+              以及所有不愿意透露姓名的贡献者
+            </p>
+          </div>
+        )}
+      </div>
+
+      <Pagination page={page} total={totalPages} onPageChange={setPage} />
+    </div>
+  );
+}
