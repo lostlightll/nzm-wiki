@@ -66,12 +66,13 @@ export interface DamageMode {
 
 /**
  * 换弹时间数据
- * 完整换弹 = timeBase + endToFireTime
- * 战术换弹 = timeBase
+ * 换弹动画 = timeBase（WeaponChangeClipTimeBase）
+ * 换弹后摇 = reloadRecovery（EarlyExitFromReloadAnim_C LinkValue）
+ * 完整换弹 = timeBase + reloadRecovery
  */
 export interface WeaponChangeClip {
   timeBase: number;
-  endToFireTime: number;
+  reloadRecovery: number;
 }
 
 /**
