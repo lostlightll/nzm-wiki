@@ -4,9 +4,11 @@
 
 > Fork自 [qiekn/nzm-wiki](https://github.com/qiekn/nzm-wiki)，原作者 [@qiekn](https://github.com/qiekn) 保留版权。原项目更新节奏较慢且部分枪械数据不够清晰，于是分叉出来按自己的需求调整。
 
-在线访问：[武器图鉴](https://lostlightll.github.io/nzm-wiki/weapons)
+在线访问：[逆战未来维基](https://lostlightll.github.io/nzm-wiki)
 
 ## 致谢名单
+
+完整致谢请查看 [致谢页面](https://lostlightll.github.io/nzm-wiki/credits)。
 
 - [@qiekn](https://github.com/qiekn) — 原始项目 [nzm-wiki](https://github.com/qiekn/nzm-wiki)，本项目 Fork 自此
 - [@YousaHay](https://github.com/YousaHay) — 解包思路与交流
