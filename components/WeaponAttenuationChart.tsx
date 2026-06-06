@@ -138,7 +138,8 @@ export function WeaponAttenuationChart({
   const gradientId = useId().replace(/:/g, "");
 
   const primaryMode = weapon?.damageModes?.[0];
-  const baseDamage = toNumber(damage) ?? (primaryMode?.damage?.base ? primaryMode.damage.base * 500 : null);
+  const hpMultiplier = weapon?.game_mode === "td" ? 400 : 500;
+  const baseDamage = toNumber(damage) ?? (primaryMode?.damage?.base ? primaryMode.damage.base * hpMultiplier : null);
   const attenuationBegin = toNumber(begin) ?? toNumber(weapon?.attenuation_begin);
   const attenuationEnd = toNumber(end) ?? toNumber(weapon?.attenuation_end);
   const attenuationScale = toNumber(scale) ?? toNumber(weapon?.attenuation_scale);

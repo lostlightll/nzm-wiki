@@ -39,8 +39,8 @@ function formatPrecise(n: number): string {
   return fixed.replace(/0+$/, "").replace(/\.$/, ".0");
 }
 
-function formatDamage(mode: DamageMode): string {
-  const damage = round1(mode.damage.base * 500);
+function formatDamage(mode: DamageMode, hpMultiplier = 500): string {
+  const damage = round1(mode.damage.base * hpMultiplier);
   if (mode.pellets && mode.pellets > 1) {
     return `${damage} × ${mode.pellets}`;
   }
@@ -114,7 +114,7 @@ function SimpleCard({ weapon }: { weapon: Weapon }) {
   const elementIcon = ELEMENT_ICONS[mode.element];
 
   return (
-    <Link href={`/weapons/${encodeURIComponent(weapon.slug)}`}>
+    <Link href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}>
       <div
         className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 transition-transform hover:scale-[1.02]`}
       >
@@ -148,9 +148,10 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
   const elementIcon = ELEMENT_ICONS[mode.element];
   const tags = weapon.tags || [];
+  const hpMul = weapon.game_mode === "td" ? 400 : 500;
 
   return (
-    <Link href={`/weapons/${encodeURIComponent(weapon.slug)}`}>
+    <Link href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}>
       <div
         className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5 transition-transform hover:scale-[1.02] min-w-[360px]`}
       >
@@ -189,7 +190,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
         <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-base">
           <div className="flex justify-between">
             <span className="text-zinc-500">单发伤害</span>
-            <span className="text-white">{formatDamage(mode)}</span>
+            <span className="text-white">{formatDamage(mode, hpMul)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-zinc-500">射速</span>
@@ -279,10 +280,12 @@ function ModeStats({
   mode,
   showName,
   compact,
+  hpMultiplier = 500,
 }: {
   mode: DamageMode;
   showName: boolean;
   compact?: boolean;
+  hpMultiplier?: number;
 }) {
   const rpm = Math.round(calcRPM(mode));
 
@@ -306,7 +309,7 @@ function ModeStats({
         </div>
       ) : mode.fireIntervalBase === 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-          <Stat label={mode.damageLabel || "命中伤害"} value={formatDamage(mode)} />
+          <Stat label={mode.damageLabel || "命中伤害"} value={formatDamage(mode, hpMultiplier)} />
           <Stat label="单发破韧值" value={formatPrecise(mode.damage.toughness)} />
           <Stat label="弱点倍率" value={mode.enableWeakness ? String(mode.weaknessMultiplier) : "-"} />
           <Stat
@@ -322,7 +325,7 @@ function ModeStats({
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-          <Stat label={mode.damageLabel || "命中伤害"} value={formatDamage(mode)} />
+          <Stat label={mode.damageLabel || "命中伤害"} value={formatDamage(mode, hpMultiplier)} />
           <Stat label="单发破韧值" value={formatPrecise(mode.damage.toughness)} />
           <Stat label="弱点倍率" value={mode.enableWeakness ? String(mode.weaknessMultiplier) : "-"} />
           <Stat
@@ -356,7 +359,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function SkillSection({ weapon }: { weapon: Weapon }) {
+function SkillSection({ weapon, hpMultiplier = 500 }: { weapon: Weapon; hpMultiplier?: number }) {
   const [expanded, setExpanded] = useState(false);
   const modes = weapon.extraModes!;
   const collapsible = modes.length > 3;
@@ -373,7 +376,7 @@ function SkillSection({ weapon }: { weapon: Weapon }) {
         const isVariant = damageAllZero || weapon.damageModes.some(
           (dm) => dm.damage.base === m.damage.base
         );
-        return <ModeStats key={i} mode={m} showName compact={isVariant} />;
+        return <ModeStats key={i} mode={m} showName compact={isVariant} hpMultiplier={hpMultiplier} />;
       })}
       {collapsible && !expanded && (
         <div className="text-center">
@@ -416,6 +419,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
   const elementIcon = ELEMENT_ICONS[mode.element];
   const tags = weapon.tags || [];
+  const hpMul = weapon.game_mode === "td" ? 400 : 500;
 
   const [showReloadDetail, setShowReloadDetail] = useState(false);
 
@@ -470,7 +474,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
       {/* 射击模式 */}
       {weapon.damageModes.length > 1 ? (
         weapon.damageModes.map((m, i) => (
-          <ModeStats key={i} mode={m} showName />
+          <ModeStats key={i} mode={m} showName hpMultiplier={hpMul} />
         ))
       ) : (
         <div className="mb-3">
@@ -484,13 +488,13 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
           >
             普通射击
           </h2>
-          <ModeStats mode={weapon.damageModes[0]} showName={false} />
+          <ModeStats mode={weapon.damageModes[0]} showName={false} hpMultiplier={hpMul} />
         </div>
       )}
 
       {/* 技能 / 特殊攻击 */}
       {weapon.extraModes && weapon.extraModes.length > 0 && (
-        <SkillSection weapon={weapon} />
+        <SkillSection weapon={weapon} hpMultiplier={hpMul} />
       )}
 
       {/* 武器衰减 */}

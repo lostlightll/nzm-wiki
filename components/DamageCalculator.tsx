@@ -69,6 +69,7 @@ interface WeaponStat {
   magazine: number | null;
   reload_time: number | null;
   enable_critical: boolean | null;
+  game_mode: "lc" | "td" | null;
   pinyin: string[];
 }
 
@@ -128,7 +129,8 @@ export function DamageCalculator() {
   }, []);
 
   const applyWeapon = (w: WeaponStat) => {
-    if (w.damage_base !== null) setBaseDmg(Math.round(w.damage_base * 500));
+    const hpMult = w.game_mode === "td" ? 400 : 500;
+    if (w.damage_base !== null) setBaseDmg(Math.round(w.damage_base * hpMult));
     if (w.weekness_multiplier !== null) setWeakpointMul(w.weekness_multiplier);
     if (w.file_rate !== null) setFireRate(w.file_rate);
     if (w.magazine !== null) setMagSize(w.magazine);
