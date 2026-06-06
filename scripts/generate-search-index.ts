@@ -49,6 +49,8 @@ function scanDirectory(dirPath: string, relativePath: string = ""): SearchItem[]
     const fullPath = path.join(dirPath, entry.name);
 
     if (entry.isDirectory()) {
+      // TD 武器是猎场武器的衍生版本，不单独索引
+      if (entry.name === "weapons_td") continue;
       // 路由组目录（以括号开头）不包含在 slug 中
       if (entry.name.startsWith("(")) {
         results.push(...scanDirectory(fullPath, relativePath));
@@ -206,12 +208,6 @@ function generateWeaponStats() {
   console.log("Generating weapon stats...");
 
   const weaponsDir = path.join(baseDir, "weapons");
-  if (!fs.existsSync(weaponsDir)) {
-    console.log("No weapons directory found, skipping.");
-    return;
-  }
-
-  const files = fs.readdirSync(weaponsDir).filter((f) => f.endsWith(".mdx"));
 
   interface WeaponStat {
     title: string;
@@ -228,45 +224,57 @@ function generateWeaponStats() {
     attenuation_end: number | null;
     attenuation_scale: number | null;
     enable_critical: boolean | null;
+    game_mode: "lc" | "td" | null;
     pinyin: string[];
   }
 
-  const weapons: WeaponStat[] = [];
+  function scanDir(dir: string, defaultGameMode: "lc" | "td"): WeaponStat[] {
+    if (!fs.existsSync(dir)) return [];
+    const files = fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"));
+    const result: WeaponStat[] = [];
 
-  for (const file of files) {
-    const content = fs.readFileSync(path.join(weaponsDir, file), "utf-8");
-    const { data } = matter(content);
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(dir, file), "utf-8");
+      const { data } = matter(content);
 
-    const title = data.title || file.replace(/\.mdx$/, "");
+      const title = data.title || file.replace(/\.mdx$/, "");
 
-    // 过滤近战武器
-    if (data.use_type === "近战武器") continue;
+      // 过滤近战武器
+      if (data.use_type === "近战武器") continue;
 
-    // 拼音
-    const pinyinSet = new Set<string>();
-    const fullPy = pinyin(String(title), { toneType: "none", type: "array" }).join("");
-    if (fullPy) pinyinSet.add(fullPy.toLowerCase());
-    const initials = pinyin(String(title), { pattern: "first", toneType: "none", type: "array" }).join("");
-    if (initials) pinyinSet.add(initials.toLowerCase());
+      // 拼音
+      const pinyinSet = new Set<string>();
+      const fullPy = pinyin(String(title), { toneType: "none", type: "array" }).join("");
+      if (fullPy) pinyinSet.add(fullPy.toLowerCase());
+      const initials = pinyin(String(title), { pattern: "first", toneType: "none", type: "array" }).join("");
+      if (initials) pinyinSet.add(initials.toLowerCase());
 
-    weapons.push({
-      title,
-      use_type: data.use_type || null,
-      weapon_type: data.weapon_type || null,
-      element: data.element || null,
-      rarity: data.rarity || null,
-      damage_base: data.damage?.base ?? null,
-      weekness_multiplier: typeof data.weekness_multiplier === "number" ? data.weekness_multiplier : null,
-      file_rate: typeof data.file_rate === "number" ? data.file_rate : null,
-      magazine: typeof data.magazine === "number" ? data.magazine : null,
-      reload_time: typeof data.reload_time === "number" ? data.reload_time : null,
-      attenuation_begin: typeof data.attenuation_begin === "number" ? data.attenuation_begin : null,
-      attenuation_end: typeof data.attenuation_end === "number" ? data.attenuation_end : null,
-      attenuation_scale: typeof data.attenuation_scale === "number" ? data.attenuation_scale : null,
-      enable_critical: data.enable_critical ?? null,
-      pinyin: [...pinyinSet],
-    });
+      result.push({
+        title,
+        use_type: data.use_type || null,
+        weapon_type: data.weapon_type || null,
+        element: data.element || null,
+        rarity: data.rarity || null,
+        damage_base: data.damage?.base ?? null,
+        weekness_multiplier: typeof data.weekness_multiplier === "number" ? data.weekness_multiplier : null,
+        file_rate: typeof data.file_rate === "number" ? data.file_rate : null,
+        magazine: typeof data.magazine === "number" ? data.magazine : null,
+        reload_time: typeof data.reload_time === "number" ? data.reload_time : null,
+        attenuation_begin: typeof data.attenuation_begin === "number" ? data.attenuation_begin : null,
+        attenuation_end: typeof data.attenuation_end === "number" ? data.attenuation_end : null,
+        attenuation_scale: typeof data.attenuation_scale === "number" ? data.attenuation_scale : null,
+        enable_critical: data.enable_critical ?? null,
+        game_mode: data.game_mode || defaultGameMode,
+        pinyin: [...pinyinSet],
+      });
+    }
+    return result;
   }
+
+  const weapons = [
+    ...scanDir(weaponsDir, "lc"),
+    ...scanDir(path.join(baseDir, "weapons_td"), "td"),
+  ];
 
   weapons.sort((a, b) => {
     // 一级：稀有度降序（传说 > 史诗 > 稀有）

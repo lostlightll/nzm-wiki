@@ -8,6 +8,7 @@ const baseDir = path.join(process.cwd(), "data");
 // 路径映射（与 generate-search-index.ts 保持一致）
 const pathMap: Record<string, string> = {
   weapons: "/weapons",
+  weapons_td: "/weapons/td",
   perks: "/perks",
   traps: "/traps",
   "enemies/lc/boss": "/enemies/lc",
