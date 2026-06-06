@@ -6,6 +6,11 @@
 
 在线访问：[武器图鉴](https://lostlightll.github.io/nzm-wiki/weapons)
 
+## 感谢
+
+- [@qiekn](https://github.com/qiekn) — 原始项目 [nzm-wiki](https://github.com/qiekn/nzm-wiki)，本项目 Fork 自此
+- [@Dabbiell](https://github.com/Dabbiell) — 塔防数值解包数据支持
+
 ## 技术栈
 
 Next.js 16 + React 19 + TypeScript + Tailwind CSS v4 + MDX 
