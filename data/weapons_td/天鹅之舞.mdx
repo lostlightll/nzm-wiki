@@ -1,0 +1,83 @@
+---
+title: 天鹅之舞
+prototype_id: 20010000001
+use_type: 主武器
+weapon_type: 突击步枪
+element: 物理
+rarity: 史诗
+tags:
+  - 快速连发
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.2
+    damage:
+      base: 0.134
+      impulse: 2.1
+      toughness: 2.1
+      flesh: 1.7
+      hurtable: 1.7
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 0.134
+  impulse: 2.1
+  toughness: 2.1
+  flesh: 1.7
+  hurtable: 1.7
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 243
+magazine: 42
+total_ammo: 588
+accuracy: 69
+stability: 35
+changeClip:
+  timeBase: 1.5
+  reloadRecovery: 0.2165
+range: ''
+explosion_range: ''
+attenuation_begin: 38
+attenuation_end: 60
+attenuation_scale: 0.5
+ignore_shield: false
+element_add_rate: 0
+skill_cooldown: 45
+pellets: ''
+weapon_type_id: 10
+active_skill_id: 5001401
+skill_duration: 15
+skill_blocking: false
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="战术力场"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20110000001_02.png"
+    duration={12}
+    cooldown={45}
+    count={1}
+  >
+    原地释放一个半径<Yellow>6米</Yellow>的战术力场，提高范围内我方角色暴击率<Yellow>36%</Yellow>，并且产生暴击时会治疗自己。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="猎手"
+    tag="快速连发"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20110000001_01.png"
+  >
+    三连发射击的第三发子弹<Yellow>100%</Yellow>造成暴击，并且可穿透<Yellow>3层</Yellow>目标，伤害无衰减。
+  </PassiveSkill>
+</WeaponSkill>

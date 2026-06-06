@@ -1,0 +1,77 @@
+---
+title: 生命公司
+prototype_id: 20006000002
+use_type: 主武器
+weapon_type: 机枪
+element: 腐蚀
+rarity: 传说
+tags: ''
+scope: ''
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.15
+    damage:
+      base: 0.167
+      impulse: 2.2
+      toughness: 2.2
+      flesh: 1.8
+      hurtable: 1.8
+    element: 腐蚀
+    element_add_rate: 0.141
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 0.167
+  impulse: 2.2
+  toughness: 2.2
+  flesh: 1.8
+  hurtable: 1.8
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: ''
+magazine: ''
+total_ammo: ''
+accuracy: ''
+stability: ''
+changeClip:
+  timeBase: 3.3
+  reloadRecovery: 0.5102
+range: ''
+explosion_range: ''
+attenuation_begin: 49
+attenuation_end: 60
+attenuation_scale: 0.6
+ignore_shield: false
+element_add_rate: 0.141
+weapon_type_id: 6
+active_skill_id: 5101801
+draft: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="战术领域"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20106000002_2.png"
+    duration={-1}
+    cooldown={45}
+    count={1}
+  >
+    在面前放置一道能量壁垒，阻挡所有敌方射弹。壁垒存在时，生命公司拥有自瞄效果，且角色在壁垒附近能获得临时护盾。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="生命注入"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20106000002_2.png"
+  >
+    造成击杀时，有<Yellow>33%</Yellow>概率将<Yellow>6</Yellow>发备弹填充至主弹匣内。
+  </PassiveSkill>
+</WeaponSkill>

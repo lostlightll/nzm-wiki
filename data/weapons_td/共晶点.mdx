@@ -1,0 +1,82 @@
+---
+title: 共晶点
+prototype_id: 20005000007
+use_type: 主武器
+weapon_type: 冲锋枪
+element: 寒冷
+rarity: 史诗
+tags:
+  - 元素异常
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.075
+    damage:
+      base: 0.112
+      impulse: 1.3
+      toughness: 1.3
+      flesh: 1
+      hurtable: 1
+    element: 寒冷
+    element_add_rate: 0.055
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 0.112
+  impulse: 1.3
+  toughness: 1.3
+  flesh: 1
+  hurtable: 1
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 799
+magazine: 34
+total_ammo: 884
+accuracy: 71
+stability: 52
+changeClip:
+  timeBase: 1
+  reloadRecovery: 0.3521
+range: ''
+explosion_range: ''
+attenuation_begin: 10
+attenuation_end: 32.5
+attenuation_scale: 0.1
+ignore_shield: false
+element_add_rate: 0.055
+skill_cooldown: 35
+pellets: ''
+weapon_type_id: 5
+active_skill_id: 5001801
+skill_duration: 15
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="连环冻结"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000007_2.png"
+    duration={15}
+    cooldown={35}
+    count={1}
+  >
+    玩家击杀被<Blue>冻结</Blue>的目标时，离该敌人最近的一个随机敌人被<Blue>冻结</Blue>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="低温界面"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000007_3.png"
+  >
+    使用共晶点给怪物重复附加冰元素异常效果时，会触发<Blue>冻结</Blue>。
+  </PassiveSkill>
+</WeaponSkill>

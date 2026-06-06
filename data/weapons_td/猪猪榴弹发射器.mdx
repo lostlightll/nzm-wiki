@@ -1,0 +1,102 @@
+---
+title: 猪猪榴弹发射器
+prototype_id: 20008000011
+use_type: 副武器
+weapon_type: 单发榴弹
+element: 物理
+rarity: 传说
+tags: null
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  0: 榴弹命中
+  1: 榴弹爆炸
+damage_modes:
+  - mode: 0
+    name: 榴弹命中
+    fire_interval: 0.6
+    damage:
+      base: 0.4335
+      impulse: 10.84
+      toughness: 10.84
+      flesh: 28.2
+      hurtable: 8.46
+    element: 物理
+    element_add_rate: 1
+    weakness_multiplier: 1.1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 榴弹爆炸
+    label: 爆炸伤害
+    damage:
+      base: 0.3468
+      impulse: 10.84
+      toughness: 10.84
+      flesh: 0
+      hurtable: 8.46
+    element: 物理
+    element_add_rate: 1
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+damage:
+  base: 0.867
+  impulse: 10.84
+  toughness: 10.84
+  flesh: 28.2
+  hurtable: 8.46
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 25
+magazine: 1
+total_ammo: 10
+accuracy: 67
+stability: 32
+changeClip:
+  timeBase: 1.8
+  reloadRecovery: 0
+range: 0
+explosion_range: -1
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+ignore_shield: false
+element_add_rate: 0
+skill_cooldown: 0
+pellets: null
+weapon_type_id: 8
+active_skill_id: 5004001
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="猪猪照相机"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20008000011_2.png"
+    duration={-1}
+    cooldown={0}
+    count={1}
+  >
+    据说，使用猪猪照相机拍照的逆行者，也会变成猪猪哦。拍照成功后，全队玩家武器伤害提高<Yellow>6%</Yellow>，持续<Yellow>20秒</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="猪猪发把枪"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20008000011_1.png"
+  >
+    丢枪时随机丢出一把金品阶武器，但是请不要轻易尝试。
+  </PassiveSkill>
+</WeaponSkill>
+
+榴弹命中造成 **43.35%** 攻击力伤害

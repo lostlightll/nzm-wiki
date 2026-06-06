@@ -1,0 +1,111 @@
+---
+title: 元宵来袭
+prototype_id: 20005000018
+use_type: 主武器
+weapon_type: 冲锋枪
+element: 物理
+rarity: 传说
+tags: null
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+mode_names: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.07
+    damage:
+      base: 0.086
+      impulse: 1.2
+      toughness: 1.2
+      flesh: 1
+      hurtable: 1
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 汤圆命中
+    fire_interval: 0
+    damage:
+      base: 0.137
+      impulse: 1.9
+      toughness: 1.9
+      flesh: 1.6
+      hurtable: 1.6
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - name: 抛体模式
+    damage:
+      base: 0
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    fire_interval: 0.13
+damage:
+  base: 0.086
+  impulse: 1.2
+  toughness: 1.2
+  flesh: 1
+  hurtable: 1
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 857
+magazine: 34
+total_ammo: 952
+accuracy: 71
+stability: 52
+reload_time: ''
+range: null
+explosion_range: null
+attenuation_begin: 18
+attenuation_end: 40
+attenuation_scale: 0.4
+ignore_shield: false
+element_add_rate: 0
+skill_cooldown: 35
+pellets: null
+changeClip:
+  timeBase: 1
+  reloadRecovery: 0.234
+weapon_type_id: 5
+active_skill_id: 5002801
+skill_duration: 20
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="汤圆发射器"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
+    duration={20}
+    cooldown={35}
+    count={1}
+  >
+    发射美味汤圆！命中敌人时，有<Yellow>10%</Yellow>概率掉落一颗随机汤圆
+  </ActiveSkill>
+  <PassiveSkill
+    name="吃汤圆咯"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
+  >
+    拾取汤圆时，获得特殊效果。
+
+    金汤圆：拾取后增加金币，僵尸猎场中为<Yellow>100</Yellow>金币，塔防模式为<Yellow>35</Yellow>金币；  
+    绿汤圆：拾取后角色最大生命值提升<Yellow>2</Yellow>，可叠加层数，阵亡时损失全部层数；  
+    橙汤圆：拾取后射速提升<Yellow>40%</Yellow>，换弹速度提升<Yellow>40%</Yellow>；
+  </PassiveSkill>
+</WeaponSkill>

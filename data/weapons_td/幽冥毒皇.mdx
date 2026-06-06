@@ -1,0 +1,135 @@
+---
+title: 幽冥毒皇
+prototype_id: 20006000006
+use_type: 主武器
+weapon_type: 机枪
+element: 腐蚀
+rarity: 传说
+tags:
+  - 多模式
+scope: 中倍镜
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  1: 榴弹命中
+  2: 榴弹爆炸
+damage_modes:
+  - mode: 1
+    name: 榴弹命中
+    fire_interval: 0.8
+    damage:
+      base: 0.12
+      impulse: 1.2
+      toughness: 1.2
+      flesh: 1.2
+      hurtable: 1.2
+    element: 腐蚀
+    element_add_rate: 0.06
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 2
+    name: 榴弹爆炸
+    label: 爆炸伤害
+    damage:
+      base: 0.12
+      impulse: 1.2
+      toughness: 1.2
+      flesh: 1.2
+      hurtable: 1.2
+    fire_interval: 0
+    enable_critical: true
+    element_add_rate: 0.06
+    element: 腐蚀
+    weakness_multiplier: 1
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 毒池Dot
+    damage:
+      base: 0.03
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    enable_critical: false
+    fire_interval: 0
+    label: 灼烧伤害
+    element: 物理
+    element_add_rate: 0
+    toughness_type: 冲击
+damage:
+  base: 0.115
+  impulse: 1.5
+  toughness: 1.5
+  flesh: 1.2
+  hurtable: 1.2
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 621
+magazine: 100
+total_ammo: 1000
+accuracy: 80
+stability: 50
+changeClip:
+  timeBase: 2.5
+  reloadRecovery: 0.2783
+range: ''
+explosion_range: ''
+attenuation_begin: 49
+attenuation_end: 60
+attenuation_scale: 0.6
+ignore_shield: false
+element_add_rate: 0.097
+skill_cooldown: 30
+skill_duration: 10
+skill_blocking: true
+show_duration: true
+pellets: ''
+weapon_type_id: 6
+active_skill_id: 5102201
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="腐蚀爆发"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20006000006_2.png"
+    duration={-1}
+    cooldown={30}
+    count={1}
+  >
+    幽冥毒皇激活技能后，立即回复全部榴弹，并提升全队幽冥毒皇受到<Blue>腐蚀之力</Blue>的增益，同时小队内的幽冥毒王也能受到<Blue>腐蚀之力</Blue>影响。机甲战中仅对自己生效。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="腐蚀毒液"
+    tag="多模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20006000006_1.png"
+  >
+    幽冥毒皇可以在<Blue>机枪</Blue>和<Blue>榴弹枪</Blue>之间切换。至多可存储<Yellow>10枚</Yellow>榴弹。榴弹命中敌人后留下毒池，降低<Yellow>70%</Yellow>（塔防<Yellow>32%</Yellow>）移动速度和攻击速度。机枪命中<Yellow>35次</Yellow>恢复<Yellow>1枚</Yellow>榴弹。命中后附加<Blue>腐蚀之力</Blue>效果，提高榴弹与机枪伤害。
+  </PassiveSkill>
+</WeaponSkill>
+
+## 腐蚀榴弹
+
+榴弹命中伤害为 **225**，添加元素异常概率为 **30%**，破韧伤害 **3.0**，无弱点倍率加成 <Grey>(专属插件 **腐蚀榴弹** 榴弹直接命中伤害增加 **250%** 后，伤害为 **787.5**)</Grey>
+
+榴弹爆炸伤害为 **150**，添加元素异常概率为 **15%**, 破韧伤害 **3.0**
+
+毒池 Dot 伤害为 **15**
+
+## 腐蚀之力
+
+腐蚀之力的增伤是伤害倍率的 <Red>加区</Red>，不受插件影响，例如**最终伤害 = 武器基础伤害 × 伤害倍率 × 额外全局乘区**，我们单看伤害倍率内部是 **(1 + 27% + 0.5% × 1200)**  
+<Grey>上面例子里面 27% 是钝化增伤， 0.5% × 1200 是对首领敌人的 1200 层腐蚀之力增伤，对于 **非首领关卡**，则是最高 **100** 层，每层增伤为 **0.6%**，叠满腐蚀之力的效果都是伤害倍率 <Red>增加</Red> **0.6**</Grey>
+
+关于腐蚀之力的伤害统计数据可以看下面的视频。
+
+<Credit platform="bilibili" author="幻枫华羽" url="https://www.bilibili.com/video/BV19Q6bBrE1m" title="BV19Q6bBrE1m" />

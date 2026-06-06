@@ -1,0 +1,86 @@
+---
+title: 振弦
+prototype_id: 20012000002
+use_type: 副武器
+weapon_type: 弓箭
+element: 物理
+rarity: 史诗
+tags:
+  - 蓄力
+scope: 高倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.3
+    damage:
+      base: 1.632
+      impulse: 21.3
+      toughness: 21.3
+      flesh: 22.1
+      hurtable: 22.1
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 1.632
+  impulse: 21.3
+  toughness: 21.3
+  flesh: 22.1
+  hurtable: 22.1
+toughness_type: 冲击
+enable_critical: true
+weakness_multiplier: 1.5
+file_rate: 35
+magazine: 1
+total_ammo: 18
+accuracy: 77
+stability: 74
+changeClip:
+  timeBase: 0.45
+  reloadRecovery: 0
+range: null
+explosion_range: null
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+ignore_shield: null
+element_add_rate: null
+skill_cooldown: 30
+pellets: null
+weapon_type_id: 12
+active_skill_id: 5004501
+skill_duration: 15
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="狂暴模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20012000002_3.png"
+    duration={15}
+    cooldown={30}
+    count={1}
+  >
+    进入狂暴模式，持续<Yellow>15秒</Yellow>，期间暴击率提升<Yellow>25%</Yellow>，暴击伤害增加<Yellow>50%</Yellow>。
+    </ActiveSkill>
+  <PassiveSkill
+    name="急速杀戮"
+    tag="蓄力"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20109000001_2.png"
+  >
+    当前背包中有该武器时，每次击杀敌人将获得<Yellow>1层</Yellow>开火速度、换弹速度、切枪速度的加成效果，该效果可叠加多层。持续一定时间没有击杀将移除该效果。
+  </PassiveSkill>
+</WeaponSkill>
+
+<Callout>
+技能持续时间 **15秒**， 冷却时间 **30秒**
+</Callout>

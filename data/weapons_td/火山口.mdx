@@ -1,0 +1,81 @@
+---
+title: 火山口
+prototype_id: 20001000010
+use_type: 主武器
+weapon_type: 突击步枪
+element: 火焰
+rarity: 史诗
+tags: ''
+scope: ''
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.12
+    damage:
+      base: 0.124
+      impulse: 1.9
+      toughness: 1.9
+      flesh: 1.5
+      hurtable: 1.5
+    element: 火焰
+    element_add_rate: 0.124
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 0.124
+  impulse: 1.9
+  toughness: 1.9
+  flesh: 1.5
+  hurtable: 1.5
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 500
+magazine: 50
+total_ammo: 650
+accuracy: 68
+stability: 53
+changeClip:
+  timeBase: 1.14
+  reloadRecovery: 0.5185
+range: ''
+explosion_range: ''
+attenuation_begin: 38
+attenuation_end: 60
+attenuation_scale: 0.5
+ignore_shield: false
+element_add_rate: 0.124
+skill_cooldown: 15
+pellets: ''
+weapon_type_id: 1
+active_skill_id: 5001002
+show_duration: false
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="多重燃烧手雷"
+    icon="/icons/weapons/skills/T_Weapon_Skill_1000901.png"
+    duration={-1}
+    cooldown={15}
+    count={3}
+  >
+    扔出一颗手雷，可造成 **160%** 攻击力的伤害， **100%** 添加元素异常，半径<Yellow>3米</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="熔岩充能"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20101000001_1.png"
+  >
+    释放火山口主动技能时，为副武器主动技能充能<Yellow>15%</Yellow>。释放副武器主动技能时，为火山口主动技能充能<Yellow>45%</Yellow>。
+  </PassiveSkill>
+</WeaponSkill>
+
+主动技能手雷伤害 **800**，添加元素异常概率为 **100%**

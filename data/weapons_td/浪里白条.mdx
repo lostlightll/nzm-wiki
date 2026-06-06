@@ -1,0 +1,123 @@
+---
+title: 浪里白条
+prototype_id: 20009000001
+use_type: 主武器
+weapon_type: 激光武器
+element: 电弧
+rarity: 传说
+tags: null
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  1: 一段激光
+damage_modes:
+  - mode: 1
+    name: 一段激光
+    fire_interval: 0.5
+    damage:
+      base: 0.112
+      impulse: 1.578
+      toughness: 1.578
+      flesh: 1.267
+      hurtable: 1.267
+    element: 电弧
+    element_add_rate: 0.101
+    weakness_multiplier: 1.5
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 0
+    name: 二段命中
+    fire_interval: 0.5
+    damage:
+      base: 1.005
+      impulse: 14.2
+      toughness: 14.2
+      flesh: 11.4
+      hurtable: 11.4
+    element: 电弧
+    element_add_rate: 0.911
+    weakness_multiplier: 1.5
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 2.124
+  impulse: 14.2
+  toughness: 14.2
+  flesh: 11.4
+  hurtable: 11.4
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.5
+file_rate: 28
+magazine: 30
+total_ammo: 300
+accuracy: 70
+stability: 60
+changeClip:
+  timeBase: 3
+  reloadRecovery: 0.2715
+range: -1
+explosion_range: -1
+attenuation_begin: 60
+attenuation_end: 100
+attenuation_scale: 0.6
+ignore_shield: false
+element_add_rate: 0.911
+skill_cooldown: 40
+pellets: null
+weapon_type_id: 9
+active_skill_id: 5003901
+skill_duration: 10
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="高能光束"
+    icon="/icons/weapons/skills/T_Icon_Skill_ElectromagneticSoldier_Talents_27400204.png"
+    duration={-1}
+    cooldown={40}
+    count={1}
+  >
+    浪里白条进入增幅状态，命中敌人时可以获得<Yellow>2层</Yellow><Blue>命中层数</Blue>，命中弱点或暴击时可以获得<Yellow>3层</Yellow><Blue>命中层数</Blue>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="感电反应"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20109000001_01.png"
+  >
+    浪里白条开火时会在持续射击一段时间后打出一次爆发伤害。持续射击时，每次命中目标会给自身增加一层<Blue>命中层数</Blue>，打出爆发伤害时会根据<Blue>命中层数</Blue>增加伤害，每层<Blue>命中层数</Blue>能够增加<Yellow>6%</Yellow>伤害。
+    命中弱点或暴击时，<Blue>额外</Blue>增加一层<Blue>命中层数</Blue>。
+  </PassiveSkill>
+</WeaponSkill>
+
+
+> by GPT5.4
+
+| 伤害类型 | 单次伤害（500×系数） | 破韧伤害 | 添加元素异常概率 | 弱点倍率 |
+| - | - | - | - | - |
+| 普通命中 | 502.5 | 14.2 | 91.1% | 1.5x |
+| 高能光束 | 56 | 1.578 | 10.1% | 1.5x |
+
+### 伤害说明
+
+浪里白条有 3 组独立数值：
+
+- **普通命中**：本体射击，单次约 **502.5**。
+- **高能光束**：主动技能期间的独立伤害，单次约 **56**。
+
+### 计算方式
+
+- **普通命中**：`500 × 1.005 = 502.5`
+- **普通命中弱点**：`500 × 1.005 × 1.5 = 753.75`
+- **高能光束**：`500 × 0.112 = 56`
+- **高能光束弱点**：`500 × 0.112 × 1.5 = 84`

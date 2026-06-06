@@ -1,0 +1,104 @@
+---
+title: 幽冥毒王
+prototype_id: 20006000004
+use_type: 主武器
+weapon_type: 机枪
+element: 腐蚀
+rarity: 史诗
+tags:
+  - 多模式
+scope: 中倍镜
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  1: 榴弹命中
+  2: 榴弹爆炸
+damage_modes:
+  - mode: 1
+    name: 榴弹命中
+    fire_interval: 0.5
+    damage:
+      base: 0.1
+      impulse: 1
+      toughness: 1
+      flesh: 1
+      hurtable: 1
+    element: 腐蚀
+    element_add_rate: 0.05
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 2
+    name: 榴弹爆炸
+    label: 爆炸伤害
+    damage:
+      base: 0.2
+      impulse: 2
+      toughness: 2
+      flesh: 2
+      hurtable: 2
+    element: 腐蚀
+    element_add_rate: 0.1
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+damage:
+  base: 0.092
+  impulse: 1.5
+  toughness: 1.5
+  flesh: 1.2
+  hurtable: 1.2
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 621
+magazine: 100
+total_ammo: 1000
+accuracy: 80
+stability: 50
+changeClip:
+  timeBase: 2.5
+  reloadRecovery: 0.3953
+range: ''
+explosion_range: ''
+attenuation_begin: 49
+attenuation_end: 60
+attenuation_scale: 0.6
+ignore_shield: false
+element_add_rate: 0.097
+skill_cooldown: 45
+pellets: ''
+weapon_type_id: 6
+active_skill_id: 5001301
+skill_duration: 12
+skill_blocking: false
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="剧毒力场"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20106000004_02.png"
+    duration={12}
+    cooldown={45}
+    count={1}
+  >
+    原地释放一个能量力场，立即回复幽冥毒王全部榴弹，并使<Yellow>6米</Yellow>范围内我方角色腐蚀属性武器的伤害增加。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="阴晴不定"
+    tag="多模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20106000004_02.png"
+  >
+    幽冥毒王可以在<Blue>机枪</Blue>和<Blue>榴弹枪</Blue>之间切换。幽冥毒王至多可存储<Yellow>4枚</Yellow>榴弹。榴弹命中敌人后，将在爆炸点的地面上留下毒池，进入毒池的敌人将受到少量伤害并降低移动速度。机枪模式下，命中敌人<Yellow>50次</Yellow>可以恢复<Yellow>1枚</Yellow>榴弹。
+  </PassiveSkill>
+</WeaponSkill>

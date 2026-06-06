@@ -1,0 +1,82 @@
+---
+title: 韶光樱影
+prototype_id: 20009000004
+use_type: 主武器
+weapon_type: 激光武器
+element: 火焰
+rarity: 传说
+tags: null
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.08
+    damage:
+      base: 0.096
+      impulse: 1.4
+      toughness: 1.4
+      flesh: 1.1
+      hurtable: 1.1
+    element: 火焰
+    element_add_rate: 0.091
+    weakness_multiplier: 1.5
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 0.096
+  impulse: 1.4
+  toughness: 1.4
+  flesh: 1.1
+  hurtable: 1.1
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.5
+file_rate: 75
+magazine: 75
+total_ammo: 675
+accuracy: 77
+stability: 29
+changeClip:
+  timeBase: 2.45
+  reloadRecovery: 0
+range: 30
+explosion_range: -1
+attenuation_begin: 60
+attenuation_end: 100
+attenuation_scale: 0.6
+ignore_shield: false
+element_add_rate: 0.091
+skill_cooldown: 50
+pellets: null
+weapon_type_id: 9
+active_skill_id: 5003701
+skill_duration: 15
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="增幅过载"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20009000004_2.png"
+    duration={-1}
+    cooldown={50}
+    count={1}
+  >
+    韶光樱影命中队友后能够穿透队友，并且场上每有一个队友持有<Blue>韶光</Blue>，韶光樱影的伤害提升<Yellow>34%</Yellow>。
+    持有<Blue>韶光</Blue>的队友最多记为<Yellow>3人</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="韶光增幅"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20009000004_1.png"
+  >
+    射击命中队友时，队友会获得增益<Blue>韶光</Blue>，<Blue>韶光</Blue>能够提升<Yellow>15%</Yellow>伤害并持续<Yellow>30秒</Yellow>。持有<Blue>韶光</Blue>的队友对目标造成伤害或击杀目标获得金钱后，玩家自己也能额外获得<Yellow>5%</Yellow>的金钱。
+  </PassiveSkill>
+</WeaponSkill>

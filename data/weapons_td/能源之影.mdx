@@ -1,0 +1,146 @@
+---
+title: 能源之影
+prototype_id: 20007000015
+use_type: 副武器
+weapon_type: 手枪
+element: 电弧
+rarity: 传说
+tags:
+  - 掷枪
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.23
+    damage:
+      base: 0.238
+      impulse: 3.5
+      toughness: 3.5
+      flesh: 3.7
+      hurtable: 3.7
+    element: 电弧
+    element_add_rate: 0.227
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 浮游模式
+    fire_interval: 0.65
+    damage:
+      base: 0.7
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 火焰
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - name: 换弹爆炸
+    label: 爆炸伤害
+    damage:
+      base: 0.2
+      impulse: 2
+      toughness: 2
+      flesh: 2
+      hurtable: 2
+    element: 电弧
+    element_add_rate: 0.1
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+  - name: 强袭激光
+    damage:
+      base: 0.7
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 火焰
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+damage:
+  base: 0.238
+  impulse: 3.5
+  toughness: 3.5
+  flesh: 3.7
+  hurtable: 3.7
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 260
+magazine: 18
+total_ammo: 162
+accuracy: 72
+stability: 59
+changeClip:
+  timeBase: 1.2
+  reloadRecovery: 0
+range: null
+explosion_range: null
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+ignore_shield: null
+element_add_rate: 0.227
+skill_cooldown: 45
+pellets: null
+weapon_type_id: 7
+active_skill_id: 5102001
+skill_duration: 20
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+
+<WeaponSkill>
+  <ActiveSkill
+    name="浮游模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20007000015_2.png"
+    duration={25}
+    cooldown={45}
+    count={1}
+  >
+    技能开启后，能源之影变形为浮游炮，自动瞄准敌人并开火。浮游炮激活期间，可以正常使用其他武器。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="能源之息"
+    tag="掷枪"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20007000015_1.png"
+  >
+    换弹时，将枪械扔出，命中敌人时造成半径<Yellow>2米</Yellow>的范围闪电伤害。
+  </PassiveSkill>
+</WeaponSkill>
+
+
+| 伤害类型 | 伤害 | 破韧伤害 | 添加元素异常概率 |
+| -        | -    | -        | -                |
+| 掷枪爆炸 | 270  | 5.4      | 27%              |
+| 浮游炮   | 350  | 0        | 0                |
+| 插件激光 | 350  | 0        | 0                |
+
+
+主动技能伤害为 **350**, 持续时间 **20** 秒，冷却时间 **45** 秒。期间射击 **30**次，射速约为 **90** 每分钟，折合 **1.5** 发每秒 <Grey>浮游炮伤害计算为 **角色攻击力 500 × 模式系数 × 0.7**，所有增加角色攻击力的增益均对能源之影浮游炮生效</Grey>
+
+使用 <Yellow>超频</Yellow> 插件，浮游模式持续时间增加 **50%** 后，总持续时间为 **30** 秒，射击次数 **46** 次

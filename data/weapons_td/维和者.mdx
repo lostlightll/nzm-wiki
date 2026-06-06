@@ -1,0 +1,110 @@
+---
+title: 维和者
+prototype_id: 20016000002
+use_type: 主武器
+weapon_type: 连发榴弹
+element: 物理
+rarity: 传说
+tags:
+  - 弹匣回复
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  0: 榴弹命中
+  1: 榴弹爆炸
+damage_modes:
+  - mode: 0
+    name: 榴弹命中
+    fire_interval: 0.5
+    damage:
+      base: 0.2075
+      impulse: 4.48
+      toughness: 4.48
+      flesh: 9
+      hurtable: 2.7
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 榴弹爆炸
+    label: 爆炸伤害
+    damage:
+      base: 0.166
+      impulse: 4.48
+      toughness: 4.48
+      flesh: 0
+      hurtable: 2.7
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+    fire_interval: 0
+damage:
+  base: 0.415
+  impulse: 4.48
+  toughness: 4.48
+  flesh: 9
+  hurtable: 2.7
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.1
+file_rate: 120
+magazine: 10
+total_ammo: 88
+accuracy: 60
+stability: 35
+changeClip:
+  timeBase: 3.667
+  reloadRecovery: 0.1645
+range: ''
+explosion_range: 2.5
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 0.6
+ignore_shield: false
+element_add_rate: 0
+skill_cooldown: 40
+pellets: ''
+weapon_type_id: 16
+active_skill_id: 5000101
+skill_duration: 8
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="狂热射击"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20016000002_2.png"
+    duration={8}
+    cooldown={40}
+    count={1}
+  >
+    进入狂热射击状态，期间使用武器射击会直接消耗备弹，且射速提高<Yellow>30%</Yellow>。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="爆弹供养"
+    tag="弹匣回复"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20016000002_1.png"
+  >
+    每次开火造成的爆炸同时炸到<Yellow>2个</Yellow>以上敌人时，将<Yellow>1颗</Yellow>备弹填装到主弹匣。
+  </PassiveSkill>
+</WeaponSkill>
+
+命中伤害 **103.75**，爆炸伤害 **207.5**，破韧伤害均为 **4.48**
+
+命中伤害有 **1.1** 弱点倍率，爆炸伤害无弱点加成
+
+> 塔防模式下爆炸伤害为 **0.166 × 400 = 66.4**

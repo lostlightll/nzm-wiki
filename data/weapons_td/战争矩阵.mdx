@@ -1,0 +1,83 @@
+---
+title: 战争矩阵
+prototype_id: 20007000024
+use_type: 副武器
+weapon_type: 手枪
+element: 物理
+rarity: 传说
+tags:
+  - 浮空
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.166
+    damage:
+      base: 0.22
+      impulse: 2.9
+      toughness: 2.9
+      flesh: 2.7
+      hurtable: 2.7
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+damage:
+  base: 0.22
+  toughness: 2.9
+  flesh: 7
+  impulse: 2.9
+  hurtable: 2.7
+toughness_type: 2.9
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 361
+magazine: 24
+total_ammo: 216
+accuracy: 79
+stability: 80
+changeClip:
+  timeBase: 1.2
+  reloadRecovery: 1.016
+range: null
+explosion_range: null
+attenuation_begin: 18
+attenuation_end: 40
+attenuation_scale: 0.5
+ignore_shield: flase
+element_add_rate: 0
+skill_cooldown: 20
+pellets: null
+weapon_type_id: 7
+active_skill_id: 5102601
+skill_duration: 10
+skill_blocking: false
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="光能矩阵"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20007000024_2.png"
+    duration={-1}
+    cooldown={20}
+    count={1}
+  >
+    发射一个光能体，光能体每秒会周期性地攻击附近的随机敌人，伤害为 <Yellow>250</Yellow>，触发时最多同时攻击三个敌人。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="增幅矩阵"
+    tag="浮空"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20007000024_1.png"
+  >
+    开火时发射三道能量激光，具备更高的破韧效率。
+  </PassiveSkill>
+</WeaponSkill>

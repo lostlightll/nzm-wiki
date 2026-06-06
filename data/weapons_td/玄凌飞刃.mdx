@@ -1,0 +1,94 @@
+---
+title: 玄凌飞刃
+prototype_id: 20019000001
+use_type: 主武器
+weapon_type: 暗器
+element: 物理
+rarity: 传说
+tags: null
+scope: 低倍镜
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 普通射击
+    fire_interval: 0.33
+    damage:
+      base: 0.112
+      impulse: 5.2
+      toughness: 5.2
+      flesh: 4.1
+      hurtable: 4.1
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.3
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 致命链接
+    damage:
+      base: 0.08
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    fire_interval: 0
+    element: 物理
+    element_add_rate: 0
+    enable_critical: false
+    toughness_type: 冲击
+damage:
+  base: 0.223
+  impulse: 5.2
+  toughness: 5.2
+  flesh: 4.1
+  hurtable: 4.1
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.3
+file_rate: 181
+magazine: 18
+total_ammo: 234
+accuracy: 79
+stability: 65
+changeClip:
+  timeBase: 1.5
+  reloadRecovery: 0.5051
+range: 30
+explosion_range: -1
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+ignore_shield: false
+element_add_rate: 0
+skill_cooldown: 30
+pellets: null
+weapon_type_id: 19
+active_skill_id: 5102801
+skill_duration: 10
+skill_blocking: true
+show_duration: true
+game_mode: td
+---
+
+<WeaponSkill>
+  <ActiveSkill
+    name="铁索连环"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20019000001_2.png"
+    duration={10}
+    cooldown={30}
+    count={1}
+  >
+    技能持续期间，<Blue>玄凌飞刃</Blue>命中敌人后，附加<Blue>链接</Blue>异常状态。当处于<Blue>链接</Blue>状态的敌人受到直接伤害时，该伤害的<Yellow>15%</Yellow>会传导至周围最多<Blue>4名</Blue>具有相同异常状态的敌人。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="弹射"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20019000001_1.png"
+  >
+    玄凌飞刃可以在敌人之间弹射<Yellow>3</Yellow>次。该效果在火力乱斗和机甲战中不生效。
+  </PassiveSkill>
+</WeaponSkill>
