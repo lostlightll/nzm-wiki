@@ -1,8 +1,16 @@
-import { getAllWeapons } from "@/lib/weapons";
+import { Suspense } from "react";
+import { getAllWeapons, getAllTDWeapons } from "@/lib/weapons";
 import WeaponsClient from "./client";
 
 export default async function WeaponsPage() {
-  const weapons = await getAllWeapons();
+  const [lcWeapons, tdWeapons] = await Promise.all([
+    getAllWeapons(),
+    getAllTDWeapons(),
+  ]);
 
-  return <WeaponsClient weapons={weapons} />;
+  return (
+    <Suspense>
+      <WeaponsClient weapons={lcWeapons} tdWeapons={tdWeapons} />
+    </Suspense>
+  );
 }
