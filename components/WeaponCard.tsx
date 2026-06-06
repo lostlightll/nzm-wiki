@@ -47,6 +47,33 @@ function formatDamage(mode: DamageMode): string {
   return damage;
 }
 
+function formatMeter(value: number | string | null | undefined): string {
+  if (value === null || value === undefined || value === "") return "-";
+  const numberValue = Number(value);
+  if (!Number.isFinite(numberValue)) return "-";
+  return `${round1(numberValue)}m`;
+}
+
+function formatAttenuationSpeed(
+  begin: number | string | null | undefined,
+  end: number | string | null | undefined,
+  scale: number | string | null | undefined,
+): string {
+  const beginValue = Number(begin);
+  const endValue = Number(end);
+  const scaleValue = Number(scale);
+  if (
+    !Number.isFinite(beginValue) ||
+    !Number.isFinite(endValue) ||
+    !Number.isFinite(scaleValue) ||
+    endValue <= beginValue
+  ) {
+    return "-";
+  }
+  const percentPerMeter = ((1 - scaleValue) / (endValue - beginValue)) * 100;
+  return `${round1(percentPerMeter)}%`;
+}
+
 function WeaponImage({ name, size = "normal" }: { name: string; size?: "small" | "normal" }) {
   const [hasError, setHasError] = useState(false);
 
@@ -464,6 +491,31 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
       {/* 技能 / 特殊攻击 */}
       {weapon.extraModes && weapon.extraModes.length > 0 && (
         <SkillSection weapon={weapon} />
+      )}
+
+      {/* 武器衰减 */}
+      {(weapon.attenuation_begin != null || weapon.attenuation_end != null) && (
+        <div className="mb-4">
+          <h2 className="mb-2 text-sm font-semibold text-zinc-400">武器衰减</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
+            <Stat
+              label="开始衰减"
+              value={formatMeter(weapon.attenuation_begin)}
+            />
+            <Stat
+              label="结束衰减"
+              value={formatMeter(weapon.attenuation_end)}
+            />
+            <Stat
+              label="衰减速率"
+              value={formatAttenuationSpeed(
+                weapon.attenuation_begin,
+                weapon.attenuation_end,
+                weapon.attenuation_scale,
+              )}
+            />
+          </div>
+        </div>
       )}
 
       {/* 武器属性 */}
