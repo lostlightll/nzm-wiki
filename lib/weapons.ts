@@ -13,9 +13,11 @@ import type {
   WeaponType,
 } from "@/types";
 import { RARITY_ORDER } from "@/constants/common";
+import { WEAPON_TYPES } from "@/constants/weapons";
 
 const WEAPONS_DIR = path.join(process.cwd(), "data/weapons");
 const isDev = process.env.NODE_ENV === "development";
+const WEAPON_TYPE_ORDER = new Map(WEAPON_TYPES.map((item, index) => [item.type, index]));
 
 function toNum(v: unknown): number | undefined {
   if (v === null || v === undefined || v === "") return undefined;
@@ -304,9 +306,15 @@ export async function getAllWeapons(): Promise<Weapon[]> {
     })
     .filter((w) => !w.draft || isDev)
     .sort((a, b) => {
-      const orderA = a.rarity ? RARITY_ORDER[a.rarity] : 0;
-      const orderB = b.rarity ? RARITY_ORDER[b.rarity] : 0;
-      return orderB - orderA;
+      const rarityA = a.rarity ? RARITY_ORDER[a.rarity] : 0;
+      const rarityB = b.rarity ? RARITY_ORDER[b.rarity] : 0;
+      if (rarityA !== rarityB) return rarityB - rarityA;
+
+      const typeA = a.weapon_type ? WEAPON_TYPE_ORDER.get(a.weapon_type) ?? 99 : 99;
+      const typeB = b.weapon_type ? WEAPON_TYPE_ORDER.get(b.weapon_type) ?? 99 : 99;
+      if (typeA !== typeB) return typeA - typeB;
+
+      return a.title.localeCompare(b.title, "zh-CN");
     });
 }
 
