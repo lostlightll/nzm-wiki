@@ -86,6 +86,7 @@ export interface Weapon {
   rarity?: Rarity;
   tags?: WeaponTag[];
   scope?: ScopeType | string;
+  game_mode?: "lc" | "td"; // 猎场(lc) / 塔防(td)，未标注按猎场处理
 
   // 通用属性
   magazine?: number;
