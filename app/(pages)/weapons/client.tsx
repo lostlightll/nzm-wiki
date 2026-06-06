@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import type { Weapon, WeaponType, ElementType, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
@@ -13,7 +14,18 @@ import {
   type WeaponSlot,
 } from "@/constants/weapons";
 
-export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
+export default function WeaponsClient({
+  weapons,
+  tdWeapons,
+}: {
+  weapons: Weapon[];
+  tdWeapons: Weapon[];
+}) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const mode = searchParams.get("mode");
+  const isTD = mode === "td";
+
   const [showDetails, setShowDetails] = useState(true);
   const slotState = useSelection<WeaponSlot>("slot", ["主武器"]);
   const typeState = useSelection<WeaponType>("type");
@@ -33,7 +45,17 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
     rarityState.clear();
   };
 
-  const filteredWeapons = weapons.filter((weapon) => {
+  const toggleMode = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (isTD) {
+      params.delete("mode");
+    } else {
+      params.set("mode", "td");
+    }
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
+
+  const filteredWeapons = (isTD ? tdWeapons : weapons).filter((weapon) => {
     const slotMatch =
       slotState.selected.size === 0 ||
       (weapon.use_type && slotState.selected.has(weapon.use_type as WeaponSlot));
@@ -52,13 +74,25 @@ export default function WeaponsClient({ weapons }: { weapons: Weapon[] }) {
   return (
     <>
       <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-white">武器图鉴</h1>
-        <button
-          onClick={() => setShowDetails(!showDetails)}
-          className="rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700"
-        >
-          {showDetails ? "简洁模式" : "详细模式"}
-        </button>
+        <div className="flex items-center gap-4">
+          <h1 className="text-3xl font-bold text-white">
+            {isTD ? "塔防武器图鉴" : "武器图鉴"}
+          </h1>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleMode}
+            className="rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700"
+          >
+            {isTD ? "猎场模式" : "塔防模式"}
+          </button>
+          <button
+            onClick={() => setShowDetails(!showDetails)}
+            className="rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700"
+          >
+            {showDetails ? "简洁模式" : "详细模式"}
+          </button>
+        </div>
       </div>
 
       {/* 筛选区域 */}
