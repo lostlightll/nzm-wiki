@@ -9,7 +9,9 @@
 ## 感谢
 
 - [@qiekn](https://github.com/qiekn) — 原始项目 [nzm-wiki](https://github.com/qiekn/nzm-wiki)，本项目 Fork 自此
-- [@Dabbiell](https://github.com/Dabbiell) — 塔防数值解包数据支持
+- [@YousaHay](https://github.com/YousaHay) — 解包思路与交流
+- DeepSeek 模型真的便宜
+- WorkBuddy 免费额度真的很多
 
 ## 技术栈
 
