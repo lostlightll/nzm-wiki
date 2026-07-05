@@ -505,34 +505,6 @@ function main() {
     }
   }
 
-  // ── Post-processing: 典藏皮同步 ──
-  // 典藏皮 proto config 不完整（通常只有 Mode 0），extra_modes 需要从基础武器同步
-  const SKIN_SYNC_MAP: Record<string, string> = {
-    "炼狱蝎王-粉墨重华": "炼狱蝎王", // pid=20005000033 → 基础 pid=20005000034
-  };
-
-  for (const [skinSlug, baseSlug] of Object.entries(SKIN_SYNC_MAP)) {
-    const skinPath = path.join(OUT_DIR, `${skinSlug}.mdx`);
-    const basePath = path.join(OUT_DIR, `${baseSlug}.mdx`);
-    if (!fs.existsSync(skinPath) || !fs.existsSync(basePath)) continue;
-
-    const skinParsed = matter(fs.readFileSync(skinPath, "utf-8"));
-    const baseParsed = matter(fs.readFileSync(basePath, "utf-8"));
-
-    // Merge: base data + skin's own title/prototype_id/changeClip
-    const merged = { ...baseParsed.data };
-    merged.title = skinParsed.data.title;
-    merged.prototype_id = skinParsed.data.prototype_id;
-    if (skinParsed.data.changeClip) {
-      merged.changeClip = skinParsed.data.changeClip;
-    }
-
-    const newFM = serializeFrontmatter(merged as Record<string, unknown>);
-    const newContent = `---\n${newFM}\n---\n${skinParsed.content || ""}`;
-    fs.writeFileSync(skinPath, newContent, "utf-8");
-    console.log(`  POST 典藏同步: ${skinSlug} ← ${baseSlug}`);
-  }
-
   console.log(`\n=== Summary ===`);
   console.log(`OK: ${ok}`);
   console.log(`Partial: ${partial}`);
