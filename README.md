@@ -6,6 +6,47 @@
 
 在线访问：[逆战未来维基](https://lostlightll.github.io/nzm-wiki)
 
+## 技术栈
+
+Next.js 16 + React 19 + TypeScript + Tailwind CSS v4 + MDX 
+
+## 项目结构
+
+```text
+app/          Next.js 路由与页面
+components/   MDX 组件、卡片、计算器和全局工具
+data/         MDX 内容数据与部分 JSON 数据
+lib/          数据读取、转换、计算和路径工具
+public/       图片、图标、视频与静态生成文件
+scripts/      构建、搜索索引、sitemap、数据提取脚本
+types/        共享 TypeScript 类型
+refs/         解包或外部参考数据
+```
+
+## 内容维护
+
+内容主要写在 `data/` 目录下：
+
+- `data/weapons/`：猎场武器
+- `data/weapons_td/`：塔防武器
+- `data/traps/`：塔防陷阱
+- `data/posts/`：机制说明与攻略文章
+
+图片路径需要通过 `getAssetPath()` 处理，避免 GitHub Pages 或其他带 `basePath` 的部署环境路径失效。
+
+## 本地开发
+
+```bash
+pnpm i
+pnpm dev        # http://localhost:3000
+pnpm build      # 生产构建
+```
+
+## 免责声明
+
+- 本站为非官方资料站，与腾讯及《逆战未来》开发组无从属关系。
+- 游戏名称、图标、素材与相关数据版权归其权利方所有。
+
 ## 致谢名单
 
 完整致谢请查看 [致谢页面](https://lostlightll.github.io/nzm-wiki/credits)。
@@ -17,24 +58,6 @@
 - [B站 乐意如多](https://space.bilibili.com/52220706)
 - [B站 正人君执](https://space.bilibili.com/15114153)
 - [B站 小小米河](https://space.bilibili.com/3546669903775781)
-
-## 技术栈
-
-Next.js 16 + React 19 + TypeScript + Tailwind CSS v4 + MDX 
-
-## 免责
-
-- 本项目 **100% AI Coding**，由 Claude Code 生成，人工审核修改。
-- 当前阶段仅服务个人使用，数据可能有误，不保证通用性。
-- 游戏数据版权归腾讯及逆战未来开发组所有。  
-
-## 本地开发
-
-```bash
-pnpm i
-pnpm dev        # http://localhost:3000
-pnpm build      # 生产构建
-```
 
 ## 许可
 
