@@ -64,24 +64,14 @@ function formatMeter(value: number | string | null | undefined): string {
   return `${round1(numberValue)}m`;
 }
 
-function formatAttenuationSpeed(
-  begin: number | string | null | undefined,
-  end: number | string | null | undefined,
+function formatAttenuationLimit(
   scale: number | string | null | undefined,
 ): string {
-  const beginValue = Number(begin);
-  const endValue = Number(end);
   const scaleValue = Number(scale);
-  if (
-    !Number.isFinite(beginValue) ||
-    !Number.isFinite(endValue) ||
-    !Number.isFinite(scaleValue) ||
-    endValue <= beginValue
-  ) {
+  if (!Number.isFinite(scaleValue)) {
     return "-";
   }
-  const percentPerMeter = ((1 - scaleValue) / (endValue - beginValue)) * 100;
-  return `${round1(percentPerMeter)}%`;
+  return `${formatPercent(1 - scaleValue)}%`;
 }
 
 function WeaponImage({ name, size = "normal" }: { name: string; size?: "small" | "normal" }) {
@@ -597,12 +587,8 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
               value={formatMeter(weapon.attenuation_end)}
             />
             <Stat
-              label="衰减速率"
-              value={formatAttenuationSpeed(
-                weapon.attenuation_begin,
-                weapon.attenuation_end,
-                weapon.attenuation_scale,
-              )}
+              label="衰减上限"
+              value={formatAttenuationLimit(weapon.attenuation_scale)}
             />
           </div>
         </div>
