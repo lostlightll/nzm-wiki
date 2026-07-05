@@ -21,6 +21,7 @@ export type WeaponType =
   | "射手步枪"
   | "连发榴弹"
   | "暗器"
+  | "近战武器"
   | "激光武器";
 
 export type ElementType = "物理" | "火焰" | "寒冷" | "电弧" | "腐蚀";
@@ -75,6 +76,11 @@ export interface WeaponChangeClip {
   reloadRecovery: number;
 }
 
+export interface WeaponMeleeDamage {
+  light?: number;
+  heavy?: number;
+}
+
 /**
  * 完整武器数据接口
  */
@@ -83,6 +89,7 @@ export interface Weapon {
   title: string;
   use_type?: string;
   weapon_type?: WeaponType;
+  weaponTypeId?: number;
   rarity?: Rarity;
   tags?: WeaponTag[];
   scope?: ScopeType | string;
@@ -110,6 +117,9 @@ export interface Weapon {
 
   // 射击模式
   damageModes: DamageMode[];
+
+  // 近战轻/重击倍率
+  meleeDamage?: WeaponMeleeDamage;
 
   // 额外射击模式（如技能切换）
   extraModes?: DamageMode[];

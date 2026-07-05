@@ -6,6 +6,7 @@ import type {
   WeaponDamage,
   WeaponChangeClip,
   DamageMode,
+  WeaponMeleeDamage,
   WeaponTag,
   ElementType,
   ToughnessType,
@@ -168,6 +169,22 @@ function buildChangeClipFromMDX(raw: Record<string, unknown>): WeaponChangeClip 
   return undefined;
 }
 
+function buildMeleeDamageFromMDX(raw: Record<string, unknown>): WeaponMeleeDamage | undefined {
+  if (!raw.melee_damage || typeof raw.melee_damage !== "object") {
+    return undefined;
+  }
+
+  const melee = raw.melee_damage as Record<string, unknown>;
+  const light = toNum(melee.light);
+  const heavy = toNum(melee.heavy);
+
+  if (light === undefined && heavy === undefined) {
+    return undefined;
+  }
+
+  return { light, heavy };
+}
+
 // ── Main transform ───────────────────────────────────
 
 function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
@@ -182,6 +199,7 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
   const skillCooldown = toNum(raw.skill_cooldown);
   const skillDuration = toNum(raw.skill_duration);
   const skillBlocking = Boolean(raw.skill_blocking);
+  const weaponTypeId = toNum(raw.weapon_type_id);
   const showDuration = Boolean(raw.show_duration);
   const shootingEnergy = Boolean(raw.shooting_energy);
   const shootingEnergyCount = toNum(raw.shooting_energy_count);
@@ -200,6 +218,7 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
   let damageModes: DamageMode[] = [buildModeFromMDX(raw)];
   let extraModes: DamageMode[] | undefined;
   const changeClip = buildChangeClipFromMDX(raw);
+  const meleeDamage = buildMeleeDamageFromMDX(raw);
   const magazine = toNum(raw.magazine);
   const totalAmmo = toNum(raw.total_ammo);
 
@@ -265,6 +284,7 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
     title: weaponTitle,
     use_type: useType,
     weapon_type: weaponType,
+    weaponTypeId,
     rarity,
     tags,
     scope,
@@ -285,6 +305,7 @@ function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
     shootingEnergyCount,
     changeClip,
     damageModes,
+    meleeDamage,
     extraModes,
     draft,
     game_mode: gameMode,
