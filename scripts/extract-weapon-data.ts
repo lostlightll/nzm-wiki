@@ -1,13 +1,19 @@
 /**
- * 为 non-standard-list.txt 中的武器提取游戏数据，输出 JSON 供 SubAgent 使用。
- * 用法: npx tsx scripts/extract-weapon-data.ts
+ * 为指定武器提取游戏数据，输出最新 MDX-SPEC 可用的 YAML 草稿。
+ * 用法:
+ *   pnpm exec tsx scripts/extract-weapon-data.ts 飓风之龙 精绝兽神
+ *   pnpm exec tsx scripts/extract-weapon-data.ts 飓风之龙 --out tmp/weapon-data.json
+ *
+ * 输出仍是 JSON，重点看每把武器的 mdx 字段：
+ * - mdx.required_header: 必须清空的全局标签字段
+ * - mdx.damage_modes_yaml: PrototypeConfig 火力模式，复制进 frontmatter 的 damage_modes
+ * - mdx.extra_modes_yaml: ExplosionNumericalID 生成的爆炸组件，复制进 extra_modes
+ * - skill_numerical: 主动技能相关候选数值，需人工判断是否加入 extra_modes
  */
 import fs from "fs";
 import path from "path";
 
 const REFS_DIR = path.join(process.cwd(), "refs/Exports/NZM/Content");
-const LIST_PATH = path.join(process.cwd(), "MD/non-standard-list.txt");
-const OUT_PATH = path.join(process.cwd(), "MD/non-standard-data.json");
 
 // ── Loaders ──
 
@@ -27,7 +33,7 @@ function loadPrototypeConfig(): Map<string, RawProto[]> {
       ASCTypeID: String(e.ASCTypeID ?? ""),
       NumericalID: Number(e.NumericalID ?? 0),
       WeaponType: Number(e.WeaponType ?? 0),
-      ExplosionNumericalID: Number((e as any).ExplosionNumericalID ?? 0),
+      ExplosionNumericalID: Number(e.ExplosionNumericalID ?? 0),
     };
     const arr = byPid.get(pid);
     if (arr) arr.push(raw);
@@ -84,6 +90,11 @@ function loadNumerical(): Map<string, RawNumerical> {
     for (const [key, entry] of Object.entries(rows)) {
       if (map.has(key)) continue;
       const e = entry as Record<string, unknown>;
+      const settlements = Array.isArray(e.Settlements)
+        ? e.Settlements
+            .map((item) => (item as Record<string, unknown>).TagName)
+            .filter((tag): tag is string => typeof tag === "string")
+        : [];
       map.set(key, {
         id: Number(e.id ?? 0),
         Level: Number(e.Level ?? 1),
@@ -100,6 +111,7 @@ function loadNumerical(): Map<string, RawNumerical> {
         WeaknessDamageAddScale: Number(e.WeaknessDamageAddScale ?? 0),
         ToughnessDamageType: String(e.ToughnessDamageType ?? ""),
         ElementDebuffTypeID: Number(e.ElementDebuffTypeID ?? 0),
+        Settlements: settlements,
       });
     }
   }
@@ -145,6 +157,30 @@ interface RawNumerical {
   WeaknessDamageAddScale: number;
   ToughnessDamageType: string;
   ElementDebuffTypeID: number;
+  Settlements: string[];
+}
+
+interface MdxModeEntry {
+  mode?: number;
+  name: string;
+  fire_interval: number;
+  label?: string;
+  pellets?: number;
+  damage: {
+    base: number;
+    impulse: number;
+    toughness: number;
+    flesh: number;
+    hurtable: number;
+  };
+  element: string;
+  element_add_rate: number;
+  weakness_multiplier: number;
+  enable_critical: boolean;
+  enable_weakness: boolean;
+  toughness_type: string;
+  ignore_shield: boolean;
+  element_debuff_type_id: number;
 }
 
 // ── Helpers ──
@@ -165,15 +201,138 @@ function mapToughness(raw: string): string {
   return "冲击";
 }
 
+function round4(value: number): number {
+  return Math.round(value * 10000) / 10000;
+}
+
+function buildDamage(num: RawNumerical): MdxModeEntry["damage"] {
+  return {
+    base: round4(num.HpCalScale),
+    impulse: round4(num.ImpulseBase),
+    toughness: round4(num.ToughnessBase),
+    flesh: round4(num.FleshDamageBase),
+    hurtable: round4(num.HurtableBase),
+  };
+}
+
+function inferDamageLabel(num: RawNumerical, fallback?: string): string | undefined {
+  if (fallback) return fallback;
+  const tags = num.Settlements.join("|");
+  if (tags.includes("DebuffDamage")) return "灼烧伤害";
+  if (tags.includes("WeaponExplosionDamage")) return "爆炸伤害";
+  if (tags.includes("WeaponSkillDamage")) return "技能伤害";
+  return undefined;
+}
+
+function buildMdxEntry(args: {
+  mode?: number;
+  name: string;
+  fireInterval: number;
+  pellets?: number;
+  num: RawNumerical;
+  label?: string;
+}): MdxModeEntry {
+  const label = inferDamageLabel(args.num, args.label);
+  const entry: MdxModeEntry = {
+    name: args.name,
+    fire_interval: round4(args.fireInterval),
+    damage: buildDamage(args.num),
+    element: mapElement(args.num.ElementType),
+    element_add_rate: round4(args.num.ElementAddRate),
+    weakness_multiplier: round4(1.0 + args.num.WeaknessDamageAddScale),
+    enable_critical: args.num.bEnableCriticalDamage,
+    enable_weakness: args.num.EnableWeaknessDamage,
+    toughness_type: mapToughness(args.num.ToughnessDamageType),
+    ignore_shield: args.num.bDamageIgnoreShield,
+    element_debuff_type_id: args.num.ElementDebuffTypeID,
+  };
+
+  if (args.mode !== undefined) entry.mode = args.mode;
+  if (label) entry.label = label;
+  if (args.pellets && args.pellets > 1) entry.pellets = args.pellets;
+
+  return entry;
+}
+
+function formatScalar(value: string | number | boolean): string {
+  if (typeof value === "boolean") return value ? "true" : "false";
+  if (typeof value === "number") return Number.isInteger(value) ? String(value) : String(value);
+  if (value === "") return "''";
+  if (/^[A-Za-z0-9_.-]+$/.test(value)) return value;
+  return value;
+}
+
+function pushField(lines: string[], indent: number, key: string, value: string | number | boolean) {
+  lines.push(`${" ".repeat(indent)}${key}: ${formatScalar(value)}`);
+}
+
+function entryToYaml(entry: MdxModeEntry, indent = 2): string[] {
+  const lines: string[] = [];
+  const prefix = " ".repeat(indent);
+  const fieldIndent = indent + 2;
+
+  lines.push(`${prefix}- ${entry.mode !== undefined ? `mode: ${entry.mode}` : `name: ${formatScalar(entry.name)}`}`);
+  if (entry.mode !== undefined) pushField(lines, fieldIndent, "name", entry.name);
+  pushField(lines, fieldIndent, "fire_interval", entry.fire_interval);
+  if (entry.label) pushField(lines, fieldIndent, "label", entry.label);
+  if (entry.pellets) pushField(lines, fieldIndent, "pellets", entry.pellets);
+  lines.push(`${" ".repeat(fieldIndent)}damage:`);
+  pushField(lines, fieldIndent + 2, "base", entry.damage.base);
+  pushField(lines, fieldIndent + 2, "impulse", entry.damage.impulse);
+  pushField(lines, fieldIndent + 2, "toughness", entry.damage.toughness);
+  pushField(lines, fieldIndent + 2, "flesh", entry.damage.flesh);
+  pushField(lines, fieldIndent + 2, "hurtable", entry.damage.hurtable);
+  pushField(lines, fieldIndent, "element", entry.element);
+  pushField(lines, fieldIndent, "element_add_rate", entry.element_add_rate);
+  pushField(lines, fieldIndent, "weakness_multiplier", entry.weakness_multiplier);
+  pushField(lines, fieldIndent, "enable_critical", entry.enable_critical);
+  pushField(lines, fieldIndent, "enable_weakness", entry.enable_weakness);
+  pushField(lines, fieldIndent, "toughness_type", entry.toughness_type);
+  pushField(lines, fieldIndent, "ignore_shield", entry.ignore_shield);
+  pushField(lines, fieldIndent, "element_debuff_type_id", entry.element_debuff_type_id);
+
+  return lines;
+}
+
+function entriesToYaml(key: string, entries: MdxModeEntry[]): string {
+  if (entries.length === 0) return `${key}: []`;
+  return [key + ":", ...entries.flatMap((entry) => entryToYaml(entry))].join("\n");
+}
+
+function parseArgs(argv: string[]): { weaponNames: string[]; outPath?: string } {
+  const weaponNames: string[] = [];
+  let outPath: string | undefined;
+
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg === "--out" || arg === "-o") {
+      outPath = argv[i + 1];
+      i++;
+      continue;
+    }
+    if (arg.startsWith("--out=")) {
+      outPath = arg.slice("--out=".length);
+      continue;
+    }
+    for (const name of arg.split(/[，,]/).map((item) => item.trim())) {
+      if (name) weaponNames.push(name);
+    }
+  }
+
+  return { weaponNames, outPath };
+}
+
 // ── Main ──
 
 function main() {
-  const weaponNames = fs.readFileSync(LIST_PATH, "utf-8")
-    .split("\n")
-    .map(l => l.replace(/^\d+\s+/, "").trim())
-    .filter(Boolean);
+  const { weaponNames, outPath } = parseArgs(process.argv.slice(2));
 
-  console.log(`Found ${weaponNames.length} weapons in list`);
+  console.error(`Found ${weaponNames.length} weapons in args`);
+
+  if (weaponNames.length === 0) {
+    console.error("Usage: pnpm exec tsx scripts/extract-weapon-data.ts 武器名1 武器名2 [--out tmp/weapon-data.json]");
+    return;
+  }
 
   const protoByPid = loadPrototypeConfig();
   const ascMap = loadASC();
@@ -186,10 +345,6 @@ function main() {
     // Read current MDX frontmatter
     const mdxPath = path.join(process.cwd(), "data/weapons", `${weaponName}.mdx`);
     let currentPrototypeId: string | null = null;
-    let currentExtraModes: unknown = undefined;
-    let currentDamageModes: unknown = undefined;
-    let currentModeNames: unknown = undefined;
-
     if (fs.existsSync(mdxPath)) {
       const content = fs.readFileSync(mdxPath, "utf-8");
       // Simple regex to extract prototype_id from frontmatter
@@ -198,7 +353,7 @@ function main() {
     }
 
     if (!currentPrototypeId) {
-      console.log(`  SKIP ${weaponName}: no prototype_id found`);
+      console.error(`  SKIP ${weaponName}: no prototype_id found`);
       result[weaponName] = { error: "no prototype_id" };
       continue;
     }
@@ -217,7 +372,7 @@ function main() {
     }
 
     if (!protoEntries || protoEntries.length === 0) {
-      console.log(`  SKIP ${weaponName} (${currentPrototypeId}): no prototype data`);
+      console.error(`  SKIP ${weaponName} (${currentPrototypeId}): no prototype data`);
       result[weaponName] = { prototype_id: currentPrototypeId, error: "no prototype data in refs" };
       continue;
     }
@@ -236,8 +391,12 @@ function main() {
 
     // Build mode data
     const modes: unknown[] = [];
+    const mdxDamageModes: MdxModeEntry[] = [];
+    const mdxExtraModes: MdxModeEntry[] = [];
     const allNumericalIds: number[] = [];
     const allExplosionIds: number[] = [];
+    const seenMdxNumericalIds = new Set<number>();
+    const seenMdxExplosionIds = new Set<number>();
 
     for (const proto of deduped) {
       const asc = ascMap.get(proto.ASCTypeID);
@@ -267,6 +426,30 @@ function main() {
 
       const fireInterval = asc?.FireIntervalBase ?? 0;
       const fileRate = fireInterval > 0 ? Math.round((60 / fireInterval) * 100) / 100 : 0;
+      if (num) {
+        const entry = buildMdxEntry({
+          mode: seenMdxNumericalIds.has(proto.NumericalID) ? undefined : proto.Mode,
+          name: proto.Mode === 0 ? "普通射击" : proto.name,
+          fireInterval,
+          pellets: asc?.SplinterNum,
+          num,
+        });
+        if (seenMdxNumericalIds.has(proto.NumericalID)) {
+          mdxExtraModes.push(entry);
+        } else {
+          mdxDamageModes.push(entry);
+          seenMdxNumericalIds.add(proto.NumericalID);
+        }
+      }
+      if (explosionNum && !seenMdxExplosionIds.has(proto.ExplosionNumericalID)) {
+        mdxExtraModes.push(buildMdxEntry({
+          name: proto.Mode === 0 ? "爆炸伤害" : `${proto.name}爆炸`,
+          fireInterval: 0,
+          num: explosionNum,
+          label: "爆炸伤害",
+        }));
+        seenMdxExplosionIds.add(proto.ExplosionNumericalID);
+      }
 
       modes.push({
         mode: proto.Mode,
@@ -325,7 +508,7 @@ function main() {
     const uniqueNumIds = [...new Set([...allNumericalIds, ...allExplosionIds])];
 
     // Also look up active_skill numerical data if available
-    let skillNumericalData: unknown[] = [];
+    const skillNumericalData: unknown[] = [];
     // Try common skill numerical IDs from playerskill table (if weapon has active_skill_id in MDX)
     if (currentPrototypeId && fs.existsSync(mdxPath)) {
       const content = fs.readFileSync(mdxPath, "utf-8");
@@ -352,6 +535,8 @@ function main() {
               toughness_type: mapToughness(num.ToughnessDamageType),
               ignore_shield: num.bDamageIgnoreShield,
               element_debuff_type_id: num.ElementDebuffTypeID,
+              settlements: num.Settlements,
+              suggested_label: inferDamageLabel(num),
             });
           }
         }
@@ -363,25 +548,34 @@ function main() {
       proto_modes: modes,
       num_modes: deduped.length,
       unique_numerical_ids: uniqueNumIds,
+      mdx: {
+        reference: "按 MD/MDX-SPEC.md；先按多火力模式、技能/插件伤害、动态射速三类结构判断。",
+        required_header: "damage_label: ''\ndamage_label_text: ''",
+        damage_modes_yaml: entriesToYaml("damage_modes", mdxDamageModes),
+        extra_modes_yaml: mdxExtraModes.length > 0 ? entriesToYaml("extra_modes", mdxExtraModes) : undefined,
+        notes: [
+          "damage_modes 放 PrototypeConfig 火力模式，Mode 0 也写完整数据。",
+          "extra_modes 放技能触发、插件效果、射速变体、爆炸组件；ExplosionNumericalID 已先生成爆炸组件草稿。",
+          "技能/插件数值请从 skill_numerical 里人工判断后补进 extra_modes，技能名和 label 以实际语义为准。",
+          "动态射速 extra_modes 可只改 fire_interval，但最终 MDX 推荐补齐完整 damage 字段。",
+        ],
+      },
       skill_numerical: skillNumericalData.length > 0 ? skillNumericalData : undefined,
     };
 
-    console.log(`  OK ${weaponName} (${currentPrototypeId}): ${deduped.length} modes, ${uniqueNumIds.length} numerical IDs`);
+    console.error(`  OK ${weaponName} (${currentPrototypeId}): ${deduped.length} modes, ${uniqueNumIds.length} numerical IDs`);
   }
 
-  fs.writeFileSync(OUT_PATH, JSON.stringify(result, null, 2));
-  console.log(`\nWritten to ${OUT_PATH}`);
-}
+  const output = JSON.stringify(result, null, 2);
+  if (outPath) {
+    const resolvedOutPath = path.resolve(process.cwd(), outPath);
+    fs.mkdirSync(path.dirname(resolvedOutPath), { recursive: true });
+    fs.writeFileSync(resolvedOutPath, output);
+    console.error(`\nWritten to ${outPath}`);
+    return;
+  }
 
-// Interfaces needed at top level
-interface RawProto {
-  name: string;
-  PrototypeID: string;
-  Mode: number;
-  ASCTypeID: string;
-  NumericalID: number;
-  WeaponType: number;
-  ExplosionNumericalID: number;
+  console.log(output);
 }
 
 main();
