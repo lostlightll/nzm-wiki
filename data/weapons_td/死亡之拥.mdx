@@ -1,0 +1,69 @@
+---
+title: 死亡之拥
+use_type: 近战武器
+weapon_type: 近战武器
+element: 物理
+rarity: 传说
+weapon_type_id: 13
+prototype_id: 20013000007
+asc_type_id: 163
+active_skill_id: 0
+damage:
+  base: 4.05
+  impulse: 67.6
+  toughness: 16.9
+  flesh: 13.5
+  hurtable: 13.5
+melee_damage:
+  light: 2.16
+  heavy: 4.05
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.2
+magazine: 30
+total_ammo: 5030
+accuracy: 0
+stability: 0
+scope: 不可开镜
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+ignore_shield: false
+element_add_rate: 0
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 近战攻击
+    fire_interval: 0.15
+    damage:
+      base: 2.025
+      impulse: 67.6
+      toughness: 16.9
+      flesh: 13.5
+      hurtable: 13.5
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+file_rate: 400
+changeClip:
+  timeBase: 0.9
+  reloadRecovery: 0
+game_mode: td
+---
+
+<WeaponSkill>
+  <PassiveSkill
+    name="致命穿透"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20013000007.png"
+  >
+    装备死亡之拥后，主副手武器的子弹<Blue>穿透</Blue>或命中敌方弱点时会触发小型爆炸造成 **70%** 角色攻击力的伤害，爆炸半径<Yellow>1米</Yellow>，每<Yellow>5秒</Yellow>只能触发<Yellow>1次</Yellow>。
+  </PassiveSkill>
+</WeaponSkill>
+
+<Callout>轻击伤害 **1080** / **1148**，重击伤害 **2025**</Callout>

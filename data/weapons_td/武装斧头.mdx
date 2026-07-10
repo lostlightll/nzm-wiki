@@ -1,0 +1,69 @@
+---
+title: 武装斧头
+use_type: 近战武器
+weapon_type: 近战武器
+element: 火焰
+rarity: 传说
+weapon_type_id: 13
+prototype_id: 20013000028
+asc_type_id: 207
+active_skill_id: 0
+damage:
+  base: 3.6
+  impulse: 60
+  toughness: 15
+  flesh: 12
+  hurtable: 12
+melee_damage:
+  light: 1.35
+  heavy: 3.6
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.2
+magazine: 30
+total_ammo: 5030
+accuracy: 0
+stability: 0
+scope: 不可开镜
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+ignore_shield: false
+element_add_rate: 0.36
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 近战攻击
+    fire_interval: 0.15
+    damage:
+      base: 1.8
+      impulse: 60
+      toughness: 15
+      flesh: 12
+      hurtable: 12
+    element: 火焰
+    element_add_rate: 0.96
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+file_rate: 400
+changeClip:
+  timeBase: 0.9
+  reloadRecovery: 0
+game_mode: td
+---
+
+<WeaponSkill>
+  <PassiveSkill
+    name="炙热武装"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20013000028.png"
+  >
+    火属性伤害提升<Yellow>5%</Yellow>，武器爆炸伤害提升<Yellow>5%</Yellow>。
+  </PassiveSkill>
+</WeaponSkill>
+
+<Callout>轻击伤害 **675** / **810**（元素异常 **36.0%** / **43.2%**），重击伤害 **1800**（元素异常 **96.0%**）</Callout>

@@ -1200,11 +1200,11 @@
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons/共晶点</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-07-05</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons/再生冷却</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-07-05</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons/军用手斧</loc>
@@ -1232,7 +1232,7 @@
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons/刺隐</loc>
-    <lastmod>2026-06-06</lastmod>
+    <lastmod>2026-07-05</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons/十字长枪</loc>
@@ -1240,7 +1240,7 @@
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons/哈士奇好友</loc>
-    <lastmod>2026-07-05</lastmod>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons/圣诞雪镐</loc>
@@ -1623,6 +1623,10 @@
     <lastmod>2026-07-05</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/Bully</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/Z型步枪</loc>
     <lastmod>2026-06-06</lastmod>
   </url>
@@ -1647,12 +1651,44 @@
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/军用手斧</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/冥河之矛</loc>
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/冰川尼泊尔</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/冰点双峰</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/利齿</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/刺锋</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/刺隐</loc>
     <lastmod>2026-06-06</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/十字长枪</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/哈士奇好友</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/圣诞雪镐</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/夜影之逝</loc>
@@ -1667,6 +1703,14 @@
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/封刃</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/尸龙战斧</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/幽冥毒王</loc>
     <lastmod>2026-06-06</lastmod>
   </url>
@@ -1675,12 +1719,32 @@
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/往日速递</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/心有凌兮</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/怒目锤</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/战争矩阵</loc>
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/战锋</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/振弦</loc>
     <lastmod>2026-06-06</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/撬棍</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/收割者</loc>
@@ -1699,12 +1763,36 @@
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/木葫芦</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/杜瓦瓶</loc>
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/梦魇</loc>
     <lastmod>2026-06-06</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/棒球棍</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/樱之殇</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/樱之誓</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/武装斧头</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/死亡之拥</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/死亡猎手</loc>
@@ -1715,16 +1803,44 @@
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/死神镰刀</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/沙丘之怒</loc>
     <lastmod>2026-06-06</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/沙暴冷锋</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/沙蚀重刃</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/浪里白条</loc>
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/深渊之触</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/渡鸦剑</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/火山口</loc>
     <lastmod>2026-06-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/火炬</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/火神炎帝</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/炼狱双蝎</loc>
@@ -1739,6 +1855,18 @@
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/狂人电锯</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/狂犬指套</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/猪猪捏捏乐</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/猪猪榴弹发射器</loc>
     <lastmod>2026-06-06</lastmod>
   </url>
@@ -1749,6 +1877,30 @@
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/生命线</loc>
     <lastmod>2026-06-06</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/甩棍</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/疾影逐风</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/百炼钢管</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/短剑</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/秘魇锤</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/稳赢之手</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/精绝兽神</loc>
@@ -1775,12 +1927,52 @@
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/葫芦</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/蛇神之剑</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/蛇神之矛</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/蜘蛛匕首</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/蝶翼双扇</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/血怨</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/裁决之眼</loc>
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/裂风</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/超级复合弓</loc>
     <lastmod>2026-06-06</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/逆光之刃</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/钢脊</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/钢铁之握</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/钢铁游隼</loc>
@@ -1795,12 +1987,32 @@
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/铁骨</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/锻星力量</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/防暴棍</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/雷霆999</loc>
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/雷霆之影</loc>
     <lastmod>2026-06-06</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/震沙锏</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/霜蚀之牙</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/韶光樱影</loc>
@@ -1815,8 +2027,24 @@
     <lastmod>2026-06-06</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/马来剑</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/骑士双刃</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/鬼影长枪</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/鬼铜蚀</loc>
     <lastmod>2026-06-06</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/魂杵</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/黄沙风暴</loc>
@@ -1829,5 +2057,13 @@
   <url>
     <loc>https://nzm-wiki.pages.dev/weapons_td/黑克勒45</loc>
     <lastmod>2026-06-06</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/黑天使之刃</loc>
+    <lastmod>2026-07-10</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/weapons_td/黑金仲裁者</loc>
+    <lastmod>2026-07-10</lastmod>
   </url>
 </urlset>

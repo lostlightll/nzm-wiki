@@ -1,0 +1,147 @@
+---
+title: 哈士奇好友
+use_type: 主武器
+weapon_type: 连发榴弹
+element: 物理
+rarity: 传说
+weapon_type_id: 16
+prototype_id: 20016000011
+asc_type_id: 371
+active_skill_id: 5103101
+damage:
+  base: 0.23
+  impulse: 3.04
+  toughness: 3.04
+  flesh: 6.1
+  hurtable: 1.83
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.1
+magazine: 12
+total_ammo: 120
+accuracy: 67
+stability: 40
+scope: 低倍镜
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+ignore_shield: false
+element_add_rate: 0
+skill_cooldown: 5
+damage_label: ''
+damage_label_text: ''
+mode_names:
+  0: 榴弹命中
+  1: 榴弹爆炸
+damage_modes:
+  - mode: 0
+    name: 榴弹命中
+    fire_interval: 0.5
+    damage:
+      base: 0.115
+      impulse: 3.04
+      toughness: 3.04
+      flesh: 6.1
+      hurtable: 1.83
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1.1
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 榴弹爆炸
+    label: 爆炸伤害
+    fire_interval: 0
+    damage:
+      base: 0.23
+      impulse: 3.04
+      toughness: 3.04
+      flesh: 0
+      hurtable: 1.83
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 哈士奇命中
+    fire_interval: 0
+    damage:
+      base: 0.25
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - name: 哈士奇爆炸
+    label: 爆炸伤害
+    fire_interval: 0
+    damage:
+      base: 0.15
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - name: 换弹爆炸
+    label: 爆炸伤害
+    fire_interval: 0
+    damage:
+      base: 0.5
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+file_rate: 120
+changeClip:
+  timeBase: 1.9
+  reloadRecovery: 0
+game_mode: td
+---
+<WeaponSkill>
+  <ActiveSkill
+    name="出发，哈士奇！"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20016000011_2.png"
+    duration={-1}
+    cooldown={5}
+    count={1}
+  >
+    发射一枚生成装置，在装置落地时生成哈士奇，哈士奇会跟随主人行动，并自动攻击附近<Yellow>100米</Yellow>范围内的目标敌人。武器处于后台超过一定时间时，哈士奇将被销毁。
+    在机甲战和火力乱斗模式下无法释放该技能。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="加油，哈士奇！"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20016000011_1.png"
+  >
+    哈士奇好友每次命中时，哈士奇射速提高<Yellow>7%</Yellow>，最高叠加<Yellow>7</Yellow>层，每层持续<Yellow>3秒</Yellow>。换弹时，将枪械扔出，命中敌人时造成半径<Yellow>3米</Yellow>的范围伤害。
+  </PassiveSkill>
+</WeaponSkill>
