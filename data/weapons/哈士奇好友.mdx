@@ -30,9 +30,12 @@ element_add_rate: 0
 skill_cooldown: 5
 damage_label: ''
 damage_label_text: ''
+mode_names:
+  '0': 榴弹命中
+  '1': 榴弹爆炸
 damage_modes:
   - mode: 0
-    name: 普通射击
+    name: 榴弹命中
     fire_interval: 0.5
     damage:
       base: 0.23
@@ -47,6 +50,76 @@ damage_modes:
     enable_weakness: true
     toughness_type: 冲击
     ignore_shield: false
+    element_debuff_type_id: 0
+  - mode: 1
+    name: 榴弹爆炸
+    label: 爆炸伤害
+    fire_interval: 0
+    damage:
+      base: 0.23
+      impulse: 3.04
+      toughness: 3.04
+      flesh: 0
+      hurtable: 1.83
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: true
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+extra_modes:
+  - name: 哈士奇命中
+    fire_interval: 0
+    damage:
+      base: 0.25
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - name: 哈士奇爆炸
+    label: 爆炸伤害
+    fire_interval: 0
+    damage:
+      base: 0.15
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+  - name: 换弹爆炸
+    label: 爆炸伤害
+    fire_interval: 0
+    damage:
+      base: 0.5
+      impulse: 0
+      toughness: 0
+      flesh: 0
+      hurtable: 0
+    element: 物理
+    element_add_rate: 0
+    weakness_multiplier: 1
+    enable_critical: false
+    enable_weakness: false
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
 file_rate: 120
 changeClip:
   timeBase: 1.9
