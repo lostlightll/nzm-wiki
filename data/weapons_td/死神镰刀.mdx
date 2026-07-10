@@ -1,0 +1,73 @@
+---
+title: 死神镰刀
+use_type: 近战武器
+weapon_type: 近战武器
+element: 腐蚀
+rarity: 传说
+weapon_type_id: 13
+prototype_id: 20013000004
+asc_type_id: 138
+active_skill_id: 0
+damage:
+  base: 3.78
+  impulse: 27.2
+  toughness: 6.8
+  flesh: 5.4
+  hurtable: 5.4
+melee_damage:
+  light: 1.62
+  heavy: 3.78
+toughness_type: 冲击
+enable_critical: true
+weekness_multiplier: 1.2
+magazine: 30
+total_ammo: 5030
+accuracy: 0
+stability: 0
+scope: 不可开镜
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+ignore_shield: false
+element_add_rate: 0.432
+damage_label: ''
+damage_label_text: ''
+damage_modes:
+  - mode: 0
+    name: 近战攻击
+    fire_interval: 0.15
+    damage:
+      base: 0.81
+      impulse: 27.2
+      toughness: 6.8
+      flesh: 5.4
+      hurtable: 5.4
+    element: 腐蚀
+    element_add_rate: 0.432
+    weakness_multiplier: 1.2
+    enable_critical: true
+    enable_weakness: true
+    toughness_type: 冲击
+    ignore_shield: false
+    element_debuff_type_id: 0
+file_rate: 400
+changeClip:
+  timeBase: 0.9
+  reloadRecovery: 0
+game_mode: td
+---
+
+<WeaponSkill>
+  <PassiveSkill
+    name="生命虹吸"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20113000004.png"
+  >
+    所有毒属性伤害提升<Yellow>5%</Yellow>，且使用死神镰刀命中敌人后可以吸血。
+  </PassiveSkill>
+</WeaponSkill>
+
+<Callout>轻击伤害 **810** / **945**（元素异常 **43.2%** / **50.4%**），重击伤害 **1890**（元素异常 **100.8%**）</Callout>
+
+吸血 **回复量 = 命中次数 × 总血量 × 10%**，溢出部分回复护盾。
+
+<Credit platform="bilibili" author="盒仔-逆战未来" url="https://www.bilibili.com/video/BV1UkcAz5EBB" title="BV1UkcAz5EBB" />

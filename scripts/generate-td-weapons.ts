@@ -1,7 +1,7 @@
 /**
  * 从 data/weapons/ 生成 data/weapons_td/
  * 用 TD_numerical_config 替换伤害数值，×400 倍率
- * 用法: npx tsx scripts/generate-td-weapons.ts
+ * 用法: npx tsx scripts/generate-td-weapons.ts [武器名...]
  */
 import fs from "fs";
 import path from "path";
@@ -28,6 +28,7 @@ const MODE_NUMERICAL_OVERRIDE: Record<string, number> = {
   "维和者:1": 121600020,
   "钢铁轰鸣:1": 121600010,
   "沙丘之怒:1": 120400141,
+  "哈士奇好友:1": 121600110,
   // 浪里白条 一段激光 → LaserNumericalID
   "浪里白条:1": 120900012,
   // 钢铁轰鸣 榴弹穿透 → 不在 proto 里的独立 numerical
@@ -37,6 +38,13 @@ const MODE_NUMERICAL_OVERRIDE: Record<string, number> = {
   "夜影之逝:1": 120300241,
   "密林杀机:1": 120200091,
   "暗夜之殇:1": 17000011,
+};
+
+// Hardcoded numerical ID overrides for extra modes whose base damage is not unique.
+const EXTRA_MODE_NUMERICAL_OVERRIDE: Record<string, number> = {
+  "哈士奇好友:0": 121600115,
+  "哈士奇好友:1": 121600114,
+  "哈士奇好友:2": 121600112,
 };
 
 interface ProtoEntry {
@@ -314,7 +322,10 @@ function main() {
   const tdNum = loadTDNumerical();
   const lcNum = loadLCNumerical();
 
-  const files = fs.readdirSync(SRC_DIR).filter((f) => f.endsWith(".mdx"));
+  const targets = new Set(process.argv.slice(2));
+  const files = fs.readdirSync(SRC_DIR).filter((f) =>
+    f.endsWith(".mdx") && (targets.size === 0 || targets.has(f.replace(/\.mdx$/, "")))
+  );
   let ok = 0;
   let partial = 0;
   let skipped = 0;
@@ -412,6 +423,9 @@ function main() {
           }
         }
       }
+    } else if (data.damage === null) {
+      // 无法攻击的武器也需要生成塔防条目。
+      modeTotalCount = 0;
     } else if (data.damage && typeof data.damage === "object") {
       // Flat format: only Mode 0
       modeTotalCount = 1;
@@ -447,13 +461,17 @@ function main() {
       let extraMatched = 0;
       const weaponTitle = String(data.title || "");
 
-      for (const extra of extras) {
+      for (let extraIndex = 0; extraIndex < extras.length; extraIndex++) {
+        const extra = extras[extraIndex];
         const dmg = (extra.damage || {}) as Record<string, unknown>;
+        const overrideNumId = EXTRA_MODE_NUMERICAL_OVERRIDE[`${slug}:${extraIndex}`];
 
         // Step 1: value match → LC numerical ID → same ID in TD
-        const lcNumId = findNumericalIdByValues(dmg, lcNum);
-        let num: NumericalRow | undefined;
-        if (lcNumId !== null) {
+        const lcNumId = overrideNumId ?? findNumericalIdByValues(dmg, lcNum);
+        let num: NumericalRow | undefined = overrideNumId
+          ? tdNum.get(`${overrideNumId}_1`)
+          : undefined;
+        if (!num && lcNumId !== null) {
           num = tdNum.get(`${lcNumId}_1`);
         }
 
