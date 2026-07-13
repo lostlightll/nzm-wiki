@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Search, Command, Menu, X, Github } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -28,6 +29,10 @@ function triggerShortcut(key: string, ctrlKey = true, shiftKey = false) {
 
 function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <nav className="sticky top-0 z-50 border-b border-zinc-700 bg-background/95 backdrop-blur">
@@ -41,12 +46,17 @@ function NavBar() {
             逆战未来 维基
           </Link>
           {/* 桌面端导航链接 */}
-          <div className="hidden md:flex gap-4">
+          <div className="hidden gap-1 md:flex">
             {NAV_ITEMS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className="text-sm text-zinc-400 hover:text-white transition-colors"
+                aria-current={isActive(href) ? "page" : undefined}
+                className={`flex min-h-11 items-center rounded-lg px-3 text-sm transition-colors ${
+                  isActive(href)
+                    ? "bg-zinc-800 text-white"
+                    : "text-zinc-300 hover:bg-zinc-800/60 hover:text-white"
+                }`}
               >
                 {label}
               </Link>
@@ -113,7 +123,12 @@ function NavBar() {
                 key={href}
                 href={href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block rounded-lg px-3 py-2 text-sm text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
+                aria-current={isActive(href) ? "page" : undefined}
+                className={`flex min-h-11 items-center rounded-lg px-3 text-sm transition-colors ${
+                  isActive(href)
+                    ? "bg-zinc-800 text-white"
+                    : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
+                }`}
               >
                 {label}
               </Link>
