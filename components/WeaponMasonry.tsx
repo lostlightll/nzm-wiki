@@ -129,7 +129,7 @@ export function WeaponMasonry({
       ref={containerRef}
       className={
         layoutMatchesItems
-          ? "relative"
+          ? "relative transition-[height] duration-200 ease-out motion-reduce:transition-none"
           : "grid grid-cols-1 items-start gap-5 md:grid-cols-2 xl:grid-cols-3"
       }
       style={layoutMatchesItems ? { height: layout.height } : undefined}
@@ -140,7 +140,11 @@ export function WeaponMasonry({
           <div
             key={weapon.slug}
             ref={(element) => setItemRef(weapon.slug, element)}
-            className={layoutMatchesItems ? "absolute left-0 top-0" : "min-w-0"}
+            className={
+              layoutMatchesItems
+                ? "absolute left-0 top-0 transition-transform duration-200 ease-out motion-reduce:transition-none"
+                : "min-w-0"
+            }
             style={
               layoutMatchesItems && position
                 ? {
