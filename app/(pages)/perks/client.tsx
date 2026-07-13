@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getAssetPath } from "@/lib/path";
+import { getOptimizedImagePath } from "@/lib/path";
 import type { Perk, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
@@ -15,7 +15,7 @@ import {
   RARITY_OPTIONS,
 } from "@/constants/perks";
 
-function PerkCard({ perk }: { perk: Perk }) {
+function PerkListCard({ perk }: { perk: Perk }) {
   // 处理数字或字符串格式的稀有度
   const rarityStr =
     typeof perk.rarity === "number"
@@ -25,13 +25,13 @@ function PerkCard({ perk }: { perk: Perk }) {
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
 
   return (
-    <Link href={`/perks/${perk.slug.split("/").map(encodeURIComponent).join("/")}`}>
-      <div
-        className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4 transition-transform hover:scale-[1.05]`}
-      >
+    <Link
+      href={`/perks/${perk.slug.split("/").map(encodeURIComponent).join("/")}`}
+      className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4 transition-transform hover:scale-[1.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400`}
+    >
       {perk.icon ? (
         <Image
-          src={getAssetPath(`/icons/perks/${perk.icon}.png`)}
+          src={getOptimizedImagePath(`/icons/perks/${perk.icon}.png`)}
           alt={perk.name}
           width={80}
           height={80}
@@ -45,7 +45,6 @@ function PerkCard({ perk }: { perk: Perk }) {
       <h3 className="mt-2 text-center text-sm font-medium leading-tight text-white">
         {perk.name}
       </h3>
-      </div>
     </Link>
   );
 }
@@ -128,7 +127,7 @@ export default function PerksPageClient({
               </div>
               <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
                 {slotPerks.map((perk, index) => (
-                  <PerkCard
+                  <PerkListCard
                     key={perk.id || `${perk.name}-${index}`}
                     perk={perk}
                   />
@@ -141,7 +140,7 @@ export default function PerksPageClient({
         <section>
           <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
             {filteredPerks.map((perk, index) => (
-              <PerkCard key={perk.id || `${perk.name}-${index}`} perk={perk} />
+              <PerkListCard key={perk.id || `${perk.name}-${index}`} perk={perk} />
             ))}
           </div>
         </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useMemo } from "react";
+import { useId, useMemo, useSyncExternalStore } from "react";
 import {
   Area,
   AreaChart,
@@ -31,6 +31,12 @@ interface CustomTooltipProps {
   active?: boolean;
   payload?: readonly { payload?: unknown }[];
   pellets: number | null;
+}
+
+const subscribe = () => () => {};
+
+function useHasMounted(): boolean {
+  return useSyncExternalStore(subscribe, () => true, () => false);
 }
 
 function toNumber(value: number | string | null | undefined): number | null {
@@ -136,6 +142,9 @@ export function WeaponAttenuationChart({
   pellets,
 }: WeaponAttenuationChartProps) {
   const gradientId = useId().replace(/:/g, "");
+  const titleId = useId();
+  const summaryId = useId();
+  const hasMounted = useHasMounted();
 
   const primaryMode = weapon?.damageModes?.[0];
   const hpMultiplier = weapon?.game_mode === "td" ? 400 : 500;
@@ -168,11 +177,24 @@ export function WeaponAttenuationChart({
   const xMax = getChartMax(attenuationEnd);
   const minDamage = chartData.reduce((min, point) => Math.min(min, point.damage), Infinity);
   const maxDamage = chartData.reduce((max, point) => Math.max(max, point.damage), 0);
+  const finalPercent = chartData.at(-1)?.percent ?? 100;
 
   return (
-    <div className="not-prose my-6 h-72 w-full rounded-xl border border-zinc-700/50 bg-zinc-900/30 p-3 sm:h-80 sm:p-4">
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={chartData} margin={{ top: 8, right: 10, left: 0, bottom: 0 }}>
+    <figure
+      className="not-prose my-6 w-full rounded-lg border border-zinc-700/50 bg-zinc-900/30 p-3 sm:p-4"
+      aria-labelledby={titleId}
+      aria-describedby={summaryId}
+    >
+      <figcaption id={titleId} className="mb-2 font-medium text-zinc-200">
+        伤害距离衰减曲线
+      </figcaption>
+      <p id={summaryId} className="mb-3 text-sm text-zinc-300">
+        {formatNumber(attenuationBegin, 1)} 米内保持完整伤害，至 {formatNumber(attenuationEnd, 1)} 米衰减到 {formatPercent(finalPercent)}。
+      </p>
+      <div className="h-64 sm:h-72" aria-hidden="true">
+        {hasMounted ? (
+          <ResponsiveContainer width="100%" height="100%" minWidth={0}>
+          <AreaChart data={chartData} margin={{ top: 8, right: 10, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#38bdf8" stopOpacity={0.28} />
@@ -219,9 +241,41 @@ export function WeaponAttenuationChart({
             activeDot={{ r: 4, fill: "#38bdf8", stroke: "#0369a1", strokeWidth: 2 }}
             isAnimationActive={false}
           />
-        </AreaChart>
-      </ResponsiveContainer>
-    </div>
+          </AreaChart>
+          </ResponsiveContainer>
+        ) : null}
+      </div>
+      <details className="mt-3 text-sm text-zinc-300">
+        <summary className="min-h-11 cursor-pointer py-2 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+          查看衰减数据
+        </summary>
+        <div className="max-h-72 overflow-auto rounded border border-zinc-700">
+          <table className="w-full border-collapse text-left text-sm">
+            <thead className="sticky top-0 bg-zinc-900 text-zinc-200">
+              <tr>
+                <th scope="col" className="px-3 py-2">距离</th>
+                <th scope="col" className="px-3 py-2">伤害</th>
+                <th scope="col" className="px-3 py-2">剩余比例</th>
+              </tr>
+            </thead>
+            <tbody>
+              {chartData.map((point) => (
+                <tr key={point.distance} className="border-t border-zinc-800">
+                  <th scope="row" className="px-3 py-2 font-normal tabular-nums">
+                    {formatNumber(point.distance, 1)}m
+                  </th>
+                  <td className="px-3 py-2 tabular-nums">
+                    {formatNumber(point.damage, 1)}
+                    {pelletCount !== null && pelletCount > 1 ? ` x ${pelletCount}` : ""}
+                  </td>
+                  <td className="px-3 py-2 tabular-nums">{formatPercent(point.percent)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </figure>
   );
 }
 

@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
+import { readMDXFile } from "@/lib/content-loader";
 
 const baseDir = path.join(process.cwd(), "data");
 const isDev = process.env.NODE_ENV === "development";
@@ -33,8 +33,7 @@ export function getMDXList(folder: string) {
           scanDir(fullPath, slugPrefix ? `${slugPrefix}/${entry.name}` : entry.name);
         }
       } else if (entry.name.endsWith(".mdx")) {
-        const fileContent = fs.readFileSync(fullPath, "utf-8");
-        const { data } = matter(fileContent);
+        const { metadata: data } = readMDXFile(fullPath);
 
         // draft 文章仅在开发环境可见
         if (data.draft && !isDev) continue;
@@ -110,8 +109,7 @@ export function getMDXDetail(folder: string, slug: string) {
   }
 
   // 4. 解析文件内容
-  const filestream = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(filestream);
+  const { metadata: data, content } = readMDXFile(filePath);
 
   // draft 文章仅在开发环境可见
   if (data.draft && !isDev) {
