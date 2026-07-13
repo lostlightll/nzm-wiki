@@ -23,10 +23,10 @@ function NavCard({ href, icon, title }: NavCardProps) {
   return (
     <Link
       href={href}
-      className="group flex flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800/50 p-4 transition-colors hover:border-zinc-500 hover:bg-zinc-700/50 hover:scale-[1.02] active:scale-[0.98]"
+      className="home-nav-card group flex flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800/50 p-4 transition-[transform,border-color,background-color,box-shadow] duration-200 hover:scale-[1.02] hover:border-zinc-500 hover:bg-zinc-700/50 active:scale-[0.98]"
     >
-      <span className="text-zinc-400 group-hover:text-white transition-colors">{icon}</span>
-      <span className="mt-2 text-base sm:text-lg font-medium text-white">{title}</span>
+      <span className="relative z-10 text-zinc-400 transition-colors group-hover:text-white">{icon}</span>
+      <span className="relative z-10 mt-2 text-base font-medium text-white sm:text-lg">{title}</span>
     </Link>
   );
 }
