@@ -15,7 +15,7 @@ interface TableOfContentsProps {
 export function TableOfContents({ enabled = true }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
-  const [isHovered, setIsHovered] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (!enabled) return;
@@ -38,7 +38,7 @@ export function TableOfContents({ enabled = true }: TableOfContentsProps) {
       });
     });
 
-    setHeadings(items);
+    const frame = window.requestAnimationFrame(() => setHeadings(items));
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -53,7 +53,10 @@ export function TableOfContents({ enabled = true }: TableOfContentsProps) {
 
     elements.forEach((el) => observer.observe(el));
 
-    return () => observer.disconnect();
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
   }, [enabled]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -62,49 +65,44 @@ export function TableOfContents({ enabled = true }: TableOfContentsProps) {
     if (element) {
       const offset = 80; // 导航栏高度 + 一点间距
       const top = element.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+      setIsOpen(false);
     }
   };
 
   if (!enabled || headings.length === 0) return null;
 
   return (
-    <nav
-      className="hidden xl:block fixed left-8 top-[38.2%] z-50"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* 收起状态：小横条 */}
-      <div
-        className={`flex flex-col gap-2.5 transition-all duration-200 ${
-          isHovered ? "opacity-0 scale-95" : "opacity-100 scale-100"
-        }`}
+    <nav className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-40 xl:bottom-auto xl:left-8 xl:top-[38.2%]" aria-label="本页目录">
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls="page-table-of-contents"
+        onClick={() => setIsOpen((open) => !open)}
+        className="flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-zinc-600 bg-zinc-800/95 px-3 text-sm font-medium text-zinc-200 shadow-lg backdrop-blur hover:bg-zinc-700 xl:px-2"
       >
-        {headings.map((heading, index) => (
-          <div
-            key={index}
-            className={`rounded-full transition-colors ${
-              heading.level === 3 ? "ml-2 w-4 h-0.5" : "w-5 h-0.5"
-            } ${activeId === heading.id ? "bg-blue-400" : "bg-zinc-600"}`}
-          />
-        ))}
-      </div>
+        <span className="xl:hidden">目录</span>
+        <span className="hidden flex-col gap-1.5 xl:flex" aria-hidden="true">
+          {headings.slice(0, 5).map((heading) => (
+            <span key={heading.id} className={`h-0.5 rounded-full ${heading.level === 3 ? "ml-1 w-3" : "w-4"} ${activeId === heading.id ? "bg-blue-400" : "bg-zinc-400"}`} />
+          ))}
+        </span>
+      </button>
 
-      {/* 展开状态：完整目录 */}
       <div
-        className={`absolute left-0 top-0 min-w-36 bg-zinc-800/95 backdrop-blur rounded-lg border border-zinc-700 py-2 px-1 transition-all duration-200 origin-top-left ${
-          isHovered
-            ? "opacity-100 scale-100"
-            : "opacity-0 scale-95 pointer-events-none"
-        }`}
+        id="page-table-of-contents"
+        hidden={!isOpen}
+        className="absolute bottom-full left-0 mb-2 max-h-[60dvh] min-w-52 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-lg border border-zinc-700 bg-zinc-800/95 px-1 py-2 shadow-xl backdrop-blur xl:bottom-auto xl:left-full xl:top-0 xl:mb-0 xl:ml-2"
       >
-        <ul className="text-sm whitespace-nowrap">
+        <ul className="text-sm">
           {headings.map((heading) => (
             <li key={heading.id}>
               <a
                 href={`#${heading.id}`}
                 onClick={(e) => handleClick(e, heading.id)}
-                className={`block py-1 px-2 rounded transition-colors hover:bg-zinc-700/50 ${
+                aria-current={activeId === heading.id ? "location" : undefined}
+                className={`block min-h-11 rounded px-3 py-3 transition-colors hover:bg-zinc-700/50 xl:min-h-0 xl:py-2 ${
                   heading.level === 3 ? "pl-4 text-xs" : ""
                 } ${
                   activeId === heading.id

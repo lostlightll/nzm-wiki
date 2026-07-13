@@ -1,13 +1,35 @@
+const EXTERNAL_URL_PATTERN = /^(?:[a-z][a-z\d+.-]*:|\/\/)/i;
+
 export const getAssetPath = (path: string) => {
+  if (EXTERNAL_URL_PATTERN.test(path)) return path;
+
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  return `${basePath}${normalizedPath}`;
+};
 
-  // 将 .png 转换为 public/webp/ 路径下的 .webp
-  // 例如 /images/foo/bar.png -> /webp/images/foo/bar.webp
-  if (normalizedPath.endsWith(".png")) {
-    const webpPath = `/webp${normalizedPath.replace(/\.png$/, ".webp")}`;
-    return `${basePath}${webpPath}`;
+export const getOptimizedImagePath = (path: string) => {
+  if (EXTERNAL_URL_PATTERN.test(path)) return path;
+
+  const match = path.match(/^([^?#]*)([?#].*)?$/);
+  const pathname = match?.[1] ?? path;
+  const suffix = match?.[2] ?? "";
+
+  if (!pathname.toLowerCase().endsWith(".png")) {
+    return getAssetPath(path);
   }
 
-  return `${basePath}${normalizedPath}`;
+  const normalizedPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  const webpPath = `/webp${normalizedPath.replace(/\.png$/i, ".webp")}${suffix}`;
+  return getAssetPath(webpPath);
+};
+
+export const getImageAssetPaths = (path: string) => {
+  const originalSrc = getAssetPath(path);
+  const optimizedSrc = getOptimizedImagePath(path);
+
+  return {
+    src: optimizedSrc,
+    fallbackSrc: optimizedSrc === originalSrc ? undefined : originalSrc,
+  };
 };

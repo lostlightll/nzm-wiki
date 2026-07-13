@@ -1,8 +1,9 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getMdxComponents, TableOfContents } from "@/lib/mdx-components";
+import { getMdxComponents } from "@/lib/mdx-components";
 import { mdxOptions } from "@/lib/mdx-options";
 import { getAllBosses } from "@/lib/bosses";
+import { MDXDetailLayout } from "@/components/MDXDetailLayout";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -28,22 +29,6 @@ export async function generateMetadata({
   };
 }
 
-// Tailwind max-width classes mapping
-const PAGE_WIDTH_CLASSES: Record<string, string> = {
-  sm: "max-w-xl",
-  md: "max-w-2xl",
-  lg: "max-w-3xl",
-  xl: "max-w-4xl",
-  "2xl": "max-w-5xl",
-  "3xl": "max-w-6xl",
-  full: "max-w-7xl",
-};
-
-// Check if value is a custom width (e.g., "1024px", "80rem")
-function isCustomWidth(value: string): boolean {
-  return /^\d+(px|rem|em|vw|%)$/.test(value);
-}
-
 export default async function PostPage({
   params,
 }: {
@@ -52,32 +37,18 @@ export default async function PostPage({
   const { slug } = await params;
   const slugPath = slug.map(decodeURIComponent).join("/");
   const { content, metadata } = getMDXDetail("posts", slugPath);
-  const showToc = metadata.toc !== false;
 
   // 加载 boss 数据，转换为 title -> Boss 的映射
   const bosses = await getAllBosses();
   const bossData = Object.fromEntries(bosses.map((b) => [b.title, b]));
   const mdxComponents = getMdxComponents(bossData);
 
-  // Get page width from frontmatter, default to lg (max-w-3xl)
-  const pageWidth = metadata["page-width"] as string | undefined;
-  const isCustom = pageWidth && isCustomWidth(pageWidth);
-  const widthClass = isCustom
-    ? ""
-    : pageWidth && PAGE_WIDTH_CLASSES[pageWidth]
-      ? PAGE_WIDTH_CLASSES[pageWidth]
-      : "max-w-3xl";
-
-  // Custom width style: specified width on desktop, full width on mobile
-  const customStyle = isCustom ? { maxWidth: pageWidth } : undefined;
-
   return (
-    <>
-      <TableOfContents enabled={showToc} />
-      <div
-        className={`mx-auto ${widthClass} py-6 md:p-10 ${isCustom ? "max-md:max-w-full" : ""}`}
-        style={customStyle}
-      >
+    <MDXDetailLayout
+      pageWidth={metadata["page-width"]}
+      toc={metadata.toc !== false}
+      className="md:p-10"
+    >
         <article className="prose prose-lg prose-invert max-w-none">
           {metadata.title && <h1>{metadata.title}</h1>}
           <MDXRemote
@@ -86,7 +57,6 @@ export default async function PostPage({
             options={mdxOptions}
           />
         </article>
-      </div>
-    </>
+    </MDXDetailLayout>
   );
 }

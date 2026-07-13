@@ -1,5 +1,12 @@
 import { getMDXList } from "@/lib/mdx";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "攻略文章",
+  description: "逆战未来僵尸猎场、塔防与玩法攻略文章",
+  alternates: { canonical: "/posts" },
+};
 
 interface Post {
   slug: string;

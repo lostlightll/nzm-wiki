@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getAssetPath } from "@/lib/path";
+import { getOptimizedImagePath } from "@/lib/path";
 import type { Rarity, PerkSlot } from "@/types";
 import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
 
@@ -35,7 +35,7 @@ export function PerkDetailCard({
       <div className="flex items-center gap-5">
         {icon ? (
           <Image
-            src={getAssetPath(`/icons/perks/${icon}.png`)}
+            src={getOptimizedImagePath(`/icons/perks/${icon}.png`)}
             alt={name}
             width={96}
             height={96}

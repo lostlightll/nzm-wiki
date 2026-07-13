@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useId } from "react";
+import { Minus, Plus } from "lucide-react";
 
 /**
  * 基础暴击计算：给定固定暴击率和暴击伤害，计算期望
@@ -182,6 +183,7 @@ function InputField({
   step: number;
 }) {
   const [draft, setDraft] = useState<string | null>(null);
+  const inputId = useId();
 
   const commit = useCallback(() => {
     if (draft === null) return;
@@ -194,12 +196,24 @@ function InputField({
 
   return (
     <div>
-      <label className="mb-1.5 block text-xs text-zinc-400">{label}</label>
-      <div className="flex items-center gap-1">
+      <label htmlFor={inputId} className="mb-1.5 block text-xs text-zinc-400">
+        {label}
+      </label>
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-zinc-600/80 bg-zinc-800 text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 disabled:cursor-not-allowed disabled:opacity-40"
+          onClick={() => onChange(Math.max(value - step, min))}
+          disabled={value <= min}
+          aria-label={`减少${label}`}
+        >
+          <Minus className="h-4 w-4" />
+        </button>
         <div className="relative flex-1">
           <input
+            id={inputId}
             type="number"
-            className="w-full appearance-none rounded-md border border-zinc-600/80 bg-zinc-800 py-1.5 pl-3 pr-7 text-sm tabular-nums text-zinc-100 outline-none transition-colors focus:border-zinc-400 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]"
+            className="min-h-11 w-full appearance-none rounded-md border border-zinc-600/80 bg-zinc-800 py-2 pl-3 pr-7 text-sm tabular-nums text-zinc-100 outline-none transition-colors focus:border-zinc-400 focus-visible:ring-2 focus-visible:ring-sky-400 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]"
             value={draft ?? value}
             onChange={(e) => setDraft(e.target.value)}
             onBlur={commit}
@@ -214,23 +228,15 @@ function InputField({
             {unit}
           </span>
         </div>
-        <div className="flex shrink-0 flex-col overflow-hidden rounded border border-zinc-600/80">
-          <button
-            type="button"
-            className="flex h-[14px] w-5 items-center justify-center bg-zinc-800 text-[10px] leading-none text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-zinc-200 active:bg-zinc-600"
-            onClick={() => onChange(Math.min(value + step, max))}
-          >
-            ▲
-          </button>
-          <div className="h-px bg-zinc-600/80" />
-          <button
-            type="button"
-            className="flex h-[14px] w-5 items-center justify-center bg-zinc-800 text-[10px] leading-none text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-zinc-200 active:bg-zinc-600"
-            onClick={() => onChange(Math.max(value - step, min))}
-          >
-            ▼
-          </button>
-        </div>
+        <button
+          type="button"
+          className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-zinc-600/80 bg-zinc-800 text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 disabled:cursor-not-allowed disabled:opacity-40"
+          onClick={() => onChange(Math.min(value + step, max))}
+          disabled={value >= max}
+          aria-label={`增加${label}`}
+        >
+          <Plus className="h-4 w-4" />
+        </button>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { getAssetPath } from "@/lib/path";
+import { getOptimizedImagePath } from "@/lib/path";
 import { CALLOUT_BOLD_COLOR } from "@/constants/colors";
 
 type Align = "left" | "center" | "right";
@@ -93,7 +93,7 @@ export function DataTable({ headers, align, nowrap, iconSize = 24, data }: DataT
                     {cellIndex === 0 && icon ? (
                       <div className={`flex items-center gap-2 ${align?.[0] === "left" ? "" : "justify-center"}`}>
                         <Image
-                          src={getAssetPath(icon)}
+                          src={getOptimizedImagePath(icon)}
                           alt=""
                           width={iconSize}
                           height={iconSize}
