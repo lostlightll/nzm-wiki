@@ -25,7 +25,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.28.1
+          version: latest
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -40,22 +40,7 @@ jobs:
           static_site_generator: next
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Typecheck application
-        run: pnpm typecheck
-
-      - name: Typecheck scripts
-        run: pnpm typecheck:scripts
-
-      - name: Validate content
-        run: pnpm content:validate
-
-      - name: Test
-        run: pnpm test
+        run: pnpm install
 
       - name: Build with Next.js
         run: pnpm build

@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   description:
     "逆战未来 武器、陷阱道具、敌人，以及僵尸猎场、塔防等模式详细数据资料",
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "zh_CN",

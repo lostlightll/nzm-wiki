@@ -1,7 +1,16 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { getWeaponBySlug } from "@/lib/weapons";
-import { WeaponDetailContent } from "@/components/WeaponDetailContent";
+import { WeaponDetailCard } from "@/components/WeaponCard";
+import {
+  WeaponAttenuationChart,
+  type WeaponAttenuationChartProps,
+} from "@/components/WeaponAttenuationChart";
+import { WeaponSkill } from "@/components/WeaponSkill";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
+import { mdxOptions } from "@/lib/mdx-options";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
 export async function generateStaticParams() {
   const items = getMDXList("weapons");
@@ -25,6 +34,21 @@ export async function generateMetadata({
   };
 }
 
+// Tailwind max-width classes mapping
+const PAGE_WIDTH_CLASSES: Record<string, string> = {
+  sm: "max-w-xl",
+  md: "max-w-2xl",
+  lg: "max-w-3xl",
+  xl: "max-w-4xl",
+  "2xl": "max-w-5xl",
+  "3xl": "max-w-6xl",
+  full: "max-w-7xl",
+};
+
+function isCustomWidth(value: string): boolean {
+  return /^\d+(px|rem|em|vw|%)$/.test(value);
+}
+
 export default async function WeaponDetailPage({
   params,
 }: {
@@ -34,6 +58,16 @@ export default async function WeaponDetailPage({
 
   const weapon = await getWeaponBySlug(slug);
   const { content, metadata } = getMDXDetail("weapons", slug);
+  const showToc = metadata.toc !== false;
+
+  const pageWidth = metadata["page-width"] as string | undefined;
+  const isCustom = pageWidth && isCustomWidth(pageWidth);
+  const widthClass = isCustom
+    ? ""
+    : pageWidth && PAGE_WIDTH_CLASSES[pageWidth]
+      ? PAGE_WIDTH_CLASSES[pageWidth]
+      : "max-w-3xl";
+  const customStyle = isCustom ? { maxWidth: pageWidth } : undefined;
 
   if (!weapon) {
     return (
@@ -43,5 +77,41 @@ export default async function WeaponDetailPage({
     );
   }
 
-  return <WeaponDetailContent weapon={weapon} content={content} metadata={metadata} />;
+  const AttenuationChartForWeapon = (props: WeaponAttenuationChartProps) => (
+    <WeaponAttenuationChart {...props} weapon={props.weapon ?? weapon} />
+  );
+  const WeaponSkillForWeapon = ({ children }: { children: ReactNode }) => (
+    <>
+      <WeaponSkill>{children}</WeaponSkill>
+      <WeaponAttenuationChart weapon={weapon} />
+    </>
+  );
+  const weaponMdxComponents = {
+    ...mdxComponents,
+    AttenuationChart: AttenuationChartForWeapon,
+    WeaponAttenuationChart: AttenuationChartForWeapon,
+    WeaponSkill: WeaponSkillForWeapon,
+  };
+
+  return (
+    <>
+      <TableOfContents enabled={showToc} />
+      <div
+        className={`mx-auto ${widthClass} py-6 ${isCustom ? "max-md:max-w-full" : ""}`}
+        style={customStyle}
+      >
+        <WeaponDetailCard weapon={weapon} />
+
+        {content.trim() && (
+          <article className="prose prose-lg prose-invert mt-8 max-w-none">
+            <MDXRemote
+              source={content}
+              components={weaponMdxComponents}
+              options={mdxOptions}
+            />
+          </article>
+        )}
+      </div>
+    </>
+  );
 }

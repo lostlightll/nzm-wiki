@@ -4,11 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Trap } from "@/types";
-import { getImageAssetPaths } from "@/lib/path";
+import { getAssetPath } from "@/lib/path";
 
 function TrapImage({ name, size = 128, className }: { name: string; size?: number; className?: string }) {
   const [hasError, setHasError] = useState(false);
-  const imagePaths = getImageAssetPaths(`/icons/traps/${name}.png`);
 
   if (hasError) {
     return (
@@ -23,24 +22,13 @@ function TrapImage({ name, size = 128, className }: { name: string; size?: numbe
 
   return (
     <Image
-      src={imagePaths.src}
+      src={getAssetPath(`/icons/traps/${name}.png`)}
       alt={name}
       width={192}
       height={192}
       className={`object-contain ${className ?? ""}`}
       style={className ? undefined : { width: size, height: size }}
-      onError={(event) => {
-        if (
-          imagePaths.fallbackSrc &&
-          event.currentTarget.dataset.fallbackApplied !== "true"
-        ) {
-          event.currentTarget.dataset.fallbackApplied = "true";
-          event.currentTarget.srcset = "";
-          event.currentTarget.src = imagePaths.fallbackSrc;
-          return;
-        }
-        setHasError(true);
-      }}
+      onError={() => setHasError(true)}
     />
   );
 }

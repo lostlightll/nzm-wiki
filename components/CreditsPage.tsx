@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Credit } from "@/components/Credit";
-import { getOptimizedImagePath } from "@/lib/path";
+import { getAssetPath } from "@/lib/path";
 
 interface CoreContributor {
   name: string;
@@ -66,7 +67,7 @@ function Avatar({
     return (
       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-700/50 flex-shrink-0">
         <Image
-          src={getOptimizedImagePath(iconPath)}
+          src={getAssetPath(iconPath)}
           alt={platform}
           width={28}
           height={28}

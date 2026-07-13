@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Weapon, ElementType, DamageMode } from "@/types";
-import { getOptimizedImagePath } from "@/lib/path";
+import { getAssetPath } from "@/lib/path";
 import {
   calcRPM,
   calcFullReload,
@@ -86,7 +86,7 @@ function WeaponImage({ name, size = "normal" }: { name: string; size?: "small" |
   return (
     <div className={`relative ${height} w-full overflow-hidden`}>
       <Image
-        src={getOptimizedImagePath(`/icons/weapons/normal/${name}.png`)}
+        src={getAssetPath(`/icons/weapons/normal/${name}.png`)}
         alt={name}
         width={320}
         height={160}
@@ -140,7 +140,7 @@ function SimpleCard({ weapon }: { weapon: Weapon }) {
         {elementIcon && (
           <div className="absolute right-2 top-2 z-10">
             <Image
-              src={getOptimizedImagePath(elementIcon)}
+              src={getAssetPath(elementIcon)}
               alt={mode.element}
               width={20}
               height={20}
@@ -168,17 +168,16 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
   const tags = weapon.tags || [];
   const hpMul = weapon.game_mode === "td" ? 400 : 500;
   const isMelee = isMeleeWeapon(weapon);
-  const detailHref = `/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`;
 
   return (
-    <article
-      className={`relative min-w-0 rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-4 transition-transform duration-200 ease-out hover:z-10 hover:scale-[1.02] motion-reduce:hover:scale-100 sm:p-5`}
-    >
-      <Link href={detailHref} className="group block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+    <Link href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}>
+      <div
+        className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5 transition-transform hover:scale-[1.02] min-w-[360px]`}
+      >
         {elementIcon && (
-          <div className="absolute right-4 top-4 z-10 pointer-events-none">
+          <div className="absolute right-4 top-4 z-10">
             <Image
-              src={getOptimizedImagePath(elementIcon)}
+              src={getAssetPath(elementIcon)}
               alt={mode.element}
               width={28}
               height={28}
@@ -186,7 +185,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
           </div>
         )}
 
-        <h3 className="text-xl font-semibold text-white group-hover:text-zinc-200">{weapon.title}</h3>
+        <h3 className="text-xl font-semibold text-white">{weapon.title}</h3>
         <div className="mt-1 mb-4 flex flex-wrap items-center gap-1.5 text-sm text-zinc-400">
           {weapon.use_type && <span>{weapon.use_type}</span>}
           {weapon.weapon_type && <span>· {weapon.weapon_type}</span>}
@@ -198,7 +197,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
 
         <div className="flex justify-center">
           <Image
-            src={getOptimizedImagePath(`/icons/weapons/normal/${weapon.title}.png`)}
+            src={getAssetPath(`/icons/weapons/normal/${weapon.title}.png`)}
             alt={weapon.title || ""}
             width={320}
             height={160}
@@ -206,9 +205,8 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
             style={{ width: 320, height: "auto" }}
           />
         </div>
-      </Link>
 
-      <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-base">
+        <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-base">
           {isMelee ? (
             <>
               <div className="flex justify-between">
@@ -282,17 +280,15 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
                     : "-"}
                 </span>
               </div>
-              <button
-                type="button"
-                aria-expanded={showReloadDetail}
-                className="flex min-h-11 w-full items-center justify-between rounded px-1 text-left hover:bg-zinc-700/40"
-                onClick={() => setShowReloadDetail((visible) => !visible)}
+              <div
+                className="flex justify-between cursor-pointer"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowReloadDetail(!showReloadDetail); }}
               >
                 <span className="text-zinc-500">
                   换弹详情 {showReloadDetail ? "▴" : "▸"}
                 </span>
                 <span className="text-white">&nbsp;</span>
-              </button>
+              </div>
               {showReloadDetail && weapon.changeClip && (
                 <>
                   <div className="flex justify-between">
@@ -311,8 +307,9 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
               )}
             </>
           )}
+        </div>
       </div>
-    </article>
+    </Link>
   );
 }
 
@@ -434,10 +431,8 @@ function SkillSection({ weapon, hpMultiplier = 500 }: { weapon: Weapon; hpMultip
       {collapsible && !expanded && (
         <div className="text-center">
           <button
-            type="button"
-            aria-expanded="false"
             onClick={() => setExpanded(true)}
-            className="min-h-11 rounded px-3 text-sm text-zinc-300 hover:bg-zinc-700/40 hover:text-white transition-colors"
+            className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
           >
             展开更多 ({hiddenCount})
           </button>
@@ -446,10 +441,8 @@ function SkillSection({ weapon, hpMultiplier = 500 }: { weapon: Weapon; hpMultip
       {collapsible && expanded && (
         <div className="text-center">
           <button
-            type="button"
-            aria-expanded="true"
             onClick={() => setExpanded(false)}
-            className="min-h-11 rounded px-3 text-sm text-zinc-300 hover:bg-zinc-700/40 hover:text-white transition-colors"
+            className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
           >
             收起
           </button>
@@ -510,7 +503,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
         </div>
         {elementIcon && (
           <Image
-            src={getOptimizedImagePath(elementIcon)}
+            src={getAssetPath(elementIcon)}
             alt={mode.element}
             width={32}
             height={32}
@@ -521,7 +514,7 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
       {/* 武器图片 */}
       <div className="relative mb-6 h-32 w-full">
         <Image
-          src={getOptimizedImagePath(`/icons/weapons/normal/${weapon.title}.png`)}
+          src={getAssetPath(`/icons/weapons/normal/${weapon.title}.png`)}
           alt={weapon.title || ""}
           width={320}
           height={160}
@@ -635,17 +628,15 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
             />
           ) : null}
           {!isMelee && (
-            <button
-              type="button"
-              aria-expanded={showReloadDetail}
-              className="flex min-h-11 w-full items-center justify-between gap-1 rounded px-1 text-sm hover:bg-zinc-700/40"
-              onClick={() => setShowReloadDetail((visible) => !visible)}
+            <div
+              className="flex justify-between gap-1 text-sm cursor-pointer"
+              onClick={() => setShowReloadDetail(!showReloadDetail)}
             >
               <span className="text-zinc-500 shrink-0">
                 换弹详情 {showReloadDetail ? "▴" : "▸"}
               </span>
               <span className="text-white text-right">&nbsp;</span>
-            </button>
+            </div>
           )}
           <Stat
             label="技能冷却"

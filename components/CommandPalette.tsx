@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { Calculator, Search, Github, Pencil, History } from "lucide-react";
-import { useDialogFocus } from "@/components/useDialogFocus";
 
 // GitHub 仓库基础 URL
 const GITHUB_REPO_URL = "https://github.com/qiekn/nzm-wiki/blob/main";
@@ -10,7 +9,6 @@ const GITHUB_COMMITS_URL = "https://github.com/qiekn/nzm-wiki/commits/main";
 
 // URL 路径到 data 目录的映射
 const PATH_TO_DATA_MAP: Record<string, string> = {
-  "/weapons/td": "data/weapons_td",
   "/weapons": "data/weapons",
   "/perks": "data/perks",
   "/traps": "data/traps",
@@ -97,24 +95,15 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
   const [githubCommitsUrl, setGithubCommitsUrl] = useState<string | null>(null);
   const [editorUrl, setEditorUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const dialogRef = useRef<HTMLDivElement>(null);
 
-  const closePalette = useCallback(() => setIsOpen(false), []);
-  const openPalette = useCallback(() => {
-    setQuery("");
-    setSelectedIndex(0);
-    setGithubEditUrl(getGitHubEditUrl());
-    setGithubCommitsUrl(getGitHubCommitsUrl());
-    setEditorUrl(getEditorUrl());
-    setIsOpen(true);
-  }, []);
-
-  useDialogFocus({
-    isOpen,
-    containerRef: dialogRef,
-    initialFocusRef: inputRef,
-    onClose: closePalette,
-  });
+  // 打开时检测当前页面的编辑链接
+  useEffect(() => {
+    if (isOpen) {
+      setGithubEditUrl(getGitHubEditUrl());
+      setGithubCommitsUrl(getGitHubCommitsUrl());
+      setEditorUrl(getEditorUrl());
+    }
+  }, [isOpen]);
 
   // 合并命令列表（包括动态命令）
   const allCommands = useMemo(() => {
@@ -139,7 +128,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
         description: "打开当前页面对应的 MDX 文件",
         icon: <Github className="h-4 w-4" />,
         action: () => {
-          window.open(githubEditUrl, "_blank", "noopener,noreferrer");
+          window.open(githubEditUrl, "_blank");
         },
       });
     }
@@ -151,7 +140,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
         description: "查看当前页面的 Git 提交历史",
         icon: <History className="h-4 w-4" />,
         action: () => {
-          window.open(githubCommitsUrl, "_blank", "noopener,noreferrer");
+          window.open(githubCommitsUrl, "_blank");
         },
       });
     }
@@ -174,21 +163,34 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
       // Ctrl+Shift+P 或 Cmd+Shift+P
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === "p") {
         e.preventDefault();
-        if (isOpen) closePalette();
-        else openPalette();
+        setIsOpen((prev) => !prev);
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [closePalette, isOpen, openPalette]);
+  }, []);
+
+  // 打开时聚焦
+  useEffect(() => {
+    if (isOpen) {
+      setQuery("");
+      setSelectedIndex(0);
+      setTimeout(() => inputRef.current?.focus(), 50);
+    }
+  }, [isOpen]);
+
+  // 选中项变化时重置
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [query]);
 
   const executeCommand = useCallback(
     (cmd: Command) => {
-      closePalette();
+      setIsOpen(false);
       cmd.action();
     },
-    [closePalette]
+    []
   );
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -213,7 +215,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
         break;
       case "Escape":
         e.preventDefault();
-        closePalette();
+        setIsOpen(false);
         break;
     }
   };
@@ -223,23 +225,13 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh]">
       {/* 背景遮罩 */}
-      <button
-        type="button"
-        aria-label="关闭命令面板"
+      <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-200"
-        onClick={closePalette}
+        onClick={() => setIsOpen(false)}
       />
 
       {/* 命令面板 */}
-      <div
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="command-dialog-title"
-        tabIndex={-1}
-        className="relative mx-4 w-full max-w-lg overflow-hidden rounded-xl bg-zinc-900 shadow-2xl ring-1 ring-zinc-700 animate-in fade-in slide-in-from-top-4 duration-200"
-      >
-        <h2 id="command-dialog-title" className="sr-only">命令面板</h2>
+      <div className="relative w-full max-w-lg mx-4 overflow-hidden rounded-xl bg-zinc-900 shadow-2xl ring-1 ring-zinc-700 animate-in fade-in slide-in-from-top-4 duration-200">
         {/* 搜索框 */}
         <div className="flex items-center gap-3 border-b border-zinc-800 px-4 py-3">
           <Search className="h-5 w-5 text-zinc-500" />
@@ -247,19 +239,10 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
             ref={inputRef}
             type="text"
             value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setSelectedIndex(0);
-            }}
+            onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="输入命令..."
-            role="combobox"
-            aria-autocomplete="list"
-            aria-controls="command-results"
-            aria-expanded="true"
-            aria-activedescendant={filteredCommands[selectedIndex] ? `command-option-${filteredCommands[selectedIndex].id}` : undefined}
-            aria-label="筛选命令"
-            className="flex-1 bg-transparent text-base text-zinc-200 outline-none placeholder:text-zinc-500 sm:text-sm"
+            className="flex-1 bg-transparent text-sm text-zinc-200 outline-none placeholder:text-zinc-600"
             autoComplete="off"
             spellCheck={false}
           />
@@ -269,7 +252,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
         </div>
 
         {/* 命令列表 */}
-        <div id="command-results" role="listbox" aria-label="命令列表" className="max-h-80 overflow-y-auto p-2">
+        <div className="max-h-80 overflow-y-auto p-2">
           {filteredCommands.length === 0 ? (
             <div className="px-3 py-8 text-center text-sm text-zinc-500">
               没有找到匹配的命令
@@ -278,12 +261,8 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
             filteredCommands.map((cmd, index) => (
               <button
                 key={cmd.id}
-                id={`command-option-${cmd.id}`}
-                type="button"
-                role="option"
-                aria-selected={index === selectedIndex}
                 onClick={() => executeCommand(cmd)}
-                className={`flex min-h-11 w-full items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors ${
+                className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors ${
                   index === selectedIndex
                     ? "bg-zinc-800 text-white"
                     : "text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200"
