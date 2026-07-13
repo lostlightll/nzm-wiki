@@ -156,6 +156,8 @@ export interface Perk {
   rarity: Rarity;
   category: PerkCategory;
   icon?: string;
+  weaponType?: number[];
+  weaponNames?: string[];
   effects: PerkEffect[];
   description?: string;
 }

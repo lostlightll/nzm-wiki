@@ -90,6 +90,7 @@ export default async function PerkDetailPage({
           rarity={rarity}
           description={descriptionNode}
           weaponType={metadata.weaponType}
+          weaponNames={metadata.weaponNames}
         />
 
         {content.trim() && (
