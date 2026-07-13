@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Search, Command, Menu, X, Github } from "lucide-react";
 
@@ -29,10 +29,48 @@ function triggerShortcut(key: string, ctrlKey = true, shiftKey = false) {
 
 function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [navIndicator, setNavIndicator] = useState({
+    x: 0,
+    width: 0,
+    visible: false,
+  });
   const pathname = usePathname();
+  const desktopNavRef = useRef<HTMLDivElement>(null);
+  const navLinkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(`${href}/`);
+  const activeHref = NAV_ITEMS.find(({ href }) => isActive(href))?.href;
+
+  useLayoutEffect(() => {
+    const nav = desktopNavRef.current;
+    const activeLink = activeHref ? navLinkRefs.current[activeHref] : null;
+
+    if (!nav || !activeLink) return;
+
+    const updateIndicator = () => {
+      const navRect = nav.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+
+      setNavIndicator({
+        x: linkRect.left - navRect.left,
+        width: linkRect.width,
+        visible: true,
+      });
+    };
+
+    updateIndicator();
+
+    const resizeObserver = new ResizeObserver(updateIndicator);
+    resizeObserver.observe(nav);
+    resizeObserver.observe(activeLink);
+    window.addEventListener("resize", updateIndicator);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateIndicator);
+    };
+  }, [activeHref, pathname]);
 
   return (
     <nav className="sticky top-0 z-50 border-b border-zinc-700 bg-background/95 backdrop-blur">
@@ -46,15 +84,29 @@ function NavBar() {
             逆战未来 维基
           </Link>
           {/* 桌面端导航链接 */}
-          <div className="hidden gap-1 md:flex">
+          <div ref={desktopNavRef} className="relative hidden gap-1 md:flex">
+            {activeHref && (
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 left-0 rounded-lg bg-zinc-800 transition-[transform,width,opacity] duration-200 ease-out motion-reduce:transition-none"
+                style={{
+                  width: navIndicator.width,
+                  opacity: navIndicator.visible ? 1 : 0,
+                  transform: `translateX(${navIndicator.x}px)`,
+                }}
+              />
+            )}
             {NAV_ITEMS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
+                ref={(element) => {
+                  navLinkRefs.current[href] = element;
+                }}
                 aria-current={isActive(href) ? "page" : undefined}
-                className={`flex min-h-11 items-center rounded-lg px-3 text-sm transition-colors ${
+                className={`relative z-10 flex min-h-11 items-center rounded-lg px-3 text-sm transition-colors ${
                   isActive(href)
-                    ? "bg-zinc-800 text-white"
+                    ? "text-white"
                     : "text-zinc-300 hover:bg-zinc-800/60 hover:text-white"
                 }`}
               >
