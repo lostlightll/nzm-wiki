@@ -1,17 +1,13 @@
 import fs from "fs";
 import path from "path";
-import { readMDXFile } from "@/lib/content-loader";
+import matter from "gray-matter";
 import type { Boss, Enemy } from "@/types";
 const BOSSES_DIR = path.join(process.cwd(), "data/enemies/lc/boss");
-const isDev = process.env.NODE_ENV === "development";
-let productionBosses: Boss[] | undefined;
 
 /**
  * 从 MDX frontmatter 获取所有猎场首领数据
  */
 export async function getAllBosses(): Promise<Boss[]> {
-  if (productionBosses) return productionBosses;
-
   if (!fs.existsSync(BOSSES_DIR)) {
     console.warn(`Bosses directory not found: ${BOSSES_DIR}`);
     return [];
@@ -19,9 +15,10 @@ export async function getAllBosses(): Promise<Boss[]> {
 
   const files = fs.readdirSync(BOSSES_DIR).filter((f) => f.endsWith(".mdx"));
 
-  const bosses = files.map((file) => {
+  return files.map((file) => {
     const filePath = path.join(BOSSES_DIR, file);
-    const { metadata: data } = readMDXFile(filePath);
+    const content = fs.readFileSync(filePath, "utf-8");
+    const { data } = matter(content);
     const slug = file.replace(/\.mdx$/, "");
 
     return {
@@ -29,9 +26,6 @@ export async function getAllBosses(): Promise<Boss[]> {
       ...data,
     } as Boss;
   });
-
-  if (!isDev) productionBosses = bosses;
-  return bosses;
 }
 
 /**
@@ -45,7 +39,8 @@ export async function getBossBySlug(slug: string): Promise<Boss | null> {
     return null;
   }
 
-  const { metadata: data } = readMDXFile(filePath);
+  const content = fs.readFileSync(filePath, "utf-8");
+  const { data } = matter(content);
 
   return {
     slug: decodedSlug,

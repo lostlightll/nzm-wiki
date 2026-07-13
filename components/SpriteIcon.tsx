@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { SPRITE_SHEETS, type SpriteConfig } from "@/constants/sprites";
-import { getOptimizedImagePath } from "@/lib/path";
+import { getAssetPath } from "@/lib/path";
 
 interface SpriteIconProps {
   sprite?: SpriteConfig;
@@ -45,7 +45,7 @@ export function SpriteIcon({ sprite, size = 20, className = "" }: SpriteIconProp
     canvas.width = displayWidth * dpr;
     canvas.height = displayHeight * dpr;
 
-    const src = getOptimizedImagePath(SPRITE_SHEETS[sprite.sheet]);
+    const src = getAssetPath(SPRITE_SHEETS[sprite.sheet]);
     loadImage(src).then((img) => {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, displayWidth, displayHeight);

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Enemy, EnemyType } from "@/types";
-import { getImageAssetPaths } from "@/lib/path";
+import { getAssetPath } from "@/lib/path";
 import { ENEMY_CARD_STYLES, ENEMY_GLOW_COLOR } from "@/constants/common";
 
 // ============================================================
@@ -24,9 +24,6 @@ function EnemyImage({
 }) {
   const [hasError, setHasError] = useState(false);
   const glowColor = ENEMY_GLOW_COLOR[type];
-  const imagePaths = getImageAssetPaths(
-    `/icons/enemies/${iconPrefix}/${name}.png`,
-  );
 
   if (hasError) {
     return (
@@ -46,23 +43,12 @@ function EnemyImage({
         className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] ${glowColor} to-transparent opacity-40`}
       />
       <Image
-        src={imagePaths.src}
+        src={getAssetPath(`/icons/enemies/${iconPrefix}/${name}.png`)}
         alt={name}
         width={256}
         height={256}
         className="not-prose h-full w-full object-cover"
-        onError={(event) => {
-          if (
-            imagePaths.fallbackSrc &&
-            event.currentTarget.dataset.fallbackApplied !== "true"
-          ) {
-            event.currentTarget.dataset.fallbackApplied = "true";
-            event.currentTarget.srcset = "";
-            event.currentTarget.src = imagePaths.fallbackSrc;
-            return;
-          }
-          setHasError(true);
-        }}
+        onError={() => setHasError(true)}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { readMDXFile } from "@/lib/content-loader";
+import matter from "gray-matter";
 import type {
   Weapon,
   WeaponDamage,
@@ -342,7 +342,8 @@ export async function getAllWeapons(): Promise<Weapon[]> {
   return files
     .map((file) => {
       const filePath = path.join(WEAPONS_DIR, file);
-      const { metadata: data } = readMDXFile(filePath);
+      const content = fs.readFileSync(filePath, "utf-8");
+      const { data } = matter(content);
       const slug = file.replace(/\.mdx$/, "");
 
       return transformWeapon(data, slug);
@@ -361,7 +362,8 @@ export async function getAllTDWeapons(): Promise<Weapon[]> {
   return files
     .map((file) => {
       const filePath = path.join(TD_WEAPONS_DIR, file);
-      const { metadata: data } = readMDXFile(filePath);
+      const content = fs.readFileSync(filePath, "utf-8");
+      const { data } = matter(content);
       const slug = file.replace(/\.mdx$/, "");
       return transformWeapon(data, slug);
     })
@@ -380,7 +382,8 @@ export async function getWeaponBySlug(slug: string): Promise<Weapon | null> {
     return null;
   }
 
-  const { metadata: data } = readMDXFile(filePath);
+  const content = fs.readFileSync(filePath, "utf-8");
+  const { data } = matter(content);
 
   return transformWeapon(data, decodedSlug);
 }
@@ -393,7 +396,8 @@ export async function getTDWeaponBySlug(slug: string): Promise<Weapon | null> {
     return null;
   }
 
-  const { metadata: data } = readMDXFile(filePath);
+  const content = fs.readFileSync(filePath, "utf-8");
+  const { data } = matter(content);
 
   return transformWeapon(data, decodedSlug);
 }

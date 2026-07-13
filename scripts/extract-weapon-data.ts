@@ -139,7 +139,6 @@ interface RawASC {
 
 interface RawFeel {
   WeaponChangeClipTimeBase: number;
-  WeaponChangeClipEndToFireTime: number;
 }
 
 interface RawNumerical {

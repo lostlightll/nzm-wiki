@@ -1,12 +1,5 @@
 import { getAllTraps } from "@/lib/traps";
 import TrapsClient from "./client";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "陷阱图鉴",
-  description: "逆战未来塔防陷阱属性与升级数据资料",
-  alternates: { canonical: "/traps" },
-};
 
 export default async function TrapsPage() {
   const traps = await getAllTraps();

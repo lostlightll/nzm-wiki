@@ -3,9 +3,6 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { Search, FileText, ArrowRight } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
-import { useDialogFocus } from "@/components/useDialogFocus";
-
-const OPEN_SEARCH_EVENT = "nzm:open-search";
 
 interface SearchItem {
   title: string;
@@ -65,26 +62,11 @@ export function SearchPalette() {
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
-  const dialogRef = useRef<HTMLDivElement>(null);
-
-  const closePalette = useCallback(() => setIsOpen(false), []);
-  const openPalette = useCallback(() => {
-    setQuery("");
-    setSelectedIndex(0);
-    setIsLoading(searchData.length === 0);
-    setIsOpen(true);
-  }, [searchData.length]);
-
-  useDialogFocus({
-    isOpen,
-    containerRef: dialogRef,
-    initialFocusRef: inputRef,
-    onClose: closePalette,
-  });
 
   // 加载搜索数据
   useEffect(() => {
-    if (isOpen && isLoading && searchData.length === 0) {
+    if (isOpen && searchData.length === 0) {
+      setIsLoading(true);
       fetch(getAssetPath("/search-index.json"))
         .then((res) => res.json())
         .then((data) => {
@@ -96,7 +78,7 @@ export function SearchPalette() {
           setIsLoading(false);
         });
     }
-  }, [isLoading, isOpen, searchData.length]);
+  }, [isOpen, searchData.length]);
 
   // 过滤结果
   const filteredItems = useMemo(() => {
@@ -144,18 +126,27 @@ export function SearchPalette() {
       // Ctrl+P 或 Cmd+P（不带 Shift）
       if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === "p") {
         e.preventDefault();
-        if (isOpen) closePalette();
-        else openPalette();
+        setIsOpen((prev) => !prev);
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
-    window.addEventListener(OPEN_SEARCH_EVENT, openPalette);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener(OPEN_SEARCH_EVENT, openPalette);
-    };
-  }, [closePalette, isOpen, openPalette]);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // 打开时聚焦
+  useEffect(() => {
+    if (isOpen) {
+      setQuery("");
+      setSelectedIndex(0);
+      setTimeout(() => inputRef.current?.focus(), 50);
+    }
+  }, [isOpen]);
+
+  // 选中项变化时重置
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [query]);
 
   // 滚动到选中项
   useEffect(() => {
@@ -170,9 +161,9 @@ export function SearchPalette() {
   }, [selectedIndex, flatItems.length]);
 
   const navigateTo = useCallback((item: SearchItem) => {
-    closePalette();
+    setIsOpen(false);
     window.location.href = getAssetPath(item.path);
-  }, [closePalette]);
+  }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     switch (e.key) {
@@ -192,7 +183,7 @@ export function SearchPalette() {
         break;
       case "Escape":
         e.preventDefault();
-        closePalette();
+        setIsOpen(false);
         break;
     }
   };
@@ -204,23 +195,13 @@ export function SearchPalette() {
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh]">
       {/* 背景遮罩 */}
-      <button
-        type="button"
-        aria-label="关闭搜索"
+      <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-200"
-        onClick={closePalette}
+        onClick={() => setIsOpen(false)}
       />
 
       {/* 搜索面板 */}
-      <div
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="search-dialog-title"
-        tabIndex={-1}
-        className="relative mx-4 w-full max-w-xl overflow-hidden rounded-xl bg-zinc-900 shadow-2xl ring-1 ring-zinc-700 animate-in fade-in slide-in-from-top-4 duration-200"
-      >
-        <h2 id="search-dialog-title" className="sr-only">全局搜索</h2>
+      <div className="relative w-full max-w-xl mx-4 overflow-hidden rounded-xl bg-zinc-900 shadow-2xl ring-1 ring-zinc-700 animate-in fade-in slide-in-from-top-4 duration-200">
         {/* 搜索框 */}
         <div className="flex items-center gap-3 border-b border-zinc-800 px-4 py-3">
           <Search className="h-5 w-5 text-zinc-500" />
@@ -228,19 +209,10 @@ export function SearchPalette() {
             ref={inputRef}
             type="text"
             value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setSelectedIndex(0);
-            }}
+            onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="搜索页面..."
-            role="combobox"
-            aria-autocomplete="list"
-            aria-controls="search-results"
-            aria-expanded="true"
-            aria-activedescendant={flatItems[selectedIndex] ? `search-option-${selectedIndex}` : undefined}
-            aria-label="搜索页面"
-            className="flex-1 bg-transparent text-base text-zinc-200 outline-none placeholder:text-zinc-500 sm:text-sm"
+            className="flex-1 bg-transparent text-sm text-zinc-200 outline-none placeholder:text-zinc-600"
             autoComplete="off"
             spellCheck={false}
           />
@@ -250,7 +222,7 @@ export function SearchPalette() {
         </div>
 
         {/* 搜索结果 */}
-        <div id="search-results" ref={listRef} role="listbox" aria-label="搜索结果" className="max-h-96 overflow-y-auto p-2">
+        <div ref={listRef} className="max-h-96 overflow-y-auto p-2">
           {isLoading ? (
             <div className="px-3 py-8 text-center text-sm text-zinc-500">
               加载中...
@@ -270,13 +242,9 @@ export function SearchPalette() {
                   return (
                     <button
                       key={item.slug}
-                      id={`search-option-${index}`}
-                      type="button"
-                      role="option"
-                      aria-selected={index === selectedIndex}
                       data-index={index}
                       onClick={() => navigateTo(item)}
-                      className={`flex min-h-11 w-full items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors ${
+                      className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors ${
                         index === selectedIndex
                           ? "bg-zinc-800 text-white"
                           : "text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200"

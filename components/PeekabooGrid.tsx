@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { getAssetPath } from "@/lib/path";
 import { ImageViewer } from "./ImageViewer";
 
@@ -36,14 +35,12 @@ export function PeekabooGrid() {
     <>
       <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2 p-4 rounded-lg border border-zinc-700">
         {images.map((image, index) => (
-          <button
-            type="button"
+          <div
             key={imageIds[index]}
-            aria-label={`查看${image.alt}`}
-            className="group flex min-h-11 min-w-11 flex-col items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+            className="flex flex-col items-center cursor-pointer group"
             onClick={() => handleImageClick(index)}
           >
-            <Image
+            <img
               src={getAssetPath(image.src)}
               alt={image.alt}
               width={512}
@@ -52,7 +49,7 @@ export function PeekabooGrid() {
             />
             {/* 我决定不显示 caption */}
             {/* <span className="text-xs text-zinc-500 mt-1">{imageIds[index]}</span> */}
-          </button>
+          </div>
         ))}
       </div>
 

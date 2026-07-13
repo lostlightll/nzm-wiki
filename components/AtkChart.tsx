@@ -1,6 +1,5 @@
 "use client";
 
-import { useId, useSyncExternalStore } from "react";
 import {
   AreaChart,
   Area,
@@ -50,12 +49,6 @@ const chartData = RAW_DATA.map((d) => ({
   level: d.level,
 }));
 
-const subscribe = () => () => {};
-
-function useHasMounted(): boolean {
-  return useSyncExternalStore(subscribe, () => true, () => false);
-}
-
 function formatGold(value: number): string {
   if (value === 0) return "0";
   if (value >= 10000) return `${(value / 10000).toFixed(value % 10000 === 0 ? 0 : 1)}w`;
@@ -81,26 +74,10 @@ function CustomTooltip({ active, payload }: TooltipContentProps<number, string>)
 }
 
 export function AtkChart() {
-  const titleId = useId();
-  const summaryId = useId();
-  const hasMounted = useHasMounted();
-
   return (
-    <figure
-      className="not-prose my-6 w-full rounded-lg border border-zinc-700/50 p-3 sm:p-4"
-      aria-labelledby={titleId}
-      aria-describedby={summaryId}
-    >
-      <figcaption id={titleId} className="mb-2 font-medium text-zinc-200">
-        攻击力升级成本曲线
-      </figcaption>
-      <p id={summaryId} className="mb-3 text-sm text-zinc-300">
-        攻击力从 1 倍提升到 16 倍，累计需要 322,700 金币；27 级后成本增长明显加快。
-      </p>
-      <div className="h-64 sm:h-72" aria-hidden="true">
-        {hasMounted ? (
-          <ResponsiveContainer width="100%" height="100%" minWidth={0}>
-          <AreaChart data={chartData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+    <div className="not-prose my-6 h-72 w-full rounded-xl border border-zinc-700/50 p-3 sm:h-80 sm:p-4">
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart data={chartData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="atkGradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.3} />
@@ -139,35 +116,8 @@ export function AtkChart() {
             dot={false}
             activeDot={{ r: 4, fill: "#3b82f6", stroke: "#1d4ed8", strokeWidth: 2 }}
           />
-          </AreaChart>
-          </ResponsiveContainer>
-        ) : null}
-      </div>
-      <details className="mt-3 text-sm text-zinc-300">
-        <summary className="min-h-11 cursor-pointer py-2 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
-          查看完整升级数据
-        </summary>
-        <div className="max-h-72 overflow-auto rounded border border-zinc-700">
-          <table className="w-full border-collapse text-left text-sm">
-            <thead className="sticky top-0 bg-zinc-900 text-zinc-200">
-              <tr>
-                <th scope="col" className="px-3 py-2">等级</th>
-                <th scope="col" className="px-3 py-2">攻击力</th>
-                <th scope="col" className="px-3 py-2">累计金币</th>
-              </tr>
-            </thead>
-            <tbody>
-              {chartData.map((point) => (
-                <tr key={point.level} className="border-t border-zinc-800">
-                  <th scope="row" className="px-3 py-2 font-normal">{point.level}</th>
-                  <td className="px-3 py-2 tabular-nums">{point.atk}x</td>
-                  <td className="px-3 py-2 tabular-nums">{point.cost.toLocaleString()}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </details>
-    </figure>
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
   );
 }

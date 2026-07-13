@@ -1,6 +1,7 @@
 import {
   TEXT_COLORS,
   HIGHLIGHT_COLORS,
+  type TextColor,
   type HighlightColor,
 } from "@/constants/colors";
 

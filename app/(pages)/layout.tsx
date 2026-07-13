@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { Search, Command, Menu, X, Github } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -29,29 +28,6 @@ function triggerShortcut(key: string, ctrlKey = true, shiftKey = false) {
 
 function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!mobileMenuOpen) return;
-    const frame = window.requestAnimationFrame(() => {
-      mobileMenuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
-    });
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMobileMenuOpen(false);
-        window.requestAnimationFrame(() => menuButtonRef.current?.focus());
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.cancelAnimationFrame(frame);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [mobileMenuOpen]);
-
-  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <nav className="sticky top-0 z-50 border-b border-zinc-700 bg-background/95 backdrop-blur">
@@ -65,17 +41,12 @@ function NavBar() {
             逆战未来 维基
           </Link>
           {/* 桌面端导航链接 */}
-          <div className="hidden gap-1 md:flex">
+          <div className="hidden md:flex gap-4">
             {NAV_ITEMS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                aria-current={isActive(href) ? "page" : undefined}
-                className={`flex min-h-11 items-center rounded-lg px-3 text-sm transition-colors ${
-                  isActive(href)
-                    ? "bg-zinc-800 text-white"
-                    : "text-zinc-300 hover:bg-zinc-800/60 hover:text-white"
-                }`}
+                className="text-sm text-zinc-400 hover:text-white transition-colors"
               >
                 {label}
               </Link>
@@ -87,10 +58,8 @@ function NavBar() {
         <div className="flex items-center gap-1">
           {/* 搜索按钮 */}
           <button
-            type="button"
             onClick={() => triggerShortcut("p", true, false)}
-            aria-label="搜索本站"
-            className="flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-lg px-3 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
+            className="flex items-center gap-2 rounded-lg px-3 py-2 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
             title="搜索 (Ctrl+P)"
           >
             <Search className="h-4 w-4" />
@@ -102,10 +71,8 @@ function NavBar() {
 
           {/* 命令面板按钮 */}
           <button
-            type="button"
             onClick={() => triggerShortcut("p", true, true)}
-            aria-label="打开命令面板"
-            className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
+            className="flex items-center justify-center rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
             title="命令面板 (Ctrl+Shift+P)"
           >
             <Command className="h-4 w-4" />
@@ -116,8 +83,7 @@ function NavBar() {
             href={GITHUB_REPO}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="打开 GitHub 仓库"
-            className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
+            className="flex items-center justify-center rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
             title="GitHub"
           >
             <Github className="h-4 w-4" />
@@ -125,13 +91,8 @@ function NavBar() {
 
           {/* 移动端菜单按钮 */}
           <button
-            ref={menuButtonRef}
-            type="button"
-            onClick={() => setMobileMenuOpen((open) => !open)}
-            aria-label={mobileMenuOpen ? "关闭导航菜单" : "打开导航菜单"}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-navigation"
-            className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors md:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="flex md:hidden items-center justify-center rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
             title="菜单"
           >
             {mobileMenuOpen ? (
@@ -145,15 +106,14 @@ function NavBar() {
 
       {/* 移动端下拉菜单 */}
       {mobileMenuOpen && (
-        <div ref={mobileMenuRef} id="mobile-navigation" className="border-t border-zinc-800 bg-background/95 backdrop-blur md:hidden">
+        <div className="md:hidden border-t border-zinc-800 bg-background/95 backdrop-blur">
           <div className="px-4 py-2 space-y-1">
             {NAV_ITEMS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
                 onClick={() => setMobileMenuOpen(false)}
-                aria-current={isActive(href) ? "page" : undefined}
-                className={`flex min-h-11 items-center rounded-lg px-3 text-sm transition-colors ${isActive(href) ? "bg-zinc-800 text-white" : "text-zinc-300 hover:bg-zinc-800 hover:text-white"}`}
+                className="block rounded-lg px-3 py-2 text-sm text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors"
               >
                 {label}
               </Link>
@@ -171,10 +131,9 @@ export default function PagesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-dvh bg-background">
-      <a href="#main-content" className="skip-link">跳到主要内容</a>
+    <div className="min-h-screen bg-background">
       <NavBar />
-      <main id="main-content" tabIndex={-1} className="mx-auto max-w-7xl px-4 pb-20 pt-8 xl:pb-8">{children}</main>
+      <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
     </div>
   );
 }
