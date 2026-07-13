@@ -30,6 +30,25 @@ export const WEAPON_TYPES: { type: WeaponType; icon: string; sprite: SpriteConfi
   { type: "激光武器", icon: "", sprite: WEAPON_TYPE_SPRITES["激光武器"] },
 ];
 
+// 游戏 WeaponType 枚举值。插件 frontmatter 直接保存这些 ID。
+export const WEAPON_TYPE_ID_MAP: Partial<Record<number, WeaponType>> = {
+  1: "突击步枪",
+  2: "狙击步枪",
+  3: "霰弹枪",
+  4: "火箭发射器",
+  5: "冲锋枪",
+  6: "机枪",
+  7: "手枪",
+  8: "单发榴弹",
+  9: "激光武器",
+  12: "弓箭",
+  13: "近战武器",
+  14: "射手步枪",
+  15: "喷射器",
+  16: "连发榴弹",
+  19: "暗器",
+};
+
 export const ELEMENT_TYPES: { type: keyof typeof ELEMENT_COLORS; iconSrc: string; color: string }[] = [
   { type: "火焰", iconSrc: "/icons/elements/fire.png", color: ELEMENT_COLORS["火焰"] },
   { type: "寒冷", iconSrc: "/icons/elements/cryo.png", color: ELEMENT_COLORS["寒冷"] },

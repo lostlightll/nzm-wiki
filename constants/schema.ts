@@ -165,6 +165,7 @@ export const PERK_FIELD_ORDER = [
   "rarity",
   "icon",
   "weaponType",
+  "weaponNames",
   "description",
 ];
 
