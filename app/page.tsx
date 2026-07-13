@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
 
-const GITHUB_UPSTREAM = "https://github.com/qiekn/nzm-wiki";
 const GITHUB_FORK = "https://github.com/lostlightll/nzm-wiki";
 
 interface NavCardProps {
@@ -104,7 +103,7 @@ export default function Home() {
         </p>
         <div className="mt-4 flex items-center justify-center gap-4 border-t border-zinc-700/70 pt-3 text-xs text-zinc-400">
           <a
-            href={GITHUB_UPSTREAM}
+            href={GITHUB_FORK}
             target="_blank"
             rel="noopener noreferrer"
             className="transition-colors hover:text-zinc-100"
