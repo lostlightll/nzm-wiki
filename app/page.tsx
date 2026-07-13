@@ -1,9 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Sword, Zap, Target, Skull, Github } from "lucide-react";
+import {
+  ArrowUpRight,
+  GitBranch,
+  Search,
+  Skull,
+  Sword,
+  Target,
+  Terminal,
+  Zap,
+} from "lucide-react";
 import { getAssetPath } from "@/lib/path";
 
-const GITHUB_UPSTREAM = "https://github.com/qiekn/nzm-wiki";
 const GITHUB_FORK = "https://github.com/lostlightll/nzm-wiki";
 
 interface NavCardProps {
@@ -23,7 +31,7 @@ function NavCard({ href, icon, title }: NavCardProps) {
   return (
     <Link
       href={href}
-      className="home-nav-card group flex flex-col items-center justify-center rounded-xl border border-zinc-700 bg-zinc-800/50 p-4 transition-[transform,border-color,background-color,box-shadow] duration-200 hover:scale-[1.02] hover:border-zinc-500 hover:bg-zinc-700/50 active:scale-[0.98]"
+      className="home-nav-card group flex flex-col items-center justify-center rounded-xl border border-zinc-600/90 bg-zinc-800/50 p-4 transition-[transform,border-color,background-color,box-shadow] duration-200 hover:scale-[1.02] hover:border-zinc-400/80 hover:bg-zinc-700/50 active:scale-[0.98]"
     >
       <span className="relative z-10 text-zinc-400 transition-colors group-hover:text-white">{icon}</span>
       <span className="relative z-10 mt-2 text-base font-medium text-white sm:text-lg">{title}</span>
@@ -33,21 +41,24 @@ function NavCard({ href, icon, title }: NavCardProps) {
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-8">
+    <main className="home-page flex min-h-screen flex-col items-center justify-center bg-background px-4 py-8">
       {/* Logo 和标题 */}
-      <div className="flex flex-col items-center mb-8">
+      <div className="mb-8 flex flex-col items-center text-center">
         <Image
           src={getAssetPath("/logo.png")}
           alt="逆战未来 维基"
           width={180}
           height={180}
-          className="mb-5 sm:mb-6"
+          className="mb-4 sm:mb-5"
           style={{ width: "clamp(130px, 28vw, 180px)", height: "auto" }}
           priority
         />
-        <h1 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+        <h1 className="text-2xl font-bold tracking-normal text-zinc-100 sm:text-4xl">
           逆战未来 维基
         </h1>
+        <p className="mt-2 text-sm text-zinc-400 sm:text-base">
+          武器、插件、塔防陷阱与敌人资料库
+        </p>
       </div>
 
       {/* 导航卡片网格 */}
@@ -64,59 +75,69 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 致谢 */}
-      <div className="mt-5 flex items-center justify-center w-full max-w-md">
-        <Link
-          href="/credits"
-          className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
-        >
-          致谢名单
-        </Link>
-      </div>
-
-      {/* Fork 声明 */}
-      <div className="mt-3 px-5 py-4 rounded-xl border border-zinc-800 bg-zinc-800/30 max-w-md">
-        <p className="text-sm text-zinc-300 leading-relaxed">
-          本站 Fork 自{" "}
-          <a
-            href={GITHUB_UPSTREAM}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-zinc-200 hover:text-white underline underline-offset-2 transition-colors font-medium"
-          >
-            qiekn/nzm-wiki
-          </a>
-          。
-        </p>
-        <p className="mt-2 text-xs text-zinc-500 leading-relaxed">
-          原站武器伤害机制信息不够准确，且原作者较少维护，于是决定创建此站
-        </p>
-        <p className="mt-3 text-xs text-zinc-600 leading-relaxed">
+      {/* 社区维护信息 */}
+      <section className="home-community mt-5 w-full max-w-[26rem] rounded-xl border border-zinc-700/90 bg-zinc-900/60 px-5 py-4">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex min-w-0 items-start gap-3">
+            <GitBranch aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-zinc-400" />
+            <div>
+              <h2 className="text-sm font-semibold text-zinc-100">社区维护项目</h2>
+              <p className="mt-0.5 text-xs text-zinc-400">
+                基于 qiekn/nzm-wiki 构建
+              </p>
+            </div>
+          </div>
           <a
             href={GITHUB_FORK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-zinc-500 hover:text-zinc-300 transition-colors"
+            className="inline-flex shrink-0 items-center gap-1 text-xs text-zinc-400 transition-colors hover:text-zinc-100"
           >
-            <Github className="h-3 w-3" />
-            查看 Fork 仓库
+            查看仓库
+            <ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" />
           </a>
-          {" · "}
-          继续完善中，欢迎反馈
+        </div>
+        <div className="my-4 h-px bg-zinc-700/70" />
+        <p className="text-sm leading-relaxed text-zinc-300">
+          原项目的武器与怪物资料可能不完整，本站将继续补充与维护，欢迎反馈。
         </p>
-      </div>
+        <div className="mt-4 flex items-center justify-center gap-4 border-t border-zinc-700/70 pt-3 text-xs text-zinc-400">
+          <a
+            href={GITHUB_FORK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-zinc-100"
+          >
+            项目说明
+          </a>
+          <Link href="/credits" className="transition-colors hover:text-zinc-100">
+            致谢名单
+          </Link>
+          <a
+            href={`${GITHUB_FORK}/issues`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-zinc-100"
+          >
+            问题反馈
+          </a>
+        </div>
+      </section>
 
       {/* 快捷键提示 */}
-      <div className="mt-6 hidden sm:flex flex-wrap justify-center gap-4 text-xs text-zinc-500">
-        <span className="flex items-center gap-1">
-          <kbd className="rounded bg-zinc-800 px-1.5 py-0.5">Ctrl+P</kbd>
-          <span>搜索</span>
+      <div className="home-shortcuts mt-6 hidden items-center justify-center gap-4 rounded-xl border border-zinc-700/80 bg-zinc-900/60 px-5 py-3 text-xs text-zinc-400 sm:flex">
+        <span className="flex items-center gap-2">
+          <Search aria-hidden="true" className="h-4 w-4" />
+          <span>搜索资料</span>
+          <kbd className="rounded border border-zinc-600 bg-zinc-800 px-1.5 py-0.5 font-mono text-zinc-300">Ctrl P</kbd>
         </span>
-        <span className="flex items-center gap-1">
-          <kbd className="rounded bg-zinc-800 px-1.5 py-0.5">Ctrl+Shift+P</kbd>
+        <span aria-hidden="true" className="h-5 w-px bg-zinc-700" />
+        <span className="flex items-center gap-2">
+          <Terminal aria-hidden="true" className="h-4 w-4" />
           <span>命令面板</span>
+          <kbd className="rounded border border-zinc-600 bg-zinc-800 px-1.5 py-0.5 font-mono text-zinc-300">Ctrl Shift P</kbd>
         </span>
       </div>
-    </div>
+    </main>
   );
 }
