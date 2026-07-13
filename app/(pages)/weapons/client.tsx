@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Weapon, WeaponType, ElementType, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
 import { WeaponCard } from "@/components/WeaponCard";
+import { WeaponMasonry } from "@/components/WeaponMasonry";
 import {
   WEAPON_TYPES,
   ELEMENT_TYPES,
@@ -13,6 +14,41 @@ import {
   WEAPON_SLOTS,
   type WeaponSlot,
 } from "@/constants/weapons";
+
+const DETAIL_COLUMN_QUERIES = [
+  { query: "(min-width: 1280px)", columns: 3 },
+  { query: "(min-width: 768px)", columns: 2 },
+] as const;
+
+const DEFAULT_WEAPON_SLOTS: WeaponSlot[] = ["主武器"];
+const DEFAULT_RARITIES: Rarity[] = ["传说"];
+
+function subscribeDetailColumns(onStoreChange: () => void) {
+  const mediaQueries = DETAIL_COLUMN_QUERIES.map(({ query }) =>
+    window.matchMedia(query),
+  );
+
+  mediaQueries.forEach((mediaQuery) =>
+    mediaQuery.addEventListener("change", onStoreChange),
+  );
+
+  return () => {
+    mediaQueries.forEach((mediaQuery) =>
+      mediaQuery.removeEventListener("change", onStoreChange),
+    );
+  };
+}
+
+function getDetailColumnCount() {
+  return (
+    DETAIL_COLUMN_QUERIES.find(({ query }) => window.matchMedia(query).matches)
+      ?.columns ?? 1
+  );
+}
+
+function getServerDetailColumnCount() {
+  return 1;
+}
 
 export default function WeaponsClient({
   weapons,
@@ -27,10 +63,15 @@ export default function WeaponsClient({
   const isTD = mode === "td";
 
   const [showDetails, setShowDetails] = useState(true);
-  const slotState = useSelection<WeaponSlot>("slot", ["主武器"]);
+  const detailColumnCount = useSyncExternalStore(
+    subscribeDetailColumns,
+    getDetailColumnCount,
+    getServerDetailColumnCount,
+  );
+  const slotState = useSelection<WeaponSlot>("slot", DEFAULT_WEAPON_SLOTS);
   const typeState = useSelection<WeaponType>("type");
   const elementState = useSelection<ElementType>("element");
-  const rarityState = useSelection<Rarity>("rarity", ["传说"]);
+  const rarityState = useSelection<Rarity>("rarity", DEFAULT_RARITIES);
 
   const hasFilter =
     slotState.selected.size > 0 ||
@@ -55,21 +96,34 @@ export default function WeaponsClient({
     router.push(`?${params.toString()}`, { scroll: false });
   };
 
-  const filteredWeapons = (isTD ? tdWeapons : weapons).filter((weapon) => {
-    const slotMatch =
-      slotState.selected.size === 0 ||
-      (weapon.use_type && slotState.selected.has(weapon.use_type as WeaponSlot));
-    const typeMatch =
-      typeState.selected.size === 0 ||
-      (weapon.weapon_type && typeState.selected.has(weapon.weapon_type));
-    const elementMatch =
-      elementState.selected.size === 0 ||
-      elementState.selected.has(weapon.damageModes[0]?.element);
-    const rarityMatch =
-      rarityState.selected.size === 0 ||
-      (weapon.rarity && rarityState.selected.has(weapon.rarity));
-    return slotMatch && typeMatch && elementMatch && rarityMatch;
-  });
+  const filteredWeapons = useMemo(
+    () =>
+      (isTD ? tdWeapons : weapons).filter((weapon) => {
+        const slotMatch =
+          slotState.selected.size === 0 ||
+          (weapon.use_type &&
+            slotState.selected.has(weapon.use_type as WeaponSlot));
+        const typeMatch =
+          typeState.selected.size === 0 ||
+          (weapon.weapon_type && typeState.selected.has(weapon.weapon_type));
+        const elementMatch =
+          elementState.selected.size === 0 ||
+          elementState.selected.has(weapon.damageModes[0]?.element);
+        const rarityMatch =
+          rarityState.selected.size === 0 ||
+          (weapon.rarity && rarityState.selected.has(weapon.rarity));
+        return slotMatch && typeMatch && elementMatch && rarityMatch;
+      }),
+    [
+      elementState.selected,
+      isTD,
+      rarityState.selected,
+      slotState.selected,
+      tdWeapons,
+      typeState.selected,
+      weapons,
+    ],
+  );
 
   return (
     <>
@@ -147,11 +201,18 @@ export default function WeaponsClient({
       </p>
 
       {/* 武器列表 */}
-      <div className={`grid gap-5 ${showDetails ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-3" : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"}`}>
-        {filteredWeapons.map((weapon) => (
-          <WeaponCard key={weapon.slug} weapon={weapon} showDetails={showDetails} />
-        ))}
-      </div>
+      {showDetails ? (
+        <WeaponMasonry
+          weapons={filteredWeapons}
+          columnCount={detailColumnCount}
+        />
+      ) : (
+        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+          {filteredWeapons.map((weapon) => (
+            <WeaponCard key={weapon.slug} weapon={weapon} />
+          ))}
+        </div>
+      )}
 
       {filteredWeapons.length === 0 && (
         <div className="py-16 text-center text-zinc-500">
