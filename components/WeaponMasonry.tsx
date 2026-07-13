@@ -16,13 +16,15 @@ interface MasonryLayout {
   height: number;
   positions: Record<string, ItemPosition>;
   ready: boolean;
+  entryId: number;
 }
 
 function layoutsEqual(current: MasonryLayout, next: MasonryLayout) {
   if (
     !current.ready ||
     current.columns !== next.columns ||
-    current.height !== next.height
+    current.height !== next.height ||
+    current.entryId !== next.entryId
   ) {
     return false;
   }
@@ -56,7 +58,10 @@ export function WeaponMasonry({
     height: 0,
     positions: {},
     ready: false,
+    entryId: 0,
   });
+  const [positionAnimationEntryId, setPositionAnimationEntryId] = useState<number | null>(null);
+  const layoutGenerationRef = useRef(0);
 
   const setItemRef = useCallback((slug: string, element: HTMLDivElement | null) => {
     if (element) {
@@ -78,6 +83,7 @@ export function WeaponMasonry({
     if (!container) return;
 
     let animationFrame = 0;
+    const entryId = ++layoutGenerationRef.current;
 
     const updateLayout = () => {
       cancelAnimationFrame(animationFrame);
@@ -105,6 +111,7 @@ export function WeaponMasonry({
           height: Math.max(0, ...columnHeights) - (weapons.length ? GAP : 0),
           positions,
           ready: true,
+          entryId,
         };
 
         setLayout((current) =>
@@ -124,12 +131,24 @@ export function WeaponMasonry({
     };
   }, [columnCount, weapons]);
 
+  useEffect(() => {
+    if (!layoutMatchesItems) return;
+
+    const positionAnimationTimer = window.setTimeout(() => {
+      setPositionAnimationEntryId(layout.entryId);
+    }, 300);
+
+    return () => {
+      window.clearTimeout(positionAnimationTimer);
+    };
+  }, [layout.entryId, layoutMatchesItems]);
+
   return (
     <div
       ref={containerRef}
       className={
         layoutMatchesItems
-          ? "relative transition-[height] duration-200 ease-out motion-reduce:transition-none"
+          ? `relative${positionAnimationEntryId === layout.entryId ? " transition-[height] duration-200 ease-out motion-reduce:transition-none" : ""}`
           : "grid grid-cols-1 items-start gap-5 md:grid-cols-2 xl:grid-cols-3"
       }
       style={layoutMatchesItems ? { height: layout.height } : undefined}
@@ -142,7 +161,7 @@ export function WeaponMasonry({
             ref={(element) => setItemRef(weapon.slug, element)}
             className={
               layoutMatchesItems
-                ? "absolute left-0 top-0 transition-transform duration-200 ease-out motion-reduce:transition-none"
+                ? `absolute left-0 top-0${positionAnimationEntryId === layout.entryId ? " transition-transform duration-200 ease-out motion-reduce:transition-none" : ""}`
                 : "min-w-0"
             }
             style={
