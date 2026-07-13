@@ -1,7 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Sword, Zap, Target, Skull, Github } from "lucide-react";
-import { getAssetPath } from "@/lib/path";
+import { getOptimizedImagePath } from "@/lib/path";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const GITHUB_UPSTREAM = "https://github.com/qiekn/nzm-wiki";
 const GITHUB_FORK = "https://github.com/lostlightll/nzm-wiki";
@@ -37,7 +42,7 @@ export default function Home() {
       {/* Logo 和标题 */}
       <div className="flex flex-col items-center mb-8">
         <Image
-          src={getAssetPath("/logo.png")}
+          src={getOptimizedImagePath("/logo.png")}
           alt="逆战未来 维基"
           width={180}
           height={180}

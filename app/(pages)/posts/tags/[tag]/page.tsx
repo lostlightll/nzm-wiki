@@ -1,6 +1,7 @@
 import { getMDXList } from "@/lib/mdx";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
 
 interface Post {
   slug: string;
@@ -23,6 +24,20 @@ export async function generateStaticParams() {
   const posts = getMDXList("posts") as Post[];
   const tags = getAllTags(posts);
   return tags.map((tag) => ({ tag }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ tag: string }>;
+}): Promise<Metadata> {
+  const { tag } = await params;
+  const decodedTag = decodeURIComponent(tag);
+  return {
+    title: `${decodedTag}文章`,
+    description: `逆战未来${decodedTag}相关攻略文章`,
+    alternates: { canonical: `/posts/tags/${encodeURIComponent(decodedTag)}` },
+  };
 }
 
 export default async function TagPage({

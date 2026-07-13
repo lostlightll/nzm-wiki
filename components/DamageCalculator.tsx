@@ -5,6 +5,7 @@ import {
   useMemo,
   useCallback,
   useEffect,
+  useId,
   useRef,
   type ReactNode,
 } from "react";
@@ -12,7 +13,6 @@ import { getAssetPath } from "@/lib/path";
 import { RARITY_OPTIONS } from "@/constants/common";
 import { STAT_SPRITES } from "@/constants/sprites";
 import { SpriteIcon } from "@/components/SpriteIcon";
-import type { Rarity } from "@/types";
 
 /**
  * 解析乘区表达式
@@ -373,12 +373,13 @@ export function DamageCalculator() {
                 autoFocus
               />
             ) : (
-              <span
-                className="cursor-pointer hover:text-zinc-300"
+              <button
+                type="button"
+                className="min-h-11 rounded px-2 text-left hover:bg-zinc-700/50 hover:text-zinc-200"
                 onClick={() => setEditingPerkLabel(true)}
               >
                 {perkLabel || "插件乘区"}
-              </span>
+              </button>
             )
           }
           value={perkExpr}
@@ -405,12 +406,13 @@ export function DamageCalculator() {
                 autoFocus
               />
             ) : (
-              <span
-                className="cursor-pointer hover:text-zinc-300"
+              <button
+                type="button"
+                className="min-h-11 rounded px-2 text-left hover:bg-zinc-700/50 hover:text-zinc-200"
                 onClick={() => setEditingSectionName(true)}
               >
                 {extraSectionName || "额外乘区"}
-              </span>
+              </button>
             )}
           </div>
           {extraValues.map((e) => (
@@ -434,7 +436,8 @@ export function DamageCalculator() {
               </div>
               <button
                 type="button"
-                className="mb-0.5 flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-md border border-zinc-600/80 bg-zinc-800 text-sm text-zinc-400 transition-colors hover:border-red-500/50 hover:bg-red-950/30 hover:text-red-400"
+                aria-label={`删除${e.name || "额外乘区"}`}
+                className="flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md border border-zinc-600/80 bg-zinc-800 text-sm text-zinc-300 transition-colors hover:border-red-500/50 hover:bg-red-950/30 hover:text-red-400"
                 onClick={() => removeExtra(e.id)}
               >
                 ×
@@ -446,7 +449,7 @@ export function DamageCalculator() {
 
       <button
         type="button"
-        className="mt-3 rounded-md border border-dashed border-zinc-600/80 bg-zinc-800/50 px-3 py-1.5 text-xs text-zinc-400 transition-colors hover:border-zinc-500 hover:text-zinc-300"
+        className="mt-3 min-h-11 rounded-md border border-dashed border-zinc-600/80 bg-zinc-800/50 px-3 text-sm text-zinc-300 transition-colors hover:border-zinc-500 hover:text-white"
         onClick={addExtra}
       >
         + 添加乘区
@@ -521,6 +524,7 @@ function InputField({
   decimals?: number;
 }) {
   const [draft, setDraft] = useState<string | null>(null);
+  const inputId = useId();
 
   const commit = useCallback(() => {
     if (draft === null) return;
@@ -536,12 +540,15 @@ function InputField({
 
   return (
     <div>
-      <label className="mb-1.5 block text-xs text-zinc-400">{label}</label>
+      <label htmlFor={inputId} className="mb-1.5 block text-xs text-zinc-400">
+        {label}
+      </label>
       <div className="flex items-center gap-1">
         <div className="relative flex-1">
           <input
+            id={inputId}
             type="number"
-            className="w-full appearance-none rounded-md border border-zinc-600/80 bg-zinc-800 py-1.5 pl-3 pr-7 text-sm tabular-nums text-zinc-100 outline-none transition-colors focus:border-zinc-400 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]"
+            className="min-h-11 w-full appearance-none rounded-md border border-zinc-600/80 bg-zinc-800 py-2 pl-3 pr-7 text-sm tabular-nums text-zinc-100 outline-none transition-colors focus:border-zinc-400 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [-moz-appearance:textfield]"
             value={display}
             onChange={(e) => setDraft(e.target.value)}
             onBlur={commit}
@@ -558,10 +565,11 @@ function InputField({
             </span>
           )}
         </div>
-        <div className="flex shrink-0 flex-col overflow-hidden rounded border border-zinc-600/80">
+        <div className="flex shrink-0 overflow-hidden rounded border border-zinc-600/80">
           <button
             type="button"
-            className="flex h-[14px] w-5 items-center justify-center bg-zinc-800 text-[10px] leading-none text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-zinc-200 active:bg-zinc-600"
+            aria-label="增加数值"
+            className="flex min-h-11 min-w-11 items-center justify-center bg-zinc-800 text-sm leading-none text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white active:bg-zinc-600"
             onClick={() => {
               const next =
                 decimals !== undefined
@@ -570,12 +578,13 @@ function InputField({
               onChange(Math.min(next, max));
             }}
           >
-            ▲
+            +
           </button>
-          <div className="h-px bg-zinc-600/80" />
+          <div className="w-px bg-zinc-600/80" />
           <button
             type="button"
-            className="flex h-[14px] w-5 items-center justify-center bg-zinc-800 text-[10px] leading-none text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-zinc-200 active:bg-zinc-600"
+            aria-label="减少数值"
+            className="flex min-h-11 min-w-11 items-center justify-center bg-zinc-800 text-sm leading-none text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white active:bg-zinc-600"
             onClick={() => {
               const next =
                 decimals !== undefined
@@ -584,7 +593,7 @@ function InputField({
               onChange(Math.max(next, min));
             }}
           >
-            ▼
+            -
           </button>
         </div>
       </div>
@@ -609,10 +618,11 @@ function CritModeToggle({
         />
         暴击
       </span>
-      <span className="inline-flex overflow-hidden rounded border border-zinc-600/80 text-[10px] leading-none">
+      <span className="inline-flex overflow-hidden rounded border border-zinc-600/80 text-xs leading-none">
         <button
           type="button"
-          className={`px-1.5 py-0.5 transition-colors ${
+          aria-pressed={mode === "detail"}
+          className={`min-h-11 px-2 transition-colors ${
             mode === "detail"
               ? "bg-zinc-700 text-zinc-200"
               : "bg-zinc-800 text-zinc-500 hover:text-zinc-300"
@@ -624,7 +634,8 @@ function CritModeToggle({
         <span className="w-px bg-zinc-600/80" />
         <button
           type="button"
-          className={`px-1.5 py-0.5 transition-colors ${
+          aria-pressed={mode === "direct"}
+          className={`min-h-11 px-2 transition-colors ${
             mode === "direct"
               ? "bg-zinc-700 text-zinc-200"
               : "bg-zinc-800 text-zinc-500 hover:text-zinc-300"
@@ -657,11 +668,6 @@ function WeaponSelect({
     if (!query) return weapons;
     return weapons.filter((w) => matchWeapon(w, query));
   }, [weapons, query]);
-
-  // 重置高亮
-  useEffect(() => {
-    setHighlightIndex(0);
-  }, [filtered]);
 
   // 点击外部关闭
   useEffect(() => {
@@ -718,8 +724,9 @@ function WeaponSelect({
 
   return (
     <div ref={containerRef} className="relative">
-      <label className="mb-1.5 block text-xs text-zinc-400">武器模板</label>
+      <label htmlFor="damage-weapon-template" className="mb-1.5 block text-xs text-zinc-400">武器模板</label>
       <input
+        id="damage-weapon-template"
         ref={inputRef}
         type="text"
         className="w-full rounded-md border border-zinc-600/80 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-100 outline-none transition-colors focus:border-zinc-400"
@@ -727,9 +734,13 @@ function WeaponSelect({
         value={query}
         onChange={(e) => {
           setQuery(e.target.value);
+          setHighlightIndex(0);
           setOpen(true);
         }}
-        onFocus={() => setOpen(true)}
+        onFocus={() => {
+          setHighlightIndex(0);
+          setOpen(true);
+        }}
         onKeyDown={handleKeyDown}
       />
       {open && filtered.length > 0 && (
@@ -797,15 +808,21 @@ function ExprField({
   invalid: boolean;
   parsedHint?: string;
 }) {
+  const inputId = useId();
+
   return (
     <div>
       {label && (
-        <label className="mb-1.5 block text-xs text-zinc-400">{label}</label>
+        <label htmlFor={inputId} className="mb-1.5 block text-xs text-zinc-400">
+          {label}
+        </label>
       )}
       <div className="relative">
         <input
+          id={inputId}
           type="text"
-          className={`w-full rounded-md border bg-zinc-800 px-3 py-1.5 text-sm tabular-nums text-zinc-100 outline-none transition-colors focus:border-zinc-400 ${
+          aria-invalid={invalid}
+          className={`min-h-11 w-full rounded-md border bg-zinc-800 px-3 py-2 text-sm tabular-nums text-zinc-100 outline-none transition-colors focus:border-zinc-400 ${
             invalid ? "border-red-500/60" : "border-zinc-600/80"
           }`}
           value={value}

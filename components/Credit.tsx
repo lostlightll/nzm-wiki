@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { getAssetPath } from "@/lib/path";
+import { getOptimizedImagePath } from "@/lib/path";
 
 type Platform =
   | "bilibili"
@@ -53,7 +53,7 @@ export function Credit({ platform = "link", author, url, title }: CreditProps) {
         >
           {iconPath ? (
             <Image
-              src={getAssetPath(iconPath)}
+              src={getOptimizedImagePath(iconPath)}
               alt={platform}
               width={24}
               height={24}

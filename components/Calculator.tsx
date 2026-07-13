@@ -518,19 +518,24 @@ export function Calculator({
               : "scale-100 opacity-100"
           }`}
         >
-          <div
+          <button
+            type="button"
             onMouseDown={handleIconMouseDown}
             onClick={handleButtonClick}
+            aria-label="打开计算器"
             className={`flex h-12 w-12 items-center justify-center rounded-full bg-zinc-800 text-zinc-300 shadow-lg ring-1 ring-zinc-700 transition-all hover:bg-zinc-700 hover:text-white hover:scale-110 ${isDragging === "icon" ? "cursor-grabbing" : "cursor-grab"}`}
             title="计算器 (Ctrl+Shift+P)"
           >
             <CalculatorIcon className="h-6 w-6 pointer-events-none" />
-          </div>
+          </button>
         </div>
       </div>
 
       {/* 展开的计算器 - 独立定位 */}
       <div
+        role="dialog"
+        aria-label="计算器"
+        aria-modal="false"
         className={`hidden md:flex fixed z-50 flex-col overflow-hidden rounded-lg bg-zinc-900 shadow-2xl ring-1 ring-zinc-700 ${
           isOpen
             ? "scale-100 opacity-100"
@@ -566,15 +571,19 @@ export function Calculator({
           </span>
           <div className="flex gap-1" onMouseDown={(e) => e.stopPropagation()}>
             <button
+              type="button"
               onClick={resetAll}
-              className="rounded p-1 text-zinc-500 hover:bg-zinc-700 hover:text-zinc-300"
+              aria-label="重置计算器"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded text-zinc-300 hover:bg-zinc-700 hover:text-white"
               title="重置 (清屏+清空变量)"
             >
               <Eraser className="h-4 w-4" />
             </button>
             <button
+              type="button"
               onClick={() => setIsOpen(false)}
-              className="rounded p-1 text-zinc-500 hover:bg-zinc-700 hover:text-zinc-300"
+              aria-label="关闭计算器"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded text-zinc-300 hover:bg-zinc-700 hover:text-white"
               title="关闭 (Esc)"
             >
               <X className="h-4 w-4" />
@@ -660,6 +669,7 @@ export function Calculator({
             <input
               ref={inputRef}
               type="text"
+              aria-label="计算表达式"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}

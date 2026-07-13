@@ -1,101 +1,22 @@
-import fs from "fs";
-import path from "path";
-import { execSync } from "child_process";
+import { spawnSync } from "node:child_process";
+import { createRequire } from "node:module";
 
-const APP_DIR = path.join(process.cwd(), "app");
-const NEXT_CACHE_DIR = path.join(process.cwd(), ".next");
+const require = createRequire(import.meta.url);
+const tsxCli = require.resolve("tsx/cli");
+const nextCli = require.resolve("next/dist/bin/next");
 
-const DIRS_TO_HIDE = ["api", "editor"];
-
-interface DirPaths {
-  original: string;
-  hidden: string;
-}
-
-function getPaths(dirName: string): DirPaths {
-  return {
-    original: path.join(APP_DIR, dirName),
-    hidden: path.join(APP_DIR, `_${dirName}_hidden`),
-  };
-}
-
-function moveDirectory(src: string, dest: string): void {
-  if (fs.existsSync(src)) {
-    try {
-      fs.renameSync(src, dest);
-      console.log(
-        `[INFO] Directory moved: ${path.basename(src)} -> ${path.basename(dest)}`,
-      );
-    } catch (err: any) {
-      if (err.code === "EBUSY" || err.code === "EPERM") {
-        console.error(`\n[CRITICAL ERROR] Windows 文件锁定: 无法移动 ${src}`);
-        console.error(
-          "请关闭 IDE (VSCode/Neovim) 或任何占用该文件夹的程序，然后重试。\n",
-        );
-      }
-      throw err;
-    }
-  }
-}
-
-try {
-  console.log("[START] Preparing for static build...");
-
-  // 1. 生成搜索索引和 sitemap
-  console.log("[INDEX] Generating search index...");
-  execSync("pnpm exec tsx scripts/generate-search-index.ts", { stdio: "inherit", shell: true } as any);
-  console.log("[SITEMAP] Generating sitemap...");
-  execSync("pnpm exec tsx scripts/generate-sitemap.ts", { stdio: "inherit", shell: true } as any);
-
-  // 2. 删除 .next 缓存 (必须步骤)
-  if (fs.existsSync(NEXT_CACHE_DIR)) {
-    console.log("[CLEAN] Removing .next cache to prevent stale type errors...");
-    fs.rmSync(NEXT_CACHE_DIR, { recursive: true, force: true });
-  }
-
-  // 3. 隐藏文件夹
-  DIRS_TO_HIDE.forEach((dirName) => {
-    const { original, hidden } = getPaths(dirName);
-    // 清理残留
-    if (fs.existsSync(hidden)) {
-      if (fs.existsSync(original)) {
-        fs.rmSync(hidden, { recursive: true, force: true });
-      } else {
-        fs.renameSync(hidden, original);
-      }
-    }
-    moveDirectory(original, hidden);
+function run(script: string, args: string[] = []): void {
+  const result = spawnSync(process.execPath, [script, ...args], {
+    stdio: "inherit",
+    env: process.env,
   });
 
-  // 4. 执行构建命令
-  console.log("[BUILD] Running Next.js build with pnpm...");
-
-  execSync("pnpm exec next build", { stdio: "inherit", shell: true } as any);
-
-  console.log("[SUCCESS] Build completed successfully.");
-} catch (error: any) {
-  console.error("\n[ERROR] Build failed.");
-  process.exit(1);
-} finally {
-  // 5. 还原文件夹
-  console.log("[CLEANUP] Restoring directories...");
-
-  DIRS_TO_HIDE.forEach((dirName) => {
-    const { original, hidden } = getPaths(dirName);
-    if (fs.existsSync(hidden)) {
-      try {
-        if (fs.existsSync(original)) {
-          fs.rmSync(original, { recursive: true, force: true });
-        }
-        fs.renameSync(hidden, original);
-        console.log(`[INFO] Restored: ${dirName}`);
-      } catch (e) {
-        console.error(
-          `[WARN] Failed to restore ${dirName}. Please check manually.`,
-        );
-      }
-    }
-  });
-
-  console.log("[DONE] Process finished.");
+  if (result.error) throw result.error;
+  if (result.status !== 0) process.exit(result.status ?? 1);
 }
+
+run(tsxCli, ["scripts/validate-content.ts"]);
+run(tsxCli, ["scripts/generate-search-index.ts"]);
+run(tsxCli, ["scripts/generate-sitemap.ts"]);
+run(nextCli, ["build"]);
+run(tsxCli, ["scripts/prune-static-assets.ts"]);

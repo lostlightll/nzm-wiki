@@ -98,8 +98,8 @@ function loadPrototypeConfig(): Map<string, ProtoEntry[]> {
       Mode: Number(e.Mode ?? 0),
       ASCTypeID: String(e.ASCTypeID ?? ""),
       NumericalID: Number(e.NumericalID ?? 0),
-      ExplosionNumericalID: Number((e as any).ExplosionNumericalID ?? 0),
-      LaserNumericalID: Number((e as any).LaserNumericalID ?? 0),
+      ExplosionNumericalID: Number(e.ExplosionNumericalID ?? 0),
+      LaserNumericalID: Number(e.LaserNumericalID ?? 0),
     };
     const arr = byPid.get(pid);
     if (arr) arr.push(proto);
