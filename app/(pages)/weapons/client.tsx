@@ -73,22 +73,25 @@ export default function WeaponsClient({
 
   return (
     <>
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div className="flex items-center gap-4">
           <h1 className="text-3xl font-bold text-white">
             {isTD ? "塔防武器图鉴" : "武器图鉴"}
           </h1>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:items-center">
           <button
+            type="button"
             onClick={toggleMode}
-            className="rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700"
+            className="min-h-11 rounded-lg border border-zinc-600 bg-zinc-800 px-3 text-sm text-zinc-200 transition-colors hover:bg-zinc-700"
           >
             {isTD ? "猎场模式" : "塔防模式"}
           </button>
           <button
-            onClick={() => setShowDetails(!showDetails)}
-            className="rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700"
+            type="button"
+            aria-pressed={showDetails}
+            onClick={() => setShowDetails((visible) => !visible)}
+            className="min-h-11 rounded-lg border border-zinc-600 bg-zinc-800 px-3 text-sm text-zinc-200 transition-colors hover:bg-zinc-700"
           >
             {showDetails ? "简洁模式" : "详细模式"}
           </button>
@@ -133,8 +136,9 @@ export default function WeaponsClient({
 
         {hasFilter && (
           <button
+            type="button"
             onClick={resetFilters}
-            className="mt-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
+            className="mt-2 min-h-11 rounded px-2 text-sm text-zinc-300 hover:bg-zinc-700/50 hover:text-white transition-colors"
           >
             重置筛选
           </button>

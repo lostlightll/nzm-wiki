@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { X, ChevronLeft, ChevronRight, Minus, Plus, Download, Maximize2 } from "lucide-react";
-import { getAssetPath } from "@/lib/path";
+import { getAssetPath, getImageAssetPaths } from "@/lib/path";
+import { useDialogFocus } from "@/components/useDialogFocus";
 
 interface TooltipButtonProps {
   onClick: () => void;
@@ -19,7 +20,7 @@ function TooltipButton({ onClick, tooltip, children, className = "", tooltipPosi
 
   return (
     <div className="relative group">
-      <button onClick={onClick} className={className}>
+      <button type="button" onClick={onClick} aria-label={tooltip} className={className}>
         {children}
       </button>
       <div className={`absolute left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-zinc-200 bg-zinc-900 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ${tooltipClass}`}>
@@ -37,19 +38,37 @@ interface ImageViewerProps {
 }
 
 export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: ImageViewerProps) {
+  if (!isOpen || images.length === 0) return null;
+
+  const safeInitialIndex = Math.min(Math.max(initialIndex, 0), images.length - 1);
+
+  return (
+    <OpenImageViewer
+      images={images}
+      initialIndex={safeInitialIndex}
+      isOpen={isOpen}
+      onClose={onClose}
+    />
+  );
+}
+
+function OpenImageViewer({ images, initialIndex = 0, isOpen, onClose }: ImageViewerProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [scale, setScale] = useState(100);
   const containerRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const currentImage = images[currentIndex];
+  const imagePaths = getImageAssetPaths(currentImage.src);
 
-  // Reset state when opened
-  useEffect(() => {
-    if (isOpen) {
-      setCurrentIndex(initialIndex);
-      setScale(100);
-    }
-  }, [isOpen, initialIndex]);
+  const closeViewer = useCallback(() => onClose(), [onClose]);
+
+  useDialogFocus({
+    isOpen,
+    containerRef,
+    initialFocusRef: closeButtonRef,
+    onClose: closeViewer,
+  });
 
   // Keyboard navigation
   useEffect(() => {
@@ -57,9 +76,6 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
 
     const handleKeyDown = (e: KeyboardEvent) => {
       switch (e.key) {
-        case "Escape":
-          onClose();
-          break;
         case "ArrowLeft":
         case "a":
         case "A":
@@ -88,7 +104,7 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, images.length, onClose]);
+  }, [isOpen, images.length]);
 
   // Mouse wheel zoom
   useEffect(() => {
@@ -117,22 +133,6 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
         container.removeEventListener("wheel", handleWheel);
       }
       document.removeEventListener("wheel", handleGlobalWheel);
-    };
-  }, [isOpen]);
-
-  // Prevent body scroll when open
-  useEffect(() => {
-    if (isOpen) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    } else {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
     };
   }, [isOpen]);
 
@@ -176,48 +176,62 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
     document.body.removeChild(link);
   }, [currentImage]);
 
-  if (!isOpen) return null;
-
-  const btnClass = "rounded p-1.5 text-zinc-400 hover:bg-zinc-700 hover:text-white transition-colors";
+  const btnClass = "flex min-h-11 min-w-11 items-center justify-center rounded text-zinc-300 hover:bg-zinc-700 hover:text-white transition-colors";
 
   return (
     <div
       ref={containerRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="image-viewer-title"
+      tabIndex={-1}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 overflow-hidden"
     >
+      <h2 id="image-viewer-title" className="sr-only">图片查看器</h2>
       {/* Close button */}
       <div className="absolute top-4 right-4">
-        <TooltipButton
-          onClick={onClose}
-          tooltip="关闭 (Esc)"
-          tooltipPosition="bottom"
-          className="rounded-lg bg-zinc-800 p-2 text-zinc-400 hover:bg-zinc-700 hover:text-white transition-colors"
+        <button
+          ref={closeButtonRef}
+          type="button"
+          onClick={closeViewer}
+          aria-label="关闭图片查看器"
+          className="flex min-h-11 min-w-11 items-center justify-center rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-white transition-colors"
         >
-          <X className="h-5 w-5" />
-        </TooltipButton>
+          <X className="h-5 w-5" aria-hidden="true" />
+        </button>
       </div>
 
       {/* Main image */}
       <div
-        className="flex items-center justify-center overflow-hidden"
-        style={{ width: "calc(100% - 80px)", height: "calc(100% - 120px)" }}
+        className="flex h-[calc(100dvh_-_9rem)] w-[calc(100%_-_1rem)] items-center justify-center overflow-hidden sm:w-[calc(100%_-_5rem)]"
         onClick={(e) => {
-          if (e.target === e.currentTarget) onClose();
+          if (e.target === e.currentTarget) closeViewer();
         }}
       >
+        {/* Native img keeps full-resolution zoom and original fallback behavior. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={getAssetPath(currentImage.src)}
+          src={imagePaths.src}
           alt={currentImage.alt || ""}
           className="max-h-full max-w-full object-contain transition-transform duration-200"
           style={{ transform: `scale(${scale / 100})` }}
           draggable={false}
+          onError={(event) => {
+            if (
+              imagePaths.fallbackSrc &&
+              event.currentTarget.dataset.fallbackApplied !== "true"
+            ) {
+              event.currentTarget.dataset.fallbackApplied = "true";
+              event.currentTarget.src = imagePaths.fallbackSrc;
+            }
+          }}
         />
       </div>
 
       {/* Side navigation (for larger screens) */}
       {images.length > 1 && (
         <>
-          <div className="absolute left-4 top-1/2 -translate-y-1/2">
+          <div className="absolute left-4 top-1/2 hidden -translate-y-1/2 sm:block">
             <TooltipButton
               onClick={handlePrev}
               tooltip="上一张 (A / ←)"
@@ -226,7 +240,7 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
               <ChevronLeft className="h-6 w-6" />
             </TooltipButton>
           </div>
-          <div className="absolute right-4 top-1/2 -translate-y-1/2">
+          <div className="absolute right-4 top-1/2 hidden -translate-y-1/2 sm:block">
             <TooltipButton
               onClick={handleNext}
               tooltip="下一张 (D / →)"
@@ -239,16 +253,16 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
       )}
 
       {/* Bottom toolbar */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1 rounded-lg bg-zinc-800 px-2 py-1.5 shadow-lg">
+      <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 flex max-w-[calc(100vw-1rem)] -translate-x-1/2 items-center gap-1 overflow-x-auto rounded-lg bg-zinc-800 px-2 py-1.5 shadow-lg">
         {/* Navigation arrows */}
-        <TooltipButton onClick={handlePrev} tooltip="上一张 (A / ←)" className={btnClass}>
+        <TooltipButton onClick={handlePrev} tooltip="上一张 (A / ←)" className={`${btnClass} sm:hidden`}>
           <ChevronLeft className="h-5 w-5" />
         </TooltipButton>
-        <TooltipButton onClick={handleNext} tooltip="下一张 (D / →)" className={btnClass}>
+        <TooltipButton onClick={handleNext} tooltip="下一张 (D / →)" className={`${btnClass} sm:hidden`}>
           <ChevronRight className="h-5 w-5" />
         </TooltipButton>
 
-        <div className="mx-1 h-6 w-px bg-zinc-600" />
+        <div className="mx-1 h-6 w-px shrink-0 bg-zinc-600 sm:hidden" />
 
         {/* Zoom controls */}
         <TooltipButton onClick={handleZoomOut} tooltip="缩小 (-)" className={btnClass}>
@@ -257,7 +271,7 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
         <TooltipButton
           onClick={handleReset}
           tooltip="1=100%, 2=200%"
-          className="min-w-[60px] rounded px-2 py-1 text-sm text-zinc-300 hover:bg-zinc-700 hover:text-white transition-colors"
+          className="flex min-h-11 min-w-[68px] items-center justify-center rounded px-2 text-sm text-zinc-200 hover:bg-zinc-700 hover:text-white transition-colors"
         >
           {scale}%
         </TooltipButton>
@@ -265,22 +279,22 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
           <Plus className="h-5 w-5" />
         </TooltipButton>
 
-        <div className="mx-1 h-6 w-px bg-zinc-600" />
+        <div className="mx-1 hidden h-6 w-px shrink-0 bg-zinc-600 sm:block" />
 
         {/* Download */}
-        <TooltipButton onClick={handleDownload} tooltip="下载原图" className={btnClass}>
+        <TooltipButton onClick={handleDownload} tooltip="下载原图" className={`${btnClass} hidden sm:flex`}>
           <Download className="h-5 w-5" />
         </TooltipButton>
 
         {/* Fullscreen */}
-        <TooltipButton onClick={handleFullscreen} tooltip="全屏" className={btnClass}>
+        <TooltipButton onClick={handleFullscreen} tooltip="全屏" className={`${btnClass} hidden sm:flex`}>
           <Maximize2 className="h-5 w-5" />
         </TooltipButton>
 
-        <div className="mx-1 h-6 w-px bg-zinc-600" />
+        <div className="mx-1 hidden h-6 w-px shrink-0 bg-zinc-600 sm:block" />
 
         {/* Image counter */}
-        <span className="px-2 text-sm text-zinc-400">
+        <span aria-live="polite" className="shrink-0 px-2 text-sm text-zinc-300">
           {currentIndex + 1} / {images.length}
         </span>
       </div>

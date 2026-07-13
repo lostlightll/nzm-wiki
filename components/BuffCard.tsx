@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { getAssetPath } from "@/lib/path";
+import Image from "next/image";
+import { getOptimizedImagePath } from "@/lib/path";
 import cardsData from "@/data/cards-data.json";
 
 interface BuffCardProps {
@@ -29,19 +30,43 @@ const TYPE_STYLES = {
   },
 };
 
+function CardImage({
+  icon,
+  name,
+  eager = false,
+  className,
+}: {
+  icon: string;
+  name: string;
+  eager?: boolean;
+  className: string;
+}) {
+  return (
+    <Image
+      src={getOptimizedImagePath(icon)}
+      alt={name}
+      width={960}
+      height={1266}
+      priority={eager}
+      loading={eager ? undefined : "lazy"}
+      className={className}
+    />
+  );
+}
+
 function Card({ name, slug, icon, type, effect }: BuffCardProps) {
   const styles = TYPE_STYLES[type];
 
   return (
     <Link
       href={`/cards/${slug}`}
-      className={`group block relative overflow-hidden rounded-lg border-2 ${styles.border} ${styles.hoverBorder} ${styles.bg} transition-all hover:scale-105 hover:shadow-lg hover:shadow-black/20 no-underline`}
+      className={`group block relative overflow-hidden rounded-lg border-2 ${styles.border} ${styles.hoverBorder} ${styles.bg} transition-all hover:scale-105 hover:shadow-lg hover:shadow-black/20 motion-reduce:hover:scale-100 no-underline`}
       style={{ width: "var(--card-width, 240px)", aspectRatio: "960/1266" }}
     >
-      <img
-        src={getAssetPath(icon)}
-        alt={name}
-        className="absolute inset-0 w-full h-full"
+      <CardImage
+        icon={icon}
+        name={name}
+        className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
         <div className="text-sm text-zinc-100 font-semibold mb-1">{name}</div>
@@ -134,7 +159,7 @@ export function BuffCardGrid({
                 [&::-moz-range-thumb]:cursor-pointer"
             />
           </div>
-          <label className="flex items-center gap-2 cursor-pointer select-none group">
+          <label className="group flex min-h-11 cursor-pointer select-none items-center gap-2">
             <div className="relative">
               <input
                 type="checkbox"
@@ -142,7 +167,7 @@ export function BuffCardGrid({
                 onChange={handleEffectToggle}
                 className="peer sr-only"
               />
-              <div className="w-9 h-5 rounded-full bg-zinc-700 peer-checked:bg-zinc-500 transition-colors" />
+              <div className="h-5 w-9 rounded-full bg-zinc-700 transition-colors peer-checked:bg-zinc-500 peer-focus-visible:ring-2 peer-focus-visible:ring-sky-400 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background" />
               <div className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-4" />
             </div>
             <span className="text-sm font-medium text-zinc-300 group-hover:text-zinc-200 transition-colors">
@@ -193,7 +218,12 @@ export function BuffDetail({
         className={`relative rounded-xl overflow-hidden border-2 ${styles.border} ${styles.bg}`}
         style={{ aspectRatio: "960/1266" }}
       >
-        <img src={getAssetPath(icon)} alt={name} className="w-full h-full m-0" />
+        <CardImage
+          icon={icon}
+          name={name}
+          eager
+          className="m-0 h-full w-full object-cover"
+        />
       </div>
       <div
         className={`mt-3 overflow-hidden rounded-xl border ${calloutStyle} px-4 py-3`}

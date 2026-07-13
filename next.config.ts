@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import createMDX from "@next/mdx";
 
 // 直接读取 GitHub Action 注入的环境变量
 // 如果在本地开发，这个变量通常不存在，默认为空字符串，正好符合本地开发需求
@@ -8,7 +7,6 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const isDev = process.env.NODE_ENV === "development";
 
 const nextConfig: NextConfig = {
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   output: isDev ? undefined : "export",
   // output: "export",
 
@@ -26,6 +24,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-const withMDX = createMDX();
-
-export default withMDX(nextConfig);
+export default nextConfig;

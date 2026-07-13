@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { getAssetPath } from "@/lib/path";
+import { getOptimizedImagePath } from "@/lib/path";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import type { SpriteConfig } from "@/constants/sprites";
 
@@ -33,7 +33,7 @@ export function FilterCheckbox({
 
   return (
     <label
-      className={`flex cursor-pointer items-center ${alignClass} rounded border px-3 py-2 transition-colors ${
+      className={`relative flex min-h-11 cursor-pointer items-center ${alignClass} rounded border px-3 py-2 transition-colors focus-within:border-zinc-400 ${
         checked
           ? "border-zinc-500 bg-zinc-700"
           : "border-zinc-700 bg-zinc-800 hover:border-zinc-600"
@@ -43,7 +43,7 @@ export function FilterCheckbox({
         type="checkbox"
         checked={checked}
         onChange={onChange}
-        className="hidden"
+        className="sr-only focus-visible:outline-none"
       />
       <span
         className={`flex min-w-0 items-center gap-1.5 ${colorClass || "text-zinc-300"}`}
@@ -51,8 +51,8 @@ export function FilterCheckbox({
         {sprite && <SpriteIcon sprite={sprite} size={60} className="shrink-0" />}
         {iconSrc && !sprite && (
           <Image
-            src={getAssetPath(iconSrc)}
-            alt={label}
+            src={getOptimizedImagePath(iconSrc)}
+            alt=""
             width={25}
             height={25}
             className="shrink-0"
