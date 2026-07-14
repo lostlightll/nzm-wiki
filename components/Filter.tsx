@@ -33,7 +33,7 @@ export function FilterCheckbox({
 
   return (
     <label
-      className={`flex cursor-pointer items-center ${alignClass} rounded border px-3 py-2 transition-colors ${
+      className={`flex min-h-11 touch-manipulation cursor-pointer items-center ${alignClass} rounded border px-3 py-2 transition-colors ${
         checked
           ? "border-zinc-500 bg-zinc-700"
           : "border-zinc-700 bg-zinc-800 hover:border-zinc-600"
@@ -43,7 +43,7 @@ export function FilterCheckbox({
         type="checkbox"
         checked={checked}
         onChange={onChange}
-        className="hidden"
+        className="sr-only"
       />
       <span
         className={`flex min-w-0 items-center gap-1.5 ${colorClass || "text-zinc-300"}`}
@@ -92,8 +92,10 @@ export function FilterSection<T>({
   centerClass,
 }: FilterSectionProps<T>) {
   return (
-    <div className="mb-6">
-      <h2 className="mb-3 text-lg font-semibold text-zinc-300">{title}</h2>
+    <fieldset className="mb-6 min-w-0">
+      <legend className="mb-3 text-lg font-semibold text-zinc-300">
+        {title}
+      </legend>
       <div className={gridClass}>
         {items.map((item, index) => (
           <FilterCheckbox
@@ -110,6 +112,6 @@ export function FilterSection<T>({
           />
         ))}
       </div>
-    </div>
+    </fieldset>
   );
 }

@@ -11,6 +11,8 @@
 - 网站通过 `getAssetPath()` 将插件 `.png` 请求改写到 `/webp/icons/perks/*.webp`。只复制 PNG 会导致图片损坏，导入后必须生成对应 WebP。
 - refs 中混有测试项、占位符、旧版和隐藏插件。默认只处理 `CollectMODItem=1` 的可收集插件；除非用户明确要求，不使用 `--include-hidden`。
 - 字段漂移不自动修正。先结合游戏语义和现有页面判断，尤其是改名、槽位、稀有度、图标和适用武器变化。
+- 插件正式名称优先使用 `CommonItemDataTable[MODItemID].Name.LocalizedString`，`WeaponModItemData.MODName` 只作为回退。两者不一致时，不得仅凭 `MODName` 将本地页面判为 orphan。
+- 描述来源按 `HuntingGroundRoguelikeWeaponModTable.OverrideDesc`、`PassiveSkill_ID` 对应 MGE 描述、`AttrList` 属性拼接的顺序处理。每条链路独立核验，不把空 `PassiveSkill_ID` 直接当作无效果。
 
 ## Step 1: 审计范围
 
@@ -41,6 +43,54 @@ pnpm exec tsx scripts/import-perks.ts
 - `local.orphan`：本站有页面，但最新 refs 无法按 ID 或名称匹配
 - `local.hidden`：本站有页面，但最新 refs 未标记为可收集
 
+### 异常分支 A：正式名称与 MODName 不一致
+
+症状：按中文名运行导入器提示 `refs 中未找到`，或已有 MDX 被列为 `local.orphan`，但 `CommonItemDataTable` 中存在同名物品。
+
+处理步骤：
+
+1. 在 `DataTables/System/Items/CommonItemDataTable.json` 按用户提供的正式名称搜索，取得 `ItemID`。
+2. 使用该 ID 查询 `DataTables/LuaDataTable/WeaponModItemData.json`，核对 `MODItemID`、槽位和 `PassiveSkill_ID`。
+3. 正式标题采用 `CommonItemDataTable.Name.LocalizedString`；内部名、旧名或策划占位名只记录为诊断信息，不写入 `title`。
+4. 改用 `--ids <ItemID>` 审计和写入，避免名称索引再次命中内部名。
+5. 描述继续按正常的 `PassiveSkill_ID -> MGE` 链路解析，不因为名称冲突改写数值。
+
+已知案例：
+
+```text
+技能增涌
+ItemID: 20703040184
+CommonItemDataTable.Name: 技能增涌
+WeaponModItemData.MODName: 导弹流_3
+PassiveSkill_ID: 1315153001:1
+最终描述: 武器技能伤害提升60%。
+```
+
+### 异常分支 B：纯 AttrList 插件
+
+症状：插件有明确属性效果，但 `PassiveSkill_ID` 为空，MGE 描述链路无法生成 description。
+
+处理步骤：
+
+1. 读取 `WeaponModItemData.AttrList`，格式通常为 `属性ID:数值;属性ID:数值`。
+2. 按属性 ID 查询 `DataTables/AttributeChannelDescriptionTable.json`，读取属性名和展示模板。
+3. 比例值按百分比格式化；正值使用“提升”，负值取绝对值并使用“降低”。
+4. 多个属性按原顺序合并为一句自然中文描述，不保留内部属性名。
+5. `AttrList` 只作为 `OverrideDesc` 和已成功解析的 MGE 描述之后的回退，避免重复描述同一效果。
+6. 属性表无法确认单位或正负语义时保留 draft 并报告，不猜数值。
+
+已知案例：
+
+```text
+超载弹匣
+ItemID: 20703040089
+PassiveSkill_ID: 空
+AttrList: 104509:0.55;104507:-0.03
+104509: ClipAmmoAddRatio -> 弹匣容量提升55%
+104507: WeaponChangeClipSpeedRatio -> 换弹速度降低3%
+最终描述: 弹匣容量提升55%，换弹速度降低3%。
+```
+
 ## Step 2: 确认写入
 
 有 `$ARGUMENTS` 时，可以直接处理用户指定范围。若没有参数且审计结果包含多项，不要擅自全量写入；先向用户说明数量和主要风险，确认导入范围。
@@ -64,6 +114,22 @@ pnpm exec tsx scripts/import-perks.ts --ids 20703040432 --write --season s2
 - 创建缺失的 draft MDX
 - 补齐已有 MDX 中为空的 `id`、`icon`、`weaponType`、`description`
 - 从 refs 复制缺失图标到 `public/icons/perks/`
+
+插件投放状态使用以下三个 frontmatter 字段。字段名保持与 refs 一致；后续新增或批量回填 MDX 时必须从同一条 `WeaponModItemData` 记录读取，不能手填猜测：
+
+```yaml
+CollectMODItem: 1
+MakeMODItem: 1
+IsCooked: true
+```
+
+| 字段 | 含义 | 页面用途 |
+|---|---|---|
+| `CollectMODItem` | `1` 表示进入插件展示、收集范围；`0` 表示投放关闭或隐藏 | 只有严格等于 `1` 才归入“已上线”，其余值或缺失字段归入“未上线” |
+| `MakeMODItem` | `1` 表示允许进入插件制造范围；`0` 表示不可制造 | 不能单独作为是否上线的判断 |
+| `IsCooked` | `true` 表示资源已参与客户端打包 | 只说明资源存在，不代表已经投放或可获得 |
+
+`CollectMODItem=1` 只代表主插件展示/收集开关开启。若插件还需要进入特定玩法掉落池，继续检查对应玩法表；例如猎场肉鸽需要存在于 `HuntingGroundRoguelikeWeaponModTable` 且 `IsShow=true`，不能把两层开关混为一谈。
 
 注意：导入脚本只能直接取得 `SuitableWeaponType` 数字 ID，不能可靠地把 `SuittableWeaponItem` 转成武器中文名。写入后必须继续执行 Step 3，补齐 `weaponNames`。
 
@@ -157,6 +223,8 @@ refs 与本地非空值冲突时，先检查是否为版本变化；无法确认
 - `icon` 是否来自 CommonItemDataTable 的实际图标资源，而不是机械套用 PassiveSkill ID
 - `public/webp/icons/perks/{icon}.webp` 是否存在且可正常读取
 - `description` 中是否还有 `{...}`、`??`、测试文案或不符合当前版本的数值
+- `CollectMODItem`、`MakeMODItem`、`IsCooked` 是否来自同一个 `WeaponModItemData` 条目，且没有把“已打包”误判为“已上线”
+- 页面“已上线”状态是否严格满足 `CollectMODItem === 1`
 - `weaponType` 是否只包含标准武器类型 ID
 - `weaponNames` 是否只包含具体武器名称
 - 只有 `weaponType` 和 `weaponNames` 都为空时，页面才会显示“全部武器类型”

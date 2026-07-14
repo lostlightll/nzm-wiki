@@ -15,6 +15,13 @@ import {
   RARITY_OPTIONS,
 } from "@/constants/perks";
 
+type AvailabilityFilter = "online" | "offline";
+
+const AVAILABILITY_OPTIONS: { type: AvailabilityFilter; label: string }[] = [
+  { type: "online", label: "已上线" },
+  { type: "offline", label: "未上线" },
+];
+
 function PerkCard({ perk }: { perk: Perk }) {
   // 处理数字或字符串格式的稀有度
   const rarityStr =
@@ -57,8 +64,13 @@ interface PerksPageClientProps {
 export default function PerksPageClient({
   initialPerks,
 }: PerksPageClientProps) {
-  const slotState = useSelection<PerkSlot>("slot", undefined, Number as (v: string) => PerkSlot);
+  const slotState = useSelection<PerkSlot>(
+    "slot",
+    undefined,
+    Number as (v: string) => PerkSlot,
+  );
   const rarityState = useSelection<Rarity>("rarity");
+  const availabilityState = useSelection<AvailabilityFilter>("availability");
 
   const filteredPerks = useMemo(() => {
     return initialPerks.filter((perk) => {
@@ -71,9 +83,18 @@ export default function PerksPageClient({
           : perk.rarity;
       const rarityMatch =
         rarityState.selected.size === 0 || rarityState.selected.has(perkRarity);
-      return slotMatch && rarityMatch;
+      const availability = perk.collectModItem === 1 ? "online" : "offline";
+      const availabilityMatch =
+        availabilityState.selected.size === 0 ||
+        availabilityState.selected.has(availability);
+      return slotMatch && rarityMatch && availabilityMatch;
     });
-  }, [initialPerks, slotState.selected, rarityState.selected]);
+  }, [
+    availabilityState.selected,
+    initialPerks,
+    rarityState.selected,
+    slotState.selected,
+  ]);
 
   const groupedBySlot = useMemo(() => {
     const groups: Record<PerkSlot, Perk[]> = { 1: [], 2: [], 3: [], 4: [] };
@@ -104,6 +125,20 @@ export default function PerksPageClient({
           selected={slotState.selected}
           onToggle={slotState.toggle}
           gridClass="grid grid-cols-2 gap-2 sm:grid-cols-4"
+        />
+
+        <FilterSection
+          title="上线状态"
+          items={AVAILABILITY_OPTIONS}
+          selected={availabilityState.selected}
+          onToggle={(availability) =>
+            availabilityState.selectOnly(
+              availabilityState.selected.has(availability)
+                ? undefined
+                : availability,
+            )
+          }
+          gridClass="grid max-w-sm grid-cols-2 gap-2"
         />
       </div>
 

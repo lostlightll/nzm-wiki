@@ -66,5 +66,12 @@ export function useSelection<T extends string | number>(
     update(new Set());
   }, [update]);
 
-  return { selected: parsed, toggle, clear };
+  const selectOnly = useCallback(
+    (item?: T) => {
+      update(item === undefined ? new Set() : new Set([item]));
+    },
+    [update],
+  );
+
+  return { selected: parsed, toggle, clear, selectOnly };
 }
