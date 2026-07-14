@@ -44,6 +44,10 @@ function isCustomWidth(value: string): boolean {
   return /^\d+(px|rem|em|vw|%)$/.test(value);
 }
 
+function normalizeDescriptionMarkup(source: string): string {
+  return source.replace(/\*\*([^*\n]+?)\*\*/g, "<strong>$1</strong>");
+}
+
 export default async function PerkDetailPage({
   params,
 }: {
@@ -71,7 +75,7 @@ export default async function PerkDetailPage({
 
   const descriptionNode = metadata.description ? (
     <MDXRemote
-      source={metadata.description}
+      source={normalizeDescriptionMarkup(metadata.description)}
       components={mdxComponents}
     />
   ) : undefined;
