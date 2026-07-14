@@ -5,6 +5,23 @@ import type { Perk, PerkSlot, Rarity } from "@/types";
 
 const PERKS_DATA_DIR = path.join(process.cwd(), "data/perks");
 
+function parseNumberArray(value: unknown): number[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+
+  return value
+    .map((item) => Number(item))
+    .filter((item) => Number.isFinite(item));
+}
+
+function parseStringArray(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+
+  return value
+    .filter((item): item is string => typeof item === "string")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
 export function getAllPerks(): Perk[] {
   if (!fs.existsSync(PERKS_DATA_DIR)) return [];
 
@@ -30,6 +47,8 @@ export function getAllPerks(): Perk[] {
         icon: data.icon,
         effects: [],
         description: data.description,
+        weaponType: parseNumberArray(data.weaponType),
+        weaponNames: parseStringArray(data.weaponNames),
         collectModItem: data.CollectMODItem as 0 | 1 | undefined,
         makeModItem: data.MakeMODItem as 0 | 1 | undefined,
         isCooked: data.IsCooked as boolean | undefined,
@@ -61,6 +80,8 @@ export function getPerkByName(name: string): Perk | null {
         icon: data.icon,
         effects: [],
         description: data.description,
+        weaponType: parseNumberArray(data.weaponType),
+        weaponNames: parseStringArray(data.weaponNames),
         collectModItem: data.CollectMODItem as 0 | 1 | undefined,
         makeModItem: data.MakeMODItem as 0 | 1 | undefined,
         isCooked: data.IsCooked as boolean | undefined,
