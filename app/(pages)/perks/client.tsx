@@ -22,6 +22,15 @@ const AVAILABILITY_OPTIONS: { type: AvailabilityFilter; label: string }[] = [
   { type: "offline", label: "未上线" },
 ];
 
+const DEFAULT_RARITIES: Rarity[] = ["传说"];
+const DEFAULT_AVAILABILITY: AvailabilityFilter[] = ["online"];
+
+const FILTER_STORAGE_KEYS = {
+  slot: "perk-slot",
+  rarity: "perk-rarity",
+  availability: "perk-availability",
+} as const;
+
 function PerkCard({ perk }: { perk: Perk }) {
   // 处理数字或字符串格式的稀有度
   const rarityStr =
@@ -65,12 +74,18 @@ export default function PerksPageClient({
   initialPerks,
 }: PerksPageClientProps) {
   const slotState = useSelection<PerkSlot>(
-    "slot",
+    FILTER_STORAGE_KEYS.slot,
     undefined,
     Number as (v: string) => PerkSlot,
   );
-  const rarityState = useSelection<Rarity>("rarity");
-  const availabilityState = useSelection<AvailabilityFilter>("availability");
+  const rarityState = useSelection<Rarity>(
+    FILTER_STORAGE_KEYS.rarity,
+    DEFAULT_RARITIES,
+  );
+  const availabilityState = useSelection<AvailabilityFilter>(
+    FILTER_STORAGE_KEYS.availability,
+    DEFAULT_AVAILABILITY,
+  );
 
   const filteredPerks = useMemo(() => {
     return initialPerks.filter((perk) => {
@@ -117,6 +132,8 @@ export default function PerksPageClient({
           items={RARITY_OPTIONS}
           selected={rarityState.selected}
           onToggle={rarityState.toggle}
+          gridClass="grid max-w-md grid-cols-3 gap-2"
+          centerClass="justify-center"
         />
 
         <FilterSection

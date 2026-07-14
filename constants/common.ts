@@ -9,9 +9,9 @@ export const RARITY_NUM_MAP: Record<number, Rarity> = {
 
 // 稀有度筛选选项（用于 Filter 组件）
 export const RARITY_OPTIONS: { type: Rarity; color: string }[] = [
-  { type: "稀有", color: "text-[#5589ab]" },
-  { type: "史诗", color: "text-[#a65aae]" },
   { type: "传说", color: "text-[#d1ac69]" },
+  { type: "史诗", color: "text-[#a65aae]" },
+  { type: "稀有", color: "text-[#5589ab]" },
 ];
 
 // 稀有度排序权重（值越大越靠前）
