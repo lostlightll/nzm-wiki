@@ -5,14 +5,18 @@
 ## 基本原则
 
 - 先审计，后写入。不要一上来运行全量 `--write`。
-- 已有非空 frontmatter 和 MDX 正文属于人工维护内容，不覆盖。
+- 已有非空 frontmatter 和 MDX 正文属于人工维护内容。普通 `--write` 不覆盖已有 `description`；描述只允许通过显式 `--sync-descriptions --write` 保守修复。
 - 新插件先创建为 `draft: true`，检查名称、描述、数值、图标和适用武器后再发布。
 - 适用范围分为三种：全部武器、标准武器类型、专属武器。分别使用 `weaponType` 和 `weaponNames` 表达，不能把专属武器误判为全部武器。
 - 网站通过 `getAssetPath()` 将插件 `.png` 请求改写到 `/webp/icons/perks/*.webp`。只复制 PNG 会导致图片损坏，导入后必须生成对应 WebP。
 - refs 中混有测试项、占位符、旧版和隐藏插件。默认只处理 `CollectMODItem=1` 的可收集插件；除非用户明确要求，不使用 `--include-hidden`。
 - 字段漂移不自动修正。先结合游戏语义和现有页面判断，尤其是改名、槽位、稀有度、图标和适用武器变化。
 - 插件正式名称优先使用 `CommonItemDataTable[MODItemID].Name.LocalizedString`，`WeaponModItemData.MODName` 只作为回退。两者不一致时，不得仅凭 `MODName` 将本地页面判为 orphan。
+- 同一正式名同时存在旧隐藏条目和唯一 `CollectMODItem=1` 条目时，名称查询与身份核对应优先该唯一可收集条目；多个可收集候选才判为歧义并要求使用 `--ids`。
+- ItemID 只认 `CommonItemDataTable` 行键/`ItemID` 与 `WeaponModItemData.MODItemID` 的同 ID 连接。`IconPath` 中的 MGE 编号和 `PassiveSkill_ID` 属于其他命名空间，可能复用或错位，禁止用它们反推 ItemID。
 - 描述来源按 `HuntingGroundRoguelikeWeaponModTable.OverrideDesc`、`PassiveSkill_ID` 对应 MGE 描述、`AttrList` 属性拼接的顺序处理。每条链路独立核验，不把空 `PassiveSkill_ID` 直接当作无效果。
+- `OverrideDesc` 与 MGE 同时存在时必须比较数值。已确认的 MGE/Buff/Ability/蓝图跨表冲突也记录在导入器的 `KNOWN_DESCRIPTION_CONFLICTS`。`descriptionAudit.sourceConflict=true` 会阻断自动写入；这类差异通常代表玩法覆盖、版本漂移或多条来源更新不同步。
+- 人工确认并维护的描述可设置 `description_override: true`。导入器仍会审计来源，但任何描述同步都会跳过该文件。
 
 ## Step 1: 审计范围
 
@@ -34,26 +38,65 @@ pnpm exec tsx scripts/import-perks.ts --ids 20703040432 --json
 pnpm exec tsx scripts/import-perks.ts
 ```
 
+需要核对所有现有 MDX（包括当前隐藏插件）的描述时，使用：
+
+```bash
+pnpm exec tsx scripts/import-perks.ts --all --sync-descriptions --json
+```
+
 重点检查：
 
 - `missing`：refs 中存在、本站尚未创建的插件
 - `patchable`：已有页面中可以安全补齐的空字段
 - `drifts`：必须人工判断的字段变化
+- `descriptionAudit`：每个已匹配 MDX 的本地描述、MGE 描述、玩法覆盖描述、受支持 AttrList 描述、候选描述、分类、未解析 token 和来源冲突
+- `descriptionSummary`：描述分类数量、来源冲突数量和可保守同步数量
 - `unresolved`：描述中仍未解析的模板变量
 - `local.orphan`：本站有页面，但最新 refs 无法按 ID 或名称匹配
 - `local.hidden`：本站有页面，但最新 refs 未标记为可收集
+- `identityWarnings.idConflicts`：本地非空 ID 与同名正式条目的 ItemID 不一致；禁止自动补字段或同步状态，必须先人工核对并修正 ID
+- `identityWarnings.nameConflicts`：CommonItem 正式名称与 `MODName` 内部名不一致
+- `identityWarnings.iconSkillMismatches`：图标资源号与 `PassiveSkill_ID` 不一致；这是告警而不是错误，分别按图标和效果链路使用
+
+`descriptionAudit.category` 的主要取值：
+
+| 分类 | 含义 | 自动写入 |
+|---|---|---|
+| `match` | 本地描述与当前候选一致（忽略 Markdown 强调和标点） | 不需要 |
+| `empty` | 本地描述为空，候选完整 | 允许 |
+| `placeholder` | 本地含独立大写 `X` 或连续 `??` / `？？` | 允许 |
+| `drift` | 本地已有具体文案，但与候选不同 | 只报告 |
+| `source-conflict` | Override/MGE 数值签名不同、其中一条仍有 token，或命中已知运行时跨表冲突 | 禁止 |
+| `unresolved` | 当前候选仍含 `{...}` 或占位符 | 禁止 |
+| `missing-source` | Override 与 MGE 都没有可用描述 | 禁止 |
+| `manual-override` | MDX 设置了 `description_override: true` | 禁止 |
+| `identity-conflict` | 本地 ID 与正式同名条目冲突 | 禁止 |
+
+候选描述优先使用同一 ItemID 的 `HuntingGroundRoguelikeWeaponModTable.OverrideDesc`，没有时才使用 `PassiveSkill_ID -> MGE`。`sourceConflict` 使用保守规则：两条来源的完整数值集合必须一致；一方省略数值也会报告冲突，交给人工判断。`knownConflict` 会给出已确认的数据质量或语义冲突；涉及 Buff、Ability 或蓝图的子集同时记录为 `runtimeConflict`。确认新冲突后应维护 `KNOWN_DESCRIPTION_CONFLICTS`，不能仅在 MDX 中临时绕过。
+
+已确认的描述 ID 错配只通过 `DESCRIPTION_ID_ALIASES` 显式修正。目前仅允许：
+
+```text
+PassiveSkill_ID 1316133001 -> MGE 描述 1312033001（穿甲扩散）
+```
+
+禁止按编号相似度、图标 ID 或相邻行推导其他别名。
 
 ### 异常分支 A：正式名称与 MODName 不一致
 
-症状：按中文名运行导入器提示 `refs 中未找到`，或已有 MDX 被列为 `local.orphan`，但 `CommonItemDataTable` 中存在同名物品。
+症状：`identityWarnings.nameConflicts` 出现记录，说明正式名称和策划内部名不一致。导入器应能直接按正式名称查询；内部名只在唯一命中时作为查询别名，重名时必须改用 `--ids`。
 
 处理步骤：
 
-1. 在 `DataTables/System/Items/CommonItemDataTable.json` 按用户提供的正式名称搜索，取得 `ItemID`。
-2. 使用该 ID 查询 `DataTables/LuaDataTable/WeaponModItemData.json`，核对 `MODItemID`、槽位和 `PassiveSkill_ID`。
+1. 确认 `DataTables/System/Items/CommonItemDataTable.json` 的正式名称、行键和 `ItemID` 三者一致。
+2. 使用同一个 ItemID 查询 `DataTables/LuaDataTable/WeaponModItemData.json`，核对 `MODItemID`、槽位和 `PassiveSkill_ID`；不通过图标号或技能号反查候选插件。
 3. 正式标题采用 `CommonItemDataTable.Name.LocalizedString`；内部名、旧名或策划占位名只记录为诊断信息，不写入 `title`。
-4. 改用 `--ids <ItemID>` 审计和写入，避免名称索引再次命中内部名。
+4. 名称查询出现多个候选时，改用 `--ids <ItemID>` 审计和写入；不得让脚本静默选择最后一项。
 5. 描述继续按正常的 `PassiveSkill_ID -> MGE` 链路解析，不因为名称冲突改写数值。
+
+如果 `identityWarnings.idConflicts` 非空，停止该文件的 `--write`、`--sync-status` 和其他自动补齐。先核对正式名称对应的 CommonItem ItemID，修正本地 `id` 后重新审计；不能因为旧 ID 非空就继续信任它。
+
+已知同名版本案例：`技能增幅` 的旧隐藏 ID 为 `20703030003`，当前唯一可收集 ID 为 `20703040163`。按名称审计必须选择后者；本地仍绑定旧 ID 时应报告 `identityWarnings.idConflicts`。
 
 已知案例：
 
@@ -63,6 +106,7 @@ ItemID: 20703040184
 CommonItemDataTable.Name: 技能增涌
 WeaponModItemData.MODName: 导弹流_3
 PassiveSkill_ID: 1315153001:1
+IconPath MGE ID: 1315134001（与另一个插件的 PassiveSkill_ID 重合，不是 ItemID 外键）
 最终描述: 武器技能伤害提升60%。
 ```
 
@@ -73,11 +117,11 @@ PassiveSkill_ID: 1315153001:1
 处理步骤：
 
 1. 读取 `WeaponModItemData.AttrList`，格式通常为 `属性ID:数值;属性ID:数值`。
-2. 按属性 ID 查询 `DataTables/AttributeChannelDescriptionTable.json`，读取属性名和展示模板。
-3. 比例值按百分比格式化；正值使用“提升”，负值取绝对值并使用“降低”。
-4. 多个属性按原顺序合并为一句自然中文描述，不保留内部属性名。
-5. `AttrList` 只作为 `OverrideDesc` 和已成功解析的 MGE 描述之后的回退，避免重复描述同一效果。
-6. 属性表无法确认单位或正负语义时保留 draft 并报告，不猜数值。
+2. 按属性 ID 查询 `DataTables/AttributeChannelDescriptionTable.json`，同时核对 `Attr_Id`、`Attr_Name` 和百分比模板。
+3. 当前自动化只支持两个已确认比例属性：`104509` 弹匣容量、`104507` 换弹速度。
+4. 比例值乘 100 并显示百分比；正值使用“提升”，负值取绝对值并使用“降低”。
+5. 多个属性按原顺序合并；`AttrList` 只作为 `OverrideDesc` 和 MGE 都为空时的回退。
+6. 出现任何其他属性 ID、格式异常或属性表定义变化时，整条 AttrList 不生成候选，并在 `attrWarnings` 中报告；不能只拼接已认识的部分。
 
 已知案例：
 
@@ -90,6 +134,15 @@ AttrList: 104509:0.55;104507:-0.03
 104507: WeaponChangeClipSpeedRatio -> 换弹速度降低3%
 最终描述: 弹匣容量提升55%，换弹速度降低3%。
 ```
+
+同一规则还覆盖：
+
+```text
+扩容核心 20703040161: 104509:0.24 -> 弹匣容量提升24%。
+负压弹匣 20703040169: 104509:0.36;104507:-0.07 -> 弹匣容量提升36%，换弹速度降低7%。
+```
+
+当前已知且必须阻断自动同步的描述包括：伤害数值缺失、数值缺单位、持续时间未定、百分比与“发”单位混用、切枪语义冲突、负号易伤异常，以及 MGE 与 Buff 的持续时间/范围冲突。具体条目统一维护在 `KNOWN_DESCRIPTION_CONFLICTS`，以 `descriptionAudit.knownConflict` 为准。
 
 ## Step 2: 确认写入
 
@@ -109,11 +162,33 @@ pnpm exec tsx scripts/import-perks.ts --ids 20703040432 --write --season s2
 
 未确定赛季时可以省略 `--season`，脚本会写为 `pending`，但发布前必须改成正确赛季。
 
-写入行为仅包括：
+普通 `--write` 行为仅包括：
 
 - 创建缺失的 draft MDX
-- 补齐已有 MDX 中为空的 `id`、`icon`、`weaponType`、`description`
+- 补齐已有 MDX 中为空的 `id`、`icon`、`weaponType`
 - 从 refs 复制缺失图标到 `public/icons/perks/`
+
+已有描述先运行审计：
+
+```bash
+pnpm exec tsx scripts/import-perks.ts $ARGUMENTS --sync-descriptions --json
+```
+
+确认 `descriptionAudit` 后，显式写入：
+
+```bash
+pnpm exec tsx scripts/import-perks.ts $ARGUMENTS --sync-descriptions --write
+```
+
+描述自动写入必须同时满足：
+
+- 本地描述为空，或含独立大写 `X`，或含连续 `??` / `？？`
+- 候选描述非空，且不含 `{...}`、`X`、连续问号
+- `sourceConflict=false`
+- `description_override` 不是 `true`
+- ItemID 身份链没有冲突
+
+本地已有具体数值或完整文案但发生漂移时，只出现在 `descriptionAudit`，脚本不会自动覆盖。人工确认后直接维护 MDX，并在确有长期人工差异时设置 `description_override: true`。
 
 插件投放状态使用以下三个 frontmatter 字段。字段名保持与 refs 一致；后续新增或批量回填 MDX 时必须从同一条 `WeaponModItemData` 记录读取，不能手填猜测：
 
@@ -221,6 +296,8 @@ refs 与本地非空值冲突时，先检查是否为版本变化；无法确认
 - `title`、`id`、`slot` 是否对应同一插件
 - `rarity` 是否等于 CommonItemDataTable 的 `Quality - 1`
 - `icon` 是否来自 CommonItemDataTable 的实际图标资源，而不是机械套用 PassiveSkill ID
+- `id` 是否来自 CommonItemDataTable/WeaponModItemData 的同 ID 连接，而不是通过图标号、技能号或编号尾数推断
+- `identityWarnings.idConflicts` 是否为空；非空时不得继续同步投放状态
 - `public/webp/icons/perks/{icon}.webp` 是否存在且可正常读取
 - `description` 中是否还有 `{...}`、`??`、测试文案或不符合当前版本的数值
 - `CollectMODItem`、`MakeMODItem`、`IsCooked` 是否来自同一个 `WeaponModItemData` 条目，且没有把“已打包”误判为“已上线”

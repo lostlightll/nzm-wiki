@@ -90,8 +90,8 @@ description: "换弹后6秒内，下一次换弹速度加快30%，可叠层5层�
 - `title`: 插件名称（string）
 - `id`: WeaponModItemData 中的 MODItemID（string）
 - `slot`: 槽位 1-4（number）
-- `rarity`: 稀有度 1-3（number），默认 3
-- `icon`: PassiveSkill_ID 冒号前半部分（string）
+- `rarity`: CommonItemDataTable.Quality - 1（number）
+- `icon`: CommonItemDataTable.IconPath.NormalIcon 的资源文件编号（string），不得用 PassiveSkill_ID 代替
 - `weaponType`: SuitableWeaponType.Values 数组（number[]），空数组 `[]` 表示适用所有类型
 - `description`: 解析后的纯文本描述（string）
 
@@ -106,13 +106,15 @@ description: "换弹后6秒内，下一次换弹速度加快30%，可叠层5层�
 | 字段 | 数据来源 | 路径 |
 |------|---------|------|
 | id | WeaponModItemData.json | MODItemID |
-| title | WeaponModItemData.json | MODName.LocalizedString |
+| title | CommonItemDataTable.json | Name.LocalizedString；MODName 仅作内部名回退 |
 | slot | WeaponModItemData.json | MODSlotIndex.Values[0] |
-| icon | WeaponModItemData.json | PassiveSkill_ID 冒号前半部分 |
+| icon | CommonItemDataTable.json | IconPath.NormalIcon.AssetPathName 中的资源文件编号 |
 | weaponType | WeaponModItemData.json | SuitableWeaponType.Values |
 | description | DT_GPMGESkillDesConfig_BD.json | MGEDescription.LocalizedString（需解析模板变量）|
-| rarity | 手动维护 | 默认 3（传说），游戏数据中无对应字段 |
+| rarity | CommonItemDataTable.json | Quality - 1 |
 | tags | WeaponModItemTagData.json | TagList → TagName.LocalizedString |
+
+身份判断必须先用 `CommonItemDataTable` 行键/`ItemID` 与 `WeaponModItemData.MODItemID` 做同 ID 连接。图标资源号和 `PassiveSkill_ID` 可能复用或错位，只分别用于图片和效果描述，禁止反推 ItemID。
 
 ## 插件蓝图参考
 
