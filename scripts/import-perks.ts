@@ -11,22 +11,29 @@
  *
  * 显式写入时会：
  * - 为缺失插件创建 draft MDX
- * - 补齐已有 MDX 中为空的 id、icon、weaponType
+ * - 补齐已有 MDX 中为空的 id、icon、weaponType、weaponNames
  * - 使用 --sync-status 同步所有现有插件的来源状态字段（跳过 availability_override）
  * - 使用 --sync-ids 仅同步所有现有插件的缺失 ID
  * - 使用 --sync-descriptions 保守修复为空或含占位符的 description
+ * - 使用 --sync-icons 按同一 ItemID 的 CommonItem 图标纠正已有页面和本地图标资产
+ * - 使用 --sync-applicability 同步武器类型与具体专属武器
  * - 复制缺失的插件图标
  *
  * 具体描述漂移只审计；description_override: true 的描述永远不会被覆盖。
  */
 import fs from "fs";
 import path from "path";
+import crypto from "crypto";
 import matter from "gray-matter";
 
 const ROOT_DIR = process.cwd();
 const REFS_DIR = path.join(ROOT_DIR, "refs/Exports/NZM/Content");
 const PERKS_DIR = path.join(ROOT_DIR, "data/perks");
 const ICONS_DIR = path.join(ROOT_DIR, "public/icons/perks");
+const BULK_IMPORT_REPORT = path.join(
+  ROOT_DIR,
+  "MD/NEW-PERKS-IMPORT-2026-07-14.md",
+);
 
 const REF_FILES = {
   mods: "DataTables/LuaDataTable/WeaponModItemData.json",
@@ -188,6 +195,8 @@ interface PerkRecord {
   iconSourcePath: string;
   weaponType: number[];
   weaponItems: number[];
+  weaponNames: string[];
+  unresolvedWeaponItems: number[];
   tags: string[];
   sets: string[];
   passiveSkillId: string;
@@ -217,7 +226,19 @@ interface Options {
   syncStatus: boolean;
   syncIds: boolean;
   syncDescriptions: boolean;
+  syncIcons: boolean;
+  syncApplicability: boolean;
+  allWithIcons: boolean;
   help: boolean;
+}
+
+interface BulkImportPlan {
+  record: PerkRecord;
+  filePath: string;
+  fileName: string;
+  icon: string;
+  iconDestination: string;
+  copyIcon: boolean;
 }
 
 type DescriptionCategory =
@@ -305,6 +326,9 @@ function parseArgs(argv: string[]): Options {
     syncStatus: false,
     syncIds: false,
     syncDescriptions: false,
+    syncIcons: false,
+    syncApplicability: false,
+    allWithIcons: false,
     help: false,
   };
 
@@ -320,6 +344,9 @@ function parseArgs(argv: string[]): Options {
       options.write = true;
     } else if (arg === "--include-hidden" || arg === "--all") {
       options.includeHidden = true;
+    } else if (arg === "--all-with-icons") {
+      options.allWithIcons = true;
+      options.includeHidden = true;
     } else if (arg === "--json") {
       options.json = true;
     } else if (arg === "--sync-status") {
@@ -328,6 +355,10 @@ function parseArgs(argv: string[]): Options {
       options.syncIds = true;
     } else if (arg === "--sync-descriptions") {
       options.syncDescriptions = true;
+    } else if (arg === "--sync-icons") {
+      options.syncIcons = true;
+    } else if (arg === "--sync-applicability") {
+      options.syncApplicability = true;
     } else if (arg === "--help" || arg === "-h") {
       options.help = true;
     } else if (arg === "--ids" || arg === "--id") {
@@ -353,6 +384,19 @@ function parseArgs(argv: string[]): Options {
     throw new Error("--limit 必须是大于或等于 0 的数字");
   }
 
+  if (
+    options.allWithIcons &&
+    (options.ids.size > 0 ||
+      options.names.size > 0 ||
+      options.syncStatus ||
+      options.syncIds ||
+      options.syncDescriptions ||
+      options.syncIcons ||
+      options.syncApplicability)
+  ) {
+    throw new Error("--all-with-icons 不能与选择器或 --sync-* 参数同时使用");
+  }
+
   return options;
 }
 
@@ -365,13 +409,16 @@ function printHelp() {
   pnpm exec tsx scripts/import-perks.ts --ids 20703040432 --write --season s2
 
 参数:
-  --write            创建缺失草稿，并补齐已有页面为空的 id、icon、weaponType
+  --write            创建缺失草稿，并补齐已有页面为空的 id、icon、weaponType、weaponNames
   --include-hidden   包含 refs 中未标记为可收集的测试、旧版或隐藏插件
+  --all-with-icons   按 ItemID 导入所有本地缺失且 refs PNG 图标源存在的插件
   --ids <id,...>     按插件 ID 筛选
   --season <value>   新草稿的 season，默认 pending
   --sync-status      同步已有 MDX 的 CollectMODItem、MakeMODItem、IsCooked（跳过 availability_override）
   --sync-ids         同步已有 MDX 的缺失 id，不修改其它字段
   --sync-descriptions 保守修复为空、含独立大写 X 或连续问号的 description（跳过 description_override）
+  --sync-icons       按同一 ItemID 的 CommonItem IconPath 同步 icon，并校正 PNG 资产
+  --sync-applicability 同步 SuitableWeaponType 与 SuittableWeaponItem 对应的 weaponNames
   --json             输出完整 JSON 报告
   --limit <number>   文本报告每组最多显示多少项，默认 30
 `);
@@ -473,6 +520,34 @@ function formatNumericalValue(value: number, format: string): string {
   return formatNumber(value);
 }
 
+function convertGameEmphasisTags(raw: string): string {
+  let depth = 0;
+  const converted = raw.replace(
+    /<(?:qiangdiao|emphasize|Shock|T\d+)>|<\/>/gi,
+    (tag) => {
+      if (tag.startsWith("</")) {
+        if (depth === 0) return "";
+        depth -= 1;
+        return depth === 0 ? "</strong>" : "";
+      }
+
+      depth += 1;
+      return depth === 1 ? "<strong>" : "";
+    },
+  );
+
+  return depth > 0 ? `${converted}</strong>` : converted;
+}
+
+function normalizeCooldownStyle(description: string): string {
+  return description
+    .replace(
+      /[（(]\s*CD\s*(\d+(?:\.\d+)?)\s*秒?\s*[)）]/gi,
+      "，冷却时间<strong>$1</strong>秒",
+    )
+    .replace(/\bCD\s*(\d+(?:\.\d+)?)\s*秒?/gi, "冷却时间<strong>$1</strong>秒");
+}
+
 function resolveDescription(
   raw: string,
   modifiers: Record<string, ModifierRow>,
@@ -498,12 +573,12 @@ function resolveDescription(
     },
   );
 
-  description = description
-    .replace(/<br\s*\/?\s*>/gi, "\n")
-    .replace(/<(?:qiangdiao|emphasize|Shock|T\d+)>/gi, "**")
-    .replace(/<\/>/g, "**")
-    .replace(/<[^>]+>/g, "")
+  description = normalizeCooldownStyle(
+    convertGameEmphasisTags(description.replace(/<br\s*\/?\s*>/gi, "\n")),
+  )
+    .replace(/<(?!\/?strong(?:\s|>))[^>]+>/gi, "")
     .replace(/\*{4,}/g, "**")
+    .replace(/[\u200B\uFEFF]/g, "")
     .replace(/[ \t]+\n/g, "\n")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
@@ -522,6 +597,7 @@ function hasDescriptionPlaceholder(description: string): boolean {
 function normalizeDescription(description: string): string {
   return description
     .normalize("NFKC")
+    .replace(/<[^>]+>/g, "")
     .replace(/\*\*/g, "")
     .replace(/[\s`_~，。,.、；;：:！？!?（）()\[\]【】“”"'《》<>]/g, "")
     .trim();
@@ -540,13 +616,27 @@ function buildDescriptionAudit(
   hasIdentityConflict: boolean,
 ): DescriptionAudit {
   const localDescription = String(local.data.description ?? "").trim();
-  const candidateSource = record.overrideDescription
-    ? "override"
-    : record.mgeDescription
-      ? "mge"
-      : record.attrDescription
-        ? "attr-list"
-        : "none";
+  const mgeComplete = Boolean(
+    record.mgeDescription &&
+      record.mgeUnresolvedTokens.length === 0 &&
+      !hasDescriptionPlaceholder(record.mgeDescription),
+  );
+  const overrideComplete = Boolean(
+    record.overrideDescription &&
+      record.overrideUnresolvedTokens.length === 0 &&
+      !hasDescriptionPlaceholder(record.overrideDescription),
+  );
+  const candidateSource = mgeComplete
+    ? "mge"
+    : overrideComplete
+      ? "override"
+      : record.mgeDescription
+        ? "mge"
+        : record.overrideDescription
+          ? "override"
+          : record.attrDescription
+            ? "attr-list"
+            : "none";
   const candidate =
     candidateSource === "override"
       ? record.overrideDescription
@@ -604,7 +694,9 @@ function buildDescriptionAudit(
     syncBlockedReason = "incomplete-candidate";
   } else if (sourceConflict) syncBlockedReason = "source-conflict";
   else if (localMatchesCandidate) syncBlockedReason = "already-current";
-  else if (!localIsBlank && !localHasPlaceholder) syncBlockedReason = "specific-drift-review";
+  else if (!localIsBlank && !localHasPlaceholder) {
+    syncBlockedReason = "specific-drift-review";
+  }
 
   return {
     id: record.id,
@@ -644,7 +736,10 @@ function iconInfo(assetPath: string): {
 
   const packagePath = assetPath.split(".")[0];
   const baseName = path.posix.basename(packagePath);
-  const icon = baseName.match(/MGE_(\d+)/i)?.[1] ?? baseName.match(/(\d+)$/)?.[1] ?? "";
+  const icon =
+    baseName.match(/MGE_(\d+(?:_\d+)*)$/i)?.[1] ??
+    baseName.match(/(\d+(?:_\d+)*)$/)?.[1] ??
+    "";
   const relativePath = packagePath.startsWith("/Game/")
     ? `${packagePath.slice("/Game/".length)}.png`
     : "";
@@ -744,17 +839,38 @@ function buildRecords(): PerkRecord[] {
       attrList,
       attributeDescriptions,
     );
-    const candidate =
-      overrideResolved.description || mgeResolved.description || attrResolved.description;
-    const candidateTokens = overrideResolved.description
-      ? overrideResolved.unresolvedTokens
-      : mgeResolved.description
+    const mgeComplete = Boolean(
+      mgeResolved.description &&
+        mgeResolved.unresolvedTokens.length === 0 &&
+        !hasDescriptionPlaceholder(mgeResolved.description),
+    );
+    const overrideComplete = Boolean(
+      overrideResolved.description &&
+        overrideResolved.unresolvedTokens.length === 0 &&
+        !hasDescriptionPlaceholder(overrideResolved.description),
+    );
+    const candidate = mgeComplete
+      ? mgeResolved.description
+      : overrideComplete
+        ? overrideResolved.description
+        : mgeResolved.description || overrideResolved.description || attrResolved.description;
+    const candidateTokens =
+      candidate === mgeResolved.description
         ? mgeResolved.unresolvedTokens
-        : [];
+        : candidate === overrideResolved.description
+          ? overrideResolved.unresolvedTokens
+          : [];
     const assetPath = item.IconPath?.NormalIcon?.AssetPathName ?? "";
     const icon = iconInfo(assetPath);
     const primaryWeaponTypes = splitNumberList(row.SuitableWeaponType);
     const fallbackWeaponTypes = splitNumberList(row.SuitableWeaponTypeList);
+    const weaponItems = splitNumberList(row.SuittableWeaponItem);
+    const weaponNames = weaponItems
+      .map((weaponItemId) => textValue(items[String(weaponItemId)]?.Name))
+      .filter(Boolean);
+    const unresolvedWeaponItems = weaponItems.filter(
+      (weaponItemId) => !textValue(items[String(weaponItemId)]?.Name),
+    );
 
     records.push({
       id,
@@ -766,7 +882,9 @@ function buildRecords(): PerkRecord[] {
       iconAssetPath: assetPath,
       iconSourcePath: icon.sourcePath,
       weaponType: primaryWeaponTypes.length > 0 ? primaryWeaponTypes : fallbackWeaponTypes,
-      weaponItems: splitNumberList(row.SuittableWeaponItem),
+      weaponItems,
+      weaponNames,
+      unresolvedWeaponItems,
       tags: splitNumberList(row.TagList)
         .map((tagId) => tagNames.get(tagId) ?? String(tagId))
         .filter(Boolean),
@@ -830,6 +948,12 @@ function comparableArray(value: unknown): string {
   return JSON.stringify(Array.isArray(value) ? value.map(Number).sort((a, b) => a - b) : []);
 }
 
+function comparableStringArray(value: unknown): string {
+  return JSON.stringify(
+    Array.isArray(value) ? value.map(String).sort((a, b) => a.localeCompare(b, "zh-CN")) : [],
+  );
+}
+
 function yamlValue(value: unknown): string {
   if (typeof value === "string") return JSON.stringify(value);
   if (typeof value === "number" || typeof value === "boolean") return String(value);
@@ -859,6 +983,134 @@ function safeFileName(name: string): string {
   return name.replace(/[<>:"/\\|?*]/g, "-").replace(/[. ]+$/g, "");
 }
 
+function fileHash(filePath: string): string {
+  return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
+}
+
+function buildBulkImportPlans(
+  records: PerkRecord[],
+  existing: ExistingPerk[],
+): BulkImportPlan[] {
+  const sorted = [...records].sort((left, right) => Number(left.id) - Number(right.id));
+  const existingPaths = new Set(
+    existing.map((perk) => path.resolve(perk.filePath).toLowerCase()),
+  );
+  const baseGroups = new Map<string, PerkRecord[]>();
+
+  for (const record of sorted) {
+    if (!record.icon || !record.iconSourcePath || !fs.existsSync(record.iconSourcePath)) {
+      throw new Error(`批量导入候选缺少实际图标源: ${record.id} ${record.name}`);
+    }
+    const basePath = path.join(
+      PERKS_DIR,
+      `slot-${record.slot}`,
+      `${safeFileName(record.name)}.mdx`,
+    );
+    const key = path.resolve(basePath).toLowerCase();
+    const group = baseGroups.get(key) ?? [];
+    group.push(record);
+    baseGroups.set(key, group);
+  }
+
+  const plannedPaths = new Set<string>();
+  const plannedIcons = new Map<string, { hash: string; destination: string }>();
+  const plans: BulkImportPlan[] = [];
+
+  for (const record of sorted) {
+    const slotDir = path.join(PERKS_DIR, `slot-${record.slot}`);
+    const safeName = safeFileName(record.name);
+    const basePath = path.join(slotDir, `${safeName}.mdx`);
+    const baseKey = path.resolve(basePath).toLowerCase();
+    const needsIdSuffix =
+      (baseGroups.get(baseKey)?.length ?? 0) > 1 || existingPaths.has(baseKey);
+    const fileName = needsIdSuffix ? `${safeName}-${record.id}.mdx` : `${safeName}.mdx`;
+    const filePath = path.join(slotDir, fileName);
+    const fileKey = path.resolve(filePath).toLowerCase();
+
+    if (existingPaths.has(fileKey) || plannedPaths.has(fileKey) || fs.existsSync(filePath)) {
+      throw new Error(`批量导入目标冲突: ${filePath}`);
+    }
+    plannedPaths.add(fileKey);
+
+    const sourceHash = fileHash(record.iconSourcePath);
+    const iconCandidates = [record.icon, `${record.icon}_${record.id}`];
+    let icon = "";
+    let iconDestination = "";
+    let copyPlannedIcon = false;
+
+    for (const candidate of iconCandidates) {
+      const destination = path.join(ICONS_DIR, `${candidate}.png`);
+      const iconKey = path.resolve(destination).toLowerCase();
+      const planned = plannedIcons.get(iconKey);
+      if (planned) {
+        if (planned.hash === sourceHash) {
+          icon = candidate;
+          iconDestination = planned.destination;
+          break;
+        }
+        continue;
+      }
+
+      if (fs.existsSync(destination)) {
+        if (fileHash(destination) !== sourceHash) continue;
+        plannedIcons.set(iconKey, { hash: sourceHash, destination });
+        icon = candidate;
+        iconDestination = destination;
+        break;
+      }
+
+      plannedIcons.set(iconKey, { hash: sourceHash, destination });
+      icon = candidate;
+      iconDestination = destination;
+      copyPlannedIcon = true;
+      break;
+    }
+
+    if (!icon || !iconDestination) {
+      throw new Error(`无法为不同内容的图标分配稳定名称: ${record.id} ${record.name}`);
+    }
+
+    plans.push({
+      record,
+      filePath,
+      fileName,
+      icon,
+      iconDestination,
+      copyIcon: copyPlannedIcon,
+    });
+  }
+
+  return plans;
+}
+
+function writeBulkImportReport(plans: BulkImportPlan[]): void {
+  const slotCounts = new Map<number, number>();
+  for (const plan of plans) {
+    slotCounts.set(plan.record.slot, (slotCounts.get(plan.record.slot) ?? 0) + 1);
+  }
+
+  const lines = [
+    "# 新增插件导入报告",
+    "",
+    `总数：${plans.length}。Slot 1：${slotCounts.get(1) ?? 0}；Slot 2：${slotCounts.get(2) ?? 0}；Slot 3：${slotCounts.get(3) ?? 0}；Slot 4：${slotCounts.get(4) ?? 0}。`,
+    "",
+  ];
+
+  for (let slot = 1; slot <= 4; slot++) {
+    const items = plans.filter((plan) => plan.record.slot === slot);
+    lines.push(`## Slot ${slot}（${items.length}）`, "", "| Title | ItemID | 文件名 | 上线状态 |", "|---|---:|---|---|");
+    for (const item of items) {
+      const title = item.record.name.replace(/\|/g, "\\|");
+      const status = item.record.collectable ? "已上线" : "未上线";
+      lines.push(`| ${title} | ${item.record.id} | \`${item.fileName}\` | ${status} |`);
+    }
+    lines.push("");
+  }
+
+  fs.mkdirSync(path.dirname(BULK_IMPORT_REPORT), { recursive: true });
+  fs.writeFileSync(BULK_IMPORT_REPORT, `${lines.join("\n")}\n`, "utf8");
+}
+
 function createMdx(record: PerkRecord, season: string): string {
   const lines = [
     "---",
@@ -868,13 +1120,20 @@ function createMdx(record: PerkRecord, season: string): string {
     `rarity: ${record.rarity}`,
     `icon: ${yamlValue(record.icon)}`,
     `weaponType: ${yamlValue(record.weaponType)}`,
+  ];
+
+  if (record.weaponNames.length > 0) {
+    lines.push(`weaponNames: ${yamlValue(record.weaponNames)}`);
+  }
+
+  lines.push(
     `CollectMODItem: ${Number(record.collectable)}`,
     `MakeMODItem: ${Number(record.craftable)}`,
     `IsCooked: ${record.isCooked}`,
     `season: ${yamlValue(season)}`,
     `description: ${yamlValue(record.description)}`,
     "draft: true",
-  ];
+  );
 
   if (record.tags.length > 0) {
     lines.push("keywords:", ...record.tags.map((tag) => `  - ${yamlValue(tag)}`));
@@ -884,13 +1143,21 @@ function createMdx(record: PerkRecord, season: string): string {
   return lines.join("\n");
 }
 
-function copyIcon(record: PerkRecord): "copied" | "existing" | "missing" | "none" {
+function copyIcon(
+  record: PerkRecord,
+  overwriteMismatch = false,
+): "copied" | "updated" | "existing" | "conflict" | "missing" | "none" {
   if (!record.icon) return "none";
   if (!record.iconSourcePath || !fs.existsSync(record.iconSourcePath)) return "missing";
 
   fs.mkdirSync(ICONS_DIR, { recursive: true });
   const destination = path.join(ICONS_DIR, `${record.icon}.png`);
-  if (fs.existsSync(destination)) return "existing";
+  if (fs.existsSync(destination)) {
+    if (fileHash(destination) === fileHash(record.iconSourcePath)) return "existing";
+    if (!overwriteMismatch) return "conflict";
+    fs.copyFileSync(record.iconSourcePath, destination);
+    return "updated";
+  }
   fs.copyFileSync(record.iconSourcePath, destination);
   return "copied";
 }
@@ -945,26 +1212,35 @@ function main() {
   );
 
   const selected = allRecords.filter((record) => {
+    if (options.allWithIcons) {
+      return Boolean(
+        record.icon &&
+          record.iconSourcePath &&
+          fs.existsSync(record.iconSourcePath),
+      );
+    }
     if (hasSelector) return options.ids.has(record.id) || selectedNameIds.has(record.id);
     if (options.includeHidden) return true;
     return record.collectable;
   });
 
-  const identityConflicts = existing.flatMap((local) => {
-    if (!local.id) return [];
-    const officialRecord = findUniqueRecordByName(
-      local.name,
-      recordsByName,
-      recordsByInternalName,
-    );
-    if (!officialRecord || officialRecord.id === local.id) return [];
-    return [{
-      name: local.name,
-      localId: local.id,
-      refsId: officialRecord.id,
-      filePath: local.filePath,
-    }];
-  });
+  const identityConflicts = options.allWithIcons
+    ? []
+    : existing.flatMap((local) => {
+        if (!local.id) return [];
+        const officialRecord = findUniqueRecordByName(
+          local.name,
+          recordsByName,
+          recordsByInternalName,
+        );
+        if (!officialRecord || officialRecord.id === local.id) return [];
+        return [{
+          name: local.name,
+          localId: local.id,
+          refsId: officialRecord.id,
+          filePath: local.filePath,
+        }];
+      });
   const identityConflictFiles = new Set(
     identityConflicts.map((conflict) => conflict.filePath),
   );
@@ -981,6 +1257,10 @@ function main() {
   }> = [];
 
   for (const record of selected) {
+    if (options.allWithIcons) {
+      if (!existingById.has(record.id)) missing.push(record);
+      continue;
+    }
     let byId = existingById.get(record.id);
     if (byId && identityConflictFiles.has(byId.filePath)) {
       const preferredRecord = findUniqueRecordByName(
@@ -1015,12 +1295,39 @@ function main() {
       !hasIdentityConflict &&
       !options.syncStatus &&
       !options.syncIds &&
-      !options.syncDescriptions
+      !options.syncDescriptions &&
+      !options.syncIcons &&
+      !options.syncApplicability
     ) {
       if (isBlank(local.data.id)) fields.push({ key: "id", value: record.id });
       if (isBlank(local.data.icon) && record.icon) fields.push({ key: "icon", value: record.icon });
       if (isBlank(local.data.weaponType) && record.weaponType.length > 0) {
         fields.push({ key: "weaponType", value: record.weaponType });
+      }
+      if (isBlank(local.data.weaponNames) && record.weaponNames.length > 0) {
+        fields.push({ key: "weaponNames", value: record.weaponNames });
+      }
+    }
+    if (
+      options.syncIcons &&
+      record.icon &&
+      String(local.data.icon ?? "") !== record.icon
+    ) {
+      fields.push({ key: "icon", value: record.icon });
+    }
+    if (options.syncApplicability) {
+      if (
+        comparableArray(local.data.weaponType) !== comparableArray(record.weaponType) &&
+        (!isBlank(local.data.weaponType) || record.weaponType.length > 0)
+      ) {
+        fields.push({ key: "weaponType", value: record.weaponType });
+      }
+      if (
+        comparableStringArray(local.data.weaponNames) !==
+          comparableStringArray(record.weaponNames) &&
+        (!isBlank(local.data.weaponNames) || record.weaponNames.length > 0)
+      ) {
+        fields.push({ key: "weaponNames", value: record.weaponNames });
       }
     }
     if (
@@ -1045,15 +1352,18 @@ function main() {
     if (Number(local.data.rarity) !== record.rarity) {
       driftFields.rarity = { local: local.data.rarity, refs: record.rarity };
     }
-    if (!isBlank(local.data.icon) && record.icon && String(local.data.icon) !== record.icon) {
+    if (record.icon && String(local.data.icon ?? "") !== record.icon) {
       driftFields.icon = { local: local.data.icon, refs: record.icon };
     }
     if (
-      !isBlank(local.data.weaponType) &&
-      record.weaponType.length > 0 &&
       comparableArray(local.data.weaponType) !== comparableArray(record.weaponType)
     ) {
       driftFields.weaponType = { local: local.data.weaponType, refs: record.weaponType };
+    }
+    if (
+      comparableStringArray(local.data.weaponNames) !== comparableStringArray(record.weaponNames)
+    ) {
+      driftFields.weaponNames = { local: local.data.weaponNames, refs: record.weaponNames };
     }
     if (Object.keys(driftFields).length > 0) {
       drifts.push({
@@ -1078,6 +1388,34 @@ function main() {
     return record ? !record.collectable : false;
   });
   const unresolved = selected.filter((record) => record.unresolvedTokens.length > 0);
+  const unresolvedWeaponMappings = selected.filter(
+    (record) => record.unresolvedWeaponItems.length > 0,
+  );
+  const iconAssetDrifts = selected.flatMap((record) => {
+    const local = existingById.get(record.id);
+    if (!local || identityConflictFiles.has(local.filePath)) return [];
+    if (!record.icon || !record.iconSourcePath || !fs.existsSync(record.iconSourcePath)) return [];
+    const destination = path.join(ICONS_DIR, `${record.icon}.png`);
+    if (!fs.existsSync(destination)) {
+      return [{
+        id: record.id,
+        name: record.name,
+        icon: record.icon,
+        status: "missing" as const,
+        sourcePath: record.iconSourcePath,
+        destination,
+      }];
+    }
+    if (fileHash(destination) === fileHash(record.iconSourcePath)) return [];
+    return [{
+      id: record.id,
+      name: record.name,
+      icon: record.icon,
+      status: "content-mismatch" as const,
+      sourcePath: record.iconSourcePath,
+      destination,
+    }];
+  });
   const nameConflicts = selected.filter(
     (record) => record.internalName && record.internalName !== record.name,
   );
@@ -1159,46 +1497,100 @@ function main() {
     }
   }
   const effectivePatches = Array.from(patchesByFile.values());
+  const bulkImportPlans = options.allWithIcons
+    ? buildBulkImportPlans(missing, existing)
+    : [];
 
   const writeResult = {
     created: [] as string[],
     patched: [] as Array<{ filePath: string; fields: string[] }>,
     copiedIcons: [] as string[],
+    updatedIcons: [] as string[],
+    conflictingIcons: [] as string[],
     missingIcons: [] as string[],
+    reportPath: "",
   };
 
   if (options.write) {
-    for (const item of effectivePatches) {
-      const updated = patchFrontmatter(item.existing.content, item.fields);
-      if (updated !== item.existing.content) {
-        fs.writeFileSync(item.existing.filePath, updated, "utf8");
-        writeResult.patched.push({
-          filePath: item.existing.filePath,
-          fields: item.fields.map((field) => field.key),
+    if (options.allWithIcons) {
+      fs.mkdirSync(ICONS_DIR, { recursive: true });
+      for (const plan of bulkImportPlans) {
+        if (!plan.copyIcon) continue;
+        fs.copyFileSync(plan.record.iconSourcePath, plan.iconDestination);
+        writeResult.copiedIcons.push(plan.icon);
+      }
+
+      for (const plan of bulkImportPlans) {
+        fs.mkdirSync(path.dirname(plan.filePath), { recursive: true });
+        const record = { ...plan.record, icon: plan.icon };
+        fs.writeFileSync(plan.filePath, createMdx(record, "pending"), {
+          encoding: "utf8",
+          flag: "wx",
         });
+        writeResult.created.push(plan.filePath);
+      }
+      if (bulkImportPlans.length > 0) writeBulkImportReport(bulkImportPlans);
+      if (fs.existsSync(BULK_IMPORT_REPORT)) {
+        writeResult.reportPath = BULK_IMPORT_REPORT;
+      }
+    } else {
+      for (const item of effectivePatches) {
+        const updated = patchFrontmatter(item.existing.content, item.fields);
+        if (updated !== item.existing.content) {
+          fs.writeFileSync(item.existing.filePath, updated, "utf8");
+          writeResult.patched.push({
+            filePath: item.existing.filePath,
+            fields: item.fields.map((field) => field.key),
+          });
+        }
+
+        if (
+          !options.syncStatus &&
+          !options.syncIds &&
+          !options.syncDescriptions &&
+          !options.syncIcons &&
+          !options.syncApplicability
+        ) {
+          const iconStatus = copyIcon(item.record);
+          if (iconStatus === "copied") writeResult.copiedIcons.push(item.record.icon);
+          if (iconStatus === "conflict") writeResult.conflictingIcons.push(item.record.icon);
+          if (iconStatus === "missing") writeResult.missingIcons.push(item.record.iconAssetPath);
+        }
       }
 
-      if (!options.syncStatus && !options.syncIds && !options.syncDescriptions) {
-        const iconStatus = copyIcon(item.record);
-        if (iconStatus === "copied") writeResult.copiedIcons.push(item.record.icon);
-        if (iconStatus === "missing") writeResult.missingIcons.push(item.record.iconAssetPath);
+      if (options.syncIcons) {
+        for (const record of selected) {
+          const local = existingById.get(record.id);
+          if (!local || identityConflictFiles.has(local.filePath)) continue;
+          const iconStatus = copyIcon(record, true);
+          if (iconStatus === "copied") writeResult.copiedIcons.push(record.icon);
+          if (iconStatus === "updated") writeResult.updatedIcons.push(record.icon);
+          if (iconStatus === "missing") writeResult.missingIcons.push(record.iconAssetPath);
+        }
       }
-    }
 
-    for (const record of
-      options.syncStatus || options.syncIds || options.syncDescriptions ? [] : missing) {
-      const slotDir = path.join(PERKS_DIR, `slot-${record.slot}`);
-      const filePath = path.join(slotDir, `${safeFileName(record.name)}.mdx`);
-      fs.mkdirSync(slotDir, { recursive: true });
-      if (fs.existsSync(filePath)) {
-        throw new Error(`拒绝覆盖已有文件: ${filePath}`);
+      for (const record of
+        options.syncStatus ||
+        options.syncIds ||
+        options.syncDescriptions ||
+        options.syncIcons ||
+        options.syncApplicability
+          ? []
+          : missing) {
+        const slotDir = path.join(PERKS_DIR, `slot-${record.slot}`);
+        const filePath = path.join(slotDir, `${safeFileName(record.name)}.mdx`);
+        fs.mkdirSync(slotDir, { recursive: true });
+        if (fs.existsSync(filePath)) {
+          throw new Error(`拒绝覆盖已有文件: ${filePath}`);
+        }
+        fs.writeFileSync(filePath, createMdx(record, options.season), "utf8");
+        writeResult.created.push(filePath);
+
+        const iconStatus = copyIcon(record);
+        if (iconStatus === "copied") writeResult.copiedIcons.push(record.icon);
+        if (iconStatus === "conflict") writeResult.conflictingIcons.push(record.icon);
+        if (iconStatus === "missing") writeResult.missingIcons.push(record.iconAssetPath);
       }
-      fs.writeFileSync(filePath, createMdx(record, options.season), "utf8");
-      writeResult.created.push(filePath);
-
-      const iconStatus = copyIcon(record);
-      if (iconStatus === "copied") writeResult.copiedIcons.push(record.icon);
-      if (iconStatus === "missing") writeResult.missingIcons.push(record.iconAssetPath);
     }
   }
 
@@ -1212,7 +1604,13 @@ function main() {
 
   const report = {
     mode: options.write ? "write" : "audit",
-    scope: hasSelector ? "selected" : options.includeHidden ? "all" : "collectable",
+    scope: options.allWithIcons
+      ? "all-with-icons"
+      : hasSelector
+        ? "selected"
+        : options.includeHidden
+          ? "all"
+          : "collectable",
     refs: {
       total: allRecords.length,
       selected: selected.length,
@@ -1233,6 +1631,15 @@ function main() {
         passiveSkillId: record.passiveSkillId,
       })),
     },
+    applicabilityWarnings: {
+      unresolvedWeaponItems: unresolvedWeaponMappings.map((record) => ({
+        id: record.id,
+        name: record.name,
+        weaponItems: record.weaponItems,
+        unresolvedWeaponItems: record.unresolvedWeaponItems,
+      })),
+    },
+    iconAssetDrifts,
     local: {
       total: existing.length,
       orphan: orphanExisting.map((perk) => ({
@@ -1254,6 +1661,21 @@ function main() {
       description: record.description,
       unresolvedTokens: record.unresolvedTokens,
     })),
+    bulkImport: {
+      enabled: options.allWithIcons,
+      candidateCount: bulkImportPlans.length,
+      reportPath: options.allWithIcons ? BULK_IMPORT_REPORT : "",
+      plans: bulkImportPlans.map((plan) => ({
+        id: plan.record.id,
+        name: plan.record.name,
+        slot: plan.record.slot,
+        filePath: plan.filePath,
+        icon: plan.icon,
+        iconSourcePath: plan.record.iconSourcePath,
+        iconDestination: plan.iconDestination,
+        copyIcon: plan.copyIcon,
+      })),
+    },
     matchedByName: matchedByName.map(({ record, existing: local }) => ({
       id: record.id,
       name: record.name,
@@ -1298,8 +1720,11 @@ function main() {
   console.log(
     `refs 插件 ${allRecords.length}，当前范围 ${selected.length}，本地 MDX ${existing.length}`,
   );
+  if (options.allWithIcons) {
+    console.log(`图标全量导入候选 ${bulkImportPlans.length}，已完成全部目标预检`);
+  }
   console.log(
-    `缺失 ${missing.length}，可补空字段 ${effectivePatches.length}，字段漂移 ${drifts.length}，未解析描述 ${unresolved.length}`,
+    `缺失 ${missing.length}，可补空字段 ${effectivePatches.length}，字段漂移 ${drifts.length}，图标资产漂移 ${iconAssetDrifts.length}，未解析描述 ${unresolved.length}，未解析专属武器 ${unresolvedWeaponMappings.length}`,
   );
   console.log(
     `本地 ID 冲突 ${identityConflicts.length}，正式名/内部名冲突 ${nameConflicts.length}，图标号/技能号不一致 ${iconSkillMismatches.length}`,
@@ -1323,6 +1748,16 @@ function main() {
     "图标号/技能号不一致",
     report.identityWarnings.iconSkillMismatches,
     (item) => `${item.id} ${item.name}: icon=${item.icon}, passive=${item.passiveSkillId}`,
+  );
+  printItems(
+    "图标资产漂移",
+    report.iconAssetDrifts,
+    (item) => `${item.id} ${item.name}: ${item.icon} ${item.status}`,
+  );
+  printItems(
+    "未解析专属武器",
+    report.applicabilityWarnings.unresolvedWeaponItems,
+    (item) => `${item.id} ${item.name}: ${item.unresolvedWeaponItems.join(", ")}`,
   );
 
   printItems("待创建", report.missing, (item) => `${item.id} [${item.slot}] ${item.name}`);
@@ -1350,8 +1785,11 @@ function main() {
 
   if (options.write) {
     console.log(
-      `\n已创建 ${writeResult.created.length}，已补字段 ${writeResult.patched.length}，已复制图标 ${writeResult.copiedIcons.length}`,
+      `\n已创建 ${writeResult.created.length}，已补字段 ${writeResult.patched.length}，已复制图标 ${writeResult.copiedIcons.length}，已更新图标 ${writeResult.updatedIcons.length}`,
     );
+    if (writeResult.conflictingIcons.length > 0) {
+      console.log(`图标内容冲突 ${writeResult.conflictingIcons.length}`);
+    }
     if (writeResult.missingIcons.length > 0) {
       console.log(`缺失图标 ${writeResult.missingIcons.length}`);
     }

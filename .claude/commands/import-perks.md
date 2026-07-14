@@ -10,13 +10,15 @@
 - 适用范围分为三种：全部武器、标准武器类型、专属武器。分别使用 `weaponType` 和 `weaponNames` 表达，不能把专属武器误判为全部武器。
 - 网站通过 `getAssetPath()` 将插件 `.png` 请求改写到 `/webp/icons/perks/*.webp`。只复制 PNG 会导致图片损坏，导入后必须生成对应 WebP。
 - refs 中混有测试项、占位符、旧版和隐藏插件。默认只处理 `CollectMODItem=1` 的可收集插件；除非用户明确要求，不使用 `--include-hidden`。
-- 字段漂移不自动修正。先结合游戏语义和现有页面判断，尤其是改名、槽位、稀有度、图标和适用武器变化。
+- 字段漂移默认不自动修正。图标和适用武器只有在审计确认后，才分别使用 `--sync-icons`、`--sync-applicability` 显式同步。
 - 插件正式名称优先使用 `CommonItemDataTable[MODItemID].Name.LocalizedString`，`WeaponModItemData.MODName` 只作为回退。两者不一致时，不得仅凭 `MODName` 将本地页面判为 orphan。
 - 同一正式名同时存在旧隐藏条目和唯一 `CollectMODItem=1` 条目时，名称查询与身份核对应优先该唯一可收集条目；多个可收集候选才判为歧义并要求使用 `--ids`。
 - ItemID 只认 `CommonItemDataTable` 行键/`ItemID` 与 `WeaponModItemData.MODItemID` 的同 ID 连接。`IconPath` 中的 MGE 编号和 `PassiveSkill_ID` 属于其他命名空间，可能复用或错位，禁止用它们反推 ItemID。
-- 描述来源按 `HuntingGroundRoguelikeWeaponModTable.OverrideDesc`、`PassiveSkill_ID` 对应 MGE 描述、`AttrList` 属性拼接的顺序处理。每条链路独立核验，不把空 `PassiveSkill_ID` 直接当作无效果。
-- `OverrideDesc` 与 MGE 同时存在时必须比较数值。已确认的 MGE/Buff/Ability/蓝图跨表冲突也记录在导入器的 `KNOWN_DESCRIPTION_CONFLICTS`。`descriptionAudit.sourceConflict=true` 会阻断自动写入；这类差异通常代表玩法覆盖、版本漂移或多条来源更新不同步。
+- 普通插件详情优先使用 `PassiveSkill_ID` 对应的完整 MGE 描述；MGE 缺失或仍含未解析 token 时，才回退到 `HuntingGroundRoguelikeWeaponModTable.OverrideDesc`，最后才使用 `AttrList` 属性拼接。Roguelike `OverrideDesc` 是玩法简写，不能覆盖完整详情。
+- 用户提供游戏内插件详情截图时，先用多个已确认插件的完整句子反查共同原始表，再从同一张表读取目标插件。当前已确认武器插件详情正文来自 `DataTables/MGE/DT_GPMGESkillDesConfig_BD.json` 的 `MGEDescription`；不得因为目标同时存在猎场 `OverrideDesc` 就改用猎场简写。
+- `OverrideDesc` 与 MGE 同时存在时必须比较数值。已有非空描述即使等于旧 Override 简写，也只报告差异，不自动升级；先人工分为“小幅省略”“严重缺失”“疑似旧版本”“真正冲突”，确认后再修改。数值冲突、未解析 token 或已确认的 MGE/Buff/Ability/蓝图跨表冲突会继续阻断自动写入。
 - 人工确认并维护的描述可设置 `description_override: true`。导入器仍会审计来源，但任何描述同步都会跳过该文件。
+- 字面意义的 refs 图标全量导入必须使用 `--all-with-icons`。该模式按 ItemID 判断本地缺失，仅选择实际 PNG 源存在的记录，并在写入前完成所有 MDX 和图标目标预检。
 
 ## Step 1: 审计范围
 
@@ -44,6 +46,31 @@ pnpm exec tsx scripts/import-perks.ts
 pnpm exec tsx scripts/import-perks.ts --all --sync-descriptions --json
 ```
 
+需要全量核对图标与适用武器时，分别使用：
+
+```bash
+pnpm exec tsx scripts/import-perks.ts --all --sync-icons --json
+pnpm exec tsx scripts/import-perks.ts --all --sync-applicability --json
+```
+
+确认 `patchable` 只包含预期字段后，再增加 `--write`。`--sync-icons` 以同一 ItemID 的 `CommonItemDataTable.IconPath.NormalIcon` 为准，并校正本地 PNG；`--sync-applicability` 同步 `SuitableWeaponType` 和 `SuittableWeaponItem -> CommonItemDataTable.Name`。
+
+需要导入 refs 中所有具有实际 PNG 图标源、但本地没有同 ItemID MDX 的插件时，先运行：
+
+```bash
+pnpm exec tsx scripts/import-perks.ts --all-with-icons --json
+```
+
+检查 `bulkImport.candidateCount` 和 `bulkImport.plans` 后写入：
+
+```bash
+pnpm exec tsx scripts/import-perks.ts --all-with-icons --write
+```
+
+此模式包括隐藏和旧版条目，固定写入 `season: pending`、`draft: true`。同槽同名条目全部使用 `标题-ItemID.mdx`；普通目标已被其他 ID 占用时也使用该稳定后缀。历史版本允许正式名称相同，`--all-with-icons` 对现有记录只按 ItemID 判断，不通过名称推断身份冲突；普通名称审计仍优先唯一可收集版本。同名历史版本后续也必须使用 ItemID 管理。该模式不能与名称/ID 选择器或任何 `--sync-*` 参数组合。
+
+图标名保留资源 basename 中的完整数字后缀，例如 `1312068001_1`。目标 PNG 已存在时先比较内容；内容相同才复用，内容不同则使用附加 ItemID 的稳定名称，禁止覆盖或把不同源图合并到同一图标。
+
 重点检查：
 
 - `missing`：refs 中存在、本站尚未创建的插件
@@ -57,6 +84,8 @@ pnpm exec tsx scripts/import-perks.ts --all --sync-descriptions --json
 - `identityWarnings.idConflicts`：本地非空 ID 与同名正式条目的 ItemID 不一致；禁止自动补字段或同步状态，必须先人工核对并修正 ID
 - `identityWarnings.nameConflicts`：CommonItem 正式名称与 `MODName` 内部名不一致
 - `identityWarnings.iconSkillMismatches`：图标资源号与 `PassiveSkill_ID` 不一致；这是告警而不是错误，分别按图标和效果链路使用
+- `drifts.icon`：现有 `icon` 与同一 ItemID 的 CommonItem 图标不一致，可用 `--sync-icons` 修正
+- `drifts.weaponType` / `drifts.weaponNames`：现有适用范围与解包字段不一致，可用 `--sync-applicability` 修正
 
 `descriptionAudit.category` 的主要取值：
 
@@ -72,7 +101,44 @@ pnpm exec tsx scripts/import-perks.ts --all --sync-descriptions --json
 | `manual-override` | MDX 设置了 `description_override: true` | 禁止 |
 | `identity-conflict` | 本地 ID 与正式同名条目冲突 | 禁止 |
 
-候选描述优先使用同一 ItemID 的 `HuntingGroundRoguelikeWeaponModTable.OverrideDesc`，没有时才使用 `PassiveSkill_ID -> MGE`。`sourceConflict` 使用保守规则：两条来源的完整数值集合必须一致；一方省略数值也会报告冲突，交给人工判断。`knownConflict` 会给出已确认的数据质量或语义冲突；涉及 Buff、Ability 或蓝图的子集同时记录为 `runtimeConflict`。确认新冲突后应维护 `KNOWN_DESCRIPTION_CONFLICTS`，不能仅在 MDX 中临时绕过。
+候选描述优先使用 `PassiveSkill_ID -> MGE` 的完整文案；MGE 不完整时才回退到同一 ItemID 的 `HuntingGroundRoguelikeWeaponModTable.OverrideDesc`。`sourceConflict` 使用保守规则：两条来源的完整数值集合必须一致；一方省略数值也会报告冲突，交给人工判断。`knownConflict` 会给出已确认的数据质量或语义冲突；涉及 Buff、Ability 或蓝图的子集同时记录为 `runtimeConflict`。确认新冲突后应维护 `KNOWN_DESCRIPTION_CONFLICTS`，不能仅在 MDX 中临时绕过。
+
+### 游戏内截图反查描述源
+
+不要从单个目标插件的多个候选文案中猜哪条像游戏文案。正确流程是先用用户提供的其他已确认截图定位详情页实际读取的原始表，再在同一表中按技能 ID 查询目标：
+
+1. 从至少两个已确认截图抄取有辨识度的完整短句，不只搜索插件名或单个数值。
+2. 在 `refs/Exports/NZM/Content/` 中用 `rg --fixed-strings` 搜索短句，确认多个截图都落在同一描述表。
+3. 使用 `CommonItemDataTable.ItemID -> WeaponModItemData.MODItemID -> PassiveSkill_ID` 建立目标插件链路。
+4. 将 `PassiveSkill_ID` 的 `技能ID:等级` 转为 MGE 行键 `技能ID_等级`，读取同表 `MGEDescription`。
+5. `DT_GPMGESkillDesConfigTable_Main.json` 是合并表，可用于导入器解析；需要判断游戏详情文案来源时，以截图反查命中的 `DT_GPMGESkillDesConfig_BD.json` 为证据锚点，并核对两表对应行。
+6. `HuntingGroundRoguelikeWeaponModTable.OverrideDesc` 只表示猎场玩法卡片文案，可能严重缩写、使用旧数值或描述另一触发方式。除非用户明确要求复刻猎场卡片，否则不能用它覆盖插件详情页。
+7. 截图明确显示的新版本数值高于解包表可信度。例如截图中的肾上腺素为每颗 `14%`、最高 `84%`，即使同表旧 token 解析为其他数值，也应保留截图值并设置 `description_override: true`。
+
+已确认可作为反查锚点的详情截图及 MGE 行键：
+
+| 插件 | MGE 行键 |
+|---|---|
+| 异态共鸣 | `1315138001_1` |
+| 相位强袭 | `1315145001_1` |
+| 冥河送葬 | `1312053001_1` |
+| 兽躯双衍 | `1312040001_1` |
+| 幸运龙炎 | `1312032005_1` |
+| 肾上腺素 | `1313031004_1` |
+
+2026-07-14 按上述同表链路确认的五个冲突项：
+
+| 插件 | MGE 行键 | 采用的详情描述要点 |
+|---|---|---|
+| 致命爆炸 | `1316200001_1` | 命中 `8%` 概率；半径 `5` 米；`130%` 攻击力；冷却 `2` 秒 |
+| 武器穿透 | `1316201001_1` | 子弹穿透能力 `+2` |
+| 导弹轰炸 | `1316210001_1` | 暴击生成 `3` 发跟踪导弹；冷却 `2` 秒 |
+| 换弹冲击 | `1316211001_1` | 持续 `5` 秒；每秒冲击波；基础 `500%` 攻击力；每 `1%` 暴击率或换弹速度提高 `1%` 伤害 |
+| 爆毒蚀域 | `1316213001_1` | 暴击投射毒液罐并生成减速毒域；冷却 `5` 秒 |
+
+游戏描述中的 `<qiangdiao>...</>` 等强调标签统一转换为平衡的 `<strong>...</strong>`，不能机械替换为 `**...**`。CommonMark 会把 `有**40%**概率` 这类百分号后紧接中文的写法当作普通文本，导致页面显示原始星号。解析时同时移除 `U+200B` / `U+FEFF` 零宽字符；人工维护的 Markdown 强调仍由插件详情页兼容。
+
+冷却时间不使用 `（CD20秒）`、`(CD20)` 或 `CD20秒` 缩写。导入器统一转换为 `，冷却时间<strong>20</strong>秒`；编辑描述时尽量保留 `<strong>20%</strong>` 这种数值强调格式。
 
 已确认的描述 ID 错配只通过 `DESCRIPTION_ID_ALIASES` 显式修正。目前仅允许：
 
@@ -206,7 +272,7 @@ IsCooked: true
 
 `CollectMODItem=1` 只代表主插件展示/收集开关开启。若插件还需要进入特定玩法掉落池，继续检查对应玩法表；例如猎场肉鸽需要存在于 `HuntingGroundRoguelikeWeaponModTable` 且 `IsShow=true`，不能把两层开关混为一谈。
 
-注意：导入脚本只能直接取得 `SuitableWeaponType` 数字 ID，不能可靠地把 `SuittableWeaponItem` 转成武器中文名。写入后必须继续执行 Step 3，补齐 `weaponNames`。
+导入脚本会直接解析 `SuitableWeaponType`，并将 `SuittableWeaponItem` 中的武器 ItemID 连接到 `CommonItemDataTable.Name.LocalizedString`，自动写入 `weaponNames`。无法解析的武器 ItemID 必须出现在审计告警中，不能静默当作全部武器。
 
 写入完成后立即转换插件图标：
 
@@ -263,7 +329,7 @@ weaponType: [14, 2, 3, 7]
 
 ### 专属武器
 
-当 `SuittableWeaponItem.Values` 非空时，对每个 ItemID 查询：
+当 `SuittableWeaponItem.Values` 非空时，导入器会对每个 ItemID 查询：
 
 ```text
 DataTables/System/Items/CommonItemDataTable.json
@@ -281,6 +347,12 @@ weaponNames: ["飓风之龙"]
 ```text
 WeaponModItemData[20703040429].SuittableWeaponItem = [20103000010]
 CommonItemDataTable[20103000010].Name.LocalizedString = 飓风之龙
+```
+
+现有页面缺失或漂移时，先审计再运行：
+
+```bash
+pnpm exec tsx scripts/import-perks.ts --all --sync-applicability --write
 ```
 
 必要时再到 `DataTables/LuaDataTable/WeaponItemConfigTable.json` 检查该 ItemID 的 `WeaponType`，并结合插件描述、对应武器 MDX 确认语义。
