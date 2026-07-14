@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { getAssetPath } from "@/lib/path";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import type { SpriteConfig } from "@/constants/sprites";
@@ -17,7 +18,7 @@ export function FilterCheckbox({
   centerClass,
 }: {
   label: string;
-  icon?: string;
+  icon?: ReactNode;
   iconSrc?: string;
   sprite?: SpriteConfig;
   checked: boolean;
@@ -69,7 +70,7 @@ interface FilterSectionProps<T> {
   title: string;
   items: {
     type: T;
-    icon?: string;
+    icon?: ReactNode;
     iconSrc?: string;
     color?: string;
     label?: string;
