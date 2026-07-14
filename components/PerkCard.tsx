@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Crosshair, Layers3, ScanLine, Sparkles } from "lucide-react";
+import { Crosshair, Layers3, Sparkles } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import type { Rarity, PerkSlot, WeaponType } from "@/types";
@@ -117,45 +117,39 @@ export function PerkDetailCard({
           ) : (
             <div className="space-y-3">
               {(applicableWeaponTypes.length > 0 || hasUnknownWeaponTypes) && (
-                <div className="grid gap-2 sm:grid-cols-[5rem_1fr] sm:items-start">
-                  <span className="pt-2 text-sm text-zinc-500">武器类型</span>
-                  <div className="flex flex-wrap gap-2">
-                    {applicableWeaponTypes.map((type) => (
-                      <span
-                        key={type}
-                        className="inline-flex min-h-9 items-center gap-2 rounded border border-white/10 bg-black/15 px-3 py-1.5 text-sm text-zinc-200"
-                      >
-                        <SpriteIcon
-                          sprite={WEAPON_TYPE_SPRITES[type]}
-                          size={36}
-                          className="shrink-0 opacity-80"
-                        />
-                        {type}
-                      </span>
-                    ))}
-                    {hasUnknownWeaponTypes && (
-                      <span className="inline-flex min-h-9 items-center rounded border border-white/10 bg-black/15 px-3 py-1.5 text-sm text-zinc-400">
-                        其他武器类型
-                      </span>
-                    )}
-                  </div>
+                <div className="flex flex-wrap gap-2">
+                  {applicableWeaponTypes.map((type) => (
+                    <span
+                      key={type}
+                      className="inline-flex min-h-9 items-center gap-2 rounded border border-[#d1ac69]/40 bg-black/15 px-3 py-1.5 text-sm text-zinc-200"
+                    >
+                      <SpriteIcon
+                        sprite={WEAPON_TYPE_SPRITES[type]}
+                        size={44}
+                        className="shrink-0"
+                      />
+                      {type}
+                    </span>
+                  ))}
+                  {hasUnknownWeaponTypes && (
+                    <span className="inline-flex min-h-9 items-center rounded border border-[#d1ac69]/40 bg-black/15 px-3 py-1.5 text-sm text-zinc-400">
+                      其他武器类型
+                    </span>
+                  )}
                 </div>
               )}
 
               {exclusiveWeaponNames.length > 0 && (
-                <div className="grid gap-2 sm:grid-cols-[5rem_1fr] sm:items-start">
-                  <span className="pt-2 text-sm text-zinc-500">专属武器</span>
-                  <div className="flex flex-wrap gap-2">
-                    {exclusiveWeaponNames.map((weaponName) => (
-                      <span
-                        key={weaponName}
-                        className="inline-flex min-h-9 items-center gap-2 rounded border border-[#d1ac69]/25 bg-[#d1ac69]/8 px-3 py-1.5 text-sm font-medium text-[#e2c38b]"
-                      >
-                        <ScanLine aria-hidden="true" className="h-4 w-4" />
-                        {weaponName}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-2">
+                  {exclusiveWeaponNames.map((weaponName) => (
+                    <span
+                      key={weaponName}
+                      className="inline-flex min-h-9 items-center gap-2 rounded border border-[#d1ac69]/25 bg-[#d1ac69]/8 px-3 py-1.5 text-sm font-medium text-[#e2c38b]"
+                    >
+                      <Crosshair aria-hidden="true" className="h-4 w-4" />
+                      {weaponName}
+                    </span>
+                  ))}
                 </div>
               )}
             </div>
