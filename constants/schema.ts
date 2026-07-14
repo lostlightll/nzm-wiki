@@ -81,7 +81,7 @@ export const FIELD_TYPES: Record<string, string> = {
 
 // 3. 定义下拉菜单的具体选项 (你的最新定义)
 export const FIELD_OPTIONS: Record<string, string[]> = {
-  rarity: ["稀有", "史诗", "传说"],
+  rarity: ["传说", "史诗", "稀有"],
   use_type: ["主武器", "副武器", "近战武器"],
   weapon_type: [
     "突击步枪",
