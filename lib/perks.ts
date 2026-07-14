@@ -30,6 +30,9 @@ export function getAllPerks(): Perk[] {
         icon: data.icon,
         effects: [],
         description: data.description,
+        collectModItem: data.CollectMODItem as 0 | 1 | undefined,
+        makeModItem: data.MakeMODItem as 0 | 1 | undefined,
+        isCooked: data.IsCooked as boolean | undefined,
       };
       perks.push(perk);
     }
@@ -58,6 +61,9 @@ export function getPerkByName(name: string): Perk | null {
         icon: data.icon,
         effects: [],
         description: data.description,
+        collectModItem: data.CollectMODItem as 0 | 1 | undefined,
+        makeModItem: data.MakeMODItem as 0 | 1 | undefined,
+        isCooked: data.IsCooked as boolean | undefined,
       };
     }
   }

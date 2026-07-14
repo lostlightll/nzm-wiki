@@ -160,6 +160,9 @@ export interface Perk {
   weaponNames?: string[];
   effects: PerkEffect[];
   description?: string;
+  collectModItem?: 0 | 1;
+  makeModItem?: 0 | 1;
+  isCooked?: boolean;
 }
 
 // ------------------------------------------------------------
