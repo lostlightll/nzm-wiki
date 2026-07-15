@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { href: "/traps", label: "塔防陷阱" },
   { href: "/enemies/td", label: "塔防敌人" },
   { href: "/perks", label: "插件图鉴" },
+  { href: "/overlimit", label: "超限图鉴" },
   { href: "/credits", label: "致谢" },
 ];
 

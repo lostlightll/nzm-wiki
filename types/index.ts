@@ -166,6 +166,26 @@ export interface Perk {
 }
 
 // ------------------------------------------------------------
+// 超限卡片相关类型
+// ------------------------------------------------------------
+
+export interface OverlimitCardTag {
+  id: string;
+  name: string;
+  icon: string;
+  tone: string;
+}
+
+export interface OverlimitCard {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  quality: number;
+  tags: OverlimitCardTag[];
+}
+
+// ------------------------------------------------------------
 // 伤害计算器相关类型
 // ------------------------------------------------------------
 
