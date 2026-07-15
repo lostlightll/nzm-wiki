@@ -2,12 +2,12 @@
 
 import { useMemo } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Crosshair, LockKeyhole } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
 import type { Perk, PerkSlot, Rarity, WeaponType } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
+import { PerkHoverPreview } from "@/components/PerkHoverPreview";
 import {
   RARITY_KEY_MAP,
   RARITY_CARD_STYLES,
@@ -85,30 +85,31 @@ function PerkCard({ perk }: { perk: Perk }) {
       : perk.rarity;
   const rarityKey = RARITY_KEY_MAP[rarityStr] || "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
+  const href = `/perks/${perk.slug.split("/").map(encodeURIComponent).join("/")}`;
 
   return (
-    <Link href={`/perks/${perk.slug.split("/").map(encodeURIComponent).join("/")}`}>
+    <PerkHoverPreview perk={perk} href={href}>
       <div
-        className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4 transition-transform hover:scale-[1.05]`}
+        className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4 transition-transform duration-200 group-hover:scale-[1.05] motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
       >
-      {perk.icon ? (
-        <Image
-          src={getAssetPath(`/icons/perks/${perk.icon}.png`)}
-          alt={perk.name}
-          width={80}
-          height={80}
-          className="h-20 w-20 object-contain"
-        />
-      ) : (
-        <div className="flex h-20 w-20 items-center justify-center bg-zinc-700 text-zinc-400">
-          ?
-        </div>
-      )}
-      <h3 className="mt-2 text-center text-sm font-medium leading-tight text-white">
-        {perk.name}
-      </h3>
+        {perk.icon ? (
+          <Image
+            src={getAssetPath(`/icons/perks/${perk.icon}.png`)}
+            alt={perk.name}
+            width={80}
+            height={80}
+            className="h-20 w-20 object-contain"
+          />
+        ) : (
+          <div className="flex h-20 w-20 items-center justify-center bg-zinc-700 text-zinc-400">
+            ?
+          </div>
+        )}
+        <h3 className="mt-2 text-center text-sm font-medium leading-tight text-white">
+          {perk.name}
+        </h3>
       </div>
-    </Link>
+    </PerkHoverPreview>
   );
 }
 
