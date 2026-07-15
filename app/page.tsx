@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowUpRight,
+  GalleryVerticalEnd,
   GitBranch,
   Search,
   Skull,
@@ -18,6 +19,7 @@ interface NavCardProps {
   href: string;
   icon: React.ReactNode;
   title: string;
+  wide?: boolean;
 }
 
 const NAV_ITEMS = [
@@ -25,13 +27,19 @@ const NAV_ITEMS = [
   { href: "/perks", icon: <Zap className="h-8 w-8 sm:h-10 sm:w-10" />, title: "插件图鉴" },
   { href: "/traps", icon: <Target className="h-8 w-8 sm:h-10 sm:w-10" />, title: "塔防陷阱" },
   { href: "/enemies/td", icon: <Skull className="h-8 w-8 sm:h-10 sm:w-10" />, title: "塔防敌人" },
+  {
+    href: "/overlimit",
+    icon: <GalleryVerticalEnd className="h-8 w-8 sm:h-10 sm:w-10" />,
+    title: "超限图鉴",
+    wide: true,
+  },
 ];
 
-function NavCard({ href, icon, title }: NavCardProps) {
+function NavCard({ href, icon, title, wide = false }: NavCardProps) {
   return (
     <Link
       href={href}
-      className="home-nav-card group flex flex-col items-center justify-center rounded-xl border border-zinc-600/90 bg-zinc-800/50 p-4 transition-[transform,border-color,background-color,box-shadow] duration-200 hover:scale-[1.02] hover:border-zinc-400/80 hover:bg-zinc-700/50 active:scale-[0.98]"
+      className={`home-nav-card group flex flex-col items-center justify-center rounded-xl border border-zinc-600/90 bg-zinc-800/50 transition-[transform,border-color,background-color,box-shadow] duration-200 hover:scale-[1.02] hover:border-zinc-400/80 hover:bg-zinc-700/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1014] active:scale-[0.98] ${wide ? "col-span-2 px-4 py-0.5" : "p-4"}`}
     >
       <span className="relative z-10 text-zinc-400 transition-colors group-hover:text-white">{icon}</span>
       <span className="relative z-10 mt-2 text-base font-medium text-white sm:text-lg">{title}</span>
@@ -57,7 +65,7 @@ export default function Home() {
           逆战未来 维基
         </h1>
         <p className="mt-2 text-sm text-zinc-400 sm:text-base">
-          武器、插件、塔防陷阱与敌人资料库
+          武器、插件、超限卡片、塔防陷阱与敌人资料库
         </p>
       </div>
 
@@ -70,6 +78,7 @@ export default function Home() {
               href={item.href}
               icon={item.icon}
               title={item.title}
+              wide={item.wide}
             />
           ))}
         </div>
