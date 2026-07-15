@@ -77,9 +77,9 @@ export function PerkHoverPreview({
       const spaceBelow =
         window.innerHeight - anchorRect.bottom - viewportPadding;
       const placement =
-        spaceAbove < previewRect.height + gap && spaceBelow > spaceAbove
-          ? "below"
-          : "above";
+        spaceBelow < previewRect.height + gap && spaceAbove > spaceBelow
+          ? "above"
+          : "below";
       const desiredTop =
         placement === "below"
           ? anchorRect.bottom + gap
