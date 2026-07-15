@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { Crosshair, Layers3, Sparkles } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
+import { getPerkWeaponApplicability } from "@/lib/perk-applicability";
 import { SpriteIcon } from "@/components/SpriteIcon";
-import type { Rarity, PerkSlot, WeaponType } from "@/types";
+import type { Rarity, PerkSlot } from "@/types";
 import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
-import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 
 const SLOT_LABELS: Record<PerkSlot, string> = {
@@ -35,25 +35,12 @@ export function PerkDetailCard({
 }: PerkDetailCardProps) {
   const rarityKey = rarity ? RARITY_KEY_MAP[rarity] : "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-  const weaponTypeIds = weaponType ?? [];
-  const applicableWeaponTypes = Array.from(
-    new Set(
-      weaponTypeIds
-        .map((id) => WEAPON_TYPE_ID_MAP[id])
-        .filter((type): type is WeaponType => type !== undefined),
-    ),
-  );
-  const hasUnknownWeaponTypes =
-    applicableWeaponTypes.length < weaponTypeIds.length;
-  const exclusiveWeaponNames = Array.from(
-    new Set(
-      (weaponNames ?? [])
-        .map((weaponName) => weaponName.trim())
-        .filter(Boolean),
-    ),
-  );
-  const appliesToAllWeapons =
-    weaponTypeIds.length === 0 && exclusiveWeaponNames.length === 0;
+  const {
+    applicableWeaponTypes,
+    exclusiveWeaponNames,
+    hasUnknownWeaponTypes,
+    appliesToAllWeapons,
+  } = getPerkWeaponApplicability(weaponType, weaponNames);
 
   return (
     <section
