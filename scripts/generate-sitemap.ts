@@ -87,6 +87,7 @@ function generateSitemap() {
     { url: "/" },
     { url: "/weapons" },
     { url: "/perks" },
+    { url: "/overlimit" },
     { url: "/traps" },
     { url: "/enemies" },
     { url: "/enemies/lc" },
