@@ -19,6 +19,7 @@ const REF_FILES = {
     "DataTables/HuntingGroundRoguelike/HuntingGroundRoguelikeWeaponModTable.json",
   mods: "DataTables/LuaDataTable/WeaponModItemData.json",
   items: "DataTables/System/Items/CommonItemDataTable.json",
+  weaponItems: "DataTables/WeaponItemTable.json",
   sets: "DataTables/LuaDataTable/WeaponModSetTable.json",
 } as const;
 
@@ -58,6 +59,11 @@ interface ItemRow {
   Quality?: number;
 }
 
+interface WeaponItemRow {
+  WeaponName?: string;
+  ModelID?: string | number;
+}
+
 interface SetRow {
   SetId: number;
   SetName?: LocalizedText;
@@ -83,11 +89,18 @@ interface OverlimitCard {
   slot: 1 | 2 | 3 | 4;
   weaponType: number[];
   weaponItems: number[];
+  weaponNames: string[];
   tags: OverlimitTag[];
 }
 
 const SET_ICON_FALLBACKS: Record<string, string> = {
   "1008": "UI/UI_Textures/Icons/Rogue/T_Icons_Rogue_Frenzy.png",
+};
+
+// Source data assigns these two cards to weapon 20101000024 instead of 20103000024.
+const WEAPON_ITEM_OVERRIDES: Record<string, number[]> = {
+  "20703040344": [20103000024],
+  "20703040346": [20103000024],
 };
 
 function loadRows<T>(relativePath: string): Record<string, T> {
@@ -165,6 +178,7 @@ async function main(): Promise<void> {
   const cardRows = loadRows<CardRow>(REF_FILES.cards);
   const modRows = loadRows<ModRow>(REF_FILES.mods);
   const itemRows = loadRows<ItemRow>(REF_FILES.items);
+  const weaponItemRows = loadRows<WeaponItemRow>(REF_FILES.weaponItems);
   const setRows = loadRows<SetRow>(REF_FILES.sets);
 
   fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
@@ -173,6 +187,20 @@ async function main(): Promise<void> {
 
   const tagById = new Map<string, OverlimitTag>();
   const missingSetIcons: string[] = [];
+  const weaponNamesById = new Map<number, Set<string>>();
+
+  const addWeaponName = (id: number, name: string) => {
+    if (!Number.isFinite(id) || !name) return;
+    const names = weaponNamesById.get(id) ?? new Set<string>();
+    names.add(name);
+    weaponNamesById.set(id, names);
+  };
+
+  for (const [id, weapon] of Object.entries(weaponItemRows)) {
+    const name = cleanText(weapon.WeaponName ?? "");
+    addWeaponName(Number(id), name);
+    addWeaponName(Number(weapon.ModelID), name);
+  }
 
   for (const [id, set] of Object.entries(setRows)) {
     if (set.IsShow === false) continue;
@@ -226,7 +254,22 @@ async function main(): Promise<void> {
     const quality = card.OverrideQuality || item.Quality || 0;
     const slotValues = mod.MODSlotIndex?.Values ?? [];
     const weaponType = card.SuitableWeaponTypeList?.Values ?? [];
-    const weaponItems = card.SuitableWeaponItemIdList?.Values ?? [];
+    const weaponItems =
+      WEAPON_ITEM_OVERRIDES[id] ?? card.SuitableWeaponItemIdList?.Values ?? [];
+    const weaponNames = Array.from(
+      new Set(
+        weaponItems.map((weaponItemId) => {
+          const names = weaponNamesById.get(weaponItemId);
+          assertValue(
+            names?.size === 1,
+            names
+              ? `Ambiguous weapon item ${weaponItemId} for card ${id}: ${[...names].join(", ")}`
+              : `Unknown weapon item ${weaponItemId} for card ${id}`,
+          );
+          return [...names][0];
+        }),
+      ),
+    );
     assertValue(name, `Missing card name: ${id}`);
     assertValue(description, `Missing card description: ${id}`);
     assertValue(quality, `Missing card quality: ${id}`);
@@ -274,6 +317,7 @@ async function main(): Promise<void> {
       slot,
       weaponType,
       weaponItems,
+      weaponNames,
       tags,
     });
     qualityCounts.set(quality, (qualityCounts.get(quality) ?? 0) + 1);

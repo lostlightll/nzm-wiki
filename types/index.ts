@@ -185,6 +185,7 @@ export interface OverlimitCard {
   slot: PerkSlot;
   weaponType: number[];
   weaponItems: number[];
+  weaponNames: string[];
   tags: OverlimitCardTag[];
 }
 
