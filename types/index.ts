@@ -183,6 +183,8 @@ export interface OverlimitCard {
   icon: string;
   quality: number;
   slot: PerkSlot;
+  weaponType: number[];
+  weaponItems: number[];
   tags: OverlimitCardTag[];
 }
 

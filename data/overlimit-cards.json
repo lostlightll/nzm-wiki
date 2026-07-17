@@ -6,6 +6,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1007",
@@ -28,6 +30,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -50,6 +54,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314130001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -72,6 +78,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -94,6 +102,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -116,6 +126,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1004",
@@ -138,6 +150,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1007",
@@ -160,6 +174,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -182,6 +198,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1008",
@@ -204,6 +222,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -226,6 +246,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1005",
@@ -248,6 +270,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1003",
@@ -270,6 +294,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
     "quality": 5,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1007",
@@ -292,6 +318,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
     "quality": 5,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -314,6 +342,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315126001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20119000001
+    ],
     "tags": [
       {
         "id": "1005",
@@ -336,6 +368,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315114001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -358,6 +392,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
     "quality": 5,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1005",
@@ -380,6 +416,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
     "quality": 5,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -402,6 +440,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
     "quality": 5,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1005",
@@ -424,6 +464,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
     "quality": 5,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -446,6 +488,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
     "quality": 5,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1004",
@@ -468,6 +512,13 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [
+      20005000018,
+      20006000004,
+      20006000006,
+      20001000024
+    ],
     "tags": [
       {
         "id": "1000",
@@ -490,6 +541,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
     "quality": 5,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1005",
@@ -512,6 +565,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
     "quality": 5,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -534,6 +589,12 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316107001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [
+      4,
+      8,
+      16
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -556,6 +617,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316115001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -578,6 +641,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312039001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20101000024
+    ],
     "tags": [
       {
         "id": "1006",
@@ -600,6 +667,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312040001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20101000024
+    ],
     "tags": [
       {
         "id": "1006",
@@ -622,6 +693,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316167001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [
+      3
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -644,6 +719,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316103001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -666,6 +743,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316174001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1004",
@@ -688,6 +767,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315119001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -710,6 +791,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -732,6 +815,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -754,6 +839,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312046001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -776,6 +863,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316155001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -798,6 +887,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316168001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1004",
@@ -820,6 +911,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -842,6 +935,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056004.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1003",
@@ -864,6 +959,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312062001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20101000024
+    ],
     "tags": [
       {
         "id": "1008",
@@ -886,6 +985,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056006.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1003",
@@ -908,6 +1009,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312057001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20119000001
+    ],
     "tags": [
       {
         "id": "1006",
@@ -930,6 +1035,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312057002.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20119000001
+    ],
     "tags": [
       {
         "id": "1007",
@@ -952,6 +1061,14 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312063001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20005000018,
+      20006000004,
+      20006000006,
+      20001000024,
+      20103000010
+    ],
     "tags": [
       {
         "id": "1000",
@@ -974,6 +1091,14 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20005000018,
+      20006000004,
+      20006000006,
+      20001000024,
+      20103000010
+    ],
     "tags": [
       {
         "id": "1001",
@@ -996,6 +1121,13 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316192001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -1018,6 +1150,13 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313031004.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -1040,6 +1179,13 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
     "quality": 5,
     "slot": 4,
+    "weaponType": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -1062,6 +1208,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
     "quality": 5,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1008",
@@ -1084,6 +1232,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
     "quality": 5,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1007",
@@ -1106,6 +1256,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
     "quality": 5,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1003",
@@ -1128,6 +1280,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
     "quality": 5,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -1150,6 +1304,13 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315200001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -1172,6 +1333,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315103001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -1194,6 +1357,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315132001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1216,6 +1381,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315136001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -1238,6 +1405,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -1260,6 +1429,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315157001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1282,6 +1453,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315170001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1005",
@@ -1304,6 +1477,14 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315181001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [
+      20005000018,
+      20006000004,
+      20006000006,
+      20001000024,
+      20103000010
+    ],
     "tags": [
       {
         "id": "1000",
@@ -1326,6 +1507,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315196001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1348,6 +1531,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315198001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -1370,6 +1555,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314126001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -1392,6 +1579,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315136001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -1414,6 +1603,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314130001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -1436,6 +1627,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314149001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -1458,6 +1651,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314193001.png",
     "quality": 5,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -1480,6 +1675,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314190001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1003",
@@ -1502,6 +1699,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313105001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1524,6 +1723,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313192001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1546,6 +1747,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313166001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1568,6 +1771,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313110001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -1590,6 +1795,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313114001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1612,6 +1819,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313155001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1634,6 +1843,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313194001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1003",
@@ -1656,6 +1867,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313144001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1678,6 +1891,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313126001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1700,6 +1915,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314108001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -1722,6 +1939,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316193001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1744,6 +1963,12 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316182001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20106000030,
+      20116000011,
+      20107000035
+    ],
     "tags": [
       {
         "id": "1007",
@@ -1766,6 +1991,12 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316183001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20106000030,
+      20116000011,
+      20107000035
+    ],
     "tags": [
       {
         "id": "1007",
@@ -1788,6 +2019,14 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20005000018,
+      20006000004,
+      20006000006,
+      20001000024,
+      20103000010
+    ],
     "tags": [
       {
         "id": "1000",
@@ -1810,6 +2049,13 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316108001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1832,6 +2078,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315108001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -1854,6 +2102,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312074003.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20106000030
+    ],
     "tags": [
       {
         "id": "1000",
@@ -1876,6 +2128,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312074002.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20106000030
+    ],
     "tags": [
       {
         "id": "1000",
@@ -1898,6 +2154,13 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312068002.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -1920,6 +2183,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312038001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20106000007
+    ],
     "tags": [
       {
         "id": "1001",
@@ -1942,6 +2209,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312032005.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -1964,6 +2233,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056005.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -1986,6 +2257,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312057003.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1005",
@@ -2008,6 +2281,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312066001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -2030,6 +2305,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312032003.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20103000010
+    ],
     "tags": [
       {
         "id": "1006",
@@ -2052,6 +2331,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312060001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [
+      20101000024
+    ],
     "tags": [
       {
         "id": "1008",
@@ -2074,6 +2357,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -2096,6 +2381,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -2118,6 +2405,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314130001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -2140,6 +2429,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -2162,6 +2453,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -2184,6 +2477,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1004",
@@ -2206,6 +2501,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1007",
@@ -2228,6 +2525,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2250,6 +2549,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1008",
@@ -2272,6 +2573,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1000",
@@ -2294,6 +2597,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1005",
@@ -2316,6 +2621,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1003",
@@ -2338,6 +2645,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314192001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2360,6 +2669,13 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313195001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2382,6 +2698,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313193001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2404,6 +2722,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313191001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2426,6 +2746,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314187001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1005",
@@ -2448,6 +2770,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314188001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1007",
@@ -2470,6 +2794,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315197001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1004",
@@ -2492,6 +2818,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313101001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -2514,6 +2842,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313106001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1008",
@@ -2536,6 +2866,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313107001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2558,6 +2890,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314112001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -2580,6 +2914,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314116001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -2602,6 +2938,10 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314118001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [
+      3
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1008",
@@ -2624,6 +2964,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2646,6 +2988,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315111001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1001",
@@ -2668,6 +3012,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315120001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1007",
@@ -2690,6 +3036,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315126001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2712,6 +3060,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315127001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -2734,6 +3084,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314127001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1005",
@@ -2756,6 +3108,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313140001.png",
     "quality": 4,
     "slot": 1,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1008",
@@ -2778,6 +3132,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314132001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2800,6 +3156,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314135001.png",
     "quality": 4,
     "slot": 2,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1004",
@@ -2822,6 +3180,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315139001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -2844,6 +3204,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315143001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1008",
@@ -2866,6 +3228,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315144001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2888,6 +3252,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315171001.png",
     "quality": 4,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1005",
@@ -2910,6 +3276,13 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
     "quality": 5,
     "slot": 3,
+    "weaponType": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1008",
@@ -2932,6 +3305,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
     "quality": 5,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1002",
@@ -2954,6 +3329,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
     "quality": 5,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1006",
@@ -2976,6 +3353,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1004",
@@ -2998,6 +3377,8 @@
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
     "quality": 5,
     "slot": 3,
+    "weaponType": [],
+    "weaponItems": [],
     "tags": [
       {
         "id": "1003",

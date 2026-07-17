@@ -2,12 +2,16 @@
 
 import { useMemo } from "react";
 import Image from "next/image";
-import { Crosshair, LockKeyhole } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
-import type { Perk, PerkSlot, Rarity, WeaponType } from "@/types";
+import type { Perk, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
 import { PerkHoverPreview } from "@/components/PerkHoverPreview";
+import {
+  matchesWeaponApplicability,
+  WeaponApplicabilityFilterSection,
+  type WeaponApplicabilityFilter,
+} from "@/components/WeaponApplicabilityFilter";
 import {
   RARITY_KEY_MAP,
   RARITY_CARD_STYLES,
@@ -15,35 +19,12 @@ import {
   SLOT_OPTIONS,
   RARITY_OPTIONS,
 } from "@/constants/perks";
-import { WEAPON_TYPES, WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
 
 type AvailabilityFilter = "online" | "offline";
-
-const UNIVERSAL_PERKS_FILTER = "全部武器类型" as const;
-const EXCLUSIVE_PERKS_FILTER = "专属插件" as const;
-
-type WeaponApplicabilityFilter =
-  | WeaponType
-  | typeof UNIVERSAL_PERKS_FILTER
-  | typeof EXCLUSIVE_PERKS_FILTER;
 
 const AVAILABILITY_OPTIONS: { type: AvailabilityFilter; label: string }[] = [
   { type: "online", label: "已上线" },
   { type: "offline", label: "未上线" },
-];
-
-const WEAPON_APPLICABILITY_OPTIONS = [
-  {
-    type: UNIVERSAL_PERKS_FILTER,
-    label: "通用插件",
-    icon: <Crosshair aria-hidden="true" className="h-5 w-5" />,
-  },
-  {
-    type: EXCLUSIVE_PERKS_FILTER,
-    label: EXCLUSIVE_PERKS_FILTER,
-    icon: <LockKeyhole aria-hidden="true" className="h-5 w-5" />,
-  },
-  ...WEAPON_TYPES,
 ];
 
 const DEFAULT_RARITIES: Rarity[] = ["传说"];
@@ -55,27 +36,6 @@ const FILTER_STORAGE_KEYS = {
   availability: "perk-availability",
   weaponApplicability: "perk-weapon-applicability",
 } as const;
-
-function matchesWeaponApplicability(
-  perk: Perk,
-  selected: Set<WeaponApplicabilityFilter>,
-) {
-  if (selected.size === 0) return true;
-
-  const weaponTypeIds = perk.weaponType ?? [];
-  const isExclusive = (perk.weaponNames?.length ?? 0) > 0;
-  const appliesToAllWeapons = weaponTypeIds.length === 0 && !isExclusive;
-
-  for (const filter of selected) {
-    if (filter === UNIVERSAL_PERKS_FILTER && appliesToAllWeapons) return true;
-    if (filter === EXCLUSIVE_PERKS_FILTER && isExclusive) return true;
-    if (weaponTypeIds.some((id) => WEAPON_TYPE_ID_MAP[id] === filter)) {
-      return true;
-    }
-  }
-
-  return false;
-}
 
 function PerkCard({ perk }: { perk: Perk }) {
   // 处理数字或字符串格式的稀有度
@@ -153,8 +113,9 @@ export default function PerksPageClient({
         availabilityState.selected.size === 0 ||
         availabilityState.selected.has(availability);
       const weaponApplicabilityMatch = matchesWeaponApplicability(
-        perk,
         weaponApplicabilityState.selected,
+        perk.weaponType,
+        (perk.weaponNames?.length ?? 0) > 0,
       );
       return (
         slotMatch &&
@@ -205,12 +166,9 @@ export default function PerksPageClient({
           centerClass="justify-center"
         />
 
-        <FilterSection
-          title="武器类型"
-          items={WEAPON_APPLICABILITY_OPTIONS}
+        <WeaponApplicabilityFilterSection
           selected={weaponApplicabilityState.selected}
           onToggle={weaponApplicabilityState.toggle}
-          centerClass="sm:justify-center"
         />
 
         <FilterSection
