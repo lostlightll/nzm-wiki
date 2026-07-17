@@ -42,6 +42,9 @@ interface CardRow {
 interface ModRow {
   MODItemID: number;
   MODName?: LocalizedText;
+  MODSlotIndex?: {
+    Values?: number[];
+  };
   ModSets?: string;
 }
 
@@ -72,6 +75,7 @@ interface OverlimitCard {
   description: string;
   icon: string;
   quality: number;
+  slot: 1 | 2 | 3 | 4;
   tags: OverlimitTag[];
 }
 
@@ -208,9 +212,16 @@ async function main(): Promise<void> {
     const name = textValue(item.Name) || textValue(mod.MODName);
     const description = textValue(card.OverrideDesc);
     const quality = card.OverrideQuality || item.Quality || 0;
+    const slotValues = mod.MODSlotIndex?.Values ?? [];
     assertValue(name, `Missing card name: ${id}`);
     assertValue(description, `Missing card description: ${id}`);
     assertValue(quality, `Missing card quality: ${id}`);
+    assertValue(slotValues.length === 1, `Expected one slot for card ${id}`);
+    const slot = slotValues[0];
+    assertValue(
+      slot === 1 || slot === 2 || slot === 3 || slot === 4,
+      `Invalid slot ${slot} for card ${id}`,
+    );
 
     const sourceIcon = sourcePathFromAsset(card.IconPath?.AssetPathName);
     assertValue(sourceIcon, `Missing card icon reference: ${id}`);
@@ -230,7 +241,7 @@ async function main(): Promise<void> {
       return tag;
     });
 
-    cards.push({ id, name, description, icon, quality, tags });
+    cards.push({ id, name, description, icon, quality, slot, tags });
     qualityCounts.set(quality, (qualityCounts.get(quality) ?? 0) + 1);
   }
 

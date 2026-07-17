@@ -5,6 +5,7 @@
     "description": "武器射击伤害+36%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1007",
@@ -26,6 +27,7 @@
     "description": "武器技能伤害+60%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1001",
@@ -47,6 +49,7 @@
     "description": "武器技能充能效率+50%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314130001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1001",
@@ -68,6 +71,7 @@
     "description": "暴击率+20%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -89,6 +93,7 @@
     "description": "暴伤+40%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -110,6 +115,7 @@
     "description": "伤害减免+20%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1004",
@@ -131,6 +137,7 @@
     "description": "弱点伤害增伤+20%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1007",
@@ -152,6 +159,7 @@
     "description": "爆炸伤害+45%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1002",
@@ -173,6 +181,7 @@
     "description": "武器射击伤害+36%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1008",
@@ -194,6 +203,7 @@
     "description": "武器技能伤害+60%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1000",
@@ -215,6 +225,7 @@
     "description": "全伤害提升+24%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1005",
@@ -236,6 +247,7 @@
     "description": "全伤害提升+24%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1003",
@@ -257,6 +269,7 @@
     "description": "保持不释放武器技能，每5秒增加45%伤害，最多10层，释放技能清零。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
     "quality": 5,
+    "slot": 3,
     "tags": [
       {
         "id": "1007",
@@ -278,6 +291,7 @@
     "description": "保持不射击，每秒增加30%伤害，最多10层，开枪命中清零。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
     "quality": 5,
+    "slot": 3,
     "tags": [
       {
         "id": "1001",
@@ -299,6 +313,7 @@
     "description": "弹射-1，弹道+2",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315126001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1005",
@@ -320,6 +335,7 @@
     "description": "命中敌人5次，对其造成1次电弧伤害（CD5秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315114001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1002",
@@ -341,6 +357,7 @@
     "description": "换弹速度+18%，换弹后，10秒内弹道+2。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
     "quality": 5,
+    "slot": 4,
     "tags": [
       {
         "id": "1005",
@@ -362,6 +379,7 @@
     "description": "武器命中有 5% 概率产生爆炸伤害（CD1秒）",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
     "quality": 5,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -383,6 +401,7 @@
     "description": "子弹穿透+3。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
     "quality": 5,
+    "slot": 3,
     "tags": [
       {
         "id": "1005",
@@ -404,6 +423,7 @@
     "description": "释放武器技能30%概率刷新技能使用次数。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
     "quality": 5,
+    "slot": 1,
     "tags": [
       {
         "id": "1001",
@@ -425,6 +445,7 @@
     "description": "攻击概率恢复10%生命值，生命越低概率越高。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
     "quality": 5,
+    "slot": 4,
     "tags": [
       {
         "id": "1004",
@@ -446,6 +467,7 @@
     "description": "模式切换过充15发子弹（CD10秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1000",
@@ -467,6 +489,7 @@
     "description": "每次射击50%概率弹道+2（CD1秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
     "quality": 5,
+    "slot": 4,
     "tags": [
       {
         "id": "1005",
@@ -488,6 +511,7 @@
     "description": "释放武器技能后普攻附带技能伤害的35%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
     "quality": 5,
+    "slot": 3,
     "tags": [
       {
         "id": "1001",
@@ -509,6 +533,7 @@
     "description": "爆炸范围减少5%，伤害增加30%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316107001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -530,6 +555,7 @@
     "description": "单次攻击命中多个目标可以为武器技能充能3%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316115001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1001",
@@ -551,6 +577,7 @@
     "description": "可分裂炮弹分裂出的小榴弹个数增加2，且每枚小榴弹爆炸伤害提高。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312039001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -572,6 +599,7 @@
     "description": "每次开火连续发射榴弹数量+1。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312040001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -593,6 +621,7 @@
     "description": "武器变为独头弹，但伤害提升600%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316167001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -614,6 +643,7 @@
     "description": "武器累积造成100次伤害后，造成大范围电伤害。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316103001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1002",
@@ -635,6 +665,7 @@
     "description": "命中弱点5次，获得5%总血量的临时护盾（CD2秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316174001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1004",
@@ -656,6 +687,7 @@
     "description": "同时命中的敌人数量越多，伤害越高（7%/人）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315119001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1000",
@@ -677,6 +709,7 @@
     "description": "持续开火每射出一发子弹，武器伤害增加0.5%，最多叠加60层。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1000",
@@ -698,6 +731,7 @@
     "description": "每有一次未暴击的射击，获得6%暴击率加成，暴击后清除。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -719,6 +753,7 @@
     "description": "连续命中弱点3次，进入8s的急速狂热状态（CD15秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312046001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1001",
@@ -740,6 +775,7 @@
     "description": "造成10000伤害后，对周围的目标造成5次爆炸伤害（CD8秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316155001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -761,6 +797,7 @@
     "description": "武器射击造成伤害10%概率回复10%生命值（CD4秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316168001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1004",
@@ -782,6 +819,7 @@
     "description": "使用武器技能获得移速和子弹伤害无衰减效果。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1001",
@@ -803,6 +841,7 @@
     "description": "每移动5秒，对最近单位造成360%攻击力伤害，最大移速加成越高，伤害越高",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056004.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1003",
@@ -824,6 +863,7 @@
     "description": "切刀时，会辟出一道剑气造成伤害。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312062001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1008",
@@ -845,6 +885,7 @@
     "description": "移动30m获得一个抽奖效果（CD8秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056006.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1003",
@@ -866,6 +907,7 @@
     "description": "命中弱点或暴击，弹射次数+3。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312057001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -887,6 +929,7 @@
     "description": "致命链接最大数量+3。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312057002.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1007",
@@ -908,6 +951,7 @@
     "description": "模式1命中100次后切换模式2获得急速狂热效果。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312063001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1000",
@@ -929,6 +973,7 @@
     "description": "模式2射击有概率弹道+2。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1001",
@@ -950,6 +995,7 @@
     "description": "武器爆炸命中一个目标时，可掉落暴击能量球。（CD6秒）",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316192001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -971,6 +1017,7 @@
     "description": "单次开火命中目标的子弹数量越多，伤害越高。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313031004.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -992,6 +1039,7 @@
     "description": "爆炸伤害增加130%，造成多次伤害后可获得急速狂热（CD13秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
     "quality": 5,
+    "slot": 4,
     "tags": [
       {
         "id": "1002",
@@ -1013,6 +1061,7 @@
     "description": "近战武器攻速伤害提升50%，伤害提升250%，且命中回复10点生命。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
     "quality": 5,
+    "slot": 4,
     "tags": [
       {
         "id": "1008",
@@ -1034,6 +1083,7 @@
     "description": "加入1个红扭蛋和4个金扭蛋，红扭蛋效果：急速狂热一直存在，死亡后清空。每11秒抽1个扭蛋。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
     "quality": 5,
+    "slot": 4,
     "tags": [
       {
         "id": "1007",
@@ -1055,6 +1105,7 @@
     "description": "增加暴击、暴伤和移速，每次暴击恢复30点生命（CD2秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
     "quality": 5,
+    "slot": 3,
     "tags": [
       {
         "id": "1003",
@@ -1076,6 +1127,7 @@
     "description": "弱点伤害增加30%，命中弱点最高叠加10层。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
     "quality": 5,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -1097,6 +1149,7 @@
     "description": "爆炸仅命中一人，伤害提升50%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315200001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -1118,6 +1171,7 @@
     "description": "使用武器技能，暴击率+38%，持续10秒。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315103001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1001",
@@ -1139,6 +1193,7 @@
     "description": "每连续射击30发后，武器伤害增加10%，可叠加3层。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315132001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1000",
@@ -1160,6 +1215,7 @@
     "description": "每0.15秒获得暴击率与暴击伤害，开火后清除。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315136001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -1181,6 +1237,7 @@
     "description": "武器技能伤害提升60%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1001",
@@ -1202,6 +1259,7 @@
     "description": "武器造成10000伤害后，武器射击伤害增加9%，最高3层。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315157001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1000",
@@ -1223,6 +1281,7 @@
     "description": "武器伤害受到射程衰减大幅减小。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315170001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1005",
@@ -1244,6 +1303,7 @@
     "description": "主动切换开火模式时，提升该武器射击伤害40%（CD20秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315181001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1000",
@@ -1265,6 +1325,7 @@
     "description": "累计开火30次，进行一次抽奖（CD20秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315196001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1000",
@@ -1286,6 +1347,7 @@
     "description": "抽扭蛋掉落能够增加移速和暴击的能量球。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315198001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -1307,6 +1369,7 @@
     "description": "武器持续开火能叠加0.8%技能充能速度，最多100层。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314126001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1001",
@@ -1328,6 +1391,7 @@
     "description": "暴击获得武器技能充能2.8%（CD0.5秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315136001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1001",
@@ -1349,6 +1413,7 @@
     "description": "武器技能充能速度提升50%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314130001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1001",
@@ -1370,6 +1435,7 @@
     "description": "武器造成10000伤害后，技能充能10%（CD5秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314149001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1001",
@@ -1391,6 +1457,7 @@
     "description": "技能充能效率提升250%，命中和击败目标也能直接充能。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314193001.png",
     "quality": 5,
+    "slot": 2,
     "tags": [
       {
         "id": "1001",
@@ -1412,6 +1479,7 @@
     "description": "移速加成越高，武器充能效率越高（最多70%）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314190001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1003",
@@ -1433,6 +1501,7 @@
     "description": "击杀目标40%概率填充1弹药。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313105001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1000",
@@ -1454,6 +1523,7 @@
     "description": "每次抽奖恢复50%弹药（CD3秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313192001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1000",
@@ -1475,6 +1545,7 @@
     "description": "击杀目标50%概率填充2发弹药。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313166001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1000",
@@ -1496,6 +1567,7 @@
     "description": "使用技能装填全部子弹，换弹速度提升35%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313110001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1001",
@@ -1517,6 +1589,7 @@
     "description": "暴击8次装填6发子弹。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313114001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1000",
@@ -1538,6 +1611,7 @@
     "description": "武器造成10000伤害后，下一次装填，过量填装140%（CD15秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313155001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1000",
@@ -1559,6 +1633,7 @@
     "description": "连续开火30次以上获得18%移速加成。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313194001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1003",
@@ -1580,6 +1655,7 @@
     "description": "使用技能后换弹速度提升45%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313144001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1000",
@@ -1601,6 +1677,7 @@
     "description": "命中弱点2次装填1发子弹。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313126001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1000",
@@ -1622,6 +1699,7 @@
     "description": "命中弱点可为武器技能充能2.5%（CD1秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314108001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1001",
@@ -1643,6 +1721,7 @@
     "description": "拾取敌人死亡掉落的能量球，会形成冲击环造成伤害（CD10秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316193001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1000",
@@ -1664,6 +1743,7 @@
     "description": "召唤物造成伤害时，在玩家和召唤物周围产生冲击环造成伤害（CD3秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316182001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1007",
@@ -1685,6 +1765,7 @@
     "description": "召唤物存在时，每5秒在玩家周围产生冲击环造成伤害。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316183001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1007",
@@ -1706,6 +1787,7 @@
     "description": "模式1开火20%概率弹道+1，模式2开火20%概率弹道+2。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1000",
@@ -1727,6 +1809,7 @@
     "description": "换弹速度提升36%，爆炸范围减少。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316108001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1000",
@@ -1748,6 +1831,7 @@
     "description": "使用主动技能6s内，每2s周期向四周释放一道火环造成伤害。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315108001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1001",
@@ -1769,6 +1853,7 @@
     "description": "炮台模式下，火神炎帝开火时有概率增加1条额外弹线。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312074003.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1000",
@@ -1790,6 +1875,7 @@
     "description": "卡组额外添加红色扭蛋和白色扭蛋，抽取红色扭蛋后“火力宣泄”置为满层，机枪模式射击不消耗“火力宣泄”。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312074002.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1000",
@@ -1811,6 +1897,7 @@
     "description": "榴弹直接命中伤害提高5%，射速提高7%，最高叠加7层。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312068002.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -1832,6 +1919,7 @@
     "description": "榴弹的直击伤害+250%，命中目标后可叠加35层腐蚀之力。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312038001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1001",
@@ -1853,6 +1941,7 @@
     "description": "加入4张红扭蛋，抽到红扭蛋后且获得极速狂热效果。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312032005.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1000",
@@ -1874,6 +1963,7 @@
     "description": "添加火异常时造成额外的单体伤害。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056005.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1002",
@@ -1895,6 +1985,7 @@
     "description": "使用技能后，射击命中可叠加多层火异常。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312057003.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1005",
@@ -1916,6 +2007,7 @@
     "description": "累积命中200次可释放冰锥，并获得3秒急速狂热。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312066001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1001",
@@ -1937,6 +2029,7 @@
     "description": "龙炎弹抛体数量+1并追踪。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312032003.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1006",
@@ -1958,6 +2051,7 @@
     "description": "拔刀斩的攻击范围变大。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312060001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1008",
@@ -1979,6 +2073,7 @@
     "description": "武器射击伤害+12%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1000",
@@ -2000,6 +2095,7 @@
     "description": "武器技能伤害+24%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1001",
@@ -2021,6 +2117,7 @@
     "description": "武器技能充能效率+20%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314130001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1001",
@@ -2042,6 +2139,7 @@
     "description": "暴击率+10%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -2063,6 +2161,7 @@
     "description": "暴伤+20%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -2084,6 +2183,7 @@
     "description": "伤害减免+10%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1004",
@@ -2105,6 +2205,7 @@
     "description": "弱点伤害增伤+8%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1007",
@@ -2126,6 +2227,7 @@
     "description": "爆炸伤害+15%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1002",
@@ -2147,6 +2249,7 @@
     "description": "武器射击伤害+12%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1008",
@@ -2168,6 +2271,7 @@
     "description": "武器技能伤害+24%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1000",
@@ -2189,6 +2293,7 @@
     "description": "全伤害提升+8%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1005",
@@ -2210,6 +2315,7 @@
     "description": "全伤害提升+8%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
+    "slot": 3,
     "tags": [
       {
         "id": "1003",
@@ -2231,6 +2337,7 @@
     "description": "拾取能量球为武器技能充能7.5%（CD1秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314192001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1002",
@@ -2252,6 +2359,7 @@
     "description": "武器造成爆炸仅命中1人，50%概率填充1发弹药。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313195001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1002",
@@ -2273,6 +2381,7 @@
     "description": "消耗5%弹药再抽1次奖（CD4秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313193001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1002",
@@ -2294,6 +2403,7 @@
     "description": "子弹增加时触发1次抽奖（CD20秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313191001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1002",
@@ -2315,6 +2425,7 @@
     "description": "释放武器技能时触发1次抽奖（CD20）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314187001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1005",
@@ -2336,6 +2447,7 @@
     "description": "抽奖时为武器技能充能35%（CD3秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314188001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1007",
@@ -2357,6 +2469,7 @@
     "description": "触发抽奖，武器伤害提升33%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315197001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1004",
@@ -2378,6 +2491,7 @@
     "description": "换弹33%不消耗备弹，伤害提升25%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313101001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -2399,6 +2513,7 @@
     "description": "击败10m内敌人填充3发弹药（CD2秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313106001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1008",
@@ -2420,6 +2535,7 @@
     "description": "击败10m外敌人填充4发弹药（CD2秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313107001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1002",
@@ -2441,6 +2557,7 @@
     "description": "击败10m外敌人为武器技能充能7.5%（CD3秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314112001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1001",
@@ -2462,6 +2579,7 @@
     "description": "换弹时为武器技能充能6%（CD1秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314116001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1006",
@@ -2483,6 +2601,7 @@
     "description": "一次开火触发多次伤害为武器技能充能3%（CD1秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314118001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1008",
@@ -2504,6 +2623,7 @@
     "description": "命中减速的敌人为武器技能充能5%（CD2秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1002",
@@ -2525,6 +2645,7 @@
     "description": "命中弱点积攒1能量，使用技能消耗全部能量提升技能伤害。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315111001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1001",
@@ -2546,6 +2667,7 @@
     "description": "离敌人的距离越近，伤害越高，最高35%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315120001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1007",
@@ -2567,6 +2689,7 @@
     "description": "命中减速的敌人造成额外27%伤害。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315126001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1002",
@@ -2588,6 +2711,7 @@
     "description": "命中弱点可提升7%伤害，叠加6层。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315127001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -2609,6 +2733,7 @@
     "description": "每5次命中消耗1发弹药为武器技能充能1.6%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314127001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1005",
@@ -2630,6 +2755,7 @@
     "description": "破盾后为武器过充100%弹药。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313140001.png",
     "quality": 4,
+    "slot": 1,
     "tags": [
       {
         "id": "1008",
@@ -2651,6 +2777,7 @@
     "description": "添加元素异常时为武器技能充能3%（CD1秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314132001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1002",
@@ -2672,6 +2799,7 @@
     "description": "破盾为武器技能充能25%（CD5秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314135001.png",
     "quality": 4,
+    "slot": 2,
     "tags": [
       {
         "id": "1004",
@@ -2693,6 +2821,7 @@
     "description": "每发弹丸获得20%破韧加成。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315139001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -2714,6 +2843,7 @@
     "description": "破盾后武器伤害增加37.5%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315143001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1008",
@@ -2735,6 +2865,7 @@
     "description": "最后10发子弹伤害提升100%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315144001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1002",
@@ -2756,6 +2887,7 @@
     "description": "距离命中敌人越远，造成伤害越高（最高40%）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315171001.png",
     "quality": 4,
+    "slot": 3,
     "tags": [
       {
         "id": "1005",
@@ -2777,6 +2909,7 @@
     "description": "爆炸命中可以发射2发跟踪导弹，如果仅命中1个单位，则发射5发跟踪弹（CD2秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
     "quality": 5,
+    "slot": 3,
     "tags": [
       {
         "id": "1008",
@@ -2798,6 +2931,7 @@
     "description": "子弹为0时，每秒释放冲击波，持续5秒。每1%换弹速度提升提升冲击波2%伤害。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
     "quality": 5,
+    "slot": 3,
     "tags": [
       {
         "id": "1002",
@@ -2819,6 +2953,7 @@
     "description": "每造成10000点伤害，会在命中的目标位置生成2枚兽神榴弹。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
     "quality": 5,
+    "slot": 3,
     "tags": [
       {
         "id": "1006",
@@ -2840,6 +2975,7 @@
     "description": "暴击时，向身前投射一个毒液罐，爆炸留下毒属性伤害区域并且减速敌人（CD20秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
+    "slot": 4,
     "tags": [
       {
         "id": "1004",
@@ -2861,6 +2997,7 @@
     "description": "暴击获得2%移速，持续10秒，可叠50层，损失血量清空增益。每1%移速转化2%伤害加成。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
     "quality": 5,
+    "slot": 3,
     "tags": [
       {
         "id": "1003",
