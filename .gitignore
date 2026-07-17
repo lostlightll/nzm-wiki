@@ -51,4 +51,8 @@ next-env.d.ts
 /public/search-index.json
 /public/weapon-stats.json
 
+# local generated artifacts
+/outputs/
+/.codex_tmp/
+
 !.claude/commands/lc-enemies.md
