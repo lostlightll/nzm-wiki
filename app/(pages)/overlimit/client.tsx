@@ -99,6 +99,7 @@ const QUALITY_STYLES: Record<
 
 const QUALITY_OPTIONS = [5, 4, 3] as const;
 const SLOT_OPTIONS: readonly PerkSlot[] = [1, 2, 3, 4];
+const ENABLE_WEAPON_APPLICABILITY_DISPLAY = false;
 
 function TagBadge({ tag }: { tag: OverlimitCardTag }) {
   const Icon = TAG_ICONS[tag.name] ?? CircleDot;
@@ -118,9 +119,11 @@ function TagBadge({ tag }: { tag: OverlimitCardTag }) {
 function OverlimitCardItem({
   card,
   eager,
+  showWeaponApplicability,
 }: {
   card: OverlimitCard;
   eager?: boolean;
+  showWeaponApplicability: boolean;
 }) {
   const qualityStyle = QUALITY_STYLES[card.quality] ?? QUALITY_STYLES[4];
 
@@ -157,6 +160,31 @@ function OverlimitCardItem({
           {card.description}
         </p>
       </div>
+
+      {ENABLE_WEAPON_APPLICABILITY_DISPLAY &&
+        showWeaponApplicability &&
+        card.weaponNames.length > 0 && (
+          <div className="border-t border-white/10 px-3 py-3 sm:px-4">
+            <p className="mb-2 flex items-center gap-1.5 text-xs font-medium text-zinc-400">
+              <Crosshair
+                aria-hidden="true"
+                className="h-3.5 w-3.5 text-[#d1ac69]"
+              />
+              适用武器
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {card.weaponNames.map((weaponName) => (
+                <span
+                  key={weaponName}
+                  className="inline-flex min-h-7 items-center gap-1.5 rounded border border-[#d1ac69]/25 bg-[#d1ac69]/10 px-2 py-1 text-xs font-medium text-[#e2c38b]"
+                >
+                  <Crosshair aria-hidden="true" className="h-3.5 w-3.5" />
+                  <span className="break-words">{weaponName}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
     </article>
   );
 }
@@ -173,6 +201,9 @@ export default function OverlimitPageClient({
     Set<WeaponApplicabilityFilter>
   >(new Set());
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const [showWeaponApplicability, setShowWeaponApplicability] = useState(
+    ENABLE_WEAPON_APPLICABILITY_DISPLAY,
+  );
   const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase("zh-CN"));
 
   const tagOptions = useMemo(() => {
@@ -212,6 +243,7 @@ export default function OverlimitPageClient({
         const searchText = [
           card.name,
           card.description,
+          ...card.weaponNames,
           ...card.tags.map((tag) => tag.name),
         ]
           .join(" ")
@@ -415,20 +447,52 @@ export default function OverlimitPageClient({
           </fieldset>
         </div>
 
-        <div className="mb-4 flex min-h-11 items-center justify-between gap-4">
+        <div className="mb-4 flex min-h-11 flex-wrap items-center justify-between gap-3">
           <p aria-live="polite" className="text-sm text-zinc-500">
             共 {filteredCards.length} 张卡片
           </p>
-          {hasFilters && (
-            <button
-              type="button"
-              onClick={resetFilters}
-              className="flex min-h-11 items-center gap-1.5 rounded px-3 text-sm text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
-            >
-              <RotateCcw aria-hidden="true" className="h-4 w-4" />
-              <span>重置筛选</span>
-            </button>
-          )}
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            {ENABLE_WEAPON_APPLICABILITY_DISPLAY && (
+              <button
+                type="button"
+                role="switch"
+                aria-checked={showWeaponApplicability}
+                onClick={() =>
+                  setShowWeaponApplicability((current) => !current)
+                }
+                className="flex min-h-11 touch-manipulation items-center gap-2 rounded px-2.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+              >
+                <span>显示适用武器</span>
+                <span
+                  aria-hidden="true"
+                  className={`relative h-6 w-11 shrink-0 rounded-full border transition-colors duration-200 motion-reduce:transition-none ${
+                    showWeaponApplicability
+                      ? "border-[#d1ac69]/70 bg-[#d1ac69]/60"
+                      : "border-zinc-600 bg-zinc-800"
+                  }`}
+                >
+                  <span
+                    className={`absolute left-0.5 top-0.5 h-4.5 w-4.5 rounded-full transition-transform duration-200 motion-reduce:transition-none ${
+                      showWeaponApplicability
+                        ? "translate-x-5 bg-zinc-950"
+                        : "translate-x-0 bg-zinc-400"
+                    }`}
+                  />
+                </span>
+              </button>
+            )}
+
+            {hasFilters && (
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="flex min-h-11 items-center gap-1.5 rounded px-3 text-sm text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+              >
+                <RotateCcw aria-hidden="true" className="h-4 w-4" />
+                <span>重置筛选</span>
+              </button>
+            )}
+          </div>
         </div>
 
         {filteredCards.length > 0 ? (
@@ -438,6 +502,7 @@ export default function OverlimitPageClient({
                 key={card.id}
                 card={card}
                 eager={eagerIcons.has(card.icon)}
+                showWeaponApplicability={showWeaponApplicability}
               />
             ))}
           </div>
