@@ -17,6 +17,11 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
+import {
+  matchesWeaponApplicability,
+  WeaponApplicabilityFilterSection,
+  type WeaponApplicabilityFilter,
+} from "@/components/WeaponApplicabilityFilter";
 import { getAssetPath } from "@/lib/path";
 import type { OverlimitCard, OverlimitCardTag, PerkSlot } from "@/types";
 
@@ -164,6 +169,9 @@ export default function OverlimitPageClient({
     new Set(),
   );
   const [selectedSlots, setSelectedSlots] = useState<Set<PerkSlot>>(new Set());
+  const [selectedWeaponApplicability, setSelectedWeaponApplicability] = useState<
+    Set<WeaponApplicabilityFilter>
+  >(new Set());
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
   const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase("zh-CN"));
 
@@ -188,6 +196,13 @@ export default function OverlimitPageClient({
           selectedSlots.size === 0 || selectedSlots.has(card.slot);
         if (!matchesSlot) return false;
 
+        const matchesWeaponType = matchesWeaponApplicability(
+          selectedWeaponApplicability,
+          card.weaponType,
+          card.weaponItems.length > 0,
+        );
+        if (!matchesWeaponType) return false;
+
         const matchesTags =
           selectedTags.size === 0 ||
           card.tags.some((tag) => selectedTags.has(tag.id));
@@ -210,12 +225,14 @@ export default function OverlimitPageClient({
     selectedQualities,
     selectedSlots,
     selectedTags,
+    selectedWeaponApplicability,
   ]);
 
   const hasFilters =
     query.length > 0 ||
     selectedQualities.size > 0 ||
     selectedSlots.size > 0 ||
+    selectedWeaponApplicability.size > 0 ||
     selectedTags.size > 0;
   const eagerIcons = new Set(
     filteredCards.slice(0, 5).map((card) => card.icon),
@@ -248,10 +265,20 @@ export default function OverlimitPageClient({
     });
   };
 
+  const toggleWeaponApplicability = (filter: WeaponApplicabilityFilter) => {
+    setSelectedWeaponApplicability((current) => {
+      const next = new Set(current);
+      if (next.has(filter)) next.delete(filter);
+      else next.add(filter);
+      return next;
+    });
+  };
+
   const resetFilters = () => {
     setQuery("");
     setSelectedQualities(new Set());
     setSelectedSlots(new Set());
+    setSelectedWeaponApplicability(new Set());
     setSelectedTags(new Set());
   };
 
@@ -353,6 +380,11 @@ export default function OverlimitPageClient({
               })}
             </div>
           </fieldset>
+
+          <WeaponApplicabilityFilterSection
+            selected={selectedWeaponApplicability}
+            onToggle={toggleWeaponApplicability}
+          />
 
           <fieldset>
             <legend className="mb-3 text-lg font-semibold text-zinc-300">

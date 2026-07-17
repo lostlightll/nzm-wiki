@@ -6,6 +6,7 @@
 import fs from "fs";
 import path from "path";
 import sharp from "sharp";
+import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
 
 const ROOT_DIR = process.cwd();
 const REFS_DIR = path.join(ROOT_DIR, "refs/Exports/NZM/Content");
@@ -31,20 +32,24 @@ interface AssetReference {
   AssetPathName?: string;
 }
 
+interface ValueList {
+  Values?: number[];
+}
+
 interface CardRow {
   ModId: number;
   IconPath?: AssetReference;
   OverrideDesc?: LocalizedText;
   OverrideQuality?: number;
+  SuitableWeaponTypeList?: ValueList;
+  SuitableWeaponItemIdList?: ValueList;
   IsShow?: boolean;
 }
 
 interface ModRow {
   MODItemID: number;
   MODName?: LocalizedText;
-  MODSlotIndex?: {
-    Values?: number[];
-  };
+  MODSlotIndex?: ValueList;
   ModSets?: string;
 }
 
@@ -76,6 +81,8 @@ interface OverlimitCard {
   icon: string;
   quality: number;
   slot: 1 | 2 | 3 | 4;
+  weaponType: number[];
+  weaponItems: number[];
   tags: OverlimitTag[];
 }
 
@@ -200,6 +207,11 @@ async function main(): Promise<void> {
   const cards: OverlimitCard[] = [];
   const copiedCardIcons = new Set<string>();
   const qualityCounts = new Map<number, number>();
+  const applicabilityCounts = {
+    universal: 0,
+    typed: 0,
+    exclusive: 0,
+  };
 
   for (const [id, card] of Object.entries(cardRows)) {
     if (card.IsShow === false) continue;
@@ -213,6 +225,8 @@ async function main(): Promise<void> {
     const description = textValue(card.OverrideDesc);
     const quality = card.OverrideQuality || item.Quality || 0;
     const slotValues = mod.MODSlotIndex?.Values ?? [];
+    const weaponType = card.SuitableWeaponTypeList?.Values ?? [];
+    const weaponItems = card.SuitableWeaponItemIdList?.Values ?? [];
     assertValue(name, `Missing card name: ${id}`);
     assertValue(description, `Missing card description: ${id}`);
     assertValue(quality, `Missing card quality: ${id}`);
@@ -222,6 +236,16 @@ async function main(): Promise<void> {
       slot === 1 || slot === 2 || slot === 3 || slot === 4,
       `Invalid slot ${slot} for card ${id}`,
     );
+    assertValue(
+      weaponType.length === 0 || weaponItems.length === 0,
+      `Card ${id} cannot be both weapon-type limited and weapon exclusive`,
+    );
+    for (const weaponTypeId of weaponType) {
+      assertValue(
+        WEAPON_TYPE_ID_MAP[weaponTypeId],
+        `Unknown weapon type ${weaponTypeId} for card ${id}`,
+      );
+    }
 
     const sourceIcon = sourcePathFromAsset(card.IconPath?.AssetPathName);
     assertValue(sourceIcon, `Missing card icon reference: ${id}`);
@@ -241,8 +265,21 @@ async function main(): Promise<void> {
       return tag;
     });
 
-    cards.push({ id, name, description, icon, quality, slot, tags });
+    cards.push({
+      id,
+      name,
+      description,
+      icon,
+      quality,
+      slot,
+      weaponType,
+      weaponItems,
+      tags,
+    });
     qualityCounts.set(quality, (qualityCounts.get(quality) ?? 0) + 1);
+    if (weaponItems.length > 0) applicabilityCounts.exclusive += 1;
+    else if (weaponType.length > 0) applicabilityCounts.typed += 1;
+    else applicabilityCounts.universal += 1;
   }
 
   fs.writeFileSync(OUTPUT_FILE, `${JSON.stringify(cards, null, 2)}\n`, "utf8");
@@ -262,6 +299,10 @@ async function main(): Promise<void> {
   console.log(`WebP assets: ${copiedAssets.size} files.`);
   console.log(`Tags: ${tagById.size}; every card has exactly two.`);
   console.log(`Quality distribution: ${qualitySummary}.`);
+  console.log(
+    `Applicability distribution: universal=${applicabilityCounts.universal}, ` +
+      `typed=${applicabilityCounts.typed}, exclusive=${applicabilityCounts.exclusive}.`,
+  );
   console.log(`Output: ${path.relative(ROOT_DIR, OUTPUT_FILE)}`);
   if (missingSetIcons.length > 0) {
     console.warn(
