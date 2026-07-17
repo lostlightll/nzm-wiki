@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
 import { getAssetPath } from "@/lib/path";
-import type { OverlimitCard, OverlimitCardTag } from "@/types";
+import type { OverlimitCard, OverlimitCardTag, PerkSlot } from "@/types";
 
 interface OverlimitPageClientProps {
   initialCards: OverlimitCard[];
@@ -93,6 +93,7 @@ const QUALITY_STYLES: Record<
 };
 
 const QUALITY_OPTIONS = [5, 4, 3] as const;
+const SLOT_OPTIONS: readonly PerkSlot[] = [1, 2, 3, 4];
 
 function TagBadge({ tag }: { tag: OverlimitCardTag }) {
   const Icon = TAG_ICONS[tag.name] ?? CircleDot;
@@ -162,6 +163,7 @@ export default function OverlimitPageClient({
   const [selectedQualities, setSelectedQualities] = useState<Set<number>>(
     new Set(),
   );
+  const [selectedSlots, setSelectedSlots] = useState<Set<PerkSlot>>(new Set());
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
   const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase("zh-CN"));
 
@@ -182,6 +184,10 @@ export default function OverlimitPageClient({
           selectedQualities.size === 0 || selectedQualities.has(card.quality);
         if (!matchesQuality) return false;
 
+        const matchesSlot =
+          selectedSlots.size === 0 || selectedSlots.has(card.slot);
+        if (!matchesSlot) return false;
+
         const matchesTags =
           selectedTags.size === 0 ||
           card.tags.some((tag) => selectedTags.has(tag.id));
@@ -198,10 +204,19 @@ export default function OverlimitPageClient({
         return searchText.includes(deferredQuery);
       })
       .sort((a, b) => b.quality - a.quality);
-  }, [deferredQuery, initialCards, selectedQualities, selectedTags]);
+  }, [
+    deferredQuery,
+    initialCards,
+    selectedQualities,
+    selectedSlots,
+    selectedTags,
+  ]);
 
   const hasFilters =
-    query.length > 0 || selectedQualities.size > 0 || selectedTags.size > 0;
+    query.length > 0 ||
+    selectedQualities.size > 0 ||
+    selectedSlots.size > 0 ||
+    selectedTags.size > 0;
   const eagerIcons = new Set(
     filteredCards.slice(0, 5).map((card) => card.icon),
   );
@@ -224,9 +239,19 @@ export default function OverlimitPageClient({
     });
   };
 
+  const toggleSlot = (slot: PerkSlot) => {
+    setSelectedSlots((current) => {
+      const next = new Set(current);
+      if (next.has(slot)) next.delete(slot);
+      else next.add(slot);
+      return next;
+    });
+  };
+
   const resetFilters = () => {
     setQuery("");
     setSelectedQualities(new Set());
+    setSelectedSlots(new Set());
     setSelectedTags(new Set());
   };
 
@@ -297,6 +322,32 @@ export default function OverlimitPageClient({
                       className={`h-3 w-3 shrink-0 ${style.bar}`}
                     />
                     <span>{style.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
+
+          <fieldset className="mb-6">
+            <legend className="mb-3 text-lg font-semibold text-zinc-300">
+              卡片槽位
+            </legend>
+            <div className="grid max-w-lg grid-cols-4 gap-2">
+              {SLOT_OPTIONS.map((slot) => {
+                const selected = selectedSlots.has(slot);
+                return (
+                  <button
+                    key={slot}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => toggleSlot(slot)}
+                    className={`flex min-h-11 touch-manipulation items-center justify-center rounded border px-3 py-2 text-sm font-medium tabular-nums transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 ${
+                      selected
+                        ? "border-zinc-400 bg-zinc-600 text-white"
+                        : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700/70 hover:text-white"
+                    }`}
+                  >
+                    {slot}插
                   </button>
                 );
               })}
