@@ -113,57 +113,92 @@ function BondDisplay({
   activeBonds: OverlimitBondName[];
   detailed: boolean;
 }) {
-  if (detailed) {
-    const activeBondSet = new Set(activeBonds);
-
-    return (
-      <div className="grid grid-cols-3 gap-1.5 lg:grid-cols-9">
-        {OVERLIMIT_BOND_NAMES.map((bond) => {
-          const active = activeBondSet.has(bond);
-          const Icon = OVERLIMIT_TAG_ICONS[bond];
-
-          return (
-            <div
-              key={bond}
-              className={`flex min-h-[68px] min-w-0 flex-col items-center justify-center gap-1 rounded border px-1.5 py-2 text-center ${
-                active
-                  ? DETAILED_BOND_STYLES[bond]
-                  : "border-zinc-800 bg-zinc-950 text-zinc-500"
-              }`}
-            >
-              <span className="flex items-center gap-1 text-xs font-medium">
-                <Icon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
-                <span>{bond}</span>
-              </span>
-              <span
-                className={`text-xs font-semibold ${
-                  active ? "text-emerald-300" : "text-zinc-500"
-                }`}
-              >
-                {active ? "上架" : "下架"}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
+  const activeBondSet = new Set(activeBonds);
 
   return (
-    <div className="flex flex-wrap gap-1.5">
-      {activeBonds.map((bond) => {
-        const Icon = OVERLIMIT_TAG_ICONS[bond];
-
-        return (
-          <span
-            key={bond}
-            className={`inline-flex min-h-7 items-center gap-1 rounded border px-2 py-1 text-xs font-medium ${OVERLIMIT_TAG_STYLES[bond]}`}
+    <div>
+      <div
+        aria-hidden={detailed}
+        className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${
+          detailed ? "grid-rows-[0fr]" : "grid-rows-[1fr]"
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div
+            className={`flex flex-wrap gap-1.5 transition-[opacity,transform] duration-200 motion-reduce:transition-none ${
+              detailed
+                ? "-translate-y-1 opacity-0 ease-in"
+                : "translate-y-0 opacity-100 delay-75 ease-out motion-reduce:delay-0"
+            }`}
           >
-            <Icon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
-            {bond}
-          </span>
-        );
-      })}
+            {activeBonds.map((bond) => {
+              const Icon = OVERLIMIT_TAG_ICONS[bond];
+
+              return (
+                <span
+                  key={bond}
+                  className={`inline-flex min-h-7 items-center gap-1 rounded border px-2 py-1 text-xs font-medium ${OVERLIMIT_TAG_STYLES[bond]}`}
+                >
+                  <Icon
+                    aria-hidden="true"
+                    className="h-3.5 w-3.5 shrink-0"
+                  />
+                  {bond}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div
+        aria-hidden={!detailed}
+        className={`grid transition-[grid-template-rows] duration-300 ease-out motion-reduce:transition-none ${
+          detailed ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className="grid grid-cols-3 gap-1.5 lg:grid-cols-9">
+            {OVERLIMIT_BOND_NAMES.map((bond, index) => {
+              const active = activeBondSet.has(bond);
+              const Icon = OVERLIMIT_TAG_ICONS[bond];
+
+              return (
+                <div
+                  key={bond}
+                  className={`flex min-h-[68px] min-w-0 flex-col items-center justify-center gap-1 rounded border px-1.5 py-2 text-center transition-[opacity,transform] duration-200 motion-reduce:transition-none ${
+                    active
+                      ? DETAILED_BOND_STYLES[bond]
+                      : "border-zinc-800 bg-zinc-950 text-zinc-500"
+                  } ${
+                    detailed
+                      ? "translate-y-0 opacity-100 ease-out"
+                      : "translate-y-1 opacity-0 ease-in"
+                  }`}
+                  style={{
+                    transitionDelay: detailed ? `${60 + index * 12}ms` : "0ms",
+                  }}
+                >
+                  <span className="flex items-center gap-1 text-xs font-medium">
+                    <Icon
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5 shrink-0"
+                    />
+                    <span>{bond}</span>
+                  </span>
+                  <span
+                    className={`text-xs font-semibold ${
+                      active ? "text-emerald-300" : "text-zinc-500"
+                    }`}
+                  >
+                    {active ? "上架" : "下架"}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -388,6 +423,7 @@ export function OverlimitMapRotation({
             type="button"
             role="switch"
             aria-checked={showDetails}
+            aria-expanded={showDetails}
             onClick={() => setShowDetails((visible) => !visible)}
             className="group flex min-h-11 cursor-pointer touch-manipulation items-center gap-3 rounded-lg px-2.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-800/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
           >
