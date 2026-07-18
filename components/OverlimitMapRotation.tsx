@@ -268,15 +268,29 @@ export function OverlimitMapRotation({
           >
             完整排期
           </h2>
-          <label className="flex min-h-11 cursor-pointer touch-manipulation items-center gap-2 rounded px-2 text-sm text-zinc-300 transition-colors hover:bg-zinc-800/70 hover:text-white focus-within:ring-2 focus-within:ring-zinc-400">
-            <input
-              type="checkbox"
-              checked={showDetails}
-              onChange={(event) => setShowDetails(event.target.checked)}
-              className="h-5 w-5 cursor-pointer accent-zinc-400"
-            />
+          <button
+            type="button"
+            role="switch"
+            aria-checked={showDetails}
+            onClick={() => setShowDetails((visible) => !visible)}
+            className="group flex min-h-11 cursor-pointer touch-manipulation items-center gap-3 rounded-lg px-2.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-800/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+          >
             <span>显示详细轮换</span>
-          </label>
+            <span
+              aria-hidden="true"
+              className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border transition-colors duration-200 motion-reduce:transition-none ${
+                showDetails
+                  ? "border-emerald-500 bg-emerald-600"
+                  : "border-zinc-600 bg-zinc-800 group-hover:border-zinc-500"
+              }`}
+            >
+              <span
+                className={`h-4 w-4 rounded-full bg-white shadow-sm transition-transform duration-200 motion-reduce:transition-none ${
+                  showDetails ? "translate-x-6" : "translate-x-1"
+                }`}
+              />
+            </span>
+          </button>
         </div>
 
         <div className="space-y-3">
