@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CalendarDays, Clock3, MapPinned } from "lucide-react";
+import { CalendarDays, Clock3, MapPinned, Search } from "lucide-react";
 import { useState, useSyncExternalStore } from "react";
 import {
   OVERLIMIT_TAG_ICONS,
@@ -26,6 +26,7 @@ import type {
 
 interface OverlimitMapRotationProps {
   schedule: OverlimitMapRotationSchedule;
+  onSearchBonds: (activeBonds: OverlimitBondName[]) => void;
 }
 
 const PERIOD_STATE_LABELS: Record<RotationPeriodState, string> = {
@@ -167,12 +168,41 @@ function BondDisplay({
   );
 }
 
+function BondSearchButton({
+  map,
+  onSearchBonds,
+  variant = "current",
+}: {
+  map: OverlimitMapRotationMap;
+  onSearchBonds: (activeBonds: OverlimitBondName[]) => void;
+  variant?: "current" | "schedule";
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onSearchBonds(map.activeBonds)}
+      aria-label={`检索${map.name}的上架羁绊`}
+      title={`检索${map.name}的上架羁绊`}
+      className={`z-20 flex h-7 min-w-16 shrink-0 cursor-pointer touch-manipulation items-center justify-center gap-1 rounded border border-zinc-600 bg-zinc-950/80 px-2 text-zinc-200 shadow-sm backdrop-blur-sm transition-colors before:absolute before:-inset-y-2 before:inset-x-0 before:content-[''] hover:border-zinc-400 hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
+        variant === "schedule"
+          ? "absolute right-2 top-4 md:right-[calc(50%+0.5rem)]"
+          : "absolute right-2 top-2"
+      }`}
+    >
+      <Search aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+      <span className="text-xs font-medium">检索</span>
+    </button>
+  );
+}
+
 function CurrentMapCard({
   map,
   detailed,
+  onSearchBonds,
 }: {
   map: OverlimitMapRotationMap;
   detailed: boolean;
+  onSearchBonds: (activeBonds: OverlimitBondName[]) => void;
 }) {
   return (
     <article className="relative isolate overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900 p-4">
@@ -182,7 +212,8 @@ function CurrentMapCard({
         eager
         sizes="(max-width: 767px) 100vw, 50vw"
       />
-      <h3 className="relative z-10 mb-3 flex items-center gap-2 text-lg font-semibold text-white drop-shadow-md">
+      <BondSearchButton map={map} onSearchBonds={onSearchBonds} />
+      <h3 className="relative z-10 mb-3 flex items-center gap-2 pr-20 text-lg font-semibold text-white drop-shadow-md">
         <MapPinned aria-hidden="true" className="h-5 w-5 text-zinc-400" />
         {map.name}
       </h3>
@@ -214,11 +245,13 @@ function SchedulePeriod({
   state,
   detailed,
   index,
+  onSearchBonds,
 }: {
   period: OverlimitMapRotationPeriod;
   state: RotationPeriodState;
   detailed: boolean;
   index: number;
+  onSearchBonds: (activeBonds: OverlimitBondName[]) => void;
 }) {
   const titleId = `rotation-period-${index}`;
 
@@ -253,7 +286,12 @@ function SchedulePeriod({
               variant="schedule"
               sizes="(max-width: 767px) 100vw, 50vw"
             />
-            <h4 className="relative z-10 flex items-center gap-2 font-semibold text-white drop-shadow-md">
+            <BondSearchButton
+              map={map}
+              onSearchBonds={onSearchBonds}
+              variant="schedule"
+            />
+            <h4 className="relative z-10 flex items-center gap-2 pr-20 font-semibold text-white drop-shadow-md">
               <MapPinned
                 aria-hidden="true"
                 className="h-4 w-4 shrink-0 text-zinc-500"
@@ -272,6 +310,7 @@ function SchedulePeriod({
 
 export function OverlimitMapRotation({
   schedule,
+  onSearchBonds,
 }: OverlimitMapRotationProps) {
   const [showDetails, setShowDetails] = useState(false);
   const today = useSyncExternalStore(
@@ -326,6 +365,7 @@ export function OverlimitMapRotation({
                 key={map.name}
                 map={map}
                 detailed={showDetails}
+                onSearchBonds={onSearchBonds}
               />
             ))}
           </div>
@@ -377,6 +417,7 @@ export function OverlimitMapRotation({
               state={getRotationPeriodState(period, schedule, today)}
               detailed={showDetails}
               index={index}
+              onSearchBonds={onSearchBonds}
             />
           ))}
         </div>
