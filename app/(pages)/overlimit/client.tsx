@@ -30,6 +30,7 @@ interface OverlimitPageClientProps {
 
 const QUALITY_OPTIONS = [5, 4, 3] as const;
 const SLOT_OPTIONS: readonly PerkSlot[] = [1, 2, 3, 4];
+const WEIGHT_OPTIONS = [1, 2, 4, 6, 8] as const;
 
 function OverlimitCardItem({
   card,
@@ -88,6 +89,9 @@ export default function OverlimitPageClient({
     new Set(),
   );
   const [selectedSlots, setSelectedSlots] = useState<Set<PerkSlot>>(new Set());
+  const [selectedWeights, setSelectedWeights] = useState<Set<number>>(
+    new Set(),
+  );
   const [selectedWeaponApplicability, setSelectedWeaponApplicability] = useState<
     Set<WeaponApplicabilityFilter>
   >(new Set());
@@ -134,6 +138,10 @@ export default function OverlimitPageClient({
           selectedSlots.size === 0 || selectedSlots.has(card.slot);
         if (!matchesSlot) return false;
 
+        const matchesWeight =
+          selectedWeights.size === 0 || selectedWeights.has(card.weight);
+        if (!matchesWeight) return false;
+
         const matchesWeaponType = matchesWeaponApplicability(
           selectedWeaponApplicability,
           card.weaponType,
@@ -163,6 +171,7 @@ export default function OverlimitPageClient({
     initialCards,
     selectedQualities,
     selectedSlots,
+    selectedWeights,
     selectedTags,
     selectedWeaponApplicability,
   ]);
@@ -171,6 +180,7 @@ export default function OverlimitPageClient({
     query.length > 0 ||
     selectedQualities.size > 0 ||
     selectedSlots.size > 0 ||
+    selectedWeights.size > 0 ||
     selectedWeaponApplicability.size > 0 ||
     selectedTags.size > 0;
   const eagerIcons = new Set(
@@ -204,6 +214,15 @@ export default function OverlimitPageClient({
     });
   };
 
+  const toggleWeight = (weight: number) => {
+    setSelectedWeights((current) => {
+      const next = new Set(current);
+      if (next.has(weight)) next.delete(weight);
+      else next.add(weight);
+      return next;
+    });
+  };
+
   const toggleWeaponApplicability = (filter: WeaponApplicabilityFilter) => {
     setSelectedWeaponApplicability((current) => {
       const next = new Set(current);
@@ -217,6 +236,7 @@ export default function OverlimitPageClient({
     setQuery("");
     setSelectedQualities(new Set());
     setSelectedSlots(new Set());
+    setSelectedWeights(new Set());
     setSelectedWeaponApplicability(new Set());
     setSelectedTags(new Set());
   };
@@ -314,6 +334,33 @@ export default function OverlimitPageClient({
                     }`}
                   >
                     {slot}插
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
+
+          <fieldset className="mb-6">
+            <legend className="mb-3 text-lg font-semibold text-zinc-300">
+              抽取权重
+            </legend>
+            <div className="grid max-w-sm grid-cols-5 gap-1.5">
+              {WEIGHT_OPTIONS.map((weight) => {
+                const selected = selectedWeights.has(weight);
+                return (
+                  <button
+                    key={weight}
+                    type="button"
+                    aria-label={`抽取权重 ${weight}`}
+                    aria-pressed={selected}
+                    onClick={() => toggleWeight(weight)}
+                    className={`flex min-h-10 touch-manipulation items-center justify-center rounded border px-1 py-1.5 text-xs font-medium tabular-nums transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 ${
+                      selected
+                        ? "border-zinc-400 bg-zinc-600 text-white"
+                        : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700/70 hover:text-white"
+                    }`}
+                  >
+                    {weight}
                   </button>
                 );
               })}
