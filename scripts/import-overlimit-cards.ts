@@ -42,6 +42,7 @@ interface CardRow {
   IconPath?: AssetReference;
   OverrideDesc?: LocalizedText;
   OverrideQuality?: number;
+  Weight?: number;
   SuitableWeaponTypeList?: ValueList;
   SuitableWeaponItemIdList?: ValueList;
   IsShow?: boolean;
@@ -86,6 +87,7 @@ interface OverlimitCard {
   description: string;
   icon: string;
   quality: number;
+  weight: number;
   slot: 1 | 2 | 3 | 4;
   weaponType: number[];
   weaponItems: number[];
@@ -252,6 +254,7 @@ async function main(): Promise<void> {
     const name = textValue(item.Name) || textValue(mod.MODName);
     const description = textValue(card.OverrideDesc);
     const quality = card.OverrideQuality || item.Quality || 0;
+    const weight = card.Weight ?? 0;
     const slotValues = mod.MODSlotIndex?.Values ?? [];
     const weaponType = card.SuitableWeaponTypeList?.Values ?? [];
     const weaponItems =
@@ -273,6 +276,7 @@ async function main(): Promise<void> {
     assertValue(name, `Missing card name: ${id}`);
     assertValue(description, `Missing card description: ${id}`);
     assertValue(quality, `Missing card quality: ${id}`);
+    assertValue(weight > 0, `Missing card weight: ${id}`);
     assertValue(slotValues.length === 1, `Expected one slot for card ${id}`);
     const slot = slotValues[0];
     assertValue(
@@ -314,6 +318,7 @@ async function main(): Promise<void> {
       description,
       icon,
       quality,
+      weight,
       slot,
       weaponType,
       weaponItems,
