@@ -8,9 +8,11 @@ import {
   X,
 } from "lucide-react";
 import {
+  useCallback,
   useDeferredValue,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { OverlimitMapRotation } from "@/components/OverlimitMapRotation";
@@ -55,6 +57,12 @@ const OVERLIMIT_MODULES: readonly {
 const OVERLIMIT_MODULE_IDS = new Set<OverlimitModule>(
   OVERLIMIT_MODULES.map((module) => module.id),
 );
+
+const OVERLIMIT_MODULE_INDEX: Record<OverlimitModule, number> = {
+  cards: 0,
+  levels: 1,
+  "map-rotation": 2,
+};
 
 function getModuleFromHash(): OverlimitModule {
   const moduleId = window.location.hash.slice(1) as OverlimitModule;
@@ -120,6 +128,9 @@ export default function OverlimitPageClient({
 }: OverlimitPageClientProps) {
   const [activeModule, setActiveModule] =
     useState<OverlimitModule>("cards");
+  const activeModuleRef = useRef<OverlimitModule>("cards");
+  const moduleTransitionIdRef = useRef(0);
+  const [moduleTransitionDuration, setModuleTransitionDuration] = useState(0);
   const [query, setQuery] = useState("");
   const [selectedQualities, setSelectedQualities] = useState<Set<number>>(
     new Set(),
@@ -135,16 +146,60 @@ export default function OverlimitPageClient({
   const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase("zh-CN"));
 
   useEffect(() => {
-    const syncModuleFromHash = () => setActiveModule(getModuleFromHash());
+    const root = document.documentElement;
+    const previousOverflowX = root.style.overflowX;
+    root.style.overflowX = "clip";
+    return () => {
+      root.style.overflowX = previousOverflowX;
+    };
+  }, []);
 
-    syncModuleFromHash();
+  const switchModule = useCallback(
+    (module: OverlimitModule, animate = true): Promise<void> => {
+      if (activeModuleRef.current === module) return Promise.resolve();
+
+      const distance = Math.abs(
+        OVERLIMIT_MODULE_INDEX[module] -
+          OVERLIMIT_MODULE_INDEX[activeModuleRef.current],
+      );
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      const duration = !animate || reduceMotion ? 0 : 280 + (distance - 1) * 140;
+
+      activeModuleRef.current = module;
+      const transitionId = ++moduleTransitionIdRef.current;
+      setModuleTransitionDuration(duration);
+      setActiveModule(module);
+
+      if (duration === 0) return Promise.resolve();
+
+      return new Promise((resolve) => {
+        window.setTimeout(() => {
+          if (transitionId === moduleTransitionIdRef.current) {
+            setModuleTransitionDuration(0);
+          }
+          resolve();
+        }, duration);
+      });
+    },
+    [],
+  );
+
+  useEffect(() => {
+    const initialSyncFrame = window.requestAnimationFrame(() => {
+      void switchModule(getModuleFromHash(), false);
+    });
+    const syncModuleFromHash = () => void switchModule(getModuleFromHash());
+
     window.addEventListener("hashchange", syncModuleFromHash);
     window.addEventListener("popstate", syncModuleFromHash);
     return () => {
+      window.cancelAnimationFrame(initialSyncFrame);
       window.removeEventListener("hashchange", syncModuleFromHash);
       window.removeEventListener("popstate", syncModuleFromHash);
     };
-  }, []);
+  }, [switchModule]);
 
   const tagOptions = useMemo(() => {
     const tags = new Map<string, OverlimitCardTag>();
@@ -289,13 +344,13 @@ export default function OverlimitPageClient({
     setSelectedTags(new Set());
   };
 
-  const selectModule = (module: OverlimitModule) => {
-    if (activeModule === module) return;
+  const selectModule = (module: OverlimitModule): Promise<void> => {
+    if (activeModuleRef.current === module) return Promise.resolve();
 
     const url = new URL(window.location.href);
     url.hash = module;
     window.history.pushState(null, "", url);
-    setActiveModule(module);
+    return switchModule(module);
   };
 
   const searchCardsByBonds = (activeBonds: OverlimitBondName[]) => {
@@ -307,14 +362,29 @@ export default function OverlimitPageClient({
           .map((tag) => tag.id),
       ),
     );
-    selectModule("cards");
+    void selectModule("cards").then(() => {
+      if (activeModuleRef.current !== "cards") return;
 
-    window.requestAnimationFrame(() => {
-      const cardCatalog = document.getElementById("overlimit-card-catalog");
-      cardCatalog?.focus({ preventScroll: true });
-      cardCatalog?.scrollIntoView({ block: "start" });
+      window.requestAnimationFrame(() => {
+        const cardCatalog = document.getElementById("overlimit-card-catalog");
+        cardCatalog?.focus({ preventScroll: true });
+        cardCatalog?.scrollIntoView({ block: "start" });
+      });
     });
   };
+
+  const activeModuleIndex = OVERLIMIT_MODULE_INDEX[activeModule];
+  const getModulePanelStyle = (module: OverlimitModule) => ({
+    transform: `translate3d(${(OVERLIMIT_MODULE_INDEX[module] - activeModuleIndex) * 100}vw, 0, 0)`,
+    transitionDuration: `${moduleTransitionDuration}ms`,
+    transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+  });
+  const getModulePanelClassName = (module: OverlimitModule) =>
+    `col-start-1 row-start-1 min-w-0 will-change-transform transition-transform motion-reduce:transition-none ${
+      activeModule === module
+        ? "relative h-auto"
+        : "pointer-events-none h-0 overflow-visible"
+    }`;
 
   return (
     <>
@@ -332,7 +402,7 @@ export default function OverlimitPageClient({
               key={module.id}
               type="button"
               aria-pressed={active}
-              onClick={() => selectModule(module.id)}
+              onClick={() => void selectModule(module.id)}
               className={`min-h-11 touch-manipulation rounded border px-4 py-2 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 ${
                 active
                   ? "border-zinc-400 bg-zinc-600 text-white"
@@ -345,13 +415,20 @@ export default function OverlimitPageClient({
         })}
       </nav>
 
-      <section
-        id="overlimit-card-catalog"
-        aria-label="卡片图鉴"
-        hidden={activeModule !== "cards"}
-        tabIndex={-1}
-        className="outline-none"
-      >
+      <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-x-clip">
+        <div className="mx-auto grid max-w-7xl px-4">
+          <div
+          aria-hidden={activeModule !== "cards"}
+          inert={activeModule !== "cards"}
+          className={getModulePanelClassName("cards")}
+          style={getModulePanelStyle("cards")}
+        >
+          <section
+            id="overlimit-card-catalog"
+            aria-label="卡片图鉴"
+            tabIndex={-1}
+            className="outline-none"
+          >
         <h2 className="sr-only">卡片图鉴</h2>
         <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
           <div role="search" className="relative mb-6 max-w-xl">
@@ -536,31 +613,45 @@ export default function OverlimitPageClient({
             没有符合条件的卡片
           </div>
         )}
-      </section>
+          </section>
 
-      {activeModule === "map-rotation" && (
-        <OverlimitMapRotation
-          schedule={mapRotation}
-          onSearchBonds={searchCardsByBonds}
-        />
-      )}
-
-      {activeModule === "levels" && (
-        <section
-          aria-labelledby="levels-title"
-          className="flex min-h-64 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-800/30 px-6 py-16 text-center"
-        >
-          <div>
-            <h2
-              id="levels-title"
-              className="text-xl font-semibold text-zinc-200"
-            >
-              等级图鉴
-            </h2>
-            <p className="mt-2 text-sm text-zinc-500">内容待补充</p>
           </div>
-        </section>
-      )}
+
+          <div
+          aria-hidden={activeModule !== "levels"}
+          inert={activeModule !== "levels"}
+          className={getModulePanelClassName("levels")}
+          style={getModulePanelStyle("levels")}
+        >
+          <section
+            aria-labelledby="levels-title"
+            className="flex min-h-64 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-800/30 px-6 py-16 text-center"
+          >
+            <div>
+              <h2
+                id="levels-title"
+                className="text-xl font-semibold text-zinc-200"
+              >
+                等级图鉴
+              </h2>
+              <p className="mt-2 text-sm text-zinc-500">内容待补充</p>
+            </div>
+          </section>
+          </div>
+
+          <div
+          aria-hidden={activeModule !== "map-rotation"}
+          inert={activeModule !== "map-rotation"}
+          className={getModulePanelClassName("map-rotation")}
+          style={getModulePanelStyle("map-rotation")}
+        >
+            <OverlimitMapRotation
+              schedule={mapRotation}
+              onSearchBonds={searchCardsByBonds}
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
