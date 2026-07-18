@@ -2,19 +2,10 @@
 
 import Image from "next/image";
 import {
-  Bomb,
   CircleDot,
-  Crosshair,
-  Dna,
-  Flame,
-  RadioTower,
   RotateCcw,
   Search,
-  Shield,
-  Swords,
-  Wrench,
   X,
-  type LucideIcon,
 } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
 import {
@@ -22,6 +13,14 @@ import {
   WeaponApplicabilityFilterSection,
   type WeaponApplicabilityFilter,
 } from "@/components/WeaponApplicabilityFilter";
+import {
+  OVERLIMIT_QUALITY_STYLES,
+  OVERLIMIT_TAG_ICONS,
+  OVERLIMIT_TAG_STYLES,
+  OverlimitTagBadge,
+} from "@/components/OverlimitCardMeta";
+import { OverlimitHoverPreview } from "@/components/OverlimitHoverPreview";
+import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
 import { getAssetPath } from "@/lib/path";
 import type { OverlimitCard, OverlimitCardTag, PerkSlot } from "@/types";
 
@@ -29,163 +28,55 @@ interface OverlimitPageClientProps {
   initialCards: OverlimitCard[];
 }
 
-const TAG_STYLES: Record<string, string> = {
-  弹药: "border-orange-700/70 bg-orange-950/70 text-orange-200",
-  技战: "border-teal-700/70 bg-teal-950/70 text-teal-200",
-  异化: "border-purple-700/70 bg-purple-950/70 text-purple-200",
-  游击: "border-blue-700/70 bg-blue-950/70 text-blue-200",
-  壁垒: "border-zinc-600 bg-zinc-800 text-zinc-200",
-  狙击: "border-lime-700/70 bg-lime-950/70 text-lime-200",
-  爆韧: "border-amber-700/70 bg-amber-950/70 text-amber-200",
-  共振: "border-sky-700/70 bg-sky-950/70 text-sky-200",
-  狂战: "border-rose-700/70 bg-rose-950/70 text-rose-200",
-};
-
-const TAG_ICONS: Record<string, LucideIcon> = {
-  弹药: CircleDot,
-  技战: Wrench,
-  异化: Dna,
-  游击: Swords,
-  壁垒: Shield,
-  狙击: Crosshair,
-  爆韧: Bomb,
-  共振: RadioTower,
-  狂战: Flame,
-};
-
-const QUALITY_STYLES: Record<
-  number,
-  {
-    label: string;
-    border: string;
-    bg: string;
-    text: string;
-    bar: string;
-    selected: string;
-    iconFilter: string;
-  }
-> = {
-  3: {
-    label: "紫卡",
-    border: "border-[#a65aae]/60",
-    bg: "bg-[#a65aae]/10",
-    text: "text-[#c57acc]",
-    bar: "bg-[#a65aae]",
-    selected: "border-[#a65aae]/70 bg-[#a65aae]/15 text-[#d28ad8]",
-    iconFilter:
-      "brightness(0) saturate(100%) invert(46%) sepia(20%) saturate(1514%) hue-rotate(248deg) brightness(92%) contrast(84%)",
-  },
-  4: {
-    label: "金卡",
-    border: "border-[#d1ac69]/60",
-    bg: "bg-[#d1ac69]/10",
-    text: "text-[#d1ac69]",
-    bar: "bg-[#d1ac69]",
-    selected: "border-[#d1ac69]/70 bg-[#d1ac69]/15 text-[#e2c58d]",
-    iconFilter:
-      "brightness(0) saturate(100%) invert(77%) sepia(29%) saturate(791%) hue-rotate(357deg) brightness(89%) contrast(88%)",
-  },
-  5: {
-    label: "橙卡",
-    border: "border-[#d86b32]/65",
-    bg: "bg-[#d86b32]/10",
-    text: "text-[#ef8d4f]",
-    bar: "bg-[#d86b32]",
-    selected: "border-[#d86b32]/75 bg-[#d86b32]/15 text-[#f29b63]",
-    iconFilter:
-      "brightness(0) saturate(100%) invert(63%) sepia(73%) saturate(2128%) hue-rotate(338deg) brightness(101%) contrast(89%)",
-  },
-};
-
 const QUALITY_OPTIONS = [5, 4, 3] as const;
 const SLOT_OPTIONS: readonly PerkSlot[] = [1, 2, 3, 4];
-const ENABLE_WEAPON_APPLICABILITY_DISPLAY = false;
-
-function TagBadge({ tag }: { tag: OverlimitCardTag }) {
-  const Icon = TAG_ICONS[tag.name] ?? CircleDot;
-
-  return (
-    <span
-      className={`inline-flex h-6 items-center gap-1 border px-1.5 text-xs font-medium ${
-        TAG_STYLES[tag.name] ?? TAG_STYLES.壁垒
-      }`}
-    >
-      <Icon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
-      <span>{tag.name}</span>
-    </span>
-  );
-}
 
 function OverlimitCardItem({
   card,
   eager,
-  showWeaponApplicability,
 }: {
   card: OverlimitCard;
   eager?: boolean;
-  showWeaponApplicability: boolean;
 }) {
-  const qualityStyle = QUALITY_STYLES[card.quality] ?? QUALITY_STYLES[4];
+  const qualityStyle =
+    OVERLIMIT_QUALITY_STYLES[card.quality] ?? OVERLIMIT_QUALITY_STYLES[4];
 
   return (
-    <article
-      className={`relative flex min-h-[290px] flex-col overflow-hidden rounded-lg border-2 ${qualityStyle.border} ${qualityStyle.bg} sm:min-h-[340px]`}
-    >
-      <span className="sr-only">品质：{qualityStyle.label}</span>
-      <div aria-hidden="true" className={`h-1 w-full ${qualityStyle.bar}`} />
-      <div className="flex min-h-11 flex-wrap content-center gap-1 border-b border-zinc-700/80 px-2 py-2">
-        {card.tags.map((tag) => (
-          <TagBadge key={tag.id} tag={tag} />
-        ))}
-      </div>
-
-      <div className="flex flex-1 flex-col items-center px-3 pb-4 pt-5 sm:px-4 sm:pt-6">
-        <div className="flex h-24 w-24 items-center justify-center sm:h-32 sm:w-32">
-          <Image
-            src={getAssetPath(card.icon)}
-            alt=""
-            width={128}
-            height={128}
-            loading={eager ? "eager" : "lazy"}
-            sizes="(max-width: 639px) 96px, 128px"
-            className="h-full w-full object-contain"
-            style={{ filter: qualityStyle.iconFilter }}
-          />
+    <OverlimitHoverPreview card={card} href={`/overlimit/${card.id}`}>
+      <article
+        className={`relative flex min-h-[290px] flex-col overflow-hidden rounded-lg border-2 ${qualityStyle.border} ${qualityStyle.bg} transition-transform duration-200 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 sm:min-h-[328px]`}
+      >
+        <span className="sr-only">品质：{qualityStyle.label}</span>
+        <div aria-hidden="true" className={`h-1 w-full ${qualityStyle.bar}`} />
+        <div className="flex min-h-11 flex-wrap content-center gap-1 border-b border-zinc-700/80 px-2 py-2">
+          {card.tags.map((tag) => (
+            <OverlimitTagBadge key={tag.id} tag={tag} />
+          ))}
         </div>
 
-        <h3 className="mt-4 text-center text-base font-semibold leading-6 text-white sm:text-lg">
-          {card.name}
-        </h3>
-        <p className="mt-2 break-words text-center text-[13px] leading-5 text-zinc-300 sm:text-sm sm:leading-6">
-          {card.description}
-        </p>
-      </div>
-
-      {ENABLE_WEAPON_APPLICABILITY_DISPLAY &&
-        showWeaponApplicability &&
-        card.weaponNames.length > 0 && (
-          <div className="border-t border-white/10 px-3 py-3 sm:px-4">
-            <p className="mb-2 flex items-center gap-1.5 text-xs font-medium text-zinc-400">
-              <Crosshair
-                aria-hidden="true"
-                className="h-3.5 w-3.5 text-[#d1ac69]"
-              />
-              适用武器
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {card.weaponNames.map((weaponName) => (
-                <span
-                  key={weaponName}
-                  className="inline-flex min-h-7 items-center gap-1.5 rounded border border-[#d1ac69]/25 bg-[#d1ac69]/10 px-2 py-1 text-xs font-medium text-[#e2c38b]"
-                >
-                  <Crosshair aria-hidden="true" className="h-3.5 w-3.5" />
-                  <span className="break-words">{weaponName}</span>
-                </span>
-              ))}
-            </div>
+        <div className="flex flex-1 flex-col items-center px-3 pb-4 pt-5 sm:px-2">
+          <div className="flex h-24 w-24 items-center justify-center sm:h-32 sm:w-32">
+            <Image
+              src={getAssetPath(card.icon)}
+              alt=""
+              width={128}
+              height={128}
+              loading={eager ? "eager" : "lazy"}
+              sizes="(max-width: 639px) 96px, 128px"
+              className="h-full w-full object-contain"
+              style={{ filter: qualityStyle.iconFilter }}
+            />
           </div>
-        )}
-    </article>
+
+          <h3 className="mt-4 text-center text-base font-semibold leading-6 text-white sm:text-lg">
+            {card.name}
+          </h3>
+          <p className="mt-2 break-words text-center text-[13px] leading-5 text-zinc-300">
+            {card.description}
+          </p>
+        </div>
+      </article>
+    </OverlimitHoverPreview>
   );
 }
 
@@ -201,9 +92,6 @@ export default function OverlimitPageClient({
     Set<WeaponApplicabilityFilter>
   >(new Set());
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
-  const [showWeaponApplicability, setShowWeaponApplicability] = useState(
-    ENABLE_WEAPON_APPLICABILITY_DISPLAY,
-  );
   const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase("zh-CN"));
 
   const tagOptions = useMemo(() => {
@@ -214,6 +102,25 @@ export default function OverlimitPageClient({
       }
     }
     return [...tags.values()].sort((a, b) => Number(a.id) - Number(b.id));
+  }, [initialCards]);
+
+  const availableWeaponApplicability = useMemo(() => {
+    const available = new Set<WeaponApplicabilityFilter>();
+
+    for (const card of initialCards) {
+      if (card.weaponItems.length > 0) {
+        available.add("专属插件");
+      } else if (card.weaponType.length === 0) {
+        available.add("全部武器类型");
+      }
+
+      for (const weaponTypeId of card.weaponType) {
+        const weaponType = WEAPON_TYPE_ID_MAP[weaponTypeId];
+        if (weaponType) available.add(weaponType);
+      }
+    }
+
+    return available;
   }, [initialCards]);
 
   const filteredCards = useMemo(() => {
@@ -362,7 +269,7 @@ export default function OverlimitPageClient({
             </legend>
             <div className="grid max-w-md grid-cols-3 gap-2">
               {QUALITY_OPTIONS.map((quality) => {
-                const style = QUALITY_STYLES[quality];
+                const style = OVERLIMIT_QUALITY_STYLES[quality];
                 const selected = selectedQualities.has(quality);
                 return (
                   <button
@@ -416,6 +323,7 @@ export default function OverlimitPageClient({
           <WeaponApplicabilityFilterSection
             selected={selectedWeaponApplicability}
             onToggle={toggleWeaponApplicability}
+            available={availableWeaponApplicability}
           />
 
           <fieldset>
@@ -425,7 +333,7 @@ export default function OverlimitPageClient({
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
               {tagOptions.map((tag) => {
                 const selected = selectedTags.has(tag.id);
-                const Icon = TAG_ICONS[tag.name] ?? CircleDot;
+                const Icon = OVERLIMIT_TAG_ICONS[tag.name] ?? CircleDot;
                 return (
                   <button
                     key={tag.id}
@@ -434,7 +342,8 @@ export default function OverlimitPageClient({
                     onClick={() => toggleTag(tag.id)}
                     className={`flex min-h-11 touch-manipulation items-center justify-center gap-1.5 rounded border px-2 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 ${
                       selected
-                        ? TAG_STYLES[tag.name] ?? TAG_STYLES.壁垒
+                        ? OVERLIMIT_TAG_STYLES[tag.name] ??
+                          OVERLIMIT_TAG_STYLES.壁垒
                         : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700/70 hover:text-white"
                     }`}
                   >
@@ -452,36 +361,6 @@ export default function OverlimitPageClient({
             共 {filteredCards.length} 张卡片
           </p>
           <div className="flex flex-wrap items-center justify-end gap-2">
-            {ENABLE_WEAPON_APPLICABILITY_DISPLAY && (
-              <button
-                type="button"
-                role="switch"
-                aria-checked={showWeaponApplicability}
-                onClick={() =>
-                  setShowWeaponApplicability((current) => !current)
-                }
-                className="flex min-h-11 touch-manipulation items-center gap-2 rounded px-2.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
-              >
-                <span>显示适用武器</span>
-                <span
-                  aria-hidden="true"
-                  className={`relative h-6 w-11 shrink-0 rounded-full border transition-colors duration-200 motion-reduce:transition-none ${
-                    showWeaponApplicability
-                      ? "border-[#d1ac69]/70 bg-[#d1ac69]/60"
-                      : "border-zinc-600 bg-zinc-800"
-                  }`}
-                >
-                  <span
-                    className={`absolute left-0.5 top-0.5 h-4.5 w-4.5 rounded-full transition-transform duration-200 motion-reduce:transition-none ${
-                      showWeaponApplicability
-                        ? "translate-x-5 bg-zinc-950"
-                        : "translate-x-0 bg-zinc-400"
-                    }`}
-                  />
-                </span>
-              </button>
-            )}
-
             {hasFilters && (
               <button
                 type="button"
@@ -502,7 +381,6 @@ export default function OverlimitPageClient({
                 key={card.id}
                 card={card}
                 eager={eagerIcons.has(card.icon)}
-                showWeaponApplicability={showWeaponApplicability}
               />
             ))}
           </div>
