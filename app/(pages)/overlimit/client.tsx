@@ -362,14 +362,29 @@ export default function OverlimitPageClient({
           .map((tag) => tag.id),
       ),
     );
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     void selectModule("cards").then(() => {
-      if (activeModuleRef.current !== "cards") return;
+      const scrollToCatalog = () => {
+        if (activeModuleRef.current !== "cards") return;
 
-      window.requestAnimationFrame(() => {
-        const cardCatalog = document.getElementById("overlimit-card-catalog");
-        cardCatalog?.focus({ preventScroll: true });
-        cardCatalog?.scrollIntoView({ block: "start" });
-      });
+        window.requestAnimationFrame(() => {
+          const cardCatalog = document.getElementById("overlimit-card-catalog");
+          cardCatalog?.focus({ preventScroll: true });
+          cardCatalog?.scrollIntoView({
+            behavior: reduceMotion ? "auto" : "smooth",
+            block: "start",
+          });
+        });
+      };
+
+      if (reduceMotion) {
+        scrollToCatalog();
+        return;
+      }
+
+      window.setTimeout(scrollToCatalog, 100);
     });
   };
 
