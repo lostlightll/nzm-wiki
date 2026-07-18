@@ -23,6 +23,9 @@ export interface RotationTiming {
   featuredPeriod: OverlimitMapRotationPeriod | null;
 }
 
+const SHANGHAI_OFFSET = "+08:00";
+const MINUTES_PER_DAY = 24 * 60;
+
 export function getShanghaiDateKey(date = new Date()): string {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: "Asia/Shanghai",
@@ -93,4 +96,47 @@ export function formatRotationPeriod(
       ? formatMonthDay(period.endDate)
       : (period.endLabel ?? "赛季结束")
   }`;
+}
+
+export function getRotationPeriodStartTimestamp(
+  period: OverlimitMapRotationPeriod,
+): number {
+  return Date.parse(`${period.startDate}T00:00:00${SHANGHAI_OFFSET}`);
+}
+
+export function getRotationPeriodEndTimestamp(
+  period: OverlimitMapRotationPeriod,
+): number | null {
+  if (!period.endDate) return null;
+  return Date.parse(`${period.endDate}T23:59:59${SHANGHAI_OFFSET}`);
+}
+
+export function formatRotationCountdown(
+  targetTimestamp: number,
+  nowTimestamp: number,
+): string {
+  const remainingMinutes = Math.max(
+    0,
+    Math.ceil((targetTimestamp - nowTimestamp) / 60_000),
+  );
+  const days = Math.floor(remainingMinutes / MINUTES_PER_DAY);
+  const hours = Math.floor((remainingMinutes % MINUTES_PER_DAY) / 60);
+  const minutes = remainingMinutes % 60;
+
+  if (days > 0) return `${days}天${hours}小时`;
+  if (hours > 0) return `${hours}小时${minutes}分钟`;
+  if (minutes > 0) return `${minutes}分钟`;
+  return "即将切换";
+}
+
+export function getRotationWindowStart(
+  periodCount: number,
+  featuredIndex: number,
+  windowSize = 6,
+): number {
+  if (periodCount <= windowSize) return 0;
+  const lastStart = periodCount - windowSize;
+
+  if (featuredIndex < 0) return lastStart;
+  return Math.min(Math.max(featuredIndex - 1, 0), lastStart);
 }
