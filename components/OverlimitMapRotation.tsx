@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { CalendarDays, Clock3, MapPinned } from "lucide-react";
 import { useState, useSyncExternalStore } from "react";
 import {
@@ -14,6 +15,8 @@ import {
   resolveRotationTiming,
   type RotationPeriodState,
 } from "@/lib/overlimit-map-rotation";
+import { getOverlimitMapImagePath } from "@/lib/overlimit-map-images";
+import { getAssetPath } from "@/lib/path";
 import type {
   OverlimitBondName,
   OverlimitMapRotationMap,
@@ -30,6 +33,64 @@ const PERIOD_STATE_LABELS: Record<RotationPeriodState, string> = {
   current: "当前",
   upcoming: "未开始",
 };
+
+const DETAILED_BOND_STYLES = {
+  弹药: "border-orange-700/70 bg-orange-950 text-orange-200",
+  技战: "border-teal-700/70 bg-teal-950 text-teal-200",
+  异化: "border-purple-700/70 bg-purple-950 text-purple-200",
+  游击: "border-blue-700/70 bg-blue-950 text-blue-200",
+  壁垒: "border-zinc-600 bg-zinc-800 text-zinc-200",
+  狙击: "border-lime-700/70 bg-lime-950 text-lime-200",
+  爆韧: "border-amber-700/70 bg-amber-950 text-amber-200",
+  共振: "border-sky-700/70 bg-sky-950 text-sky-200",
+  狂战: "border-rose-700/70 bg-rose-950 text-rose-200",
+} satisfies Record<OverlimitBondName, string>;
+
+function MapBackdrop({
+  mapName,
+  variant,
+  eager = false,
+  sizes,
+}: {
+  mapName: string;
+  variant: "current" | "schedule";
+  eager?: boolean;
+  sizes: string;
+}) {
+  const imagePath = getOverlimitMapImagePath(mapName);
+  if (!imagePath) return null;
+
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      <div
+        className={`absolute inset-0 md:right-auto ${
+          variant === "current" ? "md:w-full" : "md:w-1/2"
+        }`}
+      >
+        <Image
+          src={getAssetPath(imagePath)}
+          alt=""
+          fill
+          sizes={sizes}
+          loading={eager ? "eager" : "lazy"}
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-zinc-950/20" />
+        {variant === "schedule" && (
+          <div className="absolute inset-y-0 right-0 hidden w-1/3 bg-linear-to-r from-transparent to-zinc-900 md:block" />
+        )}
+      </div>
+      {variant === "current" && (
+        <div className="absolute inset-0 hidden bg-linear-to-r from-transparent via-zinc-900/55 to-zinc-900 md:block" />
+      )}
+      <div className="absolute inset-0 bg-linear-to-r from-transparent via-zinc-900/85 to-zinc-900 md:hidden" />
+      <div className="absolute inset-0 bg-linear-to-b from-transparent via-zinc-950/10 to-zinc-950/70 md:hidden" />
+    </div>
+  );
+}
 
 function subscribeToShanghaiDate(onStoreChange: () => void) {
   const interval = window.setInterval(onStoreChange, 60_000);
@@ -65,8 +126,8 @@ function BondDisplay({
               key={bond}
               className={`flex min-h-[68px] min-w-0 flex-col items-center justify-center gap-1 rounded border px-1.5 py-2 text-center ${
                 active
-                  ? OVERLIMIT_TAG_STYLES[bond]
-                  : "border-zinc-800 bg-zinc-950/40 text-zinc-500"
+                  ? DETAILED_BOND_STYLES[bond]
+                  : "border-zinc-800 bg-zinc-950 text-zinc-500"
               }`}
             >
               <span className="flex items-center gap-1 text-xs font-medium">
@@ -114,12 +175,20 @@ function CurrentMapCard({
   detailed: boolean;
 }) {
   return (
-    <article className="rounded-lg border border-zinc-700 bg-zinc-900/60 p-4">
-      <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-white">
+    <article className="relative isolate overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900 p-4">
+      <MapBackdrop
+        mapName={map.name}
+        variant="current"
+        eager
+        sizes="(max-width: 767px) 100vw, 50vw"
+      />
+      <h3 className="relative z-10 mb-3 flex items-center gap-2 text-lg font-semibold text-white drop-shadow-md">
         <MapPinned aria-hidden="true" className="h-5 w-5 text-zinc-400" />
         {map.name}
       </h3>
-      <BondDisplay activeBonds={map.activeBonds} detailed={detailed} />
+      <div className="relative z-10">
+        <BondDisplay activeBonds={map.activeBonds} detailed={detailed} />
+      </div>
     </article>
   );
 }
@@ -177,16 +246,23 @@ function SchedulePeriod({
         {period.maps.map((map) => (
           <article
             key={map.name}
-            className="grid gap-3 px-4 py-4 md:grid-cols-[9rem_minmax(0,1fr)] md:items-start"
+            className="relative isolate grid gap-3 overflow-hidden bg-zinc-900 px-4 py-4 md:grid-cols-[50%_minmax(0,1fr)] md:items-start"
           >
-            <h4 className="flex items-center gap-2 font-semibold text-zinc-200">
+            <MapBackdrop
+              mapName={map.name}
+              variant="schedule"
+              sizes="(max-width: 767px) 100vw, 50vw"
+            />
+            <h4 className="relative z-10 flex items-center gap-2 font-semibold text-white drop-shadow-md">
               <MapPinned
                 aria-hidden="true"
                 className="h-4 w-4 shrink-0 text-zinc-500"
               />
               {map.name}
             </h4>
-            <BondDisplay activeBonds={map.activeBonds} detailed={detailed} />
+            <div className="relative z-10">
+              <BondDisplay activeBonds={map.activeBonds} detailed={detailed} />
+            </div>
           </article>
         ))}
       </div>
@@ -244,7 +320,7 @@ export function OverlimitMapRotation({
             正在识别当前档期
           </div>
         ) : timing.featuredPeriod ? (
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-2">
             {timing.featuredPeriod.maps.map((map) => (
               <CurrentMapCard
                 key={map.name}
