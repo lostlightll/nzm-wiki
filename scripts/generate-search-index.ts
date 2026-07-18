@@ -227,6 +227,62 @@ function generateSearchIndex() {
     }
   }
 
+  const mapRotationFile = path.join(
+    baseDir,
+    "overlimit-map-rotation.json",
+  );
+  if (fs.existsSync(mapRotationFile)) {
+    const schedule = JSON.parse(
+      fs.readFileSync(mapRotationFile, "utf-8"),
+    ) as {
+      season: number;
+      periods: Array<{
+        maps: Array<{ name: string; activeBonds: string[] }>;
+      }>;
+    };
+    const mapNames = new Set<string>();
+    const bondNames = new Set<string>();
+
+    for (const period of schedule.periods) {
+      for (const map of period.maps) {
+        mapNames.add(map.name);
+        for (const bond of map.activeBonds) bondNames.add(bond);
+      }
+    }
+
+    const keywords = [
+      `${schedule.season}赛季`,
+      "超限猎场",
+      "地图羁绊",
+      "羁绊档期",
+      ...mapNames,
+      ...bondNames,
+    ];
+    const pinyinSet = new Set<string>();
+    for (const text of ["地图轮换", ...keywords]) {
+      const fullPinyin = pinyin(text, {
+        toneType: "none",
+        type: "array",
+      }).join("");
+      if (fullPinyin) pinyinSet.add(fullPinyin.toLowerCase());
+      const initials = pinyin(text, {
+        pattern: "first",
+        toneType: "none",
+        type: "array",
+      }).join("");
+      if (initials) pinyinSet.add(initials.toLowerCase());
+    }
+
+    items.push({
+      title: "地图轮换",
+      slug: "overlimit/map-rotation",
+      path: "/overlimit#map-rotation",
+      category: "超限图鉴",
+      keywords,
+      pinyin: [...pinyinSet],
+    });
+  }
+
   // 按分类排序
   items.sort((a, b) => {
     if (a.category !== b.category) {

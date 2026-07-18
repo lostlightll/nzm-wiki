@@ -190,6 +190,35 @@ export interface OverlimitCard {
   tags: OverlimitCardTag[];
 }
 
+export type OverlimitBondName =
+  | "弹药"
+  | "技战"
+  | "异化"
+  | "游击"
+  | "壁垒"
+  | "狙击"
+  | "爆韧"
+  | "共振"
+  | "狂战";
+
+export interface OverlimitMapRotationMap {
+  name: string;
+  activeBonds: OverlimitBondName[];
+}
+
+export interface OverlimitMapRotationPeriod {
+  startDate: string;
+  endDate: string | null;
+  endLabel?: string;
+  maps: OverlimitMapRotationMap[];
+}
+
+export interface OverlimitMapRotationSchedule {
+  season: number;
+  timezone: "Asia/Shanghai";
+  periods: OverlimitMapRotationPeriod[];
+}
+
 // ------------------------------------------------------------
 // 伤害计算器相关类型
 // ------------------------------------------------------------

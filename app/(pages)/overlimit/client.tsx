@@ -7,7 +7,13 @@ import {
   Search,
   X,
 } from "lucide-react";
-import { useDeferredValue, useMemo, useState } from "react";
+import {
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { OverlimitMapRotation } from "@/components/OverlimitMapRotation";
 import {
   matchesWeaponApplicability,
   WeaponApplicabilityFilterSection,
@@ -22,10 +28,36 @@ import {
 import { OverlimitHoverPreview } from "@/components/OverlimitHoverPreview";
 import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
 import { getAssetPath } from "@/lib/path";
-import type { OverlimitCard, OverlimitCardTag, PerkSlot } from "@/types";
+import type {
+  OverlimitCard,
+  OverlimitCardTag,
+  OverlimitMapRotationSchedule,
+  PerkSlot,
+} from "@/types";
 
 interface OverlimitPageClientProps {
   initialCards: OverlimitCard[];
+  mapRotation: OverlimitMapRotationSchedule;
+}
+
+type OverlimitModule = "cards" | "levels" | "map-rotation";
+
+const OVERLIMIT_MODULES: readonly {
+  id: OverlimitModule;
+  label: string;
+}[] = [
+  { id: "cards", label: "卡片图鉴" },
+  { id: "levels", label: "等级图鉴" },
+  { id: "map-rotation", label: "地图轮换" },
+];
+
+const OVERLIMIT_MODULE_IDS = new Set<OverlimitModule>(
+  OVERLIMIT_MODULES.map((module) => module.id),
+);
+
+function getModuleFromHash(): OverlimitModule {
+  const moduleId = window.location.hash.slice(1) as OverlimitModule;
+  return OVERLIMIT_MODULE_IDS.has(moduleId) ? moduleId : "cards";
 }
 
 const QUALITY_OPTIONS = [5, 4, 3] as const;
@@ -83,7 +115,10 @@ function OverlimitCardItem({
 
 export default function OverlimitPageClient({
   initialCards,
+  mapRotation,
 }: OverlimitPageClientProps) {
+  const [activeModule, setActiveModule] =
+    useState<OverlimitModule>("cards");
   const [query, setQuery] = useState("");
   const [selectedQualities, setSelectedQualities] = useState<Set<number>>(
     new Set(),
@@ -97,6 +132,18 @@ export default function OverlimitPageClient({
   >(new Set());
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
   const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase("zh-CN"));
+
+  useEffect(() => {
+    const syncModuleFromHash = () => setActiveModule(getModuleFromHash());
+
+    syncModuleFromHash();
+    window.addEventListener("hashchange", syncModuleFromHash);
+    window.addEventListener("popstate", syncModuleFromHash);
+    return () => {
+      window.removeEventListener("hashchange", syncModuleFromHash);
+      window.removeEventListener("popstate", syncModuleFromHash);
+    };
+  }, []);
 
   const tagOptions = useMemo(() => {
     const tags = new Map<string, OverlimitCardTag>();
@@ -241,18 +288,46 @@ export default function OverlimitPageClient({
     setSelectedTags(new Set());
   };
 
+  const selectModule = (module: OverlimitModule) => {
+    if (activeModule === module) return;
+
+    const url = new URL(window.location.href);
+    url.hash = module;
+    window.history.pushState(null, "", url);
+    setActiveModule(module);
+  };
+
   return (
     <>
-      <h1 className="mb-8 text-3xl font-bold text-white">超限图鉴</h1>
+      <h1 className="mb-6 text-3xl font-bold text-white">超限图鉴</h1>
 
-      <section aria-labelledby="card-catalog-title">
-        <h2
-          id="card-catalog-title"
-          className="mb-4 text-xl font-semibold text-zinc-200"
-        >
-          卡片图鉴
-        </h2>
+      <nav
+        aria-label="超限图鉴模块"
+        className="mb-6 flex flex-wrap items-center gap-2"
+      >
+        {OVERLIMIT_MODULES.map((module) => {
+          const active = activeModule === module.id;
 
+          return (
+            <button
+              key={module.id}
+              type="button"
+              aria-pressed={active}
+              onClick={() => selectModule(module.id)}
+              className={`min-h-11 touch-manipulation rounded border px-4 py-2 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 ${
+                active
+                  ? "border-zinc-400 bg-zinc-600 text-white"
+                  : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700 hover:text-white"
+              }`}
+            >
+              {module.label}
+            </button>
+          );
+        })}
+      </nav>
+
+      <section aria-label="卡片图鉴" hidden={activeModule !== "cards"}>
+        <h2 className="sr-only">卡片图鉴</h2>
         <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
           <div role="search" className="relative mb-6 max-w-xl">
             <label htmlFor="overlimit-search" className="sr-only">
@@ -437,6 +512,27 @@ export default function OverlimitPageClient({
           </div>
         )}
       </section>
+
+      {activeModule === "map-rotation" && (
+        <OverlimitMapRotation schedule={mapRotation} />
+      )}
+
+      {activeModule === "levels" && (
+        <section
+          aria-labelledby="levels-title"
+          className="flex min-h-64 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-800/30 px-6 py-16 text-center"
+        >
+          <div>
+            <h2
+              id="levels-title"
+              className="text-xl font-semibold text-zinc-200"
+            >
+              等级图鉴
+            </h2>
+            <p className="mt-2 text-sm text-zinc-500">内容待补充</p>
+          </div>
+        </section>
+      )}
     </>
   );
 }
