@@ -44,6 +44,16 @@ export function getOverlimitBondSurfaceStyle(name: string): CSSProperties {
   };
 }
 
+export function getOverlimitBondInactiveSurfaceStyle(
+  name: string,
+): CSSProperties {
+  const colors =
+    OVERLIMIT_BOND_COLORS[name as OverlimitBondName] ??
+    OVERLIMIT_BOND_COLORS.壁垒;
+
+  return { backgroundColor: colors.inactive };
+}
+
 export const OVERLIMIT_BOND_ICON_PATHS = {
   弹药: "/icons/overlimit/sets/T_Icons_Rogue_Munition.png",
   技战: "/icons/overlimit/sets/T_Icons_Rogue_Skill.png",
@@ -77,7 +87,7 @@ export function OverlimitBondIcon({
   const style: CSSProperties = {
     backgroundColor: active
       ? getOverlimitBondForegroundColor(name)
-      : colors.inactive,
+      : "currentColor",
     WebkitMaskImage: maskImage,
     maskImage,
     WebkitMaskPosition: "center",

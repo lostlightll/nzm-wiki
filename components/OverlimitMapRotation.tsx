@@ -4,6 +4,7 @@ import Image from "next/image";
 import { CalendarDays, Clock3, MapPinned, Search } from "lucide-react";
 import { useState, useSyncExternalStore } from "react";
 import {
+  getOverlimitBondInactiveSurfaceStyle,
   getOverlimitBondSurfaceStyle,
   OverlimitBondIcon,
 } from "@/components/OverlimitCardMeta";
@@ -152,14 +153,16 @@ function BondDisplay({
                   className={`flex min-h-[68px] min-w-0 flex-col items-center justify-center gap-1 rounded border px-1.5 py-2 text-center transition-[opacity,transform] duration-200 motion-reduce:transition-none ${
                     active
                       ? "shadow-sm"
-                      : "border-zinc-800 bg-zinc-950 text-zinc-500"
+                      : "border-zinc-800 text-zinc-500"
                   } ${
                     detailed
                       ? "translate-y-0 opacity-100 ease-out"
                       : "translate-y-1 opacity-0 ease-in"
                   }`}
                   style={{
-                    ...(active ? getOverlimitBondSurfaceStyle(bond) : {}),
+                    ...(active
+                      ? getOverlimitBondSurfaceStyle(bond)
+                      : getOverlimitBondInactiveSurfaceStyle(bond)),
                     transitionDelay: detailed ? `${60 + index * 12}ms` : "0ms",
                   }}
                 >
