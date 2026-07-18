@@ -178,6 +178,54 @@ function generateSearchIndex() {
   console.log("Generating search index...");
 
   const items = scanDirectory(baseDir);
+  const overlimitFile = path.join(baseDir, "overlimit-cards.json");
+  if (fs.existsSync(overlimitFile)) {
+    const cards = JSON.parse(fs.readFileSync(overlimitFile, "utf-8")) as Array<{
+      id: string;
+      name: string;
+      description: string;
+      quality: number;
+      weight: number;
+      slot: number;
+      weaponNames: string[];
+      tags: Array<{ name: string }>;
+    }>;
+
+    for (const card of cards) {
+      const keywords = [
+        card.id,
+        card.description,
+        `${card.quality}品质`,
+        `权重${card.weight}`,
+        `${card.slot}号槽位`,
+        ...card.weaponNames,
+        ...card.tags.map((tag) => tag.name),
+      ];
+      const pinyinSet = new Set<string>();
+      for (const text of [card.name, ...keywords]) {
+        const fullPinyin = pinyin(String(text), {
+          toneType: "none",
+          type: "array",
+        }).join("");
+        if (fullPinyin) pinyinSet.add(fullPinyin.toLowerCase());
+        const initials = pinyin(String(text), {
+          pattern: "first",
+          toneType: "none",
+          type: "array",
+        }).join("");
+        if (initials) pinyinSet.add(initials.toLowerCase());
+      }
+
+      items.push({
+        title: card.name,
+        slug: `overlimit/${card.id}`,
+        path: `/overlimit/${card.id}`,
+        category: "超限卡片",
+        keywords: [...new Set(keywords)],
+        pinyin: [...pinyinSet],
+      });
+    }
+  }
 
   // 按分类排序
   items.sort((a, b) => {
