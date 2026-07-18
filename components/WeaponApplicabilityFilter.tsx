@@ -52,14 +52,20 @@ export function matchesWeaponApplicability(
 export function WeaponApplicabilityFilterSection({
   selected,
   onToggle,
+  available,
 }: {
   selected: Set<WeaponApplicabilityFilter>;
   onToggle: (filter: WeaponApplicabilityFilter) => void;
+  available?: ReadonlySet<WeaponApplicabilityFilter>;
 }) {
+  const items = available
+    ? WEAPON_APPLICABILITY_OPTIONS.filter((item) => available.has(item.type))
+    : WEAPON_APPLICABILITY_OPTIONS;
+
   return (
     <FilterSection
       title="武器类型"
-      items={WEAPON_APPLICABILITY_OPTIONS}
+      items={items}
       selected={selected}
       onToggle={onToggle}
       centerClass="sm:justify-center"
