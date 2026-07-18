@@ -31,6 +31,7 @@ import { getAssetPath } from "@/lib/path";
 import type {
   OverlimitCard,
   OverlimitCardTag,
+  OverlimitBondName,
   OverlimitMapRotationSchedule,
   PerkSlot,
 } from "@/types";
@@ -297,6 +298,24 @@ export default function OverlimitPageClient({
     setActiveModule(module);
   };
 
+  const searchCardsByBonds = (activeBonds: OverlimitBondName[]) => {
+    const bondNames = new Set<string>(activeBonds);
+    setSelectedTags(
+      new Set(
+        tagOptions
+          .filter((tag) => bondNames.has(tag.name))
+          .map((tag) => tag.id),
+      ),
+    );
+    selectModule("cards");
+
+    window.requestAnimationFrame(() => {
+      const cardCatalog = document.getElementById("overlimit-card-catalog");
+      cardCatalog?.focus({ preventScroll: true });
+      cardCatalog?.scrollIntoView({ block: "start" });
+    });
+  };
+
   return (
     <>
       <h1 className="mb-6 text-3xl font-bold text-white">超限图鉴</h1>
@@ -326,7 +345,13 @@ export default function OverlimitPageClient({
         })}
       </nav>
 
-      <section aria-label="卡片图鉴" hidden={activeModule !== "cards"}>
+      <section
+        id="overlimit-card-catalog"
+        aria-label="卡片图鉴"
+        hidden={activeModule !== "cards"}
+        tabIndex={-1}
+        className="outline-none"
+      >
         <h2 className="sr-only">卡片图鉴</h2>
         <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
           <div role="search" className="relative mb-6 max-w-xl">
@@ -514,7 +539,10 @@ export default function OverlimitPageClient({
       </section>
 
       {activeModule === "map-rotation" && (
-        <OverlimitMapRotation schedule={mapRotation} />
+        <OverlimitMapRotation
+          schedule={mapRotation}
+          onSearchBonds={searchCardsByBonds}
+        />
       )}
 
       {activeModule === "levels" && (
