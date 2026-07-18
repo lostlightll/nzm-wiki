@@ -97,7 +97,20 @@ function generateSitemap() {
     { url: "/credits" },
   ];
 
-  const allPages = [...staticPages, ...pages];
+  const overlimitFile = path.join(baseDir, "overlimit-cards.json");
+  const overlimitLastmod = fs.existsSync(overlimitFile)
+    ? fs.statSync(overlimitFile).mtime.toISOString().split("T")[0]
+    : undefined;
+  const overlimitPages: PageEntry[] = fs.existsSync(overlimitFile)
+    ? (JSON.parse(fs.readFileSync(overlimitFile, "utf-8")) as Array<{
+        id: string;
+      }>).map((card) => ({
+        url: `/overlimit/${card.id}`,
+        lastmod: overlimitLastmod,
+      }))
+    : [];
+
+  const allPages = [...staticPages, ...pages, ...overlimitPages];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
