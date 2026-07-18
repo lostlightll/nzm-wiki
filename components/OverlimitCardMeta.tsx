@@ -1,43 +1,101 @@
 import {
-  Bomb,
   CircleDot,
   Crosshair,
-  Dna,
-  Flame,
-  RadioTower,
-  Shield,
-  Swords,
-  Wrench,
-  type LucideIcon,
 } from "lucide-react";
+import type { CSSProperties } from "react";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import { getPerkWeaponApplicability } from "@/lib/perk-applicability";
-import type { OverlimitCardTag, PerkSlot } from "@/types";
+import { getAssetPath } from "@/lib/path";
+import type { OverlimitBondName, OverlimitCardTag, PerkSlot } from "@/types";
 
-export const OVERLIMIT_TAG_STYLES: Record<string, string> = {
-  弹药: "border-orange-700/70 bg-orange-950/70 text-orange-200",
-  技战: "border-teal-700/70 bg-teal-950/70 text-teal-200",
-  异化: "border-purple-700/70 bg-purple-950/70 text-purple-200",
-  游击: "border-blue-700/70 bg-blue-950/70 text-blue-200",
-  壁垒: "border-zinc-600 bg-zinc-800 text-zinc-200",
-  狙击: "border-lime-700/70 bg-lime-950/70 text-lime-200",
-  爆韧: "border-amber-700/70 bg-amber-950/70 text-amber-200",
-  共振: "border-sky-700/70 bg-sky-950/70 text-sky-200",
-  狂战: "border-rose-700/70 bg-rose-950/70 text-rose-200",
-};
+export const OVERLIMIT_BOND_COLORS = {
+  弹药: { active: "#1CAD69", inactive: "#030E09" },
+  技战: { active: "#2DBCFF", inactive: "#040F14" },
+  异化: { active: "#B53CFF", inactive: "#0F0614" },
+  游击: { active: "#3737FF", inactive: "#050514" },
+  壁垒: { active: "#5DE926", inactive: "#070F03" },
+  狙击: { active: "#FFC62C", inactive: "#0B0904" },
+  爆韧: { active: "#FF4F25", inactive: "#0E0502" },
+  共振: { active: "#3D69FF", inactive: "#05091B" },
+  狂战: { active: "#FA2929", inactive: "#140404" },
+} as const satisfies Record<
+  OverlimitBondName,
+  { active: string; inactive: string }
+>;
 
-export const OVERLIMIT_TAG_ICONS: Record<string, LucideIcon> = {
-  弹药: CircleDot,
-  技战: Wrench,
-  异化: Dna,
-  游击: Swords,
-  壁垒: Shield,
-  狙击: Crosshair,
-  爆韧: Bomb,
-  共振: RadioTower,
-  狂战: Flame,
-};
+export function getOverlimitBondForegroundColor(name: string): string {
+  const colors =
+    OVERLIMIT_BOND_COLORS[name as OverlimitBondName] ??
+    OVERLIMIT_BOND_COLORS.壁垒;
+
+  return `color-mix(in srgb, ${colors.active} 45%, white)`;
+}
+
+export function getOverlimitBondSurfaceStyle(name: string): CSSProperties {
+  const colors =
+    OVERLIMIT_BOND_COLORS[name as OverlimitBondName] ??
+    OVERLIMIT_BOND_COLORS.壁垒;
+
+  return {
+    backgroundColor: `color-mix(in srgb, ${colors.active} 14%, #18181b)`,
+    borderColor: `color-mix(in srgb, ${colors.active} 45%, #3f3f46)`,
+    color: getOverlimitBondForegroundColor(name),
+  };
+}
+
+export const OVERLIMIT_BOND_ICON_PATHS = {
+  弹药: "/icons/overlimit/sets/T_Icons_Rogue_Munition.png",
+  技战: "/icons/overlimit/sets/T_Icons_Rogue_Skill.png",
+  异化: "/icons/overlimit/sets/T_Icons_Rogue_Anomaly.png",
+  游击: "/icons/overlimit/sets/T_Icons_Rogue_Guerrilla.png",
+  壁垒: "/icons/overlimit/sets/T_Icons_Rogue_Survival.png",
+  狙击: "/icons/overlimit/sets/T_Icons_Rogue_Precision.png",
+  爆韧: "/icons/overlimit/sets/T_Icons_Rogue_Demolition.png",
+  共振: "/icons/overlimit/sets/T_Icons_Rogue_Support.png",
+  狂战: "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+} as const satisfies Record<OverlimitBondName, string>;
+
+export function OverlimitBondIcon({
+  name,
+  active = true,
+  className = "h-3.5 w-3.5",
+}: {
+  name: string;
+  active?: boolean;
+  className?: string;
+}) {
+  const bondName = name as OverlimitBondName;
+  const iconPath = OVERLIMIT_BOND_ICON_PATHS[bondName];
+  const colors = OVERLIMIT_BOND_COLORS[bondName];
+
+  if (!iconPath || !colors) {
+    return <CircleDot aria-hidden="true" className={className} />;
+  }
+
+  const maskImage = `url("${getAssetPath(iconPath)}")`;
+  const style: CSSProperties = {
+    backgroundColor: active
+      ? getOverlimitBondForegroundColor(name)
+      : colors.inactive,
+    WebkitMaskImage: maskImage,
+    maskImage,
+    WebkitMaskPosition: "center",
+    maskPosition: "center",
+    WebkitMaskRepeat: "no-repeat",
+    maskRepeat: "no-repeat",
+    WebkitMaskSize: "contain",
+    maskSize: "contain",
+  };
+
+  return (
+    <span
+      aria-hidden="true"
+      className={`${className} block shrink-0`}
+      style={style}
+    />
+  );
+}
 
 export const OVERLIMIT_QUALITY_STYLES: Record<
   number,
@@ -91,15 +149,12 @@ export const OVERLIMIT_SLOT_LABELS: Record<PerkSlot, string> = {
 };
 
 export function OverlimitTagBadge({ tag }: { tag: OverlimitCardTag }) {
-  const Icon = OVERLIMIT_TAG_ICONS[tag.name] ?? CircleDot;
-
   return (
     <span
-      className={`inline-flex min-h-6 items-center gap-1 border px-1.5 py-0.5 text-xs font-medium ${
-        OVERLIMIT_TAG_STYLES[tag.name] ?? OVERLIMIT_TAG_STYLES.壁垒
-      }`}
+      className="inline-flex min-h-6 items-center gap-1 border px-1.5 py-0.5 text-xs font-medium"
+      style={getOverlimitBondSurfaceStyle(tag.name)}
     >
-      <Icon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+      <OverlimitBondIcon name={tag.name} />
       <span>{tag.name}</span>
     </span>
   );

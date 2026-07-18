@@ -1,12 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {
-  CircleDot,
-  RotateCcw,
-  Search,
-  X,
-} from "lucide-react";
+import { RotateCcw, Search, X } from "lucide-react";
 import {
   useCallback,
   useDeferredValue,
@@ -23,8 +18,9 @@ import {
 } from "@/components/WeaponApplicabilityFilter";
 import {
   OVERLIMIT_QUALITY_STYLES,
-  OVERLIMIT_TAG_ICONS,
-  OVERLIMIT_TAG_STYLES,
+  getOverlimitBondForegroundColor,
+  getOverlimitBondSurfaceStyle,
+  OverlimitBondIcon,
   OverlimitTagBadge,
 } from "@/components/OverlimitCardMeta";
 import { OverlimitHoverPreview } from "@/components/OverlimitHoverPreview";
@@ -572,21 +568,24 @@ export default function OverlimitPageClient({
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-9">
               {tagOptions.map((tag) => {
                 const selected = selectedTags.has(tag.id);
-                const Icon = OVERLIMIT_TAG_ICONS[tag.name] ?? CircleDot;
                 return (
                   <button
                     key={tag.id}
                     type="button"
                     aria-pressed={selected}
                     onClick={() => toggleTag(tag.id)}
+                    style={
+                      selected
+                        ? getOverlimitBondSurfaceStyle(tag.name)
+                        : { color: getOverlimitBondForegroundColor(tag.name) }
+                    }
                     className={`flex min-h-11 touch-manipulation items-center justify-center gap-1.5 rounded border px-2 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 ${
                       selected
-                        ? OVERLIMIT_TAG_STYLES[tag.name] ??
-                          OVERLIMIT_TAG_STYLES.壁垒
+                        ? "shadow-sm"
                         : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700/70 hover:text-white"
                     }`}
                   >
-                    <Icon aria-hidden="true" className="h-4 w-4 shrink-0" />
+                    <OverlimitBondIcon name={tag.name} className="h-4 w-4" />
                     <span>{tag.name}</span>
                   </button>
                 );
