@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Search, Command, Menu, X, Github } from "lucide-react";
+import { ArrowLeft, Search, Command, Menu, X, Github } from "lucide-react";
 
 const NAV_ITEMS = [
   { href: "/weapons", label: "武器图鉴" },
@@ -15,6 +15,18 @@ const NAV_ITEMS = [
 ];
 
 const GITHUB_REPO = "https://github.com/lostlightll/nzm-wiki";
+
+function getMobileBackLink(pathname: string) {
+  if (pathname.startsWith("/perks/")) {
+    return { href: "/perks", label: "返回插件图鉴" };
+  }
+
+  if (/^\/overlimit\/[^/]+\/?$/.test(pathname)) {
+    return { href: "/overlimit", label: "返回超限图鉴" };
+  }
+
+  return null;
+}
 
 // 触发全局快捷键
 function triggerShortcut(key: string, ctrlKey = true, shiftKey = false) {
@@ -36,6 +48,7 @@ function NavBar() {
     visible: false,
   });
   const pathname = usePathname();
+  const mobileBackLink = getMobileBackLink(pathname);
   const desktopNavRef = useRef<HTMLDivElement>(null);
   const navLinkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
@@ -78,9 +91,19 @@ function NavBar() {
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
         {/* 左侧：Logo + 导航链接 */}
         <div className="flex items-center gap-6">
+          {mobileBackLink && (
+            <Link
+              href={mobileBackLink.href}
+              aria-label={mobileBackLink.label}
+              title={mobileBackLink.label}
+              className="flex min-h-11 min-w-11 touch-manipulation items-center justify-center rounded-lg text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 active:bg-zinc-700 md:hidden"
+            >
+              <ArrowLeft aria-hidden="true" className="h-5 w-5" />
+            </Link>
+          )}
           <Link
             href="/"
-            className="text-lg font-bold text-white hover:text-zinc-300"
+            className={`text-lg font-bold text-white hover:text-zinc-300 ${mobileBackLink ? "hidden md:block" : ""}`}
           >
             逆战未来 维基
           </Link>
