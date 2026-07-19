@@ -279,6 +279,11 @@ export default function OverlimitPageClient({
     selectedWeaponApplicability,
   ]);
 
+  const filteredCardsTotalWeight = useMemo(
+    () => filteredCards.reduce((total, card) => total + card.weight, 0),
+    [filteredCards],
+  );
+
   const hasFilters =
     query.length > 0 ||
     selectedQualities.size > 0 ||
@@ -599,9 +604,12 @@ export default function OverlimitPageClient({
         </div>
 
         <div className="mb-4 flex min-h-11 flex-wrap items-center justify-between gap-3">
-          <p aria-live="polite" className="text-sm text-zinc-500">
-            共 {filteredCards.length} 张卡片
-          </p>
+          <div aria-live="polite" className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-zinc-500">
+            <p>共 {filteredCards.length} 张卡片</p>
+            <p className="tabular-nums">
+              当前筛选总权重：{filteredCardsTotalWeight}
+            </p>
+          </div>
           <div className="flex flex-wrap items-center justify-end gap-2">
             {hasFilters && (
               <button
