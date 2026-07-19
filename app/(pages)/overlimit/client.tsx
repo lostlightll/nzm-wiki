@@ -52,9 +52,9 @@ const OVERLIMIT_MODULES: readonly {
   label: string;
 }[] = [
   { id: "cards", label: "卡片图鉴" },
-  { id: "bonds", label: "羁绊效果" },
-  { id: "levels", label: "等级图鉴" },
   { id: "map-rotation", label: "地图轮换" },
+  { id: "levels", label: "等级图鉴" },
+  { id: "bonds", label: "羁绊效果" },
 ];
 
 const OVERLIMIT_MODULE_IDS = new Set<OverlimitModule>(
@@ -63,9 +63,9 @@ const OVERLIMIT_MODULE_IDS = new Set<OverlimitModule>(
 
 const OVERLIMIT_MODULE_INDEX: Record<OverlimitModule, number> = {
   cards: 0,
-  bonds: 1,
+  "map-rotation": 1,
   levels: 2,
-  "map-rotation": 3,
+  bonds: 3,
 };
 
 function getModuleFromHash(): OverlimitModule {
