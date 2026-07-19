@@ -11,6 +11,7 @@ import {
   useState,
 } from "react";
 import { OverlimitMapRotation } from "@/components/OverlimitMapRotation";
+import { OverlimitLevelCatalog } from "@/components/OverlimitLevelCatalog";
 import {
   matchesWeaponApplicability,
   WeaponApplicabilityFilterSection,
@@ -30,12 +31,14 @@ import type {
   OverlimitCard,
   OverlimitCardTag,
   OverlimitBondName,
+  OverlimitLevelCatalog as OverlimitLevelCatalogData,
   OverlimitMapRotationSchedule,
   PerkSlot,
 } from "@/types";
 
 interface OverlimitPageClientProps {
   initialCards: OverlimitCard[];
+  levelCatalog: OverlimitLevelCatalogData;
   mapRotation: OverlimitMapRotationSchedule;
 }
 
@@ -120,6 +123,7 @@ function OverlimitCardItem({
 
 export default function OverlimitPageClient({
   initialCards,
+  levelCatalog,
   mapRotation,
 }: OverlimitPageClientProps) {
   const [activeModule, setActiveModule] =
@@ -637,20 +641,7 @@ export default function OverlimitPageClient({
           className={getModulePanelClassName("levels")}
           style={getModulePanelStyle("levels")}
         >
-          <section
-            aria-labelledby="levels-title"
-            className="flex min-h-64 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-800/30 px-6 py-16 text-center"
-          >
-            <div>
-              <h2
-                id="levels-title"
-                className="text-xl font-semibold text-zinc-200"
-              >
-                等级图鉴
-              </h2>
-              <p className="mt-2 text-sm text-zinc-500">内容待补充</p>
-            </div>
-          </section>
+          <OverlimitLevelCatalog catalog={levelCatalog} />
           </div>
 
           <div

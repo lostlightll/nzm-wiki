@@ -227,6 +227,47 @@ function generateSearchIndex() {
     }
   }
 
+  const overlimitLevelsFile = path.join(baseDir, "overlimit-levels.json");
+  if (fs.existsSync(overlimitLevelsFile)) {
+    const keywords = [
+      "超限猎场",
+      "升级概率",
+      "品质概率",
+      "紫卡",
+      "金卡",
+      "橙卡",
+      "4插",
+      "4插卡池",
+      "4插概率加成",
+      "2x",
+      "暴击升级",
+      "重抽费用",
+    ];
+    const pinyinSet = new Set<string>();
+    for (const text of ["等级图鉴", ...keywords]) {
+      const fullPinyin = pinyin(text, {
+        toneType: "none",
+        type: "array",
+      }).join("");
+      if (fullPinyin) pinyinSet.add(fullPinyin.toLowerCase());
+      const initials = pinyin(text, {
+        pattern: "first",
+        toneType: "none",
+        type: "array",
+      }).join("");
+      if (initials) pinyinSet.add(initials.toLowerCase());
+    }
+
+    items.push({
+      title: "等级图鉴",
+      slug: "overlimit/levels",
+      path: "/overlimit#levels",
+      category: "超限图鉴",
+      keywords,
+      pinyin: [...pinyinSet],
+    });
+  }
+
   const mapRotationFile = path.join(
     baseDir,
     "overlimit-map-rotation.json",

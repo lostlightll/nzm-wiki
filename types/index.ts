@@ -190,6 +190,33 @@ export interface OverlimitCard {
   tags: OverlimitCardTag[];
 }
 
+export type OverlimitCardQuality = 3 | 4 | 5;
+
+export interface OverlimitLevelEntry {
+  level: number;
+  qualityWeights: Record<OverlimitCardQuality, number>;
+}
+
+export interface OverlimitRerollCost {
+  time: number;
+  cost: number;
+}
+
+export interface OverlimitLevelCatalog {
+  levels: OverlimitLevelEntry[];
+  slot4: {
+    baseProbability: number;
+    guaranteedLevels: number[];
+    bonusPerObtainedSlot4: number;
+    mixedPoolWeights: {
+      nonSlot4: number;
+      slot4: number;
+    };
+  };
+  criticalProbability: number;
+  rerollCosts: OverlimitRerollCost[];
+}
+
 export type OverlimitBondName =
   | "弹药"
   | "技战"
