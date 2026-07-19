@@ -12,6 +12,7 @@ import {
 } from "react";
 import { OverlimitMapRotation } from "@/components/OverlimitMapRotation";
 import { OverlimitLevelCatalog } from "@/components/OverlimitLevelCatalog";
+import { OverlimitBondCatalog } from "@/components/OverlimitBondCatalog";
 import {
   matchesWeaponApplicability,
   WeaponApplicabilityFilterSection,
@@ -30,6 +31,7 @@ import { getAssetPath } from "@/lib/path";
 import type {
   OverlimitCard,
   OverlimitCardTag,
+  OverlimitBondCatalog as OverlimitBondCatalogData,
   OverlimitBondName,
   OverlimitLevelCatalog as OverlimitLevelCatalogData,
   OverlimitMapRotationSchedule,
@@ -38,17 +40,19 @@ import type {
 
 interface OverlimitPageClientProps {
   initialCards: OverlimitCard[];
+  bondCatalog: OverlimitBondCatalogData;
   levelCatalog: OverlimitLevelCatalogData;
   mapRotation: OverlimitMapRotationSchedule;
 }
 
-type OverlimitModule = "cards" | "levels" | "map-rotation";
+type OverlimitModule = "cards" | "bonds" | "levels" | "map-rotation";
 
 const OVERLIMIT_MODULES: readonly {
   id: OverlimitModule;
   label: string;
 }[] = [
   { id: "cards", label: "卡片图鉴" },
+  { id: "bonds", label: "羁绊效果" },
   { id: "levels", label: "等级图鉴" },
   { id: "map-rotation", label: "地图轮换" },
 ];
@@ -59,8 +63,9 @@ const OVERLIMIT_MODULE_IDS = new Set<OverlimitModule>(
 
 const OVERLIMIT_MODULE_INDEX: Record<OverlimitModule, number> = {
   cards: 0,
-  levels: 1,
-  "map-rotation": 2,
+  bonds: 1,
+  levels: 2,
+  "map-rotation": 3,
 };
 
 function getModuleFromHash(): OverlimitModule {
@@ -123,6 +128,7 @@ function OverlimitCardItem({
 
 export default function OverlimitPageClient({
   initialCards,
+  bondCatalog,
   levelCatalog,
   mapRotation,
 }: OverlimitPageClientProps) {
@@ -393,6 +399,10 @@ export default function OverlimitPageClient({
     });
   };
 
+  const searchCardsByBond = (bondName: OverlimitBondName) => {
+    searchCardsByBonds([bondName]);
+  };
+
   const activeModuleIndex = OVERLIMIT_MODULE_INDEX[activeModule];
   const getModulePanelStyle = (module: OverlimitModule) => ({
     transform: `translate3d(${(OVERLIMIT_MODULE_INDEX[module] - activeModuleIndex) * 100}vw, 0, 0)`,
@@ -641,6 +651,18 @@ export default function OverlimitPageClient({
         )}
           </section>
 
+          </div>
+
+          <div
+          aria-hidden={activeModule !== "bonds"}
+          inert={activeModule !== "bonds"}
+          className={getModulePanelClassName("bonds")}
+          style={getModulePanelStyle("bonds")}
+        >
+            <OverlimitBondCatalog
+              catalog={bondCatalog}
+              onSearchBond={searchCardsByBond}
+            />
           </div>
 
           <div

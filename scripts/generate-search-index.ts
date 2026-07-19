@@ -268,6 +268,49 @@ function generateSearchIndex() {
     });
   }
 
+  const overlimitBondsFile = path.join(baseDir, "overlimit-bonds.json");
+  if (fs.existsSync(overlimitBondsFile)) {
+    const bonds = JSON.parse(fs.readFileSync(overlimitBondsFile, "utf-8")) as Array<{
+      name: string;
+      effects: Array<{ count: number; description: string }>;
+    }>;
+    const keywords = [
+      "超限猎场",
+      "羁绊效果",
+      "套装词条",
+      "x2",
+      "x4",
+      "x6",
+      ...bonds.flatMap((bond) => [
+        bond.name,
+        ...bond.effects.map((effect) => effect.description),
+      ]),
+    ];
+    const pinyinSet = new Set<string>();
+    for (const text of ["羁绊效果", ...keywords]) {
+      const fullPinyin = pinyin(text, {
+        toneType: "none",
+        type: "array",
+      }).join("");
+      if (fullPinyin) pinyinSet.add(fullPinyin.toLowerCase());
+      const initials = pinyin(text, {
+        pattern: "first",
+        toneType: "none",
+        type: "array",
+      }).join("");
+      if (initials) pinyinSet.add(initials.toLowerCase());
+    }
+
+    items.push({
+      title: "羁绊效果",
+      slug: "overlimit/bonds",
+      path: "/overlimit#bonds",
+      category: "超限图鉴",
+      keywords,
+      pinyin: [...pinyinSet],
+    });
+  }
+
   const mapRotationFile = path.join(
     baseDir,
     "overlimit-map-rotation.json",

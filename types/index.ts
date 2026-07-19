@@ -228,6 +228,18 @@ export type OverlimitBondName =
   | "共振"
   | "狂战";
 
+export interface OverlimitBondStageEffect {
+  count: 2 | 4 | 6;
+  description: string;
+}
+
+export interface OverlimitBondEffect {
+  name: OverlimitBondName;
+  effects: OverlimitBondStageEffect[];
+}
+
+export type OverlimitBondCatalog = OverlimitBondEffect[];
+
 export interface OverlimitMapRotationMap {
   name: string;
   activeBonds: OverlimitBondName[];
