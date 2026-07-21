@@ -17,7 +17,7 @@ interface SearchItem {
 const DEFAULT_ENTRIES = [
   { title: "武器图鉴", path: "/weapons", category: "导航" },
   { title: "插件图鉴", path: "/perks", category: "导航" },
-  { title: "首领图鉴", path: "/bosses", category: "导航" },
+  { title: "敌人图鉴", path: "/bosses", category: "导航" },
   { title: "超限图鉴", path: "/overlimit", category: "导航" },
   { title: "塔防图鉴", path: "/tower-defense", category: "导航" },
   { title: "文章归档", path: "/posts", category: "导航" },

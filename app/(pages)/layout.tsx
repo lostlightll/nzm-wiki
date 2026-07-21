@@ -9,7 +9,7 @@ import { BossDifficultyProvider, useBossDifficulty } from "@/components/BossDiff
 const NAV_ITEMS = [
   { href: "/weapons", label: "武器图鉴" },
   { href: "/tower-defense", label: "塔防图鉴" },
-  { href: "/bosses", label: "首领图鉴" },
+  { href: "/bosses", label: "敌人图鉴" },
   { href: "/perks", label: "插件图鉴" },
   { href: "/overlimit", label: "超限图鉴" },
   { href: "/credits", label: "致谢" },
@@ -30,7 +30,7 @@ function getMobileBackLink(pathname: string) {
     /^\/bosses\/[^/]+\/?$/.test(pathname) ||
     /^\/enemies\/lc\/[^/]+\/?$/.test(pathname)
   ) {
-    return { href: "/bosses", label: "返回首领图鉴" };
+    return { href: "/bosses", label: "返回敌人图鉴" };
   }
 
   if (pathname.startsWith("/traps/")) {

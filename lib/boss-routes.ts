@@ -3,8 +3,8 @@ import { getBossBySlug } from "@/lib/bosses";
 import { getMDXDetail, getMDXList } from "@/lib/mdx";
 
 export const bossCatalogMetadata: Metadata = {
-  title: "首领图鉴",
-  description: "逆战未来猎场首领图鉴，按地图收录 Boss 资料、血量与攻略。",
+  title: "敌人图鉴",
+  description: "逆战未来猎场敌人图鉴，按地图收录 Boss 资料、血量与攻略。",
   alternates: { canonical: "/bosses" },
 };
 

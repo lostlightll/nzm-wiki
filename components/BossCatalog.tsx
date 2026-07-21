@@ -189,9 +189,9 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
 
   return (
     <div>
-      <h1 className="mb-6 text-3xl font-bold text-white">首领图鉴</h1>
+      <h1 className="mb-6 text-3xl font-bold text-white">敌人图鉴</h1>
 
-      <nav aria-label="首领图鉴模块" className="mb-6 flex items-center gap-2">
+      <nav aria-label="敌人图鉴模块" className="mb-6 flex items-center gap-2">
         <button
           type="button"
           aria-pressed="true"

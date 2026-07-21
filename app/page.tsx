@@ -26,7 +26,7 @@ const NAV_ITEMS = [
   { href: "/weapons", icon: <Sword className="h-8 w-8 sm:h-10 sm:w-10" />, title: "武器图鉴" },
   { href: "/perks", icon: <Zap className="h-8 w-8 sm:h-10 sm:w-10" />, title: "插件图鉴" },
   { href: "/tower-defense", icon: <Target className="h-8 w-8 sm:h-10 sm:w-10" />, title: "塔防图鉴" },
-  { href: "/bosses", icon: <Skull className="h-8 w-8 sm:h-10 sm:w-10" />, title: "首领图鉴" },
+  { href: "/bosses", icon: <Skull className="h-8 w-8 sm:h-10 sm:w-10" />, title: "敌人图鉴" },
   {
     href: "/overlimit",
     icon: <GalleryVerticalEnd className="h-8 w-8 sm:h-10 sm:w-10" />,
