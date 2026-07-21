@@ -314,7 +314,7 @@
   {
     "id": "20703040435",
     "name": "我只射击",
-    "description": "保持不释放武器技能，每5秒增加45%伤害，最多10层，释放技能清零。",
+    "description": "保持不释放武器技能，每5秒增加40%伤害，最多10层，释放技能清零。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
     "quality": 5,
     "weight": 1,
