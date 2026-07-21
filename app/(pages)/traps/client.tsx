@@ -11,7 +11,13 @@ const TRAP_TYPES: { type: TrapType }[] = [
   { type: "天花板" },
 ];
 
-export default function TrapsClient({ traps }: { traps: Trap[] }) {
+export default function TrapsClient({
+  traps,
+  showHeading = true,
+}: {
+  traps: Trap[];
+  showHeading?: boolean;
+}) {
   const typeState = useSelection<TrapType>("type");
 
   const hasFilter = typeState.selected.size > 0;
@@ -29,9 +35,11 @@ export default function TrapsClient({ traps }: { traps: Trap[] }) {
 
   return (
     <>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white">陷阱图鉴</h1>
-      </div>
+      {showHeading && (
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-white">陷阱图鉴</h1>
+        </div>
+      )}
 
       {/* 筛选区域 */}
       <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">

@@ -88,6 +88,7 @@ function generateSitemap() {
     { url: "/weapons" },
     { url: "/perks" },
     { url: "/overlimit" },
+    { url: "/tower-defense" },
     { url: "/traps" },
     { url: "/enemies" },
     { url: "/enemies/lc" },

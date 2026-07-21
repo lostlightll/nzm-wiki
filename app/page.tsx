@@ -25,8 +25,8 @@ interface NavCardProps {
 const NAV_ITEMS = [
   { href: "/weapons", icon: <Sword className="h-8 w-8 sm:h-10 sm:w-10" />, title: "武器图鉴" },
   { href: "/perks", icon: <Zap className="h-8 w-8 sm:h-10 sm:w-10" />, title: "插件图鉴" },
-  { href: "/traps", icon: <Target className="h-8 w-8 sm:h-10 sm:w-10" />, title: "塔防陷阱" },
-  { href: "/enemies/td", icon: <Skull className="h-8 w-8 sm:h-10 sm:w-10" />, title: "塔防敌人" },
+  { href: "/tower-defense", icon: <Target className="h-8 w-8 sm:h-10 sm:w-10" />, title: "塔防图鉴" },
+  { href: "/enemies/lc", icon: <Skull className="h-8 w-8 sm:h-10 sm:w-10" />, title: "首领图鉴" },
   {
     href: "/overlimit",
     icon: <GalleryVerticalEnd className="h-8 w-8 sm:h-10 sm:w-10" />,
@@ -65,7 +65,7 @@ export default function Home() {
           逆战未来 维基
         </h1>
         <p className="mt-2 text-sm text-zinc-400 sm:text-base">
-          武器、插件、超限卡片、塔防陷阱与敌人资料库
+          武器、插件、首领、超限卡片与塔防图鉴资料库
         </p>
       </div>
 

@@ -6,7 +6,13 @@ import { ENEMY_CARD_STYLES } from "@/constants/common";
 
 const ENEMY_TYPE_ORDER: EnemyType[] = ["normal", "elite", "boss"];
 
-export default function TDEnemiesClient({ enemies }: { enemies: Enemy[] }) {
+export default function TDEnemiesClient({
+  enemies,
+  showHeading = true,
+}: {
+  enemies: Enemy[];
+  showHeading?: boolean;
+}) {
   const grouped = ENEMY_TYPE_ORDER.map((type) => ({
     type,
     label: ENEMY_CARD_STYLES[type].label,
@@ -15,7 +21,9 @@ export default function TDEnemiesClient({ enemies }: { enemies: Enemy[] }) {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <h1 className="mb-8 text-3xl font-bold text-white">塔防敌人图鉴</h1>
+      {showHeading && (
+        <h1 className="mb-8 text-3xl font-bold text-white">塔防敌人图鉴</h1>
+      )}
 
       {grouped.map((group) => (
         <section key={group.type} className="mb-10">
