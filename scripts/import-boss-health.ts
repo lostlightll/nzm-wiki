@@ -1,9 +1,9 @@
 /**
- * 从游戏导出表计算并写入猎场首领的折磨/超限血量。
+ * 从游戏导出表计算并写入猎场首领的英雄/炼狱/折磨/超限血量。
  *
  * 默认仅 dry-run：
  *   pnpm exec tsx scripts/import-boss-health.ts
- *   pnpm exec tsx scripts/import-boss-health.ts --map 昆仑神宫 --difficulty torment
+ *   pnpm exec tsx scripts/import-boss-health.ts --map 昆仑神宫 --difficulty heroic
  *   pnpm exec tsx scripts/import-boss-health.ts --difficulty all --write
  */
 
@@ -14,7 +14,10 @@ import healthSourcesData from "@/data/enemies/lc/boss/health-sources.json";
 import { LC_MAPS } from "@/lib/lc-maps";
 import type { BossDifficulty, BossHealthValue } from "@/types";
 
-type ImportDifficulty = Extract<BossDifficulty, "torment" | "overlimit">;
+type ImportDifficulty = Extract<
+  BossDifficulty,
+  "heroic" | "inferno" | "torment" | "overlimit"
+>;
 
 type RowMap<T> = Record<string, T>;
 
@@ -100,6 +103,8 @@ const MULTI_PHASE_SLUGS = new Set([
   "鬼面将军",
 ]);
 const DIFFICULTY_LABELS: Record<ImportDifficulty, string> = {
+  heroic: "英雄",
+  inferno: "炼狱",
   torment: "折磨",
   overlimit: "超限",
 };
@@ -149,8 +154,11 @@ function parseArgs(): {
 
   const difficulties: ImportDifficulty[] =
     difficultyArg === "all"
-      ? ["torment", "overlimit"]
-      : difficultyArg === "torment" || difficultyArg === "overlimit"
+      ? ["heroic", "inferno", "torment", "overlimit"]
+      : difficultyArg === "heroic" ||
+          difficultyArg === "inferno" ||
+          difficultyArg === "torment" ||
+          difficultyArg === "overlimit"
         ? [difficultyArg]
         : (() => {
             throw new Error(`Unknown difficulty: ${difficultyArg}`);
