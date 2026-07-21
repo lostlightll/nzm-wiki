@@ -52,7 +52,11 @@ next-env.d.ts
 /public/weapon-stats.json
 
 # local generated artifacts
-/outputs/
 /.codex_tmp/
+/MD/_local/
+
+# Python bytecode caches
+__pycache__/
+*.py[cod]
 
 !.claude/commands/lc-enemies.md
