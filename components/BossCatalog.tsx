@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPinned, RotateCcw, Search, Skull, X } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
+import { BossDifficultyControl } from "@/components/BossDifficultyControl";
+import { BossCardHealth } from "@/components/BossHealth";
+import { useBossDifficulty } from "@/components/BossDifficultyProvider";
 import { getAssetPath } from "@/lib/path";
-import { LC_MAPS, type LcMapMeta } from "@/lib/lc-maps";
+import { LC_MAPS } from "@/lib/lc-maps";
 import type { Boss } from "@/types";
 
 interface BossGroup {
@@ -19,20 +22,12 @@ function getBossMaps(boss: Boss): string[] {
   return Array.isArray(boss.map) ? boss.map : [boss.map];
 }
 
-function getHealthLabel(value: Boss["hp"]): string | null {
-  if (value === undefined || value === null) return null;
-  const normalized = String(value).trim();
-  return normalized && normalized !== "?" && normalized !== "？"
-    ? normalized
-    : null;
-}
-
 function BossCard({ boss, eager = false }: { boss: Boss; eager?: boolean }) {
-  const health = getHealthLabel(boss.hp);
+  const { withDifficulty } = useBossDifficulty();
 
   return (
     <Link
-      href={`/bosses/${encodeURIComponent(boss.slug)}`}
+      href={withDifficulty(`/bosses/${encodeURIComponent(boss.slug)}`)}
       className="group block touch-manipulation rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <article className="flex h-full min-w-0 flex-col overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/70 transition-[border-color,background-color,transform] duration-200 ease-out group-hover:-translate-y-0.5 group-hover:border-[#d1ac69]/70 group-hover:bg-zinc-800/90 group-active:translate-y-0 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
@@ -64,15 +59,9 @@ function BossCard({ boss, eager = false }: { boss: Boss; eager?: boolean }) {
               {boss.nickname}
             </p>
           )}
-          <div className="mt-auto flex min-h-8 items-end justify-between gap-2 border-t border-zinc-800 pt-3 text-sm">
+          <div className="mt-auto flex h-14 flex-col items-start gap-1 border-t border-zinc-800 pt-3 text-sm">
             <span className="text-zinc-500">血量</span>
-            <span
-              className={`text-right tabular-nums ${
-                health ? "font-mono text-[#e1c58f]" : "text-zinc-500"
-              }`}
-            >
-              {health ?? "待补"}
-            </span>
+            <BossCardHealth boss={boss} />
           </div>
         </div>
       </article>
@@ -128,6 +117,7 @@ function MapBanner({
 
 export function BossCatalog({ bosses }: { bosses: Boss[] }) {
   const [query, setQuery] = useState("");
+  const [selectedMapId, setSelectedMapId] = useState<string | null>(null);
   const deferredQuery = useDeferredValue(
     query.trim().toLocaleLowerCase("zh-CN"),
   );
@@ -156,7 +146,7 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
     return groups;
   }, [bosses]);
 
-  const visibleGroups = useMemo(() => {
+  const searchedGroups = useMemo(() => {
     if (!deferredQuery) return allGroups;
 
     return allGroups
@@ -178,25 +168,23 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
       .filter((group) => group.bosses.length > 0);
   }, [allGroups, deferredQuery]);
 
+  const visibleGroups = useMemo(
+    () =>
+      selectedMapId
+        ? searchedGroups.filter((group) => group.id === selectedMapId)
+        : searchedGroups,
+    [searchedGroups, selectedMapId],
+  );
+
   const resultCount = visibleGroups.reduce(
     (total, group) => total + group.bosses.length,
     0,
   );
-  const visibleMapIds = new Set(visibleGroups.map((group) => group.id));
+  const mapOptions = allGroups.filter((group) => group.bosses.length > 0);
 
-  const scrollToMap = (map: LcMapMeta) => {
-    const target = document.getElementById(`boss-map-${map.id}`);
-    if (!target) return;
-
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    window.history.replaceState(null, "", `#${target.id}`);
-    target.focus({ preventScroll: true });
-    target.scrollIntoView({
-      behavior: reduceMotion ? "auto" : "smooth",
-      block: "start",
-    });
+  const resetFilters = () => {
+    setQuery("");
+    setSelectedMapId(null);
   };
 
   return (
@@ -214,7 +202,7 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
       </nav>
 
       <section
-        aria-label="首领检索与地图定位"
+        aria-label="首领检索、地图筛选与血量难度"
         className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4"
       >
         <div role="search" className="relative max-w-xl">
@@ -248,21 +236,37 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
 
         <div className="mt-5 border-t border-zinc-700/80 pt-5">
           <div className="mb-3 flex min-h-8 flex-wrap items-center justify-between gap-2">
-            <h2 className="text-base font-semibold text-zinc-300">地图定位</h2>
+            <h2 className="text-base font-semibold text-zinc-300">地图筛选</h2>
             <p aria-live="polite" className="text-sm text-zinc-500">
               共 {resultCount} 位首领
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {LC_MAPS.map((map) => {
-              const disabled = !visibleMapIds.has(map.id);
+          <div aria-label="按地图筛选" className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              aria-pressed={selectedMapId === null}
+              onClick={() => setSelectedMapId(null)}
+              className={`min-h-11 touch-manipulation rounded border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
+                selectedMapId === null
+                  ? "border-[#d1ac69]/70 bg-[#d1ac69]/15 text-[#e1c58f]"
+                  : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700 hover:text-white"
+              }`}
+            >
+              全部地图
+            </button>
+            {mapOptions.map((map) => {
+              const selected = selectedMapId === map.id;
               return (
                 <button
                   key={map.id}
                   type="button"
-                  disabled={disabled}
-                  onClick={() => scrollToMap(map)}
-                  className="min-h-11 touch-manipulation rounded border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:bg-zinc-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-zinc-700 disabled:hover:bg-zinc-800 disabled:hover:text-zinc-300"
+                  aria-pressed={selected}
+                  onClick={() => setSelectedMapId(map.id)}
+                  className={`min-h-11 touch-manipulation rounded border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
+                    selected
+                      ? "border-[#d1ac69]/70 bg-[#d1ac69]/15 text-[#e1c58f]"
+                      : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700 hover:text-white"
+                  }`}
                 >
                   {map.name}
                 </button>
@@ -270,6 +274,7 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
             })}
           </div>
         </div>
+        <BossDifficultyControl className="mt-5 border-t border-zinc-700/80 pt-5" />
       </section>
 
       {visibleGroups.length > 0 ? (
@@ -301,11 +306,11 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
           <p className="text-zinc-400">没有符合条件的首领</p>
           <button
             type="button"
-            onClick={() => setQuery("")}
+            onClick={resetFilters}
             className="flex min-h-11 items-center gap-2 rounded px-3 text-sm text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
           >
             <RotateCcw aria-hidden="true" className="h-4 w-4" />
-            重置搜索
+            重置筛选
           </button>
         </div>
       )}

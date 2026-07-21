@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowLeft, Search, Command, Menu, X, Github } from "lucide-react";
+import { BossDifficultyProvider, useBossDifficulty } from "@/components/BossDifficultyProvider";
 
 const NAV_ITEMS = [
   { href: "/weapons", label: "武器图鉴" },
@@ -63,6 +64,7 @@ function NavBar() {
     visible: false,
   });
   const pathname = usePathname();
+  const { withDifficulty } = useBossDifficulty();
   const mobileBackLink = getMobileBackLink(pathname);
   const desktopNavRef = useRef<HTMLDivElement>(null);
   const navLinkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
@@ -129,7 +131,11 @@ function NavBar() {
         <div className="flex items-center gap-6">
           {mobileBackLink && (
             <Link
-              href={mobileBackLink.href}
+              href={
+                mobileBackLink.href === "/bosses"
+                  ? withDifficulty(mobileBackLink.href)
+                  : mobileBackLink.href
+              }
               aria-label={mobileBackLink.label}
               title={mobileBackLink.label}
               className="flex min-h-11 min-w-11 touch-manipulation items-center justify-center rounded-lg text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 active:bg-zinc-700 md:hidden"
@@ -159,7 +165,7 @@ function NavBar() {
             {NAV_ITEMS.map(({ href, label }) => (
               <Link
                 key={href}
-                href={href}
+                href={href === "/bosses" ? withDifficulty(href) : href}
                 ref={(element) => {
                   navLinkRefs.current[href] = element;
                 }}
@@ -233,7 +239,7 @@ function NavBar() {
             {NAV_ITEMS.map(({ href, label }) => (
               <Link
                 key={href}
-                href={href}
+                href={href === "/bosses" ? withDifficulty(href) : href}
                 onClick={() => setMobileMenuOpen(false)}
                 aria-current={isActive(href) ? "page" : undefined}
                 className={`flex min-h-11 items-center rounded-lg px-3 text-sm transition-colors ${
@@ -258,9 +264,11 @@ export default function PagesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-background">
-      <NavBar />
-      <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
-    </div>
+    <BossDifficultyProvider>
+      <div className="min-h-screen bg-background">
+        <NavBar />
+        <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
+      </div>
+    </BossDifficultyProvider>
   );
 }

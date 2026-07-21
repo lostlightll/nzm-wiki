@@ -293,11 +293,16 @@ export interface DamageResult {
 // 猎场首领 (Boss) 相关类型
 // ------------------------------------------------------------
 
+export type BossDifficulty = "overlimit" | "torment" | "inferno" | "heroic";
+
+export type BossHealthValue = number[] | "unsupported";
+
 export interface Boss {
   slug: string;
   title: string;
   nickname?: string;
   map: string | string[];
+  health?: Partial<Record<BossDifficulty, BossHealthValue>>;
   hp?: string | number;
   hp2?: string | number;
   description?: string;

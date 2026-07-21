@@ -9,18 +9,11 @@ import { mdxOptions } from "@/lib/mdx-options";
 import { getLcMapImagePath } from "@/lib/lc-maps";
 import { getAssetPath } from "@/lib/path";
 import { TableOfContents } from "@/components/TableOfContents";
+import { BossDetailHealth } from "@/components/BossHealth";
 import type { Boss } from "@/types";
 
 function getMaps(boss: Boss): string[] {
   return Array.isArray(boss.map) ? boss.map : [boss.map];
-}
-
-function getHealth(value: Boss["hp"]): string | null {
-  if (value === undefined || value === null) return null;
-  const normalized = String(value).trim();
-  return normalized && normalized !== "?" && normalized !== "？"
-    ? normalized
-    : null;
 }
 
 export async function BossDetailPage({ slug }: { slug: string }) {
@@ -30,8 +23,6 @@ export async function BossDetailPage({ slug }: { slug: string }) {
   const { content, metadata } = getMDXDetail("enemies/lc/boss", slug);
   const maps = getMaps(boss);
   const mapImage = getLcMapImagePath(maps[0]);
-  const health = getHealth(boss.hp);
-  const secondPhaseHealth = getHealth(boss.hp2);
   const showToc = metadata.toc !== false;
 
   return (
@@ -90,26 +81,7 @@ export async function BossDetailPage({ slug }: { slug: string }) {
                 </p>
               )}
 
-              {(health || secondPhaseHealth) && (
-                <dl className="mt-6 grid max-w-lg grid-cols-1 gap-3 sm:grid-cols-2">
-                  {health && (
-                    <div className="rounded border border-zinc-600/80 bg-zinc-950/65 px-4 py-3 backdrop-blur-sm">
-                      <dt className="text-sm text-zinc-400">血量</dt>
-                      <dd className="mt-1 break-words font-mono text-lg font-semibold tabular-nums text-[#e1c58f]">
-                        {health}
-                      </dd>
-                    </div>
-                  )}
-                  {secondPhaseHealth && (
-                    <div className="rounded border border-zinc-600/80 bg-zinc-950/65 px-4 py-3 backdrop-blur-sm">
-                      <dt className="text-sm text-zinc-400">第二阶段血量</dt>
-                      <dd className="mt-1 break-words font-mono text-lg font-semibold tabular-nums text-[#e1c58f]">
-                        {secondPhaseHealth}
-                      </dd>
-                    </div>
-                  )}
-                </dl>
-              )}
+              <BossDetailHealth boss={boss} />
             </div>
 
             <div className="order-1 flex justify-center md:order-2 md:justify-end">
