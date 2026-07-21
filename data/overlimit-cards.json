@@ -340,7 +340,7 @@
   {
     "id": "20703040436",
     "name": "哑枪",
-    "description": "保持不射击，每秒增加30%伤害，最多10层，开枪命中清零。",
+    "description": "保持不射击，每秒增加35%伤害，最多10层，开枪命中清零。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
     "quality": 5,
     "weight": 1,
