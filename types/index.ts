@@ -296,8 +296,8 @@ export interface DamageResult {
 export interface Boss {
   slug: string;
   title: string;
-  map: string;
-  hp: string;
+  map: string | string[];
+  hp?: string;
   hp2?: string;
 }
 
@@ -335,7 +335,7 @@ export interface Enemy {
   hp?: string | number;
   hp2?: string;
   attack?: string | number;
-  map?: string;
+  map?: string | string[];
   description?: string;
   hitback_hp?: string | number;
   hardstraight_hp?: string | number;

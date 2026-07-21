@@ -54,9 +54,14 @@ export default async function PostPage({
   const { content, metadata } = getMDXDetail("posts", slugPath);
   const showToc = metadata.toc !== false;
 
-  // 加载 boss 数据，转换为 title -> Boss 的映射
+  // 同名 Boss 优先让与显示名完全一致的 slug 响应旧的 title 引用。
   const bosses = await getAllBosses();
-  const bossData = Object.fromEntries(bosses.map((b) => [b.title, b]));
+  const bossData = Object.fromEntries(bosses.map((boss) => [boss.slug, boss]));
+  for (const boss of bosses) {
+    if (!bossData[boss.title] || boss.slug === boss.title) {
+      bossData[boss.title] = boss;
+    }
+  }
   const mdxComponents = getMdxComponents(bossData);
 
   // Get page width from frontmatter, default to lg (max-w-3xl)

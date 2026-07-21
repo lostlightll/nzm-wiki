@@ -3,17 +3,32 @@
 import type { Enemy } from "@/types";
 import { EnemyCard, EnemyCardGrid } from "@/components/EnemyCard";
 
-const MAP_ORDER = ["大都会", "黑暗复活节", "冰点源起", "昆仑神宫", "精绝古城"];
+const MAP_ORDER = [
+  "大都会",
+  "黑暗复活节",
+  "冰点源起",
+  "昆仑神宫",
+  "精绝古城",
+  "樱之渊",
+  "樱之城",
+  "销金之城",
+  "丛林魅影",
+];
 
 export default function LCEnemiesClient({ enemies }: { enemies: Enemy[] }) {
+  const getMaps = (enemy: Enemy) =>
+    enemy.map ? (Array.isArray(enemy.map) ? enemy.map : [enemy.map]) : [];
+
   const grouped = MAP_ORDER.map((map) => ({
     map,
-    enemies: enemies.filter((e) => e.map === map),
-  })).filter((g) => g.enemies.length > 0);
+    enemies: enemies.filter((enemy) => getMaps(enemy).includes(map)),
+  }));
 
   // 不在已知地图中的敌人
   const knownMaps = new Set(MAP_ORDER);
-  const others = enemies.filter((e) => e.map && !knownMaps.has(e.map));
+  const others = enemies.filter((enemy) =>
+    getMaps(enemy).some((map) => !knownMaps.has(map)),
+  );
 
   return (
     <div className="mx-auto max-w-4xl">
@@ -24,11 +39,17 @@ export default function LCEnemiesClient({ enemies }: { enemies: Enemy[] }) {
           <h2 className="mb-4 text-xl font-bold text-zinc-300">
             {group.map}
           </h2>
-          <EnemyCardGrid>
-            {group.enemies.map((enemy) => (
-              <EnemyCard key={enemy.slug} enemy={enemy} />
-            ))}
-          </EnemyCardGrid>
+          {group.enemies.length > 0 ? (
+            <EnemyCardGrid>
+              {group.enemies.map((enemy) => (
+                <EnemyCard key={enemy.slug} enemy={enemy} />
+              ))}
+            </EnemyCardGrid>
+          ) : (
+            <p className="border-l-2 border-zinc-700 py-2 pl-3 text-sm text-zinc-500">
+              首领资料整理中
+            </p>
+          )}
         </section>
       ))}
 

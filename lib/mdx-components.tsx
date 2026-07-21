@@ -84,14 +84,14 @@ export const mdxComponents = {
 
 /**
  * 创建带有 boss 数据的 MDX 组件
- * 在服务端解析 title -> boss 对象，然后传递给客户端组件
+ * 在服务端按 title 或 slug 解析 boss 对象，然后传递给客户端组件
  */
 export function getMdxComponents(bossData?: Record<string, Boss>) {
   if (!bossData) return mdxComponents;
 
   return {
     ...mdxComponents,
-    // 服务端解析 title，直接传递完整的 boss 对象给客户端
+    // 服务端解析 title 或 slug，直接传递完整的 boss 对象给客户端
     BossCard: ({ title, boss }: { title?: string; boss?: Boss }) => {
       const resolvedBoss = boss ?? (title ? bossData[title] : undefined);
       if (!resolvedBoss) {

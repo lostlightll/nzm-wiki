@@ -12,12 +12,14 @@ import { ENEMY_CARD_STYLES, ENEMY_GLOW_COLOR } from "@/constants/common";
 // ============================================================
 
 function EnemyImage({
-  name,
+  imageName,
+  alt,
   iconPrefix,
   type,
   className,
 }: {
-  name: string;
+  imageName: string;
+  alt: string;
   iconPrefix: string;
   type: EnemyType;
   className?: string;
@@ -43,8 +45,8 @@ function EnemyImage({
         className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] ${glowColor} to-transparent opacity-40`}
       />
       <Image
-        src={getAssetPath(`/icons/enemies/${iconPrefix}/${name}.png`)}
-        alt={name}
+        src={getAssetPath(`/icons/enemies/${iconPrefix}/${imageName}.png`)}
+        alt={alt}
         width={256}
         height={256}
         className="not-prose h-full w-full object-cover"
@@ -60,6 +62,12 @@ function EnemyImage({
 
 export function EnemyCard({ enemy }: { enemy: Enemy }) {
   const style = ENEMY_CARD_STYLES[enemy.type];
+  const maps = enemy.map
+    ? Array.isArray(enemy.map)
+      ? enemy.map
+      : [enemy.map]
+    : [];
+  const mapLabel = maps.join(" / ");
   const hasValue = (v: number | string | undefined) =>
     v !== undefined && v !== null && v !== "";
 
@@ -74,7 +82,8 @@ export function EnemyCard({ enemy }: { enemy: Enemy }) {
         {/* 左侧图片区域 */}
         <div className={`w-32 shrink-0 border-r ${style.divider} bg-black/20`}>
           <EnemyImage
-            name={enemy.title}
+            imageName={enemy.slug}
+            alt={enemy.title}
             iconPrefix={enemy.iconPrefix}
             type={enemy.type}
           />
@@ -102,11 +111,12 @@ export function EnemyCard({ enemy }: { enemy: Enemy }) {
                 }}
               />
             </div>
-            {enemy.map && (
+            {mapLabel && (
               <span
-                className={`shrink-0 self-center rounded border border-[#d1ac69]/20 bg-[#d1ac69]/10 px-1.5 py-0.5 text-[10px] ${style.text} opacity-70`}
+                title={mapLabel}
+                className={`max-w-24 shrink truncate self-center rounded border border-[#d1ac69]/20 bg-[#d1ac69]/10 px-1.5 py-0.5 text-[10px] ${style.text} opacity-70`}
               >
-                {enemy.map}
+                {mapLabel}
               </span>
             )}
           </div>
@@ -255,7 +265,8 @@ export function EnemyDetailCard({ enemy }: { enemy: Enemy }) {
             className={`relative h-48 w-48 shrink-0 overflow-hidden rounded border ${style.divider} bg-black/20 sm:h-56 sm:w-56`}
           >
             <EnemyImage
-              name={enemy.title}
+              imageName={enemy.slug}
+              alt={enemy.title}
               iconPrefix={enemy.iconPrefix}
               type={enemy.type}
             />
