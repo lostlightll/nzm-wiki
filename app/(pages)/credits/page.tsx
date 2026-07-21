@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 // Tier 1 核心致谢数据（不含头像 URL，由服务端 fetch）
 const CORE_CONTRIBUTORS = [
   {
-    name: "Kha1ed",
+    name: "幻想延续",
     platform: "github" as const,
     url: "https://github.com/lostlightll",
     description: "本项目维护者",
     githubUser: "lostlightll",
-    extraLink: "https://lostlightll.github.io/",
+    extraLink: "https://github.com/lostlightll",
     extraLabel: "个人主页",
   },
   {
