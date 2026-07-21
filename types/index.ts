@@ -296,9 +296,11 @@ export interface DamageResult {
 export interface Boss {
   slug: string;
   title: string;
+  nickname?: string;
   map: string | string[];
-  hp?: string;
-  hp2?: string;
+  hp?: string | number;
+  hp2?: string | number;
+  description?: string;
 }
 
 // ------------------------------------------------------------
@@ -333,7 +335,7 @@ export interface Enemy {
   iconPrefix: string;
   linkPrefix: string;
   hp?: string | number;
-  hp2?: string;
+  hp2?: string | number;
   attack?: string | number;
   map?: string | string[];
   description?: string;

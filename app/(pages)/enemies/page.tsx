@@ -10,7 +10,7 @@ const ENEMY_CATEGORIES = [
   {
     title: "猎场首领",
     description: "僵尸猎场模式中出现的各类首领",
-    href: "/enemies/lc",
+    href: "/bosses",
     available: true,
   },
 ];

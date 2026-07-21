@@ -8,7 +8,7 @@ import { ArrowLeft, Search, Command, Menu, X, Github } from "lucide-react";
 const NAV_ITEMS = [
   { href: "/weapons", label: "武器图鉴" },
   { href: "/tower-defense", label: "塔防图鉴" },
-  { href: "/enemies/lc", label: "首领图鉴" },
+  { href: "/bosses", label: "首领图鉴" },
   { href: "/perks", label: "插件图鉴" },
   { href: "/overlimit", label: "超限图鉴" },
   { href: "/credits", label: "致谢" },
@@ -23,6 +23,13 @@ function getMobileBackLink(pathname: string) {
 
   if (/^\/overlimit\/[^/]+\/?$/.test(pathname)) {
     return { href: "/overlimit", label: "返回超限图鉴" };
+  }
+
+  if (
+    /^\/bosses\/[^/]+\/?$/.test(pathname) ||
+    /^\/enemies\/lc\/[^/]+\/?$/.test(pathname)
+  ) {
+    return { href: "/bosses", label: "返回首领图鉴" };
   }
 
   if (pathname.startsWith("/traps/")) {
@@ -61,6 +68,15 @@ function NavBar() {
   const navLinkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   const isActive = (href: string) => {
+    if (href === "/bosses") {
+      return (
+        pathname === "/bosses" ||
+        pathname.startsWith("/bosses/") ||
+        pathname === "/enemies/lc" ||
+        pathname.startsWith("/enemies/lc/")
+      );
+    }
+
     if (href === "/tower-defense") {
       return (
         pathname === "/tower-defense" ||

@@ -53,6 +53,6 @@ export function bossToEnemy(boss: Boss): Enemy {
     ...boss,
     type: "boss",
     iconPrefix: "lc/boss",
-    linkPrefix: "/enemies/lc",
+    linkPrefix: "/bosses",
   };
 }

@@ -11,7 +11,7 @@ const pathMap: Record<string, string> = {
   weapons_td: "/weapons/td",
   perks: "/perks",
   traps: "/traps",
-  "enemies/lc/boss": "/enemies/lc",
+  "enemies/lc/boss": "/bosses",
   "enemies/td": "/enemies/td",
   cards: "/cards",
   posts: "/posts",
@@ -53,6 +53,9 @@ function scanDirectory(dirPath: string, relativePath: string = ""): PageEntry[] 
       const fileName = entry.name.replace(/\.mdx$/, "");
       const slug = relativePath ? `${relativePath}/${fileName}` : fileName;
 
+      // 猎场精英敌人尚未有公开路由，不写入站点地图。
+      if (slug.startsWith("enemies/lc/elite/")) continue;
+
       // 确定 URL 路径
       let urlPath = "";
       for (const [prefix, p] of Object.entries(pathMap)) {
@@ -91,7 +94,7 @@ function generateSitemap() {
     { url: "/tower-defense" },
     { url: "/traps" },
     { url: "/enemies" },
-    { url: "/enemies/lc" },
+    { url: "/bosses" },
     { url: "/enemies/td" },
     { url: "/posts" },
     { url: "/damage" },

@@ -1,4 +1,4 @@
-import { BossDetailPage as BossDetailView } from "@/components/BossDetailPage";
+import { BossDetailPage } from "@/components/BossDetailPage";
 import {
   getBossDetailMetadata,
   getBossStaticParams,
@@ -16,11 +16,11 @@ export async function generateMetadata({
   return getBossDetailMetadata(params);
 }
 
-export default async function BossDetailPage({
+export default async function BossPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return <BossDetailView slug={slug} />;
+  return <BossDetailPage slug={slug} />;
 }

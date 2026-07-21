@@ -30,7 +30,7 @@ const pathMap: Record<string, string> = {
   weapons: "/weapons",
   perks: "/perks",
   traps: "/traps",
-  "enemies/lc/boss": "/enemies/lc",
+  "enemies/lc/boss": "/bosses",
   "enemies/td": "/enemies/td",
   cards: "/cards",
   posts: "/posts",
@@ -69,6 +69,9 @@ function scanDirectory(dirPath: string, relativePath: string = ""): SearchItem[]
 
       const fileName = entry.name.replace(/\.mdx$/, "");
       const slug = relativePath ? `${relativePath}/${fileName}` : fileName;
+
+      // 猎场精英敌人尚未有公开路由，不生成失效的旧前缀链接。
+      if (slug.startsWith("enemies/lc/elite/")) continue;
 
       // 确定分类
       let category = "其他";
