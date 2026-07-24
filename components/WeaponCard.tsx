@@ -176,7 +176,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
       href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
     >
       <div
-        className={`relative min-w-[360px] rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5 transition-shadow hover:shadow-lg hover:shadow-black/20`}
+        className={`relative w-full min-w-0 rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5 transition-shadow hover:shadow-lg hover:shadow-black/20`}
       >
         {elementIcon && (
           <div className="absolute right-4 top-4 z-10">
@@ -205,12 +205,11 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
             alt={weapon.title || ""}
             width={320}
             height={160}
-            className="object-contain"
-            style={{ width: 320, height: "auto" }}
+            className="h-auto w-full max-w-[320px] object-contain"
           />
         </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-base">
+        <div className="mt-4 grid grid-cols-1 gap-y-2 text-base sm:grid-cols-2 sm:gap-x-6">
           {isMelee ? (
             <>
               <div className="flex justify-between">
@@ -295,14 +294,14 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
               </div>
               {weapon.changeClip && (
                 <div
-                  className={`col-span-2 grid min-h-0 transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none ${
+                  className={`col-span-1 grid min-h-0 transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none sm:col-span-2 ${
                     showReloadDetail
                       ? "grid-rows-[1fr]"
                       : "grid-rows-[0fr]"
                   }`}
                 >
                   <div className="min-h-0 overflow-hidden">
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+                    <div className="grid grid-cols-1 gap-y-2 sm:grid-cols-2 sm:gap-x-6">
                       <div className="flex justify-between">
                         <span className="text-zinc-500">换弹动画</span>
                         <span className="text-zinc-300">

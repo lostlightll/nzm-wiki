@@ -132,22 +132,22 @@ export default function WeaponsClient({
 
   return (
     <>
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-4">
           <h1 className="text-3xl font-bold text-white">
             {isTD ? "塔防武器图鉴" : "武器图鉴"}
           </h1>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex w-full items-center gap-2 sm:w-auto">
           <button
             onClick={toggleMode}
-            className="rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700"
+            className="min-h-11 flex-1 rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-2 text-sm text-zinc-300 transition-colors hover:bg-zinc-700 sm:flex-none"
           >
             {isTD ? "猎场模式" : "塔防模式"}
           </button>
           <button
             onClick={() => setShowDetails(!showDetails)}
-            className="rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-1.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-700"
+            className="min-h-11 flex-1 rounded-lg border border-zinc-600 bg-zinc-800 px-3 py-2 text-sm text-zinc-300 transition-colors hover:bg-zinc-700 sm:flex-none"
           >
             {showDetails ? "简洁模式" : "详细模式"}
           </button>
