@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { CatalogLink } from "@/components/CatalogLink";
 import type { Enemy, EnemyType } from "@/types";
 import { getAssetPath } from "@/lib/path";
 import { ENEMY_CARD_STYLES, ENEMY_GLOW_COLOR } from "@/constants/common";
@@ -72,7 +72,7 @@ export function EnemyCard({ enemy }: { enemy: Enemy }) {
     v !== undefined && v !== null && v !== "";
 
   return (
-    <Link
+    <CatalogLink
       href={`${enemy.linkPrefix}/${encodeURIComponent(enemy.slug)}`}
       className="group block no-underline"
     >
@@ -157,7 +157,7 @@ export function EnemyCard({ enemy }: { enemy: Enemy }) {
           </div>
         )}
       </div>
-    </Link>
+    </CatalogLink>
   );
 }
 

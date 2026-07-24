@@ -5,6 +5,7 @@ import Image from "next/image";
 import { getAssetPath } from "@/lib/path";
 import { getShanghaiDateKey } from "@/lib/date-key";
 import { isPerkRecent } from "@/lib/perk-release";
+import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import type { Perk, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
@@ -109,6 +110,10 @@ export default function PerksPageClient({
   initialPerks,
   initialDateKey,
 }: PerksPageClientProps) {
+  useEffect(() => {
+    restoreCatalogNavigation();
+  }, []);
+
   const todayKey = useShanghaiDateKey(initialDateKey);
   const slotState = useSelection<PerkSlot>(
     FILTER_STORAGE_KEYS.slot,

@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import type { Weapon, WeaponType, ElementType, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
 import { WeaponCard } from "@/components/WeaponCard";
 import { WeaponMasonry } from "@/components/WeaponMasonry";
+import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import {
   WEAPON_TYPES,
   ELEMENT_TYPES,
@@ -61,6 +62,10 @@ export default function WeaponsClient({
   const router = useRouter();
   const mode = searchParams.get("mode");
   const isTD = mode === "td";
+
+  useEffect(() => {
+    restoreCatalogNavigation();
+  }, []);
 
   const [showDetails, setShowDetails] = useState(true);
   const detailColumnCount = useSyncExternalStore(

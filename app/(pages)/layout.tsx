@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ArrowLeft, Search, Command, Menu, X, Github } from "lucide-react";
 import { BossDifficultyProvider, useBossDifficulty } from "@/components/BossDifficultyProvider";
+import { canReturnToCatalog } from "@/lib/catalog-navigation";
 
 const NAV_ITEMS = [
   { href: "/weapons", label: "武器图鉴" },
@@ -20,6 +21,14 @@ const GITHUB_REPO = "https://github.com/lostlightll/nzm-wiki";
 function getMobileBackLink(pathname: string) {
   if (pathname.startsWith("/perks/")) {
     return { href: "/perks", label: "返回插件图鉴" };
+  }
+
+  if (/^\/weapons\/td\/[^/]+\/?$/.test(pathname)) {
+    return { href: "/weapons?mode=td", label: "返回塔防武器图鉴" };
+  }
+
+  if (/^\/weapons\/[^/]+\/?$/.test(pathname)) {
+    return { href: "/weapons", label: "返回武器图鉴" };
   }
 
   if (/^\/overlimit\/[^/]+\/?$/.test(pathname)) {
@@ -64,6 +73,7 @@ function NavBar() {
     visible: false,
   });
   const pathname = usePathname();
+  const router = useRouter();
   const { withDifficulty } = useBossDifficulty();
   const mobileBackLink = getMobileBackLink(pathname);
   const desktopNavRef = useRef<HTMLDivElement>(null);
@@ -138,6 +148,12 @@ function NavBar() {
               }
               aria-label={mobileBackLink.label}
               title={mobileBackLink.label}
+              onClick={(event) => {
+                if (canReturnToCatalog(pathname)) {
+                  event.preventDefault();
+                  router.back();
+                }
+              }}
               className="flex min-h-11 min-w-11 touch-manipulation items-center justify-center rounded-lg text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 active:bg-zinc-700 md:hidden"
             >
               <ArrowLeft aria-hidden="true" className="h-5 w-5" />

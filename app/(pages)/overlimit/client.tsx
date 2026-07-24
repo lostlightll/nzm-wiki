@@ -27,6 +27,7 @@ import {
 } from "@/components/OverlimitCardMeta";
 import { OverlimitHoverPreview } from "@/components/OverlimitHoverPreview";
 import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
+import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import { getAssetPath } from "@/lib/path";
 import type {
   OverlimitCard,
@@ -132,6 +133,10 @@ export default function OverlimitPageClient({
   levelCatalog,
   mapRotation,
 }: OverlimitPageClientProps) {
+  useEffect(() => {
+    restoreCatalogNavigation();
+  }, []);
+
   const [activeModule, setActiveModule] =
     useState<OverlimitModule>("cards");
   const activeModuleRef = useRef<OverlimitModule>("cards");

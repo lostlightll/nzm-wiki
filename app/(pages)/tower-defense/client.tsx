@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 
 type TowerDefenseModule = "traps" | "enemies";
 
@@ -23,6 +24,8 @@ export default function TowerDefensePageClient({
   const [activeModule, setActiveModule] = useState<TowerDefenseModule>("traps");
 
   useEffect(() => {
+    restoreCatalogNavigation();
+
     const syncModuleFromHash = () => setActiveModule(getModuleFromHash());
     syncModuleFromHash();
     window.addEventListener("hashchange", syncModuleFromHash);

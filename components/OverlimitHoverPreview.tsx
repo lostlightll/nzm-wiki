@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Crosshair, Scale } from "lucide-react";
 import {
   useId,
@@ -10,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
+import { CatalogLink } from "@/components/CatalogLink";
 import { OverlimitWeaponApplicability } from "@/components/OverlimitCardMeta";
 import type { OverlimitCard } from "@/types";
 
@@ -90,7 +90,7 @@ export function OverlimitHoverPreview({
 
   return (
     <>
-      <Link
+      <CatalogLink
         ref={anchorRef}
         href={href}
         className="group block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d1ac69]"
@@ -108,7 +108,7 @@ export function OverlimitHoverPreview({
         }}
       >
         {children}
-      </Link>
+      </CatalogLink>
 
       {isOpen &&
         createPortal(

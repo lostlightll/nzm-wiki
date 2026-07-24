@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import type { Enemy, EnemyType } from "@/types";
 import { EnemyCard, EnemyCardGrid } from "@/components/EnemyCard";
 import { ENEMY_CARD_STYLES } from "@/constants/common";
+import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 
 const ENEMY_TYPE_ORDER: EnemyType[] = ["normal", "elite", "boss"];
 
@@ -13,6 +15,10 @@ export default function TDEnemiesClient({
   enemies: Enemy[];
   showHeading?: boolean;
 }) {
+  useEffect(() => {
+    restoreCatalogNavigation();
+  }, []);
+
   const grouped = ENEMY_TYPE_ORDER.map((type) => ({
     type,
     label: ENEMY_CARD_STYLES[type].label,

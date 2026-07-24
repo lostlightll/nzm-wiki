@@ -8,8 +8,8 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
-import Link from "next/link";
 import { Crosshair, Sparkles } from "lucide-react";
+import { CatalogLink } from "@/components/CatalogLink";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import { getPerkWeaponApplicability } from "@/lib/perk-applicability";
@@ -127,7 +127,7 @@ export function PerkHoverPreview({
 
   return (
     <>
-      <Link
+      <CatalogLink
         ref={anchorRef}
         href={href}
         className="group block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d1ac69]"
@@ -141,7 +141,7 @@ export function PerkHoverPreview({
         }}
       >
         {children}
-      </Link>
+      </CatalogLink>
 
       {isOpen &&
         createPortal(

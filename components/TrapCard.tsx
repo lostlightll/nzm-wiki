@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { CatalogLink } from "@/components/CatalogLink";
 import type { Trap } from "@/types";
 import { getAssetPath } from "@/lib/path";
 
@@ -35,14 +35,14 @@ function TrapImage({ name, size = 128, className }: { name: string; size?: numbe
 
 export function TrapCard({ trap }: { trap: Trap }) {
   return (
-    <Link href={`/traps/${encodeURIComponent(trap.slug)}`}>
+    <CatalogLink href={`/traps/${encodeURIComponent(trap.slug)}`}>
       <div className="rounded-lg border-2 border-zinc-700 bg-zinc-800/50 p-4 transition-transform hover:scale-[1.02] hover:border-zinc-600">
         <div className="flex justify-center mb-3">
           <TrapImage name={trap.title} />
         </div>
         <h3 className="text-center text-lg font-semibold text-white">{trap.title}</h3>
       </div>
-    </Link>
+    </CatalogLink>
   );
 }
 

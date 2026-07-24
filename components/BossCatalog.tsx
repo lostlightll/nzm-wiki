@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { MapPinned, RotateCcw, Search, Skull, X } from "lucide-react";
-import { useDeferredValue, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { BossDifficultyControl } from "@/components/BossDifficultyControl";
 import { BossCardHealth } from "@/components/BossHealth";
 import { useBossDifficulty } from "@/components/BossDifficultyProvider";
+import { CatalogLink } from "@/components/CatalogLink";
+import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import { getAssetPath } from "@/lib/path";
 import { LC_MAPS } from "@/lib/lc-maps";
 import type { Boss } from "@/types";
@@ -26,7 +27,7 @@ function BossCard({ boss, eager = false }: { boss: Boss; eager?: boolean }) {
   const { withDifficulty } = useBossDifficulty();
 
   return (
-    <Link
+    <CatalogLink
       href={withDifficulty(`/bosses/${encodeURIComponent(boss.slug)}`)}
       className="group block touch-manipulation rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
@@ -65,7 +66,7 @@ function BossCard({ boss, eager = false }: { boss: Boss; eager?: boolean }) {
           </div>
         </div>
       </article>
-    </Link>
+    </CatalogLink>
   );
 }
 
@@ -121,6 +122,10 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
   const deferredQuery = useDeferredValue(
     query.trim().toLocaleLowerCase("zh-CN"),
   );
+
+  useEffect(() => {
+    restoreCatalogNavigation();
+  }, []);
 
   const allGroups = useMemo<BossGroup[]>(() => {
     const knownMaps = new Set(LC_MAPS.map((map) => map.name));

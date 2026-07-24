@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { CatalogLink } from "@/components/CatalogLink";
 import type { Weapon, ElementType, DamageMode } from "@/types";
 import { getAssetPath } from "@/lib/path";
 import {
@@ -133,7 +133,9 @@ function SimpleCard({ weapon }: { weapon: Weapon }) {
   const elementIcon = ELEMENT_ICONS[mode.element];
 
   return (
-    <Link href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}>
+    <CatalogLink
+      href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
+    >
       <div
         className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 transition-transform hover:scale-[1.02]`}
       >
@@ -150,7 +152,7 @@ function SimpleCard({ weapon }: { weapon: Weapon }) {
         <h3 className="mb-2 text-base font-semibold text-white">{weapon.title}</h3>
         <WeaponImage name={weapon.title} size="small" />
       </div>
-    </Link>
+    </CatalogLink>
   );
 }
 
@@ -170,7 +172,9 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
   const isMelee = isMeleeWeapon(weapon);
 
   return (
-    <Link href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}>
+    <CatalogLink
+      href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
+    >
       <div
         className={`relative min-w-[360px] rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5 transition-shadow hover:shadow-lg hover:shadow-black/20`}
       >
@@ -319,7 +323,7 @@ function DetailedCard({ weapon }: { weapon: Weapon }) {
           )}
         </div>
       </div>
-    </Link>
+    </CatalogLink>
   );
 }
 
