@@ -6,6 +6,7 @@
  *   pnpm exec tsx scripts/import-perks.ts 肾上腺素
  *   pnpm exec tsx scripts/import-perks.ts --ids 20703040432 --json
  *   pnpm exec tsx scripts/import-perks.ts --all --sync-status --write
+ *   pnpm exec tsx scripts/import-perks.ts --all --sync-status --release-date 2026-07-24 --write
  *   pnpm exec tsx scripts/import-perks.ts --all --sync-ids --write
  *   pnpm exec tsx scripts/import-perks.ts --all --sync-descriptions --write
  *
@@ -13,6 +14,7 @@
  * - 为缺失插件创建 draft MDX
  * - 补齐已有 MDX 中为空的 id、icon、weaponType、weaponNames
  * - 使用 --sync-status 同步所有现有插件的来源状态字段（跳过 availability_override）
+ * - 使用 --release-date 为新建的已上线插件或状态同步中的上线转换记录日期
  * - 使用 --sync-ids 仅同步所有现有插件的缺失 ID
  * - 使用 --sync-descriptions 保守修复为空或含占位符的 description
  * - 使用 --sync-icons 按同一 ItemID 的 CommonItem 图标纠正已有页面和本地图标资产
@@ -25,6 +27,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import matter from "gray-matter";
+import { isValidDateKey } from "../lib/date-key";
 
 const ROOT_DIR = process.cwd();
 const REFS_DIR = path.join(ROOT_DIR, "refs/Exports/NZM/Content");
@@ -220,6 +223,7 @@ interface Options {
   includeHidden: boolean;
   json: boolean;
   season: string;
+  releaseDate: string;
   ids: Set<string>;
   names: Set<string>;
   limit: number;
@@ -320,6 +324,7 @@ function parseArgs(argv: string[]): Options {
     includeHidden: false,
     json: false,
     season: "pending",
+    releaseDate: "",
     ids: new Set(),
     names: new Set(),
     limit: 30,
@@ -369,6 +374,10 @@ function parseArgs(argv: string[]): Options {
       options.season = argv[++index] ?? options.season;
     } else if (arg.startsWith("--season=")) {
       options.season = arg.slice("--season=".length) || options.season;
+    } else if (arg === "--release-date") {
+      options.releaseDate = argv[++index] ?? "";
+    } else if (arg.startsWith("--release-date=")) {
+      options.releaseDate = arg.slice("--release-date=".length);
     } else if (arg === "--limit") {
       options.limit = Number(argv[++index] ?? options.limit);
     } else if (arg.startsWith("--limit=")) {
@@ -384,6 +393,10 @@ function parseArgs(argv: string[]): Options {
     throw new Error("--limit 必须是大于或等于 0 的数字");
   }
 
+  if (options.releaseDate && !isValidDateKey(options.releaseDate)) {
+    throw new Error("--release-date 必须是有效的 YYYY-MM-DD 日期");
+  }
+
   if (
     options.allWithIcons &&
     (options.ids.size > 0 ||
@@ -392,7 +405,8 @@ function parseArgs(argv: string[]): Options {
       options.syncIds ||
       options.syncDescriptions ||
       options.syncIcons ||
-      options.syncApplicability)
+      options.syncApplicability ||
+      options.releaseDate)
   ) {
     throw new Error("--all-with-icons 不能与选择器或 --sync-* 参数同时使用");
   }
@@ -414,6 +428,7 @@ function printHelp() {
   --all-with-icons   按 ItemID 导入所有本地缺失且 refs PNG 图标源存在的插件
   --ids <id,...>     按插件 ID 筛选
   --season <value>   新草稿的 season，默认 pending
+  --release-date <YYYY-MM-DD> 新建已上线插件或同步上线转换时写入最近上线日期
   --sync-status      同步已有 MDX 的 CollectMODItem、MakeMODItem、IsCooked（跳过 availability_override）
   --sync-ids         同步已有 MDX 的缺失 id，不修改其它字段
   --sync-descriptions 保守修复为空、含独立大写 X 或连续问号的 description（跳过 description_override）
@@ -1111,7 +1126,11 @@ function writeBulkImportReport(plans: BulkImportPlan[]): void {
   fs.writeFileSync(BULK_IMPORT_REPORT, `${lines.join("\n")}\n`, "utf8");
 }
 
-function createMdx(record: PerkRecord, season: string): string {
+function createMdx(
+  record: PerkRecord,
+  season: string,
+  releaseDate = "",
+): string {
   const lines = [
     "---",
     `title: ${yamlValue(record.name)}`,
@@ -1130,6 +1149,13 @@ function createMdx(record: PerkRecord, season: string): string {
     `CollectMODItem: ${Number(record.collectable)}`,
     `MakeMODItem: ${Number(record.craftable)}`,
     `IsCooked: ${record.isCooked}`,
+  );
+
+  if (record.collectable && releaseDate) {
+    lines.push(`release_date: ${yamlValue(releaseDate)}`);
+  }
+
+  lines.push(
     `season: ${yamlValue(season)}`,
     `description: ${yamlValue(record.description)}`,
     "draft: true",
@@ -1438,6 +1464,13 @@ function main() {
         local.data.CollectMODItem !== Number(record.collectable)
       ) {
         fields.push({ key: "CollectMODItem", value: Number(record.collectable) });
+        if (
+          options.releaseDate &&
+          Number(local.data.CollectMODItem) !== 1 &&
+          record.collectable
+        ) {
+          fields.push({ key: "release_date", value: options.releaseDate });
+        }
       }
       if (local.data.MakeMODItem !== Number(record.craftable)) {
         fields.push({ key: "MakeMODItem", value: Number(record.craftable) });
@@ -1583,7 +1616,11 @@ function main() {
         if (fs.existsSync(filePath)) {
           throw new Error(`拒绝覆盖已有文件: ${filePath}`);
         }
-        fs.writeFileSync(filePath, createMdx(record, options.season), "utf8");
+        fs.writeFileSync(
+          filePath,
+          createMdx(record, options.season, options.releaseDate),
+          "utf8",
+        );
         writeResult.created.push(filePath);
 
         const iconStatus = copyIcon(record);

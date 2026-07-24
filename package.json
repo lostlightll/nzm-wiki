@@ -7,6 +7,7 @@
     "build": "tsx scripts/build-static.ts",
     "start": "next start",
     "lint": "eslint",
+    "test:perk-release": "tsx --test lib/perk-release.test.ts",
     "webp": "pnpm exec tsx ./scripts/optimize-images.ts public/",
     "index": "tsx scripts/generate-search-index.ts"
   },

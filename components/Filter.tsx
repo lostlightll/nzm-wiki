@@ -14,6 +14,7 @@ export function FilterCheckbox({
   checked,
   onChange,
   colorClass,
+  highlighted,
   iconOnlyOnMobile,
   centerClass,
 }: {
@@ -24,6 +25,7 @@ export function FilterCheckbox({
   checked: boolean;
   onChange: () => void;
   colorClass?: string;
+  highlighted?: boolean;
   iconOnlyOnMobile?: boolean;
   centerClass?: string;
 }) {
@@ -34,8 +36,12 @@ export function FilterCheckbox({
 
   return (
     <label
-      className={`flex min-h-11 touch-manipulation cursor-pointer items-center ${alignClass} rounded border px-3 py-2 transition-colors ${
-        checked
+      className={`flex min-h-11 touch-manipulation cursor-pointer items-center ${alignClass} rounded border px-3 py-2 transition-[color,background-color,border-color,box-shadow] duration-200 ${
+        highlighted && checked
+          ? "border-cyan-300 bg-[linear-gradient(180deg,rgba(14,165,233,0.72)_0%,rgba(2,132,199,0.58)_52%,rgba(30,64,175,0.72)_100%)] shadow-[0_0_8px_rgba(34,211,238,0.75),0_0_22px_rgba(59,130,246,0.38)]"
+          : highlighted
+            ? "border-cyan-200/60 bg-[linear-gradient(135deg,rgba(14,165,233,0.08)_0%,rgba(24,24,27,0.96)_65%)] hover:border-cyan-200/80"
+          : checked
           ? "border-zinc-500 bg-zinc-700"
           : "border-zinc-700 bg-zinc-800 hover:border-zinc-600"
       }`}
@@ -44,10 +50,10 @@ export function FilterCheckbox({
         type="checkbox"
         checked={checked}
         onChange={onChange}
-        className="sr-only"
+        className="peer sr-only"
       />
       <span
-        className={`flex min-w-0 items-center gap-1.5 ${colorClass || "text-zinc-300"}`}
+        className={`flex min-w-0 items-center gap-1.5 peer-focus-visible:underline peer-focus-visible:decoration-2 peer-focus-visible:underline-offset-4 ${colorClass || (highlighted ? "font-bold text-white" : "text-zinc-300")}`}
       >
         {sprite && <SpriteIcon sprite={sprite} size={60} className="shrink-0" />}
         {iconSrc && !sprite && (
@@ -75,6 +81,7 @@ interface FilterSectionProps<T> {
     color?: string;
     label?: string;
     sprite?: SpriteConfig;
+    highlighted?: boolean;
   }[];
   selected: Set<T>;
   onToggle: (item: T) => void;
@@ -108,6 +115,7 @@ export function FilterSection<T>({
             checked={selected.has(item.type)}
             onChange={() => onToggle(item.type)}
             colorClass={item.color}
+            highlighted={item.highlighted}
             iconOnlyOnMobile={iconOnlyOnMobile}
             centerClass={centerClass}
           />

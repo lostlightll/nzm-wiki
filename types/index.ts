@@ -163,6 +163,7 @@ export interface Perk {
   collectModItem?: 0 | 1;
   makeModItem?: 0 | 1;
   isCooked?: boolean;
+  releaseDate?: string;
 }
 
 // ------------------------------------------------------------

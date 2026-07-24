@@ -4,6 +4,8 @@ import type {
   OverlimitMapRotationSchedule,
 } from "@/types";
 
+export { getShanghaiDateKey } from "@/lib/date-key";
+
 export const OVERLIMIT_BOND_NAMES = [
   "弹药",
   "技战",
@@ -21,18 +23,6 @@ export type RotationPeriodState = "past" | "current" | "upcoming";
 export interface RotationTiming {
   phase: "loading" | "upcoming" | "current" | "ended";
   featuredPeriod: OverlimitMapRotationPeriod | null;
-}
-
-export function getShanghaiDateKey(date = new Date()): string {
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone: "Asia/Shanghai",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(date);
-  const values = new Map(parts.map((part) => [part.type, part.value]));
-
-  return `${values.get("year")}-${values.get("month")}-${values.get("day")}`;
 }
 
 export function resolveRotationTiming(

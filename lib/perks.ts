@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import type { Perk, PerkSlot, Rarity } from "@/types";
+import { isValidDateKey } from "@/lib/date-key";
 
 const PERKS_DATA_DIR = path.join(process.cwd(), "data/perks");
 
@@ -20,6 +21,19 @@ function parseStringArray(value: unknown): string[] | undefined {
     .filter((item): item is string => typeof item === "string")
     .map((item) => item.trim())
     .filter(Boolean);
+}
+
+function parseReleaseDate(
+  value: unknown,
+  filePath: string,
+): string | undefined {
+  if (value === undefined || value === null || value === "") return undefined;
+  if (!isValidDateKey(value)) {
+    throw new Error(
+      `插件 release_date 必须是有效的 YYYY-MM-DD 日期: ${filePath}`,
+    );
+  }
+  return value;
 }
 
 export function getAllPerks(): Perk[] {
@@ -52,6 +66,7 @@ export function getAllPerks(): Perk[] {
         collectModItem: data.CollectMODItem as 0 | 1 | undefined,
         makeModItem: data.MakeMODItem as 0 | 1 | undefined,
         isCooked: data.IsCooked as boolean | undefined,
+        releaseDate: parseReleaseDate(data.release_date, filePath),
       };
       perks.push(perk);
     }
@@ -85,6 +100,7 @@ export function getPerkByName(name: string): Perk | null {
         collectModItem: data.CollectMODItem as 0 | 1 | undefined,
         makeModItem: data.MakeMODItem as 0 | 1 | undefined,
         isCooked: data.IsCooked as boolean | undefined,
+        releaseDate: parseReleaseDate(data.release_date, filePath),
       };
     }
   }

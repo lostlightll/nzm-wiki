@@ -1,8 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { getAssetPath } from "@/lib/path";
+import { getShanghaiDateKey } from "@/lib/date-key";
+import { isPerkRecent } from "@/lib/perk-release";
 import type { Perk, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
@@ -20,12 +22,21 @@ import {
   RARITY_OPTIONS,
 } from "@/constants/perks";
 
-type AvailabilityFilter = "online" | "offline";
+type AvailabilityFilter = "online" | "recent" | "offline";
 
-const AVAILABILITY_OPTIONS: { type: AvailabilityFilter; label: string }[] = [
+const BASE_AVAILABILITY_OPTIONS: {
+  type: AvailabilityFilter;
+  label: string;
+}[] = [
   { type: "online", label: "已上线" },
   { type: "offline", label: "未上线" },
 ];
+
+const RECENT_AVAILABILITY_OPTION = {
+  type: "recent" as const,
+  label: "近期上线",
+  highlighted: true,
+};
 
 const DEFAULT_RARITIES: Rarity[] = ["传说"];
 const DEFAULT_AVAILABILITY: AvailabilityFilter[] = ["online"];
@@ -75,11 +86,30 @@ function PerkCard({ perk }: { perk: Perk }) {
 
 interface PerksPageClientProps {
   initialPerks: Perk[];
+  initialDateKey: string;
+}
+
+function useShanghaiDateKey(initialDateKey: string) {
+  const [dateKey, setDateKey] = useState(initialDateKey);
+
+  useEffect(() => {
+    const updateDateKey = () => setDateKey(getShanghaiDateKey());
+    const initialUpdate = window.setTimeout(updateDateKey, 0);
+    const interval = window.setInterval(updateDateKey, 60_000);
+    return () => {
+      window.clearTimeout(initialUpdate);
+      window.clearInterval(interval);
+    };
+  }, []);
+
+  return dateKey;
 }
 
 export default function PerksPageClient({
   initialPerks,
+  initialDateKey,
 }: PerksPageClientProps) {
+  const todayKey = useShanghaiDateKey(initialDateKey);
   const slotState = useSelection<PerkSlot>(
     FILTER_STORAGE_KEYS.slot,
     undefined,
@@ -93,9 +123,45 @@ export default function PerksPageClient({
     FILTER_STORAGE_KEYS.availability,
     DEFAULT_AVAILABILITY,
   );
+  const availabilitySelected = availabilityState.selected;
+  const selectAvailabilityOnly = availabilityState.selectOnly;
   const weaponApplicabilityState = useSelection<WeaponApplicabilityFilter>(
     FILTER_STORAGE_KEYS.weaponApplicability,
   );
+
+  const recentPerkCount = useMemo(
+    () => initialPerks.filter((perk) => isPerkRecent(perk, todayKey)).length,
+    [initialPerks, todayKey],
+  );
+  const availabilityOptions = useMemo(
+    () =>
+      recentPerkCount > 0
+        ? [
+            BASE_AVAILABILITY_OPTIONS[0],
+            BASE_AVAILABILITY_OPTIONS[1],
+            RECENT_AVAILABILITY_OPTION,
+          ]
+        : BASE_AVAILABILITY_OPTIONS,
+    [recentPerkCount],
+  );
+  const effectiveAvailability = useMemo(() => {
+    if (
+      recentPerkCount === 0 &&
+      availabilitySelected.has("recent")
+    ) {
+      return new Set<AvailabilityFilter>(["online"]);
+    }
+    return availabilitySelected;
+  }, [availabilitySelected, recentPerkCount]);
+
+  useEffect(() => {
+    if (
+      recentPerkCount === 0 &&
+      availabilitySelected.has("recent")
+    ) {
+      selectAvailabilityOnly("online");
+    }
+  }, [availabilitySelected, recentPerkCount, selectAvailabilityOnly]);
 
   const filteredPerks = useMemo(() => {
     return initialPerks.filter((perk) => {
@@ -110,8 +176,9 @@ export default function PerksPageClient({
         rarityState.selected.size === 0 || rarityState.selected.has(perkRarity);
       const availability = perk.collectModItem === 1 ? "online" : "offline";
       const availabilityMatch =
-        availabilityState.selected.size === 0 ||
-        availabilityState.selected.has(availability);
+        effectiveAvailability.size === 0 ||
+        effectiveAvailability.has(availability) ||
+        (effectiveAvailability.has("recent") && isPerkRecent(perk, todayKey));
       const weaponApplicabilityMatch = matchesWeaponApplicability(
         weaponApplicabilityState.selected,
         perk.weaponType,
@@ -125,10 +192,11 @@ export default function PerksPageClient({
       );
     });
   }, [
-    availabilityState.selected,
+    effectiveAvailability,
     initialPerks,
     rarityState.selected,
     slotState.selected,
+    todayKey,
     weaponApplicabilityState.selected,
   ]);
 
@@ -173,16 +241,21 @@ export default function PerksPageClient({
 
         <FilterSection
           title="上线状态"
-          items={AVAILABILITY_OPTIONS}
-          selected={availabilityState.selected}
+          items={availabilityOptions}
+          selected={availabilitySelected}
           onToggle={(availability) =>
-            availabilityState.selectOnly(
-              availabilityState.selected.has(availability)
+            selectAvailabilityOnly(
+              availabilitySelected.has(availability)
                 ? undefined
                 : availability,
             )
           }
-          gridClass="grid max-w-sm grid-cols-2 gap-2"
+          gridClass={
+            recentPerkCount > 0
+              ? "grid max-w-lg grid-cols-3 gap-2"
+              : "grid max-w-sm grid-cols-2 gap-2"
+          }
+          centerClass="justify-center"
         />
       </div>
 
