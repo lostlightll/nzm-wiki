@@ -314,7 +314,7 @@
   {
     "id": "20703040435",
     "name": "我只射击",
-    "description": "保持不释放武器技能，每5秒增加40%伤害，最多10层，释放技能清零。",
+    "description": "保持不释放武器技能，每5秒增加30%伤害，最多10层，释放技能清零。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
     "quality": 5,
     "weight": 1,
@@ -340,7 +340,7 @@
   {
     "id": "20703040436",
     "name": "哑枪",
-    "description": "保持不射击，每秒增加35%伤害，最多10层，开枪命中清零。",
+    "description": "保持不射击，每秒增加30%伤害，最多10层，开枪命中清零。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
     "quality": 5,
     "weight": 1,
@@ -3704,7 +3704,7 @@
   {
     "id": "20703040475",
     "name": "飞毛腿",
-    "description": "暴击获得2%移速，持续10秒，可叠50层，损失血量清空增益。每1%移速转化2%伤害加成。",
+    "description": "暴击获得2%移速，持续10秒，可叠50层，损失血量清空增益。每1%移速转化4%伤害加成。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
     "quality": 5,
     "weight": 1,
