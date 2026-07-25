@@ -17,14 +17,6 @@ export const BOSS_DIFFICULTIES: readonly {
 export const DEFAULT_BOSS_DIFFICULTY: BossDifficulty = "torment";
 export const BOSS_DIFFICULTY_STORAGE_KEY = "nzm-wiki:boss-difficulty";
 
-const MULTI_PHASE_BOSS_SLUGS = new Set([
-  "幽魂骑士",
-  "芮文",
-  "精绝女王",
-  "终蔫之樱",
-  "鬼面将军",
-]);
-
 export function isBossDifficulty(value: unknown): value is BossDifficulty {
   return (
     value === "overlimit" ||
@@ -34,8 +26,18 @@ export function isBossDifficulty(value: unknown): value is BossDifficulty {
   );
 }
 
-export function getBossPhaseCount(boss: Pick<Boss, "slug">): number {
-  return MULTI_PHASE_BOSS_SLUGS.has(boss.slug) ? 2 : 1;
+export function getBossPhaseCount(boss: Boss): number {
+  if (boss.phaseNames?.length) return boss.phaseNames.length;
+
+  const configuredPhaseCount = Math.max(
+    0,
+    ...Object.values(boss.health ?? {})
+      .filter((value): value is number[] => Array.isArray(value))
+      .map((value) => value.length),
+  );
+  if (configuredPhaseCount > 0) return configuredPhaseCount;
+
+  return boss.hp2 !== undefined ? 2 : 1;
 }
 
 function parseLegacyHealth(value: Boss["hp"]): number | null {

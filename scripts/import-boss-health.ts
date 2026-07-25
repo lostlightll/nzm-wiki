@@ -11,8 +11,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import healthSourcesData from "@/data/enemies/lc/boss/health-sources.json";
+import { getBossPhaseCount } from "@/lib/boss-health";
 import { LC_MAPS } from "@/lib/lc-maps";
-import type { BossDifficulty, BossHealthValue } from "@/types";
+import type { Boss, BossDifficulty, BossHealthValue } from "@/types";
 
 type ImportDifficulty = Extract<
   BossDifficulty,
@@ -95,13 +96,6 @@ const ROOT = process.cwd();
 const TABLE_DIR = path.join(ROOT, "refs", "Exports", "NZM", "Content", "DataTables");
 const BOSS_DIR = path.join(ROOT, "data", "enemies", "lc", "boss");
 const HEALTH_SOURCES = healthSourcesData as Record<string, HealthSource>;
-const MULTI_PHASE_SLUGS = new Set([
-  "幽魂骑士",
-  "芮文",
-  "精绝女王",
-  "终蔫之樱",
-  "鬼面将军",
-]);
 const DIFFICULTY_LABELS: Record<ImportDifficulty, string> = {
   heroic: "英雄",
   inferno: "炼狱",
@@ -169,19 +163,26 @@ function parseArgs(): {
 
 function validateManifest(): string[] {
   const blockers: string[] = [];
-  const files = new Set(
-    fs
-      .readdirSync(BOSS_DIR)
-      .filter((file) => file.endsWith(".mdx"))
-      .map((file) => file.replace(/\.mdx$/, "")),
-  );
+  const bosses = new Map<string, Boss>();
+  for (const file of fs.readdirSync(BOSS_DIR)) {
+    if (!file.endsWith(".mdx")) continue;
 
-  for (const slug of files) {
+    const slug = file.replace(/\.mdx$/, "");
+    const { data } = matter(fs.readFileSync(path.join(BOSS_DIR, file), "utf8"));
+    bosses.set(slug, { slug, ...data } as Boss);
+  }
+
+  for (const slug of bosses.keys()) {
     if (!HEALTH_SOURCES[slug]) blockers.push(`来源清单缺少 slug：${slug}`);
   }
   for (const [slug, source] of Object.entries(HEALTH_SOURCES)) {
-    if (!files.has(slug)) blockers.push(`来源清单引用不存在的 slug：${slug}`);
-    const expected = MULTI_PHASE_SLUGS.has(slug) ? 2 : 1;
+    const boss = bosses.get(slug);
+    if (!boss) {
+      blockers.push(`来源清单引用不存在的 slug：${slug}`);
+      continue;
+    }
+
+    const expected = getBossPhaseCount(boss);
     if (source.stages.length !== expected) {
       blockers.push(
         `${slug} 阶段数不符：清单 ${source.stages.length}，预期 ${expected}`,

@@ -61,7 +61,11 @@ export function BossDetailHealth({ boss }: { boss: Boss }) {
             >
               <dt className="text-sm text-zinc-400">
                 {phaseCount === 2
-                  ? `${index === 0 ? "第一" : "第二"}阶段血量`
+                  ? `${index === 0 ? "第一" : "第二"}阶段${
+                      boss.phaseNames?.[index]
+                        ? ` · ${boss.phaseNames[index]}`
+                        : ""
+                    }血量`
                   : "血量"}
               </dt>
               <dd className="mt-1 break-words font-mono text-lg font-semibold tabular-nums text-[#e1c58f]">

@@ -303,6 +303,7 @@ export interface Boss {
   title: string;
   nickname?: string;
   map: string | string[];
+  phaseNames?: string[];
   health?: Partial<Record<BossDifficulty, BossHealthValue>>;
   hp?: string | number;
   hp2?: string | number;
