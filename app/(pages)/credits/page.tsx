@@ -20,6 +20,13 @@ const CORE_CONTRIBUTORS = [
     extraLabel: "个人主页",
   },
   {
+    name: "Sh4ck1e",
+    platform: "github" as const,
+    url: "https://github.com/Sh4ck1e",
+    description: "本项目维护者",
+    githubUser: "Sh4ck1e",
+  },
+  {
     name: "qiekn",
     platform: "github" as const,
     url: "https://github.com/qiekn",
