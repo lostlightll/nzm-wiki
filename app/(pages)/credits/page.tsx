@@ -34,13 +34,6 @@ const CORE_CONTRIBUTORS = [
     githubUser: "qiekn",
   },
   {
-    name: "YousaHay",
-    platform: "github" as const,
-    url: "https://github.com/YousaHay",
-    description: "解包思路与交流",
-    githubUser: "YousaHay",
-  },
-  {
     name: "PinkGame",
     platform: "douyin" as const,
     url: "https://www.douyin.com/user/MS4wLjABAAAAOpgmjGpIJfgLikMiBBV2iD8IcS-7DjOmqjpMxmoG5S14MqnBKu5sQK5k72Rpxytd",
