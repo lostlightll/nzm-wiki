@@ -40,7 +40,7 @@ const RAW_DATA = [
   { level: 26, atkBonus: 800, cost: 143300 },
   { level: 27, atkBonus: 1000, cost: 183100 },
   { level: 28, atkBonus: 1200, cost: 242900 },
-  { level: 29, atkBonus: 1500, cost: 322700 },
+  { level: 29, atkBonus: 1400, cost: 322700 },
 ];
 
 const chartData = RAW_DATA.map((d) => ({
@@ -87,8 +87,8 @@ export function AtkChart() {
           <XAxis
             dataKey="atk"
             type="number"
-            domain={[1, 16]}
-            ticks={[2, 4, 6, 8, 10, 12, 14, 16]}
+            domain={[1, 15]}
+            ticks={[1, 3, 5, 7, 9, 11, 13, 15]}
             stroke="#71717a"
             tick={{ fill: "#a1a1aa", fontSize: 12 }}
             axisLine={{ stroke: "#3f3f46" }}
