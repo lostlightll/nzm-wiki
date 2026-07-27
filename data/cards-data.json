@@ -4,14 +4,14 @@
     "title": "疯狂战士",
     "type": "buff",
     "icon": "/icons/cards/berserker.png",
-    "effect": "己方血量越低攻击力越高（最多可翻倍）"
+    "effect": "己方血量越低攻击力越高（最大提升200%）"
   },
   "blademaster": {
     "slug": "blademaster",
     "title": "狂战士祝福",
     "type": "buff",
     "icon": "/icons/cards/blademaster.png",
-    "effect": "己方升级攻击力时连升300%"
+    "effect": "己方近战武器攻速提升且攻击提升300%"
   },
   "boss-vampire": {
     "slug": "boss-vampire",
@@ -64,7 +64,7 @@
   },
   "easy-toughness": {
     "slug": "easy-toughness",
-    "title": "破刃加快",
+    "title": "破韧加快",
     "type": "buff",
     "icon": "/icons/cards/easy-toughness-01.png",
     "effect": "己方破韧效率变为200%"
@@ -134,7 +134,7 @@
   },
   "lock-toughness": {
     "slug": "lock-toughness",
-    "title": "永驻之壳",
+    "title": "永锢之壳",
     "type": "debuff",
     "icon": "/icons/cards/lock-toughness.png",
     "effect": "对方BOSS锁韧"
@@ -159,5 +159,110 @@
     "type": "buff",
     "icon": "/icons/cards/weak-point-boost-01.png",
     "effect": "己方造成的弱点伤害提升350%，非弱点伤害降低 30%"
+  },
+  "close-range-shot": {
+    "slug": "close-range-shot",
+    "title": "抵近射击",
+    "type": "buff",
+    "icon": "/icons/cards/close-range-shot.png",
+    "effect": "己方离怪物越近伤害越高（最大提升200%）"
+  },
+  "on-hit-slowdown": {
+    "slug": "on-hit-slowdown",
+    "title": "命中减速",
+    "type": "debuff",
+    "icon": "/icons/cards/on-hit-slowdown.png",
+    "effect": "对方被怪物命中时小概率受到50%冰系减速持续2秒"
+  },
+  "dangerous-speed": {
+    "slug": "dangerous-speed",
+    "title": "危险加速",
+    "type": "buff",
+    "icon": "/icons/cards/dangerous-speed.png",
+    "effect": "己方移速提升15%，但被命中时受到50%冰系减速持续2秒"
+  },
+  "energy-drain": {
+    "slug": "energy-drain",
+    "title": "能量汲取",
+    "type": "buff",
+    "icon": "/icons/cards/energy-drain.png",
+    "effect": "己方弱点攻击恢复赛季技能能量"
+  },
+  "death-deal": {
+    "slug": "death-deal",
+    "title": "死神交易",
+    "type": "buff",
+    "icon": "/icons/cards/death-deal.png",
+    "effect": "己方有3次机会受到致命伤时，会用1500金币代替"
+  },
+  "sell-revive-coins": {
+    "slug": "sell-revive-coins",
+    "title": "釜底抽薪",
+    "type": "buff",
+    "icon": "/icons/cards/sell-revive-coins.png",
+    "effect": "卖出本阶段剩余的免费复活币，每枚换取7600金币"
+  },
+  "glass-cannon": {
+    "slug": "glass-cannon",
+    "title": "玻璃大炮",
+    "type": "buff",
+    "icon": "/icons/cards/glass-cannon.png",
+    "effect": "己方本区域锁定1000%基础攻击力，血量为1"
+  },
+  "four-kings": {
+    "slug": "four-kings",
+    "title": "四大天王",
+    "type": "debuff",
+    "icon": "/icons/cards/four-kings.png",
+    "effect": "将对方副本内的部分怪物替换成“四大天王”"
+  },
+  "cooldown-trade": {
+    "slug": "cooldown-trade",
+    "title": "冷却交易",
+    "type": "buff",
+    "icon": "/icons/cards/cooldown-trade.png",
+    "effect": "增加武器技能的冷却时间20%，减少赛季技能的冷却时间50%"
+  },
+  "elite-healing": {
+    "slug": "elite-healing",
+    "title": "精英治疗",
+    "type": "debuff",
+    "icon": "/icons/cards/elite-healing.png",
+    "effect": "对方精英怪会提供治疗"
+  },
+  "strength-swap": {
+    "slug": "strength-swap",
+    "title": "强度置换",
+    "type": "buff",
+    "icon": "/icons/cards/strength-swap.png",
+    "effect": "己方本阶段所有的小怪血量增加，BOSS血量减少"
+  },
+  "gacha-invasion": {
+    "slug": "gacha-invasion",
+    "title": "扭蛋来袭",
+    "type": "debuff",
+    "icon": "/icons/cards/gacha-invasion.png",
+    "effect": "对方部分怪物替换成扭蛋铁阵者"
+  },
+  "security-squad": {
+    "slug": "security-squad",
+    "title": "安保大队",
+    "type": "debuff",
+    "icon": "/icons/cards/security-squad.png",
+    "effect": "对方部分怪物替换成安保丧尸"
+  },
+  "wolf-brothers": {
+    "slug": "wolf-brothers",
+    "title": "狼犬兄弟",
+    "type": "debuff",
+    "icon": "/icons/cards/wolf-brothers.png",
+    "effect": "对方部分怪物替换成狂犬或冰狼"
+  },
+  "brother-combo": {
+    "slug": "brother-combo",
+    "title": "兄弟组合",
+    "type": "debuff",
+    "icon": "/icons/cards/brother-combo.png",
+    "effect": "对方部分怪物替换成雷管爆爆或香槟喷喷"
   }
 }

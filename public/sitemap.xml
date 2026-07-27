@@ -38,19 +38,31 @@
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/berserker</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/blademaster</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/boss-vampire</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/cards/brother-combo</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/cards/buff-mob</loc>
     <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/close-range-shot</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/cooldown-trade</loc>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/critical-hit-crazy</loc>
@@ -59,6 +71,14 @@
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/critical-hit-money</loc>
     <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/dangerous-speed</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/death-deal</loc>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/delayed-resource</loc>
@@ -74,11 +94,15 @@
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/easy-toughness</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/element-invasion</loc>
     <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/elite-healing</loc>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/elite-strengthen</loc>
@@ -87,6 +111,10 @@
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/elite-times-shield</loc>
     <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/energy-drain</loc>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/exchange-burster-alt</loc>
@@ -105,6 +133,18 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/cards/four-kings</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/gacha-invasion</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/glass-cannon</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/cards/golden-monster</loc>
     <lastmod>2026-05-28</lastmod>
   </url>
@@ -114,7 +154,11 @@
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/lock-toughness</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/on-hit-slowdown</loc>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/cards/pause-shield</loc>
@@ -125,8 +169,24 @@
     <lastmod>2026-05-28</lastmod>
   </url>
   <url>
+    <loc>https://nzm-wiki.pages.dev/cards/security-squad</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/sell-revive-coins</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/strength-swap</loc>
+    <lastmod>2026-07-27</lastmod>
+  </url>
+  <url>
     <loc>https://nzm-wiki.pages.dev/cards/weak-point-boost</loc>
     <lastmod>2026-05-28</lastmod>
+  </url>
+  <url>
+    <loc>https://nzm-wiki.pages.dev/cards/wolf-brothers</loc>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://nzm-wiki.pages.dev/bosses/Z博士</loc>
