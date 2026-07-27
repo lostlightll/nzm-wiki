@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { SeasonTalentCatalog } from "@/components/SeasonTalentCatalog";
 
 type GuideModule = "multiplier" | "season-talents" | "archive";
 
@@ -67,7 +68,9 @@ export default function GuidesPageClient({
       </nav>
 
       <section aria-label="游戏乘区" hidden={activeModule !== "multiplier"} />
-      <section aria-label="赛季天赋" hidden={activeModule !== "season-talents"} />
+      <section aria-label="赛季天赋" hidden={activeModule !== "season-talents"}>
+        <SeasonTalentCatalog />
+      </section>
       <section aria-label="文章归档" hidden={activeModule !== "archive"}>
         {archivePanel}
       </section>
