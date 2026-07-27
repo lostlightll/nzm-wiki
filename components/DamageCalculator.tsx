@@ -209,7 +209,7 @@ export function DamageCalculator() {
   const rps = fireRate / 60;
   const effectiveHitRate = hitRate / 100;
   const dpsNoReload = expectedDmgPerShot * effectiveHitRate * rps;
-  const magDuration = magSize / rps;
+  const magDuration = Math.max(magSize - 1, 0) / rps;
   const dpsWithReload =
     reloadTime > 0
       ? (expectedDmgPerShot * effectiveHitRate * magSize) /
@@ -743,7 +743,7 @@ function WeaponSelect({
               "text-zinc-300";
             return (
               <button
-                key={w.title}
+                key={`${w.game_mode ?? "unknown"}:${w.title}`}
                 type="button"
                 className={`flex w-full items-center gap-2 px-3 py-1.5 text-left text-sm transition-colors ${
                   i === highlightIndex ? "bg-zinc-700" : "hover:bg-zinc-700/50"

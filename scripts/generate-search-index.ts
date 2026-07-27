@@ -440,6 +440,20 @@ function generateWeaponStats() {
       const initials = pinyin(String(title), { pattern: "first", toneType: "none", type: "array" }).join("");
       if (initials) pinyinSet.add(initials.toLowerCase());
 
+      const changeClip =
+        data.changeClip && typeof data.changeClip === "object"
+          ? data.changeClip
+          : null;
+      const reloadTime =
+        changeClip && typeof changeClip.timeBase === "number"
+          ? changeClip.timeBase +
+            (typeof changeClip.reloadRecovery === "number"
+              ? changeClip.reloadRecovery
+              : 0)
+          : typeof data.reload_time === "number"
+            ? data.reload_time
+            : null;
+
       result.push({
         title,
         use_type: data.use_type || null,
@@ -450,7 +464,7 @@ function generateWeaponStats() {
         weekness_multiplier: typeof data.weekness_multiplier === "number" ? data.weekness_multiplier : null,
         file_rate: typeof data.file_rate === "number" ? data.file_rate : null,
         magazine: typeof data.magazine === "number" ? data.magazine : null,
-        reload_time: typeof data.reload_time === "number" ? data.reload_time : null,
+        reload_time: reloadTime,
         attenuation_begin: typeof data.attenuation_begin === "number" ? data.attenuation_begin : null,
         attenuation_end: typeof data.attenuation_end === "number" ? data.attenuation_end : null,
         attenuation_scale: typeof data.attenuation_scale === "number" ? data.attenuation_scale : null,
@@ -462,10 +476,7 @@ function generateWeaponStats() {
     return result;
   }
 
-  const weapons = [
-    ...scanDir(weaponsDir, "lc"),
-    ...scanDir(path.join(baseDir, "weapons_td"), "td"),
-  ];
+  const weapons = scanDir(weaponsDir, "lc");
 
   weapons.sort((a, b) => {
     // 一级：稀有度降序（传说 > 史诗 > 稀有）
