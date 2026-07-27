@@ -96,6 +96,7 @@ function generateSitemap() {
     { url: "/enemies" },
     { url: "/bosses" },
     { url: "/enemies/td" },
+    { url: "/guides" },
     { url: "/posts" },
     { url: "/damage" },
     { url: "/credits" },

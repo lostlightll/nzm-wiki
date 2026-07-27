@@ -13,7 +13,7 @@ const NAV_ITEMS = [
   { href: "/bosses", label: "敌人图鉴" },
   { href: "/perks", label: "插件图鉴" },
   { href: "/overlimit", label: "超限图鉴" },
-  { href: "/posts", label: "攻略机制" },
+  { href: "/guides", label: "攻略机制" },
   { href: "/credits", label: "致谢" },
 ];
 

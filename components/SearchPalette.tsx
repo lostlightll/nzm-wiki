@@ -20,7 +20,7 @@ const DEFAULT_ENTRIES = [
   { title: "敌人图鉴", path: "/bosses", category: "导航" },
   { title: "超限图鉴", path: "/overlimit", category: "导航" },
   { title: "塔防图鉴", path: "/tower-defense", category: "导航" },
-  { title: "文章归档", path: "/posts", category: "导航" },
+  { title: "攻略机制", path: "/guides", category: "导航" },
 ];
 
 function matchSearch(item: SearchItem, query: string): boolean {
