@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Crosshair, Sparkles } from "lucide-react";
 import {
   useId,
@@ -19,6 +20,7 @@ interface SeasonTalent {
   icon: string;
   applicableWeapons: readonly string[];
   description: ReactNode;
+  href?: string;
 }
 
 interface PreviewPosition {
@@ -48,6 +50,7 @@ const TALENTS: readonly SeasonTalent[] = [
     subtitle: "强化单体控制能力",
     icon: "/webp/images/season-talents/zero-card.webp",
     applicableWeapons: ["射手步枪", "狙击步枪", "手枪"],
+    href: "/guides/season-talents/s3/zero",
     description: (
       <>
         点击技能释放泡泡，控制一名敌人，持续<strong>10 秒</strong>
@@ -250,28 +253,39 @@ export function SeasonTalentCatalog() {
       {TALENTS.map((talent) => (
         <article
           key={talent.id}
-          className="relative aspect-[3/4] w-full max-w-[19rem] select-none"
+          className="group/card relative aspect-[3/4] w-full max-w-[19rem] select-none"
         >
           <Image
             src={getAssetPath("/webp/images/season-talents/card-frame.webp")}
             alt=""
             fill
             sizes="(min-width: 640px) 19rem, calc(100vw - 2rem)"
-            className="pointer-events-none object-fill"
+            className="pointer-events-none object-fill transition-[filter] duration-200 group-hover/card:brightness-110"
           />
           <Image
             src={getAssetPath(talent.icon)}
             alt=""
             width={220}
             height={220}
-            className="pointer-events-none absolute left-1/2 top-[18%] w-[62%] -translate-x-1/2 drop-shadow-[0_10px_14px_rgba(0,0,0,0.6)]"
+            className="pointer-events-none absolute left-1/2 top-[18%] w-[62%] -translate-x-1/2 drop-shadow-[0_10px_14px_rgba(0,0,0,0.6)] transition-[filter] duration-200 group-hover/card:brightness-110"
           />
-          <div className="absolute inset-x-[9%] bottom-[18%] text-center">
+          {talent.href && (
+            <Link
+              href={talent.href}
+              aria-label={`查看${talent.name}赛季天赋详情`}
+              className="group/link absolute inset-[5%] z-10 touch-manipulation cursor-pointer focus-visible:outline-none"
+            >
+              <span className="absolute inset-x-0 bottom-[3%] mx-auto w-fit rounded bg-black/45 px-3 py-1.5 text-xs font-semibold text-[#e2c38b] opacity-0 transition-opacity duration-200 group-hover/card:opacity-100 group-focus-visible/link:opacity-100 group-focus-visible/link:underline group-focus-visible/link:decoration-2 group-focus-visible/link:underline-offset-4 motion-reduce:transition-none">
+                查看天赋树
+              </span>
+            </Link>
+          )}
+          <div className="pointer-events-none absolute inset-x-[9%] bottom-[18%] z-20 text-center">
             <div className="relative mx-auto flex h-11 w-fit items-center justify-center">
               <h2 className="whitespace-nowrap text-[1.55rem] font-bold leading-none tracking-[0.055em] text-[#bda66f] subpixel-antialiased [font-family:'Microsoft_YaHei_UI','Microsoft_YaHei',Arial,sans-serif]">
                 {talent.name}
               </h2>
-              <div className="absolute left-full top-0 -ml-1">
+              <div className="pointer-events-auto absolute left-full top-0 -ml-1">
                 <TalentInfo talent={talent} />
               </div>
             </div>

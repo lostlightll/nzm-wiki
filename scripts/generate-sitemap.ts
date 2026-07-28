@@ -97,6 +97,7 @@ function generateSitemap() {
     { url: "/bosses" },
     { url: "/enemies/td" },
     { url: "/guides" },
+    { url: "/guides/season-talents/s3/zero" },
     { url: "/posts" },
     { url: "/damage" },
     { url: "/credits" },

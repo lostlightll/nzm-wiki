@@ -1,0 +1,559 @@
+{
+  "id": "zero",
+  "season": "s3",
+  "name": "零点",
+  "subtitle": "强化单体控制能力",
+  "applicableWeapons": [
+    "射手步枪",
+    "狙击步枪",
+    "手枪"
+  ],
+  "nodes": [
+    {
+      "id": "3002102",
+      "name": "零点",
+      "phase": 1,
+      "column": 2,
+      "prerequisites": [],
+      "maxLevel": 1,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZPP_01.webp",
+      "descriptions": [
+        "点击技能释放泡泡，控制一名敌人，持续<qiangdiao>10</>秒，再次释放能够砸地，砸地进行一次爆炸，半径<qiangdiao>5</>米，造成<qiangdiao>237%</>攻击力伤害。\n· 控制效果：对Boss无法生效。"
+      ]
+    },
+    {
+      "id": "3002202",
+      "name": "奇异引力源",
+      "phase": 2,
+      "column": 2,
+      "prerequisites": [],
+      "maxLevel": 1,
+      "powerful": true,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZPP_02.webp",
+      "descriptions": [
+        "泡泡会产生跳弹，仅高弹速武器生效，跳弹会对附近<qiangdiao>10米</>内的某个敌人，造成<qiangdiao>15%</>的武器射击伤害。"
+      ]
+    },
+    {
+      "id": "3002205",
+      "name": "爆破盲盒",
+      "phase": 2,
+      "column": 5,
+      "prerequisites": [],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_07.webp",
+      "descriptions": [
+        "<qiangdiao>单发榴弹、多发榴弹、火箭发射器、喷射器</>一个开火命中<qiangdiao>两个及以上</>的敌人时，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>73</>秒。",
+        "<qiangdiao>单发榴弹、多发榴弹、火箭发射器、喷射器</>一个开火命中<qiangdiao>两个及以上</>的敌人时，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>68</>秒。",
+        "<qiangdiao>单发榴弹、多发榴弹、火箭发射器、喷射器</>一个开火命中<qiangdiao>两个及以上</>的敌人时，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>63</>秒。",
+        "<qiangdiao>单发榴弹、多发榴弹、火箭发射器、喷射器</>一个开火命中<qiangdiao>两个及以上</>的敌人时，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>58</>秒。",
+        "<qiangdiao>单发榴弹、多发榴弹、火箭发射器、喷射器</>一个开火命中<qiangdiao>两个及以上</>的敌人时，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>53</>秒。"
+      ]
+    },
+    {
+      "id": "3002206",
+      "name": "极速轮盘",
+      "phase": 2,
+      "column": 6,
+      "prerequisites": [],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_08.webp",
+      "descriptions": [
+        "<qiangdiao>冲锋枪、突击步枪、机枪、激光武器、多连发步枪</>快速连续命中目标，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>73</>秒。\n快速连续命中判定：<qiangdiao>2秒</>内命中<qiangdiao>7次</>，触发后计数清空。",
+        "<qiangdiao>冲锋枪、突击步枪、机枪、激光武器、多连发步枪</>快速连续命中目标，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>68</>秒。\n快速连续命中判定：<qiangdiao>2秒</>内命中<qiangdiao>7次</>，触发后计数清空。",
+        "<qiangdiao>冲锋枪、突击步枪、机枪、激光武器、多连发步枪</>快速连续命中目标，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>63</>秒。\n快速连续命中判定：<qiangdiao>2秒</>内命中<qiangdiao>7次</>，触发后计数清空。",
+        "<qiangdiao>冲锋枪、突击步枪、机枪、激光武器、多连发步枪</>快速连续命中目标，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>58</>秒。\n快速连续命中判定：<qiangdiao>2秒</>内命中<qiangdiao>7次</>，触发后计数清空。",
+        "<qiangdiao>冲锋枪、突击步枪、机枪、激光武器、多连发步枪</>快速连续命中目标，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>53</>秒。\n快速连续命中判定：<qiangdiao>2秒</>内命中<qiangdiao>7次</>，触发后计数清空。"
+      ]
+    },
+    {
+      "id": "3002207",
+      "name": "致命抽选",
+      "phase": 2,
+      "column": 7,
+      "prerequisites": [],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_09.webp",
+      "descriptions": [
+        "<qiangdiao>霰弹枪、狙击枪、射手步枪、手枪、弓箭、暗器</>命中目标时，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>73</>秒。",
+        "<qiangdiao>霰弹枪、狙击枪、射手步枪、手枪、弓箭、暗器</>命中目标时，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>68</>秒。",
+        "<qiangdiao>霰弹枪、狙击枪、射手步枪、手枪、弓箭、暗器</>命中目标时，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>63</>秒。",
+        "<qiangdiao>霰弹枪、狙击枪、射手步枪、手枪、弓箭、暗器</>命中目标时，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>58</>秒。",
+        "<qiangdiao>霰弹枪、狙击枪、射手步枪、手枪、弓箭、暗器</>命中目标时，抽取一个<T002>扭蛋奖励</>，冷却<qiangdiao>53</>秒。"
+      ]
+    },
+    {
+      "id": "3002208",
+      "name": "游击轮盘",
+      "phase": 2,
+      "column": 8,
+      "prerequisites": [],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_22.webp",
+      "descriptions": [
+        "<qiangdiao>持续移动2秒以上时射击</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>72秒</>",
+        "<qiangdiao>持续移动2秒以上时射击</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>67秒</>",
+        "<qiangdiao>持续移动2秒以上时射击</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>62秒</>",
+        "<qiangdiao>持续移动2秒以上时射击</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>57秒</>",
+        "<qiangdiao>持续移动2秒以上时射击</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>52秒</>"
+      ]
+    },
+    {
+      "id": "3002301",
+      "name": "并行发生",
+      "phase": 3,
+      "column": 1,
+      "prerequisites": [
+        "3002202"
+      ],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZPP_05.webp",
+      "descriptions": [
+        "泡泡持续时间增加<qiangdiao>15%</>。",
+        "泡泡持续时间增加<qiangdiao>30%</>。",
+        "泡泡持续时间增加<qiangdiao>45%</>。"
+      ]
+    },
+    {
+      "id": "3002303",
+      "name": "脉冲驱动",
+      "phase": 3,
+      "column": 3,
+      "prerequisites": [
+        "3002202"
+      ],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZPP_06.webp",
+      "descriptions": [
+        "赛季技能冷却时间加快<qiangdiao>5%</>。",
+        "赛季技能冷却时间加快<qiangdiao>6%</>。",
+        "赛季技能冷却时间加快<qiangdiao>7%</>。"
+      ]
+    },
+    {
+      "id": "3002305",
+      "name": "破甲狂欢",
+      "phase": 3,
+      "column": 5,
+      "prerequisites": [
+        "3002205",
+        "3002206",
+        "3002207",
+        "3002208"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_23.webp",
+      "descriptions": [
+        "武器射击Boss时，如果Boss处于破韧状态，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>93秒</>。",
+        "武器射击Boss时，如果Boss处于破韧状态，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>88秒</>。",
+        "武器射击Boss时，如果Boss处于破韧状态，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>83秒</>。",
+        "武器射击Boss时，如果Boss处于破韧状态，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>78秒</>。",
+        "武器射击Boss时，如果Boss处于破韧状态，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>73秒</>。"
+      ]
+    },
+    {
+      "id": "3002306",
+      "name": "群星收割",
+      "phase": 3,
+      "column": 6,
+      "prerequisites": [
+        "3002205",
+        "3002206",
+        "3002207",
+        "3002208"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_24.webp",
+      "descriptions": [
+        "武器射击同时命中<qiangdiao>3</>个及以上的怪物<qiangdiao>10</>次，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>102秒</>。",
+        "武器射击同时命中<qiangdiao>3</>个及以上的怪物<qiangdiao>10</>次，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>97秒</>。",
+        "武器射击同时命中<qiangdiao>3</>个及以上的怪物<qiangdiao>10</>次，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>92秒</>。",
+        "武器射击同时命中<qiangdiao>3</>个及以上的怪物<qiangdiao>10</>次，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>87秒</>。",
+        "武器射击同时命中<qiangdiao>3</>个及以上的怪物<qiangdiao>10</>次，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>82秒</>。"
+      ]
+    },
+    {
+      "id": "3002307",
+      "name": "绝对洞察",
+      "phase": 3,
+      "column": 7,
+      "prerequisites": [
+        "3002205",
+        "3002206",
+        "3002207",
+        "3002208"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_25.webp",
+      "descriptions": [
+        "命中弱点<qiangdiao>8次</>，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>93秒</>。",
+        "命中弱点<qiangdiao>8次</>，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>88秒</>。",
+        "命中弱点<qiangdiao>8次</>，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>83秒</>。",
+        "命中弱点<qiangdiao>8次</>，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>78秒</>。",
+        "命中弱点<qiangdiao>8次</>，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>73秒</>。"
+      ]
+    },
+    {
+      "id": "3002308",
+      "name": "智械蜂群",
+      "phase": 3,
+      "column": 8,
+      "prerequisites": [
+        "3002205",
+        "3002206",
+        "3002207",
+        "3002208"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_26.webp",
+      "descriptions": [
+        "召唤物命中<qiangdiao>30次</>，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>102秒</>。",
+        "召唤物命中<qiangdiao>30次</>，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>97秒</>。",
+        "召唤物命中<qiangdiao>30次</>，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>92秒</>。",
+        "召唤物命中<qiangdiao>30次</>，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>87秒</>。",
+        "召唤物命中<qiangdiao>30次</>，直接触发一个<qiangdiao>金扭蛋效果</>，冷却时间<qiangdiao>82秒</>。"
+      ]
+    },
+    {
+      "id": "3002402",
+      "name": "冰冷猛冲",
+      "phase": 4,
+      "column": 2,
+      "prerequisites": [
+        "3002301",
+        "3002303"
+      ],
+      "maxLevel": 1,
+      "powerful": true,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZPP_03.webp",
+      "descriptions": [
+        "泡泡砸地或持续时间结束时，会在目标点/怪物脚下生成一片冰冻区域。冰冻区域大小半径<qiangdiao>8米</>，持续时间<qiangdiao>4秒</>。\n对处在冰风暴区域内的敌人，每<qiangdiao>0.5秒</>造成<qiangdiao>15%</>攻击力伤害；冰冻区域存在时，获得<qiangdiao>急速狂热</>效果。\n对Boss及部分泡泡无法控制的怪物释放<qiangdiao>零点</>时，直接在玩家当前位置直接生成冰冻区域；"
+      ]
+    },
+    {
+      "id": "3002405",
+      "name": "周期馈赠",
+      "phase": 4,
+      "column": 5,
+      "prerequisites": [
+        "3002305",
+        "3002306",
+        "3002307",
+        "3002308"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_10.webp",
+      "descriptions": [
+        "每<qiangdiao>113秒</>，抽取一个<T002>扭蛋奖励</>。",
+        "每<qiangdiao>108秒</>，抽取一个<T002>扭蛋奖励</>。",
+        "每<qiangdiao>103秒</>，抽取一个<T002>扭蛋奖励</>。",
+        "每<qiangdiao>98秒</>，抽取一个<T002>扭蛋奖励</>。",
+        "每<qiangdiao>93秒</>，抽取一个<T002>扭蛋奖励</>。"
+      ]
+    },
+    {
+      "id": "3002406",
+      "name": "概率极化",
+      "phase": 4,
+      "column": 6,
+      "prerequisites": [
+        "3002305",
+        "3002306",
+        "3002307",
+        "3002308"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_11.webp",
+      "descriptions": [
+        "<qiangdiao>金色扭蛋</>数量增加<qiangdiao>1</>张，<qiangdiao>蓝色扭蛋</>同等增加<qiangdiao>7</>张。",
+        "<qiangdiao>金色扭蛋</>数量增加<qiangdiao>1</>张，<qiangdiao>蓝色扭蛋</>同等增加<qiangdiao>6</>张。",
+        "<qiangdiao>金色扭蛋</>数量增加<qiangdiao>2</>张，<qiangdiao>蓝色扭蛋</>同等增加<qiangdiao>6</>张。",
+        "<qiangdiao>金色扭蛋</>数量增加<qiangdiao>2</>张，<qiangdiao>蓝色扭蛋</>同等增加<qiangdiao>5</>张。",
+        "<qiangdiao>金色扭蛋</>数量增加<qiangdiao>2</>张，<qiangdiao>蓝色扭蛋</>同等增加<qiangdiao>4</>张。"
+      ]
+    },
+    {
+      "id": "3002407",
+      "name": "庇护盲盒",
+      "phase": 4,
+      "column": 7,
+      "prerequisites": [
+        "3002305",
+        "3002306",
+        "3002307",
+        "3002308"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_12.webp",
+      "descriptions": [
+        "每维持无伤<qiangdiao>94秒</>，抽取一个<T002>扭蛋奖励</>。",
+        "每维持无伤<qiangdiao>89秒</>，抽取一个<T002>扭蛋奖励</>。",
+        "每维持无伤<qiangdiao>84秒</>，抽取一个<T002>扭蛋奖励</>。",
+        "每维持无伤<qiangdiao>79秒</>，抽取一个<T002>扭蛋奖励</>。",
+        "每维持无伤<qiangdiao>74秒</>，抽取一个<T002>扭蛋奖励</>。"
+      ]
+    },
+    {
+      "id": "3002408",
+      "name": "视界秘藏",
+      "phase": 4,
+      "column": 8,
+      "prerequisites": [
+        "3002305",
+        "3002306",
+        "3002307",
+        "3002308"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_13.webp",
+      "descriptions": [
+        "<qiangdiao>15米外</>击杀敌人，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>103秒</>。",
+        "<qiangdiao>15米外</>击杀敌人，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>98秒</>。",
+        "<qiangdiao>15米外</>击杀敌人，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>93秒</>。",
+        "<qiangdiao>15米外</>击杀敌人，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>88秒</>。",
+        "<qiangdiao>15米外</>击杀敌人，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>83秒</>。"
+      ]
+    },
+    {
+      "id": "3002501",
+      "name": "冬日长存",
+      "phase": 5,
+      "column": 1,
+      "prerequisites": [
+        "3002402"
+      ],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZPP_07.webp",
+      "descriptions": [
+        "冰冻区域存在时间增加<qiangdiao>0.5</>秒。",
+        "冰冻区域存在时间增加<qiangdiao>1.0</>秒。",
+        "冰冻区域存在时间增加<qiangdiao>1.5</>秒。"
+      ]
+    },
+    {
+      "id": "3002503",
+      "name": "并联电路",
+      "phase": 5,
+      "column": 3,
+      "prerequisites": [
+        "3002402"
+      ],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZPP_08.webp",
+      "descriptions": [
+        "释放赛季技能后，短暂提高武器命中和爆炸伤害<qiangdiao>2%</>，持续时间12秒。",
+        "释放赛季技能后，短暂提高武器命中和爆炸伤害<qiangdiao>3%</>，持续时间12秒。",
+        "释放赛季技能后，短暂提高武器命中和爆炸伤害<qiangdiao>4%</>，持续时间12秒。"
+      ]
+    },
+    {
+      "id": "3002505",
+      "name": "厄运补偿",
+      "phase": 5,
+      "column": 5,
+      "prerequisites": [
+        "3002405",
+        "3002406",
+        "3002407",
+        "3002408"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_14.webp",
+      "descriptions": [
+        "每次不出金色（及以上）扭蛋，累计不出<qiangdiao>8次</>，<qiangdiao>立刻额外给予一个金色扭蛋效果</>，冷却时间<qiangdiao>95秒</>。",
+        "每次不出金色（及以上）扭蛋，累计不出<qiangdiao>7次</>，<qiangdiao>立刻额外给予一个金色扭蛋效果</>，冷却时间<qiangdiao>90秒</>。",
+        "每次不出金色（及以上）扭蛋，累计不出<qiangdiao>6次</>，<qiangdiao>立刻额外给予一个金色扭蛋效果</>，冷却时间<qiangdiao>85秒</>。",
+        "每次不出金色（及以上）扭蛋，累计不出<qiangdiao>5次</>，<qiangdiao>立刻额外给予一个金色扭蛋效果</>，冷却时间<qiangdiao>80秒</>。",
+        "每次不出金色（及以上）扭蛋，累计不出<qiangdiao>4次</>，<qiangdiao>立刻额外给予一个金色扭蛋效果</>，冷却时间<qiangdiao>75秒</>。"
+      ]
+    },
+    {
+      "id": "3002506",
+      "name": "混乱赌局",
+      "phase": 5,
+      "column": 6,
+      "prerequisites": [
+        "3002405",
+        "3002406",
+        "3002407",
+        "3002408"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_15.webp",
+      "descriptions": [
+        "<qiangdiao>金色扭蛋</>数量增加<qiangdiao>1张</>，但<qiangdiao>白色扭蛋</>数量也增加<qiangdiao>3张</>。",
+        "<qiangdiao>金色扭蛋</>数量增加<qiangdiao>1张</>，但<qiangdiao>白色扭蛋</>数量也增加<qiangdiao>2张</>。",
+        "<qiangdiao>金色扭蛋</>数量增加<qiangdiao>1张</>，但<qiangdiao>白色扭蛋</>数量也增加<qiangdiao>1张</>。",
+        "<qiangdiao>金色扭蛋</>数量增加<qiangdiao>2张</>，但<qiangdiao>白色扭蛋</>数量也增加<qiangdiao>3张</>。",
+        "<qiangdiao>金色扭蛋</>数量增加<qiangdiao>2张</>，但<qiangdiao>白色扭蛋</>数量也增加<qiangdiao>2张</>。"
+      ]
+    },
+    {
+      "id": "3002507",
+      "name": "破绽红利",
+      "phase": 5,
+      "column": 7,
+      "prerequisites": [
+        "3002405",
+        "3002406",
+        "3002407",
+        "3002408"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_16.webp",
+      "descriptions": [
+        "命中弱点<qiangdiao>8次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>102秒</>。",
+        "命中弱点<qiangdiao>8次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>97秒</>。",
+        "命中弱点<qiangdiao>8次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>92秒</>。",
+        "命中弱点<qiangdiao>8次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>87秒</>。",
+        "命中弱点<qiangdiao>8次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>82秒</>。"
+      ]
+    },
+    {
+      "id": "3002508",
+      "name": "动能秘藏",
+      "phase": 5,
+      "column": 8,
+      "prerequisites": [
+        "3002405",
+        "3002406",
+        "3002407",
+        "3002408"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_17.webp",
+      "descriptions": [
+        "滑铲时命中累计<qiangdiao>3次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>93秒</>。",
+        "滑铲时命中累计<qiangdiao>3次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>88秒</>。",
+        "滑铲时命中累计<qiangdiao>3次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>83秒</>。",
+        "滑铲时命中累计<qiangdiao>3次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>78秒</>。",
+        "滑铲时命中累计<qiangdiao>3次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>73秒</>。"
+      ]
+    },
+    {
+      "id": "3002602",
+      "name": "量子纠缠",
+      "phase": 6,
+      "column": 2,
+      "prerequisites": [
+        "3002501",
+        "3002503"
+      ],
+      "maxLevel": 1,
+      "powerful": true,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZPP_04.webp",
+      "descriptions": [
+        "被天赋技能命中的敌人，会短暂进入伤害链接效果，其中一名敌人受到伤害时，其他敌人同步受到<qiangdiao>21%</>的伤害，效果可以对全队伍生效。"
+      ]
+    },
+    {
+      "id": "3002605",
+      "name": "跃迁共振",
+      "phase": 6,
+      "column": 5,
+      "prerequisites": [
+        "3002505",
+        "3002506",
+        "3002507",
+        "3002508"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_18.webp",
+      "descriptions": [
+        "每次出紫扭蛋，<qiangdiao>下一个抽取必额外附带金扭蛋效果</>，冷却时间<qiangdiao>56秒</>。",
+        "每次出紫扭蛋，<qiangdiao>下一个抽取必额外附带金扭蛋效果</>，冷却时间<qiangdiao>51秒</>。",
+        "每次出紫扭蛋，<qiangdiao>下一个抽取必额外附带金扭蛋效果</>，冷却时间<qiangdiao>46秒</>。",
+        "每次出紫扭蛋，<qiangdiao>下一个抽取必额外附带金扭蛋效果</>，冷却时间<qiangdiao>41秒</>。",
+        "每次出紫扭蛋，<qiangdiao>下一个抽取必额外附带金扭蛋效果</>，冷却时间<qiangdiao>36秒</>。"
+      ]
+    },
+    {
+      "id": "3002606",
+      "name": "丰饶溢出",
+      "phase": 6,
+      "column": 6,
+      "prerequisites": [
+        "3002505",
+        "3002506",
+        "3002507",
+        "3002508"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_19.webp",
+      "descriptions": [
+        "出<qiangdiao>金色扭蛋</>后，扭蛋会附带<qiangdiao>紫色扭蛋</>效果，冷却时间<qiangdiao>41秒</>。",
+        "出<qiangdiao>金色扭蛋</>后，扭蛋会附带<qiangdiao>紫色扭蛋</>效果，冷却时间<qiangdiao>36秒</>。",
+        "出<qiangdiao>金色扭蛋</>后，扭蛋会附带<qiangdiao>紫色扭蛋</>效果，冷却时间<qiangdiao>31秒</>。",
+        "出<qiangdiao>金色扭蛋</>后，扭蛋会附带<qiangdiao>紫色扭蛋</>效果，冷却时间<qiangdiao>26秒</>。",
+        "出<qiangdiao>金色扭蛋</>后，扭蛋会附带<qiangdiao>紫色扭蛋</>效果，冷却时间<qiangdiao>21秒</>。"
+      ]
+    },
+    {
+      "id": "3002607",
+      "name": "精准摇奖",
+      "phase": 6,
+      "column": 7,
+      "prerequisites": [
+        "3002505",
+        "3002506",
+        "3002507",
+        "3002508"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_20.webp",
+      "descriptions": [
+        "<qiangdiao>连续命中弱点3次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>94秒</>。",
+        "<qiangdiao>连续命中弱点3次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>89秒</>。",
+        "<qiangdiao>连续命中弱点3次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>84秒</>。",
+        "<qiangdiao>连续命中弱点3次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>79秒</>。",
+        "<qiangdiao>连续命中弱点3次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>74秒</>。"
+      ]
+    },
+    {
+      "id": "3002608",
+      "name": "连击盲盒",
+      "phase": 6,
+      "column": 8,
+      "prerequisites": [
+        "3002505",
+        "3002506",
+        "3002507",
+        "3002508"
+      ],
+      "maxLevel": 5,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZTY_21.webp",
+      "descriptions": [
+        "<qiangdiao>连续命中5次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>103秒</>",
+        "<qiangdiao>连续命中5次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>98秒</>",
+        "<qiangdiao>连续命中5次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>93秒</>",
+        "<qiangdiao>连续命中5次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>88秒</>",
+        "<qiangdiao>连续命中5次</>，抽取一个<T002>扭蛋奖励</>，冷却时间<qiangdiao>83秒</>"
+      ]
+    }
+  ]
+}

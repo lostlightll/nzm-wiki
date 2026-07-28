@@ -181,6 +181,46 @@ function generateSearchIndex() {
   console.log("Generating search index...");
 
   const items = scanDirectory(baseDir);
+  const zeroTalentFile = path.join(baseDir, "season-talents", "s3", "zero.json");
+  if (fs.existsSync(zeroTalentFile)) {
+    const talent = JSON.parse(fs.readFileSync(zeroTalentFile, "utf-8")) as {
+      name: string;
+      subtitle: string;
+      applicableWeapons: string[];
+      nodes: Array<{ name: string; descriptions: string[] }>;
+    };
+    const keywords = [
+      "S3",
+      "赛季天赋",
+      talent.subtitle,
+      ...talent.applicableWeapons,
+      ...talent.nodes.map((node) => node.name),
+      ...talent.nodes.flatMap((node) => node.descriptions),
+    ];
+    const pinyinSet = new Set<string>();
+    for (const text of [talent.name, ...keywords]) {
+      const fullPinyin = pinyin(String(text), {
+        toneType: "none",
+        type: "array",
+      }).join("");
+      if (fullPinyin) pinyinSet.add(fullPinyin.toLowerCase());
+      const initials = pinyin(String(text), {
+        pattern: "first",
+        toneType: "none",
+        type: "array",
+      }).join("");
+      if (initials) pinyinSet.add(initials.toLowerCase());
+    }
+
+    items.push({
+      title: `${talent.name}天赋树（S3）`,
+      slug: "season-talents/s3/zero",
+      path: "/guides/season-talents/s3/zero",
+      category: "赛季天赋",
+      keywords: [...new Set(keywords)],
+      pinyin: [...pinyinSet],
+    });
+  }
   const overlimitFile = path.join(baseDir, "overlimit-cards.json");
   if (fs.existsSync(overlimitFile)) {
     const cards = JSON.parse(fs.readFileSync(overlimitFile, "utf-8")) as Array<{

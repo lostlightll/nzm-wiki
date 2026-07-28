@@ -51,6 +51,10 @@ function getMobileBackLink(pathname: string) {
     return { href: "/tower-defense#enemies", label: "返回塔防图鉴" };
   }
 
+  if (pathname.startsWith("/guides/season-talents/")) {
+    return { href: "/guides#season-talents", label: "返回赛季天赋" };
+  }
+
   return null;
 }
 
