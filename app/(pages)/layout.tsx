@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useLayoutEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { ArrowLeft, Search, Command, Menu, X, Github } from "lucide-react";
 import { BossDifficultyProvider, useBossDifficulty } from "@/components/BossDifficultyProvider";
 import { canReturnToCatalog } from "@/lib/catalog-navigation";
+import { getAssetPath } from "@/lib/path";
 
 const NAV_ITEMS = [
   { href: "/weapons", label: "武器图鉴" },
@@ -289,10 +291,23 @@ export default function PagesLayout({
 
   return (
     <BossDifficultyProvider>
-      <div className="min-h-screen bg-background">
+      <div className="relative min-h-screen bg-background">
+        {isSeasonTalentDetail && (
+          <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0">
+            <Image
+              src={getAssetPath("/webp/images/season-talents/s3/T_FX_TalentS3_08.webp")}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-[#071018]/20" />
+          </div>
+        )}
         <NavBar />
         <main
-          className={`mx-auto ${
+          className={`relative z-10 mx-auto ${
             isSeasonTalentDetail
               ? "max-w-[1600px] px-4 py-4 sm:px-6 xl:px-12"
               : "max-w-7xl px-4 py-8"

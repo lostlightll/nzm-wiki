@@ -872,14 +872,6 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
       style={getThemeStyle(THEMES[talentId])}
     >
       <header className="relative overflow-hidden rounded-sm border border-[color:var(--talent-frame)] bg-[#05151f] px-4 py-4 shadow-[0_20px_70px_rgba(0,0,0,0.32)] sm:px-6 xl:min-h-[11.5rem] xl:px-12">
-        <Image
-          src={getAssetPath("/webp/images/season-talents/s3/zero/background.webp")}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="-z-20 object-cover opacity-[0.12]"
-        />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_35%,var(--talent-radial),transparent_30%),linear-gradient(90deg,rgba(2,11,17,0.72),rgba(5,23,33,0.95))]" />
         <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-[color:var(--talent-accent)] via-[color:var(--talent-accent-soft)] to-transparent" />
 
