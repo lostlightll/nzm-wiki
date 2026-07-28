@@ -1,0 +1,125 @@
+{
+  "id": "grappling-hook",
+  "talentType": 3,
+  "season": "s3",
+  "name": "劫掠钩锁",
+  "subtitle": "强化单体爆发能力",
+  "applicableWeapons": [
+    "高射速武器",
+    "高爆发武器"
+  ],
+  "nodes": [
+    {
+      "id": "3003102",
+      "name": "劫掠钩锁",
+      "phase": 1,
+      "column": 2,
+      "prerequisites": [],
+      "maxLevel": 1,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/grappling-hook/T_Talent_S3_WZGS_01.webp",
+      "descriptions": [
+        "点击技能释放<qiangdiao>钩锁</>，最远150米。\n<qiangdiao>钩中普通怪物</>：怪物进入10秒眩晕及150%易伤效果，并被拉到身前。\n<qiangdiao>钩中非Boss目标或场景物品时</>返还30秒冷却时间。"
+      ]
+    },
+    {
+      "id": "3003202",
+      "name": "相位剥离",
+      "phase": 2,
+      "column": 2,
+      "prerequisites": [],
+      "maxLevel": 1,
+      "powerful": true,
+      "icon": "/webp/images/season-talents/s3/grappling-hook/T_Talent_S3_WZGS_02.webp",
+      "descriptions": [
+        "钩中Boss会拉出虚空残影，自身攻击残影会按比例<qiangdiao>42%</>结算给Boss，队友攻击残影会按比例<qiangdiao>10%</>结算。高弹速武器可以穿透虚空残影，残影持续时间为<qiangdiao>5</>秒。"
+      ]
+    },
+    {
+      "id": "3003301",
+      "name": "质量过载",
+      "phase": 3,
+      "column": 1,
+      "prerequisites": ["3003202"],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/grappling-hook/T_Talent_S3_WZGS_05.webp",
+      "descriptions": [
+        "钩锁钩中的场景物品伤害提高<qiangdiao>20%</>，范围提高<qiangdiao>10%</>。",
+        "钩锁钩中的场景物品伤害提高<qiangdiao>35%</>，范围提高<qiangdiao>15%</>。",
+        "钩锁钩中的场景物品伤害提高<qiangdiao>50%</>，范围提高<qiangdiao>20%</>。"
+      ]
+    },
+    {
+      "id": "3003303",
+      "name": "相变蓄能",
+      "phase": 3,
+      "column": 3,
+      "prerequisites": ["3003202"],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/grappling-hook/T_Talent_S3_WZGS_07.webp",
+      "descriptions": [
+        "增加赛季技能充能速度<qiangdiao>5%</>。",
+        "增加赛季技能充能速度<qiangdiao>6%</>。",
+        "增加赛季技能充能速度<qiangdiao>7%</>。"
+      ]
+    },
+    {
+      "id": "3003402",
+      "name": "量子回溯",
+      "phase": 4,
+      "column": 2,
+      "prerequisites": ["3003301", "3003303"],
+      "maxLevel": 1,
+      "powerful": true,
+      "icon": "/webp/images/season-talents/s3/grappling-hook/T_Talent_S3_WZGS_03.webp",
+      "descriptions": [
+        "被钩出虚空残影的目标处于未破韧状态时，自身攻击残影的结算比例从42%提高至<qiangdiao>100%</>。"
+      ]
+    },
+    {
+      "id": "3003501",
+      "name": "索敌共振",
+      "phase": 5,
+      "column": 1,
+      "prerequisites": ["3003402"],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/grappling-hook/T_Talent_S3_WZGS_06.webp",
+      "descriptions": [
+        "钩中Boss时，增加射击伤害<qiangdiao>2%</>，持续<qiangdiao>10</>秒。",
+        "钩中Boss时，增加射击伤害<qiangdiao>4%</>，持续<qiangdiao>10</>秒。",
+        "钩中Boss时，增加射击伤害<qiangdiao>6%</>，持续<qiangdiao>10</>秒。"
+      ]
+    },
+    {
+      "id": "3003503",
+      "name": "相位共振",
+      "phase": 5,
+      "column": 3,
+      "prerequisites": ["3003402"],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/grappling-hook/T_Talent_S3_WZGS_08.webp",
+      "descriptions": [
+        "<qiangdiao>自身攻击</>破韧及非破韧目标的残影结算比例增加<qiangdiao>1.5%</>。",
+        "<qiangdiao>自身攻击</>破韧及非破韧目标的残影结算比例增加<qiangdiao>3%</>。",
+        "<qiangdiao>自身攻击</>破韧及非破韧目标的残影结算比例增加<qiangdiao>4.5%</>。"
+      ]
+    },
+    {
+      "id": "3003602",
+      "name": "神经超频",
+      "phase": 6,
+      "column": 2,
+      "prerequisites": ["3003501", "3003503"],
+      "maxLevel": 1,
+      "powerful": true,
+      "icon": "/webp/images/season-talents/s3/grappling-hook/T_Talent_S3_WZGS_04.webp",
+      "descriptions": [
+        "钩中Boss时，获得<qiangdiao>3秒急速狂热</>，钩中弱点则额外增加<qiangdiao>2</>秒。"
+      ]
+    }
+  ]
+}

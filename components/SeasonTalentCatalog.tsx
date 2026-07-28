@@ -36,6 +36,7 @@ const TALENTS: readonly SeasonTalent[] = [
     subtitle: "自动作战",
     icon: "/webp/images/season-talents/iron-fist-card.webp",
     applicableWeapons: ["全部武器类型"],
+    href: "/guides/season-talents/s3/iron-fist",
     description: (
       <>
         点击技能召唤<strong>铁拳狂徒</strong>协助战斗。仆从存在期间，长按技能可为
@@ -65,6 +66,7 @@ const TALENTS: readonly SeasonTalent[] = [
     subtitle: "强化单体爆发能力",
     icon: "/webp/images/season-talents/grappling-hook-card.webp",
     applicableWeapons: ["高射速武器", "高爆发武器"],
+    href: "/guides/season-talents/s3/grappling-hook",
     description: (
       <>
         点击技能释放<strong>钩锁</strong>，最远<strong>150 米</strong>

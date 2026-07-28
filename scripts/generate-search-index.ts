@@ -181,9 +181,13 @@ function generateSearchIndex() {
   console.log("Generating search index...");
 
   const items = scanDirectory(baseDir);
-  const zeroTalentFile = path.join(baseDir, "season-talents", "s3", "zero.json");
-  if (fs.existsSync(zeroTalentFile)) {
-    const talent = JSON.parse(fs.readFileSync(zeroTalentFile, "utf-8")) as {
+  const s3TalentSlugs = ["iron-fist", "zero", "grappling-hook"];
+  for (const slug of s3TalentSlugs) {
+    const talentFile = path.join(baseDir, "season-talents", "s3", `${slug}.json`);
+    if (!fs.existsSync(talentFile)) continue;
+
+    const talent = JSON.parse(fs.readFileSync(talentFile, "utf-8")) as {
+      id: string;
       name: string;
       subtitle: string;
       applicableWeapons: string[];
@@ -192,6 +196,7 @@ function generateSearchIndex() {
     const keywords = [
       "S3",
       "赛季天赋",
+      ...(talent.id === "iron-fist" ? ["铁拳狂战"] : []),
       talent.subtitle,
       ...talent.applicableWeapons,
       ...talent.nodes.map((node) => node.name),
@@ -214,8 +219,8 @@ function generateSearchIndex() {
 
     items.push({
       title: `${talent.name}天赋树（S3）`,
-      slug: "season-talents/s3/zero",
-      path: "/guides/season-talents/s3/zero",
+      slug: `season-talents/s3/${slug}`,
+      path: `/guides/season-talents/s3/${slug}`,
       category: "赛季天赋",
       keywords: [...new Set(keywords)],
       pinyin: [...pinyinSet],

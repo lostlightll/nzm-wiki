@@ -1,0 +1,124 @@
+{
+  "id": "iron-fist",
+  "talentType": 1,
+  "season": "s3",
+  "name": "铁拳狂徒",
+  "subtitle": "自动作战",
+  "applicableWeapons": [
+    "全部武器类型"
+  ],
+  "nodes": [
+    {
+      "id": "3001102",
+      "name": "铁拳狂徒",
+      "phase": 1,
+      "column": 2,
+      "prerequisites": [],
+      "maxLevel": 1,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/iron-fist/T_Talent_S3_WZZH_01.webp",
+      "descriptions": [
+        "点击技能召唤仆从<qiangdiao>铁拳狂徒</>协助战斗。仆从存在期间，长按技能可为<qiangdiao>铁拳狂徒</>指定目标，并且仆从存在期间，召唤物伤害增加30%。"
+      ]
+    },
+    {
+      "id": "3001202",
+      "name": "天崩地裂",
+      "phase": 2,
+      "column": 2,
+      "prerequisites": [],
+      "maxLevel": 1,
+      "powerful": true,
+      "icon": "/webp/images/season-talents/s3/iron-fist/T_Talent_S3_WZZH_02.webp",
+      "descriptions": [
+        "铁拳狂徒习得技能<qiangdiao>天崩地裂</>，发动跳砸击飞大范围内怪物。"
+      ]
+    },
+    {
+      "id": "3001301",
+      "name": "速充核心",
+      "phase": 3,
+      "column": 1,
+      "prerequisites": ["3001202"],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/iron-fist/T_Talent_S3_WZZH_05.webp",
+      "descriptions": [
+        "赛季技能冷却速度增加<qiangdiao>5%</>。",
+        "赛季技能冷却速度增加<qiangdiao>6%</>。",
+        "赛季技能冷却速度增加<qiangdiao>7%</>。"
+      ]
+    },
+    {
+      "id": "3001303",
+      "name": "铁拳强击",
+      "phase": 3,
+      "column": 3,
+      "prerequisites": ["3001202"],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/iron-fist/T_Talent_S3_WZZH_06.webp",
+      "descriptions": [
+        "铁拳狂徒伤害增加<qiangdiao>5%</>。",
+        "铁拳狂徒伤害增加<qiangdiao>6%</>。",
+        "铁拳狂徒伤害增加<qiangdiao>7%</>。"
+      ]
+    },
+    {
+      "id": "3001402",
+      "name": "地裂波",
+      "phase": 4,
+      "column": 2,
+      "prerequisites": ["3001301", "3001303"],
+      "maxLevel": 1,
+      "powerful": true,
+      "icon": "/webp/images/season-talents/s3/iron-fist/T_Talent_S3_WZZH_03.webp",
+      "descriptions": [
+        "铁拳狂徒习得<qiangdiao>地裂波</>，造成直线范围伤害。\n铁拳狂徒所有攻击命中的敌人会被施加【<qiangdiao>冲击</>】，玩家攻击处于【冲击】状态下的敌人增伤。"
+      ]
+    },
+    {
+      "id": "3001501",
+      "name": "狂怒续航",
+      "phase": 5,
+      "column": 1,
+      "prerequisites": ["3001402"],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/iron-fist/T_Talent_S3_WZZH_07.webp",
+      "descriptions": [
+        "狂暴持续时间增加<qiangdiao>12%</>。",
+        "狂暴持续时间增加<qiangdiao>24%</>。",
+        "狂暴持续时间增加<qiangdiao>36%</>。"
+      ]
+    },
+    {
+      "id": "3001503",
+      "name": "暴戾汲取",
+      "phase": 5,
+      "column": 3,
+      "prerequisites": ["3001402"],
+      "maxLevel": 3,
+      "powerful": false,
+      "icon": "/webp/images/season-talents/s3/iron-fist/T_Talent_S3_WZZH_08.webp",
+      "descriptions": [
+        "玩家命中处于【<qiangdiao>冲击</>】效果的目标，恢复全部（<qiangdiao>主副手</>）武器充能<qiangdiao>1%</>，冷却时间3秒。",
+        "玩家命中处于【<qiangdiao>冲击</>】效果的目标，恢复全部（<qiangdiao>主副手</>）武器充能<qiangdiao>1.5%</>，冷却时间3秒。",
+        "玩家命中处于【<qiangdiao>冲击</>】效果的目标，恢复全部（<qiangdiao>主副手</>）武器充能<qiangdiao>2%</>，冷却时间3秒。"
+      ]
+    },
+    {
+      "id": "3001602",
+      "name": "狂暴",
+      "phase": 6,
+      "column": 2,
+      "prerequisites": ["3001501", "3001503"],
+      "maxLevel": 1,
+      "powerful": true,
+      "icon": "/webp/images/season-talents/s3/iron-fist/T_Talent_S3_WZZH_04.webp",
+      "descriptions": [
+        "召唤出铁拳20秒后，或生命低于20%时，进入【狂暴】（精英化），大幅度增加攻击力<qiangdiao>100%</>且<qiangdiao>免疫所有伤害</>，持续<qiangdiao>20秒</>。"
+      ]
+    }
+  ]
+}
