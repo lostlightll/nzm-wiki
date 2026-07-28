@@ -1,0 +1,65 @@
+{
+  "season": "s3",
+  "passives": [
+    {
+      "id": "2030101",
+      "passiveSkillId": "1379030186",
+      "name": "爆射扭蛋机",
+      "unlockLevel": 4,
+      "tags": ["射击"],
+      "icon": "/webp/images/season-talents/s3/passives/T_TalentS3_BtnPassiveTalent_06.webp",
+      "preview": "/webp/images/season-talents/s3/passives/previews/2030101.webp",
+      "description": "白扭蛋：空\n蓝扭蛋：武器换弹加快<qiangdiao>24%</>、武器直击伤害提升<qiangdiao>30%</>、武器后座降低<qiangdiao>30%</>，持续<qiangdiao>6</>秒\n紫扭蛋：急速狂热<qiangdiao>6</>秒\n<qiangdiao>金扭蛋</>：武器直击伤害提升<qiangdiao>100%</>，持续时间<qiangdiao>6</>秒\n（该扭蛋机数量组成：<qiangdiao>1金、2紫、4蓝、8白</>）"
+    },
+    {
+      "id": "2030102",
+      "passiveSkillId": "1379030196",
+      "name": "秘技扭蛋机",
+      "unlockLevel": 4,
+      "tags": ["技能", "充能"],
+      "icon": "/webp/images/season-talents/s3/passives/T_TalentS3_BtnPassiveTalent_05.webp",
+      "preview": "/webp/images/season-talents/s3/passives/previews/2030102.webp",
+      "description": "白扭蛋：空\n蓝扭蛋：全武器技能充能<qiangdiao>18%</>\n紫扭蛋：下一个释放技能，返还该技能充能<qiangdiao>50%</>\n<qiangdiao>金扭蛋</>：10秒内，释放技能后，返还该技能充能<qiangdiao>90%</>，最多生效<qiangdiao>3</>次\n（该扭蛋机数量组成：<qiangdiao>1金、2紫、4蓝、8白</>）"
+    },
+    {
+      "id": "2030103",
+      "passiveSkillId": "1379030206",
+      "name": "玄学扭蛋机",
+      "unlockLevel": 12,
+      "tags": ["随机"],
+      "icon": "/webp/images/season-talents/s3/passives/T_TalentS3_BtnPassiveTalent_04.webp",
+      "preview": "/webp/images/season-talents/s3/passives/previews/2030103.webp",
+      "description": "白扭蛋：空\n蓝扭蛋：空\n紫扭蛋：发放随机技能，总共四个（天鹅之舞、杜瓦瓶、振弦、超级复合弓）\n<qiangdiao>金扭蛋</>：发放强力随机技能，总共五个（纯白、死神猎手、黎明之光、战争矩阵、黑金仲裁者）\n<qiangdiao>特殊扭蛋</>：联盟千岁，造成<qiangdiao>7500%玩家攻击力</>伤害\n（该扭蛋机数量组成：<qiangdiao>1特殊、1金、2紫、4蓝、12白</>，随机技能不触发技能使用事件）"
+    },
+    {
+      "id": "2030104",
+      "passiveSkillId": "1379030216",
+      "name": "召唤扭蛋机",
+      "unlockLevel": 12,
+      "tags": ["召唤"],
+      "icon": "/webp/images/season-talents/s3/passives/T_TalentS3_BtnPassiveTalent_03.webp",
+      "preview": "/webp/images/season-talents/s3/passives/previews/2030104.webp",
+      "description": "白扭蛋：召唤物移速增加<qiangdiao>30%</>，持续<qiangdiao>5</>秒\n蓝扭蛋：召唤物攻击回复玩家<qiangdiao>3%</>生命值，每秒最多生效<qiangdiao>1</>次，持续时间<qiangdiao>10</>秒。\n紫扭蛋：召唤物对周围<qiangdiao>5米</>敌人持续造成伤害，每<qiangdiao>2</>秒造成<qiangdiao>1</>次<qiangdiao>120%</>玩家攻击力伤害，并给敌人添加易伤效果，加深<qiangdiao>15%</>受到的伤害，持续<qiangdiao>5秒</>\n<qiangdiao>金扭蛋</>：大幅度提升召唤物攻击力<qiangdiao>270%</>，持续<qiangdiao>10秒</>\n（该扭蛋机数量组成：<qiangdiao>1金、2紫、4蓝、8白</>）"
+    },
+    {
+      "id": "2030105",
+      "passiveSkillId": "1379030226",
+      "name": "轰炸扭蛋机",
+      "unlockLevel": 20,
+      "tags": ["爆炸"],
+      "icon": "/webp/images/season-talents/s3/passives/T_TalentS3_BtnPassiveTalent_02.webp",
+      "preview": "/webp/images/season-talents/s3/passives/previews/2030105.webp",
+      "description": "白扭蛋：空\n蓝扭蛋：下一个攻击命中的目标，增加<qiangdiao>180%</>爆炸伤害，效果最多保持<qiangdiao>5秒</>\n紫扭蛋：<qiangdiao>10</>秒内，爆炸伤害增加<qiangdiao>80%</>\n<qiangdiao>金扭蛋</>：<qiangdiao>15</>秒内，爆炸弹的直击伤害增加<qiangdiao>130%</>\n（该扭蛋机数量组成：<qiangdiao>1金、2紫、4蓝、8白</>）"
+    },
+    {
+      "id": "2030106",
+      "passiveSkillId": "1379030236",
+      "name": "赏金扭蛋机",
+      "unlockLevel": 20,
+      "tags": ["经济"],
+      "icon": "/webp/images/season-talents/s3/passives/T_TalentS3_BtnPassiveTalent_01.webp",
+      "preview": "/webp/images/season-talents/s3/passives/previews/2030106.webp",
+      "description": "白扭蛋：猎场金币增加<qiangdiao>120</>\n蓝扭蛋：猎场金币增加<qiangdiao>240</>\n紫扭蛋：猎场金币增加<qiangdiao>480</>\n<qiangdiao>金扭蛋</>：<qiangdiao>10秒</>内，金钱获取效率增加<qiangdiao>90%</>\n（该扭蛋机数量组成：<qiangdiao>1金、2紫、4蓝、8白</>）"
+    }
+  ]
+}

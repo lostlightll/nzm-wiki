@@ -2,13 +2,24 @@
 
 import Image from "next/image";
 import {
+  Check,
+  ChevronDown,
   Crosshair,
   Layers3,
   Plus,
   Sparkles,
   Star,
+  X,
 } from "lucide-react";
-import { useMemo, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
+import passiveData from "@/data/season-talents/s3/passives.json";
 import zeroData from "@/data/season-talents/s3/zero.json";
 import { getAssetPath } from "@/lib/path";
 
@@ -33,7 +44,24 @@ interface TalentData {
   nodes: TalentNode[];
 }
 
+interface PassiveTalent {
+  id: string;
+  passiveSkillId: string;
+  name: string;
+  unlockLevel: number;
+  tags: string[];
+  icon: string;
+  preview: string;
+  description: string;
+}
+
+interface PassiveTalentData {
+  season: string;
+  passives: PassiveTalent[];
+}
+
 const DATA = zeroData as TalentData;
+const PASSIVE_DATA = passiveData as PassiveTalentData;
 const ROOT_NODE_ID = "3002102";
 const EXCLUSIVE_HEIGHT = 500;
 const GENERAL_HEIGHT = 500;
@@ -403,15 +431,267 @@ function MobileNode({
   );
 }
 
+function PassiveTalentIcon({
+  talent,
+  sizes,
+}: {
+  talent: PassiveTalent;
+  sizes: string;
+}) {
+  return (
+    <span className="relative block h-full w-full overflow-hidden bg-[#061823] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_44%,rgba(62,197,244,0.2),transparent_66%)]"
+      />
+      <Image
+        src={getAssetPath(talent.icon)}
+        alt=""
+        fill
+        sizes={sizes}
+        className="object-contain p-1"
+      />
+    </span>
+  );
+}
+
+function PassiveTalentSelector({
+  selectedTalent,
+  onSelect,
+  onClose,
+}: {
+  selectedTalent: PassiveTalent;
+  onSelect: (talent: PassiveTalent) => void;
+  onClose: () => void;
+}) {
+  const [isVisible, setIsVisible] = useState(false);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const requestClose = useCallback(() => {
+    if (closeTimerRef.current) return;
+
+    setIsVisible(false);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    closeTimerRef.current = setTimeout(onClose, reducedMotion ? 0 : 150);
+  }, [onClose]);
+
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    const openFrame = window.requestAnimationFrame(() => setIsVisible(true));
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") requestClose();
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      window.cancelAnimationFrame(openFrame);
+      if (closeTimerRef.current) window.clearTimeout(closeTimerRef.current);
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [requestClose]);
+
+  return (
+    <div
+      className={`fixed inset-0 z-[2147483647] flex items-center justify-center bg-[#01070c]/90 p-2 transition-[opacity,backdrop-filter] motion-reduce:transition-none sm:p-5 ${
+        isVisible
+          ? "opacity-100 backdrop-blur-sm duration-200 ease-out"
+          : "pointer-events-none opacity-0 backdrop-blur-none duration-150 ease-in"
+      }`}
+      role="presentation"
+    >
+      <section
+        id="s3-passive-talent-selector"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="passive-selector-heading"
+        className={`relative flex max-h-[calc(100dvh-1rem)] w-full max-w-[76rem] flex-col overflow-hidden border border-cyan-300/55 bg-[#03141d] shadow-[0_30px_100px_rgba(0,0,0,0.78),0_0_45px_rgba(8,145,178,0.09)] transition-[opacity,transform] [clip-path:polygon(12px_0,calc(100%_-_12px)_0,100%_12px,100%_calc(100%_-_12px),calc(100%_-_12px)_100%,12px_100%,0_calc(100%_-_12px),0_12px)] motion-reduce:translate-y-0 motion-reduce:scale-100 motion-reduce:transition-none sm:max-h-[calc(100dvh-2.5rem)] ${
+          isVisible
+            ? "translate-y-0 scale-100 opacity-100 duration-200 ease-out"
+            : "translate-y-3 scale-[0.985] opacity-0 duration-150 ease-in"
+        }`}
+      >
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 opacity-25 [background-image:linear-gradient(rgba(62,190,225,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(62,190,225,0.05)_1px,transparent_1px)] [background-size:32px_32px]"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 z-20 h-px bg-gradient-to-r from-transparent via-cyan-100 to-transparent"
+        />
+        <span aria-hidden="true" className="pointer-events-none absolute left-2 top-2 z-30 h-5 w-5 border-l border-t border-cyan-100/80" />
+        <span aria-hidden="true" className="pointer-events-none absolute right-2 top-2 z-30 h-5 w-5 border-r border-t border-cyan-100/80" />
+        <span aria-hidden="true" className="pointer-events-none absolute bottom-2 left-2 z-30 h-5 w-5 border-b border-l border-cyan-100/60" />
+        <span aria-hidden="true" className="pointer-events-none absolute bottom-2 right-2 z-30 h-5 w-5 border-b border-r border-cyan-100/60" />
+
+        <header className="relative z-10 flex min-h-[4.5rem] items-center justify-center overflow-hidden border-b border-cyan-400/35 bg-[linear-gradient(90deg,rgba(5,28,39,0.96),rgba(7,55,70,0.72),rgba(5,28,39,0.96))] px-16 py-3">
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 left-1/2 h-px w-56 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-200 to-transparent"
+          />
+          <div className="absolute left-6 hidden items-center gap-2 font-mono text-[0.62rem] tracking-[0.2em] text-cyan-500/80 md:flex">
+            <span className="h-1.5 w-1.5 rotate-45 bg-cyan-300" />
+            S3 // PASSIVE CONFIG
+          </div>
+          <h2
+            id="passive-selector-heading"
+            className="text-lg font-black tracking-[0.12em] text-cyan-50 drop-shadow-[0_0_12px_rgba(103,232,249,0.2)] sm:text-2xl"
+          >
+            切换被动天赋
+          </h2>
+          <button
+            type="button"
+            onClick={requestClose}
+            aria-label="关闭被动天赋弹窗"
+            className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 touch-manipulation items-center justify-center border border-cyan-700/80 bg-[#061923]/90 text-slate-300 transition-[border-color,background-color,color] hover:border-cyan-300 hover:bg-cyan-950 hover:text-white focus-visible:outline-none focus-visible:text-cyan-200 sm:right-5"
+          >
+            <X aria-hidden="true" className="h-5 w-5" />
+          </button>
+        </header>
+
+        <div className="relative z-10 flex min-h-0 flex-1 flex-col overflow-y-auto lg:grid lg:grid-cols-[minmax(0,1.55fr)_minmax(21rem,0.85fr)]">
+          <div className="flex min-h-max flex-col border-cyan-700/20 bg-[radial-gradient(circle_at_35%_20%,rgba(17,123,158,0.1),transparent_46%)] p-3 sm:p-5 lg:min-h-0 lg:border-r">
+            <div className="relative aspect-video shrink-0 overflow-hidden border border-cyan-300/45 bg-slate-950 shadow-[0_16px_45px_rgba(0,0,0,0.28)] [clip-path:polygon(8px_0,100%_0,100%_calc(100%_-_8px),calc(100%_-_8px)_100%,0_100%,0_8px)]">
+              <Image
+                src={getAssetPath(selectedTalent.preview)}
+                alt={`${selectedTalent.name}效果预览`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 720px, 94vw"
+                className="object-cover"
+              />
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,18,26,0.02),transparent_75%,rgba(2,18,26,0.4))] shadow-[inset_0_0_52px_rgba(0,12,20,0.52)]"
+              />
+              <span className="absolute left-3 top-3 border-l-2 border-cyan-300 bg-[#03151e]/80 px-2 py-1 font-mono text-[0.6rem] font-bold tracking-[0.18em] text-cyan-200">
+                COMBAT PREVIEW
+              </span>
+              <span className="absolute bottom-3 right-3 bg-[#03151e]/80 px-2 py-1 font-mono text-[0.6rem] tracking-[0.12em] text-slate-300">
+                ID {selectedTalent.id}
+              </span>
+            </div>
+
+            <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-6" aria-label="S3 被动天赋列表">
+              {PASSIVE_DATA.passives.map((talent) => {
+                const selected = talent.id === selectedTalent.id;
+                return (
+                  <button
+                    key={talent.id}
+                    type="button"
+                    aria-pressed={selected}
+                    aria-label={`选择${talent.name}`}
+                    onClick={() => onSelect(talent)}
+                    className={`group relative min-w-0 touch-manipulation overflow-hidden border p-2 text-center transition-[border-color,background-color,transform,box-shadow] active:scale-[0.98] focus-visible:outline-none focus-visible:[&_span:last-child]:underline focus-visible:[&_span:last-child]:underline-offset-4 motion-reduce:transform-none ${
+                      selected
+                        ? "border-cyan-200 bg-[linear-gradient(180deg,rgba(29,176,214,0.2),rgba(6,28,39,0.92))] shadow-[inset_0_0_18px_rgba(34,211,238,0.08),0_0_16px_rgba(34,211,238,0.08)]"
+                        : "border-cyan-950/90 bg-[#06131c]/90 hover:border-cyan-600 hover:bg-cyan-950/45"
+                    }`}
+                  >
+                    {selected && (
+                      <span aria-hidden="true" className="absolute inset-x-0 top-0 h-0.5 bg-cyan-200" />
+                    )}
+                    <span
+                      className={`relative mx-auto block h-14 w-14 transition-colors [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)] sm:h-16 sm:w-16 ${
+                        selected ? "bg-cyan-100" : "bg-cyan-900 group-hover:bg-cyan-500"
+                      }`}
+                    >
+                      <span className="absolute inset-px">
+                        <PassiveTalentIcon talent={talent} sizes="64px" />
+                      </span>
+                      {selected && (
+                        <span className="absolute right-0 top-0 flex h-5 w-5 items-center justify-center rounded-full bg-cyan-200 text-[#03131c]">
+                          <Check aria-hidden="true" className="h-3.5 w-3.5 stroke-[3]" />
+                        </span>
+                      )}
+                    </span>
+                    <span
+                      className={`mt-1.5 block truncate text-[0.68rem] font-bold tracking-wide sm:text-xs ${
+                        selected ? "text-cyan-50" : "text-slate-400 group-hover:text-slate-200"
+                      }`}
+                    >
+                      {talent.name.replace("扭蛋机", "")}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div
+            className="relative flex min-h-[24rem] shrink-0 flex-col overflow-hidden bg-[radial-gradient(circle_at_100%_0%,rgba(13,105,132,0.16),transparent_42%),linear-gradient(180deg,rgba(4,25,35,0.94),rgba(3,18,26,0.98))] p-4 sm:p-6 lg:shrink"
+            aria-live="polite"
+          >
+            <span aria-hidden="true" className="absolute right-0 top-0 h-24 w-24 bg-[linear-gradient(135deg,transparent_48%,rgba(34,211,238,0.08)_49%,rgba(34,211,238,0.08)_52%,transparent_53%)]" />
+            <div className="flex items-start gap-3 border-b border-cyan-100/10 pb-4">
+              <span className="relative h-16 w-16 shrink-0 bg-cyan-500 [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
+                <span className="absolute inset-px">
+                  <PassiveTalentIcon talent={selectedTalent} sizes="64px" />
+                </span>
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="font-mono text-[0.62rem] font-bold tracking-[0.18em] text-cyan-400">
+                  S3 PASSIVE UNIT · {selectedTalent.passiveSkillId}
+                </p>
+                <h3 className="mt-1 text-xl font-black tracking-wide text-white sm:text-2xl">
+                  {selectedTalent.name}
+                </h3>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {selectedTalent.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="border border-amber-300/20 bg-amber-300/10 px-2 py-0.5 text-[0.68rem] font-semibold text-amber-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 border-l-2 border-cyan-400/25 pl-4">
+              <p className="mb-3 font-mono text-[0.62rem] font-bold tracking-[0.18em] text-slate-500">
+                EFFECT DESCRIPTION
+              </p>
+              <TalentDescription value={selectedTalent.description} />
+            </div>
+            <div className="mt-auto flex flex-col gap-4 border-t border-cyan-100/10 pt-5 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="font-mono text-[0.62rem] tracking-[0.16em] text-slate-500">UNLOCK CONDITION</p>
+                <p className="mt-1 text-sm text-slate-300">
+                  赛季等级 <strong className="text-lg text-amber-300">{selectedTalent.unlockLevel}</strong> 解锁
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={requestClose}
+                className="min-h-11 min-w-40 touch-manipulation bg-cyan-300 px-7 py-2 text-sm font-black tracking-[0.12em] text-[#03202b] shadow-[0_0_22px_rgba(34,211,238,0.14)] transition-[background-color,transform,box-shadow] [clip-path:polygon(8px_0,100%_0,100%_calc(100%_-_8px),calc(100%_-_8px)_100%,0_100%,0_8px)] hover:bg-cyan-100 hover:shadow-[0_0_28px_rgba(34,211,238,0.22)] active:scale-[0.98] focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4 motion-reduce:transform-none"
+              >
+                确认选择
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 export function ZeroTalentTree() {
   const [selectedNodeId, setSelectedNodeId] = useState(ROOT_NODE_ID);
   const [selectedLevel, setSelectedLevel] = useState(1);
+  const [selectedPassiveId, setSelectedPassiveId] = useState<string | null>(null);
+  const [passiveSelectorOpen, setPassiveSelectorOpen] = useState(false);
+  const closePassiveSelector = useCallback(() => setPassiveSelectorOpen(false), []);
 
   const nodeMap = useMemo(
     () => new Map(DATA.nodes.map((node) => [node.id, node])),
     [],
   );
   const selectedNode = nodeMap.get(selectedNodeId) ?? DATA.nodes[0];
+  const selectedPassive =
+    PASSIVE_DATA.passives.find((talent) => talent.id === selectedPassiveId) ?? null;
   const exclusiveNodes = DATA.nodes.filter(
     (node) => node.id !== ROOT_NODE_ID && node.column <= 3,
   );
@@ -485,23 +765,65 @@ export function ZeroTalentTree() {
             </div>
           </div>
 
-          <section
-            aria-label="被动天赋槽位"
-            className="flex min-h-32 items-center gap-5 rounded-lg border border-dashed border-slate-500/80 bg-slate-950/30 p-5 sm:col-span-2 xl:col-span-1"
+          <button
+            type="button"
+            aria-expanded={passiveSelectorOpen}
+            aria-controls="s3-passive-talent-selector"
+            onClick={() => {
+              if (!selectedPassive) {
+                setSelectedPassiveId(PASSIVE_DATA.passives[0].id);
+              }
+              setPassiveSelectorOpen(true);
+            }}
+            className={`group/passive flex min-h-32 w-full touch-manipulation items-center gap-5 rounded-lg border p-5 text-left transition-colors focus-visible:outline-none focus-visible:[&_h2]:underline focus-visible:[&_h2]:decoration-2 focus-visible:[&_h2]:underline-offset-4 sm:col-span-2 xl:col-span-1 ${
+              selectedPassive
+                ? "border-cyan-500/70 bg-cyan-950/35 hover:border-cyan-300"
+                : "border-dashed border-slate-500/80 bg-slate-950/30 hover:border-cyan-600 hover:bg-cyan-950/20"
+            }`}
           >
-            <span className="relative h-16 w-16 shrink-0 bg-slate-500/90 [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
-              <span className="absolute inset-px flex items-center justify-center bg-[#071923] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
-                <Plus aria-hidden="true" className="h-7 w-7 text-slate-300" />
+            <span
+              className={`relative h-20 w-20 shrink-0 [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)] ${
+                selectedPassive ? "bg-cyan-400" : "bg-slate-500/90"
+              }`}
+            >
+              <span className="absolute inset-px flex items-center justify-center">
+                {selectedPassive ? (
+                  <PassiveTalentIcon talent={selectedPassive} sizes="80px" />
+                ) : (
+                  <span className="flex h-full w-full items-center justify-center bg-[#071923] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
+                    <Plus aria-hidden="true" className="h-7 w-7 text-slate-300" />
+                  </span>
+                )}
               </span>
             </span>
-            <div>
+            <span className="min-w-0 flex-1">
               <p className="text-xs font-semibold tracking-[0.15em] text-slate-400">被动天赋</p>
-              <p className="mt-2 text-base font-semibold text-slate-100">选择被动天赋</p>
-              <p className="mt-1 text-sm text-slate-500">槽位已预留，内容待补充</p>
-            </div>
-          </section>
+              <h2 className="mt-2 text-base font-semibold text-slate-100">
+                {selectedPassive?.name ?? "选择被动天赋"}
+              </h2>
+              <span className="mt-1 block text-sm text-slate-500">
+                {selectedPassive
+                  ? `赛季等级 ${selectedPassive.unlockLevel} 解锁 · ${selectedPassive.tags.join(" / ")}`
+                  : `S3 共 ${PASSIVE_DATA.passives.length} 个被动天赋`}
+              </span>
+            </span>
+            <ChevronDown
+              aria-hidden="true"
+              className={`h-5 w-5 shrink-0 text-cyan-300 transition-transform duration-200 motion-reduce:transition-none ${
+                passiveSelectorOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
         </div>
       </header>
+
+      {passiveSelectorOpen && selectedPassive && (
+        <PassiveTalentSelector
+          selectedTalent={selectedPassive}
+          onSelect={(talent) => setSelectedPassiveId(talent.id)}
+          onClose={closePassiveSelector}
+        />
+      )}
 
       {selectedNode.id === ROOT_NODE_ID && (
         <div className="xl:hidden">
