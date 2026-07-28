@@ -88,14 +88,6 @@ const exclusivePositions: Record<string, { x: number; y: number }> = {
   "3002602": { x: 50, y: 448 },
 };
 
-const phaseLabels: Record<number, string> = {
-  2: "初始节点",
-  3: "进阶一",
-  4: "核心强化",
-  5: "进阶二",
-  6: "终极节点",
-};
-
 function renderRichText(value: string): ReactNode[] {
   const result: ReactNode[] = [];
   const pattern = /<(qiangdiao|T002)>(.*?)<\/>/g;
@@ -403,92 +395,6 @@ function GeneralConnectors() {
         })}
       </g>
     </svg>
-  );
-}
-
-function MobileNode({
-  node,
-  selected,
-  level,
-  dimmed,
-  onSelect,
-  onActivate,
-  onLevelChange,
-}: {
-  node: TalentNode;
-  selected: boolean;
-  level: number;
-  dimmed: boolean;
-  onSelect: (node: TalentNode) => void;
-  onActivate: (node: TalentNode) => void;
-  onLevelChange: (level: number) => void;
-}) {
-  const allocated = level > 0;
-
-  return (
-    <div
-      className={`overflow-hidden rounded-lg border bg-[#081720]/85 transition-[border-color,opacity,filter] duration-200 motion-reduce:transition-none ${
-        allocated ? "border-cyan-500/60" : "border-cyan-950"
-      } ${dimmed ? "opacity-45 grayscale" : ""}`}
-    >
-      <button
-        type="button"
-        aria-expanded={selected}
-        aria-pressed={allocated}
-        aria-label={`${node.name}${allocated ? `已加${level}级` : "未加点"}，单击查看，双击${dimmed ? "替换同阶段天赋" : "加到满级"}`}
-        onClick={() => onSelect(node)}
-        onDoubleClick={() => onActivate(node)}
-        className={`flex min-h-20 w-full touch-manipulation items-center gap-3 px-3 py-3 text-left transition-colors focus-visible:outline-none focus-visible:[&_h3]:underline focus-visible:[&_h3]:decoration-2 focus-visible:[&_h3]:underline-offset-4 ${
-          selected ? "bg-cyan-300/10" : "hover:bg-cyan-300/5"
-        }`}
-      >
-        <span className="relative h-14 w-14 shrink-0 overflow-hidden border border-cyan-700 bg-[#0a2330] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
-          <Image
-            src={getAssetPath(node.icon)}
-            alt=""
-            fill
-            sizes="56px"
-            className="object-cover"
-          />
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="flex flex-wrap items-center gap-2">
-            <h3 className="font-semibold text-white">{node.name}</h3>
-            {node.powerful && (
-              <span className="text-[0.68rem] font-semibold text-amber-200">关键</span>
-            )}
-          </span>
-          <span className="mt-1 flex items-center gap-3 text-xs text-slate-400">
-            <span>{allocated ? `已加 ${level}/${node.maxLevel} 级` : `双击加满 · 最高 ${node.maxLevel} 级`}</span>
-            <span className="flex items-center gap-1" aria-hidden="true">
-              {Array.from({ length: node.maxLevel }, (_, index) => (
-                <span
-                  key={index}
-                  className={`h-1.5 w-1.5 rotate-45 border ${
-                    index < level
-                      ? "border-cyan-200 bg-cyan-300/60"
-                      : "border-cyan-800 bg-[#06151e]"
-                  }`}
-                />
-              ))}
-            </span>
-          </span>
-        </span>
-        <span className="text-xl text-cyan-300" aria-hidden="true">
-          {selected ? "−" : "+"}
-        </span>
-      </button>
-      {selected && (
-        <div className="border-t border-cyan-900/60 p-3">
-          <DetailCard
-            node={node}
-            level={level}
-            onLevelChange={onLevelChange}
-            compact
-          />
-        </div>
-      )}
-    </div>
   );
 }
 
@@ -991,8 +897,8 @@ export function ZeroTalentTree() {
       )}
 
       <div className="grid gap-4 xl:grid-cols-[minmax(0,2fr)_minmax(22rem,1fr)] xl:items-stretch">
-        <section className="relative overflow-hidden rounded-sm border border-cyan-300/35 bg-[#05151f]/95 shadow-[0_20px_70px_rgba(0,0,0,0.28)]">
-          <div className="flex min-h-16 items-center justify-between gap-4 border-b border-cyan-950/90 px-4 py-3 sm:px-6">
+        <section className="relative overflow-visible border-0 bg-transparent shadow-none xl:overflow-hidden xl:rounded-sm xl:border xl:border-cyan-300/35 xl:bg-[#05151f]/95 xl:shadow-[0_20px_70px_rgba(0,0,0,0.28)]">
+          <div className="hidden min-h-16 items-center justify-between gap-4 border-b border-cyan-950/90 px-4 py-3 sm:px-6 xl:flex">
             <div>
               <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-cyan-400">Talent Matrix</p>
               <h2 className="mt-0.5 text-xl font-bold text-white">天赋节点</h2>
@@ -1057,63 +963,89 @@ export function ZeroTalentTree() {
             </div>
           </div>
 
-          <div className="space-y-8 p-4 sm:p-6 xl:hidden">
-            <section aria-labelledby="exclusive-mobile-heading">
-              <div className="mb-3 flex items-center gap-2">
+          <div className="space-y-4 xl:hidden">
+            <section
+              aria-labelledby="exclusive-mobile-heading"
+              className="overflow-hidden rounded-sm border border-cyan-300/35 bg-[#05151f]/95 shadow-[0_16px_50px_rgba(0,0,0,0.24)]"
+            >
+              <div className="flex min-h-16 items-center justify-between gap-3 border-b border-cyan-950/90 px-4 py-3">
+                <div>
+                  <p className="text-[0.64rem] font-bold uppercase tracking-[0.2em] text-cyan-400">
+                    Talent Matrix
+                  </p>
+                  <h2 className="mt-0.5 text-lg font-bold text-white">天赋节点</h2>
+                </div>
+                <div className="text-right text-[0.68rem] leading-5 text-slate-500">
+                  <p>单击查看 · 双击加满</p>
+                  <p className="inline-flex items-center gap-1 text-cyan-500">
+                    <Check aria-hidden="true" className="h-3 w-3" />
+                    {storageReady ? "已自动保存" : "正在读取"}
+                  </p>
+                </div>
+              </div>
+              <div className="flex h-11 items-center justify-center gap-2 border-b border-cyan-950/90">
                 <Sparkles aria-hidden="true" className="h-4 w-4 text-cyan-300" />
                 <h2 id="exclusive-mobile-heading" className="font-semibold text-cyan-100">
                   专属天赋
                 </h2>
               </div>
-              <div className="space-y-3">
-                {exclusiveNodes.map((node) => (
-                  <MobileNode
-                    key={node.id}
-                    node={node}
-                    selected={node.id === selectedNode.id}
-                    level={talentLevels[node.id] ?? 0}
-                    dimmed={false}
-                    onSelect={selectNode}
-                    onActivate={activateNode}
-                    onLevelChange={(level) => updateNodeLevel(node, level)}
-                  />
-                ))}
+              <div className="relative" style={{ height: EXCLUSIVE_HEIGHT }}>
+                <ExclusiveConnectors />
+                {exclusiveNodes.map((node) => {
+                  const position = exclusivePositions[node.id];
+                  return (
+                    <TalentNodeButton
+                      key={node.id}
+                      node={node}
+                      selected={node.id === selectedNode.id}
+                      level={talentLevels[node.id] ?? 0}
+                      dimmed={false}
+                      x={position.x}
+                      y={position.y}
+                      onSelect={selectNode}
+                      onActivate={activateNode}
+                    />
+                  );
+                })}
               </div>
             </section>
 
-            <section aria-labelledby="general-mobile-heading">
-              <div className="mb-3 flex items-center gap-2">
+            <section
+              aria-labelledby="general-mobile-heading"
+              className="overflow-hidden rounded-sm border border-cyan-300/35 bg-[#05151f]/95 shadow-[0_16px_50px_rgba(0,0,0,0.24)]"
+            >
+              <div className="flex h-11 items-center justify-center gap-2 border-b border-cyan-950/90">
                 <Layers3 aria-hidden="true" className="h-4 w-4 text-slate-400" />
                 <h2 id="general-mobile-heading" className="font-semibold text-slate-200">
                   通用天赋
                 </h2>
               </div>
-              <div className="space-y-6">
-                {Object.keys(phaseLabels).map(Number).map((phase) => (
-                  <div key={phase}>
-                    <h3 className="mb-2 text-xs font-bold tracking-[0.16em] text-slate-500">
-                      阶段 {phase} · {phaseLabels[phase]}
-                    </h3>
-                    <div className="space-y-3">
-                      {generalNodes
-                        .filter((node) => node.phase === phase)
-                        .map((node) => (
-                          <MobileNode
-                            key={node.id}
-                            node={node}
-                            selected={node.id === selectedNode.id}
-                            level={talentLevels[node.id] ?? 0}
-                            dimmed={isGeneralNodeDimmed(node)}
-                            onSelect={selectNode}
-                            onActivate={activateNode}
-                            onLevelChange={(level) => updateNodeLevel(node, level)}
-                          />
-                        ))}
-                    </div>
-                  </div>
+              <div className="relative" style={{ height: GENERAL_HEIGHT }}>
+                <GeneralConnectors />
+                {generalNodes.map((node) => (
+                  <TalentNodeButton
+                    key={node.id}
+                    node={node}
+                    selected={node.id === selectedNode.id}
+                    level={talentLevels[node.id] ?? 0}
+                    dimmed={isGeneralNodeDimmed(node)}
+                    x={(node.column - 4.5) * 25}
+                    y={48 + (node.phase - 2) * 100}
+                    onSelect={selectNode}
+                    onActivate={activateNode}
+                  />
                 ))}
               </div>
             </section>
+
+            {selectedNode.id !== ROOT_NODE_ID && (
+              <DetailCard
+                node={selectedNode}
+                level={selectedLevel}
+                onLevelChange={(level) => updateNodeLevel(selectedNode, level)}
+                compact
+              />
+            )}
           </div>
         </section>
 
