@@ -35,17 +35,17 @@ interface TalentData {
 
 const DATA = zeroData as TalentData;
 const ROOT_NODE_ID = "3002102";
-const EXCLUSIVE_HEIGHT = 690;
-const GENERAL_HEIGHT = 690;
+const EXCLUSIVE_HEIGHT = 500;
+const GENERAL_HEIGHT = 500;
 
 const exclusivePositions: Record<string, { x: number; y: number }> = {
-  "3002202": { x: 50, y: 60 },
-  "3002301": { x: 23, y: 190 },
-  "3002303": { x: 77, y: 190 },
-  "3002402": { x: 50, y: 320 },
-  "3002501": { x: 23, y: 450 },
-  "3002503": { x: 77, y: 450 },
-  "3002602": { x: 50, y: 580 },
+  "3002202": { x: 50, y: 48 },
+  "3002301": { x: 23, y: 148 },
+  "3002303": { x: 77, y: 148 },
+  "3002402": { x: 50, y: 248 },
+  "3002501": { x: 23, y: 348 },
+  "3002503": { x: 77, y: 348 },
+  "3002602": { x: 50, y: 448 },
 };
 
 const phaseLabels: Record<number, string> = {
@@ -161,8 +161,8 @@ function DetailCard({
     <section
       aria-live="polite"
       aria-label={`${node.name}详情`}
-      className={`relative overflow-hidden border border-cyan-300/30 bg-[#071923]/95 shadow-[0_22px_70px_rgba(0,0,0,0.35)] ${
-        compact ? "rounded-lg p-4" : "rounded-xl p-5 sm:p-6"
+      className={`relative overflow-hidden border border-cyan-300/35 bg-[#051721]/95 shadow-[0_22px_70px_rgba(0,0,0,0.35)] ${
+        compact ? "rounded-lg p-4" : "h-full min-h-[36rem] rounded-sm p-5 sm:p-6"
       }`}
     >
       <span
@@ -171,17 +171,23 @@ function DetailCard({
       />
       <div className="flex items-start gap-4">
         <div
-          className={`relative shrink-0 overflow-hidden border border-cyan-200/25 bg-[#0a2330] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)] ${
-            compact ? "h-16 w-16" : "h-24 w-24"
+          className={`relative shrink-0 bg-cyan-700/90 [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)] ${
+            compact ? "h-16 w-16" : "h-20 w-20"
           }`}
         >
-          <Image
-            src={getAssetPath(node.icon)}
-            alt=""
-            fill
-            sizes={compact ? "64px" : "96px"}
-            className="object-cover"
-          />
+          <span className="absolute inset-px overflow-hidden bg-[#071923] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(40,166,214,0.18),transparent_66%)]"
+            />
+            <Image
+              src={getAssetPath(node.icon)}
+              alt=""
+              fill
+              sizes={compact ? "64px" : "80px"}
+              className="object-cover"
+            />
+          </span>
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
@@ -236,39 +242,51 @@ function TalentNodeButton({
       aria-pressed={selected}
       aria-label={`查看${node.name}天赋效果，最高${node.maxLevel}级`}
       onClick={() => onSelect(node)}
-      className="group/node absolute z-10 flex w-[5.75rem] -translate-x-1/2 -translate-y-1/2 touch-manipulation cursor-pointer flex-col items-center focus-visible:outline-none"
+      className="group/node absolute z-10 flex w-[5.5rem] -translate-x-1/2 -translate-y-1/2 touch-manipulation cursor-pointer flex-col items-center focus-visible:outline-none"
       style={{ left: `${x}%`, top: y }}
     >
       <span
-        className={`relative block h-[4.5rem] w-[4.5rem] overflow-hidden border bg-[#0b1d28] transition-[border-color,filter,background-color] duration-200 [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)] ${
+        className={`relative block h-[3.75rem] w-[3.75rem] transition-[background-color,filter,transform] duration-200 motion-reduce:transition-none [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)] group-active/node:scale-95 ${
           selected
-            ? "border-cyan-200 bg-cyan-300/15 brightness-110"
-            : node.powerful
-              ? "border-amber-300/60 hover:border-amber-200 hover:brightness-110"
-              : "border-cyan-800/80 hover:border-cyan-400 hover:brightness-110"
+            ? "bg-cyan-200 brightness-110 drop-shadow-[0_0_8px_rgba(74,211,255,0.42)]"
+            : "bg-cyan-800/90 group-hover/node:bg-cyan-400 group-hover/node:brightness-110"
         }`}
       >
-        <Image
-          src={getAssetPath(node.icon)}
-          alt=""
-          fill
-          sizes="72px"
-          className="object-cover"
-        />
+        <span className="absolute inset-px overflow-hidden bg-[#071923] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(40,166,214,0.18),transparent_65%)]"
+          />
+          <Image
+            src={getAssetPath(node.icon)}
+            alt=""
+            fill
+            sizes="60px"
+            className="object-cover transition-[filter,transform] duration-200 motion-reduce:transition-none group-hover/node:scale-[1.04] group-hover/node:brightness-110"
+          />
+        </span>
+        {node.powerful && (
+          <span
+            aria-hidden="true"
+            className="absolute right-[0.3rem] top-[0.3rem] h-1.5 w-1.5 rotate-45 bg-amber-300 shadow-[0_0_5px_rgba(252,211,77,0.75)]"
+          />
+        )}
       </span>
       <span
-        className={`mt-2 max-w-full truncate text-center text-xs font-semibold leading-4 transition-colors group-focus-visible/node:underline group-focus-visible/node:decoration-2 group-focus-visible/node:underline-offset-4 ${
+        className={`mt-1 max-w-full truncate text-center text-[0.72rem] font-semibold leading-4 transition-colors duration-200 group-focus-visible/node:underline group-focus-visible/node:decoration-2 group-focus-visible/node:underline-offset-4 ${
           selected ? "text-cyan-100" : "text-slate-300 group-hover/node:text-white"
         }`}
       >
         {node.name}
       </span>
-      <span className="mt-1 flex h-2 items-center justify-center gap-1" aria-hidden="true">
+      <span className="mt-1 flex h-2 items-center justify-center gap-1.5" aria-hidden="true">
         {Array.from({ length: node.maxLevel }, (_, index) => (
           <span
             key={index}
-            className={`h-1.5 w-1.5 rotate-45 border ${
-              selected ? "border-cyan-200 bg-cyan-300/50" : "border-slate-600"
+            className={`h-[0.4rem] w-[0.4rem] rotate-45 border transition-colors duration-200 ${
+              selected
+                ? "border-cyan-200 bg-cyan-300/55"
+                : "border-cyan-800 bg-[#06151e] group-hover/node:border-cyan-500"
             }`}
           />
         ))}
@@ -286,10 +304,10 @@ function ExclusiveConnectors() {
       className="absolute inset-0 h-full w-full text-cyan-700/45"
     >
       <g fill="none" stroke="currentColor" strokeWidth="0.7" vectorEffect="non-scaling-stroke">
-        <path d="M50 92 V125 H23 V158 M50 125 H77 V158" />
-        <path d="M23 222 V255 H50 V288 M77 222 V255 H50" />
-        <path d="M50 352 V385 H23 V418 M50 385 H77 V418" />
-        <path d="M23 482 V515 H50 V548 M77 482 V515 H50" />
+        <path d="M50 76 V98 H23 V120 M50 98 H77 V120" />
+        <path d="M23 176 V198 H50 V220 M77 176 V198 H50" />
+        <path d="M50 276 V298 H23 V320 M50 298 H77 V320" />
+        <path d="M23 376 V398 H50 V420 M77 376 V398 H50" />
       </g>
     </svg>
   );
@@ -297,7 +315,7 @@ function ExclusiveConnectors() {
 
 function GeneralConnectors() {
   const xs = [12.5, 37.5, 62.5, 87.5];
-  const centers = [60, 190, 320, 450, 580];
+  const centers = [48, 148, 248, 348, 448];
 
   return (
     <svg
@@ -314,7 +332,7 @@ function GeneralConnectors() {
             <g key={center}>
               <path d={`M${xs[0]} ${rail} H${xs[xs.length - 1]}`} />
               {xs.map((x) => (
-                <path key={x} d={`M${x} ${center + 32} V${nextCenter - 32}`} />
+                <path key={x} d={`M${x} ${center + 28} V${nextCenter - 28}`} />
               ))}
             </g>
           );
@@ -405,98 +423,103 @@ export function ZeroTalentTree() {
   };
 
   return (
-    <article className="relative isolate overflow-hidden rounded-xl border border-cyan-900/70 bg-[#06121a] shadow-[0_30px_100px_rgba(0,0,0,0.35)]">
-      <Image
-        src={getAssetPath("/webp/images/season-talents/s3/zero/background.webp")}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="-z-20 object-cover opacity-[0.13]"
-      />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_12%,rgba(18,142,205,0.2),transparent_30%),linear-gradient(180deg,rgba(2,11,17,0.76),rgba(5,23,33,0.94))]" />
+    <article className="relative isolate space-y-4">
+      <header className="relative overflow-hidden rounded-sm border border-cyan-300/40 bg-[#05151f] px-4 py-4 shadow-[0_20px_70px_rgba(0,0,0,0.32)] sm:px-6 xl:min-h-[11.5rem] xl:px-12">
+        <Image
+          src={getAssetPath("/webp/images/season-talents/s3/zero/background.webp")}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="-z-20 object-cover opacity-[0.12]"
+        />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_35%,rgba(18,142,205,0.22),transparent_30%),linear-gradient(90deg,rgba(2,11,17,0.72),rgba(5,23,33,0.95))]" />
+        <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-cyan-300 via-cyan-300/20 to-transparent" />
 
-      <header className="border-b border-cyan-900/70 px-4 py-5 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-cyan-300">
-          <span className="rounded border border-cyan-400/40 bg-cyan-400/10 px-2.5 py-1">
-            S3
-          </span>
-          <span>赛季天赋详情</span>
-        </div>
-
-        <div className="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-center">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
-            <button
-              type="button"
-              aria-pressed={selectedNode.id === ROOT_NODE_ID}
-              aria-label="查看零点赛季技能效果"
-              onClick={() => selectNode(nodeMap.get(ROOT_NODE_ID) ?? DATA.nodes[0])}
-              className={`group/root relative h-28 w-28 shrink-0 touch-manipulation cursor-pointer overflow-hidden border bg-[#0a2330] transition-colors focus-visible:outline-none [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)] sm:h-32 sm:w-32 ${
-                selectedNode.id === ROOT_NODE_ID
-                  ? "border-cyan-200 bg-cyan-300/15"
-                  : "border-cyan-700 hover:border-cyan-300"
-              }`}
-            >
+        <div className="grid gap-5 sm:grid-cols-[9rem_minmax(0,1fr)] sm:items-center xl:grid-cols-[11rem_minmax(0,1fr)_23.5rem] xl:gap-10">
+          <button
+            type="button"
+            aria-pressed={selectedNode.id === ROOT_NODE_ID}
+            aria-label="查看零点赛季技能效果"
+            onClick={() => selectNode(nodeMap.get(ROOT_NODE_ID) ?? DATA.nodes[0])}
+            className={`group/root relative h-32 w-32 shrink-0 touch-manipulation cursor-pointer transition-[background-color,filter,transform] duration-200 motion-reduce:transition-none focus-visible:outline-none focus-visible:[&+div_h1]:underline focus-visible:[&+div_h1]:decoration-2 focus-visible:[&+div_h1]:underline-offset-4 [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)] active:scale-[0.985] sm:h-36 sm:w-36 xl:h-40 xl:w-40 ${
+              selectedNode.id === ROOT_NODE_ID
+                ? "bg-cyan-200 drop-shadow-[0_0_12px_rgba(74,211,255,0.28)]"
+                : "bg-cyan-700 hover:bg-cyan-300"
+            }`}
+          >
+            <span className="absolute inset-px overflow-hidden bg-[#071923] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 bg-[radial-gradient(circle_at_50%_46%,rgba(40,166,214,0.2),transparent_68%)]"
+              />
               <Image
                 src={getAssetPath(DATA.nodes[0].icon)}
                 alt=""
                 fill
-                sizes="128px"
-                className="object-cover transition-[filter] duration-200 group-hover/root:brightness-110"
+                sizes="160px"
+                className="object-cover transition-[filter,transform] duration-200 motion-reduce:transition-none group-hover/root:scale-[1.025] group-hover/root:brightness-110"
               />
-            </button>
-            <div>
-              <h1 className="text-3xl font-black tracking-[0.08em] text-white sm:text-4xl">
-                {DATA.name}
-              </h1>
-              <p className="mt-2 text-base text-slate-300 sm:text-lg">{DATA.subtitle}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {DATA.applicableWeapons.map((weapon) => (
-                  <span
-                    key={weapon}
-                    className="inline-flex items-center gap-1.5 rounded border border-cyan-700/60 bg-cyan-950/50 px-2.5 py-1.5 text-xs font-medium text-cyan-100"
-                  >
-                    <Crosshair aria-hidden="true" className="h-3.5 w-3.5" />
-                    {weapon}
-                  </span>
-                ))}
-              </div>
+            </span>
+          </button>
+
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
+              <span className="rounded border border-cyan-400/50 bg-cyan-400/10 px-2.5 py-1">S3</span>
+              <span className="text-slate-300">赛季天赋详情</span>
+            </div>
+            <h1 className="mt-2 text-3xl font-black tracking-[0.08em] text-white sm:text-4xl">
+              {DATA.name}
+            </h1>
+            <p className="mt-1.5 text-base text-slate-300 sm:text-lg">{DATA.subtitle}</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {DATA.applicableWeapons.map((weapon) => (
+                <span
+                  key={weapon}
+                  className="inline-flex items-center gap-1.5 rounded border border-cyan-700/70 bg-cyan-950/45 px-2.5 py-1.5 text-xs font-medium text-cyan-100"
+                >
+                  <Crosshair aria-hidden="true" className="h-3.5 w-3.5" />
+                  {weapon}
+                </span>
+              ))}
             </div>
           </div>
 
           <section
             aria-label="被动天赋槽位"
-            className="flex min-h-28 items-center gap-4 rounded-lg border border-dashed border-slate-600 bg-slate-950/35 p-4"
+            className="flex min-h-32 items-center gap-5 rounded-lg border border-dashed border-slate-500/80 bg-slate-950/30 p-5 sm:col-span-2 xl:col-span-1"
           >
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center border border-slate-600 bg-slate-900/60 [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
-              <Plus aria-hidden="true" className="h-6 w-6 text-slate-400" />
+            <span className="relative h-16 w-16 shrink-0 bg-slate-500/90 [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
+              <span className="absolute inset-px flex items-center justify-center bg-[#071923] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
+                <Plus aria-hidden="true" className="h-7 w-7 text-slate-300" />
+              </span>
             </span>
             <div>
-              <p className="text-xs font-semibold tracking-[0.15em] text-slate-500">被动天赋</p>
-              <p className="mt-1 font-semibold text-slate-200">选择被动天赋</p>
-              <p className="mt-1 text-xs text-slate-500">槽位已预留，内容待补充</p>
+              <p className="text-xs font-semibold tracking-[0.15em] text-slate-400">被动天赋</p>
+              <p className="mt-2 text-base font-semibold text-slate-100">选择被动天赋</p>
+              <p className="mt-1 text-sm text-slate-500">槽位已预留，内容待补充</p>
             </div>
           </section>
         </div>
-
-        {selectedNode.id === ROOT_NODE_ID && (
-          <div className="mt-5 xl:hidden">
-            <DetailCard
-              node={selectedNode}
-              level={selectedLevel}
-              onLevelChange={setSelectedLevel}
-              compact
-            />
-          </div>
-        )}
       </header>
 
-      <div className="grid gap-6 p-4 sm:p-6 xl:grid-cols-[minmax(0,1fr)_23rem] xl:items-start xl:p-8">
-        <div>
-          <div className="mb-5 flex items-center justify-between gap-4">
+      {selectedNode.id === ROOT_NODE_ID && (
+        <div className="xl:hidden">
+          <DetailCard
+            node={selectedNode}
+            level={selectedLevel}
+            onLevelChange={setSelectedLevel}
+            compact
+          />
+        </div>
+      )}
+
+      <div className="grid gap-4 xl:grid-cols-[minmax(0,2fr)_minmax(22rem,1fr)] xl:items-stretch">
+        <section className="relative overflow-hidden rounded-sm border border-cyan-300/35 bg-[#05151f]/95 shadow-[0_20px_70px_rgba(0,0,0,0.28)]">
+          <div className="flex min-h-16 items-center justify-between gap-4 border-b border-cyan-950/90 px-4 py-3 sm:px-6">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-400">Talent Matrix</p>
-              <h2 className="mt-1 text-xl font-bold text-white">天赋节点</h2>
+              <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-cyan-400">Talent Matrix</p>
+              <h2 className="mt-0.5 text-xl font-bold text-white">天赋节点</h2>
             </div>
             <p className="text-right text-xs leading-5 text-slate-500">
               选择节点查看效果
@@ -505,23 +528,13 @@ export function ZeroTalentTree() {
             </p>
           </div>
 
-          <div className="hidden overflow-hidden rounded-xl border border-cyan-950/80 bg-[#06151e]/80 xl:block">
-            <div className="grid grid-cols-[36%_64%] border-b border-cyan-950/80">
-              <div className="flex items-center gap-2 border-r border-cyan-950/80 px-5 py-3 text-sm font-semibold text-cyan-100">
+          <div className="hidden grid-cols-[42%_58%] xl:grid">
+            <div className="border-r border-cyan-950/90">
+              <div className="flex h-11 items-center justify-center gap-2 border-b border-cyan-950/90 text-sm font-semibold text-cyan-100">
                 <Sparkles aria-hidden="true" className="h-4 w-4 text-cyan-300" />
                 专属天赋
               </div>
-              <div className="flex items-center gap-2 px-5 py-3 text-sm font-semibold text-slate-200">
-                <Layers3 aria-hidden="true" className="h-4 w-4 text-slate-400" />
-                通用天赋
-              </div>
-            </div>
-
-            <div className="grid grid-cols-[36%_64%]">
-              <div
-                className="relative border-r border-cyan-950/80"
-                style={{ height: EXCLUSIVE_HEIGHT }}
-              >
+              <div className="relative" style={{ height: EXCLUSIVE_HEIGHT }}>
                 <ExclusiveConnectors />
                 {exclusiveNodes.map((node) => {
                   const position = exclusivePositions[node.id];
@@ -537,7 +550,13 @@ export function ZeroTalentTree() {
                   );
                 })}
               </div>
+            </div>
 
+            <div>
+              <div className="flex h-11 items-center justify-center gap-2 border-b border-cyan-950/90 text-sm font-semibold text-slate-200">
+                <Layers3 aria-hidden="true" className="h-4 w-4 text-slate-400" />
+                通用天赋
+              </div>
               <div className="relative" style={{ height: GENERAL_HEIGHT }}>
                 <GeneralConnectors />
                 {generalNodes.map((node) => (
@@ -546,7 +565,7 @@ export function ZeroTalentTree() {
                     node={node}
                     selected={node.id === selectedNode.id}
                     x={(node.column - 4.5) * 25}
-                    y={60 + (node.phase - 2) * 130}
+                    y={48 + (node.phase - 2) * 100}
                     onSelect={selectNode}
                   />
                 ))}
@@ -554,7 +573,7 @@ export function ZeroTalentTree() {
             </div>
           </div>
 
-          <div className="space-y-8 xl:hidden">
+          <div className="space-y-8 p-4 sm:p-6 xl:hidden">
             <section aria-labelledby="exclusive-mobile-heading">
               <div className="mb-3 flex items-center gap-2">
                 <Sparkles aria-hidden="true" className="h-4 w-4 text-cyan-300" />
@@ -608,9 +627,9 @@ export function ZeroTalentTree() {
               </div>
             </section>
           </div>
-        </div>
+        </section>
 
-        <aside className="hidden xl:sticky xl:top-20 xl:block">
+        <aside className="hidden xl:block">
           <DetailCard
             node={selectedNode}
             level={selectedLevel}

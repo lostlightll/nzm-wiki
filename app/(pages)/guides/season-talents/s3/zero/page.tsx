@@ -15,7 +15,7 @@ export default function ZeroTalentPage() {
       <nav aria-label="面包屑" className="mb-4 flex flex-wrap items-center gap-1.5 text-sm text-zinc-400">
         <Link
           href="/guides#season-talents"
-          className="min-h-11 touch-manipulation content-center transition-colors hover:text-white focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+          className="min-h-11 touch-manipulation content-center transition-colors hover:text-white focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 md:min-h-0"
         >
           攻略机制
         </Link>

@@ -284,11 +284,22 @@ export default function PagesLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isSeasonTalentDetail = pathname.startsWith("/guides/season-talents/");
+
   return (
     <BossDifficultyProvider>
       <div className="min-h-screen bg-background">
         <NavBar />
-        <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
+        <main
+          className={`mx-auto ${
+            isSeasonTalentDetail
+              ? "max-w-[1600px] px-4 py-4 sm:px-6 xl:px-12"
+              : "max-w-7xl px-4 py-8"
+          }`}
+        >
+          {children}
+        </main>
       </div>
     </BossDifficultyProvider>
   );
