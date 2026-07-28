@@ -63,8 +63,20 @@ interface PassiveTalentData {
 const DATA = zeroData as TalentData;
 const PASSIVE_DATA = passiveData as PassiveTalentData;
 const ROOT_NODE_ID = "3002102";
+const TALENT_BUILD_STORAGE_KEY = "nzm-wiki:season-talents:s3:zero:v1";
 const EXCLUSIVE_HEIGHT = 500;
 const GENERAL_HEIGHT = 500;
+const DEFAULT_EXCLUSIVE_LEVELS = Object.fromEntries(
+  DATA.nodes
+    .filter((node) => node.id !== ROOT_NODE_ID && node.column <= 3)
+    .map((node) => [node.id, node.maxLevel]),
+) as Record<string, number>;
+
+interface SavedTalentBuild {
+  version: 1;
+  levels: Record<string, number>;
+  passiveId: string | null;
+}
 
 const exclusivePositions: Record<string, { x: number; y: number }> = {
   "3002202": { x: 50, y: 48 },
@@ -134,6 +146,14 @@ function RankSelector({
   level: number;
   onChange: (level: number) => void;
 }) {
+  if (level === 0) {
+    return (
+      <div className="mt-5 border-t border-cyan-100/10 pt-4 text-sm text-slate-400">
+        当前仅预览 1 级效果，双击节点后会直接加至满级。
+      </div>
+    );
+  }
+
   if (node.maxLevel === 1) return null;
 
   return (
@@ -148,7 +168,7 @@ function RankSelector({
               key={rank}
               type="button"
               aria-pressed={rank === level}
-              aria-label={`查看${node.name}${rank}级效果`}
+              aria-label={`将${node.name}加到${rank}级`}
               onClick={() => onChange(rank)}
               className={`flex h-11 min-w-11 touch-manipulation items-center justify-center rounded border px-3 text-sm font-bold tabular-nums transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
                 rank === level
@@ -184,6 +204,7 @@ function DetailCard({
         ? "专属 · 关键天赋"
         : "专属天赋"
       : "通用天赋";
+  const displayLevel = Math.max(1, level);
 
   return (
     <section
@@ -243,7 +264,7 @@ function DetailCard({
           <Sparkles aria-hidden="true" className="h-4 w-4 text-[#ffd45e]" />
           天赋效果
         </div>
-        <TalentDescription value={node.descriptions[level - 1]} />
+        <TalentDescription value={node.descriptions[displayLevel - 1]} />
       </div>
 
       <RankSelector node={node} level={level} onChange={onLevelChange} />
@@ -254,30 +275,44 @@ function DetailCard({
 function TalentNodeButton({
   node,
   selected,
+  level,
+  dimmed,
   x,
   y,
   onSelect,
+  onActivate,
 }: {
   node: TalentNode;
   selected: boolean;
+  level: number;
+  dimmed: boolean;
   x: number;
   y: number;
   onSelect: (node: TalentNode) => void;
+  onActivate: (node: TalentNode) => void;
 }) {
+  const allocated = level > 0;
+
   return (
     <button
       type="button"
-      aria-pressed={selected}
-      aria-label={`查看${node.name}天赋效果，最高${node.maxLevel}级`}
+      aria-pressed={allocated}
+      aria-label={`${node.name}${allocated ? `已加${level}级` : "未加点"}，单击查看，双击${dimmed ? "替换同阶段天赋" : "加到满级"}`}
+      title={`单击查看 · 双击${dimmed ? "切换并加满" : "加满"}`}
       onClick={() => onSelect(node)}
-      className="group/node absolute z-10 flex w-[5.5rem] -translate-x-1/2 -translate-y-1/2 touch-manipulation cursor-pointer flex-col items-center focus-visible:outline-none"
+      onDoubleClick={() => onActivate(node)}
+      className={`group/node absolute z-10 flex w-[5.5rem] -translate-x-1/2 -translate-y-1/2 touch-manipulation cursor-pointer flex-col items-center transition-[opacity,filter] duration-200 focus-visible:outline-none motion-reduce:transition-none ${
+        dimmed ? "opacity-35 grayscale hover:opacity-65 hover:grayscale-0" : ""
+      }`}
       style={{ left: `${x}%`, top: y }}
     >
       <span
         className={`relative block h-[3.75rem] w-[3.75rem] transition-[background-color,filter,transform] duration-200 motion-reduce:transition-none [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)] group-active/node:scale-95 ${
-          selected
+          allocated
             ? "bg-cyan-200 brightness-110 drop-shadow-[0_0_8px_rgba(74,211,255,0.42)]"
-            : "bg-cyan-800/90 group-hover/node:bg-cyan-400 group-hover/node:brightness-110"
+            : selected
+              ? "bg-cyan-500"
+              : "bg-cyan-800/90 group-hover/node:bg-cyan-400 group-hover/node:brightness-110"
         }`}
       >
         <span className="absolute inset-px overflow-hidden bg-[#071923] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
@@ -302,17 +337,18 @@ function TalentNodeButton({
       </span>
       <span
         className={`mt-1 max-w-full truncate text-center text-[0.72rem] font-semibold leading-4 transition-colors duration-200 group-focus-visible/node:underline group-focus-visible/node:decoration-2 group-focus-visible/node:underline-offset-4 ${
-          selected ? "text-cyan-100" : "text-slate-300 group-hover/node:text-white"
+          allocated ? "text-cyan-100" : "text-slate-300 group-hover/node:text-white"
         }`}
       >
         {node.name}
       </span>
+      <span className="sr-only">{allocated ? `当前 ${level} 级` : "未加点"}</span>
       <span className="mt-1 flex h-2 items-center justify-center gap-1.5" aria-hidden="true">
         {Array.from({ length: node.maxLevel }, (_, index) => (
           <span
             key={index}
             className={`h-[0.4rem] w-[0.4rem] rotate-45 border transition-colors duration-200 ${
-              selected
+              index < level
                 ? "border-cyan-200 bg-cyan-300/55"
                 : "border-cyan-800 bg-[#06151e] group-hover/node:border-cyan-500"
             }`}
@@ -374,21 +410,34 @@ function MobileNode({
   node,
   selected,
   level,
+  dimmed,
   onSelect,
+  onActivate,
   onLevelChange,
 }: {
   node: TalentNode;
   selected: boolean;
   level: number;
+  dimmed: boolean;
   onSelect: (node: TalentNode) => void;
+  onActivate: (node: TalentNode) => void;
   onLevelChange: (level: number) => void;
 }) {
+  const allocated = level > 0;
+
   return (
-    <div className="overflow-hidden rounded-lg border border-cyan-950 bg-[#081720]/85">
+    <div
+      className={`overflow-hidden rounded-lg border bg-[#081720]/85 transition-[border-color,opacity,filter] duration-200 motion-reduce:transition-none ${
+        allocated ? "border-cyan-500/60" : "border-cyan-950"
+      } ${dimmed ? "opacity-45 grayscale" : ""}`}
+    >
       <button
         type="button"
         aria-expanded={selected}
+        aria-pressed={allocated}
+        aria-label={`${node.name}${allocated ? `已加${level}级` : "未加点"}，单击查看，双击${dimmed ? "替换同阶段天赋" : "加到满级"}`}
         onClick={() => onSelect(node)}
+        onDoubleClick={() => onActivate(node)}
         className={`flex min-h-20 w-full touch-manipulation items-center gap-3 px-3 py-3 text-left transition-colors focus-visible:outline-none focus-visible:[&_h3]:underline focus-visible:[&_h3]:decoration-2 focus-visible:[&_h3]:underline-offset-4 ${
           selected ? "bg-cyan-300/10" : "hover:bg-cyan-300/5"
         }`}
@@ -409,8 +458,20 @@ function MobileNode({
               <span className="text-[0.68rem] font-semibold text-amber-200">关键</span>
             )}
           </span>
-          <span className="mt-1 block text-xs text-slate-400">
-            最高 {node.maxLevel} 级 · 点击查看效果
+          <span className="mt-1 flex items-center gap-3 text-xs text-slate-400">
+            <span>{allocated ? `已加 ${level}/${node.maxLevel} 级` : `双击加满 · 最高 ${node.maxLevel} 级`}</span>
+            <span className="flex items-center gap-1" aria-hidden="true">
+              {Array.from({ length: node.maxLevel }, (_, index) => (
+                <span
+                  key={index}
+                  className={`h-1.5 w-1.5 rotate-45 border ${
+                    index < level
+                      ? "border-cyan-200 bg-cyan-300/60"
+                      : "border-cyan-800 bg-[#06151e]"
+                  }`}
+                />
+              ))}
+            </span>
           </span>
         </span>
         <span className="text-xl text-cyan-300" aria-hidden="true">
@@ -680,9 +741,12 @@ function PassiveTalentSelector({
 
 export function ZeroTalentTree() {
   const [selectedNodeId, setSelectedNodeId] = useState(ROOT_NODE_ID);
-  const [selectedLevel, setSelectedLevel] = useState(1);
+  const [talentLevels, setTalentLevels] = useState<Record<string, number>>(() => ({
+    ...DEFAULT_EXCLUSIVE_LEVELS,
+  }));
   const [selectedPassiveId, setSelectedPassiveId] = useState<string | null>(null);
   const [passiveSelectorOpen, setPassiveSelectorOpen] = useState(false);
+  const [storageReady, setStorageReady] = useState(false);
   const closePassiveSelector = useCallback(() => setPassiveSelectorOpen(false), []);
 
   const nodeMap = useMemo(
@@ -690,6 +754,8 @@ export function ZeroTalentTree() {
     [],
   );
   const selectedNode = nodeMap.get(selectedNodeId) ?? DATA.nodes[0];
+  const selectedLevel =
+    selectedNode.id === ROOT_NODE_ID ? 1 : (talentLevels[selectedNode.id] ?? 0);
   const selectedPassive =
     PASSIVE_DATA.passives.find((talent) => talent.id === selectedPassiveId) ?? null;
   const exclusiveNodes = DATA.nodes.filter(
@@ -697,10 +763,98 @@ export function ZeroTalentTree() {
   );
   const generalNodes = DATA.nodes.filter((node) => node.column >= 5);
 
+  const updateNodeLevel = useCallback((node: TalentNode, requestedLevel: number) => {
+    if (node.id === ROOT_NODE_ID) return;
+
+    const level = Math.max(1, Math.min(node.maxLevel, requestedLevel));
+    setTalentLevels((current) => {
+      const next = { ...current };
+
+      if (node.column >= 5) {
+        DATA.nodes.forEach((candidate) => {
+          if (candidate.column >= 5 && candidate.phase === node.phase) {
+            delete next[candidate.id];
+          }
+        });
+      }
+
+      next[node.id] = level;
+      return next;
+    });
+  }, []);
+
   const selectNode = (node: TalentNode) => {
     setSelectedNodeId(node.id);
-    setSelectedLevel(1);
   };
+
+  const activateNode = (node: TalentNode) => {
+    setSelectedNodeId(node.id);
+    if (node.id !== ROOT_NODE_ID) {
+      updateNodeLevel(node, node.maxLevel);
+    }
+  };
+
+  const isGeneralNodeDimmed = (node: TalentNode) =>
+    node.column >= 5 &&
+    !talentLevels[node.id] &&
+    generalNodes.some(
+      (candidate) =>
+        candidate.phase === node.phase && Boolean(talentLevels[candidate.id]),
+    );
+
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(TALENT_BUILD_STORAGE_KEY);
+      if (!raw) return;
+
+      const saved = JSON.parse(raw) as Partial<SavedTalentBuild>;
+      if (saved.version !== 1 || typeof saved.levels !== "object" || !saved.levels) {
+        return;
+      }
+
+      const restoredLevels: Record<string, number> = {
+        ...DEFAULT_EXCLUSIVE_LEVELS,
+      };
+      const occupiedGeneralPhases = new Set<number>();
+      DATA.nodes.forEach((node) => {
+        if (node.id === ROOT_NODE_ID) return;
+        const storedLevel = saved.levels?.[node.id];
+        if (!Number.isFinite(storedLevel) || Number(storedLevel) <= 0) return;
+        if (node.column >= 5 && occupiedGeneralPhases.has(node.phase)) return;
+
+        restoredLevels[node.id] = Math.min(node.maxLevel, Math.floor(Number(storedLevel)));
+        if (node.column >= 5) occupiedGeneralPhases.add(node.phase);
+      });
+      setTalentLevels(restoredLevels);
+
+      if (
+        typeof saved.passiveId === "string" &&
+        PASSIVE_DATA.passives.some((talent) => talent.id === saved.passiveId)
+      ) {
+        setSelectedPassiveId(saved.passiveId);
+      }
+    } catch {
+      // Ignore unavailable or malformed local storage and keep a clean build.
+    } finally {
+      setStorageReady(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!storageReady) return;
+
+    const saved: SavedTalentBuild = {
+      version: 1,
+      levels: talentLevels,
+      passiveId: selectedPassiveId,
+    };
+
+    try {
+      window.localStorage.setItem(TALENT_BUILD_STORAGE_KEY, JSON.stringify(saved));
+    } catch {
+      // The builder remains usable when storage is disabled.
+    }
+  }, [selectedPassiveId, storageReady, talentLevels]);
 
   return (
     <article className="relative isolate space-y-4">
@@ -830,7 +984,7 @@ export function ZeroTalentTree() {
           <DetailCard
             node={selectedNode}
             level={selectedLevel}
-            onLevelChange={setSelectedLevel}
+            onLevelChange={(level) => updateNodeLevel(selectedNode, level)}
             compact
           />
         </div>
@@ -843,11 +997,13 @@ export function ZeroTalentTree() {
               <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-cyan-400">Talent Matrix</p>
               <h2 className="mt-0.5 text-xl font-bold text-white">天赋节点</h2>
             </div>
-            <p className="text-right text-xs leading-5 text-slate-500">
-              选择节点查看效果
-              <br />
-              不展示解锁状态
-            </p>
+            <div className="text-right text-xs leading-5 text-slate-500">
+              <p>单击查看 · 双击加满或切换</p>
+              <p className="inline-flex items-center gap-1.5 text-cyan-500">
+                <Check aria-hidden="true" className="h-3.5 w-3.5" />
+                {storageReady ? "加点方案已自动保存" : "正在读取加点方案"}
+              </p>
+            </div>
           </div>
 
           <div className="hidden grid-cols-[42%_58%] xl:grid">
@@ -865,9 +1021,12 @@ export function ZeroTalentTree() {
                       key={node.id}
                       node={node}
                       selected={node.id === selectedNode.id}
+                      level={talentLevels[node.id] ?? 0}
+                      dimmed={false}
                       x={position.x}
                       y={position.y}
                       onSelect={selectNode}
+                      onActivate={activateNode}
                     />
                   );
                 })}
@@ -886,9 +1045,12 @@ export function ZeroTalentTree() {
                     key={node.id}
                     node={node}
                     selected={node.id === selectedNode.id}
+                    level={talentLevels[node.id] ?? 0}
+                    dimmed={isGeneralNodeDimmed(node)}
                     x={(node.column - 4.5) * 25}
                     y={48 + (node.phase - 2) * 100}
                     onSelect={selectNode}
+                    onActivate={activateNode}
                   />
                 ))}
               </div>
@@ -909,9 +1071,11 @@ export function ZeroTalentTree() {
                     key={node.id}
                     node={node}
                     selected={node.id === selectedNode.id}
-                    level={selectedLevel}
+                    level={talentLevels[node.id] ?? 0}
+                    dimmed={false}
                     onSelect={selectNode}
-                    onLevelChange={setSelectedLevel}
+                    onActivate={activateNode}
+                    onLevelChange={(level) => updateNodeLevel(node, level)}
                   />
                 ))}
               </div>
@@ -938,9 +1102,11 @@ export function ZeroTalentTree() {
                             key={node.id}
                             node={node}
                             selected={node.id === selectedNode.id}
-                            level={selectedLevel}
+                            level={talentLevels[node.id] ?? 0}
+                            dimmed={isGeneralNodeDimmed(node)}
                             onSelect={selectNode}
-                            onLevelChange={setSelectedLevel}
+                            onActivate={activateNode}
+                            onLevelChange={(level) => updateNodeLevel(node, level)}
                           />
                         ))}
                     </div>
@@ -955,7 +1121,7 @@ export function ZeroTalentTree() {
           <DetailCard
             node={selectedNode}
             level={selectedLevel}
-            onLevelChange={setSelectedLevel}
+            onLevelChange={(level) => updateNodeLevel(selectedNode, level)}
           />
         </aside>
       </div>
