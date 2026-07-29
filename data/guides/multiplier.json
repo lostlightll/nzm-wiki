@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 2,
+  "defaultFactorId": "dilution",
+  "factors": [
+    { "id": "base", "label": "基础伤害" },
+    { "id": "weakpoint-multiplier", "label": "弱点倍率" },
+    { "id": "game-mode", "label": "游戏模式乘区" },
+    { "id": "element", "label": "元素乘区" },
+    { "id": "critical", "label": "暴伤乘区" },
+    { "id": "weakness", "label": "弱点增伤" },
+    { "id": "dilution", "label": "大稀释乘区" },
+    { "id": "correction", "label": "特殊修正" },
+    { "id": "damage-reduction", "label": "伤害减免" }
+  ],
+  "dilutionCategories": [
+    {
+      "id": "all-damage",
+      "target": "全伤害",
+      "attributeField": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+      "icon": "target",
+      "examples": [
+        { "id": "pure-white-active-skill", "label": "纯白主动技能", "href": "/weapons/纯白至上" },
+        { "id": "guan-shan-kui-gu", "label": "观山窥骨", "href": "/perks/slot-3/观山窥骨" }
+      ]
+    },
+    {
+      "id": "weapon-damage",
+      "target": "武器伤害增加",
+      "attributeField": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+      "icon": "swords",
+      "examples": [
+        { "id": "dun-hua-damage", "label": "钝化增伤", "href": "/perks/slot-3/钝化增伤" },
+        { "id": "chong-luan-die-shi", "label": "重峦叠势", "href": "/perks/slot-3/重峦叠势" },
+        { "id": "end-sequence", "label": "终焉序列", "href": "/perks/slot-3/终焉序列" }
+      ]
+    },
+    {
+      "id": "weapon-skill-damage",
+      "target": "武器技能伤害",
+      "attributeField": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
+      "icon": "sparkles",
+      "examples": [
+        { "id": "shou-qu-shuang-yan", "label": "兽躯双衍", "href": "/perks/slot-4/兽躯双衍" },
+        { "id": "shou-tong-du-lai", "label": "兽瞳独赖", "href": "/perks/slot-4/兽瞳独睐" },
+        { "id": "skill-surge", "label": "技能增涌", "href": "/perks/slot-3/技能增涌" }
+      ]
+    },
+    {
+      "id": "close-range-damage",
+      "target": "近距离武器伤害",
+      "attributeField": "GPAttributeSetGiveDamageRatio.CloseRangeDamageRatio",
+      "icon": "locate-fixed",
+      "examples": [
+        { "id": "icepoint-twin-peaks-close-range", "label": "冰点双峰近距词条", "href": "/weapons/冰点双峰" }
+      ]
+    },
+    {
+      "id": "long-range-damage",
+      "target": "远距离武器伤害",
+      "attributeField": "GPAttributeSetGiveDamageRatio.LongRangeDamageRatio",
+      "icon": "telescope",
+      "examples": [
+        { "id": "iron-grip-long-range", "label": "钢铁之握远距词条", "href": "/weapons/钢铁之握" }
+      ]
+    },
+    {
+      "id": "weapon-hit-damage",
+      "target": "射击伤害",
+      "attributeField": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "icon": "crosshair",
+      "examples": [
+        { "id": "weapon-enhancement", "label": "武器强化", "href": "/perks/slot-3/武器强化" }
+      ]
+    },
+    {
+      "id": "weapon-explode-damage",
+      "target": "爆炸伤害",
+      "attributeField": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+      "icon": "bomb",
+      "examples": [
+        { "id": "toxic-fast-load", "label": "剧毒速装", "href": "/perks/slot-4/剧毒速装" },
+        { "id": "armed-axe-explosion", "label": "武装斧头爆炸词条", "href": "/weapons/武装斧头" }
+      ]
+    }
+  ],
+  "specialCorrection": {
+    "summary": "该修正作用于具体伤害事件的执行上下文，不设统一的增伤或减伤对象。",
+    "rules": [
+      "对单次伤害事件进行比例修正",
+      "生效对象与增减方向由具体机制决定"
+    ],
+    "target": "根据具体情况而定",
+    "attributeField": "Numerical.ExecutionCtx.ExecutionRatio",
+    "examples": [
+      {
+        "id": "beast-god-grenade-passive",
+        "label": "精绝兽神榴弹被动",
+        "icon": "bomb",
+        "href": "/weapons/精绝兽神"
+      },
+      {
+        "id": "single-projectile-enhancement",
+        "label": "独弹强化",
+        "icon": "crosshair",
+        "href": "/perks/slot-4/独弹强化"
+      },
+      {
+        "id": "return-damage-reduction",
+        "label": "归途减伤",
+        "icon": "sparkles",
+        "href": "/perks/slot-4/归途"
+      },
+      {
+        "id": "s2-hologram-damage-reduction",
+        "label": "S2全息减伤",
+        "icon": "sparkles"
+      },
+      {
+        "id": "compound-bow-penetration",
+        "label": "复合弓穿透",
+        "icon": "target",
+        "href": "/weapons/超级复合弓"
+      },
+      {
+        "id": "compound-bow-charge",
+        "label": "复合弓蓄力",
+        "icon": "target",
+        "href": "/weapons/超级复合弓"
+      },
+      {
+        "id": "grappling-hook-damage-transfer",
+        "label": "钩锁伤害传递",
+        "icon": "locate-fixed",
+        "href": "/guides/season-talents/s3/grappling-hook"
+      }
+    ],
+    "notice": "同一字段既可能用于增伤，也可能用于减伤；实际效果以具体机制和战斗实测为准。"
+  }
+}
