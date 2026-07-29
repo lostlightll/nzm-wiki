@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Bomb,
   Box,
@@ -5,68 +7,43 @@ import {
   Crosshair,
   Info,
   LocateFixed,
+  Sparkles,
   Swords,
   Tag,
   Target,
+  Telescope,
   TriangleAlert,
   Users,
   type LucideIcon,
 } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import {
+  DEFAULT_MULTIPLIER_FACTOR,
+  DILUTION_CATEGORIES,
+  MULTIPLIER_FACTORS,
+  SPECIAL_CORRECTION,
+  type DilutionIconKey,
+  type MultiplierFactorId,
+} from "@/lib/multiplier-data";
 
-type MultiplierFactor = {
-  id: string;
-  label: string;
-  active?: boolean;
+const DEFAULT_FACTOR_ID: MultiplierFactorId = DEFAULT_MULTIPLIER_FACTOR.id;
+const DETAIL_PANEL_ID = "multiplier-detail-panel";
+
+const DILUTION_ICONS: Record<DilutionIconKey, LucideIcon> = {
+  target: Target,
+  swords: Swords,
+  sparkles: Sparkles,
+  "locate-fixed": LocateFixed,
+  telescope: Telescope,
+  crosshair: Crosshair,
+  bomb: Bomb,
 };
 
-type DamageSource = {
-  label: string;
-  icon: LucideIcon;
-};
-
-type AttributeField = {
-  name: string;
-  description: string;
-};
-
-const FACTORS: readonly MultiplierFactor[] = [
-  { id: "base", label: "基础伤害" },
-  { id: "game-mode", label: "游戏模式乘区" },
-  { id: "element", label: "元素乘区" },
-  { id: "critical", label: "暴伤乘区" },
-  { id: "weakness", label: "弱点增伤" },
-  { id: "dilution", label: "大稀释乘区", active: true },
-  { id: "correction", label: "特殊修正" },
-];
-
-const SOURCES: readonly DamageSource[] = [
-  { label: "全伤害加成", icon: Target },
-  { label: "武器伤害增加", icon: Swords },
-  { label: "近距离武器伤害", icon: LocateFixed },
-  { label: "射击伤害", icon: Crosshair },
-  { label: "爆炸伤害", icon: Bomb },
-];
-
-const TARGETS = ["全伤害", "武器伤害", "近距离", "射击", "爆炸"] as const;
-
-const ATTRIBUTE_FIELDS: readonly AttributeField[] = [
-  {
-    name: "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-    description: "全伤害加成的属性字段",
-  },
-  {
-    name: "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
-    description: "武器伤害增加的属性字段",
-  },
-  {
-    name: "GPAttributeSetGiveDamageRatio.CloseRangeDamageRatio",
-    description: "近距离武器伤害的属性字段",
-  },
-  {
-    name: "Numerical.ExecutionCtx.ExecutionRatio",
-    description: "射击伤害执行比例类增伤的属性字段",
-  },
-];
+const DILUTION_EXAMPLE_COUNT = DILUTION_CATEGORIES.reduce(
+  (count, category) => count + category.examples.length,
+  0,
+);
 
 function SectionHeading({
   icon: Icon,
@@ -102,84 +79,167 @@ function AttributeName({ name }: { name: string }) {
   );
 }
 
-function DesktopFormula() {
-  return (
-    <div className="relative hidden h-[82px] xl:block" aria-hidden="true">
-      <div className="absolute inset-x-0 top-0 flex items-start gap-3">
-        {FACTORS.map((factor, index) => (
-          <div key={factor.id} className="contents">
-            <div className="relative h-[82px] min-w-0 flex-1">
-              <div
-                className={`flex h-12 items-center justify-center rounded-[10px] border px-3 text-center text-sm font-semibold tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.035)] ${
-                  factor.active
-                    ? "border-[color:var(--guide-accent)] bg-[linear-gradient(135deg,rgba(217,164,62,0.24),rgba(85,66,29,0.18))] text-[color:var(--guide-accent)]"
-                    : "border-zinc-600 bg-[linear-gradient(145deg,rgba(31,33,35,0.92),rgba(20,22,24,0.92))] text-zinc-200"
-                }`}
-              >
-                {factor.label}
-              </div>
+function ExampleCard({
+  icon: Icon,
+  label,
+  href,
+}: {
+  icon: LucideIcon;
+  label: string;
+  href?: string;
+}) {
+  const content = (
+    <>
+      <Icon aria-hidden="true" className="h-5 w-5 shrink-0" strokeWidth={2} />
+      {label}
+    </>
+  );
 
-              <span
-                className={`absolute left-1/2 top-[56px] z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border ${
-                  factor.active
-                    ? "border-[color:var(--guide-accent)] bg-[#111416]"
-                    : "border-zinc-400 bg-[#111416]"
-                }`}
-              >
+  if (!href) {
+    return (
+      <div className="flex min-h-11 items-center gap-2.5 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-sm font-medium text-zinc-100 xl:min-h-9 xl:py-1.5">
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className="flex min-h-11 cursor-pointer touch-manipulation items-center gap-2.5 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-800 hover:text-[color:var(--guide-accent)] focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-9 xl:py-1.5"
+    >
+      {content}
+    </Link>
+  );
+}
+
+type FormulaProps = {
+  selectedFactorId: MultiplierFactorId;
+  onSelectFactor: (factorId: MultiplierFactorId) => void;
+};
+
+function DesktopFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
+  return (
+    <div
+      className="relative hidden h-[82px] xl:block"
+      role="group"
+      aria-label="选择乘区查看详情"
+    >
+      <div className="absolute inset-x-0 top-0 flex items-start gap-3">
+        {MULTIPLIER_FACTORS.map((factor, index) => {
+          const selected = selectedFactorId === factor.id;
+
+          return (
+            <div key={factor.id} className="contents">
+              <div className="relative h-[82px] min-w-0 flex-1">
+                <button
+                  type="button"
+                  aria-expanded={selected}
+                  aria-controls={DETAIL_PANEL_ID}
+                  onClick={() => onSelectFactor(factor.id)}
+                  className={`flex h-12 w-full cursor-pointer touch-manipulation items-center justify-center rounded-[10px] border px-3 text-center text-sm font-semibold tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.035)] transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
+                    selected
+                      ? "border-[color:var(--guide-accent)] bg-[linear-gradient(135deg,rgba(217,164,62,0.24),rgba(85,66,29,0.18))] text-[color:var(--guide-accent)]"
+                      : "border-zinc-600 bg-[linear-gradient(145deg,rgba(31,33,35,0.92),rgba(20,22,24,0.92))] text-zinc-200 hover:border-zinc-400 hover:bg-zinc-800"
+                  }`}
+                >
+                  {factor.label}
+                </button>
+
                 <span
-                  className={`absolute inset-[3px] rounded-full ${
-                    factor.active ? "bg-[color:var(--guide-accent)]" : "bg-zinc-400"
+                  className={`absolute left-1/2 top-[56px] z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border ${
+                    selected
+                      ? "border-[color:var(--guide-accent)] bg-[#111416]"
+                      : "border-zinc-400 bg-[#111416]"
+                  }`}
+                >
+                  <span
+                    className={`absolute inset-[3px] rounded-full ${
+                      selected ? "bg-[color:var(--guide-accent)]" : "bg-zinc-400"
+                    }`}
+                  />
+                </span>
+
+                <span
+                  className={`absolute left-1/2 top-[69px] z-0 w-px -translate-x-1/2 ${
+                    selected
+                      ? "bottom-[-12px] bg-[color:var(--guide-accent)]"
+                      : "bottom-0 bg-zinc-500"
                   }`}
                 />
-              </span>
+              </div>
 
-              <span
-                className={`absolute left-1/2 top-[69px] z-0 w-px -translate-x-1/2 ${
-                  factor.active
-                    ? "bottom-[-12px] bg-[color:var(--guide-accent)]"
-                    : "bottom-0 bg-zinc-500"
-                }`}
-              />
+              {index < MULTIPLIER_FACTORS.length - 1 && (
+                <span aria-hidden="true" className="mt-2.5 shrink-0 text-2xl font-light text-zinc-200">
+                  ×
+                </span>
+              )}
             </div>
-
-            {index < FACTORS.length - 1 && (
-              <span className="mt-2.5 shrink-0 text-2xl font-light text-zinc-200">×</span>
-            )}
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div className="absolute right-[4.5%] bottom-0 left-[4.5%] h-px bg-zinc-500" />
     </div>
   );
 }
 
-function CompactFormula() {
+function CompactFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
   return (
     <ol className="flex flex-wrap items-center gap-x-2 gap-y-2 xl:hidden" aria-label="伤害乘区公式">
-      {FACTORS.map((factor, index) => (
-        <li key={factor.id} className="flex min-w-0 items-center gap-2">
-          {index > 0 && (
-            <span aria-hidden="true" className="text-lg text-zinc-400">
-              ×
-            </span>
-          )}
-          <span
-            aria-current={factor.active ? "true" : undefined}
-            className={`inline-flex min-h-11 items-center rounded-lg border px-3 py-2 text-sm font-semibold ${
-              factor.active
-                ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
-                : "border-zinc-700 bg-zinc-900/70 text-zinc-200"
-            }`}
-          >
-            {factor.label}
-          </span>
-        </li>
-      ))}
+      {MULTIPLIER_FACTORS.map((factor, index) => {
+        const selected = selectedFactorId === factor.id;
+
+        return (
+          <li key={factor.id} className="flex min-w-0 items-center gap-2">
+            {index > 0 && (
+              <span aria-hidden="true" className="text-lg text-zinc-400">
+                ×
+              </span>
+            )}
+            <button
+              type="button"
+              aria-expanded={selected}
+              aria-controls={DETAIL_PANEL_ID}
+              onClick={() => onSelectFactor(factor.id)}
+              className={`inline-flex min-h-11 cursor-pointer touch-manipulation items-center rounded-lg border px-3 py-2 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
+                selected
+                  ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
+                  : "border-zinc-700 bg-zinc-900/70 text-zinc-200 hover:border-zinc-500 hover:bg-zinc-800"
+              }`}
+            >
+              {factor.label}
+            </button>
+          </li>
+        );
+      })}
     </ol>
   );
 }
 
 export function MultiplierOverview() {
+  const [selectedFactorId, setSelectedFactorId] = useState<MultiplierFactorId>(DEFAULT_FACTOR_ID);
+  const [selectedFilterId, setSelectedFilterId] = useState<string | null>(null);
+  const selectedFactor =
+    MULTIPLIER_FACTORS.find((factor) => factor.id === selectedFactorId) ??
+    DEFAULT_MULTIPLIER_FACTOR;
+  const filteredCategories = selectedFilterId
+    ? DILUTION_CATEGORIES.filter((item) => item.id === selectedFilterId)
+    : DILUTION_CATEGORIES;
+  const visibleExamples = filteredCategories.flatMap(({ id, icon, examples }) =>
+    (selectedFilterId ? examples : examples.slice(0, 1)).map((example) => ({
+      id: `${id}-${example.id}`,
+      icon: DILUTION_ICONS[icon],
+      label: example.label,
+      href: example.href,
+    })),
+  );
+
+  const toggleFilter = (filterId: string) => {
+    setSelectedFilterId((currentFilterId) =>
+      currentFilterId === filterId ? null : filterId,
+    );
+  };
+
   return (
     <div className="text-[color:var(--guide-text)]">
       <aside
@@ -197,92 +257,205 @@ export function MultiplierOverview() {
           伤害公式总览
         </h2>
 
-        <CompactFormula />
-        <DesktopFormula />
+        <CompactFormula
+          selectedFactorId={selectedFactorId}
+          onSelectFactor={setSelectedFactorId}
+        />
+        <DesktopFormula
+          selectedFactorId={selectedFactorId}
+          onSelectFactor={setSelectedFactorId}
+        />
 
-        <article className="mt-5 overflow-hidden rounded-xl border border-zinc-600 bg-[linear-gradient(145deg,rgba(18,21,23,0.97),rgba(12,15,17,0.98))] shadow-[0_24px_60px_rgba(0,0,0,0.2)] xl:mt-3">
+        <article
+          id={DETAIL_PANEL_ID}
+          className="mt-5 overflow-hidden rounded-xl border border-zinc-600 bg-[linear-gradient(145deg,rgba(18,21,23,0.97),rgba(12,15,17,0.98))] shadow-[0_24px_60px_rgba(0,0,0,0.2)] xl:mt-3"
+        >
           <header className="border-b border-zinc-700 px-5 py-4 sm:px-6 xl:py-2.5">
-            <h2 className="text-2xl font-bold tracking-wide text-[color:var(--guide-accent)] xl:text-xl">
-              大稀释乘区
+            <h2
+              id={`${selectedFactor.id}-detail-heading`}
+              className="text-2xl font-bold tracking-wide text-[color:var(--guide-accent)] xl:text-xl"
+            >
+              {selectedFactor.label}
             </h2>
           </header>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-[1.15fr_0.75fr_0.9fr_1.45fr]">
-            <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r xl:border-b-0 xl:p-4">
-              <SectionHeading icon={Calculator}>计算规则</SectionHeading>
-              <p className="mb-5 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base xl:mb-3 xl:text-sm xl:leading-6">
-                该乘区为多个可叠加的稀释类增伤来源，与其他乘区相乘，最终影响结算伤害。
-              </p>
+          {selectedFactorId === "dilution" ? (
+            <>
+              <div className="grid md:grid-cols-2 xl:grid-cols-[1.15fr_0.8fr_0.9fr_1.65fr]">
+                <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r xl:border-b-0 xl:p-4">
+                  <SectionHeading icon={Calculator}>计算规则</SectionHeading>
+                  <p className="mb-5 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base xl:mb-3 xl:text-sm xl:leading-6">
+                    该乘区为多个可叠加的稀释类增伤来源，与其他乘区相乘，最终影响结算伤害。
+                  </p>
 
-              <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
-                <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">乘区关系</h4>
-                <p className="font-mono text-xs leading-6 text-zinc-200 sm:text-sm xl:text-xs xl:leading-5">
-                  最终伤害 = 基础伤害 × 其他乘区 × 大稀释乘区
-                </p>
+                  <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
+                    <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">乘区关系</h4>
+                    <p className="font-mono text-xs leading-6 text-zinc-200 sm:text-sm xl:text-xs xl:leading-5">
+                      最终伤害 = 基础伤害 × 其他乘区 × 大稀释乘区
+                    </p>
 
-                <h4 className="mt-4 mb-2 font-semibold text-zinc-100 xl:mt-2 xl:mb-1">叠加规则</h4>
-                <ul className="list-disc space-y-1 pl-5 text-[color:var(--guide-muted)] xl:space-y-0">
-                  <li>同类效果按加法计算后再乘入该乘区</li>
-                  <li>与其他乘区独立相乘</li>
-                </ul>
-              </div>
-            </section>
-
-            <section className="border-b border-zinc-700 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
-              <SectionHeading icon={Box}>典型来源</SectionHeading>
-              <ul className="space-y-2.5 xl:space-y-1.5">
-                {SOURCES.map(({ label, icon: Icon }) => (
-                  <li
-                    key={label}
-                    className="flex min-h-12 items-center gap-3 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2.5 text-sm text-zinc-200 xl:min-h-10 xl:py-1.5"
-                  >
-                    <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-zinc-100" strokeWidth={2} />
-                    {label}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r md:border-b-0 xl:p-4">
-              <SectionHeading icon={Users}>增伤对象</SectionHeading>
-              <p className="mb-4 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base xl:mb-3 xl:text-sm xl:leading-6">
-                作用于伤害结算的特定部分，可按类型选择性生效。
-              </p>
-              <ul className="flex flex-wrap gap-2">
-                {TARGETS.map((target) => (
-                  <li
-                    key={target}
-                    className="rounded-md border border-zinc-600 bg-zinc-800/55 px-3 py-2 text-sm text-zinc-100 xl:py-1.5"
-                  >
-                    {target}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="p-5 sm:p-6 xl:p-4">
-              <SectionHeading icon={Tag}>属性字段（精确字段名）</SectionHeading>
-              <dl className="space-y-2.5 xl:space-y-1.5">
-                {ATTRIBUTE_FIELDS.map((field) => (
-                  <div key={field.name} className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-2.5 xl:p-1.5">
-                    <dt>
-                      <code className="block [overflow-wrap:anywhere] rounded bg-[#0b0d0f] px-3 py-2 font-mono text-xs leading-5 text-zinc-100 sm:text-sm xl:py-1.5 xl:text-xs xl:leading-4">
-                        <AttributeName name={field.name} />
-                      </code>
-                    </dt>
-                    <dd className="px-3 pt-1.5 text-xs leading-5 text-[color:var(--guide-muted)] sm:text-sm xl:pt-1 xl:text-xs xl:leading-4">
-                      {field.description}
-                    </dd>
+                    <h4 className="mt-4 mb-2 font-semibold text-zinc-100 xl:mt-2 xl:mb-1">叠加规则</h4>
+                    <ul className="list-disc space-y-1 pl-5 text-[color:var(--guide-muted)] xl:space-y-0">
+                      <li>同类效果按加法计算后再乘入该乘区</li>
+                      <li>与其他乘区独立相乘</li>
+                    </ul>
                   </div>
-                ))}
-              </dl>
-            </section>
-          </div>
+                </section>
 
-          <footer className="flex items-start justify-center gap-2 border-t border-zinc-700 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
-            <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
-            <p>提示：实际生效以战斗结算为准，部分来源受触发条件限制。</p>
-          </footer>
+                <section className="border-b border-zinc-700 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <SectionHeading icon={Box}>典型案例</SectionHeading>
+                    <span
+                      aria-live="polite"
+                      className="shrink-0 text-xs leading-5 text-zinc-400"
+                    >
+                      {visibleExamples.length} / {DILUTION_EXAMPLE_COUNT}
+                    </span>
+                  </div>
+
+                  <ul className="space-y-2 xl:space-y-1.5">
+                    {visibleExamples.map(({ id, label, href, icon }) => (
+                      <li key={id}>
+                        <ExampleCard icon={icon} label={label} href={href} />
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r md:border-b-0 xl:p-4">
+                  <SectionHeading icon={Users}>增伤对象</SectionHeading>
+                  <div className="flex flex-wrap gap-2 xl:gap-1.5" role="group" aria-label="按增伤对象筛选典型案例">
+                    {DILUTION_CATEGORIES.map(({ id, target }) => {
+                      const active = selectedFilterId === id;
+
+                      return (
+                        <button
+                          key={id}
+                          type="button"
+                          aria-pressed={active}
+                          onClick={() => toggleFilter(id)}
+                          className={`min-h-11 cursor-pointer touch-manipulation rounded-md border px-3 py-2 text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-8 xl:py-1 ${
+                            active
+                              ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
+                              : "border-zinc-600 bg-zinc-800/55 text-zinc-100 hover:border-zinc-400"
+                          }`}
+                        >
+                          {target}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+
+                <section className="p-5 sm:p-6 xl:p-4">
+                  <SectionHeading icon={Tag}>属性字段</SectionHeading>
+                  <div className="space-y-2 xl:space-y-1" role="group" aria-label="按属性字段筛选典型案例">
+                    {DILUTION_CATEGORIES.map(({ id, attributeField }) => {
+                      const active = selectedFilterId === id;
+
+                      return (
+                        <button
+                          key={id}
+                          type="button"
+                          aria-pressed={active}
+                          onClick={() => toggleFilter(id)}
+                          className={`min-h-11 w-full cursor-pointer touch-manipulation rounded-lg border px-3 py-2 text-left font-mono text-xs leading-4 transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-8 xl:px-2 xl:py-1 ${
+                            active
+                              ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
+                              : "border-zinc-700 bg-zinc-800/45 text-zinc-200 hover:border-zinc-500"
+                          }`}
+                        >
+                          <AttributeName name={attributeField} />
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+              </div>
+
+              <footer className="flex items-start justify-center gap-2 border-t border-zinc-700 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
+                <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
+                <p>提示：实际生效以战斗结算为准，部分来源受触发条件限制。</p>
+              </footer>
+            </>
+          ) : selectedFactorId === "correction" ? (
+            <>
+              <div className="grid md:grid-cols-2 xl:grid-cols-[1.15fr_0.8fr_0.9fr_1.65fr]">
+                <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r xl:border-b-0 xl:p-4">
+                  <SectionHeading icon={Calculator}>计算规则</SectionHeading>
+                  <p className="mb-5 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base xl:mb-3 xl:text-sm xl:leading-6">
+                    {SPECIAL_CORRECTION.summary}
+                  </p>
+
+                  <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
+                    <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">作用方式</h4>
+                    <ul className="list-disc space-y-1 pl-5 text-[color:var(--guide-muted)] xl:space-y-0">
+                      {SPECIAL_CORRECTION.rules.map((rule) => (
+                        <li key={rule}>{rule}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </section>
+
+                <section className="border-b border-zinc-700 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <SectionHeading icon={Box}>典型案例</SectionHeading>
+                    <span className="shrink-0 text-xs leading-5 text-zinc-400">
+                      {SPECIAL_CORRECTION.examples.length}
+                    </span>
+                  </div>
+
+                  <ul className="space-y-2 xl:space-y-1.5">
+                    {SPECIAL_CORRECTION.examples.map(({ id, label, href, icon }) => (
+                      <li key={id}>
+                        <ExampleCard
+                          icon={DILUTION_ICONS[icon]}
+                          label={label}
+                          href={href}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r md:border-b-0 xl:p-4">
+                  <SectionHeading icon={Users}>增伤对象</SectionHeading>
+                  <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-sm leading-6 text-zinc-100">
+                    {SPECIAL_CORRECTION.target}
+                  </div>
+                  <p className="mt-3 text-xs leading-5 text-[color:var(--guide-muted)]">
+                    不作为固定筛选条件，需结合具体伤害事件判断。
+                  </p>
+                </section>
+
+                <section className="p-5 sm:p-6 xl:p-4">
+                  <SectionHeading icon={Tag}>属性字段</SectionHeading>
+                  <div className="min-h-11 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-left font-mono text-xs leading-5 text-zinc-200 xl:min-h-8 xl:px-2 xl:py-1.5">
+                    <AttributeName name={SPECIAL_CORRECTION.attributeField} />
+                  </div>
+                </section>
+              </div>
+
+              <footer className="flex items-start justify-center gap-2 border-t border-zinc-700 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
+                <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
+                <p>{SPECIAL_CORRECTION.notice}</p>
+              </footer>
+            </>
+          ) : (
+            <div className="flex min-h-52 items-center justify-center px-5 py-10 text-center xl:min-h-[338px]">
+              <div className="max-w-md">
+                <Info
+                  aria-hidden="true"
+                  className="mx-auto mb-4 h-7 w-7 text-[color:var(--guide-accent)]"
+                  strokeWidth={1.75}
+                />
+                <h3 className="text-lg font-semibold text-zinc-100">详情整理中</h3>
+                <p className="mt-2 text-sm leading-6 text-[color:var(--guide-muted)]">
+                  该乘区的计算规则、筛选条件与典型案例将在实测核验后补充。
+                </p>
+              </div>
+            </div>
+          )}
         </article>
       </section>
     </div>
