@@ -506,6 +506,64 @@
         }
       ],
       "notice": "同一字段既可能用于增伤，也可能用于减伤；实际效果以具体机制和战斗实测为准。"
+    },
+    "damage-reduction": {
+      "summary": "该乘区用于调整目标承受的伤害，并按伤害范围读取对应的属性字段。",
+      "rulesHeading": "作用方式",
+      "rules": [
+        "DamageBearRatio 作用于目标承受的全部伤害",
+        "FireDamageBearRatio 作用于目标承受的火系伤害",
+        "两个字段分别形成独立乘区，结算时互乘"
+      ],
+      "target": "承受伤害",
+      "targetNote": "",
+      "attributeFields": [
+        {
+          "name": "GPAttributeSetBearDamageRatio.DamageBearRatio",
+          "selection": {
+            "id": "all-damage",
+            "label": "全伤害"
+          }
+        },
+        {
+          "name": "GPAttributeSetBearDamageRatio.FireDamageBearRatio",
+          "selection": {
+            "id": "fire-damage",
+            "label": "火系伤害"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "id": "shock-vulnerability",
+          "label": "感电易伤",
+          "icon": "sparkles",
+          "href": "/posts/element",
+          "selectionId": "all-damage"
+        },
+        {
+          "id": "melee-vulnerability",
+          "label": "近战易伤",
+          "icon": "swords",
+          "href": "/perks/slot-3/近战易伤",
+          "selectionId": "all-damage"
+        },
+        {
+          "id": "switch-vulnerability",
+          "label": "切换易伤",
+          "icon": "crosshair",
+          "href": "/perks/slot-4/切换易伤",
+          "selectionId": "all-damage"
+        },
+        {
+          "id": "nightfall-black-powder-vulnerability",
+          "label": "黑火药易伤",
+          "icon": "bomb",
+          "href": "/weapons/暗夜之殇",
+          "selectionId": "fire-damage"
+        }
+      ],
+      "notice": "对应字段既可表现为伤害减免，也可表现为易伤；实际增减方向与生效条件由具体机制决定。"
     }
   }
 }
