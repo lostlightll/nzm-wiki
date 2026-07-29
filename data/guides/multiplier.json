@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "defaultFactorId": "dilution",
   "factors": [
     { "id": "base", "label": "基础伤害" },
@@ -84,8 +84,60 @@
     }
   ],
   "factorDetails": {
+    "critical": {
+      "summary": "该乘区用于暴击伤害结算，仅在伤害来源允许暴击且本次伤害触发暴击时生效。",
+      "rulesHeading": "启用条件",
+      "rules": [
+        "伤害来源的 bEnableCriticalDamage = true",
+        "本次伤害触发暴击",
+        "角色基础暴击伤害为 50%"
+      ],
+      "target": "暴击伤害",
+      "targetNote": "仅对允许暴击且本次判定为暴击的伤害生效。",
+      "attributeField": "GPAttributeSetCritical.CriticalDamageRatio",
+      "examples": [
+        {
+          "id": "zhen-xian-skill",
+          "label": "振弦技能",
+          "icon": "sparkles",
+          "href": "/weapons/振弦"
+        },
+        {
+          "id": "judgment-eye-skill",
+          "label": "裁决之眼技能",
+          "icon": "target",
+          "href": "/weapons/裁决之眼"
+        },
+        {
+          "id": "judgment-charge-perk",
+          "label": "裁决充能",
+          "icon": "sparkles",
+          "href": "/perks/slot-3/裁决充能"
+        },
+        {
+          "id": "iron-bone",
+          "label": "铁骨",
+          "icon": "swords",
+          "href": "/weapons/铁骨"
+        },
+        {
+          "id": "rampage-perpetual-motion",
+          "label": "暴走永动",
+          "icon": "crosshair",
+          "href": "/overlimit/20703040406"
+        },
+        {
+          "id": "critical-damage-attribute-40",
+          "label": "暴伤属性",
+          "icon": "crosshair",
+          "href": "/overlimit/20703040449"
+        }
+      ],
+      "notice": "角色基础暴击伤害为 50%；暴伤乘区仅在本次伤害触发暴击时生效。"
+    },
     "weakness": {
       "summary": "该字段用于记录弱点增伤类效果，并参与弱点伤害结算。",
+      "rulesHeading": "作用方式",
       "rules": [
         "伤害来源的 EnableWeaknessDamage = true 时参与弱点伤害结算",
         "与武器弱点倍率独立互乘"
@@ -111,6 +163,7 @@
     },
     "correction": {
       "summary": "该修正作用于具体伤害事件的执行上下文，不设统一的增伤或减伤对象。",
+      "rulesHeading": "作用方式",
       "rules": [
         "对单次伤害事件进行比例修正",
         "生效对象与增减方向由具体机制决定"

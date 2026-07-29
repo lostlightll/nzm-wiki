@@ -53,6 +53,7 @@ type FactorDetailExample = {
 
 export type FactorDetailData = {
   summary: string;
+  rulesHeading: string;
   rules: readonly string[];
   target: string;
   targetNote: string;
@@ -62,7 +63,7 @@ export type FactorDetailData = {
 };
 
 type MultiplierData = {
-  schemaVersion: 3;
+  schemaVersion: 4;
   defaultFactorId: MultiplierFactorId;
   factors: readonly MultiplierFactor[];
   dilutionCategories: readonly DilutionCategory[];
@@ -76,7 +77,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function parseMultiplierData(value: unknown): MultiplierData {
   if (
     !isRecord(value) ||
-    value.schemaVersion !== 3 ||
+    value.schemaVersion !== 4 ||
     typeof value.defaultFactorId !== "string" ||
     !Array.isArray(value.factors) ||
     !Array.isArray(value.dilutionCategories) ||
@@ -142,6 +143,7 @@ function parseMultiplierData(value: unknown): MultiplierData {
       !factorIds.has(factorId) ||
       !isRecord(detail) ||
       typeof detail.summary !== "string" ||
+      typeof detail.rulesHeading !== "string" ||
       !Array.isArray(detail.rules) ||
       detail.rules.length === 0 ||
       detail.rules.some((rule) => typeof rule !== "string") ||

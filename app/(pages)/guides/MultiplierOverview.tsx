@@ -186,7 +186,9 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
           </p>
 
           <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
-            <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">作用方式</h4>
+            <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">
+              {detail.rulesHeading}
+            </h4>
             <ul className="list-disc space-y-1 pl-5 text-[color:var(--guide-muted)] xl:space-y-0">
               {detail.rules.map((rule) => (
                 <li key={rule}>{rule}</li>
