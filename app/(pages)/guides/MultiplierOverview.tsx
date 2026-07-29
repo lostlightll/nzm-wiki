@@ -17,7 +17,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import {
   DEFAULT_MULTIPLIER_FACTOR,
   DILUTION_CATEGORIES,
@@ -29,6 +29,67 @@ import {
 
 const DEFAULT_FACTOR_ID: MultiplierFactorId = DEFAULT_MULTIPLIER_FACTOR.id;
 const DETAIL_PANEL_ID = "multiplier-detail-panel";
+const SELECTED_FACTOR_STORAGE_KEY = "nzm-wiki:guides:multiplier:selected-factor";
+const SELECTED_FACTOR_CHANGE_EVENT = "nzm-wiki:multiplier-factor-change";
+
+let inMemorySelectedFactorId = DEFAULT_FACTOR_ID;
+
+function isMultiplierFactorId(value: string | null): value is MultiplierFactorId {
+  return MULTIPLIER_FACTORS.some((factor) => factor.id === value);
+}
+
+function getSelectedFactorSnapshot(): MultiplierFactorId {
+  try {
+    const storedFactorId = window.localStorage.getItem(SELECTED_FACTOR_STORAGE_KEY);
+
+    if (isMultiplierFactorId(storedFactorId)) {
+      inMemorySelectedFactorId = storedFactorId;
+    } else if (storedFactorId !== null) {
+      inMemorySelectedFactorId = DEFAULT_FACTOR_ID;
+    }
+  } catch {
+    // localStorage 不可用时，当前标签页内仍保留选择。
+  }
+
+  return inMemorySelectedFactorId;
+}
+
+function getServerSelectedFactorSnapshot(): MultiplierFactorId {
+  return DEFAULT_FACTOR_ID;
+}
+
+function subscribeToSelectedFactor(onStoreChange: () => void) {
+  const handleStorage = (event: StorageEvent) => {
+    if (event.key !== SELECTED_FACTOR_STORAGE_KEY) {
+      return;
+    }
+
+    inMemorySelectedFactorId = isMultiplierFactorId(event.newValue)
+      ? event.newValue
+      : DEFAULT_FACTOR_ID;
+    onStoreChange();
+  };
+
+  window.addEventListener("storage", handleStorage);
+  window.addEventListener(SELECTED_FACTOR_CHANGE_EVENT, onStoreChange);
+
+  return () => {
+    window.removeEventListener("storage", handleStorage);
+    window.removeEventListener(SELECTED_FACTOR_CHANGE_EVENT, onStoreChange);
+  };
+}
+
+function rememberSelectedFactor(factorId: MultiplierFactorId) {
+  inMemorySelectedFactorId = factorId;
+
+  try {
+    window.localStorage.setItem(SELECTED_FACTOR_STORAGE_KEY, factorId);
+  } catch {
+    // localStorage 不可用时，当前标签页内仍可正常切换。
+  }
+
+  window.dispatchEvent(new Event(SELECTED_FACTOR_CHANGE_EVENT));
+}
 
 const DILUTION_ICONS: Record<DilutionIconKey, LucideIcon> = {
   target: Target,
@@ -217,7 +278,11 @@ function CompactFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
 }
 
 export function MultiplierOverview() {
-  const [selectedFactorId, setSelectedFactorId] = useState<MultiplierFactorId>(DEFAULT_FACTOR_ID);
+  const selectedFactorId = useSyncExternalStore(
+    subscribeToSelectedFactor,
+    getSelectedFactorSnapshot,
+    getServerSelectedFactorSnapshot,
+  );
   const [selectedFilterId, setSelectedFilterId] = useState<string | null>(null);
   const selectedFactor =
     MULTIPLIER_FACTORS.find((factor) => factor.id === selectedFactorId) ??
@@ -259,11 +324,11 @@ export function MultiplierOverview() {
 
         <CompactFormula
           selectedFactorId={selectedFactorId}
-          onSelectFactor={setSelectedFactorId}
+          onSelectFactor={rememberSelectedFactor}
         />
         <DesktopFormula
           selectedFactorId={selectedFactorId}
-          onSelectFactor={setSelectedFactorId}
+          onSelectFactor={rememberSelectedFactor}
         />
 
         <article
