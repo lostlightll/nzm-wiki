@@ -44,28 +44,29 @@ type DilutionCategory = {
   examples: readonly DilutionExample[];
 };
 
-type SpecialCorrectionExample = {
+type FactorDetailExample = {
   id: string;
   label: string;
   icon: DilutionIconKey;
   href?: string;
 };
 
-type SpecialCorrectionData = {
+export type FactorDetailData = {
   summary: string;
   rules: readonly string[];
   target: string;
+  targetNote: string;
   attributeField: string;
-  examples: readonly SpecialCorrectionExample[];
+  examples: readonly FactorDetailExample[];
   notice: string;
 };
 
 type MultiplierData = {
-  schemaVersion: 2;
+  schemaVersion: 3;
   defaultFactorId: MultiplierFactorId;
   factors: readonly MultiplierFactor[];
   dilutionCategories: readonly DilutionCategory[];
-  specialCorrection: SpecialCorrectionData;
+  factorDetails: Partial<Record<MultiplierFactorId, FactorDetailData>>;
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -75,11 +76,11 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function parseMultiplierData(value: unknown): MultiplierData {
   if (
     !isRecord(value) ||
-    value.schemaVersion !== 2 ||
+    value.schemaVersion !== 3 ||
     typeof value.defaultFactorId !== "string" ||
     !Array.isArray(value.factors) ||
     !Array.isArray(value.dilutionCategories) ||
-    !isRecord(value.specialCorrection)
+    !isRecord(value.factorDetails)
   ) {
     throw new Error("乘区数据顶层结构无效");
   }
@@ -135,35 +136,40 @@ function parseMultiplierData(value: unknown): MultiplierData {
     }
   }
 
-  const specialCorrection = value.specialCorrection;
-  if (
-    typeof specialCorrection.summary !== "string" ||
-    !Array.isArray(specialCorrection.rules) ||
-    specialCorrection.rules.length === 0 ||
-    specialCorrection.rules.some((rule) => typeof rule !== "string") ||
-    typeof specialCorrection.target !== "string" ||
-    typeof specialCorrection.attributeField !== "string" ||
-    !Array.isArray(specialCorrection.examples) ||
-    specialCorrection.examples.length === 0 ||
-    typeof specialCorrection.notice !== "string"
-  ) {
-    throw new Error("特殊修正数据结构无效");
-  }
-
-  for (const example of specialCorrection.examples) {
+  for (const [factorId, detail] of Object.entries(value.factorDetails)) {
     if (
-      !isRecord(example) ||
-      typeof example.id !== "string" ||
-      exampleIds.has(example.id) ||
-      typeof example.label !== "string" ||
-      typeof example.icon !== "string" ||
-      !DILUTION_ICON_KEYS.includes(example.icon as DilutionIconKey) ||
-      (example.href !== undefined &&
-        (typeof example.href !== "string" || !example.href.startsWith("/")))
+      !MULTIPLIER_FACTOR_IDS.includes(factorId as MultiplierFactorId) ||
+      !factorIds.has(factorId) ||
+      !isRecord(detail) ||
+      typeof detail.summary !== "string" ||
+      !Array.isArray(detail.rules) ||
+      detail.rules.length === 0 ||
+      detail.rules.some((rule) => typeof rule !== "string") ||
+      typeof detail.target !== "string" ||
+      typeof detail.targetNote !== "string" ||
+      typeof detail.attributeField !== "string" ||
+      !Array.isArray(detail.examples) ||
+      detail.examples.length === 0 ||
+      typeof detail.notice !== "string"
     ) {
-      throw new Error("特殊修正案例存在无效或重复字段");
+      throw new Error("乘区详情数据结构无效");
     }
-    exampleIds.add(example.id);
+
+    for (const example of detail.examples) {
+      if (
+        !isRecord(example) ||
+        typeof example.id !== "string" ||
+        exampleIds.has(example.id) ||
+        typeof example.label !== "string" ||
+        typeof example.icon !== "string" ||
+        !DILUTION_ICON_KEYS.includes(example.icon as DilutionIconKey) ||
+        (example.href !== undefined &&
+          (typeof example.href !== "string" || !example.href.startsWith("/")))
+      ) {
+        throw new Error("乘区详情案例存在无效或重复字段");
+      }
+      exampleIds.add(example.id);
+    }
   }
 
   return value as unknown as MultiplierData;
@@ -172,7 +178,7 @@ function parseMultiplierData(value: unknown): MultiplierData {
 export const MULTIPLIER_DATA = parseMultiplierData(rawMultiplierData);
 export const MULTIPLIER_FACTORS = MULTIPLIER_DATA.factors;
 export const DILUTION_CATEGORIES = MULTIPLIER_DATA.dilutionCategories;
-export const SPECIAL_CORRECTION = MULTIPLIER_DATA.specialCorrection;
+export const MULTIPLIER_FACTOR_DETAILS = MULTIPLIER_DATA.factorDetails;
 
 const defaultMultiplierFactor = MULTIPLIER_FACTORS.find(
   (factor) => factor.id === MULTIPLIER_DATA.defaultFactorId,

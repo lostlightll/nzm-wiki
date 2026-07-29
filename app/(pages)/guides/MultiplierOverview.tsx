@@ -21,9 +21,10 @@ import { useState, useSyncExternalStore } from "react";
 import {
   DEFAULT_MULTIPLIER_FACTOR,
   DILUTION_CATEGORIES,
+  MULTIPLIER_FACTOR_DETAILS,
   MULTIPLIER_FACTORS,
-  SPECIAL_CORRECTION,
   type DilutionIconKey,
+  type FactorDetailData,
   type MultiplierFactorId,
 } from "@/lib/multiplier-data";
 
@@ -174,6 +175,73 @@ function ExampleCard({
   );
 }
 
+function FactorDetail({ detail }: { detail: FactorDetailData }) {
+  return (
+    <>
+      <div className="grid md:grid-cols-2 xl:grid-cols-[1.15fr_0.8fr_0.9fr_1.65fr]">
+        <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r xl:border-b-0 xl:p-4">
+          <SectionHeading icon={Calculator}>计算规则</SectionHeading>
+          <p className="mb-5 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base xl:mb-3 xl:text-sm xl:leading-6">
+            {detail.summary}
+          </p>
+
+          <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
+            <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">作用方式</h4>
+            <ul className="list-disc space-y-1 pl-5 text-[color:var(--guide-muted)] xl:space-y-0">
+              {detail.rules.map((rule) => (
+                <li key={rule}>{rule}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="border-b border-zinc-700 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
+          <div className="flex items-start justify-between gap-4">
+            <SectionHeading icon={Box}>典型案例</SectionHeading>
+            <span className="shrink-0 text-xs leading-5 text-zinc-400">
+              {detail.examples.length}
+            </span>
+          </div>
+
+          <ul className="space-y-2 xl:space-y-1.5">
+            {detail.examples.map(({ id, label, href, icon }) => (
+              <li key={id}>
+                <ExampleCard
+                  icon={DILUTION_ICONS[icon]}
+                  label={label}
+                  href={href}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r md:border-b-0 xl:p-4">
+          <SectionHeading icon={Users}>增伤对象</SectionHeading>
+          <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-sm leading-6 text-zinc-100">
+            {detail.target}
+          </div>
+          <p className="mt-3 text-xs leading-5 text-[color:var(--guide-muted)]">
+            {detail.targetNote}
+          </p>
+        </section>
+
+        <section className="p-5 sm:p-6 xl:p-4">
+          <SectionHeading icon={Tag}>属性字段</SectionHeading>
+          <div className="min-h-11 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-left font-mono text-xs leading-5 text-zinc-200 xl:min-h-8 xl:px-2 xl:py-1.5">
+            <AttributeName name={detail.attributeField} />
+          </div>
+        </section>
+      </div>
+
+      <footer className="flex items-start justify-center gap-2 border-t border-zinc-700 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
+        <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
+        <p>{detail.notice}</p>
+      </footer>
+    </>
+  );
+}
+
 type FormulaProps = {
   selectedFactorId: MultiplierFactorId;
   onSelectFactor: (factorId: MultiplierFactorId) => void;
@@ -287,6 +355,7 @@ export function MultiplierOverview() {
   const selectedFactor =
     MULTIPLIER_FACTORS.find((factor) => factor.id === selectedFactorId) ??
     DEFAULT_MULTIPLIER_FACTOR;
+  const selectedFactorDetail = MULTIPLIER_FACTOR_DETAILS[selectedFactorId];
   const filteredCategories = selectedFilterId
     ? DILUTION_CATEGORIES.filter((item) => item.id === selectedFilterId)
     : DILUTION_CATEGORIES;
@@ -443,69 +512,8 @@ export function MultiplierOverview() {
                 <p>提示：实际生效以战斗结算为准，部分来源受触发条件限制。</p>
               </footer>
             </>
-          ) : selectedFactorId === "correction" ? (
-            <>
-              <div className="grid md:grid-cols-2 xl:grid-cols-[1.15fr_0.8fr_0.9fr_1.65fr]">
-                <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r xl:border-b-0 xl:p-4">
-                  <SectionHeading icon={Calculator}>计算规则</SectionHeading>
-                  <p className="mb-5 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base xl:mb-3 xl:text-sm xl:leading-6">
-                    {SPECIAL_CORRECTION.summary}
-                  </p>
-
-                  <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
-                    <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">作用方式</h4>
-                    <ul className="list-disc space-y-1 pl-5 text-[color:var(--guide-muted)] xl:space-y-0">
-                      {SPECIAL_CORRECTION.rules.map((rule) => (
-                        <li key={rule}>{rule}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </section>
-
-                <section className="border-b border-zinc-700 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
-                  <div className="flex items-start justify-between gap-4">
-                    <SectionHeading icon={Box}>典型案例</SectionHeading>
-                    <span className="shrink-0 text-xs leading-5 text-zinc-400">
-                      {SPECIAL_CORRECTION.examples.length}
-                    </span>
-                  </div>
-
-                  <ul className="space-y-2 xl:space-y-1.5">
-                    {SPECIAL_CORRECTION.examples.map(({ id, label, href, icon }) => (
-                      <li key={id}>
-                        <ExampleCard
-                          icon={DILUTION_ICONS[icon]}
-                          label={label}
-                          href={href}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-
-                <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r md:border-b-0 xl:p-4">
-                  <SectionHeading icon={Users}>增伤对象</SectionHeading>
-                  <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-sm leading-6 text-zinc-100">
-                    {SPECIAL_CORRECTION.target}
-                  </div>
-                  <p className="mt-3 text-xs leading-5 text-[color:var(--guide-muted)]">
-                    不作为固定筛选条件，需结合具体伤害事件判断。
-                  </p>
-                </section>
-
-                <section className="p-5 sm:p-6 xl:p-4">
-                  <SectionHeading icon={Tag}>属性字段</SectionHeading>
-                  <div className="min-h-11 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-left font-mono text-xs leading-5 text-zinc-200 xl:min-h-8 xl:px-2 xl:py-1.5">
-                    <AttributeName name={SPECIAL_CORRECTION.attributeField} />
-                  </div>
-                </section>
-              </div>
-
-              <footer className="flex items-start justify-center gap-2 border-t border-zinc-700 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
-                <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
-                <p>{SPECIAL_CORRECTION.notice}</p>
-              </footer>
-            </>
+          ) : selectedFactorDetail ? (
+            <FactorDetail detail={selectedFactorDetail} />
           ) : (
             <div className="flex min-h-52 items-center justify-center px-5 py-10 text-center xl:min-h-[338px]">
               <div className="max-w-md">

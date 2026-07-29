@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "defaultFactorId": "dilution",
   "factors": [
     { "id": "base", "label": "基础伤害" },
@@ -83,57 +83,85 @@
       ]
     }
   ],
-  "specialCorrection": {
-    "summary": "该修正作用于具体伤害事件的执行上下文，不设统一的增伤或减伤对象。",
-    "rules": [
-      "对单次伤害事件进行比例修正",
-      "生效对象与增减方向由具体机制决定"
-    ],
-    "target": "根据具体情况而定",
-    "attributeField": "Numerical.ExecutionCtx.ExecutionRatio",
-    "examples": [
-      {
-        "id": "beast-god-grenade-passive",
-        "label": "精绝兽神榴弹被动",
-        "icon": "bomb",
-        "href": "/weapons/精绝兽神"
-      },
-      {
-        "id": "single-projectile-enhancement",
-        "label": "独弹强化",
-        "icon": "crosshair",
-        "href": "/perks/slot-4/独弹强化"
-      },
-      {
-        "id": "return-damage-reduction",
-        "label": "归途减伤",
-        "icon": "sparkles",
-        "href": "/perks/slot-4/归途"
-      },
-      {
-        "id": "s2-hologram-damage-reduction",
-        "label": "S2全息减伤",
-        "icon": "sparkles"
-      },
-      {
-        "id": "compound-bow-penetration",
-        "label": "复合弓穿透",
-        "icon": "target",
-        "href": "/weapons/超级复合弓"
-      },
-      {
-        "id": "compound-bow-charge",
-        "label": "复合弓蓄力",
-        "icon": "target",
-        "href": "/weapons/超级复合弓"
-      },
-      {
-        "id": "grappling-hook-damage-transfer",
-        "label": "钩锁伤害传递",
-        "icon": "locate-fixed",
-        "href": "/guides/season-talents/s3/grappling-hook"
-      }
-    ],
-    "notice": "同一字段既可能用于增伤，也可能用于减伤；实际效果以具体机制和战斗实测为准。"
+  "factorDetails": {
+    "weakness": {
+      "summary": "该字段用于记录弱点增伤类效果，并参与弱点伤害结算。",
+      "rules": [
+        "伤害来源的 EnableWeaknessDamage = true 时参与弱点伤害结算",
+        "与武器弱点倍率独立互乘"
+      ],
+      "target": "弱点命中伤害",
+      "targetNote": "生效仍受敌人弱点判定与具体触发条件限制。",
+      "attributeField": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio",
+      "examples": [
+        {
+          "id": "survival-of-the-fittest",
+          "label": "弱肉强食",
+          "icon": "target",
+          "href": "/overlimit/20703040408"
+        },
+        {
+          "id": "precision-pursuit",
+          "label": "精密追击",
+          "icon": "crosshair",
+          "href": "/perks/slot-3/精密追击"
+        }
+      ],
+      "notice": "弱点增伤与武器弱点倍率为不同项目，二者在最终结算时互乘。"
+    },
+    "correction": {
+      "summary": "该修正作用于具体伤害事件的执行上下文，不设统一的增伤或减伤对象。",
+      "rules": [
+        "对单次伤害事件进行比例修正",
+        "生效对象与增减方向由具体机制决定"
+      ],
+      "target": "根据具体情况而定",
+      "targetNote": "不作为固定筛选条件，需结合具体伤害事件判断。",
+      "attributeField": "Numerical.ExecutionCtx.ExecutionRatio",
+      "examples": [
+        {
+          "id": "beast-god-grenade-passive",
+          "label": "精绝兽神榴弹被动",
+          "icon": "bomb",
+          "href": "/weapons/精绝兽神"
+        },
+        {
+          "id": "single-projectile-enhancement",
+          "label": "独弹强化",
+          "icon": "crosshair",
+          "href": "/perks/slot-4/独弹强化"
+        },
+        {
+          "id": "return-damage-reduction",
+          "label": "归途减伤",
+          "icon": "sparkles",
+          "href": "/perks/slot-4/归途"
+        },
+        {
+          "id": "s2-hologram-damage-reduction",
+          "label": "S2全息减伤",
+          "icon": "sparkles"
+        },
+        {
+          "id": "compound-bow-penetration",
+          "label": "复合弓穿透",
+          "icon": "target",
+          "href": "/weapons/超级复合弓"
+        },
+        {
+          "id": "compound-bow-charge",
+          "label": "复合弓蓄力",
+          "icon": "target",
+          "href": "/weapons/超级复合弓"
+        },
+        {
+          "id": "grappling-hook-damage-transfer",
+          "label": "钩锁伤害传递",
+          "icon": "locate-fixed",
+          "href": "/guides/season-talents/s3/grappling-hook"
+        }
+      ],
+      "notice": "同一字段既可能用于增伤，也可能用于减伤；实际效果以具体机制和战斗实测为准。"
+    }
   }
 }
