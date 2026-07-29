@@ -176,6 +176,32 @@ function ExampleCard({
 }
 
 function FactorDetail({ detail }: { detail: FactorDetailData }) {
+  const [selectedSelectionId, setSelectedSelectionId] = useState<string | null>(null);
+  const selectionOptions = detail.attributeFields.flatMap(({ selection }) =>
+    selection ? [selection] : [],
+  );
+  const hasSelectableExamples = detail.examples.some(
+    ({ selectionId }) => selectionId !== undefined,
+  );
+  const visibleExamples = hasSelectableExamples
+    ? selectedSelectionId
+      ? detail.examples.filter(
+          ({ selectionId }) => selectionId === selectedSelectionId,
+        )
+      : selectionOptions.flatMap(({ id }) => {
+          const preview = detail.examples.find(
+            ({ selectionId }) => selectionId === id,
+          );
+          return preview ? [preview] : [];
+        })
+    : detail.examples;
+
+  const toggleSelection = (selectionId: string) => {
+    setSelectedSelectionId((currentSelectionId) =>
+      currentSelectionId === selectionId ? null : selectionId,
+    );
+  };
+
   return (
     <>
       <div className="grid md:grid-cols-2 xl:grid-cols-[1.15fr_0.8fr_0.9fr_1.65fr]">
@@ -200,29 +226,69 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
         <section className="border-b border-zinc-700 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
           <div className="flex items-start justify-between gap-4">
             <SectionHeading icon={Box}>典型案例</SectionHeading>
-            <span className="shrink-0 text-xs leading-5 text-zinc-400">
-              {detail.examples.length}
+            <span
+              aria-live="polite"
+              className="shrink-0 text-xs leading-5 text-zinc-400"
+            >
+              {hasSelectableExamples
+                ? `${visibleExamples.length} / ${detail.examples.length}`
+                : detail.examples.length}
             </span>
           </div>
 
-          <ul className="space-y-2 xl:space-y-1.5">
-            {detail.examples.map(({ id, label, href, icon }) => (
-              <li key={id}>
-                <ExampleCard
-                  icon={DILUTION_ICONS[icon]}
-                  label={label}
-                  href={href}
-                />
-              </li>
-            ))}
-          </ul>
+          {visibleExamples.length > 0 ? (
+            <ul className="space-y-2 xl:space-y-1.5">
+              {visibleExamples.map(({ id, label, href, icon }) => (
+                <li key={id}>
+                  <ExampleCard
+                    icon={DILUTION_ICONS[icon]}
+                    label={label}
+                    href={href}
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="rounded-lg border border-dashed border-zinc-700 bg-zinc-800/25 px-3 py-4 text-center text-sm text-[color:var(--guide-muted)]">
+              暂未收录典型案例
+            </p>
+          )}
         </section>
 
         <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r md:border-b-0 xl:p-4">
           <SectionHeading icon={Users}>增伤对象</SectionHeading>
-          <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-sm leading-6 text-zinc-100">
-            {detail.target}
-          </div>
+          {selectionOptions.length === 0 && (
+            <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-sm leading-6 text-zinc-100">
+              {detail.target}
+            </div>
+          )}
+          {selectionOptions.length > 0 && (
+            <div
+              className="flex flex-wrap gap-2 xl:gap-1.5"
+              role="group"
+              aria-label={`按${detail.target}筛选`}
+            >
+              {selectionOptions.map(({ id, label }) => {
+                const active = selectedSelectionId === id;
+
+                return (
+                  <button
+                    key={id}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => toggleSelection(id)}
+                    className={`min-h-11 cursor-pointer touch-manipulation rounded-md border px-3 py-2 text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-8 xl:py-1 ${
+                      active
+                        ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
+                        : "border-zinc-600 bg-zinc-800/55 text-zinc-100 hover:border-zinc-400"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+          )}
           <p className="mt-3 text-xs leading-5 text-[color:var(--guide-muted)]">
             {detail.targetNote}
           </p>
@@ -230,8 +296,48 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
 
         <section className="p-5 sm:p-6 xl:p-4">
           <SectionHeading icon={Tag}>属性字段</SectionHeading>
-          <div className="min-h-11 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-left font-mono text-xs leading-5 text-zinc-200 xl:min-h-8 xl:px-2 xl:py-1.5">
-            <AttributeName name={detail.attributeField} />
+          <div className="space-y-2 xl:space-y-1">
+            {detail.attributeFields.map(({ name, note, selection }) => {
+              const content = (
+                <>
+                  <AttributeName name={name} />
+                  {note && (
+                    <span className="mt-1 block font-sans text-xs leading-5 text-[color:var(--guide-muted)]">
+                      {note}
+                    </span>
+                  )}
+                </>
+              );
+
+              if (!selection) {
+                return (
+                  <div
+                    key={name}
+                    className="min-h-11 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-left font-mono text-xs leading-5 text-zinc-200 xl:min-h-8 xl:px-2 xl:py-1.5"
+                  >
+                    {content}
+                  </div>
+                );
+              }
+
+              const active = selectedSelectionId === selection.id;
+
+              return (
+                <button
+                  key={name}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => toggleSelection(selection.id)}
+                  className={`min-h-11 w-full cursor-pointer touch-manipulation rounded-lg border px-3 py-2 text-left font-mono text-xs leading-5 transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-8 xl:px-2 xl:py-1.5 ${
+                    active
+                      ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
+                      : "border-zinc-700 bg-zinc-800/45 text-zinc-200 hover:border-zinc-500"
+                  }`}
+                >
+                  {content}
+                </button>
+              );
+            })}
           </div>
         </section>
       </div>
@@ -515,7 +621,7 @@ export function MultiplierOverview() {
               </footer>
             </>
           ) : selectedFactorDetail ? (
-            <FactorDetail detail={selectedFactorDetail} />
+            <FactorDetail key={selectedFactorId} detail={selectedFactorDetail} />
           ) : (
             <div className="flex min-h-52 items-center justify-center px-5 py-10 text-center xl:min-h-[338px]">
               <div className="max-w-md">

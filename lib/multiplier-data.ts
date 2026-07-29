@@ -49,6 +49,16 @@ type FactorDetailExample = {
   label: string;
   icon: DilutionIconKey;
   href?: string;
+  selectionId?: string;
+};
+
+type FactorAttributeField = {
+  name: string;
+  note?: string;
+  selection?: {
+    id: string;
+    label: string;
+  };
 };
 
 export type FactorDetailData = {
@@ -57,13 +67,13 @@ export type FactorDetailData = {
   rules: readonly string[];
   target: string;
   targetNote: string;
-  attributeField: string;
+  attributeFields: readonly FactorAttributeField[];
   examples: readonly FactorDetailExample[];
   notice: string;
 };
 
 type MultiplierData = {
-  schemaVersion: 4;
+  schemaVersion: 7;
   defaultFactorId: MultiplierFactorId;
   factors: readonly MultiplierFactor[];
   dilutionCategories: readonly DilutionCategory[];
@@ -77,7 +87,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function parseMultiplierData(value: unknown): MultiplierData {
   if (
     !isRecord(value) ||
-    value.schemaVersion !== 4 ||
+    value.schemaVersion !== 7 ||
     typeof value.defaultFactorId !== "string" ||
     !Array.isArray(value.factors) ||
     !Array.isArray(value.dilutionCategories) ||
@@ -149,12 +159,35 @@ function parseMultiplierData(value: unknown): MultiplierData {
       detail.rules.some((rule) => typeof rule !== "string") ||
       typeof detail.target !== "string" ||
       typeof detail.targetNote !== "string" ||
-      typeof detail.attributeField !== "string" ||
+      !Array.isArray(detail.attributeFields) ||
+      detail.attributeFields.length === 0 ||
       !Array.isArray(detail.examples) ||
-      detail.examples.length === 0 ||
       typeof detail.notice !== "string"
     ) {
       throw new Error("乘区详情数据结构无效");
+    }
+
+    const attributeFieldNames = new Set<string>();
+    const selectionIds = new Set<string>();
+    for (const attributeField of detail.attributeFields) {
+      if (
+        !isRecord(attributeField) ||
+        typeof attributeField.name !== "string" ||
+        attributeFieldNames.has(attributeField.name) ||
+        (attributeField.note !== undefined &&
+          typeof attributeField.note !== "string") ||
+        (attributeField.selection !== undefined &&
+          (!isRecord(attributeField.selection) ||
+            typeof attributeField.selection.id !== "string" ||
+            typeof attributeField.selection.label !== "string" ||
+            selectionIds.has(attributeField.selection.id)))
+      ) {
+        throw new Error("乘区详情属性字段存在无效或重复数据");
+      }
+      attributeFieldNames.add(attributeField.name);
+      if (isRecord(attributeField.selection)) {
+        selectionIds.add(attributeField.selection.id as string);
+      }
     }
 
     for (const example of detail.examples) {
@@ -166,7 +199,10 @@ function parseMultiplierData(value: unknown): MultiplierData {
         typeof example.icon !== "string" ||
         !DILUTION_ICON_KEYS.includes(example.icon as DilutionIconKey) ||
         (example.href !== undefined &&
-          (typeof example.href !== "string" || !example.href.startsWith("/")))
+          (typeof example.href !== "string" || !example.href.startsWith("/"))) ||
+        (example.selectionId !== undefined &&
+          (typeof example.selectionId !== "string" ||
+            !selectionIds.has(example.selectionId)))
       ) {
         throw new Error("乘区详情案例存在无效或重复字段");
       }

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 7,
   "defaultFactorId": "dilution",
   "factors": [
     { "id": "base", "label": "基础伤害" },
@@ -84,6 +84,255 @@
     }
   ],
   "factorDetails": {
+    "element": {
+      "summary": "该乘区根据本次伤害的元素类型读取对应的独立属性字段。",
+      "rulesHeading": "作用方式",
+      "rules": [
+        "各元素类型使用对应的独立属性通道",
+        "按本次伤害的元素类型读取相应字段"
+      ],
+      "target": "五种元素",
+      "targetNote": "动能、火焰、冰霜、电击与腐蚀伤害分别使用对应通道。",
+      "attributeFields": [
+        {
+          "name": "GPAttributeSetGiveDamageRatio.KineticDamageRatio",
+          "selection": {
+            "id": "kinetic",
+            "label": "动能"
+          }
+        },
+        {
+          "name": "GPAttributeSetGiveDamageRatio.FireDamageRatio",
+          "selection": {
+            "id": "fire",
+            "label": "火焰"
+          }
+        },
+        {
+          "name": "GPAttributeSetGiveDamageRatio.CryoDamageRatio",
+          "selection": {
+            "id": "cryo",
+            "label": "冰霜"
+          }
+        },
+        {
+          "name": "GPAttributeSetGiveDamageRatio.ShockDamageRatio",
+          "selection": {
+            "id": "shock",
+            "label": "电击"
+          }
+        },
+        {
+          "name": "GPAttributeSetGiveDamageRatio.CorossiveDamageRatio",
+          "selection": {
+            "id": "corossive",
+            "label": "腐蚀"
+          }
+        },
+        {
+          "name": "GPAttributeSetGiveDamageRatio.ElementDamageRatio"
+        }
+      ],
+      "examples": [
+        {
+          "id": "ghost-spear-kinetic-damage",
+          "label": "鬼影长枪",
+          "icon": "swords",
+          "href": "/weapons/鬼影长枪",
+          "selectionId": "kinetic"
+        },
+        {
+          "id": "nightmare-hammer-kinetic-damage",
+          "label": "秘魇锤",
+          "icon": "swords",
+          "href": "/weapons/秘魇锤",
+          "selectionId": "kinetic"
+        },
+        {
+          "id": "winning-hand-kinetic-damage",
+          "label": "稳赢之手",
+          "icon": "swords",
+          "href": "/weapons/稳赢之手",
+          "selectionId": "kinetic"
+        },
+        {
+          "id": "sand-shaking-mace-kinetic-damage",
+          "label": "震沙锏",
+          "icon": "swords",
+          "href": "/weapons/震沙锏",
+          "selectionId": "kinetic"
+        },
+        {
+          "id": "blood-grudge-kinetic-damage",
+          "label": "血怨",
+          "icon": "swords",
+          "href": "/weapons/血怨",
+          "selectionId": "kinetic"
+        },
+        {
+          "id": "cross-spear-kinetic-damage",
+          "label": "十字长枪",
+          "icon": "swords",
+          "href": "/weapons/十字长枪",
+          "selectionId": "kinetic"
+        },
+        {
+          "id": "freezing-twin-peaks-fire-damage",
+          "label": "冰点双峰",
+          "icon": "swords",
+          "href": "/weapons/冰点双峰",
+          "selectionId": "fire"
+        },
+        {
+          "id": "angry-hammer-fire-damage",
+          "label": "怒目锤",
+          "icon": "swords",
+          "href": "/weapons/怒目锤",
+          "selectionId": "fire"
+        },
+        {
+          "id": "sand-eroded-blade-fire-damage",
+          "label": "沙蚀重刃",
+          "icon": "swords",
+          "href": "/weapons/沙蚀重刃",
+          "selectionId": "fire"
+        },
+        {
+          "id": "soul-pestle-fire-damage",
+          "label": "魂杵",
+          "icon": "swords",
+          "href": "/weapons/魂杵",
+          "selectionId": "fire"
+        },
+        {
+          "id": "dark-angel-blade-fire-damage",
+          "label": "黑天使之刃",
+          "icon": "swords",
+          "href": "/weapons/黑天使之刃",
+          "selectionId": "fire"
+        },
+        {
+          "id": "torch-fire-damage",
+          "label": "火炬",
+          "icon": "swords",
+          "href": "/weapons/火炬",
+          "selectionId": "fire"
+        },
+        {
+          "id": "armed-axe-fire-damage",
+          "label": "武装斧头",
+          "icon": "swords",
+          "href": "/weapons/武装斧头",
+          "selectionId": "fire"
+        },
+        {
+          "id": "piggy-squeeze-fire-damage",
+          "label": "猪猪捏捏乐",
+          "icon": "swords",
+          "href": "/weapons/猪猪捏捏乐",
+          "selectionId": "fire"
+        },
+        {
+          "id": "knight-dual-blades-fire-damage",
+          "label": "骑士双刃",
+          "icon": "swords",
+          "href": "/weapons/骑士双刃",
+          "selectionId": "fire"
+        },
+        {
+          "id": "infernal-scorpion-self-fire-damage",
+          "label": "蝎王被动",
+          "icon": "sparkles",
+          "href": "/weapons/炼狱蝎王",
+          "selectionId": "fire"
+        },
+        {
+          "id": "infernal-scorpion-teammate-fire-damage",
+          "label": "队友蝎王被动",
+          "icon": "sparkles",
+          "href": "/weapons/炼狱蝎王",
+          "selectionId": "fire"
+        },
+        {
+          "id": "corpse-dragon-axe-cryo-damage",
+          "label": "尸龙战斧",
+          "icon": "swords",
+          "href": "/weapons/尸龙战斧",
+          "selectionId": "cryo"
+        },
+        {
+          "id": "frost-fang-cryo-damage",
+          "label": "霜蚀之牙",
+          "icon": "swords",
+          "href": "/weapons/霜蚀之牙",
+          "selectionId": "cryo"
+        },
+        {
+          "id": "serpent-spear-shock-damage",
+          "label": "蛇神之矛",
+          "icon": "swords",
+          "href": "/weapons/蛇神之矛",
+          "selectionId": "shock"
+        },
+        {
+          "id": "star-forged-power-shock-damage",
+          "label": "锻星力量",
+          "icon": "swords",
+          "href": "/weapons/锻星力量",
+          "selectionId": "shock"
+        },
+        {
+          "id": "steel-pipe-shock-damage",
+          "label": "百炼钢管",
+          "icon": "swords",
+          "href": "/weapons/百炼钢管",
+          "selectionId": "shock"
+        },
+        {
+          "id": "cherry-blossom-shock-damage",
+          "label": "樱之殇",
+          "icon": "swords",
+          "href": "/weapons/樱之殇",
+          "selectionId": "shock"
+        },
+        {
+          "id": "cherry-oath-shock-damage",
+          "label": "樱之誓",
+          "icon": "swords",
+          "href": "/weapons/樱之誓",
+          "selectionId": "shock"
+        },
+        {
+          "id": "iron-grip-shock-damage",
+          "label": "钢铁之握",
+          "icon": "swords",
+          "href": "/weapons/钢铁之握",
+          "selectionId": "shock"
+        },
+        {
+          "id": "reaper-scythe-corossive-damage",
+          "label": "死神镰刀",
+          "icon": "swords",
+          "href": "/weapons/死神镰刀",
+          "selectionId": "corossive"
+        },
+        {
+          "id": "butterfly-fans-corossive-damage",
+          "label": "蝶翼双扇",
+          "icon": "swords",
+          "href": "/weapons/蝶翼双扇",
+          "selectionId": "corossive"
+        },
+        {
+          "id": "steel-spine-corossive-damage",
+          "label": "钢脊",
+          "icon": "swords",
+          "href": "/weapons/钢脊",
+          "selectionId": "corossive"
+        }
+      ],
+      "notice": "ElementDamageRatio 字段保留但当前通道未使用；实际结算以具体元素字段为准。"
+    },
     "critical": {
       "summary": "该乘区用于暴击伤害结算，仅在伤害来源允许暴击且本次伤害触发暴击时生效。",
       "rulesHeading": "启用条件",
@@ -94,7 +343,11 @@
       ],
       "target": "暴击伤害",
       "targetNote": "仅对允许暴击且本次判定为暴击的伤害生效。",
-      "attributeField": "GPAttributeSetCritical.CriticalDamageRatio",
+      "attributeFields": [
+        {
+          "name": "GPAttributeSetCritical.CriticalDamageRatio"
+        }
+      ],
       "examples": [
         {
           "id": "zhen-xian-skill",
@@ -144,7 +397,11 @@
       ],
       "target": "弱点命中伤害",
       "targetNote": "生效仍受敌人弱点判定与具体触发条件限制。",
-      "attributeField": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio",
+      "attributeFields": [
+        {
+          "name": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio"
+        }
+      ],
       "examples": [
         {
           "id": "survival-of-the-fittest",
@@ -170,7 +427,11 @@
       ],
       "target": "根据具体情况而定",
       "targetNote": "不作为固定筛选条件，需结合具体伤害事件判断。",
-      "attributeField": "Numerical.ExecutionCtx.ExecutionRatio",
+      "attributeFields": [
+        {
+          "name": "Numerical.ExecutionCtx.ExecutionRatio"
+        }
+      ],
       "examples": [
         {
           "id": "beast-god-grenade-passive",
