@@ -289,9 +289,11 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
               })}
             </div>
           )}
-          <p className="mt-3 text-xs leading-5 text-[color:var(--guide-muted)]">
-            {detail.targetNote}
-          </p>
+          {detail.targetNote && (
+            <p className="mt-3 text-xs leading-5 text-[color:var(--guide-muted)]">
+              {detail.targetNote}
+            </p>
+          )}
         </section>
 
         <section className="p-5 sm:p-6 xl:p-4">

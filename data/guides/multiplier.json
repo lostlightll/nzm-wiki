@@ -84,6 +84,36 @@
     }
   ],
   "factorDetails": {
+    "game-mode": {
+      "summary": "该乘区用于记录游戏模式提供的全伤害增伤效果。",
+      "rulesHeading": "已确认信息",
+      "rules": [
+        "增伤对象为全伤害",
+        "通过独立属性字段参与伤害结算"
+      ],
+      "target": "全伤害",
+      "targetNote": "",
+      "attributeFields": [
+        {
+          "name": "GPAttributeSetGiveDamageRatio.DamageRatio"
+        }
+      ],
+      "examples": [
+        {
+          "id": "hunting-shop-attack",
+          "label": "猎场商店攻击力",
+          "icon": "target",
+          "href": "/posts/hunting-atk"
+        },
+        {
+          "id": "overlimit-hunting-bond-damage",
+          "label": "超限猎场羁绊增伤",
+          "icon": "sparkles",
+          "href": "/overlimit#bonds"
+        }
+      ],
+      "notice": "我也不知道要写什么，但是为了保持整齐，随便写点吧别在意"
+    },
     "element": {
       "summary": "该乘区根据本次伤害的元素类型读取对应的独立属性字段。",
       "rulesHeading": "作用方式",
