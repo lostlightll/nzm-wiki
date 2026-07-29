@@ -288,10 +288,15 @@ export default function PagesLayout({
 }) {
   const pathname = usePathname();
   const isSeasonTalentDetail = pathname.startsWith("/guides/season-talents/");
+  const isGuidesLanding = pathname === "/guides";
 
   return (
     <BossDifficultyProvider>
-      <div className="relative min-h-screen bg-background">
+      <div
+        className={`relative min-h-screen ${
+          isGuidesLanding ? "bg-[#0b0e10]" : "bg-background"
+        }`}
+      >
         {isSeasonTalentDetail && (
           <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0">
             <Image
@@ -310,6 +315,8 @@ export default function PagesLayout({
           className={`relative z-10 mx-auto ${
             isSeasonTalentDetail
               ? "max-w-[1600px] px-4 py-4 sm:px-6 xl:px-12"
+              : isGuidesLanding
+                ? "max-w-[1440px] px-4 py-6 sm:px-6 sm:py-7 xl:py-3"
               : "max-w-7xl px-4 py-8"
           }`}
         >
