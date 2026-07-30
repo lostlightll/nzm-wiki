@@ -81,7 +81,7 @@
         "summary": "弱点增伤需要伤害来源允许弱点结算，并实际命中有效弱点。",
         "effects": [
           { "damageTypeId": "hit-damage", "status": "conditional", "label": "弱点生效" },
-          { "damageTypeId": "explosion-damage", "status": "conditional", "label": "弱点生效" },
+          { "damageTypeId": "explosion-damage", "status": "none" },
           { "damageTypeId": "weapon-skill-damage", "status": "none" },
           { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
           { "damageTypeId": "element-dot-damage", "status": "none" },
