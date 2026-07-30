@@ -32,11 +32,14 @@ import {
   type WeakpointMultiplierData,
 } from "@/lib/multiplier-data";
 import type { WeaponType } from "@/types";
+import { DamageChannelMatrix } from "./DamageChannelMatrix";
 
 const DEFAULT_FACTOR_ID: MultiplierFactorId = DEFAULT_MULTIPLIER_FACTOR.id;
 const DETAIL_PANEL_ID = "multiplier-detail-panel";
 const SELECTED_FACTOR_STORAGE_KEY = "nzm-wiki:guides:multiplier:selected-factor";
 const SELECTED_FACTOR_CHANGE_EVENT = "nzm-wiki:multiplier-factor-change";
+
+type MultiplierPart = "formula" | "channels";
 
 let inMemorySelectedFactorId = DEFAULT_FACTOR_ID;
 
@@ -621,6 +624,7 @@ export function MultiplierOverview() {
     getServerSelectedFactorSnapshot,
   );
   const [selectedFilterId, setSelectedFilterId] = useState<string | null>(null);
+  const [activePart, setActivePart] = useState<MultiplierPart>("formula");
   const selectedFactor =
     MULTIPLIER_FACTORS.find((factor) => factor.id === selectedFactorId) ??
     DEFAULT_MULTIPLIER_FACTOR;
@@ -645,6 +649,39 @@ export function MultiplierOverview() {
 
   return (
     <div className="text-[color:var(--guide-text)]">
+      <nav
+        aria-label="游戏乘区分篇"
+        className="mx-auto mb-5 grid max-w-lg grid-cols-2 rounded-lg border border-zinc-700 bg-zinc-900/75 p-1 xl:mb-3"
+      >
+        {(
+          [
+            { id: "formula", part: "Part 1", label: "乘区公式" },
+            { id: "channels", part: "Part 2", label: "增幅通道" },
+          ] as const
+        ).map(({ id, part, label }) => {
+          const active = activePart === id;
+
+          return (
+            <button
+              key={id}
+              type="button"
+              aria-pressed={active}
+              onClick={() => setActivePart(id)}
+              className={`min-h-11 cursor-pointer touch-manipulation rounded-md border px-3 py-2 transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
+                active
+                  ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
+                  : "border-transparent text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+              }`}
+            >
+              <span className="block text-[10px] font-semibold uppercase leading-4 text-current">
+                {part}
+              </span>
+              <span className="block text-sm font-semibold leading-5">{label}</span>
+            </button>
+          );
+        })}
+      </nav>
+
       <aside
         className="mb-7 flex min-h-14 items-center gap-3 rounded-lg border border-[color:var(--guide-warning-border)] bg-[linear-gradient(90deg,rgba(151,105,31,0.13),rgba(151,105,31,0.06))] px-4 py-3 text-[color:var(--guide-accent)] sm:px-5 xl:mb-3 xl:min-h-12 xl:py-2"
         aria-label="内容状态"
@@ -655,6 +692,9 @@ export function MultiplierOverview() {
         </p>
       </aside>
 
+      {activePart === "channels" ? (
+        <DamageChannelMatrix />
+      ) : (
       <section aria-labelledby="damage-formula-heading">
         <h2 id="damage-formula-heading" className="mb-4 text-2xl font-bold tracking-wide text-zinc-100 xl:mb-2 xl:text-xl">
           伤害公式总览
@@ -802,6 +842,7 @@ export function MultiplierOverview() {
           )}
         </article>
       </section>
+      )}
     </div>
   );
 }

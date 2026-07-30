@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 8,
+  "schemaVersion": 9,
   "defaultFactorId": "dilution",
   "factors": [
     { "id": "base", "label": "基础伤害" },
@@ -12,6 +12,219 @@
     { "id": "correction", "label": "特殊修正" },
     { "id": "damage-reduction", "label": "伤害减免" }
   ],
+  "damageChannelMatrix": {
+    "damageTypes": [
+      { "id": "hit-damage", "label": "命中伤害" },
+      { "id": "explosion-damage", "label": "爆炸伤害" },
+      { "id": "weapon-skill-damage", "label": "武器技能伤害" },
+      { "id": "non-weapon-skill-damage", "label": "非武器技能伤害" },
+      { "id": "element-dot-damage", "label": "元素灼烧伤害" },
+      { "id": "extra-trigger-damage", "label": "额外触发伤害" }
+    ],
+    "channels": [
+      {
+        "id": "game-mode",
+        "label": "游戏模式乘区",
+        "group": "factor",
+        "attributeFields": ["GPAttributeSetGiveDamageRatio.DamageRatio"],
+        "summary": "记录游戏模式提供的全伤害增幅，作为独立乘区参与结算。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "applies", "label": "全增伤" },
+          { "damageTypeId": "explosion-damage", "status": "applies", "label": "全增伤" },
+          { "damageTypeId": "weapon-skill-damage", "status": "applies", "label": "全增伤" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "applies", "label": "全增伤" },
+          { "damageTypeId": "element-dot-damage", "status": "applies", "label": "全增伤" },
+          { "damageTypeId": "extra-trigger-damage", "status": "applies", "label": "全增伤" }
+        ]
+      },
+      {
+        "id": "element",
+        "label": "元素乘区",
+        "group": "factor",
+        "attributeFields": [
+          "GPAttributeSetGiveDamageRatio.KineticDamageRatio",
+          "GPAttributeSetGiveDamageRatio.FireDamageRatio",
+          "GPAttributeSetGiveDamageRatio.CryoDamageRatio",
+          "GPAttributeSetGiveDamageRatio.ShockDamageRatio",
+          "GPAttributeSetGiveDamageRatio.CorossiveDamageRatio"
+        ],
+        "summary": "按本次伤害的元素类型读取对应元素属性通道。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "applies" },
+          { "damageTypeId": "explosion-damage", "status": "applies" },
+          { "damageTypeId": "weapon-skill-damage", "status": "applies" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "applies" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "critical",
+        "label": "暴伤乘区",
+        "group": "factor",
+        "attributeFields": ["GPAttributeSetCritical.CriticalDamageRatio"],
+        "summary": "仅在伤害来源允许暴击且本次伤害触发暴击时读取暴伤增幅。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "conditional", "label": "暴击生效" },
+          { "damageTypeId": "explosion-damage", "status": "conditional", "label": "暴击生效" },
+          { "damageTypeId": "weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "conditional", "label": "暴击生效" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "weakness",
+        "label": "弱点增伤",
+        "group": "factor",
+        "attributeFields": ["GPAttributeSetGiveDamageRatio.WeaknessDamageRatio"],
+        "summary": "弱点增伤需要伤害来源允许弱点结算，并实际命中有效弱点。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "conditional", "label": "弱点生效" },
+          { "damageTypeId": "explosion-damage", "status": "conditional", "label": "弱点生效" },
+          { "damageTypeId": "weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "all-damage",
+        "label": "全伤害",
+        "group": "dilution",
+        "attributeFields": ["GPAttributeSetGiveDamageRatio.AllDamageRatio"],
+        "summary": "大稀释乘区中的通用增伤通道，面向全部伤害类型。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "applies", "label": "全增伤" },
+          { "damageTypeId": "explosion-damage", "status": "applies", "label": "全增伤" },
+          { "damageTypeId": "weapon-skill-damage", "status": "applies", "label": "全增伤" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "applies", "label": "全增伤" },
+          { "damageTypeId": "element-dot-damage", "status": "applies", "label": "全增伤" },
+          { "damageTypeId": "extra-trigger-damage", "status": "applies", "label": "全增伤" }
+        ]
+      },
+      {
+        "id": "weapon-damage",
+        "label": "武器伤害",
+        "group": "dilution",
+        "attributeFields": ["GPAttributeSetGiveDamageRatio.WeaponDamageRatio"],
+        "summary": "大稀释乘区中的武器伤害通道；具体技能仍需按伤害标签核验。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "applies" },
+          { "damageTypeId": "explosion-damage", "status": "applies" },
+          { "damageTypeId": "weapon-skill-damage", "status": "conditional" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "weapon-skill-damage",
+        "label": "武器技能伤害",
+        "group": "dilution",
+        "attributeFields": ["GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio"],
+        "summary": "仅增幅被标记为武器技能的伤害事件。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "none" },
+          { "damageTypeId": "explosion-damage", "status": "none" },
+          { "damageTypeId": "weapon-skill-damage", "status": "applies" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "skill-damage",
+        "label": "非武器技能伤害",
+        "group": "dilution",
+        "attributeFields": ["GPAttributeSetGiveDamageRatio.SkillDamageRatio"],
+        "summary": "增幅不属于武器技能的主动技能伤害。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "none" },
+          { "damageTypeId": "explosion-damage", "status": "none" },
+          { "damageTypeId": "weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "applies" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "close-range-damage",
+        "label": "近距离伤害",
+        "group": "dilution",
+        "attributeFields": ["GPAttributeSetGiveDamageRatio.CloseRangeDamageRatio"],
+        "summary": "满足近距离判定时生效，具体技能还需同时满足相应伤害标签。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "applies" },
+          { "damageTypeId": "explosion-damage", "status": "applies" },
+          { "damageTypeId": "weapon-skill-damage", "status": "applies" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "applies" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "long-range-damage",
+        "label": "远距离伤害",
+        "group": "dilution",
+        "attributeFields": ["GPAttributeSetGiveDamageRatio.LongRangeDamageRatio"],
+        "summary": "满足远距离判定时生效，具体技能还需同时满足相应伤害标签。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "applies" },
+          { "damageTypeId": "explosion-damage", "status": "applies" },
+          { "damageTypeId": "weapon-skill-damage", "status": "applies" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "applies" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "weapon-hit-damage",
+        "label": "射击伤害",
+        "group": "dilution",
+        "attributeFields": ["GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio"],
+        "summary": "仅增幅被标记为武器射击的直接命中伤害。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "applies" },
+          { "damageTypeId": "explosion-damage", "status": "none" },
+          { "damageTypeId": "weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "weapon-explode-damage",
+        "label": "爆炸伤害",
+        "group": "dilution",
+        "attributeFields": ["GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio"],
+        "summary": "增幅被标记为武器爆炸的伤害；弱点增幅仍取决于该爆炸是否允许弱点结算。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "none" },
+          { "damageTypeId": "explosion-damage", "status": "applies" },
+          { "damageTypeId": "weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "correction",
+        "label": "单次修正",
+        "group": "correction",
+        "attributeFields": ["Numerical.ExecutionCtx.ExecutionRatio"],
+        "summary": "直接修正单次伤害事件，增减方向与适用对象由具体机制决定。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "conditional" },
+          { "damageTypeId": "explosion-damage", "status": "conditional" },
+          { "damageTypeId": "weapon-skill-damage", "status": "conditional" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "conditional" },
+          { "damageTypeId": "element-dot-damage", "status": "conditional" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      }
+    ]
+  },
   "weakpointMultiplier": {
     "groups": [
       {

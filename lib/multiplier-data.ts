@@ -24,8 +24,13 @@ const DILUTION_ICON_KEYS = [
   "bomb",
 ] as const;
 
+const DAMAGE_CHANNEL_GROUPS = ["factor", "dilution", "correction"] as const;
+const DAMAGE_CHANNEL_STATUSES = ["applies", "conditional", "none"] as const;
+
 export type MultiplierFactorId = (typeof MULTIPLIER_FACTOR_IDS)[number];
 export type DilutionIconKey = (typeof DILUTION_ICON_KEYS)[number];
+export type DamageChannelGroup = (typeof DAMAGE_CHANNEL_GROUPS)[number];
+export type DamageChannelStatus = (typeof DAMAGE_CHANNEL_STATUSES)[number];
 
 type MultiplierFactor = {
   id: MultiplierFactorId;
@@ -98,10 +103,36 @@ export type FactorDetailData = {
   notice: string;
 };
 
+type DamageType = {
+  id: string;
+  label: string;
+};
+
+type DamageChannelEffect = {
+  damageTypeId: string;
+  status: DamageChannelStatus;
+  label?: string;
+};
+
+export type DamageChannel = {
+  id: string;
+  label: string;
+  group: DamageChannelGroup;
+  attributeFields: readonly string[];
+  summary: string;
+  effects: readonly DamageChannelEffect[];
+};
+
+export type DamageChannelMatrixData = {
+  damageTypes: readonly DamageType[];
+  channels: readonly DamageChannel[];
+};
+
 type MultiplierData = {
-  schemaVersion: 8;
+  schemaVersion: 9;
   defaultFactorId: MultiplierFactorId;
   factors: readonly MultiplierFactor[];
+  damageChannelMatrix: DamageChannelMatrixData;
   weakpointMultiplier: WeakpointMultiplierData;
   dilutionCategories: readonly DilutionCategory[];
   factorDetails: Partial<Record<MultiplierFactorId, FactorDetailData>>;
@@ -114,9 +145,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function parseMultiplierData(value: unknown): MultiplierData {
   if (
     !isRecord(value) ||
-    value.schemaVersion !== 8 ||
+    value.schemaVersion !== 9 ||
     typeof value.defaultFactorId !== "string" ||
     !Array.isArray(value.factors) ||
+    !isRecord(value.damageChannelMatrix) ||
     !isRecord(value.weakpointMultiplier) ||
     !Array.isArray(value.dilutionCategories) ||
     !isRecord(value.factorDetails)
@@ -140,6 +172,71 @@ function parseMultiplierData(value: unknown): MultiplierData {
 
   if (!factorIds.has(value.defaultFactorId)) {
     throw new Error("默认乘区不存在");
+  }
+
+  const damageChannelMatrix = value.damageChannelMatrix;
+  if (
+    !Array.isArray(damageChannelMatrix.damageTypes) ||
+    damageChannelMatrix.damageTypes.length === 0 ||
+    !Array.isArray(damageChannelMatrix.channels) ||
+    damageChannelMatrix.channels.length === 0
+  ) {
+    throw new Error("增幅通道矩阵数据结构无效");
+  }
+
+  const damageTypeIds = new Set<string>();
+  for (const damageType of damageChannelMatrix.damageTypes) {
+    if (
+      !isRecord(damageType) ||
+      typeof damageType.id !== "string" ||
+      damageTypeIds.has(damageType.id) ||
+      typeof damageType.label !== "string"
+    ) {
+      throw new Error("伤害类型存在无效或重复字段");
+    }
+    damageTypeIds.add(damageType.id);
+  }
+
+  const damageChannelIds = new Set<string>();
+  for (const channel of damageChannelMatrix.channels) {
+    if (
+      !isRecord(channel) ||
+      typeof channel.id !== "string" ||
+      damageChannelIds.has(channel.id) ||
+      typeof channel.label !== "string" ||
+      typeof channel.group !== "string" ||
+      !DAMAGE_CHANNEL_GROUPS.includes(channel.group as DamageChannelGroup) ||
+      !Array.isArray(channel.attributeFields) ||
+      channel.attributeFields.length === 0 ||
+      channel.attributeFields.some((field) => typeof field !== "string") ||
+      new Set(channel.attributeFields).size !== channel.attributeFields.length ||
+      typeof channel.summary !== "string" ||
+      !Array.isArray(channel.effects) ||
+      channel.effects.length !== damageTypeIds.size
+    ) {
+      throw new Error("增幅通道存在无效或重复字段");
+    }
+
+    damageChannelIds.add(channel.id);
+    const channelDamageTypeIds = new Set<string>();
+    for (const effect of channel.effects) {
+      if (
+        !isRecord(effect) ||
+        typeof effect.damageTypeId !== "string" ||
+        !damageTypeIds.has(effect.damageTypeId) ||
+        channelDamageTypeIds.has(effect.damageTypeId) ||
+        typeof effect.status !== "string" ||
+        !DAMAGE_CHANNEL_STATUSES.includes(effect.status as DamageChannelStatus) ||
+        (effect.label !== undefined && typeof effect.label !== "string")
+      ) {
+        throw new Error("增幅通道适用范围存在无效或重复字段");
+      }
+      channelDamageTypeIds.add(effect.damageTypeId);
+    }
+
+    if (channelDamageTypeIds.size !== damageTypeIds.size) {
+      throw new Error("增幅通道未覆盖全部伤害类型");
+    }
   }
 
   const weakpointMultiplier = value.weakpointMultiplier;
@@ -323,6 +420,7 @@ function parseMultiplierData(value: unknown): MultiplierData {
 
 export const MULTIPLIER_DATA = parseMultiplierData(rawMultiplierData);
 export const MULTIPLIER_FACTORS = MULTIPLIER_DATA.factors;
+export const DAMAGE_CHANNEL_MATRIX = MULTIPLIER_DATA.damageChannelMatrix;
 export const WEAKPOINT_MULTIPLIER_DATA = MULTIPLIER_DATA.weakpointMultiplier;
 export const DILUTION_CATEGORIES = MULTIPLIER_DATA.dilutionCategories;
 export const MULTIPLIER_FACTOR_DETAILS = MULTIPLIER_DATA.factorDetails;
