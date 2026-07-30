@@ -1,4 +1,6 @@
 import rawMultiplierData from "@/data/guides/multiplier.json";
+import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
+import type { WeaponType } from "@/types";
 
 const MULTIPLIER_FACTOR_IDS = [
   "base",
@@ -44,6 +46,30 @@ type DilutionCategory = {
   examples: readonly DilutionExample[];
 };
 
+type WeakpointMultiplierGroup = {
+  multiplier: number;
+  weaponTypes: readonly WeaponType[];
+};
+
+type WeakpointSpecialSource = {
+  id: string;
+  label: string;
+  icon: DilutionIconKey;
+  href: string;
+};
+
+export type WeakpointMultiplierData = {
+  groups: readonly WeakpointMultiplierGroup[];
+  specialSources: {
+    multiplier: number;
+    note: string;
+    items: readonly WeakpointSpecialSource[];
+  };
+  scaleField: string;
+  enableField: string;
+  formula: string;
+};
+
 type FactorDetailExample = {
   id: string;
   label: string;
@@ -73,9 +99,10 @@ export type FactorDetailData = {
 };
 
 type MultiplierData = {
-  schemaVersion: 7;
+  schemaVersion: 8;
   defaultFactorId: MultiplierFactorId;
   factors: readonly MultiplierFactor[];
+  weakpointMultiplier: WeakpointMultiplierData;
   dilutionCategories: readonly DilutionCategory[];
   factorDetails: Partial<Record<MultiplierFactorId, FactorDetailData>>;
 };
@@ -87,9 +114,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function parseMultiplierData(value: unknown): MultiplierData {
   if (
     !isRecord(value) ||
-    value.schemaVersion !== 7 ||
+    value.schemaVersion !== 8 ||
     typeof value.defaultFactorId !== "string" ||
     !Array.isArray(value.factors) ||
+    !isRecord(value.weakpointMultiplier) ||
     !Array.isArray(value.dilutionCategories) ||
     !isRecord(value.factorDetails)
   ) {
@@ -112,6 +140,86 @@ function parseMultiplierData(value: unknown): MultiplierData {
 
   if (!factorIds.has(value.defaultFactorId)) {
     throw new Error("默认乘区不存在");
+  }
+
+  const weakpointMultiplier = value.weakpointMultiplier;
+  if (
+    !Array.isArray(weakpointMultiplier.groups) ||
+    weakpointMultiplier.groups.length !== 5 ||
+    !isRecord(weakpointMultiplier.specialSources) ||
+    typeof weakpointMultiplier.scaleField !== "string" ||
+    typeof weakpointMultiplier.enableField !== "string" ||
+    typeof weakpointMultiplier.formula !== "string"
+  ) {
+    throw new Error("弱点倍率数据结构无效");
+  }
+
+  const validWeaponTypes = new Set<string>(Object.keys(WEAPON_TYPE_SPRITES));
+  const weakpointMultipliers = new Set<number>();
+  const weakpointWeaponTypes = new Set<string>();
+  let previousWeakpointMultiplier = Number.POSITIVE_INFINITY;
+
+  for (const group of weakpointMultiplier.groups) {
+    if (
+      !isRecord(group) ||
+      typeof group.multiplier !== "number" ||
+      !Number.isFinite(group.multiplier) ||
+      group.multiplier <= 0 ||
+      group.multiplier >= previousWeakpointMultiplier ||
+      weakpointMultipliers.has(group.multiplier) ||
+      !Array.isArray(group.weaponTypes) ||
+      group.weaponTypes.length === 0
+    ) {
+      throw new Error("弱点倍率分组存在无效或重复字段");
+    }
+
+    weakpointMultipliers.add(group.multiplier);
+    previousWeakpointMultiplier = group.multiplier;
+
+    for (const weaponType of group.weaponTypes) {
+      if (
+        typeof weaponType !== "string" ||
+        !validWeaponTypes.has(weaponType) ||
+        weakpointWeaponTypes.has(weaponType)
+      ) {
+        throw new Error("弱点倍率武器类型存在无效或重复数据");
+      }
+      weakpointWeaponTypes.add(weaponType);
+    }
+  }
+
+  if (weakpointWeaponTypes.size !== validWeaponTypes.size) {
+    throw new Error("弱点倍率武器类型覆盖不完整");
+  }
+
+  const specialSources = weakpointMultiplier.specialSources;
+  if (
+    typeof specialSources.multiplier !== "number" ||
+    !Number.isFinite(specialSources.multiplier) ||
+    specialSources.multiplier <= 0 ||
+    weakpointMultipliers.has(specialSources.multiplier) ||
+    typeof specialSources.note !== "string" ||
+    !Array.isArray(specialSources.items) ||
+    specialSources.items.length === 0
+  ) {
+    throw new Error("弱点倍率特殊来源结构无效");
+  }
+
+  const specialSourceIds = new Set<string>();
+  for (const item of specialSources.items) {
+    if (
+      !isRecord(item) ||
+      typeof item.id !== "string" ||
+      specialSourceIds.has(item.id) ||
+      typeof item.label !== "string" ||
+      typeof item.icon !== "string" ||
+      !DILUTION_ICON_KEYS.includes(item.icon as DilutionIconKey) ||
+      typeof item.href !== "string" ||
+      !item.href.startsWith("/")
+    ) {
+      throw new Error("弱点倍率特殊来源存在无效或重复字段");
+    }
+    specialSourceIds.add(item.id);
   }
 
   const categoryIds = new Set<string>();
@@ -215,6 +323,7 @@ function parseMultiplierData(value: unknown): MultiplierData {
 
 export const MULTIPLIER_DATA = parseMultiplierData(rawMultiplierData);
 export const MULTIPLIER_FACTORS = MULTIPLIER_DATA.factors;
+export const WEAKPOINT_MULTIPLIER_DATA = MULTIPLIER_DATA.weakpointMultiplier;
 export const DILUTION_CATEGORIES = MULTIPLIER_DATA.dilutionCategories;
 export const MULTIPLIER_FACTOR_DETAILS = MULTIPLIER_DATA.factorDetails;
 

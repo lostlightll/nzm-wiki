@@ -18,15 +18,20 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
+import { SpriteIcon } from "@/components/SpriteIcon";
+import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import {
   DEFAULT_MULTIPLIER_FACTOR,
   DILUTION_CATEGORIES,
   MULTIPLIER_FACTOR_DETAILS,
   MULTIPLIER_FACTORS,
+  WEAKPOINT_MULTIPLIER_DATA,
   type DilutionIconKey,
   type FactorDetailData,
   type MultiplierFactorId,
+  type WeakpointMultiplierData,
 } from "@/lib/multiplier-data";
+import type { WeaponType } from "@/types";
 
 const DEFAULT_FACTOR_ID: MultiplierFactorId = DEFAULT_MULTIPLIER_FACTOR.id;
 const DETAIL_PANEL_ID = "multiplier-detail-panel";
@@ -172,6 +177,160 @@ function ExampleCard({
     >
       {content}
     </Link>
+  );
+}
+
+function WeaponTypeItem({ weaponType }: { weaponType: WeaponType }) {
+  return (
+    <li
+      data-weapon-type={weaponType}
+      className="flex min-w-0 flex-col items-center justify-center gap-1 text-center text-sm font-medium text-zinc-100 sm:w-auto sm:flex-row sm:justify-start sm:gap-2 sm:text-left"
+    >
+      <span
+        aria-hidden="true"
+        className="flex h-7 w-10 shrink-0 items-center justify-center sm:h-8"
+      >
+        <SpriteIcon
+          sprite={WEAPON_TYPE_SPRITES[weaponType]}
+          size={40}
+          className="max-h-8 max-w-10"
+        />
+      </span>
+      <span className="min-w-0 leading-5 sm:whitespace-nowrap">{weaponType}</span>
+    </li>
+  );
+}
+
+function WeakpointMultiplierRow({
+  multiplier,
+  children,
+}: {
+  multiplier: number;
+  children: React.ReactNode;
+}) {
+  return (
+    <li className="grid grid-cols-[4.5rem_minmax(0,1fr)] border-b border-zinc-700/80 last:border-b-0 sm:grid-cols-[6.5rem_minmax(0,1fr)]">
+      <div className="flex flex-col justify-center border-r border-zinc-700/80 px-3 py-4 sm:px-4">
+        <span className="font-mono text-lg font-bold leading-none tabular-nums text-[color:var(--guide-accent)]">
+          {multiplier.toFixed(1)}×
+        </span>
+      </div>
+      <div className="min-w-0 px-3 py-3 sm:px-5">
+        {children}
+      </div>
+    </li>
+  );
+}
+
+function WeakpointWeaponTable({
+  detail,
+}: {
+  detail: WeakpointMultiplierData;
+}) {
+  return (
+    <ol className="border-y border-zinc-700/80">
+      {detail.groups.map(({ multiplier, weaponTypes }) => (
+        <WeakpointMultiplierRow key={multiplier} multiplier={multiplier}>
+          <ul className="grid min-h-8 grid-cols-2 items-center gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-7 sm:gap-y-2">
+            {weaponTypes.map((weaponType) => (
+              <WeaponTypeItem key={weaponType} weaponType={weaponType} />
+            ))}
+          </ul>
+        </WeakpointMultiplierRow>
+      ))}
+
+      <WeakpointMultiplierRow
+        multiplier={detail.specialSources.multiplier}
+      >
+        <ul className="flex min-h-8 flex-col justify-center gap-x-8 gap-y-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-start sm:gap-y-2">
+          {detail.specialSources.items.map(({ id, label, icon, href }) => {
+            const Icon = DILUTION_ICONS[icon];
+
+            return (
+              <li key={id}>
+                <Link
+                  href={href}
+                  className="inline-flex min-h-8 cursor-pointer touch-manipulation items-center gap-2 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:text-[color:var(--guide-accent)] focus-visible:outline-none focus-visible:text-[color:var(--guide-accent)] focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none"
+                >
+                  <Icon
+                    aria-hidden="true"
+                    className="h-4 w-4 shrink-0 text-zinc-400"
+                    strokeWidth={2}
+                  />
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </WeakpointMultiplierRow>
+
+      <li className="border-b border-zinc-700/80 py-2 pr-3 pl-[5.25rem] text-xs leading-5 text-zinc-400 sm:pl-[7.75rem]">
+        注：{detail.specialSources.note}
+      </li>
+    </ol>
+  );
+}
+
+function WeakpointRules({ detail }: { detail: WeakpointMultiplierData }) {
+  return (
+    <>
+      <SectionHeading icon={Calculator}>计算规则</SectionHeading>
+      <p className="mb-5 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base xl:mb-3 xl:text-sm xl:leading-6">
+        弱点倍率由伤害来源的数值配置决定，命中有效弱点时按对应倍率参与伤害结算。
+      </p>
+
+      <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
+        <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">
+          倍率公式
+        </h4>
+        <p className="font-mono text-xs leading-5 text-zinc-200">
+          弱点倍率 = <AttributeName name={detail.formula} />
+        </p>
+
+        <h4 className="mt-4 mb-2 font-semibold text-zinc-100 xl:mt-3 xl:mb-1">
+          数值字段
+        </h4>
+        <p className="font-mono text-xs leading-5 text-zinc-200">
+          <AttributeName name={detail.scaleField} />
+        </p>
+
+        <h4 className="mt-4 mb-2 font-semibold text-zinc-100 xl:mt-3 xl:mb-1">
+          生效条件
+        </h4>
+        <p className="font-mono text-xs leading-5 text-zinc-200">
+          <AttributeName name={detail.enableField} /> = true
+        </p>
+      </div>
+    </>
+  );
+}
+
+function WeakpointMultiplierDetail({
+  detail,
+}: {
+  detail: WeakpointMultiplierData;
+}) {
+  return (
+    <>
+      <div className="grid xl:grid-cols-[minmax(16rem,0.85fr)_minmax(0,2.15fr)]">
+        <section className="border-b border-zinc-700 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
+          <WeakpointRules detail={detail} />
+        </section>
+
+        <section className="p-5 sm:p-6 xl:p-4">
+          <SectionHeading icon={Crosshair}>武器类型倍率</SectionHeading>
+          <WeakpointWeaponTable detail={detail} />
+        </section>
+      </div>
+
+      <footer className="flex items-start justify-center gap-2 border-t border-zinc-700 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
+        <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
+        <p>
+          以上为武器类型默认值与已确认的 1.0× 来源；武器技能、额外模式或特殊伤害事件以自身数值配置为准。
+        </p>
+      </footer>
+    </>
   );
 }
 
@@ -523,7 +682,9 @@ export function MultiplierOverview() {
             </h2>
           </header>
 
-          {selectedFactorId === "dilution" ? (
+          {selectedFactorId === "weakpoint-multiplier" ? (
+            <WeakpointMultiplierDetail detail={WEAKPOINT_MULTIPLIER_DATA} />
+          ) : selectedFactorId === "dilution" ? (
             <>
               <div className="grid md:grid-cols-2 xl:grid-cols-[1.15fr_0.8fr_0.9fr_1.65fr]">
                 <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r xl:border-b-0 xl:p-4">
