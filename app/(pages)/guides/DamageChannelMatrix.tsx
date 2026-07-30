@@ -22,13 +22,13 @@ type GroupFilter = "all" | DamageChannelGroup;
 const GROUP_OPTIONS: readonly { id: GroupFilter; label: string }[] = [
   { id: "all", label: "全部通道" },
   { id: "factor", label: "独立乘区" },
-  { id: "dilution", label: "大稀释细分" },
+  { id: "dilution", label: "大稀释乘区" },
   { id: "correction", label: "特殊修正" },
 ];
 
 const GROUP_LABELS: Record<DamageChannelGroup, string> = {
   factor: "独立乘区",
-  dilution: "大稀释细分",
+  dilution: "大稀释乘区",
   correction: "特殊修正",
 };
 
