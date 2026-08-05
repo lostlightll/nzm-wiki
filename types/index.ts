@@ -377,3 +377,13 @@ export interface TDEnemy {
   search_range?: number | string;
   description?: string;
 }
+
+export type {
+  DamageSection,
+  DamageSourceV2,
+  NumericalOverrides,
+  NumericalReference,
+  NumericalTable,
+  WeaponDataSourceRef,
+  WeaponSourceV2,
+} from "../lib/weapon-source-v2";

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:perk-release": "tsx --test lib/perk-release.test.ts",
+    "test:weapon-source-v2": "tsx --test lib/weapon-source-v2.test.ts",
     "webp": "pnpm exec tsx ./scripts/optimize-images.ts public/",
     "index": "tsx scripts/generate-search-index.ts"
   },
@@ -27,7 +28,8 @@
     "recharts": "^3.7.0",
     "rehype-katex": "^7.0.1",
     "remark-gfm": "^4.0.1",
-    "remark-math": "^6.0.0"
+    "remark-math": "^6.0.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
