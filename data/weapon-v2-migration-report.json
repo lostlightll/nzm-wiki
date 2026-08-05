@@ -17,12 +17,6 @@
     "differences": [
       {
         "differences": [
-          "source_references"
-        ],
-        "title": "冰川尼泊尔"
-      },
-      {
-        "differences": [
           "migration_status",
           "source_references",
           "active_skill_id"
@@ -33,13 +27,7 @@
         "differences": [
           "source_references"
         ],
-        "title": "渡鸦剑"
-      },
-      {
-        "differences": [
-          "source_references"
-        ],
-        "title": "死神镰刀"
+        "title": "炼狱蝎王"
       },
       {
         "differences": [
@@ -50,12 +38,12 @@
         "title": "夜影之逝"
       }
     ],
-    "different": 5,
-    "identical": 107
+    "different": 3,
+    "identical": 109
   },
   "decision_manifest": {
     "path": "data/weapon-v2-migration-decisions.json",
-    "sha256": "5151caf5770df553feeb72bcb90d7ee8be6290e8100bdf93a8ea3b3b110b510f"
+    "sha256": "2d258f37633bef8489d6e091ed36aa7a669c6d880f6e7c8ee46b6c1a359c9ac0"
   },
   "exclusions": {
     "by_owner": {

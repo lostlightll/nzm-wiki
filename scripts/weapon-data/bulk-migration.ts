@@ -94,13 +94,32 @@ const sourceIdentitySchema = z.strictObject({
   reason: z.string().trim().min(1),
 });
 
-const fieldDecisionSchema = z.strictObject({
+const legacyFieldDecisionSchema = z.strictObject({
   action: z.enum(["preserve_legacy", "accept_source"]),
   reason: z.string().trim().min(1),
   owner: ownerSchema,
 });
 
-const tableDecisionSchema = z.strictObject({
+const acceptedFieldDecisionSchema = z.strictObject({
+  action: z.literal("accept_source"),
+  reason: z.string().trim().min(1),
+  owner: ownerSchema,
+});
+
+const confirmedOverrideDecisionSchema = z.strictObject({
+  action: z.literal("confirmed_override"),
+  reason: z.string().trim().min(1),
+  owner: ownerSchema,
+  value: z.json(),
+  evidence_ids: z.array(z.string().regex(/^[a-z][a-z0-9-]*$/)).min(1),
+});
+
+export const reviewedFieldDecisionSchema = z.discriminatedUnion("action", [
+  acceptedFieldDecisionSchema,
+  confirmedOverrideDecisionSchema,
+]);
+
+const tableDecisionCommonShape = {
   exclude: z
     .strictObject({
       code: z.string().regex(/^[A-Z][A-Z0-9_]*$/),
@@ -119,9 +138,6 @@ const tableDecisionSchema = z.strictObject({
     })
     .optional(),
   sources: z.record(z.string(), weaponDataSourceRefSchema).default({}),
-  field_decisions: z
-    .record(z.string(), z.record(z.string(), fieldDecisionSchema))
-    .default({}),
   snapshot_differences: z
     .array(
       z.strictObject({
@@ -131,14 +147,68 @@ const tableDecisionSchema = z.strictObject({
       }),
     )
     .default([]),
+};
+
+const legacyTableDecisionSchema = z.strictObject({
+  ...tableDecisionCommonShape,
+  field_decisions: z
+    .record(z.string(), z.record(z.string(), legacyFieldDecisionSchema))
+    .default({}),
 });
 
-const weaponDecisionSchema = z
+const evidenceIdSchema = z.string().regex(/^[a-z][a-z0-9-]*$/);
+const fileEvidenceSchema = z.strictObject({
+  kind: z.enum(["prototype_field", "asset_property", "numerical_row"]),
+  path: z.string().trim().min(1),
+  pointer: z.string().startsWith("/"),
+  observed_value: z.json(),
+  sha256: z.string().regex(/^[a-f0-9]{64}$/),
+  note: z.string().trim().min(1),
+});
+const manualEvidenceSchema = z.strictObject({
+  kind: z.literal("manual_verification"),
+  note: z.string().trim().min(1),
+});
+export const reconciliationEvidenceSchema = z.discriminatedUnion("kind", [
+  fileEvidenceSchema,
+  manualEvidenceSchema,
+]);
+
+export const sourceReviewSchema = z.strictObject({
+  previous_effective_source: weaponDataSourceRefSchema,
+  resolution: z.enum(["confirmed", "corrected"]),
+  reason: z.string().trim().min(1),
+  evidence_ids: z.array(evidenceIdSchema).min(1),
+});
+
+const excludedTableDecisionV2Schema = z.strictObject({
+  ...tableDecisionCommonShape,
+  exclude: tableDecisionCommonShape.exclude.unwrap(),
+  field_decisions: z
+    .record(z.string(), z.record(z.string(), legacyFieldDecisionSchema))
+    .default({}),
+});
+
+const migratedTableDecisionV2Schema = z.strictObject({
+  ...tableDecisionCommonShape,
+  exclude: z.undefined().optional(),
+  field_decisions: z
+    .record(z.string(), z.record(z.string(), reviewedFieldDecisionSchema))
+    .default({}),
+  source_reviews: z.record(z.string(), sourceReviewSchema).default({}),
+});
+
+const tableDecisionV2Schema = z.union([
+  excludedTableDecisionV2Schema,
+  migratedTableDecisionV2Schema,
+]);
+
+const legacyWeaponDecisionSchema = z
   .strictObject({
     sources: z.record(z.string(), sourceIdentitySchema),
     tables: z.strictObject({
-      lc: tableDecisionSchema.optional(),
-      td: tableDecisionSchema.optional(),
+      lc: legacyTableDecisionSchema.optional(),
+      td: legacyTableDecisionSchema.optional(),
     }),
   })
   .superRefine((weapon, context) => {
@@ -171,14 +241,36 @@ const weaponDecisionSchema = z
     }
   });
 
-export const migrationDecisionsSchema = z.strictObject({
-  schema_version: z.literal(1),
-  weapons: z.record(z.string(), weaponDecisionSchema),
+const weaponDecisionV2Schema = z.strictObject({
+  sources: z.record(z.string(), sourceIdentitySchema),
+  tables: z.strictObject({
+    lc: tableDecisionV2Schema.optional(),
+    td: tableDecisionV2Schema.optional(),
+  }),
 });
+
+export const migrationDecisionsV1Schema = z.strictObject({
+  schema_version: z.literal(1),
+  weapons: z.record(z.string(), legacyWeaponDecisionSchema),
+});
+
+export const migrationDecisionsV2Schema = z.strictObject({
+  schema_version: z.literal(2),
+  evidence: z.record(evidenceIdSchema, reconciliationEvidenceSchema),
+  weapons: z.record(z.string(), weaponDecisionV2Schema),
+});
+
+export const migrationDecisionsSchema = z.union([
+  migrationDecisionsV1Schema,
+  migrationDecisionsV2Schema,
+]);
 
 export type MigrationDecisions = z.infer<typeof migrationDecisionsSchema>;
 type LegacyLocator = z.infer<typeof legacyLocatorSchema>;
-type TableDecision = z.infer<typeof tableDecisionSchema>;
+type TableDecision =
+  | z.infer<typeof legacyTableDecisionSchema>
+  | z.infer<typeof excludedTableDecisionV2Schema>
+  | z.infer<typeof migratedTableDecisionV2Schema>;
 
 interface WeaponFile {
   readonly table: NumericalTable;
@@ -860,6 +952,12 @@ function preserveValue(source: ResolvedDamageSource, field: string): unknown {
   return undefined;
 }
 
+function isOverrideDecision(
+  decision: { action: string },
+): boolean {
+  return decision.action === "preserve_legacy" || decision.action === "confirmed_override";
+}
+
 function buildDamageSource(
   legacy: LegacySource,
   identityKey: string,
@@ -880,8 +978,10 @@ function buildDamageSource(
   const overrides: Record<string, unknown> = {};
   const reasons: string[] = [];
   for (const [field, decision] of Object.entries(decisions)) {
-    if (decision.action !== "preserve_legacy") continue;
-    const value = preserveValue(legacy.resolved, field);
+    if (!isOverrideDecision(decision)) continue;
+    const value = decision.action === "confirmed_override"
+      ? decision.value
+      : preserveValue(legacy.resolved, field);
     if (value === undefined) {
       throw new Error(`${identityKey}:${field}: legacy value is not preservable`);
     }
@@ -1460,8 +1560,8 @@ function migratedDecisionIssues(
     const overridePath = (field: string): readonly string[] | undefined => {
       if (field.startsWith("damage.")) return ["numerical", ...field.split(".")];
       if (comparableFields.includes(field as ComparableField)) return ["numerical", field];
-      if (field === "fire.interval" && source.asc_type_id) return ["asc", "fire_interval"];
-      if (field === "attenuation" && source.asc_type_id) return ["asc", "attenuation"];
+      if (field === "fire.interval") return ["asc", "fire_interval"];
+      if (field === "attenuation") return ["asc", "attenuation"];
       return undefined;
     };
     const hasPath = (value: unknown, pathSegments: readonly string[]): boolean => {
@@ -1475,20 +1575,20 @@ function migratedDecisionIssues(
       return true;
     };
     for (const [field, decision] of Object.entries(fieldDecisions)) {
-      if (decision.action === "preserve_legacy") preserveReasons.push(decision.reason);
+      if (isOverrideDecision(decision)) preserveReasons.push(decision.reason);
       const pathSegments = overridePath(field);
       if (pathSegments) {
         const pathKey = pathSegments.join(".");
-        if (decision.action === "preserve_legacy") expectedOverridePaths.add(pathKey);
-        if (hasPath(actual.overrides, pathSegments) !== (decision.action === "preserve_legacy")) {
+        if (isOverrideDecision(decision)) expectedOverridePaths.add(pathKey);
+        if (hasPath(actual.overrides, pathSegments) !== isOverrideDecision(decision)) {
           issues.push(`${key}:${field}: override presence differs from decision action`);
         }
       } else if (field === "fire.interval") {
-        if ((actual.fire_interval !== undefined) !== (decision.action === "preserve_legacy")) {
+        if ((actual.fire_interval !== undefined) !== isOverrideDecision(decision)) {
           issues.push(`${key}:${field}: compatibility field presence differs from decision action`);
         }
       } else if (field === "fire.pellets") {
-        if ((actual.pellets !== undefined) !== (decision.action === "preserve_legacy")) {
+        if ((actual.pellets !== undefined) !== isOverrideDecision(decision)) {
           issues.push(`${key}:${field}: compatibility field presence differs from decision action`);
         }
       }
@@ -1500,19 +1600,25 @@ function migratedDecisionIssues(
         hasPath(actual.overrides, pathSegments) &&
         !expectedOverridePaths.has(pathSegments.join("."))
       ) {
-        issues.push(`${key}:${field}: override has no preserve_legacy decision`);
+        issues.push(`${key}:${field}: override has no reviewed override decision`);
       }
     }
-    if (actual.fire_interval !== undefined && fieldDecisions["fire.interval"]?.action !== "preserve_legacy") {
-      issues.push(`${key}:fire.interval: compatibility field has no preserve_legacy decision`);
+    if (
+      actual.fire_interval !== undefined &&
+      !fieldDecisions["fire.interval"]?.action?.match(/^(preserve_legacy|confirmed_override)$/)
+    ) {
+      issues.push(`${key}:fire.interval: compatibility field has no reviewed override decision`);
     }
-    if (actual.pellets !== undefined && fieldDecisions["fire.pellets"]?.action !== "preserve_legacy") {
-      issues.push(`${key}:fire.pellets: compatibility field has no preserve_legacy decision`);
+    if (
+      actual.pellets !== undefined &&
+      !fieldDecisions["fire.pellets"]?.action?.match(/^(preserve_legacy|confirmed_override)$/)
+    ) {
+      issues.push(`${key}:fire.pellets: compatibility field has no reviewed override decision`);
     }
     const expectedReason =
       expectedOverridePaths.size > 0 ? aggregateOverrideReasons(preserveReasons) : undefined;
     if (actual.override_reason !== expectedReason) {
-      issues.push(`${key}: override_reason differs from preserve_legacy decisions`);
+      issues.push(`${key}: override_reason differs from reviewed override decisions`);
     }
   }
   for (const source of weapon.damage_sources) {
@@ -1669,6 +1775,13 @@ interface SnapshotDifference {
   readonly reason: string;
 }
 
+export interface MigrationConsumerDifference {
+  readonly pointer: string;
+  readonly operation: "add" | "remove" | "replace";
+  readonly before?: unknown;
+  readonly after?: unknown;
+}
+
 function snapshotSourceIdMap(
   file: WeaponFile,
   decisions: MigrationDecisions,
@@ -1777,12 +1890,15 @@ function traceDifferences(
   return differences;
 }
 
-export function reviewedSnapshotDifferences(
+function collectConsumerSnapshotDifferences(
   baseline: Readonly<Record<string, MigrationSnapshotEntry>>,
   after: Readonly<Record<string, MigrationSnapshotEntry>>,
   decisions: MigrationDecisions,
-): Record<string, readonly SnapshotDifference[]> {
-  const result: Record<string, readonly SnapshotDifference[]> = {};
+): {
+  readonly differences: Readonly<Record<string, readonly MigrationConsumerDifference[]>>;
+  readonly issues: readonly string[];
+} {
+  const result: Record<string, readonly MigrationConsumerDifference[]> = {};
   const issues: string[] = [];
   for (const key of [...new Set([...Object.keys(baseline), ...Object.keys(after)])].sort()) {
     const before = baseline[key];
@@ -1800,13 +1916,57 @@ export function reviewedSnapshotDifferences(
       weaponDecision && tableDecision && !tableDecision.exclude
         ? baselineConsumerSourceIdMap(before.detail, weaponDecision, table)
         : {};
-    const consumer = diffValues(
+    result[key] = diffValues(
       {
         detail: remapConsumerSourceIds(before.detail, sourceIdMap),
         catalog: remapConsumerSourceIds(before.catalog, sourceIdMap),
       },
       { detail: current.detail, catalog: current.catalog },
     );
+  }
+  return { differences: result, issues };
+}
+
+export function currentMigrationConsumerDifferences(options: {
+  root?: string;
+  decisionsPath?: string;
+  snapshotPath?: string;
+} = {}): Readonly<Record<string, readonly MigrationConsumerDifference[]>> {
+  const root = path.resolve(options.root ?? ROOT);
+  const snapshotPath = path.resolve(options.snapshotPath ?? DEFAULT_MIGRATION_SNAPSHOT_PATH);
+  const decisions = readMigrationDecisions(options.decisionsPath);
+  const saved = JSON.parse(readFileSync(snapshotPath, "utf8")) as MigrationSnapshotFile;
+  const collected = collectConsumerSnapshotDifferences(
+    saved.baseline,
+    captureCurrentSnapshots(root, decisions),
+    decisions,
+  );
+  if (collected.issues.length > 0) {
+    throw new Error(
+      `migration snapshot comparison failed:\n${collected.issues.map((issue) => `- ${issue}`).join("\n")}`,
+    );
+  }
+  return collected.differences;
+}
+
+export function reviewedSnapshotDifferences(
+  baseline: Readonly<Record<string, MigrationSnapshotEntry>>,
+  after: Readonly<Record<string, MigrationSnapshotEntry>>,
+  decisions: MigrationDecisions,
+): Record<string, readonly SnapshotDifference[]> {
+  const result: Record<string, readonly SnapshotDifference[]> = {};
+  const collected = collectConsumerSnapshotDifferences(baseline, after, decisions);
+  const issues = [...collected.issues];
+  for (const key of [...new Set([...Object.keys(baseline), ...Object.keys(after)])].sort()) {
+    const before = baseline[key];
+    const current = after[key];
+    if (!before || !current) continue;
+    const separator = key.indexOf(":");
+    const table = key.slice(0, separator) as NumericalTable;
+    const title = key.slice(separator + 1);
+    const weaponDecision = decisions.weapons[title];
+    const tableDecision = weaponDecision?.tables[table];
+    const consumer = collected.differences[key] ?? [];
     const approved = new Map(
       (tableDecision?.snapshot_differences ?? []).map((difference) => [
         difference.pointer,

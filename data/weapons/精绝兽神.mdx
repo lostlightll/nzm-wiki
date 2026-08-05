@@ -50,48 +50,20 @@ damage_sources:
     name: 秘法榴弹
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: lc
-        id: 120100240
+        id: 120100242
         level: 1
     label: 爆炸伤害
-    overrides:
-      numerical:
-        damage:
-          base: 1.5
-          impulse: 0.15
-          toughness: 0.15
-          flesh: 15
-          hurtable: 15
-        element_add_rate: 0.15
-        weakness_multiplier: 1
-        enable_critical: false
-        enable_weakness: false
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,element_add_rate,enable_critical,enable_weakness,weakness_multiplier，原表差异待独立核验
   - id: mi-fa-liu-dan-fen-lie-tan
     name: 秘法榴弹分裂弹
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: lc
-        id: 120100240
+        id: 120100243
         level: 1
     label: 技能伤害
-    overrides:
-      numerical:
-        damage:
-          base: 0.7
-          impulse: 0.07
-          toughness: 0.07
-          flesh: 7
-          hurtable: 7
-        element_add_rate: 0.07
-        weakness_multiplier: 1
-        enable_critical: false
-        enable_weakness: false
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,element_add_rate,enable_critical,enable_weakness,weakness_multiplier，原表差异待独立核验
 ---
 
 <WeaponSkill>

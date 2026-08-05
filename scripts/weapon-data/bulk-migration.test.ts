@@ -389,7 +389,7 @@ damage_sources:
   writeJson(decisionsPath, decision("preserve_legacy", "另一原因"));
   assert.throws(
     () => checkMigrationCoverage({ root, decisionsPath }),
-    /override_reason differs from preserve_legacy decisions/,
+    /override_reason differs from reviewed override decisions/,
   );
 });
 

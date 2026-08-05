@@ -40,26 +40,15 @@ damage_sources:
       asc:
         attenuation:
           status: not_applicable
-    override_reason: 结构迁移保留旧 MDX 直接维护的 attenuation，原表差异待独立核验
+    override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
   - id: zhi-ming-lian-jie
     name: 致命链接
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: td
-        id: 121900101
+        id: 121900102
         level: 1
-    overrides:
-      numerical:
-        damage:
-          base: 0.08
-          impulse: 0
-          toughness: 0
-          flesh: 0
-          hurtable: 0
-        enable_critical: false
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,enable_critical，原表差异待独立核验
 ---
 
 <WeaponSkill>

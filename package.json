@@ -23,6 +23,13 @@
     "weapon-data:pilot-check": "tsx scripts/weapon-data/pilot-migration.ts check",
     "weapon-data:migration:report": "tsx scripts/weapon-data/bulk-migration.ts final-report",
     "weapon-data:migration:check": "tsx scripts/weapon-data/bulk-migration.ts check",
+    "weapon-data:reconciliation:report": "tsx scripts/weapon-data/source-reconciliation.ts report",
+    "weapon-data:reconciliation:upgrade": "tsx scripts/weapon-data/source-reconciliation.ts upgrade",
+    "weapon-data:reconciliation:apply": "tsx scripts/weapon-data/source-reconciliation.ts apply",
+    "weapon-data:reconciliation:snapshot-decisions": "tsx scripts/weapon-data/source-reconciliation.ts snapshot-decisions",
+    "weapon-data:reconciliation:document": "tsx scripts/weapon-data/source-reconciliation.ts document",
+    "weapon-data:reconciliation:check": "tsx scripts/weapon-data/source-reconciliation.ts check",
+    "test:weapon-data-reconciliation": "tsx --test scripts/weapon-data/source-reconciliation.test.ts",
     "weapon-data:static-check": "tsx scripts/weapon-data/static-boundary.ts",
     "webp": "pnpm exec tsx ./scripts/optimize-images.ts public/",
     "index": "tsx scripts/generate-search-index.ts"

@@ -533,6 +533,29 @@ gp-active-skill
 
 ---
 
+## Task 7.6：正式化 V2 临时来源兼容决策
+
+> 状态：已完成。101 个来源的核验结果、证据和正式 override 明细见 [`MD/WEAPON-V2-SOURCE-RECONCILIATION.md`](./WEAPON-V2-SOURCE-RECONCILIATION.md)。Task 8 仍保持待开始。
+
+### 目标
+
+将 Task 7 结构迁移期间以 `preserve_legacy` 暂存的 V2 来源差异逐项重核，改为完整、可追溯的正式来源或具名 override，不提前删除 V1 或开始 Task 8。
+
+### 验收结果
+
+- [x] 101 个受影响来源全部完成独立核验，其中 61 个确认原来源、40 个纠正完整来源。
+- [x] V2 MDX 中不再存在“结构迁移保留旧 MDX 直接维护”的临时理由。
+- [x] Numerical 差异采用核验后的来源行；20 个机制值以 typed ASC override 正式保留。
+- [x] 精绝兽神秘法榴弹与分裂弹分别使用独立 Numerical `120100242/243`，不再伪挂 Prototype Mode 0。
+- [x] Lock、迁移快照、消费者差异和来源证据均通过离线检查。
+- [x] 34 个 V1 排除表项及星海狂想既有正式 override 未被修改。
+
+### 依赖
+
+- Task 7 完成批量迁移。
+
+---
+
 ## Task 8：删除 V1、接入检查并完成收尾
 
 ### 目标
@@ -595,6 +618,7 @@ gp-active-skill
 | Task 5：迁移代表武器 | 已完成 | Task 4 | 试点 MDX、Lock、迁移前后快照 |
 | Task 6：切换全部消费者 | 已完成 | Task 5 | 页面、索引、图表、计算器统一入口 |
 | Task 7：批量迁移 LC / TD | 已完成 | Task 6 | 全量 V2、完整 Lock、人工核验清单 |
+| Task 7.6：正式化 V2 临时来源兼容决策 | 已完成 | Task 7 | 101 个来源复核、正式 override、证据与对账文档 |
 | Task 8：删除 V1 并收尾 | 待开始 | Task 7 | 单一正式管线、CI 检查、正式文档 |
 
 ## 3. 跨任务硬性规则

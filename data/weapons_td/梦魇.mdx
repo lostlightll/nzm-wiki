@@ -42,25 +42,11 @@ damage_sources:
     name: 导弹
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: td
-        id: 120600010
+        id: 120600011
         level: 1
     label: 技能伤害
-    overrides:
-      numerical:
-        damage:
-          base: 0.37
-          impulse: 3.7
-          toughness: 3.7
-          flesh: 3.7
-          hurtable: 3.7
-        element_add_rate: 0.185
-        weakness_multiplier: 1
-        enable_critical: false
-        enable_weakness: false
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,element_add_rate,enable_critical,enable_weakness,weakness_multiplier，原表差异待独立核验
 ---
 
 <WeaponSkill>

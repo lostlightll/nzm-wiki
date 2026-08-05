@@ -47,102 +47,43 @@ damage_sources:
     name: 切刀近战
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: td
-        id: 120300240
+        id: 120300242
         level: 1
-    overrides:
-      numerical:
-        damage:
-          base: 1.5
-          impulse: 22.3
-          toughness: 22.3
-          flesh: 18.2
-          hurtable: 18.2
-        element_add_rate: 1
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,element_add_rate，原表差异待独立核验
   - id: guan-chang-hong-jian-qi
     name: 贯长虹剑气
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: td
-        id: 120300240
+        id: 120300245
         level: 1
-    overrides:
-      numerical:
-        damage:
-          base: 3.15
-          impulse: 28.2
-          toughness: 28.2
-          flesh: 23.1
-          hurtable: 23.1
-        element_add_rate: 1
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,element_add_rate，原表差异待独立核验
   - id: lian-zhan-qian-7-dao
     name: 连斩前7刀
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: td
-        id: 120300240
+        id: 120300243
         level: 1
-    overrides:
-      numerical:
-        damage:
-          base: 0.135
-          impulse: 6.9
-          toughness: 6.9
-          flesh: 5.7
-          hurtable: 5.7
-        element_add_rate: 0.3895946
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,element_add_rate，原表差异待独立核验
   - id: lian-zhan-di-8-dao
     name: 连斩第8刀
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: td
-        id: 120300240
+        id: 120300244
         level: 1
-    overrides:
-      numerical:
-        damage:
-          base: 0.285
-          impulse: 14.4
-          toughness: 14.4
-          flesh: 11.8
-          hurtable: 11.8
-        element_add_rate: 0.8127027
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,element_add_rate，原表差异待独立核验
   - id: jin-zhan-hui-xue
     name: 近战回血
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: td
-        id: 120300240
+        id: 120300246
         level: 1
     label: 护盾回复
-    overrides:
-      numerical:
-        damage:
-          base: 0.3
-          impulse: 0
-          toughness: 0
-          flesh: 0
-          hurtable: 0
-        element: 物理
-        element_add_rate: 0
-        weakness_multiplier: 1
-        enable_critical: false
-        enable_weakness: false
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,element,element_add_rate,enable_critical,enable_weakness,weakness_multiplier，原表差异待独立核验
 ---
 
 <WeaponSkill>

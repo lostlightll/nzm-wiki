@@ -37,48 +37,20 @@ damage_sources:
     name: 冰弹命中
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: lc
-        id: 120300120
+        id: 120300122
         level: 1
     label: 技能伤害
-    overrides:
-      numerical:
-        damage:
-          base: 0.2
-          impulse: 0
-          toughness: 0
-          flesh: 2
-          hurtable: 2
-        element_add_rate: 0
-        weakness_multiplier: 1
-        enable_critical: false
-        enable_weakness: false
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,element_add_rate,enable_critical,enable_weakness,weakness_multiplier，原表差异待独立核验
   - id: sui-bing
     name: 碎冰
     section: special
     source:
-      prototype_mode: 0
       numerical:
         table: lc
-        id: 120300120
+        id: 120300121
         level: 1
     label: 技能伤害
-    overrides:
-      numerical:
-        damage:
-          base: 0.6
-          impulse: 0
-          toughness: 0
-          flesh: 6
-          hurtable: 6
-        element_add_rate: 0
-        weakness_multiplier: 1
-        enable_critical: false
-        enable_weakness: false
-    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,damage.hurtable,damage.impulse,damage.toughness,element_add_rate,enable_critical,enable_weakness,weakness_multiplier，原表差异待独立核验
 ---
 
 <WeaponSkill>
