@@ -87,6 +87,27 @@ const defaultRows: Record<WeaponDataSourceKind, Rows> = {
       NumericalID: 120300111,
     },
   },
+  "skill-pve": {
+    "5100101_1": {
+      SkillID: 5100101,
+      Level: 1,
+      ChargeNeedTime: 45,
+      SkillCount: 1,
+      Parameters: [{ Name: "Unknown", Value: "kept" }],
+    },
+  },
+  "gp-active-skill": {
+    "5004901": {
+      AbilityID: 5004901,
+      CooldownDuration: 30,
+      MaxChargeStackCount: 1,
+    },
+    "5000501": {
+      AbilityID: 5004701,
+      CooldownDuration: 15,
+      MaxChargeStackCount: 1,
+    },
+  },
 };
 
 function writeSource(root: string, kind: WeaponDataSourceKind, value: unknown): void {
@@ -123,7 +144,7 @@ function captureSourceError(action: () => unknown): WeaponDataSourceError {
   assert.fail("expected WeaponDataSourceError");
 }
 
-test("精确读取六类来源并完整保留未知原始字段", (context) => {
+test("精确读取八类来源并完整保留未知原始字段", (context) => {
   const { reader } = createFixture(context);
   const numerical = reader.getNumerical({ table: "lc", id: 120300110, level: 1 });
 
@@ -143,6 +164,40 @@ test("精确读取六类来源并完整保留未知原始字段", (context) => {
   assert.equal(reader.getFeel("143").rowName, "143");
   assert.equal(reader.getItem("20103000010").raw.AccuracyInt, 77);
   assert.equal(reader.getPrototype({ prototypeId: "20003000011", mode: 0 }).rowName, "飓风之龙");
+  assert.deepEqual(
+    reader.getWeaponPveSkill({ skillId: 5100101, level: 1 }).raw.Parameters,
+    [{ Name: "Unknown", Value: "kept" }],
+  );
+  assert.equal(reader.getGpActiveSkill(5004901).raw.CooldownDuration, 30);
+});
+
+test("PVE 技能身份严格校验，GP 使用 rowName 并保留 AbilityID 差异诊断", (context) => {
+  const { reader } = createFixture(context);
+  assert.equal(
+    reader.getWeaponPveSkill({ skillId: 5100101, level: 1 }).key,
+    "5100101_1",
+  );
+  assert.equal(reader.getGpActiveSkill(5000501).raw.AbilityID, 5004701);
+  assert.deepEqual(reader.getGpActiveSkillDiagnostics(), [
+    {
+      code: "GP_ACTIVE_SKILL_IDENTITY_MISMATCH",
+      kind: "gp-active-skill",
+      sourcePath: "DataTables/GPActiveSkillDataTable.json",
+      rowName: "5000501",
+      rawAbilityId: 5004701,
+    },
+  ]);
+
+  const invalidPve = createFixture(context, {
+    "skill-pve": {
+      alias: { SkillID: 5100101, Level: 1 },
+    },
+  });
+  const error = captureSourceError(() =>
+    invalidPve.reader.getWeaponPveSkill({ skillId: 5100101, level: 1 }),
+  );
+  assert.equal(error.code, "KEY_MISMATCH");
+  assert.match(error.message, /SkillConfigTable_Weapon_PVE\.json/);
 });
 
 test("LC 和 TD 同 ID 保持隔离，禁止跨表回退", (context) => {
@@ -347,6 +402,18 @@ test(
       reader
         .getNumericalDiagnostics()
         .some((diagnostic) => diagnostic.rowName === "11010053_2"),
+    );
+    assert.equal(
+      reader.getWeaponPveSkill({ skillId: 5100101, level: 1 }).raw
+        .ChargeNeedTime,
+      45,
+    );
+    assert.deepEqual(
+      reader
+        .getGpActiveSkillDiagnostics()
+        .map((diagnostic) => diagnostic.rowName)
+        .sort(),
+      ["5000501", "5102901"],
     );
   },
 );

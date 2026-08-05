@@ -10,6 +10,7 @@
     "test:perk-release": "tsx --test lib/perk-release.test.ts",
     "test:weapon-source-v2": "tsx --test lib/weapon-source-v2.test.ts",
     "test:weapon-data-reader": "tsx --test scripts/weapon-data/source-reader.test.ts",
+    "test:weapon-skill-charge": "tsx --test scripts/weapon-data/skill-charge.test.ts",
     "webp": "pnpm exec tsx ./scripts/optimize-images.ts public/",
     "index": "tsx scripts/generate-search-index.ts"
   },

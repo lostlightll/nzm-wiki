@@ -1,6 +1,6 @@
 # 武器原表读取层
 
-> 状态：Task 2 正式接口
+> 状态：Task 2–2.5 正式接口
 > 日期：2026-08-05
 > 实现：`scripts/weapon-data/source-reader.ts`
 
@@ -18,7 +18,7 @@
 
 ## 2. 数据源注册
 
-读取器首轮固定支持六个物理来源：
+读取器经 Task 2.5 扩展后固定支持八个物理来源：
 
 | 逻辑来源 | `NZM/Content` 相对路径 | 稳定索引 |
 | :--- | :--- | :--- |
@@ -28,6 +28,8 @@
 | `feel` | `DataTables/WeaponFeelParamTable.json` | `WeaponFeelParamID` |
 | `item` | `DataTables/LuaDataTable/WeaponItemConfigTable.json` | `ItemID` |
 | `prototype` | `DataTables/WeaponPrototypeConfig.json` | `PrototypeID:Mode` 候选集 |
+| `skill-pve` | `DataTables/SkillConfigTable_Weapon_PVE.json` | `${SkillID}_${Level}` |
+| `gp-active-skill` | `DataTables/GPActiveSkillDataTable.json` | Unreal rowName |
 
 Item 文件在当前导出中的真实位置包含 `DataTables/` 前缀。该路径只在集中注册表中维护，消费者不得自行拼接。
 
@@ -49,6 +51,9 @@ reader.getItem("20103000010");
 reader.findItemsByPrototypeId("20003000011");
 reader.getPrototypeCandidates("20003000011", 0);
 reader.getPrototype({ prototypeId: "20003000011", mode: 0, rowName });
+reader.getWeaponPveSkill({ skillId: 5100101, level: 1 });
+reader.getGpActiveSkill(5004901);
+reader.getGpActiveSkillDiagnostics();
 reader.validatePrototypeLink({
   prototypeId: "20003000011",
   mode: 0,
@@ -93,6 +98,14 @@ Prototype 的 `${PrototypeID}:${Mode}` 不是天然唯一键，因此索引保�
 - 多候选必须传入原始 `rowName` 消歧；不比较内容后静默合并，也不使用 first-wins。
 
 `validatePrototypeLink()` 校验 ASC 与 `ASCTypeID` 一致，并确认 Numerical ID 命中 Prototype 的主伤害、爆炸、激光、轻重击、击飞或自身/队友爆炸字段之一。返回值保留具体命中的原字段名，不把它翻译成 Settlement 或页面 section。显式 ASC 存在时，同时检查 ASC 行和有效 Feel 行；Feel 未指定时使用 ASC ID。
+
+### Skill PVE 与 GP Active Skill
+
+PVE Skill 的规范键由行内 `SkillID + Level` 构成，并且必须与 Unreal rowName 一致。缺失身份、派生键重复或行名不一致会拒绝加载。
+
+GP Active Skill 使用 Unreal rowName 作为权威技能 ID。当前原表存在 `5000501 → AbilityID 5004701` 和 `5102901 → AbilityID 5004101` 两条真实差异，因此读取器保留原始 `AbilityID` 并通过 `getGpActiveSkillDiagnostics()` 报告，不自动修复或让整表加载失败。
+
+跨 PVE / GP 的优先级不属于物理读取职责，由 `scripts/weapon-data/skill-charge.ts` 实现：PVE 整行优先，仅在 PVE 行缺失时使用 GP 整行。非法 PVE 行、零值和 PVE/GP 数值不同都不能触发 fallback。
 
 ## 5. 错误契约
 

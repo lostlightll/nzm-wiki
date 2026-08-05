@@ -12,6 +12,8 @@ export const WEAPON_DATA_SOURCE_FILES = Object.freeze({
   feel: "DataTables/WeaponFeelParamTable.json",
   item: "DataTables/LuaDataTable/WeaponItemConfigTable.json",
   prototype: "DataTables/WeaponPrototypeConfig.json",
+  "skill-pve": "DataTables/SkillConfigTable_Weapon_PVE.json",
+  "gp-active-skill": "DataTables/GPActiveSkillDataTable.json",
 } as const);
 
 export type WeaponDataSourceKind = keyof typeof WEAPON_DATA_SOURCE_FILES;
@@ -84,6 +86,8 @@ export type AscSourceRow = WeaponDataSourceRow<"asc">;
 export type FeelSourceRow = WeaponDataSourceRow<"feel">;
 export type ItemSourceRow = WeaponDataSourceRow<"item">;
 export type PrototypeSourceRow = WeaponDataSourceRow<"prototype">;
+export type WeaponPveSkillSourceRow = WeaponDataSourceRow<"skill-pve">;
+export type GpActiveSkillSourceRow = WeaponDataSourceRow<"gp-active-skill">;
 
 export interface NumericalSourceDiagnostic {
   readonly code: "NUMERICAL_IDENTITY_MISMATCH";
@@ -93,6 +97,14 @@ export interface NumericalSourceDiagnostic {
   readonly expectedRowName: string | undefined;
   readonly rawId: unknown;
   readonly rawLevel: unknown;
+}
+
+export interface GpActiveSkillSourceDiagnostic {
+  readonly code: "GP_ACTIVE_SKILL_IDENTITY_MISMATCH";
+  readonly kind: "gp-active-skill";
+  readonly sourcePath: string;
+  readonly rowName: string;
+  readonly rawAbilityId: unknown;
 }
 
 export interface PrototypeLookup {
@@ -147,6 +159,12 @@ export interface WeaponDataSourceReader {
     mode: number,
   ): readonly PrototypeSourceRow[];
   getPrototype(lookup: PrototypeLookup): PrototypeSourceRow;
+  getWeaponPveSkill(reference: {
+    skillId: number;
+    level: number;
+  }): WeaponPveSkillSourceRow;
+  getGpActiveSkill(skillId: number): GpActiveSkillSourceRow;
+  getGpActiveSkillDiagnostics(): readonly GpActiveSkillSourceDiagnostic[];
   validatePrototypeLink(
     input: ValidatePrototypeLinkInput,
   ): PrototypeLinkValidation;
@@ -166,6 +184,15 @@ interface LoadedItems extends LoadedIdentityRows<"item"> {
 
 interface LoadedPrototypes {
   readonly byKey: ReadonlyMap<string, readonly PrototypeSourceRow[]>;
+}
+
+interface LoadedWeaponPveSkills {
+  readonly byKey: ReadonlyMap<string, WeaponPveSkillSourceRow>;
+}
+
+interface LoadedGpActiveSkills {
+  readonly byKey: ReadonlyMap<string, GpActiveSkillSourceRow>;
+  readonly diagnostics: readonly GpActiveSkillSourceDiagnostic[];
 }
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
@@ -226,6 +253,8 @@ export function createWeaponDataSourceReader(
   >();
   let itemCache: LoadedItems | undefined;
   let prototypeCache: LoadedPrototypes | undefined;
+  let weaponPveSkillCache: LoadedWeaponPveSkills | undefined;
+  let gpActiveSkillCache: LoadedGpActiveSkills | undefined;
   const numericalDiagnostics = new Map<
     "numerical-lc" | "numerical-td",
     readonly NumericalSourceDiagnostic[]
@@ -464,6 +493,82 @@ export function createWeaponDataSourceReader(
     return prototypeCache;
   }
 
+  function loadWeaponPveSkills(): LoadedWeaponPveSkills {
+    if (weaponPveSkillCache) return weaponPveSkillCache;
+
+    const rows = loadRows("skill-pve");
+    const byKey = new Map<string, WeaponPveSkillSourceRow>();
+    for (const row of rows.byRowName.values()) {
+      const skillId = normalizePositiveId(row.raw.SkillID);
+      const level = normalizePositiveId(row.raw.Level);
+      if (!skillId || !level) {
+        throw new WeaponDataSourceError(
+          "INVALID_ROW",
+          context("skill-pve", row.rowName),
+          "SkillID and Level must be positive integer IDs",
+        );
+      }
+
+      const key = `${skillId}_${level}`;
+      const previous = byKey.get(key);
+      if (previous) {
+        throw new WeaponDataSourceError(
+          "DUPLICATE_KEY",
+          context("skill-pve", key),
+          `identity is shared by rows ${previous.rowName} and ${row.rowName}`,
+        );
+      }
+      if (key !== row.rowName) {
+        throw new WeaponDataSourceError(
+          "KEY_MISMATCH",
+          context("skill-pve", key),
+          `SkillID and Level do not match Unreal row name ${row.rowName}`,
+        );
+      }
+      byKey.set(key, row);
+    }
+
+    weaponPveSkillCache = Object.freeze({ byKey });
+    return weaponPveSkillCache;
+  }
+
+  function loadGpActiveSkills(): LoadedGpActiveSkills {
+    if (gpActiveSkillCache) return gpActiveSkillCache;
+
+    const rows = loadRows("gp-active-skill");
+    const byKey = new Map<string, GpActiveSkillSourceRow>();
+    const diagnostics: GpActiveSkillSourceDiagnostic[] = [];
+    for (const row of rows.byRowName.values()) {
+      if (!normalizePositiveId(row.rowName)) {
+        throw new WeaponDataSourceError(
+          "INVALID_ROW",
+          context("gp-active-skill", row.rowName),
+          "Unreal row name must be a positive integer skill ID",
+        );
+      }
+      byKey.set(row.rowName, row);
+
+      const abilityId = normalizePositiveId(row.raw.AbilityID);
+      if (abilityId !== row.rowName) {
+        diagnostics.push(
+          Object.freeze({
+            code: "GP_ACTIVE_SKILL_IDENTITY_MISMATCH",
+            kind: "gp-active-skill",
+            sourcePath: row.sourcePath,
+            rowName: row.rowName,
+            rawAbilityId: row.raw.AbilityID,
+          }),
+        );
+      }
+    }
+
+    gpActiveSkillCache = Object.freeze({
+      byKey,
+      diagnostics: Object.freeze(diagnostics),
+    });
+    return gpActiveSkillCache;
+  }
+
   function getIdentityRow<Kind extends "asc" | "feel">(
     kind: Kind,
     id: string,
@@ -642,6 +747,39 @@ export function createWeaponDataSourceReader(
     },
     getPrototypeCandidates,
     getPrototype,
+    getWeaponPveSkill({
+      skillId,
+      level,
+    }: {
+      skillId: number;
+      level: number;
+    }) {
+      const key = `${skillId}_${level}`;
+      const row = loadWeaponPveSkills().byKey.get(key);
+      if (!row) {
+        throw new WeaponDataSourceError(
+          "NOT_FOUND",
+          context("skill-pve", key),
+          "referenced row does not exist",
+        );
+      }
+      return row;
+    },
+    getGpActiveSkill(skillId: number) {
+      const key = String(skillId);
+      const row = loadGpActiveSkills().byKey.get(key);
+      if (!row) {
+        throw new WeaponDataSourceError(
+          "NOT_FOUND",
+          context("gp-active-skill", key),
+          "referenced row does not exist",
+        );
+      }
+      return row;
+    },
+    getGpActiveSkillDiagnostics() {
+      return loadGpActiveSkills().diagnostics;
+    },
     validatePrototypeLink,
   });
 }
