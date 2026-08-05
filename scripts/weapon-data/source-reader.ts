@@ -147,6 +147,7 @@ export interface CreateWeaponDataSourceReaderOptions {
 
 export interface WeaponDataSourceReader {
   getNumerical(reference: NumericalReference): NumericalSourceRow;
+  getNumericalRows(table: NumericalTable): readonly NumericalSourceRow[];
   getNumericalDiagnostics(
     table?: NumericalTable,
   ): readonly NumericalSourceDiagnostic[];
@@ -158,6 +159,7 @@ export interface WeaponDataSourceReader {
     prototypeId: string,
     mode: number,
   ): readonly PrototypeSourceRow[];
+  getPrototypeRows(prototypeId: string): readonly PrototypeSourceRow[];
   getPrototype(lookup: PrototypeLookup): PrototypeSourceRow;
   getWeaponPveSkill(reference: {
     skillId: number;
@@ -184,6 +186,7 @@ interface LoadedItems extends LoadedIdentityRows<"item"> {
 
 interface LoadedPrototypes {
   readonly byKey: ReadonlyMap<string, readonly PrototypeSourceRow[]>;
+  readonly byPrototypeId: ReadonlyMap<string, readonly PrototypeSourceRow[]>;
 }
 
 interface LoadedWeaponPveSkills {
@@ -468,6 +471,7 @@ export function createWeaponDataSourceReader(
 
     const rows = loadRows("prototype");
     const mutableByKey = new Map<string, PrototypeSourceRow[]>();
+    const mutableByPrototypeId = new Map<string, PrototypeSourceRow[]>();
     for (const row of rows.byRowName.values()) {
       const prototypeId = normalizePositiveId(row.raw.PrototypeID);
       const mode = normalizeNonNegativeInteger(row.raw.Mode);
@@ -483,13 +487,20 @@ export function createWeaponDataSourceReader(
       const candidates = mutableByKey.get(key) ?? [];
       candidates.push(indexedRow);
       mutableByKey.set(key, candidates);
+      const prototypeRows = mutableByPrototypeId.get(prototypeId) ?? [];
+      prototypeRows.push(indexedRow);
+      mutableByPrototypeId.set(prototypeId, prototypeRows);
     }
 
     const byKey = new Map<string, readonly PrototypeSourceRow[]>();
     for (const [key, candidates] of mutableByKey) {
       byKey.set(key, Object.freeze(candidates));
     }
-    prototypeCache = Object.freeze({ byKey });
+    const byPrototypeId = new Map<string, readonly PrototypeSourceRow[]>();
+    for (const [prototypeId, candidates] of mutableByPrototypeId) {
+      byPrototypeId.set(prototypeId, Object.freeze(candidates));
+    }
+    prototypeCache = Object.freeze({ byKey, byPrototypeId });
     return prototypeCache;
   }
 
@@ -713,6 +724,13 @@ export function createWeaponDataSourceReader(
 
   return Object.freeze({
     getNumerical,
+    getNumericalRows(table: NumericalTable) {
+      return Object.freeze(
+        [...loadNumerical(table).byRowName.values()].map((row) =>
+          Object.freeze({ ...row, key: `${table}:${row.rowName}`, table }),
+        ),
+      );
+    },
     getNumericalDiagnostics(table?: NumericalTable) {
       if (table) {
         loadNumerical(table);
@@ -746,6 +764,9 @@ export function createWeaponDataSourceReader(
       return loadItems().byPrototypeId.get(prototypeId) ?? Object.freeze([]);
     },
     getPrototypeCandidates,
+    getPrototypeRows(prototypeId: string) {
+      return loadPrototypes().byPrototypeId.get(prototypeId) ?? Object.freeze([]);
+    },
     getPrototype,
     getWeaponPveSkill({
       skillId,

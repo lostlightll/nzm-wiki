@@ -1711,6 +1711,48 @@ function applyAttenuationOverride(
     : { status: "not_applicable", ...shared };
 }
 
+function applyInvalidAttenuationOverride(
+  raw: AttenuationRawValue,
+  provenance: FieldProvenance[],
+  override: AttenuationOverride,
+  step: DamageSourceOverrideStep,
+  sourceId: string,
+  diagnostics: ResolutionDiagnostic[],
+): ResolvedAttenuation {
+  const after: AttenuationTraceValue =
+    override.status === "applicable"
+      ? {
+          status: "applicable",
+          beginMeters: override.begin_meters,
+          endMeters: override.end_meters,
+          minScale: override.min_scale,
+        }
+      : { status: "not_applicable" };
+  const trace: OverrideTrace<AttenuationTraceValue> = {
+    sourceId: step.sourceId,
+    reason: step.reason,
+    after,
+  };
+  diagnostic(diagnostics, {
+    severity: "info",
+    code: "OVERRIDE_APPLIED",
+    path: sourcePath(sourceId, "attenuation"),
+    message: "Applied override to invalid raw attenuation",
+    sourceId: step.sourceId,
+  });
+  const shared = {
+    raw,
+    provenance: [
+      ...provenance,
+      { kind: "override" as const, rawField: "attenuation", sourceId: step.sourceId },
+    ],
+    overrideHistory: [trace],
+  };
+  return after.status === "applicable"
+    ? { ...after, ...shared }
+    : { status: "not_applicable", ...shared };
+}
+
 function applyFireIntervalOverride(
   fire: ResolvedFireBehavior,
   value: number,
@@ -2067,13 +2109,6 @@ function parseBehavior(
   const beginCm = attenuationNumber(raw, "DistanceBeginAttenuationBase", source.id, ascId);
   const endCm = attenuationNumber(raw, "DistanceEndAttenuationBase", source.id, ascId);
   const minScale = attenuationNumber(raw, "AttenuationMinScale", source.id, ascId);
-  if (minScale > 1) {
-    throw new WeaponResolutionError(
-      "INVALID_ATTENUATION",
-      "AttenuationMinScale must be between 0 and 1",
-      { path: sourcePath(source.id, "attenuation"), sourceId: source.id, sourceKey: ascId },
-    );
-  }
   const rawAttenuation = { beginCm, endCm, minScale };
   const attenuationProvenance = lockProvenance(
     "lock-asc",
@@ -2081,15 +2116,19 @@ function parseBehavior(
     "DistanceBeginAttenuationBase",
     origin,
   );
+  const attenuationOverrideSteps = effective.overrideChain.filter(
+    (step) => step.overrides.asc?.attenuation,
+  );
   let attenuation: ResolvedAttenuation;
-  if (beginCm === 0 && endCm === 0) {
+  let appliedInvalidOverride = false;
+  if (minScale <= 1 && beginCm === 0 && endCm === 0) {
     attenuation = {
       status: "not_applicable",
       raw: rawAttenuation,
       provenance: attenuationProvenance,
       overrideHistory: [],
     };
-  } else if (endCm > beginCm && endCm > 0) {
+  } else if (minScale <= 1 && endCm > beginCm && endCm > 0) {
     attenuation = {
       status: "applicable",
       beginMeters: beginCm / 100,
@@ -2100,11 +2139,25 @@ function parseBehavior(
       overrideHistory: [],
     };
   } else {
-    throw new WeaponResolutionError(
-      "INVALID_ATTENUATION",
-      "attenuation end must be greater than begin and zero",
-      { path: sourcePath(source.id, "attenuation"), sourceId: source.id, sourceKey: ascId },
+    const firstOverride = attenuationOverrideSteps[0];
+    if (!firstOverride) {
+      throw new WeaponResolutionError(
+        "INVALID_ATTENUATION",
+        minScale > 1
+          ? "AttenuationMinScale must be between 0 and 1"
+          : "attenuation end must be greater than begin and zero",
+        { path: sourcePath(source.id, "attenuation"), sourceId: source.id, sourceKey: ascId },
+      );
+    }
+    attenuation = applyInvalidAttenuationOverride(
+      rawAttenuation,
+      attenuationProvenance,
+      firstOverride.overrides.asc!.attenuation!,
+      firstOverride,
+      source.id,
+      context.diagnostics,
     );
+    appliedInvalidOverride = true;
   }
   for (const step of effective.overrideChain) {
     const ascOverride = step.overrides.asc;
@@ -2119,6 +2172,10 @@ function parseBehavior(
       );
     }
     if (ascOverride.attenuation) {
+      if (appliedInvalidOverride) {
+        appliedInvalidOverride = false;
+        continue;
+      }
       attenuation = applyAttenuationOverride(
         attenuation,
         ascOverride.attenuation,

@@ -366,9 +366,7 @@ test(
       ["火神炎帝.mdx", 45, 0],
     ].sort());
     assert.deepEqual(referenceDifferences.sort(), [
-      ["振弦.mdx", 5004501, 5004901],
       ["暗夜之殇.mdx", 0, 5100101],
-      ["炼狱蝎王.mdx", 5102701, 5104101],
     ].sort());
 
     const steel = auditActiveSkillReference(reader, {

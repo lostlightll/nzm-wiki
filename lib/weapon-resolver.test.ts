@@ -291,6 +291,48 @@ test("invalid Settlement, missing Lock and invalid attenuation fail with stable 
     ).code,
     "INVALID_ATTENUATION",
   );
+
+  const rescuedAttenuation = lock();
+  rescuedAttenuation.rows.asc["10"].raw.DistanceBeginAttenuationBase = 500;
+  rescuedAttenuation.rows.asc["10"].raw.DistanceEndAttenuationBase = 500;
+  const rescued = resolveWeapon(
+    weapon({
+      damage_sources: [
+        {
+          id: "primary",
+          name: "普通射击",
+          section: "fire_mode",
+          source: {
+            numerical: { table: "lc", id: 1, level: 1 },
+            asc_type_id: "10",
+          },
+          overrides: {
+            asc: {
+              attenuation: {
+                status: "applicable",
+                begin_meters: 10,
+                end_meters: 20,
+                min_scale: 0.5,
+              },
+            },
+          },
+          override_reason: "保留已发布衰减",
+        },
+      ],
+    }),
+    {
+      slug: "rescued-attenuation",
+      expectedTable: "lc",
+      lock: rescuedAttenuation,
+    },
+  );
+  assert.equal(rescued.damageSources[0].attenuation.status, "applicable");
+  assert.deepEqual(rescued.damageSources[0].attenuation.raw, {
+    beginCm: 500,
+    endCm: 500,
+    minScale: 0.5,
+  });
+  assert.equal(rescued.damageSources[0].attenuation.overrideHistory.length, 1);
 });
 
 test("Numerical overrides preserve zero and reject Settlement-inapplicable fields", () => {
@@ -891,6 +933,6 @@ test("all remaining LC and TD V1 files retain byte-shape legacy behavior", () =>
       v1Count += 1;
     }
   }
-  assert.equal(v1Count, 214);
-  assert.equal(v2Count, 10);
+  assert.equal(v1Count, 34);
+  assert.equal(v2Count, 190);
 });

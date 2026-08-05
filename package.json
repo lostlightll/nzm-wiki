@@ -14,9 +14,12 @@
     "test:weapon-data-reader": "tsx --test scripts/weapon-data/source-reader.test.ts",
     "test:weapon-skill-charge": "tsx --test scripts/weapon-data/skill-charge.test.ts",
     "test:weapon-data-lock": "tsx --test scripts/weapon-data/lock.test.ts",
+    "test:weapon-v2-migration": "tsx --test scripts/weapon-data/bulk-migration.test.ts",
     "weapon-data:lock": "tsx scripts/weapon-data/lock-cli.ts refresh",
     "weapon-data:check": "tsx scripts/weapon-data/lock-cli.ts check",
     "weapon-data:pilot-check": "tsx scripts/weapon-data/pilot-migration.ts check",
+    "weapon-data:migration:report": "tsx scripts/weapon-data/bulk-migration.ts final-report",
+    "weapon-data:migration:check": "tsx scripts/weapon-data/bulk-migration.ts check",
     "webp": "pnpm exec tsx ./scripts/optimize-images.ts public/",
     "index": "tsx scripts/generate-search-index.ts"
   },
@@ -37,6 +40,7 @@
     "rehype-katex": "^7.0.1",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
+    "yaml": "2.8.2",
     "zod": "^4.3.6"
   },
   "devDependencies": {

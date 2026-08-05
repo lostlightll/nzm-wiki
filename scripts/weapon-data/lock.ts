@@ -380,7 +380,7 @@ function buildSourceMetadata(
   ) as WeaponDataLock["sources"];
 }
 
-function selectPrototypeRowName(
+export function selectWeaponPrototypeRowName(
   reader: WeaponDataSourceReader,
   prototypeId: string,
   mode: number,
@@ -421,7 +421,7 @@ function auditPrototypeLinks(
         continue;
       }
       try {
-        const rowName = selectPrototypeRowName(
+        const rowName = selectWeaponPrototypeRowName(
           reader,
           weapon.prototype_id,
           mode,
@@ -463,7 +463,7 @@ function auditPrototypeLinks(
 
     if (weapon.active_skill_id !== undefined) {
       try {
-        const prototypeRowName = selectPrototypeRowName(
+        const prototypeRowName = selectWeaponPrototypeRowName(
           reader,
           weapon.prototype_id,
           0,

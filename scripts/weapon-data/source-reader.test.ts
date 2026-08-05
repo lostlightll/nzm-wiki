@@ -176,6 +176,15 @@ test("精确读取八类来源并完整保留未知原始字段", (context) => {
   assert.equal(reader.getFeel("143").rowName, "143");
   assert.equal(reader.getItem("20103000010").raw.AccuracyInt, 77);
   assert.equal(reader.getPrototype({ prototypeId: "20003000011", mode: 0 }).rowName, "飓风之龙");
+  assert.ok(
+    reader
+      .getNumericalRows("lc")
+      .some((row) => row.key === "lc:120300110_1" && row.table === "lc"),
+  );
+  assert.deepEqual(
+    reader.getPrototypeRows("20003000011").map((row) => row.rowName),
+    ["飓风之龙", "飓风之龙-龙炎"],
+  );
   assert.deepEqual(
     reader.getWeaponPveSkill({ skillId: 5100101, level: 1 }).raw.Parameters,
     [{ Name: "Unknown", Value: "kept" }],
