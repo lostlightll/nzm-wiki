@@ -404,6 +404,7 @@ export type {
   FieldProvenance,
   FieldState,
   OverrideTrace,
+  PreparedWeaponResolver,
   ProvenanceKind,
   ResolutionDiagnostic,
   ResolutionDiagnosticCode,

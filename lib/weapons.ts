@@ -5,8 +5,7 @@ import weaponDataLockJson from "@/data/weapon-data-lock.json";
 import { RARITY_ORDER } from "@/constants/common";
 import { WEAPON_TYPES } from "@/constants/weapons";
 import { getResolvedFieldValue } from "./weapon-consumers";
-import { parseWeaponDataLock } from "./weapon-data-lock";
-import { resolveWeapon, type ResolvedWeapon } from "./weapon-resolver";
+import { createWeaponResolver, type ResolvedWeapon } from "./weapon-resolver";
 import type { NumericalTable } from "./weapon-source-v2";
 
 const WEAPON_DIRECTORIES: Record<NumericalTable, string> = {
@@ -14,7 +13,7 @@ const WEAPON_DIRECTORIES: Record<NumericalTable, string> = {
   td: path.join(process.cwd(), "data/weapons_td"),
 };
 const isDev = process.env.NODE_ENV === "development";
-const weaponDataLock = parseWeaponDataLock(weaponDataLockJson);
+const weaponResolver = createWeaponResolver(weaponDataLockJson);
 const weaponTypeOrder = new Map(
   WEAPON_TYPES.map((item, index) => [item.type, index]),
 );
@@ -34,10 +33,9 @@ function resolveWeaponFile(
   table: NumericalTable,
 ): ResolvedWeaponDocument {
   const parsed = matter(fs.readFileSync(filePath, "utf8"));
-  const weapon = resolveWeapon(parsed.data, {
+  const weapon = weaponResolver.resolveWeapon(parsed.data, {
     slug,
     expectedTable: table,
-    lock: weaponDataLock,
   });
   const pageWidth = parsed.data["page-width"];
   return {
@@ -114,5 +112,23 @@ export async function getResolvedWeaponDocument(
 export async function getResolvedWeaponSlugs(
   table: NumericalTable,
 ): Promise<string[]> {
-  return (await getAllResolvedWeapons(table)).map((weapon) => weapon.slug);
+  return scanWeaponSlugs(WEAPON_DIRECTORIES[table], isDev);
+}
+
+function ordinalCompare(left: string, right: string): number {
+  return left < right ? -1 : left > right ? 1 : 0;
+}
+
+export function scanWeaponSlugs(directory: string, includeDrafts: boolean): string[] {
+  if (!fs.existsSync(directory)) return [];
+  return fs
+    .readdirSync(directory)
+    .filter((file) => file.endsWith(".mdx"))
+    .sort(ordinalCompare)
+    .filter((file) => {
+      if (includeDrafts) return true;
+      const parsed = matter(fs.readFileSync(path.join(directory, file), "utf8"));
+      return parsed.data.draft !== true;
+    })
+    .map((file) => file.replace(/\.mdx$/, ""));
 }

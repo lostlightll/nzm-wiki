@@ -350,6 +350,10 @@ interface ResolveContext {
   expectedTable: NumericalTable;
   diagnostics: ResolutionDiagnostic[];
   weaponPath: string;
+  rawRowClones: Map<
+    Readonly<Record<string, unknown>>,
+    Readonly<Record<string, unknown>>
+  >;
 }
 
 function missing<T>(provenance: FieldProvenance[] = []): ResolvedField<T> {
@@ -428,6 +432,18 @@ function cloneValue<T>(value: T): T {
     ) as T;
   }
   return value;
+}
+
+function cloneLockRaw(
+  raw: Readonly<Record<string, unknown>> | undefined,
+  context: ResolveContext,
+): Readonly<Record<string, unknown>> | undefined {
+  if (!raw) return undefined;
+  const existing = context.rawRowClones.get(raw);
+  if (existing) return existing;
+  const cloned = cloneValue(raw);
+  context.rawRowClones.set(raw, cloned);
+  return cloned;
 }
 
 function escapePointer(value: string): string {
@@ -2565,7 +2581,7 @@ function parseItem(
 function parseActiveSkill(
   weapon: WeaponSourceV2,
   lock: WeaponDataLock,
-  diagnostics: ResolutionDiagnostic[],
+  context: ResolveContext,
 ): ResolvedActiveSkill | undefined {
   const id = weapon.active_skill_id;
   if (!id) return undefined;
@@ -2610,7 +2626,7 @@ function parseActiveSkill(
     );
   }
   if (!pve && raw.AbilityID !== undefined && String(raw.AbilityID) !== String(id)) {
-    diagnostic(diagnostics, {
+    diagnostic(context.diagnostics, {
       severity: "warning",
       code: "SOURCE_IDENTITY_DIFFERENCE",
       path: "/active_skill_id",
@@ -2644,7 +2660,7 @@ function parseActiveSkill(
     ]),
     source: selection.source,
     sourceKey: expectedKey,
-    raw,
+    raw: cloneLockRaw(raw, context),
   };
 }
 
@@ -2684,9 +2700,9 @@ function assembleDamageSource(
     feel: behavior.feel,
     attenuation: behavior.attenuation,
     raw: {
-      numerical: numerical.raw,
-      asc: behavior.rawAsc,
-      feel: behavior.rawFeel,
+      numerical: cloneLockRaw(numerical.raw, context),
+      asc: cloneLockRaw(behavior.rawAsc, context),
+      feel: cloneLockRaw(behavior.rawFeel, context),
     },
     provenance: [
       {
@@ -2812,23 +2828,9 @@ function addLegacyProjectionDiagnostics(
 
 function resolveV2(
   weapon: WeaponSourceV2,
-  lockInput: WeaponDataLock | undefined,
+  lock: WeaponDataLock,
   context: ResolveContext,
 ): ResolvedWeapon {
-  if (!lockInput) {
-    throw new WeaponResolutionError("MISSING_LOCK", "V2 resolution requires a Lock", {
-      path: context.weaponPath,
-    });
-  }
-  let lock: WeaponDataLock;
-  try {
-    lock = parseWeaponDataLock(lockInput);
-  } catch (error) {
-    throw new WeaponResolutionError("INVALID_LOCK_ROW", "Weapon Data Lock is invalid", {
-      path: context.weaponPath,
-      cause: error,
-    });
-  }
   const effective = resolveDamageSourceReferences(weapon);
   const damageSources = weapon.damage_sources.map((source) =>
     assembleDamageSource(weapon, source, effective.get(source.id)!, lock, context),
@@ -2912,7 +2914,7 @@ function resolveV2(
     melee: { light: missing(), heavy: missing() },
     damageSources,
     mainSourceId,
-    activeSkill: parseActiveSkill(weapon, lock, context.diagnostics),
+    activeSkill: parseActiveSkill(weapon, lock, context),
     diagnostics: context.diagnostics,
     provenance: [
       { kind: "mdx-v2", rawField: "schema_version", note: "schema" },
@@ -2922,7 +2924,7 @@ function resolveV2(
         note: `expected-table:${context.expectedTable}`,
       },
     ],
-    raw: { mdx: weapon, item: item.raw },
+    raw: { mdx: weapon, item: cloneLockRaw(item.raw, context) },
   };
   return result;
 }
@@ -2960,35 +2962,55 @@ export function parseWeaponSource(
   }
 }
 
-export function resolveWeapon(
-  input: unknown,
-  context: {
-    slug: string;
-    expectedTable: NumericalTable;
-    lock?: WeaponDataLock;
-  },
-): ResolvedWeapon {
-  const parsed = parseWeaponSource(input, context);
-  const resolveContext: ResolveContext = {
+interface WeaponResolveRequest {
+  slug: string;
+  expectedTable: NumericalTable;
+}
+
+interface DamageSourceResolveRequest {
+  expectedTable: NumericalTable;
+  weaponPath: string;
+}
+
+export interface PreparedWeaponResolver {
+  resolveWeapon(input: unknown, context: WeaponResolveRequest): ResolvedWeapon;
+  resolveDamageSource(
+    weapon: WeaponSourceV2,
+    sourceId: string,
+    context: DamageSourceResolveRequest,
+  ): ResolvedDamageSource;
+}
+
+function createResolveContext(context: WeaponResolveRequest): ResolveContext {
+  return {
     slug: context.slug,
     expectedTable: context.expectedTable,
     diagnostics: [],
     weaponPath: context.slug,
+    rawRowClones: new Map(),
   };
-  return parsed.version === 1
-    ? normalizeV1(parsed.raw, resolveContext)
-    : resolveV2(parsed.value, context.lock, resolveContext);
 }
 
-export function resolveDamageSource(
+function resolveParsedWeapon(
+  parsed: ReturnType<typeof parseWeaponSource>,
+  context: WeaponResolveRequest,
+  lock: WeaponDataLock | undefined,
+): ResolvedWeapon {
+  const resolveContext = createResolveContext(context);
+  if (parsed.version === 1) return normalizeV1(parsed.raw, resolveContext);
+  if (!lock) {
+    throw new WeaponResolutionError("MISSING_LOCK", "V2 resolution requires a Lock", {
+      path: context.slug,
+    });
+  }
+  return resolveV2(parsed.value, lock, resolveContext);
+}
+
+function parseDamageSourceInput(
   weapon: WeaponSourceV2,
   sourceId: string,
-  context: {
-    lock: WeaponDataLock;
-    expectedTable: NumericalTable;
-    weaponPath: string;
-  },
-): ResolvedDamageSource {
+  context: DamageSourceResolveRequest,
+): { parsed: WeaponSourceV2; source: DamageSourceV2 } {
   let parsed: WeaponSourceV2;
   try {
     parsed = validateWeaponSourceV2(weapon, { expectedTable: context.expectedTable });
@@ -3005,6 +3027,75 @@ export function resolveDamageSource(
       sourceId,
     });
   }
+  return { parsed, source };
+}
+
+function resolveParsedDamageSource(
+  parsed: WeaponSourceV2,
+  source: DamageSourceV2,
+  context: DamageSourceResolveRequest,
+  lock: WeaponDataLock,
+): ResolvedDamageSource {
+  const effective = resolveDamageSourceReferences(parsed).get(source.id)!;
+  return assembleDamageSource(parsed, source, effective, lock, {
+    slug: context.weaponPath,
+    expectedTable: context.expectedTable,
+    diagnostics: [],
+    weaponPath: context.weaponPath,
+    rawRowClones: new Map(),
+  });
+}
+
+export function createWeaponResolver(lockInput: unknown): PreparedWeaponResolver {
+  const lock = parseWeaponDataLock(lockInput);
+  return Object.freeze({
+    resolveWeapon(input: unknown, context: WeaponResolveRequest): ResolvedWeapon {
+      return resolveParsedWeapon(parseWeaponSource(input, context), context, lock);
+    },
+    resolveDamageSource(
+      weapon: WeaponSourceV2,
+      sourceId: string,
+      context: DamageSourceResolveRequest,
+    ): ResolvedDamageSource {
+      const { parsed, source } = parseDamageSourceInput(weapon, sourceId, context);
+      return resolveParsedDamageSource(parsed, source, context, lock);
+    },
+  });
+}
+
+export function resolveWeapon(
+  input: unknown,
+  context: {
+    slug: string;
+    expectedTable: NumericalTable;
+    lock?: WeaponDataLock;
+  },
+): ResolvedWeapon {
+  const parsed = parseWeaponSource(input, context);
+  if (parsed.version === 1) return resolveParsedWeapon(parsed, context, undefined);
+  if (!context.lock) return resolveParsedWeapon(parsed, context, undefined);
+  let lock: WeaponDataLock;
+  try {
+    lock = parseWeaponDataLock(context.lock);
+  } catch (error) {
+    throw new WeaponResolutionError("INVALID_LOCK_ROW", "Weapon Data Lock is invalid", {
+      path: context.slug,
+      cause: error,
+    });
+  }
+  return resolveParsedWeapon(parsed, context, lock);
+}
+
+export function resolveDamageSource(
+  weapon: WeaponSourceV2,
+  sourceId: string,
+  context: {
+    lock: WeaponDataLock;
+    expectedTable: NumericalTable;
+    weaponPath: string;
+  },
+): ResolvedDamageSource {
+  const { parsed, source } = parseDamageSourceInput(weapon, sourceId, context);
   let lock: WeaponDataLock;
   try {
     lock = parseWeaponDataLock(context.lock);
@@ -3014,19 +3105,7 @@ export function resolveDamageSource(
       cause: error,
     });
   }
-  const effective = resolveDamageSourceReferences(parsed).get(sourceId)!;
-  return assembleDamageSource(
-    parsed,
-    source,
-    effective,
-    lock,
-    {
-      slug: context.weaponPath,
-      expectedTable: context.expectedTable,
-      diagnostics: [],
-      weaponPath: context.weaponPath,
-    },
-  );
+  return resolveParsedDamageSource(parsed, source, context, lock);
 }
 
 function legacyNumberValue(field: ResolvedField<number>, fallback = 0): number {

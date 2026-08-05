@@ -3,10 +3,12 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import matter from "gray-matter";
-import type { WeaponDataLock } from "./weapon-data-lock";
+import { WeaponDataLockError, type WeaponDataLock } from "./weapon-data-lock";
 import { transformWeaponV1Legacy } from "./weapon-legacy";
 import {
+  createWeaponResolver,
   createResolvedWeaponSnapshot,
+  resolveDamageSource,
   resolveWeapon,
   toLegacyWeapon,
   WeaponResolutionError,
@@ -146,7 +148,10 @@ function lock(): WeaponDataLock {
   };
 }
 
-function weapon(extra: Record<string, unknown> = {}): Record<string, unknown> {
+function weapon(
+  extra: Record<string, unknown> = {},
+  table: "lc" | "td" = "lc",
+): Record<string, unknown> {
   return {
     schema_version: 2,
     title: "测试武器",
@@ -164,7 +169,7 @@ function weapon(extra: Record<string, unknown> = {}): Record<string, unknown> {
         section: "fire_mode",
         source: {
           prototype_mode: 0,
-          numerical: { table: "lc", id: 1, level: 1 },
+          numerical: { table, id: 1, level: 1 },
           asc_type_id: "10",
         },
       },
@@ -225,6 +230,139 @@ test("V2 resolves Numerical, ASC, Feel, Item and Skill without flattening modes"
   assert.equal(legacy.extraModes?.length, 1);
   assert.equal(legacy.skillCooldown, 25);
   assert.equal(legacy.range, undefined);
+});
+
+test("prepared resolver validates Lock once and preserves existing resolver results", () => {
+  assert.throws(() => createWeaponResolver({}), WeaponDataLockError);
+
+  const lockInput = lock();
+  lockInput.rows["numerical-td"]["td:1_1"] = {
+    row_name: "1_1",
+    raw: numericalRaw(),
+  };
+  const prepared = createWeaponResolver(lockInput);
+  const expectedWeapon = resolveWeapon(weapon(), {
+    slug: "prepared",
+    expectedTable: "lc",
+    lock: lockInput,
+  });
+  assert.deepEqual(
+    prepared.resolveWeapon(weapon(), { slug: "prepared", expectedTable: "lc" }),
+    expectedWeapon,
+  );
+  assert.deepEqual(
+    prepared.resolveWeapon({ title: "旧武器" }, { slug: "legacy", expectedTable: "lc" }),
+    resolveWeapon({ title: "旧武器" }, { slug: "legacy", expectedTable: "lc" }),
+  );
+  const tdInput = weapon({}, "td");
+  assert.deepEqual(
+    prepared.resolveWeapon(tdInput, { slug: "prepared-td", expectedTable: "td" }),
+    resolveWeapon(tdInput, {
+      slug: "prepared-td",
+      expectedTable: "td",
+      lock: lockInput,
+    }),
+  );
+
+  const parsedWeapon = expectedWeapon.raw.mdx;
+  assert.deepEqual(
+    prepared.resolveDamageSource(parsedWeapon, "fast-variant", {
+      expectedTable: "lc",
+      weaponPath: "prepared",
+    }),
+    resolveDamageSource(parsedWeapon, "fast-variant", {
+      lock: lockInput,
+      expectedTable: "lc",
+      weaponPath: "prepared",
+    }),
+  );
+
+  (lockInput as { schema_version: number }).schema_version = 2;
+  assert.equal(
+    prepared.resolveWeapon(weapon(), { slug: "prepared", expectedTable: "lc" })
+      .damageSources[0].damage.base.value,
+    100,
+  );
+  assert.equal(
+    captureError(() =>
+      resolveWeapon(weapon(), {
+        slug: "mutated-lock",
+        expectedTable: "lc",
+        lock: lockInput,
+      }),
+    ).code,
+    "INVALID_LOCK_ROW",
+  );
+});
+
+test("prepared resolver isolates public raw rows between resolution calls", () => {
+  const prepared = createWeaponResolver(lock());
+  const first = prepared.resolveWeapon(weapon(), {
+    slug: "first",
+    expectedTable: "lc",
+  });
+  assert.equal(
+    first.damageSources[0].raw.numerical,
+    first.damageSources[1].raw.numerical,
+  );
+
+  const numerical = first.damageSources[0].raw.numerical as Record<string, unknown>;
+  const asc = first.damageSources[0].raw.asc as Record<string, unknown>;
+  const feel = first.damageSources[0].raw.feel as Record<string, unknown>;
+  const item = first.raw.item as Record<string, unknown>;
+  const skill = first.activeSkill?.raw as Record<string, unknown>;
+  numerical.ElementType = "mutated";
+  (numerical.unknown as Record<string, unknown>).nested = false;
+  asc.FireIntervalBase = 99;
+  feel.WeaponChangeClipTimeBase = 99;
+  item.AccuracyInt = 0;
+  skill.ChargeNeedTime = 0;
+
+  const second = prepared.resolveWeapon(weapon(), {
+    slug: "second",
+    expectedTable: "lc",
+  });
+  assert.equal(second.damageSources[0].element.value, "寒冷");
+  assert.equal(second.damageSources[0].fire.rpm.value, 300);
+  assert.equal(second.changeClip.timeBase.value, 2);
+  assert.equal(second.accuracy.value, 88);
+  assert.equal(second.activeSkill?.chargeTime.value, 25);
+  assert.equal(
+    (
+      second.damageSources[0].raw.numerical?.unknown as Record<string, unknown>
+    ).nested,
+    true,
+  );
+});
+
+test("legacy resolver APIs preserve source-before-Lock validation order", () => {
+  const invalidLock = {} as WeaponDataLock;
+  assert.equal(
+    captureError(() =>
+      resolveWeapon(
+        { schema_version: 2 },
+        { slug: "invalid-source", expectedTable: "lc", lock: invalidLock },
+      ),
+    ).code,
+    "INVALID_SOURCE",
+  );
+  assert.equal(
+    captureError(() =>
+      resolveDamageSource(weapon() as never, "missing", {
+        lock: invalidLock,
+        expectedTable: "lc",
+        weaponPath: "missing-source",
+      }),
+    ).code,
+    "INVALID_SOURCE",
+  );
+
+  const legacy = resolveWeapon({ title: "旧武器" }, {
+    slug: "legacy",
+    expectedTable: "lc",
+    lock: invalidLock,
+  });
+  assert.equal(legacy.schemaVersion, 1);
 });
 
 test("Numerical-only sources use compatibility fire behavior and pending stays unavailable", () => {
