@@ -7976,6 +7976,16 @@
               "classification": "accepted_correction",
               "pointer": "/detail/damageSources/1",
               "reason": "人工筛选后正式新增榴弹爆炸 Numerical 伤害来源"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/catalog/useType",
+              "reason": "修正心有凌兮武器分类为副武器"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/useType",
+              "reason": "修正心有凌兮武器分类为副武器"
             }
           ],
           "source_reviews": {},
@@ -8096,6 +8106,16 @@
               "classification": "accepted_correction",
               "pointer": "/detail/damageSources/1",
               "reason": "人工筛选后正式新增榴弹爆炸 Numerical 伤害来源"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/catalog/useType",
+              "reason": "修正心有凌兮武器分类为副武器"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/useType",
+              "reason": "修正心有凌兮武器分类为副武器"
             }
           ],
           "source_reviews": {},

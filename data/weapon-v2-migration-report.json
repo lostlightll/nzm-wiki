@@ -43,7 +43,7 @@
   },
   "decision_manifest": {
     "path": "data/weapon-v2-migration-decisions.json",
-    "sha256": "1ae550b2c1417a4c086b3a32f559abf2be273e17344db6bd4e81c990b392400a"
+    "sha256": "e7b51c669e2b086a6ec5cb39f4432172295337306071f82782b9771f90021b2f"
   },
   "exclusions": {
     "by_owner": {
