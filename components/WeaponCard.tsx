@@ -747,7 +747,7 @@ export function WeaponDetailCard() {
                 : "text-zinc-400")
             }
           >
-            普通射击
+            {primaryModes[0].name}
           </h2>
           <ModeStats mode={primaryModes[0]} showName={false} hpMultiplier={hpMul} />
         </div>

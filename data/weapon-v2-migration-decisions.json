@@ -8,6 +8,14 @@
       "pointer": "/13/Properties/ExplodeNumericalID",
       "sha256": "83846ef54fce92c16c2c440fcc31f63547807f2cbf547759605648a24f76edb7"
     },
+    "asset-task77-e-e69d9ce793a6e793b6-e-6c696e672d64752d7a68692d6369": {
+      "kind": "asset_property",
+      "note": "确认 杜瓦瓶 零度之刺 的结构化资源引用",
+      "observed_value": 1410110101,
+      "path": "refs/Exports/NZM/Content/Abilities/WeaponSkill/Gold/ZeroDegreeThorn/BP_ZeroDegreeThorn.json",
+      "pointer": "/7/Properties/NamedSettlementConfig/0/Value/NumericalID/Value",
+      "sha256": "01d7eb0bb27689261a64807357a4fb1e8f1cbf4accbf3cdcff9994a69c7882aa"
+    },
     "asset-task77-e-e883bde6ba90e4b98be5bdb1-e-65787472612d6d6f64653ae5bcbae8a2ade6bf80e58589": {
       "kind": "asset_property",
       "note": "确认 能源之影 强袭激光 的结构化资源引用",
@@ -34,7 +42,7 @@
     },
     "asset-task77-e-e9acbce9939ce89a80-e-65787472612d6d6f64653a446f74e6b1a0e4bca4e5aeb3efbc88e5878fe9809fe68f92e4bbb6efbc89": {
       "kind": "asset_property",
-      "note": "确认 鬼铜蚀 Dot池伤害（减速插件） 的结构化资源引用",
+      "note": "确认 鬼铜蚀 恶鬼眷顾Dot池伤害 的结构化资源引用",
       "observed_value": 121500064,
       "path": "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json",
       "pointer": "/0/Rows/QTPSQ_PoisonZone_PluginEffect2_Slowdown/BuffID",
@@ -1176,6 +1184,14 @@
       "pointer": "/0/Rows/121600115_1/id",
       "sha256": "69d3ee244d4620fd0e8211efa1c0b26c1a43ecfc03574d6adfd58cd3d30814b9"
     },
+    "numerical-task77-lc-1410110101-1": {
+      "kind": "numerical_row",
+      "note": "确认 LC Numerical 1410110101_1 原始行",
+      "observed_value": 1410110101,
+      "path": "refs/Exports/NZM/Content/DataTables/numerical_config_composite.json",
+      "pointer": "/0/Rows/1410110101_1/id",
+      "sha256": "69d3ee244d4620fd0e8211efa1c0b26c1a43ecfc03574d6adfd58cd3d30814b9"
+    },
     "numerical-task77-lc-17000011-1": {
       "kind": "numerical_row",
       "note": "确认 LC Numerical 17000011_1 原始行",
@@ -1494,6 +1510,14 @@
       "observed_value": 121600115,
       "path": "refs/Exports/NZM/Content/DataTables/TD_numerical_config_composite.json",
       "pointer": "/0/Rows/121600115_1/id",
+      "sha256": "c9d0162d54c4ce61240381c664235108ef947e89bdba41b3d778e0bacf015cf8"
+    },
+    "numerical-task77-td-1410110101-1": {
+      "kind": "numerical_row",
+      "note": "确认 TD Numerical 1410110101_1 原始行",
+      "observed_value": 1410110101,
+      "path": "refs/Exports/NZM/Content/DataTables/TD_numerical_config_composite.json",
+      "pointer": "/0/Rows/1410110101_1/id",
       "sha256": "c9d0162d54c4ce61240381c664235108ef947e89bdba41b3d778e0bacf015cf8"
     },
     "numerical-task77-td-17000011-1": {
@@ -7405,7 +7429,7 @@
           },
           "name": "榴弹爆炸",
           "reason": "Task 7.7 冻结已核验的来源身份与页面领域分组",
-          "section": "special",
+          "section": "fire_mode",
           "table_scope": [
             "lc",
             "td"
@@ -7742,11 +7766,6 @@
               "classification": "accepted_correction",
               "pointer": "/detail/damageSources/1/fire/rpm/state",
               "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/1/fire/rpm/state"
-            },
-            {
-              "classification": "accepted_correction",
-              "pointer": "/detail/damageSources/1/section",
-              "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/1/section"
             },
             {
               "classification": "accepted_correction",
@@ -8383,11 +8402,6 @@
               "classification": "accepted_correction",
               "pointer": "/detail/damageSources/1/fire/rpm/state",
               "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/1/fire/rpm/state"
-            },
-            {
-              "classification": "accepted_correction",
-              "pointer": "/detail/damageSources/1/section",
-              "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/1/section"
             },
             {
               "classification": "accepted_correction",
@@ -12284,12 +12298,12 @@
     "心有凌兮": {
       "sources": {
         "damage-mode:0": {
-          "id": "pu-tong-she-ji",
+          "id": "liu-dan-ming-zhong",
           "locator": {
             "kind": "damage_mode",
             "mode": 0
           },
-          "name": "普通射击",
+          "name": "榴弹命中",
           "reason": "冻结旧 MDX 人工来源名称与页面分组语义",
           "section": "fire_mode",
           "table_scope": [
@@ -12435,6 +12449,16 @@
               "classification": "accepted_correction",
               "pointer": "/detail/useType",
               "reason": "修正心有凌兮武器分类为副武器"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/catalog/mainSource/name",
+              "reason": "确认榴弹类武器默认开火来源展示为榴弹命中"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/0/name",
+              "reason": "确认榴弹类武器默认开火来源展示为榴弹命中"
             }
           ],
           "source_reviews": {},
@@ -12565,6 +12589,16 @@
               "classification": "accepted_correction",
               "pointer": "/detail/useType",
               "reason": "修正心有凌兮武器分类为副武器"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/catalog/mainSource/name",
+              "reason": "确认榴弹类武器默认开火来源展示为榴弹命中"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/0/name",
+              "reason": "确认榴弹类武器默认开火来源展示为榴弹命中"
             }
           ],
           "source_reviews": {},
@@ -14428,7 +14462,7 @@
           },
           "name": "榴弹爆炸",
           "reason": "Task 7.7 冻结已核验的来源身份与页面领域分组",
-          "section": "special",
+          "section": "fire_mode",
           "table_scope": [
             "lc",
             "td"
@@ -14549,11 +14583,6 @@
             },
             {
               "classification": "accepted_correction",
-              "pointer": "/catalog/mainSource/section",
-              "reason": "Task 7.7 已核验 V1 排除项迁移差异：/catalog/mainSource/section"
-            },
-            {
-              "classification": "accepted_correction",
               "pointer": "/catalog/mainSourceId",
               "reason": "Task 7.7 已核验 V1 排除项迁移差异：/catalog/mainSourceId"
             },
@@ -14666,11 +14695,6 @@
               "classification": "accepted_correction",
               "pointer": "/detail/damageSources/0/name",
               "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/0/name"
-            },
-            {
-              "classification": "accepted_correction",
-              "pointer": "/detail/damageSources/0/section",
-              "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/0/section"
             },
             {
               "classification": "accepted_correction",
@@ -14864,11 +14888,6 @@
             },
             {
               "classification": "accepted_correction",
-              "pointer": "/catalog/mainSource/section",
-              "reason": "Task 7.7 已核验 V1 排除项迁移差异：/catalog/mainSource/section"
-            },
-            {
-              "classification": "accepted_correction",
               "pointer": "/catalog/mainSourceId",
               "reason": "Task 7.7 已核验 V1 排除项迁移差异：/catalog/mainSourceId"
             },
@@ -14981,11 +15000,6 @@
               "classification": "accepted_correction",
               "pointer": "/detail/damageSources/0/name",
               "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/0/name"
-            },
-            {
-              "classification": "accepted_correction",
-              "pointer": "/detail/damageSources/0/section",
-              "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/0/section"
             },
             {
               "classification": "accepted_correction",
@@ -15902,6 +15916,52 @@
               "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/0/fire/pellets/value"
             }
           ],
+          "source_additions": [
+            {
+              "after_locator": {
+                "kind": "damage_mode",
+                "mode": 0
+              },
+              "identity": {
+                "id": "ling-du-zhi-ci",
+                "name": "零度之刺",
+                "reason": "Task 7.7 将一个 V1 来源拆分为经证据确认的多个 V2 结算来源",
+                "section": "skill"
+              },
+              "key": "ling-du-zhi-ci",
+              "snapshot_differences": [
+                {
+                  "classification": "accepted_correction",
+                  "pointer": "/detail/damageSources/1",
+                  "reason": "确认新增零度之刺 Numerical 技能伤害来源"
+                }
+              ],
+              "source": {
+                "numerical": {
+                  "id": 1410110101,
+                  "level": 1,
+                  "table": "lc"
+                }
+              },
+              "source_review": {
+                "effective_source": {
+                  "numerical": {
+                    "id": 1410110101,
+                    "level": 1,
+                    "table": "lc"
+                  }
+                },
+                "evidence_ids": [
+                  "weapon-item-task77-e-e69d9ce793a6e793b6",
+                  "numerical-task77-lc-1410110101-1",
+                  "prototype-task77-e-e69d9ce793a6e793b6-0-e-4e756d65726963616c4944",
+                  "asset-task77-e-e69d9ce793a6e793b6-e-6c696e672d64752d7a68692d6369"
+                ],
+                "reason": "Task 7.7 依据名称链、Prototype 锚点与 Numerical/资源证据首次解析该来源",
+                "resolution": "resolved"
+              }
+            }
+          ],
           "source_reviews": {
             "damage-mode:0": {
               "effective_source": {
@@ -16024,6 +16084,52 @@
               "classification": "accepted_correction",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/0/fire/pellets/value"
+            }
+          ],
+          "source_additions": [
+            {
+              "after_locator": {
+                "kind": "damage_mode",
+                "mode": 0
+              },
+              "identity": {
+                "id": "ling-du-zhi-ci",
+                "name": "零度之刺",
+                "reason": "Task 7.7 将一个 V1 来源拆分为经证据确认的多个 V2 结算来源",
+                "section": "skill"
+              },
+              "key": "ling-du-zhi-ci",
+              "snapshot_differences": [
+                {
+                  "classification": "accepted_correction",
+                  "pointer": "/detail/damageSources/1",
+                  "reason": "确认新增零度之刺 Numerical 技能伤害来源"
+                }
+              ],
+              "source": {
+                "numerical": {
+                  "id": 1410110101,
+                  "level": 1,
+                  "table": "td"
+                }
+              },
+              "source_review": {
+                "effective_source": {
+                  "numerical": {
+                    "id": 1410110101,
+                    "level": 1,
+                    "table": "td"
+                  }
+                },
+                "evidence_ids": [
+                  "weapon-item-task77-e-e69d9ce793a6e793b6",
+                  "numerical-task77-td-1410110101-1",
+                  "prototype-task77-e-e69d9ce793a6e793b6-0-e-4e756d65726963616c4944",
+                  "asset-task77-e-e69d9ce793a6e793b6-e-6c696e672d64752d7a68692d6369"
+                ],
+                "reason": "Task 7.7 依据名称链、Prototype 锚点与 Numerical/资源证据首次解析该来源",
+                "resolution": "resolved"
+              }
             }
           ],
           "source_reviews": {
@@ -36125,7 +36231,7 @@
           },
           "name": "榴弹爆炸",
           "reason": "Task 7.7 冻结已核验的来源身份与页面领域分组",
-          "section": "special",
+          "section": "fire_mode",
           "table_scope": [
             "lc",
             "td"
@@ -36309,11 +36415,6 @@
               "classification": "accepted_correction",
               "pointer": "/detail/damageSources/1/fire/rpm/state",
               "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/1/fire/rpm/state"
-            },
-            {
-              "classification": "accepted_correction",
-              "pointer": "/detail/damageSources/1/section",
-              "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/1/section"
             },
             {
               "classification": "accepted_correction",
@@ -36639,11 +36740,6 @@
               "classification": "accepted_correction",
               "pointer": "/detail/damageSources/1/fire/rpm/state",
               "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/1/fire/rpm/state"
-            },
-            {
-              "classification": "accepted_correction",
-              "pointer": "/detail/damageSources/1/section",
-              "reason": "Task 7.7 已核验 V1 排除项迁移差异：/detail/damageSources/1/section"
             },
             {
               "classification": "accepted_correction",
@@ -40697,7 +40793,7 @@
             "kind": "extra_mode",
             "name": "Dot池伤害（减速插件）"
           },
-          "name": "Dot池伤害（减速插件）",
+          "name": "恶鬼眷顾Dot池伤害",
           "reason": "Task 7.7 冻结已核验的来源身份与页面领域分组",
           "section": "dot",
           "table_scope": [

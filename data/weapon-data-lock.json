@@ -38835,6 +38835,71 @@
         },
         "row_name": "1410050101_1"
       },
+      "lc:1410110101_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "None"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "杜瓦瓶_零度之刺_伤害",
+          "ElementAddRate": 1,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 4.8,
+          "HpFloatCoef": 0,
+          "HurtableBase": 48,
+          "ImpulseBase": 48,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 3,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponSkillDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0.48,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.1,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 1410110101
+        },
+        "row_name": "1410110101_1"
+      },
       "lc:1410210101_1": {
         "raw": {
           "CameraHitFeedBackTag": {
@@ -50290,6 +50355,71 @@
           "id": 1410050101
         },
         "row_name": "1410050101_1"
+      },
+      "td:1410110101_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "None"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "杜瓦瓶_零度之刺_伤害",
+          "ElementAddRate": 1,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 4.8,
+          "HpFloatCoef": 0,
+          "HurtableBase": 48,
+          "ImpulseBase": 3,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 3,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponSkillDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0.48,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 1410110101
+        },
+        "row_name": "1410110101_1"
       },
       "td:1410210101_1": {
         "raw": {

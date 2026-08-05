@@ -248,15 +248,49 @@ test("Task 7.7 representative mappings remain fixed across Resolver and consumer
   const hiddenTd = await requireWeapon("刺隐", "td");
   assert.equal(hiddenTd.damageSources[0].attenuation.status, "not_applicable");
 
-  const steel = await requireWeapon("钢铁轰鸣", "lc");
-  assert.deepEqual(
-    steel.damageSources.map((source) => [source.id, source.section]),
-    [
-      ["liu-dan-ming-zhong", "fire_mode"],
-      ["liu-dan-bao-zha", "special"],
-      ["liu-dan-chuan-tou", "special"],
-    ],
-  );
+  for (const table of ["lc", "td"] as const) {
+    const steel = await requireWeapon("钢铁轰鸣", table);
+    assert.deepEqual(
+      steel.damageSources.map((source) => [source.id, source.section]),
+      [
+        ["liu-dan-ming-zhong", "fire_mode"],
+        ["liu-dan-bao-zha", "fire_mode"],
+        ["liu-dan-chuan-tou", "special"],
+      ],
+    );
+    const steelExplosion = steel.damageSources.find(
+      (source) => source.id === "liu-dan-bao-zha",
+    );
+    assert.ok(steelExplosion);
+    assert.equal(steelExplosion.raw.asc, undefined);
+    assert.equal(steelExplosion.fire.interval.state, "missing");
+  }
+
+  for (const table of ["lc", "td"] as const) {
+    const spring = await requireWeapon("春雷震", table);
+    assert.deepEqual(
+      spring.damageSources.map((source) => [source.id, source.section]),
+      [
+        ["liu-dan-ming-zhong", "fire_mode"],
+        ["liu-dan-bao-zha", "fire_mode"],
+      ],
+    );
+    assert.equal(spring.damageSources[1].raw.asc, undefined);
+
+    const dewar = await requireWeapon("杜瓦瓶", table);
+    const zeroDegreeThorn = dewar.damageSources.find(
+      (source) => source.id === "ling-du-zhi-ci",
+    );
+    assert.ok(zeroDegreeThorn);
+    assert.equal(zeroDegreeThorn.section, "skill");
+    assert.equal(zeroDegreeThorn.raw.numerical?.id, 1410110101);
+    assert.equal(zeroDegreeThorn.raw.asc, undefined);
+    assert.equal(getResolvedFieldValue(zeroDegreeThorn.damage.base), 4.8);
+
+    const heart = await requireWeapon("心有凌兮", table);
+    assert.equal(heart.damageSources[0].id, "liu-dan-ming-zhong");
+    assert.equal(heart.damageSources[0].name, "榴弹命中");
+  }
 
   const copper = await requireWeapon("鬼铜蚀", "lc");
   const recovery = copper.damageSources.find((source) => source.id === "hui-xue-hui-fu");
@@ -267,17 +301,32 @@ test("Task 7.7 representative mappings remain fixed across Resolver and consumer
     toWeaponDetailData(copper).damageSources.some((source) => source.id === recovery.id),
     false,
   );
+  const favoredPool = copper.damageSources.find(
+    (source) => source.id === "d-o-t-chi-shang-hai-jian-su-cha-jian",
+  );
+  assert.equal(favoredPool?.name, "恶鬼眷顾Dot池伤害");
+  assert.equal(favoredPool?.section, "dot");
   assert.equal(
-    copper.damageSources.find((source) => source.id === "d-o-t-chi-shang-hai-jian-su-cha-jian")
-      ?.section,
-    "dot",
+    (await requireWeapon("鬼铜蚀", "td")).damageSources.find(
+      (source) => source.id === "d-o-t-chi-shang-hai-jian-su-cha-jian",
+    )?.name,
+    "恶鬼眷顾Dot池伤害",
   );
 
-  const husky = await requireWeapon("哈士奇好友", "lc");
-  assert.equal(
-    husky.damageSources.find((source) => source.raw.numerical?.id === 121600112)?.name,
-    "丢枪爆炸",
-  );
+  for (const table of ["lc", "td"] as const) {
+    const husky = await requireWeapon("哈士奇好友", table);
+    const huskyExplosion = husky.damageSources.find(
+      (source) => source.id === "liu-dan-bao-zha",
+    );
+    assert.ok(huskyExplosion);
+    assert.equal(huskyExplosion.section, "fire_mode");
+    assert.equal(huskyExplosion.raw.asc, undefined);
+    assert.equal(huskyExplosion.fire.interval.state, "missing");
+    assert.equal(
+      husky.damageSources.find((source) => source.raw.numerical?.id === 121600112)?.name,
+      "丢枪爆炸",
+    );
+  }
 });
 
 test("generic scanner skips weapon directories before reading MDX", () => {
