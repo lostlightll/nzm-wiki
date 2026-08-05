@@ -807,6 +807,32 @@ function setNestedOverride(
   current[pathSegments.at(-1)!] = value;
 }
 
+const PRESERVE_LEGACY_REASON_PATTERN =
+  /^结构迁移保留旧 MDX 直接维护的 (.+)，原表差异待独立核验$/;
+
+export function aggregateOverrideReasons(reasons: readonly string[]): string {
+  const preservedFields: string[] = [];
+  const otherReasons: string[] = [];
+
+  for (const reason of reasons) {
+    const match = PRESERVE_LEGACY_REASON_PATTERN.exec(reason);
+    if (match) {
+      preservedFields.push(match[1]);
+    } else {
+      otherReasons.push(reason);
+    }
+  }
+
+  const uniquePreservedFields = [...new Set(preservedFields)];
+  const aggregatedReasons = uniquePreservedFields.length
+    ? [
+        `结构迁移保留旧 MDX 直接维护的 ${uniquePreservedFields.join(",")}，原表差异待独立核验`,
+      ]
+    : [];
+
+  return [...aggregatedReasons, ...new Set(otherReasons)].join("；");
+}
+
 function preserveValue(source: ResolvedDamageSource, field: string): unknown {
   if (comparableFields.includes(field as ComparableField)) {
     const value = comparableValue(source, field as ComparableField);
@@ -883,7 +909,7 @@ function buildDamageSource(
   }
   if (Object.keys(overrides).length > 0) {
     output.overrides = overrides;
-    output.override_reason = [...new Set(reasons)].join("；");
+    output.override_reason = aggregateOverrideReasons(reasons);
   }
   return output;
 }
@@ -1484,7 +1510,7 @@ function migratedDecisionIssues(
       issues.push(`${key}:fire.pellets: compatibility field has no preserve_legacy decision`);
     }
     const expectedReason =
-      expectedOverridePaths.size > 0 ? [...new Set(preserveReasons)].join("；") : undefined;
+      expectedOverridePaths.size > 0 ? aggregateOverrideReasons(preserveReasons) : undefined;
     if (actual.override_reason !== expectedReason) {
       issues.push(`${key}: override_reason differs from preserve_legacy decisions`);
     }

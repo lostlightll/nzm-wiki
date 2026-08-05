@@ -10,6 +10,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import test, { type TestContext } from "node:test";
 import {
+  aggregateOverrideReasons,
   applyMigrationTable,
   captureMigrationBaseline,
   checkFinalMigrationReport,
@@ -33,6 +34,25 @@ function writeJson(filePath: string, value: unknown): void {
   mkdirSync(path.dirname(filePath), { recursive: true });
   writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
+
+test("相同结构迁移原因聚合字段名", () => {
+  assert.equal(
+    aggregateOverrideReasons([
+      "结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验",
+      "结构迁移保留旧 MDX 直接维护的 damage.flesh，原表差异待独立核验",
+      "结构迁移保留旧 MDX 直接维护的 enable_critical，原表差异待独立核验",
+    ]),
+    "结构迁移保留旧 MDX 直接维护的 damage.base,damage.flesh,enable_critical，原表差异待独立核验",
+  );
+  assert.equal(
+    aggregateOverrideReasons([
+      "结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验",
+      "人工核验原因",
+      "人工核验原因",
+    ]),
+    "结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；人工核验原因",
+  );
+});
 
 function candidate(table: "lc" | "td") {
   return {
