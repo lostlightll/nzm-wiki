@@ -11,6 +11,9 @@
     "test:weapon-source-v2": "tsx --test lib/weapon-source-v2.test.ts",
     "test:weapon-data-reader": "tsx --test scripts/weapon-data/source-reader.test.ts",
     "test:weapon-skill-charge": "tsx --test scripts/weapon-data/skill-charge.test.ts",
+    "test:weapon-data-lock": "tsx --test scripts/weapon-data/lock.test.ts",
+    "weapon-data:lock": "tsx scripts/weapon-data/lock-cli.ts refresh",
+    "weapon-data:check": "tsx scripts/weapon-data/lock-cli.ts check",
     "webp": "pnpm exec tsx ./scripts/optimize-images.ts public/",
     "index": "tsx scripts/generate-search-index.ts"
   },

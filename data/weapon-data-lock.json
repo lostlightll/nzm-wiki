@@ -1,0 +1,43 @@
+{
+  "active_skills": {},
+  "rows": {
+    "asc": {},
+    "feel": {},
+    "gp-active-skill": {},
+    "item": {},
+    "numerical-lc": {},
+    "numerical-td": {},
+    "skill-pve": {}
+  },
+  "schema_version": 1,
+  "sources": {
+    "asc": {
+      "sha256": "99dc9ae188b68f1487ba738ae682604938436530d4b466493233a33746287e8d",
+      "source_path": "Attributes/AutoGenerate/attr_weapon_asc.json"
+    },
+    "feel": {
+      "sha256": "14881d2c22475f4f00344354b2ac3b33c3cbcade3d996580d3782580203ec717",
+      "source_path": "DataTables/WeaponFeelParamTable.json"
+    },
+    "gp-active-skill": {
+      "sha256": "daf2d25c48b723e122951fd34f94b1ac06cd2b00f75abf360d382f221395e2eb",
+      "source_path": "DataTables/GPActiveSkillDataTable.json"
+    },
+    "item": {
+      "sha256": "83ae13aa677e503fa48bcf8013c24a31483e5551fe39b2f33993d6aa58617dec",
+      "source_path": "DataTables/LuaDataTable/WeaponItemConfigTable.json"
+    },
+    "numerical-lc": {
+      "sha256": "69d3ee244d4620fd0e8211efa1c0b26c1a43ecfc03574d6adfd58cd3d30814b9",
+      "source_path": "DataTables/numerical_config_composite.json"
+    },
+    "numerical-td": {
+      "sha256": "c9d0162d54c4ce61240381c664235108ef947e89bdba41b3d778e0bacf015cf8",
+      "source_path": "DataTables/TD_numerical_config_composite.json"
+    },
+    "skill-pve": {
+      "sha256": "040beeec90bc8915f33300619b89a57ce1a5f01c6dfe88393ea13c0c05a7102f",
+      "source_path": "DataTables/SkillConfigTable_Weapon_PVE.json"
+    }
+  }
+}

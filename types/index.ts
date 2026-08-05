@@ -387,3 +387,11 @@ export type {
   WeaponDataSourceRef,
   WeaponSourceV2,
 } from "../lib/weapon-source-v2";
+
+export type {
+  WeaponDataLock,
+  WeaponDataLockActiveSkill,
+  WeaponDataLockKind,
+  WeaponDataLockRow,
+  WeaponDataLockSource,
+} from "../lib/weapon-data-lock";

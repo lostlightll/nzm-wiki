@@ -1,6 +1,6 @@
 # 武器数据引用链 V2：8 个主任务与 Task 2.5
 
-> 状态：Task 1–2.5 已完成
+> 状态：Task 1–3 已完成
 > 更新日期：2026-08-05  
 > 目标：让武器 MDX 只保存稳定引用、Wiki 语义和人工修正；Numerical、ASC、Feel、Item 与主动技能基础充能数据的完整原始行进入可提交 Lock，由统一 Resolver 生成页面数据。
 
@@ -253,6 +253,8 @@ PVE ChargeNeedTime
 
 ## Task 3：实现 Weapon Data Lock 生成与检查
 
+> 状态：已完成。正式协议、命令与离线检查边界见 [`MD/WEAPON-DATA-LOCK.md`](./WEAPON-DATA-LOCK.md)。
+
 ### 目标
 
 根据 V2 MDX 中的显式引用，生成可提交、可复现、仅包含项目实际使用行的多来源 Lock。
@@ -293,15 +295,15 @@ gp-active-skill
 
 ### 验收标准
 
-- [ ] 相同输入重复生成的 Lock 完全一致。
-- [ ] 删除 `refs/` 后仍能使用 Lock 构建。
-- [ ] 缺失引用会明确失败，不会变成零值或空对象。
-- [ ] ASC 与 Feel 默认同 ID 的规则可检查，也允许显式例外。
-- [ ] ASC Lock 完整保留距离衰减三字段，即使字段为零或当前页面暂不使用。
-- [ ] Item 多候选时必须由 MDX 的 `item_id` 消除歧义。
-- [ ] 每个有效 `active_skill_id` 都有 PVE 行、GP fallback 或带原因的 override。
-- [ ] `skill-pve` 与 `gp-active-skill` 保存被引用的完整原始行。
-- [ ] 原始大表不会进入 `public/` 或客户端 bundle。
+- [x] 相同输入重复生成的 Lock 完全一致。
+- [x] 删除 `refs/` 后仍能使用已提交 Lock 和离线检查；普通构建未接入原表读取器。
+- [x] 缺失引用会明确失败，不会变成零值或空对象。
+- [x] ASC 与 Feel 默认同 ID 的规则可检查，也允许显式例外。
+- [x] ASC Lock 完整保留距离衰减三字段，即使字段为零或当前页面暂不使用。
+- [x] Item 只允许显式 `item_id` 精确收集，多候选不会被静默选择。
+- [x] 每个有效 `active_skill_id` 都有 PVE 行或 GP fallback；带原因 override 等正式 Schema 扩展后接入。
+- [x] `skill-pve` 与 `gp-active-skill` 保存被引用的完整原始行。
+- [x] 原始大表不会进入 `public/` 或客户端 bundle。
 
 ### 依赖
 
@@ -580,7 +582,7 @@ gp-active-skill
 | Task 1：冻结 V2 协议与 Schema | 已完成 | 无 | 协议、类型、运行时 Schema、示例 |
 | Task 2：建立统一原表读取层 | 已完成 | Task 1 | Numerical / ASC / Feel / Item / Prototype 读取器 |
 | Task 2.5：接入主动技能基础充能链 | 已完成 | Task 1、2 | PVE / GP 技能读取规则、fallback 与校验测试 |
-| Task 3：实现 Weapon Data Lock | 待开始 | Task 1、2、2.5 | 多来源 Lock、刷新与只读检查命令 |
+| Task 3：实现 Weapon Data Lock | 已完成 | Task 1、2、2.5 | 多来源 Lock、刷新与只读检查命令 |
 | Task 4：实现 V1/V2 Resolver | 待开始 | Task 1、3 | `ResolvedWeapon`、来源追踪、override 机制 |
 | Task 5：迁移代表武器 | 待开始 | Task 4 | 试点 MDX、Lock、迁移前后快照 |
 | Task 6：切换全部消费者 | 待开始 | Task 5 | 页面、索引、图表、计算器统一入口 |
