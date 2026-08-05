@@ -5,21 +5,8 @@ weapon_type: 近战武器
 element: 寒冷
 rarity: 史诗
 weapon_type_id: 13
-prototype_id: 20013000023
-asc_type_id: 169
+prototype_id: "20013000023"
 active_skill_id: 0
-damage:
-  base: 3.06
-  impulse: 63.6
-  toughness: 15.9
-  flesh: 12.8
-  hurtable: 12.8
-melee_damage:
-  light: 1.296
-  heavy: 3.06
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.2
 magazine: 30
 total_ammo: 5030
 accuracy: 0
@@ -28,33 +15,23 @@ scope: 不可开镜
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: false
-element_add_rate: 0.432
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 近战攻击
-    fire_interval: 0.15
-    damage:
-      base: 1.53
-      impulse: 63.6
-      toughness: 15.9
-      flesh: 12.8
-      hurtable: 12.8
-    element: 寒冷
-    element_add_rate: 1.02
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-file_rate: 400
 changeClip:
   timeBase: 0.9
   reloadRecovery: 0
 game_mode: td
+schema_version: 2
+item_id: "20113000023"
+damage_sources:
+  - id: jin-zhan-gong-ji
+    name: 近战攻击
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 121300230
+        level: 1
+      asc_type_id: "169"
 ---
 
 <WeaponSkill>

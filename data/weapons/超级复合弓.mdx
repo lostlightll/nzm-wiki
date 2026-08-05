@@ -1,6 +1,7 @@
 ---
 title: 超级复合弓
 prototype_id: '20012000001'
+item_id: '20112000001'
 use_type: 副武器
 weapon_type: 弓箭
 element: 物理
@@ -8,36 +9,6 @@ rarity: 传说
 tags:
   - 元素切换
 scope: 高倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.3
-    damage:
-      base: 1.632
-      impulse: 21.3
-      toughness: 21.3
-      flesh: 22.1
-      hurtable: 22.1
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1.5
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 1.632
-  impulse: 21.3
-  toughness: 21.3
-  flesh: 22.1
-  hurtable: 22.1
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.5
-file_rate: 35
 magazine: 1
 total_ammo: 21
 accuracy: 77
@@ -45,20 +16,32 @@ stability: 74
 changeClip:
   timeBase: 0.55
   reloadRecovery: 0
-range: null
-explosion_range: null
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: null
-element_add_rate: 0.408
 skill_cooldown: 30
-pellets: null
 weapon_type_id: 12
 active_skill_id: 5000102
 skill_duration: 8
 skill_blocking: true
 show_duration: true
+schema_version: 2
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 121200010
+        level: 1
+      asc_type_id: "119"
+    overrides:
+      asc:
+        attenuation:
+          status: not_applicable
+    override_reason: 结构迁移保留旧 MDX 直接维护的 attenuation，原表差异待独立核验
 ---
 
 <WeaponSkill>

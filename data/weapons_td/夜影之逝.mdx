@@ -1,6 +1,6 @@
 ---
 title: 夜影之逝
-prototype_id: 20003000024
+prototype_id: "20003000024"
 use_type: 主武器
 weapon_type: 霰弹枪
 element: 电弧
@@ -8,138 +8,6 @@ rarity: 传说
 tags:
   - 连斩
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-mode_names:
-  1: 右键近战
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.33
-    pellets: 6
-    damage:
-      base: 0.089
-      impulse: 1.1
-      toughness: 1.1
-      flesh: 0.9
-      hurtable: 0.9
-    element: 电弧
-    element_add_rate: 0.062
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - mode: 1
-    name: 右键近战
-    damage:
-      base: 0.6
-      impulse: 8.9
-      toughness: 8.9
-      flesh: 7.3
-      hurtable: 7.3
-    element: 电弧
-    element_add_rate: 0.5027027
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-extra_modes:
-  - name: 切刀近战
-    damage:
-      base: 1.5
-      impulse: 22.3
-      toughness: 22.3
-      flesh: 18.2
-      hurtable: 18.2
-    element: 电弧
-    element_add_rate: 1
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-  - name: 贯长虹剑气
-    damage:
-      base: 3.15
-      impulse: 28.2
-      toughness: 28.2
-      flesh: 23.1
-      hurtable: 23.1
-    element: 电弧
-    element_add_rate: 1
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-  - name: 连斩前7刀
-    damage:
-      base: 0.135
-      impulse: 6.9
-      toughness: 6.9
-      flesh: 5.7
-      hurtable: 5.7
-    element: 电弧
-    element_add_rate: 0.3895946
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-  - name: 连斩第8刀
-    damage:
-      base: 0.285
-      impulse: 14.4
-      toughness: 14.4
-      flesh: 11.8
-      hurtable: 11.8
-    element: 电弧
-    element_add_rate: 0.8127027
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-  - name: 近战回血
-    label: 护盾回复
-    damage:
-      base: 0.3
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-damage:
-  base: 0.089
-  impulse: 1.1
-  toughness: 1.1
-  flesh: 0.9
-  hurtable: 0.9
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.2
-file_rate: 181
 magazine: 16
 total_ammo: 144
 accuracy: 59
@@ -148,17 +16,133 @@ changeClip:
   timeBase: 2.5
   reloadRecovery: 0
 range: 30
-explosion_range: -1
 attenuation_begin: 10
 attenuation_end: 20
 attenuation_scale: 0.3
-ignore_shield: false
-element_add_rate: 0.062
 skill_cooldown: 35
-pellets: 6
 weapon_type_id: 3
 active_skill_id: 5103001
 game_mode: td
+schema_version: 2
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120300240
+        level: 1
+      asc_type_id: "342"
+  - id: you-jian-jin-zhan
+    name: 右键近战
+    section: fire_mode
+    source:
+      numerical:
+        table: td
+        id: 120300241
+        level: 1
+  - id: qie-dao-jin-zhan
+    name: 切刀近战
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120300240
+        level: 1
+    overrides:
+      numerical:
+        damage:
+          base: 1.5
+          impulse: 22.3
+          toughness: 22.3
+          flesh: 18.2
+          hurtable: 18.2
+        element_add_rate: 1
+    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.flesh，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.hurtable，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.impulse，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.toughness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 element_add_rate，原表差异待独立核验
+  - id: guan-chang-hong-jian-qi
+    name: 贯长虹剑气
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120300240
+        level: 1
+    overrides:
+      numerical:
+        damage:
+          base: 3.15
+          impulse: 28.2
+          toughness: 28.2
+          flesh: 23.1
+          hurtable: 23.1
+        element_add_rate: 1
+    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.flesh，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.hurtable，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.impulse，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.toughness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 element_add_rate，原表差异待独立核验
+  - id: lian-zhan-qian-7-dao
+    name: 连斩前7刀
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120300240
+        level: 1
+    overrides:
+      numerical:
+        damage:
+          base: 0.135
+          impulse: 6.9
+          toughness: 6.9
+          flesh: 5.7
+          hurtable: 5.7
+        element_add_rate: 0.3895946
+    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.flesh，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.hurtable，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.impulse，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.toughness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 element_add_rate，原表差异待独立核验
+  - id: lian-zhan-di-8-dao
+    name: 连斩第8刀
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120300240
+        level: 1
+    overrides:
+      numerical:
+        damage:
+          base: 0.285
+          impulse: 14.4
+          toughness: 14.4
+          flesh: 11.8
+          hurtable: 11.8
+        element_add_rate: 0.8127027
+    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.flesh，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.hurtable，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.impulse，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.toughness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 element_add_rate，原表差异待独立核验
+  - id: jin-zhan-hui-xue
+    name: 近战回血
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120300240
+        level: 1
+    label: 护盾回复
+    overrides:
+      numerical:
+        damage:
+          base: 0.3
+          impulse: 0
+          toughness: 0
+          flesh: 0
+          hurtable: 0
+        element: 物理
+        element_add_rate: 0
+        weakness_multiplier: 1
+        enable_critical: false
+        enable_weakness: false
+    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.flesh，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.hurtable，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.impulse，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.toughness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 element，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 element_add_rate，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 enable_critical，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 enable_weakness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 weakness_multiplier，原表差异待独立核验
 ---
 
 <WeaponSkill>

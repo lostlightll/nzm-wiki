@@ -8,36 +8,6 @@ rarity: 史诗
 tags:
   - 元素异常
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.07
-    damage:
-      base: 0.118
-      impulse: 1.7
-      toughness: 1.7
-      flesh: 1.3
-      hurtable: 1.3
-    element: 寒冷
-    element_add_rate: 0.072
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.118
-  impulse: 1.7
-  toughness: 1.7
-  flesh: 1.3
-  hurtable: 1.3
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: 857
 magazine: 30
 total_ammo: 840
 accuracy: 71
@@ -45,20 +15,28 @@ stability: 56
 changeClip:
   timeBase: 1.3
   reloadRecovery: 0.4678
-range: null
-explosion_range: null
 attenuation_begin: 18
 attenuation_end: 40
 attenuation_scale: 0.4
-ignore_shield: null
-element_add_rate: 0.072
 skill_cooldown: 20
-pellets: null
 weapon_type_id: 5
 active_skill_id: 5002501
 skill_duration: 10
 skill_blocking: true
 show_duration: true
+schema_version: 2
+item_id: "20105000003"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120500030
+        level: 1
+      asc_type_id: "34"
 ---
 
 <WeaponSkill>

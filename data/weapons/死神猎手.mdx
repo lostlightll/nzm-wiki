@@ -8,54 +8,6 @@ rarity: 传说
 tags:
   - 穿透
 scope: 高倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.3
-    damage:
-      base: 0.396
-      impulse: 5.4
-      toughness: 5.4
-      flesh: 4.3
-      hurtable: 4.3
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1.5
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-extra_modes:
-  - name: 死神之光
-    fire_interval: 0
-    label: 技能伤害
-    damage:
-      base: 4
-      impulse: 44
-      toughness: 0.4
-      flesh: 28.8
-      hurtable: 44
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.396
-  impulse: 5.4
-  toughness: 5.4
-  flesh: 4.3
-  hurtable: 4.3
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.5
-file_rate: 200
 magazine: 20
 total_ammo: 260
 accuracy: 88
@@ -63,20 +15,51 @@ stability: 70
 changeClip:
   timeBase: 2
   reloadRecovery: 0.5051
-range: -1
 explosion_range: 0
 attenuation_begin: 70
 attenuation_end: 100
 attenuation_scale: 0.6
-ignore_shield: false
-element_add_rate: 0
 skill_cooldown: 150
-pellets: ''
 weapon_type_id: 14
 active_skill_id: 5102101
 skill_duration: 2.5
 skill_blocking: false
 show_duration: true
+schema_version: 2
+item_id: "20114000005"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120200021
+        level: 1
+      asc_type_id: "239"
+  - id: si-shen-zhi-guang
+    name: 死神之光
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120200021
+        level: 1
+    label: 技能伤害
+    overrides:
+      numerical:
+        damage:
+          base: 4
+          impulse: 44
+          toughness: 0.4
+          flesh: 28.8
+          hurtable: 44
+        weakness_multiplier: 1
+        enable_critical: false
+        enable_weakness: false
+    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.flesh，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.hurtable，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.impulse，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.toughness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 enable_critical，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 enable_weakness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 weakness_multiplier，原表差异待独立核验
 ---
 
 <WeaponSkill>

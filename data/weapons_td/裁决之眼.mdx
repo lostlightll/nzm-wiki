@@ -1,6 +1,6 @@
 ---
 title: 裁决之眼
-prototype_id: 20002000002
+prototype_id: "20002000002"
 use_type: 主武器
 weapon_type: 狙击步枪
 element: 电弧
@@ -8,36 +8,6 @@ rarity: 传说
 tags:
   - 正面效果
 scope: 高倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.55
-    damage:
-      base: 0.519
-      impulse: 9
-      toughness: 9
-      flesh: 7.2
-      hurtable: 7.2
-    element: 电弧
-    element_add_rate: 0.577
-    weakness_multiplier: 1.8
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.519
-  impulse: 9
-  toughness: 9
-  flesh: 7.2
-  hurtable: 7.2
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.8
-file_rate: 109
 magazine: 12
 total_ammo: 108
 accuracy: 86
@@ -45,21 +15,29 @@ stability: 69
 changeClip:
   timeBase: 2.1
   reloadRecovery: 0
-range: ''
-explosion_range: ''
 attenuation_begin: 80
 attenuation_end: 120
 attenuation_scale: 0.8
-ignore_shield: false
-element_add_rate: 0.577
 skill_cooldown: 25
-pellets: ''
 weapon_type_id: 2
 active_skill_id: 5002101
 skill_duration: 15
 skill_blocking: true
 show_duration: true
 game_mode: td
+schema_version: 2
+item_id: "20102000012"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120200120
+        level: 1
+      asc_type_id: "13"
 ---
 
 <WeaponSkill>

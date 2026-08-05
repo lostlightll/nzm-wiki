@@ -6,20 +6,7 @@ element: 腐蚀
 rarity: 史诗
 weapon_type_id: 13
 prototype_id: '20013000052'
-asc_type_id: 355
 active_skill_id: 0
-damage:
-  base: 3.312
-  impulse: 68.8
-  toughness: 17.2
-  flesh: 13.8
-  hurtable: 13.8
-melee_damage:
-  light: 1.296
-  heavy: 3.312
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.2
 magazine: 30
 total_ammo: 5030
 accuracy: 0
@@ -28,31 +15,27 @@ scope: 不可开镜
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: false
-element_add_rate: 0.432
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 近战攻击
-    fire_interval: 0.15
-    damage:
-      base: 3.312
-      impulse: 68.8
-      toughness: 17.2
-      flesh: 13.8
-      hurtable: 13.8
-    element: 腐蚀
-    element_add_rate: 0.432
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-file_rate: 400
 changeClip:
   timeBase: 0.9
   reloadRecovery: 0
+schema_version: 2
+damage_sources:
+  - id: jin-zhan-gong-ji
+    name: 近战攻击
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 121300520
+        level: 1
+      asc_type_id: "355"
+    overrides:
+      numerical:
+        damage:
+          base: 3.312
+        element_add_rate: 0.432
+    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 element_add_rate，原表差异待独立核验
 ---
 
 <WeaponSkill>

@@ -9,55 +9,6 @@ tags:
   - 暗器
   - 黏弹
 scope: 不可开镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 黏弹射击
-    fire_interval: 0.4
-    pellets: 3
-    damage:
-      base: 0.104
-      impulse: 1.52
-      toughness: 1.52
-      flesh: 3
-      hurtable: 0.9
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-extra_modes:
-  - name: 黏弹爆炸
-    fire_interval: 0
-    label: 爆炸伤害
-    damage:
-      base: 0.208
-      impulse: 1.52
-      toughness: 1.52
-      flesh: 0
-      hurtable: 0.9
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.104
-  impulse: 1.52
-  toughness: 1.52
-  flesh: 3
-  hurtable: 0.9
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: 85
 magazine: 9
 total_ammo: 99
 accuracy: 56
@@ -70,15 +21,39 @@ explosion_range: 2.5
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: false
-element_add_rate: 0
 skill_cooldown: 50
-pellets: null
 weapon_type_id: 19
 active_skill_id: 5004501
 skill_duration: 10
 skill_blocking: true
 show_duration: true
+schema_version: 2
+damage_sources:
+  - id: nian-tan-she-ji
+    name: 黏弹射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 121900401
+        level: 1
+      asc_type_id: "357"
+    overrides:
+      asc:
+        attenuation:
+          status: not_applicable
+    override_reason: 结构迁移保留旧 MDX 直接维护的 attenuation，原表差异待独立核验
+  - id: nian-tan-bao-zha
+    name: 黏弹爆炸
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 121900402
+        level: 1
+    label: 爆炸伤害
 ---
 
 <WeaponSkill>

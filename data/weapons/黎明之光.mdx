@@ -5,38 +5,7 @@ use_type: 主武器
 weapon_type: 冲锋枪
 element: 电弧
 rarity: 史诗
-tags: ''
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.15
-    damage:
-      base: 0.079
-      impulse: 1.3
-      toughness: 1.3
-      flesh: 1.1
-      hurtable: 1.1
-    element: 电弧
-    element_add_rate: 0.084
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.079
-  impulse: 1.3
-  toughness: 1.3
-  flesh: 1.1
-  hurtable: 1.1
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: 750
 magazine: 30
 total_ammo: 870
 accuracy: 55
@@ -44,20 +13,28 @@ stability: 74
 changeClip:
   timeBase: 0.9
   reloadRecovery: 0.3399
-range: ''
-explosion_range: ''
 attenuation_begin: 18
 attenuation_end: 40
 attenuation_scale: 0.4
-ignore_shield: false
-element_add_rate: 0.084
 skill_cooldown: 30
-pellets: ''
 weapon_type_id: 5
 active_skill_id: 5003001
 skill_duration: 15
 skill_blocking: true
 show_duration: true
+schema_version: 2
+item_id: "20105000001"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120500010
+        level: 1
+      asc_type_id: "31"
 ---
 
 <WeaponSkill>

@@ -5,74 +5,7 @@ use_type: 主武器
 weapon_type: 霰弹枪
 element: 寒冷
 rarity: 传说
-tags: null
 scope: 不可开镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.4
-    pellets: 6
-    damage:
-      base: 0.121
-      impulse: 1.5
-      toughness: 1.5
-      flesh: 1.2
-      hurtable: 1.2
-    element: 寒冷
-    element_add_rate: 0.057
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-extra_modes:
-  - name: 冰弹命中
-    label: 技能伤害
-    damage:
-      base: 0.2
-      impulse: 0
-      toughness: 0
-      flesh: 2
-      hurtable: 2
-    element: 寒冷
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-  - name: 碎冰
-    label: 技能伤害
-    damage:
-      base: 0.6
-      impulse: 0
-      toughness: 0
-      flesh: 6
-      hurtable: 6
-    element: 寒冷
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-damage:
-  base: 0.121
-  impulse: 1.5
-  toughness: 1.5
-  flesh: 1.2
-  hurtable: 1.2
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.2
-file_rate: 150
 magazine: 16
 total_ammo: 112
 accuracy: 59
@@ -80,18 +13,72 @@ stability: 64
 changeClip:
   timeBase: 0.25
   reloadRecovery: 0.2688
-range: null
-explosion_range: null
 attenuation_begin: 10
 attenuation_end: 20
 attenuation_scale: 0.3
-ignore_shield: false
-element_add_rate: 0.057
 skill_cooldown: 30
-pellets: 6
 weapon_type_id: 3
 active_skill_id: 5002901
 show_duration: false
+schema_version: 2
+item_id: "20103000012"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120300120
+        level: 1
+      asc_type_id: "241"
+  - id: bing-tan-ming-zhong
+    name: 冰弹命中
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120300120
+        level: 1
+    label: 技能伤害
+    overrides:
+      numerical:
+        damage:
+          base: 0.2
+          impulse: 0
+          toughness: 0
+          flesh: 2
+          hurtable: 2
+        element_add_rate: 0
+        weakness_multiplier: 1
+        enable_critical: false
+        enable_weakness: false
+    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.flesh，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.hurtable，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.impulse，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.toughness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 element_add_rate，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 enable_critical，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 enable_weakness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 weakness_multiplier，原表差异待独立核验
+  - id: sui-bing
+    name: 碎冰
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120300120
+        level: 1
+    label: 技能伤害
+    overrides:
+      numerical:
+        damage:
+          base: 0.6
+          impulse: 0
+          toughness: 0
+          flesh: 6
+          hurtable: 6
+        element_add_rate: 0
+        weakness_multiplier: 1
+        enable_critical: false
+        enable_weakness: false
+    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.flesh，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.hurtable，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.impulse，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.toughness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 element_add_rate，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 enable_critical，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 enable_weakness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 weakness_multiplier，原表差异待独立核验
 ---
 
 <WeaponSkill>

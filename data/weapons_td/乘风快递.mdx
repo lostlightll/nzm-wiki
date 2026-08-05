@@ -1,6 +1,6 @@
 ---
 title: 乘风快递
-prototype_id: 20007000009
+prototype_id: "20007000009"
 use_type: 副武器
 weapon_type: 手枪
 element: 腐蚀
@@ -8,36 +8,6 @@ rarity: 传说
 tags:
   - 浮空
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.58
-    damage:
-      base: 0.657
-      impulse: 9.8
-      toughness: 9.8
-      flesh: 10.2
-      hurtable: 10.2
-    element: 腐蚀
-    element_add_rate: 0.626
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.657
-  impulse: 9.8
-  toughness: 9.8
-  flesh: 10.2
-  hurtable: 10.2
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: 103
 magazine: 8
 total_ammo: 72
 accuracy: 31
@@ -45,19 +15,27 @@ stability: 69
 changeClip:
   timeBase: 2.2
   reloadRecovery: 0.0001
-range: null
-explosion_range: null
 attenuation_begin: 18
 attenuation_end: 40
 attenuation_scale: 0.5
-ignore_shield: false
-element_add_rate: 0.626
 skill_cooldown: 8
-pellets: null
 weapon_type_id: 7
 active_skill_id: 5000801
 show_duration: false
 game_mode: td
+schema_version: 2
+item_id: "20107000007"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120700070
+        level: 1
+      asc_type_id: "72"
 ---
 
 <WeaponSkill>

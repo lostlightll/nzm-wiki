@@ -6,20 +6,7 @@ element: 物理
 rarity: 传说
 weapon_type_id: 13
 prototype_id: '20013000059'
-asc_type_id: 376
 active_skill_id: 0
-damage:
-  base: 1.755
-  impulse: 58.4
-  toughness: 14.6
-  flesh: 11.7
-  hurtable: 11.7
-melee_damage:
-  light: 0.702
-  heavy: 1.755
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.2
 magazine: 30
 total_ammo: 5030
 accuracy: 0
@@ -28,31 +15,22 @@ scope: 不可开镜
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: false
-element_add_rate: 0
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 近战攻击
-    fire_interval: 0.15
-    damage:
-      base: 1.755
-      impulse: 58.4
-      toughness: 14.6
-      flesh: 11.7
-      hurtable: 11.7
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-file_rate: 400
 changeClip:
   timeBase: 3
   reloadRecovery: 0
+schema_version: 2
+item_id: "20113000059"
+damage_sources:
+  - id: jin-zhan-gong-ji
+    name: 近战攻击
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 121300590
+        level: 1
+      asc_type_id: "376"
 ---
 <WeaponSkill>
   <PassiveSkill

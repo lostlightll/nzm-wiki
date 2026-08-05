@@ -8,36 +8,6 @@ rarity: 史诗
 tags:
   - 穿透
 scope: 高倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.3
-    damage:
-      base: 0.318
-      impulse: 4.3
-      toughness: 4.3
-      flesh: 3.5
-      hurtable: 3.5
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1.5
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.318
-  impulse: 4.3
-  toughness: 4.3
-  flesh: 3.5
-  hurtable: 3.5
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.5
-file_rate: 200
 magazine: 20
 total_ammo: 240
 accuracy: 88
@@ -45,19 +15,26 @@ stability: 70
 changeClip:
   timeBase: 2.6
   reloadRecovery: 0.3653
-range: ''
-explosion_range: ''
 attenuation_begin: 70
 attenuation_end: 100
 attenuation_scale: 0.6
-ignore_shield: false
-element_add_rate: 0
 skill_cooldown: 25
-pellets: ''
 weapon_type_id: 2
 active_skill_id: 5100701
 shooting_energy: true
 shooting_energy_count: 40
+schema_version: 2
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120200020
+        level: 1
+      asc_type_id: "100"
 ---
 
 <WeaponSkill>

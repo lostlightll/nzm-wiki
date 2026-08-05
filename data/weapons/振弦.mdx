@@ -8,36 +8,6 @@ rarity: 传说
 tags:
   - 蓄力
 scope: 高倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.3
-    damage:
-      base: 1.632
-      impulse: 21.3
-      toughness: 21.3
-      flesh: 22.1
-      hurtable: 22.1
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1.5
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 1.632
-  impulse: 21.3
-  toughness: 21.3
-  flesh: 22.1
-  hurtable: 22.1
-toughness_type: 冲击
-enable_critical: true
-weakness_multiplier: 1.5
-file_rate: 35
 magazine: 1
 total_ammo: 21
 accuracy: 77
@@ -45,20 +15,35 @@ stability: 74
 changeClip:
   timeBase: 0.45
   reloadRecovery: 0
-range: null
-explosion_range: null
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: null
-element_add_rate: null
 skill_cooldown: 30
-pellets: null
 weapon_type_id: 12
-active_skill_id: 5004501
+active_skill_id: 5004901
 skill_duration: 15
 skill_blocking: true
 show_duration: true
+schema_version: 2
+item_id: "20112000002"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 121200021
+        level: 1
+      asc_type_id: "159"
+    overrides:
+      numerical:
+        weakness_multiplier: 1.5
+      asc:
+        attenuation:
+          status: not_applicable
+    override_reason: 结构迁移保留旧 MDX 直接维护的 attenuation，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 weakness_multiplier，原表差异待独立核验
 ---
 
 <WeaponSkill>

@@ -1,61 +1,11 @@
 ---
 title: 浪里白条
-prototype_id: 20009000001
+prototype_id: "20009000001"
 use_type: 主武器
 weapon_type: 激光武器
 element: 电弧
 rarity: 传说
-tags: null
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-mode_names:
-  1: 一段激光
-damage_modes:
-  - mode: 1
-    name: 一段激光
-    fire_interval: 0.5
-    damage:
-      base: 0.112
-      impulse: 1.578
-      toughness: 1.578
-      flesh: 1.267
-      hurtable: 1.267
-    element: 电弧
-    element_add_rate: 0.101
-    weakness_multiplier: 1.5
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - mode: 0
-    name: 二段命中
-    fire_interval: 0.5
-    damage:
-      base: 1.005
-      impulse: 14.2
-      toughness: 14.2
-      flesh: 11.4
-      hurtable: 11.4
-    element: 电弧
-    element_add_rate: 0.911
-    weakness_multiplier: 1.5
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 2.124
-  impulse: 14.2
-  toughness: 14.2
-  flesh: 11.4
-  hurtable: 11.4
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.5
-file_rate: 28
 magazine: 30
 total_ammo: 300
 accuracy: 70
@@ -63,21 +13,36 @@ stability: 60
 changeClip:
   timeBase: 3
   reloadRecovery: 0.2715
-range: -1
-explosion_range: -1
 attenuation_begin: 60
 attenuation_end: 100
 attenuation_scale: 0.6
-ignore_shield: false
-element_add_rate: 0.911
 skill_cooldown: 40
-pellets: null
 weapon_type_id: 9
 active_skill_id: 5003901
 skill_duration: 10
 skill_blocking: true
 show_duration: true
 game_mode: td
+schema_version: 2
+damage_sources:
+  - id: er-duan-ming-zhong
+    name: 二段命中
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120900010
+        level: 1
+      asc_type_id: "88"
+  - id: yi-duan-ji-guang
+    name: 一段激光
+    section: fire_mode
+    source:
+      numerical:
+        table: td
+        id: 120900012
+        level: 1
 ---
 
 <WeaponSkill>

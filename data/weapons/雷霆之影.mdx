@@ -8,57 +8,32 @@ rarity: 传说
 tags:
   - 正面效果
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.166
-    damage:
-      base: 0.176
-      impulse: 2.6
-      toughness: 2.6
-      flesh: 2.7
-      hurtable: 2.7
-    element: 电弧
-    element_add_rate: 0.167
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.176
-  impulse: 2.6
-  toughness: 2.6
-  flesh: 2.7
-  hurtable: 2.7
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: '361'
-magazine: '24'
-total_ammo: '240'
-accuracy: '72'
 stability: 55
 changeClip:
   timeBase: 1.2
   reloadRecovery: 0.3594
-range: ''
-explosion_range: ''
 attenuation_begin: 18
 attenuation_end: 40
 attenuation_scale: 0.4
-ignore_shield: false
-element_add_rate: 0.167
 skill_cooldown: 40
-pellets: ''
 weapon_type_id: 7
 active_skill_id: 5000901
 skill_duration: 10
 skill_blocking: true
 show_duration: true
+schema_version: 2
+item_id: "20107000008"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120700120
+        level: 1
+      asc_type_id: "179"
 ---
 
 <WeaponSkill>

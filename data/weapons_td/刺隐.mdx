@@ -1,6 +1,6 @@
 ---
 title: 刺隐
-prototype_id: 20003000030
+prototype_id: "20003000030"
 use_type: 主武器
 weapon_type: 霰弹枪
 element: 电弧
@@ -8,56 +8,6 @@ rarity: 传说
 tags:
   - 隐身
 scope: 不可开镜
-damage_label: ''
-damage_label_text: ''
-mode_names:
-  1: 右键近战
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.4
-    pellets: 6
-    damage:
-      base: 0.098
-      impulse: 1.5
-      toughness: 1.5
-      flesh: 1.2
-      hurtable: 1.2
-    element: 电弧
-    element_add_rate: 0.086
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - mode: 1
-    name: 右键近战
-    damage:
-      base: 1.572
-      impulse: 32.8
-      toughness: 32.8
-      flesh: 26.2
-      hurtable: 26.2
-    element: 电弧
-    element_add_rate: 1.8776667
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-damage:
-  base: 0.098
-  impulse: 1.5
-  toughness: 1.5
-  flesh: 1.2
-  hurtable: 1.2
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.2
-file_rate: 150
 magazine: 12
 total_ammo: 144
 accuracy: 59
@@ -65,21 +15,41 @@ stability: 64
 changeClip:
   timeBase: 0.25
   reloadRecovery: 0
-range: -1
-explosion_range: -1
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: false
-element_add_rate: 0.086
 skill_cooldown: 30
-pellets: 6
 weapon_type_id: 3
 active_skill_id: 5004801
 skill_duration: 10
 skill_blocking: false
 show_duration: true
 game_mode: td
+schema_version: 2
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120300250
+        level: 1
+      asc_type_id: "348"
+    overrides:
+      asc:
+        attenuation:
+          status: not_applicable
+    override_reason: 结构迁移保留旧 MDX 直接维护的 attenuation，原表差异待独立核验
+  - id: you-jian-jin-zhan
+    name: 右键近战
+    section: fire_mode
+    source:
+      numerical:
+        table: td
+        id: 120300251
+        level: 1
 ---
 
 <WeaponSkill>

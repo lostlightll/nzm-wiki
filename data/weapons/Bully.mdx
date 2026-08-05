@@ -6,17 +6,7 @@ element: 物理
 rarity: 传说
 weapon_type_id: 7
 prototype_id: '20007000035'
-asc_type_id: 375
 active_skill_id: 5004301
-damage:
-  base: 0.157
-  impulse: 1.9
-  toughness: 1.9
-  flesh: 1.9
-  hurtable: 1.9
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
 magazine: 32
 total_ammo: 320
 accuracy: 75
@@ -25,29 +15,19 @@ scope: 低倍镜
 attenuation_begin: 18
 attenuation_end: 40
 attenuation_scale: 0.5
-ignore_shield: false
-element_add_rate: 0
 skill_cooldown: 20
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
+schema_version: 2
+damage_sources:
+  - id: pu-tong-she-ji
     name: 普通射击
-    fire_interval: 0.116
-    damage:
-      base: 0.157
-      impulse: 1.9
-      toughness: 1.9
-      flesh: 1.9
-      hurtable: 1.9
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-file_rate: 517.241
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120700351
+        level: 1
+      asc_type_id: "375"
 ---
 <WeaponSkill>
   <ActiveSkill

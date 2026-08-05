@@ -8,53 +8,6 @@ rarity: 传说
 tags:
   - 动态射速
 scope: 中倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.21
-    damage:
-      base: 0.12
-      impulse: 1.7
-      toughness: 1.7
-      flesh: 1.3
-      hurtable: 1.3
-    element: 电弧
-    element_add_rate: 0.107
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-extra_modes:
-  - name: 被动射速
-    fire_interval: 0.07
-    damage:
-      base: 0.12
-      impulse: 1.7
-      toughness: 1.7
-      flesh: 1.3
-      hurtable: 1.3
-    element: 电弧
-    element_add_rate: 0.107
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.12
-  impulse: 1.7
-  toughness: 1.7
-  flesh: 1.3
-  hurtable: 1.3
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: 285
 magazine: 100
 total_ammo: 1200
 accuracy: 80
@@ -62,20 +15,34 @@ stability: 56
 changeClip:
   timeBase: 4.3
   reloadRecovery: 0.377
-range: null
-explosion_range: null
 attenuation_begin: 49
 attenuation_end: 60
 attenuation_scale: 0.6
-ignore_shield: false
-element_add_rate: 0.107
 skill_cooldown: 120
-pellets: null
 weapon_type_id: 6
 active_skill_id: 5102301
 skill_duration: 20
 skill_blocking: true
 show_duration: true
+schema_version: 2
+item_id: "20106000017"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120600170
+        level: 1
+      asc_type_id: "324"
+  - id: bei-dong-she-su
+    name: 被动射速
+    section: variant
+    inherits: pu-tong-she-ji
+    source: {}
+    fire_interval: 0.07
 ---
 
 <WeaponSkill>

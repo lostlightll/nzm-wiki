@@ -8,54 +8,6 @@ rarity: 史诗
 tags:
   - 额外爆炸
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.12
-    damage:
-      base: 0.118
-      impulse: 2.2
-      toughness: 2.2
-      flesh: 1.7
-      hurtable: 1.7
-    element: 火焰
-    element_add_rate: 0.138
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-extra_modes:
-  - name: 导弹
-    label: 技能伤害
-    damage:
-      base: 0.37
-      impulse: 3.7
-      toughness: 3.7
-      flesh: 3.7
-      hurtable: 3.7
-    element: 火焰
-    element_add_rate: 0.185
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-damage:
-  base: 0.118
-  impulse: 2.2
-  toughness: 2.2
-  flesh: 1.7
-  hurtable: 1.7
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: 500
 magazine: 124
 total_ammo: 720
 accuracy: 55
@@ -63,20 +15,51 @@ stability: 54
 changeClip:
   timeBase: 4.3
   reloadRecovery: 0.3102
-range: ''
-explosion_range: ''
 attenuation_begin: 49
 attenuation_end: 60
 attenuation_scale: 0.6
-ignore_shield: false
-element_add_rate: 0.138
 skill_cooldown: 40
-pellets: ''
 weapon_type_id: 6
 active_skill_id: 5000903
 skill_duration: 30
 skill_blocking: true
 show_duration: true
+schema_version: 2
+item_id: "20106000001"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120600010
+        level: 1
+      asc_type_id: "37"
+  - id: dao-dan
+    name: 导弹
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120600010
+        level: 1
+    label: 技能伤害
+    overrides:
+      numerical:
+        damage:
+          base: 0.37
+          impulse: 3.7
+          toughness: 3.7
+          flesh: 3.7
+          hurtable: 3.7
+        element_add_rate: 0.185
+        weakness_multiplier: 1
+        enable_critical: false
+        enable_weakness: false
+    override_reason: 结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.flesh，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.hurtable，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.impulse，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 damage.toughness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 element_add_rate，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 enable_critical，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 enable_weakness，原表差异待独立核验；结构迁移保留旧 MDX 直接维护的 weakness_multiplier，原表差异待独立核验
 ---
 
 <WeaponSkill>

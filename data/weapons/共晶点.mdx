@@ -8,36 +8,6 @@ rarity: 史诗
 tags:
   - 元素异常
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.075
-    damage:
-      base: 0.112
-      impulse: 1.3
-      toughness: 1.3
-      flesh: 1
-      hurtable: 1
-    element: 寒冷
-    element_add_rate: 0.055
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.112
-  impulse: 1.3
-  toughness: 1.3
-  flesh: 1
-  hurtable: 1
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: 799
 magazine: 34
 total_ammo: 884
 accuracy: 71
@@ -45,20 +15,36 @@ stability: 52
 changeClip:
   timeBase: 1
   reloadRecovery: 0.3521
-range: ''
-explosion_range: ''
 attenuation_begin: 10
 attenuation_end: 20
 attenuation_scale: 0.3
-ignore_shield: false
-element_add_rate: 0.055
 skill_cooldown: 35
-pellets: ''
 weapon_type_id: 5
 active_skill_id: 5001801
 skill_duration: 15
 skill_blocking: true
 show_duration: true
+schema_version: 2
+item_id: "20105000006"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120500070
+        level: 1
+      asc_type_id: "157"
+    overrides:
+      asc:
+        attenuation:
+          status: applicable
+          begin_meters: 10
+          end_meters: 20
+          min_scale: 0.3
+    override_reason: 结构迁移保留旧 MDX 直接维护的 attenuation，原表差异待独立核验
 ---
 
 <WeaponSkill>

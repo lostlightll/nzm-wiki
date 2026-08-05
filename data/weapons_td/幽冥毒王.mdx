@@ -1,6 +1,6 @@
 ---
 title: 幽冥毒王
-prototype_id: 20006000004
+prototype_id: "20006000004"
 use_type: 主武器
 weapon_type: 机枪
 element: 腐蚀
@@ -8,57 +8,6 @@ rarity: 史诗
 tags:
   - 多模式
 scope: 中倍镜
-damage_label: ''
-damage_label_text: ''
-mode_names:
-  1: 榴弹命中
-  2: 榴弹爆炸
-damage_modes:
-  - mode: 1
-    name: 榴弹命中
-    fire_interval: 0.5
-    damage:
-      base: 0.1
-      impulse: 1
-      toughness: 1
-      flesh: 1
-      hurtable: 1
-    element: 腐蚀
-    element_add_rate: 0.05
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - mode: 2
-    name: 榴弹爆炸
-    label: 爆炸伤害
-    damage:
-      base: 0.2
-      impulse: 2
-      toughness: 2
-      flesh: 2
-      hurtable: 2
-    element: 腐蚀
-    element_add_rate: 0.1
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-damage:
-  base: 0.092
-  impulse: 1.5
-  toughness: 1.5
-  flesh: 1.2
-  hurtable: 1.2
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: 621
 magazine: 100
 total_ammo: 1000
 accuracy: 80
@@ -66,21 +15,52 @@ stability: 50
 changeClip:
   timeBase: 2.5
   reloadRecovery: 0.3953
-range: ''
-explosion_range: ''
 attenuation_begin: 49
 attenuation_end: 60
 attenuation_scale: 0.6
-ignore_shield: false
-element_add_rate: 0.097
 skill_cooldown: 45
-pellets: ''
 weapon_type_id: 6
 active_skill_id: 5001301
 skill_duration: 12
 skill_blocking: false
 show_duration: true
 game_mode: td
+schema_version: 2
+item_id: "20106000004"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120600040
+        level: 1
+      asc_type_id: "121"
+    overrides:
+      asc:
+        fire_interval: 0.1
+    override_reason: 结构迁移保留旧 MDX 直接维护的 fire.interval，原表差异待独立核验
+  - id: liu-dan-ming-zhong
+    name: 榴弹命中
+    section: fire_mode
+    source:
+      prototype_mode: 1
+      numerical:
+        table: td
+        id: 120600041
+        level: 1
+      asc_type_id: "132"
+  - id: liu-dan-bao-zha
+    name: 榴弹爆炸
+    section: fire_mode
+    source:
+      numerical:
+        table: td
+        id: 120600042
+        level: 1
+    label: 爆炸伤害
 ---
 
 <WeaponSkill>
