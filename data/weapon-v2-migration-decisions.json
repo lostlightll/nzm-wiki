@@ -9606,7 +9606,18 @@
             "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测"
           },
           "field_decisions": {},
-          "snapshot_differences": [],
+          "snapshot_differences": [
+            {
+              "classification": "accepted_correction",
+              "pointer": "/catalog/weaponType/value",
+              "reason": "修正春雷震武器类型为连发榴弹"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/weaponType/value",
+              "reason": "修正春雷震武器类型为连发榴弹"
+            }
+          ],
           "sources": {}
         },
         "td": {
@@ -9616,7 +9627,18 @@
             "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测"
           },
           "field_decisions": {},
-          "snapshot_differences": [],
+          "snapshot_differences": [
+            {
+              "classification": "accepted_correction",
+              "pointer": "/catalog/weaponType/value",
+              "reason": "修正春雷震武器类型为连发榴弹"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/weaponType/value",
+              "reason": "修正春雷震武器类型为连发榴弹"
+            }
+          ],
           "sources": {}
         }
       }
