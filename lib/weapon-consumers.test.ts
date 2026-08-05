@@ -5,6 +5,7 @@ import path from "node:path";
 import test from "node:test";
 import {
   getActiveSkillDisplay,
+  getNonMainMeleeSources,
   getMainDamageSource,
   getResolvedFieldValue,
   toWeaponCatalogEntry,
@@ -148,6 +149,14 @@ test("pilot main source, LC/TD context, attenuation, and element agree", async (
   const element = getResolvedFieldValue(catalog.element);
   assert.ok(element);
   assert.ok(createWeaponSearchItem(gourd).keywords.includes(element));
+
+  const axe = await requireWeapon("军用手斧", "lc");
+  const axeCatalog = toWeaponCatalogEntry(axe);
+  assert.equal(axeCatalog.meleeSources.length, 3);
+  assert.deepEqual(
+    getNonMainMeleeSources(axeCatalog).map((source) => source.id),
+    ["light-hit-left", "light-hit-right"],
+  );
 });
 
 test("search and weapon stats use the same normalized LC main source", async () => {

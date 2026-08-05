@@ -3,22 +3,18 @@
 import {
   createContext,
   useContext,
-  useMemo,
-  useState,
   type ReactNode,
 } from "react";
 import {
   getMainDamageSource,
-  WeaponConsumerInvariantError,
   type ConsumerDamageSource,
   type WeaponDetailData,
+  WeaponConsumerInvariantError,
 } from "@/lib/weapon-consumers";
 
 interface WeaponDetailContextValue {
   weapon: WeaponDetailData;
-  selectedSourceId?: string;
-  selectedSource?: ConsumerDamageSource;
-  selectSource: (sourceId: string) => void;
+  mainSource?: ConsumerDamageSource;
 }
 
 const WeaponDetailContext = createContext<WeaponDetailContextValue | null>(null);
@@ -31,39 +27,9 @@ export function WeaponDetailProvider({
   children: ReactNode;
 }) {
   const mainSource = getMainDamageSource(weapon);
-  const [selectedSourceId, setSelectedSourceId] = useState(mainSource?.id);
-  const selectedSource = useMemo(() => {
-    if (selectedSourceId === undefined) return undefined;
-    const matches = weapon.damageSources.filter(
-      (source) => source.id === selectedSourceId,
-    );
-    if (matches.length !== 1) {
-      throw new WeaponConsumerInvariantError(
-        `selectedSourceId ${selectedSourceId} matched ${matches.length} sources`,
-      );
-    }
-    return matches[0];
-  }, [selectedSourceId, weapon.damageSources]);
-
-  const value = useMemo<WeaponDetailContextValue>(
-    () => ({
-      weapon,
-      selectedSourceId,
-      selectedSource,
-      selectSource: (sourceId) => {
-        if (!weapon.damageSources.some((source) => source.id === sourceId)) {
-          throw new WeaponConsumerInvariantError(
-            `cannot select unknown damage source ${sourceId}`,
-          );
-        }
-        setSelectedSourceId(sourceId);
-      },
-    }),
-    [selectedSource, selectedSourceId, weapon],
-  );
 
   return (
-    <WeaponDetailContext.Provider value={value}>
+    <WeaponDetailContext.Provider value={{ weapon, mainSource }}>
       {children}
     </WeaponDetailContext.Provider>
   );

@@ -460,7 +460,7 @@ gp-active-skill
 ### 工作内容
 
 - 切换武器详情、卡片、列表、筛选和衰减图表。
-- 详情与衰减图表读取当前 `damageSource.attenuation`；仅在状态为 `applicable` 时展示数值和曲线，多模式武器随所选伤害来源切换。
+- 详情卡保持既有呈现分区并展示全部标准化来源；衰减摘要和图表读取 Resolver 的 `mainSourceId`，仅在该来源状态为 `applicable` 时展示数值和曲线，不因 V2 新增模式选择器。
 - 搜索索引生成器改为读取标准化结果。
 - `weapon-stats.json` 从 `ResolvedWeapon` 生成。
 - 伤害计算器读取统一的标准化数据，不再依赖拼错的 `weekness_multiplier`。
@@ -477,7 +477,7 @@ gp-active-skill
 - [x] V1 / V2 差异只存在于 Resolver 内部。
 - [x] LC / TD 不会跨表串用。
 - [x] 试点武器的详情页、搜索、筛选、图表和计算器结果一致。
-- [x] `not_applicable` 的伤害来源不显示距离衰减数值或曲线，消费者不再读取旧 `range` 或顶层衰减字段。
+- [x] 主来源为 `not_applicable` 时不显示距离衰减数值或曲线，消费者不再读取旧 `range` 或顶层衰减字段。
 - [x] 武器卡片与正文技能卡片显示相同的基础充能时间。
 
 ### 依赖
@@ -590,8 +590,8 @@ gp-active-skill
 | Task 2.5：接入主动技能基础充能链 | 已完成 | Task 1、2 | PVE / GP 技能读取规则、fallback 与校验测试 |
 | Task 3：实现 Weapon Data Lock | 已完成 | Task 1、2、2.5 | 多来源 Lock、刷新与只读检查命令 |
 | Task 4：实现 V1/V2 Resolver | 已完成 | Task 1、3 | `ResolvedWeapon`、来源追踪、override 机制 |
-| Task 5：迁移代表武器 | 待开始 | Task 4 | 试点 MDX、Lock、迁移前后快照 |
-| Task 6：切换全部消费者 | 待开始 | Task 5 | 页面、索引、图表、计算器统一入口 |
+| Task 5：迁移代表武器 | 已完成 | Task 4 | 试点 MDX、Lock、迁移前后快照 |
+| Task 6：切换全部消费者 | 已完成 | Task 5 | 页面、索引、图表、计算器统一入口 |
 | Task 7：批量迁移 LC / TD | 待开始 | Task 6 | 全量 V2、完整 Lock、人工核验清单 |
 | Task 8：删除 V1 并收尾 | 待开始 | Task 7 | 单一正式管线、CI 检查、正式文档 |
 

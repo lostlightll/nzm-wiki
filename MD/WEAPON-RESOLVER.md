@@ -97,7 +97,7 @@ Resolver 独占主来源决策：选择首个 `fire_mode`，否则选择数组�
 
 `lib/weapon-consumers.ts` 只接受 `ResolvedWeapon`，不得读取 frontmatter、Lock 或 `refs/`。目录视图只携带主来源摘要；详情视图保留全部标准化 Damage、ASC、Feel、衰减和技能字段。两种客户端视图都删除 `raw`、provenance、diagnostics、override history、原表字段名和来源 key，避免把审计数据序列化到 RSC/client payload。完整审计信息仍保留在服务端 `ResolvedWeapon`。
 
-详情页用同一个 `selectedSourceId` 驱动属性面板、元素、衰减摘要和曲线。只有 `attenuation.status === "applicable"` 才显示衰减；消费者不读取旧 `range` 或顶层衰减字段。目录卡、搜索与 `weapon-stats.json` 使用同一个 `mainSourceId` 摘要。
+详情页保留既有的“普通射击 / 技能与特殊攻击 / 武器属性”呈现结构，不因 V2 数据链新增模式选择器。模式面板按 `section` 展示全部标准化来源；武器级元素、衰减摘要和曲线严格使用 Resolver 给出的 `mainSourceId`。只有主来源的 `attenuation.status === "applicable"` 才显示衰减，消费者不读取旧 `range` 或顶层衰减字段。目录卡、搜索与 `weapon-stats.json` 同样使用该 `mainSourceId` 摘要。
 
 正文 `<ActiveSkill>` 的 `cooldown` 始终由标准化 `chargeTime` 覆盖；字段不可用时明确不显示，不能退回正文手填 CD。标准化 `chargeCount` 有值时覆盖正文 count，否则正文 count 只作为通用展示兼容值。Task 8 再物理删除 MDX 中的重复属性。
 

@@ -153,9 +153,11 @@ export interface WeaponCatalogEntry extends ConsumerWeaponIdentity {
   readonly shootingEnergy: ConsumerField<boolean>;
   readonly shootingEnergyCount: ConsumerField<number>;
   readonly changeClip: ConsumerFields<ResolvedWeapon["changeClip"]>;
+  readonly melee: ConsumerFields<ResolvedWeapon["melee"]>;
   readonly activeSkill?: ConsumerActiveSkill;
   readonly mainSourceId?: string;
   readonly mainSource?: ConsumerDamageSourceSummary;
+  readonly meleeSources: readonly ConsumerDamageSourceSummary[];
   readonly isAttackCapable: boolean;
 }
 
@@ -198,6 +200,19 @@ export function getMainDamageSource<Source extends { readonly id: string }>(
     );
   }
   return matches[0];
+}
+
+export function getNonMainMeleeSources<
+  Source extends { readonly id: string; readonly section: DamageSection },
+>(weapon: {
+  readonly mainSourceId?: string;
+  readonly meleeSources: readonly Source[];
+}): readonly Source[] {
+  if (weapon.mainSourceId === undefined) return [];
+  return weapon.meleeSources.filter(
+    (source) =>
+      source.section === "melee" && source.id !== weapon.mainSourceId,
+  );
 }
 
 function toConsumerField<T>(field: ResolvedField<T>): ConsumerField<T> {
@@ -361,11 +376,15 @@ export function toWeaponCatalogEntry(
     shootingEnergy: toConsumerField(weapon.shootingEnergy),
     shootingEnergyCount: toConsumerField(weapon.shootingEnergyCount),
     changeClip: toConsumerFields(weapon.changeClip),
+    melee: toConsumerFields(weapon.melee),
     activeSkill: toConsumerActiveSkill(weapon.activeSkill),
     mainSourceId: weapon.mainSourceId,
     mainSource: mainSource
       ? toConsumerDamageSourceSummary(mainSource)
       : undefined,
+    meleeSources: weapon.damageSources
+      .filter((source) => source.section === "melee")
+      .map(toConsumerDamageSourceSummary),
     isAttackCapable: mainSource !== undefined,
   };
 }
