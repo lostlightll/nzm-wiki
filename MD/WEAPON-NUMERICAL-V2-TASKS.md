@@ -1,6 +1,6 @@
 # 武器数据引用链 V2：8 个实施任务
 
-> 状态：Task 1 已完成  
+> 状态：Task 1–2 已完成
 > 更新日期：2026-08-05  
 > 目标：让武器 MDX 只保存稳定引用、Wiki 语义和人工修正；Numerical、ASC、Feel、Item 的完整原始行进入可提交 Lock，由统一 Resolver 生成页面数据。
 
@@ -101,6 +101,8 @@ Task 1–5 构成最小验证闭环。Task 5 验收前不做全量迁移；Task 
 
 ## Task 2：建立统一原表读取层
 
+> 状态：已完成。正式接口与异常规则见 [`MD/WEAPON-DATA-SOURCE-READER.md`](./WEAPON-DATA-SOURCE-READER.md)。
+
 ### 目标
 
 为所有受支持的游戏导出表建立唯一、只读、可测试的读取入口。读取器只忠实读取和索引，不承担页面语义转换。
@@ -113,7 +115,7 @@ Task 1–5 构成最小验证闭环。Task 5 验收前不做全量迁移；Task 
 - `DataTables/TD_numerical_config_composite.json`
 - `Attributes/AutoGenerate/attr_weapon_asc.json`
 - `DataTables/WeaponFeelParamTable.json`
-- `LuaDataTable/WeaponItemConfigTable.json`
+- `DataTables/LuaDataTable/WeaponItemConfigTable.json`
 - `DataTables/WeaponPrototypeConfig.json`
 
 其中 PrototypeConfig 只用于发现引用和交叉校验，不要求进入页面运行时 Lock。
@@ -141,11 +143,11 @@ Task 1–5 构成最小验证闭环。Task 5 验收前不做全量迁移；Task 
 
 ### 验收标准
 
-- [ ] 每种来源均可按稳定 key 精确取行。
-- [ ] LC / TD 同 ID 不会串表。
-- [ ] 原始行没有被字段白名单裁剪。
-- [ ] 错误包含来源文件、数据类型和引用 key。
-- [ ] Prototype 能校验 Mode、Numerical 与 ASC 的对应关系。
+- [x] 每种来源均可按稳定 key 精确取行。
+- [x] LC / TD 同 ID 不会串表。
+- [x] 原始行没有被字段白名单裁剪。
+- [x] 错误包含来源文件、数据类型和引用 key。
+- [x] Prototype 能校验 Mode、Numerical 与 ASC 的对应关系。
 
 ### 依赖
 
@@ -427,7 +429,7 @@ item
 | 任务 | 状态 | 依赖 | 主要产物 |
 | :--- | :--- | :--- | :--- |
 | Task 1：冻结 V2 协议与 Schema | 已完成 | 无 | 协议、类型、运行时 Schema、示例 |
-| Task 2：建立统一原表读取层 | 待开始 | Task 1 | Numerical / ASC / Feel / Item / Prototype 读取器 |
+| Task 2：建立统一原表读取层 | 已完成 | Task 1 | Numerical / ASC / Feel / Item / Prototype 读取器 |
 | Task 3：实现 Weapon Data Lock | 待开始 | Task 1、2 | 多来源 Lock、刷新与只读检查命令 |
 | Task 4：实现 V1/V2 Resolver | 待开始 | Task 1、3 | `ResolvedWeapon`、来源追踪、override 机制 |
 | Task 5：迁移代表武器 | 待开始 | Task 4 | 试点 MDX、Lock、迁移前后快照 |
