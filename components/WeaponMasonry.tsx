@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { Weapon } from "@/types";
 import { WeaponCard } from "@/components/WeaponCard";
+import type { WeaponCatalogEntry } from "@/lib/weapon-consumers";
 
 const GAP = 20;
 
@@ -47,7 +47,7 @@ export function WeaponMasonry({
   weapons,
   columnCount,
 }: {
-  weapons: Weapon[];
+  weapons: WeaponCatalogEntry[];
   columnCount: number;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);

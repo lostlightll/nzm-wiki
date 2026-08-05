@@ -12,7 +12,6 @@ import { getAssetPath } from "@/lib/path";
 import { RARITY_OPTIONS } from "@/constants/common";
 import { STAT_SPRITES } from "@/constants/sprites";
 import { SpriteIcon } from "@/components/SpriteIcon";
-import type { Rarity } from "@/types";
 
 /**
  * 解析乘区表达式
@@ -64,8 +63,8 @@ interface WeaponStat {
   element: string | null;
   rarity: string | null;
   damage_base: number | null;
-  weekness_multiplier: number | null;
-  file_rate: number | null;
+  weakness_multiplier: number | null;
+  rpm: number | null;
   magazine: number | null;
   reload_time: number | null;
   enable_critical: boolean | null;
@@ -131,8 +130,10 @@ export function DamageCalculator() {
   const applyWeapon = (w: WeaponStat) => {
     const hpMult = w.game_mode === "td" ? 400 : 500;
     if (w.damage_base !== null) setBaseDmg(Math.round(w.damage_base * hpMult));
-    if (w.weekness_multiplier !== null) setWeakpointMul(w.weekness_multiplier);
-    if (w.file_rate !== null) setFireRate(w.file_rate);
+    if (w.weakness_multiplier !== null) {
+      setWeakpointMul(w.weakness_multiplier);
+    }
+    if (w.rpm !== null) setFireRate(w.rpm);
     if (w.magazine !== null) setMagSize(w.magazine);
     if (w.reload_time !== null) setReloadTime(w.reload_time);
   };
@@ -658,11 +659,6 @@ function WeaponSelect({
     return weapons.filter((w) => matchWeapon(w, query));
   }, [weapons, query]);
 
-  // 重置高亮
-  useEffect(() => {
-    setHighlightIndex(0);
-  }, [filtered]);
-
   // 点击外部关闭
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -727,6 +723,7 @@ function WeaponSelect({
         value={query}
         onChange={(e) => {
           setQuery(e.target.value);
+          setHighlightIndex(0);
           setOpen(true);
         }}
         onFocus={() => setOpen(true)}

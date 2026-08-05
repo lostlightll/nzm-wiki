@@ -82,17 +82,26 @@ Item 只读取显式 `item_id`。行缺失或身份不一致直接失败；取�
 - PVE 行存在时禁止 GP fallback。
 - PVE 行非法时禁止改走 GP。
 
-## V1 与旧消费者
+## V1 与消费者边界
 
 `lib/weapon-legacy.ts` 保存迁移前转换语义。V1 先转成旧 `Weapon`，再归一化为同形 `ResolvedWeapon`；`toLegacyWeapon()` 对 V1 返回保存的精确 bridge。
 
-Task 4 期间 `lib/weapons.ts` 仍向现有消费者返回 `Weapon`，但内部已经统一为：
+Task 6 后，`lib/weapons.ts` 是唯一读取武器 frontmatter 的服务端边界。所有入口必须显式传入 `lc` 或 `td`，并直接返回 `ResolvedWeapon`：
 
 ```text
-frontmatter -> resolveWeapon() -> toLegacyWeapon()
+frontmatter + committed Lock -> resolveWeapon() -> server consumers
+                                          \-> client-safe consumer views
 ```
 
-V2 到旧模型是明确的有损适配：Settlement 不适用或缺失的旧必填数字使用 `0`，旧模型无法表达的 toughness `none` 使用旧默认“冲击”，并产生 `LOSSY_LEGACY_PROJECTION`。V2 不恢复旧 `range` 或顶层衰减字段。
+Resolver 独占主来源决策：选择首个 `fire_mode`，否则选择数组首项；空来源没有 `mainSourceId`。消费者只能按 `mainSourceId` 精确查找，缺失或悬空 ID 是领域不变量错误，禁止再次按 section 或数组位置 fallback。武器级元素优先使用有效主来源元素；不可攻击武器仍保留协议顶层元素，供目录筛选和搜索使用。
+
+`lib/weapon-consumers.ts` 只接受 `ResolvedWeapon`，不得读取 frontmatter、Lock 或 `refs/`。目录视图只携带主来源摘要；详情视图保留全部标准化 Damage、ASC、Feel、衰减和技能字段。两种客户端视图都删除 `raw`、provenance、diagnostics、override history、原表字段名和来源 key，避免把审计数据序列化到 RSC/client payload。完整审计信息仍保留在服务端 `ResolvedWeapon`。
+
+详情页用同一个 `selectedSourceId` 驱动属性面板、元素、衰减摘要和曲线。只有 `attenuation.status === "applicable"` 才显示衰减；消费者不读取旧 `range` 或顶层衰减字段。目录卡、搜索与 `weapon-stats.json` 使用同一个 `mainSourceId` 摘要。
+
+正文 `<ActiveSkill>` 的 `cooldown` 始终由标准化 `chargeTime` 覆盖；字段不可用时明确不显示，不能退回正文手填 CD。标准化 `chargeCount` 有值时覆盖正文 count，否则正文 count 只作为通用展示兼容值。Task 8 再物理删除 MDX 中的重复属性。
+
+V2 到旧模型的 `toLegacyWeapon()` 仍是迁移期有损适配，只供 Resolver 回归和 Task 7 迁移使用；业务消费者不再调用。Settlement 不适用或缺失的旧必填数字使用 `0`，旧模型无法表达的 toughness `none` 使用旧默认“冲击”，并产生 `LOSSY_LEGACY_PROJECTION`。V2 不恢复旧 `range` 或顶层衰减字段。
 
 ## Snapshot
 
@@ -109,10 +118,11 @@ V2 到旧模型是明确的有损适配：Settlement 不适用或缺失的旧必
 ```text
 pnpm test:weapon-source-v2
 pnpm test:weapon-resolver
+pnpm test:weapon-consumers
 pnpm test:weapon-data-reader
 pnpm test:weapon-skill-charge
 pnpm test:weapon-data-lock
 pnpm weapon-data:check
 ```
 
-Resolver 测试包含 LC/TD 全部 224 个 V1 文件的旧 bridge 深比较。生产构建不需要 `refs/`。
+Resolver 测试包含 LC/TD 全部 224 个 V1 文件的旧 bridge 深比较。消费者测试固定主来源、LC/TD 隔离、客户端审计边界、搜索/统计、衰减三态和技能充能一致性。生产构建不需要 `refs/`。

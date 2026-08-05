@@ -4,88 +4,115 @@ import matter from "gray-matter";
 import weaponDataLockJson from "@/data/weapon-data-lock.json";
 import { RARITY_ORDER } from "@/constants/common";
 import { WEAPON_TYPES } from "@/constants/weapons";
-import type { Weapon } from "@/types";
+import { getResolvedFieldValue } from "./weapon-consumers";
 import { parseWeaponDataLock } from "./weapon-data-lock";
-import { resolveWeapon, toLegacyWeapon } from "./weapon-resolver";
+import { resolveWeapon, type ResolvedWeapon } from "./weapon-resolver";
+import type { NumericalTable } from "./weapon-source-v2";
 
-const WEAPONS_DIR = path.join(process.cwd(), "data/weapons");
-const TD_WEAPONS_DIR = path.join(process.cwd(), "data/weapons_td");
+const WEAPON_DIRECTORIES: Record<NumericalTable, string> = {
+  lc: path.join(process.cwd(), "data/weapons"),
+  td: path.join(process.cwd(), "data/weapons_td"),
+};
 const isDev = process.env.NODE_ENV === "development";
 const weaponDataLock = parseWeaponDataLock(weaponDataLockJson);
 const weaponTypeOrder = new Map(
   WEAPON_TYPES.map((item, index) => [item.type, index]),
 );
 
-function transformWeapon(
-  raw: Record<string, unknown>,
-  slug: string,
-  table: "lc" | "td",
-): Weapon {
-  return toLegacyWeapon(
-    resolveWeapon(raw, {
-      slug,
-      expectedTable: table,
-      lock: weaponDataLock,
-    }),
-  );
+export interface ResolvedWeaponDocument {
+  weapon: ResolvedWeapon;
+  content: string;
+  page: {
+    toc: boolean;
+    pageWidth?: string;
+  };
 }
 
-function weaponSorter(left: Weapon, right: Weapon): number {
-  const rarityLeft = left.rarity ? RARITY_ORDER[left.rarity] : 0;
-  const rarityRight = right.rarity ? RARITY_ORDER[right.rarity] : 0;
+function resolveWeaponFile(
+  filePath: string,
+  slug: string,
+  table: NumericalTable,
+): ResolvedWeaponDocument {
+  const parsed = matter(fs.readFileSync(filePath, "utf8"));
+  const weapon = resolveWeapon(parsed.data, {
+    slug,
+    expectedTable: table,
+    lock: weaponDataLock,
+  });
+  const pageWidth = parsed.data["page-width"];
+  return {
+    weapon,
+    content: parsed.content,
+    page: {
+      toc: parsed.data.toc !== false,
+      pageWidth:
+        typeof pageWidth === "string" && pageWidth.trim()
+          ? pageWidth.trim()
+          : undefined,
+    },
+  };
+}
+
+function weaponSorter(left: ResolvedWeapon, right: ResolvedWeapon): number {
+  const leftRarity = getResolvedFieldValue(left.rarity);
+  const rightRarity = getResolvedFieldValue(right.rarity);
+  const rarityLeft = leftRarity ? RARITY_ORDER[leftRarity] : 0;
+  const rarityRight = rightRarity ? RARITY_ORDER[rightRarity] : 0;
   if (rarityLeft !== rarityRight) return rarityRight - rarityLeft;
 
-  const typeLeft = left.weapon_type
-    ? (weaponTypeOrder.get(left.weapon_type) ?? 99)
-    : 99;
-  const typeRight = right.weapon_type
-    ? (weaponTypeOrder.get(right.weapon_type) ?? 99)
-    : 99;
+  const leftType = getResolvedFieldValue(left.weaponType);
+  const rightType = getResolvedFieldValue(right.weaponType);
+  const typeLeft = leftType ? (weaponTypeOrder.get(leftType) ?? 99) : 99;
+  const typeRight = rightType ? (weaponTypeOrder.get(rightType) ?? 99) : 99;
   if (typeLeft !== typeRight) return typeLeft - typeRight;
   return left.title.localeCompare(right.title, "zh-CN");
 }
 
-function readWeapons(directory: string, table: "lc" | "td"): Weapon[] {
-  if (!fs.existsSync(directory)) return [];
+function readResolvedWeapons(table: NumericalTable): ResolvedWeapon[] {
+  const directory = WEAPON_DIRECTORIES[table];
+  if (!fs.existsSync(directory)) {
+    console.warn(`Weapons directory not found: ${directory}`);
+    return [];
+  }
+
   return fs
     .readdirSync(directory)
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => {
-      const content = fs.readFileSync(path.join(directory, file), "utf8");
-      const { data } = matter(content);
-      return transformWeapon(data, file.replace(/\.mdx$/, ""), table);
+      const slug = file.replace(/\.mdx$/, "");
+      return resolveWeaponFile(path.join(directory, file), slug, table).weapon;
     })
     .filter((weapon) => !weapon.draft || isDev)
     .sort(weaponSorter);
 }
 
-export async function getAllWeapons(): Promise<Weapon[]> {
-  if (!fs.existsSync(WEAPONS_DIR)) {
-    console.warn(`Weapons directory not found: ${WEAPONS_DIR}`);
-  }
-  return readWeapons(WEAPONS_DIR, "lc");
+export async function getAllResolvedWeapons(
+  table: NumericalTable,
+): Promise<ResolvedWeapon[]> {
+  return readResolvedWeapons(table);
 }
 
-export async function getAllTDWeapons(): Promise<Weapon[]> {
-  return readWeapons(TD_WEAPONS_DIR, "td");
-}
-
-function readWeaponBySlug(
-  directory: string,
+export async function getResolvedWeaponBySlug(
   slug: string,
-  table: "lc" | "td",
-): Weapon | null {
+  table: NumericalTable,
+): Promise<ResolvedWeapon | null> {
+  return (await getResolvedWeaponDocument(slug, table))?.weapon ?? null;
+}
+
+export async function getResolvedWeaponDocument(
+  slug: string,
+  table: NumericalTable,
+): Promise<ResolvedWeaponDocument | null> {
   const decodedSlug = decodeURIComponent(slug);
-  const filePath = path.join(directory, `${decodedSlug}.mdx`);
+  const filePath = path.join(WEAPON_DIRECTORIES[table], `${decodedSlug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
-  const { data } = matter(fs.readFileSync(filePath, "utf8"));
-  return transformWeapon(data, decodedSlug, table);
+  const document = resolveWeaponFile(filePath, decodedSlug, table);
+  if (document.weapon.draft && !isDev) return null;
+  return document;
 }
 
-export async function getWeaponBySlug(slug: string): Promise<Weapon | null> {
-  return readWeaponBySlug(WEAPONS_DIR, slug, "lc");
-}
-
-export async function getTDWeaponBySlug(slug: string): Promise<Weapon | null> {
-  return readWeaponBySlug(TD_WEAPONS_DIR, slug, "td");
+export async function getResolvedWeaponSlugs(
+  table: NumericalTable,
+): Promise<string[]> {
+  return (await getAllResolvedWeapons(table)).map((weapon) => weapon.slug);
 }

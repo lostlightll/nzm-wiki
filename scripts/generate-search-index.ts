@@ -1,9 +1,17 @@
 import fs from "fs";
 import path from "path";
+import { pathToFileURL } from "node:url";
 import matter from "gray-matter";
 import { pinyin } from "pinyin-pro";
+import {
+  getFullReloadTime,
+  getMainDamageSource,
+  getResolvedFieldValue,
+} from "../lib/weapon-consumers";
+import type { ResolvedWeapon } from "../lib/weapon-resolver";
+import { getAllResolvedWeapons } from "../lib/weapons";
 
-interface SearchItem {
+export interface SearchItem {
   title: string;
   slug: string;
   path: string;
@@ -36,7 +44,7 @@ const pathMap: Record<string, string> = {
   posts: "/posts",
 };
 
-function scanDirectory(dirPath: string, relativePath: string = ""): SearchItem[] {
+export function scanDirectory(dirPath: string, relativePath: string = ""): SearchItem[] {
   const results: SearchItem[] = [];
 
   if (!fs.existsSync(dirPath)) {
@@ -49,8 +57,8 @@ function scanDirectory(dirPath: string, relativePath: string = ""): SearchItem[]
     const fullPath = path.join(dirPath, entry.name);
 
     if (entry.isDirectory()) {
-      // TD 武器是猎场武器的衍生版本，不单独索引
-      if (entry.name === "weapons_td") continue;
+      // 武器条目由 Resolver 单独注入；TD 沿用现有规则，不单独索引。
+      if (entry.name === "weapons" || entry.name === "weapons_td") continue;
       // 路由组目录（以括号开头）不包含在 slug 中
       if (entry.name.startsWith("(")) {
         results.push(...scanDirectory(fullPath, relativePath));
@@ -177,10 +185,50 @@ function scanDirectory(dirPath: string, relativePath: string = ""): SearchItem[]
   return results;
 }
 
-function generateSearchIndex() {
+function buildPinyin(texts: readonly string[]): string[] {
+  const values = new Set<string>();
+  for (const text of texts) {
+    const full = pinyin(text, { toneType: "none", type: "array" }).join("");
+    if (full) values.add(full.toLowerCase());
+    const initials = pinyin(text, {
+      pattern: "first",
+      toneType: "none",
+      type: "array",
+    }).join("");
+    if (initials) values.add(initials.toLowerCase());
+  }
+  return [...values];
+}
+
+export function createWeaponSearchItem(weapon: ResolvedWeapon): SearchItem {
+  const weaponType = getResolvedFieldValue(weapon.weaponType);
+  const element = getResolvedFieldValue(weapon.element);
+  const rarity = getResolvedFieldValue(weapon.rarity);
+  const keywords = [
+    weapon.slug,
+    weapon.title,
+    weapon.nickname,
+    ...weapon.keywords,
+    ...weapon.tags,
+    weaponType,
+    element,
+    rarity,
+  ].filter((value): value is string => typeof value === "string" && value.length > 0);
+  return {
+    title: weapon.title,
+    slug: `weapons/${weapon.slug}`,
+    path: `/weapons/${weapon.slug}`,
+    category: "武器",
+    keywords: [...new Set(keywords)],
+    pinyin: buildPinyin([weapon.title, ...keywords]),
+  };
+}
+
+export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
   console.log("Generating search index...");
 
   const items = scanDirectory(baseDir);
+  items.push(...weapons.map(createWeaponSearchItem));
   const s3TalentSlugs = ["iron-fist", "zero", "grappling-hook"];
   for (const slug of s3TalentSlugs) {
     const talentFile = path.join(baseDir, "season-talents", "s3", `${slug}.json`);
@@ -437,109 +485,99 @@ function generateSearchIndex() {
   console.log(`Output: ${outputPath}`);
 }
 
-generateSearchIndex();
-generateWeaponStats();
+export interface WeaponStat {
+  title: string;
+  use_type: string | null;
+  weapon_type: string | null;
+  element: string | null;
+  rarity: string | null;
+  damage_base: number | null;
+  weakness_multiplier: number | null;
+  rpm: number | null;
+  magazine: number | null;
+  reload_time: number | null;
+  enable_critical: boolean | null;
+  game_mode: "lc";
+  pinyin: string[];
+}
 
-function generateWeaponStats() {
-  console.log("Generating weapon stats...");
-
-  const weaponsDir = path.join(baseDir, "weapons");
-
-  interface WeaponStat {
-    title: string;
-    use_type: string | null;
-    weapon_type: string | null;
-    element: string | null;
-    rarity: string | null;
-    damage_base: number | null;
-    weekness_multiplier: number | null;
-    file_rate: number | null;
-    magazine: number | null;
-    reload_time: number | null;
-    attenuation_begin: number | null;
-    attenuation_end: number | null;
-    attenuation_scale: number | null;
-    enable_critical: boolean | null;
-    game_mode: "lc" | "td" | null;
-    pinyin: string[];
+export function createWeaponStat(weapon: ResolvedWeapon): WeaponStat | null {
+  if (weapon.table !== "lc") {
+    throw new Error(
+      `weapon-stats only accepts LC ResolvedWeapon: ${weapon.slug}`,
+    );
   }
+  if (weapon.useType === "近战武器") return null;
+  const source = getMainDamageSource(weapon);
+  return {
+    title: weapon.title,
+    use_type: weapon.useType ?? null,
+    weapon_type: getResolvedFieldValue(weapon.weaponType) ?? null,
+    element: getResolvedFieldValue(weapon.element) ?? null,
+    rarity: getResolvedFieldValue(weapon.rarity) ?? null,
+    damage_base: source
+      ? (getResolvedFieldValue(source.damage.base) ?? null)
+      : null,
+    weakness_multiplier: source
+      ? (getResolvedFieldValue(source.weaknessMultiplier) ?? null)
+      : null,
+    rpm: source ? (getResolvedFieldValue(source.fire.rpm) ?? null) : null,
+    magazine: getResolvedFieldValue(weapon.magazine) ?? null,
+    reload_time: getFullReloadTime(weapon.changeClip) ?? null,
+    enable_critical: source
+      ? (getResolvedFieldValue(source.enableCritical) ?? null)
+      : null,
+    game_mode: "lc",
+    pinyin: buildPinyin([weapon.title]),
+  };
+}
 
-  function scanDir(dir: string, defaultGameMode: "lc" | "td"): WeaponStat[] {
-    if (!fs.existsSync(dir)) return [];
-    const files = fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"));
-    const result: WeaponStat[] = [];
-
-    for (const file of files) {
-      const content = fs.readFileSync(path.join(dir, file), "utf-8");
-      const { data } = matter(content);
-
-      const title = data.title || file.replace(/\.mdx$/, "");
-
-      // 过滤近战武器
-      if (data.use_type === "近战武器") continue;
-
-      // 拼音
-      const pinyinSet = new Set<string>();
-      const fullPy = pinyin(String(title), { toneType: "none", type: "array" }).join("");
-      if (fullPy) pinyinSet.add(fullPy.toLowerCase());
-      const initials = pinyin(String(title), { pattern: "first", toneType: "none", type: "array" }).join("");
-      if (initials) pinyinSet.add(initials.toLowerCase());
-
-      const changeClip =
-        data.changeClip && typeof data.changeClip === "object"
-          ? data.changeClip
-          : null;
-      const reloadTime =
-        changeClip && typeof changeClip.timeBase === "number"
-          ? changeClip.timeBase +
-            (typeof changeClip.reloadRecovery === "number"
-              ? changeClip.reloadRecovery
-              : 0)
-          : typeof data.reload_time === "number"
-            ? data.reload_time
-            : null;
-
-      result.push({
-        title,
-        use_type: data.use_type || null,
-        weapon_type: data.weapon_type || null,
-        element: data.element || null,
-        rarity: data.rarity || null,
-        damage_base: data.damage?.base ?? null,
-        weekness_multiplier: typeof data.weekness_multiplier === "number" ? data.weekness_multiplier : null,
-        file_rate: typeof data.file_rate === "number" ? data.file_rate : null,
-        magazine: typeof data.magazine === "number" ? data.magazine : null,
-        reload_time: reloadTime,
-        attenuation_begin: typeof data.attenuation_begin === "number" ? data.attenuation_begin : null,
-        attenuation_end: typeof data.attenuation_end === "number" ? data.attenuation_end : null,
-        attenuation_scale: typeof data.attenuation_scale === "number" ? data.attenuation_scale : null,
-        enable_critical: data.enable_critical ?? null,
-        game_mode: data.game_mode || defaultGameMode,
-        pinyin: [...pinyinSet],
-      });
-    }
-    return result;
-  }
-
-  const weapons = scanDir(weaponsDir, "lc");
-
-  weapons.sort((a, b) => {
-    // 一级：稀有度降序（传说 > 史诗 > 稀有）
-    const rarityOrder: Record<string, number> = { "传说": 3, "史诗": 2, "稀有": 1 };
-    const ra = rarityOrder[a.rarity ?? ""] ?? 0;
-    const rb = rarityOrder[b.rarity ?? ""] ?? 0;
-    if (ra !== rb) return rb - ra;
-    // 二级：use_type 主武器优先
-    const ua = a.use_type === "主武器" ? 0 : 1;
-    const ub = b.use_type === "主武器" ? 0 : 1;
-    if (ua !== ub) return ua - ub;
-    // 三级：中文名排序
-    return a.title.localeCompare(b.title, "zh-CN");
+export function buildWeaponStats(
+  resolvedWeapons: readonly ResolvedWeapon[],
+): WeaponStat[] {
+  const weapons = resolvedWeapons.flatMap((weapon) => {
+    const stat = createWeaponStat(weapon);
+    return stat ? [stat] : [];
   });
+  const rarityOrder: Record<string, number> = {
+    传说: 3,
+    史诗: 2,
+    稀有: 1,
+  };
+  return weapons.sort((left, right) => {
+    const rarityDifference =
+      (rarityOrder[right.rarity ?? ""] ?? 0) -
+      (rarityOrder[left.rarity ?? ""] ?? 0);
+    if (rarityDifference !== 0) return rarityDifference;
+    const leftUseType = left.use_type === "主武器" ? 0 : 1;
+    const rightUseType = right.use_type === "主武器" ? 0 : 1;
+    if (leftUseType !== rightUseType) return leftUseType - rightUseType;
+    return left.title.localeCompare(right.title, "zh-CN");
+  });
+}
 
+export function generateWeaponStats(resolvedWeapons: readonly ResolvedWeapon[]) {
+  console.log("Generating weapon stats...");
+  const weapons = buildWeaponStats(resolvedWeapons);
   const outputPath = path.join(process.cwd(), "public", "weapon-stats.json");
   fs.writeFileSync(outputPath, JSON.stringify(weapons, null, 2), "utf-8");
-
   console.log(`Generated weapon stats with ${weapons.length} items`);
   console.log(`Output: ${outputPath}`);
+}
+
+export async function generateIndexes() {
+  const weapons = await getAllResolvedWeapons("lc");
+  generateSearchIndex(weapons);
+  generateWeaponStats(weapons);
+}
+
+const entryPath = process.argv[1];
+if (
+  entryPath &&
+  import.meta.url === pathToFileURL(path.resolve(entryPath)).href
+) {
+  void generateIndexes().catch((error: unknown) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
 }

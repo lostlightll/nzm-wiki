@@ -289,12 +289,15 @@ export interface ResolvedActiveSkill {
 export interface ResolvedWeapon {
   slug: string;
   title: string;
+  nickname?: string;
+  keywords: readonly string[];
   table: NumericalTable;
   schemaVersion: 1 | 2;
   useType?: string;
   tags: readonly WeaponTag[];
   draft: boolean;
   gameMode?: NumericalTable;
+  element: ResolvedField<ElementType>;
   weaponType: ResolvedField<WeaponType>;
   weaponTypeId: ResolvedField<number>;
   rarity: ResolvedField<Rarity>;
@@ -385,6 +388,33 @@ function fieldValue<T>(field: ResolvedField<T>): T | undefined {
   return field.state === "resolved" || field.state === "zero"
     ? field.value
     : undefined;
+}
+
+function optionalText(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim().length > 0
+    ? value.trim()
+    : undefined;
+}
+
+function textList(value: unknown): string[] {
+  if (typeof value === "string") {
+    const text = value.trim();
+    return text ? [text] : [];
+  }
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((item) => {
+    const text = optionalText(item);
+    return text ? [text] : [];
+  });
+}
+
+function chooseMainSourceId(
+  damageSources: readonly ResolvedDamageSource[],
+): string | undefined {
+  return (
+    damageSources.find((source) => source.section === "fire_mode") ??
+    damageSources[0]
+  )?.id;
 }
 
 function cloneValue<T>(value: T): T {
@@ -820,7 +850,8 @@ function normalizeV1(
       ),
     );
   }
-  const main = damageSources[0];
+  const mainSourceId = chooseMainSourceId(damageSources);
+  const main = damageSources.find((source) => source.id === mainSourceId);
   if (main) {
     const begin = raw.attenuation_begin;
     const end = raw.attenuation_end;
@@ -908,12 +939,20 @@ function normalizeV1(
   return {
     slug: legacy.slug,
     title: legacy.title,
+    nickname: optionalText(raw.nickname),
+    keywords: textList(raw.keywords),
     table: context.expectedTable,
     schemaVersion: 1,
     useType: legacy.use_type,
     tags: legacy.tags ?? [],
     draft: Boolean(legacy.draft),
     gameMode: legacy.game_mode,
+    element:
+      main?.element ??
+      fieldFromLegacyValue<ElementType>(
+        legacy.damageModes[0]?.element,
+        "element",
+      ),
     weaponType: fieldFromLegacyValue(legacy.weapon_type, "weapon_type"),
     weaponTypeId: fieldFromLegacyNumber(legacy.weaponTypeId, "weapon_type_id"),
     rarity: fieldFromLegacyValue(legacy.rarity, "rarity"),
@@ -963,7 +1002,7 @@ function normalizeV1(
       heavy: fieldFromLegacyNumber(legacy.meleeDamage?.heavy, "melee_damage.heavy"),
     },
     damageSources,
-    mainSourceId: main?.id,
+    mainSourceId,
     activeSkill,
     diagnostics: finalizeDiagnostics(context.diagnostics),
     provenance: [
@@ -2737,9 +2776,15 @@ function resolveV2(
   const damageSources = weapon.damage_sources.map((source) =>
     assembleDamageSource(weapon, source, effective.get(source.id)!, lock, context),
   );
-  const main =
-    damageSources.find((source) => source.section === "fire_mode") ?? damageSources[0];
+  const mainSourceId = chooseMainSourceId(damageSources);
+  const main = damageSources.find((source) => source.id === mainSourceId);
   const item = parseItem(weapon, lock, context);
+  const element = summaryField(main?.element, weapon.element, {
+    field: "element",
+    mdxField: "element",
+    diagnostics: context.diagnostics,
+    mainSourceId,
+  });
   const magazine = summaryField(main?.ammo.clip, weapon.magazine, {
     field: "magazine",
     mdxField: "magazine",
@@ -2776,12 +2821,15 @@ function resolveV2(
   const result: ResolvedWeapon = {
     slug: context.slug,
     title: weapon.title,
+    nickname: weapon.nickname,
+    keywords: textList(weapon.keywords),
     table: context.expectedTable,
     schemaVersion: 2,
     useType: weapon.use_type.trim() || undefined,
     tags: parseLegacyTags(weapon.tags),
     draft: Boolean(weapon.draft),
     gameMode: context.expectedTable,
+    element,
     weaponType: item.weaponType,
     weaponTypeId: item.weaponTypeId,
     rarity: item.rarity,
@@ -2806,7 +2854,7 @@ function resolveV2(
     changeClip,
     melee: { light: missing(), heavy: missing() },
     damageSources,
-    mainSourceId: main?.id,
+    mainSourceId,
     activeSkill: parseActiveSkill(weapon, lock, context.diagnostics),
     diagnostics: context.diagnostics,
     provenance: [

@@ -23,6 +23,8 @@ interface BaseSkillProps {
   children?: React.ReactNode;
 }
 
+export type ActiveSkillProps = Omit<BaseSkillProps, "tagColor" | "tag">;
+
 function SkillMeta({
   duration,
   cooldown,
@@ -118,7 +120,7 @@ function BaseSkillItem({
 // 技能组件 (暴露给 MDX 使用)
 
 // 主动技能
-export function ActiveSkill(props: Omit<BaseSkillProps, "tagColor" | "tag">) {
+export function ActiveSkill(props: ActiveSkillProps) {
   return (
     <BaseSkillItem
       tag="主动技能"

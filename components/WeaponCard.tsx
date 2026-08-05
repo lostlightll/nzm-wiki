@@ -3,15 +3,18 @@
 import { useState } from "react";
 import Image from "next/image";
 import { CatalogLink } from "@/components/CatalogLink";
-import type { Weapon, ElementType, DamageMode } from "@/types";
-import { getAssetPath } from "@/lib/path";
+import { useWeaponDetail } from "@/components/WeaponDetailContext";
+import { RARITY_CARD_STYLES, RARITY_KEY_MAP } from "@/constants/common";
 import {
-  calcRPM,
-  calcFullReload,
-  calcReloadTime,
-  calcReloadRecovery,
-} from "@/lib/weapon-calcs";
-import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
+  getFullReloadTime,
+  getResolvedFieldValue,
+  type ConsumerDamageSource,
+  type ConsumerDamageSourceSummary,
+  type ConsumerField,
+  type WeaponCatalogEntry,
+} from "@/lib/weapon-consumers";
+import { getAssetPath } from "@/lib/path";
+import type { ElementType } from "@/types";
 
 const ELEMENT_ICONS: Record<ElementType, string> = {
   火焰: "/icons/elements/fire.png",
@@ -21,70 +24,79 @@ const ELEMENT_ICONS: Record<ElementType, string> = {
   物理: "/icons/elements/kinetic.png",
 };
 
-/** 安全保留 1 位小数，避免 IEEE 754 toFixed 陷阱（如 0.15→0.1） */
-function round1(n: number): string {
-  return (Math.round(n * 10) / 10).toFixed(1);
+const TOUGHNESS_LABELS = {
+  none: "无",
+  impulse: "冲击",
+  penetration: "贯穿",
+  explosion: "爆炸",
+} as const;
+
+type DisplaySource = ConsumerDamageSource | ConsumerDamageSourceSummary;
+
+function round1(value: number): string {
+  return (Math.round(value * 10) / 10).toFixed(1);
 }
 
-/** 百分比格式化：整数去小数，非整数1位 */
-function formatPercent(rate: number): string {
-  const pct = Math.round(rate * 100 * 10) / 10; // round to 1 decimal
-  if (Math.abs(pct - Math.round(pct)) < 0.001) return String(Math.round(pct));
-  return pct.toFixed(1);
+function formatPercent(value: number): string {
+  const percent = Math.round(value * 1000) / 10;
+  return Number.isInteger(percent) ? String(percent) : percent.toFixed(1);
 }
 
-/** 最多保留 2 位小数，尾部 0 去掉，至少保 1 位 */
-function formatPrecise(n: number): string {
-  const fixed = (Math.round(n * 100) / 100).toFixed(2);
-  return fixed.replace(/0+$/, "").replace(/\.$/, ".0");
+function formatNumber(value: number | undefined, suffix = ""): string {
+  return value === undefined ? "-" : `${value}${suffix}`;
 }
 
-function formatDamageValue(
-  base: number | undefined,
-  hpMultiplier = 500,
-  pellets?: number,
-): string {
-  if (base === undefined || base <= 0) return "-";
+function formatRpm(value: number | undefined): string {
+  return value === undefined ? "-" : String(Math.round(value));
+}
 
+function formatPrecise(value: number | undefined): string {
+  if (value === undefined) return "-";
+  return (Math.round(value * 100) / 100)
+    .toFixed(2)
+    .replace(/0+$/, "")
+    .replace(/\.$/, ".0");
+}
+
+function formatDamage(source: DisplaySource, hpMultiplier: number): string {
+  const base = getResolvedFieldValue(source.damage.base);
+  if (base === undefined) return "-";
   const damage = round1(base * hpMultiplier);
-  if (pellets && pellets > 1) {
-    return `${damage} × ${pellets}`;
-  }
-  return damage;
+  const pellets = getResolvedFieldValue(source.fire.pellets);
+  return pellets !== undefined && pellets > 1
+    ? `${damage} × ${pellets}`
+    : damage;
 }
 
-function formatDamage(mode: DamageMode, hpMultiplier = 500): string {
-  return formatDamageValue(mode.damage.base, hpMultiplier, mode.pellets);
-}
-
-function formatMeter(value: number | string | null | undefined): string {
-  if (value === null || value === undefined || value === "") return "-";
-  const numberValue = Number(value);
-  if (!Number.isFinite(numberValue)) return "-";
-  return `${round1(numberValue)}m`;
-}
-
-function formatAttenuationLimit(
-  scale: number | string | null | undefined,
-): string {
-  const scaleValue = Number(scale);
-  if (!Number.isFinite(scaleValue)) {
-    return "-";
-  }
-  return `${formatPercent(1 - scaleValue)}%`;
-}
-
-function WeaponImage({ name, size = "normal" }: { name: string; size?: "small" | "normal" }) {
-  const [hasError, setHasError] = useState(false);
-
-  if (hasError) {
-    return null;
-  }
-
-  const height = size === "small" ? "h-24" : "h-28";
-
+function isMeleeWeapon(weapon: {
+  useType?: string;
+  weaponType: ConsumerField<string>;
+  weaponTypeId: ConsumerField<number>;
+}): boolean {
   return (
-    <div className={`relative ${height} w-full overflow-hidden`}>
+    getResolvedFieldValue(weapon.weaponTypeId) === 13 ||
+    weapon.useType === "近战武器" ||
+    getResolvedFieldValue(weapon.weaponType) === "近战武器"
+  );
+}
+
+function weaponHref(weapon: Pick<WeaponCatalogEntry, "slug" | "table">) {
+  return `/weapons${weapon.table === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`;
+}
+
+function WeaponImage({
+  name,
+  compact = false,
+}: {
+  name: string;
+  compact?: boolean;
+}) {
+  const [hasError, setHasError] = useState(false);
+  if (hasError) return null;
+  return (
+    <div
+      className={`relative w-full overflow-hidden ${compact ? "h-24" : "h-32"}`}
+    >
       <Image
         src={getAssetPath(`/icons/weapons/normal/${name}.png`)}
         alt={name}
@@ -97,618 +109,444 @@ function WeaponImage({ name, size = "normal" }: { name: string; size?: "small" |
   );
 }
 
-function formatValue(val: number | undefined): string {
-  if (val === undefined || val === -1) return "-";
-  return String(val);
-}
-
-function isMeleeWeapon(weapon: Weapon): boolean {
+function ElementIcon({ element, size }: { element?: ElementType; size: number }) {
+  if (!element) return null;
   return (
-    weapon.weaponTypeId === 13 ||
-    weapon.use_type === "近战武器" ||
-    weapon.weapon_type === "近战武器"
-  );
-}
-
-function getMeleeDamageBase(
-  weapon: Weapon,
-  mode: DamageMode,
-  key: "light" | "heavy",
-): number | undefined {
-  const value = weapon.meleeDamage?.[key];
-  if (value !== undefined) return value;
-  if (key === "heavy" && mode.damage.base > 0) return mode.damage.base;
-  return undefined;
-}
-
-/**
- * 简洁模式卡片 - 只有名称、图片、元素图标
- */
-function SimpleCard({ weapon }: { weapon: Weapon }) {
-  const mode = weapon.damageModes[0];
-
-  const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
-  const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-  const elementIcon = mode ? ELEMENT_ICONS[mode.element] : undefined;
-
-  return (
-    <CatalogLink
-      href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
-    >
-      <div
-        className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 transition-transform hover:scale-[1.02]`}
-      >
-        {elementIcon && (
-          <div className="absolute right-2 top-2 z-10">
-            <Image
-              src={getAssetPath(elementIcon)}
-              alt={mode.element}
-              width={20}
-              height={20}
-            />
-          </div>
-        )}
-        <h3 className="mb-2 text-base font-semibold text-white">{weapon.title}</h3>
-        <WeaponImage name={weapon.title} size="small" />
-        {!mode && <div className="mt-2 text-xs text-zinc-500">不可攻击</div>}
-      </div>
-    </CatalogLink>
-  );
-}
-
-/**
- * 详细模式卡片 - 显示更多属性
- */
-function DetailedCard({ weapon }: { weapon: Weapon }) {
-  const mode = weapon.damageModes[0];
-  const [showReloadDetail, setShowReloadDetail] = useState(false);
-
-  const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
-  const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-  const elementIcon = mode ? ELEMENT_ICONS[mode.element] : undefined;
-  const tags = weapon.tags || [];
-  const hpMul = weapon.game_mode === "td" ? 400 : 500;
-  const isMelee = isMeleeWeapon(weapon);
-
-  if (!mode) {
-    return (
-      <CatalogLink
-        href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
-      >
-        <div
-          className={`relative w-full min-w-0 rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5`}
-        >
-          <h3 className="text-xl font-semibold text-white">{weapon.title}</h3>
-          <div className="mt-1 text-sm text-zinc-400">{weapon.use_type}</div>
-          <WeaponImage name={weapon.title} />
-          <div className="mt-3 border-t border-zinc-700 pt-3 text-sm text-zinc-500">
-            不可攻击
-          </div>
-        </div>
-      </CatalogLink>
-    );
-  }
-
-  return (
-    <CatalogLink
-      href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
-    >
-      <div
-        className={`relative w-full min-w-0 rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5 transition-shadow hover:shadow-lg hover:shadow-black/20`}
-      >
-        {elementIcon && (
-          <div className="absolute right-4 top-4 z-10">
-            <Image
-              src={getAssetPath(elementIcon)}
-              alt={mode.element}
-              width={28}
-              height={28}
-            />
-          </div>
-        )}
-
-        <h3 className="text-xl font-semibold text-white">{weapon.title}</h3>
-        <div className="mt-1 mb-4 flex flex-wrap items-center gap-1.5 text-sm text-zinc-400">
-          {weapon.use_type && <span>{weapon.use_type}</span>}
-          {weapon.weapon_type && <span>· {weapon.weapon_type}</span>}
-          {weapon.scope && <span>· {weapon.scope}</span>}
-          {tags.map((tag) => (
-            <span key={tag}>· {tag}</span>
-          ))}
-        </div>
-
-        <div className="flex justify-center">
-          <Image
-            src={getAssetPath(`/icons/weapons/normal/${weapon.title}.png`)}
-            alt={weapon.title || ""}
-            width={320}
-            height={160}
-            className="h-auto w-full max-w-[320px] object-contain"
-          />
-        </div>
-
-        <div className="mt-4 grid grid-cols-1 gap-y-2 text-base sm:grid-cols-2 sm:gap-x-6">
-          {isMelee ? (
-            <>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">轻击伤害</span>
-                <span className="text-white">
-                  {formatDamageValue(getMeleeDamageBase(weapon, mode, "light"), hpMul)}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">重击伤害</span>
-                <span className="text-white">
-                  {formatDamageValue(getMeleeDamageBase(weapon, mode, "heavy"), hpMul)}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">元素异常概率</span>
-                <span className="text-white">
-                  {mode.elementAddRate > 0
-                    ? `${formatPercent(mode.elementAddRate)}%`
-                    : "-"}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">弱点倍率</span>
-                <span className="text-white">{mode.weaknessMultiplier}</span>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">单发伤害</span>
-                <span className="text-white">{formatDamage(mode, hpMul)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">射速</span>
-                <span className="text-white">{Math.round(calcRPM(mode))}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">弹夹</span>
-                <span className="text-white">{formatValue(weapon.magazine)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">总弹量</span>
-                <span className="text-white">{formatValue(weapon.totalAmmo)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">弱点倍率</span>
-                <span className="text-white">{mode.weaknessMultiplier}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">破韧伤害</span>
-                <span className="text-white">{formatValue(mode.damage.toughness)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">元素异常概率</span>
-                <span className="text-white">
-                  {mode.elementAddRate > 0
-                    ? `${formatPercent(mode.elementAddRate)}%`
-                    : "-"}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">技能冷却</span>
-                <span className="text-white">{formatValue(weapon.skillCooldown)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">完整换弹</span>
-                <span className="text-white">
-                  {weapon.changeClip
-                    ? `${(Math.ceil(calcFullReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
-                    : "-"}
-                </span>
-              </div>
-              <div
-                className="flex justify-between cursor-pointer"
-                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowReloadDetail(!showReloadDetail); }}
-              >
-                <span className="text-zinc-500">
-                  换弹详情 {showReloadDetail ? "▴" : "▸"}
-                </span>
-                <span className="text-white">&nbsp;</span>
-              </div>
-              {weapon.changeClip && (
-                <div
-                  className={`col-span-1 grid min-h-0 transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none sm:col-span-2 ${
-                    showReloadDetail
-                      ? "grid-rows-[1fr]"
-                      : "grid-rows-[0fr]"
-                  }`}
-                >
-                  <div className="min-h-0 overflow-hidden">
-                    <div className="grid grid-cols-1 gap-y-2 sm:grid-cols-2 sm:gap-x-6">
-                      <div className="flex justify-between">
-                        <span className="text-zinc-500">换弹动画</span>
-                        <span className="text-zinc-300">
-                          {calcReloadTime(weapon.changeClip)!.toFixed(2)}s
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-zinc-500">换弹后摇</span>
-                        <span className="text-zinc-300">
-                          {calcReloadRecovery(weapon.changeClip)!.toFixed(2)}s
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </>
-          )}
-        </div>
-      </div>
-    </CatalogLink>
-  );
-}
-
-/**
- * 列表页武器卡片
- */
-export function WeaponCard({ weapon, showDetails = false }: { weapon: Weapon; showDetails?: boolean }) {
-  if (showDetails) {
-    return <DetailedCard weapon={weapon} />;
-  }
-  return <SimpleCard weapon={weapon} />;
-}
-
-/**
- * 单个模式属性面板（标准 9 字段网格）
- */
-function ModeStats({
-  mode,
-  showName,
-  compact,
-  hpMultiplier = 500,
-}: {
-  mode: DamageMode;
-  showName: boolean;
-  compact?: boolean;
-  hpMultiplier?: number;
-}) {
-  const rpm = Math.round(calcRPM(mode));
-
-  return (
-    <div className="mb-3">
-      {showName && (
-        <h3 className="mb-1.5 text-sm font-semibold text-zinc-300">{mode.name}</h3>
-      )}
-
-      {compact ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-          <Stat label="射速" value={String(rpm)} />
-          <Stat
-            label="单发耗时"
-            value={
-              mode.fireIntervalBase
-                ? `${mode.fireIntervalBase.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s`
-                : "-"
-            }
-          />
-        </div>
-      ) : mode.fireIntervalBase === 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-          <Stat label={mode.damageLabel || "命中伤害"} value={formatDamage(mode, hpMultiplier)} />
-          <Stat label="单发破韧值" value={formatPrecise(mode.damage.toughness)} />
-          <Stat label="弱点倍率" value={mode.enableWeakness ? String(mode.weaknessMultiplier) : "-"} />
-          <Stat
-            label="元素异常概率"
-            value={
-              mode.elementAddRate > 0
-                ? `${formatPercent(mode.elementAddRate)}%`
-                : "-"
-            }
-          />
-          <Stat label="暴击" value={mode.enableCritical ? "可暴击" : "否"} />
-          <Stat label="弱点" value={mode.enableWeakness ? "可弱点" : "否"} />
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-          <Stat label={mode.damageLabel || "命中伤害"} value={formatDamage(mode, hpMultiplier)} />
-          <Stat label="单发破韧值" value={formatPrecise(mode.damage.toughness)} />
-          <Stat label="弱点倍率" value={mode.enableWeakness ? String(mode.weaknessMultiplier) : "-"} />
-          <Stat
-            label="元素异常概率"
-            value={
-              mode.elementAddRate > 0
-                ? `${formatPercent(mode.elementAddRate)}%`
-                : "-"
-            }
-          />
-          <Stat label="暴击" value={mode.enableCritical ? "可暴击" : "否"} />
-          <Stat label="弱点" value={mode.enableWeakness ? "可弱点" : "否"} />
-          <Stat label="射速" value={String(rpm)} />
-          <Stat
-            label="单发耗时"
-            value={mode.fireIntervalBase ? `${mode.fireIntervalBase.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s` : "-"}
-          />
-          <Stat label="破韧类型" value={mode.toughnessType} />
-        </div>
-      )}
-    </div>
+    <Image
+      src={getAssetPath(ELEMENT_ICONS[element])}
+      alt={element}
+      width={size}
+      height={size}
+    />
   );
 }
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between gap-1">
-      <span className="text-zinc-500 shrink-0">{label}</span>
-      <span className="text-white text-right">{value}</span>
+    <div className="flex justify-between gap-2">
+      <span className="shrink-0 text-zinc-500">{label}</span>
+      <span className="text-right text-white">{value}</span>
     </div>
   );
 }
 
-function SkillSection({ weapon, hpMultiplier = 500 }: { weapon: Weapon; hpMultiplier?: number }) {
-  const [expanded, setExpanded] = useState(false);
-  const modes = weapon.extraModes!;
-  const collapsible = modes.length > 3;
-  const visible = collapsible && !expanded ? modes.slice(0, 2) : modes;
-  const hiddenCount = modes.length - 2;
-
+function SimpleCard({ weapon }: { weapon: WeaponCatalogEntry }) {
+  const rarity = getResolvedFieldValue(weapon.rarity);
+  const rarityStyle = RARITY_CARD_STYLES[
+    rarity ? RARITY_KEY_MAP[rarity] : "common"
+  ];
+  const element = getResolvedFieldValue(weapon.element);
   return (
-    <div className="mb-3">
-      <h2 className="mb-2 text-sm font-semibold text-zinc-400">
-        技能 / 特殊攻击
-      </h2>
-      {visible.map((m, i) => {
-        const damageAllZero = Object.values(m.damage).every((v) => v === 0);
-        const isVariant = damageAllZero || weapon.damageModes.some(
-          (dm) => dm.damage.base === m.damage.base
-        );
-        return <ModeStats key={i} mode={m} showName compact={isVariant} hpMultiplier={hpMultiplier} />;
-      })}
-      {collapsible && !expanded && (
-        <div className="text-center">
-          <button
-            onClick={() => setExpanded(true)}
-            className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
-          >
-            展开更多 ({hiddenCount})
-          </button>
+    <CatalogLink href={weaponHref(weapon)}>
+      <div
+        className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 transition-transform hover:scale-[1.02]`}
+      >
+        <div className="absolute right-2 top-2 z-10">
+          <ElementIcon element={element} size={20} />
         </div>
-      )}
-      {collapsible && expanded && (
-        <div className="text-center">
-          <button
-            onClick={() => setExpanded(false)}
-            className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
-          >
-            收起
-          </button>
-        </div>
-      )}
-    </div>
-  );
-}
-
-/**
- * 详情页武器卡片 - 完整版
- */
-export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
-  const mode = weapon.damageModes[0];
-  const [showReloadDetail, setShowReloadDetail] = useState(false);
-
-  if (!mode) {
-    const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
-    const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-    return (
-      <div className={`rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-6`}>
-        <h1 className="text-2xl font-bold text-white">{weapon.title}</h1>
-        <div className="mt-1 text-sm text-zinc-400">{weapon.use_type}</div>
-        <div className="relative my-6 h-32 w-full">
-          <Image
-            src={getAssetPath(`/icons/weapons/normal/${weapon.title}.png`)}
-            alt={weapon.title || ""}
-            width={320}
-            height={160}
-            className="mx-auto object-contain"
-          />
-        </div>
-        <div className="border-t border-zinc-700 pt-4 text-sm text-zinc-500">
-          不可攻击
-        </div>
+        <h3 className="mb-2 pr-7 text-base font-semibold text-white">
+          {weapon.title}
+        </h3>
+        <WeaponImage name={weapon.title} compact />
+        {!weapon.isAttackCapable && (
+          <div className="mt-2 text-xs text-zinc-500">不可攻击</div>
+        )}
       </div>
-    );
-  }
+    </CatalogLink>
+  );
+}
 
-  const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
-  const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-  const elementIcon = ELEMENT_ICONS[mode.element];
-  const tags = weapon.tags || [];
-  const hpMul = weapon.game_mode === "td" ? 400 : 500;
-  const isMelee = isMeleeWeapon(weapon);
-
-  const cycleTime =
-    weapon.skillCooldown != null
-      ? weapon.skillBlocking && weapon.skillDuration != null
-        ? weapon.skillCooldown + weapon.skillDuration
-        : weapon.skillCooldown
-      : null;
+function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
+  const [showReloadDetail, setShowReloadDetail] = useState(false);
+  const rarity = getResolvedFieldValue(weapon.rarity);
+  const rarityStyle = RARITY_CARD_STYLES[
+    rarity ? RARITY_KEY_MAP[rarity] : "common"
+  ];
+  const element = getResolvedFieldValue(weapon.element);
+  const weaponType = getResolvedFieldValue(weapon.weaponType);
+  const scope = getResolvedFieldValue(weapon.scope);
+  const hpMultiplier = weapon.table === "td" ? 400 : 500;
+  const source = weapon.mainSource;
+  const fullReload = getFullReloadTime(weapon.changeClip);
 
   return (
-    <div className={`rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-6`}>
-      {/* 头部 */}
-      <div className="mb-4 flex items-start justify-between">
-        <div>
+    <CatalogLink href={weaponHref(weapon)}>
+      <div
+        className={`relative w-full min-w-0 rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5 transition-shadow hover:shadow-lg hover:shadow-black/20`}
+      >
+        <div className="absolute right-4 top-4 z-10">
+          <ElementIcon element={element} size={28} />
+        </div>
+        <h3 className="pr-10 text-xl font-semibold text-white">{weapon.title}</h3>
+        <div className="mb-4 mt-1 flex flex-wrap gap-x-1.5 text-sm text-zinc-400">
+          {weapon.useType && <span>{weapon.useType}</span>}
+          {weaponType && <span>· {weaponType}</span>}
+          {scope && <span>· {scope}</span>}
+          {weapon.tags.map((tag) => (
+            <span key={tag}>· {tag}</span>
+          ))}
+        </div>
+        <WeaponImage name={weapon.title} />
+
+        {!source ? (
+          <div className="mt-3 border-t border-zinc-700 pt-3 text-sm text-zinc-500">
+            不可攻击
+          </div>
+        ) : (
+          <div className="mt-4 grid grid-cols-1 gap-y-2 text-base sm:grid-cols-2 sm:gap-x-6">
+            <Stat
+              label={source.label ?? source.name}
+              value={formatDamage(source, hpMultiplier)}
+            />
+            <Stat
+              label="射速"
+              value={formatRpm(getResolvedFieldValue(source.fire.rpm))}
+            />
+            <Stat
+              label="弹夹"
+              value={formatNumber(getResolvedFieldValue(weapon.magazine))}
+            />
+            <Stat
+              label="总弹量"
+              value={formatNumber(getResolvedFieldValue(weapon.totalAmmo))}
+            />
+            <Stat
+              label="弱点倍率"
+              value={formatNumber(
+                getResolvedFieldValue(source.weaknessMultiplier),
+              )}
+            />
+            <Stat
+              label="破韧伤害"
+              value={formatPrecise(
+                getResolvedFieldValue(source.damage.toughness),
+              )}
+            />
+            <Stat
+              label="技能充能"
+              value={formatNumber(
+                weapon.activeSkill
+                  ? getResolvedFieldValue(weapon.activeSkill.chargeTime)
+                  : undefined,
+                "s",
+              )}
+            />
+            {!isMeleeWeapon(weapon) && (
+              <Stat
+                label="完整换弹"
+                value={
+                  fullReload === undefined ? "-" : `${fullReload.toFixed(2)}s`
+                }
+              />
+            )}
+            {!isMeleeWeapon(weapon) && (
+              <button
+                type="button"
+                className="text-left text-sm text-zinc-500 hover:text-zinc-300 focus-visible:underline focus-visible:underline-offset-4"
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  setShowReloadDetail((value) => !value);
+                }}
+              >
+                {showReloadDetail ? "收起换弹详情" : "查看换弹详情"}
+              </button>
+            )}
+            {showReloadDetail && !isMeleeWeapon(weapon) && (
+              <>
+                <Stat
+                  label="换弹动画"
+                  value={formatNumber(
+                    getResolvedFieldValue(weapon.changeClip.timeBase),
+                    "s",
+                  )}
+                />
+                <Stat
+                  label="换弹后摇"
+                  value={formatNumber(
+                    getResolvedFieldValue(weapon.changeClip.reloadRecovery),
+                    "s",
+                  )}
+                />
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    </CatalogLink>
+  );
+}
+
+export function WeaponCard({
+  weapon,
+  showDetails = false,
+}: {
+  weapon: WeaponCatalogEntry;
+  showDetails?: boolean;
+}) {
+  return showDetails ? (
+    <DetailedCard weapon={weapon} />
+  ) : (
+    <SimpleCard weapon={weapon} />
+  );
+}
+
+function SourceStats({
+  source,
+  hpMultiplier,
+}: {
+  source: ConsumerDamageSource;
+  hpMultiplier: number;
+}) {
+  const enableWeakness = getResolvedFieldValue(source.enableWeakness);
+  const enableCritical = getResolvedFieldValue(source.enableCritical);
+  const elementRate = getResolvedFieldValue(source.elementAddRate);
+  const toughness = getResolvedFieldValue(source.toughness);
+  return (
+    <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-sm sm:grid-cols-3">
+      <Stat
+        label={source.label ?? "伤害"}
+        value={formatDamage(source, hpMultiplier)}
+      />
+      <Stat
+        label="单发破韧值"
+        value={formatPrecise(getResolvedFieldValue(source.damage.toughness))}
+      />
+      <Stat
+        label="弱点倍率"
+        value={
+          enableWeakness
+            ? formatNumber(getResolvedFieldValue(source.weaknessMultiplier))
+            : "-"
+        }
+      />
+      <Stat
+        label="元素异常概率"
+        value={elementRate === undefined ? "-" : `${formatPercent(elementRate)}%`}
+      />
+      <Stat label="暴击" value={enableCritical ? "可暴击" : "否"} />
+      <Stat label="弱点" value={enableWeakness ? "可弱点" : "否"} />
+      <Stat
+        label="射速"
+        value={formatRpm(getResolvedFieldValue(source.fire.rpm))}
+      />
+      <Stat
+        label="单发耗时"
+        value={formatNumber(getResolvedFieldValue(source.fire.interval), "s")}
+      />
+      <Stat
+        label="破韧类型"
+        value={toughness ? TOUGHNESS_LABELS[toughness] : "-"}
+      />
+    </div>
+  );
+}
+
+export function WeaponDetailCard() {
+  const {
+    weapon,
+    selectedSource,
+    selectedSourceId,
+    selectSource,
+  } = useWeaponDetail();
+  const [showReloadDetail, setShowReloadDetail] = useState(false);
+  const rarity = getResolvedFieldValue(weapon.rarity);
+  const rarityStyle = RARITY_CARD_STYLES[
+    rarity ? RARITY_KEY_MAP[rarity] : "common"
+  ];
+  const weaponType = getResolvedFieldValue(weapon.weaponType);
+  const scope = getResolvedFieldValue(weapon.scope);
+  const selectedElement = selectedSource
+    ? getResolvedFieldValue(selectedSource.element)
+    : undefined;
+  const hpMultiplier = weapon.table === "td" ? 400 : 500;
+  const fullReload = getFullReloadTime(weapon.changeClip);
+  const chargeTime = weapon.activeSkill
+    ? getResolvedFieldValue(weapon.activeSkill.chargeTime)
+    : undefined;
+  const duration = getResolvedFieldValue(weapon.skillDuration);
+  const skillBlocking = getResolvedFieldValue(weapon.skillBlocking);
+  const cycleTime =
+    chargeTime === undefined
+      ? undefined
+      : skillBlocking && duration !== undefined
+        ? chargeTime + duration
+        : chargeTime;
+
+  return (
+    <div
+      className={`rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-4 sm:p-6`}
+    >
+      <div className="mb-4 flex items-start justify-between gap-4">
+        <div className="min-w-0">
           <h1 className="text-2xl font-bold text-white">{weapon.title}</h1>
           <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-zinc-400">
-            {weapon.use_type && <span>{weapon.use_type}</span>}
-            {weapon.weapon_type && <span>· {weapon.weapon_type}</span>}
-            {weapon.scope && <span>· {weapon.scope}</span>}
-            {tags.map((tag) => (
-              <span key={tag} className="flex items-center gap-2">
-                <span>·</span>
-                <span className="rounded bg-zinc-700 px-2 py-0.5 text-xs text-zinc-300">
-                  {tag}
-                </span>
+            {weapon.useType && <span>{weapon.useType}</span>}
+            {weaponType && <span>· {weaponType}</span>}
+            {scope && <span>· {scope}</span>}
+            {weapon.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded bg-zinc-700 px-2 py-0.5 text-xs text-zinc-300"
+              >
+                {tag}
               </span>
             ))}
           </div>
         </div>
-        {elementIcon && (
-          <Image
-            src={getAssetPath(elementIcon)}
-            alt={mode.element}
-            width={32}
-            height={32}
-          />
-        )}
+        <ElementIcon element={selectedElement} size={32} />
       </div>
 
-      {/* 武器图片 */}
-      <div className="relative mb-6 h-32 w-full">
-        <Image
-          src={getAssetPath(`/icons/weapons/normal/${weapon.title}.png`)}
-          alt={weapon.title || ""}
-          width={320}
-          height={160}
-          className="mx-auto object-contain"
-        />
-      </div>
+      <WeaponImage name={weapon.title} />
 
-      {/* 射击模式 */}
-      {isMelee ? (
-        <div className="mb-3">
-          <h2 className="mb-2 text-sm font-semibold text-zinc-400">近战攻击</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-            <Stat
-              label="轻击伤害"
-              value={formatDamageValue(getMeleeDamageBase(weapon, mode, "light"), hpMul)}
-            />
-            <Stat
-              label="重击伤害"
-              value={formatDamageValue(getMeleeDamageBase(weapon, mode, "heavy"), hpMul)}
-            />
-            <Stat label="单发破韧值" value={formatPrecise(mode.damage.toughness)} />
-            <Stat label="弱点倍率" value={mode.enableWeakness ? String(mode.weaknessMultiplier) : "-"} />
-            <Stat
-              label="元素异常概率"
-              value={
-                mode.elementAddRate > 0
-                  ? `${formatPercent(mode.elementAddRate)}%`
-                  : "-"
-              }
-            />
-            <Stat label="暴击" value={mode.enableCritical ? "可暴击" : "否"} />
-          </div>
+      {weapon.damageSources.length > 1 && (
+        <div
+          className="mb-4 flex max-w-full gap-1 overflow-x-auto border-b border-zinc-700 pb-1"
+          role="tablist"
+          aria-label="伤害来源"
+        >
+          {weapon.damageSources.map((source) => {
+            const selected = source.id === selectedSourceId;
+            return (
+              <button
+                key={source.id}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                className={`min-h-10 shrink-0 border-b-2 px-3 py-2 text-sm transition-colors focus-visible:underline focus-visible:underline-offset-4 ${
+                  selected
+                    ? "border-sky-400 bg-zinc-800 text-white"
+                    : "border-transparent text-zinc-400 hover:bg-zinc-800/60 hover:text-zinc-200"
+                }`}
+                onClick={() => selectSource(source.id)}
+              >
+                {source.name}
+              </button>
+            );
+          })}
         </div>
-      ) : weapon.damageModes.length > 1 ? (
-        weapon.damageModes.map((m, i) => (
-          <ModeStats key={i} mode={m} showName hpMultiplier={hpMul} />
-        ))
+      )}
+
+      {!selectedSource ? (
+        <div className="border-t border-zinc-700 pt-4 text-sm text-zinc-500">
+          不可攻击
+        </div>
       ) : (
-        <div className="mb-3">
-          <h2
-            className={
-              "mb-2 text-sm font-semibold " +
-              (weapon.extraModes && weapon.extraModes.length > 0
-                ? "text-zinc-300"
-                : "text-zinc-400")
-            }
-          >
-            普通射击
-          </h2>
-          <ModeStats mode={weapon.damageModes[0]} showName={false} hpMultiplier={hpMul} />
-        </div>
+        <>
+          <section className="mb-4" aria-labelledby="selected-source-title">
+            <h2
+              id="selected-source-title"
+              className="mb-2 text-sm font-semibold text-zinc-300"
+            >
+              {selectedSource.name}
+            </h2>
+            <SourceStats source={selectedSource} hpMultiplier={hpMultiplier} />
+          </section>
+
+          {selectedSource.attenuation.status === "applicable" && (
+            <section className="mb-4">
+              <h2 className="mb-2 text-sm font-semibold text-zinc-400">
+                武器衰减
+              </h2>
+              <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-sm sm:grid-cols-3">
+                <Stat
+                  label="开始衰减"
+                  value={`${round1(selectedSource.attenuation.beginMeters)}m`}
+                />
+                <Stat
+                  label="结束衰减"
+                  value={`${round1(selectedSource.attenuation.endMeters)}m`}
+                />
+                <Stat
+                  label="衰减上限"
+                  value={`${formatPercent(1 - selectedSource.attenuation.minScale)}%`}
+                />
+              </div>
+            </section>
+          )}
+        </>
       )}
 
-      {/* 技能 / 特殊攻击 */}
-      {weapon.extraModes && weapon.extraModes.length > 0 && (
-        <SkillSection weapon={weapon} hpMultiplier={hpMul} />
-      )}
-
-      {/* 武器衰减 */}
-      {!isMelee && weapon.attenuation_begin != null && weapon.attenuation_end != null && Number(weapon.attenuation_end) > Number(weapon.attenuation_begin) && (
-        <div className="mb-4">
-          <h2 className="mb-2 text-sm font-semibold text-zinc-400">武器衰减</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-            <Stat
-              label="开始衰减"
-              value={formatMeter(weapon.attenuation_begin)}
-            />
-            <Stat
-              label="结束衰减"
-              value={formatMeter(weapon.attenuation_end)}
-            />
-            <Stat
-              label="衰减上限"
-              value={formatAttenuationLimit(weapon.attenuation_scale)}
-            />
-          </div>
-        </div>
-      )}
-
-      {/* 武器属性 */}
-      <div className="mb-4">
+      <section>
         <h2 className="mb-2 text-sm font-semibold text-zinc-400">武器属性</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-          {!isMelee && <Stat label="弹夹" value={formatValue(weapon.magazine)} />}
-          {!isMelee && <Stat label="总弹量" value={formatValue(weapon.totalAmmo)} />}
-          {!isMelee && <Stat label="精准度" value={formatValue(weapon.accuracy)} />}
-          {!isMelee && <Stat label="稳定度" value={formatValue(weapon.stability)} />}
-          {!isMelee && showReloadDetail && weapon.changeClip ? (
-            <>
-              <div className="flex justify-between gap-1 text-sm">
-                <span className="text-zinc-500 shrink-0">换弹动画</span>
-                <span className="text-white text-right">
-                  {calcReloadTime(weapon.changeClip)!.toFixed(2)}s
-                </span>
-              </div>
-              <div className="flex justify-between gap-1 text-sm">
-                <span className="text-zinc-500 shrink-0">换弹后摇</span>
-                <span className="text-white text-right">
-                  {calcReloadRecovery(weapon.changeClip)!.toFixed(2)}s
-                </span>
-              </div>
-            </>
-          ) : !isMelee ? (
+        <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-sm sm:grid-cols-3">
+          {!isMeleeWeapon(weapon) && (
+            <Stat
+              label="弹夹"
+              value={formatNumber(getResolvedFieldValue(weapon.magazine))}
+            />
+          )}
+          {!isMeleeWeapon(weapon) && (
+            <Stat
+              label="总弹量"
+              value={formatNumber(getResolvedFieldValue(weapon.totalAmmo))}
+            />
+          )}
+          {!isMeleeWeapon(weapon) && (
+            <Stat
+              label="精准度"
+              value={formatNumber(getResolvedFieldValue(weapon.accuracy))}
+            />
+          )}
+          {!isMeleeWeapon(weapon) && (
+            <Stat
+              label="稳定度"
+              value={formatNumber(getResolvedFieldValue(weapon.stability))}
+            />
+          )}
+          {!isMeleeWeapon(weapon) && (
             <Stat
               label="完整换弹"
               value={
-                weapon.changeClip
-                  ? `${(Math.ceil(calcFullReload(weapon.changeClip)! * 100) / 100).toFixed(2)}s`
-                  : "-"
+                fullReload === undefined ? "-" : `${fullReload.toFixed(2)}s`
               }
             />
-          ) : null}
-          {!isMelee && (
-            <div
-              className="flex justify-between gap-1 text-sm cursor-pointer"
-              onClick={() => setShowReloadDetail(!showReloadDetail)}
-            >
-              <span className="text-zinc-500 shrink-0">
-                换弹详情 {showReloadDetail ? "▴" : "▸"}
-              </span>
-              <span className="text-white text-right">&nbsp;</span>
-            </div>
           )}
-          <Stat
-            label="技能冷却"
-            value={weapon.skillCooldown != null ? `${weapon.skillCooldown}s` : "-"}
-          />
-          {weapon.shootingEnergy && (
+          <Stat label="技能充能" value={formatNumber(chargeTime, "s")} />
+          {getResolvedFieldValue(weapon.shootingEnergy) && (
             <Stat
               label="射击耗能"
-              value={weapon.shootingEnergyCount != null ? `${weapon.shootingEnergyCount}次` : "-"}
+              value={formatNumber(
+                getResolvedFieldValue(weapon.shootingEnergyCount),
+                "次",
+              )}
             />
           )}
-          {weapon.showDuration && (
-            <Stat
-              label="持续时间"
-              value={weapon.skillDuration != null ? `${weapon.skillDuration}s` : "-"}
-            />
+          {getResolvedFieldValue(weapon.showDuration) && (
+            <Stat label="持续时间" value={formatNumber(duration, "s")} />
           )}
-          {weapon.showDuration && (
-            <Stat
-              label="周期时长"
-              value={cycleTime != null ? `${cycleTime}s` : "-"}
-            />
+          {getResolvedFieldValue(weapon.showDuration) && (
+            <Stat label="周期时长" value={formatNumber(cycleTime, "s")} />
+          )}
+          {!isMeleeWeapon(weapon) && (
+            <button
+              type="button"
+              className="text-left text-sm text-zinc-500 hover:text-zinc-300 focus-visible:underline focus-visible:underline-offset-4"
+              onClick={() => setShowReloadDetail((value) => !value)}
+            >
+              {showReloadDetail ? "收起换弹详情" : "查看换弹详情"}
+            </button>
+          )}
+          {showReloadDetail && !isMeleeWeapon(weapon) && (
+            <>
+              <Stat
+                label="换弹动画"
+                value={formatNumber(
+                  getResolvedFieldValue(weapon.changeClip.timeBase),
+                  "s",
+                )}
+              />
+              <Stat
+                label="换弹后摇"
+                value={formatNumber(
+                  getResolvedFieldValue(weapon.changeClip.reloadRecovery),
+                  "s",
+                )}
+              />
+            </>
           )}
         </div>
-      </div>
-
+      </section>
     </div>
   );
 }

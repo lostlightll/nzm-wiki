@@ -1,22 +1,27 @@
-import { getMDXList, getMDXDetail } from "@/lib/mdx";
-import { getWeaponBySlug } from "@/lib/weapons";
-import { WeaponDetailCard } from "@/components/WeaponCard";
-import {
-  WeaponAttenuationChart,
-  type WeaponAttenuationChartProps,
-} from "@/components/WeaponAttenuationChart";
-import { WeaponSkill } from "@/components/WeaponSkill";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
-import { mdxOptions } from "@/lib/mdx-options";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { WeaponAttenuationChart } from "@/components/WeaponAttenuationChart";
+import { WeaponDetailCard } from "@/components/WeaponCard";
+import { WeaponDetailProvider } from "@/components/WeaponDetailContext";
+import {
+  ActiveSkill,
+  WeaponSkill,
+  type ActiveSkillProps,
+} from "@/components/WeaponSkill";
+import {
+  getActiveSkillDisplay,
+  toWeaponDetailData,
+} from "@/lib/weapon-consumers";
+import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
+import { mdxOptions } from "@/lib/mdx-options";
+import {
+  getResolvedWeaponDocument,
+  getResolvedWeaponSlugs,
+} from "@/lib/weapons";
 
 export async function generateStaticParams() {
-  const items = getMDXList("weapons");
-  return items.map((item) => ({
-    slug: item.slug,
-  }));
+  return (await getResolvedWeaponSlugs("lc")).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -25,8 +30,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const { metadata } = getMDXDetail("weapons", slug);
-  const title = metadata.title || slug;
+  const document = await getResolvedWeaponDocument(slug, "lc");
+  const title = document?.weapon.title ?? decodeURIComponent(slug);
   return {
     title,
     description: `${title} — 逆战未来武器详情`,
@@ -34,7 +39,6 @@ export async function generateMetadata({
   };
 }
 
-// Tailwind max-width classes mapping
 const PAGE_WIDTH_CLASSES: Record<string, string> = {
   sm: "max-w-xl",
   md: "max-w-2xl",
@@ -55,21 +59,8 @@ export default async function WeaponDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
-  const weapon = await getWeaponBySlug(slug);
-  const { content, metadata } = getMDXDetail("weapons", slug);
-  const showToc = metadata.toc !== false;
-
-  const pageWidth = metadata["page-width"] as string | undefined;
-  const isCustom = pageWidth && isCustomWidth(pageWidth);
-  const widthClass = isCustom
-    ? ""
-    : pageWidth && PAGE_WIDTH_CLASSES[pageWidth]
-      ? PAGE_WIDTH_CLASSES[pageWidth]
-      : "max-w-3xl";
-  const customStyle = isCustom ? { maxWidth: pageWidth } : undefined;
-
-  if (!weapon) {
+  const document = await getResolvedWeaponDocument(slug, "lc");
+  if (!document) {
     return (
       <div className="mx-auto max-w-3xl py-6">
         <p className="text-zinc-500">武器不存在</p>
@@ -77,41 +68,58 @@ export default async function WeaponDetailPage({
     );
   }
 
-  const AttenuationChartForWeapon = (props: WeaponAttenuationChartProps) => (
-    <WeaponAttenuationChart {...props} weapon={props.weapon ?? weapon} />
-  );
+  const weapon = toWeaponDetailData(document.weapon);
+  const pageWidth = document.page.pageWidth;
+  const customWidth = pageWidth !== undefined && isCustomWidth(pageWidth);
+  const widthClass = customWidth
+    ? ""
+    : pageWidth && PAGE_WIDTH_CLASSES[pageWidth]
+      ? PAGE_WIDTH_CLASSES[pageWidth]
+      : "max-w-3xl";
+  const customStyle = customWidth ? { maxWidth: pageWidth } : undefined;
+
+  const ActiveSkillForWeapon = (props: ActiveSkillProps) => {
+    const display = getActiveSkillDisplay(weapon.activeSkill, props.count);
+    return (
+      <ActiveSkill
+        {...props}
+        cooldown={display.cooldown}
+        count={display.count}
+      />
+    );
+  };
   const WeaponSkillForWeapon = ({ children }: { children: ReactNode }) => (
     <>
       <WeaponSkill>{children}</WeaponSkill>
-      <WeaponAttenuationChart weapon={weapon} />
+      <WeaponAttenuationChart />
     </>
   );
   const weaponMdxComponents = {
     ...mdxComponents,
-    AttenuationChart: AttenuationChartForWeapon,
-    WeaponAttenuationChart: AttenuationChartForWeapon,
+    ActiveSkill: ActiveSkillForWeapon,
+    AttenuationChart: WeaponAttenuationChart,
+    WeaponAttenuationChart,
     WeaponSkill: WeaponSkillForWeapon,
   };
 
   return (
-    <>
-      <TableOfContents enabled={showToc} />
+    <WeaponDetailProvider weapon={weapon}>
+      <TableOfContents enabled={document.page.toc} />
       <div
-        className={`mx-auto ${widthClass} py-6 ${isCustom ? "max-md:max-w-full" : ""}`}
+        className={`mx-auto ${widthClass} py-6 ${customWidth ? "max-md:max-w-full" : ""}`}
         style={customStyle}
       >
-        <WeaponDetailCard weapon={weapon} />
-
-        {content.trim() && (
+        <WeaponDetailCard />
+        {document.content.trim() && (
           <article className="prose prose-lg prose-invert mt-8 max-w-none">
             <MDXRemote
-              source={content}
+              source={document.content}
               components={weaponMdxComponents}
               options={mdxOptions}
             />
           </article>
         )}
       </div>
-    </>
+    </WeaponDetailProvider>
   );
 }

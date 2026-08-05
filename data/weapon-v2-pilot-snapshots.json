@@ -1820,12 +1820,26 @@
           }
         ],
         "draft": false,
+        "element": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "heavy-hit",
+              "sourceKey": "lc:121300090_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "物理"
+        },
         "explosionRange": {
           "overrideHistory": [],
           "provenance": [],
           "state": "missing"
         },
         "gameMode": "lc",
+        "keywords": [],
         "magazine": {
           "overrideHistory": [],
           "provenance": [
@@ -4816,12 +4830,26 @@
           }
         ],
         "draft": false,
+        "element": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "machine-gun",
+              "sourceKey": "lc:120600060_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "腐蚀"
+        },
         "explosionRange": {
           "overrideHistory": [],
           "provenance": [],
           "state": "missing"
         },
         "gameMode": "lc",
+        "keywords": [],
         "magazine": {
           "overrideHistory": [],
           "provenance": [
@@ -7861,12 +7889,26 @@
           }
         ],
         "draft": false,
+        "element": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "primary-fire",
+              "sourceKey": "lc:120100040_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "寒冷"
+        },
         "explosionRange": {
           "overrideHistory": [],
           "provenance": [],
           "state": "missing"
         },
         "gameMode": "lc",
+        "keywords": [],
         "magazine": {
           "overrideHistory": [],
           "provenance": [
@@ -8165,15 +8207,34 @@
             "message": "Using compatibility fallback: changeClip/timeBase",
             "path": "/changeClip/timeBase",
             "severity": "info"
+          },
+          {
+            "code": "COMPAT_FALLBACK",
+            "message": "Using compatibility fallback: element",
+            "path": "/element",
+            "severity": "info"
           }
         ],
         "draft": false,
+        "element": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "compat-fallback",
+              "note": "missing-preferred",
+              "rawField": "element"
+            }
+          ],
+          "state": "resolved",
+          "value": "物理"
+        },
         "explosionRange": {
           "overrideHistory": [],
           "provenance": [],
           "state": "missing"
         },
         "gameMode": "lc",
+        "keywords": [],
         "magazine": {
           "overrideHistory": [],
           "provenance": [],
@@ -12929,12 +12990,33 @@
           }
         ],
         "draft": false,
+        "element": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "shotgun",
+              "sourceKey": "lc:120300110_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "火焰"
+        },
         "explosionRange": {
           "overrideHistory": [],
           "provenance": [],
           "state": "missing"
         },
         "gameMode": "lc",
+        "keywords": [
+          "🐉",
+          "市区",
+          "区",
+          "潜龙在渊",
+          "帝王之征",
+          "龙可是帝王之征啊"
+        ],
         "magazine": {
           "overrideHistory": [],
           "provenance": [
@@ -12961,6 +13043,7 @@
             "state": "missing"
           }
         },
+        "nickname": "微风之区",
         "officialRadar": {
           "accuracy": {
             "overrideHistory": [],
@@ -14999,12 +15082,26 @@
           }
         ],
         "draft": false,
+        "element": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "heavy-hit",
+              "sourceKey": "td:121300090_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "物理"
+        },
         "explosionRange": {
           "overrideHistory": [],
           "provenance": [],
           "state": "missing"
         },
         "gameMode": "td",
+        "keywords": [],
         "magazine": {
           "overrideHistory": [],
           "provenance": [
@@ -17995,12 +18092,26 @@
           }
         ],
         "draft": false,
+        "element": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "machine-gun",
+              "sourceKey": "td:120600060_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "腐蚀"
+        },
         "explosionRange": {
           "overrideHistory": [],
           "provenance": [],
           "state": "missing"
         },
         "gameMode": "td",
+        "keywords": [],
         "magazine": {
           "overrideHistory": [],
           "provenance": [
@@ -21040,12 +21151,26 @@
           }
         ],
         "draft": false,
+        "element": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "primary-fire",
+              "sourceKey": "td:120100040_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "寒冷"
+        },
         "explosionRange": {
           "overrideHistory": [],
           "provenance": [],
           "state": "missing"
         },
         "gameMode": "td",
+        "keywords": [],
         "magazine": {
           "overrideHistory": [],
           "provenance": [
@@ -21344,15 +21469,34 @@
             "message": "Using compatibility fallback: changeClip/timeBase",
             "path": "/changeClip/timeBase",
             "severity": "info"
+          },
+          {
+            "code": "COMPAT_FALLBACK",
+            "message": "Using compatibility fallback: element",
+            "path": "/element",
+            "severity": "info"
           }
         ],
         "draft": false,
+        "element": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "compat-fallback",
+              "note": "missing-preferred",
+              "rawField": "element"
+            }
+          ],
+          "state": "resolved",
+          "value": "物理"
+        },
         "explosionRange": {
           "overrideHistory": [],
           "provenance": [],
           "state": "missing"
         },
         "gameMode": "td",
+        "keywords": [],
         "magazine": {
           "overrideHistory": [],
           "provenance": [],
@@ -26108,12 +26252,33 @@
           }
         ],
         "draft": false,
+        "element": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "shotgun",
+              "sourceKey": "td:120300110_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "火焰"
+        },
         "explosionRange": {
           "overrideHistory": [],
           "provenance": [],
           "state": "missing"
         },
         "gameMode": "td",
+        "keywords": [
+          "🐉",
+          "市区",
+          "区",
+          "潜龙在渊",
+          "帝王之征",
+          "龙可是帝王之征啊"
+        ],
         "magazine": {
           "overrideHistory": [],
           "provenance": [
@@ -26140,6 +26305,7 @@
             "state": "missing"
           }
         },
+        "nickname": "微风之区",
         "officialRadar": {
           "accuracy": {
             "overrideHistory": [],
@@ -45553,11 +45719,37 @@
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/4"
       },
       {
+        "after": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "heavy-hit",
+              "sourceKey": "lc:121300090_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "物理"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/element",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/element"
+      },
+      {
         "after": "lc",
         "classification": "structural",
         "operation": "add",
         "pointer": "/weapon/gameMode",
         "reason": "Reviewed V1-to-V2 shape change at /weapon/gameMode"
+      },
+      {
+        "after": [],
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/keywords",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/keywords"
       },
       {
         "after": "lock-asc",
@@ -50738,11 +50930,37 @@
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/7"
       },
       {
+        "after": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "machine-gun",
+              "sourceKey": "lc:120600060_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "腐蚀"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/element",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/element"
+      },
+      {
         "after": "lc",
         "classification": "structural",
         "operation": "add",
         "pointer": "/weapon/gameMode",
         "reason": "Reviewed V1-to-V2 shape change at /weapon/gameMode"
+      },
+      {
+        "after": [],
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/keywords",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/keywords"
       },
       {
         "after": "lock-asc",
@@ -55903,11 +56121,37 @@
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/5"
       },
       {
+        "after": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "primary-fire",
+              "sourceKey": "lc:120100040_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "寒冷"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/element",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/element"
+      },
+      {
         "after": "lc",
         "classification": "structural",
         "operation": "add",
         "pointer": "/weapon/gameMode",
         "reason": "Reviewed V1-to-V2 shape change at /weapon/gameMode"
+      },
+      {
+        "after": [],
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/keywords",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/keywords"
       },
       {
         "after": "lock-asc",
@@ -56822,11 +57066,48 @@
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/1"
       },
       {
+        "after": {
+          "code": "COMPAT_FALLBACK",
+          "message": "Using compatibility fallback: element",
+          "path": "/element",
+          "severity": "info"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/diagnostics/2",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/2"
+      },
+      {
+        "after": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "compat-fallback",
+              "note": "missing-preferred",
+              "rawField": "element"
+            }
+          ],
+          "state": "resolved",
+          "value": "物理"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/element",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/element"
+      },
+      {
         "after": "lc",
         "classification": "structural",
         "operation": "add",
         "pointer": "/weapon/gameMode",
         "reason": "Reviewed V1-to-V2 shape change at /weapon/gameMode"
+      },
+      {
+        "after": [],
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/keywords",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/keywords"
       },
       {
         "before": "v1-primary",
@@ -65468,11 +65749,44 @@
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/2"
       },
       {
+        "after": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "shotgun",
+              "sourceKey": "lc:120300110_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "火焰"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/element",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/element"
+      },
+      {
         "after": "lc",
         "classification": "structural",
         "operation": "add",
         "pointer": "/weapon/gameMode",
         "reason": "Reviewed V1-to-V2 shape change at /weapon/gameMode"
+      },
+      {
+        "after": [
+          "🐉",
+          "市区",
+          "区",
+          "潜龙在渊",
+          "帝王之征",
+          "龙可是帝王之征啊"
+        ],
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/keywords",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/keywords"
       },
       {
         "after": "lock-asc",
@@ -65503,6 +65817,13 @@
         "operation": "add",
         "pointer": "/weapon/magazine/provenance/0/sourceKey",
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/magazine/provenance/0/sourceKey"
+      },
+      {
+        "after": "微风之区",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/nickname",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/nickname"
       },
       {
         "after": {
@@ -68640,6 +68961,32 @@
         "operation": "add",
         "pointer": "/weapon/diagnostics/4",
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/4"
+      },
+      {
+        "after": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "heavy-hit",
+              "sourceKey": "td:121300090_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "物理"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/element",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/element"
+      },
+      {
+        "after": [],
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/keywords",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/keywords"
       },
       {
         "after": "lock-asc",
@@ -73770,6 +74117,32 @@
         "operation": "add",
         "pointer": "/weapon/diagnostics/7",
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/7"
+      },
+      {
+        "after": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "machine-gun",
+              "sourceKey": "td:120600060_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "腐蚀"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/element",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/element"
+      },
+      {
+        "after": [],
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/keywords",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/keywords"
       },
       {
         "after": "lock-asc",
@@ -78930,6 +79303,32 @@
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/5"
       },
       {
+        "after": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "primary-fire",
+              "sourceKey": "td:120100040_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "寒冷"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/element",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/element"
+      },
+      {
+        "after": [],
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/keywords",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/keywords"
+      },
+      {
         "after": "lock-asc",
         "before": "mdx-v1",
         "classification": "structural",
@@ -79840,6 +80239,43 @@
         "operation": "add",
         "pointer": "/weapon/diagnostics/1",
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/1"
+      },
+      {
+        "after": {
+          "code": "COMPAT_FALLBACK",
+          "message": "Using compatibility fallback: element",
+          "path": "/element",
+          "severity": "info"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/diagnostics/2",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/2"
+      },
+      {
+        "after": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "compat-fallback",
+              "note": "missing-preferred",
+              "rawField": "element"
+            }
+          ],
+          "state": "resolved",
+          "value": "物理"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/element",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/element"
+      },
+      {
+        "after": [],
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/keywords",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/keywords"
       },
       {
         "before": "v1-primary",
@@ -88481,6 +88917,39 @@
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/2"
       },
       {
+        "after": {
+          "overrideHistory": [],
+          "provenance": [
+            {
+              "kind": "lock-numerical",
+              "rawField": "ElementType",
+              "sourceId": "shotgun",
+              "sourceKey": "td:120300110_1"
+            }
+          ],
+          "state": "resolved",
+          "value": "火焰"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/element",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/element"
+      },
+      {
+        "after": [
+          "🐉",
+          "市区",
+          "区",
+          "潜龙在渊",
+          "帝王之征",
+          "龙可是帝王之征啊"
+        ],
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/keywords",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/keywords"
+      },
+      {
         "after": "lock-asc",
         "before": "mdx-v1",
         "classification": "structural",
@@ -88509,6 +88978,13 @@
         "operation": "add",
         "pointer": "/weapon/magazine/provenance/0/sourceKey",
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/magazine/provenance/0/sourceKey"
+      },
+      {
+        "after": "微风之区",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/nickname",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/nickname"
       },
       {
         "after": {

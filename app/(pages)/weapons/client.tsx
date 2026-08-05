@@ -2,12 +2,16 @@
 
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import type { Weapon, WeaponType, ElementType, Rarity } from "@/types";
+import type { WeaponType, ElementType, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
 import { WeaponCard } from "@/components/WeaponCard";
 import { WeaponMasonry } from "@/components/WeaponMasonry";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
+import {
+  getResolvedFieldValue,
+  type WeaponCatalogEntry,
+} from "@/lib/weapon-consumers";
 import {
   WEAPON_TYPES,
   ELEMENT_TYPES,
@@ -55,8 +59,8 @@ export default function WeaponsClient({
   weapons,
   tdWeapons,
 }: {
-  weapons: Weapon[];
-  tdWeapons: Weapon[];
+  weapons: WeaponCatalogEntry[];
+  tdWeapons: WeaponCatalogEntry[];
 }) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -104,19 +108,22 @@ export default function WeaponsClient({
   const filteredWeapons = useMemo(
     () =>
       (isTD ? tdWeapons : weapons).filter((weapon) => {
+        const weaponType = getResolvedFieldValue(weapon.weaponType);
+        const element = getResolvedFieldValue(weapon.element);
+        const rarity = getResolvedFieldValue(weapon.rarity);
         const slotMatch =
           slotState.selected.size === 0 ||
-          (weapon.use_type &&
-            slotState.selected.has(weapon.use_type as WeaponSlot));
+          (weapon.useType &&
+            slotState.selected.has(weapon.useType as WeaponSlot));
         const typeMatch =
           typeState.selected.size === 0 ||
-          (weapon.weapon_type && typeState.selected.has(weapon.weapon_type));
+          (weaponType && typeState.selected.has(weaponType));
         const elementMatch =
           elementState.selected.size === 0 ||
-          elementState.selected.has(weapon.damageModes[0]?.element);
+          (element !== undefined && elementState.selected.has(element));
         const rarityMatch =
           rarityState.selected.size === 0 ||
-          (weapon.rarity && rarityState.selected.has(weapon.rarity));
+          (rarity !== undefined && rarityState.selected.has(rarity));
         return slotMatch && typeMatch && elementMatch && rarityMatch;
       }),
     [
