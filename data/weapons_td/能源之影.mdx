@@ -1,6 +1,6 @@
 ---
 title: 能源之影
-prototype_id: 20007000015
+prototype_id: "20007000015"
 use_type: 副武器
 weapon_type: 手枪
 element: 电弧
@@ -8,86 +8,6 @@ rarity: 传说
 tags:
   - 掷枪
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.23
-    damage:
-      base: 0.238
-      impulse: 3.5
-      toughness: 3.5
-      flesh: 3.7
-      hurtable: 3.7
-    element: 电弧
-    element_add_rate: 0.227
-    weakness_multiplier: 1.3
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-extra_modes:
-  - name: 浮游模式
-    fire_interval: 0.65
-    damage:
-      base: 0.7
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 火焰
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - name: 换弹爆炸
-    label: 爆炸伤害
-    damage:
-      base: 0.2
-      impulse: 2
-      toughness: 2
-      flesh: 2
-      hurtable: 2
-    element: 电弧
-    element_add_rate: 0.1
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-  - name: 强袭激光
-    damage:
-      base: 0.7
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 火焰
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-damage:
-  base: 0.238
-  impulse: 3.5
-  toughness: 3.5
-  flesh: 3.7
-  hurtable: 3.7
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: 260
 magazine: 18
 total_ammo: 162
 accuracy: 72
@@ -95,21 +15,55 @@ stability: 59
 changeClip:
   timeBase: 1.2
   reloadRecovery: 0
-range: null
-explosion_range: null
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: null
-element_add_rate: 0.227
 skill_cooldown: 45
-pellets: null
 weapon_type_id: 7
 active_skill_id: 5102001
 skill_duration: 20
 skill_blocking: true
 show_duration: true
 game_mode: td
+schema_version: 2
+item_id: "20107000015"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120700150
+        level: 1
+      asc_type_id: "236"
+  - id: fu-you-mo-shi
+    name: 浮游模式
+    section: variant
+    source:
+      numerical:
+        table: td
+        id: 120700152
+        level: 1
+    fire_interval: 0.65
+  - id: huan-tan-bao-zha
+    name: 换弹爆炸
+    section: special
+    source:
+      numerical:
+        table: td
+        id: 120700151
+        level: 1
+    label: 爆炸伤害
+  - id: qiang-xi-ji-guang
+    name: 强袭激光
+    section: special
+    source:
+      numerical:
+        table: td
+        id: 120700153
+        level: 1
 ---
 
 

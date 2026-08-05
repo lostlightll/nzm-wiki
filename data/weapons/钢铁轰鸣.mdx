@@ -8,75 +8,6 @@ rarity: 传说
 tags:
   - 穿透
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-mode_names:
-  '0': 榴弹命中
-  '1': 榴弹爆炸
-  '2': 榴弹穿透
-damage_modes:
-  - mode: 0
-    name: 榴弹命中
-    fire_interval: 0.65
-    damage:
-      base: 0.149
-      impulse: 4.92
-      toughness: 4.92
-      flesh: 9.8
-      hurtable: 2.94
-    element: 火焰
-    element_add_rate: 0.3925
-    weakness_multiplier: 1.1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - mode: 1
-    name: 榴弹爆炸
-    label: 爆炸伤害
-    damage:
-      base: 0.298
-      impulse: 4.92
-      toughness: 4.92
-      flesh: 0
-      hurtable: 2.94
-    element: 火焰
-    element_add_rate: 0.2355
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-  - mode: 2
-    name: 榴弹穿透
-    damage:
-      base: 0.149
-      impulse: 4.92
-      toughness: 4.92
-      flesh: 9.8
-      hurtable: 2.94
-    element: 火焰
-    element_add_rate: 0.3925
-    weakness_multiplier: 1.1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-damage:
-  base: 0.298
-  impulse: 4.92
-  toughness: 4.92
-  flesh: 9.8
-  hurtable: 2.94
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.1
-file_rate: 92
 magazine: 8
 total_ammo: 72
 accuracy: 67
@@ -84,19 +15,46 @@ stability: 37
 changeClip:
   timeBase: 3
   reloadRecovery: 0.3552
-range: ''
 explosion_range: 2.5
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: false
-element_add_rate: 0.2355
 skill_cooldown: 50
-pellets: ''
 weapon_type_id: 16
 active_skill_id: 5101601
 shooting_energy: true
 shooting_energy_count: 8
+schema_version: 2
+item_id: "20116000004"
+damage_sources:
+  - id: liu-dan-ming-zhong
+    name: 榴弹命中
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 121600011
+        level: 1
+      asc_type_id: "117"
+  - id: liu-dan-bao-zha
+    name: 榴弹爆炸
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 121600010
+        level: 1
+    label: 爆炸伤害
+  - id: liu-dan-chuan-tou
+    name: 榴弹穿透
+    section: special
+    source:
+      numerical:
+        table: lc
+        id: 121600012
+        level: 1
 ---
 
 <WeaponSkill>

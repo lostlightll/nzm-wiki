@@ -93,7 +93,7 @@ frontmatter + committed Lock -> resolveWeapon() -> server consumers
                                           \-> client-safe consumer views
 ```
 
-Resolver 独占主来源决策：选择首个 `fire_mode`，否则选择数组首项；空来源没有 `mainSourceId`。消费者只能按 `mainSourceId` 精确查找，缺失或悬空 ID 是领域不变量错误，禁止再次按 section 或数组位置 fallback。武器级元素优先使用有效主来源元素；不可攻击武器仍保留协议顶层元素，供目录筛选和搜索使用。
+Resolver 独占主来源决策：先排除 `damage.base` 不适用的恢复等非攻击结算来源，再选择首个 `fire_mode`，否则选择首个攻击来源。空来源或仅含非攻击结算来源时没有 `mainSourceId`。消费者只能按 `mainSourceId` 精确查找；存在攻击来源却缺失 ID，或 ID 悬空，均是领域不变量错误，禁止再次按 section 或数组位置 fallback。武器级元素优先使用有效主来源元素；不可攻击武器仍保留协议顶层元素，供目录筛选和搜索使用。
 
 `lib/weapon-consumers.ts` 只接受 `ResolvedWeapon`，不得读取 frontmatter、Lock 或 `refs/`。目录视图只携带主来源摘要；详情视图保留全部标准化 Damage、ASC、Feel、衰减和技能字段。两种客户端视图都删除 `raw`、provenance、diagnostics、override history、原表字段名和来源 key，避免把审计数据序列化到 RSC/client payload。完整审计信息仍保留在服务端 `ResolvedWeapon`。
 

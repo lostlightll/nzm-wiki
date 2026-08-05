@@ -863,6 +863,19 @@ function validateOnlineEvidence(
     const value = readJsonPointer(JSON.parse(readFileSync(absolutePath, "utf8")), entry.pointer);
     if (!isDeepStrictEqual(value, entry.observed_value)) {
       issues.push(`${id}: evidence pointer value differs`);
+      continue;
+    }
+    if (entry.kind === "weapon_item_identity") {
+      const row = value && typeof value === "object" && !Array.isArray(value)
+        ? value as Record<string, unknown>
+        : undefined;
+      if (
+        !row ||
+        String(row.WeaponName) !== entry.weapon_name ||
+        String(row.ModelID) !== entry.model_id
+      ) {
+        issues.push(`${id}: WeaponItem identity fields differ`);
+      }
     }
   }
   if (issues.length > 0) throw new Error(`online evidence validation failed:\n${issues.join("\n")}`);
@@ -871,16 +884,26 @@ function validateOnlineEvidence(
 function applyFieldDecisions(
   source: Record<string, unknown>,
   fields: Readonly<Record<string, Record<string, unknown>>>,
+  hasEffectiveAsc: boolean,
 ): void {
   const overrides = source.overrides && typeof source.overrides === "object" && !Array.isArray(source.overrides)
     ? cloneJson(source.overrides as Record<string, unknown>)
     : {};
+  const overrideFields: Record<string, Record<string, unknown>> = {};
   for (const [field, decision] of Object.entries(fields)) {
+    if (field === "fire.interval" && !hasEffectiveAsc) {
+      if (decision.action === "accept_source") delete source.fire_interval;
+      else if (decision.action === "confirmed_override") {
+        source.fire_interval = cloneJson(decision.value);
+      }
+      continue;
+    }
     const pathSegments = overridePath(field);
     if (!pathSegments) continue;
     if (decision.action === "accept_source") deleteNested(overrides, pathSegments);
     else if (decision.action === "confirmed_override") {
       setNested(overrides, pathSegments, decision.value);
+      overrideFields[field] = decision;
     }
     if (field === "fire.interval") delete source.fire_interval;
   }
@@ -889,7 +912,7 @@ function applyFieldDecisions(
     delete source.override_reason;
   } else {
     source.overrides = overrides;
-    source.override_reason = uniqueReasons(fields).join("；");
+    source.override_reason = uniqueReasons(overrideFields).join("；");
   }
 }
 
@@ -923,7 +946,18 @@ function renderReconciledDocuments(
         const source = identity ? sourceById.get(identity.id) : undefined;
         if (!identity || !source) throw new Error(`${sourceKey}: cannot align V2 source`);
         source.source = cloneJson(tableDecision.sources[sourceKey] ?? {});
-        applyFieldDecisions(source, tableDecision.field_decisions[sourceKey] ?? {});
+      }
+      const effectiveReferences = resolveDamageSourceReferences(
+        validateWeaponSourceV2(data, { expectedTable: document.table }),
+      );
+      for (const sourceKey of Object.keys(tableDecision.source_reviews)) {
+        const identity = weaponDecision.sources[sourceKey]!;
+        const source = sourceById.get(identity.id)!;
+        applyFieldDecisions(
+          source,
+          tableDecision.field_decisions[sourceKey] ?? {},
+          Boolean(effectiveReferences.get(identity.id)?.source?.asc_type_id),
+        );
       }
       validateWeaponSourceV2(data, { expectedTable: document.table });
       rendered.push({
@@ -971,6 +1005,7 @@ export interface ReconciliationCheckResult {
   readonly reviewed_sources: number;
   readonly confirmed_sources: number;
   readonly corrected_sources: number;
+  readonly resolved_sources: number;
   readonly confirmed_overrides: number;
 }
 
@@ -990,6 +1025,7 @@ export function checkReconciliation(
   let reviewedSources = 0;
   let confirmedSources = 0;
   let correctedSources = 0;
+  let resolvedSources = 0;
   let confirmedOverrides = 0;
 
   for (const [title, weapon] of Object.entries(decisions.weapons)) {
@@ -1004,7 +1040,8 @@ export function checkReconciliation(
       for (const [sourceKey, review] of Object.entries(selected.source_reviews)) {
         reviewedSources += 1;
         if (review.resolution === "confirmed") confirmedSources += 1;
-        else correctedSources += 1;
+        else if (review.resolution === "corrected") correctedSources += 1;
+        else resolvedSources += 1;
         const identity = weapon.sources[sourceKey];
         const finalEffective = identity
           ? effectiveSourceByIdentity(document, identity.id)
@@ -1013,12 +1050,23 @@ export function checkReconciliation(
           issues.push(`${table}:${title}:${sourceKey}: final effective source is missing`);
           continue;
         }
-        const same = isDeepStrictEqual(
-          canonicalize(review.previous_effective_source),
-          canonicalize(finalEffective),
-        );
-        if (same !== (review.resolution === "confirmed")) {
-          issues.push(`${table}:${title}:${sourceKey}: source review resolution is stale`);
+        if (review.resolution === "resolved") {
+          if (
+            !isDeepStrictEqual(
+              canonicalize(review.effective_source),
+              canonicalize(finalEffective),
+            )
+          ) {
+            issues.push(`${table}:${title}:${sourceKey}: resolved source review is stale`);
+          }
+        } else {
+          const same = isDeepStrictEqual(
+            canonicalize(review.previous_effective_source),
+            canonicalize(finalEffective),
+          );
+          if (same !== (review.resolution === "confirmed")) {
+            issues.push(`${table}:${title}:${sourceKey}: source review resolution is stale`);
+          }
         }
         for (const id of review.evidence_ids) usedEvidence.add(id);
         for (const [field, decision] of Object.entries(selected.field_decisions[sourceKey] ?? {})) {
@@ -1027,8 +1075,12 @@ export function checkReconciliation(
           for (const id of decision.evidence_ids) usedEvidence.add(id);
           const weaponSource = (document.data.damage_sources as Array<Record<string, unknown>>)
             .find((source) => source.id === identity.id);
-          const pathSegments = overridePath(field);
-          let value: unknown = weaponSource?.overrides;
+          const compatibilityInterval =
+            field === "fire.interval" && !finalEffective.asc_type_id;
+          const pathSegments = compatibilityInterval ? undefined : overridePath(field);
+          let value: unknown = compatibilityInterval
+            ? weaponSource?.fire_interval
+            : weaponSource?.overrides;
           for (const segment of pathSegments ?? []) {
             value = value && typeof value === "object" && !Array.isArray(value)
               ? (value as Record<string, unknown>)[segment]
@@ -1038,6 +1090,25 @@ export function checkReconciliation(
             issues.push(`${table}:${title}:${sourceKey}:${field}: confirmed override value differs`);
           }
         }
+      }
+      for (const addition of selected.source_additions ?? []) {
+        reviewedSources += 1;
+        resolvedSources += 1;
+        const finalEffective = effectiveSourceByIdentity(document, addition.identity.id);
+        if (
+          !finalEffective ||
+          !isDeepStrictEqual(
+            canonicalize(addition.source_review.effective_source),
+            canonicalize(finalEffective),
+          )
+        ) {
+          issues.push(`${table}:${title}:${addition.key}: added source review is stale`);
+        }
+        for (const id of addition.source_review.evidence_ids) usedEvidence.add(id);
+      }
+      for (const correction of Object.values(selected.compatibility_field_corrections ?? {})) {
+        if (!correction) continue;
+        for (const id of correction.evidence_ids) usedEvidence.add(id);
       }
     }
   }
@@ -1059,12 +1130,18 @@ export function checkReconciliation(
   } else if (readFileSync(documentPath, "utf8") !== generateReconciliationMarkdown({ root, decisionsPath })) {
     issues.push("reconciliation Markdown differs from reviewed decisions and MDX");
   }
-  if (reviewedSources !== 101) issues.push(`reviewed source count is ${reviewedSources}, expected 101`);
+  const historicalReviewedSources = confirmedSources + correctedSources;
+  if (historicalReviewedSources !== 101) {
+    issues.push(
+      `Task 7.6 reviewed source count is ${historicalReviewedSources}, expected 101`,
+    );
+  }
   if (issues.length > 0) throw new Error(`reconciliation check failed:\n${issues.join("\n")}`);
   return {
     reviewed_sources: reviewedSources,
     confirmed_sources: confirmedSources,
     corrected_sources: correctedSources,
+    resolved_sources: resolvedSources,
     confirmed_overrides: confirmedOverrides,
   };
 }
@@ -1089,6 +1166,7 @@ export function generateReconciliationMarkdown(
   const rows: string[] = [];
   let confirmed = 0;
   let corrected = 0;
+  let resolved = 0;
   let overrides = 0;
   for (const [title, weapon] of Object.entries(decisions.weapons).sort(([a], [b]) =>
     a.localeCompare(b, "zh-CN"),
@@ -1112,14 +1190,22 @@ export function generateReconciliationMarkdown(
           .map(([field]) => field);
         overrides += confirmedFields.length;
         if (review.resolution === "confirmed") confirmed += 1;
-        else corrected += 1;
+        else if (review.resolution === "corrected") corrected += 1;
+        else resolved += 1;
         rows.push(
-          `| ${markdownCell(title)} | ${table.toUpperCase()} | ${markdownCell(identity?.name ?? sourceKey)} | ${review.resolution} | ${markdownCell(review.previous_effective_source)} | ${markdownCell(finalExplicit)} | ${markdownCell(finalEffective)} | ${markdownCell(review.evidence_ids.join(", "))} | ${markdownCell(confirmedFields.length > 0 ? confirmedFields.join(", ") : "采用来源值")} |`,
+          `| ${markdownCell(title)} | ${table.toUpperCase()} | ${markdownCell(identity?.name ?? sourceKey)} | ${review.resolution} | ${markdownCell(review.resolution === "resolved" ? undefined : review.previous_effective_source)} | ${markdownCell(finalExplicit)} | ${markdownCell(finalEffective)} | ${markdownCell(review.evidence_ids.join(", "))} | ${markdownCell(confirmedFields.length > 0 ? confirmedFields.join(", ") : "采用来源值")} |`,
+        );
+      }
+      for (const addition of selected.source_additions ?? []) {
+        resolved += 1;
+        const finalEffective = effectiveSourceByIdentity(document, addition.identity.id);
+        rows.push(
+          `| ${markdownCell(title)} | ${table.toUpperCase()} | ${markdownCell(addition.identity.name)} | resolved | ${markdownCell(undefined)} | ${markdownCell(addition.source)} | ${markdownCell(finalEffective)} | ${markdownCell(addition.source_review.evidence_ids.join(", "))} | accepted addition |`,
         );
       }
     }
   }
-  return `# Weapon V2 来源重核与正式化\n\n本文记录 Task 7.6 对已迁移 V2 武器临时覆盖的来源重核结果。机器权威仍是 \`data/weapon-v2-migration-decisions.json\`；本文由该清单确定性生成。\n\n## 结果\n\n- 已审核来源：${rows.length}\n- 原来源确认：${confirmed}\n- 完整来源纠正：${corrected}\n- 正式保留 override 字段：${overrides}\n- 未完成来源：0\n- V1 排除项：34 个，未纳入本任务且保持原样\n\n## 规则\n\n- 常规 Prototype 射击和近战采用经过交叉校验的有效来源。\n- 技能、特殊和插件来源使用独立 Numerical，不伪装成 Prototype Mode 0。\n- Numerical 差异采用正式来源值；距离衰减和独立射速仅在机制确认后保留 typed override。\n- LC/TD 始终独立引用，不执行跨表 fallback。\n\n## 来源明细\n\n| 武器 | 表 | 来源 | 结果 | 旧有效来源 | 最终显式来源 | 最终有效来源 | 证据 | 字段处理 |\n| :--- | :---: | :--- | :---: | :--- | :--- | :--- | :--- | :--- |\n${rows.join("\n")}\n`;
+  return `# Weapon V2 来源重核与正式化\n\n本文记录 Task 7.6 的既有来源重核，以及 Task 7.7 对原 V1 排除项的首次来源解析。机器权威仍是 \`data/weapon-v2-migration-decisions.json\`；本文由该清单确定性生成。\n\n## 结果\n\n- 已审核来源：${rows.length}\n- Task 7.6 原来源确认：${confirmed}\n- Task 7.6 完整来源纠正：${corrected}\n- Task 7.7 首次解析来源：${resolved}\n- 正式保留 override 字段：${overrides}\n- 未完成来源：0\n- V1 排除项：0\n\n## 规则\n\n- 常规 Prototype 射击和近战采用经过交叉校验的有效来源。\n- 技能、特殊、插件和恢复来源使用独立 Numerical，不伪装成 Prototype Mode 0。\n- Numerical 差异采用正式来源值；距离衰减和独立射速仅在机制确认后保留 typed override。\n- LC/TD 始终独立引用，不执行跨表 fallback。\n\n## 来源明细\n\n| 武器 | 表 | 来源 | 结果 | 旧有效来源 | 最终显式来源 | 最终有效来源 | 证据 | 字段处理 |\n| :--- | :---: | :--- | :---: | :--- | :--- | :--- | :--- | :--- |\n${rows.join("\n")}\n`;
 }
 
 export function writeReconciliationMarkdown(

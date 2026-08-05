@@ -8194,7 +8194,391 @@
             "value": 0.9
           }
         },
-        "damageSources": [],
+        "damageSources": [
+          {
+            "ammo": {
+              "changeClipAmount": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "clip": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "costPerShot": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "infinite": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "max": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              }
+            },
+            "attenuation": {
+              "overrideHistory": [],
+              "provenance": [],
+              "status": "missing"
+            },
+            "damage": {
+              "base": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "not_applicable"
+              },
+              "flesh": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "not_applicable"
+              },
+              "hurtable": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "not_applicable"
+              },
+              "impulse": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "not_applicable"
+              },
+              "toughness": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "not_applicable"
+              }
+            },
+            "element": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ElementType",
+                  "sourceId": "he-shui-hui-xue",
+                  "sourceKey": "lc:121300790_1"
+                }
+              ],
+              "state": "resolved",
+              "value": "物理"
+            },
+            "elementAddRate": {
+              "overrideHistory": [],
+              "provenance": [],
+              "state": "not_applicable"
+            },
+            "enableCritical": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "bEnableCriticalDamage",
+                  "sourceId": "he-shui-hui-xue",
+                  "sourceKey": "lc:121300790_1"
+                }
+              ],
+              "state": "resolved",
+              "value": false
+            },
+            "enableWeakness": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "EnableWeaknessDamage",
+                  "sourceId": "he-shui-hui-xue",
+                  "sourceKey": "lc:121300790_1"
+                }
+              ],
+              "state": "resolved",
+              "value": false
+            },
+            "feel": {
+              "accuracyRatios": {},
+              "afterChangeClip": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "autoChangeClipDelay": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "beforeChangeClip": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "changeClipEndToFire": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "changeClipTime": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "recoilHorizontalScale": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "recoilReturnTime": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "recoilSideRange": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "recoilTime": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "recoilUpMax": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "recoilVerticalScale": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "runToFire": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "shotCooldown": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "spreadMax": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "spreadMin": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "spreadModifierBase": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "spreadModifierInc": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "spreadModifierMax": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "spreadReturnTime": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "zoomIn": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "zoomOut": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              }
+            },
+            "fire": {
+              "equipTime": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "fireBoltTime": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "interval": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "maxRpmRatio": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "overchargeActivationTime": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "overchargeDeactivationTime": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "pellets": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "preFireTime": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "rpm": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "subFireCount": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "subFireInterval": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "weakpointLevel1Ratio": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "weakpointLevel2Ratio": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              }
+            },
+            "id": "he-shui-hui-xue",
+            "ignoreShield": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "bDamageIgnoreShield",
+                  "sourceId": "he-shui-hui-xue",
+                  "sourceKey": "lc:121300790_1"
+                }
+              ],
+              "state": "resolved",
+              "value": false
+            },
+            "movement": {
+              "aiming": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "chargeOrPreheat": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "crouching": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "firing": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "normal": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "reload": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "sprint": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              },
+              "zoom": {
+                "overrideHistory": [],
+                "provenance": [],
+                "state": "missing"
+              }
+            },
+            "name": "喝水回血",
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "note": "effective-reference",
+                "sourceId": "he-shui-hui-xue",
+                "sourceKey": "lc:121300790_1"
+              },
+              {
+                "kind": "mdx-v2",
+                "note": "identity",
+                "rawField": "damage_sources.he-shui-hui-xue",
+                "sourceId": "he-shui-hui-xue"
+              }
+            ],
+            "section": "special",
+            "settlements": [
+              "Numerical.SettlementType.Health.HealthThenShieldPercentRecover",
+              "None"
+            ],
+            "toughness": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ToughnessDamageType",
+                  "sourceId": "he-shui-hui-xue",
+                  "sourceKey": "lc:121300790_1"
+                }
+              ],
+              "state": "resolved",
+              "value": "none"
+            },
+            "unknownSettlements": [],
+            "weaknessMultiplier": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "WeaknessDamageAddScale",
+                  "sourceId": "he-shui-hui-xue",
+                  "sourceKey": "lc:121300790_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            }
+          }
+        ],
         "diagnostics": [
           {
             "code": "COMPAT_FALLBACK",
@@ -8213,6 +8597,62 @@
             "message": "Using compatibility fallback: element",
             "path": "/element",
             "severity": "info"
+          },
+          {
+            "code": "LOSSY_LEGACY_PROJECTION",
+            "message": "Legacy projection uses default value: damage.base",
+            "path": "/damageSources/he-shui-hui-xue/damage/base",
+            "severity": "warning",
+            "sourceId": "he-shui-hui-xue"
+          },
+          {
+            "code": "LOSSY_LEGACY_PROJECTION",
+            "message": "Legacy projection uses default value: damage.flesh",
+            "path": "/damageSources/he-shui-hui-xue/damage/flesh",
+            "severity": "warning",
+            "sourceId": "he-shui-hui-xue"
+          },
+          {
+            "code": "LOSSY_LEGACY_PROJECTION",
+            "message": "Legacy projection uses default value: damage.hurtable",
+            "path": "/damageSources/he-shui-hui-xue/damage/hurtable",
+            "severity": "warning",
+            "sourceId": "he-shui-hui-xue"
+          },
+          {
+            "code": "LOSSY_LEGACY_PROJECTION",
+            "message": "Legacy projection uses default value: damage.impulse",
+            "path": "/damageSources/he-shui-hui-xue/damage/impulse",
+            "severity": "warning",
+            "sourceId": "he-shui-hui-xue"
+          },
+          {
+            "code": "LOSSY_LEGACY_PROJECTION",
+            "message": "Legacy projection uses default value: damage.toughness",
+            "path": "/damageSources/he-shui-hui-xue/damage/toughness",
+            "severity": "warning",
+            "sourceId": "he-shui-hui-xue"
+          },
+          {
+            "code": "LOSSY_LEGACY_PROJECTION",
+            "message": "Legacy projection uses default value: elementAddRate",
+            "path": "/damageSources/he-shui-hui-xue/elementAddRate",
+            "severity": "warning",
+            "sourceId": "he-shui-hui-xue"
+          },
+          {
+            "code": "LOSSY_LEGACY_PROJECTION",
+            "message": "Legacy projection uses default value: fire.interval",
+            "path": "/damageSources/he-shui-hui-xue/fire/interval",
+            "severity": "warning",
+            "sourceId": "he-shui-hui-xue"
+          },
+          {
+            "code": "LOSSY_LEGACY_PROJECTION",
+            "message": "Legacy projection uses default value: toughness",
+            "path": "/damageSources/he-shui-hui-xue/toughness",
+            "severity": "warning",
+            "sourceId": "he-shui-hui-xue"
           }
         ],
         "draft": false,
@@ -58378,446 +58818,564 @@
       },
       {
         "before": {
-          "ammo": {
-            "changeClipAmount": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "clip": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "costPerShot": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "infinite": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "max": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            }
-          },
-          "attenuation": {
-            "overrideHistory": [],
-            "provenance": [],
-            "status": "missing"
-          },
-          "damage": {
-            "base": {
-              "overrideHistory": [],
-              "provenance": [
-                {
-                  "kind": "derived",
-                  "note": "legacy-default",
-                  "sourceId": "v1-primary"
-                }
-              ],
-              "state": "zero",
-              "value": 0
-            },
-            "flesh": {
-              "overrideHistory": [],
-              "provenance": [
-                {
-                  "kind": "derived",
-                  "note": "legacy-default",
-                  "sourceId": "v1-primary"
-                }
-              ],
-              "state": "zero",
-              "value": 0
-            },
-            "hurtable": {
-              "overrideHistory": [],
-              "provenance": [
-                {
-                  "kind": "derived",
-                  "note": "legacy-default",
-                  "sourceId": "v1-primary"
-                }
-              ],
-              "state": "zero",
-              "value": 0
-            },
-            "impulse": {
-              "overrideHistory": [],
-              "provenance": [
-                {
-                  "kind": "derived",
-                  "note": "legacy-default",
-                  "sourceId": "v1-primary"
-                }
-              ],
-              "state": "zero",
-              "value": 0
-            },
-            "toughness": {
-              "overrideHistory": [],
-              "provenance": [
-                {
-                  "kind": "derived",
-                  "note": "legacy-default",
-                  "sourceId": "v1-primary"
-                }
-              ],
-              "state": "zero",
-              "value": 0
-            }
-          },
-          "element": {
-            "overrideHistory": [],
-            "provenance": [
-              {
-                "kind": "mdx-v1",
-                "rawField": "element",
-                "sourceId": "v1-primary"
-              }
-            ],
-            "state": "resolved",
-            "value": "物理"
-          },
-          "elementAddRate": {
-            "overrideHistory": [],
-            "provenance": [
-              {
-                "kind": "derived",
-                "note": "legacy-default",
-                "sourceId": "v1-primary"
-              }
-            ],
-            "state": "zero",
-            "value": 0
-          },
-          "enableCritical": {
-            "overrideHistory": [],
-            "provenance": [
-              {
-                "kind": "mdx-v1",
-                "rawField": "enable_critical",
-                "sourceId": "v1-primary"
-              }
-            ],
-            "state": "resolved",
-            "value": false
-          },
-          "enableWeakness": {
-            "overrideHistory": [],
-            "provenance": [
-              {
-                "kind": "derived",
-                "note": "legacy-primary-default:true",
-                "sourceId": "v1-primary"
-              }
-            ],
-            "state": "resolved",
-            "value": true
-          },
-          "feel": {
-            "accuracyRatios": {},
-            "afterChangeClip": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "autoChangeClipDelay": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "beforeChangeClip": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "changeClipEndToFire": {
-              "overrideHistory": [],
-              "provenance": [
-                {
-                  "kind": "mdx-v1",
-                  "rawField": "changeClip.reloadRecovery",
-                  "sourceId": "v1-primary"
-                }
-              ],
-              "state": "zero",
-              "value": 0
-            },
-            "changeClipTime": {
-              "overrideHistory": [],
-              "provenance": [
-                {
-                  "kind": "mdx-v1",
-                  "rawField": "changeClip.timeBase",
-                  "sourceId": "v1-primary"
-                }
-              ],
-              "state": "resolved",
-              "value": 0.9
-            },
-            "recoilHorizontalScale": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "recoilReturnTime": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "recoilSideRange": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "recoilTime": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "recoilUpMax": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "recoilVerticalScale": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "runToFire": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "shotCooldown": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "spreadMax": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "spreadMin": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "spreadModifierBase": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "spreadModifierInc": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "spreadModifierMax": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "spreadReturnTime": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "zoomIn": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "zoomOut": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            }
-          },
-          "fire": {
-            "equipTime": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "fireBoltTime": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "interval": {
-              "overrideHistory": [],
-              "provenance": [
-                {
-                  "kind": "derived",
-                  "note": "legacy-default",
-                  "sourceId": "v1-primary"
-                }
-              ],
-              "state": "zero",
-              "value": 0
-            },
-            "maxRpmRatio": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "overchargeActivationTime": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "overchargeDeactivationTime": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "pellets": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "preFireTime": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "rpm": {
-              "overrideHistory": [],
-              "provenance": [
-                {
-                  "kind": "derived",
-                  "note": "legacy-default",
-                  "sourceId": "v1-primary"
-                }
-              ],
-              "state": "unavailable"
-            },
-            "subFireCount": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "subFireInterval": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "weakpointLevel1Ratio": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "weakpointLevel2Ratio": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            }
-          },
-          "id": "v1-primary",
-          "ignoreShield": {
-            "overrideHistory": [],
-            "provenance": [
-              {
-                "kind": "mdx-v1",
-                "rawField": "ignore_shield",
-                "sourceId": "v1-primary"
-              }
-            ],
-            "state": "resolved",
-            "value": false
-          },
-          "movement": {
-            "aiming": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "chargeOrPreheat": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "crouching": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "firing": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "normal": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "reload": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "sprint": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            },
-            "zoom": {
-              "overrideHistory": [],
-              "provenance": [],
-              "state": "missing"
-            }
-          },
-          "name": "普通射击",
-          "provenance": [
-            {
-              "kind": "mdx-v1",
-              "note": "identity",
-              "rawField": "damage",
-              "sourceId": "v1-primary"
-            }
-          ],
-          "section": "fire_mode",
-          "settlements": [],
-          "toughness": {
-            "overrideHistory": [],
-            "provenance": [
-              {
-                "kind": "derived",
-                "note": "legacy-default",
-                "sourceId": "v1-primary"
-              }
-            ],
-            "state": "resolved",
-            "value": "impulse"
-          },
-          "unknownSettlements": [],
-          "weaknessMultiplier": {
-            "overrideHistory": [],
-            "provenance": [
-              {
-                "kind": "derived",
-                "note": "legacy-default",
-                "sourceId": "v1-primary"
-              }
-            ],
-            "state": "resolved",
-            "value": 1
-          }
+          "kind": "derived",
+          "note": "legacy-default",
+          "sourceId": "v1-primary"
         },
         "classification": "structural",
         "operation": "remove",
-        "pointer": "/weapon/damageSources/0",
+        "pointer": "/weapon/damageSources/0/damage/base/provenance/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/damage/base/provenance/0"
+      },
+      {
+        "after": "not_applicable",
+        "before": "zero",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/damage/base/state",
         "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": 0,
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/damage/base/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": {
+          "kind": "derived",
+          "note": "legacy-default",
+          "sourceId": "v1-primary"
+        },
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/damage/flesh/provenance/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/damage/flesh/provenance/0"
+      },
+      {
+        "after": "not_applicable",
+        "before": "zero",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/damage/flesh/state",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": 0,
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/damage/flesh/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": {
+          "kind": "derived",
+          "note": "legacy-default",
+          "sourceId": "v1-primary"
+        },
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/damage/hurtable/provenance/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/damage/hurtable/provenance/0"
+      },
+      {
+        "after": "not_applicable",
+        "before": "zero",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/damage/hurtable/state",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": 0,
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/damage/hurtable/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": {
+          "kind": "derived",
+          "note": "legacy-default",
+          "sourceId": "v1-primary"
+        },
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/damage/impulse/provenance/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/damage/impulse/provenance/0"
+      },
+      {
+        "after": "not_applicable",
+        "before": "zero",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/damage/impulse/state",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": 0,
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/damage/impulse/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": {
+          "kind": "derived",
+          "note": "legacy-default",
+          "sourceId": "v1-primary"
+        },
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/damage/toughness/provenance/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/damage/toughness/provenance/0"
+      },
+      {
+        "after": "not_applicable",
+        "before": "zero",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/damage/toughness/state",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": 0,
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/damage/toughness/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "after": "lock-numerical",
+        "before": "mdx-v1",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/element/provenance/0/kind",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/element/provenance/0/kind"
+      },
+      {
+        "after": "ElementType",
+        "before": "element",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/element/provenance/0/rawField",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/element/provenance/0/rawField"
+      },
+      {
+        "after": "he-shui-hui-xue",
+        "before": "v1-primary",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/element/provenance/0/sourceId",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/element/provenance/0/sourceId"
+      },
+      {
+        "after": "lc:121300790_1",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/element/provenance/0/sourceKey",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/element/provenance/0/sourceKey"
+      },
+      {
+        "before": {
+          "kind": "derived",
+          "note": "legacy-default",
+          "sourceId": "v1-primary"
+        },
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/elementAddRate/provenance/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/elementAddRate/provenance/0"
+      },
+      {
+        "after": "not_applicable",
+        "before": "zero",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/elementAddRate/state",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": 0,
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/elementAddRate/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "after": "lock-numerical",
+        "before": "mdx-v1",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/enableCritical/provenance/0/kind",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/enableCritical/provenance/0/kind"
+      },
+      {
+        "after": "bEnableCriticalDamage",
+        "before": "enable_critical",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/enableCritical/provenance/0/rawField",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/enableCritical/provenance/0/rawField"
+      },
+      {
+        "after": "he-shui-hui-xue",
+        "before": "v1-primary",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/enableCritical/provenance/0/sourceId",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/enableCritical/provenance/0/sourceId"
+      },
+      {
+        "after": "lc:121300790_1",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/enableCritical/provenance/0/sourceKey",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/enableCritical/provenance/0/sourceKey"
+      },
+      {
+        "after": "lock-numerical",
+        "before": "derived",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/enableWeakness/provenance/0/kind",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/enableWeakness/provenance/0/kind"
+      },
+      {
+        "before": "legacy-primary-default:true",
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/enableWeakness/provenance/0/note",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/enableWeakness/provenance/0/note"
+      },
+      {
+        "after": "EnableWeaknessDamage",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/enableWeakness/provenance/0/rawField",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/enableWeakness/provenance/0/rawField"
+      },
+      {
+        "after": "he-shui-hui-xue",
+        "before": "v1-primary",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/enableWeakness/provenance/0/sourceId",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/enableWeakness/provenance/0/sourceId"
+      },
+      {
+        "after": "lc:121300790_1",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/enableWeakness/provenance/0/sourceKey",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/enableWeakness/provenance/0/sourceKey"
+      },
+      {
+        "after": false,
+        "before": true,
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/enableWeakness/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": {
+          "kind": "mdx-v1",
+          "rawField": "changeClip.reloadRecovery",
+          "sourceId": "v1-primary"
+        },
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/feel/changeClipEndToFire/provenance/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/feel/changeClipEndToFire/provenance/0"
+      },
+      {
+        "after": "missing",
+        "before": "zero",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/feel/changeClipEndToFire/state",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": 0,
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/feel/changeClipEndToFire/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": {
+          "kind": "mdx-v1",
+          "rawField": "changeClip.timeBase",
+          "sourceId": "v1-primary"
+        },
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/feel/changeClipTime/provenance/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/feel/changeClipTime/provenance/0"
+      },
+      {
+        "after": "missing",
+        "before": "resolved",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/feel/changeClipTime/state",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": 0.9,
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/feel/changeClipTime/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": {
+          "kind": "derived",
+          "note": "legacy-default",
+          "sourceId": "v1-primary"
+        },
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/fire/interval/provenance/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/fire/interval/provenance/0"
+      },
+      {
+        "after": "missing",
+        "before": "zero",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/fire/interval/state",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": 0,
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/fire/interval/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "before": {
+          "kind": "derived",
+          "note": "legacy-default",
+          "sourceId": "v1-primary"
+        },
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/fire/rpm/provenance/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/fire/rpm/provenance/0"
+      },
+      {
+        "after": "missing",
+        "before": "unavailable",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/fire/rpm/state",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "after": "he-shui-hui-xue",
+        "before": "v1-primary",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/id",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "after": "lock-numerical",
+        "before": "mdx-v1",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/ignoreShield/provenance/0/kind",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/ignoreShield/provenance/0/kind"
+      },
+      {
+        "after": "bDamageIgnoreShield",
+        "before": "ignore_shield",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/ignoreShield/provenance/0/rawField",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/ignoreShield/provenance/0/rawField"
+      },
+      {
+        "after": "he-shui-hui-xue",
+        "before": "v1-primary",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/ignoreShield/provenance/0/sourceId",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/ignoreShield/provenance/0/sourceId"
+      },
+      {
+        "after": "lc:121300790_1",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/ignoreShield/provenance/0/sourceKey",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/ignoreShield/provenance/0/sourceKey"
+      },
+      {
+        "after": "喝水回血",
+        "before": "普通射击",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/name",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "after": "lock-numerical",
+        "before": "mdx-v1",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/provenance/0/kind",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/provenance/0/kind"
+      },
+      {
+        "after": "effective-reference",
+        "before": "identity",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/provenance/0/note",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/provenance/0/note"
+      },
+      {
+        "before": "damage",
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/provenance/0/rawField",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/provenance/0/rawField"
+      },
+      {
+        "after": "he-shui-hui-xue",
+        "before": "v1-primary",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/provenance/0/sourceId",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/provenance/0/sourceId"
+      },
+      {
+        "after": "lc:121300790_1",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/provenance/0/sourceKey",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/provenance/0/sourceKey"
+      },
+      {
+        "after": {
+          "kind": "mdx-v2",
+          "note": "identity",
+          "rawField": "damage_sources.he-shui-hui-xue",
+          "sourceId": "he-shui-hui-xue"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/provenance/1",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/provenance/1"
+      },
+      {
+        "after": "special",
+        "before": "fire_mode",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/section",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "after": "Numerical.SettlementType.Health.HealthThenShieldPercentRecover",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/settlements/0",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/settlements/0"
+      },
+      {
+        "after": "None",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/settlements/1",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/settlements/1"
+      },
+      {
+        "after": "lock-numerical",
+        "before": "derived",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/toughness/provenance/0/kind",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/toughness/provenance/0/kind"
+      },
+      {
+        "before": "legacy-default",
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/toughness/provenance/0/note",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/toughness/provenance/0/note"
+      },
+      {
+        "after": "ToughnessDamageType",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/toughness/provenance/0/rawField",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/toughness/provenance/0/rawField"
+      },
+      {
+        "after": "he-shui-hui-xue",
+        "before": "v1-primary",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/toughness/provenance/0/sourceId",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/toughness/provenance/0/sourceId"
+      },
+      {
+        "after": "lc:121300790_1",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/toughness/provenance/0/sourceKey",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/toughness/provenance/0/sourceKey"
+      },
+      {
+        "after": "none",
+        "before": "impulse",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/toughness/value",
+        "reason": "V2 empty damage_sources removes the synthetic V1 attack source"
+      },
+      {
+        "after": "lock-numerical",
+        "before": "derived",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/weaknessMultiplier/provenance/0/kind",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/weaknessMultiplier/provenance/0/kind"
+      },
+      {
+        "before": "legacy-default",
+        "classification": "structural",
+        "operation": "remove",
+        "pointer": "/weapon/damageSources/0/weaknessMultiplier/provenance/0/note",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/weaknessMultiplier/provenance/0/note"
+      },
+      {
+        "after": "WeaknessDamageAddScale",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/weaknessMultiplier/provenance/0/rawField",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/weaknessMultiplier/provenance/0/rawField"
+      },
+      {
+        "after": "he-shui-hui-xue",
+        "before": "v1-primary",
+        "classification": "structural",
+        "operation": "replace",
+        "pointer": "/weapon/damageSources/0/weaknessMultiplier/provenance/0/sourceId",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/weaknessMultiplier/provenance/0/sourceId"
+      },
+      {
+        "after": "lc:121300790_1",
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/0/weaknessMultiplier/provenance/0/sourceKey",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/0/weaknessMultiplier/provenance/0/sourceKey"
       },
       {
         "after": {
@@ -58854,6 +59412,110 @@
         "operation": "add",
         "pointer": "/weapon/diagnostics/2",
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/2"
+      },
+      {
+        "after": {
+          "code": "LOSSY_LEGACY_PROJECTION",
+          "message": "Legacy projection uses default value: damage.base",
+          "path": "/damageSources/he-shui-hui-xue/damage/base",
+          "severity": "warning",
+          "sourceId": "he-shui-hui-xue"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/diagnostics/3",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/3"
+      },
+      {
+        "after": {
+          "code": "LOSSY_LEGACY_PROJECTION",
+          "message": "Legacy projection uses default value: damage.flesh",
+          "path": "/damageSources/he-shui-hui-xue/damage/flesh",
+          "severity": "warning",
+          "sourceId": "he-shui-hui-xue"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/diagnostics/4",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/4"
+      },
+      {
+        "after": {
+          "code": "LOSSY_LEGACY_PROJECTION",
+          "message": "Legacy projection uses default value: damage.hurtable",
+          "path": "/damageSources/he-shui-hui-xue/damage/hurtable",
+          "severity": "warning",
+          "sourceId": "he-shui-hui-xue"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/diagnostics/5",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/5"
+      },
+      {
+        "after": {
+          "code": "LOSSY_LEGACY_PROJECTION",
+          "message": "Legacy projection uses default value: damage.impulse",
+          "path": "/damageSources/he-shui-hui-xue/damage/impulse",
+          "severity": "warning",
+          "sourceId": "he-shui-hui-xue"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/diagnostics/6",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/6"
+      },
+      {
+        "after": {
+          "code": "LOSSY_LEGACY_PROJECTION",
+          "message": "Legacy projection uses default value: damage.toughness",
+          "path": "/damageSources/he-shui-hui-xue/damage/toughness",
+          "severity": "warning",
+          "sourceId": "he-shui-hui-xue"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/diagnostics/7",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/7"
+      },
+      {
+        "after": {
+          "code": "LOSSY_LEGACY_PROJECTION",
+          "message": "Legacy projection uses default value: elementAddRate",
+          "path": "/damageSources/he-shui-hui-xue/elementAddRate",
+          "severity": "warning",
+          "sourceId": "he-shui-hui-xue"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/diagnostics/8",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/8"
+      },
+      {
+        "after": {
+          "code": "LOSSY_LEGACY_PROJECTION",
+          "message": "Legacy projection uses default value: fire.interval",
+          "path": "/damageSources/he-shui-hui-xue/fire/interval",
+          "severity": "warning",
+          "sourceId": "he-shui-hui-xue"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/diagnostics/9",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/9"
+      },
+      {
+        "after": {
+          "code": "LOSSY_LEGACY_PROJECTION",
+          "message": "Legacy projection uses default value: toughness",
+          "path": "/damageSources/he-shui-hui-xue/toughness",
+          "severity": "warning",
+          "sourceId": "he-shui-hui-xue"
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/diagnostics/10",
+        "reason": "Reviewed V1-to-V2 structural trace change at /weapon/diagnostics/10"
       },
       {
         "after": {

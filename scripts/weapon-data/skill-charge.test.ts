@@ -292,7 +292,7 @@ const realContentRoot = path.join(
 const weaponDirectory = path.join(process.cwd(), "data", "weapons");
 
 test(
-  "当前 59 把 LC 武器稳定解析为 55 PVE 和 4 GP",
+  "当前 59 把 LC 武器稳定解析为 55 PVE 和 4 GP，MDX 技能引用已对齐",
   { skip: !existsSync(realContentRoot) },
   () => {
     const reader = createWeaponDataSourceReader({ contentRoot: realContentRoot });
@@ -361,13 +361,8 @@ test(
       ["火神炎帝.mdx", 5103601, 0],
       ["鬼铜蚀.mdx", 5102501, 0],
     ].sort());
-    assert.deepEqual(cooldownDifferences.sort(), [
-      ["暗夜之殇.mdx", 30, 45],
-      ["火神炎帝.mdx", 45, 0],
-    ].sort());
-    assert.deepEqual(referenceDifferences.sort(), [
-      ["暗夜之殇.mdx", 0, 5100101],
-    ].sort());
+    assert.deepEqual(cooldownDifferences, []);
+    assert.deepEqual(referenceDifferences, []);
 
     const steel = auditActiveSkillReference(reader, {
       prototypeId: "20016000004",

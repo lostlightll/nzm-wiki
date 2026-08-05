@@ -69,7 +69,7 @@ damage_sources:
 
 ## 3. damage_sources
 
-每个条目表示一个原子伤害来源：
+每个条目表示一个原子结算来源。多数来源产生伤害，但恢复等非伤害 Settlement 也使用同一引用、Lock 与 Resolver 链路：
 
 ```yaml
 - id: dragon-flame-explosion
@@ -185,7 +185,7 @@ numerical:
 
 继承项可以只替换 ASC，也可以替换完整 Numerical。最终有效来源必须具有 Numerical；仅明确 pending 的草稿来源可以暂时没有。
 
-重复 ID、缺失父项、自继承、任意长度循环和跨武器继承均非法。
+重复 ID、缺失父项、自继承、任意长度循环和跨武器继承均非法。仅当 Numerical 解析后的 `damage.base.state` 为 `resolved` 或 `zero` 时，该来源才具备攻击能力；恢复等非伤害 Settlement 不得成为 `mainSourceId`，也不得被消费者投影为伤害模式。允许 `damage_sources` 非空但整把武器没有主攻击来源。
 
 ## 6. Overrides
 
@@ -248,7 +248,7 @@ override_reason: 实测确认衰减区间与最低倍率
 - overrides、命名空间及其嵌套对象均不能为空。
 - Settlement Tags、Numerical 引用和原始 Lock 行不能被覆盖。
 - Resolver 后续必须保留原始值、有效值和覆盖原因。
-- `asc.attenuation` 只能覆盖合法 ASC 原始衰减事实；缺少 ASC、原始值非法或结构不完整时不能用 override 掩盖。
+- `asc.attenuation` 要求有效 ASC。合法原始衰减可以按核验结果覆盖；原始区间非法时，仅允许以有证据和非空原因的 `status: not_applicable` 明确关闭，Lock raw 保持不变。缺少 ASC 或结构字段缺失时不能用 override 掩盖。
 - `asc.fire_interval` 必须是非负有限数，只能覆盖有效 ASC 的 `FireIntervalBase`；缺少 ASC 时拒绝解析。
 - 射击间隔 override 按父项到子项依次应用，每一步同时记录 interval 与派生 RPM 的前后值；最终间隔为 `0` 时 RPM 为 `unavailable`。
 - 来源级兼容字段 `fire_interval` 只用于差异诊断，必须与全部 overrides 应用后的最终间隔比较。
@@ -261,7 +261,8 @@ override_reason: 实测确认衰减区间与最低倍率
 | 状态 | 表达 |
 | :--- | :--- |
 | 不适用 | 省略字段 |
-| 武器不可攻击 | `damage_sources: []` |
+| 没有任何结算来源 | `damage_sources: []` |
+| 仅有非攻击结算 | 保留来源；其 `damage.base` 为 `not_applicable`，且不生成 `mainSourceId` |
 | 确定为零 | 对适用 Settlement 使用数字 `0` |
 | 待核验 | `verification.status: pending` 和非空原因 |
 
@@ -467,7 +468,7 @@ rarity: 传说
 damage_sources: []
 ```
 
-木葫芦不可攻击。即使 Prototype 中存在错误关联的攻击 Numerical，也不得据此自动生成伤害来源。
+以上是 TD：原表缺少经核验的恢复行，因此保持空结算来源。LC 显式引用 `lc:121300790_1` 作为恢复来源；它不具备 `damage.base` Settlement，不会成为主攻击来源。即使 Prototype 中存在错误关联的攻击 Numerical，也不得据此自动生成攻击来源或执行跨表回退。
 
 ## 10. 运行时接口
 

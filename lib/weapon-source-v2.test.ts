@@ -215,14 +215,14 @@ test("军用手斧可以表达三个独立近战来源", () => {
   );
 });
 
-test("木葫芦使用空 damage_sources 明确表达不可攻击", () => {
+test("木葫芦 TD 使用空 damage_sources 表达没有可用结算来源", () => {
   const parsed = validateWeaponSourceV2(
     weapon("木葫芦", [], {
       prototype_id: "20013000079",
       use_type: "近战武器",
       element: "物理",
     }),
-    { expectedTable: "lc" },
+    { expectedTable: "td" },
   );
 
   assert.deepEqual(parsed.damage_sources, []);

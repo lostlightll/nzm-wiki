@@ -1,14 +1,14 @@
 {
   "coverage": {
     "lc": {
-      "excluded": 18,
-      "migrated": 90,
-      "preexisting_v2": 4,
+      "excluded": 0,
+      "migrated": 109,
+      "preexisting_v2": 3,
       "total": 112
     },
     "td": {
-      "excluded": 16,
-      "migrated": 92,
+      "excluded": 0,
+      "migrated": 108,
       "preexisting_v2": 4,
       "total": 112
     }
@@ -17,9 +17,7 @@
     "differences": [
       {
         "differences": [
-          "migration_status",
-          "source_references",
-          "active_skill_id"
+          "item_id"
         ],
         "title": "刺隐"
       },
@@ -33,583 +31,29 @@
         "differences": [
           "migration_status",
           "source_references",
+          "item_id",
           "active_skill_id"
+        ],
+        "title": "木葫芦"
+      },
+      {
+        "differences": [
+          "item_id"
         ],
         "title": "夜影之逝"
       }
     ],
-    "different": 3,
-    "identical": 109
+    "different": 4,
+    "identical": 108
   },
   "decision_manifest": {
     "path": "data/weapon-v2-migration-decisions.json",
-    "sha256": "bcb9c0fd4ca8b9a85d75c6b6595fe35c5329cec8ac95c5521c3c4b28bb915ca5"
+    "sha256": "b91dcd17fee76761f8465232dc0a99eb08f5037c0104272b0b5ed2542326627f"
   },
   "exclusions": {
-    "by_owner": {
-      "game_data": 4,
-      "source_mapping": 22,
-      "wiki_semantics": 8
-    },
-    "lc": [
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/暗夜之殇.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "爆炸弹"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "暗夜之殇"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/春雷震.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "春雷震"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/刺隐.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "右键近战"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "刺隐"
-      },
-      {
-        "code": "INVALID_ATTENUATION_SOURCE",
-        "owner": "game_data",
-        "reason": "旧 MDX 与 ASC 均为 200/200/0 非法衰减区间，当前没有可验证的有效覆盖值",
-        "title": "杜瓦瓶"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/钢铁轰鸣.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "钢铁轰鸣"
-      },
-      {
-        "code": "INVALID_ATTENUATION_SOURCE",
-        "owner": "game_data",
-        "reason": "旧 MDX 与 ASC 均为 200/200/0 非法衰减区间，当前没有可验证的有效覆盖值",
-        "title": "鬼铜蚀"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/哈士奇好友.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "哈士奇好友"
-      },
-      {
-        "code": "ATTACK_SEMANTIC_CONFLICT",
-        "owner": "wiki_semantics",
-        "reason": "旧 MDX 明确无攻击数据，但 Prototype 存在攻击 Numerical 关联",
-        "title": "葫芦"
-      },
-      {
-        "code": "SKILL_CHARGE_CONFLICT",
-        "owner": "wiki_semantics",
-        "reason": "旧 MDX 主动技能 45 秒与 GP fallback 0 秒冲突，当前协议没有技能 override",
-        "title": "火神炎帝"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/密林杀机.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "爆炸弹"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "密林杀机"
-      },
-      {
-        "code": "UNRESOLVED_BEHAVIOR_VARIANT",
-        "owner": "wiki_semantics",
-        "reason": "浮游模式与强袭激光的来源组合尚未核验",
-        "title": "能源之影"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/逆光之刃.mdx",
-          "sources": [
-            {
-              "candidate_count": 2,
-              "candidates": [
-                {
-                  "numerical_field": "HeavyHitNumericalID",
-                  "prototype_row_name": "逆光之刃-短",
-                  "scope": "prototype_mode",
-                  "source": {
-                    "asc_type_id": "138",
-                    "numerical": {
-                      "id": 121300110,
-                      "level": 1,
-                      "table": "lc"
-                    },
-                    "prototype_mode": 0
-                  }
-                },
-                {
-                  "numerical_field": "LightHitNumericalID",
-                  "prototype_row_name": "逆光之刃-短",
-                  "scope": "prototype_mode",
-                  "source": {
-                    "asc_type_id": "138",
-                    "numerical": {
-                      "id": 121300111,
-                      "level": 1,
-                      "table": "lc"
-                    },
-                    "prototype_mode": 0
-                  }
-                }
-              ],
-              "issue": "AMBIGUOUS_CANDIDATE",
-              "locator_key": "primary",
-              "name": "普通射击"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "逆光之刃"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/沙丘之怒.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "导弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "沙丘之怒"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/生命线.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "生命线"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/收割者.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "收割者"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/夜影之逝.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "右键近战"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "夜影之逝"
-      },
-      {
-        "code": "UNRESOLVED_BEHAVIOR_VARIANT",
-        "owner": "wiki_semantics",
-        "reason": "抛体模式没有唯一可核验的 ASC/Feel 行为来源",
-        "title": "元宵来袭"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons/猪猪榴弹发射器.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "猪猪榴弹发射器"
-      }
-    ],
-    "td": [
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons_td/暗夜之殇.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "爆炸弹"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "暗夜之殇"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons_td/春雷震.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "春雷震"
-      },
-      {
-        "code": "INVALID_ATTENUATION_SOURCE",
-        "owner": "game_data",
-        "reason": "旧 MDX 与 ASC 均为 200/200/0 非法衰减区间，当前没有可验证的有效覆盖值",
-        "title": "杜瓦瓶"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons_td/钢铁轰鸣.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            },
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:2",
-              "name": "榴弹穿透"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "钢铁轰鸣"
-      },
-      {
-        "code": "INVALID_ATTENUATION_SOURCE",
-        "owner": "game_data",
-        "reason": "旧 MDX 与 ASC 均为 200/200/0 非法衰减区间，当前没有可验证的有效覆盖值",
-        "title": "鬼铜蚀"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons_td/哈士奇好友.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "哈士奇好友"
-      },
-      {
-        "code": "ATTACK_SEMANTIC_CONFLICT",
-        "owner": "wiki_semantics",
-        "reason": "旧 MDX 明确无攻击数据，但 Prototype 存在攻击 Numerical 关联",
-        "title": "葫芦"
-      },
-      {
-        "code": "SKILL_CHARGE_CONFLICT",
-        "owner": "wiki_semantics",
-        "reason": "旧 MDX 主动技能 45 秒与 GP fallback 0 秒冲突，当前协议没有技能 override",
-        "title": "火神炎帝"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons_td/密林杀机.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "爆炸弹"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "密林杀机"
-      },
-      {
-        "code": "UNRESOLVED_BEHAVIOR_VARIANT",
-        "owner": "wiki_semantics",
-        "reason": "浮游模式与强袭激光的来源组合尚未核验",
-        "title": "能源之影"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons_td/逆光之刃.mdx",
-          "sources": [
-            {
-              "candidate_count": 2,
-              "candidates": [
-                {
-                  "numerical_field": "HeavyHitNumericalID",
-                  "prototype_row_name": "逆光之刃-短",
-                  "scope": "prototype_mode",
-                  "source": {
-                    "asc_type_id": "138",
-                    "numerical": {
-                      "id": 121300110,
-                      "level": 1,
-                      "table": "td"
-                    },
-                    "prototype_mode": 0
-                  }
-                },
-                {
-                  "numerical_field": "LightHitNumericalID",
-                  "prototype_row_name": "逆光之刃-短",
-                  "scope": "prototype_mode",
-                  "source": {
-                    "asc_type_id": "138",
-                    "numerical": {
-                      "id": 121300111,
-                      "level": 1,
-                      "table": "td"
-                    },
-                    "prototype_mode": 0
-                  }
-                }
-              ],
-              "issue": "AMBIGUOUS_CANDIDATE",
-              "locator_key": "primary",
-              "name": "普通射击"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "逆光之刃"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons_td/沙丘之怒.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "导弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "沙丘之怒"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons_td/生命线.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "生命线"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons_td/收割者.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "收割者"
-      },
-      {
-        "code": "UNRESOLVED_BEHAVIOR_VARIANT",
-        "owner": "wiki_semantics",
-        "reason": "抛体模式没有唯一可核验的 ASC/Feel 行为来源",
-        "title": "元宵来袭"
-      },
-      {
-        "code": "UNRESOLVED_SOURCE",
-        "owner": "source_mapping",
-        "reason": "候选报告存在零候选或多候选来源，Task 7 不自动猜测",
-        "review": {
-          "path": "data/weapons_td/猪猪榴弹发射器.mdx",
-          "sources": [
-            {
-              "candidate_count": 0,
-              "candidates": [],
-              "issue": "NO_CANDIDATE",
-              "locator_key": "damage-mode:1",
-              "name": "榴弹爆炸"
-            }
-          ],
-          "status": "unresolved"
-        },
-        "title": "猪猪榴弹发射器"
-      }
-    ]
+    "by_owner": {},
+    "lc": [],
+    "td": []
   },
   "item_review": {
     "scanned_without_item_id": [
@@ -1419,6 +863,22 @@
   },
   "schema_version": 1,
   "skill_corrections": [
+    {
+      "from": 0,
+      "owner": "skill_chain",
+      "reason": "Prototype 与 PVE 技能链确认主动技能为 5100101",
+      "table": "lc",
+      "title": "暗夜之殇",
+      "to": 5100101
+    },
+    {
+      "from": 0,
+      "owner": "skill_chain",
+      "reason": "Prototype 与 PVE 技能链确认主动技能为 5100101",
+      "table": "td",
+      "title": "暗夜之殇",
+      "to": 5100101
+    },
     {
       "from": 5102701,
       "owner": "skill_chain",

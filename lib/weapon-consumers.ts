@@ -176,16 +176,37 @@ export function getResolvedFieldValue<T>(
     : undefined;
 }
 
-export function getMainDamageSource<Source extends { readonly id: string }>(
+function isAttackSource(
+  source: {
+    readonly damage: {
+      readonly base: Pick<ResolvedField<number>, "state">;
+    };
+  },
+): boolean {
+  return (
+    source.damage.base.state === "resolved" ||
+    source.damage.base.state === "zero"
+  );
+}
+
+export function getMainDamageSource<
+  Source extends {
+    readonly id: string;
+    readonly damage: {
+      readonly base: Pick<ResolvedField<number>, "state">;
+    };
+  },
+>(
   weapon: {
     readonly mainSourceId?: string;
     readonly damageSources: readonly Source[];
   },
 ): Source | undefined {
   if (weapon.mainSourceId === undefined) {
-    if (weapon.damageSources.length > 0) {
+    const attackSources = weapon.damageSources.filter(isAttackSource);
+    if (attackSources.length > 0) {
       throw new WeaponConsumerInvariantError(
-        "damageSources is non-empty but mainSourceId is missing",
+        "attack-capable damageSources is non-empty but mainSourceId is missing",
       );
     }
     return undefined;
@@ -197,6 +218,11 @@ export function getMainDamageSource<Source extends { readonly id: string }>(
   if (matches.length !== 1) {
     throw new WeaponConsumerInvariantError(
       `mainSourceId ${weapon.mainSourceId} matched ${matches.length} sources`,
+    );
+  }
+  if (!isAttackSource(matches[0])) {
+    throw new WeaponConsumerInvariantError(
+      `mainSourceId ${weapon.mainSourceId} points to a non-attacking source`,
     );
   }
   return matches[0];
@@ -354,7 +380,9 @@ export function toWeaponDetailData(weapon: ResolvedWeapon): WeaponDetailData {
     officialRadar: toConsumerFields(weapon.officialRadar),
     changeClip: toConsumerFields(weapon.changeClip),
     melee: toConsumerFields(weapon.melee),
-    damageSources: weapon.damageSources.map(toConsumerDamageSource),
+    damageSources: weapon.damageSources
+      .filter(isAttackSource)
+      .map(toConsumerDamageSource),
     mainSourceId: weapon.mainSourceId,
     activeSkill: toConsumerActiveSkill(weapon.activeSkill),
   };
@@ -383,7 +411,7 @@ export function toWeaponCatalogEntry(
       ? toConsumerDamageSourceSummary(mainSource)
       : undefined,
     meleeSources: weapon.damageSources
-      .filter((source) => source.section === "melee")
+      .filter((source) => isAttackSource(source) && source.section === "melee")
       .map(toConsumerDamageSourceSummary),
     isAttackCapable: mainSource !== undefined,
   };

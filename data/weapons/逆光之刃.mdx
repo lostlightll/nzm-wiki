@@ -1,32 +1,37 @@
 ---
 title: 逆光之刃
 use_type: 近战武器
-weapon_type: null
 element: 电弧
 rarity: 传说
-tags: null
-scope: null
 prototype_id: "20013000011"
-damage: null
-toughness_type: null
-enable_critical: null
-weekness_multiplier: null
-file_rate: null
-magazine: null
-total_ammo: null
-accuracy: null
-stability: null
 changeClip:
   timeBase: 0.9
   reloadRecovery: 0
-range: null
-explosion_range: null
-ignore_shield: null
-element_add_rate: null
-skill_cooldown: null
-pellets: null
 weapon_type_id: 13
 active_skill_id: 0
+schema_version: 2
+item_id: "20113000011"
+damage_sources:
+  - id: zhong-ji
+    name: 重击
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 121300110
+        level: 1
+      asc_type_id: "138"
+  - id: qing-ji
+    name: 轻击
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 121300111
+        level: 1
+      asc_type_id: "138"
 ---
 
 效果暂无

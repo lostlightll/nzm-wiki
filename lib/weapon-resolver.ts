@@ -415,9 +415,13 @@ function textList(value: unknown): string[] {
 function chooseMainSourceId(
   damageSources: readonly ResolvedDamageSource[],
 ): string | undefined {
+  const attackSources = damageSources.filter(
+    (source) =>
+      source.damage.base.state === "resolved" || source.damage.base.state === "zero",
+  );
   return (
-    damageSources.find((source) => source.section === "fire_mode") ??
-    damageSources[0]
+    attackSources.find((source) => source.section === "fire_mode") ??
+    attackSources[0]
   )?.id;
 }
 
@@ -3188,12 +3192,16 @@ export function toLegacyWeapon(resolvedWeapon: ResolvedWeapon): Weapon {
     }
     return cloneValue(resolvedWeapon.raw.legacyWeapon) as Weapon;
   }
-  const fireModeSources = resolvedWeapon.damageSources.filter(
+  const attackSources = resolvedWeapon.damageSources.filter(
+    (source) =>
+      source.damage.base.state === "resolved" || source.damage.base.state === "zero",
+  );
+  const fireModeSources = attackSources.filter(
     (source) => source.section === "fire_mode",
   );
   const fallbackMain =
     fireModeSources.length === 0 && resolvedWeapon.mainSourceId
-      ? resolvedWeapon.damageSources.find(
+      ? attackSources.find(
           (source) => source.id === resolvedWeapon.mainSourceId,
         )
       : undefined;
@@ -3207,7 +3215,7 @@ export function toLegacyWeapon(resolvedWeapon: ResolvedWeapon): Weapon {
   const damageModes = primarySources.map((source) =>
     legacyMode(source, resolvedWeapon),
   );
-  const projectedExtra = resolvedWeapon.damageSources
+  const projectedExtra = attackSources
     .filter((source) => !primarySourceIds.has(source.id))
     .map((source) => legacyMode(source, resolvedWeapon));
   const timeBase = fieldValue(resolvedWeapon.changeClip.timeBase);

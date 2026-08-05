@@ -155,6 +155,49 @@ damage_sources:
   assert.equal(readFileSync(mdxPath, "utf8"), first);
 });
 
+test("无 ASC 的正式射速写入兼容字段而不是非法 ASC override", () => {
+  const root = fixtureRoot();
+  const decisionsPath = path.join(root, "data", "decisions.json");
+  const mdxPath = path.join(root, "data", "weapons", "测试武器.mdx");
+  const input = decisions();
+  const table = input.weapons.测试武器.tables.lc;
+  delete (table.sources.primary as { asc_type_id?: string }).asc_type_id;
+  delete (
+    table.source_reviews.primary.previous_effective_source as { asc_type_id?: string }
+  ).asc_type_id;
+  writeFileSync(decisionsPath, `${JSON.stringify(input, null, 2)}\n`, "utf8");
+  writeFileSync(
+    mdxPath,
+    `---
+title: 测试武器
+schema_version: 2
+prototype_id: "1"
+use_type: 主武器
+element: 物理
+rarity: 稀有
+damage_sources:
+  - id: primary
+    name: 普通射击
+    section: fire_mode
+    source:
+      numerical:
+        table: lc
+        id: 1
+        level: 1
+    fire_interval: 0.3
+---
+正文
+`,
+    "utf8",
+  );
+
+  applyReconciliation({ root, decisionsPath });
+  const source = matter(readFileSync(mdxPath, "utf8")).data.damage_sources[0];
+  assert.equal(source.fire_interval, 0.2);
+  assert.equal(source.overrides, undefined);
+  assert.equal(source.override_reason, undefined);
+});
+
 test("snapshot decisions 保留既有分类、移除过期项并登记新纠正", () => {
   assert.deepEqual(
     reconcileSnapshotDifferenceDecisions(

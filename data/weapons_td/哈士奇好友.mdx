@@ -5,18 +5,8 @@ weapon_type: 连发榴弹
 element: 物理
 rarity: 传说
 weapon_type_id: 16
-prototype_id: 20016000011
-asc_type_id: 371
+prototype_id: "20016000011"
 active_skill_id: 5103101
-damage:
-  base: 0.23
-  impulse: 3.04
-  toughness: 3.04
-  flesh: 6.1
-  hurtable: 1.83
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.1
 magazine: 12
 total_ammo: 120
 accuracy: 67
@@ -25,106 +15,60 @@ scope: 低倍镜
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: false
-element_add_rate: 0
 skill_cooldown: 5
-damage_label: ''
-damage_label_text: ''
-mode_names:
-  0: 榴弹命中
-  1: 榴弹爆炸
-damage_modes:
-  - mode: 0
-    name: 榴弹命中
-    fire_interval: 0.5
-    damage:
-      base: 0.115
-      impulse: 3.04
-      toughness: 3.04
-      flesh: 6.1
-      hurtable: 1.83
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1.1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - mode: 1
-    name: 榴弹爆炸
-    label: 爆炸伤害
-    fire_interval: 0
-    damage:
-      base: 0.23
-      impulse: 3.04
-      toughness: 3.04
-      flesh: 0
-      hurtable: 1.83
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-extra_modes:
-  - name: 哈士奇命中
-    fire_interval: 0
-    damage:
-      base: 0.25
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - name: 哈士奇爆炸
-    label: 爆炸伤害
-    fire_interval: 0
-    damage:
-      base: 0.15
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - name: 换弹爆炸
-    label: 爆炸伤害
-    fire_interval: 0
-    damage:
-      base: 0.5
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-file_rate: 120
 changeClip:
   timeBase: 1.9
   reloadRecovery: 0
 game_mode: td
+schema_version: 2
+item_id: "20116000011"
+damage_sources:
+  - id: liu-dan-ming-zhong
+    name: 榴弹命中
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 121600111
+        level: 1
+      asc_type_id: "371"
+  - id: liu-dan-bao-zha
+    name: 榴弹爆炸
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 121600110
+        level: 1
+    label: 爆炸伤害
+  - id: ha-shi-qi-ming-zhong
+    name: 哈士奇命中
+    section: special
+    source:
+      numerical:
+        table: td
+        id: 121600115
+        level: 1
+  - id: ha-shi-qi-bao-zha
+    name: 哈士奇爆炸
+    section: special
+    source:
+      numerical:
+        table: td
+        id: 121600114
+        level: 1
+    label: 爆炸伤害
+  - id: diu-qiang-bao-zha
+    name: 丢枪爆炸
+    section: special
+    source:
+      numerical:
+        table: td
+        id: 121600112
+        level: 1
+    label: 爆炸伤害
 ---
 <WeaponSkill>
   <ActiveSkill

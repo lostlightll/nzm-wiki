@@ -4,12 +4,12 @@
 
 ## 1. 结果
 
-| 模式 | 武器总数 | Task 7 迁移 | Task 5 既有 V2 | 明确排除 |
+| 模式 | 武器总数 | 当前 V2 | 当前 V1 | 明确排除 |
 | :--- | ---: | ---: | ---: | ---: |
-| LC | 112 | 89 | 5 | 18 |
-| TD | 112 | 91 | 5 | 16 |
+| LC | 112 | 112 | 0 | 0 |
+| TD | 112 | 112 | 0 | 0 |
 
-Task 7 共新增 180 个 V2 MDX。最终仓库包含 190 个 V2 MDX 和 34 个保留 V1 的异常项。保留 V1 是显式决策，不代表迁移工具遗漏；Task 8 不得在异常归属解决前直接删除这些 fallback。
+Task 7 首批新增 180 个 V2 MDX；Task 7.7 又迁移原 34 个排除表项，并补充木葫芦 LC 的恢复来源。当前仓库共 224 个 V2 MDX。格式已全量迁移，但 V1 Resolver、兼容字段和旧消费者仍按 Task 8 边界保留。
 
 最终机器可读结果位于：
 
@@ -60,29 +60,24 @@ pnpm weapon-data:check
 
 这些修正同时应用于 LC 和 TD，并保存在决策清单及最终报告中。
 
-## 5. 排除项
+## 5. Task 7.7 收口
 
-LC 与 TD 共同排除 16 项：暗夜之殇、春雷震、杜瓦瓶、钢铁轰鸣、鬼铜蚀、哈士奇好友、葫芦、火神炎帝、密林杀机、能源之影、逆光之刃、沙丘之怒、生命线、收割者、元宵来袭、猪猪榴弹发射器。
+原 34 个排除表项已经全部解除，最终报告的 `exclusions.lc`、`exclusions.td` 和 `exclusions.by_owner` 均为空。Task 7.7 使用名称/别名、WeaponItem ModelID、Prototype、Numerical family 或 AssetPath 的可追溯证据解析来源；`Description` 不参与身份判断。
 
-LC 额外排除刺隐和夜影之逝；二者的 TD 来源已能唯一核验并完成迁移。
+多候选被保留为独立稳定来源。逆光之刃通过 1:N addition 从旧单一来源生成重击与轻击；恢复 Settlement 保留在结算来源集合中，但不作为攻击来源。无 ASC 的能源之影浮游模式保留 `0.65s` 兼容值，强袭激光不虚构射速。
 
-异常归属：
-
-- `source_mapping`：Numerical / Prototype 候选无法唯一确定，共 22 个表级排除。
-- `game_data`：杜瓦瓶、鬼铜蚀在 LC/TD 的旧 MDX 与 ASC 都是非法 `200 / 200 / 0` 衰减，共 4 个表级排除。
-- `wiki_semantics`：葫芦攻击语义、火神炎帝技能充能冲突及两个行为变体问题，共 8 个表级排除。
-
-逐项错误码、原因和 owner 以 `data/weapon-v2-migration-report.json` 为准。
+逐项引用、证据、兼容字段修正和审核结果以 `data/weapon-v2-migration-decisions.json` 及 `MD/WEAPON-V2-SOURCE-RECONCILIATION.md` 为准。
 
 ## 6. LC / TD 差异
 
-112 对同名武器中，107 对迁移结构一致。以下 5 对有显式差异：
+112 对同名武器中，108 对迁移结构一致。以下 4 对有显式差异：
 
-- 冰川尼泊尔、渡鸦剑、死神镰刀：来源引用不同。
-- 刺隐、夜影之逝：迁移状态、来源引用和主动技能 ID 不同；TD 已迁移，LC 保留 V1。
+- 炼狱蝎王：LC/TD 来源引用不同。
+- 木葫芦：LC 有恢复来源，TD 原表缺行并保持空结算来源；Item 与主动技能选择也不同。
+- 刺隐、夜影之逝：LC/TD 的 `item_id` 选择不同。
 
 比较 Numerical 引用时仅忽略预期的 `table: lc/td` 标签，Numerical ID、ASC、Feel、Item、技能和迁移状态差异都保留在报告中。
 
 ## 7. Task 8 边界
 
-Task 7 不删除 V1 Resolver、旧字段、正文 `<ActiveSkill>` 参数，也不把检查接入构建或 CI。34 个排除项的所有权问题解决、重新迁移并更新 Lock/快照后，Task 8 才能结束双格式阶段。
+Task 7.7 不删除 V1 Resolver、旧字段、正文 `<ActiveSkill>` 参数，也不把检查接入构建或 CI。虽然 224 个 MDX 已全部使用 V2，结束双格式代码和兼容字段生命周期仍必须由独立 Task 8 完成。

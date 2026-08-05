@@ -37,9 +37,10 @@ async function requireWeapon(
   return weapon;
 }
 
-test("consumer follows mainSourceId exactly and rejects broken invariants", () => {
-  const first = { id: "first" };
-  const second = { id: "second" };
+test("consumer follows mainSourceId and permits non-attacking settlement sources", () => {
+  const first = { id: "first", damage: { base: { state: "resolved" as const } } };
+  const second = { id: "second", damage: { base: { state: "zero" as const } } };
+  const recovery = { id: "recovery", damage: { base: { state: "not_applicable" as const } } };
   assert.equal(
     getMainDamageSource({
       mainSourceId: "second",
@@ -47,6 +48,7 @@ test("consumer follows mainSourceId exactly and rejects broken invariants", () =
     }),
     second,
   );
+  assert.equal(getMainDamageSource({ damageSources: [recovery] }), undefined);
   assert.throws(
     () => getMainDamageSource({ damageSources: [first] }),
     WeaponConsumerInvariantError,
@@ -58,6 +60,14 @@ test("consumer follows mainSourceId exactly and rejects broken invariants", () =
         damageSources: [first],
       }),
     WeaponConsumerInvariantError,
+  );
+  assert.throws(
+    () =>
+      getMainDamageSource({
+        mainSourceId: "recovery",
+        damageSources: [recovery],
+      }),
+    /points to a non-attacking source/,
   );
   assert.equal(getMainDamageSource({ damageSources: [] }), undefined);
 });
@@ -144,8 +154,12 @@ test("pilot main source, LC/TD context, attenuation, and element agree", async (
 
   const gourd = await requireWeapon("木葫芦", "lc");
   const catalog = toWeaponCatalogEntry(gourd);
+  assert.equal(gourd.damageSources.length, 1);
+  assert.equal(gourd.damageSources[0].damage.base.state, "not_applicable");
   assert.equal(catalog.isAttackCapable, false);
   assert.equal(catalog.mainSource, undefined);
+  assert.deepEqual(toWeaponDetailData(gourd).damageSources, []);
+  assert.equal(createWeaponStat(gourd), null);
   const element = getResolvedFieldValue(catalog.element);
   assert.ok(element);
   assert.ok(createWeaponSearchItem(gourd).keywords.includes(element));
@@ -156,6 +170,19 @@ test("pilot main source, LC/TD context, attenuation, and element agree", async (
   assert.deepEqual(
     getNonMainMeleeSources(axeCatalog).map((source) => source.id),
     ["light-hit-left", "light-hit-right"],
+  );
+
+  const night = await requireWeapon("夜影之逝", "lc");
+  assert.equal(night.damageSources.at(-1)?.id, "jin-zhan-hui-xue");
+  assert.equal(night.damageSources.at(-1)?.damage.base.state, "not_applicable");
+  const nightDetail = toWeaponDetailData(night);
+  assert.equal(
+    nightDetail.damageSources.some((source) => source.id === "jin-zhan-hui-xue"),
+    false,
+  );
+  assert.deepEqual(
+    toWeaponCatalogEntry(night).meleeSources.map((source) => source.id),
+    ["you-jian-jin-zhan", "qie-dao-jin-zhan"],
   );
 });
 
@@ -185,6 +212,72 @@ test("search and weapon stats use the same normalized LC main source", async () 
   assert.equal(createWeaponStat(melee), null);
   const td = await requireWeapon("飓风之龙", "td");
   assert.throws(() => createWeaponStat(td), /only accepts LC/);
+});
+
+test("Task 7.7 representative mappings remain fixed across Resolver and consumers", async () => {
+  const energy = await requireWeapon("能源之影", "lc");
+  const floating = energy.damageSources.find((source) => source.id === "fu-you-mo-shi");
+  const assault = energy.damageSources.find((source) => source.id === "qiang-xi-ji-guang");
+  assert.ok(floating);
+  assert.ok(assault);
+  assert.equal(floating.raw.asc, undefined);
+  assert.equal(getResolvedFieldValue(floating.fire.interval), 0.65);
+  assert.equal(assault.raw.asc, undefined);
+  assert.equal(assault.fire.interval.state, "missing");
+
+  const festival = await requireWeapon("元宵来袭", "lc");
+  assert.deepEqual(
+    ["pu-tong-she-ji", "pao-ti-mo-shi"].map(
+      (id) => festival.damageSources.find((source) => source.id === id)?.raw.asc?.ASCTypeID,
+    ),
+    ["264", "337"],
+  );
+
+  const darkNight = await requireWeapon("暗夜之殇", "lc");
+  assert.equal(darkNight.activeSkill?.id, 5100101);
+  assert.equal(getResolvedFieldValue(darkNight.activeSkill!.chargeTime), 45);
+
+  const fireGod = await requireWeapon("火神炎帝", "lc");
+  assert.equal(fireGod.activeSkill?.id, 5103601);
+  assert.equal(fireGod.activeSkill?.source, "gp_fallback");
+  assert.equal(getResolvedFieldValue(fireGod.activeSkill!.chargeTime), 0);
+
+  const hidden = await requireWeapon("刺隐", "lc");
+  assert.equal(hidden.damageSources[1].section, "melee");
+  assert.equal(hidden.damageSources[0].attenuation.status, "applicable");
+  const hiddenTd = await requireWeapon("刺隐", "td");
+  assert.equal(hiddenTd.damageSources[0].attenuation.status, "not_applicable");
+
+  const steel = await requireWeapon("钢铁轰鸣", "lc");
+  assert.deepEqual(
+    steel.damageSources.map((source) => [source.id, source.section]),
+    [
+      ["liu-dan-ming-zhong", "fire_mode"],
+      ["liu-dan-bao-zha", "special"],
+      ["liu-dan-chuan-tou", "special"],
+    ],
+  );
+
+  const copper = await requireWeapon("鬼铜蚀", "lc");
+  const recovery = copper.damageSources.find((source) => source.id === "hui-xue-hui-fu");
+  assert.ok(recovery);
+  assert.equal(recovery.name, "回血恢复");
+  assert.equal(recovery.damage.base.state, "not_applicable");
+  assert.equal(
+    toWeaponDetailData(copper).damageSources.some((source) => source.id === recovery.id),
+    false,
+  );
+  assert.equal(
+    copper.damageSources.find((source) => source.id === "d-o-t-chi-shang-hai-jian-su-cha-jian")
+      ?.section,
+    "dot",
+  );
+
+  const husky = await requireWeapon("哈士奇好友", "lc");
+  assert.equal(
+    husky.damageSources.find((source) => source.raw.numerical?.id === 121600112)?.name,
+    "丢枪爆炸",
+  );
 });
 
 test("generic scanner skips weapon directories before reading MDX", () => {

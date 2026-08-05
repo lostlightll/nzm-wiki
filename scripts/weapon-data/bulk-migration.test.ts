@@ -20,6 +20,7 @@ import {
   generateFinalMigrationReport,
   migrationDecisionsSchema,
   renderMigratedMdx,
+  resolveMigrationSourceLabel,
   reviewedSnapshotDifferences,
 } from "./bulk-migration";
 import { WEAPON_DATA_SOURCE_FILES } from "./source-reader";
@@ -52,6 +53,12 @@ test("相同结构迁移原因聚合字段名", () => {
     ]),
     "结构迁移保留旧 MDX 直接维护的 damage.base，原表差异待独立核验；人工核验原因",
   );
+});
+
+test("显式 label 决策可以保留、替换或删除 V1 标签", () => {
+  assert.equal(resolveMigrationSourceLabel("灼烧伤害", undefined), "灼烧伤害");
+  assert.equal(resolveMigrationSourceLabel("灼烧伤害", "恢复"), "恢复");
+  assert.equal(resolveMigrationSourceLabel("灼烧伤害", null), undefined);
 });
 
 function candidate(table: "lc" | "td") {
@@ -206,15 +213,116 @@ test("决策 Schema 拒绝技能修正漂移和表内重复来源 ID", () => {
   );
 });
 
-function snapshotDecisions(snapshotDifferences: unknown[] = []) {
+test("Task 7.7 决策支持 resolved、1:N addition 和兼容字段修正", () => {
+  const input = {
+    schema_version: 2,
+    evidence: {
+      "manual-source": { kind: "manual_verification", note: "fixture" },
+    },
+    weapons: {
+      测试: {
+        sources: {
+          primary: {
+            id: "heavy-hit",
+            name: "重击",
+            section: "melee",
+            locator: { kind: "primary" },
+            table_scope: ["lc"],
+            reason: "fixture",
+          },
+        },
+        tables: {
+          lc: {
+            migration_batch: "task7.7",
+            active_skill_id: 1,
+            compatibility_field_corrections: {
+              skill_cooldown: {
+                from: 30,
+                to: 45,
+                owner: "skill_chain",
+                reason: "fixture",
+                evidence_ids: ["manual-source"],
+              },
+            },
+            sources: {
+              primary: { numerical: { table: "lc", id: 100, level: 1 } },
+            },
+            field_decisions: {},
+            snapshot_differences: [],
+            source_reviews: {
+              primary: {
+                resolution: "resolved",
+                effective_source: { numerical: { table: "lc", id: 100, level: 1 } },
+                reason: "fixture",
+                evidence_ids: ["manual-source"],
+              },
+            },
+            source_additions: [
+              {
+                key: "light-hit",
+                after_locator: { kind: "primary" },
+                identity: {
+                  id: "light-hit",
+                  name: "轻击",
+                  section: "melee",
+                  reason: "fixture",
+                },
+                source: { numerical: { table: "lc", id: 101, level: 1 } },
+                source_review: {
+                  resolution: "resolved",
+                  effective_source: { numerical: { table: "lc", id: 101, level: 1 } },
+                  reason: "fixture",
+                  evidence_ids: ["manual-source"],
+                },
+                snapshot_differences: [],
+              },
+            ],
+          },
+        },
+      },
+    },
+  };
+  assert.equal(migrationDecisionsSchema.safeParse(input).success, true);
+
+  const withPrevious = structuredClone(input) as unknown as {
+    weapons: {
+      测试: {
+        tables: {
+          lc: {
+            source_reviews: { primary: Record<string, unknown> };
+          };
+        };
+      };
+    };
+  };
+  withPrevious.weapons.测试.tables.lc.source_reviews.primary.previous_effective_source = {};
+  assert.equal(migrationDecisionsSchema.safeParse(withPrevious).success, false);
+
+  const missingReview = structuredClone(input);
+  delete (missingReview.weapons.测试.tables.lc.source_reviews as Record<string, unknown>).primary;
+  assert.equal(migrationDecisionsSchema.safeParse(missingReview).success, false);
+
+  const duplicateAddition = structuredClone(input);
+  duplicateAddition.weapons.测试.tables.lc.source_additions[0].identity.id = "heavy-hit";
+  assert.equal(migrationDecisionsSchema.safeParse(duplicateAddition).success, false);
+
+  const collidingAdditionKey = structuredClone(input);
+  collidingAdditionKey.weapons.测试.tables.lc.source_additions[0].key = "primary";
+  assert.equal(migrationDecisionsSchema.safeParse(collidingAdditionKey).success, false);
+});
+
+function snapshotDecisions(
+  snapshotDifferences: unknown[] = [],
+  identity: { id: string; name: string } = { id: "primary", name: "普通射击" },
+) {
   return migrationDecisionsSchema.parse({
     schema_version: 1,
     weapons: {
       测试: {
         sources: {
           primary: {
-            id: "primary",
-            name: "普通射击",
+            id: identity.id,
+            name: identity.name,
             section: "fire_mode",
             locator: { kind: "primary" },
             table_scope: ["lc"],
@@ -277,6 +385,19 @@ test("快照比较归一化旧来源 ID，并拒绝未批准或陈旧 Pointer", 
   );
 });
 
+test("快照比较按 V1 locator 归一化已改名的 primary 来源", () => {
+  const baseline = { "lc:测试": snapshotEntry("v1-primary") };
+  const after = { "lc:测试": snapshotEntry("recovery") };
+  assert.deepEqual(
+    reviewedSnapshotDifferences(
+      baseline as never,
+      after as never,
+      snapshotDecisions([], { id: "recovery", name: "恢复" }),
+    ),
+    { "lc:测试": [] },
+  );
+});
+
 test("基线不可覆盖，重复 apply 不改 V2 文件或 MDX 正文", (context) => {
   const root = temporaryDirectory(context);
   const decisionsPath = path.join(root, "decisions.json");
@@ -309,6 +430,54 @@ test("基线不可覆盖，重复 apply 不改 V2 文件或 MDX 正文", (contex
       }),
     ),
     "# 正文\r\n保持不变\r\n",
+  );
+});
+
+test("迁移拒绝过期的主动技能旧值修正", (context) => {
+  const root = temporaryDirectory(context);
+  const decisionsPath = path.join(root, "decisions.json");
+  const weaponPath = path.join(root, "data", "weapons", "测试.mdx");
+  mkdirSync(path.join(root, "data", "weapons_td"), { recursive: true });
+  mkdirSync(path.dirname(weaponPath), { recursive: true });
+  writeFileSync(
+    weaponPath,
+    `---
+title: 测试
+prototype_id: "1"
+active_skill_id: 2
+---
+`,
+    "utf8",
+  );
+  writeJson(decisionsPath, {
+    schema_version: 2,
+    evidence: {},
+    weapons: {
+      测试: {
+        sources: {},
+        tables: {
+          lc: {
+            migration_batch: "task7.7",
+            active_skill_id: 1,
+            active_skill_correction: {
+              from: 0,
+              to: 1,
+              reason: "fixture",
+              owner: "skill_chain",
+            },
+            sources: {},
+            field_decisions: {},
+            source_reviews: {},
+            snapshot_differences: [],
+          },
+        },
+      },
+    },
+  });
+
+  assert.throws(
+    () => applyMigrationTable("lc", { root, contentRoot: path.join(root, "missing-refs"), decisionsPath }),
+    /active skill correction expected 0, got 2/,
   );
 });
 
@@ -390,6 +559,64 @@ damage_sources:
   assert.throws(
     () => checkMigrationCoverage({ root, decisionsPath }),
     /override_reason differs from reviewed override decisions/,
+  );
+});
+
+test("已迁移 V2 审计显式删除的 V1 伤害 label", (context) => {
+  const root = temporaryDirectory(context);
+  const decisionsPath = path.join(root, "decisions.json");
+  const weaponPath = path.join(root, "data", "weapons", "恢复源.mdx");
+  mkdirSync(path.join(root, "data", "weapons_td"), { recursive: true });
+  mkdirSync(path.dirname(weaponPath), { recursive: true });
+  const frontmatter = (label = "") => `---
+schema_version: 2
+title: 恢复源
+prototype_id: "1"
+use_type: 主武器
+element: 物理
+rarity: 稀有
+damage_sources:
+  - id: recovery
+    name: 回血恢复
+    section: special
+    source:
+      numerical:
+        table: lc
+        id: 100
+        level: 1
+${label}---
+`;
+  writeFileSync(weaponPath, frontmatter(), "utf8");
+  writeJson(decisionsPath, {
+    schema_version: 1,
+    weapons: {
+      恢复源: {
+        sources: {
+          primary: {
+            id: "recovery",
+            name: "回血恢复",
+            section: "special",
+            label: null,
+            locator: { kind: "primary" },
+            table_scope: ["lc"],
+            reason: "fixture",
+          },
+        },
+        tables: {
+          lc: {
+            sources: { primary: { numerical: { table: "lc", id: 100, level: 1 } } },
+            field_decisions: {},
+          },
+        },
+      },
+    },
+  });
+
+  assert.equal(checkMigrationCoverage({ root, decisionsPath }).lc.migrated, 1);
+  writeFileSync(weaponPath, frontmatter("    label: 灼烧伤害\n"), "utf8");
+  assert.throws(
+    () => checkMigrationCoverage({ root, decisionsPath }),
+    /source label differs from decision/,
   );
 });
 

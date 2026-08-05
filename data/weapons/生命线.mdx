@@ -8,70 +8,6 @@ rarity: 传说
 tags:
   - 命中爆炸
 scope: 低倍镜
-damage_label: ''
-damage_label_text: ''
-mode_names:
-  '0': 榴弹命中
-  '1': 榴弹爆炸
-damage_modes:
-  - mode: 0
-    name: 榴弹命中
-    fire_interval: 0.6
-    damage:
-      base: 0.3935
-      impulse: 9.84
-      toughness: 9.84
-      flesh: 25.6
-      hurtable: 7.68
-    element: 寒冷
-    element_add_rate: 0.3495
-    weakness_multiplier: 1.1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - mode: 1
-    name: 榴弹爆炸
-    label: 爆炸伤害
-    damage:
-      base: 0.787
-      impulse: 9.84
-      toughness: 9.84
-      flesh: 0
-      hurtable: 7.68
-    element: 寒冷
-    element_add_rate: 0.2097
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-extra_modes:
-  - name: 冰池Dot
-    damage:
-      base: 0.04
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 寒冷
-    element_add_rate: 0
-    enable_critical: false
-    fire_interval: 0
-    label: 灼烧伤害
-damage:
-  base: 0.3935
-  impulse: 9.84
-  toughness: 9.84
-  flesh: 25.6
-  hurtable: 7.68
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.1
-file_rate: 30
 magazine: 1
 total_ammo: 13
 accuracy: 67
@@ -79,20 +15,47 @@ stability: 32
 changeClip:
   timeBase: 1.4
   reloadRecovery: 0.206
-range: ''
-explosion_range: '2.5'
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: false
-element_add_rate: 0.5245
 skill_cooldown: 35
-pellets: ''
 weapon_type_id: 8
 active_skill_id: 5100801
 skill_duration: 10
 skill_blocking: false
 show_duration: true
+schema_version: 2
+item_id: "20108000002"
+damage_sources:
+  - id: liu-dan-ming-zhong
+    name: 榴弹命中
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120800021
+        level: 1
+      asc_type_id: "116"
+  - id: liu-dan-bao-zha
+    name: 榴弹爆炸
+    section: special
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120800020
+        level: 1
+    label: 爆炸伤害
+  - id: bing-chi-dot
+    name: 冰池Dot
+    section: dot
+    source:
+      numerical:
+        table: lc
+        id: 120800023
+        level: 1
+    label: 灼烧伤害
 ---
 
 <WeaponSkill>

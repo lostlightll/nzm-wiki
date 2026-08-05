@@ -1,111 +1,11 @@
 ---
 title: 鬼铜蚀
-prototype_id: 20015000006
+prototype_id: "20015000006"
 use_type: 主武器
 weapon_type: 喷射器
 element: 腐蚀
 rarity: 传说
-tags: null
 scope: 不可开镜
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.05
-    damage:
-      base: 0.038
-      impulse: 0.8
-      toughness: 0.8
-      flesh: 0.7
-      hurtable: 0.7
-    element: 腐蚀
-    element_add_rate: 0.053
-    weakness_multiplier: 1.1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-extra_modes:
-  - name: 换弹爆炸
-    label: 爆炸伤害
-    damage:
-      base: 0.5
-      impulse: 0
-      toughness: 0
-      flesh: 5
-      hurtable: 5
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-  - name: Dot池伤害
-    label: 灼烧伤害
-    damage:
-      base: 0.1
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-  - name: Dot池伤害（回血插件）
-    label: 灼烧伤害
-    damage:
-      base: 0.2
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 寒冷
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-  - name: Dot池伤害（减速插件）
-    label: 灼烧伤害
-    damage:
-      base: 0.05
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-damage:
-  base: 0.038
-  impulse: 0.8
-  toughness: 0.8
-  flesh: 0.7
-  hurtable: 0.7
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.1
-file_rate: 1200
 magazine: 200
 total_ammo: 1200
 accuracy: 34
@@ -113,19 +13,67 @@ stability: 63
 changeClip:
   timeBase: 3.2
   reloadRecovery: 0.223
-range: null
-explosion_range: null
 attenuation_begin: 200
 attenuation_end: 200
 attenuation_scale: 0
-ignore_shield: false
-element_add_rate: 0.053
 skill_cooldown: 0
-pellets: null
 weapon_type_id: 15
 active_skill_id: 5102501
 show_duration: false
 game_mode: td
+schema_version: 2
+item_id: "20115000006"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 121500063
+        level: 1
+      asc_type_id: "263"
+    overrides:
+      asc:
+        attenuation:
+          status: not_applicable
+    override_reason: 实测确认该武器不适用距离衰减，忽略 ASC 中的非法衰减区间
+  - id: huan-tan-bao-zha
+    name: 换弹爆炸
+    section: special
+    source:
+      numerical:
+        table: td
+        id: 121500062
+        level: 1
+    label: 爆炸伤害
+  - id: d-o-t-chi-shang-hai
+    name: Dot池伤害
+    section: dot
+    source:
+      numerical:
+        table: td
+        id: 121500061
+        level: 1
+    label: 灼烧伤害
+  - id: hui-xue-hui-fu
+    name: 回血恢复
+    section: special
+    source:
+      numerical:
+        table: td
+        id: 121500065
+        level: 1
+  - id: d-o-t-chi-shang-hai-jian-su-cha-jian
+    name: Dot池伤害（减速插件）
+    section: dot
+    source:
+      numerical:
+        table: td
+        id: 121500064
+        level: 1
+    label: 灼烧伤害
 ---
 
 <WeaponSkill>

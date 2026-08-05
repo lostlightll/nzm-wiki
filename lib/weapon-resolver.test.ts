@@ -1049,7 +1049,7 @@ test("V1 provenance keeps original damage and extra mode indices", () => {
   );
 });
 
-test("all remaining LC and TD V1 files retain byte-shape legacy behavior", () => {
+test("all LC and TD weapon files are V2 while the V1 compatibility path remains unit-tested", () => {
   let v1Count = 0;
   let v2Count = 0;
   for (const [directory, table] of [
@@ -1071,6 +1071,6 @@ test("all remaining LC and TD V1 files retain byte-shape legacy behavior", () =>
       v1Count += 1;
     }
   }
-  assert.equal(v1Count, 34);
-  assert.equal(v2Count, 190);
+  assert.equal(v1Count, 0);
+  assert.equal(v2Count, 224);
 });

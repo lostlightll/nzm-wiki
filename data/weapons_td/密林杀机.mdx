@@ -1,6 +1,6 @@
 ---
 title: 密林杀机
-prototype_id: 20002000009
+prototype_id: "20002000009"
 use_type: 主武器
 weapon_type: 狙击步枪
 element: 物理
@@ -8,56 +8,6 @@ rarity: 史诗
 tags:
   - 正面效果
 scope: 高倍镜
-damage_label: ''
-damage_label_text: ''
-mode_names:
-  1: 爆炸弹
-damage_modes:
-  - mode: 0
-    name: 普通射击
-    fire_interval: 0.165
-    damage:
-      base: 0.661
-      impulse: 11.5
-      toughness: 11.5
-      flesh: 9.2
-      hurtable: 9.2
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1.8
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - mode: 1
-    name: 爆炸弹
-    label: 技能伤害
-    damage:
-      base: 0.24
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-    fire_interval: 0
-damage:
-  base: 0.661
-  impulse: 11.5
-  toughness: 11.5
-  flesh: 9.2
-  hurtable: 9.2
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.8
-file_rate: 78
 magazine: 12
 total_ammo: 84
 accuracy: 75
@@ -65,21 +15,38 @@ stability: 69
 changeClip:
   timeBase: 2.6
   reloadRecovery: 0.1982
-range: ''
-explosion_range: ''
 attenuation_begin: 35
 attenuation_end: 70
 attenuation_scale: 0.9
-ignore_shield: false
-element_add_rate: 0
 skill_cooldown: 45
-pellets: ''
 weapon_type_id: 2
 active_skill_id: 5000201
 skill_duration: 12
 skill_blocking: false
 show_duration: true
 game_mode: td
+schema_version: 2
+item_id: "20102000005"
+damage_sources:
+  - id: pu-tong-she-ji
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120200090
+        level: 1
+      asc_type_id: "56"
+  - id: bao-zha-dan
+    name: 爆炸弹
+    section: special
+    source:
+      numerical:
+        table: td
+        id: 120200091
+        level: 1
+    label: 技能伤害
 ---
 
 <WeaponSkill>

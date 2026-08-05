@@ -23,6 +23,8 @@
     "weapon-data:pilot-check": "tsx scripts/weapon-data/pilot-migration.ts check",
     "weapon-data:migration:report": "tsx scripts/weapon-data/bulk-migration.ts final-report",
     "weapon-data:migration:check": "tsx scripts/weapon-data/bulk-migration.ts check",
+    "weapon-data:task77:prepare": "tsx scripts/weapon-data/task77.ts",
+    "weapon-data:task77:snapshots": "tsx scripts/weapon-data/task77.ts snapshots",
     "weapon-data:reconciliation:report": "tsx scripts/weapon-data/source-reconciliation.ts report",
     "weapon-data:reconciliation:upgrade": "tsx scripts/weapon-data/source-reconciliation.ts upgrade",
     "weapon-data:reconciliation:apply": "tsx scripts/weapon-data/source-reconciliation.ts apply",

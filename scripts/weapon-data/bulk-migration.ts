@@ -85,6 +85,7 @@ const sourceIdentitySchema = z.strictObject({
   id: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/),
   name: z.string().trim().min(1),
   section: damageSectionSchema,
+  label: z.string().trim().min(1).nullable().optional(),
   inherits: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/).optional(),
   locator: legacyLocatorSchema,
   table_scope: z.array(z.enum(["lc", "td"])).min(1).refine(
@@ -119,6 +120,20 @@ export const reviewedFieldDecisionSchema = z.discriminatedUnion("action", [
   confirmedOverrideDecisionSchema,
 ]);
 
+const snapshotDifferenceDecisionSchema = z.strictObject({
+  pointer: z.string().startsWith("/"),
+  classification: z.enum(["source_difference", "accepted_correction"]),
+  reason: z.string().trim().min(1),
+});
+
+const compatibilityFieldCorrectionSchema = z.strictObject({
+  from: z.number().finite().nonnegative(),
+  to: z.number().finite().nonnegative(),
+  reason: z.string().trim().min(1),
+  owner: ownerSchema,
+  evidence_ids: z.array(z.string().regex(/^[a-z][a-z0-9-]*$/)).min(1),
+});
+
 const tableDecisionCommonShape = {
   exclude: z
     .strictObject({
@@ -137,16 +152,13 @@ const tableDecisionCommonShape = {
       owner: z.literal("skill_chain"),
     })
     .optional(),
+  compatibility_field_corrections: z
+    .strictObject({
+      skill_cooldown: compatibilityFieldCorrectionSchema.optional(),
+    })
+    .optional(),
   sources: z.record(z.string(), weaponDataSourceRefSchema).default({}),
-  snapshot_differences: z
-    .array(
-      z.strictObject({
-        pointer: z.string().startsWith("/"),
-        classification: z.enum(["source_difference", "accepted_correction"]),
-        reason: z.string().trim().min(1),
-      }),
-    )
-    .default([]),
+  snapshot_differences: z.array(snapshotDifferenceDecisionSchema).default([]),
 };
 
 const legacyTableDecisionSchema = z.strictObject({
@@ -165,20 +177,62 @@ const fileEvidenceSchema = z.strictObject({
   sha256: z.string().regex(/^[a-f0-9]{64}$/),
   note: z.string().trim().min(1),
 });
+const weaponItemIdentityEvidenceSchema = z.strictObject({
+  kind: z.literal("weapon_item_identity"),
+  path: z.string().trim().min(1),
+  pointer: z.string().startsWith("/"),
+  row_name: z.string().trim().min(1),
+  weapon_name: z.string().trim().min(1),
+  model_id: z.string().regex(/^[1-9]\d*$/),
+  observed_value: z.json(),
+  sha256: z.string().regex(/^[a-f0-9]{64}$/),
+  note: z.string().trim().min(1),
+});
 const manualEvidenceSchema = z.strictObject({
   kind: z.literal("manual_verification"),
   note: z.string().trim().min(1),
 });
 export const reconciliationEvidenceSchema = z.discriminatedUnion("kind", [
   fileEvidenceSchema,
+  weaponItemIdentityEvidenceSchema,
   manualEvidenceSchema,
 ]);
 
-export const sourceReviewSchema = z.strictObject({
+const existingSourceReviewSchema = z.strictObject({
   previous_effective_source: weaponDataSourceRefSchema,
   resolution: z.enum(["confirmed", "corrected"]),
   reason: z.string().trim().min(1),
   evidence_ids: z.array(evidenceIdSchema).min(1),
+});
+
+const resolvedSourceReviewSchema = z.strictObject({
+  resolution: z.literal("resolved"),
+  effective_source: weaponDataSourceRefSchema,
+  reason: z.string().trim().min(1),
+  evidence_ids: z.array(evidenceIdSchema).min(1),
+});
+
+export const sourceReviewSchema = z.discriminatedUnion("resolution", [
+  existingSourceReviewSchema,
+  resolvedSourceReviewSchema,
+]);
+
+const sourceAdditionSchema = z.strictObject({
+  key: z.string().regex(/^[a-z][a-z0-9-]*$/),
+  after_locator: legacyLocatorSchema,
+  identity: z.strictObject({
+    id: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/),
+    name: z.string().trim().min(1),
+    section: damageSectionSchema,
+    inherits: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/).optional(),
+    reason: z.string().trim().min(1),
+  }),
+  source: weaponDataSourceRefSchema,
+  label: z.string().trim().min(1).optional(),
+  fire_interval: z.number().finite().nonnegative().optional(),
+  pellets: z.number().int().positive().optional(),
+  source_review: resolvedSourceReviewSchema,
+  snapshot_differences: z.array(snapshotDifferenceDecisionSchema).default([]),
 });
 
 const excludedTableDecisionV2Schema = z.strictObject({
@@ -192,10 +246,12 @@ const excludedTableDecisionV2Schema = z.strictObject({
 const migratedTableDecisionV2Schema = z.strictObject({
   ...tableDecisionCommonShape,
   exclude: z.undefined().optional(),
+  migration_batch: z.literal("task7.7").optional(),
   field_decisions: z
     .record(z.string(), z.record(z.string(), reviewedFieldDecisionSchema))
     .default({}),
   source_reviews: z.record(z.string(), sourceReviewSchema).default({}),
+  source_additions: z.array(sourceAdditionSchema).optional(),
 });
 
 const tableDecisionV2Schema = z.union([
@@ -241,13 +297,98 @@ const legacyWeaponDecisionSchema = z
     }
   });
 
-const weaponDecisionV2Schema = z.strictObject({
-  sources: z.record(z.string(), sourceIdentitySchema),
-  tables: z.strictObject({
-    lc: tableDecisionV2Schema.optional(),
-    td: tableDecisionV2Schema.optional(),
-  }),
-});
+const weaponDecisionV2Schema = z
+  .strictObject({
+    sources: z.record(z.string(), sourceIdentitySchema),
+    tables: z.strictObject({
+      lc: tableDecisionV2Schema.optional(),
+      td: tableDecisionV2Schema.optional(),
+    }),
+  })
+  .superRefine((weapon, context) => {
+    for (const table of ["lc", "td"] as const) {
+      const selected = weapon.tables[table];
+      if (!selected) continue;
+      if (
+        selected.active_skill_correction &&
+        selected.active_skill_correction.to !== selected.active_skill_id
+      ) {
+        context.addIssue({
+          code: "custom",
+          path: ["tables", table, "active_skill_correction", "to"],
+          message: "active_skill_correction.to must equal active_skill_id",
+        });
+      }
+      if (selected.exclude) continue;
+      const ids = new Map<string, string>();
+      for (const [key, identity] of Object.entries(weapon.sources)) {
+        if (!identity.table_scope.includes(table)) continue;
+        const previous = ids.get(identity.id);
+        if (previous) {
+          context.addIssue({
+            code: "custom",
+            path: ["sources", key, "id"],
+            message: `${table} source id duplicates ${previous}`,
+          });
+        } else {
+          ids.set(identity.id, key);
+        }
+      }
+      const additionKeys = new Set(Object.keys(selected.sources));
+      for (const [index, addition] of (selected.source_additions ?? []).entries()) {
+        if (additionKeys.has(addition.key)) {
+          context.addIssue({
+            code: "custom",
+            path: ["tables", table, "source_additions", index, "key"],
+            message: `${table} source addition key is duplicated`,
+          });
+        }
+        additionKeys.add(addition.key);
+        const previous = ids.get(addition.identity.id);
+        if (previous) {
+          context.addIssue({
+            code: "custom",
+            path: ["tables", table, "source_additions", index, "identity", "id"],
+            message: `${table} source addition id duplicates ${previous}`,
+          });
+        } else {
+          ids.set(addition.identity.id, addition.key);
+        }
+        const anchors = Object.values(weapon.sources).filter(
+          (identity) =>
+            identity.table_scope.includes(table) &&
+            locatorKey(identity.locator) === locatorKey(addition.after_locator),
+        );
+        if (anchors.length !== 1) {
+          context.addIssue({
+            code: "custom",
+            path: ["tables", table, "source_additions", index, "after_locator"],
+            message: `${table} source addition anchor matched ${anchors.length} identities`,
+          });
+        }
+      }
+      if (selected.migration_batch === "task7.7") {
+        const expectedReviews = Object.keys(selected.sources).sort();
+        const actualReviews = Object.keys(selected.source_reviews).sort();
+        if (!isDeepStrictEqual(expectedReviews, actualReviews)) {
+          context.addIssue({
+            code: "custom",
+            path: ["tables", table, "source_reviews"],
+            message: "task7.7 source reviews must exactly cover explicit sources",
+          });
+        }
+        for (const [key, review] of Object.entries(selected.source_reviews)) {
+          if (review.resolution !== "resolved") {
+            context.addIssue({
+              code: "custom",
+              path: ["tables", table, "source_reviews", key, "resolution"],
+              message: "task7.7 source reviews must use resolved",
+            });
+          }
+        }
+      }
+    }
+  });
 
 export const migrationDecisionsV1Schema = z.strictObject({
   schema_version: z.literal(1),
@@ -271,6 +412,7 @@ type TableDecision =
   | z.infer<typeof legacyTableDecisionSchema>
   | z.infer<typeof excludedTableDecisionV2Schema>
   | z.infer<typeof migratedTableDecisionV2Schema>;
+type SourceAddition = z.infer<typeof sourceAdditionSchema>;
 
 interface WeaponFile {
   readonly table: NumericalTable;
@@ -866,6 +1008,38 @@ function tableDecisionFor(
   return weapon && table ? { weapon, table } : undefined;
 }
 
+function sourceAdditions(table: TableDecision): readonly SourceAddition[] {
+  return "source_additions" in table ? table.source_additions ?? [] : [];
+}
+
+function compatibilityFieldCorrections(
+  table: TableDecision,
+): Readonly<Record<string, z.infer<typeof compatibilityFieldCorrectionSchema>>> {
+  return "compatibility_field_corrections" in table
+    ? table.compatibility_field_corrections ?? {}
+    : {};
+}
+
+function assertActiveSkillCorrection(file: WeaponFile, table: TableDecision): void {
+  if (
+    table.active_skill_correction &&
+    !Object.is(file.data.active_skill_id, table.active_skill_correction.from)
+  ) {
+    throw new Error(
+      `${file.relativePath}:active_skill_id: active skill correction expected ${table.active_skill_correction.from}, got ${String(file.data.active_skill_id)}`,
+    );
+  }
+}
+
+function reviewedSnapshotDecisions(
+  table: TableDecision,
+): readonly z.infer<typeof snapshotDifferenceDecisionSchema>[] {
+  return [
+    ...table.snapshot_differences,
+    ...sourceAdditions(table).flatMap((addition) => addition.snapshot_differences),
+  ];
+}
+
 function sourceIdentityByLocator(
   weapon: z.infer<typeof weaponDecisionSchema>,
   source: LegacySource,
@@ -958,6 +1132,13 @@ function isOverrideDecision(
   return decision.action === "preserve_legacy" || decision.action === "confirmed_override";
 }
 
+export function resolveMigrationSourceLabel(
+  legacyLabel: string | undefined,
+  reviewedLabel: string | null | undefined,
+): string | undefined {
+  return reviewedLabel === null ? undefined : reviewedLabel ?? legacyLabel;
+}
+
 function buildDamageSource(
   legacy: LegacySource,
   identityKey: string,
@@ -966,13 +1147,14 @@ function buildDamageSource(
 ): Record<string, unknown> {
   const source = table.sources[identityKey];
   if (!source) throw new Error(`${identityKey}: missing table source reference`);
+  const label = resolveMigrationSourceLabel(legacy.resolved.label, identity.label);
   const output: Record<string, unknown> = {
     id: identity.id,
     name: identity.name,
     section: identity.section,
     ...(identity.inherits ? { inherits: identity.inherits } : {}),
     source: cloneJson(source),
-    ...(legacy.resolved.label ? { label: legacy.resolved.label } : {}),
+    ...(label ? { label } : {}),
   };
   const decisions = table.field_decisions[identityKey] ?? {};
   const overrides: Record<string, unknown> = {};
@@ -1014,6 +1196,21 @@ function buildDamageSource(
   return output;
 }
 
+function buildAddedDamageSource(addition: SourceAddition): Record<string, unknown> {
+  return {
+    id: addition.identity.id,
+    name: addition.identity.name,
+    section: addition.identity.section,
+    ...(addition.identity.inherits ? { inherits: addition.identity.inherits } : {}),
+    source: cloneJson(addition.source),
+    ...(addition.label ? { label: addition.label } : {}),
+    ...(addition.fire_interval !== undefined
+      ? { fire_interval: addition.fire_interval }
+      : {}),
+    ...(addition.pellets !== undefined ? { pellets: addition.pellets } : {}),
+  };
+}
+
 function buildV2Data(
   file: WeaponFile,
   decisions: MigrationDecisions,
@@ -1046,13 +1243,28 @@ function buildV2Data(
   }
   if (selected.table.item_id) output.item_id = selected.table.item_id;
   else delete output.item_id;
+  assertActiveSkillCorrection(file, selected.table);
   if (selected.table.active_skill_id !== undefined) {
     output.active_skill_id = selected.table.active_skill_id;
   }
+  for (const [field, correction] of Object.entries(
+    compatibilityFieldCorrections(selected.table),
+  )) {
+    if (!Object.is(file.data[field], correction.from)) {
+      throw new Error(
+        `${file.relativePath}:${field}: compatibility correction expected ${correction.from}, got ${String(file.data[field])}`,
+      );
+    }
+    output[field] = correction.to;
+  }
   const sources = legacySources(file);
-  output.damage_sources = sources.map((legacy) => {
+  output.damage_sources = sources.flatMap((legacy) => {
     const { key, identity } = sourceIdentityByLocator(selected.weapon, legacy, file.table);
-    return buildDamageSource(legacy, key, identity, selected.table);
+    const primary = buildDamageSource(legacy, key, identity, selected.table);
+    const additions = sourceAdditions(selected.table)
+      .filter((addition) => locatorKey(addition.after_locator) === legacy.locatorKey)
+      .map(buildAddedDamageSource);
+    return [primary, ...additions];
   });
   return validateWeaponSourceV2(output, { expectedTable: file.table }) as unknown as Record<
     string,
@@ -1238,6 +1450,16 @@ function fieldGaps(
 ): FieldGap[] {
   const selected = tableDecisionFor(decisions, file);
   if (!selected || selected.table.exclude) return [];
+  const resolverSafetyDecisions = Object.fromEntries(
+    Object.entries(selected.table.field_decisions).map(([source, fields]) => [
+      source,
+      Object.fromEntries(
+        Object.entries(fields).filter(([, decision]) =>
+          decision.action === "confirmed_override"
+        ),
+      ),
+    ]),
+  );
   const preliminary = buildV2Data(file, {
     ...decisions,
     weapons: {
@@ -1246,7 +1468,10 @@ function fieldGaps(
         ...selected.weapon,
         tables: {
           ...selected.weapon.tables,
-          [file.table]: { ...selected.table, field_decisions: {} },
+          [file.table]: {
+            ...selected.table,
+            field_decisions: resolverSafetyDecisions,
+          },
         },
       },
     },
@@ -1360,10 +1585,28 @@ function baselineConsumerSourceIdMap(
     if (!source || typeof source !== "object" || Array.isArray(source)) continue;
     const { id, name } = source as Record<string, unknown>;
     if (typeof id !== "string" || typeof name !== "string") continue;
-    const matches = identities.filter((identity) => identity.name === name);
+    const locator =
+      id === "v1-primary"
+        ? "primary"
+        : /^v1-mode-(\d+)$/.exec(id)?.[1]
+          ? `damage-mode:${/^v1-mode-(\d+)$/.exec(id)![1]}`
+          : /^v1-extra-\d+$/.test(id)
+            ? `extra-mode:${name}`
+            : undefined;
+    const locatorMatches = locator
+      ? identities.filter((identity) => locatorKey(identity.locator) === locator)
+      : [];
+    const idMatches = identities.filter((identity) => identity.id === id);
+    const nameMatches = identities.filter((identity) => identity.name === name);
+    const matches =
+      locatorMatches.length > 0
+        ? locatorMatches
+        : idMatches.length > 0
+          ? idMatches
+          : nameMatches;
     if (matches.length !== 1) {
       throw new Error(
-        `${table}:${name}: baseline consumer source matched ${matches.length} frozen identities`,
+        `${table}:${id}:${name}: baseline consumer source matched ${matches.length} frozen identities`,
       );
     }
     result[id] = matches[0].id;
@@ -1482,11 +1725,15 @@ export function auditMigrationDecisions(options: {
       const unresolved = gaps.filter((gap) => !decided[gap.source]?.[gap.field]);
       const stale = Object.entries(decided).flatMap(([source, fields]) =>
         Object.keys(fields)
-          .filter((field) => !gaps.some((gap) => gap.source === source && gap.field === field))
+          .filter(
+            (field) =>
+              fields[field].action !== "confirmed_override" &&
+              !gaps.some((gap) => gap.source === source && gap.field === field),
+          )
           .map((field) => `${source}:${field}`),
       );
       const data = buildV2Data(file, decisions)!;
-      auditBuiltLinks(data, table, reader);
+      auditBuiltLinks(data, file.table, reader);
       const resolved = resolveWeapon(data, {
         slug: file.slug,
         expectedTable: file.table,
@@ -1494,12 +1741,12 @@ export function auditMigrationDecisions(options: {
       });
       const snapshotGaps = consumerDifferences(file, decisions, resolved);
       const allowedPointers = new Set(
-        selected.table.snapshot_differences.map((difference) => difference.pointer),
+        reviewedSnapshotDecisions(selected.table).map((difference) => difference.pointer),
       );
       const unresolvedSnapshot = snapshotGaps.filter(
         (difference) => !allowedPointers.has(difference.pointer),
       );
-      const staleSnapshot = selected.table.snapshot_differences
+      const staleSnapshot = reviewedSnapshotDecisions(selected.table)
         .map((difference) => difference.pointer)
         .filter((pointer) => !snapshotGaps.some((difference) => difference.pointer === pointer));
       tables[file.table].push({
@@ -1535,6 +1782,7 @@ function migratedDecisionIssues(
 ): string[] {
   const issues: string[] = [];
   const weapon = validateWeaponSourceV2(file.data, { expectedTable: file.table });
+  const effectiveReferences = resolveDamageSourceReferences(weapon);
   const expectedIds = new Set<string>();
   for (const [key, source] of Object.entries(selected.table.sources)) {
     const identity = selected.weapon.sources[key];
@@ -1550,17 +1798,26 @@ function migratedDecisionIssues(
     }
     if (actual.name !== identity.name) issues.push(`${key}: source name differs from decision`);
     if (actual.section !== identity.section) issues.push(`${key}: source section differs from decision`);
+    if (
+      identity.label !== undefined &&
+      actual.label !== (identity.label === null ? undefined : identity.label)
+    ) {
+      issues.push(`${key}: source label differs from decision`);
+    }
     if (actual.inherits !== identity.inherits) issues.push(`${key}: source inheritance differs from decision`);
     if (!isDeepStrictEqual(canonicalize(actual.source), canonicalize(source))) {
       issues.push(`${key}: explicit source reference differs from decision`);
     }
+    const effectiveSource = effectiveReferences.get(actual.id)?.source;
     const fieldDecisions = selected.table.field_decisions[key] ?? {};
     const expectedOverridePaths = new Set<string>();
     const preserveReasons: string[] = [];
     const overridePath = (field: string): readonly string[] | undefined => {
       if (field.startsWith("damage.")) return ["numerical", ...field.split(".")];
       if (comparableFields.includes(field as ComparableField)) return ["numerical", field];
-      if (field === "fire.interval") return ["asc", "fire_interval"];
+      if (field === "fire.interval" && effectiveSource?.asc_type_id) {
+        return ["asc", "fire_interval"];
+      }
       if (field === "attenuation") return ["asc", "attenuation"];
       return undefined;
     };
@@ -1621,12 +1878,68 @@ function migratedDecisionIssues(
       issues.push(`${key}: override_reason differs from reviewed override decisions`);
     }
   }
+  for (const addition of sourceAdditions(selected.table)) {
+    expectedIds.add(addition.identity.id);
+    const anchorMatches = Object.values(selected.weapon.sources).filter(
+      (identity) =>
+        identity.table_scope.includes(file.table) &&
+        locatorKey(identity.locator) === locatorKey(addition.after_locator),
+    );
+    if (anchorMatches.length !== 1) {
+      issues.push(`${addition.key}: addition anchor matched ${anchorMatches.length} identities`);
+    }
+    const actual = weapon.damage_sources.find(
+      (candidate) => candidate.id === addition.identity.id,
+    );
+    if (!actual) {
+      issues.push(`${addition.key}: missing added source ${addition.identity.id}`);
+      continue;
+    }
+    if (actual.name !== addition.identity.name) {
+      issues.push(`${addition.key}: added source name differs from decision`);
+    }
+    if (actual.section !== addition.identity.section) {
+      issues.push(`${addition.key}: added source section differs from decision`);
+    }
+    if (actual.inherits !== addition.identity.inherits) {
+      issues.push(`${addition.key}: added source inheritance differs from decision`);
+    }
+    if (!isDeepStrictEqual(canonicalize(actual.source), canonicalize(addition.source))) {
+      issues.push(`${addition.key}: added source reference differs from decision`);
+    }
+    if (actual.label !== addition.label) {
+      issues.push(`${addition.key}: added source label differs from decision`);
+    }
+    if (actual.fire_interval !== addition.fire_interval) {
+      issues.push(`${addition.key}: added source fire_interval differs from decision`);
+    }
+    if (actual.pellets !== addition.pellets) {
+      issues.push(`${addition.key}: added source pellets differs from decision`);
+    }
+    const effective = effectiveReferences.get(addition.identity.id)?.source;
+    if (
+      !effective ||
+      !isDeepStrictEqual(
+        canonicalize(effective),
+        canonicalize(addition.source_review.effective_source),
+      )
+    ) {
+      issues.push(`${addition.key}: added source effective reference differs from review`);
+    }
+  }
   for (const source of weapon.damage_sources) {
     if (!expectedIds.has(source.id)) issues.push(`${source.id}: migrated source is absent from decision`);
   }
   if (weapon.item_id !== selected.table.item_id) issues.push("item_id differs from decision");
   if (weapon.active_skill_id !== selected.table.active_skill_id) {
     issues.push("active_skill_id differs from decision");
+  }
+  for (const [field, correction] of Object.entries(
+    compatibilityFieldCorrections(selected.table),
+  )) {
+    if (!Object.is(file.data[field], correction.to)) {
+      issues.push(`${field}: compatibility correction target differs from decision`);
+    }
   }
   return issues;
 }
@@ -1707,6 +2020,7 @@ export function applyMigrationTable(
     }
     if (selected.table.exclude) continue;
     try {
+      assertActiveSkillCorrection(file, selected.table);
       const gaps = fieldGaps(file, decisions, reader);
       const unresolved = gaps.filter(
         (gap) => !selected.table.field_decisions[gap.source]?.[gap.field],
@@ -1723,12 +2037,12 @@ export function applyMigrationTable(
       });
       const snapshotGaps = consumerDifferences(file, decisions, resolved);
       const allowed = new Set(
-        selected.table.snapshot_differences.map((difference) => difference.pointer),
+        reviewedSnapshotDecisions(selected.table).map((difference) => difference.pointer),
       );
       const unresolvedSnapshot = snapshotGaps.filter(
         (difference) => !allowed.has(difference.pointer),
       );
-      const staleSnapshot = selected.table.snapshot_differences.filter(
+      const staleSnapshot = reviewedSnapshotDecisions(selected.table).filter(
         (difference) => !snapshotGaps.some((gap) => gap.pointer === difference.pointer),
       );
       if (unresolvedSnapshot.length > 0 || staleSnapshot.length > 0) {
@@ -1968,7 +2282,7 @@ export function reviewedSnapshotDifferences(
     const tableDecision = weaponDecision?.tables[table];
     const consumer = collected.differences[key] ?? [];
     const approved = new Map(
-      (tableDecision?.snapshot_differences ?? []).map((difference) => [
+      (tableDecision ? reviewedSnapshotDecisions(tableDecision) : []).map((difference) => [
         difference.pointer,
         difference,
       ]),
