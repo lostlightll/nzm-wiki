@@ -84,9 +84,14 @@ export const attenuationOverrideSchema = z.discriminatedUnion("status", [
     }),
 ]);
 
-export const ascOverridesSchema = z.strictObject({
-  attenuation: attenuationOverrideSchema,
-});
+export const ascOverridesSchema = z
+  .strictObject({
+    attenuation: attenuationOverrideSchema.optional(),
+    fire_interval: finiteNonNegativeSchema.optional(),
+  })
+  .refine((value) => Object.keys(value).length > 0, {
+    message: "asc override must contain at least one field",
+  });
 
 export const damageSourceOverridesSchema = z
   .strictObject({

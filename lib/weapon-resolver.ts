@@ -622,7 +622,11 @@ function v1ModeDescriptor(
       : inheritedInterval
         ? [
             ...inheritedInterval,
-            { kind: "derived", sourceId: id, note: "inherited-primary-fire-interval" },
+            {
+              kind: "derived" as const,
+              sourceId: id,
+              note: "inherited-primary-fire-interval",
+            },
           ]
         : v1Default(id);
   return {
@@ -1668,6 +1672,55 @@ function applyAttenuationOverride(
     : { status: "not_applicable", ...shared };
 }
 
+function applyFireIntervalOverride(
+  fire: ResolvedFireBehavior,
+  value: number,
+  step: DamageSourceOverrideStep,
+  sourceId: string,
+  diagnostics: ResolutionDiagnostic[],
+): void {
+  const beforeInterval = fieldValue(fire.interval);
+  const beforeRpm = fieldValue(fire.rpm);
+  fire.interval = withOverride(
+    fire.interval,
+    value,
+    step,
+    "fire.interval",
+    diagnostics,
+    sourcePath(sourceId, "fire/interval"),
+  );
+  const rpmAfter = value > 0 ? 60 / value : undefined;
+  const rpmTrace: OverrideTrace<number> = {
+    sourceId: step.sourceId,
+    reason: step.reason,
+    before: beforeRpm,
+    after: rpmAfter,
+  };
+  const rpmProvenance: FieldProvenance[] = [
+    ...fire.interval.provenance,
+    {
+      kind: "derived",
+      rawField: "60 / interval",
+      sourceId,
+      note:
+        beforeInterval === value
+          ? "recomputed-after-equal-override"
+          : "recomputed-after-override",
+    },
+  ];
+  fire.rpm =
+    rpmAfter === undefined
+      ? {
+          state: "unavailable",
+          provenance: rpmProvenance,
+          overrideHistory: [...fire.rpm.overrideHistory, rpmTrace],
+        }
+      : {
+          ...resolved(rpmAfter, rpmProvenance),
+          overrideHistory: [...fire.rpm.overrideHistory, rpmTrace],
+        };
+}
+
 function parseFeel(
   source: DamageSourceV2,
   effective: ResolvedDamageSourceReference,
@@ -1807,7 +1860,7 @@ function parseBehavior(
         throw new WeaponResolutionError(
           "OVERRIDE_SOURCE_MISSING",
           "ASC override requires an effective ASC reference",
-          { path: sourcePath(source.id, "attenuation"), sourceId: step.sourceId },
+          { path: sourcePath(source.id, "overrides/asc"), sourceId: step.sourceId },
         );
       }
     }
@@ -2015,10 +2068,21 @@ function parseBehavior(
     );
   }
   for (const step of effective.overrideChain) {
-    if (step.overrides.asc) {
+    const ascOverride = step.overrides.asc;
+    if (!ascOverride) continue;
+    if (ascOverride.fire_interval !== undefined) {
+      applyFireIntervalOverride(
+        fire,
+        ascOverride.fire_interval,
+        step,
+        source.id,
+        context.diagnostics,
+      );
+    }
+    if (ascOverride.attenuation) {
       attenuation = applyAttenuationOverride(
         attenuation,
-        step.overrides.asc.attenuation,
+        ascOverride.attenuation,
         step,
         source.id,
         context.diagnostics,
@@ -2940,11 +3004,27 @@ export function toLegacyWeapon(resolvedWeapon: ResolvedWeapon): Weapon {
     }
     return cloneValue(resolvedWeapon.raw.legacyWeapon) as Weapon;
   }
-  const damageModes = resolvedWeapon.damageSources
-    .filter((source) => source.section === "fire_mode")
-    .map((source) => legacyMode(source, resolvedWeapon));
+  const fireModeSources = resolvedWeapon.damageSources.filter(
+    (source) => source.section === "fire_mode",
+  );
+  const fallbackMain =
+    fireModeSources.length === 0 && resolvedWeapon.mainSourceId
+      ? resolvedWeapon.damageSources.find(
+          (source) => source.id === resolvedWeapon.mainSourceId,
+        )
+      : undefined;
+  const primarySources =
+    fireModeSources.length > 0
+      ? fireModeSources
+      : fallbackMain
+        ? [fallbackMain]
+        : [];
+  const primarySourceIds = new Set(primarySources.map((source) => source.id));
+  const damageModes = primarySources.map((source) =>
+    legacyMode(source, resolvedWeapon),
+  );
   const projectedExtra = resolvedWeapon.damageSources
-    .filter((source) => source.section !== "fire_mode")
+    .filter((source) => !primarySourceIds.has(source.id))
     .map((source) => legacyMode(source, resolvedWeapon));
   const timeBase = fieldValue(resolvedWeapon.changeClip.timeBase);
   const reloadRecovery = fieldValue(resolvedWeapon.changeClip.reloadRecovery);

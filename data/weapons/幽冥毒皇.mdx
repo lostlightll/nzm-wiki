@@ -1,6 +1,8 @@
 ---
 title: 幽冥毒皇
+schema_version: 2
 prototype_id: '20006000006'
+item_id: '20106000007'
 use_type: 主武器
 weapon_type: 机枪
 element: 腐蚀
@@ -8,62 +10,46 @@ rarity: 传说
 tags:
   - 多模式
 scope: 中倍镜
-damage_label: ''
-damage_label_text: ''
-mode_names:
-  '1': 榴弹命中
-  '2': 榴弹爆炸
-damage_modes:
-  - mode: 1
+damage_sources:
+  - id: machine-gun
+    name: 机枪射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: lc
+        id: 120600060
+        level: 1
+      asc_type_id: '223'
+  - id: grenade-hit
     name: 榴弹命中
-    fire_interval: 0.8
-    damage:
-      base: 0.45
-      impulse: 3
-      toughness: 3
-      flesh: 3
-      hurtable: 3
-    element: 腐蚀
-    element_add_rate: 0.3
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - mode: 2
+    section: fire_mode
+    source:
+      prototype_mode: 1
+      numerical:
+        table: lc
+        id: 120600061
+        level: 1
+      asc_type_id: '224'
+  - id: grenade-explosion
     name: 榴弹爆炸
+    section: special
     label: 爆炸伤害
-    damage:
-      base: 0.3
-      impulse: 3
-      toughness: 3
-      flesh: 3
-      hurtable: 3
-    fire_interval: 0
-    enable_critical: true
-    element_add_rate: 0.15
-extra_modes:
-  - name: 毒池Dot
-    damage:
-      base: 0.03
-      impulse: 0
-      toughness: 0
-      flesh: 0
-      hurtable: 0
-    enable_critical: true
-    fire_interval: 0
+    source:
+      prototype_mode: 1
+      numerical:
+        table: lc
+        id: 120600062
+        level: 1
+  - id: poison-pool-dot
+    name: 毒池 Dot
+    section: dot
     label: 灼烧伤害
-damage:
-  base: 0.115
-  impulse: 1.5
-  toughness: 1.5
-  flesh: 1.2
-  hurtable: 1.2
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.3
-file_rate: 621
+    source:
+      numerical:
+        table: lc
+        id: 120600063
+        level: 1
 magazine: 100
 total_ammo: 1000
 accuracy: 80
@@ -71,18 +57,13 @@ stability: 50
 changeClip:
   timeBase: 2.5
   reloadRecovery: 0.2783
-range: ''
-explosion_range: ''
 attenuation_begin: 49
 attenuation_end: 60
 attenuation_scale: 0.6
-ignore_shield: false
-element_add_rate: 0.097
 skill_cooldown: 30
 skill_duration: 10
 skill_blocking: true
 show_duration: true
-pellets: ''
 weapon_type_id: 6
 active_skill_id: 5102201
 ---

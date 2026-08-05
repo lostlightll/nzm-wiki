@@ -1,5 +1,6 @@
 ---
 title: 飓风之龙
+schema_version: 2
 nickname: 微风之区
 keywords:
   - 🐉
@@ -8,7 +9,8 @@ keywords:
   - 潜龙在渊
   - 帝王之征
   - 龙可是帝王之征啊
-prototype_id: 20003000011
+prototype_id: '20003000011'
+item_id: '20103000010'
 use_type: 主武器
 weapon_type: 霰弹枪
 element: 火焰
@@ -16,108 +18,59 @@ rarity: 传说
 tags:
   - 快速连发
 scope: 不可开镜
-damage_label: ''
-damage_label_text: ''
-mode_names:
-  0: 霰弹射击
-  1: 龙炎弹
-  2: 霰弹四连发
-  3: 龙炎弹四连发
-damage_modes:
-  - mode: 1
+damage_sources:
+  - id: shotgun
+    name: 霰弹射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 120300110
+        level: 1
+      asc_type_id: '143'
+  - id: dragon-flame-hit
     name: 龙炎弹
-    fire_interval: 0.75
-    pellets: 5
-    damage:
-      base: 0.3
-      impulse: 3
-      toughness: 3
-      flesh: 3
-      hurtable: 3
-    element: 火焰
-    element_add_rate: 0.15
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-extra_modes:
-  - name: 龙炎弹爆炸
-    fire_interval: 0
+    section: fire_mode
+    source:
+      prototype_mode: 1
+      numerical:
+        table: td
+        id: 120300111
+        level: 1
+      asc_type_id: '184'
+  - id: dragon-flame-explosion
+    name: 龙炎弹爆炸
+    section: special
     label: 爆炸伤害
-    damage:
-      base: 0.06
-      impulse: 0.6
-      toughness: 0.6
-      flesh: 0.6
-      hurtable: 0.6
-    element: 火焰
-    element_add_rate: 0.03
-    weakness_multiplier: 1
-    enable_critical: false
-    enable_weakness: false
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - name: 索命龙炎
-    fire_interval: 0
-    damage:
-      base: 0.18
-      impulse: 1.8
-      toughness: 1.8
-      flesh: 1.8
-      hurtable: 1.8
-    element: 火焰
-    element_add_rate: 0.09
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - name: 霰弹四连发
-    fire_interval: 0.33
-    damage:
-      base: 0.11
-      impulse: 1
-      toughness: 1
-      flesh: 0.8
-      hurtable: 0.8
-    element: 火焰
-    element_add_rate: 0.06
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-  - name: 龙炎弹四连发
-    fire_interval: 0.5
-    damage:
-      base: 0.3
-      impulse: 3
-      toughness: 3
-      flesh: 3
-      hurtable: 3
-    element: 火焰
-    element_add_rate: 0.15
-    weakness_multiplier: 1
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-damage:
-  base: 0.11
-  impulse: 1
-  toughness: 1
-  flesh: 0.8
-  hurtable: 0.8
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.2
-file_rate: 181
+    source:
+      prototype_mode: 1
+      numerical:
+        table: td
+        id: 120300112
+        level: 1
+  - id: seeking-dragon-flame
+    name: 索命龙炎
+    section: special
+    source:
+      numerical:
+        table: td
+        id: 120300113
+        level: 1
+  - id: shotgun-burst
+    name: 霰弹四连发
+    section: variant
+    inherits: shotgun
+    source:
+      prototype_mode: 2
+      asc_type_id: '196'
+  - id: dragon-flame-burst
+    name: 龙炎弹四连发
+    section: variant
+    inherits: dragon-flame-hit
+    source:
+      prototype_mode: 3
+      asc_type_id: '197'
 magazine: 16
 total_ammo: 160
 accuracy: 59
@@ -125,15 +78,10 @@ stability: 64
 changeClip:
   timeBase: 2.2
   reloadRecovery: 0.3678
-range: ''
-explosion_range: ''
 attenuation_begin: 10
 attenuation_end: 20
 attenuation_scale: 0.3
-ignore_shield: false
-element_add_rate: 0.06
 skill_cooldown: 25
-pellets: 6
 weapon_type_id: 3
 active_skill_id: 5101501
 shooting_energy: true

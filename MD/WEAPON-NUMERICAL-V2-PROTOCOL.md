@@ -189,7 +189,7 @@ numerical:
 
 ## 6. Overrides
 
-Task 1 首先开放 Numerical 命名空间；Task 4 在确认 ASC 衰减语义后增加 `asc.attenuation`：
+Task 1 首先开放 Numerical 命名空间；Task 4 在确认 ASC 衰减语义后增加 `asc.attenuation`，Task 5 试迁移后增加 `asc.fire_interval`：
 
 ```yaml
 overrides:
@@ -205,6 +205,13 @@ overrides:
     attenuation:
       status: not_applicable
 override_reason: 实测确认该来源不使用 ASC 中的衰减候选
+```
+
+```yaml
+overrides:
+  asc:
+    fire_interval: 0.0727
+override_reason: 实测确认持续开火的最大射速间隔
 ```
 
 需要修正衰减数值时使用：
@@ -242,6 +249,9 @@ override_reason: 实测确认衰减区间与最低倍率
 - Settlement Tags、Numerical 引用和原始 Lock 行不能被覆盖。
 - Resolver 后续必须保留原始值、有效值和覆盖原因。
 - `asc.attenuation` 只能覆盖合法 ASC 原始衰减事实；缺少 ASC、原始值非法或结构不完整时不能用 override 掩盖。
+- `asc.fire_interval` 必须是非负有限数，只能覆盖有效 ASC 的 `FireIntervalBase`；缺少 ASC 时拒绝解析。
+- 射击间隔 override 按父项到子项依次应用，每一步同时记录 interval 与派生 RPM 的前后值；最终间隔为 `0` 时 RPM 为 `unavailable`。
+- 来源级兼容字段 `fire_interval` 只用于差异诊断，必须与全部 overrides 应用后的最终间隔比较。
 - Feel、Item overrides 等相应 Lock 和领域映射确定后再增加命名空间。
 
 ## 7. 不适用、确定为零与待核验

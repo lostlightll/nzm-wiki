@@ -341,6 +341,327 @@ test("Numerical overrides preserve zero and reject Settlement-inapplicable field
   );
 });
 
+test("ASC fire interval overrides preserve ordered interval and RPM history", () => {
+  const damageSources = [
+    {
+      id: "primary",
+      name: "普通射击",
+      section: "fire_mode",
+      source: {
+        numerical: { table: "lc", id: 1, level: 1 },
+        asc_type_id: "10",
+      },
+      overrides: { asc: { fire_interval: 0.15 } },
+      override_reason: "实测基础射击间隔",
+    },
+    {
+      id: "variant",
+      name: "射速变体",
+      section: "variant",
+      inherits: "primary",
+      source: { asc_type_id: "11" },
+      fire_interval: 0.12,
+      overrides: { asc: { fire_interval: 0.12 } },
+      override_reason: "实测变体射击间隔",
+    },
+  ];
+  const fixture = weapon({
+    item_id: undefined,
+    active_skill_id: 0,
+    damage_sources: damageSources,
+  });
+  const resolved = resolveWeapon(fixture, {
+    slug: "fire-interval-overrides",
+    expectedTable: "lc",
+    lock: lock(),
+  });
+  const variant = resolved.damageSources[1];
+
+  assert.equal(variant.fire.interval.value, 0.12);
+  assert.deepEqual(variant.fire.interval.overrideHistory, [
+    {
+      sourceId: "primary",
+      reason: "实测基础射击间隔",
+      before: 0.1,
+      after: 0.15,
+    },
+    {
+      sourceId: "variant",
+      reason: "实测变体射击间隔",
+      before: 0.15,
+      after: 0.12,
+    },
+  ]);
+  assert.equal(variant.fire.rpm.value, 500);
+  assert.deepEqual(variant.fire.rpm.overrideHistory, [
+    {
+      sourceId: "primary",
+      reason: "实测基础射击间隔",
+      before: 600,
+      after: 400,
+    },
+    {
+      sourceId: "variant",
+      reason: "实测变体射击间隔",
+      before: 400,
+      after: 500,
+    },
+  ]);
+  assert.ok(
+    variant.fire.interval.provenance.some(
+      (entry) => entry.kind === "lock-asc" && entry.sourceKey === "11",
+    ),
+  );
+  assert.ok(
+    variant.fire.rpm.provenance.some(
+      (entry) => entry.kind === "derived" && entry.rawField === "60 / interval",
+    ),
+  );
+  assert.ok(
+    !resolved.diagnostics.some(
+      (entry) =>
+        entry.code === "COMPAT_MISMATCH" &&
+        entry.path === "/damageSources/variant/fire/interval",
+    ),
+  );
+
+  const mismatch = resolveWeapon(
+    {
+      ...fixture,
+      damage_sources: [
+        damageSources[0],
+        { ...damageSources[1], fire_interval: 0.11 },
+      ],
+    },
+    { slug: "fire-interval-mismatch", expectedTable: "lc", lock: lock() },
+  );
+  assert.ok(
+    mismatch.diagnostics.some(
+      (entry) =>
+        entry.code === "COMPAT_MISMATCH" &&
+        entry.path === "/damageSources/variant/fire/interval",
+    ),
+  );
+});
+
+test("zero ASC interval makes RPM unavailable and ASC-less overrides fail", () => {
+  const zero = resolveWeapon(
+    weapon({
+      item_id: undefined,
+      active_skill_id: 0,
+      damage_sources: [
+        {
+          id: "primary",
+          name: "零间隔来源",
+          section: "fire_mode",
+          source: {
+            numerical: { table: "lc", id: 1, level: 1 },
+            asc_type_id: "10",
+          },
+          overrides: { asc: { fire_interval: 0 } },
+          override_reason: "该阶段不按射速循环",
+        },
+      ],
+    }),
+    { slug: "zero-fire-interval", expectedTable: "lc", lock: lock() },
+  );
+  assert.equal(zero.damageSources[0].fire.interval.state, "zero");
+  assert.equal(zero.damageSources[0].fire.rpm.state, "unavailable");
+  assert.deepEqual(zero.damageSources[0].fire.rpm.overrideHistory, [
+    {
+      sourceId: "primary",
+      reason: "该阶段不按射速循环",
+      before: 300,
+      after: undefined,
+    },
+  ]);
+
+  const noAsc = weapon({
+    item_id: undefined,
+    active_skill_id: 0,
+    damage_sources: [
+      {
+        id: "skill-hit",
+        name: "技能命中",
+        section: "skill",
+        source: { numerical: { table: "lc", id: 1, level: 1 } },
+        overrides: { asc: { fire_interval: 0.2 } },
+        override_reason: "无 ASC 的非法覆盖",
+      },
+    ],
+  });
+  const error = captureError(() =>
+    resolveWeapon(noAsc, {
+      slug: "asc-less-override",
+      expectedTable: "lc",
+      lock: lock(),
+    }),
+  );
+  assert.equal(error.code, "OVERRIDE_SOURCE_MISSING");
+  assert.equal(error.path, "/damageSources/skill-hit/overrides/asc");
+});
+
+test("legacy bridge uses the resolved main source when V2 has no fire mode", () => {
+  const melee = resolveWeapon(
+    weapon({
+      item_id: undefined,
+      active_skill_id: 0,
+      use_type: "近战武器",
+      weapon_type: "近战武器",
+      damage_sources: [
+        {
+          id: "heavy-hit",
+          name: "重击",
+          section: "melee",
+          source: { numerical: { table: "lc", id: 1, level: 1 } },
+        },
+        {
+          id: "light-hit",
+          name: "轻击",
+          section: "melee",
+          source: { numerical: { table: "lc", id: 1, level: 1 } },
+        },
+      ],
+    }),
+    { slug: "melee-bridge", expectedTable: "lc", lock: lock() },
+  );
+  const projectedMelee = toLegacyWeapon(melee);
+  assert.deepEqual(
+    projectedMelee.damageModes.map((mode) => mode.name),
+    ["重击"],
+  );
+  assert.deepEqual(
+    projectedMelee.extraModes?.map((mode) => mode.name),
+    ["轻击"],
+  );
+
+  const nonAttacking = resolveWeapon(
+    weapon({
+      item_id: undefined,
+      active_skill_id: 0,
+      damage_sources: [],
+    }),
+    { slug: "non-attacking-bridge", expectedTable: "lc", lock: lock() },
+  );
+  const projectedNonAttacking = toLegacyWeapon(nonAttacking);
+  assert.deepEqual(projectedNonAttacking.damageModes, []);
+  assert.equal(projectedNonAttacking.extraModes, undefined);
+});
+
+test("supplemental attenuation samples use source overrides without weapon-name branches", () => {
+  const sampleLock = lock();
+  const samples = [
+    { id: "236", begin: 1800, end: 4000, scale: 0.4 },
+    { id: "159", begin: 2600, end: 5000, scale: 0.5 },
+    { id: "357", begin: 8000, end: 12000, scale: 0.8 },
+    { id: "117", begin: 0, end: 0, scale: 1 },
+  ] as const;
+  for (const sample of samples) {
+    sampleLock.rows.asc[sample.id] = {
+      row_name: sample.id,
+      raw: ascRaw(Number(sample.id), {
+        DistanceBeginAttenuationBase: sample.begin,
+        DistanceEndAttenuationBase: sample.end,
+        AttenuationMinScale: sample.scale,
+      }),
+    };
+    sampleLock.rows.feel[sample.id] = {
+      row_name: sample.id,
+      raw: { WeaponFeelParamID: Number(sample.id) },
+    };
+  }
+  const overridden = (id: string, name: string) => ({
+    id,
+    name,
+    section: "special",
+    source: {
+      numerical: { table: "lc", id: 1, level: 1 },
+      asc_type_id: id === "energy-shadow" ? "236" : id === "vibration" ? "159" : "357",
+    },
+    overrides: { asc: { attenuation: { status: "not_applicable" } } },
+    override_reason: "实测确认该来源不使用距离衰减",
+  });
+  const resolved = resolveWeapon(
+    weapon({
+      item_id: undefined,
+      active_skill_id: 0,
+      damage_sources: [
+        overridden("energy-shadow", "能源之影"),
+        overridden("vibration", "振弦"),
+        overridden("burst-star", "爆星"),
+        {
+          id: "steel-roar",
+          name: "钢铁轰鸣",
+          section: "special",
+          source: {
+            numerical: { table: "lc", id: 1, level: 1 },
+            asc_type_id: "117",
+          },
+        },
+      ],
+    }),
+    { slug: "attenuation-samples", expectedTable: "lc", lock: sampleLock },
+  );
+
+  assert.deepEqual(
+    resolved.damageSources.map((source) => source.attenuation.status),
+    ["not_applicable", "not_applicable", "not_applicable", "not_applicable"],
+  );
+  const energyAttenuation = resolved.damageSources[0].attenuation;
+  assert.ok("raw" in energyAttenuation);
+  assert.deepEqual(energyAttenuation.raw, {
+    beginCm: 1800,
+    endCm: 4000,
+    minScale: 0.4,
+  });
+  assert.equal(resolved.damageSources[0].attenuation.overrideHistory.length, 1);
+  assert.equal(resolved.damageSources[3].attenuation.overrideHistory.length, 0);
+});
+
+test("explicit Feel exception is resolved from its own Lock row with provenance", () => {
+  const sampleLock = lock();
+  sampleLock.rows.feel["99"] = {
+    row_name: "99",
+    raw: {
+      WeaponFeelParamID: 99,
+      WeaponChangeClipTimeBase: 3.5,
+      WeaponChangeClipEndToFireTime: 0.25,
+    },
+  };
+  const resolved = resolveWeapon(
+    weapon({
+      item_id: undefined,
+      active_skill_id: 0,
+      damage_sources: [
+        {
+          id: "explicit-feel",
+          name: "显式 Feel 例外",
+          section: "fire_mode",
+          source: {
+            numerical: { table: "lc", id: 1, level: 1 },
+            asc_type_id: "10",
+            feel_param_id: "99",
+          },
+        },
+      ],
+    }),
+    { slug: "explicit-feel", expectedTable: "lc", lock: sampleLock },
+  );
+  const source = resolved.damageSources[0];
+  assert.equal(source.feel.changeClipTime.value, 3.5);
+  assert.equal(source.feel.changeClipEndToFire.value, 0.25);
+  assert.ok(
+    source.feel.changeClipTime.provenance.some(
+      (entry) => entry.kind === "lock-feel" && entry.sourceKey === "99",
+    ),
+  );
+  assert.ok(
+    source.provenance.some(
+      (entry) => entry.kind === "lock-feel" && entry.sourceKey === "99",
+    ),
+  );
+});
+
 test("Item identity is strict while invalid fields can use documented MDX fallback", () => {
   const missingItem = lock();
   delete missingItem.rows.item["100"];
@@ -548,22 +869,28 @@ test("V1 provenance keeps original damage and extra mode indices", () => {
   );
 });
 
-test("all LC and TD V1 files retain byte-shape legacy behavior", () => {
-  let count = 0;
+test("all remaining LC and TD V1 files retain byte-shape legacy behavior", () => {
+  let v1Count = 0;
+  let v2Count = 0;
   for (const [directory, table] of [
     ["data/weapons", "lc"],
     ["data/weapons_td", "td"],
   ] as const) {
     for (const file of fs.readdirSync(directory).filter((name) => name.endsWith(".mdx"))) {
       const raw = matter(fs.readFileSync(path.join(directory, file), "utf8")).data;
+      if (raw.schema_version === 2) {
+        v2Count += 1;
+        continue;
+      }
       const slug = file.replace(/\.mdx$/, "");
       const expected = transformWeaponV1Legacy(raw, slug);
       const actual = toLegacyWeapon(
         resolveWeapon(raw, { slug, expectedTable: table }),
       );
       assert.deepStrictEqual(actual, expected, `${directory}/${file}`);
-      count += 1;
+      v1Count += 1;
     }
   }
-  assert.equal(count, 224);
+  assert.equal(v1Count, 214);
+  assert.equal(v2Count, 10);
 });

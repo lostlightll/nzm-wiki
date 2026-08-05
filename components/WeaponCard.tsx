@@ -126,11 +126,10 @@ function getMeleeDamageBase(
  */
 function SimpleCard({ weapon }: { weapon: Weapon }) {
   const mode = weapon.damageModes[0];
-  if (!mode) return <div className="text-zinc-500">武器数据异常</div>;
 
   const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-  const elementIcon = ELEMENT_ICONS[mode.element];
+  const elementIcon = mode ? ELEMENT_ICONS[mode.element] : undefined;
 
   return (
     <CatalogLink
@@ -151,6 +150,7 @@ function SimpleCard({ weapon }: { weapon: Weapon }) {
         )}
         <h3 className="mb-2 text-base font-semibold text-white">{weapon.title}</h3>
         <WeaponImage name={weapon.title} size="small" />
+        {!mode && <div className="mt-2 text-xs text-zinc-500">不可攻击</div>}
       </div>
     </CatalogLink>
   );
@@ -162,14 +162,32 @@ function SimpleCard({ weapon }: { weapon: Weapon }) {
 function DetailedCard({ weapon }: { weapon: Weapon }) {
   const mode = weapon.damageModes[0];
   const [showReloadDetail, setShowReloadDetail] = useState(false);
-  if (!mode) return <div className="text-zinc-500">武器数据异常</div>;
 
   const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
-  const elementIcon = ELEMENT_ICONS[mode.element];
+  const elementIcon = mode ? ELEMENT_ICONS[mode.element] : undefined;
   const tags = weapon.tags || [];
   const hpMul = weapon.game_mode === "td" ? 400 : 500;
   const isMelee = isMeleeWeapon(weapon);
+
+  if (!mode) {
+    return (
+      <CatalogLink
+        href={`/weapons${weapon.game_mode === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
+      >
+        <div
+          className={`relative w-full min-w-0 rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5`}
+        >
+          <h3 className="text-xl font-semibold text-white">{weapon.title}</h3>
+          <div className="mt-1 text-sm text-zinc-400">{weapon.use_type}</div>
+          <WeaponImage name={weapon.title} />
+          <div className="mt-3 border-t border-zinc-700 pt-3 text-sm text-zinc-500">
+            不可攻击
+          </div>
+        </div>
+      </CatalogLink>
+    );
+  }
 
   return (
     <CatalogLink
@@ -473,9 +491,24 @@ export function WeaponDetailCard({ weapon }: { weapon: Weapon }) {
   const [showReloadDetail, setShowReloadDetail] = useState(false);
 
   if (!mode) {
+    const rarityKey = weapon.rarity ? RARITY_KEY_MAP[weapon.rarity] : "common";
+    const rarityStyle = RARITY_CARD_STYLES[rarityKey];
     return (
-      <div className="rounded-lg border-2 border-zinc-700 bg-zinc-900 p-6 text-center text-zinc-500">
-        武器数据异常
+      <div className={`rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-6`}>
+        <h1 className="text-2xl font-bold text-white">{weapon.title}</h1>
+        <div className="mt-1 text-sm text-zinc-400">{weapon.use_type}</div>
+        <div className="relative my-6 h-32 w-full">
+          <Image
+            src={getAssetPath(`/icons/weapons/normal/${weapon.title}.png`)}
+            alt={weapon.title || ""}
+            width={320}
+            height={160}
+            className="mx-auto object-contain"
+          />
+        </div>
+        <div className="border-t border-zinc-700 pt-4 text-sm text-zinc-500">
+          不可攻击
+        </div>
       </div>
     );
   }

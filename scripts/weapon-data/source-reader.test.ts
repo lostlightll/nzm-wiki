@@ -58,6 +58,18 @@ const defaultRows: Record<WeaponDataSourceKind, Rows> = {
       ModelID: 20003000011,
       AccuracyInt: 78,
     },
+    "20106000003": {
+      ItemID: 20106000003,
+      ModelID: 20006000003,
+    },
+    "20106000005": {
+      ItemID: 20106000005,
+      ModelID: 20006000003,
+    },
+    "20106000006": {
+      ItemID: 20106000006,
+      ModelID: 20006000003,
+    },
   },
   prototype: {
     "飓风之龙": {
@@ -169,6 +181,15 @@ test("精确读取八类来源并完整保留未知原始字段", (context) => {
     [{ Name: "Unknown", Value: "kept" }],
   );
   assert.equal(reader.getGpActiveSkill(5004901).raw.CooldownDuration, 30);
+});
+
+test("纯白至上多 Item 候选保持候选集合并允许显式精确选择", (context) => {
+  const { reader } = createFixture(context);
+  assert.deepEqual(
+    reader.findItemsByPrototypeId("20006000003").map((item) => item.key),
+    ["20106000003", "20106000005", "20106000006"],
+  );
+  assert.equal(reader.getItem("20106000005").key, "20106000005");
 });
 
 test("PVE 技能身份严格校验，GP 使用 rowName 并保留 AbilityID 差异诊断", (context) => {

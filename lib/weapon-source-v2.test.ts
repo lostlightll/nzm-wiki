@@ -584,3 +584,51 @@ test("ASC attenuation override 使用严格 union 并保留继承顺序", () => 
     ["primary", "variant"],
   );
 });
+
+test("ASC fire interval override 支持零值、继承链并拒绝空 namespace", () => {
+  const parsed = validateWeaponSourceV2(
+    weapon("射速覆盖", [
+      {
+        id: "primary",
+        name: "普通射击",
+        section: "fire_mode",
+        source: { numerical: numerical(1), asc_type_id: "10" },
+        overrides: { asc: { fire_interval: 0.1 } },
+        override_reason: "实测普通射击间隔",
+      },
+      {
+        id: "variant",
+        name: "零间隔变体",
+        section: "variant",
+        inherits: "primary",
+        overrides: { asc: { fire_interval: 0 } },
+        override_reason: "该阶段不按射速循环",
+      },
+    ]),
+    { expectedTable: "lc" },
+  );
+  assert.deepEqual(
+    resolveDamageSourceReferences(parsed)
+      .get("variant")!
+      .overrideChain.map((step) => step.overrides.asc?.fire_interval),
+    [0.1, 0],
+  );
+
+  assert.throws(
+    () =>
+      validateWeaponSourceV2(
+        weapon("空 ASC 覆盖", [
+          {
+            id: "primary",
+            name: "普通射击",
+            section: "fire_mode",
+            source: { numerical: numerical(1), asc_type_id: "10" },
+            overrides: { asc: {} },
+            override_reason: "无效空覆盖",
+          },
+        ]),
+        { expectedTable: "lc" },
+      ),
+    /asc override must contain at least one field/,
+  );
+});

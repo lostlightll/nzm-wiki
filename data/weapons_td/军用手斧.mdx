@@ -1,25 +1,42 @@
 ---
 title: 军用手斧
+schema_version: 2
 use_type: 近战武器
 weapon_type: 近战武器
 element: 物理
 rarity: 稀有
 weapon_type_id: 13
-prototype_id: 20013000009
-asc_type_id: 171
+prototype_id: '20013000009'
+item_id: '20113000009'
 active_skill_id: 0
-damage:
-  base: 1.44
-  impulse: 60
-  toughness: 15
-  flesh: 12
-  hurtable: 12
-melee_damage:
-  light: 0.54
-  heavy: 1.44
-toughness_type: 冲击
-enable_critical: true
-weekness_multiplier: 1.2
+damage_sources:
+  - id: heavy-hit
+    name: 重击
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 121300090
+        level: 1
+      asc_type_id: '171'
+  - id: light-hit-left
+    name: 轻击左
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        table: td
+        id: 121300091
+        level: 1
+  - id: light-hit-right
+    name: 轻击右
+    section: melee
+    source:
+      numerical:
+        table: td
+        id: 121300092
+        level: 1
 magazine: 30
 total_ammo: 5030
 accuracy: 0
@@ -28,29 +45,6 @@ scope: 不可开镜
 attenuation_begin: 0
 attenuation_end: 0
 attenuation_scale: 1
-ignore_shield: false
-element_add_rate: 0
-damage_label: ''
-damage_label_text: ''
-damage_modes:
-  - mode: 0
-    name: 近战攻击
-    fire_interval: 0.15
-    damage:
-      base: 0.72
-      impulse: 60
-      toughness: 15
-      flesh: 12
-      hurtable: 12
-    element: 物理
-    element_add_rate: 0
-    weakness_multiplier: 1.2
-    enable_critical: true
-    enable_weakness: true
-    toughness_type: 冲击
-    ignore_shield: false
-    element_debuff_type_id: 0
-file_rate: 400
 changeClip:
   timeBase: 0.9
   reloadRecovery: 0

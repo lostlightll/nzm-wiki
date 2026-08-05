@@ -58,6 +58,8 @@ Resolver 对完整 `TagName` 做精确匹配，不做后缀猜测。Settlement �
 
 ASC 引用存在时，Lock 行是权威来源。required 字段缺失或非法时直接失败，不能使用 MDX compatibility 字段掩盖。没有 ASC 引用时，来源级 `fire_interval` 和 `pellets` 才作为迁移 fallback。
 
+经实测确认的射击间隔差异使用 `overrides.asc.fire_interval`。Resolver 按继承链顺序应用覆盖，保留 ASC 原始值及每一步 interval/RPM 历史，并在每一步后重新计算 RPM；最终间隔为零时 RPM 明确为 `unavailable`。兼容 `fire_interval` 与最终有效值比较，不与覆盖前 ASC 值比较。
+
 距离衰减按伤害来源解析：
 
 - `0 / 0` 为 `not_applicable`。
