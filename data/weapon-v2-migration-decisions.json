@@ -974,6 +974,34 @@
             "lc",
             "td"
           ]
+        },
+        "extra-mode:无人机射击": {
+          "id": "wu-ren-ji-she-ji",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "无人机射击"
+          },
+          "name": "无人机射击",
+          "reason": "人工筛选 Numerical 家族后登记正式伤害来源",
+          "section": "skill",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:无人机自毁爆炸": {
+          "id": "wu-ren-ji-zi-hui-bao-zha",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "无人机自毁爆炸"
+          },
+          "name": "无人机自毁爆炸",
+          "reason": "人工筛选 Numerical 家族后登记正式伤害来源",
+          "section": "skill",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
         }
       },
       "tables": {
@@ -1103,6 +1131,16 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增无人机射击 Numerical 伤害来源"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/2",
+              "reason": "人工筛选后正式新增无人机自毁爆炸 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -1115,6 +1153,20 @@
                 "table": "lc"
               },
               "prototype_mode": 0
+            },
+            "extra-mode:无人机射击": {
+              "numerical": {
+                "id": 120700352,
+                "level": 1,
+                "table": "lc"
+              }
+            },
+            "extra-mode:无人机自毁爆炸": {
+              "numerical": {
+                "id": 120700353,
+                "level": 1,
+                "table": "lc"
+              }
             }
           }
         },
@@ -1244,6 +1296,16 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增无人机射击 Numerical 伤害来源"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/2",
+              "reason": "人工筛选后正式新增无人机自毁爆炸 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -1256,6 +1318,20 @@
                 "table": "td"
               },
               "prototype_mode": 0
+            },
+            "extra-mode:无人机射击": {
+              "numerical": {
+                "id": 120700352,
+                "level": 1,
+                "table": "td"
+              }
+            },
+            "extra-mode:无人机自毁爆炸": {
+              "numerical": {
+                "id": 120700353,
+                "level": 1,
+                "table": "td"
+              }
             }
           }
         }
@@ -2044,6 +2120,20 @@
             "lc",
             "td"
           ]
+        },
+        "extra-mode:冰池持续伤害": {
+          "id": "bing-chi-chi-xu-shang-hai",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "冰池持续伤害"
+          },
+          "name": "冰池持续伤害",
+          "reason": "人工筛选 Numerical 家族后登记正式伤害来源",
+          "section": "dot",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
         }
       },
       "tables": {
@@ -2119,6 +2209,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增冰池持续伤害 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -2131,6 +2226,13 @@
                 "table": "lc"
               },
               "prototype_mode": 0
+            },
+            "extra-mode:冰池持续伤害": {
+              "numerical": {
+                "id": 120500031,
+                "level": 1,
+                "table": "lc"
+              }
             }
           }
         },
@@ -2206,6 +2308,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增冰池持续伤害 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -2218,6 +2325,13 @@
                 "table": "td"
               },
               "prototype_mode": 0
+            },
+            "extra-mode:冰池持续伤害": {
+              "numerical": {
+                "id": 120500031,
+                "level": 1,
+                "table": "td"
+              }
             }
           }
         }
@@ -7081,6 +7195,20 @@
             "td"
           ]
         },
+        "extra-mode:毒池持续伤害": {
+          "id": "du-chi-chi-xu-shang-hai",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "毒池持续伤害"
+          },
+          "name": "毒池持续伤害",
+          "reason": "人工筛选 Numerical 家族后登记正式伤害来源",
+          "section": "dot",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
         "primary": {
           "id": "pu-tong-she-ji",
           "locator": {
@@ -7221,6 +7349,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/2/fire/rpm/state",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/2/fire/rpm/state"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/3",
+              "reason": "人工筛选后正式新增毒池持续伤害 Numerical 伤害来源"
             }
           ],
           "source_reviews": {
@@ -7256,6 +7389,13 @@
             "damage-mode:2": {
               "numerical": {
                 "id": 120600042,
+                "level": 1,
+                "table": "lc"
+              }
+            },
+            "extra-mode:毒池持续伤害": {
+              "numerical": {
+                "id": 120600043,
                 "level": 1,
                 "table": "lc"
               }
@@ -7396,6 +7536,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/2/fire/rpm/state",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/2/fire/rpm/state"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/3",
+              "reason": "人工筛选后正式新增毒池持续伤害 Numerical 伤害来源"
             }
           ],
           "source_reviews": {
@@ -7431,6 +7576,13 @@
             "damage-mode:2": {
               "numerical": {
                 "id": 120600042,
+                "level": 1,
+                "table": "td"
+              }
+            },
+            "extra-mode:毒池持续伤害": {
+              "numerical": {
+                "id": 120600043,
                 "level": 1,
                 "table": "td"
               }
@@ -7695,6 +7847,20 @@
             "lc",
             "td"
           ]
+        },
+        "extra-mode:榴弹爆炸": {
+          "id": "liu-dan-bao-zha",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "榴弹爆炸"
+          },
+          "name": "榴弹爆炸",
+          "reason": "人工筛选 Numerical 家族后登记正式伤害来源",
+          "section": "special",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
         }
       },
       "tables": {
@@ -7805,6 +7971,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增榴弹爆炸 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -7813,6 +7984,14 @@
               "asc_type_id": "394",
               "numerical": {
                 "id": 120801201,
+                "level": 1,
+                "table": "lc"
+              },
+              "prototype_mode": 0
+            },
+            "extra-mode:榴弹爆炸": {
+              "numerical": {
+                "id": 120801202,
                 "level": 1,
                 "table": "lc"
               },
@@ -7912,6 +8091,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增榴弹爆炸 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -7920,6 +8104,14 @@
               "asc_type_id": "394",
               "numerical": {
                 "id": 120801201,
+                "level": 1,
+                "table": "td"
+              },
+              "prototype_mode": 0
+            },
+            "extra-mode:榴弹爆炸": {
+              "numerical": {
+                "id": 120801202,
                 "level": 1,
                 "table": "td"
               },
@@ -8215,6 +8407,20 @@
             "lc",
             "td"
           ]
+        },
+        "extra-mode:光能矩阵命中": {
+          "id": "guang-neng-ju-zhen-ming-zhong",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "光能矩阵命中"
+          },
+          "name": "光能矩阵命中",
+          "reason": "人工筛选 Numerical 家族后登记正式伤害来源",
+          "section": "skill",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
         }
       },
       "tables": {
@@ -8280,6 +8486,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增光能矩阵命中 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -8292,6 +8503,13 @@
                 "table": "lc"
               },
               "prototype_mode": 0
+            },
+            "extra-mode:光能矩阵命中": {
+              "numerical": {
+                "id": 120700241,
+                "level": 1,
+                "table": "lc"
+              }
             }
           }
         },
@@ -8382,6 +8600,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增光能矩阵命中 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -8394,6 +8617,13 @@
                 "table": "td"
               },
               "prototype_mode": 0
+            },
+            "extra-mode:光能矩阵命中": {
+              "numerical": {
+                "id": 120700241,
+                "level": 1,
+                "table": "td"
+              }
             }
           }
         }
@@ -28504,6 +28734,239 @@
         }
       }
     },
+    "飓风之龙": {
+      "sources": {
+        "damage-mode:1": {
+          "id": "dragon-flame-hit",
+          "locator": {
+            "kind": "damage_mode",
+            "mode": 1
+          },
+          "name": "龙炎弹",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "fire_mode",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:索命龙炎": {
+          "id": "seeking-dragon-flame",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "索命龙炎"
+          },
+          "name": "索命龙炎",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "special",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:自动龙炎": {
+          "id": "automatic-dragon-flame",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "自动龙炎"
+          },
+          "name": "自动龙炎",
+          "reason": "登记正式新增的插件伤害来源身份",
+          "section": "special",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:霰弹四连发": {
+          "id": "shotgun-burst",
+          "inherits": "shotgun",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "霰弹四连发"
+          },
+          "name": "霰弹四连发",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "variant",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:龙炎弹四连发": {
+          "id": "dragon-flame-burst",
+          "inherits": "dragon-flame-hit",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "龙炎弹四连发"
+          },
+          "name": "龙炎弹四连发",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "variant",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:龙炎弹爆炸": {
+          "id": "dragon-flame-explosion",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "龙炎弹爆炸"
+          },
+          "name": "龙炎弹爆炸",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "special",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "primary": {
+          "id": "shotgun",
+          "locator": {
+            "kind": "primary"
+          },
+          "name": "霰弹射击",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "fire_mode",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        }
+      },
+      "tables": {
+        "lc": {
+          "active_skill_id": 5101501,
+          "field_decisions": {},
+          "item_id": "20103000010",
+          "snapshot_differences": [
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/6",
+              "reason": "正式新增自动龙炎 Numerical 与 ASC 伤害来源"
+            }
+          ],
+          "source_reviews": {},
+          "sources": {
+            "damage-mode:1": {
+              "asc_type_id": "184",
+              "numerical": {
+                "id": 120300111,
+                "level": 1,
+                "table": "lc"
+              },
+              "prototype_mode": 1
+            },
+            "extra-mode:索命龙炎": {
+              "numerical": {
+                "id": 120300113,
+                "level": 1,
+                "table": "lc"
+              }
+            },
+            "extra-mode:自动龙炎": {
+              "asc_type_id": "388",
+              "numerical": {
+                "id": 120300114,
+                "level": 1,
+                "table": "lc"
+              }
+            },
+            "extra-mode:霰弹四连发": {
+              "asc_type_id": "196",
+              "prototype_mode": 2
+            },
+            "extra-mode:龙炎弹四连发": {
+              "asc_type_id": "197",
+              "prototype_mode": 3
+            },
+            "extra-mode:龙炎弹爆炸": {
+              "numerical": {
+                "id": 120300112,
+                "level": 1,
+                "table": "lc"
+              },
+              "prototype_mode": 1
+            },
+            "primary": {
+              "asc_type_id": "143",
+              "numerical": {
+                "id": 120300110,
+                "level": 1,
+                "table": "lc"
+              },
+              "prototype_mode": 0
+            }
+          }
+        },
+        "td": {
+          "active_skill_id": 5101501,
+          "field_decisions": {},
+          "item_id": "20103000010",
+          "snapshot_differences": [
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/6",
+              "reason": "正式新增自动龙炎 Numerical 与 ASC 伤害来源"
+            }
+          ],
+          "source_reviews": {},
+          "sources": {
+            "damage-mode:1": {
+              "asc_type_id": "184",
+              "numerical": {
+                "id": 120300111,
+                "level": 1,
+                "table": "td"
+              },
+              "prototype_mode": 1
+            },
+            "extra-mode:索命龙炎": {
+              "numerical": {
+                "id": 120300113,
+                "level": 1,
+                "table": "td"
+              }
+            },
+            "extra-mode:自动龙炎": {
+              "asc_type_id": "388",
+              "numerical": {
+                "id": 120300114,
+                "level": 1,
+                "table": "td"
+              }
+            },
+            "extra-mode:霰弹四连发": {
+              "asc_type_id": "196",
+              "prototype_mode": 2
+            },
+            "extra-mode:龙炎弹四连发": {
+              "asc_type_id": "197",
+              "prototype_mode": 3
+            },
+            "extra-mode:龙炎弹爆炸": {
+              "numerical": {
+                "id": 120300112,
+                "level": 1,
+                "table": "td"
+              },
+              "prototype_mode": 1
+            },
+            "primary": {
+              "asc_type_id": "143",
+              "numerical": {
+                "id": 120300110,
+                "level": 1,
+                "table": "td"
+              },
+              "prototype_mode": 0
+            }
+          }
+        }
+      }
+    },
     "马来剑": {
       "sources": {
         "damage-mode:0": {
@@ -30009,6 +30472,20 @@
             "lc",
             "td"
           ]
+        },
+        "extra-mode:换弹掷枪": {
+          "id": "huan-dan-zhi-qiang",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "换弹掷枪"
+          },
+          "name": "换弹掷枪",
+          "reason": "人工筛选 Numerical 家族后登记正式伤害来源",
+          "section": "skill",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
         }
       },
       "tables": {
@@ -30084,6 +30561,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增换弹掷枪 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -30096,6 +30578,13 @@
                 "table": "lc"
               },
               "prototype_mode": 0
+            },
+            "extra-mode:换弹掷枪": {
+              "numerical": {
+                "id": 120500011,
+                "level": 1,
+                "table": "lc"
+              }
             }
           }
         },
@@ -30171,6 +30660,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增换弹掷枪 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -30183,6 +30677,13 @@
                 "table": "td"
               },
               "prototype_mode": 0
+            },
+            "extra-mode:换弹掷枪": {
+              "numerical": {
+                "id": 120500011,
+                "level": 1,
+                "table": "td"
+              }
             }
           }
         }
@@ -30675,6 +31176,20 @@
             "lc",
             "td"
           ]
+        },
+        "extra-mode:点金弹爆炸": {
+          "id": "dian-jin-dan-bao-zha",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "点金弹爆炸"
+          },
+          "name": "点金弹爆炸",
+          "reason": "人工筛选 Numerical 家族后登记正式伤害来源",
+          "section": "skill",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
         }
       },
       "tables": {
@@ -30804,6 +31319,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增点金弹爆炸 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -30816,6 +31336,13 @@
                 "table": "lc"
               },
               "prototype_mode": 0
+            },
+            "extra-mode:点金弹爆炸": {
+              "numerical": {
+                "id": 120700331,
+                "level": 1,
+                "table": "lc"
+              }
             }
           }
         },
@@ -30945,6 +31472,11 @@
               "classification": "source_difference",
               "pointer": "/detail/damageSources/0/fire/pellets/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/0/fire/pellets/value"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/1",
+              "reason": "人工筛选后正式新增点金弹爆炸 Numerical 伤害来源"
             }
           ],
           "source_reviews": {},
@@ -30957,239 +31489,13 @@
                 "table": "td"
               },
               "prototype_mode": 0
-            }
-          }
-        }
-      }
-    },
-    "飓风之龙": {
-      "sources": {
-        "damage-mode:1": {
-          "id": "dragon-flame-hit",
-          "locator": {
-            "kind": "damage_mode",
-            "mode": 1
-          },
-          "name": "龙炎弹",
-          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
-          "section": "fire_mode",
-          "table_scope": [
-            "lc",
-            "td"
-          ]
-        },
-        "extra-mode:索命龙炎": {
-          "id": "seeking-dragon-flame",
-          "locator": {
-            "kind": "extra_mode",
-            "name": "索命龙炎"
-          },
-          "name": "索命龙炎",
-          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
-          "section": "special",
-          "table_scope": [
-            "lc",
-            "td"
-          ]
-        },
-        "extra-mode:自动龙炎": {
-          "id": "automatic-dragon-flame",
-          "locator": {
-            "kind": "extra_mode",
-            "name": "自动龙炎"
-          },
-          "name": "自动龙炎",
-          "reason": "登记正式新增的插件伤害来源身份",
-          "section": "special",
-          "table_scope": [
-            "lc",
-            "td"
-          ]
-        },
-        "extra-mode:霰弹四连发": {
-          "id": "shotgun-burst",
-          "inherits": "shotgun",
-          "locator": {
-            "kind": "extra_mode",
-            "name": "霰弹四连发"
-          },
-          "name": "霰弹四连发",
-          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
-          "section": "variant",
-          "table_scope": [
-            "lc",
-            "td"
-          ]
-        },
-        "extra-mode:龙炎弹四连发": {
-          "id": "dragon-flame-burst",
-          "inherits": "dragon-flame-hit",
-          "locator": {
-            "kind": "extra_mode",
-            "name": "龙炎弹四连发"
-          },
-          "name": "龙炎弹四连发",
-          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
-          "section": "variant",
-          "table_scope": [
-            "lc",
-            "td"
-          ]
-        },
-        "extra-mode:龙炎弹爆炸": {
-          "id": "dragon-flame-explosion",
-          "locator": {
-            "kind": "extra_mode",
-            "name": "龙炎弹爆炸"
-          },
-          "name": "龙炎弹爆炸",
-          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
-          "section": "special",
-          "table_scope": [
-            "lc",
-            "td"
-          ]
-        },
-        "primary": {
-          "id": "shotgun",
-          "locator": {
-            "kind": "primary"
-          },
-          "name": "霰弹射击",
-          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
-          "section": "fire_mode",
-          "table_scope": [
-            "lc",
-            "td"
-          ]
-        }
-      },
-      "tables": {
-        "lc": {
-          "active_skill_id": 5101501,
-          "field_decisions": {},
-          "item_id": "20103000010",
-          "snapshot_differences": [
-            {
-              "classification": "accepted_correction",
-              "pointer": "/detail/damageSources/6",
-              "reason": "正式新增自动龙炎 Numerical 与 ASC 伤害来源"
-            }
-          ],
-          "source_reviews": {},
-          "sources": {
-            "damage-mode:1": {
-              "asc_type_id": "184",
-              "numerical": {
-                "id": 120300111,
-                "level": 1,
-                "table": "lc"
-              },
-              "prototype_mode": 1
             },
-            "extra-mode:索命龙炎": {
+            "extra-mode:点金弹爆炸": {
               "numerical": {
-                "id": 120300113,
-                "level": 1,
-                "table": "lc"
-              }
-            },
-            "extra-mode:自动龙炎": {
-              "asc_type_id": "388",
-              "numerical": {
-                "id": 120300114,
-                "level": 1,
-                "table": "lc"
-              }
-            },
-            "extra-mode:霰弹四连发": {
-              "asc_type_id": "196",
-              "prototype_mode": 2
-            },
-            "extra-mode:龙炎弹四连发": {
-              "asc_type_id": "197",
-              "prototype_mode": 3
-            },
-            "extra-mode:龙炎弹爆炸": {
-              "numerical": {
-                "id": 120300112,
-                "level": 1,
-                "table": "lc"
-              },
-              "prototype_mode": 1
-            },
-            "primary": {
-              "asc_type_id": "143",
-              "numerical": {
-                "id": 120300110,
-                "level": 1,
-                "table": "lc"
-              },
-              "prototype_mode": 0
-            }
-          }
-        },
-        "td": {
-          "active_skill_id": 5101501,
-          "field_decisions": {},
-          "item_id": "20103000010",
-          "snapshot_differences": [
-            {
-              "classification": "accepted_correction",
-              "pointer": "/detail/damageSources/6",
-              "reason": "正式新增自动龙炎 Numerical 与 ASC 伤害来源"
-            }
-          ],
-          "source_reviews": {},
-          "sources": {
-            "damage-mode:1": {
-              "asc_type_id": "184",
-              "numerical": {
-                "id": 120300111,
-                "level": 1,
-                "table": "td"
-              },
-              "prototype_mode": 1
-            },
-            "extra-mode:索命龙炎": {
-              "numerical": {
-                "id": 120300113,
+                "id": 120700331,
                 "level": 1,
                 "table": "td"
               }
-            },
-            "extra-mode:自动龙炎": {
-              "asc_type_id": "388",
-              "numerical": {
-                "id": 120300114,
-                "level": 1,
-                "table": "td"
-              }
-            },
-            "extra-mode:霰弹四连发": {
-              "asc_type_id": "196",
-              "prototype_mode": 2
-            },
-            "extra-mode:龙炎弹四连发": {
-              "asc_type_id": "197",
-              "prototype_mode": 3
-            },
-            "extra-mode:龙炎弹爆炸": {
-              "numerical": {
-                "id": 120300112,
-                "level": 1,
-                "table": "td"
-              },
-              "prototype_mode": 1
-            },
-            "primary": {
-              "asc_type_id": "143",
-              "numerical": {
-                "id": 120300110,
-                "level": 1,
-                "table": "td"
-              },
-              "prototype_mode": 0
             }
           }
         }
