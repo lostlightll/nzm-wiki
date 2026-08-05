@@ -30961,6 +30961,239 @@
           }
         }
       }
+    },
+    "飓风之龙": {
+      "sources": {
+        "damage-mode:1": {
+          "id": "dragon-flame-hit",
+          "locator": {
+            "kind": "damage_mode",
+            "mode": 1
+          },
+          "name": "龙炎弹",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "fire_mode",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:索命龙炎": {
+          "id": "seeking-dragon-flame",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "索命龙炎"
+          },
+          "name": "索命龙炎",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "special",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:自动龙炎": {
+          "id": "automatic-dragon-flame",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "自动龙炎"
+          },
+          "name": "自动龙炎",
+          "reason": "登记正式新增的插件伤害来源身份",
+          "section": "special",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:霰弹四连发": {
+          "id": "shotgun-burst",
+          "inherits": "shotgun",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "霰弹四连发"
+          },
+          "name": "霰弹四连发",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "variant",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:龙炎弹四连发": {
+          "id": "dragon-flame-burst",
+          "inherits": "dragon-flame-hit",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "龙炎弹四连发"
+          },
+          "name": "龙炎弹四连发",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "variant",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "extra-mode:龙炎弹爆炸": {
+          "id": "dragon-flame-explosion",
+          "locator": {
+            "kind": "extra_mode",
+            "name": "龙炎弹爆炸"
+          },
+          "name": "龙炎弹爆炸",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "special",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        },
+        "primary": {
+          "id": "shotgun",
+          "locator": {
+            "kind": "primary"
+          },
+          "name": "霰弹射击",
+          "reason": "冻结 Pilot 既有 V1 到 V2 来源身份",
+          "section": "fire_mode",
+          "table_scope": [
+            "lc",
+            "td"
+          ]
+        }
+      },
+      "tables": {
+        "lc": {
+          "active_skill_id": 5101501,
+          "field_decisions": {},
+          "item_id": "20103000010",
+          "snapshot_differences": [
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/6",
+              "reason": "正式新增自动龙炎 Numerical 与 ASC 伤害来源"
+            }
+          ],
+          "source_reviews": {},
+          "sources": {
+            "damage-mode:1": {
+              "asc_type_id": "184",
+              "numerical": {
+                "id": 120300111,
+                "level": 1,
+                "table": "lc"
+              },
+              "prototype_mode": 1
+            },
+            "extra-mode:索命龙炎": {
+              "numerical": {
+                "id": 120300113,
+                "level": 1,
+                "table": "lc"
+              }
+            },
+            "extra-mode:自动龙炎": {
+              "asc_type_id": "388",
+              "numerical": {
+                "id": 120300114,
+                "level": 1,
+                "table": "lc"
+              }
+            },
+            "extra-mode:霰弹四连发": {
+              "asc_type_id": "196",
+              "prototype_mode": 2
+            },
+            "extra-mode:龙炎弹四连发": {
+              "asc_type_id": "197",
+              "prototype_mode": 3
+            },
+            "extra-mode:龙炎弹爆炸": {
+              "numerical": {
+                "id": 120300112,
+                "level": 1,
+                "table": "lc"
+              },
+              "prototype_mode": 1
+            },
+            "primary": {
+              "asc_type_id": "143",
+              "numerical": {
+                "id": 120300110,
+                "level": 1,
+                "table": "lc"
+              },
+              "prototype_mode": 0
+            }
+          }
+        },
+        "td": {
+          "active_skill_id": 5101501,
+          "field_decisions": {},
+          "item_id": "20103000010",
+          "snapshot_differences": [
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/6",
+              "reason": "正式新增自动龙炎 Numerical 与 ASC 伤害来源"
+            }
+          ],
+          "source_reviews": {},
+          "sources": {
+            "damage-mode:1": {
+              "asc_type_id": "184",
+              "numerical": {
+                "id": 120300111,
+                "level": 1,
+                "table": "td"
+              },
+              "prototype_mode": 1
+            },
+            "extra-mode:索命龙炎": {
+              "numerical": {
+                "id": 120300113,
+                "level": 1,
+                "table": "td"
+              }
+            },
+            "extra-mode:自动龙炎": {
+              "asc_type_id": "388",
+              "numerical": {
+                "id": 120300114,
+                "level": 1,
+                "table": "td"
+              }
+            },
+            "extra-mode:霰弹四连发": {
+              "asc_type_id": "196",
+              "prototype_mode": 2
+            },
+            "extra-mode:龙炎弹四连发": {
+              "asc_type_id": "197",
+              "prototype_mode": 3
+            },
+            "extra-mode:龙炎弹爆炸": {
+              "numerical": {
+                "id": 120300112,
+                "level": 1,
+                "table": "td"
+              },
+              "prototype_mode": 1
+            },
+            "primary": {
+              "asc_type_id": "143",
+              "numerical": {
+                "id": 120300110,
+                "level": 1,
+                "table": "td"
+              },
+              "prototype_mode": 0
+            }
+          }
+        }
+      }
     }
   }
 }

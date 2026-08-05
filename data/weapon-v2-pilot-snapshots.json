@@ -12964,6 +12964,895 @@
               "state": "resolved",
               "value": 1
             }
+          },
+          {
+            "ammo": {
+              "changeClipAmount": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "ChangeClipAmmoCount",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "clip": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "ClipAmmoCountBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 16
+              },
+              "costPerShot": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponAmmoCost",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "infinite": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "HaveInfinityAmmo",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": false
+              },
+              "max": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "MaxAmmoCount",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 160
+              }
+            },
+            "attenuation": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "DistanceBeginAttenuationBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "status": "not_applicable"
+            },
+            "damage": {
+              "base": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-numerical",
+                    "rawField": "HpCalScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "lc:120300114_1"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.15
+              },
+              "flesh": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-numerical",
+                    "rawField": "FleshDamageBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "lc:120300114_1"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1.5
+              },
+              "hurtable": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-numerical",
+                    "rawField": "HurtableBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "lc:120300114_1"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1.5
+              },
+              "impulse": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-numerical",
+                    "rawField": "ImpulseBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "lc:120300114_1"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1.5
+              },
+              "toughness": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-numerical",
+                    "rawField": "ToughnessBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "lc:120300114_1"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1.5
+              }
+            },
+            "element": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ElementType",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": "火焰"
+            },
+            "elementAddRate": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ElementAddRate",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.075
+            },
+            "enableCritical": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "bEnableCriticalDamage",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": true
+            },
+            "enableWeakness": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "EnableWeaknessDamage",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": true
+            },
+            "feel": {
+              "accuracyRatios": {
+                "AccuracyRatio_Climb": {
+                  "overrideHistory": [],
+                  "provenance": [
+                    {
+                      "kind": "lock-feel",
+                      "rawField": "AccuracyRatio_Climb",
+                      "sourceId": "automatic-dragon-flame",
+                      "sourceKey": "388"
+                    }
+                  ],
+                  "state": "resolved",
+                  "value": 1.2
+                },
+                "AccuracyRatio_Jump": {
+                  "overrideHistory": [],
+                  "provenance": [
+                    {
+                      "kind": "lock-feel",
+                      "rawField": "AccuracyRatio_Jump",
+                      "sourceId": "automatic-dragon-flame",
+                      "sourceKey": "388"
+                    }
+                  ],
+                  "state": "resolved",
+                  "value": 1
+                },
+                "AccuracyRatio_Stand": {
+                  "overrideHistory": [],
+                  "provenance": [
+                    {
+                      "kind": "lock-feel",
+                      "rawField": "AccuracyRatio_Stand",
+                      "sourceId": "automatic-dragon-flame",
+                      "sourceKey": "388"
+                    }
+                  ],
+                  "state": "resolved",
+                  "value": 1
+                },
+                "AccuracyRatio_StandWalk": {
+                  "overrideHistory": [],
+                  "provenance": [
+                    {
+                      "kind": "lock-feel",
+                      "rawField": "AccuracyRatio_StandWalk",
+                      "sourceId": "automatic-dragon-flame",
+                      "sourceKey": "388"
+                    }
+                  ],
+                  "state": "resolved",
+                  "value": 1
+                }
+              },
+              "afterChangeClip": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "WeaponAfterChangeClipTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "autoChangeClipDelay": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "AutoChangeClipAfterFireInterval",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "beforeChangeClip": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "WeaponBeforeChangeClipTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "changeClipEndToFire": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "WeaponChangeClipEndToFireTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "changeClipTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "WeaponChangeClipTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 2
+              },
+              "recoilHorizontalScale": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilScaleBase_Hori",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.8
+              },
+              "recoilReturnTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilReturnTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.2
+              },
+              "recoilSideRange": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilSideRange",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 10
+              },
+              "recoilTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "recoilUpMax": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilUpTotalMax",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 15
+              },
+              "recoilVerticalScale": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilScaleBase_Vert",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.7
+              },
+              "runToFire": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RunToFireInterval",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.16
+              },
+              "shotCooldown": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "ShotCooldownTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.6
+              },
+              "spreadMax": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadMax",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "spreadMin": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadMin",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "spreadModifierBase": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadModifierBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.3
+              },
+              "spreadModifierInc": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadModifierInc",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.3
+              },
+              "spreadModifierMax": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadModifierMax",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "spreadReturnTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadReturnTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "zoomIn": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "ZoomTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.17
+              },
+              "zoomOut": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "ZoomOutTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.17
+              }
+            },
+            "fire": {
+              "equipTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "EquipTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.7
+              },
+              "fireBoltTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "FireBoltTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "interval": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "FireIntervalBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.75
+              },
+              "maxRpmRatio": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "MaxGunRPMRatio",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.5
+              },
+              "overchargeActivationTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "OverchargeActivationTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "overchargeDeactivationTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "OverchargeDeactivationTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "pellets": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "SplinterNum",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 3
+              },
+              "preFireTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "PreFireTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "rpm": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "derived",
+                    "rawField": "60 / interval",
+                    "sourceId": "automatic-dragon-flame"
+                  },
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "FireIntervalBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 80
+              },
+              "subFireCount": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "SubFireCountPerShot",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "subFireInterval": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "SubFireIntervalBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "weakpointLevel1Ratio": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeakpointLevel1DamageRatio",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "weakpointLevel2Ratio": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeakpointLevel2DamageRatio",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              }
+            },
+            "id": "automatic-dragon-flame",
+            "ignoreShield": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "bDamageIgnoreShield",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": false
+            },
+            "movement": {
+              "aiming": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponAimingMovingScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.8
+              },
+              "chargeOrPreheat": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponChargeStrengthOrPreheatMovingScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "crouching": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponCrouchingMovingScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "firing": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponFiringMovingScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "normal": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponMovingScaleBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.9
+              },
+              "reload": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponReloadMovingScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "sprint": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponSprintMovingScaleBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.9
+              },
+              "zoom": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponZoomMovingScaleBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              }
+            },
+            "name": "自动龙炎",
+            "provenance": [
+              {
+                "kind": "lock-asc",
+                "note": "effective-reference",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "388"
+              },
+              {
+                "kind": "lock-feel",
+                "note": "effective-reference",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "388"
+              },
+              {
+                "kind": "lock-numerical",
+                "note": "effective-reference",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "lc:120300114_1"
+              },
+              {
+                "kind": "mdx-v2",
+                "note": "identity",
+                "rawField": "damage_sources.automatic-dragon-flame",
+                "sourceId": "automatic-dragon-flame"
+              }
+            ],
+            "section": "special",
+            "settlements": [
+              "Numerical.SettlementType.Impulse.Base",
+              "Numerical.SettlementType.Element.ElementPointAdd",
+              "Numerical.SettlementType.Health.WeaponDamage",
+              "Numerical.SettlementType.Flesh.Base",
+              "Numerical.SettlementType.Hurtable.Base",
+              "Numerical.SettlementType.Toughness.Base",
+              "None"
+            ],
+            "toughness": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ToughnessDamageType",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": "impulse"
+            },
+            "unknownSettlements": [],
+            "weaknessMultiplier": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "WeaknessDamageAddScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            }
           }
         ],
         "diagnostics": [
@@ -26221,6 +27110,895 @@
                   "rawField": "WeaknessDamageAddScale",
                   "sourceId": "dragon-flame-hit",
                   "sourceKey": "td:120300111_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            }
+          },
+          {
+            "ammo": {
+              "changeClipAmount": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "ChangeClipAmmoCount",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "clip": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "ClipAmmoCountBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 16
+              },
+              "costPerShot": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponAmmoCost",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "infinite": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "HaveInfinityAmmo",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": false
+              },
+              "max": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "MaxAmmoCount",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 160
+              }
+            },
+            "attenuation": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "DistanceBeginAttenuationBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "status": "not_applicable"
+            },
+            "damage": {
+              "base": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-numerical",
+                    "rawField": "HpCalScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "td:120300114_1"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.105
+              },
+              "flesh": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-numerical",
+                    "rawField": "FleshDamageBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "td:120300114_1"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1.05
+              },
+              "hurtable": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-numerical",
+                    "rawField": "HurtableBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "td:120300114_1"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1.05
+              },
+              "impulse": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-numerical",
+                    "rawField": "ImpulseBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "td:120300114_1"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1.05
+              },
+              "toughness": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-numerical",
+                    "rawField": "ToughnessBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "td:120300114_1"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1.05
+              }
+            },
+            "element": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ElementType",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": "火焰"
+            },
+            "elementAddRate": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ElementAddRate",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.0525
+            },
+            "enableCritical": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "bEnableCriticalDamage",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": true
+            },
+            "enableWeakness": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "EnableWeaknessDamage",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": true
+            },
+            "feel": {
+              "accuracyRatios": {
+                "AccuracyRatio_Climb": {
+                  "overrideHistory": [],
+                  "provenance": [
+                    {
+                      "kind": "lock-feel",
+                      "rawField": "AccuracyRatio_Climb",
+                      "sourceId": "automatic-dragon-flame",
+                      "sourceKey": "388"
+                    }
+                  ],
+                  "state": "resolved",
+                  "value": 1.2
+                },
+                "AccuracyRatio_Jump": {
+                  "overrideHistory": [],
+                  "provenance": [
+                    {
+                      "kind": "lock-feel",
+                      "rawField": "AccuracyRatio_Jump",
+                      "sourceId": "automatic-dragon-flame",
+                      "sourceKey": "388"
+                    }
+                  ],
+                  "state": "resolved",
+                  "value": 1
+                },
+                "AccuracyRatio_Stand": {
+                  "overrideHistory": [],
+                  "provenance": [
+                    {
+                      "kind": "lock-feel",
+                      "rawField": "AccuracyRatio_Stand",
+                      "sourceId": "automatic-dragon-flame",
+                      "sourceKey": "388"
+                    }
+                  ],
+                  "state": "resolved",
+                  "value": 1
+                },
+                "AccuracyRatio_StandWalk": {
+                  "overrideHistory": [],
+                  "provenance": [
+                    {
+                      "kind": "lock-feel",
+                      "rawField": "AccuracyRatio_StandWalk",
+                      "sourceId": "automatic-dragon-flame",
+                      "sourceKey": "388"
+                    }
+                  ],
+                  "state": "resolved",
+                  "value": 1
+                }
+              },
+              "afterChangeClip": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "WeaponAfterChangeClipTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "autoChangeClipDelay": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "AutoChangeClipAfterFireInterval",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "beforeChangeClip": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "WeaponBeforeChangeClipTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "changeClipEndToFire": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "WeaponChangeClipEndToFireTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "changeClipTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "WeaponChangeClipTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 2
+              },
+              "recoilHorizontalScale": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilScaleBase_Hori",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.8
+              },
+              "recoilReturnTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilReturnTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.2
+              },
+              "recoilSideRange": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilSideRange",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 10
+              },
+              "recoilTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "recoilUpMax": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilUpTotalMax",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 15
+              },
+              "recoilVerticalScale": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RecoilScaleBase_Vert",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.7
+              },
+              "runToFire": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "RunToFireInterval",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.16
+              },
+              "shotCooldown": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "ShotCooldownTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.6
+              },
+              "spreadMax": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadMax",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "spreadMin": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadMin",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "spreadModifierBase": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadModifierBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.3
+              },
+              "spreadModifierInc": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadModifierInc",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.3
+              },
+              "spreadModifierMax": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadModifierMax",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "spreadReturnTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "SpreadReturnTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "zoomIn": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "ZoomTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.17
+              },
+              "zoomOut": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "ZoomOutTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.17
+              }
+            },
+            "fire": {
+              "equipTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "EquipTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.7
+              },
+              "fireBoltTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "FireBoltTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "interval": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "FireIntervalBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.75
+              },
+              "maxRpmRatio": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "MaxGunRPMRatio",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.5
+              },
+              "overchargeActivationTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "OverchargeActivationTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "overchargeDeactivationTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "OverchargeDeactivationTime",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "pellets": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "SplinterNum",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 3
+              },
+              "preFireTime": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "PreFireTimeBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "rpm": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "derived",
+                    "rawField": "60 / interval",
+                    "sourceId": "automatic-dragon-flame"
+                  },
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "FireIntervalBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 80
+              },
+              "subFireCount": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "SubFireCountPerShot",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "subFireInterval": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "SubFireIntervalBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "zero",
+                "value": 0
+              },
+              "weakpointLevel1Ratio": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeakpointLevel1DamageRatio",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "weakpointLevel2Ratio": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeakpointLevel2DamageRatio",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              }
+            },
+            "id": "automatic-dragon-flame",
+            "ignoreShield": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "bDamageIgnoreShield",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": false
+            },
+            "movement": {
+              "aiming": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponAimingMovingScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.8
+              },
+              "chargeOrPreheat": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponChargeStrengthOrPreheatMovingScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "crouching": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponCrouchingMovingScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "firing": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponFiringMovingScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "normal": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponMovingScaleBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.9
+              },
+              "reload": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponReloadMovingScale",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "sprint": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponSprintMovingScaleBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 0.9
+              },
+              "zoom": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-asc",
+                    "rawField": "WeaponZoomMovingScaleBase",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              }
+            },
+            "name": "自动龙炎",
+            "provenance": [
+              {
+                "kind": "lock-asc",
+                "note": "effective-reference",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "388"
+              },
+              {
+                "kind": "lock-feel",
+                "note": "effective-reference",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "388"
+              },
+              {
+                "kind": "lock-numerical",
+                "note": "effective-reference",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "td:120300114_1"
+              },
+              {
+                "kind": "mdx-v2",
+                "note": "identity",
+                "rawField": "damage_sources.automatic-dragon-flame",
+                "sourceId": "automatic-dragon-flame"
+              }
+            ],
+            "section": "special",
+            "settlements": [
+              "Numerical.SettlementType.Impulse.Base",
+              "Numerical.SettlementType.Element.ElementPointAdd",
+              "Numerical.SettlementType.Health.WeaponDamage",
+              "Numerical.SettlementType.Flesh.Base",
+              "Numerical.SettlementType.Hurtable.Base",
+              "Numerical.SettlementType.Toughness.Base",
+              "None"
+            ],
+            "toughness": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ToughnessDamageType",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": "impulse"
+            },
+            "unknownSettlements": [],
+            "weaknessMultiplier": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "WeaknessDamageAddScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
                 }
               ],
               "state": "resolved",
@@ -65711,6 +67489,901 @@
       },
       {
         "after": {
+          "ammo": {
+            "changeClipAmount": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "ChangeClipAmmoCount",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "clip": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "ClipAmmoCountBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 16
+            },
+            "costPerShot": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponAmmoCost",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "infinite": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "HaveInfinityAmmo",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": false
+            },
+            "max": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "MaxAmmoCount",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 160
+            }
+          },
+          "attenuation": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-asc",
+                "rawField": "DistanceBeginAttenuationBase",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "388"
+              }
+            ],
+            "status": "not_applicable"
+          },
+          "damage": {
+            "base": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "HpCalScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.15
+            },
+            "flesh": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "FleshDamageBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1.5
+            },
+            "hurtable": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "HurtableBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1.5
+            },
+            "impulse": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ImpulseBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1.5
+            },
+            "toughness": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ToughnessBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "lc:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1.5
+            }
+          },
+          "element": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "ElementType",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "lc:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": "火焰"
+          },
+          "elementAddRate": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "ElementAddRate",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "lc:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": 0.075
+          },
+          "enableCritical": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "bEnableCriticalDamage",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "lc:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": true
+          },
+          "enableWeakness": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "EnableWeaknessDamage",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "lc:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": true
+          },
+          "feel": {
+            "accuracyRatios": {
+              "AccuracyRatio_Climb": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "AccuracyRatio_Climb",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1.2
+              },
+              "AccuracyRatio_Jump": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "AccuracyRatio_Jump",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "AccuracyRatio_Stand": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "AccuracyRatio_Stand",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "AccuracyRatio_StandWalk": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "AccuracyRatio_StandWalk",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              }
+            },
+            "afterChangeClip": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "WeaponAfterChangeClipTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "autoChangeClipDelay": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "AutoChangeClipAfterFireInterval",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "beforeChangeClip": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "WeaponBeforeChangeClipTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "changeClipEndToFire": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "WeaponChangeClipEndToFireTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "changeClipTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "WeaponChangeClipTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 2
+            },
+            "recoilHorizontalScale": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilScaleBase_Hori",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.8
+            },
+            "recoilReturnTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilReturnTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.2
+            },
+            "recoilSideRange": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilSideRange",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 10
+            },
+            "recoilTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "recoilUpMax": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilUpTotalMax",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 15
+            },
+            "recoilVerticalScale": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilScaleBase_Vert",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.7
+            },
+            "runToFire": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RunToFireInterval",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.16
+            },
+            "shotCooldown": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "ShotCooldownTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.6
+            },
+            "spreadMax": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadMax",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "spreadMin": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadMin",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "spreadModifierBase": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadModifierBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.3
+            },
+            "spreadModifierInc": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadModifierInc",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.3
+            },
+            "spreadModifierMax": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadModifierMax",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "spreadReturnTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadReturnTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "zoomIn": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "ZoomTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.17
+            },
+            "zoomOut": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "ZoomOutTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.17
+            }
+          },
+          "fire": {
+            "equipTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "EquipTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.7
+            },
+            "fireBoltTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "FireBoltTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "interval": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "FireIntervalBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.75
+            },
+            "maxRpmRatio": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "MaxGunRPMRatio",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.5
+            },
+            "overchargeActivationTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "OverchargeActivationTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "overchargeDeactivationTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "OverchargeDeactivationTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "pellets": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "SplinterNum",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 3
+            },
+            "preFireTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "PreFireTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "rpm": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "derived",
+                  "rawField": "60 / interval",
+                  "sourceId": "automatic-dragon-flame"
+                },
+                {
+                  "kind": "lock-asc",
+                  "rawField": "FireIntervalBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 80
+            },
+            "subFireCount": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "SubFireCountPerShot",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "subFireInterval": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "SubFireIntervalBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "weakpointLevel1Ratio": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeakpointLevel1DamageRatio",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "weakpointLevel2Ratio": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeakpointLevel2DamageRatio",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            }
+          },
+          "id": "automatic-dragon-flame",
+          "ignoreShield": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "bDamageIgnoreShield",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "lc:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": false
+          },
+          "movement": {
+            "aiming": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponAimingMovingScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.8
+            },
+            "chargeOrPreheat": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponChargeStrengthOrPreheatMovingScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "crouching": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponCrouchingMovingScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "firing": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponFiringMovingScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "normal": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponMovingScaleBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.9
+            },
+            "reload": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponReloadMovingScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "sprint": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponSprintMovingScaleBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.9
+            },
+            "zoom": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponZoomMovingScaleBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            }
+          },
+          "name": "自动龙炎",
+          "provenance": [
+            {
+              "kind": "lock-asc",
+              "note": "effective-reference",
+              "sourceId": "automatic-dragon-flame",
+              "sourceKey": "388"
+            },
+            {
+              "kind": "lock-feel",
+              "note": "effective-reference",
+              "sourceId": "automatic-dragon-flame",
+              "sourceKey": "388"
+            },
+            {
+              "kind": "lock-numerical",
+              "note": "effective-reference",
+              "sourceId": "automatic-dragon-flame",
+              "sourceKey": "lc:120300114_1"
+            },
+            {
+              "kind": "mdx-v2",
+              "note": "identity",
+              "rawField": "damage_sources.automatic-dragon-flame",
+              "sourceId": "automatic-dragon-flame"
+            }
+          ],
+          "section": "special",
+          "settlements": [
+            "Numerical.SettlementType.Impulse.Base",
+            "Numerical.SettlementType.Element.ElementPointAdd",
+            "Numerical.SettlementType.Health.WeaponDamage",
+            "Numerical.SettlementType.Flesh.Base",
+            "Numerical.SettlementType.Hurtable.Base",
+            "Numerical.SettlementType.Toughness.Base",
+            "None"
+          ],
+          "toughness": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "ToughnessDamageType",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "lc:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": "impulse"
+          },
+          "unknownSettlements": [],
+          "weaknessMultiplier": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "WeaknessDamageAddScale",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "lc:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": 1
+          }
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/6",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/damageSources/6"
+      },
+      {
+        "after": {
           "code": "COMPAT_MISMATCH",
           "message": "Compatibility value differs from source: changeClip/reloadRecovery",
           "path": "/changeClip/reloadRecovery",
@@ -88876,6 +91549,901 @@
         "operation": "add",
         "pointer": "/weapon/damageSources/5/weaknessMultiplier/provenance/0/sourceKey",
         "reason": "Reviewed V1-to-V2 structural trace change at /weapon/damageSources/5/weaknessMultiplier/provenance/0/sourceKey"
+      },
+      {
+        "after": {
+          "ammo": {
+            "changeClipAmount": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "ChangeClipAmmoCount",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "clip": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "ClipAmmoCountBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 16
+            },
+            "costPerShot": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponAmmoCost",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "infinite": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "HaveInfinityAmmo",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": false
+            },
+            "max": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "MaxAmmoCount",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 160
+            }
+          },
+          "attenuation": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-asc",
+                "rawField": "DistanceBeginAttenuationBase",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "388"
+              }
+            ],
+            "status": "not_applicable"
+          },
+          "damage": {
+            "base": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "HpCalScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.105
+            },
+            "flesh": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "FleshDamageBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1.05
+            },
+            "hurtable": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "HurtableBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1.05
+            },
+            "impulse": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ImpulseBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1.05
+            },
+            "toughness": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-numerical",
+                  "rawField": "ToughnessBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "td:120300114_1"
+                }
+              ],
+              "state": "resolved",
+              "value": 1.05
+            }
+          },
+          "element": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "ElementType",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "td:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": "火焰"
+          },
+          "elementAddRate": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "ElementAddRate",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "td:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": 0.0525
+          },
+          "enableCritical": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "bEnableCriticalDamage",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "td:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": true
+          },
+          "enableWeakness": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "EnableWeaknessDamage",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "td:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": true
+          },
+          "feel": {
+            "accuracyRatios": {
+              "AccuracyRatio_Climb": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "AccuracyRatio_Climb",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1.2
+              },
+              "AccuracyRatio_Jump": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "AccuracyRatio_Jump",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "AccuracyRatio_Stand": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "AccuracyRatio_Stand",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              },
+              "AccuracyRatio_StandWalk": {
+                "overrideHistory": [],
+                "provenance": [
+                  {
+                    "kind": "lock-feel",
+                    "rawField": "AccuracyRatio_StandWalk",
+                    "sourceId": "automatic-dragon-flame",
+                    "sourceKey": "388"
+                  }
+                ],
+                "state": "resolved",
+                "value": 1
+              }
+            },
+            "afterChangeClip": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "WeaponAfterChangeClipTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "autoChangeClipDelay": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "AutoChangeClipAfterFireInterval",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "beforeChangeClip": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "WeaponBeforeChangeClipTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "changeClipEndToFire": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "WeaponChangeClipEndToFireTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "changeClipTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "WeaponChangeClipTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 2
+            },
+            "recoilHorizontalScale": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilScaleBase_Hori",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.8
+            },
+            "recoilReturnTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilReturnTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.2
+            },
+            "recoilSideRange": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilSideRange",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 10
+            },
+            "recoilTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "recoilUpMax": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilUpTotalMax",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 15
+            },
+            "recoilVerticalScale": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RecoilScaleBase_Vert",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.7
+            },
+            "runToFire": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "RunToFireInterval",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.16
+            },
+            "shotCooldown": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "ShotCooldownTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.6
+            },
+            "spreadMax": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadMax",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "spreadMin": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadMin",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "spreadModifierBase": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadModifierBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.3
+            },
+            "spreadModifierInc": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadModifierInc",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.3
+            },
+            "spreadModifierMax": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadModifierMax",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "spreadReturnTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "SpreadReturnTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "zoomIn": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "ZoomTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.17
+            },
+            "zoomOut": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-feel",
+                  "rawField": "ZoomOutTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.17
+            }
+          },
+          "fire": {
+            "equipTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "EquipTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.7
+            },
+            "fireBoltTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "FireBoltTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "interval": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "FireIntervalBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.75
+            },
+            "maxRpmRatio": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "MaxGunRPMRatio",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.5
+            },
+            "overchargeActivationTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "OverchargeActivationTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "overchargeDeactivationTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "OverchargeDeactivationTime",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "pellets": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "SplinterNum",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 3
+            },
+            "preFireTime": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "PreFireTimeBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "rpm": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "derived",
+                  "rawField": "60 / interval",
+                  "sourceId": "automatic-dragon-flame"
+                },
+                {
+                  "kind": "lock-asc",
+                  "rawField": "FireIntervalBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 80
+            },
+            "subFireCount": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "SubFireCountPerShot",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "subFireInterval": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "SubFireIntervalBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "zero",
+              "value": 0
+            },
+            "weakpointLevel1Ratio": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeakpointLevel1DamageRatio",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "weakpointLevel2Ratio": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeakpointLevel2DamageRatio",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            }
+          },
+          "id": "automatic-dragon-flame",
+          "ignoreShield": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "bDamageIgnoreShield",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "td:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": false
+          },
+          "movement": {
+            "aiming": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponAimingMovingScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.8
+            },
+            "chargeOrPreheat": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponChargeStrengthOrPreheatMovingScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "crouching": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponCrouchingMovingScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "firing": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponFiringMovingScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "normal": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponMovingScaleBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.9
+            },
+            "reload": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponReloadMovingScale",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            },
+            "sprint": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponSprintMovingScaleBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 0.9
+            },
+            "zoom": {
+              "overrideHistory": [],
+              "provenance": [
+                {
+                  "kind": "lock-asc",
+                  "rawField": "WeaponZoomMovingScaleBase",
+                  "sourceId": "automatic-dragon-flame",
+                  "sourceKey": "388"
+                }
+              ],
+              "state": "resolved",
+              "value": 1
+            }
+          },
+          "name": "自动龙炎",
+          "provenance": [
+            {
+              "kind": "lock-asc",
+              "note": "effective-reference",
+              "sourceId": "automatic-dragon-flame",
+              "sourceKey": "388"
+            },
+            {
+              "kind": "lock-feel",
+              "note": "effective-reference",
+              "sourceId": "automatic-dragon-flame",
+              "sourceKey": "388"
+            },
+            {
+              "kind": "lock-numerical",
+              "note": "effective-reference",
+              "sourceId": "automatic-dragon-flame",
+              "sourceKey": "td:120300114_1"
+            },
+            {
+              "kind": "mdx-v2",
+              "note": "identity",
+              "rawField": "damage_sources.automatic-dragon-flame",
+              "sourceId": "automatic-dragon-flame"
+            }
+          ],
+          "section": "special",
+          "settlements": [
+            "Numerical.SettlementType.Impulse.Base",
+            "Numerical.SettlementType.Element.ElementPointAdd",
+            "Numerical.SettlementType.Health.WeaponDamage",
+            "Numerical.SettlementType.Flesh.Base",
+            "Numerical.SettlementType.Hurtable.Base",
+            "Numerical.SettlementType.Toughness.Base",
+            "None"
+          ],
+          "toughness": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "ToughnessDamageType",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "td:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": "impulse"
+          },
+          "unknownSettlements": [],
+          "weaknessMultiplier": {
+            "overrideHistory": [],
+            "provenance": [
+              {
+                "kind": "lock-numerical",
+                "rawField": "WeaknessDamageAddScale",
+                "sourceId": "automatic-dragon-flame",
+                "sourceKey": "td:120300114_1"
+              }
+            ],
+            "state": "resolved",
+            "value": 1
+          }
+        },
+        "classification": "structural",
+        "operation": "add",
+        "pointer": "/weapon/damageSources/6",
+        "reason": "Reviewed V1-to-V2 shape change at /weapon/damageSources/6"
       },
       {
         "after": {

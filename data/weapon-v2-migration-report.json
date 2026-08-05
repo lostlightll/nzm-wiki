@@ -2,14 +2,14 @@
   "coverage": {
     "lc": {
       "excluded": 18,
-      "migrated": 89,
-      "preexisting_v2": 5,
+      "migrated": 90,
+      "preexisting_v2": 4,
       "total": 112
     },
     "td": {
       "excluded": 16,
-      "migrated": 91,
-      "preexisting_v2": 5,
+      "migrated": 92,
+      "preexisting_v2": 4,
       "total": 112
     }
   },
@@ -43,7 +43,7 @@
   },
   "decision_manifest": {
     "path": "data/weapon-v2-migration-decisions.json",
-    "sha256": "0f1e189243c5a18bd6de6875dd22b10ab266e4c4b2a96f635d37c5a02bc9624c"
+    "sha256": "41c06673113f9d86d067294cdc58f0d8323b82e822885d7291315d163744c995"
   },
   "exclusions": {
     "by_owner": {
