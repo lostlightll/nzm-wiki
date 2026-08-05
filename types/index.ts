@@ -379,6 +379,9 @@ export interface TDEnemy {
 }
 
 export type {
+  AscOverrides,
+  AttenuationOverride,
+  DamageSourceOverrides,
   DamageSection,
   DamageSourceV2,
   NumericalOverrides,
@@ -395,3 +398,25 @@ export type {
   WeaponDataLockRow,
   WeaponDataLockSource,
 } from "../lib/weapon-data-lock";
+
+export type {
+  AttenuationTraceValue,
+  FieldProvenance,
+  FieldState,
+  OverrideTrace,
+  ProvenanceKind,
+  ResolutionDiagnostic,
+  ResolutionDiagnosticCode,
+  ResolvedActiveSkill,
+  ResolvedAmmoBehavior,
+  ResolvedAttenuation,
+  ResolvedDamageSource,
+  ResolvedFeelBehavior,
+  ResolvedField,
+  ResolvedFireBehavior,
+  ResolvedMovementBehavior,
+  ResolvedToughnessType,
+  ResolvedWeapon,
+  ResolvedWeaponSnapshot,
+  WeaponResolutionErrorCode,
+} from "../lib/weapon-resolver";

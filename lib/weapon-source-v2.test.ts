@@ -531,12 +531,56 @@ test("拒绝旧伤害字段、null、空字符串和错误 ID 类型", () => {
       ),
     /expected string/,
   );
-  assert.throws(
-    () =>
-      validateWeaponSourceV2(
-        weapon("零间隔", [{ ...validSource, fire_interval: 0 }]),
-        { expectedTable: "lc" },
-      ),
-    /Too small/,
+  assert.doesNotThrow(() =>
+    validateWeaponSourceV2(
+      weapon("零间隔", [{ ...validSource, fire_interval: 0 }]),
+      { expectedTable: "lc" },
+    ),
+  );
+});
+
+test("ASC attenuation override 使用严格 union 并保留继承顺序", () => {
+  const parsed = validateWeaponSourceV2(
+    weapon("衰减覆盖", [
+      {
+        id: "primary",
+        name: "普通射击",
+        section: "fire_mode",
+        source: {
+          numerical: numerical(1),
+          asc_type_id: "10",
+        },
+        overrides: { asc: { attenuation: { status: "not_applicable" } } },
+        override_reason: "实测不使用距离衰减",
+      },
+      {
+        id: "variant",
+        name: "变体",
+        section: "variant",
+        inherits: "primary",
+        source: { asc_type_id: "11" },
+        overrides: {
+          asc: {
+            attenuation: {
+              status: "applicable",
+              begin_meters: 5,
+              end_meters: 20,
+              min_scale: 0.5,
+            },
+          },
+        },
+        override_reason: "变体使用独立实测衰减",
+      },
+    ]),
+    { expectedTable: "lc" },
+  );
+
+  const resolved = resolveDamageSourceReferences(parsed).get("variant")!;
+  assert.equal(resolved.origins.numerical, "primary");
+  assert.equal(resolved.origins.asc_type_id, "variant");
+  assert.equal(resolved.origins.feel_param_id, "variant");
+  assert.deepEqual(
+    resolved.overrideChain.map((step) => step.sourceId),
+    ["primary", "variant"],
   );
 });

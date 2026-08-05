@@ -8,6 +8,11 @@ const positiveSafeIntegerSchema = z
   .int()
   .positive()
   .max(Number.MAX_SAFE_INTEGER);
+const nonNegativeSafeIntegerSchema = z
+  .number()
+  .int()
+  .nonnegative()
+  .max(Number.MAX_SAFE_INTEGER);
 
 export const numericalTableSchema = z.enum(["lc", "td"]);
 
@@ -60,9 +65,37 @@ export const numericalOverridesSchema = z
     message: "numerical override must contain at least one field",
   });
 
-export const damageSourceOverridesSchema = z.strictObject({
-  numerical: numericalOverridesSchema,
+export const attenuationOverrideSchema = z.discriminatedUnion("status", [
+  z.strictObject({ status: z.literal("not_applicable") }),
+  z
+    .strictObject({
+      status: z.literal("applicable"),
+      begin_meters: finiteNonNegativeSchema,
+      end_meters: finiteNonNegativeSchema,
+      min_scale: z.number().finite().min(0).max(1),
+    })
+    .refine((value) => value.end_meters > value.begin_meters, {
+      path: ["end_meters"],
+      message: "end_meters must be greater than begin_meters",
+    })
+    .refine((value) => value.end_meters > 0, {
+      path: ["end_meters"],
+      message: "end_meters must be greater than zero",
+    }),
+]);
+
+export const ascOverridesSchema = z.strictObject({
+  attenuation: attenuationOverrideSchema,
 });
+
+export const damageSourceOverridesSchema = z
+  .strictObject({
+    numerical: numericalOverridesSchema.optional(),
+    asc: ascOverridesSchema.optional(),
+  })
+  .refine((value) => Object.keys(value).length > 0, {
+    message: "overrides must contain at least one namespace",
+  });
 
 export const damageSourceVerificationSchema = z.strictObject({
   status: z.literal("pending"),
@@ -77,8 +110,8 @@ export const damageSourceV2Schema = z
     inherits: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/).optional(),
     source: weaponDataSourceRefSchema.optional(),
     label: nonEmptyStringSchema.optional(),
-    fire_interval: z.number().finite().positive().optional(),
-    pellets: z.number().int().positive().optional(),
+    fire_interval: finiteNonNegativeSchema.optional(),
+    pellets: positiveSafeIntegerSchema.optional(),
     overrides: damageSourceOverridesSchema.optional(),
     override_reason: nonEmptyStringSchema.optional(),
     verification: damageSourceVerificationSchema.optional(),
@@ -150,7 +183,7 @@ const weaponSourceV2BaseSchema = z.strictObject({
   shooting_energy: z.boolean().optional(),
   shooting_energy_count: z.number().int().positive().optional(),
   weapon_type_id: z.number().int().nonnegative().optional(),
-  active_skill_id: z.number().int().nonnegative().optional(),
+  active_skill_id: nonNegativeSafeIntegerSchema.optional(),
 });
 
 type WeaponSourceV2Base = z.infer<typeof weaponSourceV2BaseSchema>;
@@ -166,6 +199,22 @@ export interface ResolvedDamageSourceReference {
   fire_interval?: number;
   pellets?: number;
   pending: boolean;
+  origins: {
+    numerical?: string;
+    prototype_mode?: string;
+    asc_type_id?: string;
+    feel_param_id?: string;
+    label?: string;
+    fire_interval?: string;
+    pellets?: string;
+  };
+  overrideChain: readonly DamageSourceOverrideStep[];
+}
+
+export interface DamageSourceOverrideStep {
+  sourceId: string;
+  reason: string;
+  overrides: DamageSourceOverrides;
 }
 
 function mergeSourceReference(
@@ -260,12 +309,49 @@ function analyzeWeaponSource(weapon: WeaponSourceV2Base): {
 
       const source = weapon.damage_sources[indexes.get(id)!];
       const parent = source.inherits ? resolve(source.inherits) : undefined;
+      const mergedSource = mergeSourceReference(parent?.source, source.source);
+      const localSource = source.source;
+      const ascChanged = localSource?.asc_type_id !== undefined;
       const result: ResolvedDamageSourceReference = {
-        source: mergeSourceReference(parent?.source, source.source),
+        source: mergedSource,
         label: source.label ?? parent?.label,
         fire_interval: source.fire_interval ?? parent?.fire_interval,
         pellets: source.pellets ?? parent?.pellets,
-        pending: Boolean(source.verification) || Boolean(parent?.pending),
+        pending: Boolean(source.verification),
+        origins: {
+          numerical:
+            localSource?.numerical !== undefined
+              ? source.id
+              : parent?.origins.numerical,
+          prototype_mode:
+            localSource?.prototype_mode !== undefined
+              ? source.id
+              : parent?.origins.prototype_mode,
+          asc_type_id: ascChanged ? source.id : parent?.origins.asc_type_id,
+          feel_param_id:
+            localSource?.feel_param_id !== undefined || ascChanged
+              ? source.id
+              : parent?.origins.feel_param_id,
+          label: source.label !== undefined ? source.id : parent?.origins.label,
+          fire_interval:
+            source.fire_interval !== undefined
+              ? source.id
+              : parent?.origins.fire_interval,
+          pellets:
+            source.pellets !== undefined ? source.id : parent?.origins.pellets,
+        },
+        overrideChain: [
+          ...(parent?.overrideChain ?? []),
+          ...(source.overrides && source.override_reason
+            ? [
+                {
+                  sourceId: source.id,
+                  reason: source.override_reason,
+                  overrides: source.overrides,
+                },
+              ]
+            : []),
+        ],
       };
       resolved.set(id, result);
       return result;
@@ -371,5 +457,8 @@ export type DamageSection = z.infer<typeof damageSectionSchema>;
 export type NumericalReference = z.infer<typeof numericalReferenceSchema>;
 export type WeaponDataSourceRef = z.infer<typeof weaponDataSourceRefSchema>;
 export type NumericalOverrides = z.infer<typeof numericalOverridesSchema>;
+export type AttenuationOverride = z.infer<typeof attenuationOverrideSchema>;
+export type AscOverrides = z.infer<typeof ascOverridesSchema>;
+export type DamageSourceOverrides = z.infer<typeof damageSourceOverridesSchema>;
 export type DamageSourceV2 = z.infer<typeof damageSourceV2Schema>;
 export type WeaponSourceV2 = z.infer<typeof weaponSourceV2Schema>;

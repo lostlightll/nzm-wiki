@@ -1,403 +1,91 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import matter from "gray-matter";
-import type {
-  Weapon,
-  WeaponDamage,
-  WeaponChangeClip,
-  DamageMode,
-  WeaponMeleeDamage,
-  WeaponTag,
-  ElementType,
-  ToughnessType,
-  Rarity,
-  WeaponType,
-} from "@/types";
+import weaponDataLockJson from "@/data/weapon-data-lock.json";
 import { RARITY_ORDER } from "@/constants/common";
 import { WEAPON_TYPES } from "@/constants/weapons";
+import type { Weapon } from "@/types";
+import { parseWeaponDataLock } from "./weapon-data-lock";
+import { resolveWeapon, toLegacyWeapon } from "./weapon-resolver";
 
 const WEAPONS_DIR = path.join(process.cwd(), "data/weapons");
+const TD_WEAPONS_DIR = path.join(process.cwd(), "data/weapons_td");
 const isDev = process.env.NODE_ENV === "development";
-const WEAPON_TYPE_ORDER = new Map(WEAPON_TYPES.map((item, index) => [item.type, index]));
+const weaponDataLock = parseWeaponDataLock(weaponDataLockJson);
+const weaponTypeOrder = new Map(
+  WEAPON_TYPES.map((item, index) => [item.type, index]),
+);
 
-function toNum(v: unknown): number | undefined {
-  if (v === null || v === undefined || v === "") return undefined;
-  const n = Number(v);
-  return Number.isNaN(n) ? undefined : n;
+function transformWeapon(
+  raw: Record<string, unknown>,
+  slug: string,
+  table: "lc" | "td",
+): Weapon {
+  return toLegacyWeapon(
+    resolveWeapon(raw, {
+      slug,
+      expectedTable: table,
+      lock: weaponDataLock,
+    }),
+  );
 }
 
-function parseTags(rawTags: unknown): WeaponTag[] {
-  if (Array.isArray(rawTags)) {
-    return rawTags.filter(
-      (t): t is string => typeof t === "string" && t.length > 0
-    ) as WeaponTag[];
-  }
-  if (typeof rawTags === "string" && rawTags.length > 0) {
-    return [rawTags as WeaponTag];
-  }
-  return [];
+function weaponSorter(left: Weapon, right: Weapon): number {
+  const rarityLeft = left.rarity ? RARITY_ORDER[left.rarity] : 0;
+  const rarityRight = right.rarity ? RARITY_ORDER[right.rarity] : 0;
+  if (rarityLeft !== rarityRight) return rarityRight - rarityLeft;
+
+  const typeLeft = left.weapon_type
+    ? (weaponTypeOrder.get(left.weapon_type) ?? 99)
+    : 99;
+  const typeRight = right.weapon_type
+    ? (weaponTypeOrder.get(right.weapon_type) ?? 99)
+    : 99;
+  if (typeLeft !== typeRight) return typeLeft - typeRight;
+  return left.title.localeCompare(right.title, "zh-CN");
 }
 
-// ── Synthetic mode builder (no ASC lookup, hardcoded fireIntervalBase) ─
-
-function buildSyntheticMode(synth: {
-  name: string;
-  fireIntervalBase: number;
-  damage: WeaponDamage;
-  element?: ElementType;
-  elementAddRate?: number;
-  weaknessMultiplier?: number;
-  enableCritical?: boolean;
-  enableWeakness?: boolean;
-  toughnessType?: ToughnessType;
-  ignoreShield?: boolean;
-  pellets?: number;
-}): DamageMode {
-  const mode: DamageMode = {
-    name: synth.name,
-    damage: synth.damage,
-    element: synth.element || "物理",
-    elementAddRate: synth.elementAddRate ?? 0,
-    weaknessMultiplier: synth.weaknessMultiplier ?? 1,
-    enableWeakness: synth.enableWeakness ?? false,
-    enableCritical: synth.enableCritical ?? false,
-    fireIntervalBase: synth.fireIntervalBase,
-    toughnessType: synth.toughnessType || "冲击",
-    ignoreShield: synth.ignoreShield ?? false,
-  };
-
-  if (synth.pellets && synth.pellets > 1) {
-    mode.pellets = synth.pellets;
-  }
-
-  return mode;
+function readWeapons(directory: string, table: "lc" | "td"): Weapon[] {
+  if (!fs.existsSync(directory)) return [];
+  return fs
+    .readdirSync(directory)
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => {
+      const content = fs.readFileSync(path.join(directory, file), "utf8");
+      const { data } = matter(content);
+      return transformWeapon(data, file.replace(/\.mdx$/, ""), table);
+    })
+    .filter((weapon) => !weapon.draft || isDev)
+    .sort(weaponSorter);
 }
 
-// ── Build DamageMode from MDX inline data (shared by extra_modes & damage_modes) ─
-
-function buildModeFromMDXEntry(
-  s: Record<string, unknown>,
-  defaultInterval: number
-): DamageMode | null {
-  const name = typeof s.name === "string" ? s.name : "";
-  if (!name) return null;
-  const hasInterval = "fire_interval" in s;
-  const interval = hasInterval
-    ? Number(s.fire_interval ?? 0)
-    : defaultInterval;
-
-  const rawDamage = (s.damage as Record<string, unknown>) || {};
-  const damage: WeaponDamage = {
-    base: Number(rawDamage.base ?? 0),
-    impulse: Number(rawDamage.impulse ?? 0),
-    toughness: Number(rawDamage.toughness ?? 0),
-    flesh: Number(rawDamage.flesh ?? 0),
-    hurtable: Number(rawDamage.hurtable ?? 0),
-  };
-
-  const mode = buildSyntheticMode({
-    name,
-    fireIntervalBase: interval,
-    damage,
-    element: typeof s.element === "string" ? (s.element as ElementType) : undefined,
-    elementAddRate: typeof s.element_add_rate === "number" ? s.element_add_rate : undefined,
-    weaknessMultiplier: typeof s.weakness_multiplier === "number" ? s.weakness_multiplier : undefined,
-    enableCritical: typeof s.enable_critical === "boolean" ? s.enable_critical : undefined,
-    enableWeakness: typeof s.enable_weakness === "boolean" ? s.enable_weakness : undefined,
-    toughnessType: typeof s.toughness_type === "string" ? (s.toughness_type as ToughnessType) : undefined,
-    ignoreShield: typeof s.ignore_shield === "boolean" ? s.ignore_shield : undefined,
-    pellets: typeof s.pellets === "number" ? s.pellets : undefined,
-  });
-
-  if (typeof s.label === "string") {
-    mode.damageLabel = s.label;
-  }
-
-  return mode;
-}
-
-// ── MDX fallback: build DamageMode from old flat fields ─
-
-function buildModeFromMDX(raw: Record<string, unknown>): DamageMode {
-  const rawDamage = (raw.damage as Record<string, unknown>) || {};
-  const damage: WeaponDamage = {
-    base: Number(rawDamage.base ?? 0),
-    impulse: Number(rawDamage.impulse ?? 0),
-    toughness: Number(rawDamage.toughness ?? 0),
-    flesh: Number(rawDamage.flesh ?? 0),
-    hurtable: Number(rawDamage.hurtable ?? 0),
-  };
-
-  const fileRate = toNum(raw.file_rate);
-  const fireIntervalBase =
-    fileRate && fileRate > 0 ? Math.round((60 / fileRate) * 100) / 100 : 0;
-
-  const mode: DamageMode = {
-    name: "普通射击",
-    damage,
-    element: (raw.element as ElementType) || "物理",
-    elementAddRate: Number(raw.element_add_rate ?? 0),
-    weaknessMultiplier: Number(raw.weekness_multiplier ?? 1),
-    enableWeakness: true,
-    enableCritical: Boolean(raw.enable_critical),
-    fireIntervalBase,
-    toughnessType: (raw.toughness_type as ToughnessType) || "冲击",
-    ignoreShield: Boolean(raw.ignore_shield),
-  };
-
-  const pellets = toNum(raw.pellets);
-  if (pellets !== undefined) {
-    mode.pellets = pellets;
-  }
-
-  return mode;
-}
-
-function buildChangeClipFromMDX(raw: Record<string, unknown>): WeaponChangeClip | undefined {
-  if (raw.changeClip && typeof raw.changeClip === "object") {
-    const cc = raw.changeClip as Record<string, unknown>;
-    const reloadRecovery = cc.reloadRecovery !== undefined ? Number(cc.reloadRecovery) : Number(cc.endToFireTime ?? 0);
-    return {
-      timeBase: Number(cc.timeBase ?? 0),
-      reloadRecovery,
-    };
-  }
-  const reloadTime = toNum(raw.reload_time);
-  if (reloadTime !== undefined) {
-    return { timeBase: reloadTime, reloadRecovery: 0 };
-  }
-  return undefined;
-}
-
-function buildMeleeDamageFromMDX(raw: Record<string, unknown>): WeaponMeleeDamage | undefined {
-  if (!raw.melee_damage || typeof raw.melee_damage !== "object") {
-    return undefined;
-  }
-
-  const melee = raw.melee_damage as Record<string, unknown>;
-  const light = toNum(melee.light);
-  const heavy = toNum(melee.heavy);
-
-  if (light === undefined && heavy === undefined) {
-    return undefined;
-  }
-
-  return { light, heavy };
-}
-
-// ── Main transform ───────────────────────────────────
-
-function transformWeapon(raw: Record<string, unknown>, slug: string): Weapon {
-  const weaponTitle = String(raw.title ?? slug);
-
-  // MDX metadata (always from frontmatter)
-  const useType = typeof raw.use_type === "string" ? raw.use_type : undefined;
-  const weaponType = raw.weapon_type as WeaponType | undefined;
-  const rarity = raw.rarity as Rarity | undefined;
-  const tags = parseTags(raw.tags);
-  const scope = raw.scope as string | undefined;
-  const skillCooldown = toNum(raw.skill_cooldown);
-  const skillDuration = toNum(raw.skill_duration);
-  const skillBlocking = Boolean(raw.skill_blocking);
-  const weaponTypeId = toNum(raw.weapon_type_id);
-  const showDuration = Boolean(raw.show_duration);
-  const shootingEnergy = Boolean(raw.shooting_energy);
-  const shootingEnergyCount = toNum(raw.shooting_energy_count);
-  const accuracy = toNum(raw.accuracy);
-  const stability = toNum(raw.stability);
-  const range = toNum(raw.range);
-  const explosionRange = toNum(raw.explosion_range);
-  const attenuationBegin = raw.attenuation_begin !== undefined ? raw.attenuation_begin as number | string | null : undefined;
-  const attenuationEnd = raw.attenuation_end !== undefined ? raw.attenuation_end as number | string | null : undefined;
-  const attenuationScale = raw.attenuation_scale !== undefined ? raw.attenuation_scale as number | string | null : undefined;
-  const draft = Boolean(raw.draft);
-  const gameMode =
-    typeof raw.game_mode === "string" && raw.game_mode === "td" ? "td" as const : undefined;
-
-  // Always build from MDX frontmatter
-  let damageModes: DamageMode[] = [buildModeFromMDX(raw)];
-  let extraModes: DamageMode[] | undefined;
-  const changeClip = buildChangeClipFromMDX(raw);
-  const meleeDamage = buildMeleeDamageFromMDX(raw);
-  const magazine = toNum(raw.magazine);
-  const totalAmmo = toNum(raw.total_ammo);
-
-  // Parse damage_modes from MDX (mode index → inline data)
-  const damageModesMDX = new Map<number, Record<string, unknown>>();
-  if (Array.isArray(raw.damage_modes)) {
-    for (const entry of raw.damage_modes as Record<string, unknown>[]) {
-      const modeIdx = Number(entry.mode ?? -1);
-      if (modeIdx >= 0) damageModesMDX.set(modeIdx, entry);
-    }
-  }
-
-  // Override mode 0 from damage_modes[0] if present
-  if (damageModesMDX.has(0)) {
-    const mdxPrimary = buildModeFromMDXEntry(damageModesMDX.get(0)!, 0);
-    if (mdxPrimary) damageModes = [mdxPrimary];
-  }
-
-  const primaryDamageMode = damageModes[0] ?? null;
-
-  // Add non-mode-0 damage_modes entries
-  if (primaryDamageMode) {
-    for (const [modeIdx, mdxData] of damageModesMDX) {
-      if (modeIdx === 0) continue;
-      const built = buildModeFromMDXEntry(
-        mdxData,
-        primaryDamageMode.fireIntervalBase
-      );
-      if (built) damageModes.push(built);
-    }
-
-    // Read extra_modes from MDX frontmatter
-    if (Array.isArray(raw.extra_modes)) {
-      const defaultInterval = primaryDamageMode.fireIntervalBase;
-      const built = (raw.extra_modes as Record<string, unknown>[])
-        .map((s) => buildModeFromMDXEntry(s, defaultInterval))
-        .filter((m): m is DamageMode => m !== null);
-      if (built.length > 0) {
-        extraModes = built;
-      }
-    }
-  }
-
-  // Apply MDX damage label override: 0=命中(默认), 1=爆炸, 2=自定义
-  const damageLabelType = toNum(raw.damage_label) ?? 0;
-  if (damageLabelType > 0) {
-    let label: string;
-    if (damageLabelType === 1) {
-      label = "爆炸伤害";
-    } else {
-      label =
-        typeof raw.damage_label_text === "string"
-          ? raw.damage_label_text
-          : "爆炸伤害";
-    }
-    // Apply to extraModes and non-primary damageModes
-    for (const m of damageModes.slice(1)) m.damageLabel = label;
-    if (extraModes) for (const m of extraModes) m.damageLabel = label;
-  }
-
-  return {
-    slug,
-    title: weaponTitle,
-    use_type: useType,
-    weapon_type: weaponType,
-    weaponTypeId,
-    rarity,
-    tags,
-    scope,
-    magazine,
-    totalAmmo,
-    accuracy,
-    stability,
-    range,
-    explosionRange,
-    attenuation_begin: attenuationBegin,
-    attenuation_end: attenuationEnd,
-    attenuation_scale: attenuationScale,
-    skillCooldown,
-    skillDuration,
-    skillBlocking,
-    showDuration,
-    shootingEnergy,
-    shootingEnergyCount,
-    changeClip,
-    damageModes,
-    meleeDamage,
-    extraModes,
-    draft,
-    game_mode: gameMode,
-  };
-}
-
-// ── Shared sort ──────────────────────────────────────
-
-function weaponSorter(a: Weapon, b: Weapon): number {
-  const rarityA = a.rarity ? RARITY_ORDER[a.rarity] : 0;
-  const rarityB = b.rarity ? RARITY_ORDER[b.rarity] : 0;
-  if (rarityA !== rarityB) return rarityB - rarityA;
-
-  const typeA = a.weapon_type ? WEAPON_TYPE_ORDER.get(a.weapon_type) ?? 99 : 99;
-  const typeB = b.weapon_type ? WEAPON_TYPE_ORDER.get(b.weapon_type) ?? 99 : 99;
-  if (typeA !== typeB) return typeA - typeB;
-
-  return a.title.localeCompare(b.title, "zh-CN");
-}
-
-// ── Public API ───────────────────────────────────────
-
-/**
- * 从 MDX frontmatter 获取所有武器数据
- */
 export async function getAllWeapons(): Promise<Weapon[]> {
   if (!fs.existsSync(WEAPONS_DIR)) {
     console.warn(`Weapons directory not found: ${WEAPONS_DIR}`);
-    return [];
   }
-
-  const files = fs.readdirSync(WEAPONS_DIR).filter((f) => f.endsWith(".mdx"));
-
-  return files
-    .map((file) => {
-      const filePath = path.join(WEAPONS_DIR, file);
-      const content = fs.readFileSync(filePath, "utf-8");
-      const { data } = matter(content);
-      const slug = file.replace(/\.mdx$/, "");
-
-      return transformWeapon(data, slug);
-    })
-    .filter((w) => !w.draft || isDev)
-    .sort(weaponSorter);
+  return readWeapons(WEAPONS_DIR, "lc");
 }
-
-const TD_WEAPONS_DIR = path.join(process.cwd(), "data/weapons_td");
 
 export async function getAllTDWeapons(): Promise<Weapon[]> {
-  if (!fs.existsSync(TD_WEAPONS_DIR)) {
-    return [];
-  }
-  const files = fs.readdirSync(TD_WEAPONS_DIR).filter((f) => f.endsWith(".mdx"));
-  return files
-    .map((file) => {
-      const filePath = path.join(TD_WEAPONS_DIR, file);
-      const content = fs.readFileSync(filePath, "utf-8");
-      const { data } = matter(content);
-      const slug = file.replace(/\.mdx$/, "");
-      return transformWeapon(data, slug);
-    })
-    .filter((w) => !w.draft || isDev)
-    .sort(weaponSorter);
+  return readWeapons(TD_WEAPONS_DIR, "td");
 }
 
-/**
- * 根据 slug 获取单个武器数据
- */
-export async function getWeaponBySlug(slug: string): Promise<Weapon | null> {
+function readWeaponBySlug(
+  directory: string,
+  slug: string,
+  table: "lc" | "td",
+): Weapon | null {
   const decodedSlug = decodeURIComponent(slug);
-  const filePath = path.join(WEAPONS_DIR, `${decodedSlug}.mdx`);
+  const filePath = path.join(directory, `${decodedSlug}.mdx`);
+  if (!fs.existsSync(filePath)) return null;
+  const { data } = matter(fs.readFileSync(filePath, "utf8"));
+  return transformWeapon(data, decodedSlug, table);
+}
 
-  if (!fs.existsSync(filePath)) {
-    return null;
-  }
-
-  const content = fs.readFileSync(filePath, "utf-8");
-  const { data } = matter(content);
-
-  return transformWeapon(data, decodedSlug);
+export async function getWeaponBySlug(slug: string): Promise<Weapon | null> {
+  return readWeaponBySlug(WEAPONS_DIR, slug, "lc");
 }
 
 export async function getTDWeaponBySlug(slug: string): Promise<Weapon | null> {
-  const decodedSlug = decodeURIComponent(slug);
-  const filePath = path.join(TD_WEAPONS_DIR, `${decodedSlug}.mdx`);
-
-  if (!fs.existsSync(filePath)) {
-    return null;
-  }
-
-  const content = fs.readFileSync(filePath, "utf-8");
-  const { data } = matter(content);
-
-  return transformWeapon(data, decodedSlug);
+  return readWeaponBySlug(TD_WEAPONS_DIR, slug, "td");
 }

@@ -129,7 +129,7 @@ fire_interval: 0.33
 pellets: 6
 ```
 
-- `fire_interval` 单位为秒，存在时必须大于零；不适用时省略，不能写 `0` 占位。
+- `fire_interval` 单位为秒，存在时必须为非负有限数；`0` 表示确定的零间隔，不能用作缺失占位。
 - `pellets` 必须为正整数。
 - 在 ASC Lock 和 Resolver 上线前，这两个字段继续提供页面所需数据。
 - ASC 上线后应从原始行解析，人工差异进入未来的 ASC overrides，而不是继续维护副本。
@@ -189,7 +189,7 @@ numerical:
 
 ## 6. Overrides
 
-Task 1 只允许 Numerical 命名空间：
+Task 1 首先开放 Numerical 命名空间；Task 4 在确认 ASC 衰减语义后增加 `asc.attenuation`：
 
 ```yaml
 overrides:
@@ -197,6 +197,27 @@ overrides:
     damage:
       toughness: 0
 override_reason: 实测确认该结算的破韧值为零
+```
+
+```yaml
+overrides:
+  asc:
+    attenuation:
+      status: not_applicable
+override_reason: 实测确认该来源不使用 ASC 中的衰减候选
+```
+
+需要修正衰减数值时使用：
+
+```yaml
+overrides:
+  asc:
+    attenuation:
+      status: applicable
+      begin_meters: 10
+      end_meters: 30
+      min_scale: 0.5
+override_reason: 实测确认衰减区间与最低倍率
 ```
 
 允许字段：
@@ -217,10 +238,11 @@ override_reason: 实测确认该结算的破韧值为零
 约束：
 
 - `overrides` 和非空 `override_reason` 必须同时出现。
-- overrides 及其 `numerical`、`damage` 对象均不能为空。
+- overrides、命名空间及其嵌套对象均不能为空。
 - Settlement Tags、Numerical 引用和原始 Lock 行不能被覆盖。
 - Resolver 后续必须保留原始值、有效值和覆盖原因。
-- ASC、Feel、Item overrides 等相应 Lock 和领域映射确定后再增加命名空间。
+- `asc.attenuation` 只能覆盖合法 ASC 原始衰减事实；缺少 ASC、原始值非法或结构不完整时不能用 override 掩盖。
+- Feel、Item overrides 等相应 Lock 和领域映射确定后再增加命名空间。
 
 ## 7. 不适用、确定为零与待核验
 
@@ -246,7 +268,7 @@ damage_sources:
 
 - pending 可以携带候选来源，也可以暂时没有 Numerical。
 - 任何显式 pending 都要求武器 `draft: true`。
-- pending 状态沿继承传播。
+- `verification` 属于当前来源，不沿继承传播；继承得到的有效引用仍按普通来源校验。
 - Numerical 原始字段为 `0`、但缺少对应 Settlement 时，应解析为“不适用”，不能解释为“确定为零”。
 - Settlement 存在但必需值缺失时属于错误或 pending，不能补零。
 
@@ -464,6 +486,6 @@ damage_sources: []
 - 同一武器混用 LC/TD，或与调用方 `expectedTable` 不一致。
 - pending 武器未设置 `draft: true`。
 - overrides 为空、缺少原因、原因孤立或试图覆盖未知字段。
-- 使用 `null`、空字符串或零间隔作为占位。
+- 使用 `null`、空字符串或非法数值作为占位。
 
 协议校验不验证 Numerical、ASC、Feel 或 Item 行是否真实存在；这些检查分别属于原表读取器、Lock 检查器和 Resolver。

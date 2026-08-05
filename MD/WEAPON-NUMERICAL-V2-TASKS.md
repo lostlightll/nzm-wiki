@@ -315,6 +315,8 @@ gp-active-skill
 
 ## Task 4：实现 V1/V2 Resolver 与武器领域模型
 
+> 状态：已完成。领域模型、解析规则、错误与迁移 bridge 见 [`MD/WEAPON-RESOLVER.md`](./WEAPON-RESOLVER.md)。
+
 ### 目标
 
 把 V1 frontmatter 或 V2 引用统一解析为页面可用的 `ResolvedWeapon`。页面、索引和计算器不理解原始 JSON，也不自行拼链路。
@@ -370,17 +372,17 @@ gp-active-skill
 
 ### 验收标准
 
-- [ ] 同一把武器的 V1 / V2 能得到可比较的标准化快照。
-- [ ] 页面层不出现 `HpCalScale`、`FireIntervalBase` 等 Unreal 字段。
-- [ ] 缺失 Lock、循环继承和无效引用会明确失败。
-- [ ] 原始值、派生值与人工覆盖可追溯。
-- [ ] 同一 Numerical 搭配不同 ASC 时，射击表现不会被错误合并。
-- [ ] 普通 ASC 衰减值能正确完成厘米到米的换算，并挂在对应伤害来源上。
-- [ ] ASC 为 `0 / 0` 时得到明确的 `not_applicable`，不会退化成缺失或错误零值。
-- [ ] ASC 非零但不适用的来源可通过 `overrides.asc.attenuation` 排除，并保留原因与原值。
-- [ ] 领域模型不再提供含义模糊的 `range` 派生字段。
-- [ ] PVE 技能配置存在时不会被 GP `CooldownDuration` 覆盖。
-- [ ] PVE 缺行的技能会携带 `gp_fallback` 来源标记。
+- [x] 同一把武器的 V1 / V2 能得到可比较的标准化快照。
+- [x] 页面层不出现 `HpCalScale`、`FireIntervalBase` 等 Unreal 字段。
+- [x] 缺失 Lock、循环继承和无效引用会明确失败。
+- [x] 原始值、派生值与人工覆盖可追溯。
+- [x] 同一 Numerical 搭配不同 ASC 时，射击表现不会被错误合并。
+- [x] 普通 ASC 衰减值能正确完成厘米到米的换算，并挂在对应伤害来源上。
+- [x] ASC 为 `0 / 0` 时得到明确的 `not_applicable`，不会退化成缺失或错误零值。
+- [x] ASC 非零但不适用的来源可通过 `overrides.asc.attenuation` 排除，并保留原因与原值。
+- [x] 领域模型不再提供含义模糊的 `range` 派生字段。
+- [x] PVE 技能配置存在时不会被 GP `CooldownDuration` 覆盖。
+- [x] PVE 缺行的技能会携带 `gp_fallback` 来源标记。
 
 ### 依赖
 
@@ -583,7 +585,7 @@ gp-active-skill
 | Task 2：建立统一原表读取层 | 已完成 | Task 1 | Numerical / ASC / Feel / Item / Prototype 读取器 |
 | Task 2.5：接入主动技能基础充能链 | 已完成 | Task 1、2 | PVE / GP 技能读取规则、fallback 与校验测试 |
 | Task 3：实现 Weapon Data Lock | 已完成 | Task 1、2、2.5 | 多来源 Lock、刷新与只读检查命令 |
-| Task 4：实现 V1/V2 Resolver | 待开始 | Task 1、3 | `ResolvedWeapon`、来源追踪、override 机制 |
+| Task 4：实现 V1/V2 Resolver | 已完成 | Task 1、3 | `ResolvedWeapon`、来源追踪、override 机制 |
 | Task 5：迁移代表武器 | 待开始 | Task 4 | 试点 MDX、Lock、迁移前后快照 |
 | Task 6：切换全部消费者 | 待开始 | Task 5 | 页面、索引、图表、计算器统一入口 |
 | Task 7：批量迁移 LC / TD | 待开始 | Task 6 | 全量 V2、完整 Lock、人工核验清单 |
