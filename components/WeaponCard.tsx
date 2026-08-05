@@ -437,13 +437,11 @@ export function WeaponCard({
 function ModeStats({
   mode,
   showName,
-  nameOverride,
   compact,
   hpMultiplier = 500,
 }: {
   mode: ConsumerDamageSource;
   showName: boolean;
-  nameOverride?: string;
   compact?: boolean;
   hpMultiplier?: number;
 }) {
@@ -461,7 +459,7 @@ function ModeStats({
     <div className="mb-3">
       {showName && (
         <h3 className="mb-1.5 text-sm font-semibold text-zinc-300">
-          {nameOverride ?? mode.name}
+          {mode.name}
         </h3>
       )}
 
@@ -731,12 +729,11 @@ export function WeaponDetailCard() {
           </div>
         </div>
       ) : primaryModes.length > 1 ? (
-        primaryModes.map((m, index) => (
+        primaryModes.map((m) => (
           <ModeStats
             key={m.id}
             mode={m}
             showName
-            nameOverride={index === 0 ? "普通射击" : undefined}
             hpMultiplier={hpMul}
           />
         ))

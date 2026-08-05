@@ -48,6 +48,10 @@
       "kind": "manual_verification",
       "note": "依据 Numerical 描述、来源名称及页面机制确认 精绝兽神「秘法榴弹」的有效来源"
     },
+    "manual-lc-mi-fa-liu-dan-asc": {
+      "kind": "manual_verification",
+      "note": "人工核验确认精绝兽神「秘法榴弹」使用 ASC 204"
+    },
     "manual-lc-mi-fa-liu-dan-fen-lie-tan": {
       "kind": "manual_verification",
       "note": "依据 Numerical 描述、来源名称及页面机制确认 精绝兽神「秘法榴弹分裂弹」的有效来源"
@@ -131,6 +135,10 @@
     "manual-td-mi-fa-liu-dan": {
       "kind": "manual_verification",
       "note": "依据 Numerical 描述、来源名称及页面机制确认 精绝兽神「秘法榴弹」的有效来源"
+    },
+    "manual-td-mi-fa-liu-dan-asc": {
+      "kind": "manual_verification",
+      "note": "人工核验确认精绝兽神「秘法榴弹」使用 ASC 204"
     },
     "manual-td-mi-fa-liu-dan-fen-lie-tan": {
       "kind": "manual_verification",
@@ -20195,18 +20203,18 @@
             },
             {
               "classification": "source_difference",
-              "pointer": "/detail/damageSources/2/fire/interval/state",
-              "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/2/fire/interval/state"
-            },
-            {
-              "classification": "source_difference",
               "pointer": "/detail/damageSources/2/fire/interval/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/2/fire/interval/value"
             },
             {
-              "classification": "source_difference",
-              "pointer": "/detail/damageSources/2/fire/rpm/state",
-              "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/2/fire/rpm/state"
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/2/fire/pellets/state",
+              "reason": "Task 7.6 已核验来源纠正：/detail/damageSources/2/fire/pellets/state"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/2/fire/pellets/value",
+              "reason": "Task 7.6 已核验来源纠正：/detail/damageSources/2/fire/pellets/value"
             },
             {
               "classification": "source_difference",
@@ -20233,7 +20241,8 @@
             "extra-mode:秘法榴弹": {
               "evidence_ids": [
                 "numerical-lc-120100242-1",
-                "manual-lc-mi-fa-liu-dan"
+                "manual-lc-mi-fa-liu-dan",
+                "manual-lc-mi-fa-liu-dan-asc"
               ],
               "previous_effective_source": {
                 "numerical": {
@@ -20283,6 +20292,7 @@
               "prototype_mode": 1
             },
             "extra-mode:秘法榴弹": {
+              "asc_type_id": "204",
               "numerical": {
                 "id": 120100242,
                 "level": 1,
@@ -20499,18 +20509,18 @@
             },
             {
               "classification": "source_difference",
-              "pointer": "/detail/damageSources/2/fire/interval/state",
-              "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/2/fire/interval/state"
-            },
-            {
-              "classification": "source_difference",
               "pointer": "/detail/damageSources/2/fire/interval/value",
               "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/2/fire/interval/value"
             },
             {
-              "classification": "source_difference",
-              "pointer": "/detail/damageSources/2/fire/rpm/state",
-              "reason": "显式接受 V2 Lock/Resolver 来源差异：/detail/damageSources/2/fire/rpm/state"
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/2/fire/pellets/state",
+              "reason": "Task 7.6 已核验来源纠正：/detail/damageSources/2/fire/pellets/state"
+            },
+            {
+              "classification": "accepted_correction",
+              "pointer": "/detail/damageSources/2/fire/pellets/value",
+              "reason": "Task 7.6 已核验来源纠正：/detail/damageSources/2/fire/pellets/value"
             },
             {
               "classification": "source_difference",
@@ -20537,7 +20547,8 @@
             "extra-mode:秘法榴弹": {
               "evidence_ids": [
                 "numerical-td-120100242-1",
-                "manual-td-mi-fa-liu-dan"
+                "manual-td-mi-fa-liu-dan",
+                "manual-td-mi-fa-liu-dan-asc"
               ],
               "previous_effective_source": {
                 "numerical": {
@@ -20587,6 +20598,7 @@
               "prototype_mode": 1
             },
             "extra-mode:秘法榴弹": {
+              "asc_type_id": "204",
               "numerical": {
                 "id": 120100242,
                 "level": 1,
