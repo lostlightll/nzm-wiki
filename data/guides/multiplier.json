@@ -5,10 +5,10 @@
     { "id": "base", "label": "基础伤害" },
     { "id": "weakpoint-multiplier", "label": "弱点倍率" },
     { "id": "game-mode", "label": "游戏模式乘区" },
-    { "id": "element", "label": "元素乘区" },
-    { "id": "critical", "label": "暴伤乘区" },
-    { "id": "weakness", "label": "弱点增伤" },
     { "id": "dilution", "label": "大稀释乘区" },
+    { "id": "element", "label": "元素乘区" },
+    { "id": "weakness", "label": "弱点增伤" },
+    { "id": "critical", "label": "暴伤乘区" },
     { "id": "correction", "label": "特殊修正" },
     { "id": "damage-reduction", "label": "伤害减免" }
   ],

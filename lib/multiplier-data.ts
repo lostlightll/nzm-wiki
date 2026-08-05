@@ -6,10 +6,10 @@ const MULTIPLIER_FACTOR_IDS = [
   "base",
   "weakpoint-multiplier",
   "game-mode",
-  "element",
-  "critical",
-  "weakness",
   "dilution",
+  "element",
+  "weakness",
+  "critical",
   "correction",
   "damage-reduction",
 ] as const;
