@@ -23,29 +23,50 @@ import {
   RARITY_OPTIONS,
 } from "@/constants/perks";
 
-type AvailabilityFilter = "online" | "recent" | "offline";
+type QuickFilter = "online" | "recent" | "offline" | "super";
 
-const BASE_AVAILABILITY_OPTIONS: {
-  type: AvailabilityFilter;
+const BASE_QUICK_FILTER_OPTIONS: {
+  type: QuickFilter;
   label: string;
 }[] = [
   { type: "online", label: "已上线" },
   { type: "offline", label: "未上线" },
+  { type: "super", label: "超级插件" },
 ];
 
-const RECENT_AVAILABILITY_OPTION = {
+const RECENT_QUICK_FILTER_OPTION = {
   type: "recent" as const,
   label: "近期上线",
   highlighted: true,
 };
 
+const SUPER_PERK_NAMES = new Set([
+  "切换手法",
+  "技能魔术",
+  "永动核心",
+  "哑枪",
+  "弱肉强食",
+  "我只射击",
+  "暴走永动",
+  "武器穿透",
+  "物法兼得",
+  "不死狂热",
+  "反弹转化",
+  "弹道过载",
+  "狂战",
+  "狂暴连击",
+  "狂轰乱炸",
+  "致命爆炸",
+  "连发",
+]);
+
 const DEFAULT_RARITIES: Rarity[] = ["传说"];
-const DEFAULT_AVAILABILITY: AvailabilityFilter[] = ["online"];
+const DEFAULT_QUICK_FILTER: QuickFilter[] = ["online"];
 
 const FILTER_STORAGE_KEYS = {
   slot: "perk-slot",
   rarity: "perk-rarity",
-  availability: "perk-availability",
+  quickFilter: "perk-availability",
   weaponApplicability: "perk-weapon-applicability",
 } as const;
 
@@ -124,12 +145,12 @@ export default function PerksPageClient({
     FILTER_STORAGE_KEYS.rarity,
     DEFAULT_RARITIES,
   );
-  const availabilityState = useSelection<AvailabilityFilter>(
-    FILTER_STORAGE_KEYS.availability,
-    DEFAULT_AVAILABILITY,
+  const quickFilterState = useSelection<QuickFilter>(
+    FILTER_STORAGE_KEYS.quickFilter,
+    DEFAULT_QUICK_FILTER,
   );
-  const availabilitySelected = availabilityState.selected;
-  const selectAvailabilityOnly = availabilityState.selectOnly;
+  const quickFilterSelected = quickFilterState.selected;
+  const selectQuickFilterOnly = quickFilterState.selectOnly;
   const weaponApplicabilityState = useSelection<WeaponApplicabilityFilter>(
     FILTER_STORAGE_KEYS.weaponApplicability,
   );
@@ -138,35 +159,36 @@ export default function PerksPageClient({
     () => initialPerks.filter((perk) => isPerkRecent(perk, todayKey)).length,
     [initialPerks, todayKey],
   );
-  const availabilityOptions = useMemo(
+  const quickFilterOptions = useMemo(
     () =>
       recentPerkCount > 0
         ? [
-            BASE_AVAILABILITY_OPTIONS[0],
-            BASE_AVAILABILITY_OPTIONS[1],
-            RECENT_AVAILABILITY_OPTION,
+            BASE_QUICK_FILTER_OPTIONS[0],
+            BASE_QUICK_FILTER_OPTIONS[1],
+            RECENT_QUICK_FILTER_OPTION,
+            BASE_QUICK_FILTER_OPTIONS[2],
           ]
-        : BASE_AVAILABILITY_OPTIONS,
+        : BASE_QUICK_FILTER_OPTIONS,
     [recentPerkCount],
   );
-  const effectiveAvailability = useMemo(() => {
+  const effectiveQuickFilter = useMemo(() => {
     if (
       recentPerkCount === 0 &&
-      availabilitySelected.has("recent")
+      quickFilterSelected.has("recent")
     ) {
-      return new Set<AvailabilityFilter>(["online"]);
+      return new Set<QuickFilter>(["online"]);
     }
-    return availabilitySelected;
-  }, [availabilitySelected, recentPerkCount]);
+    return quickFilterSelected;
+  }, [quickFilterSelected, recentPerkCount]);
 
   useEffect(() => {
     if (
       recentPerkCount === 0 &&
-      availabilitySelected.has("recent")
+      quickFilterSelected.has("recent")
     ) {
-      selectAvailabilityOnly("online");
+      selectQuickFilterOnly("online");
     }
-  }, [availabilitySelected, recentPerkCount, selectAvailabilityOnly]);
+  }, [quickFilterSelected, recentPerkCount, selectQuickFilterOnly]);
 
   const filteredPerks = useMemo(() => {
     return initialPerks.filter((perk) => {
@@ -180,10 +202,11 @@ export default function PerksPageClient({
       const rarityMatch =
         rarityState.selected.size === 0 || rarityState.selected.has(perkRarity);
       const availability = perk.collectModItem === 1 ? "online" : "offline";
-      const availabilityMatch =
-        effectiveAvailability.size === 0 ||
-        effectiveAvailability.has(availability) ||
-        (effectiveAvailability.has("recent") && isPerkRecent(perk, todayKey));
+      const quickFilterMatch =
+        effectiveQuickFilter.size === 0 ||
+        effectiveQuickFilter.has(availability) ||
+        (effectiveQuickFilter.has("recent") && isPerkRecent(perk, todayKey)) ||
+        (effectiveQuickFilter.has("super") && SUPER_PERK_NAMES.has(perk.name));
       const weaponApplicabilityMatch = matchesWeaponApplicability(
         weaponApplicabilityState.selected,
         perk.weaponType,
@@ -192,12 +215,12 @@ export default function PerksPageClient({
       return (
         slotMatch &&
         rarityMatch &&
-        availabilityMatch &&
+        quickFilterMatch &&
         weaponApplicabilityMatch
       );
     });
   }, [
-    effectiveAvailability,
+    effectiveQuickFilter,
     initialPerks,
     rarityState.selected,
     slotState.selected,
@@ -245,20 +268,20 @@ export default function PerksPageClient({
         />
 
         <FilterSection
-          title="上线状态"
-          items={availabilityOptions}
-          selected={availabilitySelected}
-          onToggle={(availability) =>
-            selectAvailabilityOnly(
-              availabilitySelected.has(availability)
+          title="快速筛选"
+          items={quickFilterOptions}
+          selected={quickFilterSelected}
+          onToggle={(quickFilter) =>
+            selectQuickFilterOnly(
+              quickFilterSelected.has(quickFilter)
                 ? undefined
-                : availability,
+                : quickFilter,
             )
           }
           gridClass={
             recentPerkCount > 0
-              ? "grid max-w-lg grid-cols-3 gap-2"
-              : "grid max-w-sm grid-cols-2 gap-2"
+              ? "grid max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4"
+              : "grid max-w-lg grid-cols-3 gap-2"
           }
           centerClass="justify-center"
         />
