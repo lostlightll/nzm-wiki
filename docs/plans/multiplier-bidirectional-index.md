@@ -1,5 +1,7 @@
 # 乘区案例双向索引设计
 
+> 状态：proposed
+
 ## 当前状态
 
 乘区页面的数据保存在 `data/guides/multiplier.json`。

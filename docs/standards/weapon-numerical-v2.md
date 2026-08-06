@@ -1,8 +1,8 @@
 # 武器 Numerical V2 数据协议
 
-> 状态：已定稿  
-> Schema：`2`  
-> 日期：2026-08-05  
+> 状态：active
+> Schema：`2`
+> 日期：2026-08-05
 > 实现：`lib/weapon-source-v2.ts`
 
 本文是武器 Numerical V2 frontmatter 的协议规范。它定义数据所有权、来源引用、继承、覆盖、待核验状态和运行时校验，不定义 Lock 文件内容和领域 Resolver 的具体输出。
@@ -26,7 +26,7 @@
 - UI 只消费 Resolver 输出。
 - 普通构建不读取 `refs/`，PrototypeConfig 不进入页面运行时。
 
-Task 1 只实现协议和校验。ASC、Feel、Item、技能读取器及其 Lock 不在本任务范围内。
+ASC、Feel、Item、主动技能和 Lock 的实现边界分别由 `docs/architecture/` 下的现行文档定义。
 
 ## 2. 顶层结构
 
@@ -120,7 +120,7 @@ source:
 
 正常根来源必须提供 `source.numerical`。Prototype 射击模式应同时记录 `prototype_mode` 和 `asc_type_id`。不在 PrototypeConfig 中的技能、插件和 Dot 可以只引用 Numerical。爆炸、激光、轻重击等附属 Numerical 可以记录发现它们的 Mode，但不强制拥有独立 ASC。
 
-`source` 是后续数据链的扩展边界。未来技能等引用应加入这个对象，不继续增加无归属的顶层扁平字段。
+`source` 是数据链的扩展边界。新增伤害来源引用应进入这个对象，不继续增加无归属的顶层扁平字段。
 
 ### 3.3 Numerical-only 兼容字段
 
@@ -131,8 +131,8 @@ pellets: 6
 
 - `fire_interval` 单位为秒，存在时必须为非负有限数；`0` 表示确定的零间隔，不能用作缺失占位。
 - `pellets` 必须为正整数。
-- 在 ASC Lock 和 Resolver 上线前，这两个字段继续提供页面所需数据。
-- ASC 上线后应从原始行解析，人工差异进入未来的 ASC overrides，而不是继续维护副本。
+- 这两个字段只为无法建立 ASC 引用的已确认来源保留；常规来源必须由 Resolver 从 ASC 原始行解析。
+- 人工差异进入带原因的 ASC override，不能继续维护无来源副本。
 
 ## 4. LC、TD 与未来模式
 
@@ -189,7 +189,7 @@ numerical:
 
 ## 6. Overrides
 
-Task 1 首先开放 Numerical 命名空间；Task 4 在确认 ASC 衰减语义后增加 `asc.attenuation`，Task 5 试迁移后增加 `asc.fire_interval`：
+当前协议开放 Numerical override、`asc.attenuation` 和 `asc.fire_interval`：
 
 ```yaml
 overrides:

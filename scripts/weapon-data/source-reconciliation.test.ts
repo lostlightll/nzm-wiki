@@ -8,7 +8,9 @@ import matter from "gray-matter";
 import { migrationDecisionsV2Schema } from "./bulk-migration";
 import {
   applyReconciliation,
+  generateReconciliationMarkdown,
   reconcileSnapshotDifferenceDecisions,
+  writeReconciliationMarkdown,
 } from "./source-reconciliation";
 
 function fixtureRoot(): string {
@@ -267,4 +269,14 @@ test("apply 在写入 MDX 前拒绝失效的文件证据", () => {
     () => applyReconciliation({ root, decisionsPath }),
     /evidence pointer value differs/,
   );
+});
+
+test("reconciliation 文档写入会创建嵌套目录并保持确定性", () => {
+  const root = mkdtempSync(path.join(tmpdir(), "weapon-reconciliation-document-"));
+  const outputPath = path.join(root, "nested", "source-reconciliation.md");
+  const expected = generateReconciliationMarkdown();
+
+  writeReconciliationMarkdown(outputPath);
+
+  assert.equal(readFileSync(outputPath, "utf8"), expected);
 });

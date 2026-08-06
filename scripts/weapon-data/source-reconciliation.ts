@@ -52,7 +52,9 @@ const DEFAULT_PROPOSAL_PATH = path.join(
 const DEFAULT_RECONCILIATION_DOCUMENT_PATH = path.join(
   ROOT,
   "MD",
-  "WEAPON-V2-SOURCE-RECONCILIATION.md",
+  "_local",
+  "weapon-v2-reconciliation",
+  "source-reconciliation.md",
 );
 
 const numericalFields = [
@@ -1124,12 +1126,6 @@ export function checkReconciliation(
       issues.push(`${document.relativePath}: temporary migration reason remains`);
     }
   }
-  const documentPath = path.join(root, "MD", "WEAPON-V2-SOURCE-RECONCILIATION.md");
-  if (!existsSync(documentPath)) {
-    issues.push("reconciliation Markdown is missing");
-  } else if (readFileSync(documentPath, "utf8") !== generateReconciliationMarkdown({ root, decisionsPath })) {
-    issues.push("reconciliation Markdown differs from reviewed decisions and MDX");
-  }
   const historicalReviewedSources = confirmedSources + correctedSources;
   if (historicalReviewedSources !== 101) {
     issues.push(
@@ -1212,7 +1208,9 @@ export function writeReconciliationMarkdown(
   outputPath = DEFAULT_RECONCILIATION_DOCUMENT_PATH,
   options: ApplyReconciliationOptions = {},
 ): void {
-  writeFileSync(path.resolve(outputPath), generateReconciliationMarkdown(options), "utf8");
+  const resolved = path.resolve(outputPath);
+  mkdirSync(path.dirname(resolved), { recursive: true });
+  writeFileSync(resolved, generateReconciliationMarkdown(options), "utf8");
 }
 
 export function reconcileSnapshotDifferenceDecisions(

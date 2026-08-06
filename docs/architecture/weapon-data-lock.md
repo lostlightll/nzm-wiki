@@ -1,6 +1,6 @@
 # Weapon Data Lock
 
-> 状态：Task 3 已实现
+> 状态：active
 > Lock Schema：`1`
 > 产物：`data/weapon-data-lock.json`
 
@@ -62,7 +62,7 @@ Lock 使用一个严格、带命名空间的 JSON 文件：
 | `skill-pve` | `${SkillID}_${Level}` |
 | `gp-active-skill` | GP Unreal rowName |
 
-`active_skills` 保存 Task 2.5 已经确定的 PVE/GP 选择，不复制充能数值。具体数值仍从对应完整 `raw` 行读取。
+`active_skills` 保存已经确定的 PVE/GP 选择，不复制充能数值。具体数值仍从对应完整 `raw` 行读取。
 
 元数据中的哈希是原始物理文件字节的 SHA-256。路径使用 `NZM/Content` 相对路径，不保存本机路径。当前导出没有权威的游戏内容版本，因此 `game_content_version` 省略；不得用刷新时间代替内容版本。
 
@@ -75,7 +75,7 @@ Lock 使用一个严格、带命名空间的 JSON 文件：
 - `active_skill_id: 0` 是迁移哨兵，不收集技能行；若 V2 MDX 显式写入该值且与 Prototype Mode 0 不一致，刷新审计仍会报错。
 - pending 可以没有 Numerical；已经填写的候选引用仍必须存在，不能用 pending 隐藏悬空 ID。
 - 同一 key 被多个武器或来源引用时只保存一行。
-- Task 3 没有技能人工 override 协议。PVE 与 GP 均缺失时直接失败，后续只能在正式 Schema 定义带原因的 override 后扩展。
+- 当前没有技能人工 override 协议。PVE 与 GP 均缺失时直接失败；只有正式 Schema 定义带原因的 override 后才能扩展。
 
 ## 4. 命令
 
@@ -111,7 +111,7 @@ pnpm weapon-data:check
 - Numerical 行内 `id/Level` 的已知原表异常不会覆盖 rowName 权威身份；GP 行内 `AbilityID` 差异同样保留为源数据事实。
 - ASC 行必须保留 `DistanceBeginAttenuationBase`、`DistanceEndAttenuationBase` 和 `AttenuationMinScale`，包括零值。
 
-`weapon-data:check` 尚未接入 `build` 或 CI；该步骤属于 Task 8。
+`weapon-data:check` 尚未接入 `build` 或 CI；该收尾工作见 [`../plans/weapon-v2-cleanup.md`](../plans/weapon-v2-cleanup.md)。
 
 ## 5. 确定性与公共接口
 
@@ -126,4 +126,4 @@ pnpm weapon-data:check
 
 ## 6. 当前基线
 
-Task 3 完成时 LC、TD 各有 112 个 V1 武器 MDX，尚无 V2 武器。因此已提交 Lock 包含七类来源元数据和空 `rows` / `active_skills`。真实武器行从 Task 5 试迁移开始按显式引用进入 Lock。
+LC 与 TD 共 224 份武器均使用 V2。已提交 Lock 包含所有有效显式引用对应的来源元数据、完整原始行和主动技能选择；普通构建只读取该提交产物。

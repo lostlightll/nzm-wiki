@@ -22,13 +22,9 @@ nzm-wiki is a wiki website for the pve fps game "逆战未来" (Nizhan: Future),
 
 ## 项目文档
 
-`MD/` 目录存放项目规划、设计记录等文档。当前索引：
+共享项目文档的唯一入口是 [`docs/README.md`](docs/README.md)。处理仓库任务前先读取索引，再按任务路由读取 Required 文档。
 
-| 文件 | 说明 |
-|:---|:---|
-| [MD/PLAN-WEAPON.md](MD/PLAN-WEAPON.md) | 武器数据管线改造规划与进度 |
-| [MD/PERK-DATA-PIPELINE.md](MD/PERK-DATA-PIPELINE.md) | 插件身份、描述、图标、适用范围和上线状态维护规则 |
-| [MD/IDEAS.md](MD/IDEAS.md) | 灵感记录，每条一句话 |
+`MD/` 是被 Git 忽略的个人和本地工作区，不是项目规范来源。除非用户明确指定，否则不要读取或引用其中内容。
 
 ## Development Commands
 

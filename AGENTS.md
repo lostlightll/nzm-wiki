@@ -84,7 +84,8 @@ pnpm webp     # 优化 public/ 中的图片
 - `data/`：站点内容数据，按实体分类。
 - `types/index.ts`：共享类型的主要入口。
 - `scripts/`：构建、索引、站点地图和数据提取脚本。
-- `MD/`：规划、规范和会话记录；其中内容可能比本文件更具体，修改对应数据管线前先查阅。
+- `docs/`：随仓库共享的现行规范、架构、维护流程和计划；任务开始时先读取 `docs/README.md` 路由。
+- `MD/`：被 Git 忽略的个人工作区。除非用户明确指定，否则不要把其中内容当作项目规范读取。
 - `refs/`：从游戏资源导出的本地参考资料。
 
 使用 `@/*` 从仓库根目录导入，配置见 `tsconfig.json`。
@@ -93,26 +94,26 @@ pnpm webp     # 优化 public/ 中的图片
 
 - 制作、核验或修订本地表格时，所有中间文件、导出文件、截图和临时脚本统一放在 `MD/_local/<主题>/`，例如 `MD/_local/boss-health/`。
 - 不要在仓库根目录创建或继续使用 `outputs/`、`tmp/`、`tmp-boss-hp/` 等临时目录；已有内容迁入对应主题目录。
-- `MD/_local/` 已在 `.gitignore` 中明确忽略，不提交其中的本地工作产物。需要长期保留的规范、结论或可复用脚本，分别整理到 `MD/` 或 `scripts/`。
+- 整个 `MD/` 已在 `.gitignore` 中忽略，不提交其中的本地工作产物。需要长期共享的规范、结论或可复用脚本，分别整理到 `docs/` 或 `scripts/`。
 
 ## 项目文档
 
-涉及对应模块时优先读取：
+处理仓库任务前先读取 `docs/README.md`，再按其中路由读取对应 Required 文档。常用入口：
 
 | 文件 | 用途 |
 | :--- | :--- |
-| `MD/MDX-SPEC.md` | 武器 MDX 的完整字段规范与校验清单 |
-| `MD/PLAN-WEAPON.md` | 武器数据管线设计与进度 |
-| `MD/PERK-DATA-PIPELINE.md` | 插件身份、描述、图标、适用范围和上线状态规则 |
-| `MD/IDEAS.md` | 灵感记录 |
+| `docs/README.md` | 项目文档索引与任务路由 |
+| `docs/standards/weapon-mdx.md` | 武器 MDX 通用规范和数据所有权 |
+| `docs/standards/weapon-numerical-v2.md` | 武器 Numerical V2 协议 |
+| `docs/standards/perk-data.md` | 插件身份、描述、图标、适用范围和上线状态规则 |
 
 ## MDX 与数据原则
 
-- MDX frontmatter 是武器站点数据的唯一来源；构建时不得从 `refs/` 自动注入或覆盖。
-- 所有发布数值直接写入 MDX，不让页面运行时依赖外部导出数据。
-- 新增武器时可以使用 `scripts/extract-weapon-data.ts` 从 `refs/` 提取候选数据，但写入后仍以 MDX 为准。
-- 武器字段和模式分类以 `MD/MDX-SPEC.md` 为准；不要只依赖本文件中的简化说明。
-- `damage_modes` 用于武器自身的显式火力模式；`extra_modes` 用于技能、插件效果、射速变体或爆炸组件等额外模式。
+- MDX frontmatter 是武器来源选择、Wiki 语义和人工修正的唯一来源；构建时不得从 `refs/` 自动注入或覆盖。
+- 发布数值由 MDX 的 V2 引用和已提交的 `data/weapon-data-lock.json` 解析，页面运行时不得依赖 `refs/`。
+- `scripts/extract-weapon-data.ts` 只输出候选证据，不能直接复制为 frontmatter，也不能替代人工判断 `label`、`group`、继承或 override。
+- 武器通用字段以 `docs/standards/weapon-mdx.md` 为准；数值引用结构以 `docs/standards/weapon-numerical-v2.md` 和 `lib/weapon-source-v2.ts` 为准。
+- 新增或修改武器只使用 `schema_version: 2` 和 `damage_sources`，禁止恢复 `damage_modes`、`extra_modes` 等 V1 字段。
 - 通用 frontmatter 支持 `title`、`tag`、`toc`、`draft`、`page-width` 和 `keywords`。
 - `page-width` 支持 `sm`、`md`、`lg`、`xl`、`2xl`、`3xl`、`full` 或 CSS 宽度值，默认 `lg`。
 - `draft: true` 的内容仅在开发环境可见，生产构建会排除。

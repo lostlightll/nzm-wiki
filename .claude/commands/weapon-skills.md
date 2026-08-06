@@ -9,7 +9,7 @@
 - **少取上下文**：`-A 15` 够，不要 `-A 50+`
 - **不死磕模板变量**：`{GPModifier:...}`、`{GPNumericalID:...}` 等无法从 json 解析的，直接 `??` 占位
 - **保留原 MDX 已填数值**：若 MDX 原有数值（如 `200%`、`60%`），描述替换后保留，不写成 `??`
-- **不碰标准化字段**：武器已全部按 MDX-SPEC 标准化，`damage_label`、`damage_label_text`、`damage_modes`、`extra_modes`、`mode_names` 这些字段**不要动**。Skill 只操作 `<WeaponSkill>` 组件段落和末尾的 `weapon_type_id` / `active_skill_id`
+- **默认只改正文**：只操作 `<WeaponSkill>` 组件段落，不修改 frontmatter。禁止新增或恢复 `damage`、`damage_modes`、`extra_modes`、`mode_names` 等 V1 字段；用户明确要求修改身份字段时，必须先读取 `docs/standards/weapon-mdx.md`。
 
 ## Step 1: 查基础 ID（1 次 Grep）
 
@@ -89,15 +89,6 @@ pattern: "武器1":|"武器2":|...
 ### 保留原有数值
 
 若原 MDX 描述已填数值（`200%`、`60%`、`34%`、`176%` 等），**替换时保留**。这些是已人工校验的值。
-
-### front-matter（文件末尾）
-
-缺失则追加到 frontmatter **最末尾**（`weapon_type_id` → `active_skill_id` 顺序，在 `pellets` 等字段之后）：
-
-- `weapon_type_id: {从 PrototypeID 提取}`
-- `active_skill_id: {SkillID}`
-
-`prototype_id` 全部武器已有，不需补。
 
 ### WeaponSkill 组件
 

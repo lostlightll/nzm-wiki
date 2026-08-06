@@ -53,7 +53,6 @@ next-env.d.ts
 
 # local generated artifacts
 /.codex_tmp/
-/MD/_local/
 
 # Python bytecode caches
 __pycache__/

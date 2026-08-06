@@ -17,6 +17,7 @@
     "test:weapon-data-lock": "tsx --test scripts/weapon-data/lock.test.ts",
     "test:weapon-static-boundary": "tsx --test scripts/weapon-data/static-boundary.test.ts",
     "test:weapon-v2-migration": "tsx --test scripts/weapon-data/bulk-migration.test.ts",
+    "test:extract-weapon-data": "tsx --test scripts/extract-weapon-data.test.ts",
     "benchmark:weapon-resolver": "tsx scripts/weapon-data/benchmark-resolver.ts",
     "weapon-data:lock": "tsx scripts/weapon-data/lock-cli.ts refresh",
     "weapon-data:check": "tsx scripts/weapon-data/lock-cli.ts check",

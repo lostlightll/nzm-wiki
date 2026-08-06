@@ -1,110 +1,42 @@
-用户会提供一个或多个武器名称: $ARGUMENTS
-目标：按当前高级武器 MDX 格式导入或标准化 `data/weapons/*.mdx`。
+# 导入或更新武器
 
-权威规范：`MD/MDX-SPEC.md`。不要直接照抄某个现有武器文件；先按结构类型判断，再必要时查相同类型的现有武器做校验。
+目标：为 `$ARGUMENTS` 创建或更新 Weapon Numerical V2 MDX，并刷新 Weapon Data Lock。
 
-当前高级格式按三类结构处理：
-- **多火力模式型**：PrototypeConfig 中有多个实际火力模式，写入 `damage_modes`；重复 NumericalID 的射速变体写入 `extra_modes`。
-- **技能/插件伤害型**：主动技能、分裂弹、插件弹、Dot、爆炸组件等非火力模式伤害写入 `extra_modes`。
-- **动态射速型**：基础射击写 `damage_modes[0]`，被动/主动射速状态写 `extra_modes`。
+开始前读取：
 
-## 核心原则
+- `docs/standards/weapon-mdx.md`
+- `docs/standards/weapon-numerical-v2.md`
+- `docs/architecture/weapon-source-reader.md`
+- `docs/architecture/weapon-data-lock.md`
 
-- **MDX 自包含**：`damage_modes` / `extra_modes` 必须内嵌完整 damage、element、weakness、critical、toughness 等字段，不写 `numerical_id` 外键。
-- **全局伤害标签清空**：必须写 `damage_label: ''` 和 `damage_label_text: ''`，伤害标签改用每个 mode 的 `label`。
-- **Mode 0 也写完整数据**：除非明确是近战旧格式，否则新武器按 `damage_modes[0]` 完整写。
-- **extra_modes 只放非火力模式**：技能触发、插件效果、射速变体、爆炸组件放这里。
-- **旧 flat 字段保留**：`damage`、`file_rate`、`magazine` 等 legacy 字段暂时保留，作为回退和旧 UI 兼容。
-- **字段顺序照 MDX-SPEC**：`prototype_id` 紧跟 `title`，`weapon_type_id` / `active_skill_id` 放末尾。
+## 硬性规则
 
-## Step 1: 确认范围
+- 只写 `schema_version: 2` 和 `damage_sources`，禁止新增或恢复 `damage`、`damage_modes`、`extra_modes`、`mode_names` 等 V1 字段。
+- MDX 保存稳定引用、Wiki 语义和有证据的 override；不要内嵌可由 Resolver 从 Lock 解析的完整原表数值。
+- 名称、`label`、`group`、继承和 override 必须人工判断。不得根据 Numerical 描述、相邻编号或武器名称猜测。
+- LC 与 TD 分别核验并显式选择来源，禁止跨表 fallback。
+- `refs/` 只用于本次提取和校验，不得成为构建时依赖。
 
-用户给了武器名就直接用 `$ARGUMENTS`。
+## 流程
 
-如果用户没给武器名，不要直接跑全量；先问清楚范围，或只检查用户指定文件。
+1. 确认目标位于 `data/weapons/`、`data/weapons_td/` 或两者，并读取现有文件及同类 V2 示例。
+2. 从 `WeaponItemTable`、`WeaponPrototypeConfig` 和结构化资源引用确认 `prototype_id`、`item_id`、Prototype Mode、Numerical、ASC、Feel 与主动技能候选。
+3. 新文件先写最小 V2 frontmatter 和已确认的 `prototype_id`。需要候选证据时运行：
 
-## Step 2: 跑提取脚本
+   ```text
+   pnpm exec tsx scripts/extract-weapon-data.ts 武器名 --out MD/_local/weapon-import/武器名.json
+   ```
 
-```bash
-pnpm exec tsx scripts/extract-weapon-data.ts $ARGUMENTS
-```
+   该输出只是候选证据，不能直接复制成 frontmatter，也不会替你确定语义。
+4. 人工编写 `damage_sources`：为每个来源设置稳定 `id`、名称、分区和显式 `source`；只有证据确认时才填写继承或 typed override，并记录原因。
+5. 编写或保留正文技能说明、演示和来源署名。不要重复维护 Resolver 已提供的基础数值。
+6. 刷新并检查 Lock：
 
-脚本默认向 stdout 输出 JSON；需要落盘时显式指定可纳入本次工作的临时路径：
+   ```text
+   pnpm weapon-data:lock
+   pnpm weapon-data:check
+   ```
 
-```bash
-pnpm exec tsx scripts/extract-weapon-data.ts $ARGUMENTS --out tmp/weapon-data.json
-```
+7. 运行 `pnpm test:weapon-source-v2`、`pnpm test:weapon-resolver`、相关消费者测试和 `pnpm lint`。新增资源路径必须经过站点既有的 `getAssetPath()` 边界。
 
-不要使用 ignored 的中间列表文件；流程输入必须来自用户参数或已纳入本次工作的文件。
-
-重点看每把武器：
-- `mdx.required_header`
-- `mdx.damage_modes_yaml`
-- `mdx.extra_modes_yaml`
-- `skill_numerical`
-
-`damage_modes_yaml` / `extra_modes_yaml` 是标准格式草稿，可以复制进 frontmatter 后再人工改名、归类、补技能。
-
-## Step 3: 判断归属
-
-| 数据 | 写入位置 |
-|---|---|
-| PrototypeConfig 的首次 NumericalID | `damage_modes` |
-| PrototypeConfig 中重复 NumericalID 的 Mode | `extra_modes`，通常是主动/被动射速变体 |
-| ExplosionNumericalID | `extra_modes`，通常命名为“榴弹爆炸 / 龙炎弹爆炸 / 导弹爆炸” |
-| WeaponSkillDamage 技能伤害 | `extra_modes` |
-| 插件/特性产生的独立伤害 | `extra_modes` |
-| 被动/主动射速变化 | `extra_modes`，可与基础 mode 同 damage，仅改 `fire_interval` |
-
-## Step 4: label 规则
-
-| Settlement | label |
-|---|---|
-| WeaponDamage / MeleeWeaponDamage | 不写，默认“命中伤害” |
-| WeaponExplosionDamage | `爆炸伤害` |
-| WeaponSkillDamage（发射爆炸物） | `爆炸伤害` |
-| WeaponSkillDamage（非爆炸） | `技能伤害` |
-| DebuffDamage | `灼烧伤害` 或实际 Dot 名 |
-
-有一说一，脚本只能根据 Settlement 给初步建议；最终 label 看技能语义。
-
-## Step 5: 按结构类型处理
-
-### 多火力模式型
-
-- 霰弹主射击：`damage_modes`
-- 榴弹命中、龙炎弹等切换火力模式：`damage_modes`
-- 爆炸组件：`extra_modes`
-- 四连发/快速连发：如果和基础模式 NumericalID 相同，放 `extra_modes`，保留完整 damage，`fire_interval` 改成技能状态下的单发耗时
-- `pellets` 只在 SplinterNum > 1 时写
-
-### 技能/插件伤害型
-
-- 换弹切换/模式切换的主火力：`damage_modes`
-- 主动技能发射物：`extra_modes`
-- 分裂弹/插件弹：`extra_modes`
-- 如果 WeaponSkillDamage 实际是爆炸物，`label` 写 `爆炸伤害`，不是机械套 `技能伤害`
-
-### 动态射速型
-
-- 单模式主射击：`damage_modes[0]`
-- 被动满射速/主动增速：`extra_modes`
-- 主动技能伤害体：`extra_modes`
-- 动态射速的 `fire_interval = 基础 FireIntervalBase / 倍率`
-
-## Step 6: 写入检查
-
-写完后检查：
-- `damage_label: ''` + `damage_label_text: ''`
-- `damage_modes` 至少含 Mode 0 完整数据
-- `extra_modes` 没有把首次出现的 PrototypeConfig 火力模式混进去；重复 NumericalID 的射速变体可以在 `extra_modes`
-- `mode_names` 只覆盖非默认名字，不写冗余 `'0': 普通射击`
-- 所有非持续射击/独立伤害的 `fire_interval: 0`
-- `element_debuff_type_id` 保留
-- 旧 flat 字段和正文不乱删
-
-最后跑：
-
-```bash
-pnpm exec tsc --noEmit --pretty false
-```
+遇到多候选、缺行、跨表差异或语义不明时停止自动写入，列出候选与证据等待人工裁决。

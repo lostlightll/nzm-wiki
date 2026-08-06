@@ -1,5 +1,8 @@
 # Weapon Resolver
 
+> 状态：active
+> 实现：`lib/weapon-resolver.ts`
+
 `lib/weapon-resolver.ts` 是武器 frontmatter 到页面领域数据的唯一解析入口。它支持迁移期 V1 与正式 V2，并保证普通构建只读取已提交的 `data/weapon-data-lock.json`，不访问 `refs/`。
 
 ## 公共入口
@@ -86,7 +89,7 @@ Item 只读取显式 `item_id`。行缺失或身份不一致直接失败；取�
 
 `lib/weapon-legacy.ts` 保存迁移前转换语义。V1 先转成旧 `Weapon`，再归一化为同形 `ResolvedWeapon`；`toLegacyWeapon()` 对 V1 返回保存的精确 bridge。
 
-Task 6 后，`lib/weapons.ts` 是唯一读取武器 frontmatter 的服务端边界。所有入口必须显式传入 `lc` 或 `td`，并直接返回 `ResolvedWeapon`：
+`lib/weapons.ts` 是唯一读取武器 frontmatter 的服务端边界。所有入口必须显式传入 `lc` 或 `td`，并直接返回 `ResolvedWeapon`：
 
 ```text
 frontmatter + committed Lock -> resolveWeapon() -> server consumers
@@ -99,9 +102,9 @@ Resolver 独占主来源决策：先排除 `damage.base` 不适用的恢复等�
 
 详情页保留既有的“普通射击 / 技能与特殊攻击 / 武器属性”呈现结构，不因 V2 数据链新增模式选择器。模式面板按 `section` 展示全部标准化来源；武器级元素、衰减摘要和曲线严格使用 Resolver 给出的 `mainSourceId`。只有主来源的 `attenuation.status === "applicable"` 才显示衰减，消费者不读取旧 `range` 或顶层衰减字段。目录卡、搜索与 `weapon-stats.json` 同样使用该 `mainSourceId` 摘要。
 
-正文 `<ActiveSkill>` 的 `cooldown` 始终由标准化 `chargeTime` 覆盖；字段不可用时明确不显示，不能退回正文手填 CD。标准化 `chargeCount` 有值时覆盖正文 count，否则正文 count 只作为通用展示兼容值。Task 8 再物理删除 MDX 中的重复属性。
+正文 `<ActiveSkill>` 的 `cooldown` 始终由标准化 `chargeTime` 覆盖；字段不可用时明确不显示，不能退回正文手填 CD。标准化 `chargeCount` 有值时覆盖正文 count，否则正文 count 只作为通用展示兼容值。重复属性的物理删除见 [`../plans/weapon-v2-cleanup.md`](../plans/weapon-v2-cleanup.md)。
 
-V2 到旧模型的 `toLegacyWeapon()` 仍是迁移期有损适配，只供 Resolver 回归和 Task 7 迁移使用；业务消费者不再调用。Settlement 不适用或缺失的旧必填数字使用 `0`，旧模型无法表达的 toughness `none` 使用旧默认“冲击”，并产生 `LOSSY_LEGACY_PROJECTION`。V2 不恢复旧 `range` 或顶层衰减字段。
+V2 到旧模型的 `toLegacyWeapon()` 仍是迁移期有损适配，只供 Resolver 回归和迁移工具使用；业务消费者不再调用。Settlement 不适用或缺失的旧必填数字使用 `0`，旧模型无法表达的 toughness `none` 使用旧默认“冲击”，并产生 `LOSSY_LEGACY_PROJECTION`。V2 不恢复旧 `range` 或顶层衰减字段。
 
 ## Snapshot
 
