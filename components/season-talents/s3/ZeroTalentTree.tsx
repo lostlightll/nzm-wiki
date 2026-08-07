@@ -24,10 +24,13 @@ import grapplingHookData from "@/data/season-talents/s3/grappling-hook.json";
 import ironFistData from "@/data/season-talents/s3/iron-fist.json";
 import passiveData from "@/data/season-talents/s3/passives.json";
 import zeroData from "@/data/season-talents/s3/zero.json";
+import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
+import type { MultiplierSource } from "@/lib/multiplier-data";
 import { getAssetPath } from "@/lib/path";
 
 interface TalentNode {
   id: string;
+  canonicalId?: string;
   name: string;
   phase: number;
   column: number;
@@ -115,9 +118,10 @@ function mapGeneralNodes(talentType: number): TalentNode[] {
     .filter((node) => node.column >= 5)
     .map((node) => ({
       ...node,
-      id: node.id.replace(/^3002/, `300${talentType}`),
+      id: `shared-${talentType}-${node.id}`,
+      canonicalId: node.id,
       prerequisites: node.prerequisites.map((id) =>
-        id.replace(/^3002/, `300${talentType}`),
+        `shared-${talentType}-${id}`,
       ),
     }));
 }
@@ -262,12 +266,14 @@ function RankSelector({
 
 function DetailCard({
   node,
+  talentId,
   rootNodeId,
   level,
   onLevelChange,
   compact = false,
 }: {
   node: TalentNode;
+  talentId: S3TalentId;
   rootNodeId: string;
   level: number;
   onLevelChange: (level: number) => void;
@@ -282,6 +288,19 @@ function DetailCard({
         : "专属天赋"
       : "通用天赋";
   const displayLevel = Math.max(1, level);
+  const providerSource: MultiplierSource = node.column >= 5
+    ? {
+        type: "season-talent",
+        season: "s3",
+        tree: "zero",
+        nodeId: node.canonicalId ?? node.id,
+      }
+    : {
+        type: "season-talent",
+        season: "s3",
+        tree: talentId,
+        nodeId: node.id,
+      };
 
   return (
     <section
@@ -342,6 +361,12 @@ function DetailCard({
           天赋效果
         </div>
         <TalentDescription value={node.descriptions[displayLevel - 1]} />
+        <div
+          data-multiplier-provider-target={`node-${node.id}`}
+          className="mt-3"
+        >
+          <MultiplierSourceBadges source={providerSource} />
+        </div>
       </div>
 
       <RankSelector node={node} level={level} onChange={onLevelChange} />
@@ -713,6 +738,20 @@ function PassiveTalentSelector({
                 EFFECT DESCRIPTION
               </p>
               <TalentDescription value={selectedTalent.description} />
+              <div
+                id={`multiplier-provider-passive-${selectedTalent.id}`}
+                data-multiplier-provider-target={`passive-${selectedTalent.id}`}
+                className="mt-3"
+              >
+                <MultiplierSourceBadges
+                  source={{
+                    type: "season-talent",
+                    season: "s3",
+                    tree: "zero",
+                    passiveId: selectedTalent.id,
+                  }}
+                />
+              </div>
             </div>
             <div className="mt-auto flex flex-col gap-4 border-t border-[color:var(--talent-accent-soft)] pt-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
@@ -772,6 +811,20 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
   );
   const generalNodes = DATA.nodes.filter((node) => node.column >= 5);
 
+  const updateDeepLink = useCallback((selection: { nodeId?: string; passiveId?: string }) => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete("node");
+    url.searchParams.delete("passive");
+    if (selection.nodeId) url.searchParams.set("node", selection.nodeId);
+    if (selection.passiveId) url.searchParams.set("passive", selection.passiveId);
+    url.hash = selection.passiveId
+      ? `multiplier-provider-passive-${selection.passiveId}`
+      : selection.nodeId
+        ? `multiplier-provider-node-${selection.nodeId}`
+        : "";
+    window.history.replaceState(null, "", url);
+  }, []);
+
   const updateNodeLevel = useCallback((node: TalentNode, requestedLevel: number) => {
     if (node.id === ROOT_NODE_ID) return;
 
@@ -794,10 +847,12 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
 
   const selectNode = (node: TalentNode) => {
     setSelectedNodeId(node.id);
+    updateDeepLink({ nodeId: node.id });
   };
 
   const activateNode = (node: TalentNode) => {
     setSelectedNodeId(node.id);
+    updateDeepLink({ nodeId: node.id });
     if (node.id !== ROOT_NODE_ID) {
       updateNodeLevel(node, node.maxLevel);
     }
@@ -850,6 +905,35 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
   }, [DATA.nodes, DEFAULT_EXCLUSIVE_LEVELS, ROOT_NODE_ID, TALENT_BUILD_STORAGE_KEY]);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const nodeId = params.get("node");
+    const passiveId = params.get("passive");
+    if (nodeId && nodeMap.has(nodeId)) {
+      setSelectedNodeId(nodeId);
+    }
+    if (passiveId && PASSIVE_DATA.passives.some((talent) => talent.id === passiveId)) {
+      setSelectedPassiveId(passiveId);
+      setPassiveSelectorOpen(true);
+    }
+
+    const targetKey = passiveId ? `passive-${passiveId}` : nodeId ? `node-${nodeId}` : null;
+    if (!targetKey) return;
+    const frame = window.requestAnimationFrame(() => {
+      const targets = document.querySelectorAll<HTMLElement>(
+        `[data-multiplier-provider-target="${targetKey}"]`,
+      );
+      const visibleTarget = [...targets].find((target) => target.getClientRects().length > 0);
+      visibleTarget?.scrollIntoView({
+        block: "center",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+      });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [nodeMap]);
+
+  useEffect(() => {
     if (!storageReady) return;
 
     const saved: SavedTalentBuild = {
@@ -871,6 +955,13 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
       data-talent-theme={talentId}
       style={getThemeStyle(THEMES[talentId])}
     >
+      {selectedNode && (
+        <span
+          id={`multiplier-provider-node-${selectedNode.id}`}
+          aria-hidden="true"
+          className="sr-only"
+        />
+      )}
       <header className="relative overflow-hidden rounded-sm border border-[color:var(--talent-frame)] bg-[#05151f] px-4 py-4 shadow-[0_20px_70px_rgba(0,0,0,0.32)] sm:px-6 xl:min-h-[11.5rem] xl:px-12">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_35%,var(--talent-radial),transparent_30%),linear-gradient(90deg,rgba(2,11,17,0.72),rgba(5,23,33,0.95))]" />
         <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-[color:var(--talent-accent)] via-[color:var(--talent-accent-soft)] to-transparent" />
@@ -931,6 +1022,9 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
             onClick={() => {
               if (!selectedPassive) {
                 setSelectedPassiveId(PASSIVE_DATA.passives[0].id);
+                updateDeepLink({ passiveId: PASSIVE_DATA.passives[0].id });
+              } else {
+                updateDeepLink({ passiveId: selectedPassive.id });
               }
               setPassiveSelectorOpen(true);
             }}
@@ -979,7 +1073,10 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
       {passiveSelectorOpen && selectedPassive && (
         <PassiveTalentSelector
           selectedTalent={selectedPassive}
-          onSelect={(talent) => setSelectedPassiveId(talent.id)}
+          onSelect={(talent) => {
+            setSelectedPassiveId(talent.id);
+            updateDeepLink({ passiveId: talent.id });
+          }}
           onClose={closePassiveSelector}
         />
       )}
@@ -988,6 +1085,7 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
         <div className="xl:hidden">
           <DetailCard
             node={selectedNode}
+            talentId={talentId}
             rootNodeId={ROOT_NODE_ID}
             level={selectedLevel}
             onLevelChange={(level) => updateNodeLevel(selectedNode, level)}
@@ -1141,6 +1239,7 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
             {selectedNode.id !== ROOT_NODE_ID && (
               <DetailCard
                 node={selectedNode}
+                talentId={talentId}
                 rootNodeId={ROOT_NODE_ID}
                 level={selectedLevel}
                 onLevelChange={(level) => updateNodeLevel(selectedNode, level)}
@@ -1153,6 +1252,7 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
         <aside className="hidden xl:block">
           <DetailCard
             node={selectedNode}
+            talentId={talentId}
             rootNodeId={ROOT_NODE_ID}
             level={selectedLevel}
             onLevelChange={(level) => updateNodeLevel(selectedNode, level)}

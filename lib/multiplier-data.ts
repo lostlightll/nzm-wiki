@@ -1,4 +1,5 @@
 import rawMultiplierData from "@/data/guides/multiplier.json";
+import rawProviderRegistry from "@/data/guides/multiplier-providers.json";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import type { ElementType, WeaponType } from "@/types";
 
@@ -11,7 +12,7 @@ const MULTIPLIER_FACTOR_IDS = [
   "weakness",
   "critical",
   "correction",
-  "damage-reduction",
+  "vulnerability",
 ] as const;
 
 const DAMAGE_CHANNEL_GROUPS = ["factor", "dilution", "correction"] as const;
@@ -45,6 +46,7 @@ export type MultiplierSource =
       season: string;
       tree?: string;
       nodeId?: string;
+      passiveId?: string;
       anchor?: string;
     };
 
@@ -142,16 +144,56 @@ export type ModifierType = DamageChannel & {
   factorId: MultiplierFactorId;
 };
 
-export type ProviderEffect = {
+export type MultiplierProvider = {
   id: string;
   label: string;
+  source: ProviderRegistrySource;
   modifierTypeIds: readonly string[];
-  evidence: readonly string[];
+  evidence: ProviderEvidence;
 };
 
-type ProviderPlacement = {
-  effectId: string;
-  source: MultiplierSource;
+type ProviderEvidence = {
+  kind: "gp-modifier" | "reviewed-override";
+  passiveSkillId?: string;
+  descriptionRowKey?: string;
+  descriptionRowKeys?: readonly string[];
+  gpModifierIds?: readonly string[];
+  basis?: readonly string[];
+  numericalRows: readonly {
+    modifierId: string;
+    rowKey: string;
+    attributeName: string;
+    attributeLabel: string;
+    modifierTypeId: string;
+    baseValue: number;
+    coefficient: number;
+    operation: string;
+  }[];
+};
+
+type ProviderRegistrySource =
+  | {
+      type: "perk";
+      itemId: string;
+      slot: 1 | 2 | 3 | 4;
+      slug: string;
+      overlimitCard: boolean;
+    }
+  | {
+      type: "weapon";
+      slug: string;
+      skillName: string;
+      component: "ActiveSkill" | "PassiveSkill";
+    }
+  | Extract<MultiplierSource, { type: "overlimit-bond" | "post" | "season-talent" }>;
+
+export type MultiplierProviderExclusion = {
+  id: string;
+  label: string;
+  source: ProviderRegistrySource;
+  reasonCode: "independent-damage-event" | "not-damage-multiplier";
+  reason: string;
+  evidence?: Record<string, unknown>;
 };
 
 export type MultiplierRelation = {
@@ -183,15 +225,20 @@ type DamageProfileInput = {
 };
 
 type RawMultiplierData = {
-  schemaVersion: 10;
+  schemaVersion: 11;
   defaultFactorId: MultiplierFactorId;
   factors: readonly MultiplierFactor[];
-  providerEffects: readonly ProviderEffect[];
-  providerPlacements: readonly ProviderPlacement[];
   damageChannelMatrix: DamageChannelMatrixData;
   weakpointMultiplier: WeakpointMultiplierData;
   dilutionCategories: readonly DilutionCategory[];
   factorDetails: Partial<Record<MultiplierFactorId, FactorDetailData>>;
+};
+
+type RawProviderRegistry = {
+  schemaVersion: 1;
+  evidencePriority: readonly string[];
+  providers: readonly MultiplierProvider[];
+  exclusions: readonly MultiplierProviderExclusion[];
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -201,11 +248,9 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function assertMultiplierData(value: unknown): asserts value is RawMultiplierData {
   if (
     !isRecord(value) ||
-    value.schemaVersion !== 10 ||
+    value.schemaVersion !== 11 ||
     typeof value.defaultFactorId !== "string" ||
     !Array.isArray(value.factors) ||
-    !Array.isArray(value.providerEffects) ||
-    !Array.isArray(value.providerPlacements) ||
     !isRecord(value.damageChannelMatrix) ||
     !isRecord(value.weakpointMultiplier) ||
     !Array.isArray(value.dilutionCategories) ||
@@ -271,38 +316,6 @@ function assertMultiplierData(value: unknown): asserts value is RawMultiplierDat
     }
   }
 
-  const effectIds = new Set<string>();
-  for (const effect of value.providerEffects) {
-    if (
-      !isRecord(effect) ||
-      typeof effect.id !== "string" ||
-      typeof effect.label !== "string" ||
-      effectIds.has(effect.id) ||
-      !Array.isArray(effect.modifierTypeIds) ||
-      effect.modifierTypeIds.length === 0 ||
-      effect.modifierTypeIds.some(
-        (id) => typeof id !== "string" || !modifierTypeIds.has(id),
-      ) ||
-      !Array.isArray(effect.evidence) ||
-      effect.evidence.some((item) => typeof item !== "string")
-    ) {
-      throw new Error("增伤效果存在无效或重复字段");
-    }
-    effectIds.add(effect.id);
-  }
-
-  for (const placement of value.providerPlacements) {
-    if (
-      !isRecord(placement) ||
-      typeof placement.effectId !== "string" ||
-      !effectIds.has(placement.effectId) ||
-      !isRecord(placement.source) ||
-      typeof placement.source.type !== "string"
-    ) {
-      throw new Error("增伤来源落点无效");
-    }
-  }
-
   const validWeaponTypes = new Set(Object.keys(WEAPON_TYPE_SPRITES));
   const weakpoint = value.weakpointMultiplier as Record<string, unknown>;
   if (!Array.isArray(weakpoint.groups)) throw new Error("弱点倍率数据无效");
@@ -327,12 +340,62 @@ function assertMultiplierData(value: unknown): asserts value is RawMultiplierDat
 assertMultiplierData(rawMultiplierData);
 const data = rawMultiplierData as unknown as RawMultiplierData;
 
+function assertProviderRegistry(value: unknown): asserts value is RawProviderRegistry {
+  if (
+    !isRecord(value) ||
+    value.schemaVersion !== 1 ||
+    !Array.isArray(value.evidencePriority) ||
+    !Array.isArray(value.providers) ||
+    !Array.isArray(value.exclusions)
+  ) {
+    throw new Error("增伤来源注册表顶层结构无效");
+  }
+  const modifierTypeIds = new Set(data.damageChannelMatrix.channels.map((item) => item.id));
+  const ids = new Set<string>();
+  for (const provider of value.providers) {
+    if (
+      !isRecord(provider) ||
+      typeof provider.id !== "string" ||
+      typeof provider.label !== "string" ||
+      ids.has(provider.id) ||
+      !isRecord(provider.source) ||
+      !Array.isArray(provider.modifierTypeIds) ||
+      provider.modifierTypeIds.length === 0 ||
+      provider.modifierTypeIds.some(
+        (id) => typeof id !== "string" || !modifierTypeIds.has(id),
+      ) ||
+      !isRecord(provider.evidence)
+    ) {
+      throw new Error("增伤来源注册项存在无效或重复字段");
+    }
+    ids.add(provider.id);
+  }
+  for (const exclusion of value.exclusions) {
+    if (
+      !isRecord(exclusion) ||
+      typeof exclusion.id !== "string" ||
+      typeof exclusion.label !== "string" ||
+      ids.has(exclusion.id) ||
+      !isRecord(exclusion.source) ||
+      typeof exclusion.reason !== "string" ||
+      exclusion.reason.length === 0
+    ) {
+      throw new Error("增伤来源排除项存在无效、重复或缺少理由的字段");
+    }
+    ids.add(exclusion.id);
+  }
+}
+
+assertProviderRegistry(rawProviderRegistry);
+const providerRegistry = rawProviderRegistry as unknown as RawProviderRegistry;
+
 function factorIdForModifier(channel: DamageChannel): MultiplierFactorId {
   if (channel.group === "dilution") return "dilution";
   if (channel.id === "game-mode") return "game-mode";
   if (channel.id === "element") return "element";
   if (channel.id === "critical") return "critical";
   if (channel.id === "weakness") return "weakness";
+  if (channel.id === "vulnerability") return "vulnerability";
   return "correction";
 }
 
@@ -348,12 +411,11 @@ export const MODIFIER_TYPES: readonly ModifierType[] =
     ...channel,
     factorId: factorIdForModifier(channel),
   }));
-export const PROVIDER_EFFECTS = data.providerEffects;
-export const PROVIDER_PLACEMENTS = data.providerPlacements;
+export const MULTIPLIER_PROVIDERS = providerRegistry.providers;
+export const MULTIPLIER_PROVIDER_EXCLUSIONS = providerRegistry.exclusions;
 
 const factorById = new Map(MULTIPLIER_FACTORS.map((factor) => [factor.id, factor]));
 const modifierTypeById = new Map(MODIFIER_TYPES.map((modifier) => [modifier.id, modifier]));
-const providerEffectById = new Map(PROVIDER_EFFECTS.map((effect) => [effect.id, effect]));
 
 const defaultMultiplierFactor = factorById.get(data.defaultFactorId);
 if (!defaultMultiplierFactor) throw new Error("默认乘区数据读取失败");
@@ -379,11 +441,15 @@ export function resolveMultiplierSourceHref(source: MultiplierSource): string {
     case "post":
       return withAnchor(`/posts/${encodeURIComponent(source.slug)}`, source.anchor);
     case "season-talent": {
-      const suffix = [source.season, source.tree, source.nodeId]
+      const suffix = [source.season, source.tree]
         .filter(Boolean)
         .map((part) => encodeURIComponent(part as string))
         .join("/");
-      return withAnchor(`/guides/season-talents/${suffix}`, source.anchor);
+      const params = new URLSearchParams();
+      if (source.nodeId) params.set("node", source.nodeId);
+      if (source.passiveId) params.set("passive", source.passiveId);
+      const query = params.size > 0 ? `?${params.toString()}` : "";
+      return withAnchor(`/guides/season-talents/${suffix}${query}`, source.anchor);
     }
   }
 }
@@ -411,40 +477,8 @@ function sourceIndexKey(source: MultiplierSource): string {
     case "post":
       return `post:${source.slug}`;
     case "season-talent":
-      return `season-talent:${source.season}:${source.tree ?? ""}:${source.nodeId ?? ""}`;
+      return `season-talent:${source.season}:${source.tree ?? ""}:node:${source.nodeId ?? ""}:passive:${source.passiveId ?? ""}`;
   }
-}
-
-function parseLegacyHref(href: string): MultiplierSource | undefined {
-  const [pathname, anchor] = href.split("#", 2);
-  const segments = pathname.split("/").filter(Boolean).map(decodeURIComponent);
-  if (segments[0] === "weapons" && segments[1]) {
-    return { type: "weapon", slug: segments[1], anchor };
-  }
-  if (segments[0] === "perks" && /^slot-[1-4]$/.test(segments[1] ?? "") && segments[2]) {
-    return {
-      type: "perk",
-      slot: Number(segments[1].slice(-1)) as 1 | 2 | 3 | 4,
-      slug: segments[2],
-      anchor,
-    };
-  }
-  if (segments[0] === "overlimit" && segments[1]) {
-    return { type: "overlimit-card", id: segments[1], anchor };
-  }
-  if (segments[0] === "posts" && segments[1]) {
-    return { type: "post", slug: segments[1], anchor };
-  }
-  if (segments[0] === "guides" && segments[1] === "season-talents" && segments[2]) {
-    return {
-      type: "season-talent",
-      season: segments[2],
-      tree: segments[3],
-      nodeId: segments[4],
-      anchor,
-    };
-  }
-  return undefined;
 }
 
 function relationFor(
@@ -470,73 +504,62 @@ function relationFor(
 
 function buildProviderRelations(): MultiplierRelation[] {
   const relations: MultiplierRelation[] = [];
-  const explicitEffectIds = new Set(PROVIDER_EFFECTS.map((effect) => effect.id));
-  const explicitSourceModifiers = new Set<string>();
-
-  for (const placement of PROVIDER_PLACEMENTS) {
-    const effect = providerEffectById.get(placement.effectId);
-    if (!effect) continue;
-    for (const modifierTypeId of effect.modifierTypeIds) {
-      const relation = relationFor(modifierTypeId, {
-        kind: "provider",
-        effectId: effect.id,
-        effectLabel: effect.label,
-        source: placement.source,
-        sourceHref: resolveMultiplierSourceHref(placement.source),
-      });
-      if (relation) {
-        relations.push(relation);
-        explicitSourceModifiers.add(
-          `${sourceIndexKey(placement.source)}:${modifierTypeId}`,
-        );
-      }
+  for (const provider of MULTIPLIER_PROVIDERS) {
+    const placements: MultiplierSource[] = [];
+    const source = provider.source;
+    switch (source.type) {
+      case "perk":
+        placements.push({
+          type: "perk",
+          slot: source.slot,
+          slug: source.slug,
+          anchor: "multiplier-provider",
+        });
+        if (source.overlimitCard) {
+          placements.push({
+            type: "overlimit-card",
+            id: source.itemId,
+            anchor: "multiplier-provider",
+          });
+        }
+        break;
+      case "weapon":
+        placements.push({
+          type: "weapon",
+          slug: source.slug,
+          anchor: `multiplier-provider-${provider.id}`,
+        });
+        break;
+      case "overlimit-bond":
+        placements.push({
+          ...source,
+          anchor: `bond-${source.name}-${source.count}`,
+        });
+        break;
+      case "season-talent":
+        placements.push({
+          ...source,
+          anchor: source.passiveId
+            ? `multiplier-provider-passive-${source.passiveId}`
+            : `multiplier-provider-node-${source.nodeId}`,
+        });
+        break;
+      case "post":
+        placements.push(source);
+        break;
     }
-  }
 
-  for (const category of DILUTION_CATEGORIES) {
-    for (const example of category.examples) {
-      if (explicitEffectIds.has(example.id)) continue;
-      const source = parseLegacyHref(example.href);
-      if (!source) continue;
-      if (explicitSourceModifiers.has(`${sourceIndexKey(source)}:${category.id}`)) {
-        continue;
+    for (const placement of placements) {
+      for (const modifierTypeId of provider.modifierTypeIds) {
+        const relation = relationFor(modifierTypeId, {
+          kind: "provider",
+          effectId: provider.id,
+          effectLabel: provider.label,
+          source: placement,
+          sourceHref: resolveMultiplierSourceHref(placement),
+        });
+        if (relation) relations.push(relation);
       }
-      const relation = relationFor(category.id, {
-        kind: "provider",
-        effectId: example.id,
-        effectLabel: example.label,
-        source,
-        sourceHref: example.href,
-      });
-      if (relation) relations.push(relation);
-    }
-  }
-
-  const factorModifierIds: Partial<Record<MultiplierFactorId, string>> = {
-    "game-mode": "game-mode",
-    element: "element",
-    weakness: "weakness",
-    critical: "critical",
-    correction: "correction",
-  };
-  for (const [factorId, detail] of Object.entries(MULTIPLIER_FACTOR_DETAILS)) {
-    const modifierTypeId = factorModifierIds[factorId as MultiplierFactorId];
-    if (!modifierTypeId || !detail) continue;
-    for (const example of detail.examples) {
-      if (!example.href || explicitEffectIds.has(example.id)) continue;
-      const source = parseLegacyHref(example.href);
-      if (!source) continue;
-      if (explicitSourceModifiers.has(`${sourceIndexKey(source)}:${modifierTypeId}`)) {
-        continue;
-      }
-      const relation = relationFor(modifierTypeId, {
-        kind: "provider",
-        effectId: example.id,
-        effectLabel: example.label,
-        source,
-        sourceHref: example.href,
-      });
-      if (relation) relations.push(relation);
     }
   }
 

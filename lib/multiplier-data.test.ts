@@ -22,8 +22,8 @@ test("shared effects keep perk and overlimit placements separate", () => {
 
   assert.equal(perk.length, 1);
   assert.equal(card.length, 1);
-  assert.equal(perk[0].effectId, "silent-gun");
-  assert.equal(card[0].effectId, "silent-gun");
+  assert.equal(perk[0].effectId, "perk:20703040436");
+  assert.equal(card[0].effectId, "perk:20703040436");
   assert.notEqual(perk[0].sourceHref, card[0].sourceHref);
 });
 
@@ -73,10 +73,73 @@ test("source and factor links preserve stable anchors and query state", () => {
     "/perks/slot-3/%E9%87%8D%E5%B3%A6%E5%8F%A0%E5%8A%BF#multiplier-provider",
   );
   assert.equal(
+    resolveMultiplierSourceHref({
+      type: "season-talent",
+      season: "s3",
+      tree: "grappling-hook",
+      nodeId: "3003501",
+      anchor: "multiplier-provider-node-3003501",
+    }),
+    "/guides/season-talents/s3/grappling-hook?node=3003501#multiplier-provider-node-3003501",
+  );
+  assert.equal(
+    resolveMultiplierSourceHref({
+      type: "season-talent",
+      season: "s3",
+      tree: "zero",
+      passiveId: "2030104",
+      anchor: "multiplier-provider-passive-2030104",
+    }),
+    "/guides/season-talents/s3/zero?passive=2030104#multiplier-provider-passive-2030104",
+  );
+  assert.equal(
     resolveMultiplierFactorHref("dilution", {
       view: "providers",
       modifierTypeId: "all-damage",
     }),
     "/guides?factor=dilution&view=providers&modifier=all-damage#multiplier",
   );
+});
+
+test("named provider regressions expose their audited modifier types", () => {
+  const cases = [
+    [{ type: "perk", slot: 4, slug: "独弹强化" } as const, ["correction"]],
+    [{ type: "perk", slot: 4, slug: "冥河送葬" } as const, ["weapon-damage"]],
+    [{ type: "perk", slot: 3, slug: "致命节拍" } as const, ["weapon-damage"]],
+    [{ type: "perk", slot: 4, slug: "腐蚀榴弹" } as const, ["weapon-damage"]],
+    [{ type: "perk", slot: 3, slug: "射击属性-20703040445" } as const, ["weapon-hit-damage"]],
+    [{ type: "weapon", slug: "Z型步枪" } as const, ["weapon-hit-damage"]],
+  ] as const;
+
+  for (const [source, expected] of cases) {
+    const actual = getProviderRelationsForSource(source).map(
+      (relation) => relation.modifierTypeId,
+    );
+    for (const modifierTypeId of expected) assert.ok(actual.includes(modifierTypeId));
+  }
+});
+
+test("numerical damage-ratio providers stay in the dilution channels", () => {
+  const cases = [
+    [{ type: "perk", slot: 3, slug: "伏击弹药" } as const, "weapon-damage"],
+    [{ type: "perk", slot: 4, slug: "肾上腺素" } as const, "weapon-damage"],
+    [{ type: "perk", slot: 4, slug: "恶鬼眷顾" } as const, "weapon-hit-damage"],
+  ] as const;
+
+  for (const [source, modifierTypeId] of cases) {
+    const relations = getProviderRelationsForSource(source);
+    assert.ok(relations.some((relation) => relation.modifierTypeId === modifierTypeId));
+    assert.ok(relations.every((relation) => relation.factorId === "dilution"));
+  }
+});
+
+test("vulnerability providers use the unified factor name", () => {
+  const relations = getProviderRelationsForSource({
+    type: "perk",
+    slot: 3,
+    slug: "近战易伤",
+  });
+  assert.ok(relations.length > 0);
+  assert.ok(relations.every((relation) => relation.factorId === "vulnerability"));
+  assert.ok(relations.every((relation) => relation.factorLabel === "易伤乘区"));
 });

@@ -20,7 +20,7 @@ const FACTOR_STYLES: Record<MultiplierFactorId, string> = {
   weakness: "border-red-400/50 bg-red-400/10 text-red-200",
   critical: "border-orange-400/50 bg-orange-400/10 text-orange-200",
   correction: "border-emerald-400/50 bg-emerald-400/10 text-emerald-200",
-  "damage-reduction": "border-teal-400/50 bg-teal-400/10 text-teal-200",
+  vulnerability: "border-teal-400/50 bg-teal-400/10 text-teal-200",
 };
 
 export function MultiplierBadges({

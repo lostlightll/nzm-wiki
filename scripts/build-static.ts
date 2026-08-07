@@ -41,6 +41,9 @@ function moveDirectory(src: string, dest: string): void {
 try {
   console.log("[START] Preparing for static build...");
 
+  console.log("[CHECK] Validating multiplier provider registry...");
+  execSync("pnpm multiplier-index:check", { stdio: "inherit" });
+
   // 1. 生成搜索索引和 sitemap
   console.log("[INDEX] Generating search index...");
   execSync("pnpm exec tsx scripts/generate-search-index.ts", { stdio: "inherit", shell: true } as any);

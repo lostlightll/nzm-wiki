@@ -10,6 +10,7 @@
     "test:perk-release": "tsx --test lib/perk-release.test.ts",
     "test:multiplier-data": "tsx --test lib/multiplier-data.test.ts",
     "multiplier-index:check": "tsx scripts/check-multiplier-index.ts",
+    "multiplier-providers:audit": "tsx scripts/audit-multiplier-providers.ts",
     "test:weapon-source-v2": "tsx --test lib/weapon-source-v2.test.ts",
     "test:weapon-resolver": "tsx --test lib/weapon-resolver.test.ts",
     "test:weapons": "tsx --test lib/weapons.test.ts",

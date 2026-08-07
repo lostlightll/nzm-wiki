@@ -52,7 +52,8 @@ function isMultiplierFactorId(value: string | null): value is MultiplierFactorId
 }
 
 function getSelectedFactorSnapshot(): MultiplierFactorId {
-  const queryFactorId = new URLSearchParams(window.location.search).get("factor");
+  const rawFactorId = new URLSearchParams(window.location.search).get("factor");
+  const queryFactorId = rawFactorId === "damage-reduction" ? "vulnerability" : rawFactorId;
   if (isMultiplierFactorId(queryFactorId)) {
     inMemorySelectedFactorId = queryFactorId;
     return queryFactorId;

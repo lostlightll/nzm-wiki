@@ -106,7 +106,11 @@ function PerkCard({ perk }: { perk: Perk }) {
         </div>
       </PerkHoverPreview>
       <MultiplierSourceBadges
-        source={{ type: "perk", slot: perk.slot, slug: perk.name }}
+        source={{
+          type: "perk",
+          slot: perk.slot,
+          slug: perk.slug.split("/").at(-1) ?? perk.name,
+        }}
         className="mt-1.5 justify-center"
       />
     </div>
