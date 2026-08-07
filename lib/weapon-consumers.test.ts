@@ -215,15 +215,27 @@ test("search and weapon stats use the same normalized LC main source", async () 
 });
 
 test("Task 7.7 representative mappings remain fixed across Resolver and consumers", async () => {
-  const energy = await requireWeapon("能源之影", "lc");
-  const floating = energy.damageSources.find((source) => source.id === "fu-you-mo-shi");
-  const assault = energy.damageSources.find((source) => source.id === "qiang-xi-ji-guang");
-  assert.ok(floating);
-  assert.ok(assault);
-  assert.equal(floating.raw.asc, undefined);
-  assert.equal(getResolvedFieldValue(floating.fire.interval), 0.65);
-  assert.equal(assault.raw.asc, undefined);
-  assert.equal(assault.fire.interval.state, "missing");
+  for (const table of ["lc", "td"] as const) {
+    const energy = await requireWeapon("能源之影", table);
+    const floating = energy.damageSources.find((source) => source.id === "fu-you-mo-shi");
+    const assault = energy.damageSources.find((source) => source.id === "qiang-xi-ji-guang");
+    const matrix = await requireWeapon("战争矩阵", table);
+    const matrixHit = matrix.damageSources.find(
+      (source) => source.id === "guang-neng-ju-zhen-ming-zhong",
+    );
+    assert.ok(floating);
+    assert.ok(assault);
+    assert.ok(matrixHit);
+    assert.equal(floating.raw.asc, undefined);
+    assert.equal(getResolvedFieldValue(floating.fire.interval), 0.65);
+    assert.equal(Math.round(getResolvedFieldValue(floating.fire.rpm)!), 92);
+    assert.equal(floating.attack.interval.state, "missing");
+    assert.equal(getResolvedFieldValue(matrixHit.attack.interval), 1);
+    assert.equal(getResolvedFieldValue(matrixHit.attack.count), 10);
+    assert.equal(matrixHit.fire.rpm.state, "missing");
+    assert.equal(assault.raw.asc, undefined);
+    assert.equal(assault.fire.interval.state, "missing");
+  }
 
   const festival = await requireWeapon("元宵来袭", "lc");
   assert.deepEqual(

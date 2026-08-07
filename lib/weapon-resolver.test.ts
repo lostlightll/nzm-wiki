@@ -398,6 +398,37 @@ test("Numerical-only sources use compatibility fire behavior and pending stays u
   assert.equal(resolved.damageSources[1].damage.base.state, "unavailable");
 });
 
+test("Numerical-only fixed cadence uses attack behavior without RPM", () => {
+  const resolved = resolveWeapon(
+    weapon({
+      item_id: undefined,
+      active_skill_id: 0,
+      damage_sources: [
+        {
+          id: "fixed-hit",
+          name: "固定命中",
+          section: "skill",
+          source: { numerical: { table: "lc", id: 1, level: 1 } },
+          attack_interval: 0.65,
+          attack_count: 10,
+          attack_interval_source:
+            "NZM/Content/Abilities/Test/BP_Test#TriggerInterval",
+        },
+      ],
+    }),
+    { slug: "fixed-cadence", expectedTable: "lc", lock: lock() },
+  );
+  const source = resolved.damageSources[0];
+  assert.equal(source.attack.interval.value, 0.65);
+  assert.equal(source.attack.count.value, 10);
+  assert.equal(
+    source.attack.evidence.value,
+    "NZM/Content/Abilities/Test/BP_Test#TriggerInterval",
+  );
+  assert.equal(source.fire.interval.state, "missing");
+  assert.equal(source.fire.rpm.state, "missing");
+});
+
 test("invalid Settlement, missing Lock and invalid attenuation fail with stable codes", () => {
   const badSettlement = lock();
   badSettlement.rows["numerical-lc"]["lc:1_1"].raw.Settlements = null;

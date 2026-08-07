@@ -449,6 +449,12 @@ function ModeStats({
   const rpmValue = getResolvedFieldValue(mode.fire.rpm);
   const rpm = rpmValue === undefined ? undefined : Math.round(rpmValue);
   const interval = getResolvedFieldValue(mode.fire.interval);
+  const attackInterval = getResolvedFieldValue(mode.attack.interval);
+  const attackCount = getResolvedFieldValue(mode.attack.count);
+  const attackIntervalDisplay =
+    attackInterval === undefined
+      ? "-"
+      : `${attackInterval.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s`;
   const toughness = getResolvedFieldValue(mode.damage.toughness);
   const weaknessMultiplier = getResolvedFieldValue(mode.weaknessMultiplier);
   const enableWeakness = getResolvedFieldValue(mode.enableWeakness) === true;
@@ -466,17 +472,28 @@ function ModeStats({
 
       {compact ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-          <Stat label="射速" value={formatValue(rpm)} />
-          <Stat
-            label="单发耗时"
-            value={
-              interval
-                ? `${interval.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s`
-                : "-"
-            }
-          />
+          {attackInterval === undefined ? (
+            <>
+              <Stat label="射速" value={formatValue(rpm)} />
+              <Stat
+                label="单发耗时"
+                value={
+                  interval
+                    ? `${interval.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s`
+                    : "-"
+                }
+              />
+            </>
+          ) : (
+            <>
+              <Stat label="攻击间隔" value={attackIntervalDisplay} />
+              {attackCount !== undefined && (
+                <Stat label="攻击次数" value={String(attackCount)} />
+              )}
+            </>
+          )}
         </div>
-      ) : interval === undefined || interval === 0 ? (
+      ) : (interval === undefined || interval === 0) && attackInterval === undefined ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
           <Stat label={mode.label || "命中伤害"} value={formatDamage(mode, hpMultiplier)} />
           <Stat label="单发破韧值" value={formatPrecise(toughness)} />
@@ -507,11 +524,22 @@ function ModeStats({
           />
           <Stat label="暴击" value={enableCritical ? "可暴击" : "否"} />
           <Stat label="弱点" value={enableWeakness ? "可弱点" : "否"} />
-          <Stat label="射速" value={formatValue(rpm)} />
-          <Stat
-            label="单发耗时"
-            value={interval ? `${interval.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s` : "-"}
-          />
+          {attackInterval === undefined ? (
+            <>
+              <Stat label="射速" value={formatValue(rpm)} />
+              <Stat
+                label="单发耗时"
+                value={interval ? `${interval.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s` : "-"}
+              />
+            </>
+          ) : (
+            <>
+              <Stat label="攻击间隔" value={attackIntervalDisplay} />
+              {attackCount !== undefined && (
+                <Stat label="攻击次数" value={String(attackCount)} />
+              )}
+            </>
+          )}
           <Stat
             label="破韧类型"
             value={toughnessType ? TOUGHNESS_LABELS[toughnessType] : "-"}

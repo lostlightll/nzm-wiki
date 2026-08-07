@@ -539,6 +539,91 @@ test("拒绝旧伤害字段、null、空字符串和错误 ID 类型", () => {
   );
 });
 
+test("固定频率攻击间隔要求证据、支持继承并拒绝 ASC", () => {
+  const fixedSource = {
+    id: "fixed-hit",
+    name: "固定命中",
+    section: "skill",
+    source: { numerical: numerical(1) },
+    attack_interval: 0.65,
+    attack_count: 10,
+    attack_interval_source: "NZM/Content/Abilities/Test/BP_Test#TriggerInterval",
+  };
+  const parsed = validateWeaponSourceV2(
+    weapon("固定频率", [
+      fixedSource,
+      {
+        id: "fixed-variant",
+        name: "固定变体",
+        section: "variant",
+        inherits: "fixed-hit",
+      },
+    ]),
+    { expectedTable: "lc" },
+  );
+  const inherited = resolveDamageSourceReferences(parsed).get("fixed-variant")!;
+  assert.equal(inherited.attack_interval, 0.65);
+  assert.equal(inherited.attack_count, 10);
+  assert.equal(
+    inherited.attack_interval_source,
+    "NZM/Content/Abilities/Test/BP_Test#TriggerInterval",
+  );
+  assert.equal(inherited.origins.attack_interval, "fixed-hit");
+  assert.equal(inherited.origins.attack_count, "fixed-hit");
+  assert.equal(inherited.origins.attack_interval_source, "fixed-hit");
+
+  for (const [title, source, message] of [
+    ["缺少证据", { ...fixedSource, attack_interval_source: undefined }, /required when attack_interval/],
+    ["孤立证据", { ...fixedSource, attack_interval: undefined }, /cannot be used without attack_interval/],
+    [
+      "无间隔计数",
+      {
+        ...fixedSource,
+        attack_interval: undefined,
+        attack_interval_source: undefined,
+      },
+      /attack_count requires an effective attack_interval/,
+    ],
+    ["证据格式错误", { ...fixedSource, attack_interval_source: "Assets/Test#Interval" }, /NZM\/Content/],
+    ["负间隔", { ...fixedSource, attack_interval: -0.1 }, />=0/],
+    ["非有限间隔", { ...fixedSource, attack_interval: Number.NaN }, /expected number/],
+    [
+      "本地 ASC",
+      { ...fixedSource, source: { numerical: numerical(1), asc_type_id: "10" } },
+      /cannot be used with an effective asc_type_id/,
+    ],
+    [
+      "继承 ASC",
+      {
+        id: "fixed-child",
+        name: "固定子项",
+        section: "variant",
+        inherits: "asc-parent",
+        attack_interval: 1,
+        attack_interval_source: "NZM/Content/Abilities/Test/BP_Test#TriggerInterval",
+      },
+      /cannot be used with an effective asc_type_id/,
+    ],
+  ] as const) {
+    const sources =
+      title === "继承 ASC"
+        ? [
+            {
+              id: "asc-parent",
+              name: "ASC 父项",
+              section: "fire_mode",
+              source: { numerical: numerical(1), asc_type_id: "10" },
+            },
+            source,
+          ]
+        : [source];
+    assert.throws(
+      () => validateWeaponSourceV2(weapon(title, sources), { expectedTable: "lc" }),
+      message,
+    );
+  }
+});
+
 test("ASC attenuation override 使用严格 union 并保留继承顺序", () => {
   const parsed = validateWeaponSourceV2(
     weapon("衰减覆盖", [

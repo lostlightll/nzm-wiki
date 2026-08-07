@@ -406,6 +406,7 @@ export type {
   OverrideTrace,
   PreparedWeaponResolver,
   ProvenanceKind,
+  ResolvedAttackBehavior,
   ResolutionDiagnostic,
   ResolutionDiagnosticCode,
   ResolvedActiveSkill,

@@ -3,6 +3,11 @@ import { z } from "zod";
 const nonEmptyStringSchema = z.string().trim().min(1);
 const positiveIdStringSchema = z.string().regex(/^[1-9]\d*$/);
 const finiteNonNegativeSchema = z.number().finite().nonnegative();
+const attackIntervalSourceSchema = z
+  .string()
+  .regex(/^NZM\/Content\/.+#[^#]+$/, {
+    message: "attack_interval_source must use NZM/Content/...#field syntax",
+  });
 const positiveSafeIntegerSchema = z
   .number()
   .int()
@@ -116,6 +121,9 @@ export const damageSourceV2Schema = z
     source: weaponDataSourceRefSchema.optional(),
     label: nonEmptyStringSchema.optional(),
     fire_interval: finiteNonNegativeSchema.optional(),
+    attack_interval: finiteNonNegativeSchema.optional(),
+    attack_count: positiveSafeIntegerSchema.optional(),
+    attack_interval_source: attackIntervalSourceSchema.optional(),
     pellets: positiveSafeIntegerSchema.optional(),
     overrides: damageSourceOverridesSchema.optional(),
     override_reason: nonEmptyStringSchema.optional(),
@@ -135,6 +143,22 @@ export const damageSourceV2Schema = z
         code: "custom",
         path: ["override_reason"],
         message: "override_reason cannot be used without overrides",
+      });
+    }
+
+    if (source.attack_interval !== undefined && !source.attack_interval_source) {
+      context.addIssue({
+        code: "custom",
+        path: ["attack_interval_source"],
+        message: "attack_interval_source is required when attack_interval is present",
+      });
+    }
+
+    if (source.attack_interval === undefined && source.attack_interval_source) {
+      context.addIssue({
+        code: "custom",
+        path: ["attack_interval_source"],
+        message: "attack_interval_source cannot be used without attack_interval",
       });
     }
   });
@@ -202,6 +226,9 @@ export interface ResolvedDamageSourceReference {
   source?: WeaponDataSourceRef;
   label?: string;
   fire_interval?: number;
+  attack_interval?: number;
+  attack_count?: number;
+  attack_interval_source?: string;
   pellets?: number;
   pending: boolean;
   origins: {
@@ -211,6 +238,9 @@ export interface ResolvedDamageSourceReference {
     feel_param_id?: string;
     label?: string;
     fire_interval?: string;
+    attack_interval?: string;
+    attack_count?: string;
+    attack_interval_source?: string;
     pellets?: string;
   };
   overrideChain: readonly DamageSourceOverrideStep[];
@@ -321,6 +351,10 @@ function analyzeWeaponSource(weapon: WeaponSourceV2Base): {
         source: mergedSource,
         label: source.label ?? parent?.label,
         fire_interval: source.fire_interval ?? parent?.fire_interval,
+        attack_interval: source.attack_interval ?? parent?.attack_interval,
+        attack_count: source.attack_count ?? parent?.attack_count,
+        attack_interval_source:
+          source.attack_interval_source ?? parent?.attack_interval_source,
         pellets: source.pellets ?? parent?.pellets,
         pending: Boolean(source.verification),
         origins: {
@@ -342,6 +376,18 @@ function analyzeWeaponSource(weapon: WeaponSourceV2Base): {
             source.fire_interval !== undefined
               ? source.id
               : parent?.origins.fire_interval,
+          attack_interval:
+            source.attack_interval !== undefined
+              ? source.id
+              : parent?.origins.attack_interval,
+          attack_count:
+            source.attack_count !== undefined
+              ? source.id
+              : parent?.origins.attack_count,
+          attack_interval_source:
+            source.attack_interval_source !== undefined
+              ? source.id
+              : parent?.origins.attack_interval_source,
           pellets:
             source.pellets !== undefined ? source.id : parent?.origins.pellets,
         },
@@ -378,6 +424,20 @@ function analyzeWeaponSource(weapon: WeaponSourceV2Base): {
         issues.push({
           path: ["damage_sources", index, "source", "feel_param_id"],
           message: "feel_param_id requires an effective asc_type_id",
+        });
+      }
+
+      if (effective.attack_interval !== undefined && effective.source?.asc_type_id) {
+        issues.push({
+          path: ["damage_sources", index, "attack_interval"],
+          message: "attack_interval cannot be used with an effective asc_type_id",
+        });
+      }
+
+      if (effective.attack_count !== undefined && effective.attack_interval === undefined) {
+        issues.push({
+          path: ["damage_sources", index, "attack_count"],
+          message: "attack_count requires an effective attack_interval",
         });
       }
 

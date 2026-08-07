@@ -198,6 +198,12 @@ export interface ResolvedFireBehavior {
   maxRpmRatio: ResolvedField<number>;
 }
 
+export interface ResolvedAttackBehavior {
+  interval: ResolvedField<number>;
+  count: ResolvedField<number>;
+  evidence: ResolvedField<string>;
+}
+
 export interface ResolvedAmmoBehavior {
   clip: ResolvedField<number>;
   max: ResolvedField<number>;
@@ -262,6 +268,7 @@ export interface ResolvedDamageSource {
   toughness: ResolvedField<ResolvedToughnessType>;
   ignoreShield: ResolvedField<boolean>;
   fire: ResolvedFireBehavior;
+  attack: ResolvedAttackBehavior;
   ammo: ResolvedAmmoBehavior;
   movement: ResolvedMovementBehavior;
   feel: ResolvedFeelBehavior;
@@ -522,6 +529,10 @@ function emptyFire(): ResolvedFireBehavior {
   };
 }
 
+function emptyAttack(): ResolvedAttackBehavior {
+  return { interval: missing(), count: missing(), evidence: missing() };
+}
+
 function emptyAmmo(): ResolvedAmmoBehavior {
   return {
     clip: missing(),
@@ -773,6 +784,7 @@ function normalizeLegacyMode(
 ): ResolvedDamageSource {
   const { id, rawPrefix, fields } = descriptor;
   const fire = emptyFire();
+  const attack = emptyAttack();
   fire.interval = resolved(mode.fireIntervalBase, fields.fire_interval);
   fire.rpm =
     mode.fireIntervalBase > 0
@@ -835,6 +847,7 @@ function normalizeLegacyMode(
       fields.ignore_shield,
     ),
     fire,
+    attack,
     ammo: emptyAmmo(),
     movement: emptyMovement(),
     feel: emptyFeel(),
@@ -1615,6 +1628,7 @@ function parseNumerical(
 
 interface BehaviorResolution {
   fire: ResolvedFireBehavior;
+  attack: ResolvedAttackBehavior;
   ammo: ResolvedAmmoBehavior;
   movement: ResolvedMovementBehavior;
   feel: ResolvedFeelBehavior;
@@ -1923,6 +1937,35 @@ function parseBehavior(
   context: ResolveContext,
 ): BehaviorResolution {
   const ascId = effective.source?.asc_type_id;
+  const attack = emptyAttack();
+  if (effective.attack_interval !== undefined) {
+    attack.interval = resolved(effective.attack_interval, [
+      {
+        kind: "mdx-v2",
+        rawField: "attack_interval",
+        sourceId: effective.origins.attack_interval,
+        note: "fixed-cadence",
+      },
+    ]);
+    attack.evidence = resolved(effective.attack_interval_source!, [
+      {
+        kind: "mdx-v2",
+        rawField: "attack_interval_source",
+        sourceId: effective.origins.attack_interval_source,
+        note: "fixed-cadence-evidence",
+      },
+    ]);
+    if (effective.attack_count !== undefined) {
+      attack.count = resolved(effective.attack_count, [
+        {
+          kind: "mdx-v2",
+          rawField: "attack_count",
+          sourceId: effective.origins.attack_count,
+          note: "fixed-cadence-count",
+        },
+      ]);
+    }
+  }
   if (!ascId) {
     const fire = emptyFire();
     if (effective.fire_interval !== undefined) {
@@ -1967,6 +2010,7 @@ function parseBehavior(
     }
     return {
       fire,
+      attack,
       ammo: emptyAmmo(),
       movement: emptyMovement(),
       feel: emptyFeel(),
@@ -2231,6 +2275,7 @@ function parseBehavior(
   const feel = parseFeel(source, effective, lock);
   return {
     fire,
+    attack,
     ammo,
     movement,
     feel: feel.value,
@@ -2699,6 +2744,7 @@ function assembleDamageSource(
     label: effective.label,
     ...numerical.fields,
     fire: behavior.fire,
+    attack: behavior.attack,
     ammo: behavior.ammo,
     movement: behavior.movement,
     feel: behavior.feel,

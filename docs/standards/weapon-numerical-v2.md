@@ -134,6 +134,21 @@ pellets: 6
 - 这两个字段只为无法建立 ASC 引用的已确认来源保留；常规来源必须由 Resolver 从 ASC 原始行解析。
 - 人工差异进入带原因的 ASC override，不能继续维护无来源副本。
 
+### 3.4 固定频率攻击间隔
+
+```yaml
+attack_interval: 1
+attack_count: 10
+attack_interval_source: "NZM/Content/Abilities/WeaponSkill/Gold/ZZJZActiveSkill/BP_ZZJZActiveSkill_Projectile#TriggerTimeInterval"
+```
+
+- `attack_interval` 单位为秒，表示相邻两次固定伤害结算或自动攻击的基础间隔；必须是非负有限数。
+- `attack_interval_source` 必须与其成对出现，并使用可定位的 `NZM/Content/...#字段` 证据字符串。
+- `attack_count` 是可选的手工确认攻击次数，必须为正整数，且只能与有效 `attack_interval` 一起使用。
+- 该字段仅用于没有有效 `asc_type_id` 的持续射线、脉冲、周期伤害、技能或召唤物等固定频率来源。不能与有效 ASC 同时存在。
+- 这是 MDX 手工维护的有证据字段，不接入原表读取器或 Weapon Data Lock。
+- Resolver 映射为 `attack.interval`，保留证据，但不生成 RPM，也不改变 DPS 计算器的时间单位约定。
+
 ## 4. LC、TD 与未来模式
 
 Numerical 引用必须显式选择逻辑表：
@@ -179,7 +194,7 @@ numerical:
 3. `numerical` 是完整引用，替换时不深层拼接 `table/id/level`。
 4. 子项更换 `asc_type_id` 且未显式填写 `feel_param_id` 时，默认 Feel 重置为新的 ASC ID。
 5. 子项只填写 `feel_param_id` 时，只替换 Feel，不改变 ASC。
-6. `fire_interval`、`pellets`、`label` 缺失时继承，存在时替换。
+6. `fire_interval`、`attack_interval`、`attack_count`、`attack_interval_source`、`pellets`、`label` 缺失时继承，存在时替换。
 7. 父项 overrides 先应用，子项 overrides 后应用。
 8. `id`、`name`、`section` 始终属于子项，不继承。
 
@@ -252,6 +267,7 @@ override_reason: 实测确认衰减区间与最低倍率
 - `asc.fire_interval` 必须是非负有限数，只能覆盖有效 ASC 的 `FireIntervalBase`；缺少 ASC 时拒绝解析。
 - 射击间隔 override 按父项到子项依次应用，每一步同时记录 interval 与派生 RPM 的前后值；最终间隔为 `0` 时 RPM 为 `unavailable`。
 - 来源级兼容字段 `fire_interval` 只用于差异诊断，必须与全部 overrides 应用后的最终间隔比较。
+- `attack_interval` 不属于 ASC override 或兼容 `fire_interval`；它只表达有证据的固定频率攻击，且不派生 RPM。
 - Feel、Item overrides 等相应 Lock 和领域映射确定后再增加命名空间。
 
 ## 7. 不适用、确定为零与待核验

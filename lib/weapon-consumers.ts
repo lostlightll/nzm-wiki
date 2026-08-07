@@ -7,6 +7,7 @@ import type {
 import type {
   FieldState,
   ResolvedActiveSkill,
+  ResolvedAttackBehavior,
   ResolvedAmmoBehavior,
   ResolvedAttenuation,
   ResolvedDamageSource,
@@ -31,6 +32,7 @@ type ConsumerFields<T> = {
 };
 
 export type ConsumerFireBehavior = ConsumerFields<ResolvedFireBehavior>;
+export type ConsumerAttackBehavior = ConsumerFields<ResolvedAttackBehavior>;
 export type ConsumerAmmoBehavior = ConsumerFields<ResolvedAmmoBehavior>;
 export type ConsumerMovementBehavior = ConsumerFields<ResolvedMovementBehavior>;
 export type ConsumerFeelBehavior = ConsumerFields<
@@ -69,6 +71,7 @@ export interface ConsumerDamageSource {
   readonly toughness: ConsumerField<ResolvedToughnessType>;
   readonly ignoreShield: ConsumerField<boolean>;
   readonly fire: ConsumerFireBehavior;
+  readonly attack: ConsumerAttackBehavior;
   readonly ammo: ConsumerAmmoBehavior;
   readonly movement: ConsumerMovementBehavior;
   readonly feel: ConsumerFeelBehavior;
@@ -139,6 +142,10 @@ export interface ConsumerDamageSourceSummary {
     readonly interval: ConsumerField<number>;
     readonly rpm: ConsumerField<number>;
     readonly pellets: ConsumerField<number>;
+  };
+  readonly attack: {
+    readonly interval: ConsumerField<number>;
+    readonly count: ConsumerField<number>;
   };
 }
 
@@ -329,6 +336,7 @@ export function toConsumerDamageSource(
     toughness: toConsumerField(source.toughness),
     ignoreShield: toConsumerField(source.ignoreShield),
     fire: toConsumerFields(source.fire),
+    attack: toConsumerFields(source.attack),
     ammo: toConsumerFields(source.ammo),
     movement: toConsumerFields(source.movement),
     feel: {
@@ -368,6 +376,10 @@ function toConsumerDamageSourceSummary(
       interval: toConsumerField(source.fire.interval),
       rpm: toConsumerField(source.fire.rpm),
       pellets: toConsumerField(source.fire.pellets),
+    },
+    attack: {
+      interval: toConsumerField(source.attack.interval),
+      count: toConsumerField(source.attack.count),
     },
   };
 }
