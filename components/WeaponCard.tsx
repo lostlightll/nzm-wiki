@@ -580,7 +580,7 @@ function SkillSection({
       </h2>
       {visible.map((m) => {
         const base = getResolvedFieldValue(m.damage.base);
-        const isVariant = m.section === "variant" || primaryModes.some(
+        const isVariant = primaryModes.some(
           (primary) => getResolvedFieldValue(primary.damage.base) === base,
         );
         return <ModeStats key={m.id} mode={m} showName compact={isVariant} hpMultiplier={hpMultiplier} />;
