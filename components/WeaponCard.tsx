@@ -22,6 +22,9 @@ import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
 
 type DisplaySource = ConsumerDamageSource | ConsumerDamageSourceSummary;
 
+// TODO(multiplier): 待武器伤害信息层级重做后，再恢复伤害来源的适用乘区徽标。
+const SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS = false;
+
 const TOUGHNESS_LABELS = {
   none: "无",
   impulse: "冲击",
@@ -184,7 +187,7 @@ function SimpleCard({ weapon }: { weapon: WeaponCatalogEntry }) {
         {!mode && <div className="mt-2 text-xs text-zinc-500">不可攻击</div>}
         </div>
       </CatalogLink>
-      {mode && (
+      {SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS && mode && (
         <DamageSourceMultiplierBadges
           profile={buildDamageProfile(mode)}
           className="mt-1.5 justify-center"
@@ -424,10 +427,12 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
         </div>
         </div>
       </CatalogLink>
-      <DamageSourceMultiplierBadges
-        profile={buildDamageProfile(mode)}
-        className="mt-1.5 justify-center"
-      />
+      {SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS && (
+        <DamageSourceMultiplierBadges
+          profile={buildDamageProfile(mode)}
+          className="mt-1.5 justify-center"
+        />
+      )}
     </div>
   );
 }
@@ -485,10 +490,12 @@ function ModeStats({
           {mode.name}
         </h3>
       )}
-      <DamageSourceMultiplierBadges
-        profile={buildDamageProfile(mode)}
-        className="mb-2"
-      />
+      {SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS && (
+        <DamageSourceMultiplierBadges
+          profile={buildDamageProfile(mode)}
+          className="mb-2"
+        />
+      )}
 
       {compact ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
@@ -794,20 +801,31 @@ export function WeaponDetailCard() {
             />
             <Stat label="暴击" value={getResolvedFieldValue(mode.enableCritical) ? "可暴击" : "否"} />
           </div>
-          <div className="mt-3 space-y-2">
-            {weapon.damageSources.map((source) => (
-              <div
+          {SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS && (
+            <div className="mt-3 space-y-2">
+              {weapon.damageSources.map((source) => (
+                <div
+                  key={source.id}
+                  id={`damage-source-${source.id}`}
+                  className="scroll-mt-24"
+                >
+                  <p className="mb-1 text-xs text-zinc-500">{source.name}</p>
+                  <DamageSourceMultiplierBadges
+                    profile={buildDamageProfile(source)}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+          {!SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS &&
+            weapon.damageSources.map((source) => (
+              <span
                 key={source.id}
                 id={`damage-source-${source.id}`}
-                className="scroll-mt-24"
-              >
-                <p className="mb-1 text-xs text-zinc-500">{source.name}</p>
-                <DamageSourceMultiplierBadges
-                  profile={buildDamageProfile(source)}
-                />
-              </div>
+                aria-hidden="true"
+                className="block h-0 scroll-mt-24"
+              />
             ))}
-          </div>
         </div>
       ) : primaryModes.length > 1 ? (
         primaryModes.map((m) => (
