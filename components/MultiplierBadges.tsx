@@ -32,11 +32,13 @@ export function MultiplierBadges({
   relations: readonly MultiplierRelation[];
   className?: string;
   id?: string;
-  variant?: "default" | "catalog-overlay";
+  variant?: "default" | "catalog-overlay" | "catalog-compact";
 }) {
   const groups = getRelationsByFactor(relations);
   if (groups.length === 0) return null;
   const isCatalogOverlay = variant === "catalog-overlay";
+  const isCatalogCompact = variant === "catalog-compact";
+  const isCompact = isCatalogOverlay || isCatalogCompact;
 
   return (
     <div id={id} className={`flex flex-wrap items-center gap-1.5 ${className}`}>
@@ -62,13 +64,13 @@ export function MultiplierBadges({
             prefetch={false}
             title={description}
             aria-label={description}
-            className={`relative inline-flex touch-manipulation items-center border transition-colors duration-200 hover:brightness-125 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${isCatalogOverlay ? "min-h-7 rounded-bl-md rounded-br-none rounded-tl-none rounded-tr-md px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2 after:content-['']" : "min-h-11 gap-1 rounded px-2 py-1 text-xs font-semibold leading-5 sm:min-h-7"} ${FACTOR_STYLES[factorId]}`}
+            className={`relative inline-flex touch-manipulation items-center border transition-colors duration-200 hover:brightness-125 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${isCatalogOverlay ? "min-h-7 rounded-bl-md rounded-br-none rounded-tl-none rounded-tr-md px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2 after:content-['']" : isCatalogCompact ? "min-h-6 rounded px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2.5 after:content-['']" : "min-h-11 gap-1 rounded px-2 py-1 text-xs font-semibold leading-5 sm:min-h-7"} ${FACTOR_STYLES[factorId]}`}
           >
-            {!isCatalogOverlay && (
+            {!isCompact && (
               <Layers3 aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
             )}
             <span>{factorLabel}</span>
-            {!isCatalogOverlay && (
+            {!isCompact && (
               <ArrowUpRight aria-hidden="true" className="h-3 w-3 shrink-0 opacity-70" />
             )}
           </Link>
@@ -87,7 +89,7 @@ export function MultiplierSourceBadges({
   source: MultiplierSource;
   className?: string;
   id?: string;
-  variant?: "default" | "catalog-overlay";
+  variant?: "default" | "catalog-overlay" | "catalog-compact";
 }) {
   return (
     <MultiplierBadges

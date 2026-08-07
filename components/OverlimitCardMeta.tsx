@@ -158,13 +158,22 @@ export const OVERLIMIT_SLOT_LABELS: Record<PerkSlot, string> = {
   4: "4号槽位",
 };
 
-export function OverlimitTagBadge({ tag }: { tag: OverlimitCardTag }) {
+export function OverlimitTagBadge({
+  tag,
+  compactOnMobile = false,
+}: {
+  tag: OverlimitCardTag;
+  compactOnMobile?: boolean;
+}) {
   return (
     <span
-      className="inline-flex min-h-6 items-center gap-1 border px-1.5 py-0.5 text-xs font-medium"
+      className={`inline-flex min-h-6 items-center gap-1 border px-1.5 py-0.5 text-xs font-medium ${compactOnMobile ? "max-sm:gap-0 max-sm:px-1 max-sm:text-[11px]" : ""}`}
       style={getOverlimitBondSurfaceStyle(tag.name)}
     >
-      <OverlimitBondIcon name={tag.name} />
+      <OverlimitBondIcon
+        name={tag.name}
+        className={`h-3.5 w-3.5 ${compactOnMobile ? "max-sm:hidden" : ""}`}
+      />
       <span>{tag.name}</span>
     </span>
   );

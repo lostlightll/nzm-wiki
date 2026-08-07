@@ -29,6 +29,7 @@ import { OverlimitHoverPreview } from "@/components/OverlimitHoverPreview";
 import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
+import { getProviderRelationsForSource } from "@/lib/multiplier-data";
 import { getAssetPath } from "@/lib/path";
 import type {
   OverlimitCard,
@@ -93,18 +94,27 @@ function OverlimitCardItem({
 }) {
   const qualityStyle =
     OVERLIMIT_QUALITY_STYLES[card.quality] ?? OVERLIMIT_QUALITY_STYLES[4];
+  const multiplierSource = { type: "overlimit-card", id: card.id } as const;
+  const hasMultiplier =
+    getProviderRelationsForSource(multiplierSource).length > 0;
 
   return (
-    <div className="min-w-0">
+    <div className="relative min-w-0 transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
       <OverlimitHoverPreview card={card} href={`/overlimit/${card.id}`}>
         <article
-          className={`relative flex min-h-[290px] flex-col overflow-hidden rounded-lg border-2 ${qualityStyle.border} ${qualityStyle.bg} transition-transform duration-200 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 sm:min-h-[328px]`}
+          className={`relative flex min-h-[290px] flex-col overflow-hidden rounded-lg border-2 ${qualityStyle.border} ${qualityStyle.bg} sm:min-h-[328px]`}
         >
         <span className="sr-only">品质：{qualityStyle.label}</span>
         <div aria-hidden="true" className={`h-1 w-full ${qualityStyle.bar}`} />
-        <div className="flex min-h-11 flex-wrap content-center gap-1 border-b border-zinc-700/80 px-2 py-2">
+        <div
+          className={`flex min-h-11 flex-wrap content-center gap-1 border-b border-zinc-700/80 px-2 py-2 ${hasMultiplier ? "sm:pr-[6.5rem]" : ""}`}
+        >
           {card.tags.map((tag) => (
-            <OverlimitTagBadge key={tag.id} tag={tag} />
+            <OverlimitTagBadge
+              key={tag.id}
+              tag={tag}
+              compactOnMobile={hasMultiplier}
+            />
           ))}
         </div>
 
@@ -132,8 +142,9 @@ function OverlimitCardItem({
         </article>
       </OverlimitHoverPreview>
       <MultiplierSourceBadges
-        source={{ type: "overlimit-card", id: card.id }}
-        className="mt-1.5 justify-center"
+        source={multiplierSource}
+        variant="catalog-compact"
+        className="absolute right-2 top-4 z-10 max-w-[6rem] justify-end"
       />
     </div>
   );
