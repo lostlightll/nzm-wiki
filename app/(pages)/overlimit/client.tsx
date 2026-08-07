@@ -26,6 +26,7 @@ import {
   OverlimitTagBadge,
 } from "@/components/OverlimitCardMeta";
 import { OverlimitHoverPreview } from "@/components/OverlimitHoverPreview";
+import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import { getAssetPath } from "@/lib/path";
@@ -70,7 +71,12 @@ const OVERLIMIT_MODULE_INDEX: Record<OverlimitModule, number> = {
 };
 
 function getModuleFromHash(): OverlimitModule {
+  const queryModule = new URLSearchParams(window.location.search).get("module");
+  if (queryModule && OVERLIMIT_MODULE_IDS.has(queryModule as OverlimitModule)) {
+    return queryModule as OverlimitModule;
+  }
   const moduleId = window.location.hash.slice(1) as OverlimitModule;
+  if (moduleId.startsWith("bond-")) return "bonds";
   return OVERLIMIT_MODULE_IDS.has(moduleId) ? moduleId : "cards";
 }
 
@@ -89,10 +95,11 @@ function OverlimitCardItem({
     OVERLIMIT_QUALITY_STYLES[card.quality] ?? OVERLIMIT_QUALITY_STYLES[4];
 
   return (
-    <OverlimitHoverPreview card={card} href={`/overlimit/${card.id}`}>
-      <article
-        className={`relative flex min-h-[290px] flex-col overflow-hidden rounded-lg border-2 ${qualityStyle.border} ${qualityStyle.bg} transition-transform duration-200 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 sm:min-h-[328px]`}
-      >
+    <div className="min-w-0">
+      <OverlimitHoverPreview card={card} href={`/overlimit/${card.id}`}>
+        <article
+          className={`relative flex min-h-[290px] flex-col overflow-hidden rounded-lg border-2 ${qualityStyle.border} ${qualityStyle.bg} transition-transform duration-200 group-hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 sm:min-h-[328px]`}
+        >
         <span className="sr-only">品质：{qualityStyle.label}</span>
         <div aria-hidden="true" className={`h-1 w-full ${qualityStyle.bar}`} />
         <div className="flex min-h-11 flex-wrap content-center gap-1 border-b border-zinc-700/80 px-2 py-2">
@@ -122,8 +129,13 @@ function OverlimitCardItem({
             {card.description}
           </p>
         </div>
-      </article>
-    </OverlimitHoverPreview>
+        </article>
+      </OverlimitHoverPreview>
+      <MultiplierSourceBadges
+        source={{ type: "overlimit-card", id: card.id }}
+        className="mt-1.5 justify-center"
+      />
+    </div>
   );
 }
 
@@ -211,6 +223,15 @@ export default function OverlimitPageClient({
       window.removeEventListener("popstate", syncModuleFromHash);
     };
   }, [switchModule]);
+
+  useEffect(() => {
+    if (activeModule !== "bonds") return;
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    if (!targetId.startsWith("bond-")) return;
+    window.requestAnimationFrame(() => {
+      document.getElementById(targetId)?.scrollIntoView({ block: "center" });
+    });
+  }, [activeModule]);
 
   const tagOptions = useMemo(() => {
     const tags = new Map<string, OverlimitCardTag>();
@@ -364,6 +385,7 @@ export default function OverlimitPageClient({
     if (activeModuleRef.current === module) return Promise.resolve();
 
     const url = new URL(window.location.href);
+    url.searchParams.delete("module");
     url.hash = module;
     window.history.pushState(null, "", url);
     return switchModule(module);

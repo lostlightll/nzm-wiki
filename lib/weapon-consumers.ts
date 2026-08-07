@@ -128,6 +128,7 @@ export interface ConsumerDamageSourceSummary {
   readonly name: string;
   readonly section: DamageSection;
   readonly label?: string;
+  readonly settlements: readonly string[];
   readonly damage: {
     readonly base: ConsumerField<number>;
     readonly toughness: ConsumerField<number>;
@@ -362,6 +363,7 @@ function toConsumerDamageSourceSummary(
     name: source.name,
     section: source.section,
     label: source.label,
+    settlements: [...source.settlements],
     damage: {
       base: toConsumerField(source.damage.base),
       toughness: toConsumerField(source.damage.toughness),

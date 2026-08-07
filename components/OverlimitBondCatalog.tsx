@@ -3,6 +3,7 @@ import {
   getOverlimitBondSurfaceStyle,
   OverlimitBondIcon,
 } from "@/components/OverlimitCardMeta";
+import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import type { OverlimitBondCatalog as OverlimitBondCatalogData } from "@/types";
 
 interface OverlimitBondCatalogProps {
@@ -73,14 +74,23 @@ export function OverlimitBondCatalog({
               {bond.effects.map((effect) => (
                 <li
                   key={effect.count}
+                  id={`bond-${bond.name}-${effect.count}`}
                   className={`grid min-h-0 grid-cols-[3.25rem_1fr] ${EFFECT_ROW_SPANS[effect.count]}`}
                 >
                   <div className="flex items-center justify-center border-r border-zinc-800 bg-zinc-950/35 px-2 text-sm font-bold tabular-nums text-zinc-300">
                     x{effect.count}
                   </div>
-                  <p className="flex items-center overflow-y-auto px-4 py-2 text-sm leading-5 text-zinc-200">
-                    {effect.description}
-                  </p>
+                  <div className="flex min-h-0 flex-col justify-center overflow-y-auto px-4 py-2 text-sm leading-5 text-zinc-200">
+                    <p>{effect.description}</p>
+                    <MultiplierSourceBadges
+                      source={{
+                        type: "overlimit-bond",
+                        name: bond.name,
+                        count: effect.count,
+                      }}
+                      className="mt-1.5"
+                    />
+                  </div>
                 </li>
               ))}
             </ol>

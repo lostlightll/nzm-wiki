@@ -22,7 +22,7 @@
 | Boss 血量导入 | [`workflows/boss-health-import.md`](workflows/boss-health-import.md) | [`.claude/commands/import-boss-health.md`](../.claude/commands/import-boss-health.md) | active |
 | change-log TODO | [`standards/todo-workflow.md`](standards/todo-workflow.md) | 无 | active |
 | 武器 V2 收尾 | [`plans/weapon-v2-cleanup.md`](plans/weapon-v2-cleanup.md) | 上述武器规范与架构文档 | proposed |
-| 乘区双向索引 | [`plans/multiplier-bidirectional-index.md`](plans/multiplier-bidirectional-index.md) | 无 | proposed |
+| 乘区双向索引 | [`architecture/multiplier-index.md`](architecture/multiplier-index.md) | 无 | active |
 
 ## 文档归属
 

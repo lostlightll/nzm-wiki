@@ -17,7 +17,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import {
@@ -33,13 +33,17 @@ import {
 } from "@/lib/multiplier-data";
 import type { WeaponType } from "@/types";
 import { DamageChannelMatrix } from "./DamageChannelMatrix";
+import {
+  MultiplierBidirectionalIndex,
+  type MultiplierTargetIndexEntry,
+} from "./MultiplierBidirectionalIndex";
 
 const DEFAULT_FACTOR_ID: MultiplierFactorId = DEFAULT_MULTIPLIER_FACTOR.id;
 const DETAIL_PANEL_ID = "multiplier-detail-panel";
 const SELECTED_FACTOR_STORAGE_KEY = "nzm-wiki:guides:multiplier:selected-factor";
 const SELECTED_FACTOR_CHANGE_EVENT = "nzm-wiki:multiplier-factor-change";
 
-type MultiplierPart = "formula" | "channels";
+type MultiplierPart = "formula" | "channels" | "index";
 
 let inMemorySelectedFactorId = DEFAULT_FACTOR_ID;
 
@@ -48,6 +52,11 @@ function isMultiplierFactorId(value: string | null): value is MultiplierFactorId
 }
 
 function getSelectedFactorSnapshot(): MultiplierFactorId {
+  const queryFactorId = new URLSearchParams(window.location.search).get("factor");
+  if (isMultiplierFactorId(queryFactorId)) {
+    inMemorySelectedFactorId = queryFactorId;
+    return queryFactorId;
+  }
   try {
     const storedFactorId = window.localStorage.getItem(SELECTED_FACTOR_STORAGE_KEY);
 
@@ -80,10 +89,14 @@ function subscribeToSelectedFactor(onStoreChange: () => void) {
   };
 
   window.addEventListener("storage", handleStorage);
+  window.addEventListener("popstate", onStoreChange);
+  window.addEventListener("nzm-wiki:multiplier-query-change", onStoreChange);
   window.addEventListener(SELECTED_FACTOR_CHANGE_EVENT, onStoreChange);
 
   return () => {
     window.removeEventListener("storage", handleStorage);
+    window.removeEventListener("popstate", onStoreChange);
+    window.removeEventListener("nzm-wiki:multiplier-query-change", onStoreChange);
     window.removeEventListener(SELECTED_FACTOR_CHANGE_EVENT, onStoreChange);
   };
 }
@@ -97,7 +110,14 @@ function rememberSelectedFactor(factorId: MultiplierFactorId) {
     // localStorage 不可用时，当前标签页内仍可正常切换。
   }
 
+  const url = new URL(window.location.href);
+  url.searchParams.set("factor", factorId);
+  url.searchParams.delete("modifier");
+  url.hash = "multiplier";
+  window.history.pushState(null, "", url);
+
   window.dispatchEvent(new Event(SELECTED_FACTOR_CHANGE_EVENT));
+  window.dispatchEvent(new Event("nzm-wiki:multiplier-query-change"));
 }
 
 const DILUTION_ICONS: Record<DilutionIconKey, LucideIcon> = {
@@ -617,7 +637,11 @@ function CompactFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
   );
 }
 
-export function MultiplierOverview() {
+export function MultiplierOverview({
+  targets,
+}: {
+  targets: readonly MultiplierTargetIndexEntry[];
+}) {
   const selectedFactorId = useSyncExternalStore(
     subscribeToSelectedFactor,
     getSelectedFactorSnapshot,
@@ -625,6 +649,26 @@ export function MultiplierOverview() {
   );
   const [selectedFilterId, setSelectedFilterId] = useState<string | null>(null);
   const [activePart, setActivePart] = useState<MultiplierPart>("formula");
+
+  useEffect(() => {
+    const syncPartFromQuery = () => {
+      const view = new URLSearchParams(window.location.search).get("view");
+      setActivePart((currentPart) =>
+        view === "providers" || view === "targets"
+          ? "index"
+          : currentPart === "index"
+            ? "formula"
+            : currentPart,
+      );
+    };
+    syncPartFromQuery();
+    window.addEventListener("popstate", syncPartFromQuery);
+    window.addEventListener("nzm-wiki:multiplier-query-change", syncPartFromQuery);
+    return () => {
+      window.removeEventListener("popstate", syncPartFromQuery);
+      window.removeEventListener("nzm-wiki:multiplier-query-change", syncPartFromQuery);
+    };
+  }, []);
   const selectedFactor =
     MULTIPLIER_FACTORS.find((factor) => factor.id === selectedFactorId) ??
     DEFAULT_MULTIPLIER_FACTOR;
@@ -647,16 +691,31 @@ export function MultiplierOverview() {
     );
   };
 
+  const selectPart = (part: MultiplierPart) => {
+    const url = new URL(window.location.href);
+    if (part === "index") {
+      if (!url.searchParams.has("view")) url.searchParams.set("view", "providers");
+    } else {
+      url.searchParams.delete("view");
+      url.searchParams.delete("modifier");
+    }
+    url.hash = "multiplier";
+    window.history.pushState(null, "", url);
+    setActivePart(part);
+    window.dispatchEvent(new Event("nzm-wiki:multiplier-query-change"));
+  };
+
   return (
     <div className="text-[color:var(--guide-text)]">
       <nav
         aria-label="游戏乘区分篇"
-        className="mx-auto mb-5 grid max-w-lg grid-cols-2 rounded-lg border border-zinc-700 bg-zinc-900/75 p-1 xl:mb-3"
+        className="mx-auto mb-5 grid max-w-2xl grid-cols-3 rounded-lg border border-zinc-700 bg-zinc-900/75 p-1 xl:mb-3"
       >
         {(
           [
             { id: "formula", part: "Part 1", label: "乘区公式" },
             { id: "channels", part: "Part 2", label: "增幅通道" },
+            { id: "index", part: "Part 3", label: "增伤索引" },
           ] as const
         ).map(({ id, part, label }) => {
           const active = activePart === id;
@@ -666,7 +725,7 @@ export function MultiplierOverview() {
               key={id}
               type="button"
               aria-pressed={active}
-              onClick={() => setActivePart(id)}
+              onClick={() => selectPart(id)}
               className={`min-h-11 cursor-pointer touch-manipulation rounded-md border px-3 py-2 transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
                 active
                   ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
@@ -694,6 +753,11 @@ export function MultiplierOverview() {
 
       {activePart === "channels" ? (
         <DamageChannelMatrix />
+      ) : activePart === "index" ? (
+        <MultiplierBidirectionalIndex
+          selectedFactorId={selectedFactorId}
+          targets={targets}
+        />
       ) : (
       <section aria-labelledby="damage-formula-heading">
         <h2 id="damage-formula-heading" className="mb-4 text-2xl font-bold tracking-wide text-zinc-100 xl:mb-2 xl:text-xl">

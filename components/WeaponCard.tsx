@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { CatalogLink } from "@/components/CatalogLink";
+import { DamageSourceMultiplierBadges } from "@/components/MultiplierBadges";
 import { useWeaponDetail } from "@/components/WeaponDetailContext";
 import type { ElementType } from "@/types";
 import { getAssetPath } from "@/lib/path";
+import { buildDamageProfile } from "@/lib/multiplier-data";
 import {
   getFullReloadTime,
   getNonMainMeleeSources,
@@ -160,12 +162,13 @@ function SimpleCard({ weapon }: { weapon: WeaponCatalogEntry }) {
   const elementIcon = element ? ELEMENT_ICONS[element] : undefined;
 
   return (
-    <CatalogLink
-      href={`/weapons${weapon.table === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
-    >
-      <div
-        className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 transition-transform hover:scale-[1.02]`}
+    <div className="min-w-0">
+      <CatalogLink
+        href={`/weapons${weapon.table === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
       >
+        <div
+          className={`relative rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 transition-transform hover:scale-[1.02]`}
+        >
         {elementIcon && (
           <div className="absolute right-2 top-2 z-10">
             <Image
@@ -179,8 +182,15 @@ function SimpleCard({ weapon }: { weapon: WeaponCatalogEntry }) {
         <h3 className="mb-2 text-base font-semibold text-white">{weapon.title}</h3>
         <WeaponImage name={weapon.title} size="small" />
         {!mode && <div className="mt-2 text-xs text-zinc-500">不可攻击</div>}
-      </div>
-    </CatalogLink>
+        </div>
+      </CatalogLink>
+      {mode && (
+        <DamageSourceMultiplierBadges
+          profile={buildDamageProfile(mode)}
+          className="mt-1.5 justify-center"
+        />
+      )}
+    </div>
   );
 }
 
@@ -235,12 +245,13 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
   }
 
   return (
-    <CatalogLink
-      href={`/weapons${weapon.table === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
-    >
-      <div
-        className={`relative w-full min-w-0 rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5 transition-shadow hover:shadow-lg hover:shadow-black/20`}
+    <div className="min-w-0">
+      <CatalogLink
+        href={`/weapons${weapon.table === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
       >
+        <div
+          className={`relative w-full min-w-0 rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5 transition-shadow hover:shadow-lg hover:shadow-black/20`}
+        >
         {elementIcon && (
           <div className="absolute right-4 top-4 z-10">
             <Image
@@ -411,8 +422,13 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
             </>
           )}
         </div>
-      </div>
-    </CatalogLink>
+        </div>
+      </CatalogLink>
+      <DamageSourceMultiplierBadges
+        profile={buildDamageProfile(mode)}
+        className="mt-1.5 justify-center"
+      />
+    </div>
   );
 }
 
@@ -463,12 +479,16 @@ function ModeStats({
   const toughnessType = getResolvedFieldValue(mode.toughness);
 
   return (
-    <div className="mb-3">
+    <div id={`damage-source-${mode.id}`} className="mb-3 scroll-mt-24">
       {showName && (
         <h3 className="mb-1.5 text-sm font-semibold text-zinc-300">
           {mode.name}
         </h3>
       )}
+      <DamageSourceMultiplierBadges
+        profile={buildDamageProfile(mode)}
+        className="mb-2"
+      />
 
       {compact ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
@@ -572,6 +592,24 @@ function SkillSection({
   const collapsible = modes.length > 3;
   const visible = collapsible && !expanded ? modes.slice(0, 2) : modes;
   const hiddenCount = modes.length - 2;
+
+  useEffect(() => {
+    const revealHashTarget = () => {
+      const sourceId = decodeURIComponent(window.location.hash.slice(1));
+      if (!sourceId.startsWith("damage-source-")) return;
+      const targetMode = modes.find(
+        (mode) => `damage-source-${mode.id}` === sourceId,
+      );
+      if (!targetMode) return;
+      setExpanded(true);
+      window.requestAnimationFrame(() => {
+        document.getElementById(sourceId)?.scrollIntoView({ block: "center" });
+      });
+    };
+    revealHashTarget();
+    window.addEventListener("hashchange", revealHashTarget);
+    return () => window.removeEventListener("hashchange", revealHashTarget);
+  }, [modes]);
 
   return (
     <div className="mb-3">
@@ -755,6 +793,20 @@ export function WeaponDetailCard() {
               }
             />
             <Stat label="暴击" value={getResolvedFieldValue(mode.enableCritical) ? "可暴击" : "否"} />
+          </div>
+          <div className="mt-3 space-y-2">
+            {weapon.damageSources.map((source) => (
+              <div
+                key={source.id}
+                id={`damage-source-${source.id}`}
+                className="scroll-mt-24"
+              >
+                <p className="mb-1 text-xs text-zinc-500">{source.name}</p>
+                <DamageSourceMultiplierBadges
+                  profile={buildDamageProfile(source)}
+                />
+              </div>
+            ))}
           </div>
         </div>
       ) : primaryModes.length > 1 ? (

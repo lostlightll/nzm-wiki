@@ -10,6 +10,7 @@ import type { Perk, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
 import { PerkHoverPreview } from "@/components/PerkHoverPreview";
+import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import {
   matchesWeaponApplicability,
   WeaponApplicabilityFilterSection,
@@ -81,28 +82,34 @@ function PerkCard({ perk }: { perk: Perk }) {
   const href = `/perks/${perk.slug.split("/").map(encodeURIComponent).join("/")}`;
 
   return (
-    <PerkHoverPreview perk={perk} href={href}>
-      <div
-        className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4 transition-transform duration-200 group-hover:scale-[1.05] motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
-      >
-        {perk.icon ? (
-          <Image
-            src={getAssetPath(`/icons/perks/${perk.icon}.png`)}
-            alt={perk.name}
-            width={80}
-            height={80}
-            className="h-20 w-20 object-contain"
-          />
-        ) : (
-          <div className="flex h-20 w-20 items-center justify-center bg-zinc-700 text-zinc-400">
-            ?
-          </div>
-        )}
-        <h3 className="mt-2 text-center text-sm font-medium leading-tight text-white">
-          {perk.name}
-        </h3>
-      </div>
-    </PerkHoverPreview>
+    <div className="min-w-0">
+      <PerkHoverPreview perk={perk} href={href}>
+        <div
+          className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4 transition-transform duration-200 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
+        >
+          {perk.icon ? (
+            <Image
+              src={getAssetPath(`/icons/perks/${perk.icon}.png`)}
+              alt={perk.name}
+              width={80}
+              height={80}
+              className="h-20 w-20 object-contain"
+            />
+          ) : (
+            <div className="flex h-20 w-20 items-center justify-center bg-zinc-700 text-zinc-400">
+              ?
+            </div>
+          )}
+          <h3 className="mt-2 text-center text-sm font-medium leading-tight text-white">
+            {perk.name}
+          </h3>
+        </div>
+      </PerkHoverPreview>
+      <MultiplierSourceBadges
+        source={{ type: "perk", slot: perk.slot, slug: perk.name }}
+        className="mt-1.5 justify-center"
+      />
+    </div>
   );
 }
 

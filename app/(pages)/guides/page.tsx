@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getMDXList } from "@/lib/mdx";
+import { getApplicableModifierTypes } from "@/lib/multiplier-data";
+import { getAllResolvedWeapons } from "@/lib/weapons";
 import GuidesPageClient from "./client";
+import type { MultiplierTargetIndexEntry } from "./MultiplierBidirectionalIndex";
 
 export const metadata: Metadata = {
   title: "攻略机制",
@@ -15,11 +18,35 @@ interface Post {
   tag?: string | string[];
 }
 
-export default function GuidesPage() {
+export default async function GuidesPage() {
   const posts = getMDXList("posts") as Post[];
+  const weapons = await getAllResolvedWeapons("lc");
+  const multiplierTargets: MultiplierTargetIndexEntry[] = weapons.flatMap(
+    (weapon) =>
+      weapon.damageSources.flatMap((source) => {
+        if (
+          source.damage.base.state !== "resolved" &&
+          source.damage.base.state !== "zero"
+        ) {
+          return [];
+        }
+        const relations = getApplicableModifierTypes(source);
+        if (relations.length === 0) return [];
+        return [
+          {
+            id: `${weapon.slug}:${source.id}`,
+            label: source.name,
+            sourceLabel: weapon.title,
+            href: `/weapons/${encodeURIComponent(weapon.slug)}#damage-source-${encodeURIComponent(source.id)}`,
+            relations,
+          },
+        ];
+      }),
+  );
 
   return (
     <GuidesPageClient
+      multiplierTargets={multiplierTargets}
       archivePanel={
         <ul className="space-y-3">
           {posts.map((post) => {

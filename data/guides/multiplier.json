@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 9,
+  "schemaVersion": 10,
   "defaultFactorId": "dilution",
   "factors": [
     { "id": "base", "label": "基础伤害" },
@@ -11,6 +11,134 @@
     { "id": "critical", "label": "暴伤乘区" },
     { "id": "correction", "label": "特殊修正" },
     { "id": "damage-reduction", "label": "伤害减免" }
+  ],
+  "providerEffects": [
+    {
+      "id": "pure-white-active-skill",
+      "label": "纯白至上·磐石身躯",
+      "modifierTypeIds": ["all-damage"],
+      "evidence": ["GPAttributeSetGiveDamageRatio.AllDamageRatio"]
+    },
+    {
+      "id": "icepoint-twin-peaks-passive",
+      "label": "冰点双峰·冰锋共济",
+      "modifierTypeIds": ["element", "close-range-damage"],
+      "evidence": [
+        "GPAttributeSetGiveDamageRatio.FireDamageRatio",
+        "GPAttributeSetGiveDamageRatio.CloseRangeDamageRatio"
+      ]
+    },
+    {
+      "id": "chong-luan-die-shi",
+      "label": "重峦叠势",
+      "modifierTypeIds": ["weapon-damage"],
+      "evidence": ["GPAttributeSetGiveDamageRatio.WeaponDamageRatio"]
+    },
+    {
+      "id": "precision-pursuit",
+      "label": "精密追击",
+      "modifierTypeIds": ["weakness"],
+      "evidence": ["GPAttributeSetGiveDamageRatio.WeaknessDamageRatio"]
+    },
+    {
+      "id": "single-projectile-enhancement",
+      "label": "独弹强化",
+      "modifierTypeIds": ["correction"],
+      "evidence": ["Numerical.ExecutionCtx.ExecutionRatio"]
+    },
+    {
+      "id": "silent-gun",
+      "label": "哑枪",
+      "modifierTypeIds": ["all-damage"],
+      "evidence": ["GPAttributeSetGiveDamageRatio.AllDamageRatio"]
+    },
+    {
+      "id": "only-shooting",
+      "label": "我只射击",
+      "modifierTypeIds": ["all-damage"],
+      "evidence": ["GPAttributeSetGiveDamageRatio.AllDamageRatio"]
+    },
+    {
+      "id": "survival-of-the-fittest",
+      "label": "弱肉强食",
+      "modifierTypeIds": ["weakness"],
+      "evidence": ["GPAttributeSetGiveDamageRatio.WeaknessDamageRatio"]
+    },
+    {
+      "id": "flame-blade",
+      "label": "炎刃",
+      "modifierTypeIds": ["weapon-hit-damage"],
+      "evidence": ["GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio"]
+    },
+    {
+      "id": "bond-ammo-6",
+      "label": "弹药羁绊 x6",
+      "modifierTypeIds": ["weapon-hit-damage"],
+      "evidence": ["超限羁绊数据：射击伤害提升"]
+    },
+    {
+      "id": "bond-tech-2",
+      "label": "技战羁绊 x2",
+      "modifierTypeIds": ["weapon-skill-damage"],
+      "evidence": ["超限羁绊数据：技能伤害提升"]
+    },
+    {
+      "id": "bond-tech-4",
+      "label": "技战羁绊 x4",
+      "modifierTypeIds": ["weapon-hit-damage"],
+      "evidence": ["超限羁绊数据：武器射击伤害提升"]
+    },
+    {
+      "id": "bond-barrier-4",
+      "label": "壁垒羁绊 x4",
+      "modifierTypeIds": ["weapon-damage"],
+      "evidence": ["超限羁绊数据：武器伤害提升"]
+    },
+    {
+      "id": "bond-sniper-2",
+      "label": "狙击羁绊 x2",
+      "modifierTypeIds": ["long-range-damage"],
+      "evidence": ["超限羁绊数据：远距离伤害提升"]
+    },
+    {
+      "id": "bond-berserk-2",
+      "label": "狂战羁绊 x2",
+      "modifierTypeIds": ["close-range-damage"],
+      "evidence": ["超限羁绊数据：近距离伤害提升"]
+    },
+    {
+      "id": "bond-generic-damage",
+      "label": "超限羁绊通用增伤",
+      "modifierTypeIds": ["game-mode"],
+      "evidence": ["GPAttributeSetGiveDamageRatio.DamageRatio"]
+    }
+  ],
+  "providerPlacements": [
+    { "effectId": "pure-white-active-skill", "source": { "type": "weapon", "slug": "纯白至上", "anchor": "multiplier-provider-pure-white-active-skill" } },
+    { "effectId": "icepoint-twin-peaks-passive", "source": { "type": "weapon", "slug": "冰点双峰", "anchor": "multiplier-provider-icepoint-twin-peaks-passive" } },
+    { "effectId": "chong-luan-die-shi", "source": { "type": "perk", "slot": 3, "slug": "重峦叠势", "anchor": "multiplier-provider" } },
+    { "effectId": "precision-pursuit", "source": { "type": "perk", "slot": 3, "slug": "精密追击", "anchor": "multiplier-provider" } },
+    { "effectId": "single-projectile-enhancement", "source": { "type": "perk", "slot": 4, "slug": "独弹强化", "anchor": "multiplier-provider" } },
+    { "effectId": "silent-gun", "source": { "type": "perk", "slot": 3, "slug": "哑枪", "anchor": "multiplier-provider" } },
+    { "effectId": "silent-gun", "source": { "type": "overlimit-card", "id": "20703040436", "anchor": "multiplier-provider" } },
+    { "effectId": "only-shooting", "source": { "type": "perk", "slot": 3, "slug": "我只射击", "anchor": "multiplier-provider" } },
+    { "effectId": "only-shooting", "source": { "type": "overlimit-card", "id": "20703040435", "anchor": "multiplier-provider" } },
+    { "effectId": "survival-of-the-fittest", "source": { "type": "perk", "slot": 3, "slug": "弱肉强食", "anchor": "multiplier-provider" } },
+    { "effectId": "survival-of-the-fittest", "source": { "type": "overlimit-card", "id": "20703040408", "anchor": "multiplier-provider" } },
+    { "effectId": "flame-blade", "source": { "type": "perk", "slot": 4, "slug": "炎刃", "anchor": "multiplier-provider" } },
+    { "effectId": "flame-blade", "source": { "type": "overlimit-card", "id": "20703040334", "anchor": "multiplier-provider" } },
+    { "effectId": "bond-ammo-6", "source": { "type": "overlimit-bond", "name": "弹药", "count": 6, "anchor": "bond-弹药-6" } },
+    { "effectId": "bond-tech-2", "source": { "type": "overlimit-bond", "name": "技战", "count": 2, "anchor": "bond-技战-2" } },
+    { "effectId": "bond-tech-4", "source": { "type": "overlimit-bond", "name": "技战", "count": 4, "anchor": "bond-技战-4" } },
+    { "effectId": "bond-barrier-4", "source": { "type": "overlimit-bond", "name": "壁垒", "count": 4, "anchor": "bond-壁垒-4" } },
+    { "effectId": "bond-sniper-2", "source": { "type": "overlimit-bond", "name": "狙击", "count": 2, "anchor": "bond-狙击-2" } },
+    { "effectId": "bond-berserk-2", "source": { "type": "overlimit-bond", "name": "狂战", "count": 2, "anchor": "bond-狂战-2" } },
+    { "effectId": "bond-generic-damage", "source": { "type": "overlimit-bond", "name": "游击", "count": 4, "anchor": "bond-游击-4" } },
+    { "effectId": "bond-generic-damage", "source": { "type": "overlimit-bond", "name": "游击", "count": 6, "anchor": "bond-游击-6" } },
+    { "effectId": "bond-generic-damage", "source": { "type": "overlimit-bond", "name": "狙击", "count": 6, "anchor": "bond-狙击-6" } },
+    { "effectId": "bond-generic-damage", "source": { "type": "overlimit-bond", "name": "爆韧", "count": 6, "anchor": "bond-爆韧-6" } },
+    { "effectId": "bond-generic-damage", "source": { "type": "overlimit-bond", "name": "共振", "count": 6, "anchor": "bond-共振-6" } },
+    { "effectId": "bond-generic-damage", "source": { "type": "overlimit-bond", "name": "狂战", "count": 6, "anchor": "bond-狂战-6" } }
   ],
   "damageChannelMatrix": {
     "damageTypes": [

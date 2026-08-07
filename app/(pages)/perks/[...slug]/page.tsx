@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
 import { mdxOptions } from "@/lib/mdx-options";
 import { PerkDetailCard } from "@/components/PerkCard";
+import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import { RARITY_NUM_MAP } from "@/constants/common";
 import type { Rarity } from "@/types";
 import type { Metadata } from "next";
@@ -95,6 +96,14 @@ export default async function PerkDetailPage({
           description={descriptionNode}
           weaponType={metadata.weaponType}
           weaponNames={metadata.weaponNames}
+        />
+        <MultiplierProviderPanel
+          source={{
+            type: "perk",
+            slot: metadata.slot,
+            slug: metadata.title,
+          }}
+          className="mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
         />
 
         {content.trim() && (

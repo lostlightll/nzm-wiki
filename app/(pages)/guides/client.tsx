@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { SeasonTalentCatalog } from "@/components/SeasonTalentCatalog";
 import { MultiplierOverview } from "./MultiplierOverview";
+import type { MultiplierTargetIndexEntry } from "./MultiplierBidirectionalIndex";
 
 type GuideModule = "multiplier" | "season-talents" | "archive";
 
@@ -21,8 +22,10 @@ function getModuleFromHash(): GuideModule {
 
 export default function GuidesPageClient({
   archivePanel,
+  multiplierTargets,
 }: {
   archivePanel: ReactNode;
+  multiplierTargets: readonly MultiplierTargetIndexEntry[];
 }) {
   const [activeModule, setActiveModule] = useState<GuideModule>("multiplier");
 
@@ -77,7 +80,7 @@ export default function GuidesPageClient({
         aria-label="游戏乘区"
         hidden={activeModule !== "multiplier"}
       >
-        <MultiplierOverview />
+        <MultiplierOverview targets={multiplierTargets} />
       </section>
       <section
         id="season-talents-panel"

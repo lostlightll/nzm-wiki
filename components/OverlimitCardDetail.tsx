@@ -6,6 +6,7 @@ import {
   OverlimitTagBadge,
   OverlimitWeaponApplicability,
 } from "@/components/OverlimitCardMeta";
+import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import { getAssetPath } from "@/lib/path";
 import type { OverlimitCard } from "@/types";
 
@@ -54,6 +55,10 @@ export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
         </h2>
         <p className="text-base leading-7 text-zinc-200">{card.description}</p>
       </section>
+
+      <MultiplierProviderPanel
+        source={{ type: "overlimit-card", id: card.id }}
+      />
 
       <div className="grid border-t border-white/10 md:grid-cols-[minmax(0,1fr)_14rem]">
         <section className="px-4 py-5 sm:px-6 md:border-r md:border-white/10">
