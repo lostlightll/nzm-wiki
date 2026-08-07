@@ -101,7 +101,7 @@ export default async function PerkDetailPage({
           source={{
             type: "perk",
             slot: metadata.slot,
-            slug: slug.at(-1) ?? metadata.title,
+            slug: slugPath.split("/").at(-1) ?? metadata.title,
           }}
           className="mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
         />

@@ -82,10 +82,10 @@ function PerkCard({ perk }: { perk: Perk }) {
   const href = `/perks/${perk.slug.split("/").map(encodeURIComponent).join("/")}`;
 
   return (
-    <div className="min-w-0">
+    <div className="relative min-w-0 transition-transform duration-200 hover:scale-[1.03] motion-reduce:transition-none motion-reduce:hover:scale-100">
       <PerkHoverPreview perk={perk} href={href}>
         <div
-          className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4 transition-transform duration-200 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
+          className={`flex flex-col items-center rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-3 pb-4`}
         >
           {perk.icon ? (
             <Image
@@ -93,7 +93,7 @@ function PerkCard({ perk }: { perk: Perk }) {
               alt={perk.name}
               width={80}
               height={80}
-              className="h-20 w-20 object-contain"
+              className="h-20 w-20 translate-y-[3px] object-contain"
             />
           ) : (
             <div className="flex h-20 w-20 items-center justify-center bg-zinc-700 text-zinc-400">
@@ -111,7 +111,8 @@ function PerkCard({ perk }: { perk: Perk }) {
           slot: perk.slot,
           slug: perk.slug.split("/").at(-1) ?? perk.name,
         }}
-        className="mt-1.5 justify-center"
+        variant="catalog-overlay"
+        className="absolute right-0 top-0 z-10 max-w-full justify-end"
       />
     </div>
   );
