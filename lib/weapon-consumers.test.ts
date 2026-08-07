@@ -276,6 +276,33 @@ test("Task 7.7 representative mappings remain fixed across Resolver and consumer
       ],
     );
     assert.equal(spring.damageSources[1].raw.asc, undefined);
+    assert.equal(spring.mainSourceId, "liu-dan-bao-zha");
+    const springCatalog = toWeaponCatalogEntry(spring);
+    assert.equal(
+      getResolvedFieldValue(springCatalog.mainSource!.fire.rpm),
+      undefined,
+    );
+    assert.equal(getResolvedFieldValue(springCatalog.previewRpm!), 120);
+    const zeroRpmSpring = structuredClone(spring);
+    const zeroRpmMain = (
+      zeroRpmSpring as unknown as {
+        damageSources: Array<{
+          id: string;
+          fire: { rpm: { state: string; value?: number } };
+        }>;
+      }
+    ).damageSources.find((source) => source.id === spring.mainSourceId);
+    assert.ok(zeroRpmMain);
+    zeroRpmMain.fire.rpm.state = "zero";
+    zeroRpmMain.fire.rpm.value = 0;
+    assert.equal(
+      getResolvedFieldValue(toWeaponCatalogEntry(zeroRpmSpring).previewRpm!),
+      120,
+    );
+    assert.deepEqual(
+      toWeaponDetailData(spring).damageSources.map((source) => source.id),
+      ["liu-dan-ming-zhong", "liu-dan-bao-zha"],
+    );
 
     const dewar = await requireWeapon("杜瓦瓶", table);
     const zeroDegreeThorn = dewar.damageSources.find(

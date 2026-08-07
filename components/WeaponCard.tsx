@@ -322,9 +322,10 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
                 <span className="text-zinc-500">射速</span>
                 <span className="text-white">
                   {formatValue(
-                    getResolvedFieldValue(mode.fire.rpm) === undefined
+                    !weapon.previewRpm ||
+                      getResolvedFieldValue(weapon.previewRpm) === undefined
                       ? undefined
-                      : Math.round(getResolvedFieldValue(mode.fire.rpm)!),
+                      : Math.round(getResolvedFieldValue(weapon.previewRpm)!),
                   )}
                 </span>
               </div>

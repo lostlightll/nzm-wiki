@@ -157,6 +157,7 @@ export interface WeaponCatalogEntry extends ConsumerWeaponIdentity {
   readonly activeSkill?: ConsumerActiveSkill;
   readonly mainSourceId?: string;
   readonly mainSource?: ConsumerDamageSourceSummary;
+  readonly previewRpm?: ConsumerField<number>;
   readonly meleeSources: readonly ConsumerDamageSourceSummary[];
   readonly isAttackCapable: boolean;
 }
@@ -186,6 +187,14 @@ function isAttackSource(
   return (
     source.damage.base.state === "resolved" ||
     source.damage.base.state === "zero"
+  );
+}
+
+function hasDisplayableDamage(
+  source: Pick<ResolvedDamageSource, "damage">,
+): boolean {
+  return Object.values(source.damage).some(
+    (field) => field.state === "resolved" || field.state === "zero",
   );
 }
 
@@ -363,6 +372,21 @@ function toConsumerDamageSourceSummary(
   };
 }
 
+function getPreviewRpmSource(
+  weapon: ResolvedWeapon,
+  mainSource: ResolvedDamageSource | undefined,
+): ResolvedDamageSource | undefined {
+  const mainRpm = mainSource
+    ? getResolvedFieldValue(mainSource.fire.rpm)
+    : undefined;
+  if (mainRpm !== undefined && mainRpm !== 0) return mainSource;
+
+  return (
+    weapon.damageSources.find((source) => source.name.includes("命中")) ??
+    mainSource
+  );
+}
+
 export function toWeaponDetailData(weapon: ResolvedWeapon): WeaponDetailData {
   getMainDamageSource(weapon);
   return {
@@ -381,7 +405,7 @@ export function toWeaponDetailData(weapon: ResolvedWeapon): WeaponDetailData {
     changeClip: toConsumerFields(weapon.changeClip),
     melee: toConsumerFields(weapon.melee),
     damageSources: weapon.damageSources
-      .filter(isAttackSource)
+      .filter(hasDisplayableDamage)
       .map(toConsumerDamageSource),
     mainSourceId: weapon.mainSourceId,
     activeSkill: toConsumerActiveSkill(weapon.activeSkill),
@@ -392,6 +416,7 @@ export function toWeaponCatalogEntry(
   weapon: ResolvedWeapon,
 ): WeaponCatalogEntry {
   const mainSource = getMainDamageSource(weapon);
+  const previewRpmSource = getPreviewRpmSource(weapon, mainSource);
   return {
     ...toConsumerIdentity(weapon),
     accuracy: toConsumerField(weapon.accuracy),
@@ -409,6 +434,9 @@ export function toWeaponCatalogEntry(
     mainSourceId: weapon.mainSourceId,
     mainSource: mainSource
       ? toConsumerDamageSourceSummary(mainSource)
+      : undefined,
+    previewRpm: previewRpmSource
+      ? toConsumerField(previewRpmSource.fire.rpm)
       : undefined,
     meleeSources: weapon.damageSources
       .filter((source) => isAttackSource(source) && source.section === "melee")
