@@ -58,7 +58,7 @@ export function scanDirectory(dirPath: string, relativePath: string = ""): Searc
 
     if (entry.isDirectory()) {
       // 武器条目由 Resolver 单独注入；TD 沿用现有规则，不单独索引。
-      if (entry.name === "weapons" || entry.name === "weapons_td") continue;
+      if (entry.name === "weapons") continue;
       // 路由组目录（以括号开头）不包含在 slug 中
       if (entry.name.startsWith("(")) {
         results.push(...scanDirectory(fullPath, relativePath));

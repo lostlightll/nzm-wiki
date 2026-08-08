@@ -4,7 +4,6 @@ import path from "node:path";
 import test from "node:test";
 import matter from "gray-matter";
 import { WeaponDataLockError, type WeaponDataLock } from "./weapon-data-lock";
-import { transformWeaponV1Legacy } from "./weapon-legacy";
 import {
   createWeaponResolver,
   createResolvedWeaponSnapshot,
@@ -148,13 +147,11 @@ function lock(): WeaponDataLock {
   };
 }
 
-function weapon(
-  extra: Record<string, unknown> = {},
-  table: "lc" | "td" = "lc",
-): Record<string, unknown> {
+function weapon(extra: Record<string, unknown> = {}): Record<string, unknown> {
   return {
     schema_version: 2,
     title: "测试武器",
+    game_modes: ["lc", "td"],
     prototype_id: "200",
     item_id: "100",
     use_type: "主武器",
@@ -169,7 +166,7 @@ function weapon(
         section: "fire_mode",
         source: {
           prototype_mode: 0,
-          numerical: { table, id: 1, level: 1 },
+          numerical: { id: 1, level: 1 },
           asc_type_id: "10",
         },
       },
@@ -178,9 +175,11 @@ function weapon(
         name: "快速射击",
         section: "variant",
         inherits: "primary",
-        source: { asc_type_id: "11" },
-        overrides: { asc: { attenuation: { status: "not_applicable" } } },
-        override_reason: "变体无距离衰减",
+        source: {
+          asc_type_id: "11",
+          overrides: { asc: { attenuation: { status: "not_applicable" } } },
+          override_reason: "变体无距离衰减",
+        },
       },
     ],
     ...extra,
@@ -254,7 +253,7 @@ test("prepared resolver validates Lock once and preserves existing resolver resu
     prepared.resolveWeapon({ title: "旧武器" }, { slug: "legacy", expectedTable: "lc" }),
     resolveWeapon({ title: "旧武器" }, { slug: "legacy", expectedTable: "lc" }),
   );
-  const tdInput = weapon({}, "td");
+  const tdInput = weapon();
   assert.deepEqual(
     prepared.resolveWeapon(tdInput, { slug: "prepared-td", expectedTable: "td" }),
     resolveWeapon(tdInput, {
@@ -266,11 +265,11 @@ test("prepared resolver validates Lock once and preserves existing resolver resu
 
   const parsedWeapon = expectedWeapon.raw.mdx;
   assert.deepEqual(
-    prepared.resolveDamageSource(parsedWeapon, "fast-variant", {
+    prepared.resolveDamageSource(parsedWeapon as never, "fast-variant", {
       expectedTable: "lc",
       weaponPath: "prepared",
     }),
-    resolveDamageSource(parsedWeapon, "fast-variant", {
+    resolveDamageSource(parsedWeapon as never, "fast-variant", {
       lock: lockInput,
       expectedTable: "lc",
       weaponPath: "prepared",
@@ -374,15 +373,19 @@ test("Numerical-only sources use compatibility fire behavior and pending stays u
         id: "skill-hit",
         name: "技能命中",
         section: "skill",
-        source: { numerical: { table: "lc", id: 1, level: 1 } },
-        fire_interval: 0,
-        pellets: 2,
+        source: {
+          numerical: { id: 1, level: 1 },
+          fire_interval: 0,
+          pellets: 2,
+        },
       },
       {
         id: "pending-hit",
         name: "待核验",
         section: "special",
-        verification: { status: "pending", reason: "缺少 Numerical" },
+        source: {
+          verification: { status: "pending", reason: "缺少 Numerical" },
+        },
       },
     ],
     draft: true,
@@ -408,11 +411,13 @@ test("Numerical-only fixed cadence uses attack behavior without RPM", () => {
           id: "fixed-hit",
           name: "固定命中",
           section: "skill",
-          source: { numerical: { table: "lc", id: 1, level: 1 } },
-          attack_interval: 0.65,
-          attack_count: 10,
-          attack_interval_source:
-            "NZM/Content/Abilities/Test/BP_Test#TriggerInterval",
+          source: {
+            numerical: { id: 1, level: 1 },
+            attack_interval: 0.65,
+            attack_count: 10,
+            attack_interval_source:
+              "NZM/Content/Abilities/Test/BP_Test#TriggerInterval",
+          },
         },
       ],
     }),
@@ -472,20 +477,20 @@ test("invalid Settlement, missing Lock and invalid attenuation fail with stable 
           name: "普通射击",
           section: "fire_mode",
           source: {
-            numerical: { table: "lc", id: 1, level: 1 },
+            numerical: { id: 1, level: 1 },
             asc_type_id: "10",
-          },
-          overrides: {
-            asc: {
-              attenuation: {
-                status: "applicable",
-                begin_meters: 10,
-                end_meters: 20,
-                min_scale: 0.5,
+            overrides: {
+              asc: {
+                attenuation: {
+                  status: "applicable",
+                  begin_meters: 10,
+                  end_meters: 20,
+                  min_scale: 0.5,
+                },
               },
             },
+            override_reason: "保留已发布衰减",
           },
-          override_reason: "保留已发布衰减",
         },
       ],
     }),
@@ -512,11 +517,11 @@ test("Numerical overrides preserve zero and reject Settlement-inapplicable field
         name: "普通射击",
         section: "fire_mode",
         source: {
-          numerical: { table: "lc", id: 1, level: 1 },
+          numerical: { id: 1, level: 1 },
           asc_type_id: "10",
+          overrides: { numerical: { damage: { base: 0 } } },
+          override_reason: "实测为零",
         },
-        overrides: { numerical: { damage: { base: 0 } } },
-        override_reason: "实测为零",
       },
     ],
   });
@@ -534,9 +539,11 @@ test("Numerical overrides preserve zero and reject Settlement-inapplicable field
         id: "primary",
         name: "普通射击",
         section: "fire_mode",
-        source: { numerical: { table: "lc", id: 1, level: 1 } },
-        overrides: { numerical: { damage: { toughness: 1 } } },
-        override_reason: "错误覆盖",
+        source: {
+          numerical: { id: 1, level: 1 },
+          overrides: { numerical: { damage: { toughness: 1 } } },
+          override_reason: "错误覆盖",
+        },
       },
     ],
   });
@@ -559,21 +566,23 @@ test("ASC fire interval overrides preserve ordered interval and RPM history", ()
       name: "普通射击",
       section: "fire_mode",
       source: {
-        numerical: { table: "lc", id: 1, level: 1 },
+        numerical: { id: 1, level: 1 },
         asc_type_id: "10",
+        overrides: { asc: { fire_interval: 0.15 } },
+        override_reason: "实测基础射击间隔",
       },
-      overrides: { asc: { fire_interval: 0.15 } },
-      override_reason: "实测基础射击间隔",
     },
     {
       id: "variant",
       name: "射速变体",
       section: "variant",
       inherits: "primary",
-      source: { asc_type_id: "11" },
-      fire_interval: 0.12,
-      overrides: { asc: { fire_interval: 0.12 } },
-      override_reason: "实测变体射击间隔",
+      source: {
+        asc_type_id: "11",
+        fire_interval: 0.12,
+        overrides: { asc: { fire_interval: 0.12 } },
+        override_reason: "实测变体射击间隔",
+      },
     },
   ];
   const fixture = weapon({
@@ -641,7 +650,10 @@ test("ASC fire interval overrides preserve ordered interval and RPM history", ()
       ...fixture,
       damage_sources: [
         damageSources[0],
-        { ...damageSources[1], fire_interval: 0.11 },
+        {
+          ...damageSources[1],
+          source: { ...damageSources[1].source, fire_interval: 0.11 },
+        },
       ],
     },
     { slug: "fire-interval-mismatch", expectedTable: "lc", lock: lock() },
@@ -666,11 +678,11 @@ test("zero ASC interval makes RPM unavailable and ASC-less overrides fail", () =
           name: "零间隔来源",
           section: "fire_mode",
           source: {
-            numerical: { table: "lc", id: 1, level: 1 },
+            numerical: { id: 1, level: 1 },
             asc_type_id: "10",
+            overrides: { asc: { fire_interval: 0 } },
+            override_reason: "该阶段不按射速循环",
           },
-          overrides: { asc: { fire_interval: 0 } },
-          override_reason: "该阶段不按射速循环",
         },
       ],
     }),
@@ -695,9 +707,11 @@ test("zero ASC interval makes RPM unavailable and ASC-less overrides fail", () =
         id: "skill-hit",
         name: "技能命中",
         section: "skill",
-        source: { numerical: { table: "lc", id: 1, level: 1 } },
-        overrides: { asc: { fire_interval: 0.2 } },
-        override_reason: "无 ASC 的非法覆盖",
+        source: {
+          numerical: { id: 1, level: 1 },
+          overrides: { asc: { fire_interval: 0.2 } },
+          override_reason: "无 ASC 的非法覆盖",
+        },
       },
     ],
   });
@@ -724,13 +738,13 @@ test("legacy bridge uses the resolved main source when V2 has no fire mode", () 
           id: "heavy-hit",
           name: "重击",
           section: "melee",
-          source: { numerical: { table: "lc", id: 1, level: 1 } },
+          source: { numerical: { id: 1, level: 1 } },
         },
         {
           id: "light-hit",
           name: "轻击",
           section: "melee",
-          source: { numerical: { table: "lc", id: 1, level: 1 } },
+          source: { numerical: { id: 1, level: 1 } },
         },
       ],
     }),
@@ -786,11 +800,11 @@ test("supplemental attenuation samples use source overrides without weapon-name 
     name,
     section: "special",
     source: {
-      numerical: { table: "lc", id: 1, level: 1 },
+      numerical: { id: 1, level: 1 },
       asc_type_id: id === "energy-shadow" ? "236" : id === "vibration" ? "159" : "357",
+      overrides: { asc: { attenuation: { status: "not_applicable" } } },
+      override_reason: "实测确认该来源不使用距离衰减",
     },
-    overrides: { asc: { attenuation: { status: "not_applicable" } } },
-    override_reason: "实测确认该来源不使用距离衰减",
   });
   const resolved = resolveWeapon(
     weapon({
@@ -805,7 +819,7 @@ test("supplemental attenuation samples use source overrides without weapon-name 
           name: "钢铁轰鸣",
           section: "special",
           source: {
-            numerical: { table: "lc", id: 1, level: 1 },
+            numerical: { id: 1, level: 1 },
             asc_type_id: "117",
           },
         },
@@ -849,7 +863,7 @@ test("explicit Feel exception is resolved from its own Lock row with provenance"
           name: "显式 Feel 例外",
           section: "fire_mode",
           source: {
-            numerical: { table: "lc", id: 1, level: 1 },
+            numerical: { id: 1, level: 1 },
             asc_type_id: "10",
             feel_param_id: "99",
           },
@@ -1080,28 +1094,13 @@ test("V1 provenance keeps original damage and extra mode indices", () => {
   );
 });
 
-test("all LC and TD weapon files are V2 while the V1 compatibility path remains unit-tested", () => {
-  let v1Count = 0;
-  let v2Count = 0;
-  for (const [directory, table] of [
-    ["data/weapons", "lc"],
-    ["data/weapons_td", "td"],
-  ] as const) {
-    for (const file of fs.readdirSync(directory).filter((name) => name.endsWith(".mdx"))) {
-      const raw = matter(fs.readFileSync(path.join(directory, file), "utf8")).data;
-      if (raw.schema_version === 2) {
-        v2Count += 1;
-        continue;
-      }
-      const slug = file.replace(/\.mdx$/, "");
-      const expected = transformWeaponV1Legacy(raw, slug);
-      const actual = toLegacyWeapon(
-        resolveWeapon(raw, { slug, expectedTable: table }),
-      );
-      assert.deepStrictEqual(actual, expected, `${directory}/${file}`);
-      v1Count += 1;
-    }
+test("all weapon files are unified V2 documents declaring LC and TD", () => {
+  const directory = "data/weapons";
+  const files = fs.readdirSync(directory).filter((name) => name.endsWith(".mdx"));
+  for (const file of files) {
+    const raw = matter(fs.readFileSync(path.join(directory, file), "utf8")).data;
+    assert.equal(raw.schema_version, 2, `${directory}/${file}`);
+    assert.deepEqual(raw.game_modes, ["lc", "td"], `${directory}/${file}`);
   }
-  assert.equal(v1Count, 0);
-  assert.equal(v2Count, 224);
+  assert.equal(files.length, 112);
 });

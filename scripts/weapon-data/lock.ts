@@ -18,9 +18,11 @@ import {
   type WeaponDataLockRow,
 } from "../../lib/weapon-data-lock";
 import {
+  projectWeaponSourceV2,
   resolveDamageSourceReferences,
   validateWeaponSourceV2,
   type NumericalTable,
+  type ProjectedWeaponSourceV2,
   type WeaponSourceV2,
 } from "../../lib/weapon-source-v2";
 import {
@@ -44,7 +46,6 @@ export const DEFAULT_WEAPON_DATA_LOCK_PATH = path.join(
 
 export interface WeaponRoot {
   readonly directory: string;
-  readonly table: NumericalTable;
 }
 
 export interface WeaponReferenceOrigin {
@@ -71,7 +72,7 @@ interface ScannedDamageSource {
 
 interface ScannedWeapon {
   readonly mdxPath: string;
-  readonly weapon: WeaponSourceV2;
+  readonly weapon: ProjectedWeaponSourceV2;
   readonly damageSources: readonly ScannedDamageSource[];
 }
 
@@ -143,11 +144,6 @@ function defaultWeaponRoots(): readonly WeaponRoot[] {
   return Object.freeze([
     Object.freeze({
       directory: path.join(process.cwd(), "data", "weapons"),
-      table: "lc" as const,
-    }),
-    Object.freeze({
-      directory: path.join(process.cwd(), "data", "weapons_td"),
-      table: "td" as const,
     }),
   ]);
 }
@@ -233,55 +229,68 @@ export function scanWeaponV2References(
 
       let weapon: WeaponSourceV2;
       try {
-        weapon = validateWeaponSourceV2(data, { expectedTable: root.table });
+        weapon = validateWeaponSourceV2(data);
       } catch (error) {
         issues.push(`${mdxPath}: invalid V2 frontmatter: ${String(error)}`);
         continue;
       }
 
-      const resolved = resolveDamageSourceReferences(weapon);
-      const damageSources: ScannedDamageSource[] = [];
-      for (const source of weapon.damage_sources) {
-        const effective = resolved.get(source.id)!;
-        damageSources.push({ sourceId: source.id, effective });
-        const origin = Object.freeze({
-          mdxPath,
-          title: weapon.title,
-          sourceId: source.id,
-        });
-        const numerical = effective.source?.numerical;
-        if (numerical) {
-          addReference(
-            references,
-            numerical.table === "lc" ? "numerical-lc" : "numerical-td",
-            `${numerical.table}:${numerical.id}_${numerical.level}`,
-            origin,
-          );
+      for (const table of weapon.game_modes) {
+        const projected = projectWeaponSourceV2(weapon, table);
+        const resolved = resolveDamageSourceReferences(weapon, table);
+        const damageSources: ScannedDamageSource[] = [];
+        const modePath = `${mdxPath}[${table}]`;
+        for (const source of projected.damage_sources) {
+          const effective = resolved.get(source.id)!;
+          damageSources.push({ sourceId: source.id, effective });
+          const origin = Object.freeze({
+            mdxPath: modePath,
+            title: weapon.title,
+            sourceId: source.id,
+          });
+          const numerical = effective.source?.numerical;
+          if (numerical) {
+            addReference(
+              references,
+              numerical.table === "lc" ? "numerical-lc" : "numerical-td",
+              `${numerical.table}:${numerical.id}_${numerical.level}`,
+              origin,
+            );
+          }
+          const ascTypeId = effective.source?.asc_type_id;
+          if (ascTypeId) {
+            addReference(references, "asc", ascTypeId, origin);
+            addReference(
+              references,
+              "feel",
+              effective.source?.feel_param_id ?? ascTypeId,
+              origin,
+            );
+          }
         }
-        const ascTypeId = effective.source?.asc_type_id;
-        if (ascTypeId) {
-          addReference(references, "asc", ascTypeId, origin);
-          addReference(
-            references,
-            "feel",
-            effective.source?.feel_param_id ?? ascTypeId,
-            origin,
-          );
-        }
-      }
 
-      const weaponOrigin = Object.freeze({ mdxPath, title: weapon.title });
-      if (weapon.item_id) {
-        addReference(references, "item", weapon.item_id, weaponOrigin);
+        const weaponOrigin = Object.freeze({
+          mdxPath: modePath,
+          title: weapon.title,
+        });
+        if (projected.item_id) {
+          addReference(references, "item", projected.item_id, weaponOrigin);
+        }
+        if (projected.active_skill_id && projected.active_skill_id > 0) {
+          addActiveSkill(
+            activeSkills,
+            `${projected.active_skill_id}_1`,
+            weaponOrigin,
+          );
+        }
+        weapons.push(
+          Object.freeze({
+            mdxPath: modePath,
+            weapon: projected,
+            damageSources: Object.freeze(damageSources),
+          }),
+        );
       }
-      if (weapon.active_skill_id && weapon.active_skill_id > 0) {
-        addActiveSkill(activeSkills, `${weapon.active_skill_id}_1`, weaponOrigin);
-      }
-      weapons.push(Object.freeze({
-        mdxPath,
-        weapon,
-        damageSources: Object.freeze(damageSources),
-      }));
     }
   }
 

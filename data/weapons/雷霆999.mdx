@@ -1,6 +1,9 @@
 ---
 title: 雷霆999
-prototype_id: '20001000019'
+game_modes:
+  - lc
+  - td
+prototype_id: "20001000019"
 use_type: 主武器
 weapon_type: 机枪
 element: 电弧
@@ -33,7 +36,6 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120100190
         level: 1
       asc_type_id: "127"
@@ -42,10 +44,10 @@ damage_sources:
     section: special
     source:
       numerical:
-        table: lc
         id: 1400030101
         level: 1
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

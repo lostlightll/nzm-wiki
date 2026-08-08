@@ -1,6 +1,9 @@
 ---
 title: 爆星
-prototype_id: '20019000004'
+game_modes:
+  - lc
+  - td
+prototype_id: "20019000004"
 use_type: 主武器
 weapon_type: 暗器
 element: 物理
@@ -35,26 +38,25 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121900401
         level: 1
       asc_type_id: "357"
-    overrides:
-      asc:
-        attenuation:
-          status: not_applicable
-    override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
+      overrides:
+        asc:
+          attenuation:
+            status: not_applicable
+      override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
   - id: nian-tan-bao-zha
     name: 黏弹爆炸
     section: special
+    label: 爆炸伤害
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121900402
         level: 1
-    label: 爆炸伤害
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

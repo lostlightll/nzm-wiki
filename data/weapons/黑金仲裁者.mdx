@@ -1,11 +1,14 @@
 ---
 title: 黑金仲裁者
+game_modes:
+  - lc
+  - td
 use_type: 副武器
 weapon_type: 手枪
 element: 物理
 rarity: 传说
 weapon_type_id: 7
-prototype_id: '20007000033'
+prototype_id: "20007000033"
 active_skill_id: 5103201
 magazine: 24
 total_ammo: 168
@@ -24,7 +27,6 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120700330
         level: 1
       asc_type_id: "359"
@@ -34,10 +36,11 @@ damage_sources:
     label: 爆炸伤害
     source:
       numerical:
-        table: lc
         id: 120700331
         level: 1
 ---
+<WeaponModeDiff />
+
 <WeaponSkill>
   <ActiveSkill
     name="点金弹"

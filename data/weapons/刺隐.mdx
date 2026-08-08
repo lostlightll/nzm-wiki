@@ -1,6 +1,9 @@
 ---
 title: 刺隐
-prototype_id: '20003000030'
+game_modes:
+  - lc
+  - td
+prototype_id: "20003000030"
 use_type: 主武器
 weapon_type: 霰弹枪
 element: 电弧
@@ -25,28 +28,38 @@ skill_duration: 10
 skill_blocking: false
 show_duration: true
 schema_version: 2
-item_id: "20103000030"
+item_id:
+  lc: "20103000030"
 damage_sources:
   - id: pu-tong-she-ji
     name: 普通射击
     section: fire_mode
-    source:
-      prototype_mode: 0
-      numerical:
-        table: lc
-        id: 120300250
-        level: 1
-      asc_type_id: "348"
+    sources:
+      lc:
+        prototype_mode: 0
+        numerical:
+          id: 120300250
+          level: 1
+        asc_type_id: "348"
+      td:
+        prototype_mode: 0
+        numerical:
+          id: 120300250
+          level: 1
+        asc_type_id: "348"
+        overrides:
+          asc:
+            attenuation:
+              status: not_applicable
+        override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
   - id: you-jian-jin-zhan
     name: 右键近战
     section: melee
     source:
       numerical:
-        table: lc
         id: 120300251
         level: 1
 ---
-
 <WeaponSkill>
   <ActiveSkill
     name="刺隐之袭"

@@ -125,7 +125,6 @@ interface Fixture {
   readonly root: string;
   readonly contentRoot: string;
   readonly lcRoot: string;
-  readonly tdRoot: string;
   readonly weaponRoots: readonly WeaponRoot[];
 }
 
@@ -150,9 +149,7 @@ function createFixture(
   context.after(() => rmSync(root, { recursive: true, force: true }));
   const contentRoot = path.join(root, "content");
   const lcRoot = path.join(root, "weapons");
-  const tdRoot = path.join(root, "weapons_td");
   mkdirSync(lcRoot, { recursive: true });
-  mkdirSync(tdRoot, { recursive: true });
   for (const kind of Object.keys(WEAPON_DATA_SOURCE_FILES) as WeaponDataSourceKind[]) {
     writeSource(contentRoot, kind, overrides[kind] ?? baseRows[kind]);
   }
@@ -160,11 +157,7 @@ function createFixture(
     root,
     contentRoot,
     lcRoot,
-    tdRoot,
-    weaponRoots: Object.freeze([
-      Object.freeze({ directory: lcRoot, table: "lc" as const }),
-      Object.freeze({ directory: tdRoot, table: "td" as const }),
-    ]),
+    weaponRoots: Object.freeze([Object.freeze({ directory: lcRoot })]),
   };
 }
 
@@ -179,6 +172,7 @@ function writeMdx(directory: string, fileName: string, frontmatter: string): voi
 const lcWeapon = `
 schema_version: 2
 title: 测试枪
+game_modes: [lc, td]
 prototype_id: "200"
 item_id: "1000"
 use_type: 主武器
@@ -191,7 +185,7 @@ damage_sources:
     section: fire_mode
     source:
       prototype_mode: 0
-      numerical: { table: lc, id: 120, level: 1 }
+      numerical: { id: 120, level: 1 }
       asc_type_id: "10"
   - id: variant
     name: 变体
@@ -206,6 +200,7 @@ damage_sources:
 const tdWeapon = `
 schema_version: 2
 title: 塔防枪
+game_modes: [lc, td]
 prototype_id: "300"
 use_type: 主武器
 element: 物理
@@ -217,7 +212,7 @@ damage_sources:
     section: fire_mode
     source:
       prototype_mode: 0
-      numerical: { table: td, id: 120, level: 1 }
+      numerical: { id: 120, level: 1 }
       asc_type_id: "10"
 `;
 
@@ -227,7 +222,7 @@ function generateMainFixture(context: TestContext): {
 } {
   const fixture = createFixture(context);
   writeMdx(fixture.lcRoot, "测试枪.mdx", lcWeapon);
-  writeMdx(fixture.tdRoot, "塔防枪.mdx", tdWeapon);
+  writeMdx(fixture.lcRoot, "塔防枪.mdx", tdWeapon);
   const generated = generateWeaponDataLock({
     contentRoot: fixture.contentRoot,
     weaponRoots: fixture.weaponRoots,
@@ -322,6 +317,7 @@ test("pending 可省略 Numerical，但显式悬空候选仍失败", (context) =
     `
 schema_version: 2
 title: 待核验枪
+game_modes: [lc, td]
 prototype_id: "400"
 use_type: 主武器
 element: 物理
@@ -331,7 +327,8 @@ damage_sources:
   - id: pending
     name: 待核验
     section: skill
-    verification: { status: pending, reason: 尚未确认 }
+    source:
+      verification: { status: pending, reason: 尚未确认 }
 `,
   );
   const generated = generateWeaponDataLock({
@@ -346,6 +343,7 @@ damage_sources:
     `
 schema_version: 2
 title: 待核验枪
+game_modes: [lc, td]
 prototype_id: "400"
 use_type: 主武器
 element: 物理
@@ -356,8 +354,8 @@ damage_sources:
     name: 待核验
     section: skill
     source:
-      numerical: { table: lc, id: 999, level: 1 }
-    verification: { status: pending, reason: 尚未确认 }
+      numerical: { id: 999, level: 1 }
+      verification: { status: pending, reason: 尚未确认 }
 `,
   );
   const error = captureOperationError(() =>
@@ -463,6 +461,7 @@ test("Prototype 多候选只按标题精确消歧，关系不一致会阻止生�
     `
 schema_version: 2
 title: 歧义枪
+game_modes: [lc, td]
 prototype_id: "600"
 use_type: 主武器
 element: 物理
@@ -473,7 +472,7 @@ damage_sources:
     section: fire_mode
     source:
       prototype_mode: 0
-      numerical: { table: lc, id: 120, level: 1 }
+      numerical: { id: 120, level: 1 }
       asc_type_id: "10"
 `,
   );
@@ -533,6 +532,7 @@ test("扫描器忽略 V1，并拒绝未知显式 Schema 版本", (context) => {
     `
 schema_version: 2
 title: 零技能
+game_modes: [lc, td]
 prototype_id: "700"
 use_type: 近战武器
 element: 物理
@@ -542,7 +542,7 @@ damage_sources: []
 `,
   );
   const zeroSkill = scanWeaponV2References({ weaponRoots: fixture.weaponRoots });
-  assert.equal(zeroSkill.weapons.length, 1);
+  assert.equal(zeroSkill.weapons.length, 2);
   assert.equal(zeroSkill.activeSkills.size, 0);
 
   writeMdx(fixture.lcRoot, "bad.mdx", "schema_version: 3\ntitle: Bad");

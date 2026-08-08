@@ -8,7 +8,6 @@ const baseDir = path.join(process.cwd(), "data");
 // 路径映射（与 generate-search-index.ts 保持一致）
 const pathMap: Record<string, string> = {
   weapons: "/weapons",
-  weapons_td: "/weapons/td",
   perks: "/perks",
   traps: "/traps",
   "enemies/lc/boss": "/bosses",
@@ -56,6 +55,19 @@ function scanDirectory(dirPath: string, relativePath: string = ""): PageEntry[] 
       // 猎场精英敌人尚未有公开路由，不写入站点地图。
       if (slug.startsWith("enemies/lc/elite/")) continue;
 
+      const stat = fs.statSync(fullPath);
+      const lastmod = stat.mtime.toISOString().split("T")[0];
+      if (relativePath === "weapons" && Array.isArray(data.game_modes)) {
+        for (const mode of data.game_modes) {
+          if (mode !== "lc" && mode !== "td") continue;
+          results.push({
+            url: `/weapons${mode === "td" ? "/td" : ""}/${fileName}`,
+            lastmod,
+          });
+        }
+        continue;
+      }
+
       // 确定 URL 路径
       let urlPath = "";
       for (const [prefix, p] of Object.entries(pathMap)) {
@@ -70,9 +82,6 @@ function scanDirectory(dirPath: string, relativePath: string = ""): PageEntry[] 
       }
 
       // 获取文件修改时间
-      const stat = fs.statSync(fullPath);
-      const lastmod = stat.mtime.toISOString().split("T")[0];
-
       results.push({ url: urlPath, lastmod });
     }
   }

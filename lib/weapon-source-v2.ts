@@ -30,8 +30,14 @@ export const damageSectionSchema = z.enum([
   "melee",
 ]);
 
+// Internal projected reference used by readers, Lock and Resolver.
 export const numericalReferenceSchema = z.strictObject({
   table: numericalTableSchema,
+  id: positiveSafeIntegerSchema,
+  level: positiveSafeIntegerSchema,
+});
+
+export const modeNumericalReferenceSchema = z.strictObject({
   id: positiveSafeIntegerSchema,
   level: positiveSafeIntegerSchema,
 });
@@ -112,14 +118,59 @@ export const damageSourceVerificationSchema = z.strictObject({
   reason: nonEmptyStringSchema,
 });
 
-export const damageSourceV2Schema = z
+function validateMechanicalConfig(
+  source: {
+    overrides?: unknown;
+    override_reason?: string;
+    attack_interval?: number;
+    attack_count?: number;
+    attack_interval_source?: string;
+  },
+  context: z.RefinementCtx,
+): void {
+  if (source.overrides && !source.override_reason) {
+    context.addIssue({
+      code: "custom",
+      path: ["override_reason"],
+      message: "override_reason is required when overrides are present",
+    });
+  }
+  if (!source.overrides && source.override_reason) {
+    context.addIssue({
+      code: "custom",
+      path: ["override_reason"],
+      message: "override_reason cannot be used without overrides",
+    });
+  }
+  if (source.attack_interval !== undefined && !source.attack_interval_source) {
+    context.addIssue({
+      code: "custom",
+      path: ["attack_interval_source"],
+      message: "attack_interval_source is required when attack_interval is present",
+    });
+  }
+  if (source.attack_interval === undefined && source.attack_interval_source) {
+    context.addIssue({
+      code: "custom",
+      path: ["attack_interval_source"],
+      message: "attack_interval_source cannot be used without attack_interval",
+    });
+  }
+  if (source.attack_count !== undefined && source.attack_interval === undefined) {
+    context.addIssue({
+      code: "custom",
+      path: ["attack_count"],
+      message: "attack_count requires attack_interval",
+    });
+  }
+}
+
+export const weaponModeSourceSchema = z
   .strictObject({
-    id: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/),
-    name: nonEmptyStringSchema,
-    section: damageSectionSchema,
-    inherits: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/).optional(),
-    source: weaponDataSourceRefSchema.optional(),
-    label: nonEmptyStringSchema.optional(),
+    prototype_mode: z.number().int().nonnegative().optional(),
+    numerical: modeNumericalReferenceSchema.optional(),
+    asc_type_id: positiveIdStringSchema.optional(),
+    feel_param_id: positiveIdStringSchema.optional(),
     fire_interval: finiteNonNegativeSchema.optional(),
     attack_interval: finiteNonNegativeSchema.optional(),
     attack_count: positiveSafeIntegerSchema.optional(),
@@ -129,43 +180,81 @@ export const damageSourceV2Schema = z
     override_reason: nonEmptyStringSchema.optional(),
     verification: damageSourceVerificationSchema.optional(),
   })
+  .superRefine(validateMechanicalConfig);
+
+const modeSourcesSchema = z
+  .strictObject({
+    lc: weaponModeSourceSchema.optional(),
+    td: weaponModeSourceSchema.optional(),
+  })
+  .refine((value) => value.lc !== undefined || value.td !== undefined, {
+    message: "sources must contain at least one mode",
+  });
+
+export const damageSourceV2Schema = z
+  .strictObject({
+    id: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/),
+    name: nonEmptyStringSchema,
+    section: damageSectionSchema,
+    inherits: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/).optional(),
+    label: nonEmptyStringSchema.optional(),
+    source: weaponModeSourceSchema.optional(),
+    sources: modeSourcesSchema.optional(),
+  })
   .superRefine((source, context) => {
-    if (source.overrides && !source.override_reason) {
+    if (Boolean(source.source) === Boolean(source.sources)) {
       context.addIssue({
         code: "custom",
-        path: ["override_reason"],
-        message: "override_reason is required when overrides are present",
-      });
-    }
-
-    if (!source.overrides && source.override_reason) {
-      context.addIssue({
-        code: "custom",
-        path: ["override_reason"],
-        message: "override_reason cannot be used without overrides",
-      });
-    }
-
-    if (source.attack_interval !== undefined && !source.attack_interval_source) {
-      context.addIssue({
-        code: "custom",
-        path: ["attack_interval_source"],
-        message: "attack_interval_source is required when attack_interval is present",
-      });
-    }
-
-    if (source.attack_interval === undefined && source.attack_interval_source) {
-      context.addIssue({
-        code: "custom",
-        path: ["attack_interval_source"],
-        message: "attack_interval_source cannot be used without attack_interval",
+        path: ["source"],
+        message: "a damage source must contain exactly one of source or sources",
       });
     }
   });
 
+export const projectedDamageSourceV2Schema = z.strictObject({
+  id: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/),
+  name: nonEmptyStringSchema,
+  section: damageSectionSchema,
+  inherits: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/).optional(),
+  source: weaponDataSourceRefSchema.optional(),
+  label: nonEmptyStringSchema.optional(),
+  fire_interval: finiteNonNegativeSchema.optional(),
+  attack_interval: finiteNonNegativeSchema.optional(),
+  attack_count: positiveSafeIntegerSchema.optional(),
+  attack_interval_source: attackIntervalSourceSchema.optional(),
+  pellets: positiveSafeIntegerSchema.optional(),
+  overrides: damageSourceOverridesSchema.optional(),
+  override_reason: nonEmptyStringSchema.optional(),
+  verification: damageSourceVerificationSchema.optional(),
+});
+
 const stringListSchema = z.union([
   nonEmptyStringSchema,
   z.array(nonEmptyStringSchema).min(1),
+]);
+
+const itemIdModeValueSchema = z.union([
+  positiveIdStringSchema,
+  z
+    .strictObject({
+      lc: positiveIdStringSchema.optional(),
+      td: positiveIdStringSchema.optional(),
+    })
+    .refine((value) => value.lc !== undefined || value.td !== undefined, {
+      message: "item_id mode map must contain at least one mode",
+    }),
+]);
+
+const numberModeValueSchema = z.union([
+  finiteNonNegativeSchema,
+  z
+    .strictObject({
+      lc: finiteNonNegativeSchema.optional(),
+      td: finiteNonNegativeSchema.optional(),
+    })
+    .refine((value) => value.lc !== undefined || value.td !== undefined, {
+      message: "mode value must contain at least one mode",
+    }),
 ]);
 
 const weaponSourceV2BaseSchema = z.strictObject({
@@ -178,15 +267,15 @@ const weaponSourceV2BaseSchema = z.strictObject({
   "page-width": nonEmptyStringSchema.optional(),
   draft: z.boolean().optional(),
 
+  game_modes: z.array(numericalTableSchema).min(1).max(2),
   prototype_id: positiveIdStringSchema,
-  item_id: positiveIdStringSchema.optional(),
+  item_id: itemIdModeValueSchema.optional(),
   use_type: nonEmptyStringSchema,
   weapon_type: nonEmptyStringSchema.optional(),
   element: z.enum(["物理", "火焰", "寒冷", "电弧", "腐蚀"]),
   rarity: z.enum(["稀有", "史诗", "传说"]),
   tags: stringListSchema.optional(),
   scope: nonEmptyStringSchema.optional(),
-  game_mode: numericalTableSchema.optional(),
 
   damage_sources: z.array(damageSourceV2Schema),
 
@@ -201,7 +290,7 @@ const weaponSourceV2BaseSchema = z.strictObject({
     })
     .optional(),
   range: finiteNonNegativeSchema.optional(),
-  explosion_range: finiteNonNegativeSchema.optional(),
+  explosion_range: numberModeValueSchema.optional(),
   attenuation_begin: finiteNonNegativeSchema.optional(),
   attenuation_end: finiteNonNegativeSchema.optional(),
   attenuation_scale: finiteNonNegativeSchema.optional(),
@@ -257,22 +346,16 @@ function mergeSourceReference(
   local: WeaponDataSourceRef | undefined,
 ): WeaponDataSourceRef | undefined {
   if (!parent && !local) return undefined;
-
-  const merged: WeaponDataSourceRef = {
-    ...parent,
-    ...local,
-  };
-
+  const merged: WeaponDataSourceRef = { ...parent, ...local };
   if (local?.asc_type_id !== undefined && local.feel_param_id === undefined) {
     merged.feel_param_id = local.asc_type_id;
   } else if (merged.asc_type_id && !merged.feel_param_id) {
     merged.feel_param_id = merged.asc_type_id;
   }
-
   return merged;
 }
 
-function analyzeWeaponSource(weapon: WeaponSourceV2Base): {
+function analyzeWeaponSource(weapon: ProjectedWeaponSourceV2): {
   issues: ProtocolIssue[];
   resolved: Map<string, ResolvedDamageSourceReference>;
 } {
@@ -304,7 +387,7 @@ function analyzeWeaponSource(weapon: WeaponSourceV2Base): {
     } else if (!indexes.has(source.inherits)) {
       issues.push({
         path: ["damage_sources", index, "inherits"],
-        message: `inherited damage source "${source.inherits}" does not exist`,
+        message: `inherited damage source "${source.inherits}" is unavailable in ${weapon.table}`,
       });
       graphIsValid = false;
     }
@@ -312,7 +395,6 @@ function analyzeWeaponSource(weapon: WeaponSourceV2Base): {
 
   if (graphIsValid) {
     const states = new Map<string, "visiting" | "visited">();
-
     const visit = (id: string): void => {
       const state = states.get(id);
       if (state === "visited") return;
@@ -325,23 +407,19 @@ function analyzeWeaponSource(weapon: WeaponSourceV2Base): {
         graphIsValid = false;
         return;
       }
-
       states.set(id, "visiting");
       const source = weapon.damage_sources[indexes.get(id)!];
       if (source.inherits) visit(source.inherits);
       states.set(id, "visited");
     };
-
     for (const source of weapon.damage_sources) visit(source.id);
   }
 
   const resolved = new Map<string, ResolvedDamageSourceReference>();
-
   if (graphIsValid) {
     const resolve = (id: string): ResolvedDamageSourceReference => {
       const cached = resolved.get(id);
       if (cached) return cached;
-
       const source = weapon.damage_sources[indexes.get(id)!];
       const parent = source.inherits ? resolve(source.inherits) : undefined;
       const mergedSource = mergeSourceReference(parent?.source, source.source);
@@ -410,7 +488,6 @@ function analyzeWeaponSource(weapon: WeaponSourceV2Base): {
 
     for (const source of weapon.damage_sources) resolve(source.id);
 
-    const tables = new Set<NumericalTable>();
     for (const [index, source] of weapon.damage_sources.entries()) {
       const effective = resolved.get(source.id)!;
       if (!effective.source?.numerical && !effective.pending) {
@@ -419,111 +496,244 @@ function analyzeWeaponSource(weapon: WeaponSourceV2Base): {
           message: "the effective damage source must contain a numerical reference",
         });
       }
-
       if (effective.source?.feel_param_id && !effective.source.asc_type_id) {
         issues.push({
           path: ["damage_sources", index, "source", "feel_param_id"],
           message: "feel_param_id requires an effective asc_type_id",
         });
       }
-
       if (effective.attack_interval !== undefined && effective.source?.asc_type_id) {
         issues.push({
           path: ["damage_sources", index, "attack_interval"],
           message: "attack_interval cannot be used with an effective asc_type_id",
         });
       }
-
       if (effective.attack_count !== undefined && effective.attack_interval === undefined) {
         issues.push({
           path: ["damage_sources", index, "attack_count"],
           message: "attack_count requires an effective attack_interval",
         });
       }
-
-      if (effective.source?.numerical) {
-        tables.add(effective.source.numerical.table);
-      }
     }
+  }
+  return { issues, resolved };
+}
 
-    if (tables.size > 1) {
-      issues.push({
-        path: ["damage_sources"],
-        message: "all effective numerical references in one weapon must use the same table",
+function selectModeValue<T>(
+  value: T | Partial<Record<NumericalTable, T>> | undefined,
+  table: NumericalTable,
+): T | undefined {
+  if (value === undefined) return undefined;
+  if (typeof value !== "object" || value === null || Array.isArray(value)) {
+    return value as T;
+  }
+  return (value as Partial<Record<NumericalTable, T>>)[table];
+}
+
+function projectModeSource(
+  source: WeaponModeSource,
+  table: NumericalTable,
+): ProjectedDamageSourceV2["source"] {
+  return {
+    ...(source.prototype_mode !== undefined
+      ? { prototype_mode: source.prototype_mode }
+      : {}),
+    ...(source.numerical
+      ? {
+          numerical: {
+            table,
+            id: source.numerical.id,
+            level: source.numerical.level,
+          },
+        }
+      : {}),
+    ...(source.asc_type_id !== undefined
+      ? { asc_type_id: source.asc_type_id }
+      : {}),
+    ...(source.feel_param_id !== undefined
+      ? { feel_param_id: source.feel_param_id }
+      : {}),
+  };
+}
+
+function projectParsedWeaponSourceV2(
+  weapon: WeaponSourceV2Base,
+  table: NumericalTable,
+): ProjectedWeaponSourceV2 {
+  if (!weapon.game_modes.includes(table)) {
+    throw new Error(`weapon does not declare game mode "${table}"`);
+  }
+  const damageSources: ProjectedDamageSourceV2[] = [];
+  for (const source of weapon.damage_sources) {
+    const modeSource = source.source ?? source.sources?.[table];
+    if (!modeSource) continue;
+    damageSources.push({
+      id: source.id,
+      name: source.name,
+      section: source.section,
+      inherits: source.inherits,
+      label: source.label,
+      source: projectModeSource(modeSource, table),
+      fire_interval: modeSource.fire_interval,
+      attack_interval: modeSource.attack_interval,
+      attack_count: modeSource.attack_count,
+      attack_interval_source: modeSource.attack_interval_source,
+      pellets: modeSource.pellets,
+      overrides: modeSource.overrides,
+      override_reason: modeSource.override_reason,
+      verification: modeSource.verification,
+    });
+  }
+  return {
+    ...weapon,
+    table,
+    item_id: selectModeValue(weapon.item_id, table),
+    explosion_range: selectModeValue(weapon.explosion_range, table),
+    damage_sources: damageSources,
+  };
+}
+
+function validateSharedGraph(
+  weapon: WeaponSourceV2Base,
+  context: z.RefinementCtx,
+): void {
+  const indexes = new Map<string, number>();
+  for (const [index, source] of weapon.damage_sources.entries()) {
+    const previous = indexes.get(source.id);
+    if (previous !== undefined) {
+      context.addIssue({
+        code: "custom",
+        path: ["damage_sources", index, "id"],
+        message: `duplicate damage source id "${source.id}" (first used at index ${previous})`,
+      });
+    } else {
+      indexes.set(source.id, index);
+    }
+  }
+  for (const [index, source] of weapon.damage_sources.entries()) {
+    if (!source.inherits) continue;
+    if (source.inherits === source.id) {
+      context.addIssue({
+        code: "custom",
+        path: ["damage_sources", index, "inherits"],
+        message: "a damage source cannot inherit itself",
+      });
+    } else if (!indexes.has(source.inherits)) {
+      context.addIssue({
+        code: "custom",
+        path: ["damage_sources", index, "inherits"],
+        message: `inherited damage source "${source.inherits}" does not exist`,
       });
     }
   }
-
-  if (weapon.damage_sources.some((source) => source.verification) && !weapon.draft) {
-    issues.push({
-      path: ["draft"],
-      message: "a weapon with pending damage sources must set draft: true",
-    });
-  }
-
-  return { issues, resolved };
 }
 
 export const weaponSourceV2Schema = weaponSourceV2BaseSchema.superRefine(
   (weapon, context) => {
-    const { issues } = analyzeWeaponSource(weapon);
-    for (const issue of issues) {
+    const modes = new Set(weapon.game_modes);
+    if (modes.size !== weapon.game_modes.length) {
       context.addIssue({
         code: "custom",
-        path: issue.path,
-        message: issue.message,
+        path: ["game_modes"],
+        message: "game_modes must not contain duplicates",
+      });
+    }
+
+    for (const [index, source] of weapon.damage_sources.entries()) {
+      for (const table of ["lc", "td"] as const) {
+        if (source.sources?.[table] && !modes.has(table)) {
+          context.addIssue({
+            code: "custom",
+            path: ["damage_sources", index, "sources", table],
+            message: `source mode "${table}" is not declared by game_modes`,
+          });
+        }
+      }
+    }
+
+    for (const [field, value] of [
+      ["item_id", weapon.item_id],
+      ["explosion_range", weapon.explosion_range],
+    ] as const) {
+      if (!value || typeof value !== "object" || Array.isArray(value)) continue;
+      for (const table of Object.keys(value) as NumericalTable[]) {
+        if (!modes.has(table)) {
+          context.addIssue({
+            code: "custom",
+            path: [field, table],
+            message: `mode "${table}" is not declared by game_modes`,
+          });
+        }
+      }
+    }
+
+    validateSharedGraph(weapon, context);
+
+    for (const table of weapon.game_modes) {
+      const projected = projectParsedWeaponSourceV2(weapon, table);
+      const { issues } = analyzeWeaponSource(projected);
+      for (const issue of issues) {
+        context.addIssue({
+          code: "custom",
+          path: issue.path,
+          message: `[${table}] ${issue.message}`,
+        });
+      }
+    }
+
+    const hasPending = weapon.damage_sources.some((source) => {
+      if (source.source?.verification) return true;
+      return Boolean(source.sources?.lc?.verification || source.sources?.td?.verification);
+    });
+    if (hasPending && !weapon.draft) {
+      context.addIssue({
+        code: "custom",
+        path: ["draft"],
+        message: "a weapon with pending damage sources must set draft: true",
       });
     }
   },
 );
 
-export interface ValidateWeaponSourceV2Options {
-  expectedTable: NumericalTable;
+export function validateWeaponSourceV2(input: unknown): WeaponSourceV2 {
+  return weaponSourceV2Schema.parse(input);
 }
 
-export function validateWeaponSourceV2(
-  input: unknown,
-  { expectedTable }: ValidateWeaponSourceV2Options,
-): WeaponSourceV2 {
-  return weaponSourceV2Schema
-    .superRefine((weapon, context) => {
-      if (weapon.game_mode && weapon.game_mode !== expectedTable) {
-        context.addIssue({
-          code: "custom",
-          path: ["game_mode"],
-          message: `game_mode "${weapon.game_mode}" does not match expected table "${expectedTable}"`,
-        });
-      }
-
-      const { resolved } = analyzeWeaponSource(weapon);
-      for (const [index, source] of weapon.damage_sources.entries()) {
-        const table = resolved.get(source.id)?.source?.numerical?.table;
-        if (table && table !== expectedTable) {
-          context.addIssue({
-            code: "custom",
-            path: ["damage_sources", index, "source", "numerical", "table"],
-            message: `effective numerical table "${table}" does not match expected table "${expectedTable}"`,
-          });
-        }
-      }
-    })
-    .parse(input);
+export function projectWeaponSourceV2(
+  weapon: WeaponSourceV2,
+  table: NumericalTable,
+): ProjectedWeaponSourceV2 {
+  const parsed = weaponSourceV2Schema.parse(weapon);
+  return projectParsedWeaponSourceV2(parsed, table);
 }
 
 export function resolveDamageSourceReferences(
   weapon: WeaponSourceV2,
+  table: NumericalTable,
 ): ReadonlyMap<string, ResolvedDamageSourceReference> {
-  const parsed = weaponSourceV2Schema.parse(weapon);
-  return analyzeWeaponSource(parsed).resolved;
+  const projected = projectWeaponSourceV2(weapon, table);
+  return analyzeWeaponSource(projected).resolved;
 }
 
 export type NumericalTable = z.infer<typeof numericalTableSchema>;
 export type DamageSection = z.infer<typeof damageSectionSchema>;
 export type NumericalReference = z.infer<typeof numericalReferenceSchema>;
+export type ModeNumericalReference = z.infer<typeof modeNumericalReferenceSchema>;
 export type WeaponDataSourceRef = z.infer<typeof weaponDataSourceRefSchema>;
 export type NumericalOverrides = z.infer<typeof numericalOverridesSchema>;
 export type AttenuationOverride = z.infer<typeof attenuationOverrideSchema>;
 export type AscOverrides = z.infer<typeof ascOverridesSchema>;
 export type DamageSourceOverrides = z.infer<typeof damageSourceOverridesSchema>;
+export type WeaponModeSource = z.infer<typeof weaponModeSourceSchema>;
 export type DamageSourceV2 = z.infer<typeof damageSourceV2Schema>;
+export type ProjectedDamageSourceV2 = z.infer<typeof projectedDamageSourceV2Schema>;
 export type WeaponSourceV2 = z.infer<typeof weaponSourceV2Schema>;
+export type ProjectedWeaponSourceV2 = Omit<
+  WeaponSourceV2,
+  "item_id" | "explosion_range" | "damage_sources"
+> & {
+  table: NumericalTable;
+  item_id?: string;
+  explosion_range?: number;
+  damage_sources: ProjectedDamageSourceV2[];
+};

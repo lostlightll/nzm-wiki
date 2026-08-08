@@ -1,6 +1,9 @@
 ---
 title: 幽冥毒王
-prototype_id: '20006000004'
+game_modes:
+  - lc
+  - td
+prototype_id: "20006000004"
 use_type: 主武器
 weapon_type: 机枪
 element: 腐蚀
@@ -33,42 +36,39 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120600040
         level: 1
       asc_type_id: "121"
-    overrides:
-      asc:
-        fire_interval: 0.1
-    override_reason: 人工确认该模式使用独立射击间隔
+      overrides:
+        asc:
+          fire_interval: 0.1
+      override_reason: 人工确认该模式使用独立射击间隔
   - id: liu-dan-ming-zhong
     name: 榴弹命中
     section: fire_mode
     source:
       prototype_mode: 1
       numerical:
-        table: lc
         id: 120600041
         level: 1
       asc_type_id: "132"
   - id: liu-dan-bao-zha
     name: 榴弹爆炸
     section: fire_mode
+    label: 爆炸伤害
     source:
       numerical:
-        table: lc
         id: 120600042
         level: 1
-    label: 爆炸伤害
   - id: du-chi-chi-xu-shang-hai
     name: 毒池持续伤害
     section: dot
     source:
       numerical:
-        table: lc
         id: 120600043
         level: 1
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

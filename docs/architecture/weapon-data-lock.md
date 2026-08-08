@@ -9,7 +9,7 @@ Weapon Data Lock 是 V2 武器显式引用到的游戏原始行快照。MDX 决�
 ## 1. 边界
 
 - 刷新器读取 `refs/Exports/NZM/Content`，普通构建和离线检查不读取 `refs/`。
-- 只扫描 `data/weapons` 与 `data/weapons_td` 中 `schema_version: 2` 的 MDX；无版本的 V1 文件忽略，未知显式版本报错。
+- 只扫描 `data/weapons` 中 `schema_version: 2` 的 MDX；每份文档按 `game_modes` 展开为 LC/TD 投影。无版本的 V1 文件忽略，未知显式版本报错。
 - 继承使用 `resolveDamageSourceReferences()` 展开。只收集 MDX 内已经显式声明的有效引用，不从 PrototypeConfig 自动生成 Numerical、ASC、Feel、Item 或技能 ID。
 - PrototypeConfig 只参加刷新期交叉校验，不进入 Lock。
 - Lock 保存完整原始行，不解释 Settlement、不判断 ASC 距离衰减是否适用，也不应用人工 overrides。
@@ -68,7 +68,7 @@ Lock 使用一个严格、带命名空间的 JSON 文件：
 
 ## 3. 收集规则
 
-- Numerical 根据有效引用的 `table` 分别进入 LC 或 TD，禁止跨表回退。
+- Numerical 根据当前模式投影分别进入 LC 或 TD；公共 `source` 会在全部已声明模式中收集，`sources` 只收集对应模式键，禁止跨表回退。
 - 每个有效 ASC 同时收集 Feel；未显式填写 `feel_param_id` 时使用有效 ASC ID，显式例外优先。
 - `item_id` 只做精确读取。缺失时不会根据 `ModelID` 的单候选或多候选自动选择。
 - `active_skill_id > 0` 当前固定 Level 1。PVE 整行存在时使用 PVE；只有 PVE 缺行时才使用 GP 整行。
@@ -126,4 +126,4 @@ pnpm weapon-data:check
 
 ## 6. 当前基线
 
-LC 与 TD 共 224 份武器均使用 V2。已提交 Lock 包含所有有效显式引用对应的来源元数据、完整原始行和主动技能选择；普通构建只读取该提交产物。
+112 份武器文档均使用单文件双模式 V2。已提交 Lock 包含全部 LC/TD 投影的有效显式引用、来源元数据、完整原始行和主动技能选择；普通构建只读取该提交产物。

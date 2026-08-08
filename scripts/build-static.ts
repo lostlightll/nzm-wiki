@@ -44,6 +44,9 @@ try {
   console.log("[CHECK] Validating multiplier provider registry...");
   execSync("pnpm multiplier-index:check", { stdio: "inherit" });
 
+  console.log("[CHECK] Validating weapon mode difference markers...");
+  execSync("pnpm weapon-mode-diff:check", { stdio: "inherit" });
+
   // 1. 生成搜索索引和 sitemap
   console.log("[INDEX] Generating search index...");
   execSync("pnpm exec tsx scripts/generate-search-index.ts", { stdio: "inherit", shell: true } as any);

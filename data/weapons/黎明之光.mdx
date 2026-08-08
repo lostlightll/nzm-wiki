@@ -1,6 +1,9 @@
 ---
 title: 黎明之光
-prototype_id: '20005000001'
+game_modes:
+  - lc
+  - td
+prototype_id: "20005000001"
 use_type: 主武器
 weapon_type: 冲锋枪
 element: 电弧
@@ -31,7 +34,6 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120500010
         level: 1
       asc_type_id: "31"
@@ -40,10 +42,10 @@ damage_sources:
     section: skill
     source:
       numerical:
-        table: lc
         id: 120500011
         level: 1
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

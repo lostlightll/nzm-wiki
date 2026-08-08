@@ -1,16 +1,19 @@
 ---
 title: 飓风之龙
+game_modes:
+  - lc
+  - td
 schema_version: 2
 nickname: 微风之区
 keywords:
-  - "\U0001F409"
+  - 🐉
   - 市区
   - 区
   - 潜龙在渊
   - 帝王之征
   - 龙可是帝王之征啊
-prototype_id: '20003000011'
-item_id: '20103000010'
+prototype_id: "20003000011"
+item_id: "20103000010"
 use_type: 主武器
 weapon_type: 霰弹枪
 element: 火焰
@@ -25,20 +28,18 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120300110
         level: 1
-      asc_type_id: '143'
+      asc_type_id: "143"
   - id: dragon-flame-hit
     name: 龙炎弹
     section: fire_mode
     source:
       prototype_mode: 1
       numerical:
-        table: lc
         id: 120300111
         level: 1
-      asc_type_id: '184'
+      asc_type_id: "184"
   - id: dragon-flame-explosion
     name: 龙炎弹爆炸
     section: special
@@ -46,7 +47,6 @@ damage_sources:
     source:
       prototype_mode: 1
       numerical:
-        table: lc
         id: 120300112
         level: 1
   - id: seeking-dragon-flame
@@ -54,7 +54,6 @@ damage_sources:
     section: special
     source:
       numerical:
-        table: lc
         id: 120300113
         level: 1
   - id: shotgun-burst
@@ -63,23 +62,22 @@ damage_sources:
     inherits: shotgun
     source:
       prototype_mode: 2
-      asc_type_id: '196'
+      asc_type_id: "196"
   - id: dragon-flame-burst
     name: 龙炎弹四连发
     section: variant
     inherits: dragon-flame-hit
     source:
       prototype_mode: 3
-      asc_type_id: '197'
+      asc_type_id: "197"
   - id: automatic-dragon-flame
     name: 自动龙炎
     section: special
     source:
       numerical:
-        table: lc
         id: 120300114
         level: 1
-      asc_type_id: '388'
+      asc_type_id: "388"
 magazine: 16
 total_ammo: 160
 accuracy: 59
@@ -96,6 +94,7 @@ active_skill_id: 5101501
 shooting_energy: true
 shooting_energy_count: 16
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

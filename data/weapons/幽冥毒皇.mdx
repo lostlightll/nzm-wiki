@@ -1,8 +1,11 @@
 ---
 title: 幽冥毒皇
+game_modes:
+  - lc
+  - td
 schema_version: 2
-prototype_id: '20006000006'
-item_id: '20106000007'
+prototype_id: "20006000006"
+item_id: "20106000007"
 use_type: 主武器
 weapon_type: 机枪
 element: 腐蚀
@@ -17,20 +20,18 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120600060
         level: 1
-      asc_type_id: '223'
+      asc_type_id: "223"
   - id: grenade-hit
     name: 榴弹命中
     section: fire_mode
     source:
       prototype_mode: 1
       numerical:
-        table: lc
         id: 120600061
         level: 1
-      asc_type_id: '224'
+      asc_type_id: "224"
   - id: grenade-explosion
     name: 榴弹爆炸
     section: special
@@ -38,7 +39,6 @@ damage_sources:
     source:
       prototype_mode: 1
       numerical:
-        table: lc
         id: 120600062
         level: 1
   - id: poison-pool-dot
@@ -47,7 +47,6 @@ damage_sources:
     label: 灼烧伤害
     source:
       numerical:
-        table: lc
         id: 120600063
         level: 1
 magazine: 100
@@ -67,6 +66,7 @@ show_duration: true
 weapon_type_id: 6
 active_skill_id: 5102201
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

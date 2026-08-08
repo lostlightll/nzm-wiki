@@ -1,6 +1,9 @@
 ---
 title: 鬼铜蚀
-prototype_id: '20015000006'
+game_modes:
+  - lc
+  - td
+prototype_id: "20015000006"
 use_type: 主武器
 weapon_type: 喷射器
 element: 腐蚀
@@ -29,52 +32,46 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121500063
         level: 1
       asc_type_id: "263"
-    overrides:
-      asc:
-        attenuation:
-          status: not_applicable
-    override_reason: 实测确认该武器不适用距离衰减，忽略 ASC 中的非法衰减区间
+      overrides:
+        asc:
+          attenuation:
+            status: not_applicable
+      override_reason: 实测确认该武器不适用距离衰减，忽略 ASC 中的非法衰减区间
   - id: huan-tan-bao-zha
     name: 换弹爆炸
     section: special
+    label: 爆炸伤害
     source:
       numerical:
-        table: lc
         id: 121500062
         level: 1
-    label: 爆炸伤害
   - id: d-o-t-chi-shang-hai
     name: Dot池伤害
     section: dot
+    label: 灼烧伤害
     source:
       numerical:
-        table: lc
         id: 121500061
         level: 1
-    label: 灼烧伤害
   - id: hui-xue-hui-fu
     name: 回血恢复
     section: special
     source:
       numerical:
-        table: lc
         id: 121500065
         level: 1
   - id: d-o-t-chi-shang-hai-jian-su-cha-jian
     name: 恶鬼眷顾Dot池伤害
     section: dot
+    label: 灼烧伤害
     source:
       numerical:
-        table: lc
         id: 121500064
         level: 1
-    label: 灼烧伤害
 ---
-
 <WeaponSkill>
   <ActiveSkill
     name="变压毒气"

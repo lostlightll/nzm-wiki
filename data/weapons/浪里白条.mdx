@@ -1,6 +1,9 @@
 ---
 title: 浪里白条
-prototype_id: '20009000001'
+game_modes:
+  - lc
+  - td
+prototype_id: "20009000001"
 use_type: 主武器
 weapon_type: 激光武器
 element: 电弧
@@ -30,7 +33,6 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120900010
         level: 1
       asc_type_id: "88"
@@ -39,11 +41,9 @@ damage_sources:
     section: fire_mode
     source:
       numerical:
-        table: lc
         id: 120900012
         level: 1
 ---
-
 <WeaponSkill>
   <ActiveSkill
     name="高能光束"

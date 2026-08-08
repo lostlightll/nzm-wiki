@@ -1,11 +1,14 @@
 ---
 title: 哈士奇好友
+game_modes:
+  - lc
+  - td
 use_type: 主武器
 weapon_type: 连发榴弹
 element: 物理
 rarity: 传说
 weapon_type_id: 16
-prototype_id: '20016000011'
+prototype_id: "20016000011"
 active_skill_id: 5103101
 magazine: 12
 total_ammo: 120
@@ -28,47 +31,44 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121600111
         level: 1
       asc_type_id: "371"
   - id: liu-dan-bao-zha
     name: 榴弹爆炸
     section: fire_mode
+    label: 爆炸伤害
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121600110
         level: 1
-    label: 爆炸伤害
   - id: ha-shi-qi-ming-zhong
     name: 哈士奇命中
     section: special
     source:
       numerical:
-        table: lc
         id: 121600115
         level: 1
   - id: ha-shi-qi-bao-zha
     name: 哈士奇爆炸
     section: special
+    label: 爆炸伤害
     source:
       numerical:
-        table: lc
         id: 121600114
         level: 1
-    label: 爆炸伤害
   - id: diu-qiang-bao-zha
     name: 丢枪爆炸
     section: special
+    label: 爆炸伤害
     source:
       numerical:
-        table: lc
         id: 121600112
         level: 1
-    label: 爆炸伤害
 ---
+<WeaponModeDiff />
+
 <WeaponSkill>
   <ActiveSkill
     name="出发，哈士奇！"

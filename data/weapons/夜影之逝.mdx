@@ -1,6 +1,9 @@
 ---
 title: 夜影之逝
-prototype_id: '20003000024'
+game_modes:
+  - lc
+  - td
+prototype_id: "20003000024"
 use_type: 主武器
 weapon_type: 霰弹枪
 element: 电弧
@@ -23,7 +26,8 @@ skill_cooldown: 35
 weapon_type_id: 3
 active_skill_id: 5103001
 schema_version: 2
-item_id: "20103000024"
+item_id:
+  lc: "20103000024"
 damage_sources:
   - id: pu-tong-she-ji
     name: 普通射击
@@ -31,7 +35,6 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120300240
         level: 1
       asc_type_id: "342"
@@ -40,7 +43,6 @@ damage_sources:
     section: melee
     source:
       numerical:
-        table: lc
         id: 120300241
         level: 1
   - id: qie-dao-jin-zhan
@@ -48,7 +50,6 @@ damage_sources:
     section: melee
     source:
       numerical:
-        table: lc
         id: 120300242
         level: 1
   - id: guan-chang-hong-jian-qi
@@ -56,7 +57,6 @@ damage_sources:
     section: special
     source:
       numerical:
-        table: lc
         id: 120300245
         level: 1
   - id: lian-zhan-qian-7-dao
@@ -64,7 +64,6 @@ damage_sources:
     section: special
     source:
       numerical:
-        table: lc
         id: 120300243
         level: 1
   - id: lian-zhan-di-8-dao
@@ -72,19 +71,18 @@ damage_sources:
     section: special
     source:
       numerical:
-        table: lc
         id: 120300244
         level: 1
   - id: jin-zhan-hui-xue
     name: 近战回血
     section: special
+    label: 护盾回复
     source:
       numerical:
-        table: lc
         id: 120300246
         level: 1
-    label: 护盾回复
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

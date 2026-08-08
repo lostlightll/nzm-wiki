@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { WeaponAttenuationChart } from "@/components/WeaponAttenuationChart";
 import { WeaponDetailCard } from "@/components/WeaponCard";
 import { WeaponDetailProvider } from "@/components/WeaponDetailContext";
+import { WeaponModeDiff as WeaponModeDiffTable } from "@/components/WeaponModeDiff";
 import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import {
   ActiveSkill,
@@ -17,6 +18,7 @@ import {
 import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
 import { mdxOptions } from "@/lib/mdx-options";
 import {
+  getResolvedWeaponBySlug,
   getResolvedWeaponDocument,
   getResolvedWeaponSlugs,
 } from "@/lib/weapons";
@@ -60,7 +62,10 @@ export default async function WeaponDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const document = await getResolvedWeaponDocument(slug, "lc");
+  const [document, tdWeapon] = await Promise.all([
+    getResolvedWeaponDocument(slug, "lc"),
+    getResolvedWeaponBySlug(slug, "td"),
+  ]);
   if (!document) {
     return (
       <div className="mx-auto max-w-3xl py-6">
@@ -95,12 +100,25 @@ export default async function WeaponDetailPage({
       <WeaponAttenuationChart />
     </>
   );
+  const GameModeForWeapon = ({
+    only,
+    children,
+  }: {
+    only: "lc" | "td";
+    children: ReactNode;
+  }) => (only === "lc" ? <>{children}</> : null);
+  const WeaponModeDiffForWeapon = () =>
+    tdWeapon ? (
+      <WeaponModeDiffTable lcWeapon={document.weapon} tdWeapon={tdWeapon} />
+    ) : null;
   const weaponMdxComponents = {
     ...mdxComponents,
     ActiveSkill: ActiveSkillForWeapon,
     AttenuationChart: WeaponAttenuationChart,
     WeaponAttenuationChart,
     WeaponSkill: WeaponSkillForWeapon,
+    GameMode: GameModeForWeapon,
+    WeaponModeDiff: WeaponModeDiffForWeapon,
   };
 
   return (

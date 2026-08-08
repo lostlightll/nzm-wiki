@@ -10,6 +10,7 @@
 ```ts
 parseWeaponSource(input, { slug, expectedTable })
 resolveWeapon(input, { slug, expectedTable, lock })
+resolveDamageSourceReferences(weapon, expectedTable)
 resolveDamageSource(weapon, sourceId, { lock, expectedTable, weaponPath })
 toLegacyWeapon(resolved)
 createResolvedWeaponSnapshot(resolved, { sourceIdMap })
@@ -18,7 +19,7 @@ createResolvedWeaponSnapshot(resolved, { sourceIdMap })
 - 无 `schema_version` 的输入按 V1 解析。
 - 只有数字 `schema_version: 2` 是 V2；其他显式版本全部拒绝。
 - V2 必须提供 Weapon Data Lock；V1 不读取 Lock。
-- `expectedTable` 是 LC/TD 权威上下文，frontmatter 不能覆盖。
+- `expectedTable` 是 LC/TD 权威上下文。它必须出现在 frontmatter 的 `game_modes` 中，并选择 `source` 或 `sources[expectedTable]`；缺少模式来源表示该来源在该模式不可用，禁止回退到另一模式。
 
 ## 领域模型
 
@@ -89,7 +90,7 @@ Item 只读取显式 `item_id`。行缺失或身份不一致直接失败；取�
 
 `lib/weapon-legacy.ts` 保存迁移前转换语义。V1 先转成旧 `Weapon`，再归一化为同形 `ResolvedWeapon`；`toLegacyWeapon()` 对 V1 返回保存的精确 bridge。
 
-`lib/weapons.ts` 是唯一读取武器 frontmatter 的服务端边界。所有入口必须显式传入 `lc` 或 `td`，并直接返回 `ResolvedWeapon`：
+`lib/weapons.ts` 是唯一读取武器 frontmatter 的服务端边界。LC 与 TD 都读取 `data/weapons` 中的同一份 MDX；所有入口必须显式传入 `lc` 或 `td`，并直接返回对应投影的 `ResolvedWeapon`：
 
 ```text
 frontmatter + committed Lock -> resolveWeapon() -> server consumers

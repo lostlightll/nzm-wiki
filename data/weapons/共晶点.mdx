@@ -1,6 +1,9 @@
 ---
 title: 共晶点
-prototype_id: '20005000007'
+game_modes:
+  - lc
+  - td
+prototype_id: "20005000007"
 use_type: 主武器
 weapon_type: 冲锋枪
 element: 寒冷
@@ -30,23 +33,36 @@ damage_sources:
   - id: pu-tong-she-ji
     name: 普通射击
     section: fire_mode
-    source:
-      prototype_mode: 0
-      numerical:
-        table: lc
-        id: 120500070
-        level: 1
-      asc_type_id: "157"
-    overrides:
-      asc:
-        attenuation:
-          begin_meters: 10
-          end_meters: 20
-          min_scale: 0.3
-          status: applicable
-    override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
+    sources:
+      lc:
+        prototype_mode: 0
+        numerical:
+          id: 120500070
+          level: 1
+        asc_type_id: "157"
+        overrides:
+          asc:
+            attenuation:
+              begin_meters: 10
+              end_meters: 20
+              min_scale: 0.3
+              status: applicable
+        override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
+      td:
+        prototype_mode: 0
+        numerical:
+          id: 120500070
+          level: 1
+        asc_type_id: "157"
+        overrides:
+          asc:
+            attenuation:
+              begin_meters: 10
+              end_meters: 32.5
+              min_scale: 0.1
+              status: applicable
+        override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
 ---
-
 <WeaponSkill>
   <ActiveSkill
     name="连环冻结"

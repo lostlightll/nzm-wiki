@@ -1,6 +1,9 @@
 ---
 title: 杜瓦瓶
-prototype_id: '20015000001'
+game_modes:
+  - lc
+  - td
+prototype_id: "20015000001"
 use_type: 主武器
 weapon_type: 喷射器
 element: 寒冷
@@ -33,24 +36,23 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121500010
         level: 1
       asc_type_id: "122"
-    overrides:
-      asc:
-        attenuation:
-          status: not_applicable
-    override_reason: 实测确认该武器不适用距离衰减，忽略 ASC 中的非法衰减区间
+      overrides:
+        asc:
+          attenuation:
+            status: not_applicable
+      override_reason: 实测确认该武器不适用距离衰减，忽略 ASC 中的非法衰减区间
   - id: ling-du-zhi-ci
     name: 零度之刺
     section: skill
     source:
       numerical:
-        table: lc
         id: 1410110101
         level: 1
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

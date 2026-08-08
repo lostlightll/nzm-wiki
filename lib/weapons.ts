@@ -8,10 +8,7 @@ import { getResolvedFieldValue } from "./weapon-consumers";
 import { createWeaponResolver, type ResolvedWeapon } from "./weapon-resolver";
 import type { NumericalTable } from "./weapon-source-v2";
 
-const WEAPON_DIRECTORIES: Record<NumericalTable, string> = {
-  lc: path.join(process.cwd(), "data/weapons"),
-  td: path.join(process.cwd(), "data/weapons_td"),
-};
+const WEAPON_DIRECTORY = path.join(process.cwd(), "data/weapons");
 const isDev = process.env.NODE_ENV === "development";
 const weaponResolver = createWeaponResolver(weaponDataLockJson);
 const weaponTypeOrder = new Map(
@@ -67,7 +64,7 @@ function weaponSorter(left: ResolvedWeapon, right: ResolvedWeapon): number {
 }
 
 function readResolvedWeapons(table: NumericalTable): ResolvedWeapon[] {
-  const directory = WEAPON_DIRECTORIES[table];
+  const directory = WEAPON_DIRECTORY;
   if (!fs.existsSync(directory)) {
     console.warn(`Weapons directory not found: ${directory}`);
     return [];
@@ -78,8 +75,17 @@ function readResolvedWeapons(table: NumericalTable): ResolvedWeapon[] {
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => {
       const slug = file.replace(/\.mdx$/, "");
-      return resolveWeaponFile(path.join(directory, file), slug, table).weapon;
+      const filePath = path.join(directory, file);
+      const parsed = matter(fs.readFileSync(filePath, "utf8"));
+      if (
+        !Array.isArray(parsed.data.game_modes) ||
+        !parsed.data.game_modes.includes(table)
+      ) {
+        return null;
+      }
+      return resolveWeaponFile(filePath, slug, table).weapon;
     })
+    .filter((weapon): weapon is ResolvedWeapon => weapon !== null)
     .filter((weapon) => !weapon.draft || isDev)
     .sort(weaponSorter);
 }
@@ -102,8 +108,15 @@ export async function getResolvedWeaponDocument(
   table: NumericalTable,
 ): Promise<ResolvedWeaponDocument | null> {
   const decodedSlug = decodeURIComponent(slug);
-  const filePath = path.join(WEAPON_DIRECTORIES[table], `${decodedSlug}.mdx`);
+  const filePath = path.join(WEAPON_DIRECTORY, `${decodedSlug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
+  const parsed = matter(fs.readFileSync(filePath, "utf8"));
+  if (
+    !Array.isArray(parsed.data.game_modes) ||
+    !parsed.data.game_modes.includes(table)
+  ) {
+    return null;
+  }
   const document = resolveWeaponFile(filePath, decodedSlug, table);
   if (document.weapon.draft && !isDev) return null;
   return document;
@@ -112,23 +125,30 @@ export async function getResolvedWeaponDocument(
 export async function getResolvedWeaponSlugs(
   table: NumericalTable,
 ): Promise<string[]> {
-  return scanWeaponSlugs(WEAPON_DIRECTORIES[table], isDev);
+  return scanWeaponSlugs(WEAPON_DIRECTORY, table, isDev);
 }
 
 function ordinalCompare(left: string, right: string): number {
   return left < right ? -1 : left > right ? 1 : 0;
 }
 
-export function scanWeaponSlugs(directory: string, includeDrafts: boolean): string[] {
+export function scanWeaponSlugs(
+  directory: string,
+  table: NumericalTable,
+  includeDrafts: boolean,
+): string[] {
   if (!fs.existsSync(directory)) return [];
   return fs
     .readdirSync(directory)
     .filter((file) => file.endsWith(".mdx"))
     .sort(ordinalCompare)
     .filter((file) => {
-      if (includeDrafts) return true;
       const parsed = matter(fs.readFileSync(path.join(directory, file), "utf8"));
-      return parsed.data.draft !== true;
+      return (
+        (includeDrafts || parsed.data.draft !== true) &&
+        Array.isArray(parsed.data.game_modes) &&
+        parsed.data.game_modes.includes(table)
+      );
     })
     .map((file) => file.replace(/\.mdx$/, ""));
 }

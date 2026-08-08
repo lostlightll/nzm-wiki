@@ -1,6 +1,9 @@
 ---
 title: 春雷震
-prototype_id: '20016000006'
+game_modes:
+  - lc
+  - td
+prototype_id: "20016000006"
 use_type: 主武器
 weapon_type: 连发榴弹
 element: 火焰
@@ -30,21 +33,20 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121600061
         level: 1
       asc_type_id: "329"
   - id: liu-dan-bao-zha
     name: 榴弹爆炸
     section: fire_mode
+    label: 爆炸伤害
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121600060
         level: 1
-    label: 爆炸伤害
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <PassiveSkill

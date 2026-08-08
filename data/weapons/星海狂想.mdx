@@ -1,8 +1,11 @@
 ---
 title: 星海狂想
+game_modes:
+  - lc
+  - td
 schema_version: 2
-prototype_id: '20001000004'
-item_id: '20101000004'
+prototype_id: "20001000004"
+item_id: "20101000004"
 use_type: 主武器
 weapon_type: 突击步枪
 element: 寒冷
@@ -17,28 +20,26 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120100040
         level: 1
-      asc_type_id: '5'
+      asc_type_id: "5"
   - id: passive-max-rate
     name: 被动最大射速
     section: variant
     inherits: primary-fire
     source:
       prototype_mode: 1
-      asc_type_id: '364'
-    overrides:
-      asc:
-        fire_interval: 0.0727
-    override_reason: 实测确认持续开火的最大射速间隔
+      asc_type_id: "364"
+      overrides:
+        asc:
+          fire_interval: 0.0727
+      override_reason: 实测确认持续开火的最大射速间隔
   - id: large-ice-spike
     name: 大型冰锥
     section: skill
     label: 技能伤害
     source:
       numerical:
-        table: lc
         id: 1410050101
         level: 1
   - id: frost-ice-spike
@@ -47,7 +48,6 @@ damage_sources:
     label: 技能伤害
     source:
       numerical:
-        table: lc
         id: 120100041
         level: 1
 magazine: 46
@@ -67,7 +67,6 @@ skill_duration: 8
 skill_blocking: true
 show_duration: true
 ---
-
 <WeaponSkill>
   <ActiveSkill
     name="深寒冲击"

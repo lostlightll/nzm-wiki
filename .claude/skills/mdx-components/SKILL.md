@@ -15,6 +15,7 @@ description: "nzm-wiki 可用的 MDX 组件参考。包含 Callout、Credit、Vi
 | LevelTable | 等级数据表（带色条） | [level-table.md](level-table.md) |
 | DataTable | 通用数据表（支持图标列） | [data-table.md](data-table.md) |
 | WeaponSkill | 武器技能展示（ActiveSkill / PassiveSkill） | [weapon-skill.md](weapon-skill.md) |
+| GameMode / WeaponModeDiff | 武器页模式正文与 LC/TD 数值差异 | [weapon-game-mode.md](weapon-game-mode.md) |
 | BossCard | Boss 卡片 / 网格 | [boss-card.md](boss-card.md) |
 | BuffCard | Buff/Debuff 卡片系统 | [buff-card.md](buff-card.md) |
 

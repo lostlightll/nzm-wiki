@@ -1,6 +1,9 @@
 ---
 title: 冥河之矛
-prototype_id: '20006000017'
+game_modes:
+  - lc
+  - td
+prototype_id: "20006000017"
 use_type: 主武器
 weapon_type: 机枪
 element: 电弧
@@ -33,7 +36,6 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120600170
         level: 1
       asc_type_id: "324"
@@ -41,13 +43,12 @@ damage_sources:
     name: 被动射速
     section: variant
     inherits: pu-tong-she-ji
-    source: {}
-    overrides:
-      asc:
-        fire_interval: 0.21
-    override_reason: 人工确认该模式使用独立射击间隔
+    source:
+      overrides:
+        asc:
+          fire_interval: 0.21
+      override_reason: 人工确认该模式使用独立射击间隔
 ---
-
 <WeaponSkill>
   <ActiveSkill
     name="锁魂骨矛"

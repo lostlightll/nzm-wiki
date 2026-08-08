@@ -1,6 +1,9 @@
 ---
 title: 钢铁轰鸣
-prototype_id: '20016000004'
+game_modes:
+  - lc
+  - td
+prototype_id: "20016000004"
 use_type: 主武器
 weapon_type: 连发榴弹
 element: 火焰
@@ -33,29 +36,27 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121600011
         level: 1
       asc_type_id: "117"
   - id: liu-dan-bao-zha
     name: 榴弹爆炸
     section: fire_mode
+    label: 爆炸伤害
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121600010
         level: 1
-    label: 爆炸伤害
   - id: liu-dan-chuan-tou
     name: 榴弹穿透
     section: special
     source:
       numerical:
-        table: lc
         id: 121600012
         level: 1
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

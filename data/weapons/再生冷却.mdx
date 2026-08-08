@@ -1,6 +1,9 @@
 ---
 title: 再生冷却
-prototype_id: '20003000012'
+game_modes:
+  - lc
+  - td
+prototype_id: "20003000012"
 use_type: 主武器
 weapon_type: 霰弹枪
 element: 寒冷
@@ -26,33 +29,41 @@ damage_sources:
   - id: pu-tong-she-ji
     name: 普通射击
     section: fire_mode
-    source:
-      prototype_mode: 0
-      numerical:
-        table: lc
-        id: 120300120
-        level: 1
-      asc_type_id: "241"
+    sources:
+      lc:
+        prototype_mode: 0
+        numerical:
+          id: 120300120
+          level: 1
+        asc_type_id: "241"
+      td:
+        prototype_mode: 0
+        numerical:
+          id: 120300120
+          level: 1
+        asc_type_id: "241"
+        overrides:
+          asc:
+            attenuation:
+              status: not_applicable
+        override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
   - id: bing-tan-ming-zhong
     name: 冰弹命中
     section: special
+    label: 技能伤害
     source:
       numerical:
-        table: lc
         id: 120300122
         level: 1
-    label: 技能伤害
   - id: sui-bing
     name: 碎冰
     section: special
+    label: 技能伤害
     source:
       numerical:
-        table: lc
         id: 120300121
         level: 1
-    label: 技能伤害
 ---
-
 <WeaponSkill>
   <ActiveSkill
     name="冷却飞弹"

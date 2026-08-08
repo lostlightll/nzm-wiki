@@ -1,6 +1,9 @@
 ---
 title: 玄凌飞刃
-prototype_id: '20019000001'
+game_modes:
+  - lc
+  - td
+prototype_id: "20019000001"
 use_type: 主武器
 weapon_type: 暗器
 element: 物理
@@ -31,24 +34,23 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121900101
         level: 1
       asc_type_id: "350"
-    overrides:
-      asc:
-        attenuation:
-          status: not_applicable
-    override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
+      overrides:
+        asc:
+          attenuation:
+            status: not_applicable
+      override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
   - id: zhi-ming-lian-jie
     name: 致命链接
     section: special
     source:
       numerical:
-        table: lc
         id: 121900102
         level: 1
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

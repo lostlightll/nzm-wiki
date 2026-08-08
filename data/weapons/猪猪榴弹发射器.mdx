@@ -1,6 +1,9 @@
 ---
 title: 猪猪榴弹发射器
-prototype_id: '20008000011'
+game_modes:
+  - lc
+  - td
+prototype_id: "20008000011"
 use_type: 副武器
 weapon_type: 单发榴弹
 element: 物理
@@ -30,21 +33,20 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120800111
         level: 1
       asc_type_id: "352"
   - id: liu-dan-bao-zha
     name: 榴弹爆炸
     section: special
+    label: 爆炸伤害
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120800110
         level: 1
-    label: 爆炸伤害
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

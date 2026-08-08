@@ -1,7 +1,10 @@
 ---
 title: 超级复合弓
-prototype_id: '20012000001'
-item_id: '20112000001'
+game_modes:
+  - lc
+  - td
+prototype_id: "20012000001"
+item_id: "20112000001"
 use_type: 副武器
 weapon_type: 弓箭
 element: 物理
@@ -33,17 +36,15 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 121200010
         level: 1
       asc_type_id: "119"
-    overrides:
-      asc:
-        attenuation:
-          status: not_applicable
-    override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
+      overrides:
+        asc:
+          attenuation:
+            status: not_applicable
+      override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
 ---
-
 <WeaponSkill>
   <PassiveSkill
     name="复合战术"

@@ -1,6 +1,9 @@
 ---
 title: 生命线
-prototype_id: '20008000002'
+game_modes:
+  - lc
+  - td
+prototype_id: "20008000002"
 use_type: 副武器
 weapon_type: 单发榴弹
 element: 寒冷
@@ -33,30 +36,30 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120800021
         level: 1
       asc_type_id: "116"
   - id: liu-dan-bao-zha
     name: 榴弹爆炸
     section: special
+    label: 爆炸伤害
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120800020
         level: 1
-    label: 爆炸伤害
   - id: bing-chi-dot
     name: 冰池Dot
     section: dot
+    label: 灼烧伤害
     source:
       numerical:
-        table: lc
         id: 120800023
         level: 1
-    label: 灼烧伤害
+explosion_range:
+  td: 2.5
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill

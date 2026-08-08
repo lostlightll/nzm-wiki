@@ -368,12 +368,11 @@ test("Task 7.7 representative mappings remain fixed across Resolver and consumer
   }
 });
 
-test("generic scanner skips weapon directories before reading MDX", () => {
+test("generic scanner skips the unified weapon directory before reading MDX", () => {
   const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "weapon-search-task6-"));
   try {
     fs.mkdirSync(path.join(fixtureRoot, "posts"), { recursive: true });
     fs.mkdirSync(path.join(fixtureRoot, "weapons"), { recursive: true });
-    fs.mkdirSync(path.join(fixtureRoot, "weapons_td"), { recursive: true });
     fs.writeFileSync(
       path.join(fixtureRoot, "posts", "ok.mdx"),
       "---\ntitle: 可读取\n---\n",
@@ -382,11 +381,6 @@ test("generic scanner skips weapon directories before reading MDX", () => {
     const invalidMdx = "---\ninvalid: [\n---\nSHOULD_NOT_BE_READ";
     fs.writeFileSync(
       path.join(fixtureRoot, "weapons", "bad.mdx"),
-      invalidMdx,
-      "utf8",
-    );
-    fs.writeFileSync(
-      path.join(fixtureRoot, "weapons_td", "bad.mdx"),
       invalidMdx,
       "utf8",
     );

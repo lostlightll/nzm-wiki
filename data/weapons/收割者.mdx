@@ -1,6 +1,9 @@
 ---
 title: 收割者
-prototype_id: '20008000001'
+game_modes:
+  - lc
+  - td
+prototype_id: "20008000001"
 use_type: 副武器
 weapon_type: 单发榴弹
 element: 火焰
@@ -34,21 +37,20 @@ damage_sources:
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120800011
         level: 1
       asc_type_id: "89"
   - id: liu-dan-bao-zha
     name: 榴弹爆炸
     section: special
+    label: 爆炸伤害
     source:
       prototype_mode: 0
       numerical:
-        table: lc
         id: 120800010
         level: 1
-    label: 爆炸伤害
 ---
+<WeaponModeDiff />
 
 <WeaponSkill>
   <ActiveSkill
