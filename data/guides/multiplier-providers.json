@@ -143,6 +143,25 @@
       }
     },
     {
+      "id": "bond:game-mode:异化:4",
+      "label": "异化羁绊 x4",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "异化",
+        "count": 4
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ],
+      "evidence": {
+        "kind": "reviewed-override",
+        "basis": [
+          "羁绊数据的通用增伤写入 DamageRatio 独立乘区。"
+        ],
+        "numericalRows": []
+      }
+    },
+    {
       "id": "bond:game-mode:游击:4",
       "label": "游击羁绊 x4",
       "source": {
