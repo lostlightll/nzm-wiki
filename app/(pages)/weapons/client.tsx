@@ -28,6 +28,10 @@ const DETAIL_COLUMN_QUERIES = [
 const DEFAULT_WEAPON_SLOTS: WeaponSlot[] = ["主武器"];
 const DEFAULT_RARITIES: Rarity[] = ["传说"];
 
+function isWeaponSlot(value: string | undefined): value is WeaponSlot {
+  return value === "主武器" || value === "副武器" || value === "近战武器";
+}
+
 function subscribeDetailColumns(onStoreChange: () => void) {
   const mediaQueries = DETAIL_COLUMN_QUERIES.map(({ query }) =>
     window.matchMedia(query),
@@ -81,6 +85,22 @@ export default function WeaponsClient({
   const typeState = useSelection<WeaponType>("type");
   const elementState = useSelection<ElementType>("element");
   const rarityState = useSelection<Rarity>("rarity", DEFAULT_RARITIES);
+  const currentWeapons = isTD ? tdWeapons : weapons;
+
+  const slotsByWeaponType = useMemo(() => {
+    const slots = new Map<WeaponType, Set<WeaponSlot>>();
+
+    for (const weapon of currentWeapons) {
+      const weaponType = getResolvedFieldValue(weapon.weaponType);
+      if (!weaponType || !isWeaponSlot(weapon.useType)) continue;
+
+      const typeSlots = slots.get(weaponType) ?? new Set<WeaponSlot>();
+      typeSlots.add(weapon.useType);
+      slots.set(weaponType, typeSlots);
+    }
+
+    return slots;
+  }, [currentWeapons]);
 
   const hasFilter =
     slotState.selected.size > 0 ||
@@ -95,6 +115,25 @@ export default function WeaponsClient({
     rarityState.clear();
   };
 
+  const toggleWeaponType = (weaponType: WeaponType) => {
+    const isSelecting = !typeState.selected.has(weaponType);
+    const compatibleSlots = slotsByWeaponType.get(weaponType);
+    const hasCompatibleSlot =
+      compatibleSlots !== undefined &&
+      [...slotState.selected].some((slot) => compatibleSlots.has(slot));
+
+    if (
+      isSelecting &&
+      slotState.selected.size > 0 &&
+      compatibleSlots?.size === 1 &&
+      !hasCompatibleSlot
+    ) {
+      slotState.selectOnly(compatibleSlots.values().next().value);
+    }
+
+    typeState.toggle(weaponType);
+  };
+
   const toggleMode = () => {
     const params = new URLSearchParams(searchParams.toString());
     if (isTD) {
@@ -107,7 +146,7 @@ export default function WeaponsClient({
 
   const filteredWeapons = useMemo(
     () =>
-      (isTD ? tdWeapons : weapons).filter((weapon) => {
+      currentWeapons.filter((weapon) => {
         const weaponType = getResolvedFieldValue(weapon.weaponType);
         const element = getResolvedFieldValue(weapon.element);
         const rarity = getResolvedFieldValue(weapon.rarity);
@@ -128,12 +167,10 @@ export default function WeaponsClient({
       }),
     [
       elementState.selected,
-      isTD,
+      currentWeapons,
       rarityState.selected,
       slotState.selected,
-      tdWeapons,
       typeState.selected,
-      weapons,
     ],
   );
 
@@ -185,7 +222,7 @@ export default function WeaponsClient({
           title="武器类型"
           items={WEAPON_TYPES}
           selected={typeState.selected}
-          onToggle={typeState.toggle}
+          onToggle={toggleWeaponType}
           centerClass="sm:justify-center"
         />
 
