@@ -24,13 +24,60 @@ changeClip:
 schema_version: 2
 item_id: "20113000066"
 damage_sources:
-  - id: jin-zhan-gong-ji
-    name: 近战攻击
+  - id: light-attack-1
+    name: 轻击 1
     section: melee
+    label: 模式 1
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300661
+        level: 1
+      asc_type_id: "362"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    label: 模式 1
+    source:
+      numerical:
+        id: 121300662
+        level: 1
+      asc_type_id: "362"
+  - id: heavy-attack
+    name: 重击
+    section: melee
+    label: 模式 1
     source:
       prototype_mode: 0
       numerical:
         id: 121300660
+        level: 1
+      asc_type_id: "362"
+  - id: mode-2-light-attack-1
+    name: 轻击 1
+    section: variant
+    label: 模式 2
+    source:
+      numerical:
+        id: 121300664
+        level: 1
+      asc_type_id: "362"
+  - id: mode-2-light-attack-2
+    name: 轻击 2
+    section: variant
+    label: 模式 2
+    source:
+      numerical:
+        id: 121300665
+        level: 1
+      asc_type_id: "362"
+  - id: mode-2-heavy-attack
+    name: 重击
+    section: variant
+    label: 模式 2
+    source:
+      numerical:
+        id: 121300663
         level: 1
       asc_type_id: "362"
 ---<WeaponSkill>
@@ -41,7 +88,3 @@ damage_sources:
     携带此武器时，角色造成的火属性伤害增加<Yellow>5%</Yellow>。武器技能充能速度增加<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>
-
-<Callout>模式 1：轻击伤害 **315** / **405**（元素异常 **33.6%** / **43.2%**），重击伤害 **945**（元素异常 **100.8%**）</Callout>
-
-<Callout>模式 2：轻击伤害 **405** / **405**（元素异常 **43.2%**），重击伤害 **1057.5**（元素异常 **112.8%**）</Callout>

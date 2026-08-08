@@ -50,6 +50,7 @@ damage_sources: []
 - 每段必须显式引用自己的 Numerical，使基础伤害、元素异常概率、破韧、弱点和暴击分别解析。多个段共享 ASC 只表示动作配置相同，不允许合并 Numerical。
 - `prototype_mode` 只参加刷新期交叉核验，不能代替某一段的 Numerical，也不能从 Prototype 未列出的连段自动猜出 Numerical ID。额外连段必须从结构化原表建立精确引用。
 - 普通连段数值由统一武器面板渲染；正文不得继续维护“轻击伤害 / 重击伤害”静态 Callout。回血、形态切换等特殊行为仍使用独立 `special` / `variant` 来源，不混入普通连段。
+- 同一近战武器存在多套可切换形态时，默认形态使用 `section: melee`，作为目录卡预览；其他形态逐段使用 `section: variant`。同一形态的来源使用相同 `label`（如 `模式 1` / `模式 2`），详情页按该标签分组展示全部形态。
 
 ```yaml
 damage_sources:

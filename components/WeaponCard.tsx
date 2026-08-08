@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Image from "next/image";
 import { CatalogLink } from "@/components/CatalogLink";
 import { DamageSourceMultiplierBadges } from "@/components/MultiplierBadges";
@@ -231,6 +231,19 @@ function MeleeDetailStats({
   sources: readonly ConsumerDamageSource[];
   hpMultiplier: number;
 }) {
+  const groups = sources.reduce<
+    { label?: string; sources: ConsumerDamageSource[] }[]
+  >((result, source) => {
+    const current = result.at(-1);
+    if (!current || current.label !== source.label) {
+      result.push({ label: source.label, sources: [source] });
+    } else {
+      current.sources.push(source);
+    }
+    return result;
+  }, []);
+  const showGroupLabels = groups.some((group) => group.label !== undefined);
+
   return (
     <div className="mb-4">
       <h2 className="mb-2 text-sm font-semibold text-zinc-400">近战连段</h2>
@@ -243,49 +256,67 @@ function MeleeDetailStats({
         />
       ))}
 
-      <div className="divide-y divide-zinc-700/60 border-y border-zinc-700/70 sm:hidden">
-        {sources.map((source) => {
-          const weakness =
-            getResolvedFieldValue(source.enableWeakness) === true
-              ? getResolvedFieldValue(source.weaknessMultiplier)
-              : undefined;
-          const critical = getResolvedFieldValue(source.enableCritical) === true;
-          return (
-            <div key={source.id} className="py-3">
-              <div className="flex items-baseline justify-between gap-4">
-                <span className="font-medium text-zinc-200">
-                  {source.name}
-                  {critical && (
-                    <span className="ml-2 text-xs font-normal text-zinc-500">
-                      可暴击
-                    </span>
-                  )}
-                </span>
-                <span className="font-semibold tabular-nums text-white">
-                  {formatDamage(source, hpMultiplier)}
-                </span>
-              </div>
-              <div className="mt-2 grid grid-cols-3 gap-3 text-xs tabular-nums">
-                <div>
-                  <div className="text-zinc-500">元素异常</div>
-                  <div className="mt-0.5 text-zinc-300">{formatElementRate(source)}</div>
-                </div>
-                <div>
-                  <div className="text-zinc-500">单发破韧</div>
-                  <div className="mt-0.5 text-zinc-300">
-                    {formatPrecise(getResolvedFieldValue(source.damage.toughness))}
+      <div className="border-y border-zinc-700/70 sm:hidden">
+        {groups.map((group, groupIndex) => (
+          <div key={`${group.label ?? "default"}-${groupIndex}`}>
+            {showGroupLabels && (
+              <h3 className="border-b border-zinc-700/60 py-2 text-xs font-semibold text-zinc-500">
+                {group.label ?? "默认模式"}
+              </h3>
+            )}
+            <div className="divide-y divide-zinc-700/60">
+              {group.sources.map((source) => {
+                const weakness =
+                  getResolvedFieldValue(source.enableWeakness) === true
+                    ? getResolvedFieldValue(source.weaknessMultiplier)
+                    : undefined;
+                const critical =
+                  getResolvedFieldValue(source.enableCritical) === true;
+                return (
+                  <div key={source.id} className="py-3">
+                    <div className="flex items-baseline justify-between gap-4">
+                      <span className="font-medium text-zinc-200">
+                        {source.name}
+                        {critical && (
+                          <span className="ml-2 text-xs font-normal text-zinc-500">
+                            可暴击
+                          </span>
+                        )}
+                      </span>
+                      <span className="font-semibold tabular-nums text-white">
+                        {formatDamage(source, hpMultiplier)}
+                      </span>
+                    </div>
+                    <div className="mt-2 grid grid-cols-3 gap-3 text-xs tabular-nums">
+                      <div>
+                        <div className="text-zinc-500">元素异常</div>
+                        <div className="mt-0.5 text-zinc-300">
+                          {formatElementRate(source)}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-zinc-500">单发破韧</div>
+                        <div className="mt-0.5 text-zinc-300">
+                          {formatPrecise(
+                            getResolvedFieldValue(source.damage.toughness),
+                          )}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-zinc-500">弱点倍率</div>
+                        <div className="mt-0.5 text-zinc-300">
+                          {weakness === undefined
+                            ? "-"
+                            : `${formatValue(weakness)}×`}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <div className="text-zinc-500">弱点倍率</div>
-                  <div className="mt-0.5 text-zinc-300">
-                    {weakness === undefined ? "-" : `${formatValue(weakness)}×`}
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
 
       <table className="hidden w-full table-fixed text-sm tabular-nums sm:table">
@@ -300,35 +331,55 @@ function MeleeDetailStats({
             <th className="py-2 text-right font-normal">暴击</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-zinc-700/50">
-          {sources.map((source) => {
-            const weakness =
-              getResolvedFieldValue(source.enableWeakness) === true
-                ? getResolvedFieldValue(source.weaknessMultiplier)
-                : undefined;
-            return (
-              <tr key={source.id}>
-                <th className="py-2.5 text-left font-medium text-zinc-200">
-                  {source.name}
-                </th>
-                <td className="py-2.5 text-right font-medium text-white">
-                  {formatDamage(source, hpMultiplier)}
-                </td>
-                <td className="py-2.5 text-right text-zinc-300">
-                  {formatElementRate(source)}
-                </td>
-                <td className="py-2.5 text-right text-zinc-300">
-                  {formatPrecise(getResolvedFieldValue(source.damage.toughness))}
-                </td>
-                <td className="py-2.5 text-right text-zinc-300">
-                  {weakness === undefined ? "-" : `${formatValue(weakness)}×`}
-                </td>
-                <td className="py-2.5 text-right text-zinc-300">
-                  {getResolvedFieldValue(source.enableCritical) === true ? "可暴击" : "否"}
-                </td>
-              </tr>
-            );
-          })}
+        <tbody>
+          {groups.map((group, groupIndex) => (
+            <Fragment key={`${group.label ?? "default"}-${groupIndex}`}>
+              {showGroupLabels && (
+                <tr className="border-b border-zinc-700/50">
+                  <th
+                    colSpan={6}
+                    className="py-2 text-left text-xs font-semibold text-zinc-500"
+                  >
+                    {group.label ?? "默认模式"}
+                  </th>
+                </tr>
+              )}
+              {group.sources.map((source) => {
+                const weakness =
+                  getResolvedFieldValue(source.enableWeakness) === true
+                    ? getResolvedFieldValue(source.weaknessMultiplier)
+                    : undefined;
+                return (
+                  <tr key={source.id} className="border-b border-zinc-700/50 last:border-b-0">
+                    <th className="py-2.5 text-left font-medium text-zinc-200">
+                      {source.name}
+                    </th>
+                    <td className="py-2.5 text-right font-medium text-white">
+                      {formatDamage(source, hpMultiplier)}
+                    </td>
+                    <td className="py-2.5 text-right text-zinc-300">
+                      {formatElementRate(source)}
+                    </td>
+                    <td className="py-2.5 text-right text-zinc-300">
+                      {formatPrecise(
+                        getResolvedFieldValue(source.damage.toughness),
+                      )}
+                    </td>
+                    <td className="py-2.5 text-right text-zinc-300">
+                      {weakness === undefined
+                        ? "-"
+                        : `${formatValue(weakness)}×`}
+                    </td>
+                    <td className="py-2.5 text-right text-zinc-300">
+                      {getResolvedFieldValue(source.enableCritical) === true
+                        ? "可暴击"
+                        : "否"}
+                    </td>
+                  </tr>
+                );
+              })}
+            </Fragment>
+          ))}
         </tbody>
       </table>
     </div>
@@ -846,7 +897,10 @@ export function WeaponDetailCard() {
     (source) => !primaryModeIds.has(source.id),
   );
   const meleeModes = isMelee
-    ? weapon.damageSources.filter((source) => source.section === "melee")
+    ? weapon.damageSources.filter(
+        (source) =>
+          source.section === "melee" || source.section === "variant",
+      )
     : [];
   const chargeTime = weapon.activeSkill
     ? getResolvedFieldValue(weapon.activeSkill.chargeTime)

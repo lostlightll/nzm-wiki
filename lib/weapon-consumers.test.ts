@@ -217,12 +217,31 @@ test("pilot main source, LC/TD context, attenuation, and element agree", async (
     ),
     ["light-attack-1", "light-attack-2", "light-attack-3"],
   );
-  assert.deepEqual(
-    toWeaponCatalogEntry(
-      await requireWeapon("黑天使之刃", "lc"),
-    ).meleeSources.map((source) => source.id),
-    ["jin-zhan-gong-ji"],
-  );
+  for (const table of ["lc", "td"] as const) {
+    const blackAngel = await requireWeapon("黑天使之刃", table);
+    assert.deepEqual(
+      toWeaponCatalogEntry(blackAngel).meleeSources.map((source) => source.id),
+      ["light-attack-1", "light-attack-2", "heavy-attack"],
+    );
+    const blackAngelDetail = toWeaponDetailData(blackAngel);
+    assert.deepEqual(
+      blackAngelDetail.damageSources.map((source) => source.id),
+      [
+        "light-attack-1",
+        "light-attack-2",
+        "heavy-attack",
+        "mode-2-light-attack-1",
+        "mode-2-light-attack-2",
+        "mode-2-heavy-attack",
+      ],
+    );
+    assert.deepEqual(
+      blackAngelDetail.damageSources.map((source) =>
+        getResolvedFieldValue(source.damage.base),
+      ),
+      [0.63, 0.81, 1.89, 0.81, 0.81, 2.115],
+    );
+  }
 
   const night = await requireWeapon("夜影之逝", "lc");
   assert.equal(night.damageSources.at(-1)?.id, "jin-zhan-hui-xue");

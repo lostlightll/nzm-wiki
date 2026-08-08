@@ -43165,6 +43165,346 @@
         },
         "row_name": "121300660_1"
       },
+      "lc:121300661_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "黑天使之刃_轻击左_模式1",
+          "ElementAddRate": 0.336,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Fire",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 4.2,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.63,
+          "HpFloatCoef": 0,
+          "HurtableBase": 4.2,
+          "ImpulseBase": 21.2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.MeleeWeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 5.3,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.2,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121300661
+        },
+        "row_name": "121300661_1"
+      },
+      "lc:121300662_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "黑天使之刃_轻击右_模式1",
+          "ElementAddRate": 0.432,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Fire",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 5.4,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.81,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5.4,
+          "ImpulseBase": 27.2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.MeleeWeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 6.8,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.2,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121300662
+        },
+        "row_name": "121300662_1"
+      },
+      "lc:121300663_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "黑天使之刃_重击_模式2",
+          "ElementAddRate": 1.128,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Fire",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 14.1,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 2.115,
+          "HpFloatCoef": 0,
+          "HurtableBase": 14.1,
+          "ImpulseBase": 70.4,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.MeleeWeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 17.6,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.2,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121300663
+        },
+        "row_name": "121300663_1"
+      },
+      "lc:121300664_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "黑天使之刃_轻击左_模式2",
+          "ElementAddRate": 0.432,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Fire",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 5.4,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.81,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5.4,
+          "ImpulseBase": 27.2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.MeleeWeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 6.8,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.2,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121300664
+        },
+        "row_name": "121300664_1"
+      },
+      "lc:121300665_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "黑天使之刃_轻击右_模式2",
+          "ElementAddRate": 0.432,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Fire",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 5.4,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.81,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5.4,
+          "ImpulseBase": 27.2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.MeleeWeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 6.8,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.2,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121300665
+        },
+        "row_name": "121300665_1"
+      },
       "lc:121300710_1": {
         "raw": {
           "CameraHitFeedBackTag": {
@@ -61163,6 +61503,346 @@
           "id": 121300660
         },
         "row_name": "121300660_1"
+      },
+      "td:121300661_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "黑天使之刃_轻击左_模式一",
+          "ElementAddRate": 0.336,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Fire",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 4.2,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.63,
+          "HpFloatCoef": 0,
+          "HurtableBase": 4.2,
+          "ImpulseBase": 21.2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.MeleeWeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 5.3,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.2,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121300661
+        },
+        "row_name": "121300661_1"
+      },
+      "td:121300662_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "黑天使之刃_轻击右_模式一",
+          "ElementAddRate": 0.432,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Fire",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 5.4,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.81,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5.4,
+          "ImpulseBase": 27.2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.MeleeWeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 6.8,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.2,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121300662
+        },
+        "row_name": "121300662_1"
+      },
+      "td:121300663_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "黑天使之刃_重击_模式二",
+          "ElementAddRate": 1.128,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Fire",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 14.1,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 2.115,
+          "HpFloatCoef": 0,
+          "HurtableBase": 14.1,
+          "ImpulseBase": 70.4,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.MeleeWeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 17.6,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.2,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121300663
+        },
+        "row_name": "121300663_1"
+      },
+      "td:121300664_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "黑天使之刃_轻击左_模式二",
+          "ElementAddRate": 0.432,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Fire",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 5.4,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.81,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5.4,
+          "ImpulseBase": 27.2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.MeleeWeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 6.8,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.2,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121300664
+        },
+        "row_name": "121300664_1"
+      },
+      "td:121300665_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "黑天使之刃_轻击右_模式二",
+          "ElementAddRate": 0.432,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Fire",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 5.4,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.81,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5.4,
+          "ImpulseBase": 27.2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.MeleeWeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 6.8,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.2,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121300665
+        },
+        "row_name": "121300665_1"
       },
       "td:121300710_1": {
         "raw": {
