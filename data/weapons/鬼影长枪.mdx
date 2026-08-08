@@ -24,8 +24,25 @@ changeClip:
 schema_version: 2
 item_id: "20113000053"
 damage_sources:
-  - id: jin-zhan-gong-ji
-    name: 近战攻击
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300531
+        level: 1
+      asc_type_id: "345"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300532
+        level: 1
+      asc_type_id: "345"
+  - id: heavy-attack
+    name: 重击
     section: melee
     source:
       prototype_mode: 0
@@ -42,5 +59,3 @@ damage_sources:
     所有物理伤害提升<Yellow>5%</Yellow>，换弹速度提升<Yellow>8%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>
-
-<Callout>轻击伤害 **652** / **1080**，重击伤害 **2093**</Callout>

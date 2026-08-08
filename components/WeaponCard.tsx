@@ -10,13 +10,11 @@ import { getAssetPath } from "@/lib/path";
 import { buildDamageProfile } from "@/lib/multiplier-data";
 import {
   getFullReloadTime,
-  getNonMainMeleeSources,
   getResolvedFieldValue,
   type ConsumerDamageSource,
   type ConsumerDamageSourceSummary,
   type ConsumerField,
   type WeaponCatalogEntry,
-  type WeaponDetailData,
 } from "@/lib/weapon-consumers";
 import { RARITY_KEY_MAP, RARITY_CARD_STYLES } from "@/constants/common";
 
@@ -138,16 +136,194 @@ function isMeleeWeapon(weapon: {
   );
 }
 
-function getMeleeDamageBase(
-  weapon: Pick<WeaponDetailData, "melee">,
-  mode: DisplaySource,
-  key: "light" | "heavy",
+function formatElementRate(source: DisplaySource): string {
+  const rate = getResolvedFieldValue(source.elementAddRate);
+  return rate === undefined ? "-" : `${formatPercent(rate)}%`;
+}
+
+function getUniformMeleeWeakness(
+  sources: readonly DisplaySource[],
 ): number | undefined {
-  const value = getResolvedFieldValue(weapon.melee[key]);
-  if (value !== undefined) return value;
-  const base = getResolvedFieldValue(mode.damage.base);
-  if (key === "heavy" && base !== undefined && base > 0) return base;
-  return undefined;
+  const values = sources.map((source) =>
+    getResolvedFieldValue(source.enableWeakness) === true
+      ? getResolvedFieldValue(source.weaknessMultiplier)
+      : undefined,
+  );
+  const first = values[0];
+  return first !== undefined && values.every((value) => value === first)
+    ? first
+    : undefined;
+}
+
+function MeleeCatalogStats({
+  sources,
+  hpMultiplier,
+}: {
+  sources: readonly ConsumerDamageSourceSummary[];
+  hpMultiplier: number;
+}) {
+  const weakness = getUniformMeleeWeakness(sources);
+  const allCritical = sources.every(
+    (source) => getResolvedFieldValue(source.enableCritical) === true,
+  );
+
+  return (
+    <div className="mt-4 border-t border-zinc-700/70 pt-3">
+      <div className="mb-2 flex min-h-5 items-center justify-between gap-3 text-xs">
+        <span className="font-medium text-zinc-300">攻击连段</span>
+        <span className="flex flex-wrap justify-end gap-x-3 text-zinc-500">
+          {weakness !== undefined && <span>弱点 {formatValue(weakness)}×</span>}
+          {allCritical && <span>可暴击</span>}
+        </span>
+      </div>
+      <table className="w-full table-fixed text-xs tabular-nums">
+        <caption className="sr-only">近战攻击连段数值</caption>
+        <colgroup>
+          <col className="w-[27%]" />
+          <col className="w-[27%]" />
+          <col className="w-[25%]" />
+          <col className="w-[21%]" />
+        </colgroup>
+        <thead className="text-zinc-500">
+          <tr>
+            <th className="pb-1.5 text-left font-normal">招式</th>
+            <th className="pb-1.5 text-right font-normal">伤害</th>
+            <th className="pb-1.5 text-right font-normal">异常</th>
+            <th className="pb-1.5 text-right font-normal">破韧</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-zinc-700/50">
+          {sources.map((source) => (
+            <tr key={source.id}>
+              <th className="py-1.5 text-left font-medium text-zinc-300">
+                {source.name}
+              </th>
+              <td className="py-1.5 text-right font-medium text-white">
+                {formatDamage(source, hpMultiplier)}
+              </td>
+              <td className="py-1.5 text-right text-zinc-300">
+                {formatElementRate(source)}
+              </td>
+              <td className="py-1.5 text-right text-zinc-300">
+                {formatPrecise(getResolvedFieldValue(source.damage.toughness))}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function MeleeDetailStats({
+  sources,
+  hpMultiplier,
+}: {
+  sources: readonly ConsumerDamageSource[];
+  hpMultiplier: number;
+}) {
+  return (
+    <div className="mb-4">
+      <h2 className="mb-2 text-sm font-semibold text-zinc-400">近战连段</h2>
+      {sources.map((source) => (
+        <span
+          key={source.id}
+          id={`damage-source-${source.id}`}
+          aria-hidden="true"
+          className="block h-0 scroll-mt-24"
+        />
+      ))}
+
+      <div className="divide-y divide-zinc-700/60 border-y border-zinc-700/70 sm:hidden">
+        {sources.map((source) => {
+          const weakness =
+            getResolvedFieldValue(source.enableWeakness) === true
+              ? getResolvedFieldValue(source.weaknessMultiplier)
+              : undefined;
+          const critical = getResolvedFieldValue(source.enableCritical) === true;
+          return (
+            <div key={source.id} className="py-3">
+              <div className="flex items-baseline justify-between gap-4">
+                <span className="font-medium text-zinc-200">
+                  {source.name}
+                  {critical && (
+                    <span className="ml-2 text-xs font-normal text-zinc-500">
+                      可暴击
+                    </span>
+                  )}
+                </span>
+                <span className="font-semibold tabular-nums text-white">
+                  {formatDamage(source, hpMultiplier)}
+                </span>
+              </div>
+              <div className="mt-2 grid grid-cols-3 gap-3 text-xs tabular-nums">
+                <div>
+                  <div className="text-zinc-500">元素异常</div>
+                  <div className="mt-0.5 text-zinc-300">{formatElementRate(source)}</div>
+                </div>
+                <div>
+                  <div className="text-zinc-500">单发破韧</div>
+                  <div className="mt-0.5 text-zinc-300">
+                    {formatPrecise(getResolvedFieldValue(source.damage.toughness))}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-zinc-500">弱点倍率</div>
+                  <div className="mt-0.5 text-zinc-300">
+                    {weakness === undefined ? "-" : `${formatValue(weakness)}×`}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <table className="hidden w-full table-fixed text-sm tabular-nums sm:table">
+        <caption className="sr-only">近战攻击连段完整数值</caption>
+        <thead className="border-y border-zinc-700/70 text-zinc-500">
+          <tr>
+            <th className="py-2 text-left font-normal">招式</th>
+            <th className="py-2 text-right font-normal">伤害</th>
+            <th className="py-2 text-right font-normal">元素异常概率</th>
+            <th className="py-2 text-right font-normal">单发破韧</th>
+            <th className="py-2 text-right font-normal">弱点倍率</th>
+            <th className="py-2 text-right font-normal">暴击</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-zinc-700/50">
+          {sources.map((source) => {
+            const weakness =
+              getResolvedFieldValue(source.enableWeakness) === true
+                ? getResolvedFieldValue(source.weaknessMultiplier)
+                : undefined;
+            return (
+              <tr key={source.id}>
+                <th className="py-2.5 text-left font-medium text-zinc-200">
+                  {source.name}
+                </th>
+                <td className="py-2.5 text-right font-medium text-white">
+                  {formatDamage(source, hpMultiplier)}
+                </td>
+                <td className="py-2.5 text-right text-zinc-300">
+                  {formatElementRate(source)}
+                </td>
+                <td className="py-2.5 text-right text-zinc-300">
+                  {formatPrecise(getResolvedFieldValue(source.damage.toughness))}
+                </td>
+                <td className="py-2.5 text-right text-zinc-300">
+                  {weakness === undefined ? "-" : `${formatValue(weakness)}×`}
+                </td>
+                <td className="py-2.5 text-right text-zinc-300">
+                  {getResolvedFieldValue(source.enableCritical) === true ? "可暴击" : "否"}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 /**
@@ -224,9 +400,6 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
   const chargeTime = weapon.activeSkill
     ? getResolvedFieldValue(weapon.activeSkill.chargeTime)
     : undefined;
-  const lightMeleeModes = isMelee
-    ? getNonMainMeleeSources(weapon)
-    : [];
 
   if (!mode) {
     return (
@@ -269,8 +442,10 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
         <h3 className="text-xl font-semibold text-white">{weapon.title}</h3>
         <div className="mt-1 mb-4 flex flex-wrap items-center gap-1.5 text-sm text-zinc-400">
           {weapon.useType && <span>{weapon.useType}</span>}
-          {weaponType && <span>· {weaponType}</span>}
-          {scope && <span>· {scope}</span>}
+          {weaponType && (!isMelee || weaponType !== weapon.useType) && (
+            <span>· {weaponType}</span>
+          )}
+          {scope && !isMelee && <span>· {scope}</span>}
           {tags.map((tag) => (
             <span key={tag}>· {tag}</span>
           ))}
@@ -286,49 +461,11 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
           />
         </div>
 
-        <div className="mt-4 grid grid-cols-1 gap-y-2 text-base sm:grid-cols-2 sm:gap-x-6">
-          {isMelee ? (
-            <>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">轻击伤害</span>
-                <span className="text-white">
-                  {lightMeleeModes.length > 0
-                    ? lightMeleeModes
-                        .map((source) => formatDamage(source, hpMul))
-                        .join(" / ")
-                    : formatDamageValue(
-                        getResolvedFieldValue(weapon.melee.light),
-                        hpMul,
-                      )}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">重击伤害</span>
-                <span className="text-white">
-                  {formatDamageValue(
-                    getMeleeDamageBase(weapon, mode, "heavy"),
-                    hpMul,
-                  )}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">元素异常概率</span>
-                <span className="text-white">
-                  {getResolvedFieldValue(mode.elementAddRate) === undefined
-                    ? "-"
-                    : `${formatPercent(getResolvedFieldValue(mode.elementAddRate)!)}%`}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">弱点倍率</span>
-                <span className="text-white">
-                  {formatValue(getResolvedFieldValue(mode.weaknessMultiplier))}
-                </span>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="flex justify-between">
+        {isMelee ? (
+          <MeleeCatalogStats sources={weapon.meleeSources} hpMultiplier={hpMul} />
+        ) : (
+          <div className="mt-4 grid grid-cols-1 gap-y-2 text-base sm:grid-cols-2 sm:gap-x-6">
+            <div className="flex justify-between">
                 <span className="text-zinc-500">单发伤害</span>
                 <span className="text-white">{formatDamage(mode, hpMul)}</span>
               </div>
@@ -396,8 +533,8 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
                 </span>
                 <span className="text-white">&nbsp;</span>
               </div>
-              {reloadTime !== undefined && (
-                <div
+            {reloadTime !== undefined && (
+              <div
                   className={`col-span-1 grid min-h-0 transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none sm:col-span-2 ${
                     showReloadDetail
                       ? "grid-rows-[1fr]"
@@ -420,11 +557,10 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
                       </div>
                     </div>
                   </div>
-                </div>
-              )}
-            </>
-          )}
-        </div>
+              </div>
+            )}
+          </div>
+        )}
         </div>
       </CatalogLink>
       {SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS && (
@@ -700,11 +836,8 @@ export function WeaponDetailCard() {
   const extraModes = weapon.damageSources.filter(
     (source) => !primaryModeIds.has(source.id),
   );
-  const lightMeleeModes = isMelee
-    ? getNonMainMeleeSources({
-        mainSourceId: weapon.mainSourceId,
-        meleeSources: weapon.damageSources,
-      })
+  const meleeModes = isMelee
+    ? weapon.damageSources.filter((source) => source.section === "melee")
     : [];
   const chargeTime = weapon.activeSkill
     ? getResolvedFieldValue(weapon.activeSkill.chargeTime)
@@ -734,8 +867,10 @@ export function WeaponDetailCard() {
           <h1 className="text-2xl font-bold text-white">{weapon.title}</h1>
           <div className="mt-1 flex flex-wrap items-center gap-2 text-sm text-zinc-400">
             {weapon.useType && <span>{weapon.useType}</span>}
-            {weaponType && <span>· {weaponType}</span>}
-            {scope && <span>· {scope}</span>}
+            {weaponType && (!isMelee || weaponType !== weapon.useType) && (
+              <span>· {weaponType}</span>
+            )}
+            {scope && !isMelee && <span>· {scope}</span>}
             {tags.map((tag) => (
               <span key={tag} className="flex items-center gap-2">
                 <span>·</span>
@@ -769,44 +904,13 @@ export function WeaponDetailCard() {
 
       {/* 射击模式 */}
       {isMelee ? (
-        <div className="mb-3">
-          <h2 className="mb-2 text-sm font-semibold text-zinc-400">近战攻击</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-            <Stat
-              label="轻击伤害"
-              value={
-                lightMeleeModes.length > 0
-                  ? lightMeleeModes
-                      .map((source) => formatDamage(source, hpMul))
-                      .join(" / ")
-                  : formatDamageValue(
-                      getMeleeDamageBase(weapon, mode, "light"),
-                      hpMul,
-                    )
-              }
-            />
-            <Stat
-              label="重击伤害"
-              value={formatDamageValue(getMeleeDamageBase(weapon, mode, "heavy"), hpMul)}
-            />
-            <Stat label="单发破韧值" value={formatPrecise(getResolvedFieldValue(mode.damage.toughness))} />
-            <Stat label="弱点倍率" value={getResolvedFieldValue(mode.enableWeakness) ? formatValue(getResolvedFieldValue(mode.weaknessMultiplier)) : "-"} />
-            <Stat
-              label="元素异常概率"
-              value={
-                getResolvedFieldValue(mode.elementAddRate) === undefined
-                  ? "-"
-                  : `${formatPercent(getResolvedFieldValue(mode.elementAddRate)!)}%`
-              }
-            />
-            <Stat label="暴击" value={getResolvedFieldValue(mode.enableCritical) ? "可暴击" : "否"} />
-          </div>
+        <div>
+          <MeleeDetailStats sources={meleeModes} hpMultiplier={hpMul} />
           {SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS && (
             <div className="mt-3 space-y-2">
-              {weapon.damageSources.map((source) => (
+              {meleeModes.map((source) => (
                 <div
                   key={source.id}
-                  id={`damage-source-${source.id}`}
                   className="scroll-mt-24"
                 >
                   <p className="mb-1 text-xs text-zinc-500">{source.name}</p>
@@ -817,15 +921,6 @@ export function WeaponDetailCard() {
               ))}
             </div>
           )}
-          {!SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS &&
-            weapon.damageSources.map((source) => (
-              <span
-                key={source.id}
-                id={`damage-source-${source.id}`}
-                aria-hidden="true"
-                className="block h-0 scroll-mt-24"
-              />
-            ))}
         </div>
       ) : primaryModes.length > 1 ? (
         primaryModes.map((m) => (
@@ -879,9 +974,13 @@ export function WeaponDetailCard() {
       )}
 
       {/* 武器属性 */}
-      <div className="mb-4">
-        <h2 className="mb-2 text-sm font-semibold text-zinc-400">武器属性</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
+      {(!isMelee ||
+        chargeTime !== undefined ||
+        shootingEnergy ||
+        skillDuration !== undefined) && (
+        <div className="mb-4">
+          <h2 className="mb-2 text-sm font-semibold text-zinc-400">武器属性</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
           {!isMelee && <Stat label="弹夹" value={formatValue(getResolvedFieldValue(weapon.magazine))} />}
           {!isMelee && <Stat label="总弹量" value={formatValue(getResolvedFieldValue(weapon.totalAmmo))} />}
           {!isMelee && <Stat label="精准度" value={formatValue(getResolvedFieldValue(weapon.accuracy))} />}
@@ -944,8 +1043,9 @@ export function WeaponDetailCard() {
               value={cycleTime != null ? `${cycleTime}s` : "-"}
             />
           )}
+          </div>
         </div>
-      </div>
+      )}
 
     </div>
   );

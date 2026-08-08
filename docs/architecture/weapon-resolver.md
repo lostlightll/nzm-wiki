@@ -99,7 +99,9 @@ frontmatter + committed Lock -> resolveWeapon() -> server consumers
 
 Resolver 独占主来源决策：先排除 `damage.base` 不适用的恢复等非攻击结算来源，再选择首个 `fire_mode`，否则选择首个攻击来源。空来源或仅含非攻击结算来源时没有 `mainSourceId`。消费者只能按 `mainSourceId` 精确查找；存在攻击来源却缺失 ID，或 ID 悬空，均是领域不变量错误，禁止再次按 section 或数组位置 fallback。武器级元素优先使用有效主来源元素；不可攻击武器仍保留协议顶层元素，供目录筛选和搜索使用。
 
-`lib/weapon-consumers.ts` 只接受 `ResolvedWeapon`，不得读取 frontmatter、Lock 或 `refs/`。目录视图只携带主来源摘要；详情视图保留全部标准化 Damage、ASC、Feel、衰减和技能字段。两种客户端视图都删除 `raw`、provenance、diagnostics、override history、原表字段名和来源 key，避免把审计数据序列化到 RSC/client payload。完整审计信息仍保留在服务端 `ResolvedWeapon`。
+`lib/weapon-consumers.ts` 只接受 `ResolvedWeapon`，不得读取 frontmatter、Lock 或 `refs/`。目录视图携带主来源摘要，并为近战额外保留按 MDX 顺序排列的全部 `meleeSources` 摘要；详情视图保留全部标准化 Damage、ASC、Feel、衰减和技能字段。消费者不再暴露旧 `melee.light/heavy` 武器级字段，也不得由 `mainSourceId` 猜出其余近战段。两种客户端视图都删除 `raw`、provenance、diagnostics、override history、原表字段名和来源 key，避免把审计数据序列化到 RSC/client payload。完整审计信息仍保留在服务端 `ResolvedWeapon`。
+
+近战展示保持来源顺序并逐段读取基础伤害、元素异常概率、破韧、弱点和暴击。目录卡使用紧凑的“招式 / 伤害 / 异常 / 破韧”四列，统一弱点与暴击只作为表外摘要；详情页展示完整字段，移动端改用每段分组布局，避免六列表压缩或横向溢出。无攻击来源的特殊近战继续显示“不可攻击”，不能伪造空连段。
 
 详情页保留既有的“普通射击 / 技能与特殊攻击 / 武器属性”呈现结构，不因 V2 数据链新增模式选择器。模式面板按 `section` 展示全部标准化来源；武器级元素、衰减摘要和曲线严格使用 Resolver 给出的 `mainSourceId`。只有主来源的 `attenuation.status === "applicable"` 才显示衰减，消费者不读取旧 `range` 或顶层衰减字段。目录卡、搜索与 `weapon-stats.json` 同样使用该 `mainSourceId` 摘要。
 

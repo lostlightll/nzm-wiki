@@ -13,7 +13,24 @@ prototype_id: "20013000009"
 item_id: "20113000009"
 active_skill_id: 0
 damage_sources:
-  - id: heavy-hit
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300091
+        level: 1
+      asc_type_id: "171"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300092
+        level: 1
+      asc_type_id: "171"
+  - id: heavy-attack
     name: 重击
     section: melee
     source:
@@ -22,21 +39,6 @@ damage_sources:
         id: 121300090
         level: 1
       asc_type_id: "171"
-  - id: light-hit-left
-    name: 轻击左
-    section: melee
-    source:
-      prototype_mode: 0
-      numerical:
-        id: 121300091
-        level: 1
-  - id: light-hit-right
-    name: 轻击右
-    section: melee
-    source:
-      numerical:
-        id: 121300092
-        level: 1
 magazine: 30
 total_ammo: 5030
 accuracy: 0
@@ -49,4 +51,3 @@ changeClip:
   timeBase: 0.9
   reloadRecovery: 0
 ---
-<Callout>轻击伤害 **270** / **324**，重击伤害 **720**</Callout>

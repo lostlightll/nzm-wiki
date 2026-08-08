@@ -24,8 +24,25 @@ changeClip:
 schema_version: 2
 item_id: "20113000023"
 damage_sources:
-  - id: jin-zhan-gong-ji
-    name: 近战攻击
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300231
+        level: 1
+      asc_type_id: "169"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300232
+        level: 1
+      asc_type_id: "169"
+  - id: heavy-attack
+    name: 重击
     section: melee
     source:
       prototype_mode: 0
@@ -42,5 +59,3 @@ damage_sources:
     携带此武器时，角色造成的冰属性伤害增加<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>
-
-<Callout>轻击伤害 **648** / **648**（元素异常 **43.2%**），重击伤害 **1530**（元素异常 **102.0%**）</Callout>

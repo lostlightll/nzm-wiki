@@ -24,13 +24,30 @@ changeClip:
 schema_version: 2
 item_id: "20113000037"
 damage_sources:
-  - id: jin-zhan-gong-ji
-    name: 近战攻击
+  - id: light-attack-1
+    name: 轻击 1
     section: melee
     source:
       prototype_mode: 0
       numerical:
         id: 121300371
+        level: 1
+      asc_type_id: "303"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300372
+        level: 1
+      asc_type_id: "303"
+  - id: heavy-attack
+    name: 重击
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300370
         level: 1
       asc_type_id: "303"
 ---
@@ -42,5 +59,3 @@ damage_sources:
     物理伤害提升<Yellow>5%</Yellow>。手持血怨时，每秒钟获得<Yellow>2.5%</Yellow>临时护盾，最多<Yellow>20%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>
-
-<Callout>轻击伤害 **810** / **945**，重击伤害 **1890**</Callout>

@@ -117,7 +117,6 @@ export interface WeaponDetailData extends ConsumerWeaponIdentity {
   readonly shootingEnergyCount: ConsumerField<number>;
   readonly officialRadar: ConsumerFields<ResolvedWeapon["officialRadar"]>;
   readonly changeClip: ConsumerFields<ResolvedWeapon["changeClip"]>;
-  readonly melee: ConsumerFields<ResolvedWeapon["melee"]>;
   readonly damageSources: readonly ConsumerDamageSource[];
   readonly mainSourceId?: string;
   readonly activeSkill?: ConsumerActiveSkill;
@@ -161,7 +160,6 @@ export interface WeaponCatalogEntry extends ConsumerWeaponIdentity {
   readonly shootingEnergy: ConsumerField<boolean>;
   readonly shootingEnergyCount: ConsumerField<number>;
   readonly changeClip: ConsumerFields<ResolvedWeapon["changeClip"]>;
-  readonly melee: ConsumerFields<ResolvedWeapon["melee"]>;
   readonly activeSkill?: ConsumerActiveSkill;
   readonly mainSourceId?: string;
   readonly mainSource?: ConsumerDamageSourceSummary;
@@ -243,19 +241,6 @@ export function getMainDamageSource<
     );
   }
   return matches[0];
-}
-
-export function getNonMainMeleeSources<
-  Source extends { readonly id: string; readonly section: DamageSection },
->(weapon: {
-  readonly mainSourceId?: string;
-  readonly meleeSources: readonly Source[];
-}): readonly Source[] {
-  if (weapon.mainSourceId === undefined) return [];
-  return weapon.meleeSources.filter(
-    (source) =>
-      source.section === "melee" && source.id !== weapon.mainSourceId,
-  );
 }
 
 function toConsumerField<T>(field: ResolvedField<T>): ConsumerField<T> {
@@ -417,7 +402,6 @@ export function toWeaponDetailData(weapon: ResolvedWeapon): WeaponDetailData {
     shootingEnergyCount: toConsumerField(weapon.shootingEnergyCount),
     officialRadar: toConsumerFields(weapon.officialRadar),
     changeClip: toConsumerFields(weapon.changeClip),
-    melee: toConsumerFields(weapon.melee),
     damageSources: weapon.damageSources
       .filter(hasDisplayableDamage)
       .map(toConsumerDamageSource),
@@ -443,7 +427,6 @@ export function toWeaponCatalogEntry(
     shootingEnergy: toConsumerField(weapon.shootingEnergy),
     shootingEnergyCount: toConsumerField(weapon.shootingEnergyCount),
     changeClip: toConsumerFields(weapon.changeClip),
-    melee: toConsumerFields(weapon.melee),
     activeSkill: toConsumerActiveSkill(weapon.activeSkill),
     mainSourceId: weapon.mainSourceId,
     mainSource: mainSource

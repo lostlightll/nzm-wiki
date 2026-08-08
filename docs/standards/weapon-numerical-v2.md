@@ -130,6 +130,18 @@ explosion_range:
 
 `attack_interval_source` 使用 `NZM/Content/...#字段`，必须与 `attack_interval` 成对；`attack_count` 只能随攻击间隔存在。有效 ASC 与 `attack_interval` 互斥。
 
+### 3.4 近战连段
+
+普通近战按单次结算建模，不使用武器级轻击/重击汇总：
+
+1. 每段轻击和重击各自拥有稳定来源 ID 与完整 Numerical 引用。
+2. `damage_sources` 的顺序是权威连段顺序；Resolver 与消费者必须保持，不按 ID 或名称重新排序。
+3. 每段独立解析基础伤害、元素积累、破韧、弱点和暴击。当前多数普通近战的弱点倍率同为 `1.2` 只是原始数据事实，不是合并来源的依据。
+4. 同一 Numerical ID 在 LC/TD 均存在时可以使用公共 `source`，但 Lock 与 Resolver 仍分别读取两个 namespace；存在真实模式差异时改用 `sources`，禁止跨模式 fallback。
+5. Prototype 没有枚举出的后续轻击必须使用已经核验的 Numerical 精确引用，禁止根据 ID 尾号或相邻行猜测。
+
+恢复、形态切换、蓄力或其他特殊近战机制不强行套入轻击/重击序列，应使用 `special` / `variant` 来源单独建模。
+
 ## 4. 继承
 
 继承按模式分别展开：先选择当前来源的 `source` 或 `sources[mode]`，再解析同模式父来源。子配置按字段覆盖父配置；Numerical 是完整引用，不深层拼接。
@@ -197,6 +209,8 @@ verification:
 4. Resolver 使用 `mode:id_level` 精确读取 Lock，禁止跨模式 fallback。
 
 仅当 Numerical 解析后的 `damage.base.state` 为 `resolved` 或 `zero` 时，该来源具备攻击能力。恢复等非攻击 Settlement 不得成为 `mainSourceId`。Resolver 先选择首个 `fire_mode` 攻击来源，否则选择首个攻击来源；消费者不得按数组位置再次 fallback。
+
+近战目录与详情不能只使用 `mainSourceId` 代表整套连段。它们必须消费保持原顺序的全部 `section: melee` 攻击来源；`mainSourceId` 仍只承担武器级元素和其他单一主来源语义。
 
 ## 7. 错误与维护
 

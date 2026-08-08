@@ -43,6 +43,38 @@ damage_sources: []
 
 完整结构、LC/TD 隔离、继承和 override 规则见 [`weapon-numerical-v2.md`](weapon-numerical-v2.md)。
 
+### 普通近战连段
+
+- 普通近战的每一次实际结算都必须是独立的 `section: melee` 来源，不能再压缩成武器级 `light` / `heavy` 两个摘要字段。
+- 来源顺序就是页面展示和连段顺序：`light-attack-1`、`light-attack-2`、后续轻击，最后才是 `heavy-attack`。没有重击或拥有三段以上轻击时按事实增减，禁止为了固定版式补空来源。
+- 每段必须显式引用自己的 Numerical，使基础伤害、元素异常概率、破韧、弱点和暴击分别解析。多个段共享 ASC 只表示动作配置相同，不允许合并 Numerical。
+- `prototype_mode` 只参加刷新期交叉核验，不能代替某一段的 Numerical，也不能从 Prototype 未列出的连段自动猜出 Numerical ID。额外连段必须从结构化原表建立精确引用。
+- 普通连段数值由统一武器面板渲染；正文不得继续维护“轻击伤害 / 重击伤害”静态 Callout。回血、形态切换等特殊行为仍使用独立 `special` / `variant` 来源，不混入普通连段。
+
+```yaml
+damage_sources:
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical: { id: 121300301, level: 1 }
+      asc_type_id: "190"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical: { id: 121300302, level: 1 }
+      asc_type_id: "190"
+  - id: heavy-attack
+    name: 重击
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical: { id: 121300300, level: 1 }
+      asc_type_id: "190"
+```
+
 ## 正文与组件
 
 - 正文用于技能说明、机制解释、演示和来源署名，不重复维护能够从 Resolver 获取的基础数值。

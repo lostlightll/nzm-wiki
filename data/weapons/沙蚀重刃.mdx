@@ -24,8 +24,33 @@ changeClip:
 schema_version: 2
 item_id: "20113000008"
 damage_sources:
-  - id: jin-zhan-gong-ji
-    name: 近战攻击
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300081
+        level: 1
+      asc_type_id: "194"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300082
+        level: 1
+      asc_type_id: "194"
+  - id: light-attack-3
+    name: 轻击 3
+    section: melee
+    source:
+      numerical:
+        id: 121300083
+        level: 1
+      asc_type_id: "194"
+  - id: heavy-attack
+    name: 重击
     section: melee
     source:
       prototype_mode: 0
@@ -42,5 +67,3 @@ damage_sources:
     携带此武器时，角色造成的火焰伤害增加<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>
-
-<Callout>轻击伤害 **1080** / **1260** / **1458**，重击伤害 **1620**</Callout>

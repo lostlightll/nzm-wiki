@@ -24,8 +24,25 @@ changeClip:
 schema_version: 2
 item_id: "20113000018"
 damage_sources:
-  - id: jin-zhan-gong-ji
-    name: 近战攻击
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300181
+        level: 1
+      asc_type_id: "173"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300182
+        level: 1
+      asc_type_id: "173"
+  - id: heavy-attack
+    name: 重击
     section: melee
     source:
       prototype_mode: 0
@@ -42,5 +59,3 @@ damage_sources:
     装备沙暴冷锋后，对敌人造成<Blue>减速</Blue>效果时，能够额外降低敌人移动<Yellow>5%</Yellow>速度。
   </PassiveSkill>
 </WeaponSkill>
-
-<Callout>轻击伤害 **722** / **1080**（元素异常 **38.5%** / **57.6%**），重击伤害 **2070**（元素异常 **110.4%**）</Callout>

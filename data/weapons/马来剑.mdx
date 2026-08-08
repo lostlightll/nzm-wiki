@@ -24,8 +24,25 @@ changeClip:
 schema_version: 2
 item_id: "20113000060"
 damage_sources:
-  - id: jin-zhan-gong-ji
-    name: 近战攻击
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300601
+        level: 1
+      asc_type_id: "369"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300602
+        level: 1
+      asc_type_id: "369"
+  - id: heavy-attack
+    name: 重击
     section: melee
     source:
       prototype_mode: 0
@@ -41,5 +58,3 @@ damage_sources:
     携带此武器时，角色滑铲过程中武器射击伤害提升<Yellow>10%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>
-
-<Callout>轻击伤害 **270** / **360**（元素异常 **36.0%** / **48.0%**），重击伤害 **882**（元素异常 **117.6%**）</Callout>

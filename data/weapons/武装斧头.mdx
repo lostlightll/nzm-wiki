@@ -24,8 +24,25 @@ changeClip:
 schema_version: 2
 item_id: "20113000028"
 damage_sources:
-  - id: jin-zhan-gong-ji
-    name: 近战攻击
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300281
+        level: 1
+      asc_type_id: "207"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300282
+        level: 1
+      asc_type_id: "207"
+  - id: heavy-attack
+    name: 重击
     section: melee
     source:
       prototype_mode: 0
@@ -42,5 +59,3 @@ damage_sources:
     火属性伤害提升<Yellow>5%</Yellow>，武器爆炸伤害提升<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>
-
-<Callout>轻击伤害 **675** / **810**（元素异常 **36.0%** / **43.2%**），重击伤害 **1800**（元素异常 **96.0%**）</Callout>

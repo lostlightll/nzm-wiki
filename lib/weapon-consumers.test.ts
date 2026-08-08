@@ -5,7 +5,6 @@ import path from "node:path";
 import test from "node:test";
 import {
   getActiveSkillDisplay,
-  getNonMainMeleeSources,
   getMainDamageSource,
   getResolvedFieldValue,
   toWeaponCatalogEntry,
@@ -168,8 +167,61 @@ test("pilot main source, LC/TD context, attenuation, and element agree", async (
   const axeCatalog = toWeaponCatalogEntry(axe);
   assert.equal(axeCatalog.meleeSources.length, 3);
   assert.deepEqual(
-    getNonMainMeleeSources(axeCatalog).map((source) => source.id),
-    ["light-hit-left", "light-hit-right"],
+    axeCatalog.meleeSources.map((source) => source.id),
+    ["light-attack-1", "light-attack-2", "heavy-attack"],
+  );
+
+  for (const table of ["lc", "td"] as const) {
+    const icepoint = toWeaponCatalogEntry(
+      await requireWeapon("冰点双峰", table),
+    );
+    assert.deepEqual(
+      icepoint.meleeSources.map((source) => source.id),
+      ["light-attack-1", "light-attack-2", "heavy-attack"],
+    );
+    assert.deepEqual(
+      icepoint.meleeSources.map((source) =>
+        getResolvedFieldValue(source.damage.base),
+      ),
+      [0.722, 1.08, 2.07],
+    );
+    assert.deepEqual(
+      icepoint.meleeSources.map((source) =>
+        getResolvedFieldValue(source.elementAddRate),
+      ),
+      [0.385, 0.576, 1.104],
+    );
+    assert.deepEqual(
+      icepoint.meleeSources.map((source) =>
+        getResolvedFieldValue(source.damage.toughness),
+      ),
+      [6, 9, 17.2],
+    );
+    assert.deepEqual(
+      icepoint.meleeSources.map((source) =>
+        getResolvedFieldValue(source.weaknessMultiplier),
+      ),
+      [1.2, 1.2, 1.2],
+    );
+  }
+
+  assert.deepEqual(
+    toWeaponCatalogEntry(await requireWeapon("樱之殇", "lc")).meleeSources.map(
+      (source) => source.id,
+    ),
+    ["light-attack-1", "light-attack-2", "light-attack-3", "heavy-attack"],
+  );
+  assert.deepEqual(
+    toWeaponCatalogEntry(await requireWeapon("甩棍", "lc")).meleeSources.map(
+      (source) => source.id,
+    ),
+    ["light-attack-1", "light-attack-2", "light-attack-3"],
+  );
+  assert.deepEqual(
+    toWeaponCatalogEntry(
+      await requireWeapon("黑天使之刃", "lc"),
+    ).meleeSources.map((source) => source.id),
+    ["jin-zhan-gong-ji"],
   );
 
   const night = await requireWeapon("夜影之逝", "lc");

@@ -24,8 +24,25 @@ changeClip:
 schema_version: 2
 item_id: "20113000045"
 damage_sources:
-  - id: jin-zhan-gong-ji
-    name: 近战攻击
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300451
+        level: 1
+      asc_type_id: "328"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300452
+        level: 1
+      asc_type_id: "328"
+  - id: heavy-attack
+    name: 重击
     section: melee
     source:
       prototype_mode: 0
@@ -42,5 +59,3 @@ damage_sources:
     毒属性伤害提升<Yellow>5%</Yellow>。对处于<Blue>减速</Blue>、<Blue>毒皇减速</Blue>状态的敌人额外造成<Yellow>??</Yellow>的武器伤害。
   </PassiveSkill>
 </WeaponSkill>
-
-<Callout>轻击伤害 **810** / **810**（元素异常 **43.2%**），重击伤害 **2070**（元素异常 **110.4%**）</Callout>

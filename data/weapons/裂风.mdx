@@ -24,8 +24,25 @@ changeClip:
 schema_version: 2
 item_id: "20113000025"
 damage_sources:
-  - id: jin-zhan-gong-ji
-    name: 近战攻击
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300251
+        level: 1
+      asc_type_id: "199"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300252
+        level: 1
+      asc_type_id: "199"
+  - id: heavy-attack
+    name: 重击
     section: melee
     source:
       prototype_mode: 0
@@ -34,4 +51,3 @@ damage_sources:
         level: 1
       asc_type_id: "199"
 ---
-<Callout>轻击伤害 **270** / **324**，重击伤害 **720**</Callout>
