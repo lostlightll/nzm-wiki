@@ -168,15 +168,12 @@ function MeleeCatalogStats({
   );
 
   return (
-    <div className="mt-4 border-t border-zinc-700/70 pt-3">
-      <div className="mb-2 flex min-h-5 items-center justify-between gap-3 text-xs">
-        <span className="font-medium text-zinc-300">攻击连段</span>
-        <span className="flex flex-wrap justify-end gap-x-3 text-zinc-500">
-          {weakness !== undefined && <span>弱点 {formatValue(weakness)}×</span>}
-          {allCritical && <span>可暴击</span>}
-        </span>
-      </div>
-      <table className="w-full table-fixed text-xs tabular-nums">
+    <div
+      className={`mt-4 h-40 ${sources.length < 3 ? "flex flex-col justify-center" : ""}`}
+    >
+      <table
+        className={`w-full table-fixed text-base leading-6 tabular-nums ${sources.length >= 3 ? "h-[121px]" : ""}`}
+      >
         <caption className="sr-only">近战攻击连段数值</caption>
         <colgroup>
           <col className="w-[27%]" />
@@ -186,31 +183,43 @@ function MeleeCatalogStats({
         </colgroup>
         <thead className="text-zinc-500">
           <tr>
-            <th className="pb-1.5 text-left font-normal">招式</th>
-            <th className="pb-1.5 text-right font-normal">伤害</th>
-            <th className="pb-1.5 text-right font-normal">异常</th>
-            <th className="pb-1.5 text-right font-normal">破韧</th>
+            <th className="text-left font-normal">招式</th>
+            <th className="text-right font-normal">伤害</th>
+            <th className="text-right font-normal">元素异常</th>
+            <th className="text-right font-normal">破韧</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-zinc-700/50">
+        <tbody>
           {sources.map((source) => (
             <tr key={source.id}>
-              <th className="py-1.5 text-left font-medium text-zinc-300">
+              <th className="text-left font-normal text-zinc-500">
                 {source.name}
               </th>
-              <td className="py-1.5 text-right font-medium text-white">
+              <td className="text-right text-white">
                 {formatDamage(source, hpMultiplier)}
               </td>
-              <td className="py-1.5 text-right text-zinc-300">
+              <td className="text-right text-white">
                 {formatElementRate(source)}
               </td>
-              <td className="py-1.5 text-right text-zinc-300">
+              <td className="text-right text-white">
                 {formatPrecise(getResolvedFieldValue(source.damage.toughness))}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <dl className="mt-2 grid min-h-6 grid-cols-2 gap-x-6 text-base leading-6">
+        <div className="flex min-w-0 justify-between gap-3">
+          <dt className="text-zinc-500">弱点倍率</dt>
+          <dd className="text-white">
+            {weakness === undefined ? "-" : `${formatValue(weakness)}×`}
+          </dd>
+        </div>
+        <div className="flex min-w-0 justify-between gap-3">
+          <dt className="text-zinc-500">暴击</dt>
+          <dd className="text-white">{allCritical ? "可暴击" : "-"}</dd>
+        </div>
+      </dl>
     </div>
   );
 }
