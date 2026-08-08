@@ -11,12 +11,6 @@ interface OverlimitBondCatalogProps {
   onSearchBond: (bondName: OverlimitBondCatalogData[number]["name"]) => void;
 }
 
-const EFFECT_ROW_SPANS = {
-  2: "row-span-2",
-  4: "row-span-3",
-  6: "row-span-5",
-} as const;
-
 export function OverlimitBondCatalog({
   catalog,
   onSearchBond,
@@ -57,7 +51,7 @@ export function OverlimitBondCatalog({
         {catalog.map((bond) => (
           <article
             key={bond.name}
-            className="grid aspect-square grid-rows-[4rem_minmax(0,1fr)_3.5rem] overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/60"
+            className="grid grid-rows-[4rem_auto_3.5rem] overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/60"
           >
             <header
               className="flex min-h-16 items-center justify-between gap-3 border-b border-zinc-700 px-4 py-3"
@@ -70,26 +64,28 @@ export function OverlimitBondCatalog({
               <span className="text-xs font-medium opacity-80">羁绊</span>
             </header>
 
-            <ol className="grid min-h-0 grid-rows-10 divide-y divide-zinc-800">
+            <ol className="grid min-h-0 grid-rows-[5.5rem_8rem_8.75rem] divide-y divide-zinc-800 xl:grid-rows-[5rem_7rem_8.75rem]">
               {bond.effects.map((effect) => (
                 <li
                   key={effect.count}
                   id={`bond-${bond.name}-${effect.count}`}
-                  className={`grid min-h-0 grid-cols-[3.25rem_1fr] ${EFFECT_ROW_SPANS[effect.count]}`}
+                  className="grid min-h-0 grid-cols-[3.25rem_1fr]"
                 >
                   <div className="flex items-center justify-center border-r border-zinc-800 bg-zinc-950/35 px-2 text-sm font-bold tabular-nums text-zinc-300">
                     x{effect.count}
                   </div>
-                  <div className="flex min-h-0 flex-col justify-center overflow-y-auto px-4 py-2 text-sm leading-5 text-zinc-200">
-                    <p>{effect.description}</p>
-                    <MultiplierSourceBadges
-                      source={{
-                        type: "overlimit-bond",
-                        name: bond.name,
-                        count: effect.count,
-                      }}
-                      className="mt-1.5"
-                    />
+                  <div className="flex min-h-0 flex-col justify-center-safe overflow-y-auto px-4 py-2 text-sm leading-5 text-zinc-200">
+                    <p className="flow-root">
+                      {effect.description}
+                      <MultiplierSourceBadges
+                        source={{
+                          type: "overlimit-bond",
+                          name: bond.name,
+                          count: effect.count,
+                        }}
+                        variant="catalog-inline"
+                      />
+                    </p>
                   </div>
                 </li>
               ))}
