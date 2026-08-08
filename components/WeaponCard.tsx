@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { CatalogLink } from "@/components/CatalogLink";
 import { DamageSourceMultiplierBadges } from "@/components/MultiplierBadges";
@@ -255,133 +255,103 @@ function MeleeDetailStats({
           className="block h-0 scroll-mt-24"
         />
       ))}
+      <div className="space-y-4">
+        {groups.map((group, groupIndex) => {
+          const weakness = getUniformMeleeWeakness(group.sources);
+          const allCritical = group.sources.every(
+            (source) => getResolvedFieldValue(source.enableCritical) === true,
+          );
+          const allWeakness = group.sources.every(
+            (source) => getResolvedFieldValue(source.enableWeakness) === true,
+          );
+          const title = group.label ?? "近战连段";
 
-      <div className="border-y border-zinc-700/70 sm:hidden">
-        {groups.map((group, groupIndex) => (
-          <div key={`${group.label ?? "default"}-${groupIndex}`}>
-            {showGroupLabels && (
-              <h3 className="border-b border-zinc-700/60 py-2 text-xs font-semibold text-zinc-500">
-                {group.label ?? "默认模式"}
-              </h3>
-            )}
-            <div className="divide-y divide-zinc-700/60">
-              {group.sources.map((source) => {
-                const weakness =
-                  getResolvedFieldValue(source.enableWeakness) === true
-                    ? getResolvedFieldValue(source.weaknessMultiplier)
-                    : undefined;
-                const critical =
-                  getResolvedFieldValue(source.enableCritical) === true;
-                return (
-                  <div key={source.id} className="py-3">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <span className="font-medium text-zinc-200">
-                        {source.name}
-                        {critical && (
-                          <span className="ml-2 text-xs font-normal text-zinc-500">
-                            可暴击
-                          </span>
-                        )}
-                      </span>
-                      <span className="font-semibold tabular-nums text-white">
-                        {formatDamage(source, hpMultiplier)}
-                      </span>
-                    </div>
-                    <div className="mt-2 grid grid-cols-3 gap-3 text-xs tabular-nums">
-                      <div>
-                        <div className="text-zinc-500">元素异常</div>
-                        <div className="mt-0.5 text-zinc-300">
-                          {formatElementRate(source)}
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-zinc-500">单发破韧</div>
-                        <div className="mt-0.5 text-zinc-300">
-                          {formatPrecise(
-                            getResolvedFieldValue(source.damage.toughness),
-                          )}
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-zinc-500">弱点倍率</div>
-                        <div className="mt-0.5 text-zinc-300">
-                          {weakness === undefined
-                            ? "-"
-                            : `${formatValue(weakness)}×`}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <table className="hidden w-full table-fixed text-sm tabular-nums sm:table">
-        <caption className="sr-only">近战攻击连段完整数值</caption>
-        <thead className="border-y border-zinc-700/70 text-zinc-500">
-          <tr>
-            <th className="py-2 text-left font-normal">招式</th>
-            <th className="py-2 text-right font-normal">伤害</th>
-            <th className="py-2 text-right font-normal">元素异常概率</th>
-            <th className="py-2 text-right font-normal">单发破韧</th>
-            <th className="py-2 text-right font-normal">弱点倍率</th>
-            <th className="py-2 text-right font-normal">暴击</th>
-          </tr>
-        </thead>
-        <tbody>
-          {groups.map((group, groupIndex) => (
-            <Fragment key={`${group.label ?? "default"}-${groupIndex}`}>
+          return (
+            <section key={`${title}-${groupIndex}`}>
               {showGroupLabels && (
-                <tr className="border-b border-zinc-700/50">
-                  <th
-                    colSpan={6}
-                    className="py-2 text-left text-xs font-semibold text-zinc-500"
-                  >
-                    {group.label ?? "默认模式"}
-                  </th>
-                </tr>
+                <h3 className="mb-1.5 text-sm font-semibold text-zinc-300">
+                  {group.label ?? "默认模式"}
+                </h3>
               )}
-              {group.sources.map((source) => {
-                const weakness =
-                  getResolvedFieldValue(source.enableWeakness) === true
-                    ? getResolvedFieldValue(source.weaknessMultiplier)
-                    : undefined;
-                return (
-                  <tr key={source.id} className="border-b border-zinc-700/50 last:border-b-0">
-                    <th className="py-2.5 text-left font-medium text-zinc-200">
-                      {source.name}
-                    </th>
-                    <td className="py-2.5 text-right font-medium text-white">
-                      {formatDamage(source, hpMultiplier)}
-                    </td>
-                    <td className="py-2.5 text-right text-zinc-300">
-                      {formatElementRate(source)}
-                    </td>
-                    <td className="py-2.5 text-right text-zinc-300">
-                      {formatPrecise(
-                        getResolvedFieldValue(source.damage.toughness),
-                      )}
-                    </td>
-                    <td className="py-2.5 text-right text-zinc-300">
-                      {weakness === undefined
-                        ? "-"
-                        : `${formatValue(weakness)}×`}
-                    </td>
-                    <td className="py-2.5 text-right text-zinc-300">
-                      {getResolvedFieldValue(source.enableCritical) === true
-                        ? "可暴击"
-                        : "否"}
-                    </td>
+              <table className="w-full table-fixed text-sm leading-6 tabular-nums">
+                <caption className="sr-only">{title}数值</caption>
+                <colgroup>
+                  <col className="w-1/4" />
+                  <col className="w-1/4" />
+                  <col className="w-1/4" />
+                  <col className="w-1/4" />
+                </colgroup>
+                <thead className="text-zinc-500">
+                  <tr>
+                    <th className="text-left font-normal">招式</th>
+                    <th aria-hidden="true" />
+                    <th aria-hidden="true" />
+                    <th aria-hidden="true" />
                   </tr>
-                );
-              })}
-            </Fragment>
-          ))}
-        </tbody>
-      </table>
+                </thead>
+                <tbody>
+                  {group.sources.map((source) => (
+                    <tr key={source.id}>
+                      <th className="text-left font-normal text-zinc-500">
+                        {source.name}
+                      </th>
+                      <td className="pl-1 sm:pl-3">
+                        <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+                          <span className="text-zinc-500">伤害</span>
+                          <span className="text-white">
+                            {formatDamage(source, hpMultiplier)}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="pl-1 sm:pl-3">
+                        <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+                          <span className="text-zinc-500">元素异常</span>
+                          <span className="text-white">
+                            {formatElementRate(source)}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="pl-1 sm:pl-3">
+                        <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+                          <span className="text-zinc-500">破韧</span>
+                          <span className="text-white">
+                            {formatPrecise(
+                              getResolvedFieldValue(source.damage.toughness),
+                            )}
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="grid grid-cols-2 items-baseline gap-x-3 gap-y-1.5 text-sm leading-6 tabular-nums sm:grid-cols-4 sm:gap-x-0">
+                <span className="text-left text-zinc-500">通用属性</span>
+                <div className="flex justify-between gap-2 pl-3">
+                  <span className="text-zinc-500">弱点倍率</span>
+                  <span className="text-white">
+                    {weakness === undefined
+                      ? "-"
+                      : `${formatValue(weakness)}×`}
+                  </span>
+                </div>
+                <div className="flex justify-between gap-2 pl-3">
+                  <span className="text-zinc-500">暴击</span>
+                  <span className="text-white">
+                    {allCritical ? "可暴击" : "否"}
+                  </span>
+                </div>
+                <div className="flex justify-between gap-2 pl-3">
+                  <span className="text-zinc-500">弱点</span>
+                  <span className="text-white">
+                    {allWeakness ? "可弱点" : "否"}
+                  </span>
+                </div>
+              </div>
+            </section>
+          );
+        })}
+      </div>
     </div>
   );
 }
