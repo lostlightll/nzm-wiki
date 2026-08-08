@@ -437,12 +437,12 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
         href={`/weapons${weapon.table === "td" ? "/td" : ""}/${encodeURIComponent(weapon.slug)}`}
       >
         <div
-          className={`relative w-full min-w-0 rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5`}
+          className={`relative flex h-[408px] w-full min-w-0 flex-col rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-5`}
         >
           <h3 className="text-xl font-semibold text-white">{weapon.title}</h3>
           <div className="mt-1 text-sm text-zinc-400">{weapon.useType}</div>
           <WeaponImage name={weapon.title} />
-          <div className="mt-3 border-t border-zinc-700 pt-3 text-sm text-zinc-500">
+          <div className="mt-auto border-t border-zinc-700 pt-3 text-sm text-zinc-500">
             不可攻击
           </div>
         </div>
