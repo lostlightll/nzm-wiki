@@ -5,6 +5,7 @@ import { WeaponAttenuationChart } from "@/components/WeaponAttenuationChart";
 import { WeaponDetailCard } from "@/components/WeaponCard";
 import { WeaponDetailProvider } from "@/components/WeaponDetailContext";
 import { WeaponModeDiff as WeaponModeDiffTable } from "@/components/WeaponModeDiff";
+import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import {
   ActiveSkill,
   WeaponSkill,
@@ -74,6 +75,10 @@ export default async function TDWeaponDetailPage({
   }
 
   const weapon = toWeaponDetailData(document.weapon);
+  const hasWeaponSkill = /<WeaponSkill(?:\s|>)/.test(document.content);
+  const hasWeaponModeDiff = /<WeaponModeDiff(?:\s|\/|>)/.test(
+    document.content,
+  );
   const pageWidth = document.page.pageWidth;
   const customWidth = pageWidth !== undefined && isCustomWidth(pageWidth);
   const widthClass = customWidth
@@ -97,6 +102,13 @@ export default async function TDWeaponDetailPage({
     <>
       <WeaponSkill>{children}</WeaponSkill>
       <WeaponAttenuationChart />
+      <MultiplierProviderPanel
+        source={{ type: "weapon", slug: weapon.slug }}
+        className="not-prose mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
+      />
+      {hasWeaponModeDiff && lcWeapon ? (
+        <WeaponModeDiffTable lcWeapon={lcWeapon} tdWeapon={document.weapon} />
+      ) : null}
     </>
   );
   const GameModeForWeapon = ({
@@ -107,7 +119,7 @@ export default async function TDWeaponDetailPage({
     children: ReactNode;
   }) => (only === "td" ? <>{children}</> : null);
   const WeaponModeDiffForWeapon = () =>
-    lcWeapon ? (
+    !hasWeaponSkill && lcWeapon ? (
       <WeaponModeDiffTable lcWeapon={lcWeapon} tdWeapon={document.weapon} />
     ) : null;
   const weaponMdxComponents = {
@@ -128,6 +140,12 @@ export default async function TDWeaponDetailPage({
         style={customStyle}
       >
         <WeaponDetailCard />
+        {!hasWeaponSkill && (
+          <MultiplierProviderPanel
+            source={{ type: "weapon", slug: weapon.slug }}
+            className="mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
+          />
+        )}
         {document.content.trim() && (
           <article className="prose prose-lg prose-invert mt-8 max-w-none">
             <MDXRemote

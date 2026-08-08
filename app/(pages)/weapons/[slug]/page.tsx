@@ -75,6 +75,10 @@ export default async function WeaponDetailPage({
   }
 
   const weapon = toWeaponDetailData(document.weapon);
+  const hasWeaponSkill = /<WeaponSkill(?:\s|>)/.test(document.content);
+  const hasWeaponModeDiff = /<WeaponModeDiff(?:\s|\/|>)/.test(
+    document.content,
+  );
   const pageWidth = document.page.pageWidth;
   const customWidth = pageWidth !== undefined && isCustomWidth(pageWidth);
   const widthClass = customWidth
@@ -98,6 +102,13 @@ export default async function WeaponDetailPage({
     <>
       <WeaponSkill>{children}</WeaponSkill>
       <WeaponAttenuationChart />
+      <MultiplierProviderPanel
+        source={{ type: "weapon", slug: weapon.slug }}
+        className="not-prose mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
+      />
+      {hasWeaponModeDiff && tdWeapon ? (
+        <WeaponModeDiffTable lcWeapon={document.weapon} tdWeapon={tdWeapon} />
+      ) : null}
     </>
   );
   const GameModeForWeapon = ({
@@ -108,7 +119,7 @@ export default async function WeaponDetailPage({
     children: ReactNode;
   }) => (only === "lc" ? <>{children}</> : null);
   const WeaponModeDiffForWeapon = () =>
-    tdWeapon ? (
+    !hasWeaponSkill && tdWeapon ? (
       <WeaponModeDiffTable lcWeapon={document.weapon} tdWeapon={tdWeapon} />
     ) : null;
   const weaponMdxComponents = {
@@ -129,10 +140,12 @@ export default async function WeaponDetailPage({
         style={customStyle}
       >
         <WeaponDetailCard />
-        <MultiplierProviderPanel
-          source={{ type: "weapon", slug: weapon.slug }}
-          className="mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
-        />
+        {!hasWeaponSkill && (
+          <MultiplierProviderPanel
+            source={{ type: "weapon", slug: weapon.slug }}
+            className="mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
+          />
+        )}
         {document.content.trim() && (
           <article className="prose prose-lg prose-invert mt-8 max-w-none">
             <MDXRemote
