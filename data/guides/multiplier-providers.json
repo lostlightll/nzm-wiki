@@ -18,14 +18,25 @@
         "count": 6
       },
       "modifierTypeIds": [
-        "weapon-hit-damage"
+        "game-mode"
       ],
       "evidence": {
         "kind": "reviewed-override",
         "basis": [
-          "羁绊数据明确写明射击伤害提升。"
+          "Numerical 112031003 写入 GPAttributeSetGiveDamageRatio.DamageRatio；AttributeDescMapTable 将该属性定义为独立连乘的全伤害字段。"
         ],
-        "numericalRows": []
+        "numericalRows": [
+          {
+            "modifierId": "112031003",
+            "rowKey": "112031003_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.DamageRatio",
+            "attributeLabel": "全伤害（尽量别用，连乘）",
+            "modifierTypeId": "game-mode",
+            "baseValue": 1,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -56,14 +67,25 @@
         "count": 2
       },
       "modifierTypeIds": [
-        "close-range-damage"
+        "game-mode"
       ],
       "evidence": {
         "kind": "reviewed-override",
         "basis": [
-          "羁绊数据明确写明近距离伤害提升。"
+          "Numerical 112031031 写入 GPAttributeSetGiveDamageRatio.DamageRatio；距离条件不改变该属性所属的独立连乘乘区。"
         ],
-        "numericalRows": []
+        "numericalRows": [
+          {
+            "modifierId": "112031031",
+            "rowKey": "112031031_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.DamageRatio",
+            "attributeLabel": "全伤害（尽量别用，连乘）",
+            "modifierTypeId": "game-mode",
+            "baseValue": 0,
+            "coefficient": 0.04,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -208,14 +230,25 @@
         "count": 2
       },
       "modifierTypeIds": [
-        "long-range-damage"
+        "game-mode"
       ],
       "evidence": {
         "kind": "reviewed-override",
         "basis": [
-          "羁绊数据明确写明远距离伤害提升。"
+          "Numerical 112031022 写入 GPAttributeSetGiveDamageRatio.DamageRatio；距离条件不改变该属性所属的独立连乘乘区。"
         ],
-        "numericalRows": []
+        "numericalRows": [
+          {
+            "modifierId": "112031022",
+            "rowKey": "112031022_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.DamageRatio",
+            "attributeLabel": "全伤害（尽量别用，连乘）",
+            "modifierTypeId": "game-mode",
+            "baseValue": 0,
+            "coefficient": 0.02,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -246,14 +279,25 @@
         "count": 4
       },
       "modifierTypeIds": [
-        "weapon-hit-damage"
+        "weapon-damage"
       ],
       "evidence": {
         "kind": "reviewed-override",
         "basis": [
-          "羁绊数据明确写明武器射击伤害提升。"
+          "Numerical 112031005 写入 GPAttributeSetGiveDamageRatio.WeaponDamageRatio；AttributeDescMapTable 将该属性定义为武器伤害增加。"
         ],
-        "numericalRows": []
+        "numericalRows": [
+          {
+            "modifierId": "112031005",
+            "rowKey": "112031005_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害增加",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 0.8,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {

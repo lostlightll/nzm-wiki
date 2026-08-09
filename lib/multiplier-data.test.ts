@@ -144,6 +144,27 @@ test("numerical damage-ratio providers stay in the dilution channels", () => {
   }
 });
 
+test("overlimit bond providers follow their numerical attribute channels", () => {
+  const cases = [
+    ["弹药", 6, "game-mode", "game-mode"],
+    ["狙击", 2, "game-mode", "game-mode"],
+    ["狂战", 2, "game-mode", "game-mode"],
+    ["技战", 4, "weapon-damage", "dilution"],
+  ] as const;
+
+  for (const [name, count, modifierTypeId, factorId] of cases) {
+    const relations = getProviderRelationsForSource({
+      type: "overlimit-bond",
+      name,
+      count,
+    });
+    assert.deepEqual(
+      relations.map((relation) => [relation.modifierTypeId, relation.factorId]),
+      [[modifierTypeId, factorId]],
+    );
+  }
+});
+
 test("vulnerability providers use the unified factor name", () => {
   const relations = getProviderRelationsForSource({
     type: "perk",
