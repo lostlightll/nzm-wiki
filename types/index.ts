@@ -422,3 +422,14 @@ export type {
   ResolvedWeaponSnapshot,
   WeaponResolutionErrorCode,
 } from "../lib/weapon-resolver";
+
+export type {
+  ElementStatusSummary,
+  StatusEffectCatalogEntry,
+  StatusEffectDataLock,
+  StatusEffectModifierReference,
+  StatusEffectNumericalReference,
+  StatusEffectPolarity,
+  StatusEffectTarget,
+  StatusEffectVariant,
+} from "./status-effects";

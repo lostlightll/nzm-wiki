@@ -1,0 +1,70 @@
+{
+  "/Game/UI/UI_Textures/Common/Common/TexGen/T_Common_0_0_Weapon_Element_Fire.T_Common_0_0_Weapon_Element_Fire": {
+    "publicPath": "/webp/icons/elements/fire.webp",
+    "reason": "复用站内已校对的火焰元素图标"
+  },
+  "/Game/UI/UI_Textures/Common/Common/TexGen/T_Common_0_0_Weapon_Element_Ice.T_Common_0_0_Weapon_Element_Ice": {
+    "publicPath": "/webp/icons/elements/cryo.webp",
+    "reason": "复用站内已校对的寒冷元素图标"
+  },
+  "/Game/UI/UI_Textures/Common/Common/TexGen/T_Common_0_0_Weapon_Element_Thunder.T_Common_0_0_Weapon_Element_Thunder": {
+    "publicPath": "/webp/icons/elements/shock.webp",
+    "reason": "复用站内已校对的电弧元素图标"
+  },
+  "/Game/UI/UI_Textures/Common/Common/TexGen/T_Common_0_0_Weapon_Element_Poison.T_Common_0_0_Weapon_Element_Poison": {
+    "publicPath": "/webp/icons/elements/corossive.webp",
+    "reason": "复用站内已校对的腐蚀元素图标"
+  },
+  "/Game/UI/UI_Textures/Common/Common/TexGen/T_Common_0_0_Weapon_Element_Physics.T_Common_0_0_Weapon_Element_Physics": {
+    "publicPath": "/webp/icons/elements/kinetic.webp",
+    "reason": "复用站内已校对的物理元素图标"
+  },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_Invincible.T_Buff_0_0_Icons_Buff_Invincible": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_Stealth.T_Buff_0_0_Icons_Buff_Stealth": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/Textures/Icons/Buff/T_Icons_Buff_WoundLow.T_Icons_Buff_WoundLow": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_Burning.T_Buff_0_0_Icons_Buff_Burning": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_FireCount.T_Buff_0_0_Icons_Buff_FireCount": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_FireCharge.T_Buff_0_0_Icons_Buff_FireCharge": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_ElemFrozen.T_Buff_0_0_Icons_Buff_ElemFrozen": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_ElecCount.T_Buff_0_0_Icons_Buff_ElecCount": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_ElecCharge.T_Buff_0_0_Icons_Buff_ElecCharge": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_WoundLow.T_Buff_0_0_Icons_Buff_WoundLow": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_SpeedDown.T_Buff_0_0_Icons_Buff_SpeedDown": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_SpeedUp.T_Buff_0_0_Icons_Buff_SpeedUp": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_WoundAdd.T_Buff_0_0_Icons_Buff_WoundAdd": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_DamageUp.T_Buff_0_0_Icons_Buff_DamageUp": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/Textures/Icons/RoleAbility/T_Icons_RoleAbility_02.T_Icons_RoleAbility_02": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/Textures/Icons/Item/Weapon/WeaponEnhancement/T_Weapon_WeaponEnhancement_RocketLauncher.T_Weapon_WeaponEnhancement_RocketLauncher": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/Textures/Icons/Item/Weapon/WeaponMod/T_WeaponModElementIgnore.T_WeaponModElementIgnore": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/Textures/Icons/Item/Weapon/WeaponEnhancement/T_Weapon_WeaponEnhancement_AutomaticRifle.T_Weapon_WeaponEnhancement_AutomaticRifle": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/Textures/Icons/RoleAttr/T_Icons_RoleAttr_03.T_Icons_RoleAttr_03": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_FrozenCount.T_Buff_0_0_Icons_Buff_FrozenCount": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_FrozenCharge.T_Buff_0_0_Icons_Buff_FrozenCharge": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_PentaKill.T_Buff_0_0_Icons_Buff_PentaKill": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/Textures/Icons/Skill/InGame/T_Icon_Skill_InGame_18300101.T_Icon_Skill_InGame_18300101": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_DamageUp_FanKangHaoJiao.T_Buff_0_0_Icons_Buff_DamageUp_FanKangHaoJiao": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_DamageUp_XiShengPin.T_Buff_0_0_Icons_Buff_DamageUp_XiShengPin": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_Vulnerability.T_Buff_0_0_Icons_Buff_Vulnerability": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/Textures/Icons/Item/Weapon/WeaponEnhancement/T_Weapon_WeaponEnhancement_SniperGun.T_Weapon_WeaponEnhancement_SniperGun": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/Textures/Icons/Item/Weapon/WeaponEnhancement/T_Weapon_WeaponEnhancement_ShotGun.T_Weapon_WeaponEnhancement_ShotGun": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_DamageDown.T_Buff_0_0_Icons_Buff_DamageDown": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_AttackDown.T_Buff_0_0_Icons_Buff_AttackDown": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_CrossiveCount.T_Buff_0_0_Icons_Buff_CrossiveCount": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_10000066.T_Buff_0_0_Icons_Buff_10000066": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_Cure.T_Buff_0_0_Icons_Buff_Cure": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/Textures/Icons/Item/Weapon/WeaponMod/T_WeaponModCloseDamageAdd_SMG.T_WeaponModCloseDamageAdd_SMG": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_11010003.T_Buff_0_0_Icons_Buff_11010003": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_11010002.T_Buff_0_0_Icons_Buff_11010002": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_14001008.T_Buff_0_0_Icons_Buff_14001008": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_10000053.T_Buff_0_0_Icons_Buff_10000053": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_10000055.T_Buff_0_0_Icons_Buff_10000055": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_19031002.T_Buff_0_0_Icons_Buff_19031002": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_10000054.T_Buff_0_0_Icons_Buff_10000054": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/HuntingGround/Affixes/T_Icons_Hunter_affix_05.T_Icons_Hunter_affix_05": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/HuntingGround/Affixes/T_Icons_Hunter_affix_07.T_Icons_Hunter_affix_07": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/TowerDefense/TexGen/T_TowerDefense_0_0_Icons_TD_Affixes_6.T_TowerDefense_0_0_Icons_TD_Affixes_6": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/TowerDefense/TexGen/T_TowerDefense_0_0_Icons_TD_Affixes_7_1.T_TowerDefense_0_0_Icons_TD_Affixes_7_1": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Talent/TexGen/T_Talent_0_0_talent_Armor.T_Talent_0_0_talent_Armor": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff/TexGen/T_Buff_0_0_Icons_Buff_DeadLink.T_Buff_0_0_Icons_Buff_DeadLink": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" },
+  "/Game/UI/UI_Textures/Icons/Buff_PC/T_Icons_Buff_11020024.T_Icons_Buff_11020024": { "publicPath": null, "reason": "当前资源导出未包含对应 PNG" }
+}

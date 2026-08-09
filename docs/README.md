@@ -13,6 +13,7 @@
 
 | 任务范围 | Required | Optional | 状态 |
 | :--- | :--- | :--- | :---: |
+| 猎场 Buff 数据导入、图标或图鉴维护 | [`workflows/status-effect-import.md`](workflows/status-effect-import.md) | [`standards/weapon-numerical-v2.md`](standards/weapon-numerical-v2.md) | active |
 | 武器 MDX 新增、修改或审计 | [`standards/weapon-mdx.md`](standards/weapon-mdx.md)、[`standards/weapon-numerical-v2.md`](standards/weapon-numerical-v2.md) | [`architecture/weapon-resolver.md`](architecture/weapon-resolver.md) | active |
 | 武器原表读取 | [`architecture/weapon-source-reader.md`](architecture/weapon-source-reader.md) | [`architecture/weapon-skill-charge.md`](architecture/weapon-skill-charge.md) | active |
 | Weapon Data Lock | [`architecture/weapon-data-lock.md`](architecture/weapon-data-lock.md) | [`architecture/weapon-source-reader.md`](architecture/weapon-source-reader.md) | active |

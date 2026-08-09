@@ -40,6 +40,10 @@ import {
 } from "@/components/WeaponSkill";
 import type { Boss } from "@/types";
 import { bossToEnemy } from "@/lib/bosses";
+import {
+  ElementStatusSummary,
+  StatusEffectCatalog,
+} from "@/components/StatusEffectCatalog";
 
 export const mdxComponents = {
   img: MDXImage,
@@ -80,6 +84,8 @@ export const mdxComponents = {
   WeaponSkill,
   ActiveSkill,
   PassiveSkill,
+  ElementStatusSummary,
+  StatusEffectCatalog,
 };
 
 /**
