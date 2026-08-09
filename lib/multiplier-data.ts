@@ -55,6 +55,17 @@ export type MultiplierFactor = {
   label: string;
 };
 
+export type BaseDamageMode = {
+  id: "lc" | "td";
+  label: string;
+  baseAttack: number;
+};
+
+export type BaseDamageData = {
+  formula: string;
+  modes: readonly BaseDamageMode[];
+};
+
 type DilutionExample = {
   id: string;
   label: string;
@@ -225,9 +236,10 @@ type DamageProfileInput = {
 };
 
 type RawMultiplierData = {
-  schemaVersion: 11;
+  schemaVersion: 12;
   defaultFactorId: MultiplierFactorId;
   factors: readonly MultiplierFactor[];
+  baseDamage: BaseDamageData;
   damageChannelMatrix: DamageChannelMatrixData;
   weakpointMultiplier: WeakpointMultiplierData;
   dilutionCategories: readonly DilutionCategory[];
@@ -248,9 +260,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function assertMultiplierData(value: unknown): asserts value is RawMultiplierData {
   if (
     !isRecord(value) ||
-    value.schemaVersion !== 11 ||
+    value.schemaVersion !== 12 ||
     typeof value.defaultFactorId !== "string" ||
     !Array.isArray(value.factors) ||
+    !isRecord(value.baseDamage) ||
     !isRecord(value.damageChannelMatrix) ||
     !isRecord(value.weakpointMultiplier) ||
     !Array.isArray(value.dilutionCategories) ||
@@ -271,6 +284,34 @@ function assertMultiplierData(value: unknown): asserts value is RawMultiplierDat
       throw new Error("乘区节点存在无效或重复字段");
     }
     factorIds.add(factor.id);
+  }
+
+  const baseDamage = value.baseDamage;
+  if (
+    typeof baseDamage.formula !== "string" ||
+    baseDamage.formula.length === 0 ||
+    !Array.isArray(baseDamage.modes)
+  ) {
+    throw new Error("基础伤害配置无效");
+  }
+  const baseDamageModeIds = new Set<string>();
+  for (const mode of baseDamage.modes) {
+    if (
+      !isRecord(mode) ||
+      (mode.id !== "lc" && mode.id !== "td") ||
+      typeof mode.label !== "string" ||
+      mode.label.length === 0 ||
+      typeof mode.baseAttack !== "number" ||
+      !Number.isFinite(mode.baseAttack) ||
+      mode.baseAttack <= 0 ||
+      baseDamageModeIds.has(mode.id)
+    ) {
+      throw new Error("基础伤害模式配置无效");
+    }
+    baseDamageModeIds.add(mode.id);
+  }
+  if (!baseDamageModeIds.has("lc") || !baseDamageModeIds.has("td")) {
+    throw new Error("基础伤害模式配置不完整");
   }
 
   const matrix = value.damageChannelMatrix;
@@ -401,6 +442,7 @@ function factorIdForModifier(channel: DamageChannel): MultiplierFactorId {
 
 export const MULTIPLIER_DATA = data;
 export const MULTIPLIER_FACTORS = data.factors;
+export const BASE_DAMAGE_DATA = data.baseDamage;
 export const DAMAGE_CHANNEL_MATRIX = data.damageChannelMatrix;
 export const WEAKPOINT_MULTIPLIER_DATA = data.weakpointMultiplier;
 export const DILUTION_CATEGORIES = data.dilutionCategories;

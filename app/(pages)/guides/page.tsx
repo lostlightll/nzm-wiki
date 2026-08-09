@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getMDXList } from "@/lib/mdx";
 import { getApplicableModifierTypes } from "@/lib/multiplier-data";
+import { buildWeaponBaseDamageIndex } from "@/lib/weapon-base-damage";
 import { getAllResolvedWeapons } from "@/lib/weapons";
 import GuidesPageClient from "./client";
 import type { MultiplierTargetIndexEntry } from "./MultiplierBidirectionalIndex";
@@ -20,8 +21,15 @@ interface Post {
 
 export default async function GuidesPage() {
   const posts = getMDXList("posts") as Post[];
-  const weapons = await getAllResolvedWeapons("lc");
-  const multiplierTargets: MultiplierTargetIndexEntry[] = weapons.flatMap(
+  const [lcWeapons, tdWeapons] = await Promise.all([
+    getAllResolvedWeapons("lc"),
+    getAllResolvedWeapons("td"),
+  ]);
+  const baseDamageEntries = buildWeaponBaseDamageIndex({
+    lc: lcWeapons,
+    td: tdWeapons,
+  });
+  const multiplierTargets: MultiplierTargetIndexEntry[] = lcWeapons.flatMap(
     (weapon) =>
       weapon.damageSources.flatMap((source) => {
         if (
@@ -46,6 +54,7 @@ export default async function GuidesPage() {
 
   return (
     <GuidesPageClient
+      baseDamageEntries={baseDamageEntries}
       multiplierTargets={multiplierTargets}
       archivePanel={
         <ul className="space-y-3">

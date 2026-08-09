@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 11,
+  "schemaVersion": 12,
   "defaultFactorId": "dilution",
   "factors": [
     { "id": "base", "label": "基础伤害" },
@@ -12,6 +12,13 @@
     { "id": "correction", "label": "特殊修正" },
     { "id": "vulnerability", "label": "易伤乘区" }
   ],
+  "baseDamage": {
+    "formula": "武器白值 × 模式基础攻击力 = 单次基础伤害",
+    "modes": [
+      { "id": "lc", "label": "僵尸猎场", "baseAttack": 500 },
+      { "id": "td", "label": "塔防", "baseAttack": 400 }
+    ]
+  },
   "damageChannelMatrix": {
     "damageTypes": [
       { "id": "hit-damage", "label": "命中伤害" },

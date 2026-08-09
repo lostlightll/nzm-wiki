@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  BASE_DAMAGE_DATA,
   buildDamageProfile,
   getApplicableModifierTypes,
   getProviderRelationsForSource,
@@ -8,6 +9,16 @@ import {
   resolveMultiplierFactorHref,
   resolveMultiplierSourceHref,
 } from "./multiplier-data";
+
+test("base damage modes keep their authoritative attack values", () => {
+  assert.deepEqual(BASE_DAMAGE_DATA, {
+    formula: "武器白值 × 模式基础攻击力 = 单次基础伤害",
+    modes: [
+      { id: "lc", label: "僵尸猎场", baseAttack: 500 },
+      { id: "td", label: "塔防", baseAttack: 400 },
+    ],
+  });
+});
 
 test("shared effects keep perk and overlimit placements separate", () => {
   const perk = getProviderRelationsForSource({

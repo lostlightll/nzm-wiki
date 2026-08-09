@@ -32,6 +32,8 @@ import {
   type WeakpointMultiplierData,
 } from "@/lib/multiplier-data";
 import type { WeaponType } from "@/types";
+import type { WeaponBaseDamageEntry } from "@/lib/weapon-base-damage";
+import { BaseDamageDetail } from "./BaseDamageDetail";
 import { DamageChannelMatrix } from "./DamageChannelMatrix";
 import {
   MultiplierBidirectionalIndex,
@@ -639,8 +641,10 @@ function CompactFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
 }
 
 export function MultiplierOverview({
+  baseDamageEntries,
   targets,
 }: {
+  baseDamageEntries: readonly WeaponBaseDamageEntry[];
   targets: readonly MultiplierTargetIndexEntry[];
 }) {
   const selectedFactorId = useSyncExternalStore(
@@ -787,7 +791,9 @@ export function MultiplierOverview({
             </h2>
           </header>
 
-          {selectedFactorId === "weakpoint-multiplier" ? (
+          {selectedFactorId === "base" ? (
+            <BaseDamageDetail entries={baseDamageEntries} />
+          ) : selectedFactorId === "weakpoint-multiplier" ? (
             <WeakpointMultiplierDetail detail={WEAKPOINT_MULTIPLIER_DATA} />
           ) : selectedFactorId === "dilution" ? (
             <>

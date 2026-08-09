@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { SeasonTalentCatalog } from "@/components/SeasonTalentCatalog";
 import { MultiplierOverview } from "./MultiplierOverview";
+import type { WeaponBaseDamageEntry } from "@/lib/weapon-base-damage";
 import type { MultiplierTargetIndexEntry } from "./MultiplierBidirectionalIndex";
 
 type GuideModule = "multiplier" | "season-talents" | "archive";
@@ -22,9 +23,11 @@ function getModuleFromHash(): GuideModule {
 
 export default function GuidesPageClient({
   archivePanel,
+  baseDamageEntries,
   multiplierTargets,
 }: {
   archivePanel: ReactNode;
+  baseDamageEntries: readonly WeaponBaseDamageEntry[];
   multiplierTargets: readonly MultiplierTargetIndexEntry[];
 }) {
   const [activeModule, setActiveModule] = useState<GuideModule>("multiplier");
@@ -80,7 +83,10 @@ export default function GuidesPageClient({
         aria-label="游戏乘区"
         hidden={activeModule !== "multiplier"}
       >
-        <MultiplierOverview targets={multiplierTargets} />
+        <MultiplierOverview
+          baseDamageEntries={baseDamageEntries}
+          targets={multiplierTargets}
+        />
       </section>
       <section
         id="season-talents-panel"

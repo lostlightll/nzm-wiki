@@ -1,7 +1,7 @@
 # 增伤类型双向索引
 
 > 状态：active  
-> Schema：`data/guides/multiplier.json` V11，`data/guides/multiplier-providers.json` V1
+> Schema：`data/guides/multiplier.json` V12，`data/guides/multiplier-providers.json` V1
 
 ## 统一链路
 
@@ -10,6 +10,7 @@
 ```text
 ItemID / 技能身份 -> 结构化证据 -> 增伤类型 -> 乘区 -> 页面落点
 Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘区
+武器 MDX 来源名 + Weapon Resolver 白值 -> 模式基础攻击力 -> 单次基础伤害
 ```
 
 - `provider` 表示技能、插件、超限卡片或羁绊提供某种增伤。
@@ -22,6 +23,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 `data/guides/multiplier.json` 保存乘区和通道定义：
 
 - `factors`：对外显示的规范乘区名。
+- `baseDamage`：基础伤害公式及 LC/TD 模式基础攻击力；不保存武器白值副本。
 - `damageChannelMatrix.channels`：增伤类型、属性字段和伤害类型适用规则；运行时导出为 `MODIFIER_TYPES`。
 - 原有公式、规则、矩阵和案例说明继续作为乘区页面的编辑内容。
 
@@ -34,6 +36,8 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - 没有直接 GPModifier 的效果必须使用 `reviewed-override` 并保留描述、数值行或机制依据。
 
 武器目标关系不写回 MDX。`lib/multiplier-data.ts` 直接消费 Weapon Resolver 已有的 `settlements`、`element`、`enableCritical` 和 `enableWeakness`，为每个 `damageSources[]` 条目建立伤害画像。
+
+武器白值索引同样不维护静态副本。`lib/weapon-base-damage.ts` 接收 LC/TD 的 `ResolvedWeapon[]`，只收录非近战武器中 `damage.base` 已解析的 MDX `damage_sources[]`；刺隐、夜影之逝等其他武器上的 `MeleeWeaponDamage` 来源继续保留。名称固定使用 `weapon.title + source.name`，白值和结算身份来自对应模式的 Resolver 投影，不读取 Lock `Description`。
 
 ## 术语
 
@@ -59,6 +63,12 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - `getRelationsByFactor()`
 - `resolveMultiplierSourceHref()`
 - `resolveMultiplierFactorHref()`
+- `BASE_DAMAGE_DATA`
+
+`lib/weapon-base-damage.ts` 导出：
+
+- `buildWeaponBaseDamageIndex()`
+- `WeaponBaseDamageEntry`
 
 指南链接以查询参数保存状态：
 
@@ -66,7 +76,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 /guides?factor=dilution&view=providers&modifier=all-damage#multiplier
 ```
 
-`factor`、`view`、`modifier` 是可分享和可前进/后退恢复的权威状态；本地存储只作为没有查询参数时的乘区选择回退。
+`factor`、`view`、`modifier` 是可分享和可前进/后退恢复的权威状态；基础伤害索引额外使用 `mode=td` 表示塔防，缺少或非法 `mode` 时默认猎场。本地存储只作为没有查询参数时的乘区选择回退。
 
 武器原子来源使用 `#damage-source-{sourceId}`。赛季节点和被动使用可分享 query 深链：
 
@@ -81,8 +91,9 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 
 ```text
 pnpm test:multiplier-data
+pnpm test:weapon-base-damage
 pnpm multiplier-index:check
 pnpm multiplier-providers:audit
 ```
 
-测试覆盖超限镜像、双乘区、Settlement 匹配和路由。`multiplier-index:check` 不依赖 `refs/`，验证所有发布插件、137 张卡片、武器技能和 S3 天赋均已映射或明确排除，并检查路由、镜像和双向一致性。`multiplier-providers:audit` 在存在 `refs/` 时继续核对 ItemID、MGE token、Numerical 行与 AttributeDescMapTable；构建前固定执行运行时检查。
+测试覆盖基础伤害模式配置、全量白值索引、超限镜像、双乘区、Settlement 匹配和路由。`multiplier-index:check` 不依赖 `refs/`，验证所有发布插件、137 张卡片、武器技能和 S3 天赋均已映射或明确排除，并检查路由、镜像和双向一致性。`multiplier-providers:audit` 在存在 `refs/` 时继续核对 ItemID、MGE token、Numerical 行与 AttributeDescMapTable；构建前固定执行运行时检查。
