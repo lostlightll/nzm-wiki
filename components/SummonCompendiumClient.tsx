@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Activity,
-  Bot,
   BookOpenText,
   Boxes,
   ChevronDown,
@@ -14,8 +13,6 @@ import {
   Crosshair,
   ExternalLink,
   Gauge,
-  HeartPulse,
-  Info,
   Layers3,
   ListFilter,
   RadioTower,
@@ -24,7 +21,6 @@ import {
   ShieldCheck,
   Sparkles,
   Swords,
-  TimerReset,
   UserRoundCog,
   X,
   Zap,
@@ -168,26 +164,6 @@ function AssetIcon({
       height={size}
       className={`shrink-0 rounded border border-zinc-700 bg-zinc-950 object-contain ${className}`}
     />
-  );
-}
-
-function SummaryStat({
-  icon: Icon,
-  label,
-  value,
-}: {
-  icon: typeof Bot;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="flex min-w-0 items-center gap-2 border-l border-zinc-800 pl-3 first:border-l-0 first:pl-0">
-      <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-cyan-400" />
-      <div className="min-w-0">
-        <p className="m-0 text-[11px] leading-4 text-zinc-500">{label}</p>
-        <p className="m-0 text-sm font-semibold leading-5 text-zinc-100">{value}</p>
-      </div>
-    </div>
   );
 }
 
@@ -750,48 +726,9 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
 
   return (
     <div className="not-prose my-6 min-w-0 text-zinc-200">
-      <section className="overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950/55">
-        <div className="border-b border-zinc-800 px-3 py-4 sm:px-5">
-          <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
-              <p className="m-0 flex items-center gap-2 text-xs font-medium text-cyan-400">
-                <Bot aria-hidden="true" className="h-4 w-4" />
-                猎场 · 召唤物机制索引
-              </p>
-              <h2 className="m-0 mt-1 text-xl font-bold tracking-tight text-zinc-50 sm:text-2xl">召唤、射速、伤害，一页查清</h2>
-              <p className="m-0 mt-2 text-sm leading-6 text-zinc-400">
-                每个对象都按“怎么出来 → 怎么打 → 打多少 → 吃什么增伤 → 有哪些 Buff/插件”整理。射速采用配置基准，动作型仆从则展示动作周期与冷却。
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-x-3 gap-y-2 sm:grid-cols-4">
-              <SummaryStat icon={Bot} label="已整理对象" value={`${catalog.entries.length} 类`} />
-              <SummaryStat icon={Swords} label="伤害条目" value={`${catalog.totalDamageSources} 条`} />
-              <SummaryStat icon={Gauge} label="已确认节奏" value={`${catalog.verifiedRateCount} 条`} />
-              <SummaryStat icon={Layers3} label="关联 Buff" value={`${catalog.relatedBuffCount} 个`} />
-            </div>
-          </div>
-        </div>
-
-        <div className="grid gap-px bg-zinc-800 sm:grid-cols-3">
-          {[
-            { icon: Info, title: "什么算召唤物？", text: "独立 Actor、跟随宠物、后台浮游炮和赛季仆从都收录；纯追踪弹丸不算。" },
-            { icon: TimerReset, title: "射速怎么看？", text: "连续攻击显示秒/发和 RPM；铁拳这类动作 AI 显示完整动作周期，不伪造 RPM。" },
-            { icon: HeartPulse, title: "伤害怎么算？", text: "武器类先用系数 × 500 看裸值，再按结算类型、继承属性和 Buff 进入对应乘区。" },
-          ].map(({ icon: Icon, title, text }) => (
-            <div key={title} className="bg-zinc-950/80 px-3 py-2.5 sm:px-4">
-              <h3 className="m-0 flex items-center gap-2 text-xs font-semibold text-zinc-200">
-                <Icon aria-hidden="true" className="h-4 w-4 text-cyan-400" />
-                {title}
-              </h3>
-              <p className="m-0 mt-1 text-[11px] leading-5 text-zinc-500">{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <nav
         aria-label="按召唤物筛选"
-        className="mt-3 flex min-w-0 flex-col gap-2 rounded-lg border border-zinc-800 bg-zinc-950/55 p-2 sm:flex-row sm:items-center"
+        className="flex min-w-0 flex-col gap-2 rounded-lg border border-zinc-800 bg-zinc-950/55 p-2 sm:flex-row sm:items-center"
       >
         <div className="flex shrink-0 items-center px-1">
           <span className="flex items-center gap-1.5 text-xs font-semibold text-zinc-300">
