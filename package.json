@@ -15,6 +15,7 @@
     "status-effects:refresh": "tsx scripts/status-effects/cli.ts refresh",
     "status-effects:check": "tsx scripts/status-effects/cli.ts check",
     "test:status-effects": "tsx --test lib/status-effects.test.ts scripts/status-effects/extract.test.ts scripts/status-effects/relations.test.ts",
+    "test:summons": "tsx --test lib/summons.test.ts scripts/generate-search-index.test.ts",
     "test:weapon-source-v2": "tsx --test lib/weapon-source-v2.test.ts",
     "test:weapon-mode-diff": "tsx --test lib/weapon-mode-diff.test.tsx",
     "test:weapon-resolver": "tsx --test lib/weapon-resolver.test.ts",

@@ -1,0 +1,852 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Activity,
+  Bot,
+  BookOpenText,
+  Boxes,
+  ChevronDown,
+  ChevronRight,
+  CircleDashed,
+  Clock3,
+  Crosshair,
+  ExternalLink,
+  Gauge,
+  HeartPulse,
+  Info,
+  Layers3,
+  RadioTower,
+  RotateCcw,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Swords,
+  TimerReset,
+  UserRoundCog,
+  X,
+  Zap,
+} from "lucide-react";
+import {
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import { MultiplierBadges } from "@/components/MultiplierBadges";
+import { getMultiplierFactorStyle } from "@/components/multiplier-badge-styles";
+import { getAssetPath } from "@/lib/path";
+import type {
+  SummonBuffView,
+  SummonCatalogEntryView,
+  SummonCatalogView,
+  SummonDamageView,
+  SummonKind,
+  SummonMechanicDefinition,
+  SummonPerkView,
+  SummonTalentView,
+} from "@/types";
+
+type KindFilter = "all" | SummonKind;
+
+const KIND_OPTIONS: Array<{ value: KindFilter; label: string }> = [
+  { value: "all", label: "全部" },
+  { value: "deployable", label: "架设/浮游" },
+  { value: "companion", label: "自动伙伴" },
+  { value: "season-servant", label: "赛季仆从" },
+];
+
+const KIND_STYLES: Record<SummonKind, string> = {
+  deployable: "border-amber-500/35 bg-amber-500/10 text-amber-200",
+  companion: "border-cyan-500/35 bg-cyan-500/10 text-cyan-200",
+  "season-servant": "border-violet-500/35 bg-violet-500/10 text-violet-200",
+};
+
+const MECHANIC_LABELS: Record<SummonMechanicDefinition["kind"], string> = {
+  summon: "召唤",
+  attack: "攻击",
+  skill: "技能",
+  passive: "被动",
+  lifecycle: "生命周期",
+  command: "指令",
+  buff: "状态",
+};
+
+const EVIDENCE_LABELS = {
+  published: "站内公开数据",
+  "config-verified": "配置交叉确认",
+  partial: "部分配置",
+} as const;
+
+function formatNumber(value: number, digits = 2): string {
+  return Number.isInteger(value) ? String(value) : String(Number(value.toFixed(digits)));
+}
+
+function formatCoefficient(
+  value: number | undefined,
+  attackStatLabel: SummonDamageView["attackStatLabel"],
+): string {
+  return value === undefined
+    ? "未公开"
+    : `${formatNumber(value * 100, 2)}% ${attackStatLabel}`;
+}
+
+function settlementLabel(settlements: readonly string[]): string {
+  if (settlements.some((item) => item.endsWith("WeaponExplosionDamage"))) return "武器爆炸";
+  if (settlements.some((item) => item.endsWith("WeaponDamage"))) return "武器直击";
+  if (settlements.some((item) => item.endsWith("WeaponSkillDamage"))) return "武器技能";
+  if (settlements.some((item) => item.endsWith("SkillDamage"))) return "非武器技能";
+  return "独立伤害";
+}
+
+function subscribeToLocation(callback: () => void) {
+  window.addEventListener("popstate", callback);
+  window.addEventListener("summon-query-change", callback);
+  return () => {
+    window.removeEventListener("popstate", callback);
+    window.removeEventListener("summon-query-change", callback);
+  };
+}
+
+function getLocationSnapshot() {
+  return `${window.location.search}${window.location.hash}`;
+}
+
+function getServerLocationSnapshot() {
+  return "";
+}
+
+function updateQuery(updates: Record<string, string | null>, hash?: string) {
+  const url = new URL(window.location.href);
+  for (const [key, value] of Object.entries(updates)) {
+    if (!value || value === "all") url.searchParams.delete(key);
+    else url.searchParams.set(key, value);
+  }
+  if (hash !== undefined) url.hash = hash;
+  window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+  window.dispatchEvent(new Event("summon-query-change"));
+}
+
+function AssetIcon({
+  src,
+  alt,
+  size = 48,
+  className = "",
+}: {
+  src?: string | null;
+  alt: string;
+  size?: number;
+  className?: string;
+}) {
+  if (!src) {
+    return (
+      <div
+        aria-hidden="true"
+        className={`flex shrink-0 items-center justify-center rounded border border-zinc-700 bg-zinc-950 text-zinc-600 ${className}`}
+        style={{ width: size, height: size }}
+      >
+        <CircleDashed className="h-5 w-5" />
+      </div>
+    );
+  }
+  return (
+    <Image
+      src={getAssetPath(src)}
+      alt={alt}
+      width={size}
+      height={size}
+      className={`shrink-0 rounded border border-zinc-700 bg-zinc-950 object-contain ${className}`}
+    />
+  );
+}
+
+function SummaryStat({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: typeof Bot;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex min-w-0 items-center gap-2 border-l border-zinc-800 pl-3 first:border-l-0 first:pl-0">
+      <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-cyan-400" />
+      <div className="min-w-0">
+        <p className="m-0 text-[11px] leading-4 text-zinc-500">{label}</p>
+        <p className="m-0 text-sm font-semibold leading-5 text-zinc-100">{value}</p>
+      </div>
+    </div>
+  );
+}
+
+function DamageRow({ damage }: { damage: SummonDamageView }) {
+  const sustainedDps =
+    damage.baseDamage !== undefined &&
+    damage.intervalSeconds !== undefined &&
+    damage.intervalSeconds > 0 &&
+    damage.attacksPerAction === 1
+      ? damage.baseDamage / damage.intervalSeconds
+      : undefined;
+  const rateText = damage.roundsPerMinute
+    ? `${formatNumber(damage.roundsPerMinute, 1)} RPM`
+    : damage.intervalSeconds
+      ? `${formatNumber(damage.intervalSeconds, 3)} 秒/动作`
+      : damage.rate?.label ?? "事件触发";
+
+  return (
+    <div className="grid min-w-0 gap-2 border-t border-zinc-800/80 px-3 py-2 first:border-t-0 lg:grid-cols-[minmax(8.5rem,1.15fr)_minmax(7rem,0.8fr)_minmax(7.5rem,0.8fr)_minmax(7.5rem,0.8fr)_minmax(18rem,2fr)] lg:items-start lg:gap-3 lg:px-4">
+      <div className="min-w-0">
+        <p className="m-0 text-sm font-semibold leading-5 text-zinc-100">{damage.name}</p>
+        <p className="m-0 mt-0.5 text-xs leading-4 text-zinc-500">{damage.role}</p>
+      </div>
+
+      <div className="grid grid-cols-2 gap-1.5 lg:block">
+        <div className="rounded bg-zinc-950/55 px-2 py-1.5 lg:bg-transparent lg:p-0">
+          <span className="text-[11px] text-zinc-500 lg:hidden">单次系数</span>
+          <p className="m-0 text-xs font-medium leading-5 text-zinc-200">
+            {formatCoefficient(damage.coefficient, damage.attackStatLabel)}
+          </p>
+          {damage.baseDamage !== undefined && (
+            <p className="m-0 text-[11px] leading-4 text-zinc-500">
+              500 基准 = {formatNumber(damage.baseDamage)}
+            </p>
+          )}
+        </div>
+        <div className="rounded bg-zinc-950/55 px-2 py-1.5 lg:hidden">
+          <span className="text-[11px] text-zinc-500">节奏</span>
+          <p className="m-0 text-xs font-medium leading-5 text-zinc-200">{rateText}</p>
+        </div>
+      </div>
+
+      <div className="hidden min-w-0 lg:block">
+        <p className="m-0 text-xs font-medium leading-5 text-zinc-200">{rateText}</p>
+        <p className="m-0 text-[11px] leading-4 text-zinc-500">{damage.rate?.label}</p>
+        {sustainedDps !== undefined && (
+          <p className="m-0 text-[11px] leading-4 text-zinc-500">
+            裸值约 {formatNumber(sustainedDps, 1)}/秒
+          </p>
+        )}
+      </div>
+
+      <div className="grid grid-cols-2 gap-1.5 text-xs lg:block">
+        <div>
+          <span className="text-zinc-500">元素 </span>
+          <span className="text-zinc-200">{damage.element ?? "未知"}</span>
+        </div>
+        <div>
+          <span className="text-zinc-500">暴击/弱点 </span>
+          <span className="text-zinc-200">
+            {damage.enableCritical ? "可" : "不可"} / {damage.enableWeakness ? "可" : "不可"}
+          </span>
+        </div>
+        <p className="col-span-2 m-0 text-[11px] leading-4 text-zinc-500">
+          {settlementLabel(damage.settlements)}
+        </p>
+      </div>
+
+      <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-[11px] leading-4 text-zinc-400">
+        <MultiplierBadges relations={damage.multiplierRelations} variant="catalog-compact" />
+        {damage.multiplierRelations.length === 0 && (
+          <span className="text-zinc-600">暂无可确定乘区</span>
+        )}
+        {damage.note && <span>{damage.note}</span>}
+        {damage.rate?.note && <span className="text-zinc-500">{damage.rate.note}</span>}
+        {damage.sourceHref ? (
+          <Link
+            href={damage.sourceHref}
+            className="inline-flex shrink-0 items-center gap-1 text-cyan-400 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+          >
+            {damage.sourceLabel}
+            <ExternalLink aria-hidden="true" className="h-3 w-3" />
+          </Link>
+        ) : (
+          <span className="shrink-0 text-zinc-600">{damage.sourceLabel}</span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function DamageSection({ entry }: { entry: SummonCatalogEntryView }) {
+  return (
+    <section aria-labelledby={`damage-title-${entry.id}`} className="mt-4">
+      <div className="mb-2 flex flex-wrap items-end justify-between gap-2">
+        <div>
+          <h3 id={`damage-title-${entry.id}`} className="m-0 flex items-center gap-2 text-sm font-semibold text-zinc-100">
+            <Swords aria-hidden="true" className="h-4 w-4 text-rose-400" />
+            伤害与攻击节奏
+          </h3>
+          <p className="m-0 mt-1 text-xs leading-5 text-zinc-500">
+            系数按攻击属性计算；“500 基准”只用于快速横向比较，不代表实战最终伤害。
+          </p>
+        </div>
+        <span className="text-xs text-zinc-600">{entry.damageSources.length} 条伤害</span>
+      </div>
+      <div className="overflow-hidden rounded-md border border-zinc-800 bg-zinc-900/35">
+        <div className="hidden grid-cols-[minmax(8.5rem,1.15fr)_minmax(7rem,0.8fr)_minmax(7.5rem,0.8fr)_minmax(7.5rem,0.8fr)_minmax(18rem,2fr)] gap-3 bg-zinc-950/70 px-4 py-2 text-[11px] font-medium text-zinc-500 lg:grid">
+          <span>伤害</span>
+          <span>单次系数</span>
+          <span>间隔 / 射速</span>
+          <span>结算许可</span>
+          <span>适用乘区 / 说明</span>
+        </div>
+        {entry.damageSources.map((damage) => (
+          <DamageRow key={damage.id} damage={damage} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function MechanicCard({
+  entryId,
+  mechanic,
+}: {
+  entryId: string;
+  mechanic: SummonMechanicDefinition;
+}) {
+  const hasMore = Boolean(mechanic.details?.length || mechanic.facts?.length);
+  return (
+    <article
+      id={`summon-${entryId}-${mechanic.id}`}
+      className="scroll-mt-24 rounded-md border border-zinc-800 bg-zinc-950/35 p-3 target:border-cyan-700/70 target:bg-cyan-950/15"
+    >
+      <div className="flex min-w-0 items-start justify-between gap-3">
+        <div className="flex min-w-0 items-start gap-2.5">
+          {mechanic.icon && (
+            <AssetIcon src={mechanic.icon} alt="" size={36} className="h-9 w-9" />
+          )}
+          <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <h4 className="m-0 text-sm font-semibold leading-5 text-zinc-100">{mechanic.name}</h4>
+            <span className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 text-[10px] leading-4 text-zinc-400">
+              {MECHANIC_LABELS[mechanic.kind]}
+            </span>
+          </div>
+          <p className="m-0 mt-1 text-xs leading-5 text-zinc-300">{mechanic.summary}</p>
+          </div>
+        </div>
+        {mechanic.link && (
+          <Link
+            href={mechanic.link.href}
+            title={mechanic.link.label}
+            aria-label={mechanic.link.label}
+            className="relative inline-flex min-h-8 shrink-0 items-center gap-1 rounded border border-zinc-700 bg-zinc-900 px-2 text-[11px] text-zinc-300 after:absolute after:-inset-2 after:content-[''] hover:border-cyan-700 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+          >
+            详情
+            <ChevronRight aria-hidden="true" className="h-3 w-3" />
+          </Link>
+        )}
+      </div>
+      {hasMore && (
+        <details className="mt-2 border-t border-zinc-800/80 pt-1">
+          <summary className="flex min-h-9 w-fit cursor-pointer select-none items-center gap-1.5 text-[11px] text-zinc-500 hover:text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
+            <BookOpenText aria-hidden="true" className="h-3.5 w-3.5" />
+            数值与补充
+          </summary>
+          {mechanic.facts && mechanic.facts.length > 0 && (
+            <dl className="grid grid-cols-2 gap-1.5 pb-2 sm:grid-cols-4">
+              {mechanic.facts.map((fact) => (
+                <div key={`${fact.label}:${fact.value}`} className="rounded bg-zinc-900/70 px-2 py-1.5">
+                  <dt className="text-[10px] leading-4 text-zinc-500">{fact.label}</dt>
+                  <dd className="m-0 text-xs font-medium leading-5 text-zinc-200">{fact.value}</dd>
+                  {fact.note && <p className="m-0 text-[10px] leading-4 text-zinc-600">{fact.note}</p>}
+                </div>
+              ))}
+            </dl>
+          )}
+          {mechanic.details?.map((detail) => (
+            <p key={detail} className="m-0 border-t border-zinc-800/60 py-1.5 text-xs leading-5 text-zinc-500 first:border-t-0">
+              {detail}
+            </p>
+          ))}
+        </details>
+      )}
+    </article>
+  );
+}
+
+function BuffCard({ buff }: { buff: SummonBuffView }) {
+  return (
+    <Link
+      href={buff.href}
+      className="group flex min-w-0 gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/35 p-2.5 hover:border-cyan-800 hover:bg-cyan-950/10 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+    >
+      <AssetIcon src={buff.icon} alt="" size={36} className="h-9 w-9" />
+      <div className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="text-xs font-semibold leading-5 text-zinc-200 group-hover:text-cyan-200">{buff.name}</span>
+          <span className="text-[10px] text-zinc-600">#{buff.buffId}</span>
+        </div>
+        <p className="m-0 line-clamp-2 text-[11px] leading-4 text-zinc-500">{buff.note ?? buff.summary}</p>
+        <div className="mt-1 flex flex-wrap items-center gap-1">
+          <span className="rounded bg-zinc-900 px-1.5 py-0.5 text-[10px] text-zinc-500">{buff.relationLabel}</span>
+          <span className="text-[10px] text-zinc-600">{buff.durationLabel} · {buff.stackLabel}</span>
+          {buff.multiplierRelations.map((relation) => (
+            <span
+              key={`${buff.buffId}:${relation.modifierTypeId}`}
+              className={`rounded border px-1.5 py-0.5 text-[10px] ${getMultiplierFactorStyle(relation.factorId)}`}
+            >
+              {relation.displayLabel}
+            </span>
+          ))}
+        </div>
+      </div>
+      <ChevronRight aria-hidden="true" className="mt-1 h-3.5 w-3.5 shrink-0 text-zinc-700 group-hover:text-cyan-400" />
+    </Link>
+  );
+}
+
+function PerkCard({ perk }: { perk: SummonPerkView }) {
+  return (
+    <article className="group flex min-w-0 gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/35 p-2.5 hover:border-violet-800 hover:bg-violet-950/10">
+      <AssetIcon src={perk.icon} alt="" size={36} className="h-9 w-9" />
+      <div className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-center gap-1.5">
+          <Link
+            href={perk.href}
+            className="inline-flex min-h-6 items-center gap-1 text-xs font-semibold leading-5 text-zinc-200 group-hover:text-violet-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+          >
+            {perk.name}
+            <ChevronRight aria-hidden="true" className="h-3.5 w-3.5 text-zinc-700 group-hover:text-violet-400" />
+          </Link>
+          <span className="text-[10px] text-zinc-600">{perk.slot} 号槽</span>
+        </div>
+        {perk.description && (
+          <p className="m-0 line-clamp-2 text-[11px] leading-4 text-zinc-500">{perk.description}</p>
+        )}
+        <MultiplierBadges relations={perk.multiplierRelations} variant="catalog-compact" className="mt-1" />
+      </div>
+    </article>
+  );
+}
+
+function TalentRow({ talent }: { talent: SummonTalentView }) {
+  return (
+    <Link
+      href={talent.href}
+      className="group flex min-w-0 items-start gap-2.5 border-t border-zinc-800/70 py-2 first:border-t-0 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+    >
+      <AssetIcon src={talent.icon} alt="" size={32} className="h-8 w-8" />
+      <div className="min-w-0 flex-1">
+        <p className="m-0 text-xs font-medium leading-5 text-zinc-300 group-hover:text-violet-200">{talent.name}</p>
+        <p className="m-0 line-clamp-2 text-[11px] leading-4 text-zinc-600">{talent.descriptions[0]}</p>
+      </div>
+      <span className="mt-1 text-[10px] text-zinc-700">{talent.id}</span>
+    </Link>
+  );
+}
+
+function RelatedSection({ entry }: { entry: SummonCatalogEntryView }) {
+  const hasRelated = entry.buffs.length > 0 || entry.perks.length > 0 || entry.talents.length > 0;
+  const hasCards = entry.buffs.length > 0 || entry.perks.length > 0;
+  if (!hasRelated) return null;
+  return (
+    <section className={`mt-4 grid min-w-0 gap-3 ${hasCards && entry.talents.length > 0 ? "lg:grid-cols-2" : "grid-cols-1"}`}>
+      {hasCards && (
+        <div className="min-w-0">
+          <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
+            <Layers3 aria-hidden="true" className="h-4 w-4 text-cyan-400" />
+            Buff 与专属插件
+          </h3>
+          {entry.perkSelectionNote && (
+            <p className="m-0 mb-2 text-xs leading-4 text-amber-300/80">
+              {entry.perkSelectionNote}
+            </p>
+          )}
+          <div className="grid min-w-0 gap-2 sm:grid-cols-2">
+            {entry.buffs.map((buff) => <BuffCard key={`${buff.target}:${buff.buffId}`} buff={buff} />)}
+            {entry.perks.map((perk) => <PerkCard key={perk.slug} perk={perk} />)}
+          </div>
+        </div>
+      )}
+      {entry.talents.length > 0 && (
+        <div className="min-w-0">
+          <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
+            <Sparkles aria-hidden="true" className="h-4 w-4 text-violet-400" />
+            S3 天赋链
+          </h3>
+          <details className="rounded-md border border-zinc-800 bg-zinc-950/35 px-3">
+            <summary className="flex min-h-10 cursor-pointer select-none items-center justify-between gap-2 text-xs font-medium text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
+              查看 {entry.talents.length} 个已发布节点
+              <span className="text-[10px] text-zinc-600">S3</span>
+            </summary>
+            <div className="pb-2">
+              {entry.talents.map((talent) => <TalentRow key={`${talent.kind}:${talent.id}`} talent={talent} />)}
+            </div>
+          </details>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function SummonEntry({
+  entry,
+  linked,
+  expanded,
+  onToggle,
+}: {
+  entry: SummonCatalogEntryView;
+  linked: boolean;
+  expanded: boolean;
+  onToggle: () => void;
+}) {
+  const facts = [
+    { icon: RadioTower, label: "召唤方式", value: entry.deployment },
+    { icon: UserRoundCog, label: "操控", value: entry.control },
+    { icon: Crosshair, label: "索敌", value: entry.targeting },
+    { icon: Clock3, label: "生命周期", value: entry.lifetime },
+    { icon: Boxes, label: "数量", value: entry.count },
+    { icon: Gauge, label: "攻击节奏", value: entry.rateSummary },
+  ];
+  return (
+    <article
+      id={`summon-${entry.id}`}
+      className={`scroll-mt-24 overflow-hidden rounded-lg border bg-zinc-900/30 target:border-cyan-600/70 target:bg-cyan-950/10 ${
+        linked ? "border-cyan-700/70 bg-cyan-950/10" : "border-zinc-800"
+      }`}
+    >
+      <header className={`flex min-w-0 flex-col gap-3 bg-zinc-950/45 p-3 sm:flex-row sm:items-start sm:p-4 ${expanded ? "border-b border-zinc-800" : ""}`}>
+        <div className="flex min-w-0 items-start gap-3">
+          <AssetIcon src={entry.icon} alt={entry.name} size={64} className="h-14 w-14 sm:h-16 sm:w-16" />
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-1.5">
+              <h2 className="m-0 text-base font-bold leading-6 text-zinc-50 sm:text-lg">{entry.name}</h2>
+              <span className={`rounded border px-2 py-0.5 text-[11px] ${KIND_STYLES[entry.kind]}`}>
+                {entry.kindLabel}
+              </span>
+              <span className="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-500">
+                {EVIDENCE_LABELS[entry.evidenceLevel]}
+              </span>
+            </div>
+            <p className="m-0 mt-1.5 max-w-4xl text-sm leading-5 text-zinc-300">{entry.summary}</p>
+          </div>
+        </div>
+        <div className="ml-auto flex shrink-0 items-center gap-2">
+          <Link
+            href={entry.source.href}
+            className="relative inline-flex min-h-10 items-center justify-center gap-1.5 rounded border border-zinc-700 bg-zinc-900 px-3 text-xs font-medium text-zinc-300 after:absolute after:-inset-1 after:content-[''] hover:border-cyan-700 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 lg:min-h-9"
+          >
+            {entry.source.label}
+            <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
+          </Link>
+          <button
+            type="button"
+            onClick={onToggle}
+            aria-expanded={expanded}
+            aria-controls={`summon-details-${entry.id}`}
+            className="inline-flex min-h-10 touch-manipulation items-center gap-1.5 rounded border border-zinc-700 bg-zinc-900 px-3 text-xs font-medium text-zinc-300 hover:border-cyan-700 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 lg:min-h-9"
+          >
+            {expanded ? "收起详情" : "展开详情"}
+            <ChevronDown
+              aria-hidden="true"
+              className={`h-3.5 w-3.5 transition-transform duration-150 motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`}
+            />
+          </button>
+        </div>
+      </header>
+
+      {expanded && <div id={`summon-details-${entry.id}`} className="p-3 sm:p-4">
+        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-md border border-zinc-800 bg-zinc-800 sm:grid-cols-3 lg:grid-cols-6">
+          {facts.map(({ icon: Icon, label, value }) => (
+            <div key={label} className="min-w-0 bg-zinc-950/75 px-2.5 py-2">
+              <dt className="flex items-center gap-1.5 text-[10px] leading-4 text-zinc-600">
+                <Icon aria-hidden="true" className="h-3.5 w-3.5" />
+                {label}
+              </dt>
+              <dd className="m-0 mt-0.5 break-words text-xs leading-5 text-zinc-300">{value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <section className="mt-4" aria-labelledby={`mechanics-title-${entry.id}`}>
+          <div className="mb-2 flex items-center justify-between gap-2">
+            <h3 id={`mechanics-title-${entry.id}`} className="m-0 flex items-center gap-2 text-sm font-semibold text-zinc-100">
+              <Activity aria-hidden="true" className="h-4 w-4 text-amber-400" />
+              技能与机制
+            </h3>
+            <span className="text-xs text-zinc-600">{entry.mechanics.length} 项</span>
+          </div>
+          <div className="grid min-w-0 gap-2 lg:grid-cols-2">
+            {entry.mechanics.map((mechanic) => (
+              <MechanicCard key={mechanic.id} entryId={entry.id} mechanic={mechanic} />
+            ))}
+          </div>
+        </section>
+
+        <DamageSection entry={entry} />
+        <RelatedSection entry={entry} />
+
+        <details className="mt-4 border-t border-zinc-800/80">
+          <summary className="flex min-h-10 w-fit cursor-pointer select-none items-center gap-2 text-xs text-zinc-500 hover:text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
+            <ShieldCheck aria-hidden="true" className="h-4 w-4" />
+            证据边界与配置说明
+          </summary>
+          <ul className="m-0 space-y-1 pb-1 pl-5 text-xs leading-5 text-zinc-500">
+            {entry.evidenceNotes.map((note) => <li key={note}>{note}</li>)}
+          </ul>
+        </details>
+      </div>}
+    </article>
+  );
+}
+
+function SharedSystems({ catalog }: { catalog: SummonCatalogView }) {
+  return (
+    <section id="summon-shared-systems" className="scroll-mt-24 rounded-lg border border-zinc-800 bg-zinc-900/30 p-3 sm:p-4">
+      <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 className="m-0 flex items-center gap-2 text-base font-bold text-zinc-50">
+            <Zap aria-hidden="true" className="h-4 w-4 text-amber-400" />
+            全召唤通用机制与搭配
+          </h2>
+          <p className="m-0 mt-1 text-xs leading-5 text-zinc-500">先看继承边界，再配插件和 S3 扭蛋；这些内容不属于某一只召唤物。</p>
+        </div>
+        <span className="text-xs text-zinc-600">{catalog.sharedPerks.length} 插件 · {catalog.sharedBuffs.length} Buff</span>
+      </div>
+
+      <div className="grid gap-2 lg:grid-cols-2">
+        {catalog.sharedSystems.map((system) => (
+          <MechanicCard key={system.id} entryId="shared" mechanic={system} />
+        ))}
+      </div>
+
+      <div className="mt-4 grid min-w-0 gap-4 lg:grid-cols-2">
+        <div className="min-w-0">
+          <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
+            <Layers3 aria-hidden="true" className="h-4 w-4 text-cyan-400" />
+            通用 Buff
+          </h3>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {catalog.sharedBuffs.map((buff) => <BuffCard key={`${buff.target}:${buff.buffId}`} buff={buff} />)}
+          </div>
+          {catalog.sharedTalents.length > 0 && (
+            <details className="mt-2 rounded-md border border-zinc-800 bg-zinc-950/35 px-3">
+              <summary className="flex min-h-10 cursor-pointer select-none items-center justify-between gap-2 text-xs font-medium text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
+                相关 S3 天赋
+                <span className="text-[10px] text-zinc-600">{catalog.sharedTalents.length} 项</span>
+              </summary>
+              <div className="pb-2">{catalog.sharedTalents.map((talent) => <TalentRow key={`${talent.kind}:${talent.id}`} talent={talent} />)}</div>
+            </details>
+          )}
+        </div>
+        <div className="min-w-0">
+          <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
+            <Sparkles aria-hidden="true" className="h-4 w-4 text-violet-400" />
+            通用召唤插件
+          </h3>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {catalog.sharedPerks.map((perk) => <PerkCard key={perk.slug} perk={perk} />)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView }) {
+  const locationSnapshot = useSyncExternalStore(
+    subscribeToLocation,
+    getLocationSnapshot,
+    getServerLocationSnapshot,
+  );
+  const params = useMemo(
+    () => new URLSearchParams(locationSnapshot.split("#")[0]),
+    [locationSnapshot],
+  );
+  const search = params.get("sq") ?? "";
+  const deferredSearch = useDeferredValue(search.trim().toLocaleLowerCase());
+  const kindValue = params.get("summon-kind");
+  const kind: KindFilter = KIND_OPTIONS.some((option) => option.value === kindValue)
+    ? kindValue as KindFilter
+    : "all";
+  const linkedSummon = params.get("summon");
+  const section = params.get("section");
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(() => new Set());
+
+  useEffect(() => {
+    if (!linkedSummon) return;
+    const targetId = section
+      ? `summon-${linkedSummon}-${section}`
+      : `summon-${linkedSummon}`;
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(targetId)?.scrollIntoView({ block: "center" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [linkedSummon, section]);
+
+  function toggleEntry(entryId: string) {
+    const isExpanded = expandedIds.has(entryId) || linkedSummon === entryId;
+    setExpandedIds((current) => {
+      const next = new Set(current);
+      if (isExpanded) next.delete(entryId);
+      else next.add(entryId);
+      return next;
+    });
+    if (linkedSummon === entryId) {
+      updateQuery({ summon: null, section: null }, "");
+    }
+  }
+
+  const visibleEntries = useMemo(() => catalog.entries.filter((entry) => {
+    if (kind !== "all" && entry.kind !== kind) return false;
+    if (!deferredSearch) return true;
+    const searchable = [
+      entry.name,
+      ...entry.aliases,
+      entry.summary,
+      entry.rateSummary,
+      ...entry.searchTerms,
+      ...entry.mechanics.flatMap((mechanic) => [
+        mechanic.name,
+        mechanic.summary,
+        ...(mechanic.details ?? []),
+        ...(mechanic.searchTerms ?? []),
+      ]),
+      ...entry.damageSources.flatMap((damage) => [damage.name, damage.role, damage.note ?? ""]),
+      ...entry.buffs.flatMap((buff) => [String(buff.buffId), buff.name, buff.summary]),
+      entry.perkSelectionNote ?? "",
+      ...entry.perks.flatMap((perk) => [perk.name, perk.description ?? ""]),
+      ...entry.talents.flatMap((talent) => [talent.name, ...talent.descriptions]),
+    ].join(" ").toLocaleLowerCase();
+    return searchable.includes(deferredSearch);
+  }), [catalog.entries, deferredSearch, kind]);
+
+  return (
+    <div className="not-prose my-6 min-w-0 text-zinc-200">
+      <section className="overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950/55">
+        <div className="border-b border-zinc-800 px-3 py-4 sm:px-5">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="m-0 flex items-center gap-2 text-xs font-medium text-cyan-400">
+                <Bot aria-hidden="true" className="h-4 w-4" />
+                猎场 · 召唤物机制索引
+              </p>
+              <h2 className="m-0 mt-1 text-xl font-bold tracking-tight text-zinc-50 sm:text-2xl">召唤、射速、伤害，一页查清</h2>
+              <p className="m-0 mt-2 text-sm leading-6 text-zinc-400">
+                每个对象都按“怎么出来 → 怎么打 → 打多少 → 吃什么增伤 → 有哪些 Buff/插件”整理。射速采用配置基准，动作型仆从则展示动作周期与冷却。
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-x-3 gap-y-2 sm:grid-cols-4">
+              <SummaryStat icon={Bot} label="已整理对象" value={`${catalog.entries.length} 类`} />
+              <SummaryStat icon={Swords} label="伤害条目" value={`${catalog.totalDamageSources} 条`} />
+              <SummaryStat icon={Gauge} label="已确认节奏" value={`${catalog.verifiedRateCount} 条`} />
+              <SummaryStat icon={Layers3} label="关联 Buff" value={`${catalog.relatedBuffCount} 个`} />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid gap-px bg-zinc-800 sm:grid-cols-3">
+          {[
+            { icon: Info, title: "什么算召唤物？", text: "独立 Actor、跟随宠物、后台浮游炮和赛季仆从都收录；纯追踪弹丸不算。" },
+            { icon: TimerReset, title: "射速怎么看？", text: "连续攻击显示秒/发和 RPM；铁拳这类动作 AI 显示完整动作周期，不伪造 RPM。" },
+            { icon: HeartPulse, title: "伤害怎么算？", text: "武器类先用系数 × 500 看裸值，再按结算类型、继承属性和 Buff 进入对应乘区。" },
+          ].map(({ icon: Icon, title, text }) => (
+            <div key={title} className="bg-zinc-950/80 px-3 py-2.5 sm:px-4">
+              <h3 className="m-0 flex items-center gap-2 text-xs font-semibold text-zinc-200">
+                <Icon aria-hidden="true" className="h-4 w-4 text-cyan-400" />
+                {title}
+              </h3>
+              <p className="m-0 mt-1 text-[11px] leading-5 text-zinc-500">{text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <nav aria-label="召唤物快速索引" className="mt-3 flex min-w-0 gap-2 overflow-x-auto pb-1 [scrollbar-width:thin]">
+        {catalog.entries.map((entry) => (
+          <button
+            key={entry.id}
+            type="button"
+            onClick={() => updateQuery({ summon: entry.id, section: null }, `summon-${entry.id}`)}
+            className={`inline-flex min-h-10 shrink-0 touch-manipulation items-center gap-2 rounded border px-2.5 text-xs transition-colors duration-150 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
+              linkedSummon === entry.id
+                ? "border-cyan-600 bg-cyan-950/45 text-cyan-200"
+                : "border-zinc-800 bg-zinc-950/60 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+            }`}
+          >
+            <AssetIcon src={entry.icon} alt="" size={24} className="h-6 w-6 border-zinc-800" />
+            {entry.name}
+          </button>
+        ))}
+      </nav>
+
+      <section aria-label="筛选召唤物" className="mt-3 rounded-lg border border-zinc-800 bg-zinc-950/55 p-2.5 sm:p-3">
+        <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
+          <label className="relative min-w-0 flex-1">
+            <Search aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-600" />
+            <input
+              type="search"
+              value={search}
+              onChange={(event) => updateQuery({ sq: event.target.value, summon: null, section: null }, "")}
+              placeholder="搜名称、射速、技能、Buff、插件或乘区…"
+              className="h-11 w-full rounded border border-zinc-700 bg-zinc-900 pl-9 pr-9 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-cyan-700 focus:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 lg:h-9"
+            />
+            {search && (
+              <button
+                type="button"
+                onClick={() => updateQuery({ sq: null }, "")}
+                aria-label="清除搜索"
+                className="absolute right-1 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center text-zinc-500 hover:text-zinc-200 focus-visible:outline-none focus-visible:underline"
+              >
+                <X aria-hidden="true" className="h-4 w-4" />
+              </button>
+            )}
+          </label>
+          <div className="flex min-w-0 gap-1.5 overflow-x-auto pb-0.5 lg:pb-0">
+            {KIND_OPTIONS.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => updateQuery({ "summon-kind": option.value, summon: null, section: null }, "")}
+                className={`min-h-10 shrink-0 rounded border px-3 text-xs font-medium focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 lg:min-h-9 ${
+                  kind === option.value
+                    ? "border-cyan-600 bg-cyan-950/45 text-cyan-200"
+                    : "border-zinc-800 bg-zinc-900 text-zinc-500 hover:border-zinc-700 hover:text-zinc-300"
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+          <span className="shrink-0 text-xs text-zinc-600">{visibleEntries.length} / {catalog.entries.length}</span>
+        </div>
+      </section>
+
+      <div className="mt-3 space-y-3">
+        {visibleEntries.map((entry) => (
+          <SummonEntry
+            key={entry.id}
+            entry={entry}
+            linked={linkedSummon === entry.id}
+            expanded={expandedIds.has(entry.id) || linkedSummon === entry.id}
+            onToggle={() => toggleEntry(entry.id)}
+          />
+        ))}
+        {visibleEntries.length === 0 && (
+          <div className="flex min-h-40 flex-col items-center justify-center rounded-lg border border-dashed border-zinc-800 bg-zinc-950/40 px-4 text-center">
+            <Search aria-hidden="true" className="h-6 w-6 text-zinc-700" />
+            <p className="m-0 mt-2 text-sm font-medium text-zinc-300">没有匹配的召唤物</p>
+            <p className="m-0 mt-1 text-xs text-zinc-600">试试“射速”“易伤”“哈士奇支援”或“地裂波”。</p>
+            <button
+              type="button"
+              onClick={() => updateQuery({ sq: null, "summon-kind": null, summon: null, section: null }, "")}
+              className="mt-3 inline-flex min-h-10 items-center gap-1.5 rounded border border-zinc-700 bg-zinc-900 px-3 text-xs text-zinc-300 hover:border-cyan-700 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+            >
+              <RotateCcw aria-hidden="true" className="h-3.5 w-3.5" />
+              重置筛选
+            </button>
+          </div>
+        )}
+      </div>
+
+      <div className="mt-3">
+        <SharedSystems catalog={catalog} />
+      </div>
+    </div>
+  );
+}

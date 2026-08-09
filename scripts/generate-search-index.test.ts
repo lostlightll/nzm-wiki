@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   createSeasonTalentSearchItem,
   createStatusEffectSearchItem,
+  createSummonSearchItem,
 } from "./generate-search-index";
 
 test("creates an enemy status-effect search item with a stable deep link", () => {
@@ -68,4 +69,27 @@ test("creates an S3 talent deep link without inventing older seasons", () => {
   assert.equal(item.category, "赛季天赋");
   assert.ok(item.keywords.includes("S3"));
   assert.ok(item.keywords.every((keyword) => !/^S[012]$/i.test(keyword)));
+});
+
+test("creates a summon mechanic deep link with Buff and multiplier keywords", () => {
+  const item = createSummonSearchItem({
+    id: "s3-iron-fist:iron-fist-shockwave",
+    title: "S3 铁拳狂徒 · 地裂波与冲击",
+    summonId: "s3-iron-fist",
+    section: "iron-fist-shockwave",
+    kind: "mechanic",
+    keywords: ["160403101", "冲击", "易伤乘区"],
+  });
+
+  assert.equal(item.category, "召唤物");
+  assert.equal(
+    item.path,
+    "/posts/summons?summon=s3-iron-fist&section=iron-fist-shockwave#summon-s3-iron-fist-iron-fist-shockwave",
+  );
+  assert.equal(
+    item.slug,
+    "summons/s3-iron-fist/mechanics/iron-fist-shockwave",
+  );
+  assert.ok(item.keywords.includes("160403101"));
+  assert.ok(item.keywords.includes("易伤乘区"));
 });

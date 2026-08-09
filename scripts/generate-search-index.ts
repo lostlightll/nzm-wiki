@@ -10,6 +10,7 @@ import {
 } from "../lib/weapon-consumers";
 import type { ResolvedWeapon } from "../lib/weapon-resolver";
 import { getStatusEffectSearchDocuments } from "../lib/status-effects";
+import { getSummonSearchDocuments } from "../lib/summons";
 import { getAllResolvedWeapons } from "../lib/weapons";
 
 export interface SearchItem {
@@ -228,6 +229,35 @@ export function createStatusEffectSearchItem(
   };
 }
 
+type SummonSearchDocument = ReturnType<typeof getSummonSearchDocuments>[number];
+
+export function createSummonSearchItem(
+  document: SummonSearchDocument,
+): SearchItem {
+  const params = new URLSearchParams({ summon: document.summonId });
+  if (document.section) params.set("section", document.section);
+  const anchor = document.section
+    ? `summon-${document.summonId}-${document.section}`
+    : `summon-${document.summonId}`;
+  const keywords = [
+    "召唤物",
+    document.summonId,
+    ...document.keywords,
+  ].filter(
+    (value, index, values) => value.length > 0 && values.indexOf(value) === index,
+  );
+  return {
+    title: document.title,
+    slug: document.section
+      ? `summons/${document.summonId}/mechanics/${document.section}`
+      : `summons/${document.summonId}`,
+    path: `/posts/summons?${params.toString()}#${anchor}`,
+    category: "召唤物",
+    keywords,
+    pinyin: buildPinyin([document.title, ...keywords]),
+  };
+}
+
 type SeasonTalentSearchDocument = {
   tree: string;
   treeName: string;
@@ -294,6 +324,7 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
   items.push(
     ...getStatusEffectSearchDocuments().map(createStatusEffectSearchItem),
   );
+  items.push(...getSummonSearchDocuments().map(createSummonSearchItem));
   const s3TalentSlugs = ["iron-fist", "zero", "grappling-hook"];
   for (const slug of s3TalentSlugs) {
     const talentFile = path.join(baseDir, "season-talents", "s3", `${slug}.json`);

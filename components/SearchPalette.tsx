@@ -72,6 +72,7 @@ const categoryColors: Record<string, string> = {
   塔防敌人: "text-orange-400",
   卡牌: "text-blue-400",
   状态效果: "text-cyan-400",
+  召唤物: "text-emerald-400",
   文章: "text-zinc-400",
 };
 

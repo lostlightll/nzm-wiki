@@ -44,6 +44,7 @@ import {
   ElementStatusSummary,
   StatusEffectCatalog,
 } from "@/components/StatusEffectCatalog";
+import { SummonCompendium } from "@/components/SummonCompendium";
 
 export const mdxComponents = {
   img: MDXImage,
@@ -86,6 +87,7 @@ export const mdxComponents = {
   PassiveSkill,
   ElementStatusSummary,
   StatusEffectCatalog,
+  SummonCompendium,
 };
 
 /**

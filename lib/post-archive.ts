@@ -2,6 +2,7 @@ const MECHANISM_POST_ORDER = new Map([
   ["element", 0],
   ["enemy-buffs", 1],
   ["player-buffs", 2],
+  ["summons", 3],
 ]);
 
 const POST_SLUG_COLLATOR = new Intl.Collator("en", {
@@ -24,4 +25,3 @@ export function sortPostArchiveItems<T extends { slug: string }>(posts: T[]): T[
     ),
   );
 }
-
