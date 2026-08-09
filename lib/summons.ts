@@ -1,6 +1,7 @@
 import ironFistTalent from "@/data/season-talents/s3/iron-fist.json";
 import passiveTalents from "@/data/season-talents/s3/passives.json";
 import zeroTalent from "@/data/season-talents/s3/zero.json";
+import summonDamageLockData from "@/data/summon-damage-lock.json";
 import summonData from "@/data/summons.json";
 import { getAllPerks } from "@/lib/perks";
 import {
@@ -17,6 +18,7 @@ import type {
   SummonCatalogEntryView,
   SummonCatalogView,
   SummonDamageDefinition,
+  SummonDamageLock,
   SummonDamageView,
   SummonDataLock,
   SummonPerkView,
@@ -46,6 +48,8 @@ type PassiveTalent = {
 };
 
 const data = summonData as SummonDataLock;
+const damageLock = summonDamageLockData as SummonDamageLock;
+const damageLockEntries = new Map(damageLock.entries.map((entry) => [entry.id, entry]));
 const trees = new Map<string, TalentTree>(
   ([ironFistTalent, zeroTalent] as TalentTree[]).map((tree) => [tree.id, tree]),
 );
@@ -244,8 +248,8 @@ async function hydrateDamage(
       ...definition,
       coefficient,
       attackStatLabel: "攻击力",
-      baseAttack: data.baseAttack,
-      baseDamage: coefficient === undefined ? undefined : coefficient * data.baseAttack,
+      baseAttack: damageLock.baseAttack,
+      baseDamage: coefficient === undefined ? undefined : coefficient * damageLock.baseAttack,
       element,
       enableCritical,
       enableWeakness,
@@ -262,41 +266,59 @@ async function hydrateDamage(
     };
   }
 
-  const configured = definition.configured;
-  if (!configured) throw new Error(`召唤物伤害 ${definition.id} 缺少数值来源`);
+  const locked = definition.lockSource
+    ? damageLockEntries.get(definition.lockSource)
+    : undefined;
+  if (!locked) throw new Error(`召唤物伤害 ${definition.id} 缺少有效的伤害锁引用`);
+  const coefficient = locked.rows.reduce((total, row) => total + row.coefficient, 0);
   const profile = buildDamageProfile({
-    settlements: configured.settlements,
-    element: configured.element,
-    enableCritical: configured.enableCritical,
-    enableWeakness: configured.enableWeakness,
+    settlements: locked.settlements,
+    element: locked.element,
+    enableCritical: locked.enableCritical,
+    enableWeakness: locked.enableWeakness,
   });
   return {
     ...definition,
-    coefficient: configured.coefficient,
-    attackStatLabel: configured.attackStat ?? "攻击力",
-    baseAttack: configured.baseAttack,
-    baseDamage:
-      configured.baseDamage ??
-      (configured.coefficient !== undefined && configured.baseAttack !== undefined
-        ? configured.coefficient * configured.baseAttack
-        : undefined),
-    element: configured.element,
-    enableCritical: configured.enableCritical,
-    enableWeakness: configured.enableWeakness,
-    weaknessMultiplier: configured.weaknessMultiplier,
-    settlements: configured.settlements,
+    coefficient,
+    attackStatLabel: locked.attackStat,
+    baseAttack: damageLock.baseAttack,
+    baseDamage: coefficient * damageLock.baseAttack,
+    element: locked.element,
+    enableCritical: locked.enableCritical,
+    enableWeakness: locked.enableWeakness,
+    weaknessMultiplier: locked.weaknessMultiplier,
+    settlements: locked.settlements,
     intervalSeconds: definition.rate?.intervalSeconds,
     roundsPerMinute: definition.rate?.roundsPerMinute,
     attacksPerAction: definition.rate?.attacksPerAction,
     multiplierRelations: getApplicableModifierTypes(profile).filter((relation) =>
       meaningfulDamageFactorIds.has(relation.factorId),
     ) as SummonDamageView["multiplierRelations"],
-    sourceLabel: "召唤配置锁",
+    sourceLabel: "召唤伤害锁",
   };
 }
 
-export function assertSummonDataLock(lock: SummonDataLock = data): void {
+export function assertSummonDamageLock(lock: SummonDamageLock = damageLock): void {
   if (lock.schemaVersion !== 1 || lock.mode !== "lc" || lock.baseAttack <= 0) {
+    throw new Error("召唤伤害锁顶层结构无效");
+  }
+  const ids = new Set<string>();
+  for (const entry of lock.entries) {
+    if (!entry.id || ids.has(entry.id)) {
+      throw new Error(`召唤伤害锁 ID 重复或为空：${entry.id}`);
+    }
+    ids.add(entry.id);
+    if (entry.rows.length === 0) throw new Error(`召唤伤害锁 ${entry.id} 缺少 Numerical 行`);
+    for (const row of entry.rows) {
+      if (!Number.isInteger(row.id) || row.level <= 0 || row.coefficient <= 0) {
+        throw new Error(`召唤伤害锁 ${entry.id} 包含无效 Numerical 行`);
+      }
+    }
+  }
+}
+
+export function assertSummonDataLock(lock: SummonDataLock = data): void {
+  if (lock.schemaVersion !== 1 || lock.mode !== "lc") {
     throw new Error("召唤物数据锁顶层结构无效");
   }
   const ids = new Set<string>();
@@ -309,13 +331,18 @@ export function assertSummonDataLock(lock: SummonDataLock = data): void {
         throw new Error(`${summon.id} 的伤害 ID 重复或为空：${damage.id}`);
       }
       damageIds.add(damage.id);
-      if (!damage.weaponSource && !damage.configured) {
+      const sourceCount = Number(Boolean(damage.weaponSource)) + Number(Boolean(damage.lockSource));
+      if (sourceCount !== 1) {
         throw new Error(`${summon.id}:${damage.id} 缺少伤害来源`);
+      }
+      if (damage.lockSource && !damageLockEntries.has(damage.lockSource)) {
+        throw new Error(`${summon.id}:${damage.id} 引用了不存在的召唤伤害锁`);
       }
     }
   }
 }
 
+assertSummonDamageLock();
 assertSummonDataLock();
 
 export async function getSummonCatalog(): Promise<SummonCatalogView> {

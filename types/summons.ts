@@ -60,17 +60,7 @@ export interface SummonDamageDefinition {
     weaponSlug: string;
     damageSourceId: string;
   };
-  configured?: {
-    coefficient?: number;
-    attackStat?: "攻击力" | "技能攻击力";
-    baseAttack?: number;
-    baseDamage?: number;
-    element: SummonElement;
-    enableCritical: boolean;
-    enableWeakness: boolean;
-    weaknessMultiplier?: number;
-    settlements: string[];
-  };
+  lockSource?: string;
   rate?: {
     intervalSeconds?: number;
     roundsPerMinute?: number;
@@ -79,6 +69,34 @@ export interface SummonDamageDefinition {
     note?: string;
   };
   note?: string;
+}
+
+export interface SummonDamageLockRow {
+  id: number;
+  level: number;
+  coefficient: number;
+}
+
+export interface SummonDamageLockEntry {
+  id: string;
+  sourceTable:
+    | "numerical_config_equip"
+    | "numerical_config_others"
+    | "numerical_config_playerskill";
+  rows: SummonDamageLockRow[];
+  attackStat: "攻击力" | "技能攻击力";
+  element: SummonElement;
+  enableCritical: boolean;
+  enableWeakness: boolean;
+  weaknessMultiplier?: number;
+  settlements: string[];
+}
+
+export interface SummonDamageLock {
+  schemaVersion: 1;
+  mode: "lc";
+  baseAttack: number;
+  entries: SummonDamageLockEntry[];
 }
 
 export interface SummonTalentReference {
@@ -118,7 +136,6 @@ export interface SummonDefinition {
 export interface SummonDataLock {
   schemaVersion: 1;
   mode: "lc";
-  baseAttack: number;
   scope: string;
   sharedSystems: SummonMechanicDefinition[];
   sharedBuffRefs: SummonBuffReference[];
@@ -127,7 +144,7 @@ export interface SummonDataLock {
   summons: SummonDefinition[];
 }
 
-export interface SummonDamageView extends Omit<SummonDamageDefinition, "weaponSource"> {
+export interface SummonDamageView extends Omit<SummonDamageDefinition, "weaponSource" | "lockSource"> {
   coefficient?: number;
   attackStatLabel: "攻击力" | "技能攻击力";
   baseAttack?: number;

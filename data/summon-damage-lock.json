@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "mode": "lc",
+  "baseAttack": 500,
+  "entries": [
+    {
+      "id": "emplacement-shot",
+      "sourceTable": "numerical_config_equip",
+      "rows": [{ "id": 120600370, "level": 1, "coefficient": 0.08 }],
+      "attackStat": "攻击力",
+      "element": "火焰",
+      "enableCritical": true,
+      "enableWeakness": true,
+      "weaknessMultiplier": 1.3,
+      "settlements": ["Numerical.SettlementType.Health.WeaponDamage"]
+    },
+    {
+      "id": "judicator-shell",
+      "sourceTable": "numerical_config_others",
+      "rows": [{ "id": 19032001, "level": 1, "coefficient": 0.9 }],
+      "attackStat": "技能攻击力",
+      "element": "物理",
+      "enableCritical": true,
+      "enableWeakness": false,
+      "settlements": ["Numerical.SettlementType.Health.SkillDamage"]
+    },
+    {
+      "id": "destroyer-laser",
+      "sourceTable": "numerical_config_others",
+      "rows": [{ "id": 19032002, "level": 1, "coefficient": 1 }],
+      "attackStat": "技能攻击力",
+      "element": "物理",
+      "enableCritical": true,
+      "enableWeakness": false,
+      "settlements": ["Numerical.SettlementType.Health.SkillDamage"]
+    },
+    {
+      "id": "incinerator-tick",
+      "sourceTable": "numerical_config_others",
+      "rows": [{ "id": 19032003, "level": 1, "coefficient": 0.08 }],
+      "attackStat": "技能攻击力",
+      "element": "物理",
+      "enableCritical": true,
+      "enableWeakness": false,
+      "settlements": ["Numerical.SettlementType.Health.SkillDamage"]
+    },
+    {
+      "id": "iron-fist-arrival",
+      "sourceTable": "numerical_config_playerskill",
+      "rows": [{ "id": 160303007, "level": 1, "coefficient": 1.9 }],
+      "attackStat": "攻击力",
+      "element": "物理",
+      "enableCritical": false,
+      "enableWeakness": false,
+      "settlements": ["Numerical.SettlementType.Health.SkillDamage"]
+    },
+    {
+      "id": "iron-fist-combo",
+      "sourceTable": "numerical_config_playerskill",
+      "rows": [
+        { "id": 160303001, "level": 1, "coefficient": 0.5 },
+        { "id": 160303002, "level": 1, "coefficient": 0.5 },
+        { "id": 160303003, "level": 1, "coefficient": 0.5 }
+      ],
+      "attackStat": "攻击力",
+      "element": "物理",
+      "enableCritical": false,
+      "enableWeakness": false,
+      "settlements": ["Numerical.SettlementType.Health.SkillDamage"]
+    },
+    {
+      "id": "iron-fist-cannon",
+      "sourceTable": "numerical_config_playerskill",
+      "rows": [{ "id": 160303004, "level": 1, "coefficient": 1 }],
+      "attackStat": "攻击力",
+      "element": "物理",
+      "enableCritical": false,
+      "enableWeakness": false,
+      "settlements": ["Numerical.SettlementType.Health.SkillDamage"]
+    },
+    {
+      "id": "iron-fist-jump-slam",
+      "sourceTable": "numerical_config_playerskill",
+      "rows": [{ "id": 160303005, "level": 1, "coefficient": 2.7 }],
+      "attackStat": "攻击力",
+      "element": "物理",
+      "enableCritical": false,
+      "enableWeakness": false,
+      "settlements": ["Numerical.SettlementType.Health.SkillDamage"]
+    },
+    {
+      "id": "iron-fist-earth-wave",
+      "sourceTable": "numerical_config_playerskill",
+      "rows": [{ "id": 160303006, "level": 1, "coefficient": 1.9 }],
+      "attackStat": "攻击力",
+      "element": "物理",
+      "enableCritical": false,
+      "enableWeakness": false,
+      "settlements": ["Numerical.SettlementType.Health.SkillDamage"]
+    }
+  ]
+}

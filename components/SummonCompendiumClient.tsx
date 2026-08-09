@@ -90,6 +90,10 @@ function formatCoefficient(
     : `${formatNumber(value * 100, 2)}% ${attackStatLabel}`;
 }
 
+function formatBaseDamage(value: number | undefined): string {
+  return value === undefined ? "未公开" : value.toFixed(1);
+}
+
 function settlementLabel(settlements: readonly string[]): string {
   if (settlements.some((item) => item.endsWith("WeaponExplosionDamage"))) return "武器爆炸";
   if (settlements.some((item) => item.endsWith("WeaponDamage"))) return "武器直击";
@@ -190,13 +194,13 @@ function DamageRow({ damage }: { damage: SummonDamageView }) {
 
       <div className="grid grid-cols-2 gap-1.5 lg:block">
         <div className="rounded bg-zinc-950/55 px-2 py-1.5 lg:bg-transparent lg:p-0">
-          <span className="text-[11px] text-zinc-500 lg:hidden">单次系数</span>
-          <p className="m-0 text-xs font-medium leading-5 text-zinc-200">
-            {formatCoefficient(damage.coefficient, damage.attackStatLabel)}
+          <span className="text-[11px] text-zinc-500 lg:hidden">单次白值</span>
+          <p className="m-0 text-base font-semibold leading-5 tabular-nums text-zinc-100">
+            {formatBaseDamage(damage.baseDamage)}
           </p>
-          {damage.baseDamage !== undefined && (
+          {damage.coefficient !== undefined && (
             <p className="m-0 text-[11px] leading-4 text-zinc-500">
-              500 基准 = {formatNumber(damage.baseDamage)}
+              {formatCoefficient(damage.coefficient, damage.attackStatLabel)}
             </p>
           )}
         </div>
@@ -265,7 +269,7 @@ function DamageSection({ entry }: { entry: SummonCatalogEntryView }) {
             伤害与攻击节奏
           </h3>
           <p className="m-0 mt-1 text-xs leading-5 text-zinc-500">
-            系数按攻击属性计算；“500 基准”只用于快速横向比较，不代表实战最终伤害。
+            单次白值统一按 500 攻击力计算；下方保留原始攻击力系数，不代表实战最终伤害。
           </p>
         </div>
         <span className="text-xs text-zinc-600">{entry.damageSources.length} 条伤害</span>
@@ -273,7 +277,7 @@ function DamageSection({ entry }: { entry: SummonCatalogEntryView }) {
       <div className="overflow-hidden rounded-md border border-zinc-800 bg-zinc-900/35">
         <div className="hidden grid-cols-[minmax(8.5rem,1.15fr)_minmax(7rem,0.8fr)_minmax(7.5rem,0.8fr)_minmax(7.5rem,0.8fr)_minmax(18rem,2fr)] gap-3 bg-zinc-950/70 px-4 py-2 text-[11px] font-medium text-zinc-500 lg:grid">
           <span>伤害</span>
-          <span>单次系数</span>
+          <span>单次白值</span>
           <span>间隔 / 射速</span>
           <span>结算许可</span>
           <span>适用乘区 / 说明</span>

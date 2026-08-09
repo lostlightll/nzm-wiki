@@ -7,7 +7,7 @@
 ```text
 游戏导出证据 + 已发布武器 / S3 天赋
   → 人工核对召唤、Actor、AI 行为、Numerical 与 Buff 链
-  → data/summons.json
+  → data/summons.json + data/summon-damage-lock.json
   → lib/summons.ts
   → components/SummonCompendium*.tsx
   → data/posts/summons.mdx
@@ -17,6 +17,7 @@
 `lib/summons.ts` 会在服务端继续联查：
 
 - `data/weapon-data-lock.json`：已发布武器召唤伤害；
+- `data/summon-damage-lock.json`：武器锁未收录的炮台与赛季仆从 Numerical 伤害行；
 - `data/status-effects.json`：Buff 名称、持续时间、叠层与乘区；
 - `data/perks/slot-*/*.mdx`：只接受 `CollectMODItem: 1` 的插件；
 - `data/season-talents/s3/*.json`：只接受站内已发布 S3 天赋；
@@ -40,7 +41,7 @@
 
 ## 伤害与乘区
 
-武器类召唤伤害可用 `系数 × 猎场基准攻击 500` 展示裸值。技能攻击或赛季仆从只在已确认同一基准时才计算裸值，否则只显示百分比。
+图鉴中的单次白值统一使用 `系数 × 猎场基准攻击 500` 计算，作为不同召唤物之间的快速比较值；原始攻击力系数显示在白值下方。武器型召唤从 `weapon-data-lock.json` 解析系数，其余条目通过 `summons.json` 的 `lockSource` 索引 `summon-damage-lock.json`；页面配置不得直接写系数或白值。多段攻击在伤害锁中保留全部 Numerical 源行，运行时求和。该白值不包含实战中的攻击力成长、乘区、暴击、弱点和目标减伤，不等于最终实战伤害。
 
 “适用乘区”只表示该 Settlement 能受该类修正影响，不证明召唤 Actor 已继承玩家的全部属性。属性桥、独立原型或运行时覆盖证据必须单独记录。
 

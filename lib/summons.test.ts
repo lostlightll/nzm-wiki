@@ -2,16 +2,20 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import summonDamageLockData from "@/data/summon-damage-lock.json";
 import summonData from "@/data/summons.json";
 import {
+  assertSummonDamageLock,
   assertSummonDataLock,
   getSummonCatalog,
   getSummonSearchDocuments,
 } from "./summons";
-import type { SummonDataLock } from "@/types";
+import type { SummonDamageLock, SummonDataLock } from "@/types";
 
 test("summon lock has unique stable identities and local public assets", () => {
   const data = summonData as SummonDataLock;
+  const damageLock = summonDamageLockData as SummonDamageLock;
+  assert.doesNotThrow(() => assertSummonDamageLock(damageLock));
   assert.doesNotThrow(() => assertSummonDataLock(data));
   assert.equal(new Set(data.summons.map((summon) => summon.id)).size, data.summons.length);
   assert.ok(data.summons.length >= 6);
@@ -28,9 +32,21 @@ test("summon lock has unique stable identities and local public assets", () => {
     );
   }
   assert.doesNotMatch(JSON.stringify(data), /refs[\\/]/i);
+  assert.doesNotMatch(JSON.stringify(data), /"configured"/);
+  const lockIds = new Set(damageLock.entries.map((entry) => entry.id));
+  assert.ok(
+    data.summons
+      .flatMap((summon) => summon.damageSources)
+      .filter((damage) => damage.lockSource)
+      .every((damage) => lockIds.has(damage.lockSource!)),
+  );
+  assert.deepEqual(
+    damageLock.entries.find((entry) => entry.id === "iron-fist-combo")?.rows.map((row) => row.id),
+    [160303001, 160303002, 160303003],
+  );
 });
 
-test("catalog resolves weapon damage, configured rates, Buffs and published perks", async () => {
+test("catalog resolves locked damage, configured rates, Buffs and published perks", async () => {
   const catalog = await getSummonCatalog();
   const bully = catalog.entries.find((entry) => entry.id === "bully-drone");
   const husky = catalog.entries.find((entry) => entry.id === "husky-companion");
@@ -42,6 +58,13 @@ test("catalog resolves weapon damage, configured rates, Buffs and published perk
   assert.equal(bully.damageSources.find((item) => item.id === "drone-shot")?.coefficient, 0.08);
   assert.equal(bully.damageSources.find((item) => item.id === "drone-shot")?.roundsPerMinute, 300);
   assert.equal(husky.damageSources.find((item) => item.id === "husky-hit")?.baseDamage, 125);
+  assert.equal(turrets.damageSources.find((item) => item.id === "judicator-shell")?.baseDamage, 450);
+  assert.ok(
+    catalog.entries
+      .flatMap((entry) => entry.damageSources)
+      .filter((damage) => damage.coefficient !== undefined)
+      .every((damage) => damage.baseDamage === damage.coefficient! * 500),
+  );
   assert.equal(ironFist.damageSources.find((item) => item.id === "iron-fist-earth-wave")?.coefficient, 1.9);
   assert.equal(ironFist.damageSources.find((item) => item.id === "iron-fist-arrival")?.enableCritical, false);
   assert.equal(turrets.damageSources.find((item) => item.id === "destroyer-laser")?.intervalSeconds, undefined);
