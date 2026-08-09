@@ -160,29 +160,31 @@ export function BaseDamageDetail({
 
   return (
     <>
-      <div className="grid border-b border-zinc-700 lg:grid-cols-[minmax(0,1.4fr)_minmax(19rem,0.6fr)]">
-        <section className="border-b border-zinc-700 p-5 sm:p-6 lg:border-r lg:border-b-0 xl:p-5">
-          <h3 className="flex items-center gap-3 text-base font-semibold text-zinc-100">
-            <Calculator aria-hidden="true" className="h-5 w-5 text-zinc-200" />
-            计算规则
-          </h3>
-          <p className="mt-3 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base">
-            单颗弹丸、单段攻击或单次原子结算的武器白值，乘以当前模式的基础攻击力，得到无增伤身体伤害。
-          </p>
-          <div className="mt-4 border-l-2 border-[color:var(--guide-accent)] bg-zinc-800/45 px-4 py-3">
-            <p className="font-mono text-sm leading-6 text-zinc-100">
+      <div className="grid border-b border-zinc-700 lg:grid-cols-[minmax(0,1fr)_minmax(23rem,0.42fr)]">
+        <section className="border-b border-zinc-700 p-5 sm:p-6 lg:border-r lg:border-b-0 xl:px-5 xl:py-3">
+          <div className="xl:flex xl:items-baseline xl:gap-4">
+            <h3 className="flex shrink-0 items-center gap-3 text-base font-semibold text-zinc-100">
+              <Calculator aria-hidden="true" className="h-5 w-5 text-zinc-200" />
+              计算规则
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base xl:mt-0 xl:text-sm xl:leading-6">
+              单颗弹丸、单段攻击或单次原子结算的武器白值，乘以当前模式的基础攻击力，得到无增伤身体伤害。
+            </p>
+          </div>
+          <div className="mt-4 border-l-2 border-[color:var(--guide-accent)] bg-zinc-800/45 px-4 py-3 xl:mt-2 xl:flex xl:items-baseline xl:gap-4 xl:px-3 xl:py-2">
+            <p className="shrink-0 font-mono text-sm leading-6 text-zinc-100">
               {BASE_DAMAGE_DATA.formula}
             </p>
-            <p className="mt-1 text-xs leading-5 text-zinc-400">
+            <p className="mt-1 text-xs leading-5 text-zinc-400 xl:mt-0">
               不包含弹丸数、多段次数、射速、距离衰减、暴击、弱点和其他增伤。
             </p>
           </div>
         </section>
 
-        <section className="p-5 sm:p-6 xl:p-5">
-          <h3 className="text-base font-semibold text-zinc-100">游戏模式</h3>
+        <section className="p-5 sm:p-6 xl:flex xl:items-center xl:gap-4 xl:px-4 xl:py-3">
+          <h3 className="shrink-0 text-base font-semibold text-zinc-100">游戏模式</h3>
           <div
-            className="mt-3 grid grid-cols-2 rounded-md border border-zinc-700 bg-zinc-900 p-1"
+            className="mt-3 grid grid-cols-2 rounded-md border border-zinc-700 bg-zinc-900 p-1 xl:mt-0 xl:min-w-0 xl:flex-1"
             role="group"
             aria-label="选择基础伤害游戏模式"
           >
