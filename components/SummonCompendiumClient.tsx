@@ -506,11 +506,11 @@ function SummonEntry({
   return (
     <article
       id={`summon-${entry.id}`}
-      className={`scroll-mt-24 overflow-hidden rounded-lg border bg-zinc-900/30 target:border-cyan-600/70 target:bg-cyan-950/10 ${
+      className={`scroll-mt-24 overflow-hidden rounded-lg border bg-zinc-900/30 transition-colors duration-200 target:border-cyan-600/70 target:bg-cyan-950/10 motion-reduce:transition-none ${
         linked ? "border-cyan-700/70 bg-cyan-950/10" : "border-zinc-800"
       }`}
     >
-      <header className={`flex min-w-0 flex-col gap-3 bg-zinc-950/45 p-3 sm:flex-row sm:items-start sm:p-4 ${expanded ? "border-b border-zinc-800" : ""}`}>
+      <header className={`flex min-w-0 flex-col gap-3 border-b bg-zinc-950/45 p-3 transition-colors duration-200 sm:flex-row sm:items-start sm:p-4 motion-reduce:transition-none ${expanded ? "border-zinc-800" : "border-transparent"}`}>
         <div className="flex min-w-0 items-start gap-3">
           <AssetIcon src={entry.icon} alt={entry.name} size={64} className="h-14 w-14 sm:h-16 sm:w-16" />
           <div className="min-w-0">
@@ -529,7 +529,7 @@ function SummonEntry({
         <div className="ml-auto flex shrink-0 items-center gap-2">
           <Link
             href={entry.source.href}
-            className="relative inline-flex min-h-10 items-center justify-center gap-1.5 rounded border border-zinc-700 bg-zinc-900 px-3 text-xs font-medium text-zinc-300 after:absolute after:-inset-1 after:content-[''] hover:border-cyan-700 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 lg:min-h-9"
+            className="relative inline-flex min-h-11 items-center justify-center gap-1.5 rounded border border-zinc-700 bg-zinc-900 px-3 text-xs font-medium text-zinc-300 after:absolute after:-inset-1 after:content-[''] hover:border-cyan-700 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 lg:min-h-9"
           >
             {entry.source.label}
             <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
@@ -539,18 +539,34 @@ function SummonEntry({
             onClick={onToggle}
             aria-expanded={expanded}
             aria-controls={`summon-details-${entry.id}`}
-            className="inline-flex min-h-10 touch-manipulation items-center gap-1.5 rounded border border-zinc-700 bg-zinc-900 px-3 text-xs font-medium text-zinc-300 hover:border-cyan-700 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 lg:min-h-9"
+            className={`inline-flex min-h-11 touch-manipulation items-center gap-1.5 rounded border px-3 text-xs font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 lg:min-h-9 motion-reduce:transition-none ${
+              expanded
+                ? "border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-cyan-700 hover:text-cyan-200"
+                : "border-cyan-500/75 bg-cyan-950/80 text-cyan-100 hover:border-cyan-400 hover:bg-cyan-900/60"
+            }`}
           >
-            {expanded ? "收起详情" : "展开详情"}
+            <BookOpenText aria-hidden="true" className="h-3.5 w-3.5" />
+            {expanded ? "收起完整详情" : "展开完整详情"}
             <ChevronDown
               aria-hidden="true"
-              className={`h-3.5 w-3.5 transition-transform duration-150 motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`}
+              className={`h-3.5 w-3.5 transition-transform duration-200 motion-reduce:transition-none ${expanded ? "rotate-180" : ""}`}
             />
           </button>
         </div>
       </header>
 
-      {expanded && <div id={`summon-details-${entry.id}`} className="p-3 sm:p-4">
+      <div
+        id={`summon-details-${entry.id}`}
+        aria-hidden={!expanded}
+        inert={!expanded}
+        className={`grid overflow-hidden transition-[grid-template-rows,opacity] motion-reduce:transition-none ${
+          expanded
+            ? "grid-rows-[1fr] opacity-100 duration-300 ease-out"
+            : "pointer-events-none grid-rows-[0fr] opacity-0 duration-200 ease-in"
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className={`p-3 transition-transform duration-300 sm:p-4 motion-reduce:transform-none motion-reduce:transition-none ${expanded ? "translate-y-0" : "-translate-y-1"}`}>
         <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-md border border-zinc-800 bg-zinc-800 sm:grid-cols-3 lg:grid-cols-6">
           {facts.map(({ icon: Icon, label, value }) => (
             <div key={label} className="min-w-0 bg-zinc-950/75 px-2.5 py-2">
@@ -590,7 +606,9 @@ function SummonEntry({
             {entry.evidenceNotes.map((note) => <li key={note}>{note}</li>)}
           </ul>
         </details>
-      </div>}
+          </div>
+        </div>
+      </div>
     </article>
   );
 }
