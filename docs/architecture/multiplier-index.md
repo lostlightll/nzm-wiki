@@ -74,9 +74,10 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 
 ```text
 /guides?factor=dilution&view=providers&modifier=all-damage#multiplier
+/guides?part=damage-sources#multiplier
 ```
 
-`factor`、`view`、`modifier` 是可分享和可前进/后退恢复的权威状态；基础伤害索引额外使用 `mode=td` 表示塔防，缺少或非法 `mode` 时默认猎场。本地存储只作为没有查询参数时的乘区选择回退。
+`part`、`factor`、`view`、`modifier` 是可分享和可前进/后退恢复的权威状态；`part=damage-sources` 打开同页 Part 2，不创建独立子路由。基础伤害索引额外使用 `mode=td` 表示塔防，缺少或非法 `mode` 时默认猎场。本地存储只作为没有查询参数时的乘区选择回退。
 
 武器原子来源使用 `#damage-source-{sourceId}`。赛季节点和被动使用可分享 query 深链：
 

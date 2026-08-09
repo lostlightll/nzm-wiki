@@ -33,7 +33,7 @@ import {
 import type { WeaponType } from "@/types";
 import type { WeaponBaseDamageEntry } from "@/lib/weapon-base-damage";
 import { BaseDamageDetail } from "./BaseDamageDetail";
-import { DamageChannelMatrix } from "./DamageChannelMatrix";
+import { DamageSourcesOverview } from "./DamageSourcesOverview";
 import {
   MultiplierBidirectionalIndex,
   type MultiplierTargetIndexEntry,
@@ -44,7 +44,17 @@ const DETAIL_PANEL_ID = "multiplier-detail-panel";
 const SELECTED_FACTOR_STORAGE_KEY = "nzm-wiki:guides:multiplier:selected-factor";
 const SELECTED_FACTOR_CHANGE_EVENT = "nzm-wiki:multiplier-factor-change";
 
-type MultiplierPart = "formula" | "channels" | "index";
+type MultiplierPart = "formula" | "damage-sources" | "index";
+
+const MULTIPLIER_PARTS: readonly {
+  id: MultiplierPart;
+  part: string;
+  label: string;
+}[] = [
+  { id: "formula", part: "Part 1", label: "乘区公式" },
+  { id: "damage-sources", part: "Part 2", label: "伤害来源" },
+  { id: "index", part: "Part 3", label: "增伤索引" },
+];
 
 let inMemorySelectedFactorId = DEFAULT_FACTOR_ID;
 
@@ -656,13 +666,15 @@ export function MultiplierOverview({
 
   useEffect(() => {
     const syncPartFromQuery = () => {
-      const view = new URLSearchParams(window.location.search).get("view");
-      setActivePart((currentPart) =>
-        view === "providers" || view === "targets"
-          ? "index"
-          : currentPart === "index"
-            ? "formula"
-            : currentPart,
+      const params = new URLSearchParams(window.location.search);
+      const part = params.get("part");
+      const view = params.get("view");
+      setActivePart(
+        part === "damage-sources"
+          ? "damage-sources"
+          : view === "providers" || view === "targets"
+            ? "index"
+            : "formula",
       );
     };
     syncPartFromQuery();
@@ -698,8 +710,14 @@ export function MultiplierOverview({
   const selectPart = (part: MultiplierPart) => {
     const url = new URL(window.location.href);
     if (part === "index") {
+      url.searchParams.delete("part");
       if (!url.searchParams.has("view")) url.searchParams.set("view", "providers");
+    } else if (part === "damage-sources") {
+      url.searchParams.set("part", "damage-sources");
+      url.searchParams.delete("view");
+      url.searchParams.delete("modifier");
     } else {
+      url.searchParams.delete("part");
       url.searchParams.delete("view");
       url.searchParams.delete("modifier");
     }
@@ -715,21 +733,15 @@ export function MultiplierOverview({
         aria-label="游戏乘区分篇"
         className="mx-auto mb-5 grid max-w-2xl grid-cols-3 rounded-lg border border-zinc-700 bg-zinc-900/75 p-1 xl:mb-3"
       >
-        {(
-          [
-            { id: "formula", part: "Part 1", label: "乘区公式" },
-            { id: "channels", part: "Part 2", label: "增幅通道" },
-            { id: "index", part: "Part 3", label: "增伤索引" },
-          ] as const
-        ).map(({ id, part, label }) => {
-          const active = activePart === id;
+        {MULTIPLIER_PARTS.map((item) => {
+          const active = activePart === item.id;
 
           return (
             <button
-              key={id}
+              key={item.id}
               type="button"
               aria-pressed={active}
-              onClick={() => selectPart(id)}
+              onClick={() => selectPart(item.id)}
               className={`min-h-11 cursor-pointer touch-manipulation rounded-md border px-3 py-2 transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
                 active
                   ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
@@ -737,16 +749,16 @@ export function MultiplierOverview({
               }`}
             >
               <span className="block text-[10px] font-semibold uppercase leading-4 text-current">
-                {part}
+                {item.part}
               </span>
-              <span className="block text-sm font-semibold leading-5">{label}</span>
+              <span className="block text-sm font-semibold leading-5">{item.label}</span>
             </button>
           );
         })}
       </nav>
 
-      {activePart === "channels" ? (
-        <DamageChannelMatrix />
+      {activePart === "damage-sources" ? (
+        <DamageSourcesOverview />
       ) : activePart === "index" ? (
         <MultiplierBidirectionalIndex
           selectedFactorId={selectedFactorId}

@@ -320,6 +320,24 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
   console.log("Generating search index...");
 
   const items = scanDirectory(baseDir);
+  const damageSourceKeywords = [
+    "伤害来源",
+    "射击伤害",
+    "原子伤害",
+    "WeaponDamage",
+    "WeaponExplosionDamage",
+    "SettlementType",
+    "增伤范围",
+    "游戏乘区 Part 2",
+  ];
+  items.push({
+    title: "伤害来源分类",
+    slug: "guides?part=damage-sources#multiplier",
+    path: "/guides?part=damage-sources#multiplier",
+    category: "攻略机制",
+    keywords: damageSourceKeywords,
+    pinyin: buildPinyin(["伤害来源分类", ...damageSourceKeywords]),
+  });
   items.push(...weapons.map(createWeaponSearchItem));
   items.push(
     ...getStatusEffectSearchDocuments().map(createStatusEffectSearchItem),
