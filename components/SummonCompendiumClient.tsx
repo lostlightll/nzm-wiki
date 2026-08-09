@@ -17,6 +17,7 @@ import {
   HeartPulse,
   Info,
   Layers3,
+  ListFilter,
   RadioTower,
   RotateCcw,
   Search,
@@ -118,11 +119,19 @@ function getServerLocationSnapshot() {
   return "";
 }
 
-function updateQuery(updates: Record<string, string | null>, hash?: string) {
+function updateQuery(updates: Record<string, string | string[] | null>, hash?: string) {
   const url = new URL(window.location.href);
   for (const [key, value] of Object.entries(updates)) {
-    if (!value || value === "all") url.searchParams.delete(key);
-    else url.searchParams.set(key, value);
+    if (Array.isArray(value)) {
+      url.searchParams.delete(key);
+      value.forEach((item) => {
+        if (item && item !== "all") url.searchParams.append(key, item);
+      });
+    } else if (!value || value === "all") {
+      url.searchParams.delete(key);
+    } else {
+      url.searchParams.set(key, value);
+    }
   }
   if (hash !== undefined) url.hash = hash;
   window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
@@ -683,6 +692,10 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
     ? kindValue as KindFilter
     : "all";
   const linkedSummon = params.get("summon");
+  const summonFilters = useMemo(() => {
+    const validIds = new Set(catalog.entries.map((entry) => entry.id));
+    return new Set(params.getAll("summon-filter").filter((id) => validIds.has(id)));
+  }, [catalog.entries, params]);
   const section = params.get("section");
   const [expandedIds, setExpandedIds] = useState<Set<string>>(() => new Set());
 
@@ -711,6 +724,7 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
   }
 
   const visibleEntries = useMemo(() => catalog.entries.filter((entry) => {
+    if (summonFilters.size > 0 && !summonFilters.has(entry.id)) return false;
     if (kind !== "all" && entry.kind !== kind) return false;
     if (!deferredSearch) return true;
     const searchable = [
@@ -732,7 +746,7 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
       ...entry.talents.flatMap((talent) => [talent.name, ...talent.descriptions]),
     ].join(" ").toLocaleLowerCase();
     return searchable.includes(deferredSearch);
-  }), [catalog.entries, deferredSearch, kind]);
+  }), [catalog.entries, deferredSearch, kind, summonFilters]);
 
   return (
     <div className="not-prose my-6 min-w-0 text-zinc-200">
@@ -775,22 +789,60 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
         </div>
       </section>
 
-      <nav aria-label="召唤物快速索引" className="mt-3 flex min-w-0 gap-2 overflow-x-auto pb-1 [scrollbar-width:thin]">
-        {catalog.entries.map((entry) => (
-          <button
-            key={entry.id}
-            type="button"
-            onClick={() => updateQuery({ summon: entry.id, section: null }, `summon-${entry.id}`)}
-            className={`inline-flex min-h-10 shrink-0 touch-manipulation items-center gap-2 rounded border px-2.5 text-xs transition-colors duration-150 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
-              linkedSummon === entry.id
-                ? "border-cyan-600 bg-cyan-950/45 text-cyan-200"
-                : "border-zinc-800 bg-zinc-950/60 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
-            }`}
-          >
-            <AssetIcon src={entry.icon} alt="" size={24} className="h-6 w-6 border-zinc-800" />
-            {entry.name}
-          </button>
-        ))}
+      <nav
+        aria-label="按召唤物筛选"
+        className="mt-3 flex min-w-0 flex-col gap-2 rounded-lg border border-zinc-800 bg-zinc-950/55 p-2 sm:flex-row sm:items-center"
+      >
+        <div className="flex shrink-0 items-center justify-between gap-3 px-1 sm:justify-start">
+          <span className="flex items-center gap-1.5 text-xs font-semibold text-zinc-300">
+            <ListFilter aria-hidden="true" className="h-4 w-4 text-cyan-400" />
+            召唤物筛选
+          </span>
+          {summonFilters.size > 0 && (
+            <>
+              <span className="text-[11px] text-zinc-600">已选 {summonFilters.size} 项</span>
+              <button
+                type="button"
+                onClick={() => updateQuery({ "summon-filter": null, summon: null, section: null }, "")}
+                className="min-h-8 shrink-0 px-1.5 text-[11px] text-cyan-400 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+              >
+                清除
+              </button>
+            </>
+          )}
+        </div>
+        <div className="flex min-w-0 gap-2 overflow-x-auto pb-0.5 sm:pb-0 [scrollbar-width:thin]">
+          {catalog.entries.map((entry) => {
+            const selected = summonFilters.has(entry.id);
+            return (
+              <button
+                key={entry.id}
+                type="button"
+                aria-pressed={selected}
+                onClick={() => {
+                  const next = new Set(summonFilters);
+                  if (selected) next.delete(entry.id);
+                  else next.add(entry.id);
+                  updateQuery({
+                    "summon-filter": catalog.entries
+                      .filter((item) => next.has(item.id))
+                      .map((item) => item.id),
+                    summon: null,
+                    section: null,
+                  }, "");
+                }}
+                className={`inline-flex min-h-10 shrink-0 touch-manipulation items-center gap-2 rounded border px-2.5 text-xs transition-colors duration-150 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
+                  selected
+                    ? "border-cyan-600 bg-cyan-950/45 text-cyan-200"
+                    : "border-zinc-800 bg-zinc-950/60 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+                }`}
+              >
+                <AssetIcon src={entry.icon} alt="" size={24} className="h-6 w-6 border-zinc-800" />
+                {entry.name}
+              </button>
+            );
+          })}
+        </div>
       </nav>
 
       <section aria-label="筛选召唤物" className="mt-3 rounded-lg border border-zinc-800 bg-zinc-950/55 p-2.5 sm:p-3">
@@ -852,7 +904,7 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
             <p className="m-0 mt-1 text-xs text-zinc-600">试试“射速”“易伤”“哈士奇支援”或“地裂波”。</p>
             <button
               type="button"
-              onClick={() => updateQuery({ sq: null, "summon-kind": null, summon: null, section: null }, "")}
+              onClick={() => updateQuery({ sq: null, "summon-kind": null, "summon-filter": null, summon: null, section: null }, "")}
               className="mt-3 inline-flex min-h-10 items-center gap-1.5 rounded border border-zinc-700 bg-zinc-900 px-3 text-xs text-zinc-300 hover:border-cyan-700 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
             >
               <RotateCcw aria-hidden="true" className="h-3.5 w-3.5" />
