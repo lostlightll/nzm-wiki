@@ -53,6 +53,76 @@ export interface StatusEffectCatalogEntry {
   variants: StatusEffectVariant[];
 }
 
+export type StatusEffectSemanticGroupId =
+  | "elemental"
+  | "vulnerability"
+  | "damage-over-time"
+  | "control"
+  | "offense"
+  | "defense"
+  | "sustain"
+  | "mobility"
+  | "resource"
+  | "negative"
+  | "special";
+
+export interface StatusEffectSemanticGroup {
+  id: StatusEffectSemanticGroupId;
+  label: string;
+  description: string;
+}
+
+export interface StatusEffectMultiplierRelation {
+  factorId: string;
+  factorLabel: string;
+  modifierTypeId: string;
+  modifierTypeLabel: string;
+  displayLabel: string;
+  modifierIds: number[];
+  href: string;
+}
+
+export type StatusEffectRelatedContentType =
+  | "perk"
+  | "overlimit-card"
+  | "season-talent"
+  | "weapon"
+  | "overlimit-bond"
+  | "post";
+
+export type StatusEffectRelatedContentRelation =
+  | "confirmed-source"
+  | "same-multiplier";
+
+export interface StatusEffectRelatedContent {
+  id: string;
+  type: StatusEffectRelatedContentType;
+  typeLabel: string;
+  title: string;
+  href: string;
+  relation: StatusEffectRelatedContentRelation;
+  relationLabel: string;
+  note: string;
+  factorLabels: string[];
+  season?: string;
+}
+
+export interface StatusEffectCatalogViewEntry extends StatusEffectCatalogEntry {
+  group: StatusEffectSemanticGroup;
+  summary: string;
+  practical: boolean;
+  multiplierRelations: StatusEffectMultiplierRelation[];
+  relatedContent: StatusEffectRelatedContent[];
+  searchTerms: string[];
+}
+
+export interface StatusEffectSearchDocument {
+  buffId: number;
+  title: string;
+  target: StatusEffectTarget;
+  keywords: string[];
+}
+
 export interface ElementStatusSummary {
   id: "fire" | "cryo" | "shock" | "corossive";
   name: string;

@@ -1,27 +1,15 @@
 import Link from "next/link";
 import { ArrowUpRight, Layers3, Zap } from "lucide-react";
+import { getMultiplierFactorStyle } from "@/components/multiplier-badge-styles";
 import {
   getApplicableModifierTypes,
   getProviderRelationsForSource,
   getRelationsByFactor,
   resolveMultiplierFactorHref,
   type DamageProfile,
-  type MultiplierFactorId,
   type MultiplierRelation,
   type MultiplierSource,
 } from "@/lib/multiplier-data";
-
-const FACTOR_STYLES: Record<MultiplierFactorId, string> = {
-  base: "border-zinc-500/60 bg-zinc-500/10 text-zinc-200",
-  "weakpoint-multiplier": "border-rose-400/50 bg-rose-400/10 text-rose-200",
-  "game-mode": "border-sky-400/50 bg-sky-400/10 text-sky-200",
-  dilution: "border-amber-400/50 bg-amber-400/10 text-amber-200",
-  element: "border-cyan-400/50 bg-cyan-400/10 text-cyan-200",
-  weakness: "border-red-400/50 bg-red-400/10 text-red-200",
-  critical: "border-orange-400/50 bg-orange-400/10 text-orange-200",
-  correction: "border-emerald-400/50 bg-emerald-400/10 text-emerald-200",
-  vulnerability: "border-teal-400/50 bg-teal-400/10 text-teal-200",
-};
 
 type MultiplierBadgeVariant =
   | "default"
@@ -75,7 +63,7 @@ export function MultiplierBadges({
             prefetch={false}
             title={description}
             aria-label={description}
-            className={`relative inline-flex touch-manipulation items-center border transition-colors duration-200 hover:brightness-125 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${isCatalogOverlay ? "min-h-7 rounded-bl-md rounded-br-none rounded-tl-none rounded-tr-md px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2 after:content-['']" : isCatalogInline ? "min-h-5 rounded px-2 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-3 after:content-['']" : isCatalogCompact ? "min-h-6 rounded px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2.5 after:content-['']" : "min-h-11 gap-1 rounded px-2 py-1 text-xs font-semibold leading-5 sm:min-h-7"} ${FACTOR_STYLES[factorId]}`}
+            className={`relative inline-flex touch-manipulation items-center border transition-colors duration-200 hover:brightness-125 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${isCatalogOverlay ? "min-h-7 rounded-bl-md rounded-br-none rounded-tl-none rounded-tr-md px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2 after:content-['']" : isCatalogInline ? "min-h-5 rounded px-2 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-3 after:content-['']" : isCatalogCompact ? "min-h-6 rounded px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2.5 after:content-['']" : "min-h-11 gap-1 rounded px-2 py-1 text-xs font-semibold leading-5 sm:min-h-7"} ${getMultiplierFactorStyle(factorId)}`}
           >
             {!isCompact && (
               <Layers3 aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />

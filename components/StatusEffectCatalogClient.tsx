@@ -1,19 +1,39 @@
 "use client";
 
 import Image from "next/image";
-import { CircleDashed, Search, X } from "lucide-react";
-import { useDeferredValue, useMemo, useState } from "react";
+import Link from "next/link";
+import {
+  BookOpenText,
+  CheckCircle2,
+  CircleDashed,
+  ExternalLink,
+  Filter,
+  Search,
+  SlidersHorizontal,
+  X,
+} from "lucide-react";
+import {
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import { getMultiplierFactorStyle } from "@/components/multiplier-badge-styles";
 import { getAssetPath } from "@/lib/path";
 import type {
-  StatusEffectCatalogEntry,
+  StatusEffectCatalogViewEntry,
   StatusEffectModifierReference,
   StatusEffectNumericalReference,
   StatusEffectPolarity,
+  StatusEffectRelatedContent,
+  StatusEffectRelatedContentType,
   StatusEffectTarget,
   StatusEffectVariant,
 } from "@/types";
 
-const PAGE_SIZE = 60;
+const PRACTICAL_PAGE_SIZE = 30;
+const CONFIG_PAGE_SIZE = 60;
 
 const CATEGORY_LABELS: Record<string, string> = {
   PositiveModifier: "属性增益",
@@ -34,7 +54,20 @@ const POLARITY_LABELS: Record<StatusEffectPolarity, string> = {
   negative: "减益",
 };
 
+const RELATED_TYPE_LABELS: Partial<Record<StatusEffectRelatedContentType, string>> = {
+  perk: "插件",
+  "overlimit-card": "超限卡片",
+  "season-talent": "S3 天赋",
+  weapon: "武器技能",
+};
+
+type CatalogView = "practical" | "config";
 type PolarityFilter = "all" | StatusEffectPolarity;
+type RelatedFilter =
+  | "all"
+  | "confirmed"
+  | "multiplier"
+  | StatusEffectRelatedContentType;
 
 function categoryLabel(category: string) {
   return CATEGORY_LABELS[category] ?? category;
@@ -45,7 +78,7 @@ function formatNumber(value: number) {
 }
 
 function formatDuration(value: number) {
-  if (value < 0) return "永久";
+  if (value < 0) return "持续存在";
   if (value <= 0.1) return "瞬时";
   return `${formatNumber(value)} 秒`;
 }
@@ -60,37 +93,41 @@ function formatStackSet(variants: StatusEffectVariant[]) {
   return values.length === 1 ? `${values[0]} 层` : `${values.slice(0, 3).join(" / ")} 层`;
 }
 
-function isVariantVisibleForTarget(
-  variant: StatusEffectVariant,
-  target: StatusEffectTarget,
-) {
-  if (target === "enemy") {
-    return (
-      variant.polarity === "negative" &&
-      (variant.displayMask === 2 || variant.displayMask === 3)
-    );
-  }
-  return (
-    variant.displayMask === 1 ||
-    variant.displayMask === 3 ||
-    variant.displayMask === 4
-  );
+function subscribeToLocation(callback: () => void) {
+  window.addEventListener("popstate", callback);
+  window.addEventListener("status-effect-query-change", callback);
+  return () => {
+    window.removeEventListener("popstate", callback);
+    window.removeEventListener("status-effect-query-change", callback);
+  };
 }
 
-function entrySearchText(entry: StatusEffectCatalogEntry) {
-  return [
-    entry.buffId,
-    ...entry.names,
-    ...entry.descriptions,
-    ...entry.categories,
-    ...entry.variants.flatMap((variant) => [
-      variant.rowName,
-      variant.name,
-      variant.description,
-    ]),
-  ]
-    .join(" ")
-    .toLocaleLowerCase();
+function getLocationSnapshot() {
+  return `${window.location.search}${window.location.hash}`;
+}
+
+function getServerLocationSnapshot() {
+  return "";
+}
+
+function updateCatalogQuery(
+  updates: Record<string, string | null>,
+  options: { keepBuff?: boolean } = {},
+) {
+  const url = new URL(window.location.href);
+  for (const [key, value] of Object.entries(updates)) {
+    if (!value || value === "all" || (key === "view" && value === "practical")) {
+      url.searchParams.delete(key);
+    } else {
+      url.searchParams.set(key, value);
+    }
+  }
+  if (!options.keepBuff) {
+    url.searchParams.delete("buff");
+    url.hash = "";
+  }
+  window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+  window.dispatchEvent(new Event("status-effect-query-change"));
 }
 
 function ModifierReference({
@@ -145,21 +182,21 @@ function NumericalReference({
   );
 }
 
-function StatusEffectDetails({
+function StatusEffectTechnicalDetails({
   entry,
   modifiers,
   numericals,
 }: {
-  entry: StatusEffectCatalogEntry;
+  entry: StatusEffectCatalogViewEntry;
   modifiers: Record<string, StatusEffectModifierReference[]>;
   numericals: Record<string, StatusEffectNumericalReference[]>;
 }) {
   return (
-    <details className="group/details border-t border-zinc-800 bg-black/10 px-3 py-2 sm:px-4">
-      <summary className="w-fit cursor-pointer select-none text-xs font-medium text-zinc-400 hover:text-zinc-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
-        技术详情 · {entry.variants.length} 个配置变体
+    <details className="mt-3 border-t border-zinc-800 pt-2">
+      <summary className="flex min-h-11 w-fit cursor-pointer select-none items-center text-xs font-medium text-zinc-400 hover:text-zinc-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
+        原始配置 · {entry.variants.length} 个变体
       </summary>
-      <div className="mt-3 space-y-3 text-xs leading-5 text-zinc-400">
+      <div className="space-y-3 pb-1 text-xs leading-5 text-zinc-400">
         <p className="m-0 break-all">
           <span className="text-zinc-500">BuffID：</span>{entry.buffId}
         </p>
@@ -205,153 +242,384 @@ function StatusEffectDetails({
   );
 }
 
+function RelatedContentList({ items }: { items: StatusEffectRelatedContent[] }) {
+  if (items.length === 0) return null;
+  const confirmed = items.filter((item) => item.relation === "confirmed-source");
+  const sameMultiplier = items.filter((item) => item.relation === "same-multiplier");
+
+  const renderItems = (values: StatusEffectRelatedContent[]) => (
+    <ul className="m-0 grid list-none gap-2 p-0 md:grid-cols-2">
+      {values.map((item) => (
+        <li key={`${item.id}:${item.href}`} className="min-w-0 rounded border border-zinc-800 bg-zinc-950/45 p-3">
+          <div className="flex min-w-0 items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="m-0 text-[11px] font-medium text-zinc-500">
+                {item.typeLabel}{item.season ? ` · ${item.season}` : ""}
+              </p>
+              <Link
+                href={item.href}
+                className="mt-1 inline-flex min-h-6 max-w-full items-center gap-1 break-words text-sm font-medium text-cyan-300 hover:text-cyan-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+              >
+                {item.title}
+                <ExternalLink aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+              </Link>
+            </div>
+            <span className={`shrink-0 rounded border px-1.5 py-0.5 text-[10px] ${
+              item.relation === "confirmed-source"
+                ? "border-emerald-800 bg-emerald-950/50 text-emerald-300"
+                : "border-zinc-700 bg-zinc-900 text-zinc-400"
+            }`}>
+              {item.relationLabel}
+            </span>
+          </div>
+          <p className="m-0 mt-2 text-xs leading-5 text-zinc-500">{item.note}</p>
+          {item.factorLabels.length > 0 && (
+            <p className="m-0 mt-1 text-[11px] text-violet-300">
+              {item.factorLabels.join(" · ")}
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+
+  return (
+    <div className="mt-4 space-y-4">
+      {confirmed.length > 0 && (
+        <section>
+          <h4 className="m-0 mb-2 flex items-center gap-1.5 text-xs font-semibold text-emerald-300">
+            <CheckCircle2 aria-hidden="true" className="h-4 w-4" />
+            确认施加来源
+          </h4>
+          {renderItems(confirmed)}
+        </section>
+      )}
+      {sameMultiplier.length > 0 && (
+        <section>
+          <h4 className="m-0 mb-1 text-xs font-semibold text-zinc-300">
+            同乘区内容参考
+          </h4>
+          <p className="m-0 mb-2 text-xs leading-5 text-zinc-500">
+            这些内容使用同一伤害通道，方便继续查增伤机制；它们不一定会施加当前 Buff。
+          </p>
+          {renderItems(sameMultiplier)}
+        </section>
+      )}
+    </div>
+  );
+}
+
 function StatusEffectRow({
   entry,
-  target,
+  view,
   modifiers,
   numericals,
 }: {
-  entry: StatusEffectCatalogEntry;
-  target: StatusEffectTarget;
+  entry: StatusEffectCatalogViewEntry;
+  view: CatalogView;
   modifiers: Record<string, StatusEffectModifierReference[]>;
   numericals: Record<string, StatusEffectNumericalReference[]>;
 }) {
-  const targetVariants = entry.variants.filter((variant) =>
-    isVariantVisibleForTarget(variant, target),
+  const icon = entry.icon;
+  const confirmedCount = entry.relatedContent.filter(
+    (item) => item.relation === "confirmed-source",
+  ).length;
+  const otherDescriptions = entry.descriptions.filter(
+    (description) => description !== entry.descriptions[0],
   );
-  const primary = targetVariants[0] ?? entry.variants[0];
-  const icon = targetVariants.find((variant) => variant.icon)?.icon ?? entry.icon;
-  const descriptions = [...new Set(targetVariants.map((variant) => variant.description).filter(Boolean))];
-  const names = [...new Set(targetVariants.map((variant) => variant.name).filter(Boolean))];
 
   return (
-    <article className="min-w-0 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/45">
-      <div className="grid min-w-0 gap-3 p-3 lg:grid-cols-[3rem_minmax(10rem,0.9fr)_minmax(16rem,2fr)_8rem_6rem] lg:items-center lg:gap-4 lg:px-4">
+    <article
+      id={`status-effect-${entry.buffId}`}
+      aria-labelledby={`buff-label-${entry.buffId}`}
+      className="scroll-mt-24 min-w-0 px-3 py-3 target:bg-cyan-950/20 sm:px-4 lg:py-2.5"
+    >
+      <div className="grid min-w-0 gap-2.5 lg:grid-cols-[2.5rem_minmax(10rem,0.85fr)_minmax(16rem,2fr)_6rem_6rem] lg:items-start lg:gap-3">
         <div className="flex items-start gap-3 lg:contents">
           {icon ? (
             <Image
               src={getAssetPath(icon)}
               alt=""
-              width={48}
-              height={48}
-              className="h-12 w-12 shrink-0 rounded border border-zinc-700 bg-zinc-950 object-contain"
+              width={40}
+              height={40}
+              className="h-10 w-10 shrink-0 rounded border border-zinc-700 bg-zinc-950 object-contain"
             />
           ) : (
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded border border-zinc-800 bg-zinc-950 text-zinc-600">
-              <CircleDashed aria-hidden="true" size={22} />
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded border border-zinc-800 bg-zinc-950 text-zinc-600">
+              <CircleDashed aria-hidden="true" size={19} />
             </div>
           )}
           <div className="min-w-0 lg:col-start-2">
-            <h3 className="m-0 break-words text-sm font-semibold leading-5 text-zinc-100">
-              {primary.name}
-            </h3>
-            {names.length > 1 && (
-              <p className="m-0 mt-1 text-xs text-zinc-500">
-                另有 {names.length - 1} 个名称变体
-              </p>
-            )}
-            <div className="mt-2 flex flex-wrap gap-1">
+            <p
+              id={`buff-label-${entry.buffId}`}
+              className="m-0 break-words text-sm font-semibold leading-5 text-zinc-100"
+            >
+              {entry.name}
+            </p>
+            <div className="mt-1.5 flex flex-wrap gap-1">
+              <span className="rounded border border-cyan-900/80 bg-cyan-950/30 px-1.5 py-0.5 text-[11px] text-cyan-300">
+                {entry.group.label}
+              </span>
               {entry.polarities.map((polarity) => (
                 <span
                   key={polarity}
-                  className={`rounded border px-1.5 py-0.5 text-[11px] leading-4 ${
+                  className={`rounded border px-1.5 py-0.5 text-[11px] ${
                     polarity === "positive"
-                      ? "border-emerald-700/70 bg-emerald-950/40 text-emerald-300"
-                      : "border-rose-700/70 bg-rose-950/40 text-rose-300"
+                      ? "border-emerald-800 bg-emerald-950/40 text-emerald-300"
+                      : "border-rose-800 bg-rose-950/40 text-rose-300"
                   }`}
                 >
                   {POLARITY_LABELS[polarity]}
                 </span>
               ))}
-              {entry.categories.slice(0, 2).map((category) => (
-                <span
-                  key={category}
-                  className="rounded border border-zinc-700 bg-zinc-800 px-1.5 py-0.5 text-[11px] leading-4 text-zinc-300"
-                >
-                  {categoryLabel(category)}
-                </span>
-              ))}
             </div>
           </div>
         </div>
+
         <div className="min-w-0 lg:col-start-3">
-          <p className="m-0 break-words text-sm leading-6 text-zinc-300">
-            {descriptions[0] || "导出配置未提供公开描述。"}
+          <p className="m-0 break-words text-sm leading-5 text-zinc-200">
+            {entry.summary}
           </p>
-          {descriptions.length > 1 && (
-            <p className="m-0 mt-1 text-xs text-zinc-500">
-              另有 {descriptions.length - 1} 个描述变体
-            </p>
+          {entry.multiplierRelations.length > 0 && (
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              {entry.multiplierRelations.map((relation) => (
+                <Link
+                  key={relation.modifierTypeId}
+                  href={relation.href}
+                  className={`rounded border px-2 py-1 text-[11px] font-medium transition-colors duration-200 hover:brightness-125 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${getMultiplierFactorStyle(relation.factorId)}`}
+                >
+                  {relation.displayLabel}
+                </Link>
+              ))}
+            </div>
           )}
         </div>
-        <dl className="grid grid-cols-2 gap-2 text-xs lg:contents">
-          <div className="rounded bg-zinc-950/60 p-2 lg:col-start-4 lg:bg-transparent lg:p-0">
-            <dt className="text-zinc-500">持续时间</dt>
-            <dd className="m-0 mt-1 text-zinc-200">{formatDurationSet(targetVariants)}</dd>
+
+        <dl className="grid grid-cols-2 gap-1.5 text-xs lg:contents">
+          <div className="rounded bg-zinc-950/55 px-2 py-1.5 lg:col-start-4">
+            <dt className="text-zinc-500">持续</dt>
+            <dd className="m-0 mt-1 text-zinc-200">{formatDurationSet(entry.variants)}</dd>
           </div>
-          <div className="rounded bg-zinc-950/60 p-2 lg:col-start-5 lg:bg-transparent lg:p-0">
-            <dt className="text-zinc-500">叠层上限</dt>
-            <dd className="m-0 mt-1 text-zinc-200">{formatStackSet(targetVariants)}</dd>
+          <div className="rounded bg-zinc-950/55 px-2 py-1.5 lg:col-start-5">
+            <dt className="text-zinc-500">最多叠加</dt>
+            <dd className="m-0 mt-1 text-zinc-200">{formatStackSet(entry.variants)}</dd>
           </div>
         </dl>
       </div>
-      <StatusEffectDetails entry={entry} modifiers={modifiers} numericals={numericals} />
+
+      <details className="mt-2 border-t border-zinc-800/80">
+        <summary className="flex min-h-11 w-fit cursor-pointer select-none items-center gap-2 text-xs font-medium text-zinc-400 hover:text-zinc-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 lg:min-h-9">
+          <BookOpenText aria-hidden="true" className="h-4 w-4" />
+          效果与关联内容
+          {(confirmedCount > 0 || entry.multiplierRelations.length > 0) && (
+            <span className="text-zinc-600">
+              · {confirmedCount > 0 ? `${confirmedCount} 个确认来源` : `${entry.multiplierRelations.length} 个乘区`}
+            </span>
+          )}
+        </summary>
+        <div className="pb-1 pt-1">
+          {otherDescriptions.length > 0 && (
+            <div className="mb-3 rounded border border-zinc-800 bg-zinc-950/40 p-3 text-xs leading-5 text-zinc-400">
+              <p className="m-0 mb-1 font-medium text-zinc-300">其他配置描述</p>
+              {otherDescriptions.slice(0, 6).map((description) => (
+                <p key={description} className="m-0 break-words">{description}</p>
+              ))}
+            </div>
+          )}
+          <RelatedContentList items={entry.relatedContent} />
+          {view === "config" && (
+            <StatusEffectTechnicalDetails
+              entry={entry}
+              modifiers={modifiers}
+              numericals={numericals}
+            />
+          )}
+        </div>
+      </details>
     </article>
   );
 }
 
+function relatedFilterMatches(
+  entry: StatusEffectCatalogViewEntry,
+  filter: RelatedFilter,
+) {
+  if (filter === "all") return true;
+  if (filter === "confirmed") {
+    return entry.relatedContent.some((item) => item.relation === "confirmed-source");
+  }
+  if (filter === "multiplier") return entry.multiplierRelations.length > 0;
+  return entry.relatedContent.some((item) => item.type === filter);
+}
+
 export function StatusEffectCatalogClient({
-  target,
   entries,
   modifiers,
   numericals,
 }: {
   target: StatusEffectTarget;
-  entries: StatusEffectCatalogEntry[];
+  entries: StatusEffectCatalogViewEntry[];
   modifiers: Record<string, StatusEffectModifierReference[]>;
   numericals: Record<string, StatusEffectNumericalReference[]>;
 }) {
-  const [search, setSearch] = useState("");
+  const locationSnapshot = useSyncExternalStore(
+    subscribeToLocation,
+    getLocationSnapshot,
+    getServerLocationSnapshot,
+  );
+  const params = useMemo(
+    () => new URLSearchParams(locationSnapshot.split("#")[0]),
+    [locationSnapshot],
+  );
+  const search = params.get("q") ?? "";
   const deferredSearch = useDeferredValue(search.trim().toLocaleLowerCase());
-  const [polarity, setPolarity] = useState<PolarityFilter>("all");
-  const [category, setCategory] = useState("all");
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const view: CatalogView = params.get("view") === "config" ? "config" : "practical";
+  const polarityValue = params.get("polarity");
+  const polarity: PolarityFilter =
+    polarityValue === "positive" || polarityValue === "negative"
+      ? polarityValue
+      : "all";
+  const group = params.get("group") ?? "all";
+  const category = params.get("category") ?? "all";
+  const relatedValue = params.get("source") ?? "all";
+  const related: RelatedFilter = [
+    "confirmed",
+    "multiplier",
+    "perk",
+    "overlimit-card",
+    "season-talent",
+    "weapon",
+    "overlimit-bond",
+    "post",
+  ].includes(relatedValue)
+    ? relatedValue as RelatedFilter
+    : "all";
+  const linkedBuffId = Number(params.get("buff")) || null;
+  const pageSize = view === "practical" ? PRACTICAL_PAGE_SIZE : CONFIG_PAGE_SIZE;
+  const [visibleCount, setVisibleCount] = useState(pageSize);
 
+  useEffect(() => {
+    if (!linkedBuffId) return;
+    const frame = requestAnimationFrame(() => {
+      document
+        .getElementById(`status-effect-${linkedBuffId}`)
+        ?.scrollIntoView({ block: "center" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [linkedBuffId]);
+
+  const availableEntries = useMemo(
+    () => view === "practical"
+      ? entries.filter((entry) => entry.practical || entry.buffId === linkedBuffId)
+      : entries,
+    [entries, linkedBuffId, view],
+  );
   const categories = useMemo(
-    () => [...new Set(entries.flatMap((entry) => entry.categories))].sort((left, right) =>
-      categoryLabel(left).localeCompare(categoryLabel(right), "zh-CN"),
+    () => [...new Set(availableEntries.flatMap((entry) => entry.categories))].sort(
+      (left, right) => categoryLabel(left).localeCompare(categoryLabel(right), "zh-CN"),
     ),
-    [entries],
+    [availableEntries],
   );
   const availablePolarities = useMemo(
-    () => [...new Set(entries.flatMap((entry) => entry.polarities))],
-    [entries],
+    () => [...new Set(availableEntries.flatMap((entry) => entry.polarities))],
+    [availableEntries],
   );
-  const searchableEntries = useMemo(
-    () => entries.map((entry) => ({ entry, searchText: entrySearchText(entry) })),
-    [entries],
+  const groupCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const entry of availableEntries) {
+      counts.set(entry.group.id, (counts.get(entry.group.id) ?? 0) + 1);
+    }
+    return counts;
+  }, [availableEntries]);
+  const groups = useMemo(
+    () => [...new Map(availableEntries.map((entry) => [entry.group.id, entry.group])).values()],
+    [availableEntries],
   );
   const filteredEntries = useMemo(
-    () => searchableEntries
-      .filter(({ entry, searchText }) => {
-        if (deferredSearch && !searchText.includes(deferredSearch)) return false;
-        if (polarity !== "all" && !entry.polarities.includes(polarity)) return false;
-        if (category !== "all" && !entry.categories.includes(category)) return false;
-        return true;
-      })
-      .map(({ entry }) => entry),
-    [category, deferredSearch, polarity, searchableEntries],
+    () => availableEntries.filter((entry) => {
+      if (linkedBuffId && !deferredSearch && entry.buffId !== linkedBuffId) return false;
+      if (
+        deferredSearch &&
+        !entry.searchTerms.some((term) => term.toLocaleLowerCase().includes(deferredSearch))
+      ) return false;
+      if (polarity !== "all" && !entry.polarities.includes(polarity)) return false;
+      if (group !== "all" && entry.group.id !== group) return false;
+      if (view === "config" && category !== "all" && !entry.categories.includes(category)) {
+        return false;
+      }
+      return relatedFilterMatches(entry, related);
+    }),
+    [
+      availableEntries,
+      category,
+      deferredSearch,
+      group,
+      linkedBuffId,
+      polarity,
+      related,
+      view,
+    ],
   );
   const visibleEntries = filteredEntries.slice(0, visibleCount);
+  const activeAdvancedFilters = [
+    polarity !== "all",
+    related !== "all",
+    view === "config" && category !== "all",
+  ].filter(Boolean).length;
 
-  const resetVisible = () => setVisibleCount(PAGE_SIZE);
+  const resetVisible = (nextPageSize = pageSize) => setVisibleCount(nextPageSize);
+  const setFilter = (key: string, value: string | null, nextPageSize = pageSize) => {
+    updateCatalogQuery({ [key]: value });
+    resetVisible(nextPageSize);
+  };
+  const resetFilters = () => {
+    updateCatalogQuery({
+      q: null,
+      group: null,
+      polarity: null,
+      category: null,
+      source: null,
+    });
+    resetVisible();
+  };
 
   return (
     <div className="not-prose my-6 min-w-0">
       <div className="rounded-lg border border-zinc-800 bg-zinc-900/65 p-3 sm:p-4">
-        <div className="grid min-w-0 gap-3 lg:grid-cols-[minmax(16rem,1fr)_auto_minmax(12rem,16rem)] lg:items-end">
+        <div className="grid gap-3 lg:grid-cols-[minmax(15rem,0.8fr)_minmax(18rem,1.4fr)] lg:items-end">
+          <fieldset className="min-w-0">
+            <legend className="mb-1.5 text-xs font-medium text-zinc-400">查看方式</legend>
+            <div className="grid grid-cols-2 gap-1 rounded border border-zinc-800 bg-zinc-950 p-1">
+              {([
+                ["practical", "玩家视图", "按战斗用途整理"],
+                ["config", "完整配置", "查看全部内部记录"],
+              ] as const).map(([value, label, description]) => {
+                const selected = view === value;
+                return (
+                  <button
+                    key={value}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => {
+                      updateCatalogQuery({ view: value });
+                      resetVisible(value === "practical" ? PRACTICAL_PAGE_SIZE : CONFIG_PAGE_SIZE);
+                    }}
+                    className={`min-h-11 rounded border px-3 py-1 text-left focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
+                      selected
+                        ? "border-cyan-700 bg-cyan-950/50 text-white"
+                        : "border-transparent text-zinc-400 hover:bg-zinc-900 hover:text-zinc-100"
+                    }`}
+                  >
+                    <span className="block text-sm font-medium">{label}</span>
+                    <span className="hidden text-[10px] text-zinc-500 sm:block">{description}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
+
           <label className="min-w-0">
-            <span className="mb-1.5 block text-xs font-medium text-zinc-400">搜索状态</span>
+            <span className="mb-1.5 block text-xs font-medium text-zinc-400">搜索状态与关联内容</span>
             <span className="relative block">
               <Search
                 aria-hidden="true"
@@ -362,111 +630,185 @@ export function StatusEffectCatalogClient({
                 type="search"
                 value={search}
                 onChange={(event) => {
-                  setSearch(event.target.value);
+                  updateCatalogQuery({ q: event.target.value || null });
                   resetVisible();
                 }}
-                placeholder="名称、描述、内部名或 BuffID"
-                className="h-11 w-full rounded border border-zinc-700 bg-zinc-950 py-2 pl-9 pr-10 text-sm text-zinc-100 placeholder:text-zinc-600 focus-visible:border-zinc-400 focus-visible:outline-none"
+                placeholder="例如：易伤、武器伤害、插件名、S3 天赋或 BuffID"
+                className="h-11 w-full rounded border border-zinc-700 bg-zinc-950 py-2 pl-9 pr-11 text-sm text-zinc-100 placeholder:text-zinc-600 focus-visible:border-zinc-400 focus-visible:outline-none"
               />
               {search && (
                 <button
                   type="button"
-                  onClick={() => {
-                    setSearch("");
-                    resetVisible();
-                  }}
+                  onClick={() => setFilter("q", null)}
                   aria-label="清空搜索"
                   title="清空搜索"
-                  className="absolute right-0 top-0 flex h-11 w-11 items-center justify-center text-zinc-500 hover:text-zinc-100 focus-visible:outline-none focus-visible:[&_svg]:underline"
+                  className="absolute right-0 top-0 flex h-11 w-11 items-center justify-center text-zinc-500 hover:text-zinc-100 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
                 >
+                  <span className="sr-only">清空</span>
                   <X aria-hidden="true" size={17} />
                 </button>
               )}
             </span>
           </label>
-
-          <fieldset className="min-w-0">
-            <legend className="mb-1.5 text-xs font-medium text-zinc-400">极性</legend>
-            <div className="flex min-h-11 flex-wrap gap-1 rounded border border-zinc-800 bg-zinc-950 p-1">
-              {(["all", ...availablePolarities] as PolarityFilter[]).map((value) => {
-                const selected = polarity === value;
-                return (
-                  <button
-                    key={value}
-                    type="button"
-                    aria-pressed={selected}
-                    onClick={() => {
-                      setPolarity(value);
-                      resetVisible();
-                    }}
-                    className={`min-h-9 rounded border px-3 text-sm focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
-                      selected
-                        ? "border-zinc-500 bg-zinc-700 text-white"
-                        : "border-transparent bg-transparent text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
-                    }`}
-                  >
-                    {value === "all" ? "全部" : POLARITY_LABELS[value]}
-                  </button>
-                );
-              })}
-            </div>
-          </fieldset>
-
-          <label className="min-w-0">
-            <span className="mb-1.5 block text-xs font-medium text-zinc-400">配置分类</span>
-            <select
-              value={category}
-              onChange={(event) => {
-                setCategory(event.target.value);
-                resetVisible();
-              }}
-              className="h-11 w-full rounded border border-zinc-700 bg-zinc-950 px-3 text-sm text-zinc-200 focus-visible:border-zinc-400 focus-visible:outline-none"
-            >
-              <option value="all">全部分类</option>
-              {categories.map((value) => (
-                <option key={value} value={value}>
-                  {categoryLabel(value)}（{value}）
-                </option>
-              ))}
-            </select>
-          </label>
         </div>
 
-        <p className="m-0 mt-3 text-xs text-zinc-500" aria-live="polite">
-          找到 {filteredEntries.length} 项，当前显示 {visibleEntries.length} 项
-        </p>
-      </div>
+        <div className="mt-4">
+          <div className="mb-1.5 flex items-center justify-between gap-3">
+            <p className="m-0 text-xs font-medium text-zinc-400">按战斗用途浏览</p>
+            <p className="m-0 text-[11px] text-zinc-600">配置分类已移到更多筛选</p>
+          </div>
+          <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 xl:grid-cols-4">
+            <button
+              type="button"
+              aria-pressed={group === "all"}
+              onClick={() => setFilter("group", null)}
+              className={`min-h-11 rounded border px-3 py-2 text-left text-xs focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
+                group === "all"
+                  ? "border-cyan-700 bg-cyan-950/50 text-cyan-100"
+                  : "border-zinc-800 bg-zinc-950/40 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200"
+              }`}
+            >
+              <span className="font-medium">全部用途</span>
+              <span className="ml-1 text-zinc-600">{availableEntries.length}</span>
+            </button>
+            {groups.map((item) => {
+              const selected = group === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  aria-pressed={selected}
+                  title={item.description}
+                  onClick={() => setFilter("group", item.id)}
+                  className={`min-h-11 rounded border px-3 py-2 text-left text-xs focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
+                    selected
+                      ? "border-cyan-700 bg-cyan-950/50 text-cyan-100"
+                      : "border-zinc-800 bg-zinc-950/40 text-zinc-400 hover:border-zinc-600 hover:text-zinc-200"
+                  }`}
+                >
+                  <span className="font-medium">{item.label}</span>
+                  <span className="ml-1 text-zinc-600">{groupCounts.get(item.id) ?? 0}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-      <div className="mt-3 hidden grid-cols-[3rem_minmax(10rem,0.9fr)_minmax(16rem,2fr)_8rem_6rem] gap-4 px-4 text-xs font-medium text-zinc-500 lg:grid">
-        <span>图标</span>
-        <span>名称</span>
-        <span>效果</span>
-        <span>持续时间</span>
-        <span>叠层</span>
+        <details className="mt-3 rounded border border-zinc-800 bg-zinc-950/30 px-3">
+          <summary className="flex min-h-11 cursor-pointer select-none items-center gap-2 text-xs font-medium text-zinc-400 hover:text-zinc-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
+            <SlidersHorizontal aria-hidden="true" className="h-4 w-4" />
+            更多筛选{activeAdvancedFilters > 0 ? ` · 已选 ${activeAdvancedFilters} 项` : ""}
+          </summary>
+          <div className="grid gap-3 border-t border-zinc-800 py-3 md:grid-cols-3">
+            <label className="min-w-0">
+              <span className="mb-1.5 block text-xs text-zinc-500">增益 / 减益</span>
+              <select
+                value={polarity}
+                onChange={(event) => setFilter("polarity", event.target.value)}
+                className="h-11 w-full rounded border border-zinc-700 bg-zinc-950 px-3 text-sm text-zinc-200 focus-visible:border-zinc-400 focus-visible:outline-none"
+              >
+                <option value="all">全部</option>
+                {availablePolarities.map((value) => (
+                  <option key={value} value={value}>{POLARITY_LABELS[value]}</option>
+                ))}
+              </select>
+            </label>
+
+            <label className="min-w-0">
+              <span className="mb-1.5 block text-xs text-zinc-500">关联内容</span>
+              <select
+                value={related}
+                onChange={(event) => setFilter("source", event.target.value)}
+                className="h-11 w-full rounded border border-zinc-700 bg-zinc-950 px-3 text-sm text-zinc-200 focus-visible:border-zinc-400 focus-visible:outline-none"
+              >
+                <option value="all">全部</option>
+                <option value="confirmed">有确认施加来源</option>
+                <option value="multiplier">有增伤乘区</option>
+                {Object.entries(RELATED_TYPE_LABELS).map(([value, label]) => (
+                  <option key={value} value={value}>{label}</option>
+                ))}
+              </select>
+            </label>
+
+            {view === "config" ? (
+              <label className="min-w-0">
+                <span className="mb-1.5 block text-xs text-zinc-500">原始配置分类</span>
+                <select
+                  value={category}
+                  onChange={(event) => setFilter("category", event.target.value)}
+                  className="h-11 w-full rounded border border-zinc-700 bg-zinc-950 px-3 text-sm text-zinc-200 focus-visible:border-zinc-400 focus-visible:outline-none"
+                >
+                  <option value="all">全部分类</option>
+                  {categories.map((value) => (
+                    <option key={value} value={value}>{categoryLabel(value)}（{value}）</option>
+                  ))}
+                </select>
+              </label>
+            ) : (
+              <div className="flex items-end">
+                <p className="m-0 text-xs leading-5 text-zinc-600">
+                  玩家视图隐藏测试、占位和缺少可读信息的记录；切换“完整配置”仍可检索全部。
+                </p>
+              </div>
+            )}
+          </div>
+        </details>
+
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-zinc-500" aria-live="polite">
+          <p className="m-0">
+            找到 <span className="font-medium text-zinc-300">{filteredEntries.length}</span> 项，当前显示 {visibleEntries.length} 项
+          </p>
+          <p className="m-0">搜索范围含效果、BuffID、乘区、插件、超限卡片与已收录的 S3 天赋</p>
+        </div>
+
+        {linkedBuffId && (
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2 rounded border border-cyan-900/70 bg-cyan-950/20 px-3 py-2 text-xs text-cyan-200">
+            <span>已定位 BuffID {linkedBuffId}</span>
+            <button
+              type="button"
+              onClick={() => {
+                updateCatalogQuery({ buff: null });
+                resetVisible();
+              }}
+              className="min-h-8 px-2 font-medium hover:text-white focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+            >
+              显示全部
+            </button>
+          </div>
+        )}
       </div>
 
       {visibleEntries.length > 0 ? (
-        <div className="mt-2 space-y-2">
+        <div className="mt-3 divide-y divide-zinc-800 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900/40">
           {visibleEntries.map((entry) => (
             <StatusEffectRow
               key={entry.buffId}
               entry={entry}
-              target={target}
+              view={view}
               modifiers={modifiers}
               numericals={numericals}
             />
           ))}
         </div>
       ) : (
-        <div className="mt-3 rounded-lg border border-dashed border-zinc-700 px-4 py-12 text-center text-sm text-zinc-500">
-          没有符合当前搜索和筛选条件的状态。
+        <div className="mt-3 rounded-lg border border-dashed border-zinc-700 px-4 py-12 text-center">
+          <Filter aria-hidden="true" className="mx-auto h-6 w-6 text-zinc-600" />
+          <p className="m-0 mt-3 text-sm text-zinc-400">没有符合当前条件的状态</p>
+          <p className="m-0 mt-1 text-xs text-zinc-600">可以换一个关键词，或清空用途与高级筛选。</p>
+          <button
+            type="button"
+            onClick={resetFilters}
+            className="mt-4 min-h-11 rounded border border-zinc-700 bg-zinc-900 px-4 text-sm font-medium text-zinc-300 hover:border-zinc-500 hover:text-white focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+          >
+            重置筛选
+          </button>
         </div>
       )}
 
       {visibleEntries.length < filteredEntries.length && (
         <button
           type="button"
-          onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+          onClick={() => setVisibleCount((count) => count + pageSize)}
           className="mt-4 min-h-11 w-full rounded border border-zinc-700 bg-zinc-900 px-4 text-sm font-medium text-zinc-300 hover:border-zinc-500 hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
         >
           继续加载（剩余 {filteredEntries.length - visibleEntries.length} 项）

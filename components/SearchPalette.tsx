@@ -44,6 +44,25 @@ function matchSearch(item: SearchItem, query: string): boolean {
   return false;
 }
 
+function searchScore(item: SearchItem, query: string): number {
+  const normalized = query.toLowerCase();
+  const title = item.title.toLowerCase();
+  let score = 100;
+
+  if (title === normalized) score = 0;
+  else if (title.startsWith(normalized)) score = 10;
+  else if (title.includes(normalized)) score = 20;
+  else if (item.keywords.some((keyword) => String(keyword).toLowerCase() === normalized)) score = 30;
+  else if (item.keywords.some((keyword) => String(keyword).toLowerCase().startsWith(normalized))) score = 40;
+  else if (item.keywords.some((keyword) => String(keyword).toLowerCase().includes(normalized))) score = 50;
+  else if (item.pinyin?.some((value) => value.startsWith(normalized))) score = 60;
+  else if (item.pinyin?.some((value) => value.includes(normalized))) score = 70;
+
+  // A concrete page should precede Buffs that merely list it as related content.
+  if (item.category === "状态效果") score += 1;
+  return score;
+}
+
 // 分类图标颜色
 const categoryColors: Record<string, string> = {
   武器: "text-amber-400",
@@ -52,6 +71,7 @@ const categoryColors: Record<string, string> = {
   首领: "text-red-400",
   塔防敌人: "text-orange-400",
   卡牌: "text-blue-400",
+  状态效果: "text-cyan-400",
   文章: "text-zinc-400",
 };
 
@@ -87,7 +107,13 @@ export function SearchPalette() {
       // 默认不加载全部，返回空数组
       return [];
     }
-    return searchData.filter((item) => matchSearch(item, query.trim()));
+    const normalized = query.trim();
+    return searchData
+      .filter((item) => matchSearch(item, normalized))
+      .sort((left, right) =>
+        searchScore(left, normalized) - searchScore(right, normalized) ||
+        left.title.localeCompare(right.title, "zh-CN"),
+      );
   }, [searchData, query]);
 
   // 显示的项目：有搜索词时显示搜索结果，否则显示默认入口

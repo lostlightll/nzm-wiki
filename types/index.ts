@@ -426,10 +426,18 @@ export type {
 export type {
   ElementStatusSummary,
   StatusEffectCatalogEntry,
+  StatusEffectCatalogViewEntry,
   StatusEffectDataLock,
+  StatusEffectMultiplierRelation,
   StatusEffectModifierReference,
   StatusEffectNumericalReference,
   StatusEffectPolarity,
+  StatusEffectRelatedContent,
+  StatusEffectRelatedContentRelation,
+  StatusEffectRelatedContentType,
+  StatusEffectSearchDocument,
+  StatusEffectSemanticGroup,
+  StatusEffectSemanticGroupId,
   StatusEffectTarget,
   StatusEffectVariant,
 } from "./status-effects";

@@ -9,6 +9,8 @@
   → scripts/status-effects/extract.ts
   → scripts/status-effects/cli.ts
   → data/status-effects.json
+  → scripts/status-effects/relations.ts
+  → data/status-effect-relations.json
   → components/StatusEffectCatalog*.tsx
   → data/posts/enemy-buffs.mdx / player-buffs.mdx
 ```
@@ -19,6 +21,8 @@ Required 源表：
 - `refs/Exports/NZM/Content/DataTables/GameFeatureConfig/ElementConfigDataTable.json`
 - `refs/Exports/NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json`
 - `refs/Exports/NZM/Content/DataTables/numerical_config_others.json`
+
+确认插件施加来源还会读取 `WeaponModItemData`、`MGEPassive_BD`、`GPModularGameplayEffectTable` 和对应 MGE JSON。运行时只读取已提交的 `data/status-effect-relations.json`，不会读取这些导出文件。
 
 不要替换为 TDM/PVP 专用 Buff 表。`refs/` 只作为本地抽取证据，不能成为站点运行时依赖。
 
@@ -42,7 +46,7 @@ pnpm status-effects:check
 pnpm test:status-effects
 ```
 
-`status-effects:refresh` 会重新抽取 `data/status-effects.json`，并把被引用且存在源 PNG 的图标转换到 `public/webp/icons/status-effects/`。文件名由原始资产路径的哈希和名称生成，相同输入会得到相同路径。
+`status-effects:refresh` 会重新抽取 `data/status-effects.json` 与 `data/status-effect-relations.json`，并把被引用且存在源 PNG 的图标转换到 `public/webp/icons/status-effects/`。文件名由原始资产路径的哈希和名称生成，相同输入会得到相同路径。
 
 `status-effects:check` 会重新抽取并比较已提交数据，同时检查：
 
@@ -68,6 +72,19 @@ pnpm test:status-effects
 
 `GPModifyIDs` 联查 `numerical_modifier_config`，`NumericalID` 联查 `numerical_config_others`。可解析内容写入 `references`，图鉴技术详情按 ID 展开。源表中找不到的引用继续保留原始 ID，并明确显示为“未解析”，不能猜测或删除。
 
+## 关联内容与证据等级
+
+图鉴把关联内容分成两类，页面文案不能混用：
+
+- **确认施加来源**：插件 ItemID → 被动技能 → MGE → `AddBuff` 调用 → `BuffName` → Buff 表行的完整链路。`HasBuff`、`RemoveBuff`、中文名相似和共用 GPModifier 都不能单独证明施加关系。
+- **同乘区内容参考**：Buff 的属性字段能映射到乘区，再列出使用同一伤害通道的插件、超限卡、武器技能或赛季天赋。它只用于继续查机制，不代表这些内容会施加当前 Buff。
+
+乘区方向必须判断数值符号：`DamageBearRatio < 0` 才是易伤，`DamageBearRatio > 0` 是减伤；其他增伤字段至少有一个正向 `baseValue` 或 `coefficient` 才进入增伤乘区索引。
+
+赛季天赋只索引仓库已经提交并有公开路由的 S3 数据。没有添加到站点的 S0、S1、S2 不扫描、不猜测，也不生成占位结果。这个限制只适用于赛季天赋；已经上线的插件仍按插件发布状态处理。
+
+玩家视图的语义分组、可读摘要和搜索关键词在 `lib/status-effects.ts` 中从已提交数据派生。完整配置仍保留所有符合显示位规则的记录，不能因为玩家视图隐藏测试或占位项而删减数据锁。
+
 ## 发布检查
 
 数据刷新后至少运行：
@@ -80,4 +97,3 @@ pnpm build
 ```
 
 两篇 MDX 位于 `data/posts/`，会自动进入文章归档、指南归档、搜索索引和站点地图。旧 `/posts/element` 当前保留；未来删除时需要单独处理重定向、站内链接和 canonical 迁移。
-

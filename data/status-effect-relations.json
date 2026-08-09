@@ -1,0 +1,845 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "statusEffects": "data/status-effects.json",
+    "weaponMods": "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json",
+    "passives": "refs/Exports/NZM/Content/DataTables/MGE/MGEPassive_BD.json",
+    "mgeTable": "refs/Exports/NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json",
+    "buffTable": "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json"
+  },
+  "summary": {
+    "relations": 46,
+    "sources": 46,
+    "overlimitCards": 22
+  },
+  "relations": [
+    {
+      "sourceId": "perk:20703040001",
+      "sourceType": "perk",
+      "itemId": "20703040001",
+      "title": "幸运装填",
+      "slot": 3,
+      "slug": "幸运装填",
+      "overlimitCard": true,
+      "buffId": 110100053,
+      "rowName": "BD_Common_1313101001",
+      "configName": "BD_Common_1313101001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313101001",
+        "mgeId": "1313101001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040008",
+      "sourceType": "perk",
+      "itemId": "20703040008",
+      "title": "充能弹药",
+      "slot": 1,
+      "slug": "充能弹药",
+      "overlimitCard": true,
+      "buffId": 110100055,
+      "rowName": "BD_Common_1313110001",
+      "configName": "BD_Common_1313110001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313110001",
+        "mgeId": "1313110001",
+        "addCall": "CallFunc_AddBuffToWeapon_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040028",
+      "sourceType": "perk",
+      "itemId": "20703040028",
+      "title": "联动提升",
+      "slot": 3,
+      "slug": "联动提升",
+      "overlimitCard": true,
+      "buffId": 110100056,
+      "rowName": "BD_Common_1315103001",
+      "configName": "BD_Common_1315103001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315103001",
+        "mgeId": "1315103001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040033",
+      "sourceType": "perk",
+      "itemId": "20703040033",
+      "title": "烈焰冲击",
+      "slot": 4,
+      "slug": "烈焰冲击",
+      "overlimitCard": true,
+      "buffId": 110100072,
+      "rowName": "BD_Common_1315108001",
+      "configName": "BD_Common_1315108001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315108001",
+        "mgeId": "1315108001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040036",
+      "sourceType": "perk",
+      "itemId": "20703040036",
+      "title": "正中红心",
+      "slot": 3,
+      "slug": "正中红心",
+      "overlimitCard": true,
+      "buffId": 110100060,
+      "rowName": "BD_Common_1315111001",
+      "configName": "BD_Common_1315111001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315111001",
+        "mgeId": "1315111001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040037",
+      "sourceType": "perk",
+      "itemId": "20703040037",
+      "title": "伏击弹药",
+      "slot": 3,
+      "slug": "伏击弹药",
+      "overlimitCard": false,
+      "buffId": 110100061,
+      "rowName": "BD_Common_1315112001",
+      "configName": "BD_Common_1315112001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315112001",
+        "mgeId": "1315112001",
+        "addCall": "CallFunc_AddBuffToWeapon_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040055",
+      "sourceType": "perk",
+      "itemId": "20703040055",
+      "title": "技能扩散",
+      "slot": 4,
+      "slug": "技能扩散",
+      "overlimitCard": false,
+      "buffId": 110100074,
+      "rowName": "BD_Common_1316119001",
+      "configName": "BD_Common_1316119001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1316119001",
+        "mgeId": "1316119001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040063",
+      "sourceType": "perk",
+      "itemId": "20703040063",
+      "title": "渐稳连击",
+      "slot": 1,
+      "slug": "渐稳连击",
+      "overlimitCard": false,
+      "buffId": 110100076,
+      "rowName": "BD_Common_1313118001",
+      "configName": "BD_Common_1313118001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313118001",
+        "mgeId": "1313118001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040069",
+      "sourceType": "perk",
+      "itemId": "20703040069",
+      "title": "递进膛压",
+      "slot": 3,
+      "slug": "递进膛压",
+      "overlimitCard": false,
+      "buffId": 110100078,
+      "rowName": "BD_Common_1315117001",
+      "configName": "BD_Common_1315117001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315117001",
+        "mgeId": "1315117001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040082",
+      "sourceType": "perk",
+      "itemId": "20703040082",
+      "title": "精密追击",
+      "slot": 3,
+      "slug": "精密追击",
+      "overlimitCard": true,
+      "buffId": 110100084,
+      "rowName": "BD_Common_1315127001",
+      "configName": "BD_Common_1315127001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315127001",
+        "mgeId": "1315127001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040085",
+      "sourceType": "perk",
+      "itemId": "20703040085",
+      "title": "致命节拍",
+      "slot": 3,
+      "slug": "致命节拍",
+      "overlimitCard": true,
+      "buffId": 110100085,
+      "rowName": "BD_Common_1315125001",
+      "configName": "BD_Common_1315125001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315125001",
+        "mgeId": "1315125001",
+        "addCall": "CallFunc_AddBuffByName_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040087",
+      "sourceType": "perk",
+      "itemId": "20703040087",
+      "title": "攻守自如",
+      "slot": 3,
+      "slug": "攻守自如",
+      "overlimitCard": false,
+      "buffId": 110300003,
+      "rowName": "BD_Common_1306019001_1-6",
+      "configName": "BD_Common_1306019001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1316131001",
+        "mgeId": "1316131001",
+        "addCall": "CallFunc_AddBuffByName_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040094",
+      "sourceType": "perk",
+      "itemId": "20703040094",
+      "title": "弹雨协奏",
+      "slot": 1,
+      "slug": "弹雨协奏",
+      "overlimitCard": false,
+      "buffId": 110100102,
+      "rowName": "BD_Common_1313127001",
+      "configName": "BD_Common_1313127001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313127001",
+        "mgeId": "1313127001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040095",
+      "sourceType": "perk",
+      "itemId": "20703040095",
+      "title": "帽子戏法",
+      "slot": 1,
+      "slug": "帽子戏法",
+      "overlimitCard": false,
+      "buffId": 110100088,
+      "rowName": "BD_Common_1313128001",
+      "configName": "BD_Common_1313128001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313128001",
+        "mgeId": "1313128001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040100",
+      "sourceType": "perk",
+      "itemId": "20703040100",
+      "title": "致命循环",
+      "slot": 1,
+      "slug": "致命循环",
+      "overlimitCard": false,
+      "buffId": 110100089,
+      "rowName": "BD_Common_1313133001",
+      "configName": "BD_Common_1313133001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313133001",
+        "mgeId": "1313133001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040101",
+      "sourceType": "perk",
+      "itemId": "20703040101",
+      "title": "回响续装",
+      "slot": 2,
+      "slug": "回响续装",
+      "overlimitCard": false,
+      "buffId": 110100104,
+      "rowName": "BD_Common_1314125001",
+      "configName": "BD_Common_1314125001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1314125001",
+        "mgeId": "1314125001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040102",
+      "sourceType": "perk",
+      "itemId": "20703040102",
+      "title": "川流不息",
+      "slot": 2,
+      "slug": "川流不息",
+      "overlimitCard": true,
+      "buffId": 110100105,
+      "rowName": "BD_Common_1314126001",
+      "configName": "BD_Common_1314126001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1314126001",
+        "mgeId": "1314126001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040112",
+      "sourceType": "perk",
+      "itemId": "20703040112",
+      "title": "过载膛压",
+      "slot": 3,
+      "slug": "过载膛压",
+      "overlimitCard": true,
+      "buffId": 110100092,
+      "rowName": "BD_Common_1315132001",
+      "configName": "BD_Common_1315132001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315132001",
+        "mgeId": "1315132001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040115",
+      "sourceType": "perk",
+      "itemId": "20703040115",
+      "title": "概率坍缩",
+      "slot": 3,
+      "slug": "概率坍缩",
+      "overlimitCard": true,
+      "buffId": 110100094,
+      "rowName": "BD_Common_1315135001",
+      "configName": "BD_Common_1315135001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315135001",
+        "mgeId": "1315135001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040116",
+      "sourceType": "perk",
+      "itemId": "20703040116",
+      "title": "裁决充能",
+      "slot": 3,
+      "slug": "裁决充能",
+      "overlimitCard": true,
+      "buffId": 110100095,
+      "rowName": "BD_Common_1315136001",
+      "configName": "BD_Common_1315136001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315136001",
+        "mgeId": "1315136001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040123",
+      "sourceType": "perk",
+      "itemId": "20703040123",
+      "title": "蚀化速装",
+      "slot": 1,
+      "slug": "蚀化速装",
+      "overlimitCard": false,
+      "buffId": 110100096,
+      "rowName": "BD_Common_1313136001",
+      "configName": "BD_Common_1313136001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313136001",
+        "mgeId": "1313136001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040128",
+      "sourceType": "perk",
+      "itemId": "20703040128",
+      "title": "同调稳持",
+      "slot": 1,
+      "slug": "同调稳持",
+      "overlimitCard": false,
+      "buffId": 110100097,
+      "rowName": "BD_Common_1313141001",
+      "configName": "BD_Common_1313141001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313141001",
+        "mgeId": "1313141001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040140",
+      "sourceType": "perk",
+      "itemId": "20703040140",
+      "title": "解构增幅",
+      "slot": 3,
+      "slug": "解构增幅",
+      "overlimitCard": true,
+      "buffId": 110100109,
+      "rowName": "BD_Common_1315143001",
+      "configName": "BD_Common_1315143001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315143001",
+        "mgeId": "1315143001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040151",
+      "sourceType": "perk",
+      "itemId": "20703040151",
+      "title": "相位强袭",
+      "slot": 3,
+      "slug": "相位强袭",
+      "overlimitCard": false,
+      "buffId": 110100100,
+      "rowName": "BD_Common_1315145001",
+      "configName": "BD_Common_1315145001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315145001",
+        "mgeId": "1315145001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040152",
+      "sourceType": "perk",
+      "itemId": "20703040152",
+      "title": "余震速装",
+      "slot": 1,
+      "slug": "余震速装",
+      "overlimitCard": true,
+      "buffId": 110100101,
+      "rowName": "BD_Common_1313144001",
+      "configName": "BD_Common_1313144001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313144001",
+        "mgeId": "1313144001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040162",
+      "sourceType": "perk",
+      "itemId": "20703040162",
+      "title": "回响充能",
+      "slot": 2,
+      "slug": "回响充能",
+      "overlimitCard": false,
+      "buffId": 110100118,
+      "rowName": "BD_Common_1314140001",
+      "configName": "BD_Common_1314140001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1314140001",
+        "mgeId": "1314140001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040171",
+      "sourceType": "perk",
+      "itemId": "20703040171",
+      "title": "致命节奏",
+      "slot": 3,
+      "slug": "致命节奏",
+      "overlimitCard": false,
+      "buffId": 110100119,
+      "rowName": "BD_Common_1315150001",
+      "configName": "BD_Common_1315150001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315150001",
+        "mgeId": "1315150001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040199",
+      "sourceType": "perk",
+      "itemId": "20703040199",
+      "title": "万钧过载",
+      "slot": 1,
+      "slug": "万钧过载",
+      "overlimitCard": true,
+      "buffId": 110100136,
+      "rowName": "BD_Common_1313155001",
+      "configName": "BD_Common_1313155001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313155001",
+        "mgeId": "1313155001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040201",
+      "sourceType": "perk",
+      "itemId": "20703040201",
+      "title": "重峦叠势",
+      "slot": 3,
+      "slug": "重峦叠势",
+      "overlimitCard": true,
+      "buffId": 110100122,
+      "rowName": "BD_Common_1315157001",
+      "configName": "BD_Common_1315157001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315157001",
+        "mgeId": "1315157001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040212",
+      "sourceType": "perk",
+      "itemId": "20703040212",
+      "title": "冥河送葬",
+      "slot": 4,
+      "slug": "冥河送葬",
+      "overlimitCard": false,
+      "buffId": 120600170,
+      "rowName": "Weapon_20106000017_1",
+      "configName": "Weapon_20106000017_1",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1312053001",
+        "mgeId": "1312053001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040293",
+      "sourceType": "perk",
+      "itemId": "20703040293",
+      "title": "叠伤系统",
+      "slot": 3,
+      "slug": "叠伤系统",
+      "overlimitCard": false,
+      "buffId": 110100145,
+      "rowName": "BD_Common_1316178001",
+      "configName": "BD_Common_1316178001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315178001",
+        "mgeId": "1315178001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040296",
+      "sourceType": "perk",
+      "itemId": "20703040296",
+      "title": "霰弹增伤",
+      "slot": 3,
+      "slug": "霰弹增伤",
+      "overlimitCard": false,
+      "buffId": 110100146,
+      "rowName": "BD_Common_1315179001",
+      "configName": "BD_Common_1315179001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315179001",
+        "mgeId": "1315179001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040317",
+      "sourceType": "perk",
+      "itemId": "20703040317",
+      "title": "充能连线",
+      "slot": 1,
+      "slug": "充能连线",
+      "overlimitCard": false,
+      "buffId": 110100151,
+      "rowName": "BD_Common_1313182001",
+      "configName": "BD_Common_1313182001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313182001",
+        "mgeId": "1313182001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040318",
+      "sourceType": "perk",
+      "itemId": "20703040318",
+      "title": "川流不止",
+      "slot": 2,
+      "slug": "川流不止",
+      "overlimitCard": false,
+      "buffId": 110100153,
+      "rowName": "BD_Common_1314178001",
+      "configName": "BD_Common_1314178001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1314178001",
+        "mgeId": "1314178001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040319",
+      "sourceType": "perk",
+      "itemId": "20703040319",
+      "title": "危险膛压",
+      "slot": 3,
+      "slug": "危险膛压",
+      "overlimitCard": false,
+      "buffId": 110100154,
+      "rowName": "BD_Common_1315186001",
+      "configName": "BD_Common_1315186001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315186001",
+        "mgeId": "1315186001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040321",
+      "sourceType": "perk",
+      "itemId": "20703040321",
+      "title": "危险循环",
+      "slot": 1,
+      "slug": "危险循环",
+      "overlimitCard": false,
+      "buffId": 110100156,
+      "rowName": "BD_Common_1313183001",
+      "configName": "BD_Common_1313183001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1313183001",
+        "mgeId": "1313183001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040350",
+      "sourceType": "perk",
+      "itemId": "20703040350",
+      "title": "打标增伤",
+      "slot": 3,
+      "slug": "打标增伤",
+      "overlimitCard": false,
+      "buffId": 160401001,
+      "rowName": "BD_Common_1315190001",
+      "configName": "BD_Common_1315190001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315190001",
+        "mgeId": "1315190001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040358",
+      "sourceType": "perk",
+      "itemId": "20703040358",
+      "title": "泡爆增伤",
+      "slot": 3,
+      "slug": "泡爆增伤",
+      "overlimitCard": false,
+      "buffId": 160401003,
+      "rowName": "BD_Common_1316184001",
+      "configName": "BD_Common_1316184001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1315192001",
+        "mgeId": "1315192001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040414",
+      "sourceType": "perk",
+      "itemId": "20703040414",
+      "title": "自追踪炮塔",
+      "slot": 4,
+      "slug": "自追踪炮塔",
+      "overlimitCard": false,
+      "buffId": 120600305,
+      "rowName": "Weapon_20106000030_Mod2_1",
+      "configName": "Weapon_20106000030_Mod2_1",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1312074001",
+        "mgeId": "1312074001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040415",
+      "sourceType": "perk",
+      "itemId": "20703040415",
+      "title": "幸运炎帝",
+      "slot": 4,
+      "slug": "幸运炎帝",
+      "overlimitCard": true,
+      "buffId": 120600301,
+      "rowName": "Weapon_20106000030_1",
+      "configName": "Weapon_20106000030_1",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1312074002",
+        "mgeId": "1312074002",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040424",
+      "sourceType": "perk",
+      "itemId": "20703040424",
+      "title": "哈士奇支援",
+      "slot": 4,
+      "slug": "哈士奇支援",
+      "overlimitCard": true,
+      "buffId": 121600110,
+      "rowName": "Weapon_121600110_1",
+      "configName": "Weapon_121600110_1",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1312068002",
+        "mgeId": "1312068002",
+        "addCall": "CallFunc_AddBuffToWeapon_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040429",
+      "sourceType": "perk",
+      "itemId": "20703040429",
+      "title": "幸运龙炎",
+      "slot": 4,
+      "slug": "幸运龙炎",
+      "overlimitCard": true,
+      "buffId": 1410150102,
+      "rowName": "JFZLLucky_Duration",
+      "configName": "JFZLLucky_Duration",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1312032005",
+        "mgeId": "1312032005",
+        "addCall": "CallFunc_AddBuffToWeapon_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040435",
+      "sourceType": "perk",
+      "itemId": "20703040435",
+      "title": "我只射击",
+      "slot": 3,
+      "slug": "我只射击",
+      "overlimitCard": true,
+      "buffId": 1316198001,
+      "rowName": "Buff_Rogue_1316198001",
+      "configName": "Buff_Rogue_1316198001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1316198001",
+        "mgeId": "1316198001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040436",
+      "sourceType": "perk",
+      "itemId": "20703040436",
+      "title": "哑枪",
+      "slot": 3,
+      "slug": "哑枪",
+      "overlimitCard": true,
+      "buffId": 1316199001,
+      "rowName": "Buff_Rogue_1316199001",
+      "configName": "Buff_Rogue_1316199001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1316199001",
+        "mgeId": "1316199001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040444",
+      "sourceType": "perk",
+      "itemId": "20703040444",
+      "title": "物法兼得",
+      "slot": 3,
+      "slug": "物法兼得",
+      "overlimitCard": true,
+      "buffId": 1316207001,
+      "rowName": "Buff_Rogue_1316207001",
+      "configName": "Buff_Rogue_1316207001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1316207001",
+        "mgeId": "1316207001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    },
+    {
+      "sourceId": "perk:20703040475",
+      "sourceType": "perk",
+      "itemId": "20703040475",
+      "title": "飞毛腿",
+      "slot": 3,
+      "slug": "飞毛腿",
+      "overlimitCard": true,
+      "buffId": 1316214001,
+      "rowName": "Buff_1316214001",
+      "configName": "Buff_1316214001",
+      "evidence": {
+        "kind": "mge-add-buff",
+        "passiveSkillId": "1316214001",
+        "mgeId": "1316214001",
+        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
+      }
+    }
+  ]
+}

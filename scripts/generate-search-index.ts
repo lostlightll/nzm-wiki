@@ -9,6 +9,7 @@ import {
   getResolvedFieldValue,
 } from "../lib/weapon-consumers";
 import type { ResolvedWeapon } from "../lib/weapon-resolver";
+import { getStatusEffectSearchDocuments } from "../lib/status-effects";
 import { getAllResolvedWeapons } from "../lib/weapons";
 
 export interface SearchItem {
@@ -200,6 +201,67 @@ function buildPinyin(texts: readonly string[]): string[] {
   return [...values];
 }
 
+type StatusEffectSearchDocument = ReturnType<
+  typeof getStatusEffectSearchDocuments
+>[number];
+
+export function createStatusEffectSearchItem(
+  document: StatusEffectSearchDocument,
+): SearchItem {
+  const route =
+    document.target === "enemy" ? "enemy-buffs" : "player-buffs";
+  const keywords = [
+    String(document.buffId),
+    ...document.keywords,
+  ].filter(
+    (value, index, values) =>
+      value.length > 0 && values.indexOf(value) === index,
+  );
+
+  return {
+    title: document.title,
+    slug: `status-effects/${document.target}/${document.buffId}`,
+    path: `/posts/${route}?buff=${document.buffId}#status-effect-${document.buffId}`,
+    category: "状态效果",
+    keywords,
+    pinyin: buildPinyin([document.title, ...keywords]),
+  };
+}
+
+type SeasonTalentSearchDocument = {
+  tree: string;
+  treeName: string;
+  id: string;
+  title: string;
+  kind: "node" | "passive";
+  keywords: string[];
+};
+
+export function createSeasonTalentSearchItem(
+  document: SeasonTalentSearchDocument,
+): SearchItem {
+  const queryKey = document.kind === "node" ? "node" : "passive";
+  const anchor = `multiplier-provider-${queryKey}-${document.id}`;
+  const keywords = [
+    "S3",
+    "赛季天赋",
+    document.treeName,
+    document.id,
+    ...document.keywords,
+  ].filter(
+    (value, index, values) =>
+      value.length > 0 && values.indexOf(value) === index,
+  );
+  return {
+    title: document.title,
+    slug: `season-talents/s3/${document.tree}/${queryKey}/${document.id}`,
+    path: `/guides/season-talents/s3/${document.tree}?${queryKey}=${document.id}#${anchor}`,
+    category: "赛季天赋",
+    keywords,
+    pinyin: buildPinyin([document.title, ...keywords]),
+  };
+}
+
 export function createWeaponSearchItem(weapon: ResolvedWeapon): SearchItem {
   const weaponType = getResolvedFieldValue(weapon.weaponType);
   const element = getResolvedFieldValue(weapon.element);
@@ -229,6 +291,9 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
 
   const items = scanDirectory(baseDir);
   items.push(...weapons.map(createWeaponSearchItem));
+  items.push(
+    ...getStatusEffectSearchDocuments().map(createStatusEffectSearchItem),
+  );
   const s3TalentSlugs = ["iron-fist", "zero", "grappling-hook"];
   for (const slug of s3TalentSlugs) {
     const talentFile = path.join(baseDir, "season-talents", "s3", `${slug}.json`);
@@ -239,7 +304,7 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
       name: string;
       subtitle: string;
       applicableWeapons: string[];
-      nodes: Array<{ name: string; descriptions: string[] }>;
+      nodes: Array<{ id: string; name: string; descriptions: string[] }>;
     };
     const keywords = [
       "S3",
@@ -273,6 +338,55 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
       keywords: [...new Set(keywords)],
       pinyin: [...pinyinSet],
     });
+
+    items.push(
+      ...talent.nodes.map((node) =>
+        createSeasonTalentSearchItem({
+          tree: slug,
+          treeName: talent.name,
+          id: node.id,
+          title: node.name,
+          kind: "node",
+          keywords: [
+            talent.subtitle,
+            ...talent.applicableWeapons,
+            ...node.descriptions.map((description) =>
+              description.replace(/<[^>]+>/g, ""),
+            ),
+          ],
+        }),
+      ),
+    );
+  }
+
+
+  const s3PassivesFile = path.join(baseDir, "season-talents", "s3", "passives.json");
+  if (fs.existsSync(s3PassivesFile)) {
+    const passiveData = JSON.parse(fs.readFileSync(s3PassivesFile, "utf-8")) as {
+      passives: Array<{
+        id: string;
+        name: string;
+        unlockLevel: number;
+        tags: string[];
+        description: string;
+      }>;
+    };
+    items.push(
+      ...passiveData.passives.map((passive) =>
+        createSeasonTalentSearchItem({
+          tree: "zero",
+          treeName: "零点",
+          id: passive.id,
+          title: passive.name,
+          kind: "passive",
+          keywords: [
+            `等级 ${passive.unlockLevel}`,
+            ...passive.tags,
+            passive.description.replace(/<[^>]+>/g, ""),
+          ],
+        }),
+      ),
+    );
   }
   const overlimitFile = path.join(baseDir, "overlimit-cards.json");
   if (fs.existsSync(overlimitFile)) {

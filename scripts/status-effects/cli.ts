@@ -8,9 +8,14 @@ import {
   readStatusEffectSourceTables,
   type StatusEffectIconOverride,
 } from "./extract";
+import {
+  extractStatusEffectRelations,
+  readStatusEffectRelationSourceTables,
+} from "./relations";
 
 const root = process.cwd();
 const dataPath = path.join(root, "data", "status-effects.json");
+const relationDataPath = path.join(root, "data", "status-effect-relations.json");
 const iconRoot = path.join(root, "public", "webp", "icons", "status-effects");
 const mode = process.argv[2];
 const exemptionMap = exemptions as Record<string, StatusEffectIconOverride>;
@@ -64,6 +69,10 @@ async function runWithConcurrency<T>(
 
 async function refresh() {
   const result = extractStatusEffects(readStatusEffectSourceTables(root), exemptionMap);
+  const relations = extractStatusEffectRelations(
+    readStatusEffectRelationSourceTables(root),
+    result.data,
+  );
   const icons = resolveIcons(result.iconAssets);
   fs.mkdirSync(iconRoot, { recursive: true });
   await runWithConcurrency(icons, 8, async ({ sourcePath, targetPath }) => {
@@ -80,13 +89,18 @@ async function refresh() {
   }
 
   fs.writeFileSync(dataPath, serialize(result.data), "utf8");
+  fs.writeFileSync(relationDataPath, serialize(relations), "utf8");
   console.log(
-    `状态效果数据已刷新：敌方 ${result.data.summary.enemyEntries} 项，玩家 ${result.data.summary.playerEntries} 项，图标 ${icons.length} 个。`,
+    `状态效果数据已刷新：敌方 ${result.data.summary.enemyEntries} 项，玩家 ${result.data.summary.playerEntries} 项，来源关系 ${relations.summary.relations} 条，图标 ${icons.length} 个。`,
   );
 }
 
 function check() {
   const result = extractStatusEffects(readStatusEffectSourceTables(root), exemptionMap);
+  const relations = extractStatusEffectRelations(
+    readStatusEffectRelationSourceTables(root),
+    result.data,
+  );
   const icons = resolveIcons(result.iconAssets);
   const errors: string[] = [];
 
@@ -94,6 +108,13 @@ function check() {
     errors.push("缺少 data/status-effects.json");
   } else if (fs.readFileSync(dataPath, "utf8") !== serialize(result.data)) {
     errors.push("data/status-effects.json 与当前猎场导出不一致，请运行 status-effects:refresh");
+  }
+  if (!fs.existsSync(relationDataPath)) {
+    errors.push("缺少 data/status-effect-relations.json");
+  } else if (fs.readFileSync(relationDataPath, "utf8") !== serialize(relations)) {
+    errors.push(
+      "data/status-effect-relations.json 与当前来源证据不一致，请运行 status-effects:refresh",
+    );
   }
 
   for (const { publicPath, targetPath } of icons) {
@@ -122,7 +143,7 @@ function check() {
     throw new Error(`状态效果数据校验失败：\n${errors.map((item) => `- ${item}`).join("\n")}`);
   }
   console.log(
-    `状态效果数据校验通过：敌方 ${result.data.summary.enemyEntries} 项，玩家 ${result.data.summary.playerEntries} 项，图标 ${icons.length} 个。`,
+    `状态效果数据校验通过：敌方 ${result.data.summary.enemyEntries} 项，玩家 ${result.data.summary.playerEntries} 项，来源关系 ${relations.summary.relations} 条，图标 ${icons.length} 个。`,
   );
 }
 
