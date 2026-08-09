@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   getWeeklyBuffRotationWindow,
   getWeeklyBuffsForRotation,
+  WEEKLY_BUFFS,
   WEEKLY_BUFF_POOLS,
 } from "./weekly-buffs";
 
@@ -39,4 +40,33 @@ test("当前配置日期落在第三组轮换", () => {
       .rotationIndex,
     3,
   );
+});
+
+test("增伤索引只保存规范乘区，不保存具体增伤类型", () => {
+  const expectedFactors = new Map<number, string>([
+    [1398001400, "dilution"],
+    [1398001420, "dilution"],
+    [1398001430, "dilution"],
+    [1398001440, "dilution"],
+    [1398001460, "dilution"],
+    [1398001470, "dilution"],
+    [1398001500, "dilution"],
+    [1398001520, "dilution"],
+    [1398001540, "dilution"],
+  ]);
+
+  for (const [id, factorId] of expectedFactors) {
+    assert.equal(WEEKLY_BUFFS[id].indexKind, "direct");
+    assert.equal(WEEKLY_BUFFS[id].factorId, factorId);
+    assert.equal(WEEKLY_BUFFS[id].indexLabel, undefined);
+    assert.equal("modifierTypeId" in WEEKLY_BUFFS[id], false);
+  }
+});
+
+test("暴击率和额外伤害不冒充乘区", () => {
+  for (const buff of Object.values(WEEKLY_BUFFS)) {
+    if (buff.indexKind !== "critical" && buff.indexKind !== "extra") continue;
+    assert.equal(buff.factorId, undefined);
+    assert.ok(buff.indexLabel);
+  }
 });

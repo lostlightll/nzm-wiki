@@ -1,5 +1,8 @@
 import rawWeeklyBuffs from "@/data/guides/weekly-buffs.json";
-import type { MultiplierFactorId } from "@/lib/multiplier-data";
+import {
+  MULTIPLIER_FACTORS,
+  type MultiplierFactorId,
+} from "@/lib/multiplier-data";
 
 export type WeeklyBuffIndexKind = "direct" | "critical" | "extra" | "utility";
 
@@ -11,7 +14,6 @@ export type WeeklyBuff = {
   indexKind: WeeklyBuffIndexKind;
   indexLabel?: string;
   factorId?: MultiplierFactorId;
-  modifierTypeId?: string;
 };
 
 export type WeeklyBuffPool = {
@@ -46,6 +48,35 @@ function assertWeeklyBuffData(value: unknown): asserts value is RawWeeklyBuffDat
   }
 
   const poolIds = new Set<string>();
+  const factorIds = new Set<string>(
+    MULTIPLIER_FACTORS.map((factor) => factor.id),
+  );
+
+  for (const buffValue of Object.values(data.buffs)) {
+    const buff = buffValue as Partial<Omit<WeeklyBuff, "id">> &
+      Record<string, unknown>;
+    const hasFactor =
+      typeof buff.factorId === "string" && factorIds.has(buff.factorId);
+    const hasIndexLabel =
+      typeof buff.indexLabel === "string" && buff.indexLabel.length > 0;
+
+    if (
+      typeof buff.name !== "string" ||
+      typeof buff.description !== "string" ||
+      typeof buff.icon !== "string" ||
+      !["direct", "critical", "extra", "utility"].includes(
+        buff.indexKind ?? "",
+      ) ||
+      Object.hasOwn(buff, "modifierTypeId") ||
+      (buff.indexKind === "direct" && (!hasFactor || hasIndexLabel)) ||
+      ((buff.indexKind === "critical" || buff.indexKind === "extra") &&
+        (hasFactor || !hasIndexLabel)) ||
+      (buff.indexKind === "utility" && (hasFactor || hasIndexLabel))
+    ) {
+      throw new Error("周 Buff 索引数据无效");
+    }
+  }
+
   for (const pool of data.pools) {
     if (
       (pool.id !== "a" && pool.id !== "b") ||

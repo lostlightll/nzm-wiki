@@ -15,7 +15,10 @@ import {
 import { useSyncExternalStore } from "react";
 import { getMultiplierFactorStyle } from "@/components/multiplier-badge-styles";
 import { getAssetPath } from "@/lib/path";
-import { resolveMultiplierFactorHref } from "@/lib/multiplier-data";
+import {
+  MULTIPLIER_FACTORS,
+  resolveMultiplierFactorHref,
+} from "@/lib/multiplier-data";
 import {
   getWeeklyBuffRotationWindow,
   getWeeklyBuffsForRotation,
@@ -32,16 +35,19 @@ type IndexFilter = "all" | Exclude<WeeklyBuffIndexKind, "utility">;
 
 const INDEX_FILTERS: readonly { id: IndexFilter; label: string }[] = [
   { id: "all", label: "全部" },
-  { id: "direct", label: "直接增伤" },
+  { id: "direct", label: "乘区增伤" },
   { id: "critical", label: "暴击收益" },
   { id: "extra", label: "额外伤害" },
 ];
 
-const INDEX_KIND_STYLES: Record<Exclude<WeeklyBuffIndexKind, "utility">, string> = {
-  direct: "border-amber-400/40 bg-amber-400/10 text-amber-200",
+const INDEX_KIND_STYLES: Record<"critical" | "extra", string> = {
   critical: "border-orange-400/40 bg-orange-400/10 text-orange-200",
   extra: "border-cyan-400/40 bg-cyan-400/10 text-cyan-200",
 };
+
+const FACTOR_LABELS = new Map(
+  MULTIPLIER_FACTORS.map((factor) => [factor.id, factor.label]),
+);
 
 const DATE_FORMATTER = new Intl.DateTimeFormat("zh-CN", {
   timeZone: "Asia/Shanghai",
@@ -118,29 +124,34 @@ function getMultiplierHref(buff: WeeklyBuff) {
     return "/guides?part=damage-sources#multiplier";
   }
   if (!buff.factorId) return undefined;
-  return resolveMultiplierFactorHref(buff.factorId, {
-    view: "providers",
-    modifierTypeId: buff.modifierTypeId,
-  });
+  return resolveMultiplierFactorHref(buff.factorId, { view: "providers" });
 }
 
 function IndexBadge({ buff }: { buff: WeeklyBuff }) {
-  if (buff.indexKind === "utility" || !buff.indexLabel) return null;
+  if (buff.indexKind === "utility") return null;
+  const label = buff.factorId
+    ? FACTOR_LABELS.get(buff.factorId)
+    : buff.indexLabel;
+  if (!label) return null;
   const href = getMultiplierHref(buff);
+  const specialStyle =
+    buff.indexKind === "critical" || buff.indexKind === "extra"
+      ? INDEX_KIND_STYLES[buff.indexKind]
+      : "";
   const className = `inline-flex min-h-7 items-center gap-1 rounded border px-2 py-1 text-xs font-semibold ${
     buff.factorId
       ? getMultiplierFactorStyle(buff.factorId)
-      : INDEX_KIND_STYLES[buff.indexKind]
+      : specialStyle
   }`;
 
-  if (!href) return <span className={className}>{buff.indexLabel}</span>;
+  if (!href) return <span className={className}>{label}</span>;
   return (
     <Link
       href={href}
       prefetch={false}
       className={`${className} touch-manipulation transition-[filter] hover:brightness-125 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4`}
     >
-      {buff.indexLabel}
+      {label}
       <ArrowUpRight aria-hidden="true" className="h-3 w-3" />
     </Link>
   );
@@ -400,7 +411,7 @@ export function WeeklyBuffGuide() {
               增伤类索引
             </h2>
             <p className="mt-2 text-sm leading-6 text-zinc-400">
-              暴击率条目影响期望伤害，但不直接增加暴伤乘区；额外爆炸是独立伤害事件，不计作增伤 Buff。
+              乘区增伤只展示规范乘区名；暴击率收益和额外伤害事件单独列出，不作为乘区处理。
             </p>
           </div>
           <div
@@ -429,7 +440,7 @@ export function WeeklyBuffGuide() {
         <div className="overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/65">
           <div className="hidden grid-cols-[minmax(12rem,0.8fr)_minmax(9rem,0.65fr)_minmax(0,1.55fr)_2rem] gap-4 border-b border-zinc-700 px-5 py-3 text-xs font-semibold text-zinc-500 md:grid">
             <span>Buff</span>
-            <span>索引口径</span>
+            <span>收益归类</span>
             <span>生效说明</span>
             <span className="sr-only">定位</span>
           </div>
@@ -482,7 +493,7 @@ export function WeeklyBuffGuide() {
       <footer className="mt-8 flex items-start gap-3 border-t border-zinc-700 pt-5 text-xs leading-5 text-zinc-500">
         <Sparkles aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
         <p>
-          轮换按游戏配置的 UTC+8 时间计算。页面展示正式描述中的数值与适用范围；限定武器增伤未进一步断言具体底层字段。
+          轮换按游戏配置的 UTC+8 时间计算。乘区徽标只表示结算乘区，不展示乘区内的具体增伤类型。
         </p>
       </footer>
     </div>
