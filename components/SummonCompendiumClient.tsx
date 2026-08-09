@@ -793,23 +793,11 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
         aria-label="按召唤物筛选"
         className="mt-3 flex min-w-0 flex-col gap-2 rounded-lg border border-zinc-800 bg-zinc-950/55 p-2 sm:flex-row sm:items-center"
       >
-        <div className="flex shrink-0 items-center justify-between gap-3 px-1 sm:justify-start">
+        <div className="flex shrink-0 items-center px-1">
           <span className="flex items-center gap-1.5 text-xs font-semibold text-zinc-300">
             <ListFilter aria-hidden="true" className="h-4 w-4 text-cyan-400" />
             召唤物筛选
           </span>
-          {summonFilters.size > 0 && (
-            <>
-              <span className="text-[11px] text-zinc-600">已选 {summonFilters.size} 项</span>
-              <button
-                type="button"
-                onClick={() => updateQuery({ "summon-filter": null, summon: null, section: null }, "")}
-                className="min-h-8 shrink-0 px-1.5 text-[11px] text-cyan-400 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
-              >
-                清除
-              </button>
-            </>
-          )}
         </div>
         <div className="flex min-w-0 gap-2 overflow-x-auto pb-0.5 sm:pb-0 [scrollbar-width:thin]">
           {catalog.entries.map((entry) => {
