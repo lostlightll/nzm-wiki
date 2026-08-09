@@ -277,14 +277,14 @@ export function WeeklyBuffGuide() {
 
   return (
     <div className="not-prose mx-auto max-w-6xl pb-12 [--weekly-accent:#e4b457]">
-      <header className="border-b border-zinc-700 pb-7">
-        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+      <header className="pb-5">
+        <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
           <div className="max-w-3xl">
-            <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-amber-300">
+            <p className="flex items-center gap-2 text-sm font-semibold text-amber-300">
               <CalendarClock aria-hidden="true" className="h-4 w-4" />
               僵尸猎场机制专题
             </p>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-300">
+            <p className="mt-2 max-w-2xl text-base leading-7 text-zinc-300">
               两套地图池独立取值，但共享同一轮换周次。每 7 天切换一组，每局同时生效 3 个 Buff。
             </p>
           </div>
@@ -294,7 +294,7 @@ export function WeeklyBuffGuide() {
               ["3 个", "局内生效"],
               ["2 套", "地图池"],
             ].map(([value, label]) => (
-              <div key={label} className="border-r border-zinc-700 px-3 py-3 last:border-r-0">
+              <div key={label} className="border-r border-zinc-700 px-3 py-2 last:border-r-0">
                 <strong className="block font-mono text-lg tabular-nums text-amber-200">
                   {value}
                 </strong>
@@ -306,7 +306,7 @@ export function WeeklyBuffGuide() {
       </header>
 
       <section className="grid border-b border-zinc-700 lg:grid-cols-[minmax(0,1.2fr)_minmax(19rem,0.8fr)]">
-        <div className="py-5 lg:border-r lg:border-zinc-700 lg:pr-8">
+        <div className="py-3 lg:border-r lg:border-zinc-700 lg:pr-8">
           <div className="flex items-start gap-3">
             <TimerReset aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" />
             <div>
@@ -319,7 +319,7 @@ export function WeeklyBuffGuide() {
             </div>
           </div>
         </div>
-        <div className="py-5 lg:pl-8">
+        <div className="py-3 lg:pl-8">
           <div className="flex items-start gap-3">
             <ChevronRight aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" />
             <div className="min-w-0">
@@ -333,8 +333,8 @@ export function WeeklyBuffGuide() {
         </div>
       </section>
 
-      <section id="rotation" className="scroll-mt-20 py-9">
-        <div className="mb-6 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
+      <section id="rotation" className="scroll-mt-20 py-7">
+        <div className="mb-4 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
           <div>
             <h2 className="flex items-center gap-2 text-xl font-semibold text-zinc-100 sm:text-2xl">
               <Layers3 aria-hidden="true" className="h-5 w-5 text-amber-300" />
@@ -367,7 +367,7 @@ export function WeeklyBuffGuide() {
           </div>
         </div>
 
-        <div className="mb-6 grid grid-cols-3 rounded-lg border border-zinc-700 bg-zinc-900/70 p-1">
+        <div className="mb-4 grid grid-cols-3 rounded-lg border border-zinc-700 bg-zinc-900/70 p-1">
           {[1, 2, 3].map((index) => (
             <RotationButton
               key={index}
@@ -379,11 +379,11 @@ export function WeeklyBuffGuide() {
           ))}
         </div>
 
-        <div className="mb-6 flex items-start gap-3 border-y border-zinc-700 py-4">
+        <div className="mb-4 flex items-start gap-3 py-3">
           <MapPinned aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" />
           <div>
             <h3 className="text-sm font-semibold text-zinc-100">{selectedPool.label}适用地图</h3>
-            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-zinc-400">
+            <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-zinc-400">
               {selectedPool.maps.map((map) => (
                 <span key={map}>{map}</span>
               ))}
@@ -398,7 +398,7 @@ export function WeeklyBuffGuide() {
         </div>
       </section>
 
-      <section id="damage-index" className="scroll-mt-20 border-t border-zinc-700 pt-9">
+      <section id="damage-index" className="scroll-mt-20 pt-9">
         <div className="mb-6 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
             <h2 className="flex items-center gap-2 text-xl font-semibold text-zinc-100 sm:text-2xl">
