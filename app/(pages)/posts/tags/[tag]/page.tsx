@@ -1,4 +1,5 @@
 import { getMDXList } from "@/lib/mdx";
+import { sortPostArchiveItems } from "@/lib/post-archive";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -32,7 +33,7 @@ export default async function TagPage({
 }) {
   const { tag } = await params;
   const decodedTag = decodeURIComponent(tag);
-  const allPosts = getMDXList("posts") as Post[];
+  const allPosts = sortPostArchiveItems(getMDXList("posts") as Post[]);
 
   const filteredPosts = allPosts.filter((post) => {
     if (!post.tag) return false;

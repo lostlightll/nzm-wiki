@@ -1,4 +1,5 @@
 import { getMDXList } from "@/lib/mdx";
+import { sortPostArchiveItems } from "@/lib/post-archive";
 import Link from "next/link";
 
 interface Post {
@@ -8,7 +9,7 @@ interface Post {
 }
 
 export default function PostsPage() {
-  const posts = getMDXList("posts") as Post[];
+  const posts = sortPostArchiveItems(getMDXList("posts") as Post[]);
 
   const renderTags = (tag: string | string[] | undefined) => {
     if (!tag) return null;

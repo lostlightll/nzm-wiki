@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getMDXList } from "@/lib/mdx";
+import { sortPostArchiveItems } from "@/lib/post-archive";
 import { getApplicableModifierTypes } from "@/lib/multiplier-data";
 import { buildWeaponBaseDamageIndex } from "@/lib/weapon-base-damage";
 import { getAllResolvedWeapons } from "@/lib/weapons";
@@ -20,7 +21,7 @@ interface Post {
 }
 
 export default async function GuidesPage() {
-  const posts = getMDXList("posts") as Post[];
+  const posts = sortPostArchiveItems(getMDXList("posts") as Post[]);
   const [lcWeapons, tdWeapons] = await Promise.all([
     getAllResolvedWeapons("lc"),
     getAllResolvedWeapons("td"),
