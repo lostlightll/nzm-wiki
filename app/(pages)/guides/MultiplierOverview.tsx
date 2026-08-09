@@ -12,7 +12,6 @@ import {
   Tag,
   Target,
   Telescope,
-  TriangleAlert,
   Users,
   type LucideIcon,
 } from "lucide-react";
@@ -745,16 +744,6 @@ export function MultiplierOverview({
           );
         })}
       </nav>
-
-      <aside
-        className="mb-7 flex min-h-14 items-center gap-3 rounded-lg border border-[color:var(--guide-warning-border)] bg-[linear-gradient(90deg,rgba(151,105,31,0.13),rgba(151,105,31,0.06))] px-4 py-3 text-[color:var(--guide-accent)] sm:px-5 xl:mb-3 xl:min-h-12 xl:py-2"
-        aria-label="内容状态"
-      >
-        <TriangleAlert aria-hidden="true" className="h-6 w-6 shrink-0" strokeWidth={2} />
-        <p className="text-sm font-semibold tracking-[0.12em] sm:text-base">
-          阶段性整理 <span aria-hidden="true" className="px-1.5">·</span> 分类待实测核验
-        </p>
-      </aside>
 
       {activePart === "channels" ? (
         <DamageChannelMatrix />
