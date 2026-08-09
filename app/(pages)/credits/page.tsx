@@ -98,6 +98,12 @@ const CONTENT_CONTRIBUTORS = [
   },
   {
     platform: "bilibili" as const,
+    author: "岭晴云",
+    url: "https://space.bilibili.com/348855694",
+    title: "Boss 机制与打法视频参考",
+  },
+  {
+    platform: "bilibili" as const,
     author: "幻枫华羽",
     url: "https://www.bilibili.com/video/BV19Q6bBrE1m",
     title: "武器数据参考",

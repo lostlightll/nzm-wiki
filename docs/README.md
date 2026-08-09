@@ -22,6 +22,7 @@
 | 主动技能基础充能 | [`architecture/weapon-skill-charge.md`](architecture/weapon-skill-charge.md) | [`architecture/weapon-source-reader.md`](architecture/weapon-source-reader.md) | active |
 | 插件数据导入或维护 | [`standards/perk-data.md`](standards/perk-data.md) | [`.claude/commands/import-perks.md`](../.claude/commands/import-perks.md) | active |
 | Boss 血量导入 | [`workflows/boss-health-import.md`](workflows/boss-health-import.md) | [`.claude/commands/import-boss-health.md`](../.claude/commands/import-boss-health.md) | active |
+| Boss 机制视频与解包解析 | [`workflows/boss-mechanics-analysis.md`](workflows/boss-mechanics-analysis.md) | [`workflows/boss-health-import.md`](workflows/boss-health-import.md) | active |
 | change-log TODO | [`standards/todo-workflow.md`](standards/todo-workflow.md) | 无 | active |
 | 武器 V2 收尾 | [`plans/weapon-v2-cleanup.md`](plans/weapon-v2-cleanup.md) | 上述武器规范与架构文档 | proposed |
 | 乘区双向索引 | [`architecture/multiplier-index.md`](architecture/multiplier-index.md) | 无 | active |
