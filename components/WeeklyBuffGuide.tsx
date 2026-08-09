@@ -178,12 +178,7 @@ function BuffCard({ buff, position }: { buff: WeeklyBuff; position: number }) {
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-start justify-between gap-2">
-            <div>
-              <h3 className="text-base font-semibold text-zinc-100 sm:text-lg">{buff.name}</h3>
-              <p className="mt-0.5 font-mono text-[11px] tabular-nums text-zinc-500">
-                ID {buff.id}
-              </p>
-            </div>
+            <h3 className="text-base font-semibold text-zinc-100 sm:text-lg">{buff.name}</h3>
             <IndexBadge buff={buff} />
           </div>
           <p className="mt-3 text-sm leading-6 text-zinc-300">{buff.description}</p>
