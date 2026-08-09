@@ -45,6 +45,7 @@ import {
   StatusEffectCatalog,
 } from "@/components/StatusEffectCatalog";
 import { SummonCompendium } from "@/components/SummonCompendium";
+import { WeeklyBuffGuide } from "@/components/WeeklyBuffGuide";
 
 export const mdxComponents = {
   img: MDXImage,
@@ -88,6 +89,7 @@ export const mdxComponents = {
   ElementStatusSummary,
   StatusEffectCatalog,
   SummonCompendium,
+  WeeklyBuffGuide,
 };
 
 /**

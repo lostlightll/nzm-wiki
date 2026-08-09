@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "rotationAnchor": "2025-10-20T05:00:00+08:00",
+  "rotationDays": 7,
+  "pools": [
+    {
+      "id": "a",
+      "label": "地图池 A",
+      "maps": [
+        "大都会",
+        "冰点源起",
+        "禁魔岛",
+        "昆仑神宫",
+        "太空幻想",
+        "销金之城",
+        "雪域迷踪",
+        "樱之渊"
+      ],
+      "rotations": [
+        [1398001430, 1398001440, 1398001450],
+        [1398001400, 1398001410, 1398001420],
+        [1398001460, 1398001470, 1398001480]
+      ]
+    },
+    {
+      "id": "b",
+      "label": "地图池 B",
+      "maps": ["黑暗复活节", "樱之城", "丛林魅影", "精绝古城"],
+      "rotations": [
+        [1398001520, 1398001530, 1398001540],
+        [1398001490, 1398001500, 1398001510],
+        [1398001260, 1398001270, 1398001290]
+      ]
+    }
+  ],
+  "buffs": {
+    "1398001260": {
+      "name": "梯云纵月",
+      "description": "释放武器技能后，武器下一次换弹速度提升 21%。该效果最高可叠加 2 层。",
+      "icon": "/images/weekly-buffs/1398001260.webp",
+      "indexKind": "utility"
+    },
+    "1398001270": {
+      "name": "万壑奔流",
+      "description": "武器技能充能速度提高 24%。",
+      "icon": "/images/weekly-buffs/1398001270.webp",
+      "indexKind": "utility"
+    },
+    "1398001290": {
+      "name": "地煞伏吟",
+      "description": "累计释放 3 次武器技能后，下一次开火命中敌人时，将在命中点附近半径 5 米范围内引发 5 次爆炸。",
+      "icon": "/images/weekly-buffs/1398001290.webp",
+      "indexKind": "extra",
+      "indexLabel": "额外爆炸事件"
+    },
+    "1398001400": {
+      "name": "猎杀标记",
+      "description": "每次射击命中非 Boss 目标时会对其施加 6% 仅对自身生效的易伤，最高叠加 3 层。",
+      "icon": "/images/weekly-buffs/1398001400.webp",
+      "indexKind": "direct",
+      "indexLabel": "易伤",
+      "factorId": "vulnerability",
+      "modifierTypeId": "vulnerability"
+    },
+    "1398001410": {
+      "name": "蝶影翩跹",
+      "description": "一次开火命中 3 个敌人时，17% 概率产生蝴蝶；拾取后装填 6 发子弹，冷却 1 秒。",
+      "icon": "/images/weekly-buffs/1398001410.webp",
+      "indexKind": "utility"
+    },
+    "1398001420": {
+      "name": "精确强化",
+      "description": "暗器、射手步枪、狙击枪伤害增加 12%。",
+      "icon": "/images/weekly-buffs/1398001420.webp",
+      "indexKind": "direct",
+      "indexLabel": "限定武器增伤",
+      "factorId": "dilution"
+    },
+    "1398001430": {
+      "name": "层叠锋芒",
+      "description": "每开火 10 次获得 1 层增益，持续 3 秒，最高 12 层；每层增加 2% 武器伤害。",
+      "icon": "/images/weekly-buffs/1398001430.webp",
+      "indexKind": "direct",
+      "indexLabel": "武器伤害",
+      "factorId": "dilution",
+      "modifierTypeId": "weapon-damage"
+    },
+    "1398001440": {
+      "name": "连发精要",
+      "description": "机枪、突击步枪、冲锋枪的射击伤害增加 12%。",
+      "icon": "/images/weekly-buffs/1398001440.webp",
+      "indexKind": "direct",
+      "indexLabel": "射击伤害",
+      "factorId": "dilution",
+      "modifierTypeId": "weapon-hit-damage"
+    },
+    "1398001450": {
+      "name": "连击遗珍",
+      "description": "持续冲刺 3 秒后，在自身周围掉落狂暴能量球；拾取后暴击率提升 16%，持续 8 秒，冷却 15 秒。",
+      "icon": "/images/weekly-buffs/1398001450.webp",
+      "indexKind": "critical",
+      "indexLabel": "暴击率收益",
+      "factorId": "critical"
+    },
+    "1398001460": {
+      "name": "刚劲加持",
+      "description": "物理武器伤害增加 12%。",
+      "icon": "/images/weekly-buffs/1398001460.webp",
+      "indexKind": "direct",
+      "indexLabel": "物理元素增伤",
+      "factorId": "element",
+      "modifierTypeId": "element"
+    },
+    "1398001470": {
+      "name": "孤爆凝威",
+      "description": "榴弹爆炸连续 5 次以上只命中单个目标时，获得“蓄能引爆”；爆炸伤害增加 15%，持续 10 秒。",
+      "icon": "/images/weekly-buffs/1398001470.webp",
+      "indexKind": "direct",
+      "indexLabel": "爆炸伤害",
+      "factorId": "dilution",
+      "modifierTypeId": "weapon-explode-damage"
+    },
+    "1398001480": {
+      "name": "唤仆献宝",
+      "description": "武器召唤物造成伤害时，25% 概率生成狂暴能量球；拾取后暴击率提升 16%，持续 8 秒，冷却 15 秒。",
+      "icon": "/images/weekly-buffs/1398001480.webp",
+      "indexKind": "critical",
+      "indexLabel": "暴击率收益",
+      "factorId": "critical"
+    },
+    "1398001490": {
+      "name": "速装叠势",
+      "description": "单次开火造成 5 次以上伤害时，下次换弹速度提高 15%，最高叠加 3 层，持续 10 秒。",
+      "icon": "/images/weekly-buffs/1398001490.webp",
+      "indexKind": "utility"
+    },
+    "1398001500": {
+      "name": "爆裂专精",
+      "description": "霰弹枪、多发榴弹、单发榴弹、火箭发射器伤害增加 12%。",
+      "icon": "/images/weekly-buffs/1398001500.webp",
+      "indexKind": "direct",
+      "indexLabel": "限定武器增伤",
+      "factorId": "dilution"
+    },
+    "1398001510": {
+      "name": "百击生辉",
+      "description": "霰弹枪一次开火全部弹丸命中敌人时，在周围生成狂暴能量球；拾取后暴击率提升 16%，持续 8 秒，冷却 15 秒。",
+      "icon": "/images/weekly-buffs/1398001510.webp",
+      "indexKind": "critical",
+      "indexLabel": "暴击率收益",
+      "factorId": "critical"
+    },
+    "1398001520": {
+      "name": "炽焰增伤",
+      "description": "火属性枪械基础伤害增加 12%。",
+      "icon": "/images/weekly-buffs/1398001520.webp",
+      "indexKind": "direct",
+      "indexLabel": "基础伤害",
+      "factorId": "base"
+    },
+    "1398001530": {
+      "name": "掠影增爆",
+      "description": "单次移动距离累计达到 50 米时掉落狂暴能量球；拾取后暴击率提升 16%，持续 8 秒，冷却 15 秒。",
+      "icon": "/images/weekly-buffs/1398001530.webp",
+      "indexKind": "critical",
+      "indexLabel": "暴击率收益",
+      "factorId": "critical"
+    },
+    "1398001540": {
+      "name": "奔射强攻",
+      "description": "移动时开火 40 次后，枪械伤害增加 15%，持续 2 秒。",
+      "icon": "/images/weekly-buffs/1398001540.webp",
+      "indexKind": "direct",
+      "indexLabel": "枪械增伤",
+      "factorId": "dilution"
+    }
+  }
+}
