@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "skills": [
+    {
+      "id": 30200101,
+      "name": "强心针",
+      "description": "对自己进行直接治疗，补满血量和护盾。",
+      "icon": "/webp/icons/skills/hunting-tactical/adrenaline-shot.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 30200201,
+      "name": "神枪手",
+      "description": "每一发子弹无论命中哪里，造成的伤害都必定暴击，持续 8 秒。",
+      "icon": "/webp/icons/skills/hunting-tactical/sharpshooter.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 30200301,
+      "name": "暴走",
+      "description": "移动速度提升至上限（150%），持续 8 秒，不与其他同类效果叠加。",
+      "icon": "/webp/icons/skills/hunting-tactical/rampage.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 30200401,
+      "name": "怒气迸发",
+      "description": "击杀玩家 5 米范围内的敌人，对 Boss 无效。",
+      "icon": "/webp/icons/skills/hunting-tactical/rage-burst.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 30200501,
+      "name": "急速狂热",
+      "description": "射击速度提升至上限（150%），期间不消耗弹药，持续 8 秒，不与其他同类效果叠加。",
+      "icon": "/webp/icons/skills/hunting-tactical/speed-frenzy.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 30100301,
+      "name": "“一起DaDaDa！”",
+      "description": "Da！Da！Da！踩准甜心节拍，换上快乐舞步，就连僵直麻木的丧尸也会不受控制地跟着集体热舞！",
+      "icon": "/webp/icons/skills/hunting-tactical/dada.webp",
+      "availability": "limited"
+    }
+  ]
+}

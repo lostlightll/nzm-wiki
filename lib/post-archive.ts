@@ -3,6 +3,7 @@ const MECHANISM_POST_ORDER = new Map([
   ["enemy-buffs", 1],
   ["player-buffs", 2],
   ["summons", 3],
+  ["hunting-tactical-skills", 4],
 ]);
 
 const POST_SLUG_COLLATOR = new Intl.Collator("en", {
