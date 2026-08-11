@@ -70,6 +70,7 @@ interface PassiveTalentData {
 const PASSIVE_DATA = passiveData as PassiveTalentData;
 const EXCLUSIVE_HEIGHT = 500;
 const GENERAL_HEIGHT = 500;
+const TALENT_NODE_HALF_HEIGHT = 46;
 
 export type S3TalentId = "iron-fist" | "zero" | "grappling-hook";
 
@@ -167,6 +168,13 @@ interface SavedTalentBuild {
 function getExclusivePosition(node: TalentNode) {
   return {
     x: node.column === 1 ? 23 : node.column === 3 ? 77 : 50,
+    y: 48 + (node.phase - 2) * 100,
+  };
+}
+
+function getGeneralPosition(node: TalentNode) {
+  return {
+    x: (node.column - 4.5) * 25,
     y: 48 + (node.phase - 2) * 100,
   };
 }
@@ -463,48 +471,152 @@ function TalentNodeButton({
   );
 }
 
-function ExclusiveConnectors() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox={`0 0 100 ${EXCLUSIVE_HEIGHT}`}
-      preserveAspectRatio="none"
-      className="absolute inset-0 h-full w-full text-[color:var(--talent-accent-muted)]"
-    >
-      <g fill="none" stroke="currentColor" strokeWidth="0.7" vectorEffect="non-scaling-stroke">
-        <path d="M50 76 V98 H23 V120 M50 98 H77 V120" />
-        <path d="M23 176 V198 H50 V220 M77 176 V198 H50" />
-        <path d="M50 276 V298 H23 V320 M50 298 H77 V320" />
-        <path d="M23 376 V398 H50 V420 M77 376 V398 H50" />
-      </g>
-    </svg>
-  );
+interface PositionedTalentNode extends TalentNode {
+  x: number;
+  y: number;
 }
 
-function GeneralConnectors() {
-  const xs = [12.5, 37.5, 62.5, 87.5];
-  const centers = [48, 148, 248, 348, 448];
+interface ConnectorGroup {
+  key: string;
+  sources: PositionedTalentNode[];
+  targets: PositionedTalentNode[];
+}
+
+function createConnectorGroups(
+  nodes: PositionedTalentNode[],
+  activeNodeIds?: Set<string>,
+): ConnectorGroup[] {
+  const nodeMap = new Map(nodes.map((node) => [node.id, node]));
+  const groups = new Map<
+    string,
+    { sources: Map<string, PositionedTalentNode>; targets: Map<string, PositionedTalentNode> }
+  >();
+
+  nodes.forEach((target) => {
+    if (activeNodeIds && !activeNodeIds.has(target.id)) return;
+
+    target.prerequisites.forEach((prerequisiteId) => {
+      const source = nodeMap.get(prerequisiteId);
+      if (!source || (activeNodeIds && !activeNodeIds.has(source.id))) return;
+
+      const key = `${source.phase}-${target.phase}`;
+      const group = groups.get(key) ?? {
+        sources: new Map<string, PositionedTalentNode>(),
+        targets: new Map<string, PositionedTalentNode>(),
+      };
+      group.sources.set(source.id, source);
+      group.targets.set(target.id, target);
+      groups.set(key, group);
+    });
+  });
+
+  return [...groups.entries()].map(([key, group]) => ({
+    key,
+    sources: [...group.sources.values()],
+    targets: [...group.targets.values()],
+  }));
+}
+
+function getConnectorPath({ sources, targets }: ConnectorGroup) {
+  const sourceBottom = Math.max(
+    ...sources.map((node) => node.y + TALENT_NODE_HALF_HEIGHT),
+  );
+  const targetTop = Math.min(
+    ...targets.map((node) => node.y - TALENT_NODE_HALF_HEIGHT),
+  );
+  const railY = (sourceBottom + targetTop) / 2;
+  const xs = [...sources, ...targets].map((node) => node.x);
+  const left = Math.min(...xs);
+  const right = Math.max(...xs);
+
+  return [
+    `M${left} ${railY} H${right}`,
+    ...sources.map(
+      (node) => `M${node.x} ${node.y + TALENT_NODE_HALF_HEIGHT} V${railY}`,
+    ),
+    ...targets.map(
+      (node) => `M${node.x} ${railY} V${node.y - TALENT_NODE_HALF_HEIGHT}`,
+    ),
+  ].join(" ");
+}
+
+function TalentConnectors({
+  nodes,
+  levels,
+  height,
+  getPosition,
+}: {
+  nodes: TalentNode[];
+  levels: Record<string, number>;
+  height: number;
+  getPosition: (node: TalentNode) => { x: number; y: number };
+}) {
+  const positionedNodes = nodes.map((node) => ({ ...node, ...getPosition(node) }));
+  const activeNodeIds = new Set(
+    positionedNodes
+      .filter((node) => (levels[node.id] ?? 0) > 0)
+      .map((node) => node.id),
+  );
+  const connectorGroups = createConnectorGroups(positionedNodes);
+  const activeConnectorGroups = createConnectorGroups(positionedNodes, activeNodeIds);
 
   return (
     <svg
       aria-hidden="true"
-      viewBox={`0 0 100 ${GENERAL_HEIGHT}`}
+      viewBox={`0 0 100 ${height}`}
       preserveAspectRatio="none"
-      className="absolute inset-0 h-full w-full text-[color:var(--talent-accent-muted)] opacity-70"
+      className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
     >
-      <g fill="none" stroke="currentColor" strokeWidth="0.6" vectorEffect="non-scaling-stroke">
-        {centers.slice(0, -1).map((center, rowIndex) => {
-          const nextCenter = centers[rowIndex + 1];
-          const rail = (center + nextCenter) / 2;
-          return (
-            <g key={center}>
-              <path d={`M${xs[0]} ${rail} H${xs[xs.length - 1]}`} />
-              {xs.map((x) => (
-                <path key={x} d={`M${x} ${center + 28} V${nextCenter - 28}`} />
-              ))}
-            </g>
-          );
-        })}
+      <g
+        fill="none"
+        stroke="var(--talent-accent-muted)"
+        strokeWidth="1"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        opacity="0.42"
+      >
+        {connectorGroups.map((group) => (
+          <path
+            key={group.key}
+            d={getConnectorPath(group)}
+            vectorEffect="non-scaling-stroke"
+          />
+        ))}
+      </g>
+
+      <g
+        fill="none"
+        stroke="var(--talent-accent)"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        opacity="0.18"
+        style={{ filter: "drop-shadow(0 0 3px var(--talent-glow))" }}
+      >
+        {activeConnectorGroups.map((group) => (
+          <path
+            key={group.key}
+            d={getConnectorPath(group)}
+            vectorEffect="non-scaling-stroke"
+          />
+        ))}
+      </g>
+
+      <g
+        fill="none"
+        stroke="var(--talent-accent)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        opacity="0.9"
+      >
+        {activeConnectorGroups.map((group) => (
+          <path
+            key={group.key}
+            d={getConnectorPath(group)}
+            vectorEffect="non-scaling-stroke"
+          />
+        ))}
       </g>
     </svg>
   );
@@ -1117,7 +1229,12 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
                 专属天赋
               </div>
               <div className="relative" style={{ height: EXCLUSIVE_HEIGHT }}>
-                <ExclusiveConnectors />
+                <TalentConnectors
+                  nodes={exclusiveNodes}
+                  levels={talentLevels}
+                  height={EXCLUSIVE_HEIGHT}
+                  getPosition={getExclusivePosition}
+                />
                 {exclusiveNodes.map((node) => {
                   const position = getExclusivePosition(node);
                   return (
@@ -1143,20 +1260,28 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
                 通用天赋
               </div>
               <div className="relative" style={{ height: GENERAL_HEIGHT }}>
-                <GeneralConnectors />
-                {generalNodes.map((node) => (
-                  <TalentNodeButton
-                    key={node.id}
-                    node={node}
-                    selected={node.id === selectedNode.id}
-                    level={talentLevels[node.id] ?? 0}
-                    dimmed={isGeneralNodeDimmed(node)}
-                    x={(node.column - 4.5) * 25}
-                    y={48 + (node.phase - 2) * 100}
-                    onSelect={selectNode}
-                    onActivate={activateNode}
-                  />
-                ))}
+                <TalentConnectors
+                  nodes={generalNodes}
+                  levels={talentLevels}
+                  height={GENERAL_HEIGHT}
+                  getPosition={getGeneralPosition}
+                />
+                {generalNodes.map((node) => {
+                  const position = getGeneralPosition(node);
+                  return (
+                    <TalentNodeButton
+                      key={node.id}
+                      node={node}
+                      selected={node.id === selectedNode.id}
+                      level={talentLevels[node.id] ?? 0}
+                      dimmed={isGeneralNodeDimmed(node)}
+                      x={position.x}
+                      y={position.y}
+                      onSelect={selectNode}
+                      onActivate={activateNode}
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -1188,7 +1313,12 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
                 </h2>
               </div>
               <div className="relative" style={{ height: EXCLUSIVE_HEIGHT }}>
-                <ExclusiveConnectors />
+                <TalentConnectors
+                  nodes={exclusiveNodes}
+                  levels={talentLevels}
+                  height={EXCLUSIVE_HEIGHT}
+                  getPosition={getExclusivePosition}
+                />
                 {exclusiveNodes.map((node) => {
                   const position = getExclusivePosition(node);
                   return (
@@ -1219,20 +1349,28 @@ export function SeasonTalentTree({ talentId }: { talentId: S3TalentId }) {
                 </h2>
               </div>
               <div className="relative" style={{ height: GENERAL_HEIGHT }}>
-                <GeneralConnectors />
-                {generalNodes.map((node) => (
-                  <TalentNodeButton
-                    key={node.id}
-                    node={node}
-                    selected={node.id === selectedNode.id}
-                    level={talentLevels[node.id] ?? 0}
-                    dimmed={isGeneralNodeDimmed(node)}
-                    x={(node.column - 4.5) * 25}
-                    y={48 + (node.phase - 2) * 100}
-                    onSelect={selectNode}
-                    onActivate={activateNode}
-                  />
-                ))}
+                <TalentConnectors
+                  nodes={generalNodes}
+                  levels={talentLevels}
+                  height={GENERAL_HEIGHT}
+                  getPosition={getGeneralPosition}
+                />
+                {generalNodes.map((node) => {
+                  const position = getGeneralPosition(node);
+                  return (
+                    <TalentNodeButton
+                      key={node.id}
+                      node={node}
+                      selected={node.id === selectedNode.id}
+                      level={talentLevels[node.id] ?? 0}
+                      dimmed={isGeneralNodeDimmed(node)}
+                      x={position.x}
+                      y={position.y}
+                      onSelect={selectNode}
+                      onActivate={activateNode}
+                    />
+                  );
+                })}
               </div>
             </section>
 
