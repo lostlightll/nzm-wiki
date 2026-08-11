@@ -653,10 +653,7 @@ export function StatusEffectCatalogClient({
         </div>
 
         <div className="mt-4">
-          <div className="mb-1.5 flex items-center justify-between gap-3">
-            <p className="m-0 text-xs font-medium text-zinc-400">按战斗用途浏览</p>
-            <p className="m-0 text-[11px] text-zinc-600">配置分类已移到更多筛选</p>
-          </div>
+          <p className="m-0 mb-1.5 text-xs font-medium text-zinc-400">按战斗用途浏览</p>
           <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 xl:grid-cols-4">
             <button
               type="button"
@@ -699,7 +696,11 @@ export function StatusEffectCatalogClient({
             <SlidersHorizontal aria-hidden="true" className="h-4 w-4" />
             更多筛选{activeAdvancedFilters > 0 ? ` · 已选 ${activeAdvancedFilters} 项` : ""}
           </summary>
-          <div className="grid gap-3 border-t border-zinc-800 py-3 md:grid-cols-3">
+          <div
+            className={`grid gap-3 border-t border-zinc-800 py-3 ${
+              view === "config" ? "md:grid-cols-3" : "md:grid-cols-2"
+            }`}
+          >
             <label className="min-w-0">
               <span className="mb-1.5 block text-xs text-zinc-500">增益 / 减益</span>
               <select
@@ -744,21 +745,14 @@ export function StatusEffectCatalogClient({
                   ))}
                 </select>
               </label>
-            ) : (
-              <div className="flex items-end">
-                <p className="m-0 text-xs leading-5 text-zinc-600">
-                  玩家视图隐藏测试、占位和缺少可读信息的记录；切换“完整配置”仍可检索全部。
-                </p>
-              </div>
-            )}
+            ) : null}
           </div>
         </details>
 
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-zinc-500" aria-live="polite">
+        <div className="mt-3 text-xs text-zinc-500" aria-live="polite">
           <p className="m-0">
             找到 <span className="font-medium text-zinc-300">{filteredEntries.length}</span> 项，当前显示 {visibleEntries.length} 项
           </p>
-          <p className="m-0">搜索范围含效果、BuffID、乘区、插件、超限卡片与已收录的 S3 天赋</p>
         </div>
 
         {linkedBuffId && (
