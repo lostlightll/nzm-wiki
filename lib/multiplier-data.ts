@@ -7,6 +7,7 @@ const MULTIPLIER_FACTOR_IDS = [
   "base",
   "weakpoint-multiplier",
   "game-mode",
+  "independent-amplification",
   "dilution",
   "element",
   "weakness",
@@ -451,6 +452,9 @@ const providerRegistry = rawProviderRegistry as unknown as RawProviderRegistry;
 function factorIdForModifier(channel: DamageChannel): MultiplierFactorId {
   if (channel.group === "dilution") return "dilution";
   if (channel.id === "game-mode") return "game-mode";
+  if (channel.id === "independent-amplification") {
+    return "independent-amplification";
+  }
   if (channel.id === "element") return "element";
   if (channel.id === "element-vulnerability") return "element-vulnerability";
   if (channel.id === "critical") return "critical";

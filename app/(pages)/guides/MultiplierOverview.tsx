@@ -44,7 +44,9 @@ const DETAIL_PANEL_ID = "multiplier-detail-panel";
 const SELECTED_FACTOR_STORAGE_KEY = "nzm-wiki:guides:multiplier:selected-factor";
 const SELECTED_FACTOR_CHANGE_EVENT = "nzm-wiki:multiplier-factor-change";
 const FORMULA_MULTIPLIER_FACTORS = MULTIPLIER_FACTORS.filter(
-  (factor) => factor.id !== "element-vulnerability",
+  (factor) =>
+    factor.id !== "element-vulnerability" &&
+    factor.id !== "independent-amplification",
 );
 
 type MultiplierPart = "formula" | "damage-sources" | "index";

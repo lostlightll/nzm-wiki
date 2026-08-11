@@ -5,6 +5,7 @@
     { "id": "base", "label": "基础伤害" },
     { "id": "weakpoint-multiplier", "label": "弱点倍率" },
     { "id": "game-mode", "label": "游戏模式乘区" },
+    { "id": "independent-amplification", "label": "独立增幅" },
     { "id": "dilution", "label": "大稀释乘区" },
     { "id": "element", "label": "元素乘区" },
     { "id": "weakness", "label": "弱点增伤" },
@@ -43,6 +44,21 @@
           { "damageTypeId": "non-weapon-skill-damage", "status": "applies", "label": "全增伤" },
           { "damageTypeId": "element-dot-damage", "status": "applies", "label": "全增伤" },
           { "damageTypeId": "extra-trigger-damage", "status": "applies", "label": "全增伤" }
+        ]
+      },
+      {
+        "id": "independent-amplification",
+        "label": "独立增幅",
+        "group": "factor",
+        "attributeFields": ["GPAttributeSetAttack.Attack"],
+        "summary": "通过攻击属性倍率独立参与伤害结算。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "none" },
+          { "damageTypeId": "explosion-damage", "status": "none" },
+          { "damageTypeId": "weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "element-dot-damage", "status": "none" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
         ]
       },
       {

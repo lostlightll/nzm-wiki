@@ -150,6 +150,23 @@ test("glass cannon resolves its attack level override to game mode damage", () =
   );
 });
 
+test("speedrun card multiplier badges use their registered factors", () => {
+  const cases = [
+    ["berserker", "independent-amplification", "independent-amplification"],
+    ["close-range-shot", "independent-amplification", "independent-amplification"],
+    ["weak-point-boost", "weapon-damage", "dilution"],
+  ] as const;
+
+  for (const [slug, modifierTypeId, factorId] of cases) {
+    const relations = getProviderRelationsForSource({ type: "card", slug });
+    assert.deepEqual(
+      relations.map((relation) => [relation.modifierTypeId, relation.factorId]),
+      [[modifierTypeId, factorId]],
+    );
+    assert.equal(relations[0].sourceHref, `/cards/${slug}#multiplier-provider`);
+  }
+});
+
 test("named provider regressions expose their audited modifier types", () => {
   const cases = [
     [{ type: "perk", slot: 4, slug: "独弹强化" } as const, ["correction"]],

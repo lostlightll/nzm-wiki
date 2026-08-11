@@ -92,6 +92,132 @@
       }
     },
     {
+      "id": "card:10020",
+      "label": "疯狂战士",
+      "source": {
+        "type": "card",
+        "cardId": 10020,
+        "slug": "berserker"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "gpModifierIds": [
+          "191201010"
+        ],
+        "cardChain": {
+          "functionIds": [
+            20334
+          ],
+          "mgeIds": [
+            1502015001
+          ]
+        },
+        "numericalRows": [
+          {
+            "modifierId": "191201010",
+            "rowKey": "191201010_1_0",
+            "attributeName": "GPAttributeSetAttack.Attack",
+            "attributeLabel": "独立增幅",
+            "modifierTypeId": "independent-amplification",
+            "baseValue": 0,
+            "coefficient": 2,
+            "operation": "B5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "card:10030",
+      "label": "弱点约束",
+      "source": {
+        "type": "card",
+        "cardId": 10030,
+        "slug": "weak-point-boost"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "gpModifierIds": [
+          "111010120",
+          "111010121"
+        ],
+        "cardChain": {
+          "functionIds": [
+            20364
+          ],
+          "mgeIds": [
+            1502039001,
+            1102002101
+          ]
+        },
+        "numericalRows": [
+          {
+            "modifierId": "111010120",
+            "rowKey": "111010120_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 3.5,
+            "coefficient": 0,
+            "operation": "B1"
+          },
+          {
+            "modifierId": "111010121",
+            "rowKey": "111010121_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": -0.3,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "card:10032",
+      "label": "抵近射击",
+      "source": {
+        "type": "card",
+        "cardId": 10032,
+        "slug": "close-range-shot"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "gpModifierIds": [
+          "191201015"
+        ],
+        "cardChain": {
+          "functionIds": [
+            20378
+          ],
+          "mgeIds": [
+            1502024001
+          ]
+        },
+        "numericalRows": [
+          {
+            "modifierId": "191201015",
+            "rowKey": "191201015_1_0",
+            "attributeName": "GPAttributeSetAttack.Attack",
+            "attributeLabel": "独立增幅",
+            "modifierTypeId": "independent-amplification",
+            "baseValue": 0,
+            "coefficient": 0.01,
+            "operation": "B5"
+          }
+        ]
+      }
+    },
+    {
       "id": "card:10039",
       "label": "玻璃大炮",
       "source": {

@@ -47,12 +47,15 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 徽标只显示规范乘区名，例如：
 
 - 游戏模式乘区
+- 独立增幅
 - 大稀释乘区
 - 元素乘区
 - 易伤乘区
 - 元素易伤乘区
 
 `WeaponDamageRatio`、`WeaponHitDamageRatio`、`CloseRangeDamageRatio` 等只是大稀释乘区内的增伤类型，不得展示成“武器乘区”“武器通道乘区”或“近距离乘区”。同一伤害来源命中多个同乘区通道时，界面合并为一个乘区徽标，通道名只放在提示和精确筛选中。
+
+`GPAttributeSetAttack.Attack` 归入“独立增幅”，只用于来源索引和来源徽标，不进入 Part 1 公式或伤害来源适用矩阵。
 
 `DamageBearRatio` 的负值效果统一归入 `vulnerability`，显示名固定为“易伤乘区”；各单元素 `*DamageBearRatio` 与 `ElementDamageBearRatio` 的负值效果归入 `element-vulnerability`，显示名固定为“元素易伤乘区”。对应字段的正值是伤害减免，不进入增伤来源索引。旧 `factor=damage-reduction` 查询会兼容读取为 `vulnerability`。
 

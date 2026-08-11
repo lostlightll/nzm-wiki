@@ -21,7 +21,6 @@ export type MultiplierTargetIndexEntry = {
 };
 
 type IndexView = "providers" | "targets";
-type IndexFactorId = MultiplierFactorId | "independent-amplification";
 
 type ProviderIndexItem = {
   id: string;
@@ -36,31 +35,14 @@ const INDEX_MULTIPLIER_FACTORS = [
   ...MULTIPLIER_FACTORS.filter((factor) =>
     MODIFIER_TYPES.some((modifier) => modifier.factorId === factor.id),
   ),
-  { id: "independent-amplification", label: "独立增幅" },
-] satisfies readonly { id: IndexFactorId; label: string }[];
-const INDEPENDENT_AMPLIFICATION_PROVIDERS: readonly ProviderIndexItem[] = [
-  {
-    id: "card:10020",
-    label: "疯狂战士",
-    href: "/cards/berserker",
-    sourceTypeLabel: "猎场竞速卡片",
-    modifierTypeLabels: "独立增幅",
-  },
-  {
-    id: "card:10032",
-    label: "抵近射击",
-    href: "/cards/close-range-shot",
-    sourceTypeLabel: "猎场竞速卡片",
-    modifierTypeLabels: "独立增幅",
-  },
-];
-const DEFAULT_INDEX_FACTOR_ID: IndexFactorId = DEFAULT_MULTIPLIER_FACTOR.id;
+] satisfies readonly { id: MultiplierFactorId; label: string }[];
+const DEFAULT_INDEX_FACTOR_ID: MultiplierFactorId = DEFAULT_MULTIPLIER_FACTOR.id;
 
-function isIndexFactorId(value: string | null): value is IndexFactorId {
+function isIndexFactorId(value: string | null): value is MultiplierFactorId {
   return INDEX_MULTIPLIER_FACTORS.some((factor) => factor.id === value);
 }
 
-function readIndexFactor(): IndexFactorId {
+function readIndexFactor(): MultiplierFactorId {
   const queryFactorId = new URLSearchParams(window.location.search).get("factor");
   if (isIndexFactorId(queryFactorId)) return queryFactorId;
 
@@ -86,7 +68,7 @@ function readModifier(): string {
 
 function updateQuery(values: {
   view?: IndexView;
-  factor?: IndexFactorId;
+  factor?: MultiplierFactorId;
   modifier?: string;
 }) {
   const url = new URL(window.location.href);
@@ -126,7 +108,7 @@ export function MultiplierBidirectionalIndex({ targets }: {
   targets: readonly MultiplierTargetIndexEntry[];
 }) {
   const [view, setView] = useState<IndexView>("providers");
-  const [selectedFactorId, setSelectedFactorId] = useState<IndexFactorId>(
+  const [selectedFactorId, setSelectedFactorId] = useState<MultiplierFactorId>(
     DEFAULT_INDEX_FACTOR_ID,
   );
   const [modifierTypeId, setModifierTypeId] = useState("");
@@ -160,7 +142,7 @@ export function MultiplierBidirectionalIndex({ targets }: {
     };
   }, []);
 
-  const selectFactor = (factorId: IndexFactorId) => {
+  const selectFactor = (factorId: MultiplierFactorId) => {
     setSelectedFactorId(factorId);
     setModifierTypeId("");
     try {
@@ -182,15 +164,6 @@ export function MultiplierBidirectionalIndex({ targets }: {
   const normalizedQuery = query.trim().toLocaleLowerCase("zh-CN");
 
   const providerItems = useMemo(() => {
-    if (selectedFactorId === "independent-amplification") {
-      return INDEPENDENT_AMPLIFICATION_PROVIDERS.filter((item) => {
-        if (!normalizedQuery) return true;
-        return `${item.label} ${item.sourceTypeLabel}`
-          .toLocaleLowerCase("zh-CN")
-          .includes(normalizedQuery);
-      });
-    }
-
     const groups = new Map<string, MultiplierRelation[]>();
     for (const relation of PROVIDER_RELATIONS) {
       if (relation.factorId !== selectedFactorId) continue;
