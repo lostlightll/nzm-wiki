@@ -425,6 +425,7 @@ export type {
 
 export type {
   ElementStatusSummary,
+  ElementStatusViewSummary,
   StatusEffectCatalogEntry,
   StatusEffectCatalogViewEntry,
   StatusEffectDataLock,

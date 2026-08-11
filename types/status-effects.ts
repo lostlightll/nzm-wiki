@@ -134,6 +134,10 @@ export interface ElementStatusSummary {
   playerBuffNames: string[];
 }
 
+export interface ElementStatusViewSummary extends ElementStatusSummary {
+  enemyStatus: StatusEffectVariant;
+}
+
 export interface StatusEffectDataLock {
   schemaVersion: 1;
   source: {

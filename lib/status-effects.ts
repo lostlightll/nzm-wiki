@@ -14,6 +14,7 @@ import type {
 import type {
   StatusEffectCatalogEntry,
   StatusEffectCatalogViewEntry,
+  ElementStatusViewSummary,
   StatusEffectDataLock,
   StatusEffectModifierReference,
   StatusEffectMultiplierRelation,
@@ -141,6 +142,17 @@ const MOBILITY_PATTERN = /移动速度|移速|换弹|切枪|装填|射速|后坐
 const RESOURCE_PATTERN = /弹药|弹匣|能量|充能|冷却|技能次数|技能消耗|技能恢复/i;
 const OFFENSE_PATTERN = /增伤|伤害.{0,6}(提高|增加|提升)|攻击力|攻击.{0,4}(提高|增加|提升)|暴击|弱点|近程|远程|元素伤害/i;
 const INTERNAL_ONLY_PATTERN = /测试|test|废弃|弃用|占位|策划用|不要用/i;
+const REMOVED_ELEMENT_STATUS_ROWS = new Set([
+  "Cryo_S2_Decelerate",
+  "Shock_S2_Fragile",
+]);
+const ENEMY_STATUS_SUMMARY_OVERRIDES = new Map([
+  ["Fire", "每 2 秒受到 10 × 当前层数的火焰伤害，并减少 1 层。"],
+  [
+    "Corossive",
+    "每 1 秒受到 5 × 当前层数的腐蚀伤害，最多叠加 10 层。",
+  ],
+]);
 
 function unique<T>(values: readonly T[]): T[] {
   return [...new Set(values)];
@@ -499,6 +511,13 @@ function isPracticalEntry(
 ): boolean {
   const text = [entry.name, ...entry.names, ...entry.descriptions].join(" ");
   if (INTERNAL_ONLY_PATTERN.test(text)) return false;
+  if (
+    entry.variants.every((variant) =>
+      REMOVED_ELEMENT_STATUS_ROWS.has(variant.rowName),
+    )
+  ) {
+    return false;
+  }
   if (target === "enemy") return true;
   if (relatedContent.some((item) => item.relation === "confirmed-source")) return true;
   if (multiplierRelations.length > 0) return true;
@@ -514,9 +533,15 @@ function enrichEntry(
   const multiplierRelations = getMultiplierRelations(entry);
   const relatedContent = getRelatedContent(entry, multiplierRelations);
   const group = semanticGroup(entry, target, multiplierRelations);
-  const summary = humanizeDescription(
-    entry.descriptions[0] || group.description,
-  );
+  const summaryOverride =
+    target === "enemy"
+      ? entry.variants
+          .map((variant) => ENEMY_STATUS_SUMMARY_OVERRIDES.get(variant.rowName))
+          .find(Boolean)
+      : undefined;
+  const summary =
+    summaryOverride ??
+    humanizeDescription(entry.descriptions[0] || group.description);
   const searchTerms = unique([
     String(entry.buffId),
     entry.name,
@@ -634,6 +659,24 @@ export function getStatusEffectSearchDocuments(): StatusEffectSearchDocument[] {
   }));
 }
 
-export function getElementStatusSummaries() {
-  return data.elements;
+export function getElementStatusSummaries(): ElementStatusViewSummary[] {
+  return data.elements.map((element): ElementStatusViewSummary => {
+    const enemyBuffNames = new Set(element.enemyBuffNames);
+    const enemyStatus = data.effects
+      .flatMap((effect) => effect.variants)
+      .find(
+        (variant) =>
+          enemyBuffNames.has(variant.rowName) &&
+          isStatusEffectVariantVisibleForTarget(variant, "enemy"),
+      );
+
+    if (!enemyStatus) {
+      throw new Error(`四元素摘要缺少敌方 Buff 主配置：${element.name}`);
+    }
+
+    return {
+      ...element,
+      enemyStatus,
+    };
+  });
 }

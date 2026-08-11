@@ -1,10 +1,47 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  getElementStatusSummaries,
   getStatusEffectCatalog,
   getStatusEffectSearchDocuments,
   isStatusEffectVariantVisibleForTarget,
 } from "./status-effects";
+
+test("四元素摘要使用敌方 Buff 主配置而不是元素表占位时长", () => {
+  const elements = getElementStatusSummaries();
+
+  assert.deepEqual(
+    elements.map((element) => element.enemyStatus.duration),
+    [2, 10, 10, 5],
+  );
+  assert.deepEqual(
+    elements.map((element) => element.enemyStatus.stackLimit),
+    [5, 3, 1, 10],
+  );
+});
+
+test("当前火焰与腐蚀摘要使用实战伤害，不沿用过期配置描述", () => {
+  const enemy = getStatusEffectCatalog("enemy").entries;
+
+  assert.equal(
+    enemy.find((entry) => entry.buffId === 100100001)?.summary,
+    "每 2 秒受到 10 × 当前层数的火焰伤害，并减少 1 层。",
+  );
+  assert.equal(
+    enemy.find((entry) => entry.buffId === 100400001)?.summary,
+    "每 1 秒受到 5 × 当前层数的腐蚀伤害，最多叠加 10 层。",
+  );
+});
+
+test("已移除的 S2 元素辅助状态只保留在完整配置", () => {
+  const enemy = getStatusEffectCatalog("enemy").entries;
+  const removedS2Entries = [100200004, 100300005].map((buffId) =>
+    enemy.find((entry) => entry.buffId === buffId),
+  );
+
+  assert.ok(removedS2Entries.every(Boolean));
+  assert.ok(removedS2Entries.every((entry) => entry?.practical === false));
+});
 
 test("目录只保留当前页面目标可见的配置变体", () => {
   const enemy = getStatusEffectCatalog("enemy").entries;
