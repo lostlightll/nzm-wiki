@@ -18,38 +18,34 @@ export function HuntingSpeedrunCardCatalog() {
       {HUNTING_SPEEDRUN_CARDS.map((card) => (
         <article
           key={card.cardId}
-          className={`flex min-w-0 flex-col overflow-hidden rounded-lg border bg-emerald-400/[0.07] transition-colors motion-reduce:transition-none ${CARD_STYLES[card.type]}`}
+          className={`group/card relative aspect-[960/1266] min-w-0 overflow-hidden rounded-lg border bg-zinc-950 transition-colors motion-reduce:transition-none ${CARD_STYLES[card.type]}`}
         >
-          <div className="relative aspect-[960/1266] overflow-hidden bg-emerald-400/[0.04]">
-            <Link
-              href={`/cards/${card.slug}`}
-              aria-label={`查看${card.title}详情`}
-              className="absolute inset-0 focus-visible:outline-none focus-visible:underline"
-            >
-              <Image
-                src={getAssetPath(card.icon)}
-                alt={card.title}
-                fill
-                sizes="(max-width: 639px) 50vw, (max-width: 767px) 33vw, (max-width: 1023px) 25vw, 20vw"
-                className="object-cover"
-              />
-            </Link>
-          </div>
-          <div className="flex flex-1 flex-col p-2.5 sm:p-3">
+          <Image
+            src={getAssetPath(card.icon)}
+            alt={card.title}
+            fill
+            sizes="(max-width: 639px) 50vw, (max-width: 767px) 33vw, (max-width: 1023px) 25vw, 20vw"
+            className="scale-[1.2] object-cover"
+          />
+          <Link
+            href={`/cards/${card.slug}`}
+            aria-label={`查看${card.title}详情`}
+            className="peer absolute inset-0 z-10 focus-visible:outline-none"
+          />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-linear-to-t from-zinc-950 via-zinc-950/90 to-transparent px-2.5 pb-2.5 pt-14 sm:px-3 sm:pb-3 sm:pt-16">
             <div className="flex items-start justify-between gap-2">
-              <Link
-                href={`/cards/${card.slug}`}
-                className="min-w-0 text-sm font-semibold leading-6 text-zinc-100 no-underline hover:text-white focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4"
+              <h3
+                className="min-w-0 text-xs font-semibold leading-5 text-zinc-100 group-hover/card:text-white peer-focus-visible:underline peer-focus-visible:decoration-2 peer-focus-visible:underline-offset-4 sm:text-sm"
               >
                 {card.title}
-              </Link>
+              </h3>
               <MultiplierSourceBadges
                 source={{ type: "card", slug: card.slug }}
                 variant="catalog-compact"
-                className="shrink-0"
+                className="pointer-events-auto shrink-0"
               />
             </div>
-            <p className="mt-1.5 text-xs leading-5 text-zinc-300">
+            <p className="mt-1 line-clamp-2 text-[11px] leading-[18px] text-zinc-300 sm:text-xs sm:leading-5">
               {card.effect}
             </p>
           </div>
