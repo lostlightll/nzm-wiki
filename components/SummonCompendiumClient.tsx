@@ -606,13 +606,10 @@ function SharedSystems({ catalog }: { catalog: SummonCatalogView }) {
   return (
     <section id="summon-shared-systems" className="scroll-mt-24 rounded-lg border border-zinc-800 bg-zinc-900/30 p-3 sm:p-4">
       <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h2 className="m-0 flex items-center gap-2 text-base font-bold text-zinc-50">
-            <Zap aria-hidden="true" className="h-4 w-4 text-amber-400" />
-            全召唤通用机制与搭配
-          </h2>
-          <p className="m-0 mt-1 text-xs leading-5 text-zinc-500">先看继承边界，再配插件和 S3 扭蛋；这些内容不属于某一只召唤物。</p>
-        </div>
+        <h2 className="m-0 flex items-center gap-2 text-base font-bold text-zinc-50">
+          <Zap aria-hidden="true" className="h-4 w-4 text-amber-400" />
+          全召唤通用机制与搭配
+        </h2>
         <span className="text-xs text-zinc-600">{catalog.sharedPerks.length} 插件 · {catalog.sharedBuffs.length} Buff</span>
       </div>
 
@@ -830,7 +827,6 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
           <div className="flex min-h-40 flex-col items-center justify-center rounded-lg border border-dashed border-zinc-800 bg-zinc-950/40 px-4 text-center">
             <Search aria-hidden="true" className="h-6 w-6 text-zinc-700" />
             <p className="m-0 mt-2 text-sm font-medium text-zinc-300">没有匹配的召唤物</p>
-            <p className="m-0 mt-1 text-xs text-zinc-600">试试“射速”“易伤”“哈士奇支援”或“地裂波”。</p>
             <button
               type="button"
               onClick={() => updateQuery({ sq: null, "summon-kind": null, "summon-filter": null, summon: null, section: null }, "")}
