@@ -1250,6 +1250,40 @@
       }
     },
     {
+      "id": "perk:20703040193",
+      "label": "观山窥骨",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040193",
+        "slot": 3,
+        "slug": "观山窥骨",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "passiveSkillId": "1315155001",
+        "descriptionRowKey": "1315155001_1",
+        "gpModifierIds": [
+          "111010136"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "111010136",
+            "rowKey": "111010136_1_1",
+            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+            "attributeLabel": "全伤害增加",
+            "modifierTypeId": "all-damage",
+            "baseValue": 0.17,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
+    {
       "id": "perk:20703040201",
       "label": "重峦叠势",
       "source": {
