@@ -37,6 +37,55 @@
       "availability": "permanent"
     },
     {
+      "id": 40000300,
+      "name": "修复装置",
+      "description": "布设一个持续 12 秒的战地修复装置，该装置每 1 秒治疗 10 米内的友方单位 20% 最大生命值，对机甲无效。",
+      "icon": "/webp/icons/skills/hunting-tactical/repair-device.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 40000400,
+      "name": "榴弹轰炸",
+      "description": "对目标区域进行 3 轮大规模轰炸，每轮落下 4 枚炮弹，每颗造成 150% 技能攻击力的范围伤害。",
+      "icon": "/webp/icons/skills/hunting-tactical/grenade-bombardment.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 40000401,
+      "name": "电磁轰炸",
+      "description": "对目标区域进行 3 次自动索敌的电磁炮打击，每次造成 1000% 技能攻击力的单体伤害。",
+      "icon": "/webp/icons/skills/hunting-tactical/electromagnetic-bombardment.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 40000402,
+      "name": "联盟万岁",
+      "description": "投下重磅炸弹，对大范围内单位进行无差别打击，造成 14000% 技能攻击力的毁灭性伤害。",
+      "icon": "/webp/icons/skills/hunting-tactical/alliance-forever.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 40000500,
+      "name": "审判者",
+      "description": "部署一台审判者炮塔，其每次开火发射 2 枚炮弹，造成 60% 技能攻击力的范围伤害，持续 30 秒。",
+      "icon": "/webp/icons/skills/hunting-tactical/judicator.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 40000501,
+      "name": "毁灭者",
+      "description": "部署一台毁灭者炮塔，并锁定射程内最强大的敌人发射激光，每次攻击造成 110% 技能攻击力的单体伤害，持续 30 秒。",
+      "icon": "/webp/icons/skills/hunting-tactical/destroyer.webp",
+      "availability": "permanent"
+    },
+    {
+      "id": 40000502,
+      "name": "焚烧者",
+      "description": "部署一台焚烧者炮塔，持续向四周喷射火焰，高频造成 10% 技能攻击力的范围伤害，持续 30 秒。",
+      "icon": "/webp/icons/skills/hunting-tactical/incinerator.webp",
+      "availability": "permanent"
+    },
+    {
       "id": 30100301,
       "name": "“一起DaDaDa！”",
       "description": "Da！Da！Da！踩准甜心节拍，换上快乐舞步，就连僵直麻木的丧尸也会不受控制地跟着集体热舞！",

@@ -10,10 +10,25 @@ const EXPECTED_SKILL_IDS = [
   30200301,
   30200401,
   30200501,
+  40000300,
+  40000400,
+  40000401,
+  40000402,
+  40000500,
+  40000501,
+  40000502,
   30100301,
 ];
 
-test("收录五个常驻猎场战术技能和一个限时技能", () => {
+const DISABLED_SKILL_IDS = [
+  40000301,
+  40000302,
+  40000600,
+  40000601,
+  40000602,
+];
+
+test("收录十二个当前可用技能和一个限时技能", () => {
   assert.deepEqual(
     HUNTING_TACTICAL_SKILLS.map((skill) => skill.id),
     EXPECTED_SKILL_IDS,
@@ -24,10 +39,19 @@ test("收录五个常驻猎场战术技能和一个限时技能", () => {
     (skill) => skill.availability === "limited",
   );
   assert.deepEqual(limitedSkills.map((skill) => skill.id), [30100301]);
+
+  for (const id of DISABLED_SKILL_IDS) {
+    assert.equal(
+      HUNTING_TACTICAL_SKILLS.some((skill) => skill.id === id),
+      false,
+    );
+  }
 });
 
 test("全部猎场战术技能图标均已发布", () => {
   for (const skill of HUNTING_TACTICAL_SKILLS) {
+    assert.equal(path.extname(skill.icon), ".webp");
+
     const iconPath = path.join(
       process.cwd(),
       "public",
