@@ -298,7 +298,9 @@ function getMultiplierRelations(
   return [...grouped.values()];
 }
 
-function sourceType(source: MultiplierSource): StatusEffectRelatedContentType {
+function sourceType(
+  source: Exclude<MultiplierSource, { type: "card" }>,
+): StatusEffectRelatedContentType {
   return source.type;
 }
 
@@ -365,6 +367,7 @@ function relatedContentFromRelation(
   relation: MultiplierRelation,
 ): StatusEffectRelatedContent | null {
   if (!relation.source || !relation.sourceHref || !relation.effectLabel) return null;
+  if (relation.source.type === "card") return null;
   if (
     relation.source.type === "season-talent" &&
     relation.source.season.toLocaleLowerCase() !== "s3"

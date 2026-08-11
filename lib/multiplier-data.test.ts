@@ -77,6 +77,14 @@ test("weapon settlement profile resolves applicable modifier channels", () => {
 test("source and factor links preserve stable anchors and query state", () => {
   assert.equal(
     resolveMultiplierSourceHref({
+      type: "card",
+      slug: "blademaster",
+      anchor: "multiplier-provider",
+    }),
+    "/cards/blademaster#multiplier-provider",
+  );
+  assert.equal(
+    resolveMultiplierSourceHref({
       type: "perk",
       slot: 3,
       slug: "重峦叠势",
@@ -111,6 +119,20 @@ test("source and factor links preserve stable anchors and query state", () => {
     }),
     "/guides?factor=dilution&view=providers&modifier=all-damage#multiplier",
   );
+});
+
+test("audited speedrun cards resolve to weapon damage in dilution", () => {
+  for (const slug of ["blademaster", "critical-hit-crazy"]) {
+    const relations = getProviderRelationsForSource({ type: "card", slug });
+    assert.deepEqual(
+      relations.map((relation) => [relation.modifierTypeId, relation.factorId]),
+      [["weapon-damage", "dilution"]],
+    );
+    assert.equal(
+      relations[0].sourceHref,
+      `/cards/${slug}#multiplier-provider`,
+    );
+  }
 });
 
 test("named provider regressions expose their audited modifier types", () => {

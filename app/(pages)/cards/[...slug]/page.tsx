@@ -1,5 +1,6 @@
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
 import { BuffDetail } from "@/components/BuffCard";
+import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -46,7 +47,12 @@ export default async function CardPage({
         icon={metadata.icon as string}
         type={metadata.type as "buff" | "debuff"}
         effect={metadata.effect as string}
-      />
+      >
+        <MultiplierProviderPanel
+          source={{ type: "card", slug: slugPath }}
+          className="mt-3"
+        />
+      </BuffDetail>
     </div>
   );
 }

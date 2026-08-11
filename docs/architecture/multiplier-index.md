@@ -8,14 +8,15 @@
 站点用两条语义不同的链路生成双向查询：
 
 ```text
-ItemID / 技能身份 -> 结构化证据 -> 增伤类型 -> 乘区 -> 页面落点
+ItemID / CardID / 技能身份 -> 结构化证据 -> 增伤类型 -> 乘区 -> 页面落点
 Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘区
 武器 MDX 来源名 + Weapon Resolver 白值 -> 模式基础攻击力 -> 单次基础伤害
 ```
 
-- `provider` 表示技能、插件、超限卡片或羁绊提供某种增伤。
+- `provider` 表示技能、插件、竞速卡片、超限卡片或羁绊提供某种增伤。
 - `target` 表示原子伤害来源可以受到某种增伤影响。
 - 插件以 ItemID 为稳定身份；同 ID 超限卡片由运行时自动展开第二个页面落点。
+- 猎场竞速卡片以 CardID 为稳定身份，页面来源使用卡片 slug；只有 `CardID → Card_Function → MGE/Buff → GPModifier → Numerical AttributeName` 完整连通时才登记。
 - `refs/` 只用于人工核验证据，构建和页面运行时不得读取。
 
 ## 数据所有权
@@ -34,6 +35,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - 旧乘区案例只用于说明，不会被隐式转换为来源关系。
 - 直接证据按 `ItemID → PassiveSkill_ID → MGE GPModifier → Numerical AttributeName → modifier type → factor` 保存。
 - 没有直接 GPModifier 的效果必须使用 `reviewed-override` 并保留描述、数值行或机制依据。
+- 竞速卡片禁止使用 `reviewed-override`；`AttributeName` 不在现有 modifier type 的 `attributeFields` 中时直接不建立关系。
 
 武器目标关系不写回 MDX。`lib/multiplier-data.ts` 直接消费 Weapon Resolver 已有的 `settlements`、`element`、`enableCritical` 和 `enableWeakness`，为每个 `damageSources[]` 条目建立伤害画像。
 

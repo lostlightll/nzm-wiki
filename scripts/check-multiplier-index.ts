@@ -7,6 +7,7 @@ import passives from "@/data/season-talents/s3/passives.json";
 import grapplingHook from "@/data/season-talents/s3/grappling-hook.json";
 import ironFist from "@/data/season-talents/s3/iron-fist.json";
 import zero from "@/data/season-talents/s3/zero.json";
+import huntingSpeedrun from "@/data/guides/hunting-speedrun.json";
 import {
   MODIFIER_TYPES,
   MULTIPLIER_FACTORS,
@@ -33,6 +34,9 @@ const bondStages = new Set(
     bond.effects.map((effect) => `${bond.name}:${effect.count}`),
   ),
 );
+const speedrunCardsById = new Map(
+  huntingSpeedrun.cards.map((card) => [card.cardId, card]),
+);
 
 function requireFile(relativePath: string, label: string) {
   if (!fs.existsSync(path.join(root, relativePath))) {
@@ -52,6 +56,9 @@ function runtimeSourcesForProvider(provider: (typeof MULTIPLIER_PROVIDERS)[numbe
       break;
     case "weapon":
       result.push({ type: "weapon", slug: source.slug });
+      break;
+    case "card":
+      result.push({ type: "card", slug: source.slug });
       break;
     case "overlimit-bond":
       result.push(source);
@@ -86,6 +93,20 @@ for (const provider of MULTIPLIER_PROVIDERS) {
     case "weapon":
       requireFile(`data/weapons/${source.slug}.mdx`, provider.id);
       break;
+    case "card": {
+      requireFile(`data/cards/${source.slug}.mdx`, provider.id);
+      const card = speedrunCardsById.get(source.cardId);
+      if (!card || card.slug !== source.slug) {
+        errors.push(`${provider.id} 指向的卡牌不在当前 38 张卡池`);
+      }
+      if (
+        provider.evidence.kind === "reviewed-override" ||
+        provider.evidence.numericalRows.length === 0
+      ) {
+        errors.push(`${provider.id} 的卡牌来源缺少真实 Numerical 证据`);
+      }
+      break;
+    }
     case "overlimit-bond":
       if (!bondStages.has(`${source.name}:${source.count}`)) {
         errors.push(`${provider.id} 指向不存在的羁绊阶段`);

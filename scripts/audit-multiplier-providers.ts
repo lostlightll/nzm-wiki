@@ -6,6 +6,7 @@ import {
   MULTIPLIER_PROVIDERS,
   MULTIPLIER_PROVIDER_EXCLUSIONS,
 } from "@/lib/multiplier-data";
+import { HUNTING_SPEEDRUN_CARDS } from "@/lib/hunting-speedrun";
 
 type Row = Record<string, unknown>;
 
@@ -23,6 +24,12 @@ const weaponMods = loadRows("DataTables", "LuaDataTable", "WeaponModItemData.jso
 const passives = loadRows("DataTables", "MGE", "MGEPassive_BD.json");
 const perkDescriptions = loadRows("DataTables", "MGE", "DT_GPMGESkillDesConfig_BD.json");
 const numerical = loadRows("Attributes", "AutoGenerate", "numerical_modifier_config.json");
+const huntingRankCards = loadRows(
+  "DataTables",
+  "HunterRank",
+  "NZHunterRankCardConfigTable.json",
+);
+const buffConfigs = loadRows("DataTables", "Buff", "BuffConfigDatatableNew.json");
 const weaponDescriptionTables = ["Weapon", "Skill"].map((suffix) =>
   loadRows("DataTables", "MGE", `DT_GPMGESkillDesConfig_${suffix}.json`),
 );
@@ -39,6 +46,30 @@ const modifierTypeByAttribute = new Map(
     modifier.attributeFields.map((attribute) => [attribute, modifier.id] as const),
   ),
 );
+const speedrunCardsById = new Map(
+  HUNTING_SPEEDRUN_CARDS.map((card) => [card.cardId, card]),
+);
+
+function findMgeAsset(mgeId: number): string | undefined {
+  const directory = path.join(refsRoot, "Abilities", "MGE", "LieChangPaiWei");
+  return fs
+    .readdirSync(directory)
+    .find((file) => file.startsWith(`MGE_${mgeId}`) && file.endsWith(".json"));
+}
+
+function collectPropertyValues(value: unknown, propertyName: string): unknown[] {
+  if (Array.isArray(value)) {
+    return value.flatMap((item) => collectPropertyValues(item, propertyName));
+  }
+  if (!value || typeof value !== "object") return [];
+  const record = value as Row;
+  return [
+    ...(propertyName in record ? [record[propertyName]] : []),
+    ...Object.values(record).flatMap((item) =>
+      collectPropertyValues(item, propertyName),
+    ),
+  ];
+}
 const numericalById = new Map<string, Row[]>();
 for (const row of Object.values(numerical)) {
   const id = String(row.ID);
@@ -86,6 +117,14 @@ for (const provider of MULTIPLIER_PROVIDERS) {
     if (String(actual.AttributeName) !== row.attributeName) {
       errors.push(`${provider.id} 的属性字段已变化：${row.rowKey}`);
     }
+    const actualModifierTypeId = modifierTypeByAttribute.get(
+      String(actual.AttributeName),
+    );
+    if (actualModifierTypeId !== row.modifierTypeId) {
+      errors.push(
+        `${provider.id} 的 Numerical AttributeName 反查乘区不一致：${row.rowKey}`,
+      );
+    }
     if (!knownAttributes.has(row.attributeName) && !row.attributeName.startsWith("Numerical.")) {
       errors.push(`${provider.id} 的属性不在 AttributeDescMapTable：${row.attributeName}`);
     }
@@ -97,6 +136,95 @@ for (const provider of MULTIPLIER_PROVIDERS) {
     ) {
       errors.push(`${provider.id} 将非负承伤字段错列为易伤`);
     }
+  }
+
+  if (provider.source.type === "card") {
+    const card = speedrunCardsById.get(provider.source.cardId);
+    if (!card || card.slug !== provider.source.slug) {
+      errors.push(`${provider.id} 的 CardID 或 slug 不在当前 38 张卡池`);
+      continue;
+    }
+    if (provider.evidence.kind === "reviewed-override") {
+      errors.push(`${provider.id} 的卡牌来源禁止使用 reviewed-override`);
+    }
+    if (provider.evidence.numericalRows.length === 0) {
+      errors.push(`${provider.id} 的卡牌来源缺少 Numerical 行`);
+    }
+    const evidenceModifierTypes = new Set(
+      provider.evidence.numericalRows.map((row) => row.modifierTypeId),
+    );
+    const providerModifierTypes = new Set(provider.modifierTypeIds);
+    if (
+      evidenceModifierTypes.size !== providerModifierTypes.size ||
+      [...evidenceModifierTypes].some((id) => !providerModifierTypes.has(id))
+    ) {
+      errors.push(`${provider.id} 的 modifierTypeIds 与 Numerical 证据不一致`);
+    }
+    const evidenceModifierIds = new Set(
+      provider.evidence.numericalRows.map((row) => row.modifierId),
+    );
+    if (
+      !provider.evidence.gpModifierIds ||
+      provider.evidence.gpModifierIds.some((id) => !evidenceModifierIds.has(id)) ||
+      evidenceModifierIds.size !== provider.evidence.gpModifierIds.length
+    ) {
+      errors.push(`${provider.id} 的 GPModifier 与 Numerical 行不一致`);
+    }
+
+    const chain = provider.evidence.cardChain;
+    const cardRow = huntingRankCards[String(provider.source.cardId)];
+    const actualFunctionIds = [
+      Number(cardRow?.Card_Function1_Id ?? 0),
+      Number(cardRow?.Card_Function2_Id ?? 0),
+      Number(cardRow?.Card_Function3_Id ?? 0),
+    ].filter(Boolean);
+    if (
+      !chain ||
+      chain.functionIds.length === 0 ||
+      chain.mgeIds.length === 0 ||
+      chain.functionIds.some((id) => !actualFunctionIds.includes(id))
+    ) {
+      errors.push(`${provider.id} 的 Card_Function → MGE 证据链不完整`);
+      continue;
+    }
+
+    const directModifierIds = new Set<string>();
+    for (const mgeId of chain.mgeIds) {
+      const assetFile = findMgeAsset(mgeId);
+      if (!assetFile) {
+        errors.push(`${provider.id} 的 MGE 资源不存在：${mgeId}`);
+        continue;
+      }
+      const asset = JSON.parse(
+        fs.readFileSync(
+          path.join(refsRoot, "Abilities", "MGE", "LieChangPaiWei", assetFile),
+          "utf8",
+        ),
+      );
+      for (const value of collectPropertyValues(asset, "ModifierID")) {
+        directModifierIds.add(String(value));
+      }
+    }
+
+    const buffModifierIds = new Set<string>();
+    for (const buffId of chain.buffIds ?? []) {
+      const buff = Object.values(buffConfigs).find(
+        (row) => Number(row.BuffID) === buffId,
+      );
+      if (!buff) {
+        errors.push(`${provider.id} 的 Buff 不存在：${buffId}`);
+        continue;
+      }
+      for (const modifierId of (buff.GPModifyIDs as unknown[] | undefined) ?? []) {
+        buffModifierIds.add(String(modifierId));
+      }
+    }
+    for (const modifierId of provider.evidence.gpModifierIds ?? []) {
+      if (!directModifierIds.has(modifierId) && !buffModifierIds.has(modifierId)) {
+        errors.push(`${provider.id} 的 MGE/Buff 未连接 GPModifier ${modifierId}`);
+      }
+    }
+    continue;
   }
 
   if (provider.source.type !== "perk") continue;

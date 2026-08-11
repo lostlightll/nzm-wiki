@@ -47,6 +47,10 @@ import {
 import { SummonCompendium } from "@/components/SummonCompendium";
 import { WeeklyBuffGuide } from "@/components/WeeklyBuffGuide";
 import { HuntingTacticalSkillCatalog } from "@/components/HuntingTacticalSkillCatalog";
+import {
+  HuntingSpeedrunCardCatalog,
+  HuntingSpeedrunTacticalPropCatalog,
+} from "@/components/HuntingSpeedrunCatalog";
 
 export const mdxComponents = {
   img: MDXImage,
@@ -92,6 +96,8 @@ export const mdxComponents = {
   SummonCompendium,
   WeeklyBuffGuide,
   HuntingTacticalSkillCatalog,
+  HuntingSpeedrunCardCatalog,
+  HuntingSpeedrunTacticalPropCatalog,
 };
 
 /**

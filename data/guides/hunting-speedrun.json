@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "cards": [
+    { "cardId": 10044, "slug": "strength-swap", "functionIds": [20434, 20435] },
+    { "cardId": 10042, "slug": "cooldown-trade", "functionIds": [20432] },
+    { "cardId": 10039, "slug": "glass-cannon", "functionIds": [20410] },
+    { "cardId": 10038, "slug": "sell-revive-coins", "functionIds": [20409] },
+    { "cardId": 10037, "slug": "death-deal", "functionIds": [20408] },
+    { "cardId": 10035, "slug": "energy-drain", "functionIds": [20381] },
+    { "cardId": 10034, "slug": "dangerous-speed", "functionIds": [20380] },
+    { "cardId": 10032, "slug": "close-range-shot", "functionIds": [20378] },
+    { "cardId": 10031, "slug": "element-invasion", "functionIds": [20365] },
+    { "cardId": 10030, "slug": "weak-point-boost", "functionIds": [20364] },
+    { "cardId": 10029, "slug": "easy-toughness", "functionIds": [20363] },
+    { "cardId": 10028, "slug": "exchange-chaser", "functionIds": [20346] },
+    { "cardId": 10027, "slug": "invalid-card", "functionIds": [] },
+    { "cardId": 10026, "slug": "critical-hit-money", "functionIds": [20341, 20342] },
+    { "cardId": 10025, "slug": "delayed-resource", "functionIds": [20343, 20344] },
+    { "cardId": 10024, "slug": "resource", "functionIds": [20340, 20339] },
+    { "cardId": 10023, "slug": "exchange-lives", "functionIds": [20345] },
+    { "cardId": 10021, "slug": "critical-hit-crazy", "functionIds": [20335] },
+    { "cardId": 10020, "slug": "berserker", "functionIds": [20334] },
+    { "cardId": 10004, "slug": "doublelevel", "functionIds": [20328] },
+    { "cardId": 10003, "slug": "blademaster", "functionIds": [20330, 20338] },
+    { "cardId": 10002, "slug": "double-gold", "functionIds": [20327] },
+    { "cardId": 10001, "slug": "golden-monster", "functionIds": [20347] },
+    { "cardId": 10048, "slug": "brother-combo", "functionIds": [20453, 20454] },
+    { "cardId": 10047, "slug": "wolf-brothers", "functionIds": [20451, 20452] },
+    { "cardId": 10046, "slug": "security-squad", "functionIds": [20450] },
+    { "cardId": 10045, "slug": "gacha-invasion", "functionIds": [20449] },
+    { "cardId": 10043, "slug": "elite-healing", "functionIds": [20433] },
+    { "cardId": 10041, "slug": "four-kings", "functionIds": [20422] },
+    { "cardId": 10033, "slug": "on-hit-slowdown", "functionIds": [20379] },
+    { "cardId": 10022, "slug": "boss-vampire", "functionIds": [20333] },
+    { "cardId": 10015, "slug": "lock-toughness", "functionIds": [20319] },
+    { "cardId": 10014, "slug": "elite-times-shield", "functionIds": [20324] },
+    { "cardId": 10013, "slug": "elite-strengthen", "functionIds": [20325] },
+    { "cardId": 10008, "slug": "pause-shield", "functionIds": [20331] },
+    { "cardId": 10007, "slug": "buff-mob", "functionIds": [20326] },
+    { "cardId": 10006, "slug": "exchange-burster-alt", "functionIds": [20322, 20332] },
+    { "cardId": 10005, "slug": "exchange-burster", "functionIds": [20336] }
+  ],
+  "tacticalProps": [
+    {
+      "id": 1,
+      "name": "禁用复活币",
+      "description": "15秒内禁用对方使用复活币",
+      "icon": "/webp/icons/skills/hunting-speedrun/forbidden-revive.webp"
+    },
+    {
+      "id": 2,
+      "name": "单人护盾",
+      "description": "自己免疫伤害5秒",
+      "icon": "/webp/icons/skills/hunting-speedrun/single-shield.webp"
+    },
+    {
+      "id": 3,
+      "name": "团队护盾",
+      "description": "团队免疫伤害5秒",
+      "icon": "/webp/icons/skills/hunting-speedrun/group-shield.webp"
+    },
+    {
+      "id": 4,
+      "name": "对方减速",
+      "description": "向对方使用减速道具",
+      "icon": "/webp/icons/skills/hunting-speedrun/speed-down.webp"
+    },
+    {
+      "id": 5,
+      "name": "凌空泼墨",
+      "description": "向对方使用墨水干扰道具",
+      "icon": "/webp/icons/skills/hunting-speedrun/stains.webp"
+    },
+    {
+      "id": 6,
+      "name": "时空闪电",
+      "description": "向对方召唤闪电",
+      "icon": "/webp/icons/skills/hunting-speedrun/group-lightning.webp"
+    },
+    {
+      "id": 7,
+      "name": "意念干扰",
+      "description": "向对方使用意念干扰",
+      "icon": "/webp/icons/skills/hunting-speedrun/confusion.webp"
+    },
+    {
+      "id": 8,
+      "name": "时空导弹",
+      "description": "向对方随机一名玩家发射导弹",
+      "icon": "/webp/icons/skills/hunting-speedrun/single-missile.webp"
+    },
+    {
+      "id": 9,
+      "name": "闪光弹",
+      "description": "向对方随机一名玩家发射闪光弹",
+      "icon": "/webp/icons/skills/hunting-speedrun/flash-bomb.webp"
+    },
+    {
+      "id": 10,
+      "name": "禁用武器技能",
+      "description": "8秒内对方禁用武器技能",
+      "icon": "/webp/icons/skills/hunting-speedrun/forbidden-weapon-skill.webp"
+    }
+  ]
+}

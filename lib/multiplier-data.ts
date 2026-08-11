@@ -34,6 +34,7 @@ export type DamageChannelStatus = (typeof DAMAGE_CHANNEL_STATUSES)[number];
 export type MultiplierSource =
   | { type: "weapon"; slug: string; anchor?: string }
   | { type: "perk"; slot: 1 | 2 | 3 | 4; slug: string; anchor?: string }
+  | { type: "card"; slug: string; anchor?: string }
   | { type: "overlimit-card"; id: string; anchor?: string }
   | {
       type: "overlimit-bond";
@@ -171,6 +172,11 @@ type ProviderEvidence = {
   descriptionRowKeys?: readonly string[];
   gpModifierIds?: readonly string[];
   basis?: readonly string[];
+  cardChain?: {
+    functionIds: readonly number[];
+    mgeIds: readonly number[];
+    buffIds?: readonly number[];
+  };
   numericalRows: readonly {
     modifierId: string;
     rowKey: string;
@@ -196,6 +202,11 @@ type ProviderRegistrySource =
       slug: string;
       skillName: string;
       component: "ActiveSkill" | "PassiveSkill";
+    }
+  | {
+      type: "card";
+      cardId: number;
+      slug: string;
     }
   | Extract<MultiplierSource, { type: "overlimit-bond" | "post" | "season-talent" }>;
 
@@ -478,6 +489,8 @@ export function resolveMultiplierSourceHref(source: MultiplierSource): string {
         `/perks/slot-${source.slot}/${encodeURIComponent(source.slug)}`,
         source.anchor,
       );
+    case "card":
+      return withAnchor(`/cards/${encodeURIComponent(source.slug)}`, source.anchor);
     case "overlimit-card":
       return withAnchor(`/overlimit/${encodeURIComponent(source.id)}`, source.anchor);
     case "overlimit-bond":
@@ -514,6 +527,8 @@ function sourceIndexKey(source: MultiplierSource): string {
       return `weapon:${source.slug}`;
     case "perk":
       return `perk:${source.slot}:${source.slug}`;
+    case "card":
+      return `card:${source.slug}`;
     case "overlimit-card":
       return `overlimit-card:${source.id}`;
     case "overlimit-bond":
@@ -572,6 +587,13 @@ function buildProviderRelations(): MultiplierRelation[] {
           type: "weapon",
           slug: source.slug,
           anchor: `multiplier-provider-${provider.id}`,
+        });
+        break;
+      case "card":
+        placements.push({
+          type: "card",
+          slug: source.slug,
+          anchor: "multiplier-provider",
         });
         break;
       case "overlimit-bond":

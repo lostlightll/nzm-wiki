@@ -1,14 +1,96 @@
 {
   "schemaVersion": 1,
   "evidencePriority": [
+    "CardID",
+    "Card_Function",
     "ItemID",
     "PassiveSkill_ID",
+    "MGE/Buff.GPModifier",
     "MGE.GPModifier",
     "numerical_modifier_config.AttributeName",
     "modifierType",
     "factor"
   ],
   "providers": [
+    {
+      "id": "card:10003",
+      "label": "狂战士祝福",
+      "source": {
+        "type": "card",
+        "cardId": 10003,
+        "slug": "blademaster"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "gpModifierIds": [
+          "190100007"
+        ],
+        "cardChain": {
+          "functionIds": [
+            20330
+          ],
+          "mgeIds": [
+            1502005001
+          ]
+        },
+        "numericalRows": [
+          {
+            "modifierId": "190100007",
+            "rowKey": "190100007_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 3,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "card:10021",
+      "label": "弱点狂热",
+      "source": {
+        "type": "card",
+        "cardId": 10021,
+        "slug": "critical-hit-crazy"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "gpModifierIds": [
+          "191201007"
+        ],
+        "cardChain": {
+          "functionIds": [
+            20335
+          ],
+          "mgeIds": [
+            1502012001
+          ],
+          "buffIds": [
+            191201007
+          ]
+        },
+        "numericalRows": [
+          {
+            "modifierId": "191201007",
+            "rowKey": "191201007_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 2.5,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
     {
       "id": "bond:ammo:6",
       "label": "弹药羁绊 x6",
