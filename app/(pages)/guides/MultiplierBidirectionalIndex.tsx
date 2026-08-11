@@ -21,18 +21,46 @@ export type MultiplierTargetIndexEntry = {
 };
 
 type IndexView = "providers" | "targets";
+type IndexFactorId = MultiplierFactorId | "independent-amplification";
+
+type ProviderIndexItem = {
+  id: string;
+  label: string;
+  href: string;
+  sourceTypeLabel: string;
+  modifierTypeLabels: string;
+};
 
 const INDEX_FACTOR_STORAGE_KEY = "nzm-wiki:guides:multiplier:index-factor";
-const INDEX_MULTIPLIER_FACTORS = MULTIPLIER_FACTORS.filter((factor) =>
-  MODIFIER_TYPES.some((modifier) => modifier.factorId === factor.id),
-);
-const DEFAULT_INDEX_FACTOR_ID = DEFAULT_MULTIPLIER_FACTOR.id;
+const INDEX_MULTIPLIER_FACTORS = [
+  ...MULTIPLIER_FACTORS.filter((factor) =>
+    MODIFIER_TYPES.some((modifier) => modifier.factorId === factor.id),
+  ),
+  { id: "independent-amplification", label: "独立增幅" },
+] satisfies readonly { id: IndexFactorId; label: string }[];
+const INDEPENDENT_AMPLIFICATION_PROVIDERS: readonly ProviderIndexItem[] = [
+  {
+    id: "card:10020",
+    label: "疯狂战士",
+    href: "/cards/berserker",
+    sourceTypeLabel: "猎场竞速卡片",
+    modifierTypeLabels: "独立增幅",
+  },
+  {
+    id: "card:10032",
+    label: "抵近射击",
+    href: "/cards/close-range-shot",
+    sourceTypeLabel: "猎场竞速卡片",
+    modifierTypeLabels: "独立增幅",
+  },
+];
+const DEFAULT_INDEX_FACTOR_ID: IndexFactorId = DEFAULT_MULTIPLIER_FACTOR.id;
 
-function isIndexFactorId(value: string | null): value is MultiplierFactorId {
+function isIndexFactorId(value: string | null): value is IndexFactorId {
   return INDEX_MULTIPLIER_FACTORS.some((factor) => factor.id === value);
 }
 
-function readIndexFactor(): MultiplierFactorId {
+function readIndexFactor(): IndexFactorId {
   const queryFactorId = new URLSearchParams(window.location.search).get("factor");
   if (isIndexFactorId(queryFactorId)) return queryFactorId;
 
@@ -58,7 +86,7 @@ function readModifier(): string {
 
 function updateQuery(values: {
   view?: IndexView;
-  factor?: MultiplierFactorId;
+  factor?: IndexFactorId;
   modifier?: string;
 }) {
   const url = new URL(window.location.href);
@@ -87,6 +115,8 @@ function sourceTypeLabel(relation: MultiplierRelation): string {
       return "机制说明";
     case "season-talent":
       return "赛季天赋";
+    case "card":
+      return "猎场竞速卡片";
     default:
       return "增伤来源";
   }
@@ -96,7 +126,7 @@ export function MultiplierBidirectionalIndex({ targets }: {
   targets: readonly MultiplierTargetIndexEntry[];
 }) {
   const [view, setView] = useState<IndexView>("providers");
-  const [selectedFactorId, setSelectedFactorId] = useState<MultiplierFactorId>(
+  const [selectedFactorId, setSelectedFactorId] = useState<IndexFactorId>(
     DEFAULT_INDEX_FACTOR_ID,
   );
   const [modifierTypeId, setModifierTypeId] = useState("");
@@ -130,7 +160,7 @@ export function MultiplierBidirectionalIndex({ targets }: {
     };
   }, []);
 
-  const selectFactor = (factorId: MultiplierFactorId) => {
+  const selectFactor = (factorId: IndexFactorId) => {
     setSelectedFactorId(factorId);
     setModifierTypeId("");
     try {
@@ -152,6 +182,15 @@ export function MultiplierBidirectionalIndex({ targets }: {
   const normalizedQuery = query.trim().toLocaleLowerCase("zh-CN");
 
   const providerItems = useMemo(() => {
+    if (selectedFactorId === "independent-amplification") {
+      return INDEPENDENT_AMPLIFICATION_PROVIDERS.filter((item) => {
+        if (!normalizedQuery) return true;
+        return `${item.label} ${item.sourceTypeLabel}`
+          .toLocaleLowerCase("zh-CN")
+          .includes(normalizedQuery);
+      });
+    }
+
     const groups = new Map<string, MultiplierRelation[]>();
     for (const relation of PROVIDER_RELATIONS) {
       if (relation.factorId !== selectedFactorId) continue;
@@ -161,12 +200,22 @@ export function MultiplierBidirectionalIndex({ targets }: {
       group.push(relation);
       groups.set(key, group);
     }
-    return [...groups.values()].filter((relations) => {
-      if (!normalizedQuery) return true;
-      return `${relations[0].effectLabel ?? ""} ${sourceTypeLabel(relations[0])}`
-        .toLocaleLowerCase("zh-CN")
-        .includes(normalizedQuery);
-    });
+    return [...groups.entries()]
+      .map(([id, relations]): ProviderIndexItem => ({
+        id,
+        label: relations[0].effectLabel ?? "",
+        href: relations[0].sourceHref ?? "#",
+        sourceTypeLabel: sourceTypeLabel(relations[0]),
+        modifierTypeLabels: [
+          ...new Set(relations.map((item) => item.modifierTypeLabel)),
+        ].join("、"),
+      }))
+      .filter((item) => {
+        if (!normalizedQuery) return true;
+        return `${item.label} ${item.sourceTypeLabel}`
+          .toLocaleLowerCase("zh-CN")
+          .includes(normalizedQuery);
+      });
   }, [effectiveModifier, normalizedQuery, selectedFactorId]);
 
   const targetItems = useMemo(
@@ -305,27 +354,24 @@ export function MultiplierBidirectionalIndex({ targets }: {
       {resultCount > 0 ? (
         <ul className="divide-y divide-zinc-800 rounded-lg border border-zinc-700 bg-zinc-900/55">
           {view === "providers"
-            ? providerItems.map((relations) => {
-                const relation = relations[0];
-                return (
-                  <li key={relation.sourceHref}>
+            ? providerItems.map((item) => (
+                  <li key={item.id}>
                     <Link
-                      href={relation.sourceHref ?? "#"}
+                      href={item.href}
                       className="flex min-h-14 items-center justify-between gap-3 px-3 py-2 transition-colors hover:bg-zinc-800/70 focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4"
                     >
                       <span className="min-w-0">
                         <span className="block truncate text-sm font-semibold text-zinc-100">
-                          {relation.effectLabel}
+                          {item.label}
                         </span>
                         <span className="mt-0.5 block text-xs text-zinc-500">
-                          {sourceTypeLabel(relation)} · {[...new Set(relations.map((item) => item.modifierTypeLabel))].join("、")}
+                          {item.sourceTypeLabel} · {item.modifierTypeLabels}
                         </span>
                       </span>
                       <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0 text-zinc-500" />
                     </Link>
                   </li>
-                );
-              })
+                ))
             : targetItems.map((target) => (
                 <li key={target.id}>
                   <Link
