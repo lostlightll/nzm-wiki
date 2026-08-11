@@ -92,7 +92,12 @@ test("乘区标签只在需要区分伤害类型时显示具体类型", () => {
   const relations = (["enemy", "player"] as const).flatMap((target) =>
     getStatusEffectCatalog(target).entries.flatMap((entry) => entry.multiplierRelations),
   );
-  const factorsWithDetail = new Set(["dilution", "element", "vulnerability"]);
+  const factorsWithDetail = new Set([
+    "dilution",
+    "element",
+    "element-vulnerability",
+    "vulnerability",
+  ]);
 
   for (const relation of relations) {
     assert.equal(
@@ -103,7 +108,14 @@ test("乘区标签只在需要区分伤害类型时显示具体类型", () => {
     );
   }
 
-  for (const factorId of ["dilution", "element", "vulnerability", "critical", "weakness"]) {
+  for (const factorId of [
+    "dilution",
+    "element",
+    "element-vulnerability",
+    "vulnerability",
+    "critical",
+    "weakness",
+  ]) {
     assert.ok(relations.some((relation) => relation.factorId === factorId));
   }
 });

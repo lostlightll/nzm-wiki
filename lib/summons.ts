@@ -59,6 +59,7 @@ const passives = new Map(
 const meaningfulDamageFactorIds = new Set([
   "dilution",
   "element",
+  "element-vulnerability",
   "vulnerability",
 ]);
 

@@ -67,6 +67,7 @@ test("weapon settlement profile resolves applicable modifier channels", () => {
   assert.ok(modifierIds.includes("weapon-damage"));
   assert.ok(modifierIds.includes("weapon-hit-damage"));
   assert.ok(modifierIds.includes("element"));
+  assert.ok(modifierIds.includes("element-vulnerability"));
   assert.ok(modifierIds.includes("critical"));
   assert.ok(modifierIds.includes("weakness"));
   assert.ok(!modifierIds.includes("weapon-explode-damage"));
@@ -174,4 +175,20 @@ test("vulnerability providers use the unified factor name", () => {
   assert.ok(relations.length > 0);
   assert.ok(relations.every((relation) => relation.factorId === "vulnerability"));
   assert.ok(relations.every((relation) => relation.factorLabel === "易伤乘区"));
+});
+
+test("black powder uses the element vulnerability factor", () => {
+  const relations = getProviderRelationsForSource({
+    type: "weapon",
+    slug: "暗夜之殇",
+  });
+  assert.ok(relations.length > 0);
+  assert.ok(
+    relations.every(
+      (relation) =>
+        relation.modifierTypeId === "element-vulnerability" &&
+        relation.factorId === "element-vulnerability" &&
+        relation.factorLabel === "元素易伤乘区",
+    ),
+  );
 });

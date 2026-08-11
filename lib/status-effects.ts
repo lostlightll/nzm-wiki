@@ -235,7 +235,10 @@ function isPositiveDamageChange(
 ): boolean {
   const values = [row.baseValue, row.coefficient].filter((value) => value !== 0);
   if (values.length === 0) return false;
-  if (modifier.id === "vulnerability") {
+  if (
+    modifier.id === "vulnerability" ||
+    modifier.id === "element-vulnerability"
+  ) {
     return values.some((value) => value < 0);
   }
   return values.some((value) => value > 0);
@@ -244,6 +247,7 @@ function isPositiveDamageChange(
 const MULTIPLIER_FACTORS_WITH_MODIFIER_DETAIL = new Set([
   "dilution",
   "element",
+  "element-vulnerability",
   "vulnerability",
 ]);
 
@@ -456,7 +460,11 @@ function semanticGroup(
   if (target === "enemy") {
     if (ELEMENT_PATTERN.test(text)) id = "elemental";
     else if (
-      multiplierRelations.some((relation) => relation.modifierTypeId === "vulnerability") ||
+      multiplierRelations.some(
+        (relation) =>
+          relation.modifierTypeId === "vulnerability" ||
+          relation.modifierTypeId === "element-vulnerability",
+      ) ||
       /易伤|受到.{0,6}伤害.{0,4}(增加|提高|提升)|防御.{0,4}降低/i.test(text)
     ) id = "vulnerability";
     else if (categories.has("SpeedDown") || categories.has("Frozen") || CONTROL_PATTERN.test(text)) {

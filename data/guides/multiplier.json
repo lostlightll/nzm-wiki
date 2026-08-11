@@ -10,7 +10,8 @@
     { "id": "weakness", "label": "弱点增伤" },
     { "id": "critical", "label": "暴伤乘区" },
     { "id": "correction", "label": "特殊修正" },
-    { "id": "vulnerability", "label": "易伤乘区" }
+    { "id": "vulnerability", "label": "易伤乘区" },
+    { "id": "element-vulnerability", "label": "元素易伤乘区" }
   ],
   "baseDamage": {
     "formula": "武器白值 × 模式基础攻击力 = 单次基础伤害",
@@ -63,6 +64,28 @@
           { "damageTypeId": "non-weapon-skill-damage", "status": "applies" },
           { "damageTypeId": "element-dot-damage", "status": "none" },
           { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ]
+      },
+      {
+        "id": "element-vulnerability",
+        "label": "元素易伤",
+        "group": "factor",
+        "attributeFields": [
+          "GPAttributeSetBearDamageRatio.KineticDamageBearRatio",
+          "GPAttributeSetBearDamageRatio.FireDamageBearRatio",
+          "GPAttributeSetBearDamageRatio.CryoDamageBearRatio",
+          "GPAttributeSetBearDamageRatio.ShockDamageBearRatio",
+          "GPAttributeSetBearDamageRatio.CorossiveDamageBearRatio",
+          "GPAttributeSetBearDamageRatio.ElementDamageBearRatio"
+        ],
+        "summary": "目标对应元素承伤倍率的负值增量，作为元素易伤乘区参与结算；正值属于元素减伤。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "conditional", "label": "对应元素易伤" },
+          { "damageTypeId": "explosion-damage", "status": "conditional", "label": "对应元素易伤" },
+          { "damageTypeId": "weapon-skill-damage", "status": "conditional", "label": "对应元素易伤" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "conditional", "label": "对应元素易伤" },
+          { "damageTypeId": "element-dot-damage", "status": "conditional", "label": "对应元素易伤" },
+          { "damageTypeId": "extra-trigger-damage", "status": "conditional", "label": "对应元素易伤" }
         ]
       },
       {
@@ -805,18 +828,7 @@
       "targetNote": "生效对象与持续时间仍由具体来源的机制条件决定。",
       "attributeFields": [
         {
-          "name": "GPAttributeSetBearDamageRatio.DamageBearRatio",
-          "selection": {
-            "id": "all-damage",
-            "label": "全伤害"
-          }
-        },
-        {
-          "name": "GPAttributeSetBearDamageRatio.FireDamageBearRatio",
-          "selection": {
-            "id": "fire-damage",
-            "label": "火系伤害"
-          }
+          "name": "GPAttributeSetBearDamageRatio.DamageBearRatio"
         }
       ],
       "examples": [
@@ -824,32 +836,50 @@
           "id": "shock-vulnerability",
           "label": "感电易伤",
           "icon": "sparkles",
-          "href": "/posts/element",
-          "selectionId": "all-damage"
+          "href": "/posts/element"
         },
         {
           "id": "melee-vulnerability",
           "label": "近战易伤",
           "icon": "swords",
-          "href": "/perks/slot-3/近战易伤",
-          "selectionId": "all-damage"
+          "href": "/perks/slot-3/近战易伤"
         },
         {
           "id": "switch-vulnerability",
           "label": "切换易伤",
           "icon": "crosshair",
-          "href": "/perks/slot-4/切换易伤",
-          "selectionId": "all-damage"
-        },
-        {
-          "id": "nightfall-black-powder-vulnerability",
-          "label": "黑火药易伤",
-          "icon": "bomb",
-          "href": "/weapons/暗夜之殇",
-          "selectionId": "fire-damage"
+          "href": "/perks/slot-4/切换易伤"
         }
       ],
       "notice": "对应字段既可表现为伤害减免，也可表现为易伤；实际增减方向与生效条件由具体机制决定。"
+    },
+    "element-vulnerability": {
+      "summary": "该乘区用于记录目标对对应元素伤害的承伤增加。元素承伤字段为负值时表示元素易伤，正值表示元素减伤。",
+      "rulesHeading": "作用方式",
+      "rules": [
+        "单元素承伤字段只影响对应元素伤害",
+        "ElementDamageBearRatio 影响全部元素伤害",
+        "只有负值变化纳入元素易伤来源索引"
+      ],
+      "target": "对应元素伤害",
+      "targetNote": "伤害来源必须具有元素属性；具体元素与持续时间由来源机制决定。",
+      "attributeFields": [
+        { "name": "GPAttributeSetBearDamageRatio.KineticDamageBearRatio" },
+        { "name": "GPAttributeSetBearDamageRatio.FireDamageBearRatio" },
+        { "name": "GPAttributeSetBearDamageRatio.CryoDamageBearRatio" },
+        { "name": "GPAttributeSetBearDamageRatio.ShockDamageBearRatio" },
+        { "name": "GPAttributeSetBearDamageRatio.CorossiveDamageBearRatio" },
+        { "name": "GPAttributeSetBearDamageRatio.ElementDamageBearRatio" }
+      ],
+      "examples": [
+        {
+          "id": "nightfall-black-powder-element-vulnerability",
+          "label": "黑火药元素易伤",
+          "icon": "bomb",
+          "href": "/weapons/暗夜之殇"
+        }
+      ],
+      "notice": "元素易伤与全伤害易伤分别记录；实际增减方向和适用元素以具体字段与机制为准。"
     }
   }
 }

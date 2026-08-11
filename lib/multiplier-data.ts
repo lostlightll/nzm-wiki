@@ -13,6 +13,7 @@ const MULTIPLIER_FACTOR_IDS = [
   "critical",
   "correction",
   "vulnerability",
+  "element-vulnerability",
 ] as const;
 
 const DAMAGE_CHANNEL_GROUPS = ["factor", "dilution", "correction"] as const;
@@ -434,6 +435,7 @@ function factorIdForModifier(channel: DamageChannel): MultiplierFactorId {
   if (channel.group === "dilution") return "dilution";
   if (channel.id === "game-mode") return "game-mode";
   if (channel.id === "element") return "element";
+  if (channel.id === "element-vulnerability") return "element-vulnerability";
   if (channel.id === "critical") return "critical";
   if (channel.id === "weakness") return "weakness";
   if (channel.id === "vulnerability") return "vulnerability";
@@ -696,7 +698,10 @@ export function getApplicableModifierTypes(
     if (modifier.id === "correction") continue;
     if (modifier.id === "critical" && !profile.enableCritical) continue;
     if (modifier.id === "weakness" && !profile.enableWeakness) continue;
-    if (modifier.id === "element" && !profile.element) continue;
+    if (
+      (modifier.id === "element" || modifier.id === "element-vulnerability") &&
+      !profile.element
+    ) continue;
     const matchingEffects = modifier.effects.filter(
       (effect) =>
         profile.damageTypeIds.includes(effect.damageTypeId) &&

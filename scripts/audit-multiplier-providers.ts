@@ -66,7 +66,10 @@ function directPositiveModifiers(description: string): string[] {
       const modifierTypeId = modifierTypeByAttribute.get(String(row.AttributeName));
       if (!modifierTypeId) return false;
       const values = [Number(row.BaseValue ?? 0), Number(row.CoefValue ?? 0)];
-      return modifierTypeId === "vulnerability"
+      const isVulnerability =
+        modifierTypeId === "vulnerability" ||
+        modifierTypeId === "element-vulnerability";
+      return isVulnerability
         ? values.some((value) => value < 0)
         : values.some((value) => value > 0);
     }),
@@ -87,11 +90,12 @@ for (const provider of MULTIPLIER_PROVIDERS) {
       errors.push(`${provider.id} 的属性不在 AttributeDescMapTable：${row.attributeName}`);
     }
     if (
-      row.modifierTypeId === "vulnerability" &&
+      (row.modifierTypeId === "vulnerability" ||
+        row.modifierTypeId === "element-vulnerability") &&
       Number(actual.BaseValue ?? 0) >= 0 &&
       Number(actual.CoefValue ?? 0) >= 0
     ) {
-      errors.push(`${provider.id} 将非负 DamageBearRatio 错列为易伤`);
+      errors.push(`${provider.id} 将非负承伤字段错列为易伤`);
     }
   }
 

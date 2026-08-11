@@ -47,10 +47,11 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - 大稀释乘区
 - 元素乘区
 - 易伤乘区
+- 元素易伤乘区
 
 `WeaponDamageRatio`、`WeaponHitDamageRatio`、`CloseRangeDamageRatio` 等只是大稀释乘区内的增伤类型，不得展示成“武器乘区”“武器通道乘区”或“近距离乘区”。同一伤害来源命中多个同乘区通道时，界面合并为一个乘区徽标，通道名只放在提示和精确筛选中。
 
-`DamageBearRatio` 的负值效果统一归入 `vulnerability`，显示名固定为“易伤乘区”；正值是伤害减免，不进入增伤来源索引。旧 `factor=damage-reduction` 查询会兼容读取为 `vulnerability`。
+`DamageBearRatio` 的负值效果统一归入 `vulnerability`，显示名固定为“易伤乘区”；各单元素 `*DamageBearRatio` 与 `ElementDamageBearRatio` 的负值效果归入 `element-vulnerability`，显示名固定为“元素易伤乘区”。对应字段的正值是伤害减免，不进入增伤来源索引。旧 `factor=damage-reduction` 查询会兼容读取为 `vulnerability`。
 
 ## 运行时接口
 
@@ -77,7 +78,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 /guides?part=damage-sources#multiplier
 ```
 
-`part`、`factor`、`view`、`modifier` 是可分享和可前进/后退恢复的权威状态；`part=damage-sources` 打开同页 Part 2，不创建独立子路由。基础伤害索引额外使用 `mode=td` 表示塔防，缺少或非法 `mode` 时默认猎场。本地存储只作为没有查询参数时的乘区选择回退。
+`part`、`factor`、`view`、`modifier` 是可分享和可前进/后退恢复的权威状态；`factor` 表示当前 Part 的乘区状态。乘区公式和增伤索引分别保存自己的乘区选择，切换 Part 时恢复各自状态，不互相同步；元素易伤乘区只出现在增伤索引。`part=damage-sources` 打开同页 Part 2，不创建独立子路由。基础伤害索引额外使用 `mode=td` 表示塔防，缺少或非法 `mode` 时默认猎场。本地存储只作为没有查询参数时的乘区选择回退。
 
 武器原子来源使用 `#damage-source-{sourceId}`。赛季节点和被动使用可分享 query 深链：
 

@@ -43,6 +43,9 @@ const DEFAULT_FACTOR_ID: MultiplierFactorId = DEFAULT_MULTIPLIER_FACTOR.id;
 const DETAIL_PANEL_ID = "multiplier-detail-panel";
 const SELECTED_FACTOR_STORAGE_KEY = "nzm-wiki:guides:multiplier:selected-factor";
 const SELECTED_FACTOR_CHANGE_EVENT = "nzm-wiki:multiplier-factor-change";
+const FORMULA_MULTIPLIER_FACTORS = MULTIPLIER_FACTORS.filter(
+  (factor) => factor.id !== "element-vulnerability",
+);
 
 type MultiplierPart = "formula" | "damage-sources" | "index";
 
@@ -57,22 +60,30 @@ const MULTIPLIER_PARTS: readonly {
 ];
 
 let inMemorySelectedFactorId = DEFAULT_FACTOR_ID;
+let hasInitializedFormulaFactor = false;
 
-function isMultiplierFactorId(value: string | null): value is MultiplierFactorId {
-  return MULTIPLIER_FACTORS.some((factor) => factor.id === value);
+function isFormulaFactorId(value: string | null): value is MultiplierFactorId {
+  return FORMULA_MULTIPLIER_FACTORS.some((factor) => factor.id === value);
 }
 
 function getSelectedFactorSnapshot(): MultiplierFactorId {
-  const rawFactorId = new URLSearchParams(window.location.search).get("factor");
+  const params = new URLSearchParams(window.location.search);
+  const view = params.get("view");
+  const rawFactorId = view === "providers" || view === "targets"
+    ? null
+    : params.get("factor");
   const queryFactorId = rawFactorId === "damage-reduction" ? "vulnerability" : rawFactorId;
-  if (isMultiplierFactorId(queryFactorId)) {
+  if (isFormulaFactorId(queryFactorId)) {
     inMemorySelectedFactorId = queryFactorId;
+    hasInitializedFormulaFactor = true;
     return queryFactorId;
   }
+  if (hasInitializedFormulaFactor) return inMemorySelectedFactorId;
+
   try {
     const storedFactorId = window.localStorage.getItem(SELECTED_FACTOR_STORAGE_KEY);
 
-    if (isMultiplierFactorId(storedFactorId)) {
+    if (isFormulaFactorId(storedFactorId)) {
       inMemorySelectedFactorId = storedFactorId;
     } else if (storedFactorId !== null) {
       inMemorySelectedFactorId = DEFAULT_FACTOR_ID;
@@ -81,6 +92,7 @@ function getSelectedFactorSnapshot(): MultiplierFactorId {
     // localStorage 不可用时，当前标签页内仍保留选择。
   }
 
+  hasInitializedFormulaFactor = true;
   return inMemorySelectedFactorId;
 }
 
@@ -94,9 +106,10 @@ function subscribeToSelectedFactor(onStoreChange: () => void) {
       return;
     }
 
-    inMemorySelectedFactorId = isMultiplierFactorId(event.newValue)
+    inMemorySelectedFactorId = isFormulaFactorId(event.newValue)
       ? event.newValue
       : DEFAULT_FACTOR_ID;
+    hasInitializedFormulaFactor = true;
     onStoreChange();
   };
 
@@ -115,6 +128,7 @@ function subscribeToSelectedFactor(onStoreChange: () => void) {
 
 function rememberSelectedFactor(factorId: MultiplierFactorId) {
   inMemorySelectedFactorId = factorId;
+  hasInitializedFormulaFactor = true;
 
   try {
     window.localStorage.setItem(SELECTED_FACTOR_STORAGE_KEY, factorId);
@@ -559,7 +573,7 @@ function DesktopFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
       aria-label="选择乘区查看详情"
     >
       <div className="absolute inset-x-0 top-0 flex items-start gap-3">
-        {MULTIPLIER_FACTORS.map((factor, index) => {
+        {FORMULA_MULTIPLIER_FACTORS.map((factor, index) => {
           const selected = selectedFactorId === factor.id;
 
           return (
@@ -602,7 +616,7 @@ function DesktopFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
                 />
               </div>
 
-              {index < MULTIPLIER_FACTORS.length - 1 && (
+              {index < FORMULA_MULTIPLIER_FACTORS.length - 1 && (
                 <span aria-hidden="true" className="mt-2.5 shrink-0 text-2xl font-light text-zinc-200">
                   ×
                 </span>
@@ -619,7 +633,7 @@ function DesktopFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
 function CompactFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
   return (
     <ol className="flex flex-wrap items-center gap-x-2 gap-y-2 xl:hidden" aria-label="伤害乘区公式">
-      {MULTIPLIER_FACTORS.map((factor, index) => {
+      {FORMULA_MULTIPLIER_FACTORS.map((factor, index) => {
         const selected = selectedFactorId === factor.id;
 
         return (
@@ -712,14 +726,18 @@ export function MultiplierOverview({
     if (part === "index") {
       url.searchParams.delete("part");
       if (!url.searchParams.has("view")) url.searchParams.set("view", "providers");
+      url.searchParams.delete("factor");
+      url.searchParams.delete("modifier");
     } else if (part === "damage-sources") {
       url.searchParams.set("part", "damage-sources");
       url.searchParams.delete("view");
+      url.searchParams.delete("factor");
       url.searchParams.delete("modifier");
     } else {
       url.searchParams.delete("part");
       url.searchParams.delete("view");
       url.searchParams.delete("modifier");
+      url.searchParams.set("factor", selectedFactorId);
     }
     url.hash = "multiplier";
     window.history.pushState(null, "", url);
@@ -760,10 +778,7 @@ export function MultiplierOverview({
       {activePart === "damage-sources" ? (
         <DamageSourcesOverview />
       ) : activePart === "index" ? (
-        <MultiplierBidirectionalIndex
-          selectedFactorId={selectedFactorId}
-          targets={targets}
-        />
+        <MultiplierBidirectionalIndex targets={targets} />
       ) : (
       <section aria-labelledby="damage-formula-heading">
         <h2 id="damage-formula-heading" className="mb-4 text-2xl font-bold tracking-wide text-zinc-100 xl:mb-2 xl:text-xl">

@@ -4271,18 +4271,29 @@
         "component": "PassiveSkill"
       },
       "modifierTypeIds": [
-        "vulnerability"
+        "element-vulnerability"
       ],
       "evidence": {
         "kind": "reviewed-override",
         "basis": [
-          "页面描述明确写明爆炸弹使目标受到的伤害提升 5%。"
+          "页面描述明确写明爆炸弹使目标受到的火焰伤害提升 5%；Numerical 130700401 写入 FireDamageBearRatio -0.05。"
         ],
         "descriptionRowKeys": [
           "weapon:1007004001_1",
           "weapon:1007004001_100"
         ],
-        "numericalRows": []
+        "numericalRows": [
+          {
+            "modifierId": "130700401",
+            "rowKey": "130700401_1_0",
+            "attributeName": "GPAttributeSetBearDamageRatio.FireDamageBearRatio",
+            "attributeLabel": "受到火元素伤害增加5%",
+            "modifierTypeId": "element-vulnerability",
+            "baseValue": -0.05,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
