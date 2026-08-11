@@ -4,12 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowUpRight,
-  CalendarClock,
   ChevronRight,
   Crosshair,
-  Layers3,
-  MapPinned,
-  Sparkles,
   TimerReset,
 } from "lucide-react";
 import { useSyncExternalStore } from "react";
@@ -157,7 +153,7 @@ function IndexBadge({ buff }: { buff: WeeklyBuff }) {
   );
 }
 
-function BuffCard({ buff, position }: { buff: WeeklyBuff; position: number }) {
+function BuffCard({ buff }: { buff: WeeklyBuff }) {
   return (
     <article
       id={`buff-${buff.id}`}
@@ -172,9 +168,6 @@ function BuffCard({ buff, position }: { buff: WeeklyBuff; position: number }) {
             sizes="80px"
             className="object-cover"
           />
-          <span className="absolute right-0 bottom-0 flex h-5 min-w-5 items-center justify-center rounded-tl bg-black/75 px-1 font-mono text-[10px] tabular-nums text-zinc-300">
-            {position}
-          </span>
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-start justify-between gap-2">
@@ -210,10 +203,8 @@ function RotationButton({
           : "border-transparent text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
       }`}
     >
-      <span className="block text-sm font-semibold">第 {index} 周</span>
-      <span className="block min-h-4 text-[10px] leading-4 text-amber-300">
-        {current ? "本周" : ""}
-      </span>
+      <span className="text-sm font-semibold">第 {index} 周</span>
+      {current && <span className="ml-2 text-[10px] text-amber-300">本周</span>}
     </button>
   );
 }
@@ -277,40 +268,12 @@ export function WeeklyBuffGuide() {
 
   return (
     <div className="not-prose mx-auto max-w-6xl pb-12 [--weekly-accent:#e4b457]">
-      <header className="pb-5">
-        <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
-          <div className="max-w-3xl">
-            <p className="flex items-center gap-2 text-sm font-semibold text-amber-300">
-              <CalendarClock aria-hidden="true" className="h-4 w-4" />
-              僵尸猎场机制专题
-            </p>
-            <p className="mt-2 max-w-2xl text-base leading-7 text-zinc-300">
-              两套地图池独立取值，但共享同一轮换周次。每 7 天切换一组，每局同时生效 3 个 Buff。
-            </p>
-          </div>
-          <div className="grid grid-cols-3 border-y border-zinc-700 text-center lg:min-w-[21rem]">
-            {[
-              ["7 天", "轮换周期"],
-              ["3 个", "局内生效"],
-              ["2 套", "地图池"],
-            ].map(([value, label]) => (
-              <div key={label} className="border-r border-zinc-700 px-3 py-2 last:border-r-0">
-                <strong className="block font-mono text-lg tabular-nums text-amber-200">
-                  {value}
-                </strong>
-                <span className="mt-1 block text-xs text-zinc-500">{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </header>
-
-      <section className="grid border-b border-zinc-700 lg:grid-cols-[minmax(0,1.2fr)_minmax(19rem,0.8fr)]">
-        <div className="py-3 lg:border-r lg:border-zinc-700 lg:pr-8">
+      <section className="grid overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/45 lg:grid-cols-[minmax(0,1.2fr)_minmax(19rem,0.8fr)]">
+        <div className="p-4 lg:border-r lg:border-zinc-700">
           <div className="flex items-start gap-3">
             <TimerReset aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" />
             <div>
-              <h2 className="text-sm font-semibold text-zinc-100">当前轮换</h2>
+              <h2 className="text-sm font-semibold text-zinc-100">本周</h2>
               <p className="mt-1 text-sm leading-6 text-zinc-400">
                 {rotationWindow
                   ? `第 ${rotationWindow.rotationIndex} 周 · ${formatRotationRange(rotationWindow)}`
@@ -319,11 +282,11 @@ export function WeeklyBuffGuide() {
             </div>
           </div>
         </div>
-        <div className="py-3 lg:pl-8">
+        <div className="border-t border-zinc-700 p-4 lg:border-t-0">
           <div className="flex items-start gap-3">
             <ChevronRight aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" />
             <div className="min-w-0">
-              <h2 className="text-sm font-semibold text-zinc-100">下周预览</h2>
+              <h2 className="text-sm font-semibold text-zinc-100">下周</h2>
               <p className="mt-1 text-sm leading-6 text-zinc-400">
                 {rotationWindow ? `第 ${rotationWindow.nextRotationIndex} 周` : "下一轮"}
                 {nextBuffs.length > 0 ? ` · ${nextBuffs.map((buff) => buff.name).join(" / ")}` : ""}
@@ -333,17 +296,8 @@ export function WeeklyBuffGuide() {
         </div>
       </section>
 
-      <section id="rotation" className="scroll-mt-20 py-7">
-        <div className="mb-4 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
-          <div>
-            <h2 className="flex items-center gap-2 text-xl font-semibold text-zinc-100 sm:text-2xl">
-              <Layers3 aria-hidden="true" className="h-5 w-5 text-amber-300" />
-              三周轮换
-            </h2>
-            <p className="mt-2 text-sm leading-6 text-zinc-400">
-              地图池决定 Buff 组合，周次决定当前取哪一组。
-            </p>
-          </div>
+      <section id="rotation" className="scroll-mt-20 py-5">
+        <div className="mb-3 grid gap-3 lg:grid-cols-[minmax(17rem,0.7fr)_minmax(0,1.3fr)]">
           <div
             role="group"
             aria-label="选择地图池"
@@ -365,54 +319,50 @@ export function WeeklyBuffGuide() {
               </button>
             ))}
           </div>
-        </div>
-
-        <div className="mb-4 grid grid-cols-3 rounded-lg border border-zinc-700 bg-zinc-900/70 p-1">
-          {[1, 2, 3].map((index) => (
-            <RotationButton
-              key={index}
-              index={index}
-              selected={rotationIndex === index}
-              current={rotationWindow?.rotationIndex === index}
-              onClick={() => selectRotation(index)}
-            />
-          ))}
-        </div>
-
-        <div className="mb-4 flex items-start gap-3 py-3">
-          <MapPinned aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-cyan-300" />
-          <div>
-            <h3 className="text-sm font-semibold text-zinc-100">{selectedPool.label}适用地图</h3>
-            <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-zinc-400">
-              {selectedPool.maps.map((map) => (
-                <span key={map}>{map}</span>
-              ))}
-            </div>
+          <div className="grid grid-cols-3 rounded-lg border border-zinc-700 bg-zinc-900/70 p-1">
+            {[1, 2, 3].map((index) => (
+              <RotationButton
+                key={index}
+                index={index}
+                selected={rotationIndex === index}
+                current={rotationWindow?.rotationIndex === index}
+                onClick={() => selectRotation(index)}
+              />
+            ))}
           </div>
         </div>
 
+        <p className="mb-4 text-sm leading-6 text-zinc-500">
+          <span className="font-medium text-zinc-300">适用地图：</span>
+          {selectedPool.maps.join("、")}
+        </p>
+
         <div className="grid gap-4 lg:grid-cols-3">
-          {selectedBuffs.map((buff, index) => (
-            <BuffCard key={buff.id} buff={buff} position={index + 1} />
+          {selectedBuffs.map((buff) => (
+            <BuffCard key={buff.id} buff={buff} />
           ))}
         </div>
       </section>
 
-      <section id="damage-index" className="scroll-mt-20 pt-9">
-        <div className="mb-6 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
-          <div className="max-w-2xl">
-            <h2 className="flex items-center gap-2 text-xl font-semibold text-zinc-100 sm:text-2xl">
-              <Crosshair aria-hidden="true" className="h-5 w-5 text-rose-300" />
-              增伤类索引
-            </h2>
-            <p className="mt-2 text-sm leading-6 text-zinc-400">
-              乘区增伤只展示规范乘区名；暴击率收益和额外伤害事件单独列出，不作为乘区处理。
-            </p>
-          </div>
+      <details
+        id="damage-index"
+        className="scroll-mt-20 rounded-lg border border-zinc-700 bg-zinc-900/35"
+      >
+        <summary className="flex min-h-12 cursor-pointer select-none items-center justify-between gap-3 px-4 text-sm font-semibold text-zinc-200 hover:text-white focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
+          <span className="flex items-center gap-2">
+            <Crosshair aria-hidden="true" className="h-4 w-4 text-rose-300" />
+            增伤 Buff 索引
+          </span>
+          <span className="text-xs font-normal text-zinc-500">
+            {WEEKLY_BUFF_DAMAGE_INDEX.length} 项
+          </span>
+        </summary>
+
+        <div className="border-t border-zinc-700 p-3 sm:p-4">
           <div
             role="group"
             aria-label="筛选增伤索引"
-            className="grid grid-cols-2 rounded-lg border border-zinc-700 bg-zinc-900 p-1 sm:grid-cols-4"
+            className="mb-4 grid grid-cols-2 rounded-lg border border-zinc-700 bg-zinc-900 p-1 sm:grid-cols-4"
           >
             {INDEX_FILTERS.map((filter) => (
               <button
@@ -430,13 +380,12 @@ export function WeeklyBuffGuide() {
               </button>
             ))}
           </div>
-        </div>
 
-        <div className="overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/65">
+          <div className="overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/65">
           <div className="hidden grid-cols-[minmax(12rem,0.8fr)_minmax(9rem,0.65fr)_minmax(0,1.55fr)_2rem] gap-4 border-b border-zinc-700 px-5 py-3 text-xs font-semibold text-zinc-500 md:grid">
             <span>Buff</span>
             <span>收益归类</span>
-            <span>生效说明</span>
+            <span>效果</span>
             <span className="sr-only">定位</span>
           </div>
           <div className="divide-y divide-zinc-800">
@@ -463,7 +412,6 @@ export function WeeklyBuffGuide() {
                     >
                       {buff.name}
                     </button>
-                    <p className="font-mono text-[10px] tabular-nums text-zinc-600">{buff.id}</p>
                   </div>
                 </div>
                 <div>
@@ -483,14 +431,8 @@ export function WeeklyBuffGuide() {
             ))}
           </div>
         </div>
-      </section>
-
-      <footer className="mt-8 flex items-start gap-3 border-t border-zinc-700 pt-5 text-xs leading-5 text-zinc-500">
-        <Sparkles aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
-        <p>
-          轮换按游戏配置的 UTC+8 时间计算。乘区徽标只表示结算乘区，不展示乘区内的具体增伤类型。
-        </p>
-      </footer>
+        </div>
+      </details>
     </div>
   );
 }
