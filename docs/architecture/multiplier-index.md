@@ -17,6 +17,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - `target` 表示原子伤害来源可以受到某种增伤影响。
 - 插件以 ItemID 为稳定身份；同 ID 超限卡片由运行时自动展开第二个页面落点。
 - 猎场竞速卡片以 CardID 为稳定身份，页面来源使用卡片 slug；只有 `CardID → Card_Function → MGE/Buff → GPModifier → Numerical AttributeName` 完整连通时才登记。
+- 攻击等级覆写型卡片必须额外保存来源 MGE、覆写等级、攻击等级被动与下游 MGE；审计需确认该等级最终命中同等级 Numerical 行，不能把 `SetAttackLevelOverride` 当作证据链终点。
 - `refs/` 只用于人工核验证据，构建和页面运行时不得读取。
 
 ## 数据所有权

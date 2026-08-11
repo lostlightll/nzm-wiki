@@ -92,6 +92,51 @@
       }
     },
     {
+      "id": "card:10039",
+      "label": "玻璃大炮",
+      "source": {
+        "type": "card",
+        "cardId": 10039,
+        "slug": "glass-cannon"
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "gpModifierIds": [
+          "190100006"
+        ],
+        "cardChain": {
+          "functionIds": [
+            20410
+          ],
+          "mgeIds": [
+            1502033001,
+            1502003001
+          ],
+          "attackLevelChain": {
+            "sourceMgeId": 1502033001,
+            "level": 27,
+            "passiveSkillId": 1502003001,
+            "modifierMgeId": 1502003001
+          }
+        },
+        "numericalRows": [
+          {
+            "modifierId": "190100006",
+            "rowKey": "190100006_27_9",
+            "attributeName": "GPAttributeSetGiveDamageRatio.DamageRatio",
+            "attributeLabel": "全伤害（尽量别用，连乘）",
+            "modifierTypeId": "game-mode",
+            "baseValue": 10,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
+    {
       "id": "bond:ammo:6",
       "label": "弹药羁绊 x6",
       "source": {

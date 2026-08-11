@@ -135,6 +135,21 @@ test("audited speedrun cards resolve to weapon damage in dilution", () => {
   }
 });
 
+test("glass cannon resolves its attack level override to game mode damage", () => {
+  const relations = getProviderRelationsForSource({
+    type: "card",
+    slug: "glass-cannon",
+  });
+  assert.deepEqual(
+    relations.map((relation) => [relation.modifierTypeId, relation.factorId]),
+    [["game-mode", "game-mode"]],
+  );
+  assert.equal(
+    relations[0].sourceHref,
+    "/cards/glass-cannon#multiplier-provider",
+  );
+});
+
 test("named provider regressions expose their audited modifier types", () => {
   const cases = [
     [{ type: "perk", slot: 4, slug: "独弹强化" } as const, ["correction"]],

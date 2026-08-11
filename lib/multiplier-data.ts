@@ -176,6 +176,12 @@ type ProviderEvidence = {
     functionIds: readonly number[];
     mgeIds: readonly number[];
     buffIds?: readonly number[];
+    attackLevelChain?: {
+      sourceMgeId: number;
+      level: number;
+      passiveSkillId: number;
+      modifierMgeId: number;
+    };
   };
   numericalRows: readonly {
     modifierId: string;

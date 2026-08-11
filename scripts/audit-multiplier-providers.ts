@@ -29,6 +29,11 @@ const huntingRankCards = loadRows(
   "HunterRank",
   "NZHunterRankCardConfigTable.json",
 );
+const gameplayPassives = loadRows(
+  "DataTables",
+  "MGE",
+  "MGEPassive_Gameplay.json",
+);
 const buffConfigs = loadRows("DataTables", "Buff", "BuffConfigDatatableNew.json");
 const weaponDescriptionTables = ["Weapon", "Skill"].map((suffix) =>
   loadRows("DataTables", "MGE", `DT_GPMGESkillDesConfig_${suffix}.json`),
@@ -51,10 +56,55 @@ const speedrunCardsById = new Map(
 );
 
 function findMgeAsset(mgeId: number): string | undefined {
-  const directory = path.join(refsRoot, "Abilities", "MGE", "LieChangPaiWei");
-  return fs
-    .readdirSync(directory)
-    .find((file) => file.startsWith(`MGE_${mgeId}`) && file.endsWith(".json"));
+  const directories = [
+    path.join(refsRoot, "Abilities", "MGE", "LieChangPaiWei"),
+    path.join(refsRoot, "Abilities", "GameplayActivity", "MGE"),
+    path.join(refsRoot, "Blueprints", "Affixes", "HuntingRasing"),
+  ];
+  for (const directory of directories) {
+    if (!fs.existsSync(directory)) continue;
+    const file = fs
+      .readdirSync(directory)
+      .find((candidate) =>
+        candidate.startsWith(`MGE_${mgeId}`) && candidate.endsWith(".json"),
+      );
+    if (file) return path.join(directory, file);
+  }
+  return undefined;
+}
+
+function serializedAssetContainsModifier(
+  assetPath: string,
+  modifierId: string,
+): boolean {
+  const serializedPath = assetPath.replace(/\.json$/, ".uexp");
+  const numericId = Number(modifierId);
+  if (!fs.existsSync(serializedPath) || !Number.isInteger(numericId)) return false;
+  const needle = Buffer.allocUnsafe(4);
+  needle.writeUInt32LE(numericId);
+  return fs.readFileSync(serializedPath).indexOf(needle) !== -1;
+}
+
+function assetPackageContainsText(assetPath: string, value: string): boolean {
+  const packagePath = assetPath.replace(/\.json$/, ".uasset");
+  return fs.existsSync(packagePath) &&
+    fs.readFileSync(packagePath).includes(Buffer.from(value));
+}
+
+function passiveLevelIncludes(value: unknown, expectedLevel: number): boolean {
+  return String(value)
+    .split(",")
+    .some((part) => {
+      const [startText, endText = startText] = part.trim().split("-");
+      const start = Number(startText);
+      const end = Number(endText);
+      return (
+        Number.isInteger(start) &&
+        Number.isInteger(end) &&
+        expectedLevel >= start &&
+        expectedLevel <= end
+      );
+    });
 }
 
 function collectPropertyValues(value: unknown, propertyName: string): unknown[] {
@@ -190,19 +240,49 @@ for (const provider of MULTIPLIER_PROVIDERS) {
 
     const directModifierIds = new Set<string>();
     for (const mgeId of chain.mgeIds) {
-      const assetFile = findMgeAsset(mgeId);
-      if (!assetFile) {
+      const assetPath = findMgeAsset(mgeId);
+      if (!assetPath) {
         errors.push(`${provider.id} 的 MGE 资源不存在：${mgeId}`);
         continue;
       }
-      const asset = JSON.parse(
-        fs.readFileSync(
-          path.join(refsRoot, "Abilities", "MGE", "LieChangPaiWei", assetFile),
-          "utf8",
-        ),
-      );
+      const asset = JSON.parse(fs.readFileSync(assetPath, "utf8"));
       for (const value of collectPropertyValues(asset, "ModifierID")) {
         directModifierIds.add(String(value));
+      }
+      for (const modifierId of provider.evidence.gpModifierIds ?? []) {
+        if (serializedAssetContainsModifier(assetPath, modifierId)) {
+          directModifierIds.add(modifierId);
+        }
+      }
+    }
+
+    const attackLevelChain = chain.attackLevelChain;
+    if (attackLevelChain) {
+      const sourceAssetPath = findMgeAsset(attackLevelChain.sourceMgeId);
+      const sourceAsset = sourceAssetPath
+        ? JSON.parse(fs.readFileSync(sourceAssetPath, "utf8"))
+        : undefined;
+      const attackLevels = sourceAsset
+        ? collectPropertyValues(sourceAsset, "AttackLevel").map(Number)
+        : [];
+      const passive = Object.values(gameplayPassives).find((row) =>
+        Number(row.PassiveSkillID) === attackLevelChain.passiveSkillId &&
+        passiveLevelIncludes(row.PassiveSkillLevel, attackLevelChain.level),
+      );
+      const passiveMgeId = Number((passive?.MGE as Row | undefined)?.Id ?? 0);
+      const hasNumericalAtLevel = provider.evidence.numericalRows.some(
+        (row) => Number(numerical[row.rowKey]?.Level ?? 0) === attackLevelChain.level,
+      );
+      if (
+        !chain.mgeIds.includes(attackLevelChain.sourceMgeId) ||
+        !chain.mgeIds.includes(attackLevelChain.modifierMgeId) ||
+        !attackLevels.includes(attackLevelChain.level) ||
+        !sourceAssetPath ||
+        !assetPackageContainsText(sourceAssetPath, "SetAttackLevelOverride") ||
+        passiveMgeId !== attackLevelChain.modifierMgeId ||
+        !hasNumericalAtLevel
+      ) {
+        errors.push(`${provider.id} 的攻击等级覆写证据链不完整`);
       }
     }
 
