@@ -16,7 +16,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import {
@@ -566,8 +566,51 @@ type FormulaProps = {
 };
 
 function DesktopFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
+  const formulaRef = useRef<HTMLDivElement>(null);
+  const firstNodeRef = useRef<HTMLSpanElement>(null);
+  const lastNodeRef = useRef<HTMLSpanElement>(null);
+  const [rail, setRail] = useState<{ left: number; width: number } | null>(null);
+
+  useLayoutEffect(() => {
+    const formula = formulaRef.current;
+    const firstNode = firstNodeRef.current;
+    const lastNode = lastNodeRef.current;
+    if (!formula || !firstNode || !lastNode) return;
+
+    const updateRail = () => {
+      const formulaRect = formula.getBoundingClientRect();
+      const firstNodeRect = firstNode.getBoundingClientRect();
+      const lastNodeRect = lastNode.getBoundingClientRect();
+      const left = firstNodeRect.left + firstNodeRect.width / 2 - formulaRect.left;
+      const right = lastNodeRect.left + lastNodeRect.width / 2 - formulaRect.left;
+      const nextRail = { left, width: right - left };
+
+      setRail((currentRail) =>
+        currentRail &&
+        Math.abs(currentRail.left - nextRail.left) < 0.5 &&
+        Math.abs(currentRail.width - nextRail.width) < 0.5
+          ? currentRail
+          : nextRail,
+      );
+    };
+
+    updateRail();
+
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", updateRail);
+      return () => window.removeEventListener("resize", updateRail);
+    }
+
+    const resizeObserver = new ResizeObserver(updateRail);
+    resizeObserver.observe(formula);
+    resizeObserver.observe(firstNode);
+    resizeObserver.observe(lastNode);
+    return () => resizeObserver.disconnect();
+  }, []);
+
   return (
     <div
+      ref={formulaRef}
       className="relative hidden h-[82px] xl:block"
       role="group"
       aria-label="选择乘区查看详情"
@@ -594,6 +637,13 @@ function DesktopFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
                 </button>
 
                 <span
+                  ref={
+                    index === 0
+                      ? firstNodeRef
+                      : index === FORMULA_MULTIPLIER_FACTORS.length - 1
+                        ? lastNodeRef
+                        : undefined
+                  }
                   className={`absolute left-1/2 top-[56px] z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border ${
                     selected
                       ? "border-[color:var(--guide-accent)] bg-[#111416]"
@@ -625,7 +675,12 @@ function DesktopFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
           );
         })}
       </div>
-      <div className="absolute right-[4.5%] bottom-0 left-[4.5%] h-px bg-zinc-500" />
+      {rail && (
+        <div
+          className="absolute bottom-0 h-px bg-zinc-500"
+          style={{ left: rail.left, width: rail.width }}
+        />
+      )}
     </div>
   );
 }
