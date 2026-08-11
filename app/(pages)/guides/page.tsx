@@ -58,7 +58,7 @@ export default async function GuidesPage() {
       baseDamageEntries={baseDamageEntries}
       multiplierTargets={multiplierTargets}
       archivePanel={
-        <ul className="space-y-3">
+        <ul className="mx-auto mt-2 flex w-full max-w-xl flex-col items-start gap-3">
           {posts.map((post) => {
             const tags = post.tag
               ? Array.isArray(post.tag)
@@ -67,7 +67,10 @@ export default async function GuidesPage() {
               : [];
 
             return (
-              <li key={post.slug} className="flex items-center gap-2">
+              <li
+                key={post.slug}
+                className="flex max-w-full flex-wrap items-center gap-2 text-left"
+              >
                 {tags.map((tag) => (
                   <Link
                     key={tag}
