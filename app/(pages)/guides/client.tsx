@@ -8,17 +8,38 @@ import type { MultiplierTargetIndexEntry } from "./MultiplierBidirectionalIndex"
 
 type GuideModule = "multiplier" | "season-talents" | "archive";
 
+const GUIDE_MODULE_STORAGE_KEY = "nzm-wiki:guides:active-module";
+
 const MODULES: readonly { id: GuideModule; label: string }[] = [
   { id: "multiplier", label: "游戏乘区" },
   { id: "season-talents", label: "赛季天赋" },
   { id: "archive", label: "文章归档" },
 ];
 
-function getModuleFromHash(): GuideModule {
+function isGuideModule(value: string | null): value is GuideModule {
+  return MODULES.some((module) => module.id === value);
+}
+
+function getModuleFromHash(): GuideModule | null {
   const hash = window.location.hash.slice(1);
-  return MODULES.some((module) => module.id === hash)
-    ? (hash as GuideModule)
-    : "multiplier";
+  return isGuideModule(hash) ? hash : null;
+}
+
+function getRememberedModule(): GuideModule {
+  try {
+    const rememberedModule = window.localStorage.getItem(GUIDE_MODULE_STORAGE_KEY);
+    return isGuideModule(rememberedModule) ? rememberedModule : "multiplier";
+  } catch {
+    return "multiplier";
+  }
+}
+
+function rememberModule(module: GuideModule) {
+  try {
+    window.localStorage.setItem(GUIDE_MODULE_STORAGE_KEY, module);
+  } catch {
+    // localStorage 不可用时仍保留当前会话内的选择。
+  }
 }
 
 export default function GuidesPageClient({
@@ -33,19 +54,25 @@ export default function GuidesPageClient({
   const [activeModule, setActiveModule] = useState<GuideModule>("multiplier");
 
   useEffect(() => {
-    const syncModuleFromHash = () => setActiveModule(getModuleFromHash());
-    syncModuleFromHash();
-    window.addEventListener("hashchange", syncModuleFromHash);
-    window.addEventListener("popstate", syncModuleFromHash);
+    const syncModule = () => {
+      const nextModule = getModuleFromHash() ?? getRememberedModule();
+      setActiveModule(nextModule);
+      rememberModule(nextModule);
+    };
+
+    syncModule();
+    window.addEventListener("hashchange", syncModule);
+    window.addEventListener("popstate", syncModule);
     return () => {
-      window.removeEventListener("hashchange", syncModuleFromHash);
-      window.removeEventListener("popstate", syncModuleFromHash);
+      window.removeEventListener("hashchange", syncModule);
+      window.removeEventListener("popstate", syncModule);
     };
   }, []);
 
   const selectModule = useCallback((module: GuideModule) => {
     window.history.pushState(null, "", `#${module}`);
     setActiveModule(module);
+    rememberModule(module);
   }, []);
 
   return (
