@@ -1,6 +1,5 @@
+import { CardDetailPage } from "@/components/CardDetailPage";
 import { getMDXList, getMDXDetail } from "@/lib/mdx";
-import { BuffDetail } from "@/components/BuffCard";
-import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -33,26 +32,5 @@ export default async function CardPage({
 }) {
   const { slug } = await params;
   const slugPath = slug.map(decodeURIComponent).join("/");
-  const { metadata } = getMDXDetail("cards", slugPath);
-
-  return (
-    <div className="mx-auto max-w-6xl p-10">
-      {metadata.title && (
-        <h1 className="text-2xl font-bold text-foreground mb-6">
-          {metadata.title}
-        </h1>
-      )}
-      <BuffDetail
-        name={metadata.title as string}
-        icon={metadata.icon as string}
-        type={metadata.type as "buff" | "debuff"}
-        effect={metadata.effect as string}
-      >
-        <MultiplierProviderPanel
-          source={{ type: "card", slug: slugPath }}
-          className="mt-3"
-        />
-      </BuffDetail>
-    </div>
-  );
+  return <CardDetailPage slug={slugPath} />;
 }

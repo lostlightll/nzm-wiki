@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { getAssetPath } from "@/lib/path";
 import cardsData from "@/data/cards-data.json";
@@ -176,38 +177,35 @@ export function BuffDetail({
   effect,
   children,
 }: BuffDetailProps) {
-  const styles = TYPE_STYLES[type];
-  const typeLabel = type === "buff" ? "增益" : "减益";
+  const typeLabel = type === "buff" ? "增益卡片" : "减益卡片";
   const badgeStyle =
     type === "buff"
-      ? "bg-green-500/20 text-green-400 border-green-500/30"
-      : "bg-red-500/20 text-red-400 border-red-500/30";
-  const calloutStyle =
-    type === "buff"
-      ? "bg-green-500/10 border-green-500/30"
-      : "bg-red-500/10 border-red-500/30";
+      ? "border-amber-400/40 bg-amber-400/10 text-amber-200"
+      : "border-rose-400/40 bg-rose-400/10 text-rose-200";
 
   return (
-    <div className="max-w-[960px] not-prose">
-      <div
-        className={`relative rounded-xl overflow-hidden border-2 ${styles.border} ${styles.bg}`}
-        style={{ aspectRatio: "960/1266" }}
-      >
-        <img src={getAssetPath(icon)} alt={name} className="w-full h-full m-0" />
+    <section className="not-prose grid max-w-5xl overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/70 md:grid-cols-[280px_minmax(0,1fr)]">
+      <div className="flex items-center justify-center border-b border-zinc-700 bg-zinc-950/55 p-5 md:border-r md:border-b-0">
+        <div className="relative aspect-[960/1266] w-full max-w-60 overflow-hidden rounded-md shadow-xl shadow-black/30">
+          <Image
+            src={getAssetPath(icon)}
+            alt={name}
+            fill
+            sizes="240px"
+            className="object-contain"
+          />
+        </div>
       </div>
-      <div
-        className={`mt-3 overflow-hidden rounded-xl border ${calloutStyle} px-4 py-3`}
-      >
-        <p className="text-sm text-foreground leading-relaxed m-0">{effect}</p>
-      </div>
-      {children}
-      <div className="mt-3 flex items-center gap-2">
-        <span
-          className={`inline-block px-2 py-0.5 text-xs font-medium rounded border ${badgeStyle}`}
-        >
+      <div className="min-w-0 p-5 sm:p-7">
+        <span className={`inline-flex rounded border px-2.5 py-1 text-sm font-medium ${badgeStyle}`}>
           {typeLabel}
         </span>
+        <h2 className="mt-4 text-2xl font-bold text-zinc-50">{name}</h2>
+        <p className="mt-5 border-t border-zinc-700 pt-5 text-base leading-7 text-zinc-100">
+          {effect}
+        </p>
+        {children}
       </div>
-    </div>
+    </section>
   );
 }
