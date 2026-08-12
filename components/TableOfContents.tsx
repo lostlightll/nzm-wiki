@@ -38,6 +38,8 @@ export function TableOfContents({ enabled = true }: TableOfContentsProps) {
       });
     });
 
+    // Headings are external DOM state that is only available after mount.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHeadings(items);
 
     const observer = new IntersectionObserver(

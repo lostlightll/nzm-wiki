@@ -97,14 +97,14 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
   const [editorUrl, setEditorUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // 打开时检测当前页面的编辑链接
-  useEffect(() => {
-    if (isOpen) {
-      setGithubEditUrl(getGitHubEditUrl());
-      setGithubCommitsUrl(getGitHubCommitsUrl());
-      setEditorUrl(getEditorUrl());
-    }
-  }, [isOpen]);
+  const openPalette = useCallback(() => {
+    setQuery("");
+    setSelectedIndex(0);
+    setGithubEditUrl(getGitHubEditUrl());
+    setGithubCommitsUrl(getGitHubCommitsUrl());
+    setEditorUrl(getEditorUrl());
+    setIsOpen(true);
+  }, []);
 
   // 合并命令列表（包括动态命令）
   const allCommands = useMemo(() => {
@@ -164,27 +164,29 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
       // Ctrl+Shift+P 或 Cmd+Shift+P
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === "p") {
         e.preventDefault();
-        setIsOpen((prev) => !prev);
+        if (isOpen) {
+          setIsOpen(false);
+        } else {
+          openPalette();
+        }
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [isOpen, openPalette]);
 
   // 打开时聚焦
   useEffect(() => {
     if (isOpen) {
-      setQuery("");
-      setSelectedIndex(0);
       setTimeout(() => inputRef.current?.focus(), 50);
     }
   }, [isOpen]);
 
-  // 选中项变化时重置
-  useEffect(() => {
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
     setSelectedIndex(0);
-  }, [query]);
+  };
 
   const executeCommand = useCallback(
     (cmd: Command) => {
@@ -240,7 +242,7 @@ export function CommandPalette({ commands }: CommandPaletteProps) {
             ref={inputRef}
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={handleQueryChange}
             onKeyDown={handleKeyDown}
             placeholder="输入命令..."
             className="flex-1 bg-transparent text-sm text-zinc-200 outline-none placeholder:text-zinc-600"

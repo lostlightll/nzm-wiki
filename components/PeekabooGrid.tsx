@@ -53,12 +53,13 @@ export function PeekabooGrid() {
         ))}
       </div>
 
-      <ImageViewer
-        images={images}
-        initialIndex={selectedIndex}
-        isOpen={viewerOpen}
-        onClose={() => setViewerOpen(false)}
-      />
+      {viewerOpen && (
+        <ImageViewer
+          images={images}
+          initialIndex={selectedIndex}
+          onClose={() => setViewerOpen(false)}
+        />
+      )}
     </>
   );
 }

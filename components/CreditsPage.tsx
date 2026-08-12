@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Credit } from "@/components/Credit";
 import { getAssetPath } from "@/lib/path";

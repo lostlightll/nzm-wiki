@@ -32,29 +32,18 @@ function TooltipButton({ onClick, tooltip, children, className = "", tooltipPosi
 interface ImageViewerProps {
   images: { src: string; pngSrc?: string; alt?: string }[];
   initialIndex?: number;
-  isOpen: boolean;
   onClose: () => void;
 }
 
-export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: ImageViewerProps) {
+export function ImageViewer({ images, initialIndex = 0, onClose }: ImageViewerProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [scale, setScale] = useState(100);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const currentImage = images[currentIndex];
 
-  // Reset state when opened
-  useEffect(() => {
-    if (isOpen) {
-      setCurrentIndex(initialIndex);
-      setScale(100);
-    }
-  }, [isOpen, initialIndex]);
-
   // Keyboard navigation
   useEffect(() => {
-    if (!isOpen) return;
-
     const handleKeyDown = (e: KeyboardEvent) => {
       switch (e.key) {
         case "Escape":
@@ -88,12 +77,10 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, images.length, onClose]);
+  }, [images.length, onClose]);
 
   // Mouse wheel zoom
   useEffect(() => {
-    if (!isOpen) return;
-
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       const delta = e.deltaY > 0 ? -25 : 25;
@@ -118,23 +105,19 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
       }
       document.removeEventListener("wheel", handleGlobalWheel);
     };
-  }, [isOpen]);
+  }, []);
 
   // Prevent body scroll when open
   useEffect(() => {
-    if (isOpen) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    } else {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-    }
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+
     return () => {
       document.body.style.overflow = "";
       document.body.style.paddingRight = "";
     };
-  }, [isOpen]);
+  }, []);
 
   // Handle fullscreen
   const handleFullscreen = useCallback(() => {
@@ -175,8 +158,6 @@ export function ImageViewer({ images, initialIndex = 0, isOpen, onClose }: Image
     link.click();
     document.body.removeChild(link);
   }, [currentImage]);
-
-  if (!isOpen) return null;
 
   const btnClass = "rounded p-1.5 text-zinc-400 hover:bg-zinc-700 hover:text-white transition-colors";
 
