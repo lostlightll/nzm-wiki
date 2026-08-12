@@ -14684,7 +14684,7 @@
           },
           "EnergyObtainType": 0,
           "EquipAttrList": "",
-          "GetDescription": " 飓风来袭 无坚不摧",
+          "GetDescription": "",
           "GoldWeaponBackground": {
             "AssetPathName": "None",
             "SubPathString": ""
@@ -14836,7 +14836,7 @@
           },
           "EnergyObtainType": 0,
           "EquipAttrList": "",
-          "GetDescription": " 飓风来袭 无坚不摧",
+          "GetDescription": "",
           "GoldWeaponBackground": {
             "AssetPathName": "None",
             "SubPathString": ""
@@ -18949,11 +18949,11 @@
           "ModelOffset": {
             "X": 0,
             "Y": 0,
-            "Z": -0.508242
+            "Z": 7.5
           },
           "ModelRotation": {
             "Pitch": 0,
-            "Roll": 270,
+            "Roll": 0,
             "Yaw": 90
           },
           "NotGetAttrDisplayList": "102017:36;113021:0.01",
@@ -19098,11 +19098,11 @@
           "ModelOffset": {
             "X": 2.078719,
             "Y": 0.264191,
-            "Z": 3.896321
+            "Z": 5
           },
           "ModelRotation": {
             "Pitch": 0,
-            "Roll": 270,
+            "Roll": 0,
             "Yaw": 90
           },
           "NotGetAttrDisplayList": "102017:36;113021:0.01",
@@ -19196,7 +19196,7 @@
           },
           "EnergyObtainType": 0,
           "EquipAttrList": "",
-          "GetDescription": "金光一闪  百炼钢管",
+          "GetDescription": "",
           "GoldWeaponBackground": {
             "AssetPathName": "None",
             "SubPathString": ""
@@ -19634,7 +19634,7 @@
           },
           "EnergyObtainType": 0,
           "EquipAttrList": "",
-          "GetDescription": "死神之刃 骑士之魂",
+          "GetDescription": "",
           "GoldWeaponBackground": {
             "AssetPathName": "None",
             "SubPathString": ""
@@ -25293,14 +25293,14 @@
           "Mod_Num": 4,
           "ModelID": 20013000062,
           "ModelOffset": {
-            "X": -0.46123,
+            "X": -0.46,
             "Y": 0,
-            "Z": -6.455173
+            "Z": 2
           },
           "ModelRotation": {
-            "Pitch": -12.48645,
-            "Roll": -89.53467,
-            "Yaw": -86.99426
+            "Pitch": 137.44003,
+            "Roll": -89.53466,
+            "Yaw": -86.994255
           },
           "NotGetAttrDisplayList": "102017:388;202574:0.6;202572:2;202575:1.2",
           "PVEAttr": "",
@@ -40442,18 +40442,18 @@
           "DamageSourceType": 1,
           "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
           "Description": "樱之殇_轻击1",
-          "ElementAddRate": 0.72,
+          "ElementAddRate": 0.576,
           "ElementDebuffTypeID": 0,
           "ElementType": "EElementEffectType::EDamageType_Shock",
           "EnableAttributes": [],
           "EnableWeaknessDamage": true,
-          "FleshDamageBase": 9,
+          "FleshDamageBase": 7.2,
           "FriendlyCoefficient": -1,
           "HpCalBase": 0,
-          "HpCalScale": 1.35,
+          "HpCalScale": 1.08,
           "HpFloatCoef": 0,
-          "HurtableBase": 9,
-          "ImpulseBase": 45.2,
+          "HurtableBase": 7.2,
+          "ImpulseBase": 36,
           "KnockUpDistance1": 0,
           "KnockUpDistance2": 0,
           "KnockUpLevel1": 0,
@@ -40488,7 +40488,7 @@
             }
           ],
           "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
-          "ToughnessBase": 11.3,
+          "ToughnessBase": 9,
           "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
           "ToughnessScale": 0,
           "WeaknessDamageAddScale": 0.2,
@@ -40510,18 +40510,18 @@
           "DamageSourceType": 1,
           "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
           "Description": "樱之殇_轻击2",
-          "ElementAddRate": 0.84,
+          "ElementAddRate": 0.612,
           "ElementDebuffTypeID": 0,
           "ElementType": "EElementEffectType::EDamageType_Shock",
           "EnableAttributes": [],
           "EnableWeaknessDamage": true,
-          "FleshDamageBase": 10.5,
+          "FleshDamageBase": 7.7,
           "FriendlyCoefficient": -1,
           "HpCalBase": 0,
-          "HpCalScale": 1.575,
+          "HpCalScale": 1.148,
           "HpFloatCoef": 0,
-          "HurtableBase": 10.5,
-          "ImpulseBase": 52.4,
+          "HurtableBase": 7.7,
+          "ImpulseBase": 38.4,
           "KnockUpDistance1": 0,
           "KnockUpDistance2": 0,
           "KnockUpLevel1": 0,
@@ -40556,7 +40556,7 @@
             }
           ],
           "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
-          "ToughnessBase": 13.1,
+          "ToughnessBase": 9.6,
           "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
           "ToughnessScale": 0,
           "WeaknessDamageAddScale": 0.2,
@@ -58804,13 +58804,13 @@
           "ElementType": "EElementEffectType::EDamageType_Shock",
           "EnableAttributes": [],
           "EnableWeaknessDamage": true,
-          "FleshDamageBase": 9,
+          "FleshDamageBase": 7.2,
           "FriendlyCoefficient": -1,
           "HpCalBase": 0,
-          "HpCalScale": 1.35,
+          "HpCalScale": 1.08,
           "HpFloatCoef": 0,
-          "HurtableBase": 9,
-          "ImpulseBase": 45.2,
+          "HurtableBase": 7.2,
+          "ImpulseBase": 36,
           "KnockUpDistance1": 0,
           "KnockUpDistance2": 0,
           "KnockUpLevel1": 0,
@@ -58845,7 +58845,7 @@
             }
           ],
           "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
-          "ToughnessBase": 11.3,
+          "ToughnessBase": 9,
           "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
           "ToughnessScale": 0,
           "WeaknessDamageAddScale": 0.2,
@@ -58872,13 +58872,13 @@
           "ElementType": "EElementEffectType::EDamageType_Shock",
           "EnableAttributes": [],
           "EnableWeaknessDamage": true,
-          "FleshDamageBase": 10.5,
+          "FleshDamageBase": 7.7,
           "FriendlyCoefficient": -1,
           "HpCalBase": 0,
-          "HpCalScale": 1.575,
+          "HpCalScale": 1.148,
           "HpFloatCoef": 0,
-          "HurtableBase": 10.5,
-          "ImpulseBase": 52.4,
+          "HurtableBase": 7.7,
+          "ImpulseBase": 38.4,
           "KnockUpDistance1": 0,
           "KnockUpDistance2": 0,
           "KnockUpLevel1": 0,
@@ -58913,7 +58913,7 @@
             }
           ],
           "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
-          "ToughnessBase": 13.1,
+          "ToughnessBase": 9.6,
           "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
           "ToughnessScale": 0,
           "WeaknessDamageAddScale": 0.2,
@@ -65837,15 +65837,15 @@
       "source_path": "DataTables/GPActiveSkillDataTable.json"
     },
     "item": {
-      "sha256": "83ae13aa677e503fa48bcf8013c24a31483e5551fe39b2f33993d6aa58617dec",
+      "sha256": "804267c1dc858c4424fb3277a64117dbdc9dc3c3213502881c1b856095ae812f",
       "source_path": "DataTables/LuaDataTable/WeaponItemConfigTable.json"
     },
     "numerical-lc": {
-      "sha256": "69d3ee244d4620fd0e8211efa1c0b26c1a43ecfc03574d6adfd58cd3d30814b9",
+      "sha256": "f8ae0530160539c0504530cc459a66589939649709ecd2ac6ac1f373bc048622",
       "source_path": "DataTables/numerical_config_composite.json"
     },
     "numerical-td": {
-      "sha256": "c9d0162d54c4ce61240381c664235108ef947e89bdba41b3d778e0bacf015cf8",
+      "sha256": "e5361b10181db2b30894509156609e16c1f5d15b37b9e565398a40fa5b96cebc",
       "source_path": "DataTables/TD_numerical_config_composite.json"
     },
     "skill-pve": {
