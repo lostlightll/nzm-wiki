@@ -2284,7 +2284,7 @@
             "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
             "attributeLabel": "武器伤害增加",
             "modifierTypeId": "weapon-damage",
-            "baseValue": 2.2,
+            "baseValue": 3,
             "coefficient": 0,
             "operation": "B1"
           }
@@ -3022,7 +3022,7 @@
             "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
             "attributeLabel": "武器伤害增加",
             "modifierTypeId": "weapon-damage",
-            "baseValue": 0.9,
+            "baseValue": 1,
             "coefficient": 0,
             "operation": "B1"
           },
@@ -3032,7 +3032,7 @@
             "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
             "attributeLabel": "武器伤害增加",
             "modifierTypeId": "weapon-damage",
-            "baseValue": 0.1,
+            "baseValue": 0.4,
             "coefficient": 0,
             "operation": "B1"
           }
@@ -3174,7 +3174,7 @@
         "attributeLabel": "武器伤害增加",
         "modifierTypeId": "weapon-damage",
         "baseValue": 0,
-        "coefficient": 0.14,
+        "coefficient": 0.21,
         "operation": "B1"
       }
     ]
