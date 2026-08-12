@@ -6556,6 +6556,207 @@
       }
     },
     {
+      "id": "perk:20704040478",
+      "label": "爆炸直击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040478",
+        "slot": 4,
+        "slug": "爆炸直击",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ],
+      "evidence": {
+        "kind": "reviewed-override",
+        "passiveSkillId": "1317231001",
+        "descriptionRowKey": "1317231001_1",
+        "gpModifierIds": [
+          "130044410"
+        ],
+        "basis": [
+          "GPModularGameplayEffectTable 将 1317231001 映射到 MGE_1315231001；该 MGE 的 uexp 字节码与默认属性均命中 ModifierID 130044410。",
+          "Numerical 130044410 写入 WeaponHitDamageRatio；临时 refs 的 Numerical 描述仍为直击伤害 +300%，季中 HuntingGroundRoguelike OverrideDesc 已更新为 +400%，因此 Numerical 仅作为通道证据，展示值以季中卡牌表为准。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "130044410",
+            "rowKey": "130044410_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+            "attributeLabel": "射击伤害",
+            "modifierTypeId": "weapon-hit-damage",
+            "baseValue": 3,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20704040480",
+      "label": "超强技能",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040480",
+        "slot": 4,
+        "slug": "超强技能",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ],
+      "evidence": {
+        "kind": "reviewed-override",
+        "passiveSkillId": "1317233001",
+        "descriptionRowKey": "1317233001_1",
+        "gpModifierIds": [
+          "130044412"
+        ],
+        "basis": [
+          "GPModularGameplayEffectTable 将 1317233001 映射到 MGE_1315233001；该 MGE 的 uexp 字节码命中 ModifierID 130044412。",
+          "Numerical 130044412 同时写入 WeaponSkillDamageRatio 与 SkillDamageRatio，对应卡牌描述中的全技能伤害。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "130044412",
+            "rowKey": "130044412_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
+            "attributeLabel": "武器技能伤害",
+            "modifierTypeId": "weapon-skill-damage",
+            "baseValue": 4,
+            "coefficient": 0,
+            "operation": "B1"
+          },
+          {
+            "modifierId": "130044412",
+            "rowKey": "130044412_1_1",
+            "attributeName": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+            "attributeLabel": "非武器技能伤害",
+            "modifierTypeId": "skill-damage",
+            "baseValue": 4,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20704040482",
+      "label": "暴力切换",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040482",
+        "slot": 4,
+        "slug": "暴力切换",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ],
+      "evidence": {
+        "kind": "reviewed-override",
+        "passiveSkillId": "1317235001",
+        "descriptionRowKey": "1317235001_1",
+        "gpModifierIds": [
+          "130044311"
+        ],
+        "basis": [
+          "GPModularGameplayEffectTable 将 1317235001 映射到 MGE_1315235001；该 MGE 监听 WeaponFireModeChanged 并调用 MGEAddBuff。",
+          "Buff_Rogue_1378044311 名称为模式切换增幅、持续 6 秒，其 GPModifyIDs 包含 130044311；Numerical 130044311 写入 WeaponDamageRatio。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "130044311",
+            "rowKey": "130044311_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 2.5,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20704040483",
+      "label": "隐匿出击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040483",
+        "slot": 4,
+        "slug": "隐匿出击",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ],
+      "evidence": {
+        "kind": "reviewed-override",
+        "passiveSkillId": "1317236001",
+        "descriptionRowKey": "1317236001_1",
+        "gpModifierIds": [
+          "130044030"
+        ],
+        "basis": [
+          "GPModularGameplayEffectTable 将 1317236001 映射到 MGE_1315236001；其效果描述与肉鸽隐身 Buff 的破隐增伤机制一致。",
+          "Buff_Rogue_1378044030 名称为肉鸽隐身、持续 3 秒，其 GPModifyIDs 包含 130044030；Numerical 130044030 写入 AllDamageRatio。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "130044030",
+            "rowKey": "130044030_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+            "attributeLabel": "全伤害",
+            "modifierTypeId": "all-damage",
+            "baseValue": 3,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20704040484",
+      "label": "爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040484",
+        "slot": 4,
+        "slug": "爆发",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "critical"
+      ],
+      "evidence": {
+        "kind": "reviewed-override",
+        "passiveSkillId": "1317238001",
+        "descriptionRowKey": "1317238001_1",
+        "gpModifierIds": [
+          "130044413"
+        ],
+        "basis": [
+          "GPModularGameplayEffectTable 将 1317238001 映射到 MGE_1315238001；该 MGE 的 uexp 字节码命中 ModifierID 130044413，并限定榴弹与发射器武器类型。",
+          "Numerical 130044413 写入 CriticalDamageRatio，对应爆炸弹暴击伤害增幅。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "130044413",
+            "rowKey": "130044413_1_0",
+            "attributeName": "GPAttributeSetCritical.CriticalDamageRatio",
+            "attributeLabel": "暴击伤害",
+            "modifierTypeId": "critical",
+            "baseValue": 4,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
+    {
       "id": "weapon:Z型步枪:神射心流",
       "label": "Z型步枪·神射心流",
       "source": {
@@ -10170,24 +10371,6 @@
       }
     },
     {
-      "id": "perk:20704040478",
-      "label": "爆炸直击",
-      "source": {
-        "type": "perk",
-        "itemId": "20704040478",
-        "slot": 4,
-        "slug": "爆炸直击",
-        "overlimitCard": true
-      },
-      "reasonCode": "missing-structured-evidence",
-      "reason": "超限描述包含直击倍率，但当前 MGE 链没有 GPModifier/Numerical 证据，暂不建立乘区关系。",
-      "evidence": {
-        "passiveSkillId": "1317231001",
-        "descriptionRowKey": "1317231001_1",
-        "gpModifierIds": []
-      }
-    },
-    {
       "id": "perk:20704040479",
       "label": "飞弹狂射",
       "source": {
@@ -10206,24 +10389,6 @@
       }
     },
     {
-      "id": "perk:20704040480",
-      "label": "超强技能",
-      "source": {
-        "type": "perk",
-        "itemId": "20704040480",
-        "slot": 4,
-        "slug": "超强技能",
-        "overlimitCard": true
-      },
-      "reasonCode": "missing-structured-evidence",
-      "reason": "超限描述包含全技能倍率，但当前 MGE 链没有 GPModifier/Numerical 证据，暂不建立乘区关系。",
-      "evidence": {
-        "passiveSkillId": "1317233001",
-        "descriptionRowKey": "1317233001_1",
-        "gpModifierIds": []
-      }
-    },
-    {
       "id": "perk:20704040481",
       "label": "暴击飞弹",
       "source": {
@@ -10238,60 +10403,6 @@
       "evidence": {
         "passiveSkillId": "1317234001",
         "descriptionRowKey": "1317234001_1",
-        "gpModifierIds": []
-      }
-    },
-    {
-      "id": "perk:20704040482",
-      "label": "暴力切换",
-      "source": {
-        "type": "perk",
-        "itemId": "20704040482",
-        "slot": 4,
-        "slug": "暴力切换",
-        "overlimitCard": true
-      },
-      "reasonCode": "missing-structured-evidence",
-      "reason": "超限描述包含武器射击倍率，但当前 MGE 链没有 GPModifier/Numerical 证据，暂不建立乘区关系。",
-      "evidence": {
-        "passiveSkillId": "1317235001",
-        "descriptionRowKey": "1317235001_1",
-        "gpModifierIds": []
-      }
-    },
-    {
-      "id": "perk:20704040483",
-      "label": "隐匿出击",
-      "source": {
-        "type": "perk",
-        "itemId": "20704040483",
-        "slot": 4,
-        "slug": "隐匿出击",
-        "overlimitCard": true
-      },
-      "reasonCode": "missing-structured-evidence",
-      "reason": "超限描述包含破隐后伤害倍率，但当前 MGE 链没有 GPModifier/Numerical 证据，暂不建立乘区关系。",
-      "evidence": {
-        "passiveSkillId": "1317236001",
-        "descriptionRowKey": "1317236001_1",
-        "gpModifierIds": []
-      }
-    },
-    {
-      "id": "perk:20704040484",
-      "label": "爆发",
-      "source": {
-        "type": "perk",
-        "itemId": "20704040484",
-        "slot": 4,
-        "slug": "爆发",
-        "overlimitCard": true
-      },
-      "reasonCode": "missing-structured-evidence",
-      "reason": "超限描述包含爆炸弹暴击倍率，但当前 MGE 链没有 GPModifier/Numerical 证据，暂不建立乘区关系。",
-      "evidence": {
-        "passiveSkillId": "1317238001",
-        "descriptionRowKey": "1317238001_1",
         "gpModifierIds": []
       }
     },

@@ -38,6 +38,34 @@ test("shared effects keep perk and overlimit placements separate", () => {
   assert.notEqual(perk[0].sourceHref, card[0].sourceHref);
 });
 
+test("midseason super perks mirror multiplier channels to overlimit cards", () => {
+  const cases = [
+    ["20704040478", "爆炸直击", ["weapon-hit-damage"]],
+    ["20704040480", "超强技能", ["weapon-skill-damage", "skill-damage"]],
+    ["20704040482", "暴力切换", ["weapon-damage"]],
+    ["20704040483", "隐匿出击", ["all-damage"]],
+    ["20704040484", "爆发", ["critical"]],
+  ] as const;
+
+  for (const [id, slug, expectedModifierTypes] of cases) {
+    const perk = getProviderRelationsForSource({ type: "perk", slot: 4, slug });
+    const card = getProviderRelationsForSource({ type: "overlimit-card", id });
+
+    assert.deepEqual(
+      perk.map((relation) => relation.modifierTypeId),
+      [...expectedModifierTypes],
+    );
+    assert.deepEqual(
+      card.map((relation) => relation.modifierTypeId),
+      [...expectedModifierTypes],
+    );
+    assert.ok(perk.every((relation) => relation.sourceHref?.startsWith("/perks/")));
+    assert.ok(
+      card.every((relation) => relation.sourceHref === `/overlimit/${id}#multiplier-provider`),
+    );
+  }
+});
+
 test("icepoint passive links to element and dilution factors", () => {
   const relations = getProviderRelationsForSource({
     type: "weapon",
