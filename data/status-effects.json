@@ -9452,9 +9452,9 @@
     },
     {
       "buffId": 110100085,
-      "name": "渐入佳境",
+      "name": "致命节拍",
       "names": [
-        "渐入佳境"
+        "致命节拍"
       ],
       "descriptions": [
         "持续开火时，每射出一发子弹，武器伤害增加0.4%，最多叠加80层，停止开火时层数清空"
@@ -9472,7 +9472,7 @@
       "variants": [
         {
           "rowName": "BD_Common_1315125001",
-          "name": "渐入佳境",
+          "name": "致命节拍",
           "description": "持续开火时，每射出一发子弹，武器伤害增加0.4%，最多叠加80层，停止开火时层数清空",
           "category": "PositiveModifier",
           "polarity": "positive",
@@ -9497,7 +9497,7 @@
         "死神时刻"
       ],
       "descriptions": [
-        "每命中8次，发射一枚导弹。"
+        "每命中一定次数，发射一枚导弹。"
       ],
       "categories": [
         "PositiveModifier"
@@ -9513,7 +9513,7 @@
         {
           "rowName": "BD_Common_1318110001",
           "name": "死神时刻",
-          "description": "每命中8次，发射一枚导弹。",
+          "description": "每命中一定次数，发射一枚导弹。",
           "category": "PositiveModifier",
           "polarity": "positive",
           "displayMask": 1,
@@ -39369,7 +39369,7 @@
           "operation": "B1",
           "baseValue": 0.1,
           "coefficient": 0,
-          "description": "武器技能_冲锋小电驴_移速增加"
+          "description": "武器技能_往日速递_移速增加"
         }
       ],
       "120500060": [

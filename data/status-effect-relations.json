@@ -8,8 +8,8 @@
     "buffTable": "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json"
   },
   "summary": {
-    "relations": 46,
-    "sources": 46,
+    "relations": 45,
+    "sources": 45,
     "overlimitCards": 22
   },
   "relations": [
@@ -676,24 +676,6 @@
         "kind": "mge-add-buff",
         "passiveSkillId": "1315190001",
         "mgeId": "1315190001",
-        "addCall": "CallFunc_MGEAddBuff_ReturnValue"
-      }
-    },
-    {
-      "sourceId": "perk:20703040358",
-      "sourceType": "perk",
-      "itemId": "20703040358",
-      "title": "泡爆增伤",
-      "slot": 3,
-      "slug": "泡爆增伤",
-      "overlimitCard": false,
-      "buffId": 160401003,
-      "rowName": "BD_Common_1316184001",
-      "configName": "BD_Common_1316184001",
-      "evidence": {
-        "kind": "mge-add-buff",
-        "passiveSkillId": "1315192001",
-        "mgeId": "1315192001",
         "addCall": "CallFunc_MGEAddBuff_ReturnValue"
       }
     },
