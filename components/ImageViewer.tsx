@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { createPortal } from "react-dom";
 import { X, ChevronLeft, ChevronRight, Minus, Plus, Download, Maximize2 } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
 
@@ -19,7 +20,12 @@ function TooltipButton({ onClick, tooltip, children, className = "", tooltipPosi
 
   return (
     <div className="relative group">
-      <button onClick={onClick} className={className}>
+      <button
+        type="button"
+        aria-label={tooltip}
+        onClick={onClick}
+        className={className}
+      >
         {children}
       </button>
       <div className={`absolute left-1/2 -translate-x-1/2 px-2 py-1 text-xs text-zinc-200 bg-zinc-900 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ${tooltipClass}`}>
@@ -161,10 +167,10 @@ export function ImageViewer({ images, initialIndex = 0, onClose }: ImageViewerPr
 
   const btnClass = "rounded p-1.5 text-zinc-400 hover:bg-zinc-700 hover:text-white transition-colors";
 
-  return (
+  return createPortal(
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 overflow-hidden"
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 overflow-hidden"
     >
       {/* Close button */}
       <div className="absolute top-4 right-4">
@@ -186,6 +192,8 @@ export function ImageViewer({ images, initialIndex = 0, onClose }: ImageViewerPr
           if (e.target === e.currentTarget) onClose();
         }}
       >
+        {/* Native img preserves direct CSS zoom behavior for the full-resolution viewer. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={getAssetPath(currentImage.src)}
           alt={currentImage.alt || ""}
@@ -265,6 +273,7 @@ export function ImageViewer({ images, initialIndex = 0, onClose }: ImageViewerPr
           {currentIndex + 1} / {images.length}
         </span>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

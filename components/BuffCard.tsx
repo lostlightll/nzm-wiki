@@ -39,10 +39,12 @@ function Card({ name, slug, icon, type, effect }: BuffCardProps) {
       className={`group block relative overflow-hidden rounded-lg border-2 ${styles.border} ${styles.hoverBorder} ${styles.bg} transition-all hover:scale-105 hover:shadow-lg hover:shadow-black/20 no-underline`}
       style={{ width: "var(--card-width, 240px)", aspectRatio: "960/1266" }}
     >
-      <img
+      <Image
         src={getAssetPath(icon)}
         alt={name}
-        className="absolute inset-0 w-full h-full"
+        fill
+        sizes="var(--card-width, 240px)"
+        className="object-cover"
       />
       <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
         <div className="text-sm text-zinc-100 font-semibold mb-1">{name}</div>

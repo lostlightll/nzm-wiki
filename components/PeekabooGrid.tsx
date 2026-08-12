@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { getAssetPath } from "@/lib/path";
 import { ImageViewer } from "./ImageViewer";
@@ -40,11 +41,12 @@ export function PeekabooGrid() {
             className="flex flex-col items-center cursor-pointer group"
             onClick={() => handleImageClick(index)}
           >
-            <img
+            <Image
               src={getAssetPath(image.src)}
               alt={image.alt}
               width={512}
               height={512}
+              sizes="(min-width: 1024px) 10vw, (min-width: 768px) 12.5vw, (min-width: 640px) 16.67vw, 25vw"
               className="w-full h-auto rounded transition-transform group-hover:scale-105"
             />
             {/* 我决定不显示 caption */}
