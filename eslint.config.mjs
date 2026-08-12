@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Git-ignored personal workspace and local artifacts.
+    "MD/**",
   ]),
 ]);
 
