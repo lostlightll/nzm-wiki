@@ -52,7 +52,7 @@ pnpm build      # 生产构建
 完整致谢请查看 [致谢页面](https://lostlightll.github.io/nzm-wiki/credits)。
 
 - [@qiekn](https://github.com/qiekn) — 原始项目 [nzm-wiki](https://github.com/qiekn/nzm-wiki)，本项目 Fork 自此
-- [@YousaHay](https://github.com/YousaHay) — 解包思路与交流
+- [@Sh4ck1e](https://github.com/Sh4ck1e) — 项目维护者
 - [抖音 PinkGame](https://www.douyin.com/user/MS4wLjABAAAAOpgmjGpIJfgLikMiBBV2iD8IcS-7DjOmqjpMxmoG5S14MqnBKu5sQK5k72Rpxytd) — 解包思路与交流
 - [抖音 阿秋](https://www.douyin.com/user/MS4wLjABAAAAuR82F-F_U4ywRmTAAMtc5ssvsFdhZn62EF4f7YWJe1M) — 游戏内实测数据
 - [B站 乐意如多](https://space.bilibili.com/52220706)

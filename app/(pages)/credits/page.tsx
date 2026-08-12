@@ -139,6 +139,12 @@ const CONTENT_CONTRIBUTORS = [
     title: "GitHub issue 反馈",
   },
   {
+    platform: "github" as const,
+    author: "Perpetual-Memories",
+    url: "https://github.com/lostlightll/nzm-wiki/issues/11",
+    title: "GitHub issue 反馈",
+  },
+  {
     platform: "bilibili" as const,
     author: "逆战未来",
     url: "https://space.bilibili.com/6131035",
