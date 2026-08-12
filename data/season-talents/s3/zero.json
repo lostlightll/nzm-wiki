@@ -239,7 +239,7 @@
       "powerful": true,
       "icon": "/webp/images/season-talents/s3/zero/T_Talent_S3_WZPP_03.webp",
       "descriptions": [
-        "泡泡砸地或持续时间结束时，会在目标点/怪物脚下生成一片冰冻区域。冰冻区域大小半径<qiangdiao>8米</>，持续时间<qiangdiao>4秒</>。\n对处在冰风暴区域内的敌人，每<qiangdiao>0.5秒</>造成<qiangdiao>15%</>攻击力伤害；冰冻区域存在时，获得<qiangdiao>急速狂热</>效果。\n对Boss及部分泡泡无法控制的怪物释放<qiangdiao>零点</>时，直接在玩家当前位置直接生成冰冻区域；"
+        "泡泡砸地或持续时间结束时，会在目标点/怪物脚下生成一片冰冻区域。冰冻区域大小半径<qiangdiao>8米</>，持续时间<qiangdiao>7秒</>，并会持续概率对敌人施加冰缓减速效果。\n对处在冰冻区域内的敌人，每<qiangdiao>0.5秒</>造成<qiangdiao>15%</>攻击力伤害；冰冻区域存在时，获得<qiangdiao>急速狂热</>效果。\n对Boss及部分泡泡无法控制的怪物释放<qiangdiao>零点</>时，直接在目标脚下生成冰冻区域。"
       ]
     },
     {
