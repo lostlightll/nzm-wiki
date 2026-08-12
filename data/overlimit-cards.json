@@ -28,7 +28,7 @@
   {
     "id": "20703040446",
     "name": "技能属性",
-    "description": "武器技能伤害+60%",
+    "description": "全技能伤害+60%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
     "quality": 4,
     "weight": 6,
@@ -236,7 +236,7 @@
   {
     "id": "20703040454",
     "name": "技能属性",
-    "description": "武器技能伤害+60%",
+    "description": "全技能伤害+60%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "weight": 6,
@@ -369,7 +369,7 @@
     "description": "弹射-1，弹道+2",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315126001.png",
     "quality": 4,
-    "weight": 2,
+    "weight": 3,
     "slot": 4,
     "weaponType": [],
     "weaponItems": [
@@ -645,11 +645,7 @@
     "quality": 4,
     "weight": 2,
     "slot": 4,
-    "weaponType": [
-      4,
-      8,
-      16
-    ],
+    "weaponType": [],
     "weaponItems": [],
     "weaponNames": [],
     "tags": [
@@ -673,7 +669,7 @@
     "description": "单次攻击命中多个目标可以为武器技能充能3%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316115001.png",
     "quality": 4,
-    "weight": 2,
+    "weight": 3,
     "slot": 4,
     "weaponType": [],
     "weaponItems": [],
@@ -1272,12 +1268,7 @@
     "quality": 4,
     "weight": 2,
     "slot": 4,
-    "weaponType": [
-      4,
-      8,
-      12,
-      16
-    ],
+    "weaponType": [],
     "weaponItems": [],
     "weaponNames": [],
     "tags": [
@@ -2223,23 +2214,11 @@
     "description": "模式1开火20%概率弹道+1，模式2开火20%概率弹道+2。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
-    "weight": 2,
+    "weight": 3,
     "slot": 4,
     "weaponType": [],
-    "weaponItems": [
-      20005000018,
-      20006000004,
-      20006000006,
-      20001000024,
-      20103000010
-    ],
-    "weaponNames": [
-      "元宵来袭",
-      "幽冥毒王",
-      "幽冥毒皇",
-      "精绝兽神",
-      "飓风之龙"
-    ],
+    "weaponItems": [],
+    "weaponNames": [],
     "tags": [
       {
         "id": "1000",
@@ -2439,7 +2418,7 @@
     "description": "加入4张红扭蛋，抽到红扭蛋后且获得极速狂热效果。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312032005.png",
     "quality": 4,
-    "weight": 2,
+    "weight": 3,
     "slot": 4,
     "weaponType": [],
     "weaponItems": [],
@@ -2969,7 +2948,7 @@
   {
     "id": "20703040380",
     "name": "弹药续杯",
-    "description": "消耗5%弹药再抽1次奖（CD4秒）。",
+    "description": "消耗5%弹药再抽1次奖（CD15秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313193001.png",
     "quality": 4,
     "weight": 6,
@@ -3681,7 +3660,7 @@
     "description": "暴击时，向身前投射一个毒液罐，爆炸留下毒属性伤害区域并且减速敌人（CD20秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
-    "weight": 2,
+    "weight": 3,
     "slot": 4,
     "weaponType": [],
     "weaponItems": [],
@@ -3724,6 +3703,266 @@
         "name": "狙击",
         "icon": "",
         "tone": "E008"
+      }
+    ]
+  },
+  {
+    "id": "20704040476",
+    "name": "游击飞弹",
+    "description": "每移动10m可以发射2发跟踪导弹。",
+    "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
+    "quality": 5,
+    "weight": 1,
+    "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
+    "weaponNames": [],
+    "tags": [
+      {
+        "id": "1003",
+        "name": "游击",
+        "icon": "",
+        "tone": "E012"
+      },
+      {
+        "id": "1007",
+        "name": "共振",
+        "icon": "",
+        "tone": "E015"
+      }
+    ]
+  },
+  {
+    "id": "20704040477",
+    "name": "弱点必暴",
+    "description": "命中弱点的暴击概率提升至100%。",
+    "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
+    "quality": 4,
+    "weight": 1,
+    "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
+    "weaponNames": [],
+    "tags": [
+      {
+        "id": "1000",
+        "name": "弹药",
+        "icon": "",
+        "tone": "E011"
+      },
+      {
+        "id": "1005",
+        "name": "狙击",
+        "icon": "",
+        "tone": "E008"
+      }
+    ]
+  },
+  {
+    "id": "20704040478",
+    "name": "爆炸直击",
+    "description": "全部爆炸弹的直击伤害提升400%，爆炸范围缩减50%。",
+    "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
+    "quality": 5,
+    "weight": 1,
+    "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
+    "weaponNames": [],
+    "tags": [
+      {
+        "id": "1008",
+        "name": "狂战",
+        "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+        "tone": "E007"
+      },
+      {
+        "id": "1004",
+        "name": "壁垒",
+        "icon": "",
+        "tone": "E014"
+      }
+    ]
+  },
+  {
+    "id": "20704040479",
+    "name": "飞弹狂射",
+    "description": "每造成10次武器伤害可以发射2发跟踪导弹(CD1秒)。",
+    "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
+    "quality": 5,
+    "weight": 1,
+    "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
+    "weaponNames": [],
+    "tags": [
+      {
+        "id": "1005",
+        "name": "狙击",
+        "icon": "",
+        "tone": "E008"
+      },
+      {
+        "id": "1002",
+        "name": "异化",
+        "icon": "",
+        "tone": "E010"
+      }
+    ]
+  },
+  {
+    "id": "20704040480",
+    "name": "超强技能",
+    "description": "全技能伤害+400%。",
+    "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
+    "quality": 5,
+    "weight": 1,
+    "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
+    "weaponNames": [],
+    "tags": [
+      {
+        "id": "1001",
+        "name": "技战",
+        "icon": "",
+        "tone": "E009"
+      },
+      {
+        "id": "1007",
+        "name": "共振",
+        "icon": "",
+        "tone": "E015"
+      }
+    ]
+  },
+  {
+    "id": "20704040481",
+    "name": "暴击飞弹",
+    "description": "每次暴击可以发射1发跟踪导弹(CD0.5秒)。",
+    "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
+    "quality": 5,
+    "weight": 1,
+    "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
+    "weaponNames": [],
+    "tags": [
+      {
+        "id": "1007",
+        "name": "共振",
+        "icon": "",
+        "tone": "E015"
+      },
+      {
+        "id": "1006",
+        "name": "爆韧",
+        "icon": "",
+        "tone": "E013"
+      }
+    ]
+  },
+  {
+    "id": "20704040482",
+    "name": "暴力切换",
+    "description": "每次切换开火模式，获得250%武器射击伤害提升，持续6秒。",
+    "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
+    "quality": 5,
+    "weight": 1,
+    "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
+    "weaponNames": [],
+    "tags": [
+      {
+        "id": "1004",
+        "name": "壁垒",
+        "icon": "",
+        "tone": "E014"
+      },
+      {
+        "id": "1000",
+        "name": "弹药",
+        "icon": "",
+        "tone": "E011"
+      }
+    ]
+  },
+  {
+    "id": "20704040483",
+    "name": "隐匿出击",
+    "description": "每隔20秒，进入隐身。破隐后，3秒内伤害提升300%。",
+    "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
+    "quality": 5,
+    "weight": 1,
+    "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
+    "weaponNames": [],
+    "tags": [
+      {
+        "id": "1001",
+        "name": "技战",
+        "icon": "",
+        "tone": "E009"
+      },
+      {
+        "id": "1003",
+        "name": "游击",
+        "icon": "",
+        "tone": "E012"
+      }
+    ]
+  },
+  {
+    "id": "20704040484",
+    "name": "爆发",
+    "description": "爆炸弹的暴击伤害提升+400%。",
+    "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
+    "quality": 5,
+    "weight": 1,
+    "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
+    "weaponNames": [],
+    "tags": [
+      {
+        "id": "1002",
+        "name": "异化",
+        "icon": "",
+        "tone": "E010"
+      },
+      {
+        "id": "1006",
+        "name": "爆韧",
+        "icon": "",
+        "tone": "E013"
+      }
+    ]
+  },
+  {
+    "id": "20704040485",
+    "name": "近战冲击",
+    "description": "近战命中目标50%概率产生冲击波(CD1秒)。",
+    "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314193001.png",
+    "quality": 5,
+    "weight": 1,
+    "slot": 4,
+    "weaponType": [],
+    "weaponItems": [],
+    "weaponNames": [],
+    "tags": [
+      {
+        "id": "1000",
+        "name": "弹药",
+        "icon": "",
+        "tone": "E011"
+      },
+      {
+        "id": "1008",
+        "name": "狂战",
+        "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+        "tone": "E007"
       }
     ]
   }

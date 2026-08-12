@@ -10134,6 +10134,186 @@
       }
     },
     {
+      "id": "perk:20704040476",
+      "label": "游击飞弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040476",
+        "slot": 4,
+        "slug": "游击飞弹",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立跟踪导弹，不提供可注册的角色伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1317229001",
+        "descriptionRowKey": "1317229001_1",
+        "gpModifierIds": []
+      }
+    },
+    {
+      "id": "perk:20704040477",
+      "label": "弱点必暴",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040477",
+        "slot": 4,
+        "slug": "弱点必暴",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果修改暴击概率，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1317230001",
+        "descriptionRowKey": "1317230001_1",
+        "gpModifierIds": []
+      }
+    },
+    {
+      "id": "perk:20704040478",
+      "label": "爆炸直击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040478",
+        "slot": 4,
+        "slug": "爆炸直击",
+        "overlimitCard": true
+      },
+      "reasonCode": "missing-structured-evidence",
+      "reason": "超限描述包含直击倍率，但当前 MGE 链没有 GPModifier/Numerical 证据，暂不建立乘区关系。",
+      "evidence": {
+        "passiveSkillId": "1317231001",
+        "descriptionRowKey": "1317231001_1",
+        "gpModifierIds": []
+      }
+    },
+    {
+      "id": "perk:20704040479",
+      "label": "飞弹狂射",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040479",
+        "slot": 4,
+        "slug": "飞弹狂射",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立跟踪导弹，不提供可注册的角色伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1317232001",
+        "descriptionRowKey": "1317232001_1",
+        "gpModifierIds": []
+      }
+    },
+    {
+      "id": "perk:20704040480",
+      "label": "超强技能",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040480",
+        "slot": 4,
+        "slug": "超强技能",
+        "overlimitCard": true
+      },
+      "reasonCode": "missing-structured-evidence",
+      "reason": "超限描述包含全技能倍率，但当前 MGE 链没有 GPModifier/Numerical 证据，暂不建立乘区关系。",
+      "evidence": {
+        "passiveSkillId": "1317233001",
+        "descriptionRowKey": "1317233001_1",
+        "gpModifierIds": []
+      }
+    },
+    {
+      "id": "perk:20704040481",
+      "label": "暴击飞弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040481",
+        "slot": 4,
+        "slug": "暴击飞弹",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立跟踪导弹，不提供可注册的角色伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1317234001",
+        "descriptionRowKey": "1317234001_1",
+        "gpModifierIds": []
+      }
+    },
+    {
+      "id": "perk:20704040482",
+      "label": "暴力切换",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040482",
+        "slot": 4,
+        "slug": "暴力切换",
+        "overlimitCard": true
+      },
+      "reasonCode": "missing-structured-evidence",
+      "reason": "超限描述包含武器射击倍率，但当前 MGE 链没有 GPModifier/Numerical 证据，暂不建立乘区关系。",
+      "evidence": {
+        "passiveSkillId": "1317235001",
+        "descriptionRowKey": "1317235001_1",
+        "gpModifierIds": []
+      }
+    },
+    {
+      "id": "perk:20704040483",
+      "label": "隐匿出击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040483",
+        "slot": 4,
+        "slug": "隐匿出击",
+        "overlimitCard": true
+      },
+      "reasonCode": "missing-structured-evidence",
+      "reason": "超限描述包含破隐后伤害倍率，但当前 MGE 链没有 GPModifier/Numerical 证据，暂不建立乘区关系。",
+      "evidence": {
+        "passiveSkillId": "1317236001",
+        "descriptionRowKey": "1317236001_1",
+        "gpModifierIds": []
+      }
+    },
+    {
+      "id": "perk:20704040484",
+      "label": "爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040484",
+        "slot": 4,
+        "slug": "爆发",
+        "overlimitCard": true
+      },
+      "reasonCode": "missing-structured-evidence",
+      "reason": "超限描述包含爆炸弹暴击倍率，但当前 MGE 链没有 GPModifier/Numerical 证据，暂不建立乘区关系。",
+      "evidence": {
+        "passiveSkillId": "1317238001",
+        "descriptionRowKey": "1317238001_1",
+        "gpModifierIds": []
+      }
+    },
+    {
+      "id": "perk:20704040485",
+      "label": "近战冲击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040485",
+        "slot": 4,
+        "slug": "近战冲击",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立冲击波，不提供可注册的角色伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1317240001",
+        "descriptionRowKey": "1317240001_1",
+        "gpModifierIds": []
+      }
+    },
+    {
       "id": "season:s3:grappling-hook:3003301",
       "label": "质量过载",
       "source": {
