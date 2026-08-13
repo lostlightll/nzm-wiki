@@ -1,0 +1,63 @@
+---
+schema_version: 2
+title: 拂晓炎翎
+keywords:
+  - 拂晓炎陵
+game_modes:
+  - lc
+  - td
+prototype_id: "20013000067"
+item_id: "20113000067"
+use_type: 近战武器
+weapon_type: 近战武器
+element: 电弧
+rarity: 传说
+damage_sources:
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300671
+        level: 1
+      asc_type_id: "373"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300672
+        level: 1
+      asc_type_id: "373"
+  - id: heavy-attack
+    name: 重击
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300670
+        level: 1
+      asc_type_id: "373"
+weapon_type_id: 13
+active_skill_id: 0
+magazine: 30
+total_ammo: 5030
+accuracy: 0
+stability: 0
+scope: 不可开镜
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+changeClip:
+  timeBase: 0.9
+  reloadRecovery: 0
+---
+<WeaponSkill>
+  <PassiveSkill
+    name="超载闪电"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20013000067.png"
+  >
+    所有电属性伤害提升<Yellow>5%</Yellow>，近距离武器伤害提升<Yellow>5%</Yellow>。
+  </PassiveSkill>
+</WeaponSkill>

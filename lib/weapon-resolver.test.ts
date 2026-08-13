@@ -1102,5 +1102,5 @@ test("all weapon files are unified V2 documents declaring LC and TD", () => {
     assert.equal(raw.schema_version, 2, `${directory}/${file}`);
     assert.deepEqual(raw.game_modes, ["lc", "td"], `${directory}/${file}`);
   }
-  assert.equal(files.length, 112);
+  assert.equal(files.length, 113);
 });

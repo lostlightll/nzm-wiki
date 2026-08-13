@@ -4878,6 +4878,52 @@
       }
     },
     {
+      "id": "weapon:拂晓炎翎:超载闪电",
+      "label": "拂晓炎翎·超载闪电",
+      "source": {
+        "type": "weapon",
+        "slug": "拂晓炎翎",
+        "skillName": "超载闪电",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "weapon-damage"
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "descriptionRowKeys": [
+          "weapon:1013067001_1"
+        ],
+        "gpModifierIds": [
+          "121300670",
+          "121300671"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "121300670",
+            "rowKey": "121300670_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.ShockDamageRatio",
+            "attributeLabel": "电击伤害",
+            "modifierTypeId": "element",
+            "baseValue": 0.05,
+            "coefficient": 0,
+            "operation": "B1"
+          },
+          {
+            "modifierId": "121300671",
+            "rowKey": "121300671_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害增加",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 0.05,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
+      }
+    },
+    {
       "id": "weapon:钢脊:腐蚀增伤",
       "label": "钢脊·腐蚀增伤",
       "source": {

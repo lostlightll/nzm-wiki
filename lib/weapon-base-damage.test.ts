@@ -40,10 +40,10 @@ test("weapon base damage index includes every non-melee-weapon source", async ()
   ]);
   const entries = buildWeaponBaseDamageIndex({ lc: lcWeapons, td: tdWeapons });
 
-  assert.equal(attackSourceCount(lcWeapons), 284);
-  assert.equal(attackSourceCount(tdWeapons), 284);
-  assert.equal(meleeWeaponAttackSourceCount(lcWeapons), 155);
-  assert.equal(meleeWeaponAttackSourceCount(tdWeapons), 155);
+  assert.equal(attackSourceCount(lcWeapons), 287);
+  assert.equal(attackSourceCount(tdWeapons), 287);
+  assert.equal(meleeWeaponAttackSourceCount(lcWeapons), 158);
+  assert.equal(meleeWeaponAttackSourceCount(tdWeapons), 158);
   assert.equal(entries.filter((entry) => entry.modes.lc).length, 129);
   assert.equal(entries.filter((entry) => entry.modes.td).length, 129);
   assert.equal(new Set(entries.map((entry) => entry.id)).size, entries.length);

@@ -78,6 +78,20 @@ test("icepoint passive links to element and dilution factors", () => {
   );
 });
 
+test("dawn flame feather passive follows its audited attribute channels", () => {
+  const relations = getProviderRelationsForSource({
+    type: "weapon",
+    slug: "拂晓炎翎",
+  });
+  assert.deepEqual(
+    relations.map((relation) => [relation.modifierTypeId, relation.factorId]),
+    [
+      ["element", "element"],
+      ["weapon-damage", "dilution"],
+    ],
+  );
+});
+
 test("weapon settlement profile resolves applicable modifier channels", () => {
   const profile = buildDamageProfile({
     section: "fire_mode",
