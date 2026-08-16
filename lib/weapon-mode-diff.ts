@@ -4,9 +4,16 @@ import type {
   ResolvedWeapon,
 } from "./weapon-resolver";
 import type { DamageSection } from "./weapon-source-v2";
+import {
+  getHealthSettlementDefinition,
+  type WeaponHealthSettlementType,
+} from "./weapon-health-settlement";
 
 export type WeaponModeDiffField =
   | "availability"
+  | "health.type"
+  | "health.scale"
+  | "health.base"
   | "damage.base"
   | "damage.toughness"
   | "element"
@@ -28,14 +35,48 @@ export interface WeaponModeDiffRow {
   readonly tdField?: ResolvedField<unknown>;
   readonly lcPellets?: number;
   readonly tdPellets?: number;
+  readonly lcHealthType?: WeaponHealthSettlementType;
+  readonly tdHealthType?: WeaponHealthSettlementType;
 }
 
 interface ComparedField {
   readonly field: Exclude<WeaponModeDiffField, "availability">;
   readonly read: (source: ResolvedDamageSource) => ResolvedField<unknown>;
+  readonly include?: (
+    lcSource: ResolvedDamageSource,
+    tdSource: ResolvedDamageSource,
+  ) => boolean;
+}
+
+function healthType(
+  source: ResolvedDamageSource,
+): WeaponHealthSettlementType | undefined {
+  return source.health.type.state === "resolved"
+    ? source.health.type.value
+    : undefined;
+}
+
+function isRecovery(source: ResolvedDamageSource): boolean {
+  const type = healthType(source);
+  return Boolean(
+    type && getHealthSettlementDefinition(type).kind === "recovery",
+  );
 }
 
 const COMPARED_FIELDS: readonly ComparedField[] = [
+  { field: "health.type", read: (source) => source.health.type },
+  {
+    field: "health.scale",
+    read: (source) => source.health.scale,
+    include: (lcSource, tdSource) =>
+      isRecovery(lcSource) || isRecovery(tdSource),
+  },
+  {
+    field: "health.base",
+    read: (source) => source.health.base,
+    include: (lcSource, tdSource) =>
+      isRecovery(lcSource) || isRecovery(tdSource),
+  },
   { field: "damage.base", read: (source) => source.damage.base },
   { field: "damage.toughness", read: (source) => source.damage.toughness },
   { field: "element", read: (source) => source.element },
@@ -99,6 +140,7 @@ export function buildWeaponModeDiff(
     }
 
     for (const compared of COMPARED_FIELDS) {
+      if (compared.include && !compared.include(lcSource, tdSource)) continue;
       const lcField = compared.read(lcSource);
       const tdField = compared.read(tdSource);
       if (fieldIdentity(lcField) === fieldIdentity(tdField)) continue;
@@ -113,6 +155,8 @@ export function buildWeaponModeDiff(
         tdField,
         lcPellets: resolvedNumber(lcSource.fire.pellets),
         tdPellets: resolvedNumber(tdSource.fire.pellets),
+        lcHealthType: healthType(lcSource),
+        tdHealthType: healthType(tdSource),
       });
     }
   }
@@ -124,6 +168,9 @@ export const WEAPON_MODE_DIFF_LABELS: Readonly<
   Record<WeaponModeDiffField, string>
 > = Object.freeze({
   availability: "来源可用性",
+  "health.type": "生命结算类型",
+  "health.scale": "生命结算比例",
+  "health.base": "生命结算固定值",
   "damage.base": "基础伤害",
   "damage.toughness": "破韧伤害",
   element: "元素",
@@ -136,16 +183,15 @@ export const WEAPON_MODE_DIFF_LABELS: Readonly<
 });
 
 export function getWeaponModeDiffFieldLabel(row: WeaponModeDiffRow): string {
+  if (
+    row.field === "damage.base" ||
+    row.field === "health.scale" ||
+    row.field === "health.base"
+  ) {
+    const type = row.lcHealthType ?? row.tdHealthType;
+    if (type) return getHealthSettlementDefinition(type).label;
+  }
   if (row.field !== "damage.base") return WEAPON_MODE_DIFF_LABELS[row.field];
 
-  if (row.sourceSection === "dot") return "持续伤害";
-  if (row.sourceName.includes("命中")) return "命中伤害";
-  if (row.sourceName.includes("爆炸")) return "爆炸伤害";
-  if (row.sourceSection === "melee") return "近战伤害";
-  if (row.sourceSection === "fire_mode") return "射击伤害";
-  if (row.sourceSection === "variant") return "变体伤害";
-  if (row.sourceSection === "skill" || row.sourceSection === "special") {
-    return "技能伤害";
-  }
   return WEAPON_MODE_DIFF_LABELS[row.field];
 }

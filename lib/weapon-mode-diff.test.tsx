@@ -65,16 +65,39 @@ test("差异表使用 LC x500、TD x400 并包含横向滚动容器", async () =
   assert.match(markup, /min-w-\[34rem\]/);
 });
 
-test("基础伤害字段按来源语义显示具体伤害类型", async () => {
+test("恢复差异按 Settlement 名称和百分比展示", async () => {
+  const { lc, td } = await modes("夜影之逝");
+  const changedTd = structuredClone(td);
+  const recovery = changedTd.damageSources.find(
+    (source) => source.id === "jin-zhan-hui-xue",
+  );
+  assert.ok(recovery);
+  recovery.health.scale.value = 0.4;
+
+  const row = buildWeaponModeDiff(lc, changedTd).find(
+    (item) =>
+      item.sourceId === "jin-zhan-hui-xue" && item.field === "health.scale",
+  );
+  assert.ok(row);
+  assert.equal(getWeaponModeDiffFieldLabel(row), "护盾恢复");
+
+  const markup = renderToStaticMarkup(
+    <WeaponModeDiff lcWeapon={lc} tdWeapon={changedTd} />,
+  );
+  assert.match(markup, />30%</);
+  assert.match(markup, />40%</);
+});
+
+test("基础伤害字段按 Health Settlement 显示具体伤害类型", async () => {
   const cases = [
     ["幽冥毒皇", "grenade-hit", "命中伤害"],
-    ["精绝兽神", "mi-fa-liu-dan", "技能伤害"],
-    ["精绝兽神", "mi-fa-liu-dan-fen-lie-tan", "技能伤害"],
+    ["精绝兽神", "mi-fa-liu-dan", "武器技能伤害"],
+    ["精绝兽神", "mi-fa-liu-dan-fen-lie-tan", "武器技能伤害"],
     ["飓风之龙", "dragon-flame-explosion", "爆炸伤害"],
-    ["Bully", "wu-ren-ji-she-ji", "技能伤害"],
+    ["Bully", "wu-ren-ji-she-ji", "命中伤害"],
     ["幽冥毒王", "du-chi-chi-xu-shang-hai", "持续伤害"],
     ["夜影之逝", "you-jian-jin-zhan", "近战伤害"],
-    ["死神猎手", "pu-tong-she-ji", "射击伤害"],
+    ["死神猎手", "pu-tong-she-ji", "命中伤害"],
   ] as const;
 
   for (const [slug, sourceId, expected] of cases) {

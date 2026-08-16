@@ -63,6 +63,7 @@ export interface ConsumerDamageSource {
     readonly flesh: ConsumerField<number>;
     readonly hurtable: ConsumerField<number>;
   };
+  readonly health: ConsumerFields<ResolvedDamageSource["health"]>;
   readonly element: ConsumerField<ElementType>;
   readonly elementAddRate: ConsumerField<number>;
   readonly weaknessMultiplier: ConsumerField<number>;
@@ -196,11 +197,14 @@ function isAttackSource(
   );
 }
 
-function hasDisplayableDamage(
-  source: Pick<ResolvedDamageSource, "damage">,
+function hasDisplayableSettlement(
+  source: Pick<ResolvedDamageSource, "damage" | "health">,
 ): boolean {
-  return Object.values(source.damage).some(
-    (field) => field.state === "resolved" || field.state === "zero",
+  return (
+    Object.values(source.damage).some(
+      (field) => field.state === "resolved" || field.state === "zero",
+    ) ||
+    source.health.type.state === "resolved"
   );
 }
 
@@ -314,6 +318,7 @@ export function toConsumerDamageSource(
     section: source.section,
     label: source.label,
     damage: toConsumerFields(source.damage),
+    health: toConsumerFields(source.health),
     element: toConsumerField(source.element),
     elementAddRate: toConsumerField(source.elementAddRate),
     weaknessMultiplier: toConsumerField(source.weaknessMultiplier),
@@ -403,7 +408,7 @@ export function toWeaponDetailData(weapon: ResolvedWeapon): WeaponDetailData {
     officialRadar: toConsumerFields(weapon.officialRadar),
     changeClip: toConsumerFields(weapon.changeClip),
     damageSources: weapon.damageSources
-      .filter(hasDisplayableDamage)
+      .filter(hasDisplayableSettlement)
       .map(toConsumerDamageSource),
     mainSourceId: weapon.mainSourceId,
     activeSkill: toConsumerActiveSkill(weapon.activeSkill),

@@ -9,6 +9,10 @@ import type { ElementType } from "@/types";
 import { getAssetPath } from "@/lib/path";
 import { buildDamageProfile } from "@/lib/multiplier-data";
 import {
+  getHealthSettlementDefinition,
+  type WeaponHealthSettlementType,
+} from "@/lib/weapon-health-settlement";
+import {
   getFullReloadTime,
   getResolvedFieldValue,
   type ConsumerDamageSource,
@@ -134,6 +138,40 @@ function isMeleeWeapon(weapon: {
     weapon.useType === "近战武器" ||
     getResolvedFieldValue(weapon.weaponType) === "近战武器"
   );
+}
+
+function getHealthSettlementType(
+  source: ConsumerDamageSource,
+): WeaponHealthSettlementType | undefined {
+  return getResolvedFieldValue(source.health.type);
+}
+
+function formatHealthSettlementValue(
+  source: ConsumerDamageSource,
+  hpMultiplier = 500,
+): string {
+  const type = getHealthSettlementType(source);
+  if (!type) return "-";
+  const definition = getHealthSettlementDefinition(type);
+  if (definition.valueFormat === "attack-coefficient") {
+    return formatDamage(source, hpMultiplier);
+  }
+
+  const scale = getResolvedFieldValue(source.health.scale);
+  const base = getResolvedFieldValue(source.health.base);
+  if (definition.valueFormat === "percentage") {
+    const values = [
+      scale !== undefined ? `${formatPercent(scale)}%` : undefined,
+      base !== undefined && base !== 0 ? `${formatPrecise(base)} 点` : undefined,
+    ].filter((value): value is string => value !== undefined);
+    return values.join(" + ") || "-";
+  }
+
+  const values = [
+    scale !== undefined ? `系数 ${formatPrecise(scale)}` : undefined,
+    base !== undefined && base !== 0 ? `固定值 ${formatPrecise(base)}` : undefined,
+  ].filter((value): value is string => value !== undefined);
+  return values.join(" / ") || "-";
 }
 
 function formatElementRate(source: DisplaySource): string {
@@ -648,6 +686,36 @@ function ModeStats({
   const enableCritical = getResolvedFieldValue(mode.enableCritical) === true;
   const elementAddRate = getResolvedFieldValue(mode.elementAddRate);
   const toughnessType = getResolvedFieldValue(mode.toughness);
+  const healthType = getHealthSettlementType(mode);
+  const healthDefinition = healthType
+    ? getHealthSettlementDefinition(healthType)
+    : undefined;
+
+  if (healthDefinition?.kind === "recovery") {
+    return (
+      <div id={`damage-source-${mode.id}`} className="mb-3 scroll-mt-24">
+        {showName && (
+          <h3 className="mb-1.5 text-sm font-semibold text-zinc-300">
+            {mode.name}
+          </h3>
+        )}
+        <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-sm sm:grid-cols-3">
+          <Stat
+            label={healthDefinition.label}
+            value={formatHealthSettlementValue(mode, hpMultiplier)}
+          />
+          {attackInterval !== undefined && (
+            <Stat label="结算间隔" value={attackIntervalDisplay} />
+          )}
+          {attackCount !== undefined && (
+            <Stat label="结算次数" value={String(attackCount)} />
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  const healthLabel = healthDefinition?.label ?? "伤害";
 
   return (
     <div id={`damage-source-${mode.id}`} className="mb-3 scroll-mt-24">
@@ -688,7 +756,7 @@ function ModeStats({
         </div>
       ) : (interval === undefined || interval === 0) && attackInterval === undefined ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-          <Stat label={mode.label || "命中伤害"} value={formatDamage(mode, hpMultiplier)} />
+          <Stat label={healthLabel} value={formatDamage(mode, hpMultiplier)} />
           <Stat label="单发破韧值" value={formatPrecise(toughness)} />
           <Stat label="弱点倍率" value={enableWeakness ? formatValue(weaknessMultiplier) : "-"} />
           <Stat
@@ -704,7 +772,7 @@ function ModeStats({
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
-          <Stat label={mode.label || "命中伤害"} value={formatDamage(mode, hpMultiplier)} />
+          <Stat label={healthLabel} value={formatDamage(mode, hpMultiplier)} />
           <Stat label="单发破韧值" value={formatPrecise(toughness)} />
           <Stat label="弱点倍率" value={enableWeakness ? formatValue(weaknessMultiplier) : "-"} />
           <Stat
@@ -787,14 +855,26 @@ function SkillSection({
   return (
     <div className="mb-3">
       <h2 className="mb-2 text-sm font-semibold text-zinc-400">
-        技能 / 特殊攻击
+        技能 / 特殊效果
       </h2>
       {visible.map((m) => {
         const base = getResolvedFieldValue(m.damage.base);
         const isVariant = primaryModes.some(
           (primary) => getResolvedFieldValue(primary.damage.base) === base,
         );
-        return <ModeStats key={m.id} mode={m} showName compact={isVariant} hpMultiplier={hpMultiplier} />;
+        const healthType = getHealthSettlementType(m);
+        const isRecovery =
+          healthType !== undefined &&
+          getHealthSettlementDefinition(healthType).kind === "recovery";
+        return (
+          <ModeStats
+            key={m.id}
+            mode={m}
+            showName
+            compact={isVariant && !isRecovery}
+            hpMultiplier={hpMultiplier}
+          />
+        );
       })}
       {collapsible && !expanded && (
         <div className="text-center">
@@ -830,28 +910,7 @@ export function WeaponDetailCard() {
   const rarityKey = rarity ? RARITY_KEY_MAP[rarity] : "common";
   const rarityStyle = RARITY_CARD_STYLES[rarityKey];
 
-  if (!mode) {
-    return (
-      <div className={`rounded-lg border-2 ${rarityStyle.border} ${rarityStyle.bg} p-6`}>
-        <h1 className="text-2xl font-bold text-white">{weapon.title}</h1>
-        <div className="mt-1 text-sm text-zinc-400">{weapon.useType}</div>
-        <div className="relative my-6 h-32 w-full">
-          <Image
-            src={getAssetPath(`/icons/weapons/normal/${weapon.title}.png`)}
-            alt={weapon.title || ""}
-            width={320}
-            height={160}
-            className="mx-auto object-contain"
-          />
-        </div>
-        <div className="border-t border-zinc-700 pt-4 text-sm text-zinc-500">
-          不可攻击
-        </div>
-      </div>
-    );
-  }
-
-  const element = getResolvedFieldValue(mode.element);
+  const element = getResolvedFieldValue(mode?.element ?? weapon.element);
   const elementIcon = element ? ELEMENT_ICONS[element] : undefined;
   const tags = weapon.tags;
   const hpMul = weapon.table === "td" ? 400 : 500;
@@ -861,17 +920,19 @@ export function WeaponDetailCard() {
   const fireModes = weapon.damageSources.filter(
     (source) => source.section === "fire_mode",
   );
-  const primaryModes = fireModes.length > 0 ? fireModes : [mode];
+  const primaryModes = fireModes.length > 0 ? fireModes : mode ? [mode] : [];
   const primaryModeIds = new Set(primaryModes.map((source) => source.id));
-  const extraModes = weapon.damageSources.filter(
-    (source) => !primaryModeIds.has(source.id),
-  );
   const meleeModes = isMelee
     ? weapon.damageSources.filter(
         (source) =>
           source.section === "melee" || source.section === "variant",
       )
     : [];
+  const meleeModeIds = new Set(meleeModes.map((source) => source.id));
+  const specialModes = weapon.damageSources.filter(
+    (source) =>
+      !primaryModeIds.has(source.id) && !meleeModeIds.has(source.id),
+  );
   const chargeTime = weapon.activeSkill
     ? getResolvedFieldValue(weapon.activeSkill.chargeTime)
     : undefined;
@@ -936,7 +997,11 @@ export function WeaponDetailCard() {
       </div>
 
       {/* 射击模式 */}
-      {isMelee ? (
+      {!mode ? (
+        <div className="mb-3 border-t border-zinc-700 pt-4 text-sm text-zinc-500">
+          不可攻击
+        </div>
+      ) : isMelee && meleeModes.length > 0 ? (
         <div>
           <MeleeDetailStats sources={meleeModes} hpMultiplier={hpMul} />
           {SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS && (
@@ -969,24 +1034,24 @@ export function WeaponDetailCard() {
           <h2
             className={
               "mb-2 text-sm font-semibold " +
-              (extraModes.length > 0
+              (specialModes.length > 0
                 ? "text-zinc-300"
                 : "text-zinc-400")
             }
           >
-            {primaryModes[0].name}
+            {primaryModes[0]!.name}
           </h2>
-          <ModeStats mode={primaryModes[0]} showName={false} hpMultiplier={hpMul} />
+          <ModeStats mode={primaryModes[0]!} showName={false} hpMultiplier={hpMul} />
         </div>
       )}
 
-      {/* 技能 / 特殊攻击 */}
-      {!isMelee && extraModes.length > 0 && (
-        <SkillSection modes={extraModes} primaryModes={primaryModes} hpMultiplier={hpMul} />
+      {/* 技能 / 特殊效果 */}
+      {specialModes.length > 0 && (
+        <SkillSection modes={specialModes} primaryModes={primaryModes} hpMultiplier={hpMul} />
       )}
 
       {/* 武器衰减 */}
-      {!isMelee && mode.attenuation.status === "applicable" && (
+      {!isMelee && mode?.attenuation.status === "applicable" && (
         <div className="mb-4">
           <h2 className="mb-2 text-sm font-semibold text-zinc-400">武器衰减</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">

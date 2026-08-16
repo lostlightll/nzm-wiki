@@ -5,6 +5,10 @@ import {
   type WeaponModeDiffField,
   type WeaponModeDiffRow,
 } from "@/lib/weapon-mode-diff";
+import {
+  getHealthSettlementDefinition,
+  type WeaponHealthSettlementType,
+} from "@/lib/weapon-health-settlement";
 
 const STATE_LABELS = {
   not_applicable: "不适用",
@@ -34,12 +38,34 @@ function formatField(
   key: WeaponModeDiffField,
   table: "lc" | "td",
   pellets?: number,
+  healthType?: WeaponHealthSettlementType,
 ): string {
   if (!field) return "无来源";
   if (field.state !== "resolved" && field.state !== "zero") {
     return STATE_LABELS[field.state];
   }
   const value = field.value;
+  if (key === "health.type" && typeof value === "string") {
+    return getHealthSettlementDefinition(
+      value as WeaponHealthSettlementType,
+    ).label;
+  }
+  if (key === "health.scale" && typeof value === "number") {
+    const definition = healthType
+      ? getHealthSettlementDefinition(healthType)
+      : undefined;
+    return definition?.valueFormat === "percentage"
+      ? `${formatNumber(value * 100)}%`
+      : `系数 ${formatNumber(value)}`;
+  }
+  if (key === "health.base" && typeof value === "number") {
+    const definition = healthType
+      ? getHealthSettlementDefinition(healthType)
+      : undefined;
+    return definition?.valueFormat === "raw"
+      ? `固定值 ${formatNumber(value)}`
+      : `${formatNumber(value)} 点`;
+  }
   if (key === "damage.base" && typeof value === "number") {
     return formatDamage(value, table, pellets);
   }
@@ -68,6 +94,7 @@ function cellValue(row: WeaponModeDiffRow, table: "lc" | "td"): string {
     row.field,
     table,
     table === "lc" ? row.lcPellets : row.tdPellets,
+    table === "lc" ? row.lcHealthType : row.tdHealthType,
   );
 }
 

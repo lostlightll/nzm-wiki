@@ -155,9 +155,17 @@ test("pilot main source, LC/TD context, attenuation, and element agree", async (
   const catalog = toWeaponCatalogEntry(gourd);
   assert.equal(gourd.damageSources.length, 1);
   assert.equal(gourd.damageSources[0].damage.base.state, "not_applicable");
+  assert.equal(
+    getResolvedFieldValue(gourd.damageSources[0].health.type),
+    "HealthThenShieldPercentRecover",
+  );
+  assert.equal(getResolvedFieldValue(gourd.damageSources[0].health.scale), 0.24);
   assert.equal(catalog.isAttackCapable, false);
   assert.equal(catalog.mainSource, undefined);
-  assert.deepEqual(toWeaponDetailData(gourd).damageSources, []);
+  assert.deepEqual(
+    toWeaponDetailData(gourd).damageSources.map((source) => source.id),
+    ["he-shui-hui-xue"],
+  );
   assert.equal(createWeaponStat(gourd), null);
   const element = getResolvedFieldValue(catalog.element);
   assert.ok(element);
@@ -249,7 +257,15 @@ test("pilot main source, LC/TD context, attenuation, and element agree", async (
   const nightDetail = toWeaponDetailData(night);
   assert.equal(
     nightDetail.damageSources.some((source) => source.id === "jin-zhan-hui-xue"),
-    false,
+    true,
+  );
+  assert.equal(
+    getResolvedFieldValue(
+      nightDetail.damageSources.find(
+        (source) => source.id === "jin-zhan-hui-xue",
+      )!.health.scale,
+    ),
+    0.3,
   );
   assert.deepEqual(
     toWeaponCatalogEntry(night).meleeSources.map((source) => source.id),
@@ -407,9 +423,10 @@ test("Task 7.7 representative mappings remain fixed across Resolver and consumer
   assert.ok(recovery);
   assert.equal(recovery.name, "回血恢复");
   assert.equal(recovery.damage.base.state, "not_applicable");
+  assert.equal(getResolvedFieldValue(recovery.health.scale), 0.05);
   assert.equal(
     toWeaponDetailData(copper).damageSources.some((source) => source.id === recovery.id),
-    false,
+    true,
   );
   const favoredPool = copper.damageSources.find(
     (source) => source.id === "d-o-t-chi-shang-hai-jian-su-cha-jian",
