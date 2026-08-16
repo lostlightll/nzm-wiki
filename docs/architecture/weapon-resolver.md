@@ -26,7 +26,7 @@ createResolvedWeaponSnapshot(resolved, { sourceIdMap })
 `ResolvedWeapon` 不继承旧 `Weapon`，也不提供含义模糊的 `range`。它保存：
 
 - 有序的 `damageSources` 与明确的 `mainSourceId`。
-- Numerical 伤害、元素、弱点、暴击、破韧和 Settlement。
+- Numerical 生命结算类型、`HpCalScale` / `HpCalBase`、伤害、恢复、元素、弱点、暴击、破韧和 Settlement。
 - ASC 射击节奏、弹丸、弹药、移动倍率和来源级距离衰减。
 - Feel 换弹、开镜、操作时间、后坐力和散布。
 - Item 展示属性与六项官方雷达值。
@@ -48,11 +48,12 @@ createResolvedWeaponSnapshot(resolved, { sourceIdMap })
 
 ## Settlement
 
-Resolver 对完整 `TagName` 做精确匹配，不做后缀猜测。Settlement 决定五类伤害值和元素积累是否适用；不适用字段即使原始行为零也不会被解释为“确定为零”。
+Resolver 对完整 `TagName` 做精确匹配，不做后缀猜测。每行最多允许一个已登记的 `Numerical.SettlementType.Health.*`，其定义统一提供伤害/恢复分类、中文名称和数值格式。Resolver 为所有已登记 Health Settlement 解析 `HpCalScale` 与 `HpCalBase`；仅伤害类同时投影为 `damage.base`。其他 Settlement 决定破韧等伤害值和元素积累是否适用；不适用字段即使原始行为零也不会被解释为“确定为零”。
 
 以下情况直接失败：
 
 - `Settlements` 缺失、非数组或条目没有非空 `TagName`。
+- 同一行存在多个 Health Settlement。
 - Settlement 适用但必要原始字段缺失或非法。
 - override 试图给不适用的 Settlement 造值。
 
@@ -99,11 +100,11 @@ frontmatter + committed Lock -> resolveWeapon() -> server consumers
 
 Resolver 独占主来源决策：先排除 `damage.base` 不适用的恢复等非攻击结算来源，再选择首个 `fire_mode`，否则选择首个攻击来源。空来源或仅含非攻击结算来源时没有 `mainSourceId`。消费者只能按 `mainSourceId` 精确查找；存在攻击来源却缺失 ID，或 ID 悬空，均是领域不变量错误，禁止再次按 section 或数组位置 fallback。武器级元素优先使用有效主来源元素；不可攻击武器仍保留协议顶层元素，供目录筛选和搜索使用。
 
-`lib/weapon-consumers.ts` 只接受 `ResolvedWeapon`，不得读取 frontmatter、Lock 或 `refs/`。目录视图携带主来源摘要，并为近战额外保留按 MDX 顺序排列的全部 `meleeSources` 摘要；详情视图保留全部标准化 Damage、ASC、Feel、衰减和技能字段。消费者不再暴露旧 `melee.light/heavy` 武器级字段，也不得由 `mainSourceId` 猜出其余近战段。两种客户端视图都删除 `raw`、provenance、diagnostics、override history、原表字段名和来源 key，避免把审计数据序列化到 RSC/client payload。完整审计信息仍保留在服务端 `ResolvedWeapon`。
+`lib/weapon-consumers.ts` 只接受 `ResolvedWeapon`，不得读取 frontmatter、Lock 或 `refs/`。目录视图携带主来源摘要，并为近战额外保留按 MDX 顺序排列的全部 `meleeSources` 摘要；详情视图保留全部标准化 Health Settlement、Damage、ASC、Feel、衰减和技能字段。恢复来源即使没有可展示伤害也必须进入详情投影，目录主来源仍只接受攻击来源。消费者不再暴露旧 `melee.light/heavy` 武器级字段，也不得由 `mainSourceId` 猜出其余近战段。两种客户端视图都删除 `raw`、provenance、diagnostics、override history、原表字段名和来源 key，避免把审计数据序列化到 RSC/client payload。完整审计信息仍保留在服务端 `ResolvedWeapon`。
 
 近战展示保持来源顺序并逐段读取基础伤害、元素异常概率、破韧、弱点和暴击。目录卡只消费基础形态的 `section: melee` 来源，使用紧凑的“招式 / 伤害 / 元素异常 / 破韧”四列，统一弱点与暴击只作为表外摘要；详情页同时纳入近战武器的 `section: variant` 来源，并按连续的 `label` 分组展示全部形态。移动端改用每段分组布局，避免六列表压缩或横向溢出。无攻击来源的特殊近战继续显示“不可攻击”，不能伪造空连段。
 
-详情页保留既有的“普通射击 / 技能与特殊攻击 / 武器属性”呈现结构，不因 V2 数据链新增模式选择器。模式面板按 `section` 展示全部标准化来源；武器级元素、衰减摘要和曲线严格使用 Resolver 给出的 `mainSourceId`。只有主来源的 `attenuation.status === "applicable"` 才显示衰减，消费者不读取旧 `range` 或顶层衰减字段。目录卡、搜索与 `weapon-stats.json` 同样使用该 `mainSourceId` 摘要。
+详情页保留既有的“普通射击 / 技能与特殊效果 / 武器属性”呈现结构，不因 V2 数据链新增模式选择器。模式面板按 `section` 展示全部标准化来源；伤害和恢复名称由 Health Settlement 定义生成，`label` 只负责形态分组。恢复面板不展示破韧、弱点或暴击；纯恢复武器显示“不可攻击”并继续展示恢复来源与武器属性。武器级元素、衰减摘要和曲线严格使用 Resolver 给出的 `mainSourceId`。只有主来源的 `attenuation.status === "applicable"` 才显示衰减，消费者不读取旧 `range` 或顶层衰减字段。目录卡、搜索与 `weapon-stats.json` 同样使用该 `mainSourceId` 摘要。
 
 正文 `<ActiveSkill>` 的 `cooldown` 始终由标准化 `chargeTime` 覆盖；字段不可用时明确不显示，不能退回正文手填 CD。标准化 `chargeCount` 有值时覆盖正文 count，否则正文 count 只作为通用展示兼容值。重复属性的物理删除见 [`../plans/weapon-v2-cleanup.md`](../plans/weapon-v2-cleanup.md)。
 

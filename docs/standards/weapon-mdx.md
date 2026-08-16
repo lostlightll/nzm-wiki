@@ -38,6 +38,7 @@ damage_sources: []
 - `source` 表示全部 `game_modes` 共用同一逻辑引用；`sources` 表示模式专属完整机械配置，两者必须且只能出现一个。
 - `source.numerical` 不填写 table。Resolver 按当前页面模式选择 LC/TD Lock namespace；禁止跨模式回退。
 - 每个来源必须有稳定 `id` 和人工确认的 `name`；`group`、`label` 和 override 只能根据实际语义与证据填写。
+- `label` 只用于“模式 1 / 模式 2”等连续来源分组，禁止手写“命中伤害”“爆炸伤害”“技能伤害”“回血”等结算名称。伤害与恢复名称统一由 Numerical 的 `Numerical.SettlementType.Health.*` 推导。
 - 不得恢复 V1 的 `damage`、`damage_modes`、`extra_modes`、`mode_names` 或拼写错误字段。
 - 不得根据武器名称、Numerical 描述或编号规律猜测来源关系。
 
@@ -78,7 +79,7 @@ damage_sources:
 
 ## 正文与组件
 
-- 正文用于技能说明、机制解释、演示和来源署名，不重复维护能够从 Resolver 获取的基础数值。
+- 正文用于技能说明、机制解释、演示和来源署名，不重复维护能够从 Resolver 获取的基础伤害、恢复比例或恢复固定值。
 - 模式专属正文使用 `<GameMode only="lc|td">`；可从 Resolver 比较得到的模式数值差异使用 `<WeaponModeDiff />`，不得手写重复差异表。
 - 优先复用 `lib/mdx-components.tsx` 已注册组件。
 - 图片和视频使用站点资源路径；组件内部或 React 代码中的资源必须经过 `getAssetPath()`。

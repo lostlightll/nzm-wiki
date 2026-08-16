@@ -65,7 +65,7 @@ explosion_range:
 | `name` | 人工确认的非空名称 |
 | `section` | `fire_mode` / `skill` / `special` / `variant` / `dot` / `melee` |
 | `inherits` | 可选，同一武器内父来源 ID |
-| `label` | 可选展示标签，不改变 Settlement |
+| `label` | 可选形态分组标签，不改变 Settlement，禁止用作伤害或恢复类型名称 |
 
 每项必须且只能使用 `source` 或 `sources`。
 
@@ -142,6 +142,32 @@ explosion_range:
 
 恢复、形态切换、蓄力或其他特殊近战机制不强行套入轻击/重击序列，应使用 `special` / `variant` 来源单独建模。
 
+### 3.5 Health Settlement
+
+每条 Numerical 最多只能有一个 `Numerical.SettlementType.Health.*`。Resolver 精确匹配完整 Tag，并将 `HpCalScale` 与 `HpCalBase` 解析为统一生命结算值；未知 Tag 保留诊断，禁止根据 `name`、`section` 或 `label` 猜测。
+
+| Settlement 尾缀 | 页面名称 | 类别 | 数值展示 |
+|---|---|---|---|
+| `WeaponDamage` | 命中伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `MeleeWeaponDamage` | 近战伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `WeaponExplosionDamage` | 爆炸伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `WeaponSkillDamage` | 武器技能伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `SkillDamage` | 技能伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `DebuffDamage` | 持续伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `IndirectDamage` | 间接伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `EnvironmentDamage` | 环境伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `CustomDamage` | 自定义伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `DeathExecute` | 斩杀伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `DropEnvironmentDamage` | 坠落伤害 | 伤害 | `HpCalScale × 模式基础攻击力` |
+| `HealthThenShieldPercentRecover` | 生命/护盾恢复 | 恢复 | `HpCalScale` 显示百分比，非零 `HpCalBase` 显示固定值 |
+| `CharStandardHealing` | 生命恢复 | 恢复 | `HpCalScale` 显示百分比，非零 `HpCalBase` 显示固定值 |
+| `CharExtraShieldRecovery` | 临时护盾 | 恢复 | `HpCalScale` 显示百分比，非零 `HpCalBase` 显示固定值 |
+| `CharStandardShieldRecovery` | 护盾恢复 | 恢复 | `HpCalScale` 显示百分比，非零 `HpCalBase` 显示固定值 |
+| `CustomHealing` | 自定义治疗 | 恢复 | 显示原始系数与固定值，不推断为百分比 |
+| `CustomExtraShield` | 自定义临时护盾 | 恢复 | 显示原始系数与固定值，不推断为百分比 |
+
+伤害来源继续通过 `damage.base` 投影参与主来源选择和伤害消费者；恢复来源只通过生命结算字段展示，不得成为 `mainSourceId`，也不得伪造破韧、弱点、暴击等伤害属性。只有恢复来源的武器仍保留“不可攻击”语义，但详情页必须展示其恢复结算。
+
 ## 4. 继承
 
 继承按模式分别展开：先选择当前来源的 `source` 或 `sources[mode]`，再解析同模式父来源。子配置按字段覆盖父配置；Numerical 是完整引用，不深层拼接。
@@ -187,7 +213,7 @@ sources:
     override_reason: 实测确认塔防无距离衰减
 ```
 
-开放的修正范围为 Numerical 伤害/元素/弱点/暴击/破韧、ASC 距离衰减与射击间隔。存在 `overrides` 必须提供非空 `override_reason`，反之亦然。修正不得给 Settlement 不适用字段造值。
+开放的修正范围为 Numerical 伤害、生命结算 `health.scale/base`、元素、弱点、暴击、破韧，以及 ASC 距离衰减与射击间隔。恢复值修正使用 `overrides.numerical.health`；`health.scale` 与旧的 `damage.base` 都对应 `HpCalScale`，禁止在同一 override 中同时声明。存在 `overrides` 必须提供非空 `override_reason`，反之亦然。修正不得给 Settlement 不适用字段造值。
 
 pending 只允许发布前草稿：
 
