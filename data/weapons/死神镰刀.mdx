@@ -50,6 +50,13 @@ damage_sources:
         id: 121300040
         level: 1
       asc_type_id: "138"
+  - id: hit-recovery
+    name: 命中回血
+    section: special
+    source:
+      numerical:
+        id: 121300044
+        level: 1
 ---
 <WeaponSkill>
   <PassiveSkill
@@ -60,6 +67,6 @@ damage_sources:
   </PassiveSkill>
 </WeaponSkill>
 
-吸血 **回复量 = 命中次数 × 总血量 × 10%**，溢出部分回复护盾。
+吸血按命中次数分别结算，溢出的生命恢复会转为护盾。
 
 <Credit platform="bilibili" author="盒仔-逆战未来" url="https://www.bilibili.com/video/BV1UkcAz5EBB" title="BV1UkcAz5EBB" />

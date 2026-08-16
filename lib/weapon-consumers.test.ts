@@ -456,6 +456,49 @@ test("Task 7.7 representative mappings remain fixed across Resolver and consumer
   }
 });
 
+test("melee details preserve explosion and recovery effect sources", async () => {
+  const missingEffects: string[] = [];
+  for (const table of ["lc", "td"] as const) {
+    const embrace = toWeaponDetailData(await requireWeapon("死亡之拥", table));
+    if (
+      !embrace.damageSources.some(
+        (source) =>
+          source.section !== "melee" &&
+          getResolvedFieldValue(source.health.type) === "WeaponExplosionDamage",
+      )
+    ) {
+      missingEffects.push(`${table}:死亡之拥:爆炸`);
+    }
+
+    const scythe = toWeaponDetailData(await requireWeapon("死神镰刀", table));
+    if (
+      !scythe.damageSources.some(
+        (source) =>
+          source.section !== "melee" &&
+          source.damage.base.state === "not_applicable" &&
+          getResolvedFieldValue(source.health.type) ===
+            "HealthThenShieldPercentRecover",
+      )
+    ) {
+      missingEffects.push(`${table}:死神镰刀:吸血`);
+    }
+
+    const bloodGrudge = toWeaponDetailData(await requireWeapon("血怨", table));
+    if (
+      !bloodGrudge.damageSources.some(
+        (source) =>
+          source.section !== "melee" &&
+          source.damage.base.state === "not_applicable" &&
+          getResolvedFieldValue(source.health.type) ===
+            "CharExtraShieldRecovery",
+      )
+    ) {
+      missingEffects.push(`${table}:血怨:恢复`);
+    }
+  }
+  assert.deepEqual(missingEffects, []);
+});
+
 test("generic scanner skips the unified weapon directory before reading MDX", () => {
   const fixtureRoot = fs.mkdtempSync(path.join(os.tmpdir(), "weapon-search-task6-"));
   try {

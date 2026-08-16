@@ -50,22 +50,19 @@ damage_sources:
         id: 121300070
         level: 1
       asc_type_id: "163"
+  - id: passive-explosion
+    name: 被动爆炸
+    section: special
+    source:
+      numerical:
+        id: 121300073
+        level: 1
 ---
 <WeaponSkill>
   <PassiveSkill
     name="致命穿透"
     icon="/icons/weapons/skills/T_Weapon_Skill_20013000007.png"
   >
-    装备死亡之拥后，主副手武器的子弹<Blue>穿透</Blue>或命中敌方弱点时会触发小型爆炸造成 **70%** 角色攻击力的伤害，爆炸半径<Yellow>1米</Yellow>，每<Yellow>5秒</Yellow>只能触发<Yellow>1次</Yellow>。
+    装备死亡之拥后，主副手武器的子弹<Blue>穿透</Blue>或命中敌方弱点时会触发小型爆炸，爆炸半径<Yellow>1米</Yellow>，每<Yellow>5秒</Yellow>只能触发<Yellow>1次</Yellow>。
   </PassiveSkill>
 </WeaponSkill>
-
-<DataTable
-  headers={["模式", "计算", "爆炸伤害"]}
-  align={["left", "center", "right"]}
-  nowrap={[0, 1, 2]}
-  data={[
-    ["僵尸猎场", "500 × 70%", "**350**"],
-    ["塔防模式", "400 × 70%", "**280**"],
-  ]}
-/>
