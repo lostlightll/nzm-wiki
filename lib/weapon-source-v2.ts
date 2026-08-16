@@ -61,9 +61,19 @@ const numericalDamageOverridesSchema = z
     message: "damage override must contain at least one field",
   });
 
+const numericalHealthOverridesSchema = z
+  .strictObject({
+    scale: finiteNonNegativeSchema.optional(),
+    base: finiteNonNegativeSchema.optional(),
+  })
+  .refine((value) => Object.keys(value).length > 0, {
+    message: "health override must contain at least one field",
+  });
+
 export const numericalOverridesSchema = z
   .strictObject({
     damage: numericalDamageOverridesSchema.optional(),
+    health: numericalHealthOverridesSchema.optional(),
     element: z.enum(["物理", "火焰", "寒冷", "电弧", "腐蚀"]).optional(),
     element_add_rate: finiteNonNegativeSchema.optional(),
     weakness_multiplier: finiteNonNegativeSchema.optional(),
@@ -74,7 +84,14 @@ export const numericalOverridesSchema = z
   })
   .refine((value) => Object.keys(value).length > 0, {
     message: "numerical override must contain at least one field",
-  });
+  })
+  .refine(
+    (value) =>
+      value.damage?.base === undefined || value.health?.scale === undefined,
+    {
+      message: "damage.base and health.scale cannot both override HpCalScale",
+    },
+  );
 
 export const attenuationOverrideSchema = z.discriminatedUnion("status", [
   z.strictObject({ status: z.literal("not_applicable") }),

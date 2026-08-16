@@ -95,7 +95,12 @@ test("模式配置完整保存 override、攻击间隔和弹丸", () => {
               attack_count: 4,
               attack_interval_source: "NZM/Content/Test/Ability#Interval",
               pellets: 3,
-              overrides: { numerical: { damage: { base: 0 } } },
+              overrides: {
+                numerical: {
+                  damage: { base: 0 },
+                  health: { base: 5 },
+                },
+              },
               override_reason: "实测确认",
             },
             td: { numerical: { id: 1, level: 1 }, pellets: 2 },
@@ -109,6 +114,7 @@ test("模式配置完整保存 override、攻击间隔和弹丸", () => {
   assert.equal(source.attack_count, 4);
   assert.equal(source.pellets, 3);
   assert.equal(source.overrides?.numerical?.damage?.base, 0);
+  assert.equal(source.overrides?.numerical?.health?.base, 5);
 });
 
 test("继承按模式展开并保留覆盖顺序", () => {
@@ -252,6 +258,31 @@ test("pending 只允许 draft，且允许暂缺 Numerical", () => {
 });
 
 test("拒绝重复模式、Numerical table、无原因 override 和无证据攻击间隔", () => {
+  assert.throws(
+    () =>
+      validateWeaponSourceV2(
+        weapon({
+          damage_sources: [
+            {
+              id: "bad",
+              name: "错误",
+              section: "fire_mode",
+              source: {
+                numerical: { id: 1, level: 1 },
+                overrides: {
+                  numerical: {
+                    damage: { base: 1 },
+                    health: { scale: 1 },
+                  },
+                },
+                override_reason: "重复覆盖同一字段",
+              },
+            },
+          ],
+        }),
+      ),
+    /cannot both override HpCalScale/,
+  );
   assert.throws(
     () => validateWeaponSourceV2(weapon({ game_modes: ["lc", "lc"] })),
     /must not contain duplicates/,

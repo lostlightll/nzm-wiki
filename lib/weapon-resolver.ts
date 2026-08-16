@@ -34,6 +34,14 @@ import {
   parseLegacyTags,
   transformWeaponV1Legacy,
 } from "./weapon-legacy";
+import {
+  HEALTH_SETTLEMENT_PREFIX,
+  HEALTH_SETTLEMENT_TYPES,
+  getHealthSettlementDefinition,
+  getHealthSettlementTag,
+  isWeaponHealthSettlementType,
+  type WeaponHealthSettlementType,
+} from "./weapon-health-settlement";
 
 export type FieldState =
   | "resolved"
@@ -261,6 +269,11 @@ export interface ResolvedDamageSource {
     toughness: ResolvedField<number>;
     flesh: ResolvedField<number>;
     hurtable: ResolvedField<number>;
+  };
+  health: {
+    type: ResolvedField<WeaponHealthSettlementType>;
+    scale: ResolvedField<number>;
+    base: ResolvedField<number>;
   };
   element: ResolvedField<ElementType>;
   elementAddRate: ResolvedField<number>;
@@ -799,13 +812,25 @@ function normalizeLegacyMode(
     mode.pellets === undefined
       ? missing()
       : resolved(mode.pellets, fields.pellets);
+  const damageBase = resolved(mode.damage.base, fields["damage.base"]);
+  const healthType: WeaponHealthSettlementType = mode.damageLabel?.includes(
+    "爆炸",
+  )
+    ? "WeaponExplosionDamage"
+    : mode.damageLabel?.includes("持续") || mode.damageLabel?.includes("灼烧")
+      ? "DebuffDamage"
+      : mode.damageLabel?.includes("技能")
+        ? "WeaponSkillDamage"
+        : section === "melee"
+          ? "MeleeWeaponDamage"
+          : "WeaponDamage";
   return {
     id,
     name: mode.name,
     section,
     label: mode.damageLabel,
     damage: {
-      base: resolved(mode.damage.base, fields["damage.base"]),
+      base: damageBase,
       impulse: resolved(
         mode.damage.impulse,
         fields["damage.impulse"],
@@ -822,6 +847,11 @@ function normalizeLegacyMode(
         mode.damage.hurtable,
         fields["damage.hurtable"],
       ),
+    },
+    health: {
+      type: resolved(healthType, v1Default(id, "legacy-settlement")),
+      scale: damageBase,
+      base: resolved(0, v1Default(id, "legacy-settlement-base")),
     },
     element: resolved(mode.element, fields.element),
     elementAddRate: resolved(
@@ -1052,20 +1082,10 @@ function normalizeV1(
   };
 }
 
-const BASE_SETTLEMENTS = new Set(
-  [
-    "WeaponDamage",
-    "MeleeWeaponDamage",
-    "WeaponSkillDamage",
-    "WeaponExplosionDamage",
-    "SkillDamage",
-    "DebuffDamage",
-    "IndirectDamage",
-    "EnvironmentDamage",
-    "CustomDamage",
-    "DeathExecute",
-    "DropEnvironmentDamage",
-  ].map((suffix) => `Numerical.SettlementType.Health.${suffix}`),
+const HEALTH_SETTLEMENTS: ReadonlySet<string> = new Set(
+  (Object.keys(HEALTH_SETTLEMENT_TYPES) as WeaponHealthSettlementType[]).map(
+    getHealthSettlementTag,
+  ),
 );
 
 const SETTLEMENT_FIELDS = {
@@ -1078,12 +1098,6 @@ const SETTLEMENT_FIELDS = {
 
 const RECOGNIZED_UNMAPPED_SETTLEMENTS = new Set([
   "Numerical.SettlementType.KnockUp.Base",
-  "Numerical.SettlementType.Health.HealthThenShieldPercentRecover",
-  "Numerical.SettlementType.Health.CharStandardHealing",
-  "Numerical.SettlementType.Health.CharExtraShieldRecovery",
-  "Numerical.SettlementType.Health.CharStandardShieldRecovery",
-  "Numerical.SettlementType.Health.CustomHealing",
-  "Numerical.SettlementType.Health.CustomExtraShield",
   "Numerical.SettlementType.Toughness.Healing",
   "None",
 ]);
@@ -1254,7 +1268,7 @@ function parseSettlements(
     }
     unique.add(tag);
     if (
-      !BASE_SETTLEMENTS.has(tag) &&
+      !HEALTH_SETTLEMENTS.has(tag) &&
       !(tag in SETTLEMENT_FIELDS) &&
       !RECOGNIZED_UNMAPPED_SETTLEMENTS.has(tag)
     ) {
@@ -1276,6 +1290,7 @@ interface NumericalResolution {
   fields: Pick<
     ResolvedDamageSource,
     | "damage"
+    | "health"
     | "element"
     | "elementAddRate"
     | "weaknessMultiplier"
@@ -1299,6 +1314,11 @@ function pendingNumerical(): NumericalResolution {
         toughness: unavailable(),
         flesh: unavailable(),
         hurtable: unavailable(),
+      },
+      health: {
+        type: unavailable(),
+        scale: unavailable(),
+        base: unavailable(),
       },
       element: unavailable(),
       elementAddRate: unavailable(),
@@ -1385,8 +1405,65 @@ function parseNumerical(
   const origin = effective.origins.numerical ?? source.id;
   const provenance = (rawField: string) =>
     lockProvenance("lock-numerical", sourceKey, rawField, origin);
+  const healthTags = [...settlement.unique].filter((tag) =>
+    tag.startsWith(HEALTH_SETTLEMENT_PREFIX),
+  );
+  if (healthTags.length > 1) {
+    throw new WeaponResolutionError(
+      "INVALID_SETTLEMENT",
+      "a Numerical row cannot contain multiple Health Settlements",
+      {
+        path: sourcePath(source.id, "settlements"),
+        sourceId: source.id,
+        sourceKey,
+      },
+    );
+  }
+  const healthTag = healthTags[0];
+  const healthSuffix = healthTag?.slice(HEALTH_SETTLEMENT_PREFIX.length);
+  const healthType =
+    healthSuffix && isWeaponHealthSettlementType(healthSuffix)
+      ? healthSuffix
+      : undefined;
+  const healthDefinition = healthType
+    ? getHealthSettlementDefinition(healthType)
+    : undefined;
+  const healthScale: ResolvedField<number> = healthType
+    ? resolved(
+        requiredNumber(
+          raw,
+          "HpCalScale",
+          {
+            path: sourcePath(source.id, "health/scale"),
+            sourceId: source.id,
+            sourceKey,
+          },
+          { nonNegative: true },
+        ),
+        provenance("HpCalScale"),
+      )
+    : healthTag
+      ? unavailable<number>(provenance("HpCalScale"))
+      : notApplicable<number>();
+  const healthBase: ResolvedField<number> = healthType
+    ? resolved(
+        requiredNumber(
+          raw,
+          "HpCalBase",
+          {
+            path: sourcePath(source.id, "health/base"),
+            sourceId: source.id,
+            sourceKey,
+          },
+          { nonNegative: true },
+        ),
+        provenance("HpCalBase"),
+      )
+    : healthTag
+      ? unavailable<number>(provenance("HpCalBase"))
+      : notApplicable<number>();
   const applies = {
-    base: [...settlement.unique].some((tag) => BASE_SETTLEMENTS.has(tag)),
+    base: healthDefinition?.kind === "damage",
     impulse: settlement.unique.has("Numerical.SettlementType.Impulse.Base"),
     toughness: settlement.unique.has("Numerical.SettlementType.Toughness.Base"),
     flesh: settlement.unique.has("Numerical.SettlementType.Flesh.Base"),
@@ -1456,11 +1533,20 @@ function parseNumerical(
 
   const fields: NumericalResolution["fields"] = {
     damage: {
-      base: numberField("base", "HpCalScale"),
+      base: applies.base ? healthScale : notApplicable<number>(),
       impulse: numberField("impulse", "ImpulseBase"),
       toughness: numberField("toughness", "ToughnessBase"),
       flesh: numberField("flesh", "FleshDamageBase"),
       hurtable: numberField("hurtable", "HurtableBase"),
+    },
+    health: {
+      type: healthType
+        ? resolved(healthType, provenance("Settlements"))
+        : healthTag
+          ? unrecognized<WeaponHealthSettlementType>(provenance("Settlements"))
+          : notApplicable(),
+      scale: healthScale,
+      base: healthBase,
     },
     element,
     elementAddRate: numberField("elementAddRate", "ElementAddRate"),
@@ -1535,6 +1621,32 @@ function parseNumerical(
         `damage.${key}`,
         context.diagnostics,
         sourcePath(source.id, `damage/${key}`),
+      );
+      if (key === "base") fields.health.scale = fields.damage.base;
+    }
+    if (override.health?.scale !== undefined) {
+      requireApplicable(Boolean(healthType), "health.scale", step);
+      fields.health.scale = withOverride(
+        fields.health.scale,
+        override.health.scale,
+        step,
+        "health.scale",
+        context.diagnostics,
+        sourcePath(source.id, "health/scale"),
+      );
+      if (healthDefinition?.kind === "damage") {
+        fields.damage.base = fields.health.scale;
+      }
+    }
+    if (override.health?.base !== undefined) {
+      requireApplicable(Boolean(healthType), "health.base", step);
+      fields.health.base = withOverride(
+        fields.health.base,
+        override.health.base,
+        step,
+        "health.base",
+        context.diagnostics,
+        sourcePath(source.id, "health/base"),
       );
     }
     if (override.element_add_rate !== undefined) {

@@ -12,6 +12,7 @@ import {
   toLegacyWeapon,
   WeaponResolutionError,
 } from "./weapon-resolver";
+import { HEALTH_SETTLEMENT_TYPES } from "./weapon-health-settlement";
 
 const hash = "0".repeat(64);
 type LockRaw = WeaponDataLock["rows"]["asc"][string]["raw"];
@@ -35,6 +36,7 @@ function numericalRaw(extra: LockRaw = {}): LockRaw {
       { TagName: "Numerical.SettlementType.Element.ElementPointAdd" },
     ],
     HpCalScale: 100,
+    HpCalBase: 0,
     ImpulseBase: 2,
     ElementAddRate: 4,
     ElementType: "EElementEffectType::EDamageType_Cryo",
@@ -229,6 +231,84 @@ test("V2 resolves Numerical, ASC, Feel, Item and Skill without flattening modes"
   assert.equal(legacy.extraModes?.length, 1);
   assert.equal(legacy.skillCooldown, 25);
   assert.equal(legacy.range, undefined);
+});
+
+test("Health Settlement resolves recovery values without creating an attack source", () => {
+  const recoveryLock = lock();
+  recoveryLock.rows["numerical-lc"]["lc:1_1"].raw = numericalRaw({
+    Settlements: [
+      {
+        TagName:
+          "Numerical.SettlementType.Health.HealthThenShieldPercentRecover",
+      },
+    ],
+    HpCalScale: 0.33,
+    HpCalBase: 5,
+  });
+  const resolved = resolveWeapon(
+    weapon({
+      item_id: undefined,
+      active_skill_id: 0,
+      damage_sources: [
+        {
+          id: "recovery",
+          name: "喝水回血",
+          section: "special",
+          source: { numerical: { id: 1, level: 1 } },
+        },
+      ],
+    }),
+    { slug: "recovery", expectedTable: "lc", lock: recoveryLock },
+  );
+
+  assert.equal(resolved.mainSourceId, undefined);
+  assert.equal(resolved.damageSources[0].damage.base.state, "not_applicable");
+  assert.equal(
+    resolved.damageSources[0].health.type.value,
+    "HealthThenShieldPercentRecover",
+  );
+  assert.equal(resolved.damageSources[0].health.scale.value, 0.33);
+  assert.equal(resolved.damageSources[0].health.base.value, 5);
+
+  const overridden = resolveWeapon(
+    weapon({
+      item_id: undefined,
+      active_skill_id: 0,
+      damage_sources: [
+        {
+          id: "recovery",
+          name: "喝水回血",
+          section: "special",
+          source: {
+            numerical: { id: 1, level: 1 },
+            overrides: { numerical: { health: { scale: 0.4, base: 8 } } },
+            override_reason: "实测确认恢复量",
+          },
+        },
+      ],
+    }),
+    { slug: "recovery-override", expectedTable: "lc", lock: recoveryLock },
+  );
+  assert.equal(overridden.damageSources[0].health.scale.value, 0.4);
+  assert.equal(overridden.damageSources[0].health.base.value, 8);
+  assert.equal(
+    overridden.damageSources[0].health.scale.overrideHistory.length,
+    1,
+  );
+});
+
+test("Health Settlement registry covers every composite-table type", () => {
+  assert.equal(Object.keys(HEALTH_SETTLEMENT_TYPES).length, 17);
+  assert.deepEqual(
+    Object.values(HEALTH_SETTLEMENT_TYPES).reduce(
+      (counts, definition) => ({
+        ...counts,
+        [definition.kind]: counts[definition.kind] + 1,
+      }),
+      { damage: 0, recovery: 0 },
+    ),
+    { damage: 11, recovery: 6 },
+  );
 });
 
 test("prepared resolver validates Lock once and preserves existing resolver results", () => {
@@ -440,6 +520,22 @@ test("invalid Settlement, missing Lock and invalid attenuation fail with stable 
   assert.equal(
     captureError(() =>
       resolveWeapon(weapon(), { slug: "bad", expectedTable: "lc", lock: badSettlement }),
+    ).code,
+    "INVALID_SETTLEMENT",
+  );
+
+  const multipleHealth = lock();
+  multipleHealth.rows["numerical-lc"]["lc:1_1"].raw.Settlements = [
+    { TagName: "Numerical.SettlementType.Health.WeaponDamage" },
+    { TagName: "Numerical.SettlementType.Health.SkillDamage" },
+  ];
+  assert.equal(
+    captureError(() =>
+      resolveWeapon(weapon(), {
+        slug: "multiple-health",
+        expectedTable: "lc",
+        lock: multipleHealth,
+      }),
     ).code,
     "INVALID_SETTLEMENT",
   );

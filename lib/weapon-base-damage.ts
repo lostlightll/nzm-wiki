@@ -3,8 +3,7 @@ import { BASE_DAMAGE_DATA } from "./multiplier-data";
 import { getResolvedFieldValue } from "./weapon-consumers";
 import type { ResolvedDamageSource, ResolvedWeapon } from "./weapon-resolver";
 import type { NumericalTable } from "./weapon-source-v2";
-
-const HEALTH_SETTLEMENT_PREFIX = "Numerical.SettlementType.Health.";
+import type { WeaponHealthSettlementType } from "./weapon-health-settlement";
 
 const SETTLEMENT_TYPES = {
   WeaponDamage: { channel: "hit", label: "命中" },
@@ -79,19 +78,13 @@ function getSettlementType(
   weapon: ResolvedWeapon,
   source: ResolvedDamageSource,
 ): SettlementType {
-  const healthSettlements = source.settlements
-    .filter((settlement) => settlement.startsWith(HEALTH_SETTLEMENT_PREFIX))
-    .map((settlement) => settlement.slice(HEALTH_SETTLEMENT_PREFIX.length));
-
-  if (
-    healthSettlements.length !== 1 ||
-    !(healthSettlements[0] in SETTLEMENT_TYPES)
-  ) {
+  const type = getResolvedFieldValue(source.health.type);
+  if (!type || !(type in SETTLEMENT_TYPES)) {
     throw new WeaponBaseDamageIndexError(
       `${weapon.slug}:${source.id} 的生命伤害 Settlement 无法归类`,
     );
   }
-  return healthSettlements[0] as SettlementType;
+  return type as Extract<WeaponHealthSettlementType, SettlementType>;
 }
 
 function getBaseAttack(table: NumericalTable): number {
