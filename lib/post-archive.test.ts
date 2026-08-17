@@ -11,6 +11,7 @@ test("机制图鉴在文章归档中连续排列", () => {
     { slug: "summons" },
     { slug: "element" },
     { slug: "damage-calculation" },
+    { slug: "trigger-damage" },
   ];
 
   assert.deepEqual(
@@ -18,6 +19,7 @@ test("机制图鉴在文章归档中连续排列", () => {
     [
       "damage-calculation",
       "element",
+      "trigger-damage",
       "enemy-buffs",
       "player-buffs",
       "summons",

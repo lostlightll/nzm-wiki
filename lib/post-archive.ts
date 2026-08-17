@@ -1,9 +1,10 @@
 const MECHANISM_POST_ORDER = new Map([
   ["element", 0],
-  ["enemy-buffs", 1],
-  ["player-buffs", 2],
-  ["summons", 3],
-  ["hunting-tactical-skills", 4],
+  ["trigger-damage", 1],
+  ["enemy-buffs", 2],
+  ["player-buffs", 3],
+  ["summons", 4],
+  ["hunting-tactical-skills", 5],
 ]);
 
 const POST_SLUG_COLLATOR = new Intl.Collator("en", {
