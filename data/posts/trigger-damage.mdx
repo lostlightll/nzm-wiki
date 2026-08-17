@@ -28,41 +28,36 @@ page-width: 3xl
 
 ## 现版本普通插件
 
-下表共 **24 项**。除[出其不意](/perks/slot-2/出其不意)使用武器技能伤害结算外，其余均为技能伤害；这些伤害都**不能暴击，也不计算弱点倍率**。倍率均取自各自的 Numerical 配置，不把描述中的旧固定数值当作现行伤害。
+下列共 **24 项**。除[出其不意](/perks/slot-2/出其不意)使用武器技能伤害结算外，其余均为技能伤害。数值均取自各自的 Numerical 配置，不把描述中的旧固定值当作现行伤害。
 
-<DataTable
-  headers={["来源", "触发方式", "单次伤害 / 属性", "NumericalID", "冷却或间隔"]}
-  align={["left", "left", "left", "center", "center"]}
-  nowrap={[0, 3]}
-  data={[
-    ["出其不意", "扔出的枪体命中敌人", "**50%** / 毒 / 武器技能", "1400110101", "主动技能充能"],
-    ["烈焰冲击", "使用主动技能后持续 6 秒", "**37.5%** / 火", "11010041", "每 2 秒"],
-    ["亲密距离", "单发全部弹片命中同一敌人", "**90%** / 雷", "11010064", "2 秒"],
-    ["技能扩散", "主动技能后 15 秒内击杀敌人", "**53.03%** / 随武器元素", "11010046-50", "0.3 秒"],
-    ["百万伏特", "累计造成 100 次伤害", "**50%** / 雷 / 10 米", "11010045", "未见独立冷却"],
-    ["闪电轰击", "累计命中 5 次", "**150%** / 雷", "11010063", "5 秒"],
-    ["威慑环爆", "换弹后释放冰环", "**30%** / 冰", "11010069", "未见独立冷却"],
-    ["弹容爆破", "换弹后释放冰环", "基础 **25%** / 冰；受弹容修正", "11010070", "未见独立冷却"],
-    ["坍缩奇点", "击杀带有同属性异常的敌人", "基础 **24%** / 随武器元素", "11010071-75", "未见独立冷却"],
-    ["追猎齐射", "击破敌人护盾", "**150%** / 动能 / 每枚，共 3 枚", "160000014", "按破盾触发"],
-    ["追身导弹", "累计命中 10 次", "**50%** / 动能 / 1 枚", "11010084", "2 秒"],
-    ["连锁电环", "一次开火触发多次伤害", "**10%** / 雷", "11010085", "3 秒"],
-    ["释能火环", "释放武器技能", "**34%** / 火", "11010086", "3 秒"],
-    ["霜滞协议", "开火或技能触发多次伤害", "**10%** / 冰", "11010087", "2 秒"],
-    ["闪电协议", "单发全部弹丸命中同一敌人", "**60%** / 雷", "11010088", "3 秒"],
-    ["精确导弹", "弱点命中累计 3 次", "**36%** / 动能 / 每枚，共 2 枚", "11010089", "5 秒"],
-    ["闪切霜环", "切换武器", "**37.5%** / 冰", "11010091", "2 秒"],
-    ["地龙惊破", "累计造成 10000 点伤害", "**60%** / 火 / 每次，共 5 次", "11010097", "8 秒"],
-    ["满盾爆破", "满护盾时射击命中", "**27%** / 动能 / 5 米", "11010117", "5 秒"],
-    ["毒属爆破", "毒武器射击有 3% 概率触发", "**58%** / 毒 / 0.5 米", "11010121", "未见独立冷却"],
-    ["合圈震荡", "召唤物造成伤害", "**18%** / 动能 / 每个冲击环", "11010122", "3 秒"],
-    ["定时震波", "召唤物存在", "**38%** / 动能", "11010123", "每 5 秒"],
-    ["连环震波", "钩锁命中首领", "**100%** / 动能 / 每次，共 3 次", "11010125", "每次间隔 3 秒"],
-    ["击杀掉货", "拾取任意本赛季能量球", "**20%** / 动能", "11010126", "伤害环 2 秒"],
-  ]}
-/>
+<TriggerDamageCatalog entries={[
+  { name: "出其不意", href: "/perks/slot-2/出其不意", trigger: "扔出的枪体命中敌人", interval: "主动技能充能", numericalId: "1400110101", damageType: "武器技能伤害", damageValue: "50% 攻击力", toughness: 0.05, element: "腐蚀", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "烈焰冲击", href: "/perks/slot-4/烈焰冲击", trigger: "使用主动技能后持续 6 秒", interval: "每 2 秒", numericalId: "11010041", damageType: "技能伤害", damageValue: "37.5% 攻击力", toughness: 0, element: "火焰", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "亲密距离", href: "/perks/slot-4/亲密距离", trigger: "单发全部弹片命中同一敌人", interval: "2 秒", numericalId: "11010064", damageType: "技能伤害", damageValue: "90% 攻击力", toughness: 0, element: "电弧", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "技能扩散", href: "/perks/slot-4/技能扩散", trigger: "主动技能后 15 秒内击杀敌人", interval: "0.3 秒", numericalId: "11010046-50", damageType: "技能伤害", damageValue: "53.03% 攻击力", toughness: 0, element: "随武器元素", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "百万伏特", href: "/perks/slot-4/百万伏特", trigger: "累计造成 100 次伤害，影响 10 米范围", interval: "未见独立冷却", numericalId: "11010045", damageType: "技能伤害", damageValue: "50% 攻击力", toughness: 0, element: "电弧", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "闪电轰击", href: "/perks/slot-4/闪电轰击", trigger: "累计命中 5 次", interval: "5 秒", numericalId: "11010063", damageType: "技能伤害", damageValue: "150% 攻击力", toughness: 0, element: "电弧", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "威慑环爆", href: "/perks/slot-4/威慑环爆", trigger: "换弹后释放冰环", interval: "未见独立冷却", numericalId: "11010069", damageType: "技能伤害", damageValue: "30% 攻击力", toughness: 0, element: "寒冷", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "弹容爆破", href: "/perks/slot-4/弹容爆破", trigger: "换弹后释放冰环", interval: "未见独立冷却", numericalId: "11010070", damageType: "技能伤害", damageValue: "基础 25% 攻击力", toughness: 0, element: "寒冷", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "坍缩奇点", href: "/perks/slot-4/坍缩奇点", trigger: "击杀带有同属性异常的敌人", interval: "未见独立冷却", numericalId: "11010071-75", damageType: "技能伤害", damageValue: "24%-144% 攻击力", toughness: 0, element: "随武器元素", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "追猎齐射", href: "/perks/slot-4/追猎齐射", trigger: "击破敌人护盾后发射 3 枚飞弹", interval: "按破盾触发", numericalId: "160000014", damageType: "技能伤害", damageValue: "150% 攻击力/枚 × 3", toughness: 0.15, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "追身导弹", href: "/perks/slot-4/追身导弹", trigger: "累计命中 10 次后发射 1 枚导弹", interval: "2 秒", numericalId: "11010084", damageType: "技能伤害", damageValue: "50% 攻击力", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "连锁电环", trigger: "一次开火触发多次伤害", interval: "3 秒", numericalId: "11010085", damageType: "技能伤害", damageValue: "10% 攻击力", toughness: 0, element: "电弧", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "释能火环", trigger: "释放武器技能", interval: "3 秒", numericalId: "11010086", damageType: "技能伤害", damageValue: "34% 攻击力", toughness: 0, element: "火焰", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "霜滞协议", href: "/perks/slot-4/霜滞协议", trigger: "开火或技能触发多次伤害", interval: "2 秒", numericalId: "11010087", damageType: "技能伤害", damageValue: "10% 攻击力", toughness: 0, element: "寒冷", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "闪电协议", href: "/perks/slot-4/闪电协议", trigger: "单发全部弹丸命中同一敌人", interval: "3 秒", numericalId: "11010088", damageType: "技能伤害", damageValue: "60% 攻击力", toughness: 0, element: "电弧", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "精确导弹", href: "/perks/slot-4/精确导弹", trigger: "弱点命中累计 3 次后发射 2 枚导弹", interval: "5 秒", numericalId: "11010089", damageType: "技能伤害", damageValue: "36% 攻击力/枚 × 2", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "闪切霜环", href: "/perks/slot-4/闪切霜环", trigger: "切换武器", interval: "2 秒", numericalId: "11010091", damageType: "技能伤害", damageValue: "37.5% 攻击力", toughness: 0, element: "寒冷", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "地龙惊破", href: "/perks/slot-4/地龙惊破", trigger: "累计造成 10000 点伤害后连续结算 5 次", interval: "8 秒", numericalId: "11010097", damageType: "技能伤害", damageValue: "60% 攻击力/次 × 5", toughness: 0, element: "火焰", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "满盾爆破", href: "/perks/slot-4/满盾爆破", trigger: "满护盾时射击命中，产生 5 米爆炸", interval: "5 秒", numericalId: "11010117", damageType: "技能伤害", damageValue: "27% 攻击力", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "毒属爆破", href: "/perks/slot-4/毒属爆破", trigger: "腐蚀武器射击有 3% 概率触发 0.5 米爆炸", interval: "未见独立冷却", numericalId: "11010121", damageType: "技能伤害", damageValue: "58% 攻击力", toughness: 0, element: "腐蚀", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "合圈震荡", href: "/perks/slot-4/合圈震荡", trigger: "召唤物造成伤害时触发冲击环", interval: "3 秒", numericalId: "11010122", damageType: "技能伤害", damageValue: "18% 攻击力/环", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "定时震波", href: "/perks/slot-4/定时震波", trigger: "召唤物存在时在玩家周围触发", interval: "每 5 秒", numericalId: "11010123", damageType: "技能伤害", damageValue: "38% 攻击力", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "连环震波", href: "/perks/slot-4/连环震波", trigger: "钩锁命中首领后连续触发 3 次", interval: "每次间隔 3 秒", numericalId: "11010125", damageType: "技能伤害", damageValue: "100% 攻击力/次 × 3", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "击杀掉货", href: "/perks/slot-4/击杀掉货", trigger: "拾取任意本赛季能量球", interval: "伤害环 2 秒", numericalId: "11010126", damageType: "技能伤害", damageValue: "20% 攻击力", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+]} />
 
-条目入口：[烈焰冲击](/perks/slot-4/烈焰冲击)、[亲密距离](/perks/slot-4/亲密距离)、[技能扩散](/perks/slot-4/技能扩散)、[百万伏特](/perks/slot-4/百万伏特)、[闪电轰击](/perks/slot-4/闪电轰击)、[威慑环爆](/perks/slot-4/威慑环爆)、[弹容爆破](/perks/slot-4/弹容爆破)、[坍缩奇点](/perks/slot-4/坍缩奇点)、[追猎齐射](/perks/slot-4/追猎齐射)、[追身导弹](/perks/slot-4/追身导弹)、[霜滞协议](/perks/slot-4/霜滞协议)、[闪电协议](/perks/slot-4/闪电协议)、[精确导弹](/perks/slot-4/精确导弹)、[闪切霜环](/perks/slot-4/闪切霜环)、[地龙惊破](/perks/slot-4/地龙惊破)、[满盾爆破](/perks/slot-4/满盾爆破)、[毒属爆破](/perks/slot-4/毒属爆破)、[合圈震荡](/perks/slot-4/合圈震荡)、[定时震波](/perks/slot-4/定时震波)、[连环震波](/perks/slot-4/连环震波)、[击杀掉货](/perks/slot-4/击杀掉货)。连锁电环和释能火环当前没有独立插件页，完整资料已列在上表。
+连锁电环和释能火环当前没有独立插件页，其余条目可直接点击名称进入详情页。
 
 ### 需要单独理解的公式
 
@@ -75,27 +70,20 @@ page-width: 3xl
 
 ## 猎场与超限专属
 
-下表 10 项的普通插件均未上线，但猎场超限表已经启用。除物法兼得外，这些现行伤害行都可暴击、不可计算弱点倍率。
+下列 10 项的普通插件均未上线，但猎场超限表已经启用。名称直接链接到已投放的超限卡详情。
 
-<DataTable
-  headers={["来源", "当前触发方式", "单次伤害 / 属性", "NumericalID", "执行冷却"]}
-  align={["left", "left", "left", "center", "center"]}
-  nowrap={[0, 3]}
-  data={[
-    ["致命爆炸", "武器命中有 5% 概率产生 10 米爆炸", "**1000%** / 动能 / 技能", "130103014", "2 秒"],
-    ["物法兼得", "技能伤害后 5 秒内，射击追加伤害", "上次技能伤害的 **35%** / 间接伤害", "130103016", "追加 0.25 秒"],
-    ["导弹轰炸", "爆炸命中发 2 枚；仅命中 1 个单位时发 5 枚", "**420%** / 动能 / 每枚", "121800050", "2 秒"],
-    ["换弹冲击", "弹匣耗尽后每秒释放冲击波，持续 5 秒", "基础 **360%** / 动能 / 每次", "121800060", "1 秒周期"],
-    ["万伤掷弹", "累计造成 10000 点伤害后生成 2 枚榴弹", "**420%** / 动能 / 每枚", "121800070", "未见独立冷却"],
-    ["爆毒蚀域", "暴击时投出毒液罐并留下毒池", "每秒 **10%** / 毒 / 异常伤害", "121500071", "投掷 5 秒"],
-    ["游击飞弹", "每移动 10 米发射 2 枚跟踪弹", "**420%** / 动能 / 每枚", "121800070", "未见独立冷却"],
-    ["飞弹狂射", "累计造成 10 次武器伤害后发射 2 枚", "**420%** / 动能 / 每枚", "121800070", "1 秒"],
-    ["暴击飞弹", "每次暴击发射 1 枚跟踪弹", "**420%** / 动能", "121800070", "0.5 秒"],
-    ["近战冲击", "近战命中有 50% 概率产生 5 米冲击波", "**1050%** / 动能", "112042220", "1 秒"],
-  ]}
-/>
-
-条目入口：[致命爆炸](/overlimit/20703040437)、[物法兼得](/overlimit/20703040444)、[导弹轰炸](/overlimit/20703040471)、[换弹冲击](/overlimit/20703040472)、[万伤掷弹](/overlimit/20703040473)、[爆毒蚀域](/overlimit/20703040474)、[游击飞弹](/overlimit/20704040476)、[飞弹狂射](/overlimit/20704040479)、[暴击飞弹](/overlimit/20704040481)、[近战冲击](/overlimit/20704040485)。
+<TriggerDamageCatalog entries={[
+  { name: "致命爆炸", href: "/overlimit/20703040437", trigger: "武器命中有 5% 概率产生 10 米爆炸", interval: "2 秒", numericalId: "130103014", damageType: "技能伤害", damageValue: "1000% 攻击力", toughness: 10, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "物法兼得", href: "/overlimit/20703040444", trigger: "技能伤害后 5 秒内，射击追加伤害", interval: "追加 0.25 秒", numericalId: "130103016", damageType: "间接伤害", damageValue: "上次技能伤害 × 35%", toughness: 0.35, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "导弹轰炸", href: "/overlimit/20703040471", trigger: "爆炸命中发 2 枚；仅命中 1 个单位时发 5 枚", interval: "2 秒", numericalId: "121800050", damageType: "技能伤害", damageValue: "420% 攻击力/枚", toughness: 4.2, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "换弹冲击", href: "/overlimit/20703040472", trigger: "弹匣耗尽后每秒释放冲击波，持续 5 秒", interval: "1 秒周期", numericalId: "121800060", damageType: "技能伤害", damageValue: "基础 360% 攻击力/次", toughness: 3.6, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "万伤掷弹", href: "/overlimit/20703040473", trigger: "累计造成 10000 点伤害后生成 2 枚榴弹", interval: "未见独立冷却", numericalId: "121800070", damageType: "技能伤害", damageValue: "420% 攻击力/枚 × 2", toughness: 4.2, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "爆毒蚀域", href: "/overlimit/20703040474", trigger: "暴击时投出毒液罐并留下毒池", interval: "投掷 5 秒；每秒结算", numericalId: "121500071", damageType: "持续伤害", damageValue: "10% 攻击力/秒", toughness: 0, element: "腐蚀", critical: true, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "游击飞弹", href: "/overlimit/20704040476", trigger: "每移动 10 米发射 2 枚跟踪弹", interval: "未见独立冷却", numericalId: "121800070", damageType: "技能伤害", damageValue: "420% 攻击力/枚 × 2", toughness: 4.2, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "飞弹狂射", href: "/overlimit/20704040479", trigger: "累计造成 10 次武器伤害后发射 2 枚", interval: "1 秒", numericalId: "121800070", damageType: "技能伤害", damageValue: "420% 攻击力/枚 × 2", toughness: 4.2, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "暴击飞弹", href: "/overlimit/20704040481", trigger: "每次暴击发射 1 枚跟踪弹", interval: "0.5 秒", numericalId: "121800070", damageType: "技能伤害", damageValue: "420% 攻击力", toughness: 4.2, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "近战冲击", href: "/overlimit/20704040485", trigger: "近战命中有 50% 概率产生 5 米冲击波", interval: "1 秒", numericalId: "112042220", damageType: "技能伤害", damageValue: "1050% 攻击力", toughness: 10.5, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
+]} />
 
 ### 万伤掷弹不是兽神伤害
 
@@ -122,41 +110,40 @@ page-width: 3xl
 
 ## 未投放与旧原型
 
-以下 20 项仍能在导出中找到，但普通插件未上线，猎场也没有启用。它们只用于解释旧描述和数值沿革，不代表现版本可获得。表内已闭合的普通 Numerical 行均为不可暴击、不可弱点的技能伤害。
+以下 20 项仍能在导出中找到，但普通插件未上线，猎场也没有启用。它们只用于解释旧描述和数值沿革，不代表现版本可获得。
 
-<DataTable
-  headers={["来源", "旧触发方式", "伤害 / 属性", "NumericalID", "备注"]}
-  align={["left", "left", "left", "center", "left"]}
-  nowrap={[0, 3]}
-  data={[
-    ["闪电命中", "命中 5 次", "**60%** / 雷", "11010065", "闪电轰击早期版本"],
-    ["超频震爆", "2 秒内命中 10 次", "**21.6%** / 雷", "11010067", "文案与执行资产存在版本错位"],
-    ["十万伏特", "累计造成 100 次伤害", "**30%** / 雷", "11010068", "百万伏特早期版本"],
-    ["冰环疾驰", "疾跑时周期释放电环", "**200%** / 雷", "11010104", "名称写冰，执行为雷"],
-    ["飞弹支援", "技能期间每命中 3 次发射飞弹", "**50%** / 动能 / 每枚", "11010084", "2 秒冷却"],
-    ["妙手强化", "主动技能后击杀触发元素爆炸", "**53.03%** / 随武器元素", "11010046-50", "技能扩散旧稿"],
-    ["装填强化", "换弹叠层后每 5 次射击附带爆裂", "未形成独立伤害结算", "-", "执行资产当前只实现伤害 Buff"],
-    ["乘胜追击", "10 米外弱点命中 20 次后发射飞弹", "**50%** / 动能", "11010084", "5 秒冷却"],
-    ["层积裂变", "同属性异常达到 4 层", "**36%** / 对应元素", "11010076-80", "3 秒冷却"],
-    ["蜂鸣指令", "射击命中 20 次后发射 2 枚导弹", "**45%** / 动能 / 每枚", "11010090", "2 秒冷却"],
-    ["星锤百击", "命中 100 次后释放飞虫", "**130%** / 毒", "11010102", "同时可治疗友方"],
-    ["天官破煞", "弱点命中 10 次后爆破", "**45%** / 动能", "11010103", "同时施加易伤"],
-    ["年轮纹波", "受到治疗或治疗他人", "**28%** / 毒", "11010098", "以治疗目标为中心"],
-    ["超限爆发", "目标异常层数已满时追加", "**46%** / 对应元素", "11010105-08", "每种元素冷却 4 秒"],
-    ["环震冲击", "添加异常时有 30% 概率触发", "**13.5%** / 对应元素", "11010109-12", "3 秒冷却"],
-    ["持续压制", "进入隐身后每 2 秒释放", "**20%** / 动能", "11010113", "持续 8 秒"],
-    ["灰烬元爆", "释放炼狱炎臂后下一发命中", "**250%** / 动能", "11010114", "同时添加四种异常"],
-    ["技能震荡", "使用本武器技能后触发", "**8%** / 动能", "11010116", "描述仍残留 XX%，执行冷却 5 秒"],
-    ["冰火引爆", "火冰异常相遇时爆炸", "**27%** / 动能", "11010117", "5 米，冷却 2 秒"],
-    ["亲密间距", "单发全部弹片命中同一敌人", "**90%** / 雷", "11010064", "亲密距离重复原型"],
-  ]}
-/>
+<TriggerDamageCatalog entries={[
+  { name: "闪电命中", trigger: "命中 5 次", interval: "旧稿未注明", numericalId: "11010065", damageType: "技能伤害", damageValue: "60% 攻击力", toughness: 0, element: "电弧", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "闪电轰击早期版本" },
+  { name: "超频震爆", trigger: "2 秒内命中 10 次", interval: "旧稿未注明", numericalId: "11010067", damageType: "技能伤害", damageValue: "21.6% 攻击力", toughness: 0, element: "电弧", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "文案与执行资产存在版本错位" },
+  { name: "十万伏特", trigger: "累计造成 100 次伤害", interval: "旧稿未注明", numericalId: "11010068", damageType: "技能伤害", damageValue: "30% 攻击力", toughness: 0, element: "电弧", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "百万伏特早期版本" },
+  { name: "冰环疾驰", trigger: "疾跑时周期释放电环", interval: "周期触发", numericalId: "11010104", damageType: "技能伤害", damageValue: "200% 攻击力", toughness: 0, element: "电弧", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "名称写冰，Numerical 执行为电弧" },
+  { name: "飞弹支援", trigger: "技能期间每命中 3 次发射飞弹", interval: "2 秒", numericalId: "11010084", damageType: "技能伤害", damageValue: "50% 攻击力/枚", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "妙手强化", trigger: "主动技能后击杀触发元素爆炸", interval: "0.3 秒", numericalId: "11010046-50", damageType: "技能伤害", damageValue: "53.03% 攻击力", toughness: 0, element: "随武器元素", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "技能扩散旧稿" },
+  { name: "装填强化", trigger: "换弹叠层后每 5 次射击附带爆裂", interval: "不适用", numericalId: "-", damageType: "未形成独立结算", damageValue: "-", toughness: "-", element: "-", critical: "不适用", weakpoint: "不适用", weakpointMultiplier: "-", note: "执行资产当前只实现伤害 Buff" },
+  { name: "乘胜追击", trigger: "10 米外弱点命中 20 次后发射飞弹", interval: "5 秒", numericalId: "11010084", damageType: "技能伤害", damageValue: "50% 攻击力", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "层积裂变", trigger: "同属性异常达到 4 层", interval: "3 秒", numericalId: "11010076-80", damageType: "技能伤害", damageValue: "36% 攻击力", toughness: 0, element: "随异常元素", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "蜂鸣指令", trigger: "射击命中 20 次后发射 2 枚导弹", interval: "2 秒", numericalId: "11010090", damageType: "技能伤害", damageValue: "45% 攻击力/枚 × 2", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "星锤百击", trigger: "命中 100 次后释放飞虫", interval: "旧稿未注明", numericalId: "11010102", damageType: "技能伤害", damageValue: "130% 攻击力", toughness: 0, element: "腐蚀", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "同时可治疗友方" },
+  { name: "天官破煞", trigger: "弱点命中 10 次后爆破", interval: "旧稿未注明", numericalId: "11010103", damageType: "技能伤害", damageValue: "45% 攻击力", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "同时施加易伤" },
+  { name: "年轮纹波", trigger: "受到治疗或治疗他人", interval: "旧稿未注明", numericalId: "11010098", damageType: "技能伤害", damageValue: "28% 攻击力", toughness: 0, element: "腐蚀", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "以治疗目标为中心" },
+  { name: "超限爆发", trigger: "目标异常层数已满时追加", interval: "每种元素 4 秒", numericalId: "11010105-08", damageType: "技能伤害", damageValue: "46% 攻击力", toughness: 0, element: "对应异常元素", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "环震冲击", trigger: "添加异常时有 30% 概率触发", interval: "3 秒", numericalId: "11010109-12", damageType: "技能伤害", damageValue: "13.5% 攻击力", toughness: 0, element: "对应异常元素", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "持续压制", trigger: "进入隐身后每 2 秒释放", interval: "持续 8 秒", numericalId: "11010113", damageType: "技能伤害", damageValue: "20% 攻击力", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "灰烬元爆", trigger: "释放炼狱炎臂后下一发命中", interval: "旧稿未注明", numericalId: "11010114", damageType: "技能伤害", damageValue: "250% 攻击力", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "同时添加四种异常" },
+  { name: "技能震荡", trigger: "使用本武器技能后触发", interval: "5 秒", numericalId: "11010116", damageType: "技能伤害", damageValue: "8% 攻击力", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "描述仍残留 XX%，数值取执行 Numerical" },
+  { name: "冰火引爆", trigger: "火冰异常相遇时产生 5 米爆炸", interval: "2 秒", numericalId: "11010117", damageType: "技能伤害", damageValue: "27% 攻击力", toughness: 0, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "亲密间距", trigger: "单发全部弹片命中同一敌人", interval: "旧稿未注明", numericalId: "11010064", damageType: "技能伤害", damageValue: "90% 攻击力", toughness: 0, element: "电弧", critical: false, weakpoint: false, weakpointMultiplier: 1, note: "亲密距离重复原型" },
+]} />
 
 ## S2 历史核爆
 
 <Callout color="red">核爆是 S2 的历史赛季机制。现版本仍保留描述、Buff 和注册表条目，但实际执行资产已经移除；以下内容不代表现版本可用。</Callout>
 
 释放武器技能后，下一次武器射击命中时，如果目标身上累计至少 **35 层**元素异常，就会触发核爆：清除目标身上的全部元素异常，并按每层 **30% 攻击力**结算伤害，最多计算 **120 层**。
+
+<TriggerDamageCatalog entries={[
+  { name: "核爆（S2 历史）", trigger: "下一次射击命中至少 35 层元素异常的目标", interval: "基础描述 8 秒", numericalId: "执行资产已移除", damageType: "未确认", damageValue: "每层 30% 攻击力，上限 3600%", toughness: "未确认", element: "未确认", critical: null, weakpoint: null, weakpointMultiplier: null },
+]} />
 
 ```text
 核爆伤害 = min(元素异常总层数, 120) × 30% 攻击力
