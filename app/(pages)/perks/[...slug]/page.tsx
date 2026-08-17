@@ -3,8 +3,10 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
 import { mdxOptions } from "@/lib/mdx-options";
 import { PerkDetailCard } from "@/components/PerkCard";
+import { TriggerDamagePanel } from "@/components/TriggerDamageCatalog";
 import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import { RARITY_NUM_MAP } from "@/constants/common";
+import { getTriggerDamageByPerkSlug } from "@/lib/trigger-damage";
 import type { Rarity } from "@/types";
 import type { Metadata } from "next";
 
@@ -59,6 +61,7 @@ export default async function PerkDetailPage({
 
   const { content, metadata } = getMDXDetail("perks", slugPath);
   const showToc = metadata.toc !== false;
+  const triggerDamage = getTriggerDamageByPerkSlug(slugPath);
 
   const pageWidth = metadata["page-width"] as string | undefined;
   const isCustom = pageWidth && isCustomWidth(pageWidth);
@@ -97,6 +100,7 @@ export default async function PerkDetailPage({
           weaponType={metadata.weaponType}
           weaponNames={metadata.weaponNames}
         />
+        {triggerDamage && <TriggerDamagePanel entry={triggerDamage} />}
         <MultiplierProviderPanel
           source={{
             type: "perk",
