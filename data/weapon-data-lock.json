@@ -1374,6 +1374,45 @@
         },
         "row_name": "124"
       },
+      "126": {
+        "raw": {
+          "ASCTypeID": "126",
+          "AttenuationMinScale": 0.6,
+          "ChangeClipAmmoCount": 1,
+          "ClipAmmoCountBase": 75,
+          "DistanceBeginAttenuationBase": 4900,
+          "DistanceEndAttenuationBase": 6000,
+          "EquipAnimRate": 0,
+          "EquipTimeBase": 0.335,
+          "FireBoltTimeBase": 0,
+          "FireIntervalBase": 0.0966,
+          "HaveInfinityAmmo": 0,
+          "KeepPreFireTime": 0,
+          "MaxAmmoCount": 750,
+          "MaxGunRPMRatio": 0.5,
+          "OverchargeActivationTime": 0,
+          "OverchargeDeactivationTime": 0,
+          "ParamLockBitMask": 0,
+          "PreFireTimeBase": 0,
+          "RPMAdjustParamList": "FireInterval;SubFireInterval",
+          "SplinterNum": 1,
+          "SubFireCountPerShot": 1,
+          "SubFireIntervalBase": 0,
+          "WeakpointLevel1DamageRatio": 1,
+          "WeakpointLevel2DamageRatio": 1,
+          "WeaponAimingMovingScale": 0.8,
+          "WeaponAmmoCost": 1,
+          "WeaponChargeStrengthOrPreheatMovingScale": 1,
+          "WeaponCrouchingMovingScale": 1,
+          "WeaponFiringMovingScale": 1,
+          "WeaponHitDamageAttenuationCurve": null,
+          "WeaponMovingScaleBase": 0.9,
+          "WeaponReloadMovingScale": 1,
+          "WeaponSprintMovingScaleBase": 0.9,
+          "WeaponZoomMovingScaleBase": 1
+        },
+        "row_name": "126"
+      },
       "127": {
         "raw": {
           "ASCTypeID": "127",
@@ -3284,6 +3323,45 @@
           "WeaponZoomMovingScaleBase": 1
         },
         "row_name": "318"
+      },
+      "323": {
+        "raw": {
+          "ASCTypeID": "323",
+          "AttenuationMinScale": 0.4,
+          "ChangeClipAmmoCount": 1,
+          "ClipAmmoCountBase": 24,
+          "DistanceBeginAttenuationBase": 1800,
+          "DistanceEndAttenuationBase": 4000,
+          "EquipAnimRate": 0,
+          "EquipTimeBase": 0.5,
+          "FireBoltTimeBase": 0,
+          "FireIntervalBase": 0.166,
+          "HaveInfinityAmmo": 0,
+          "KeepPreFireTime": 0,
+          "MaxAmmoCount": 216,
+          "MaxGunRPMRatio": 0.5,
+          "OverchargeActivationTime": 0,
+          "OverchargeDeactivationTime": 0,
+          "ParamLockBitMask": 0,
+          "PreFireTimeBase": 0,
+          "RPMAdjustParamList": "FireInterval;SubFireInterval",
+          "SplinterNum": 1,
+          "SubFireCountPerShot": 1,
+          "SubFireIntervalBase": 0,
+          "WeakpointLevel1DamageRatio": 1,
+          "WeakpointLevel2DamageRatio": 1,
+          "WeaponAimingMovingScale": 0.8,
+          "WeaponAmmoCost": 1,
+          "WeaponChargeStrengthOrPreheatMovingScale": 1,
+          "WeaponCrouchingMovingScale": 1,
+          "WeaponFiringMovingScale": 1,
+          "WeaponHitDamageAttenuationCurve": null,
+          "WeaponMovingScaleBase": 0.9,
+          "WeaponReloadMovingScale": 1,
+          "WeaponSprintMovingScaleBase": 0.9,
+          "WeaponZoomMovingScaleBase": 1
+        },
+        "row_name": "323"
       },
       "324": {
         "raw": {
@@ -7022,6 +7100,81 @@
         },
         "row_name": "124"
       },
+      "126": {
+        "raw": {
+          "AccuracyRatio_Climb": 1.2,
+          "AccuracyRatio_Jump": 1.4,
+          "AccuracyRatio_Stand": 1,
+          "AccuracyRatio_StandWalk": 1.2,
+          "AutoChangeClipAfterFireInterval": 0,
+          "BulletChainDefaultAngle": 0,
+          "BulletChainDefaultExpandOffset": 0,
+          "BulletChainFireModifierInc": 0,
+          "CrossHairJumpMaxAngle": 0.15,
+          "CrossHairJumpSpreadScale": 1,
+          "CrosshairAccuracyRatio_Climb": 1,
+          "CrosshairAccuracyRatio_Jump": 1.9,
+          "CrosshairAccuracyRatio_Stand": 1.5,
+          "CrosshairAccuracyRatio_StandWalk": 1.7,
+          "CrosshairChainMaxDescendSpeed": 1,
+          "CrosshairChainMaxScreenScale": 0.12,
+          "CrosshairChainScale": 0.6,
+          "CrosshairDefaultExpandOffset": 0,
+          "CrosshairFireModifierInc": 0.02,
+          "CrosshairMaxDescendInterval": 0.12,
+          "CrosshairMaxDescendSpeed": 2,
+          "CrosshairMaxExpandRatio": 1.1,
+          "CrosshairMaxScreenScale": 0.1,
+          "CrouchingShotSpreadRatio": 0.6,
+          "FeelLockBitMask": 0,
+          "FireBeforeBoltCount": 0,
+          "HDCrosshairChainScaleRatio": 1,
+          "HDCrosshairScaleRatio": 1,
+          "HDRecoilScaleRatio": 1,
+          "HDSpreadScaleRatio": 1,
+          "HitFeedbackSpringDamping": 0.75,
+          "HitFeedbackSpringFrequency": 5.5,
+          "HitFeedbackStopPeakThresholdDeg": 0.05,
+          "HitMarkRotationMaxAngle": 5.5,
+          "HitMarkRotationOppositeChance": 1,
+          "LowAmmoPercent": 0.3,
+          "LowCarriedAmmoPercent": 0.2,
+          "NormalShotSpreadRatioBase": 0.7,
+          "RecoilDropPct_Hori": 1,
+          "RecoilDropPct_Verti": 1,
+          "RecoilRecoverTime": 1,
+          "RecoilReturnTime": 0.2,
+          "RecoilScaleBase_Hori": 0.8,
+          "RecoilScaleBase_Vert": 0.7,
+          "RecoilScale_Jump": 1,
+          "RecoilScale_Stand": 1,
+          "RecoilScale_StandWalk": 1,
+          "RecoilSideRange": 10,
+          "RecoilTime": 1,
+          "RecoilUpTotalMax": 20,
+          "RunToFireInterval": 0.12,
+          "ShotCooldownTime": 0.2,
+          "SpecificWeaponCrosshairAlignment": 2,
+          "SpreadDecreaseSpeed_Firing": 2,
+          "SpreadMax": 1.3,
+          "SpreadMin": 1,
+          "SpreadModifierBase": 0.05,
+          "SpreadModifierInc": 0.05,
+          "SpreadModifierMax": 0.6,
+          "SpreadReturnTime": 0,
+          "WeaponAfterChangeClipTimeBase": 0,
+          "WeaponBeforeChangeClipTimeBase": 0,
+          "WeaponChangeClipEndToFireTime": 0.305,
+          "WeaponChangeClipTimeBase": 2.5,
+          "WeaponFeelParamID": "126",
+          "ZoomInChangeLODTimeBase": 0.1,
+          "ZoomOutChangeLODTimeBase": 0.1,
+          "ZoomOutTimeBase": 0.45,
+          "ZoomTimeBase": 0.47,
+          "ZoomingShotSpreadRatio": 0.1
+        },
+        "row_name": "126"
+      },
       "127": {
         "raw": {
           "AccuracyRatio_Climb": 1.2,
@@ -10697,6 +10850,81 @@
         },
         "row_name": "318"
       },
+      "323": {
+        "raw": {
+          "AccuracyRatio_Climb": 1.2,
+          "AccuracyRatio_Jump": 1.4,
+          "AccuracyRatio_Stand": 1,
+          "AccuracyRatio_StandWalk": 1.2,
+          "AutoChangeClipAfterFireInterval": 0,
+          "BulletChainDefaultAngle": 0,
+          "BulletChainDefaultExpandOffset": 0,
+          "BulletChainFireModifierInc": 0,
+          "CrossHairJumpMaxAngle": 0.15,
+          "CrossHairJumpSpreadScale": 1,
+          "CrosshairAccuracyRatio_Climb": 1,
+          "CrosshairAccuracyRatio_Jump": 1.2,
+          "CrosshairAccuracyRatio_Stand": 1,
+          "CrosshairAccuracyRatio_StandWalk": 1.2,
+          "CrosshairChainMaxDescendSpeed": 5,
+          "CrosshairChainMaxScreenScale": 1,
+          "CrosshairChainScale": 0.8,
+          "CrosshairDefaultExpandOffset": 0,
+          "CrosshairFireModifierInc": 0.02,
+          "CrosshairMaxDescendInterval": 0.1,
+          "CrosshairMaxDescendSpeed": 3,
+          "CrosshairMaxExpandRatio": 5,
+          "CrosshairMaxScreenScale": 1,
+          "CrouchingShotSpreadRatio": 0.6,
+          "FeelLockBitMask": 0,
+          "FireBeforeBoltCount": 0,
+          "HDCrosshairChainScaleRatio": 1,
+          "HDCrosshairScaleRatio": 1,
+          "HDRecoilScaleRatio": 1,
+          "HDSpreadScaleRatio": 1,
+          "HitFeedbackSpringDamping": 0.75,
+          "HitFeedbackSpringFrequency": 5.5,
+          "HitFeedbackStopPeakThresholdDeg": 0.05,
+          "HitMarkRotationMaxAngle": 5.5,
+          "HitMarkRotationOppositeChance": 1,
+          "LowAmmoPercent": 0.3,
+          "LowCarriedAmmoPercent": 0.2,
+          "NormalShotSpreadRatioBase": 1,
+          "RecoilDropPct_Hori": 1,
+          "RecoilDropPct_Verti": 1,
+          "RecoilRecoverTime": 1,
+          "RecoilReturnTime": 0.16,
+          "RecoilScaleBase_Hori": 0.8,
+          "RecoilScaleBase_Vert": 0.7,
+          "RecoilScale_Jump": 1,
+          "RecoilScale_Stand": 1,
+          "RecoilScale_StandWalk": 1,
+          "RecoilSideRange": 10,
+          "RecoilTime": 0.14,
+          "RecoilUpTotalMax": 15,
+          "RunToFireInterval": 0.08,
+          "ShotCooldownTime": 0.8,
+          "SpecificWeaponCrosshairAlignment": 4.5,
+          "SpreadDecreaseSpeed_Firing": 4,
+          "SpreadMax": 10,
+          "SpreadMin": 0.7,
+          "SpreadModifierBase": 0.1,
+          "SpreadModifierInc": 0.18,
+          "SpreadModifierMax": 0.5,
+          "SpreadReturnTime": 0,
+          "WeaponAfterChangeClipTimeBase": 0,
+          "WeaponBeforeChangeClipTimeBase": 0,
+          "WeaponChangeClipEndToFireTime": 0.359,
+          "WeaponChangeClipTimeBase": 1.2,
+          "WeaponFeelParamID": "323",
+          "ZoomInChangeLODTimeBase": 0.1,
+          "ZoomOutChangeLODTimeBase": 0.1,
+          "ZoomOutTimeBase": 0.192,
+          "ZoomTimeBase": 0.192,
+          "ZoomingShotSpreadRatio": 0
+        },
+        "row_name": "323"
+      },
       "324": {
         "raw": {
           "AccuracyRatio_Climb": 1.2,
@@ -14324,6 +14552,152 @@
           "property_style_id": 0
         },
         "row_name": "20101000016"
+      },
+      "20101000019": {
+        "raw": {
+          "AOEID": 0,
+          "Accuracy": 17,
+          "AccuracyInt": 79,
+          "Active_Skill_Abbreviation": "",
+          "Active_Skill_Detail": "",
+          "Active_Skill_Tag": {
+            "CultureInvariantString": null
+          },
+          "AdaptNodeOffset": {
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "AttrDisplayList": "18",
+          "ChargeTime": 0,
+          "ColumnChart": "",
+          "Description": {
+            "Key": "20101000019_Description",
+            "LocalizedString": "作为在过去被誉为传奇武器的“雷霆999”，在灾后现世之初就受到多方势力的觊觎，以至于不幸受损于各方争抢之中。多年之后才在学会的竭力修复下，再度重现于世。轻扣扳机，眼见蓝色火焰萦绕着闪电喷射而出，宛如历史在重演。可以说结合斯格明石科技全新升级的“雷霆999”又一次涅槃重生。",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "作为在过去被誉为传奇武器的“雷霆999”，在灾后现世之初就受到多方势力的觊觎，以至于不幸受损于各方争抢之中。多年之后才在学会的竭力修复下，再度重现于世。轻扣扳机，眼见蓝色火焰萦绕着闪电喷射而出，宛如历史在重演。可以说结合斯格明石科技全新升级的“雷霆999”又一次涅槃重生。"
+          },
+          "EnergyObtainType": 0,
+          "EquipAttrList": "",
+          "GetDescription": "",
+          "GoldWeaponBackground": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "InfusionAttrViewList": "",
+          "InfusionMaxLevel": 0,
+          "InfusionPartList": "",
+          "ItemID": 20101000019,
+          "ItemInfoDes": {
+            "CultureInvariantString": null
+          },
+          "LaserAmmoAdjust": 1,
+          "MGE_ID_list_1": "1001017501_20",
+          "MGE_ID_list_1_tag": {
+            "Key": "20101000019_MGE_ID_list_1_tag",
+            "LocalizedString": "主动激活;爆发",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "主动激活;爆发"
+          },
+          "MGE_ID_list_2": "",
+          "MGE_ID_list_2_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_3": "",
+          "MGE_ID_list_3_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_4": "1001017001_10",
+          "MGE_ID_list_4_tag": {
+            "Key": "20101000019_MGE_ID_list_4_tag",
+            "LocalizedString": "控温",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "控温"
+          },
+          "MGE_ID_list_5": "",
+          "MGE_ID_list_5_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_6": "",
+          "MGE_ID_list_6_tag": {
+            "CultureInvariantString": null
+          },
+          "Manufacturer": "",
+          "MaxAmplifierLevel": 0,
+          "MaxGradeLevel": 1,
+          "Mod_Num": 3,
+          "ModelID": 20001000018,
+          "ModelOffset": {
+            "X": -2.012695,
+            "Y": 0,
+            "Z": 0.449465
+          },
+          "ModelRotation": {
+            "Pitch": 0,
+            "Roll": 0,
+            "Yaw": 90
+          },
+          "NotGetAttrDisplayList": "102017:47;202500:621",
+          "PVEAttr": "",
+          "PVPAttr": "",
+          "Passive_Skill1_Abbreviation": "",
+          "Passive_Skill1_Detail": "",
+          "Passive_Skill1_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill2_Abbreviation": "",
+          "Passive_Skill2_Detail": "",
+          "Passive_Skill2_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill3_Abbreviation": "",
+          "Passive_Skill3_Detail": "",
+          "Passive_Skill3_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill4_Abbreviation": "",
+          "Passive_Skill4_Detail": "",
+          "Passive_Skill4_Tag": {
+            "CultureInvariantString": null
+          },
+          "Quality": 2,
+          "Radar_Accuracy": 7.4,
+          "Radar_Damage": 5.3,
+          "Radar_Handling": 7.5,
+          "Radar_Mobility": 6.9,
+          "Radar_Range": 6.2,
+          "Radar_Reload": 9.9,
+          "Scaling_Ratio": 0.78,
+          "Score": 0,
+          "ShowAttr": "",
+          "SpecialFireIntervalAdjust": 1,
+          "Stability": 18,
+          "StabilityInt": 55,
+          "WeaponBaseAttrList": "",
+          "WeaponMODConfigID": 15,
+          "WeaponType": 6,
+          "WeaponUpgradeConfigID": 1,
+          "Weapon_Distance_Des": {
+            "Key": "20101000019_Weapon_Distance_Des",
+            "LocalizedString": "中距离单体",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "中距离单体"
+          },
+          "Weapon_Scenarios_Des": {
+            "Key": "20101000019_Weapon_Scenarios_Des",
+            "LocalizedString": "该武器拥有中距离射程和较好的精准度，能够对中距离的单体目标进行精确打击。",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "该武器拥有中距离射程和较好的精准度，能够对中距离的单体目标进行精确打击。"
+          },
+          "Weapon_Scope": {
+            "Key": "20101000019_Weapon_Scope",
+            "LocalizedString": "中倍镜",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "中倍镜"
+          },
+          "property_style_id": 0
+        },
+        "row_name": "20101000019"
       },
       "20101000024": {
         "raw": {
@@ -18079,6 +18453,149 @@
           "property_style_id": 0
         },
         "row_name": "20107000008"
+      },
+      "20107000014": {
+        "raw": {
+          "AOEID": 0,
+          "Accuracy": 17,
+          "AccuracyInt": 72,
+          "Active_Skill_Abbreviation": "",
+          "Active_Skill_Detail": "",
+          "Active_Skill_Tag": {
+            "CultureInvariantString": null
+          },
+          "AdaptNodeOffset": {
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "AttrDisplayList": "18",
+          "ChargeTime": 0,
+          "ColumnChart": "",
+          "Description": {
+            "CultureInvariantString": null
+          },
+          "EnergyObtainType": 0,
+          "EquipAttrList": "",
+          "GetDescription": "",
+          "GoldWeaponBackground": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "InfusionAttrViewList": "",
+          "InfusionMaxLevel": 0,
+          "InfusionPartList": "",
+          "ItemID": 20107000014,
+          "ItemInfoDes": {
+            "CultureInvariantString": null
+          },
+          "LaserAmmoAdjust": 1,
+          "MGE_ID_list_1": "1007005501_20",
+          "MGE_ID_list_1_tag": {
+            "Key": "20107000014_MGE_ID_list_1_tag",
+            "LocalizedString": "主动;爆发;操控",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "主动;爆发;操控"
+          },
+          "MGE_ID_list_2": "",
+          "MGE_ID_list_2_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_3": "",
+          "MGE_ID_list_3_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_4": "1007005001_10",
+          "MGE_ID_list_4_tag": {
+            "Key": "20107000014_MGE_ID_list_4_tag",
+            "LocalizedString": "充能",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "充能"
+          },
+          "MGE_ID_list_5": "",
+          "MGE_ID_list_5_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_6": "",
+          "MGE_ID_list_6_tag": {
+            "CultureInvariantString": null
+          },
+          "Manufacturer": "",
+          "MaxAmplifierLevel": 0,
+          "MaxGradeLevel": 3,
+          "Mod_Num": 3,
+          "ModelID": 20007000025,
+          "ModelOffset": {
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "ModelRotation": {
+            "Pitch": 0,
+            "Roll": 0,
+            "Yaw": 0
+          },
+          "NotGetAttrDisplayList": "102017:36;113021:0.01",
+          "PVEAttr": "",
+          "PVPAttr": "",
+          "Passive_Skill1_Abbreviation": "",
+          "Passive_Skill1_Detail": "",
+          "Passive_Skill1_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill2_Abbreviation": "",
+          "Passive_Skill2_Detail": "",
+          "Passive_Skill2_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill3_Abbreviation": "",
+          "Passive_Skill3_Detail": "",
+          "Passive_Skill3_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill4_Abbreviation": "",
+          "Passive_Skill4_Detail": "",
+          "Passive_Skill4_Tag": {
+            "CultureInvariantString": null
+          },
+          "Quality": 2,
+          "Radar_Accuracy": 6,
+          "Radar_Damage": 10,
+          "Radar_Handling": 7,
+          "Radar_Mobility": 6,
+          "Radar_Range": 10,
+          "Radar_Reload": 9,
+          "Scaling_Ratio": 1.3,
+          "Score": 0,
+          "ShowAttr": "",
+          "SpecialFireIntervalAdjust": 1,
+          "Stability": 18,
+          "StabilityInt": 55,
+          "WeaponBaseAttrList": "",
+          "WeaponMODConfigID": 75,
+          "WeaponType": 7,
+          "WeaponUpgradeConfigID": 1,
+          "Weapon_Distance_Des": {
+            "Key": "20107000014_Weapon_Distance_Des",
+            "LocalizedString": "近距离单体",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "近距离单体"
+          },
+          "Weapon_Scenarios_Des": {
+            "Key": "20107000014_Weapon_Scenarios_Des",
+            "LocalizedString": "该武器的射程较近，拥有高精准度和较大威力，能够对近距离的单体目标进行精准打击。",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "该武器的射程较近，拥有高精准度和较大威力，能够对近距离的单体目标进行精准打击。"
+          },
+          "Weapon_Scope": {
+            "Key": "20107000014_Weapon_Scope",
+            "LocalizedString": "低倍镜",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "低倍镜"
+          },
+          "property_style_id": 0
+        },
+        "row_name": "20107000014"
       },
       "20107000015": {
         "raw": {
@@ -27945,6 +28462,71 @@
         },
         "row_name": "120100110_1"
       },
+      "lc:120100180_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "铁砧",
+          "ElementAddRate": 0.103,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Shock",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 1.3,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.049,
+          "HpFloatCoef": 0,
+          "HurtableBase": 1.3,
+          "ImpulseBase": 1.6,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 1.6,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.3,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120100180
+        },
+        "row_name": "120100180_1"
+      },
       "lc:120100190_1": {
         "raw": {
           "CameraHitFeedBackTag": {
@@ -31929,6 +32511,71 @@
           "id": 120600300
         },
         "row_name": "120600300_1"
+      },
+      "lc:120700002_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "蓝阶手枪 - 新手关",
+          "ElementAddRate": 0,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Kinetic",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 2.7,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.088,
+          "HpFloatCoef": 0,
+          "HurtableBase": 2.7,
+          "ImpulseBase": 2.6,
+          "KnockUpDistance1": 2500,
+          "KnockUpDistance2": 10000,
+          "KnockUpLevel1": 1,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 2.6,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.3,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120700002
+        },
+        "row_name": "120700002_1"
       },
       "lc:120700010_1": {
         "raw": {
@@ -46769,6 +47416,71 @@
         },
         "row_name": "120100110_1"
       },
+      "td:120100180_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "铁砧",
+          "ElementAddRate": 0.103,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Shock",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 1.3,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.049,
+          "HpFloatCoef": 0,
+          "HurtableBase": 1.3,
+          "ImpulseBase": 1.6,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 1.6,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.3,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120100180
+        },
+        "row_name": "120100180_1"
+      },
       "td:120100190_1": {
         "raw": {
           "CameraHitFeedBackTag": {
@@ -50691,6 +51403,71 @@
           "id": 120600300
         },
         "row_name": "120600300_1"
+      },
+      "td:120700002_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "蓝阶手枪 - 新手关",
+          "ElementAddRate": 0,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Kinetic",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 2.7,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.088,
+          "HpFloatCoef": 0,
+          "HurtableBase": 2.7,
+          "ImpulseBase": 2.6,
+          "KnockUpDistance1": 2500,
+          "KnockUpDistance2": 10000,
+          "KnockUpLevel1": 1,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 2.6,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.3,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120700002
+        },
+        "row_name": "120700002_1"
       },
       "td:120700010_1": {
         "raw": {
