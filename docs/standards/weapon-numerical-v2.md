@@ -66,6 +66,7 @@ explosion_range:
 | `section` | `fire_mode` / `skill` / `special` / `variant` / `dot` / `melee` |
 | `inherits` | 可选，同一武器内父来源 ID |
 | `label` | 可选形态分组标签，不改变 Settlement，禁止用作伤害或恢复类型名称 |
+| `burst_limit` | 可选，弹匣或技能状态限制的连发上限；连发间隔仍由 ASC 提供 |
 
 每项必须且只能使用 `source` 或 `sources`。
 

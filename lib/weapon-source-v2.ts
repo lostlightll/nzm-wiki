@@ -13,6 +13,11 @@ const positiveSafeIntegerSchema = z
   .int()
   .positive()
   .max(Number.MAX_SAFE_INTEGER);
+const burstLimitSchema = z
+  .number()
+  .int()
+  .min(2)
+  .max(Number.MAX_SAFE_INTEGER);
 const nonNegativeSafeIntegerSchema = z
   .number()
   .int()
@@ -215,6 +220,7 @@ export const damageSourceV2Schema = z
     section: damageSectionSchema,
     inherits: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/).optional(),
     label: nonEmptyStringSchema.optional(),
+    burst_limit: burstLimitSchema.optional(),
     source: weaponModeSourceSchema.optional(),
     sources: modeSourcesSchema.optional(),
   })
@@ -235,6 +241,7 @@ export const projectedDamageSourceV2Schema = z.strictObject({
   inherits: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/).optional(),
   source: weaponDataSourceRefSchema.optional(),
   label: nonEmptyStringSchema.optional(),
+  burst_limit: burstLimitSchema.optional(),
   fire_interval: finiteNonNegativeSchema.optional(),
   attack_interval: finiteNonNegativeSchema.optional(),
   attack_count: positiveSafeIntegerSchema.optional(),
@@ -590,6 +597,7 @@ function projectParsedWeaponSourceV2(
       section: source.section,
       inherits: source.inherits,
       label: source.label,
+      burst_limit: source.burst_limit,
       source: projectModeSource(modeSource, table),
       fire_interval: modeSource.fire_interval,
       attack_interval: modeSource.attack_interval,

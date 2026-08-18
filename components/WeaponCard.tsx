@@ -158,6 +158,24 @@ export function formatBurstCycle(
     : `${count} 发 / ${formatSeconds(duration)}`;
 }
 
+export function formatLimitedBurstDuration(
+  limit: number | undefined,
+  subFireInterval: number | undefined,
+): string {
+  if (
+    limit === undefined ||
+    !Number.isInteger(limit) ||
+    limit <= 1 ||
+    subFireInterval === undefined ||
+    !Number.isFinite(subFireInterval) ||
+    subFireInterval <= 0
+  ) {
+    return "-";
+  }
+
+  return formatSeconds((limit - 1) * subFireInterval);
+}
+
 export function formatFireRate(
   rpm: number | undefined,
   interval: number | undefined,
@@ -770,7 +788,21 @@ function ModeStats({
     subFireInterval,
   );
   const cadenceStats =
-    burstCycleDuration === undefined ? (
+    mode.burstLimit !== undefined ? (
+      <>
+        <Stat label="连发上限" value={`${mode.burstLimit} 发`} />
+        <Stat
+          label="连发间隔"
+          value={
+            subFireInterval === undefined ? "-" : formatSeconds(subFireInterval)
+          }
+        />
+        <Stat
+          label="连发耗时"
+          value={formatLimitedBurstDuration(mode.burstLimit, subFireInterval)}
+        />
+      </>
+    ) : burstCycleDuration === undefined ? (
       <>
         <Stat label="射速" value={formatFireRate(rpm, interval, undefined, undefined)} />
         <Stat

@@ -263,6 +263,7 @@ export interface ResolvedDamageSource {
   name: string;
   section: DamageSection;
   label?: string;
+  burstLimit?: number;
   damage: {
     base: ResolvedField<number>;
     impulse: ResolvedField<number>;
@@ -2856,6 +2857,7 @@ function assembleDamageSource(
     name: source.name,
     section: source.section,
     label: effective.label,
+    burstLimit: source.burst_limit,
     ...numerical.fields,
     fire: behavior.fire,
     attack: behavior.attack,

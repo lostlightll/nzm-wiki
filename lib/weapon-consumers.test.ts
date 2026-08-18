@@ -352,6 +352,22 @@ test("Task 7.7 representative mappings remain fixed across Resolver and consumer
   const darkNight = await requireWeapon("暗夜之殇", "lc");
   assert.equal(darkNight.activeSkill?.id, 5100101);
   assert.equal(getResolvedFieldValue(darkNight.activeSkill!.chargeTime), 45);
+  const darkNightDetail = toWeaponDetailData(darkNight);
+  const darkNightShot = darkNightDetail.damageSources.find(
+    (source) => source.id === "pu-tong-she-ji",
+  );
+  assert.ok(darkNightShot);
+  assert.equal(darkNightShot.burstLimit, undefined);
+  assert.equal(getResolvedFieldValue(darkNightShot.fire.interval), 0.43);
+  assert.equal(Math.round(getResolvedFieldValue(darkNightShot.fire.rpm)!), 140);
+
+  const cowboyStandoff = darkNightDetail.damageSources.find(
+    (source) => source.id === "niu-zai-ju-he",
+  );
+  assert.ok(cowboyStandoff);
+  assert.equal(cowboyStandoff.section, "variant");
+  assert.equal(cowboyStandoff.burstLimit, 6);
+  assert.equal(getResolvedFieldValue(cowboyStandoff.fire.subFireInterval), 0.12);
 
   const fireGod = await requireWeapon("火神炎帝", "lc");
   assert.equal(fireGod.activeSkill?.id, 5103601);

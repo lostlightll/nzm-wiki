@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { formatBurstCycle, formatFireRate } from "./WeaponCard";
+import {
+  formatBurstCycle,
+  formatFireRate,
+  formatLimitedBurstDuration,
+} from "./WeaponCard";
 
 test("formatFireRate averages each burst over its complete firing cycle", () => {
   assert.equal(formatFireRate(400, 0.15, 3, 0.045), "750");
@@ -24,4 +28,11 @@ test("formatBurstCycle hides non-burst and unavailable data", () => {
   assert.equal(formatBurstCycle(1, 0.15, 0), "-");
   assert.equal(formatBurstCycle(undefined, undefined, undefined), "-");
   assert.equal(formatBurstCycle(3, 0.15, undefined), "-");
+});
+
+test("formatLimitedBurstDuration spans from the first shot to the last", () => {
+  assert.equal(formatLimitedBurstDuration(6, 0.12), "0.6s");
+  assert.equal(formatLimitedBurstDuration(3, 0.045), "0.09s");
+  assert.equal(formatLimitedBurstDuration(1, 0.12), "-");
+  assert.equal(formatLimitedBurstDuration(6, undefined), "-");
 });

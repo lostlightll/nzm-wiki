@@ -50,6 +50,29 @@ test("公共 source 分别投影为 LC/TD 引用", () => {
   });
 });
 
+test("来源级连发上限投影到所有声明模式", () => {
+  const parsed = validateWeaponSourceV2(
+    weapon({
+      damage_sources: [
+        {
+          id: "primary",
+          name: "技能连发",
+          section: "fire_mode",
+          burst_limit: 6,
+          source: {
+            prototype_mode: 0,
+            numerical: { id: 1, level: 1 },
+            asc_type_id: "10",
+          },
+        },
+      ],
+    }),
+  );
+
+  assert.equal(projectWeaponSourceV2(parsed, "lc").damage_sources[0].burst_limit, 6);
+  assert.equal(projectWeaponSourceV2(parsed, "td").damage_sources[0].burst_limit, 6);
+});
+
 test("sources 支持不同 Numerical ID 且不跨模式回退", () => {
   const parsed = validateWeaponSourceV2(
     weapon({
