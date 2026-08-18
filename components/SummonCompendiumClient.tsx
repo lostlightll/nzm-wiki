@@ -374,54 +374,58 @@ function MechanicCard({
 }
 
 function BuffCard({ buff }: { buff: SummonBuffView }) {
+  const hasMultiplierRelations = buff.multiplierRelations.length > 0;
   return (
     <Link
       href={buff.href}
-      className="group flex min-w-0 gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/35 p-2.5 hover:border-cyan-800 hover:bg-cyan-950/10 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+      className="group relative flex min-w-0 gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/35 p-2.5 hover:border-cyan-800 hover:bg-cyan-950/10 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
     >
       <AssetIcon src={buff.icon} alt="" size={36} className="h-9 w-9" />
       <div className="min-w-0 flex-1">
-        <div>
-          <span className="text-xs font-semibold leading-5 text-zinc-200 group-hover:text-cyan-200">{buff.name}</span>
+        <div className={`-mt-0.5 min-w-0 leading-4 ${hasMultiplierRelations ? "pr-20" : ""}`}>
+          <span className="text-xs font-semibold leading-4 text-zinc-200 group-hover:text-cyan-200">{buff.name}</span>
         </div>
         <p className="m-0 line-clamp-2 text-[11px] leading-4 text-zinc-500">{buff.note ?? buff.summary}</p>
-        <div className="mt-1 flex flex-wrap items-center gap-1">
-          <span className="text-[10px] text-zinc-600">{buff.durationLabel} · {buff.stackLabel}</span>
+        <span className="mt-1 block text-[10px] text-zinc-600">{buff.durationLabel}</span>
+      </div>
+      {hasMultiplierRelations && (
+        <div className="absolute right-2.5 top-2.5 flex flex-wrap items-center justify-end gap-1">
           {buff.multiplierRelations.map((relation) => (
             <span
               key={`${buff.buffId}:${relation.modifierTypeId}`}
               className={`rounded border px-1.5 py-0.5 text-[10px] ${getMultiplierFactorStyle(relation.factorId)}`}
             >
-              {relation.displayLabel}
+              {relation.factorLabel}
             </span>
           ))}
         </div>
-      </div>
-      <ChevronRight aria-hidden="true" className="mt-1 h-3.5 w-3.5 shrink-0 text-zinc-700 group-hover:text-cyan-400" />
+      )}
     </Link>
   );
 }
 
 function PerkCard({ perk }: { perk: SummonPerkView }) {
+  const hasMultiplierRelations = perk.multiplierRelations.length > 0;
   return (
-    <article className="group flex min-w-0 gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/35 p-2.5 hover:border-violet-800 hover:bg-violet-950/10">
+    <article className="group relative flex min-w-0 gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/35 p-2.5 hover:border-violet-800 hover:bg-violet-950/10">
       <AssetIcon src={perk.icon} alt="" size={36} className="h-9 w-9" />
       <div className="min-w-0 flex-1">
-        <div className="flex flex-wrap items-center gap-1.5">
-          <Link
-            href={perk.href}
-            className="inline-flex min-h-6 items-center gap-1 text-xs font-semibold leading-5 text-zinc-200 group-hover:text-violet-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
-          >
-            {perk.name}
-            <ChevronRight aria-hidden="true" className="h-3.5 w-3.5 text-zinc-700 group-hover:text-violet-400" />
-          </Link>
-          <span className="text-[10px] text-zinc-600">{perk.slot} 号槽</span>
+        <div className={`flex min-w-0 items-start ${hasMultiplierRelations ? "pr-24" : ""}`}>
+          <div className="flex min-w-0 flex-wrap items-center gap-1.5">
+            <Link
+              href={perk.href}
+              className="inline-flex min-w-0 items-center text-xs font-semibold leading-4 text-zinc-200 group-hover:text-violet-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+            >
+              {perk.name}
+            </Link>
+            <span className="shrink-0 text-[10px] text-zinc-600">{perk.slot} 号槽</span>
+          </div>
         </div>
         {perk.description && (
           <p className="m-0 line-clamp-2 text-[11px] leading-4 text-zinc-500">{perk.description}</p>
         )}
-        <MultiplierBadges relations={perk.multiplierRelations} variant="catalog-compact" className="mt-1" />
       </div>
+      <MultiplierBadges relations={perk.multiplierRelations} variant="catalog-compact" className="absolute right-2.5 top-2.5 justify-end" />
     </article>
   );
 }
