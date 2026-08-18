@@ -4,24 +4,10 @@
   "scope": "仅收录猎场基础配置中有可追踪召唤、攻击或部署证据的对象；配置存在不等于所有玩法与当前轮换都可触发。",
   "sharedSystems": [
     {
-      "id": "summon-damage-rule",
-      "name": "召唤伤害不是角色面板的完整复制",
-      "kind": "attack",
-      "summary": "召唤物仅继承已确认桥接的属性；伤害行标记的结算类型、暴击与弱点许可不等同于角色面板的完整继承。",
-      "details": [
-        "Bully 无人机与哈士奇的属性桥可直接确认继承攻击力、伤害倍率和全伤害倍率，未发现武器伤害、元素伤害、暴击或弱点属性的完整桥接。",
-        "“适用乘区”仅表示伤害类型支持对应乘区，不证明角色当前的增伤来源已经传递给召唤物。"
-      ],
-      "facts": [
-        { "label": "猎场基准攻击", "value": "500", "note": "武器召唤伤害按系数 × 500 展示基准值" }
-      ],
-      "searchTerms": ["召唤物伤害", "属性继承", "攻击力", "大稀释乘区", "元素乘区", "易伤乘区"]
-    },
-    {
       "id": "summon-gacha",
       "name": "S3 召唤扭蛋机",
       "kind": "buff",
-      "summary": "召唤流的通用赛季被动：白蛋加移速、蓝蛋回血、紫蛋造成范围伤害并施加 15% 易伤、金蛋让召唤伤害提高 270%。",
+      "summary": "召唤流的通用赛季被动，随机获得白、蓝、紫或金蛋效果。",
       "details": [
         "紫蛋：5 米范围，每 2 秒造成一次 120% 玩家攻击力伤害，并让敌人受到伤害加深 15%，持续 5 秒。",
         "金蛋：召唤物攻击力提高 270%，持续 10 秒。扭蛋池为 1 金、2 紫、4 蓝、8 白。",
@@ -58,7 +44,6 @@
     "slot-4/定时震波"
   ],
   "sharedTalentRefs": [
-    { "season": "s3", "tree": "zero", "id": "2030104", "kind": "passive", "relation": "shared" },
     { "season": "s3", "tree": "zero", "id": "3002308", "kind": "node", "relation": "enhances" }
   ],
   "summons": [
@@ -69,7 +54,7 @@
       "kind": "deployable",
       "kindLabel": "手动架设",
       "evidenceLevel": "published",
-      "summary": "技能会生成一台独立炮台 Actor，炮台不耗弹药并按玩家给出的目标点开火。它不是默认自动宠物；装备自追踪炮塔后才会自动索敌。",
+      "summary": "技能会生成一台独立炮台。炮台不耗弹药，基础由玩家指定目标；装备自追踪炮塔后自动索敌。",
       "icon": "/webp/icons/weapons/normal/火神炎帝.webp",
       "source": { "label": "武器页 · 火神炎帝", "href": "/weapons/火神炎帝", "type": "weapon" },
       "deployment": "主动技能在机枪与架设形态间切换",
@@ -115,7 +100,7 @@
           "role": "持续直击",
           "lockSource": "emplacement-shot",
           "rate": { "intervalSeconds": 0.06, "roundsPerMinute": 1000, "attacksPerAction": 1, "label": "连续射击" },
-          "note": "专用 Numerical 120600370：8% 攻击力，49 米开始衰减、60 米降至 60%；火力宣泄的 +200% 发生在切回机枪模式后的命中。"
+          "note": "Numerical 120600370；49 米开始衰减、60 米降至 60%；火力宣泄的 +200% 发生在切回机枪模式后的命中。"
         }
       ],
       "buffRefs": [
@@ -125,9 +110,7 @@
       "perkSlugs": ["slot-4/火力阵线", "slot-4/自追踪炮塔", "slot-4/幸运炎帝"],
       "talentRefs": [],
       "evidenceNotes": [
-        "炮台由专用原型 20006000037、ASC 392 与伤害行 120600370 结算；当前武器页尚未收录这条炮台专用行。",
-        "炮台没有明确的玩家属性桥，不能断言它完整继承玩家全部面板与乘区。",
-        "“架设”不等于默认自动作战；自动索敌只在自追踪炮塔插件生效时成立。"
+        "炮台由专用原型 20006000037、ASC 392 与伤害行 120600370 结算；当前武器页尚未收录这条炮台专用行。"
       ],
       "searchTerms": ["火神炎帝", "架设模式", "炮台", "火力宣泄", "1000 RPM", "自追踪炮塔"]
     },
@@ -138,7 +121,7 @@
       "kind": "companion",
       "kindLabel": "自动无人机",
       "evidenceLevel": "config-verified",
-      "summary": "召唤后自动射击约 13 秒，随后冲向目标自毁。它有独立攻击和爆炸两条伤害，不能只把自毁当成视觉效果。",
+      "summary": "召唤后自动射击约 13 秒，随后冲向目标并造成自毁爆炸；射击与爆炸分别结算伤害。",
       "icon": "/webp/icons/weapons/normal/Bully.webp",
       "source": { "label": "武器页 · Bully", "href": "/weapons/Bully", "type": "weapon" },
       "deployment": "主动技能召唤 1 台，基础充能 20 秒",
@@ -183,16 +166,13 @@
           "role": "终结范围伤害",
           "weaponSource": { "weaponSlug": "Bully", "damageSourceId": "wu-ren-ji-zi-hui-bao-zha" },
           "rate": { "attacksPerAction": 1, "label": "生命周期末触发" },
-          "note": "50% 攻击力，5 米范围；不可暴击、不可弱点。"
+          "note": "5 米范围。"
         }
       ],
       "buffRefs": [],
       "perkSlugs": ["slot-4/空中补给"],
       "talentRefs": [],
-      "evidenceNotes": [
-        "0.2 秒间隔来自无人机 Actor 基准配置；技能内部另有可变间隔状态，因此标为配置基准。",
-        "猎场伤害为射击 8% 攻击力、自毁 50% 攻击力。"
-      ],
+      "evidenceNotes": [],
       "searchTerms": ["Bully", "无人机", "300 RPM", "13秒", "18.5秒", "自毁", "空中补给"]
     },
     {
@@ -264,7 +244,7 @@
           "role": "同枚弹丸的爆炸段",
           "weaponSource": { "weaponSlug": "哈士奇好友", "damageSourceId": "ha-shi-qi-bao-zha" },
           "rate": { "intervalSeconds": 0.5, "roundsPerMinute": 120, "attacksPerAction": 1, "label": "随弹丸触发" },
-          "note": "仅击杀时附带 2 级击飞；不可暴击、不可弱点。"
+          "note": "仅击杀时附带 2 级击飞。"
         }
       ],
       "buffRefs": [
@@ -273,7 +253,6 @@
       "perkSlugs": ["slot-4/哈士奇寻敌", "slot-4/哈士奇支援", "slot-4/幸运哈士奇"],
       "talentRefs": [],
       "evidenceNotes": [
-        "0.5 秒是 Actor 基准间隔；技能会监听射速变化，因此实际间隔随叠层变化。",
         "武器自带射速层持续 3 秒，哈士奇支援插件层持续 5 秒，两者是不同效果。"
       ],
       "searchTerms": ["哈士奇", "宠物", "120 RPM", "178.8 RPM", "射速叠层", "哈士奇支援", "幸运哈士奇"]
@@ -367,7 +346,7 @@
           "role": "双发范围技能伤害",
           "lockSource": "judicator-shell",
           "rate": { "intervalSeconds": 4, "roundsPerMinute": 30, "attacksPerAction": 2, "label": "4 秒一轮、每轮 2 枚", "note": "单枚 90%，一轮两枚全部命中合计 180%。" },
-          "note": "Numerical 19032001；可暴击、不可弱点。"
+          "note": "Numerical 19032001。"
         },
         {
           "id": "destroyer-laser",
@@ -375,15 +354,15 @@
           "role": "单体技能伤害",
           "lockSource": "destroyer-laser",
           "rate": { "attacksPerAction": 1, "label": "攻击频率待实测", "note": "LaserSpawnTime=1.2 秒不是已确认的命中间隔。" },
-          "note": "Numerical 19032002；锁定强敌，可暴击、不可弱点。"
+          "note": "Numerical 19032002；锁定强敌。"
         },
         {
           "id": "incinerator-tick",
           "name": "焚烧者喷火",
           "role": "高频范围技能伤害",
           "lockSource": "incinerator-tick",
-          "rate": { "intervalSeconds": 0.3, "roundsPerMinute": 200, "attacksPerAction": 1, "label": "持续喷火", "note": "每 0.3 秒结算一次。" },
-          "note": "Numerical 19032003；可暴击、不可弱点。"
+          "rate": { "intervalSeconds": 0.3, "roundsPerMinute": 200, "attacksPerAction": 1, "label": "持续喷火" },
+          "note": "Numerical 19032003。"
         }
       ],
       "buffRefs": [
@@ -394,10 +373,8 @@
       "perkSlugs": [],
       "talentRefs": [],
       "evidenceNotes": [
-        "40000500、40000501、40000502 在猎场商店池的基础权重均为 30，不收录权重为 0 的未投放哨卫。",
         "三项底层持续时间均为 31 秒，玩家文案按 30 秒显示。",
-        "当前技能绑定伤害为 90% / 100% / 8%；旧主动技能文案和旧升级表中的其他数值不适用于当前技能。",
-        "毁灭者完整攻击间隔待实测；激光生成时间不等同于射速。"
+        "当前技能伤害以现行绑定为准，旧主动技能文案和旧升级表不适用。"
       ],
       "searchTerms": ["时空追猎", "战术技能", "炮台", "审判者", "毁灭者", "焚烧者", "召唤物射速"]
     },
@@ -408,7 +385,7 @@
       "kind": "season-servant",
       "kindLabel": "赛季仆从",
       "evidenceLevel": "config-verified",
-      "summary": "40 秒自动作战的近战仆从，可长按技能指定目标。距离不同会选择三连击、聚能炮、跳砸或地裂波，不能用一条 RPM 概括。",
+      "summary": "40 秒自动作战的近战仆从，可长按技能指定目标。距离不同会选择三连击、聚能炮、跳砸或地裂波。",
       "icon": "/webp/images/season-talents/s3/iron-fist/T_Talent_S3_WZZH_01.webp",
       "source": { "label": "S3 天赋 · 铁拳狂徒", "href": "/guides/season-talents/s3/iron-fist?node=3001102#multiplier-provider-node-3001102", "type": "season-talent" },
       "deployment": "赛季主动技能召唤，基础冷却 60 秒、1 层充能",
@@ -511,23 +488,21 @@
           "role": "生成时范围伤害",
           "lockSource": "iron-fist-arrival",
           "rate": { "attacksPerAction": 1, "label": "每次召唤落地" },
-          "note": "S3 专用数值行 160303007，190% 攻击力；每次标准召唤落地触发 1 次，范围配置 1600（约 16 米径向，结构推断），未确认施加冲击。"
+          "note": "NUM 160303007；每次标准召唤落地触发 1 次，范围配置 1600（约 16 米径向，结构推断），未确认施加冲击。"
         },
         {
           "id": "iron-fist-combo",
           "name": "近战三连击",
           "role": "5 米内常规连段",
           "lockSource": "iron-fist-combo",
-          "rate": { "intervalSeconds": 4.5667, "attacksPerAction": 3, "label": "完整动作 4.57 秒", "note": "三段各 50%，命中点约 0.987 / 1.745 / 2.675 秒。" },
-          "note": "完整命中合计 150% 攻击力。"
+          "rate": { "intervalSeconds": 4.5667, "attacksPerAction": 3, "label": "完整动作 4.57 秒", "note": "三段各 50%，命中点约 0.987 / 1.745 / 2.675 秒。" }
         },
         {
           "id": "iron-fist-cannon",
           "name": "聚能炮",
           "role": "远距离技能",
           "lockSource": "iron-fist-cannon",
-          "rate": { "intervalSeconds": 3.1, "attacksPerAction": 1, "label": "动作 3.10 秒", "note": "约 1.428 秒命中，行为树技能冷却 3 秒。" },
-          "note": "100% 攻击力。"
+          "rate": { "intervalSeconds": 3.1, "attacksPerAction": 1, "label": "动作 3.10 秒", "note": "约 1.428 秒命中，行为树技能冷却 3 秒。" }
         },
         {
           "id": "iron-fist-jump-slam",
@@ -535,7 +510,7 @@
           "role": "中远距离范围技能",
           "lockSource": "iron-fist-jump-slam",
           "rate": { "intervalSeconds": 4.3, "attacksPerAction": 1, "label": "动作 4.30 秒", "note": "约 1.634 秒命中；中距离冷却 3 秒，远距离冷却 7 秒。" },
-          "note": "270% 攻击力并击飞。"
+          "note": "命中可击飞目标。"
         },
         {
           "id": "iron-fist-earth-wave",
@@ -543,7 +518,7 @@
           "role": "直线范围技能",
           "lockSource": "iron-fist-earth-wave",
           "rate": { "intervalSeconds": 3.8333, "attacksPerAction": 1, "label": "动作 3.83 秒", "note": "约 1.886 秒命中；中距离行为树冷却 7 秒。" },
-          "note": "S3 专用数值行 160303006 为 190%；能力默认字段残留的 45% 火焰旧引用不作为玩家结论。"
+          "note": "NUM 160303006；能力默认字段残留的 45% 火焰旧引用不作为玩家结论。"
         }
       ],
       "buffRefs": [{ "buffId": 160403101, "target": "enemy", "relation": "applies", "note": "地裂波解锁后，四类常规战斗攻击施加 5 秒冲击；落地砸击未确认" }],

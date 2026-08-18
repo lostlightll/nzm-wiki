@@ -263,18 +263,10 @@ function DamageRow({ damage }: { damage: SummonDamageView }) {
 function DamageSection({ entry }: { entry: SummonCatalogEntryView }) {
   return (
     <section aria-labelledby={`damage-title-${entry.id}`} className="mt-4">
-      <div className="mb-2 flex flex-wrap items-end justify-between gap-2">
-        <div>
-          <h3 id={`damage-title-${entry.id}`} className="m-0 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-            <Swords aria-hidden="true" className="h-4 w-4 text-rose-400" />
-            伤害与攻击节奏
-          </h3>
-          <p className="m-0 mt-1 text-xs leading-5 text-zinc-500">
-            单次白值统一按 500 攻击力计算；下方保留原始攻击力系数，不代表实战最终伤害。
-          </p>
-        </div>
-        <span className="text-xs text-zinc-600">{entry.damageSources.length} 条伤害</span>
-      </div>
+      <h3 id={`damage-title-${entry.id}`} className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
+        <Swords aria-hidden="true" className="h-4 w-4 text-rose-400" />
+        伤害与攻击节奏
+      </h3>
       <div className="overflow-hidden rounded-md border border-zinc-800 bg-zinc-900/35">
         <div className="hidden grid-cols-[minmax(8.5rem,1.15fr)_minmax(7rem,0.8fr)_minmax(7.5rem,0.8fr)_minmax(7.5rem,0.8fr)_minmax(18rem,2fr)] gap-3 bg-zinc-950/70 px-4 py-2 text-[11px] font-medium text-zinc-500 lg:grid">
           <span>伤害</span>
@@ -385,13 +377,11 @@ function BuffCard({ buff }: { buff: SummonBuffView }) {
     >
       <AssetIcon src={buff.icon} alt="" size={36} className="h-9 w-9" />
       <div className="min-w-0 flex-1">
-        <div className="flex flex-wrap items-center gap-1.5">
+        <div>
           <span className="text-xs font-semibold leading-5 text-zinc-200 group-hover:text-cyan-200">{buff.name}</span>
-          <span className="text-[10px] text-zinc-600">#{buff.buffId}</span>
         </div>
         <p className="m-0 line-clamp-2 text-[11px] leading-4 text-zinc-500">{buff.note ?? buff.summary}</p>
         <div className="mt-1 flex flex-wrap items-center gap-1">
-          <span className="rounded bg-zinc-900 px-1.5 py-0.5 text-[10px] text-zinc-500">{buff.relationLabel}</span>
           <span className="text-[10px] text-zinc-600">{buff.durationLabel} · {buff.stackLabel}</span>
           {buff.multiplierRelations.map((relation) => (
             <span
@@ -527,9 +517,6 @@ function SummonEntry({
               <span className={`rounded border px-2 py-0.5 text-[11px] ${KIND_STYLES[entry.kind]}`}>
                 {entry.kindLabel}
               </span>
-              <span className="rounded border border-zinc-700 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-500">
-                {EVIDENCE_LABELS[entry.evidenceLevel]}
-              </span>
             </div>
             <p className="m-0 mt-1.5 max-w-4xl text-sm leading-5 text-zinc-300">{entry.summary}</p>
           </div>
@@ -588,13 +575,10 @@ function SummonEntry({
         </dl>
 
         <section className="mt-4" aria-labelledby={`mechanics-title-${entry.id}`}>
-          <div className="mb-2 flex items-center justify-between gap-2">
-            <h3 id={`mechanics-title-${entry.id}`} className="m-0 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-              <Activity aria-hidden="true" className="h-4 w-4 text-amber-400" />
-              技能与机制
-            </h3>
-            <span className="text-xs text-zinc-600">{entry.mechanics.length} 项</span>
-          </div>
+          <h3 id={`mechanics-title-${entry.id}`} className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
+            <Activity aria-hidden="true" className="h-4 w-4 text-amber-400" />
+            技能与机制
+          </h3>
           <div className="grid min-w-0 gap-2 lg:grid-cols-2">
             {entry.mechanics.map((mechanic) => (
               <MechanicCard key={mechanic.id} entryId={entry.id} mechanic={mechanic} />
@@ -611,6 +595,7 @@ function SummonEntry({
             证据边界与配置说明
           </summary>
           <ul className="m-0 space-y-1 pb-1 pl-5 text-xs leading-5 text-zinc-500">
+            <li>数据状态：{EVIDENCE_LABELS[entry.evidenceLevel]}</li>
             {entry.evidenceNotes.map((note) => <li key={note}>{note}</li>)}
           </ul>
         </details>
@@ -624,38 +609,35 @@ function SummonEntry({
 function SharedSystems({ catalog }: { catalog: SummonCatalogView }) {
   return (
     <section id="summon-shared-systems" className="scroll-mt-24 rounded-lg border border-zinc-800 bg-zinc-900/30 p-3 sm:p-4">
-      <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
-        <h2 className="m-0 flex items-center gap-2 text-base font-bold text-zinc-50">
-          <Zap aria-hidden="true" className="h-4 w-4 text-amber-400" />
-          全召唤通用机制与搭配
-        </h2>
-        <span className="text-xs text-zinc-600">{catalog.sharedPerks.length} 插件 · {catalog.sharedBuffs.length} Buff</span>
-      </div>
+      <h2 className="m-0 mb-3 flex items-center gap-2 text-base font-bold text-zinc-50">
+        <Zap aria-hidden="true" className="h-4 w-4 text-amber-400" />
+        召唤流搭配
+      </h2>
 
-      <div className="grid gap-2 lg:grid-cols-2">
-        {catalog.sharedSystems.map((system) => (
-          <MechanicCard key={system.id} entryId="shared" mechanic={system} />
-        ))}
-      </div>
-
-      <div className="mt-4 grid min-w-0 gap-4 lg:grid-cols-2">
-        <div className="min-w-0">
-          <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-            <Layers3 aria-hidden="true" className="h-4 w-4 text-cyan-400" />
-            通用 Buff
-          </h3>
-          <div className="grid gap-2 sm:grid-cols-2">
-            {catalog.sharedBuffs.map((buff) => <BuffCard key={`${buff.target}:${buff.buffId}`} buff={buff} />)}
+      <div className="grid min-w-0 gap-4 lg:grid-cols-2 lg:items-start">
+        <div className="grid min-w-0 gap-4">
+          <div className="grid gap-2">
+            {catalog.sharedSystems.map((system) => (
+              <MechanicCard key={system.id} entryId="shared" mechanic={system} />
+            ))}
           </div>
-          {catalog.sharedTalents.length > 0 && (
-            <details className="mt-2 rounded-md border border-zinc-800 bg-zinc-950/35 px-3">
-              <summary className="flex min-h-10 cursor-pointer select-none items-center justify-between gap-2 text-xs font-medium text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
-                相关 S3 天赋
-                <span className="text-[10px] text-zinc-600">{catalog.sharedTalents.length} 项</span>
-              </summary>
-              <div className="pb-2">{catalog.sharedTalents.map((talent) => <TalentRow key={`${talent.kind}:${talent.id}`} talent={talent} />)}</div>
-            </details>
-          )}
+          <div className="min-w-0">
+            <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
+              <Layers3 aria-hidden="true" className="h-4 w-4 text-cyan-400" />
+              通用 Buff
+            </h3>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {catalog.sharedBuffs.map((buff) => <BuffCard key={`${buff.target}:${buff.buffId}`} buff={buff} />)}
+            </div>
+            {catalog.sharedTalents.length > 0 && (
+              <details className="mt-2 rounded-md border border-zinc-800 bg-zinc-950/35 px-3">
+                <summary className="flex min-h-10 cursor-pointer select-none items-center justify-between gap-2 text-xs font-medium text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
+                  相关 S3 联动
+                </summary>
+                <div className="pb-2">{catalog.sharedTalents.map((talent) => <TalentRow key={`${talent.kind}:${talent.id}`} talent={talent} />)}</div>
+              </details>
+            )}
+          </div>
         </div>
         <div className="min-w-0">
           <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
@@ -828,7 +810,9 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
               </button>
             ))}
           </div>
-          <span className="shrink-0 text-xs text-zinc-600">{visibleEntries.length} / {catalog.entries.length}</span>
+          {(search || kind !== "all" || summonFilters.size > 0) && (
+            <span className="shrink-0 text-xs text-zinc-600">{visibleEntries.length} / {catalog.entries.length}</span>
+          )}
         </div>
       </section>
 
