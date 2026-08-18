@@ -11,6 +11,7 @@ import {
   CircleDashed,
   Clock3,
   Crosshair,
+  Dices,
   ExternalLink,
   Gauge,
   Layers3,
@@ -23,7 +24,6 @@ import {
   Swords,
   UserRoundCog,
   X,
-  Zap,
 } from "lucide-react";
 import {
   useDeferredValue,
@@ -285,9 +285,11 @@ function DamageSection({ entry }: { entry: SummonCatalogEntryView }) {
 
 function MechanicCard({
   entryId,
+  hideHeading = false,
   mechanic,
 }: {
   entryId: string;
+  hideHeading?: boolean;
   mechanic: SummonMechanicDefinition | SummonMechanicView;
 }) {
   const numericalRows = "numericalRows" in mechanic ? mechanic.numericalRows : [];
@@ -305,13 +307,15 @@ function MechanicCard({
             <AssetIcon src={mechanic.icon} alt="" size={36} className="h-9 w-9" />
           )}
           <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2">
-            <h4 className="m-0 text-sm font-semibold leading-5 text-zinc-100">{mechanic.name}</h4>
-            <span className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 text-[10px] leading-4 text-zinc-400">
-              {MECHANIC_LABELS[mechanic.kind]}
-            </span>
-          </div>
-          <p className="m-0 mt-1 text-xs leading-5 text-zinc-300">{mechanic.summary}</p>
+          {!hideHeading && (
+            <div className="flex flex-wrap items-center gap-2">
+              <h4 className="m-0 text-sm font-semibold leading-5 text-zinc-100">{mechanic.name}</h4>
+              <span className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 text-[10px] leading-4 text-zinc-400">
+                {MECHANIC_LABELS[mechanic.kind]}
+              </span>
+            </div>
+          )}
+          <p className={`m-0 text-xs leading-5 text-zinc-300 ${hideHeading ? "" : "mt-1"}`}>{mechanic.summary}</p>
           </div>
         </div>
         {mechanic.link && (
@@ -608,17 +612,18 @@ function SummonEntry({
 
 function SharedSystems({ catalog }: { catalog: SummonCatalogView }) {
   return (
-    <section id="summon-shared-systems" className="scroll-mt-24 rounded-lg border border-zinc-800 bg-zinc-900/30 p-3 sm:p-4">
-      <h2 className="m-0 mb-3 flex items-center gap-2 text-base font-bold text-zinc-50">
-        <Zap aria-hidden="true" className="h-4 w-4 text-amber-400" />
-        召唤流搭配
-      </h2>
-
+    <section id="summon-shared-systems" aria-label="召唤流搭配" className="scroll-mt-24 rounded-lg border border-zinc-800 bg-zinc-900/30 p-3 sm:p-4">
       <div className="grid min-w-0 gap-4 lg:grid-cols-2 lg:items-start">
         <div className="grid min-w-0 gap-4">
           <div className="grid gap-2">
             {catalog.sharedSystems.map((system) => (
-              <MechanicCard key={system.id} entryId="shared" mechanic={system} />
+              <div key={system.id}>
+                <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
+                  <Dices aria-hidden="true" className="h-4 w-4 text-amber-400" />
+                  {system.name}
+                </h3>
+                <MechanicCard entryId="shared" hideHeading mechanic={system} />
+              </div>
             ))}
           </div>
           <div className="min-w-0">
