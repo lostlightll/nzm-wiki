@@ -405,12 +405,11 @@ function BuffCard({ buff }: { buff: SummonBuffView }) {
 }
 
 function PerkCard({ perk }: { perk: SummonPerkView }) {
-  const hasMultiplierRelations = perk.multiplierRelations.length > 0;
   return (
-    <article className="group relative flex min-w-0 gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/35 p-2.5 hover:border-violet-800 hover:bg-violet-950/10">
+    <article className="group flex min-w-0 gap-2.5 rounded-md border border-zinc-800 bg-zinc-950/35 p-2.5 hover:border-violet-800 hover:bg-violet-950/10 lg:h-full">
       <AssetIcon src={perk.icon} alt="" size={36} className="h-9 w-9" />
       <div className="min-w-0 flex-1">
-        <div className={`flex min-w-0 items-start ${hasMultiplierRelations ? "pr-24" : ""}`}>
+        <div className="flex min-w-0 items-start justify-between gap-2">
           <div className="flex min-w-0 flex-wrap items-center gap-1.5">
             <Link
               href={perk.href}
@@ -420,12 +419,12 @@ function PerkCard({ perk }: { perk: SummonPerkView }) {
             </Link>
             <span className="shrink-0 text-[10px] text-zinc-600">{perk.slot} 号槽</span>
           </div>
+          <MultiplierBadges relations={perk.multiplierRelations} variant="catalog-compact" className="shrink-0 justify-end" />
         </div>
         {perk.description && (
           <p className="m-0 line-clamp-2 text-[11px] leading-4 text-zinc-500">{perk.description}</p>
         )}
       </div>
-      <MultiplierBadges relations={perk.multiplierRelations} variant="catalog-compact" className="absolute right-2.5 top-2.5 justify-end" />
     </article>
   );
 }
@@ -617,7 +616,7 @@ function SummonEntry({
 function SharedSystems({ catalog }: { catalog: SummonCatalogView }) {
   return (
     <section id="summon-shared-systems" aria-label="召唤流搭配" className="scroll-mt-24 rounded-lg border border-zinc-800 bg-zinc-900/30 p-3 sm:p-4">
-      <div className="grid min-w-0 gap-4 lg:grid-cols-2 lg:items-start">
+      <div className="grid min-w-0 gap-4 lg:grid-cols-2 lg:items-stretch">
         <div className="grid min-w-0 gap-4">
           <div className="grid gap-2">
             {catalog.sharedSystems.map((system) => (
@@ -648,12 +647,12 @@ function SharedSystems({ catalog }: { catalog: SummonCatalogView }) {
             )}
           </div>
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 lg:flex lg:flex-col">
           <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
             <Sparkles aria-hidden="true" className="h-4 w-4 text-violet-400" />
             通用召唤插件
           </h3>
-          <div className="grid gap-2 sm:grid-cols-2">
+          <div className="grid gap-2 sm:grid-cols-2 lg:flex-1 lg:auto-rows-fr">
             {catalog.sharedPerks.map((perk) => <PerkCard key={perk.slug} perk={perk} />)}
           </div>
         </div>
