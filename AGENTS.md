@@ -66,13 +66,12 @@ D:\Claude\nzm-wiki
 
 不要套用 `CLAUDE.md` 中面向 Claude Code Bash/MSYS2 的虚拟路径规则。
 
-用户给出以 `NZM/Content/` 开头的资源路径时，将它映射到仓库内：
+本地游戏资源导出按环境区分：
 
-```text
-./refs/Exports/NZM/Content/
-```
+- `refs/Exports/NZM/Content/`：正式服资源。用户给出以 `NZM/Content/` 开头的路径时默认映射到这里。
+- `refs-test/Exports/NZM/Content/`：体验服资源。仅在任务明确指定体验服时读取这里。
 
-`refs/` 是本地参考数据，不是站点运行时数据源。不要泄露其中可能存在的私有或敏感内容。
+`refs/` 与 `refs-test/` 都是只读本地参考数据，不是站点运行时数据源。不要修改、移动或删除其中内容，也不要泄露其中可能存在的私有或敏感信息。
 
 ## 常用命令
 
