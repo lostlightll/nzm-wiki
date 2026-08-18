@@ -170,6 +170,13 @@ export type PerkEffectValue =
       stages: EffectValueStage[];
     };
 
+export interface PerkIndependentDamageSourceReference {
+  weaponSlug: string;
+  damageSourceId: string;
+  trigger: string;
+  interval: string;
+}
+
 export interface Perk {
   id: string;
   itemId: string;
@@ -184,6 +191,7 @@ export interface Perk {
   effects: PerkEffect[];
   description?: string;
   effectValues?: PerkEffectValue[];
+  independentDamageSources?: PerkIndependentDamageSourceReference[];
   collectModItem?: 0 | 1;
   makeModItem?: 0 | 1;
   isCooked?: boolean;

@@ -138,6 +138,26 @@ effect_values:
 
 维护时先确认 ItemID 和最终描述，再录入阶段数值，随后运行 `pnpm test:overlimit-cards` 与 `pnpm multiplier-index:check`。超限卡片导入后重复执行校验，确认人工字段仍通过同 ItemID 合并。
 
+## 独立伤害来源
+
+插件额外创建或替换为独立 Numerical 结算时，在插件 MDX 中使用 `independent_damage_sources` 引用已经审定的武器 `damage_sources`：
+
+```yaml
+independent_damage_sources:
+  - weapon_slug: "夜影之逝"
+    damage_source_id: "guan-chang-hong-jian-qi"
+    trigger: "切出本武器时向前发射剑气"
+    interval: "10秒"
+```
+
+- `weapon_slug` 使用 `data/weapons/` 下不含扩展名的文件名；`damage_source_id` 使用该武器内稳定的伤害来源 ID。
+- 插件和同 ItemID 超限卡详情页共同使用该引用。NumericalID、伤害类型、伤害数值、破韧、元素、暴击和弱点均由猎场武器 Resolver 生成，不在插件或超限数据中复制。
+- `trigger` 与 `interval` 是插件自身的触发语义，必须依据最终描述或执行配置人工维护；没有独立冷却时明确写触发方式，不猜测冷却值。
+- 只有插件新增或切换到独立 Numerical 伤害时才登记。修改原武器伤害倍率、弹丸数量、范围、射速，或让原有武器伤害来源覆盖更多攻击，不属于独立伤害来源。
+- `effect_values` 仍只记录增伤和属性提升，不能用它承载新伤害实例。
+
+新增或修改引用后运行 `pnpm test:independent-damage` 与 `pnpm weapon-data:check`。
+
 ## 适用武器
 
 适用范围分为三类：

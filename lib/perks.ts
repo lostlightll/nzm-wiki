@@ -5,6 +5,7 @@ import type {
   EffectValueStage,
   Perk,
   PerkEffectValue,
+  PerkIndependentDamageSourceReference,
   PerkSlot,
   Rarity,
 } from "@/types";
@@ -141,6 +142,59 @@ function parseEffectValues(
   });
 }
 
+function parseIndependentDamageSources(
+  value: unknown,
+  filePath: string,
+): PerkIndependentDamageSourceReference[] | undefined {
+  if (value === undefined) return undefined;
+  if (!Array.isArray(value) || value.length === 0) {
+    throw new Error(
+      `插件 independent_damage_sources 必须是非空数组: ${filePath}`,
+    );
+  }
+
+  const identities = new Set<string>();
+  return value.map((reference, index) => {
+    if (!reference || typeof reference !== "object" || Array.isArray(reference)) {
+      throw new Error(
+        `插件 independent_damage_sources[${index}] 格式无效: ${filePath}`,
+      );
+    }
+    const record = reference as Record<string, unknown>;
+    const weaponSlug = requireNonEmptyString(
+      record.weapon_slug,
+      `independent_damage_sources[${index}].weapon_slug`,
+      filePath,
+    );
+    const damageSourceId = requireNonEmptyString(
+      record.damage_source_id,
+      `independent_damage_sources[${index}].damage_source_id`,
+      filePath,
+    );
+    const identity = `${weaponSlug}:${damageSourceId}`;
+    if (identities.has(identity)) {
+      throw new Error(
+        `插件 independent_damage_sources 存在重复引用 ${identity}: ${filePath}`,
+      );
+    }
+    identities.add(identity);
+    return {
+      weaponSlug,
+      damageSourceId,
+      trigger: requireNonEmptyString(
+        record.trigger,
+        `independent_damage_sources[${index}].trigger`,
+        filePath,
+      ),
+      interval: requireNonEmptyString(
+        record.interval,
+        `independent_damage_sources[${index}].interval`,
+        filePath,
+      ),
+    };
+  });
+}
+
 function parseNumberArray(value: unknown): number[] | undefined {
   if (!Array.isArray(value)) return undefined;
 
@@ -198,6 +252,10 @@ export function getAllPerks(): Perk[] {
         effects: [],
         description: data.description,
         effectValues: parseEffectValues(data.effect_values, filePath),
+        independentDamageSources: parseIndependentDamageSources(
+          data.independent_damage_sources,
+          filePath,
+        ),
         weaponType: parseNumberArray(data.weaponType),
         weaponNames: parseStringArray(data.weaponNames),
         collectModItem: data.CollectMODItem as 0 | 1 | undefined,
@@ -234,6 +292,10 @@ export function getPerkByName(name: string): Perk | null {
         effects: [],
         description: data.description,
         effectValues: parseEffectValues(data.effect_values, filePath),
+        independentDamageSources: parseIndependentDamageSources(
+          data.independent_damage_sources,
+          filePath,
+        ),
         weaponType: parseNumberArray(data.weaponType),
         weaponNames: parseStringArray(data.weaponNames),
         collectModItem: data.CollectMODItem as 0 | 1 | undefined,
@@ -248,6 +310,14 @@ export function getPerkByName(name: string): Perk | null {
 
 export function getPerksByCategory(category: string): Perk[] {
   return getAllPerks().filter((perk) => perk.category === category);
+}
+
+export function getPerkBySlug(slug: string): Perk | undefined {
+  return getAllPerks().find((perk) => perk.slug === slug);
+}
+
+export function getPerkByItemId(itemId: string): Perk | undefined {
+  return getAllPerks().find((perk) => perk.itemId === itemId);
 }
 
 export function getPerksBySlot(slot: PerkSlot): Perk[] {

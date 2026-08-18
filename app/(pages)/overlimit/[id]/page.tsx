@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { OverlimitCardDetail } from "@/components/OverlimitCardDetail";
-import { TriggerDamagePanel } from "@/components/TriggerDamageCatalog";
+import { IndependentDamagePanel } from "@/components/TriggerDamageCatalog";
 import {
   getAllOverlimitCards,
   getOverlimitCardById,
 } from "@/lib/overlimit-cards";
-import { getTriggerDamageByOverlimitId } from "@/lib/trigger-damage";
+import { getIndependentDamageByOverlimitId } from "@/lib/independent-damage";
 
 const cards = getAllOverlimitCards();
 
@@ -38,12 +38,17 @@ export default async function OverlimitCardPage({
   const { id } = await params;
   const card = getOverlimitCardById(id);
   if (!card) notFound();
-  const triggerDamage = getTriggerDamageByOverlimitId(id);
+  const independentDamage = await getIndependentDamageByOverlimitId(id);
 
   return (
     <div className="mx-auto max-w-4xl py-6">
       <OverlimitCardDetail card={card} />
-      {triggerDamage && <TriggerDamagePanel entry={triggerDamage} />}
+      {independentDamage.map((entry) => (
+        <IndependentDamagePanel
+          key={`${entry.name}-${entry.numericalId}`}
+          entry={entry}
+        />
+      ))}
     </div>
   );
 }

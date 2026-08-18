@@ -78,13 +78,13 @@ function TriggerDamageEntryContent({
       <header
         className={`grid min-w-0 gap-2 lg:items-baseline lg:gap-4 ${
           detail
-            ? "lg:grid-cols-[7rem_minmax(0,1fr)_20rem] xl:grid-cols-7 xl:gap-x-5"
+            ? "lg:grid-cols-[8rem_minmax(0,1fr)_20rem] xl:grid-cols-7 xl:gap-x-5"
             : "lg:grid-cols-[10rem_minmax(0,1fr)_20rem]"
         }`}
       >
         {detail ? (
-          <h2 className="min-w-0 text-base font-semibold leading-6 text-zinc-100 xl:col-span-1">
-            触发伤害数值
+          <h2 className="min-w-0 text-base font-semibold leading-6 text-zinc-100 xl:col-span-1 xl:text-sm">
+            独立伤害数值
           </h2>
         ) : (
           <h3 className="min-w-0 text-base font-semibold leading-6 text-zinc-100">
@@ -161,10 +161,12 @@ export function TriggerDamageCatalog({ group }: { group: TriggerDamageGroup }) {
   );
 }
 
-export function TriggerDamagePanel({ entry }: { entry: TriggerDamageEntry }) {
+export function IndependentDamagePanel({ entry }: { entry: TriggerDamageEntry }) {
   return (
     <section className="mt-4 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/60 px-4 py-4 sm:px-5">
       <TriggerDamageEntryContent entry={entry} detail />
     </section>
   );
 }
+
+export const TriggerDamagePanel = IndependentDamagePanel;
