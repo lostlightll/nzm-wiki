@@ -126,7 +126,24 @@ test("client projections preserve normalized domains without audit payload", asy
     getResolvedFieldValue(burst.fire.rpm),
     181.8181818181818,
   );
+  assert.equal(getResolvedFieldValue(burst.fire.subFireCount), 4);
+  assert.equal(getResolvedFieldValue(burst.fire.subFireInterval), 0.2);
   assert.ok(Object.keys(burst.feel.accuracyRatios).length > 0);
+
+  const dragonFlameBurst = detail.damageSources.find(
+    (source) => source.id === "dragon-flame-burst",
+  );
+  assert.ok(dragonFlameBurst);
+  assert.equal(getResolvedFieldValue(dragonFlameBurst.fire.subFireCount), 4);
+  assert.equal(getResolvedFieldValue(dragonFlameBurst.fire.subFireInterval), 0.4);
+
+  const dawn = toWeaponDetailData(await requireWeapon("黎明之光", "lc"));
+  const dawnShot = dawn.damageSources.find(
+    (source) => source.id === "pu-tong-she-ji",
+  );
+  assert.ok(dawnShot);
+  assert.equal(getResolvedFieldValue(dawnShot.fire.subFireCount), 3);
+  assert.equal(getResolvedFieldValue(dawnShot.fire.subFireInterval), 0.045);
 });
 
 test("pilot main source, LC/TD context, attenuation, and element agree", async () => {

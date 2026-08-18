@@ -27,13 +27,6 @@ type DisplaySource = ConsumerDamageSource | ConsumerDamageSourceSummary;
 // TODO(multiplier): 待武器伤害信息层级重做后，再恢复伤害来源的适用乘区徽标。
 const SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS = false;
 
-const TOUGHNESS_LABELS = {
-  none: "无",
-  impulse: "冲击",
-  penetration: "贯穿",
-  explosion: "爆炸",
-} as const;
-
 const ELEMENT_ICONS: Record<ElementType, string> = {
   火焰: "/icons/elements/fire.png",
   寒冷: "/icons/elements/cryo.png",
@@ -126,6 +119,51 @@ function WeaponImage({ name, size = "normal" }: { name: string; size?: "small" |
 function formatValue(val: number | undefined): string {
   if (val === undefined || val === -1) return "-";
   return String(val);
+}
+
+function formatSeconds(value: number): string {
+  return `${value.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s`;
+}
+
+export function formatBurstParameters(
+  count: number | undefined,
+  interval: number | undefined,
+): string {
+  if (
+    count === undefined ||
+    count <= 1 ||
+    interval === undefined ||
+    !Number.isFinite(interval) ||
+    interval < 0
+  ) {
+    return "-";
+  }
+
+  return `${count} 发 / ${formatSeconds(count * interval)}`;
+}
+
+export function formatFireRate(
+  rpm: number | undefined,
+  interval: number | undefined,
+  subFireCount: number | undefined,
+  subFireInterval: number | undefined,
+): string {
+  if (
+    interval !== undefined &&
+    interval > 0 &&
+    subFireCount !== undefined &&
+    Number.isFinite(subFireCount) &&
+    subFireCount > 1 &&
+    subFireInterval !== undefined &&
+    Number.isFinite(subFireInterval) &&
+    subFireInterval >= 0
+  ) {
+    const burstCycleDuration =
+      interval + (subFireCount - 1) * subFireInterval;
+    return String(Math.round((subFireCount * 60) / burstCycleDuration));
+  }
+
+  return formatValue(rpm === undefined ? undefined : Math.round(rpm));
 }
 
 function isMeleeWeapon(weapon: {
@@ -671,21 +709,21 @@ function ModeStats({
   compact?: boolean;
   hpMultiplier?: number;
 }) {
-  const rpmValue = getResolvedFieldValue(mode.fire.rpm);
-  const rpm = rpmValue === undefined ? undefined : Math.round(rpmValue);
+  const rpm = getResolvedFieldValue(mode.fire.rpm);
   const interval = getResolvedFieldValue(mode.fire.interval);
+  const subFireCount = getResolvedFieldValue(mode.fire.subFireCount);
+  const subFireInterval = getResolvedFieldValue(mode.fire.subFireInterval);
   const attackInterval = getResolvedFieldValue(mode.attack.interval);
   const attackCount = getResolvedFieldValue(mode.attack.count);
   const attackIntervalDisplay =
     attackInterval === undefined
       ? "-"
-      : `${attackInterval.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s`;
+      : formatSeconds(attackInterval);
   const toughness = getResolvedFieldValue(mode.damage.toughness);
   const weaknessMultiplier = getResolvedFieldValue(mode.weaknessMultiplier);
   const enableWeakness = getResolvedFieldValue(mode.enableWeakness) === true;
   const enableCritical = getResolvedFieldValue(mode.enableCritical) === true;
   const elementAddRate = getResolvedFieldValue(mode.elementAddRate);
-  const toughnessType = getResolvedFieldValue(mode.toughness);
   const healthType = getHealthSettlementType(mode);
   const healthDefinition = healthType
     ? getHealthSettlementDefinition(healthType)
@@ -716,6 +754,22 @@ function ModeStats({
   }
 
   const healthLabel = healthDefinition?.label ?? "伤害";
+  const cadenceStats = (
+    <>
+      <Stat
+        label="射速"
+        value={formatFireRate(rpm, interval, subFireCount, subFireInterval)}
+      />
+      <Stat
+        label="基础间隔"
+        value={interval ? formatSeconds(interval) : "-"}
+      />
+      <Stat
+        label="连发参数"
+        value={formatBurstParameters(subFireCount, subFireInterval)}
+      />
+    </>
+  );
 
   return (
     <div id={`damage-source-${mode.id}`} className="mb-3 scroll-mt-24">
@@ -734,17 +788,7 @@ function ModeStats({
       {compact ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5 text-sm">
           {attackInterval === undefined ? (
-            <>
-              <Stat label="射速" value={formatValue(rpm)} />
-              <Stat
-                label="单发耗时"
-                value={
-                  interval
-                    ? `${interval.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s`
-                    : "-"
-                }
-              />
-            </>
+            cadenceStats
           ) : (
             <>
               <Stat label="攻击间隔" value={attackIntervalDisplay} />
@@ -786,13 +830,7 @@ function ModeStats({
           <Stat label="暴击" value={enableCritical ? "可暴击" : "否"} />
           <Stat label="弱点" value={enableWeakness ? "可弱点" : "否"} />
           {attackInterval === undefined ? (
-            <>
-              <Stat label="射速" value={formatValue(rpm)} />
-              <Stat
-                label="单发耗时"
-                value={interval ? `${interval.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s` : "-"}
-              />
-            </>
+            cadenceStats
           ) : (
             <>
               <Stat label="攻击间隔" value={attackIntervalDisplay} />
@@ -801,10 +839,6 @@ function ModeStats({
               )}
             </>
           )}
-          <Stat
-            label="破韧类型"
-            value={toughnessType ? TOUGHNESS_LABELS[toughnessType] : "-"}
-          />
         </div>
       )}
     </div>
@@ -815,7 +849,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between gap-1">
       <span className="text-zinc-500 shrink-0">{label}</span>
-      <span className="text-white text-right">{value}</span>
+      <span className="text-white text-right tabular-nums">{value}</span>
     </div>
   );
 }
