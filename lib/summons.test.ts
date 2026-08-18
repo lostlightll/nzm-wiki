@@ -18,7 +18,7 @@ test("summon lock has unique stable identities and local public assets", () => {
   assert.doesNotThrow(() => assertSummonDamageLock(damageLock));
   assert.doesNotThrow(() => assertSummonDataLock(data));
   assert.equal(new Set(data.summons.map((summon) => summon.id)).size, data.summons.length);
-  assert.ok(data.summons.length >= 6);
+  assert.ok(data.summons.length >= 5);
 
   const assets = [
     ...data.summons.flatMap((summon) => [summon.icon, ...summon.mechanics.map((item) => item.icon)]),
@@ -52,8 +52,7 @@ test("catalog resolves locked damage, configured rates, Buffs and published perk
   const husky = catalog.entries.find((entry) => entry.id === "husky-companion");
   const ironFist = catalog.entries.find((entry) => entry.id === "s3-iron-fist");
   const turrets = catalog.entries.find((entry) => entry.id === "spacetime-turrets");
-  const energyShadow = catalog.entries.find((entry) => entry.id === "energy-shadow-floating-gun");
-  assert.ok(bully && husky && ironFist && turrets && energyShadow);
+  assert.ok(bully && husky && ironFist && turrets);
 
   assert.equal(bully.damageSources.find((item) => item.id === "drone-shot")?.coefficient, 0.08);
   assert.equal(bully.damageSources.find((item) => item.id === "drone-shot")?.roundsPerMinute, 300);
@@ -88,8 +87,6 @@ test("catalog resolves locked damage, configured rates, Buffs and published perk
     "技能攻击力",
   );
   assert.ok(ironFist.buffs.some((buff) => buff.buffId === 160403101));
-  assert.match(energyShadow.perkSelectionNote ?? "", /4 号专属插件.*只能装备其中一个/);
-  assert.deepEqual(energyShadow.perks.map((perk) => perk.slot), [4, 4]);
   assert.ok(catalog.sharedBuffs.some((buff) => buff.buffId === 160400005));
   assert.ok(catalog.sharedPerks.every((perk) => perk.href.startsWith("/perks/")));
 });

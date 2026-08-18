@@ -51,7 +51,7 @@ type KindFilter = "all" | SummonKind;
 
 const KIND_OPTIONS: Array<{ value: KindFilter; label: string }> = [
   { value: "all", label: "全部" },
-  { value: "deployable", label: "架设/浮游" },
+  { value: "deployable", label: "架设" },
   { value: "companion", label: "自动伙伴" },
   { value: "season-servant", label: "赛季仆从" },
 ];
