@@ -133,7 +133,8 @@ effect_values:
 - `label`、`value` 和每个阶段均不能为空；`condition` 可省略。叠层、条件翻倍和动态换算同时记录基础阶段与最终阶段。
 - 数值以审定后的 MDX `description` 为准；`description_override: true` 时人工覆盖优先。乘区证据用于交叉核对类型，不得从底层 `baseValue` 自动推导玩家文案。
 - 同一插件不能重复声明同一个 `modifierTypeId`。没有登记为增伤来源的超限卡片不得孤立添加增伤数值。
-- `kind: stat` 预留给 `toughness-efficiency`、`critical-rate` 和 `charge-efficiency`；在对应功能上线前不录入。页面只渲染非空分类，不显示空入口。
+- `kind: stat` 用于 `toughness-efficiency`、`critical-rate` 和 `charge-efficiency`。只记录破韧效率、暴击率及充能速度/效率的属性提升；命中后直接回复技能能量等即时充能不属于 `charge-efficiency`。
+- 页面只渲染非空分类，不显示空入口。列表与增伤共用关键数值区域，详情页按“增伤”和“属性”分组展示。
 
 维护时先确认 ItemID 和最终描述，再录入阶段数值，随后运行 `pnpm test:overlimit-cards` 与 `pnpm multiplier-index:check`。超限卡片导入后重复执行校验，确认人工字段仍通过同 ItemID 合并。
 

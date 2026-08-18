@@ -31,12 +31,36 @@ test("all overlimit damage providers have exact structured values", () => {
     assert.deepEqual(actual, expected, card.name);
   }
 
-  assert.equal(
-    cards.flatMap((card) => card.effectValues ?? []).some(
-      (effect) => effect.kind === "stat",
+});
+
+test("all reviewed overlimit stat sources have exact structured types", () => {
+  const expected = new Map<string, string>([
+    ["20703040136", "toughness-efficiency"],
+    ["20703040448", "critical-rate"],
+    ["20703040460", "critical-rate"],
+    ["20703040406", "critical-rate"],
+    ["20703040115", "critical-rate"],
+    ["20703040382", "critical-rate"],
+    ["20703040028", "critical-rate"],
+    ["20703040116", "critical-rate"],
+    ["20704040477", "critical-rate"],
+    ["20703040391", "critical-rate"],
+    ["20703040102", "charge-efficiency"],
+    ["20703040404", "charge-efficiency"],
+    ["20703040182", "charge-efficiency"],
+    ["20703040385", "charge-efficiency"],
+    ["20703040447", "charge-efficiency"],
+    ["20703040459", "charge-efficiency"],
+  ]);
+  const actual = new Map(
+    getAllOverlimitCards().flatMap((card) =>
+      (card.effectValues ?? [])
+        .filter((effect) => effect.kind === "stat")
+        .map((effect) => [card.id, effect.statId] as const),
     ),
-    false,
   );
+
+  assert.deepEqual(actual, expected);
 });
 
 test("key cards expose their reviewed player-facing values", () => {
@@ -61,6 +85,12 @@ test("key cards expose their reviewed player-facing values", () => {
       label: "暴击伤害",
       stages: [{ value: "+200%" }],
     },
+    {
+      kind: "stat",
+      statId: "critical-rate",
+      label: "暴击率",
+      stages: [{ value: "+50%" }],
+    },
   ]);
 });
 
@@ -84,5 +114,12 @@ test("structured values cover stacks, dynamic conversion, and dual channels", ()
       effect.kind === "damage" ? effect.modifierTypeId : effect.statId,
     ),
     ["weapon-skill-damage", "skill-damage"],
+  );
+  assert.deepEqual(
+    getOverlimitCardById("20703040102")?.effectValues?.[0].stages,
+    [
+      { condition: "每发", value: "+0.8%" },
+      { condition: "100层", value: "+80%" },
+    ],
   );
 });

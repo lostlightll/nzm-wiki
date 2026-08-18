@@ -46,6 +46,24 @@ const overlimitProviders = MULTIPLIER_PROVIDERS.filter(
 const overlimitProviderByItemId = new Map(
   overlimitProviders.map((provider) => [provider.source.itemId, provider]),
 );
+const overlimitStatTypeByItemId = new Map<string, string>([
+  ["20703040136", "toughness-efficiency"],
+  ["20703040448", "critical-rate"],
+  ["20703040460", "critical-rate"],
+  ["20703040406", "critical-rate"],
+  ["20703040115", "critical-rate"],
+  ["20703040382", "critical-rate"],
+  ["20703040028", "critical-rate"],
+  ["20703040116", "critical-rate"],
+  ["20704040477", "critical-rate"],
+  ["20703040391", "critical-rate"],
+  ["20703040102", "charge-efficiency"],
+  ["20703040404", "charge-efficiency"],
+  ["20703040182", "charge-efficiency"],
+  ["20703040385", "charge-efficiency"],
+  ["20703040447", "charge-efficiency"],
+  ["20703040459", "charge-efficiency"],
+]);
 
 function requireFile(relativePath: string, label: string) {
   if (!fs.existsSync(path.join(root, relativePath))) {
@@ -194,8 +212,13 @@ for (const card of hydratedOverlimitCards) {
   const statEffects =
     card.effectValues?.filter((effect) => effect.kind === "stat") ?? [];
 
-  if (statEffects.length > 0) {
-    errors.push(`超限卡片 ${card.id} ${card.name} 本期不允许写入 stat 数值`);
+  const expectedStatType = overlimitStatTypeByItemId.get(card.id);
+  const actualStatTypes = statEffects.map((effect) => effect.statId);
+  const expectedStatTypes = expectedStatType ? [expectedStatType] : [];
+  if (JSON.stringify(actualStatTypes) !== JSON.stringify(expectedStatTypes)) {
+    errors.push(
+      `超限卡片 ${card.id} ${card.name} 的 stat 类型不匹配：期望 ${expectedStatTypes.join(", ") || "无"}，实际 ${actualStatTypes.join(", ") || "无"}`,
+    );
   }
   if (!provider && damageEffects.length > 0) {
     errors.push(`超限卡片 ${card.id} ${card.name} 存在孤立 effect_values`);
@@ -281,5 +304,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `乘区索引校验通过：${MODIFIER_TYPES.length} 个增伤类型，${MULTIPLIER_PROVIDERS.length} 个来源，${MULTIPLIER_PROVIDER_EXCLUSIONS.length} 个排除项，${PROVIDER_RELATIONS.length} 条双向关系；覆盖 ${perkCandidates.size} 个插件/卡片身份、${weaponCandidates.size} 个武器技能组件。`,
+  `乘区索引校验通过：${MODIFIER_TYPES.length} 个增伤类型，${MULTIPLIER_PROVIDERS.length} 个来源，${MULTIPLIER_PROVIDER_EXCLUSIONS.length} 个排除项，${PROVIDER_RELATIONS.length} 条双向关系；覆盖 ${perkCandidates.size} 个插件/卡片身份、${overlimitStatTypeByItemId.size} 个属性数值来源、${weaponCandidates.size} 个武器技能组件。`,
 );
