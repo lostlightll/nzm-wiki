@@ -125,21 +125,37 @@ function formatSeconds(value: number): string {
   return `${value.toFixed(3).replace(/0+$/, "").replace(/\.$/, ".0")}s`;
 }
 
-export function formatBurstParameters(
+function getBurstCycleDuration(
   count: number | undefined,
   interval: number | undefined,
-): string {
+  subFireInterval: number | undefined,
+): number | undefined {
   if (
     count === undefined ||
+    !Number.isFinite(count) ||
     count <= 1 ||
     interval === undefined ||
     !Number.isFinite(interval) ||
-    interval < 0
+    interval <= 0 ||
+    subFireInterval === undefined ||
+    !Number.isFinite(subFireInterval) ||
+    subFireInterval < 0
   ) {
-    return "-";
+    return undefined;
   }
 
-  return `${count} 发 / ${formatSeconds(count * interval)}`;
+  return interval + (count - 1) * subFireInterval;
+}
+
+export function formatBurstCycle(
+  count: number | undefined,
+  interval: number | undefined,
+  subFireInterval: number | undefined,
+): string {
+  const duration = getBurstCycleDuration(count, interval, subFireInterval);
+  return duration === undefined
+    ? "-"
+    : `${count} 发 / ${formatSeconds(duration)}`;
 }
 
 export function formatFireRate(
@@ -148,18 +164,12 @@ export function formatFireRate(
   subFireCount: number | undefined,
   subFireInterval: number | undefined,
 ): string {
-  if (
-    interval !== undefined &&
-    interval > 0 &&
-    subFireCount !== undefined &&
-    Number.isFinite(subFireCount) &&
-    subFireCount > 1 &&
-    subFireInterval !== undefined &&
-    Number.isFinite(subFireInterval) &&
-    subFireInterval >= 0
-  ) {
-    const burstCycleDuration =
-      interval + (subFireCount - 1) * subFireInterval;
+  const burstCycleDuration = getBurstCycleDuration(
+    subFireCount,
+    interval,
+    subFireInterval,
+  );
+  if (burstCycleDuration !== undefined && subFireCount !== undefined) {
     return String(Math.round((subFireCount * 60) / burstCycleDuration));
   }
 
@@ -754,22 +764,38 @@ function ModeStats({
   }
 
   const healthLabel = healthDefinition?.label ?? "伤害";
-  const cadenceStats = (
-    <>
-      <Stat
-        label="射速"
-        value={formatFireRate(rpm, interval, subFireCount, subFireInterval)}
-      />
-      <Stat
-        label="基础间隔"
-        value={interval ? formatSeconds(interval) : "-"}
-      />
-      <Stat
-        label="连发参数"
-        value={formatBurstParameters(subFireCount, subFireInterval)}
-      />
-    </>
+  const burstCycleDuration = getBurstCycleDuration(
+    subFireCount,
+    interval,
+    subFireInterval,
   );
+  const cadenceStats =
+    burstCycleDuration === undefined ? (
+      <>
+        <Stat label="射速" value={formatFireRate(rpm, interval, undefined, undefined)} />
+        <Stat
+          label="射击间隔"
+          value={interval ? formatSeconds(interval) : "-"}
+        />
+      </>
+    ) : (
+      <>
+        <Stat
+          label="平均射速"
+          value={formatFireRate(rpm, interval, subFireCount, subFireInterval)}
+        />
+        <Stat
+          label="连发周期"
+          value={formatBurstCycle(subFireCount, interval, subFireInterval)}
+        />
+        <Stat
+          label="连发间隔"
+          value={
+            subFireInterval === undefined ? "-" : formatSeconds(subFireInterval)
+          }
+        />
+      </>
+    );
 
   return (
     <div id={`damage-source-${mode.id}`} className="mb-3 scroll-mt-24">

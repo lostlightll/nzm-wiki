@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { formatBurstParameters, formatFireRate } from "./WeaponCard";
+import { formatBurstCycle, formatFireRate } from "./WeaponCard";
 
 test("formatFireRate averages each burst over its complete firing cycle", () => {
   assert.equal(formatFireRate(400, 0.15, 3, 0.045), "750");
@@ -14,14 +14,14 @@ test("formatFireRate preserves base RPM without valid burst data", () => {
   assert.equal(formatFireRate(undefined, undefined, undefined, undefined), "-");
 });
 
-test("formatBurstParameters includes the interval after the final sub-fire", () => {
-  assert.equal(formatBurstParameters(3, 0.045), "3 发 / 0.135s");
-  assert.equal(formatBurstParameters(4, 0.2), "4 发 / 0.8s");
-  assert.equal(formatBurstParameters(4, 0.4), "4 发 / 1.6s");
+test("formatBurstCycle spans from one burst start to the next", () => {
+  assert.equal(formatBurstCycle(3, 0.15, 0.045), "3 发 / 0.24s");
+  assert.equal(formatBurstCycle(4, 0.33, 0.2), "4 发 / 0.93s");
+  assert.equal(formatBurstCycle(4, 0.5, 0.4), "4 发 / 1.7s");
 });
 
-test("formatBurstParameters hides non-burst and unavailable data", () => {
-  assert.equal(formatBurstParameters(1, 0), "-");
-  assert.equal(formatBurstParameters(undefined, undefined), "-");
-  assert.equal(formatBurstParameters(3, undefined), "-");
+test("formatBurstCycle hides non-burst and unavailable data", () => {
+  assert.equal(formatBurstCycle(1, 0.15, 0), "-");
+  assert.equal(formatBurstCycle(undefined, undefined, undefined), "-");
+  assert.equal(formatBurstCycle(3, 0.15, undefined), "-");
 });
