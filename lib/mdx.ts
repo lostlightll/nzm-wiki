@@ -110,7 +110,11 @@ export function getMDXDetail(folder: string, slug: string) {
   }
 
   // 4. 解析文件内容
-  const filestream = fs.readFileSync(filePath, "utf-8");
+  const relativeFilePath = path.relative(baseDir, filePath);
+  const filestream = fs.readFileSync(
+    path.join(baseDir, relativeFilePath),
+    "utf-8",
+  );
   const { data, content } = matter(filestream);
 
   // draft 文章仅在开发环境可见

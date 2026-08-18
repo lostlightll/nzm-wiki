@@ -1,4 +1,10 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+
+@source "../app";
+@source "../components";
+@source "../data";
+@source "../lib";
+@source "../mdx-components.tsx";
 
 @plugin "@tailwindcss/typography";
 
