@@ -148,8 +148,31 @@ export interface PerkEffect {
   };
 }
 
+export interface EffectValueStage {
+  condition?: string;
+  value: string;
+}
+
+export type PerkEffectValue =
+  | {
+      kind: "damage";
+      modifierTypeId: string;
+      label: string;
+      stages: EffectValueStage[];
+    }
+  | {
+      kind: "stat";
+      statId:
+        | "toughness-efficiency"
+        | "critical-rate"
+        | "charge-efficiency";
+      label: string;
+      stages: EffectValueStage[];
+    };
+
 export interface Perk {
   id: string;
+  itemId: string;
   slug: string;
   name: string;
   slot: PerkSlot;
@@ -160,6 +183,7 @@ export interface Perk {
   weaponNames?: string[];
   effects: PerkEffect[];
   description?: string;
+  effectValues?: PerkEffectValue[];
   collectModItem?: 0 | 1;
   makeModItem?: 0 | 1;
   isCooked?: boolean;
@@ -189,6 +213,7 @@ export interface OverlimitCard {
   weaponItems: number[];
   weaponNames: string[];
   tags: OverlimitCardTag[];
+  effectValues?: PerkEffectValue[];
 }
 
 export type OverlimitCardQuality = 3 | 4 | 5;

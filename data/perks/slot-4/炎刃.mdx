@@ -1,6 +1,15 @@
 ---
 title: "炎刃"
 id: "20703040334"
+effect_values:
+  - kind: damage
+    modifierTypeId: weapon-hit-damage
+    label: "射击伤害"
+    stages:
+      - condition: "命中首个敌人"
+        value: "+100%"
+      - condition: "主动技能期间"
+        value: "+200%"
 slot: 4
 rarity: 3
 icon: "1312057003"

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import overlimitCards from "@/data/overlimit-cards.json";
 import bondCatalog from "@/data/overlimit-bonds.json";
 import levelCatalog from "@/data/overlimit-levels.json";
 import mapRotation from "@/data/overlimit-map-rotation.json";
+import { getAllOverlimitCards } from "@/lib/overlimit-cards";
 import type {
-  OverlimitCard,
   OverlimitBondCatalog,
   OverlimitLevelCatalog,
   OverlimitMapRotationSchedule,
@@ -19,9 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default function OverlimitPage() {
+  const cards = getAllOverlimitCards();
   return (
     <OverlimitPageClient
-      initialCards={overlimitCards as OverlimitCard[]}
+      initialCards={cards}
       bondCatalog={bondCatalog as OverlimitBondCatalog}
       levelCatalog={levelCatalog as OverlimitLevelCatalog}
       mapRotation={mapRotation as OverlimitMapRotationSchedule}

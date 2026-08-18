@@ -9,6 +9,7 @@
     "lint": "eslint",
     "test:perk-release": "tsx --test lib/perk-release.test.ts",
     "test:multiplier-data": "tsx --test lib/multiplier-data.test.ts",
+    "test:overlimit-cards": "tsx --test lib/overlimit-cards.test.ts",
     "test:weapon-base-damage": "tsx --test lib/weapon-base-damage.test.ts",
     "multiplier-index:check": "tsx scripts/check-multiplier-index.ts",
     "multiplier-providers:audit": "tsx scripts/audit-multiplier-providers.ts",

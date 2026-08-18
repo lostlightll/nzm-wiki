@@ -8,6 +8,7 @@ import grapplingHook from "@/data/season-talents/s3/grappling-hook.json";
 import ironFist from "@/data/season-talents/s3/iron-fist.json";
 import zero from "@/data/season-talents/s3/zero.json";
 import huntingSpeedrun from "@/data/guides/hunting-speedrun.json";
+import { getAllOverlimitCards } from "@/lib/overlimit-cards";
 import {
   MODIFIER_TYPES,
   MULTIPLIER_FACTORS,
@@ -36,6 +37,14 @@ const bondStages = new Set(
 );
 const speedrunCardsById = new Map(
   huntingSpeedrun.cards.map((card) => [card.cardId, card]),
+);
+const hydratedOverlimitCards = getAllOverlimitCards();
+const overlimitProviders = MULTIPLIER_PROVIDERS.filter(
+  (provider) =>
+    provider.source.type === "perk" && provider.source.overlimitCard,
+);
+const overlimitProviderByItemId = new Map(
+  overlimitProviders.map((provider) => [provider.source.itemId, provider]),
 );
 
 function requireFile(relativePath: string, label: string) {
@@ -176,6 +185,35 @@ for (const cardId of cardIds) {
   if (!perkCandidates.has(`perk:${cardId}`)) {
     errors.push(`超限卡片没有同 ItemID 插件实体：${cardId}`);
   }
+}
+
+for (const card of hydratedOverlimitCards) {
+  const provider = overlimitProviderByItemId.get(card.id);
+  const damageEffects =
+    card.effectValues?.filter((effect) => effect.kind === "damage") ?? [];
+  const statEffects =
+    card.effectValues?.filter((effect) => effect.kind === "stat") ?? [];
+
+  if (statEffects.length > 0) {
+    errors.push(`超限卡片 ${card.id} ${card.name} 本期不允许写入 stat 数值`);
+  }
+  if (!provider && damageEffects.length > 0) {
+    errors.push(`超限卡片 ${card.id} ${card.name} 存在孤立 effect_values`);
+    continue;
+  }
+  if (!provider) continue;
+
+  const expected = [...new Set(provider.modifierTypeIds)].sort();
+  const actual = damageEffects.map((effect) => effect.modifierTypeId).sort();
+  if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+    errors.push(
+      `超限卡片 ${card.id} ${card.name} 的 effect_values 类型不匹配：期望 ${expected.join(", ")}，实际 ${actual.join(", ") || "无"}`,
+    );
+  }
+}
+
+if (overlimitProviders.length !== 58) {
+  errors.push(`超限增伤来源数量异常：期望 58，实际 ${overlimitProviders.length}`);
 }
 
 const weaponCandidates = new Map<string, string>();

@@ -1,10 +1,145 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import type { Perk, PerkSlot, Rarity } from "@/types";
+import type {
+  EffectValueStage,
+  Perk,
+  PerkEffectValue,
+  PerkSlot,
+  Rarity,
+} from "@/types";
 import { isValidDateKey } from "@/lib/date-key";
+import { MODIFIER_TYPES } from "@/lib/multiplier-data";
 
 const PERKS_DATA_DIR = path.join(process.cwd(), "data/perks");
+const MODIFIER_TYPE_IDS = new Set(MODIFIER_TYPES.map((type) => type.id));
+const STAT_IDS = new Set([
+  "toughness-efficiency",
+  "critical-rate",
+  "charge-efficiency",
+]);
+
+function requireNonEmptyString(
+  value: unknown,
+  field: string,
+  filePath: string,
+): string {
+  if (typeof value !== "string" || value.trim() === "") {
+    throw new Error(`插件 ${field} 必须是非空字符串: ${filePath}`);
+  }
+  return value.trim();
+}
+
+function parseEffectValueStages(
+  value: unknown,
+  field: string,
+  filePath: string,
+): EffectValueStage[] {
+  if (!Array.isArray(value) || value.length === 0) {
+    throw new Error(`插件 ${field} 必须包含至少一个阶段: ${filePath}`);
+  }
+
+  return value.map((stage, index) => {
+    if (!stage || typeof stage !== "object" || Array.isArray(stage)) {
+      throw new Error(`插件 ${field}[${index}] 格式无效: ${filePath}`);
+    }
+    const record = stage as Record<string, unknown>;
+    const condition =
+      record.condition === undefined
+        ? undefined
+        : requireNonEmptyString(
+            record.condition,
+            `${field}[${index}].condition`,
+            filePath,
+          );
+    return {
+      ...(condition ? { condition } : {}),
+      value: requireNonEmptyString(
+        record.value,
+        `${field}[${index}].value`,
+        filePath,
+      ),
+    };
+  });
+}
+
+function parseEffectValues(
+  value: unknown,
+  filePath: string,
+): PerkEffectValue[] | undefined {
+  if (value === undefined) return undefined;
+  if (!Array.isArray(value) || value.length === 0) {
+    throw new Error(`插件 effect_values 必须是非空数组: ${filePath}`);
+  }
+
+  const identities = new Set<string>();
+  return value.map((effect, index) => {
+    if (!effect || typeof effect !== "object" || Array.isArray(effect)) {
+      throw new Error(`插件 effect_values[${index}] 格式无效: ${filePath}`);
+    }
+    const record = effect as Record<string, unknown>;
+    const kind = requireNonEmptyString(
+      record.kind,
+      `effect_values[${index}].kind`,
+      filePath,
+    );
+    const label = requireNonEmptyString(
+      record.label,
+      `effect_values[${index}].label`,
+      filePath,
+    );
+    const stages = parseEffectValueStages(
+      record.stages,
+      `effect_values[${index}].stages`,
+      filePath,
+    );
+
+    if (kind === "damage") {
+      const modifierTypeId = requireNonEmptyString(
+        record.modifierTypeId,
+        `effect_values[${index}].modifierTypeId`,
+        filePath,
+      );
+      if (!MODIFIER_TYPE_IDS.has(modifierTypeId)) {
+        throw new Error(
+          `插件 effect_values[${index}] 使用未知增伤类型 ${modifierTypeId}: ${filePath}`,
+        );
+      }
+      const identity = `damage:${modifierTypeId}`;
+      if (identities.has(identity)) {
+        throw new Error(`插件 effect_values 存在重复类型 ${identity}: ${filePath}`);
+      }
+      identities.add(identity);
+      return { kind, modifierTypeId, label, stages };
+    }
+
+    if (kind === "stat") {
+      const statId = requireNonEmptyString(
+        record.statId,
+        `effect_values[${index}].statId`,
+        filePath,
+      );
+      if (!STAT_IDS.has(statId)) {
+        throw new Error(
+          `插件 effect_values[${index}] 使用未知属性类型 ${statId}: ${filePath}`,
+        );
+      }
+      const identity = `stat:${statId}`;
+      if (identities.has(identity)) {
+        throw new Error(`插件 effect_values 存在重复类型 ${identity}: ${filePath}`);
+      }
+      identities.add(identity);
+      return {
+        kind,
+        statId: statId as Extract<PerkEffectValue, { kind: "stat" }>["statId"],
+        label,
+        stages,
+      };
+    }
+
+    throw new Error(`插件 effect_values[${index}] 使用未知 kind ${kind}: ${filePath}`);
+  });
+}
 
 function parseNumberArray(value: unknown): number[] | undefined {
   if (!Array.isArray(value)) return undefined;
@@ -53,6 +188,7 @@ export function getAllPerks(): Perk[] {
       const { data } = matter(content);
       const perk: Perk = {
         id: file.replace(".mdx", ""),
+        itemId: requireNonEmptyString(data.id, "id", filePath),
         slug: `slot-${slot}/${file.replace(".mdx", "")}`,
         name: data.title,
         slot: data.slot as PerkSlot,
@@ -61,6 +197,7 @@ export function getAllPerks(): Perk[] {
         icon: data.icon,
         effects: [],
         description: data.description,
+        effectValues: parseEffectValues(data.effect_values, filePath),
         weaponType: parseNumberArray(data.weaponType),
         weaponNames: parseStringArray(data.weaponNames),
         collectModItem: data.CollectMODItem as 0 | 1 | undefined,
@@ -87,6 +224,7 @@ export function getPerkByName(name: string): Perk | null {
       const { data } = matter(content);
       return {
         id: name,
+        itemId: requireNonEmptyString(data.id, "id", filePath),
         slug: `slot-${slot}/${name}`,
         name: data.title,
         slot: data.slot as PerkSlot,
@@ -95,6 +233,7 @@ export function getPerkByName(name: string): Perk | null {
         icon: data.icon,
         effects: [],
         description: data.description,
+        effectValues: parseEffectValues(data.effect_values, filePath),
         weaponType: parseNumberArray(data.weaponType),
         weaponNames: parseStringArray(data.weaponNames),
         collectModItem: data.CollectMODItem as 0 | 1 | undefined,

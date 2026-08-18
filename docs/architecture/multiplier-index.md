@@ -38,6 +38,13 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - 没有直接 GPModifier 的效果必须使用 `reviewed-override` 并保留描述、数值行或机制依据。
 - 竞速卡片禁止使用 `reviewed-override`；`AttributeName` 不在现有 modifier type 的 `attributeFields` 中时直接不建立关系。
 
+超限卡片的具体增伤值不写入来源注册表，而由同 ItemID 插件 MDX 的 `effect_values` 维护。两类数据职责如下：
+
+- `multiplier-providers.json` 决定“属于哪种增伤、进入哪个乘区”，保存证据链。
+- `effect_values` 决定“向玩家显示什么条件和数值”，以审定描述和人工覆盖为准。
+- `lib/overlimit-cards.ts` 用稳定 ItemID 将 MDX 数值合并到猎场卡片，保留 `overlimit-cards.json` 的简述。
+- 校验要求每个超限增伤来源与 `modifierTypeId` 精确一一匹配；未知类型、空阶段、重复类型、孤立字段和当前未启用的 `stat` 都会报错。
+
 武器目标关系不写回 MDX。`lib/multiplier-data.ts` 直接消费 Weapon Resolver 已有的 `settlements`、`element`、`enableCritical` 和 `enableWeakness`，为每个 `damageSources[]` 条目建立伤害画像。
 
 武器白值索引同样不维护静态副本。`lib/weapon-base-damage.ts` 接收 LC/TD 的 `ResolvedWeapon[]`，只收录非近战武器中 `damage.base` 已解析的 MDX `damage_sources[]`；刺隐、夜影之逝等其他武器上的 `MeleeWeaponDamage` 来源继续保留。名称固定使用 `weapon.title + source.name`，白值和结算身份来自对应模式的 Resolver 投影，不读取 Lock `Description`。
@@ -99,6 +106,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 
 ```text
 pnpm test:multiplier-data
+pnpm test:overlimit-cards
 pnpm test:weapon-base-damage
 pnpm multiplier-index:check
 pnpm multiplier-providers:audit

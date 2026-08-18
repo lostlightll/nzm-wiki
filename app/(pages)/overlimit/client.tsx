@@ -27,6 +27,7 @@ import {
 } from "@/components/OverlimitCardMeta";
 import { OverlimitHoverPreview } from "@/components/OverlimitHoverPreview";
 import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
+import { OverlimitEffectValues } from "@/components/OverlimitEffectValues";
 import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import { getProviderRelationsForSource } from "@/lib/multiplier-data";
@@ -135,6 +136,7 @@ function OverlimitCardItem({
           <h3 className="mt-4 text-center text-base font-semibold leading-6 text-white sm:text-lg">
             {card.name}
           </h3>
+          <OverlimitEffectValues card={card} variant="catalog" />
           <p className="mt-2 break-words text-center text-[13px] leading-5 text-zinc-300">
             {card.description}
           </p>
@@ -306,6 +308,13 @@ export default function OverlimitPageClient({
           card.description,
           ...card.weaponNames,
           ...card.tags.map((tag) => tag.name),
+          ...(card.effectValues ?? []).flatMap((effect) => [
+            effect.label,
+            ...effect.stages.flatMap((stage) => [
+              stage.condition ?? "",
+              stage.value,
+            ]),
+          ]),
         ]
           .join(" ")
           .toLocaleLowerCase("zh-CN");

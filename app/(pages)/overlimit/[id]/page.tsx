@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { OverlimitCardDetail } from "@/components/OverlimitCardDetail";
 import { TriggerDamagePanel } from "@/components/TriggerDamageCatalog";
-import overlimitCards from "@/data/overlimit-cards.json";
+import {
+  getAllOverlimitCards,
+  getOverlimitCardById,
+} from "@/lib/overlimit-cards";
 import { getTriggerDamageByOverlimitId } from "@/lib/trigger-damage";
-import type { OverlimitCard } from "@/types";
 
-const cards = overlimitCards as OverlimitCard[];
+const cards = getAllOverlimitCards();
 
 export function generateStaticParams() {
   return cards.map((card) => ({ id: card.id }));
@@ -18,7 +20,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const card = cards.find((item) => item.id === id);
+  const card = getOverlimitCardById(id);
   if (!card) return {};
 
   return {
@@ -34,7 +36,7 @@ export default async function OverlimitCardPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const card = cards.find((item) => item.id === id);
+  const card = getOverlimitCardById(id);
   if (!card) notFound();
   const triggerDamage = getTriggerDamageByOverlimitId(id);
 

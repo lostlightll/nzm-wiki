@@ -113,6 +113,30 @@ MGE 中的“复用某武器资源”等开发备注不写入网站描述，只�
 description_override: true
 ```
 
+## 结构化效果数值
+
+超限卡片需要展示玩家可读的具体数值时，在同 ItemID 插件 MDX 的 frontmatter 中维护 `effect_values`。`data/overlimit-cards.json` 继续保存猎场简述；页面运行时通过 ItemID 合并 MDX 数值，超限卡片导入器不得生成或覆盖 `effect_values`。
+
+```yaml
+effect_values:
+  - kind: damage
+    modifierTypeId: weapon-hit-damage
+    label: "射击伤害"
+    stages:
+      - condition: "命中首个敌人"
+        value: "+100%"
+      - condition: "主动技能期间"
+        value: "+200%"
+```
+
+- `kind: damage` 表示增伤，`modifierTypeId` 必须与乘区来源注册表中的增伤类型一致。
+- `label`、`value` 和每个阶段均不能为空；`condition` 可省略。叠层、条件翻倍和动态换算同时记录基础阶段与最终阶段。
+- 数值以审定后的 MDX `description` 为准；`description_override: true` 时人工覆盖优先。乘区证据用于交叉核对类型，不得从底层 `baseValue` 自动推导玩家文案。
+- 同一插件不能重复声明同一个 `modifierTypeId`。没有登记为增伤来源的超限卡片不得孤立添加增伤数值。
+- `kind: stat` 预留给 `toughness-efficiency`、`critical-rate` 和 `charge-efficiency`；在对应功能上线前不录入。页面只渲染非空分类，不显示空入口。
+
+维护时先确认 ItemID 和最终描述，再录入阶段数值，随后运行 `pnpm test:overlimit-cards` 与 `pnpm multiplier-index:check`。超限卡片导入后重复执行校验，确认人工字段仍通过同 ItemID 合并。
+
 ## 适用武器
 
 适用范围分为三类：
