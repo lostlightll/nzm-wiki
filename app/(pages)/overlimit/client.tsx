@@ -119,7 +119,11 @@ function OverlimitCardItem({
           ))}
         </div>
 
-        <div className="flex flex-1 flex-col items-center px-3 pb-4 pt-5 sm:px-2">
+        <div className="relative flex flex-1 flex-col items-center px-3 pb-4 pt-5 sm:px-2">
+          <div className="pointer-events-none absolute inset-x-2 top-1 z-10 max-h-8 overflow-hidden">
+            <OverlimitEffectValues card={card} variant="catalog" />
+          </div>
+
           <div className="flex h-24 w-24 items-center justify-center sm:h-32 sm:w-32">
             <Image
               src={getAssetPath(card.icon)}
@@ -136,7 +140,6 @@ function OverlimitCardItem({
           <h3 className="mt-4 text-center text-base font-semibold leading-6 text-white sm:text-lg">
             {card.name}
           </h3>
-          <OverlimitEffectValues card={card} variant="catalog" />
           <p className="mt-2 break-words text-center text-[13px] leading-5 text-zinc-300">
             {card.description}
           </p>

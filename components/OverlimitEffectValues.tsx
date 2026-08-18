@@ -15,7 +15,7 @@ function CatalogEffect({ effect }: { effect: PerkEffectValue }) {
   const stages = getCatalogStages(effect.stages);
 
   return (
-    <p className="break-words text-center text-xs font-medium leading-5 text-[#e2c38b] tabular-nums">
+    <p className="break-words text-center text-[11px] font-medium leading-4 text-[#e2c38b] tabular-nums sm:text-xs">
       <span className="text-zinc-300">{effect.label}</span>{" "}
       {stages.map((stage, index) => (
         <span key={`${stage.condition ?? "base"}:${stage.value}`}>
@@ -79,7 +79,7 @@ export function OverlimitEffectValues({
 
   if (variant === "catalog") {
     return (
-      <div className="mt-2 w-full space-y-0.5" aria-label="效果数值">
+      <div className="w-full" aria-label="效果数值">
         {effects.map((effect) => (
           <CatalogEffect
             key={
