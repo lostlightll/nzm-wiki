@@ -495,6 +495,7 @@
             { "label": "召唤增伤", "value": "+30% 全伤害" },
             { "label": "指令", "value": "长按指定目标" }
           ],
+          "damageSourceIds": ["iron-fist-combo", "iron-fist-cannon", "iron-fist-arrival"],
           "link": { "label": "节点 3001102", "href": "/guides/season-talents/s3/iron-fist?node=3001102#multiplier-provider-node-3001102", "type": "season-talent" },
           "searchTerms": ["铁拳狂徒", "召唤物30%", "指定目标", "大稀释乘区"]
         },
@@ -503,6 +504,7 @@
           "name": "天崩地裂",
           "kind": "skill",
           "summary": "解锁跳砸并击飞大范围怪物；配置伤害为 270% 攻击力。",
+          "damageSourceIds": ["iron-fist-jump-slam"],
           "link": { "label": "节点 3001202", "href": "/guides/season-talents/s3/iron-fist?node=3001202#multiplier-provider-node-3001202", "type": "season-talent" },
           "searchTerms": ["天崩地裂", "跳砸", "270%", "击飞"]
         },
@@ -531,6 +533,7 @@
             "地裂波蓝图字节码直接引用 S3 专用伤害行，伤害为 190% 攻击力；能力默认字段里还残留一条 45% 火焰旧引用，当前执行链以专用行和字节码证据为准。",
             "节点文案写“所有攻击”施加冲击，但落地砸击能力没有 AddBuff 证据；当前只确认三连击、聚能炮、跳砸与地裂波四类常规战斗攻击施加冲击。"
           ],
+          "damageSourceIds": ["iron-fist-earth-wave"],
           "buffRefs": [{ "buffId": 160403101, "target": "enemy", "relation": "applies", "note": "5 秒、17% 易伤" }],
           "link": { "label": "节点 3001402", "href": "/guides/season-talents/s3/iron-fist?node=3001402#multiplier-provider-node-3001402", "type": "season-talent" },
           "searchTerms": ["地裂波", "冲击", "17%易伤", "易伤乘区"]

@@ -67,6 +67,21 @@ test("catalog resolves locked damage, configured rates, Buffs and published perk
   );
   assert.equal(ironFist.damageSources.find((item) => item.id === "iron-fist-earth-wave")?.coefficient, 1.9);
   assert.equal(ironFist.damageSources.find((item) => item.id === "iron-fist-arrival")?.enableCritical, false);
+  assert.deepEqual(
+    ironFist.mechanics
+      .flatMap((mechanic) => mechanic.numericalRows)
+      .map((row) => [row.id, row.coefficient])
+      .sort(([left], [right]) => left - right),
+    [
+      [160303001, 0.5],
+      [160303002, 0.5],
+      [160303003, 0.5],
+      [160303004, 1],
+      [160303005, 2.7],
+      [160303006, 1.9],
+      [160303007, 1.9],
+    ],
+  );
   assert.equal(turrets.damageSources.find((item) => item.id === "destroyer-laser")?.intervalSeconds, undefined);
   assert.equal(
     turrets.damageSources.find((item) => item.id === "destroyer-laser")?.attackStatLabel,

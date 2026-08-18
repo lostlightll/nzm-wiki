@@ -47,6 +47,7 @@ export interface SummonMechanicDefinition {
   summary: string;
   details?: string[];
   facts?: SummonFact[];
+  damageSourceIds?: string[];
   buffRefs?: SummonBuffReference[];
   link?: SummonSourceLink;
   searchTerms?: string[];
@@ -162,6 +163,19 @@ export interface SummonDamageView extends Omit<SummonDamageDefinition, "weaponSo
   sourceLabel: string;
 }
 
+export interface SummonNumericalRowView {
+  id: number;
+  label: string;
+  coefficient: number;
+  attackStatLabel: "攻击力" | "技能攻击力";
+  baseAttack: number;
+  baseDamage: number;
+}
+
+export interface SummonMechanicView extends SummonMechanicDefinition {
+  numericalRows: SummonNumericalRowView[];
+}
+
 export interface SummonBuffView {
   buffId: number;
   name: string;
@@ -204,8 +218,9 @@ export interface SummonTalentView {
 
 export interface SummonCatalogEntryView extends Omit<
   SummonDefinition,
-  "damageSources" | "buffRefs" | "perkSlugs" | "talentRefs"
+  "mechanics" | "damageSources" | "buffRefs" | "perkSlugs" | "talentRefs"
 > {
+  mechanics: SummonMechanicView[];
   damageSources: SummonDamageView[];
   buffs: SummonBuffView[];
   perks: SummonPerkView[];

@@ -42,6 +42,7 @@ import type {
   SummonDamageView,
   SummonKind,
   SummonMechanicDefinition,
+  SummonMechanicView,
   SummonPerkView,
   SummonTalentView,
 } from "@/types";
@@ -295,9 +296,12 @@ function MechanicCard({
   mechanic,
 }: {
   entryId: string;
-  mechanic: SummonMechanicDefinition;
+  mechanic: SummonMechanicDefinition | SummonMechanicView;
 }) {
-  const hasMore = Boolean(mechanic.details?.length || mechanic.facts?.length);
+  const numericalRows = "numericalRows" in mechanic ? mechanic.numericalRows : [];
+  const hasMore = Boolean(
+    mechanic.details?.length || mechanic.facts?.length || numericalRows.length,
+  );
   return (
     <article
       id={`summon-${entryId}-${mechanic.id}`}
@@ -343,6 +347,21 @@ function MechanicCard({
                   <dt className="text-[10px] leading-4 text-zinc-500">{fact.label}</dt>
                   <dd className="m-0 text-xs font-medium leading-5 text-zinc-200">{fact.value}</dd>
                   {fact.note && <p className="m-0 text-[10px] leading-4 text-zinc-600">{fact.note}</p>}
+                </div>
+              ))}
+            </dl>
+          )}
+          {numericalRows.length > 0 && (
+            <dl className="grid grid-cols-2 gap-1.5 border-t border-zinc-800/60 py-2 sm:grid-cols-4">
+              {numericalRows.map((row) => (
+                <div key={row.id} className="rounded bg-zinc-900/70 px-2 py-1.5">
+                  <dt className="text-[10px] leading-4 text-zinc-500">{row.label}</dt>
+                  <dd className="m-0 text-xs font-medium leading-5 text-zinc-200">
+                    {formatCoefficient(row.coefficient, row.attackStatLabel)}
+                  </dd>
+                  <p className="m-0 text-[10px] leading-4 text-zinc-600">
+                    NUM {row.id} · {row.baseAttack} 攻击力白值 {formatBaseDamage(row.baseDamage)}
+                  </p>
                 </div>
               ))}
             </dl>

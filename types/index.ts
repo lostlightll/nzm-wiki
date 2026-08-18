@@ -461,6 +461,8 @@ export type {
   SummonKind,
   SummonMechanicDefinition,
   SummonMechanicKind,
+  SummonMechanicView,
+  SummonNumericalRowView,
   SummonPerkView,
   SummonSearchDocument,
   SummonSourceLink,

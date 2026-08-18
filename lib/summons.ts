@@ -21,6 +21,8 @@ import type {
   SummonDamageLock,
   SummonDamageView,
   SummonDataLock,
+  SummonDefinition,
+  SummonMechanicView,
   SummonPerkView,
   SummonSearchDocument,
   SummonTalentReference,
@@ -299,6 +301,28 @@ async function hydrateDamage(
   };
 }
 
+function hydrateMechanics(summon: SummonDefinition): SummonMechanicView[] {
+  const damageDefinitions = new Map(summon.damageSources.map((damage) => [damage.id, damage]));
+
+  return summon.mechanics.map((mechanic) => ({
+    ...mechanic,
+    numericalRows: (mechanic.damageSourceIds ?? []).flatMap((damageSourceId) => {
+      const damage = damageDefinitions.get(damageSourceId);
+      const locked = damage?.lockSource ? damageLockEntries.get(damage.lockSource) : undefined;
+      if (!damage || !locked) return [];
+
+      return locked.rows.map((row, index) => ({
+        id: row.id,
+        label: locked.rows.length > 1 ? `${damage.name} · 第 ${index + 1} 段` : damage.name,
+        coefficient: row.coefficient,
+        attackStatLabel: locked.attackStat,
+        baseAttack: damageLock.baseAttack,
+        baseDamage: row.coefficient * damageLock.baseAttack,
+      }));
+    }),
+  }));
+}
+
 export function assertSummonDamageLock(lock: SummonDamageLock = damageLock): void {
   if (lock.schemaVersion !== 1 || lock.mode !== "lc" || lock.baseAttack <= 0) {
     throw new Error("召唤伤害锁顶层结构无效");
@@ -340,6 +364,17 @@ export function assertSummonDataLock(lock: SummonDataLock = data): void {
         throw new Error(`${summon.id}:${damage.id} 引用了不存在的召唤伤害锁`);
       }
     }
+    for (const mechanic of summon.mechanics) {
+      for (const damageSourceId of mechanic.damageSourceIds ?? []) {
+        if (!damageIds.has(damageSourceId)) {
+          throw new Error(`${summon.id}:${mechanic.id} 引用了不存在的伤害来源 ${damageSourceId}`);
+        }
+        const damage = summon.damageSources.find((item) => item.id === damageSourceId);
+        if (!damage?.lockSource) {
+          throw new Error(`${summon.id}:${mechanic.id} 的逐段 NUM 只能引用召唤伤害锁`);
+        }
+      }
+    }
   }
 }
 
@@ -350,6 +385,7 @@ export async function getSummonCatalog(): Promise<SummonCatalogView> {
   const entries: SummonCatalogEntryView[] = await Promise.all(
     data.summons.map(async (summon) => ({
       ...summon,
+      mechanics: hydrateMechanics(summon),
       damageSources: await Promise.all(summon.damageSources.map(hydrateDamage)),
       buffs: hydrateBuffs(summon.buffRefs),
       perks: hydratePerks(summon.perkSlugs),
