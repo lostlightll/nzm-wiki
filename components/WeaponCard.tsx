@@ -27,6 +27,13 @@ type DisplaySource = ConsumerDamageSource | ConsumerDamageSourceSummary;
 // TODO(multiplier): 待武器伤害信息层级重做后，再恢复伤害来源的适用乘区徽标。
 const SHOW_WEAPON_DAMAGE_SOURCE_MULTIPLIERS = false;
 
+const TOUGHNESS_LABELS = {
+  none: "无",
+  impulse: "冲击",
+  penetration: "贯穿",
+  explosion: "爆炸",
+} as const;
+
 const ELEMENT_ICONS: Record<ElementType, string> = {
   火焰: "/icons/elements/fire.png",
   寒冷: "/icons/elements/cryo.png",
@@ -748,6 +755,7 @@ function ModeStats({
       ? "-"
       : formatSeconds(attackInterval);
   const toughness = getResolvedFieldValue(mode.damage.toughness);
+  const toughnessType = getResolvedFieldValue(mode.toughness);
   const weaknessMultiplier = getResolvedFieldValue(mode.weaknessMultiplier);
   const enableWeakness = getResolvedFieldValue(mode.enableWeakness) === true;
   const enableCritical = getResolvedFieldValue(mode.enableCritical) === true;
@@ -809,6 +817,12 @@ function ModeStats({
           label="射击间隔"
           value={interval ? formatSeconds(interval) : "-"}
         />
+        <div className="hidden sm:block">
+          <Stat
+            label="破韧类型"
+            value={toughnessType ? TOUGHNESS_LABELS[toughnessType] : "-"}
+          />
+        </div>
       </>
     ) : (
       <>
