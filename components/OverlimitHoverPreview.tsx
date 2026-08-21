@@ -1,6 +1,5 @@
 "use client";
 
-import { Crosshair, Scale } from "lucide-react";
 import {
   useId,
   useLayoutEffect,
@@ -125,8 +124,7 @@ export function OverlimitHoverPreview({
             }}
           >
             <div className="flex items-center justify-between gap-3 px-2 py-3">
-              <div className="flex items-center gap-2 text-xs font-medium text-zinc-400">
-                <Scale aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
+              <div className="text-xs font-medium text-zinc-400">
                 抽取权重
               </div>
               <strong className="text-sm font-semibold tabular-nums text-[#e2c38b]">
@@ -134,8 +132,7 @@ export function OverlimitHoverPreview({
               </strong>
             </div>
             <div className="border-t border-white/10 px-2 py-3">
-              <div className="mb-2.5 flex items-center gap-2 text-xs font-medium text-zinc-400">
-                <Crosshair aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
+              <div className="mb-2.5 text-xs font-medium text-zinc-400">
                 适用武器
               </div>
               <OverlimitWeaponApplicability

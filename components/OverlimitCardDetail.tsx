@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Crosshair, Layers3, Scale, Sparkles } from "lucide-react";
+import { Layers3 } from "lucide-react";
 import {
   OVERLIMIT_QUALITY_STYLES,
   OVERLIMIT_SLOT_LABELS,
@@ -50,8 +50,7 @@ export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
       </header>
 
       <section className="border-t border-white/10 px-4 py-5 sm:px-6">
-        <h2 className="mb-2 flex items-center gap-2 text-sm font-medium text-zinc-400">
-          <Sparkles aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
+        <h2 className="mb-2 text-sm font-medium text-zinc-400">
           卡片效果
         </h2>
         <p className="text-base leading-7 text-zinc-200">{card.description}</p>
@@ -67,8 +66,7 @@ export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
 
       <div className="grid border-t border-white/10 md:grid-cols-[minmax(0,1fr)_14rem]">
         <section className="px-4 py-5 sm:px-6 md:border-r md:border-white/10">
-          <h2 className="mb-3 flex items-center gap-2 text-sm font-medium text-zinc-400">
-            <Crosshair aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
+          <h2 className="mb-3 text-sm font-medium text-zinc-400">
             适用武器
           </h2>
           <OverlimitWeaponApplicability
@@ -78,8 +76,7 @@ export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
         </section>
 
         <section className="border-t border-white/10 px-4 py-5 sm:px-6 md:border-t-0">
-          <h2 className="mb-3 flex items-center gap-2 text-sm font-medium text-zinc-400">
-            <Scale aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
+          <h2 className="mb-3 text-sm font-medium text-zinc-400">
             抽取权重
           </h2>
           <p className="text-3xl font-bold tabular-nums text-[#e2c38b]">

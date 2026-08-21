@@ -364,8 +364,7 @@ function DetailCard({
       </div>
 
       <div className="mt-5 border-t border-[color:var(--talent-accent-soft)] pt-4">
-        <div className="mb-2.5 flex items-center gap-2 text-xs font-semibold tracking-[0.16em] text-slate-400">
-          <Sparkles aria-hidden="true" className="h-4 w-4 text-[#ffd45e]" />
+        <div className="mb-2.5 text-xs font-semibold tracking-[0.16em] text-slate-400">
           天赋效果
         </div>
         <TalentDescription value={node.descriptions[displayLevel - 1]} />

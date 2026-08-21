@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Crosshair, Layers3, Sparkles } from "lucide-react";
+import { Crosshair, Layers3 } from "lucide-react";
 import { getAssetPath } from "@/lib/path";
 import { getPerkWeaponApplicability } from "@/lib/perk-applicability";
 import { SpriteIcon } from "@/components/SpriteIcon";
@@ -80,8 +80,7 @@ export function PerkDetailCard({
 
       {description && (
         <div className="border-t border-white/10 px-4 py-5 sm:px-6">
-          <h2 className="mb-2 flex items-center gap-2 text-sm font-medium text-zinc-400">
-            <Sparkles aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
+          <h2 className="mb-2 text-sm font-medium text-zinc-400">
             插件效果
           </h2>
           <div className="text-base leading-7 text-zinc-200 [&_p]:m-0 [&_strong]:font-semibold [&_strong]:text-[#e2bd75]">
@@ -91,8 +90,7 @@ export function PerkDetailCard({
       )}
 
       <div className="border-t border-white/10 px-4 py-5 sm:px-6">
-        <h2 className="mb-3 flex items-center gap-2 text-sm font-medium text-zinc-400">
-          <Crosshair aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
+        <h2 className="mb-3 text-sm font-medium text-zinc-400">
           适用武器
         </h2>
         <div>

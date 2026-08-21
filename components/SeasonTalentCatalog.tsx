@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Crosshair, Sparkles } from "lucide-react";
+import { Crosshair } from "lucide-react";
 import {
   useId,
   useLayoutEffect,
@@ -216,8 +216,7 @@ function TalentInfo({ talent }: { talent: SeasonTalent }) {
             </div>
 
             <div className="px-4 py-3.5">
-              <div className="mb-2 flex items-center gap-2 text-xs font-medium text-zinc-400">
-                <Sparkles aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
+              <div className="mb-2 text-xs font-medium text-zinc-400">
                 天赋效果
               </div>
               <p className="text-sm leading-6 text-zinc-200 [&_strong]:font-semibold [&_strong]:text-[#e2bd75]">
@@ -226,8 +225,7 @@ function TalentInfo({ talent }: { talent: SeasonTalent }) {
             </div>
 
             <div className="border-t border-white/10 px-4 py-3.5">
-              <div className="mb-2.5 flex items-center gap-2 text-xs font-medium text-zinc-400">
-                <Crosshair aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
+              <div className="mb-2.5 text-xs font-medium text-zinc-400">
                 适用武器
               </div>
               <div className="flex flex-wrap gap-1.5">

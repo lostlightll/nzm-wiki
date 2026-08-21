@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
-import { Crosshair, Sparkles } from "lucide-react";
+import { Crosshair } from "lucide-react";
 import { CatalogLink } from "@/components/CatalogLink";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
@@ -164,11 +164,7 @@ export function PerkHoverPreview({
             </div>
 
             <div className="px-4 py-3.5">
-              <div className="mb-2 flex items-center gap-2 text-xs font-medium text-zinc-400">
-                <Sparkles
-                  aria-hidden="true"
-                  className="h-4 w-4 text-[#d1ac69]"
-                />
+              <div className="mb-2 text-xs font-medium text-zinc-400">
                 插件效果
               </div>
               <p className="whitespace-pre-line text-sm leading-6 text-zinc-200 [&_strong]:font-semibold [&_strong]:text-[#e2bd75]">
@@ -179,11 +175,7 @@ export function PerkHoverPreview({
             </div>
 
             <div className="border-t border-white/10 px-4 py-3.5">
-              <div className="mb-2.5 flex items-center gap-2 text-xs font-medium text-zinc-400">
-                <Crosshair
-                  aria-hidden="true"
-                  className="h-4 w-4 text-[#d1ac69]"
-                />
+              <div className="mb-2.5 text-xs font-medium text-zinc-400">
                 适用武器
               </div>
 
