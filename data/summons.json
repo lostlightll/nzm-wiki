@@ -100,7 +100,7 @@
           "role": "持续直击",
           "lockSource": "emplacement-shot",
           "rate": { "intervalSeconds": 0.06, "roundsPerMinute": 1000, "attacksPerAction": 1, "label": "连续射击" },
-          "note": "Numerical 120600370；49 米开始衰减、60 米降至 60%；火力宣泄的 +200% 发生在切回机枪模式后的命中。"
+          "note": "49 米开始衰减、60 米降至 60%；火力宣泄的 +200% 发生在切回机枪模式后的命中。"
         }
       ],
       "buffRefs": [
@@ -110,7 +110,7 @@
       "perkSlugs": ["slot-4/火力阵线", "slot-4/自追踪炮塔", "slot-4/幸运炎帝"],
       "talentRefs": [],
       "evidenceNotes": [
-        "炮台由专用原型 20006000037、ASC 392 与伤害行 120600370 结算；当前武器页尚未收录这条炮台专用行。"
+        "炮台由专用原型 20006000037、ASC 392 与专用伤害行结算；当前武器页尚未收录这条伤害行。"
       ],
       "searchTerms": ["火神炎帝", "架设模式", "炮台", "火力宣泄", "1000 RPM", "自追踪炮塔"]
     },

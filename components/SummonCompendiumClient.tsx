@@ -3,26 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Activity,
   BookOpenText,
-  Boxes,
   ChevronDown,
   ChevronRight,
   CircleDashed,
-  Clock3,
-  Crosshair,
   Dices,
   ExternalLink,
-  Gauge,
   Layers3,
   ListFilter,
-  RadioTower,
   RotateCcw,
   Search,
-  ShieldCheck,
   Sparkles,
-  Swords,
-  UserRoundCog,
   X,
 } from "lucide-react";
 import {
@@ -35,6 +26,11 @@ import {
 import { MultiplierBadges } from "@/components/MultiplierBadges";
 import { getMultiplierFactorStyle } from "@/components/multiplier-badge-styles";
 import { getAssetPath } from "@/lib/path";
+import {
+  HEALTH_SETTLEMENT_PREFIX,
+  getHealthSettlementDefinition,
+  isWeaponHealthSettlementType,
+} from "@/lib/weapon-health-settlement";
 import type {
   SummonBuffView,
   SummonCatalogEntryView,
@@ -62,16 +58,6 @@ const KIND_STYLES: Record<SummonKind, string> = {
   "season-servant": "border-violet-500/35 bg-violet-500/10 text-violet-200",
 };
 
-const MECHANIC_LABELS: Record<SummonMechanicDefinition["kind"], string> = {
-  summon: "召唤",
-  attack: "攻击",
-  skill: "技能",
-  passive: "被动",
-  lifecycle: "生命周期",
-  command: "指令",
-  buff: "状态",
-};
-
 const EVIDENCE_LABELS = {
   published: "站内公开数据",
   "config-verified": "配置交叉确认",
@@ -96,11 +82,15 @@ function formatBaseDamage(value: number | undefined): string {
 }
 
 function settlementLabel(settlements: readonly string[]): string {
-  if (settlements.some((item) => item.endsWith("WeaponExplosionDamage"))) return "武器爆炸";
-  if (settlements.some((item) => item.endsWith("WeaponDamage"))) return "武器直击";
-  if (settlements.some((item) => item.endsWith("WeaponSkillDamage"))) return "武器技能";
-  if (settlements.some((item) => item.endsWith("SkillDamage"))) return "非武器技能";
-  return "独立伤害";
+  const settlement = settlements.find((item) =>
+    item.startsWith(HEALTH_SETTLEMENT_PREFIX),
+  );
+  if (!settlement) return "未标注结算类型";
+
+  const type = settlement.slice(HEALTH_SETTLEMENT_PREFIX.length);
+  return isWeaponHealthSettlementType(type)
+    ? getHealthSettlementDefinition(type).label
+    : type;
 }
 
 function subscribeToLocation(callback: () => void) {
@@ -173,24 +163,25 @@ function AssetIcon({
 }
 
 function DamageRow({ damage }: { damage: SummonDamageView }) {
-  const sustainedDps =
-    damage.baseDamage !== undefined &&
-    damage.intervalSeconds !== undefined &&
-    damage.intervalSeconds > 0 &&
-    damage.attacksPerAction === 1
-      ? damage.baseDamage / damage.intervalSeconds
-      : undefined;
   const rateText = damage.roundsPerMinute
     ? `${formatNumber(damage.roundsPerMinute, 1)} RPM`
     : damage.intervalSeconds
       ? `${formatNumber(damage.intervalSeconds, 3)} 秒/动作`
       : damage.rate?.label ?? "事件触发";
+  const shotIntervalText =
+    damage.roundsPerMinute &&
+    damage.intervalSeconds &&
+    damage.attacksPerAction === 1
+      ? `${formatNumber(damage.intervalSeconds, 3)} 秒/发`
+      : undefined;
 
   return (
     <div className="grid min-w-0 gap-2 border-t border-zinc-800/80 px-3 py-2 first:border-t-0 lg:grid-cols-[minmax(8.5rem,1.15fr)_minmax(7rem,0.8fr)_minmax(7.5rem,0.8fr)_minmax(7.5rem,0.8fr)_minmax(18rem,2fr)] lg:items-start lg:gap-3 lg:px-4">
       <div className="min-w-0">
         <p className="m-0 text-sm font-semibold leading-5 text-zinc-100">{damage.name}</p>
-        <p className="m-0 mt-0.5 text-xs leading-4 text-zinc-500">{damage.role}</p>
+        <p className="m-0 mt-0.5 text-xs leading-4 text-zinc-500">
+          {settlementLabel(damage.settlements)}
+        </p>
       </div>
 
       <div className="grid grid-cols-2 gap-1.5 lg:block">
@@ -208,16 +199,16 @@ function DamageRow({ damage }: { damage: SummonDamageView }) {
         <div className="rounded bg-zinc-950/55 px-2 py-1.5 lg:hidden">
           <span className="text-[11px] text-zinc-500">节奏</span>
           <p className="m-0 text-xs font-medium leading-5 text-zinc-200">{rateText}</p>
+          {shotIntervalText && (
+            <p className="m-0 text-[11px] leading-4 text-zinc-500">{shotIntervalText}</p>
+          )}
         </div>
       </div>
 
       <div className="hidden min-w-0 lg:block">
         <p className="m-0 text-xs font-medium leading-5 text-zinc-200">{rateText}</p>
-        <p className="m-0 text-[11px] leading-4 text-zinc-500">{damage.rate?.label}</p>
-        {sustainedDps !== undefined && (
-          <p className="m-0 text-[11px] leading-4 text-zinc-500">
-            裸值约 {formatNumber(sustainedDps, 1)}/秒
-          </p>
+        {shotIntervalText && (
+          <p className="m-0 text-[11px] leading-4 text-zinc-500">{shotIntervalText}</p>
         )}
       </div>
 
@@ -232,9 +223,6 @@ function DamageRow({ damage }: { damage: SummonDamageView }) {
             {damage.enableCritical ? "可" : "不可"} / {damage.enableWeakness ? "可" : "不可"}
           </span>
         </div>
-        <p className="col-span-2 m-0 text-[11px] leading-4 text-zinc-500">
-          {settlementLabel(damage.settlements)}
-        </p>
       </div>
 
       <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-[11px] leading-4 text-zinc-400">
@@ -244,7 +232,7 @@ function DamageRow({ damage }: { damage: SummonDamageView }) {
         )}
         {damage.note && <span>{damage.note}</span>}
         {damage.rate?.note && <span className="text-zinc-500">{damage.rate.note}</span>}
-        {damage.sourceHref ? (
+        {damage.sourceHref && (
           <Link
             href={damage.sourceHref}
             className="inline-flex shrink-0 items-center gap-1 text-cyan-400 hover:text-cyan-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
@@ -252,8 +240,6 @@ function DamageRow({ damage }: { damage: SummonDamageView }) {
             {damage.sourceLabel}
             <ExternalLink aria-hidden="true" className="h-3 w-3" />
           </Link>
-        ) : (
-          <span className="shrink-0 text-zinc-600">{damage.sourceLabel}</span>
         )}
       </div>
     </div>
@@ -263,8 +249,7 @@ function DamageRow({ damage }: { damage: SummonDamageView }) {
 function DamageSection({ entry }: { entry: SummonCatalogEntryView }) {
   return (
     <section aria-labelledby={`damage-title-${entry.id}`} className="mt-4">
-      <h3 id={`damage-title-${entry.id}`} className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-        <Swords aria-hidden="true" className="h-4 w-4 text-rose-400" />
+      <h3 id={`damage-title-${entry.id}`} className="m-0 mb-2 text-sm font-semibold text-zinc-100">
         伤害与攻击节奏
       </h3>
       <div className="overflow-hidden rounded-md border border-zinc-800 bg-zinc-900/35">
@@ -308,12 +293,7 @@ function MechanicCard({
           )}
           <div className="min-w-0">
           {!hideHeading && (
-            <div className="flex flex-wrap items-center gap-2">
-              <h4 className="m-0 text-sm font-semibold leading-5 text-zinc-100">{mechanic.name}</h4>
-              <span className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 text-[10px] leading-4 text-zinc-400">
-                {MECHANIC_LABELS[mechanic.kind]}
-              </span>
-            </div>
+            <h4 className="m-0 text-sm font-semibold leading-5 text-zinc-100">{mechanic.name}</h4>
           )}
           <p className={`m-0 text-xs leading-5 text-zinc-300 ${hideHeading ? "" : "mt-1"}`}>{mechanic.summary}</p>
           </div>
@@ -332,8 +312,7 @@ function MechanicCard({
       </div>
       {hasMore && (
         <details className="mt-2 border-t border-zinc-800/80 pt-1">
-          <summary className="flex min-h-9 w-fit cursor-pointer select-none items-center gap-1.5 text-[11px] text-zinc-500 hover:text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
-            <BookOpenText aria-hidden="true" className="h-3.5 w-3.5" />
+          <summary className="flex min-h-9 w-fit cursor-pointer select-none items-center text-[11px] text-zinc-500 hover:text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
             数值与补充
           </summary>
           {mechanic.facts && mechanic.facts.length > 0 && (
@@ -453,8 +432,7 @@ function RelatedSection({ entry }: { entry: SummonCatalogEntryView }) {
     <section className={`mt-4 grid min-w-0 gap-3 ${hasCards && entry.talents.length > 0 ? "lg:grid-cols-2" : "grid-cols-1"}`}>
       {hasCards && (
         <div className="min-w-0">
-          <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-            <Layers3 aria-hidden="true" className="h-4 w-4 text-cyan-400" />
+          <h3 className="m-0 mb-2 text-sm font-semibold text-zinc-100">
             Buff 与专属插件
           </h3>
           {entry.perkSelectionNote && (
@@ -501,12 +479,12 @@ function SummonEntry({
   onToggle: () => void;
 }) {
   const facts = [
-    { icon: RadioTower, label: "召唤方式", value: entry.deployment },
-    { icon: UserRoundCog, label: "操控", value: entry.control },
-    { icon: Crosshair, label: "索敌", value: entry.targeting },
-    { icon: Clock3, label: "生命周期", value: entry.lifetime },
-    { icon: Boxes, label: "数量", value: entry.count },
-    { icon: Gauge, label: "攻击节奏", value: entry.rateSummary },
+    { label: "召唤方式", value: entry.deployment },
+    { label: "操控", value: entry.control },
+    { label: "索敌", value: entry.targeting },
+    { label: "生命周期", value: entry.lifetime },
+    { label: "数量", value: entry.count },
+    { label: "攻击节奏", value: entry.rateSummary },
   ];
   return (
     <article
@@ -570,20 +548,16 @@ function SummonEntry({
         <div className="min-h-0 overflow-hidden">
           <div className={`p-3 transition-transform duration-300 sm:p-4 motion-reduce:transform-none motion-reduce:transition-none ${expanded ? "translate-y-0" : "-translate-y-1"}`}>
         <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-md border border-zinc-800 bg-zinc-800 sm:grid-cols-3 lg:grid-cols-6">
-          {facts.map(({ icon: Icon, label, value }) => (
+          {facts.map(({ label, value }) => (
             <div key={label} className="min-w-0 bg-zinc-950/75 px-2.5 py-2">
-              <dt className="flex items-center gap-1.5 text-[10px] leading-4 text-zinc-600">
-                <Icon aria-hidden="true" className="h-3.5 w-3.5" />
-                {label}
-              </dt>
+              <dt className="text-[10px] leading-4 text-zinc-600">{label}</dt>
               <dd className="m-0 mt-0.5 break-words text-xs leading-5 text-zinc-300">{value}</dd>
             </div>
           ))}
         </dl>
 
         <section className="mt-4" aria-labelledby={`mechanics-title-${entry.id}`}>
-          <h3 id={`mechanics-title-${entry.id}`} className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-            <Activity aria-hidden="true" className="h-4 w-4 text-amber-400" />
+          <h3 id={`mechanics-title-${entry.id}`} className="m-0 mb-2 text-sm font-semibold text-zinc-100">
             技能与机制
           </h3>
           <div className="grid min-w-0 gap-2 lg:grid-cols-2">
@@ -597,8 +571,7 @@ function SummonEntry({
         <RelatedSection entry={entry} />
 
         <details className="mt-4 border-t border-zinc-800/80">
-          <summary className="flex min-h-10 w-fit cursor-pointer select-none items-center gap-2 text-xs text-zinc-500 hover:text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
-            <ShieldCheck aria-hidden="true" className="h-4 w-4" />
+          <summary className="flex min-h-10 w-fit cursor-pointer select-none items-center text-xs text-zinc-500 hover:text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
             证据边界与配置说明
           </summary>
           <ul className="m-0 space-y-1 pb-1 pl-5 text-xs leading-5 text-zinc-500">
