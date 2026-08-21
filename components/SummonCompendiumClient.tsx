@@ -7,13 +7,10 @@ import {
   ChevronDown,
   ChevronRight,
   CircleDashed,
-  Dices,
   ExternalLink,
-  Layers3,
   ListFilter,
   RotateCcw,
   Search,
-  Sparkles,
   X,
 } from "lucide-react";
 import {
@@ -277,10 +274,7 @@ function MechanicCard({
   hideHeading?: boolean;
   mechanic: SummonMechanicDefinition | SummonMechanicView;
 }) {
-  const numericalRows = "numericalRows" in mechanic ? mechanic.numericalRows : [];
-  const hasMore = Boolean(
-    mechanic.details?.length || mechanic.facts?.length || numericalRows.length,
-  );
+  const hasMore = Boolean(mechanic.details?.length || mechanic.facts?.length);
   return (
     <article
       id={`summon-${entryId}-${mechanic.id}`}
@@ -322,21 +316,6 @@ function MechanicCard({
                   <dt className="text-[10px] leading-4 text-zinc-500">{fact.label}</dt>
                   <dd className="m-0 text-xs font-medium leading-5 text-zinc-200">{fact.value}</dd>
                   {fact.note && <p className="m-0 text-[10px] leading-4 text-zinc-600">{fact.note}</p>}
-                </div>
-              ))}
-            </dl>
-          )}
-          {numericalRows.length > 0 && (
-            <dl className="grid grid-cols-2 gap-1.5 border-t border-zinc-800/60 py-2 sm:grid-cols-4">
-              {numericalRows.map((row) => (
-                <div key={row.id} className="rounded bg-zinc-900/70 px-2 py-1.5">
-                  <dt className="text-[10px] leading-4 text-zinc-500">{row.label}</dt>
-                  <dd className="m-0 text-xs font-medium leading-5 text-zinc-200">
-                    {formatCoefficient(row.coefficient, row.attackStatLabel)}
-                  </dd>
-                  <p className="m-0 text-[10px] leading-4 text-zinc-600">
-                    NUM {row.id} · {row.baseAttack} 攻击力白值 {formatBaseDamage(row.baseDamage)}
-                  </p>
                 </div>
               ))}
             </dl>
@@ -448,8 +427,7 @@ function RelatedSection({ entry }: { entry: SummonCatalogEntryView }) {
       )}
       {entry.talents.length > 0 && (
         <div className="min-w-0">
-          <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-            <Sparkles aria-hidden="true" className="h-4 w-4 text-violet-400" />
+          <h3 className="m-0 mb-2 text-sm font-semibold text-zinc-100">
             S3 天赋链
           </h3>
           <details className="rounded-md border border-zinc-800 bg-zinc-950/35 px-3">
@@ -594,8 +572,7 @@ function SharedSystems({ catalog }: { catalog: SummonCatalogView }) {
           <div className="grid gap-2">
             {catalog.sharedSystems.map((system) => (
               <div key={system.id}>
-                <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-                  <Dices aria-hidden="true" className="h-4 w-4 text-amber-400" />
+                <h3 className="m-0 mb-2 text-sm font-semibold text-zinc-100">
                   {system.name}
                 </h3>
                 <MechanicCard entryId="shared" hideHeading mechanic={system} />
@@ -603,8 +580,7 @@ function SharedSystems({ catalog }: { catalog: SummonCatalogView }) {
             ))}
           </div>
           <div className="min-w-0">
-            <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-              <Layers3 aria-hidden="true" className="h-4 w-4 text-cyan-400" />
+            <h3 className="m-0 mb-2 text-sm font-semibold text-zinc-100">
               通用 Buff
             </h3>
             <div className="grid gap-2 sm:grid-cols-2">
@@ -621,8 +597,7 @@ function SharedSystems({ catalog }: { catalog: SummonCatalogView }) {
           </div>
         </div>
         <div className="min-w-0 lg:flex lg:flex-col">
-          <h3 className="m-0 mb-2 flex items-center gap-2 text-sm font-semibold text-zinc-100">
-            <Sparkles aria-hidden="true" className="h-4 w-4 text-violet-400" />
+          <h3 className="m-0 mb-2 text-sm font-semibold text-zinc-100">
             通用召唤插件
           </h3>
           <div className="grid gap-2 sm:grid-cols-2 lg:flex-1 lg:auto-rows-fr">

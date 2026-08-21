@@ -193,19 +193,6 @@
       "rateSummary": "Actor 基准 0.5 秒/发，约 120 RPM；满 7 层约 178.8 RPM",
       "mechanics": [
         {
-          "id": "husky-projectile",
-          "name": "一枚弹丸，两段伤害",
-          "kind": "attack",
-          "summary": "同一枚哈士奇弹丸包含 25% 攻击力直击和 15% 攻击力爆炸；两段都在主目标结算时合计 40% 攻击力。",
-          "facts": [
-            { "label": "直击", "value": "25% 攻击力" },
-            { "label": "爆炸", "value": "15% 攻击力" },
-            { "label": "主目标合计", "value": "40% 攻击力" },
-            { "label": "弹速", "value": "50 米/秒" }
-          ],
-          "searchTerms": ["哈士奇伤害", "弹丸", "直击", "爆炸", "40%"]
-        },
-        {
           "id": "husky-fire-rate",
           "name": "加油，哈士奇！",
           "kind": "passive",
@@ -236,15 +223,14 @@
           "name": "哈士奇命中",
           "role": "弹丸直击",
           "weaponSource": { "weaponSlug": "哈士奇好友", "damageSourceId": "ha-shi-qi-ming-zhong" },
-          "rate": { "intervalSeconds": 0.5, "roundsPerMinute": 120, "attacksPerAction": 1, "label": "Actor 基准", "note": "会被武器被动与插件继续修改。" }
+          "rate": { "intervalSeconds": 0.5, "roundsPerMinute": 120, "attacksPerAction": 1, "label": "Actor 基准", "note": "弹速 50 米/秒；会被武器被动与插件继续修改。" }
         },
         {
           "id": "husky-explosion",
           "name": "哈士奇爆炸",
           "role": "同枚弹丸的爆炸段",
           "weaponSource": { "weaponSlug": "哈士奇好友", "damageSourceId": "ha-shi-qi-bao-zha" },
-          "rate": { "intervalSeconds": 0.5, "roundsPerMinute": 120, "attacksPerAction": 1, "label": "随弹丸触发" },
-          "note": "仅击杀时附带 2 级击飞。"
+          "rate": { "intervalSeconds": 0.5, "roundsPerMinute": 120, "attacksPerAction": 1, "label": "随弹丸触发" }
         }
       ],
       "buffRefs": [
@@ -400,12 +386,6 @@
           "name": "铁拳狂徒",
           "kind": "summon",
           "summary": "召唤铁拳协助战斗；铁拳存在期间，所有召唤物伤害提高 30%。",
-          "facts": [
-            { "label": "生命周期", "value": "40 秒" },
-            { "label": "技能冷却", "value": "60 秒" },
-            { "label": "召唤增伤", "value": "+30% 全伤害" },
-            { "label": "指令", "value": "长按指定目标" }
-          ],
           "damageSourceIds": ["iron-fist-combo", "iron-fist-cannon", "iron-fist-arrival"],
           "link": { "label": "节点 3001102", "href": "/guides/season-talents/s3/iron-fist?node=3001102#multiplier-provider-node-3001102", "type": "season-talent" },
           "searchTerms": ["铁拳狂徒", "召唤物30%", "指定目标", "大稀释乘区"]
@@ -439,11 +419,7 @@
           "id": "iron-fist-shockwave",
           "name": "地裂波与冲击",
           "kind": "skill",
-          "summary": "解锁直线范围地裂波；铁拳的所有攻击都会给命中的敌人施加 5 秒【冲击】，配置为 17% 易伤。",
-          "details": [
-            "地裂波蓝图字节码直接引用 S3 专用伤害行，伤害为 190% 攻击力；能力默认字段里还残留一条 45% 火焰旧引用，当前执行链以专用行和字节码证据为准。",
-            "节点文案写“所有攻击”施加冲击，但落地砸击能力没有 AddBuff 证据；当前只确认三连击、聚能炮、跳砸与地裂波四类常规战斗攻击施加冲击。"
-          ],
+          "summary": "解锁直线范围地裂波；三连击、聚能炮、跳砸与地裂波命中时施加 5 秒【冲击】，配置为 17% 易伤。",
           "damageSourceIds": ["iron-fist-earth-wave"],
           "buffRefs": [{ "buffId": 160403101, "target": "enemy", "relation": "applies", "note": "5 秒、17% 易伤" }],
           "link": { "label": "节点 3001402", "href": "/guides/season-talents/s3/iron-fist?node=3001402#multiplier-provider-node-3001402", "type": "season-talent" },
@@ -471,12 +447,6 @@
           "name": "狂暴",
           "kind": "passive",
           "summary": "召唤 20 秒后或生命低于 20%时触发：攻击力提高 100%且免疫所有伤害，基础持续 20 秒。",
-          "facts": [
-            { "label": "触发", "value": "20 秒后或生命低于 20%" },
-            { "label": "增伤", "value": "+100% 全伤害" },
-            { "label": "生存", "value": "免疫所有伤害" },
-            { "label": "持续", "value": "20 秒" }
-          ],
           "link": { "label": "节点 3001602", "href": "/guides/season-talents/s3/iron-fist?node=3001602#multiplier-provider-node-3001602", "type": "season-talent" },
           "searchTerms": ["狂暴", "100%", "免疫伤害", "20秒", "大稀释乘区"]
         }
@@ -488,7 +458,7 @@
           "role": "生成时范围伤害",
           "lockSource": "iron-fist-arrival",
           "rate": { "attacksPerAction": 1, "label": "每次召唤落地" },
-          "note": "NUM 160303007；每次标准召唤落地触发 1 次，范围配置 1600（约 16 米径向，结构推断），未确认施加冲击。"
+          "note": "每次标准召唤落地触发 1 次，范围配置 1600（约 16 米径向，结构推断），未确认施加冲击。"
         },
         {
           "id": "iron-fist-combo",
@@ -517,8 +487,7 @@
           "name": "地裂波",
           "role": "直线范围技能",
           "lockSource": "iron-fist-earth-wave",
-          "rate": { "intervalSeconds": 3.8333, "attacksPerAction": 1, "label": "动作 3.83 秒", "note": "约 1.886 秒命中；中距离行为树冷却 7 秒。" },
-          "note": "NUM 160303006；能力默认字段残留的 45% 火焰旧引用不作为玩家结论。"
+          "rate": { "intervalSeconds": 3.8333, "attacksPerAction": 1, "label": "动作 3.83 秒", "note": "约 1.886 秒命中；中距离行为树冷却 7 秒。" }
         }
       ],
       "buffRefs": [{ "buffId": 160403101, "target": "enemy", "relation": "applies", "note": "地裂波解锁后，四类常规战斗攻击施加 5 秒冲击；落地砸击未确认" }],
