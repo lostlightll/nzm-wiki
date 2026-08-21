@@ -2,6 +2,7 @@
 
 @source "../app";
 @source "../components";
+@source "../constants";
 @source "../data";
 @source "../lib";
 @source "../mdx-components.tsx";

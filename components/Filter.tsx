@@ -6,6 +6,12 @@ import { getAssetPath } from "@/lib/path";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import type { SpriteConfig } from "@/constants/sprites";
 
+const SELECTED_RARITY_COLOR_CLASSES: Record<string, string> = {
+  "text-[#d1ac69]": "text-[#d1ac69]",
+  "text-[#a65aae]": "text-[#a65aae]",
+  "text-[#5589ab]": "text-[#5589ab]",
+};
+
 export function FilterCheckbox({
   label,
   icon,
@@ -14,6 +20,7 @@ export function FilterCheckbox({
   checked,
   onChange,
   colorClass,
+  colorOnlyWhenChecked,
   highlighted,
   iconOnlyOnMobile,
   centerClass,
@@ -25,6 +32,7 @@ export function FilterCheckbox({
   checked: boolean;
   onChange: () => void;
   colorClass?: string;
+  colorOnlyWhenChecked?: boolean;
   highlighted?: boolean;
   iconOnlyOnMobile?: boolean;
   centerClass?: string;
@@ -33,6 +41,12 @@ export function FilterCheckbox({
   const alignClass = iconOnlyOnMobile
     ? "justify-center"
     : centerClass || "";
+  const textColorClass =
+    colorClass && (!colorOnlyWhenChecked || checked)
+      ? colorOnlyWhenChecked
+        ? SELECTED_RARITY_COLOR_CLASSES[colorClass] ?? colorClass
+        : colorClass
+      : undefined;
 
   return (
     <label
@@ -53,7 +67,13 @@ export function FilterCheckbox({
         className="peer sr-only"
       />
       <span
-        className={`flex min-w-0 items-center gap-1.5 peer-focus-visible:underline peer-focus-visible:decoration-2 peer-focus-visible:underline-offset-4 ${colorClass || (highlighted ? "font-bold text-white" : "text-zinc-300")}`}
+        className={`flex min-w-0 items-center gap-1.5 peer-focus-visible:underline peer-focus-visible:decoration-2 peer-focus-visible:underline-offset-4 ${
+          textColorClass
+            ? textColorClass
+            : highlighted
+              ? "font-bold text-white"
+              : "text-zinc-300"
+        }`}
       >
         {sprite && <SpriteIcon sprite={sprite} size={60} className="shrink-0" />}
         {iconSrc && !sprite && (
@@ -79,6 +99,7 @@ interface FilterSectionProps<T> {
     icon?: ReactNode;
     iconSrc?: string;
     color?: string;
+    colorOnlyWhenChecked?: boolean;
     label?: string;
     sprite?: SpriteConfig;
     highlighted?: boolean;
@@ -115,6 +136,7 @@ export function FilterSection<T>({
             checked={selected.has(item.type)}
             onChange={() => onToggle(item.type)}
             colorClass={item.color}
+            colorOnlyWhenChecked={item.colorOnlyWhenChecked}
             highlighted={item.highlighted}
             iconOnlyOnMobile={iconOnlyOnMobile}
             centerClass={centerClass}
