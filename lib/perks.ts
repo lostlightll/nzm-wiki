@@ -18,6 +18,7 @@ const STAT_IDS = new Set([
   "toughness-efficiency",
   "critical-rate",
   "charge-efficiency",
+  "fire-rate",
 ]);
 
 function requireNonEmptyString(

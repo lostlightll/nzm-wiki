@@ -5,6 +5,7 @@ import { WeaponAttenuationChart } from "@/components/WeaponAttenuationChart";
 import { WeaponDetailCard } from "@/components/WeaponCard";
 import { WeaponDetailProvider } from "@/components/WeaponDetailContext";
 import { WeaponModeDiff as WeaponModeDiffTable } from "@/components/WeaponModeDiff";
+import { WeaponFireRatePanel } from "@/components/FireRateCatalog";
 import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import {
   ActiveSkill,
@@ -102,6 +103,7 @@ export default async function WeaponDetailPage({
     <>
       <WeaponSkill>{children}</WeaponSkill>
       <WeaponAttenuationChart />
+      <WeaponFireRatePanel slug={weapon.slug} />
       <MultiplierProviderPanel
         source={{ type: "weapon", slug: weapon.slug }}
         className="not-prose mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
@@ -141,10 +143,13 @@ export default async function WeaponDetailPage({
       >
         <WeaponDetailCard />
         {!hasWeaponSkill && (
-          <MultiplierProviderPanel
-            source={{ type: "weapon", slug: weapon.slug }}
-            className="mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
-          />
+          <>
+            <WeaponFireRatePanel slug={weapon.slug} />
+            <MultiplierProviderPanel
+              source={{ type: "weapon", slug: weapon.slug }}
+              className="mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
+            />
+          </>
         )}
         {document.content.trim() && (
           <article className="prose prose-lg prose-invert mt-8 max-w-none">

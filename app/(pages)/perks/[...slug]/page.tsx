@@ -3,10 +3,13 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
 import { mdxOptions } from "@/lib/mdx-options";
 import { PerkDetailCard } from "@/components/PerkCard";
+import { EffectValuesPanel } from "@/components/EffectValues";
 import { IndependentDamagePanel } from "@/components/TriggerDamageCatalog";
 import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import { RARITY_NUM_MAP } from "@/constants/common";
 import { getIndependentDamageByPerkSlug } from "@/lib/independent-damage";
+import { getProviderRelationsForSource } from "@/lib/multiplier-data";
+import { getPerkBySlug } from "@/lib/perks";
 import type { Rarity } from "@/types";
 import type { Metadata } from "next";
 
@@ -62,6 +65,12 @@ export default async function PerkDetailPage({
   const { content, metadata } = getMDXDetail("perks", slugPath);
   const showToc = metadata.toc !== false;
   const independentDamage = await getIndependentDamageByPerkSlug(slugPath);
+  const perk = getPerkBySlug(slugPath);
+  const multiplierSource = {
+    type: "perk" as const,
+    slot: metadata.slot,
+    slug: slugPath.split("/").at(-1) ?? metadata.title,
+  };
 
   const pageWidth = metadata["page-width"] as string | undefined;
   const isCustom = pageWidth && isCustomWidth(pageWidth);
@@ -106,14 +115,19 @@ export default async function PerkDetailPage({
             entry={entry}
           />
         ))}
-        <MultiplierProviderPanel
-          source={{
-            type: "perk",
-            slot: metadata.slot,
-            slug: slugPath.split("/").at(-1) ?? metadata.title,
-          }}
-          className="mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
-        />
+        {perk?.effectValues?.length ? (
+          <EffectValuesPanel
+            id="multiplier-provider"
+            effects={perk.effectValues}
+            relations={getProviderRelationsForSource(multiplierSource)}
+            className="mt-4"
+          />
+        ) : (
+          <MultiplierProviderPanel
+            source={multiplierSource}
+            className="mt-4 rounded-lg border border-zinc-700 bg-zinc-900/60"
+          />
+        )}
 
         {content.trim() && (
           <article className="prose prose-lg prose-invert mt-8 max-w-none">

@@ -165,7 +165,8 @@ export type PerkEffectValue =
       statId:
         | "toughness-efficiency"
         | "critical-rate"
-        | "charge-efficiency";
+        | "charge-efficiency"
+        | "fire-rate";
       label: string;
       stages: EffectValueStage[];
     };

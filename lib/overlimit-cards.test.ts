@@ -51,6 +51,13 @@ test("all reviewed overlimit stat sources have exact structured types", () => {
     ["20703040385", "charge-efficiency"],
     ["20703040447", "charge-efficiency"],
     ["20703040459", "charge-efficiency"],
+    ["20703040092", "fire-rate"],
+    ["20703040341", "fire-rate"],
+    ["20703040407", "fire-rate"],
+    ["20703040410", "fire-rate"],
+    ["20703040424", "fire-rate"],
+    ["20703040429", "fire-rate"],
+    ["20703040338", "fire-rate"],
   ]);
   const actual = new Map(
     getAllOverlimitCards().flatMap((card) =>

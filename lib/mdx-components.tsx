@@ -52,6 +52,7 @@ import {
   HuntingSpeedrunTacticalPropCatalog,
 } from "@/components/HuntingSpeedrunCatalog";
 import { TriggerDamageCatalog } from "@/components/TriggerDamageCatalog";
+import { FireRateCatalog } from "@/components/FireRateCatalog";
 
 export const mdxComponents = {
   img: MDXImage,
@@ -100,6 +101,7 @@ export const mdxComponents = {
   HuntingSpeedrunCardCatalog,
   HuntingSpeedrunTacticalPropCatalog,
   TriggerDamageCatalog,
+  FireRateCatalog,
 };
 
 /**
