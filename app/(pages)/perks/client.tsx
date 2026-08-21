@@ -268,7 +268,10 @@ export default function PerksPageClient({
       <div className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4">
         <FilterSection
           title="稀有度"
-          items={RARITY_OPTIONS}
+          items={RARITY_OPTIONS.map((item) => ({
+            ...item,
+            colorOnlyWhenChecked: true,
+          }))}
           selected={rarityState.selected}
           onToggle={rarityState.toggle}
           gridClass="grid max-w-md grid-cols-3 gap-2"
