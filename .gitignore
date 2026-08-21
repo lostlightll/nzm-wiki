@@ -47,6 +47,7 @@ next-env.d.ts
 /CLAUDE.md
 /log.txt
 /MD
+/scripts/kismet-bytecode
 
 # generated indexes
 /public/search-index.json
