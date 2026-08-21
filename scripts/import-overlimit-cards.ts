@@ -107,8 +107,10 @@ const WEAPON_ITEM_OVERRIDES: Record<string, number[]> = {
 
 // Card text contains stale values; these are audited against direct Numerical rows.
 const NUMERICAL_DESCRIPTION_OVERRIDES: Record<string, string> = {
+  "20703040072": "距离13米内，每接近1米武器伤害提高5%，距离6米内达到最高35%。",
   "20703040085": "持续开火每射出一发子弹，武器伤害增加0.4%，最多叠加80层。",
   "20703040407": "爆炸伤害增加120%，造成多次伤害后可获得急速狂热（CD13秒）。",
+  "20703040435": "保持不释放武器技能，每5秒增加30%伤害，最多10层，释放技能清零。",
   "20703040459": "武器技能充能效率+10%",
   "20703040464": "爆炸伤害+30%",
   "20704040478": "全部爆炸弹的直击伤害提升300%，爆炸范围缩减50%。",

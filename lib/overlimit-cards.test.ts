@@ -42,6 +42,7 @@ test("all reviewed overlimit stat sources have exact structured types", () => {
     ["20703040406", "movement-speed"],
     ["20703040115", "critical-rate"],
     ["20703040382", "critical-rate"],
+    ["20703040382", "movement-speed"],
     ["20703040028", "critical-rate"],
     ["20703040116", "critical-rate"],
     ["20704040477", "critical-rate"],
@@ -64,6 +65,7 @@ test("all reviewed overlimit stat sources have exact structured types", () => {
     ["20703040405", "reload-speed"],
     ["20703040152", "reload-speed"],
     ["20703040384", "movement-speed"],
+    ["20703040475", "movement-speed"],
     ["20703040344", "skill-range"],
     ["20703040409", "melee-attack-speed"],
     ["20703040043", "explosion-radius"],
@@ -123,6 +125,13 @@ test("key cards expose their reviewed player-facing values", () => {
 test("structured values cover stacks, dynamic conversion, and dual channels", () => {
   assert.deepEqual(
     getOverlimitCardById("20703040435")?.effectValues?.[0].stages,
+    [
+      { condition: "每层", value: "+30%" },
+      { condition: "10层", value: "+300%" },
+    ],
+  );
+  assert.deepEqual(
+    getOverlimitCardById("20703040436")?.effectValues?.[0].stages,
     [
       { condition: "每层", value: "+30%" },
       { condition: "10层", value: "+300%" },

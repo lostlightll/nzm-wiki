@@ -11,6 +11,9 @@ type NumericalRow = {
   modifierId: string;
   row: Row;
 };
+type EffectEvidence = {
+  gpModifierIds?: readonly string[];
+};
 
 const root = process.cwd();
 const refsRoot = path.join(root, "refs", "Exports", "NZM", "Content");
@@ -41,6 +44,18 @@ const providers = new Map(
     .filter((provider) => provider.source.type === "perk")
     .map((provider) => [provider.source.itemId, provider] as const),
 );
+const effectEvidenceByItem = new Map<string, EffectEvidence>();
+for (const entry of [
+  ...rawProviders.providers,
+  ...rawProviders.exclusions,
+] as readonly {
+  source: { type: string; itemId?: string };
+  evidence?: EffectEvidence;
+}[]) {
+  if (entry.source.type === "perk" && entry.source.itemId && entry.evidence) {
+    effectEvidenceByItem.set(entry.source.itemId, entry.evidence);
+  }
+}
 const modifierTypeByAttribute = new Map(
   MODIFIER_TYPES.flatMap((type) =>
     type.attributeFields.map((attribute) => [attribute, type.id] as const),
@@ -56,6 +71,8 @@ for (const [rowKey, row] of Object.entries(numerical)) {
 
 const statIdByAttribute = new Map<string, PerkStatId>([
   ["GPAttributeSetCritical.CriticalRatio", "critical-rate"],
+  ["GPAttributeSetFireMode.RPMAdjustRatio", "fire-rate"],
+  ["GPAttributeSetCharacterWeaponAdjust.GunRPMRatioAdjust", "fire-rate"],
   ["GPAttributeSetCharacterWeaponAdjust.ChargeSpeedAddRatio", "charge-efficiency"],
   ["GPAttributeSetSkill.ChargeSpeedAddRatio", "charge-efficiency"],
   ["GPAttributeSetToughness.ToughnessRatio", "toughness-efficiency"],
@@ -117,7 +134,7 @@ function sameNumbers(left: unknown, right: unknown): boolean {
 
 const errors: string[] = [];
 let verifiedEffects = 0;
-let unverifiedEffects = 0;
+const unverifiedEffects: string[] = [];
 
 for (const card of getAllOverlimitCards()) {
   const item = weaponMods[card.id];
@@ -134,13 +151,13 @@ for (const card of getAllOverlimitCards()) {
   const descriptionModifierIds = [...description.matchAll(/\{GPModifier:(\d+):/g)]
     .map((match) => match[1]);
   const provider = providers.get(card.id);
-  const directModifierIds = [...new Set([
+  const evidence = effectEvidenceByItem.get(card.id);
+  const modifierIds = [...new Set([
+    ...(numericalById.has(passiveSkillId) ? [passiveSkillId] : []),
     ...configModifierIds,
     ...descriptionModifierIds,
+    ...(evidence?.gpModifierIds ?? []),
   ])];
-  const modifierIds = directModifierIds.length > 0
-    ? directModifierIds
-    : [...new Set(provider?.evidence.gpModifierIds ?? [])];
   const directRows = modifierIds.flatMap((modifierId) =>
     numericalById.get(modifierId) ?? [],
   );
@@ -193,7 +210,9 @@ for (const card of getAllOverlimitCards()) {
   }
 
   for (const identity of effectsByIdentity.keys()) {
-    if (!expectedRowsByIdentity.has(identity)) unverifiedEffects += 1;
+    if (!expectedRowsByIdentity.has(identity)) {
+      unverifiedEffects.push(`${card.id} ${card.name} ${identity}`);
+    }
   }
 
   if (!provider) continue;
@@ -248,5 +267,8 @@ if (errors.length > 0) {
 
 console.log(
   `超限卡片 Numerical 效果审计通过：已验证 ${verifiedEffects} 项；` +
-    `${unverifiedEffects} 项没有直连 Numerical，未使用描述自动判定。`,
+    `${unverifiedEffects.length} 项没有直连 Numerical，未使用描述自动判定。`,
 );
+if (unverifiedEffects.length > 0) {
+  console.log(`未直连效果：\n${unverifiedEffects.map((item) => `- ${item}`).join("\n")}`);
+}

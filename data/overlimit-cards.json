@@ -3288,7 +3288,7 @@
   {
     "id": "20703040072",
     "name": "近距增幅",
-    "description": "离敌人的距离越近，伤害越高，最高35%。",
+    "description": "距离13米内，每接近1米武器伤害提高5%，距离6米内达到最高35%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315120001.png",
     "quality": 4,
     "weight": 6,

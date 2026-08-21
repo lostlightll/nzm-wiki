@@ -869,11 +869,25 @@
         "kind": "reviewed-override",
         "passiveSkillId": "1315120001",
         "descriptionRowKey": "1315120001_1",
-        "basis": [
-          "MGE 描述给出 13 米至 6 米的距离增伤曲线；按该效果实际武器伤害通道复核。",
-          "离敌人的距离越近，伤害越高，距离命中目标13米内伤害提升，6米提升到最大值35%，6米内维持35%增伤。"
+        "gpModifierIds": [
+          "111010056"
         ],
-        "numericalRows": []
+        "basis": [
+          "GPModularGameplayEffectTable 将 1315120001 映射到 MGE_1315120001；该 MGE 的 ModifierId 属性直接引用 111010056。",
+          "Numerical 111010056 以 CoefValue 0.05 写入 WeaponDamageRatio；13 米至 6 米共 7 个距离步进，最大 35%。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "111010056",
+            "rowKey": "111010056_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 0,
+            "coefficient": 0.05,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -1019,11 +1033,25 @@
         "kind": "reviewed-override",
         "passiveSkillId": "1312038001",
         "descriptionRowKey": "1312038001_1",
-        "basis": [
-          "MGE 描述明确写明榴弹直接命中伤害增加 250%；该武器专属效果按 WeaponDamageRatio 复核。",
-          "榴弹的直接命中伤害增加250%，榴弹爆炸命中目标后可以额外叠加35层腐蚀之力"
+        "gpModifierIds": [
+          "120600064"
         ],
-        "numericalRows": []
+        "basis": [
+          "GPModularGameplayEffectTable 将 1312038001 映射到幽冥毒皇插件 MGE；其腐蚀榴弹效果使用 Numerical 120600064。",
+          "Numerical 120600064 以 BaseValue 2.5 写入 WeaponDamageRatio。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "120600064",
+            "rowKey": "120600064_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 2.5,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -2769,11 +2797,16 @@
         "weapon-explode-damage"
       ],
       "evidence": {
-        "kind": "gp-modifier",
+        "kind": "reviewed-override",
         "passiveSkillId": "1316195001",
         "descriptionRowKey": "1316195001_1",
         "gpModifierIds": [
-          "111041026"
+          "111041026",
+          "1410070101"
+        ],
+        "basis": [
+          "Numerical 111041026 提供爆炸伤害；叠满后触发共享的急速狂热效果。",
+          "急速狂热 BuffID 1410070101 与同 ID Numerical 行相连，GunRPMRatioAdjust 的 BaseValue 为 0.5。"
         ],
         "numericalRows": [
           {
@@ -3114,11 +3147,26 @@
         "kind": "reviewed-override",
         "passiveSkillId": "1312068002",
         "descriptionRowKey": "1312068002_1",
-        "basis": [
-          "MGE 描述明确写明哈士奇好友射击直接命中伤害提高。",
-          "哈士奇每次命中时，哈士奇好友射击直接命中伤害提高5%，射速提高7%，最高叠加7层，每层持续5秒。"
+        "gpModifierIds": [
+          "121600110",
+          "121600113"
         ],
-        "numericalRows": []
+        "basis": [
+          "GPModularGameplayEffectTable 将 1312068002 映射到哈士奇支援 MGE；其 BuffName 指向 Weapon_121600110_1。",
+          "该 Buff 的 GPModifyIDs 包含 121600110；哈士奇子弹资源同时引用 121600110，直击增伤使用同组 Numerical 121600113。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "121600113",
+            "rowKey": "121600113_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+            "attributeLabel": "射击伤害",
+            "modifierTypeId": "weapon-hit-damage",
+            "baseValue": 0,
+            "coefficient": 0.05,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -3138,11 +3186,26 @@
         "kind": "reviewed-override",
         "passiveSkillId": "1312032005",
         "descriptionRowKey": "1312032005_1",
-        "basis": [
-          "MGE 描述明确写明红扭蛋使飓风之龙射击伤害提高 50%。",
-          "大幅提升龙炎弹射程并减少其散布，向扭蛋池内加入4个红扭蛋，抽到红扭蛋后飓风之龙射击伤害提高50%，并获得极速狂热效果，持续20秒。"
+        "gpModifierIds": [
+          "120300117",
+          "120300118"
         ],
-        "numericalRows": []
+        "basis": [
+          "GPModularGameplayEffectTable 将 1312032005 映射到幸运龙炎 MGE；其 WeaponRPMModifyID 为 120300117，BuffName 为 JFZLLucky_Duration。",
+          "Numerical 120300117 提供 50% 射速，120300118 提供 50% WeaponDamageRatio。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "120300118",
+            "rowKey": "120300118_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 0.5,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -3197,11 +3260,25 @@
         "kind": "reviewed-override",
         "passiveSkillId": "1316198001",
         "descriptionRowKey": "1316198001_1",
-        "basis": [
-          "MGE 描述明确记录不释放武器技能时逐层增加伤害。",
-          "保持不释放武器技能的情况下，每5秒增加45%伤害，最高提升10层，释放武器技能层数清零。（释放立即清除）"
+        "gpModifierIds": [
+          "1316198001"
         ],
-        "numericalRows": []
+        "basis": [
+          "WeaponModItemData 的 PassiveSkill_ID 为 1316198001；Numerical 存在同 ID 的属性行。",
+          "Numerical 1316198001 以 BaseValue 0.3 写入 AllDamageRatio，描述中的 45% 不作为数值依据。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "1316198001",
+            "rowKey": "1316198001_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+            "attributeLabel": "全伤害增加",
+            "modifierTypeId": "all-damage",
+            "baseValue": 0.3,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -3221,11 +3298,25 @@
         "kind": "reviewed-override",
         "passiveSkillId": "1316199001",
         "descriptionRowKey": "1316199001_1",
-        "basis": [
-          "MGE 描述明确记录不射击时逐层增加伤害。",
-          "保持不射击的情况下，每秒增加30%伤害，最高提升10层，武器射击层数清零。（开火立即清除）"
+        "gpModifierIds": [
+          "1316199001"
         ],
-        "numericalRows": []
+        "basis": [
+          "WeaponModItemData 的 PassiveSkill_ID 为 1316199001；Numerical 存在同 ID 的属性行。",
+          "Numerical 1316199001 以 BaseValue 0.3 写入 AllDamageRatio。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "1316199001",
+            "rowKey": "1316199001_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+            "attributeLabel": "全伤害增加",
+            "modifierTypeId": "all-damage",
+            "baseValue": 0.3,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -3933,11 +4024,26 @@
         "kind": "reviewed-override",
         "passiveSkillId": "1316214001",
         "descriptionRowKey": "1316214001_1",
-        "basis": [
-          "MGE 描述明确记录移动速度层数转化为伤害加成。",
-          "每次暴击，可以获得2%移速加成，持续5秒，可叠加50层。每2%移速加成能转化1%的伤害加成。如果损失血量则清空增益（参考踢踏舞，损失护盾不扣除）"
+        "gpModifierIds": [
+          "111051002",
+          "111051003"
         ],
-        "numericalRows": []
+        "basis": [
+          "GPModularGameplayEffectTable 将 1316214001 映射到飞毛腿 MGE；其 BuffName 为 Buff_1316214001。",
+          "Buff 的 GPModifyIDs 包含 111051003；同 MGE 的伤害换算使用 Numerical 111051002。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "111051002",
+            "rowKey": "111051002_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+            "attributeLabel": "全伤害增加",
+            "modifierTypeId": "all-damage",
+            "baseValue": 0,
+            "coefficient": 0.04,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -7035,7 +7141,12 @@
       "evidence": {
         "passiveSkillId": "1312046001",
         "descriptionRowKey": "1312046001_1",
-        "gpModifierIds": []
+        "gpModifierIds": [
+          "1410070101"
+        ],
+        "basis": [
+          "反哺触发共享急速狂热效果；急速狂热 BuffID 1410070101 对应同 ID Numerical 行。"
+        ]
       }
     },
     {
@@ -8681,7 +8792,12 @@
       "evidence": {
         "passiveSkillId": "1312066001",
         "descriptionRowKey": "1312066001_1",
-        "gpModifierIds": []
+        "gpModifierIds": [
+          "1410070101"
+        ],
+        "basis": [
+          "霜华触发共享急速狂热效果；急速狂热 BuffID 1410070101 对应同 ID Numerical 行。"
+        ]
       }
     },
     {
@@ -8717,7 +8833,12 @@
       "evidence": {
         "passiveSkillId": "1312063001",
         "descriptionRowKey": "1312063001_1",
-        "gpModifierIds": []
+        "gpModifierIds": [
+          "1410070101"
+        ],
+        "basis": [
+          "狂热兽魂 MGE 调用 AddRapidFeverEffect；急速狂热 BuffID 1410070101 对应同 ID Numerical 行。"
+        ]
       }
     },
     {
@@ -9283,7 +9404,17 @@
       "evidence": {
         "passiveSkillId": "1315198001",
         "descriptionRowKey": "1315198001_1",
-        "gpModifierIds": []
+        "gpModifierIds": [
+          "111041005",
+          "111041009"
+        ],
+        "staleGpModifierIds": [
+          "111041011"
+        ],
+        "basis": [
+          "MGE_1315198001 的 PickIDs 指向移速与暴击 Pickup；ItemData 分别绑定 S3_MoveSpeed 和 S3_CriticalRate。",
+          "对应 S3 Pick Buff 的 GPModifyIDs 为 111041009 与 111041005；BD_Common_1315198001 引用的 111041011 已不在 Numerical 表中，不作为数值证据。"
+        ]
       }
     },
     {
@@ -9529,7 +9660,12 @@
       "evidence": {
         "passiveSkillId": "1316197001",
         "descriptionRowKey": "1316197001_1",
-        "gpModifierIds": []
+        "gpModifierIds": [
+          "1410070101"
+        ],
+        "basis": [
+          "不死狂热持续施加共享急速狂热效果；急速狂热 BuffID 1410070101 对应同 ID Numerical 行。"
+        ]
       }
     },
     {
@@ -10069,7 +10205,12 @@
       "evidence": {
         "passiveSkillId": "1317230001",
         "descriptionRowKey": "1317230001_1",
-        "gpModifierIds": []
+        "gpModifierIds": [
+          "130042450"
+        ],
+        "basis": [
+          "GPModularGameplayEffectTable 将 1317230001 映射到 MGE_1315230001；其弱点必暴效果使用 Numerical 130042450。"
+        ]
       }
     },
     {
