@@ -6,6 +6,7 @@
 @source "../data";
 @source "../lib";
 @source "../mdx-components.tsx";
+@source inline("border-gray-600/50 bg-gray-700/20 text-gray-300 border-[#5589ab]/60 bg-[#5589ab]/10 text-[#5589ab] border-[#a65aae]/60 bg-[#a65aae]/10 text-[#a65aae] border-[#d1ac69]/60 bg-[#d1ac69]/10 text-[#d1ac69]");
 
 @plugin "@tailwindcss/typography";
 
