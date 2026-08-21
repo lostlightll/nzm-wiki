@@ -109,10 +109,6 @@ function TriggerDamageEntryContent({
           className={`flex min-w-0 flex-wrap gap-x-4 gap-y-1 text-xs leading-5 text-zinc-500 lg:justify-end ${detail ? "xl:col-span-3" : ""}`}
         >
           <div className="flex gap-1.5">
-            <dt>NumericalID</dt>
-            <dd className="font-mono text-zinc-300">{entry.numericalId}</dd>
-          </div>
-          <div className="flex gap-1.5">
             <dt>冷却/间隔</dt>
             <dd className="text-zinc-300">{entry.interval}</dd>
           </div>
