@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Layers3, Zap } from "lucide-react";
+import { ArrowUpRight, Layers3 } from "lucide-react";
 import { getMultiplierFactorStyle } from "@/components/multiplier-badge-styles";
 import {
   getApplicableModifierTypes,
@@ -100,15 +100,13 @@ export function MultiplierSourceBadges({
   );
 }
 
-export function MultiplierProviderPanel({
-  source,
-  className = "",
+export function MultiplierProviderRows({
+  relations,
+  framed = false,
 }: {
-  source: MultiplierSource;
-  className?: string;
+  relations: readonly MultiplierRelation[];
+  framed?: boolean;
 }) {
-  const relations = getProviderRelationsForSource(source);
-  if (relations.length === 0) return null;
   const groups = new Map<string, MultiplierRelation[]>();
   for (const relation of relations) {
     const key = relation.effectId ?? relation.modifierTypeId;
@@ -118,31 +116,50 @@ export function MultiplierProviderPanel({
   }
 
   return (
+    <div className="space-y-2">
+      {[...groups.values()].map((effectRelations) => {
+        const placementSource = effectRelations[0].source;
+        return (
+          <div
+            key={effectRelations[0].effectId ?? effectRelations[0].modifierTypeId}
+            id={placementSource?.anchor}
+            className={
+              framed
+                ? "grid gap-3 rounded border border-white/10 bg-black/10 px-3 py-3 sm:grid-cols-[minmax(9rem,1fr)_auto] sm:items-center"
+                : "flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between"
+            }
+          >
+            <span className="text-sm text-zinc-200">
+              {effectRelations[0].effectLabel ??
+                effectRelations[0].modifierTypeLabel}
+            </span>
+            <MultiplierBadges relations={effectRelations} />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export function MultiplierProviderPanel({
+  source,
+  className = "",
+}: {
+  source: MultiplierSource;
+  className?: string;
+}) {
+  const relations = getProviderRelationsForSource(source);
+  if (relations.length === 0) return null;
+
+  return (
     <section
       aria-label="提供的增伤类型"
       className={`border-t border-white/10 px-4 py-4 sm:px-6 ${className}`}
     >
-      <h2 className="mb-3 flex items-center gap-2 text-sm font-medium text-zinc-400">
-        <Zap aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
+      <h2 className="mb-3 text-sm font-medium text-zinc-400">
         提供的增伤类型
       </h2>
-      <div className="space-y-2">
-        {[...groups.values()].map((effectRelations) => {
-          const placementSource = effectRelations[0].source;
-          return (
-            <div
-              key={effectRelations[0].effectId ?? effectRelations[0].modifierTypeId}
-              id={placementSource?.anchor}
-              className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between"
-            >
-              <span className="text-sm text-zinc-200">
-                {effectRelations[0].effectLabel ?? effectRelations[0].modifierTypeLabel}
-              </span>
-              <MultiplierBadges relations={effectRelations} />
-            </div>
-          );
-        })}
-      </div>
+      <MultiplierProviderRows relations={relations} />
     </section>
   );
 }

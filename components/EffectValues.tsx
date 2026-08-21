@@ -1,5 +1,7 @@
-import { Gauge, Zap } from "lucide-react";
-import { MultiplierBadges } from "@/components/MultiplierBadges";
+import {
+  MultiplierBadges,
+  MultiplierProviderRows,
+} from "@/components/MultiplierBadges";
 import type { MultiplierRelation } from "@/lib/multiplier-data";
 import type { EffectValueStage, PerkEffectValue } from "@/types";
 
@@ -100,10 +102,16 @@ export function EffectValuesPanel({
   flush?: boolean;
   className?: string;
 }) {
-  if (effects.length === 0) return null;
-
   const damageEffects = effects.filter((effect) => effect.kind === "damage");
   const statEffects = effects.filter((effect) => effect.kind === "stat");
+  const representedModifierTypes = new Set(
+    damageEffects.map((effect) => effect.modifierTypeId),
+  );
+  const unmatchedRelations = relations.filter(
+    (relation) => !representedModifierTypes.has(relation.modifierTypeId),
+  );
+  if (effects.length === 0 && unmatchedRelations.length === 0) return null;
+
   const layoutClass = flush
     ? "border-t border-white/10 px-4 py-5 sm:px-6"
     : "overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/60 px-4 py-4 sm:px-5";
@@ -114,42 +122,25 @@ export function EffectValuesPanel({
       aria-label={title}
       className={`${layoutClass} ${className}`.trim()}
     >
-      <h2 className="mb-3 flex items-center gap-2 text-sm font-medium text-zinc-400">
-        <Zap aria-hidden="true" className="h-4 w-4 text-[#d1ac69]" />
-        {title}
-      </h2>
-      <div className="space-y-4">
-        {damageEffects.length > 0 && (
-          <div>
-            <h3 className="mb-2 text-xs font-medium text-zinc-500">增伤</h3>
-            <div className="space-y-2">
-              {damageEffects.map((effect) => (
-                <DetailEffect
-                  key={effectKey(effect)}
-                  effect={effect}
-                  relations={relations}
-                />
-              ))}
-            </div>
-          </div>
+      <h2 className="mb-3 text-sm font-medium text-zinc-400">{title}</h2>
+      <div className="space-y-2">
+        {damageEffects.map((effect) => (
+          <DetailEffect
+            key={effectKey(effect)}
+            effect={effect}
+            relations={relations}
+          />
+        ))}
+        {unmatchedRelations.length > 0 && (
+          <MultiplierProviderRows relations={unmatchedRelations} framed />
         )}
-        {statEffects.length > 0 && (
-          <div>
-            <h3 className="mb-2 flex items-center gap-1.5 text-xs font-medium text-zinc-500">
-              <Gauge aria-hidden="true" className="h-3.5 w-3.5" />
-              属性
-            </h3>
-            <div className="space-y-2">
-              {statEffects.map((effect) => (
-                <DetailEffect
-                  key={effectKey(effect)}
-                  effect={effect}
-                  relations={relations}
-                />
-              ))}
-            </div>
-          </div>
-        )}
+        {statEffects.map((effect) => (
+          <DetailEffect
+            key={effectKey(effect)}
+            effect={effect}
+            relations={relations}
+          />
+        ))}
       </div>
     </section>
   );

@@ -9,6 +9,7 @@ import {
   toWeaponFireRateEffect,
   type FireRateCatalogGroup,
 } from "@/lib/fire-rate";
+import { getProviderRelationsForSource } from "@/lib/multiplier-data";
 import { getAssetPath } from "@/lib/path";
 import type { PerkEffectValue } from "@/types";
 
@@ -190,13 +191,14 @@ export async function FireRateCatalog({
   );
 }
 
-export function WeaponFireRatePanel({ slug }: { slug: string }) {
+export function WeaponEffectValuesPanel({ slug }: { slug: string }) {
   const effects = getWeaponFireRateSources(slug).map(toWeaponFireRateEffect);
   return (
     <EffectValuesPanel
-      id="fire-rate-values"
+      id="weapon-effect-values"
       effects={effects}
-      title="射速加成"
+      relations={getProviderRelationsForSource({ type: "weapon", slug })}
+      title="效果数值"
       className="not-prose mt-4"
     />
   );
