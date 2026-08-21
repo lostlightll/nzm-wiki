@@ -146,6 +146,28 @@ test("client projections preserve normalized domains without audit payload", asy
   assert.equal(getResolvedFieldValue(dawnShot.fire.subFireInterval), 0.045);
 });
 
+test("dynamic fire-rate variants preserve their confirmed maximum intervals", async () => {
+  const expectedIntervals = new Map([
+    ["纯白至上", 0.0909],
+    ["冥河之矛", 0.07],
+  ]);
+
+  for (const table of ["lc", "td"] as const) {
+    for (const [slug, expectedInterval] of expectedIntervals) {
+      const weapon = toWeaponDetailData(await requireWeapon(slug, table));
+      const variant = weapon.damageSources.find(
+        (source) => source.id === "bei-dong-she-su",
+      );
+      assert.ok(variant, `${table}:${slug} must expose the fire-rate variant`);
+      assert.equal(getResolvedFieldValue(variant.fire.interval), expectedInterval);
+      assert.equal(
+        getResolvedFieldValue(variant.fire.rpm),
+        60 / expectedInterval,
+      );
+    }
+  }
+});
+
 test("pilot main source, LC/TD context, attenuation, and element agree", async () => {
   for (const slug of PILOTS) {
     const lc = await requireWeapon(slug, "lc");
