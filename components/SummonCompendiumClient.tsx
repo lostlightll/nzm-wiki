@@ -17,7 +17,6 @@ import {
   useDeferredValue,
   useEffect,
   useMemo,
-  useState,
   useSyncExternalStore,
 } from "react";
 import { MultiplierBadges } from "@/components/MultiplierBadges";
@@ -630,8 +629,11 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
     const validIds = new Set(catalog.entries.map((entry) => entry.id));
     return new Set(params.getAll("summon-filter").filter((id) => validIds.has(id)));
   }, [catalog.entries, params]);
+  const expandedIds = useMemo(() => {
+    const validIds = new Set(catalog.entries.map((entry) => entry.id));
+    return new Set(params.getAll("summon-open").filter((id) => validIds.has(id)));
+  }, [catalog.entries, params]);
   const section = params.get("section");
-  const [expandedIds, setExpandedIds] = useState<Set<string>>(() => new Set());
 
   useEffect(() => {
     if (!linkedSummon) return;
@@ -646,15 +648,20 @@ export function SummonCompendiumClient({ catalog }: { catalog: SummonCatalogView
 
   function toggleEntry(entryId: string) {
     const isExpanded = expandedIds.has(entryId) || linkedSummon === entryId;
-    setExpandedIds((current) => {
-      const next = new Set(current);
-      if (isExpanded) next.delete(entryId);
-      else next.add(entryId);
-      return next;
-    });
+    const next = new Set(expandedIds);
+    if (isExpanded) next.delete(entryId);
+    else next.add(entryId);
+
+    const updates: Record<string, string | string[] | null> = {
+      "summon-open": catalog.entries
+        .filter((entry) => next.has(entry.id))
+        .map((entry) => entry.id),
+    };
     if (linkedSummon === entryId) {
-      updateQuery({ summon: null, section: null }, "");
+      updates.summon = null;
+      updates.section = null;
     }
+    updateQuery(updates, linkedSummon === entryId ? "" : undefined);
   }
 
   const visibleEntries = useMemo(() => catalog.entries.filter((entry) => {
