@@ -105,6 +105,15 @@ const WEAPON_ITEM_OVERRIDES: Record<string, number[]> = {
   "20703040346": [20103000024],
 };
 
+// Card text contains stale values; these are audited against direct Numerical rows.
+const NUMERICAL_DESCRIPTION_OVERRIDES: Record<string, string> = {
+  "20703040085": "持续开火每射出一发子弹，武器伤害增加0.4%，最多叠加80层。",
+  "20703040407": "爆炸伤害增加120%，造成多次伤害后可获得急速狂热（CD13秒）。",
+  "20703040459": "武器技能充能效率+10%",
+  "20703040464": "爆炸伤害+30%",
+  "20704040478": "全部爆炸弹的直击伤害提升300%，爆炸范围缩减50%。",
+};
+
 function loadRows<T>(relativePath: string): Record<string, T> {
   const filePath = path.join(REFS_DIR, relativePath);
   const exports = JSON.parse(fs.readFileSync(filePath, "utf8")) as Array<{
@@ -252,7 +261,8 @@ async function main(): Promise<void> {
     assertValue(item, `Missing CommonItemDataTable row: ${id}`);
 
     const name = textValue(item.Name) || textValue(mod.MODName);
-    const description = textValue(card.OverrideDesc);
+    const description =
+      NUMERICAL_DESCRIPTION_OVERRIDES[id] ?? textValue(card.OverrideDesc);
     const quality = card.OverrideQuality || item.Quality || 0;
     const weight = card.Weight ?? 0;
     const slotValues = mod.MODSlotIndex?.Values ?? [];

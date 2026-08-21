@@ -623,7 +623,7 @@
     },
     {
       "id": "perk:20703040037",
-  "label": "伏击弹药",
+      "label": "伏击弹药",
       "source": {
         "type": "perk",
         "itemId": "20703040037",
@@ -631,29 +631,29 @@
         "slug": "伏击弹药",
         "overlimitCard": false
       },
-  "modifierTypeIds": [
-    "weapon-damage"
-  ],
+      "modifierTypeIds": [
+        "weapon-damage"
+      ],
       "evidence": {
         "kind": "reviewed-override",
         "passiveSkillId": "1315112001",
         "descriptionRowKey": "1315112001_1",
-    "basis": [
-      "Numerical 111010017_1_0 的 AttributeName 为 GPAttributeSetGiveDamageRatio.WeaponDamageRatio，属于大稀释乘区的武器伤害通道。",
-      "武器处于后台10秒后，下一发伤害提高50%只是生效条件，不改变增伤属性所属乘区。"
-    ],
-    "numericalRows": [
-      {
-        "modifierId": "111010017",
-        "rowKey": "111010017_1_0",
-        "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
-        "attributeLabel": "武器伤害增加",
-        "modifierTypeId": "weapon-damage",
-        "baseValue": 0.5,
-        "coefficient": 0,
-        "operation": "B1"
-      }
-    ]
+        "basis": [
+          "Numerical 111010017_1_0 的 AttributeName 为 GPAttributeSetGiveDamageRatio.WeaponDamageRatio，属于大稀释乘区的武器伤害通道。",
+          "武器处于后台10秒后，下一发伤害提高50%只是生效条件，不改变增伤属性所属乘区。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "111010017",
+            "rowKey": "111010017_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害增加",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 0.5,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -1708,7 +1708,7 @@
     },
     {
       "id": "perk:20703040216",
-  "label": "恶鬼眷顾",
+      "label": "恶鬼眷顾",
       "source": {
         "type": "perk",
         "itemId": "20703040216",
@@ -1716,29 +1716,29 @@
         "slug": "恶鬼眷顾",
         "overlimitCard": false
       },
-  "modifierTypeIds": [
-    "weapon-hit-damage"
-  ],
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ],
       "evidence": {
         "kind": "reviewed-override",
         "passiveSkillId": "1312055001",
         "descriptionRowKey": "1312055001_1",
-    "basis": [
-      "Numerical 121500065_1_0 的 AttributeName 为 GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio，属于大稀释乘区的射击伤害通道。",
-      "该属性只作用于青铜喷射器的命中伤害；毒池伤害的具体适用范围由武器机制限定，不改变增伤属性所属乘区。"
-    ],
-    "numericalRows": [
-      {
-        "modifierId": "121500065",
-        "rowKey": "121500065_1_0",
-        "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-        "attributeLabel": "射击伤害",
-        "modifierTypeId": "weapon-hit-damage",
-        "baseValue": 0.8,
-        "coefficient": 0,
-        "operation": "B1"
-      }
-    ]
+        "basis": [
+          "Numerical 121500065_1_0 的 AttributeName 为 GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio，属于大稀释乘区的射击伤害通道。",
+          "该属性只作用于青铜喷射器的命中伤害；毒池伤害的具体适用范围由武器机制限定，不改变增伤属性所属乘区。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "121500065",
+            "rowKey": "121500065_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+            "attributeLabel": "射击伤害",
+            "modifierTypeId": "weapon-hit-damage",
+            "baseValue": 0.8,
+            "coefficient": 0,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -3147,7 +3147,7 @@
     },
     {
       "id": "perk:20703040432",
-  "label": "肾上腺素",
+      "label": "肾上腺素",
       "source": {
         "type": "perk",
         "itemId": "20703040432",
@@ -3155,29 +3155,29 @@
         "slug": "肾上腺素",
         "overlimitCard": true
       },
-  "modifierTypeIds": [
-    "weapon-damage"
-  ],
+      "modifierTypeIds": [
+        "weapon-damage"
+      ],
       "evidence": {
         "kind": "reviewed-override",
         "passiveSkillId": "1313031004",
         "descriptionRowKey": "1313031004_1",
-    "basis": [
-      "Numerical 120300310_1_0 的 AttributeName 为 GPAttributeSetGiveDamageRatio.WeaponDamageRatio，属于大稀释乘区的武器伤害通道。",
-      "每次开火按命中弹丸数增加伤害只是该武器插件的生效条件与叠加方式，不改变增伤属性所属乘区。"
-    ],
-    "numericalRows": [
-      {
-        "modifierId": "120300310",
-        "rowKey": "120300310_1_0",
-        "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
-        "attributeLabel": "武器伤害增加",
-        "modifierTypeId": "weapon-damage",
-        "baseValue": 0,
-        "coefficient": 0.21,
-        "operation": "B1"
-      }
-    ]
+        "basis": [
+          "Numerical 120300310_1_0 的 AttributeName 为 GPAttributeSetGiveDamageRatio.WeaponDamageRatio，属于大稀释乘区的武器伤害通道。",
+          "每次开火按命中弹丸数增加伤害只是该武器插件的生效条件与叠加方式，不改变增伤属性所属乘区。"
+        ],
+        "numericalRows": [
+          {
+            "modifierId": "120300310",
+            "rowKey": "120300310_1_0",
+            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attributeLabel": "武器伤害增加",
+            "modifierTypeId": "weapon-damage",
+            "baseValue": 0,
+            "coefficient": 0.21,
+            "operation": "B1"
+          }
+        ]
       }
     },
     {
@@ -3246,7 +3246,7 @@
         "passiveSkillId": "1315228001",
         "descriptionRowKey": "1315228001_1315228001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315228001 的 CharacterModifierList 直接引用 ModifierID 131522800；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
           {
@@ -3258,37 +3258,10 @@
             "baseValue": 0.36,
             "coefficient": 0,
             "operation": "B1"
-          },
-          {
-            "modifierId": "131521200",
-            "rowKey": "131521200_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.36,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131521600",
-            "rowKey": "131521600_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.12,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131522400",
-            "rowKey": "131522400_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.12,
-            "coefficient": 0,
-            "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131522800"
         ]
       }
     },
@@ -3303,6 +3276,7 @@
         "overlimitCard": true
       },
       "modifierTypeIds": [
+        "skill-damage",
         "weapon-skill-damage"
       ],
       "evidence": {
@@ -3310,7 +3284,7 @@
         "passiveSkillId": "1315205001",
         "descriptionRowKey": "1315205001_1315205001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315205001 的 CharacterModifierList 直接引用 ModifierID 131520500；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
           {
@@ -3324,35 +3298,18 @@
             "operation": "B1"
           },
           {
-            "modifierId": "131521300",
-            "rowKey": "131521300_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
+            "modifierId": "131520500",
+            "rowKey": "131520500_1_1",
+            "attributeName": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+            "attributeLabel": "非武器技能伤害",
+            "modifierTypeId": "skill-damage",
             "baseValue": 0.6,
             "coefficient": 0,
             "operation": "B1"
-          },
-          {
-            "modifierId": "131521700",
-            "rowKey": "131521700_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131522500",
-            "rowKey": "131522500_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131520500"
         ]
       }
     },
@@ -3374,29 +3331,22 @@
         "passiveSkillId": "1315208001",
         "descriptionRowKey": "1315208001_1315208001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315208001 的 CharacterModifierList 直接引用 ModifierID 131520800；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
           {
             "modifierId": "131520800",
             "rowKey": "131520800_1_0",
             "attributeName": "GPAttributeSetCritical.CriticalDamageRatio",
-            "attributeLabel": "暴击伤害",
+            "attributeLabel": "暴伤乘区",
             "modifierTypeId": "critical",
             "baseValue": 0.4,
             "coefficient": 0,
             "operation": "B1"
-          },
-          {
-            "modifierId": "131522000",
-            "rowKey": "131522000_1_0",
-            "attributeName": "GPAttributeSetCritical.CriticalDamageRatio",
-            "attributeLabel": "暴击伤害",
-            "modifierTypeId": "critical",
-            "baseValue": 0.2,
-            "coefficient": 0,
-            "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131520800"
         ]
       }
     },
@@ -3418,29 +3368,22 @@
         "passiveSkillId": "1315210001",
         "descriptionRowKey": "1315210001_1315210001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315210001 的 CharacterModifierList 直接引用 ModifierID 131521000；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
           {
             "modifierId": "131521000",
             "rowKey": "131521000_1_0",
             "attributeName": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio",
-            "attributeLabel": "武器弱点伤害",
+            "attributeLabel": "弱点增伤",
             "modifierTypeId": "weakness",
             "baseValue": 0.2,
             "coefficient": 0,
             "operation": "B1"
-          },
-          {
-            "modifierId": "131522200",
-            "rowKey": "131522200_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio",
-            "attributeLabel": "武器弱点伤害",
-            "modifierTypeId": "weakness",
-            "baseValue": 0.08,
-            "coefficient": 0,
-            "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131521000"
         ]
       }
     },
@@ -3462,7 +3405,7 @@
         "passiveSkillId": "1315211001",
         "descriptionRowKey": "1315211001_1315211001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315211001 的 CharacterModifierList 直接引用 ModifierID 131521100；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
           {
@@ -3471,20 +3414,13 @@
             "attributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
             "attributeLabel": "爆炸伤害",
             "modifierTypeId": "weapon-explode-damage",
-            "baseValue": 0.6,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131522300",
-            "rowKey": "131522300_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
-            "attributeLabel": "爆炸伤害",
-            "modifierTypeId": "weapon-explode-damage",
-            "baseValue": 0.3,
+            "baseValue": 0.45,
             "coefficient": 0,
             "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131521100"
         ]
       }
     },
@@ -3506,19 +3442,9 @@
         "passiveSkillId": "1315212001",
         "descriptionRowKey": "1315212001_1315212001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315212001 的 CharacterModifierList 直接引用 ModifierID 131521200；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131522800",
-            "rowKey": "131522800_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.36,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131521200",
             "rowKey": "131521200_1_0",
@@ -3528,27 +3454,10 @@
             "baseValue": 0.36,
             "coefficient": 0,
             "operation": "B1"
-          },
-          {
-            "modifierId": "131521600",
-            "rowKey": "131521600_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.12,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131522400",
-            "rowKey": "131522400_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.12,
-            "coefficient": 0,
-            "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131521200"
         ]
       }
     },
@@ -3563,6 +3472,7 @@
         "overlimitCard": true
       },
       "modifierTypeIds": [
+        "skill-damage",
         "weapon-skill-damage"
       ],
       "evidence": {
@@ -3570,19 +3480,9 @@
         "passiveSkillId": "1315213001",
         "descriptionRowKey": "1315213001_1315213001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315213001 的 CharacterModifierList 直接引用 ModifierID 131521300；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131520500",
-            "rowKey": "131520500_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.6,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131521300",
             "rowKey": "131521300_1_0",
@@ -3594,25 +3494,18 @@
             "operation": "B1"
           },
           {
-            "modifierId": "131521700",
-            "rowKey": "131521700_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131522500",
-            "rowKey": "131522500_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.24,
+            "modifierId": "131521300",
+            "rowKey": "131521300_1_1",
+            "attributeName": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+            "attributeLabel": "非武器技能伤害",
+            "modifierTypeId": "skill-damage",
+            "baseValue": 0.6,
             "coefficient": 0,
             "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131521300"
         ]
       }
     },
@@ -3634,49 +3527,22 @@
         "passiveSkillId": "1315214001",
         "descriptionRowKey": "1315214001_1315214001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315214001 的 CharacterModifierList 直接引用 ModifierID 131521400；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
           {
             "modifierId": "131521400",
             "rowKey": "131521400_1_0",
             "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
+            "attributeLabel": "全伤害",
             "modifierTypeId": "all-damage",
             "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131521500",
-            "rowKey": "131521500_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131522600",
-            "rowKey": "131522600_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.08,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131522700",
-            "rowKey": "131522700_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.08,
             "coefficient": 0,
             "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131521400"
         ]
       }
     },
@@ -3698,49 +3564,22 @@
         "passiveSkillId": "1315215001",
         "descriptionRowKey": "1315215001_1315215001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315215001 的 CharacterModifierList 直接引用 ModifierID 131521500；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131521400",
-            "rowKey": "131521400_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131521500",
             "rowKey": "131521500_1_0",
             "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
+            "attributeLabel": "全伤害",
             "modifierTypeId": "all-damage",
             "baseValue": 0.24,
             "coefficient": 0,
             "operation": "B1"
-          },
-          {
-            "modifierId": "131522600",
-            "rowKey": "131522600_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.08,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131522700",
-            "rowKey": "131522700_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.08,
-            "coefficient": 0,
-            "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131521500"
         ]
       }
     },
@@ -3762,29 +3601,9 @@
         "passiveSkillId": "1315216001",
         "descriptionRowKey": "1315216001_1315216001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315216001 的 CharacterModifierList 直接引用 ModifierID 131521600；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131522800",
-            "rowKey": "131522800_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.36,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131521200",
-            "rowKey": "131521200_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.36,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131521600",
             "rowKey": "131521600_1_0",
@@ -3794,17 +3613,10 @@
             "baseValue": 0.12,
             "coefficient": 0,
             "operation": "B1"
-          },
-          {
-            "modifierId": "131522400",
-            "rowKey": "131522400_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.12,
-            "coefficient": 0,
-            "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131521600"
         ]
       }
     },
@@ -3826,29 +3638,9 @@
         "passiveSkillId": "1315217001",
         "descriptionRowKey": "1315217001_1315217001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315217001 的 CharacterModifierList 直接引用 ModifierID 131521700；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131520500",
-            "rowKey": "131520500_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.6,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131521300",
-            "rowKey": "131521300_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.6,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131521700",
             "rowKey": "131521700_1_0",
@@ -3858,17 +3650,10 @@
             "baseValue": 0.24,
             "coefficient": 0,
             "operation": "B1"
-          },
-          {
-            "modifierId": "131522500",
-            "rowKey": "131522500_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131521700"
         ]
       }
     },
@@ -3890,29 +3675,22 @@
         "passiveSkillId": "1315220001",
         "descriptionRowKey": "1315220001_1315220001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315220001 的 CharacterModifierList 直接引用 ModifierID 131522000；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131520800",
-            "rowKey": "131520800_1_0",
-            "attributeName": "GPAttributeSetCritical.CriticalDamageRatio",
-            "attributeLabel": "暴击伤害",
-            "modifierTypeId": "critical",
-            "baseValue": 0.4,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131522000",
             "rowKey": "131522000_1_0",
             "attributeName": "GPAttributeSetCritical.CriticalDamageRatio",
-            "attributeLabel": "暴击伤害",
+            "attributeLabel": "暴伤乘区",
             "modifierTypeId": "critical",
             "baseValue": 0.2,
             "coefficient": 0,
             "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131522000"
         ]
       }
     },
@@ -3934,29 +3712,22 @@
         "passiveSkillId": "1315222001",
         "descriptionRowKey": "1315222001_1315222001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315222001 的 CharacterModifierList 直接引用 ModifierID 131522200；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131521000",
-            "rowKey": "131521000_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio",
-            "attributeLabel": "武器弱点伤害",
-            "modifierTypeId": "weakness",
-            "baseValue": 0.2,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131522200",
             "rowKey": "131522200_1_0",
             "attributeName": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio",
-            "attributeLabel": "武器弱点伤害",
+            "attributeLabel": "弱点增伤",
             "modifierTypeId": "weakness",
             "baseValue": 0.08,
             "coefficient": 0,
             "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131522200"
         ]
       }
     },
@@ -3978,19 +3749,9 @@
         "passiveSkillId": "1315223001",
         "descriptionRowKey": "1315223001_1315223001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315223001 的 CharacterModifierList 直接引用 ModifierID 131522300；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131521100",
-            "rowKey": "131521100_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
-            "attributeLabel": "爆炸伤害",
-            "modifierTypeId": "weapon-explode-damage",
-            "baseValue": 0.6,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131522300",
             "rowKey": "131522300_1_0",
@@ -4001,6 +3762,9 @@
             "coefficient": 0,
             "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131522300"
         ]
       }
     },
@@ -4022,39 +3786,9 @@
         "passiveSkillId": "1315224001",
         "descriptionRowKey": "1315224001_1315224001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315224001 的 CharacterModifierList 直接引用 ModifierID 131522400；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131522800",
-            "rowKey": "131522800_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.36,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131521200",
-            "rowKey": "131521200_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.36,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131521600",
-            "rowKey": "131521600_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
-            "attributeLabel": "射击伤害",
-            "modifierTypeId": "weapon-hit-damage",
-            "baseValue": 0.12,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131522400",
             "rowKey": "131522400_1_0",
@@ -4065,6 +3799,9 @@
             "coefficient": 0,
             "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131522400"
         ]
       }
     },
@@ -4086,39 +3823,9 @@
         "passiveSkillId": "1315225001",
         "descriptionRowKey": "1315225001_1315225001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315225001 的 CharacterModifierList 直接引用 ModifierID 131522500；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131520500",
-            "rowKey": "131520500_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.6,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131521300",
-            "rowKey": "131521300_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.6,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131521700",
-            "rowKey": "131521700_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
-            "attributeLabel": "武器技能伤害",
-            "modifierTypeId": "weapon-skill-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131522500",
             "rowKey": "131522500_1_0",
@@ -4129,6 +3836,9 @@
             "coefficient": 0,
             "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131522500"
         ]
       }
     },
@@ -4150,49 +3860,22 @@
         "passiveSkillId": "1315226001",
         "descriptionRowKey": "1315226001_1315226001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315226001 的 CharacterModifierList 直接引用 ModifierID 131522600；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131521400",
-            "rowKey": "131521400_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131521500",
-            "rowKey": "131521500_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131522600",
             "rowKey": "131522600_1_0",
             "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.08,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131522700",
-            "rowKey": "131522700_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
+            "attributeLabel": "全伤害",
             "modifierTypeId": "all-damage",
             "baseValue": 0.08,
             "coefficient": 0,
             "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131522600"
         ]
       }
     },
@@ -4214,49 +3897,22 @@
         "passiveSkillId": "1315227001",
         "descriptionRowKey": "1315227001_1315227001",
         "basis": [
-          "属性卡描述与固定 Numerical 行逐项核对，未依赖名称关键词推断。"
+          "MGEConfig_Season 1315227001 的 CharacterModifierList 直接引用 ModifierID 131522700；数值与通道均以对应 Numerical 行为准。"
         ],
         "numericalRows": [
-          {
-            "modifierId": "131521400",
-            "rowKey": "131521400_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131521500",
-            "rowKey": "131521500_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.24,
-            "coefficient": 0,
-            "operation": "B1"
-          },
-          {
-            "modifierId": "131522600",
-            "rowKey": "131522600_1_0",
-            "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
-            "modifierTypeId": "all-damage",
-            "baseValue": 0.08,
-            "coefficient": 0,
-            "operation": "B1"
-          },
           {
             "modifierId": "131522700",
             "rowKey": "131522700_1_0",
             "attributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
-            "attributeLabel": "全伤害（可用，和其他增伤连加）",
+            "attributeLabel": "全伤害",
             "modifierTypeId": "all-damage",
             "baseValue": 0.08,
             "coefficient": 0,
             "operation": "B1"
           }
+        ],
+        "gpModifierIds": [
+          "131522700"
         ]
       }
     },
@@ -6623,7 +6279,7 @@
         ],
         "basis": [
           "GPModularGameplayEffectTable 将 1317231001 映射到 MGE_1315231001；该 MGE 的 uexp 字节码与默认属性均命中 ModifierID 130044410。",
-          "Numerical 130044410 写入 WeaponHitDamageRatio；临时 refs 的 Numerical 描述仍为直击伤害 +300%，季中 HuntingGroundRoguelike OverrideDesc 已更新为 +400%，因此 Numerical 仅作为通道证据，展示值以季中卡牌表为准。"
+          "Numerical 130044410 写入 WeaponHitDamageRatio，GPModifierOp 为 B1、BaseValue 为 3.0，因此结构化增伤值为 +300%；HuntingGroundRoguelike OverrideDesc 的 +400% 属于冲突文案，不作为数值依据。"
         ],
         "numericalRows": [
           {

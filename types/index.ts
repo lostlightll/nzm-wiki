@@ -153,6 +153,19 @@ export interface EffectValueStage {
   value: string;
 }
 
+export type PerkStatId =
+  | "toughness-efficiency"
+  | "critical-rate"
+  | "charge-efficiency"
+  | "fire-rate"
+  | "damage-reduction"
+  | "reload-speed"
+  | "movement-speed"
+  | "melee-attack-speed"
+  | "explosion-radius"
+  | "skill-range"
+  | "effective-range";
+
 export type PerkEffectValue =
   | {
       kind: "damage";
@@ -162,11 +175,7 @@ export type PerkEffectValue =
     }
   | {
       kind: "stat";
-      statId:
-        | "toughness-efficiency"
-        | "critical-rate"
-        | "charge-efficiency"
-        | "fire-rate";
+      statId: PerkStatId;
       label: string;
       stages: EffectValueStage[];
     };

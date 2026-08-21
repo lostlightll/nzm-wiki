@@ -858,7 +858,7 @@
   {
     "id": "20703040085",
     "name": "致命节拍",
-    "description": "持续开火每射出一发子弹，武器伤害增加0.5%，最多叠加60层。",
+    "description": "持续开火每射出一发子弹，武器伤害增加0.4%，最多叠加80层。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "weight": 6,
@@ -1289,7 +1289,7 @@
   {
     "id": "20703040407",
     "name": "狂轰乱炸",
-    "description": "爆炸伤害增加130%，造成多次伤害后可获得急速狂热（CD13秒）。",
+    "description": "爆炸伤害增加120%，造成多次伤害后可获得急速狂热（CD13秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
     "quality": 5,
     "weight": 1,
@@ -2631,7 +2631,7 @@
   {
     "id": "20703040459",
     "name": "充能属性",
-    "description": "武器技能充能效率+20%",
+    "description": "武器技能充能效率+10%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314130001.png",
     "quality": 3,
     "weight": 8,
@@ -2761,7 +2761,7 @@
   {
     "id": "20703040464",
     "name": "爆炸属性",
-    "description": "爆炸伤害+15%",
+    "description": "爆炸伤害+30%",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 3,
     "weight": 8,
@@ -3761,7 +3761,7 @@
   {
     "id": "20704040478",
     "name": "爆炸直击",
-    "description": "全部爆炸弹的直击伤害提升400%，爆炸范围缩减50%。",
+    "description": "全部爆炸弹的直击伤害提升300%，爆炸范围缩减50%。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
     "quality": 5,
     "weight": 1,

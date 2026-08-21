@@ -6,6 +6,7 @@ import type {
   Perk,
   PerkEffectValue,
   PerkIndependentDamageSourceReference,
+  PerkStatId,
   PerkSlot,
   Rarity,
 } from "@/types";
@@ -14,11 +15,18 @@ import { MODIFIER_TYPES } from "@/lib/multiplier-data";
 
 const PERKS_DATA_DIR = path.join(process.cwd(), "data/perks");
 const MODIFIER_TYPE_IDS = new Set(MODIFIER_TYPES.map((type) => type.id));
-const STAT_IDS = new Set([
+const STAT_IDS = new Set<PerkStatId>([
   "toughness-efficiency",
   "critical-rate",
   "charge-efficiency",
   "fire-rate",
+  "damage-reduction",
+  "reload-speed",
+  "movement-speed",
+  "melee-attack-speed",
+  "explosion-radius",
+  "skill-range",
+  "effective-range",
 ]);
 
 function requireNonEmptyString(
@@ -121,7 +129,7 @@ function parseEffectValues(
         `effect_values[${index}].statId`,
         filePath,
       );
-      if (!STAT_IDS.has(statId)) {
+      if (!STAT_IDS.has(statId as PerkStatId)) {
         throw new Error(
           `插件 effect_values[${index}] 使用未知属性类型 ${statId}: ${filePath}`,
         );

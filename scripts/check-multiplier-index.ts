@@ -46,30 +46,39 @@ const overlimitProviders = MULTIPLIER_PROVIDERS.filter(
 const overlimitProviderByItemId = new Map(
   overlimitProviders.map((provider) => [provider.source.itemId, provider]),
 );
-const overlimitStatTypeByItemId = new Map<string, string>([
-  ["20703040136", "toughness-efficiency"],
-  ["20703040448", "critical-rate"],
-  ["20703040460", "critical-rate"],
-  ["20703040406", "critical-rate"],
-  ["20703040115", "critical-rate"],
-  ["20703040382", "critical-rate"],
-  ["20703040028", "critical-rate"],
-  ["20703040116", "critical-rate"],
-  ["20704040477", "critical-rate"],
-  ["20703040391", "critical-rate"],
-  ["20703040102", "charge-efficiency"],
-  ["20703040404", "charge-efficiency"],
-  ["20703040182", "charge-efficiency"],
-  ["20703040385", "charge-efficiency"],
-  ["20703040447", "charge-efficiency"],
-  ["20703040459", "charge-efficiency"],
-  ["20703040092", "fire-rate"],
-  ["20703040341", "fire-rate"],
-  ["20703040407", "fire-rate"],
-  ["20703040410", "fire-rate"],
-  ["20703040424", "fire-rate"],
-  ["20703040429", "fire-rate"],
-  ["20703040338", "fire-rate"],
+const overlimitStatTypesByItemId = new Map<string, readonly string[]>([
+  ["20703040136", ["toughness-efficiency"]],
+  ["20703040448", ["critical-rate"]],
+  ["20703040460", ["critical-rate"]],
+  ["20703040406", ["critical-rate", "movement-speed"]],
+  ["20703040115", ["critical-rate"]],
+  ["20703040382", ["critical-rate"]],
+  ["20703040028", ["critical-rate"]],
+  ["20703040116", ["critical-rate"]],
+  ["20704040477", ["critical-rate"]],
+  ["20703040391", ["critical-rate"]],
+  ["20703040102", ["charge-efficiency"]],
+  ["20703040404", ["charge-efficiency"]],
+  ["20703040182", ["charge-efficiency"]],
+  ["20703040385", ["charge-efficiency"]],
+  ["20703040447", ["charge-efficiency"]],
+  ["20703040459", ["charge-efficiency"]],
+  ["20703040092", ["fire-rate"]],
+  ["20703040341", ["fire-rate"]],
+  ["20703040407", ["fire-rate"]],
+  ["20703040410", ["fire-rate"]],
+  ["20703040424", ["fire-rate"]],
+  ["20703040429", ["fire-rate"]],
+  ["20703040338", ["fire-rate"]],
+  ["20703040450", ["damage-reduction"]],
+  ["20703040462", ["damage-reduction"]],
+  ["20703040405", ["reload-speed"]],
+  ["20703040152", ["reload-speed"]],
+  ["20703040384", ["movement-speed"]],
+  ["20703040344", ["skill-range"]],
+  ["20703040409", ["melee-attack-speed"]],
+  ["20703040043", ["explosion-radius"]],
+  ["20703040254", ["effective-range"]],
 ]);
 
 function requireFile(relativePath: string, label: string) {
@@ -219,9 +228,8 @@ for (const card of hydratedOverlimitCards) {
   const statEffects =
     card.effectValues?.filter((effect) => effect.kind === "stat") ?? [];
 
-  const expectedStatType = overlimitStatTypeByItemId.get(card.id);
-  const actualStatTypes = statEffects.map((effect) => effect.statId);
-  const expectedStatTypes = expectedStatType ? [expectedStatType] : [];
+  const actualStatTypes = statEffects.map((effect) => effect.statId).sort();
+  const expectedStatTypes = [...(overlimitStatTypesByItemId.get(card.id) ?? [])].sort();
   if (JSON.stringify(actualStatTypes) !== JSON.stringify(expectedStatTypes)) {
     errors.push(
       `超限卡片 ${card.id} ${card.name} 的 stat 类型不匹配：期望 ${expectedStatTypes.join(", ") || "无"}，实际 ${actualStatTypes.join(", ") || "无"}`,
@@ -311,5 +319,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `乘区索引校验通过：${MODIFIER_TYPES.length} 个增伤类型，${MULTIPLIER_PROVIDERS.length} 个来源，${MULTIPLIER_PROVIDER_EXCLUSIONS.length} 个排除项，${PROVIDER_RELATIONS.length} 条双向关系；覆盖 ${perkCandidates.size} 个插件/卡片身份、${overlimitStatTypeByItemId.size} 个属性数值来源、${weaponCandidates.size} 个武器技能组件。`,
+  `乘区索引校验通过：${MODIFIER_TYPES.length} 个增伤类型，${MULTIPLIER_PROVIDERS.length} 个来源，${MULTIPLIER_PROVIDER_EXCLUSIONS.length} 个排除项，${PROVIDER_RELATIONS.length} 条双向关系；覆盖 ${perkCandidates.size} 个插件/卡片身份、${overlimitStatTypesByItemId.size} 个属性数值来源、${weaponCandidates.size} 个武器技能组件。`,
 );

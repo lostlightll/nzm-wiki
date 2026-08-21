@@ -34,11 +34,12 @@ test("all overlimit damage providers have exact structured values", () => {
 });
 
 test("all reviewed overlimit stat sources have exact structured types", () => {
-  const expected = new Map<string, string>([
+  const expected = [
     ["20703040136", "toughness-efficiency"],
     ["20703040448", "critical-rate"],
     ["20703040460", "critical-rate"],
     ["20703040406", "critical-rate"],
+    ["20703040406", "movement-speed"],
     ["20703040115", "critical-rate"],
     ["20703040382", "critical-rate"],
     ["20703040028", "critical-rate"],
@@ -58,14 +59,26 @@ test("all reviewed overlimit stat sources have exact structured types", () => {
     ["20703040424", "fire-rate"],
     ["20703040429", "fire-rate"],
     ["20703040338", "fire-rate"],
-  ]);
-  const actual = new Map(
+    ["20703040450", "damage-reduction"],
+    ["20703040462", "damage-reduction"],
+    ["20703040405", "reload-speed"],
+    ["20703040152", "reload-speed"],
+    ["20703040384", "movement-speed"],
+    ["20703040344", "skill-range"],
+    ["20703040409", "melee-attack-speed"],
+    ["20703040043", "explosion-radius"],
+    ["20703040254", "effective-range"],
+  ].sort(([leftId, leftType], [rightId, rightType]) =>
+    `${leftId}:${leftType}`.localeCompare(`${rightId}:${rightType}`),
+  );
+  const actual =
     getAllOverlimitCards().flatMap((card) =>
       (card.effectValues ?? [])
         .filter((effect) => effect.kind === "stat")
         .map((effect) => [card.id, effect.statId] as const),
-    ),
-  );
+    ).sort(([leftId, leftType], [rightId, rightType]) =>
+      `${leftId}:${leftType}`.localeCompare(`${rightId}:${rightType}`),
+    );
 
   assert.deepEqual(actual, expected);
 });
@@ -98,6 +111,12 @@ test("key cards expose their reviewed player-facing values", () => {
       label: "暴击率",
       stages: [{ value: "+50%" }],
     },
+    {
+      kind: "stat",
+      statId: "movement-speed",
+      label: "移动速度",
+      stages: [{ value: "+25%" }],
+    },
   ]);
 });
 
@@ -128,5 +147,26 @@ test("structured values cover stacks, dynamic conversion, and dual channels", ()
       { condition: "每发", value: "+0.8%" },
       { condition: "100层", value: "+80%" },
     ],
+  );
+});
+
+test("Numerical values override stale overlimit descriptions", () => {
+  assert.equal(
+    getOverlimitCardById("20704040478")?.effectValues?.[0].stages[0].value,
+    "+300%",
+  );
+  assert.equal(
+    getOverlimitCardById("20703040464")?.effectValues?.[0].stages[0].value,
+    "+30%",
+  );
+  assert.equal(
+    getOverlimitCardById("20703040459")?.effectValues?.[0].stages[0].value,
+    "+10%",
+  );
+  assert.deepEqual(
+    getOverlimitCardById("20703040446")?.effectValues?.map((effect) =>
+      effect.kind === "damage" ? effect.modifierTypeId : effect.statId,
+    ),
+    ["weapon-skill-damage", "skill-damage"],
   );
 });

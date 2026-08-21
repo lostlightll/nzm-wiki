@@ -41,7 +41,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 超限卡片的具体增伤值不写入来源注册表，而由同 ItemID 插件 MDX 的 `effect_values` 维护。两类数据职责如下：
 
 - `multiplier-providers.json` 决定“属于哪种增伤、进入哪个乘区”，保存证据链。
-- `effect_values` 决定“向玩家显示什么条件和数值”，以审定描述和人工覆盖为准。
+- `effect_values` 决定“向玩家显示什么条件和数值”。条件语义可参考审定文案；凡能直连 Numerical 的数值必须以 `BaseValue`、`CoefValue`、`GPModifierOp` 和等级为准，描述和人工文案覆盖不能覆盖结构化值。
 - `lib/overlimit-cards.ts` 用稳定 ItemID 将 MDX 数值合并到猎场卡片，保留 `overlimit-cards.json` 的简述。
 - 校验要求每个超限增伤来源与 `modifierTypeId` 精确一一匹配；未知类型、空阶段、重复类型、孤立字段和当前未启用的 `stat` 都会报错。
 
@@ -107,9 +107,10 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 ```text
 pnpm test:multiplier-data
 pnpm test:overlimit-cards
+pnpm overlimit-effects:audit
 pnpm test:weapon-base-damage
 pnpm multiplier-index:check
 pnpm multiplier-providers:audit
 ```
 
-测试覆盖基础伤害模式配置、全量白值索引、超限镜像、双乘区、Settlement 匹配和路由。`multiplier-index:check` 不依赖 `refs/`，验证所有发布插件、137 张卡片、武器技能和 S3 天赋均已映射或明确排除，并检查路由、镜像和双向一致性。`multiplier-providers:audit` 在存在 `refs/` 时继续核对 ItemID、MGE token、Numerical 行与 AttributeDescMapTable；构建前固定执行运行时检查。
+测试覆盖基础伤害模式配置、全量白值索引、超限镜像、双乘区、Settlement 匹配和路由。`multiplier-index:check` 不依赖 `refs/`，验证所有发布插件、147 张卡片、武器技能和 S3 天赋均已映射或明确排除，并检查路由、镜像和双向一致性。`overlimit-effects:audit` 在存在 `refs/` 时从身份链重建超限卡片的 Numerical 数值并核对 `effect_values`；`multiplier-providers:audit` 继续核对 ItemID、MGE token、Numerical 行与 AttributeDescMapTable。构建前固定执行运行时检查。

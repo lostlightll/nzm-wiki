@@ -9,8 +9,18 @@
 - `data/perks/slot-*/*.mdx` 是网站最终展示数据，解包文件只用于审计和补全，不在构建时自动注入。
 - 插件身份只通过 ItemID 连接，不能根据相似编号、图标编号或相邻行猜测。
 - 普通插件详情优先使用 `MGEDescription`；猎场 `OverrideDesc` 通常是玩法卡片简写，不能覆盖完整详情。
-- 当前版本游戏截图是最高优先级证据。截图数值与解包表冲突时，按截图人工维护并设置 `description_override: true`。
+- 游戏内截图、`MGEDescription`、`OverrideDesc` 和各表 `Description` 都是自然语言展示证据，不是配置数值真值；它们只能确定玩家可见文案、触发条件和语义。
 - 已有非空描述不批量覆盖。版本更新后重新审计，人工处理真正冲突即可。
+
+## 数值证据规则
+
+插件和超限卡片的数值先沿 `ItemID -> PassiveSkill_ID -> MGE -> ModifierID` 定位到 `Attributes/AutoGenerate/numerical_modifier_config.json`。只要目标效果存在可对应的 Numerical 属性行，就必须以该行的 `BaseValue`、`CoefValue`、`GPModifierOp` 和 `Level` 为准，禁止从游戏内描述、截图文案、`MGEDescription`、`OverrideDesc` 或 Numerical 自身的 `Description` 抄取数值。
+
+- `Description` 只解释属性语义，不校正同一行的结构化字段。例如 `GPModifierOp: B1`、`BaseValue: 3.0` 应记录为 `+300%`；描述即使写 `+400%` 也视为错误文案。
+- 描述与 Numerical 冲突时，采用 Numerical，并在审计证据中记录冲突；不得以描述“看起来更新”或来自游戏内为由覆盖结构化值。
+- 只有 Numerical 没有承载目标数值，或有可重复的实际伤害测试、运行时日志证明存在动态覆写时，才允许采用其他数值证据。此时必须记录证据来源、推导过程和 Numerical 链路为何不足，不能只设置 `description_override: true`。
+- 概率、持续时间、范围、弹数、层数等若由其他结构化 Ability、Buff 或 DataTable 字段直接承载，同样优先结构化字段，描述仅作交叉检查。
+- `refs/` 仍只用于维护期审计；最终发布值写入已提交的 MDX 或站点数据，页面运行时不得读取 `refs/`。
 
 ## 身份链路
 
@@ -53,11 +63,11 @@ DT_GPMGESkillDesConfig_BD[技能ID_等级].MGEDescription
 
 | 优先级 | 来源 | 用途 |
 |:---|:---|:---|
-| 1 | 当前版本游戏内详情截图 | 最终数值和触发语义 |
-| 2 | `DT_GPMGESkillDesConfig_BD.json` 的 `MGEDescription` | 普通插件完整详情正文 |
+| 1 | 当前版本游戏内详情截图 | 玩家可见文案和触发语义；数值仍受“数值证据规则”约束 |
+| 2 | `DT_GPMGESkillDesConfig_BD.json` 的 `MGEDescription` | 普通插件完整详情正文；不作为结构化数值依据 |
 | 3 | `DT_GPMGESkillDesConfigTable_Main.json` | 导入器使用的合并镜像，需与 BD 表核对 |
-| 4 | `HuntingGroundRoguelikeWeaponModTable.OverrideDesc` | 猎场卡片简写，仅作差异对照 |
-| 5 | `WeaponModItemData.AttrList` | 没有 MGE 描述时的属性型回退 |
+| 4 | `HuntingGroundRoguelikeWeaponModTable.OverrideDesc` | 猎场卡片简写，仅作差异对照，不作为结构化数值依据 |
+| 5 | `WeaponModItemData.AttrList` | 没有 MGE 描述时的属性型回退；其中结构化字段按数值规则审计 |
 
 `CommonItemDataTable.Description` 是通用插件背景介绍，不是插件效果描述。`PreviewDescription` 经常为空，也不能当主要来源。
 
@@ -107,7 +117,7 @@ MGE 中的“复用某武器资源”等开发备注不写入网站描述，只�
 - 不保留 `{GPModifier:...}`、`??`、独立占位符 `X` 或测试文案。
 - 触发语义以游戏原文为准，例如“切出该武器后”不能擅自改成“切换到该武器后”。
 
-截图明确覆盖解包旧值时，在 MDX 中添加：
+需要人工维护玩家可见文案时，在 MDX 中添加：
 
 ```yaml
 description_override: true
@@ -131,12 +141,12 @@ effect_values:
 
 - `kind: damage` 表示增伤，`modifierTypeId` 必须与乘区来源注册表中的增伤类型一致。
 - `label`、`value` 和每个阶段均不能为空；`condition` 可省略。叠层、条件翻倍和动态换算同时记录基础阶段与最终阶段。
-- 数值以审定后的 MDX `description` 为准；`description_override: true` 时人工覆盖优先。乘区证据用于交叉核对类型，不得从底层 `baseValue` 自动推导玩家文案。
+- 数值必须遵守“数值证据规则”。可定位 Numerical 行时，从 `BaseValue`、`CoefValue`、`GPModifierOp` 和等级换算 `effect_values`；MDX `description` 与 `description_override: true` 均不能覆盖结构化数值。乘区证据同时用于核对属性通道和 `modifierTypeId`。
 - 同一插件不能重复声明同一个 `modifierTypeId`。没有登记为增伤来源的超限卡片不得孤立添加增伤数值。
-- `kind: stat` 用于 `toughness-efficiency`、`critical-rate`、`charge-efficiency` 和 `fire-rate`。分别记录破韧效率、暴击率、充能速度/效率及枪械射速加成；命中后直接回复技能能量等即时充能不属于 `charge-efficiency`，基础射击间隔变化不属于 `fire-rate`。
+- `kind: stat` 用于结构化属性数值。目前支持破韧效率、暴击率、充能速度/效率、枪械射速、伤害减免、换弹速度、移动速度、近战攻速、爆炸范围、技能范围和有效射程。命中后直接回复技能能量等即时充能不属于 `charge-efficiency`，基础射击间隔变化不属于 `fire-rate`。
 - 页面只渲染非空分类，不显示空入口。列表与增伤共用关键数值区域，详情页按“增伤”和“属性”分组展示。
 
-维护时先确认 ItemID 和最终描述，再录入阶段数值，随后运行 `pnpm test:overlimit-cards` 与 `pnpm multiplier-index:check`。超限卡片导入后重复执行校验，确认人工字段仍通过同 ItemID 合并。
+维护时先确认 ItemID 和结构化数值链，再录入阶段数值；描述只用于补充条件语义。随后运行 `pnpm test:overlimit-cards`、`pnpm overlimit-effects:audit` 与 `pnpm multiplier-index:check`。超限卡片导入后重复执行校验，确认 Numerical 审定值没有被描述覆盖。
 
 ## 独立伤害来源
 

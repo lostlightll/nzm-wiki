@@ -119,6 +119,9 @@ pnpm webp     # 优化 public/ 中的图片
 
 ## MDX 与数据原则
 
+- 游戏内描述、截图文案、`MGEDescription`、`OverrideDesc` 和 Numerical 的 `Description` 都是不可靠的自然语言展示层，禁止把其中的数值直接当作配置真值。只要能沿 ItemID、技能、MGE 或 ModifierID 身份链定位到 `Attributes/AutoGenerate/numerical_modifier_config.json` 的具体属性行，数值必须以该行的 `BaseValue`、`CoefValue`、`GPModifierOp` 和等级为准；描述只能用于名称、条件和语义辅助。
+- 描述数值与 Numerical 冲突时不得折中、不得以“游戏内显示更新”为由覆盖，也不得继续保留描述值；必须采用 Numerical、修正站点结构化数据并记录冲突。只有 Numerical 没有承载该数值，或有可重复的实际伤害测试、运行时日志证明另有动态覆写时，才允许使用其他证据，并明确记录来源和缺失链路。
+- 超限卡片和插件的 `effect_values` 必须逐项能沿身份链复核到 Numerical。存在可直读 Numerical 的效果时，禁止根据卡片描述、插件描述或截图补值；例如 `GPModifierOp: B1`、`BaseValue: 3.0` 表示 `+300%`，即使描述写 `+400%` 也不得采用描述值。
 - MDX frontmatter 是武器来源选择、Wiki 语义和人工修正的唯一来源；构建时不得从 `refs/` 自动注入或覆盖。
 - 发布数值由 MDX 的 V2 引用和已提交的 `data/weapon-data-lock.json` 解析，页面运行时不得依赖 `refs/`。
 - `scripts/extract-weapon-data.ts` 只输出候选证据，不能直接复制为 frontmatter，也不能替代人工判断 `label`、`group`、继承或 override。
