@@ -46,8 +46,8 @@ const THEMES: Record<
 > = {
   "dual-star": {
     accent: "#c06cff",
-    accentSoft: "rgba(192,108,255,0.24)",
-    glow: "rgba(192,108,255,0.58)",
+    accentSoft: "rgba(192,108,255,0.16)",
+    glow: "rgba(192,108,255,0.46)",
   },
   "matrix-symbiosis": {
     accent: "#ff6557",
@@ -492,7 +492,7 @@ function NodeDetail({
   const canDecrease = !node.isRoot && level > 0;
 
   return (
-    <aside className="flex min-h-0 flex-col overflow-hidden rounded-lg border border-cyan-100/20 bg-[#06111a]/25 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.32)] backdrop-blur-md lg:h-full lg:p-5">
+    <aside className="flex min-h-0 flex-col overflow-hidden rounded-lg border border-cyan-100/20 bg-[#06111a]/16 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.32)] backdrop-blur-sm lg:h-full lg:p-5">
       <div className="flex items-start justify-between gap-3 border-b border-slate-500/35 pb-3">
         <div className="min-w-0">
           <p className="text-xs text-cyan-100/60">S4 赛季天赋详情</p>
@@ -939,11 +939,11 @@ export function S4SeasonTalentBuilder({
               ? "bg-[linear-gradient(135deg,rgba(165,48,31,0.08),rgba(2,10,16,0.3)_48%,rgba(2,10,16,0.7))]"
               : talentId === "black-hole"
                 ? "bg-[linear-gradient(135deg,rgba(18,126,166,0.16),rgba(2,10,16,0.3)_48%,rgba(2,10,16,0.7))]"
-                : "bg-[linear-gradient(135deg,rgba(116,45,158,0.2),rgba(2,10,16,0.3)_48%,rgba(2,10,16,0.7))]"
+                : "bg-[linear-gradient(135deg,rgba(116,45,158,0.1),rgba(2,10,16,0.26)_48%,rgba(2,10,16,0.66))]"
           }`}
         />
       </div>
-      <header className="relative z-20 shrink-0 overflow-hidden rounded-lg border border-cyan-50/20 bg-[#04101a]/25 px-3 py-3 shadow-[0_20px_60px_rgba(0,0,0,0.32)] backdrop-blur-md sm:px-5 lg:py-2">
+      <header className="relative z-20 shrink-0 overflow-hidden rounded-lg border border-cyan-50/20 bg-[#04101a]/16 px-3 py-3 shadow-[0_20px_60px_rgba(0,0,0,0.32)] backdrop-blur-sm sm:px-5 lg:py-2">
         <div className="mx-auto grid max-w-[1800px] items-center gap-3 lg:grid-cols-[minmax(15rem,.8fr)_minmax(18rem,1fr)_minmax(25rem,1.2fr)]">
           <div className="flex min-w-0 items-center gap-2">
             <Link
@@ -1044,7 +1044,7 @@ export function S4SeasonTalentBuilder({
 
           <section
             aria-label={`${tree.name}天赋节点`}
-            className="relative overflow-hidden rounded-lg border border-cyan-100/20 bg-[#05141e]/25 px-3 py-5 shadow-[0_20px_60px_rgba(0,0,0,0.32)] backdrop-blur-md sm:px-6 lg:col-start-1 lg:row-start-1 lg:h-full lg:min-h-0 lg:px-5 lg:py-3 xl:px-8"
+            className="relative overflow-hidden rounded-lg border border-cyan-100/20 bg-[#05141e]/16 px-3 py-5 shadow-[0_20px_60px_rgba(0,0,0,0.32)] backdrop-blur-sm sm:px-6 lg:col-start-1 lg:row-start-1 lg:h-full lg:min-h-0 lg:px-5 lg:py-3 xl:px-8"
           >
             <div className="relative mx-auto hidden h-full min-h-0 max-w-[1120px] grid-cols-7 grid-rows-5 gap-x-1 gap-y-1 lg:grid">
               <div
