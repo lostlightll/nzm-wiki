@@ -74,7 +74,7 @@ function NavCard({ href, icon, title }: NavCardProps) {
 export default function Home() {
   return (
     <main className="home-page h-[calc(100dvh-3.5rem)] overflow-hidden bg-background px-4">
-      <div className="home-shell mx-auto flex h-full w-full max-w-md flex-col items-center justify-center">
+      <div className="home-shell relative mx-auto flex h-full w-full max-w-md flex-col items-center justify-center xl:-left-8 2xl:-left-14">
         {/* Logo 和标题 */}
         <div className="home-header flex shrink-0 flex-col items-center text-center">
           <Image

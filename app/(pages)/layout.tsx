@@ -37,7 +37,7 @@ export default function PagesLayout({
         </div>
       )}
       <main
-        className={`relative z-10 mx-auto w-full ${
+        className={`relative z-10 mx-auto w-full xl:-left-8 2xl:-left-14 ${
           isSeasonTalentDetail
             ? "max-w-[1600px] px-4 py-4 sm:px-6 xl:w-[calc(100%-4rem)] xl:px-12"
             : isGuidesLanding
