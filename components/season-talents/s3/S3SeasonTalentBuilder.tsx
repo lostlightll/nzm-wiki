@@ -9,7 +9,6 @@ import {
   Minus,
   Plus,
   RotateCcw,
-  Sparkles,
   X,
 } from "lucide-react";
 import { createPortal } from "react-dom";
@@ -449,12 +448,6 @@ function TalentNodeButton({
                 : "grayscale-[.65]"
           }`}
         />
-        {node.powerful && (
-          <span
-            aria-hidden="true"
-            className="absolute right-0 top-0 h-1.5 w-1.5 rotate-45 bg-amber-300 shadow-[0_0_5px_rgba(252,211,77,0.75)]"
-          />
-        )}
       </span>
       <span className="node-name sr-only">{node.name}</span>
       <span aria-hidden="true" className="absolute inset-x-1 bottom-1 flex h-1 gap-0.5">
@@ -631,17 +624,13 @@ function PassiveTalentIcon({
   sizes: string;
 }) {
   return (
-    <span className="relative block h-full w-full overflow-hidden bg-[#061823] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
-      <span
-        aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_44%,var(--talent-radial),transparent_66%)]"
-      />
+    <span className="relative block h-full w-full">
       <Image
         src={getAssetPath(talent.icon)}
         alt=""
         fill
         sizes={sizes}
-        className="object-contain p-1"
+        className="object-contain"
       />
     </span>
   );
@@ -722,7 +711,7 @@ function PassiveTalentSelector({
         role="dialog"
         aria-modal="true"
         aria-labelledby="passive-selector-heading"
-        className="relative flex max-h-[calc(100dvh-1rem)] w-full max-w-[58rem] flex-col overflow-hidden rounded-lg border border-[color:var(--talent-frame)] bg-[#04131d] shadow-[0_30px_100px_rgba(0,0,0,0.72),0_0_40px_var(--talent-surface-soft)] sm:max-h-[calc(100dvh-2.5rem)]"
+        className="relative flex max-h-[calc(100dvh-1rem)] w-full max-w-[72rem] flex-col overflow-hidden rounded-lg border border-[color:var(--talent-frame)] bg-[#04131d] shadow-[0_30px_100px_rgba(0,0,0,0.72),0_0_40px_var(--talent-surface-soft)] sm:max-h-[calc(100dvh-2.5rem)]"
       >
         <header className="relative flex min-h-[4.5rem] items-center justify-between border-b border-[color:var(--talent-divider)] bg-[#071a26]/96 px-4 sm:px-6">
           <div>
@@ -744,17 +733,17 @@ function PassiveTalentSelector({
           </button>
         </header>
 
-        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto lg:grid lg:grid-cols-[minmax(0,1.4fr)_minmax(20rem,.8fr)] lg:overflow-hidden">
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(28rem,.9fr)] lg:overflow-hidden">
           <div className="flex shrink-0 flex-col border-b border-[color:var(--talent-divider)] p-4 lg:min-h-0 lg:shrink lg:border-b-0 lg:border-r lg:p-6">
-            <div className="relative flex min-h-64 items-center justify-center overflow-hidden rounded-lg border border-[color:var(--talent-frame)] bg-[#071925]">
+            <div className="relative flex min-h-64 flex-1 items-center justify-center overflow-hidden rounded-lg border border-[color:var(--talent-frame)] bg-[#071925]">
               <span aria-hidden="true" className="absolute inset-0 opacity-45 [background-image:linear-gradient(var(--talent-grid)_1px,transparent_1px),linear-gradient(90deg,var(--talent-grid)_1px,transparent_1px)] [background-size:32px_32px]" />
-              <span aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--talent-radial),transparent_55%)]" />
+              <span aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--talent-radial),transparent_58%)]" />
               <span className="relative h-40 w-40 sm:h-52 sm:w-52">
                 <PassiveTalentIcon talent={previewTalent} sizes="208px" />
               </span>
             </div>
 
-            <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-[repeat(6,5rem)] sm:justify-center" aria-label="S3 被动天赋列表">
+            <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-6" aria-label="S3 被动天赋列表">
               {PASSIVE_DATA.passives.map((talent) => {
                 const selected = talent.id === previewTalent.id;
                 const isEquipped = talent.id === equippedId;
@@ -766,13 +755,13 @@ function PassiveTalentSelector({
                     aria-pressed={selected}
                     aria-label={`预览${talent.name}`}
                     onClick={() => onPreview(talent)}
-                    className={`group relative flex aspect-square min-h-14 cursor-pointer touch-manipulation items-center justify-center justify-self-center overflow-hidden rounded-lg border bg-[#06121b] p-1 transition-colors focus-visible:outline-none focus-visible:[&_.passive-name]:underline focus-visible:[&_.passive-name]:underline-offset-4 sm:w-20 ${
+                    className={`group relative flex aspect-square min-h-14 cursor-pointer touch-manipulation items-center justify-center overflow-hidden rounded-lg border bg-[#06121b] p-1 transition-colors focus-visible:outline-none focus-visible:[&_.passive-name]:underline focus-visible:[&_.passive-name]:underline-offset-4 ${
                       selected
                         ? "border-[color:var(--talent-accent)] bg-[color:var(--talent-surface-soft)]"
                         : "border-slate-600/60 hover:border-slate-300"
                     }`}
                   >
-                    <PassiveTalentIcon talent={talent} sizes="80px" />
+                    <PassiveTalentIcon talent={talent} sizes="96px" />
                     <span className="passive-name sr-only">{talent.name}</span>
                     {isEquipped && (
                       <span className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded bg-emerald-300 text-[#082015]">
@@ -785,55 +774,50 @@ function PassiveTalentSelector({
             </div>
           </div>
 
-          <aside className="flex min-h-[24rem] shrink-0 flex-col bg-[#06111a]/95 p-5 sm:p-7 lg:min-h-0 lg:shrink" aria-live="polite">
-            <div className="flex items-start gap-3 border-b border-[color:var(--talent-accent-soft)] pb-4">
-              <span className="relative h-16 w-16 shrink-0 bg-[color:var(--talent-accent-strong)] [clip-path:polygon(18%_0,82%_0,100%_18%,100%_82%,82%_100%,18%_100%,0_82%,0_18%)]">
-                <span className="absolute inset-px">
-                  <PassiveTalentIcon talent={previewTalent} sizes="64px" />
-                </span>
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-[0.62rem] font-bold tracking-[0.18em] text-[color:var(--talent-accent)]">
-                  S3 被动天赋 · {previewTalent.passiveSkillId}
+          <aside className="flex min-h-0 shrink-0 flex-col bg-[#06111a]/95 lg:shrink" aria-live="polite">
+            <div className="border-b border-[color:var(--talent-accent-soft)] px-5 py-5 sm:px-7 lg:px-8">
+              <p className="text-xs font-medium text-[color:var(--talent-accent)]">
+                S3 被动天赋
+              </p>
+              <h3 className="mt-1 text-2xl font-bold text-white sm:text-3xl">
+                {previewTalent.name}
+              </h3>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {previewTalent.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="border border-amber-300/20 bg-amber-300/10 px-2 py-0.5 text-[0.68rem] font-semibold text-amber-200"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="min-h-0 flex-1 px-5 py-5 sm:px-7 lg:overflow-y-auto lg:px-8 lg:py-6">
+              <div className="max-w-4xl border-l-2 border-[color:var(--talent-accent-muted)] pl-4 sm:pl-5">
+                <p className="mb-3 font-mono text-[0.62rem] font-bold tracking-[0.14em] text-slate-500">
+                  天赋效果
                 </p>
-                <h3 className="mt-1 text-xl font-black tracking-wide text-white sm:text-2xl">
-                  {previewTalent.name}
-                </h3>
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {previewTalent.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="border border-amber-300/20 bg-amber-300/10 px-2 py-0.5 text-[0.68rem] font-semibold text-amber-200"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <TalentDescription value={previewTalent.description} />
+                <div
+                  id={`multiplier-provider-passive-${previewTalent.id}`}
+                  data-multiplier-provider-target={`passive-${previewTalent.id}`}
+                  className="mt-4"
+                >
+                  <MultiplierSourceBadges
+                    source={{
+                      type: "season-talent",
+                      season: "s3",
+                      tree: "zero",
+                      passiveId: previewTalent.id,
+                    }}
+                  />
                 </div>
               </div>
             </div>
-            <div className="mt-4 border-l-2 border-[color:var(--talent-accent-muted)] pl-4">
-              <p className="mb-3 font-mono text-[0.62rem] font-bold tracking-[0.18em] text-slate-500">
-                天赋效果
-              </p>
-              <TalentDescription value={previewTalent.description} />
-              <div
-                id={`multiplier-provider-passive-${previewTalent.id}`}
-                data-multiplier-provider-target={`passive-${previewTalent.id}`}
-                className="mt-3"
-              >
-                <MultiplierSourceBadges
-                  source={{
-                    type: "season-talent",
-                    season: "s3",
-                    tree: "zero",
-                    passiveId: previewTalent.id,
-                  }}
-                />
-              </div>
-            </div>
-            <div className="mt-auto flex flex-col gap-4 border-t border-[color:var(--talent-accent-soft)] pt-5 sm:flex-row sm:items-end sm:justify-between">
+            <div className="flex shrink-0 flex-col gap-4 border-t border-[color:var(--talent-accent-soft)] bg-[#051019] px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-7 lg:px-8">
               <div>
-                <p className="font-mono text-[0.62rem] tracking-[0.16em] text-slate-500">UNLOCK CONDITION</p>
+                <p className="text-xs text-slate-500">解锁条件</p>
                 <p className="mt-1 text-sm text-slate-300">
                   赛季等级 <strong className="text-lg text-amber-300">{previewTalent.unlockLevel}</strong> 解锁
                 </p>
@@ -842,7 +826,7 @@ function PassiveTalentSelector({
                 type="button"
                 aria-label={equipped ? `${previewTalent.name}使用中，关闭弹窗` : `使用${previewTalent.name}`}
                 onClick={() => (equipped ? onClose() : onApply(previewTalent))}
-                className="min-h-11 min-w-40 touch-manipulation bg-[color:var(--talent-accent)] px-7 py-2 text-sm font-black tracking-[0.12em] text-[#03202b] shadow-[0_0_22px_var(--talent-accent-soft)] transition-[background-color,filter,transform,box-shadow] [clip-path:polygon(8px_0,100%_0,100%_calc(100%_-_8px),calc(100%_-_8px)_100%,0_100%,0_8px)] hover:brightness-110 hover:shadow-[0_0_28px_var(--talent-glow)] active:scale-[0.98] focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4 motion-reduce:transform-none"
+                className="min-h-11 min-w-40 touch-manipulation rounded-lg bg-[color:var(--talent-accent)] px-7 py-2 text-sm font-bold text-[#03202b] shadow-[0_0_22px_var(--talent-accent-soft)] transition-[background-color,filter,transform,box-shadow] hover:brightness-110 hover:shadow-[0_0_28px_var(--talent-glow)] active:scale-[0.98] focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4 motion-reduce:transform-none"
               >
                 {equipped ? "使用中" : "使用"}
               </button>
@@ -1137,7 +1121,7 @@ export function S3SeasonTalentBuilder({ talentId }: { talentId: S3TalentId }) {
             aria-controls="s3-passive-talent-selector"
             aria-label="选择 S3 被动天赋"
             onClick={() => openPassiveSelector()}
-            className={`group/passive flex min-h-14 w-full cursor-pointer touch-manipulation items-center gap-2 rounded-lg border px-3 text-left transition-colors focus-visible:outline-none focus-visible:[&_.passive-title]:underline focus-visible:[&_.passive-title]:underline-offset-4 ${
+            className={`group/passive flex min-h-14 w-full max-w-72 cursor-pointer touch-manipulation items-center gap-2 justify-self-center rounded-lg border px-3 text-left transition-colors focus-visible:outline-none focus-visible:[&_.passive-title]:underline focus-visible:[&_.passive-title]:underline-offset-4 lg:justify-self-end ${
               selectedPassive
                 ? "border-[color:var(--talent-frame)] bg-[color:var(--talent-surface-soft)] hover:border-[color:var(--talent-accent)]"
                 : "border-slate-600/70 bg-[#07131d]/75 hover:border-[color:var(--talent-accent)]"
@@ -1153,7 +1137,7 @@ export function S3SeasonTalentBuilder({ talentId }: { talentId: S3TalentId }) {
                   className="object-contain p-0.5"
                 />
               ) : (
-                <Sparkles aria-hidden="true" className="m-2 h-6 w-6 text-slate-400" />
+                <Plus aria-hidden="true" className="m-2 h-6 w-6 text-slate-400" />
               )}
             </span>
             <span className="min-w-0 flex-1">
@@ -1219,7 +1203,7 @@ export function S3SeasonTalentBuilder({ talentId }: { talentId: S3TalentId }) {
             </span>
             <span className="absolute left-[44.5%] top-2 z-20 flex items-center gap-2 text-xs font-semibold text-cyan-100/75">
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-200/70" />
-              通用天赋 · 同阶段四选一
+              通用天赋
             </span>
             {[...exclusiveNodes, ...generalNodes].map((node) => (
               <TalentNodeButton
