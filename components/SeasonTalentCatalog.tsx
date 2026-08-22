@@ -289,7 +289,7 @@ function TalentCard({ talent }: { talent: SeasonTalentCard }) {
         src={getAssetPath(talent.background)}
         alt=""
         fill
-        sizes="(min-width: 1280px) 23rem, 31vw"
+        sizes="(min-width: 1280px) 23rem, (min-width: 1024px) 31vw, 19rem"
         className="pointer-events-none object-fill transition-[filter] duration-200 group-hover:brightness-110 motion-reduce:transition-none"
       />
       <Image
@@ -308,14 +308,14 @@ function TalentCard({ talent }: { talent: SeasonTalentCard }) {
       </Link>
       <div className="pointer-events-none absolute inset-x-[8%] bottom-[17%] z-20 text-center">
         <div className="relative mx-auto flex h-11 w-fit items-center justify-center">
-          <h2 className="whitespace-nowrap text-[clamp(0.6rem,1.6vw,1.55rem)] font-bold leading-none text-[#bda66f] [font-family:'Microsoft_YaHei_UI','Microsoft_YaHei',Arial,sans-serif]">
+          <h2 className="whitespace-nowrap text-[1.55rem] font-bold leading-none text-[#bda66f] [font-family:'Microsoft_YaHei_UI','Microsoft_YaHei',Arial,sans-serif] lg:text-[clamp(0.6rem,1.6vw,1.55rem)]">
             {talent.name}
           </h2>
           <div className="pointer-events-auto absolute left-full top-0 -ml-1">
             <TalentInfo talent={talent} />
           </div>
         </div>
-        <p className="mt-[clamp(0.125rem,0.4vw,0.25rem)] whitespace-nowrap text-[clamp(0.45rem,0.95vw,0.95rem)] font-semibold leading-tight text-[#8f8d92] [font-family:'Microsoft_YaHei_UI','Microsoft_YaHei',Arial,sans-serif]">
+        <p className="mt-1 whitespace-nowrap text-[0.95rem] font-semibold leading-tight text-[#8f8d92] [font-family:'Microsoft_YaHei_UI','Microsoft_YaHei',Arial,sans-serif] lg:mt-[clamp(0.125rem,0.4vw,0.25rem)] lg:text-[clamp(0.45rem,0.95vw,0.95rem)]">
           {talent.subtitle}
         </p>
       </div>
@@ -325,26 +325,57 @@ function TalentCard({ talent }: { talent: SeasonTalentCard }) {
 
 export function SeasonTalentCatalog() {
   return (
-    <FullscreenTalentStage
-      background="/webp/images/season-talents/s3/background.webp"
-      backgroundAlt="金币与赌桌组成的 S3 赛季天赋场景"
-      imageClassName="object-cover object-center"
-      contentClassName="flex items-end justify-center px-[3vw] pb-[6%] pt-24 sm:pb-[5%] lg:pb-[7%]"
-    >
-      <Image
-        src={getAssetPath("/webp/images/season-talents/s3/logo.webp")}
-        alt="S3 荒乙兆"
-        width={620}
-        height={290}
-        priority
-        sizes="(min-width: 1024px) 22rem, 48vw"
-        className="pointer-events-none absolute left-[4%] top-[8%] h-auto w-[min(48vw,12rem)] drop-shadow-[0_6px_14px_rgba(0,0,0,0.35)] lg:left-[5%] lg:top-[20%] lg:w-[clamp(15rem,18vw,22rem)]"
-      />
-      <div className="grid w-full max-w-[calc((100dvh-10rem)*2.25)] grid-cols-3 items-end gap-[clamp(0.5rem,2vw,2rem)] lg:max-w-[78rem] lg:grid-cols-[repeat(3,minmax(0,clamp(14rem,18vw,19rem)))] lg:justify-between">
-        {TALENTS.map((talent) => (
-          <TalentCard key={talent.id} talent={talent} />
-        ))}
+    <div className="lg:h-full">
+      <section
+        aria-labelledby="s3-season-talents-mobile-heading"
+        className="min-h-[calc(100dvh-12.5rem)] bg-[#080b0d] px-4 pb-8 sm:px-6 lg:hidden"
+      >
+        <h2 id="s3-season-talents-mobile-heading" className="sr-only">
+          S3 赛季天赋
+        </h2>
+        <div className="flex min-h-32 items-center justify-center pb-2">
+          <Image
+            src={getAssetPath("/webp/images/season-talents/s3/logo.webp")}
+            alt="S3 荒乙兆"
+            width={620}
+            height={290}
+            priority
+            sizes="(min-width: 640px) 18rem, 72vw"
+            className="h-auto w-[min(72vw,18rem)] drop-shadow-[0_6px_14px_rgba(0,0,0,0.4)]"
+          />
+        </div>
+        <div className="mx-auto grid w-full grid-cols-1 justify-items-center gap-6">
+          {TALENTS.map((talent) => (
+            <div key={talent.id} className="w-full max-w-[19rem]">
+              <TalentCard talent={talent} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="hidden h-full lg:block">
+        <FullscreenTalentStage
+          background="/webp/images/season-talents/s3/background.webp"
+          backgroundAlt="金币与赌桌组成的 S3 赛季天赋场景"
+          imageClassName="object-cover object-center"
+          contentClassName="flex items-end justify-center px-[3vw] pb-[7%] pt-24"
+        >
+          <Image
+            src={getAssetPath("/webp/images/season-talents/s3/logo.webp")}
+            alt="S3 荒乙兆"
+            width={620}
+            height={290}
+            priority
+            sizes="22rem"
+            className="pointer-events-none absolute left-[5%] top-[20%] h-auto w-[clamp(15rem,18vw,22rem)] drop-shadow-[0_6px_14px_rgba(0,0,0,0.35)]"
+          />
+          <div className="grid w-full max-w-[78rem] grid-cols-[repeat(3,minmax(0,clamp(14rem,18vw,19rem)))] items-end justify-between gap-[clamp(0.5rem,2vw,2rem)]">
+            {TALENTS.map((talent) => (
+              <TalentCard key={talent.id} talent={talent} />
+            ))}
+          </div>
+        </FullscreenTalentStage>
       </div>
-    </FullscreenTalentStage>
+    </div>
   );
 }
