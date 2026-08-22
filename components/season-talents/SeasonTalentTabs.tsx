@@ -174,7 +174,7 @@ export function SeasonTalentTabs({ s4Panel }: { s4Panel: ReactNode }) {
         role="tabpanel"
         aria-labelledby="season-talents-s3-tab"
         hidden={activePage !== "s3"}
-        className="px-4 pb-6 sm:px-6 lg:h-full lg:overflow-y-auto lg:pt-20"
+        className="lg:h-full"
       >
         <SeasonTalentCatalog />
       </div>
