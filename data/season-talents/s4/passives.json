@@ -1,0 +1,425 @@
+{
+  "draft": true,
+  "trees": {
+    "dual-star": {
+      "light": [
+        {
+          "id": "2040101",
+          "name": "弱点补正",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：命中非弱点有<qiangdiao>100%</>的概率结算为弱点。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_33.webp",
+          "energy": "light",
+          "isDefault": true,
+          "tags": [
+            "48"
+          ]
+        },
+        {
+          "id": "2040102",
+          "name": "殉爆连锁",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：爆炸命中时，对命中的随机一个单位造成额外一次<qiangdiao>160%</>攻击力的伤害（优先选择精英怪），每秒最多触发<qiangdiao>1次</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_34.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "47"
+          ]
+        },
+        {
+          "id": "2040103",
+          "name": "迫近护体",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：距离越近伤害越高（增伤从<qiangdiao>13米</>到<qiangdiao>6米</>），最高<qiangdiao>35%</>；近距离命中回盾<qiangdiao>10点</>，冷却时间<qiangdiao>1秒</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_35.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "14",
+            "28"
+          ]
+        },
+        {
+          "id": "2040104",
+          "name": "炽热弹链",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：累计开火<qiangdiao>10次</>后，武器伤害提升<qiangdiao>9%</>，持续<qiangdiao>2秒</>，最高提升<qiangdiao>27%</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_36.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "50"
+          ]
+        },
+        {
+          "id": "2040105",
+          "name": "拾光生金",
+          "description": "每次拾取光能量时获得金钱<qiangdiao>30</>。\n光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量：光能量满<qiangdiao>5层</>时额外获得金钱<qiangdiao>80</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_23.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "41"
+          ]
+        },
+        {
+          "id": "2040106",
+          "name": "光能补弹",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量：回复并装填主武器<qiangdiao>25%</>特殊弹药，可过充主弹匣（上限为主弹夹容量与备弹容量之和）。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_24.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "51"
+          ]
+        }
+      ],
+      "dark": [
+        {
+          "id": "2040111",
+          "name": "暗蚀噬弱",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续<qiangdiao>10秒</>：武器伤害增加<qiangdiao>20%</>；弱点伤害增加<qiangdiao>20%</>；连续<qiangdiao>3次</>命中弱点装填<qiangdiao>15%</>弹药，冷却时间<qiangdiao>1秒</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_37.webp",
+          "energy": "dark",
+          "isDefault": true,
+          "tags": [
+            "48",
+            "49"
+          ]
+        },
+        {
+          "id": "2040112",
+          "name": "虚空裂变",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续<qiangdiao>10秒</>：击杀生成暗能种子，命中种子引发爆炸，伤害为攻击力的<qiangdiao>100%</>，半径<qiangdiao>2.5米</>；场上最多<qiangdiao>5个</>；种子<qiangdiao>5秒</>后自爆。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_38.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "47"
+          ]
+        },
+        {
+          "id": "2040113",
+          "name": "守势增幅",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>15 秒</>：获得<qiangdiao>5层</>增伤层数，每层武器伤害增加<qiangdiao>5%</>。每次受到血量伤害失去<qiangdiao>1层</>，<qiangdiao>5秒</>内未受到血量伤害恢复<qiangdiao>1层</>，不超过<qiangdiao>5层</>上限。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_39.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "53"
+          ]
+        },
+        {
+          "id": "2040114",
+          "name": "暗能过充",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>15 秒</>：主武器弹匣过充至<qiangdiao>150%</>，命中为自身叠加<qiangdiao>1层</>暗能印记；满 <qiangdiao>50 层</>再次命中后额外造成一次伤害，伤害为攻击力的<qiangdiao>320%</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_40.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "50"
+          ]
+        },
+        {
+          "id": "2040115",
+          "name": "猎场跃升",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>10 秒</>：猎场攻击力等级临时提升<qiangdiao>1</>级（可超上限）。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_30.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "52"
+          ]
+        },
+        {
+          "id": "2040116",
+          "name": "暗能补弹",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>15 秒</>：特殊弹药伤害提升<qiangdiao>60%</>，每次命中敌人有<qiangdiao>30%</>概率恢复<qiangdiao>1发</>特殊弹药。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_31.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "51"
+          ]
+        }
+      ]
+    },
+    "matrix-symbiosis": {
+      "light": [
+        {
+          "id": "2040201",
+          "name": "弱点补正",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：命中非弱点有<qiangdiao>100%</>的概率结算为弱点。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_33.webp",
+          "energy": "light",
+          "isDefault": true,
+          "tags": [
+            "48"
+          ]
+        },
+        {
+          "id": "2040202",
+          "name": "殉爆连锁",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：爆炸命中时，对命中的随机一个单位造成额外一次<qiangdiao>160%</>攻击力的伤害（优先选择精英怪），每秒最多触发<qiangdiao>1次</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_34.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "47"
+          ]
+        },
+        {
+          "id": "2040203",
+          "name": "迫近护体",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：距离越近伤害越高（增伤从<qiangdiao>13米</>到<qiangdiao>6米</>），最高<qiangdiao>35%</>；近距离命中回盾<qiangdiao>10点</>，冷却时间<qiangdiao>1秒</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_35.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "14",
+            "28"
+          ]
+        },
+        {
+          "id": "2040204",
+          "name": "炽热弹链",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：累计开火<qiangdiao>10次</>后，武器伤害提升<qiangdiao>9%</>，持续<qiangdiao>2秒</>，最高提升<qiangdiao>27%</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_36.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "50"
+          ]
+        },
+        {
+          "id": "2040205",
+          "name": "拾光生金",
+          "description": "每次拾取光能量时获得金钱<qiangdiao>30</>。\n光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量：光能量满<qiangdiao>5层</>时额外获得金钱<qiangdiao>80</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_23.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "41"
+          ]
+        },
+        {
+          "id": "2040206",
+          "name": "光能补弹",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量：回复并装填主武器<qiangdiao>25%</>特殊弹药，可过充主弹匣（上限为主弹夹容量与备弹容量之和）。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_24.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "51"
+          ]
+        }
+      ],
+      "dark": [
+        {
+          "id": "2040211",
+          "name": "暗蚀噬弱",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续<qiangdiao>10秒</>：武器伤害增加<qiangdiao>20%</>；弱点伤害增加<qiangdiao>20%</>；连续<qiangdiao>3次</>命中弱点装填<qiangdiao>15%</>弹药，冷却时间<qiangdiao>1秒</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_37.webp",
+          "energy": "dark",
+          "isDefault": true,
+          "tags": [
+            "48",
+            "49"
+          ]
+        },
+        {
+          "id": "2040212",
+          "name": "虚空裂变",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续<qiangdiao>10秒</>：击杀生成暗能种子，命中种子引发爆炸，伤害为攻击力的<qiangdiao>100%</>，半径<qiangdiao>2.5米</>；场上最多<qiangdiao>5个</>；种子<qiangdiao>5秒</>后自爆。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_38.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "47"
+          ]
+        },
+        {
+          "id": "2040213",
+          "name": "守势增幅",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>15 秒</>：获得<qiangdiao>5层</>增伤层数，每层武器伤害增加<qiangdiao>5%</>。每次受到血量伤害失去<qiangdiao>1层</>，<qiangdiao>5秒</>内未受到血量伤害恢复<qiangdiao>1层</>，不超过<qiangdiao>5层</>上限。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_39.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "53"
+          ]
+        },
+        {
+          "id": "2040214",
+          "name": "暗能过充",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>15 秒</>：主武器弹匣过充至<qiangdiao>150%</>，命中为自身叠加<qiangdiao>1层</>暗能印记；满 <qiangdiao>50 层</>再次命中后额外造成一次伤害，伤害为攻击力的<qiangdiao>320%</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_40.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "50"
+          ]
+        },
+        {
+          "id": "2040215",
+          "name": "猎场跃升",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>10 秒</>：猎场攻击力等级临时提升<qiangdiao>1</>级（可超上限）。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_30.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "52"
+          ]
+        },
+        {
+          "id": "2040216",
+          "name": "暗能补弹",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>15 秒</>：特殊弹药伤害提升<qiangdiao>60%</>，每次命中敌人有<qiangdiao>30%</>概率恢复<qiangdiao>1发</>特殊弹药。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_31.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "51"
+          ]
+        }
+      ]
+    },
+    "black-hole": {
+      "light": [
+        {
+          "id": "2040301",
+          "name": "弱点补正",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：命中非弱点有<qiangdiao>100%</>的概率结算为弱点。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_33.webp",
+          "energy": "light",
+          "isDefault": true,
+          "tags": [
+            "48"
+          ]
+        },
+        {
+          "id": "2040302",
+          "name": "殉爆连锁",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：爆炸命中时，对命中的随机一个单位造成额外一次<qiangdiao>160%</>攻击力的伤害（优先选择精英怪），每秒最多触发<qiangdiao>1次</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_34.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "47"
+          ]
+        },
+        {
+          "id": "2040303",
+          "name": "迫近护体",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：距离越近伤害越高（增伤从<qiangdiao>13米</>到<qiangdiao>6米</>），最高<qiangdiao>35%</>；近距离命中回盾<qiangdiao>10点</>，冷却时间<qiangdiao>1秒</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_35.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "14",
+            "28"
+          ]
+        },
+        {
+          "id": "2040304",
+          "name": "炽热弹链",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量；持续<qiangdiao>5秒</>：累计开火<qiangdiao>10次</>后，武器伤害提升<qiangdiao>9%</>，持续<qiangdiao>2秒</>，最高提升<qiangdiao>27%</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_36.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "50"
+          ]
+        },
+        {
+          "id": "2040305",
+          "name": "拾光生金",
+          "description": "每次拾取光能量时获得金钱<qiangdiao>30</>。\n光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量：光能量满<qiangdiao>5层</>时额外获得金钱<qiangdiao>80</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_23.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "41"
+          ]
+        },
+        {
+          "id": "2040306",
+          "name": "光能补弹",
+          "description": "光能量满<qiangdiao>5层</>自动触发光能爆发，并消耗<qiangdiao>5层</>光能量：回复并装填主武器<qiangdiao>25%</>特殊弹药，可过充主弹匣（上限为主弹夹容量与备弹容量之和）。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_24.webp",
+          "energy": "light",
+          "isDefault": false,
+          "tags": [
+            "51"
+          ]
+        }
+      ],
+      "dark": [
+        {
+          "id": "2040311",
+          "name": "暗蚀噬弱",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续<qiangdiao>10秒</>：武器伤害增加<qiangdiao>20%</>；弱点伤害增加<qiangdiao>20%</>；连续<qiangdiao>3次</>命中弱点装填<qiangdiao>15%</>弹药，冷却时间<qiangdiao>1秒</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_37.webp",
+          "energy": "dark",
+          "isDefault": true,
+          "tags": [
+            "48",
+            "49"
+          ]
+        },
+        {
+          "id": "2040312",
+          "name": "虚空裂变",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续<qiangdiao>10秒</>：击杀生成暗能种子，命中种子引发爆炸，伤害为攻击力的<qiangdiao>100%</>，半径<qiangdiao>2.5米</>；场上最多<qiangdiao>5个</>；种子<qiangdiao>5秒</>后自爆。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_38.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "47"
+          ]
+        },
+        {
+          "id": "2040313",
+          "name": "守势增幅",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>15 秒</>：获得<qiangdiao>5层</>增伤层数，每层武器伤害增加<qiangdiao>5%</>。每次受到血量伤害失去<qiangdiao>1层</>，<qiangdiao>5秒</>内未受到血量伤害恢复<qiangdiao>1层</>，不超过<qiangdiao>5层</>上限。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_39.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "53"
+          ]
+        },
+        {
+          "id": "2040314",
+          "name": "暗能过充",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>15 秒</>：主武器弹匣过充至<qiangdiao>150%</>，命中为自身叠加<qiangdiao>1层</>暗能印记；满 <qiangdiao>50 层</>再次命中后额外造成一次伤害，伤害为攻击力的<qiangdiao>320%</>。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_40.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "50"
+          ]
+        },
+        {
+          "id": "2040315",
+          "name": "猎场跃升",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>10 秒</>：猎场攻击力等级临时提升<qiangdiao>1</>级（可超上限）。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_30.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "52"
+          ]
+        },
+        {
+          "id": "2040316",
+          "name": "暗能补弹",
+          "description": "暗能量满<qiangdiao>5层</>自动触发暗能爆发，消耗<qiangdiao>5层</>暗能量；持续 <qiangdiao>15 秒</>：特殊弹药伤害提升<qiangdiao>60%</>，每次命中敌人有<qiangdiao>30%</>概率恢复<qiangdiao>1发</>特殊弹药。",
+          "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_31.webp",
+          "energy": "dark",
+          "isDefault": false,
+          "tags": [
+            "51"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -50,8 +50,9 @@ test("creates a player status-effect search item and removes duplicate keywords"
   assert.deepEqual(item.keywords, ["110100085", "武器伤害"]);
 });
 
-test("creates an S3 talent deep link without inventing older seasons", () => {
+test("creates an S3 talent deep link", () => {
   const item = createSeasonTalentSearchItem({
+    season: "s3",
     tree: "zero",
     treeName: "零点",
     id: "2030105",
@@ -69,6 +70,25 @@ test("creates an S3 talent deep link without inventing older seasons", () => {
   assert.equal(item.category, "赛季天赋");
   assert.ok(item.keywords.includes("S3"));
   assert.ok(item.keywords.every((keyword) => !/^S[012]$/i.test(keyword)));
+});
+
+test("creates an S4 talent deep link with the interactive builder anchor", () => {
+  const item = createSeasonTalentSearchItem({
+    season: "s4",
+    tree: "dual-star",
+    treeName: "双星",
+    id: "4010202",
+    title: "双星齐射",
+    kind: "node",
+    keywords: ["伴星", "武器伤害"],
+  });
+
+  assert.equal(item.slug, "season-talents/s4/dual-star/node/4010202");
+  assert.equal(
+    item.path,
+    "/guides/season-talents/s4/dual-star?node=4010202#season-talent-node-4010202",
+  );
+  assert.ok(item.keywords.includes("S4"));
 });
 
 test("creates a summon mechanic deep link with Buff and multiplier keywords", () => {

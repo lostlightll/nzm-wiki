@@ -55,11 +55,6 @@ export const SITE_NAV_SECTIONS: readonly SiteNavSection[] = [
         href: "/tower-defense",
       },
       { id: "overlimit", label: "超限图鉴", href: "/overlimit" },
-      {
-        id: "season-talents",
-        label: "赛季天赋",
-        href: "/season-talents",
-      },
     ],
   },
   {
@@ -70,6 +65,11 @@ export const SITE_NAV_SECTIONS: readonly SiteNavSection[] = [
         id: "multiplier",
         label: "游戏乘区",
         href: "/multiplier",
+      },
+      {
+        id: "season-talents",
+        label: "赛季天赋",
+        href: "/season-talents",
       },
       {
         id: "articles",

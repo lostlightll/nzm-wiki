@@ -17,6 +17,7 @@ interface SeasonTalent {
   id: string;
   name: string;
   subtitle: string;
+  background: string;
   icon: string;
   applicableWeapons: readonly string[];
   description: ReactNode;
@@ -34,6 +35,8 @@ const TALENTS: readonly SeasonTalent[] = [
     id: "iron-fist",
     name: "铁拳狂徒",
     subtitle: "自动作战",
+    background:
+      "/webp/images/season-talents/T_TalentS3_BtnBG_01_1.webp",
     icon: "/webp/images/season-talents/iron-fist-card.webp",
     applicableWeapons: ["全部武器类型"],
     href: "/guides/season-talents/s3/iron-fist",
@@ -49,6 +52,8 @@ const TALENTS: readonly SeasonTalent[] = [
     id: "zero",
     name: "零点",
     subtitle: "强化单体控制能力",
+    background:
+      "/webp/images/season-talents/T_TalentS3_BtnBG_01_2.webp",
     icon: "/webp/images/season-talents/zero-card.webp",
     applicableWeapons: ["射手步枪", "狙击步枪", "手枪"],
     href: "/guides/season-talents/s3/zero",
@@ -64,6 +69,8 @@ const TALENTS: readonly SeasonTalent[] = [
     id: "grappling-hook",
     name: "劫掠钩锁",
     subtitle: "强化单体爆发能力",
+    background:
+      "/webp/images/season-talents/T_TalentS3_BtnBG_01_3.webp",
     icon: "/webp/images/season-talents/grappling-hook-card.webp",
     applicableWeapons: ["高射速武器", "高爆发武器"],
     href: "/guides/season-talents/s3/grappling-hook",
@@ -256,7 +263,7 @@ export function SeasonTalentCatalog() {
           className="group/card relative aspect-[3/4] w-full max-w-[19rem] select-none"
         >
           <Image
-            src={getAssetPath("/webp/images/season-talents/card-frame.webp")}
+            src={getAssetPath(talent.background)}
             alt=""
             fill
             sizes="(min-width: 640px) 19rem, calc(100vw - 2rem)"

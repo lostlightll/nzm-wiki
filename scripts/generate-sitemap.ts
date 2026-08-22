@@ -129,7 +129,38 @@ function generateSitemap() {
       }))
     : [];
 
-  const allPages = [...staticPages, ...pages, ...overlimitPages];
+  const s4SeasonTalentPages: PageEntry[] = [
+    "dual-star",
+    "matrix-symbiosis",
+    "black-hole",
+  ].flatMap((talentId) => {
+    const talentFile = path.join(
+      baseDir,
+      "season-talents",
+      "s4",
+      `${talentId}.json`,
+    );
+    if (!fs.existsSync(talentFile)) return [];
+
+    const talent = JSON.parse(fs.readFileSync(talentFile, "utf-8")) as {
+      draft?: boolean;
+    };
+    if (talent.draft === true) return [];
+
+    return [
+      {
+        url: `/guides/season-talents/s4/${talentId}`,
+        lastmod: fs.statSync(talentFile).mtime.toISOString().split("T")[0],
+      },
+    ];
+  });
+
+  const allPages = [
+    ...staticPages,
+    ...pages,
+    ...overlimitPages,
+    ...s4SeasonTalentPages,
+  ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

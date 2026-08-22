@@ -259,6 +259,7 @@ export function createSummonSearchItem(
 }
 
 type SeasonTalentSearchDocument = {
+  season: "s3" | "s4";
   tree: string;
   treeName: string;
   id: string;
@@ -271,9 +272,13 @@ export function createSeasonTalentSearchItem(
   document: SeasonTalentSearchDocument,
 ): SearchItem {
   const queryKey = document.kind === "node" ? "node" : "passive";
-  const anchor = `multiplier-provider-${queryKey}-${document.id}`;
+  const anchor =
+    document.season === "s4"
+      ? `season-talent-${queryKey}-${document.id}`
+      : `multiplier-provider-${queryKey}-${document.id}`;
+  const seasonLabel = document.season.toUpperCase();
   const keywords = [
-    "S3",
+    seasonLabel,
     "赛季天赋",
     document.treeName,
     document.id,
@@ -284,8 +289,8 @@ export function createSeasonTalentSearchItem(
   );
   return {
     title: document.title,
-    slug: `season-talents/s3/${document.tree}/${queryKey}/${document.id}`,
-    path: `/guides/season-talents/s3/${document.tree}?${queryKey}=${document.id}#${anchor}`,
+    slug: `season-talents/${document.season}/${document.tree}/${queryKey}/${document.id}`,
+    path: `/guides/season-talents/${document.season}/${document.tree}?${queryKey}=${document.id}#${anchor}`,
     category: "赛季天赋",
     keywords,
     pinyin: buildPinyin([document.title, ...keywords]),
@@ -391,6 +396,7 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
     items.push(
       ...talent.nodes.map((node) =>
         createSeasonTalentSearchItem({
+          season: "s3",
           tree: slug,
           treeName: talent.name,
           id: node.id,
@@ -423,6 +429,7 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
     items.push(
       ...passiveData.passives.map((passive) =>
         createSeasonTalentSearchItem({
+          season: "s3",
           tree: "zero",
           treeName: "零点",
           id: passive.id,
@@ -433,6 +440,108 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
             ...passive.tags,
             passive.description.replace(/<[^>]+>/g, ""),
           ],
+        }),
+      ),
+    );
+  }
+
+  const s4TalentSlugs = [
+    "dual-star",
+    "matrix-symbiosis",
+    "black-hole",
+  ] as const;
+  const s4PassivesFile = path.join(
+    baseDir,
+    "season-talents",
+    "s4",
+    "passives.json",
+  );
+  const s4PassiveData = fs.existsSync(s4PassivesFile)
+    ? (JSON.parse(fs.readFileSync(s4PassivesFile, "utf-8")) as {
+        draft?: boolean;
+        trees: Record<
+          string,
+          {
+            light: Array<{
+              id: string;
+              name: string;
+              description: string;
+              tags: string[];
+            }>;
+            dark: Array<{
+              id: string;
+              name: string;
+              description: string;
+              tags: string[];
+            }>;
+          }
+        >;
+      })
+    : null;
+
+  for (const slug of s4TalentSlugs) {
+    const talentFile = path.join(
+      baseDir,
+      "season-talents",
+      "s4",
+      `${slug}.json`,
+    );
+    if (!fs.existsSync(talentFile)) continue;
+    const talent = JSON.parse(fs.readFileSync(talentFile, "utf-8")) as {
+      draft?: boolean;
+      name: string;
+      subtitle: string;
+      applicableWeapons: string;
+      nodes: Array<{ id: string; name: string; descriptions: string[] }>;
+    };
+    if (talent.draft === true || s4PassiveData?.draft === true) continue;
+
+    const clean = (value: string) => value.replace(/<[^>]+>/g, "");
+    const keywords = [
+      "S4",
+      "赛季天赋",
+      talent.subtitle,
+      clean(talent.applicableWeapons),
+      ...talent.nodes.map((node) => node.name),
+    ];
+    items.push({
+      title: `${talent.name}天赋树（S4）`,
+      slug: `season-talents/s4/${slug}`,
+      path: `/guides/season-talents/s4/${slug}`,
+      category: "赛季天赋",
+      keywords: [...new Set(keywords)],
+      pinyin: buildPinyin([talent.name, ...keywords]),
+    });
+    items.push(
+      ...talent.nodes.map((node) =>
+        createSeasonTalentSearchItem({
+          season: "s4",
+          tree: slug,
+          treeName: talent.name,
+          id: node.id,
+          title: node.name,
+          kind: "node",
+          keywords: [
+            talent.subtitle,
+            clean(talent.applicableWeapons),
+            ...node.descriptions.map(clean),
+          ],
+        }),
+      ),
+    );
+
+    const treePassives = s4PassiveData?.trees[slug];
+    if (!treePassives) continue;
+    items.push(
+      ...[...treePassives.light, ...treePassives.dark].map((passive) =>
+        createSeasonTalentSearchItem({
+          season: "s4",
+          tree: slug,
+          treeName: talent.name,
+          id: passive.id,
+          title: passive.name,
+          kind: "passive",
+          keywords: [...passive.tags, clean(passive.description)],
         }),
       ),
     );

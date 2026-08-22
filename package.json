@@ -27,6 +27,7 @@
     "test:weapon-data-reader": "tsx --test scripts/weapon-data/source-reader.test.ts",
     "test:weapon-skill-charge": "tsx --test scripts/weapon-data/skill-charge.test.ts",
     "test:weapon-data-lock": "tsx --test scripts/weapon-data/lock.test.ts",
+    "test:season-talents": "tsx --test lib/season-talent-builder.test.ts",
     "test:weapon-static-boundary": "tsx --test scripts/weapon-data/static-boundary.test.ts",
     "test:extract-weapon-data": "tsx --test scripts/extract-weapon-data.test.ts",
     "benchmark:weapon-resolver": "tsx scripts/weapon-data/benchmark-resolver.ts",
@@ -35,6 +36,7 @@
     "weapon-mode-diff:check": "tsx scripts/weapon-data/mode-diff-check.ts",
     "weapon-data:static-check": "tsx scripts/weapon-data/static-boundary.ts",
     "webp": "pnpm exec tsx ./scripts/optimize-images.ts public/",
+    "extract:s4-talents": "tsx scripts/extract-s4-season-talents.ts",
     "index": "tsx scripts/generate-search-index.ts"
   },
   "dependencies": {

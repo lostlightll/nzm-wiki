@@ -1,0 +1,663 @@
+{
+  "draft": true,
+  "id": "black-hole",
+  "talentType": 3,
+  "name": "黑洞",
+  "subtitle": "区域控制",
+  "applicableWeapons": "适配武器：<qiangdiao>连发榴弹、单发榴弹、火箭发射器、霰弹枪、弓箭</>",
+  "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKHD_1.webp",
+  "pointLimit": 40,
+  "nodes": [
+    {
+      "id": "4030102",
+      "name": "黑洞",
+      "descriptions": [
+        "点击释放黑洞，持续 <qiangdiao>5秒</> ，每 <qiangdiao>1秒</> 对 <qiangdiao>10米</> 半径范围内的敌人造成吸附效果并造成 <qiangdiao>15%</>攻击力伤害 ，冷却时间 <qiangdiao>45秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKHD_1.webp",
+      "phase": 1,
+      "column": 2,
+      "maxLevel": 1,
+      "prerequisites": [],
+      "mutualGroup": null,
+      "isRoot": true,
+      "unlockLevel": 0,
+      "powerful": false
+    },
+    {
+      "id": "4030202",
+      "name": "扭曲殉爆",
+      "descriptions": [
+        "黑洞结束时，对周围造成一次 <qiangdiao>10%</> 攻击力伤害爆炸，基础范围半径为 <qiangdiao>10米</> 。黑洞持续期间吸附过的目标越多，爆炸伤害与范围越大：每吸附 <qiangdiao>1个</> 目标，爆炸伤害提升 <qiangdiao>10%</> （最高 <qiangdiao>100%</> ），爆炸范围提升 <qiangdiao>2%</> （最高 <qiangdiao>20%</> ）。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKHD_04.webp",
+      "phase": 2,
+      "column": 2,
+      "maxLevel": 1,
+      "prerequisites": [],
+      "mutualGroup": null,
+      "isRoot": false,
+      "unlockLevel": 0,
+      "powerful": true
+    },
+    {
+      "id": "4030205",
+      "name": "精准锁定",
+      "descriptions": [
+        "累计命中弱点 <qiangdiao>3 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>13.5秒</>。",
+        "累计命中弱点 <qiangdiao>3 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>11.5秒</>。",
+        "累计命中弱点 <qiangdiao>3 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>9.5秒</>。",
+        "累计命中弱点 <qiangdiao>3 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>7.5秒</>。",
+        "累计命中弱点 <qiangdiao>3 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>5.5秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_01.webp",
+      "phase": 2,
+      "column": 5,
+      "maxLevel": 5,
+      "prerequisites": [],
+      "mutualGroup": "43-44-45-46",
+      "isRoot": false,
+      "unlockLevel": 0,
+      "powerful": false
+    },
+    {
+      "id": "4030206",
+      "name": "群伤聚能",
+      "descriptions": [
+        "<qiangdiao>1 次</>开火造成多次伤害时，掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>13.5秒</>。",
+        "<qiangdiao>1 次</>开火造成多次伤害时，掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>11.5秒</>。",
+        "<qiangdiao>1 次</>开火造成多次伤害时，掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>9.5秒</>。",
+        "<qiangdiao>1 次</>开火造成多次伤害时，掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>7.5秒</>。",
+        "<qiangdiao>1 次</>开火造成多次伤害时，掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>5.5秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_06.webp",
+      "phase": 2,
+      "column": 6,
+      "maxLevel": 5,
+      "prerequisites": [],
+      "mutualGroup": "43-44-45-46",
+      "isRoot": false,
+      "unlockLevel": 0,
+      "powerful": false
+    },
+    {
+      "id": "4030207",
+      "name": "近身倾泻",
+      "descriptions": [
+        "累计命中近距离内敌人（≤<qiangdiao>10 米</>，1次开火最多计算1次）<qiangdiao>5 次</>，掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>13秒</>。",
+        "累计命中近距离内敌人（≤<qiangdiao>10 米</>，1次开火最多计算1次）<qiangdiao>5 次</>，掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>11秒</>。",
+        "累计命中近距离内敌人（≤<qiangdiao>10 米</>，1次开火最多计算1次）<qiangdiao>5 次</>，掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>9秒</>。",
+        "累计命中近距离内敌人（≤<qiangdiao>10 米</>，1次开火最多计算1次）<qiangdiao>5 次</>，掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>7秒</>。",
+        "累计命中近距离内敌人（≤<qiangdiao>10 米</>，1次开火最多计算1次）<qiangdiao>5 次</>，掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>5秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_07.webp",
+      "phase": 2,
+      "column": 7,
+      "maxLevel": 5,
+      "prerequisites": [],
+      "mutualGroup": "43-44-45-46",
+      "isRoot": false,
+      "unlockLevel": 0,
+      "powerful": false
+    },
+    {
+      "id": "4030208",
+      "name": "连射共振",
+      "descriptions": [
+        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>12.5秒</>。",
+        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>10.5秒</>。",
+        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>8.5秒</>。",
+        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>6.5秒</>。",
+        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>4.5秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_08.webp",
+      "phase": 2,
+      "column": 8,
+      "maxLevel": 5,
+      "prerequisites": [],
+      "mutualGroup": "43-44-45-46",
+      "isRoot": false,
+      "unlockLevel": 0,
+      "powerful": false
+    },
+    {
+      "id": "4030301",
+      "name": "引力绞杀",
+      "descriptions": [
+        "黑洞伤害频率提高<qiangdiao>4%</>。",
+        "黑洞伤害频率提高<qiangdiao>7%</>。",
+        "黑洞伤害频率提高<qiangdiao>10%</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKHD_06.webp",
+      "phase": 3,
+      "column": 1,
+      "maxLevel": 3,
+      "prerequisites": [
+        "4030202"
+      ],
+      "mutualGroup": null,
+      "isRoot": false,
+      "unlockLevel": 4,
+      "powerful": false
+    },
+    {
+      "id": "4030303",
+      "name": "扭曲瓦解",
+      "descriptions": [
+        "黑洞命中敌人时，附加3秒<qiangdiao>2%</>易伤效果。",
+        "黑洞命中敌人时，附加3秒<qiangdiao>4%</>易伤效果。",
+        "黑洞命中敌人时，附加3秒<qiangdiao>6%</>易伤效果。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKHD_08.webp",
+      "phase": 3,
+      "column": 3,
+      "maxLevel": 3,
+      "prerequisites": [
+        "4030202"
+      ],
+      "mutualGroup": null,
+      "isRoot": false,
+      "unlockLevel": 4,
+      "powerful": false
+    },
+    {
+      "id": "4030305",
+      "name": "广域虹吸",
+      "descriptions": [
+        "能量球吸取范围<qiangdiao>12米</>（默认<qiangdiao>8米</>）。",
+        "能量球吸取范围<qiangdiao>14米</>（默认<qiangdiao>8米</>）。",
+        "能量球吸取范围<qiangdiao>16米</>（默认<qiangdiao>8米</>）。",
+        "能量球吸取范围<qiangdiao>18米</>（默认<qiangdiao>8米</>）。",
+        "能量球吸取范围<qiangdiao>20米</>（默认<qiangdiao>8米</>）。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_09.webp",
+      "phase": 3,
+      "column": 5,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030205",
+        "4030206",
+        "4030207",
+        "4030208"
+      ],
+      "mutualGroup": "47-48-49-50",
+      "isRoot": false,
+      "unlockLevel": 4,
+      "powerful": false
+    },
+    {
+      "id": "4030306",
+      "name": "精密拾取",
+      "descriptions": [
+        "吸取范围<qiangdiao>6米</>；连续拾取满<qiangdiao>3个</>能量球有<qiangdiao>20%</>概率额外获得<qiangdiao>1层</>光能量（<qiangdiao>5秒</>未拾取则计数归零）。",
+        "吸取范围<qiangdiao>6米</>；连续拾取满<qiangdiao>3个</>能量球有<qiangdiao>25%</>概率额外获得<qiangdiao>1层</>光能量（<qiangdiao>5秒</>未拾取则计数归零）。",
+        "吸取范围<qiangdiao>6米</>；连续拾取满<qiangdiao>3个</>能量球有<qiangdiao>30%</>概率额外获得<qiangdiao>1层</>光能量（<qiangdiao>5秒</>未拾取则计数归零）。",
+        "吸取范围<qiangdiao>6米</>；连续拾取满<qiangdiao>3个</>能量球有<qiangdiao>35%</>概率额外获得<qiangdiao>1层</>光能量（<qiangdiao>5秒</>未拾取则计数归零）。",
+        "吸取范围<qiangdiao>6米</>；连续拾取满<qiangdiao>3个</>能量球有<qiangdiao>40%</>概率额外获得<qiangdiao>1层</>光能量（<qiangdiao>5秒</>未拾取则计数归零）。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_10.webp",
+      "phase": 3,
+      "column": 6,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030205",
+        "4030206",
+        "4030207",
+        "4030208"
+      ],
+      "mutualGroup": "47-48-49-50",
+      "isRoot": false,
+      "unlockLevel": 4,
+      "powerful": false
+    },
+    {
+      "id": "4030307",
+      "name": "击裂聚能",
+      "descriptions": [
+        "<qiangdiao>12%</>概率生成大型能量球（存在30秒）；大型球不可吸取、可击碎，击碎分裂为<qiangdiao>1</>~<qiangdiao>5个</>普通球。",
+        "<qiangdiao>14%</>概率生成大型能量球（存在30秒）；大型球不可吸取、可击碎，击碎分裂为<qiangdiao>1</>~<qiangdiao>5个</>普通球。",
+        "<qiangdiao>16%</>概率生成大型能量球（存在30秒）；大型球不可吸取、可击碎，击碎分裂为<qiangdiao>1</>~<qiangdiao>5个</>普通球。",
+        "<qiangdiao>18%</>概率生成大型能量球（存在30秒）；大型球不可吸取、可击碎，击碎分裂为<qiangdiao>1</>~<qiangdiao>5个</>普通球。",
+        "<qiangdiao>20%</>概率生成大型能量球（存在30秒）；大型球不可吸取、可击碎，击碎分裂为<qiangdiao>1</>~<qiangdiao>5个</>普通球。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_11.webp",
+      "phase": 3,
+      "column": 7,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030205",
+        "4030206",
+        "4030207",
+        "4030208"
+      ],
+      "mutualGroup": "47-48-49-50",
+      "isRoot": false,
+      "unlockLevel": 4,
+      "powerful": false
+    },
+    {
+      "id": "4030308",
+      "name": "拾光续能",
+      "descriptions": [
+        "能量球会在掉落<qiangdiao>12秒</>后消失，拾取能量球时有<qiangdiao>12%</>概率额外获得<qiangdiao>1层</>光能量。",
+        "能量球会在掉落<qiangdiao>12秒</>后消失，拾取能量球时有<qiangdiao>14%</>概率额外获得<qiangdiao>1层</>光能量。",
+        "能量球会在掉落<qiangdiao>12秒</>后消失，拾取能量球时有<qiangdiao>16%</>概率额外获得<qiangdiao>1层</>光能量。",
+        "能量球会在掉落<qiangdiao>12秒</>后消失，拾取能量球时有<qiangdiao>18%</>概率额外获得<qiangdiao>1层</>光能量。",
+        "能量球会在掉落<qiangdiao>12秒</>后消失，拾取能量球时有<qiangdiao>20%</>概率额外获得<qiangdiao>1层</>光能量。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_25.webp",
+      "phase": 3,
+      "column": 8,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030205",
+        "4030206",
+        "4030207",
+        "4030208"
+      ],
+      "mutualGroup": "47-48-49-50",
+      "isRoot": false,
+      "unlockLevel": 4,
+      "powerful": false
+    },
+    {
+      "id": "4030401",
+      "name": "瞬态奇点",
+      "descriptions": [
+        "黑洞持续时间变为<qiangdiao>2秒</>，充能速度加快<qiangdiao>40%</>。黑洞命中精英怪或Boss时，为其附加<qiangdiao>5%</>【易伤】效果，持续<qiangdiao>3秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKHD_02.webp",
+      "phase": 4,
+      "column": 1,
+      "maxLevel": 1,
+      "prerequisites": [
+        "4030301",
+        "4030303"
+      ],
+      "mutualGroup": "1-2",
+      "isRoot": false,
+      "unlockLevel": 12,
+      "powerful": true
+    },
+    {
+      "id": "4030403",
+      "name": "扭曲共振",
+      "descriptions": [
+        "黑洞持续时间变为<qiangdiao>6秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKHD_03.webp",
+      "phase": 4,
+      "column": 3,
+      "maxLevel": 1,
+      "prerequisites": [
+        "4030301",
+        "4030303"
+      ],
+      "mutualGroup": "1-2",
+      "isRoot": false,
+      "unlockLevel": 12,
+      "powerful": true
+    },
+    {
+      "id": "4030405",
+      "name": "光能潮汐",
+      "descriptions": [
+        "每<qiangdiao>19秒</>自动获得<qiangdiao>1层</>光能量。",
+        "每<qiangdiao>17秒</>自动获得<qiangdiao>1层</>光能量。",
+        "每<qiangdiao>15秒</>自动获得<qiangdiao>1层</>光能量。",
+        "每<qiangdiao>13秒</>自动获得<qiangdiao>1层</>光能量。",
+        "每<qiangdiao>11秒</>自动获得<qiangdiao>1层</>光能量。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_26.webp",
+      "phase": 4,
+      "column": 5,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030305",
+        "4030306",
+        "4030307",
+        "4030308"
+      ],
+      "mutualGroup": "51-52-53-54",
+      "isRoot": false,
+      "unlockLevel": 12,
+      "powerful": false
+    },
+    {
+      "id": "4030406",
+      "name": "无伤蓄光",
+      "descriptions": [
+        "每<qiangdiao>15.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
+        "每<qiangdiao>13.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
+        "每<qiangdiao>11.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
+        "每<qiangdiao>9.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
+        "每<qiangdiao>7.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_27.webp",
+      "phase": 4,
+      "column": 6,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030305",
+        "4030306",
+        "4030307",
+        "4030308"
+      ],
+      "mutualGroup": "51-52-53-54",
+      "isRoot": false,
+      "unlockLevel": 12,
+      "powerful": false
+    },
+    {
+      "id": "4030407",
+      "name": "技能萃光",
+      "descriptions": [
+        "每次拾取光能量球时，有<qiangdiao>40%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
+        "每次拾取光能量球时，有<qiangdiao>50%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
+        "每次拾取光能量球时，有<qiangdiao>60%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
+        "每次拾取光能量球时，有<qiangdiao>70%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
+        "每次拾取光能量球时，有<qiangdiao>80%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_28.webp",
+      "phase": 4,
+      "column": 7,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030305",
+        "4030306",
+        "4030307",
+        "4030308"
+      ],
+      "mutualGroup": "51-52-53-54",
+      "isRoot": false,
+      "unlockLevel": 12,
+      "powerful": false
+    },
+    {
+      "id": "4030408",
+      "name": "灵光先兆",
+      "descriptions": [
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>20%</>概率触发光能爆发，并消耗所有光能量。",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>40%</>概率触发光能爆发，并消耗所有光能量。",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>60%</>概率触发光能爆发，并消耗所有光能量。",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>80%</>概率触发光能爆发，并消耗所有光能量。",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>100%</>概率触发光能爆发，并消耗所有光能量。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_29.webp",
+      "phase": 4,
+      "column": 8,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030305",
+        "4030306",
+        "4030307",
+        "4030308"
+      ],
+      "mutualGroup": "51-52-53-54",
+      "isRoot": false,
+      "unlockLevel": 12,
+      "powerful": false
+    },
+    {
+      "id": "4030501",
+      "name": "广域视界",
+      "descriptions": [
+        "黑洞有效范围扩大<qiangdiao>10%</>。",
+        "黑洞有效范围扩大<qiangdiao>15%</>。",
+        "黑洞有效范围扩大<qiangdiao>20%</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKHD_07.webp",
+      "phase": 5,
+      "column": 1,
+      "maxLevel": 3,
+      "prerequisites": [
+        "4030401",
+        "4030403"
+      ],
+      "mutualGroup": null,
+      "isRoot": false,
+      "unlockLevel": 20,
+      "powerful": false
+    },
+    {
+      "id": "4030503",
+      "name": "质量汲取",
+      "descriptions": [
+        "黑洞范围内每有<qiangdiao>1</>名目标死亡时，延长黑洞<qiangdiao>0.3秒</>持续时间，最高延长<qiangdiao>0.9秒</>。",
+        "黑洞范围内每有<qiangdiao>1</>名目标死亡时，延长黑洞<qiangdiao>0.4秒</>持续时间，最高延长<qiangdiao>1.2秒</>。",
+        "黑洞范围内每有<qiangdiao>1</>名目标死亡时，延长黑洞<qiangdiao>0.5秒</>持续时间，最高延长<qiangdiao>1.5秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKHD_09.webp",
+      "phase": 5,
+      "column": 3,
+      "maxLevel": 3,
+      "prerequisites": [
+        "4030401",
+        "4030403"
+      ],
+      "mutualGroup": null,
+      "isRoot": false,
+      "unlockLevel": 20,
+      "powerful": false
+    },
+    {
+      "id": "4030505",
+      "name": "暗能回流",
+      "descriptions": [
+        "释放武器技能，额外获得<qiangdiao>1 层</>暗能量，冷却时间<qiangdiao>100秒</>。",
+        "释放武器技能，额外获得<qiangdiao>1 层</>暗能量，冷却时间<qiangdiao>90秒</>。",
+        "释放武器技能，额外获得<qiangdiao>1 层</>暗能量，冷却时间<qiangdiao>80秒</>。",
+        "释放武器技能，额外获得<qiangdiao>1 层</>暗能量，冷却时间<qiangdiao>70秒</>。",
+        "释放武器技能，额外获得<qiangdiao>1 层</>暗能量，冷却时间<qiangdiao>60秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_16.webp",
+      "phase": 5,
+      "column": 5,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030405",
+        "4030406",
+        "4030407",
+        "4030408"
+      ],
+      "mutualGroup": "55-56-57-58",
+      "isRoot": false,
+      "unlockLevel": 20,
+      "powerful": false
+    },
+    {
+      "id": "4030506",
+      "name": "急速充能",
+      "descriptions": [
+        "释放武器技能，消耗<qiangdiao>1层</>暗能量，返还<qiangdiao>25%</>武器技能充能，冷却时间<qiangdiao>50秒</>。",
+        "释放武器技能，消耗<qiangdiao>1层</>暗能量，返还<qiangdiao>25%</>武器技能充能，冷却时间<qiangdiao>45秒</>。",
+        "释放武器技能，消耗<qiangdiao>1层</>暗能量，返还<qiangdiao>25%</>武器技能充能，冷却时间<qiangdiao>40秒</>。",
+        "释放武器技能，消耗<qiangdiao>1层</>暗能量，返还<qiangdiao>25%</>武器技能充能，冷却时间<qiangdiao>35秒</>。",
+        "释放武器技能，消耗<qiangdiao>1层</>暗能量，返还<qiangdiao>25%</>武器技能充能，冷却时间<qiangdiao>30秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_17.webp",
+      "phase": 5,
+      "column": 6,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030405",
+        "4030406",
+        "4030407",
+        "4030408"
+      ],
+      "mutualGroup": "55-56-57-58",
+      "isRoot": false,
+      "unlockLevel": 20,
+      "powerful": false
+    },
+    {
+      "id": "4030507",
+      "name": "蓄能重击",
+      "descriptions": [
+        "暗能爆发期间，武器技能伤害增加<qiangdiao>2%</>。",
+        "暗能爆发期间，武器技能伤害增加<qiangdiao>4%</>。",
+        "暗能爆发期间，武器技能伤害增加<qiangdiao>6%</>。",
+        "暗能爆发期间，武器技能伤害增加<qiangdiao>8%</>。",
+        "暗能爆发期间，武器技能伤害增加<qiangdiao>10%</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_18.webp",
+      "phase": 5,
+      "column": 7,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030405",
+        "4030406",
+        "4030407",
+        "4030408"
+      ],
+      "mutualGroup": "55-56-57-58",
+      "isRoot": false,
+      "unlockLevel": 20,
+      "powerful": false
+    },
+    {
+      "id": "4030508",
+      "name": "迅捷充能",
+      "descriptions": [
+        "暗能爆发期间，武器技能充能速度增加<qiangdiao>3%</>。",
+        "暗能爆发期间，武器技能充能速度增加<qiangdiao>6%</>。",
+        "暗能爆发期间，武器技能充能速度增加<qiangdiao>9%</>。",
+        "暗能爆发期间，武器技能充能速度增加<qiangdiao>12%</>。",
+        "暗能爆发期间，武器技能充能速度增加<qiangdiao>15%</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_19.webp",
+      "phase": 5,
+      "column": 8,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030405",
+        "4030406",
+        "4030407",
+        "4030408"
+      ],
+      "mutualGroup": "55-56-57-58",
+      "isRoot": false,
+      "unlockLevel": 20,
+      "powerful": false
+    },
+    {
+      "id": "4030602",
+      "name": "连锁坍缩",
+      "descriptions": [
+        "被黑洞吸附的敌人会被添加【扭曲】状态，处于【扭曲】状态下的目标受到爆炸伤害时，其他处于【扭曲】状态的目标也会受到该伤害的<qiangdiao>10%</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKHD_05.webp",
+      "phase": 6,
+      "column": 2,
+      "maxLevel": 1,
+      "prerequisites": [
+        "4030501",
+        "4030503"
+      ],
+      "mutualGroup": null,
+      "isRoot": false,
+      "unlockLevel": 28,
+      "powerful": true
+    },
+    {
+      "id": "4030605",
+      "name": "溢能回充",
+      "descriptions": [
+        "暗能量满<qiangdiao>5层</>时不自动触发暗能爆发，改为释放赛季技能时触发；每层溢出的暗能量为赛季技能充能<qiangdiao>5%</>。",
+        "暗能量满<qiangdiao>5层</>时不自动触发暗能爆发，改为释放赛季技能时触发；每层溢出的暗能量为赛季技能充能<qiangdiao>10%</>。",
+        "暗能量满<qiangdiao>5层</>时不自动触发暗能爆发，改为释放赛季技能时触发；每层溢出的暗能量为赛季技能充能<qiangdiao>15%</>。",
+        "暗能量满<qiangdiao>5层</>时不自动触发暗能爆发，改为释放赛季技能时触发；每层溢出的暗能量为赛季技能充能<qiangdiao>20%</>。",
+        "暗能量满<qiangdiao>5层</>时不自动触发暗能爆发，改为释放赛季技能时触发；每层溢出的暗能量为赛季技能充能<qiangdiao>25%</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_20.webp",
+      "phase": 6,
+      "column": 5,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030505",
+        "4030506",
+        "4030507",
+        "4030508"
+      ],
+      "mutualGroup": "59-60-61-62",
+      "isRoot": false,
+      "unlockLevel": 28,
+      "powerful": false
+    },
+    {
+      "id": "4030606",
+      "name": "赛季续航",
+      "descriptions": [
+        "赛季技能的持续时间增加<qiangdiao>10%</>。",
+        "赛季技能的持续时间增加<qiangdiao>15%</>。",
+        "赛季技能的持续时间增加<qiangdiao>20%</>。",
+        "赛季技能的持续时间增加<qiangdiao>25%</>。",
+        "赛季技能的持续时间增加<qiangdiao>30%</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_21.webp",
+      "phase": 6,
+      "column": 6,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030505",
+        "4030506",
+        "4030507",
+        "4030508"
+      ],
+      "mutualGroup": "59-60-61-62",
+      "isRoot": false,
+      "unlockLevel": 28,
+      "powerful": false
+    },
+    {
+      "id": "4030607",
+      "name": "节律共振",
+      "descriptions": [
+        "赛季技能充能速度增加<qiangdiao>10%</>。",
+        "赛季技能充能速度增加<qiangdiao>15%</>。",
+        "赛季技能充能速度增加<qiangdiao>20%</>。",
+        "赛季技能充能速度增加<qiangdiao>25%</>。",
+        "赛季技能充能速度增加<qiangdiao>30%</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_22.webp",
+      "phase": 6,
+      "column": 7,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030505",
+        "4030506",
+        "4030507",
+        "4030508"
+      ],
+      "mutualGroup": "59-60-61-62",
+      "isRoot": false,
+      "unlockLevel": 28,
+      "powerful": false
+    },
+    {
+      "id": "4030608",
+      "name": "满溢转化",
+      "descriptions": [
+        "暗能量满<qiangdiao>5层</>时不自动触发暗能爆发，改为释放赛季技能时触发；赛季技能充能满时，若暗能量未满，则自动消耗<qiangdiao>5%</>充能，获得<qiangdiao>1层</>暗能量，冷却时间<qiangdiao>35秒</>。",
+        "暗能量满<qiangdiao>5层</>时不自动触发暗能爆发，改为释放赛季技能时触发；赛季技能充能满时，若暗能量未满，则自动消耗<qiangdiao>5%</>充能，获得<qiangdiao>1层</>暗能量，冷却时间<qiangdiao>30秒</>。",
+        "暗能量满<qiangdiao>5层</>时不自动触发暗能爆发，改为释放赛季技能时触发；赛季技能充能满时，若暗能量未满，则自动消耗<qiangdiao>5%</>充能，获得<qiangdiao>1层</>暗能量，冷却时间<qiangdiao>25秒</>。",
+        "暗能量满<qiangdiao>5层</>时不自动触发暗能爆发，改为释放赛季技能时触发；赛季技能充能满时，若暗能量未满，则自动消耗<qiangdiao>5%</>充能，获得<qiangdiao>1层</>暗能量，冷却时间<qiangdiao>20秒</>。",
+        "暗能量满<qiangdiao>5层</>时不自动触发暗能爆发，改为释放赛季技能时触发；赛季技能充能满时，若暗能量未满，则自动消耗<qiangdiao>5%</>充能，获得<qiangdiao>1层</>暗能量，冷却时间<qiangdiao>15秒</>。"
+      ],
+      "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_32.webp",
+      "phase": 6,
+      "column": 8,
+      "maxLevel": 5,
+      "prerequisites": [
+        "4030505",
+        "4030506",
+        "4030507",
+        "4030508"
+      ],
+      "mutualGroup": "59-60-61-62",
+      "isRoot": false,
+      "unlockLevel": 28,
+      "powerful": false
+    }
+  ]
+}
