@@ -528,7 +528,7 @@ export function resolveMultiplierFactorHref(
   const params = new URLSearchParams({ factor: factorId });
   if (options.view) params.set("view", options.view);
   if (options.modifierTypeId) params.set("modifier", options.modifierTypeId);
-  return `/guides?${params.toString()}#multiplier`;
+  return `/multiplier?${params.toString()}`;
 }
 
 function sourceIndexKey(source: MultiplierSource): string {

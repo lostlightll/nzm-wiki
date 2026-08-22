@@ -78,7 +78,6 @@ function updateQuery(values: {
     if (values.modifier) url.searchParams.set("modifier", values.modifier);
     else url.searchParams.delete("modifier");
   }
-  url.hash = "multiplier";
   window.history.pushState(null, "", url);
   window.dispatchEvent(new Event("nzm-wiki:multiplier-query-change"));
 }

@@ -159,7 +159,7 @@ test("source and factor links preserve stable anchors and query state", () => {
       view: "providers",
       modifierTypeId: "all-damage",
     }),
-    "/guides?factor=dilution&view=providers&modifier=all-damage#multiplier",
+    "/multiplier?factor=dilution&view=providers&modifier=all-damage",
   );
 });
 

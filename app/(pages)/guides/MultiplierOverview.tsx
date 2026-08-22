@@ -141,7 +141,6 @@ function rememberSelectedFactor(factorId: MultiplierFactorId) {
   const url = new URL(window.location.href);
   url.searchParams.set("factor", factorId);
   url.searchParams.delete("modifier");
-  url.hash = "multiplier";
   window.history.pushState(null, "", url);
 
   window.dispatchEvent(new Event(SELECTED_FACTOR_CHANGE_EVENT));
@@ -796,7 +795,6 @@ export function MultiplierOverview({
       url.searchParams.delete("modifier");
       url.searchParams.set("factor", selectedFactorId);
     }
-    url.hash = "multiplier";
     window.history.pushState(null, "", url);
     setActivePart(part);
     window.dispatchEvent(new Event("nzm-wiki:multiplier-query-change"));

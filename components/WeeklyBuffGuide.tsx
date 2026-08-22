@@ -117,7 +117,7 @@ function formatRotationRange(windowInfo: WeeklyBuffRotationWindow) {
 
 function getMultiplierHref(buff: WeeklyBuff) {
   if (buff.indexKind === "extra") {
-    return "/guides?part=damage-sources#multiplier";
+    return "/multiplier?part=damage-sources";
   }
   if (!buff.factorId) return undefined;
   return resolveMultiplierFactorHref(buff.factorId, { view: "providers" });

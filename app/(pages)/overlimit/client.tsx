@@ -495,7 +495,7 @@ export default function OverlimitPageClient({
         })}
       </nav>
 
-      <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-x-clip">
+      <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-x-clip xl:w-[100cqw]">
         <div className="mx-auto grid max-w-7xl px-4">
           <div
           aria-hidden={activeModule !== "cards"}

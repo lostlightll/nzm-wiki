@@ -49,9 +49,9 @@ const NAV_ITEMS = [
     title: "超限图鉴",
   },
   {
-    href: "/guides",
+    href: "/multiplier",
     icon: <BookOpenText className="h-8 w-8 sm:h-10 sm:w-10" />,
-    title: "攻略机制",
+    title: "游戏乘区",
   },
 ];
 
@@ -73,7 +73,7 @@ function NavCard({ href, icon, title }: NavCardProps) {
 
 export default function Home() {
   return (
-    <main className="home-page h-dvh overflow-hidden bg-background px-4">
+    <main className="home-page h-[calc(100dvh-3.5rem)] overflow-hidden bg-background px-4">
       <div className="home-shell mx-auto flex h-full w-full max-w-md flex-col items-center justify-center">
         {/* Logo 和标题 */}
         <div className="home-header flex shrink-0 flex-col items-center text-center">

@@ -43,7 +43,6 @@ function updateMode(mode: NumericalTable) {
   const url = new URL(window.location.href);
   if (mode === "td") url.searchParams.set("mode", "td");
   else url.searchParams.delete("mode");
-  url.hash = "multiplier";
   window.history.pushState(null, "", url);
   window.dispatchEvent(new Event("nzm-wiki:multiplier-query-change"));
 }

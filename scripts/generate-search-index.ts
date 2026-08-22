@@ -332,8 +332,8 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
   ];
   items.push({
     title: "伤害来源分类",
-    slug: "guides?part=damage-sources#multiplier",
-    path: "/guides?part=damage-sources#multiplier",
+    slug: "multiplier?part=damage-sources",
+    path: "/multiplier?part=damage-sources",
     category: "攻略机制",
     keywords: damageSourceKeywords,
     pinyin: buildPinyin(["伤害来源分类", ...damageSourceKeywords]),

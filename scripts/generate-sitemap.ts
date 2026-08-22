@@ -106,6 +106,8 @@ function generateSitemap() {
     { url: "/bosses" },
     { url: "/enemies/td" },
     { url: "/guides" },
+    { url: "/multiplier" },
+    { url: "/season-talents" },
     { url: "/guides/season-talents/s3/iron-fist" },
     { url: "/guides/season-talents/s3/zero" },
     { url: "/guides/season-talents/s3/grappling-hook" },

@@ -5,6 +5,7 @@ import { SeasonTalentCatalog } from "@/components/SeasonTalentCatalog";
 import { MultiplierOverview } from "./MultiplierOverview";
 import type { WeaponBaseDamageEntry } from "@/lib/weapon-base-damage";
 import type { MultiplierTargetIndexEntry } from "./MultiplierBidirectionalIndex";
+import { SITE_NAVIGATION_CHANGE_EVENT } from "@/lib/site-navigation";
 
 type GuideModule = "multiplier" | "season-talents" | "archive";
 
@@ -13,7 +14,7 @@ const GUIDE_MODULE_STORAGE_KEY = "nzm-wiki:guides:active-module";
 const MODULES: readonly { id: GuideModule; label: string }[] = [
   { id: "multiplier", label: "游戏乘区" },
   { id: "season-talents", label: "赛季天赋" },
-  { id: "archive", label: "文章归档" },
+  { id: "archive", label: "攻略文章" },
 ];
 
 function isGuideModule(value: string | null): value is GuideModule {
@@ -42,6 +43,10 @@ function rememberModule(module: GuideModule) {
   }
 }
 
+function notifySiteNavigation() {
+  window.dispatchEvent(new Event(SITE_NAVIGATION_CHANGE_EVENT));
+}
+
 export default function GuidesPageClient({
   archivePanel,
   baseDamageEntries,
@@ -55,9 +60,14 @@ export default function GuidesPageClient({
 
   useEffect(() => {
     const syncModule = () => {
-      const nextModule = getModuleFromHash() ?? getRememberedModule();
+      const moduleFromHash = getModuleFromHash();
+      const nextModule = moduleFromHash ?? getRememberedModule();
+      if (!moduleFromHash) {
+        window.history.replaceState(window.history.state, "", `#${nextModule}`);
+      }
       setActiveModule(nextModule);
       rememberModule(nextModule);
+      notifySiteNavigation();
     };
 
     syncModule();
@@ -70,9 +80,10 @@ export default function GuidesPageClient({
   }, []);
 
   const selectModule = useCallback((module: GuideModule) => {
-    window.history.pushState(null, "", `#${module}`);
+    window.history.pushState(window.history.state, "", `#${module}`);
     setActiveModule(module);
     rememberModule(module);
+    notifySiteNavigation();
   }, []);
 
   return (
@@ -122,7 +133,7 @@ export default function GuidesPageClient({
       >
         <SeasonTalentCatalog />
       </section>
-      <section id="archive-panel" aria-label="文章归档" hidden={activeModule !== "archive"}>
+      <section id="archive-panel" aria-label="攻略文章" hidden={activeModule !== "archive"}>
         {archivePanel}
       </section>
     </div>

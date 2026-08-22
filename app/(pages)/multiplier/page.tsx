@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import { PostArchiveList, type PostArchiveItem } from "@/components/PostArchiveList";
-import { getMDXList } from "@/lib/mdx";
-import { sortPostArchiveItems } from "@/lib/post-archive";
+import { MultiplierOverview } from "@/app/(pages)/guides/MultiplierOverview";
+import type { MultiplierTargetIndexEntry } from "@/app/(pages)/guides/MultiplierBidirectionalIndex";
 import { getApplicableModifierTypes } from "@/lib/multiplier-data";
 import { buildWeaponBaseDamageIndex } from "@/lib/weapon-base-damage";
 import { getAllResolvedWeapons } from "@/lib/weapons";
-import GuidesPageClient from "./client";
-import type { MultiplierTargetIndexEntry } from "./MultiplierBidirectionalIndex";
 
 export const metadata: Metadata = {
-  title: "攻略机制",
-  description: "逆战未来的游戏乘区、赛季天赋与攻略文章归档。",
-  alternates: { canonical: "/guides" },
+  title: "游戏乘区",
+  description: "逆战未来伤害来源、增伤乘区及适用关系资料。",
+  alternates: { canonical: "/multiplier" },
 };
 
-export default async function GuidesPage() {
-  const posts = sortPostArchiveItems(
-    getMDXList("posts") as PostArchiveItem[],
-  );
+export default async function MultiplierPage() {
   const [lcWeapons, tdWeapons] = await Promise.all([
     getAllResolvedWeapons("lc"),
     getAllResolvedWeapons("td"),
@@ -50,10 +44,12 @@ export default async function GuidesPage() {
   );
 
   return (
-    <GuidesPageClient
-      baseDamageEntries={baseDamageEntries}
-      multiplierTargets={multiplierTargets}
-      archivePanel={<PostArchiveList posts={posts} />}
-    />
+    <div className="[--guide-accent:#e6b656] [--guide-accent-soft:rgba(172,124,39,0.2)] [--guide-muted:#b5b5bb] [--guide-text:#e4e4e7] [--guide-warning-border:rgba(190,139,48,0.45)]">
+      <h1 className="sr-only">游戏乘区</h1>
+      <MultiplierOverview
+        baseDamageEntries={baseDamageEntries}
+        targets={multiplierTargets}
+      />
+    </div>
   );
 }

@@ -72,7 +72,7 @@ export function TableOfContents({ enabled = true }: TableOfContentsProps) {
 
   return (
     <nav
-      className="hidden xl:block fixed left-8 top-[38.2%] z-50"
+      className="fixed left-[calc(16rem+2rem)] top-[38.2%] z-50 hidden xl:block"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
