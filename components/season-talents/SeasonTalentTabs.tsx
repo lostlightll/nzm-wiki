@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, type KeyboardEvent, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useState,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 import { SeasonTalentCatalog } from "@/components/SeasonTalentCatalog";
 
 const BASE_SEASONS = ["s0", "s1", "s2", "s3"] as const;
@@ -8,12 +14,80 @@ const ALL_SEASONS = [...BASE_SEASONS, "s4"] as const;
 
 type SeasonPage = (typeof ALL_SEASONS)[number];
 
+const SEASON_PAGE_STORAGE_KEY = "nzm-wiki:season-talents:active-season";
+
+function isSeasonPage(value: string | null): value is SeasonPage {
+  return ALL_SEASONS.some((season) => season === value);
+}
+
+function getSeasonFromHash(
+  seasonPages: readonly SeasonPage[],
+): SeasonPage | null {
+  const hash = window.location.hash.slice(1).toLowerCase();
+  return isSeasonPage(hash) && seasonPages.includes(hash) ? hash : null;
+}
+
+function getRememberedSeason(
+  seasonPages: readonly SeasonPage[],
+  fallback: SeasonPage,
+): SeasonPage {
+  try {
+    const remembered = window.localStorage.getItem(SEASON_PAGE_STORAGE_KEY);
+    return isSeasonPage(remembered) && seasonPages.includes(remembered)
+      ? remembered
+      : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function rememberSeason(page: SeasonPage) {
+  try {
+    window.localStorage.setItem(SEASON_PAGE_STORAGE_KEY, page);
+  } catch {
+    // localStorage 不可用时，URL hash 仍会保留当前选择。
+  }
+}
+
 export function SeasonTalentTabs({ s4Panel }: { s4Panel: ReactNode }) {
   const showS4 = s4Panel !== null;
   const seasonPages: readonly SeasonPage[] = showS4 ? ALL_SEASONS : BASE_SEASONS;
-  const [activePage, setActivePage] = useState<SeasonPage>(
-    showS4 ? "s4" : "s3",
-  );
+  const defaultPage: SeasonPage = "s3";
+  const [activePage, setActivePage] = useState<SeasonPage>(defaultPage);
+
+  useEffect(() => {
+    const syncSeason = () => {
+      const pageFromHash = getSeasonFromHash(seasonPages);
+      const nextPage =
+        pageFromHash ?? getRememberedSeason(seasonPages, defaultPage);
+
+      if (!pageFromHash) {
+        window.history.replaceState(
+          window.history.state,
+          "",
+          `#${nextPage}`,
+        );
+      }
+      setActivePage(nextPage);
+      rememberSeason(nextPage);
+    };
+
+    syncSeason();
+    window.addEventListener("hashchange", syncSeason);
+    window.addEventListener("popstate", syncSeason);
+    return () => {
+      window.removeEventListener("hashchange", syncSeason);
+      window.removeEventListener("popstate", syncSeason);
+    };
+  }, [defaultPage, seasonPages]);
+
+  const selectPage = useCallback((page: SeasonPage) => {
+    if (window.location.hash !== `#${page}`) {
+      window.history.pushState(window.history.state, "", `#${page}`);
+    }
+    setActivePage(page);
+    rememberSeason(page);
+  }, []);
 
   const handleTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     let nextPage: SeasonPage | null = null;
@@ -33,7 +107,7 @@ export function SeasonTalentTabs({ s4Panel }: { s4Panel: ReactNode }) {
     if (!nextPage) return;
 
     event.preventDefault();
-    setActivePage(nextPage);
+    selectPage(nextPage);
     document.getElementById(`season-talents-${nextPage}-tab`)?.focus();
   };
 
@@ -53,7 +127,7 @@ export function SeasonTalentTabs({ s4Panel }: { s4Panel: ReactNode }) {
             aria-selected={activePage === page}
             aria-controls={`season-talents-${page}-panel`}
             tabIndex={activePage === page ? 0 : -1}
-            onClick={() => setActivePage(page)}
+            onClick={() => selectPage(page)}
             onKeyDown={handleTabKeyDown}
             onPointerUp={(event) => event.currentTarget.blur()}
             className={`min-h-12 flex-1 cursor-pointer touch-manipulation rounded-xl border px-3 py-2 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
