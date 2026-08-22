@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { getAssetPath } from "@/lib/path";
 
 export default function PagesLayout({
   children,
@@ -11,9 +9,7 @@ export default function PagesLayout({
 }) {
   const pathname = usePathname();
   const isSeasonTalentDetail = pathname.startsWith("/guides/season-talents/");
-  const seasonTalentVersion = pathname.split("/")[3];
-  const isFullSeasonTalentDetail =
-    isSeasonTalentDetail && seasonTalentVersion !== "s3";
+  const isFullSeasonTalentDetail = isSeasonTalentDetail;
   const isSeasonTalentsLanding = pathname === "/season-talents";
   const isGuidesLanding =
     pathname === "/guides" ||
@@ -31,19 +27,6 @@ export default function PagesLayout({
             : "bg-background"
       }`}
     >
-      {isSeasonTalentDetail && !isFullSeasonTalentDetail && (
-        <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0">
-          <Image
-            src={getAssetPath("/webp/images/season-talents/s3/T_FX_TalentS3_08.webp")}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-[#071018]/20" />
-        </div>
-      )}
       <main
         className={`relative z-10 mx-auto w-full ${
           isSeasonTalentsLanding ? "" : "xl:-left-8 2xl:-left-14"
