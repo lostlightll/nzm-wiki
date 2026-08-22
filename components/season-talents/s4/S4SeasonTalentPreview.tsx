@@ -52,6 +52,10 @@ const S4_TALENTS: readonly S4Talent[] = [
   },
 ];
 
+const S4_AVAILABLE_TALENTS = S4_TALENTS.filter(
+  (talent) => talent.id !== "machine-dance",
+);
+
 function S4TalentMarker({ talent }: { talent: S4Talent }) {
   const content = (
     <>
@@ -103,46 +107,41 @@ function S4TalentMarker({ talent }: { talent: S4Talent }) {
 }
 
 function MobileTalentButton({ talent }: { talent: S4Talent }) {
-  const content = (
-    <>
-      <span className="relative h-16 w-16 shrink-0">
+  return (
+    <Link
+      href={`/guides/season-talents/s4/${talent.id}`}
+      className="group relative flex min-h-20 cursor-pointer touch-manipulation items-center pl-9 text-left text-white focus-visible:outline-none focus-visible:[&_strong]:underline focus-visible:[&_strong]:underline-offset-4"
+    >
+      <span className="relative z-10 -mr-10 h-20 w-20 shrink-0 drop-shadow-[0_7px_12px_rgba(0,0,0,0.58)]">
         <Image
           src={getAssetPath(talent.icon)}
           alt=""
           fill
-          sizes="64px"
-          className="object-contain"
+          sizes="80px"
+          className="scale-105 object-contain"
         />
       </span>
-      <span className="min-w-0">
-        <strong className="block text-sm font-semibold leading-5">
-          {talent.name}
-        </strong>
-        <span className="mt-0.5 block text-xs leading-4 text-slate-300">
-          {talent.subtitle}
-        </span>
-      </span>
-    </>
-  );
-  const className =
-    "relative flex min-h-24 touch-manipulation items-center gap-2 overflow-hidden rounded-lg border border-l-2 border-white/15 bg-[#07141d]/92 px-2 py-2 text-left text-white transition-colors duration-200 motion-reduce:transition-none";
-  if (talent.id === "machine-dance") {
-    return (
-      <div
-        className={`${className} opacity-75`}
+      <span
+        className="relative flex min-h-16 min-w-0 flex-1 items-center rounded-md border border-white/20 border-l-2 bg-[#07141d] py-2 pl-12 pr-12 shadow-[0_7px_18px_rgba(0,0,0,0.3)] transition-colors duration-200 group-hover:bg-[#0b202b] motion-reduce:transition-none"
         style={{ borderLeftColor: talent.accent }}
       >
-        {content}
-      </div>
-    );
-  }
-  return (
-    <Link
-      href={`/guides/season-talents/s4/${talent.id}`}
-      className={`${className} cursor-pointer hover:bg-[#0c202c] focus-visible:outline-none focus-visible:[&_strong]:underline focus-visible:[&_strong]:underline-offset-4`}
-      style={{ borderLeftColor: talent.accent }}
-    >
-      {content}
+        <span className="min-w-0">
+          <strong className="block text-base font-semibold leading-5">
+            {talent.name}
+          </strong>
+          <span className="mt-1 block text-xs leading-4 text-slate-300">
+            {talent.subtitle}
+          </span>
+        </span>
+        <span
+          aria-hidden="true"
+          className="absolute right-4 top-1/2 flex h-6 w-6 -translate-y-1/2 rotate-45 items-center justify-center border border-slate-400/60 text-slate-300"
+        >
+          <span className="-rotate-45 text-[0.65rem] font-medium leading-none">
+            i
+          </span>
+        </span>
+      </span>
     </Link>
   );
 }
@@ -189,28 +188,19 @@ export function S4SeasonTalentPreview() {
         ))}
       </div>
 
-      <div className="lg:hidden">
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#03121b]">
-          <Image
-            src={getAssetPath("/webp/images/season-talents/s4/background.webp")}
-            alt="太空站、行星与黑洞组成的 S4 赛季天赋场景"
-            fill
-            sizes="calc(100vw - 2rem)"
-            className="object-contain"
-          />
+      <div className="px-4 pb-8 sm:px-6 lg:hidden">
+        <div className="flex min-h-28 items-center justify-center pb-3">
           <Image
             src={getAssetPath("/webp/images/season-talents/s4/logo.webp")}
-            alt="S4 新星计划"
+            alt="S4 朔望计划"
             width={644}
             height={264}
-            className="absolute left-4 top-4 h-auto w-[42%] drop-shadow-[0_4px_10px_rgba(0,0,0,0.55)]"
+            priority
+            className="h-auto w-[min(72vw,18rem)] drop-shadow-[0_5px_12px_rgba(0,0,0,0.4)]"
           />
-          <span className="absolute right-3 top-3 border-l border-cyan-300/80 bg-black/45 px-2 py-1 font-mono text-[0.58rem] text-cyan-50">
-            S4 // TEST SERVER PREVIEW
-          </span>
         </div>
-        <div className="mt-2 grid grid-cols-1 gap-2 min-[430px]:grid-cols-2">
-          {S4_TALENTS.map((talent) => (
+        <div className="mx-auto grid w-full max-w-xl grid-cols-1 gap-3">
+          {S4_AVAILABLE_TALENTS.map((talent) => (
             <MobileTalentButton key={talent.id} talent={talent} />
           ))}
         </div>

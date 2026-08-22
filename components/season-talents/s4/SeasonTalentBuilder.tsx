@@ -1003,27 +1003,48 @@ export function S4SeasonTalentBuilder({
             </span>
           </button>
 
-          <div className="flex min-w-0 gap-2">
-            <EnergySlot
-              energy="light"
-              passive={lightPassive}
-              onOpen={() => openSelector("light")}
-              buttonRef={lightButtonRef}
-            />
-            <EnergySlot
-              energy="dark"
-              passive={darkPassive}
-              onOpen={() => openSelector("dark")}
-              buttonRef={darkButtonRef}
-            />
+          <div className="min-w-0">
+            <h2 className="mb-2 text-sm font-semibold text-cyan-50/80 lg:sr-only">
+              被动天赋
+            </h2>
+            <div className="flex min-w-0 gap-2">
+              <EnergySlot
+                energy="light"
+                passive={lightPassive}
+                onOpen={() => openSelector("light")}
+                buttonRef={lightButtonRef}
+              />
+              <EnergySlot
+                energy="dark"
+                passive={darkPassive}
+                onOpen={() => openSelector("dark")}
+                buttonRef={darkButtonRef}
+              />
+            </div>
           </div>
         </div>
       </header>
 
       <div className="grid gap-4 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_clamp(18rem,26vw,25rem)] lg:items-stretch">
+          <div className="lg:col-start-2 lg:row-start-1 lg:min-h-0">
+            <NodeDetail
+              node={selectedNode}
+              level={selectedLevel}
+              unlocked={isTalentNodeUnlocked(selectedNode, tree.nodes, levels)}
+              spentPoints={spentPoints}
+              pointLimit={tree.pointLimit}
+              onChangeLevel={(level) =>
+                setLevels((current) =>
+                  setTalentNodeLevel(tree, current, selectedNode.id, level),
+                )
+              }
+              onReset={resetBuild}
+            />
+          </div>
+
           <section
             aria-label={`${tree.name}天赋节点`}
-            className="relative overflow-hidden rounded-lg border border-cyan-100/20 bg-[#05141e]/25 px-3 py-5 shadow-[0_20px_60px_rgba(0,0,0,0.32)] backdrop-blur-md sm:px-6 lg:h-full lg:min-h-0 lg:px-5 lg:py-3 xl:px-8"
+            className="relative overflow-hidden rounded-lg border border-cyan-100/20 bg-[#05141e]/25 px-3 py-5 shadow-[0_20px_60px_rgba(0,0,0,0.32)] backdrop-blur-md sm:px-6 lg:col-start-1 lg:row-start-1 lg:h-full lg:min-h-0 lg:px-5 lg:py-3 xl:px-8"
           >
             <div className="relative mx-auto hidden h-full min-h-0 max-w-[1120px] grid-cols-7 grid-rows-5 gap-x-1 gap-y-1 lg:grid">
               <div
@@ -1143,18 +1164,6 @@ export function S4SeasonTalentBuilder({
             </div>
 
           </section>
-
-          <NodeDetail
-            node={selectedNode}
-            level={selectedLevel}
-            unlocked={isTalentNodeUnlocked(selectedNode, tree.nodes, levels)}
-            spentPoints={spentPoints}
-            pointLimit={tree.pointLimit}
-            onChangeLevel={(level) =>
-              setLevels((current) => setTalentNodeLevel(tree, current, selectedNode.id, level))
-            }
-            onReset={resetBuild}
-          />
       </div>
 
       {selectorEnergy && (
