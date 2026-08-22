@@ -328,7 +328,11 @@ function TalentNodeButton({
           ))}
         </span>
       )}
-      <span className="node-name sr-only">{node.name}</span>
+      <span
+        className="node-name absolute left-1/2 top-full mt-1 w-24 -translate-x-1/2 text-center text-[0.72rem] font-semibold leading-4 text-slate-100 drop-shadow-[0_1px_2px_#000]"
+      >
+        {node.name}
+      </span>
     </button>
   );
 }
@@ -359,9 +363,11 @@ function TalentConnectors({
       const sourceColumn = sourcePair?.column ?? getDesktopColumn(source.column);
       const targetColumn = targetPair?.column ?? getDesktopColumn(target.column);
       const sourceX = ((sourceColumn - 0.5) / 7) * 100;
-      const sourceY = (((sourcePair?.phase ?? source.phase) - 1.5) / 5) * 100;
+      const sourceCenterY = (((sourcePair?.phase ?? source.phase) - 1.5) / 5) * 100;
+      const sourceY = sourceCenterY + 8.25;
       const targetX = ((targetColumn - 0.5) / 7) * 100;
-      const targetY = (((targetPair?.phase ?? target.phase) - 1.5) / 5) * 100;
+      const targetCenterY = (((targetPair?.phase ?? target.phase) - 1.5) / 5) * 100;
+      const targetY = targetCenterY - 5.25;
       const midpoint = (sourceY + targetY) / 2;
       const sourceActive = sourcePair
         ? sourcePair.members.some((node) => (levels[node.id] ?? 0) >= node.maxLevel)

@@ -449,7 +449,11 @@ function TalentNodeButton({
           }`}
         />
       </span>
-      <span className="node-name sr-only">{node.name}</span>
+      <span
+        className="node-name absolute left-1/2 top-full mt-1 w-24 -translate-x-1/2 text-center text-[0.72rem] font-semibold leading-4 text-slate-100 drop-shadow-[0_1px_2px_#000]"
+      >
+        {node.name}
+      </span>
       <span aria-hidden="true" className="absolute inset-x-1 bottom-1 flex h-1 gap-0.5">
         {Array.from({ length: node.maxLevel }, (_, index) => (
           <span
@@ -517,8 +521,9 @@ function createConnectorGroups(
 }
 
 function getConnectorPath({ sources, targets }: ConnectorGroup) {
+  const sourceOffset = 8.25;
   const sourceBottom = Math.max(
-    ...sources.map((node) => node.y + 5.25),
+    ...sources.map((node) => node.y + sourceOffset),
   );
   const targetTop = Math.min(
     ...targets.map((node) => node.y - 5.25),
@@ -531,7 +536,7 @@ function getConnectorPath({ sources, targets }: ConnectorGroup) {
   return [
     `M${left} ${railY} H${right}`,
     ...sources.map(
-      (node) => `M${node.x} ${node.y + 5.25} V${railY}`,
+      (node) => `M${node.x} ${node.y + sourceOffset} V${railY}`,
     ),
     ...targets.map(
       (node) => `M${node.x} ${railY} V${node.y - 5.25}`,
