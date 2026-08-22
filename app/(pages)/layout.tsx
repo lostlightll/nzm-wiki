@@ -16,12 +16,6 @@ export default function PagesLayout({
     pathname === "/multiplier" ||
     pathname === "/season-talents" ||
     pathname === "/posts";
-  const isCenteredCatalogLanding =
-    pathname === "/weapons" ||
-    pathname === "/perks" ||
-    pathname === "/bosses" ||
-    pathname === "/tower-defense" ||
-    pathname === "/overlimit";
 
   return (
     <div
@@ -43,9 +37,7 @@ export default function PagesLayout({
         </div>
       )}
       <main
-        className={`relative z-10 w-full ${
-          isCenteredCatalogLanding ? "xl:mx-auto" : "xl:ml-16"
-        } ${
+        className={`relative z-10 mx-auto w-full ${
           isSeasonTalentDetail
             ? "max-w-[1600px] px-4 py-4 sm:px-6 xl:w-[calc(100%-4rem)] xl:px-12"
             : isGuidesLanding
