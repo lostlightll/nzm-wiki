@@ -10,6 +10,7 @@ import {
 test("collects structured S3 build guide keywords", () => {
   const keywords = getBuildGuideSearchKeywords({
     summary: "稳定输出示例",
+    source: "小小米河",
     weapons: {
       primary: "精绝兽神",
       secondary: "暗夜之殇",
@@ -30,6 +31,7 @@ test("collects structured S3 build guide keywords", () => {
 
   for (const keyword of [
     "精绝兽神",
+    "小小米河",
     "暗夜之殇",
     "冰点双峰",
     "万钧过载",

@@ -91,6 +91,7 @@ export function getBuildGuideSearchKeywords(data: Record<string, unknown>): stri
   return [
     "S3",
     typeof data.summary === "string" ? data.summary : "",
+    typeof data.source === "string" ? data.source : "",
     typeof weapons?.primary === "string" ? weapons.primary : "",
     typeof weapons?.secondary === "string" ? weapons.secondary : "",
     typeof weapons?.melee === "string" ? weapons.melee : "",

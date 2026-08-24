@@ -10,6 +10,7 @@ import {
 const VALID_SOURCE: BuildGuideSource = {
   title: "测试搭配",
   summary: "测试搭配摘要",
+  source: "测试作者",
   season: "s3",
   draft: true,
   tags: ["测试"],
@@ -37,6 +38,7 @@ const VALID_SOURCE: BuildGuideSource = {
 
 test("resolves a complete S3 build guide", async () => {
   const guide = await resolveBuildGuideSource(VALID_SOURCE, "valid");
+  assert.equal(guide.source, "测试作者");
   assert.equal(guide.weapons.primary.useType, "主武器");
   assert.equal(guide.weapons.secondary.useType, "副武器");
   assert.equal(guide.weapons.melee.useType, "近战武器");

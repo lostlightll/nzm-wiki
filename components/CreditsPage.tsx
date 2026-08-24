@@ -198,7 +198,10 @@ export function CreditsPage({
       <div className="min-h-[400px]">
         {page === 1 && (
           <div className="animate-in fade-in duration-200">
-            <h2 className="text-sm font-medium text-zinc-500 mb-4 tracking-wide">
+            <h2
+              id="main-credits"
+              className="scroll-mt-6 text-sm font-medium text-zinc-500 mb-4 tracking-wide"
+            >
               核心致谢
             </h2>
             <div className="space-y-3">

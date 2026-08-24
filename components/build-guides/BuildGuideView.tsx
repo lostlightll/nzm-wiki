@@ -156,11 +156,13 @@ export function BuildGuideList({ guides }: { guides: BuildGuideSummary[] }) {
     <ul className="mx-auto grid w-full max-w-6xl gap-4 md:grid-cols-2">
       {guides.map((guide) => (
         <li key={guide.slug}>
-          <Link
-            href={`/builds/${encodeURIComponent(guide.slug)}`}
-            className="group flex min-h-full cursor-pointer touch-manipulation flex-col rounded-lg border border-zinc-700 bg-zinc-900/55 p-4 transition-colors duration-200 hover:border-[#d1ac69]/70 hover:bg-zinc-900 focus-visible:outline-none focus-visible:[&_h2]:underline focus-visible:[&_h2]:decoration-2 focus-visible:[&_h2]:underline-offset-4 motion-reduce:transition-none sm:p-5"
-          >
-            <div className="flex items-start justify-between gap-4">
+          <article className="group relative flex min-h-full flex-col rounded-lg border border-zinc-700 bg-zinc-900/55 p-4 transition-colors duration-200 hover:border-[#d1ac69]/70 hover:bg-zinc-900 motion-reduce:transition-none sm:p-5">
+            <Link
+              href={`/builds/${encodeURIComponent(guide.slug)}`}
+              aria-labelledby={`build-guide-title-${guide.slug}`}
+              className="peer absolute inset-0 z-0 cursor-pointer touch-manipulation rounded-lg focus-visible:outline-none"
+            />
+            <div className="pointer-events-none relative z-10 flex items-start justify-between gap-4 peer-focus-visible:[&_h2]:underline peer-focus-visible:[&_h2]:decoration-2 peer-focus-visible:[&_h2]:underline-offset-4">
               <div className="min-w-0">
                 <div className="mb-2 flex flex-wrap gap-1.5">
                   <span className="rounded border border-[#d1ac69]/35 bg-[#d1ac69]/10 px-2 py-0.5 text-xs font-semibold text-[#e2c38b]">
@@ -175,10 +177,12 @@ export function BuildGuideList({ guides }: { guides: BuildGuideSummary[] }) {
                     </span>
                   ))}
                 </div>
-                <h2 className="text-lg font-semibold text-zinc-100 sm:text-xl">
+                <h2
+                  id={`build-guide-title-${guide.slug}`}
+                  className="text-lg font-semibold text-zinc-100 sm:text-xl"
+                >
                   {guide.title}
                 </h2>
-                <p className="mt-2 text-sm leading-6 text-zinc-400">{guide.summary}</p>
               </div>
               <ArrowRight
                 aria-hidden="true"
@@ -186,7 +190,19 @@ export function BuildGuideList({ guides }: { guides: BuildGuideSummary[] }) {
               />
             </div>
 
-            <div className="mt-4">
+            <div className="pointer-events-none relative z-10 mt-2 flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+              <p className="min-w-0 text-sm leading-6 text-zinc-400">
+                {guide.summary}
+              </p>
+              <Link
+                href="/credits#main-credits"
+                className="pointer-events-auto relative z-20 inline-flex shrink-0 cursor-pointer touch-manipulation whitespace-nowrap py-1 text-xs text-zinc-500 hover:text-zinc-300 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
+              >
+                搭配来源：<span className="text-zinc-300">{guide.source}</span>
+              </Link>
+            </div>
+
+            <div className="pointer-events-none relative z-10 mt-2">
               <BuildWeaponPreview
                 label="主武器"
                 weapon={guide.weapons.primary}
@@ -199,7 +215,7 @@ export function BuildGuideList({ guides }: { guides: BuildGuideSummary[] }) {
               />
             </div>
 
-            <div className="grid gap-3 border-t border-zinc-800 pt-3 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+            <div className="pointer-events-none relative z-10 grid gap-3 border-t border-zinc-800 pt-3 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
               <div className="flex min-w-0 items-center gap-2">
                 <WeaponIcon
                   weapon={guide.weapons.melee}
@@ -231,7 +247,7 @@ export function BuildGuideList({ guides }: { guides: BuildGuideSummary[] }) {
                 </code>
               </div>
             </div>
-          </Link>
+          </article>
         </li>
       ))}
     </ul>

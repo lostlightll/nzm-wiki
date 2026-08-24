@@ -32,6 +32,7 @@ export const buildGuideSourceSchema = z
   .object({
     title: z.string().trim().min(1),
     summary: z.string().trim().min(1),
+    source: z.string().trim().min(1),
     season: z.literal("s3"),
     draft: z.boolean().optional().default(false),
     tags: z.array(z.string().trim().min(1)).optional().default([]),
@@ -147,6 +148,7 @@ export interface ResolvedBuildGuide {
   slug: string;
   title: string;
   summary: string;
+  source: string;
   season: "s3";
   draft: boolean;
   tags: string[];
@@ -362,6 +364,7 @@ async function resolveParsedBuildGuide(
     slug,
     title: source.title,
     summary: source.summary,
+    source: source.source,
     season: source.season,
     draft: source.draft,
     tags: source.tags,
