@@ -16,6 +16,7 @@ const PATH_TO_DATA_MAP: Record<string, string> = {
   "/enemies/lc": "data/enemies/lc/boss",
   "/enemies/td": "data/enemies/td",
   "/cards": "data/cards",
+  "/builds": "data/builds",
   "/posts": "data/posts",
 };
 
