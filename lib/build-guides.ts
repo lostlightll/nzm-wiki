@@ -21,10 +21,10 @@ export type S3BuildTalentId = "zero" | "grappling-hook" | "iron-fist";
 
 const perkSetSchema = z
   .object({
-    "1": z.string().trim().min(1),
-    "2": z.string().trim().min(1),
-    "3": z.string().trim().min(1),
-    "4": z.string().trim().min(1),
+    "1": z.string().trim(),
+    "2": z.string().trim(),
+    "3": z.string().trim(),
+    "4": z.string().trim(),
   })
   .strict();
 
@@ -113,6 +113,11 @@ export interface ResolvedBuildGuidePerk {
   href: string;
 }
 
+export type ResolvedBuildGuidePerkSet = Record<
+  BuildGuidePerkSlot,
+  ResolvedBuildGuidePerk | null
+>;
+
 export interface ResolvedBuildGuideTalentNode {
   id: string;
   canonicalId: string;
@@ -159,8 +164,8 @@ export interface ResolvedBuildGuide {
     melee: ResolvedBuildGuideWeapon;
   };
   perks: {
-    primary: Record<BuildGuidePerkSlot, ResolvedBuildGuidePerk>;
-    secondary: Record<BuildGuidePerkSlot, ResolvedBuildGuidePerk>;
+    primary: ResolvedBuildGuidePerkSet;
+    secondary: ResolvedBuildGuidePerkSet;
   };
   talent: ResolvedBuildGuideTalent;
 }
@@ -241,10 +246,11 @@ function resolvePerkSet(
   source: BuildGuideSource["perks"]["primary"],
   weapon: ResolvedBuildGuideWeapon,
   guideSlug: string,
-): Record<BuildGuidePerkSlot, ResolvedBuildGuidePerk> {
+): ResolvedBuildGuidePerkSet {
   return Object.fromEntries(
     BUILD_GUIDE_PERK_SLOTS.map((slot) => {
       const perkSlug = source[String(slot) as keyof typeof source];
+      if (!perkSlug) return [slot, null];
       const perk = context.perks.get(perkSlug);
       if (!perk) throw buildGuideError(guideSlug, `插件不存在: ${perkSlug}`);
       if (perk.slot !== slot) {
@@ -268,7 +274,7 @@ function resolvePerkSet(
         },
       ];
     }),
-  ) as Record<BuildGuidePerkSlot, ResolvedBuildGuidePerk>;
+  ) as ResolvedBuildGuidePerkSet;
 }
 
 export function resolveS3BuildTalent(

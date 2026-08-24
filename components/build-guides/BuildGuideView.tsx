@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Minus } from "lucide-react";
 import type { ReactNode } from "react";
 import { getAssetPath } from "@/lib/path";
 import {
@@ -33,9 +33,19 @@ function PerkIcon({
   perk,
   className = "h-12 w-12",
 }: {
-  perk: ResolvedBuildGuidePerk;
+  perk: ResolvedBuildGuidePerk | null;
   className?: string;
 }) {
+  if (!perk) {
+    return (
+      <span
+        aria-hidden="true"
+        className={`flex ${className} shrink-0 items-center justify-center text-zinc-700`}
+      >
+        <Minus className="h-3.5 w-3.5" />
+      </span>
+    );
+  }
   return perk.icon ? (
     <Image
       src={getAssetPath(`/webp/icons/perks/${perk.icon}.webp`)}
@@ -99,17 +109,18 @@ function BuildPerkPreview({
     <div aria-label="插件搭配" className="grid grid-cols-4 gap-2">
       {BUILD_GUIDE_PERK_SLOTS.map((slot) => {
         const perk = perks[slot];
+        const perkName = perk?.name ?? "无插件";
         return (
           <span
             key={slot}
             role="img"
-            aria-label={`${slot} 号槽：${perk.name}`}
-            title={`${slot} 号槽 · ${perk.name}`}
+            aria-label={`${slot} 号槽：${perkName}`}
+            title={`${slot} 号槽 · ${perkName}`}
             className="flex min-w-0 flex-col items-center justify-start"
           >
             <PerkIcon perk={perk} className="h-16 w-16" />
             <span className="mt-1 block w-full truncate text-center text-xs leading-4 text-zinc-400">
-              {perk.name}
+              {perkName}
             </span>
           </span>
         );
@@ -280,6 +291,24 @@ function PerkGrid({
     <ul className="mt-4 grid grid-cols-2 gap-2">
       {BUILD_GUIDE_PERK_SLOTS.map((slot) => {
         const perk = perks[slot];
+        if (!perk) {
+          return (
+            <li key={slot}>
+              <div
+                aria-label={`${slot} 号槽：无插件`}
+                className="flex min-h-16 items-center gap-2 px-2.5 py-2 text-zinc-600 sm:gap-3 sm:px-3"
+              >
+                <PerkIcon perk={null} />
+                <span className="min-w-0">
+                  <span className="block text-[11px]">{slot} 号槽</span>
+                  <strong className="mt-0.5 block text-sm font-medium leading-5">
+                    无插件
+                  </strong>
+                </span>
+              </div>
+            </li>
+          );
+        }
         return (
           <li key={slot}>
             <Link

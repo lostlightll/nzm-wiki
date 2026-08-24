@@ -42,8 +42,27 @@ test("resolves a complete S3 build guide", async () => {
   assert.equal(guide.weapons.primary.useType, "主武器");
   assert.equal(guide.weapons.secondary.useType, "副武器");
   assert.equal(guide.weapons.melee.useType, "近战武器");
-  assert.equal(guide.perks.primary[4].name, "伤害回血");
+  assert.equal(guide.perks.primary[4]?.name, "伤害回血");
   assert.equal(guide.talent.totalPoints, 40);
+});
+
+test("allows empty perk slots while preserving the four-slot layout", async () => {
+  const guide = await resolveBuildGuideSource(
+    {
+      ...VALID_SOURCE,
+      perks: {
+        primary: { "1": "", "2": "", "3": "", "4": "" },
+        secondary: { ...VALID_SOURCE.perks.secondary, "2": "" },
+      },
+    },
+    "empty-perks",
+  );
+
+  assert.deepEqual(Object.keys(guide.perks.primary), ["1", "2", "3", "4"]);
+  assert.equal(guide.perks.primary[1], null);
+  assert.equal(guide.perks.primary[4], null);
+  assert.equal(guide.perks.secondary[2], null);
+  assert.equal(guide.perks.secondary[1]?.name, "使唤回弹");
 });
 
 test("maps 43211 to the five S3 general talent nodes", () => {

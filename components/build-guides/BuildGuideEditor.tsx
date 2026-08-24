@@ -67,15 +67,12 @@ function getCompatiblePerks(
   );
 }
 
-function makeDefaultPerkSet(
-  catalog: BuildGuideEditorCatalog,
-  weapon: BuildGuideEditorWeaponOption,
-): BuildGuideSource["perks"]["primary"] {
+function makeDefaultPerkSet(): BuildGuideSource["perks"]["primary"] {
   return {
-    "1": getCompatiblePerks(catalog, weapon, 1)[0]?.slug ?? "",
-    "2": getCompatiblePerks(catalog, weapon, 2)[0]?.slug ?? "",
-    "3": getCompatiblePerks(catalog, weapon, 3)[0]?.slug ?? "",
-    "4": getCompatiblePerks(catalog, weapon, 4)[0]?.slug ?? "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
   };
 }
 
@@ -102,8 +99,8 @@ function makeBlankDocument(catalog: BuildGuideEditorCatalog): BuildGuideEditorDo
         melee: melee.slug,
       },
       perks: {
-        primary: makeDefaultPerkSet(catalog, primary),
-        secondary: makeDefaultPerkSet(catalog, secondary),
+        primary: makeDefaultPerkSet(),
+        secondary: makeDefaultPerkSet(),
       },
       talent: {
         tree: catalog.talentTrees[0]?.id ?? "zero",
@@ -311,11 +308,14 @@ function PerkSelect({
       <ImageSelect
         label={`${slot} 号槽插件`}
         value={value}
-        options={options.map((perk) => ({
-          value: perk.slug,
-          label: `${slot} · ${perk.name}`,
-          image: perk.icon,
-        }))}
+        options={[
+          { value: "", label: `${slot} · 无插件` },
+          ...options.map((perk) => ({
+            value: perk.slug,
+            label: `${slot} · ${perk.name}`,
+            image: perk.icon,
+          })),
+        ]}
         onChange={onChange}
       />
     </div>
@@ -457,8 +457,11 @@ export function BuildGuideEditor({
       for (const slot of BUILD_GUIDE_PERK_SLOTS) {
         const key = String(slot) as "1" | "2" | "3" | "4";
         const compatible = getCompatiblePerks(catalog, weapon, slot);
-        if (!compatible.some((perk) => perk.slug === nextPerks[key])) {
-          nextPerks[key] = compatible[0]?.slug ?? "";
+        if (
+          nextPerks[key] &&
+          !compatible.some((perk) => perk.slug === nextPerks[key])
+        ) {
+          nextPerks[key] = "";
         }
       }
       return {
