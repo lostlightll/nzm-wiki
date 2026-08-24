@@ -86,9 +86,9 @@ export default async function PerkDetailPage({
       ? RARITY_NUM_MAP[metadata.rarity]
       : metadata.rarity;
 
-  const descriptionNode = metadata.description ? (
+  const descriptionNode = perk?.description ? (
     <MDXRemote
-      source={normalizeDescriptionMarkup(metadata.description)}
+      source={normalizeDescriptionMarkup(perk.description)}
       components={mdxComponents}
     />
   ) : undefined;

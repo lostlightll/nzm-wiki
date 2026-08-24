@@ -21,11 +21,13 @@
 | Weapon Resolver 或消费者 | [`architecture/weapon-resolver.md`](architecture/weapon-resolver.md)、[`standards/weapon-numerical-v2.md`](standards/weapon-numerical-v2.md) | [`architecture/weapon-data-lock.md`](architecture/weapon-data-lock.md) | active |
 | 主动技能基础充能 | [`architecture/weapon-skill-charge.md`](architecture/weapon-skill-charge.md) | [`architecture/weapon-source-reader.md`](architecture/weapon-source-reader.md) | active |
 | 插件数据导入或维护 | [`standards/perk-data.md`](standards/perk-data.md) | [`.claude/commands/import-perks.md`](../.claude/commands/import-perks.md) | active |
+| Num Modifier Lock、Resolver 或消费者 | [`architecture/num-modifier-v2.md`](architecture/num-modifier-v2.md) | [`standards/perk-data.md`](standards/perk-data.md)、[`architecture/multiplier-index.md`](architecture/multiplier-index.md)、[`workflows/status-effect-import.md`](workflows/status-effect-import.md) | active |
+| Num Modifier 属性语义与通用来源索引扩展 | [`plans/num-modifier-v2-semantic-index.md`](plans/num-modifier-v2-semantic-index.md) | [`architecture/num-modifier-v2.md`](architecture/num-modifier-v2.md)、[`architecture/multiplier-index.md`](architecture/multiplier-index.md) | proposed |
 | Boss 血量导入 | [`workflows/boss-health-import.md`](workflows/boss-health-import.md) | [`.claude/commands/import-boss-health.md`](../.claude/commands/import-boss-health.md) | active |
 | Boss 机制视频与解包解析 | [`workflows/boss-mechanics-analysis.md`](workflows/boss-mechanics-analysis.md) | [`workflows/boss-health-import.md`](workflows/boss-health-import.md) | active |
 | change-log TODO | [`standards/todo-workflow.md`](standards/todo-workflow.md) | 无 | active |
 | 武器 V2 收尾 | [`plans/weapon-v2-cleanup.md`](plans/weapon-v2-cleanup.md) | 上述武器规范与架构文档 | proposed |
-| 乘区双向索引 | [`architecture/multiplier-index.md`](architecture/multiplier-index.md) | 无 | active |
+| 乘区双向索引 | [`architecture/multiplier-index.md`](architecture/multiplier-index.md)、[`architecture/num-modifier-v2.md`](architecture/num-modifier-v2.md) | 无 | active |
 
 ## 文档归属
 

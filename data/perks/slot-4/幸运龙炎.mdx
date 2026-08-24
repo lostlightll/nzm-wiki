@@ -1,26 +1,37 @@
 ---
 title: "幸运龙炎"
 id: "20703040429"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:120300118_1_0"
+    field: base
+  fire-rate:
+    row: "lc:120300117_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "射击伤害"
     stages:
       - condition: "抽到红扭蛋后20秒内"
-        value: "+50%"
+        value:
+          ref: weapon-damage
+          format: signed-percent
   - kind: stat
     statId: fire-rate
     label: "射速"
     stages:
       - condition: "抽到红扭蛋后20秒内"
-        value: "+50%"
+        value:
+          ref: fire-rate
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1312032005"
 weaponType: []
 weaponNames: ["飓风之龙"]
 season: "pending"
-description: "大幅提升龙炎弹射程并减少其散布，向扭蛋池内加入**4个**红扭蛋，抽到红扭蛋后飓风之龙射击伤害提高**50%**，并获得极速狂热效果，持续**20秒**。"
+description: "大幅提升龙炎弹射程并减少其散布，向扭蛋池内加入**4个**红扭蛋，抽到红扭蛋后飓风之龙射击伤害提高**{{num:weapon-damage|percent}}**，并获得极速狂热效果，持续**20秒**。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

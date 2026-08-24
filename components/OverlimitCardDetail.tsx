@@ -8,6 +8,7 @@ import {
 } from "@/components/OverlimitCardMeta";
 import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import { OverlimitEffectValues } from "@/components/OverlimitEffectValues";
+import { renderInlineDescription } from "@/components/InlineDescription";
 import { getAssetPath } from "@/lib/path";
 import type { OverlimitCard } from "@/types";
 
@@ -53,7 +54,9 @@ export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
         <h2 className="mb-2 text-sm font-medium text-zinc-400">
           卡片效果
         </h2>
-        <p className="text-base leading-7 text-zinc-200">{card.description}</p>
+        <p className="whitespace-pre-line text-base leading-7 text-zinc-200">
+          {renderInlineDescription(card.description)}
+        </p>
       </section>
 
       {card.effectValues?.length ? (

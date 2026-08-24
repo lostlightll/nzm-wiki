@@ -1,18 +1,15 @@
 import fs from "node:fs";
 import path from "node:path";
-import rawProviders from "@/data/guides/multiplier-providers.json";
 import { getAllOverlimitCards } from "@/lib/overlimit-cards";
-import { MODIFIER_TYPES } from "@/lib/multiplier-data";
+import { MODIFIER_TYPES, MULTIPLIER_PROVIDERS } from "@/lib/multiplier-data";
+import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
+import type { ResolvedNumModifierRow } from "@/lib/num-modifier";
 import type { PerkEffectValue, PerkStatId } from "@/types";
+import { loadMultiplierProviderRegistry } from "./num-modifier/provider-registry";
 
 type Row = Record<string, unknown>;
-type NumericalRow = {
-  rowKey: string;
-  modifierId: string;
-  row: Row;
-};
 type EffectEvidence = {
-  gpModifierIds?: readonly string[];
+  numModifierRows?: readonly `lc:${string}`[];
 };
 
 const root = process.cwd();
@@ -33,26 +30,24 @@ const descriptions = loadRows(
   "DT_GPMGESkillDesConfig_BD.json",
 );
 const mgeConfigs = loadRows("DataTables", "MGE", "MGEConfig_Season.json");
-const numerical = loadRows(
-  "Attributes",
-  "AutoGenerate",
-  "numerical_modifier_config.json",
-);
+const sourceRegistry = loadMultiplierProviderRegistry();
 
 const providers = new Map(
-  rawProviders.providers
+  sourceRegistry.providers
     .filter((provider) => provider.source.type === "perk")
     .map((provider) => [provider.source.itemId, provider] as const),
 );
+const runtimeProviders = new Map(
+  MULTIPLIER_PROVIDERS.filter((provider) => provider.source.type === "perk").map(
+    (provider) => [provider.source.itemId, provider] as const,
+  ),
+);
 const effectEvidenceByItem = new Map<string, EffectEvidence>();
 for (const entry of [
-  ...rawProviders.providers,
-  ...rawProviders.exclusions,
-] as readonly {
-  source: { type: string; itemId?: string };
-  evidence?: EffectEvidence;
-}[]) {
-  if (entry.source.type === "perk" && entry.source.itemId && entry.evidence) {
+  ...sourceRegistry.providers,
+  ...sourceRegistry.exclusions,
+]) {
+  if (entry.source.type === "perk" && entry.evidence) {
     effectEvidenceByItem.set(entry.source.itemId, entry.evidence);
   }
 }
@@ -61,14 +56,6 @@ const modifierTypeByAttribute = new Map(
     type.attributeFields.map((attribute) => [attribute, type.id] as const),
   ),
 );
-const numericalById = new Map<string, NumericalRow[]>();
-for (const [rowKey, row] of Object.entries(numerical)) {
-  const modifierId = String(row.ID ?? "");
-  const rows = numericalById.get(modifierId) ?? [];
-  rows.push({ rowKey, modifierId, row });
-  numericalById.set(modifierId, rows);
-}
-
 const statIdByAttribute = new Map<string, PerkStatId>([
   ["GPAttributeSetCritical.CriticalRatio", "critical-rate"],
   ["GPAttributeSetFireMode.RPMAdjustRatio", "fire-rate"],
@@ -95,11 +82,11 @@ function parseModifierIds(value: unknown): string[] {
   return String(value ?? "").match(/\d+/g) ?? [];
 }
 
-function effectIdentityForRow(row: Row): string | undefined {
-  const attribute = String(row.AttributeName ?? "");
+function effectIdentityForRow(row: ResolvedNumModifierRow): string | undefined {
+  const attribute = row.attributeName;
   if (
     attribute === "GPAttributeSetBearDamageRatio.DamageBearRatio" &&
-    (Number(row.BaseValue ?? 0) > 0 || Number(row.CoefValue ?? 0) > 0)
+    (row.baseValue > 0 || row.coefficient > 0)
   ) {
     return "stat:damage-reduction";
   }
@@ -115,9 +102,9 @@ function effectIdentity(effect: PerkEffectValue): string {
     : `stat:${effect.statId}`;
 }
 
-function nonZeroPercentages(row: Row): number[] {
-  if (row.GPModifierOp !== "B1" && row.GPModifierOp !== "B2") return [];
-  return [Number(row.BaseValue ?? 0), Number(row.CoefValue ?? 0)]
+function nonZeroPercentages(row: ResolvedNumModifierRow): number[] {
+  if (row.operation !== "B1" && row.operation !== "B2") return [];
+  return [row.baseValue, row.coefficient]
     .filter((value) => Number.isFinite(value) && value !== 0)
     .map((value) => value * 100);
 }
@@ -126,10 +113,6 @@ function stagePercentages(effect: PerkEffectValue): number[] {
   return effect.stages
     .map((stage) => Number(stage.value.replace(/[+%]/g, "")))
     .filter(Number.isFinite);
-}
-
-function sameNumbers(left: unknown, right: unknown): boolean {
-  return Math.abs(Number(left ?? 0) - Number(right ?? 0)) < 1e-9;
 }
 
 const errors: string[] = [];
@@ -151,24 +134,33 @@ for (const card of getAllOverlimitCards()) {
   const descriptionModifierIds = [...description.matchAll(/\{GPModifier:(\d+):/g)]
     .map((match) => match[1]);
   const provider = providers.get(card.id);
+  const runtimeProvider = runtimeProviders.get(card.id);
   const evidence = effectEvidenceByItem.get(card.id);
+  const evidenceRows = (evidence?.numModifierRows ?? []).map((key) =>
+    NUM_MODIFIER_RESOLVER.getRow(
+      key,
+      `data/guides/multiplier-providers.json#perk:${card.id}`,
+    ),
+  );
   const modifierIds = [...new Set([
-    ...(numericalById.has(passiveSkillId) ? [passiveSkillId] : []),
+    ...(NUM_MODIFIER_RESOLVER.getRowsById("lc", Number(passiveSkillId)).length > 0
+      ? [passiveSkillId]
+      : []),
     ...configModifierIds,
     ...descriptionModifierIds,
-    ...(evidence?.gpModifierIds ?? []),
+    ...evidenceRows.map((row) => String(row.id)),
   ])];
   const directRows = modifierIds.flatMap((modifierId) =>
-    numericalById.get(modifierId) ?? [],
+    NUM_MODIFIER_RESOLVER.getRowsById("lc", Number(modifierId)),
   );
   const effectsByIdentity = new Map(
     (card.effectValues ?? []).map((effect) => [effectIdentity(effect), effect] as const),
   );
 
-  const expectedRowsByIdentity = new Map<string, NumericalRow[]>();
+  const expectedRowsByIdentity = new Map<string, ResolvedNumModifierRow[]>();
   for (const numericalRow of directRows) {
-    const identity = effectIdentityForRow(numericalRow.row);
-    if (!identity || nonZeroPercentages(numericalRow.row).length === 0) continue;
+    const identity = effectIdentityForRow(numericalRow);
+    if (!identity || nonZeroPercentages(numericalRow).length === 0) continue;
     const rows = expectedRowsByIdentity.get(identity) ?? [];
     rows.push(numericalRow);
     expectedRowsByIdentity.set(identity, rows);
@@ -182,10 +174,10 @@ for (const card of getAllOverlimitCards()) {
     }
     const actualValues = stagePercentages(effect);
     for (const numericalRow of rows) {
-      for (const expectedValue of nonZeroPercentages(numericalRow.row)) {
+      for (const expectedValue of nonZeroPercentages(numericalRow)) {
         if (!actualValues.some((value) => Math.abs(value - expectedValue) < 1e-9)) {
           errors.push(
-            `${card.id} ${card.name} 的 ${identity} 未采用 ${numericalRow.rowKey} 结构化值 ${expectedValue}%`,
+            `${card.id} ${card.name} 的 ${identity} 未采用 ${numericalRow.key} 结构化值 ${expectedValue}%`,
           );
         }
       }
@@ -194,7 +186,7 @@ for (const card of getAllOverlimitCards()) {
   }
 
   const expectedDescriptionValues = [...expectedRowsByIdentity.values()]
-    .flatMap((rows) => rows.flatMap((entry) => nonZeroPercentages(entry.row)))
+    .flatMap((rows) => rows.flatMap(nonZeroPercentages))
     .map(Math.abs);
   const describedValues = [...card.description.matchAll(/(-?\d+(?:\.\d+)?)%/g)]
     .map((match) => Math.abs(Number(match[1])))
@@ -216,44 +208,33 @@ for (const card of getAllOverlimitCards()) {
   }
 
   if (!provider) continue;
-  for (const evidenceRow of provider.evidence.numericalRows) {
-    const actual = numerical[evidenceRow.rowKey];
-    if (!actual || String(actual.ID ?? "") !== evidenceRow.modifierId) {
-      errors.push(`${card.id} ${card.name} 的证据行失联：${evidenceRow.rowKey}`);
-      continue;
-    }
-    if (
-      String(actual.AttributeName ?? "") !== evidenceRow.attributeName ||
-      String(actual.GPModifierOp ?? "") !== evidenceRow.operation ||
-      !sameNumbers(actual.BaseValue, evidenceRow.baseValue) ||
-      !sameNumbers(actual.CoefValue, evidenceRow.coefficient)
-    ) {
-      errors.push(`${card.id} ${card.name} 的证据行内容过期：${evidenceRow.rowKey}`);
-    }
+  if (!runtimeProvider) {
+    errors.push(`${card.id} ${card.name} 缺少运行时 provider 投影`);
+    continue;
   }
 
   if (configModifierIds.length === 0) continue;
   const expectedDamageIds = [...new Set(configModifierIds.filter((modifierId) =>
-    (numericalById.get(modifierId) ?? []).some((entry) =>
-      effectIdentityForRow(entry.row)?.startsWith("damage:"),
+    NUM_MODIFIER_RESOLVER.getRowsById("lc", Number(modifierId)).some((entry) =>
+      effectIdentityForRow(entry)?.startsWith("damage:"),
     ),
   ))].sort();
   if (expectedDamageIds.length === 0) continue;
   const evidenceDamageIds = [...new Set(
-    provider.evidence.numericalRows
-      .filter((row) => row.modifierTypeId)
-      .map((row) => row.modifierId),
+    evidenceRows
+      .filter((row) => effectIdentityForRow(row)?.startsWith("damage:"))
+      .map((row) => String(row.id)),
   )].sort();
   if (JSON.stringify(expectedDamageIds) !== JSON.stringify(evidenceDamageIds)) {
     errors.push(`${card.id} ${card.name} 的 provider 未精确绑定 CharacterModifierList`);
   }
   const expectedTypes = [...new Set(configModifierIds.flatMap((modifierId) =>
-    (numericalById.get(modifierId) ?? []).flatMap((entry) => {
-      const identity = effectIdentityForRow(entry.row);
+    NUM_MODIFIER_RESOLVER.getRowsById("lc", Number(modifierId)).flatMap((entry) => {
+      const identity = effectIdentityForRow(entry);
       return identity?.startsWith("damage:") ? [identity.slice(7)] : [];
     }),
   ))].sort();
-  const actualTypes = [...new Set(provider.modifierTypeIds)].sort();
+  const actualTypes = [...new Set(runtimeProvider.modifierTypeIds)].sort();
   if (JSON.stringify(expectedTypes) !== JSON.stringify(actualTypes)) {
     errors.push(`${card.id} ${card.name} 的 provider 通道与 Numerical 不一致`);
   }

@@ -1,7 +1,7 @@
 # 增伤类型双向索引
 
 > 状态：active  
-> Schema：`data/guides/multiplier.json` V12，`data/guides/multiplier-providers.json` V1
+> Schema：`data/guides/multiplier.json` V12，`data/guides/multiplier-providers.json` V2，`data/guides/multiplier-providers-runtime.json` V1
 
 ## 统一链路
 
@@ -29,20 +29,21 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - `damageChannelMatrix.channels`：增伤类型、属性字段和伤害类型适用规则；运行时导出为 `MODIFIER_TYPES`。
 - 原有公式、规则、矩阵和案例说明继续作为乘区页面的编辑内容。
 
-`data/guides/multiplier-providers.json` 是来源关系的唯一注册表：
+`data/guides/multiplier-providers.json` 是来源关系的唯一服务端注册表：
 
-- `providers`：来源身份、增伤类型和结构化证据。
+- `providers`：来源身份和结构化证据；直接 Num 来源不复制增伤类型。
 - `exclusions`：非增伤候选及明确排除理由。
 - 旧乘区案例只用于说明，不会被隐式转换为来源关系。
-- 直接证据按 `ItemID → PassiveSkill_ID → MGE GPModifier → Numerical AttributeName → modifier type → factor` 保存。
+- 直接证据只保存精确 `numModifierRows`，按 `ItemID → PassiveSkill_ID → MGE GPModifier → Num Modifier Resolver → AttributeName → modifier type → factor` 派生。
 - 没有直接 GPModifier 的效果必须使用 `reviewed-override` 并保留描述、数值行或机制依据。
 - 竞速卡片禁止使用 `reviewed-override`；`AttributeName` 不在现有 modifier type 的 `attributeFields` 中时直接不建立关系。
+- `data/guides/multiplier-providers-runtime.json` 是提交的轻量投影。客户端 `lib/multiplier-data.ts` 只读取该投影，不导入完整 Num Modifier Lock。
 
 超限卡片的具体增伤值不写入来源注册表，而由同 ItemID 插件 MDX 的 `effect_values` 维护。两类数据职责如下：
 
 - `multiplier-providers.json` 决定“属于哪种增伤、进入哪个乘区”，保存证据链。
-- `effect_values` 决定“向玩家显示什么条件和数值”。条件语义可参考审定文案；凡能直连 Numerical 的数值必须以 `BaseValue`、`CoefValue`、`GPModifierOp` 和等级为准，描述和人工文案覆盖不能覆盖结构化值。
-- `lib/overlimit-cards.ts` 用稳定 ItemID 将 MDX 数值合并到猎场卡片，保留 `overlimit-cards.json` 的简述。
+- `effect_values` 决定“向玩家显示什么条件和数值”。条件语义可参考审定文案；凡能直连 Numerical 的值必须引用 Num Modifier V2 表达式，描述和人工文案覆盖不能覆盖结构化值。
+- `lib/overlimit-cards.ts` 用稳定 ItemID 将 MDX 的已解析描述与数值合并到猎场卡片；`overlimit-cards.json` 只保留导入证据和回退简述。
 - 校验要求每个超限增伤来源与 `modifierTypeId` 精确一一匹配；未知类型、空阶段、重复类型、孤立字段和当前未启用的 `stat` 都会报错。
 
 武器目标关系不写回 MDX。`lib/multiplier-data.ts` 直接消费 Weapon Resolver 已有的 `settlements`、`element`、`enableCritical` 和 `enableWeakness`，为每个 `damageSources[]` 条目建立伤害画像。
@@ -111,6 +112,7 @@ pnpm overlimit-effects:audit
 pnpm test:weapon-base-damage
 pnpm multiplier-index:check
 pnpm multiplier-providers:audit
+pnpm num-modifier:check
 ```
 
-测试覆盖基础伤害模式配置、全量白值索引、超限镜像、双乘区、Settlement 匹配和路由。`multiplier-index:check` 不依赖 `refs/`，验证所有发布插件、147 张卡片、武器技能和 S3 天赋均已映射或明确排除，并检查路由、镜像和双向一致性。`overlimit-effects:audit` 在存在 `refs/` 时从身份链重建超限卡片的 Numerical 数值并核对 `effect_values`；`multiplier-providers:audit` 继续核对 ItemID、MGE token、Numerical 行与 AttributeDescMapTable。构建前固定执行运行时检查。
+测试覆盖基础伤害模式配置、全量白值索引、超限镜像、双乘区、Settlement 匹配和路由。`multiplier-index:check` 不依赖 `refs/`，验证所有发布插件、147 张卡片、武器技能和 S3 天赋均已映射或明确排除，并检查路由、镜像和双向一致性。`overlimit-effects:audit` 在存在 `refs/` 时重建身份链，但 Numerical 数值统一读取 Num Modifier Lock；`multiplier-providers:audit` 同样通过 Resolver 核对 ItemID、MGE token、Num 行与 AttributeDescMapTable。`num-modifier:check` 离线检查注册表引用和投影新鲜度，构建前固定执行。

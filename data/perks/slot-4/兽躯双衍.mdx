@@ -1,20 +1,26 @@
 ---
 title: "兽躯双衍"
 id: "20703040215"
+num_modifier_values:
+  weapon-skill-damage:
+    row: "lc:120100240_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-skill-damage
     label: "秘法榴弹伤害"
     stages:
       - condition: "仅命中1名敌人"
-        value: "+100%"
+        value:
+          ref: weapon-skill-damage
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1312040001"
 weaponType: []
 weaponNames: ["精绝兽神"]
 season: s1
-description: "秘法榴弹无法再被分裂。但每次开火能够连续射出2发榴弹，且仅命中一个敌人时伤害提高100%。"
+description: "秘法榴弹无法再被分裂。但每次开火能够连续射出2发榴弹，且仅命中一个敌人时伤害提高{{num:weapon-skill-damage|percent}}。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

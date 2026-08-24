@@ -10,6 +10,7 @@ import {
 import { createPortal } from "react-dom";
 import { Crosshair } from "lucide-react";
 import { CatalogLink } from "@/components/CatalogLink";
+import { renderInlineDescription } from "@/components/InlineDescription";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import { getPerkWeaponApplicability } from "@/lib/perk-applicability";
@@ -25,23 +26,6 @@ interface PreviewPosition {
   left: number;
   top: number;
   placement: "above" | "below";
-}
-
-function renderDescription(description: string): ReactNode {
-  const parts = description.split(
-    /(\*\*[^*\n]+?\*\*|<strong>[\s\S]*?<\/strong>)/gi,
-  );
-
-  return parts.map((part, index) => {
-    const htmlStrong = part.match(/^<strong>([\s\S]*)<\/strong>$/i);
-    if (htmlStrong) {
-      return <strong key={index}>{htmlStrong[1]}</strong>;
-    }
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return <strong key={index}>{part.slice(2, -2)}</strong>;
-    }
-    return part;
-  });
 }
 
 export function PerkHoverPreview({
@@ -169,7 +153,7 @@ export function PerkHoverPreview({
               </div>
               <p className="whitespace-pre-line text-sm leading-6 text-zinc-200 [&_strong]:font-semibold [&_strong]:text-[#e2bd75]">
                 {perk.description
-                  ? renderDescription(perk.description)
+                  ? renderInlineDescription(perk.description)
                   : "暂无插件效果说明"}
               </p>
             </div>

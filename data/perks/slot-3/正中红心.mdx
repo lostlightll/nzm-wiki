@@ -1,21 +1,33 @@
 ---
 title: "正中红心"
 id: "20703040036"
+num_modifier_values:
+  weapon-skill-damage-per-stack:
+    row: "lc:111010016_1_0"
+    field: coefficient
+  weapon-skill-damage-max:
+    row: "lc:111010016_1_0"
+    field: coefficient
+    scale: 100
 effect_values:
   - kind: damage
     modifierTypeId: weapon-skill-damage
     label: "武器技能伤害"
     stages:
       - condition: "每消耗1点能量"
-        value: "+1%"
+        value:
+          ref: weapon-skill-damage-per-stack
+          format: signed-percent
       - condition: "消耗100点能量"
-        value: "+100%"
+        value:
+          ref: weapon-skill-damage-max
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315111001"
 weaponType: []
 season: s0
-description: "每次命中弱点获得**1点**能量，每个目标仅触发一次。使用武器技能时，消耗所有能量并增强武器技能伤害，每消耗**1点**能量增加**1%**技能伤害，最高累积**100点**能量。"
+description: "每次命中弱点获得**1点**能量，每个目标仅触发一次。使用武器技能时，消耗所有能量并增强武器技能伤害，每消耗**1点**能量增加**{{num:weapon-skill-damage-per-stack|percent}}**技能伤害，最高累积**100点**能量。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

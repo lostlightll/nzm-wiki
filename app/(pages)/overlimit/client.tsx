@@ -28,6 +28,7 @@ import {
 import { OverlimitHoverPreview } from "@/components/OverlimitHoverPreview";
 import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import { OverlimitEffectValues } from "@/components/OverlimitEffectValues";
+import { renderInlineDescription } from "@/components/InlineDescription";
 import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import { getProviderRelationsForSource } from "@/lib/multiplier-data";
@@ -140,8 +141,8 @@ function OverlimitCardItem({
           <h3 className="mt-4 text-center text-base font-semibold leading-6 text-white sm:text-lg">
             {card.name}
           </h3>
-          <p className="mt-2 break-words text-center text-[13px] leading-5 text-zinc-300">
-            {card.description}
+          <p className="mt-2 whitespace-pre-line break-words text-center text-[13px] leading-5 text-zinc-300">
+            {renderInlineDescription(card.description)}
           </p>
         </div>
         </article>

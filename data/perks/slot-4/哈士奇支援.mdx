@@ -1,23 +1,46 @@
 ---
 title: "哈士奇支援"
 id: "20703040424"
+num_modifier_values:
+  weapon-hit-damage-per-stack:
+    row: "lc:121600113_1_0"
+    field: coefficient
+  weapon-hit-damage-max:
+    row: "lc:121600113_1_0"
+    field: coefficient
+    scale: 7
+  fire-rate-per-stack:
+    row: "lc:121600110_1_0"
+    field: base
+  fire-rate-max:
+    row: "lc:121600110_1_0"
+    field: base
+    scale: 7
 effect_values:
   - kind: damage
     modifierTypeId: weapon-hit-damage
     label: "射击直击伤害"
     stages:
       - condition: "每层"
-        value: "+5%"
+        value:
+          ref: weapon-hit-damage-per-stack
+          format: signed-percent
       - condition: "7层"
-        value: "+35%"
+        value:
+          ref: weapon-hit-damage-max
+          format: signed-percent
   - kind: stat
     statId: fire-rate
     label: "射速"
     stages:
       - condition: "每层"
-        value: "+7%"
+        value:
+          ref: fire-rate-per-stack
+          format: signed-percent
       - condition: "7层"
-        value: "+49%"
+        value:
+          ref: fire-rate-max
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1312068002"
@@ -27,6 +50,6 @@ MakeMODItem: 1
 IsCooked: true
 release_date: "2026-07-24"
 season: s3
-description: "哈士奇每次命中时，哈士奇好友的射击直接命中伤害提高<strong>5%</strong>，射速提高<strong>7%</strong>，最高叠加<strong>7层</strong>，每层持续<strong>5秒</strong>。"
+description: "哈士奇每次命中时，哈士奇好友的射击直接命中伤害提高<strong>{{num:weapon-hit-damage-per-stack|percent}}</strong>，射速提高<strong>{{num:fire-rate-per-stack|percent}}</strong>，最高叠加<strong>7层</strong>，每层持续<strong>5秒</strong>。"
 weaponNames: ["哈士奇好友"]
 ---

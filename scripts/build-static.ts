@@ -89,6 +89,9 @@ function moveDirectory(src: string, dest: string): void {
 try {
   console.log("[START] Preparing for static build...");
 
+  console.log("[CHECK] Validating Num Modifier V2 data...");
+  execSync("pnpm num-modifier:check", { stdio: "inherit" });
+
   console.log("[CHECK] Validating multiplier provider registry...");
   execSync("pnpm multiplier-index:check", { stdio: "inherit" });
 

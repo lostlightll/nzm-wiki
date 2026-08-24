@@ -5,7 +5,6 @@ import type {
   ElementStatusSummary,
   StatusEffectCatalogEntry,
   StatusEffectDataLock,
-  StatusEffectModifierReference,
   StatusEffectNumericalReference,
   StatusEffectPolarity,
   StatusEffectTarget,
@@ -21,7 +20,6 @@ interface UnrealExport {
 interface StatusEffectSourceTables {
   buffRows: Record<string, JsonObject>;
   elementRows: Record<string, JsonObject>;
-  modifierRows: Record<string, JsonObject>;
   numericalRows: Record<string, JsonObject>;
 }
 
@@ -40,8 +38,6 @@ export const STATUS_EFFECT_SOURCE_PATHS = {
     "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json",
   elementTable:
     "refs/Exports/NZM/Content/DataTables/GameFeatureConfig/ElementConfigDataTable.json",
-  modifierTable:
-    "refs/Exports/NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json",
   numericalTable:
     "refs/Exports/NZM/Content/DataTables/numerical_config_others.json",
 } as const;
@@ -102,7 +98,6 @@ export function readStatusEffectSourceTables(
   return {
     buffRows: getRows(path.join(root, STATUS_EFFECT_SOURCE_PATHS.buffTable)),
     elementRows: getRows(path.join(root, STATUS_EFFECT_SOURCE_PATHS.elementTable)),
-    modifierRows: getRows(path.join(root, STATUS_EFFECT_SOURCE_PATHS.modifierTable)),
     numericalRows: getRows(path.join(root, STATUS_EFFECT_SOURCE_PATHS.numericalTable)),
   };
 }
@@ -208,31 +203,6 @@ function buildEntry(buffId: number, variants: StatusEffectVariant[]): StatusEffe
     icon: variants.find((variant) => variant.icon)?.icon ?? null,
     variants,
   };
-}
-
-function buildModifierReferences(
-  rows: Record<string, JsonObject>,
-  referencedIds: Set<number>,
-): Record<string, StatusEffectModifierReference[]> {
-  const result: Record<string, StatusEffectModifierReference[]> = {};
-  for (const row of Object.values(rows)) {
-    const id = asNumber(row.ID);
-    if (!referencedIds.has(id)) continue;
-    const reference: StatusEffectModifierReference = {
-      id,
-      level: asNumber(row.Level),
-      attributeName: asString(row.AttributeName),
-      operation: asString(row.GPModifierOp),
-      baseValue: asNumber(row.BaseValue),
-      coefficient: asNumber(row.CoefValue),
-      description: asString(row.Description),
-    };
-    (result[String(id)] ??= []).push(reference);
-  }
-  for (const references of Object.values(result)) {
-    references.sort((left, right) => left.level - right.level);
-  }
-  return result;
 }
 
 function tagNames(value: unknown): string[] {
@@ -341,9 +311,6 @@ export function extractStatusEffects(
   const effects = [...grouped.entries()]
     .map(([buffId, variants]) => buildEntry(buffId, variants))
     .sort((left, right) => left.buffId - right.buffId);
-  const modifierIds = new Set(
-    effects.flatMap((effect) => effect.variants.flatMap((variant) => variant.modifierIds)),
-  );
   const numericalIds = new Set(
     effects.flatMap((effect) =>
       effect.variants.flatMap((variant) =>
@@ -370,7 +337,7 @@ export function extractStatusEffects(
   );
 
   const data: StatusEffectDataLock = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     source: {
       mode: "lc",
       ...STATUS_EFFECT_SOURCE_PATHS,
@@ -385,7 +352,6 @@ export function extractStatusEffects(
     elements,
     effects,
     references: {
-      modifiers: buildModifierReferences(tables.modifierRows, modifierIds),
       numericals: buildNumericalReferences(tables.numericalRows, numericalIds),
     },
   };

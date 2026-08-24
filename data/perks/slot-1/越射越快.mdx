@@ -1,13 +1,19 @@
 ---
 title: "越射越快"
 id: "20703040384"
+num_modifier_values:
+  movement-speed-stage-1:
+    row: "lc:111041012_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: movement-speed
     label: "移动速度"
     stages:
       - condition: "连续开火30次以上"
-        value: "+18%"
+        value:
+          ref: movement-speed-stage-1
+          format: signed-percent
 slot: 1
 rarity: 3
 icon: "1313194001"
@@ -17,5 +23,5 @@ MakeMODItem: 1
 IsCooked: true
 release_date: "2026-07-24"
 season: s3
-description: "连续开火<strong>30</strong>次以上，角色移动速度+<strong>18%</strong>，停止射击后<strong>5</strong>秒移除。"
+description: "连续开火<strong>30</strong>次以上，角色移动速度+<strong>{{num:movement-speed-stage-1|percent}}</strong>，停止射击后<strong>5</strong>秒移除。"
 ---

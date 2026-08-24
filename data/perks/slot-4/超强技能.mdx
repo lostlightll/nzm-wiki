@@ -1,17 +1,28 @@
 ---
 title: "超强技能"
 id: "20704040480"
+num_modifier_values:
+  weapon-skill-damage:
+    row: "lc:130044412_1_0"
+    field: base
+  skill-damage:
+    row: "lc:130044412_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-skill-damage
     label: "武器技能伤害"
     stages:
-      - value: "+400%"
+      - value:
+          ref: weapon-skill-damage
+          format: signed-percent
   - kind: damage
     modifierTypeId: skill-damage
     label: "非武器技能伤害"
     stages:
-      - value: "+400%"
+      - value:
+          ref: skill-damage
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1316195001"
@@ -20,6 +31,6 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "全技能伤害提高<strong>400%</strong>。"
+description: "全技能伤害提高<strong>{{num:weapon-skill-damage|percent}}</strong>。"
 description_override: true
 ---

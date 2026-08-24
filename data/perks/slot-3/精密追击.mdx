@@ -1,21 +1,33 @@
 ---
 title: "精密追击"
 id: "20703040082"
+num_modifier_values:
+  weakness-per-stack:
+    row: "lc:111010061_1_0"
+    field: base
+  weakness-max:
+    row: "lc:111010061_1_0"
+    field: base
+    scale: 6
 effect_values:
   - kind: damage
     modifierTypeId: weakness
     label: "弱点伤害"
     stages:
       - condition: "每层"
-        value: "+7%"
+        value:
+          ref: weakness-per-stack
+          format: signed-percent
       - condition: "6层"
-        value: "+42%"
+        value:
+          ref: weakness-max
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315127001"
 weaponType: [7, 14, 2, 19]
 season: s0
-description: "连续命中**弱点**，对**弱点**的伤害增加，每层增加**7%**，最多**6层**；命中非弱点部位移除所有层数。"
+description: "连续命中**弱点**，对**弱点**的伤害增加，每层增加**{{num:weakness-per-stack|percent}}**，最多**6层**（最高**{{num:weakness-max|percent}}**）；命中非弱点部位移除所有层数。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

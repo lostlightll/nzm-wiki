@@ -1,21 +1,33 @@
 ---
 title: "重峦叠势"
 id: "20703040201"
+num_modifier_values:
+  weapon-damage-per-stack:
+    row: "lc:111010138_1_0"
+    field: coefficient
+  weapon-damage-max:
+    row: "lc:111010138_1_0"
+    field: coefficient
+    scale: 3
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "射击伤害"
     stages:
       - condition: "每层"
-        value: "+9%"
+        value:
+          ref: weapon-damage-per-stack
+          format: signed-percent
       - condition: "3层"
-        value: "+27%"
+        value:
+          ref: weapon-damage-max
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315157001"
 weaponType: []
 season: s1
-description: "该武器累计造成**10000**点伤害后，射击伤害增加**9%**，持续**10秒**，最高**3层**。"
+description: "该武器累计造成**10000**点伤害后，射击伤害增加**{{num:weapon-damage-per-stack|percent}}**，持续**10秒**，最高**3层**。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

@@ -20,9 +20,14 @@ import {
   resolveMultiplierSourceHref,
   type MultiplierSource,
 } from "@/lib/multiplier-data";
+import { loadMultiplierProviderRegistry } from "./num-modifier/provider-registry";
 
 const root = process.cwd();
 const errors: string[] = [];
+const sourceRegistry = loadMultiplierProviderRegistry();
+const sourceProvidersById = new Map(
+  sourceRegistry.providers.map((provider) => [provider.id, provider]),
+);
 const cardIds = new Set(overlimitCards.map((card) => String(card.id)));
 const modifierTypeIds = new Set(MODIFIER_TYPES.map((modifier) => modifier.id));
 const factorIds = new Set(MULTIPLIER_FACTORS.map((factor) => factor.id));
@@ -116,12 +121,17 @@ function runtimeSourcesForProvider(provider: (typeof MULTIPLIER_PROVIDERS)[numbe
 }
 
 for (const provider of MULTIPLIER_PROVIDERS) {
+  const sourceProvider = sourceProvidersById.get(provider.id);
+  if (!sourceProvider) {
+    errors.push(`${provider.id} 缺少 Schema V2 来源注册项`);
+    continue;
+  }
   if (provider.modifierTypeIds.some((id) => !modifierTypeIds.has(id))) {
     errors.push(`${provider.id} 使用不存在的 modifier type`);
   }
   if (
-    provider.evidence.kind === "reviewed-override" &&
-    (!provider.evidence.basis || provider.evidence.basis.length === 0)
+    sourceProvider.evidence.kind === "reviewed-override" &&
+    sourceProvider.evidence.basis.length === 0
   ) {
     errors.push(`${provider.id} 的 reviewed-override 缺少依据`);
   }
@@ -144,8 +154,8 @@ for (const provider of MULTIPLIER_PROVIDERS) {
         errors.push(`${provider.id} 指向的卡牌不在当前 38 张卡池`);
       }
       if (
-        provider.evidence.kind === "reviewed-override" ||
-        provider.evidence.numericalRows.length === 0
+        sourceProvider.evidence.kind === "reviewed-override" ||
+        sourceProvider.evidence.numModifierRows.length === 0
       ) {
         errors.push(`${provider.id} 的卡牌来源缺少真实 Numerical 证据`);
       }

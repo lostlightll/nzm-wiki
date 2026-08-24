@@ -1,12 +1,18 @@
 ---
 title: "爆炸直击"
 id: "20704040478"
+num_modifier_values:
+  weapon-hit-damage:
+    row: "lc:130044410_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-hit-damage
     label: "爆炸弹直击伤害"
     stages:
-      - value: "+300%"
+      - value:
+          ref: weapon-hit-damage
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1316197001"
@@ -15,6 +21,6 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "全部爆炸弹的直击伤害提升<strong>300%</strong>，爆炸范围缩减<strong>50%</strong>。"
+description: "全部爆炸弹的直击伤害提升<strong>{{num:weapon-hit-damage|percent}}</strong>，爆炸范围缩减<strong>50%</strong>。"
 description_override: true
 ---

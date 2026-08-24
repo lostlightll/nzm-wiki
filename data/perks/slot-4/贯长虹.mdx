@@ -1,6 +1,10 @@
 ---
 title: "贯长虹"
 id: "20703040346"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:120300243_1_0"
+    field: base
 independent_damage_sources:
   - weapon_slug: "夜影之逝"
     damage_source_id: "guan-chang-hong-jian-qi"
@@ -11,7 +15,9 @@ effect_values:
     modifierTypeId: weapon-damage
     label: "近战攻击伤害"
     stages:
-      - value: "+50%"
+      - value:
+          ref: weapon-damage
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1312070001"
@@ -20,6 +26,6 @@ CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true
 season: "pending"
-description: "近战攻击伤害增加<strong>50%</strong>。切出本武器时向前发射一道剑气，造成<strong>1300%攻击力</strong>的贯穿伤害并填满弹匣，冷却<strong>10秒</strong>。"
+description: "近战攻击伤害增加<strong>{{num:weapon-damage|percent}}</strong>。切出本武器时向前发射一道剑气，造成<strong>1300%攻击力</strong>的贯穿伤害并填满弹匣，冷却<strong>10秒</strong>。"
 weaponNames: ["夜影之逝"]
 ---

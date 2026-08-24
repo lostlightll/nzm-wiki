@@ -1,23 +1,46 @@
 ---
 title: "飞毛腿"
 id: "20703040475"
+num_modifier_values:
+  all-damage-per-stack:
+    row: "lc:111051002_1_0"
+    field: coefficient
+  all-damage-max:
+    row: "lc:111051002_1_0"
+    field: coefficient
+    scale: 100
+  movement-speed-per-stack:
+    row: "lc:111051003_1_0"
+    field: base
+  movement-speed-max:
+    row: "lc:111051003_1_0"
+    field: base
+    scale: 50
 effect_values:
   - kind: damage
     modifierTypeId: all-damage
     label: "全伤害"
     stages:
       - condition: "每1%移动速度"
-        value: "+4%"
+        value:
+          ref: all-damage-per-stack
+          format: signed-percent
       - condition: "100%移动速度"
-        value: "+400%"
+        value:
+          ref: all-damage-max
+          format: signed-percent
   - kind: stat
     statId: movement-speed
     label: "移动速度"
     stages:
       - condition: "每次暴击"
-        value: "+2%"
+        value:
+          ref: movement-speed-per-stack
+          format: signed-percent
       - condition: "50层"
-        value: "+100%"
+        value:
+          ref: movement-speed-max
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1312065001"
@@ -26,6 +49,6 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "暴击获得<strong>2%</strong>移速，持续<strong>10</strong>秒，最多叠加<strong>50</strong>层；损失血量时清空增益。每<strong>1%</strong>移速转化为<strong>4%</strong>伤害加成。"
+description: "暴击获得<strong>{{num:movement-speed-per-stack|percent}}</strong>移速，持续<strong>10</strong>秒，最多叠加<strong>50</strong>层；损失血量时清空增益。每<strong>1%</strong>移速转化为<strong>{{num:all-damage-per-stack|percent}}</strong>伤害加成。"
 description_override: true
 ---

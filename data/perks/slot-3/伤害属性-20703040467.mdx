@@ -1,12 +1,18 @@
 ---
 title: "伤害属性"
 id: "20703040467"
+num_modifier_values:
+  all-damage:
+    row: "lc:131522600_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: all-damage
     label: "全伤害"
     stages:
-      - value: "+8%"
+      - value:
+          ref: all-damage
+          format: signed-percent
 slot: 3
 rarity: 2
 icon: "1315148001"
@@ -15,5 +21,5 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "全伤害提升+8%"
+description: "全伤害提升+{{num:all-damage|percent}}"
 ---

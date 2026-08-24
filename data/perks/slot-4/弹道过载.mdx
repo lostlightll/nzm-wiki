@@ -1,12 +1,18 @@
 ---
 title: "弹道过载"
 id: "20703040405"
+num_modifier_values:
+  reload-speed:
+    row: "lc:111041020_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: reload-speed
     label: "换弹速度"
     stages:
-      - value: "+18%"
+      - value:
+          ref: reload-speed
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1316194001"
@@ -15,5 +21,5 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "换弹速度提高<strong>18%</strong>；换弹后<strong>10秒</strong>内，弹道<strong>+2</strong>。"
+description: "换弹速度提高<strong>{{num:reload-speed|percent}}</strong>；换弹后<strong>10秒</strong>内，弹道<strong>+2</strong>。"
 ---

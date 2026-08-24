@@ -1,12 +1,18 @@
 ---
 title: "爆发"
 id: "20704040484"
+num_modifier_values:
+  critical:
+    row: "lc:130044413_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: critical
     label: "爆炸弹暴击伤害"
     stages:
-      - value: "+400%"
+      - value:
+          ref: critical
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1315203001"
@@ -15,6 +21,6 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "爆炸弹的暴击伤害提高<strong>400%</strong>。"
+description: "爆炸弹的暴击伤害提高<strong>{{num:critical|percent}}</strong>。"
 description_override: true
 ---

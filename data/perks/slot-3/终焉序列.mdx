@@ -1,19 +1,25 @@
 ---
 title: "终焉序列"
 id: "20703040150"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:111010087_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "射击伤害"
     stages:
       - condition: "弹匣最后10发"
-        value: "+100%"
+        value:
+          ref: weapon-damage
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315143001"
 weaponType: [5, 1]
 season: s0
-description: "弹匣内**最后10发子弹**，子弹射击伤害增加**100%**。"
+description: "弹匣内**最后10发子弹**，子弹射击伤害增加**{{num:weapon-damage|percent}}**。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

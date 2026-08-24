@@ -1,12 +1,18 @@
 ---
 title: "暴伤属性"
 id: "20703040461"
+num_modifier_values:
+  critical:
+    row: "lc:131522000_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: critical
     label: "暴击伤害"
     stages:
-      - value: "+20%"
+      - value:
+          ref: critical
+          format: signed-percent
 slot: 3
 rarity: 2
 icon: "1315148001"
@@ -15,5 +21,5 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "暴伤+20%"
+description: "暴伤+{{num:critical|percent}}"
 ---

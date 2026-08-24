@@ -1,19 +1,25 @@
 ---
 title: "重装弹头"
 id: "20703040136"
+num_modifier_values:
+  toughness-efficiency:
+    row: "lc:111010082_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: toughness-efficiency
     label: "破韧效率"
     stages:
       - condition: "每发弹丸"
-        value: "+20%"
+        value:
+          ref: toughness-efficiency
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315138001"
 weaponType: [3]
 season: s0
-description: "每发弹丸获得**20%**的破韧加成。"
+description: "每发弹丸获得**{{num:toughness-efficiency|percent}}**的破韧加成。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

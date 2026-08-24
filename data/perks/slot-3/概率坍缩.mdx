@@ -1,19 +1,25 @@
 ---
 title: "概率坍缩"
 id: "20703040115"
+num_modifier_values:
+  critical-rate:
+    row: "lc:111010075_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: critical-rate
     label: "暴击率"
     stages:
       - condition: "每次未暴击"
-        value: "+6%"
+        value:
+          ref: critical-rate
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315134001"
 weaponType: [14, 2, 3, 7]
 season: s0
-description: "每次未暴击的射击获得**6%**暴击率加成，暴击后清空所有层数。"
+description: "每次未暴击的射击获得**{{num:critical-rate|percent}}**暴击率加成，暴击后清空所有层数。"
 keywords:
   - 暴击
   - crit

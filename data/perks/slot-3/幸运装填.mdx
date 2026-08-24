@@ -1,19 +1,25 @@
 ---
 title: "幸运装填"
 id: "20703040001"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:111010001_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "武器伤害"
     stages:
       - condition: "装填触发后"
-        value: "+25%"
+        value:
+          ref: weapon-damage
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1313101001"
 weaponType: [5, 1, 6]
 season: s0
-description: "换弹时有**33%**的概率不消耗备弹，武器伤害增加**25%**，换弹或切枪后效果消失。"
+description: "换弹时有**33%**的概率不消耗备弹，武器伤害增加**{{num:weapon-damage|percent}}**，换弹或切枪后效果消失。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

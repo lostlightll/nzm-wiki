@@ -1,5 +1,5 @@
 import rawMultiplierData from "@/data/guides/multiplier.json";
-import rawProviderRegistry from "@/data/guides/multiplier-providers.json";
+import rawProviderRuntime from "@/data/guides/multiplier-providers-runtime.json";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import type { ElementType, WeaponType } from "@/types";
 
@@ -163,37 +163,6 @@ export type MultiplierProvider = {
   label: string;
   source: ProviderRegistrySource;
   modifierTypeIds: readonly string[];
-  evidence: ProviderEvidence;
-};
-
-type ProviderEvidence = {
-  kind: "gp-modifier" | "reviewed-override";
-  passiveSkillId?: string;
-  descriptionRowKey?: string;
-  descriptionRowKeys?: readonly string[];
-  gpModifierIds?: readonly string[];
-  basis?: readonly string[];
-  cardChain?: {
-    functionIds: readonly number[];
-    mgeIds: readonly number[];
-    buffIds?: readonly number[];
-    attackLevelChain?: {
-      sourceMgeId: number;
-      level: number;
-      passiveSkillId: number;
-      modifierMgeId: number;
-    };
-  };
-  numericalRows: readonly {
-    modifierId: string;
-    rowKey: string;
-    attributeName: string;
-    attributeLabel: string;
-    modifierTypeId: string;
-    baseValue: number;
-    coefficient: number;
-    operation: string;
-  }[];
 };
 
 type ProviderRegistrySource =
@@ -223,7 +192,6 @@ export type MultiplierProviderExclusion = {
   source: ProviderRegistrySource;
   reasonCode: "independent-damage-event" | "not-damage-multiplier";
   reason: string;
-  evidence?: Record<string, unknown>;
 };
 
 export type MultiplierRelation = {
@@ -267,7 +235,11 @@ type RawMultiplierData = {
 
 type RawProviderRegistry = {
   schemaVersion: 1;
-  evidencePriority: readonly string[];
+  source: {
+    registrySha256: string;
+    numModifierSourceSha256: string;
+    multiplierSchemaVersion: 12;
+  };
   providers: readonly MultiplierProvider[];
   exclusions: readonly MultiplierProviderExclusion[];
 };
@@ -404,7 +376,7 @@ function assertProviderRegistry(value: unknown): asserts value is RawProviderReg
   if (
     !isRecord(value) ||
     value.schemaVersion !== 1 ||
-    !Array.isArray(value.evidencePriority) ||
+    !isRecord(value.source) ||
     !Array.isArray(value.providers) ||
     !Array.isArray(value.exclusions)
   ) {
@@ -423,8 +395,7 @@ function assertProviderRegistry(value: unknown): asserts value is RawProviderReg
       provider.modifierTypeIds.length === 0 ||
       provider.modifierTypeIds.some(
         (id) => typeof id !== "string" || !modifierTypeIds.has(id),
-      ) ||
-      !isRecord(provider.evidence)
+      )
     ) {
       throw new Error("增伤来源注册项存在无效或重复字段");
     }
@@ -446,8 +417,8 @@ function assertProviderRegistry(value: unknown): asserts value is RawProviderReg
   }
 }
 
-assertProviderRegistry(rawProviderRegistry);
-const providerRegistry = rawProviderRegistry as unknown as RawProviderRegistry;
+assertProviderRegistry(rawProviderRuntime);
+const providerRegistry = rawProviderRuntime as unknown as RawProviderRegistry;
 
 function factorIdForModifier(channel: DamageChannel): MultiplierFactorId {
   if (channel.group === "dilution") return "dilution";

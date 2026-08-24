@@ -1,29 +1,52 @@
 ---
 title: "裁决充能"
 id: "20703040116"
+num_modifier_values:
+  critical-per-stack:
+    row: "lc:111010076_1_1"
+    field: coefficient
+  critical-max:
+    row: "lc:111010076_1_1"
+    field: coefficient
+    scale: 50
+  critical-rate-per-stack:
+    row: "lc:111010076_1_0"
+    field: coefficient
+  critical-rate-max:
+    row: "lc:111010076_1_0"
+    field: coefficient
+    scale: 50
 effect_values:
   - kind: damage
     modifierTypeId: critical
     label: "暴击伤害"
     stages:
       - condition: "每0.15秒"
-        value: "+8%"
+        value:
+          ref: critical-per-stack
+          format: signed-percent
       - condition: "50层"
-        value: "+400%"
+        value:
+          ref: critical-max
+          format: signed-percent
   - kind: stat
     statId: critical-rate
     label: "暴击率"
     stages:
       - condition: "每0.15秒"
-        value: "+2%"
+        value:
+          ref: critical-rate-per-stack
+          format: signed-percent
       - condition: "上限"
-        value: "100%"
+        value:
+          ref: critical-rate-max
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315135001"
 weaponType: [14, 2, 3, 7]
 season: s0
-description: "手持该武器时，每**0.15秒**获得**2%**暴击率与**8%**暴击伤害加成，直至达到**100%**暴击率，命中或切枪后清除。"
+description: "手持该武器时，每**0.15秒**获得**{{num:critical-rate-per-stack|percent}}**暴击率与**{{num:critical-per-stack|percent}}**暴击伤害加成，直至达到**{{num:critical-rate-max|percent}}**暴击率与**{{num:critical-max|percent}}**暴击伤害，命中或切枪后清除。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

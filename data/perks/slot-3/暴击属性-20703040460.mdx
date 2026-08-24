@@ -1,12 +1,18 @@
 ---
 title: "暴击属性"
 id: "20703040460"
+num_modifier_values:
+  critical-rate:
+    row: "lc:131521900_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: critical-rate
     label: "暴击率"
     stages:
-      - value: "+10%"
+      - value:
+          ref: critical-rate
+          format: signed-percent
 slot: 3
 rarity: 2
 icon: "1315148001"
@@ -15,5 +21,5 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "暴击率+10%"
+description: "暴击率+{{num:critical-rate|percent}}"
 ---

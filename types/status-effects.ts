@@ -139,12 +139,11 @@ export interface ElementStatusViewSummary extends ElementStatusSummary {
 }
 
 export interface StatusEffectDataLock {
-  schemaVersion: 1;
+  schemaVersion: 2;
   source: {
     mode: "lc";
     buffTable: string;
     elementTable: string;
-    modifierTable: string;
     numericalTable: string;
   };
   summary: {
@@ -157,7 +156,6 @@ export interface StatusEffectDataLock {
   elements: ElementStatusSummary[];
   effects: StatusEffectCatalogEntry[];
   references: {
-    modifiers: Record<string, StatusEffectModifierReference[]>;
     numericals: Record<string, StatusEffectNumericalReference[]>;
   };
 }

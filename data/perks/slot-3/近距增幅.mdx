@@ -1,21 +1,33 @@
 ---
 title: "近距增幅"
 id: "20703040072"
+num_modifier_values:
+  weapon-damage-per-stack:
+    row: "lc:111010056_1_0"
+    field: coefficient
+  weapon-damage-max:
+    row: "lc:111010056_1_0"
+    field: coefficient
+    scale: 7
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "武器伤害"
     stages:
       - condition: "13米内每接近1米"
-        value: "+5%"
+        value:
+          ref: weapon-damage-per-stack
+          format: signed-percent
       - condition: "距离6米内"
-        value: "+35%"
+        value:
+          ref: weapon-damage-max
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315120001"
 weaponType: [3, 4, 8, 16]
 season: s0
-description: "离敌人的距离越近，伤害越高，距离命中目标13米内伤害提升，6米提升到最大值35%，6米内维持35%增伤。"
+description: "离敌人的距离越近，伤害越高，距离命中目标13米内每接近1米提升**{{num:weapon-damage-per-stack|percent}}**，共7步，6米内最高**{{num:weapon-damage-max|percent}}**增伤。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

@@ -1,19 +1,25 @@
 ---
 title: "腐蚀榴弹"
 id: "20703040093"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:120600064_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "榴弹直击伤害"
     stages:
-      - value: "+250%"
+      - value:
+          ref: weapon-damage
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1312038001"
 weaponType: []
 weaponNames: ["幽冥毒皇"]
 season: s0
-description: "榴弹的直接命中伤害增加250%，榴弹爆炸命中目标后可以额外叠加35层腐蚀之力"
+description: "榴弹的直接命中伤害增加{{num:weapon-damage|percent}}，榴弹爆炸命中目标后可以额外叠加35层腐蚀之力"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

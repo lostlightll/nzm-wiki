@@ -1,13 +1,19 @@
 ---
 title: "独爆产暴"
 id: "20703040391"
+num_modifier_values:
+  critical-rate:
+    row: "lc:111041005_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: critical-rate
     label: "暴击率"
     stages:
       - condition: "拾取狂暴能量球"
-        value: "+16%"
+        value:
+          ref: critical-rate
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1316192001"
@@ -16,7 +22,7 @@ CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true
 season: "pending"
-description: "武器爆炸仅命中一名敌人时，掉落狂暴能量球，冷却<strong>6秒</strong>。拾取后暴击率提高<strong>16%</strong>，持续<strong>8秒</strong>。"
+description: "武器爆炸仅命中一名敌人时，掉落狂暴能量球，冷却<strong>6秒</strong>。拾取后暴击率提高<strong>{{num:critical-rate|percent}}</strong>，持续<strong>8秒</strong>。"
 keywords:
   - "独爆流"
 ---

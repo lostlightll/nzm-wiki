@@ -1,23 +1,34 @@
 ---
 title: "聚能弹药"
 id: "20703040043"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:111010022_1_0"
+    field: base
+  explosion-radius:
+    row: "lc:111010033_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "武器伤害"
     stages:
-      - value: "+30%"
+      - value:
+          ref: weapon-damage
+          format: signed-percent
   - kind: stat
     statId: explosion-radius
     label: "爆炸范围"
     stages:
-      - value: "-5%"
+      - value:
+          ref: explosion-radius
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1316107001"
 weaponType: [4, 8, 16]
 season: s0
-description: "爆炸范围减少**5%**，伤害增加**30%**。"
+description: "爆炸范围减少**5%**，伤害增加**{{num:weapon-damage|percent}}**。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

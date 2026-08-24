@@ -1,12 +1,18 @@
 ---
 title: "超频蓄能"
 id: "20703040182"
+num_modifier_values:
+  charge-efficiency:
+    row: "lc:111010128_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: charge-efficiency
     label: "充能速度"
     stages:
-      - value: "+50%"
+      - value:
+          ref: charge-efficiency
+          format: signed-percent
 slot: 2
 rarity: 3
 icon: "1314130001"
@@ -15,5 +21,5 @@ CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true
 season: s0
-description: "技能充能速度提高**50%**。"
+description: "技能充能速度提高**{{num:charge-efficiency|percent}}**。"
 ---

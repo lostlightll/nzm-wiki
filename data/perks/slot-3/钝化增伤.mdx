@@ -1,19 +1,25 @@
 ---
 title: "钝化增伤"
 id: "20703040081"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:111010060_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "武器伤害"
     stages:
       - condition: "命中减速敌人"
-        value: "+27%"
+        value:
+          ref: weapon-damage
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315126001"
 weaponType: []
 season: s0
-description: "命中减速的敌人，造成额外的**27%**伤害。"
+description: "命中减速的敌人，造成额外的**{{num:weapon-damage|percent}}**伤害。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

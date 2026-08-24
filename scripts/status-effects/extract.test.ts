@@ -65,7 +65,6 @@ test("按 BuffID 合并并保留全部变体", () => {
       Shock: elementRow("Shock"),
       Corossive: elementRow("Corossive"),
     },
-    modifierRows: {},
     numericalRows: {},
   });
 
@@ -92,17 +91,6 @@ test("数值引用可联查，缺失引用仍保留在变体中", () => {
       Shock: elementRow("Shock"),
       Corossive: elementRow("Corossive"),
     },
-    modifierRows: {
-      "42_1_0": {
-        ID: 42,
-        Level: 1,
-        AttributeName: "Test.Attribute",
-        Description: "测试属性",
-        GPModifierOp: "A",
-        BaseValue: 1,
-        CoefValue: 0.5,
-      },
-    },
     numericalRows: {
       "77_1": {
         id: 77,
@@ -119,8 +107,8 @@ test("数值引用可联查，缺失引用仍保留在变体中", () => {
 
   assert.deepEqual(result.data.effects[0].variants[0].modifierIds, [42, 404]);
   assert.equal(result.data.effects[0].variants[0].numericalId, 77);
-  assert.equal(result.data.references.modifiers["42"][0].attributeName, "Test.Attribute");
-  assert.equal(result.data.references.modifiers["404"], undefined);
+  assert.equal(result.data.schemaVersion, 2);
+  assert.equal("modifiers" in result.data.references, false);
   assert.equal(result.data.references.numericals["77"][0].fleshDamageBase, 10);
 });
 

@@ -1,0 +1,6884 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "registrySha256": "29dd775d50b1e454db3710d93375f37783f18f27ede54acfe5810b68f5d76245",
+    "numModifierSourceSha256": "dfc382ff06934157402ecaec9a8e9c5f9a3b1f88f6265918e5cd173dde0e0546",
+    "multiplierSchemaVersion": 12
+  },
+  "providers": [
+    {
+      "id": "card:10003",
+      "label": "狂战士祝福",
+      "source": {
+        "type": "card",
+        "cardId": 10003,
+        "slug": "blademaster"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "card:10021",
+      "label": "弱点狂热",
+      "source": {
+        "type": "card",
+        "cardId": 10021,
+        "slug": "critical-hit-crazy"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "card:10020",
+      "label": "疯狂战士",
+      "source": {
+        "type": "card",
+        "cardId": 10020,
+        "slug": "berserker"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "card:10030",
+      "label": "弱点约束",
+      "source": {
+        "type": "card",
+        "cardId": 10030,
+        "slug": "weak-point-boost"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "card:10032",
+      "label": "抵近射击",
+      "source": {
+        "type": "card",
+        "cardId": 10032,
+        "slug": "close-range-shot"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "card:10039",
+      "label": "玻璃大炮",
+      "source": {
+        "type": "card",
+        "cardId": 10039,
+        "slug": "glass-cannon"
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:ammo:6",
+      "label": "弹药羁绊 x6",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "弹药",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:barrier:4",
+      "label": "壁垒羁绊 x4",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "壁垒",
+        "count": 4
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "bond:frenzy:2",
+      "label": "狂战羁绊 x2",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "狂战",
+        "count": 2
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:game-mode:爆韧:6",
+      "label": "爆韧羁绊 x6",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "爆韧",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:game-mode:共振:6",
+      "label": "共振羁绊 x6",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "共振",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:game-mode:狙击:6",
+      "label": "狙击羁绊 x6",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "狙击",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:game-mode:狂战:6",
+      "label": "狂战羁绊 x6",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "狂战",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:game-mode:异化:4",
+      "label": "异化羁绊 x4",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "异化",
+        "count": 4
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:game-mode:游击:4",
+      "label": "游击羁绊 x4",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "游击",
+        "count": 4
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:game-mode:游击:6",
+      "label": "游击羁绊 x6",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "游击",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:sniper:2",
+      "label": "狙击羁绊 x2",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "狙击",
+        "count": 2
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "bond:tech:2",
+      "label": "技战羁绊 x2",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "技战",
+        "count": 2
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "bond:tech:4",
+      "label": "技战羁绊 x4",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "技战",
+        "count": 4
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040001",
+      "label": "幸运装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040001",
+        "slot": 3,
+        "slug": "幸运装填",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040036",
+      "label": "正中红心",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040036",
+        "slot": 3,
+        "slug": "正中红心",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040037",
+      "label": "伏击弹药",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040037",
+        "slot": 3,
+        "slug": "伏击弹药",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040043",
+      "label": "聚能弹药",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040043",
+        "slot": 4,
+        "slug": "聚能弹药",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040050",
+      "label": "无限烟花",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040050",
+        "slot": 4,
+        "slug": "无限烟花",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040059",
+      "label": "弹跳风暴",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040059",
+        "slot": 4,
+        "slug": "弹跳风暴",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage",
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040060",
+      "label": "剧毒速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040060",
+        "slot": 4,
+        "slug": "剧毒速装",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040069",
+      "label": "递进膛压",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040069",
+        "slot": 3,
+        "slug": "递进膛压",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040071",
+      "label": "协频共振",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040071",
+        "slot": 3,
+        "slug": "协频共振",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040072",
+      "label": "近距增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040072",
+        "slot": 3,
+        "slug": "近距增幅",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040081",
+      "label": "钝化增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040081",
+        "slot": 3,
+        "slug": "钝化增伤",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040082",
+      "label": "精密追击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040082",
+        "slot": 3,
+        "slug": "精密追击",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:20703040085",
+      "label": "致命节拍",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040085",
+        "slot": 3,
+        "slug": "致命节拍",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040087",
+      "label": "攻守自如",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040087",
+        "slot": 3,
+        "slug": "攻守自如",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040093",
+      "label": "腐蚀榴弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040093",
+        "slot": 4,
+        "slug": "腐蚀榴弹",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040112",
+      "label": "过载膛压",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040112",
+        "slot": 3,
+        "slug": "过载膛压",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040116",
+      "label": "裁决充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040116",
+        "slot": 3,
+        "slug": "裁决充能",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "perk:20703040134",
+      "label": "层积强袭",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040134",
+        "slot": 3,
+        "slug": "层积强袭",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040135",
+      "label": "异态共鸣",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040135",
+        "slot": 3,
+        "slug": "异态共鸣",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040140",
+      "label": "解构增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040140",
+        "slot": 3,
+        "slug": "解构增幅",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040150",
+      "label": "终焉序列",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040150",
+        "slot": 3,
+        "slug": "终焉序列",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040151",
+      "label": "相位强袭",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040151",
+        "slot": 3,
+        "slug": "相位强袭",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040155",
+      "label": "致命射击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040155",
+        "slot": 3,
+        "slug": "致命射击",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:20703040159",
+      "label": "连锁增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040159",
+        "slot": 3,
+        "slug": "连锁增伤",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040163",
+      "label": "技能增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040163",
+        "slot": 3,
+        "slug": "技能增幅",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040167",
+      "label": "叠浪效应",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040167",
+        "slot": 3,
+        "slug": "叠浪效应",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040171",
+      "label": "致命节奏",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040171",
+        "slot": 3,
+        "slug": "致命节奏",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040175",
+      "label": "强袭子弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040175",
+        "slot": 3,
+        "slug": "强袭子弹",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040184",
+      "label": "技能增涌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040184",
+        "slot": 3,
+        "slug": "技能增涌",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040193",
+      "label": "观山窥骨",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040193",
+        "slot": 3,
+        "slug": "观山窥骨",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040201",
+      "label": "重峦叠势",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040201",
+        "slot": 3,
+        "slug": "重峦叠势",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040212",
+      "label": "冥河送葬",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040212",
+        "slot": 4,
+        "slug": "冥河送葬",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040213",
+      "label": "白骨电容器",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040213",
+        "slot": 4,
+        "slug": "白骨电容器",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040214",
+      "label": "五方兽临",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040214",
+        "slot": 4,
+        "slug": "五方兽临",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040215",
+      "label": "兽躯双衍",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040215",
+        "slot": 4,
+        "slug": "兽躯双衍",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040216",
+      "label": "恶鬼眷顾",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040216",
+        "slot": 4,
+        "slug": "恶鬼眷顾",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040217",
+      "label": "恶鬼腐朽",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040217",
+        "slot": 4,
+        "slug": "恶鬼腐朽",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "perk:20703040254",
+      "label": "独弹强化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040254",
+        "slot": 4,
+        "slug": "独弹强化",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "correction"
+      ]
+    },
+    {
+      "id": "perk:20703040257",
+      "label": "远距增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040257",
+        "slot": 3,
+        "slug": "远距增伤",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040258",
+      "label": "武器强化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040258",
+        "slot": 3,
+        "slug": "武器强化",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040290",
+      "label": "切换易伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040290",
+        "slot": 4,
+        "slug": "切换易伤",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "perk:20703040293",
+      "label": "叠伤系统",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040293",
+        "slot": 3,
+        "slug": "叠伤系统",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040296",
+      "label": "霰弹增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040296",
+        "slot": 3,
+        "slug": "霰弹增伤",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040302",
+      "label": "模式增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040302",
+        "slot": 3,
+        "slug": "模式增幅",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040305",
+      "label": "近战易伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040305",
+        "slot": 3,
+        "slug": "近战易伤",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "perk:20703040306",
+      "label": "易伤扩散",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040306",
+        "slot": 4,
+        "slug": "易伤扩散",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "perk:20703040309",
+      "label": "满盾增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040309",
+        "slot": 3,
+        "slug": "满盾增幅",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040312",
+      "label": "近远联动",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040312",
+        "slot": 3,
+        "slug": "近远联动",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040315",
+      "label": "钝化增效",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040315",
+        "slot": 3,
+        "slug": "钝化增效",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040319",
+      "label": "危险膛压",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040319",
+        "slot": 3,
+        "slug": "危险膛压",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040323",
+      "label": "近距增效",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040323",
+        "slot": 3,
+        "slug": "近距增效",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040334",
+      "label": "炎刃",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040334",
+        "slot": 4,
+        "slug": "炎刃",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040340",
+      "label": "腐蚀狂热",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040340",
+        "slot": 4,
+        "slug": "腐蚀狂热",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040342",
+      "label": "兽瞳独睐",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040342",
+        "slot": 4,
+        "slug": "兽瞳独睐",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040346",
+      "label": "贯长虹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040346",
+        "slot": 4,
+        "slug": "贯长虹",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040350",
+      "label": "打标增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040350",
+        "slot": 3,
+        "slug": "打标增伤",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040354",
+      "label": "跟班增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040354",
+        "slot": 3,
+        "slug": "跟班增伤",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040358",
+      "label": "泡爆增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040358",
+        "slot": 3,
+        "slug": "泡爆增伤",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040362",
+      "label": "钩出痛打",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040362",
+        "slot": 3,
+        "slug": "钩出痛打",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040366",
+      "label": "滑铲增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040366",
+        "slot": 3,
+        "slug": "滑铲增伤",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040370",
+      "label": "铲中叠伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040370",
+        "slot": 3,
+        "slug": "铲中叠伤",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040378",
+      "label": "抽奖增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040378",
+        "slot": 3,
+        "slug": "抽奖增伤",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040386",
+      "label": "速伤提升",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040386",
+        "slot": 3,
+        "slug": "速伤提升",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040390",
+      "label": "独爆增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040390",
+        "slot": 3,
+        "slug": "独爆增伤",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040394",
+      "label": "捡货增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040394",
+        "slot": 3,
+        "slug": "捡货增伤",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040406",
+      "label": "暴走永动",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040406",
+        "slot": 3,
+        "slug": "暴走永动",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "perk:20703040407",
+      "label": "狂轰乱炸",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040407",
+        "slot": 4,
+        "slug": "狂轰乱炸",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040408",
+      "label": "弱肉强食",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040408",
+        "slot": 3,
+        "slug": "弱肉强食",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:20703040409",
+      "label": "狂暴连击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040409",
+        "slot": 4,
+        "slug": "狂暴连击",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040412",
+      "label": "腐蚀强击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040412",
+        "slot": 4,
+        "slug": "腐蚀强击",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040413",
+      "label": "幸运毒皇",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040413",
+        "slot": 4,
+        "slug": "幸运毒皇",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040414",
+      "label": "自追踪炮塔",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040414",
+        "slot": 4,
+        "slug": "自追踪炮塔",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040415",
+      "label": "幸运炎帝",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040415",
+        "slot": 4,
+        "slug": "幸运炎帝",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040420",
+      "label": "往日弹痕",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040420",
+        "slot": 4,
+        "slug": "往日弹痕",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040421",
+      "label": "追踪榴弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040421",
+        "slot": 4,
+        "slug": "追踪榴弹",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040423",
+      "label": "哈士奇寻敌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040423",
+        "slot": 4,
+        "slug": "哈士奇寻敌",
+        "overlimitCard": false
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040424",
+      "label": "哈士奇支援",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040424",
+        "slot": 4,
+        "slug": "哈士奇支援",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040429",
+      "label": "幸运龙炎",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040429",
+        "slot": 4,
+        "slug": "幸运龙炎",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040432",
+      "label": "肾上腺素",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040432",
+        "slot": 4,
+        "slug": "肾上腺素",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040435",
+      "label": "我只射击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040435",
+        "slot": 3,
+        "slug": "我只射击",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040436",
+      "label": "哑枪",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040436",
+        "slot": 3,
+        "slug": "哑枪",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040445",
+      "label": "射击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040445",
+        "slot": 3,
+        "slug": "射击属性-20703040445",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040446",
+      "label": "技能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040446",
+        "slot": 3,
+        "slug": "技能属性-20703040446",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "skill-damage",
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040449",
+      "label": "暴伤属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040449",
+        "slot": 3,
+        "slug": "暴伤属性-20703040449",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "perk:20703040451",
+      "label": "弱点属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040451",
+        "slot": 3,
+        "slug": "弱点属性-20703040451",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:20703040452",
+      "label": "爆炸属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040452",
+        "slot": 3,
+        "slug": "爆炸属性-20703040452",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040453",
+      "label": "射击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040453",
+        "slot": 3,
+        "slug": "射击属性-20703040453",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040454",
+      "label": "技能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040454",
+        "slot": 3,
+        "slug": "技能属性-20703040454",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "skill-damage",
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040455",
+      "label": "伤害属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040455",
+        "slot": 3,
+        "slug": "伤害属性-20703040455",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040456",
+      "label": "伤害属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040456",
+        "slot": 3,
+        "slug": "伤害属性-20703040456",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040457",
+      "label": "射击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040457",
+        "slot": 3,
+        "slug": "射击属性-20703040457",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040458",
+      "label": "技能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040458",
+        "slot": 3,
+        "slug": "技能属性-20703040458",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040461",
+      "label": "暴伤属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040461",
+        "slot": 3,
+        "slug": "暴伤属性-20703040461",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "perk:20703040463",
+      "label": "弱点属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040463",
+        "slot": 3,
+        "slug": "弱点属性-20703040463",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:20703040464",
+      "label": "爆炸属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040464",
+        "slot": 3,
+        "slug": "爆炸属性-20703040464",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040465",
+      "label": "射击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040465",
+        "slot": 3,
+        "slug": "射击属性-20703040465",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040466",
+      "label": "技能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040466",
+        "slot": 3,
+        "slug": "技能属性-20703040466",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040467",
+      "label": "伤害属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040467",
+        "slot": 3,
+        "slug": "伤害属性-20703040467",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040468",
+      "label": "伤害属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040468",
+        "slot": 3,
+        "slug": "伤害属性-20703040468",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040475",
+      "label": "飞毛腿",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040475",
+        "slot": 3,
+        "slug": "飞毛腿",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "season:s3:grappling-hook:3003102",
+      "label": "劫掠钩锁",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "grappling-hook",
+        "nodeId": "3003102"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "season:s3:grappling-hook:3003202",
+      "label": "相位剥离",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "grappling-hook",
+        "nodeId": "3003202"
+      },
+      "modifierTypeIds": [
+        "correction"
+      ]
+    },
+    {
+      "id": "season:s3:grappling-hook:3003402",
+      "label": "量子回溯",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "grappling-hook",
+        "nodeId": "3003402"
+      },
+      "modifierTypeIds": [
+        "correction"
+      ]
+    },
+    {
+      "id": "season:s3:grappling-hook:3003501",
+      "label": "索敌共振",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "grappling-hook",
+        "nodeId": "3003501"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "season:s3:grappling-hook:3003503",
+      "label": "相位共振",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "grappling-hook",
+        "nodeId": "3003503"
+      },
+      "modifierTypeIds": [
+        "correction"
+      ]
+    },
+    {
+      "id": "season:s3:iron-fist:3001102",
+      "label": "铁拳狂徒",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "iron-fist",
+        "nodeId": "3001102"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "season:s3:iron-fist:3001303",
+      "label": "铁拳强击",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "iron-fist",
+        "nodeId": "3001303"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "season:s3:iron-fist:3001402",
+      "label": "地裂波",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "iron-fist",
+        "nodeId": "3001402"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "season:s3:iron-fist:3001602",
+      "label": "狂暴",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "iron-fist",
+        "nodeId": "3001602"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "season:s3:passive:2030101",
+      "label": "爆射扭蛋机",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "passiveId": "2030101"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "season:s3:passive:2030104",
+      "label": "召唤扭蛋机",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "passiveId": "2030104"
+      },
+      "modifierTypeIds": [
+        "all-damage",
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "season:s3:passive:2030105",
+      "label": "轰炸扭蛋机",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "passiveId": "2030105"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage",
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "season:s3:zero:3002503",
+      "label": "并联电路",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002503"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "weapon:暗夜之殇:黑火药",
+      "label": "暗夜之殇·黑火药",
+      "source": {
+        "type": "weapon",
+        "slug": "暗夜之殇",
+        "skillName": "黑火药",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element-vulnerability"
+      ]
+    },
+    {
+      "id": "weapon:百炼钢管:闪电之力",
+      "label": "百炼钢管·闪电之力",
+      "source": {
+        "type": "weapon",
+        "slug": "百炼钢管",
+        "skillName": "闪电之力",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:爆星:扩散爆星",
+      "label": "爆星·扩散爆星",
+      "source": {
+        "type": "weapon",
+        "slug": "爆星",
+        "skillName": "扩散爆星",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:冰点双峰:冰锋共济",
+      "label": "冰点双峰·冰锋共济",
+      "source": {
+        "type": "weapon",
+        "slug": "冰点双峰",
+        "skillName": "冰锋共济",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "close-range-damage"
+      ]
+    },
+    {
+      "id": "weapon:裁决之眼:狂暴模式",
+      "label": "裁决之眼·狂暴模式",
+      "source": {
+        "type": "weapon",
+        "slug": "裁决之眼",
+        "skillName": "狂暴模式",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "weapon:纯白至上:磐石身躯",
+      "label": "纯白至上·磐石身躯",
+      "source": {
+        "type": "weapon",
+        "slug": "纯白至上",
+        "skillName": "磐石身躯",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "weapon:刺隐:刺隐之袭",
+      "label": "刺隐·刺隐之袭",
+      "source": {
+        "type": "weapon",
+        "slug": "刺隐",
+        "skillName": "刺隐之袭",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "correction"
+      ]
+    },
+    {
+      "id": "weapon:蝶翼双扇:蝶蚀之舞",
+      "label": "蝶翼双扇·蝶蚀之舞",
+      "source": {
+        "type": "weapon",
+        "slug": "蝶翼双扇",
+        "skillName": "蝶蚀之舞",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:锻星力量:锻星之力",
+      "label": "锻星力量·锻星之力",
+      "source": {
+        "type": "weapon",
+        "slug": "锻星力量",
+        "skillName": "锻星之力",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:封刃:弒强之力",
+      "label": "封刃·弒强之力",
+      "source": {
+        "type": "weapon",
+        "slug": "封刃",
+        "skillName": "弒强之力",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "weapon:拂晓炎翎:超载闪电",
+      "label": "拂晓炎翎·超载闪电",
+      "source": {
+        "type": "weapon",
+        "slug": "拂晓炎翎",
+        "skillName": "超载闪电",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:钢脊:腐蚀增伤",
+      "label": "钢脊·腐蚀增伤",
+      "source": {
+        "type": "weapon",
+        "slug": "钢脊",
+        "skillName": "腐蚀增伤",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:钢铁骑士:越战越勇",
+      "label": "钢铁骑士·越战越勇",
+      "source": {
+        "type": "weapon",
+        "slug": "钢铁骑士",
+        "skillName": "越战越勇",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:钢铁之握:钢铁之力",
+      "label": "钢铁之握·钢铁之力",
+      "source": {
+        "type": "weapon",
+        "slug": "钢铁之握",
+        "skillName": "钢铁之力",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "long-range-damage"
+      ]
+    },
+    {
+      "id": "weapon:鬼影长枪:鬼术枪击",
+      "label": "鬼影长枪·鬼术枪击",
+      "source": {
+        "type": "weapon",
+        "slug": "鬼影长枪",
+        "skillName": "鬼术枪击",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:黑金仲裁者:点金破绽",
+      "label": "黑金仲裁者·点金破绽",
+      "source": {
+        "type": "weapon",
+        "slug": "黑金仲裁者",
+        "skillName": "点金破绽",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:黑天使之刃:堕天炎狱",
+      "label": "黑天使之刃·堕天炎狱",
+      "source": {
+        "type": "weapon",
+        "slug": "黑天使之刃",
+        "skillName": "堕天炎狱",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:魂杵:烈焰噬魂",
+      "label": "魂杵·烈焰噬魂",
+      "source": {
+        "type": "weapon",
+        "slug": "魂杵",
+        "skillName": "烈焰噬魂",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:火神炎帝:火力宣泄",
+      "label": "火神炎帝·火力宣泄",
+      "source": {
+        "type": "weapon",
+        "slug": "火神炎帝",
+        "skillName": "火力宣泄",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:精绝兽神:秘法榴弹",
+      "label": "精绝兽神·秘法榴弹",
+      "source": {
+        "type": "weapon",
+        "slug": "精绝兽神",
+        "skillName": "秘法榴弹",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "correction"
+      ]
+    },
+    {
+      "id": "weapon:狂犬指套:破韧狂噬",
+      "label": "狂犬指套·破韧狂噬",
+      "source": {
+        "type": "weapon",
+        "slug": "狂犬指套",
+        "skillName": "破韧狂噬",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:狂人电锯:狂怒撕裂",
+      "label": "狂人电锯·狂怒撕裂",
+      "source": {
+        "type": "weapon",
+        "slug": "狂人电锯",
+        "skillName": "狂怒撕裂",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "close-range-damage"
+      ]
+    },
+    {
+      "id": "weapon:浪里白条:感电反应",
+      "label": "浪里白条·感电反应",
+      "source": {
+        "type": "weapon",
+        "slug": "浪里白条",
+        "skillName": "感电反应",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:雷霆之影:拒止力场",
+      "label": "雷霆之影·拒止力场",
+      "source": {
+        "type": "weapon",
+        "slug": "雷霆之影",
+        "skillName": "拒止力场",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "weapon:雷霆之影:雷电掌控",
+      "label": "雷霆之影·雷电掌控",
+      "source": {
+        "type": "weapon",
+        "slug": "雷霆之影",
+        "skillName": "雷电掌控",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:炼狱蝎王:燃魂",
+      "label": "炼狱蝎王·燃魂",
+      "source": {
+        "type": "weapon",
+        "slug": "炼狱蝎王",
+        "skillName": "燃魂",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:马来剑:滑步强袭",
+      "label": "马来剑·滑步强袭",
+      "source": {
+        "type": "weapon",
+        "slug": "马来剑",
+        "skillName": "滑步强袭",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:梦魇:拒止力场",
+      "label": "梦魇·拒止力场",
+      "source": {
+        "type": "weapon",
+        "slug": "梦魇",
+        "skillName": "拒止力场",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "weapon:秘魇锤:势大力沉",
+      "label": "秘魇锤·势大力沉",
+      "source": {
+        "type": "weapon",
+        "slug": "秘魇锤",
+        "skillName": "势大力沉",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:密林杀机:威能力场",
+      "label": "密林杀机·威能力场",
+      "source": {
+        "type": "weapon",
+        "slug": "密林杀机",
+        "skillName": "威能力场",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "weapon:冥河之矛:锁魂骨矛",
+      "label": "冥河之矛·锁魂骨矛",
+      "source": {
+        "type": "weapon",
+        "slug": "冥河之矛",
+        "skillName": "锁魂骨矛",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:怒目锤:怒目业火",
+      "label": "怒目锤·怒目业火",
+      "source": {
+        "type": "weapon",
+        "slug": "怒目锤",
+        "skillName": "怒目业火",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:骑士双刃:炽焰枪术",
+      "label": "骑士双刃·炽焰枪术",
+      "source": {
+        "type": "weapon",
+        "slug": "骑士双刃",
+        "skillName": "炽焰枪术",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:沙蚀重刃:火焰之力",
+      "label": "沙蚀重刃·火焰之力",
+      "source": {
+        "type": "weapon",
+        "slug": "沙蚀重刃",
+        "skillName": "火焰之力",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:韶光樱影:韶光增幅",
+      "label": "韶光樱影·韶光增幅",
+      "source": {
+        "type": "weapon",
+        "slug": "韶光樱影",
+        "skillName": "韶光增幅",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:韶光樱影:增幅过载",
+      "label": "韶光樱影·增幅过载",
+      "source": {
+        "type": "weapon",
+        "slug": "韶光樱影",
+        "skillName": "增幅过载",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:蛇神之剑:蛇神之刺",
+      "label": "蛇神之剑·蛇神之刺",
+      "source": {
+        "type": "weapon",
+        "slug": "蛇神之剑",
+        "skillName": "蛇神之刺",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:蛇神之矛:时空之力",
+      "label": "蛇神之矛·时空之力",
+      "source": {
+        "type": "weapon",
+        "slug": "蛇神之矛",
+        "skillName": "时空之力",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:深渊之触:雷暴激流",
+      "label": "深渊之触·雷暴激流",
+      "source": {
+        "type": "weapon",
+        "slug": "深渊之触",
+        "skillName": "雷暴激流",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "weapon:尸龙战斧:冰霜之力",
+      "label": "尸龙战斧·冰霜之力",
+      "source": {
+        "type": "weapon",
+        "slug": "尸龙战斧",
+        "skillName": "冰霜之力",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:十字长枪:枪出如龙",
+      "label": "十字长枪·枪出如龙",
+      "source": {
+        "type": "weapon",
+        "slug": "十字长枪",
+        "skillName": "枪出如龙",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:霜蚀之牙:寒霜之力",
+      "label": "霜蚀之牙·寒霜之力",
+      "source": {
+        "type": "weapon",
+        "slug": "霜蚀之牙",
+        "skillName": "寒霜之力",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:死神镰刀:生命虹吸",
+      "label": "死神镰刀·生命虹吸",
+      "source": {
+        "type": "weapon",
+        "slug": "死神镰刀",
+        "skillName": "生命虹吸",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:铁骨:暴击增伤",
+      "label": "铁骨·暴击增伤",
+      "source": {
+        "type": "weapon",
+        "slug": "铁骨",
+        "skillName": "暴击增伤",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "weapon:稳赢之手:复仇之握",
+      "label": "稳赢之手·复仇之握",
+      "source": {
+        "type": "weapon",
+        "slug": "稳赢之手",
+        "skillName": "复仇之握",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "critical"
+      ]
+    },
+    {
+      "id": "weapon:武装斧头:炙热武装",
+      "label": "武装斧头·炙热武装",
+      "source": {
+        "type": "weapon",
+        "slug": "武装斧头",
+        "skillName": "炙热武装",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "weapon:心有凌兮:一起来跳舞",
+      "label": "心有凌兮·一起来跳舞",
+      "source": {
+        "type": "weapon",
+        "slug": "心有凌兮",
+        "skillName": "一起来跳舞",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:血怨:蛇神之佑",
+      "label": "血怨·蛇神之佑",
+      "source": {
+        "type": "weapon",
+        "slug": "血怨",
+        "skillName": "蛇神之佑",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:夜影之逝:剑影枪声",
+      "label": "夜影之逝·剑影枪声",
+      "source": {
+        "type": "weapon",
+        "slug": "夜影之逝",
+        "skillName": "剑影枪声",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:夜影之逝:逝影连斩",
+      "label": "夜影之逝·逝影连斩",
+      "source": {
+        "type": "weapon",
+        "slug": "夜影之逝",
+        "skillName": "逝影连斩",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "correction"
+      ]
+    },
+    {
+      "id": "weapon:樱之殇:樱雷回响",
+      "label": "樱之殇·樱雷回响",
+      "source": {
+        "type": "weapon",
+        "slug": "樱之殇",
+        "skillName": "樱雷回响",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:樱之誓:樱鸣激荡",
+      "label": "樱之誓·樱鸣激荡",
+      "source": {
+        "type": "weapon",
+        "slug": "樱之誓",
+        "skillName": "樱鸣激荡",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:幽冥毒皇:腐蚀毒液",
+      "label": "幽冥毒皇·腐蚀毒液",
+      "source": {
+        "type": "weapon",
+        "slug": "幽冥毒皇",
+        "skillName": "腐蚀毒液",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:幽冥毒王:剧毒力场",
+      "label": "幽冥毒王·剧毒力场",
+      "source": {
+        "type": "weapon",
+        "slug": "幽冥毒王",
+        "skillName": "剧毒力场",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:振弦:狂暴模式",
+      "label": "振弦·狂暴模式",
+      "source": {
+        "type": "weapon",
+        "slug": "振弦",
+        "skillName": "狂暴模式",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "weapon:震沙锏:强攻",
+      "label": "震沙锏·强攻",
+      "source": {
+        "type": "weapon",
+        "slug": "震沙锏",
+        "skillName": "强攻",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "weapon:蜘蛛匕首:蛛网破绽",
+      "label": "蜘蛛匕首·蛛网破绽",
+      "source": {
+        "type": "weapon",
+        "slug": "蜘蛛匕首",
+        "skillName": "蛛网破绽",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "weapon:猪猪榴弹发射器:猪猪照相机",
+      "label": "猪猪榴弹发射器·猪猪照相机",
+      "source": {
+        "type": "weapon",
+        "slug": "猪猪榴弹发射器",
+        "skillName": "猪猪照相机",
+        "component": "ActiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:猪猪捏捏乐:火力全开",
+      "label": "猪猪捏捏乐·火力全开",
+      "source": {
+        "type": "weapon",
+        "slug": "猪猪捏捏乐",
+        "skillName": "火力全开",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20704040478",
+      "label": "爆炸直击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040478",
+        "slot": 4,
+        "slug": "爆炸直击",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20704040480",
+      "label": "超强技能",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040480",
+        "slot": 4,
+        "slug": "超强技能",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20704040482",
+      "label": "暴力切换",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040482",
+        "slot": 4,
+        "slug": "暴力切换",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20704040483",
+      "label": "隐匿出击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040483",
+        "slot": 4,
+        "slug": "隐匿出击",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20704040484",
+      "label": "爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040484",
+        "slot": 4,
+        "slug": "爆发",
+        "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "weapon:Z型步枪:神射心流",
+      "label": "Z型步枪·神射心流",
+      "source": {
+        "type": "weapon",
+        "slug": "Z型步枪",
+        "skillName": "神射心流",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "perk:20703040002",
+      "label": "快速装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040002",
+        "slot": 1,
+        "slug": "快速装填",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040003",
+      "label": "战术装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040003",
+        "slot": 1,
+        "slug": "战术装填",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040004",
+      "label": "危机装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040004",
+        "slot": 1,
+        "slug": "危机装填",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040005",
+      "label": "猎杀装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040005",
+        "slot": 1,
+        "slug": "猎杀装填",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040008",
+      "label": "充能弹药",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040008",
+        "slot": 1,
+        "slug": "充能弹药",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040012",
+      "label": "狂暴装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040012",
+        "slot": 1,
+        "slug": "狂暴装填",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040015",
+      "label": "闪身",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040015",
+        "slot": 2,
+        "slug": "闪身",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040021",
+      "label": "精确能量",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040021",
+        "slot": 2,
+        "slug": "精确能量",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040025",
+      "label": "猎杀充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040025",
+        "slot": 2,
+        "slug": "猎杀充能",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040028",
+      "label": "联动提升",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040028",
+        "slot": 3,
+        "slug": "联动提升",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040033",
+      "label": "烈焰冲击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040033",
+        "slot": 4,
+        "slug": "烈焰冲击",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040040",
+      "label": "亲密距离",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040040",
+        "slot": 4,
+        "slug": "亲密距离",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040041",
+      "label": "杀戮连锁",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040041",
+        "slot": 4,
+        "slug": "杀戮连锁",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040042",
+      "label": "龙炎推进",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040042",
+        "slot": 4,
+        "slug": "龙炎推进",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040044",
+      "label": "聚能速度",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040044",
+        "slot": 4,
+        "slug": "聚能速度",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040049",
+      "label": "爆炸烟花",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040049",
+        "slot": 4,
+        "slug": "爆炸烟花",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040051",
+      "label": "穿针引线",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040051",
+        "slot": 4,
+        "slug": "穿针引线",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040055",
+      "label": "技能扩散",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040055",
+        "slot": 4,
+        "slug": "技能扩散",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040058",
+      "label": "穿甲扩散",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040058",
+        "slot": 4,
+        "slug": "穿甲扩散",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040063",
+      "label": "渐稳连击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040063",
+        "slot": 1,
+        "slug": "渐稳连击",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040066",
+      "label": "备弹返流",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040066",
+        "slot": 2,
+        "slug": "备弹返流",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040068",
+      "label": "多重激返",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040068",
+        "slot": 2,
+        "slug": "多重激返",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040078",
+      "label": "弱点续弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040078",
+        "slot": 1,
+        "slug": "弱点续弹",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040080",
+      "label": "钝化充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040080",
+        "slot": 2,
+        "slug": "钝化充能",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040086",
+      "label": "出其不意",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040086",
+        "slot": 2,
+        "slug": "出其不意",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040088",
+      "label": "百万伏特",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040088",
+        "slot": 4,
+        "slug": "百万伏特",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040089",
+      "label": "超载弹匣",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040089",
+        "slot": 1,
+        "slug": "超载弹匣",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040090",
+      "label": "闪电轰击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040090",
+        "slot": 4,
+        "slug": "闪电轰击",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040091",
+      "label": "归途",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040091",
+        "slot": 4,
+        "slug": "归途",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040092",
+      "label": "反哺",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040092",
+        "slot": 4,
+        "slug": "反哺",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040094",
+      "label": "弹雨协奏",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040094",
+        "slot": 1,
+        "slug": "弹雨协奏",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040095",
+      "label": "帽子戏法",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040095",
+        "slot": 1,
+        "slug": "帽子戏法",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040100",
+      "label": "致命循环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040100",
+        "slot": 1,
+        "slug": "致命循环",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040101",
+      "label": "回响续装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040101",
+        "slot": 2,
+        "slug": "回响续装",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040102",
+      "label": "川流不息",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040102",
+        "slot": 2,
+        "slug": "川流不息",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040103",
+      "label": "共鸣射击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040103",
+        "slot": 2,
+        "slug": "共鸣射击",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040107",
+      "label": "暴击涌流",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040107",
+        "slot": 2,
+        "slug": "暴击涌流",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040115",
+      "label": "概率坍缩",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040115",
+        "slot": 3,
+        "slug": "概率坍缩",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040118",
+      "label": "威慑环爆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040118",
+        "slot": 4,
+        "slug": "威慑环爆",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040119",
+      "label": "弹容爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040119",
+        "slot": 4,
+        "slug": "弹容爆破",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040121",
+      "label": "同频装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040121",
+        "slot": 1,
+        "slug": "同频装填",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040123",
+      "label": "蚀化速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040123",
+        "slot": 1,
+        "slug": "蚀化速装",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040124",
+      "label": "元素析出",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040124",
+        "slot": 1,
+        "slug": "元素析出",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040126",
+      "label": "同调装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040126",
+        "slot": 1,
+        "slug": "同调装填",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040127",
+      "label": "解构装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040127",
+        "slot": 1,
+        "slug": "解构装填",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040128",
+      "label": "同调稳持",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040128",
+        "slot": 1,
+        "slug": "同调稳持",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040129",
+      "label": "层积涌流",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040129",
+        "slot": 2,
+        "slug": "层积涌流",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040132",
+      "label": "崩解回涌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040132",
+        "slot": 2,
+        "slug": "崩解回涌",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040136",
+      "label": "重装弹头",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040136",
+        "slot": 3,
+        "slug": "重装弹头",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040137",
+      "label": "强击火力",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040137",
+        "slot": 3,
+        "slug": "强击火力",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040141",
+      "label": "坍缩奇点",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040141",
+        "slot": 4,
+        "slug": "坍缩奇点",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040145",
+      "label": "追猎齐射",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040145",
+        "slot": 4,
+        "slug": "追猎齐射",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040152",
+      "label": "余震速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040152",
+        "slot": 1,
+        "slug": "余震速装",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040153",
+      "label": "惯性制退",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040153",
+        "slot": 1,
+        "slug": "惯性制退",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040154",
+      "label": "命中返能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040154",
+        "slot": 2,
+        "slug": "命中返能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040156",
+      "label": "追身导弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040156",
+        "slot": 4,
+        "slug": "追身导弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040157",
+      "label": "加速装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040157",
+        "slot": 1,
+        "slug": "加速装填",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040158",
+      "label": "加速蓄能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040158",
+        "slot": 2,
+        "slug": "加速蓄能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040161",
+      "label": "扩容核心",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040161",
+        "slot": 1,
+        "slug": "扩容核心",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040162",
+      "label": "回响充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040162",
+        "slot": 2,
+        "slug": "回响充能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040165",
+      "label": "急速装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040165",
+        "slot": 1,
+        "slug": "急速装填",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040166",
+      "label": "连锁充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040166",
+        "slot": 2,
+        "slug": "连锁充能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040168",
+      "label": "霜滞协议",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040168",
+        "slot": 4,
+        "slug": "霜滞协议",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040169",
+      "label": "负压弹匣",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040169",
+        "slot": 1,
+        "slug": "负压弹匣",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040170",
+      "label": "多重回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040170",
+        "slot": 2,
+        "slug": "多重回能",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040172",
+      "label": "闪电协议",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040172",
+        "slot": 4,
+        "slug": "闪电协议",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040173",
+      "label": "矢量制退",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040173",
+        "slot": 1,
+        "slug": "矢量制退",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040174",
+      "label": "急速蓄能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040174",
+        "slot": 2,
+        "slug": "急速蓄能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040176",
+      "label": "精确导弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040176",
+        "slot": 4,
+        "slug": "精确导弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040181",
+      "label": "闪切霜环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040181",
+        "slot": 4,
+        "slug": "闪切霜环",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040182",
+      "label": "超频蓄能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040182",
+        "slot": 2,
+        "slug": "超频蓄能",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040183",
+      "label": "龙息奔涌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040183",
+        "slot": 4,
+        "slug": "龙息奔涌",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040185",
+      "label": "超频",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040185",
+        "slot": 4,
+        "slug": "超频",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040186",
+      "label": "强袭",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040186",
+        "slot": 4,
+        "slug": "强袭",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040199",
+      "label": "万钧过载",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040199",
+        "slot": 1,
+        "slug": "万钧过载",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040200",
+      "label": "梯山架壑",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040200",
+        "slot": 2,
+        "slug": "梯山架壑",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040202",
+      "label": "地龙惊破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040202",
+        "slot": 4,
+        "slug": "地龙惊破",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040218",
+      "label": "高频触电",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040218",
+        "slot": 4,
+        "slug": "高频触电",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040219",
+      "label": "定频加压",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040219",
+        "slot": 4,
+        "slug": "定频加压",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040252",
+      "label": "殒命补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040252",
+        "slot": 1,
+        "slug": "殒命补给",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040253",
+      "label": "聚能弹道",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040253",
+        "slot": 1,
+        "slug": "聚能弹道",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040256",
+      "label": "无衰射程",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040256",
+        "slot": 3,
+        "slug": "无衰射程",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040259",
+      "label": "命中储能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040259",
+        "slot": 2,
+        "slug": "命中储能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040260",
+      "label": "群伤回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040260",
+        "slot": 2,
+        "slug": "群伤回能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040263",
+      "label": "伤害回血",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040263",
+        "slot": 4,
+        "slug": "伤害回血",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040272",
+      "label": "后台补弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040272",
+        "slot": 1,
+        "slug": "后台补弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040273",
+      "label": "后台回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040273",
+        "slot": 1,
+        "slug": "后台回弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040274",
+      "label": "后台充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040274",
+        "slot": 2,
+        "slug": "后台充能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040275",
+      "label": "后台续能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040275",
+        "slot": 2,
+        "slug": "后台续能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040281",
+      "label": "团队填装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040281",
+        "slot": 1,
+        "slug": "团队填装",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040282",
+      "label": "弱点充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040282",
+        "slot": 2,
+        "slug": "弱点充能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040283",
+      "label": "轻武速移",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040283",
+        "slot": 4,
+        "slug": "轻武速移",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040284",
+      "label": "狙盾生成",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040284",
+        "slot": 4,
+        "slug": "狙盾生成",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040285",
+      "label": "重武护盾",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040285",
+        "slot": 4,
+        "slug": "重武护盾",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040291",
+      "label": "霰弹回补",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040291",
+        "slot": 1,
+        "slug": "霰弹回补",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040292",
+      "label": "霰弹充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040292",
+        "slot": 2,
+        "slug": "霰弹充能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040294",
+      "label": "霰弹满中",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040294",
+        "slot": 1,
+        "slug": "霰弹满中",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040295",
+      "label": "霰弹回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040295",
+        "slot": 2,
+        "slug": "霰弹回能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040300",
+      "label": "模式填装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040300",
+        "slot": 1,
+        "slug": "模式填装",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040301",
+      "label": "模式回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040301",
+        "slot": 2,
+        "slug": "模式回能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040303",
+      "label": "易伤回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040303",
+        "slot": 1,
+        "slug": "易伤回弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040304",
+      "label": "易伤回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040304",
+        "slot": 2,
+        "slug": "易伤回能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040307",
+      "label": "满盾速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040307",
+        "slot": 1,
+        "slug": "满盾速装",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040308",
+      "label": "满盾充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040308",
+        "slot": 2,
+        "slug": "满盾充能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040310",
+      "label": "满盾爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040310",
+        "slot": 4,
+        "slug": "满盾爆破",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040311",
+      "label": "近战回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040311",
+        "slot": 1,
+        "slug": "近战回弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040313",
+      "label": "充能弹丸",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040313",
+        "slot": 1,
+        "slug": "充能弹丸",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040314",
+      "label": "钝化储能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040314",
+        "slot": 2,
+        "slug": "钝化储能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040316",
+      "label": "杀戮连击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040316",
+        "slot": 4,
+        "slug": "杀戮连击",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040317",
+      "label": "充能连线",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040317",
+        "slot": 1,
+        "slug": "充能连线",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040318",
+      "label": "川流不止",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040318",
+        "slot": 2,
+        "slug": "川流不止",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040320",
+      "label": "毒属爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040320",
+        "slot": 4,
+        "slug": "毒属爆破",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040321",
+      "label": "危险循环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040321",
+        "slot": 1,
+        "slug": "危险循环",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040329",
+      "label": "协同",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040329",
+        "slot": 4,
+        "slug": "协同",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040330",
+      "label": "腾焰",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040330",
+        "slot": 4,
+        "slug": "腾焰",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040331",
+      "label": "蝎刺",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040331",
+        "slot": 4,
+        "slug": "蝎刺",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040332",
+      "label": "折射",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040332",
+        "slot": 4,
+        "slug": "折射",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040333",
+      "label": "蔓延",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040333",
+        "slot": 4,
+        "slug": "蔓延",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040338",
+      "label": "霜华",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040338",
+        "slot": 4,
+        "slug": "霜华",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040339",
+      "label": "索命龙炎",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040339",
+        "slot": 4,
+        "slug": "索命龙炎",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040341",
+      "label": "狂热兽魂",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040341",
+        "slot": 4,
+        "slug": "狂热兽魂",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040343",
+      "label": "魂狩火网",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040343",
+        "slot": 4,
+        "slug": "魂狩火网",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040344",
+      "label": "剑摧魂",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040344",
+        "slot": 4,
+        "slug": "剑摧魂",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040345",
+      "label": "泪纵横",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040345",
+        "slot": 4,
+        "slug": "泪纵横",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040348",
+      "label": "使唤回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040348",
+        "slot": 1,
+        "slug": "使唤回弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040349",
+      "label": "小弟充电",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040349",
+        "slot": 2,
+        "slug": "小弟充电",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040351",
+      "label": "合圈震荡",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040351",
+        "slot": 4,
+        "slug": "合圈震荡",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040352",
+      "label": "蹭枪子弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040352",
+        "slot": 1,
+        "slug": "蹭枪子弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040353",
+      "label": "带携充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040353",
+        "slot": 2,
+        "slug": "带携充能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040355",
+      "label": "定时震波",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040355",
+        "slot": 4,
+        "slug": "定时震波",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040356",
+      "label": "泡碎回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040356",
+        "slot": 1,
+        "slug": "泡碎回弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040357",
+      "label": "泡能续充",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040357",
+        "slot": 2,
+        "slug": "泡能续充",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040359",
+      "label": "泡出暴击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040359",
+        "slot": 4,
+        "slug": "泡出暴击",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040360",
+      "label": "满弹转充",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040360",
+        "slot": 1,
+        "slug": "满弹转充",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040361",
+      "label": "钩中充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040361",
+        "slot": 2,
+        "slug": "钩中充能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040363",
+      "label": "连环震波",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040363",
+        "slot": 4,
+        "slug": "连环震波",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040364",
+      "label": "铲射回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040364",
+        "slot": 1,
+        "slug": "铲射回弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040365",
+      "label": "铲射减冷",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040365",
+        "slot": 2,
+        "slug": "铲射减冷",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040367",
+      "label": "长滑不衰",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040367",
+        "slot": 4,
+        "slug": "长滑不衰",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040368",
+      "label": "连击回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040368",
+        "slot": 1,
+        "slug": "连击回弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040369",
+      "label": "连击充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040369",
+        "slot": 2,
+        "slug": "连击充能",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040371",
+      "label": "铲杀得速",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040371",
+        "slot": 4,
+        "slug": "铲杀得速",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040372",
+      "label": "加弹抽奖",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040372",
+        "slot": 1,
+        "slug": "加弹抽奖",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040373",
+      "label": "技能抽奖",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040373",
+        "slot": 2,
+        "slug": "技能抽奖",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040374",
+      "label": "连射抽奖",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040374",
+        "slot": 3,
+        "slug": "连射抽奖",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040375",
+      "label": "连抽循环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040375",
+        "slot": 4,
+        "slug": "连抽循环",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040376",
+      "label": "抽奖回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040376",
+        "slot": 1,
+        "slug": "抽奖回弹",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040377",
+      "label": "抽奖充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040377",
+        "slot": 2,
+        "slug": "抽奖充能",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040379",
+      "label": "幸运补偿",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040379",
+        "slot": 4,
+        "slug": "幸运补偿",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040380",
+      "label": "弹药续杯",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040380",
+        "slot": 1,
+        "slug": "弹药续杯",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040381",
+      "label": "能量续抽",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040381",
+        "slot": 2,
+        "slug": "能量续抽",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040382",
+      "label": "紫奖掉物",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040382",
+        "slot": 3,
+        "slug": "紫奖掉物",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040383",
+      "label": "白送重抽",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040383",
+        "slot": 4,
+        "slug": "白送重抽",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040384",
+      "label": "越射越快",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040384",
+        "slot": 1,
+        "slug": "越射越快",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040385",
+      "label": "速充增效",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040385",
+        "slot": 2,
+        "slug": "速充增效",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040387",
+      "label": "冲刺得速",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040387",
+        "slot": 4,
+        "slug": "冲刺得速",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040388",
+      "label": "独爆回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040388",
+        "slot": 1,
+        "slug": "独爆回弹",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040389",
+      "label": "独爆充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040389",
+        "slot": 2,
+        "slug": "独爆充能",
+        "overlimitCard": false
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040391",
+      "label": "独爆产暴",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040391",
+        "slot": 4,
+        "slug": "独爆产暴",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040392",
+      "label": "捡货回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040392",
+        "slot": 1,
+        "slug": "捡货回弹",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040393",
+      "label": "捡货充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040393",
+        "slot": 2,
+        "slug": "捡货充能",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040395",
+      "label": "击杀掉货",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040395",
+        "slot": 4,
+        "slug": "击杀掉货",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040404",
+      "label": "永动核心",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040404",
+        "slot": 2,
+        "slug": "永动核心",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040405",
+      "label": "弹道过载",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040405",
+        "slot": 4,
+        "slug": "弹道过载",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040410",
+      "label": "不死狂热",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040410",
+        "slot": 4,
+        "slug": "不死狂热",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040416",
+      "label": "火力阵线",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040416",
+        "slot": 4,
+        "slug": "火力阵线",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040422",
+      "label": "空中补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040422",
+        "slot": 4,
+        "slug": "空中补给",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040425",
+      "label": "幸运哈士奇",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040425",
+        "slot": 4,
+        "slug": "幸运哈士奇",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040426",
+      "label": "黑金遗产",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040426",
+        "slot": 4,
+        "slug": "黑金遗产",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040427",
+      "label": "黑金军火",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040427",
+        "slot": 4,
+        "slug": "黑金军火",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040428",
+      "label": "自动龙炎",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040428",
+        "slot": 4,
+        "slug": "自动龙炎",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040430",
+      "label": "迅积蓄能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040430",
+        "slot": 4,
+        "slug": "迅积蓄能",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040431",
+      "label": "厄运传导",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040431",
+        "slot": 4,
+        "slug": "厄运传导",
+        "overlimitCard": false
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040437",
+      "label": "致命爆炸",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040437",
+        "slot": 4,
+        "slug": "致命爆炸",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040438",
+      "label": "武器穿透",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040438",
+        "slot": 3,
+        "slug": "武器穿透",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040439",
+      "label": "技能魔术",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040439",
+        "slot": 1,
+        "slug": "技能魔术",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040440",
+      "label": "反弹转化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040440",
+        "slot": 4,
+        "slug": "反弹转化",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040441",
+      "label": "狂战",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040441",
+        "slot": 4,
+        "slug": "狂战",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040442",
+      "label": "切换手法",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040442",
+        "slot": 1,
+        "slug": "切换手法",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040443",
+      "label": "连发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040443",
+        "slot": 4,
+        "slug": "连发",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040444",
+      "label": "物法兼得",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040444",
+        "slot": 3,
+        "slug": "物法兼得",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040447",
+      "label": "充能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040447",
+        "slot": 3,
+        "slug": "充能属性-20703040447",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040448",
+      "label": "暴击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040448",
+        "slot": 3,
+        "slug": "暴击属性-20703040448",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040450",
+      "label": "防御属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040450",
+        "slot": 3,
+        "slug": "防御属性-20703040450",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040459",
+      "label": "充能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040459",
+        "slot": 3,
+        "slug": "充能属性-20703040459",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040460",
+      "label": "暴击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040460",
+        "slot": 3,
+        "slug": "暴击属性-20703040460",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040462",
+      "label": "防御属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040462",
+        "slot": 3,
+        "slug": "防御属性-20703040462",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040469",
+      "label": "模式特化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040469",
+        "slot": 4,
+        "slug": "模式特化",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040470",
+      "label": "不稳定弹道",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040470",
+        "slot": 4,
+        "slug": "不稳定弹道",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040471",
+      "label": "导弹轰炸",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040471",
+        "slot": 3,
+        "slug": "导弹轰炸",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040472",
+      "label": "换弹冲击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040472",
+        "slot": 3,
+        "slug": "换弹冲击",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040473",
+      "label": "万伤掷弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040473",
+        "slot": 3,
+        "slug": "万伤掷弹",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040474",
+      "label": "爆毒蚀域",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040474",
+        "slot": 4,
+        "slug": "爆毒蚀域",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20704040476",
+      "label": "游击飞弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040476",
+        "slot": 4,
+        "slug": "游击飞弹",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立跟踪导弹，不提供可注册的角色伤害倍率通道。"
+    },
+    {
+      "id": "perk:20704040477",
+      "label": "弱点必暴",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040477",
+        "slot": 4,
+        "slug": "弱点必暴",
+        "overlimitCard": true
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果修改暴击概率，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20704040479",
+      "label": "飞弹狂射",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040479",
+        "slot": 4,
+        "slug": "飞弹狂射",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立跟踪导弹，不提供可注册的角色伤害倍率通道。"
+    },
+    {
+      "id": "perk:20704040481",
+      "label": "暴击飞弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040481",
+        "slot": 4,
+        "slug": "暴击飞弹",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立跟踪导弹，不提供可注册的角色伤害倍率通道。"
+    },
+    {
+      "id": "perk:20704040485",
+      "label": "近战冲击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040485",
+        "slot": 4,
+        "slug": "近战冲击",
+        "overlimitCard": true
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立冲击波，不提供可注册的角色伤害倍率通道。"
+    },
+    {
+      "id": "season:s3:grappling-hook:3003301",
+      "label": "质量过载",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "grappling-hook",
+        "nodeId": "3003301"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "节点造成独立技能伤害或修改该技能自身基础行为，不提供可反查的角色增伤通道。"
+    },
+    {
+      "id": "season:s3:grappling-hook:3003303",
+      "label": "相变蓄能",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "grappling-hook",
+        "nodeId": "3003303"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:grappling-hook:3003602",
+      "label": "神经超频",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "grappling-hook",
+        "nodeId": "3003602"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:iron-fist:3001202",
+      "label": "天崩地裂",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "iron-fist",
+        "nodeId": "3001202"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:iron-fist:3001301",
+      "label": "速充核心",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "iron-fist",
+        "nodeId": "3001301"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:iron-fist:3001501",
+      "label": "狂怒续航",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "iron-fist",
+        "nodeId": "3001501"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:iron-fist:3001503",
+      "label": "暴戾汲取",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "iron-fist",
+        "nodeId": "3001503"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:passive:2030102",
+      "label": "秘技扭蛋机",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "passiveId": "2030102"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "被动提供充能、经济或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:passive:2030103",
+      "label": "玄学扭蛋机",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "passiveId": "2030103"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "被动产生独立技能伤害或随机技能，不提供稳定的角色增伤通道。"
+    },
+    {
+      "id": "season:s3:passive:2030106",
+      "label": "赏金扭蛋机",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "passiveId": "2030106"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "被动提供充能、经济或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002102",
+      "label": "零点",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002102"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "节点造成独立技能伤害或修改该技能自身基础行为，不提供可反查的角色增伤通道。"
+    },
+    {
+      "id": "season:s3:zero:3002202",
+      "label": "奇异引力源",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002202"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "节点造成独立技能伤害或修改该技能自身基础行为，不提供可反查的角色增伤通道。"
+    },
+    {
+      "id": "season:s3:zero:3002205",
+      "label": "爆破盲盒",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002205"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002206",
+      "label": "极速轮盘",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002206"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002207",
+      "label": "致命抽选",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002207"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002208",
+      "label": "游击轮盘",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002208"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002301",
+      "label": "并行发生",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002301"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002303",
+      "label": "脉冲驱动",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002303"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002305",
+      "label": "破甲狂欢",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002305"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002306",
+      "label": "群星收割",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002306"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002307",
+      "label": "绝对洞察",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002307"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002308",
+      "label": "智械蜂群",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002308"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002402",
+      "label": "冰冷猛冲",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002402"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "节点造成独立技能伤害或修改该技能自身基础行为，不提供可反查的角色增伤通道。"
+    },
+    {
+      "id": "season:s3:zero:3002405",
+      "label": "周期馈赠",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002405"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002406",
+      "label": "概率极化",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002406"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002407",
+      "label": "庇护盲盒",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002407"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002408",
+      "label": "视界秘藏",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002408"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002501",
+      "label": "冬日长存",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002501"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002505",
+      "label": "厄运补偿",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002505"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002506",
+      "label": "混乱赌局",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002506"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002507",
+      "label": "破绽红利",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002507"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002508",
+      "label": "动能秘藏",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002508"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002602",
+      "label": "量子纠缠",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002602"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "节点造成独立技能伤害或修改该技能自身基础行为，不提供可反查的角色增伤通道。"
+    },
+    {
+      "id": "season:s3:zero:3002605",
+      "label": "跃迁共振",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002605"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002606",
+      "label": "丰饶溢出",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002606"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002607",
+      "label": "精准摇奖",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002607"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s3:zero:3002608",
+      "label": "连击盲盒",
+      "source": {
+        "type": "season-talent",
+        "season": "s3",
+        "tree": "zero",
+        "nodeId": "3002608"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "节点提供控制、充能、经济、生存或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:暗夜之殇:牛仔居合",
+      "label": "暗夜之殇·牛仔居合",
+      "source": {
+        "type": "weapon",
+        "slug": "暗夜之殇",
+        "skillName": "牛仔居合",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:爆星:齐射爆星",
+      "label": "爆星·齐射爆星",
+      "source": {
+        "type": "weapon",
+        "slug": "爆星",
+        "skillName": "齐射爆星",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:冰川尼泊尔:居合",
+      "label": "冰川尼泊尔·居合",
+      "source": {
+        "type": "weapon",
+        "slug": "冰川尼泊尔",
+        "skillName": "居合",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:裁决之眼:过载暴击",
+      "label": "裁决之眼·过载暴击",
+      "source": {
+        "type": "weapon",
+        "slug": "裁决之眼",
+        "skillName": "过载暴击",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:超级复合弓:复合战术",
+      "label": "超级复合弓·复合战术",
+      "source": {
+        "type": "weapon",
+        "slug": "超级复合弓",
+        "skillName": "复合战术",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:乘风快递:乘风而起",
+      "label": "乘风快递·乘风而起",
+      "source": {
+        "type": "weapon",
+        "slug": "乘风快递",
+        "skillName": "乘风而起",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:乘风快递:闪身",
+      "label": "乘风快递·闪身",
+      "source": {
+        "type": "weapon",
+        "slug": "乘风快递",
+        "skillName": "闪身",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:春雷震:爆竹声声",
+      "label": "春雷震·爆竹声声",
+      "source": {
+        "type": "weapon",
+        "slug": "春雷震",
+        "skillName": "爆竹声声",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:纯白至上:强力冲击",
+      "label": "纯白至上·强力冲击",
+      "source": {
+        "type": "weapon",
+        "slug": "纯白至上",
+        "skillName": "强力冲击",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:刺隐:百川归海",
+      "label": "刺隐·百川归海",
+      "source": {
+        "type": "weapon",
+        "slug": "刺隐",
+        "skillName": "百川归海",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:杜瓦瓶:过量装填",
+      "label": "杜瓦瓶·过量装填",
+      "source": {
+        "type": "weapon",
+        "slug": "杜瓦瓶",
+        "skillName": "过量装填",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:杜瓦瓶:零度之刺",
+      "label": "杜瓦瓶·零度之刺",
+      "source": {
+        "type": "weapon",
+        "slug": "杜瓦瓶",
+        "skillName": "零度之刺",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:渡鸦剑:腐殖汲取",
+      "label": "渡鸦剑·腐殖汲取",
+      "source": {
+        "type": "weapon",
+        "slug": "渡鸦剑",
+        "skillName": "腐殖汲取",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:钢铁轰鸣:劫掠时刻",
+      "label": "钢铁轰鸣·劫掠时刻",
+      "source": {
+        "type": "weapon",
+        "slug": "钢铁轰鸣",
+        "skillName": "劫掠时刻",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:钢铁轰鸣:连环爆炸",
+      "label": "钢铁轰鸣·连环爆炸",
+      "source": {
+        "type": "weapon",
+        "slug": "钢铁轰鸣",
+        "skillName": "连环爆炸",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:钢铁骑士:钢铁冲击",
+      "label": "钢铁骑士·钢铁冲击",
+      "source": {
+        "type": "weapon",
+        "slug": "钢铁骑士",
+        "skillName": "钢铁冲击",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:钢铁游隼:游隼之击",
+      "label": "钢铁游隼·游隼之击",
+      "source": {
+        "type": "weapon",
+        "slug": "钢铁游隼",
+        "skillName": "游隼之击",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:钢铁游隼:振翼弹射",
+      "label": "钢铁游隼·振翼弹射",
+      "source": {
+        "type": "weapon",
+        "slug": "钢铁游隼",
+        "skillName": "振翼弹射",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:共晶点:低温界面",
+      "label": "共晶点·低温界面",
+      "source": {
+        "type": "weapon",
+        "slug": "共晶点",
+        "skillName": "低温界面",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:共晶点:连环冻结",
+      "label": "共晶点·连环冻结",
+      "source": {
+        "type": "weapon",
+        "slug": "共晶点",
+        "skillName": "连环冻结",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:光荣之路:光荣之路",
+      "label": "光荣之路·光荣之路",
+      "source": {
+        "type": "weapon",
+        "slug": "光荣之路",
+        "skillName": "光荣之路",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:光荣之路:疾速追能",
+      "label": "光荣之路·疾速追能",
+      "source": {
+        "type": "weapon",
+        "slug": "光荣之路",
+        "skillName": "疾速追能",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:鬼铜蚀:变压毒气",
+      "label": "鬼铜蚀·变压毒气",
+      "source": {
+        "type": "weapon",
+        "slug": "鬼铜蚀",
+        "skillName": "变压毒气",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:鬼铜蚀:罐装毒液",
+      "label": "鬼铜蚀·罐装毒液",
+      "source": {
+        "type": "weapon",
+        "slug": "鬼铜蚀",
+        "skillName": "罐装毒液",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:哈士奇好友:出发，哈士奇！",
+      "label": "哈士奇好友·出发，哈士奇！",
+      "source": {
+        "type": "weapon",
+        "slug": "哈士奇好友",
+        "skillName": "出发，哈士奇！",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:哈士奇好友:加油，哈士奇！",
+      "label": "哈士奇好友·加油，哈士奇！",
+      "source": {
+        "type": "weapon",
+        "slug": "哈士奇好友",
+        "skillName": "加油，哈士奇！",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:黑金仲裁者:点金弹",
+      "label": "黑金仲裁者·点金弹",
+      "source": {
+        "type": "weapon",
+        "slug": "黑金仲裁者",
+        "skillName": "点金弹",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:黑克勒45:击杀充能",
+      "label": "黑克勒45·击杀充能",
+      "source": {
+        "type": "weapon",
+        "slug": "黑克勒45",
+        "skillName": "击杀充能",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:黑克勒45:燃烧手雷",
+      "label": "黑克勒45·燃烧手雷",
+      "source": {
+        "type": "weapon",
+        "slug": "黑克勒45",
+        "skillName": "燃烧手雷",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:葫芦:多喝水",
+      "label": "葫芦·多喝水",
+      "source": {
+        "type": "weapon",
+        "slug": "葫芦",
+        "skillName": "多喝水",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:黄沙风暴:发散射击",
+      "label": "黄沙风暴·发散射击",
+      "source": {
+        "type": "weapon",
+        "slug": "黄沙风暴",
+        "skillName": "发散射击",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:黄沙风暴:狂热射击",
+      "label": "黄沙风暴·狂热射击",
+      "source": {
+        "type": "weapon",
+        "slug": "黄沙风暴",
+        "skillName": "狂热射击",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:火炬:烈焰之力",
+      "label": "火炬·烈焰之力",
+      "source": {
+        "type": "weapon",
+        "slug": "火炬",
+        "skillName": "烈焰之力",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:火山口:多重燃烧手雷",
+      "label": "火山口·多重燃烧手雷",
+      "source": {
+        "type": "weapon",
+        "slug": "火山口",
+        "skillName": "多重燃烧手雷",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:火山口:熔岩充能",
+      "label": "火山口·熔岩充能",
+      "source": {
+        "type": "weapon",
+        "slug": "火山口",
+        "skillName": "熔岩充能",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:火神炎帝:架设模式",
+      "label": "火神炎帝·架设模式",
+      "source": {
+        "type": "weapon",
+        "slug": "火神炎帝",
+        "skillName": "架设模式",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:疾影逐风:滑铲时刻",
+      "label": "疾影逐风·滑铲时刻",
+      "source": {
+        "type": "weapon",
+        "slug": "疾影逐风",
+        "skillName": "滑铲时刻",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:疾影逐风:强化射击",
+      "label": "疾影逐风·强化射击",
+      "source": {
+        "type": "weapon",
+        "slug": "疾影逐风",
+        "skillName": "强化射击",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:精绝兽神:裂魂双狩",
+      "label": "精绝兽神·裂魂双狩",
+      "source": {
+        "type": "weapon",
+        "slug": "精绝兽神",
+        "skillName": "裂魂双狩",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:飓风之锤:风暴连击",
+      "label": "飓风之锤·风暴连击",
+      "source": {
+        "type": "weapon",
+        "slug": "飓风之锤",
+        "skillName": "风暴连击",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:飓风之锤:连战连胜",
+      "label": "飓风之锤·连战连胜",
+      "source": {
+        "type": "weapon",
+        "slug": "飓风之锤",
+        "skillName": "连战连胜",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:飓风之龙:飓龙连击",
+      "label": "飓风之龙·飓龙连击",
+      "source": {
+        "type": "weapon",
+        "slug": "飓风之龙",
+        "skillName": "飓龙连击",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:飓风之龙:炙热龙炎",
+      "label": "飓风之龙·炙热龙炎",
+      "source": {
+        "type": "weapon",
+        "slug": "飓风之龙",
+        "skillName": "炙热龙炎",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:浪里白条:高能光束",
+      "label": "浪里白条·高能光束",
+      "source": {
+        "type": "weapon",
+        "slug": "浪里白条",
+        "skillName": "高能光束",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:雷霆999:闪电锁链",
+      "label": "雷霆999·闪电锁链",
+      "source": {
+        "type": "weapon",
+        "slug": "雷霆999",
+        "skillName": "闪电锁链",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:雷霆999:威猛火力",
+      "label": "雷霆999·威猛火力",
+      "source": {
+        "type": "weapon",
+        "slug": "雷霆999",
+        "skillName": "威猛火力",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:黎明之光:双重奏",
+      "label": "黎明之光·双重奏",
+      "source": {
+        "type": "weapon",
+        "slug": "黎明之光",
+        "skillName": "双重奏",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:黎明之光:武器大师",
+      "label": "黎明之光·武器大师",
+      "source": {
+        "type": "weapon",
+        "slug": "黎明之光",
+        "skillName": "武器大师",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:利齿:穿透引爆",
+      "label": "利齿·穿透引爆",
+      "source": {
+        "type": "weapon",
+        "slug": "利齿",
+        "skillName": "穿透引爆",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:炼狱双蝎:余烬",
+      "label": "炼狱双蝎·余烬",
+      "source": {
+        "type": "weapon",
+        "slug": "炼狱双蝎",
+        "skillName": "余烬",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:炼狱双蝎:狱火冲击",
+      "label": "炼狱双蝎·狱火冲击",
+      "source": {
+        "type": "weapon",
+        "slug": "炼狱双蝎",
+        "skillName": "狱火冲击",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:炼狱蝎王:漫游模式",
+      "label": "炼狱蝎王·漫游模式",
+      "source": {
+        "type": "weapon",
+        "slug": "炼狱蝎王",
+        "skillName": "漫游模式",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:梦魇:巡航飞弹",
+      "label": "梦魇·巡航飞弹",
+      "source": {
+        "type": "weapon",
+        "slug": "梦魇",
+        "skillName": "巡航飞弹",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:密林杀机:快枪手",
+      "label": "密林杀机·快枪手",
+      "source": {
+        "type": "weapon",
+        "slug": "密林杀机",
+        "skillName": "快枪手",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:冥河之矛:幽魂紫电",
+      "label": "冥河之矛·幽魂紫电",
+      "source": {
+        "type": "weapon",
+        "slug": "冥河之矛",
+        "skillName": "幽魂紫电",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:木葫芦:多喝水",
+      "label": "木葫芦·多喝水",
+      "source": {
+        "type": "weapon",
+        "slug": "木葫芦",
+        "skillName": "多喝水",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:能源之影:浮游模式",
+      "label": "能源之影·浮游模式",
+      "source": {
+        "type": "weapon",
+        "slug": "能源之影",
+        "skillName": "浮游模式",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:能源之影:能源之息",
+      "label": "能源之影·能源之息",
+      "source": {
+        "type": "weapon",
+        "slug": "能源之影",
+        "skillName": "能源之息",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:沙暴冷锋:沙暴之名",
+      "label": "沙暴冷锋·沙暴之名",
+      "source": {
+        "type": "weapon",
+        "slug": "沙暴冷锋",
+        "skillName": "沙暴之名",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:沙丘之怒:分裂导弹",
+      "label": "沙丘之怒·分裂导弹",
+      "source": {
+        "type": "weapon",
+        "slug": "沙丘之怒",
+        "skillName": "分裂导弹",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:沙丘之怒:追踪导弹",
+      "label": "沙丘之怒·追踪导弹",
+      "source": {
+        "type": "weapon",
+        "slug": "沙丘之怒",
+        "skillName": "追踪导弹",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:生命线:如履薄冰",
+      "label": "生命线·如履薄冰",
+      "source": {
+        "type": "weapon",
+        "slug": "生命线",
+        "skillName": "如履薄冰",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:生命线:严寒之触",
+      "label": "生命线·严寒之触",
+      "source": {
+        "type": "weapon",
+        "slug": "生命线",
+        "skillName": "严寒之触",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:圣诞雪镐:快速脱战",
+      "label": "圣诞雪镐·快速脱战",
+      "source": {
+        "type": "weapon",
+        "slug": "圣诞雪镐",
+        "skillName": "快速脱战",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:胜利誓约:分裂弹药",
+      "label": "胜利誓约·分裂弹药",
+      "source": {
+        "type": "weapon",
+        "slug": "胜利誓约",
+        "skillName": "分裂弹药",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:胜利誓约:酸液手雷",
+      "label": "胜利誓约·酸液手雷",
+      "source": {
+        "type": "weapon",
+        "slug": "胜利誓约",
+        "skillName": "酸液手雷",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:收割者:扩充装填",
+      "label": "收割者·扩充装填",
+      "source": {
+        "type": "weapon",
+        "slug": "收割者",
+        "skillName": "扩充装填",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:收割者:收割时分",
+      "label": "收割者·收割时分",
+      "source": {
+        "type": "weapon",
+        "slug": "收割者",
+        "skillName": "收割时分",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:死神猎手:穿射充能",
+      "label": "死神猎手·穿射充能",
+      "source": {
+        "type": "weapon",
+        "slug": "死神猎手",
+        "skillName": "穿射充能",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:死神猎手:死神之光",
+      "label": "死神猎手·死神之光",
+      "source": {
+        "type": "weapon",
+        "slug": "死神猎手",
+        "skillName": "死神之光",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:死亡猎手:急速狂热",
+      "label": "死亡猎手·急速狂热",
+      "source": {
+        "type": "weapon",
+        "slug": "死亡猎手",
+        "skillName": "急速狂热",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:死亡猎手:强力弹药",
+      "label": "死亡猎手·强力弹药",
+      "source": {
+        "type": "weapon",
+        "slug": "死亡猎手",
+        "skillName": "强力弹药",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:死亡之拥:致命穿透",
+      "label": "死亡之拥·致命穿透",
+      "source": {
+        "type": "weapon",
+        "slug": "死亡之拥",
+        "skillName": "致命穿透",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:苔色暴风:多重装填",
+      "label": "苔色暴风·多重装填",
+      "source": {
+        "type": "weapon",
+        "slug": "苔色暴风",
+        "skillName": "多重装填",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:苔色暴风:回收利用",
+      "label": "苔色暴风·回收利用",
+      "source": {
+        "type": "weapon",
+        "slug": "苔色暴风",
+        "skillName": "回收利用",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:天鹅之舞:猎手",
+      "label": "天鹅之舞·猎手",
+      "source": {
+        "type": "weapon",
+        "slug": "天鹅之舞",
+        "skillName": "猎手",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:天鹅之舞:战术力场",
+      "label": "天鹅之舞·战术力场",
+      "source": {
+        "type": "weapon",
+        "slug": "天鹅之舞",
+        "skillName": "战术力场",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:往日速递:加速时刻",
+      "label": "往日速递·加速时刻",
+      "source": {
+        "type": "weapon",
+        "slug": "往日速递",
+        "skillName": "加速时刻",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:往日速递:使命必达",
+      "label": "往日速递·使命必达",
+      "source": {
+        "type": "weapon",
+        "slug": "往日速递",
+        "skillName": "使命必达",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:维和者:爆弹供养",
+      "label": "维和者·爆弹供养",
+      "source": {
+        "type": "weapon",
+        "slug": "维和者",
+        "skillName": "爆弹供养",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:维和者:狂热射击",
+      "label": "维和者·狂热射击",
+      "source": {
+        "type": "weapon",
+        "slug": "维和者",
+        "skillName": "狂热射击",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:心有凌兮:爆炸疗愈",
+      "label": "心有凌兮·爆炸疗愈",
+      "source": {
+        "type": "weapon",
+        "slug": "心有凌兮",
+        "skillName": "爆炸疗愈",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:星海狂想:深寒冲击",
+      "label": "星海狂想·深寒冲击",
+      "source": {
+        "type": "weapon",
+        "slug": "星海狂想",
+        "skillName": "深寒冲击",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:星海狂想:涡轮增压",
+      "label": "星海狂想·涡轮增压",
+      "source": {
+        "type": "weapon",
+        "slug": "星海狂想",
+        "skillName": "涡轮增压",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:玄凌飞刃:弹射",
+      "label": "玄凌飞刃·弹射",
+      "source": {
+        "type": "weapon",
+        "slug": "玄凌飞刃",
+        "skillName": "弹射",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:玄凌飞刃:铁索连环",
+      "label": "玄凌飞刃·铁索连环",
+      "source": {
+        "type": "weapon",
+        "slug": "玄凌飞刃",
+        "skillName": "铁索连环",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:幽冥毒皇:腐蚀爆发",
+      "label": "幽冥毒皇·腐蚀爆发",
+      "source": {
+        "type": "weapon",
+        "slug": "幽冥毒皇",
+        "skillName": "腐蚀爆发",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:幽冥毒王:阴晴不定",
+      "label": "幽冥毒王·阴晴不定",
+      "source": {
+        "type": "weapon",
+        "slug": "幽冥毒王",
+        "skillName": "阴晴不定",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:元宵来袭:吃汤圆咯",
+      "label": "元宵来袭·吃汤圆咯",
+      "source": {
+        "type": "weapon",
+        "slug": "元宵来袭",
+        "skillName": "吃汤圆咯",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:元宵来袭:汤圆发射器",
+      "label": "元宵来袭·汤圆发射器",
+      "source": {
+        "type": "weapon",
+        "slug": "元宵来袭",
+        "skillName": "汤圆发射器",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:再生冷却:冷却飞弹",
+      "label": "再生冷却·冷却飞弹",
+      "source": {
+        "type": "weapon",
+        "slug": "再生冷却",
+        "skillName": "冷却飞弹",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:再生冷却:强力破冰",
+      "label": "再生冷却·强力破冰",
+      "source": {
+        "type": "weapon",
+        "slug": "再生冷却",
+        "skillName": "强力破冰",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:战争矩阵:光能矩阵",
+      "label": "战争矩阵·光能矩阵",
+      "source": {
+        "type": "weapon",
+        "slug": "战争矩阵",
+        "skillName": "光能矩阵",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:战争矩阵:增幅矩阵",
+      "label": "战争矩阵·增幅矩阵",
+      "source": {
+        "type": "weapon",
+        "slug": "战争矩阵",
+        "skillName": "增幅矩阵",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:振弦:急速杀戮",
+      "label": "振弦·急速杀戮",
+      "source": {
+        "type": "weapon",
+        "slug": "振弦",
+        "skillName": "急速杀戮",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:猪猪榴弹发射器:猪猪发把枪",
+      "label": "猪猪榴弹发射器·猪猪发把枪",
+      "source": {
+        "type": "weapon",
+        "slug": "猪猪榴弹发射器",
+        "skillName": "猪猪发把枪",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "weapon:Bully:枪盾",
+      "label": "Bully·枪盾",
+      "source": {
+        "type": "weapon",
+        "slug": "Bully",
+        "skillName": "枪盾",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:Bully:无人机",
+      "label": "Bully·无人机",
+      "source": {
+        "type": "weapon",
+        "slug": "Bully",
+        "skillName": "无人机",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "技能造成独立伤害、改变攻击模式或仅描述基础倍率，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:Z型步枪:战术聚焦",
+      "label": "Z型步枪·战术聚焦",
+      "source": {
+        "type": "weapon",
+        "slug": "Z型步枪",
+        "skillName": "战术聚焦",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    }
+  ]
+}

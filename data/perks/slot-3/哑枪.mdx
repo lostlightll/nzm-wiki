@@ -1,15 +1,27 @@
 ---
 title: "哑枪"
 id: "20703040436"
+num_modifier_values:
+  all-damage-per-stack:
+    row: "lc:1316199001_1_0"
+    field: base
+  all-damage-max:
+    row: "lc:1316199001_1_0"
+    field: base
+    scale: 10
 effect_values:
   - kind: damage
     modifierTypeId: all-damage
     label: "全伤害"
     stages:
       - condition: "每层"
-        value: "+30%"
+        value:
+          ref: all-damage-per-stack
+          format: signed-percent
       - condition: "10层"
-        value: "+300%"
+        value:
+          ref: all-damage-max
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1316196001"
@@ -18,6 +30,6 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "保持不射击时，每秒增加<strong>30%</strong>伤害，最多<strong>10层</strong>；开枪命中后清零。"
+description: "保持不射击时，每秒增加<strong>{{num:all-damage-per-stack|percent}}</strong>伤害，最多<strong>10层</strong>；开枪命中后清零。"
 description_override: true
 ---

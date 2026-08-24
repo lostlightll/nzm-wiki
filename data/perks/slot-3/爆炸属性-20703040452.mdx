@@ -1,12 +1,18 @@
 ---
 title: "爆炸属性"
 id: "20703040452"
+num_modifier_values:
+  weapon-explode-damage:
+    row: "lc:131521100_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-explode-damage
     label: "爆炸伤害"
     stages:
-      - value: "+45%"
+      - value:
+          ref: weapon-explode-damage
+          format: signed-percent
 slot: 3
 rarity: 2
 icon: "1315148001"
@@ -15,5 +21,5 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "爆炸伤害+45%"
+description: "爆炸伤害+{{num:weapon-explode-damage|percent}}"
 ---

@@ -1,19 +1,25 @@
 ---
 title: "解构增幅"
 id: "20703040140"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:111010084_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "武器伤害"
     stages:
       - condition: "敌人破盾后8秒内"
-        value: "+37.5%"
+        value:
+          ref: weapon-damage
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315142001"
 weaponType: []
 season: s0
-description: "敌人破盾后，**8秒**内，当前武器伤害增加**37.5%**。"
+description: "敌人破盾后，**8秒**内，当前武器伤害增加**{{num:weapon-damage|percent}}**。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

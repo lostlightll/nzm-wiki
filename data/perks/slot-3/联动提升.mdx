@@ -1,19 +1,25 @@
 ---
 title: "联动提升"
 id: "20703040028"
+num_modifier_values:
+  critical-rate:
+    row: "lc:111010010_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: critical-rate
     label: "暴击率"
     stages:
       - condition: "激活武器技能后"
-        value: "+38%"
+        value:
+          ref: critical-rate
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315103001"
 weaponType: []
 season: s0
-description: "激活武器技能后，当前武器的**暴击概率**提高**38%**，持续**10秒**。"
+description: "激活武器技能后，当前武器的**暴击概率**提高**{{num:critical-rate|percent}}**，持续**10秒**。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

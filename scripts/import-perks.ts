@@ -28,6 +28,7 @@ import path from "path";
 import crypto from "crypto";
 import matter from "gray-matter";
 import { isValidDateKey } from "../lib/date-key";
+import { NUM_MODIFIER_RESOLVER } from "../lib/num-modifier-data";
 
 const ROOT_DIR = process.cwd();
 const REFS_DIR = path.join(ROOT_DIR, "refs/Exports/NZM/Content");
@@ -45,7 +46,6 @@ const REF_FILES = {
   overrides:
     "DataTables/HuntingGroundRoguelike/HuntingGroundRoguelikeWeaponModTable.json",
   attributeDescriptions: "DataTables/AttributeChannelDescriptionTable.json",
-  modifiers: "Attributes/AutoGenerate/numerical_modifier_config.json",
   tags: "DataTables/LuaDataTable/WeaponModItemTagData.json",
   sets: "DataTables/LuaDataTable/WeaponModSetTable.json",
 } as const;
@@ -161,12 +161,6 @@ interface AttributeDescriptionRow {
   Attr_Id?: number;
   Attr_Name?: LocalizedText;
   Description?: LocalizedText;
-}
-
-interface ModifierRow {
-  BaseValue?: number;
-  CoefValue?: number;
-  [key: string]: unknown;
 }
 
 interface TagRow {
@@ -511,24 +505,6 @@ function resolveSupportedAttrDescription(
   return { description: `${parts.join("，")}。`, warnings: [] };
 }
 
-function formatModifierValue(
-  value: number,
-  format: string,
-  row?: ModifierRow,
-): string {
-  const attributeName = String(row?.AttributeName ?? "");
-  if (format === "2" && attributeName.endsWith("AddPoint")) {
-    return formatNumber(value);
-  }
-  if (format === "10" && attributeName.endsWith("DamageBearRatio")) {
-    return `${formatNumber(Math.abs(value) * 100)}%`;
-  }
-  if (format === "2" || format === "13" || format === "10" || format === "15") {
-    return `${formatNumber(value * 100)}%`;
-  }
-  return formatNumber(value);
-}
-
 function formatNumericalValue(value: number, format: string): string {
   if (format === "2") return formatNumber(value * 100);
   if (format === "13") return `${formatNumber(value * 100)}%`;
@@ -565,19 +541,9 @@ function normalizeCooldownStyle(description: string): string {
 
 function resolveDescription(
   raw: string,
-  modifiers: Record<string, ModifierRow>,
   numericals: Map<string, Record<string, unknown>>,
 ): { description: string; unresolvedTokens: string[] } {
-  let description = raw;
-
-  description = description.replace(
-    /\{GPModifier:(\d+):([^:}]+):(\d+):([^:}]+)(?::[^}]+)?\}/gi,
-    (token, id: string, field: string, index: string, format: string) => {
-      const row = modifiers[`${id}_1_${index}`];
-      const value = row ? getCaseInsensitive(row, field) : undefined;
-      return typeof value === "number" ? formatModifierValue(value, format, row) : token;
-    },
-  );
+  let description = NUM_MODIFIER_RESOLVER.resolveGameModifierTokens(raw).text;
 
   description = description.replace(
     /\{GPNumericalID:(\d+):([^:}]+):([^:}]+)(?::[^}]+)?\}/gi,
@@ -813,7 +779,6 @@ function buildRecords(): PerkRecord[] {
   const attributeDescriptions = loadRows<AttributeDescriptionRow>(
     REF_FILES.attributeDescriptions,
   );
-  const modifiers = loadRows<ModifierRow>(REF_FILES.modifiers);
   const tags = loadRows<TagRow>(REF_FILES.tags);
   const sets = loadRows<SetRow>(REF_FILES.sets);
   const numericals = loadNumericalRows();
@@ -842,11 +807,10 @@ function buildRecords(): PerkRecord[] {
     const passiveSkillId = row.PassiveSkill_ID ?? "";
     const descriptionKey = mgeDescriptionKey(passiveSkillId);
     const rawMgeDescription = textValue(descriptions[descriptionKey]?.MGEDescription);
-    const mgeResolved = resolveDescription(rawMgeDescription, modifiers, numericals);
+    const mgeResolved = resolveDescription(rawMgeDescription, numericals);
     const rawOverrideDescription = textValue(overrides[id]?.OverrideDesc);
     const overrideResolved = resolveDescription(
       rawOverrideDescription,
-      modifiers,
       numericals,
     );
     const attrList = row.AttrList ?? "";

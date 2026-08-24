@@ -4,9 +4,10 @@ import matter from "gray-matter";
 import {
   MODIFIER_TYPES,
   MULTIPLIER_PROVIDERS,
-  MULTIPLIER_PROVIDER_EXCLUSIONS,
 } from "@/lib/multiplier-data";
 import { HUNTING_SPEEDRUN_CARDS } from "@/lib/hunting-speedrun";
+import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
+import { loadMultiplierProviderRegistry } from "./num-modifier/provider-registry";
 
 type Row = Record<string, unknown>;
 
@@ -23,7 +24,6 @@ const loadRows = (...parts: string[]): Record<string, Row> =>
 const weaponMods = loadRows("DataTables", "LuaDataTable", "WeaponModItemData.json");
 const passives = loadRows("DataTables", "MGE", "MGEPassive_BD.json");
 const perkDescriptions = loadRows("DataTables", "MGE", "DT_GPMGESkillDesConfig_BD.json");
-const numerical = loadRows("Attributes", "AutoGenerate", "numerical_modifier_config.json");
 const huntingRankCards = loadRows(
   "DataTables",
   "HunterRank",
@@ -42,9 +42,15 @@ const attributeDescriptions = loadRows("DataTables", "AttributeDescMapTable.json
 const knownAttributes = new Set(
   Object.values(attributeDescriptions).map((row) => String(row.attr_realname ?? "")),
 );
-const providersById = new Map(MULTIPLIER_PROVIDERS.map((provider) => [provider.id, provider]));
+const sourceRegistry = loadMultiplierProviderRegistry();
+const runtimeProvidersById = new Map(
+  MULTIPLIER_PROVIDERS.map((provider) => [provider.id, provider]),
+);
+const providersById = new Map(
+  sourceRegistry.providers.map((provider) => [provider.id, provider]),
+);
 const exclusionsById = new Map(
-  MULTIPLIER_PROVIDER_EXCLUSIONS.map((exclusion) => [exclusion.id, exclusion]),
+  sourceRegistry.exclusions.map((exclusion) => [exclusion.id, exclusion]),
 );
 const modifierTypeByAttribute = new Map(
   MODIFIER_TYPES.flatMap((modifier) =>
@@ -120,13 +126,6 @@ function collectPropertyValues(value: unknown, propertyName: string): unknown[] 
     ),
   ];
 }
-const numericalById = new Map<string, Row[]>();
-for (const row of Object.values(numerical)) {
-  const id = String(row.ID);
-  const values = numericalById.get(id) ?? [];
-  values.push(row);
-  numericalById.set(id, values);
-}
 const weaponDescriptionsByName = new Map<string, string[]>();
 for (const table of weaponDescriptionTables) {
   for (const row of Object.values(table)) {
@@ -143,10 +142,10 @@ function directPositiveModifiers(description: string): string[] {
     (match) => match[1],
   );
   return modifierIds.filter((modifierId) =>
-    (numericalById.get(modifierId) ?? []).some((row) => {
-      const modifierTypeId = modifierTypeByAttribute.get(String(row.AttributeName));
+    NUM_MODIFIER_RESOLVER.getRowsById("lc", Number(modifierId)).some((row) => {
+      const modifierTypeId = modifierTypeByAttribute.get(row.attributeName);
       if (!modifierTypeId) return false;
-      const values = [Number(row.BaseValue ?? 0), Number(row.CoefValue ?? 0)];
+      const values = [row.baseValue, row.coefficient];
       const isVulnerability =
         modifierTypeId === "vulnerability" ||
         modifierTypeId === "element-vulnerability";
@@ -157,32 +156,41 @@ function directPositiveModifiers(description: string): string[] {
   );
 }
 
-for (const provider of MULTIPLIER_PROVIDERS) {
-  for (const row of provider.evidence.numericalRows) {
-    const actual = numerical[row.rowKey];
-    if (!actual || String(actual.ID) !== row.modifierId) {
-      errors.push(`${provider.id} 的 Numerical 行已失联：${row.rowKey}`);
-      continue;
-    }
-    if (String(actual.AttributeName) !== row.attributeName) {
-      errors.push(`${provider.id} 的属性字段已变化：${row.rowKey}`);
-    }
+for (const provider of sourceRegistry.providers) {
+  const runtimeProvider = runtimeProvidersById.get(provider.id);
+  if (!runtimeProvider) {
+    errors.push(`${provider.id} 缺少运行时投影`);
+    continue;
+  }
+  const evidenceRows = (provider.evidence.numModifierRows ?? []).map((key) =>
+    NUM_MODIFIER_RESOLVER.getRow(
+      key,
+      `data/guides/multiplier-providers.json#${provider.id}`,
+    ),
+  );
+  for (const row of evidenceRows) {
     const actualModifierTypeId = modifierTypeByAttribute.get(
-      String(actual.AttributeName),
+      row.attributeName,
     );
-    if (actualModifierTypeId !== row.modifierTypeId) {
+    if (
+      provider.evidence.kind === "gp-modifier" &&
+      !actualModifierTypeId
+    ) {
       errors.push(
-        `${provider.id} 的 Numerical AttributeName 反查乘区不一致：${row.rowKey}`,
+        `${provider.id} 的 Numerical AttributeName 无法反查乘区：${row.key}`,
       );
     }
-    if (!knownAttributes.has(row.attributeName) && !row.attributeName.startsWith("Numerical.")) {
+    if (
+      !knownAttributes.has(row.attributeName) &&
+      !row.attributeName.startsWith("Numerical.")
+    ) {
       errors.push(`${provider.id} 的属性不在 AttributeDescMapTable：${row.attributeName}`);
     }
     if (
-      (row.modifierTypeId === "vulnerability" ||
-        row.modifierTypeId === "element-vulnerability") &&
-      Number(actual.BaseValue ?? 0) >= 0 &&
-      Number(actual.CoefValue ?? 0) >= 0
+      (actualModifierTypeId === "vulnerability" ||
+        actualModifierTypeId === "element-vulnerability") &&
+      row.baseValue >= 0 &&
+      row.coefficient >= 0
     ) {
       errors.push(`${provider.id} 将非负承伤字段错列为易伤`);
     }
@@ -197,13 +205,16 @@ for (const provider of MULTIPLIER_PROVIDERS) {
     if (provider.evidence.kind === "reviewed-override") {
       errors.push(`${provider.id} 的卡牌来源禁止使用 reviewed-override`);
     }
-    if (provider.evidence.numericalRows.length === 0) {
+    if (provider.evidence.numModifierRows.length === 0) {
       errors.push(`${provider.id} 的卡牌来源缺少 Numerical 行`);
     }
     const evidenceModifierTypes = new Set(
-      provider.evidence.numericalRows.map((row) => row.modifierTypeId),
+      evidenceRows.flatMap((row) => {
+        const modifierTypeId = modifierTypeByAttribute.get(row.attributeName);
+        return modifierTypeId ? [modifierTypeId] : [];
+      }),
     );
-    const providerModifierTypes = new Set(provider.modifierTypeIds);
+    const providerModifierTypes = new Set(runtimeProvider.modifierTypeIds);
     if (
       evidenceModifierTypes.size !== providerModifierTypes.size ||
       [...evidenceModifierTypes].some((id) => !providerModifierTypes.has(id))
@@ -211,15 +222,8 @@ for (const provider of MULTIPLIER_PROVIDERS) {
       errors.push(`${provider.id} 的 modifierTypeIds 与 Numerical 证据不一致`);
     }
     const evidenceModifierIds = new Set(
-      provider.evidence.numericalRows.map((row) => row.modifierId),
+      evidenceRows.map((row) => String(row.id)),
     );
-    if (
-      !provider.evidence.gpModifierIds ||
-      provider.evidence.gpModifierIds.some((id) => !evidenceModifierIds.has(id)) ||
-      evidenceModifierIds.size !== provider.evidence.gpModifierIds.length
-    ) {
-      errors.push(`${provider.id} 的 GPModifier 与 Numerical 行不一致`);
-    }
 
     const chain = provider.evidence.cardChain;
     const cardRow = huntingRankCards[String(provider.source.cardId)];
@@ -249,7 +253,7 @@ for (const provider of MULTIPLIER_PROVIDERS) {
       for (const value of collectPropertyValues(asset, "ModifierID")) {
         directModifierIds.add(String(value));
       }
-      for (const modifierId of provider.evidence.gpModifierIds ?? []) {
+      for (const modifierId of evidenceModifierIds) {
         if (serializedAssetContainsModifier(assetPath, modifierId)) {
           directModifierIds.add(modifierId);
         }
@@ -270,8 +274,8 @@ for (const provider of MULTIPLIER_PROVIDERS) {
         passiveLevelIncludes(row.PassiveSkillLevel, attackLevelChain.level),
       );
       const passiveMgeId = Number((passive?.MGE as Row | undefined)?.Id ?? 0);
-      const hasNumericalAtLevel = provider.evidence.numericalRows.some(
-        (row) => Number(numerical[row.rowKey]?.Level ?? 0) === attackLevelChain.level,
+      const hasNumericalAtLevel = evidenceRows.some(
+        (row) => row.level === attackLevelChain.level,
       );
       if (
         !chain.mgeIds.includes(attackLevelChain.sourceMgeId) ||
@@ -299,7 +303,7 @@ for (const provider of MULTIPLIER_PROVIDERS) {
         buffModifierIds.add(String(modifierId));
       }
     }
-    for (const modifierId of provider.evidence.gpModifierIds ?? []) {
+    for (const modifierId of evidenceModifierIds) {
       if (!directModifierIds.has(modifierId) && !buffModifierIds.has(modifierId)) {
         errors.push(`${provider.id} 的 MGE/Buff 未连接 GPModifier ${modifierId}`);
       }
@@ -328,14 +332,14 @@ for (const provider of MULTIPLIER_PROVIDERS) {
   const description = String(
     (perkDescriptions[descriptionRowKey]?.MGEDescription as Row | undefined)?.LocalizedString ?? "",
   );
-  for (const modifierId of provider.evidence.gpModifierIds ?? []) {
+  for (const modifierId of new Set(evidenceRows.map((row) => String(row.id)))) {
     if (!description.includes(`{GPModifier:${modifierId}:`)) {
       errors.push(`${provider.id} 的 GPModifier ${modifierId} 已从 MGE 描述失联`);
     }
   }
 }
 
-for (const exclusion of MULTIPLIER_PROVIDER_EXCLUSIONS) {
+for (const exclusion of sourceRegistry.exclusions) {
   const source = exclusion.source;
   let description = "";
   if (source.type === "perk") {
@@ -388,5 +392,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `乘区来源完整证据审计通过：已映射 ${MULTIPLIER_PROVIDERS.length}，明确排除 ${MULTIPLIER_PROVIDER_EXCLUSIONS.length}，缺少证据 ${missing.length}。`,
+  `乘区来源完整证据审计通过：已映射 ${sourceRegistry.providers.length}，明确排除 ${sourceRegistry.exclusions.length}，缺少证据 ${missing.length}。`,
 );

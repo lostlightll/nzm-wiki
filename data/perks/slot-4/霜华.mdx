@@ -1,13 +1,19 @@
 ---
 title: "霜华"
 id: "20703040338"
+num_modifier_values:
+  fire-rate:
+    row: "lc:1410070101_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: fire-rate
     label: "射速"
     stages:
       - condition: "急速狂热期间"
-        value: "+50%"
+        value:
+          ref: fire-rate
+          format: signed-percent
 independent_damage_sources:
   - weapon_slug: "星海狂想"
     damage_source_id: "frost-ice-spike"

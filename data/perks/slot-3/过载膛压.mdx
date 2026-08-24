@@ -1,21 +1,33 @@
 ---
 title: "过载膛压"
 id: "20703040112"
+num_modifier_values:
+  weapon-damage-per-stack:
+    row: "lc:111010073_1_0"
+    field: base
+  weapon-damage-max:
+    row: "lc:111010073_1_0"
+    field: base
+    scale: 3
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "武器伤害"
     stages:
       - condition: "每层"
-        value: "+10%"
+        value:
+          ref: weapon-damage-per-stack
+          format: signed-percent
       - condition: "3层"
-        value: "+30%"
+        value:
+          ref: weapon-damage-max
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315131001"
 weaponType: [1, 6]
 season: s0
-description: "每连续射击**30发**后，武器伤害增加**10%**，可叠加**3层**，换弹后清空。"
+description: "每连续射击**30发**后，武器伤害增加**{{num:weapon-damage-per-stack|percent}}**，可叠加**3层**，换弹后清空。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

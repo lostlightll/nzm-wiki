@@ -1,17 +1,28 @@
 ---
 title: "狂暴连击"
 id: "20703040409"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:111041027_1_0"
+    field: base
+  melee-attack-speed:
+    row: "lc:111041025_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "近战攻击伤害"
     stages:
-      - value: "+250%"
+      - value:
+          ref: weapon-damage
+          format: signed-percent
   - kind: stat
     statId: melee-attack-speed
     label: "近战攻击速度"
     stages:
-      - value: "+50%"
+      - value:
+          ref: melee-attack-speed
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1316196001"
@@ -20,5 +31,5 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "近战武器攻击速度提高<strong>50%</strong>，近战攻击伤害提高<strong>250%</strong>，命中时回复<strong>10点</strong>生命值。"
+description: "近战武器攻击速度提高<strong>{{num:melee-attack-speed|percent}}</strong>，近战攻击伤害提高<strong>{{num:weapon-damage|percent}}</strong>，命中时回复<strong>10点</strong>生命值。"
 ---

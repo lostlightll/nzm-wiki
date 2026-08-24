@@ -1,13 +1,19 @@
 ---
 title: "不死狂热"
 id: "20703040410"
+num_modifier_values:
+  fire-rate:
+    row: "lc:1410070101_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: fire-rate
     label: "射速"
     stages:
       - condition: "红扭蛋效果存在时"
-        value: "+50%"
+        value:
+          ref: fire-rate
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1316197001"

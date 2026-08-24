@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { OverlimitCardDetail } from "@/components/OverlimitCardDetail";
+import { stripInlineDescriptionMarkup } from "@/components/InlineDescription";
 import { IndependentDamagePanel } from "@/components/TriggerDamageCatalog";
 import {
   getAllOverlimitCards,
@@ -25,7 +26,7 @@ export async function generateMetadata({
 
   return {
     title: card.name,
-    description: `${card.name} — ${card.description}`,
+    description: `${card.name} — ${stripInlineDescriptionMarkup(card.description)}`,
     alternates: { canonical: `/overlimit/${card.id}` },
   };
 }

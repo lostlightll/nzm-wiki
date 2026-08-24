@@ -6,6 +6,7 @@ import {
   getSourcesForModifierType,
   resolveMultiplierFactorHref,
 } from "@/lib/multiplier-data";
+import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
 import type {
   MultiplierRelation,
   MultiplierSource,
@@ -219,7 +220,16 @@ function modifierRowsForEntry(
   for (const modifierId of unique(
     entry.variants.flatMap((variant) => variant.modifierIds),
   )) {
-    for (const row of data.references.modifiers[String(modifierId)] ?? []) {
+    for (const resolvedRow of NUM_MODIFIER_RESOLVER.getRowsById("lc", modifierId)) {
+      const row: StatusEffectModifierReference = {
+        id: resolvedRow.id,
+        level: resolvedRow.level,
+        attributeName: resolvedRow.attributeName,
+        operation: resolvedRow.operation,
+        baseValue: resolvedRow.baseValue,
+        coefficient: resolvedRow.coefficient,
+        description: resolvedRow.description,
+      };
       const key = `${modifierId}:${row.level}:${row.attributeName}:${row.operation}`;
       if (seen.has(key)) continue;
       seen.add(key);
@@ -642,10 +652,28 @@ export function getStatusEffectCatalog(target: StatusEffectTarget): {
       ),
     ),
   );
+  const modifiers = Object.fromEntries(
+    [...modifierIds]
+      .sort((left, right) => left - right)
+      .flatMap((modifierId) => {
+        const rows = NUM_MODIFIER_RESOLVER.getRowsById("lc", modifierId).map(
+          (row): StatusEffectModifierReference => ({
+            id: row.id,
+            level: row.level,
+            attributeName: row.attributeName,
+            operation: row.operation,
+            baseValue: row.baseValue,
+            coefficient: row.coefficient,
+            description: row.description,
+          }),
+        );
+        return rows.length > 0 ? [[String(modifierId), rows] as const] : [];
+      }),
+  );
 
   return {
     entries,
-    modifiers: pickReferences(data.references.modifiers, modifierIds),
+    modifiers,
     numericals: pickReferences(data.references.numericals, numericalIds),
   };
 }

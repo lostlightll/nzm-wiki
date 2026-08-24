@@ -1,21 +1,34 @@
 ---
 title: "川流不息"
 id: "20703040102"
+num_modifier_values:
+  charge-per-shot:
+    row: "lc:111010090_1_0"
+    field: base
+    scale: 1
+  charge-max:
+    row: "lc:111010090_1_0"
+    field: base
+    scale: 100
 effect_values:
   - kind: stat
     statId: charge-efficiency
     label: "充能速度"
     stages:
       - condition: "每发"
-        value: "+0.8%"
+        value:
+          ref: charge-per-shot
+          format: signed-percent
       - condition: "100层"
-        value: "+80%"
+        value:
+          ref: charge-max
+          format: signed-percent
 slot: 2
 rarity: 3
 icon: "1314126001"
 weaponType: [1, 6]
 season: s0
-description: "武器**持续开火**时，每发增加**0.8%**充能速度，最高**100层**，停止开火或换弹时清空。"
+description: "武器**持续开火**时，每发增加**{{num:charge-per-shot|percent}}**充能速度，最高**{{num:charge-max|percent}}**（**100层**），停止开火或换弹时清空。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

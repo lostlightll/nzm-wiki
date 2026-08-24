@@ -1,15 +1,27 @@
 ---
 title: "弱肉强食"
 id: "20703040408"
+num_modifier_values:
+  weakness-per-stack:
+    row: "lc:111041024_1_0"
+    field: base
+  weakness-max:
+    row: "lc:111041024_1_0"
+    field: base
+    scale: 10
 effect_values:
   - kind: damage
     modifierTypeId: weakness
     label: "弱点伤害"
     stages:
       - condition: "每层"
-        value: "+30%"
+        value:
+          ref: weakness-per-stack
+          format: signed-percent
       - condition: "10层"
-        value: "+300%"
+        value:
+          ref: weakness-max
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315203001"
@@ -18,5 +30,5 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "命中弱点时，弱点伤害增加<strong>30%</strong>，持续<strong>5秒</strong>，最高叠加<strong>10层</strong>；命中非弱点部位不会清空层数。"
+description: "命中弱点时，弱点伤害增加<strong>{{num:weakness-per-stack|percent}}</strong>，持续<strong>5秒</strong>，最高叠加<strong>10层</strong>；命中非弱点部位不会清空层数。"
 ---

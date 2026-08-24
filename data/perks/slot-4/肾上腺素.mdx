@@ -1,15 +1,27 @@
 ---
 title: "肾上腺素"
 id: "20703040432"
+num_modifier_values:
+  weapon-damage-per-stack:
+    row: "lc:120300310_1_0"
+    field: coefficient
+  weapon-damage-max:
+    row: "lc:120300310_1_0"
+    field: coefficient
+    scale: 6
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "武器伤害"
     stages:
       - condition: "每多命中1颗弹丸"
-        value: "+21%"
+        value:
+          ref: weapon-damage-per-stack
+          format: signed-percent
       - condition: "多命中6颗弹丸"
-        value: "+126%"
+        value:
+          ref: weapon-damage-max
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1003031004"
@@ -18,7 +30,7 @@ CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true
 season: "pending"
-description: "每次开火时，若命中敌人弹丸数超过<strong>6颗</strong>，造成额外伤害。每比<strong>6颗</strong>多<strong>1颗</strong>，伤害增加<strong>21%</strong>，最多增加<strong>126%</strong>。"
+description: "每次开火时，若命中敌人弹丸数超过<strong>6颗</strong>，造成额外伤害。每比<strong>6颗</strong>多<strong>1颗</strong>，伤害增加<strong>{{num:weapon-damage-per-stack|percent}}</strong>，最多增加<strong>{{num:weapon-damage-max|percent}}</strong>。"
 description_override: true
 weaponNames: ["疾影逐风"]
 ---

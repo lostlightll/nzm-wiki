@@ -1,19 +1,25 @@
 ---
 title: "余震速装"
 id: "20703040152"
+num_modifier_values:
+  reload-speed-stage-1:
+    row: "lc:111010089_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: reload-speed
     label: "换弹速度"
     stages:
       - condition: "使用武器技能后"
-        value: "+45%"
+        value:
+          ref: reload-speed-stage-1
+          format: signed-percent
 slot: 1
 rarity: 3
 icon: "1313144001"
 weaponType: [5, 1]
 season: s0
-description: "使用武器技能后，**10秒**内，换弹速度提升**45%**。"
+description: "使用武器技能后，**10秒**内，换弹速度提升**{{num:reload-speed-stage-1|percent}}**。"
 CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true

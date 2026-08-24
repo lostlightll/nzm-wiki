@@ -1,13 +1,19 @@
 ---
 title: "抽奖增伤"
 id: "20703040378"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:111041010_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "武器伤害"
     stages:
       - condition: "发动抽奖后16秒内"
-        value: "+33%"
+        value:
+          ref: weapon-damage
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315197001"
@@ -17,7 +23,7 @@ MakeMODItem: 1
 IsCooked: true
 release_date: "2026-07-24"
 season: s3
-description: "发动抽奖时，该武器伤害增加<strong>33%</strong>，持续<strong>16</strong>秒。"
+description: "发动抽奖时，该武器伤害增加<strong>{{num:weapon-damage|percent}}</strong>，持续<strong>16</strong>秒。"
 keywords:
   - "扭蛋流"
 ---

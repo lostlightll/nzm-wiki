@@ -1,12 +1,18 @@
 ---
 title: "充能属性"
 id: "20703040447"
+num_modifier_values:
+  charge-efficiency:
+    row: "lc:131520600_1_0"
+    field: base
 effect_values:
   - kind: stat
     statId: charge-efficiency
     label: "充能效率"
     stages:
-      - value: "+50%"
+      - value:
+          ref: charge-efficiency
+          format: signed-percent
 slot: 3
 rarity: 2
 icon: "1315148001"
@@ -15,5 +21,5 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "武器技能充能效率+50%"
+description: "武器技能充能效率+{{num:charge-efficiency|percent}}"
 ---

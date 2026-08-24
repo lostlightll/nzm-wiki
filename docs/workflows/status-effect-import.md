@@ -7,8 +7,8 @@
 ```text
 猎场导出表
   → scripts/status-effects/extract.ts
-  → scripts/status-effects/cli.ts
-  → data/status-effects.json
+  → scripts/status-effects/cli.ts → data/status-effects.json V2
+  → Num Modifier Resolver → 页面 Modifier DTO
   → scripts/status-effects/relations.ts
   → data/status-effect-relations.json
   → components/StatusEffectCatalog*.tsx
@@ -19,7 +19,6 @@ Required 源表：
 
 - `refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json`
 - `refs/Exports/NZM/Content/DataTables/GameFeatureConfig/ElementConfigDataTable.json`
-- `refs/Exports/NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json`
 - `refs/Exports/NZM/Content/DataTables/numerical_config_others.json`
 
 确认插件施加来源还会读取 `WeaponModItemData`、`MGEPassive_BD`、`GPModularGameplayEffectTable` 和对应 MGE JSON。运行时只读取已提交的 `data/status-effect-relations.json`，不会读取这些导出文件。
@@ -72,7 +71,7 @@ pnpm test:status-effects
 
 ## 数值引用
 
-`GPModifyIDs` 联查 `numerical_modifier_config`，`NumericalID` 联查 `numerical_config_others`。可解析内容写入 `references`，图鉴技术详情按 ID 展开。源表中找不到的引用继续保留原始 ID，并明确显示为“未解析”，不能猜测或删除。
+`GPModifyIDs` 只作为稳定 ID 保存在 `variants`，服务端通过 Num Modifier Resolver 联查已提交的 `data/num-modifier-lock.json`；`status-effects.json` 不再复制 Modifier 行或原表路径。`NumericalID` 继续联查 `numerical_config_others` 并写入 `references.numericals`。图鉴技术详情按 ID 展开；Lock 中找不到的历史引用继续保留原始 ID，并明确显示为“未解析”，不能猜测或删除。
 
 ## 关联内容与证据等级
 
@@ -93,6 +92,7 @@ pnpm test:status-effects
 
 ```bash
 pnpm status-effects:check
+pnpm num-modifier:check
 pnpm lint
 pnpm index
 pnpm build

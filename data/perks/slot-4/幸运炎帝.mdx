@@ -1,13 +1,19 @@
 ---
 title: "幸运炎帝"
 id: "20703040415"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:120600301_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "火力宣泄增伤"
     stages:
       - condition: "强化状态"
-        value: "+270%"
+        value:
+          ref: weapon-damage
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1312074002"
@@ -16,7 +22,7 @@ CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true
 season: "pending"
-description: "装备后，扭蛋库额外添加<strong>3个红色扭蛋</strong>。架设模式下累计命中目标<strong>10次</strong>，额外获得<strong>10层</strong>火力宣泄。抽取到额外添加的红色扭蛋后，火力宣泄置为满层，火神炎帝进入持续<strong>8秒</strong>的强化状态；强化状态下，机枪模式命中目标时不消耗火力宣泄，且火力宣泄的增伤效果提高至<strong>270%</strong>。命中处于破韧状态的首领时，有<strong>35%</strong>概率额外抽取一个红色扭蛋。"
+description: "装备后，扭蛋库额外添加<strong>3个红色扭蛋</strong>。架设模式下累计命中目标<strong>10次</strong>，额外获得<strong>10层</strong>火力宣泄。抽取到额外添加的红色扭蛋后，火力宣泄置为满层，火神炎帝进入持续<strong>8秒</strong>的强化状态；强化状态下，机枪模式命中目标时不消耗火力宣泄，且火力宣泄的增伤效果提高至<strong>{{num:weapon-damage|percent}}</strong>。命中处于破韧状态的首领时，有<strong>35%</strong>概率额外抽取一个红色扭蛋。"
 description_override: true
 weaponNames: ["火神炎帝"]
 ---

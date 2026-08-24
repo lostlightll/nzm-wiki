@@ -12,6 +12,13 @@ import type {
 } from "@/types";
 import { isValidDateKey } from "@/lib/date-key";
 import { MODIFIER_TYPES } from "@/lib/multiplier-data";
+import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
+import type {
+  NumModifierRowKey,
+  NumModifierValueBindings,
+  NumModifierValueExpression,
+  NumModifierValueFormat,
+} from "@/lib/num-modifier";
 
 const PERKS_DATA_DIR = path.join(process.cwd(), "data/perks");
 const MODIFIER_TYPE_IDS = new Set(MODIFIER_TYPES.map((type) => type.id));
@@ -44,6 +51,7 @@ function parseEffectValueStages(
   value: unknown,
   field: string,
   filePath: string,
+  bindings: NumModifierValueBindings,
 ): EffectValueStage[] {
   if (!Array.isArray(value) || value.length === 0) {
     throw new Error(`插件 ${field} 必须包含至少一个阶段: ${filePath}`);
@@ -62,20 +70,160 @@ function parseEffectValueStages(
             `${field}[${index}].condition`,
             filePath,
           );
+    const rawValue = record.value;
+    if (!rawValue || typeof rawValue !== "object" || Array.isArray(rawValue)) {
+      throw new Error(
+        `插件 ${field}[${index}].value 必须使用 Num 引用或带依据的 literal: ${filePath}`,
+      );
+    }
+    const valueRecord = rawValue as Record<string, unknown>;
+    let resolvedValue: string;
+    if (typeof valueRecord.ref === "string") {
+      const ref = requireNonEmptyString(
+        valueRecord.ref,
+        `${field}[${index}].value.ref`,
+        filePath,
+      );
+      const expression = bindings[ref];
+      if (!expression) {
+        throw new Error(
+          `插件 ${field}[${index}].value 引用了未知 Num 别名 ${ref}: ${filePath}`,
+        );
+      }
+      const format = requireNonEmptyString(
+        valueRecord.format,
+        `${field}[${index}].value.format`,
+        filePath,
+      ) as NumModifierValueFormat;
+      if (
+        !["number", "percent", "signed-number", "signed-percent"].includes(
+          format,
+        )
+      ) {
+        throw new Error(
+          `插件 ${field}[${index}].value.format 无效: ${filePath}`,
+        );
+      }
+      if (Object.keys(valueRecord).some((key) => key !== "ref" && key !== "format")) {
+        throw new Error(
+          `插件 ${field}[${index}].value Num 引用包含未知字段: ${filePath}`,
+        );
+      }
+      resolvedValue = NUM_MODIFIER_RESOLVER.resolveValue(
+        expression,
+        format,
+        `${filePath}#${field}[${index}]`,
+      ).text;
+    } else {
+      const literal = requireNonEmptyString(
+        valueRecord.literal,
+        `${field}[${index}].value.literal`,
+        filePath,
+      );
+      requireNonEmptyString(
+        valueRecord.reason,
+        `${field}[${index}].value.reason`,
+        filePath,
+      );
+      if (Object.keys(valueRecord).some((key) => key !== "literal" && key !== "reason")) {
+        throw new Error(
+          `插件 ${field}[${index}].value literal 包含未知字段: ${filePath}`,
+        );
+      }
+      resolvedValue = literal;
+    }
     return {
       ...(condition ? { condition } : {}),
-      value: requireNonEmptyString(
-        record.value,
-        `${field}[${index}].value`,
-        filePath,
-      ),
+      value: resolvedValue,
     };
   });
+}
+
+function parseNumModifierValues(
+  value: unknown,
+  filePath: string,
+): NumModifierValueBindings {
+  if (value === undefined) return {};
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error(`插件 num_modifier_values 必须是对象: ${filePath}`);
+  }
+  const bindings: Record<string, NumModifierValueExpression> = {};
+  for (const [alias, rawExpression] of Object.entries(
+    value as Record<string, unknown>,
+  )) {
+    if (!/^[a-z][a-z0-9-]*$/.test(alias)) {
+      throw new Error(`插件 Num 别名必须是 kebab-case: ${alias}: ${filePath}`);
+    }
+    if (
+      !rawExpression ||
+      typeof rawExpression !== "object" ||
+      Array.isArray(rawExpression)
+    ) {
+      throw new Error(`插件 Num 表达式 ${alias} 格式无效: ${filePath}`);
+    }
+    const record = rawExpression as Record<string, unknown>;
+    const row = requireNonEmptyString(
+      record.row,
+      `num_modifier_values.${alias}.row`,
+      filePath,
+    );
+    if (!/^lc:.+/.test(row)) {
+      throw new Error(`插件 Num 表达式 ${alias}.row 必须使用 lc: 引用: ${filePath}`);
+    }
+    const field = requireNonEmptyString(
+      record.field,
+      `num_modifier_values.${alias}.field`,
+      filePath,
+    );
+    if (field !== "base" && field !== "coefficient") {
+      throw new Error(`插件 Num 表达式 ${alias}.field 无效: ${filePath}`);
+    }
+    const scale = record.scale === undefined ? undefined : Number(record.scale);
+    if (scale !== undefined && (!Number.isFinite(scale) || scale === 0)) {
+      throw new Error(`插件 Num 表达式 ${alias}.scale 无效: ${filePath}`);
+    }
+    if (
+      Object.keys(record).some(
+        (key) => key !== "row" && key !== "field" && key !== "scale",
+      )
+    ) {
+      throw new Error(`插件 Num 表达式 ${alias} 包含未知字段: ${filePath}`);
+    }
+    const expression: NumModifierValueExpression = {
+      row: row as NumModifierRowKey,
+      field,
+      ...(scale === undefined ? {} : { scale }),
+    };
+    NUM_MODIFIER_RESOLVER.resolveValue(
+      expression,
+      "number",
+      `${filePath}#num_modifier_values.${alias}`,
+    );
+    bindings[alias] = expression;
+  }
+  return bindings;
+}
+
+function resolveDescription(
+  value: unknown,
+  filePath: string,
+  bindings: NumModifierValueBindings,
+): string | undefined {
+  if (value === undefined) return undefined;
+  if (typeof value !== "string") {
+    throw new Error(`插件 description 必须是字符串: ${filePath}`);
+  }
+  return NUM_MODIFIER_RESOLVER.resolveTemplate(
+    value,
+    bindings,
+    `${filePath}#description`,
+  );
 }
 
 function parseEffectValues(
   value: unknown,
   filePath: string,
+  bindings: NumModifierValueBindings,
 ): PerkEffectValue[] | undefined {
   if (value === undefined) return undefined;
   if (!Array.isArray(value) || value.length === 0) {
@@ -102,6 +250,7 @@ function parseEffectValues(
       record.stages,
       `effect_values[${index}].stages`,
       filePath,
+      bindings,
     );
 
     if (kind === "damage") {
@@ -249,6 +398,15 @@ export function getAllPerks(): Perk[] {
       const filePath = path.join(slotDir, file);
       const content = fs.readFileSync(filePath, "utf-8");
       const { data } = matter(content);
+      const numModifierValues = parseNumModifierValues(
+        data.num_modifier_values,
+        filePath,
+      );
+      const description = resolveDescription(
+        data.description,
+        filePath,
+        numModifierValues,
+      );
       const perk: Perk = {
         id: file.replace(".mdx", ""),
         itemId: requireNonEmptyString(data.id, "id", filePath),
@@ -259,8 +417,12 @@ export function getAllPerks(): Perk[] {
         category: data.category || "其他",
         icon: data.icon,
         effects: [],
-        description: data.description,
-        effectValues: parseEffectValues(data.effect_values, filePath),
+        description,
+        effectValues: parseEffectValues(
+          data.effect_values,
+          filePath,
+          numModifierValues,
+        ),
         independentDamageSources: parseIndependentDamageSources(
           data.independent_damage_sources,
           filePath,
@@ -289,6 +451,15 @@ export function getPerkByName(name: string): Perk | null {
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, "utf-8");
       const { data } = matter(content);
+      const numModifierValues = parseNumModifierValues(
+        data.num_modifier_values,
+        filePath,
+      );
+      const description = resolveDescription(
+        data.description,
+        filePath,
+        numModifierValues,
+      );
       return {
         id: name,
         itemId: requireNonEmptyString(data.id, "id", filePath),
@@ -299,8 +470,12 @@ export function getPerkByName(name: string): Perk | null {
         category: data.category || "其他",
         icon: data.icon,
         effects: [],
-        description: data.description,
-        effectValues: parseEffectValues(data.effect_values, filePath),
+        description,
+        effectValues: parseEffectValues(
+          data.effect_values,
+          filePath,
+          numModifierValues,
+        ),
         independentDamageSources: parseIndependentDamageSources(
           data.independent_damage_sources,
           filePath,

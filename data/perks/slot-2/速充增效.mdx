@@ -1,13 +1,19 @@
 ---
 title: "速充增效"
 id: "20703040385"
+num_modifier_values:
+  charge-efficiency:
+    row: "lc:111041013_1_0"
+    field: coefficient
 effect_values:
   - kind: stat
     statId: charge-efficiency
     label: "充能效率"
     stages:
       - condition: "最高"
-        value: "+70%"
+        value:
+          ref: charge-efficiency
+          format: signed-percent
 slot: 2
 rarity: 3
 icon: "1314190001"
@@ -17,5 +23,5 @@ MakeMODItem: 1
 IsCooked: true
 release_date: "2026-07-24"
 season: s3
-description: "角色移动时，移速加成越高，武器充能效率越高，最多增加<strong>70%</strong>。"
+description: "角色移动时，移速加成越高，武器充能效率越高，最多增加<strong>{{num:charge-efficiency|percent}}</strong>。"
 ---

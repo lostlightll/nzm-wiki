@@ -1,21 +1,33 @@
 ---
 title: "致命节拍"
 id: "20703040085"
+num_modifier_values:
+  weapon-damage-per-stack:
+    row: "lc:111010062_1_0"
+    field: coefficient
+  weapon-damage-max:
+    row: "lc:111010062_1_0"
+    field: coefficient
+    scale: 80
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "武器伤害"
     stages:
       - condition: "每发"
-        value: "+0.4%"
+        value:
+          ref: weapon-damage-per-stack
+          format: signed-percent
       - condition: "80层"
-        value: "+32%"
+        value:
+          ref: weapon-damage-max
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315180001"
 weaponType: [5, 1, 6]
 season: s0
-description: "持续开火时，每射出一发子弹，武器射击伤害与武器技能伤害增加<strong>0.4%</strong>，最多叠加<strong>80</strong>层；停止开火后清空增益。"
+description: "持续开火时，每射出一发子弹，武器射击伤害与武器技能伤害增加<strong>{{num:weapon-damage-per-stack|percent}}</strong>，最多叠加<strong>80</strong>层（最高<strong>{{num:weapon-damage-max|percent}}</strong>）；停止开火后清空增益。"
 description_override: true
 CollectMODItem: 1
 MakeMODItem: 1

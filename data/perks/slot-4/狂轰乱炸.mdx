@@ -1,18 +1,29 @@
 ---
 title: "狂轰乱炸"
 id: "20703040407"
+num_modifier_values:
+  weapon-explode-damage:
+    row: "lc:111041026_1_1"
+    field: base
+  fire-rate:
+    row: "lc:1410070101_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-explode-damage
     label: "爆炸伤害"
     stages:
-      - value: "+120%"
+      - value:
+          ref: weapon-explode-damage
+          format: signed-percent
   - kind: stat
     statId: fire-rate
     label: "射速"
     stages:
       - condition: "急速狂热期间"
-        value: "+50%"
+        value:
+          ref: fire-rate
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1316195001"
@@ -21,6 +32,6 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "爆炸伤害增加<strong>120%</strong>。每次开火造成多次伤害时叠加<strong>1层</strong>效果，叠加至<strong>5层</strong>时获得持续<strong>10秒</strong>的急速狂热，冷却<strong>13秒</strong>。"
+description: "爆炸伤害增加<strong>{{num:weapon-explode-damage|percent}}</strong>。每次开火造成多次伤害时叠加<strong>1层</strong>效果，叠加至<strong>5层</strong>时获得持续<strong>10秒</strong>的急速狂热，冷却<strong>13秒</strong>。"
 description_override: true
 ---

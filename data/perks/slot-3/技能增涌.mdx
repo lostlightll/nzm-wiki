@@ -1,12 +1,18 @@
 ---
 title: "技能增涌"
 id: "20703040184"
+num_modifier_values:
+  weapon-skill-damage:
+    row: "lc:111010129_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-skill-damage
     label: "武器技能伤害"
     stages:
-      - value: "+60%"
+      - value:
+          ref: weapon-skill-damage
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315134001"
@@ -15,5 +21,5 @@ CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true
 season: s0
-description: "武器技能伤害提升**60%**。"
+description: "武器技能伤害提升**{{num:weapon-skill-damage|percent}}**。"
 ---

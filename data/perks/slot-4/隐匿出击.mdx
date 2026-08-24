@@ -1,13 +1,19 @@
 ---
 title: "隐匿出击"
 id: "20704040483"
+num_modifier_values:
+  all-damage:
+    row: "lc:130044030_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: all-damage
     label: "全伤害"
     stages:
       - condition: "破隐后3秒内"
-        value: "+300%"
+        value:
+          ref: all-damage
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1315202001"
@@ -16,6 +22,6 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "每隔<strong>20秒</strong>进入隐身。破隐后，<strong>3秒</strong>内伤害提高<strong>300%</strong>。"
+description: "每隔<strong>20秒</strong>进入隐身。破隐后，<strong>3秒</strong>内伤害提高<strong>{{num:all-damage|percent}}</strong>。"
 description_override: true
 ---

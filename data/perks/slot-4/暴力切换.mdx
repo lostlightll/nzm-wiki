@@ -1,13 +1,19 @@
 ---
 title: "暴力切换"
 id: "20704040482"
+num_modifier_values:
+  weapon-damage:
+    row: "lc:130044311_1_0"
+    field: base
 effect_values:
   - kind: damage
     modifierTypeId: weapon-damage
     label: "射击伤害"
     stages:
       - condition: "切换开火模式后6秒内"
-        value: "+250%"
+        value:
+          ref: weapon-damage
+          format: signed-percent
 slot: 4
 rarity: 3
 icon: "1316197001"
@@ -16,6 +22,6 @@ CollectMODItem: 0
 MakeMODItem: 0
 IsCooked: true
 season: "pending"
-description: "每次切换开火模式，武器射击伤害提高<strong>250%</strong>，持续<strong>6秒</strong>。"
+description: "每次切换开火模式，武器射击伤害提高<strong>{{num:weapon-damage|percent}}</strong>，持续<strong>6秒</strong>。"
 description_override: true
 ---
