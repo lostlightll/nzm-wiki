@@ -270,8 +270,7 @@ export function BuildGuideCatalog({ guides }: { guides: BuildGuideSummary[] }) {
     <div className="mx-auto w-full max-w-6xl">
       <header className="mb-6 flex flex-col gap-2 border-b border-zinc-700 pb-5 sm:mb-8 sm:flex-row sm:items-end sm:justify-between sm:pb-6">
         <div>
-          <p className="text-xs font-semibold text-[#d1ac69]">S3 猎场</p>
-          <h1 className="mt-1 text-2xl font-bold text-white sm:text-3xl">搭配攻略</h1>
+          <h1 className="text-2xl font-bold text-white sm:text-3xl">搭配攻略</h1>
         </div>
         <p className="text-sm tabular-nums text-zinc-500">
           {guides.length > 0 ? `${guides.length} 篇攻略` : "暂无公开内容"}

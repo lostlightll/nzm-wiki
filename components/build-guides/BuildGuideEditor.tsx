@@ -528,7 +528,7 @@ export function BuildGuideEditor({
 
     setStatus({ kind: "saving" });
     try {
-      const response = await fetch(getAssetPath("/api/editor"), {
+      const response = await fetch(getAssetPath("/api/editor/builds"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -558,7 +558,7 @@ export function BuildGuideEditor({
       setSavedSnapshot(snapshot);
       setStatus({ kind: "success", message: `已保存 ${result.file}` });
       const nextUrl = getAssetPath(
-        `/editor?file=${encodeURIComponent(result.file)}`,
+        `/editor/builds?file=${encodeURIComponent(result.file)}`,
       );
       window.history.replaceState({}, "", nextUrl);
     } catch (error) {
@@ -588,9 +588,9 @@ export function BuildGuideEditor({
         <header className="sticky top-14 z-30 border-b border-zinc-800 bg-[#0b0e10]/95 backdrop-blur-sm">
           <div className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-3 px-4 py-3 sm:px-6 xl:px-8">
             <a
-              href={getAssetPath("/builds")}
-              aria-label="返回搭配攻略"
-              title="返回搭配攻略"
+              href={getAssetPath("/editor")}
+              aria-label="返回内容编辑器"
+              title="返回内容编辑器"
               className={`flex h-11 w-11 shrink-0 items-center justify-center text-zinc-400 hover:text-white ${BUTTON_FOCUS}`}
             >
               <ArrowLeft className="h-5 w-5" />
@@ -618,7 +618,7 @@ export function BuildGuideEditor({
                     return;
                   }
                   window.location.href = getAssetPath(
-                    `/editor?file=${encodeURIComponent(event.target.value)}`,
+                    `/editor/builds?file=${encodeURIComponent(event.target.value)}`,
                   );
                 }}
                 className={INPUT_CLASS}

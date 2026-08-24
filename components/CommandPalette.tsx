@@ -61,10 +61,10 @@ function getGitHubEditUrl(): string | null {
 function getEditorUrl(): string | null {
   if (process.env.NODE_ENV !== "development") return null;
   const resolved = resolveDataPath();
-  if (!resolved) return null;
+  if (!resolved || resolved.dataPath !== "data/builds") return null;
   // editor API 的 file 参数是相对于 data/ 的路径
   const relativePath = resolved.dataPath.replace(/^data\//, "");
-  return `/editor?file=${encodeURIComponent(`${relativePath}/${resolved.slug}.mdx`)}`;
+  return `/editor/builds?file=${encodeURIComponent(`${relativePath}/${resolved.slug}.mdx`)}`;
 }
 
 /**
