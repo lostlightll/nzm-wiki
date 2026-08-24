@@ -67,6 +67,7 @@ interface S3TalentNodeSource {
   phase: number;
   column: number;
   maxLevel: number;
+  descriptions: string[];
 }
 
 interface S3TalentTreeSource {
@@ -118,6 +119,7 @@ export interface ResolvedBuildGuideTalentNode {
   icon: string;
   phase: number;
   level: number;
+  description: string;
   href: string;
 }
 
@@ -125,11 +127,13 @@ export interface ResolvedBuildGuideTalent {
   tree: S3BuildTalentId;
   treeName: string;
   treeIcon: string;
+  treeDescription: string;
   treeHref: string;
   passive: {
     id: string;
     name: string;
     icon: string;
+    description: string;
     href: string;
   };
   route: string;
@@ -299,6 +303,10 @@ export function resolveS3BuildTalent(
       icon: canonicalNode.icon,
       phase,
       level: canonicalNode.maxLevel,
+      description:
+        canonicalNode.descriptions[canonicalNode.maxLevel - 1] ??
+        canonicalNode.descriptions.at(-1) ??
+        "",
       href: `${treeHref}?node=${encodeURIComponent(id)}#season-talent-node-${encodeURIComponent(id)}`,
     };
   });
@@ -312,11 +320,13 @@ export function resolveS3BuildTalent(
     tree: source.tree,
     treeName: tree.name,
     treeIcon: tree.nodes[0].icon,
+    treeDescription: tree.nodes[0].descriptions.at(-1) ?? "",
     treeHref,
     passive: {
       id: passive.id,
       name: passive.name,
       icon: passive.icon,
+      description: passive.description,
       href: `${treeHref}?passive=${encodeURIComponent(passive.id)}#season-talent-passive-${encodeURIComponent(passive.id)}`,
     },
     route: source.route,

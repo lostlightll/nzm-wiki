@@ -53,6 +53,9 @@ test("maps 43211 to the five S3 general talent nodes", () => {
   assert.equal(talent.exclusivePoints, 15);
   assert.equal(talent.generalPoints, 25);
   assert.equal(talent.totalPoints, 40);
+  assert.match(talent.treeDescription, /点击技能释放泡泡/);
+  assert.match(talent.passive.description, /武器直击伤害/);
+  assert.match(talent.nodes[0].description, /持续移动2秒以上时射击/);
 });
 
 test("rejects an invalid route code", async () => {
