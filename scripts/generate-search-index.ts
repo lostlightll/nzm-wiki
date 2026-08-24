@@ -33,6 +33,7 @@ const categoryMap: Record<string, string> = {
   "enemies/td": "塔防敌人",
   cards: "卡牌",
   posts: "文章",
+  builds: "搭配攻略",
 };
 
 // 路径映射（用于生成实际的访问路径）
@@ -44,7 +45,64 @@ const pathMap: Record<string, string> = {
   "enemies/td": "/enemies/td",
   cards: "/cards",
   posts: "/posts",
+  builds: "/builds",
 };
+
+export function getBuildGuideSearchKeywords(data: Record<string, unknown>): string[] {
+  const weapons = data.weapons as
+    | { primary?: unknown; secondary?: unknown; melee?: unknown }
+    | undefined;
+  const perks = data.perks as
+    | {
+        primary?: Record<string, unknown>;
+        secondary?: Record<string, unknown>;
+      }
+    | undefined;
+  const talent = data.talent as
+    | { tree?: unknown; passive?: unknown; route?: unknown }
+    | undefined;
+  const treeNames: Record<string, string> = {
+    zero: "零点",
+    "grappling-hook": "劫掠钩锁",
+    "iron-fist": "铁拳狂徒",
+  };
+  const passiveFile = path.join(
+    baseDir,
+    "season-talents",
+    "s3",
+    "passives.json",
+  );
+  const passiveNames = fs.existsSync(passiveFile)
+    ? new Map(
+        (
+          JSON.parse(fs.readFileSync(passiveFile, "utf8")) as {
+            passives: Array<{ id: string; name: string }>;
+          }
+        ).passives.map((passive) => [passive.id, passive.name]),
+      )
+    : new Map<string, string>();
+  const perkSlugs = [
+    ...Object.values(perks?.primary ?? {}),
+    ...Object.values(perks?.secondary ?? {}),
+  ].filter((value): value is string => typeof value === "string");
+  const tree = typeof talent?.tree === "string" ? talent.tree : "";
+  const passive = typeof talent?.passive === "string" ? talent.passive : "";
+
+  return [
+    "S3",
+    typeof data.summary === "string" ? data.summary : "",
+    typeof weapons?.primary === "string" ? weapons.primary : "",
+    typeof weapons?.secondary === "string" ? weapons.secondary : "",
+    typeof weapons?.melee === "string" ? weapons.melee : "",
+    ...perkSlugs,
+    ...perkSlugs.map((slug) => slug.split("/").at(-1) ?? slug),
+    tree,
+    treeNames[tree] ?? "",
+    passive,
+    passiveNames.get(passive) ?? "",
+    typeof talent?.route === "string" ? talent.route : "",
+  ].filter(Boolean);
+}
 
 export function scanDirectory(dirPath: string, relativePath: string = ""): SearchItem[] {
   const results: SearchItem[] = [];
@@ -159,6 +217,10 @@ export function scanDirectory(dirPath: string, relativePath: string = ""): Searc
         } else {
           keywords.push(data.tag);
         }
+      }
+
+      if (slug.startsWith("builds/")) {
+        keywords.push(...getBuildGuideSearchKeywords(data));
       }
 
       // 生成拼音索引（全拼和首字母）

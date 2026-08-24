@@ -14,6 +14,7 @@ const pathMap: Record<string, string> = {
   "enemies/td": "/enemies/td",
   cards: "/cards",
   posts: "/posts",
+  builds: "/builds",
 };
 
 interface PageEntry {
@@ -108,6 +109,7 @@ function generateSitemap() {
     { url: "/guides" },
     { url: "/multiplier" },
     { url: "/season-talents" },
+    { url: "/builds" },
     { url: "/guides/season-talents/s3/iron-fist" },
     { url: "/guides/season-talents/s3/zero" },
     { url: "/guides/season-talents/s3/grappling-hook" },

@@ -4,7 +4,43 @@ import {
   createSeasonTalentSearchItem,
   createStatusEffectSearchItem,
   createSummonSearchItem,
+  getBuildGuideSearchKeywords,
 } from "./generate-search-index";
+
+test("collects structured S3 build guide keywords", () => {
+  const keywords = getBuildGuideSearchKeywords({
+    summary: "稳定输出示例",
+    weapons: {
+      primary: "精绝兽神",
+      secondary: "暗夜之殇",
+      melee: "冰点双峰",
+    },
+    perks: {
+      primary: {
+        1: "slot-1/万钧过载",
+        2: "slot-2/出其不意",
+      },
+      secondary: {
+        3: "slot-3/危险膛压",
+        4: "slot-4/冲刺得速",
+      },
+    },
+    talent: { tree: "zero", passive: "2030101", route: "43211" },
+  });
+
+  for (const keyword of [
+    "精绝兽神",
+    "暗夜之殇",
+    "冰点双峰",
+    "万钧过载",
+    "危险膛压",
+    "零点",
+    "爆射扭蛋机",
+    "43211",
+  ]) {
+    assert.ok(keywords.includes(keyword), `missing search keyword: ${keyword}`);
+  }
+});
 
 test("creates an enemy status-effect search item with a stable deep link", () => {
   const item = createStatusEffectSearchItem({

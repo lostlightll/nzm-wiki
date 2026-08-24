@@ -57,6 +57,9 @@ function getMobileBackLink(pathname: string) {
   if (pathname.startsWith("/guides/season-talents/")) {
     return { href: "/season-talents", label: "返回赛季天赋" };
   }
+  if (/^\/builds\/[^/]+\/?$/.test(pathname)) {
+    return { href: "/builds", label: "返回搭配攻略" };
+  }
   return null;
 }
 

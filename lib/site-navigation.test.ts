@@ -21,7 +21,7 @@ test("站点导航配置保持预期分组和顺序", () => {
       { label: "玩法", items: ["塔防图鉴", "超限图鉴"] },
       {
         label: "攻略资料",
-        items: ["游戏乘区", "赛季天赋", "攻略文章"],
+        items: ["游戏乘区", "赛季天赋", "搭配攻略", "攻略文章"],
       },
     ],
   );
@@ -49,6 +49,8 @@ test("塔防交叉路由优先归属塔防图鉴", () => {
 test("攻略模块通过路径和 hash 解析", () => {
   assert.equal(active("/multiplier"), "multiplier");
   assert.equal(active("/season-talents"), "season-talents");
+  assert.equal(active("/builds"), "builds");
+  assert.equal(active("/builds/example"), "builds");
   assert.equal(active("/posts"), "articles");
   assert.equal(active("/guides"), "multiplier");
   assert.equal(active("/guides", "#multiplier"), "multiplier");

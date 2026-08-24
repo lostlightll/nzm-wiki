@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
+import matter from "gray-matter";
 
 const NEXT_CACHE_DIR = path.join(process.cwd(), ".next");
 
@@ -23,9 +24,24 @@ function isS4SeasonTalentDraft(): boolean {
   });
 }
 
+function hasPublishedBuildGuides(): boolean {
+  const buildsDir = path.join(process.cwd(), "data", "builds");
+  if (!fs.existsSync(buildsDir)) return false;
+  return fs
+    .readdirSync(buildsDir)
+    .filter((fileName) => fileName.endsWith(".mdx"))
+    .some((fileName) => {
+      const filePath = path.join(buildsDir, fileName);
+      return matter(fs.readFileSync(filePath, "utf8")).data.draft !== true;
+    });
+}
+
 const PATHS_TO_HIDE = [
   path.join("app", "api"),
   path.join("app", "editor"),
+  ...(!hasPublishedBuildGuides()
+    ? [path.join("app", "(pages)", "builds", "[slug]")]
+    : []),
   ...(isS4SeasonTalentDraft()
     ? [
         path.join("app", "(pages)", "guides", "season-talents", "s4"),
@@ -113,7 +129,7 @@ try {
   console.log("[SUCCESS] Build completed successfully.");
 } catch {
   console.error("\n[ERROR] Build failed.");
-  process.exit(1);
+  process.exitCode = 1;
 } finally {
   // 5. 还原文件夹
   console.log("[CLEANUP] Restoring directories...");

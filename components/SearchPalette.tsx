@@ -22,6 +22,7 @@ const DEFAULT_ENTRIES = [
   { title: "超限图鉴", path: "/overlimit", category: "导航" },
   { title: "赛季天赋", path: "/season-talents", category: "导航" },
   { title: "游戏乘区", path: "/multiplier", category: "导航" },
+  { title: "搭配攻略", path: "/builds", category: "导航" },
   { title: "攻略文章", path: "/posts", category: "导航" },
 ];
 
@@ -76,6 +77,7 @@ const categoryColors: Record<string, string> = {
   状态效果: "text-cyan-400",
   召唤物: "text-emerald-400",
   文章: "text-zinc-400",
+  搭配攻略: "text-amber-300",
 };
 
 export function SearchPalette() {

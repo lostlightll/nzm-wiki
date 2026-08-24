@@ -5,6 +5,7 @@ export type SiteNavItemId =
   | "tower-defense"
   | "overlimit"
   | "season-talents"
+  | "builds"
   | "multiplier"
   | "articles"
   | "credits";
@@ -70,6 +71,11 @@ export const SITE_NAV_SECTIONS: readonly SiteNavSection[] = [
         id: "season-talents",
         label: "赛季天赋",
         href: "/season-talents",
+      },
+      {
+        id: "builds",
+        label: "搭配攻略",
+        href: "/builds",
       },
       {
         id: "articles",
@@ -140,6 +146,10 @@ export function resolveSiteNavigation({
     (normalizedPathname === "/guides" && normalizedHash === "season-talents")
   ) {
     return resolveItem("season-talents");
+  }
+
+  if (isPath(normalizedPathname, "/builds")) {
+    return resolveItem("builds");
   }
 
   if (

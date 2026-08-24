@@ -15,6 +15,7 @@ export default function PagesLayout({
     pathname === "/guides" ||
     pathname === "/multiplier" ||
     pathname === "/season-talents" ||
+    pathname === "/builds" ||
     pathname === "/posts";
 
   return (
