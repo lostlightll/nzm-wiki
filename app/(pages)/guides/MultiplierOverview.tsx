@@ -33,7 +33,6 @@ import {
 import type { WeaponType } from "@/types";
 import type { WeaponBaseDamageEntry } from "@/lib/weapon-base-damage";
 import { BaseDamageDetail } from "./BaseDamageDetail";
-import { DamageSourcesOverview } from "./DamageSourcesOverview";
 import {
   MultiplierBidirectionalIndex,
   type MultiplierTargetIndexEntry,
@@ -57,7 +56,7 @@ const MULTIPLIER_PARTS: readonly {
   label: string;
 }[] = [
   { id: "formula", part: "Part 1", label: "乘区公式" },
-  { id: "damage-sources", part: "Part 2", label: "伤害来源" },
+  { id: "damage-sources", part: "Part 2", label: "增伤范围" },
   { id: "index", part: "Part 3", label: "增伤索引" },
 ];
 
@@ -214,7 +213,7 @@ function ExampleCard({
 
   if (!href) {
     return (
-      <div className="flex min-h-11 items-center gap-2.5 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-sm font-medium text-zinc-100 xl:min-h-9 xl:py-1.5">
+      <div className="flex min-h-11 items-center gap-2.5 rounded-lg border border-zinc-700 bg-zinc-950/45 px-3 py-2 text-sm font-medium text-zinc-100 xl:min-h-9 xl:py-1.5">
         {content}
       </div>
     );
@@ -223,7 +222,7 @@ function ExampleCard({
   return (
     <Link
       href={href}
-      className="flex min-h-11 cursor-pointer touch-manipulation items-center gap-2.5 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-800 hover:text-[color:var(--guide-accent)] focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-9 xl:py-1.5"
+      className="flex min-h-11 cursor-pointer touch-manipulation items-center gap-2.5 rounded-lg border border-zinc-700 bg-zinc-950/45 px-3 py-2 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-800/70 hover:text-[color:var(--guide-accent)] focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-9 xl:py-1.5"
     >
       {content}
     </Link>
@@ -330,7 +329,7 @@ function WeakpointRules({ detail }: { detail: WeakpointMultiplierData }) {
         弱点倍率由伤害来源的数值配置决定，命中有效弱点时按对应倍率参与伤害结算。
       </p>
 
-      <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
+      <div className="rounded-lg border border-zinc-700 bg-zinc-950/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
         <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">
           倍率公式
         </h4>
@@ -364,7 +363,7 @@ function WeakpointMultiplierDetail({
   return (
     <>
       <div className="grid xl:grid-cols-[minmax(16rem,0.85fr)_minmax(0,2.15fr)]">
-        <section className="border-b border-zinc-700 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
+        <section className="border-b border-zinc-800 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
           <WeakpointRules detail={detail} />
         </section>
 
@@ -374,7 +373,7 @@ function WeakpointMultiplierDetail({
         </section>
       </div>
 
-      <footer className="flex items-start justify-center gap-2 border-t border-zinc-700 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
+      <footer className="flex items-start justify-center gap-2 border-t border-zinc-800 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
         <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
         <p>
           以上为武器类型默认值与已确认的 1.0× 来源；武器技能、额外模式或特殊伤害事件以自身数值配置为准。
@@ -414,13 +413,13 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
   return (
     <>
       <div className="grid md:grid-cols-2 xl:grid-cols-[1.15fr_0.8fr_0.9fr_1.65fr]">
-        <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r xl:border-b-0 xl:p-4">
+        <section className="border-b border-zinc-800 p-5 sm:p-6 md:border-r xl:border-b-0 xl:p-4">
           <SectionHeading icon={Calculator}>计算规则</SectionHeading>
           <p className="mb-5 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base xl:mb-3 xl:text-sm xl:leading-6">
             {detail.summary}
           </p>
 
-          <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
+          <div className="rounded-lg border border-zinc-700 bg-zinc-950/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
             <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">
               {detail.rulesHeading}
             </h4>
@@ -432,7 +431,7 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
           </div>
         </section>
 
-        <section className="border-b border-zinc-700 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
+        <section className="border-b border-zinc-800 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
           <div className="flex items-start justify-between gap-4">
             <SectionHeading icon={Box}>典型案例</SectionHeading>
             <span
@@ -458,16 +457,16 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
               ))}
             </ul>
           ) : (
-            <p className="rounded-lg border border-dashed border-zinc-700 bg-zinc-800/25 px-3 py-4 text-center text-sm text-[color:var(--guide-muted)]">
+            <p className="rounded-lg border border-dashed border-zinc-700 bg-zinc-950/30 px-3 py-4 text-center text-sm text-[color:var(--guide-muted)]">
               暂未收录典型案例
             </p>
           )}
         </section>
 
-        <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r md:border-b-0 xl:p-4">
+        <section className="border-b border-zinc-800 p-5 sm:p-6 md:border-r md:border-b-0 xl:p-4">
           <SectionHeading icon={Users}>增伤对象</SectionHeading>
           {selectionOptions.length === 0 && (
-            <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-sm leading-6 text-zinc-100">
+            <div className="rounded-lg border border-zinc-700 bg-zinc-950/45 px-3 py-2 text-sm leading-6 text-zinc-100">
               {detail.target}
             </div>
           )}
@@ -489,7 +488,7 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
                     className={`min-h-11 cursor-pointer touch-manipulation rounded-md border px-3 py-2 text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-8 xl:py-1 ${
                       active
                         ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
-                        : "border-zinc-600 bg-zinc-800/55 text-zinc-100 hover:border-zinc-400"
+                        : "border-zinc-700 bg-zinc-950/45 text-zinc-100 hover:border-zinc-500 hover:bg-zinc-800/70"
                     }`}
                   >
                     {label}
@@ -524,7 +523,7 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
                 return (
                   <div
                     key={name}
-                    className="min-h-11 rounded-lg border border-zinc-700 bg-zinc-800/45 px-3 py-2 text-left font-mono text-xs leading-5 text-zinc-200 xl:min-h-8 xl:px-2 xl:py-1.5"
+                    className="min-h-11 rounded-lg border border-zinc-700 bg-zinc-950/45 px-3 py-2 text-left font-mono text-xs leading-5 text-zinc-200 xl:min-h-8 xl:px-2 xl:py-1.5"
                   >
                     {content}
                   </div>
@@ -542,7 +541,7 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
                   className={`min-h-11 w-full cursor-pointer touch-manipulation rounded-lg border px-3 py-2 text-left font-mono text-xs leading-5 transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-8 xl:px-2 xl:py-1.5 ${
                     active
                       ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
-                      : "border-zinc-700 bg-zinc-800/45 text-zinc-200 hover:border-zinc-500"
+                      : "border-zinc-700 bg-zinc-950/45 text-zinc-200 hover:border-zinc-500 hover:bg-zinc-800/70"
                   }`}
                 >
                   {content}
@@ -553,7 +552,7 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
         </section>
       </div>
 
-      <footer className="flex items-start justify-center gap-2 border-t border-zinc-700 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
+      <footer className="flex items-start justify-center gap-2 border-t border-zinc-800 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
         <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
         <p>{detail.notice}</p>
       </footer>
@@ -630,8 +629,8 @@ function DesktopFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
                   onClick={() => onSelectFactor(factor.id)}
                   className={`flex h-12 w-full cursor-pointer touch-manipulation items-center justify-center rounded-[10px] border px-3 text-center text-sm font-semibold tracking-wide shadow-[inset_0_1px_0_rgba(255,255,255,0.035)] transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
                     selected
-                      ? "border-[color:var(--guide-accent)] bg-[linear-gradient(135deg,rgba(217,164,62,0.24),rgba(85,66,29,0.18))] text-[color:var(--guide-accent)]"
-                      : "border-zinc-600 bg-[linear-gradient(145deg,rgba(31,33,35,0.92),rgba(20,22,24,0.92))] text-zinc-200 hover:border-zinc-400 hover:bg-zinc-800"
+                      ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
+                      : "border-zinc-700 bg-zinc-950/45 text-zinc-200 hover:border-zinc-500 hover:bg-zinc-800/70"
                   }`}
                 >
                   {factor.label}
@@ -647,8 +646,8 @@ function DesktopFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
                   }
                   className={`absolute left-1/2 top-[56px] z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border ${
                     selected
-                      ? "border-[color:var(--guide-accent)] bg-[#111416]"
-                      : "border-zinc-400 bg-[#111416]"
+                      ? "border-[color:var(--guide-accent)] bg-zinc-950"
+                      : "border-zinc-400 bg-zinc-950"
                   }`}
                 >
                   <span
@@ -707,7 +706,7 @@ function CompactFormula({ selectedFactorId, onSelectFactor }: FormulaProps) {
               className={`inline-flex min-h-11 cursor-pointer touch-manipulation items-center rounded-lg border px-3 py-2 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${
                 selected
                   ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
-                  : "border-zinc-700 bg-zinc-900/70 text-zinc-200 hover:border-zinc-500 hover:bg-zinc-800"
+                  : "border-zinc-700 bg-zinc-950/45 text-zinc-200 hover:border-zinc-500 hover:bg-zinc-800/70"
               }`}
             >
               {factor.label}
@@ -831,7 +830,17 @@ export function MultiplierOverview({
       </nav>
 
       {activePart === "damage-sources" ? (
-        <DamageSourcesOverview />
+        <section
+          aria-labelledby="damage-scope-heading"
+          className="flex min-h-64 flex-col items-center justify-center px-4 py-12 text-center"
+        >
+          <h2 id="damage-scope-heading" className="text-xl font-bold text-zinc-100">
+            增伤范围
+          </h2>
+          <p className="mt-2 text-sm leading-6 text-zinc-500">
+            内容整理中，完成核验后更新。
+          </p>
+        </section>
       ) : activePart === "index" ? (
         <MultiplierBidirectionalIndex targets={targets} />
       ) : (
@@ -851,9 +860,9 @@ export function MultiplierOverview({
 
         <article
           id={DETAIL_PANEL_ID}
-          className="mt-5 overflow-hidden rounded-xl border border-zinc-600 bg-[linear-gradient(145deg,rgba(18,21,23,0.97),rgba(12,15,17,0.98))] shadow-[0_24px_60px_rgba(0,0,0,0.2)] xl:mt-3"
+          className="mt-5 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/55 xl:mt-3"
         >
-          <header className="border-b border-zinc-700 px-5 py-4 sm:px-6 xl:py-2.5">
+          <header className="border-b border-zinc-800 px-5 py-4 sm:px-6 xl:py-2.5">
             <h2
               id={`${selectedFactor.id}-detail-heading`}
               className="text-2xl font-bold tracking-wide text-[color:var(--guide-accent)] xl:text-xl"
@@ -869,13 +878,13 @@ export function MultiplierOverview({
           ) : selectedFactorId === "dilution" ? (
             <>
               <div className="grid md:grid-cols-2 xl:grid-cols-[1.15fr_0.8fr_0.9fr_1.65fr]">
-                <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r xl:border-b-0 xl:p-4">
+                <section className="border-b border-zinc-800 p-5 sm:p-6 md:border-r xl:border-b-0 xl:p-4">
                   <SectionHeading icon={Calculator}>计算规则</SectionHeading>
                   <p className="mb-5 text-sm leading-7 text-[color:var(--guide-muted)] sm:text-base xl:mb-3 xl:text-sm xl:leading-6">
                     该乘区为多个可叠加的稀释类增伤来源，与其他乘区相乘，最终影响结算伤害。
                   </p>
 
-                  <div className="rounded-lg border border-zinc-700 bg-zinc-800/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
+                  <div className="rounded-lg border border-zinc-700 bg-zinc-950/45 p-4 text-sm leading-6 text-zinc-300 xl:p-3">
                     <h4 className="mb-2 font-semibold text-zinc-100 xl:mb-1">乘区关系</h4>
                     <p className="font-mono text-xs leading-6 text-zinc-200 sm:text-sm xl:text-xs xl:leading-5">
                       最终伤害 = 基础伤害 × 其他乘区 × 大稀释乘区
@@ -889,7 +898,7 @@ export function MultiplierOverview({
                   </div>
                 </section>
 
-                <section className="border-b border-zinc-700 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
+                <section className="border-b border-zinc-800 p-5 sm:p-6 xl:border-r xl:border-b-0 xl:p-4">
                   <div className="flex items-start justify-between gap-4">
                     <SectionHeading icon={Box}>典型案例</SectionHeading>
                     <span
@@ -909,7 +918,7 @@ export function MultiplierOverview({
                   </ul>
                 </section>
 
-                <section className="border-b border-zinc-700 p-5 sm:p-6 md:border-r md:border-b-0 xl:p-4">
+                <section className="border-b border-zinc-800 p-5 sm:p-6 md:border-r md:border-b-0 xl:p-4">
                   <SectionHeading icon={Users}>增伤对象</SectionHeading>
                   <div className="flex flex-wrap gap-2 xl:gap-1.5" role="group" aria-label="按增伤对象筛选典型案例">
                     {DILUTION_CATEGORIES.map(({ id, target }) => {
@@ -924,7 +933,7 @@ export function MultiplierOverview({
                           className={`min-h-11 cursor-pointer touch-manipulation rounded-md border px-3 py-2 text-sm transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-8 xl:py-1 ${
                             active
                               ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
-                              : "border-zinc-600 bg-zinc-800/55 text-zinc-100 hover:border-zinc-400"
+                              : "border-zinc-700 bg-zinc-950/45 text-zinc-100 hover:border-zinc-500 hover:bg-zinc-800/70"
                           }`}
                         >
                           {target}
@@ -949,7 +958,7 @@ export function MultiplierOverview({
                           className={`min-h-11 w-full cursor-pointer touch-manipulation rounded-lg border px-3 py-2 text-left font-mono text-xs leading-4 transition-colors duration-200 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-8 xl:px-2 xl:py-1 ${
                             active
                               ? "border-[color:var(--guide-accent)] bg-[color:var(--guide-accent-soft)] text-[color:var(--guide-accent)]"
-                              : "border-zinc-700 bg-zinc-800/45 text-zinc-200 hover:border-zinc-500"
+                              : "border-zinc-700 bg-zinc-950/45 text-zinc-200 hover:border-zinc-500 hover:bg-zinc-800/70"
                           }`}
                         >
                           <AttributeName name={attributeField} />
@@ -960,7 +969,7 @@ export function MultiplierOverview({
                 </section>
               </div>
 
-              <footer className="flex items-start justify-center gap-2 border-t border-zinc-700 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
+              <footer className="flex items-start justify-center gap-2 border-t border-zinc-800 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm xl:py-2">
                 <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
                 <p>提示：实际生效以战斗结算为准，部分来源受触发条件限制。</p>
               </footer>

@@ -159,8 +159,8 @@ export function BaseDamageDetail({
 
   return (
     <>
-      <div className="grid border-b border-zinc-700 lg:grid-cols-[minmax(0,1fr)_minmax(23rem,0.42fr)]">
-        <section className="border-b border-zinc-700 p-5 sm:p-6 lg:border-r lg:border-b-0 xl:px-5 xl:py-3">
+      <div className="grid border-b border-zinc-800 lg:grid-cols-[minmax(0,1fr)_minmax(23rem,0.42fr)]">
+        <section className="border-b border-zinc-800 p-5 sm:p-6 lg:border-r lg:border-b-0 xl:px-5 xl:py-3">
           <div className="xl:flex xl:items-baseline xl:gap-4">
             <h3 className="flex shrink-0 items-center gap-3 text-base font-semibold text-zinc-100">
               <Calculator aria-hidden="true" className="h-5 w-5 text-zinc-200" />
@@ -170,7 +170,7 @@ export function BaseDamageDetail({
               单颗弹丸、单段攻击或单次原子结算的武器白值，乘以当前模式的基础攻击力，得到无增伤身体伤害。
             </p>
           </div>
-          <div className="mt-4 border-l-2 border-[color:var(--guide-accent)] bg-zinc-800/45 px-4 py-3 xl:mt-2 xl:flex xl:items-baseline xl:gap-4 xl:px-3 xl:py-2">
+          <div className="mt-4 border-l-2 border-[color:var(--guide-accent)] bg-zinc-950/45 px-4 py-3 xl:mt-2 xl:flex xl:items-baseline xl:gap-4 xl:px-3 xl:py-2">
             <p className="shrink-0 font-mono text-sm leading-6 text-zinc-100">
               {BASE_DAMAGE_DATA.formula}
             </p>
@@ -233,7 +233,7 @@ export function BaseDamageDetail({
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="武器或来源名称"
-                className="min-h-11 w-full rounded-md border border-zinc-700 bg-zinc-900 py-2 pr-3 pl-10 text-base text-zinc-100 outline-none transition-colors placeholder:text-zinc-500 focus:border-[color:var(--guide-accent)]"
+                className="min-h-11 w-full rounded-md border border-zinc-700 bg-zinc-950/45 py-2 pr-3 pl-10 text-base text-zinc-100 outline-none transition-colors placeholder:text-zinc-500 focus:border-[color:var(--guide-accent)]"
               />
             </span>
           </label>
@@ -245,7 +245,7 @@ export function BaseDamageDetail({
               onChange={(event) =>
                 setChannel(event.target.value as "all" | WeaponBaseDamageChannel)
               }
-              className="min-h-11 w-full rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 text-base text-zinc-200 outline-none transition-colors focus:border-[color:var(--guide-accent)]"
+              className="min-h-11 w-full rounded-md border border-zinc-700 bg-zinc-950/45 px-3 py-2 text-base text-zinc-200 outline-none transition-colors focus:border-[color:var(--guide-accent)]"
             >
               {CHANNEL_OPTIONS.map((option) => (
                 <option key={option.id} value={option.id}>
@@ -260,7 +260,7 @@ export function BaseDamageDetail({
             <select
               value={element}
               onChange={(event) => setElement(event.target.value as "all" | ElementType)}
-              className="min-h-11 w-full rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 text-base text-zinc-200 outline-none transition-colors focus:border-[color:var(--guide-accent)]"
+              className="min-h-11 w-full rounded-md border border-zinc-700 bg-zinc-950/45 px-3 py-2 text-base text-zinc-200 outline-none transition-colors focus:border-[color:var(--guide-accent)]"
             >
               {ELEMENT_OPTIONS.map((option) => (
                 <option key={option} value={option}>
@@ -276,7 +276,7 @@ export function BaseDamageDetail({
         </p>
 
         <div className="overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/55">
-          <div className="hidden grid-cols-[minmax(14rem,1.5fr)_minmax(12rem,1.05fr)_minmax(6rem,0.55fr)_minmax(5rem,0.45fr)_minmax(5rem,0.45fr)_minmax(8rem,0.75fr)] gap-4 border-b border-zinc-700 bg-zinc-800/70 px-5 py-2 text-xs font-semibold text-zinc-400 lg:grid">
+          <div className="hidden grid-cols-[minmax(14rem,1.5fr)_minmax(12rem,1.05fr)_minmax(6rem,0.55fr)_minmax(5rem,0.45fr)_minmax(5rem,0.45fr)_minmax(8rem,0.75fr)] gap-4 border-b border-zinc-800 bg-zinc-950/45 px-5 py-2 text-xs font-semibold text-zinc-400 lg:grid">
             <span>伤害来源</span>
             <span>白值计算</span>
             <span>类型</span>
@@ -298,7 +298,7 @@ export function BaseDamageDetail({
         </div>
       </section>
 
-      <footer className="flex items-start justify-center gap-2 border-t border-zinc-700 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm">
+      <footer className="flex items-start justify-center gap-2 border-t border-zinc-800 px-5 py-4 text-center text-xs leading-5 text-zinc-400 sm:text-sm">
         <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0" />
         <p>开发环境会与武器页面保持一致，同时包含标记为草稿的武器来源。</p>
       </footer>

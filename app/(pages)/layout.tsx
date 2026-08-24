@@ -20,12 +20,10 @@ export default function PagesLayout({
 
   return (
     <div
-      className={`relative min-h-[calc(100dvh-3.5rem)] ${
+      className={`relative min-h-[calc(100dvh-3.5rem)] bg-background ${
         isFullSeasonTalentDetail
-          ? "overflow-x-clip bg-[#03101a] lg:h-[calc(100dvh-3.5rem)] lg:overflow-hidden"
-          : isGuidesLanding
-            ? "bg-[#0b0e10]"
-            : "bg-background"
+          ? "overflow-x-clip lg:h-[calc(100dvh-3.5rem)] lg:overflow-hidden"
+          : ""
       }`}
     >
       <main

@@ -282,7 +282,7 @@ function SiteSidebar({
   onWidthCommit: (width: number) => void;
 }) {
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 hidden w-[var(--site-sidebar-width)] flex-col border-r border-zinc-700 bg-[#141516] shadow-[8px_0_28px_rgba(0,0,0,0.14)] xl:flex">
+    <aside className="fixed inset-y-0 left-0 z-40 hidden w-[var(--site-sidebar-width)] flex-col border-r border-zinc-700 bg-surface-1 shadow-[8px_0_28px_rgba(0,0,0,0.14)] xl:flex">
       <div className="flex h-14 shrink-0 items-center border-b border-zinc-700 px-4">
         <Brand />
       </div>
@@ -317,7 +317,7 @@ function MobileNavigationDialog({
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
-      className="site-nav-dialog fixed inset-y-0 left-0 right-auto m-0 h-dvh max-h-none w-[min(84vw,20rem)] max-w-none overflow-hidden border-0 border-r border-zinc-700 bg-[#141516] p-0 text-foreground shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-[1px] xl:hidden"
+      className="site-nav-dialog fixed inset-y-0 left-0 right-auto m-0 h-dvh max-h-none w-[min(84vw,20rem)] max-w-none overflow-hidden border-0 border-r border-zinc-700 bg-surface-1 p-0 text-foreground shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-[1px] xl:hidden"
     >
       <div className="flex h-full flex-col">
         <div className="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-zinc-700 px-4">
@@ -356,7 +356,7 @@ function SiteHeader({
   const mobileBackLink = getMobileBackLink(pathname);
 
   return (
-    <header className="sticky top-0 z-40 h-14 border-b border-zinc-700 bg-[#151617]/95 backdrop-blur">
+    <header className="sticky top-0 z-40 h-14 border-b border-zinc-700 bg-surface-1/95 backdrop-blur">
       <div className="flex h-full w-full items-center justify-between gap-2 px-3 sm:px-4 xl:px-6">
         <div className="flex min-w-0 items-center">
           {mobileBackLink && (
