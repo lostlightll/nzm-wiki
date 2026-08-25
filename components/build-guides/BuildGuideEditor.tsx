@@ -23,6 +23,7 @@ import type {
   BuildGuideSource,
 } from "@/lib/build-guides";
 import { getAssetPath } from "@/lib/path";
+import { matchPinyin } from "@/lib/pinyin";
 
 const BUILD_GUIDE_PERK_SLOTS = [1, 2, 3, 4] as const;
 type BuildGuidePerkSlot = (typeof BUILD_GUIDE_PERK_SLOTS)[number];
@@ -162,11 +163,7 @@ function ImageSelect({
   const rootRef = useRef<HTMLDivElement>(null);
   const selected = options.find((option) => option.value === value);
   const filtered = query.trim()
-    ? options.filter((option) =>
-        option.label.toLocaleLowerCase("zh-CN").includes(
-          query.trim().toLocaleLowerCase("zh-CN"),
-        ),
-      )
+    ? options.filter((option) => matchPinyin(option.label, query.trim()))
     : options;
 
   useEffect(() => {

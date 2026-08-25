@@ -1,4 +1,4 @@
-import { pinyin } from "pinyin-pro";
+import { match, pinyin } from "pinyin-pro";
 
 /**
  * 获取文本的完整拼音（不带声调）
@@ -23,6 +23,9 @@ export function matchPinyin(text: string, query: string): boolean {
 
   // 直接匹配
   if (lowerText.includes(lowerQuery)) return true;
+
+  // 支持多音字的完整拼音与首字母匹配。
+  if (match(text, lowerQuery)) return true;
 
   // 拼音全拼匹配
   const fullPinyin = getFullPinyin(text);
