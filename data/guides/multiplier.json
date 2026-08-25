@@ -698,19 +698,19 @@
         {
           "id": "dragon-flame-hit",
           "label": "龙炎弹命中",
-          "icon": "bomb",
+          "image": "/webp/icons/weapons/skills/T_Weapon_Skill_20003000011_1.webp",
           "href": "/weapons/飓风之龙"
         },
         {
           "id": "shadow-energy-floating-cannon",
           "label": "能源之影悬浮炮",
-          "icon": "target",
+          "image": "/webp/icons/weapons/skills/T_Weapon_Skill_20007000015_2.webp",
           "href": "/weapons/能源之影"
         },
         {
           "id": "poison-emperor-grenade",
           "label": "毒皇榴弹",
-          "icon": "bomb",
+          "image": "/webp/icons/weapons/skills/T_Weapon_Skill_20006000006_1.webp",
           "href": "/weapons/幽冥毒皇"
         }
       ]

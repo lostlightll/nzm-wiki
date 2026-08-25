@@ -1,14 +1,12 @@
 "use client";
 
 import {
-  Bomb,
   Box,
   Calculator,
   Crosshair,
   Info,
   ShoppingCart,
   Tag,
-  Target,
   Users,
   type LucideIcon,
 } from "lucide-react";
@@ -24,7 +22,6 @@ import {
   MULTIPLIER_FACTORS,
   resolveMultiplierExampleImage,
   WEAKPOINT_MULTIPLIER_DATA,
-  type DilutionIconKey,
   type FactorDetailData,
   type MultiplierFactorId,
   type WeakpointMultiplierData,
@@ -145,11 +142,6 @@ function rememberSelectedFactor(factorId: MultiplierFactorId) {
   window.dispatchEvent(new Event(SELECTED_FACTOR_CHANGE_EVENT));
   window.dispatchEvent(new Event("nzm-wiki:multiplier-query-change"));
 }
-
-const DILUTION_ICONS: Partial<Record<DilutionIconKey, LucideIcon>> = {
-  target: Target,
-  bomb: Bomb,
-};
 
 const DILUTION_EXAMPLE_COUNT = DILUTION_CATEGORIES.reduce(
   (count, category) => count + category.examples.length,
@@ -303,26 +295,29 @@ function WeakpointWeaponTable({
       <WeakpointMultiplierRow
         multiplier={detail.specialSources.multiplier}
       >
-        <ul className="flex min-h-8 flex-col justify-center gap-x-8 gap-y-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-start sm:gap-y-2">
-          {detail.specialSources.items.map(({ id, label, icon, href }) => {
-            const Icon = DILUTION_ICONS[icon] ?? Target;
-
-            return (
-              <li key={id}>
-                <Link
-                  href={href}
-                  className="inline-flex min-h-8 cursor-pointer touch-manipulation items-center gap-2 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:text-[color:var(--guide-accent)] focus-visible:outline-none focus-visible:text-[color:var(--guide-accent)] focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none"
+        <ul className="flex min-h-8 flex-col justify-center gap-x-7 sm:flex-row sm:flex-wrap sm:items-center sm:justify-start">
+          {detail.specialSources.items.map(({ id, label, image, href }) => (
+            <li key={id}>
+              <Link
+                href={href}
+                className="inline-flex min-h-11 cursor-pointer touch-manipulation items-center gap-2 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:text-[color:var(--guide-accent)] focus-visible:outline-none focus-visible:text-[color:var(--guide-accent)] focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none sm:min-h-8"
+              >
+                <span
+                  aria-hidden="true"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center"
                 >
-                  <Icon
-                    aria-hidden="true"
-                    className="h-4 w-4 shrink-0 text-zinc-400"
-                    strokeWidth={2}
+                  <Image
+                    src={getAssetPath(image)}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="h-full w-full object-contain"
                   />
-                  {label}
-                </Link>
-              </li>
-            );
-          })}
+                </span>
+                <span className="leading-5">{label}</span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </WeakpointMultiplierRow>
 

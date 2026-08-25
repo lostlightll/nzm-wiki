@@ -6,6 +6,7 @@ import {
   BASE_DAMAGE_DATA,
   DILUTION_CATEGORIES,
   MULTIPLIER_FACTOR_DETAILS,
+  WEAKPOINT_MULTIPLIER_DATA,
   buildDamageProfile,
   getApplicableModifierTypes,
   getProviderRelationsForSource,
@@ -21,6 +22,7 @@ test("typical examples use site artwork except for the hunting shop fallback", (
     ...Object.values(MULTIPLIER_FACTOR_DETAILS).flatMap(
       ({ examples }) => examples,
     ),
+    ...WEAKPOINT_MULTIPLIER_DATA.specialSources.items,
   ];
 
   for (const example of examples) {

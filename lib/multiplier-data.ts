@@ -93,7 +93,7 @@ type WeakpointMultiplierGroup = {
 type WeakpointSpecialSource = {
   id: string;
   label: string;
-  icon: DilutionIconKey;
+  image: string;
   href: string;
 };
 
