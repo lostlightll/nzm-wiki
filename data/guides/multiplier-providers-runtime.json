@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "20eeb08b97718c136022d0c440b44f49e10ea5a95fb59bb9ae12f2643e095565",
+    "modifierIndexSha256": "b5b6157258ec97891b08bc515910e6a3a3195717ebca6463638d8d8d2a143e35",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -1901,7 +1901,7 @@
         "component": "ActiveSkill"
       },
       "modifierTypeIds": [
-        "correction"
+        "weapon-hit-damage"
       ]
     },
     {

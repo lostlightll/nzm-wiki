@@ -3750,13 +3750,22 @@
         "skillName": "刺隐之袭",
         "component": "ActiveSkill"
       },
-      "reviewedFacetIds": [
-        "correction"
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:120300250_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
       ],
       "evidence": {
-        "kind": "reviewed-override",
+        "kind": "reviewed-chain",
         "basis": [
-          "页面描述明确限定隐身后的下一次开火伤害增加 200%。"
+          "MGE_500480102 继承 MGE_StealthWithBreak，在开火结算前处理刺隐的隐身攻击效果。",
+          "Numerical 120300250_1_0 的 WeaponHitDamageRatio 以 B1、BaseValue 2.0 提供该次开火的 +200% 射击伤害。"
         ]
       }
     },

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "568a559e82d8ea47ed630ea82848cb835e78950226673b339bbbbce366c0e5ab",
+    "registrySha256": "930af647afb0fe050da195eb62a08f8d4bdbbd7d9a79b79356a10ada17ff38e0",
     "semanticsSha256": "01e29692da9822af39c1db1d5d769c47dca216e290b96eced061a2d33d4ef627",
     "modifierSourceSha256": "dfc382ff06934157402ecaec9a8e9c5f9a3b1f88f6265918e5cd173dde0e0546",
     "attributeDescriptionSourceSha256": "f4c7bae3871af545fdf4ecc4ceea2df7f498c5a5bfb24ec42a1e29c8703adc95"
@@ -4264,10 +4264,22 @@
         "component": "ActiveSkill"
       },
       "facetIds": [
-        "correction"
+        "weapon-hit-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:120300250_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "weapon:蝶翼双扇:蝶蚀之舞",
