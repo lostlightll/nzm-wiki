@@ -139,9 +139,7 @@ num_modifier_values:
     scale: 6
 
 effect_values:
-  - kind: damage
-    modifierTypeId: weapon-hit-damage
-    label: "射击伤害"
+  - label: "弱点伤害"
     stages:
       - condition: "每层"
         value:
@@ -153,13 +151,13 @@ effect_values:
           format: signed-percent
 ```
 
-- `kind: damage` 表示增伤，`modifierTypeId` 必须与乘区来源注册表中的增伤类型一致。
+- 禁止手写 `kind`、`statId` 或 `modifierTypeId`。Num stages 的属性类型、方向、增伤/属性分组和索引分面统一由 `resolveEffect()` 派生。
 - `num_modifier_values` 的别名使用 kebab-case；`row` 必须是 `lc:` 引用，`field` 只允许 `base` 或 `coefficient`，`scale` 默认 `1`。
 - 描述中的 Num 数值使用 `{{num:<alias>|<format>}}`，格式只允许 `number`、`percent`、`signed-number`、`signed-percent`。详情、悬浮预览、超限卡、召唤物摘要和攻略编辑器都必须消费 `lib/perks.ts` 的解析结果。
-- `label`、`value` 和每个阶段均不能为空；`condition` 可省略。Num 派生值使用 `{ ref, format }`；无法直连 Num 的值使用 `{ literal, reason }`。旧字符串 `value` 禁止使用。
-- 数值必须遵守“数值证据规则”。可定位 Numerical 行时必须引用 Num Modifier V2 表达式；MDX `description` 与 `description_override: true` 均不能覆盖结构化数值。乘区证据同时用于核对属性通道和 `modifierTypeId`。
-- 同一插件不能重复声明同一个 `modifierTypeId`。没有登记为增伤来源的超限卡片不得孤立添加增伤数值。
-- `kind: stat` 用于结构化属性数值。目前支持破韧效率、暴击率、充能速度/效率、枪械射速、伤害减免、换弹速度、移动速度、近战攻速、爆炸范围、技能范围和有效射程。命中后直接回复技能能量等即时充能不属于 `charge-efficiency`，基础射击间隔变化不属于 `fire-rate`。
+- `value` 和每个阶段均不能为空；`condition` 可省略，`label` 可用于覆盖上下文展示名。Num 派生值使用 `{ ref, format }`；无法直连 Num 的值使用 `{ literal, reason }`，并在 effect 上声明 `semantic.facetId`。旧字符串 `value` 禁止使用。
+- 数值必须遵守“数值证据规则”。可定位 Numerical 行时必须引用 Num Modifier V2 表达式；MDX `description` 与 `description_override: true` 均不能覆盖结构化数值。属性通道和索引分面同样不得由描述覆盖。
+- 同一插件不能重复解析为同一个分面。没有登记为 Modifier 来源的超限卡片不得孤立添加增伤数值。
+- 属性效果由语义目录扩展，不维护第二份允许列表。命中后直接回复技能能量等即时充能不属于充能效率，基础射击间隔变化也不能仅凭文案归为射速。
 - 页面只渲染非空分类，不显示空入口。列表与增伤共用关键数值区域，详情页按“增伤”和“属性”分组展示。
 
 维护时先确认 ItemID 和结构化数值链，再录入阶段数值；描述只用于补充条件语义。随后运行 `pnpm num-modifier:check`、`pnpm test:overlimit-cards`、`pnpm overlimit-effects:audit` 与 `pnpm multiplier-index:check`。超限卡片导入后重复执行校验，确认 Numerical 审定值没有被描述覆盖。

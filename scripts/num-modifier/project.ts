@@ -1,22 +1,33 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { createNumModifierResolver, type NumModifierRowKey } from "../../lib/num-modifier";
+
+import {
+  createNumModifierResolver,
+  type NumModifierValueExpression,
+} from "../../lib/num-modifier";
+import { parseNumModifierSemantics } from "../../lib/num-modifier-semantics";
 import { readNumModifierDataLock } from "./lock";
 import {
-  loadMultiplierProviderRegistry,
-  MULTIPLIER_PROVIDER_REGISTRY_PATH,
+  loadModifierProviderRegistry,
+  MODIFIER_PROVIDER_REGISTRY_PATH,
 } from "./provider-registry";
 
 type JsonObject = Record<string, unknown>;
 
 const root = process.cwd();
+export const MODIFIER_INDEX_RUNTIME_PATH = path.join(
+  root,
+  "data",
+  "modifier-index-runtime.json",
+);
 export const MULTIPLIER_PROVIDER_RUNTIME_PATH = path.join(
   root,
   "data",
   "guides",
   "multiplier-providers-runtime.json",
 );
+const SEMANTICS_PATH = path.join(root, "data", "num-modifier-semantics.json");
 const MULTIPLIER_DATA_PATH = path.join(root, "data", "guides", "multiplier.json");
 
 function readJson(filePath: string): JsonObject {
@@ -27,239 +38,189 @@ function readJson(filePath: string): JsonObject {
   return value as JsonObject;
 }
 
-function asObjects(value: unknown, field: string): JsonObject[] {
-  if (!Array.isArray(value) || value.some((item) => !item || typeof item !== "object" || Array.isArray(item))) {
-    throw new Error(`${field} must be an object array`);
-  }
-  return value as JsonObject[];
-}
-
-function asStrings(value: unknown, field: string): string[] {
-  if (!Array.isArray(value) || value.some((item) => typeof item !== "string")) {
-    throw new Error(`${field} must be a string array`);
-  }
-  return value as string[];
-}
-
-function unique<T>(values: Iterable<T>): T[] {
-  return [...new Set(values)];
-}
-
-function attributeTypeMap(multiplierData: JsonObject): Map<string, string> {
-  const matrix = multiplierData.damageChannelMatrix as JsonObject | undefined;
-  const channels = asObjects(matrix?.channels, "damageChannelMatrix.channels");
-  const result = new Map<string, string>();
-  for (const channel of channels) {
-    const id = String(channel.id ?? "");
-    for (const attribute of asStrings(channel.attributeFields, `${id}.attributeFields`)) {
-      const previous = result.get(attribute);
-      if (previous && previous !== id) {
-        throw new Error(`Attribute ${attribute} maps to both ${previous} and ${id}`);
-      }
-      result.set(attribute, id);
-    }
-  }
-  return result;
-}
-
 function sourceHash(filePath: string): string {
   return createHash("sha256").update(readFileSync(filePath)).digest("hex");
 }
 
-export function generateMultiplierProviderRuntime(): JsonObject {
-  const registry = loadMultiplierProviderRegistry();
-  const numModifierLock = readNumModifierDataLock();
-  const numModifierResolver = createNumModifierResolver(numModifierLock);
-  const multiplierData = readJson(MULTIPLIER_DATA_PATH);
-  const typeByAttribute = attributeTypeMap(multiplierData);
+function unique(values: Iterable<string>): string[] {
+  return [...new Set(values)];
+}
+
+type RuntimeEffect = {
+  row: string;
+  attributeTypeId: string;
+  attributeLabel: string;
+  direction: string;
+  recipient: string;
+  facetIds: string[];
+  reviewed: boolean;
+};
+
+export function generateModifierIndexRuntime(): JsonObject {
+  const registry = loadModifierProviderRegistry();
+  const lock = readNumModifierDataLock();
+  const semantics = parseNumModifierSemantics(readJson(SEMANTICS_PATH));
+  const resolver = createNumModifierResolver(lock, semantics);
+  const knownFacetIds = new Set(
+    Object.values(semantics.attribute_types).flatMap((type) =>
+      Object.values(type.facets).flatMap((facet) => (facet ? [facet.id] : [])),
+    ),
+  );
+
   const providers = registry.providers.map((provider) => {
-    const { id, evidence } = provider;
-    const { kind } = evidence;
-    let modifierTypeIds: string[];
-    if (kind === "gp-modifier") {
-      modifierTypeIds = unique(
-        evidence.numModifierRows.map((key) => {
-          const row = numModifierResolver.getRow(
-            key,
-            `data/guides/multiplier-providers.json#${id}`,
-          );
-          const modifierTypeId = typeByAttribute.get(row.attributeName);
-          if (!modifierTypeId) {
-            throw new Error(
-              `${id} row ${key} attribute ${row.attributeName || "<empty>"} has no modifier type`,
-            );
-          }
-          return modifierTypeId;
-        }),
+    const effects: RuntimeEffect[] = [];
+    for (const [index, application] of (provider.applications ?? []).entries()) {
+      const resolved = resolver.resolveEffect(
+        application.expression as NumModifierValueExpression,
+        application.context,
+        `data/modifier-providers.json#${provider.id}.applications[${index}]`,
       );
-    } else if (kind === "reviewed-override") {
-      modifierTypeIds = unique(provider.modifierTypeIds ?? []);
-      for (const key of evidence.numModifierRows ?? []) {
-        numModifierResolver.getRow(
-          key,
-          `data/guides/multiplier-providers.json#${id}`,
+      if (!resolved.attribute.typeId) {
+        throw new Error(
+          `${provider.id} application ${application.expression.row} is not indexed`,
         );
       }
-    } else {
-      throw new Error(`${id} uses unknown evidence kind ${kind}`);
+      effects.push({
+        row: application.expression.row,
+        attributeTypeId: resolved.attribute.typeId,
+        attributeLabel: resolved.attribute.label,
+        direction: resolved.direction,
+        recipient: resolved.context.recipient,
+        facetIds: resolved.facets.map((facet) => facet.id),
+        reviewed: resolved.reviewed,
+      });
+    }
+    const reviewedFacetIds = provider.reviewedFacetIds ?? [];
+    for (const facetId of reviewedFacetIds) {
+      if (!knownFacetIds.has(facetId)) {
+        throw new Error(`${provider.id} uses unknown reviewed facet ${facetId}`);
+      }
+    }
+    const facetIds = unique([
+      ...effects.flatMap((effect) => effect.facetIds),
+      ...reviewedFacetIds,
+    ]);
+    if (facetIds.length === 0) {
+      throw new Error(`${provider.id} resolves to no index facet`);
     }
     return {
-      id,
+      id: provider.id,
+      label: provider.label,
+      source: provider.source,
+      facetIds,
+      effects,
+      reviewedOverride: provider.evidence.kind === "reviewed-override",
+    };
+  });
+
+  return {
+    schemaVersion: 1,
+    source: {
+      registrySha256: sourceHash(MODIFIER_PROVIDER_REGISTRY_PATH),
+      semanticsSha256: sourceHash(SEMANTICS_PATH),
+      modifierSourceSha256: lock.sources.lc.modifiers.sha256,
+      attributeDescriptionSourceSha256:
+        lock.sources.lc.attribute_descriptions.sha256,
+    },
+    attributeTypes: Object.entries(semantics.attribute_types).map(
+      ([id, type]) => ({ id, ...type }),
+    ),
+    attributes: Object.entries(semantics.attributes).flatMap(
+      ([attributeName, attribute]) =>
+        attribute.status === "indexed"
+          ? [
+              {
+                attributeName,
+                attributeTypeId: attribute.attribute_type,
+                scope: attribute.scope,
+              },
+            ]
+          : [],
+    ),
+    providers,
+    exclusions: registry.exclusions.map((exclusion) => ({
+      id: exclusion.id,
+      label: exclusion.label,
+      source: exclusion.source,
+      reasonCode: exclusion.reasonCode,
+      reason: exclusion.reason,
+    })),
+  };
+}
+
+export function generateMultiplierProviderRuntime(
+  modifierRuntime = generateModifierIndexRuntime(),
+): JsonObject {
+  const multiplierData = readJson(MULTIPLIER_DATA_PATH);
+  const matrix = multiplierData.damageChannelMatrix as JsonObject;
+  const channels = matrix.channels;
+  if (!Array.isArray(channels)) {
+    throw new Error("damageChannelMatrix.channels must be an array");
+  }
+  const damageFacets = new Set(
+    (channels as JsonObject[]).map((channel) => String(channel.facetId ?? "")),
+  );
+  const providers = (modifierRuntime.providers as JsonObject[]).map((provider) => {
+    const modifierTypeIds = unique(
+      (provider.facetIds as string[]).filter((facetId) => damageFacets.has(facetId)),
+    );
+    if (modifierTypeIds.length === 0) {
+      throw new Error(`${String(provider.id)} has no multiplier facet`);
+    }
+    return {
+      id: provider.id,
       label: provider.label,
       source: provider.source,
       modifierTypeIds,
     };
   });
-
-  const exclusions = registry.exclusions.map((exclusion) => ({
-    id: exclusion.id,
-    label: exclusion.label,
-    source: exclusion.source,
-    reasonCode: exclusion.reasonCode,
-    reason: exclusion.reason,
-  }));
-
   return {
     schemaVersion: 1,
     source: {
-      registrySha256: sourceHash(MULTIPLIER_PROVIDER_REGISTRY_PATH),
-      numModifierSourceSha256: numModifierLock.sources.lc.sha256,
+      modifierIndexSha256: createHash("sha256")
+        .update(serializeRuntime(modifierRuntime))
+        .digest("hex"),
       multiplierSchemaVersion: multiplierData.schemaVersion,
     },
     providers,
-    exclusions,
+    exclusions: modifierRuntime.exclusions,
   };
 }
 
-export function serializeMultiplierProviderRuntime(value: JsonObject): string {
+export function serializeRuntime(value: JsonObject): string {
   return `${JSON.stringify(value, null, 2)}\n`;
 }
 
-export function writeMultiplierProviderRuntime(): void {
+export function writeModifierRuntimeProjections(): void {
+  const modifierRuntime = generateModifierIndexRuntime();
+  writeFileSync(
+    MODIFIER_INDEX_RUNTIME_PATH,
+    serializeRuntime(modifierRuntime),
+    "utf8",
+  );
   writeFileSync(
     MULTIPLIER_PROVIDER_RUNTIME_PATH,
-    serializeMultiplierProviderRuntime(generateMultiplierProviderRuntime()),
+    serializeRuntime(generateMultiplierProviderRuntime(modifierRuntime)),
     "utf8",
   );
 }
 
-export function checkMultiplierProviderRuntime(): string[] {
-  if (!existsSync(MULTIPLIER_PROVIDER_RUNTIME_PATH)) {
-    return ["missing data/guides/multiplier-providers-runtime.json"];
-  }
-  const expected = serializeMultiplierProviderRuntime(generateMultiplierProviderRuntime());
-  return readFileSync(MULTIPLIER_PROVIDER_RUNTIME_PATH, "utf8") === expected
-    ? []
-    : ["multiplier-providers-runtime.json is stale; run pnpm num-modifier:project"];
-}
-
-export function migrateMultiplierProviderRegistry(): void {
-  const registry = readJson(MULTIPLIER_PROVIDER_REGISTRY_PATH);
-  const numModifierResolver = createNumModifierResolver(readNumModifierDataLock());
-  if (registry.schemaVersion === 2) {
-    const typeByAttribute = attributeTypeMap(readJson(MULTIPLIER_DATA_PATH));
-    const cleanEvidence = (rawEvidence: unknown): JsonObject | undefined => {
-      if (!rawEvidence || typeof rawEvidence !== "object" || Array.isArray(rawEvidence)) {
-        return undefined;
-      }
-      const evidence = { ...(rawEvidence as JsonObject) };
-      for (const key of ["passiveSkillId", "descriptionRowKey"] as const) {
-        if (evidence[key] === "") delete evidence[key];
-      }
-      for (const key of ["descriptionRowKeys", "staleGpModifierIds"] as const) {
-        if (Array.isArray(evidence[key]) && evidence[key].length === 0) {
-          delete evidence[key];
-        }
-      }
-      return Object.keys(evidence).length > 0 ? evidence : undefined;
-    };
-    const providers = asObjects(registry.providers, "providers").map((rawProvider) => {
-      const provider = { ...rawProvider };
-      const evidence = cleanEvidence(provider.evidence);
-      if (!evidence) throw new Error(`${String(provider.id)} has no evidence`);
-      if (evidence.kind !== "gp-modifier") return { ...provider, evidence };
-      const rowKeys = asStrings(
-        evidence.numModifierRows,
-        `${String(provider.id)}.numModifierRows`,
-      );
-      return {
-        ...provider,
-        evidence: {
-          ...evidence,
-          numModifierRows: rowKeys.filter((key) =>
-            typeByAttribute.has(
-              numModifierResolver.getRow(key as NumModifierRowKey).attributeName,
-            ),
-          ),
-        },
-      };
-    });
-    const exclusions = asObjects(registry.exclusions, "exclusions").map(
-      (rawExclusion) => {
-        const exclusion = { ...rawExclusion };
-        const evidence = cleanEvidence(exclusion.evidence);
-        if (evidence) return { ...exclusion, evidence };
-        delete exclusion.evidence;
-        return exclusion;
-      },
-    );
-    writeFileSync(
-      MULTIPLIER_PROVIDER_REGISTRY_PATH,
-      `${JSON.stringify({ ...registry, providers, exclusions }, null, 2)}\n`,
-      "utf8",
-    );
-    return;
-  }
-  if (registry.schemaVersion !== 1) throw new Error("Unsupported provider registry schema");
-
-  const migrateEvidence = (rawEvidence: unknown): JsonObject | undefined => {
-    if (!rawEvidence || typeof rawEvidence !== "object" || Array.isArray(rawEvidence)) {
-      return undefined;
-    }
-    const evidence = { ...(rawEvidence as JsonObject) };
-    const rowKeys = new Set<string>();
-    for (const rawRow of (evidence.numericalRows as JsonObject[] | undefined) ?? []) {
-      if (typeof rawRow.rowKey === "string") rowKeys.add(`lc:${rawRow.rowKey}`);
-    }
-    delete evidence.numericalRows;
-    delete evidence.gpModifierIds;
-    if (rowKeys.size > 0) evidence.numModifierRows = [...rowKeys];
-    return evidence;
-  };
-
-  const providers = asObjects(registry.providers, "providers").map((rawProvider) => {
-    const provider = { ...rawProvider, evidence: migrateEvidence(rawProvider.evidence) };
-    const evidence = provider.evidence as JsonObject;
-    if (evidence.kind === "gp-modifier") delete provider.modifierTypeIds;
-    return provider;
-  });
-  const exclusions = asObjects(registry.exclusions, "exclusions").map((rawExclusion) => ({
-    ...rawExclusion,
-    ...(rawExclusion.evidence
-      ? { evidence: migrateEvidence(rawExclusion.evidence) }
-      : {}),
-  }));
-  const migrated = {
-    ...registry,
-    schemaVersion: 2,
-    evidencePriority: [
-      "CardID",
-      "Card_Function",
-      "ItemID",
-      "PassiveSkill_ID",
-      "MGE/Buff.GPModifier",
-      "MGE.GPModifier",
-      "numModifierRows",
-      "AttributeName",
-      "modifierType",
-      "factor",
+export function checkModifierRuntimeProjections(): string[] {
+  const issues: string[] = [];
+  const modifierRuntime = generateModifierIndexRuntime();
+  const expected = [
+    [MODIFIER_INDEX_RUNTIME_PATH, serializeRuntime(modifierRuntime)],
+    [
+      MULTIPLIER_PROVIDER_RUNTIME_PATH,
+      serializeRuntime(generateMultiplierProviderRuntime(modifierRuntime)),
     ],
-    providers,
-    exclusions,
-  };
-  writeFileSync(
-    MULTIPLIER_PROVIDER_REGISTRY_PATH,
-    `${JSON.stringify(migrated, null, 2)}\n`,
-    "utf8",
-  );
+  ] as const;
+  for (const [filePath, content] of expected) {
+    if (!existsSync(filePath)) {
+      issues.push(`missing ${path.relative(root, filePath)}`);
+    } else if (readFileSync(filePath, "utf8") !== content) {
+      issues.push(`${path.basename(filePath)} is stale; run pnpm num-modifier:project`);
+    }
+  }
+  return issues;
 }

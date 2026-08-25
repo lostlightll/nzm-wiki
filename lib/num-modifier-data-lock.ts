@@ -15,11 +15,17 @@ const lockRowSchema = z.strictObject({
 });
 
 export const numModifierDataLockSchema = z.strictObject({
-  schema_version: z.literal(1),
+  schema_version: z.literal(2),
   sources: z.strictObject({
-    lc: sourceMetadataSchema,
+    lc: z.strictObject({
+      modifiers: sourceMetadataSchema,
+      attribute_descriptions: sourceMetadataSchema,
+    }),
   }),
   rows: z.strictObject({
+    lc: z.record(z.string(), lockRowSchema),
+  }),
+  attribute_descriptions: z.strictObject({
     lc: z.record(z.string(), lockRowSchema),
   }),
 });

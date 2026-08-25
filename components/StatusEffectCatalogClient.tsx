@@ -145,7 +145,7 @@ function ModifierReference({
   return (
     <span>
       {id}：{rows.map((row) => {
-        const description = row.description || row.attributeName || "未命名属性";
+        const description = row.attributeLabel || row.description || row.attributeName || "未命名属性";
         return `${description} [Lv.${row.level} ${row.operation} ${formatNumber(row.baseValue)} + ${formatNumber(row.coefficient)}×系数]`;
       }).join("；")}
     </span>

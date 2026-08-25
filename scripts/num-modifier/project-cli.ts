@@ -1,24 +1,19 @@
 import {
-  checkMultiplierProviderRuntime,
-  migrateMultiplierProviderRegistry,
-  writeMultiplierProviderRuntime,
+  checkModifierRuntimeProjections,
+  writeModifierRuntimeProjections,
 } from "./project";
 
 try {
   const command = process.argv[2];
-  if (command === "migrate-registry") {
-    migrateMultiplierProviderRegistry();
-    writeMultiplierProviderRuntime();
-    console.log("Multiplier provider registry migrated and runtime projection written.");
-  } else if (command === "write") {
-    writeMultiplierProviderRuntime();
-    console.log("Multiplier provider runtime projection written.");
+  if (command === "write") {
+    writeModifierRuntimeProjections();
+    console.log("Modifier runtime projections written.");
   } else if (command === "check") {
-    const issues = checkMultiplierProviderRuntime();
+    const issues = checkModifierRuntimeProjections();
     if (issues.length > 0) throw new Error(issues.join("\n"));
-    console.log("Multiplier provider runtime projection is current.");
+    console.log("Modifier runtime projections are current.");
   } else {
-    throw new Error("Usage: project-cli.ts <migrate-registry|write|check>");
+    throw new Error("Usage: project-cli.ts <write|check>");
   }
 } catch (error) {
   console.error(error);

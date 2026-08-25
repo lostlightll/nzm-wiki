@@ -6,13 +6,14 @@ import type {
   Perk,
   PerkEffectValue,
   PerkIndependentDamageSourceReference,
-  PerkStatId,
   PerkSlot,
   Rarity,
 } from "@/types";
 import { isValidDateKey } from "@/lib/date-key";
-import { MODIFIER_TYPES } from "@/lib/multiplier-data";
-import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
+import {
+  NUM_MODIFIER_RESOLVER,
+  NUM_MODIFIER_SEMANTICS,
+} from "@/lib/num-modifier-data";
 import type {
   NumModifierRowKey,
   NumModifierValueBindings,
@@ -21,20 +22,14 @@ import type {
 } from "@/lib/num-modifier";
 
 const PERKS_DATA_DIR = path.join(process.cwd(), "data/perks");
-const MODIFIER_TYPE_IDS = new Set(MODIFIER_TYPES.map((type) => type.id));
-const STAT_IDS = new Set<PerkStatId>([
-  "toughness-efficiency",
-  "critical-rate",
-  "charge-efficiency",
-  "fire-rate",
-  "damage-reduction",
-  "reload-speed",
-  "movement-speed",
-  "melee-attack-speed",
-  "explosion-radius",
-  "skill-range",
-  "effective-range",
-]);
+const FACETS = new Map(
+  Object.entries(NUM_MODIFIER_SEMANTICS.attribute_types).flatMap(
+    ([typeId, type]) =>
+      Object.values(type.facets).flatMap((facet) =>
+        facet ? [[facet.id, { ...facet, typeId }] as const] : [],
+      ),
+  ),
+);
 
 function requireNonEmptyString(
   value: unknown,
@@ -179,7 +174,7 @@ function parseNumModifierValues(
       throw new Error(`插件 Num 表达式 ${alias}.field 无效: ${filePath}`);
     }
     const scale = record.scale === undefined ? undefined : Number(record.scale);
-    if (scale !== undefined && (!Number.isFinite(scale) || scale === 0)) {
+    if (scale !== undefined && (!Number.isFinite(scale) || scale <= 0)) {
       throw new Error(`插件 Num 表达式 ${alias}.scale 无效: ${filePath}`);
     }
     if (
@@ -236,67 +231,114 @@ function parseEffectValues(
       throw new Error(`插件 effect_values[${index}] 格式无效: ${filePath}`);
     }
     const record = effect as Record<string, unknown>;
-    const kind = requireNonEmptyString(
-      record.kind,
-      `effect_values[${index}].kind`,
-      filePath,
-    );
-    const label = requireNonEmptyString(
-      record.label,
-      `effect_values[${index}].label`,
-      filePath,
-    );
+    if (
+      Object.hasOwn(record, "kind") ||
+      Object.hasOwn(record, "statId") ||
+      Object.hasOwn(record, "modifierTypeId")
+    ) {
+      throw new Error(
+        `插件 effect_values[${index}] 不得手写 kind/statId/modifierTypeId: ${filePath}`,
+      );
+    }
     const stages = parseEffectValueStages(
       record.stages,
       `effect_values[${index}].stages`,
       filePath,
       bindings,
     );
-
-    if (kind === "damage") {
-      const modifierTypeId = requireNonEmptyString(
-        record.modifierTypeId,
-        `effect_values[${index}].modifierTypeId`,
-        filePath,
-      );
-      if (!MODIFIER_TYPE_IDS.has(modifierTypeId)) {
+    const referencedAliases = (record.stages as unknown[]).flatMap((stage) => {
+      if (!stage || typeof stage !== "object" || Array.isArray(stage)) return [];
+      const rawStageValue = (stage as Record<string, unknown>).value;
+      if (
+        !rawStageValue ||
+        typeof rawStageValue !== "object" ||
+        Array.isArray(rawStageValue)
+      ) {
+        return [];
+      }
+      const ref = (rawStageValue as Record<string, unknown>).ref;
+      return typeof ref === "string" ? [ref] : [];
+    });
+    const semantic = record.semantic;
+    let facetId: string;
+    if (referencedAliases.length > 0) {
+      if (semantic !== undefined) {
         throw new Error(
-          `插件 effect_values[${index}] 使用未知增伤类型 ${modifierTypeId}: ${filePath}`,
+          `插件 effect_values[${index}] 的 Num 引用不得覆写 semantic: ${filePath}`,
         );
       }
-      const identity = `damage:${modifierTypeId}`;
-      if (identities.has(identity)) {
-        throw new Error(`插件 effect_values 存在重复类型 ${identity}: ${filePath}`);
-      }
-      identities.add(identity);
-      return { kind, modifierTypeId, label, stages };
-    }
-
-    if (kind === "stat") {
-      const statId = requireNonEmptyString(
-        record.statId,
-        `effect_values[${index}].statId`,
-        filePath,
-      );
-      if (!STAT_IDS.has(statId as PerkStatId)) {
+      const resolved = referencedAliases.map((alias, stageIndex) => {
+        const expression = bindings[alias];
+        if (!expression) {
+          throw new Error(
+            `插件 effect_values[${index}] 引用了未知 Num 别名 ${alias}: ${filePath}`,
+          );
+        }
+        const resolvedEffect = NUM_MODIFIER_RESOLVER.resolveEffect(
+          expression,
+          undefined,
+          `${filePath}#effect_values[${index}].stages[${stageIndex}]`,
+        );
+        if (resolvedEffect.facets.length !== 1 || !resolvedEffect.attribute.typeId) {
+          throw new Error(
+            `插件 effect_values[${index}] 无法从 ${expression.row} 唯一派生语义分面: ${filePath}`,
+          );
+        }
+        return resolvedEffect;
+      });
+      facetId = resolved[0].facets[0].id;
+      if (
+        resolved.some(
+          (item) =>
+            item.facets[0].id !== facetId ||
+            item.attribute.typeId !== resolved[0].attribute.typeId,
+        )
+      ) {
         throw new Error(
-          `插件 effect_values[${index}] 使用未知属性类型 ${statId}: ${filePath}`,
+          `插件 effect_values[${index}] 的 stages 属于不兼容的属性语义: ${filePath}`,
         );
       }
-      const identity = `stat:${statId}`;
-      if (identities.has(identity)) {
-        throw new Error(`插件 effect_values 存在重复类型 ${identity}: ${filePath}`);
+    } else {
+      if (!semantic || typeof semantic !== "object" || Array.isArray(semantic)) {
+        throw new Error(
+          `插件 effect_values[${index}] 的 literal 必须显式声明 semantic.facetId: ${filePath}`,
+        );
       }
-      identities.add(identity);
-      return {
-        kind,
-        statId: statId as Extract<PerkEffectValue, { kind: "stat" }>["statId"],
-        label,
-        stages,
-      };
+      const semanticRecord = semantic as Record<string, unknown>;
+      facetId = requireNonEmptyString(
+        semanticRecord.facetId,
+        `effect_values[${index}].semantic.facetId`,
+        filePath,
+      );
+      if (Object.keys(semanticRecord).some((key) => key !== "facetId")) {
+        throw new Error(
+          `插件 effect_values[${index}].semantic 包含未知字段: ${filePath}`,
+        );
+      }
     }
-
-    throw new Error(`插件 effect_values[${index}] 使用未知 kind ${kind}: ${filePath}`);
+    const facet = FACETS.get(facetId);
+    if (!facet || facet.consumer === "index") {
+      throw new Error(
+        `插件 effect_values[${index}] 使用不可展示的分面 ${facetId}: ${filePath}`,
+      );
+    }
+    const label =
+      record.label === undefined
+        ? facet.label
+        : requireNonEmptyString(
+            record.label,
+            `effect_values[${index}].label`,
+            filePath,
+          );
+    const kind = facet.consumer;
+    const identity = `${kind}:${facetId}`;
+    if (identities.has(identity)) {
+      throw new Error(`插件 effect_values 存在重复类型 ${identity}: ${filePath}`);
+    }
+    identities.add(identity);
+    return kind === "damage"
+      ? { kind, modifierTypeId: facetId, label, stages }
+      : { kind, statId: facetId, label, stages };
   });
 }
 

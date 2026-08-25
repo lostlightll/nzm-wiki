@@ -1,13 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import {
-  MODIFIER_TYPES,
-  MULTIPLIER_PROVIDERS,
-} from "@/lib/multiplier-data";
+import { MULTIPLIER_PROVIDERS } from "@/lib/multiplier-data";
 import { HUNTING_SPEEDRUN_CARDS } from "@/lib/hunting-speedrun";
 import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
-import { loadMultiplierProviderRegistry } from "./num-modifier/provider-registry";
+import { loadModifierProviderRegistry } from "./num-modifier/provider-registry";
 
 type Row = Record<string, unknown>;
 
@@ -38,11 +35,7 @@ const buffConfigs = loadRows("DataTables", "Buff", "BuffConfigDatatableNew.json"
 const weaponDescriptionTables = ["Weapon", "Skill"].map((suffix) =>
   loadRows("DataTables", "MGE", `DT_GPMGESkillDesConfig_${suffix}.json`),
 );
-const attributeDescriptions = loadRows("DataTables", "AttributeDescMapTable.json");
-const knownAttributes = new Set(
-  Object.values(attributeDescriptions).map((row) => String(row.attr_realname ?? "")),
-);
-const sourceRegistry = loadMultiplierProviderRegistry();
+const sourceRegistry = loadModifierProviderRegistry();
 const runtimeProvidersById = new Map(
   MULTIPLIER_PROVIDERS.map((provider) => [provider.id, provider]),
 );
@@ -51,11 +44,6 @@ const providersById = new Map(
 );
 const exclusionsById = new Map(
   sourceRegistry.exclusions.map((exclusion) => [exclusion.id, exclusion]),
-);
-const modifierTypeByAttribute = new Map(
-  MODIFIER_TYPES.flatMap((modifier) =>
-    modifier.attributeFields.map((attribute) => [attribute, modifier.id] as const),
-  ),
 );
 const speedrunCardsById = new Map(
   HUNTING_SPEEDRUN_CARDS.map((card) => [card.cardId, card]),
@@ -143,15 +131,11 @@ function directPositiveModifiers(description: string): string[] {
   );
   return modifierIds.filter((modifierId) =>
     NUM_MODIFIER_RESOLVER.getRowsById("lc", Number(modifierId)).some((row) => {
-      const modifierTypeId = modifierTypeByAttribute.get(row.attributeName);
-      if (!modifierTypeId) return false;
-      const values = [row.baseValue, row.coefficient];
-      const isVulnerability =
-        modifierTypeId === "vulnerability" ||
-        modifierTypeId === "element-vulnerability";
-      return isVulnerability
-        ? values.some((value) => value < 0)
-        : values.some((value) => value > 0);
+      const effect = NUM_MODIFIER_RESOLVER.resolveEffect(
+        { row: row.key, field: row.baseValue !== 0 ? "base" : "coefficient" },
+        { recipient: "self" },
+      );
+      return effect.facets.some((facet) => facet.consumer === "damage");
     }),
   );
 }
@@ -162,37 +146,33 @@ for (const provider of sourceRegistry.providers) {
     errors.push(`${provider.id} 缺少运行时投影`);
     continue;
   }
-  const evidenceRows = (provider.evidence.numModifierRows ?? []).map((key) =>
-    NUM_MODIFIER_RESOLVER.getRow(
-      key,
-      `data/guides/multiplier-providers.json#${provider.id}`,
+  const evidenceEffects = (provider.applications ?? []).map((application) =>
+    NUM_MODIFIER_RESOLVER.resolveEffect(
+      application.expression,
+      application.context,
+      `data/modifier-providers.json#${provider.id}`,
     ),
   );
-  for (const row of evidenceRows) {
-    const actualModifierTypeId = modifierTypeByAttribute.get(
-      row.attributeName,
-    );
+  const evidenceRows = evidenceEffects.map((effect) => effect.value.row);
+  for (const effect of evidenceEffects) {
+    const row = effect.value.row;
+    const actualModifierTypeIds = effect.facets
+      .filter((facet) => facet.consumer === "damage")
+      .map((facet) => facet.id);
     if (
-      provider.evidence.kind === "gp-modifier" &&
-      !actualModifierTypeId
+      provider.evidence.kind !== "reviewed-override" &&
+      actualModifierTypeIds.length === 0 &&
+      effect.direction !== "decrease"
     ) {
       errors.push(
-        `${provider.id} 的 Numerical AttributeName 无法反查乘区：${row.key}`,
+        `${provider.id} 的 Numerical 效果无法反查乘区：${row.key}`,
       );
     }
     if (
-      !knownAttributes.has(row.attributeName) &&
+      !effect.attribute.descriptor &&
       !row.attributeName.startsWith("Numerical.")
     ) {
       errors.push(`${provider.id} 的属性不在 AttributeDescMapTable：${row.attributeName}`);
-    }
-    if (
-      (actualModifierTypeId === "vulnerability" ||
-        actualModifierTypeId === "element-vulnerability") &&
-      row.baseValue >= 0 &&
-      row.coefficient >= 0
-    ) {
-      errors.push(`${provider.id} 将非负承伤字段错列为易伤`);
     }
   }
 
@@ -205,14 +185,15 @@ for (const provider of sourceRegistry.providers) {
     if (provider.evidence.kind === "reviewed-override") {
       errors.push(`${provider.id} 的卡牌来源禁止使用 reviewed-override`);
     }
-    if (provider.evidence.numModifierRows.length === 0) {
+    if (!provider.applications || provider.applications.length === 0) {
       errors.push(`${provider.id} 的卡牌来源缺少 Numerical 行`);
     }
     const evidenceModifierTypes = new Set(
-      evidenceRows.flatMap((row) => {
-        const modifierTypeId = modifierTypeByAttribute.get(row.attributeName);
-        return modifierTypeId ? [modifierTypeId] : [];
-      }),
+      evidenceEffects.flatMap((effect) =>
+        effect.facets
+          .filter((facet) => facet.consumer === "damage")
+          .map((facet) => facet.id),
+      ),
     );
     const providerModifierTypes = new Set(runtimeProvider.modifierTypeIds);
     if (

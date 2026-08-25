@@ -1,5 +1,6 @@
 import rawMultiplierData from "@/data/guides/multiplier.json";
 import rawProviderRuntime from "@/data/guides/multiplier-providers-runtime.json";
+import rawModifierIndex from "@/data/modifier-index-runtime.json";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import type { ElementType, WeaponType } from "@/types";
 
@@ -142,9 +143,9 @@ type DamageChannelEffect = {
 
 export type DamageChannel = {
   id: string;
+  facetId: string;
   label: string;
   group: DamageChannelGroup;
-  attributeFields: readonly string[];
   summary: string;
   effects: readonly DamageChannelEffect[];
 };
@@ -156,6 +157,7 @@ export type DamageChannelMatrixData = {
 
 export type ModifierType = DamageChannel & {
   factorId: MultiplierFactorId;
+  attributeFields: readonly string[];
 };
 
 export type MultiplierProvider = {
@@ -327,9 +329,9 @@ function assertMultiplierData(value: unknown): asserts value is RawMultiplierDat
     if (
       !isRecord(channel) ||
       typeof channel.id !== "string" ||
+      typeof channel.facetId !== "string" ||
       typeof channel.label !== "string" ||
       !DAMAGE_CHANNEL_GROUPS.includes(channel.group as DamageChannelGroup) ||
-      !Array.isArray(channel.attributeFields) ||
       !Array.isArray(channel.effects) ||
       modifierTypeIds.has(channel.id)
     ) {
@@ -419,6 +421,32 @@ function assertProviderRegistry(value: unknown): asserts value is RawProviderReg
 
 assertProviderRegistry(rawProviderRuntime);
 const providerRegistry = rawProviderRuntime as unknown as RawProviderRegistry;
+const modifierIndex = rawModifierIndex as unknown as {
+  attributes: readonly {
+    attributeName: string;
+    attributeTypeId: string;
+  }[];
+  attributeTypes: readonly {
+    id: string;
+    facets: Record<string, { id: string } | undefined>;
+  }[];
+};
+const typeIdsByFacet = new Map<string, string[]>();
+for (const type of modifierIndex.attributeTypes) {
+  for (const facet of Object.values(type.facets)) {
+    if (!facet) continue;
+    const ids = typeIdsByFacet.get(facet.id) ?? [];
+    ids.push(type.id);
+    typeIdsByFacet.set(facet.id, ids);
+  }
+}
+
+function attributeFieldsForFacet(facetId: string): string[] {
+  const typeIds = new Set(typeIdsByFacet.get(facetId) ?? []);
+  return modifierIndex.attributes
+    .filter((attribute) => typeIds.has(attribute.attributeTypeId))
+    .map((attribute) => attribute.attributeName);
+}
 
 function factorIdForModifier(channel: DamageChannel): MultiplierFactorId {
   if (channel.group === "dilution") return "dilution";
@@ -446,6 +474,7 @@ export const MODIFIER_TYPES: readonly ModifierType[] =
   data.damageChannelMatrix.channels.map((channel) => ({
     ...channel,
     factorId: factorIdForModifier(channel),
+    attributeFields: attributeFieldsForFacet(channel.facetId),
   }));
 export const MULTIPLIER_PROVIDERS = providerRegistry.providers;
 export const MULTIPLIER_PROVIDER_EXCLUSIONS = providerRegistry.exclusions;

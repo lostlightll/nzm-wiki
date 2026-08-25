@@ -50,6 +50,8 @@ function diffValues(
 
 export const NUM_MODIFIER_SOURCE_PATH =
   "Attributes/AutoGenerate/numerical_modifier_config.json";
+export const ATTRIBUTE_DESCRIPTION_SOURCE_PATH =
+  "DataTables/AttributeDescMapTable.json";
 const GAME_TOKEN_SOURCE_PATHS = [
   "DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json",
   "DataTables/HuntingGroundRoguelike/HuntingGroundRoguelikeWeaponModTable.json",
@@ -67,8 +69,8 @@ function defaultContentRoot(): string {
   return path.join(process.cwd(), "refs", "Exports", "NZM", "Content");
 }
 
-function sourceFilePath(contentRoot: string): string {
-  return path.join(contentRoot, ...NUM_MODIFIER_SOURCE_PATH.split("/"));
+function sourceFilePath(contentRoot: string, sourcePath: string): string {
+  return path.join(contentRoot, ...sourcePath.split("/"));
 }
 
 function readSourceRows(filePath: string): Record<string, JsonObject> {
@@ -109,25 +111,62 @@ function collectGameModifierTokens(value: unknown, tokens: Set<string>): void {
 export function generateNumModifierDataLock(
   contentRoot = defaultContentRoot(),
 ): NumModifierDataLock {
-  const filePath = sourceFilePath(contentRoot);
-  const bytes = readFileSync(filePath);
-  const sourceRows = readSourceRows(filePath);
+  const modifierFilePath = sourceFilePath(contentRoot, NUM_MODIFIER_SOURCE_PATH);
+  const attributeDescriptionFilePath = sourceFilePath(
+    contentRoot,
+    ATTRIBUTE_DESCRIPTION_SOURCE_PATH,
+  );
+  const modifierBytes = readFileSync(modifierFilePath);
+  const attributeDescriptionBytes = readFileSync(attributeDescriptionFilePath);
+  const sourceRows = readSourceRows(modifierFilePath);
+  const sourceAttributeDescriptions = readSourceRows(
+    attributeDescriptionFilePath,
+  );
   const rows = Object.fromEntries(
     Object.entries(sourceRows).map(([rowName, raw]) => [
       rowName,
       { row_name: rowName, raw },
     ]),
   );
+  const attributeDescriptions = Object.fromEntries(
+    Object.entries(sourceAttributeDescriptions).map(([rowName, raw]) => [
+      rowName,
+      { row_name: rowName, raw },
+    ]),
+  );
+  const attributeRealNames = new Set<string>();
+  for (const [rowName, row] of Object.entries(sourceAttributeDescriptions)) {
+    const attributeRealName = row.attr_realname;
+    if (typeof attributeRealName !== "string" || attributeRealName.trim() === "") {
+      throw new Error(`AttributeDescMapTable row ${rowName} has no attr_realname`);
+    }
+    if (attributeRealNames.has(attributeRealName)) {
+      throw new Error(
+        `AttributeDescMapTable attr_realname is duplicated: ${attributeRealName}`,
+      );
+    }
+    attributeRealNames.add(attributeRealName);
+  }
   const lock = parseNumModifierDataLock({
-    schema_version: 1,
+    schema_version: 2,
     sources: {
       lc: {
-        source_path: NUM_MODIFIER_SOURCE_PATH,
-        sha256: createHash("sha256").update(bytes).digest("hex"),
-        row_count: Object.keys(rows).length,
+        modifiers: {
+          source_path: NUM_MODIFIER_SOURCE_PATH,
+          sha256: createHash("sha256").update(modifierBytes).digest("hex"),
+          row_count: Object.keys(rows).length,
+        },
+        attribute_descriptions: {
+          source_path: ATTRIBUTE_DESCRIPTION_SOURCE_PATH,
+          sha256: createHash("sha256")
+            .update(attributeDescriptionBytes)
+            .digest("hex"),
+          row_count: Object.keys(attributeDescriptions).length,
+        },
       },
     },
     rows: { lc: rows },
+    attribute_descriptions: { lc: attributeDescriptions },
   });
   createNumModifierResolver(lock);
   return lock;
@@ -178,6 +217,10 @@ export function auditNumModifierDataLock(options: {
   warnings: readonly string[];
   tokenCount: number;
   resolvedTokenCount: number;
+  attributeNameCount: number;
+  connectedAttributeNameCount: number;
+  missingAttributeNameCount: number;
+  unresolvedOperationRowCount: number;
 } {
   const lockPath = path.resolve(options.lockPath ?? DEFAULT_NUM_MODIFIER_LOCK_PATH);
   const issues: string[] = [];
@@ -189,6 +232,10 @@ export function auditNumModifierDataLock(options: {
       warnings,
       tokenCount: 0,
       resolvedTokenCount: 0,
+      attributeNameCount: 0,
+      connectedAttributeNameCount: 0,
+      missingAttributeNameCount: 0,
+      unresolvedOperationRowCount: 0,
     };
   }
   const contentRoot = options.contentRoot ?? defaultContentRoot();
@@ -200,6 +247,22 @@ export function auditNumModifierDataLock(options: {
   }
   const lock = readNumModifierDataLock(lockPath);
   const resolver = createNumModifierResolver(lock);
+  const attributeNames = new Set(
+    Object.values(lock.rows.lc)
+      .map((row) => String(row.raw.AttributeName ?? ""))
+      .filter(Boolean),
+  );
+  const descriptorNames = new Set(
+    Object.values(lock.attribute_descriptions.lc).map((row) =>
+      String(row.raw.attr_realname ?? ""),
+    ),
+  );
+  const connectedAttributeNameCount = [...attributeNames].filter((name) =>
+    descriptorNames.has(name),
+  ).length;
+  const unresolvedOperationRowCount = Object.values(lock.rows.lc).filter(
+    (row) => String(row.raw.GPModifierOp ?? "") !== "B1",
+  ).length;
   const tokens = new Set<string>();
   for (const sourcePath of GAME_TOKEN_SOURCE_PATHS) {
     const filePath = path.join(contentRoot, ...sourcePath.split("/"));
@@ -233,6 +296,11 @@ export function auditNumModifierDataLock(options: {
     warnings,
     tokenCount: tokens.size,
     resolvedTokenCount: tokens.size - unresolved.length,
+    attributeNameCount: attributeNames.size,
+    connectedAttributeNameCount,
+    missingAttributeNameCount:
+      attributeNames.size - connectedAttributeNameCount,
+    unresolvedOperationRowCount,
   };
 }
 
@@ -240,11 +308,25 @@ export function checkNumModifierDataLock(
   lock = readNumModifierDataLock(),
 ): { ok: boolean; issues: readonly string[]; warnings: readonly string[] } {
   const issues: string[] = [];
-  if (lock.sources.lc.source_path !== NUM_MODIFIER_SOURCE_PATH) {
-    issues.push(`lc source_path must be ${NUM_MODIFIER_SOURCE_PATH}`);
+  if (lock.sources.lc.modifiers.source_path !== NUM_MODIFIER_SOURCE_PATH) {
+    issues.push(`lc modifiers source_path must be ${NUM_MODIFIER_SOURCE_PATH}`);
   }
-  if (lock.sources.lc.row_count !== Object.keys(lock.rows.lc).length) {
+  if (
+    lock.sources.lc.attribute_descriptions.source_path !==
+    ATTRIBUTE_DESCRIPTION_SOURCE_PATH
+  ) {
+    issues.push(
+      `lc attribute descriptions source_path must be ${ATTRIBUTE_DESCRIPTION_SOURCE_PATH}`,
+    );
+  }
+  if (lock.sources.lc.modifiers.row_count !== Object.keys(lock.rows.lc).length) {
     issues.push("lc row_count does not match locked rows");
+  }
+  if (
+    lock.sources.lc.attribute_descriptions.row_count !==
+    Object.keys(lock.attribute_descriptions.lc).length
+  ) {
+    issues.push("lc attribute description row_count does not match locked rows");
   }
   const resolver = createNumModifierResolver(lock);
   return {

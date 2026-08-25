@@ -1,111 +1,109 @@
 # Num Modifier V2
 
 > 状态：active
-> Lock Schema：`data/num-modifier-lock.json` V1
-> 引用协议：Num Modifier V2
+> Lock Schema：`data/num-modifier-lock.json` V2
+> 语义目录 Schema：`data/num-modifier-semantics.json` V1
+> 来源目录 Schema：`data/modifier-providers.json` V1
 
-## 目标
+## 目标与所有权
 
-Num Modifier V2 把正式服 `numerical_modifier_config` 收进一个深模块。消费者只声明稳定行引用和派生方式，不复制属性名、operation 或数值；构建和页面运行时不读取 `refs/`。
+Num Modifier V2 把正式服 Modifier 原始事实、属性描述、人工语义和来源索引收进一个深模块。消费者声明稳定表达式和作用上下文，不复制属性名、operation、方向、分面或数值；构建和页面运行时不读取 `refs/`。
 
 ```text
-refs 正式服原表
-  -> pnpm num-modifier:lock
-  -> data/num-modifier-lock.json
-  -> lib/num-modifier.ts
-  -> 插件描述 / effect_values / 状态效果 / 乘区投影 / 维护审计
+numerical_modifier_config ─┐
+                           ├─> Num Modifier Lock V2 ─┐
+AttributeDescMapTable ─────┘                         ├─> Resolver
+num-modifier-semantics.json ─────────────────────────┘    ├─> modifier-index-runtime.json
+modifier-providers.json ──────────────────────────────────┤
+                                                         └─> multiplier-providers-runtime.json
 ```
+
+- Lock 保存原表事实和来源哈希，不保存玩法结论。
+- 语义目录是属性类型、operation 解释、方向和索引分面的唯一人工事实。
+- 来源目录保存实体身份、Num 表达式、接收者上下文和证据，不复制机械分类。
+- 运行时投影保存客户端查询所需的已解析结果和输入哈希，不导入完整 Lock。
+- `lib/num-modifier-data.ts` 是完整 Lock 与语义目录的唯一业务导入适配器。
 
 ## Lock 与身份
 
-Lock 保存正式服 LC 全表：
-
 ```text
-schema_version
-sources.lc = { source_path, sha256, row_count }
+schema_version = 2
+sources.lc.modifiers = { source_path, sha256, row_count }
+sources.lc.attribute_descriptions = { source_path, sha256, row_count }
 rows.lc[row_name] = { row_name, raw }
+attribute_descriptions.lc[row_name] = { row_name, raw }
 ```
 
-- 对外引用固定为 `lc:<row_name>`。
-- `row_name` 是权威身份，不按 `raw.ID` 重写键。
-- `raw.Description` 完整保留，只用于诊断和语义辅助。
-- 数值读取 `BaseValue`、`CoefValue`、`GPModifierOp` 和 `Level`。
-- 对象键递归排序，数组顺序保持原样；刷新输出来源 SHA 和逐字段差异。
+- Modifier 对外引用固定为 `lc:<row_name>`；`row_name` 是权威身份，不按 `raw.ID` 重写。
+- 属性描述只通过 `raw.attr_realname` 连接，不提供业务手写引用。
+- `Description` 只作诊断。数值读取 `BaseValue`、`CoefValue`、`GPModifierOp` 和 `Level`。
+- 对象键递归排序，数组顺序保持；两张源表分别记录 SHA、行数和刷新差异。
 
-当前正式服 Lock 为 3,044 行，并保留三个源数据诊断：
+当前 Lock 有 3,044 条 Modifier、180 条属性描述和 154 个非空 `AttributeName`。其中 138 个可连接描述表，16 个缺少描述；另有 `lc:191201003_1_0` 的空属性异常。`lc:111970001` 的非标准 row name 和 `lc:111010094_1_1` 的身份不一致同样作为诊断保留。
 
-- `lc:111970001` 使用非标准 row name。
-- `lc:111010094_1_1` 的 row name 身份与 `raw.ID` 不一致。
-- `lc:191201003_1_0` 的 `AttributeName` 为空。
+## 属性语义目录
 
-这些诊断不能通过改名、补值或删除行来“修复”。
+`data/num-modifier-semantics.json` 为每个 Lock 属性显式登记一种 disposition：
+
+- `indexed`：进入规范属性类型和来源索引；
+- `known-unindexed`：已识别但尚不发布索引，必须说明理由；
+- `unmapped`：描述表缺失或语义未审定，允许锁定但不生成分面；
+- `invalid`：仅允许精确行 allowlist 的源数据异常。
+
+新版本出现未登记属性时 `pnpm num-modifier:check` 直接失败。属性类型回答“修改了什么”，效果方向回答“相对正向轴如何变化”，索引分面回答“玩家按什么查询”；三者不得互相替代。例如移动速度降低生成“减速”分面，伤害抗性降低生成“易伤”分面。
+
+当前 operation 边界和独弹强化精确例外以 [`../standards/num-modifier-semantics.md`](../standards/num-modifier-semantics.md) 为准。`B1` 可按符号解析方向；`B5` 只确认乘法家族，方向和增量换算保持未知；其他 operation 除精确 `reviewed_semantics` 外不推导方向。`Attack + B5` 可以保留已知伤害通道，但投影方向仍是 `unknown`。
 
 ## Resolver 接口
 
-`lib/num-modifier.ts` 负责行解析、按 Modifier ID 查询、格式化、模板替换和游戏 Token 解析。`lib/num-modifier-data.ts` 是完整 Lock 的唯一导入适配器。
+`lib/num-modifier.ts` 对外提供：
 
-格式只允许：
-
-- `number`
-- `percent`
-- `signed-number`
-- `signed-percent`
-
-项目表达式只允许 `field: base | coefficient`，`scale` 默认 `1`。缺行、非法字段、非法倍数、未知模板别名和未解析模板直接报错，并携带消费者路径。
-
-原始 `{GPModifier:...}` Token 仍按游戏现有格式读取 Level 1 精确行。`num-modifier:audit` 全量检查插件导入器使用的两张描述表；当前 265 个唯一 Token 中 264 个可解析。`111041026` 的游戏 Token 写 index 0，而 Lock 只有 index 1，作为已知源数据错误保留并报告。
-
-## 插件表达式
-
-插件 frontmatter 先声明别名：
-
-```yaml
-num_modifier_values:
-  damage-per-stack:
-    row: "lc:111010062_1_0"
-    field: coefficient
-    scale: 1
+```ts
+getRow(key, referencePath?)
+getRowsById(mode, modifierId)
+resolveValue(expression, format, referencePath?)
+resolveTemplate(description, bindings, referencePath?)
+resolveGameModifierTokens(description, referencePath?)
+describeAttribute(attributeName, referencePath?)
+resolveEffect(expression, context?, referencePath?)
 ```
 
-描述通过模板消费：
+`describeAttribute()` 只返回规范属性事实。`resolveEffect()` 结合表达式、operation 和接收者生成值、operation 模型、方向、作用范围和零到多个分面；调用者不得按字段后缀、描述关键词或正负号重新分类。
+
+表达式只允许 `field: base | coefficient` 和正数 `scale`。格式只允许 `number`、`percent`、`signed-number`、`signed-percent`，并校验与属性 quantity 的兼容性。缺行、非法字段、非正 scale、未知模板别名、未登记属性和精确例外漂移都直接失败并携带消费者路径。
+
+## 来源与投影
+
+`data/modifier-providers.json` 是全部 197 个 Modifier 来源和 334 个排除项的服务端唯一事实。直接来源保存：
 
 ```yaml
-description: "每发提升<strong>{{num:damage-per-stack|percent}}</strong>。"
+applications:
+  - expression:
+      row: "lc:111010083_1_0"
+      field: base
+    context:
+      recipient: self
 ```
 
-`effect_values[].stages[].value` 必须使用引用或带原因的字面量：
+有 Num 表达式的来源由 Resolver 派生分类。只有无法直连 Num 的来源使用 `reviewed-override`，显式保存分面和依据。`data/modifier-index-runtime.json` 提供按来源、属性类型、方向、分面和接收者查询的通用轻量投影；`lib/modifier-index.ts` 是客户端接口。
 
-```yaml
-value:
-  ref: damage-per-stack
-  format: signed-percent
-```
+`data/guides/multiplier-providers-runtime.json` 从通用投影筛选伤害分面生成，继续维持 `lib/multiplier-data.ts` 的既有查询与 URL。乘区矩阵只拥有 `facetId -> factor -> damage applicability`，不再拥有 `AttributeName` 映射。
 
-```yaml
-value:
-  literal: "+10%"
-  reason: "该条件值来自已审定的非 Numerical 配置"
-```
+## 消费者
 
-旧字符串 `value: "+10%"` 不再接受。层数、距离步进等派生通过不同别名的 `scale` 明确表达。
+- 插件 `effect_values` 不再手写 `kind`、`statId` 或 `modifierTypeId`；Num stages 从 `resolveEffect()` 派生分类和默认标签。
+- 无 Num 行的 literal stage 继续要求 `{ literal, reason }`，并在 effect 上显式声明 `semantic.facetId`。
+- 描述模板继续使用 `{{num:alias|format}}`；详情、预览、超限卡、召唤物和攻略编辑器消费 `lib/perks.ts` 的解析结果。
+- 状态效果保留 `modifierIds` 身份，由 Resolver 生成规范技术详情、减速、易伤、减伤和乘区关系；关键词只在没有结构化 Modifier 效果时回退。
+- 原始 `{GPModifier:...}` Token、乘区审计和超限审计统一通过 Resolver 读取 Lock。
 
-## 消费层次
-
-- `data/guides/multiplier-providers.json` V2 保存来源身份和精确 `numModifierRows`。直接来源的类型由 `AttributeName -> modifier type -> factor` 派生；`reviewed-override` 才保存人工类型与依据。
-- `data/guides/multiplier-providers-runtime.json` 是确定性客户端投影，只包含页面查询需要的来源与 `modifierTypeIds`，并记录注册表 SHA、Num 来源 SHA 和乘区 Schema。
-- `data/status-effects.json` V2 只保留 Buff 自身的 `modifierIds`，不复制 Modifier 原表行。服务端通过 Resolver 生成页面 DTO；正式服 Lock 中缺失的历史 ID 保留为未解析。
-- `lib/perks.ts` 统一解析插件描述和 `effect_values`。详情、悬浮预览、超限卡、召唤物摘要和攻略编辑器只消费解析结果。
-- `scripts/import-perks.ts`、乘区审计和超限审计通过 Resolver 读取 Num，不再各自加载原表。
-
-## 命令
+## 命令与边界
 
 ```bash
-pnpm num-modifier:lock     # 从 refs 刷新 Lock，并重建乘区运行时投影
-pnpm num-modifier:project  # 只重建乘区运行时投影
-pnpm num-modifier:check    # 离线检查 Lock、引用、模板、投影与静态边界
-pnpm num-modifier:audit    # 联机核对 refs 原表、哈希、内容和游戏 Token
+pnpm num-modifier:lock     # 从 refs 刷新两张源表并重建投影
+pnpm num-modifier:project  # 从已提交 Lock、语义和来源目录重建投影
+pnpm num-modifier:check    # 离线检查完整性、语义、消费者、投影和静态边界
+pnpm num-modifier:audit    # 要求 refs，核对源表、哈希、连接和游戏 Token
 ```
 
-`dev` 和 `build` 都固定执行离线 `num-modifier:check`。该检查禁止业务模块引用原表路径或直接导入 Lock JSON；只有 Lock 刷新器、文档、Lock 自身元数据和 `lib/num-modifier-data.ts` 适配器可以出现这些细节。
-
-属性语义、方向性效果和通用来源索引的下一阶段设计见 [`../plans/num-modifier-v2-semantic-index.md`](../plans/num-modifier-v2-semantic-index.md)。该文档仍为 proposed，当前运行时不得假定其 Schema 或接口已经实现。
+`dev` 和 `build` 固定执行离线检查。业务代码不得引用两张原表路径、直接导入完整 Lock、恢复旧乘区来源注册表，或在插件 frontmatter 重新手写机械分类。

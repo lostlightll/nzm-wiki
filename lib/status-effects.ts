@@ -10,8 +10,8 @@ import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
 import type {
   MultiplierRelation,
   MultiplierSource,
-  ModifierType,
 } from "@/lib/multiplier-data";
+import type { ResolvedModifierEffect } from "@/lib/num-modifier";
 import type {
   StatusEffectCatalogEntry,
   StatusEffectCatalogViewEntry,
@@ -212,46 +212,27 @@ function targetEntry(
   };
 }
 
-function modifierRowsForEntry(
+function resolvedEffectsForEntry(
   entry: StatusEffectCatalogEntry,
-): Array<{ modifierId: number; row: StatusEffectModifierReference }> {
-  const rows: Array<{ modifierId: number; row: StatusEffectModifierReference }> = [];
-  const seen = new Set<string>();
+  target: StatusEffectTarget,
+): Array<{ modifierId: number; effect: ResolvedModifierEffect }> {
+  const effects: Array<{ modifierId: number; effect: ResolvedModifierEffect }> = [];
   for (const modifierId of unique(
     entry.variants.flatMap((variant) => variant.modifierIds),
   )) {
-    for (const resolvedRow of NUM_MODIFIER_RESOLVER.getRowsById("lc", modifierId)) {
-      const row: StatusEffectModifierReference = {
-        id: resolvedRow.id,
-        level: resolvedRow.level,
-        attributeName: resolvedRow.attributeName,
-        operation: resolvedRow.operation,
-        baseValue: resolvedRow.baseValue,
-        coefficient: resolvedRow.coefficient,
-        description: resolvedRow.description,
-      };
-      const key = `${modifierId}:${row.level}:${row.attributeName}:${row.operation}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      rows.push({ modifierId, row });
+    for (const row of NUM_MODIFIER_RESOLVER.getRowsById("lc", modifierId)) {
+      const field = row.baseValue !== 0 ? "base" : "coefficient";
+      effects.push({
+        modifierId,
+        effect: NUM_MODIFIER_RESOLVER.resolveEffect(
+          { row: row.key, field },
+          { recipient: target === "enemy" ? "enemy" : "self" },
+          `status-effect:${entry.buffId}:modifier:${modifierId}`,
+        ),
+      });
     }
   }
-  return rows;
-}
-
-function isPositiveDamageChange(
-  modifier: ModifierType,
-  row: StatusEffectModifierReference,
-): boolean {
-  const values = [row.baseValue, row.coefficient].filter((value) => value !== 0);
-  if (values.length === 0) return false;
-  if (
-    modifier.id === "vulnerability" ||
-    modifier.id === "element-vulnerability"
-  ) {
-    return values.some((value) => value < 0);
-  }
-  return values.some((value) => value > 0);
+  return effects;
 }
 
 const MULTIPLIER_FACTORS_WITH_MODIFIER_DETAIL = new Set([
@@ -273,12 +254,14 @@ function getMultiplierDisplayLabel(
 
 function getMultiplierRelations(
   entry: StatusEffectCatalogEntry,
+  target: StatusEffectTarget,
 ): StatusEffectMultiplierRelation[] {
   const grouped = new Map<string, StatusEffectMultiplierRelation>();
-  for (const { modifierId, row } of modifierRowsForEntry(entry)) {
-    for (const modifier of MODIFIER_TYPES) {
-      if (!modifier.attributeFields.includes(row.attributeName)) continue;
-      if (!isPositiveDamageChange(modifier, row)) continue;
+  for (const { modifierId, effect } of resolvedEffectsForEntry(entry, target)) {
+    for (const facet of effect.facets) {
+      if (facet.consumer !== "damage") continue;
+      const modifier = MODIFIER_TYPES.find((candidate) => candidate.facetId === facet.id);
+      if (!modifier) continue;
       const existing = grouped.get(modifier.id);
       if (existing) {
         existing.modifierIds = unique([...existing.modifierIds, modifierId]);
@@ -454,10 +437,8 @@ function getRelatedContent(
 }
 
 function hasPositiveBearDamageReduction(entry: StatusEffectCatalogEntry): boolean {
-  return modifierRowsForEntry(entry).some(
-    ({ row }) =>
-      row.attributeName === "GPAttributeSetBearDamageRatio.DamageBearRatio" &&
-      (row.baseValue > 0 || row.coefficient > 0),
+  return resolvedEffectsForEntry(entry, "player").some(
+    ({ effect }) => effect.facets.some((facet) => facet.id === "damage-reduction"),
   );
 }
 
@@ -468,6 +449,14 @@ function semanticGroup(
 ): StatusEffectSemanticGroup {
   const text = [entry.name, ...entry.names, ...entry.descriptions].join(" ");
   const categories = new Set(entry.categories);
+  const structuredFacets = new Set(
+    resolvedEffectsForEntry(entry, target).flatMap(({ effect }) =>
+      effect.facets.map((facet) => facet.id),
+    ),
+  );
+  const hasStructuredEffects = resolvedEffectsForEntry(entry, target).some(
+    ({ effect }) => effect.attribute.disposition === "indexed",
+  );
   let id: StatusEffectSemanticGroupId;
 
   if (target === "enemy") {
@@ -478,9 +467,14 @@ function semanticGroup(
           relation.modifierTypeId === "vulnerability" ||
           relation.modifierTypeId === "element-vulnerability",
       ) ||
-      /易伤|受到.{0,6}伤害.{0,4}(增加|提高|提升)|防御.{0,4}降低/i.test(text)
-    ) id = "vulnerability";
-    else if (categories.has("SpeedDown") || categories.has("Frozen") || CONTROL_PATTERN.test(text)) {
+       (!hasStructuredEffects && /易伤|受到.{0,6}伤害.{0,4}(增加|提高|提升)|防御.{0,4}降低/i.test(text))
+     ) id = "vulnerability";
+    else if (
+      structuredFacets.has("slow") ||
+      categories.has("SpeedDown") ||
+      categories.has("Frozen") ||
+      (!hasStructuredEffects && CONTROL_PATTERN.test(text))
+    ) {
       id = "control";
     } else if (
       categories.has("DotDamage") ||
@@ -492,7 +486,9 @@ function semanticGroup(
     id = "negative";
   } else if (
     multiplierRelations.length > 0 ||
-    OFFENSE_PATTERN.test(text)
+    structuredFacets.has("critical-rate") ||
+    structuredFacets.has("toughness-efficiency") ||
+    (!hasStructuredEffects && OFFENSE_PATTERN.test(text))
   ) {
     id = "offense";
   } else if (
@@ -500,7 +496,7 @@ function semanticGroup(
     categories.has("Invincible") ||
     categories.has("NoInjured") ||
     hasPositiveBearDamageReduction(entry) ||
-    DEFENSE_PATTERN.test(text)
+    (!hasStructuredEffects && DEFENSE_PATTERN.test(text))
   ) {
     id = "defense";
   } else if (categories.has("Recovery") || SUSTAIN_PATTERN.test(text)) {
@@ -551,7 +547,7 @@ function enrichEntry(
   target: StatusEffectTarget,
 ): StatusEffectCatalogViewEntry {
   const entry = targetEntry(rawEntry, target);
-  const multiplierRelations = getMultiplierRelations(entry);
+  const multiplierRelations = getMultiplierRelations(entry, target);
   const relatedContent = getRelatedContent(entry, multiplierRelations);
   const group = semanticGroup(entry, target, multiplierRelations);
   const summaryOverride =
@@ -657,15 +653,30 @@ export function getStatusEffectCatalog(target: StatusEffectTarget): {
       .sort((left, right) => left - right)
       .flatMap((modifierId) => {
         const rows = NUM_MODIFIER_RESOLVER.getRowsById("lc", modifierId).map(
-          (row): StatusEffectModifierReference => ({
-            id: row.id,
-            level: row.level,
-            attributeName: row.attributeName,
-            operation: row.operation,
-            baseValue: row.baseValue,
-            coefficient: row.coefficient,
-            description: row.description,
-          }),
+          (row): StatusEffectModifierReference => {
+            const effect = NUM_MODIFIER_RESOLVER.resolveEffect(
+              {
+                row: row.key,
+                field: row.baseValue !== 0 ? "base" : "coefficient",
+              },
+              { recipient: target === "enemy" ? "enemy" : "self" },
+              `status-effect-catalog:${target}:modifier:${modifierId}`,
+            );
+            return {
+              id: row.id,
+              level: row.level,
+              attributeName: row.attributeName,
+              attributeLabel: effect.attribute.label,
+              attributeTypeId: effect.attribute.typeId,
+              operation: row.operation,
+              operationModel: effect.operation.model,
+              direction: effect.direction,
+              facetLabels: effect.facets.map((facet) => facet.label),
+              baseValue: row.baseValue,
+              coefficient: row.coefficient,
+              description: row.description,
+            };
+          },
         );
         return rows.length > 0 ? [[String(modifierId), rows] as const] : [];
       }),

@@ -20,11 +20,11 @@ import {
   resolveMultiplierSourceHref,
   type MultiplierSource,
 } from "@/lib/multiplier-data";
-import { loadMultiplierProviderRegistry } from "./num-modifier/provider-registry";
+import { loadModifierProviderRegistry } from "./num-modifier/provider-registry";
 
 const root = process.cwd();
 const errors: string[] = [];
-const sourceRegistry = loadMultiplierProviderRegistry();
+const sourceRegistry = loadModifierProviderRegistry();
 const sourceProvidersById = new Map(
   sourceRegistry.providers.map((provider) => [provider.id, provider]),
 );
@@ -51,41 +51,9 @@ const overlimitProviders = MULTIPLIER_PROVIDERS.filter(
 const overlimitProviderByItemId = new Map(
   overlimitProviders.map((provider) => [provider.source.itemId, provider]),
 );
-const overlimitStatTypesByItemId = new Map<string, readonly string[]>([
-  ["20703040136", ["toughness-efficiency"]],
-  ["20703040448", ["critical-rate"]],
-  ["20703040460", ["critical-rate"]],
-  ["20703040406", ["critical-rate", "movement-speed"]],
-  ["20703040115", ["critical-rate"]],
-  ["20703040382", ["critical-rate", "movement-speed"]],
-  ["20703040028", ["critical-rate"]],
-  ["20703040116", ["critical-rate"]],
-  ["20704040477", ["critical-rate"]],
-  ["20703040391", ["critical-rate"]],
-  ["20703040102", ["charge-efficiency"]],
-  ["20703040404", ["charge-efficiency"]],
-  ["20703040182", ["charge-efficiency"]],
-  ["20703040385", ["charge-efficiency"]],
-  ["20703040447", ["charge-efficiency"]],
-  ["20703040459", ["charge-efficiency"]],
-  ["20703040092", ["fire-rate"]],
-  ["20703040341", ["fire-rate"]],
-  ["20703040407", ["fire-rate"]],
-  ["20703040410", ["fire-rate"]],
-  ["20703040424", ["fire-rate"]],
-  ["20703040429", ["fire-rate"]],
-  ["20703040338", ["fire-rate"]],
-  ["20703040450", ["damage-reduction"]],
-  ["20703040462", ["damage-reduction"]],
-  ["20703040405", ["reload-speed"]],
-  ["20703040152", ["reload-speed"]],
-  ["20703040384", ["movement-speed"]],
-  ["20703040475", ["movement-speed"]],
-  ["20703040344", ["skill-range"]],
-  ["20703040409", ["melee-attack-speed"]],
-  ["20703040043", ["explosion-radius"]],
-  ["20703040254", ["effective-range"]],
-]);
+const overlimitStatSourceCount = hydratedOverlimitCards.filter((card) =>
+  card.effectValues?.some((effect) => effect.kind === "stat"),
+).length;
 
 function requireFile(relativePath: string, label: string) {
   if (!fs.existsSync(path.join(root, relativePath))) {
@@ -131,7 +99,7 @@ for (const provider of MULTIPLIER_PROVIDERS) {
   }
   if (
     sourceProvider.evidence.kind === "reviewed-override" &&
-    sourceProvider.evidence.basis.length === 0
+    (sourceProvider.evidence.basis?.length ?? 0) === 0
   ) {
     errors.push(`${provider.id} 的 reviewed-override 缺少依据`);
   }
@@ -155,7 +123,8 @@ for (const provider of MULTIPLIER_PROVIDERS) {
       }
       if (
         sourceProvider.evidence.kind === "reviewed-override" ||
-        sourceProvider.evidence.numModifierRows.length === 0
+        !sourceProvider.applications ||
+        sourceProvider.applications.length === 0
       ) {
         errors.push(`${provider.id} 的卡牌来源缺少真实 Numerical 证据`);
       }
@@ -236,16 +205,7 @@ for (const card of hydratedOverlimitCards) {
   const provider = overlimitProviderByItemId.get(card.id);
   const damageEffects =
     card.effectValues?.filter((effect) => effect.kind === "damage") ?? [];
-  const statEffects =
-    card.effectValues?.filter((effect) => effect.kind === "stat") ?? [];
 
-  const actualStatTypes = statEffects.map((effect) => effect.statId).sort();
-  const expectedStatTypes = [...(overlimitStatTypesByItemId.get(card.id) ?? [])].sort();
-  if (JSON.stringify(actualStatTypes) !== JSON.stringify(expectedStatTypes)) {
-    errors.push(
-      `超限卡片 ${card.id} ${card.name} 的 stat 类型不匹配：期望 ${expectedStatTypes.join(", ") || "无"}，实际 ${actualStatTypes.join(", ") || "无"}`,
-    );
-  }
   if (!provider && damageEffects.length > 0) {
     errors.push(`超限卡片 ${card.id} ${card.name} 存在孤立 effect_values`);
     continue;
@@ -330,5 +290,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `乘区索引校验通过：${MODIFIER_TYPES.length} 个增伤类型，${MULTIPLIER_PROVIDERS.length} 个来源，${MULTIPLIER_PROVIDER_EXCLUSIONS.length} 个排除项，${PROVIDER_RELATIONS.length} 条双向关系；覆盖 ${perkCandidates.size} 个插件/卡片身份、${overlimitStatTypesByItemId.size} 个属性数值来源、${weaponCandidates.size} 个武器技能组件。`,
+  `乘区索引校验通过：${MODIFIER_TYPES.length} 个增伤类型，${MULTIPLIER_PROVIDERS.length} 个来源，${MULTIPLIER_PROVIDER_EXCLUSIONS.length} 个排除项，${PROVIDER_RELATIONS.length} 条双向关系；覆盖 ${perkCandidates.size} 个插件/卡片身份、${overlimitStatSourceCount} 个属性数值来源、${weaponCandidates.size} 个武器技能组件。`,
 );

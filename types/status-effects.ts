@@ -6,7 +6,12 @@ export interface StatusEffectModifierReference {
   id: number;
   level: number;
   attributeName: string;
+  attributeLabel: string;
+  attributeTypeId?: string;
   operation: string;
+  operationModel: string;
+  direction: string;
+  facetLabels: string[];
   baseValue: number;
   coefficient: number;
   description: string;

@@ -1,4 +1,3737 @@
 {
+  "attribute_descriptions": {
+    "lc": {
+      "1001": {
+        "raw": {
+          "NumericalID": 1,
+          "attr_name": {
+            "Key": "1001_attr_name",
+            "LocalizedString": "生命值上限",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "生命值上限"
+          },
+          "attr_realname": "GPAttributeSetHealth.MaxHealth",
+          "attr_str": "MaxHealth",
+          "description": {
+            "Key": "1001_description",
+            "LocalizedString": "生命值的数值上限。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "生命值的数值上限。"
+          },
+          "id": 1001,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "1001"
+      },
+      "1002": {
+        "raw": {
+          "NumericalID": 1,
+          "attr_name": {
+            "Key": "1002_attr_name",
+            "LocalizedString": "护盾值上限",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "护盾值上限"
+          },
+          "attr_realname": "GPAttributeSetShield.MaxShield",
+          "attr_str": "MaxShield",
+          "description": {
+            "Key": "1002_description",
+            "LocalizedString": "护盾的数值上限。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "护盾的数值上限。"
+          },
+          "id": 1002,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "1002"
+      },
+      "1003": {
+        "raw": {
+          "NumericalID": 1,
+          "attr_name": {
+            "Key": "1003_attr_name",
+            "LocalizedString": "每秒护盾恢复",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "每秒护盾恢复"
+          },
+          "attr_realname": "GPAttributeSetShield.Growth",
+          "attr_str": "ShieldRecoveryPerSec",
+          "description": {
+            "Key": "1003_description",
+            "LocalizedString": "每秒护盾恢复的数值。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "每秒护盾恢复的数值。"
+          },
+          "id": 1003,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "1003"
+      },
+      "1004": {
+        "raw": {
+          "NumericalID": 1,
+          "attr_name": {
+            "Key": "1004_attr_name",
+            "LocalizedString": "每秒生命恢复",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "每秒生命恢复"
+          },
+          "attr_realname": "GPAttributeSetHealth.HealingRate",
+          "attr_str": "HealingRate",
+          "description": {
+            "Key": "1004_description",
+            "LocalizedString": "每秒生命恢复的数值。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "每秒生命恢复的数值。"
+          },
+          "id": 1004,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "1004"
+      },
+      "1005": {
+        "raw": {
+          "NumericalID": 1,
+          "attr_name": {
+            "Key": "1005_attr_name",
+            "LocalizedString": "护盾恢复间隔时间",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "护盾恢复间隔时间"
+          },
+          "attr_realname": "GPAttributeSetShield.RecoveryInterval",
+          "attr_str": "ShieldRecoveryInterval",
+          "description": {
+            "Key": "1005_description",
+            "LocalizedString": "护盾恢复的间隔时间。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "护盾恢复的间隔时间。"
+          },
+          "id": 1005,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "1005"
+      },
+      "1006": {
+        "raw": {
+          "NumericalID": 1,
+          "attr_name": {
+            "Key": "1006_attr_name",
+            "LocalizedString": "生命恢复间隔时间",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "生命恢复间隔时间"
+          },
+          "attr_realname": "GPAttributeSetShield.HealingRecoveryInterval",
+          "attr_str": "HealingRecoveryInterval",
+          "description": {
+            "Key": "1006_description",
+            "LocalizedString": "生命恢复的间隔时间。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "生命恢复的间隔时间。"
+          },
+          "id": 1006,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "1006"
+      },
+      "1007": {
+        "raw": {
+          "NumericalID": 1,
+          "attr_name": {
+            "Key": "1007_attr_name",
+            "LocalizedString": "攻击力",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "攻击力"
+          },
+          "attr_realname": "GPAttributeSetAttack.Attack",
+          "attr_str": "SpellPower",
+          "description": {
+            "Key": "1007_description",
+            "LocalizedString": "决定技能造成伤害的基础值。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "决定技能造成伤害的基础值。"
+          },
+          "id": 1007,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "1007"
+      },
+      "1008": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1008_attr_name",
+            "LocalizedString": "射击伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "射击伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+          "attr_str": "ImpulsiveDamageRatio",
+          "description": {
+            "Key": "1008_description",
+            "LocalizedString": "武器命中敌人的撞击伤害系数修正。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器命中敌人的撞击伤害系数修正。"
+          },
+          "id": 1008,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1008"
+      },
+      "1009": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1009_attr_name",
+            "LocalizedString": "爆炸伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "爆炸伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+          "attr_str": "ExplodedDamageRatio",
+          "description": {
+            "Key": "1009_description",
+            "LocalizedString": "武器命中敌人的爆炸伤害系数修正。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器命中敌人的爆炸伤害系数修正。"
+          },
+          "id": 1009,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1009"
+      },
+      "1010": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "1010_attr_name",
+            "LocalizedString": "武器弱点伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器弱点伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 1010,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "1010"
+      },
+      "1011": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "1011_attr_name",
+            "LocalizedString": "技能弱点伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "技能弱点伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.SkillWeaknessDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 1011,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "1011"
+      },
+      "1012": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1012_attr_name",
+            "LocalizedString": "暴击率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "暴击率"
+          },
+          "attr_realname": "GPAttributeSetCritical.CriticalRatio",
+          "attr_str": "",
+          "description": {
+            "Key": "1012_description",
+            "LocalizedString": "暴击率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "暴击率"
+          },
+          "id": 1012,
+          "value_format": "%.0f",
+          "value_rate": 100
+        },
+        "row_name": "1012"
+      },
+      "1013": {
+        "raw": {
+          "NumericalID": 9,
+          "attr_name": {
+            "Key": "1013_attr_name",
+            "LocalizedString": "暴击伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "暴击伤害"
+          },
+          "attr_realname": "GPAttributeSetCritical.CriticalDamageRatio",
+          "attr_str": "",
+          "description": {
+            "Key": "1013_description",
+            "LocalizedString": "暴击伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "暴击伤害"
+          },
+          "id": 1013,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "1013"
+      },
+      "1014": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "1014_attr_name",
+            "LocalizedString": "暴击率抗性",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "暴击率抗性"
+          },
+          "attr_realname": "GPAttributeSetCritical.CriticalBearRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 1014,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "1014"
+      },
+      "1015": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1015_attr_name",
+            "LocalizedString": "肉质伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "肉质伤害"
+          },
+          "attr_realname": "GPAttributeSetFlesh.FleshDamageRatio",
+          "attr_str": "FleshDamageRatio",
+          "description": {
+            "Key": "1015_description",
+            "LocalizedString": "对肉质的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对肉质的伤害系数。"
+          },
+          "id": 1015,
+          "value_format": "%.1f",
+          "value_rate": 100
+        },
+        "row_name": "1015"
+      },
+      "1016": {
+        "raw": {
+          "NumericalID": 9,
+          "attr_name": {
+            "Key": "1016_attr_name",
+            "LocalizedString": "对普通敌人伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对普通敌人伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.DamageRatioToNormal",
+          "attr_str": "DamageRatioToNormal",
+          "description": {
+            "Key": "1016_description",
+            "LocalizedString": "对普通敌人的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对普通敌人的伤害系数。"
+          },
+          "id": 1016,
+          "value_format": "%.1f",
+          "value_rate": 100
+        },
+        "row_name": "1016"
+      },
+      "1017": {
+        "raw": {
+          "NumericalID": 9,
+          "attr_name": {
+            "Key": "1017_attr_name",
+            "LocalizedString": "对精英/首领敌人伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对精英/首领敌人伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.DamageRatioToElite",
+          "attr_str": "DamageRatioToElite",
+          "description": {
+            "Key": "1017_description",
+            "LocalizedString": "对精英敌人的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对精英敌人的伤害系数。"
+          },
+          "id": 1017,
+          "value_format": "%.1f",
+          "value_rate": 100
+        },
+        "row_name": "1017"
+      },
+      "1019": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1019_attr_name",
+            "LocalizedString": "物理伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "物理伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.KineticDamageRatio",
+          "attr_str": "KineticDamageRatio",
+          "description": {
+            "Key": "1019_description",
+            "LocalizedString": "对敌人造成物理伤害的系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对敌人造成物理伤害的系数。"
+          },
+          "id": 1019,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1019"
+      },
+      "1020": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1020_attr_name",
+            "LocalizedString": "燃烧伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "燃烧伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.FireDamageRatio",
+          "attr_str": "FireDamageRatio",
+          "description": {
+            "Key": "1020_description",
+            "LocalizedString": "对敌人造成火系伤害的系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对敌人造成火系伤害的系数。"
+          },
+          "id": 1020,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1020"
+      },
+      "1021": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1021_attr_name",
+            "LocalizedString": "急冻伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "急冻伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.CryoDamageRatio",
+          "attr_str": "CryoDamageRatio",
+          "description": {
+            "Key": "1021_description",
+            "LocalizedString": "对敌人造成冰系伤害的系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对敌人造成冰系伤害的系数。"
+          },
+          "id": 1021,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1021"
+      },
+      "1022": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1022_attr_name",
+            "LocalizedString": "电击伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "电击伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.ShockDamageRatio",
+          "attr_str": "ShockDamageRatio",
+          "description": {
+            "Key": "1022_description",
+            "LocalizedString": "对敌人造成电系伤害的系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对敌人造成电系伤害的系数。"
+          },
+          "id": 1022,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1022"
+      },
+      "1023": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1023_attr_name",
+            "LocalizedString": "腐蚀伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "腐蚀伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.CorossiveDamageRatio",
+          "attr_str": "CorossiveDamageRatio",
+          "description": {
+            "Key": "1023_description",
+            "LocalizedString": "对敌人造成腐蚀系伤害的系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对敌人造成腐蚀系伤害的系数。"
+          },
+          "id": 1023,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1023"
+      },
+      "1024": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1024_attr_name",
+            "LocalizedString": "元素伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "元素伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.ElementDamageRatio",
+          "attr_str": "ElementDamageRatio",
+          "description": {
+            "Key": "1024_description",
+            "LocalizedString": "对敌人造成元素伤害的系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对敌人造成元素伤害的系数。"
+          },
+          "id": 1024,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1024"
+      },
+      "1025": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1025_attr_name",
+            "LocalizedString": "全伤害（尽量别用，连乘）",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "全伤害（尽量别用，连乘）"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.DamageRatio",
+          "attr_str": "DamageRatio",
+          "description": {
+            "Key": "1025_description",
+            "LocalizedString": "对敌人造成所有伤害的系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对敌人造成所有伤害的系数。"
+          },
+          "id": 1025,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1025"
+      },
+      "1026": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "1026_attr_name",
+            "LocalizedString": "全伤害（可用，和其他增伤连加）",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "全伤害（可用，和其他增伤连加）"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+          "attr_str": "DamageRatio",
+          "description": {
+            "Key": "1026_description",
+            "LocalizedString": "对敌人造成所有伤害的系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对敌人造成所有伤害的系数。"
+          },
+          "id": 1026,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1026"
+      },
+      "1049": {
+        "raw": {
+          "NumericalID": 10,
+          "attr_name": {
+            "Key": "1049_attr_name",
+            "LocalizedString": "肉质伤害减免",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "肉质伤害减免"
+          },
+          "attr_realname": "GPAttributeSetFlesh.FleshDamageBearRatio",
+          "attr_str": "GeneralCoef",
+          "description": {
+            "Key": "1049_description",
+            "LocalizedString": "对肉质的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对肉质的伤害系数。"
+          },
+          "id": 1049,
+          "value_format": "%.1f",
+          "value_rate": 100
+        },
+        "row_name": "1049"
+      },
+      "1056": {
+        "raw": {
+          "NumericalID": 10,
+          "attr_name": {
+            "Key": "1056_attr_name",
+            "LocalizedString": "受到普通敌人伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到普通敌人伤害"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.DamageByNormalBearRatio",
+          "attr_str": "NormalDamageBearRatio",
+          "description": {
+            "Key": "1056_description",
+            "LocalizedString": "受到普通敌人的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到普通敌人的伤害系数。"
+          },
+          "id": 1056,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1056"
+      },
+      "1057": {
+        "raw": {
+          "NumericalID": 10,
+          "attr_name": {
+            "Key": "1057_attr_name",
+            "LocalizedString": "受到精英/首领敌人伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到精英/首领敌人伤害"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.DamageByEliteBearRatio",
+          "attr_str": "EliteDamageBearRatio",
+          "description": {
+            "Key": "1057_description",
+            "LocalizedString": "受到精英敌人的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到精英敌人的伤害系数。"
+          },
+          "id": 1057,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1057"
+      },
+      "1059": {
+        "raw": {
+          "NumericalID": 10,
+          "attr_name": {
+            "Key": "1059_attr_name",
+            "LocalizedString": "受到物理伤害降低",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到物理伤害降低"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.KineticDamageBearRatio",
+          "attr_str": "KineticDamageBearRatio",
+          "description": {
+            "Key": "1059_description",
+            "LocalizedString": "受到物理伤害的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到物理伤害的伤害系数。"
+          },
+          "id": 1059,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1059"
+      },
+      "1060": {
+        "raw": {
+          "NumericalID": 10,
+          "attr_name": {
+            "Key": "1060_attr_name",
+            "LocalizedString": "受到燃烧伤害降低",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到燃烧伤害降低"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.FireDamageBearRatio",
+          "attr_str": "FireDamageBearRatio",
+          "description": {
+            "Key": "1060_description",
+            "LocalizedString": "受到火系伤害的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到火系伤害的伤害系数。"
+          },
+          "id": 1060,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1060"
+      },
+      "1061": {
+        "raw": {
+          "NumericalID": 10,
+          "attr_name": {
+            "Key": "1061_attr_name",
+            "LocalizedString": "受到急冻伤害降低",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到急冻伤害降低"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.CryoDamageBearRatio",
+          "attr_str": "CryoDamageBearRatio",
+          "description": {
+            "Key": "1061_description",
+            "LocalizedString": "受到冰系伤害的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到冰系伤害的伤害系数。"
+          },
+          "id": 1061,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1061"
+      },
+      "1062": {
+        "raw": {
+          "NumericalID": 10,
+          "attr_name": {
+            "Key": "1062_attr_name",
+            "LocalizedString": "受到电击伤害降低",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到电击伤害降低"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.ShockDamageBearRatio",
+          "attr_str": "ShockDamageBearRatio",
+          "description": {
+            "Key": "1062_description",
+            "LocalizedString": "受到电系伤害的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到电系伤害的伤害系数。"
+          },
+          "id": 1062,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1062"
+      },
+      "1063": {
+        "raw": {
+          "NumericalID": 10,
+          "attr_name": {
+            "Key": "1063_attr_name",
+            "LocalizedString": "受到腐蚀伤害降低",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到腐蚀伤害降低"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.CorossiveDamageBearRatio",
+          "attr_str": "CorossiveDamageBearRatio",
+          "description": {
+            "Key": "1063_description",
+            "LocalizedString": "受到腐蚀系伤害的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到腐蚀系伤害的伤害系数。"
+          },
+          "id": 1063,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1063"
+      },
+      "1064": {
+        "raw": {
+          "NumericalID": 10,
+          "attr_name": {
+            "Key": "1064_attr_name",
+            "LocalizedString": "受到元素伤害降低",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到元素伤害降低"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.ElementDamageBearRatio",
+          "attr_str": "ElementDamageBearRatio",
+          "description": {
+            "Key": "1064_description",
+            "LocalizedString": "受到元素伤害的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到元素伤害的伤害系数。"
+          },
+          "id": 1064,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1064"
+      },
+      "1065": {
+        "raw": {
+          "NumericalID": 10,
+          "attr_name": {
+            "Key": "1065_attr_name",
+            "LocalizedString": "伤害减免",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "伤害减免"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.DamageBearRatio",
+          "attr_str": "DamageBearRatio",
+          "description": {
+            "Key": "1065_description",
+            "LocalizedString": "受到所有伤害的伤害系数。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受到所有伤害的伤害系数。"
+          },
+          "id": 1065,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1065"
+      },
+      "1081": {
+        "raw": {
+          "NumericalID": 9,
+          "attr_name": {
+            "Key": "1081_attr_name",
+            "LocalizedString": "移动速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "移动速度"
+          },
+          "attr_realname": "GPAttributeSetSpeed.SpeedScale",
+          "attr_str": "WeaponSpeedRatio",
+          "description": {
+            "Key": "1081_description",
+            "LocalizedString": "移动速度修正比例。",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "移动速度修正比例。"
+          },
+          "id": 1081,
+          "value_format": "%.2f",
+          "value_rate": 100
+        },
+        "row_name": "1081"
+      },
+      "2139": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2139_attr_name",
+            "LocalizedString": "debuff伤害修正系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "debuff伤害修正系数"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.DebuffDamageBearRatio",
+          "attr_str": "DebuffDamageBearRatio",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2139,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2139"
+      },
+      "2155": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2155_attr_name",
+            "LocalizedString": "充能近战技能伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "充能近战技能伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.EnergyMeleeSkillDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2155,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2155"
+      },
+      "2156": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2156_attr_name",
+            "LocalizedString": "特色技能伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "特色技能伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.SpecialSkillDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2156,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2156"
+      },
+      "2157": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2157_attr_name",
+            "LocalizedString": "主动治疗效果增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "主动治疗效果增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.ActiveHealRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2157,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2157"
+      },
+      "2158": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2158_attr_name",
+            "LocalizedString": "受治疗效果增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受治疗效果增加"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.BeHealRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2158,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2158"
+      },
+      "2159": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2159_attr_name",
+            "LocalizedString": "武器伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2159,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2159"
+      },
+      "2160": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2160_attr_name",
+            "LocalizedString": "非武器技能伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "非武器技能伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2160,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2160"
+      },
+      "2161": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2161_attr_name",
+            "LocalizedString": "伤害/治疗/临时护盾单次修正系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "伤害/治疗/临时护盾单次修正系数"
+          },
+          "attr_realname": "Numerical.ExecutionCtx.ExecutionRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2161,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2161"
+      },
+      "2162": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2162_attr_name",
+            "LocalizedString": "单次韧性伤害修正",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "单次韧性伤害修正"
+          },
+          "attr_realname": "Numerical.ExecutionCtx.ExecutionToughnessRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2162,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2162"
+      },
+      "2163": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2163_attr_name",
+            "LocalizedString": "冲量单次修正系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "冲量单次修正系数"
+          },
+          "attr_realname": "Numerical.ExecutionCtx.ExecutionImpulseRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2163,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2163"
+      },
+      "2184": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2184_attr_name",
+            "LocalizedString": "近距离武器伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "近距离武器伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.CloseRangeDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2184,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2184"
+      },
+      "2185": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2185_attr_name",
+            "LocalizedString": "远距离武器伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "远距离武器伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.LongRangeDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2185,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2185"
+      },
+      "2186": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2186_attr_name",
+            "LocalizedString": "对倒地boss伤害加成",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对倒地boss伤害加成"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.FalldownDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2186,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2186"
+      },
+      "2188": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2188_attr_name",
+            "LocalizedString": "1号位武器主动技能充能速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "1号位武器主动技能充能速度"
+          },
+          "attr_realname": "GPAttributeSetHumanSkill.WeaponSkillChargeSpeed1",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2188,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2188"
+      },
+      "2189": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2189_attr_name",
+            "LocalizedString": "2号位武器主动技能充能速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "2号位武器主动技能充能速度"
+          },
+          "attr_realname": "GPAttributeSetHumanSkill.WeaponSkillChargeSpeed2",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2189,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2189"
+      },
+      "2194": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2194_attr_name",
+            "LocalizedString": "机甲续航能量最大值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲续航能量最大值"
+          },
+          "attr_realname": "GPAttributeSetMecha.MechaEnduranceEnergyMax",
+          "attr_str": "",
+          "description": {
+            "Key": "2194_description",
+            "LocalizedString": "MechaEnduranceEnergyMax",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "MechaEnduranceEnergyMax"
+          },
+          "id": 2194,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2194"
+      },
+      "2195": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2195_attr_name",
+            "LocalizedString": "机甲续航能量消耗速度(驾驶时)",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲续航能量消耗速度(驾驶时)"
+          },
+          "attr_realname": "GPAttributeSetMecha.MechaEnduranceEnergyCostBePiloted",
+          "attr_str": "",
+          "description": {
+            "Key": "2195_description",
+            "LocalizedString": "MechaEnduranceEnergyCostBePiloted",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "MechaEnduranceEnergyCostBePiloted"
+          },
+          "id": 2195,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2195"
+      },
+      "2196": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2196_attr_name",
+            "LocalizedString": "机甲续航能量消耗速度(待机时)",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲续航能量消耗速度(待机时)"
+          },
+          "attr_realname": "GPAttributeSetMecha.MechaEnduranceEnergyCostStandBy",
+          "attr_str": "",
+          "description": {
+            "Key": "2196_description",
+            "LocalizedString": "MechaEnduranceEnergyCostStandBy",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "MechaEnduranceEnergyCostStandBy"
+          },
+          "id": 2196,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2196"
+      },
+      "2198": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2198_attr_name",
+            "LocalizedString": "机甲猛冲（Dash）能量值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲猛冲（Dash）能量值"
+          },
+          "attr_realname": "GPAttributeSetMecha.MechaDashEnergyMax",
+          "attr_str": "",
+          "description": {
+            "Key": "2198_description",
+            "LocalizedString": "MechaDashEnergyMax",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "MechaDashEnergyMax"
+          },
+          "id": 2198,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2198"
+      },
+      "2199": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2199_attr_name",
+            "LocalizedString": "机甲每次冲刺消耗能量值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲每次冲刺消耗能量值"
+          },
+          "attr_realname": "GPAttributeSetMecha.MechaDashCostEnergy",
+          "attr_str": "",
+          "description": {
+            "Key": "2199_description",
+            "LocalizedString": "MechaDashCostEnergy",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "MechaDashCostEnergy"
+          },
+          "id": 2199,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2199"
+      },
+      "2200": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2200_attr_name",
+            "LocalizedString": "机甲猛冲（Dash）能量恢复速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲猛冲（Dash）能量恢复速度"
+          },
+          "attr_realname": "GPAttributeSetMecha.MechaDashEnergyRecovery",
+          "attr_str": "",
+          "description": {
+            "Key": "2200_description",
+            "LocalizedString": "MechaDashEnergyRecovery",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "MechaDashEnergyRecovery"
+          },
+          "id": 2200,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2200"
+      },
+      "2201": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2201_attr_name",
+            "LocalizedString": "机甲冲刺时每秒恢复能量",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲冲刺时每秒恢复能量"
+          },
+          "attr_realname": "GPAttributeSetMecha.MechaDashEnergyRecoveryProceed",
+          "attr_str": "",
+          "description": {
+            "Key": "2201_description",
+            "LocalizedString": "MechaDashEnergyRecoveryProceed",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "MechaDashEnergyRecoveryProceed"
+          },
+          "id": 2201,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2201"
+      },
+      "2202": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2202_attr_name",
+            "LocalizedString": "机甲浮空能量最大值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲浮空能量最大值"
+          },
+          "attr_realname": "GPAttributeSetMecha.MechaActionEnergyMax",
+          "attr_str": "",
+          "description": {
+            "Key": "2202_description",
+            "LocalizedString": "MechaFloatingEnergyMax",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "MechaFloatingEnergyMax"
+          },
+          "id": 2202,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2202"
+      },
+      "2203": {
+        "raw": {
+          "NumericalID": 8,
+          "attr_name": {
+            "Key": "2203_attr_name",
+            "LocalizedString": "机甲浮空能量每秒恢复值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲浮空能量每秒恢复值"
+          },
+          "attr_realname": "GPAttributeSetMecha.MechaActionEnergyRecover",
+          "attr_str": "",
+          "description": {
+            "Key": "2203_description",
+            "LocalizedString": "MechaFloatingEnergyRecover",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "MechaFloatingEnergyRecover"
+          },
+          "id": 2203,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2203"
+      },
+      "2204": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2204_attr_name",
+            "LocalizedString": "受远距离伤害降低",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受远距离伤害降低"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.LongRangeDamageBearRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2204,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2204"
+      },
+      "2205": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2205_attr_name",
+            "LocalizedString": "受近距离伤害降低",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受近距离伤害降低"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.CloseRangeDamageBearRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2205,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2205"
+      },
+      "2206": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2206_attr_name",
+            "LocalizedString": "对生命值伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对生命值伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.DamageRatioToHealth",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2206,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2206"
+      },
+      "2207": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2207_attr_name",
+            "LocalizedString": "对护盾值伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "对护盾值伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.DamageRatioToShield",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2207,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2207"
+      },
+      "2208": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2208_attr_name",
+            "LocalizedString": "最小生命值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "最小生命值"
+          },
+          "attr_realname": "GPAttributeSetHealth.MinHealth",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2208,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2208"
+      },
+      "2209": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2209_attr_name",
+            "LocalizedString": "机甲大招充能速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲大招充能速度"
+          },
+          "attr_realname": "GPAttributeSetMechaSkill.ExpertSkillChargeSpeed",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2209,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2209"
+      },
+      "2210": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2210_attr_name",
+            "LocalizedString": "异常状态伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "异常状态伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.DebuffDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2210,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2210"
+      },
+      "2211": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2211_attr_name",
+            "LocalizedString": "武器技能伤害",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器技能伤害"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2211,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2211"
+      },
+      "2212": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2212_attr_name",
+            "LocalizedString": "奔跑移动速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "奔跑移动速度"
+          },
+          "attr_realname": "GPAttributeSetSpeed.RunSpeedScale",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2212,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2212"
+      },
+      "2213": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2213_attr_name",
+            "LocalizedString": "BOSS韧性阈值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "BOSS韧性阈值"
+          },
+          "attr_realname": "GPAttributeSetHardStraight.FallDownThreshold",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2213,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2213"
+      },
+      "2214": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2214_attr_name",
+            "LocalizedString": "特殊受伤害减免",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "特殊受伤害减免"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.SpecialDamageBearRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2214,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2214"
+      },
+      "2215": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2215_attr_name",
+            "LocalizedString": "破韧伤害减免",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "破韧伤害减免"
+          },
+          "attr_realname": "GPAttributeSetToughness.ToughnessBearRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2215,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2215"
+      },
+      "2216": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2216_attr_name",
+            "LocalizedString": "肉质伤害减免",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "肉质伤害减免"
+          },
+          "attr_realname": "GPAttributeSetBearDamageRatio.FleshDamageBearRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2216,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2216"
+      },
+      "2217": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2217_attr_name",
+            "LocalizedString": "韧性伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "韧性伤害增加"
+          },
+          "attr_realname": "GPAttributeSetToughness.ToughnessRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2217,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2217"
+      },
+      "2218": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2218_attr_name",
+            "LocalizedString": "元素debuff施加概率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "元素debuff施加概率"
+          },
+          "attr_realname": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2218,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2218"
+      },
+      "2219": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2219_attr_name",
+            "LocalizedString": "受元素debuff施加概率降低",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "受元素debuff施加概率降低"
+          },
+          "attr_realname": "GPAttributeSetElement.GetElementDebuffChanceReduceRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2219,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2219"
+      },
+      "2220": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2220_attr_name",
+            "LocalizedString": "机甲战术技能充能速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "机甲战术技能充能速度"
+          },
+          "attr_realname": "GPAttributeSetMechaSkill.TacticSkillChargeSpeed",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2220,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2220"
+      },
+      "2221": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2221_attr_name",
+            "LocalizedString": "主弹夹弹量上限加成值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "主弹夹弹量上限加成值"
+          },
+          "attr_realname": "GPAttributeSetWeaponNormalAmmo.ClipAmmoAddPoint",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2221,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2221"
+      },
+      "2222": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2222_attr_name",
+            "LocalizedString": "主弹夹弹量上限加成系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "主弹夹弹量上限加成系数"
+          },
+          "attr_realname": "GPAttributeSetWeaponNormalAmmo.ClipAmmoAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2222,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2222"
+      },
+      "2223": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2223_attr_name",
+            "LocalizedString": "最大总弹量修正系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "最大总弹量修正系数"
+          },
+          "attr_realname": "GPAttributeSetWeaponNormalAmmo.MaxAmmoCountAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2223,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2223"
+      },
+      "2224": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2224_attr_name",
+            "LocalizedString": "开火扣弹数加成值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "开火扣弹数加成值"
+          },
+          "attr_realname": "GPAttributeSetWeaponNormalAmmo.WeaponAmmoCostAddPoint",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2224,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2224"
+      },
+      "2225": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2225_attr_name",
+            "LocalizedString": "开火扣弹数修正加成系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "开火扣弹数修正加成系数"
+          },
+          "attr_realname": "GPAttributeSetWeaponNormalAmmo.WeaponAmmoCostAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2225,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2225"
+      },
+      "2226": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2226_attr_name",
+            "LocalizedString": "换弹补充弹药数加成",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "换弹补充弹药数加成"
+          },
+          "attr_realname": "GPAttributeSetWeaponNormalAmmo.ChangeClipAmmoCountAddPoint",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2226,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2226"
+      },
+      "2227": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2227_attr_name",
+            "LocalizedString": "换弹补充弹药数加成系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "换弹补充弹药数加成系数"
+          },
+          "attr_realname": "GPAttributeSetWeaponNormalAmmo.ChangeClipAmmoCountAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2227,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2227"
+      },
+      "2228": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2228_attr_name",
+            "LocalizedString": "角色武器总弹量增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色武器总弹量增加"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.MaxAmmoCountAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2228,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2228"
+      },
+      "2229": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2229_attr_name",
+            "LocalizedString": "特殊弹药主弹夹弹量上限加成值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "特殊弹药主弹夹弹量上限加成值"
+          },
+          "attr_realname": "GPAttributeSetWeaponSpecialAmmo.ClipSpecialAmmoAddPoint",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2229,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2229"
+      },
+      "2230": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2230_attr_name",
+            "LocalizedString": "特殊弹药主弹夹弹量上限加成系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "特殊弹药主弹夹弹量上限加成系数"
+          },
+          "attr_realname": "GPAttributeSetWeaponSpecialAmmo.ClipSpecialAmmoAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2230,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2230"
+      },
+      "2231": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2231_attr_name",
+            "LocalizedString": "特殊弹药最大总弹量修正系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "特殊弹药最大总弹量修正系数"
+          },
+          "attr_realname": "GPAttributeSetWeaponSpecialAmmo.MaxSpecialAmmoCountAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2231,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2231"
+      },
+      "2232": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2232_attr_name",
+            "LocalizedString": "角色武器特殊弹药总弹量增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色武器特殊弹药总弹量增加"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.MaxSpecialAmmoCountAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2232,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2232"
+      },
+      "2233": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2233_attr_name",
+            "LocalizedString": "特殊弹药开火扣弹数加成值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "特殊弹药开火扣弹数加成值"
+          },
+          "attr_realname": "GPAttributeSetWeaponSpecialAmmo.SpecialAmmoCostAddPoint",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2233,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2233"
+      },
+      "2234": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2234_attr_name",
+            "LocalizedString": "特殊弹药开火扣弹数修正加成系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "特殊弹药开火扣弹数修正加成系数"
+          },
+          "attr_realname": "GPAttributeSetWeaponSpecialAmmo.SpecialAmmoCostAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2234,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2234"
+      },
+      "2235": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2235_attr_name",
+            "LocalizedString": "特殊弹药换弹补充弹药数加成",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "特殊弹药换弹补充弹药数加成"
+          },
+          "attr_realname": "GPAttributeSetWeaponSpecialAmmo.ChangeClipSpecialAmmoCountAddPoint",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2235,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2235"
+      },
+      "2236": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2236_attr_name",
+            "LocalizedString": "特殊弹药换弹补充弹药数加成系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "特殊弹药换弹补充弹药数加成系数"
+          },
+          "attr_realname": "GPAttributeSetWeaponSpecialAmmo.ChangeClipSpecialAmmoCountAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2236,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2236"
+      },
+      "2237": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2237_attr_name",
+            "LocalizedString": "仇恨值系数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "仇恨值系数"
+          },
+          "attr_realname": "GPAttributeSetAIHate.ExtraAIHateScale",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2237,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2237"
+      },
+      "2238": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2238_attr_name",
+            "LocalizedString": "武器主动技能充能速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器主动技能充能速度"
+          },
+          "attr_realname": "GPAttributeSetSkill.ChargeSpeedAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2238,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2238"
+      },
+      "2239": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2239_attr_name",
+            "LocalizedString": "角色全武器主动技能充能速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色全武器主动技能充能速度"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.ChargeSpeedAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2239,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2239"
+      },
+      "2240": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2240_attr_name",
+            "LocalizedString": "武器主动技能储存次数增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器主动技能储存次数增加"
+          },
+          "attr_realname": "GPAttributeSetSkill.ChargeTimeAdd",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2240,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2240"
+      },
+      "2241": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2241_attr_name",
+            "LocalizedString": "爆炸范围",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "爆炸范围"
+          },
+          "attr_realname": "GPAttributeSetExplosion.WeaponExplosionRadiusRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2241,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2241"
+      },
+      "2242": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2242_attr_name",
+            "LocalizedString": "角色全武器爆炸范围",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色全武器爆炸范围"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.WeaponExplosionRadiusRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2242,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2242"
+      },
+      "2243": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2243_attr_name",
+            "LocalizedString": "武器换弹速度提高",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器换弹速度提高"
+          },
+          "attr_realname": "GPAttributeSetWeaponChangeclip.WeaponChangeClipSpeedRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2243,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2243"
+      },
+      "2244": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2244_attr_name",
+            "LocalizedString": "角色全武器换弹速度提高",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色全武器换弹速度提高"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.ChangeClipTimeAdjust",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2244,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2244"
+      },
+      "2245": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2245_attr_name",
+            "LocalizedString": "武器移速修正",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器移速修正"
+          },
+          "attr_realname": "GPAttributeSetWeaponMovement.WeaponMovingScaleAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2245,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2245"
+      },
+      "2246": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2246_attr_name",
+            "LocalizedString": "武器开火移速修正",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器开火移速修正"
+          },
+          "attr_realname": "GPAttributeSetWeaponMovement.WeaponFiringMovingScaleAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2246,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2246"
+      },
+      "2247": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2247_attr_name",
+            "LocalizedString": "武器开镜移速修正",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器开镜移速修正"
+          },
+          "attr_realname": "GPAttributeSetWeaponMovement.WeaponAimingMovingScaleAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2247,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2247"
+      },
+      "2248": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2248_attr_name",
+            "LocalizedString": "武器换弹移速修正",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器换弹移速修正"
+          },
+          "attr_realname": "GPAttributeSetWeaponMovement.WeaponReloadMovingScaleAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2248,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2248"
+      },
+      "2249": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2249_attr_name",
+            "LocalizedString": "预热/蓄力移动速度修正",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "预热/蓄力移动速度修正"
+          },
+          "attr_realname": "GPAttributeSetWeaponMovement.WeaponChargeStrengthOrPreheatMovingAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2249,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2249"
+      },
+      "2250": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2250_attr_name",
+            "LocalizedString": "切枪速度提高",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "切枪速度提高"
+          },
+          "attr_realname": "GPAttributeSetEquip.EquipSpeedUPRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2250,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2250"
+      },
+      "2251": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2251_attr_name",
+            "LocalizedString": "角色全武器切枪速度提高",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色全武器切枪速度提高"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.EquipTimeAdjust",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2251,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2251"
+      },
+      "2252": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2252_attr_name",
+            "LocalizedString": "武器准确度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器准确度"
+          },
+          "attr_realname": "GPAttributeSetTrajectory.SpreadAdjust",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2252,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2252"
+      },
+      "2253": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2253_attr_name",
+            "LocalizedString": "角色全武器武器准确度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色全武器武器准确度"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.SpreadAdjust",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2253,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2253"
+      },
+      "2254": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2254_attr_name",
+            "LocalizedString": "武器水平稳定性",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器水平稳定性"
+          },
+          "attr_realname": "GPAttributeSetTrajectory.RecoilScale_HoriAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2254,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2254"
+      },
+      "2255": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2255_attr_name",
+            "LocalizedString": "角色全武器水平稳定性",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色全武器水平稳定性"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.RecoilScale_HoriAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2255,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2255"
+      },
+      "2256": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2256_attr_name",
+            "LocalizedString": "武器垂直稳定性",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器垂直稳定性"
+          },
+          "attr_realname": "GPAttributeSetTrajectory.RecoilScale_VertiAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2256,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2256"
+      },
+      "2257": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2257_attr_name",
+            "LocalizedString": "角色全武器垂直稳定性",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色全武器垂直稳定性"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.RecoilScale_VertiAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2257,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2257"
+      },
+      "2258": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2258_attr_name",
+            "LocalizedString": "有效射程增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "有效射程增加"
+          },
+          "attr_realname": "GPAttributeSetWeaponDamage.DistanceBeginAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2258,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2258"
+      },
+      "2259": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2259_attr_name",
+            "LocalizedString": "角色全武器有效射程增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色全武器有效射程增加"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.DistanceBeginAdjust",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2259,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2259"
+      },
+      "2260": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2260_attr_name",
+            "LocalizedString": "最大射程增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "最大射程增加"
+          },
+          "attr_realname": "GPAttributeSetWeaponDamage.DistanceEndAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2260,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2260"
+      },
+      "2261": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2261_attr_name",
+            "LocalizedString": "角色全武器最大射程增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色全武器最大射程增加"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.DistanceEndAdjust",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2261,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2261"
+      },
+      "2262": {
+        "raw": {
+          "NumericalID": 1,
+          "attr_name": {
+            "Key": "2262_attr_name",
+            "LocalizedString": "武器冲量增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器冲量增加"
+          },
+          "attr_realname": "GPAttributeSetWeaponDamage.ImpulseAdditive",
+          "attr_str": "",
+          "description": {
+            "Key": "2262_description",
+            "LocalizedString": "武器的数值结算造成的冲量的加法修正",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器的数值结算造成的冲量的加法修正"
+          },
+          "id": 2262,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2262"
+      },
+      "2263": {
+        "raw": {
+          "NumericalID": 1,
+          "attr_name": {
+            "Key": "2263_attr_name",
+            "LocalizedString": "技能冲量点数增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "技能冲量点数增加"
+          },
+          "attr_realname": "GPAttributeSetHardStraight.ImpulseAdditive",
+          "attr_str": "ImpulseAdditive",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2263,
+          "value_format": "%.0f",
+          "value_rate": 1
+        },
+        "row_name": "2263"
+      },
+      "2264": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2264_attr_name",
+            "LocalizedString": "开镜速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "开镜速度"
+          },
+          "attr_realname": "GPAttributeSetZoom.ZoomSpeedUPRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2264,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2264"
+      },
+      "2265": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2265_attr_name",
+            "LocalizedString": "角色全武器开镜速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色全武器开镜速度"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.ZoomTimeAdjust",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2265,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2265"
+      },
+      "2266": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2266_attr_name",
+            "LocalizedString": "武器开火间隔倍率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器开火间隔倍率"
+          },
+          "attr_realname": "GPAttributeSetFireMode.FireIntervalRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2266,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2266"
+      },
+      "2267": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2267_attr_name",
+            "LocalizedString": "N连发开火次数增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "N连发开火次数增加"
+          },
+          "attr_realname": "GPAttributeSetFireMode.SubFireCountPerShotAddPoint",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2267,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2267"
+      },
+      "2268": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2268_attr_name",
+            "LocalizedString": "霰弹单发弹片数增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "霰弹单发弹片数增加"
+          },
+          "attr_realname": "GPAttributeSetFireMode.ShotBulletsNumAddPoint",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2268,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2268"
+      },
+      "2269": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2269_attr_name",
+            "LocalizedString": "武器射速提升",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器射速提升"
+          },
+          "attr_realname": "GPAttributeSetFireMode.RPMAdjustRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2269,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2269"
+      },
+      "2270": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2270_attr_name",
+            "LocalizedString": "武器射速提升",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器射速提升"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.GunRPMRatioAdjust",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2270,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2270"
+      },
+      "2271": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2271_attr_name",
+            "LocalizedString": "火debuff伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "火debuff伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2271,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2271"
+      },
+      "2272": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2272_attr_name",
+            "LocalizedString": "爆炸debuff伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "爆炸debuff伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.BurningDebuffDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2272,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2272"
+      },
+      "2273": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2273_attr_name",
+            "LocalizedString": "召唤机甲技能充能速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "召唤机甲技能充能速度"
+          },
+          "attr_realname": "GPAttributeSetHumanSkill.SummonMechaSkillChargeSpeed",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2273,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2273"
+      },
+      "2274": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2274_attr_name",
+            "LocalizedString": "赛季技能充能速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "赛季技能充能速度"
+          },
+          "attr_realname": "GPAttributeSetHumanSkill.SeasonSkillChargeSpeed",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2274,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2274"
+      },
+      "2275": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2275_attr_name",
+            "LocalizedString": "角色近战武器攻击速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "角色近战武器攻击速度"
+          },
+          "attr_realname": "GPAttributeSetCharacterWeaponAdjust.MeleeAttackIntervalRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2275,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2275"
+      },
+      "2276": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2276_attr_name",
+            "LocalizedString": "近战武器攻击速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "近战武器攻击速度"
+          },
+          "attr_realname": "GPAttributeSetMelee.MeleeAttackIntervalRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2276,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2276"
+      },
+      "2277": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2277_attr_name",
+            "LocalizedString": "猎场个人弹药箱CD",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "猎场个人弹药箱CD"
+          },
+          "attr_realname": "GPAttributeSetInteractive.SelfInteractiveCDDec",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2277,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2277"
+      },
+      "2278": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2278_attr_name",
+            "LocalizedString": "猎场团队弹药箱CD",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "猎场团队弹药箱CD"
+          },
+          "attr_realname": "GPAttributeSetInteractive.TeamInteractiveCDDec",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2278,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2278"
+      },
+      "2279": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2279_attr_name",
+            "LocalizedString": "无限子弹",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "无限子弹"
+          },
+          "attr_realname": "GPAttributeSetWeaponNormalAmmo.HaveInfinityNormalAmmoAddPoint",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2279,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2279"
+      },
+      "2280": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2280_attr_name",
+            "LocalizedString": "动画播放速度",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "动画播放速度"
+          },
+          "attr_realname": "GPAttributeSetSpeed.AnimSpeedScale",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2280,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2280"
+      },
+      "2281": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2281_attr_name",
+            "LocalizedString": "毒Buff频率增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "毒Buff频率增加"
+          },
+          "attr_realname": "GPAttributeSetElement.CorossiveBuffPeriod",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2281,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2281"
+      },
+      "2282": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2282_attr_name",
+            "LocalizedString": "火Buff频率增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "火Buff频率增加"
+          },
+          "attr_realname": "GPAttributeSetElement.FireBuffPeriod",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2282,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2282"
+      },
+      "2283": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2283_attr_name",
+            "LocalizedString": "武器跑速修正",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器跑速修正"
+          },
+          "attr_realname": "GPAttributeSetWeaponMovement.WeaponSprintMovingScaleAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2283,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2283"
+      },
+      "2284": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2284_attr_name",
+            "LocalizedString": "感电Buff易伤效果增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "感电Buff易伤效果增加"
+          },
+          "attr_realname": "GPAttributeSetElement.ShockBuffDamageAdd",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2284,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2284"
+      },
+      "2285": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2285_attr_name",
+            "LocalizedString": "塔防—额外金钱\n",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "塔防—额外金钱\n"
+          },
+          "attr_realname": "GPAttributeSetTowerDefenseTech.ExtraCoin",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2285,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2285"
+      },
+      "2286": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2286_attr_name",
+            "LocalizedString": "拆除陷阱最小返还造价比率 0-1小数",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "拆除陷阱最小返还造价比率 0-1小数"
+          },
+          "attr_realname": "GPAttributeSetTowerDefenseTech.RecycleTowerBaseRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2286,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2286"
+      },
+      "2287": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2287_attr_name",
+            "LocalizedString": "单局前N次升级陷阱消耗降低",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "单局前N次升级陷阱消耗降低"
+          },
+          "attr_realname": "GPAttributeSetTowerDefenseTech.UpgradeTowerLevelLessCostTimes",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2287,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2287"
+      },
+      "2288": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2288_attr_name",
+            "LocalizedString": "前N次升级降低百分比",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "前N次升级降低百分比"
+          },
+          "attr_realname": "GPAttributeSetTowerDefenseTech.UpgradeTowerLevelLessCostRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2288,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2288"
+      },
+      "2289": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2289_attr_name",
+            "LocalizedString": "助攻金钱比例增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "助攻金钱比例增加"
+          },
+          "attr_realname": "GPAttributeSetTowerDefenseTech.AssistKillGoldAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2289,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2289"
+      },
+      "2290": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2290_attr_name",
+            "LocalizedString": "修理站基础修理数值提升,维修数值*(1+Ratio)",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "修理站基础修理数值提升,维修数值*(1+Ratio)"
+          },
+          "attr_realname": "GPAttributeSetTowerDefenseTech.RepairTowerBaseFixAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2290,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2290"
+      },
+      "2291": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2291_attr_name",
+            "LocalizedString": "修理站对要维修的陷阱额外维修生命值百分比 维修数值 + HpMax * Ratio",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "修理站对要维修的陷阱额外维修生命值百分比 维修数值 + HpMax * Ratio"
+          },
+          "attr_realname": "GPAttributeSetTowerDefenseTech.RepairTowerMaxHpRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2291,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2291"
+      },
+      "2292": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2292_attr_name",
+            "LocalizedString": "修理站增加每秒给所有玩家提供金币加成",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "修理站增加每秒给所有玩家提供金币加成"
+          },
+          "attr_realname": "GPAttributeSetTowerDefenseTech.RepairTowerAllPlayerExtraCoinAdd",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2292,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2292"
+      },
+      "2293": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2293_attr_name",
+            "LocalizedString": "陷阱数量限制增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "陷阱数量限制增加"
+          },
+          "attr_realname": "GPAttributeSetTowerDefenseTech.TowerPlaceLimitAdd",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2293,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2293"
+      },
+      "2294": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2294_attr_name",
+            "LocalizedString": "固定塔的攻击间隔(CD)",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "固定塔的攻击间隔(CD)"
+          },
+          "attr_realname": "GPAttributeSetTower.FixedAbilityCD",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2294,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2294"
+      },
+      "2295": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2295_attr_name",
+            "LocalizedString": "缓速效果",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "缓速效果"
+          },
+          "attr_realname": "GPAttributeSetTimeDilation.TimeDilationRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2295,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2295"
+      },
+      "2296": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2296_attr_name",
+            "LocalizedString": "特殊弹药开火扣弹数增加百分比",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "特殊弹药开火扣弹数增加百分比"
+          },
+          "attr_realname": "GPAttributeSetWeaponSpecialAmmo.WeaponSpecialAmmoCostAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2296,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2296"
+      },
+      "2297": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2297_attr_name",
+            "LocalizedString": "陷阱额外回血比例",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "陷阱额外回血比例"
+          },
+          "attr_realname": "GPAttributeSetTowerRecover.ExtraRecoverHpRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2297,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2297"
+      },
+      "2298": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2298_attr_name",
+            "LocalizedString": "武器技能充能消耗效率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器技能充能消耗效率"
+          },
+          "attr_realname": "GPAttributeSetHumanSkill.WeaponSkillDecreaseChargeRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2298,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2298"
+      },
+      "2299": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2299_attr_name",
+            "LocalizedString": "武器技能充能获取效率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "武器技能充能获取效率"
+          },
+          "attr_realname": "GPAttributeSetHumanSkill.WeaponSkillIncreaseChargeRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2299,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2299"
+      },
+      "2300": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2300_attr_name",
+            "LocalizedString": "技能充能消耗效率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "技能充能消耗效率"
+          },
+          "attr_realname": "GPAttributeSetHumanSkill.BattleSkillDecreaseChargeRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2300,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2300"
+      },
+      "2301": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2301_attr_name",
+            "LocalizedString": "技能充能获取效率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "技能充能获取效率"
+          },
+          "attr_realname": "GPAttributeSetHumanSkill.BattleSkillIncreaseChargeRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2301,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2301"
+      },
+      "2302": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2302_attr_name",
+            "LocalizedString": "实际最大生命值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "实际最大生命值"
+          },
+          "attr_realname": "GPAttributeSetHealth.ActualMaxHealth",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2302,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2302"
+      },
+      "2303": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2303_attr_name",
+            "LocalizedString": "实际最大护盾值",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "实际最大护盾值"
+          },
+          "attr_realname": "GPAttributeSetShield.ActualMaxShield",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2303,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2303"
+      },
+      "2304": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2304_attr_name",
+            "LocalizedString": "毒Buff上限层数增幅",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "毒Buff上限层数增幅"
+          },
+          "attr_realname": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2304,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2304"
+      },
+      "2305": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2305_attr_name",
+            "LocalizedString": "火Buff上限层数增幅",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "火Buff上限层数增幅"
+          },
+          "attr_realname": "GPAttributeSetElement.FireBuffMaxStackAdd",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2305,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2305"
+      },
+      "2306": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2306_attr_name",
+            "LocalizedString": "冰Buff上限层数增幅",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "冰Buff上限层数增幅"
+          },
+          "attr_realname": "GPAttributeSetElement.CryoBuffMaxStackAdd",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2306,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2306"
+      },
+      "2307": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2307_attr_name",
+            "LocalizedString": "电Buff上限层数增幅",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "电Buff上限层数增幅"
+          },
+          "attr_realname": "GPAttributeSetElement.ShockBuffMaxStackAdd",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2307,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2307"
+      },
+      "2308": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2308_attr_name",
+            "LocalizedString": "冰Buff频率增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "冰Buff频率增加"
+          },
+          "attr_realname": "GPAttributeSetElement.CryoBuffPeriod",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2308,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2308"
+      },
+      "2309": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2309_attr_name",
+            "LocalizedString": "电Buff频率增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "电Buff频率增加"
+          },
+          "attr_realname": "GPAttributeSetElement.ShockBuffPeriod",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2309,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2309"
+      },
+      "2310": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2310_attr_name",
+            "LocalizedString": "毒Buff上限层数增幅比例",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "毒Buff上限层数增幅比例"
+          },
+          "attr_realname": "GPAttributeSetElement.CorossiveBuffMaxStackAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2310,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2310"
+      },
+      "2311": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2311_attr_name",
+            "LocalizedString": "火Buff上限层数增幅比例",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "火Buff上限层数增幅比例"
+          },
+          "attr_realname": "GPAttributeSetElement.FireBuffMaxStackAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2311,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2311"
+      },
+      "2312": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2312_attr_name",
+            "LocalizedString": "冰Buff上限层数增幅比例",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "冰Buff上限层数增幅比例"
+          },
+          "attr_realname": "GPAttributeSetElement.CryoBuffMaxStackAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2312,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2312"
+      },
+      "2313": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2313_attr_name",
+            "LocalizedString": "电Buff上限层数增幅比例",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "电Buff上限层数增幅比例"
+          },
+          "attr_realname": "GPAttributeSetElement.ShockBuffMaxStackAddRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2313,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2313"
+      },
+      "2314": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2314_attr_name",
+            "LocalizedString": "毒Buff持续时间倍率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "毒Buff持续时间倍率"
+          },
+          "attr_realname": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2314,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2314"
+      },
+      "2315": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2315_attr_name",
+            "LocalizedString": "火Buff持续时间倍率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "火Buff持续时间倍率"
+          },
+          "attr_realname": "GPAttributeSetElement.FireBuffDurationRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2315,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2315"
+      },
+      "2316": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2316_attr_name",
+            "LocalizedString": "冰Buff持续时间倍率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "冰Buff持续时间倍率"
+          },
+          "attr_realname": "GPAttributeSetElement.CryoBuffDurationRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2316,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2316"
+      },
+      "2317": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2317_attr_name",
+            "LocalizedString": "电Buff持续时间倍率",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "电Buff持续时间倍率"
+          },
+          "attr_realname": "GPAttributeSetElement.ShockBuffDurationRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2317,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2317"
+      },
+      "2318": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2318_attr_name",
+            "LocalizedString": "毒debuff伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "毒debuff伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2318,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2318"
+      },
+      "2319": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2319_attr_name",
+            "LocalizedString": "冰debuff伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "冰debuff伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2319,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2319"
+      },
+      "2320": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2320_attr_name",
+            "LocalizedString": "电debuff伤害增加",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "电debuff伤害增加"
+          },
+          "attr_realname": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2320,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2320"
+      },
+      "2321": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2321_attr_name",
+            "LocalizedString": "夜影之逝专用近战攻击范围变大",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "夜影之逝专用近战攻击范围变大"
+          },
+          "attr_realname": "GPAttributeSetMelee.MeleeAttackDistanceScale",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2321,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2321"
+      },
+      "2322": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2322_attr_name",
+            "LocalizedString": "专用属性：火神炎帝炮塔跟踪",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "专用属性：火神炎帝炮塔跟踪"
+          },
+          "attr_realname": "GPAttributeSetFireMode.EnableTurretFireTrack",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2322,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2322"
+      },
+      "2323": {
+        "raw": {
+          "NumericalID": 0,
+          "attr_name": {
+            "Key": "2323_attr_name",
+            "LocalizedString": "专用属性：火神炎帝额外弹线",
+            "Namespace": "AttributeDescMapTable",
+            "SourceString": "专用属性：火神炎帝额外弹线"
+          },
+          "attr_realname": "GPAttributeSetFireMode.EnableSpecialGunFireLine",
+          "attr_str": "",
+          "description": {
+            "CultureInvariantString": null
+          },
+          "id": 2323,
+          "value_format": "",
+          "value_rate": 0
+        },
+        "row_name": "2323"
+      }
+    }
+  },
   "rows": {
     "lc": {
       "111970001": {
@@ -42619,12 +46352,19 @@
       }
     }
   },
-  "schema_version": 1,
+  "schema_version": 2,
   "sources": {
     "lc": {
-      "row_count": 3044,
-      "sha256": "dfc382ff06934157402ecaec9a8e9c5f9a3b1f88f6265918e5cd173dde0e0546",
-      "source_path": "Attributes/AutoGenerate/numerical_modifier_config.json"
+      "attribute_descriptions": {
+        "row_count": 180,
+        "sha256": "f4c7bae3871af545fdf4ecc4ceea2df7f498c5a5bfb24ec42a1e29c8703adc95",
+        "source_path": "DataTables/AttributeDescMapTable.json"
+      },
+      "modifiers": {
+        "row_count": 3044,
+        "sha256": "dfc382ff06934157402ecaec9a8e9c5f9a3b1f88f6265918e5cd173dde0e0546",
+        "source_path": "Attributes/AutoGenerate/numerical_modifier_config.json"
+      }
     }
   }
 }

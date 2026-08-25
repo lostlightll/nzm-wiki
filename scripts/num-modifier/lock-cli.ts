@@ -4,7 +4,7 @@ import {
   readNumModifierDataLock,
   refreshNumModifierDataLock,
 } from "./lock";
-import { writeMultiplierProviderRuntime } from "./project";
+import { writeModifierRuntimeProjections } from "./project";
 
 function printList(label: string, values: readonly string[]): void {
   if (values.length === 0) return;
@@ -22,10 +22,10 @@ function runRefresh(): void {
   const checked = checkNumModifierDataLock(result.lock);
   printList("Warnings", checked.warnings);
   if (!checked.ok) return fail(checked.issues);
-  writeMultiplierProviderRuntime();
+  writeModifierRuntimeProjections();
   printList("Changes", result.differences);
   console.log(
-    `Num Modifier Lock and runtime projection refreshed: ${result.lock.sources.lc.row_count} rows, sha256=${result.lock.sources.lc.sha256}, changed=${result.changed}`,
+    `Num Modifier Lock and runtime projections refreshed: ${result.lock.sources.lc.modifiers.row_count} rows, sha256=${result.lock.sources.lc.modifiers.sha256}, changed=${result.changed}`,
   );
 }
 
@@ -41,7 +41,9 @@ function runAudit(): void {
   printList("Warnings", result.warnings);
   if (!result.ok) return fail(result.issues);
   console.log(
-    `Num Modifier Lock matches the current LC source table; game tokens resolved ${result.resolvedTokenCount}/${result.tokenCount}.`,
+    `Num Modifier Lock matches both LC source tables; game tokens resolved ${result.resolvedTokenCount}/${result.tokenCount}; ` +
+      `attributes connected ${result.connectedAttributeNameCount}/${result.attributeNameCount}, missing ${result.missingAttributeNameCount}; ` +
+      `${result.unresolvedOperationRowCount} rows use operations without a global formula.`,
   );
 }
 

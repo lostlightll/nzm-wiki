@@ -1,15 +1,19 @@
 import fs from "node:fs";
 import path from "node:path";
 import { getAllOverlimitCards } from "@/lib/overlimit-cards";
-import { MODIFIER_TYPES, MULTIPLIER_PROVIDERS } from "@/lib/multiplier-data";
+import { MULTIPLIER_PROVIDERS } from "@/lib/multiplier-data";
 import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
 import type { ResolvedNumModifierRow } from "@/lib/num-modifier";
-import type { PerkEffectValue, PerkStatId } from "@/types";
-import { loadMultiplierProviderRegistry } from "./num-modifier/provider-registry";
+import type { PerkEffectValue } from "@/types";
+import { loadModifierProviderRegistry } from "./num-modifier/provider-registry";
 
 type Row = Record<string, unknown>;
+type EffectRecipient = "self" | "ally" | "enemy" | "damage-event" | "unknown";
 type EffectEvidence = {
-  numModifierRows?: readonly `lc:${string}`[];
+  applications?: readonly {
+    expression: { row: `lc:${string}`; field: "base" | "coefficient"; scale?: number };
+    context: { recipient: EffectRecipient };
+  }[];
 };
 
 const root = process.cwd();
@@ -30,7 +34,7 @@ const descriptions = loadRows(
   "DT_GPMGESkillDesConfig_BD.json",
 );
 const mgeConfigs = loadRows("DataTables", "MGE", "MGEConfig_Season.json");
-const sourceRegistry = loadMultiplierProviderRegistry();
+const sourceRegistry = loadModifierProviderRegistry();
 
 const providers = new Map(
   sourceRegistry.providers
@@ -48,29 +52,14 @@ for (const entry of [
   ...sourceRegistry.exclusions,
 ]) {
   if (entry.source.type === "perk" && entry.evidence) {
-    effectEvidenceByItem.set(entry.source.itemId, entry.evidence);
+    effectEvidenceByItem.set(entry.source.itemId, {
+      applications:
+        "applications" in entry
+          ? entry.applications
+          : entry.evidence.applications,
+    });
   }
 }
-const modifierTypeByAttribute = new Map(
-  MODIFIER_TYPES.flatMap((type) =>
-    type.attributeFields.map((attribute) => [attribute, type.id] as const),
-  ),
-);
-const statIdByAttribute = new Map<string, PerkStatId>([
-  ["GPAttributeSetCritical.CriticalRatio", "critical-rate"],
-  ["GPAttributeSetFireMode.RPMAdjustRatio", "fire-rate"],
-  ["GPAttributeSetCharacterWeaponAdjust.GunRPMRatioAdjust", "fire-rate"],
-  ["GPAttributeSetCharacterWeaponAdjust.ChargeSpeedAddRatio", "charge-efficiency"],
-  ["GPAttributeSetSkill.ChargeSpeedAddRatio", "charge-efficiency"],
-  ["GPAttributeSetToughness.ToughnessRatio", "toughness-efficiency"],
-  ["GPAttributeSetWeaponChangeClip.WeaponChangeClipSpeedRatio", "reload-speed"],
-  ["GPAttributeSetSpeed.SpeedScale", "movement-speed"],
-  ["GPAttributeSetCharacterWeaponAdjust.MeleeAttackIntervalRatio", "melee-attack-speed"],
-  ["GPAttributeSetExplosion.WeaponExplosionRadiusRatio", "explosion-radius"],
-  ["GPAttributeSetMelee.MeleeAttackDistanceScale", "skill-range"],
-  ["GPAttributeSetWeaponDamage.DistanceBeginAddRatio", "effective-range"],
-  ["GPAttributeSetWeaponDamage.DistanceEndAddRatio", "effective-range"],
-]);
 
 function localized(value: unknown): string {
   if (!value || typeof value !== "object") return "";
@@ -82,18 +71,18 @@ function parseModifierIds(value: unknown): string[] {
   return String(value ?? "").match(/\d+/g) ?? [];
 }
 
-function effectIdentityForRow(row: ResolvedNumModifierRow): string | undefined {
-  const attribute = row.attributeName;
-  if (
-    attribute === "GPAttributeSetBearDamageRatio.DamageBearRatio" &&
-    (row.baseValue > 0 || row.coefficient > 0)
-  ) {
-    return "stat:damage-reduction";
-  }
-  const statId = statIdByAttribute.get(attribute);
-  if (statId) return `stat:${statId}`;
-  const modifierTypeId = modifierTypeByAttribute.get(attribute);
-  return modifierTypeId ? `damage:${modifierTypeId}` : undefined;
+function effectIdentityForRow(
+  row: ResolvedNumModifierRow,
+  recipient?: EffectRecipient,
+): string | undefined {
+  const effect = NUM_MODIFIER_RESOLVER.resolveEffect(
+    { row: row.key, field: row.baseValue !== 0 ? "base" : "coefficient" },
+    recipient ? { recipient } : undefined,
+  );
+  const facet = effect.facets.find(
+    (candidate) => candidate.consumer === "damage" || candidate.consumer === "stat",
+  );
+  return facet ? `${facet.consumer}:${facet.id}` : undefined;
 }
 
 function effectIdentity(effect: PerkEffectValue): string {
@@ -136,12 +125,21 @@ for (const card of getAllOverlimitCards()) {
   const provider = providers.get(card.id);
   const runtimeProvider = runtimeProviders.get(card.id);
   const evidence = effectEvidenceByItem.get(card.id);
-  const evidenceRows = (evidence?.numModifierRows ?? []).map((key) =>
+  const evidenceApplications = evidence?.applications ?? [];
+  const evidenceRows = evidenceApplications.map((application) =>
     NUM_MODIFIER_RESOLVER.getRow(
-      key,
-      `data/guides/multiplier-providers.json#perk:${card.id}`,
+      application.expression.row,
+      `data/modifier-providers.json#perk:${card.id}`,
     ),
   );
+  const evidenceRecipientByRow = new Map(
+    evidenceApplications.map((application) => [
+      application.expression.row,
+      application.context.recipient,
+    ]),
+  );
+  const effectIdentityForCardRow = (row: ResolvedNumModifierRow) =>
+    effectIdentityForRow(row, evidenceRecipientByRow.get(row.key));
   const modifierIds = [...new Set([
     ...(NUM_MODIFIER_RESOLVER.getRowsById("lc", Number(passiveSkillId)).length > 0
       ? [passiveSkillId]
@@ -159,7 +157,7 @@ for (const card of getAllOverlimitCards()) {
 
   const expectedRowsByIdentity = new Map<string, ResolvedNumModifierRow[]>();
   for (const numericalRow of directRows) {
-    const identity = effectIdentityForRow(numericalRow);
+    const identity = effectIdentityForCardRow(numericalRow);
     if (!identity || nonZeroPercentages(numericalRow).length === 0) continue;
     const rows = expectedRowsByIdentity.get(identity) ?? [];
     rows.push(numericalRow);
@@ -216,13 +214,13 @@ for (const card of getAllOverlimitCards()) {
   if (configModifierIds.length === 0) continue;
   const expectedDamageIds = [...new Set(configModifierIds.filter((modifierId) =>
     NUM_MODIFIER_RESOLVER.getRowsById("lc", Number(modifierId)).some((entry) =>
-      effectIdentityForRow(entry)?.startsWith("damage:"),
+      effectIdentityForCardRow(entry)?.startsWith("damage:"),
     ),
   ))].sort();
   if (expectedDamageIds.length === 0) continue;
   const evidenceDamageIds = [...new Set(
     evidenceRows
-      .filter((row) => effectIdentityForRow(row)?.startsWith("damage:"))
+      .filter((row) => effectIdentityForCardRow(row)?.startsWith("damage:"))
       .map((row) => String(row.id)),
   )].sort();
   if (JSON.stringify(expectedDamageIds) !== JSON.stringify(evidenceDamageIds)) {
@@ -230,7 +228,7 @@ for (const card of getAllOverlimitCards()) {
   }
   const expectedTypes = [...new Set(configModifierIds.flatMap((modifierId) =>
     NUM_MODIFIER_RESOLVER.getRowsById("lc", Number(modifierId)).flatMap((entry) => {
-      const identity = effectIdentityForRow(entry);
+      const identity = effectIdentityForCardRow(entry);
       return identity?.startsWith("damage:") ? [identity.slice(7)] : [];
     }),
   ))].sort();

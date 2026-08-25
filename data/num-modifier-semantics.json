@@ -1,0 +1,1252 @@
+{
+  "schema_version": 1,
+  "operation_families": {
+    "B1": {
+      "model": "delta",
+      "direction": "same-sign"
+    },
+    "B2": {
+      "model": "unknown",
+      "direction": "unknown"
+    },
+    "B3": {
+      "model": "unknown",
+      "direction": "unknown"
+    },
+    "B4": {
+      "model": "unknown",
+      "direction": "unknown"
+    },
+    "B5": {
+      "model": "multiply",
+      "direction": "unknown"
+    },
+    "F": {
+      "model": "unknown",
+      "direction": "unknown"
+    },
+    "O": {
+      "model": "unknown",
+      "direction": "unknown"
+    }
+  },
+  "attribute_types": {
+    "game-mode-damage": {
+      "label": "游戏模式伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "game-mode",
+          "label": "游戏模式乘区",
+          "consumer": "damage"
+        }
+      }
+    },
+    "attack": {
+      "label": "攻击力倍率",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "independent-amplification",
+          "label": "独立增幅",
+          "consumer": "damage"
+        },
+        "unknown": {
+          "id": "independent-amplification",
+          "label": "独立增幅",
+          "consumer": "damage"
+        }
+      }
+    },
+    "element-damage": {
+      "label": "元素伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "element",
+          "label": "元素伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "element-resistance": {
+      "label": "元素伤害抗性",
+      "family": "defense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "element-damage-reduction",
+          "label": "元素伤害减免",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "element-vulnerability",
+          "label": "元素易伤",
+          "consumer": "damage"
+        }
+      }
+    },
+    "critical-damage": {
+      "label": "暴击伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "critical",
+          "label": "暴击伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "weakpoint-damage": {
+      "label": "弱点伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "weakness",
+          "label": "弱点伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "damage-resistance": {
+      "label": "伤害抗性",
+      "family": "defense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "damage-reduction",
+          "label": "伤害减免",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "vulnerability",
+          "label": "易伤",
+          "consumer": "damage"
+        }
+      }
+    },
+    "all-damage": {
+      "label": "全伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "all-damage",
+          "label": "全伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "weapon-damage": {
+      "label": "武器伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "weapon-damage",
+          "label": "武器伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "weapon-skill-damage": {
+      "label": "武器技能伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "skill-damage": {
+      "label": "非武器技能伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "skill-damage",
+          "label": "非武器技能伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "close-range-damage": {
+      "label": "近距离伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "close-range-damage",
+          "label": "近距离伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "long-range-damage": {
+      "label": "远距离伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "long-range-damage",
+          "label": "远距离伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "weapon-hit-damage": {
+      "label": "射击伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "weapon-hit-damage",
+          "label": "射击伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "weapon-explode-damage": {
+      "label": "爆炸伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "weapon-explode-damage",
+          "label": "爆炸伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "damage-correction": {
+      "label": "单次伤害修正",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "correction",
+          "label": "单次修正",
+          "consumer": "damage"
+        }
+      }
+    },
+    "toughness-damage": {
+      "label": "破韧伤害",
+      "family": "toughness",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "toughness-efficiency",
+          "label": "破韧效率",
+          "consumer": "stat"
+        }
+      }
+    },
+    "critical-rate": {
+      "label": "暴击率",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "critical-rate",
+          "label": "暴击率",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "critical-rate",
+          "label": "暴击率",
+          "consumer": "stat"
+        }
+      }
+    },
+    "movement-speed": {
+      "label": "移动速度",
+      "family": "mobility",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "movement-speed",
+          "label": "移动速度",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "slow",
+          "label": "减速",
+          "consumer": "stat"
+        }
+      }
+    },
+    "charge-efficiency": {
+      "label": "充能效率",
+      "family": "resource",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "charge-efficiency",
+          "label": "充能效率",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "charge-efficiency",
+          "label": "充能效率",
+          "consumer": "stat"
+        }
+      }
+    },
+    "fire-rate": {
+      "label": "射速",
+      "family": "weapon-handling",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "fire-rate",
+          "label": "射速",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "fire-rate",
+          "label": "射速",
+          "consumer": "stat"
+        }
+      }
+    },
+    "reload-speed": {
+      "label": "换弹速度",
+      "family": "weapon-handling",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "reload-speed",
+          "label": "换弹速度",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "reload-speed",
+          "label": "换弹速度",
+          "consumer": "stat"
+        }
+      }
+    },
+    "melee-attack-speed": {
+      "label": "近战攻击速度",
+      "family": "weapon-handling",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "melee-attack-speed",
+          "label": "近战攻击速度",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "melee-attack-speed",
+          "label": "近战攻击速度",
+          "consumer": "stat"
+        }
+      }
+    },
+    "explosion-radius": {
+      "label": "爆炸范围",
+      "family": "weapon-handling",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "explosion-radius",
+          "label": "爆炸范围",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "explosion-radius",
+          "label": "爆炸范围",
+          "consumer": "stat"
+        }
+      }
+    },
+    "skill-range": {
+      "label": "技能范围",
+      "family": "other",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "skill-range",
+          "label": "技能范围",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "skill-range",
+          "label": "技能范围",
+          "consumer": "stat"
+        }
+      }
+    },
+    "effective-range": {
+      "label": "有效射程",
+      "family": "weapon-handling",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "effective-range",
+          "label": "有效射程",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "effective-range",
+          "label": "有效射程",
+          "consumer": "stat"
+        }
+      }
+    }
+  },
+  "attributes": {
+    "": {
+      "status": "invalid",
+      "label": "空 AttributeName",
+      "reason": "正式服源数据异常，仅允许精确锁定的已知行。",
+      "rows": [
+        "lc:191201003_1_0"
+      ]
+    },
+    "GPAttributeSetAIHate.ExtraAIHateScale": {
+      "status": "known-unindexed",
+      "label": "仇恨值系数",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetAttack.Attack": {
+      "status": "indexed",
+      "attribute_type": "attack",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetBearDamageRatio.CloseRangeDamageBearRatio": {
+      "status": "known-unindexed",
+      "label": "受近距离伤害降低",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetBearDamageRatio.CorossiveDamageBearRatio": {
+      "status": "indexed",
+      "attribute_type": "element-resistance",
+      "scope": "target-stat"
+    },
+    "GPAttributeSetBearDamageRatio.CryoDamageBearRatio": {
+      "status": "indexed",
+      "attribute_type": "element-resistance",
+      "scope": "target-stat"
+    },
+    "GPAttributeSetBearDamageRatio.DamageBearRatio": {
+      "status": "indexed",
+      "attribute_type": "damage-resistance",
+      "scope": "target-stat"
+    },
+    "GPAttributeSetBearDamageRatio.DamageByEliteBearRatio": {
+      "status": "known-unindexed",
+      "label": "受到精英/首领敌人伤害",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetBearDamageRatio.ElementDamageBearRatio": {
+      "status": "indexed",
+      "attribute_type": "element-resistance",
+      "scope": "target-stat"
+    },
+    "GPAttributeSetBearDamageRatio.FireDamageBearRatio": {
+      "status": "indexed",
+      "attribute_type": "element-resistance",
+      "scope": "target-stat"
+    },
+    "GPAttributeSetBearDamageRatio.KineticDamageBearRatio": {
+      "status": "indexed",
+      "attribute_type": "element-resistance",
+      "scope": "target-stat"
+    },
+    "GPAttributeSetBearDamageRatio.ShockDamageBearRatio": {
+      "status": "indexed",
+      "attribute_type": "element-resistance",
+      "scope": "target-stat"
+    },
+    "GPAttributeSetBearDamageRatio.SpecialDamageBearRatio": {
+      "status": "known-unindexed",
+      "label": "特殊受伤害减免",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.ChangeClipTimeAdjust": {
+      "status": "known-unindexed",
+      "label": "角色全武器换弹速度提高",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.ChargeSpeedAddRatio": {
+      "status": "indexed",
+      "attribute_type": "charge-efficiency",
+      "scope": "weapon-stat"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.DistanceBeginAdjust": {
+      "status": "known-unindexed",
+      "label": "角色全武器有效射程增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.DistanceEndAdjust": {
+      "status": "known-unindexed",
+      "label": "角色全武器最大射程增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.EquipTimeAdjust": {
+      "status": "known-unindexed",
+      "label": "角色全武器切枪速度提高",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.GunRPMRatioAdjust": {
+      "status": "indexed",
+      "attribute_type": "fire-rate",
+      "scope": "weapon-stat"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.MeleeAttackIntervalRatio": {
+      "status": "indexed",
+      "attribute_type": "melee-attack-speed",
+      "scope": "weapon-stat"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.RecoilScale_HoriAddRatio": {
+      "status": "known-unindexed",
+      "label": "角色全武器水平稳定性",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.RecoilScale_VertiAddRatio": {
+      "status": "known-unindexed",
+      "label": "角色全武器垂直稳定性",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.SpreadAdjust": {
+      "status": "known-unindexed",
+      "label": "角色全武器武器准确度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.WeaponExplosionRadiusRatio": {
+      "status": "indexed",
+      "attribute_type": "explosion-radius",
+      "scope": "weapon-stat"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.ZoomTimeAdjust": {
+      "status": "known-unindexed",
+      "label": "角色全武器开镜速度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetCritical.CriticalDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "critical-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetCritical.CriticalRatio": {
+      "status": "indexed",
+      "attribute_type": "critical-rate",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetElement.CorossiveBuffDurationRatio": {
+      "status": "known-unindexed",
+      "label": "毒Buff持续时间倍率",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.CorossiveBuffMaxStackAdd": {
+      "status": "known-unindexed",
+      "label": "毒Buff上限层数增幅",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.CorossiveBuffPeriod": {
+      "status": "known-unindexed",
+      "label": "毒Buff频率增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.CryoBuffDurationRatio": {
+      "status": "known-unindexed",
+      "label": "冰Buff持续时间倍率",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.CryoBuffMaxStackAdd": {
+      "status": "known-unindexed",
+      "label": "冰Buff上限层数增幅",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.CryoBuffPeriod": {
+      "status": "known-unindexed",
+      "label": "冰Buff频率增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.ElementDebuffChanceAddRatio": {
+      "status": "known-unindexed",
+      "label": "元素debuff施加概率",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.FireBuffDurationRatio": {
+      "status": "known-unindexed",
+      "label": "火Buff持续时间倍率",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.FireBuffMaxStackAdd": {
+      "status": "known-unindexed",
+      "label": "火Buff上限层数增幅",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.FireBuffPeriod": {
+      "status": "known-unindexed",
+      "label": "火Buff频率增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.ShockBuffDamageAdd": {
+      "status": "known-unindexed",
+      "label": "感电Buff易伤效果增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.ShockBuffDurationRatio": {
+      "status": "known-unindexed",
+      "label": "电Buff持续时间倍率",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.ShockBuffMaxStackAdd": {
+      "status": "known-unindexed",
+      "label": "电Buff上限层数增幅",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetElement.ShockBuffPeriod": {
+      "status": "known-unindexed",
+      "label": "电Buff频率增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetEquip.EquipSpeedUPRatio": {
+      "status": "known-unindexed",
+      "label": "切枪速度提高",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetExplosion.WeaponExplosionRadiusRatio": {
+      "status": "indexed",
+      "attribute_type": "explosion-radius",
+      "scope": "weapon-stat"
+    },
+    "GPAttributeSetFireMode.EnableSpecialGunFireLine": {
+      "status": "known-unindexed",
+      "label": "专用属性：火神炎帝额外弹线",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetFireMode.EnableTurretFireTrack": {
+      "status": "known-unindexed",
+      "label": "专用属性：火神炎帝炮塔跟踪",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetFireMode.FireIntervalRatio": {
+      "status": "known-unindexed",
+      "label": "武器开火间隔倍率",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetFireMode.RPMAdjustRatio": {
+      "status": "indexed",
+      "attribute_type": "fire-rate",
+      "scope": "weapon-stat"
+    },
+    "GPAttributeSetFireMode.ShotBulletsNumAddPoint": {
+      "status": "known-unindexed",
+      "label": "霰弹单发弹片数增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetFlesh.FleshDamageBearRatio": {
+      "status": "known-unindexed",
+      "label": "肉质伤害减免",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetFlesh.FleshDamageRatio": {
+      "status": "known-unindexed",
+      "label": "肉质伤害",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.ActiveHealRatio": {
+      "status": "known-unindexed",
+      "label": "主动治疗效果增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.AllDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "all-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.BurningDebuffDamageRatio": {
+      "status": "known-unindexed",
+      "label": "爆炸debuff伤害增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.CloseRangeDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "close-range-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.CorossiveDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "element-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio": {
+      "status": "known-unindexed",
+      "label": "毒debuff伤害增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.CryoDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "element-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio": {
+      "status": "known-unindexed",
+      "label": "冰debuff伤害增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.DamageRatio": {
+      "status": "indexed",
+      "attribute_type": "game-mode-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.DamageRatioToElite": {
+      "status": "known-unindexed",
+      "label": "对精英/首领敌人伤害",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.DamageRatioToHealth": {
+      "status": "known-unindexed",
+      "label": "对生命值伤害增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.DamageRatioToNormal": {
+      "status": "known-unindexed",
+      "label": "对普通敌人伤害",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.DamageRatioToShield": {
+      "status": "known-unindexed",
+      "label": "对护盾值伤害增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.DebuffDamageRatio": {
+      "status": "known-unindexed",
+      "label": "异常状态伤害",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.ElementDamageRatio": {
+      "status": "known-unindexed",
+      "label": "元素伤害",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.EnergyMeleeSkillDamageRatio": {
+      "status": "known-unindexed",
+      "label": "充能近战技能伤害增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.FalldownDamageRatio": {
+      "status": "known-unindexed",
+      "label": "对倒地boss伤害加成",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.FireDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "element-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio": {
+      "status": "known-unindexed",
+      "label": "火debuff伤害增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.KineticDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "element-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.LongRangeDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "long-range-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.ShockDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "element-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio": {
+      "status": "known-unindexed",
+      "label": "电debuff伤害增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.SkillDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "skill-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.SpecialSkillDamageRatio": {
+      "status": "known-unindexed",
+      "label": "特色技能伤害增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "weakpoint-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.WeaponDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "weapon-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "weapon-explode-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "weapon-hit-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio": {
+      "status": "indexed",
+      "attribute_type": "weapon-skill-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetHardStraight.FallDownThreshold": {
+      "status": "known-unindexed",
+      "label": "BOSS韧性阈值",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetHardStraight.ImpulseAdditive": {
+      "status": "known-unindexed",
+      "label": "技能冲量点数增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetHealth.ActualMaxHealth": {
+      "status": "known-unindexed",
+      "label": "实际最大生命值",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetHealth.HealingRate": {
+      "status": "known-unindexed",
+      "label": "每秒生命恢复",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetHealth.Health": {
+      "status": "unmapped",
+      "label": "GPAttributeSetHealth.Health",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetHealth.MaxHealth": {
+      "status": "known-unindexed",
+      "label": "生命值上限",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetHealth.MinHealth": {
+      "status": "known-unindexed",
+      "label": "最小生命值",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetHumanSkill.SeasonSkillChargeSpeed": {
+      "status": "known-unindexed",
+      "label": "赛季技能充能速度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetHumanSkill.SummonMechaSkillChargeSpeed": {
+      "status": "known-unindexed",
+      "label": "召唤机甲技能充能速度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetHumanSkill.WeaponSkillChargeSpeed1": {
+      "status": "known-unindexed",
+      "label": "1号位武器主动技能充能速度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetHumanSkill.WeaponSkillChargeSpeed2": {
+      "status": "known-unindexed",
+      "label": "2号位武器主动技能充能速度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetHumanSkill.WeaponSkillDecreaseChargeRatio": {
+      "status": "known-unindexed",
+      "label": "武器技能充能消耗效率",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetInteractive.SelfInteractiveCDDec": {
+      "status": "known-unindexed",
+      "label": "猎场个人弹药箱CD",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetInteractive.TeamInteractiveCDDec": {
+      "status": "known-unindexed",
+      "label": "猎场团队弹药箱CD",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetMecha.MechaActionEnergyMax": {
+      "status": "known-unindexed",
+      "label": "机甲浮空能量最大值",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetMecha.MechaActionEnergyRecover": {
+      "status": "known-unindexed",
+      "label": "机甲浮空能量每秒恢复值",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetMecha.MechaDashEnergyMax": {
+      "status": "known-unindexed",
+      "label": "机甲猛冲（Dash）能量值",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetMecha.MechaDashEnergyRecovery": {
+      "status": "known-unindexed",
+      "label": "机甲猛冲（Dash）能量恢复速度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetMecha.MechaEnduranceEnergyCostBePiloted": {
+      "status": "known-unindexed",
+      "label": "机甲续航能量消耗速度(驾驶时)",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetMecha.MechaEnduranceEnergyCostStandBy": {
+      "status": "known-unindexed",
+      "label": "机甲续航能量消耗速度(待机时)",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetMecha.MechaEnduranceEnergyMax": {
+      "status": "known-unindexed",
+      "label": "机甲续航能量最大值",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetMechaSkill.ExpertSkillChargeSpeed": {
+      "status": "known-unindexed",
+      "label": "机甲大招充能速度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetMechaSkill.TacticSkillChargeSpeed": {
+      "status": "known-unindexed",
+      "label": "机甲战术技能充能速度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetMelee.MeleeAttackDistanceScale": {
+      "status": "indexed",
+      "attribute_type": "skill-range",
+      "scope": "weapon-stat"
+    },
+    "GPAttributeSetQuestExp.ExpAddRatio": {
+      "status": "unmapped",
+      "label": "GPAttributeSetQuestExp.ExpAddRatio",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetQuestGold.AllRewardMultiValue": {
+      "status": "unmapped",
+      "label": "GPAttributeSetQuestGold.AllRewardMultiValue",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetShield.ActualMaxShield": {
+      "status": "known-unindexed",
+      "label": "实际最大护盾值",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetShield.Growth": {
+      "status": "known-unindexed",
+      "label": "每秒护盾恢复",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetShield.HealingRecoveryInterval": {
+      "status": "known-unindexed",
+      "label": "生命恢复间隔时间",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetShield.MaxShield": {
+      "status": "known-unindexed",
+      "label": "护盾值上限",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetShield.RecoveryInterval": {
+      "status": "known-unindexed",
+      "label": "护盾恢复间隔时间",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetShield.Shield": {
+      "status": "unmapped",
+      "label": "GPAttributeSetShield.Shield",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetSkill.ChargeSpeedAddRatio": {
+      "status": "indexed",
+      "attribute_type": "charge-efficiency",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetSkill.ChargeTimeAdd": {
+      "status": "known-unindexed",
+      "label": "武器主动技能储存次数增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetSpeed.AnimSpeedScale": {
+      "status": "known-unindexed",
+      "label": "动画播放速度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetSpeed.RunSpeedScale": {
+      "status": "known-unindexed",
+      "label": "奔跑移动速度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetSpeed.SpeedScale": {
+      "status": "indexed",
+      "attribute_type": "movement-speed",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetTimeDilation.TimeDilationRatio": {
+      "status": "known-unindexed",
+      "label": "缓速效果",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetToughness.ToughnessBearRatio": {
+      "status": "known-unindexed",
+      "label": "破韧伤害减免",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetToughness.ToughnessRatio": {
+      "status": "indexed",
+      "attribute_type": "toughness-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetTower.FixedAbilityCD": {
+      "status": "known-unindexed",
+      "label": "固定塔的攻击间隔(CD)",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTower.PriorityMonsterType": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTower.PriorityMonsterType",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTower.ReduceAbilityCDPercent": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTower.ReduceAbilityCDPercent",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTowerDefenseTech.AssistKillGoldAddRatio": {
+      "status": "known-unindexed",
+      "label": "助攻金钱比例增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTowerDefenseTech.BurnEnemyExplodeDamageToFriendly": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTowerDefenseTech.BurnEnemyExplodeDamageToFriendly",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTowerDefenseTech.DestroyedTrapRefundCoinTimes": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTowerDefenseTech.DestroyedTrapRefundCoinTimes",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTowerDefenseTech.ExtraCoin": {
+      "status": "known-unindexed",
+      "label": "塔防—额外金钱",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTowerDefenseTech.KillCoinMultiplier": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTowerDefenseTech.KillCoinMultiplier",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTowerDefenseTech.PlaceTowerCostModifyRatio": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTowerDefenseTech.PlaceTowerCostModifyRatio",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTowerDefenseTech.RecycleTowerBaseRatio": {
+      "status": "known-unindexed",
+      "label": "拆除陷阱最小返还造价比率 0-1小数",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTowerDefenseTech.RepairTowerAllPlayerExtraCoinAdd": {
+      "status": "known-unindexed",
+      "label": "修理站增加每秒给所有玩家提供金币加成",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTowerDefenseTech.RepairTowerBaseFixAddRatio": {
+      "status": "known-unindexed",
+      "label": "修理站基础修理数值提升,维修数值*(1+Ratio)",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTowerDefenseTech.RepairTowerEnableBuff": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTowerDefenseTech.RepairTowerEnableBuff",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTowerDefenseTech.StormEyeAddAttactConnectTime": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTowerDefenseTech.StormEyeAddAttactConnectTime",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTowerDefenseTech.TowerPlaceLimitAdd": {
+      "status": "known-unindexed",
+      "label": "陷阱数量限制增加",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTowerDefenseTech.UpgradeTowerLevelLessCostRatio": {
+      "status": "known-unindexed",
+      "label": "前N次升级降低百分比",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTowerDefenseTech.UpgradeTowerLevelLessCostTimes": {
+      "status": "known-unindexed",
+      "label": "单局前N次升级陷阱消耗降低",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTowerDefenseTech.UpgradeTowerLevelLessCostValue": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTowerDefenseTech.UpgradeTowerLevelLessCostValue",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTowerDefenseTech.WaterCannonDrivingAmmoAdd": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTowerDefenseTech.WaterCannonDrivingAmmoAdd",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTowerRecover.ExtraRecoverHpRatio": {
+      "status": "known-unindexed",
+      "label": "陷阱额外回血比例",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTowerRecover.FixChargeRecoverTime": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTowerRecover.FixChargeRecoverTime",
+      "reason": "AttributeDescMapTable 缺少该属性，语义尚未审定。"
+    },
+    "GPAttributeSetTrajectory.RecoilScale_HoriAddRatio": {
+      "status": "known-unindexed",
+      "label": "武器水平稳定性",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTrajectory.RecoilScale_VertiAddRatio": {
+      "status": "known-unindexed",
+      "label": "武器垂直稳定性",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetTrajectory.SpreadAdjust": {
+      "status": "known-unindexed",
+      "label": "武器准确度",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetWeaponChangeClip.WeaponChangeClipSpeedRatio": {
+      "status": "indexed",
+      "attribute_type": "reload-speed",
+      "scope": "weapon-stat"
+    },
+    "GPAttributeSetWeaponChangeclip.WeaponChangeClipSpeedRatio": {
+      "status": "known-unindexed",
+      "label": "武器换弹速度提高",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetWeaponDamage.DistanceBeginAddRatio": {
+      "status": "indexed",
+      "attribute_type": "effective-range",
+      "scope": "weapon-stat"
+    },
+    "GPAttributeSetWeaponDamage.DistanceEndAddRatio": {
+      "status": "indexed",
+      "attribute_type": "effective-range",
+      "scope": "weapon-stat"
+    },
+    "GPAttributeSetWeaponMovement.WeaponMovingScaleAddRatio": {
+      "status": "known-unindexed",
+      "label": "武器移速修正",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetWeaponMovement.WeaponSprintMovingScaleAddRatio": {
+      "status": "known-unindexed",
+      "label": "武器跑速修正",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetWeaponNormalAmmo.ChangeClipAmmoCountAddPoint": {
+      "status": "known-unindexed",
+      "label": "换弹补充弹药数加成",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetWeaponNormalAmmo.ClipAmmoAddPoint": {
+      "status": "known-unindexed",
+      "label": "主弹夹弹量上限加成值",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetWeaponNormalAmmo.ClipAmmoAddRatio": {
+      "status": "known-unindexed",
+      "label": "主弹夹弹量上限加成系数",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetWeaponNormalAmmo.WeaponAmmoCostAddPoint": {
+      "status": "known-unindexed",
+      "label": "开火扣弹数加成值",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetWeaponNormalAmmo.WeaponAmmoCostAddRatio": {
+      "status": "known-unindexed",
+      "label": "开火扣弹数修正加成系数",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "GPAttributeSetWeaponSpecialAmmo.WeaponSpecialAmmoCostAddRatio": {
+      "status": "known-unindexed",
+      "label": "特殊弹药开火扣弹数增加百分比",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "Numerical.ExecutionCtx.ExecutionImpulseRatio": {
+      "status": "known-unindexed",
+      "label": "冲量单次修正系数",
+      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+    },
+    "Numerical.ExecutionCtx.ExecutionRatio": {
+      "status": "indexed",
+      "attribute_type": "damage-correction",
+      "scope": "damage-event"
+    },
+    "Numerical.ExecutionCtx.ExecutionToughnessRatio": {
+      "status": "indexed",
+      "attribute_type": "toughness-damage",
+      "scope": "damage-event"
+    }
+  },
+  "reviewed_semantics": {
+    "lc:111031014_1_0": {
+      "expected": {
+        "attribute_name": "Numerical.ExecutionCtx.ExecutionRatio",
+        "operation": "B2",
+        "level": 1,
+        "base": 6,
+        "coefficient": 0
+      },
+      "model": "execution",
+      "direction": "increase",
+      "facet_ids": [
+        "correction"
+      ],
+      "recipient": "damage-event",
+      "factor_base": 1,
+      "reason": "独弹强化实测为 1 + 6 = 7 倍，仅适用于此精确行。"
+    }
+  }
+}

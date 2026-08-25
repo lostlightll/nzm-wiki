@@ -17,9 +17,7 @@ num_modifier_values:
     field: base
     scale: 50
 effect_values:
-  - kind: damage
-    modifierTypeId: all-damage
-    label: "全伤害"
+  - label: "全伤害"
     stages:
       - condition: "每1%移动速度"
         value:
@@ -29,9 +27,7 @@ effect_values:
         value:
           ref: all-damage-max
           format: signed-percent
-  - kind: stat
-    statId: movement-speed
-    label: "移动速度"
+  - label: "移动速度"
     stages:
       - condition: "每次暴击"
         value:

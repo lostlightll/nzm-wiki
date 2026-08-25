@@ -11,7 +11,11 @@ import {
 import type { NumModifierDataLock } from "@/lib/num-modifier-data-lock";
 
 test("locks the complete LC modifier table", () => {
-  assert.equal(NUM_MODIFIER_LOCK.sources.lc.row_count, 3044);
+  assert.equal(NUM_MODIFIER_LOCK.sources.lc.modifiers.row_count, 3044);
+  assert.equal(
+    NUM_MODIFIER_LOCK.sources.lc.attribute_descriptions.row_count,
+    180,
+  );
   assert.equal(Object.keys(NUM_MODIFIER_LOCK.rows.lc).length, 3044);
   assert.deepEqual(
     NUM_MODIFIER_RESOLVER.diagnostics.map((item) => item.code).sort(),
@@ -27,6 +31,51 @@ test("uses exact row names and retains multiple rows for one modifier ID", () =>
   );
   assert.equal(rows[0].attributeName, "GPAttributeSetCritical.CriticalRatio");
   assert.equal(rows[1].attributeName, "GPAttributeSetCritical.CriticalDamageRatio");
+});
+
+test("locks AttributeDescMapTable and resolves canonical attribute semantics", () => {
+  const attribute = NUM_MODIFIER_RESOLVER.describeAttribute(
+    "GPAttributeSetCritical.CriticalRatio",
+  );
+  assert.equal(attribute.typeId, "critical-rate");
+  assert.equal(attribute.label, "暴击率");
+  assert.equal(attribute.disposition, "indexed");
+  assert.equal(attribute.descriptor?.attr_realname, attribute.attributeName);
+});
+
+test("resolves direction, facets, scopes, and reviewed row semantics", () => {
+  const toughness = NUM_MODIFIER_RESOLVER.resolveEffect({
+    row: "lc:111010083_1_0",
+    field: "base",
+  });
+  assert.equal(toughness.value.value, 0.125);
+  assert.equal(toughness.direction, "increase");
+  assert.deepEqual(toughness.facets.map((facet) => facet.id), [
+    "toughness-efficiency",
+  ]);
+
+  const slow = NUM_MODIFIER_RESOLVER.resolveEffect(
+    { row: "lc:100200001_1_0", field: "base" },
+    { recipient: "enemy" },
+  );
+  assert.equal(slow.direction, "decrease");
+  assert.deepEqual(slow.facets.map((facet) => facet.id), ["slow"]);
+
+  const unknown = NUM_MODIFIER_RESOLVER.resolveEffect(
+    { row: "lc:100000002_1_0", field: "base" },
+    { recipient: "enemy" },
+  );
+  assert.equal(unknown.operation.model, "unknown");
+  assert.equal(unknown.direction, "unknown");
+  assert.deepEqual(unknown.facets, []);
+
+  const slug = NUM_MODIFIER_RESOLVER.resolveEffect(
+    { row: "lc:111031014_1_0", field: "base" },
+    { recipient: "damage-event" },
+  );
+  assert.equal(slug.reviewed, true);
+  assert.equal(slug.factor, 7);
+  assert.deepEqual(slug.facets.map((facet) => facet.id), ["correction"]);
 });
 
 test("uses row_name as the authoritative modifier identity", () => {
@@ -57,6 +106,14 @@ test("resolves base, coefficient and scaled percentages", () => {
       "signed-percent",
     ).text,
     "+32%",
+  );
+  assert.throws(
+    () =>
+      NUM_MODIFIER_RESOLVER.resolveValue(
+        { row: "lc:111010062_1_0", field: "coefficient", scale: -1 },
+        "percent",
+      ),
+    /INVALID_EXPRESSION/,
   );
 });
 
@@ -141,7 +198,10 @@ test("invalid value fields and missing or ambiguous game tokens fail closed", ()
     sources: {
       lc: {
         ...NUM_MODIFIER_LOCK.sources.lc,
-        row_count: NUM_MODIFIER_LOCK.sources.lc.row_count + 1,
+        modifiers: {
+          ...NUM_MODIFIER_LOCK.sources.lc.modifiers,
+          row_count: NUM_MODIFIER_LOCK.sources.lc.modifiers.row_count + 1,
+        },
       },
     },
     rows: {

@@ -17,9 +17,7 @@ num_modifier_values:
     field: base
     scale: 7
 effect_values:
-  - kind: damage
-    modifierTypeId: weapon-hit-damage
-    label: "射击直击伤害"
+  - label: "射击直击伤害"
     stages:
       - condition: "每层"
         value:
@@ -29,9 +27,7 @@ effect_values:
         value:
           ref: weapon-hit-damage-max
           format: signed-percent
-  - kind: stat
-    statId: fire-rate
-    label: "射速"
+  - label: "射速"
     stages:
       - condition: "每层"
         value:

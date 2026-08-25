@@ -12,7 +12,8 @@ import {
 import { useMemo, useState } from "react";
 import {
   DAMAGE_CHANNEL_MATRIX,
-  type DamageChannel,
+  MODIFIER_TYPES,
+  type ModifierType,
   type DamageChannelGroup,
   type DamageChannelStatus,
 } from "@/lib/multiplier-data";
@@ -104,7 +105,7 @@ function AttributeFieldName({ name }: { name: string }) {
   );
 }
 
-function ChannelDetail({ channel }: { channel: DamageChannel }) {
+function ChannelDetail({ channel }: { channel: ModifierType }) {
   const appliesCount = channel.effects.filter(
     ({ status }) => status !== "none",
   ).length;
@@ -166,7 +167,7 @@ function DesktopMatrix({
   selectedChannelId,
   onSelectChannel,
 }: {
-  channels: readonly DamageChannel[];
+  channels: readonly ModifierType[];
   selectedChannelId: string;
   onSelectChannel: (channelId: string) => void;
 }) {
@@ -246,7 +247,7 @@ function MobileMatrix({
   selectedChannelId,
   onSelectChannel,
 }: {
-  channels: readonly DamageChannel[];
+  channels: readonly ModifierType[];
   selectedChannelId: string;
   onSelectChannel: (channelId: string) => void;
 }) {
@@ -326,13 +327,13 @@ function MobileMatrix({
 export function DamageChannelMatrix() {
   const [groupFilter, setGroupFilter] = useState<GroupFilter>("all");
   const [selectedChannelId, setSelectedChannelId] = useState(
-    DAMAGE_CHANNEL_MATRIX.channels[0].id,
+    MODIFIER_TYPES[0].id,
   );
   const visibleChannels = useMemo(
     () =>
       groupFilter === "all"
-        ? DAMAGE_CHANNEL_MATRIX.channels
-        : DAMAGE_CHANNEL_MATRIX.channels.filter(
+        ? MODIFIER_TYPES
+        : MODIFIER_TYPES.filter(
             ({ group }) => group === groupFilter,
           ),
     [groupFilter],
@@ -343,7 +344,7 @@ export function DamageChannelMatrix() {
 
   const selectGroup = (group: GroupFilter) => {
     setGroupFilter(group);
-    const firstChannel = DAMAGE_CHANNEL_MATRIX.channels.find(
+    const firstChannel = MODIFIER_TYPES.find(
       ({ group: channelGroup }) => group === "all" || channelGroup === group,
     );
     if (firstChannel) {

@@ -6,9 +6,10 @@ import matter from "gray-matter";
 import statusEffects from "../../data/status-effects.json";
 import { getAllPerks } from "../../lib/perks";
 import { createNumModifierResolver } from "../../lib/num-modifier";
+import { parseNumModifierSemantics } from "../../lib/num-modifier-semantics";
 import { checkNumModifierDataLock, readNumModifierDataLock } from "./lock";
-import { checkMultiplierProviderRuntime } from "./project";
-import { loadMultiplierProviderRegistry } from "./provider-registry";
+import { checkModifierRuntimeProjections } from "./project";
+import { loadModifierProviderRegistry } from "./provider-registry";
 
 const root = process.cwd();
 const errors: string[] = [];
@@ -31,6 +32,7 @@ function checkStaticBoundaries(): void {
     .flatMap((directory) => walkFiles(path.join(root, directory)))
     .filter((filePath) => /\.(?:json|mdx?|[cm]?[jt]sx?)$/.test(filePath));
   const rawSourcePath = "Attributes/AutoGenerate/numerical_modifier_config.json";
+  const rawAttributeDescriptionPath = "DataTables/AttributeDescMapTable.json";
   const rawSourceAllowlist = new Set([
     path.join(root, "data", "num-modifier-lock.json"),
     path.join(root, "scripts", "num-modifier", "lock.ts"),
@@ -49,6 +51,20 @@ function checkStaticBoundaries(): void {
         `${path.relative(root, filePath)} directly references the raw Num Modifier table`,
       );
     }
+    if (
+      source.includes(rawAttributeDescriptionPath) &&
+      !rawSourceAllowlist.has(filePath)
+    ) {
+      addError(
+        `${path.relative(root, filePath)} directly references AttributeDescMapTable`,
+      );
+    }
+    if (
+      source.includes("data/guides/multiplier-providers.json") &&
+      !filePath.endsWith("migrate-provider-registry.ts")
+    ) {
+      addError(`${path.relative(root, filePath)} references the retired provider registry`);
+    }
     if (directLockImport.test(source) && !directLockAllowlist.has(filePath)) {
       addError(
         `${path.relative(root, filePath)} directly imports num-modifier-lock.json`,
@@ -64,6 +80,7 @@ function checkPerkConsumers(): void {
   let referencedStages = 0;
   let literalStages = 0;
   let legacyStages = 0;
+  let manualSemanticFields = 0;
 
   for (const filePath of walkFiles(path.join(root, "data", "perks")).filter(
     (candidate) => candidate.endsWith(".mdx"),
@@ -72,6 +89,13 @@ function checkPerkConsumers(): void {
     for (const effect of Array.isArray(data.effect_values)
       ? (data.effect_values as Array<Record<string, unknown>>)
       : []) {
+      if (
+        Object.hasOwn(effect, "kind") ||
+        Object.hasOwn(effect, "statId") ||
+        Object.hasOwn(effect, "modifierTypeId")
+      ) {
+        manualSemanticFields += 1;
+      }
       let hasNumReference = false;
       for (const stage of Array.isArray(effect.stages)
         ? (effect.stages as Array<Record<string, unknown>>)
@@ -98,6 +122,9 @@ function checkPerkConsumers(): void {
 
   if (legacyStages > 0) {
     addError(`${legacyStages} perk effect stages still use legacy string values`);
+  }
+  if (manualSemanticFields > 0) {
+    addError(`${manualSemanticFields} perk effects still copy semantic classification fields`);
   }
   if (referencedEffects !== 96) {
     addError(`expected 96 Num-derived perk effect_values, found ${referencedEffects}`);
@@ -157,20 +184,94 @@ function checkStatusEffects(): void {
 
 function run(): void {
   const lock = readNumModifierDataLock();
+  const semantics = parseNumModifierSemantics(
+    JSON.parse(
+      fs.readFileSync(path.join(root, "data", "num-modifier-semantics.json"), "utf8"),
+    ),
+  );
   const lockCheck = checkNumModifierDataLock(lock);
   errors.push(...lockCheck.issues);
-  const resolver = createNumModifierResolver(lock);
-  const registry = loadMultiplierProviderRegistry();
+  const resolver = createNumModifierResolver(lock, semantics);
+  const registry = loadModifierProviderRegistry();
 
-  for (const entry of [...registry.providers, ...registry.exclusions]) {
-    for (const key of entry.evidence?.numModifierRows ?? []) {
-      resolver.getRow(
-        key,
-        `data/guides/multiplier-providers.json#${entry.id}`,
+  const lockedAttributeNames = new Set(
+    Object.values(lock.rows.lc).map((row) => String(row.raw.AttributeName ?? "")),
+  );
+  for (const attributeName of lockedAttributeNames) {
+    if (!Object.hasOwn(semantics.attributes, attributeName)) {
+      addError(`attribute ${attributeName || "<empty>"} has no semantic disposition`);
+    }
+  }
+  const descriptorNames = new Set(
+    Object.values(lock.attribute_descriptions.lc).map((row) =>
+      String(row.raw.attr_realname ?? ""),
+    ),
+  );
+  const joined = [...lockedAttributeNames].filter(
+    (attributeName) => attributeName && descriptorNames.has(attributeName),
+  ).length;
+  const missing = [...lockedAttributeNames].filter(
+    (attributeName) => attributeName && !descriptorNames.has(attributeName),
+  ).length;
+  if (lockedAttributeNames.size !== 155 || joined !== 138 || missing !== 16) {
+    addError(
+      `attribute connection baseline changed: total=${lockedAttributeNames.size}, joined=${joined}, missing=${missing}`,
+    );
+  }
+
+  for (const entry of registry.providers) {
+    for (const [index, application] of (entry.applications ?? []).entries()) {
+      resolver.resolveEffect(
+        application.expression,
+        application.context,
+        `data/modifier-providers.json#${entry.id}.applications[${index}]`,
       );
     }
   }
-  errors.push(...checkMultiplierProviderRuntime());
+  for (const entry of registry.exclusions) {
+    for (const [index, application] of (entry.evidence?.applications ?? []).entries()) {
+      resolver.resolveEffect(
+        application.expression,
+        application.context,
+        `data/modifier-providers.json#${entry.id}.evidence.applications[${index}]`,
+      );
+    }
+  }
+  const samples = [
+    ["lc:111010083_1_0", "base", "toughness-efficiency", "increase"],
+    ["lc:111010076_1_0", "coefficient", "critical-rate", "increase"],
+    ["lc:100200001_1_0", "base", "slow", "decrease"],
+    ["lc:100300001_1_0", "base", "vulnerability", "decrease"],
+    ["lc:110003101_1_1", "base", "damage-reduction", "increase"],
+  ] as const;
+  for (const [row, field, facetId, direction] of samples) {
+    const effect = resolver.resolveEffect(
+      { row, field },
+      { recipient: facetId === "slow" || facetId === "vulnerability" ? "enemy" : "self" },
+      `semantic-sample:${row}`,
+    );
+    if (
+      effect.direction !== direction ||
+      !effect.facets.some((facet) => facet.id === facetId)
+    ) {
+      addError(`${row} does not resolve to ${facetId}:${direction}`);
+    }
+  }
+  const unknownOverride = resolver.resolveEffect(
+    { row: "lc:100000002_1_0", field: "base" },
+    { recipient: "enemy" },
+  );
+  if (unknownOverride.direction !== "unknown" || unknownOverride.facets.length > 0) {
+    addError("lc:100000002_1_0 must remain directionally unknown");
+  }
+  const slug = resolver.resolveEffect(
+    { row: "lc:111031014_1_0", field: "base" },
+    { recipient: "damage-event" },
+  );
+  if (!slug.reviewed || slug.factor !== 7 || slug.facets[0]?.id !== "correction") {
+    addError("independent slug B2 reviewed semantics drifted");
+  }
+  errors.push(...checkModifierRuntimeProjections());
   checkPerkConsumers();
   checkStatusEffects();
   checkStaticBoundaries();
@@ -181,7 +282,8 @@ function run(): void {
     );
   }
   console.log(
-    `Num Modifier V2 check passed: ${lock.sources.lc.row_count} locked rows, ` +
+    `Num Modifier V2 check passed: ${lock.sources.lc.modifiers.row_count} locked rows, ` +
+      `${lock.sources.lc.attribute_descriptions.row_count} attribute descriptions, ` +
       `${registry.providers.length} providers, ${registry.exclusions.length} exclusions.`,
   );
 }

@@ -3,6 +3,14 @@ import {
   type NumModifierDataLock,
   type NumModifierMode,
 } from "@/lib/num-modifier-data-lock";
+import {
+  parseNumModifierSemantics,
+  type ModifierEffectDirection,
+  type ModifierFacet,
+  type ModifierOperationModel,
+  type ModifierRecipient,
+  type NumModifierSemantics,
+} from "@/lib/num-modifier-semantics";
 
 export type NumModifierRowKey = `${NumModifierMode}:${string}`;
 export type NumModifierValueField = "base" | "coefficient";
@@ -43,6 +51,35 @@ export type ResolvedNumModifierValue = {
   text: string;
 };
 
+export type ResolvedAttribute = {
+  attributeName: string;
+  typeId?: string;
+  label: string;
+  family?: string;
+  quantity?: string;
+  scope?: string;
+  disposition: "indexed" | "known-unindexed" | "unmapped" | "invalid";
+  descriptor?: Readonly<Record<string, unknown>>;
+};
+
+export type ModifierEffectContext = {
+  recipient?: ModifierRecipient;
+};
+
+export type ResolvedModifierEffect = {
+  value: ResolvedNumModifierValue;
+  attribute: ResolvedAttribute;
+  operation: {
+    code: string;
+    model: ModifierOperationModel;
+  };
+  direction: ModifierEffectDirection;
+  context: { recipient: ModifierRecipient };
+  facets: readonly ModifierFacet[];
+  factor?: number;
+  reviewed: boolean;
+};
+
 export type GameModifierTokenResolution = {
   text: string;
   unresolvedTokens: readonly string[];
@@ -61,7 +98,8 @@ export type NumModifierErrorCode =
   | "INVALID_ROW"
   | "MISSING_ROW"
   | "INVALID_EXPRESSION"
-  | "INVALID_TEMPLATE";
+  | "INVALID_TEMPLATE"
+  | "INVALID_SEMANTICS";
 
 export class NumModifierError extends Error {
   readonly code: NumModifierErrorCode;
@@ -98,6 +136,15 @@ export type NumModifierResolver = {
     description: string,
     referencePath?: string,
   ): GameModifierTokenResolution;
+  describeAttribute(
+    attributeName: string,
+    referencePath?: string,
+  ): ResolvedAttribute;
+  resolveEffect(
+    expression: NumModifierValueExpression,
+    context?: ModifierEffectContext,
+    referencePath?: string,
+  ): ResolvedModifierEffect;
   diagnostics: readonly NumModifierDiagnostic[];
 };
 
@@ -227,11 +274,33 @@ function formatGameModifierValue(
 
 export function createNumModifierResolver(
   input: NumModifierDataLock,
+  semanticInput?: NumModifierSemantics,
 ): NumModifierResolver {
   const lock = parseNumModifierDataLock(input);
+  const semantics = semanticInput
+    ? parseNumModifierSemantics(semanticInput)
+    : undefined;
   const rows = new Map<NumModifierRowKey, ResolvedNumModifierRow>();
   const rowsById = new Map<string, ResolvedNumModifierRow[]>();
   const diagnostics: NumModifierDiagnostic[] = [];
+  const descriptors = new Map<string, Readonly<Record<string, unknown>>>();
+
+  for (const lockedRow of Object.values(lock.attribute_descriptions.lc)) {
+    const attributeName = lockedRow.raw.attr_realname;
+    if (typeof attributeName !== "string" || attributeName.trim() === "") {
+      throw new NumModifierError(
+        "INVALID_ROW",
+        `attribute description ${lockedRow.row_name} has invalid attr_realname`,
+      );
+    }
+    if (descriptors.has(attributeName)) {
+      throw new NumModifierError(
+        "INVALID_ROW",
+        `attribute description duplicates attr_realname ${attributeName}`,
+      );
+    }
+    descriptors.set(attributeName, Object.freeze({ ...lockedRow.raw }));
+  }
 
   for (const [rowName, lockedRow] of Object.entries(lock.rows.lc)) {
     const key = `lc:${rowName}` as NumModifierRowKey;
@@ -312,16 +381,205 @@ export function createNumModifierResolver(
       );
     }
     const scale = expression.scale ?? 1;
-    if (!Number.isFinite(scale) || scale === 0) {
+    if (!Number.isFinite(scale) || scale <= 0) {
       throw new NumModifierError(
         "INVALID_EXPRESSION",
         `${expression.row} uses invalid scale ${String(scale)}`,
         referencePath,
       );
     }
+    if (
+      semantics &&
+      (format === "percent" || format === "signed-percent")
+    ) {
+      const attribute = describeAttribute(row.attributeName, referencePath);
+      if (
+        attribute.quantity &&
+        attribute.quantity !== "ratio" &&
+        attribute.quantity !== "rate" &&
+        attribute.quantity !== "opaque"
+      ) {
+        throw new NumModifierError(
+          "INVALID_EXPRESSION",
+          `${expression.row} quantity ${attribute.quantity} is incompatible with ${format}`,
+          referencePath,
+        );
+      }
+    }
     const source = expression.field === "base" ? row.baseValue : row.coefficient;
     const value = source * scale;
     return Object.freeze({ row, value, text: formatNumModifierValue(value, format) });
+  };
+
+  const localizedLabel = (value: unknown): string | undefined => {
+    if (!value || typeof value !== "object" || Array.isArray(value)) {
+      return undefined;
+    }
+    const record = value as Readonly<Record<string, unknown>>;
+    for (const key of ["LocalizedString", "SourceString"] as const) {
+      const candidate = record[key];
+      if (typeof candidate === "string" && candidate.trim()) {
+        return candidate.trim();
+      }
+    }
+    return undefined;
+  };
+
+  const requireSemantics = (referencePath?: string): NumModifierSemantics => {
+    if (!semantics) {
+      throw new NumModifierError(
+        "INVALID_SEMANTICS",
+        "resolver was created without the semantic catalog",
+        referencePath,
+      );
+    }
+    return semantics;
+  };
+
+  const describeAttribute = (
+    attributeName: string,
+    referencePath?: string,
+  ): ResolvedAttribute => {
+    const catalog = requireSemantics(referencePath);
+    const entry = catalog.attributes[attributeName];
+    if (!entry) {
+      throw new NumModifierError(
+        "INVALID_SEMANTICS",
+        `attribute ${attributeName || "<empty>"} has no disposition`,
+        referencePath,
+      );
+    }
+    const descriptor = descriptors.get(attributeName);
+    if (entry.status !== "indexed") {
+      return Object.freeze({
+        attributeName,
+        label: entry.label,
+        disposition: entry.status,
+        ...(descriptor ? { descriptor } : {}),
+      });
+    }
+    const attributeType = catalog.attribute_types[entry.attribute_type];
+    if (!attributeType) {
+      throw new NumModifierError(
+        "INVALID_SEMANTICS",
+        `${attributeName} references missing type ${entry.attribute_type}`,
+        referencePath,
+      );
+    }
+    return Object.freeze({
+      attributeName,
+      typeId: entry.attribute_type,
+      label:
+        entry.label ??
+        localizedLabel(descriptor?.attr_name) ??
+        attributeType.label,
+      family: attributeType.family,
+      quantity: attributeType.quantity,
+      scope: entry.scope,
+      disposition: entry.status,
+      ...(descriptor ? { descriptor } : {}),
+    });
+  };
+
+  const directionFromSign = (
+    value: number,
+    rule: "same-sign" | "inverse-sign" | "unknown" | undefined,
+  ): ModifierEffectDirection => {
+    if (rule === undefined || rule === "unknown") return "unknown";
+    if (value === 0) return "neutral";
+    const positive = value > 0;
+    if (rule === "same-sign") return positive ? "increase" : "decrease";
+    return positive ? "decrease" : "increase";
+  };
+
+  const resolveEffect = (
+    expression: NumModifierValueExpression,
+    context: ModifierEffectContext = {},
+    referencePath?: string,
+  ): ResolvedModifierEffect => {
+    const catalog = requireSemantics(referencePath);
+    const value = resolveValue(expression, "number", referencePath);
+    const attribute = describeAttribute(value.row.attributeName, referencePath);
+    const reviewed = catalog.reviewed_semantics[expression.row];
+    if (reviewed) {
+      const expected = reviewed.expected;
+      const actual = value.row;
+      if (
+        actual.attributeName !== expected.attribute_name ||
+        actual.operation !== expected.operation ||
+        actual.level !== expected.level ||
+        actual.baseValue !== expected.base ||
+        actual.coefficient !== expected.coefficient
+      ) {
+        throw new NumModifierError(
+          "INVALID_SEMANTICS",
+          `${expression.row} no longer matches its reviewed semantic signature`,
+          referencePath,
+        );
+      }
+      if (context.recipient && context.recipient !== reviewed.recipient) {
+        throw new NumModifierError(
+          "INVALID_SEMANTICS",
+          `${expression.row} requires recipient ${reviewed.recipient}`,
+          referencePath,
+        );
+      }
+      const facets = reviewed.facet_ids.map((facetId) => {
+        for (const type of Object.values(catalog.attribute_types)) {
+          const facet = Object.values(type.facets).find(
+            (candidate) => candidate?.id === facetId,
+          );
+          if (facet) return facet;
+        }
+        throw new NumModifierError(
+          "INVALID_SEMANTICS",
+          `${expression.row} references missing facet ${facetId}`,
+          referencePath,
+        );
+      });
+      return Object.freeze({
+        value,
+        attribute,
+        operation: { code: actual.operation, model: reviewed.model },
+        direction: reviewed.direction,
+        context: { recipient: reviewed.recipient },
+        facets: Object.freeze(facets),
+        ...(reviewed.factor_base === undefined
+          ? {}
+          : { factor: reviewed.factor_base + value.value }),
+        reviewed: true,
+      });
+    }
+
+    const entry = catalog.attributes[value.row.attributeName];
+    const rule =
+      entry?.status === "indexed"
+        ? entry.operations?.[value.row.operation] ??
+          catalog.operation_families[value.row.operation]
+        : catalog.operation_families[value.row.operation];
+    const model = rule?.model ?? "unknown";
+    const direction =
+      model === "delta"
+        ? directionFromSign(value.value, rule?.direction)
+        : "unknown";
+    const recipient = context.recipient ?? "unknown";
+    let facets: ModifierFacet[] = [];
+    if (
+      attribute.typeId &&
+      !(attribute.scope === "damage-event" && recipient !== "damage-event")
+    ) {
+      const facet = catalog.attribute_types[attribute.typeId].facets[direction];
+      if (facet) facets = [facet];
+    }
+    return Object.freeze({
+      value,
+      attribute,
+      operation: { code: value.row.operation, model },
+      direction,
+      context: { recipient },
+      facets: Object.freeze(facets),
+      reviewed: false,
+    });
   };
 
   const resolveTemplate = (
@@ -401,6 +659,8 @@ export function createNumModifierResolver(
     resolveValue,
     resolveTemplate,
     resolveGameModifierTokens,
+    describeAttribute,
+    resolveEffect,
     diagnostics: Object.freeze(diagnostics),
   });
 }

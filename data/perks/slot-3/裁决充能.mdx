@@ -17,9 +17,7 @@ num_modifier_values:
     field: coefficient
     scale: 50
 effect_values:
-  - kind: damage
-    modifierTypeId: critical
-    label: "暴击伤害"
+  - label: "暴击伤害"
     stages:
       - condition: "每0.15秒"
         value:
@@ -29,9 +27,7 @@ effect_values:
         value:
           ref: critical-max
           format: signed-percent
-  - kind: stat
-    statId: critical-rate
-    label: "暴击率"
+  - label: "暴击率"
     stages:
       - condition: "每0.15秒"
         value:

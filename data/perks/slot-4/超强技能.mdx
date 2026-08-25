@@ -8,20 +8,19 @@ num_modifier_values:
   skill-damage:
     row: "lc:130044412_1_0"
     field: base
+  skill-damage-non-weapon:
+    row: "lc:130044412_1_1"
+    field: base
 effect_values:
-  - kind: damage
-    modifierTypeId: weapon-skill-damage
-    label: "武器技能伤害"
+  - label: "武器技能伤害"
     stages:
       - value:
           ref: weapon-skill-damage
           format: signed-percent
-  - kind: damage
-    modifierTypeId: skill-damage
-    label: "非武器技能伤害"
+  - label: "非武器技能伤害"
     stages:
       - value:
-          ref: skill-damage
+          ref: skill-damage-non-weapon
           format: signed-percent
 slot: 4
 rarity: 3

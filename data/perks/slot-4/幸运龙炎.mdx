@@ -9,17 +9,13 @@ num_modifier_values:
     row: "lc:120300117_1_0"
     field: base
 effect_values:
-  - kind: damage
-    modifierTypeId: weapon-damage
-    label: "射击伤害"
+  - label: "射击伤害"
     stages:
       - condition: "抽到红扭蛋后20秒内"
         value:
           ref: weapon-damage
           format: signed-percent
-  - kind: stat
-    statId: fire-rate
-    label: "射速"
+  - label: "射速"
     stages:
       - condition: "抽到红扭蛋后20秒内"
         value:
