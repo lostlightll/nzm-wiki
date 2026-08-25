@@ -165,8 +165,8 @@ function checkPerkConsumers(): void {
   if (manualSemanticFields > 0) {
     addError(`${manualSemanticFields} perk effects still copy semantic classification fields`);
   }
-  if (referencedEffects !== 96) {
-    addError(`expected 96 Num-derived perk effect_values, found ${referencedEffects}`);
+  if (referencedEffects !== 97) {
+    addError(`expected 97 Num-derived perk effect_values, found ${referencedEffects}`);
   }
 
   const samples: ReadonlyArray<{
@@ -180,6 +180,7 @@ function checkPerkConsumers(): void {
     { name: "致命节拍", values: ["0.4%", "32%"] },
     { name: "近距增幅", values: ["5%", "35%"] },
     { name: "裁决充能", values: ["2%", "8%", "100%", "400%"] },
+    { name: "紫奖掉物", values: ["16%", "18%"] },
   ];
   for (const sample of samples) {
     const description = perksByName.get(sample.name)?.description;

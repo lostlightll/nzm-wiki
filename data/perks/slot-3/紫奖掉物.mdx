@@ -5,6 +5,9 @@ num_modifier_values:
   critical-rate:
     row: "lc:111041005_1_0"
     field: base
+  movement-speed:
+    row: "lc:111041009_1_0"
+    field: base
 effect_values:
   - label: "暴击率"
     stages:
@@ -13,13 +16,11 @@ effect_values:
           ref: critical-rate
           format: signed-percent
   - label: "移动速度"
-    semantic:
-      facetId: movement-speed
     stages:
       - condition: "拾取亢奋能量球"
         value:
-          literal: "+18%"
-          reason: "The MGE/Buff chain points to GPModifier 111041011, but that row is absent from the current LC numerical_modifier_config Lock; do not substitute a same-valued row from another perk."
+          ref: movement-speed
+          format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315198001"
@@ -28,7 +29,7 @@ CollectMODItem: 1
 MakeMODItem: 1
 IsCooked: true
 season: "pending"
-description: "抽奖时随机掉落一种能量球，冷却<strong>2秒</strong>。拾取狂暴能量球时暴击率提高<strong>{{num:critical-rate|percent}}</strong>；拾取亢奋能量球时移动速度提高<strong>18%</strong>。能量球增益持续<strong>8秒</strong>。"
+description: "抽奖时随机掉落一种能量球，冷却<strong>2秒</strong>。拾取狂暴能量球时暴击率提高<strong>{{num:critical-rate|percent}}</strong>；拾取亢奋能量球时移动速度提高<strong>{{num:movement-speed|percent}}</strong>。能量球增益持续<strong>8秒</strong>。"
 keywords:
   - "扭蛋流"
 ---
