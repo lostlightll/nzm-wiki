@@ -519,7 +519,6 @@ function SimpleCard({ weapon }: { weapon: WeaponCatalogEntry }) {
  */
 function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
   const mode = weapon.mainSource;
-  const [showReloadDetail, setShowReloadDetail] = useState(false);
 
   const rarity = getResolvedFieldValue(weapon.rarity);
   const rarityKey = rarity ? RARITY_KEY_MAP[rarity] : "common";
@@ -534,10 +533,6 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
   const weaponType = getResolvedFieldValue(weapon.weaponType);
   const scope = getResolvedFieldValue(weapon.scope);
   const fullReload = getFullReloadTime(weapon.changeClip);
-  const reloadTime = getResolvedFieldValue(weapon.changeClip.timeBase);
-  const reloadRecovery = getResolvedFieldValue(
-    weapon.changeClip.reloadRecovery,
-  );
   const chargeTime = weapon.activeSkill
     ? getResolvedFieldValue(weapon.activeSkill.chargeTime)
     : undefined;
@@ -646,60 +641,17 @@ function DetailedCard({ weapon }: { weapon: WeaponCatalogEntry }) {
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-zinc-500">元素异常概率</span>
+                <span className="text-zinc-500">换弹时间</span>
                 <span className="text-white">
-                  {getResolvedFieldValue(mode.elementAddRate) === undefined
+                  {fullReload === undefined
                     ? "-"
-                    : `${formatPercent(getResolvedFieldValue(mode.elementAddRate)!)}%`}
+                    : (Math.ceil(fullReload * 100) / 100).toFixed(2)}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-zinc-500">技能冷却</span>
                 <span className="text-white">{formatValue(chargeTime)}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-500">完整换弹</span>
-                <span className="text-white">
-                  {fullReload === undefined
-                    ? "-"
-                    : `${(Math.ceil(fullReload * 100) / 100).toFixed(2)}s`}
-                </span>
-              </div>
-              <div
-                className="flex justify-between cursor-pointer"
-                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowReloadDetail(!showReloadDetail); }}
-              >
-                <span className="text-zinc-500">
-                  换弹详情 {showReloadDetail ? "▴" : "▸"}
-                </span>
-                <span className="text-white">&nbsp;</span>
-              </div>
-            {reloadTime !== undefined && (
-              <div
-                  className={`col-span-1 grid min-h-0 transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none sm:col-span-2 ${
-                    showReloadDetail
-                      ? "grid-rows-[1fr]"
-                      : "grid-rows-[0fr]"
-                  }`}
-                >
-                  <div className="min-h-0 overflow-hidden">
-                    <div className="grid grid-cols-1 gap-y-2 sm:grid-cols-2 sm:gap-x-6">
-                      <div className="flex justify-between">
-                        <span className="text-zinc-500">换弹动画</span>
-                        <span className="text-zinc-300">
-                          {reloadTime.toFixed(2)}s
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-zinc-500">换弹后摇</span>
-                        <span className="text-zinc-300">
-                          {(reloadRecovery ?? 0).toFixed(2)}s
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            )}
           </div>
         )}
         </div>
