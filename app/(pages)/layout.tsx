@@ -11,6 +11,7 @@ export default function PagesLayout({
   const isSeasonTalentDetail = pathname.startsWith("/guides/season-talents/");
   const isFullSeasonTalentDetail = isSeasonTalentDetail;
   const isSeasonTalentsLanding = pathname === "/season-talents";
+  const isBuildsLanding = pathname === "/builds";
   const isGuidesLanding =
     pathname === "/guides" ||
     pathname === "/multiplier" ||
@@ -36,6 +37,8 @@ export default function PagesLayout({
               ? "max-w-none p-0 lg:h-[calc(100dvh-3.5rem)]"
             : isSeasonTalentDetail
             ? "max-w-[1600px] px-4 py-4 sm:px-6 xl:w-[calc(100%-4rem)] xl:px-12"
+            : isBuildsLanding
+              ? "max-w-[1800px] px-4 py-6 sm:px-6 sm:py-7 xl:w-[calc(100%-4rem)] xl:px-12 xl:py-3"
             : isGuidesLanding
               ? "max-w-[1440px] px-4 py-6 sm:px-6 sm:py-7 xl:w-[calc(100%-4rem)] xl:py-3"
               : "max-w-7xl px-4 py-8 xl:w-[calc(100%-4rem)]"

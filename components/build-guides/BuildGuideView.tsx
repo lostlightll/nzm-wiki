@@ -164,10 +164,10 @@ export function BuildGuideList({ guides }: { guides: BuildGuideSummary[] }) {
   }
 
   return (
-    <ul className="mx-auto grid w-full max-w-6xl gap-4 md:grid-cols-2">
+    <ul className="mx-auto grid w-full max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:max-w-none">
       {guides.map((guide) => (
         <li key={guide.slug}>
-          <article className="group relative flex min-h-full flex-col rounded-lg border border-zinc-700 bg-zinc-900/55 p-4 transition-colors duration-200 hover:border-[#d1ac69]/70 hover:bg-zinc-900 motion-reduce:transition-none sm:p-5">
+          <article className="group relative flex min-h-full flex-col rounded-lg border border-zinc-700 bg-zinc-900/55 p-4 transition-colors duration-200 hover:border-[#d1ac69]/70 hover:bg-zinc-900 motion-reduce:transition-none sm:p-5 lg:[zoom:0.66] 2xl:[zoom:0.9]">
             <Link
               href={`/builds/${encodeURIComponent(guide.slug)}`}
               aria-labelledby={`build-guide-title-${guide.slug}`}
@@ -267,7 +267,7 @@ export function BuildGuideList({ guides }: { guides: BuildGuideSummary[] }) {
 
 export function BuildGuideCatalog({ guides }: { guides: BuildGuideSummary[] }) {
   return (
-    <div className="mx-auto w-full max-w-6xl">
+    <div className="mx-auto w-full max-w-6xl 2xl:max-w-none">
       <header className="mb-6 flex flex-col gap-2 border-b border-zinc-700 pb-5 sm:mb-8 sm:flex-row sm:items-end sm:justify-between sm:pb-6">
         <div>
           <h1 className="text-2xl font-bold text-white sm:text-3xl">搭配攻略</h1>
