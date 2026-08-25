@@ -9,14 +9,25 @@ import {
   getBuildGuideSearchKeywords,
 } from "./generate-search-index";
 
-test("overlimit search consumes the resolved perk description", () => {
+test("overlimit search keeps the card summary and structured values", () => {
   const card = getOverlimitCardById("20703040082");
   assert.ok(card);
   const item = createOverlimitCardSearchItem(card);
-  const description = item.keywords.find((keyword) => keyword.includes("42%"));
 
-  assert.ok(description?.includes("每层增加7%"));
-  assert.ok(!description.includes("**"));
+  assert.ok(item.keywords.includes("命中弱点可提升7%伤害，叠加6层。"));
+  assert.ok(item.keywords.includes("+7%"));
+  assert.ok(item.keywords.includes("+42%"));
+  assert.ok(!item.keywords.some((keyword) => keyword.includes("**")));
+
+  const fatalExplosion = getOverlimitCardById("20703040437");
+  assert.ok(fatalExplosion);
+  const fatalExplosionItem = createOverlimitCardSearchItem(fatalExplosion);
+  assert.ok(
+    fatalExplosionItem.keywords.includes(
+      "武器命中有 5% 概率产生爆炸伤害（CD2秒）",
+    ),
+  );
+  assert.ok(!fatalExplosionItem.keywords.some((keyword) => keyword.includes("8%")));
 });
 
 test("collects structured S3 build guide keywords", () => {

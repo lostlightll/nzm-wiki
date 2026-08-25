@@ -17,7 +17,6 @@ export function getAllOverlimitCards(): OverlimitCard[] {
     }
     return {
       ...card,
-      description: perk.description || card.description,
       effectValues: perk.effectValues,
     };
   });

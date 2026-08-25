@@ -89,7 +89,7 @@ function checkStaticBoundaries(): void {
       source.includes('overlimit-cards.json')
     ) {
       addError(
-        "generate-search-index.ts bypasses resolved overlimit card descriptions",
+        "generate-search-index.ts bypasses the composed overlimit card projection",
       );
     }
   }

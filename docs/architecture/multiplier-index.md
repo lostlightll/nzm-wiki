@@ -44,7 +44,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 
 - `modifier-providers.json` 决定“来源是谁、施加哪些表达式”，分类由语义 Resolver 派生。
 - `effect_values` 决定“向玩家显示什么条件和数值”。条件语义可参考审定文案；凡能直连 Numerical 的值必须引用 Num Modifier V2 表达式，描述和人工文案覆盖不能覆盖结构化值。
-- `lib/overlimit-cards.ts` 用稳定 ItemID 将 MDX 的已解析描述与数值合并到猎场卡片；`overlimit-cards.json` 只保留导入证据和回退简述。
+- `lib/overlimit-cards.ts` 保留 `overlimit-cards.json` 的卡片短摘要，并用稳定 ItemID 合并 MDX 的 V2 `effect_values`；完整插件描述不覆盖卡片摘要。
 - 校验要求每个超限增伤来源与派生伤害分面精确匹配；未知分面、空阶段、重复语义和孤立效果都会报错。
 
 武器目标关系不写回 MDX。`lib/multiplier-data.ts` 直接消费 Weapon Resolver 已有的 `settlements`、`element`、`enableCritical` 和 `enableWeakness`，为每个 `damageSources[]` 条目建立伤害画像。

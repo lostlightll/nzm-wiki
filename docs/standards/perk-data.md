@@ -98,9 +98,9 @@ DT_GPMGESkillDesConfig_BD[技能ID_等级].MGEDescription
 
 | 插件 | MGE 行键 | 采用结果 |
 |:---|:---|:---|
-| 致命爆炸 | `1316200001_1` | `8%` 概率，半径 `5` 米，`130%` 攻击力，冷却 `2` 秒 |
+| 致命爆炸 | `1316200001_1` | 超限短摘要采用当前审定值：`5%` 概率，冷却 `2` 秒；拒绝旧 MGE 文案的 `8%` |
 | 武器穿透 | `1316201001_1` | 子弹穿透能力 `+2` |
-| 导弹轰炸 | `1316210001_1` | 暴击生成 `3` 发跟踪导弹，冷却 `2` 秒 |
+| 导弹轰炸 | `1316210001_1` | 爆炸命中发射 `2` 枚；仅命中一个单位时发射 `5` 枚，冷却 `2` 秒；拒绝旧 MGE 文案的 `3` 枚 |
 | 换弹冲击 | `1316211001_1` | 持续 `5` 秒，基础 `500%` 攻击力；每 `1%` 暴击率或换弹速度提高 `1%` 伤害 |
 | 爆毒蚀域 | `1316213001_1` | 暴击生成减速毒域，冷却 `5` 秒 |
 | 肾上腺素 | `1313031004_1` | 季中更新公告优先：每颗 `21%`，最高 `126%` |
@@ -125,7 +125,7 @@ description_override: true
 
 ## 结构化效果数值
 
-超限卡片需要展示玩家可读的具体数值时，在同 ItemID 插件 MDX 的 frontmatter 中维护 `effect_values`。`data/overlimit-cards.json` 继续保存猎场简述；页面运行时通过 ItemID 合并 MDX 数值，超限卡片导入器不得生成或覆盖 `effect_values`。
+超限卡片需要展示玩家可读的具体数值时，在同 ItemID 插件 MDX 的 frontmatter 中维护 `effect_values`。`data/overlimit-cards.json` 保存猎场短摘要；页面运行时通过 ItemID 只合并 MDX 数值，不得用普通插件的完整 `description` 覆盖短摘要。超限卡片导入器不得生成或覆盖 `effect_values`。
 
 ```yaml
 num_modifier_values:
@@ -153,7 +153,7 @@ effect_values:
 
 - 禁止手写 `kind`、`statId` 或 `modifierTypeId`。Num stages 的属性类型、方向、增伤/属性分组和索引分面统一由 `resolveEffect()` 派生。
 - `num_modifier_values` 的别名使用 kebab-case；`row` 必须是 `lc:` 引用，`field` 只允许 `base` 或 `coefficient`，`scale` 默认 `1`。
-- 描述中的 Num 数值使用 `{{num:<alias>|<format>}}`，格式只允许 `number`、`percent`、`signed-number`、`signed-percent`。详情、悬浮预览、超限卡、召唤物摘要和攻略编辑器都必须消费 `lib/perks.ts` 的解析结果。
+- 描述中的 Num 数值使用 `{{num:<alias>|<format>}}`，格式只允许 `number`、`percent`、`signed-number`、`signed-percent`。插件详情、插件悬浮预览、召唤物摘要和攻略编辑器消费 `lib/perks.ts` 的已解析描述；超限卡只消费其中的 `effect_values`，描述固定使用卡片短摘要。
 - `value` 和每个阶段均不能为空；`condition` 可省略，`label` 可用于覆盖上下文展示名。Num 派生值使用 `{ ref, format }`；无法直连 Num 的值使用 `{ literal, reason }`，并在 effect 上声明 `semantic.facetId`。旧字符串 `value` 禁止使用。
 - 数值必须遵守“数值证据规则”。可定位 Numerical 行时必须引用 Num Modifier V2 表达式；MDX `description` 与 `description_override: true` 均不能覆盖结构化数值。属性通道和索引分面同样不得由描述覆盖。
 - 同一插件不能重复解析为同一个分面。没有登记为 Modifier 来源的超限卡片不得孤立添加增伤数值。

@@ -105,8 +105,10 @@ const WEAPON_ITEM_OVERRIDES: Record<string, number[]> = {
   "20703040346": [20103000024],
 };
 
-// Card text contains stale values; these are audited against direct Numerical rows.
-const NUMERICAL_DESCRIPTION_OVERRIDES: Record<string, string> = {
+// Card text can lag behind reviewed Numerical or execution-config values.
+const REVIEWED_DESCRIPTION_OVERRIDES: Record<string, string> = {
+  "20703040437": "武器命中有 5% 概率产生爆炸伤害（CD2秒）",
+  "20703040474": "暴击时，向身前投射一个毒液罐，爆炸留下毒属性伤害区域并且减速敌人（CD5秒）。",
   "20703040072": "距离13米内，每接近1米武器伤害提高5%，距离6米内达到最高35%。",
   "20703040085": "持续开火每射出一发子弹，武器伤害增加0.4%，最多叠加80层。",
   "20703040407": "爆炸伤害增加120%，造成多次伤害后可获得急速狂热（CD13秒）。",
@@ -264,7 +266,7 @@ async function main(): Promise<void> {
 
     const name = textValue(item.Name) || textValue(mod.MODName);
     const description =
-      NUMERICAL_DESCRIPTION_OVERRIDES[id] ?? textValue(card.OverrideDesc);
+      REVIEWED_DESCRIPTION_OVERRIDES[id] ?? textValue(card.OverrideDesc);
     const quality = card.OverrideQuality || item.Quality || 0;
     const weight = card.Weight ?? 0;
     const slotValues = mod.MODSlotIndex?.Values ?? [];

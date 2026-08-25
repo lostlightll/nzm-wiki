@@ -1,12 +1,46 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import rawOverlimitCards from "@/data/overlimit-cards.json";
 import { MULTIPLIER_PROVIDERS } from "./multiplier-data";
 import { getAllOverlimitCards, getOverlimitCardById } from "./overlimit-cards";
+import { getPerkByItemId } from "./perks";
 
 test("all overlimit cards join their perk data by stable ItemID", () => {
   const cards = getAllOverlimitCards();
   assert.equal(cards.length, 147);
   assert.equal(new Set(cards.map((card) => card.id)).size, 147);
+});
+
+test("overlimit cards retain their concise card descriptions", () => {
+  const rawDescriptions = new Map(
+    rawOverlimitCards.map((card) => [card.id, card.description] as const),
+  );
+  for (const card of getAllOverlimitCards()) {
+    assert.equal(card.description, rawDescriptions.get(card.id), card.name);
+  }
+  assert.equal(
+    getOverlimitCardById("20703040437")?.description,
+    "武器命中有 5% 概率产生爆炸伤害（CD2秒）",
+  );
+  assert.equal(
+    getOverlimitCardById("20703040382")?.description,
+    "抽扭蛋掉落能够增加移速和暴击的能量球。",
+  );
+  assert.equal(
+    getOverlimitCardById("20703040474")?.description,
+    "暴击时，向身前投射一个毒液罐，爆炸留下毒属性伤害区域并且减速敌人（CD5秒）。",
+  );
+});
+
+test("reviewed perk descriptions reject stale MGE values", () => {
+  assert.equal(
+    getPerkByItemId("20703040437")?.description,
+    "武器命中时有<strong>5%</strong>概率产生爆炸伤害，冷却时间<strong>2</strong>秒。",
+  );
+  assert.equal(
+    getPerkByItemId("20703040471")?.description,
+    "爆炸命中时发射<strong>2</strong>枚跟踪导弹；仅命中<strong>1</strong>个单位时发射<strong>5</strong>枚，冷却时间<strong>2</strong>秒。",
+  );
 });
 
 test("all overlimit damage providers have exact structured values", () => {

@@ -280,6 +280,13 @@ export function createOverlimitCardSearchItem(card: OverlimitCard): SearchItem {
     `${card.slot}号槽位`,
     ...card.weaponNames,
     ...card.tags.map((tag) => tag.name),
+    ...(card.effectValues ?? []).flatMap((effect) => [
+      effect.label,
+      ...effect.stages.flatMap((stage) => [
+        stage.condition ?? "",
+        stage.value,
+      ]),
+    ]),
   ];
   return {
     title: card.name,

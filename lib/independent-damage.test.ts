@@ -70,6 +70,14 @@ test("同 ItemID 超限卡复用专属插件伤害来源", async () => {
 test("超限专属执行数据优先于普通插件映射", async () => {
   const fatalExplosion = await getIndependentDamageByOverlimitId("20703040437");
   assert.equal(fatalExplosion.length, 1);
+  assert.match(fatalExplosion[0]?.trigger ?? "", /5%/);
+  assert.equal(fatalExplosion[0]?.interval, "2 秒");
   assert.equal(fatalExplosion[0]?.numericalId, "130103014");
   assert.equal(fatalExplosion[0]?.damageValue, "5000");
+
+  const hybridDamage = await getIndependentDamageByOverlimitId("20703040444");
+  assert.equal(hybridDamage[0]?.interval, "触发 5 秒；追加 0.25 秒");
+
+  const toxicZone = await getIndependentDamageByOverlimitId("20703040474");
+  assert.equal(toxicZone[0]?.interval, "5 秒");
 });

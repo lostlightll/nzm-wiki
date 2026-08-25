@@ -448,7 +448,7 @@
   {
     "id": "20703040437",
     "name": "致命爆炸",
-    "description": "武器命中有 5% 概率产生爆炸伤害（CD1秒）",
+    "description": "武器命中有 5% 概率产生爆炸伤害（CD2秒）",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
     "quality": 5,
     "weight": 1,
@@ -3657,7 +3657,7 @@
   {
     "id": "20703040474",
     "name": "爆毒蚀域",
-    "description": "暴击时，向身前投射一个毒液罐，爆炸留下毒属性伤害区域并且减速敌人（CD20秒）。",
+    "description": "暴击时，向身前投射一个毒液罐，爆炸留下毒属性伤害区域并且减速敌人（CD5秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
     "quality": 4,
     "weight": 3,
