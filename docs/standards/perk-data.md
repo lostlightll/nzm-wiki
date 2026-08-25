@@ -6,7 +6,7 @@
 
 ## 核心结论
 
-- `data/perks/slot-*/*.mdx` 是网站最终展示数据，解包文件只用于审计和补全，不在构建时自动注入。
+- `data/perks/slot-*/*.mdx` 拥有普通插件详情和结构化效果；`data/overlimit-cards.json` 拥有猎场超限卡片短摘要。两者通过 ItemID 合并，但互不覆盖描述。
 - 插件身份只通过 ItemID 连接，不能根据相似编号、图标编号或相邻行猜测。
 - 普通插件详情优先使用 `MGEDescription`；猎场 `OverrideDesc` 通常是玩法卡片简写，不能覆盖完整详情。
 - 游戏内截图、`MGEDescription`、`OverrideDesc` 和各表 `Description` 都是自然语言展示证据，不是配置数值真值；它们只能确定玩家可见文案、触发条件和语义。
@@ -109,9 +109,10 @@ MGE 中的“复用某武器资源”等开发备注不写入网站描述，只�
 
 ## 文案格式
 
-- 数值强调使用 `<strong>...</strong>`，例如 `<strong>20%</strong>`。
-- 不使用 `（CD20秒）`、`(CD20)` 或 `CD20秒`。
-- 冷却统一写为 `，冷却时间<strong>20</strong>秒。`
+普通插件详情与超限卡片短摘要是两个独立展示面：
+
+- 普通插件详情的数值强调使用 `<strong>...</strong>`，例如 `<strong>20%</strong>`；冷却统一写为 `，冷却时间<strong>20</strong>秒。`，不使用 `CD20秒` 缩写。
+- 超限卡片短摘要保持紧凑纯文本，可以使用 `（CD2秒）`；不得把该格式批量改写成普通插件详情句式，也不得反向用短摘要覆盖详情。
 - 游戏标签 `<qiangdiao>...</>` 转换为 `<strong>...</strong>`。
 - 清理 `U+200B`、`U+FEFF` 等零宽字符。
 - 不保留 `{GPModifier:...}`、`??`、独立占位符 `X` 或测试文案。
@@ -122,6 +123,17 @@ MGE 中的“复用某武器资源”等开发备注不写入网站描述，只�
 ```yaml
 description_override: true
 ```
+
+## 超限短摘要维护
+
+`data/overlimit-cards.json` 是提交并供运行时读取的导入产物。默认短摘要来自 `HuntingGroundRoguelikeWeaponModTable.OverrideDesc`；当该文案会恢复已确认的旧数值或错误机制时，在 `scripts/import-overlimit-cards.ts` 的 `REVIEWED_DESCRIPTION_OVERRIDES` 中保存审定短摘要。该映射只用于重新导入防回退，结构化数值真值仍来自 Num Modifier V2、Ability、Buff、DataTable 或可复核的运行时证据。
+
+新增或修改审定短摘要时按以下顺序维护：
+
+1. 先记录身份链、结构化数值或运行时证据，并确认原 `OverrideDesc` 的具体问题。
+2. 能进入 `effect_values` 的 Numerical 数值先维护 MDX V2 引用；概率、冷却、范围和弹数等使用对应结构化执行配置。
+3. 更新 `REVIEWED_DESCRIPTION_OVERRIDES`，再运行 `pnpm exec tsx scripts/import-overlimit-cards.ts` 重建 `data/overlimit-cards.json`，禁止只手改生成结果。
+4. 检查卡片短摘要与插件详情各自保持合适粒度，随后运行 `pnpm test:overlimit-cards`、`pnpm overlimit-effects:audit` 和 `pnpm num-modifier:check`。
 
 ## 结构化效果数值
 

@@ -1,6 +1,6 @@
-# AGENTS.md - Codex 项目指南
+# AGENTS.md - 项目 Agent 指南
 
-本文件只服务于 Codex。项目的 Claude Code 配置由 `CLAUDE.md` 独立维护，两者不要通过符号链接同步。
+本文件是 Codex 与 Claude Code 共用的项目级指引。`CLAUDE.md` 通过相对符号链接指向本文件，规范只在此处维护。
 
 ## 项目概览
 
@@ -13,7 +13,7 @@
 - 筛选项、标签和分段控件的选中态禁止使用外扩 `ring`、`outline`、双层描边或内外描边叠加。选中状态只使用单层边框、背景色、文字色等不会形成套框的方式表达。
 - 鼠标或触控选中控件后不得残留焦点描边。键盘操作仍须保留可见焦点提示，但必须通过 `:focus-visible` 单独实现，并优先使用文字下划线等非套框样式，不能把焦点态与选中态绑定。
 
-## Codex 工作约定
+## Agent 工作约定
 
 - 先读取相关代码、类型和文档，再修改；不要根据文件名猜实现。
 - 用户要求实现或修改时直接完成并验证；仅分析、诊断或 review 时不要改文件。
@@ -31,7 +31,7 @@
 
 验证遵循“最小充分”原则：先判断改动可能破坏什么，再运行能覆盖该失败面的最窄检查；检查失败、影响范围扩大或结果无法解释时再升级。`pnpm lint` 与 `pnpm build` 覆盖不同风险，按需分别运行，不作为固定组合。
 
-- 仅改文档、注释或 `AGENTS.md`：检查改动内容和 `git diff --check`；通常不运行 lint、测试或 build。
+- 仅改文档、注释或 Agent 指引：检查改动内容和 `git diff --check`；通常不运行 lint、测试或 build。
 - 仅改文案、静态数据或资源：运行对应的数据校验、生成器或页面检查；纯文案修改通常不需要全量 lint/build，涉及 MDX 结构、frontmatter 或组件调用时补充能解析该内容的检查。
 - 局部 TypeScript、组件或样式改动：优先运行相关测试、对改动文件执行 ESLint，必要时运行 `pnpm exec tsc --noEmit`；界面改动同时检查受影响页面的 PC 和移动端表现。
 - 共享类型、公共模块、跨目录重构或较大范围代码改动：运行相关测试，并按风险运行全量 `pnpm lint` 或 `pnpm exec tsc --noEmit`。
@@ -58,13 +58,13 @@
 
 ## 本地环境
 
-Codex 在 Windows 原生文件系统和 PowerShell 中运行。命令与文件引用使用 Windows 可识别的绝对路径，例如：
+项目位于 Windows 原生文件系统。命令按当前工具实际使用的 shell 编写；文件引用使用 Windows 可识别的绝对路径，例如：
 
 ```text
 D:\Claude\nzm-wiki
 ```
 
-不要套用 `CLAUDE.md` 中面向 Claude Code Bash/MSYS2 的虚拟路径规则。
+不要假设 MSYS2 的 `/home/...` 等虚拟路径可用。需要跨工具传递路径时，优先使用 `D:\Claude\nzm-wiki` 或 `D:/Claude/nzm-wiki` 形式。
 
 本地游戏资源导出按环境区分：
 
@@ -121,7 +121,7 @@ pnpm webp     # 优化 public/ 中的图片
 
 - 游戏内描述、截图文案、`MGEDescription`、`OverrideDesc` 和 Numerical 的 `Description` 都是不可靠的自然语言展示层，禁止把其中的数值直接当作配置真值。只要能沿 ItemID、技能、MGE 或 ModifierID 身份链定位到 `Attributes/AutoGenerate/numerical_modifier_config.json` 的具体属性行，数值必须以该行的 `BaseValue`、`CoefValue`、`GPModifierOp` 和等级为准；描述只能用于名称、条件和语义辅助。
 - 描述数值与 Numerical 冲突时不得折中、不得以“游戏内显示更新”为由覆盖，也不得继续保留描述值；必须采用 Numerical、修正站点结构化数据并记录冲突。只有 Numerical 没有承载该数值，或有可重复的实际伤害测试、运行时日志证明另有动态覆写时，才允许使用其他证据，并明确记录来源和缺失链路。
-- 超限卡片和插件的 `effect_values` 必须逐项能沿身份链复核到 Numerical。存在可直读 Numerical 的效果时，禁止根据卡片描述、插件描述或截图补值；例如 `GPModifierOp: B1`、`BaseValue: 3.0` 表示 `+300%`，即使描述写 `+400%` 也不得采用描述值。
+- 超限卡片和插件的 `effect_values` 必须逐项先审计 Numerical 身份链。存在可直读 Numerical 的效果时必须使用 Num Modifier V2 引用；例如 `GPModifierOp: B1`、`BaseValue: 3.0` 表示 `+300%`，即使描述写 `+400%` 也不得采用描述值。只有 Numerical 未承载目标值时才允许 `{ literal, reason }`，同时声明 `semantic.facetId` 并记录其他结构化证据或缺失链路，具体规则以 `docs/standards/perk-data.md` 为准。
 - MDX frontmatter 是武器来源选择、Wiki 语义和人工修正的唯一来源；构建时不得从 `refs/` 自动注入或覆盖。
 - 发布数值由 MDX 的 V2 引用和已提交的 `data/weapon-data-lock.json` 解析，页面运行时不得依赖 `refs/`。
 - `scripts/extract-weapon-data.ts` 只输出候选证据，不能直接复制为 frontmatter，也不能替代人工判断 `label`、`group`、继承或 override。
