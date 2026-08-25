@@ -20,6 +20,7 @@ modifier-providers.json ──────────────────�
 
 - Lock 保存原表事实和来源哈希，不保存玩法结论。
 - 语义目录是属性类型、operation 解释、方向和索引分面的唯一人工事实。
+- 元素等属性子类型使用可选 `qualifier` 保存稳定维度、ID、标签和顺序，消费者不得从 `AttributeName` 后缀猜测。
 - 来源目录保存实体身份、Num 表达式、接收者上下文和证据，不复制机械分类。
 - 运行时投影保存客户端查询所需的已解析结果和输入哈希，不导入完整 Lock。
 - `lib/num-modifier-data.ts` 是完整 Lock 与语义目录的唯一业务导入适配器。
@@ -94,6 +95,7 @@ applications:
 - 插件 `effect_values` 不再手写 `kind`、`statId` 或 `modifierTypeId`；Num stages 从 `resolveEffect()` 派生分类和默认标签。
 - 无 Num 行的 literal stage 继续要求 `{ literal, reason }`，并在 effect 上显式声明 `semantic.facetId`。
 - 描述模板继续使用 `{{num:alias|format}}`；详情、预览、超限卡、召唤物和攻略编辑器消费 `lib/perks.ts` 的解析结果。
+- 搜索索引通过 `getAllOverlimitCards()` 消费同一份已解析插件描述，不读取 `overlimit-cards.json` 的回退描述。
 - 状态效果保留 `modifierIds` 身份，由 Resolver 生成规范技术详情、减速、易伤、减伤和乘区关系；关键词只在没有结构化 Modifier 效果时回退。
 - 原始 `{GPModifier:...}` Token、乘区审计和超限审计统一通过 Resolver 读取 Lock。
 

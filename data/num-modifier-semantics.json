@@ -457,12 +457,24 @@
     "GPAttributeSetBearDamageRatio.CorossiveDamageBearRatio": {
       "status": "indexed",
       "attribute_type": "element-resistance",
-      "scope": "target-stat"
+      "scope": "target-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "corossive",
+        "label": "腐蚀",
+        "order": 4
+      }
     },
     "GPAttributeSetBearDamageRatio.CryoDamageBearRatio": {
       "status": "indexed",
       "attribute_type": "element-resistance",
-      "scope": "target-stat"
+      "scope": "target-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "cryo",
+        "label": "冰霜",
+        "order": 2
+      }
     },
     "GPAttributeSetBearDamageRatio.DamageBearRatio": {
       "status": "indexed",
@@ -482,17 +494,35 @@
     "GPAttributeSetBearDamageRatio.FireDamageBearRatio": {
       "status": "indexed",
       "attribute_type": "element-resistance",
-      "scope": "target-stat"
+      "scope": "target-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "fire",
+        "label": "火焰",
+        "order": 1
+      }
     },
     "GPAttributeSetBearDamageRatio.KineticDamageBearRatio": {
       "status": "indexed",
       "attribute_type": "element-resistance",
-      "scope": "target-stat"
+      "scope": "target-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "kinetic",
+        "label": "动能",
+        "order": 0
+      }
     },
     "GPAttributeSetBearDamageRatio.ShockDamageBearRatio": {
       "status": "indexed",
       "attribute_type": "element-resistance",
-      "scope": "target-stat"
+      "scope": "target-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "shock",
+        "label": "电击",
+        "order": 3
+      }
     },
     "GPAttributeSetBearDamageRatio.SpecialDamageBearRatio": {
       "status": "known-unindexed",
@@ -707,7 +737,13 @@
     "GPAttributeSetGiveDamageRatio.CorossiveDamageRatio": {
       "status": "indexed",
       "attribute_type": "element-damage",
-      "scope": "persistent-stat"
+      "scope": "persistent-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "corossive",
+        "label": "腐蚀",
+        "order": 4
+      }
     },
     "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio": {
       "status": "known-unindexed",
@@ -717,7 +753,13 @@
     "GPAttributeSetGiveDamageRatio.CryoDamageRatio": {
       "status": "indexed",
       "attribute_type": "element-damage",
-      "scope": "persistent-stat"
+      "scope": "persistent-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "cryo",
+        "label": "冰霜",
+        "order": 2
+      }
     },
     "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio": {
       "status": "known-unindexed",
@@ -755,9 +797,9 @@
       "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
     },
     "GPAttributeSetGiveDamageRatio.ElementDamageRatio": {
-      "status": "known-unindexed",
-      "label": "元素伤害",
-      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+      "status": "indexed",
+      "attribute_type": "element-damage",
+      "scope": "persistent-stat"
     },
     "GPAttributeSetGiveDamageRatio.EnergyMeleeSkillDamageRatio": {
       "status": "known-unindexed",
@@ -772,7 +814,13 @@
     "GPAttributeSetGiveDamageRatio.FireDamageRatio": {
       "status": "indexed",
       "attribute_type": "element-damage",
-      "scope": "persistent-stat"
+      "scope": "persistent-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "fire",
+        "label": "火焰",
+        "order": 1
+      }
     },
     "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio": {
       "status": "known-unindexed",
@@ -782,7 +830,13 @@
     "GPAttributeSetGiveDamageRatio.KineticDamageRatio": {
       "status": "indexed",
       "attribute_type": "element-damage",
-      "scope": "persistent-stat"
+      "scope": "persistent-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "kinetic",
+        "label": "动能",
+        "order": 0
+      }
     },
     "GPAttributeSetGiveDamageRatio.LongRangeDamageRatio": {
       "status": "indexed",
@@ -792,7 +846,13 @@
     "GPAttributeSetGiveDamageRatio.ShockDamageRatio": {
       "status": "indexed",
       "attribute_type": "element-damage",
-      "scope": "persistent-stat"
+      "scope": "persistent-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "shock",
+        "label": "电击",
+        "order": 3
+      }
     },
     "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio": {
       "status": "known-unindexed",

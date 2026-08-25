@@ -27,6 +27,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - `factors`：对外显示的规范乘区名。
 - `baseDamage`：基础伤害公式及 LC/TD 模式基础攻击力；不保存武器白值副本。
 - `damageChannelMatrix.channels`：索引分面和伤害类型适用规则；运行时导出为 `MODIFIER_TYPES`。属性字段由 Num Modifier 语义投影补充，不在矩阵复制。
+- `factorDetails`：只保存规则、案例和提示等编辑内容；属性字段与元素选择标签由 Num Modifier 语义投影生成，禁止手写 `attributeFields`。
 - 原有公式、规则、矩阵和案例说明继续作为乘区页面的编辑内容。
 
 `data/modifier-providers.json` 是通用 Modifier 来源的唯一服务端注册表：

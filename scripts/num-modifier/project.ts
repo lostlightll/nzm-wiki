@@ -38,8 +38,14 @@ function readJson(filePath: string): JsonObject {
   return value as JsonObject;
 }
 
+export function hashJsonSourceText(source: string): string {
+  return createHash("sha256")
+    .update(JSON.stringify(JSON.parse(source) as unknown))
+    .digest("hex");
+}
+
 function sourceHash(filePath: string): string {
-  return createHash("sha256").update(readFileSync(filePath)).digest("hex");
+  return hashJsonSourceText(readFileSync(filePath, "utf8"));
 }
 
 function unique(values: Iterable<string>): string[] {
@@ -133,6 +139,9 @@ export function generateModifierIndexRuntime(): JsonObject {
                 attributeName,
                 attributeTypeId: attribute.attribute_type,
                 scope: attribute.scope,
+                ...(attribute.qualifier
+                  ? { qualifier: attribute.qualifier }
+                  : {}),
               },
             ]
           : [],
@@ -218,7 +227,7 @@ export function checkModifierRuntimeProjections(): string[] {
   for (const [filePath, content] of expected) {
     if (!existsSync(filePath)) {
       issues.push(`missing ${path.relative(root, filePath)}`);
-    } else if (readFileSync(filePath, "utf8") !== content) {
+    } else if (serializeRuntime(readJson(filePath)) !== content) {
       issues.push(`${path.basename(filePath)} is stale; run pnpm num-modifier:project`);
     }
   }

@@ -1,11 +1,23 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { getOverlimitCardById } from "../lib/overlimit-cards";
 import {
+  createOverlimitCardSearchItem,
   createSeasonTalentSearchItem,
   createStatusEffectSearchItem,
   createSummonSearchItem,
   getBuildGuideSearchKeywords,
 } from "./generate-search-index";
+
+test("overlimit search consumes the resolved perk description", () => {
+  const card = getOverlimitCardById("20703040082");
+  assert.ok(card);
+  const item = createOverlimitCardSearchItem(card);
+  const description = item.keywords.find((keyword) => keyword.includes("42%"));
+
+  assert.ok(description?.includes("每层增加7%"));
+  assert.ok(!description.includes("**"));
+});
 
 test("collects structured S3 build guide keywords", () => {
   const keywords = getBuildGuideSearchKeywords({

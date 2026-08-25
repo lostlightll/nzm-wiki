@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   BASE_DAMAGE_DATA,
+  MULTIPLIER_FACTOR_DETAILS,
   buildDamageProfile,
   getApplicableModifierTypes,
   getProviderRelationsForSource,
@@ -9,6 +10,48 @@ import {
   resolveMultiplierFactorHref,
   resolveMultiplierSourceHref,
 } from "./multiplier-data";
+
+test("factor detail fields come from the Modifier semantic projection", () => {
+  assert.deepEqual(MULTIPLIER_FACTOR_DETAILS.element?.attributeFields, [
+    {
+      name: "GPAttributeSetGiveDamageRatio.KineticDamageRatio",
+      selection: { id: "kinetic", label: "动能" },
+    },
+    {
+      name: "GPAttributeSetGiveDamageRatio.FireDamageRatio",
+      selection: { id: "fire", label: "火焰" },
+    },
+    {
+      name: "GPAttributeSetGiveDamageRatio.CryoDamageRatio",
+      selection: { id: "cryo", label: "冰霜" },
+    },
+    {
+      name: "GPAttributeSetGiveDamageRatio.ShockDamageRatio",
+      selection: { id: "shock", label: "电击" },
+    },
+    {
+      name: "GPAttributeSetGiveDamageRatio.CorossiveDamageRatio",
+      selection: { id: "corossive", label: "腐蚀" },
+    },
+    { name: "GPAttributeSetGiveDamageRatio.ElementDamageRatio" },
+  ]);
+  assert.deepEqual(
+    MULTIPLIER_FACTOR_DETAILS["element-vulnerability"]?.attributeFields.map(
+      ({ name, selection }) => [name, selection],
+    ),
+    [
+      ["GPAttributeSetBearDamageRatio.KineticDamageBearRatio", undefined],
+      ["GPAttributeSetBearDamageRatio.FireDamageBearRatio", undefined],
+      ["GPAttributeSetBearDamageRatio.CryoDamageBearRatio", undefined],
+      ["GPAttributeSetBearDamageRatio.ShockDamageBearRatio", undefined],
+      ["GPAttributeSetBearDamageRatio.CorossiveDamageBearRatio", undefined],
+      ["GPAttributeSetBearDamageRatio.ElementDamageBearRatio", undefined],
+    ],
+  );
+  for (const [factorId, detail] of Object.entries(MULTIPLIER_FACTOR_DETAILS)) {
+    assert.ok(detail.attributeFields.length > 0, factorId);
+  }
+});
 
 test("base damage modes keep their authoritative attack values", () => {
   assert.deepEqual(BASE_DAMAGE_DATA, {

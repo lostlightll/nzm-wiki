@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "e4adead4e4a581b729c21d82239b2e4b376dec864c2f7f39c0052f9e59e9566c",
-    "semanticsSha256": "554ffd403c0b3325d0c935318628820963ca2af2552427dedabbcbc5c4c0e9c8",
+    "registrySha256": "568a559e82d8ea47ed630ea82848cb835e78950226673b339bbbbce366c0e5ab",
+    "semanticsSha256": "01e29692da9822af39c1db1d5d769c47dca216e290b96eced061a2d33d4ef627",
     "modifierSourceSha256": "dfc382ff06934157402ecaec9a8e9c5f9a3b1f88f6265918e5cd173dde0e0546",
     "attributeDescriptionSourceSha256": "f4c7bae3871af545fdf4ecc4ceea2df7f498c5a5bfb24ec42a1e29c8703adc95"
   },
@@ -441,12 +441,24 @@
     {
       "attributeName": "GPAttributeSetBearDamageRatio.CorossiveDamageBearRatio",
       "attributeTypeId": "element-resistance",
-      "scope": "target-stat"
+      "scope": "target-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "corossive",
+        "label": "腐蚀",
+        "order": 4
+      }
     },
     {
       "attributeName": "GPAttributeSetBearDamageRatio.CryoDamageBearRatio",
       "attributeTypeId": "element-resistance",
-      "scope": "target-stat"
+      "scope": "target-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "cryo",
+        "label": "冰霜",
+        "order": 2
+      }
     },
     {
       "attributeName": "GPAttributeSetBearDamageRatio.DamageBearRatio",
@@ -461,17 +473,35 @@
     {
       "attributeName": "GPAttributeSetBearDamageRatio.FireDamageBearRatio",
       "attributeTypeId": "element-resistance",
-      "scope": "target-stat"
+      "scope": "target-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "fire",
+        "label": "火焰",
+        "order": 1
+      }
     },
     {
       "attributeName": "GPAttributeSetBearDamageRatio.KineticDamageBearRatio",
       "attributeTypeId": "element-resistance",
-      "scope": "target-stat"
+      "scope": "target-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "kinetic",
+        "label": "动能",
+        "order": 0
+      }
     },
     {
       "attributeName": "GPAttributeSetBearDamageRatio.ShockDamageBearRatio",
       "attributeTypeId": "element-resistance",
-      "scope": "target-stat"
+      "scope": "target-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "shock",
+        "label": "电击",
+        "order": 3
+      }
     },
     {
       "attributeName": "GPAttributeSetCharacterWeaponAdjust.ChargeSpeedAddRatio",
@@ -526,12 +556,24 @@
     {
       "attributeName": "GPAttributeSetGiveDamageRatio.CorossiveDamageRatio",
       "attributeTypeId": "element-damage",
-      "scope": "persistent-stat"
+      "scope": "persistent-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "corossive",
+        "label": "腐蚀",
+        "order": 4
+      }
     },
     {
       "attributeName": "GPAttributeSetGiveDamageRatio.CryoDamageRatio",
       "attributeTypeId": "element-damage",
-      "scope": "persistent-stat"
+      "scope": "persistent-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "cryo",
+        "label": "冰霜",
+        "order": 2
+      }
     },
     {
       "attributeName": "GPAttributeSetGiveDamageRatio.DamageRatio",
@@ -539,14 +581,31 @@
       "scope": "persistent-stat"
     },
     {
-      "attributeName": "GPAttributeSetGiveDamageRatio.FireDamageRatio",
+      "attributeName": "GPAttributeSetGiveDamageRatio.ElementDamageRatio",
       "attributeTypeId": "element-damage",
       "scope": "persistent-stat"
     },
     {
+      "attributeName": "GPAttributeSetGiveDamageRatio.FireDamageRatio",
+      "attributeTypeId": "element-damage",
+      "scope": "persistent-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "fire",
+        "label": "火焰",
+        "order": 1
+      }
+    },
+    {
       "attributeName": "GPAttributeSetGiveDamageRatio.KineticDamageRatio",
       "attributeTypeId": "element-damage",
-      "scope": "persistent-stat"
+      "scope": "persistent-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "kinetic",
+        "label": "动能",
+        "order": 0
+      }
     },
     {
       "attributeName": "GPAttributeSetGiveDamageRatio.LongRangeDamageRatio",
@@ -556,7 +615,13 @@
     {
       "attributeName": "GPAttributeSetGiveDamageRatio.ShockDamageRatio",
       "attributeTypeId": "element-damage",
-      "scope": "persistent-stat"
+      "scope": "persistent-stat",
+      "qualifier": {
+        "dimension": "element",
+        "id": "shock",
+        "label": "电击",
+        "order": 3
+      }
     },
     {
       "attributeName": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",

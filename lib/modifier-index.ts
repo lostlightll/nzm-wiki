@@ -17,6 +17,18 @@ export type RuntimeModifierAttributeType = {
   >;
 };
 
+export type RuntimeModifierAttribute = {
+  attributeName: string;
+  attributeTypeId: string;
+  scope: string;
+  qualifier?: {
+    dimension: string;
+    id: string;
+    label: string;
+    order: number;
+  };
+};
+
 export type RuntimeModifierEffect = {
   row: string;
   attributeTypeId: string;
@@ -39,6 +51,7 @@ export type RuntimeModifierProvider = {
 type RuntimeModifierIndex = {
   schemaVersion: 1;
   attributeTypes: readonly RuntimeModifierAttributeType[];
+  attributes: readonly RuntimeModifierAttribute[];
   providers: readonly RuntimeModifierProvider[];
 };
 
@@ -48,7 +61,23 @@ if (runtime.schemaVersion !== 1) {
 }
 
 export const MODIFIER_ATTRIBUTE_TYPES = runtime.attributeTypes;
+export const MODIFIER_ATTRIBUTES = runtime.attributes;
 export const MODIFIER_INDEX_PROVIDERS = runtime.providers;
+
+export function getModifierAttributesForFacet(
+  facetId: string,
+): readonly RuntimeModifierAttribute[] {
+  const attributeTypeIds = new Set(
+    MODIFIER_ATTRIBUTE_TYPES.flatMap((type) =>
+      Object.values(type.facets).some((facet) => facet?.id === facetId)
+        ? [type.id]
+        : [],
+    ),
+  );
+  return MODIFIER_ATTRIBUTES.filter((attribute) =>
+    attributeTypeIds.has(attribute.attributeTypeId),
+  );
+}
 
 function sourceKey(source: Readonly<Record<string, unknown>>): string {
   return Object.entries(source)

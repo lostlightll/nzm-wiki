@@ -9,9 +9,11 @@ import {
   getResolvedFieldValue,
 } from "../lib/weapon-consumers";
 import type { ResolvedWeapon } from "../lib/weapon-resolver";
+import { getAllOverlimitCards } from "../lib/overlimit-cards";
 import { getStatusEffectSearchDocuments } from "../lib/status-effects";
 import { getSummonSearchDocuments } from "../lib/summons";
 import { getAllResolvedWeapons } from "../lib/weapons";
+import type { OverlimitCard } from "../types";
 
 export interface SearchItem {
   title: string;
@@ -263,6 +265,30 @@ function buildPinyin(texts: readonly string[]): string[] {
     if (initials) values.add(initials.toLowerCase());
   }
   return [...values];
+}
+
+function cleanSearchText(value: string): string {
+  return value.replace(/<[^>]+>/g, "").replace(/\*\*/g, "");
+}
+
+export function createOverlimitCardSearchItem(card: OverlimitCard): SearchItem {
+  const keywords = [
+    card.id,
+    cleanSearchText(card.description),
+    `${card.quality}品质`,
+    `权重${card.weight}`,
+    `${card.slot}号槽位`,
+    ...card.weaponNames,
+    ...card.tags.map((tag) => tag.name),
+  ];
+  return {
+    title: card.name,
+    slug: `overlimit/${card.id}`,
+    path: `/overlimit/${card.id}`,
+    category: "超限卡片",
+    keywords: [...new Set(keywords)],
+    pinyin: buildPinyin([card.name, ...keywords]),
+  };
 }
 
 type StatusEffectSearchDocument = ReturnType<
@@ -609,54 +635,7 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
       ),
     );
   }
-  const overlimitFile = path.join(baseDir, "overlimit-cards.json");
-  if (fs.existsSync(overlimitFile)) {
-    const cards = JSON.parse(fs.readFileSync(overlimitFile, "utf-8")) as Array<{
-      id: string;
-      name: string;
-      description: string;
-      quality: number;
-      weight: number;
-      slot: number;
-      weaponNames: string[];
-      tags: Array<{ name: string }>;
-    }>;
-
-    for (const card of cards) {
-      const keywords = [
-        card.id,
-        card.description,
-        `${card.quality}品质`,
-        `权重${card.weight}`,
-        `${card.slot}号槽位`,
-        ...card.weaponNames,
-        ...card.tags.map((tag) => tag.name),
-      ];
-      const pinyinSet = new Set<string>();
-      for (const text of [card.name, ...keywords]) {
-        const fullPinyin = pinyin(String(text), {
-          toneType: "none",
-          type: "array",
-        }).join("");
-        if (fullPinyin) pinyinSet.add(fullPinyin.toLowerCase());
-        const initials = pinyin(String(text), {
-          pattern: "first",
-          toneType: "none",
-          type: "array",
-        }).join("");
-        if (initials) pinyinSet.add(initials.toLowerCase());
-      }
-
-      items.push({
-        title: card.name,
-        slug: `overlimit/${card.id}`,
-        path: `/overlimit/${card.id}`,
-        category: "超限卡片",
-        keywords: [...new Set(keywords)],
-        pinyin: [...pinyinSet],
-      });
-    }
-  }
+  items.push(...getAllOverlimitCards().map(createOverlimitCardSearchItem));
 
   const overlimitLevelsFile = path.join(baseDir, "overlimit-levels.json");
   if (fs.existsSync(overlimitLevelsFile)) {

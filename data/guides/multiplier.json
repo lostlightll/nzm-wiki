@@ -852,11 +852,6 @@
       ],
       "target": "全伤害",
       "targetNote": "",
-      "attributeFields": [
-        {
-          "name": "GPAttributeSetGiveDamageRatio.DamageRatio"
-        }
-      ],
       "examples": [
         {
           "id": "hunting-shop-attack",
@@ -882,46 +877,6 @@
       ],
       "target": "五种元素",
       "targetNote": "动能、火焰、冰霜、电击与腐蚀伤害分别使用对应通道。",
-      "attributeFields": [
-        {
-          "name": "GPAttributeSetGiveDamageRatio.KineticDamageRatio",
-          "selection": {
-            "id": "kinetic",
-            "label": "动能"
-          }
-        },
-        {
-          "name": "GPAttributeSetGiveDamageRatio.FireDamageRatio",
-          "selection": {
-            "id": "fire",
-            "label": "火焰"
-          }
-        },
-        {
-          "name": "GPAttributeSetGiveDamageRatio.CryoDamageRatio",
-          "selection": {
-            "id": "cryo",
-            "label": "冰霜"
-          }
-        },
-        {
-          "name": "GPAttributeSetGiveDamageRatio.ShockDamageRatio",
-          "selection": {
-            "id": "shock",
-            "label": "电击"
-          }
-        },
-        {
-          "name": "GPAttributeSetGiveDamageRatio.CorossiveDamageRatio",
-          "selection": {
-            "id": "corossive",
-            "label": "腐蚀"
-          }
-        },
-        {
-          "name": "GPAttributeSetGiveDamageRatio.ElementDamageRatio"
-        }
-      ],
       "examples": [
         {
           "id": "ghost-spear-kinetic-damage",
@@ -1132,11 +1087,6 @@
       ],
       "target": "暴击伤害",
       "targetNote": "仅对允许暴击且本次判定为暴击的伤害生效。",
-      "attributeFields": [
-        {
-          "name": "GPAttributeSetCritical.CriticalDamageRatio"
-        }
-      ],
       "examples": [
         {
           "id": "zhen-xian-skill",
@@ -1186,11 +1136,6 @@
       ],
       "target": "弱点命中伤害",
       "targetNote": "生效仍受敌人弱点判定与具体触发条件限制。",
-      "attributeFields": [
-        {
-          "name": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio"
-        }
-      ],
       "examples": [
         {
           "id": "survival-of-the-fittest",
@@ -1216,11 +1161,6 @@
       ],
       "target": "根据具体情况而定",
       "targetNote": "不作为固定筛选条件，需结合具体伤害事件判断。",
-      "attributeFields": [
-        {
-          "name": "Numerical.ExecutionCtx.ExecutionRatio"
-        }
-      ],
       "examples": [
         {
           "id": "beast-god-grenade-passive",
@@ -1276,11 +1216,6 @@
       ],
       "target": "承受伤害",
       "targetNote": "生效对象与持续时间仍由具体来源的机制条件决定。",
-      "attributeFields": [
-        {
-          "name": "GPAttributeSetBearDamageRatio.DamageBearRatio"
-        }
-      ],
       "examples": [
         {
           "id": "shock-vulnerability",
@@ -1313,26 +1248,6 @@
       ],
       "target": "对应元素伤害",
       "targetNote": "伤害来源必须具有元素属性；具体元素与持续时间由来源机制决定。",
-      "attributeFields": [
-        {
-          "name": "GPAttributeSetBearDamageRatio.KineticDamageBearRatio"
-        },
-        {
-          "name": "GPAttributeSetBearDamageRatio.FireDamageBearRatio"
-        },
-        {
-          "name": "GPAttributeSetBearDamageRatio.CryoDamageBearRatio"
-        },
-        {
-          "name": "GPAttributeSetBearDamageRatio.ShockDamageBearRatio"
-        },
-        {
-          "name": "GPAttributeSetBearDamageRatio.CorossiveDamageBearRatio"
-        },
-        {
-          "name": "GPAttributeSetBearDamageRatio.ElementDamageBearRatio"
-        }
-      ],
       "examples": [
         {
           "id": "nightfall-black-powder-element-vulnerability",

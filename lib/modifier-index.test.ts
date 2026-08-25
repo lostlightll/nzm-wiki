@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   MODIFIER_INDEX_PROVIDERS,
+  getModifierAttributesForFacet,
   getModifierProvider,
   getModifierProvidersForAttributeType,
   getModifierProvidersForDirection,
@@ -14,6 +15,23 @@ import {
 test("exposes the complete generic provider projection", () => {
   assert.equal(MODIFIER_INDEX_PROVIDERS.length, 197);
   assert.equal(getModifierProvider("card:10003")?.label, "狂战士祝福");
+});
+
+test("exposes projected attributes by semantic facet", () => {
+  assert.deepEqual(
+    getModifierAttributesForFacet("element")
+      .filter((attribute) => attribute.qualifier)
+      .map((attribute) => attribute.qualifier?.id)
+      .sort(),
+    ["corossive", "cryo", "fire", "kinetic", "shock"],
+  );
+  assert.ok(
+    getModifierAttributesForFacet("element").some(
+      (attribute) =>
+        attribute.attributeName ===
+        "GPAttributeSetGiveDamageRatio.ElementDamageRatio",
+    ),
+  );
 });
 
 test("queries the generic projection by every semantic dimension", () => {

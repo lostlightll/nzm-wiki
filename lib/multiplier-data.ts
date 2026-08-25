@@ -1,7 +1,7 @@
 import rawMultiplierData from "@/data/guides/multiplier.json";
 import rawProviderRuntime from "@/data/guides/multiplier-providers-runtime.json";
-import rawModifierIndex from "@/data/modifier-index-runtime.json";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
+import { getModifierAttributesForFacet } from "@/lib/modifier-index";
 import type { ElementType, WeaponType } from "@/types";
 
 const MULTIPLIER_FACTOR_IDS = [
@@ -133,6 +133,8 @@ export type FactorDetailData = {
   notice: string;
 };
 
+type RawFactorDetailData = Omit<FactorDetailData, "attributeFields">;
+
 export type DamageType = { id: string; label: string };
 
 type DamageChannelEffect = {
@@ -232,7 +234,7 @@ type RawMultiplierData = {
   damageChannelMatrix: DamageChannelMatrixData;
   weakpointMultiplier: WeakpointMultiplierData;
   dilutionCategories: readonly DilutionCategory[];
-  factorDetails: Partial<Record<MultiplierFactorId, FactorDetailData>>;
+  factorDetails: Partial<Record<MultiplierFactorId, RawFactorDetailData>>;
 };
 
 type RawProviderRegistry = {
@@ -350,6 +352,23 @@ function assertMultiplierData(value: unknown): asserts value is RawMultiplierDat
     }
   }
 
+  for (const [factorId, detail] of Object.entries(value.factorDetails)) {
+    if (
+      !MULTIPLIER_FACTOR_IDS.includes(factorId as MultiplierFactorId) ||
+      !isRecord(detail) ||
+      Object.hasOwn(detail, "attributeFields") ||
+      typeof detail.summary !== "string" ||
+      typeof detail.rulesHeading !== "string" ||
+      !Array.isArray(detail.rules) ||
+      typeof detail.target !== "string" ||
+      typeof detail.targetNote !== "string" ||
+      !Array.isArray(detail.examples) ||
+      typeof detail.notice !== "string"
+    ) {
+      throw new Error("乘区详情存在无效字段或复制的属性字段映射");
+    }
+  }
+
   const validWeaponTypes = new Set(Object.keys(WEAPON_TYPE_SPRITES));
   const weakpoint = value.weakpointMultiplier as Record<string, unknown>;
   if (!Array.isArray(weakpoint.groups)) throw new Error("弱点倍率数据无效");
@@ -421,31 +440,20 @@ function assertProviderRegistry(value: unknown): asserts value is RawProviderReg
 
 assertProviderRegistry(rawProviderRuntime);
 const providerRegistry = rawProviderRuntime as unknown as RawProviderRegistry;
-const modifierIndex = rawModifierIndex as unknown as {
-  attributes: readonly {
-    attributeName: string;
-    attributeTypeId: string;
-  }[];
-  attributeTypes: readonly {
-    id: string;
-    facets: Record<string, { id: string } | undefined>;
-  }[];
-};
-const typeIdsByFacet = new Map<string, string[]>();
-for (const type of modifierIndex.attributeTypes) {
-  for (const facet of Object.values(type.facets)) {
-    if (!facet) continue;
-    const ids = typeIdsByFacet.get(facet.id) ?? [];
-    ids.push(type.id);
-    typeIdsByFacet.set(facet.id, ids);
-  }
+
+function attributesForFacet(facetId: string) {
+  return [...getModifierAttributesForFacet(facetId)].sort((left, right) => {
+      const orderDifference =
+        (left.qualifier?.order ?? Number.MAX_SAFE_INTEGER) -
+        (right.qualifier?.order ?? Number.MAX_SAFE_INTEGER);
+      return (
+        orderDifference || left.attributeName.localeCompare(right.attributeName, "en")
+      );
+  });
 }
 
 function attributeFieldsForFacet(facetId: string): string[] {
-  const typeIds = new Set(typeIdsByFacet.get(facetId) ?? []);
-  return modifierIndex.attributes
-    .filter((attribute) => typeIds.has(attribute.attributeTypeId))
-    .map((attribute) => attribute.attributeName);
+  return attributesForFacet(facetId).map((attribute) => attribute.attributeName);
 }
 
 function factorIdForModifier(channel: DamageChannel): MultiplierFactorId {
@@ -468,7 +476,6 @@ export const BASE_DAMAGE_DATA = data.baseDamage;
 export const DAMAGE_CHANNEL_MATRIX = data.damageChannelMatrix;
 export const WEAKPOINT_MULTIPLIER_DATA = data.weakpointMultiplier;
 export const DILUTION_CATEGORIES = data.dilutionCategories;
-export const MULTIPLIER_FACTOR_DETAILS = data.factorDetails;
 export const DAMAGE_TYPES = data.damageChannelMatrix.damageTypes;
 export const MODIFIER_TYPES: readonly ModifierType[] =
   data.damageChannelMatrix.channels.map((channel) => ({
@@ -476,6 +483,50 @@ export const MODIFIER_TYPES: readonly ModifierType[] =
     factorId: factorIdForModifier(channel),
     attributeFields: attributeFieldsForFacet(channel.facetId),
   }));
+
+function buildMultiplierFactorDetails(): Partial<
+  Record<MultiplierFactorId, FactorDetailData>
+> {
+  const result: Partial<Record<MultiplierFactorId, FactorDetailData>> = {};
+  for (const [factorId, detail] of Object.entries(data.factorDetails) as Array<
+    [MultiplierFactorId, RawFactorDetailData]
+  >) {
+    const selectableIds = new Set(
+      detail.examples.flatMap(({ selectionId }) =>
+        selectionId === undefined ? [] : [selectionId],
+      ),
+    );
+    const fields = data.damageChannelMatrix.channels
+      .filter((channel) => factorIdForModifier(channel) === factorId)
+      .flatMap((channel) => attributesForFacet(channel.facetId));
+    const uniqueFields = [
+      ...new Map(
+        fields.map((attribute) => [attribute.attributeName, attribute]),
+      ).values(),
+    ];
+    if (uniqueFields.length === 0) {
+      throw new Error(`${factorId} 乘区详情无法从 Modifier 语义投影解析属性字段`);
+    }
+    result[factorId] = {
+      ...detail,
+      attributeFields: uniqueFields.map((attribute) => ({
+        name: attribute.attributeName,
+        ...(attribute.qualifier?.dimension === "element" &&
+        selectableIds.has(attribute.qualifier.id)
+          ? {
+              selection: {
+                id: attribute.qualifier.id,
+                label: attribute.qualifier.label,
+              },
+            }
+          : {}),
+      })),
+    };
+  }
+  return result;
+}
+
+export const MULTIPLIER_FACTOR_DETAILS = buildMultiplierFactorDetails();
 export const MULTIPLIER_PROVIDERS = providerRegistry.providers;
 export const MULTIPLIER_PROVIDER_EXCLUSIONS = providerRegistry.exclusions;
 

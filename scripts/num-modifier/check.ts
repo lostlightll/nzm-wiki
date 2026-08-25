@@ -41,7 +41,13 @@ function checkStaticBoundaries(): void {
   const directLockAllowlist = new Set([
     path.join(root, "lib", "num-modifier-data.ts"),
   ]);
+  const directRuntimeImport =
+    /(?:from\s+|require\s*\(\s*)["'][^"']*modifier-index-runtime\.json["']/;
+  const directRuntimeAllowlist = new Set([
+    path.join(root, "lib", "modifier-index.ts"),
+  ]);
   const thisFile = path.resolve(__filename);
+  const searchIndexFile = path.join(root, "scripts", "generate-search-index.ts");
 
   for (const filePath of files) {
     if (path.resolve(filePath) === thisFile) continue;
@@ -68,6 +74,39 @@ function checkStaticBoundaries(): void {
     if (directLockImport.test(source) && !directLockAllowlist.has(filePath)) {
       addError(
         `${path.relative(root, filePath)} directly imports num-modifier-lock.json`,
+      );
+    }
+    if (
+      directRuntimeImport.test(source) &&
+      !directRuntimeAllowlist.has(filePath)
+    ) {
+      addError(
+        `${path.relative(root, filePath)} bypasses the modifier-index interface`,
+      );
+    }
+    if (
+      filePath === searchIndexFile &&
+      source.includes('overlimit-cards.json')
+    ) {
+      addError(
+        "generate-search-index.ts bypasses resolved overlimit card descriptions",
+      );
+    }
+  }
+
+  const multiplierData = JSON.parse(
+    fs.readFileSync(path.join(root, "data", "guides", "multiplier.json"), "utf8"),
+  ) as { factorDetails?: Record<string, unknown> };
+  for (const [factorId, detail] of Object.entries(
+    multiplierData.factorDetails ?? {},
+  )) {
+    if (
+      detail &&
+      typeof detail === "object" &&
+      Object.hasOwn(detail, "attributeFields")
+    ) {
+      addError(
+        `multiplier factorDetails.${factorId} copies Num Modifier attributeFields`,
       );
     }
   }

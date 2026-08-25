@@ -47,6 +47,13 @@ const operationRuleSchema = z.strictObject({
   direction: z.enum(["same-sign", "inverse-sign", "unknown"]).optional(),
 });
 
+const attributeQualifierSchema = z.strictObject({
+  dimension: nonEmptyString,
+  id: nonEmptyString,
+  label: nonEmptyString,
+  order: z.number().int().nonnegative(),
+});
+
 const facetSchema = z.strictObject({
   id: nonEmptyString,
   label: nonEmptyString,
@@ -103,6 +110,7 @@ const indexedAttributeSchema = z.strictObject({
     "other",
   ]),
   label: nonEmptyString.optional(),
+  qualifier: attributeQualifierSchema.optional(),
   operations: z.record(nonEmptyString, operationRuleSchema).optional(),
 });
 
