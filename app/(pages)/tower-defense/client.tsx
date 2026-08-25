@@ -44,7 +44,12 @@ export default function TowerDefensePageClient({
 
   return (
     <>
-      <h1 className="mb-6 text-3xl font-bold text-white">塔防图鉴</h1>
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-3xl font-bold text-white">塔防图鉴</h1>
+        <p className="w-fit bg-blue-500/20 px-3 py-2 text-sm font-medium text-blue-100">
+          TODO：重做陷阱详情页
+        </p>
+      </div>
 
       <nav aria-label="塔防图鉴模块" className="mb-6 flex flex-wrap items-center gap-2">
         {MODULES.map((module) => {
