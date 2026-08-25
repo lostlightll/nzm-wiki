@@ -734,6 +734,7 @@
         {
           "id": "guan-shan-kui-gu",
           "label": "观山窥骨",
+          "image": "/webp/icons/perks/1315155001.webp",
           "href": "/perks/slot-3/观山窥骨"
         }
       ]
@@ -747,16 +748,19 @@
         {
           "id": "dun-hua-damage",
           "label": "钝化增伤",
+          "image": "/webp/icons/perks/1315126001.webp",
           "href": "/perks/slot-3/钝化增伤"
         },
         {
           "id": "chong-luan-die-shi",
           "label": "重峦叠势",
+          "image": "/webp/icons/perks/1315157001.webp",
           "href": "/perks/slot-3/重峦叠势"
         },
         {
           "id": "end-sequence",
           "label": "终焉序列",
+          "image": "/webp/icons/perks/1315143001.webp",
           "href": "/perks/slot-3/终焉序列"
         }
       ]
@@ -770,16 +774,19 @@
         {
           "id": "shou-qu-shuang-yan",
           "label": "兽躯双衍",
+          "image": "/webp/icons/perks/1312040001.webp",
           "href": "/perks/slot-4/兽躯双衍"
         },
         {
           "id": "shou-tong-du-lai",
           "label": "兽瞳独赖",
+          "image": "/webp/icons/perks/1312064001.webp",
           "href": "/perks/slot-4/兽瞳独睐"
         },
         {
           "id": "skill-surge",
           "label": "技能增涌",
+          "image": "/webp/icons/perks/1315134001.webp",
           "href": "/perks/slot-3/技能增涌"
         }
       ]
@@ -819,6 +826,7 @@
         {
           "id": "weapon-enhancement",
           "label": "武器强化",
+          "image": "/webp/icons/perks/1315172001.webp",
           "href": "/perks/slot-3/武器强化"
         }
       ]
@@ -832,6 +840,7 @@
         {
           "id": "toxic-fast-load",
           "label": "剧毒速装",
+          "image": "/webp/icons/perks/1316124001.webp",
           "href": "/perks/slot-4/剧毒速装"
         },
         {
@@ -856,13 +865,12 @@
         {
           "id": "hunting-shop-attack",
           "label": "猎场商店攻击力",
-          "icon": "target",
           "href": "/posts/hunting-atk"
         },
         {
           "id": "overlimit-hunting-bond-damage",
           "label": "超限猎场羁绊增伤",
-          "icon": "sparkles",
+          "image": "/webp/icons/overlimit/sets/T_Icons_Rogue_Frenzy.webp",
           "href": "/overlimit#bonds"
         }
       ],
@@ -881,196 +889,168 @@
         {
           "id": "ghost-spear-kinetic-damage",
           "label": "鬼影长枪",
-          "icon": "swords",
           "href": "/weapons/鬼影长枪",
           "selectionId": "kinetic"
         },
         {
           "id": "nightmare-hammer-kinetic-damage",
           "label": "秘魇锤",
-          "icon": "swords",
           "href": "/weapons/秘魇锤",
           "selectionId": "kinetic"
         },
         {
           "id": "winning-hand-kinetic-damage",
           "label": "稳赢之手",
-          "icon": "swords",
           "href": "/weapons/稳赢之手",
           "selectionId": "kinetic"
         },
         {
           "id": "sand-shaking-mace-kinetic-damage",
           "label": "震沙锏",
-          "icon": "swords",
           "href": "/weapons/震沙锏",
           "selectionId": "kinetic"
         },
         {
           "id": "blood-grudge-kinetic-damage",
           "label": "血怨",
-          "icon": "swords",
           "href": "/weapons/血怨",
           "selectionId": "kinetic"
         },
         {
           "id": "cross-spear-kinetic-damage",
           "label": "十字长枪",
-          "icon": "swords",
           "href": "/weapons/十字长枪",
           "selectionId": "kinetic"
         },
         {
           "id": "freezing-twin-peaks-fire-damage",
           "label": "冰点双峰",
-          "icon": "swords",
           "href": "/weapons/冰点双峰",
           "selectionId": "fire"
         },
         {
           "id": "angry-hammer-fire-damage",
           "label": "怒目锤",
-          "icon": "swords",
           "href": "/weapons/怒目锤",
           "selectionId": "fire"
         },
         {
           "id": "sand-eroded-blade-fire-damage",
           "label": "沙蚀重刃",
-          "icon": "swords",
           "href": "/weapons/沙蚀重刃",
           "selectionId": "fire"
         },
         {
           "id": "soul-pestle-fire-damage",
           "label": "魂杵",
-          "icon": "swords",
           "href": "/weapons/魂杵",
           "selectionId": "fire"
         },
         {
           "id": "dark-angel-blade-fire-damage",
           "label": "黑天使之刃",
-          "icon": "swords",
           "href": "/weapons/黑天使之刃",
           "selectionId": "fire"
         },
         {
           "id": "torch-fire-damage",
           "label": "火炬",
-          "icon": "swords",
           "href": "/weapons/火炬",
           "selectionId": "fire"
         },
         {
           "id": "armed-axe-fire-damage",
           "label": "武装斧头",
-          "icon": "swords",
           "href": "/weapons/武装斧头",
           "selectionId": "fire"
         },
         {
           "id": "piggy-squeeze-fire-damage",
           "label": "猪猪捏捏乐",
-          "icon": "swords",
           "href": "/weapons/猪猪捏捏乐",
           "selectionId": "fire"
         },
         {
           "id": "knight-dual-blades-fire-damage",
           "label": "骑士双刃",
-          "icon": "swords",
           "href": "/weapons/骑士双刃",
           "selectionId": "fire"
         },
         {
           "id": "infernal-scorpion-self-fire-damage",
           "label": "蝎王被动",
-          "icon": "sparkles",
           "href": "/weapons/炼狱蝎王",
           "selectionId": "fire"
         },
         {
           "id": "infernal-scorpion-teammate-fire-damage",
           "label": "队友蝎王被动",
-          "icon": "sparkles",
           "href": "/weapons/炼狱蝎王",
           "selectionId": "fire"
         },
         {
           "id": "corpse-dragon-axe-cryo-damage",
           "label": "尸龙战斧",
-          "icon": "swords",
           "href": "/weapons/尸龙战斧",
           "selectionId": "cryo"
         },
         {
           "id": "frost-fang-cryo-damage",
           "label": "霜蚀之牙",
-          "icon": "swords",
           "href": "/weapons/霜蚀之牙",
           "selectionId": "cryo"
         },
         {
           "id": "serpent-spear-shock-damage",
           "label": "蛇神之矛",
-          "icon": "swords",
           "href": "/weapons/蛇神之矛",
           "selectionId": "shock"
         },
         {
           "id": "star-forged-power-shock-damage",
           "label": "锻星力量",
-          "icon": "swords",
           "href": "/weapons/锻星力量",
           "selectionId": "shock"
         },
         {
           "id": "steel-pipe-shock-damage",
           "label": "百炼钢管",
-          "icon": "swords",
           "href": "/weapons/百炼钢管",
           "selectionId": "shock"
         },
         {
           "id": "cherry-blossom-shock-damage",
           "label": "樱之殇",
-          "icon": "swords",
           "href": "/weapons/樱之殇",
           "selectionId": "shock"
         },
         {
           "id": "cherry-oath-shock-damage",
           "label": "樱之誓",
-          "icon": "swords",
           "href": "/weapons/樱之誓",
           "selectionId": "shock"
         },
         {
           "id": "iron-grip-shock-damage",
           "label": "钢铁之握",
-          "icon": "swords",
           "href": "/weapons/钢铁之握",
           "selectionId": "shock"
         },
         {
           "id": "reaper-scythe-corossive-damage",
           "label": "死神镰刀",
-          "icon": "swords",
           "href": "/weapons/死神镰刀",
           "selectionId": "corossive"
         },
         {
           "id": "butterfly-fans-corossive-damage",
           "label": "蝶翼双扇",
-          "icon": "swords",
           "href": "/weapons/蝶翼双扇",
           "selectionId": "corossive"
         },
         {
           "id": "steel-spine-corossive-damage",
           "label": "钢脊",
-          "icon": "swords",
           "href": "/weapons/钢脊",
           "selectionId": "corossive"
         }
@@ -1091,37 +1071,34 @@
         {
           "id": "zhen-xian-skill",
           "label": "振弦技能",
-          "icon": "sparkles",
           "href": "/weapons/振弦"
         },
         {
           "id": "judgment-eye-skill",
           "label": "裁决之眼技能",
-          "icon": "target",
           "href": "/weapons/裁决之眼"
         },
         {
           "id": "judgment-charge-perk",
           "label": "裁决充能",
-          "icon": "sparkles",
+          "image": "/webp/icons/perks/1315135001.webp",
           "href": "/perks/slot-3/裁决充能"
         },
         {
           "id": "iron-bone",
           "label": "铁骨",
-          "icon": "swords",
           "href": "/weapons/铁骨"
         },
         {
           "id": "rampage-perpetual-motion",
           "label": "暴走永动",
-          "icon": "crosshair",
+          "image": "/webp/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.webp",
           "href": "/overlimit/20703040406"
         },
         {
           "id": "critical-damage-attribute-40",
           "label": "暴伤属性",
-          "icon": "crosshair",
+          "image": "/webp/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.webp",
           "href": "/overlimit/20703040449"
         }
       ],
@@ -1140,13 +1117,13 @@
         {
           "id": "survival-of-the-fittest",
           "label": "弱肉强食",
-          "icon": "target",
+          "image": "/webp/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.webp",
           "href": "/overlimit/20703040408"
         },
         {
           "id": "precision-pursuit",
           "label": "精密追击",
-          "icon": "crosshair",
+          "image": "/webp/icons/perks/1315127001.webp",
           "href": "/perks/slot-3/精密追击"
         }
       ],
@@ -1165,42 +1142,39 @@
         {
           "id": "beast-god-grenade-passive",
           "label": "精绝兽神榴弹被动",
-          "icon": "bomb",
           "href": "/weapons/精绝兽神"
         },
         {
           "id": "single-projectile-enhancement",
           "label": "独弹强化",
-          "icon": "crosshair",
+          "image": "/webp/icons/perks/1316167001.webp",
           "href": "/perks/slot-4/独弹强化"
         },
         {
           "id": "return-damage-reduction",
           "label": "归途减伤",
-          "icon": "sparkles",
+          "image": "/webp/icons/perks/1312045001.webp",
           "href": "/perks/slot-4/归途"
         },
         {
           "id": "s2-hologram-damage-reduction",
           "label": "S2全息减伤",
-          "icon": "sparkles"
+          "image": "/webp/images/season-talents/s2/T_Talent_S2_YHFS_01.webp"
         },
         {
           "id": "compound-bow-penetration",
           "label": "复合弓穿透",
-          "icon": "target",
           "href": "/weapons/超级复合弓"
         },
         {
           "id": "compound-bow-charge",
           "label": "复合弓蓄力",
-          "icon": "target",
           "href": "/weapons/超级复合弓"
         },
         {
           "id": "grappling-hook-damage-transfer",
           "label": "钩锁伤害传递",
-          "icon": "locate-fixed",
+          "image": "/webp/images/season-talents/s3/grappling-hook/T_Talent_S3_WZGS_02.webp",
           "href": "/guides/season-talents/s3/grappling-hook"
         }
       ],
@@ -1220,19 +1194,19 @@
         {
           "id": "shock-vulnerability",
           "label": "感电易伤",
-          "icon": "sparkles",
+          "image": "/webp/icons/elements/shock.webp",
           "href": "/posts/element"
         },
         {
           "id": "melee-vulnerability",
           "label": "近战易伤",
-          "icon": "swords",
+          "image": "/webp/icons/perks/1315182001.webp",
           "href": "/perks/slot-3/近战易伤"
         },
         {
           "id": "switch-vulnerability",
           "label": "切换易伤",
-          "icon": "crosshair",
+          "image": "/webp/icons/perks/1316176001.webp",
           "href": "/perks/slot-4/切换易伤"
         }
       ],
@@ -1252,7 +1226,6 @@
         {
           "id": "nightfall-black-powder-element-vulnerability",
           "label": "黑火药元素易伤",
-          "icon": "bomb",
           "href": "/weapons/暗夜之殇"
         }
       ],

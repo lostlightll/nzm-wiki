@@ -74,6 +74,7 @@ type DilutionExample = {
   id: string;
   label: string;
   href: string;
+  image?: string;
 };
 
 export type DilutionCategory = {
@@ -111,10 +112,35 @@ export type WeakpointMultiplierData = {
 type FactorDetailExample = {
   id: string;
   label: string;
-  icon: DilutionIconKey;
   href?: string;
+  image?: string;
   selectionId?: string;
 };
+
+export type MultiplierExampleArtwork = {
+  href?: string;
+  image?: string;
+};
+
+export function resolveMultiplierExampleImage({
+  href,
+  image,
+}: MultiplierExampleArtwork): string | undefined {
+  if (image) return image;
+  if (!href?.startsWith("/weapons/")) return undefined;
+
+  const encodedSlug = href.slice("/weapons/".length).split(/[?#]/, 1)[0];
+  if (!encodedSlug) return undefined;
+
+  let slug = encodedSlug;
+  try {
+    slug = decodeURIComponent(encodedSlug);
+  } catch {
+    // Keep the original slug when the route contains a literal percent sign.
+  }
+
+  return `/webp/icons/weapons/normal/${slug}.webp`;
+}
 
 type FactorAttributeField = {
   name: string;

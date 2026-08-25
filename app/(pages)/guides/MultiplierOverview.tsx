@@ -6,15 +6,13 @@ import {
   Calculator,
   Crosshair,
   Info,
-  LocateFixed,
-  Sparkles,
-  Swords,
+  ShoppingCart,
   Tag,
   Target,
-  Telescope,
   Users,
   type LucideIcon,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
 import { SpriteIcon } from "@/components/SpriteIcon";
@@ -24,12 +22,14 @@ import {
   DILUTION_CATEGORIES,
   MULTIPLIER_FACTOR_DETAILS,
   MULTIPLIER_FACTORS,
+  resolveMultiplierExampleImage,
   WEAKPOINT_MULTIPLIER_DATA,
   type DilutionIconKey,
   type FactorDetailData,
   type MultiplierFactorId,
   type WeakpointMultiplierData,
 } from "@/lib/multiplier-data";
+import { getAssetPath } from "@/lib/path";
 import type { WeaponType } from "@/types";
 import type { WeaponBaseDamageEntry } from "@/lib/weapon-base-damage";
 import { BaseDamageDetail } from "./BaseDamageDetail";
@@ -146,13 +146,8 @@ function rememberSelectedFactor(factorId: MultiplierFactorId) {
   window.dispatchEvent(new Event("nzm-wiki:multiplier-query-change"));
 }
 
-const DILUTION_ICONS: Record<DilutionIconKey, LucideIcon> = {
+const DILUTION_ICONS: Partial<Record<DilutionIconKey, LucideIcon>> = {
   target: Target,
-  swords: Swords,
-  sparkles: Sparkles,
-  "locate-fixed": LocateFixed,
-  telescope: Telescope,
-  crosshair: Crosshair,
   bomb: Bomb,
 };
 
@@ -196,24 +191,41 @@ function AttributeName({ name }: { name: string }) {
 }
 
 function ExampleCard({
-  icon: Icon,
+  fallbackIcon: FallbackIcon,
+  image,
   label,
   href,
 }: {
-  icon: LucideIcon;
+  fallbackIcon?: LucideIcon;
+  image?: string;
   label: string;
   href?: string;
 }) {
   const content = (
     <>
-      <Icon aria-hidden="true" className="h-5 w-5 shrink-0" strokeWidth={2} />
-      {label}
+      <span
+        aria-hidden="true"
+        className="flex h-7 w-10 shrink-0 items-center justify-center xl:h-6 xl:w-9"
+      >
+        {image ? (
+          <Image
+            src={getAssetPath(image)}
+            alt=""
+            width={40}
+            height={28}
+            className="h-full w-full object-contain"
+          />
+        ) : FallbackIcon ? (
+          <FallbackIcon className="h-5 w-5" strokeWidth={2} />
+        ) : null}
+      </span>
+      <span className="min-w-0 leading-5">{label}</span>
     </>
   );
 
   if (!href) {
     return (
-      <div className="flex min-h-11 items-center gap-2.5 rounded-lg border border-zinc-700 bg-zinc-950/45 px-3 py-2 text-sm font-medium text-zinc-100 xl:min-h-9 xl:py-1.5">
+      <div className="flex min-h-11 items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-950/45 px-2.5 py-1 text-sm font-medium text-zinc-100 xl:min-h-8 xl:py-0.5 xl:text-xs">
         {content}
       </div>
     );
@@ -222,7 +234,7 @@ function ExampleCard({
   return (
     <Link
       href={href}
-      className="flex min-h-11 cursor-pointer touch-manipulation items-center gap-2.5 rounded-lg border border-zinc-700 bg-zinc-950/45 px-3 py-2 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-800/70 hover:text-[color:var(--guide-accent)] focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-9 xl:py-1.5"
+      className="flex min-h-11 cursor-pointer touch-manipulation items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-950/45 px-2.5 py-1 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-800/70 hover:text-[color:var(--guide-accent)] focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none xl:min-h-8 xl:py-0.5 xl:text-xs"
     >
       {content}
     </Link>
@@ -293,7 +305,7 @@ function WeakpointWeaponTable({
       >
         <ul className="flex min-h-8 flex-col justify-center gap-x-8 gap-y-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-start sm:gap-y-2">
           {detail.specialSources.items.map(({ id, label, icon, href }) => {
-            const Icon = DILUTION_ICONS[icon];
+            const Icon = DILUTION_ICONS[icon] ?? Target;
 
             return (
               <li key={id}>
@@ -445,11 +457,14 @@ function FactorDetail({ detail }: { detail: FactorDetailData }) {
           </div>
 
           {visibleExamples.length > 0 ? (
-            <ul className="space-y-2 xl:space-y-1.5">
-              {visibleExamples.map(({ id, label, href, icon }) => (
+            <ul className="space-y-1.5 xl:space-y-1">
+              {visibleExamples.map(({ id, label, href, image }) => (
                 <li key={id}>
                   <ExampleCard
-                    icon={DILUTION_ICONS[icon]}
+                    fallbackIcon={
+                      id === "hunting-shop-attack" ? ShoppingCart : undefined
+                    }
+                    image={resolveMultiplierExampleImage({ href, image })}
                     label={label}
                     href={href}
                   />
@@ -761,10 +776,10 @@ export function MultiplierOverview({
   const filteredCategories = selectedFilterId
     ? DILUTION_CATEGORIES.filter((item) => item.id === selectedFilterId)
     : DILUTION_CATEGORIES;
-  const visibleExamples = filteredCategories.flatMap(({ id, icon, examples }) =>
+  const visibleExamples = filteredCategories.flatMap(({ id, examples }) =>
     (selectedFilterId ? examples : examples.slice(0, 1)).map((example) => ({
       id: `${id}-${example.id}`,
-      icon: DILUTION_ICONS[icon],
+      image: resolveMultiplierExampleImage(example),
       label: example.label,
       href: example.href,
     })),
@@ -909,10 +924,14 @@ export function MultiplierOverview({
                     </span>
                   </div>
 
-                  <ul className="space-y-2 xl:space-y-1.5">
-                    {visibleExamples.map(({ id, label, href, icon }) => (
+                  <ul className="space-y-1.5 xl:space-y-1">
+                    {visibleExamples.map(({ id, label, href, image }) => (
                       <li key={id}>
-                        <ExampleCard icon={icon} label={label} href={href} />
+                        <ExampleCard
+                          image={image}
+                          label={label}
+                          href={href}
+                        />
                       </li>
                     ))}
                   </ul>

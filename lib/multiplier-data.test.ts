@@ -1,15 +1,43 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import test from "node:test";
 import {
   BASE_DAMAGE_DATA,
+  DILUTION_CATEGORIES,
   MULTIPLIER_FACTOR_DETAILS,
   buildDamageProfile,
   getApplicableModifierTypes,
   getProviderRelationsForSource,
   getRelationsByFactor,
   resolveMultiplierFactorHref,
+  resolveMultiplierExampleImage,
   resolveMultiplierSourceHref,
 } from "./multiplier-data";
+
+test("typical examples use site artwork except for the hunting shop fallback", () => {
+  const examples = [
+    ...DILUTION_CATEGORIES.flatMap(({ examples }) => examples),
+    ...Object.values(MULTIPLIER_FACTOR_DETAILS).flatMap(
+      ({ examples }) => examples,
+    ),
+  ];
+
+  for (const example of examples) {
+    const image = resolveMultiplierExampleImage(example);
+
+    if (example.id === "hunting-shop-attack") {
+      assert.equal(image, undefined);
+      continue;
+    }
+
+    assert.ok(image, `${example.label} 缺少站内素材`);
+    assert.ok(
+      existsSync(join(process.cwd(), "public", ...image.split("/").filter(Boolean))),
+      `${example.label} 的站内素材不存在：${image}`,
+    );
+  }
+});
 
 test("factor detail fields come from the Modifier semantic projection", () => {
   assert.deepEqual(MULTIPLIER_FACTOR_DETAILS.element?.attributeFields, [
