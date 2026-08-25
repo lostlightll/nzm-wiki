@@ -49,9 +49,9 @@ const NAV_ITEMS = [
     title: "超限图鉴",
   },
   {
-    href: "/multiplier",
+    href: "/builds",
     icon: <BookOpenText className="h-8 w-8 sm:h-10 sm:w-10" />,
-    title: "游戏乘区",
+    title: "攻略搭配",
   },
 ];
 
