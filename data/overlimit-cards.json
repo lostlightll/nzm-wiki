@@ -1289,7 +1289,7 @@
   {
     "id": "20703040407",
     "name": "狂轰乱炸",
-    "description": "爆炸伤害增加120%，造成多次伤害后可获得急速狂热（CD13秒）。",
+    "description": "爆炸伤害增加400%，造成多次伤害后可获得急速狂热（CD13秒）。",
     "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
     "quality": 5,
     "weight": 1,

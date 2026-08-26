@@ -18087,7 +18087,7 @@
       "111041026_1_1": {
         "raw": {
           "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
-          "BaseValue": 1.2,
+          "BaseValue": 4,
           "CoefValue": 0,
           "Description": "橙插件！\n爆炸伤害+120%，每此开火造成多次伤害叠加一层buff，叠加5层时获得急速狂热10秒，cd 13秒",
           "GPModifierOp": "B1",
@@ -46362,7 +46362,7 @@
       },
       "modifiers": {
         "row_count": 3044,
-        "sha256": "dfc382ff06934157402ecaec9a8e9c5f9a3b1f88f6265918e5cd173dde0e0546",
+        "sha256": "aa30e3902d54f8802c87c76ed1b17c4506e27a5a4f61260f44cb569915be521e",
         "source_path": "Attributes/AutoGenerate/numerical_modifier_config.json"
       }
     }
