@@ -52,6 +52,7 @@ next-env.d.ts
 # generated indexes
 /public/search-index.json
 /public/weapon-stats.json
+/public/sitemap.xml
 
 # local generated artifacts
 /.codex_tmp/
