@@ -100,7 +100,7 @@ const CORE_CONTRIBUTORS = [
     name: "长夜白",
     platform: "bilibili" as const,
     url: "https://space.bilibili.com/37696843",
-    description: "AAA专业黑屏",
+    description: "最有格调的攻略博主",
     avatarUrl: getAssetPath("/avatars/changyebai.webp"),
   },
   {
