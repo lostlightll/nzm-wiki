@@ -72,7 +72,7 @@ const CORE_CONTRIBUTORS = [
     name: "布里布罗茨",
     platform: "bilibili" as const,
     url: "https://space.bilibili.com/503964339",
-    description: "炎刃哥",
+    description: "炎刃哥！",
     avatarUrl: getAssetPath("/avatars/bulibuluoci.webp"),
   },
   {
