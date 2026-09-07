@@ -26,8 +26,8 @@ export function legacyNodePosition(season: "s0" | "s1", node: Pick<LegacyTalentN
   const index = columns.indexOf(node.column);
   if (index < 0 || node.phase < 1 || node.phase > 7) throw new Error("Invalid legacy talent position");
   // The active skill is inspected in the shared header. Both tree regions start at phase 2.
-  // Kunlun's fourth phase has four exclusive nodes, including columns 6 and 8.
-  const exclusiveX = season === "s1" && node.phase === 4
+  // Reserve Kunlun's intermediate columns without shifting the outer columns between phases.
+  const exclusiveX = season === "s1"
     ? [420, 560, 630, 700, 840][index]
     : 450 + (node.column - (season === "s0" ? 4 : 5)) * 90;
   const x = exclusive ? exclusiveX : season === "s0" ? 85 + index * 170 : 45 + index * 80;

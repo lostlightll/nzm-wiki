@@ -27,6 +27,16 @@ test("all published trees keep passive nodes left and a larger exclusive region 
 test("invalid or obsolete view state returns the root",()=>{
   for(const saved of [null,{},[],{version:2,nodeId:"child",level:1},{version:1,nodeId:"missing",level:2},{version:1,nodeId:"child",level:NaN},{version:1,nodeId:"child",level:"2"}]) assert.deepEqual(restoreLegacyTalentView(nodes,saved),{version:1,nodeId:"root",level:1});
 });
+test("same-column nodes stay aligned across every phase in all six trees", () => {
+  for (const season of ["s0", "s1"] as const) for (const tree of getLegacyTalentCatalog(season)) {
+    const columns = new Map<number, number>();
+    for (const node of tree.nodes) {
+      const { x } = legacyNodePosition(season, node);
+      if (columns.has(node.column)) assert.equal(x, columns.get(node.column), `${tree.id}/${node.id}`);
+      columns.set(node.column, x);
+    }
+  }
+});
 test("level previews clamp to exact node levels",()=>{
   assert.equal(restoreLegacyTalentView(nodes,{version:1,nodeId:"child",level:99}).level,3);
   assert.equal(restoreLegacyTalentView(nodes,{version:1,nodeId:"child",level:-2}).level,1);
