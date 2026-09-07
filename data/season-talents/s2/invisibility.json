@@ -1,0 +1,833 @@
+{
+  "id": "invisibility",
+  "name": "匿踪",
+  "subtitle": "强化生存能力",
+  "applicableWeapons": "适配武器：霰弹枪，狙击步枪，射手步枪",
+  "icon": "/webp/images/season-talents/s2/T_SeasonalTalentS2_SP_Icon_001.webp",
+  "core": "/webp/images/season-talents/s2/T_SeasonalTalentS2_001_Normal.webp",
+  "pointLimit": 40,
+  "nodes": [
+    {
+      "id": "2001106",
+      "name": "匿踪",
+      "icon": "/webp/images/season-talents/s2/T_SeasonalTalentS2_SP_Icon_001.webp",
+      "phase": 1,
+      "column": 6,
+      "maxLevel": 1,
+      "prerequisite": "",
+      "unlockPoints": 0,
+      "group": 0,
+      "mutualGroups": [],
+      "isRoot": true,
+      "costs": [
+        0
+      ],
+      "descriptions": [
+        "使自身进入隐身。武器开火会退出隐身，使用技能造成伤害也计作开火。"
+      ],
+      "sourceIds": [
+        20011061
+      ],
+      "auditNote": "S2 技能描述标注持续 8 秒，通用隐身 Buff 默认 6 秒；未确认动态覆写，暂不认定实际持续时间。"
+    },
+    {
+      "id": "2001201",
+      "name": "群轰元素",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_02.webp",
+      "phase": 2,
+      "column": 1,
+      "maxLevel": 5,
+      "prerequisite": "",
+      "unlockPoints": 0,
+      "group": 61,
+      "mutualGroups": [
+        62,
+        63
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "单发榴弹、多发榴弹、火箭发射器、喷射器一次开火命中多个敌人时，为目标添加随机元素异常。冷却 2 秒。",
+        "单发榴弹、多发榴弹、火箭发射器、喷射器一次开火命中多个敌人时，为目标添加随机元素异常。冷却 1.7 秒。",
+        "单发榴弹、多发榴弹、火箭发射器、喷射器一次开火命中多个敌人时，为目标添加随机元素异常。冷却 1.4 秒。",
+        "单发榴弹、多发榴弹、火箭发射器、喷射器一次开火命中多个敌人时，为目标添加随机元素异常。冷却 1.1 秒。",
+        "单发榴弹、多发榴弹、火箭发射器、喷射器一次开火命中多个敌人时，为目标添加随机元素异常。冷却 0.8 秒。"
+      ],
+      "sourceIds": [
+        20012011,
+        20012012,
+        20012013,
+        20012014,
+        20012015
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001202",
+      "name": "速射脉冲",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_03.webp",
+      "phase": 2,
+      "column": 2,
+      "maxLevel": 5,
+      "prerequisite": "",
+      "unlockPoints": 0,
+      "group": 62,
+      "mutualGroups": [
+        61,
+        63
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "冲锋枪、突击步枪、机枪、激光武器、多连发步枪快速连续命中目标，为目标添加随机元素异常。冷却 1.1 秒。",
+        "冲锋枪、突击步枪、机枪、激光武器、多连发步枪快速连续命中目标，为目标添加随机元素异常。冷却 0.85 秒。",
+        "冲锋枪、突击步枪、机枪、激光武器、多连发步枪快速连续命中目标，为目标添加随机元素异常。冷却 0.6 秒。",
+        "冲锋枪、突击步枪、机枪、激光武器、多连发步枪快速连续命中目标，为目标添加随机元素异常。冷却 0.35 秒。",
+        "冲锋枪、突击步枪、机枪、激光武器、多连发步枪快速连续命中目标，为目标添加随机元素异常。冷却 0.1 秒。"
+      ],
+      "sourceIds": [
+        20012021,
+        20012022,
+        20012023,
+        20012024,
+        20012025
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001203",
+      "name": "精准超载",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_04.webp",
+      "phase": 2,
+      "column": 3,
+      "maxLevel": 5,
+      "prerequisite": "",
+      "unlockPoints": 0,
+      "group": 63,
+      "mutualGroups": [
+        61,
+        62
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "霰弹枪、狙击枪、射手步枪、手枪、弓箭、暗器命中目标时，额外添加随机元素异常。冷却 1.7 秒。",
+        "霰弹枪、狙击枪、射手步枪、手枪、弓箭、暗器命中目标时，额外添加随机元素异常。冷却 1.4 秒。",
+        "霰弹枪、狙击枪、射手步枪、手枪、弓箭、暗器命中目标时，额外添加随机元素异常。冷却 1.1 秒。",
+        "霰弹枪、狙击枪、射手步枪、手枪、弓箭、暗器命中目标时，额外添加随机元素异常。冷却 0.8 秒。",
+        "霰弹枪、狙击枪、射手步枪、手枪、弓箭、暗器命中目标时，额外添加随机元素异常。冷却 0.5 秒。"
+      ],
+      "sourceIds": [
+        20012031,
+        20012032,
+        20012033,
+        20012034,
+        20012035
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001206",
+      "name": "遁形",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHYS_03.webp",
+      "phase": 2,
+      "column": 6,
+      "maxLevel": 1,
+      "prerequisite": "",
+      "unlockPoints": 0,
+      "group": 0,
+      "mutualGroups": [],
+      "isRoot": false,
+      "costs": [
+        1
+      ],
+      "descriptions": [
+        "隐身状态下武器伤害增加 50%。自身赛季技能施加的隐身升级为遁形，前几次开火不破隐且必定暴击。"
+      ],
+      "sourceIds": [
+        20012061
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001301",
+      "name": "续航协议",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_05.webp",
+      "phase": 3,
+      "column": 1,
+      "maxLevel": 5,
+      "prerequisite": "2001201|2001202|2001203",
+      "unlockPoints": 4,
+      "group": 64,
+      "mutualGroups": [
+        65,
+        66
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "元素异常持续时间增加 100%。",
+        "元素异常持续时间增加 140%。",
+        "元素异常持续时间增加 180%。",
+        "元素异常持续时间增加 220%。",
+        "元素异常持续时间增加 260%。"
+      ],
+      "sourceIds": [
+        20013011,
+        20013012,
+        20013013,
+        20013014,
+        20013015
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001302",
+      "name": "弱点穿刺",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_06.webp",
+      "phase": 3,
+      "column": 2,
+      "maxLevel": 5,
+      "prerequisite": "2001201|2001202|2001203",
+      "unlockPoints": 4,
+      "group": 65,
+      "mutualGroups": [
+        64,
+        66
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "命中目标弱点时，对其添加随机元素异常。冷却 1.2 秒。",
+        "命中目标弱点时，对其添加随机元素异常。冷却 1 秒。",
+        "命中目标弱点时，对其添加随机元素异常。冷却 0.8 秒。",
+        "命中目标弱点时，对其添加随机元素异常。冷却 0.6 秒。",
+        "命中目标弱点时，对其添加随机元素异常。冷却 0.4 秒。"
+      ],
+      "sourceIds": [
+        20013021,
+        20013022,
+        20013023,
+        20013024,
+        20013025
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001303",
+      "name": "爆发程序",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_07.webp",
+      "phase": 3,
+      "column": 3,
+      "maxLevel": 5,
+      "prerequisite": "2001201|2001202|2001203",
+      "unlockPoints": 4,
+      "group": 66,
+      "mutualGroups": [
+        64,
+        65
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "元素异常伤害增加 16%，持续时间调整 -20%。",
+        "元素异常伤害增加 20%，持续时间调整 -20%。",
+        "元素异常伤害增加 24%，持续时间调整 -20%。",
+        "元素异常伤害增加 28%，持续时间调整 -20%。",
+        "元素异常伤害增加 32%，持续时间调整 -20%。"
+      ],
+      "sourceIds": [
+        20013031,
+        20013032,
+        20013033,
+        20013034,
+        20013035
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001305",
+      "name": "潜行",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHYS_10.webp",
+      "phase": 3,
+      "column": 5,
+      "maxLevel": 3,
+      "prerequisite": "2001206",
+      "unlockPoints": 4,
+      "group": 0,
+      "mutualGroups": [],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "隐身状态下，移动速度增加 6%。",
+        "隐身状态下，移动速度增加 12%。",
+        "隐身状态下，移动速度增加 18%。"
+      ],
+      "sourceIds": [
+        20013051,
+        20013052,
+        20013053
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001307",
+      "name": "幽暗滋养",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHYS_16.webp",
+      "phase": 3,
+      "column": 7,
+      "maxLevel": 3,
+      "prerequisite": "2001206",
+      "unlockPoints": 4,
+      "group": 0,
+      "mutualGroups": [],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "隐身状态下生命值逐渐回复，回复量受已损生命值影响。",
+        "隐身状态下生命值逐渐回复，回复量受已损生命值影响。",
+        "隐身状态下生命值逐渐回复，回复量受已损生命值影响。"
+      ],
+      "sourceIds": [
+        20013071,
+        20013072,
+        20013073
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001401",
+      "name": "元素扩容",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_08.webp",
+      "phase": 4,
+      "column": 1,
+      "maxLevel": 5,
+      "prerequisite": "2001301|2001302|2001303",
+      "unlockPoints": 12,
+      "group": 67,
+      "mutualGroups": [
+        68,
+        69
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "元素异常层数上限增加 1 层。",
+        "元素异常层数上限增加 2 层。",
+        "元素异常层数上限增加 3 层。",
+        "元素异常层数上限增加 4 层。",
+        "元素异常层数上限增加 5 层。"
+      ],
+      "sourceIds": [
+        20014011,
+        20014012,
+        20014013,
+        20014014,
+        20014015
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001402",
+      "name": "伤害增幅",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_09.webp",
+      "phase": 4,
+      "column": 2,
+      "maxLevel": 5,
+      "prerequisite": "2001301|2001302|2001303",
+      "unlockPoints": 12,
+      "group": 68,
+      "mutualGroups": [
+        67,
+        69
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "元素异常伤害增加 17%。",
+        "元素异常伤害增加 24%。",
+        "元素异常伤害增加 31%。",
+        "元素异常伤害增加 38%。",
+        "元素异常伤害增加 45%。"
+      ],
+      "sourceIds": [
+        20014021,
+        20014022,
+        20014023,
+        20014024,
+        20014025
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001403",
+      "name": "频率加速",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_10.webp",
+      "phase": 4,
+      "column": 3,
+      "maxLevel": 5,
+      "prerequisite": "2001301|2001302|2001303",
+      "unlockPoints": 12,
+      "group": 69,
+      "mutualGroups": [
+        67,
+        68
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "元素异常结算频率加快 17%。",
+        "元素异常结算频率加快 24%。",
+        "元素异常结算频率加快 31%。",
+        "元素异常结算频率加快 38%。",
+        "元素异常结算频率加快 45%。"
+      ],
+      "sourceIds": [
+        20014031,
+        20014032,
+        20014033,
+        20014034,
+        20014035
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001406",
+      "name": "暗影之刺I",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHYS_17.webp",
+      "phase": 4,
+      "column": 6,
+      "maxLevel": 1,
+      "prerequisite": "2001305|2001307",
+      "unlockPoints": 12,
+      "group": 0,
+      "mutualGroups": [],
+      "isRoot": false,
+      "costs": [
+        1
+      ],
+      "descriptions": [
+        "释放赛季技能或武器技能后，暴击伤害提升 20%，不可叠加。"
+      ],
+      "sourceIds": [
+        20014061
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001501",
+      "name": "堆叠缓频",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_11.webp",
+      "phase": 5,
+      "column": 1,
+      "maxLevel": 5,
+      "prerequisite": "2001401|2001402|2001403",
+      "unlockPoints": 20,
+      "group": 70,
+      "mutualGroups": [
+        71,
+        72
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "元素异常层数上限增加 6 层，结算频率调整 -50%。",
+        "元素异常层数上限增加 7 层，结算频率调整 -50%。",
+        "元素异常层数上限增加 8 层，结算频率调整 -50%。",
+        "元素异常层数上限增加 9 层，结算频率调整 -50%。",
+        "元素异常层数上限增加 10 层，结算频率调整 -50%。"
+      ],
+      "sourceIds": [
+        20015011,
+        20015012,
+        20015013,
+        20015014,
+        20015015
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001502",
+      "name": "协同共鸣",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_12.webp",
+      "phase": 5,
+      "column": 2,
+      "maxLevel": 5,
+      "prerequisite": "2001401|2001402|2001403",
+      "unlockPoints": 20,
+      "group": 71,
+      "mutualGroups": [
+        70,
+        72
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "距离敌人越近，元素异常添加概率越高，每米提升 4%。周围每有一个队友，元素异常伤害提高 1%。",
+        "距离敌人越近，元素异常添加概率越高，每米提升 6%。周围每有一个队友，元素异常伤害提高 2%。",
+        "距离敌人越近，元素异常添加概率越高，每米提升 8%。周围每有一个队友，元素异常伤害提高 3%。",
+        "距离敌人越近，元素异常添加概率越高，每米提升 10%。周围每有一个队友，元素异常伤害提高 4%。",
+        "距离敌人越近，元素异常添加概率越高，每米提升 12%。周围每有一个队友，元素异常伤害提高 5%。"
+      ],
+      "sourceIds": [
+        20015021,
+        20015022,
+        20015023,
+        20015024,
+        20015025
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001503",
+      "name": "速充精简",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_13.webp",
+      "phase": 5,
+      "column": 3,
+      "maxLevel": 5,
+      "prerequisite": "2001401|2001402|2001403",
+      "unlockPoints": 20,
+      "group": 72,
+      "mutualGroups": [
+        70,
+        71
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "元素异常结算频率加快 28%，层数上限调整 -2 层。",
+        "元素异常结算频率加快 36%，层数上限调整 -2 层。",
+        "元素异常结算频率加快 44%，层数上限调整 -2 层。",
+        "元素异常结算频率加快 52%，层数上限调整 -2 层。",
+        "元素异常结算频率加快 60%，层数上限调整 -2 层。"
+      ],
+      "sourceIds": [
+        20015031,
+        20015032,
+        20015033,
+        20015034,
+        20015035
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001505",
+      "name": "暗影之刺III",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHYS_15.webp",
+      "phase": 5,
+      "column": 5,
+      "maxLevel": 3,
+      "prerequisite": "2001406",
+      "unlockPoints": 20,
+      "group": 0,
+      "mutualGroups": [],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "遁形状态下每次暴击提升 2% 暴击伤害，最多叠加 8 层。",
+        "遁形状态下每次暴击提升 4% 暴击伤害，最多叠加 8 层。",
+        "遁形状态下每次暴击提升 6% 暴击伤害，最多叠加 8 层。"
+      ],
+      "sourceIds": [
+        20015051,
+        20015052,
+        20015053
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001507",
+      "name": "遁入黑暗",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHYS_13.webp",
+      "phase": 5,
+      "column": 7,
+      "maxLevel": 3,
+      "prerequisite": "2001406",
+      "unlockPoints": 20,
+      "group": 0,
+      "mutualGroups": [],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "遁形状态下每次命中弱点，在遁形结束时返还 1% 赛季技能充能。",
+        "遁形状态下每次命中弱点，在遁形结束时返还 2% 赛季技能充能。",
+        "遁形状态下每次命中弱点，在遁形结束时返还 3% 赛季技能充能。"
+      ],
+      "sourceIds": [
+        20015071,
+        20015072,
+        20015073
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001601",
+      "name": "登峰造极",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_14.webp",
+      "phase": 6,
+      "column": 1,
+      "maxLevel": 5,
+      "prerequisite": "2001501|2001502|2001503",
+      "unlockPoints": 28,
+      "group": 73,
+      "mutualGroups": [
+        74,
+        75
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "武器射击连续命中弱点 2 次，使下一次命中附带所有元素异常。冷却 3.2 秒。",
+        "武器射击连续命中弱点 2 次，使下一次命中附带所有元素异常。冷却 2.7 秒。",
+        "武器射击连续命中弱点 2 次，使下一次命中附带所有元素异常。冷却 2.2 秒。",
+        "武器射击连续命中弱点 2 次，使下一次命中附带所有元素异常。冷却 1.7 秒。",
+        "武器射击连续命中弱点 2 次，使下一次命中附带所有元素异常。冷却 1.2 秒。"
+      ],
+      "sourceIds": [
+        20016011,
+        20016012,
+        20016013,
+        20016014,
+        20016015
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001602",
+      "name": "连杀增益",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_15.webp",
+      "phase": 6,
+      "column": 2,
+      "maxLevel": 5,
+      "prerequisite": "2001501|2001502|2001503",
+      "unlockPoints": 28,
+      "group": 74,
+      "mutualGroups": [
+        73,
+        75
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "快速连杀提升元素异常添加概率，每层增加 15%，最多 5 层，持续 10 秒。",
+        "快速连杀提升元素异常添加概率，每层增加 20%，最多 5 层，持续 10 秒。",
+        "快速连杀提升元素异常添加概率，每层增加 25%，最多 5 层，持续 10 秒。",
+        "快速连杀提升元素异常添加概率，每层增加 30%，最多 5 层，持续 10 秒。",
+        "快速连杀提升元素异常添加概率，每层增加 35%，最多 5 层，持续 10 秒。"
+      ],
+      "sourceIds": [
+        20016021,
+        20016022,
+        20016023,
+        20016024,
+        20016025
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001603",
+      "name": "游龙",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_16.webp",
+      "phase": 6,
+      "column": 3,
+      "maxLevel": 5,
+      "prerequisite": "2001501|2001502|2001503",
+      "unlockPoints": 28,
+      "group": 75,
+      "mutualGroups": [
+        73,
+        74
+      ],
+      "isRoot": false,
+      "costs": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "descriptions": [
+        "一段时间内未受到伤害时，元素异常伤害随时间提高，每秒提升 0.7%，最多叠加 30 层。",
+        "一段时间内未受到伤害时，元素异常伤害随时间提高，每秒提升 0.9%，最多叠加 30 层。",
+        "一段时间内未受到伤害时，元素异常伤害随时间提高，每秒提升 1.1%，最多叠加 30 层。",
+        "一段时间内未受到伤害时，元素异常伤害随时间提高，每秒提升 1.3%，最多叠加 30 层。",
+        "一段时间内未受到伤害时，元素异常伤害随时间提高，每秒提升 1.5%，最多叠加 30 层。"
+      ],
+      "sourceIds": [
+        20016031,
+        20016032,
+        20016033,
+        20016034,
+        20016035
+      ],
+      "auditNote": null
+    },
+    {
+      "id": "2001606",
+      "name": "暗影之刺II",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHYS_17.webp",
+      "phase": 6,
+      "column": 6,
+      "maxLevel": 1,
+      "prerequisite": "2001505|2001507",
+      "unlockPoints": 28,
+      "group": 0,
+      "mutualGroups": [],
+      "isRoot": false,
+      "costs": [
+        1
+      ],
+      "descriptions": [
+        "遁形允许的开火次数增加。遁形状态下武器命中弱点，伤害额外增加 70%，与遁形天赋相加。"
+      ],
+      "sourceIds": [
+        20016061
+      ],
+      "auditNote": null
+    }
+  ],
+  "passives": [
+    {
+      "id": "2020301",
+      "name": "超频",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_17.webp",
+      "sourceId": 1379020170,
+      "description": "元素异常结算频率增加 50%。"
+    },
+    {
+      "id": "2020302",
+      "name": "双击",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_18.webp",
+      "sourceId": 1379020180,
+      "description": "每次结算元素异常时，有 40% 概率再结算一次对应元素伤害。"
+    },
+    {
+      "id": "2020303",
+      "name": "头奖",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_19.webp",
+      "sourceId": 1379020190,
+      "description": "武器射击命中目标弱点，可立即结算目标身上的所有元素异常，冷却 2 秒。"
+    },
+    {
+      "id": "2020304",
+      "name": "传染",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_22.webp",
+      "sourceId": 1379020220,
+      "description": "25 米内击杀敌人时，将其元素异常传染给 25 米内的目标，传染层数变为原来的 120% 且不超过上限，冷却 0.2 秒。"
+    },
+    {
+      "id": "2020305",
+      "name": "强化射击",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_20.webp",
+      "sourceId": 1379020200,
+      "description": "武器射击命中敌人时，敌人每有一层元素异常，伤害增加 0.3%。"
+    },
+    {
+      "id": "2020306",
+      "name": "核爆",
+      "icon": "/webp/images/season-talents/s2/T_Talent_S2_YHTY_21.webp",
+      "sourceId": 1379020210,
+      "description": "释放武器技能后，下次射击命中至少有 35 层元素异常的目标，清除其元素异常，每层造成 30% 攻击力伤害，最多结算 120 层，冷却 8 秒。命中弱点且元素异常达到上限的 90% 时也可触发。"
+    }
+  ]
+}

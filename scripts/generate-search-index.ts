@@ -13,6 +13,7 @@ import { getAllOverlimitCards } from "../lib/overlimit-cards";
 import { getStatusEffectSearchDocuments } from "../lib/status-effects";
 import { getSummonSearchDocuments } from "../lib/summons";
 import { getAllResolvedWeapons } from "../lib/weapons";
+import { getS2TalentTree, S2_TALENT_IDS } from "../lib/s2-season-talents";
 import { getLegacyTalentCatalog } from "../lib/s0s1-season-talents";
 import type { OverlimitCard } from "../types";
 
@@ -356,7 +357,7 @@ export function createSummonSearchItem(
 }
 
 type SeasonTalentSearchDocument = {
-  season: "s0" | "s1" | "s3" | "s4";
+  season: "s0" | "s1" | "s2" | "s3" | "s4";
   tree: string;
   treeName: string;
   id: string;
@@ -452,6 +453,13 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
       items.push({ title: `${tree.name}天赋树（${season.toUpperCase()}）`, slug: `season-talents/${season}/${tree.id}`, path: `/guides/season-talents/${season}/${tree.id}`, category: "赛季天赋", keywords, pinyin: buildPinyin(keywords) });
       for (const node of tree.nodes) items.push(createSeasonTalentSearchItem({ season, tree: tree.id, treeName: tree.name, id: node.id, title: node.name, kind: "node", keywords: node.levels.map(level => level.description) }));
     }
+  }
+  for (const id of S2_TALENT_IDS) {
+    const tree = getS2TalentTree(id)!;
+    const keywords = ["S2", "赛季天赋", tree.name, tree.subtitle, tree.applicableWeapons];
+    items.push({ title: `${tree.name}天赋树（S2）`, slug: `season-talents/s2/${id}`, path: `/guides/season-talents/s2/${id}`, category: "赛季天赋", keywords, pinyin: buildPinyin(keywords) });
+    for (const node of tree.nodes) items.push(createSeasonTalentSearchItem({ season: "s2", tree: id, treeName: tree.name, id: node.id, title: node.name, kind: "node", keywords: node.descriptions }));
+    for (const passive of tree.passives) items.push(createSeasonTalentSearchItem({ season: "s2", tree: id, treeName: tree.name, id: passive.id, title: passive.name, kind: "passive", keywords: [passive.description] }));
   }
   for (const slug of s3TalentSlugs) {
     const talentFile = path.join(baseDir, "season-talents", "s3", `${slug}.json`);

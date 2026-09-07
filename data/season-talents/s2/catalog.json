@@ -1,0 +1,62 @@
+{
+  "background": "/webp/images/season-talents/s2/background.webp",
+  "logo": "/webp/images/season-talents/s2/logo.webp",
+  "decorations": [
+    "/webp/images/season-talents/s2/T_SeasonalTalentS2_bg_002.webp",
+    "/webp/images/season-talents/s2/T_SeasonalTalentS2_bg_003.webp",
+    "/webp/images/season-talents/s2/T_SeasonalTalentS2_bg_004.webp"
+  ],
+  "markers": [
+    {
+      "shell": "/webp/images/season-talents/s2/T_SeasonalTalentS2_001_1.webp",
+      "glow": "/webp/images/season-talents/s2/T_SeasonalTalentS2_001_Icon.webp",
+      "title": "/webp/images/season-talents/s2/T_SeasonalTalentS2_bg_007.webp"
+    },
+    {
+      "shell": "/webp/images/season-talents/s2/T_SeasonalTalentS2_002_1.webp",
+      "glow": "/webp/images/season-talents/s2/T_SeasonalTalentS2_002_Icon.webp",
+      "title": "/webp/images/season-talents/s2/T_SeasonalTalentS2_bg_008.webp"
+    },
+    {
+      "shell": "/webp/images/season-talents/s2/T_SeasonalTalentS2_003_1.webp",
+      "glow": "/webp/images/season-talents/s2/T_SeasonalTalentS2_003_Icon.webp",
+      "title": "/webp/images/season-talents/s2/T_SeasonalTalentS2_bg_006.webp"
+    }
+  ],
+  "frame": "/webp/images/season-talents/s2/T_SeasonalTalentS2_Selected.webp",
+  "trees": [
+    {
+      "id": "invisibility",
+      "name": "匿踪",
+      "subtitle": "强化生存能力",
+      "applicableWeapons": "适配武器：霰弹枪，狙击步枪，射手步枪",
+      "icon": "/webp/images/season-talents/s2/T_SeasonalTalentS2_SP_Icon_001.webp",
+      "core": "/webp/images/season-talents/s2/T_SeasonalTalentS2_001_Normal.webp",
+      "pointLimit": 40,
+      "nodeCount": 23,
+      "passiveCount": 6
+    },
+    {
+      "id": "inferno-arm",
+      "name": "炼狱炎臂",
+      "subtitle": "强化单体爆发能力",
+      "applicableWeapons": "适配武器：火属性武器、高射速武器",
+      "icon": "/webp/images/season-talents/s2/T_SeasonalTalentS2_SP_Icon_002.webp",
+      "core": "/webp/images/season-talents/s2/T_SeasonalTalentS2_002_Normal.webp",
+      "pointLimit": 40,
+      "nodeCount": 23,
+      "passiveCount": 6
+    },
+    {
+      "id": "holographic-sync",
+      "name": "全息同调",
+      "subtitle": "强化区域作战能力",
+      "applicableWeapons": "适配武器：全方面适配于所有武器",
+      "icon": "/webp/images/season-talents/s2/T_SeasonalTalentS2_SP_Icon_003.webp",
+      "core": "/webp/images/season-talents/s2/T_SeasonalTalentS2_003_Normal.webp",
+      "pointLimit": 40,
+      "nodeCount": 23,
+      "passiveCount": 6
+    }
+  ]
+}

@@ -1,0 +1,2071 @@
+{
+  "source": "refs/Exports/NZM/Content_S2",
+  "sourceHashes": {
+    "DataTables/SeasonTalent/SeasonTalentBasicTable": "61e494eb9cbfe0fe91bcf4e813d8fdbdebb43ba5d033bbc8f3f9ff635ef49837",
+    "DataTables/SeasonTalent/SeasonTalentTypeTable": "dd743e9960bdc74431cec592eb0b3e3f3c0e896ed7ffe8d33d42e7628ed0eeaa",
+    "DataTables/SeasonTalent/SeasonTalentPassiveConfigTable": "6b8409174782f015d0db98f050a66e6a1241850965f7256d683568d546d1bb83",
+    "DataTables/SeasonTalent/SeasonTalentPhaseTable": "70a91f9da7ab4f0e44d30ec48f417bafe3a03a73d999e7f269b86e837ce6b542",
+    "DataTables/SeasonTalent/AdaptWeaponTable": "6d503f59c46db1721c0b9d3a1c78193c8efd763c33ca1e576e0ff102d13ea309",
+    "DataTables/MGE/MGEPassive_Season": "692192f3d07ab20bebd0c92f4d5353d548c5fa2cb5758fa34660840748e0157e",
+    "DataTables/MGE/MGEConfig_Season": "0946b4ec316e24d8558094d7b042d4d1813c289ff7a45833f28fd377a80dbb6c",
+    "Attributes/AutoGenerate/numerical_modifier_config": "b398244f75862b37bf88a9059e6eb289c5861aee7b435c646fa353cb345ffb52",
+    "DataTables/MGE/DT_GPMGESkillDesConfig_BD": "2abbf226305b1624d065f58a22de0dd83a6f3a5827c309bc008133e37bdb4de5",
+    "DataTables/GPActiveSkillDataTable": "54d2c85e60a3d994ac7736739c7d2b4b99aaab85d2cd8d6193688c28ac905863",
+    "DataTables/SeasonTalent/SeasonTalentStructure1Table": "6f2bcaf4cf7d5830856dbefaf25831b0a9da6b2c4821b8edbdcb9369ce80224f",
+    "DataTables/SeasonTalent/SeasonTalentStructure2Table": "7a0e47bef0f4eeb79815a5ea9d5d31f6e0766bf4cedc69b66d84f97531738b34",
+    "DataTables/SeasonTalent/SeasonTalentStructure3Table": "f4c9e7c36cce2226906f1022c4feb1cbf1ecf85bc67aa30078e9388e917c2a70",
+    "DataTables/Buff/BuffConfigDatatableNew": "0f990f2fc2afe9901badc6d547ec381718d004cd16f3509d1935c8241fc390a1",
+    "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020140": "54100af83085c79ea872502a305b66121b850d4533e45d496fb4c1f144d66393",
+    "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020180": "0389f87669c8268d2e6b6fbc30ff75ec72ba42a702f051073d0581268fa93f61",
+    "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020190": "62e7138dd32559efff40bc0a8e2249c7ac0fd8c0b68587e9603a84141aa0d5ef",
+    "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020220": "155b1e8fa59f22909927effeae483d71acedb254367df61d8c59fb4c57459639",
+    "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020210": "5ad9fac6efe9dc1b54a40d017d199c1bac9925359c57bca5064d43102e88e000",
+    "Abilities/Skills/Season/S3/NinjaShooting/MGE_YHRS_Base": "d787efe9ea80dd74be93067ba69793e0cfb82cdca98e5523073c19af95e66c7b",
+    "Abilities/Skills/Season/S3/NinjaShooting/MGE_YHRS_Sowing": "9ac00e1caf78102809e2c665d62cbe5798c2ed3016ed837e68ce6f0992161a5e",
+    "Abilities/Skills/Season/S3/NinjaShooting/MGE_YHRS_Lighting": "140592450adaddee91545098fbf205edc12a1cdad7cb562dac53b34a57021266",
+    "Abilities/Skills/Season/S3/YHFS/SKT_S3_YHFS2": "479f8deaf19b0422e41e2b59dbb5d3924d05dc0698d0e3ceb2381f401314c317"
+  },
+  "numericalSource": "Content_S2/Attributes/AutoGenerate/numerical_modifier_config.json",
+  "numericalRows": {
+    "160303001_1_0": {
+      "ID": 160303001,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "S3_匿踪_遁形_增伤",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030001_1_4": {
+      "ID": 111030001,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+      "Description": "元素异常持续时间增加x%，但伤害减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 1,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030001_2_4": {
+      "ID": 111030001,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+      "Description": "元素异常持续时间增加x%，但伤害减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 1.4,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030001_3_4": {
+      "ID": 111030001,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+      "Description": "元素异常持续时间增加x%，但伤害减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 1.8,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030001_4_4": {
+      "ID": 111030001,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+      "Description": "元素异常持续时间增加x%，但伤害减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 2.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030001_5_4": {
+      "ID": 111030001,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+      "Description": "元素异常持续时间增加x%，但伤害减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 2.6,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030002_1_0": {
+      "ID": 111030002,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.16,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030002_1_4": {
+      "ID": 111030002,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+      "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030002_2_0": {
+      "ID": 111030002,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030002_2_4": {
+      "ID": 111030002,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+      "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030002_3_0": {
+      "ID": 111030002,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.24,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030002_3_4": {
+      "ID": 111030002,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+      "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030002_4_0": {
+      "ID": 111030002,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.28,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030002_4_4": {
+      "ID": 111030002,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+      "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030002_5_0": {
+      "ID": 111030002,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.32,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030002_5_4": {
+      "ID": 111030002,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+      "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "160303003_1_0": {
+      "ID": 160303003,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetSpeed.SpeedScale",
+      "Description": "S3_匿踪_潜行_移速",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.06,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "160303003_2_1": {
+      "ID": 160303003,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetSpeed.SpeedScale",
+      "Description": "S3_匿踪_潜行_移速",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.12,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "160303003_3_2": {
+      "ID": 160303003,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetSpeed.SpeedScale",
+      "Description": "S3_匿踪_潜行_移速",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.18,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030013_1_0": {
+      "ID": 111030013,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常层数上限增加x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": 1,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030013_2_0": {
+      "ID": 111030013,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常层数上限增加x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": 2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030013_3_0": {
+      "ID": 111030013,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常层数上限增加x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": 3,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030013_4_0": {
+      "ID": 111030013,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常层数上限增加x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": 4,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030013_5_0": {
+      "ID": 111030013,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常层数上限增加x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": 5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030003_1_0": {
+      "ID": 111030003,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "元素异常伤害增加x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.17,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030003_2_0": {
+      "ID": 111030003,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "元素异常伤害增加x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.24,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030003_3_0": {
+      "ID": 111030003,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "元素异常伤害增加x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.31,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030003_4_0": {
+      "ID": 111030003,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "元素异常伤害增加x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.38,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030003_5_0": {
+      "ID": 111030003,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "元素异常伤害增加x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.45,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030018_1_0": {
+      "ID": 111030018,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率加快x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.17,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030018_2_0": {
+      "ID": 111030018,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率加快x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.24,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030018_3_0": {
+      "ID": 111030018,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率加快x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.31,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030018_4_0": {
+      "ID": 111030018,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率加快x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.38,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030018_5_0": {
+      "ID": 111030018,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率加快x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.45,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "160303005_1_0": {
+      "ID": 160303005,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetCritical.CriticalDamageRatio",
+      "Description": "S3_匿踪_暗影之刺I_爆伤",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030004_1_4": {
+      "ID": 111030004,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常层数增加x层，但频率减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 6,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030004_1_0": {
+      "ID": 111030004,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常层数增加x层，但频率减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030004_2_4": {
+      "ID": 111030004,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常层数增加x层，但频率减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 7,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030004_2_0": {
+      "ID": 111030004,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常层数增加x层，但频率减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030004_3_4": {
+      "ID": 111030004,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常层数增加x层，但频率减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 8,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030004_3_0": {
+      "ID": 111030004,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常层数增加x层，但频率减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030004_4_4": {
+      "ID": 111030004,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常层数增加x层，但频率减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 9,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030004_4_0": {
+      "ID": 111030004,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常层数增加x层，但频率减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030004_5_4": {
+      "ID": 111030004,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常层数增加x层，但频率减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 10,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030004_5_0": {
+      "ID": 111030004,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常层数增加x层，但频率减少k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030005_1_0": {
+      "ID": 111030005,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.04,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030006_1_0": {
+      "ID": 111030006,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.01,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030005_2_0": {
+      "ID": 111030005,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.06,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030006_2_0": {
+      "ID": 111030006,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.02,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030005_3_0": {
+      "ID": 111030005,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.08,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030006_3_0": {
+      "ID": 111030006,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.03,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030005_4_0": {
+      "ID": 111030005,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.1,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030006_4_0": {
+      "ID": 111030006,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.04,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030005_5_0": {
+      "ID": 111030005,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.12,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030006_5_0": {
+      "ID": 111030006,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.05,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030007_1_0": {
+      "ID": 111030007,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率加快x%，但总层数减少x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.28,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030007_1_4": {
+      "ID": 111030007,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常频率加快x%，但总层数减少x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": -2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030007_2_0": {
+      "ID": 111030007,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率加快x%，但总层数减少x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.36,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030007_2_4": {
+      "ID": 111030007,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常频率加快x%，但总层数减少x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": -2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030007_3_0": {
+      "ID": 111030007,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率加快x%，但总层数减少x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.44,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030007_3_4": {
+      "ID": 111030007,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常频率加快x%，但总层数减少x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": -2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030007_4_0": {
+      "ID": 111030007,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率加快x%，但总层数减少x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.52,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030007_4_4": {
+      "ID": 111030007,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常频率加快x%，但总层数减少x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": -2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030007_5_0": {
+      "ID": 111030007,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率加快x%，但总层数减少x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.6,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030007_5_4": {
+      "ID": 111030007,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetElement.CorossiveBuffMaxStackAdd",
+      "Description": "元素异常频率加快x%，但总层数减少x层。",
+      "GPModifierOp": "B1",
+      "BaseValue": -2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "160303004_1_0": {
+      "ID": 160303004,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetCritical.CriticalDamageRatio",
+      "Description": "S3_匿踪_暗影之刺III_爆伤",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.02,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "160303004_2_1": {
+      "ID": 160303004,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetCritical.CriticalDamageRatio",
+      "Description": "S3_匿踪_暗影之刺III_爆伤",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.04,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "160303004_3_2": {
+      "ID": 160303004,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetCritical.CriticalDamageRatio",
+      "Description": "S3_匿踪_暗影之刺III_爆伤",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.06,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030008_1_0": {
+      "ID": 111030008,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "Description": "快速连杀，会不断提升元素异常添加概率。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.15,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030008_2_0": {
+      "ID": 111030008,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "Description": "快速连杀，会不断提升元素异常添加概率。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030008_3_0": {
+      "ID": 111030008,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "Description": "快速连杀，会不断提升元素异常添加概率。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.25,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030008_4_0": {
+      "ID": 111030008,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "Description": "快速连杀，会不断提升元素异常添加概率。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.3,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030008_5_0": {
+      "ID": 111030008,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "Description": "快速连杀，会不断提升元素异常添加概率。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.35,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030009_1_0": {
+      "ID": 111030009,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "无伤时间越长，元素异常伤害越高。\n（5秒内没受伤害，每秒提升k%元素异常伤害，最多60秒）",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.007,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030009_2_0": {
+      "ID": 111030009,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "无伤时间越长，元素异常伤害越高。\n（5秒内没受伤害，每秒提升k%元素异常伤害，最多60秒）",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.009,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030009_3_0": {
+      "ID": 111030009,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "无伤时间越长，元素异常伤害越高。\n（5秒内没受伤害，每秒提升k%元素异常伤害，最多60秒）",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.011,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030009_4_0": {
+      "ID": 111030009,
+      "Level": 4,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "无伤时间越长，元素异常伤害越高。\n（5秒内没受伤害，每秒提升k%元素异常伤害，最多60秒）",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.013,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030009_5_0": {
+      "ID": 111030009,
+      "Level": 5,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "无伤时间越长，元素异常伤害越高。\n（5秒内没受伤害，每秒提升k%元素异常伤害，最多60秒）",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.015,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "160303006_1_0": {
+      "ID": 160303006,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "S3_匿踪_暗影之刺II_增伤",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.7,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030010_1_0": {
+      "ID": 111030010,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.CryoBuffPeriod",
+      "Description": "元素异常频率大幅度增加，增加x%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030011_1_0": {
+      "ID": 111030011,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+      "Description": "命中敌人时，敌人每有一层元素异常，伤害增加n%，敌人每有一种元素异常，本次攻击增加k%暴击率",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.003,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030019_1_1": {
+      "ID": 111030019,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+      "Description": "赛季技能—樱花忍术—火元素异常伤害增加、频率加快。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.15,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030019_1_0": {
+      "ID": 111030019,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.FireBuffPeriod",
+      "Description": "赛季技能—樱花忍术—火元素异常伤害增加、频率加快。",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.15,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030014_1_0": {
+      "ID": 111030014,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetElement.FireBuffMaxStackAdd",
+      "Description": "赛季技能—樱花忍术—火Buff层数上限提升",
+      "GPModifierOp": "B1",
+      "BaseValue": 1,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030014_2_0": {
+      "ID": 111030014,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetElement.FireBuffMaxStackAdd",
+      "Description": "赛季技能—樱花忍术—火Buff层数上限提升",
+      "GPModifierOp": "B1",
+      "BaseValue": 2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030014_3_0": {
+      "ID": 111030014,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetElement.FireBuffMaxStackAdd",
+      "Description": "赛季技能—樱花忍术—火Buff层数上限提升",
+      "GPModifierOp": "B1",
+      "BaseValue": 3,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030017_1_0": {
+      "ID": 111030017,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "赛季技能—樱花忍术—火属性射击增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.01,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030017_2_0": {
+      "ID": 111030017,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "赛季技能—樱花忍术—火属性射击增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.02,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030017_3_0": {
+      "ID": 111030017,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "赛季技能—樱花忍术—火属性射击增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.03,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030016_1_0": {
+      "ID": 111030016,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+      "Description": "赛季技能—樱花忍术—炼狱伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.05,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030016_2_0": {
+      "ID": 111030016,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+      "Description": "赛季技能—樱花忍术—炼狱伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.1,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030016_3_0": {
+      "ID": 111030016,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+      "Description": "赛季技能—樱花忍术—炼狱伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.15,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030015_1_0": {
+      "ID": 111030015,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetSpeed.SpeedScale",
+      "Description": "赛季技能—樱花忍术—炼狱后加速",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.03,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030015_2_0": {
+      "ID": 111030015,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetSpeed.SpeedScale",
+      "Description": "赛季技能—樱花忍术—炼狱后加速",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.06,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111030015_3_0": {
+      "ID": 111030015,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetSpeed.SpeedScale",
+      "Description": "赛季技能—樱花忍术—炼狱后加速",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.09,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111031043_1_0": {
+      "ID": 111031043,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "分身超频：射击伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.015,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111031044_1_0": {
+      "ID": 111031044,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "分身次节点1：射击伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.04,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111031044_2_0": {
+      "ID": 111031044,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "分身次节点1：射击伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.08,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111031044_3_0": {
+      "ID": 111031044,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "分身次节点1：射击伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.12,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111031045_1_0": {
+      "ID": 111031045,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "分身次节点3：射击伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.1,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111031045_2_0": {
+      "ID": 111031045,
+      "Level": 2,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "分身次节点3：射击伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    },
+    "111031045_3_0": {
+      "ID": 111031045,
+      "Level": 3,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "分身次节点3：射击伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.3,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false
+    }
+  },
+  "pointLimit": {
+    "value": 40,
+    "status": "Simulator budget, not a verified game cap; exported reward previews do not contain reward quantities"
+  },
+  "prerequisites": "BeforeTalentID: & = all, | = any; predecessors must be fully allocated; phase thresholds count earlier phases only",
+  "evidence": {
+    "6003301_1": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 6003301
+    },
+    "1379020020_1": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020021:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020020
+    },
+    "1379020020_2": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020022:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020020
+    },
+    "1379020020_3": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020023:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020020
+    },
+    "1379020020_4": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020024:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020020
+    },
+    "1379020020_5": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020025:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020020
+    },
+    "1379020030_1": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020031:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020030
+    },
+    "1379020030_2": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020032:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020030
+    },
+    "1379020030_3": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020033:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020030
+    },
+    "1379020030_4": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020034:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020030
+    },
+    "1379020030_5": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020035:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020030
+    },
+    "1379020040_1": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020041:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020040
+    },
+    "1379020040_2": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020042:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020040
+    },
+    "1379020040_3": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020043:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020040
+    },
+    "1379020040_4": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020044:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020040
+    },
+    "1379020040_5": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020045:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020040
+    },
+    "1319033001_1": {
+      "rows": [
+        "s2:160303001_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319033001
+    },
+    "1379020050_1": {
+      "rows": [
+        "s2:111030001_1_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020050
+    },
+    "1379020050_2": {
+      "rows": [
+        "s2:111030001_2_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020050
+    },
+    "1379020050_3": {
+      "rows": [
+        "s2:111030001_3_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020050
+    },
+    "1379020050_4": {
+      "rows": [
+        "s2:111030001_4_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020050
+    },
+    "1379020050_5": {
+      "rows": [
+        "s2:111030001_5_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020050
+    },
+    "1379020060_1": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020061:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020060
+    },
+    "1379020060_2": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020062:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020060
+    },
+    "1379020060_3": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020063:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020060
+    },
+    "1379020060_4": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020064:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020060
+    },
+    "1379020060_5": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020065:Parameters.CooldownDuration"
+      ],
+      "descriptionSourceId": 1379020060
+    },
+    "1379020070_1": {
+      "rows": [
+        "s2:111030002_1_0",
+        "s2:111030002_1_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020070
+    },
+    "1379020070_2": {
+      "rows": [
+        "s2:111030002_2_0",
+        "s2:111030002_2_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020070
+    },
+    "1379020070_3": {
+      "rows": [
+        "s2:111030002_3_0",
+        "s2:111030002_3_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020070
+    },
+    "1379020070_4": {
+      "rows": [
+        "s2:111030002_4_0",
+        "s2:111030002_4_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020070
+    },
+    "1379020070_5": {
+      "rows": [
+        "s2:111030002_5_0",
+        "s2:111030002_5_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020070
+    },
+    "1319033005_1": {
+      "rows": [
+        "s2:160303003_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319033005
+    },
+    "1319033005_2": {
+      "rows": [
+        "s2:160303003_2_1"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319033005
+    },
+    "1319033005_3": {
+      "rows": [
+        "s2:160303003_3_2"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319033005
+    },
+    "1319033006_1": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319033006
+    },
+    "1319033006_2": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319033006
+    },
+    "1319033006_3": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319033006
+    },
+    "1379020080_1": {
+      "rows": [
+        "s2:111030013_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020080
+    },
+    "1379020080_2": {
+      "rows": [
+        "s2:111030013_2_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020080
+    },
+    "1379020080_3": {
+      "rows": [
+        "s2:111030013_3_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020080
+    },
+    "1379020080_4": {
+      "rows": [
+        "s2:111030013_4_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020080
+    },
+    "1379020080_5": {
+      "rows": [
+        "s2:111030013_5_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020080
+    },
+    "1379020090_1": {
+      "rows": [
+        "s2:111030003_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020090
+    },
+    "1379020090_2": {
+      "rows": [
+        "s2:111030003_2_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020090
+    },
+    "1379020090_3": {
+      "rows": [
+        "s2:111030003_3_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020090
+    },
+    "1379020090_4": {
+      "rows": [
+        "s2:111030003_4_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020090
+    },
+    "1379020090_5": {
+      "rows": [
+        "s2:111030003_5_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020090
+    },
+    "1379020100_1": {
+      "rows": [
+        "s2:111030018_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020100
+    },
+    "1379020100_2": {
+      "rows": [
+        "s2:111030018_2_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020100
+    },
+    "1379020100_3": {
+      "rows": [
+        "s2:111030018_3_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020100
+    },
+    "1379020100_4": {
+      "rows": [
+        "s2:111030018_4_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020100
+    },
+    "1379020100_5": {
+      "rows": [
+        "s2:111030018_5_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020100
+    },
+    "1319033002_1": {
+      "rows": [
+        "s2:160303005_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319033002
+    },
+    "1379020110_1": {
+      "rows": [
+        "s2:111030004_1_4",
+        "s2:111030004_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020110
+    },
+    "1379020110_2": {
+      "rows": [
+        "s2:111030004_2_4",
+        "s2:111030004_2_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020110
+    },
+    "1379020110_3": {
+      "rows": [
+        "s2:111030004_3_4",
+        "s2:111030004_3_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020110
+    },
+    "1379020110_4": {
+      "rows": [
+        "s2:111030004_4_4",
+        "s2:111030004_4_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020110
+    },
+    "1379020110_5": {
+      "rows": [
+        "s2:111030004_5_4",
+        "s2:111030004_5_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020110
+    },
+    "1379020120_1": {
+      "rows": [
+        "s2:111030005_1_0",
+        "s2:111030006_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020120
+    },
+    "1379020120_2": {
+      "rows": [
+        "s2:111030005_2_0",
+        "s2:111030006_2_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020120
+    },
+    "1379020120_3": {
+      "rows": [
+        "s2:111030005_3_0",
+        "s2:111030006_3_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020120
+    },
+    "1379020120_4": {
+      "rows": [
+        "s2:111030005_4_0",
+        "s2:111030006_4_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020120
+    },
+    "1379020120_5": {
+      "rows": [
+        "s2:111030005_5_0",
+        "s2:111030006_5_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020120
+    },
+    "1379020130_1": {
+      "rows": [
+        "s2:111030007_1_0",
+        "s2:111030007_1_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020130
+    },
+    "1379020130_2": {
+      "rows": [
+        "s2:111030007_2_0",
+        "s2:111030007_2_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020130
+    },
+    "1379020130_3": {
+      "rows": [
+        "s2:111030007_3_0",
+        "s2:111030007_3_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020130
+    },
+    "1379020130_4": {
+      "rows": [
+        "s2:111030007_4_0",
+        "s2:111030007_4_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020130
+    },
+    "1379020130_5": {
+      "rows": [
+        "s2:111030007_5_0",
+        "s2:111030007_5_4"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020130
+    },
+    "1319033007_1": {
+      "rows": [
+        "s2:160303004_1_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:S3_Invisible_CriticalDamageRatio.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1319033007
+    },
+    "1319033007_2": {
+      "rows": [
+        "s2:160303004_2_1"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:S3_Invisible_CriticalDamageRatio.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1319033007
+    },
+    "1319033007_3": {
+      "rows": [
+        "s2:160303004_3_2"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:S3_Invisible_CriticalDamageRatio.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1319033007
+    },
+    "1319033008_1": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1319033014:Parameters.ChargePerShoot"
+      ],
+      "descriptionSourceId": 1319033008
+    },
+    "1319033008_2": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1319033015:Parameters.ChargePerShoot"
+      ],
+      "descriptionSourceId": 1319033008
+    },
+    "1319033008_3": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1319033016:Parameters.ChargePerShoot"
+      ],
+      "descriptionSourceId": 1319033008
+    },
+    "1379020140_1": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020141:Parameters.CooldownDuration",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020140:Default__.CountMax * 1"
+      ],
+      "descriptionSourceId": 1379020140
+    },
+    "1379020140_2": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020142:Parameters.CooldownDuration",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020140:Default__.CountMax * 1"
+      ],
+      "descriptionSourceId": 1379020140
+    },
+    "1379020140_3": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020143:Parameters.CooldownDuration",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020140:Default__.CountMax * 1"
+      ],
+      "descriptionSourceId": 1379020140
+    },
+    "1379020140_4": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020144:Parameters.CooldownDuration",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020140:Default__.CountMax * 1"
+      ],
+      "descriptionSourceId": 1379020140
+    },
+    "1379020140_5": {
+      "rows": [],
+      "parameters": [
+        "MGEConfig_Season:1379020145:Parameters.CooldownDuration",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020140:Default__.CountMax * 1"
+      ],
+      "descriptionSourceId": 1379020140
+    },
+    "1379020150_1": {
+      "rows": [
+        "s2:111030008_1_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_001.StackLimitCount * 1",
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_001.Duration * 1"
+      ],
+      "descriptionSourceId": 1379020150
+    },
+    "1379020150_2": {
+      "rows": [
+        "s2:111030008_2_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_001.StackLimitCount * 1",
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_001.Duration * 1"
+      ],
+      "descriptionSourceId": 1379020150
+    },
+    "1379020150_3": {
+      "rows": [
+        "s2:111030008_3_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_001.StackLimitCount * 1",
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_001.Duration * 1"
+      ],
+      "descriptionSourceId": 1379020150
+    },
+    "1379020150_4": {
+      "rows": [
+        "s2:111030008_4_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_001.StackLimitCount * 1",
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_001.Duration * 1"
+      ],
+      "descriptionSourceId": 1379020150
+    },
+    "1379020150_5": {
+      "rows": [
+        "s2:111030008_5_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_001.StackLimitCount * 1",
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_001.Duration * 1"
+      ],
+      "descriptionSourceId": 1379020150
+    },
+    "1379020160_1": {
+      "rows": [
+        "s2:111030009_1_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_002.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1379020160
+    },
+    "1379020160_2": {
+      "rows": [
+        "s2:111030009_2_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_002.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1379020160
+    },
+    "1379020160_3": {
+      "rows": [
+        "s2:111030009_3_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_002.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1379020160
+    },
+    "1379020160_4": {
+      "rows": [
+        "s2:111030009_4_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_002.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1379020160
+    },
+    "1379020160_5": {
+      "rows": [
+        "s2:111030009_5_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Normal_002.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1379020160
+    },
+    "1319033004_1": {
+      "rows": [
+        "s2:160303006_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319033004
+    },
+    "1379020170_1": {
+      "rows": [
+        "s2:111030010_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020170
+    },
+    "1379020180_1": {
+      "rows": [],
+      "parameters": [
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020180:Default__.Probability * 100"
+      ],
+      "descriptionSourceId": 1379020180
+    },
+    "1379020190_1": {
+      "rows": [],
+      "parameters": [
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020190:Default__.CooldownDuration * 1"
+      ],
+      "descriptionSourceId": 1379020190
+    },
+    "1379020220_1": {
+      "rows": [],
+      "parameters": [
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020220:Default__.CheckDistance * 0.01",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020220:Default__.InfectRadius * 0.01",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020220:Default__.InfactStackRatio * 100",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020220:Default__.CooldownDuration * 1"
+      ],
+      "descriptionSourceId": 1379020220
+    },
+    "1379020200_1": {
+      "rows": [
+        "s2:111030011_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1379020200
+    },
+    "1379020210_1": {
+      "rows": [],
+      "parameters": [
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020210:Default__.MinTriggerNum * 1",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020210:Default__.Factor * 100",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020210:Default__.MaxTriggerNum * 1",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020210:Default__.CooldownDuration * 1",
+        "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020210:Default__.MinTriggerRatioByWeakPoint * 100"
+      ],
+      "descriptionSourceId": 1379020210
+    },
+    "6003101_1": {
+      "rows": [],
+      "parameters": [
+        "GPActiveSkillDataTable:6003101.Duration",
+        "GPActiveSkillDataTable:6003102.Duration",
+        "Abilities/Skills/Season/S3/NinjaShooting/MGE_YHRS_Base:Default__.FireHitThreshold * 1",
+        "Abilities/Skills/Season/S3/NinjaShooting/MGE_YHRS_Base:Default__.HuiJinYiChangAddLianYuThreshold * 1",
+        "Abilities/Skills/Season/S3/NinjaShooting/MGE_YHRS_Sowing:Default__.ToNextStageLianYuThreshold * 1",
+        "Abilities/Skills/Season/S3/NinjaShooting/MGE_YHRS_Lighting:Default__.ToNextStageLianYuThreshold * 1"
+      ],
+      "descriptionSourceId": 6003101
+    },
+    "1319031011_1": {
+      "rows": [
+        "s2:111030019_1_1",
+        "s2:111030019_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319031011
+    },
+    "1319031006_1": {
+      "rows": [
+        "s2:111030014_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319031006
+    },
+    "1319031006_2": {
+      "rows": [
+        "s2:111030014_2_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319031006
+    },
+    "1319031006_3": {
+      "rows": [
+        "s2:111030014_3_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319031006
+    },
+    "1319031007_1": {
+      "rows": [
+        "s2:111030017_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319031007
+    },
+    "1319031007_2": {
+      "rows": [
+        "s2:111030017_2_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319031007
+    },
+    "1319031007_3": {
+      "rows": [
+        "s2:111030017_3_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319031007
+    },
+    "1319031001_1": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319031001
+    },
+    "1319031008_1": {
+      "rows": [
+        "s2:111030016_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319031008
+    },
+    "1319031008_2": {
+      "rows": [
+        "s2:111030016_2_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319031008
+    },
+    "1319031008_3": {
+      "rows": [
+        "s2:111030016_3_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319031008
+    },
+    "1319031009_1": {
+      "rows": [
+        "s2:111030015_1_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Fire_002.Duration * 1",
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Fire_002.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1319031009
+    },
+    "1319031009_2": {
+      "rows": [
+        "s2:111030015_2_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Fire_002.Duration * 1",
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Fire_002.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1319031009
+    },
+    "1319031009_3": {
+      "rows": [
+        "s2:111030015_3_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Fire_002.Duration * 1",
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_Fire_002.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1319031009
+    },
+    "1319031010_1": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319031010
+    },
+    "6003201_1": {
+      "rows": [],
+      "parameters": [
+        "GPActiveSkillDataTable:6003201.Duration"
+      ],
+      "descriptionSourceId": 6003201
+    },
+    "1319032002_1": {
+      "rows": [
+        "s2:111031043_1_0"
+      ],
+      "parameters": [
+        "DataTables/Buff/BuffConfigDatatableNew:SeasonTalent_S3_YHFS_001.StackLimitCount * 1"
+      ],
+      "descriptionSourceId": 1319032002
+    },
+    "1319032005_1": {
+      "rows": [
+        "s2:111031044_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319032005
+    },
+    "1319032005_2": {
+      "rows": [
+        "s2:111031044_2_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319032005
+    },
+    "1319032005_3": {
+      "rows": [
+        "s2:111031044_3_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319032005
+    },
+    "1319032006_1": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319032006
+    },
+    "1319032006_2": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319032006
+    },
+    "1319032006_3": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319032006
+    },
+    "1319032003_1": {
+      "rows": [],
+      "parameters": [
+        "Abilities/Skills/Season/S3/YHFS/SKT_S3_YHFS2:Default__.main3-CrazyTime * 1"
+      ],
+      "descriptionSourceId": 1319032003
+    },
+    "1319032007_1": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319032007
+    },
+    "1319032007_2": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319032007
+    },
+    "1319032007_3": {
+      "rows": [],
+      "parameters": [],
+      "descriptionSourceId": 1319032007
+    },
+    "1319032008_1": {
+      "rows": [
+        "s2:111031045_1_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319032008
+    },
+    "1319032008_2": {
+      "rows": [
+        "s2:111031045_2_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319032008
+    },
+    "1319032008_3": {
+      "rows": [
+        "s2:111031045_3_0"
+      ],
+      "parameters": [],
+      "descriptionSourceId": 1319032008
+    },
+    "1319032004_1": {
+      "rows": [],
+      "parameters": [
+        "Abilities/Skills/Season/S3/YHFS/SKT_S3_YHFS2:Default__.main4-RapidFeverTime * 1"
+      ],
+      "descriptionSourceId": 1319032004
+    }
+  },
+  "limitations": "Only Content_S2 is read. Description-only duration values for 1319032006/1319032007 are explicitly labeled, not treated as configuration facts. BeforeTalentID full-level and phase-spend behavior are simulator assumptions; exports contain identities and thresholds, not executable UI rules.",
+  "conflicts": [
+    {
+      "source": "MGE_1379020190.Default__.CooldownDuration",
+      "configured": 2,
+      "described": 1,
+      "action": "Use blueprint property; Numerical does not carry this cooldown"
+    },
+    {
+      "rows": [
+        {
+          "key": "111031054_1_0",
+          "raw": {
+            "ID": 111031054,
+            "Level": 1,
+            "AttributeName": "Numerical.ExecutionCtx.ExecutionRatio",
+            "Description": "分身造成40%伤害",
+            "GPModifierOp": "B5",
+            "BaseValue": -0.6,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        {
+          "key": "111031054_1_1",
+          "raw": {
+            "ID": 111031054,
+            "Level": 1,
+            "AttributeName": "Numerical.ExecutionCtx.ExecutionToughnessRatio",
+            "Description": "分身不造成韧性伤害",
+            "GPModifierOp": "B5",
+            "BaseValue": -1,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        {
+          "key": "111031054_1_2",
+          "raw": {
+            "ID": 111031054,
+            "Level": 1,
+            "AttributeName": "Numerical.ExecutionCtx.ExecutionImpulseRatio",
+            "Description": "分身不造成冲量伤害",
+            "GPModifierOp": "B5",
+            "BaseValue": -1,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        }
+      ],
+      "chain": "SKT_S3_YHFS2.DamagePercentBuff -> SeasonTalent_S3_YHFS_004.GPModifyIDs -> 111031054",
+      "status": "Historical B5 execution, toughness and impulse rows preserved; no dependency on current season lock. B5 runtime formula is not inferred from description."
+    }
+  ]
+}

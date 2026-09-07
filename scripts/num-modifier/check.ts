@@ -36,6 +36,10 @@ function checkStaticBoundaries(): void {
   const rawSourceAllowlist = new Set([
     path.join(root, "data", "num-modifier-lock.json"),
     path.join(root, "scripts", "num-modifier", "lock.ts"),
+    // Historical S2 is isolated from the current-season lock; only its offline
+    // extractor and evidence ledger may name the archived Numerical source.
+    path.join(root, "scripts", "s2-season-talents", "extract.ts"),
+    path.join(root, "data", "season-talents", "s2", "evidence.json"),
   ]);
   const directLockImport = /(?:from\s+|require\s*\(\s*)["'][^"']*num-modifier-lock\.json["']/;
   const directLockAllowlist = new Set([

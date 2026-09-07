@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { SeasonTalentCatalog } from "@/components/SeasonTalentCatalog";
+import { S2SeasonTalentCatalog } from "@/components/season-talents/s2/S2SeasonTalentCatalog";
 import { LegacyTalentCatalog } from "@/components/season-talents/s0s1/LegacyTalentCatalog";
 
 const BASE_SEASONS = ["s0", "s1", "s2", "s3"] as const;
@@ -155,10 +156,8 @@ export function SeasonTalentTabs({ s4Panel }: { s4Panel: ReactNode }) {
         </div>
       ))}
 
-      <div id="season-talents-s2-panel" role="tabpanel" aria-labelledby="season-talents-s2-tab" hidden={activePage !== "s2"} className="px-4 pb-6 sm:px-6 lg:flex lg:h-full lg:items-center lg:justify-center lg:pt-20">
-        <div className="w-full rounded-lg border border-zinc-700/80 bg-zinc-900/55 px-6 py-16 text-center lg:max-w-5xl">
-          <p className="text-sm font-medium text-zinc-400">S2 赛季天赋暂未收录</p>
-        </div>
+      <div id="season-talents-s2-panel" role="tabpanel" aria-labelledby="season-talents-s2-tab" hidden={activePage !== "s2"} className="lg:h-full">
+        <S2SeasonTalentCatalog />
       </div>
       {showS4 && (
         <div
