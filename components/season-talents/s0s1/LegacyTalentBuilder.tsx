@@ -88,6 +88,7 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
         <p className={styles.configurationNotice}>{level.videoReview
           ? `含 ${level.videoReview.values.length} 处录像展示值（${level.videoReview.timestamp}），尚未核实配置；其余已核验值仍按配置展示。`
           : "数值按已核验配置展示，不等同于历史版本实测。"}</p>
+        {level.reportedReview && <p className={styles.configurationNotice}>另含 {level.reportedReview.count} 处用户补充的展示值，尚未核实执行配置。</p>}
         {!availableIcons.includes(node.icon) && <p className={styles.warning}>节点图标尚未完成定位，暂以问号标记。</p>}
         <details className={styles.evidence}><summary>来源与核验记录</summary>
           {level.valueReview && <p>配置核验沿 Basic → Passive 等级 → MGEConfig / 描述行进行；录像补充不属于配置依据。下方旧同 ID 直连事实仅供排错，不用于正文数值或乘区。</p>}
@@ -97,6 +98,7 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
             {level.videoReview.notes.map(note => <p key={note}>{note}</p>)}
           </>}
           {level.valueReview?.sources.map(source => <p key={source}>{source}</p>)}
+          {level.reportedReview && <><p>{level.reportedReview.source}</p>{level.reportedReview.notes.map(note => <p key={note}>{note}</p>)}</>}
           {[...new Set(level.valueReview?.notes ?? [])].map(note => <p key={note}>{note}</p>)}
           {displayFacts.length > 0 && <section className={styles.facts}><h3>当前同 ID 配置 · 非历史效果确认</h3><dl>{displayFacts.map((fact, i) => <div key={i}><dt>{fact.label}</dt><dd>{fact.displayValue}</dd></div>)}</dl></section>}
           <p>节点 ID：{node.id} · 技能 ID：{node.skillIds.join("、") || "未定位"}</p>

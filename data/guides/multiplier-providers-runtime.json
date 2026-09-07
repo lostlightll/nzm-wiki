@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "1d313e078c77c2b2f8e17cda152f9ea6fec33c13838bac5b98ff61fb7780c58a",
+    "modifierIndexSha256": "346cd49414e9915f973adcbfce7c1a96a810ee5e38ad0564ed6014f175cb39e8",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -8523,8 +8523,8 @@
         "tree": "forbidden-eye",
         "nodeId": "1013509"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
       "id": "season:s1:forbidden-eye:1013602",

@@ -3,6 +3,9 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { NUM_MODIFIER_RESOLVER as resolver } from "../../lib/num-modifier-data";
 import type { LegacyTalentLevel } from "../../lib/s0s1-season-talents";
+import { getLegacyTalentCatalog } from "../../lib/s0s1-season-talents";
+import { reviewS1SkillNumerical } from "./s1-skill-numerical";
+import { applyReportedValues, REPORTED_VALUES } from "./reported-values";
 import { auditS1ReviewedValues, compactS1ReviewEvidence, compactS1TabooBlueprintEvidence, reviewS1TabooBlueprintValue, reviewS1Values, type S1ReviewEvidence, type S1TabooBlueprintEvidence } from "./s1-reviewed-values";
 
 function fixture(id: number, level: number, configId: number, description: string, parameters: Array<{ Name: string; Value: string; Type?: string }>, mgeId = id, textId = level): S1ReviewEvidence {
@@ -17,6 +20,110 @@ function fixture(id: number, level: number, configId: number, description: strin
 }
 const review = (evidence: S1ReviewEvidence, id: number, level = 1) => reviewS1Values({ nodeId: "1011201", level, skillIds: [id] }, evidence);
 const render = (result: ReturnType<typeof review>) => resolver.resolveGameModifierTokens(resolver.resolveTemplate(result.descriptionTemplate, result.descriptionBindings)).text;
+
+test("reported supplements are isolated and reject missing or repeated slots", () => {
+  const entry = REPORTED_VALUES.entries[0];
+  const makeLevel = (descriptionTemplate = entry.from, level = 1): LegacyTalentLevel => ({ level, description: "", descriptionTemplate, facts: [], modifierRows: [], warnings: [] });
+  for (const [season, nodeId, level] of [["s0", entry.nodeId, 1], ["s1", "other", 1], ["s1", entry.nodeId, 2]] as const) {
+    const value = makeLevel(entry.from, level);
+    const before = structuredClone(value);
+    applyReportedValues(season, nodeId, value);
+    assert.deepEqual(value, before);
+  }
+  const value = makeLevel();
+  applyReportedValues("s1", entry.nodeId, value);
+  assert.equal(value.descriptionTemplate, entry.to);
+  assert.equal(value.reportedReview?.count, 1);
+  assert.equal(value.valueReview, undefined);
+  assert.throws(() => applyReportedValues("s1", entry.nodeId, value), /REPORTED_VALUE_DRIFT/);
+  assert.throws(() => applyReportedValues("s1", entry.nodeId, makeLevel(entry.from.repeat(2))), /REPORTED_VALUE_DRIFT/);
+  assert.throws(() => applyReportedValues("s1", entry.nodeId, makeLevel("changed")), /REPORTED_VALUE_DRIFT/);
+});
+
+test("remaining multilevel Modifier displays use exact rows and fields", () => {
+  const evidence: S1ReviewEvidence = JSON.parse(readFileSync("data/season-talents/s1/audit.json", "utf8")).valueEvidence.s1;
+  for (const [nodeId, skill, values, basis] of [
+    ["1013609", 1319022007, ["5%", "10%", "15%"], "passive-config"],
+    ["1012405", 1319021006, ["8%", "16%", "24%"], "passive-config"],
+    ["1013305", 1319022010, ["17%", "34%"], "passive-config"],
+    ["1012505", 1319021009, ["5%", "10%", "15%"], "description-token"],
+    ["1012709", 1319021015, ["6%", "12%"], "description-token"],
+  ] as const) {
+    values.forEach((value, i) => {
+      const result = reviewS1Values({ nodeId, level: i + 1, skillIds: [skill] }, evidence);
+      assert.ok(render(result).includes(value));
+      assert.equal(result.provenance.length, 1);
+      assert.equal(result.provenance[0].basis, basis);
+      assert.equal(resolver.getRow(result.provenance[0].expression!.row).level, i + 1);
+      assert.equal(result.indexedApplications.length, 0);
+    });
+  }
+});
+
+test("ray upgrades and wound coefficient read skill Numerical, never same-ID modifiers", () => {
+  const evidence: S1ReviewEvidence = JSON.parse(readFileSync("data/season-talents/s1/audit.json", "utf8")).valueEvidence.s1;
+  for (const level of [1, 2, 3]) {
+    const result = reviewS1Values({ nodeId: "1013509", level, skillIds: [1319022006] }, evidence);
+    assert.equal(render(result), `射线伤害增加${level * 6}%。`);
+    assert.equal(result.indexedApplications.length, 0);
+  }
+  const wound = reviewS1Values({ nodeId: "1013507", level: 1, skillIds: [1319022015] }, evidence);
+  assert.ok(render(wound).endsWith("3.5%。"));
+  assert.ok(render(wound).includes("〔数值待核实〕次"));
+  const bad = structuredClone(evidence.skillNumerical!);
+  delete bad.rows["160202003_1"];
+  assert.throws(() => reviewS1SkillNumerical(1319022006, 2, 160202003, bad));
+  assert.throws(() => reviewS1SkillNumerical(1319022006, 2, 160202002, evidence.skillNumerical!), /IDENTITY_DRIFT/);
+  const changed = structuredClone(evidence.skillNumerical!);
+  changed.baseActor.numericalId = 160202002;
+  assert.throws(() => reviewS1SkillNumerical(1319022006, 1, 160202002, changed), /IDENTITY_DRIFT/);
+});
+
+test("user-supplied thresholds are separately labelled and do not override per-level stacks", () => {
+  const nodes = getLegacyTalentCatalog("s1").flatMap(tree => tree.nodes);
+  const quick = nodes.find(node => node.id === "1013609")!;
+  for (const level of quick.levels) {
+    assert.ok(level.description.includes("3秒内命中5次）弱点后，下1次"));
+    assert.ok(level.reportedReview || level.videoReview);
+  }
+  const stationary = nodes.find(node => node.id === "1013605")!;
+  stationary.levels.forEach((level, i) => {
+    assert.ok(level.description.includes(`获得${i + 1}层共振`));
+    assert.ok(level.description.includes("持续6秒。冷却10秒"));
+  });
+  const wound = nodes.find(node => node.id === "1013507")!.levels[0];
+  assert.ok(wound.description.includes("造成1次伤害"));
+  assert.equal(wound.reportedReview?.count, 1);
+});
+
+test("taboo charge speed binds each B2 level without inferring a damage multiplier", () => {
+  const evidence: S1ReviewEvidence = JSON.parse(readFileSync("data/season-talents/s1/audit.json", "utf8")).valueEvidence.s1;
+  for (const [level, row, value] of [[1, "lc:160202005_1_0", "8%"], [2, "lc:160202005_2_1", "16%"], [3, "lc:160202005_3_2", "24%"]] as const) {
+    const result = reviewS1Values({ nodeId: "1013409", level, skillIds: [1319022017] }, evidence);
+    assert.equal(render(result), `赛季技能充能速度提高${value}。`);
+    assert.equal(result.provenance.length, 1);
+    assert.equal(result.provenance[0].expression?.row, row);
+    assert.equal(result.provenance[0].basis, "passive-config");
+    assert.equal(result.indexedApplications.length, 0);
+    assert.ok(result.provenance[0].notes.some(note => note.includes("B2")));
+  }
+  delete evidence.tables.params["1319022029"];
+  assert.throws(() => reviewS1Values({ nodeId: "1013409", level: 2, skillIds: [1319022017] }, evidence), /S1_REVIEW_CONFIG_MISSING/);
+});
+
+test("precision shooting binds exact Passive levels despite the default-level display token", () => {
+  const evidence: S1ReviewEvidence = JSON.parse(readFileSync("data/season-talents/s1/audit.json", "utf8")).valueEvidence.s1;
+  for (const [level, row, value] of [[1, "lc:160202004_1_0", "0.4%"], [2, "lc:160202004_2_1", "0.8%"], [3, "lc:160202004_3_2", "1.2%"]] as const) {
+    const result = reviewS1Values({ nodeId: "1013309", level, skillIds: [1319022004] }, evidence);
+    assert.equal(render(result), `弱点倍率增加${value}。`);
+    assert.equal(result.provenance.length, 1);
+    assert.equal(result.provenance[0].basis, "passive-config");
+    assert.equal(result.provenance[0].expression?.row, row);
+  }
+  const changed = structuredClone(evidence);
+  delete changed.tables.params["1319022003"];
+  assert.throws(() => reviewS1Values({ nodeId: "1013309", level: 2, skillIds: [1319022004] }, changed), /S1_REVIEW_CONFIG_MISSING/);
+});
 
 // Minimal projection of the reviewed ReadScriptData AST; no refs dependency.
 function tabooFixture(): S1TabooBlueprintEvidence {
@@ -181,7 +288,7 @@ test("structured SkillModifierList quantities retain tuple identity and units", 
 });
 
 test("quantity owns Token percent formatting, including redundant external percent", () => {
-  const result = review(fixture(1319022004, 1, 1319022002, "弱点倍率增加{GPModifier:160202004:BaseValue:0:2}%。", []), 1319022004);
+  const result = review(fixture(1319022999, 1, 1319022999, "弱点倍率增加{GPModifier:160202004:BaseValue:0:2}%。", []), 1319022999);
   assert.equal(render(result), "弱点倍率增加0.4%。");
   assert.equal(result.provenance[0].format, "percent");
   assert.ok(!render(result).includes("%%"));
@@ -195,18 +302,18 @@ test("coefficient 0.006 is 0.6 percent, not a multiplier formula", () => {
   assert.ok(result.provenance[0].notes.some(note => note.includes("作用变量")));
 });
 
-test("default Token Level=1 never becomes talent level or a guessed index", () => {
-  const result = review(fixture(1319022004, 3, 1319022004, "弱点倍率增加{GPModifier:160202004:BaseValue:0:2}。", []), 1319022004, 3);
+test("without a reviewed config mapping default Token Level=1 never guesses a level or index", () => {
+  const result = review(fixture(1319022999, 3, 1319022999, "弱点倍率增加{GPModifier:160202004:BaseValue:0:2}。", []), 1319022999, 3);
   assert.equal(render(result), "弱点倍率增加0.4%。");
   assert.equal(result.provenance[0].expression?.row, "lc:160202004_1_0");
   assert.ok(result.provenance[0].notes.some(note => note.includes("默认 Level=1")));
-  const missing = review(fixture(1319022004, 3, 1319022004, "弱点倍率增加{GPModifier:160202004:BaseValue:0:2:3}。", []), 1319022004, 3);
+  const missing = review(fixture(1319022999, 3, 1319022999, "弱点倍率增加{GPModifier:160202004:BaseValue:0:2:3}。", []), 1319022999, 3);
   assert.equal(missing.resolvedCount, 0);
   assert.equal(missing.remaining, 1);
 });
 
 test("quantity absent on charge attribute preserves the existing legal Token without indexing", () => {
-  const result = review(fixture(1319021006, 1, 1319021015, "赛季技能充能提高{GPModifier:160201010:BaseValue:0:13}。", []), 1319021006);
+  const result = review(fixture(1319022999, 1, 1319022999, "赛季技能充能提高{GPModifier:160201010:BaseValue:0:13}。", []), 1319022999);
   assert.equal(result.resolvedCount, 1);
   assert.equal(result.remaining, 0);
   assert.equal(render(result), "赛季技能充能提高8%。");
@@ -257,9 +364,9 @@ test("committed offline snapshot reproduces all three branches and accounts for 
   assert.ok(!Object.hasOwn(compact.tables.params, "1319023001"));
   assert.equal(report.summary.nodes, 91);
   assert.equal(report.summary.levels, 136);
-  const added = (evidence.range ? 3 : 0) + (evidence.taboo ? 3 : 0);
-  assert.equal(report.summary.structuredBindings, 36 + added);
-  assert.equal(report.summary.tokenBindings, 28);
+  const added = (evidence.range ? 3 : 0) + (evidence.taboo ? 3 : 0) + (evidence.skillNumerical ? 4 : 0);
+  assert.equal(report.summary.structuredBindings, 50 + added);
+  assert.equal(report.summary.tokenBindings, 14);
   assert.equal(report.summary.resolvedCount, 64 + added);
   assert.equal(report.summary.remaining, 214 - added);
   assert.equal(report.summary.indexedApplications, 9);

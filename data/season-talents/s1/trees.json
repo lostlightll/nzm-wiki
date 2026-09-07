@@ -3826,8 +3826,13 @@
               "EMPTY_CURRENT_CONFIG: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021006 无参数；未采用旧 MGEConfig_Season 同 ID 配置。",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "赛季技能的充能速度提高{GPModifier:160201010:BaseValue:0:13}。",
-            "descriptionBindings": {},
+            "descriptionTemplate": "赛季技能的充能速度提高{{num:s1-1012405-1-0|percent}}。",
+            "descriptionBindings": {
+              "s1-1012405-1-0": {
+                "row": "lc:160201010_1_0",
+                "field": "base"
+              }
+            },
             "valueReview": {
               "sources": [
                 "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021006_1.MGEDescription",
@@ -3836,14 +3841,14 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021006_1",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021015.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021006",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021006_1.MGEDescription#token",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021015.Parameters[0]",
                 "data/num-modifier-lock.json#lc:160201010_1_0"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319021006/1 -> 1319021015; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "保留现有 Resolver 按格式码解析的合法 Token；quantity 未审定，不创建自定义 Num binding，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
+                "仅按原 Token 格式码 13 展示充能速度参数百分比；保留 B2，不推导实际充能时间或乘区。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -3853,7 +3858,7 @@
           },
           {
             "level": 2,
-            "description": "赛季技能的充能速度提高8%。",
+            "description": "赛季技能的充能速度提高16%。",
             "modifierRows": [
               "lc:160201010_1_0"
             ],
@@ -3880,8 +3885,13 @@
               "TOKEN_DEFAULT_LEVEL: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124052.TalentSkillsID=1319021006 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021006_2 {GPModifier:160201010:BaseValue:0:13} 按 Resolver 默认 Level=1，不推定为天赋等级。",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "赛季技能的充能速度提高{GPModifier:160201010:BaseValue:0:13}。",
-            "descriptionBindings": {},
+            "descriptionTemplate": "赛季技能的充能速度提高{{num:s1-1012405-2-0|percent}}。",
+            "descriptionBindings": {
+              "s1-1012405-2-0": {
+                "row": "lc:160201010_2_1",
+                "field": "base"
+              }
+            },
             "valueReview": {
               "sources": [
                 "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021006_2.MGEDescription",
@@ -3890,14 +3900,14 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021006_2",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021016.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021006",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021006_2.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160201010_1_0"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021016.Parameters[0]",
+                "data/num-modifier-lock.json#lc:160201010_2_1"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319021006/2 -> 1319021016; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "保留现有 Resolver 按格式码解析的合法 Token；quantity 未审定，不创建自定义 Num binding，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
+                "仅按原 Token 格式码 13 展示充能速度参数百分比；保留 B2，不推导实际充能时间或乘区。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -3907,7 +3917,7 @@
           },
           {
             "level": 3,
-            "description": "赛季技能的充能速度提高8%。",
+            "description": "赛季技能的充能速度提高24%。",
             "modifierRows": [
               "lc:160201010_1_0"
             ],
@@ -3934,8 +3944,13 @@
               "TOKEN_DEFAULT_LEVEL: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124053.TalentSkillsID=1319021006 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021006_3 {GPModifier:160201010:BaseValue:0:13} 按 Resolver 默认 Level=1，不推定为天赋等级。",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "赛季技能的充能速度提高{GPModifier:160201010:BaseValue:0:13}。",
-            "descriptionBindings": {},
+            "descriptionTemplate": "赛季技能的充能速度提高{{num:s1-1012405-3-0|percent}}。",
+            "descriptionBindings": {
+              "s1-1012405-3-0": {
+                "row": "lc:160201010_3_2",
+                "field": "base"
+              }
+            },
             "valueReview": {
               "sources": [
                 "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021006_3.MGEDescription",
@@ -3944,14 +3959,14 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021006_3",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021017.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021006",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021006_3.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160201010_1_0"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021017.Parameters[0]",
+                "data/num-modifier-lock.json#lc:160201010_3_2"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319021006/3 -> 1319021017; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "保留现有 Resolver 按格式码解析的合法 Token；quantity 未审定，不创建自定义 Num binding，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
+                "仅按原 Token 格式码 13 展示充能速度参数百分比；保留 B2，不推导实际充能时间或乘区。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -4529,15 +4544,12 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021009_1",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021020.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021009",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021009_1.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160201011_1_0",
-                "NumModifierResolver.describeAttribute(GPAttributeSetBearDamageRatio.DamageBearRatio).quantity"
+                "data/num-modifier-lock.json#lc:160201011_1_0"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319021009/1 -> 1319021020; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive/描述中的 Modifier 身份与主表同等级精确行匹配；仅作分级参数展示，空 Config 不证明执行链，不进入乘区。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -4547,7 +4559,7 @@
           },
           {
             "level": 2,
-            "description": "虚数空间内，自身获得5%伤害减免。",
+            "description": "虚数空间内，自身获得10%伤害减免。",
             "modifierRows": [
               "lc:160201011_1_0"
             ],
@@ -4584,7 +4596,7 @@
             "descriptionTemplate": "虚数空间内，自身获得{{num:s1-1012505-2-0|percent}}伤害减免。",
             "descriptionBindings": {
               "s1-1012505-2-0": {
-                "row": "lc:160201011_1_0",
+                "row": "lc:160201011_2_1",
                 "field": "base"
               }
             },
@@ -4596,15 +4608,12 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021009_2",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021021.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021009",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021009_2.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160201011_1_0",
-                "NumModifierResolver.describeAttribute(GPAttributeSetBearDamageRatio.DamageBearRatio).quantity"
+                "data/num-modifier-lock.json#lc:160201011_2_1"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319021009/2 -> 1319021021; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive/描述中的 Modifier 身份与主表同等级精确行匹配；仅作分级参数展示，空 Config 不证明执行链，不进入乘区。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -4614,7 +4623,7 @@
           },
           {
             "level": 3,
-            "description": "虚数空间内，自身获得5%伤害减免。",
+            "description": "虚数空间内，自身获得15%伤害减免。",
             "modifierRows": [
               "lc:160201011_1_0"
             ],
@@ -4651,7 +4660,7 @@
             "descriptionTemplate": "虚数空间内，自身获得{{num:s1-1012505-3-0|percent}}伤害减免。",
             "descriptionBindings": {
               "s1-1012505-3-0": {
-                "row": "lc:160201011_1_0",
+                "row": "lc:160201011_3_2",
                 "field": "base"
               }
             },
@@ -4663,15 +4672,12 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021009_3",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021022.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021009",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021009_3.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160201011_1_0",
-                "NumModifierResolver.describeAttribute(GPAttributeSetBearDamageRatio.DamageBearRatio).quantity"
+                "data/num-modifier-lock.json#lc:160201011_3_2"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319021009/3 -> 1319021022; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive/描述中的 Modifier 身份与主表同等级精确行匹配；仅作分级参数展示，空 Config 不证明执行链，不进入乘区。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -5726,16 +5732,12 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021015_1",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021029.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021015",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021015_1.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160201007_1_0",
-                "NumModifierResolver.describeAttribute(GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio).quantity"
+                "data/num-modifier-lock.json#lc:160201007_1_0"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319021015/1 -> 1319021029; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
-                "只展示 coefficient；作用变量与叠层公式不由此推导。",
+                "逐级 Passive/描述中的 Modifier 身份与主表同等级精确行匹配；仅作分级参数展示，空 Config 不证明执行链，不进入乘区。",
                 "Passive 精确指向的 Main Config 参数为空；缺少 MGE/技能执行资产中的目标字段。",
                 "RESOLVED=1; REMAINING=2"
               ],
@@ -5746,7 +5748,7 @@
           },
           {
             "level": 2,
-            "description": "自身和目标位于虚数空间内时，目标身上每拥有1种负面状态，自身武器技能造成的伤害增加6%，最多叠加3次。",
+            "description": "自身和目标位于虚数空间内时，目标身上每拥有1种负面状态，自身武器技能造成的伤害增加12%，最多叠加3次。",
             "modifierRows": [
               "lc:160201010_2_1",
               "lc:160201007_1_0"
@@ -5815,7 +5817,7 @@
             ],
             "descriptionBindings": {
               "s1-1012709-2-0": {
-                "row": "lc:160201007_1_0",
+                "row": "lc:160201007_2_1",
                 "field": "coefficient"
               }
             },
@@ -5827,16 +5829,12 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021015_2",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021030.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021015",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021015_2.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160201007_1_0",
-                "NumModifierResolver.describeAttribute(GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio).quantity"
+                "data/num-modifier-lock.json#lc:160201007_2_1"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319021015/2 -> 1319021030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
-                "只展示 coefficient；作用变量与叠层公式不由此推导。",
+                "逐级 Passive/描述中的 Modifier 身份与主表同等级精确行匹配；仅作分级参数展示，空 Config 不证明执行链，不进入乘区。",
                 "Passive 精确指向的 Main Config 参数为空；缺少 MGE/技能执行资产中的目标字段。",
                 "RESOLVED=1; REMAINING=2"
               ],
@@ -6641,15 +6639,14 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022010_1",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022014.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022010",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022010_1.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160202010_1_0",
-                "NumModifierResolver.describeAttribute(GPAttributeSetBearDamageRatio.DamageBearRatio).quantity"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022014.Parameters[0]",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022014.Parameters[0].Value[SkillID=6002201,Name=MoJinFu].Value",
+                "data/num-modifier-lock.json#lc:160202010_1_0"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022010/1 -> 1319022014; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -6659,7 +6656,7 @@
           },
           {
             "level": 2,
-            "description": "发动射线期间获得17%伤害减免。",
+            "description": "发动射线期间获得34%伤害减免。",
             "modifierRows": [
               "lc:160202006_2_0",
               "lc:160202010_1_0"
@@ -6725,7 +6722,7 @@
             ],
             "descriptionBindings": {
               "s1-1013305-2-0": {
-                "row": "lc:160202010_1_0",
+                "row": "lc:160202010_2_1",
                 "field": "base"
               }
             },
@@ -6737,15 +6734,14 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022010_2",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022015.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022010",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022010_2.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160202010_1_0",
-                "NumModifierResolver.describeAttribute(GPAttributeSetBearDamageRatio.DamageBearRatio).quantity"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022015.Parameters[0]",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022015.Parameters[0].Value[SkillID=6002201,Name=MoJinFu].Value",
+                "data/num-modifier-lock.json#lc:160202010_2_1"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022010/2 -> 1319022015; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -6898,15 +6894,13 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_1",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022002.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022004",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022004_1.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160202004_1_0",
-                "NumModifierResolver.describeAttribute(GPAttributeSetGiveDamageRatio.WeaknessDamageRatio).quantity"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022002.Parameters[0]",
+                "data/num-modifier-lock.json#lc:160202004_1_0"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022004/1 -> 1319022002; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -6916,7 +6910,7 @@
           },
           {
             "level": 2,
-            "description": "弱点倍率增加0.4%。",
+            "description": "弱点倍率增加0.8%。",
             "modifierRows": [
               "lc:160202004_2_1",
               "lc:160202004_1_0"
@@ -6963,7 +6957,7 @@
             "descriptionTemplate": "弱点倍率增加{{num:s1-1013309-2-0|percent}}。",
             "descriptionBindings": {
               "s1-1013309-2-0": {
-                "row": "lc:160202004_1_0",
+                "row": "lc:160202004_2_1",
                 "field": "base"
               }
             },
@@ -6975,15 +6969,13 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_2",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022003.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022004",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022004_2.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160202004_1_0",
-                "NumModifierResolver.describeAttribute(GPAttributeSetGiveDamageRatio.WeaknessDamageRatio).quantity"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022003.Parameters[0]",
+                "data/num-modifier-lock.json#lc:160202004_2_1"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022004/2 -> 1319022003; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -6993,7 +6985,7 @@
           },
           {
             "level": 3,
-            "description": "弱点倍率增加0.4%。",
+            "description": "弱点倍率增加1.2%。",
             "modifierRows": [
               "lc:160202004_3_2",
               "lc:160202004_1_0"
@@ -7040,7 +7032,7 @@
             "descriptionTemplate": "弱点倍率增加{{num:s1-1013309-3-0|percent}}。",
             "descriptionBindings": {
               "s1-1013309-3-0": {
-                "row": "lc:160202004_1_0",
+                "row": "lc:160202004_3_2",
                 "field": "base"
               }
             },
@@ -7052,14 +7044,12 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_3",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022004.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022004",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022004_3.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160202004_1_0",
-                "NumModifierResolver.describeAttribute(GPAttributeSetGiveDamageRatio.WeaknessDamageRatio).quantity"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022004.Parameters[0]",
+                "data/num-modifier-lock.json#lc:160202004_3_2"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-                "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -7520,7 +7510,7 @@
               "CURRENT_ID_SEMANTIC_CONFLICT: s1:1013409:1:same-id-semantic-conflict; 当前同 ID Main 参数指向「武器弱点伤害」，描述语义却是「提高赛季技能充能速度（描述 Token 指向赛季充能）」，两条证据不对应。仅作为当前同 ID 配置参考，不能认定为旧节点效果；是否发生 ID 复用或改义、具体变更版本尚未确证。 NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022017.Parameters[0] <> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022017_1",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "赛季技能充能速度提高{GPModifier:160202005:BaseValue:0:13}。",
+            "descriptionTemplate": "赛季技能充能速度提高{{num:s1-1013409-1-0|percent}}。",
             "semanticConflicts": [
               {
                 "id": "s1:1013409:1:same-id-semantic-conflict",
@@ -7533,7 +7523,12 @@
                 "summary": "当前同 ID Main 参数指向「武器弱点伤害」，描述语义却是「提高赛季技能充能速度（描述 Token 指向赛季充能）」，两条证据不对应。仅作为当前同 ID 配置参考，不能认定为旧节点效果；是否发生 ID 复用或改义、具体变更版本尚未确证。"
               }
             ],
-            "descriptionBindings": {},
+            "descriptionBindings": {
+              "s1-1013409-1-0": {
+                "row": "lc:160202005_1_0",
+                "field": "base"
+              }
+            },
             "valueReview": {
               "sources": [
                 "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022017_1.MGEDescription",
@@ -7542,14 +7537,14 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022017_1",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022028.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022017",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022017_1.MGEDescription#token",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022028.Parameters[0]",
                 "data/num-modifier-lock.json#lc:160202005_1_0"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022017/1 -> 1319022028; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "保留现有 Resolver 按格式码解析的合法 Token；quantity 未审定，不创建自定义 Num binding，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
+                "仅按原 Token 格式码 13 展示充能速度参数百分比；保留 B2，不推导实际充能时间或乘区。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -7559,7 +7554,7 @@
           },
           {
             "level": 2,
-            "description": "赛季技能充能速度提高8%。",
+            "description": "赛季技能充能速度提高16%。",
             "modifierRows": [
               "lc:160202008_2_0",
               "lc:160202005_1_0"
@@ -7610,7 +7605,7 @@
               "CURRENT_ID_SEMANTIC_CONFLICT: s1:1013409:2:same-id-semantic-conflict; 当前同 ID Main 参数指向「武器弱点伤害」，描述语义却是「提高赛季技能充能速度（描述 Token 指向赛季充能）」，两条证据不对应。仅作为当前同 ID 配置参考，不能认定为旧节点效果；是否发生 ID 复用或改义、具体变更版本尚未确证。 NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022017.Parameters[0] <> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022017_2",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "赛季技能充能速度提高{GPModifier:160202005:BaseValue:0:13}。",
+            "descriptionTemplate": "赛季技能充能速度提高{{num:s1-1013409-2-0|percent}}。",
             "semanticConflicts": [
               {
                 "id": "s1:1013409:2:same-id-semantic-conflict",
@@ -7623,7 +7618,12 @@
                 "summary": "当前同 ID Main 参数指向「武器弱点伤害」，描述语义却是「提高赛季技能充能速度（描述 Token 指向赛季充能）」，两条证据不对应。仅作为当前同 ID 配置参考，不能认定为旧节点效果；是否发生 ID 复用或改义、具体变更版本尚未确证。"
               }
             ],
-            "descriptionBindings": {},
+            "descriptionBindings": {
+              "s1-1013409-2-0": {
+                "row": "lc:160202005_2_1",
+                "field": "base"
+              }
+            },
             "valueReview": {
               "sources": [
                 "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022017_2.MGEDescription",
@@ -7632,14 +7632,14 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022017_2",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022029.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022017",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022017_2.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160202005_1_0"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022029.Parameters[0]",
+                "data/num-modifier-lock.json#lc:160202005_2_1"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022017/2 -> 1319022029; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "保留现有 Resolver 按格式码解析的合法 Token；quantity 未审定，不创建自定义 Num binding，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
+                "仅按原 Token 格式码 13 展示充能速度参数百分比；保留 B2，不推导实际充能时间或乘区。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -7649,7 +7649,7 @@
           },
           {
             "level": 3,
-            "description": "赛季技能充能速度提高8%。",
+            "description": "赛季技能充能速度提高24%。",
             "modifierRows": [
               "lc:160202008_3_0",
               "lc:160202005_1_0"
@@ -7700,7 +7700,7 @@
               "CURRENT_ID_SEMANTIC_CONFLICT: s1:1013409:3:same-id-semantic-conflict; 当前同 ID Main 参数指向「武器弱点伤害」，描述语义却是「提高赛季技能充能速度（描述 Token 指向赛季充能）」，两条证据不对应。仅作为当前同 ID 配置参考，不能认定为旧节点效果；是否发生 ID 复用或改义、具体变更版本尚未确证。 NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022017.Parameters[0] <> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022017_3",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "赛季技能充能速度提高{GPModifier:160202005:BaseValue:0:13}。",
+            "descriptionTemplate": "赛季技能充能速度提高{{num:s1-1013409-3-0|percent}}。",
             "semanticConflicts": [
               {
                 "id": "s1:1013409:3:same-id-semantic-conflict",
@@ -7713,7 +7713,12 @@
                 "summary": "当前同 ID Main 参数指向「武器弱点伤害」，描述语义却是「提高赛季技能充能速度（描述 Token 指向赛季充能）」，两条证据不对应。仅作为当前同 ID 配置参考，不能认定为旧节点效果；是否发生 ID 复用或改义、具体变更版本尚未确证。"
               }
             ],
-            "descriptionBindings": {},
+            "descriptionBindings": {
+              "s1-1013409-3-0": {
+                "row": "lc:160202005_3_2",
+                "field": "base"
+              }
+            },
             "valueReview": {
               "sources": [
                 "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022017_3.MGEDescription",
@@ -7722,14 +7727,14 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022017_3",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022017",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022017_3.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160202005_1_0"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters[0]",
+                "data/num-modifier-lock.json#lc:160202005_3_2"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022017/3 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "保留现有 Resolver 按格式码解析的合法 Token；quantity 未审定，不创建自定义 Num binding，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
+                "仅按原 Token 格式码 13 展示充能速度参数百分比；保留 B2，不推导实际充能时间或乘区。",
                 "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
@@ -8055,7 +8060,7 @@
         "levels": [
           {
             "level": 1,
-            "description": "裂口消失时，额外造成〔数值待核实〕次伤害，伤害值为期间裂口受到总伤害量的〔数值待核实〕。",
+            "description": "裂口消失时，额外造成1次伤害，伤害值为期间裂口受到总伤害量的3.5%。",
             "modifierRows": [
               "lc:160202010_1_0"
             ],
@@ -8089,21 +8094,39 @@
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135071.TalentSkillsID=1319022015 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022015_1 一; 无逐项结构映射，不采用描述数值。",
               "UNRESOLVED_TOKEN: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135071.TalentSkillsID=1319022015 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022015_1 {GPNumericalID:160102005:HpCalScale:2}",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 2 quantities lack verified structured bindings."
+              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
             ],
-            "descriptionTemplate": "裂口消失时，额外造成〔数值待核实〕次伤害，伤害值为期间裂口受到总伤害量的〔数值待核实〕。",
+            "descriptionTemplate": "裂口消失时，额外造成1次伤害，伤害值为期间裂口受到总伤害量的3.5%。",
             "descriptionBindings": {},
             "valueReview": {
-              "sources": [],
+              "sources": [
+                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022015_1.MGEDescription",
+                "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135071.TalentSkillsID",
+                "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135071.TalentILevel",
+                "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022015_1",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022026.Parameters",
+                "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022015",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022026.Parameters[0]",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022026.Parameters[0].Value[SkillID=6002201,Name=WoundID].Value",
+                "NZM/Content/DataTables/numerical_config_playerskill.json#160102005_1"
+              ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022015/1 -> 1319022026; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
+                "Passive WoundID 与精确描述 Token 均指向技能 Numerical 的 HpCalScale；不是同 ID 的 Modifier。仅确认间接伤害系数，不据此证明累计伤害输入与触发次数。",
                 "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-                "RESOLVED=0; REMAINING=2"
+                "RESOLVED=1; REMAINING=1"
               ],
               "applications": [],
-              "resolvedCount": 0,
-              "remaining": 2
+              "resolvedCount": 1,
+              "remaining": 1
+            },
+            "reportedReview": {
+              "source": "2026-09-07 用户补充，与现有描述逐项对照；未核实执行配置",
+              "notes": [
+                "现有精确等级描述写一次；用户消息中的亿次按笔误处理。次数不是从 Numerical 的 HpCalScale 推导。"
+              ],
+              "count": 1
             }
           }
         ]
@@ -8125,7 +8148,7 @@
         "levels": [
           {
             "level": 1,
-            "description": "射线伤害增加〔数值待核实〕。",
+            "description": "射线伤害增加6%。",
             "modifierRows": [],
             "facts": [
               {
@@ -8147,26 +8170,37 @@
               "NON_MODIFIER_NUMERICAL: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135091.TalentSkillsID=1319022006 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022006.Parameters[0].NumericalID_Talent=160202002; 不是 Num Modifier 身份，不推测伤害公式。",
               "CURRENT_CONFIG_ONLY: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022006 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135091.TalentSkillsID=1319022006 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022006_1 6%; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "射线伤害增加〔数值待核实〕。",
+            "descriptionTemplate": "射线伤害增加6%。",
             "descriptionBindings": {},
             "valueReview": {
-              "sources": [],
+              "sources": [
+                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022006_1.MGEDescription",
+                "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135091.TalentSkillsID",
+                "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135091.TalentILevel",
+                "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022006_1",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022006.Parameters",
+                "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022006",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022006.Parameters[0]",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022006.Parameters[0].Value[SkillID=6002201,Name=NumericalID_Talent].Value",
+                "NZM/Content/Abilities/Skills/Season/S2/TabooEyes/BP_TabooEyes2.json#Default__BP_TabooEyes2_C.NumericalID",
+                "NZM/Content/DataTables/numerical_config_playerskill.json#160202001_1",
+                "NZM/Content/DataTables/numerical_config_playerskill.json#160202002_1"
+              ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-                "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-                "RESOLVED=0; REMAINING=1"
+                "按逐级 NumericalID_Talent 与技能 Actor 默认 NumericalID 的 HpCalScale 比值计算增幅；不是独立 Modifier 乘区，不宣称历史实测。",
+                "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
-              "resolvedCount": 0,
-              "remaining": 1
+              "resolvedCount": 1,
+              "remaining": 0
             }
           },
           {
             "level": 2,
-            "description": "射线伤害增加〔数值待核实〕。",
+            "description": "射线伤害增加12%。",
             "modifierRows": [],
             "facts": [
               {
@@ -8188,27 +8222,38 @@
               "NON_MODIFIER_NUMERICAL: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135092.TalentSkillsID=1319022006 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022006.Parameters[0].NumericalID_Talent=160202002; 不是 Num Modifier 身份，不推测伤害公式。",
               "CURRENT_CONFIG_ONLY: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022006 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135092.TalentSkillsID=1319022006 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022006_2 12%; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "射线伤害增加〔数值待核实〕。",
+            "descriptionTemplate": "射线伤害增加12%。",
             "descriptionBindings": {},
             "valueReview": {
-              "sources": [],
+              "sources": [
+                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022006_2.MGEDescription",
+                "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135092.TalentSkillsID",
+                "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135092.TalentILevel",
+                "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022006_2",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022007.Parameters",
+                "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022006",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022007.Parameters[0]",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022007.Parameters[0].Value[SkillID=6002201,Name=NumericalID_Talent].Value",
+                "NZM/Content/Abilities/Skills/Season/S2/TabooEyes/BP_TabooEyes2.json#Default__BP_TabooEyes2_C.NumericalID",
+                "NZM/Content/DataTables/numerical_config_playerskill.json#160202001_1",
+                "NZM/Content/DataTables/numerical_config_playerskill.json#160202003_1"
+              ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022006/2 -> 1319022007; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-                "RESOLVED=0; REMAINING=1"
+                "按逐级 NumericalID_Talent 与技能 Actor 默认 NumericalID 的 HpCalScale 比值计算增幅；不是独立 Modifier 乘区，不宣称历史实测。",
+                "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
-              "resolvedCount": 0,
-              "remaining": 1
+              "resolvedCount": 1,
+              "remaining": 0
             }
           },
           {
             "level": 3,
-            "description": "射线伤害增加〔数值待核实〕。",
+            "description": "射线伤害增加18%。",
             "modifierRows": [],
             "facts": [
               {
@@ -8230,22 +8275,33 @@
               "NON_MODIFIER_NUMERICAL: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135093.TalentSkillsID=1319022006 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022006.Parameters[0].NumericalID_Talent=160202002; 不是 Num Modifier 身份，不推测伤害公式。",
               "CURRENT_CONFIG_ONLY: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022006 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135093.TalentSkillsID=1319022006 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022006_3 18%; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "射线伤害增加〔数值待核实〕。",
+            "descriptionTemplate": "射线伤害增加18%。",
             "descriptionBindings": {},
             "valueReview": {
-              "sources": [],
+              "sources": [
+                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022006_3.MGEDescription",
+                "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135093.TalentSkillsID",
+                "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135093.TalentILevel",
+                "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022006_3",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022008.Parameters",
+                "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022006",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022008.Parameters[0]",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022008.Parameters[0].Value[SkillID=6002201,Name=NumericalID_Talent].Value",
+                "NZM/Content/Abilities/Skills/Season/S2/TabooEyes/BP_TabooEyes2.json#Default__BP_TabooEyes2_C.NumericalID",
+                "NZM/Content/DataTables/numerical_config_playerskill.json#160202001_1",
+                "NZM/Content/DataTables/numerical_config_playerskill.json#160202004_1"
+              ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022006/3 -> 1319022008; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-                "RESOLVED=0; REMAINING=1"
+                "按逐级 NumericalID_Talent 与技能 Actor 默认 NumericalID 的 HpCalScale 比值计算增幅；不是独立 Modifier 乘区，不宣称历史实测。",
+                "RESOLVED=1; REMAINING=0"
               ],
               "applications": [],
-              "resolvedCount": 0,
-              "remaining": 1
+              "resolvedCount": 1,
+              "remaining": 0
             }
           }
         ]
@@ -8472,7 +8528,7 @@
         "levels": [
           {
             "level": 1,
-            "description": "维持静止不动〔数值待核实〕秒时，获得1层共振，持续〔数值待核实〕秒。冷却〔数值待核实〕秒。",
+            "description": "维持静止不动3秒时，获得1层共振，持续6秒。冷却10秒。",
             "modifierRows": [
               "lc:160202010_1_0"
             ],
@@ -8510,7 +8566,7 @@
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
               "VALUE_REVIEW_PENDING: 3 quantities lack verified structured bindings."
             ],
-            "descriptionTemplate": "维持静止不动〔数值待核实〕秒时，获得1层共振，持续〔数值待核实〕秒。冷却〔数值待核实〕秒。",
+            "descriptionTemplate": "维持静止不动3秒时，获得1层共振，持续6秒。冷却10秒。",
             "descriptionBindings": {},
             "valueReview": {
               "sources": [
@@ -8531,6 +8587,14 @@
               "applications": [],
               "resolvedCount": 1,
               "remaining": 3
+            },
+            "reportedReview": {
+              "source": "2026-09-07 用户补充，与现有描述逐项对照；未核实执行配置",
+              "notes": [
+                "用户确认一级静止门槛3秒；二、三级保留已有录像记录。",
+                "用户确认一级共振持续6秒、冷却10秒；层数仍来自逐级 StackCount，不覆盖配置。"
+              ],
+              "count": 3
             }
           },
           {
@@ -8754,8 +8818,13 @@
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
               "VALUE_REVIEW_PENDING: 3 quantities lack verified structured bindings."
             ],
-            "descriptionTemplate": "射手步枪，霰弹枪，狙击枪、弓箭、手枪专属\n短时间内多次命中（3秒内命中5次）弱点后，下1次换弹速度提高{GPModifier:160202006:BaseValue:0:13}。",
-            "descriptionBindings": {},
+            "descriptionTemplate": "射手步枪，霰弹枪，狙击枪、弓箭、手枪专属\n短时间内多次命中（3秒内命中5次）弱点后，下1次换弹速度提高{{num:s1-1013609-1-0|percent}}。",
+            "descriptionBindings": {
+              "s1-1013609-1-0": {
+                "row": "lc:160202006_1_0",
+                "field": "base"
+              }
+            },
             "valueReview": {
               "sources": [
                 "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022007_1.MGEDescription",
@@ -8764,14 +8833,13 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022007_1",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022009.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022007",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022007_1.MGEDescription#token",
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022009.Parameters[0]",
                 "data/num-modifier-lock.json#lc:160202006_1_0"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022007/1 -> 1319022009; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "保留现有 Resolver 按格式码解析的合法 Token；quantity 未审定，不创建自定义 Num binding，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
                 "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
                 "RESOLVED=1; REMAINING=3"
               ],
@@ -8806,7 +8874,7 @@
           },
           {
             "level": 2,
-            "description": "射手步枪，霰弹枪，狙击枪、弓箭、手枪专属\n短时间内多次命中（〔数值待核实〕秒内命中〔数值待核实〕次）弱点后，下〔数值待核实〕次换弹速度提高5%。",
+            "description": "射手步枪，霰弹枪，狙击枪、弓箭、手枪专属\n短时间内多次命中（3秒内命中5次）弱点后，下1次换弹速度提高10%。",
             "modifierRows": [
               "lc:160202006_1_0"
             ],
@@ -8845,8 +8913,13 @@
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
               "VALUE_REVIEW_PENDING: 3 quantities lack verified structured bindings."
             ],
-            "descriptionTemplate": "射手步枪，霰弹枪，狙击枪、弓箭、手枪专属\n短时间内多次命中（〔数值待核实〕秒内命中〔数值待核实〕次）弱点后，下〔数值待核实〕次换弹速度提高{GPModifier:160202006:BaseValue:0:13}。",
-            "descriptionBindings": {},
+            "descriptionTemplate": "射手步枪，霰弹枪，狙击枪、弓箭、手枪专属\n短时间内多次命中（3秒内命中5次）弱点后，下1次换弹速度提高{{num:s1-1013609-2-0|percent}}。",
+            "descriptionBindings": {
+              "s1-1013609-2-0": {
+                "row": "lc:160202006_2_0",
+                "field": "base"
+              }
+            },
             "valueReview": {
               "sources": [
                 "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022007_2.MGEDescription",
@@ -8855,25 +8928,31 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022007_2",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022010.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022007",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022007_2.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160202006_1_0"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022010.Parameters[0]",
+                "data/num-modifier-lock.json#lc:160202006_2_0"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022007/2 -> 1319022010; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "保留现有 Resolver 按格式码解析的合法 Token；quantity 未审定，不创建自定义 Num binding，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
                 "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
                 "RESOLVED=1; REMAINING=3"
               ],
               "applications": [],
               "resolvedCount": 1,
               "remaining": 3
+            },
+            "reportedReview": {
+              "source": "2026-09-07 用户补充，与现有描述逐项对照；未核实执行配置",
+              "notes": [
+                "用户确认的命中窗口、次数和换弹次数，当前描述一致；仅展示补充，未证明 MGE 执行门槛。一级已有录像记录，保留原来源。"
+              ],
+              "count": 3
             }
           },
           {
             "level": 3,
-            "description": "射手步枪，霰弹枪，狙击枪、弓箭、手枪专属\n短时间内多次命中（〔数值待核实〕秒内命中〔数值待核实〕次）弱点后，下〔数值待核实〕次换弹速度提高5%。",
+            "description": "射手步枪，霰弹枪，狙击枪、弓箭、手枪专属\n短时间内多次命中（3秒内命中5次）弱点后，下1次换弹速度提高15%。",
             "modifierRows": [
               "lc:160202006_1_0"
             ],
@@ -8912,8 +8991,13 @@
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
               "VALUE_REVIEW_PENDING: 3 quantities lack verified structured bindings."
             ],
-            "descriptionTemplate": "射手步枪，霰弹枪，狙击枪、弓箭、手枪专属\n短时间内多次命中（〔数值待核实〕秒内命中〔数值待核实〕次）弱点后，下〔数值待核实〕次换弹速度提高{GPModifier:160202006:BaseValue:0:13}。",
-            "descriptionBindings": {},
+            "descriptionTemplate": "射手步枪，霰弹枪，狙击枪、弓箭、手枪专属\n短时间内多次命中（3秒内命中5次）弱点后，下1次换弹速度提高{{num:s1-1013609-3-0|percent}}。",
+            "descriptionBindings": {
+              "s1-1013609-3-0": {
+                "row": "lc:160202006_3_0",
+                "field": "base"
+              }
+            },
             "valueReview": {
               "sources": [
                 "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022007_3.MGEDescription",
@@ -8922,20 +9006,26 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022007_3",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022011.Parameters",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022007",
-                "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022007_3.MGEDescription#token",
-                "data/num-modifier-lock.json#lc:160202006_1_0"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022011.Parameters[0]",
+                "data/num-modifier-lock.json#lc:160202006_3_0"
               ],
               "notes": [
                 "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
                 "PASSIVE_CONFIG_SELECTION: 1319022007/3 -> 1319022011; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-                "保留现有 Resolver 按格式码解析的合法 Token；quantity 未审定，不创建自定义 Num binding，不进入索引。",
-                "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
+                "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
                 "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
                 "RESOLVED=1; REMAINING=3"
               ],
               "applications": [],
               "resolvedCount": 1,
               "remaining": 3
+            },
+            "reportedReview": {
+              "source": "2026-09-07 用户补充，与现有描述逐项对照；未核实执行配置",
+              "notes": [
+                "用户确认的命中窗口、次数和换弹次数，当前描述一致；仅展示补充，未证明 MGE 执行门槛。一级已有录像记录，保留原来源。"
+              ],
+              "count": 3
             }
           }
         ]

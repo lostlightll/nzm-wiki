@@ -3,6 +3,7 @@ import { resolveLegacyTalentCatalog, type LegacyTalentTree } from "../../lib/s0s
 import { reviewS0Values, type S0ReviewEvidence } from "./s0-reviewed-values";
 import { reviewS1Values, type S1ReviewEvidence } from "./s1-reviewed-values";
 import { applyVideoValues } from "./video-values";
+import { applyReportedValues } from "./reported-values";
 
 export interface LegacyValueEvidence { s0?: S0ReviewEvidence; s1?: S1ReviewEvidence }
 
@@ -28,6 +29,7 @@ export function applyLegacyValueReviews(trees: LegacyTalentTree[], evidence?: Le
       }
       if (level.valueReview?.remaining) level.warnings.push(`VALUE_REVIEW_PENDING: ${level.valueReview.remaining} quantities lack verified structured bindings.`);
       applyVideoValues(tree.season, tree.id, node.id, level);
+      applyReportedValues(tree.season, node.id, level);
       // Validate every expression now; the server resolves them again against the current Lock.
       for (const expression of Object.values(level.descriptionBindings ?? {})) NUM_MODIFIER_RESOLVER.getRow(expression.row);
     }

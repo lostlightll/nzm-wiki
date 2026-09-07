@@ -6,6 +6,7 @@ import { z } from "zod";
 import { NUM_MODIFIER_RESOLVER } from "../../lib/num-modifier-data";
 import type { NumModifierResolver, NumModifierValueExpression, NumModifierValueFormat } from "../../lib/num-modifier";
 import { readRangeEvidence, reviewRangeValue, type RangeEvidence } from "./range-values";
+import { readS1SkillNumerical, reviewS1SkillNumerical, type S1SkillNumericalEvidence } from "./s1-skill-numerical";
 
 /** Offline audit only. Current Main identities never establish historical availability. */
 export const S1_REVIEW_PATHS = {
@@ -22,6 +23,7 @@ export const S1_REVIEW_PATHS = {
 } as const;
 type Table = keyof typeof S1_REVIEW_PATHS;
 export interface S1ReviewEvidence {
+  skillNumerical?: S1SkillNumericalEvidence;
   range?: RangeEvidence;
   taboo?: S1TabooBlueprintEvidence;
   tables: Record<Table, Record<string, unknown>>;
@@ -281,12 +283,19 @@ const parameterReviews = [
   { id: 1319021014, configs: [1319021028], name: "Possibility", values: [0.5], pattern: /(\{Passive:1319021014:1:Possibility:13\})概率/, format: "percent" },
 ] satisfies Array<{ id: number; configs: number[]; name: string; skill?: number; values: number[]; pattern: RegExp; format: NumModifierValueFormat }>;
 
-const modifierReviews = [
+const modifierReviews: Array<{ id: number; configs: number[]; name: string; skill?: number; modifier: number; attribute: string; rows: NumModifierValueExpression["row"][]; pattern: RegExp; index: boolean; operation?: "B1" | "B2"; field?: "base" | "coefficient"; tokenOnly?: boolean }> = [
+  { id: 1319022007, configs: [1319022009, 1319022010, 1319022011], name: "ModifyID", modifier: 160202006, attribute: "GPAttributeSetCharacterWeaponAdjust.ChangeClipTimeAdjust", rows: ["lc:160202006_1_0", "lc:160202006_2_0", "lc:160202006_3_0"], pattern: /换弹速度提高(\{GPModifier:160202006:BaseValue:0:13\})/, index: false },
+  { id: 1319021006, configs: [1319021015, 1319021016, 1319021017], name: "ModifyID", modifier: 160201010, attribute: "GPAttributeSetHumanSkill.SeasonSkillChargeSpeed", rows: ["lc:160201010_1_0", "lc:160201010_2_1", "lc:160201010_3_2"], pattern: /充能速度提高(\{GPModifier:160201010:BaseValue:0:13\})/, index: false, operation: "B2" },
+  { id: 1319022010, configs: [1319022014, 1319022015], name: "MoJinFu", skill: 6002201, modifier: 160202010, attribute: "GPAttributeSetBearDamageRatio.DamageBearRatio", rows: ["lc:160202010_1_0", "lc:160202010_2_1"], pattern: /期间获得(\{GPModifier:160202010:BaseValue:0:13\})/, index: false },
+  { id: 1319021009, configs: [1319021020, 1319021021, 1319021022], name: "", modifier: 160201011, attribute: "GPAttributeSetBearDamageRatio.DamageBearRatio", rows: ["lc:160201011_1_0", "lc:160201011_2_1", "lc:160201011_3_2"], pattern: /自身获得(\{GPModifier:160201011:BaseValue:0:13\})/, index: false, tokenOnly: true },
+  { id: 1319021015, configs: [1319021029, 1319021030], name: "", modifier: 160201007, attribute: "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio", rows: ["lc:160201007_1_0", "lc:160201007_2_1"], pattern: /伤害增加(\{GPModifier:160201007:CoefValue:0:13\})/, index: false, field: "coefficient", tokenOnly: true },
+  { id: 1319022017, configs: [1319022028, 1319022029, 1319022030], name: "ModifyID", modifier: 160202005, attribute: "GPAttributeSetHumanSkill.SeasonSkillChargeSpeed", rows: ["lc:160202005_1_0", "lc:160202005_2_1", "lc:160202005_3_2"], pattern: /赛季技能充能速度提高(\{GPModifier:160202005:BaseValue:0:13\})/, index: false },
+  { id: 1319022004, configs: [1319022002, 1319022003, 1319022004], name: "ModifyID", modifier: 160202004, attribute: "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio", rows: ["lc:160202004_1_0", "lc:160202004_2_1", "lc:160202004_3_2"], pattern: /弱点倍率增加(\{GPModifier:160202004:BaseValue:0:2\})/, index: false },
   { id: 1701000101, configs: [1701000101], name: "CharacterModifierList", modifier: 1701000101, attribute: "GPAttributeSetCritical.CriticalRatio", rows: ["lc:1701000101_1_0"], pattern: /暴击率提高(\d+(?:\.\d+)?%)/, index: false },
   { id: 1701000103, configs: [1701000103], name: "CharacterModifierList", modifier: 1701000103, attribute: "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio", rows: ["lc:1701000103_1_0"], pattern: /弱点伤害增幅提高(\d+(?:\.\d+)?%)/, index: true },
   { id: 1701000105, configs: [1701000105], name: "CharacterModifierList", modifier: 1701000105, attribute: "GPAttributeSetGiveDamageRatio.CloseRangeDamageRatio", rows: ["lc:1701000105_1_0"], pattern: /造成的伤害提高(\d+(?:\.\d+)?%)/, index: true },
   { id: 1319021004, configs: [1319021010, 1319021011, 1319021012], name: "ModifyID", modifier: 160201008, attribute: "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio", rows: ["lc:160201008_1_0", "lc:160201008_2_1", "lc:160201008_3_2"], pattern: /武器技能的伤害提升(\d+(?:\.\d+)?%)/, index: true },
-] satisfies Array<{ id: number; configs: number[]; name: string; modifier: number; attribute: string; rows: NumModifierValueExpression["row"][]; pattern: RegExp; index: boolean }>;
+];
 
 /** Reads complete Main tables, including passive-selected config/description rows omitted by extract.ts. */
 export function readS1ReviewInput(root = process.cwd(), options: { tabooScriptFile?: string } = {}): S1ReviewEvidence {
@@ -300,7 +309,7 @@ export function readS1ReviewInput(root = process.cwd(), options: { tabooScriptFi
     tables[name] = rows[0].Rows!;
     sources.push({ path: `NZM/Content/DataTables/${relative}`, sha256: createHash("sha256").update(buffer).digest("hex") });
   }
-  return { tables, sources, range: readRangeEvidence(root), ...(options.tabooScriptFile ? { taboo: readS1TabooBlueprintEvidence(root, options.tabooScriptFile) } : {}) };
+  return { tables, sources, range: readRangeEvidence(root), skillNumerical: readS1SkillNumerical(root), ...(options.tabooScriptFile ? { taboo: readS1TabooBlueprintEvidence(root, options.tabooScriptFile) } : {}) };
 }
 
 function selectedBasics(evidence: S1ReviewEvidence) {
@@ -346,7 +355,7 @@ export function compactS1ReviewEvidence(evidence: S1ReviewEvidence): S1ReviewEvi
       }
     }
   }
-  return { tables, sources: structuredClone(evidence.sources), ...(evidence.range ? { range: structuredClone(evidence.range) } : {}), ...(evidence.taboo ? { taboo: compactS1TabooBlueprintEvidence(evidence.taboo) } : {}) };
+  return { tables, sources: structuredClone(evidence.sources), ...(evidence.skillNumerical ? { skillNumerical: structuredClone(evidence.skillNumerical) } : {}), ...(evidence.range ? { range: structuredClone(evidence.range) } : {}), ...(evidence.taboo ? { taboo: compactS1TabooBlueprintEvidence(evidence.taboo) } : {}) };
 }
 
 /** Spans refer to tag-stripped source text. Values in prose are never parsed as evidence. */
@@ -441,19 +450,34 @@ export function reviewS1Values(input: { nodeId: string; level: number; skillIds:
     }
     for (const review of modifierReviews.filter(review => review.id === id)) {
       if (Number(configKey) !== review.configs[input.level - 1]) throw new Error(`S1_REVIEW_CONFIG_DRIFT: ${id}/${input.level}`);
-      const parameter = readParameter(review.name);
+      if (review.tokenOnly && (!config || config.Parameters.length || review.index)) throw new Error(`S1_REVIEW_TOKEN_CONFIG_DRIFT: ${id}/${input.level}`);
+      const parameter = review.tokenOnly ? { value: review.modifier, steps: [] } : readParameter(review.name, review.skill);
       if (parameter.value !== review.modifier) throw new Error(`S1_REVIEW_MODIFIER_DRIFT: ${id}/${input.level}`);
-      const expression: NumModifierValueExpression = { row: review.rows[input.level - 1], field: "base" };
+      const expression: NumModifierValueExpression = { row: review.rows[input.level - 1], field: review.field ?? "base" };
       const row = resolver.getRow(expression.row);
-      if (row.id !== review.modifier || row.level !== input.level || row.attributeName !== review.attribute || row.operation !== "B1" || resolver.describeAttribute(row.attributeName).quantity !== "ratio") throw new Error(`S1_REVIEW_NUM_DRIFT: ${expression.row}`);
+      // Charge's format-13 token establishes percent display, not the B2 execution formula.
+      const chargeDisplay = review.id === 1319022017 || review.operation === "B2";
+      const tokenPercent = chargeDisplay || review.id === 1319022007;
+      if (row.id !== review.modifier || row.level !== input.level || row.attributeName !== review.attribute || row.operation !== (chargeDisplay ? "B2" : "B1") || (tokenPercent ? row.coefficient !== 0 : resolver.describeAttribute(row.attributeName).quantity !== "ratio")) throw new Error(`S1_REVIEW_NUM_DRIFT: ${expression.row}`);
       const [start, end] = matchValue(review.pattern);
-      add(start, end, row.baseValue, "percent", [...parameter.steps, { source: `data/num-modifier-lock.json#${row.key}`, value: { AttributeName: row.attributeName, BaseValue: row.baseValue, CoefValue: row.coefficient, GPModifierOp: row.operation, Level: row.level } }], "passive-config", expression, ["逐级 Passive Config + 精确 Num 行；不通过描述值选择行。"]);
+      add(start, end, expression.field === "coefficient" ? row.coefficient : row.baseValue, "percent", [...parameter.steps, { source: `data/num-modifier-lock.json#${row.key}`, value: { AttributeName: row.attributeName, BaseValue: row.baseValue, CoefValue: row.coefficient, GPModifierOp: row.operation, Level: row.level } }], review.tokenOnly ? "description-token" : "passive-config", expression,
+        [review.tokenOnly ? "逐级 Passive/描述中的 Modifier 身份与主表同等级精确行匹配；仅作分级参数展示，空 Config 不证明执行链，不进入乘区。" : "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。"]);
+      if (chargeDisplay) result.provenance.at(-1)!.notes.push("仅按原 Token 格式码 13 展示充能速度参数百分比；保留 B2，不推导实际充能时间或乘区。");
       if (review.index) result.indexedApplications.push({ expression, context: { recipient: "self" }, source: result.provenance.at(-1)!.chain.map(step => step.source).join(" -> "), historicalEffectStatus: "unverified" });
       if (id === 1701000105 && evidence.range) {
         const range = reviewRangeValue(id, evidence.range);
         const [rangeStart, rangeEnd] = matchValue(/武器对(\d+(?:\.\d+)?)米内/);
         add(rangeStart, rangeEnd, range.value, "number", [...parameter.steps, ...range.chain], "passive-config", undefined, [range.note]);
       }
+    }
+    if (evidence.skillNumerical && [1319022006, 1319022015].includes(id)) {
+      const damage = id === 1319022006;
+      const expectedConfig = damage ? [1319022006, 1319022007, 1319022008][input.level - 1] : 1319022026;
+      if (Number(configKey) !== expectedConfig) throw new Error(`S1_REVIEW_CONFIG_DRIFT: ${id}/${input.level}`);
+      const parameter = readParameter(damage ? "NumericalID_Talent" : "WoundID", 6002201);
+      const proof = reviewS1SkillNumerical(id, input.level, parameter.value, evidence.skillNumerical);
+      const [start, end] = matchValue(damage ? /射线伤害增加(\d+(?:\.\d+)?%)/ : /(\{GPNumericalID:160102005:HpCalScale:2\})/);
+      add(start, end, proof.value, "percent", [...parameter.steps, ...proof.chain], "passive-config", undefined, [proof.note]);
     }
     if (id === 6002301 && input.level === 1) {
       const active = z.object({ AbilityID: z.number(), CooldownDuration: z.number().finite().nonnegative() }).parse(evidence.tables.active[String(id)]);
@@ -469,6 +493,8 @@ export function reviewS1Values(input: { nodeId: string; level: number; skillIds:
     }
     // Token identity is independent of the passive config. Default Level=1 stays explicit.
     for (const match of plain.matchAll(/\{GPModifier:(\d+):(BaseValue|CoefValue):(\d+):[^:}]+(?::(\d+))?\}[%％]?/g)) {
+      // An exact Passive/Config binding takes precedence over a display token's default level.
+      if ([...replacements].some(([start, replacement]) => start <= match.index && replacement.end >= match.index + match[0].length)) continue;
       const rows = resolver.getRowsById("lc", Number(match[1])).filter(row => row.level === Number(match[4] ?? 1) && row.index === Number(match[3]));
       if (rows.length !== 1) continue;
       const row = rows[0];

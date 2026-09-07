@@ -148,14 +148,14 @@ test("source text never becomes a runtime row key, with or without an explicit r
   assert.throws(() => resolveLegacyTalentFact({ ...modifierFact, modifierRow: "lc:999999999_1_0", source: "lc:160201010_1_0" }), /MISSING_ROW/);
 });
 
-test("live catalog recalculates both facts and GPToken prose after a Lock value change", () => {
+test("live catalog recalculates both facts and bound prose after a Lock value change", () => {
   const raw = rawCatalog("s1");
   const changed = driftedResolver({ BaseValue: 0.77, CoefValue: 0.13 });
   const live = resolveLegacyTalentCatalog(raw, changed);
-  const tokenLevels = live.flatMap((tree) => tree.nodes.flatMap((node) => node.levels)).filter((level) => level.descriptionTemplate?.includes("{GPModifier:160201010:"));
+  const tokenLevels = live.flatMap((tree) => tree.nodes.flatMap((node) => node.levels)).filter((level) => Object.values(level.descriptionBindings ?? {}).some(binding => binding.row === "lc:160201010_1_0"));
   assert.ok(tokenLevels.length);
   for (const level of tokenLevels) {
-    const expected = changed.resolveGameModifierTokens(level.descriptionTemplate!).text;
+    const expected = changed.resolveGameModifierTokens(changed.resolveTemplate(level.descriptionTemplate!, level.descriptionBindings)).text;
     assert.equal(level.description, expected);
     assert.ok(level.facts.some((fact) => fact.modifierRow === modifierFact.modifierRow && fact.value.includes("BaseValue=0.77")));
   }
@@ -173,7 +173,7 @@ test("removed live row or unresolved live GPToken fails instead of serving cache
 
 test("offline projection check detects stale JSON even when live reader would repair it", () => {
   const raw = rawCatalog("s1");
-  const level = raw.flatMap((tree) => tree.nodes.flatMap((node) => node.levels)).find((level) => level.descriptionTemplate?.includes("{GPModifier:160201010:"))!;
+  const level = raw.flatMap((tree) => tree.nodes.flatMap((node) => node.levels)).find((level) => Object.values(level.descriptionBindings ?? {}).some(binding => binding.row === "lc:160201010_1_0"))!;
   level.description = "stale rendered prose";
   const fact = level.facts.find((fact) => fact.modifierRow)!;
   fact.label = "stale label";

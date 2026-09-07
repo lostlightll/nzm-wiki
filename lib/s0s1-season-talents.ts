@@ -34,6 +34,7 @@ export interface LegacyTalentLevel {
   /** Sanitized prose with only supported GPModifier tokens retained for live resolution. */
   descriptionTemplate?: string;
   descriptionBindings?: NumModifierValueBindings;
+  reportedReview?: { source: string; notes: string[]; count: number };
   /** Recording text is a display fallback, never configuration or multiplier evidence. */
   videoReview?: {
     status: "video-display-unverified";

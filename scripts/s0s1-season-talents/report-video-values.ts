@@ -20,15 +20,16 @@ if (frameDir) {
 }
 const lines = ["# S0 / S1 视频补充清单", "", "录像展示值尚未核实配置，不是实际伤害测试或乘区依据。只补本节点、本等级原有空缺；已有结构化配置不覆盖，未展示的等级不推算。", "",
   `录像：${VIDEO_VALUE_EVIDENCE.source.fileName}`, `SHA-256：\`${VIDEO_VALUE_EVIDENCE.source.sha256}\``, "",
-  "| 赛季 | 分支 | 配置已核验 | 录像补充 | 仍未填充 |", "| --- | --- | ---: | ---: | ---: |",
+  "| 赛季 | 分支 | 配置已核验 | 录像补充 | 用户补充 | 仍未填充 |", "| --- | --- | ---: | ---: | ---: | ---: |",
 ];
 let count = 0;
 for (const tree of trees) {
   const levels = tree.nodes.flatMap(node => node.levels);
   const reviewed = levels.reduce((sum, level) => sum + (level.valueReview?.resolvedCount ?? 0), 0);
   const video = levels.reduce((sum, level) => sum + (level.videoReview?.values.length ?? 0), 0);
-  const missing = levels.reduce((sum, level) => sum + (level.valueReview?.remaining ?? 0), 0) - video;
-  lines.push(`| ${tree.season.toUpperCase()} | ${tree.name} | ${reviewed} | ${video} | ${missing} |`);
+  const reported = levels.reduce((sum, level) => sum + (level.reportedReview?.count ?? 0), 0);
+  const missing = levels.reduce((sum, level) => sum + (level.valueReview?.remaining ?? 0), 0) - video - reported;
+  lines.push(`| ${tree.season.toUpperCase()} | ${tree.name} | ${reviewed} | ${video} | ${reported} | ${missing} |`);
 }
 for (const entry of VIDEO_VALUE_EVIDENCE.entries) {
   const tree = trees.find(tree => tree.season === entry.season && tree.id === entry.treeId);
@@ -45,7 +46,8 @@ for (const entry of VIDEO_VALUE_EVIDENCE.entries) {
   }
   if (entry.notes.length) lines.push("", ...entry.notes.map(note => `差异记录：${note}`));
 }
-lines.push("", `合计 ${count} 处录像补充，${VIDEO_VALUE_EVIDENCE.entries.length} 个节点等级记录。配置待核实总数仍为 293；其中录像已补 ${count} 处，不计入配置已核验数。`, "");
+const remaining = trees.flatMap(tree => tree.nodes.flatMap(node => node.levels)).reduce((sum, level) => sum + (level.valueReview?.remaining ?? 0), 0);
+lines.push("", `合计 ${count} 处录像补充，${VIDEO_VALUE_EVIDENCE.entries.length} 个节点等级记录。配置待核实总数为 ${remaining}；其中录像已补 ${count} 处，不计入配置已核验数。`, "");
 if (output) {
   const file = resolve(output);
   mkdirSync(dirname(file), { recursive: true });

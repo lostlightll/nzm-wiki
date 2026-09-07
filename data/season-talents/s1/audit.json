@@ -21029,6 +21029,313 @@
           "sha256": "3075f8c9ec795805594c883128e416532e847b2cf7f0d8ad0a667fa7d77fdc87"
         }
       ],
+      "skillNumerical": {
+        "rows": {
+          "160102005_1": {
+            "id": 160102005,
+            "Level": 1,
+            "Settlements": [
+              {
+                "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Health.IndirectDamage"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Hurtable.Base"
+              },
+              {
+                "TagName": "None"
+              }
+            ],
+            "EnableAttributes": [],
+            "CameraHitFeedBackTag": {
+              "TagName": "None"
+            },
+            "bEnableCriticalDamage": false,
+            "bDamageIgnoreShield": false,
+            "ElementType": "EElementEffectType::EDamageType_Kinetic",
+            "DamageSourceType": 0,
+            "ElementDebuffTypeID": 0,
+            "ElementAddRate": 1,
+            "HpCalScale": 0.035,
+            "HpCalBase": 0,
+            "HpFloatCoef": 0,
+            "FriendlyCoefficient": -1,
+            "FleshDamageBase": 0,
+            "ImpulseBase": 0,
+            "ToughnessBase": 0,
+            "ToughnessScale": 0,
+            "EnableWeaknessDamage": false,
+            "WeaknessDamageAddScale": 0,
+            "ToughnessDamageType": "EHardStrightWeaknessType::None",
+            "KnockupLevel": 0,
+            "OnlyKnockUpWhenKill": false,
+            "KnockUpDistance1": 0,
+            "KnockUpDistance2": 0,
+            "KnockUpLevel1": 0,
+            "KnockUpLevel2": 0,
+            "HurtableBase": 1,
+            "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+            "Description": "S1_激光分支_自定义裂口破坏1",
+            "DamageAttenuationStart": 0,
+            "DamageAttenuationEnd": 0,
+            "DamageAttenuationRatio": 0,
+            "bEnableParry": false,
+            "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+          },
+          "160202001_1": {
+            "id": 160202001,
+            "Level": 1,
+            "Settlements": [
+              {
+                "TagName": "Numerical.SettlementType.Impulse.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Health.SkillDamage"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Flesh.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Hurtable.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Toughness.Base"
+              },
+              {
+                "TagName": "None"
+              }
+            ],
+            "EnableAttributes": [],
+            "CameraHitFeedBackTag": {
+              "TagName": "None"
+            },
+            "bEnableCriticalDamage": false,
+            "bDamageIgnoreShield": false,
+            "ElementType": "EElementEffectType::EDamageType_Kinetic",
+            "DamageSourceType": 0,
+            "ElementDebuffTypeID": 0,
+            "ElementAddRate": 0,
+            "HpCalScale": 14,
+            "HpCalBase": 0,
+            "HpFloatCoef": 0,
+            "FriendlyCoefficient": -1,
+            "FleshDamageBase": 2.8,
+            "ImpulseBase": 14,
+            "ToughnessBase": 2.8,
+            "ToughnessScale": 0,
+            "EnableWeaknessDamage": false,
+            "WeaknessDamageAddScale": 0,
+            "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+            "KnockupLevel": 0,
+            "OnlyKnockUpWhenKill": false,
+            "KnockUpDistance1": 0,
+            "KnockUpDistance2": 0,
+            "KnockUpLevel1": 0,
+            "KnockUpLevel2": 0,
+            "HurtableBase": 2.8,
+            "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+            "Description": "S1_禁忌之瞳_激光伤害",
+            "DamageAttenuationStart": 0,
+            "DamageAttenuationEnd": 0,
+            "DamageAttenuationRatio": 0,
+            "bEnableParry": false,
+            "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+          },
+          "160202002_1": {
+            "id": 160202002,
+            "Level": 1,
+            "Settlements": [
+              {
+                "TagName": "Numerical.SettlementType.Impulse.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Health.SkillDamage"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Flesh.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Hurtable.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Toughness.Base"
+              },
+              {
+                "TagName": "None"
+              }
+            ],
+            "EnableAttributes": [],
+            "CameraHitFeedBackTag": {
+              "TagName": "None"
+            },
+            "bEnableCriticalDamage": false,
+            "bDamageIgnoreShield": false,
+            "ElementType": "EElementEffectType::EDamageType_Kinetic",
+            "DamageSourceType": 0,
+            "ElementDebuffTypeID": 0,
+            "ElementAddRate": 0,
+            "HpCalScale": 14.84,
+            "HpCalBase": 0,
+            "HpFloatCoef": 0,
+            "FriendlyCoefficient": -1,
+            "FleshDamageBase": 2.968,
+            "ImpulseBase": 14.84,
+            "ToughnessBase": 2.968,
+            "ToughnessScale": 0,
+            "EnableWeaknessDamage": false,
+            "WeaknessDamageAddScale": 0,
+            "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+            "KnockupLevel": 0,
+            "OnlyKnockUpWhenKill": false,
+            "KnockUpDistance1": 0,
+            "KnockUpDistance2": 0,
+            "KnockUpLevel1": 0,
+            "KnockUpLevel2": 0,
+            "HurtableBase": 2.968,
+            "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+            "Description": "S1_禁忌之瞳_伤害提升",
+            "DamageAttenuationStart": 0,
+            "DamageAttenuationEnd": 0,
+            "DamageAttenuationRatio": 0,
+            "bEnableParry": false,
+            "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+          },
+          "160202003_1": {
+            "id": 160202003,
+            "Level": 1,
+            "Settlements": [
+              {
+                "TagName": "Numerical.SettlementType.Impulse.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Health.SkillDamage"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Flesh.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Hurtable.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Toughness.Base"
+              },
+              {
+                "TagName": "None"
+              }
+            ],
+            "EnableAttributes": [],
+            "CameraHitFeedBackTag": {
+              "TagName": "None"
+            },
+            "bEnableCriticalDamage": false,
+            "bDamageIgnoreShield": false,
+            "ElementType": "EElementEffectType::EDamageType_Kinetic",
+            "DamageSourceType": 0,
+            "ElementDebuffTypeID": 0,
+            "ElementAddRate": 0,
+            "HpCalScale": 15.68,
+            "HpCalBase": 0,
+            "HpFloatCoef": 0,
+            "FriendlyCoefficient": -1,
+            "FleshDamageBase": 3.136,
+            "ImpulseBase": 15.68,
+            "ToughnessBase": 3.136,
+            "ToughnessScale": 0,
+            "EnableWeaknessDamage": false,
+            "WeaknessDamageAddScale": 0,
+            "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+            "KnockupLevel": 0,
+            "OnlyKnockUpWhenKill": false,
+            "KnockUpDistance1": 0,
+            "KnockUpDistance2": 0,
+            "KnockUpLevel1": 0,
+            "KnockUpLevel2": 0,
+            "HurtableBase": 3.136,
+            "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+            "Description": "S1_禁忌之瞳_伤害提升",
+            "DamageAttenuationStart": 0,
+            "DamageAttenuationEnd": 0,
+            "DamageAttenuationRatio": 0,
+            "bEnableParry": false,
+            "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+          },
+          "160202004_1": {
+            "id": 160202004,
+            "Level": 1,
+            "Settlements": [
+              {
+                "TagName": "Numerical.SettlementType.Impulse.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Health.SkillDamage"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Flesh.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Hurtable.Base"
+              },
+              {
+                "TagName": "Numerical.SettlementType.Toughness.Base"
+              },
+              {
+                "TagName": "None"
+              }
+            ],
+            "EnableAttributes": [],
+            "CameraHitFeedBackTag": {
+              "TagName": "None"
+            },
+            "bEnableCriticalDamage": false,
+            "bDamageIgnoreShield": false,
+            "ElementType": "EElementEffectType::EDamageType_Kinetic",
+            "DamageSourceType": 0,
+            "ElementDebuffTypeID": 0,
+            "ElementAddRate": 0,
+            "HpCalScale": 16.52,
+            "HpCalBase": 0,
+            "HpFloatCoef": 0,
+            "FriendlyCoefficient": -1,
+            "FleshDamageBase": 3.304,
+            "ImpulseBase": 16.52,
+            "ToughnessBase": 3.304,
+            "ToughnessScale": 0,
+            "EnableWeaknessDamage": false,
+            "WeaknessDamageAddScale": 0,
+            "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+            "KnockupLevel": 0,
+            "OnlyKnockUpWhenKill": false,
+            "KnockUpDistance1": 0,
+            "KnockUpDistance2": 0,
+            "KnockUpLevel1": 0,
+            "KnockUpLevel2": 0,
+            "HurtableBase": 3.304,
+            "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+            "Description": "S1_禁忌之瞳_伤害提升",
+            "DamageAttenuationStart": 0,
+            "DamageAttenuationEnd": 0,
+            "DamageAttenuationRatio": 0,
+            "bEnableParry": false,
+            "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+          }
+        },
+        "baseActor": {
+          "name": "Default__BP_TabooEyes2_C",
+          "numericalId": 160202001
+        },
+        "sources": [
+          {
+            "path": "NZM/Content/DataTables/numerical_config_playerskill.json",
+            "sha256": "0ebe7040001c37251a638833e97cbc829ee7319266c5118d5a254b7fd3373a13"
+          },
+          {
+            "path": "NZM/Content/Abilities/Skills/Season/S2/TabooEyes/BP_TabooEyes2.json",
+            "sha256": "5502fb8dbe9d08bce77e0f9eb6798b86ec13d5d26a4953f9745353dfa3ebf5b3"
+          }
+        ]
+      },
       "range": {
         "constants": {
           "CloseRangeDamageThreshold": {
