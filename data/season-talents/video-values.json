@@ -1,0 +1,1756 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "id": "s0s1-user-recording",
+    "fileName": "视频-逆战未来_S0,S1,赛季技能天赋浏览。.mp4",
+    "sha256": "b5f17ad66495bbb9aea92890a6d985ab8e37c504762807f5b6a272e1d49aceec",
+    "durationSeconds": 500.041723
+  },
+  "status": "video-display-unverified",
+  "entries": [
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003106",
+      "nodeName": "机械之舞",
+      "level": 1,
+      "seconds": 10,
+      "levelEvidence": "主动技能正文",
+      "frame": "detail-10.png",
+      "frameSha256": "18d8cdb97579250d5585817e953af16f87cf873ccc41f632cda9d0a426c91b83",
+      "templateSha256": "77c27c7f06972f98c96719d1a2d2f3dd6b942af388ef65a151be668fce99ebe8",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "响。\n· 聚能层数获取：每命中20次增加〔数值待核实〕层聚能状态（命中弱点视为〔数值待核实〕次），最"
+        },
+        {
+          "slot": 1,
+          "value": "2",
+          "context": "加〔数值待核实〕层聚能状态（命中弱点视为〔数值待核实〕次），最高叠加10层。\n· 冷却：55秒。"
+        }
+      ],
+      "notes": [
+        "录像聚能门槛为 10 次，当前已核验配置为 20 次；保留配置，不覆盖。"
+      ]
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003301",
+      "nodeName": "元素洞悉",
+      "level": 1,
+      "seconds": 20,
+      "levelEvidence": "单级预览",
+      "frame": "detail-20.png",
+      "frameSha256": "d0d2f6a3bd9bc12686d399a03d6caa66a573d0dce929bce20ddbe21c726ba1ba",
+      "templateSha256": "dccf2470dfdf34035c653fb725c71ec0043a9971825b75395b63d84e54d15318",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "敌人每具有〔数值待核实〕种元素异常状态，你对其造成的暴击率增加〔数值待"
+        },
+        {
+          "slot": 1,
+          "value": "5%",
+          "context": "〕种元素异常状态，你对其造成的暴击率增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003306",
+      "nodeName": "绚烂烟火",
+      "level": 1,
+      "seconds": 25,
+      "levelEvidence": "当前亮点 1/3",
+      "frame": "detail-25.png",
+      "frameSha256": "f39423bf21e9e1ad4df7e9f0af070a25206c74cba080546cb77fb256f69c457e",
+      "templateSha256": "a2d1417918ce7aad14d6a1050d802012272f44084a6a6cdac00d738c883a94f3",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "机械臂展开后，武器射击每命中24次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
+        },
+        {
+          "slot": 1,
+          "value": "30%",
+          "context": "中24次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003306",
+      "nodeName": "绚烂烟火",
+      "level": 2,
+      "seconds": 25,
+      "levelEvidence": "1/3 下方升级预览",
+      "frame": "detail-25.png",
+      "frameSha256": "f39423bf21e9e1ad4df7e9f0af070a25206c74cba080546cb77fb256f69c457e",
+      "templateSha256": "07736f75257a17f6c58fb8597c92fe84a809322ed961f108ddeeff95aa5029c9",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "机械臂展开后，武器射击每命中12次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
+        },
+        {
+          "slot": 1,
+          "value": "30%",
+          "context": "中12次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003306",
+      "nodeName": "绚烂烟火",
+      "level": 3,
+      "seconds": 45,
+      "levelEvidence": "当前亮点 3/3",
+      "frame": "detail-45.png",
+      "frameSha256": "c2e66e3e9f5ac7b89308a0fd545c6a3556b4294d40f60c0777c399b378f50f53",
+      "templateSha256": "945b4786ba57816f63fa412c4123d0b2ebe108976a9a015f3884975838763eaa",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "机械臂展开后，武器射击每命中8次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
+        },
+        {
+          "slot": 1,
+          "value": "30%",
+          "context": "命中8次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003308",
+      "nodeName": "疯狂射击",
+      "level": 3,
+      "seconds": 40,
+      "levelEvidence": "当前亮点 3/3",
+      "frame": "detail-40.png",
+      "frameSha256": "fd8f86656940b9d1fbedda4da6ac91bb55e5a42fccb4ae00140bafc3af74f1c0",
+      "templateSha256": "9b97e44adbd3cb055628dfe9ca871ac7a8b07cdf9457c2e789a2b1edb30ac48d",
+      "values": [
+        {
+          "slot": 0,
+          "value": "20%",
+          "context": "机械臂机枪模式射速提高〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003404",
+      "nodeName": "持久作战",
+      "level": 1,
+      "seconds": 50,
+      "levelEvidence": "当前亮点 1/3",
+      "frame": "detail-50.png",
+      "frameSha256": "2f7f4b901778ff61c81fba7dac9093873964bf228443f428a18b22b725494dc2",
+      "templateSha256": "3c7e75de1cf13b54a1b6ee4b513ca070e3c7aa9e44153cb21730e9b5fd367071",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "释放赛季技能时，每拥有〔数值待核实〕层聚能状态，额外增加机械臂0.06秒持续时间。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003404",
+      "nodeName": "持久作战",
+      "level": 2,
+      "seconds": 50,
+      "levelEvidence": "1/3 下方升级预览",
+      "frame": "detail-50.png",
+      "frameSha256": "2f7f4b901778ff61c81fba7dac9093873964bf228443f428a18b22b725494dc2",
+      "templateSha256": "59e0050502dc28b6ada651de139440643443374a65769034c798764a5a24bd7c",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "释放赛季技能时，每拥有〔数值待核实〕层聚能状态，额外增加机械臂0.12秒持续时间。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003406",
+      "nodeName": "死神时刻",
+      "level": 1,
+      "seconds": 55,
+      "levelEvidence": "单级预览",
+      "frame": "detail-55.png",
+      "frameSha256": "f5a2f5aafdea176f4d9e81a27f4956e5dce53ae33e39bfda75aa1a831dd7a0a2",
+      "templateSha256": "b96437bf7ad2e572f1127bc68c8aabd887cce8a906f5297e9c10ccc7ee52884c",
+      "values": [
+        {
+          "slot": 0,
+          "value": "15",
+          "context": "技能结束时，获得死神时刻增益，持续〔数值待核实〕秒；\n死神时刻：武器射击每命中24次，机械臂发"
+        },
+        {
+          "slot": 1,
+          "value": "1",
+          "context": "神时刻：武器射击每命中24次，机械臂发射〔数值待核实〕枚导弹，造成〔数值待核实〕攻击力伤害。"
+        },
+        {
+          "slot": 2,
+          "value": "30%",
+          "context": "次，机械臂发射〔数值待核实〕枚导弹，造成〔数值待核实〕攻击力伤害。"
+        }
+      ],
+      "notes": [
+        "录像死神时刻命中门槛为 8 次，当前已核验配置为 24 次；保留配置，不覆盖。"
+      ]
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003408",
+      "nodeName": "武器之歌",
+      "level": 2,
+      "seconds": 65,
+      "levelEvidence": "当前亮点 2/2",
+      "frame": "detail-65.png",
+      "frameSha256": "10cfd7c0d105fc89674a6f83c898d62277337edc5b0cb7c53ea45865bd7650a2",
+      "templateSha256": "3dd656db7e9e99fd85d2186e7ab3944910365e743f15c0897265c5a88a6a9edc",
+      "values": [
+        {
+          "slot": 0,
+          "value": "0.8%",
+          "context": "赛季技能机枪命中后，武器伤害提高〔数值待核实〕，最高叠加〔数值待核实〕层，持续〔数值待核实〕"
+        },
+        {
+          "slot": 1,
+          "value": "36",
+          "context": "后，武器伤害提高〔数值待核实〕，最高叠加〔数值待核实〕层，持续〔数值待核实〕秒。"
+        },
+        {
+          "slot": 2,
+          "value": "6",
+          "context": "待核实〕，最高叠加〔数值待核实〕层，持续〔数值待核实〕秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003504",
+      "nodeName": "灵魂收割",
+      "level": 2,
+      "seconds": 70,
+      "levelEvidence": "当前亮点 2/3",
+      "frame": "detail-70.png",
+      "frameSha256": "7a3ab382d41349957d303ea53424952d9dbaafa5ac6efe7b061f7d142a7125f6",
+      "templateSha256": "2e319a001444cd4f4cdb0854a7da62e644702a273c4a36c11c2ded96819c7f84",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2%",
+          "context": "赛季技能每次命中敌方，增加〔数值待核实〕移速，持续〔数值待核实〕秒，最多叠加〔数值待核"
+        },
+        {
+          "slot": 1,
+          "value": "10",
+          "context": "次命中敌方，增加〔数值待核实〕移速，持续〔数值待核实〕秒，最多叠加〔数值待核实〕层。"
+        },
+        {
+          "slot": 2,
+          "value": "10",
+          "context": "实〕移速，持续〔数值待核实〕秒，最多叠加〔数值待核实〕层。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003504",
+      "nodeName": "灵魂收割",
+      "level": 3,
+      "seconds": 70,
+      "levelEvidence": "2/3 下方升级预览",
+      "frame": "detail-70.png",
+      "frameSha256": "7a3ab382d41349957d303ea53424952d9dbaafa5ac6efe7b061f7d142a7125f6",
+      "templateSha256": "2e319a001444cd4f4cdb0854a7da62e644702a273c4a36c11c2ded96819c7f84",
+      "values": [
+        {
+          "slot": 0,
+          "value": "3%",
+          "context": "赛季技能每次命中敌方，增加〔数值待核实〕移速，持续〔数值待核实〕秒，最多叠加〔数值待核"
+        },
+        {
+          "slot": 1,
+          "value": "10",
+          "context": "次命中敌方，增加〔数值待核实〕移速，持续〔数值待核实〕秒，最多叠加〔数值待核实〕层。"
+        },
+        {
+          "slot": 2,
+          "value": "10",
+          "context": "实〕移速，持续〔数值待核实〕秒，最多叠加〔数值待核实〕层。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003506",
+      "nodeName": "机械之舞",
+      "level": 1,
+      "seconds": 75,
+      "levelEvidence": "单级预览",
+      "frame": "detail-75.png",
+      "frameSha256": "e90af447d50ebba75e2b13210abf470f3505e429ee80dea10f1eff2aafd31663",
+      "templateSha256": "635956f55dddb0d0a09fe2af48c1a1b4620459f0128687add64ba6d91ae8efc4",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "机械臂展开后，当聚能状态再次达到〔数值待核实〕层后，技能派生为机械之舞，向周围旋转射击，持续"
+        },
+        {
+          "slot": 1,
+          "value": "4",
+          "context": "技能派生为机械之舞，向周围旋转射击，持续〔数值待核实〕秒。每〔数值待核实〕秒造成〔数值待核实〕次伤害"
+        },
+        {
+          "slot": 2,
+          "value": "0.4",
+          "context": "向周围旋转射击，持续〔数值待核实〕秒。每〔数值待核实〕秒造成〔数值待核实〕次伤害，每次造成〔数值待核"
+        },
+        {
+          "slot": 3,
+          "value": "10",
+          "context": "〔数值待核实〕秒。每〔数值待核实〕秒造成〔数值待核实〕次伤害，每次造成〔数值待核实〕攻击力的伤害吗，"
+        },
+        {
+          "slot": 4,
+          "value": "15%",
+          "context": "实〕秒造成〔数值待核实〕次伤害，每次造成〔数值待核实〕攻击力的伤害吗，伤害会均匀分布在范围内的敌人上"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003604",
+      "nodeName": "盛大烟花",
+      "level": 1,
+      "seconds": 90,
+      "levelEvidence": "未分配节点的首级预览",
+      "frame": "detail-90.png",
+      "frameSha256": "968f1d55fa9b6dee607155937498f276e6ba13f4fe16faad41c7db1dadbf488e",
+      "templateSha256": "ee2487e240f0eac15ce75712fd2a52cf8ce68631f1312b95343eface15460029",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2.5",
+          "context": "机械之舞持续期间，每〔数值待核实〕秒向敌人释放2枚飞弹，造成〔数值待核实〕攻击力"
+        },
+        {
+          "slot": 1,
+          "value": "30%",
+          "context": "〔数值待核实〕秒向敌人释放2枚飞弹，造成〔数值待核实〕攻击力伤害。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003608",
+      "nodeName": "额外收割",
+      "level": 1,
+      "seconds": 93,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-93.png",
+      "frameSha256": "46fe4f5eabc46f617cd02412c6d8b50f60050d8e78950aa365814be01505d546",
+      "templateSha256": "a02f4b85c19ee76fd968e7a58575aeff39d9ffbb90bc3af1ee1e91197c4125c8",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "释放机械之舞时，每有〔数值待核实〕层聚能状态，机械之舞时间延长〔数值待核实〕秒。"
+        },
+        {
+          "slot": 1,
+          "value": "0.1",
+          "context": "数值待核实〕层聚能状态，机械之舞时间延长〔数值待核实〕秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "mechanical-dance",
+      "nodeId": "1003706",
+      "nodeName": "完美谢幕",
+      "level": 2,
+      "seconds": 100,
+      "levelEvidence": "当前亮点 2/2",
+      "frame": "detail-100.png",
+      "frameSha256": "ddce1bc1cb679f5314fa2ba3ead6811da805374423d3bc9fdccbf28546d4dd92",
+      "templateSha256": "5bf90d85a2317c8861f2570890f52919a77be73a4385e3a97d758ce305b8622d",
+      "values": [
+        {
+          "slot": 0,
+          "value": "150",
+          "context": "持武器射速越快，发射的飞弹数目越多。\n每〔数值待核实〕射速，发射〔数值待核实〕枚飞弹。每发造成〔数值"
+        },
+        {
+          "slot": 1,
+          "value": "1",
+          "context": "弹数目越多。\n每〔数值待核实〕射速，发射〔数值待核实〕枚飞弹。每发造成〔数值待核实〕攻击力伤害。"
+        },
+        {
+          "slot": 2,
+          "value": "80%",
+          "context": "射速，发射〔数值待核实〕枚飞弹。每发造成〔数值待核实〕攻击力伤害。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001106",
+      "nodeName": "急冻弹幕",
+      "level": 1,
+      "seconds": 110,
+      "levelEvidence": "主动技能正文",
+      "frame": "detail-110.png",
+      "frameSha256": "44653e9fea8da92bf50a32708692d01f918bfbc02d8a145a33f1f7cb8e1b808b",
+      "templateSha256": "e22fe6e640adb4299b37bac973e00d115e96ed7c76eb62588ff2a0764b07f315",
+      "values": [
+        {
+          "slot": 0,
+          "value": "3",
+          "context": "械臂，切换榴弹模式，每波朝着准星位置发射〔数值待核实〕枚导弹。\n· 机械臂持续时间受聚能状态的层数影"
+        },
+        {
+          "slot": 1,
+          "value": "3",
+          "context": "态的层数影响。\n· 聚能层数获取：每击杀〔数值待核实〕名敌人，或 同时命中〔数值待核实〕名敌人，增加"
+        },
+        {
+          "slot": 2,
+          "value": "4",
+          "context": "每击杀〔数值待核实〕名敌人，或 同时命中〔数值待核实〕名敌人，增加〔数值待核实〕层聚能状态，初始最高"
+        },
+        {
+          "slot": 3,
+          "value": "1",
+          "context": "，或 同时命中〔数值待核实〕名敌人，增加〔数值待核实〕层聚能状态，初始最高叠加15层。\n· 冷却：7"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001206",
+      "nodeName": "落霜",
+      "level": 1,
+      "seconds": 120,
+      "levelEvidence": "当前亮点 1/3",
+      "frame": "detail-120.png",
+      "frameSha256": "d21b8d6db28cd42d4d9df3f465e70a71d9bbfdcc77cfb7c7753c86993257081a",
+      "templateSha256": "80a3d46d509df408bb2f7cd5ff4eb312722190d919a5014dc8c5c705c193f9bb",
+      "values": [
+        {
+          "slot": 0,
+          "value": "6",
+          "context": "射时，将在目标位置生成一片寒冰区域，持续〔数值待核实〕秒，对区域内的敌人造成1%攻击力的寒冷伤害，并"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001206",
+      "nodeName": "落霜",
+      "level": 2,
+      "seconds": 120,
+      "levelEvidence": "1/3 下方升级预览",
+      "frame": "detail-120.png",
+      "frameSha256": "d21b8d6db28cd42d4d9df3f465e70a71d9bbfdcc77cfb7c7753c86993257081a",
+      "templateSha256": "44924882b1bd834659329fca8276e464633ecc51b09cdc12cc04267610b53b48",
+      "values": [
+        {
+          "slot": 0,
+          "value": "6",
+          "context": "射时，将在目标位置生成一片寒冰区域，持续〔数值待核实〕秒，对区域内的敌人造成2%攻击力的寒冷伤害，并"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001206",
+      "nodeName": "落霜",
+      "level": 3,
+      "seconds": 125,
+      "levelEvidence": "当前亮点 3/3",
+      "frame": "detail-125.png",
+      "frameSha256": "50c0513b820c3751bfd437910baee712da2ef2269029f821fc724ca64a3d3061",
+      "templateSha256": "5841289de5cc47e2f845f4c34fd1c0c84cd11b51683dbb2eee37a24c80aae743",
+      "values": [
+        {
+          "slot": 0,
+          "value": "6",
+          "context": "射时，将在目标位置生成一片寒冰区域，持续〔数值待核实〕秒，对区域内的敌人造成3%攻击力的寒冷伤害，并"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001304",
+      "nodeName": "多重飞弹",
+      "level": 2,
+      "seconds": 135,
+      "levelEvidence": "当前亮点 2/2",
+      "frame": "detail-135.png",
+      "frameSha256": "07d1af790ed22422ed733b0ad2145674c84cf7bba38ff5340a73b6dcad20d4b1",
+      "templateSha256": "0086630053c9aecc8a1f626156c7b337fbc5655580c0d964a7d4b609d9f04d80",
+      "values": [
+        {
+          "slot": 0,
+          "value": "10%",
+          "context": "赛季技能、榴弹，火箭发射器的爆炸范围提高〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001406",
+      "nodeName": "乘胜追击",
+      "level": 1,
+      "seconds": 150,
+      "levelEvidence": "未分配节点的首级预览",
+      "frame": "detail-150.png",
+      "frameSha256": "3d5b0e2931d53c2385047664fad14545cdb58ec0ad30fd09cf97ae4028cff56e",
+      "templateSha256": "ab50d3d55439ecfe3d5c3f8c2064c0419a02f88739b68b956117a99e59d1d80d",
+      "values": [
+        {
+          "slot": 0,
+          "value": "4",
+          "context": "弹枪、弓箭，短时间内玩家使用该武器时进入〔数值待核实〕秒的急速狂热状态。\n\n急速狂热：射速提升，开火"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001406",
+      "nodeName": "乘胜追击",
+      "level": 3,
+      "seconds": 155,
+      "levelEvidence": "当前亮点 3/3",
+      "frame": "detail-155.png",
+      "frameSha256": "c095ab4e9a32c10289131aede992dfe99e358e38c880e6f62d4265b10d89cabb",
+      "templateSha256": "ab50d3d55439ecfe3d5c3f8c2064c0419a02f88739b68b956117a99e59d1d80d",
+      "values": [
+        {
+          "slot": 0,
+          "value": "12",
+          "context": "弹枪、弓箭，短时间内玩家使用该武器时进入〔数值待核实〕秒的急速狂热状态。\n\n急速狂热：射速提升，开火"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001502",
+      "nodeName": "紧急治疗",
+      "level": 1,
+      "seconds": 180,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-180.png",
+      "frameSha256": "f78afbc2c9a084635d894d3413a2a687e8c073cc20624101b9ac923c7cebb679",
+      "templateSha256": "758812cc26c8fb63148c82a009dda88520904217dfdb5e75a199cee4a2a522a4",
+      "values": [
+        {
+          "slot": 0,
+          "value": "30%",
+          "context": "逆行者在克制状态下击破元素盾之后将恢复〔数值待核实〕的血量。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001608",
+      "nodeName": "效能优化",
+      "level": 2,
+      "seconds": 195,
+      "levelEvidence": "当前亮点 2/2",
+      "frame": "detail-195.png",
+      "frameSha256": "75a75a086e1f88c40a8d047961e31e4a6442ab784e5f1ffc9c302b01c676a71f",
+      "templateSha256": "690b3dec9a21734effca93328d08dc9c0fa1191515c51d3502137908acd4f126",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "释放技能时，每有〔数值待核实〕层聚能，技能的持续时间额外增加0.1秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001704",
+      "nodeName": "冰霜之径",
+      "level": 1,
+      "seconds": 200,
+      "levelEvidence": "当前亮点 1/3",
+      "frame": "detail-200.png",
+      "frameSha256": "ed4319a25e50c22dadb94bc9f1804cc7d3e23b5d33992c8bb8781c4aa535ad8c",
+      "templateSha256": "55518f58ec7a78860380c43fe90bea2d37b901bb49c8146338671e833b71f1f9",
+      "values": [
+        {
+          "slot": 0,
+          "value": "6",
+          "context": "能推进后，路径上会留下一段冰霜路径，持续〔数值待核实〕秒，对区域内的敌人造成3%攻击力的寒冷伤害，并"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001704",
+      "nodeName": "冰霜之径",
+      "level": 2,
+      "seconds": 200,
+      "levelEvidence": "1/3 下方升级预览",
+      "frame": "detail-200.png",
+      "frameSha256": "ed4319a25e50c22dadb94bc9f1804cc7d3e23b5d33992c8bb8781c4aa535ad8c",
+      "templateSha256": "8e71574b7dda05a0a54a37955ee5dbe5c70bd85180c30e55c6f0df2ecc6208e3",
+      "values": [
+        {
+          "slot": 0,
+          "value": "6",
+          "context": "能推进后，路径上会留下一段冰霜路径，持续〔数值待核实〕秒，对区域内的敌人造成6%攻击力的寒冷伤害，并"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001704",
+      "nodeName": "冰霜之径",
+      "level": 3,
+      "seconds": 203,
+      "levelEvidence": "当前亮点 3/3",
+      "frame": "detail-203.png",
+      "frameSha256": "578174b8658c487e24ed22e95d6d185d7775b2620535147d92d7c320af0abc85",
+      "templateSha256": "11aef84792b128ea07e5d45657370304edf27bfd80ffe1ae7d3eb49ecd8a241d",
+      "values": [
+        {
+          "slot": 0,
+          "value": "6",
+          "context": "能推进后，路径上会留下一段冰霜路径，持续〔数值待核实〕秒，对区域内的敌人造成9%攻击力的寒冷伤害，并"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s0",
+      "treeId": "frost-barrage",
+      "nodeId": "1001706",
+      "nodeName": "散花",
+      "level": 1,
+      "seconds": 205,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-205.png",
+      "frameSha256": "82f4908c29b89fb74077f3e6f3ab43b8bb376be7de3080e46ab03e6cc913168b",
+      "templateSha256": "57aa74c29a1df8f12c465cbc8f73c47fa1bcbc98e37d37532bae2bd8e2a7dd24",
+      "values": [
+        {
+          "slot": 0,
+          "value": "3",
+          "context": "长按按钮可以进行蓄力并瞄准，最多蓄力〔数值待核实〕层。\n\n蓄力达到最大层数或松手后自动释放技能，"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013107",
+      "nodeName": "禁忌之瞳",
+      "level": 1,
+      "seconds": 208,
+      "levelEvidence": "主动技能正文",
+      "frame": "detail-208.png",
+      "frameSha256": "073c0c2daef0591d8e888f63f5a2f541c7ff53f7a227cadf1ea45f5586fd5030",
+      "templateSha256": "61b7c523d58c43f043c9fd7bc6dcd5b4893510e30247e3f254d63d9c49329fb1",
+      "values": [
+        {
+          "slot": 0,
+          "value": "5%",
+          "context": "· 玩家武器造成弱点命中时，增加〔数值待核实〕赤曈，〔数值待核实〕秒内最多触发〔数值待核实〕"
+        },
+        {
+          "slot": 1,
+          "value": "0.8",
+          "context": "造成弱点命中时，增加〔数值待核实〕赤曈，〔数值待核实〕秒内最多触发〔数值待核实〕次。赤瞳越多，武器弱"
+        },
+        {
+          "slot": 2,
+          "value": "1",
+          "context": "待核实〕赤曈，〔数值待核实〕秒内最多触发〔数值待核实〕次。赤瞳越多，武器弱点倍率越高。〔数值待核实〕"
+        },
+        {
+          "slot": 3,
+          "value": "5",
+          "context": "待核实〕次。赤瞳越多，武器弱点倍率越高。〔数值待核实〕秒内未获得赤瞳，每秒损失〔数值待核实〕。\n· "
+        },
+        {
+          "slot": 4,
+          "value": "4%",
+          "context": "。〔数值待核实〕秒内未获得赤瞳，每秒损失〔数值待核实〕。\n· 点击技能后显现雮尘珠发射〔数值待核实〕"
+        },
+        {
+          "slot": 5,
+          "value": "1",
+          "context": "待核实〕。\n· 点击技能后显现雮尘珠发射〔数值待核实〕道虚数射线，对命中敌人造成大量伤害。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013207",
+      "nodeName": "血曈回响",
+      "level": 1,
+      "seconds": 210,
+      "levelEvidence": "未分配节点的首级预览",
+      "frame": "detail-210.png",
+      "frameSha256": "ae3e63a549df8a4e1b46507975bfbebe26b5ddddb66be29c89e008e95f7d7ec4",
+      "templateSha256": "885a259a17a9bc35adcd4eebe27eb1812850eb026e550b47cdae98891a54dbc5",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1%",
+          "context": "每〔数值待核实〕赤瞳额外提高〔数值待核实〕弱点伤害增幅。"
+        },
+        {
+          "slot": 1,
+          "value": "0.02%",
+          "context": "每〔数值待核实〕赤瞳额外提高〔数值待核实〕弱点伤害增幅。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013407",
+      "nodeName": "无我之境I",
+      "level": 1,
+      "seconds": 230,
+      "levelEvidence": "单级预览",
+      "frame": "detail-230.png",
+      "frameSha256": "31c3ccadd5ecd30fb97df804f137421a41b32174790f94f57a9e8af75ed5cedb",
+      "templateSha256": "2caa646bde8906250a92ee0fa39a52120fe9acf725816af2dcfc3e32f3fefaa5",
+      "values": [
+        {
+          "slot": 0,
+          "value": "3",
+          "context": "击枪，弓箭，手枪专属\n短时间内多次命中（〔数值待核实〕秒内命中〔数值待核实〕次）弱点后，获得〔数值待"
+        },
+        {
+          "slot": 1,
+          "value": "5",
+          "context": "短时间内多次命中（〔数值待核实〕秒内命中〔数值待核实〕次）弱点后，获得〔数值待核实〕层共振状态，提升"
+        },
+        {
+          "slot": 2,
+          "value": "1",
+          "context": "〕秒内命中〔数值待核实〕次）弱点后，获得〔数值待核实〕层共振状态，提升{{num:s1-101340"
+        },
+        {
+          "slot": 3,
+          "value": "6",
+          "context": "|percent}}造成的弱点伤害，持续〔数值待核实〕秒。最多叠加〔数值待核实〕层。"
+        },
+        {
+          "slot": 4,
+          "value": "10",
+          "context": "弱点伤害，持续〔数值待核实〕秒。最多叠加〔数值待核实〕层。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013302",
+      "nodeName": "进攻特化",
+      "level": 1,
+      "seconds": 235,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-235.png",
+      "frameSha256": "7167d596086327e694ec0d80b4da3668374e96fb1491cb345ff14281a5140ccf",
+      "templateSha256": "db3c80aa24aca27d599b38190db2bb02a77ed8f260128f68a1bedfd01ab7f963",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2",
+          "context": "释放的〔数值待核实〕只飞虫都将攻击敌人。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013609",
+      "nodeName": "快枪手",
+      "level": 1,
+      "seconds": 250,
+      "levelEvidence": "未分配节点的首级预览",
+      "frame": "detail-250.png",
+      "frameSha256": "3a32b2fe7cb9706b4f707700d5cd13290e3c6cfbcfa6fbb50c979c1a379caee9",
+      "templateSha256": "6c3b7fcdda97b18ec1fec8e33ac8e0c3f0b07ab9ca15a4e97aedf44f002491ad",
+      "values": [
+        {
+          "slot": 0,
+          "value": "3",
+          "context": "击枪、弓箭、手枪专属\n短时间内多次命中（〔数值待核实〕秒内命中〔数值待核实〕次）弱点后，下〔数值待核"
+        },
+        {
+          "slot": 1,
+          "value": "5",
+          "context": "短时间内多次命中（〔数值待核实〕秒内命中〔数值待核实〕次）弱点后，下〔数值待核实〕次换弹速度提高{G"
+        },
+        {
+          "slot": 2,
+          "value": "1",
+          "context": "实〕秒内命中〔数值待核实〕次）弱点后，下〔数值待核实〕次换弹速度提高{GPModifier:1602"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013605",
+      "nodeName": "无我之境II",
+      "level": 2,
+      "seconds": 255,
+      "levelEvidence": "当前亮点 2/3",
+      "frame": "detail-255.png",
+      "frameSha256": "196d1f4fe49c5d1b87ab355bdbb1568ba563198cc04e441e5b6c7976a1ae8a9f",
+      "templateSha256": "7e181aed6bbd00f721febe6545459317f152d32c2b33e70bee91da7b109528ca",
+      "values": [
+        {
+          "slot": 0,
+          "value": "3",
+          "context": "维持静止不动〔数值待核实〕秒时，获得2层共振，持续〔数值待核实〕秒。冷却"
+        },
+        {
+          "slot": 1,
+          "value": "6",
+          "context": "动〔数值待核实〕秒时，获得2层共振，持续〔数值待核实〕秒。冷却〔数值待核实〕秒。"
+        },
+        {
+          "slot": 2,
+          "value": "10",
+          "context": "获得2层共振，持续〔数值待核实〕秒。冷却〔数值待核实〕秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013605",
+      "nodeName": "无我之境II",
+      "level": 3,
+      "seconds": 255,
+      "levelEvidence": "2/3 下方升级预览",
+      "frame": "detail-255.png",
+      "frameSha256": "196d1f4fe49c5d1b87ab355bdbb1568ba563198cc04e441e5b6c7976a1ae8a9f",
+      "templateSha256": "c29a46d8a8248929334e922fd027996c02b03809050514d1ecb99478d6a0429a",
+      "values": [
+        {
+          "slot": 0,
+          "value": "3",
+          "context": "维持静止不动〔数值待核实〕秒时，获得3层共振，持续〔数值待核实〕秒。冷却"
+        },
+        {
+          "slot": 1,
+          "value": "6",
+          "context": "动〔数值待核实〕秒时，获得3层共振，持续〔数值待核实〕秒。冷却〔数值待核实〕秒。"
+        },
+        {
+          "slot": 2,
+          "value": "10",
+          "context": "获得3层共振，持续〔数值待核实〕秒。冷却〔数值待核实〕秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013705",
+      "nodeName": "无我之境III",
+      "level": 3,
+      "seconds": 265,
+      "levelEvidence": "当前亮点 3/3",
+      "frame": "detail-265.png",
+      "frameSha256": "b15643959afc5ad9c24a63c8abdec23e1f0ce388f95fb513d945713986cf3446",
+      "templateSha256": "fdb5af377936728e7f4fcdbfa373c9a3d6fe323ee152a1ac2fae6217815bd446",
+      "values": [
+        {
+          "slot": 0,
+          "value": "6",
+          "context": "开启武器技能后，获得3层共振，持续〔数值待核实〕秒。冷却〔数值待核实〕秒。"
+        },
+        {
+          "slot": 1,
+          "value": "6",
+          "context": "获得3层共振，持续〔数值待核实〕秒。冷却〔数值待核实〕秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013709",
+      "nodeName": "无我之境IV",
+      "level": 1,
+      "seconds": 270,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-270.png",
+      "frameSha256": "bdfb595852def07457a32e543b600c7154bf037057f7f6efd80174181d2e9ddc",
+      "templateSha256": "3ba5bac812fe2ecdcf1935f59340abe35148273e9f5d7b756270b87def24d8ea",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "获得共振时，有25%概率额外获得〔数值待核实〕层共振，冷却〔数值待核实〕秒。"
+        },
+        {
+          "slot": 1,
+          "value": "1",
+          "context": "%概率额外获得〔数值待核实〕层共振，冷却〔数值待核实〕秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013402",
+      "nodeName": "裂解易伤",
+      "level": 1,
+      "seconds": 275,
+      "levelEvidence": "单级预览",
+      "frame": "detail-275.png",
+      "frameSha256": "90e81131a05e9535e487483ea9490c74544db6eb227f14df651ec9e19c3e0372",
+      "templateSha256": "86f4334f9d5cb557a66fc26dc3d87301c8747edc251c1df9b59d58e85b98c751",
+      "values": [
+        {
+          "slot": 0,
+          "value": "10%",
+          "context": "飞虫命中目标，会为目标添加易伤效果，增加〔数值待核实〕受到的伤害，持续〔数值待核实〕秒。"
+        },
+        {
+          "slot": 1,
+          "value": "10",
+          "context": "效果，增加〔数值待核实〕受到的伤害，持续〔数值待核实〕秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013404",
+      "nodeName": "愈疗疾速",
+      "level": 1,
+      "seconds": 280,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-280.png",
+      "frameSha256": "e1bfc643a826a90ee74aea57b84579e4311b7cac4d1d9b0cbe261032cc3df209",
+      "templateSha256": "2ca9965162f53e75c9076e2674fce860978612f4d08800db9ef5a5f2c8cf03a8",
+      "values": [
+        {
+          "slot": 0,
+          "value": "10%",
+          "context": "受到飞虫治疗的目标，速度增加〔数值待核实〕，持续〔数值待核实〕秒。"
+        },
+        {
+          "slot": 1,
+          "value": "4",
+          "context": "治疗的目标，速度增加〔数值待核实〕，持续〔数值待核实〕秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "forbidden-eye",
+      "nodeId": "1013604",
+      "nodeName": "愈疗储能",
+      "level": 1,
+      "seconds": 285,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-285.png",
+      "frameSha256": "10e0a2bc6776db875f6b9c7040ecc07074c958279bc14b0df2fc6be62c95870e",
+      "templateSha256": "23ba32502676c773fc3ae16008f3e69ea4c997f9b3c9a68f3c018a1b6a18137c",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2%",
+          "context": "受到飞虫治疗的目标，充能〔数值待核实〕的全武器技能。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012107",
+      "nodeName": "行境幻化",
+      "level": 1,
+      "seconds": 295,
+      "levelEvidence": "主动技能正文",
+      "frame": "detail-295.png",
+      "frameSha256": "067530e4a0733ace40b6b2804da732a8ec62fe740aa9494caf6b3e61c7881a17",
+      "templateSha256": "923f6979cc243785f3bf35ea0791f69026d96befdb4978e6d82febbbadee476c",
+      "values": [
+        {
+          "slot": 0,
+          "value": "10",
+          "context": "定范围内所有玩家和敌人拖入虚数空间，持续〔数值待核实〕秒，虚数空间中敌人将被施加〔数值待核实〕的减速"
+        },
+        {
+          "slot": 1,
+          "value": "40%",
+          "context": "〔数值待核实〕秒，虚数空间中敌人将被施加〔数值待核实〕的减速效果。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012207",
+      "nodeName": "空间牢狱",
+      "level": 2,
+      "seconds": 305,
+      "levelEvidence": "当前亮点 2/3",
+      "frame": "detail-305.png",
+      "frameSha256": "a006dd5a8d374e585d37a16f34546b6a0e3eaabf78305580f296658ec2395418",
+      "templateSha256": "2fe24d050167392391a08cc6308ef4b63fa708cf1ed4504da370862713b03668",
+      "values": [
+        {
+          "slot": 0,
+          "value": "20%",
+          "context": "虚数空间的减速效果增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012207",
+      "nodeName": "空间牢狱",
+      "level": 3,
+      "seconds": 305,
+      "levelEvidence": "2/3 下方升级预览",
+      "frame": "detail-305.png",
+      "frameSha256": "a006dd5a8d374e585d37a16f34546b6a0e3eaabf78305580f296658ec2395418",
+      "templateSha256": "2fe24d050167392391a08cc6308ef4b63fa708cf1ed4504da370862713b03668",
+      "values": [
+        {
+          "slot": 0,
+          "value": "30%",
+          "context": "虚数空间的减速效果增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012309",
+      "nodeName": "虚数回转",
+      "level": 1,
+      "seconds": 315,
+      "levelEvidence": "当前亮点 1/2",
+      "frame": "detail-315.png",
+      "frameSha256": "c958358d006d8e21a5b1e401d038353ab6d88958ba935f90003a2e9aab5b5889",
+      "templateSha256": "1c3e1236e770651cbbd51838db9aa3ff02deb2739bff624d89d304731f1e7dbe",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1.5%",
+          "context": "释放武器技能后，返还〔数值待核实〕充能。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012309",
+      "nodeName": "虚数回转",
+      "level": 2,
+      "seconds": 315,
+      "levelEvidence": "1/2 下方升级预览",
+      "frame": "detail-315.png",
+      "frameSha256": "c958358d006d8e21a5b1e401d038353ab6d88958ba935f90003a2e9aab5b5889",
+      "templateSha256": "1c3e1236e770651cbbd51838db9aa3ff02deb2739bff624d89d304731f1e7dbe",
+      "values": [
+        {
+          "slot": 0,
+          "value": "3%",
+          "context": "释放武器技能后，返还〔数值待核实〕充能。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012407",
+      "nodeName": "技能连击",
+      "level": 1,
+      "seconds": 320,
+      "levelEvidence": "单级预览",
+      "frame": "detail-320.png",
+      "frameSha256": "9b0e8f2bfd49d82c23b98deecf4665c02ca47b98d72b239456b11e19e7946f8a",
+      "templateSha256": "03ae57d611569efbddc35997386fd7805044d8f9be9a431449f0eda4e4a875c4",
+      "values": [
+        {
+          "slot": 0,
+          "value": "5",
+          "context": "cent}}武器技能造成的伤害，最多叠加〔数值待核实〕层。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012301",
+      "nodeName": "元素洞悉",
+      "level": 1,
+      "seconds": 335,
+      "levelEvidence": "单级预览",
+      "frame": "detail-335.png",
+      "frameSha256": "83c6c50cfec50312567070ba8a759fe0f3f7218db3231e6d9b558f3ed934f3e1",
+      "templateSha256": "dccf2470dfdf34035c653fb725c71ec0043a9971825b75395b63d84e54d15318",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "敌人每具有〔数值待核实〕种元素异常状态，你对其造成的暴击率增加〔数值待"
+        },
+        {
+          "slot": 1,
+          "value": "5%",
+          "context": "〕种元素异常状态，你对其造成的暴击率增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012402",
+      "nodeName": "裂解易伤",
+      "level": 1,
+      "seconds": 340,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-340.png",
+      "frameSha256": "70f6008cc37afa2f03dc8573c76b104e7a1f96f18b7a62af83c07639a58bb004",
+      "templateSha256": "86f4334f9d5cb557a66fc26dc3d87301c8747edc251c1df9b59d58e85b98c751",
+      "values": [
+        {
+          "slot": 0,
+          "value": "10%",
+          "context": "飞虫命中目标，会为目标添加易伤效果，增加〔数值待核实〕受到的伤害，持续〔数值待核实〕秒。"
+        },
+        {
+          "slot": 1,
+          "value": "10",
+          "context": "效果，增加〔数值待核实〕受到的伤害，持续〔数值待核实〕秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012705",
+      "nodeName": "充能传递",
+      "level": 2,
+      "seconds": 350,
+      "levelEvidence": "当前亮点 2/2",
+      "frame": "detail-350.png",
+      "frameSha256": "1a993557c56b5d5bbae243c54a63d6319bdae61939c191869ae4844217481d9d",
+      "templateSha256": "5664151274523f32468da352d2f943c8e408a1ce610af614fa7bf94d148927db",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2",
+          "context": "虚数空间内，玩家释放武器技能〔数值待核实〕次时，友方角色获得〔数值待核实〕武器技能充能。"
+        },
+        {
+          "slot": 1,
+          "value": "6%",
+          "context": "武器技能〔数值待核实〕次时，友方角色获得〔数值待核实〕武器技能充能。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012709",
+      "nodeName": "侵蚀加深",
+      "level": 2,
+      "seconds": 355,
+      "levelEvidence": "当前亮点 2/2",
+      "frame": "detail-355.png",
+      "frameSha256": "14f63bb206c612c1ba824811ba1a4beb1aef80e10e05ff3c822b20bee680d42d",
+      "templateSha256": "3a0c43a846cd03bfe2a99e192e0924568b34f773fb4c7d95603c16112123986e",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "身和目标位于虚数空间内时，目标身上每拥有〔数值待核实〕种负面状态，自身武器技能造成的伤害增加{{nu"
+        },
+        {
+          "slot": 1,
+          "value": "3",
+          "context": "9-2-0|percent}}，最多叠加〔数值待核实〕次。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012302",
+      "nodeName": "进攻特化",
+      "level": 1,
+      "seconds": 360,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-360.png",
+      "frameSha256": "0c438edd148b0e30519bb0c1d57f399e97fa37fb9ef2da9c1e6352d5b60b359d",
+      "templateSha256": "db3c80aa24aca27d599b38190db2bb02a77ed8f260128f68a1bedfd01ab7f963",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2",
+          "context": "释放的〔数值待核实〕只飞虫都将攻击敌人。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012504",
+      "nodeName": "愈疗速装",
+      "level": 1,
+      "seconds": 365,
+      "levelEvidence": "单级预览",
+      "frame": "detail-365.png",
+      "frameSha256": "0c450a05caf490b2a488000c61219fcb2f0cd442eed6a9e5675602e641dce414",
+      "templateSha256": "7b4c247dd5f076376b1533b0e30a5f2df12a949de13e1c97cc97f2c1e85b8642",
+      "values": [
+        {
+          "slot": 0,
+          "value": "10%",
+          "context": "受到飞虫治疗的目标，换弹速度增加〔数值待核实〕，持续〔数值待核实〕秒。"
+        },
+        {
+          "slot": 1,
+          "value": "5",
+          "context": "的目标，换弹速度增加〔数值待核实〕，持续〔数值待核实〕秒。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "phantom-form",
+      "nodeId": "1012604",
+      "nodeName": "愈疗储能",
+      "level": 1,
+      "seconds": 370,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-370.png",
+      "frameSha256": "c054734348adf532dd9955862bd6f86ee9dd49dcac0b83524f6bde4c9704a14d",
+      "templateSha256": "23ba32502676c773fc3ae16008f3e69ea4c997f9b3c9a68f3c018a1b6a18137c",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2%",
+          "context": "受到飞虫治疗的目标，充能〔数值待核实〕的全武器技能。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011207",
+      "nodeName": "昆仑通宝",
+      "level": 3,
+      "seconds": 375,
+      "levelEvidence": "当前亮点 3/3",
+      "frame": "detail-375.png",
+      "frameSha256": "c09312bf8808a8281fb7c4ee823bf138476686371eda33966bf4e4cf7f6dc212",
+      "templateSha256": "5e5ae0ece57afafa4cc84a7859eab5e153ab5ff0a66c62295f4c59f2875433b7",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2.4%",
+          "context": "团队金钱获取效率增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011301",
+      "nodeName": "元素洞悉",
+      "level": 1,
+      "seconds": 380,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-380.png",
+      "frameSha256": "173f8a02e33501e92aeeec29ef1e033453c911a599c6c1bb2bf8e26b33fda84e",
+      "templateSha256": "dccf2470dfdf34035c653fb725c71ec0043a9971825b75395b63d84e54d15318",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "敌人每具有〔数值待核实〕种元素异常状态，你对其造成的暴击率增加〔数值待"
+        },
+        {
+          "slot": 1,
+          "value": "5%",
+          "context": "〕种元素异常状态，你对其造成的暴击率增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011305",
+      "nodeName": "神木滋养",
+      "level": 2,
+      "seconds": 385,
+      "levelEvidence": "当前亮点 2/2",
+      "frame": "detail-385.png",
+      "frameSha256": "dac92016b765eefcbf6560678b26b4477bc564ce3d30e1be49aa57b1bcbb9331",
+      "templateSha256": "1818221a5b0c32b9ae1b9f0b3e6bb4068fa469630724577be667ac2ed7f6b91d",
+      "values": [
+        {
+          "slot": 0,
+          "value": "12%",
+          "context": "人物施加的治疗量增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011307",
+      "nodeName": "生命共振",
+      "level": 1,
+      "seconds": 390,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-390.png",
+      "frameSha256": "a577f34b6a08fcf395b267fd055b15ed30c6788ad3c8670f57623e244374b77d",
+      "templateSha256": "a5a75a7147a7ef6b0335d034dcf90449804947de84b7f5005d538a0fbeed6e71",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "长按以选择目标，昆仑神木可以选择〔数值待核实〕名队友进行连线治疗，同时恢复连线双方的生命值与"
+        },
+        {
+          "slot": 1,
+          "value": "20",
+          "context": "双方的生命值与护盾量，连线最远维持距离为〔数值待核实〕米。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011405",
+      "nodeName": "经验增幅",
+      "level": 1,
+      "seconds": 400,
+      "levelEvidence": "单级预览",
+      "frame": "detail-400.png",
+      "frameSha256": "5a4278b91f1861ec07803d6a0b0842335daa4d28a49b4b53303a89d3a07a863e",
+      "templateSha256": "b59739c89a1f7a47190032bd09d77612f7128440443c9399fc6bcc635d45d211",
+      "values": [
+        {
+          "slot": 0,
+          "value": "4%",
+          "context": "个人在猎场中，获得经验值增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011408",
+      "nodeName": "共生脉冲",
+      "level": 1,
+      "seconds": 405,
+      "levelEvidence": "单级预览",
+      "frame": "detail-405.png",
+      "frameSha256": "9f92ed6e07e3e509deb5713b4d3c3153de4bd1ac0af58c962186ecd8e2021c5c",
+      "templateSha256": "f195d966ca1b44285326d01927a67d458b30f6b5ff13ab42ece4caaa6cd7a61b",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "击技能，长按以选择目标，昆仑神木可以选择〔数值待核实〕名队友进行连线治疗，同时恢复连线双方的生命值与"
+        },
+        {
+          "slot": 1,
+          "value": "0.1",
+          "context": "时，连线会对触碰到的敌方单位造成伤害，每〔数值待核实〕秒造成〔数值待核实〕攻击力伤害。"
+        },
+        {
+          "slot": 2,
+          "value": "1%",
+          "context": "敌方单位造成伤害，每〔数值待核实〕秒造成〔数值待核实〕攻击力伤害。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011406",
+      "nodeName": "再生领域",
+      "level": 1,
+      "seconds": 415,
+      "levelEvidence": "单级预览",
+      "frame": "detail-415.png",
+      "frameSha256": "7dcf18f5a06427acf1d94e234aabaee40a3fd50a6834344060ff5f547b35931a",
+      "templateSha256": "6c86501c3b0b30b12d1cbf3fec4ded36408b7ed80b4ffd711b943eb7491f7164",
+      "values": [
+        {
+          "slot": 0,
+          "value": "5",
+          "context": "的技能派生为范围治疗，点击技能，生成半径〔数值待核实〕米的治疗阵，持续治疗区域内的目标。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011507",
+      "nodeName": "增幅协议",
+      "level": 1,
+      "seconds": 430,
+      "levelEvidence": "当前亮点 1/3",
+      "frame": "detail-430.png",
+      "frameSha256": "52028776506db91939f4c2a781510c0ed38aad58c03d5c32c5e8116aa07e875d",
+      "templateSha256": "cae9366649b9497e0301e86b13a2b2beb913fc8b2d16b7d73af717e5550a0012",
+      "values": [
+        {
+          "slot": 0,
+          "value": "4%",
+          "context": "获得昆仑神木治疗的目标，获得〔数值待核实〕的全伤害增加。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011507",
+      "nodeName": "增幅协议",
+      "level": 2,
+      "seconds": 430,
+      "levelEvidence": "1/3 下方升级预览",
+      "frame": "detail-430.png",
+      "frameSha256": "52028776506db91939f4c2a781510c0ed38aad58c03d5c32c5e8116aa07e875d",
+      "templateSha256": "cae9366649b9497e0301e86b13a2b2beb913fc8b2d16b7d73af717e5550a0012",
+      "values": [
+        {
+          "slot": 0,
+          "value": "8%",
+          "context": "获得昆仑神木治疗的目标，获得〔数值待核实〕的全伤害增加。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011509",
+      "nodeName": "线路强化",
+      "level": 2,
+      "seconds": 440,
+      "levelEvidence": "当前亮点 2/2",
+      "frame": "detail-440.png",
+      "frameSha256": "3f841efc4b22d5ee5c39b05a933795ffc0e120ceb1044b89cb7030d7a82f99d3",
+      "templateSha256": "d794df5271a4f5d6e680d26df6eaf71cd00a1d18126246947db3c3f719a6d752",
+      "values": [
+        {
+          "slot": 0,
+          "value": "12%",
+          "context": "昆仑神木连线的治疗能力与伤害能力增强〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011605",
+      "nodeName": "迅疾愈疗",
+      "level": 1,
+      "seconds": 445,
+      "levelEvidence": "单级预览",
+      "frame": "detail-445.png",
+      "frameSha256": "3df598ae8c6cc16a5bc28183006d67c6b858ae9a8ecb5f0a48244de08a5bdfea",
+      "templateSha256": "0f823fd8d6ccfaa409b55b91c86d4cc2685c129e53c39cba739f3fc21eb5f768",
+      "values": [
+        {
+          "slot": 0,
+          "value": "5%",
+          "context": "获得昆仑神木治疗的目标，移速增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011609",
+      "nodeName": "疗能转化",
+      "level": 1,
+      "seconds": 450,
+      "levelEvidence": "未分配节点的首级预览",
+      "frame": "detail-450.png",
+      "frameSha256": "3b8f8c3a70bd2bd7432f916753faf15fe439b778411203c7dbaa3ddcd131151b",
+      "templateSha256": "08144ecf8ec545b8b954456a0fbf3f9deff40db174b11c66817dfef965cb8f31",
+      "values": [
+        {
+          "slot": 0,
+          "value": "3%",
+          "context": "当累计施加360点治疗量时，赛季技能充能〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011705",
+      "nodeName": "赋能序列II",
+      "level": 1,
+      "seconds": 460,
+      "levelEvidence": "未分配节点的首级预览",
+      "frame": "detail-460.png",
+      "frameSha256": "ebe1e3eab3da3a76170492a5aa336685d8b5489bdfd977d6373fb43486dc0c3c",
+      "templateSha256": "8145c92c1cf9d52614e426769950d96618b226dc87502839af1ada729d2c7100",
+      "values": [
+        {
+          "slot": 0,
+          "value": "1",
+          "context": "当累计施加800点治疗量时，随机获得〔数值待核实〕个昆仑神木增益效果，持续〔数值待核实〕秒。\n-"
+        },
+        {
+          "slot": 1,
+          "value": "15",
+          "context": "得〔数值待核实〕个昆仑神木增益效果，持续〔数值待核实〕秒。\n-武器换弹速度加快〔数值待核实〕。\n-武"
+        },
+        {
+          "slot": 2,
+          "value": "18%",
+          "context": "续〔数值待核实〕秒。\n-武器换弹速度加快〔数值待核实〕。\n-武器切枪速度加快〔数值待核实〕。\n-人物"
+        },
+        {
+          "slot": 3,
+          "value": "18%",
+          "context": "加快〔数值待核实〕。\n-武器切枪速度加快〔数值待核实〕。\n-人物移速加快〔数值待核实〕。\n-武器技能"
+        },
+        {
+          "slot": 4,
+          "value": "6%",
+          "context": "速度加快〔数值待核实〕。\n-人物移速加快〔数值待核实〕。\n-武器技能充能速度加快〔数值待核实〕。"
+        },
+        {
+          "slot": 5,
+          "value": "2%",
+          "context": "〔数值待核实〕。\n-武器技能充能速度加快〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011709",
+      "nodeName": "充能愈疗",
+      "level": 1,
+      "seconds": 465,
+      "levelEvidence": "当前亮点 1/3",
+      "frame": "detail-465.png",
+      "frameSha256": "57a0d7e935087f02afca7ad3b51005f90d5e21fe5352844a4db224042e8ca1f3",
+      "templateSha256": "55dc489991ae7441632e591091517e8fcdc74fa3183fd68c61b9273c07b007f3",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2%",
+          "context": "昆仑神木治疗的目标，武器技能充能速度增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011709",
+      "nodeName": "充能愈疗",
+      "level": 2,
+      "seconds": 465,
+      "levelEvidence": "1/3 下方升级预览",
+      "frame": "detail-465.png",
+      "frameSha256": "57a0d7e935087f02afca7ad3b51005f90d5e21fe5352844a4db224042e8ca1f3",
+      "templateSha256": "55dc489991ae7441632e591091517e8fcdc74fa3183fd68c61b9273c07b007f3",
+      "values": [
+        {
+          "slot": 0,
+          "value": "4%",
+          "context": "昆仑神木治疗的目标，武器技能充能速度增加〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011304",
+      "nodeName": "治疗特化",
+      "level": 1,
+      "seconds": 470,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-470.png",
+      "frameSha256": "060b102a9a4bd133a3c31de3fd84f261422eb244b94ab47c559d1c8e234faef4",
+      "templateSha256": "7704db63e08b9d812ea3490f57a7abf9e47ba246221ef9371db33eda920c83b8",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2",
+          "context": "释放的〔数值待核实〕只飞虫都将治疗队友。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011505",
+      "nodeName": "区域拓展",
+      "level": 1,
+      "seconds": 485,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-485.png",
+      "frameSha256": "e9a309c75ed53edd6163ca8c257420f720638f44a8e53bcd8e5303faec3573db",
+      "templateSha256": "e094ec120e6626afe9a6adf79f78021325012334b7b85427a6e03365cc01eebe",
+      "values": [
+        {
+          "slot": 0,
+          "value": "800",
+          "context": "当累计施加〔数值待核实〕点治疗量时，为全武器的技能充能〔数值待核实〕。"
+        },
+        {
+          "slot": 1,
+          "value": "2%",
+          "context": "值待核实〕点治疗量时，为全武器的技能充能〔数值待核实〕。"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "season": "s1",
+      "treeId": "kunlun-wood",
+      "nodeId": "1011604",
+      "nodeName": "愈疗储能",
+      "level": 1,
+      "seconds": 490,
+      "levelEvidence": "当前亮点 1/1",
+      "frame": "detail-490.png",
+      "frameSha256": "dfd62a6a540c183d878f6474ceaaeb958485b4fa0273654d752f99e18d7c8ea1",
+      "templateSha256": "23ba32502676c773fc3ae16008f3e69ea4c997f9b3c9a68f3c018a1b6a18137c",
+      "values": [
+        {
+          "slot": 0,
+          "value": "2%",
+          "context": "受到飞虫治疗的目标，充能〔数值待核实〕的全武器技能。"
+        }
+      ],
+      "notes": []
+    }
+  ]
+}

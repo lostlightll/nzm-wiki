@@ -6,7 +6,7 @@ import type { LegacyTalentTree } from "../../lib/s0s1-season-talents";
 import { buildTrees, readEvidence, type Evidence } from "./extract";
 import { summarizeSemanticReview } from "./semantic-conflicts";
 
-export function checkLegacyTalents(checkSources = false) {
+export function checkLegacyTalents(checkSources = false, options: { tabooScriptFile?: string } = {}) {
   for (const season of ["s0", "s1"] as const) {
     const evidence: Evidence = JSON.parse(readFileSync(join(process.cwd(), "data/season-talents", season, "audit.json"), "utf8"));
     assert.equal(evidence.schemaVersion, 1);
@@ -36,7 +36,7 @@ export function checkLegacyTalents(checkSources = false) {
         for (const level of node.levels) {
           assert.ok(level.description);
           assert.doesNotMatch(level.description, /\{[^}]*\}|<[^>]*>/);
-          if (level.description.includes("〔数值待核实〕")) assert.ok(level.warnings.some((warning) => /UNVERIFIED_DESCRIPTION_NUMBER|UNRESOLVED_TOKEN/.test(warning)));
+          if (level.description.includes("〔数值待核实〕")) assert.ok(level.warnings.some((warning) => /UNVERIFIED_DESCRIPTION_NUMBER|UNRESOLVED_TOKEN|VALUE_REVIEW_PENDING/.test(warning)));
           if (!level.facts.length) assert.ok(level.warnings.length, "Missing evidence must not be silent");
           for (const key of level.modifierRows) assert.ok(level.facts.some((fact) => fact.modifierRow === key));
           for (const fact of level.facts) {
@@ -48,10 +48,12 @@ export function checkLegacyTalents(checkSources = false) {
       }
     }
     if (checkSources) {
-      const current = readEvidence(season);
+      if (evidence.valueEvidence?.s1?.taboo && !options.tabooScriptFile) throw new Error("S1_BLUEPRINT_REQUIRED: --sources requires --s1-taboo-script=<ReadScriptData export>; offline checks need no external files.");
+      const current = readEvidence(season, process.cwd(), options);
       assert.deepEqual(evidence.sources, current.sources, `${season}: source hash drift`);
       assert.deepEqual(evidence.tables, current.tables, `${season}: evidence no longer matches current Main tables`);
       assert.deepEqual(evidence.excluded, current.excluded);
+      assert.deepEqual(evidence.valueEvidence, current.valueEvidence, `${season}: passive/config value evidence drift`);
     }
     console.log(`${season}: ${trees.length} trees, ${selected.size} nodes, ${evidence.excluded.length} excluded; offline evidence check passed${checkSources ? "; source hashes verified" : ""}`);
   }
@@ -61,4 +63,6 @@ export function checkProjection(rawTrees: readonly LegacyTalentTree[], evidence:
   assert.deepEqual(rawTrees, buildTrees(evidence), `${evidence.season}: projection or Numerical facts drifted; rerun extract`);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) checkLegacyTalents(process.argv.includes("--sources"));
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) checkLegacyTalents(process.argv.includes("--sources"), {
+  tabooScriptFile: process.argv.find(arg => arg.startsWith("--s1-taboo-script="))?.slice("--s1-taboo-script=".length),
+});

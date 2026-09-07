@@ -133,7 +133,7 @@ const exclusionSchema = z.strictObject({
   id: nonEmptyString,
   label: nonEmptyString,
   source: modifierProviderSourceSchema,
-  reasonCode: z.enum(["independent-damage-event", "not-damage-multiplier"]),
+  reasonCode: z.enum(["independent-damage-event", "not-damage-multiplier", "unverified-evidence"]),
   reason: nonEmptyString,
   evidence: exclusionEvidenceSchema.optional(),
 });

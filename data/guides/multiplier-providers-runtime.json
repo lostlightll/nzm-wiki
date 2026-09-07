@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "03bcf3c2ce6d8f5c9d9abe79a121601e231c8852f9faf3d7618038a5e6fa78da",
+    "modifierIndexSha256": "1d313e078c77c2b2f8e17cda152f9ea6fec33c13838bac5b98ff61fb7780c58a",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -2669,6 +2669,201 @@
       },
       "modifierTypeIds": [
         "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "season:s0:frost-barrage:1001202",
+      "label": "S0 急冻弹幕·暴击伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001202"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "season:s0:frost-barrage:1001402",
+      "label": "S0 急冻弹幕·远距伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001402"
+      },
+      "modifierTypeIds": [
+        "long-range-damage"
+      ]
+    },
+    {
+      "id": "season:s0:frost-barrage:1001501",
+      "label": "S0 急冻弹幕·弱点伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001501"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "season:s0:frost-barrage:1001601",
+      "label": "S0 急冻弹幕·近距伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001601"
+      },
+      "modifierTypeIds": [
+        "close-range-damage"
+      ]
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003202",
+      "label": "S0 机械之舞·暴击伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003202"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003402",
+      "label": "S0 机械之舞·远距伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003402"
+      },
+      "modifierTypeIds": [
+        "long-range-damage"
+      ]
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003501",
+      "label": "S0 机械之舞·弱点伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003501"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003601",
+      "label": "S0 机械之舞·近距伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003601"
+      },
+      "modifierTypeIds": [
+        "close-range-damage"
+      ]
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011501",
+      "label": "S1 昆仑神木·弱点伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011501"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011601",
+      "label": "S1 昆仑神木·近距伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011601"
+      },
+      "modifierTypeIds": [
+        "close-range-damage"
+      ]
+    },
+    {
+      "id": "season:s1:phantom-form:1012409",
+      "label": "S1 行境幻化·技能强化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012409"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "season:s1:phantom-form:1012501",
+      "label": "S1 行境幻化·弱点伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012501"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "season:s1:phantom-form:1012601",
+      "label": "S1 行境幻化·近距伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012601"
+      },
+      "modifierTypeIds": [
+        "close-range-damage"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013501",
+      "label": "S1 禁忌之瞳·弱点伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013501"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013601",
+      "label": "S1 禁忌之瞳·近距伤害",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013601"
+      },
+      "modifierTypeIds": [
+        "close-range-damage"
       ]
     }
   ],
@@ -6878,6 +7073,1542 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "技能只提供控制、充能、射速、弹药或其他非伤害倍率效果。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001106",
+      "label": "S0 急冻弹幕·急冻弹幕",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001106"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001201",
+      "label": "S0 急冻弹幕·暴击强化I",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001201"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001206",
+      "label": "S0 急冻弹幕·落霜",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001206"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001301",
+      "label": "S0 急冻弹幕·元素洞悉",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001301"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001302",
+      "label": "S0 急冻弹幕·暴击强化II",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001302"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001304",
+      "label": "S0 急冻弹幕·多重飞弹",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001304"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001306",
+      "label": "S0 急冻弹幕·冻结",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001306"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001308",
+      "label": "S0 急冻弹幕·膛线保养",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001308"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001401",
+      "label": "S0 急冻弹幕·立场满溢",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001401"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001404",
+      "label": "S0 急冻弹幕·钢铁架式",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001404"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001406",
+      "label": "S0 急冻弹幕·乘胜追击",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001406"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001408",
+      "label": "S0 急冻弹幕·碎裂I",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001408"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001502",
+      "label": "S0 急冻弹幕·紧急治疗",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001502"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001504",
+      "label": "S0 急冻弹幕·燃料节约",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001504"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001506",
+      "label": "S0 急冻弹幕·碎裂II",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001506"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001508",
+      "label": "S0 急冻弹幕·精准爆破",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001508"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001602",
+      "label": "S0 急冻弹幕·裂盾激荡",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001602"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001604",
+      "label": "S0 急冻弹幕·动能推进",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001604"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001608",
+      "label": "S0 急冻弹幕·效能优化",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001608"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001704",
+      "label": "S0 急冻弹幕·冰霜之径",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001704"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001706",
+      "label": "S0 急冻弹幕·散花",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001706"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:frost-barrage:1001708",
+      "label": "S0 急冻弹幕·加速运转",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "frost-barrage",
+        "nodeId": "1001708"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003106",
+      "label": "S0 机械之舞·机械之舞",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003106"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003201",
+      "label": "S0 机械之舞·暴击强化I",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003201"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003206",
+      "label": "S0 机械之舞·机械威能",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003206"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003301",
+      "label": "S0 机械之舞·元素洞悉",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003301"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003302",
+      "label": "S0 机械之舞·暴击强化II",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003302"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003304",
+      "label": "S0 机械之舞·聚能突破",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003304"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003306",
+      "label": "S0 机械之舞·绚烂烟火",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003306"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003308",
+      "label": "S0 机械之舞·疯狂射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003308"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003401",
+      "label": "S0 机械之舞·立场满溢",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003401"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003404",
+      "label": "S0 机械之舞·持久作战",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003404"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003406",
+      "label": "S0 机械之舞·死神时刻",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003406"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003408",
+      "label": "S0 机械之舞·武器之歌",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003408"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003502",
+      "label": "S0 机械之舞·紧急治疗",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003502"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003504",
+      "label": "S0 机械之舞·灵魂收割",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003504"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003506",
+      "label": "S0 机械之舞·机械之舞",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003506"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003508",
+      "label": "S0 机械之舞·高效聚能",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003508"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003602",
+      "label": "S0 机械之舞·裂盾激荡",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003602"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003604",
+      "label": "S0 机械之舞·盛大烟花",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003604"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003608",
+      "label": "S0 机械之舞·额外收割",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003608"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003704",
+      "label": "S0 机械之舞·宝宝特权",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003704"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003706",
+      "label": "S0 机械之舞·完美谢幕",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003706"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s0:mechanical-dance:1003708",
+      "label": "S0 机械之舞·加速聚能",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003708"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011107",
+      "label": "S1 昆仑神木·昆仑神木",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011107"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011201",
+      "label": "S1 昆仑神木·暴击强化I",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011201"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011203",
+      "label": "S1 昆仑神木·双生计划",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011203"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011207",
+      "label": "S1 昆仑神木·昆仑通宝",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011207"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011301",
+      "label": "S1 昆仑神木·元素洞悉",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011301"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011302",
+      "label": "S1 昆仑神木·进攻特化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011302"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011304",
+      "label": "S1 昆仑神木·治疗特化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011304"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011305",
+      "label": "S1 昆仑神木·神木滋养",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011305"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011307",
+      "label": "S1 昆仑神木·生命共振",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011307"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011309",
+      "label": "S1 昆仑神木·时序加速",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011309"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011401",
+      "label": "S1 昆仑神木·立场满溢",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011401"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011402",
+      "label": "S1 昆仑神木·裂解易伤",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011402"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011404",
+      "label": "S1 昆仑神木·愈疗疾速",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011404"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011405",
+      "label": "S1 昆仑神木·经验增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011405"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011406",
+      "label": "S1 昆仑神木·再生领域",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011406"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011408",
+      "label": "S1 昆仑神木·共生脉冲",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011408"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011409",
+      "label": "S1 昆仑神木·延效核心",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011409"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011502",
+      "label": "S1 昆仑神木·狂热协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011502"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011504",
+      "label": "S1 昆仑神木·愈疗速装",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011504"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011505",
+      "label": "S1 昆仑神木·区域拓展",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011505"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011507",
+      "label": "S1 昆仑神木·增幅协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011507"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011509",
+      "label": "S1 昆仑神木·线路强化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011509"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011602",
+      "label": "S1 昆仑神木·蚀甲追猎",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011602"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011604",
+      "label": "S1 昆仑神木·愈疗储能",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011604"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011605",
+      "label": "S1 昆仑神木·迅疾愈疗",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011605"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011607",
+      "label": "S1 昆仑神木·赋能序列I",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011607"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011609",
+      "label": "S1 昆仑神木·疗能转化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011609"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011705",
+      "label": "S1 昆仑神木·赋能序列II",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011705"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011709",
+      "label": "S1 昆仑神木·充能愈疗",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011709"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012107",
+      "label": "S1 行境幻化·行境幻化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012107"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012201",
+      "label": "S1 行境幻化·暴击强化I",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012201"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012203",
+      "label": "S1 行境幻化·双生计划",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012203"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012207",
+      "label": "S1 行境幻化·空间牢狱",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012207"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012301",
+      "label": "S1 行境幻化·元素洞悉",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012301"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012302",
+      "label": "S1 行境幻化·进攻特化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012302"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012304",
+      "label": "S1 行境幻化·治疗特化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012304"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012305",
+      "label": "S1 行境幻化·空间膨胀",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012305"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012307",
+      "label": "S1 行境幻化·充能加速",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012307"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012309",
+      "label": "S1 行境幻化·虚数回转",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012309"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012401",
+      "label": "S1 行境幻化·立场满溢",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012401"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012402",
+      "label": "S1 行境幻化·裂解易伤",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012402"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012404",
+      "label": "S1 行境幻化·愈疗疾速",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012404"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012405",
+      "label": "S1 行境幻化·技能回转",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012405"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012407",
+      "label": "S1 行境幻化·技能连击",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012407"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012502",
+      "label": "S1 行境幻化·狂热协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012502"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012504",
+      "label": "S1 行境幻化·愈疗速装",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012504"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012505",
+      "label": "S1 行境幻化·空间偏折",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012505"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012507",
+      "label": "S1 行境幻化·蛇神之力I",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012507"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012509",
+      "label": "S1 行境幻化·空间塑形",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012509"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012602",
+      "label": "S1 行境幻化·蚀甲追猎",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012602"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012604",
+      "label": "S1 行境幻化·愈疗储能",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012604"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012605",
+      "label": "S1 行境幻化·蛇神之力II",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012605"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012609",
+      "label": "S1 行境幻化·虚数蔓延",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012609"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012705",
+      "label": "S1 行境幻化·充能传递",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012705"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012707",
+      "label": "S1 行境幻化·虚数升格",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012707"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:phantom-form:1012709",
+      "label": "S1 行境幻化·侵蚀加深",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012709"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013107",
+      "label": "S1 禁忌之瞳·禁忌之瞳",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013107"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013201",
+      "label": "S1 禁忌之瞳·暴击强化I",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013201"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013203",
+      "label": "S1 禁忌之瞳·双生计划",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013203"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013207",
+      "label": "S1 禁忌之瞳·血曈回响",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013207"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013301",
+      "label": "S1 禁忌之瞳·元素洞悉",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013301"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013302",
+      "label": "S1 禁忌之瞳·进攻特化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013302"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013304",
+      "label": "S1 禁忌之瞳·治疗特化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013304"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013305",
+      "label": "S1 禁忌之瞳·摸金符",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013305"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013307",
+      "label": "S1 禁忌之瞳·灼眼烙印",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013307"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013309",
+      "label": "S1 禁忌之瞳·精准射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013309"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013401",
+      "label": "S1 禁忌之瞳·立场满溢",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013401"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013402",
+      "label": "S1 禁忌之瞳·裂解易伤",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013402"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013404",
+      "label": "S1 禁忌之瞳·愈疗疾速",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013404"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013405",
+      "label": "S1 禁忌之瞳·射程提升",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013405"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013407",
+      "label": "S1 禁忌之瞳·无我之境I",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013407"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013409",
+      "label": "S1 禁忌之瞳·充能加速",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013409"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013502",
+      "label": "S1 禁忌之瞳·狂热协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013502"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013504",
+      "label": "S1 禁忌之瞳·愈疗速装",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013504"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013505",
+      "label": "S1 禁忌之瞳·洞穿万障",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013505"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013507",
+      "label": "S1 禁忌之瞳·祓除烙印",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013507"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013509",
+      "label": "S1 禁忌之瞳·伤害提升",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013509"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013602",
+      "label": "S1 禁忌之瞳·蚀甲追猎",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013602"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013604",
+      "label": "S1 禁忌之瞳·愈疗储能",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013604"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013605",
+      "label": "S1 禁忌之瞳·无我之境II",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013605"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013609",
+      "label": "S1 禁忌之瞳·快枪手",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013609"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013705",
+      "label": "S1 禁忌之瞳·无我之境III",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013705"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013707",
+      "label": "S1 禁忌之瞳·灼眼天罚",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013707"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013709",
+      "label": "S1 禁忌之瞳·无我之境IV",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013709"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
     }
   ]
 }

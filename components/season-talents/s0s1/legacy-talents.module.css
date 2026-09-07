@@ -39,6 +39,8 @@
 .levelControl select { color: #e1e2e6; background: #23262c; border: 1px solid #55565b; border-radius: 3px; min-height: 44px; min-width: 96px; padding: 5px 9px; }
 .levelControl select:focus-visible, .evidence summary:focus-visible { outline: none; text-decoration: underline; text-underline-offset: 4px; }
 .description { white-space: pre-line; overflow-wrap: anywhere; }
+.value { color: #e9c96d; font-weight: 600; }
+.configurationNotice { color: #9ca4ad; font-size: 11px; line-height: 1.6; margin-top: 16px; }
 .warning { font-size: 12px; line-height: 1.7; color: #cfbc91; margin: 18px 0 0; border-left: 2px solid #87734d; padding-left: 10px; }
 .facts { margin-top: 22px; }
 .facts h3, .evidence summary { font-size: 12px; color: #c3c2bb; }

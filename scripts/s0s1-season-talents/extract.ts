@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { z } from "zod";
@@ -7,6 +7,9 @@ import { NUM_MODIFIER_RESOLVER as resolver } from "../../lib/num-modifier-data";
 import type { LegacyTalentLevel, LegacyTalentSeason, LegacyTalentTree } from "../../lib/s0s1-season-talents";
 import { resolveLegacyTalentFact } from "../../lib/s0s1-season-talents";
 import { reviewSemanticConflict, summarizeSemanticReview } from "./semantic-conflicts";
+import { applyLegacyValueReviews, type LegacyValueEvidence } from "./reviewed";
+import { compactS0ReviewEvidence, readS0ReviewEvidence } from "./s0-reviewed-values";
+import { compactS1ReviewEvidence, readS1ReviewInput } from "./s1-reviewed-values";
 
 const textSchema = z.object({ LocalizedString: z.string().optional(), SourceString: z.string().optional() }).passthrough();
 const assetSchema = z.object({ AssetPathName: z.string() });
@@ -44,6 +47,7 @@ export interface Evidence {
   tables: Record<TableName, Record<string, unknown>>;
   excluded: Array<{ id: string; name: string; basicRows: string[]; reason: string }>;
   semanticReview?: ReturnType<typeof summarizeSemanticReview>;
+  valueEvidence?: LegacyValueEvidence;
   visualVerification: {
     nodes: "not-verified";
     basis: string;
@@ -183,7 +187,7 @@ function auditConfig(result: LegacyTalentLevel, key: string, raw: unknown, origi
 export function buildTrees(evidence: Evidence): LegacyTalentTree[] {
   const phase = evidence.season === "s0" ? 0 : 1;
   const basics = Object.entries(evidence.tables.basic).map(([key, value]) => ({ key, row: basicSchema.parse(value) }));
-  return NAMES[evidence.season].map(([id, name], typeIndex) => {
+  const trees: LegacyTalentTree[] = NAMES[evidence.season].map(([id, name], typeIndex) => {
     const type = typeIndex + 1;
     const structure = Object.values(evidence.tables[`structure${type}` as TableName]).map((value) => structureSchema.parse(value))
       .filter((row) => row.SeasonID === 1 && row.SeasonPhaseID === phase).sort((a, b) => a.PhaseID - b.PhaseID);
@@ -269,9 +273,10 @@ export function buildTrees(evidence: Evidence): LegacyTalentTree[] {
     return { season: evidence.season, id, name, subtitle: localText(typeRows[0].TypeText), icon: icon(typeRows[0].TypeIcon), nodeCount: nodes.length, nodes,
       historicalStatus: id === "destruction-dream" ? "unconfirmed" : "video-confirmed", evidenceNotes: notes };
   });
+  return applyLegacyValueReviews(trees, evidence.valueEvidence);
 }
 
-export function readEvidence(season: LegacyTalentSeason, root = process.cwd()): Evidence {
+export function readEvidence(season: LegacyTalentSeason, root = process.cwd(), options: { tabooScriptFile?: string } = {}): Evidence {
   const phase = season === "s0" ? 0 : 1;
   const sources: Evidence["sources"] = [];
   const tables = {} as Evidence["tables"];
@@ -306,14 +311,25 @@ export function readEvidence(season: LegacyTalentSeason, root = process.cwd()): 
     if (existing) existing.basicRows.push(key);
     else excluded.push({ id: String(row.TalentID), name: localText(row.TalentName), basicRows: [key], reason: "Basic 存在，但该赛季 Structure1/2/3 未选择；不进入树。" });
   }
-  return { schemaVersion: 1, season, sources, tables, excluded, visualVerification: {
+  const valueEvidence = season === "s0"
+    ? { s0: compactS0ReviewEvidence(readS0ReviewEvidence(root)) }
+    : { s1: compactS1ReviewEvidence(readS1ReviewInput(root, options)) };
+  return { schemaVersion: 1, season, sources, tables, excluded, valueEvidence, visualVerification: {
     nodes: "not-verified", basis: "仅有用户提供的分支录像结论，未独立逐项核验录像节点。", assets: [],
   } };
 }
 
 export function extract() {
-  for (const season of ["s0", "s1"] as const) {
-    const evidence = readEvidence(season);
+  const tabooScriptFile = process.argv.find(arg => arg.startsWith("--s1-taboo-script="))?.slice("--s1-taboo-script=".length);
+  const priorPath = join(process.cwd(), "data/season-talents/s1/audit.json");
+  if (!tabooScriptFile && existsSync(priorPath)) {
+    const prior: Evidence = JSON.parse(readFileSync(priorPath, "utf8"));
+    if (prior.valueEvidence?.s1?.taboo) throw new Error("S1_BLUEPRINT_REQUIRED: pass --s1-taboo-script=<ReadScriptData export> to preserve the reviewed execution evidence.");
+  }
+  // Validate both seasons before overwriting either projection.
+  const inputs = (["s0", "s1"] as const).map(season => readEvidence(season, process.cwd(), { tabooScriptFile }));
+  for (const evidence of inputs) {
+    const season = evidence.season;
     const trees = buildTrees(evidence);
     evidence.semanticReview = summarizeSemanticReview(trees);
     const assetPath = process.argv.find((arg) => arg.startsWith("--assets="))?.slice("--assets=".length);

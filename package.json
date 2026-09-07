@@ -34,7 +34,7 @@
     "test:weapon-skill-charge": "tsx --test scripts/weapon-data/skill-charge.test.ts",
     "test:weapon-data-lock": "tsx --test scripts/weapon-data/lock.test.ts",
     "test:season-talents": "tsx --test lib/season-talent-builder.test.ts lib/s3-season-talent-builder.test.ts",
-    "test:s0s1-talents": "tsx --test lib/s0s1-season-talents.test.ts lib/s0s1-talent-view.test.ts scripts/s0s1-talent-search.test.ts scripts/s0s1-season-talents/atlas-crops.test.ts",
+    "test:s0s1-talents": "tsx --test lib/s0s1-season-talents.test.ts lib/s0s1-talent-view.test.ts lib/s0s1-multiplier.test.ts scripts/s0s1-talent-search.test.ts scripts/s0s1-season-talents/atlas-crops.test.ts scripts/s0s1-season-talents/range-values.test.ts scripts/s0s1-season-talents/s0-reviewed-values.test.ts scripts/s0s1-season-talents/s1-reviewed-values.test.ts scripts/s0s1-season-talents/video-values.test.ts",
     "extract:s0s1-talents": "tsx scripts/s0s1-season-talents/extract.ts",
     "check:s0s1-talents": "tsx scripts/s0s1-season-talents/check.ts",
     "test:weapon-static-boundary": "tsx --test scripts/weapon-data/static-boundary.test.ts",

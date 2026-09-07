@@ -19,6 +19,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - 猎场竞速卡片以 CardID 为稳定身份，页面来源使用卡片 slug；只有 `CardID → Card_Function → MGE/Buff → GPModifier → Numerical AttributeName` 完整连通时才登记。
 - 攻击等级覆写型卡片必须额外保存来源 MGE、覆写等级、攻击等级被动与下游 MGE；审计需确认该等级最终命中同等级 Numerical 行，不能把 `SetAttackLevelOverride` 当作证据链终点。
 - `refs/` 只用于人工核验证据，构建和页面运行时不得读取。
+- S0/S1 五条已确认分支按 Basic → 对应等级的 Passive → MGEConfig/MGE → Numerical 审核，不能直接以技能 ID 查同名 Config。`scripts/s0s1-season-talents/providers.ts` 仅从 `valueReview.applications` 生成来源；未连通的节点登记 `unverified-evidence`，不据名称或描述 Token 推断乘区。离线证据随 `audit.json.valueEvidence` 保存，当前数值不等同于历史实测值。
 
 ## 数据所有权
 

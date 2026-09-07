@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
+import { parseModifierProviderRegistry } from "./modifier-provider-registry";
 
 import {
   MODIFIER_INDEX_PROVIDERS,
@@ -13,7 +15,8 @@ import {
 } from "@/lib/modifier-index";
 
 test("exposes the complete generic provider projection", () => {
-  assert.equal(MODIFIER_INDEX_PROVIDERS.length, 197);
+  const registry = parseModifierProviderRegistry(JSON.parse(readFileSync("data/modifier-providers.json", "utf8")));
+  assert.deepEqual(MODIFIER_INDEX_PROVIDERS.map(provider => provider.id).sort(), registry.providers.map(provider => provider.id).sort());
   assert.equal(getModifierProvider("card:10003")?.label, "狂战士祝福");
 });
 

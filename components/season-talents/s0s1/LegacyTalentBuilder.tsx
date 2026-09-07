@@ -6,6 +6,7 @@ import type { LegacyTalentNode, LegacyTalentTree } from "@/lib/s0s1-season-talen
 import { LEGACY_TALENT_CATALOG, legacyAsset, legacyPresentation } from "@/lib/s0s1-talent-presentation";
 import { isLegacyExclusiveNode, legacyNodePosition, legacyViewStorageKey, restoreLegacyTalentView, type LegacyTalentView } from "@/lib/s0s1-talent-view";
 import { getAssetPath } from "@/lib/path";
+import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import { TalentConnectorLines, TalentDetails, TalentHeader, TalentNode, TalentWorkspace } from "@/components/season-talents/TalentEditor";
 import { LegacyTalentScene } from "./LegacyTalentScene";
 import styles from "./legacy-talents.module.css";
@@ -78,11 +79,26 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
         headingActions={<button className={styles.mobileReturn} title="返回天赋树" aria-label="返回天赋树" onClick={() => treeRef.current?.scrollIntoView({ block: "start", behavior: "instant" })}><ArrowDown size={18} /></button>}
         actions={<p className={styles.ruleNotice}>前置解锁与退点规则未核实，暂不开放模拟加点。</p>}>
         {!node.isRoot && <label className={styles.levelControl}>效果等级<select aria-label="效果等级" value={level.level} onChange={e => update({ ...view, level: Number(e.target.value) })}>{node.levels.map(l => <option key={l.level} value={l.level}>等级 {l.level} / {node.maxLevel}</option>)}</select></label>}
-        <p className={styles.description}>{level.description}</p>
-        {level.warnings.length > 0 && <p className={styles.warning}>部分效果缺少完整数值证据；待核实数值未作为配置值展示。当前主表数据不等同于历史实测。</p>}
+        <p className={styles.description}>{level.description.split(/([+-]?\d+(?:\.\d+)?%?)/g).map((part, index) => /^[-+]?\d/.test(part) ? <strong className={styles.value} key={index}>{part}</strong> : part)}</p>
+        <div id={`multiplier-provider-node-${node.id}`} className="mt-3" data-multiplier-provider-target={`node-${node.id}`}>
+          <MultiplierSourceBadges source={{ type: "season-talent", season: tree.season, tree: tree.id, nodeId: node.id }} />
+        </div>
+        {!level.valueReview && level.semanticConflicts?.length ? <p className={styles.warning}>当前参数与该节点描述存在冲突，不能据此确认历史效果。</p>
+          : level.description.includes("〔数值待核实〕") || level.description.includes("缺少该等级描述") ? <p className={styles.warning}>部分效果尚缺结构化数值证据，未采用描述原文中的数字。</p> : null}
+        <p className={styles.configurationNotice}>{level.videoReview
+          ? `含 ${level.videoReview.values.length} 处录像展示值（${level.videoReview.timestamp}），尚未核实配置；其余已核验值仍按配置展示。`
+          : "数值按已核验配置展示，不等同于历史版本实测。"}</p>
         {!availableIcons.includes(node.icon) && <p className={styles.warning}>节点图标尚未完成定位，暂以问号标记。</p>}
-        {displayFacts.length > 0 && <section className={styles.facts}><h3>当前同 ID 配置 · 非历史效果确认</h3><dl>{displayFacts.map((fact, i) => <div key={i}><dt>{fact.label}</dt><dd>{fact.displayValue}</dd></div>)}</dl></section>}
         <details className={styles.evidence}><summary>来源与核验记录</summary>
+          {level.valueReview && <p>配置核验沿 Basic → Passive 等级 → MGEConfig / 描述行进行；录像补充不属于配置依据。下方旧同 ID 直连事实仅供排错，不用于正文数值或乘区。</p>}
+          {level.videoReview && <>
+            <p>录像补充：{level.videoReview.timestamp} · {level.videoReview.levelEvidence}。仅限本节点、本等级，不用于乘区索引。</p>
+            {level.videoReview.values.map(value => <p key={`video-${value.slot}`}>{value.context.replace("〔数值待核实〕", `【${value.value}】`)}（录像展示值）</p>)}
+            {level.videoReview.notes.map(note => <p key={note}>{note}</p>)}
+          </>}
+          {level.valueReview?.sources.map(source => <p key={source}>{source}</p>)}
+          {[...new Set(level.valueReview?.notes ?? [])].map(note => <p key={note}>{note}</p>)}
+          {displayFacts.length > 0 && <section className={styles.facts}><h3>当前同 ID 配置 · 非历史效果确认</h3><dl>{displayFacts.map((fact, i) => <div key={i}><dt>{fact.label}</dt><dd>{fact.displayValue}</dd></div>)}</dl></section>}
           <p>节点 ID：{node.id} · 技能 ID：{node.skillIds.join("、") || "未定位"}</p>
           {level.modifierRows.map(row => <p key={row}>{row}</p>)}
           {level.facts.map((fact, i) => <p key={`source-${i}`}>{fact.label}：{fact.value}<br />{fact.source}</p>)}

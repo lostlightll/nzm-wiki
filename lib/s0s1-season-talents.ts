@@ -1,7 +1,8 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
-import type { NumModifierResolver, NumModifierRowKey } from "@/lib/num-modifier";
+import type { NumModifierResolver, NumModifierRowKey, NumModifierValueBindings, NumModifierValueExpression } from "@/lib/num-modifier";
+import type { ModifierRecipient } from "@/lib/num-modifier-semantics";
 
 export type LegacyTalentSeason = "s0" | "s1";
 export type LegacyTalentHistoricalStatus = "video-confirmed" | "unconfirmed";
@@ -32,6 +33,23 @@ export interface LegacyTalentLevel {
   description: string;
   /** Sanitized prose with only supported GPModifier tokens retained for live resolution. */
   descriptionTemplate?: string;
+  descriptionBindings?: NumModifierValueBindings;
+  /** Recording text is a display fallback, never configuration or multiplier evidence. */
+  videoReview?: {
+    status: "video-display-unverified";
+    sourceId: string;
+    timestamp: string;
+    levelEvidence: string;
+    values: Array<{ slot: number; value: string; context: string }>;
+    notes: string[];
+  };
+  valueReview?: {
+    sources: string[];
+    notes: string[];
+    applications: Array<{ expression: NumModifierValueExpression; context: { recipient: ModifierRecipient } }>;
+    resolvedCount?: number;
+    remaining?: number;
+  };
   modifierRows: string[];
   facts: LegacyTalentFact[];
   warnings: string[];
@@ -88,7 +106,9 @@ export function resolveLegacyTalentCatalog(
   resolver: NumModifierResolver = NUM_MODIFIER_RESOLVER,
 ): LegacyTalentTree[] {
   return trees.map((tree) => ({ ...tree, nodes: tree.nodes.map((node) => ({ ...node, levels: node.levels.map((level) => {
-    const resolution = resolver.resolveGameModifierTokens(level.descriptionTemplate ?? level.description, `${tree.season}/${tree.id}/${node.id}/${level.level}`);
+    const at = `${tree.season}/${tree.id}/${node.id}/${level.level}`;
+    const template = resolver.resolveTemplate(level.descriptionTemplate ?? level.description, level.descriptionBindings ?? {}, at);
+    const resolution = resolver.resolveGameModifierTokens(template, at);
     if (resolution.unresolvedTokens.length) throw new Error(`Unresolved legacy talent tokens: ${resolution.unresolvedTokens.join(", ")}`);
     return { ...level, description: resolution.text, facts: level.facts.map((fact) => resolveLegacyTalentFact(fact, resolver)) };
   }) })) }));

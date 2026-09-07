@@ -220,7 +220,7 @@ export type MultiplierProviderExclusion = {
   id: string;
   label: string;
   source: ProviderRegistrySource;
-  reasonCode: "independent-damage-event" | "not-damage-multiplier";
+  reasonCode: "independent-damage-event" | "not-damage-multiplier" | "unverified-evidence";
   reason: string;
 };
 

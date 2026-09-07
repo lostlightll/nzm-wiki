@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { getLegacyTalentCatalog, getLegacyTalentTree, resolveLegacyTalentCatalog, resolveLegacyTalentFact, type LegacyTalentFact, type LegacyTalentLevel, type LegacyTalentTree } from "./s0s1-season-talents";
-import { buildTrees, sanitizeDescription, auditActiveSkill, UNVERIFIED, type Evidence } from "../scripts/s0s1-season-talents/extract";
+import { buildTrees, sanitizeDescription, auditActiveSkill, extract, UNVERIFIED, type Evidence } from "../scripts/s0s1-season-talents/extract";
 import { checkLegacyTalents, checkProjection } from "../scripts/s0s1-season-talents/check";
 import { NUM_MODIFIER_LOCK, NUM_MODIFIER_RESOLVER, NUM_MODIFIER_SEMANTICS } from "./num-modifier-data";
 import { createNumModifierResolver } from "./num-modifier";
@@ -12,6 +12,14 @@ const evidence = (season: string): Evidence => JSON.parse(readFileSync(`data/sea
 const emptyLevel = (level = 1): LegacyTalentLevel => ({ level, description: "", modifierRows: [], facts: [], warnings: [] });
 
 test("committed projections replay against current Numerical without refs", () => checkLegacyTalents());
+
+test("refresh without the reviewed script export cannot discard execution evidence", () => {
+  assert.ok(evidence("s1").valueEvidence?.s1?.taboo);
+  const files = ["s0", "s1"].flatMap(season => ["audit", "trees"].map(name => `data/season-talents/${season}/${name}.json`));
+  const before = files.map(file => readFileSync(file, "utf8"));
+  assert.throws(() => extract(), /S1_BLUEPRINT_REQUIRED/);
+  assert.deepEqual(files.map(file => readFileSync(file, "utf8")), before);
+});
 
 test("catalog identity, node counts, branch status and video boundary", () => {
   assert.deepEqual(getLegacyTalentCatalog("s0").map((tree) => [tree.id, tree.nodeCount]), [["frost-barrage", 26], ["destruction-dream", 26], ["mechanical-dance", 26]]);
@@ -78,6 +86,19 @@ test("runtime uses only the existing server Numerical adapter, never refs or dir
   const reader = readFileSync("lib/s0s1-season-talents.ts", "utf8");
   assert.doesNotMatch(reader, /(?:from|import\s*\()[^\n]*(?:num-modifier-lock\.json|refs|scripts)/);
   assert.match(reader, /from "@\/lib\/num-modifier-data"/);
+});
+
+test("reviewed description bindings resolve dynamically without copying Numerical values", () => {
+  const input = rawCatalog("s0");
+  const level = input[0].nodes[0].levels[0];
+  level.descriptionTemplate = "近距离伤害提高{{num:damage|percent}}。";
+  level.descriptionBindings = { damage: { row: "lc:1701000105_1_0", field: "base" } };
+  const lock = structuredClone(NUM_MODIFIER_LOCK);
+  lock.rows.lc["1701000105_1_0"].raw.BaseValue = .42;
+  const resolver = createNumModifierResolver(lock, NUM_MODIFIER_SEMANTICS);
+  assert.equal(resolveLegacyTalentCatalog(input, resolver)[0].nodes[0].levels[0].description, "近距离伤害提高42%。");
+  delete lock.rows.lc["1701000105_1_0"];
+  assert.throws(() => resolveLegacyTalentCatalog(input, createNumModifierResolver(lock, NUM_MODIFIER_SEMANTICS)), /MISSING_ROW/);
 });
 
 const rawCatalog = (season: string): LegacyTalentTree[] => JSON.parse(readFileSync(`data/season-talents/${season}/trees.json`, "utf8"));

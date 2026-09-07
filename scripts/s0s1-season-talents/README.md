@@ -8,6 +8,9 @@ pnpm exec tsx scripts/s0s1-season-talents/extract.ts --assets=MD/_local/s0s1Tale
 pnpm exec tsx scripts/s0s1-season-talents/check.ts
 pnpm exec tsx scripts/s0s1-season-talents/check.ts --sources
 pnpm exec tsx --test lib/s0s1-season-talents.test.ts
+pnpm exec tsx scripts/s0s1-season-talents/providers.ts --write
+pnpm num-modifier:project
+pnpm exec tsx scripts/s0s1-season-talents/audit-values.ts --out=MD/_local/s0s1Talent/value-review.json
 ```
 
 Extraction reads only the formal `refs/Exports/NZM/Content/DataTables` tables and the existing Numerical adapter. It writes only `data/season-talents/s0/` and `data/season-talents/s1/`. No Lock refresh, image conversion or shared script registration is performed.
@@ -19,7 +22,7 @@ Extraction reads only the formal `refs/Exports/NZM/Content/DataTables` tables an
 - `historicalStatus` applies only to branch appearance, based on the user's supplied video conclusions. It does not confirm individual nodes, edges or historical values. S0 destruction-dream is an unconfirmed reference branch; consumers should separate it from the two confirmed S0 branches.
 - No video was independently inspected by this extractor. Node/edge correspondence and atlas images remain pending manual review.
 - Selection uses SeasonID=1, SeasonPhaseID=0/1 and the seven rows in each Structure1/2/3. Extra Basic nodes are retained only in audit evidence.
-- Basic `TalentSkillsID` and `AttributeSkillsID` join the exact current Main ConfigId; descriptions require exact MGEId/TextID. SeasonSkill descriptions require exact SkillId/SkillLevel. Missing levels are not substituted.
+- Reviewed prose for the five confirmed branches follows Basic skill identity -> exact-level MGEPassiveMainTable -> MGEConfig.Id and MGE.Id/MGEDescriptionId -> selected Main rows. A skill ID is not necessarily its ConfigId or MGEId. SeasonSkill descriptions require exact SkillId/SkillLevel. Missing levels are not substituted. The original direct same-ID facts remain diagnostic only.
 - SeasonSkill also joins GPActiveSkillDataTable by exact row key and AbilityID. Duration and CooldownDuration are source-labelled raw seconds. Missing rows/fields warn; mismatched identities and invalid scalar values fail. Duration=0 does not prove a zero-duration effect. Only the reviewed standalone cooldown lines for SkillIDs 6001301, 6001401 and 6002301 at level 1 bind to CooldownDuration. Ambiguous lines and effect durations stay masked.
 - Explicit Modifier parameters use `getRowsById("lc", id)` filtered by the Basic level. GPModifier tokens retain their own exact level/index; tokens without a level use the Resolver default of 1 and warn on higher talent levels. No token level rewriting occurs.
 - Non-Modifier Numerical IDs remain structured references, not invented damage formulas. Parameters without a confirmed gameplay mapping are displayed only as source-labelled technical facts.
@@ -28,7 +31,48 @@ Extraction reads only the formal `refs/Exports/NZM/Content/DataTables` tables an
 - Same-ID joins prove only current configuration references, never continuity of a historical node's effect. Every extracted fact carries `historicalEffectStatus: unverified | semantic-conflict` and `evidenceKind: basic-identity | current-same-id | current-description-token`. Branch `historicalStatus` is independent. A description Token with a resolvable number is still not confirmed historical evidence.
 - Runtime reads the small projections and recomputes Modifier facts and GPToken prose through the existing server-only Numerical adapter. It never reads refs or audit evidence. The full Lock remains server-side; clients use type-only imports and receive resolved data from a server component. Changes to the committed Lock take effect when the server module is reloaded/rebuilt, not by hot-reading a changed Lock file.
 - Modifier facts carry `modifierRow?: NumModifierRowKey`; `source` is opaque provenance and never parsed for row keys. `value: string` retains technical AttributeName/BaseValue/CoefValue/GPModifierOp/Level facts. `label` uses the canonical attribute label and operation. Optional `displayValue` formats only B1 with a known quantity as additive values; all other operations retain raw values without guessed factors. Nonzero coefficients remain separate, with no inferred variable or formula.
-- `descriptionTemplate?: string` contains only sanitized prose and supported GPModifier tokens. Missing live Modifier rows or unresolved live tokens fail rather than falling back to cached values. Missing extraction-time references still require re-extraction when new evidence becomes available.
+- `descriptionTemplate?: string` contains sanitized prose, reviewed structured scalars, V2 binding placeholders and supported GPModifier tokens. `descriptionBindings` resolves against the latest main Lock at runtime; `valueReview` records sources, limitations and reviewed applications. Missing live Modifier rows or unresolved live tokens fail rather than falling back to cached values. Missing extraction-time references still require re-extraction when new evidence becomes available.
+
+## Reviewed Values and Index
+
+`s0-reviewed-values.ts` and `s1-reviewed-values.ts` audit every level in the five confirmed branches. Compact `audit.json.valueEvidence` permits replay without refs. Tests guard exact identities, semantics, parameter types, levels, quantities and missing-row behavior. Description numbers are never copied as evidence. Structured scalars are allowed only with a reviewed field/meaning mapping. Valid GPModifier tokens with unresolved attribute quantity keep the existing Resolver format, but do not become new bindings or index applications.
+
+`providers.ts` covers all 143 confirmed nodes with either reviewed damage applications or explicit exclusions. `unverified-evidence` means the source chain is incomplete, not that the skill has no damage effect. Only `valueReview.applications` supplies relations; old same-ID facts and description tokens cannot establish effect ownership. Existing S2/S3/S4 registrations are preserved. Regenerate providers and both Num projections after extraction; `multiplier-index:check` detects drift.
+
+The detailed local audit command above records every reviewed and missing quantity. Current configuration values do not prove historical values. The unconfirmed S0 destruction-dream branch is intentionally excluded.
+
+`range-values.ts` supplies the shared near/far distance evidence after the caller verifies the exact Passive/Modifier chain. The PVE system preset selects `BP_NumericalConfigSystem`; its CDO selects `NumericalSettlementConstantConfig`. Exact `CloseRangeDamageThreshold` / `LongRangeDamageThreshold` fields supply world distances, converted from centimetres to metres. The snapshot retains source hashes, the selected preset and CDO, and both constant rows. Loader identity, flags, scope and invalid values fail closed. This establishes current thresholds only, not historical values or runtime equality at the boundary.
+
+S1 TabooEyes execution evidence additionally requires an actor JSON export with CUE4Parse `ReadScriptData` enabled. Pass its local path using `--s1-taboo-script=<path>` to both `extract.ts` and `check.ts --sources`. The export is copied into a compact offline `valueEvidence.s1.taboo` snapshot; page rendering, tests and offline checks need no local script file. Once this evidence exists, extraction without the explicit script input fails before writing either season, rather than silently discarding reviewed bindings. The review follows exact HasSeasonTalent calls, SetBool tags, component enable conditions and fields; changed control flow fails closed.
+
+`export-taboo-script.ps1 -CliAssembly <installed FModel.Cli.dll> -Profile <private game profile>` repeats this special export in a PowerShell host compatible with the installed CLI's .NET runtime (currently .NET 10). It enables the existing provider's `ReadScriptData` in memory and writes to a new ignored `MD/_local/nzm-assets/s1-kismet-*` directory. It does not install/build tools, amend refs, or print the private profile. The reflected CLI API is version-specific; failures require inspection, not fallback to signature-only JSON.
+
+## Recording Display Supplements
+
+`data/season-talents/video-values.json` preserves manually inspected recording
+observations separately from configuration evidence. Each observation specifies
+the exact season, branch, node, level, timestamp, level-selection evidence,
+recording/frame SHA-256, masked-template SHA-256 and individual replacement slots.
+Only masked slots may be filled; reviewed scalars, V2 bindings and index
+applications are unchanged. Template drift fails closed and requires re-review.
+No value is extrapolated to another level, node or season.
+
+`videoReview` labels these values as `video-display-unverified` in the page and
+retains conflict notes. The configuration audit's `remaining` count deliberately
+does not decrease: a recording display is not verified configuration. The local
+report separates configuration-verified, recording-filled and still-empty counts.
+Its frame links assume the report and extracted frames share the local directory.
+
+```powershell
+pnpm exec tsx scripts/s0s1-season-talents/report-video-values.ts --write --out=MD/_local/s0s1Talent/video-supplements.md
+pnpm exec tsx scripts/s0s1-season-talents/report-video-values.ts --out=MD/_local/s0s1Talent/video-supplements.md --frames=MD/_local/s0s1Talent
+pnpm exec tsx --test scripts/s0s1-season-talents/video-values.test.ts
+```
+
+The first command replays committed evidence without refs and refreshes only the
+two season tree projections. `--frames` optionally verifies the local recording
+and screenshot hashes. Neither recording nor screenshots are runtime dependencies.
+The earlier masking rules still apply to every slot without an explicit observation.
 
 ## Atlas Recovery
 
@@ -62,6 +106,8 @@ their own visual review.
 `getLegacyTalentTree(season: string, id: string): LegacyTalentTree | undefined` returns the requested tree. Node count is `nodeCount`. Icons retain raw asset basenames under `/webp/images/season-talents/s0s1/`; consumers apply `getAssetPath()` and their image fallback.
 
 ## Same-ID Semantic Conflicts
+
+This section documents the old direct same-ID diagnostic, not the authoritative skill execution chain. A conflict here does not invalidate a separately reviewed exact-level Passive chain. These records stay available as raw evidence; reviewed prose and index entries never use this shortcut.
 
 `semantic-conflicts.ts` records a targeted review of 11 nodes / 22 levels, not an exhaustive audit. Exact node/MGE identities, parameter values, description semantics and canonical Numerical attributes guard each finding. Evidence changes fail with `SEMANTIC_REVIEW_DRIFT` and require re-review. Missing Numerical levels remain missing; no level fallback is introduced.
 

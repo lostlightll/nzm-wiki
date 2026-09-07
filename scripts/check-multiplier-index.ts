@@ -21,10 +21,12 @@ import {
   type MultiplierSource,
 } from "@/lib/multiplier-data";
 import { loadModifierProviderRegistry } from "./num-modifier/provider-registry";
+import { syncLegacyProviders } from "./s0s1-season-talents/providers";
 
 const root = process.cwd();
 const errors: string[] = [];
 const sourceRegistry = loadModifierProviderRegistry();
+syncLegacyProviders();
 const sourceProvidersById = new Map(
   sourceRegistry.providers.map((provider) => [provider.id, provider]),
 );
