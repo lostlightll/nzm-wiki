@@ -30,7 +30,7 @@ export function legacyNodePosition(season: "s0" | "s1", node: Pick<LegacyTalentN
   const exclusiveX = season === "s1"
     ? [420, 560, 630, 700, 840][index]
     : 450 + (node.column - (season === "s0" ? 4 : 5)) * 90;
-  const x = exclusive ? exclusiveX : season === "s0" ? 85 + index * 170 : 45 + index * 80;
+  const x = exclusive ? exclusiveX : season === "s0" ? 85 + index * 170 : [45, 165, 225, 285][index];
   return { x, y: 100 + Math.max(0, node.phase - 2) * 120 };
 }
 

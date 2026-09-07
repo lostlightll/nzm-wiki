@@ -46,6 +46,11 @@ test("view storage is isolated by season and branch",()=>{
   assert.notEqual(legacyViewStorageKey("s0","one"),legacyViewStorageKey("s1","one"));
   assert.notEqual(legacyViewStorageKey("s0","one"),legacyViewStorageKey("s0","two"));
 });
+test("S1 passive tracks are evenly spaced with the branching root centered over its children", () => {
+  const x = (column: number) => legacyNodePosition("s1", { column, phase: 3 }).x;
+  assert.equal(x(2) - x(1), x(4) - x(2));
+  assert.equal(x(3), (x(2) + x(4)) / 2);
+});
 test("layout reserves fixed node bounds without overlapping tracks",()=>{
   for(const season of ["s0","s1"] as const) for(let phase=1;phase<=7;phase++) for(const column of season === "s0" ? [1,2,4,6,8] : [1,2,3,4,5,7,9]) {
     const p=legacyNodePosition(season,{phase,column});
