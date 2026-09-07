@@ -7,6 +7,7 @@ import { LEGACY_TALENT_CATALOG, legacyAsset, legacyPresentation } from "@/lib/s0
 import { isLegacyExclusiveNode, legacyNodePosition, legacyViewStorageKey, restoreLegacyTalentView, type LegacyTalentView } from "@/lib/s0s1-talent-view";
 import { getAssetPath } from "@/lib/path";
 import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
+import { TalentDraftNotice } from "@/components/season-talents/TalentDraftNotice";
 import { TalentConnectorLines, TalentDetails, TalentHeader, TalentNode, TalentWorkspace } from "@/components/season-talents/TalentEditor";
 import { LegacyTalentScene } from "./LegacyTalentScene";
 import styles from "./legacy-talents.module.css";
@@ -72,6 +73,7 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
 
   return <section className={styles.builder} style={{ "--talent-accent": presentation.color, "--talent-accent-soft": `${presentation.color}26`, "--talent-glow": `${presentation.color}55` } as CSSProperties}>
     <div className={styles.builderScene}><LegacyTalentScene season={tree.season} /></div>
+    <TalentDraftNotice />
     <TalentHeader season={tree.season} links={branchLinks} activeId={tree.id} activeSkillId={tree.nodes.find(n => n.isRoot)?.id} name={tree.name} icon={legacyAsset(presentation.icon)} weapons={tree.subtitle} onInspect={() => update(restoreLegacyTalentView(tree.nodes, null), true)} />
     <TalentWorkspace details={
       <TalentDetails season={tree.season} name={node.name} icon={node.icon} panelRef={detailRef} id="talent-detail" onReset={() => update(restoreLegacyTalentView(tree.nodes, null))} resetLabel="重置浏览状态"

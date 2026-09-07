@@ -155,7 +155,8 @@ test("live catalog recalculates both facts and bound prose after a Lock value ch
   const tokenLevels = live.flatMap((tree) => tree.nodes.flatMap((node) => node.levels)).filter((level) => Object.values(level.descriptionBindings ?? {}).some(binding => binding.row === "lc:160201010_1_0"));
   assert.ok(tokenLevels.length);
   for (const level of tokenLevels) {
-    const expected = changed.resolveGameModifierTokens(changed.resolveTemplate(level.descriptionTemplate!, level.descriptionBindings)).text;
+    assert.ok(level.descriptionTemplate && level.descriptionBindings);
+    const expected = changed.resolveGameModifierTokens(changed.resolveTemplate(level.descriptionTemplate, level.descriptionBindings)).text;
     assert.equal(level.description, expected);
     assert.ok(level.facts.some((fact) => fact.modifierRow === modifierFact.modifierRow && fact.value.includes("BaseValue=0.77")));
   }
