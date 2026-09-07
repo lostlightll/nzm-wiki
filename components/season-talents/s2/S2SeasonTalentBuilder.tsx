@@ -1,20 +1,47 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft, ArrowLeftRight, Check, Copy, Minus, Plus, RotateCcw, X } from "lucide-react";
+import { Check, Copy, RotateCcw, X } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import catalog from "@/data/season-talents/s2/catalog.json";
 import { getAssetPath } from "@/lib/path";
 import { emptyS2Build, restoreS2Build, s2PrerequisiteGroups, s2SpentPoints, s2UnlockReason, setS2Level, type S2TalentNode, type S2TalentTree } from "@/lib/s2-season-talent-builder";
 import styles from "./s2.module.css";
+import editor from "./s2-editor.module.css";
+import { TalentHeader, TalentPassiveSlot, TalentNode, TalentDetails, TalentLevelActions, TalentWorkspace, TalentTreeSections, TalentConnectorLines } from "@/components/season-talents/TalentEditor";
 
-function position(node: S2TalentNode) {
-  return { x: node.column >= 5 ? 205 + (node.column - 6) * 108 : 485 + (node.column - 1) * 108, y: 72 + (node.phase - 2) * 116 };
+function column(node: S2TalentNode) { return node.column >= 5 ? node.column - 4 : node.column + 3; }
+
+function connectorPaths(tree: S2TalentTree, levels: Record<string, number>, section?: "special" | "common") {
+  const groups = new Map<string, { sources: Set<S2TalentNode>; targets: Set<S2TalentNode> }>();
+  for (const node of tree.nodes.filter(n => !n.isRoot)) {
+    if (section && (node.column >= 5 ? "special" : "common") !== section) continue;
+    for (const id of s2PrerequisiteGroups(node.prerequisite).flat()) {
+      const source = tree.nodes.find(n => n.id === id && !n.isRoot);
+      if (!source) continue;
+      const key = `${node.column >= 5 ? "special" : "common"}-${source.phase}-${node.phase}`;
+      const group = groups.get(key) ?? { sources: new Set<S2TalentNode>(), targets: new Set<S2TalentNode>() };
+      group.sources.add(source); group.targets.add(node); groups.set(key, group);
+    }
+  }
+  const x = (n: S2TalentNode) => section ? ((n.column >= 5 ? n.column - 4 : n.column) - .5) / 3 * 100 : (column(n) - .5) / 6 * 100;
+  const y = (n: S2TalentNode) => (n.phase - 1.5) / 5 * 100;
+  const path = (sources: S2TalentNode[], targets: S2TalentNode[]) => {
+    const rail = (Math.max(...sources.map(n => y(n) + 8.25)) + Math.min(...targets.map(n => y(n) - 5.25))) / 2;
+    const xs = [...sources, ...targets].map(x);
+    return [`M ${Math.min(...xs)} ${rail} H ${Math.max(...xs)}`,
+      ...sources.map(n => `M ${x(n)} ${y(n) + 8.25} V ${rail}`),
+      ...targets.map(n => `M ${x(n)} ${rail} V ${y(n) - 5.25}`)].join(" ");
+  };
+  return [...groups].flatMap(([id, group]) => {
+    const sources = [...group.sources], targets = [...group.targets];
+    const activeSources = sources.filter(n => (levels[n.id] ?? 0) > 0), activeTargets = targets.filter(n => (levels[n.id] ?? 0) > 0);
+    return [{ id, d: path(sources, targets), active: false }, ...(activeSources.length && activeTargets.length ? [{ id: id + "-active", d: path(activeSources, activeTargets), active: true }] : [])];
+  });
 }
 
 function Description({ text }: { text: string }) {
-  return <div className={styles.description}>{text.split("\n").map((line, i) => <p key={i}>{line.split(/([+-]?\d+(?:\.\d+)?%?)/g).map((part, j) => j % 2 ? <strong key={j}>{part}</strong> : part)}</p>)}</div>;
+  return <div className="space-y-2 text-[0.95rem] leading-7 text-slate-200">{text.split("\n").map((line, i) => <p key={i}>{line.split(/([+-]?\d+(?:\.\d+)?%?)/g).map((part, j) => j % 2 ? <strong className="text-[#ffd45e]" key={j}>{part}</strong> : part)}</p>)}</div>;
 }
 
 export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
@@ -27,10 +54,8 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
   const [detailOpen, setDetailOpen] = useState(false);
   const [modal, setModal] = useState<"passives" | "reset" | null>(null);
   const [notice, setNotice] = useState("");
-  const [scale, setScale] = useState(1);
   const dialog = useRef<HTMLDialogElement>(null);
   const detailDialog = useRef<HTMLDialogElement>(null);
-  const viewport = useRef<HTMLDivElement>(null);
   const key = `nzm-wiki:s2-talents:${tree.id}:v1`;
   const node = tree.nodes.find(n => n.id === selected);
   const passive = tree.passives.find(p => p.id === selected);
@@ -77,7 +102,7 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
   }, [modal]);
 
   useEffect(() => {
-    const media = window.matchMedia("(max-width: 900px)");
+    const media = window.matchMedia("(max-width: 1023px)");
     const sync = () => {
       if (detailOpen && media.matches) detailDialog.current?.showModal();
       else detailDialog.current?.close();
@@ -86,17 +111,6 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
     media.addEventListener("change", sync);
     return () => media.removeEventListener("change", sync);
   }, [detailOpen]);
-
-  useEffect(() => {
-    const container = viewport.current;
-    if (!container) return;
-    const observer = new ResizeObserver(([entry]) => {
-      const mobile = window.matchMedia("(max-width: 900px)").matches;
-      setScale(mobile ? Math.min(1, entry.contentRect.width / 380) : Math.max(.55, Math.min(1.15, entry.contentRect.width / 800, entry.contentRect.height / 650)));
-    });
-    observer.observe(container);
-    return () => observer.disconnect();
-  }, []);
 
   const inspect = (id: string) => {
     setSelected(id); setPreviewLevel(Math.max(1, build.levels[id] ?? 0)); setDetailOpen(true);
@@ -115,91 +129,58 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
     try { await navigator.clipboard.writeText(url.toString()); setNotice("配点链接已复制"); }
     catch { setNotice("无法访问剪贴板，未复制配点链接。"); }
   };
-  const details = <>
-    <div className={styles.detailHeading}>
-      <Image src={getAssetPath(node?.icon ?? passive?.icon ?? tree.icon)} alt="" width={56} height={56} />
-      <div><span className={styles.eyebrow}>{passive ? "被动天赋" : node?.isRoot ? "主动技能" : node && node.column >= 5 ? "专属天赋" : "通用天赋"}</span><h2>{node?.name ?? passive?.name}</h2></div>
-    </div>
+  const canIncrease = !!node && !node.isRoot && ready && !reason && current < node.maxLevel && setS2Level(tree, build, node.id, current + 1) !== build;
+  const theme = { "--talent-accent": tree.id === "invisibility" ? "#79d5f2" : tree.id === "inferno-arm" ? "#ecc376" : "#d99cef",
+    "--talent-accent-soft": tree.id === "invisibility" ? "#79d5f224" : tree.id === "inferno-arm" ? "#ecc37624" : "#d99cef24" } as CSSProperties;
+  const details = <TalentDetails season="s2" name={node?.name ?? passive?.name ?? tree.name} icon={node?.icon ?? passive?.icon ?? tree.icon}
+    level={current} maxLevel={node && !node.isRoot ? node.maxLevel : undefined} onReset={() => setModal("reset")}
+    actions={<>
+      {node && !node.isRoot && <TalentLevelActions name={node.name} level={current} maxLevel={node.maxLevel} canDecrease={ready && current > 0} canIncrease={canIncrease} onChange={value => {
+        let next = value;
+        while (next > current + 1 && setS2Level(tree, build, node.id, next) === build) next--;
+        change(next);
+      }} />}
+      {passive && <button type="button" className={styles.equip} disabled={!ready} onClick={() => setBuild(b => ({ ...b, passiveId: b.passiveId === passive.id ? null : passive.id }))}><Check size={18} />{build.passiveId === passive.id ? "取消选择" : "装备被动"}</button>}
+      <div className={editor.actions}><button type="button" className={editor.share} title="复制配点链接" aria-label="复制配点链接" disabled={!ready} onClick={share}><Copy size={18} /></button></div>
+    </>}>
     {node && !node.isRoot && <div className={styles.levelPreview} aria-label="等级预览">{Array.from({ length: node.maxLevel }, (_, i) => <button type="button" key={i} aria-label={`预览 ${i + 1} 级`} aria-pressed={level === i + 1} onClick={() => setPreviewLevel(i + 1)}>{i + 1} 级</button>)}</div>}
     <Description text={node?.descriptions[level - 1] ?? passive?.description ?? ""} />
-    {node?.isRoot && <div className={styles.weaponTypes}><span>适配武器</span><p>{tree.applicableWeapons}</p></div>}
-    {node && !node.isRoot && <div className={styles.allocationArea}>
-      <p className={styles.requirement}>{reason ?? (current === node.maxLevel ? "已满级" : `升级消耗 ${node.costs[current]} 点`)}</p>
-      <div className={styles.allocation}>
-        <button type="button" title="减点" aria-label={`降低${node.name}等级`} disabled={!ready || current === 0} onClick={() => change(current - 1)}><Minus size={20} /></button>
-        <output aria-label="当前等级">{current}<span> / {node.maxLevel}</span></output>
-        <button type="button" title="加点" aria-label={`提升${node.name}等级`} disabled={!ready || !!reason || current >= node.maxLevel || setS2Level(tree, build, node.id, current + 1) === build} onClick={() => change(current + 1)}><Plus size={20} /></button>
-      </div>
-    </div>}
-    {passive && <button type="button" className={styles.equip} disabled={!ready} onClick={() => setBuild(b => ({ ...b, passiveId: b.passiveId === passive.id ? null : passive.id }))}><Check size={18} />{build.passiveId === passive.id ? "取消选择" : "装备被动"}</button>}
+    {node && !node.isRoot && <p className={styles.requirement}>{reason ?? (current === node.maxLevel ? "已满级" : `升级消耗 ${node.costs[current]} 点`)}</p>}
     {node?.auditNote && <details className={styles.audit}><summary>资料核验</summary><p>{node.auditNote}</p></details>}
-  </>;
+  </TalentDetails>;
 
-  return <section className={styles.builder} aria-label={`${tree.name}天赋树`}>
-    <Image src={getAssetPath(catalog.background)} alt="" fill priority sizes="100vw" className={styles.background} />
-    <header className={styles.toolbar}>
-      <Link href="/season-talents#s2" aria-label="返回 S2 天赋" title="返回 S2 天赋"><ArrowLeft size={21} /></Link>
-      <div className={styles.toolbarTitle}><span className={styles.eyebrow}>S2 · 樱之渊</span><h1>{tree.name}</h1></div>
-      <div className={styles.budget} aria-live="polite"><span>配点预算</span><div><strong>{points}</strong> / {tree.pointLimit}</div></div>
-      <button type="button" title="复制配点链接" aria-label="复制配点链接" disabled={!ready} onClick={share}><Copy size={19} /></button>
-      <button type="button" title="重置配点" aria-label="重置配点" disabled={!ready || (!points && !build.passiveId)} onClick={() => setModal("reset")}><RotateCcw size={20} /></button>
-    </header>
-    <div className={styles.workspace}>
-      <div className={styles.treeArea}>
-        <div className={styles.treeHeading}>
-          <button type="button" className={styles.root} aria-label={`${tree.name}主动技能`} onClick={() => inspect(root.id)}>
-            <Image src={getAssetPath(tree.icon)} alt="" width={78} height={78} /><span>{tree.name}</span>
-          </button>
-          <button type="button" className={styles.passiveSelector} onClick={() => setModal("passives")}>
-            {activePassive ? <Image src={getAssetPath(activePassive.icon)} alt="" width={42} height={42} /> : <Plus size={26} />}
-            <span><small>被动天赋</small><strong>{activePassive?.name ?? "选择被动天赋"}</strong></span><ArrowLeftRight size={18} />
-          </button>
-        </div>
-        <div className={styles.mobileTabs} role="group" aria-label="天赋类别">
-          <button type="button" aria-pressed={mobileTab === "special"} onClick={() => setMobileTab("special")}>专属天赋</button>
-          <button type="button" aria-pressed={mobileTab === "common"} onClick={() => setMobileTab("common")}>通用天赋</button>
-        </div>
-        <div className={styles.treeViewport} ref={viewport}>
-          <div className={styles.board} data-mobile-tab={mobileTab} style={{ "--board-scale": scale } as CSSProperties}>
-            <span className={styles.specialLabel}>专属天赋</span><span className={styles.commonLabel}>通用天赋</span>
-            <svg className={styles.connections} viewBox="0 0 800 650" aria-hidden="true">
-              {tree.nodes.filter(n => !n.isRoot && n.column >= 5).flatMap(n => s2PrerequisiteGroups(n.prerequisite).flat().map(id => {
-                const before = tree.nodes.find(p => p.id === id);
-                if (!before || before.isRoot) return null;
-                const a = position(before), b = position(n);
-                return <path className={styles.specialEdge} key={`${n.id}-${id}`} d={`M ${a.x} ${a.y + 33} L ${b.x} ${b.y - 30}`} data-active={(build.levels[n.id] ?? 0) > 0} />;
-              }))}
-              {[3, 4, 5, 6].map(phase => {
-                const y = 72 + (phase - 3) * 116;
-                const parents = tree.nodes.filter(n => n.phase === phase - 1 && n.column < 5);
-                const children = tree.nodes.filter(n => n.phase === phase && n.column < 5);
-                return <g key={phase} className={styles.commonEdge}>
-                  <path d={`M 485 ${y + 61} H 701`} />
-                  {parents.map(n => <path key={`p${n.id}`} d={`M ${position(n).x} ${y + 29} V ${y + 61}`} data-active={(build.levels[n.id] ?? 0) === n.maxLevel} />)}
-                  {children.map(n => <path key={n.id} d={`M ${position(n).x} ${y + 61} V ${y + 89}`} data-active={(build.levels[n.id] ?? 0) > 0} />)}
-                </g>;
-              })}
-            </svg>
-            {tree.nodes.filter(n => !n.isRoot).map(n => {
-              const p = position(n), allocated = build.levels[n.id] ?? 0;
-              const locked = !!s2UnlockReason(tree, n, build.levels);
-              return <button type="button" id={`season-talent-node-${n.id}`} key={n.id}
-                className={`${styles.node} ${n.column >= 5 ? styles.special : styles.common}`}
-                data-selected={selected === n.id} data-allocated={allocated > 0} data-locked={locked}
-                style={{ left: p.x, top: p.y }} aria-label={`${n.name}，${allocated}/${n.maxLevel}${locked ? "，未解锁" : ""}`} aria-pressed={selected === n.id} title={n.name} onClick={() => inspect(n.id)}>
-                <span className={styles.nodeFrame}><Image src={getAssetPath(n.icon)} alt="" width={46} height={46} /></span>
-                <span className={styles.pips}>{Array.from({ length: n.maxLevel }, (_, i) => <i key={i} data-filled={i < allocated} />)}</span>
-                <span className={styles.nodeName}>{n.name}</span>
-              </button>;
-            })}
-          </div>
-        </div>
+  return <section className={editor.editor} style={theme} aria-label={`${tree.name}天赋树`}>
+    <div className={editor.background}><Image src={getAssetPath(catalog.background)} alt="" fill priority sizes="100vw" /></div>
+    <TalentHeader season="s2" links={catalog.trees} activeId={tree.id} name={tree.name} icon={tree.icon} points={points} limit={tree.pointLimit}
+      weapons={tree.applicableWeapons} onInspect={() => inspect(root.id)}>
+      <TalentPassiveSlot icon={activePassive?.icon} name={activePassive?.name} onClick={() => setModal("passives")} />
+    </TalentHeader>
+    <TalentWorkspace details={<div className={editor.desktopDetails}>{details}</div>}>
+      <div className={editor.mobileTabs} role="group" aria-label="天赋类别">
+        <button type="button" aria-pressed={mobileTab === "special"} onClick={() => setMobileTab("special")}>专属天赋</button>
+        <button type="button" aria-pressed={mobileTab === "common"} onClick={() => setMobileTab("common")}>通用天赋</button>
       </div>
-      <aside className={styles.details} aria-label="天赋详情">{details}</aside>
-    </div>
+      <div className={editor.board} data-mobile-tab={mobileTab}>
+        <TalentTreeSections exclusiveWidth="49.5%" generalWidth="49.5%" />
+        <TalentConnectorLines className={editor.desktopConnections} paths={connectorPaths(tree, build.levels)} />
+        <TalentConnectorLines className={editor.mobileConnections} paths={connectorPaths(tree, build.levels, mobileTab)} />
+        {tree.nodes.filter(n => !n.isRoot).map(n => {
+          const allocated = build.levels[n.id] ?? 0;
+          const excluded = tree.nodes.some(peer => (build.levels[peer.id] ?? 0) > 0 && peer.id !== n.id && (n.mutualGroups.includes(peer.group) || peer.mutualGroups.includes(n.group)));
+          return <TalentNode key={n.id} node={n} selected={selected === n.id} level={allocated} unlocked={!s2UnlockReason(tree, n, build.levels)} mutuallyExcluded={excluded}
+            className={n.column >= 5 ? editor.specialNode : editor.commonNode}
+            style={{ gridColumn: column(n), gridRow: n.phase - 1, "--mobile-column": n.column >= 5 ? n.column - 4 : n.column } as CSSProperties}
+            onSelect={() => inspect(n.id)} onIncrease={() => {
+              if (!ready) return;
+              setBuild(b => setS2Level(tree, b, n.id, (b.levels[n.id] ?? 0) + 1));
+              setPreviewLevel(Math.min(n.maxLevel, allocated + 1));
+            }} />;
+        })}
+      </div>
+    </TalentWorkspace>
     <p className={styles.notice} role="status">{notice}</p>
-    <dialog ref={detailDialog} className={styles.mobileDetails} onCancel={() => setDetailOpen(false)} onClose={() => setDetailOpen(false)}>
-      <button type="button" className={styles.closeButton} aria-label="关闭天赋详情" onClick={() => setDetailOpen(false)}><X size={21} /></button>{details}
+    <dialog ref={detailDialog} className={editor.detailsMobile} style={theme} onCancel={() => setDetailOpen(false)} onClose={() => setDetailOpen(false)}>
+      <button type="button" className={editor.close} aria-label="关闭天赋详情" onClick={() => setDetailOpen(false)}><X size={21} /></button>{details}
     </dialog>
     <dialog ref={dialog} className={styles.modal} onCancel={() => setModal(null)} onClose={() => setModal(null)}>
       <header><h2>{modal === "reset" ? "重置配点" : "选择被动天赋"}</h2><button type="button" aria-label="关闭" onClick={() => setModal(null)}><X size={22} /></button></header>
