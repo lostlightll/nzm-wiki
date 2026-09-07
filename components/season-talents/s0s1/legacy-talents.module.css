@@ -9,9 +9,6 @@
 .edge3 { bottom: 0; right: 0; object-position: bottom right; }
 .catalogContent { min-height: inherit; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; padding: 100px 24px 46px; gap: 30px; }
 .seasonTitle { text-align: center; height: 190px; max-width: 100%; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; }
-.seasonTitle span { color: #adc8d8; font-size: 14px; }
-.seasonTitle h2 { font-size: 48px; font-weight: 900; line-height: 1.25; color: #e3e8ec; text-shadow: 0 3px 0 #57636e; }
-.seasonTitle p { margin-top: 5px; color: #a6afb7; font-size: 12px; }
 .seasonTitle:has(.logo) { height: 260px; }
 .logo { height: 300px; width: 340px; max-width: 100%; object-fit: contain; flex-shrink: 0; }
 .steelLogo { height: auto; width: 480px; max-width: 100%; object-fit: contain; }
@@ -22,51 +19,25 @@
 .branchIcon { width: 100%; aspect-ratio: 1; height: auto; object-fit: contain; max-height: 225px; }
 .branch h3 { font-size: 21px; font-weight: 700; margin-top: 12px; }
 .branch p { font-size: 13px; color: #bcbcc0; margin-top: 10px; }
-.builder { --talent-color: #91d6bc; --talent-frame: color-mix(in srgb, var(--talent-color) 30%, transparent); height: 100%; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
-.builderScene { position: fixed; inset: 56px 0 0; z-index: -1; }
-.toolbar { display: grid; grid-template-columns: minmax(130px,.65fr) minmax(210px,1fr) minmax(230px,1fr); align-items: center; gap: 12px; padding: 8px 20px; flex-shrink: 0; border: 1px solid var(--talent-frame); border-radius: 8px; background: #10131745; box-shadow: 0 20px 60px #00000030; backdrop-filter: blur(4px); }
-.back { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; font-size: 13px; color: #c6c8cc; }
-.branchTabs { display: flex; gap: 6px; flex-wrap: wrap; }
-.branchTabs a { min-height: 40px; padding: 10px 12px; color: #b0b3b9; font-size: 13px; border-bottom: 1px solid transparent; }
-.branchTabs a[aria-current="page"] { color: var(--talent-color); border-color: currentColor; }
-.toolbar a:focus-visible, .builder button:focus-visible, .builder summary:focus-visible, .builder select:focus-visible { outline: none; text-decoration: underline; text-underline-offset: 5px; }
-.workspace { display: grid; grid-template-columns: minmax(0, 1fr) clamp(18rem,26vw,25rem); gap: 16px; flex: 1; min-height: 0; }
-.treeSection { min-width: 0; display: flex; flex-direction: column; min-height: 0; padding: 16px; border: 1px solid var(--talent-frame); border-radius: 8px; background: #10131745; box-shadow: 0 20px 60px #00000030; backdrop-filter: blur(4px); }
-.treeHeader { display: flex; align-items: center; gap: 12px; min-height: 64px; }
-.treeHeader img { width: 64px; height: 64px; object-fit: contain; }
-.treeHeader h1 { font-size: 22px; font-weight: 700; color: var(--talent-color); }
-.treeHeader p { margin-top: 6px; font-size: 12px; color: #adb2b5; }
-.treeHeader .status { margin-left: auto; font-size: 12px; color: #dbbd81; max-width: 160px; line-height: 1.6; }
-.treeScroll { flex: 1; min-height: 0; overflow: auto; scrollbar-width: thin; scrollbar-color: #68666e #16171b80; }
-.tree { position: relative; width: 100%; min-width: 640px; max-width: 1050px; height: 860px; margin-inline: auto; }
-.treeHeading { position: absolute; top: 8px; font-size: 13px; color: #c4c6cb; text-align: center; }
-.links { position: absolute; inset: 0; width: 100%; height: 860px; pointer-events: none; overflow: visible; }
-.node { position: absolute; width: 60px; height: 100px; margin-left: -30px; margin-top: -34px; display: flex; flex-direction: column; align-items: center; background: transparent; border: 0; cursor: pointer; color: #b3b8bb; touch-action: manipulation; }
-.nodeShape { position: relative; width: 60px; height: 60px; display: grid; place-items: center; background: #111416df; border: 1px solid #777462; border-radius: 50%; transition: background 160ms, border-color 160ms; }
-.node[data-exclusive="true"] .nodeShape { color: var(--talent-color); border-color: color-mix(in srgb, var(--talent-color) 55%, #17181c); }
-.node[data-selected="true"] .nodeShape { background: color-mix(in srgb, var(--talent-color) 22%, #17181c); border-color: var(--talent-color); }
-.node:hover .nodeShape { border-color: #ebdfbc; }
-.nodeShape img { width: 38px; height: 38px; object-fit: contain; }
-.iconGlyph { display: block; width: 38px; height: 38px; background-color: currentColor; mask-size: contain; mask-repeat: no-repeat; mask-position: center; }
-.node[data-core="true"] .nodeShape { border-radius: 4px; transform: rotate(45deg); width: 52px; height: 52px; margin: 4px; }
-.node[data-core="true"] .iconGlyph, .node[data-core="true"] .nodeShape > svg { transform: rotate(-45deg); }
-.node[data-core="true"] .dots { transform: rotate(-45deg); top: 49px; left: 44px; }
-.nodeName { display: block; width: 60px; margin-top: 7px; text-align: center; font-size: 11px; line-height: 1.3; overflow-wrap: anywhere; }
-.node[data-selected="true"] .nodeName { color: #fff; }
-.dots { position: absolute; top: 57px; display: flex; gap: 4px; }
-.dots i { width: 4px; height: 4px; background: #9e9ba1; border-radius: 50%; }
-.node.rootNode .nodeShape { border: 0; background: none; width: 72px; height: 72px; }
-.rootNode .nodeShape img { width: 72px; height: 72px; }
-.treeFoot { color: #acb2b8; font-size: 12px; padding: 10px 0; display: flex; gap: 12px; align-items: center; }
-.details { display: flex; flex-direction: column; min-height: 0; background: #10131780; border: 1px solid var(--talent-frame); border-radius: 8px; overflow: hidden; align-self: stretch; backdrop-filter: blur(4px); box-shadow: 0 20px 60px #00000030; }
-.detailsHeader { padding: 21px 20px 16px; border-bottom: 1px solid #ffffff12; }
-.details, .treeScroll { scroll-margin-top: 72px; }
-.detailTitle { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.mobileReturn { display: none; }
-.detailsHeader h2 { font-size: 18px; font-weight: 650; color: var(--talent-color); line-height: 1.6; overflow-wrap: anywhere; }
-.levelControl { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-top: 12px; font-size: 12px; color: #b9bac1; }
-.levelControl select { color: #e1e2e6; background: #23262c; border: 1px solid #55565b; border-radius: 3px; min-height: 36px; min-width: 96px; padding: 5px 9px; }
-.detailsBody { flex: 1; overflow-y: auto; padding: 20px; font-size: 13px; line-height: 1.9; scrollbar-width: thin; }
+
+.builder { height: 100%; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
+.builderScene { position: fixed; inset: 56px 0 0; z-index: -1; opacity: .28; }
+.treeSection { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.tree { display: grid; grid-template-columns: 34fr 54fr; gap: 12px; flex: 1; min-height: 0; scroll-margin-top: 72px; }
+.treeRegion { position: relative; min-width: 0; min-height: 0; container-type: size; border-top: 1px solid #b3b8bb66; background: #b3b8bb06; }
+.treeRegion[data-exclusive="true"] { border-color: var(--talent-accent); background: var(--talent-accent-soft); }
+.treeRegion h2 { position: absolute; top: 8px; left: 10px; color: #b3b8bb; font-size: 12px; font-weight: 600; }
+.treeRegion[data-exclusive="true"] h2 { color: var(--talent-accent); }
+.builder .positionedNode { position: absolute; transform: translate(-50%, -50%); margin: 0; width: min(72px, 20cqw, 10cqh); height: min(76px, 21cqw, 10cqh); }
+.positionedNode > span:last-child { width: min(96px, 22cqw); font-size: 11px; line-height: 14px; }
+.glyph { position: absolute; inset: 0; display: grid; place-items: center; }
+.largeGlyph { position: absolute; inset: 28px; display: grid; place-items: center; color: var(--talent-accent); }
+.iconGlyph { display: block; width: 100%; height: 100%; background-color: currentColor; mask-size: contain; mask-repeat: no-repeat; mask-position: center; }
+.treeFoot { color: #acb2b8; font-size: 12px; padding: 10px 0 0; display: flex; gap: 12px; align-items: center; }
+.builder aside { scroll-margin-top: 72px; }
+.levelControl { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 16px; font-size: 12px; color: #b9bac1; }
+.levelControl select { color: #e1e2e6; background: #23262c; border: 1px solid #55565b; border-radius: 3px; min-height: 44px; min-width: 96px; padding: 5px 9px; }
+.levelControl select:focus-visible, .evidence summary:focus-visible { outline: none; text-decoration: underline; text-underline-offset: 4px; }
 .description { white-space: pre-line; overflow-wrap: anywhere; }
 .warning { font-size: 12px; line-height: 1.7; color: #cfbc91; margin: 18px 0 0; border-left: 2px solid #87734d; padding-left: 10px; }
 .facts { margin-top: 22px; }
@@ -78,29 +49,21 @@
 .evidence { margin-top: 20px; font-size: 11px; color: #9ca4ad; }
 .evidence summary { cursor: pointer; padding: 8px 0; }
 .evidence p { overflow-wrap: anywhere; margin-top: 6px; }
-.detailFooter { padding: 16px 20px; border-top: 1px solid #ffffff14; }
-.detailFooter p { color: #b3ac99; font-size: 12px; line-height: 1.6; }
-.allocation { display: flex; gap: 8px; margin-top: 12px; }
-.allocation button { display: grid; place-items: center; height: 38px; min-width: 40px; border: 1px solid #727278; border-radius: 3px; }
-.allocation button:disabled { color: #64656c; border-color: #46464d; cursor: not-allowed; }
-.allocation span { flex: 1; display: grid; place-items: center; font-size: 12px; color: #9ea1a9; }
-@media (max-width: 1199px) { .catalogBranches { gap: 35px; } .toolbar { grid-template-columns: auto 1fr; } .branchTabs { grid-column: 1 / -1; justify-content: center; } }
+.ruleNotice { color: #b3ac99; font-size: 12px; line-height: 1.6; }
+.mobileReturn { display: none; }
+@media (max-width: 1199px) { .catalogBranches { gap: 35px; } }
 @media (max-width: 1023px) {
-  .builder { min-height: 0; height: auto; }
-  .workspace { grid-template-columns: 1fr; height: auto; flex: none; }
-  .treeScroll { height: 540px; flex: none; border-bottom: 1px solid #ffffff20; }
-  .details { min-height: 360px; max-height: none; margin-bottom: 20px; }
-  .detailsBody { max-height: 450px; }
+  .builder { height: auto; }
+  .tree { grid-template-columns: 1fr; flex: none; }
+  .treeRegion { height: 650px; }
+  .builder .positionedNode { width: min(72px, 20cqw); height: min(76px, 21cqw); }
   .mobileReturn { display: grid; place-items: center; min-width: 44px; height: 44px; color: #babdc4; }
-  .levelControl select, .branchTabs a, .back { min-height: 44px; }
-  .allocation button { min-width: 44px; height: 44px; }
   .catalogContent { padding-top: 32px; gap: 20px; }
   .branchIcon { max-height: 180px; }
 }
 @media (max-width: 600px) {
   .catalogContent { padding: 20px 20px 32px; }
   .seasonTitle { height: 150px; }
-  .seasonTitle h2 { font-size: 36px; }
   .seasonTitle:has(.logo) { height: 190px; }
   .logo { height: 210px; width: 240px; }
   .catalogBranches { flex-direction: column; gap: 10px; }
@@ -108,11 +71,5 @@
   .branchIcon { grid-row: 1 / 3; width: 110px; height: 110px; }
   .branch h3 { font-size: 19px; margin-top: 0; align-self: end; }
   .branch p { margin-top: 4px; font-size: 12px; align-self: start; }
-  .treeHeader { gap: 10px; padding-inline: 0; }
-  .treeHeader h1 { font-size: 20px; }
-  .treeHeader img { width: 58px; height: 58px; }
-  .treeHeader .status { font-size: 11px; max-width: 100px; }
-  .branchTabs { width: 100%; }
-  .branchTabs a { flex: 1; text-align: center; padding: 9px 4px; font-size: 12px; }
 }
-@media (prefers-reduced-motion: reduce) { .branch, .nodeShape { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .branch { transition: none; } }

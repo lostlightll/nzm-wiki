@@ -20,10 +20,18 @@ export function restoreLegacyTalentView(nodes: readonly Pick<LegacyTalentNode, "
   return {version:1,nodeId:node.id,level:Math.max(1,Math.min(node.maxLevel,Math.floor(saved.level)))};
 }
 
-export function legacyNodePosition(node: Pick<LegacyTalentNode, "column" | "phase">) {
-  const x = [0, 65, 145, 225, 305, 430, 515, 600, 685, 770][node.column];
-  if (x === undefined || node.phase < 1 || node.phase > 7) throw new Error("Invalid legacy talent position");
-  return {x,y:72+(node.phase-1)*112};
+export function legacyNodePosition(season: "s0" | "s1", node: Pick<LegacyTalentNode, "column" | "phase">) {
+  const exclusive = isLegacyExclusiveNode(season, node.column);
+  const columns = exclusive ? (season === "s0" ? [4, 6, 8] : [5, 6, 7, 8, 9]) : (season === "s0" ? [1, 2] : [1, 2, 3, 4]);
+  const index = columns.indexOf(node.column);
+  if (index < 0 || node.phase < 1 || node.phase > 7) throw new Error("Invalid legacy talent position");
+  // The active skill is inspected in the shared header. Both tree regions start at phase 2.
+  // Kunlun's fourth phase has four exclusive nodes, including columns 6 and 8.
+  const exclusiveX = season === "s1" && node.phase === 4
+    ? [420, 560, 630, 700, 840][index]
+    : 450 + (node.column - (season === "s0" ? 4 : 5)) * 90;
+  const x = exclusive ? exclusiveX : season === "s0" ? 85 + index * 170 : 45 + index * 80;
+  return { x, y: 100 + Math.max(0, node.phase - 2) * 120 };
 }
 
 export function isLegacyExclusiveNode(season: "s0" | "s1", column: number) {
