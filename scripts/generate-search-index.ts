@@ -13,6 +13,7 @@ import { getAllOverlimitCards } from "../lib/overlimit-cards";
 import { getStatusEffectSearchDocuments } from "../lib/status-effects";
 import { getSummonSearchDocuments } from "../lib/summons";
 import { getAllResolvedWeapons } from "../lib/weapons";
+import { getLegacyTalentCatalog } from "../lib/s0s1-season-talents";
 import type { OverlimitCard } from "../types";
 
 export interface SearchItem {
@@ -355,7 +356,7 @@ export function createSummonSearchItem(
 }
 
 type SeasonTalentSearchDocument = {
-  season: "s3" | "s4";
+  season: "s0" | "s1" | "s3" | "s4";
   tree: string;
   treeName: string;
   id: string;
@@ -369,7 +370,7 @@ export function createSeasonTalentSearchItem(
 ): SearchItem {
   const queryKey = document.kind === "node" ? "node" : "passive";
   const anchor =
-    document.season === "s4"
+    document.season !== "s3"
       ? `season-talent-${queryKey}-${document.id}`
       : `multiplier-provider-${queryKey}-${document.id}`;
   const seasonLabel = document.season.toUpperCase();
@@ -445,6 +446,13 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
   );
   items.push(...getSummonSearchDocuments().map(createSummonSearchItem));
   const s3TalentSlugs = ["iron-fist", "zero", "grappling-hook"];
+  for (const season of ["s0", "s1"] as const) {
+    for (const tree of getLegacyTalentCatalog(season)) {
+      const keywords = [season.toUpperCase(), "赛季天赋", tree.name, tree.subtitle];
+      items.push({ title: `${tree.name}天赋树（${season.toUpperCase()}）`, slug: `season-talents/${season}/${tree.id}`, path: `/guides/season-talents/${season}/${tree.id}`, category: "赛季天赋", keywords, pinyin: buildPinyin(keywords) });
+      for (const node of tree.nodes) items.push(createSeasonTalentSearchItem({ season, tree: tree.id, treeName: tree.name, id: node.id, title: node.name, kind: "node", keywords: node.levels.map(level => level.description) }));
+    }
+  }
   for (const slug of s3TalentSlugs) {
     const talentFile = path.join(baseDir, "season-talents", "s3", `${slug}.json`);
     if (!fs.existsSync(talentFile)) continue;

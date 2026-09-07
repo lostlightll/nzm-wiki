@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { SeasonTalentCatalog } from "@/components/SeasonTalentCatalog";
+import { LegacyTalentCatalog } from "@/components/season-talents/s0s1/LegacyTalentCatalog";
 
 const BASE_SEASONS = ["s0", "s1", "s2", "s3"] as const;
 const ALL_SEASONS = [...BASE_SEASONS, "s4"] as const;
@@ -141,23 +142,24 @@ export function SeasonTalentTabs({ s4Panel }: { s4Panel: ReactNode }) {
         ))}
       </div>
 
-      {(["s0", "s1", "s2"] as const).map((page) => (
+      {(["s0", "s1"] as const).map((page) => (
         <div
           key={page}
           id={`season-talents-${page}-panel`}
           role="tabpanel"
           aria-labelledby={`season-talents-${page}-tab`}
           hidden={activePage !== page}
-          className="px-4 pb-6 sm:px-6 lg:flex lg:h-full lg:items-center lg:justify-center lg:pt-20"
+          className="lg:h-full"
         >
-          <div className="w-full rounded-lg border border-zinc-700/80 bg-zinc-900/55 px-6 py-16 text-center lg:max-w-5xl">
-            <p className="text-sm font-medium text-zinc-400">
-              {page.toUpperCase()} 赛季天赋暂未收录
-            </p>
-          </div>
+          <LegacyTalentCatalog season={page} />
         </div>
       ))}
 
+      <div id="season-talents-s2-panel" role="tabpanel" aria-labelledby="season-talents-s2-tab" hidden={activePage !== "s2"} className="px-4 pb-6 sm:px-6 lg:flex lg:h-full lg:items-center lg:justify-center lg:pt-20">
+        <div className="w-full rounded-lg border border-zinc-700/80 bg-zinc-900/55 px-6 py-16 text-center lg:max-w-5xl">
+          <p className="text-sm font-medium text-zinc-400">S2 赛季天赋暂未收录</p>
+        </div>
+      </div>
       {showS4 && (
         <div
           id="season-talents-s4-panel"

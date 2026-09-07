@@ -8,6 +8,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const isDev = process.env.NODE_ENV === "development";
 
 const nextConfig: NextConfig = {
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   output: isDev ? undefined : "export",
   // output: "export",

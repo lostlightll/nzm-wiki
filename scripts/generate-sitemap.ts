@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { LEGACY_TALENT_CATALOG, legacyTalentHref } from "../lib/s0s1-talent-presentation";
 
 const SITE_URL = "https://nzm-wiki.pages.dev";
 const baseDir = path.join(process.cwd(), "data");
@@ -109,6 +110,7 @@ function generateSitemap() {
     { url: "/guides" },
     { url: "/multiplier" },
     { url: "/season-talents" },
+    ...LEGACY_TALENT_CATALOG.map(talent => ({ url: legacyTalentHref(talent.season, talent.id) })),
     { url: "/builds" },
     { url: "/guides/season-talents/s3/iron-fist" },
     { url: "/guides/season-talents/s3/zero" },
