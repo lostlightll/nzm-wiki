@@ -8,7 +8,7 @@
 .navigation a[aria-current] { border-color: var(--editor-accent); background: var(--editor-soft); color: white; }
 .summary { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 0 12px; text-align: left; min-width: 0; cursor: pointer; }
 .summary img { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 0 13px var(--editor-glow)); }
-.summary > span { min-width: 0; }.title { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }.title h1 { font-size: 24px; font-weight: 600; color: white; }.title > span { font: 14px monospace; color: #cbd5e1; }.weapons { display: block; margin-top: 2px; font-size: 12px; line-height: 16px; color: #94a3b8; }
+.summary > span { min-width: 0; }.title { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }.title h1 { font-size: 24px; font-weight: 600; color: white; }.title > span { font-family: inherit; font-size: 14px; font-weight: 600; line-height: 20px; font-variant-numeric: tabular-nums; color: #cbd5e1; }.weapons { display: block; margin-top: 2px; font-size: 12px; line-height: 16px; color: #94a3b8; }
 .slots { display: flex; gap: 8px; min-width: 0; justify-content: flex-end; }
 .passive { display: flex; align-items: center; gap: 8px; min-width: 0; min-height: 56px; flex: 1; max-width: 288px; padding: 0 12px; text-align: left; border: 1px solid #64748b80; border-radius: 8px; background: #06131d88; cursor: pointer; }
 .passive[data-tone="light"] { border-color: #aa914cb3; background: #2b281dd9; }.passive[data-tone="dark"] { border-color: #4a82adb3; background: #142b3dd9; }.passive:hover { filter: brightness(1.15); }

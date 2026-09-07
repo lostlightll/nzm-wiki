@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { Check, Copy, RotateCcw, X } from "lucide-react";
+import { Copy, RotateCcw, X } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import catalog from "@/data/season-talents/s2/catalog.json";
 import { getAssetPath } from "@/lib/path";
 import { emptyS2Build, restoreS2Build, s2PrerequisiteGroups, s2SpentPoints, s2UnlockReason, setS2Level, type S2TalentNode, type S2TalentTree } from "@/lib/s2-season-talent-builder";
 import styles from "./s2.module.css";
 import editor from "./s2-editor.module.css";
+import { TalentPassiveSelector } from "@/components/season-talents/TalentPassiveSelector";
 import { TalentHeader, TalentPassiveSlot, TalentNode, TalentDetails, TalentLevelActions, TalentWorkspace, TalentTreeSections, TalentConnectorLines } from "@/components/season-talents/TalentEditor";
 
 function column(node: S2TalentNode) { return node.column >= 5 ? node.column - 4 : node.column + 3; }
@@ -53,12 +54,13 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
   const [mobileTab, setMobileTab] = useState<"special" | "common">("special");
   const [detailOpen, setDetailOpen] = useState(false);
   const [modal, setModal] = useState<"passives" | "reset" | null>(null);
+  const [passivePreviewId, setPassivePreviewId] = useState(tree.passives[0]?.id ?? "");
   const [notice, setNotice] = useState("");
   const dialog = useRef<HTMLDialogElement>(null);
   const detailDialog = useRef<HTMLDialogElement>(null);
   const key = `nzm-wiki:s2-talents:${tree.id}:v1`;
   const node = tree.nodes.find(n => n.id === selected);
-  const passive = tree.passives.find(p => p.id === selected);
+  const previewPassive = tree.passives.find(p => p.id === passivePreviewId) ?? tree.passives[0];
   const activePassive = tree.passives.find(p => p.id === build.passiveId);
   const points = s2SpentPoints(tree, build.levels);
   const current = node?.isRoot ? 1 : build.levels[selected] ?? 0;
@@ -74,7 +76,11 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
       setReady(true);
       const id = params.get("node") ?? params.get("passive");
       const target = tree.nodes.find(n => n.id === id);
-      if (id && (target || tree.passives.some(p => p.id === id))) {
+      if (id && !target && tree.passives.some(p => p.id === id)) {
+        setPassivePreviewId(id);
+        setDetailOpen(false);
+        setModal("passives");
+      } else if (id && target) {
         setSelected(id);
         setMobileTab(target && target.column < 5 ? "common" : "special");
         setPreviewLevel(1);
@@ -98,7 +104,7 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
   }, [build, key, ready]);
 
   useEffect(() => {
-    if (modal) dialog.current?.showModal(); else dialog.current?.close();
+    if (modal === "reset") dialog.current?.showModal(); else dialog.current?.close();
   }, [modal]);
 
   useEffect(() => {
@@ -123,6 +129,19 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
     setBuild(previous => setS2Level(tree, previous, selected, value));
     setPreviewLevel(Math.max(1, value));
   };
+  const previewPassiveOption = (id: string) => {
+    setPassivePreviewId(id);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("node");
+    url.searchParams.set("passive", id);
+    window.history.replaceState(window.history.state, "", url);
+  };
+  const closePassives = () => {
+    setModal(null);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("passive");
+    window.history.replaceState(window.history.state, "", url);
+  };
   const share = async () => {
     const url = new URL(window.location.href);
     url.searchParams.set("build", JSON.stringify(build));
@@ -132,7 +151,7 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
   const canIncrease = !!node && !node.isRoot && ready && !reason && current < node.maxLevel && setS2Level(tree, build, node.id, current + 1) !== build;
   const theme = { "--talent-accent": tree.id === "invisibility" ? "#79d5f2" : tree.id === "inferno-arm" ? "#ecc376" : "#d99cef",
     "--talent-accent-soft": tree.id === "invisibility" ? "#79d5f224" : tree.id === "inferno-arm" ? "#ecc37624" : "#d99cef24" } as CSSProperties;
-  const details = <TalentDetails season="s2" name={node?.name ?? passive?.name ?? tree.name} icon={node?.icon ?? passive?.icon ?? tree.icon}
+  const details = <TalentDetails season="s2" name={node?.name ?? tree.name} icon={node?.icon ?? tree.icon}
     level={current} maxLevel={node && !node.isRoot ? node.maxLevel : undefined} onReset={() => setModal("reset")}
     actions={<>
       {node && !node.isRoot && <TalentLevelActions name={node.name} level={current} maxLevel={node.maxLevel} canDecrease={ready && current > 0} canIncrease={canIncrease} onChange={value => {
@@ -140,11 +159,10 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
         while (next > current + 1 && setS2Level(tree, build, node.id, next) === build) next--;
         change(next);
       }} />}
-      {passive && <button type="button" className={styles.equip} disabled={!ready} onClick={() => setBuild(b => ({ ...b, passiveId: b.passiveId === passive.id ? null : passive.id }))}><Check size={18} />{build.passiveId === passive.id ? "取消选择" : "装备被动"}</button>}
       <div className={editor.actions}><button type="button" className={editor.share} title="复制配点链接" aria-label="复制配点链接" disabled={!ready} onClick={share}><Copy size={18} /></button></div>
     </>}>
     {node && !node.isRoot && <div className={styles.levelPreview} aria-label="等级预览">{Array.from({ length: node.maxLevel }, (_, i) => <button type="button" key={i} aria-label={`预览 ${i + 1} 级`} aria-pressed={level === i + 1} onClick={() => setPreviewLevel(i + 1)}>{i + 1} 级</button>)}</div>}
-    <Description text={node?.descriptions[level - 1] ?? passive?.description ?? ""} />
+    <Description text={node?.descriptions[level - 1] ?? ""} />
     {node && !node.isRoot && <p className={styles.requirement}>{reason ?? (current === node.maxLevel ? "已满级" : `升级消耗 ${node.costs[current]} 点`)}</p>}
     {node?.auditNote && <details className={styles.audit}><summary>资料核验</summary><p>{node.auditNote}</p></details>}
   </TalentDetails>;
@@ -153,7 +171,9 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
     <div className={editor.background}><Image src={getAssetPath(catalog.background)} alt="" fill priority sizes="100vw" /></div>
     <TalentHeader season="s2" links={catalog.trees} activeId={tree.id} name={tree.name} icon={tree.icon} points={points} limit={tree.pointLimit}
       weapons={tree.applicableWeapons} onInspect={() => inspect(root.id)}>
-      <TalentPassiveSlot icon={activePassive?.icon} name={activePassive?.name} onClick={() => setModal("passives")} />
+      <TalentPassiveSlot icon={activePassive?.icon} name={activePassive?.name} expanded={modal === "passives"} controls="s2-passive-talent-selector" onClick={() => {
+        previewPassiveOption(activePassive?.id ?? tree.passives[0]?.id ?? ""); setDetailOpen(false); setModal("passives");
+      }} />
     </TalentHeader>
     <TalentWorkspace details={<div className={editor.desktopDetails}>{details}</div>}>
       <div className={editor.mobileTabs} role="group" aria-label="天赋类别">
@@ -182,10 +202,16 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
     <dialog ref={detailDialog} className={editor.detailsMobile} style={theme} onCancel={() => setDetailOpen(false)} onClose={() => setDetailOpen(false)}>
       <button type="button" className={editor.close} aria-label="关闭天赋详情" onClick={() => setDetailOpen(false)}><X size={21} /></button>{details}
     </dialog>
+    {modal === "passives" && <TalentPassiveSelector season="s2" id="s2-passive-talent-selector" theme={theme}
+      options={tree.passives} previewId={passivePreviewId} equippedId={build.passiveId} disabled={!ready}
+      onPreview={previewPassiveOption} onClose={closePassives}
+      onApply={id => { setBuild(b => ({ ...b, passiveId: id })); closePassives(); }}
+      onUnequip={() => { setBuild(b => ({ ...b, passiveId: null })); closePassives(); }}>
+      <Description text={previewPassive?.description ?? ""} />
+    </TalentPassiveSelector>}
     <dialog ref={dialog} className={styles.modal} onCancel={() => setModal(null)} onClose={() => setModal(null)}>
-      <header><h2>{modal === "reset" ? "重置配点" : "选择被动天赋"}</h2><button type="button" aria-label="关闭" onClick={() => setModal(null)}><X size={22} /></button></header>
-      {modal === "reset" ? <div className={styles.resetBody}><p>清空「{tree.name}」的配点与被动选择？</p><button type="button" className={styles.equip} onClick={() => { setBuild(emptyS2Build()); setPreviewLevel(1); setModal(null); }}><RotateCcw size={18} />重置</button></div> :
-        <div className={styles.passiveList}>{tree.passives.map(p => <button type="button" key={p.id} aria-pressed={p.id === build.passiveId} onClick={() => { setModal(null); inspect(p.id); }}><Image src={getAssetPath(p.icon)} alt="" width={48} height={48} /><span><strong>{p.name}</strong><span>{p.description}</span></span>{p.id === build.passiveId && <Check size={20} />}</button>)}</div>}
+      <header><h2>重置配点</h2><button type="button" aria-label="关闭" onClick={() => setModal(null)}><X size={22} /></button></header>
+      <div className={styles.resetBody}><p>清空「{tree.name}」的配点与被动选择？</p><button type="button" className={styles.equip} onClick={() => { setBuild(emptyS2Build()); setPreviewLevel(1); setModal(null); }}><RotateCcw size={18} />重置</button></div>
     </dialog>
   </section>;
 }

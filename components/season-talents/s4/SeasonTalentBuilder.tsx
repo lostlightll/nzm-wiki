@@ -2,11 +2,7 @@
 
 import Image from "next/image";
 import { TalentHeader, TalentPassiveSlot, TalentNode, TalentDetails, TalentLevelActions, TalentTreeSections, TalentWorkspace, TalentConnectorLines } from "@/components/season-talents/TalentEditor";
-import {
-  ArrowLeftRight,
-  Check,
-  X,
-} from "lucide-react";
+import { ArrowLeftRight } from "lucide-react";
 import {
   useCallback,
   useEffect,
@@ -17,7 +13,7 @@ import {
   type ReactNode,
   type RefObject,
 } from "react";
-import { createPortal } from "react-dom";
+import { TalentPassiveSelector } from "@/components/season-talents/TalentPassiveSelector";
 import {
   getSpentTalentPoints,
   isTalentNodeUnlocked,
@@ -315,205 +311,17 @@ function NodeDetail({ node, level, unlocked, spentPoints, pointLimit, onChangeLe
   </TalentDetails>;
 }
 
-function PassiveSelector({
-  talentId,
-  energy,
-  passives,
-  equippedId,
-  previewId,
-  onPreview,
-  onApply,
-  onClose,
-}: {
-  talentId: S4TalentId;
-  energy: EnergyType;
-  passives: SeasonTalentPassiveData[];
-  equippedId: string | null;
-  previewId: string;
-  onPreview: (id: string) => void;
-  onApply: (id: string) => void;
-  onClose: () => void;
+function PassiveSelector({ talentId, energy, passives, equippedId, previewId, onPreview, onApply, onClose }: {
+  talentId: S4TalentId; energy: EnergyType; passives: SeasonTalentPassiveData[]; equippedId: string | null;
+  previewId: string; onPreview: (id: string) => void; onApply: (id: string) => void; onClose: () => void;
 }) {
-  const selected = passives.find((passive) => passive.id === previewId) ?? passives[0];
-  const isLight = energy === "light";
-  const dialogRef = useRef<HTMLElement>(null);
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    const originalOverflow = document.body.style.overflow;
-    const focusFrame = window.requestAnimationFrame(() => closeButtonRef.current?.focus());
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        onClose();
-        return;
-      }
-      if (event.key !== "Tab" || !dialog) return;
-
-      const focusable = Array.from(
-        dialog.querySelectorAll<HTMLElement>(
-          'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])',
-        ),
-      );
-      const first = focusable[0];
-      const last = focusable.at(-1);
-      if (!first || !last) return;
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.cancelAnimationFrame(focusFrame);
-      document.body.style.overflow = originalOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose]);
-
-  const equipped = selected.id === equippedId;
-
-  return createPortal(
-    <div
-      role="presentation"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-2 backdrop-blur-sm sm:p-5"
-      style={getThemeStyle(talentId)}
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
-      }}
-    >
-      <section
-        ref={dialogRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="passive-selector-heading"
-        className="relative flex max-h-[calc(100dvh-1rem)] w-full max-w-[58rem] flex-col overflow-hidden rounded-lg border border-cyan-100/25 bg-[#04131d] shadow-[0_30px_100px_rgba(0,0,0,0.72),0_0_40px_var(--s4-accent-soft)] sm:max-h-[calc(100dvh-2.5rem)]"
-      >
-      <header className="relative flex min-h-[4.5rem] items-center justify-between border-b border-cyan-100/15 bg-[#071a26]/96 px-4 sm:px-6">
-        <div>
-          <p className={`text-xs font-medium ${isLight ? "text-[#e2c95f]" : "text-[#78c9f4]"}`}>
-            S4 被动天赋
-          </p>
-          <h2 id="passive-selector-heading" className="mt-1 text-lg font-semibold text-white sm:text-2xl">
-            {isLight ? "选择光能天赋" : "选择暗能天赋"}
-          </h2>
-        </div>
-        <button
-          ref={closeButtonRef}
-          type="button"
-          onClick={onClose}
-          aria-label="关闭被动天赋弹窗"
-          className="flex h-11 w-11 cursor-pointer touch-manipulation items-center justify-center rounded-lg border border-slate-600/65 bg-slate-900/70 text-slate-300 transition-colors hover:border-[color:var(--s4-accent)] hover:text-white focus-visible:outline-none focus-visible:[&_svg]:text-white"
-        >
-          <X aria-hidden="true" className="h-5 w-5" />
-        </button>
-      </header>
-
-      <div className="grid min-h-0 flex-1 overflow-y-auto lg:grid-cols-[minmax(0,1.45fr)_minmax(20rem,.75fr)] lg:overflow-hidden">
-        <div className="flex min-h-max flex-col border-b border-slate-500/30 p-4 lg:min-h-0 lg:border-b-0 lg:border-r lg:p-6">
-          <div className="relative flex min-h-64 items-center justify-center overflow-hidden rounded-lg border border-slate-500/40 bg-[#071925]">
-            <Image
-              src={getAssetPath("/webp/images/season-talents/s4/details/grid-blue.webp")}
-              alt=""
-              fill
-              sizes="(min-width: 1024px) 65vw, 100vw"
-              className="object-cover opacity-30"
-            />
-            <div
-              aria-hidden="true"
-              className={`absolute inset-0 ${
-                isLight
-                  ? "bg-[radial-gradient(circle_at_center,rgba(235,205,91,.24),transparent_52%)]"
-                  : "bg-[radial-gradient(circle_at_center,rgba(57,151,219,.27),transparent_52%)]"
-              }`}
-            />
-            <div className="relative h-40 w-40 sm:h-52 sm:w-52">
-              <Image
-                src={getAssetPath(selected.icon)}
-                alt=""
-                fill
-                sizes="208px"
-                className="object-contain drop-shadow-[0_0_28px_rgba(152,213,255,.45)]"
-              />
-            </div>
-          </div>
-
-          <div
-            className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-[repeat(6,5rem)] sm:justify-center"
-            aria-label="被动天赋列表"
-          >
-            {passives.map((passive) => (
-              <button
-                id={`season-talent-passive-${passive.id}`}
-                key={passive.id}
-                type="button"
-                aria-pressed={passive.id === selected.id}
-                aria-label={`预览${passive.name}`}
-                onClick={() => onPreview(passive.id)}
-                className={`relative flex aspect-square min-h-14 cursor-pointer touch-manipulation items-center justify-center justify-self-center overflow-hidden rounded-lg border bg-[#06121b] p-1 transition-colors focus-visible:outline-none focus-visible:[&_.passive-name]:underline focus-visible:[&_.passive-name]:underline-offset-4 sm:w-20 ${
-                  passive.id === selected.id
-                    ? isLight
-                      ? "border-[#e2c95f] bg-[#332f1e]"
-                      : "border-[#69bce9] bg-[#122f43]"
-                    : "border-slate-600/60 hover:border-slate-300"
-                }`}
-              >
-                <Image
-                  src={getAssetPath(passive.icon)}
-                  alt=""
-                  fill
-                  sizes="120px"
-                  className="object-contain p-1"
-                />
-                <span className="passive-name sr-only">{passive.name}</span>
-                {passive.id === equippedId && (
-                  <span className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded bg-emerald-300 text-[#082015]">
-                    <Check aria-hidden="true" className="h-3.5 w-3.5" />
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <aside className="flex min-h-[22rem] shrink-0 flex-col bg-[#06111a]/95 p-5 sm:p-7 lg:min-h-0 lg:shrink">
-          <div className="border-b border-slate-500/35 pb-4">
-            <p className={`text-xs font-medium ${isLight ? "text-[#e2c95f]" : "text-[#78c9f4]"}`}>
-              {isLight ? "光能量" : "暗能量"}
-            </p>
-            <h3 className="mt-1 text-2xl font-semibold text-white">{selected.name}</h3>
-          </div>
-          <p className="whitespace-pre-line py-5 text-base leading-8 text-slate-200">
-            <RichText>{selected.description}</RichText>
-          </p>
-          <button
-            type="button"
-            aria-label={equipped ? `${selected.name}使用中，关闭弹窗` : `使用${selected.name}`}
-            onClick={() => (equipped ? onClose() : onApply(selected.id))}
-            className={`mt-auto min-h-12 cursor-pointer touch-manipulation rounded-lg border px-5 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4 ${
-              equipped
-                ? "border-slate-500 bg-slate-200 text-slate-700 hover:bg-white"
-                : isLight
-                  ? "border-[#e2c95f] bg-[#d9c05b] text-[#251f0b] hover:bg-[#ead477]"
-                  : "border-[#70c8f5] bg-[#7bc8ed] text-[#071c29] hover:bg-[#9fdcff]"
-            }`}
-          >
-            {equipped ? "使用中" : "使用"}
-          </button>
-        </aside>
-      </div>
-      </section>
-    </div>,
-    document.body,
-  );
+  const selected = passives.find(p => p.id === previewId) ?? passives[0];
+  return <TalentPassiveSelector season="s4" title={energy === "light" ? "选择光能天赋" : "选择暗能天赋"}
+    theme={{ ...getThemeStyle(talentId), "--s4-accent": energy === "light" ? "#e2c95f" : "#78c9f4",
+      "--s4-accent-soft": energy === "light" ? "#e2c95f20" : "#78c9f420" } as CSSProperties}
+    options={passives} previewId={previewId} equippedId={equippedId} onPreview={onPreview} onApply={onApply} onClose={onClose}>
+    <p className="whitespace-pre-line"><RichText>{selected?.description ?? ""}</RichText></p>
+  </TalentPassiveSelector>;
 }
 
 export function S4SeasonTalentBuilder({

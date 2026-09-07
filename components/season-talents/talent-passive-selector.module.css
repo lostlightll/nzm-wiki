@@ -1,0 +1,51 @@
+.dialog {
+  --accent: var(--talent-accent, var(--s4-accent, #cba5e8));
+  --soft: var(--talent-accent-soft, var(--s4-accent-soft, #cba5e820));
+  width: min(1000px, calc(100vw - 40px));
+  max-height: calc(100dvh - 40px);
+  padding: 0;
+  margin: auto;
+  border: 1px solid #9ab4c45c;
+  border-radius: 8px;
+  color: #e2e8f0;
+  background: #09141d;
+  overflow: hidden;
+  letter-spacing: 0;
+}
+.dialog[open] { display: flex; flex-direction: column; }
+.dialog::backdrop { background: #000b; backdrop-filter: blur(4px); }
+.dialog header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 24px; border-bottom: 1px solid #94a3b833; flex-shrink: 0; }
+.dialog small { font-size: 12px; color: var(--accent); }
+.dialog h2 { margin-top: 4px; font-size: 22px; font-weight: 600; color: #fff; }
+.close { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; border: 1px solid #64748b77; border-radius: 6px; cursor: pointer; }
+.body { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); min-height: 0; overflow-y: auto; }
+.gallery { padding: 24px 24px 12px; border-right: 1px solid #94a3b833; }
+.preview { position: relative; height: 240px; background: linear-gradient(135deg,var(--soft),transparent),#0c1d28; border: 1px solid #64748b66; border-radius: 6px; }
+.preview img { object-fit: contain; padding: 24px; }
+.options { display: grid; grid-template-columns: repeat(6,minmax(64px,1fr)); gap: 8px; margin-top: 16px; overflow-x: auto; }
+.options button { position: relative; min-width: 0; display: flex; align-items: center; flex-direction: column; gap: 6px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.options button[aria-pressed="true"] .optionIcon { border-color: var(--accent); background: var(--soft); }
+.optionIcon { position: relative; display: block; width: 100%; aspect-ratio: 1; flex-shrink: 0; border: 1px solid #64748b66; border-radius: 6px; background: #06121b; }
+.optionIcon img { object-fit: contain; padding: 6px; }
+.optionName { min-height: 18px; font-size: 12px; line-height: 18px; overflow-wrap: anywhere; text-align: center; }
+.equipped { position: absolute; right: 4px; top: 4px; padding: 2px; border-radius: 3px; color: #082015; background: #89ddb2; }
+.details { min-width: 0; padding: 24px; }
+.details h3 { font-size: 24px; font-weight: 600; color: #fff; padding-bottom: 16px; border-bottom: 1px solid #94a3b833; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.tags span { color: #e5cb8f; font-size: 11px; padding: 2px 6px; border: 1px solid #e5cb8f33; }
+.description { margin-top: 20px; font-size: 15px; line-height: 28px; overflow-wrap: anywhere; }
+.dialog footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-shrink: 0; padding: 16px 24px; border-top: 1px solid #94a3b833; background: #081019; }
+.requirement { font-size: 13px; color: #a9b8c2; }.requirement strong { color: #f3d080; }
+.actions { display: flex; gap: 8px; margin-left: auto; }.actions button { min-height: 44px; padding: 8px 24px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.apply { background: var(--accent); color: #09121b; min-width: 128px; }.unequip { color: #cbd5e1; border: 1px solid #64748b66; }
+.dialog button:hover { filter: brightness(1.15); }.dialog button:disabled { opacity: .4; cursor: not-allowed; }
+.dialog button:focus { outline: none; }.dialog button:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.empty { padding: 24px; }
+@media (max-width: 700px) {
+  .dialog { width: calc(100vw - 16px); max-height: calc(100dvh - 16px); }
+  .dialog header { padding: 12px 16px; }.dialog h2 { font-size: 20px; }
+  .body { display: block; }.gallery { padding: 16px 16px 12px; border-right: 0; border-bottom: 1px solid #94a3b833; }
+  .preview { height: 140px; }.preview img { padding: 12px; }.options { margin-top: 12px; }
+  .details { padding: 16px; }.details h3 { font-size: 21px; padding-bottom: 12px; }.description { margin-top: 12px; }
+  .dialog footer { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }.actions { flex: 1; justify-content: flex-end; }.actions button { padding-inline: 16px; }
+}

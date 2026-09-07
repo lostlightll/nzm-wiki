@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { SquarePen } from "lucide-react";
+// import { SquarePen } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FullscreenTalentStage } from "@/components/season-talents/FullscreenTalentStage";
@@ -50,7 +50,6 @@ export function S2SeasonTalentCatalog() {
     <FullscreenTalentStage background={catalog.background} backgroundAlt="S2 樱之渊" className={styles.catalog} contentClassName={styles.catalogContent}>
       <div className={styles.brand}>
         <Image src={getAssetPath(catalog.logo)} alt="樱之渊 S2" width={360} height={110} priority />
-        <h1>赛季天赋</h1>
       </div>
       <div ref={layout} className={styles.artLayout}>
       <div className={styles.composition} style={{ "--scene-scale": sceneScale } as CSSProperties}>
@@ -77,10 +76,10 @@ export function S2SeasonTalentCatalog() {
               </span>
             </span>
             <span className={styles.markerSubtitle}>{tree.subtitle}</span>
-            <span className={styles.markerFooter}>
+            {/* <span className={styles.markerFooter}>
               <span className={styles.markerPoints} aria-label={`${tree.name}已分配 ${summaries[tree.id]?.points ?? 0} 点，预算 ${tree.pointLimit} 点`}><strong>{summaries[tree.id]?.points ?? 0}</strong><span>/{tree.pointLimit}</span></span>
               <span className={styles.markerEdit}><SquarePen size={12} aria-hidden="true" />编辑天赋</span>
-            </span>
+            </span> */}
           </Link>
         </div>
       ))}
