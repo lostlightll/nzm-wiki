@@ -13,7 +13,7 @@ import styles from "./legacy-talents.module.css";
 
 function TalentIcon({ node, availableIcons }: { node: LegacyTalentNode; availableIcons: string[] }) {
   const [failed, setFailed] = useState(false);
-  if (failed || !availableIcons.includes(node.icon)) return <HelpCircle size={26} aria-label="原图缺失" />;
+  if (failed || !availableIcons.includes(node.icon)) return <HelpCircle size={26} aria-label="图标待定位" />;
   if (!node.isRoot) return <span aria-hidden="true" className={styles.iconGlyph} style={{maskImage:`url("${getAssetPath(node.icon)}")`}} />;
   return <Image src={getAssetPath(node.icon)} alt="" width={72} height={72} onError={() => setFailed(true)} />;
 }
@@ -109,7 +109,7 @@ export function LegacyTalentBuilder({tree,availableIcons}:{tree:LegacyTalentTree
           <div className={styles.detailsBody}>
             <p className={styles.description}>{level.description}</p>
             {level.warnings.length>0 && <p className={styles.warning}>部分效果缺少完整数值证据；待核实数值未作为配置值展示。当前主表数据不等同于历史实测。</p>}
-            {!availableIcons.includes(node.icon) && <p className={styles.warning}>原始节点图标缺失，暂以问号标记。</p>}
+            {!availableIcons.includes(node.icon) && <p className={styles.warning}>节点图标尚未完成定位，暂以问号标记。</p>}
             {displayFacts.length>0 && <section className={styles.facts}><h3>当前同 ID 配置 · 非历史效果确认</h3><dl>{displayFacts.map((fact,i)=><div key={i}><dt>{fact.label}</dt><dd>{fact.displayValue}</dd></div>)}</dl></section>}
             <details className={styles.evidence}><summary>来源与核验记录</summary>
               <p>节点 ID：{node.id} · 技能 ID：{node.skillIds.join("、")||"未定位"}</p>

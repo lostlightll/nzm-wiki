@@ -30,7 +30,30 @@ Extraction reads only the formal `refs/Exports/NZM/Content/DataTables` tables an
 - Modifier facts carry `modifierRow?: NumModifierRowKey`; `source` is opaque provenance and never parsed for row keys. `value: string` retains technical AttributeName/BaseValue/CoefValue/GPModifierOp/Level facts. `label` uses the canonical attribute label and operation. Optional `displayValue` formats only B1 with a known quantity as additive values; all other operations retain raw values without guessed factors. Nonzero coefficients remain separate, with no inferred variable or formula.
 - `descriptionTemplate?: string` contains only sanitized prose and supported GPModifier tokens. Missing live Modifier rows or unresolved live tokens fail rather than falling back to cached values. Missing extraction-time references still require re-extraction when new evidence becomes available.
 
-## Interface
+## Atlas Recovery
+
+`atlas-crops.ts` records 21 visually reviewed regions from the current Content
+talent atlas, with the exact node ID and recording timestamp for each match.
+The RGBA pixel hash is identical in the supplied S1, S2, S3.1 and current
+snapshots. Export fails if that hash changes; do not reuse coordinates blindly.
+These regions are manual visual matches, not recovered PaperSprite UV metadata.
+The exported WebP files are lossless and tested for nonblank pixels and unclipped
+transparent edges. The Buff prefix fallback also recovers `Icons_Buff_10000052`.
+
+```powershell
+pnpm exec tsx scripts/prepare-s0s1-talent-assets.ts
+pnpm exec tsx scripts/s0s1-season-talents/extract.ts --assets=MD/_local/s0s1Talent/asset-evidence.json
+pnpm test:s0s1-talents
+```
+
+All five video-confirmed branches now have exported node icons. Nine unique
+icons on the unconfirmed destruction-dream archive remain unlocated, plus bd27
+on an excluded Basic node. A missing independent file does not mean its pixels
+were removed from the atlas. `video-matched` audits apply only to icon identity,
+not numerical values or allocation rules. Other exported assets still require
+their own visual review.
+
+## Data Interface
 
 `lib/s0s1-season-talents.ts` exports `LegacyTalentTree`, `LegacyTalentNode`, `LegacyTalentLevel`, `LegacyTalentFact`, `LegacyTalentSeason`, and `LegacyTalentHistoricalStatus`.
 

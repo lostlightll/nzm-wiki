@@ -9290,11 +9290,11 @@
     "assets": [
       {
         "name": "T_Talent_0_0_talent_Crit",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd26",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_ChangeClip",
@@ -9302,7 +9302,7 @@
       },
       {
         "name": "T_Talent_0_0_talent_FarDamage",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_DamageBear",

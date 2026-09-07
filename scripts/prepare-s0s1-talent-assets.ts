@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
+import { createHash } from "node:crypto";
+import { LEGACY_ATLAS_PATH, LEGACY_ATLAS_PIXEL_HASH, LEGACY_ATLAS_REVIEWS, legacyAtlasCrop } from "./s0s1-season-talents/atlas-crops";
 
 const root = process.cwd();
 const oldRoot = path.join(root, "refs/Exports/NZM/Content_S1");
@@ -36,8 +38,18 @@ async function convert() {
   const names = new Set(references.filter(r=>r.SeasonID===1 && r.SeasonPhaseID<=1).map(r=>(r.TalentIcon??r.TypeIcon)!.AssetPathName.split(".")[0].split("/").pop()!));
   for (const f of oldFiles.filter(f => /TalentCandleTomb.*SP.*(Bg|De|Icon)|SeasonalTalent_Bg|SeasonalTalent_Icon|SeasonalTalent_SP_Bg/.test(f))) names.add(path.basename(f,".png"));
   names.add("T_SeasonalTalent_SP_De_16");
-  const evidence: {name:string;source:string;crop?:unknown;missing?:boolean}[]=[];
+  const atlas = path.join(currentRoot, LEGACY_ATLAS_PATH);
+  const atlasPixels = await sharp(atlas).ensureAlpha().raw().toBuffer();
+  if (createHash("sha256").update(atlasPixels).digest("hex") !== LEGACY_ATLAS_PIXEL_HASH) throw new Error("Legacy atlas changed; review crop evidence before exporting");
+  const evidence: {name:string;source:string;crop?:unknown;review?:unknown;missing?:boolean}[]=[];
   for (const name of names) {
+    const review = LEGACY_ATLAS_REVIEWS[name];
+    if (review) {
+      const crop = legacyAtlasCrop(review);
+      await sharp(atlas).extract(crop).webp({lossless:true}).toFile(path.join(output,`${name}.webp`));
+      evidence.push({name,source:path.relative(root,atlas),crop,review});
+      continue;
+    }
     const direct = oldByName.get(name) ?? currentByName.get(name);
     if (direct) {
       await sharp(direct).resize({width:2560,withoutEnlargement:true}).webp({quality:88}).toFile(path.join(output,`${name}.webp`));
@@ -61,7 +73,7 @@ async function convert() {
       }
     }
     // Some current references retain an atlas prefix after the texture was unpacked.
-    const unprefixed=name.replace(/^T_Talent_\d+_\d+_/,"T_");
+    const unprefixed=name.replace(/^T_(?:Talent|Buff)_\d+_\d+_/,"T_");
     const fallback=oldByName.get(unprefixed)??currentByName.get(unprefixed);
     if(fallback) {
       await sharp(fallback).webp({quality:92}).toFile(path.join(output,`${name}.webp`));

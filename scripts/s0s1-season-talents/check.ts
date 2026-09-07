@@ -14,7 +14,7 @@ export function checkLegacyTalents(checkSources = false) {
     assert.equal(evidence.visualVerification.nodes, "not-verified");
     for (const asset of evidence.visualVerification.assets) {
       assert.match(asset.name, /^[A-Za-z0-9_]+$/);
-      assert.ok(["missing", "pending-visual-review"].includes(asset.status));
+      assert.ok(["missing", "pending-visual-review", "video-matched"].includes(asset.status));
     }
     // Rebuild from committed evidence and the current Resolver, without reading refs.
     const trees: LegacyTalentTree[] = JSON.parse(readFileSync(join(process.cwd(), "data/season-talents", season, "trees.json"), "utf8"));

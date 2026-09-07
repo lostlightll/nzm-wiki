@@ -47,7 +47,7 @@ export interface Evidence {
   visualVerification: {
     nodes: "not-verified";
     basis: string;
-    assets: Array<{ name: string; status: "missing" | "pending-visual-review" }>;
+    assets: Array<{ name: string; status: "missing" | "pending-visual-review" | "video-matched" }>;
   };
 }
 const NAMES = {
@@ -318,9 +318,9 @@ export function extract() {
     evidence.semanticReview = summarizeSemanticReview(trees);
     const assetPath = process.argv.find((arg) => arg.startsWith("--assets="))?.slice("--assets=".length);
     if (assetPath) {
-      const assets = z.array(z.object({ name: z.string(), missing: z.boolean().optional() })).parse(JSON.parse(readFileSync(assetPath, "utf8")));
+      const assets = z.array(z.object({ name: z.string(), missing: z.boolean().optional(), review: z.object({ nodeId: z.string(), videoSeconds: z.number() }).optional() })).parse(JSON.parse(readFileSync(assetPath, "utf8")));
       const names = new Set(trees.flatMap((tree) => [tree.icon, ...tree.nodes.map((node) => node.icon)]).map((path) => path.split("/").at(-1)!.replace(/\.webp$/, "")));
-      evidence.visualVerification.assets = assets.filter((asset) => names.has(asset.name)).map((asset) => ({ name: asset.name, status: asset.missing ? "missing" : "pending-visual-review" }));
+      evidence.visualVerification.assets = assets.filter((asset) => names.has(asset.name)).map((asset) => ({ name: asset.name, status: asset.missing ? "missing" : asset.review ? "video-matched" : "pending-visual-review" }));
     }
     for (const [name, data] of [["trees.json", trees], ["audit.json", evidence]] as const) {
       const path = join(process.cwd(), "data/season-talents", season, name);

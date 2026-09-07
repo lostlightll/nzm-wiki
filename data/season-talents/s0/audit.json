@@ -9504,11 +9504,11 @@
       },
       {
         "name": "T_Talent_0_0_talent_Crit",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_CritDamage",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd4",
@@ -9516,11 +9516,11 @@
       },
       {
         "name": "T_Talent_0_0_talent_bd26",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd24",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Icons_Buff_14010001",
@@ -9528,7 +9528,7 @@
       },
       {
         "name": "T_Talent_0_0_talent_bd40",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_ChangeClip",
@@ -9540,19 +9540,19 @@
       },
       {
         "name": "T_Talent_0_0_talent_bd29",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd43",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_FarDamage",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_HP",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd8",
@@ -9560,11 +9560,11 @@
       },
       {
         "name": "T_Talent_0_0_talent_bd60",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_CarryAmmo2",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_DamageBear",
@@ -9572,11 +9572,11 @@
       },
       {
         "name": "T_Talent_0_0_talent_bd33",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd41",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_talent_bd48",
@@ -9584,7 +9584,7 @@
       },
       {
         "name": "T_Talent_0_0_talent_bd42",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd13",
@@ -9640,7 +9640,7 @@
       },
       {
         "name": "T_Talent_0_0_talent_bd16",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd1",
@@ -9648,27 +9648,27 @@
       },
       {
         "name": "T_Talent_0_0_talent_skill03",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd2",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Buff_0_0_Icons_Buff_10000052",
-        "status": "missing"
+        "status": "pending-visual-review"
       },
       {
         "name": "T_Talent_0_0_talent_MobDamage",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd5",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_bd30",
-        "status": "missing"
+        "status": "video-matched"
       },
       {
         "name": "T_Talent_0_0_talent_Skill_6001101_1",
@@ -9676,7 +9676,7 @@
       },
       {
         "name": "T_Talent_0_0_talent_bd37",
-        "status": "missing"
+        "status": "video-matched"
       }
     ]
   },
