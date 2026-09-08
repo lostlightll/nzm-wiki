@@ -30,6 +30,10 @@ installation and private profile; it does not install tools or print credentials
 For a different installation, run `export-taboo-script.ps1` with `-CliAssembly`
 and `-Profile`, then supply its output. Existing exports may also be selected:
 
+For execution-chain investigations, `export-taboo-script.ps1 -Asset <exact-virtual-uasset-path>`
+also exports another Blueprint with ReadScriptData enabled. The default remains
+`BP_TabooEyes2.uasset`; only that actor export is accepted as `--s1-taboo-script`.
+
 ```powershell
 pnpm refresh:s0s1-talents --s1-taboo-script=<actor-export.json> --prepare-assets
 pnpm refresh:s0s1-talents --s1-taboo-script=<actor-export.json> --assets=MD/_local/s0s1Talent/asset-evidence.json

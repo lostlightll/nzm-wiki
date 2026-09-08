@@ -1,4 +1,5 @@
 param(
+    [string]$Asset = 'NZM/Content/Abilities/Skills/Season/S2/TabooEyes/BP_TabooEyes2.uasset',
     [string]$CliAssembly = 'D:/Claude/FModel/FModel.Cli/bin/Release/net10.0/FModel.Cli.dll',
     [string]$Profile = 'D:/Claude/FModel/.local/nzm.json'
 )
@@ -31,7 +32,7 @@ try {
     $provider = $sessionType.GetProperty('Provider').GetValue($session)
     $provider.ReadScriptData = $true
     $result = $sessionType.GetMethod('Inspect').Invoke($session, [object[]]@(
-        'NZM/Content/Abilities/Skills/Season/S2/TabooEyes/BP_TabooEyes2.uasset'))
+        $Asset))
     [Newtonsoft.Json.JsonConvert]::SerializeObject($result)
 } finally {
     $session.Dispose()
