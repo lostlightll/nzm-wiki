@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "346cd49414e9915f973adcbfce7c1a96a810ee5e38ad0564ed6014f175cb39e8",
+    "modifierIndexSha256": "a64c02c50a0ab3a78d043f22dc0c4a4aa0cfb4de0bfe084d494a96c5365c641f",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -2838,6 +2838,32 @@
       },
       "modifierTypeIds": [
         "close-range-damage"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013207",
+      "label": "S1 禁忌之瞳·血曈回响",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013207"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013309",
+      "label": "S1 禁忌之瞳·精准射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013309"
+      },
+      "modifierTypeIds": [
+        "weakness"
       ]
     },
     {
@@ -7239,8 +7265,8 @@
         "tree": "frost-barrage",
         "nodeId": "1001504"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
       "id": "season:s0:frost-barrage:1001506",
@@ -7299,8 +7325,8 @@
         "tree": "frost-barrage",
         "nodeId": "1001608"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
       "id": "season:s0:frost-barrage:1001704",
@@ -7455,8 +7481,8 @@
         "tree": "mechanical-dance",
         "nodeId": "1003404"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
       "id": "season:s0:mechanical-dance:1003406",
@@ -7563,8 +7589,8 @@
         "tree": "mechanical-dance",
         "nodeId": "1003608"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
       "id": "season:s0:mechanical-dance:1003704",
@@ -7636,7 +7662,7 @@
         "nodeId": "1011203"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:kunlun-wood:1011207",
@@ -7672,7 +7698,7 @@
         "nodeId": "1011302"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:kunlun-wood:1011304",
@@ -7684,7 +7710,7 @@
         "nodeId": "1011304"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:kunlun-wood:1011305",
@@ -7744,7 +7770,7 @@
         "nodeId": "1011402"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:kunlun-wood:1011404",
@@ -7756,7 +7782,7 @@
         "nodeId": "1011404"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:kunlun-wood:1011405",
@@ -7816,7 +7842,7 @@
         "nodeId": "1011502"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:kunlun-wood:1011504",
@@ -7828,7 +7854,7 @@
         "nodeId": "1011504"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:kunlun-wood:1011505",
@@ -7876,7 +7902,7 @@
         "nodeId": "1011602"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:kunlun-wood:1011604",
@@ -7888,7 +7914,7 @@
         "nodeId": "1011604"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:kunlun-wood:1011605",
@@ -7984,7 +8010,7 @@
         "nodeId": "1012203"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:phantom-form:1012207",
@@ -8020,7 +8046,7 @@
         "nodeId": "1012302"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:phantom-form:1012304",
@@ -8032,7 +8058,7 @@
         "nodeId": "1012304"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:phantom-form:1012305",
@@ -8092,7 +8118,7 @@
         "nodeId": "1012402"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:phantom-form:1012404",
@@ -8104,7 +8130,7 @@
         "nodeId": "1012404"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:phantom-form:1012405",
@@ -8140,7 +8166,7 @@
         "nodeId": "1012502"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:phantom-form:1012504",
@@ -8152,7 +8178,7 @@
         "nodeId": "1012504"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:phantom-form:1012505",
@@ -8200,7 +8226,7 @@
         "nodeId": "1012602"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:phantom-form:1012604",
@@ -8212,7 +8238,7 @@
         "nodeId": "1012604"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:phantom-form:1012605",
@@ -8308,19 +8334,7 @@
         "nodeId": "1013203"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013207",
-      "label": "S1 禁忌之瞳·血曈回响",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013207"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:forbidden-eye:1013301",
@@ -8344,7 +8358,7 @@
         "nodeId": "1013302"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:forbidden-eye:1013304",
@@ -8356,7 +8370,7 @@
         "nodeId": "1013304"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:forbidden-eye:1013305",
@@ -8383,18 +8397,6 @@
       "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
     },
     {
-      "id": "season:s1:forbidden-eye:1013309",
-      "label": "S1 禁忌之瞳·精准射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013309"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
-    },
-    {
       "id": "season:s1:forbidden-eye:1013401",
       "label": "S1 禁忌之瞳·立场满溢",
       "source": {
@@ -8416,7 +8418,7 @@
         "nodeId": "1013402"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:forbidden-eye:1013404",
@@ -8428,7 +8430,7 @@
         "nodeId": "1013404"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:forbidden-eye:1013405",
@@ -8476,7 +8478,7 @@
         "nodeId": "1013502"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:forbidden-eye:1013504",
@@ -8488,7 +8490,7 @@
         "nodeId": "1013504"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:forbidden-eye:1013505",
@@ -8536,7 +8538,7 @@
         "nodeId": "1013602"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:forbidden-eye:1013604",
@@ -8548,7 +8550,7 @@
         "nodeId": "1013604"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:forbidden-eye:1013605",

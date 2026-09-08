@@ -34,6 +34,8 @@ export interface LegacyTalentLevel {
   /** Sanitized prose with only supported GPModifier tokens retained for live resolution. */
   descriptionTemplate?: string;
   descriptionBindings?: NumModifierValueBindings;
+  /** Original wording for still-masked slots, for labelled display only; never a configured value or index application. */
+  descriptionReferences?: Array<{ text: string; source: string; reason: string }>;
   reportedReview?: { source: string; notes: string[]; count: number };
   /** Recording text is a display fallback, never configuration or multiplier evidence. */
   videoReview?: {
@@ -45,6 +47,7 @@ export interface LegacyTalentLevel {
     notes: string[];
   };
   valueReview?: {
+    executionConflict?: { code: string; message: string; sources: string[] };
     sources: string[];
     notes: string[];
     applications: Array<{ expression: NumModifierValueExpression; context: { recipient: ModifierRecipient } }>;
@@ -75,6 +78,7 @@ export interface LegacyTalentTree {
   id: string;
   name: string;
   subtitle: string;
+  applicableWeapons?: string;
   icon: string;
   nodeCount: number;
   nodes: LegacyTalentNode[];

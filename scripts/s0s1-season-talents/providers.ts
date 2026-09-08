@@ -19,7 +19,8 @@ export function buildLegacyProviders(trees: readonly LegacyTalentTree[]) {
       label: `${tree.season.toUpperCase()} ${tree.name}·${node.name}`,
       source: { type: "season-talent" as const, season: tree.season, tree: tree.id, nodeId: node.id },
     };
-    const reviewed = node.levels.flatMap(level => level.valueReview?.applications ?? []);
+    const conflicts = node.levels.flatMap(level => level.valueReview?.executionConflict ? [level.valueReview.executionConflict] : []);
+    const reviewed = node.levels.flatMap(level => level.valueReview?.executionConflict ? [] : level.valueReview?.applications ?? []);
     const applications = [...new Map(reviewed.map(application => [JSON.stringify(application), application])).values()];
     const damageApplications = applications.filter(application => NUM_MODIFIER_RESOLVER.resolveEffect(application.expression, application.context, identity.id).facets.some(facet => damageFacets.has(facet.id)));
     const basis = [...new Set(node.levels.flatMap(level => level.valueReview?.sources ?? []))];
@@ -28,10 +29,10 @@ export function buildLegacyProviders(trees: readonly LegacyTalentTree[]) {
       assert.ok(basis.length, `${identity.id}: reviewed applications need provenance`);
       providers.push({ ...identity, applications: damageApplications, evidence: { kind: "reviewed-chain", basis: [...basis, limitation] } });
     } else {
-      const missing = node.levels.some(level => !level.valueReview || level.valueReview.remaining || level.videoReview || level.description.includes("〔数值待核实〕") || level.description.includes("缺少该等级描述") || level.semanticConflicts?.length);
+      const missing = conflicts.length || node.levels.some(level => !level.valueReview || level.valueReview.remaining || level.videoReview || level.description.includes("〔数值待核实〕") || level.description.includes("缺少该等级描述") || level.semanticConflicts?.length);
       exclusions.push({ ...identity, reasonCode: missing ? "unverified-evidence" : "not-damage-multiplier",
-        reason: missing ? "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。" : "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。",
-        evidence: { basis: [...basis, ...node.levels.flatMap(level => level.valueReview?.notes ?? []), limitation] },
+        reason: conflicts.length ? [...new Set(conflicts.map(conflict => conflict.message))].join("；") : missing ? "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。" : "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。",
+        evidence: { basis: [...basis, ...conflicts.flatMap(conflict => conflict.sources), ...node.levels.flatMap(level => level.valueReview?.notes ?? []), limitation] },
       });
     }
   }

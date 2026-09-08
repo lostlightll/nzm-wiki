@@ -124,9 +124,10 @@ test("committed offline audit: all S0 selected nodes, exact levels, coverage and
   assert.deepEqual(compact, evidence, "committed evidence must already be the compact row subset");
   assert.deepEqual(compact.sources, evidence.sources);
   const rangeCount = evidence.range ? 4 : 0;
-  assert.deepEqual(audit.summary, { nodes: 52, levels: 82, resolvedCount: 59 + rangeCount, remaining: 89 - rangeCount,
-    fullyBoundLevels: 23 + rangeCount, partiallyBoundLevels: 27 - rangeCount, unboundLevels: 24, noQuantitiesLevels: 8, indexedApplications: 8 });
-  assert.equal(new Set(audit.reviews.filter((r) => r.resolvedCount).map((r) => r.nodeId)).size, 30);
+  const armCount = evidence.armBlueprint ? 7 : 0;
+  assert.deepEqual(audit.summary, { nodes: 52, levels: 82, resolvedCount: 66 + rangeCount + armCount, remaining: 82 - rangeCount - armCount,
+    fullyBoundLevels: 30 + rangeCount + (armCount ? 1 : 0), partiallyBoundLevels: 20 - rangeCount, unboundLevels: armCount ? 23 : 24, noQuantitiesLevels: 8, indexedApplications: 8 });
+  assert.equal(new Set(audit.reviews.filter((r) => r.resolvedCount).map((r) => r.nodeId)).size, armCount ? 31 : 30);
   assert.equal(evidence.sources?.length, 12);
   assert.ok(evidence.sources?.every((s) => /^[a-f0-9]{64}$/.test(s.sha256) && s.path.startsWith("NZM/Content/")));
   for (const review of audit.reviews) {
@@ -179,6 +180,26 @@ test("committed offline audit: malformed or retargeted skill tuple is rejected",
   }
 });
 
+test("offline: reviewed per-layer and per-second units do not copy description quantities", () => {
+  for (const [nodeId, skillId, descriptionId, original, replacement] of [
+    ["1001608", 1319013003, "1319013003_1", "每有一层", "每有99层"],
+    ["1001504", 1319013010, "1319013010_1", "1秒", "99秒"],
+    ["1003404", 1318102001, "1318102001_1", "每拥有一层", "每拥有99层"],
+  ] as const) {
+    const evidence = readCommittedEvidence();
+    const row = evidence.tables.mgeDescriptions[descriptionId] as { MGEDescription: { LocalizedString: string } };
+    assert.ok(row.MGEDescription.LocalizedString.includes(original));
+    row.MGEDescription.LocalizedString = row.MGEDescription.LocalizedString.replace(original, replacement);
+    const review = reviewS0Values({ nodeId, skillIds: [skillId], level: 1 }, evidence);
+    assert.equal(review.provenance[0].originalValue, "99");
+    assert.equal(review.provenance[0].structuredValue, 1);
+    assert.equal(review.remaining, 0);
+    assert.match(review.provenance[0].reason, /归一化分母/);
+    assert.ok(review.provenance[0].chain.some(s => s.source.includes("SkillID=")));
+    assert.deepEqual(review.valueReview.applications, []);
+  }
+});
+
 test("optional refs audit: current exports match the committed offline snapshot", {
   skip: process.env.S0_REVIEW_COMPARE_REFS !== "1",
 }, () => {
@@ -188,8 +209,32 @@ test("optional refs audit: current exports match the committed offline snapshot"
   const committed = readCommittedEvidence();
   const comparable = structuredClone(compact);
   if (!committed.range) delete comparable.range;
+  if (!committed.armBlueprint) delete comparable.armBlueprint;
   assert.deepEqual(comparable, committed, "current refs rows and full-file hashes must match the committed snapshot");
   assert.deepEqual(auditS0ReviewedValues(compact), auditS0ReviewedValues(full));
+});
+
+test("offline: arm blueprint follows the active resource and rejects another skill or config override", () => {
+  const evidence = readCommittedEvidence();
+  evidence.armBlueprint = {
+    asset: { Name: "DA_S1_HeavyMachineGunMode3P", Properties: { AbilityBlueprint: { ObjectPath: "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.99" } } },
+    skill: { Name: "Default__SKT_S1_HeavyMachineGunMode3P_C", Type: "SKT_S1_HeavyMachineGunMode3P_C", Properties: {
+      SkillID: 6001401, MGE_1318115001_DeathMoment_AddDuration: 0.25,
+      MGE_1318111001_DeathMomentPlus_LaunchLargeInterval: 3.5,
+      MGE_1318105001_SmallPeriodLaunchNum: 2,
+    } }, sources: [],
+  };
+  const duration = reviewS0Values({ nodeId: "1003608", level: 1, skillIds: [1318115001] }, evidence);
+  assert.equal(render(duration), "释放机械之舞时，每有1层聚能状态，机械之舞时间延长0.25秒。");
+  assert.equal(duration.remaining, 0);
+  assert.equal(reviewS0Values({ nodeId: "1003604", level: 1, skillIds: [1318111001] }, evidence).provenance[0].structuredValue, 3.5);
+  assert.equal(reviewS0Values({ nodeId: "1003306", level: 1, skillIds: [1318105001] }, evidence).provenance[1].structuredValue, 2);
+  assert.deepEqual(compactS0ReviewEvidence(evidence).armBlueprint, evidence.armBlueprint);
+  const wrong = structuredClone(evidence);
+  (wrong.armBlueprint!.skill.Properties as Record<string, unknown>).SkillID = 6001101;
+  assert.throws(() => reviewS0Values({ nodeId: "1003608", level: 1, skillIds: [1318115001] }, wrong));
+  evidence.tables.params["1318115001"] = { ConfigId: 1318115001, Parameters: [{ Type: "EMGEParameterType::Numerical", Name: "NewDuration", Value: "99" }] };
+  assert.throws(() => reviewS0Values({ nodeId: "1003608", level: 1, skillIds: [1318115001] }, evidence), /unreviewed parameter override/);
 });
 
 test("offline: twelve exact frost tokens use structured ratios without Modifier providers", () => {

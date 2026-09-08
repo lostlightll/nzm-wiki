@@ -6,7 +6,7 @@ import { getLegacyTalentCatalog, type LegacyTalentLevel } from "../../lib/s0s1-s
 import { reviewS0Values } from "./s0-reviewed-values";
 import { reviewS1Values } from "./s1-reviewed-values";
 import type { LegacyValueEvidence } from "./reviewed";
-import { applyVideoValueEntry, applyVideoValues, VIDEO_VALUE_EVIDENCE, videoTimestamp } from "./video-values";
+import { applyVideoValueEntry, applyVideoValues, getVideoValuesForTemplate, VIDEO_VALUE_EVIDENCE, videoTimestamp } from "./video-values";
 import { buildLegacyProviders } from "./providers";
 
 const evidence = (season: string): LegacyValueEvidence => JSON.parse(readFileSync(`data/season-talents/${season}/audit.json`, "utf8")).valueEvidence;
@@ -22,19 +22,33 @@ test("all recording observations target only exact missing slots, preserving con
       assert.equal(node.name, entry.nodeName);
       const input = { nodeId: node.id, level: level.level, skillIds: node.skillIds };
       const reviewed = season === "s0" ? reviewS0Values(input, source.s0!) : reviewS1Values(input, source.s1!);
-      assert.equal(createHash("sha256").update(reviewed.descriptionTemplate).digest("hex"), entry.templateSha256);
-      const values = new Map(entry.values.map(value => [value.slot, value.value]));
+      const applicable = getVideoValuesForTemplate(reviewed.descriptionTemplate, entry);
+      const values = new Map(applicable.map(value => [value.slot, value.value]));
       let slot = 0;
       assert.equal(level.descriptionTemplate, reviewed.descriptionTemplate.replace(/〔数值待核实〕/g, original => values.get(slot++) ?? original));
       assert.deepEqual(level.valueReview?.applications, reviewed.valueReview.applications);
       assert.deepEqual(level.descriptionBindings, reviewed.descriptionBindings);
       assert.equal(level.valueReview?.remaining, reviewed.remaining);
       assert.equal(level.valueReview?.resolvedCount, reviewed.resolvedCount);
-      assert.equal(level.videoReview?.status, "video-display-unverified");
-      total += entry.values.length;
+      assert.equal(level.videoReview?.status, applicable.length ? "video-display-unverified" : undefined);
+      total += applicable.length;
     }
   }
-  assert.equal(total, 132);
+  assert.equal(total, 123);
+});
+
+test("reviewed configuration upgrades remap only the recorded missing damage and preserve immutable observations", () => {
+  const entry = VIDEO_VALUE_EVIDENCE.entries.find(entry => entry.nodeId === "1003306" && entry.level === 1)!;
+  const before = structuredClone(entry);
+  const template = "机械臂展开后，武器射击每命中24次，释放1枚飞弹，造成〔数值待核实〕攻击力伤害。";
+  const applicable = getVideoValuesForTemplate(template, entry);
+  assert.deepEqual(applicable, [{ ...entry.values[1], slot: 0, context: template }]);
+  assert.deepEqual(entry, before);
+  assert.throws(() => getVideoValuesForTemplate(template.replace("释放1枚", "释放2枚"), entry), /VIDEO_TEMPLATE_DRIFT/);
+  assert.throws(() => getVideoValuesForTemplate(template, { ...entry, templateSha256: createHash("sha256").update("changed").digest("hex") }), /VIDEO_TEMPLATE_DRIFT/);
+  assert.throws(() => getVideoValuesForTemplate(template, { ...entry, values: [{ ...entry.values[0], slot: 99 }] }), /VIDEO_SLOT_MISSING/);
+  const replaced = VIDEO_VALUE_EVIDENCE.entries.find(entry => entry.nodeId === "1003608" && entry.level === 1)!;
+  assert.deepEqual(getVideoValuesForTemplate("释放机械之舞时，每有1层聚能状态，机械之舞时间延长0.1秒。", replaced), []);
 });
 
 function fixture(): LegacyTalentLevel {

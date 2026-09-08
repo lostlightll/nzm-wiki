@@ -3,6 +3,7 @@
 import { ArrowDown, HelpCircle, Info } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { LegacyTalentNode, LegacyTalentTree } from "@/lib/s0s1-season-talents";
+import { legacyDescriptionParts } from "@/lib/s0s1-talent-description";
 import { LEGACY_TALENT_CATALOG, legacyAsset, legacyPresentation } from "@/lib/s0s1-talent-presentation";
 import { isLegacyExclusiveNode, legacyNodePosition, legacyViewStorageKey, restoreLegacyTalentView, type LegacyTalentView } from "@/lib/s0s1-talent-view";
 import { getAssetPath } from "@/lib/path";
@@ -29,6 +30,7 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
   const node = tree.nodes.find(n => n.id === view.nodeId) ?? tree.nodes[0];
   const level = node.levels.find(l => l.level === view.level) ?? node.levels[0];
   const displayFacts = level.facts.filter(fact => fact.displayValue);
+  const descriptionParts = legacyDescriptionParts(level);
   const branchLinks = LEGACY_TALENT_CATALOG.filter(t => t.season === tree.season && (t.confirmed || t.id === tree.id)).map(t => ({ id: t.id, name: t.confirmed ? t.name : `${t.name} · 存档` }));
   const treeNodes = tree.nodes.filter(n => !n.isRoot);
 
@@ -74,25 +76,29 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
   return <section className={styles.builder} style={{ "--talent-accent": presentation.color, "--talent-accent-soft": `${presentation.color}26`, "--talent-glow": `${presentation.color}55` } as CSSProperties}>
     <div className={styles.builderScene}><LegacyTalentScene season={tree.season} /></div>
     <TalentDraftNotice />
-    <TalentHeader season={tree.season} links={branchLinks} activeId={tree.id} activeSkillId={tree.nodes.find(n => n.isRoot)?.id} name={tree.name} icon={legacyAsset(presentation.icon)} weapons={tree.subtitle} onInspect={() => update(restoreLegacyTalentView(tree.nodes, null), true)} />
+    <TalentHeader season={tree.season} links={branchLinks} activeId={tree.id} activeSkillId={tree.nodes.find(n => n.isRoot)?.id} name={tree.name} icon={legacyAsset(presentation.icon)} weapons={tree.applicableWeapons ? `适配武器：${tree.applicableWeapons}` : tree.subtitle} onInspect={() => update(restoreLegacyTalentView(tree.nodes, null), true)} />
     <TalentWorkspace details={
-      <TalentDetails season={tree.season} name={node.name} icon={node.icon} panelRef={detailRef} id="talent-detail" onReset={() => update(restoreLegacyTalentView(tree.nodes, null))} resetLabel="重置浏览状态"
+      <TalentDetails season={tree.season} name={node.name} icon={node.icon} level={level.level} maxLevel={node.maxLevel} panelRef={detailRef} id="talent-detail" onReset={() => update(restoreLegacyTalentView(tree.nodes, null))} resetLabel="重置浏览状态"
         imageContent={node.isRoot ? undefined : <LegacyGlyph node={node} availableIcons={availableIcons} large />}
         headingActions={<button className={styles.mobileReturn} title="返回天赋树" aria-label="返回天赋树" onClick={() => treeRef.current?.scrollIntoView({ block: "start", behavior: "instant" })}><ArrowDown size={18} /></button>}
         actions={<p className={styles.ruleNotice}>前置解锁与退点规则未核实，暂不开放模拟加点。</p>}>
         {!node.isRoot && <label className={styles.levelControl}>效果等级<select aria-label="效果等级" value={level.level} onChange={e => update({ ...view, level: Number(e.target.value) })}>{node.levels.map(l => <option key={l.level} value={l.level}>等级 {l.level} / {node.maxLevel}</option>)}</select></label>}
-        <p className={styles.description}>{level.description.split(/([+-]?\d+(?:\.\d+)?%?)/g).map((part, index) => /^[-+]?\d/.test(part) ? <strong className={styles.value} key={index}>{part}</strong> : part)}</p>
+        <p className={styles.description}>{descriptionParts.map((part, index) => part.reference
+          ? <span key={index} title="原描述参考值，尚未核验配置，不用于乘区索引。">{part.text}</span>
+          : <span key={index}>{part.text.split(/([+-]?\d+(?:\.\d+)?%?)/g).map((text, i) => /^[-+]?\d/.test(text) ? <strong className={styles.value} key={i}>{text}</strong> : text)}</span>)}</p>
         <div id={`multiplier-provider-node-${node.id}`} className="mt-3" data-multiplier-provider-target={`node-${node.id}`}>
           <MultiplierSourceBadges source={{ type: "season-talent", season: tree.season, tree: tree.id, nodeId: node.id }} />
         </div>
         {!level.valueReview && level.semanticConflicts?.length ? <p className={styles.warning}>当前参数与该节点描述存在冲突，不能据此确认历史效果。</p>
-          : level.description.includes("〔数值待核实〕") || level.description.includes("缺少该等级描述") ? <p className={styles.warning}>部分效果尚缺结构化数值证据，未采用描述原文中的数字。</p> : null}
-        <p className={styles.configurationNotice}>{level.videoReview
-          ? `含 ${level.videoReview.values.length} 处录像展示值（${level.videoReview.timestamp}），尚未核实配置；其余已核验值仍按配置展示。`
-          : "数值按已核验配置展示，不等同于历史版本实测。"}</p>
-        {level.reportedReview && <p className={styles.configurationNotice}>另含 {level.reportedReview.count} 处用户补充的展示值，尚未核实执行配置。</p>}
+          : descriptionParts.some(part => part.reference) ? <p className={styles.configurationNotice}>{level.valueReview?.executionConflict ? "虫群配置关联异常；部分数值仅为原描述参考值。" : "含尚未核验配置的原描述参考值，详见核验记录。"}</p>
+          : level.description.includes("〔数值待核实〕") || level.description.includes("缺少该等级描述") ? <p className={styles.warning}>部分效果仍缺少可解析的描述或数值来源。</p> : null}
+        {(level.videoReview || level.reportedReview) && <p className={styles.configurationNotice}>含录像或用户补充的展示值，详见核验记录。</p>}
         {!availableIcons.includes(node.icon) && <p className={styles.warning}>节点图标尚未完成定位，暂以问号标记。</p>}
         <details className={styles.evidence}><summary>来源与核验记录</summary>
+          <p>数值按已核验配置展示，不等同于历史版本实测。</p>
+          {level.valueReview?.executionConflict && <p>{level.valueReview.executionConflict.message}</p>}
+          {level.descriptionReferences?.map((reference, index) => <p key={`description-${index}`}>原描述参考：{reference.text}。{reference.reason}<br />{reference.source}</p>)}
+          {level.reportedReview && <p>含 {level.reportedReview.count} 处用户补充的展示值，尚未核实执行配置。</p>}
           {level.valueReview && <p>配置核验沿 Basic → Passive 等级 → MGEConfig / 描述行进行；录像补充不属于配置依据。下方旧同 ID 直连事实仅供排错，不用于正文数值或乘区。</p>}
           {level.videoReview && <>
             <p>录像补充：{level.videoReview.timestamp} · {level.videoReview.levelEvidence}。仅限本节点、本等级，不用于乘区索引。</p>

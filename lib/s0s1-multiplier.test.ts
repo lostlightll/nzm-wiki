@@ -40,3 +40,14 @@ test("registered Num applications must retain structured provenance", () => {
   for (const value of node.levels) if (value.valueReview) value.valueReview.sources = [];
   assert.throws(() => buildLegacyProviders([{ ...only, nodes: [node] }]), /provenance/);
 });
+
+test("a quarantined swarm chain cannot enter the index even if an application is injected", () => {
+  const input = trees();
+  const node = input.flatMap(tree => tree.nodes).find(node => node.levels.some(level => level.valueReview?.executionConflict));
+  assert.ok(node);
+  const application = input.flatMap(tree => tree.nodes.flatMap(node => node.levels.flatMap(level => level.valueReview?.applications ?? [])))[0];
+  assert.ok(application);
+  const before = buildLegacyProviders(input);
+  for (const level of node.levels) level.valueReview!.applications = [application];
+  assert.deepEqual(buildLegacyProviders(input), before);
+});

@@ -72,6 +72,7 @@ export interface S1ValueReview {
   indexedApplications: S1IndexedApplication[];
   warnings: string[];
   valueReview: {
+    executionConflict?: { code: string; message: string; sources: string[] };
     sources: string[];
     notes: string[];
     applications: Array<{ expression: NumModifierValueExpression; context: { recipient: "self" } }>;
@@ -290,7 +291,7 @@ const modifierReviews: Array<{ id: number; configs: number[]; name: string; skil
   { id: 1319021009, configs: [1319021020, 1319021021, 1319021022], name: "", modifier: 160201011, attribute: "GPAttributeSetBearDamageRatio.DamageBearRatio", rows: ["lc:160201011_1_0", "lc:160201011_2_1", "lc:160201011_3_2"], pattern: /自身获得(\{GPModifier:160201011:BaseValue:0:13\})/, index: false, tokenOnly: true },
   { id: 1319021015, configs: [1319021029, 1319021030], name: "", modifier: 160201007, attribute: "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio", rows: ["lc:160201007_1_0", "lc:160201007_2_1"], pattern: /伤害增加(\{GPModifier:160201007:CoefValue:0:13\})/, index: false, field: "coefficient", tokenOnly: true },
   { id: 1319022017, configs: [1319022028, 1319022029, 1319022030], name: "ModifyID", modifier: 160202005, attribute: "GPAttributeSetHumanSkill.SeasonSkillChargeSpeed", rows: ["lc:160202005_1_0", "lc:160202005_2_1", "lc:160202005_3_2"], pattern: /赛季技能充能速度提高(\{GPModifier:160202005:BaseValue:0:13\})/, index: false },
-  { id: 1319022004, configs: [1319022002, 1319022003, 1319022004], name: "ModifyID", modifier: 160202004, attribute: "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio", rows: ["lc:160202004_1_0", "lc:160202004_2_1", "lc:160202004_3_2"], pattern: /弱点倍率增加(\{GPModifier:160202004:BaseValue:0:2\})/, index: false },
+  { id: 1319022004, configs: [1319022002, 1319022003, 1319022004], name: "ModifyID", modifier: 160202004, attribute: "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio", rows: ["lc:160202004_1_0", "lc:160202004_2_1", "lc:160202004_3_2"], pattern: /弱点倍率增加(\{GPModifier:160202004:BaseValue:0:2\})/, index: true },
   { id: 1701000101, configs: [1701000101], name: "CharacterModifierList", modifier: 1701000101, attribute: "GPAttributeSetCritical.CriticalRatio", rows: ["lc:1701000101_1_0"], pattern: /暴击率提高(\d+(?:\.\d+)?%)/, index: false },
   { id: 1701000103, configs: [1701000103], name: "CharacterModifierList", modifier: 1701000103, attribute: "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio", rows: ["lc:1701000103_1_0"], pattern: /弱点伤害增幅提高(\d+(?:\.\d+)?%)/, index: true },
   { id: 1701000105, configs: [1701000105], name: "CharacterModifierList", modifier: 1701000105, attribute: "GPAttributeSetGiveDamageRatio.CloseRangeDamageRatio", rows: ["lc:1701000105_1_0"], pattern: /造成的伤害提高(\d+(?:\.\d+)?%)/, index: true },
@@ -401,8 +402,19 @@ export function reviewS1Values(input: { nodeId: string; level: number; skillIds:
         } else missingReason = `Passive 指向 Config=${configKey}，Main 中缺行；不回退同 ID/旧表。`;
         const mge = evidence.tables.mge[String(mgeId)];
         if (mge) chain.push({ source: source("mge", String(mgeId)), value: mge });
-        if (id >= 1319024001 && id <= 1319024009) missingReason = "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。";
       } else missingReason = `缺少 PassiveSkillID=${id}, Level=${input.level} 的精确 Main 行。`;
+      if (id >= 1319024001 && id <= 1319024009) {
+        const modifier = config?.Parameters[0];
+        const chargeRows = resolver.getRowsById("lc", 160202005);
+        if (input.level !== 1 || passives.length !== 1 || mgeId !== id || configKey !== "1319022030" || config?.Parameters.length !== 1 || modifier?.Name !== "ModifyID" || modifier.Type !== "EMGEParameterType::ID" || modifier.Value !== "160202005" || matchingRows(evidence.tables.mge, { MGEId: mgeId }).length || !chargeRows.length || chargeRows.some(row => row.attributeName !== "GPAttributeSetHumanSkill.SeasonSkillChargeSpeed" || row.operation !== "B2")) {
+          throw new Error(`S1_SWARM_EXECUTION_DRIFT: ${id}/${input.level}; re-review changed Passive, Config, MGE registration or Numerical identity`);
+        }
+        missingReason = "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。";
+        result.valueReview.executionConflict = {
+          code: "unrelated-charge-config", message: missingReason,
+          sources: [...chain.map(step => step.source), source("mge", String(mgeId)), ...chargeRows.map(row => `data/num-modifier-lock.json#${row.key}`)],
+        };
+      }
       const descriptions = matchingRows(evidence.tables.descriptions, { MGEId: mgeId, TextID: textId }).map(([key, raw]) => ({ key, row: descSchema.parse(raw) }));
       if (descriptions.length > 1) throw new Error(`S1_REVIEW_DESCRIPTION: duplicate ${mgeId}/${textId}`);
       if (descriptions.length) { description = localText(descriptions[0].row.MGEDescription); descriptionSource = source("descriptions", descriptions[0].key, "MGEDescription"); }
@@ -469,6 +481,19 @@ export function reviewS1Values(input: { nodeId: string; level: number; skillIds:
         const [rangeStart, rangeEnd] = matchValue(/武器对(\d+(?:\.\d+)?)米内/);
         add(rangeStart, rangeEnd, range.value, "number", [...parameter.steps, ...range.chain], "passive-config", undefined, [range.note]);
       }
+    }
+    // The skill parameter selects the damage Modifier even when its coefficient's
+    // runtime input unit is not exported. Index the effect without inventing the
+    // description's "per 1% red-eye" conversion or publishing a final multiplier.
+    if (id === 1319022011) {
+      if (Number(configKey) !== [1319022016, 1319022017, 1319022018][input.level - 1]) throw new Error(`S1_REVIEW_CONFIG_DRIFT: ${id}/${input.level}`);
+      const parameter = readParameter("ModifyID_XTHX", 6002201);
+      if (parameter.value !== 160202008) throw new Error(`S1_REVIEW_MODIFIER_DRIFT: ${id}/${input.level}`);
+      const row = resolver.getRowsById("lc", parameter.value).filter(row => row.level === input.level);
+      if (row.length !== 1 || row[0].attributeName !== "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio" || row[0].operation !== "B1" || row[0].baseValue !== 0 || row[0].coefficient <= 0) throw new Error(`S1_REVIEW_NUM_DRIFT: ${id}/${input.level}`);
+      const expression: NumModifierValueExpression = { row: row[0].key, field: "coefficient" };
+      result.indexedApplications.push({ expression, context: { recipient: "self" }, source: [...chain, ...parameter.steps].map(step => step.source).concat(`data/num-modifier-lock.json#${row[0].key}`).join(" -> "), historicalEffectStatus: "unverified" });
+      result.warnings.push("血瞳回响的逐级 SkillParameterModifiers 精确指向弱点伤害 Modifier；仅登记增伤属性，系数的运行时输入单位未导出，不推导每 1% 赤瞳的增幅或总倍率。");
     }
     if (evidence.skillNumerical && [1319022006, 1319022015].includes(id)) {
       const damage = id === 1319022006;
@@ -544,8 +569,11 @@ export function reviewS1Values(input: { nodeId: string; level: number; skillIds:
   result.descriptionTemplate = templates.join("\n");
   result.resolvedCount = result.provenance.length;
   result.remaining = result.missing.length;
+  const executionConflict = result.valueReview.executionConflict;
+  if (executionConflict && result.indexedApplications.length) throw new Error(`S1_SWARM_INDEX_CONFLICT: ${input.nodeId}; conflicted execution must not produce applications`);
   result.valueReview = {
-    sources: [...new Set(result.provenance.flatMap(binding => [binding.source, ...binding.chain.map(step => step.source)]))],
+    ...(executionConflict ? { executionConflict } : {}),
+    sources: [...new Set([...result.provenance.flatMap(binding => [binding.source, ...binding.chain.map(step => step.source)]), ...result.indexedApplications.map(application => application.source), ...(executionConflict?.sources ?? [])])],
     notes: [...result.warnings, ...new Set(result.provenance.flatMap(binding => binding.notes)), ...new Set(result.missing.map(item => item.reason)), `RESOLVED=${result.resolvedCount}; REMAINING=${result.remaining}`],
     applications: result.indexedApplications.map(({ expression, context }) => ({ expression, context })),
   };

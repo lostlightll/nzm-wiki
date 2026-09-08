@@ -18,6 +18,7 @@ const basicSchema = z.object({
   TalentILevel: z.number().int().positive(), TalentType: z.number(), PhaseID: z.number(), ColumnID: z.number(),
   TalentName: textSchema, TalentIcon: assetSchema, AfterTalentID: z.string(),
   TalentSkillsID: z.number(), AttributeSkillsID: z.number(), SeasonSkill: z.number(),
+  AdaptWeapon: z.number().int().nonnegative().optional(),
 });
 type Basic = z.infer<typeof basicSchema>;
 const structureSchema = z.object({ SeasonID: z.number(), SeasonPhaseID: z.number(), PhaseID: z.number() }).catchall(z.number());
@@ -38,13 +39,14 @@ export const INPUT_PATHS = {
   mgeDescriptions: "MGE/DT_GPMGESkillDesConfigTable_Main.json",
   skillDescriptions: "Ability/DT_SkillDesConfig_Main.json",
   activeSkills: "GPActiveSkillDataTable.json",
+  adaptWeapons: "SeasonTalent/AdaptWeaponTable.json",
 } as const;
 type TableName = keyof typeof INPUT_PATHS;
 export interface Evidence {
   schemaVersion: 1;
   season: LegacyTalentSeason;
   sources: Array<{ path: string; sha256: string }>;
-  tables: Record<TableName, Record<string, unknown>>;
+  tables: Record<Exclude<TableName, "adaptWeapons">, Record<string, unknown>> & { adaptWeapons?: Record<string, unknown> };
   excluded: Array<{ id: string; name: string; basicRows: string[]; reason: string }>;
   semanticReview?: ReturnType<typeof summarizeSemanticReview>;
   valueEvidence?: LegacyValueEvidence;
@@ -184,12 +186,24 @@ function auditConfig(result: LegacyTalentLevel, key: string, raw: unknown, origi
   else result.warnings.push(`CURRENT_CONFIG_ONLY: ${source("params", key)} 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。`);
 }
 
+export function resolveApplicableWeapons(tables: Evidence["tables"], phase: number, adaptWeapon: number | undefined): string | undefined {
+  if (!tables.adaptWeapons) return undefined; // Older offline snapshots do not contain this evidence.
+  if (!adaptWeapon) throw new Error(`MISSING_ADAPT_WEAPON: phase ${phase} root has no AdaptWeapon identity`);
+  const schema = z.object({ SeasonID: z.number(), SeasonPhaseID: z.number(), TextID: z.number(), TextContent: textSchema });
+  const rows = Object.values(tables.adaptWeapons).map(row => schema.parse(row))
+    .filter(row => row.SeasonID === 1 && row.SeasonPhaseID === phase && row.TextID === adaptWeapon);
+  if (rows.length !== 1) throw new Error(`MISSING_ADAPT_WEAPON: phase ${phase}, TextID=${adaptWeapon}; expected one exact row`);
+  const text = localText(rows[0].TextContent).replace(/<[^>]*>/g, "").replace(/^\s*适配武器\s*[：:]\s*/, "").trim();
+  if (!text) throw new Error(`MISSING_ADAPT_WEAPON: empty TextContent for phase ${phase}, TextID=${adaptWeapon}`);
+  return text;
+}
+
 export function buildTrees(evidence: Evidence): LegacyTalentTree[] {
   const phase = evidence.season === "s0" ? 0 : 1;
   const basics = Object.entries(evidence.tables.basic).map(([key, value]) => ({ key, row: basicSchema.parse(value) }));
   const trees: LegacyTalentTree[] = NAMES[evidence.season].map(([id, name], typeIndex) => {
     const type = typeIndex + 1;
-    const structure = Object.values(evidence.tables[`structure${type}` as TableName]).map((value) => structureSchema.parse(value))
+    const structure = Object.values(evidence.tables[`structure${type}` as "structure1" | "structure2" | "structure3"]).map((value) => structureSchema.parse(value))
       .filter((row) => row.SeasonID === 1 && row.SeasonPhaseID === phase).sort((a, b) => a.PhaseID - b.PhaseID);
     if (structure.length !== 7 || structure.some((row, index) => row.PhaseID !== index + 1)) throw new Error(`${id}: expected seven structure phases`);
     const typeRows = Object.values(evidence.tables.types).map((value) => typeSchema.parse(value)).filter((row) => row.SeasonID === 1 && row.SeasonPhaseID === phase && row.TalentType === type);
@@ -270,7 +284,10 @@ export function buildTrees(evidence: Evidence): LegacyTalentTree[] {
     ];
     if (id === "mechanical-dance") notes.push("人工名称 override：主 Basic root「重机枪模式」按用户录像名称改为「机械之舞」。");
     if (id === "destruction-dream") notes.push("用户提供录像未见此树；保留主结构配置，但历史上线状态未确认。");
+    const root = basics.find(({ row }) => row.TalentID === Number(nodes.find(node => node.isRoot)!.id) && row.TalentILevel === 1)!.row;
+    const applicableWeapons = resolveApplicableWeapons(evidence.tables, phase, root.AdaptWeapon);
     return { season: evidence.season, id, name, subtitle: localText(typeRows[0].TypeText), icon: icon(typeRows[0].TypeIcon), nodeCount: nodes.length, nodes,
+      ...(applicableWeapons ? { applicableWeapons } : {}),
       historicalStatus: id === "destruction-dream" ? "unconfirmed" : "video-confirmed", evidenceNotes: notes };
   });
   return applyLegacyValueReviews(trees, evidence.valueEvidence);
@@ -296,7 +313,7 @@ export function readEvidence(season: LegacyTalentSeason, root = process.cwd(), o
   tables.skillDescriptions = Object.fromEntries(Object.entries(tables.skillDescriptions).filter(([, raw]) => ids.has(Number((raw as Record<string, unknown>).SkillId))));
   const activeIds = new Set(basicRows.map(([, raw]) => basicSchema.parse(raw).SeasonSkill).filter((id) => id > 0));
   tables.activeSkills = Object.fromEntries(Object.entries(tables.activeSkills).filter(([key]) => activeIds.has(Number(key))));
-  for (const name of ["types", "structure1", "structure2", "structure3"] as const) tables[name] = Object.fromEntries(Object.entries(tables[name]).filter(([, raw]) => {
+  for (const name of ["types", "structure1", "structure2", "structure3", "adaptWeapons"] as const) tables[name] = Object.fromEntries(Object.entries(tables[name] ?? {}).filter(([, raw]) => {
     const row = raw as Record<string, unknown>; return row.SeasonID === 1 && row.SeasonPhaseID === phase;
   }));
   const selected = new Set<number>();
@@ -319,8 +336,21 @@ export function readEvidence(season: LegacyTalentSeason, root = process.cwd(), o
   } };
 }
 
-export function extract() {
-  const tabooScriptFile = process.argv.find(arg => arg.startsWith("--s1-taboo-script="))?.slice("--s1-taboo-script=".length);
+export function projectLegacyTalents() {
+  // Replay both snapshots before writing: invalid S1 evidence must not leave S0 updated.
+  const projections = (["s0", "s1"] as const).map(season => {
+    const evidence: Evidence = JSON.parse(readFileSync(join(process.cwd(), "data/season-talents", season, "audit.json"), "utf8"));
+    if (evidence.schemaVersion !== 1 || evidence.season !== season) throw new Error(`${season}: invalid evidence snapshot`);
+    return { season, trees: buildTrees(evidence) };
+  });
+  for (const { season, trees } of projections) {
+    writeFileSync(join(process.cwd(), "data/season-talents", season, "trees.json"), JSON.stringify(trees, null, 2) + "\n");
+    console.log(`${season}: replayed committed evidence and current Numerical Lock.`);
+  }
+}
+
+export function extract(options: { tabooScriptFile?: string; assetPath?: string } = {}) {
+  const { tabooScriptFile, assetPath } = options;
   const priorPath = join(process.cwd(), "data/season-talents/s1/audit.json");
   if (!tabooScriptFile && existsSync(priorPath)) {
     const prior: Evidence = JSON.parse(readFileSync(priorPath, "utf8"));
@@ -328,16 +358,18 @@ export function extract() {
   }
   // Validate both seasons before overwriting either projection.
   const inputs = (["s0", "s1"] as const).map(season => readEvidence(season, process.cwd(), { tabooScriptFile }));
-  for (const evidence of inputs) {
-    const season = evidence.season;
+  const projections = inputs.map(evidence => {
     const trees = buildTrees(evidence);
     evidence.semanticReview = summarizeSemanticReview(trees);
-    const assetPath = process.argv.find((arg) => arg.startsWith("--assets="))?.slice("--assets=".length);
     if (assetPath) {
       const assets = z.array(z.object({ name: z.string(), missing: z.boolean().optional(), review: z.object({ nodeId: z.string(), videoSeconds: z.number() }).optional() })).parse(JSON.parse(readFileSync(assetPath, "utf8")));
       const names = new Set(trees.flatMap((tree) => [tree.icon, ...tree.nodes.map((node) => node.icon)]).map((path) => path.split("/").at(-1)!.replace(/\.webp$/, "")));
       evidence.visualVerification.assets = assets.filter((asset) => names.has(asset.name)).map((asset) => ({ name: asset.name, status: asset.missing ? "missing" : asset.review ? "video-matched" : "pending-visual-review" }));
     }
+    return { evidence, trees };
+  });
+  for (const { evidence, trees } of projections) {
+    const season = evidence.season;
     for (const [name, data] of [["trees.json", trees], ["audit.json", evidence]] as const) {
       const path = join(process.cwd(), "data/season-talents", season, name);
       mkdirSync(dirname(path), { recursive: true });
@@ -347,4 +379,7 @@ export function extract() {
   }
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) extract();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) extract({
+  tabooScriptFile: process.argv.find(arg => arg.startsWith("--s1-taboo-script="))?.slice("--s1-taboo-script=".length),
+  assetPath: process.argv.find(arg => arg.startsWith("--assets="))?.slice("--assets=".length),
+});

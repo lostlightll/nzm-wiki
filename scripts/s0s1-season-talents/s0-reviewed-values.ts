@@ -27,6 +27,11 @@ export interface S0ReviewEvidence {
   tables: Record<Table, Record<string, unknown>>;
   sources?: readonly { path: string; sha256: string }[];
   range?: RangeEvidence;
+  armBlueprint?: {
+    asset: Record<string, unknown>;
+    skill: Record<string, unknown>;
+    sources: { path: string; sha256: string }[];
+  };
 }
 export interface S0ValueInput { nodeId: string; level: number; skillIds: readonly number[] }
 export interface S0EvidenceStep { source: string; value: unknown }
@@ -86,6 +91,51 @@ const step = (table: Table, row: string, field: string, value: unknown): S0Evide
 const plainText = (s: string) => s.replace(/<br\s*\/?\s*>/gi, "\n").replace(/<[^>]*>/g, "");
 const quantities = () => /\{[^{}]*\}|[+-]?\d+(?:\.\d+)?[%％]?|[零〇一二两三四五六七八九十百千万半]+(?=[个枚颗发层次秒米点种倍])/g;
 const UNVERIFIED = "〔数值待核实〕";
+const ARM_PATH = "Abilities/Skills/Season/S1/HeavyMachineGunMode3P";
+const ARM_ASSET = "DA_S1_HeavyMachineGunMode3P";
+const ARM_SKILL = "SKT_S1_HeavyMachineGunMode3P";
+
+function readArmBlueprint(root: string): NonNullable<S0ReviewEvidence["armBlueprint"]> {
+  const sources: { path: string; sha256: string }[] = [];
+  const read = (file: string, name: string) => {
+    const path = `${ARM_PATH}/${file}.json`;
+    const bytes = readFileSync(join(root, "refs/Exports/NZM/Content", path));
+    const objects = z.array(z.object({ Name: z.string() }).passthrough()).parse(JSON.parse(bytes.toString("utf8")));
+    const matches = objects.filter(object => object.Name === name);
+    if (matches.length !== 1) fail(`arm blueprint object ${name}`);
+    sources.push({ path: `NZM/Content/${path}`, sha256: createHash("sha256").update(bytes).digest("hex") });
+    return matches[0];
+  };
+  return { asset: read(ARM_ASSET, ARM_ASSET), skill: read(ARM_SKILL, `Default__${ARM_SKILL}_C`), sources };
+}
+
+function reviewArmBlueprint(skillId: number, level: number, slot: number, shape: string, evidence: S0ReviewEvidence) {
+  if (!evidence.armBlueprint) return;
+  const field = skillId === 1318105001 && slot === 1 && shape === RULES[1318105001].shape
+    ? "MGE_1318105001_SmallPeriodLaunchNum"
+    : skillId === 1318111001 && slot === 0 && shape === RULES[1318111001].shape
+      ? "MGE_1318111001_DeathMomentPlus_LaunchLargeInterval"
+      : skillId === 1318115001 && level === 1 && slot < 2 && shape === "释放机械之舞时，每有#层聚能状态，机械之舞时间延长#秒。"
+        ? "MGE_1318115001_DeathMoment_AddDuration" : undefined;
+  if (!field) return;
+  const active = z.object({ AbilityID: z.literal(6001401), AbilityAssetSoftPath: z.object({ AssetPathName: z.literal(`/Game/${ARM_PATH}/${ARM_ASSET}.${ARM_ASSET}`) }) }).parse(evidence.tables.activeSkills["6001401"]);
+  const asset = z.object({ Name: z.literal(ARM_ASSET), Properties: z.object({ AbilityBlueprint: z.object({ ObjectPath: z.literal(`NZM/Content/${ARM_PATH}/${ARM_SKILL}.99`) }) }) }).parse(evidence.armBlueprint.asset);
+  const skill = z.object({ Name: z.literal(`Default__${ARM_SKILL}_C`), Type: z.literal(`${ARM_SKILL}_C`), Properties: z.object({ SkillID: z.literal(6001401) }).catchall(z.unknown()) }).parse(evidence.armBlueprint.skill);
+  const value = z.number().finite().nonnegative().parse(skill.Properties[field]);
+  if (skillId === 1318115001) {
+    const passive = passiveSchema.parse(evidence.tables.passive[`${skillId}_1`]);
+    if (passive.MGEConfig.Id !== "1318115001") fail("arm duration config identity");
+    const config = configSchema.parse(evidence.tables.params["1318115001"]);
+    if (config.Parameters.length) fail("arm duration has unreviewed parameter override");
+    z.object({ MGEId: z.literal(1318115001), MGEClass: z.object({ AssetPathName: z.literal("/Game/Abilities/Build/CBT3/Season/HeavyMachineGun/MGE_1318115001.MGE_1318115001_C") }) }).parse(evidence.tables.mgeClasses["1318115001"]);
+  }
+  return { value: skillId === 1318115001 && slot === 0 ? 1 : value, field, chain: [
+    step("activeSkills", "6001401", "AbilityAssetSoftPath", active.AbilityAssetSoftPath),
+    { source: `NZM/Content/${ARM_PATH}/${ARM_ASSET}.json#${ARM_ASSET}.Properties.AbilityBlueprint`, value: asset.Properties.AbilityBlueprint },
+    { source: `NZM/Content/${ARM_PATH}/${ARM_SKILL}.json#${skill.Name}.Properties.SkillID`, value: skill.Properties.SkillID },
+    { source: `NZM/Content/${ARM_PATH}/${ARM_SKILL}.json#${skill.Name}.Properties.${field}`, value },
+  ] };
+}
 
 // Explicit Basic identities, including every selected level. No ID arithmetic or name joins.
 const NODES: Record<string, readonly [number, number]> = {
@@ -106,6 +156,8 @@ const NODES: Record<string, readonly [number, number]> = {
 interface BindingRule {
   slot: number;
   parameter: string;
+  /** Denominator of a reviewed per-layer/per-second parameter, not a description literal. */
+  unitBasis?: "layer" | "second";
   tuple?: { skillId: number; name: string };
   semantic: string;
   percent?: boolean;
@@ -129,13 +181,22 @@ const RULES: Record<number, ReviewRule> = {
   1319013002: { shape: "技能发动期间获得#伤害减免。", configs: [1319013001, 1319013002], bindings: [
     { ...tuple(0, "SteelFrame", "技能期间伤害减免"), modifier: { ids: [160102004, 160102009], attribute: "GPAttributeSetBearDamageRatio.DamageBearRatio" } },
   ] },
-  1319013003: { shape: "释放技能时，每有#层聚能，技能的持续时间额外增加#秒。", configs: [1319013003, 1319013004], bindings: [tuple(1, "TimePerLayer", "每层聚能增加技能持续时间")] },
+  1319013003: { shape: "释放技能时，每有#层聚能，技能的持续时间额外增加#秒。", configs: [1319013003, 1319013004], bindings: [
+    { ...tuple(0, "TimePerLayer", "TimePerLayer 的单位基数：每层聚能"), unitBasis: "layer" },
+    tuple(1, "TimePerLayer", "每层聚能增加技能持续时间"),
+  ] },
   1319013005: { shape: "飞弹发射的间隔减少#秒。", configs: [1319013007, 1319013008, 1319013009], bindings: [tuple(0, "FireInternal", "飞弹发射间隔减少量（秒）")] },
   1319013007: { shape: "技能期间每命中#名敌人，提升#秒技能持续时间，最多触发#次。", configs: [1319013010, 1319013011], bindings: [tuple(1, "TimePerLayer2", "命中增加技能持续时间（秒）")] },
-  1319013010: { shape: "取消技能后，根据所剩时间返还一定的技能充能，每剩余#秒，返还#充能。", configs: [1319013014, 1319013015], bindings: [tuple(1, "RestorePerSec", "每剩余秒返还的充能比例", 6001301, true)] },
+  1319013010: { shape: "取消技能后，根据所剩时间返还一定的技能充能，每剩余#秒，返还#充能。", configs: [1319013014, 1319013015], bindings: [
+    { ...tuple(0, "RestorePerSec", "RestorePerSec 的单位基数：每秒"), unitBasis: "second" },
+    tuple(1, "RestorePerSec", "每剩余秒返还的充能比例", 6001301, true),
+  ] },
   1319013011: { shape: "技能持续时间内，获得临时可用的突进能力，可使用#次。", configs: [1319013016, 1319013017], bindings: [scalar(0, "UseNum", "突进可用次数")] },
   1318101001: { shape: "获得“聚能”要求的武器命中次数降低#。", configs: [1318101001, 1318101002], bindings: [scalar(0, "ModifyEachStrength", "聚能命中要求减少量")] },
-  1318102001: { shape: "释放赛季技能时，每拥有#层聚能状态，额外增加机械臂#秒持续时间。", configs: [1318102001, 1318102002, 1318102003], bindings: [tuple(1, "MGE_1318102001_AddDuration", "每层聚能增加机械臂持续时间（秒）", 6001401)] },
+  1318102001: { shape: "释放赛季技能时，每拥有#层聚能状态，额外增加机械臂#秒持续时间。", configs: [1318102001, 1318102002, 1318102003], bindings: [
+    { ...tuple(0, "MGE_1318102001_AddDuration", "已审定每层聚能持续时间参数的单位基数", 6001401), unitBasis: "layer" },
+    tuple(1, "MGE_1318102001_AddDuration", "每层聚能增加机械臂持续时间（秒）", 6001401),
+  ] },
   1318103001: { shape: "机械臂造成的伤害提高#。", configs: [1318103001, 1318103002, 1318103003], bindings: [
     { ...scalar(0, "ModifierId", "机械臂伤害增幅；接收者及运行时应用范围未独立确认，不进入索引"), modifier: { ids: [160101001, 160101002, 160101003], attribute: "GPAttributeSetGiveDamageRatio.AllDamageRatio" } },
   ] },
@@ -192,7 +253,7 @@ export function readS0ReviewEvidence(root = process.cwd()): S0ReviewEvidence {
     tables[name] = rows[0].Rows!;
     sources.push({ path: `NZM/Content/${path}`, sha256: createHash("sha256").update(bytes).digest("hex") });
   }
-  return { season: "s0", tables, sources, range: readRangeEvidence(root) };
+  return { season: "s0", tables, sources, range: readRangeEvidence(root), armBlueprint: readArmBlueprint(root) };
 }
 
 function fail(message: string): never { throw new Error(`S0_REVIEW_DRIFT: ${message}`); }
@@ -385,11 +446,13 @@ export function reviewS0Values(input: S0ValueInput, evidence: S0ReviewEvidence):
             result.indexedApplications.push({ expression, context: { recipient: "self" }, source, provenanceId: p.id, historicalEffectStatus: "unverified" });
           }
         } else {
-          p.structuredValue = parameter.value;
-          replacement = binding.percent ? `${Number((parameter.value * 100).toPrecision(12))}%` : String(parameter.value);
+          p.structuredValue = binding.unitBasis ? 1 : parameter.value;
+          replacement = binding.unitBasis ? "1" : binding.percent ? `${Number((parameter.value * 100).toPrecision(12))}%` : String(parameter.value);
         }
         p.status = "resolved";
-        p.reason = "Basic -> 精确等级 Passive -> Main Config -> 已审定参数语义；数值只读取结构字段，未证明历史版本。";
+        p.reason = binding.unitBasis
+          ? `Basic -> 精确等级 Passive -> Main Config -> 已审定按${binding.unitBasis === "layer" ? "层" : "秒"}参数；1 是该单位的归一化分母，不取自描述数字，未证明历史版本。`
+          : "Basic -> 精确等级 Passive -> Main Config -> 已审定参数语义；数值只读取结构字段，未证明历史版本。";
         p.replacement = replacement;
       }
     } else if (basic.SeasonSkill) {
@@ -424,6 +487,18 @@ export function reviewS0Values(input: S0ValueInput, evidence: S0ReviewEvidence):
       p.reason = range.note;
       replacement = String(range.value);
       p.replacement = replacement;
+    }
+    if (p.status === "missing") {
+      const reviewed = reviewArmBlueprint(skillId, input.level, slot, shape, evidence);
+      if (reviewed) {
+        p.status = "resolved";
+        p.semantic = reviewed.field;
+        p.structuredValue = reviewed.value;
+        p.chain.push(...reviewed.chain);
+        p.reason = "精确等级 Passive -> 6001401 主动技能资源 -> 3P 技能蓝图默认字段；不采用描述数字，不混用旧第一人称蓝图。";
+        replacement = String(reviewed.value);
+        p.replacement = replacement;
+      }
     }
     if (p.status === "missing" && match[0].startsWith("{GPNumericalID:")) {
       const reviewed = descriptionId === input.level ? reviewFrostToken(skillId, input.level, slot, text, match[0], evidence) : undefined;
@@ -511,5 +586,5 @@ export function compactS0ReviewEvidence(evidence: S0ReviewEvidence): S0ReviewEvi
       keep("activeSkills", String(skillId));
     }
   }
-  return { season: "s0", tables, ...(evidence.sources ? { sources: structuredClone(evidence.sources) } : {}), ...(evidence.range ? { range: structuredClone(evidence.range) } : {}) };
+  return { season: "s0", tables, ...(evidence.sources ? { sources: structuredClone(evidence.sources) } : {}), ...(evidence.range ? { range: structuredClone(evidence.range) } : {}), ...(evidence.armBlueprint ? { armBlueprint: structuredClone(evidence.armBlueprint) } : {}) };
 }

@@ -5835,6 +5835,7 @@
           "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters[0]",
           "data/num-modifier-lock.json#lc:1701000103_1_0",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115011.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115011.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1701000103_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters[0] -> data/num-modifier-lock.json#lc:1701000103_1_0",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -5873,6 +5874,7 @@
           "NZM/Content/DataTables/AlwaysCook/GameplaySystem/SystemPresetsTable.json#PVE.SystemConfigPreset[8]",
           "NZM/Content/Numerical/Systems/BP_NumericalConfigSystem.json#Default__BP_NumericalConfigSystem_C.Properties.SettlementConstantConfigTablePath",
           "NZM/Content/DataTables/NumericalSettlementConstantConfig.json#CloseRangeDamageThreshold",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116011.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116011.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1701000105_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000105.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000105.Parameters[0] -> data/num-modifier-lock.json#lc:1701000105_1_0",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -5926,6 +5928,7 @@
           "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021004",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021010.Parameters[0]",
           "data/num-modifier-lock.json#lc:160201008_1_0",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124091.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124091.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021004_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021010.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021004 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021010.Parameters[0] -> data/num-modifier-lock.json#lc:160201008_1_0",
           "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021004_2.MGEDescription",
           "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124092.TalentSkillsID",
           "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124092.TalentILevel",
@@ -5933,6 +5936,7 @@
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021011.Parameters",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021011.Parameters[0]",
           "data/num-modifier-lock.json#lc:160201008_2_1",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124092.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124092.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021004_2 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021011.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021004 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021011.Parameters[0] -> data/num-modifier-lock.json#lc:160201008_2_1",
           "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021004_3.MGEDescription",
           "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124093.TalentSkillsID",
           "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124093.TalentILevel",
@@ -5940,6 +5944,7 @@
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021012.Parameters",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021012.Parameters[0]",
           "data/num-modifier-lock.json#lc:160201008_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124093.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124093.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021004_3 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021012.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021004 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021012.Parameters[0] -> data/num-modifier-lock.json#lc:160201008_3_2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -5975,6 +5980,7 @@
           "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters[0]",
           "data/num-modifier-lock.json#lc:1701000103_1_0",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10125011.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10125011.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1701000103_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters[0] -> data/num-modifier-lock.json#lc:1701000103_1_0",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -6013,6 +6019,125 @@
           "NZM/Content/DataTables/AlwaysCook/GameplaySystem/SystemPresetsTable.json#PVE.SystemConfigPreset[8]",
           "NZM/Content/Numerical/Systems/BP_NumericalConfigSystem.json#Default__BP_NumericalConfigSystem_C.Properties.SettlementConstantConfigTablePath",
           "NZM/Content/DataTables/NumericalSettlementConstantConfig.json#CloseRangeDamageThreshold",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126011.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126011.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1701000105_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000105.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000105.Parameters[0] -> data/num-modifier-lock.json#lc:1701000105_1_0",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013207",
+      "label": "S1 禁忌之瞳·血曈回响",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013207"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160202008_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:160202008_2_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:160202008_3_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10132071.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10132071.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022011_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022016.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022011 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022016.Parameters[0] -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022016.Parameters[0].Value[SkillID=6002201,Name=ModifyID_XTHX].Value -> data/num-modifier-lock.json#lc:160202008_1_0",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10132072.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10132072.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022011_2 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022017.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022011 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022017.Parameters[0] -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022017.Parameters[0].Value[SkillID=6002201,Name=ModifyID_XTHX].Value -> data/num-modifier-lock.json#lc:160202008_2_0",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10132073.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10132073.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022011_3 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022018.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022011 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022018.Parameters[0] -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022018.Parameters[0].Value[SkillID=6002201,Name=ModifyID_XTHX].Value -> data/num-modifier-lock.json#lc:160202008_3_0",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013309",
+      "label": "S1 禁忌之瞳·精准射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013309"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160202004_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:160202004_2_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:160202004_3_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022004_1.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133091.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133091.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022002.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022004",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022002.Parameters[0]",
+          "data/num-modifier-lock.json#lc:160202004_1_0",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133091.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133091.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022002.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022004 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022002.Parameters[0] -> data/num-modifier-lock.json#lc:160202004_1_0",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022004_2.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133092.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133092.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_2",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022003.Parameters",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022003.Parameters[0]",
+          "data/num-modifier-lock.json#lc:160202004_2_1",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133092.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133092.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_2 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022003.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022004 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022003.Parameters[0] -> data/num-modifier-lock.json#lc:160202004_2_1",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022004_3.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133093.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133093.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_3",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022004.Parameters",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022004.Parameters[0]",
+          "data/num-modifier-lock.json#lc:160202004_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133093.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133093.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_3 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022004.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022004 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022004.Parameters[0] -> data/num-modifier-lock.json#lc:160202004_3_2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -6048,6 +6173,7 @@
           "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters[0]",
           "data/num-modifier-lock.json#lc:1701000103_1_0",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135011.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135011.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1701000103_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters[0] -> data/num-modifier-lock.json#lc:1701000103_1_0",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -6086,6 +6212,7 @@
           "NZM/Content/DataTables/AlwaysCook/GameplaySystem/SystemPresetsTable.json#PVE.SystemConfigPreset[8]",
           "NZM/Content/Numerical/Systems/BP_NumericalConfigSystem.json#Default__BP_NumericalConfigSystem_C.Properties.SettlementConstantConfigTablePath",
           "NZM/Content/DataTables/NumericalSettlementConstantConfig.json#CloseRangeDamageThreshold",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136011.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136011.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1701000105_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000105.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000105.Parameters[0] -> data/num-modifier-lock.json#lc:1701000105_1_0",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -12206,8 +12333,8 @@
         "tree": "frost-barrage",
         "nodeId": "1001504"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。",
       "evidence": {
         "basis": [
           "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013010_1.MGEDescription",
@@ -12243,12 +12370,10 @@
           "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
           "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
           "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-          "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。",
           "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
           "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
           "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
           "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-          "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -12447,8 +12572,8 @@
         "tree": "frost-barrage",
         "nodeId": "1001608"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。",
       "evidence": {
         "basis": [
           "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013003_1.MGEDescription",
@@ -12484,12 +12609,10 @@
           "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
           "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
           "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-          "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。",
           "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
           "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
           "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
           "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-          "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -12974,6 +13097,10 @@
           "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318105001.MGEClass.AssetPathName",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105001.Parameters",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105001.Parameters[0]",
+          "NZM/Content/DataTables/GPActiveSkillDataTable.json#6001401.AbilityAssetSoftPath",
+          "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P.json#DA_S1_HeavyMachineGunMode3P.Properties.AbilityBlueprint",
+          "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.SkillID",
+          "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.MGE_1318105001_SmallPeriodLaunchNum",
           "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318105001_2.MGEDescription",
           "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10033062.TalentILevel",
           "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10033062.TalentSkillsID",
@@ -13120,8 +13247,8 @@
         "tree": "mechanical-dance",
         "nodeId": "1003404"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。",
       "evidence": {
         "basis": [
           "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318102001_1.MGEDescription",
@@ -13166,17 +13293,14 @@
           "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
           "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
           "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-          "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。",
           "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
           "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
           "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
           "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-          "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。",
           "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
           "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
           "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
           "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-          "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -13544,6 +13668,10 @@
           "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318111001_1.MGEDescriptionId",
           "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318111001.MGEClass.AssetPathName",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318111001.Parameters",
+          "NZM/Content/DataTables/GPActiveSkillDataTable.json#6001401.AbilityAssetSoftPath",
+          "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P.json#DA_S1_HeavyMachineGunMode3P.Properties.AbilityBlueprint",
+          "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.SkillID",
+          "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.MGE_1318111001_DeathMomentPlus_LaunchLargeInterval",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318111001.Parameters[0]",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318111001.Parameters[0].Value(SkillID=6001401,Name=MGE_1318111001_DeathMoment_SmallPeriodLaunchNum)",
           "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318111001_2.MGEDescription",
@@ -13578,8 +13706,8 @@
         "tree": "mechanical-dance",
         "nodeId": "1003608"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reasonCode": "not-damage-multiplier",
+      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。",
       "evidence": {
         "basis": [
           "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318115001_1.MGEDescription",
@@ -13600,11 +13728,14 @@
           "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318115001_1.MGEDescriptionId",
           "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318115001.MGEClass.AssetPathName",
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318115001.Parameters",
+          "NZM/Content/DataTables/GPActiveSkillDataTable.json#6001401.AbilityAssetSoftPath",
+          "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P.json#DA_S1_HeavyMachineGunMode3P.Properties.AbilityBlueprint",
+          "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.SkillID",
+          "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.MGE_1318115001_DeathMoment_AddDuration",
           "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
           "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
           "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
           "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-          "Config 参数为空；技能 CDO 有 MGE_1318115001_DeathMoment_AddDuration=0.1，但缺本 MGE 消费蓝图，不能将默认字段直接认定为节点效果。",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -13814,12 +13945,28 @@
         "nodeId": "1011203"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10112031.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10112031.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024001_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024001",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10112031.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10112031.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024001_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024001",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024001/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=6",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -13882,12 +14029,28 @@
         "nodeId": "1011302"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10113021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10113021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024002_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024002",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10113021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10113021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024002_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024002",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024002/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=1",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -13903,12 +14066,28 @@
         "nodeId": "1011304"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10113041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10113041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024006_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024006",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10113041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10113041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024006_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024006",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024006/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=1",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14013,12 +14192,28 @@
         "nodeId": "1011402"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024003/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14034,12 +14229,28 @@
         "nodeId": "1011404"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024007_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024007",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024007_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024007",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024007/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14135,12 +14346,28 @@
         "nodeId": "1011502"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024004_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024004",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024004_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024004",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024004/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=3",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14156,12 +14383,28 @@
         "nodeId": "1011504"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024008_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024008",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024008_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024008",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024008/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14246,12 +14489,28 @@
         "nodeId": "1011602"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024005/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14267,12 +14526,28 @@
         "nodeId": "1011604"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024009_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024009",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024009_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024009",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024009/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=1",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14513,12 +14788,28 @@
         "nodeId": "1012203"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10122031.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10122031.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024001_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024001",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10122031.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10122031.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024001_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024001",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024001/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=6",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14584,12 +14875,28 @@
         "nodeId": "1012302"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10123021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10123021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024002_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024002",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10123021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10123021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024002_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024002",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024002/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=1",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14605,12 +14912,28 @@
         "nodeId": "1012304"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10123041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10123041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024006_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024006",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10123041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10123041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024006_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024006",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024006/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=1",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14749,12 +15072,28 @@
         "nodeId": "1012402"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024003/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14770,12 +15109,28 @@
         "nodeId": "1012404"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024007_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024007",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024007_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024007",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024007/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14877,12 +15232,28 @@
         "nodeId": "1012502"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10125021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10125021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024004_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024004",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10125021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10125021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024004_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024004",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024004/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=3",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -14898,12 +15269,28 @@
         "nodeId": "1012504"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10125041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10125041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024008_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024008",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10125041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10125041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024008_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024008",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024008/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15047,12 +15434,28 @@
         "nodeId": "1012602"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024005/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15068,12 +15471,28 @@
         "nodeId": "1012604"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024009_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024009",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024009_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024009",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024009/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=1",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15299,42 +15718,29 @@
         "nodeId": "1013203"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10132031.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10132031.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024001_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024001",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10132031.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10132031.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024001_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024001",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024001/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=6",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013207",
-      "label": "S1 禁忌之瞳·血曈回响",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013207"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
-      "evidence": {
-        "basis": [
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022011/1 -> 1319022016; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-          "RESOLVED=0; REMAINING=2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022011/2 -> 1319022017; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-          "RESOLVED=0; REMAINING=2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022011/3 -> 1319022018; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-          "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -15370,12 +15776,28 @@
         "nodeId": "1013302"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024002_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024002",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024002_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024002",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024002/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=1",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15391,12 +15813,28 @@
         "nodeId": "1013304"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024006_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024006",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024006_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024006",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024006/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=1",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15482,56 +15920,6 @@
       }
     },
     {
-      "id": "season:s1:forbidden-eye:1013309",
-      "label": "S1 禁忌之瞳·精准射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013309"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022004_1.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133091.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133091.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022002.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022004",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022002.Parameters[0]",
-          "data/num-modifier-lock.json#lc:160202004_1_0",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022004_2.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133092.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133092.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_2",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022003.Parameters",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022003.Parameters[0]",
-          "data/num-modifier-lock.json#lc:160202004_2_1",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022004_3.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133093.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10133093.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022004_3",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022004.Parameters",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022004.Parameters[0]",
-          "data/num-modifier-lock.json#lc:160202004_3_2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022004/1 -> 1319022002; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
-          "RESOLVED=1; REMAINING=0",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022004/2 -> 1319022003; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
-          "RESOLVED=1; REMAINING=0",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
-          "RESOLVED=1; REMAINING=0",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
       "id": "season:s1:forbidden-eye:1013401",
       "label": "S1 禁忌之瞳·立场满溢",
       "source": {
@@ -15561,12 +15949,28 @@
         "nodeId": "1013402"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024003/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15582,12 +15986,28 @@
         "nodeId": "1013404"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024007_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024007",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024007_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024007",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024007/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15728,12 +16148,28 @@
         "nodeId": "1013502"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024004_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024004",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024004_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024004",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024004/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=3",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15749,12 +16185,28 @@
         "nodeId": "1013504"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024008_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024008",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10135041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024008_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024008",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024008/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15892,12 +16344,28 @@
         "nodeId": "1013602"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024005/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15913,12 +16381,28 @@
         "nodeId": "1013604"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
+      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
       "evidence": {
         "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024009_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024009",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136041.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136041.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024009_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024009",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "PASSIVE_CONFIG_SELECTION: 1319024009/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "SEMANTIC_CONFLICT: Main 与 Season Passive 均指向 1319022030.ModifyID=160202005（赛季充能），不支持虫群描述；Main MGE 无注册，完整挂载按 1319024 名称检索为零。此命名和身份路径无执行包可用，不宣称全量删除。",
+          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=1",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]

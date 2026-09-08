@@ -20,7 +20,7 @@ if (frameDir) {
 }
 const lines = ["# S0 / S1 视频补充清单", "", "录像展示值尚未核实配置，不是实际伤害测试或乘区依据。只补本节点、本等级原有空缺；已有结构化配置不覆盖，未展示的等级不推算。", "",
   `录像：${VIDEO_VALUE_EVIDENCE.source.fileName}`, `SHA-256：\`${VIDEO_VALUE_EVIDENCE.source.sha256}\``, "",
-  "| 赛季 | 分支 | 配置已核验 | 录像补充 | 用户补充 | 仍未填充 |", "| --- | --- | ---: | ---: | ---: | ---: |",
+  "| 赛季 | 分支 | 配置已核验 | 录像补充 | 用户补充 | 原描述参考 | 文案仍缺 |", "| --- | --- | ---: | ---: | ---: | ---: | ---: |",
 ];
 let count = 0;
 for (const tree of trees) {
@@ -28,22 +28,23 @@ for (const tree of trees) {
   const reviewed = levels.reduce((sum, level) => sum + (level.valueReview?.resolvedCount ?? 0), 0);
   const video = levels.reduce((sum, level) => sum + (level.videoReview?.values.length ?? 0), 0);
   const reported = levels.reduce((sum, level) => sum + (level.reportedReview?.count ?? 0), 0);
-  const missing = levels.reduce((sum, level) => sum + (level.valueReview?.remaining ?? 0), 0) - video - reported;
-  lines.push(`| ${tree.season.toUpperCase()} | ${tree.name} | ${reviewed} | ${video} | ${reported} | ${missing} |`);
+  const references = levels.reduce((sum, level) => sum + (level.descriptionReferences?.length ?? 0), 0);
+  const missing = levels.reduce((sum, level) => sum + (level.valueReview?.remaining ?? 0), 0) - video - reported - references;
+  lines.push(`| ${tree.season.toUpperCase()} | ${tree.name} | ${reviewed} | ${video} | ${reported} | ${references} | ${missing} |`);
 }
 for (const entry of VIDEO_VALUE_EVIDENCE.entries) {
   const tree = trees.find(tree => tree.season === entry.season && tree.id === entry.treeId);
   const node = tree?.nodes.find(node => node.id === entry.nodeId);
   const level = node?.levels.find(level => level.level === entry.level);
-  assert.ok(tree && node && level?.videoReview, `Unmatched observation: ${entry.nodeId}/${entry.level}`);
+  assert.ok(tree && node && level, `Unmatched observation: ${entry.nodeId}/${entry.level}`);
   assert.equal(node.name, entry.nodeName);
   lines.push("", `## ${tree.season.toUpperCase()} · ${tree.name} · ${node.name} · Lv.${entry.level}`, "",
     `节点：\`${entry.nodeId}\`；录像时间：**${videoTimestamp(entry.seconds)}**；等级依据：${entry.levelEvidence}。`, "",
     `[定位帧](${entry.frame}) · 帧 SHA-256：\`${entry.frameSha256}\``, "",
   );
-  for (const value of entry.values) {
-    lines.push(`${++count}. **${value.value}**（录像展示值，未核实配置）：${value.context.replace("〔数值待核实〕", `【${value.value}】`).replaceAll("\n", " ")}`);
-  }
+  const applied = level.videoReview?.values ?? [];
+  if (applied.length < entry.values.length) lines.push(`原录像记录：${entry.values.map(value => value.value).join("、")}；其中 ${entry.values.length - applied.length} 处已被配置取代，原帧与记录继续保留。`);
+  for (const value of applied) lines.push(`${++count}. **${value.value}**（录像展示值，未核实配置）：${value.context.replace("〔数值待核实〕", `【${value.value}】`).replaceAll("\n", " ")}`);
   if (entry.notes.length) lines.push("", ...entry.notes.map(note => `差异记录：${note}`));
 }
 const remaining = trees.flatMap(tree => tree.nodes.flatMap(node => node.levels)).reduce((sum, level) => sum + (level.valueReview?.remaining ?? 0), 0);

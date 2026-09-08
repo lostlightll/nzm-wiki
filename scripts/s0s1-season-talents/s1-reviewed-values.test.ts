@@ -21,6 +21,28 @@ function fixture(id: number, level: number, configId: number, description: strin
 const review = (evidence: S1ReviewEvidence, id: number, level = 1) => reviewS1Values({ nodeId: "1011201", level, skillIds: [id] }, evidence);
 const render = (result: ReturnType<typeof review>) => resolver.resolveGameModifierTokens(resolver.resolveTemplate(result.descriptionTemplate, result.descriptionBindings)).text;
 
+test("swarm import isolates the actual charge config and rejects changed execution evidence", () => {
+  const evidence = fixture(1319024003, 1, 1319022030, "飞虫命中后增加10%受到的伤害。", [{ Type: "EMGEParameterType::ID", Name: "ModifyID", Value: "160202005" }]);
+  const result = review(evidence, 1319024003);
+  assert.equal(result.valueReview.executionConflict?.code, "unrelated-charge-config");
+  assert.ok(result.valueReview.executionConflict?.sources.some(source => source.includes("1319022030.Parameters")));
+  assert.ok(result.valueReview.executionConflict?.sources.some(source => source.includes("num-modifier-lock.json#lc:160202005_")));
+  assert.deepEqual(result.indexedApplications, []);
+  assert.deepEqual(result.valueReview.applications, []);
+  assert.equal(result.provenance.length, 0);
+  assert.ok(result.missing.every(item => item.reason.includes("已隔离")));
+  for (const mutate of [
+    (changed: S1ReviewEvidence) => { (changed.tables.params["1319022030"] as { Parameters: Array<{ Value: string }> }).Parameters[0].Value = "111010161"; },
+    (changed: S1ReviewEvidence) => { (changed.tables.passive.exact as { MGEConfig: { Id: string } }).MGEConfig.Id = "1319024003"; },
+    (changed: S1ReviewEvidence) => { changed.tables.mge["1319024003"] = { MGEId: 1319024003 }; },
+    (changed: S1ReviewEvidence) => { delete changed.tables.passive.exact; },
+  ]) {
+    const changed = structuredClone(evidence);
+    mutate(changed);
+    assert.throws(() => review(changed, 1319024003), /S1_SWARM_EXECUTION_DRIFT/);
+  }
+});
+
 test("reported supplements are isolated and reject missing or repeated slots", () => {
   const entry = REPORTED_VALUES.entries[0];
   const makeLevel = (descriptionTemplate = entry.from, level = 1): LegacyTalentLevel => ({ level, description: "", descriptionTemplate, facts: [], modifierRows: [], warnings: [] });
@@ -119,10 +141,31 @@ test("precision shooting binds exact Passive levels despite the default-level di
     assert.equal(result.provenance.length, 1);
     assert.equal(result.provenance[0].basis, "passive-config");
     assert.equal(result.provenance[0].expression?.row, row);
+    assert.deepEqual(result.indexedApplications.map(item => item.expression), [{ row, field: "base" }]);
   }
   const changed = structuredClone(evidence);
   delete changed.tables.params["1319022003"];
   assert.throws(() => reviewS1Values({ nodeId: "1013309", level: 2, skillIds: [1319022004] }, changed), /S1_REVIEW_CONFIG_MISSING/);
+});
+
+test("red-eye skill parameter indexes exact coefficient without asserting its input unit", () => {
+  const evidence: S1ReviewEvidence = JSON.parse(readFileSync("data/season-talents/s1/audit.json", "utf8")).valueEvidence.s1;
+  for (const level of [1, 2, 3]) {
+    const result = reviewS1Values({ nodeId: "1013207", level, skillIds: [1319022011] }, evidence);
+    assert.equal(result.remaining, 2);
+    assert.equal(result.provenance.length, 0);
+    const application = result.indexedApplications[0];
+    assert.equal(result.indexedApplications.length, 1);
+    assert.equal(application.expression.field, "coefficient");
+    assert.equal(resolver.getRow(application.expression.row).level, level);
+    assert.equal(resolver.getRow(application.expression.row).id, 160202008);
+    assert.ok(application.source.includes("SkillID=6002201,Name=ModifyID_XTHX"));
+    assert.ok(result.valueReview.sources.includes(application.source));
+    assert.ok(result.warnings.some(note => note.includes("运行时输入单位")));
+  }
+  const changed = structuredClone(evidence);
+  delete changed.tables.params["1319022017"];
+  assert.throws(() => reviewS1Values({ nodeId: "1013207", level: 2, skillIds: [1319022011] }, changed), /CONFIG_MISSING/);
 });
 
 // Minimal projection of the reviewed ReadScriptData AST; no refs dependency.
@@ -369,7 +412,7 @@ test("committed offline snapshot reproduces all three branches and accounts for 
   assert.equal(report.summary.tokenBindings, 14);
   assert.equal(report.summary.resolvedCount, 64 + added);
   assert.equal(report.summary.remaining, 214 - added);
-  assert.equal(report.summary.indexedApplications, 9);
+  assert.equal(report.summary.indexedApplications, 15);
   assert.equal(report.sources.length, 10);
   assert.ok(report.sources.every(item => /^[a-f0-9]{64}$/.test(item.sha256)));
   assert.equal(JSON.stringify(evidence), before);
@@ -385,7 +428,7 @@ test("committed offline snapshot reproduces all three branches and accounts for 
   const common = report.levels.filter(result => /^(101[123]201|101[123]501|101[123]601)$/.test(result.nodeId));
   assert.equal(common.length, 9);
   assert.ok(common.every(result => result.resolvedCount === (evidence.range && /^101[123]601$/.test(result.nodeId) ? 2 : 1)));
-  for (const node of ["1012507", "1012605", "1012705", "1012709", "1013207", "1013305", "1013409", "1013505"]) {
+  for (const node of ["1012507", "1012605", "1012705", "1012709", "1013305", "1013409", "1013505"]) {
     assert.ok(report.levels.filter(level => level.nodeId === node).every(level => level.indexedApplications.length === 0));
   }
 });

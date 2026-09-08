@@ -2,9 +2,53 @@
 
 ## Commands
 
+Use one command to regenerate the published trees and multiplier index from
+committed evidence, without local game exports:
+
 ```powershell
-pnpm exec tsx scripts/s0s1-season-talents/extract.ts
-pnpm exec tsx scripts/s0s1-season-talents/extract.ts --assets=MD/_local/s0s1Talent/asset-evidence.json
+pnpm project:s0s1-talents
+pnpm check:s0s1-talents
+```
+
+`project` replays both audits against the current reviewed mappings and committed
+Numerical Lock, then updates S0/S1 providers and both Num runtime projections.
+It finishes with tree, provider, projection and multiplier-index checks. Each
+consumer runs in a fresh process so newly generated JSON is not hidden by module
+caching. It does not refresh source evidence or imply that unresolved values have
+been verified. Both trees are validated before either tree is written.
+
+To refresh from formal Content with the configured local FModel installation:
+
+```powershell
+pnpm extract:s0s1-talents
+```
+
+This exports fresh ReadScriptData evidence, prepares icons, extracts both seasons,
+updates the multiplier index and verifies the results. `refresh:s0s1-talents` is
+an alias for the same workflow. The PowerShell helper uses the existing local
+installation and private profile; it does not install tools or print credentials.
+For a different installation, run `export-taboo-script.ps1` with `-CliAssembly`
+and `-Profile`, then supply its output. Existing exports may also be selected:
+
+```powershell
+pnpm refresh:s0s1-talents --s1-taboo-script=<actor-export.json> --prepare-assets
+pnpm refresh:s0s1-talents --s1-taboo-script=<actor-export.json> --assets=MD/_local/s0s1Talent/asset-evidence.json
+pnpm check:s0s1-talents --sources --s1-taboo-script=<actor-export.json>
+```
+
+`refresh` runs asset preparation when requested, extraction, provider registration,
+Num projections and all checks, including comparison to current source evidence.
+It uses a newly exported or explicitly supplied blueprint; it never recycles the
+committed blueprint as proof of a new export. The icon exporter requires the existing texture exports
+and reviewed atlas hash. Missing exports or changed evidence fail with their
+original diagnostics. Neither mode refreshes the shared Numerical Lock or search
+index. A failure stops later steps; the whole pipeline is not a filesystem
+transaction, so rerun after resolving the reported failure.
+
+Individual maintenance commands remain available:
+
+```powershell
+pnpm exec tsx scripts/s0s1-season-talents/extract.ts --s1-taboo-script=<actor-export.json> --assets=MD/_local/s0s1Talent/asset-evidence.json
 pnpm exec tsx scripts/s0s1-season-talents/check.ts
 pnpm exec tsx scripts/s0s1-season-talents/check.ts --sources
 pnpm exec tsx --test lib/s0s1-season-talents.test.ts
@@ -13,7 +57,9 @@ pnpm num-modifier:project
 pnpm exec tsx scripts/s0s1-season-talents/audit-values.ts --out=MD/_local/s0s1Talent/value-review.json
 ```
 
-Extraction reads only the formal `refs/Exports/NZM/Content/DataTables` tables and the existing Numerical adapter. It writes only `data/season-talents/s0/` and `data/season-talents/s1/`. No Lock refresh, image conversion or shared script registration is performed.
+The low-level extractor reads formal Content tables, reviewed structured exports
+and the existing Numerical adapter. It writes only `data/season-talents/s0/` and
+`data/season-talents/s1/`; use the commands above for the complete pipeline.
 
 `trees.json` is the resolved projection with explicit Modifier references and sanitized description templates. `audit.json` preserves the relevant Main/GPActive rows, source SHA-256 hashes, excluded Basic nodes and visual verification limitations. Offline check reads the original JSON directly and replays committed evidence against the current Numerical Resolver; it never calls the live reader, which would hide stale projections. `--sources` additionally compares the original export hashes and the evidence subset. Optional asset evidence records explicit missing sprites; checks never require image files to exist.
 
@@ -22,11 +68,12 @@ Extraction reads only the formal `refs/Exports/NZM/Content/DataTables` tables an
 - `historicalStatus` applies only to branch appearance, based on the user's supplied video conclusions. It does not confirm individual nodes, edges or historical values. S0 destruction-dream is an unconfirmed reference branch; consumers should separate it from the two confirmed S0 branches.
 - No video was independently inspected by this extractor. Node/edge correspondence and atlas images remain pending manual review.
 - Selection uses SeasonID=1, SeasonPhaseID=0/1 and the seven rows in each Structure1/2/3. Extra Basic nodes are retained only in audit evidence.
+- Applicable weapons follow root Basic `AdaptWeapon` to the exact phase's `AdaptWeaponTable.TextID`; formatting tags and the label prefix are removed. Older offline audits without the table omit this field. Fresh evidence must have one matching row; no cross-phase or weapon-name fallback is used.
 - Reviewed prose for the five confirmed branches follows Basic skill identity -> exact-level MGEPassiveMainTable -> MGEConfig.Id and MGE.Id/MGEDescriptionId -> selected Main rows. A skill ID is not necessarily its ConfigId or MGEId. SeasonSkill descriptions require exact SkillId/SkillLevel. Missing levels are not substituted. The original direct same-ID facts remain diagnostic only.
 - SeasonSkill also joins GPActiveSkillDataTable by exact row key and AbilityID. Duration and CooldownDuration are source-labelled raw seconds. Missing rows/fields warn; mismatched identities and invalid scalar values fail. Duration=0 does not prove a zero-duration effect. Only the reviewed standalone cooldown lines for SkillIDs 6001301, 6001401 and 6002301 at level 1 bind to CooldownDuration. Ambiguous lines and effect durations stay masked.
 - Explicit Modifier parameters use `getRowsById("lc", id)` filtered by the Basic level. GPModifier tokens retain their own exact level/index; tokens without a level use the Resolver default of 1 and warn on higher talent levels. No token level rewriting occurs.
 - Non-Modifier Numerical IDs remain structured references, not invented damage formulas. Parameters without a confirmed gameplay mapping are displayed only as source-labelled technical facts.
-- Numbers in ordinary descriptions are masked even if a similarly valued parameter exists; matching digits is not a semantic mapping. Unsupported game tokens are also masked. Non-numeric semantics remain intact.
+- The configured `descriptionTemplate` continues to mask quantities without a verified binding. `descriptionReferences` separately preserves the original wording, exact description source and missing-chain reason for the remaining slots, after video and reported supplements. The page renders these in ordinary body text, with a source notice and hover explanation, so phrases such as “一次” remain readable. They never replace a verified binding, affect audit counts or register multiplier applications. Unsupported game tokens remain unresolved rather than becoming displayed numbers.
 - Main parameter facts and description-token facts are retained independently. They can disagree; neither identity chain is rewritten to imitate the other, and old MGEConfig_Season rows never override Main.
 - Same-ID joins prove only current configuration references, never continuity of a historical node's effect. Every extracted fact carries `historicalEffectStatus: unverified | semantic-conflict` and `evidenceKind: basic-identity | current-same-id | current-description-token`. Branch `historicalStatus` is independent. A description Token with a resolvable number is still not confirmed historical evidence.
 - Runtime reads the small projections and recomputes Modifier facts and GPToken prose through the existing server-only Numerical adapter. It never reads refs or audit evidence. The full Lock remains server-side; clients use type-only imports and receive resolved data from a server component. Changes to the committed Lock take effect when the server module is reloaded/rebuilt, not by hot-reading a changed Lock file.
@@ -34,6 +81,19 @@ Extraction reads only the formal `refs/Exports/NZM/Content/DataTables` tables an
 - `descriptionTemplate?: string` contains sanitized prose, reviewed structured scalars, V2 binding placeholders and supported GPModifier tokens. `descriptionBindings` resolves against the latest main Lock at runtime; `valueReview` records sources, limitations and reviewed applications. Missing live Modifier rows or unresolved live tokens fail rather than falling back to cached values. Missing extraction-time references still require re-extraction when new evidence becomes available.
 
 ## Reviewed Values and Index
+
+S1 swarm nodes now carry `valueReview.executionConflict` after checking the exact
+Passive level, Config `1319022030`, `ModifyID=160202005`, charge-speed Numerical
+attribute and absent MGE registration. Any change requires another review.
+These nodes cannot publish applications; the provider exclusions record the
+specific broken link instead of treating charge parameters as swarm effects.
+`swarm-evidence.ts` compares formal Content and Content_S2 and traces the actual
+enemy/teammate projectile candidate under `MGE_1398001250`. That candidate has no
+proven talent entry link, so its parameters are not assigned to these talents.
+
+```powershell
+pnpm exec tsx scripts/s0s1-season-talents/swarm-evidence.ts
+```
 
 `s0-reviewed-values.ts` and `s1-reviewed-values.ts` audit every level in the five confirmed branches. Compact `audit.json.valueEvidence` permits replay without refs. Tests guard exact identities, semantics, parameter types, levels, quantities and missing-row behavior. Description numbers are never copied as evidence. Structured scalars are allowed only with a reviewed field/meaning mapping. Valid GPModifier tokens with unresolved attribute quantity keep the existing Resolver format, but do not become new bindings or index applications.
 
@@ -86,7 +146,7 @@ transparent edges. The Buff prefix fallback also recovers `Icons_Buff_10000052`.
 
 ```powershell
 pnpm exec tsx scripts/prepare-s0s1-talent-assets.ts
-pnpm exec tsx scripts/s0s1-season-talents/extract.ts --assets=MD/_local/s0s1Talent/asset-evidence.json
+pnpm refresh:s0s1-talents --s1-taboo-script=<actor-export.json> --assets=MD/_local/s0s1Talent/asset-evidence.json
 pnpm test:s0s1-talents
 ```
 

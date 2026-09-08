@@ -37,6 +37,10 @@
     {
       "path": "NZM/Content/DataTables/GPActiveSkillDataTable.json",
       "sha256": "daf2d25c48b723e122951fd34f94b1ac06cd2b00f75abf360d382f221395e2eb"
+    },
+    {
+      "path": "NZM/Content/DataTables/SeasonTalent/AdaptWeaponTable.json",
+      "sha256": "178625f03c3d53c4eb150c92b0a01f9811698be8b286a848bc1b69eb961cbd1f"
     }
   ],
   "tables": {
@@ -9280,6 +9284,41 @@
         "bAutoSwitchToPrevWeapon": false,
         "bShowCountDownText": false,
         "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      }
+    },
+    "adaptWeapons": {
+      "10101": {
+        "TextID": 1,
+        "SeasonID": 1,
+        "SeasonPhaseID": 1,
+        "TextContent": {
+          "Namespace": "AdaptWeaponTable",
+          "Key": "10101_TextContent",
+          "SourceString": "适配武器：全方面<qiangdiao>适配于所有武器</>",
+          "LocalizedString": "适配武器：全方面<qiangdiao>适配于所有武器</>"
+        }
+      },
+      "10102": {
+        "TextID": 2,
+        "SeasonID": 1,
+        "SeasonPhaseID": 1,
+        "TextContent": {
+          "Namespace": "AdaptWeaponTable",
+          "Key": "10102_TextContent",
+          "SourceString": "适配武器：全方面<qiangdiao>适配于所有武器</>",
+          "LocalizedString": "适配武器：全方面<qiangdiao>适配于所有武器</>"
+        }
+      },
+      "10103": {
+        "TextID": 3,
+        "SeasonID": 1,
+        "SeasonPhaseID": 1,
+        "TextContent": {
+          "Namespace": "AdaptWeaponTable",
+          "Key": "10103_TextContent",
+          "SourceString": "适配武器：全方面<qiangdiao>适配于所有武器</>",
+          "LocalizedString": "适配武器：全方面<qiangdiao>适配于所有武器</>"
+        }
       }
     }
   },

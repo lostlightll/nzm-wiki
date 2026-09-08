@@ -667,7 +667,19 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 2
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "一",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319014005_1.MGEDescription",
+                "reason": "Passive 的 MGEConfig=None；Common/MGE_1319014005 蓝图导出缺失，按元素状态增加暴击的链未绑定。"
+              },
+              {
+                "text": "5%",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319014005_1.MGEDescription",
+                "reason": "Passive 的 MGEConfig=None；Common/MGE_1319014005 蓝图导出缺失，按元素状态增加暴击的链未绑定。"
+              }
+            ]
           }
         ]
       },
@@ -839,7 +851,14 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 1
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "6%",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013008_1.MGEDescription",
+                "reason": "Ratio 参数已定位，但爆炸范围消费字段及单位未确认；不能仅凭同值把通用 Ratio 解释成范围增幅。"
+              }
+            ]
           },
           {
             "level": 2,
@@ -1739,7 +1758,14 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 1
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "8",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013016_2.MGEDescription",
+                "reason": "TimeNormal/TimeSpecial 已定位；武器分类到 TimeSpecial 的消费分支未导出，不能只凭数值相同选择。"
+              }
+            ]
           },
           {
             "level": 3,
@@ -2097,7 +2123,7 @@
         "levels": [
           {
             "level": 1,
-            "description": "取消技能后，根据所剩时间返还一定的技能充能，每剩余〔数值待核实〕秒，返还3%充能。",
+            "description": "取消技能后，根据所剩时间返还一定的技能充能，每剩余1秒，返还3%充能。",
             "modifierRows": [],
             "facts": [
               {
@@ -2119,10 +2145,9 @@
               "CURRENT_CONFIG_ONLY: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319013010 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10015041.TalentSkillsID=1319013010 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013010_1 1; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10015041.TalentSkillsID=1319013010 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013010_1 3%; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "取消技能后，根据所剩时间返还一定的技能充能，每剩余〔数值待核实〕秒，返还3%充能。",
+            "descriptionTemplate": "取消技能后，根据所剩时间返还一定的技能充能，每剩余1秒，返还3%充能。",
             "descriptionBindings": {},
             "valueReview": {
               "sources": [
@@ -2151,17 +2176,16 @@
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
                 "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
                 "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
-                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-                "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 1
+              "resolvedCount": 2,
+              "remaining": 0
             }
           },
           {
             "level": 2,
-            "description": "取消技能后，根据所剩时间返还一定的技能充能，每剩余〔数值待核实〕秒，返还5%充能。",
+            "description": "取消技能后，根据所剩时间返还一定的技能充能，每剩余1秒，返还5%充能。",
             "modifierRows": [],
             "facts": [
               {
@@ -2183,10 +2207,9 @@
               "CURRENT_CONFIG_ONLY: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319013010 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10015042.TalentSkillsID=1319013010 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013010_2 1; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10015042.TalentSkillsID=1319013010 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013010_2 5%; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "取消技能后，根据所剩时间返还一定的技能充能，每剩余〔数值待核实〕秒，返还5%充能。",
+            "descriptionTemplate": "取消技能后，根据所剩时间返还一定的技能充能，每剩余1秒，返还5%充能。",
             "descriptionBindings": {},
             "valueReview": {
               "sources": [
@@ -2215,12 +2238,11 @@
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
                 "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
                 "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
-                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-                "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 1
+              "resolvedCount": 2,
+              "remaining": 0
             }
           }
         ]
@@ -2388,7 +2410,19 @@
               "applications": [],
               "resolvedCount": 1,
               "remaining": 2
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "1",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013007_1.MGEDescription",
+                "reason": "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+              },
+              {
+                "text": "15",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013007_1.MGEDescription",
+                "reason": "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+              }
+            ]
           },
           {
             "level": 2,
@@ -2453,7 +2487,19 @@
               "applications": [],
               "resolvedCount": 1,
               "remaining": 2
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "1",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013007_2.MGEDescription",
+                "reason": "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+              },
+              {
+                "text": "15",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013007_2.MGEDescription",
+                "reason": "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+              }
+            ]
           }
         ]
       },
@@ -2629,7 +2675,24 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 3
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "一",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319014004_1.MGEDescription",
+                "reason": "Passive 的 MGEConfig=None；Common/MGE_1319014004 蓝图导出缺失，范围与眩晕时间未绑定。"
+              },
+              {
+                "text": "3",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319014004_1.MGEDescription",
+                "reason": "Passive 的 MGEConfig=None；Common/MGE_1319014004 蓝图导出缺失，范围与眩晕时间未绑定。"
+              },
+              {
+                "text": "1",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319014004_1.MGEDescription",
+                "reason": "Passive 的 MGEConfig=None；Common/MGE_1319014004 蓝图导出缺失，范围与眩晕时间未绑定。"
+              }
+            ]
           }
         ]
       },
@@ -2787,7 +2850,7 @@
         "levels": [
           {
             "level": 1,
-            "description": "释放技能时，每有〔数值待核实〕层聚能，技能的持续时间额外增加0.06秒。",
+            "description": "释放技能时，每有1层聚能，技能的持续时间额外增加0.06秒。",
             "modifierRows": [],
             "facts": [
               {
@@ -2809,10 +2872,9 @@
               "CURRENT_CONFIG_ONLY: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319013003 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10016081.TalentSkillsID=1319013003 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013003_1 一; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10016081.TalentSkillsID=1319013003 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013003_1 0.06; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "释放技能时，每有〔数值待核实〕层聚能，技能的持续时间额外增加0.06秒。",
+            "descriptionTemplate": "释放技能时，每有1层聚能，技能的持续时间额外增加0.06秒。",
             "descriptionBindings": {},
             "valueReview": {
               "sources": [
@@ -2841,12 +2903,11 @@
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
                 "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
                 "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
-                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-                "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 1
+              "resolvedCount": 2,
+              "remaining": 0
             }
           },
           {
@@ -2873,8 +2934,7 @@
               "CURRENT_CONFIG_ONLY: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319013003 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10016082.TalentSkillsID=1319013003 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013003_2 一; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10016082.TalentSkillsID=1319013003 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319013003_2 0.1; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
             "descriptionTemplate": "释放技能时，每有1层聚能，技能的持续时间额外增加0.1秒。",
             "descriptionBindings": {},
@@ -2905,26 +2965,11 @@
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
                 "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
                 "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
-                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-                "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 1
-            },
-            "videoReview": {
-              "status": "video-display-unverified",
-              "sourceId": "s0s1-user-recording",
-              "timestamp": "03:15",
-              "levelEvidence": "当前亮点 2/2",
-              "values": [
-                {
-                  "slot": 0,
-                  "value": "1",
-                  "context": "释放技能时，每有〔数值待核实〕层聚能，技能的持续时间额外增加0.1秒。"
-                }
-              ],
-              "notes": []
+              "resolvedCount": 2,
+              "remaining": 0
             }
           }
         ]
@@ -3424,6 +3469,7 @@
         ]
       }
     ],
+    "applicableWeapons": "连发榴弹、单发榴弹、火箭发射器、霰弹枪、弓箭",
     "historicalStatus": "video-confirmed",
     "evidenceNotes": [
       "结构来源：主 Content，SeasonID=1，SeasonPhaseID=0，Structure1 的七行；仅纳入结构节点。",
@@ -5277,6 +5323,7 @@
         ]
       }
     ],
+    "applicableWeapons": "射手步枪、狙击步枪、手枪",
     "historicalStatus": "unconfirmed",
     "evidenceNotes": [
       "结构来源：主 Content，SeasonID=1，SeasonPhaseID=0，Structure2 的七行；仅纳入结构节点。",
@@ -6134,7 +6181,7 @@
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10033061.TalentSkillsID=1318105001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318105001_1 1; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10033061.TalentSkillsID=1318105001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318105001_1 12%; 无逐项结构映射，不采用描述数值。",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 2 quantities lack verified structured bindings."
+              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
             ],
             "descriptionTemplate": "机械臂展开后，武器射击每命中24次，释放1枚飞弹，造成30%攻击力伤害。",
             "descriptionBindings": {},
@@ -6158,7 +6205,11 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318105001_1.MGEDescriptionId",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318105001.MGEClass.AssetPathName",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105001.Parameters",
-                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105001.Parameters[0]"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105001.Parameters[0]",
+                "NZM/Content/DataTables/GPActiveSkillDataTable.json#6001401.AbilityAssetSoftPath",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P.json#DA_S1_HeavyMachineGunMode3P.Properties.AbilityBlueprint",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.SkillID",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.MGE_1318105001_SmallPeriodLaunchNum"
               ],
               "notes": [
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
@@ -6168,8 +6219,8 @@
                 "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 2
+              "resolvedCount": 2,
+              "remaining": 1
             },
             "videoReview": {
               "status": "video-display-unverified",
@@ -6179,13 +6230,8 @@
               "values": [
                 {
                   "slot": 0,
-                  "value": "1",
-                  "context": "机械臂展开后，武器射击每命中24次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
-                },
-                {
-                  "slot": 1,
                   "value": "30%",
-                  "context": "中24次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
+                  "context": "机械臂展开后，武器射击每命中24次，释放1枚飞弹，造成〔数值待核实〕攻击力伤害。"
                 }
               ],
               "notes": []
@@ -6217,7 +6263,7 @@
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10033062.TalentSkillsID=1318105001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318105001_2 1; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10033062.TalentSkillsID=1318105001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318105001_2 12%; 无逐项结构映射，不采用描述数值。",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 2 quantities lack verified structured bindings."
+              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
             ],
             "descriptionTemplate": "机械臂展开后，武器射击每命中12次，释放1枚飞弹，造成30%攻击力伤害。",
             "descriptionBindings": {},
@@ -6241,7 +6287,11 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318105001_2.MGEDescriptionId",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318105001.MGEClass.AssetPathName",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105002.Parameters",
-                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105002.Parameters[0]"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105002.Parameters[0]",
+                "NZM/Content/DataTables/GPActiveSkillDataTable.json#6001401.AbilityAssetSoftPath",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P.json#DA_S1_HeavyMachineGunMode3P.Properties.AbilityBlueprint",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.SkillID",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.MGE_1318105001_SmallPeriodLaunchNum"
               ],
               "notes": [
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
@@ -6251,8 +6301,8 @@
                 "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 2
+              "resolvedCount": 2,
+              "remaining": 1
             },
             "videoReview": {
               "status": "video-display-unverified",
@@ -6262,13 +6312,8 @@
               "values": [
                 {
                   "slot": 0,
-                  "value": "1",
-                  "context": "机械臂展开后，武器射击每命中12次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
-                },
-                {
-                  "slot": 1,
                   "value": "30%",
-                  "context": "中12次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
+                  "context": "机械臂展开后，武器射击每命中12次，释放1枚飞弹，造成〔数值待核实〕攻击力伤害。"
                 }
               ],
               "notes": []
@@ -6300,7 +6345,7 @@
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10033063.TalentSkillsID=1318105001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318105001_3 1; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10033063.TalentSkillsID=1318105001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318105001_3 12%; 无逐项结构映射，不采用描述数值。",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 2 quantities lack verified structured bindings."
+              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
             ],
             "descriptionTemplate": "机械臂展开后，武器射击每命中8次，释放1枚飞弹，造成30%攻击力伤害。",
             "descriptionBindings": {},
@@ -6324,7 +6369,11 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318105001_3.MGEDescriptionId",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318105001.MGEClass.AssetPathName",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105003.Parameters",
-                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105003.Parameters[0]"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318105003.Parameters[0]",
+                "NZM/Content/DataTables/GPActiveSkillDataTable.json#6001401.AbilityAssetSoftPath",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P.json#DA_S1_HeavyMachineGunMode3P.Properties.AbilityBlueprint",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.SkillID",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.MGE_1318105001_SmallPeriodLaunchNum"
               ],
               "notes": [
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
@@ -6334,8 +6383,8 @@
                 "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 2
+              "resolvedCount": 2,
+              "remaining": 1
             },
             "videoReview": {
               "status": "video-display-unverified",
@@ -6345,13 +6394,8 @@
               "values": [
                 {
                   "slot": 0,
-                  "value": "1",
-                  "context": "机械臂展开后，武器射击每命中8次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
-                },
-                {
-                  "slot": 1,
                   "value": "30%",
-                  "context": "命中8次，释放〔数值待核实〕枚飞弹，造成〔数值待核实〕攻击力伤害。"
+                  "context": "机械臂展开后，武器射击每命中8次，释放1枚飞弹，造成〔数值待核实〕攻击力伤害。"
                 }
               ],
               "notes": []
@@ -6433,7 +6477,14 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 1
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "12%",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318107001_1.MGEDescription",
+                "reason": "BaseMinSpeedFireInterval 是间隔绝对值；基础射速、最终射速公式及改动范围未确证，不能换算描述百分比。"
+              }
+            ]
           },
           {
             "level": 2,
@@ -6494,7 +6545,14 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 1
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "16%",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318107001_2.MGEDescription",
+                "reason": "BaseMinSpeedFireInterval 是间隔绝对值；基础射速、最终射速公式及改动范围未确证，不能换算描述百分比。"
+              }
+            ]
           },
           {
             "level": 3,
@@ -6787,8 +6845,7 @@
               "CURRENT_CONFIG_ONLY: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318102001 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034041.TalentSkillsID=1318102001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318102001_1 一; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034041.TalentSkillsID=1318102001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318102001_1 0.06; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
             "descriptionTemplate": "释放赛季技能时，每拥有1层聚能状态，额外增加机械臂0.06秒持续时间。",
             "descriptionBindings": {},
@@ -6819,26 +6876,11 @@
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
                 "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
                 "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
-                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-                "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 1
-            },
-            "videoReview": {
-              "status": "video-display-unverified",
-              "sourceId": "s0s1-user-recording",
-              "timestamp": "00:50",
-              "levelEvidence": "当前亮点 1/3",
-              "values": [
-                {
-                  "slot": 0,
-                  "value": "1",
-                  "context": "释放赛季技能时，每拥有〔数值待核实〕层聚能状态，额外增加机械臂0.06秒持续时间。"
-                }
-              ],
-              "notes": []
+              "resolvedCount": 2,
+              "remaining": 0
             }
           },
           {
@@ -6865,8 +6907,7 @@
               "CURRENT_CONFIG_ONLY: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318102001 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034042.TalentSkillsID=1318102001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318102001_2 一; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034042.TalentSkillsID=1318102001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318102001_2 0.12; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
             "descriptionTemplate": "释放赛季技能时，每拥有1层聚能状态，额外增加机械臂0.12秒持续时间。",
             "descriptionBindings": {},
@@ -6897,31 +6938,16 @@
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
                 "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
                 "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
-                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-                "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 1
-            },
-            "videoReview": {
-              "status": "video-display-unverified",
-              "sourceId": "s0s1-user-recording",
-              "timestamp": "00:50",
-              "levelEvidence": "1/3 下方升级预览",
-              "values": [
-                {
-                  "slot": 0,
-                  "value": "1",
-                  "context": "释放赛季技能时，每拥有〔数值待核实〕层聚能状态，额外增加机械臂0.12秒持续时间。"
-                }
-              ],
-              "notes": []
+              "resolvedCount": 2,
+              "remaining": 0
             }
           },
           {
             "level": 3,
-            "description": "释放赛季技能时，每拥有〔数值待核实〕层聚能状态，额外增加机械臂0.18秒持续时间。",
+            "description": "释放赛季技能时，每拥有1层聚能状态，额外增加机械臂0.18秒持续时间。",
             "modifierRows": [],
             "facts": [
               {
@@ -6943,10 +6969,9 @@
               "CURRENT_CONFIG_ONLY: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318102001 参数未声明天赋等级公式；只记录原值，不推定缩放或历史版本效果。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034043.TalentSkillsID=1318102001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318102001_3 一; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034043.TalentSkillsID=1318102001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318102001_3 0.18; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
-            "descriptionTemplate": "释放赛季技能时，每拥有〔数值待核实〕层聚能状态，额外增加机械臂0.18秒持续时间。",
+            "descriptionTemplate": "释放赛季技能时，每拥有1层聚能状态，额外增加机械臂0.18秒持续时间。",
             "descriptionBindings": {},
             "valueReview": {
               "sources": [
@@ -6975,12 +7000,11 @@
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
                 "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
                 "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
-                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-                "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 1
+              "resolvedCount": 2,
+              "remaining": 0
             }
           }
         ]
@@ -7162,7 +7186,24 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 3
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "0.4%",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318123001_1.MGEDescription",
+                "reason": "一级 Config 参数为空，二级 Config 缺失，MGE_1318123001 蓝图导出缺失；增伤、层数和持续时间均未绑定。"
+              },
+              {
+                "text": "36",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318123001_1.MGEDescription",
+                "reason": "一级 Config 参数为空，二级 Config 缺失，MGE_1318123001 蓝图导出缺失；增伤、层数和持续时间均未绑定。"
+              },
+              {
+                "text": "6",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318123001_1.MGEDescription",
+                "reason": "一级 Config 参数为空，二级 Config 缺失，MGE_1318123001 蓝图导出缺失；增伤、层数和持续时间均未绑定。"
+              }
+            ]
           },
           {
             "level": 2,
@@ -7415,7 +7456,14 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 1
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "30%",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319014001_1.MGEDescription",
+                "reason": "Passive 的 MGEConfig=None；Common/MGE_1319014001 蓝图导出缺失，恢复比例未绑定。"
+              }
+            ]
           }
         ]
       },
@@ -7497,7 +7545,24 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 3
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "1%",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318114001_1.MGEDescription",
+                "reason": "精确等级 Config.NumericalID 指向 HealthThenShieldPercentRecover（生命/护盾恢复），不是描述中的移速；禁止转绑或以描述值补齐。"
+              },
+              {
+                "text": "10",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318114001_1.MGEDescription",
+                "reason": "精确等级 Config.NumericalID 指向 HealthThenShieldPercentRecover（生命/护盾恢复），不是描述中的移速；禁止转绑或以描述值补齐。"
+              },
+              {
+                "text": "10",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318114001_1.MGEDescription",
+                "reason": "精确等级 Config.NumericalID 指向 HealthThenShieldPercentRecover（生命/护盾恢复），不是描述中的移速；禁止转绑或以描述值补齐。"
+              }
+            ]
           },
           {
             "level": 2,
@@ -8105,7 +8170,24 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 3
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "一",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319014004_1.MGEDescription",
+                "reason": "Passive 的 MGEConfig=None；Common/MGE_1319014004 蓝图导出缺失，范围与眩晕时间未绑定。"
+              },
+              {
+                "text": "3",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319014004_1.MGEDescription",
+                "reason": "Passive 的 MGEConfig=None；Common/MGE_1319014004 蓝图导出缺失，范围与眩晕时间未绑定。"
+              },
+              {
+                "text": "1",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319014004_1.MGEDescription",
+                "reason": "Passive 的 MGEConfig=None；Common/MGE_1319014004 蓝图导出缺失，范围与眩晕时间未绑定。"
+              }
+            ]
           }
         ]
       },
@@ -8150,7 +8232,7 @@
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10036041.TalentSkillsID=1318111001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318111001_1 2; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10036041.TalentSkillsID=1318111001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318111001_1 30%; 无逐项结构映射，不采用描述数值。",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 2 quantities lack verified structured bindings."
+              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
             ],
             "descriptionTemplate": "机械之舞持续期间，每2.5秒向敌人释放2枚飞弹，造成30%攻击力伤害。",
             "descriptionBindings": {},
@@ -8174,6 +8256,10 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318111001_1.MGEDescriptionId",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318111001.MGEClass.AssetPathName",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318111001.Parameters",
+                "NZM/Content/DataTables/GPActiveSkillDataTable.json#6001401.AbilityAssetSoftPath",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P.json#DA_S1_HeavyMachineGunMode3P.Properties.AbilityBlueprint",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.SkillID",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.MGE_1318111001_DeathMomentPlus_LaunchLargeInterval",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318111001.Parameters[0]",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318111001.Parameters[0].Value(SkillID=6001401,Name=MGE_1318111001_DeathMoment_SmallPeriodLaunchNum)"
               ],
@@ -8185,8 +8271,8 @@
                 "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 2
+              "resolvedCount": 2,
+              "remaining": 1
             },
             "videoReview": {
               "status": "video-display-unverified",
@@ -8196,13 +8282,8 @@
               "values": [
                 {
                   "slot": 0,
-                  "value": "2.5",
-                  "context": "机械之舞持续期间，每〔数值待核实〕秒向敌人释放2枚飞弹，造成〔数值待核实〕攻击力"
-                },
-                {
-                  "slot": 1,
                   "value": "30%",
-                  "context": "〔数值待核实〕秒向敌人释放2枚飞弹，造成〔数值待核实〕攻击力伤害。"
+                  "context": "机械之舞持续期间，每2.5秒向敌人释放2枚飞弹，造成〔数值待核实〕攻击力伤害。"
                 }
               ],
               "notes": []
@@ -8210,7 +8291,7 @@
           },
           {
             "level": 2,
-            "description": "机械之舞持续期间，每〔数值待核实〕秒向敌人释放3枚飞弹，造成〔数值待核实〕攻击力伤害。",
+            "description": "机械之舞持续期间，每2.5秒向敌人释放3枚飞弹，造成〔数值待核实〕攻击力伤害。",
             "modifierRows": [],
             "facts": [
               {
@@ -8234,9 +8315,9 @@
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10036042.TalentSkillsID=1318111001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318111001_2 3; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10036042.TalentSkillsID=1318111001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318111001_2 30%; 无逐项结构映射，不采用描述数值。",
               "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 2 quantities lack verified structured bindings."
+              "VALUE_REVIEW_PENDING: 1 quantities lack verified structured bindings."
             ],
-            "descriptionTemplate": "机械之舞持续期间，每〔数值待核实〕秒向敌人释放3枚飞弹，造成〔数值待核实〕攻击力伤害。",
+            "descriptionTemplate": "机械之舞持续期间，每2.5秒向敌人释放3枚飞弹，造成〔数值待核实〕攻击力伤害。",
             "descriptionBindings": {},
             "valueReview": {
               "sources": [
@@ -8258,6 +8339,10 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318111001_2.MGEDescriptionId",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318111001.MGEClass.AssetPathName",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318111002.Parameters",
+                "NZM/Content/DataTables/GPActiveSkillDataTable.json#6001401.AbilityAssetSoftPath",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P.json#DA_S1_HeavyMachineGunMode3P.Properties.AbilityBlueprint",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.SkillID",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.MGE_1318111001_DeathMomentPlus_LaunchLargeInterval",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318111002.Parameters[0]",
                 "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318111002.Parameters[0].Value(SkillID=6001401,Name=MGE_1318111001_DeathMoment_SmallPeriodLaunchNum)"
               ],
@@ -8269,9 +8354,16 @@
                 "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
               ],
               "applications": [],
-              "resolvedCount": 1,
-              "remaining": 2
-            }
+              "resolvedCount": 2,
+              "remaining": 1
+            },
+            "descriptionReferences": [
+              {
+                "text": "30%",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318111001_2.MGEDescription",
+                "reason": "未找到该数量到精确结构字段的已审定绑定；不采用描述数字。"
+              }
+            ]
           }
         ]
       },
@@ -8307,8 +8399,7 @@
               "EMPTY_CURRENT_CONFIG: NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318115001 无参数；未采用旧 MGEConfig_Season 同 ID 配置。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10036081.TalentSkillsID=1318115001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318115001_1 1; 无逐项结构映射，不采用描述数值。",
               "UNVERIFIED_DESCRIPTION_NUMBER: NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10036081.TalentSkillsID=1318115001 -> NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318115001_1 0.1; 无逐项结构映射，不采用描述数值。",
-              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。",
-              "VALUE_REVIEW_PENDING: 2 quantities lack verified structured bindings."
+              "CURRENT_IDENTITY_NOT_HISTORICAL: 当前 Main/Num/主动技能事实及描述 Token 均仅为当前同 ID 配置；同 ID 不证明旧节点效果身份延续，未抽查项亦未确认历史效果。"
             ],
             "descriptionTemplate": "释放机械之舞时，每有1层聚能状态，机械之舞时间延长0.1秒。",
             "descriptionBindings": {},
@@ -8331,37 +8422,21 @@
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318115001_1.MGEConfig.Id",
                 "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318115001_1.MGEDescriptionId",
                 "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318115001.MGEClass.AssetPathName",
-                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318115001.Parameters"
+                "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318115001.Parameters",
+                "NZM/Content/DataTables/GPActiveSkillDataTable.json#6001401.AbilityAssetSoftPath",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P.json#DA_S1_HeavyMachineGunMode3P.Properties.AbilityBlueprint",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.SkillID",
+                "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json#Default__SKT_S1_HeavyMachineGunMode3P_C.Properties.MGE_1318115001_DeathMoment_AddDuration"
               ],
               "notes": [
                 "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
                 "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
                 "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
-                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-                "Config 参数为空；技能 CDO 有 MGE_1318115001_DeathMoment_AddDuration=0.1，但缺本 MGE 消费蓝图，不能将默认字段直接认定为节点效果。"
+                "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。"
               ],
               "applications": [],
-              "resolvedCount": 0,
-              "remaining": 2
-            },
-            "videoReview": {
-              "status": "video-display-unverified",
-              "sourceId": "s0s1-user-recording",
-              "timestamp": "01:33",
-              "levelEvidence": "当前亮点 1/1",
-              "values": [
-                {
-                  "slot": 0,
-                  "value": "1",
-                  "context": "释放机械之舞时，每有〔数值待核实〕层聚能状态，机械之舞时间延长〔数值待核实〕秒。"
-                },
-                {
-                  "slot": 1,
-                  "value": "0.1",
-                  "context": "数值待核实〕层聚能状态，机械之舞时间延长〔数值待核实〕秒。"
-                }
-              ],
-              "notes": []
+              "resolvedCount": 2,
+              "remaining": 0
             }
           }
         ]
@@ -8505,7 +8580,24 @@
               "applications": [],
               "resolvedCount": 0,
               "remaining": 3
-            }
+            },
+            "descriptionReferences": [
+              {
+                "text": "300",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318116001_1.MGEDescription",
+                "reason": "MGE_1318116001_MissileCount=300/225 已定位，但字段名与射速阈值语义不等价，换算/触发逻辑未导出；不以同值绑定。"
+              },
+              {
+                "text": "1",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318116001_1.MGEDescription",
+                "reason": "MGE_1318116001_MissileCount=300/225 已定位，但字段名与射速阈值语义不等价，换算/触发逻辑未导出；不以同值绑定。"
+              },
+              {
+                "text": "13%",
+                "source": "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318116001_1.MGEDescription",
+                "reason": "MGE_1318116001_MissileCount=300/225 已定位，但字段名与射速阈值语义不等价，换算/触发逻辑未导出；不以同值绑定。"
+              }
+            ]
           },
           {
             "level": 2,
@@ -8732,6 +8824,7 @@
         ]
       }
     ],
+    "applicableWeapons": "突击步枪、冲锋枪、机枪、射手步枪",
     "historicalStatus": "video-confirmed",
     "evidenceNotes": [
       "结构来源：主 Content，SeasonID=1，SeasonPhaseID=0，Structure3 的七行；仅纳入结构节点。",

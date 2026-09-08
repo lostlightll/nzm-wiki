@@ -37,6 +37,10 @@
     {
       "path": "NZM/Content/DataTables/GPActiveSkillDataTable.json",
       "sha256": "daf2d25c48b723e122951fd34f94b1ac06cd2b00f75abf360d382f221395e2eb"
+    },
+    {
+      "path": "NZM/Content/DataTables/SeasonTalent/AdaptWeaponTable.json",
+      "sha256": "178625f03c3d53c4eb150c92b0a01f9811698be8b286a848bc1b69eb961cbd1f"
     }
   ],
   "tables": {
@@ -9482,6 +9486,41 @@
         "bShowCountDownText": false,
         "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
       }
+    },
+    "adaptWeapons": {
+      "10001": {
+        "TextID": 1,
+        "SeasonID": 1,
+        "SeasonPhaseID": 0,
+        "TextContent": {
+          "Namespace": "AdaptWeaponTable",
+          "Key": "10001_TextContent",
+          "SourceString": "适配武器：<qiangdiao>突击步枪、冲锋枪、机枪、射手步枪</>",
+          "LocalizedString": "适配武器：<qiangdiao>突击步枪、冲锋枪、机枪、射手步枪</>"
+        }
+      },
+      "10002": {
+        "TextID": 2,
+        "SeasonID": 1,
+        "SeasonPhaseID": 0,
+        "TextContent": {
+          "Namespace": "AdaptWeaponTable",
+          "Key": "10002_TextContent",
+          "SourceString": "适配武器：<qiangdiao>连发榴弹、单发榴弹、火箭发射器、霰弹枪、弓箭</>",
+          "LocalizedString": "适配武器：<qiangdiao>连发榴弹、单发榴弹、火箭发射器、霰弹枪、弓箭</>"
+        }
+      },
+      "10003": {
+        "TextID": 3,
+        "SeasonID": 1,
+        "SeasonPhaseID": 0,
+        "TextContent": {
+          "Namespace": "AdaptWeaponTable",
+          "Key": "10003_TextContent",
+          "SourceString": "适配武器：<qiangdiao>射手步枪、狙击步枪、手枪</>",
+          "LocalizedString": "适配武器：<qiangdiao>射手步枪、狙击步枪、手枪</>"
+        }
+      }
     }
   },
   "excluded": [
@@ -18221,6 +18260,579 @@
           {
             "path": "NZM/Content/DataTables/AlwaysCook/GameplaySystem/SystemPresetsTable.json",
             "sha256": "9238aa3792b8fa9a891fa167b130032e3ff0b4e229020132f8702510ba720319"
+          }
+        ]
+      },
+      "armBlueprint": {
+        "asset": {
+          "Name": "DA_S1_HeavyMachineGunMode3P",
+          "Type": "SkillItemData",
+          "Flags": "RF_Public | RF_Standalone | RF_Transactional | RF_WasLoaded | RF_LoadCompleted",
+          "Class": "UScriptClass'SkillItemData'",
+          "Package": "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P",
+          "Properties": {
+            "AbilityBlueprint": {
+              "ObjectName": "SMBlueprintGeneratedClass'SKT_S1_HeavyMachineGunMode3P_C'",
+              "ObjectPath": "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.99"
+            },
+            "Animations": [
+              {
+                "AssetType": "EGPSkillResourceType::AnimSequence",
+                "AssetKey": "DeathMoment",
+                "Description": "死神时刻",
+                "Resources": [
+                  {
+                    "bDoNotNeedAnimSet": false,
+                    "Rule": "Skill=6001401|EmptyHand|Male",
+                    "Layer": "ENZCharacterAnimLayer::Locomotion",
+                    "AnimAsset_TPP": {
+                      "AssetPathName": "/Game/Animations/Skill/S1/RobotArmJQ/SA_RobotArmJQ_3P_M_Montage.SA_RobotArmJQ_3P_M_Montage",
+                      "SubPathString": ""
+                    },
+                    "AnimAsset_FPP": {
+                      "AssetPathName": "None",
+                      "SubPathString": ""
+                    },
+                    "ShouldAsyncLoadPlatform": "EGPSkillResourceLoadPlatform::BothServerAndAutonomous",
+                    "TriggerLoadingCondition": {
+                      "GenderType": "EAvaGenderType::Male",
+                      "GenderName": "None"
+                    }
+                  },
+                  {
+                    "bDoNotNeedAnimSet": false,
+                    "Rule": "Skill=6001401|EmptyHand|Female",
+                    "Layer": "ENZCharacterAnimLayer::Locomotion",
+                    "AnimAsset_TPP": {
+                      "AssetPathName": "/Game/Animations/Skill/S1/RobotArmJQ/SA_RobotArmJQ_3P_F_Montage.SA_RobotArmJQ_3P_F_Montage",
+                      "SubPathString": ""
+                    },
+                    "AnimAsset_FPP": {
+                      "AssetPathName": "None",
+                      "SubPathString": ""
+                    },
+                    "ShouldAsyncLoadPlatform": "EGPSkillResourceLoadPlatform::BothServerAndAutonomous",
+                    "TriggerLoadingCondition": {
+                      "GenderType": "EAvaGenderType::Female",
+                      "GenderName": "None"
+                    }
+                  },
+                  {
+                    "bDoNotNeedAnimSet": false,
+                    "Rule": "Char=Queen|Skill=6001401|EmptyHand|Female",
+                    "Layer": "ENZCharacterAnimLayer::Locomotion",
+                    "AnimAsset_TPP": {
+                      "AssetPathName": "/Game/Avatar/Character/Queen/Animations/Body/Skill/RobotArmJQ/SA_Queen_RobotArmJQ_3P_F_FireStart_Montage.SA_Queen_RobotArmJQ_3P_F_FireStart_Montage",
+                      "SubPathString": ""
+                    },
+                    "AnimAsset_FPP": {
+                      "AssetPathName": "None",
+                      "SubPathString": ""
+                    },
+                    "ShouldAsyncLoadPlatform": "EGPSkillResourceLoadPlatform::BothServerAndAutonomous",
+                    "TriggerLoadingCondition": {}
+                  }
+                ]
+              },
+              {
+                "AssetType": "EGPSkillResourceType::AnimSequence",
+                "AssetKey": "ShadowActor",
+                "Description": "死神时刻-残影",
+                "Resources": [
+                  {
+                    "bDoNotNeedAnimSet": false,
+                    "Rule": "Skill=6001401|EmptyHand|Male",
+                    "Layer": "ENZCharacterAnimLayer::Locomotion",
+                    "AnimAsset_TPP": {
+                      "AssetPathName": "/Game/Animations/Skill/S1/RobotArmJQ/SA_RobotArmJQ_3P_M_FireLoop02.SA_RobotArmJQ_3P_M_FireLoop02",
+                      "SubPathString": ""
+                    },
+                    "AnimAsset_FPP": {
+                      "AssetPathName": "None",
+                      "SubPathString": ""
+                    },
+                    "ShouldAsyncLoadPlatform": "EGPSkillResourceLoadPlatform::BothServerAndAutonomous",
+                    "TriggerLoadingCondition": {
+                      "GenderType": "EAvaGenderType::Male",
+                      "GenderName": "None"
+                    }
+                  },
+                  {
+                    "bDoNotNeedAnimSet": false,
+                    "Rule": "Skill=6001401|EmptyHand|Female",
+                    "Layer": "ENZCharacterAnimLayer::Locomotion",
+                    "AnimAsset_TPP": {
+                      "AssetPathName": "/Game/Animations/Skill/S1/RobotArmJQ/SA_RobotArmJQ_3P_F_FireLoop02.SA_RobotArmJQ_3P_F_FireLoop02",
+                      "SubPathString": ""
+                    },
+                    "AnimAsset_FPP": {
+                      "AssetPathName": "None",
+                      "SubPathString": ""
+                    },
+                    "ShouldAsyncLoadPlatform": "EGPSkillResourceLoadPlatform::BothServerAndAutonomous",
+                    "TriggerLoadingCondition": {
+                      "GenderType": "EAvaGenderType::Female",
+                      "GenderName": "None"
+                    }
+                  },
+                  {
+                    "bDoNotNeedAnimSet": false,
+                    "Rule": "Char=Queen|Skill=6001401|EmptyHand|Female",
+                    "Layer": "ENZCharacterAnimLayer::Locomotion",
+                    "AnimAsset_TPP": {
+                      "AssetPathName": "/Game/Avatar/Character/Queen/Animations/Body/Skill/RobotArmJQ/SA_Queen_RobotArmJQ_3P_F_FireLoop02.SA_Queen_RobotArmJQ_3P_F_FireLoop02",
+                      "SubPathString": ""
+                    },
+                    "AnimAsset_FPP": {
+                      "AssetPathName": "None",
+                      "SubPathString": ""
+                    },
+                    "ShouldAsyncLoadPlatform": "EGPSkillResourceLoadPlatform::BothServerAndAutonomous",
+                    "TriggerLoadingCondition": {}
+                  }
+                ]
+              }
+            ],
+            "HangItems": [
+              "S1_GunRobotArm"
+            ]
+          }
+        },
+        "skill": {
+          "Name": "Default__SKT_S1_HeavyMachineGunMode3P_C",
+          "Type": "SKT_S1_HeavyMachineGunMode3P_C",
+          "Flags": "RF_Public | RF_ClassDefaultObject | RF_ArchetypeObject | RF_WasLoaded | RF_LoadCompleted",
+          "Class": "SMBlueprintGeneratedClass'NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.SKT_S1_HeavyMachineGunMode3P_C'",
+          "Package": "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P",
+          "Properties": {
+            "UberGraphFrame": {},
+            "SMGraphK2Node_TransitionResultNode_1C5A34944D4698BAB3C20CA39D4AD5EE": {
+              "TransitionEnteredGraphEvaluator": {
+                "BoundFunction": "None",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "TransitionPreEvaluateGraphEvaluator": {
+                "BoundFunction": "None",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "TransitionPostEvaluateGraphEvaluator": {
+                "BoundFunction": "None",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "Priority": 0,
+              "bCanEnterTransition": false,
+              "bCanEnterTransitionFromEvent": false,
+              "bIsEvaluating": false,
+              "MemBufferForCanEvaluate": true,
+              "bCanEvaluate": true,
+              "bCanEvaluateFromEvent": true,
+              "bRunParallel": false,
+              "bEvalIfNextStateActive": true,
+              "bCanEvalWithStartState": true,
+              "bAlwaysFalse": true,
+              "FromGuid": "092CEA7D-4A8A1400-3B6657BE-FC4DFC13",
+              "ToGuid": "965328CE-46D3BD4E-BDCA84B8-CDDBCACC",
+              "ConditionalEvaluationType": "ESMConditionalEvaluationType::SM_AlwaysFalse",
+              "GraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_TransitionResultNode_0_Begin to DeathMomentLoop_006933604D361B0D439994832FE34529_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "TimeInState": 0,
+              "bIsInEndState": false,
+              "bHasUpdated": false,
+              "TransitionInitializedGraphEvaluators": [],
+              "TransitionShutdownGraphEvaluators": [],
+              "DuplicateId": 0,
+              "Guid": "00693360-4D361B0D-43999483-2FE34529",
+              "OwnerGuid": "DF198012-4C9E18D8-0FA6F18C-7C86DBC3",
+              "PathGuid": "00000000-00000000-00000000-00000000",
+              "NodeName": "Begin to DeathMomentLoop",
+              "TemplateName": "None",
+              "StackTemplateNames": [],
+              "StackNodeInstances": [],
+              "OwningInstance": null,
+              "OwningObj": null,
+              "NodeInstance": null,
+              "VariableGraphProperties": [],
+              "NodeInstanceClass": {
+                "ObjectName": "Class'SMTransitionInstance'",
+                "ObjectPath": "/Script/SMSystem"
+              }
+            },
+            "SMGraphK2Node_StateEntryNode_1_23D3DEE74C3B312F06D7BCA5B2C287C1": {
+              "UpdateStateGraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_StateUpdateNode_1_DeathMomentLoop_965328CE46D3BD4EBDCA84B8CDDBCACC_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "EndStateGraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_StateEndNode_1_DeathMomentLoop_965328CE46D3BD4EBDCA84B8CDDBCACC_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "bIsRootNode": false,
+              "bAlwaysUpdate": false,
+              "bEvalTransitionsOnStart": false,
+              "bDisableTickTransitionEvaluation": false,
+              "bStayActiveOnStateChange": false,
+              "bAllowParallelReentry": false,
+              "OnRootStateMachineStartedGraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_IntermediateStateMachineStartNode_1_DeathMomentLoop_965328CE46D3BD4EBDCA84B8CDDBCACC_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "OnRootStateMachineStoppedGraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_IntermediateStateMachineStopNode_1_DeathMomentLoop_965328CE46D3BD4EBDCA84B8CDDBCACC_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "GraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_StateEntryNode_1_DeathMomentLoop_965328CE46D3BD4EBDCA84B8CDDBCACC_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "TimeInState": 0,
+              "bIsInEndState": false,
+              "bHasUpdated": false,
+              "TransitionInitializedGraphEvaluators": [
+                {
+                  "BoundFunction": "SMGraphK2Node_TransitionInitializedNode_1_DeathMomentLoop_965328CE46D3BD4EBDCA84B8CDDBCACC_00000000000000000000000000000000",
+                  "Function": null,
+                  "OwnerObject": null
+                }
+              ],
+              "TransitionShutdownGraphEvaluators": [
+                {
+                  "BoundFunction": "SMGraphK2Node_TransitionShutdownNode_1_DeathMomentLoop_965328CE46D3BD4EBDCA84B8CDDBCACC_00000000000000000000000000000000",
+                  "Function": null,
+                  "OwnerObject": null
+                }
+              ],
+              "DuplicateId": 0,
+              "Guid": "965328CE-46D3BD4E-BDCA84B8-CDDBCACC",
+              "OwnerGuid": "DF198012-4C9E18D8-0FA6F18C-7C86DBC3",
+              "PathGuid": "00000000-00000000-00000000-00000000",
+              "NodeName": "DeathMomentLoop",
+              "TemplateName": "TEMPLATE_SKT_S1_HeavyMachineGunMode3P_C_DeathMomentLoop_965328CE46D3BD4EBDCA84B8CDDBCACC",
+              "StackTemplateNames": [],
+              "StackNodeInstances": [],
+              "OwningInstance": null,
+              "OwningObj": null,
+              "NodeInstance": null,
+              "VariableGraphProperties": [],
+              "NodeInstanceClass": {
+                "ObjectName": "Class'SMTimelineStateInstance'",
+                "ObjectPath": "/Script/GPAbility"
+              }
+            },
+            "SMGraphK2Node_StateEntryNode_9B07254F4465A6F7A2F00784962432C8": {
+              "UpdateStateGraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_StateUpdateNode_0_Begin_092CEA7D4A8A14003B6657BEFC4DFC13_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "EndStateGraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_StateEndNode_0_Begin_092CEA7D4A8A14003B6657BEFC4DFC13_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "bIsRootNode": true,
+              "bAlwaysUpdate": false,
+              "bEvalTransitionsOnStart": false,
+              "bDisableTickTransitionEvaluation": false,
+              "bStayActiveOnStateChange": false,
+              "bAllowParallelReentry": false,
+              "OnRootStateMachineStartedGraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_IntermediateStateMachineStartNode_0_Begin_092CEA7D4A8A14003B6657BEFC4DFC13_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "OnRootStateMachineStoppedGraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_IntermediateStateMachineStopNode_0_Begin_092CEA7D4A8A14003B6657BEFC4DFC13_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "GraphEvaluator": {
+                "BoundFunction": "SMGraphK2Node_StateEntryNode_0_Begin_092CEA7D4A8A14003B6657BEFC4DFC13_00000000000000000000000000000000",
+                "Function": null,
+                "OwnerObject": null
+              },
+              "TimeInState": 0,
+              "bIsInEndState": false,
+              "bHasUpdated": false,
+              "TransitionInitializedGraphEvaluators": [
+                {
+                  "BoundFunction": "SMGraphK2Node_TransitionInitializedNode_0_Begin_092CEA7D4A8A14003B6657BEFC4DFC13_00000000000000000000000000000000",
+                  "Function": null,
+                  "OwnerObject": null
+                }
+              ],
+              "TransitionShutdownGraphEvaluators": [
+                {
+                  "BoundFunction": "SMGraphK2Node_TransitionShutdownNode_0_Begin_092CEA7D4A8A14003B6657BEFC4DFC13_00000000000000000000000000000000",
+                  "Function": null,
+                  "OwnerObject": null
+                }
+              ],
+              "DuplicateId": 0,
+              "Guid": "092CEA7D-4A8A1400-3B6657BE-FC4DFC13",
+              "OwnerGuid": "DF198012-4C9E18D8-0FA6F18C-7C86DBC3",
+              "PathGuid": "00000000-00000000-00000000-00000000",
+              "NodeName": "Begin",
+              "TemplateName": "TEMPLATE_SKT_S1_HeavyMachineGunMode3P_C_Begin_092CEA7D4A8A14003B6657BEFC4DFC13",
+              "StackTemplateNames": [],
+              "StackNodeInstances": [],
+              "OwningInstance": null,
+              "OwningObj": null,
+              "NodeInstance": null,
+              "VariableGraphProperties": [],
+              "NodeInstanceClass": {
+                "ObjectName": "Class'SMTimelineStateInstance'",
+                "ObjectPath": "/Script/GPAbility"
+              }
+            },
+            "BaseDuration": 8,
+            "FireDistance": 8000,
+            "FireAngle": 20,
+            "NumericalID": 160000002,
+            "AddTimeForPerStack": 0.4,
+            "CurrentLaunchLargeInterval": 2.5,
+            "BaseFireInterval": 0.3,
+            "MGE_1318102001_AddDuration": 0.2,
+            "Delete": 0.36,
+            "CurrentFireInterval": 0.3,
+            "AddFireIntervalSpeed": 0.9,
+            "BaseMinSpeedFireInterval": 0.15,
+            "CurrentSmallPeriodLaunchNum": 2,
+            "CurrentLaunchSmallInterval": 0.1,
+            "MinRecoveFireIntervalTime": 0.8,
+            "LaunchAngleRandom_Yaw": {
+              "X": -30,
+              "Y": 30
+            },
+            "LaunchAngleRandom_Pitch": {
+              "X": 0,
+              "Y": 20
+            },
+            "RecoveFireIntervalSpeed": 1.1,
+            "BuffName_RetriggerDeathMoment": "BD_Common_1318120001",
+            "BuffName_DeathMoment": "S1_DeathMoment",
+            "DeathMoment_BaseDuration": 4,
+            "RecoveFireIntervalTimer": {
+              "Handle": 0
+            },
+            "DeathMomentAOE_BaseFireInterval": 0.2,
+            "DeathMoment_BaseFireInterval": 0.05,
+            "DeathMoment_AimOffset": 2,
+            "MGE_1318115001_DeathMoment_AddDuration": 0.1,
+            "MGE_1318117001_AddAimRadius": 40,
+            "IsFire": true,
+            "MGE_1318111001_DeathMomentPlus_LaunchLargeInterval": 2.5,
+            "MGE_1318111001_DeathMoment_LaunchSmallInterval": 2.5,
+            "MGE_1318111001_DeathMoment_LaunchRadius": 8000,
+            "MGE_1318111001_DeathMoment_SmallPeriodLaunchNum": 2,
+            "DeathMomentMissileDetectRadius": 8000,
+            "DeathMomentSortFilterConfig": {
+              "ClassTypePriority": [
+                {
+                  "Key": "EMGETargetType::Player",
+                  "Value": 3
+                },
+                {
+                  "Key": "EMGETargetType::Regular",
+                  "Value": 1
+                },
+                {
+                  "Key": "EMGETargetType::Captain",
+                  "Value": 2
+                },
+                {
+                  "Key": "EMGETargetType::Elite",
+                  "Value": 3
+                },
+                {
+                  "Key": "EMGETargetType::MiniBoss",
+                  "Value": 4
+                },
+                {
+                  "Key": "EMGETargetType::Boss",
+                  "Value": 5
+                },
+                {
+                  "Key": "EMGETargetType::WorldBoss",
+                  "Value": 6
+                }
+              ]
+            },
+            "MGE_1318116001_MissileCount": 300,
+            "MissileLocationOffset": [
+              {
+                "X": 0,
+                "Y": -180,
+                "Z": 40
+              },
+              {
+                "X": 0,
+                "Y": 90,
+                "Z": 40
+              },
+              {
+                "X": 0,
+                "Y": 180,
+                "Z": 40
+              },
+              {
+                "X": 0,
+                "Y": 15,
+                "Z": 40
+              },
+              {
+                "X": 0,
+                "Y": -160,
+                "Z": 40
+              },
+              {
+                "X": 0,
+                "Y": 0,
+                "Z": 40
+              },
+              {
+                "X": 0,
+                "Y": 160,
+                "Z": 40
+              },
+              {
+                "X": 0,
+                "Y": -90,
+                "Z": 40
+              }
+            ],
+            "DeathMomentFireTimer": {
+              "Handle": 0
+            },
+            "DeathMomentAttackRadius": 500,
+            "DeathMomentLaunchMissileDurationByEnd": 0.7,
+            "DeathMoment_Mode1_MissileCount": 3,
+            "DeathMoment_Mode1_MissileFilterInterval": 2,
+            "DeathMoment_Mode1_AttackRadius": 2000,
+            "DeathMoment_Mode1_MissileFilterConfig": {
+              "ClassTypePriority": [
+                {
+                  "Key": "EMGETargetType::Player",
+                  "Value": -1
+                },
+                {
+                  "Key": "EMGETargetType::Regular",
+                  "Value": 1
+                },
+                {
+                  "Key": "EMGETargetType::Captain",
+                  "Value": 2
+                },
+                {
+                  "Key": "EMGETargetType::Elite",
+                  "Value": 3
+                },
+                {
+                  "Key": "EMGETargetType::MiniBoss",
+                  "Value": 4
+                },
+                {
+                  "Key": "EMGETargetType::Boss",
+                  "Value": 5
+                },
+                {
+                  "Key": "EMGETargetType::WorldBoss",
+                  "Value": 6
+                }
+              ]
+            },
+            "FireEffectTriggerInterval": 0.3,
+            "DeathMomentAOENumericalID": 160000004,
+            "AOEMaxTarget": 3,
+            "ExtraMissileMge": 1318105001,
+            "MGE_1318105001_LaunchLargeInterval": 3,
+            "MGE_1318105001_LaunchSmallInterval": 0.1,
+            "MGE_1318105001_SmallPeriodLaunchNum": 1,
+            "CurrentLaunchRotation": {
+              "Pitch": 0,
+              "Yaw": 0,
+              "Roll": 0
+            },
+            "CurrentFirePoint": {
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "FindTargetDistance": 8000,
+            "FireEffectTimerHandle": {
+              "Handle": 0
+            },
+            "WeaponDataObserver": {},
+            "AutoSwitchTPCameraLayer": {
+              "TagName": "None"
+            },
+            "SkillState": {
+              "TagName": "FSMState.SkillBusy"
+            },
+            "bUseBoneCheck": true,
+            "MinimalDuration": 0.002,
+            "DeathMomentSettlement": 10,
+            "MissleType": {
+              "ObjectName": "BlueprintGeneratedClass'BP_Projectile_3pHeavyMachineGunMode_WMXM_C'",
+              "ObjectPath": "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/BP_Projectile_3pHeavyMachineGunMode_WMXM.0"
+            },
+            "MissleType2": {
+              "ObjectName": "BlueprintGeneratedClass'BP_Projectile_3pHeavyMachineGunMode_C'",
+              "ObjectPath": "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/BP_Projectile_3pHeavyMachineGunMode.13"
+            },
+            "SkillEndComboTag": {
+              "TagName": "Ability.EndReason.AbilityCombo"
+            },
+            "SkillID": 6001401,
+            "GPSkillSubStateMachine": "EGPSkillAbilitySMState::GPSkillSMNone",
+            "SituationInput": "EGPSkillSituationInputType::ActivateAbilityJumpAndCrouch",
+            "UsingNewSkillStateStyle": true,
+            "ActivatedSituations": [
+              {
+                "Situation": "SkillBusyNoLimit"
+              }
+            ],
+            "SMInstance": {
+              "ObjectName": "GPTimelineSMInstance'Default__SKT_S1_HeavyMachineGunMode3P_C:AbilityStateMachine'",
+              "ObjectPath": "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.101"
+            },
+            "ReferenceTemplates": [
+              {
+                "ObjectName": "SMTimelineStateInstance'Default__SKT_S1_HeavyMachineGunMode3P_C:TEMPLATE_SKT_S1_HeavyMachineGunMode3P_C_DeathMomentLoop_965328CE46D3BD4EBDCA84B8CDDBCACC'",
+                "ObjectPath": "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.103"
+              },
+              {
+                "ObjectName": "SMTimelineStateInstance'Default__SKT_S1_HeavyMachineGunMode3P_C:TEMPLATE_SKT_S1_HeavyMachineGunMode3P_C_Begin_092CEA7D4A8A14003B6657BEFC4DFC13'",
+                "ObjectPath": "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.102"
+              }
+            ],
+            "RootStateMachineGuid": "DF198012-4C9E18D8-0FA6F18C-7C86DBC3",
+            "bReplicateToSimulateOnCharacter": true,
+            "AbilityTags": [
+              "Ability.AvatarHangItem",
+              "AbilityType.Activated.Season.S1.HeavyMachineGunMode"
+            ],
+            "bOnlyReplicateWhenActive": false
+          }
+        },
+        "sources": [
+          {
+            "path": "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/DA_S1_HeavyMachineGunMode3P.json",
+            "sha256": "58637ab9efae0632a5392c795199c376a358e2d6be24efcdc7b92487dba36ef6"
+          },
+          {
+            "path": "NZM/Content/Abilities/Skills/Season/S1/HeavyMachineGunMode3P/SKT_S1_HeavyMachineGunMode3P.json",
+            "sha256": "73bee31d03e84e2631e18ba7d68afad9d75284c9aff303499eb39a9a579a3b7e"
           }
         ]
       }

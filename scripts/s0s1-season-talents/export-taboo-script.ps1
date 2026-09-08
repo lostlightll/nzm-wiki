@@ -1,6 +1,6 @@
 param(
-    [Parameter(Mandatory = $true)][string]$CliAssembly,
-    [Parameter(Mandatory = $true)][string]$Profile
+    [string]$CliAssembly = 'D:/Claude/FModel/FModel.Cli/bin/Release/net10.0/FModel.Cli.dll',
+    [string]$Profile = 'D:/Claude/FModel/.local/nzm.json'
 )
 
 $ErrorActionPreference = 'Stop'

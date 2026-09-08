@@ -60,7 +60,7 @@ export function checkLegacyTalents(checkSources = false, options: { tabooScriptF
 }
 
 export function checkProjection(rawTrees: readonly LegacyTalentTree[], evidence: Evidence) {
-  assert.deepEqual(rawTrees, buildTrees(evidence), `${evidence.season}: projection or Numerical facts drifted; rerun extract`);
+  assert.deepEqual(rawTrees, buildTrees(evidence), `${evidence.season}: projection or Numerical facts drifted; run pnpm project:s0s1-talents (offline) or pnpm refresh:s0s1-talents with source evidence`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) checkLegacyTalents(process.argv.includes("--sources"), {
