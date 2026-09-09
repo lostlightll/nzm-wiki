@@ -1,0 +1,1854 @@
+{
+  "schemaVersion": 1,
+  "source": "refs/Exports/NZM/Content_S2",
+  "sourceHashes": {
+    "DataTables/SeasonTalent/SeasonTalentBasicTable": "61e494eb9cbfe0fe91bcf4e813d8fdbdebb43ba5d033bbc8f3f9ff635ef49837",
+    "DataTables/MGE/MGEPassive_Season": "692192f3d07ab20bebd0c92f4d5353d548c5fa2cb5758fa34660840748e0157e",
+    "DataTables/SeasonTalent/SeasonTalentPassiveConfigTable": "6b8409174782f015d0db98f050a66e6a1241850965f7256d683568d546d1bb83",
+    "DataTables/MGE/GPModularGameplayEffectTable": "80f946eb5efecb7e0c229477d77b1f63fb565c4d118f4bb4ea7bc0338580621a",
+    "DataTables/Buff/BuffConfigDatatableNew": "0f990f2fc2afe9901badc6d547ec381718d004cd16f3509d1935c8241fc390a1",
+    "Attributes/AutoGenerate/numerical_modifier_config": "b398244f75862b37bf88a9059e6eb289c5861aee7b435c646fa353cb345ffb52",
+    "DataTables/AttributeDescMapTable": "832ee710f4202b47545f476d2e34d5f5dcbf805c76cfe431fde3f14906fd292e",
+    "Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_FireShootEnhance": "b2e2472e19a498ea9b24fa9b743de94b504761995b4ae23903739cc2b8f17653",
+    "Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_LianYuEnhance": "51771148f091f5873356c62bef1e8aa139fd6d380ba56a621156013829a1267b",
+    "Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_FireBuffDmgEnhance": "d1483c8ea498450f4316d9c3d2262ae8b04a5f267a9aeaec52e58a139c72925d",
+    "Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160": "82dd7a4adb6e23a990d32d707a88471f478333bd67e733ae505f284edf535ebc",
+    "Abilities/Skills/Season/S3/YHFS/MGE_1319032002": "c519c3b3ac8f2f82f7cb2f58f7764a678a912b2da4acf36093c1a7e90d9f8973"
+  },
+  "limitations": "历史蓝图 JSON 保留默认属性和函数签名，未包含完整执行字节码；不宣称接收者 unknown 的运行时对象、叠层或等级动态覆写已获验证。未连通来源显式排除。",
+  "lock": {
+    "schema_version": 2,
+    "sources": {
+      "lc": {
+        "modifiers": {
+          "source_path": "refs/Exports/NZM/Content_S2/Attributes/AutoGenerate/numerical_modifier_config.json",
+          "sha256": "b398244f75862b37bf88a9059e6eb289c5861aee7b435c646fa353cb345ffb52",
+          "row_count": 2685
+        },
+        "attribute_descriptions": {
+          "source_path": "refs/Exports/NZM/Content_S2/DataTables/AttributeDescMapTable.json",
+          "sha256": "832ee710f4202b47545f476d2e34d5f5dcbf805c76cfe431fde3f14906fd292e",
+          "row_count": 178
+        }
+      }
+    },
+    "rows": {
+      "lc": {
+        "111030016_1_0": {
+          "row_name": "111030016_1_0",
+          "raw": {
+            "ID": 111030016,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+            "Description": "赛季技能—樱花忍术—炼狱伤害增加",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.05,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030016_2_0": {
+          "row_name": "111030016_2_0",
+          "raw": {
+            "ID": 111030016,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+            "Description": "赛季技能—樱花忍术—炼狱伤害增加",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.1,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030016_3_0": {
+          "row_name": "111030016_3_0",
+          "raw": {
+            "ID": 111030016,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+            "Description": "赛季技能—樱花忍术—炼狱伤害增加",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.15,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030017_1_0": {
+          "row_name": "111030017_1_0",
+          "raw": {
+            "ID": 111030017,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+            "Description": "赛季技能—樱花忍术—火属性射击增加",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.01,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030017_2_0": {
+          "row_name": "111030017_2_0",
+          "raw": {
+            "ID": 111030017,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+            "Description": "赛季技能—樱花忍术—火属性射击增加",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.02,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030017_3_0": {
+          "row_name": "111030017_3_0",
+          "raw": {
+            "ID": 111030017,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+            "Description": "赛季技能—樱花忍术—火属性射击增加",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.03,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030017_1_1": {
+          "row_name": "111030017_1_1",
+          "raw": {
+            "ID": 111030017,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+            "Description": "赛季技能—樱花忍术—火属性爆炸增加",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.01,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030017_2_1": {
+          "row_name": "111030017_2_1",
+          "raw": {
+            "ID": 111030017,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+            "Description": "赛季技能—樱花忍术—火属性爆炸增加",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.02,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030017_3_1": {
+          "row_name": "111030017_3_1",
+          "raw": {
+            "ID": 111030017,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+            "Description": "赛季技能—樱花忍术—火属性爆炸增加",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.03,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030019_1_0": {
+          "row_name": "111030019_1_0",
+          "raw": {
+            "ID": 111030019,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetElement.FireBuffPeriod",
+            "Description": "赛季技能—樱花忍术—火元素异常伤害增加、频率加快。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.15,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030019_1_1": {
+          "row_name": "111030019_1_1",
+          "raw": {
+            "ID": 111030019,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "赛季技能—樱花忍术—火元素异常伤害增加、频率加快。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.15,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        }
+      }
+    },
+    "attribute_descriptions": {
+      "lc": {
+        "1008": {
+          "row_name": "1008",
+          "raw": {
+            "id": 1008,
+            "attr_str": "ImpulsiveDamageRatio",
+            "attr_realname": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "1008_attr_name",
+              "SourceString": "射击伤害",
+              "LocalizedString": "射击伤害"
+            },
+            "description": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "1008_description",
+              "SourceString": "武器命中敌人的撞击伤害系数修正。",
+              "LocalizedString": "武器命中敌人的撞击伤害系数修正。"
+            },
+            "value_format": "%.2f",
+            "value_rate": 100,
+            "NumericalID": 8
+          }
+        },
+        "1009": {
+          "row_name": "1009",
+          "raw": {
+            "id": 1009,
+            "attr_str": "ExplodedDamageRatio",
+            "attr_realname": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "1009_attr_name",
+              "SourceString": "爆炸伤害",
+              "LocalizedString": "爆炸伤害"
+            },
+            "description": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "1009_description",
+              "SourceString": "武器命中敌人的爆炸伤害系数修正。",
+              "LocalizedString": "武器命中敌人的爆炸伤害系数修正。"
+            },
+            "value_format": "%.2f",
+            "value_rate": 100,
+            "NumericalID": 8
+          }
+        },
+        "2160": {
+          "row_name": "2160",
+          "raw": {
+            "id": 2160,
+            "attr_str": "",
+            "attr_realname": "GPAttributeSetGiveDamageRatio.SkillDamageRatio",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "2160_attr_name",
+              "SourceString": "非武器技能伤害增加",
+              "LocalizedString": "非武器技能伤害增加"
+            },
+            "description": {
+              "CultureInvariantString": null
+            },
+            "value_format": "%.0f",
+            "value_rate": 1,
+            "NumericalID": 8
+          }
+        },
+        "2271": {
+          "row_name": "2271",
+          "raw": {
+            "id": 2271,
+            "attr_str": "",
+            "attr_realname": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "2271_attr_name",
+              "SourceString": "火debuff伤害增加",
+              "LocalizedString": "火debuff伤害增加"
+            },
+            "description": {
+              "CultureInvariantString": null
+            },
+            "value_format": "",
+            "value_rate": 0,
+            "NumericalID": 0
+          }
+        },
+        "2282": {
+          "row_name": "2282",
+          "raw": {
+            "id": 2282,
+            "attr_str": "",
+            "attr_realname": "GPAttributeSetElement.FireBuffPeriod",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "2282_attr_name",
+              "SourceString": "火Buff频率增加",
+              "LocalizedString": "火Buff频率增加"
+            },
+            "description": {
+              "CultureInvariantString": null
+            },
+            "value_format": "",
+            "value_rate": 0,
+            "NumericalID": 0
+          }
+        }
+      }
+    }
+  },
+  "providers": [
+    {
+      "id": "season:s2:inferno-arm:2002307",
+      "label": "S2 炼狱炎臂·火焰赋能",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002307"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030017_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030017_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319031007",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002307 -> 1319031007",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031007_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031007_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031007_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031007_1.MGE.Id=1319031007",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319031007.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_FireShootEnhance.json:Default__",
+          "Default__.ModifierID=111030017",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_FireShootEnhance.json:ChildProperties.CallFunc_CreateAsyncAddScopedModifier_ReturnValue（限定技能/命中结算的函数签名；非完整执行字节码）",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002505",
+      "label": "S2 炼狱炎臂·技能强化",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002505"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030016_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319031008",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002505 -> 1319031008",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031008_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031008_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031008_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031008_1.MGE.Id=1319031008",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319031008.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_LianYuEnhance.json:Default__",
+          "Default__.ModifierID=111030016",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_LianYuEnhance.json:ChildProperties.CallFunc_AddScopedModifierForActivatedSkill_ReturnValue（限定技能/命中结算的函数签名；非完整执行字节码）",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "season:s2:invisibility:2001106",
+      "label": "S2 匿踪·匿踪",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001106"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001106 -> 6003301"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001201",
+      "label": "S2 匿踪·群轰元素",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001201"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001201 -> 1379020020"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001202",
+      "label": "S2 匿踪·速射脉冲",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001202"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001202 -> 1379020030"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001203",
+      "label": "S2 匿踪·精准超载",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001203"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001203 -> 1379020040"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001206",
+      "label": "S2 匿踪·遁形",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001206"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001206 -> 1319033001"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001301",
+      "label": "S2 匿踪·续航协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001301"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001301 -> 1379020050"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001302",
+      "label": "S2 匿踪·弱点穿刺",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001302"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001302 -> 1379020060"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001303",
+      "label": "S2 匿踪·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001303"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001303 -> 1379020070"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001305",
+      "label": "S2 匿踪·潜行",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001305"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001305 -> 1319033005"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001307",
+      "label": "S2 匿踪·幽暗滋养",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001307"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001307 -> 1319033006"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001401",
+      "label": "S2 匿踪·元素扩容",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001401"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001401 -> 1379020080"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001402",
+      "label": "S2 匿踪·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001402"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001402 -> 1379020090"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001403",
+      "label": "S2 匿踪·频率加速",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001403"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001403 -> 1379020100"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001406",
+      "label": "S2 匿踪·暗影之刺I",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001406"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001406 -> 1319033002"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001501",
+      "label": "S2 匿踪·堆叠缓频",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001501"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001501 -> 1379020110"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001502",
+      "label": "S2 匿踪·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001502"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001502 -> 1379020120"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001503",
+      "label": "S2 匿踪·速充精简",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001503"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001503 -> 1379020130"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001505",
+      "label": "S2 匿踪·暗影之刺III",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001505"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001505 -> 1319033007"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001507",
+      "label": "S2 匿踪·遁入黑暗",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001507"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001507 -> 1319033008"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001601",
+      "label": "S2 匿踪·登峰造极",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001601"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001601 -> 1379020140"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001602",
+      "label": "S2 匿踪·连杀增益",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001602"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001602 -> 1379020150"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001603",
+      "label": "S2 匿踪·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001603"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001603 -> 1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
+          "Default__.BuffName=SeasonTalent_S3_Normal_002",
+          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
+          "Buff 默认属性引用已确认，但历史 JSON 未导出执行连线，无法确认实际加载、接收者及动态等级，暂不发布。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001606",
+      "label": "S2 匿踪·暗影之刺II",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001606"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001606 -> 1319033004"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:passive:2020301",
+      "label": "S2 匿踪·超频",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "passiveId": "2020301"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020301 -> 1379020170"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:passive:2020302",
+      "label": "S2 匿踪·双击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "passiveId": "2020302"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020302 -> 1379020180"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:passive:2020303",
+      "label": "S2 匿踪·头奖",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "passiveId": "2020303"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020303 -> 1379020190"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:passive:2020304",
+      "label": "S2 匿踪·传染",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "passiveId": "2020304"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020304 -> 1379020220"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:passive:2020305",
+      "label": "S2 匿踪·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "passiveId": "2020305"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020305 -> 1379020200"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:passive:2020306",
+      "label": "S2 匿踪·核爆",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "passiveId": "2020306"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020306 -> 1379020210"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002106",
+      "label": "S2 炼狱炎臂·炼狱炎臂",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002106"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002106 -> 6003101"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002201",
+      "label": "S2 炼狱炎臂·群轰元素",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002201"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002201 -> 1379020020"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002202",
+      "label": "S2 炼狱炎臂·速射脉冲",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002202"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002202 -> 1379020030"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002203",
+      "label": "S2 炼狱炎臂·精准超载",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002203"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002203 -> 1379020040"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002206",
+      "label": "S2 炼狱炎臂·炽焰倍增",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002206"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002206 -> 1319031011",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031011_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031011_1.MGE.Id=1319031011",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319031011.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_FireBuffDmgEnhance.json:Default__",
+          "Default__.ModifierID=111030019"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002301",
+      "label": "S2 炼狱炎臂·续航协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002301"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002301 -> 1379020050"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002302",
+      "label": "S2 炼狱炎臂·弱点穿刺",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002302"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002302 -> 1379020060"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002303",
+      "label": "S2 炼狱炎臂·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002303"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002303 -> 1379020070"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002305",
+      "label": "S2 炼狱炎臂·炎核扩容",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002305"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002305 -> 1319031006"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002401",
+      "label": "S2 炼狱炎臂·元素扩容",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002401"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002401 -> 1379020080"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002402",
+      "label": "S2 炼狱炎臂·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002402"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002402 -> 1379020090"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002403",
+      "label": "S2 炼狱炎臂·频率加速",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002403"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002403 -> 1379020100"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002406",
+      "label": "S2 炼狱炎臂·余响",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002406"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002406 -> 1319031001"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002501",
+      "label": "S2 炼狱炎臂·堆叠缓频",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002501"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002501 -> 1379020110"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002502",
+      "label": "S2 炼狱炎臂·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002502"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002502 -> 1379020120"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002503",
+      "label": "S2 炼狱炎臂·速充精简",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002503"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002503 -> 1379020130"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002507",
+      "label": "S2 炼狱炎臂·驰影叠加",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002507"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002507 -> 1319031009"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002601",
+      "label": "S2 炼狱炎臂·登峰造极",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002601"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002601 -> 1379020140"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002602",
+      "label": "S2 炼狱炎臂·连杀增益",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002602"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002602 -> 1379020150"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002603",
+      "label": "S2 炼狱炎臂·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002603"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002603 -> 1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
+          "Default__.BuffName=SeasonTalent_S3_Normal_002",
+          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
+          "Buff 默认属性引用已确认，但历史 JSON 未导出执行连线，无法确认实际加载、接收者及动态等级，暂不发布。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002606",
+      "label": "S2 炼狱炎臂·迅击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002606"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002606 -> 1319031010"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:passive:2020101",
+      "label": "S2 炼狱炎臂·超频",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "passiveId": "2020101"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020101 -> 1379020170"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:passive:2020102",
+      "label": "S2 炼狱炎臂·双击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "passiveId": "2020102"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020102 -> 1379020180"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:passive:2020103",
+      "label": "S2 炼狱炎臂·头奖",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "passiveId": "2020103"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020103 -> 1379020190"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:passive:2020104",
+      "label": "S2 炼狱炎臂·传染",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "passiveId": "2020104"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020104 -> 1379020220"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:passive:2020105",
+      "label": "S2 炼狱炎臂·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "passiveId": "2020105"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020105 -> 1379020200"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:passive:2020106",
+      "label": "S2 炼狱炎臂·核爆",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "passiveId": "2020106"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020106 -> 1379020210"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003106",
+      "label": "S2 全息同调·全息同调",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003106"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003106 -> 6003201"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003201",
+      "label": "S2 全息同调·群轰元素",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003201"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003201 -> 1379020020"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003202",
+      "label": "S2 全息同调·速射脉冲",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003202"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003202 -> 1379020030"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003203",
+      "label": "S2 全息同调·精准超载",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003203"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003203 -> 1379020040"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003206",
+      "label": "S2 全息同调·谐波共振",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003206"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003206 -> 1319032002",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319032002_1.MGE.Id=1319032002",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319032002.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/YHFS/MGE_1319032002.json:Default__",
+          "Default__.OverclockBuffName=SeasonTalent_S3_YHFS_001",
+          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_YHFS_001.GPModifyIDs=111031043",
+          "Buff 默认属性引用已确认，但历史 JSON 未导出执行连线，无法确认实际加载、接收者及动态等级，暂不发布。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003301",
+      "label": "S2 全息同调·续航协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003301"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003301 -> 1379020050"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003302",
+      "label": "S2 全息同调·弱点穿刺",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003302"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003302 -> 1379020060"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003303",
+      "label": "S2 全息同调·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003303"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003303 -> 1379020070"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003305",
+      "label": "S2 全息同调·效能增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003305"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003305 -> 1319032005"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003307",
+      "label": "S2 全息同调·时域扩展",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003307"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003307 -> 1319032006"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003401",
+      "label": "S2 全息同调·元素扩容",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003401"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003401 -> 1379020080"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003402",
+      "label": "S2 全息同调·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003402"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003402 -> 1379020090"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003403",
+      "label": "S2 全息同调·频率加速",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003403"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003403 -> 1379020100"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003406",
+      "label": "S2 全息同调·过载协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003406"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003406 -> 1319032003"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003501",
+      "label": "S2 全息同调·堆叠缓频",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003501"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003501 -> 1379020110"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003502",
+      "label": "S2 全息同调·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003502"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003502 -> 1379020120"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003503",
+      "label": "S2 全息同调·速充精简",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003503"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003503 -> 1379020130"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003505",
+      "label": "S2 全息同调·稳定协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003505"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003505 -> 1319032007"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003507",
+      "label": "S2 全息同调·群集算法",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003507"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003507 -> 1319032008"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003601",
+      "label": "S2 全息同调·登峰造极",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003601"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003601 -> 1379020140"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003602",
+      "label": "S2 全息同调·连杀增益",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003602"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003602 -> 1379020150"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003603",
+      "label": "S2 全息同调·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003603"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003603 -> 1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
+          "Default__.BuffName=SeasonTalent_S3_Normal_002",
+          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
+          "Buff 默认属性引用已确认，但历史 JSON 未导出执行连线，无法确认实际加载、接收者及动态等级，暂不发布。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003606",
+      "label": "S2 全息同调·协同超载",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003606"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003606 -> 1319032004"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:passive:2020201",
+      "label": "S2 全息同调·超频",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "passiveId": "2020201"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020201 -> 1379020170"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:passive:2020202",
+      "label": "S2 全息同调·双击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "passiveId": "2020202"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020202 -> 1379020180"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:passive:2020203",
+      "label": "S2 全息同调·头奖",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "passiveId": "2020203"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020203 -> 1379020190"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:passive:2020204",
+      "label": "S2 全息同调·传染",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "passiveId": "2020204"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020204 -> 1379020220"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:passive:2020205",
+      "label": "S2 全息同调·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "passiveId": "2020205"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020205 -> 1379020200"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:passive:2020206",
+      "label": "S2 全息同调·核爆",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "passiveId": "2020206"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
+      "evidence": {
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020206 -> 1379020210"
+        ]
+      }
+    }
+  ]
+}

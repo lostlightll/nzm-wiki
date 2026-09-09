@@ -22,11 +22,14 @@ import {
 } from "@/lib/multiplier-data";
 import { loadModifierProviderRegistry } from "./num-modifier/provider-registry";
 import { syncLegacyProviders } from "./s0s1-season-talents/providers";
+import { syncS2Providers } from "./s2-season-talents/providers";
+import { getS2TalentTree, S2_TALENT_IDS } from "../lib/s2-season-talents";
 
 const root = process.cwd();
 const errors: string[] = [];
 const sourceRegistry = loadModifierProviderRegistry();
 syncLegacyProviders();
+syncS2Providers();
 const sourceProvidersById = new Map(
   sourceRegistry.providers.map((provider) => [provider.id, provider]),
 );
@@ -243,6 +246,16 @@ for (const file of fs.readdirSync(path.join(root, "data", "weapons"))) {
 }
 for (const [id, label] of weaponCandidates) {
   if (!coveredIds.has(id)) errors.push(`武器技能候选未处理：${id} ${label}`);
+}
+
+for (const treeId of S2_TALENT_IDS) {
+  const tree = getS2TalentTree(treeId)!;
+  for (const entry of [...tree.nodes, ...tree.passives]) {
+    const covered = [...sourceRegistry.providers, ...sourceRegistry.exclusions].some(({ source }) =>
+      source.type === "season-talent" && source.season === "s2" && source.tree === tree.id &&
+      ("descriptions" in entry ? source.nodeId === entry.id : source.passiveId === entry.id));
+    if (!covered) errors.push(`S2 天赋未处理：${tree.id} ${entry.id} ${entry.name}`);
+  }
 }
 
 for (const tree of [zero, ironFist, grapplingHook]) {

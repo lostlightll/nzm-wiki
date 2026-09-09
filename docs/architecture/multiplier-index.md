@@ -20,6 +20,9 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - 攻击等级覆写型卡片必须额外保存来源 MGE、覆写等级、攻击等级被动与下游 MGE；审计需确认该等级最终命中同等级 Numerical 行，不能把 `SetAttackLevelOverride` 当作证据链终点。
 - `refs/` 只用于人工核验证据，构建和页面运行时不得读取。
 - S0/S1 五条已确认分支按 Basic → 对应等级的 Passive → MGEConfig/MGE → Numerical 审核，不能直接以技能 ID 查同名 Config。`scripts/s0s1-season-talents/providers.ts` 仅从 `valueReview.applications` 生成来源；未连通的节点登记 `unverified-evidence`，不据名称或描述 Token 推断乘区。离线证据随 `audit.json.valueEvidence` 保存，当前数值不等同于历史实测值。
+- S2 使用 `data/season-talents/s2/provider-evidence.json` 的历史证据快照，来源为 `refs/Exports/NZM/Content_S2`。三棵树的节点和被动逐项注册或明确排除；仅 Basic/Passive → MGE → Modifier 的结构化链确认后发布。描述模板的 Numerical 引用不能代替执行链。各树使用自己的节点和被动身份，来源深链无需跨树归一。
+- S2 来源的 `lc:` 仍表示猎场模式，但由来源的 `season: s2` 选择历史 Lock；投影、离线检查和审计统一通过 `scripts/num-modifier/provider-resolver.ts` 解析，缺失行报错，不回退当前 Lock。属性分类复用公共语义目录，历史证据内容哈希纳入投影新鲜度检查。
+- S2 已连通 ModifierID 但缺少动态等级执行证据时，仅引用历史 Level 1 基准行识别增伤分面，不据天赋等级推定传入的 Numerical.Level，也不由索引发布实际增伤数值。当前纳入「火焰赋能」「技能强化」；火异常伤害属性尚未索引，其他缺链节点保留具体限制。
 
 ## 数据所有权
 
@@ -111,6 +114,8 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 
 ## 校验
 
+S2 证据维护：`pnpm exec tsx scripts/s2-season-talents/providers.ts --refresh` 从历史导出刷新证据，`--audit` 核对历史导出与快照；`pnpm project:s2-talents` 离线同步来源注册表并重建运行时投影。常规构建和页面均不访问历史导出目录。
+
 ```text
 pnpm test:multiplier-data
 pnpm test:overlimit-cards
@@ -119,6 +124,7 @@ pnpm test:weapon-base-damage
 pnpm multiplier-index:check
 pnpm multiplier-providers:audit
 pnpm num-modifier:check
+pnpm test:s2-talents
 ```
 
 测试覆盖基础伤害模式配置、全量白值索引、超限镜像、双乘区、Settlement 匹配和路由。`multiplier-index:check` 不依赖 `refs/`，验证所有发布插件、147 张卡片、武器技能和 S3 天赋均已映射或明确排除，并检查路由、镜像和双向一致性。`overlimit-effects:audit` 在存在 `refs/` 时重建身份链，但 Numerical 数值统一读取 Num Modifier Lock；`multiplier-providers:audit` 通过 Resolver 核对 ItemID、MGE token、表达式和已锁定属性描述。`num-modifier:check` 离线检查语义覆盖、来源引用和投影新鲜度，构建前固定执行。

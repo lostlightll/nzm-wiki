@@ -8,6 +8,7 @@ import {
 } from "../../lib/num-modifier";
 import { parseNumModifierSemantics } from "../../lib/num-modifier-semantics";
 import { readNumModifierDataLock } from "./lock";
+import { getProviderResolver } from "./provider-resolver";
 import {
   loadModifierProviderRegistry,
   MODIFIER_PROVIDER_REGISTRY_PATH,
@@ -74,9 +75,10 @@ export function generateModifierIndexRuntime(): JsonObject {
   );
 
   const providers = registry.providers.map((provider) => {
+    const providerResolver = getProviderResolver(provider.source, resolver);
     const effects: RuntimeEffect[] = [];
     for (const [index, application] of (provider.applications ?? []).entries()) {
-      const resolved = resolver.resolveEffect(
+      const resolved = providerResolver.resolveEffect(
         application.expression as NumModifierValueExpression,
         application.context,
         `data/modifier-providers.json#${provider.id}.applications[${index}]`,
@@ -123,6 +125,7 @@ export function generateModifierIndexRuntime(): JsonObject {
     schemaVersion: 1,
     source: {
       registrySha256: sourceHash(MODIFIER_PROVIDER_REGISTRY_PATH),
+      s2EvidenceSha256: sourceHash(path.join(root, "data/season-talents/s2/provider-evidence.json")),
       semanticsSha256: sourceHash(SEMANTICS_PATH),
       modifierSourceSha256: lock.sources.lc.modifiers.sha256,
       attributeDescriptionSourceSha256:

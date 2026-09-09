@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Copy, RotateCcw, X } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import catalog from "@/data/season-talents/s2/catalog.json";
+import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import { getAssetPath } from "@/lib/path";
 import { emptyS2Build, restoreS2Build, s2PrerequisiteGroups, s2SpentPoints, s2UnlockReason, setS2Level, type S2TalentNode, type S2TalentTree } from "@/lib/s2-season-talent-builder";
 import styles from "./s2.module.css";
@@ -164,6 +165,9 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
     </>}>
     {node && !node.isRoot && <div className={styles.levelPreview} aria-label="等级预览">{Array.from({ length: node.maxLevel }, (_, i) => <button type="button" key={i} aria-label={`预览 ${i + 1} 级`} aria-pressed={level === i + 1} onClick={() => setPreviewLevel(i + 1)}>{i + 1} 级</button>)}</div>}
     <Description text={node?.descriptions[level - 1] ?? ""} />
+    {node && <div data-multiplier-provider-target={`node-${node.id}`} className="mt-3">
+      <MultiplierSourceBadges source={{ type: "season-talent", season: "s2", tree: tree.id, nodeId: node.id }} />
+    </div>}
     {node && !node.isRoot && <p className={styles.requirement}>{reason ?? (current === node.maxLevel ? "已满级" : `升级消耗 ${node.costs[current]} 点`)}</p>}
     {node?.auditNote && <details className={styles.audit}><summary>资料核验</summary><p>{node.auditNote}</p></details>}
   </TalentDetails>;
@@ -171,7 +175,7 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
   return <section className={editor.editor} style={theme} aria-label={`${tree.name}天赋树`}>
     <div className={editor.background}><Image src={getAssetPath(catalog.background)} alt="" fill priority sizes="100vw" /></div>
     <TalentDraftNotice />
-    <TalentHeader season="s2" links={catalog.trees} activeId={tree.id} name={tree.name} icon={tree.icon} points={points} limit={tree.pointLimit}
+    <TalentHeader season="s2" links={catalog.trees} activeId={tree.id} activeSkillId={root.id} name={tree.name} icon={tree.icon} points={points} limit={tree.pointLimit}
       weapons={tree.applicableWeapons} onInspect={() => inspect(root.id)}>
       <TalentPassiveSlot icon={activePassive?.icon} name={activePassive?.name} expanded={modal === "passives"} controls="s2-passive-talent-selector" onClick={() => {
         previewPassiveOption(activePassive?.id ?? tree.passives[0]?.id ?? ""); setDetailOpen(false); setModal("passives");
@@ -210,6 +214,9 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
       onApply={id => { setBuild(b => ({ ...b, passiveId: id })); closePassives(); }}
       onUnequip={() => { setBuild(b => ({ ...b, passiveId: null })); closePassives(); }}>
       <Description text={previewPassive?.description ?? ""} />
+      {previewPassive && <div id={`multiplier-provider-passive-${previewPassive.id}`} data-multiplier-provider-target={`passive-${previewPassive.id}`} className="mt-4">
+        <MultiplierSourceBadges source={{ type: "season-talent", season: "s2", tree: tree.id, passiveId: previewPassive.id }} />
+      </div>}
     </TalentPassiveSelector>}
     <dialog ref={dialog} className={styles.modal} onCancel={() => setModal(null)} onClose={() => setModal(null)}>
       <header><h2>重置配点</h2><button type="button" aria-label="关闭" onClick={() => setModal(null)}><X size={22} /></button></header>

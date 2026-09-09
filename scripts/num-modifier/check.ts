@@ -10,6 +10,7 @@ import { parseNumModifierSemantics } from "../../lib/num-modifier-semantics";
 import { checkNumModifierDataLock, readNumModifierDataLock } from "./lock";
 import { checkModifierRuntimeProjections } from "./project";
 import { loadModifierProviderRegistry } from "./provider-registry";
+import { getProviderResolver } from "./provider-resolver";
 
 const root = process.cwd();
 const errors: string[] = [];
@@ -40,6 +41,8 @@ function checkStaticBoundaries(): void {
     // extractor and evidence ledger may name the archived Numerical source.
     path.join(root, "scripts", "s2-season-talents", "extract.ts"),
     path.join(root, "data", "season-talents", "s2", "evidence.json"),
+    path.join(root, "data", "season-talents", "s2", "provider-evidence.json"),
+    path.join(root, "scripts", "s2-season-talents", "providers.ts"),
   ]);
   const directLockImport = /(?:from\s+|require\s*\(\s*)["'][^"']*num-modifier-lock\.json["']/;
   const directLockAllowlist = new Set([
@@ -265,7 +268,7 @@ function run(): void {
 
   for (const entry of registry.providers) {
     for (const [index, application] of (entry.applications ?? []).entries()) {
-      resolver.resolveEffect(
+      getProviderResolver(entry.source, resolver).resolveEffect(
         application.expression,
         application.context,
         `data/modifier-providers.json#${entry.id}.applications[${index}]`,
@@ -274,7 +277,7 @@ function run(): void {
   }
   for (const entry of registry.exclusions) {
     for (const [index, application] of (entry.evidence?.applications ?? []).entries()) {
-      resolver.resolveEffect(
+      getProviderResolver(entry.source, resolver).resolveEffect(
         application.expression,
         application.context,
         `data/modifier-providers.json#${entry.id}.evidence.applications[${index}]`,

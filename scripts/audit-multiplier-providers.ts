@@ -5,6 +5,7 @@ import { MULTIPLIER_PROVIDERS } from "@/lib/multiplier-data";
 import { HUNTING_SPEEDRUN_CARDS } from "@/lib/hunting-speedrun";
 import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
 import { loadModifierProviderRegistry } from "./num-modifier/provider-registry";
+import { getProviderResolver } from "./num-modifier/provider-resolver";
 
 type Row = Record<string, unknown>;
 
@@ -147,7 +148,7 @@ for (const provider of sourceRegistry.providers) {
     continue;
   }
   const evidenceEffects = (provider.applications ?? []).map((application) =>
-    NUM_MODIFIER_RESOLVER.resolveEffect(
+    getProviderResolver(provider.source, NUM_MODIFIER_RESOLVER).resolveEffect(
       application.expression,
       application.context,
       `data/modifier-providers.json#${provider.id}`,
