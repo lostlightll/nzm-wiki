@@ -1,37 +1,45 @@
 ---
 title: 天网
-range: 4
+range: 5
 position: 墙壁
 attack: ''
-hp: null
+hp: ''
 price: 1100
 area: 1x1
-description: 在墙面部署的陷阱，持续发射激光攻击经过的敌人。2个、4个成对安放时会激发能量爆炸，造成大范围伤害。
+description: 墙壁激光陷阱，可通过两个或四个陷阱联动生成范围爆炸。
 ---
 
-<LevelTable
-  headers={["等级", "激光伤害", "小爆炸伤害", "大爆炸伤害"]}
-  data={[
-    [1, 40, 320, 800],
-    [2, 48, 384, 960],
-    [3, 60, 480, 1200],
-    [4, 72, 576, 1440],
-  ]}
-/>
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
 
-## 激光
+## 等级数据
 
-- 伤害结算间隔：**0.65秒**
-- 攻击范围：**600×128×128** <Grey>(4.6875 格)</Grey>
+以下采用《未来测评》「陷阱数据」，不计外部增伤。小球、大球伤害分别为表中单次射线伤害的8倍和20倍。
 
-## AOE 爆炸
+<LevelTable headers={["等级", "单次射线", "小球爆炸", "大球爆炸"]} data={[
+  [1, 40, 320, 800],
+  [2, 48, 384, 960],
+  [3, 60, 480, 1200],
+  [4, 72, 576, 1440],
+]} />
 
-成对检测范围（ConnectCheckRange）为 **700 units**  
-一对或两对天网紧邻安放时会触发 AOE 能量爆炸。爆炸是球形范围，可命中低空单位。
+## 射线与联动
 
-| 联动组合 | AOE伤害倍率 | 爆炸范围 | 冷却时间 |
+射线攻击间隔按表格记录为 **0.5秒**，射程约 **5格**。原表对「射线伤害、间隔」标注存疑，因此射线数值作为测评参考。
+
+| 联动 | 爆炸倍率 | 爆炸范围 | 爆炸CD |
 | --- | --- | --- | --- |
-| 一对天网（2 个） | **8x** | 1.5格 | 10秒 |
-| 两对天网（4 个） | **20x** | 3格 | 10秒 |
+| 两个天网 | 8倍 | 1.5格 | 10秒 |
+| 四个天网 | 20倍 | 3格 | 10秒 |
 
-<Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1p8zTBWEKR" title="BV1p8zTBWEKR" />
+表格记录：已经参与生成爆炸球的天网，不能同时再与另一组天网生成球。规划位置时应按独立组合计算，不能把同一台陷阱重复计入多组收益。
+
+## 计算口径
+
+四级小球为 `72 × 8 = 576`，大球为 `72 × 20 = 1440`。按每10秒成功触发一次，分别折合每个联动组 **57.6/秒、144/秒** 的爆炸贡献；这是推算，不是每台天网各自获得的额外DPS。
+
+按0.5秒间隔，四级射线攻击期间折合 `72 ÷ 0.5 = 144 DPS`。这只描述持续命中时的射线输出，不代表包含停火和索敌后的长期平均值。爆炸收益按联动组计算，不能重复分配给每台天网后再求和。
+
+
+{/* 字节码：NZM/Content/AIBehavior/ZhanQiBehavior/17723031_TrapSkyNet/Ability/GA_SkyNetAttack ExecuteUbergraph@289 GetConnectAttackRatio(2.0)，@391 ApplyNumericalSettlementWithHitResultAndModifier，ModifierID191110106、系数=查询结果；numerical_modifier_config 191110106_1_0 DamageRatio B1 BaseValue0 CoefValue1。 */}
+
+{/* 证据：TD_SkyNet 四等级；GA_SkyNetAttack TickInterval=.65、CD=.5、AttackDuration=2；GA_SkyNetAttackAOE_Pair AOEDamageRatio=8、CDTime=10；Quad=20、10；1772303101_1 HpCalScale=1。工作表 J11:N16、Q35:Q37。 */}

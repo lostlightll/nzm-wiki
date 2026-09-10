@@ -8,17 +8,32 @@ price: 3000
 area: 2x2
 description: 在地面部署的大型陷阱，向锁定敌人方向发射三枚较分散的强力火炮，命中时造成小范围溅射伤害。
 ---
-<LevelTable
-  headers={["等级", "伤害", "冷却", "DPS"]}
-  data={[
-    [1, "400×3=1200", "5.5秒", 218],
-    [2, "480×3=1440", "2.5秒", 576],
-    [3, "600×3=1800", "2.5秒", 720],
-    [4, "720×3=2160", "2.5秒", 864],
-  ]}
-/>
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
 
-- 3枚炮弹的间隔距离为 **245 units** ，约 **半格** （一格为 **512 units** ）
-- 每一枚炮弹的爆炸半径为 **0.5格**
+## 等级数据
+
+<LevelTable headers={["等级", "三段全中合计", "间隔 / 秒", "DPS（推算）"]} data={[
+  [1, 1200, "未记录", "—"],
+  [2, 1440, 3, 480],
+  [3, 1800, 3, 600],
+  [4, 2160, 3, 720],
+]} />
+
+耐久各等级均为 **400**，实测射程约 **8 格**。三段合计与「陷阱数据」工作表一致。
+
+## 火炮覆盖
+
+向地面目标方向打出三段范围攻击。技能按 **−1、0、1** 三个落点索引循环：沿炮台到目标的水平方向，分别在目标前方 **245 游戏单位**、目标位置、目标后方 **245 游戏单位**结算。
+
+每个落点的爆炸半径为 **256 游戏单位**。合计伤害需要同一目标吃满三段，不能当成每次锁定都必然造成的伤害。
+
+## 计算口径
+
+三段全中伤害为 **单段 × 3**。二至四级按表格的3秒间隔计算，三段全中时 DPS 分别为 **480 / 600 / 720**。
+
+表格一级间隔未提供有效秒数，因此一级不列 DPS。
+
+{/* refs: TowerDefenseTowerLevelConfig TD_MoratrTurret_101/201/301/401; GA_Mortar_Shoot Damage.SkillId=1770903101, CoolDownLevel=[4,2.5,2.5,2.5], IntervalDistance=245, SphereRadius=256; numerical_config_monsterskill 1770903101_1 HpCalScale=1/HpCalBase=0. Sheet N3:P7; P3='w' invalid. */}
+{/* Bytecode audit: GA_Mortar_Shoot ExecuteUbergraph @990 i=-1, @1013 i<=1, @1062 i*IntervalDistance, @1108 Direction*offset, @1154 TargetLoc+offset, @1250 SpawnLoc assignment, @1486 Jump15 (AOE @90, Activate @512), @1491 increment, @1560 Jump1013. AOEId=1770803101 in NZAOEGlobalConfigTable has AOERadius=256. Fresh installed-game export CDO matches refs exactly. */}
 
 <Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1z9rrBQE1a" title="BV1z9rrBQE1a" />

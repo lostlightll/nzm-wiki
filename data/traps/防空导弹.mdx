@@ -1,6 +1,6 @@
 ---
 title: 防空导弹
-range: 8
+range: 10
 position: 地面
 attack: ''
 hp: 100
@@ -8,20 +8,29 @@ price: 600
 area: 1x1
 description: 部署在地面的防空导弹，专门针对飞行敌人设计，可以锁定敌人发射追踪飞弹，是空中突袭怪的克星，但无法攻击地面目标。
 ---
-<LevelTable
-  headers={["等级", "技能攻击力", "伤害", "攻击冷却"]}
-  data={[
-    [1, 150, "500 × 2", 5],
-    [2, 200, "500 × 2", 3.5],
-    [3, 300, "500 × 2", 2.5],
-    [4, 450, "600 × 2", 2],
-  ]}
-/>
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
 
-- 只攻击空中单位
-- 升级不增加血量，始终是 **100 HP**
-- 每次发射 **2枚** 追踪导弹，两枚炮弹射击间隔为 **0.3 秒**
+## 等级数据
 
-<Callout>结合飞机的血量，自爆飞机 100 HP，飞鱼 1000 HP（一次攻击就可以击落，飞碟则需要 14 次攻击）</Callout>
+<LevelTable headers={["等级", "单枚伤害", "两枚全中合计", "表格 CD / 秒"]} data={[
+  [1, 500, 1000, 5],
+  [2, 500, 1000, 3.5],
+  [3, 500, 1000, 2.5],
+  [4, 600, 1200, 2],
+]} />
+
+各等级耐久均为 **100**。前三级主要缩短冷却，四级同时提高单枚伤害。
+
+## 导弹攻击
+
+仅锁定空中目标，一轮发射 **2 枚**导弹。实测表记录射程约 **10 格**、两枚间隔约 **1 秒**；这是发射间隔记录，不是弹体飞行时间。
+
+等级表采用《未来测评》「陷阱数据」的伤害与CD记录。
+
+## 计算口径
+
+一轮两枚均命中同一目标时，合计为 **单枚伤害 × 2**。直接按表内CD作为整轮间隔推算，各级 DPS 为 **200 / 285.71 / 400 / 600**；两枚间的发射间隔不再重复加进这个公式。该值不计弹体落空或索敌等待。
+
+{/* refs: TowerDefenseTowerLevelConfig TD_Antiairmissile_101/201/301/401; GA_TowerMissile_Shoot ProjSpawnInfos=2, CoolDownLevel=[5,3.5,2.5,2], Duration=.8, ProjectileConfig.SpawnTime=.21, TargetAreaType=Air; BP_Proj_MissileTurret -> numerical_config_monsterskill 1770503101_1 HpCalScale=1/HpCalBase=0. Sheet H3:J8. */}
 
 <Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1JqkjBnEvo" title="BV1JqkjBnEvo" />

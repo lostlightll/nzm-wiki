@@ -3,20 +3,33 @@ title: 电击
 range: ''
 position: 地面
 attack: ''
-hp: 1000
-price: 1000
+hp: ''
+price: 400
 area: 1x1
-description: 电击陷阱会释放电流麻痹敌人，敌人减速的同时还会受到伤害。
+description: 地面陷阱，每0.25秒检测并攻击范围内敌人，同时施加减速。
 ---
-<LevelTable
-  headers={["等级", "技能攻击力"]}
-  data={[
-    [1, 8],
-    [2, 10],
-    [3, 13],
-    [4, 17],
-  ]}
-/>
 
-- 检测间隔： **0.25秒**
-- 给予敌人 **TrapSlowDownBranch** 减速 Buff，同时造成伤害
+## 等级数据
+
+伤害、减速和攻击间隔采用《未来测评》「陷阱数据」。持续伤害按目标一直处于范围内推算。
+
+<LevelTable headers={["等级", "单次伤害", "减速", "持续伤害（推算/秒）"]} data={[
+  [1, 8, "20%", 32],
+  [2, 10, "25%", 40],
+  [3, 13, "30%", 52],
+  [4, 17, "35%", 68],
+]} />
+
+## 攻击与减速
+
+检测间隔 **0.25秒**，持续覆盖时约每秒4次伤害。减速基础持续 **3秒**，重新施加刷新持续时间，同一状态层数上限为1。
+
+电击采用的减速幅度低于同等级减速陷阱。不要把两种陷阱的减速百分比直接相加；实际叠加还受速度属性结算和目标控制规则影响。
+
+## 计算口径
+
+四级基础持续伤害为 `17 ÷ 0.25 = 68/秒`。目标刚进入或离开范围时，命中次数取决于检测时点，短时间总伤不必恰好等于68乘停留秒数。
+
+价格按正式服配置为 **400**，与表格一致。结算项的元素字段是普通伤害，不能因为名称是「电击」就附加雷元素伤害倍率。
+
+{/* 证据：TD_Electric SpellPower=8/10/13/17、TrapParam CoinCost=400；GA_TrapElectric TickInterval=.25、SkillId1770203101、Buffs=TrapSlowDownBranch；1770203101_1 HpCalScale=1、ElementType=Normal；TrapSlowDownBranch/_2/_3/_4 GPModifyIDs170000006/7/8/9，numerical_modifier_config 对应1/2/3/4级 SpeedScale B4=-.2/-.25/-.3/-.35、CoefValue=0。Buff Duration=3、StackLimitCount=1。工作表 T11:U16。 */}

@@ -1,6 +1,6 @@
 ---
 title: 自修复磁暴塔
-range: ''
+range: 4
 position: 地面
 attack: ''
 hp: ''
@@ -8,18 +8,31 @@ price: 2500
 area: 2x2
 description: 部署于地面的大型装置，可蓄力攻击敌人，能够有效阻挡并攻击多个敌人，同时在受损时自动修复自身。
 ---
-<LevelTable
-  headers={["等级", "伤害", "血量"]}
-  data={[
-    [1, 550, 800],
-    [2, 550, 1000],
-    [3, 550, 1400],
-    [4, 550, 1600],
-  ]}
-/>
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
 
-- 部署后有 **7秒** 攻击等待时间（可以自修复，只是不能攻击）
-- 蓄力 **2秒** 后进行一次攻击
-- 自修复速度：每 **0.5秒** 修复自身 **3%** 血量
+## 等级数据
+
+<LevelTable headers={["等级", "单次基础伤害", "耐久", "持续修复量 / 秒"]} data={[
+  [1, 550, 800, 48],
+  [2, 550, 1000, 60],
+  [3, 550, 1400, 84],
+  [4, 550, 1600, 96],
+]} />
+
+伤害、耐久和每秒修复量采用《未来测评》的「陷阱数据」工作表。升级主要提高生存能力，攻击伤害不变。
+
+## 攻击与自修复
+
+- 实测表记录各等级攻击间隔均为 **3.2 秒**，射程约 **4 格**。
+- 自修复延迟配置为 **1 秒**；恢复启动时立即结算一次，之后每 **0.5 秒**恢复最大耐久的 **3%**，直到修复停止或达到满耐久。
+
+## 计算口径
+
+基础伤害为技能攻击力 **550 × 1 = 550**。按表格的 3.2 秒间隔估算，持续命中时单目标平均输出约 **171.9 / 秒**，不含首次启动和转火等待。
+
+持续修复速度为 **最大耐久 × 3% ÷ 0.5 秒 = 最大耐久 × 6% / 秒**。单次分别恢复 **24 / 30 / 42 / 48** 耐久；表格的每秒速率不包含启动时额外的立即结算，也不代表受损后无等待地连续回复。
+
+{/* refs: TowerDefenseTowerLevelConfig TD_Trapselfhealing_101/201/301/401; GA_MagneticStormTower LevelDamageId=1770703101, AnimCD=.3, TriggerInterval=.5, CD=7; numerical_config_monsterskill 1770703101_1 HpCalScale=1/HpCalBase=0; GA_PassiveRecoverHealth DelayRecoverTime=1. Sheet B3:E8. */}
+{/* Recovery chain: CommonGA/GA_PassiveRecoverHealth_Base CDO RecoverHealthValue=.03, RecoverHealthPeriod=.5; ExecuteUbergraph @3108 loops ApplyRecoverHealth on RecoverHealthPeriod and @3192 immediately invokes it; @4407 reads MaxHealth, @4534 multiplies by RecoverHealthValue, @4580 assigns SetByCaller.Attribute.Health, @4653 applies GE_RecoverHealth_Tower (Health additive SetByCaller). Magnetic attack montage SequenceLength=2.6666667, AttackNotify LinkValue=2.0899978. */}
 
 <Credit platform="github" author="yihegf" url="https://github.com/qiekn/nzm-wiki/issues/1" title="nzm-wiki/issues/1" />

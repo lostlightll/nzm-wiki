@@ -1,24 +1,40 @@
 ---
 title: 聚能炮
-range: 5
+range: '约 5 格'
 position: 天花板
 attack: ''
 hp: ''
 price: 1500
 area: 1x1
-description: 部署在天花板的聚能炮，蓄能后可锁定附近的敌人发射能量炮，对单个怪物进行单发蓄力射击。
+description: 部署在天花板上的蓄力炮，瞄准地面敌人后发射能量弹，在命中位置造成范围伤害。
 ---
 
-<LevelTable
-  headers={["等级", "伤害", "冷却时间(秒)"]}
-  data={[
-    [1, 700, 4],
-    [2, 800, 4],
-    [3, 925, 4],
-    [4, 1050, 4],
-  ]}
-/>
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
 
-- 5格
-- 爆炸半径 0.5 格
+## 等级数据
+
+伤害与CD采用《未来测评》「陷阱数据」，不计科技、词缀及其他增幅。DPS沿用表格后续公式的6秒分母推算。
+
+<LevelTable headers={["等级", "单发伤害", "CD（秒）", "DPS（推算）"]} data={[
+  [1, 700, 4.5, 116.67],
+  [2, 800, 4.5, 133.33],
+  [3, 925, 4.5, 154.17],
+  [4, 1050, 4.5, 175],
+]} />
+
+## 攻击机制
+
+- 蓄力后向地面目标发射能量弹，在命中位置造成范围伤害。配置蓄力时长为 **1.5秒**。
+- 对地有效射程约 **5格**，适合覆盖固定行进路线。
+- 爆炸半径约 **0.5格**。单发伤害按每个命中目标分别结算，多个敌人进入爆炸范围时可同时受伤。
+
+## 攻击周期与 DPS
+
+表格CD栏为 **4.5秒**，后续DPS公式采用 **6秒**作分母。本页分别保留，计算平均输出时使用6秒，不把差值直接解释为额外后摇。
+
+四级对单为 `1050 ÷ 6 = 175 DPS`。按表格全体攻击8%与天花板攻击24%相加，单发为 `1050 × 1.32 = 1386`，平均为 **231 DPS**。若一次爆炸命中多个目标，对群总量按实际命中数累计；这不提高单个目标承受的伤害。
+
+{/* 来源：TowerDefenseTrapParamTable TD_Plasm_100 → Tower_Plasma → BP_AIChar_17715031_Plasma TowerKey=TD_Plasm → TowerDefenseTowerLevelConfig *_101/201/301/401。GA_PlasmaShoot ChargeTime=1.5 CoolDownLevel=[4,4,4,4]；BP_Proj_Plasma Enemy_SettleConfig_0 → numerical_config_monsterskill 1770503101_1 HpCalScale=1 HpCalBase=0；ApplyEffectsRadially ValidRadius=200。对照《未来测评.xlsx》陷阱数据 AD1:AE8、V30/V32。 */}
+
+{/* 字节码补证：GA_PlasmaShoot ExecuteUbergraph@995 WaitDelay(ChargeTime)、完成回调进入发射点数组循环、@644 DoSpawnProjectile；蓝图未展示父类GPAbility_TowerMissileBase的全部冷却计时，故6秒仍为表格公式模型。新导出CDO与refs一致。 */}
 

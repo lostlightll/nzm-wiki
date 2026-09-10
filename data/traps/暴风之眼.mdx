@@ -1,29 +1,44 @@
 ---
 title: 暴风之眼
-range: 6
+range: '约 5 格'
 position: 天花板
 attack: ''
 hp: null
 price: 1500
 area: 1x1
-description: 在天花板部署的陷阱，能自动地瞄准和攻击敌人，并通过闪电链攻击附近敌人，阵列摆放伤害更高。
+description: 部署在天花板上的闪电陷阱，蓄力攻击地面目标并向附近敌人连锁。相邻的暴风之眼可提供连接增幅。
 ---
-<LevelTable
-  headers={["等级", "连锁伤害", "DPS(对单)", "DPS(对群)", "16个均伤", "DPS"]}
-  data={[
-    [1, "490 / 245 / 122.5", 82, 144, 631, 105],
-    [2, "610 / 305 / 152.5", 100, 177, 873, 145],
-    [3, "760 / 380 / 190.0", 127, 222, 979, 163],
-    [4, "950 / 475 / 237.5", 158, 264, 1224, 204],
-  ]}
-/>
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
 
-- 攻击冷却： **4 秒**
-- 蓄力时间： **1.5 秒**
-- 闪电连锁距离： **2 格**
-- 最多同时对 **3** 名敌人造成伤害
-- 每次连锁衰减 **50%** 伤害
-- **连接增幅**：相邻暴风之眼增幅 **10%** ，平面摆放最多获得 **4** 次增幅
-- 伤害公式： **基础伤害 × (1 + 10% × 相邻数量)**
+## 等级数据
+
+伤害采用《未来测评》「陷阱数据」，不含连接、科技与词缀增幅。后续连锁按表格记录的逐跳减半推算。
+
+<LevelTable headers={["等级", "首目标", "首跳（推算）", "次跳（推算）", "三目标合计（推算）"]} data={[
+  [1, 600, 300, 150, 1050],
+  [2, 750, 375, 187.5, 1312.5],
+  [3, 950, 475, 237.5, 1662.5],
+  [4, 1100, 550, 275, 1925],
+]} />
+
+## 闪电连锁与连接增幅
+
+- 无额外连锁增益时追加 **2 次连锁**，即首目标加两个后续目标。连锁距离为 **2格**，每跳选择尚未命中的敌人。
+- 连锁伤害逐跳减半，三目标总伤为 **D × (1 + 0.5 + 0.25) = 1.75D**。这是三个不同目标承受的合计伤害，不能当作对单伤害。
+- 相邻暴风之眼每次提供 **10%**增幅，最多 **4次、合计40%**。仅考虑连接时，伤害为 **D × (1 + 0.1n)**，n为有效连接数，最多计4。四级满连接时首目标伤害为 `1100 × 1.4 = 1540`。
+- 其他增伤是否同区相加，需要按对应属性判断，不能把连接增幅无条件作为一个独立乘区再乘一次。
+- 对地射程约 **5格**。阵列边缘的有效连接数可能较少，布置时应同时考虑覆盖范围和连接增幅。
+
+## 攻击周期与 DPS
+
+表格CD栏为 **4.5秒**，后续DPS公式采用 **6秒**作分母。本页沿用6秒计算口径，不将两者差值另行认定为固定后摇。
+
+按此公式，无连接时1—4级对单DPS约为 **100、125、158.33、183.33**；三目标均命中时合计约为 **175、218.75、277.08、320.83 DPS**。这些是表格周期口径下的推算。
+
+四级叠加表格全体攻击8%与天花板攻击24%、不计连接时，对单为 `1100 × 1.32 ÷ 6 = 242 DPS`。多台阵列应分别计入各自的连接数和命中目标，不能直接以满连接伤害乘总台数。
+
+{/* 字节码补证：BP_Proj_StormEye ExecuteUbergraph@565首目标结算，@274计数1、@221比较<=ConnectTime、@152累加；Make Line Connect Attack@102向SopcedModifierIDs Array_Add、@288查询排除已命中者、@1075 TDCommonApplyNumericalSettlementMultiModifiers。GetModifierIDByTowerLevel按TowerLevel-1取数组，未按连锁次数换ID。BeginPlay读取StormEyeAddAttactConnectTime并累加ConnectTime，故2次为无科技基线。同包新导出CDO与refs一致。 */}
+
+{/* 来源：TD_TrapStormEye_260 → Tower_TrapStormEye → BP_AIChar_17726031_TrapStormEye TowerKey=TD_TrapStormEye → TowerDefenseTowerLevelConfig *_101/201/301/401。GA_StormEyeShoot ChargeTime1.5 CoolDownLevel4；BP_Proj_StormEye SettlementID1772603101、ConnectTime2、AttackLineDistance512。numerical_config_monsterskill 1772603101_1 HpCalScale1 HpCalBase0。GA_StormEyeAddModifier ConnectedNumModifierID191110107 → numerical_modifier_config 191110107各等级 DamageRatio B1 .1/.2/.3/.4；BP_Proj_StormEye LevelModifierIDs191110108/109/110/112 → ExecutionRatio B5 -.5。对照陷阱数据 K17:L24、X35/X38。 */}
 
 <Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1SEktBAEpj" title="BV1SEktBAEpj" />

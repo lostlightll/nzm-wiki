@@ -9,12 +9,27 @@ area: 1x1
 description: 部署在地面的诱捕陷阱，利用全息影像吸引敌人，当陷阱被摧毁时触发范围爆炸，对周围敌人造成一次性伤害。
 ---
 
-<LevelTable
-  headers={["等级", "血量", "伤害"]}
-  data={[
-    [1, 75, 800],
-    [2, 75, 950],
-    [3, 75, 1150],
-    [4, 75, 1400],
-  ]}
-/>
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
+
+## 等级数据
+
+<LevelTable headers={["等级", "耐久", "摧毁爆炸基础伤害"]} data={[
+  [1, 75, 800],
+  [2, 75, 950],
+  [3, 75, 1150],
+  [4, 75, 1400],
+]} />
+
+伤害和耐久采用《未来测评》「陷阱数据」工作表。升级提高爆炸伤害，不增加耐久。
+
+## 诱敌与爆炸
+
+以全息影像吸引敌人，在陷阱被摧毁时触发爆炸。伤害技能的前置条件是陷阱死亡，故它是一次性反击，而非常规循环炮台。
+
+实测表的射程栏记录约 **3 格**，但没有区分诱敌距离与爆炸覆盖距离，不将其同时作为这两种范围的精确半径。
+
+## 计算口径
+
+爆炸基础伤害为 **技能攻击力 × 1**，即表中数值；命中多个目标时分别结算。技能中的长冷却参数不能用于计算持续 DPS：两次爆炸之间需要重新部署，并取决于敌人摧毁陷阱的时间。
+
+{/* refs: TowerDefenseTowerLevelConfig TD_Dummy_101/201/301/401; 17717031_Dummy/Ability/GA_DummyBoom SettlementID=1771203101, TriggerPreCondition=PassiveSkillPreCondition_AIDied, SkillCoolDownTime=9999; numerical_config_monsterskill 1771203101_1 HpCalScale=1/HpCalBase=0. Sheet AB3:AC7. */}

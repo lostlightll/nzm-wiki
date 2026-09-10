@@ -6,20 +6,38 @@ attack: ''
 hp: ''
 price: 600
 area: 1x1
-description: 部署于地面的激光箭，可周期性向上方发射激光，其攻击能造成持续短暂的范围伤害，有效杀伤区域内的地面敌人及低空飞行目标。
+description: 部署在地面的激光陷阱，周期性攻击上方区域，可命中地面敌人及低空飞行目标。
 ---
 
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
+
+## 等级数据
+
+采用《未来测评》「陷阱数据」中“激光剑”的伤害和攻击间隔，不计额外增益。
+
 <LevelTable
-  headers={["等级", "伤害", "攻击时长(秒)", "冷却时间(秒)", "DPS"]}
+  headers={["等级", "单次伤害", "攻击间隔（秒）", "DPS（推算）"]}
   data={[
-    [1, 400, "1.2", "3.8", 100],
-    [2, 500, "1.2", "3.8", 125],
-    [3, 600, "1.2", "3.8", 150],
-    [4, 750, "1.2", "3.8", 188],
+    [1, 400, 3.8, 105.26],
+    [2, 500, 3.8, 131.58],
+    [3, 600, 3.8, 157.89],
+    [4, 750, 3.8, 197.37],
   ]}
 />
 
-- 可攻击低空飞行怪
+## 攻击机制
+
+- 伤害区域位于陷阱上方，实测表明确记录可攻击低空飞行怪。
+- 按表格一次攻击计一份伤害；目标检测次数不额外乘入总伤。
+
+## 计算口径
+
+按表格公式，`DPS = 单次伤害 ÷ 3.8秒`。四级为 `750 ÷ 3.8 ≈ 197.37 DPS`，以每次攻击均命中目标为条件。
+
+表格四级增益模型包含全体攻击8%、地面攻击9%和激光剑专属10%，按相加计算为 `750 × 1.27 ÷ 3.8 ≈ 250.66 DPS`。实际输出随自身增益和命中情况变化。
+
+
+{/* 正式服证据：TowerDefenseTowerLevelConfig TD_TrapLaserArrow_101/201/301/401；角色目录17727031_TrapLaserArrow但NPCAttributeID=17729031，不能据目录套浮游雷数据。GA_TrapLaserArrow SettlementID=1771003102，CD=4，AttackDuration=2，TickInterval=TickDelay=0.4，bTickCheckTarget=true，FilterTickTargetActor调用；numerical_config_monsterskill 1771003102_1 HpCalScale=1/HpCalBase=0。MontageNotifyTags只列通知名，AnimProxy数据未提供有效攻击Montage，不能据此证明伤害次数或1.2秒。实测仅陷阱数据 AE11:AF16。 */}
 
 <Credit
   platform="bilibili"

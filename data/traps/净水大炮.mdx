@@ -1,20 +1,39 @@
 ---
 title: 净水大炮
-range: 8
+range: '8 格'
 position: 地面
 attack: ''
 hp: 400
 price: 2000
 area: 2x2
-description: 在地面部署的大型陷阱，当发现污染区域时，会朝目标位置发射水弹进行清理。玩家也可手动操作净水大炮发射水弹，避免污染侵蚀陷阱。
+description: 发射水弹造成范围伤害，并清理污染区域的大型地面陷阱。水弹存在飞行过程，移动较快的目标可能躲过攻击。
 ---
 
-<LevelTable
-  headers={["等级", "伤害", "攻击间隔(秒)", "DPS"]}
-  data={[
-    [1, 560, "2.5", 224],
-    [2, 800, "2.5", 320],
-    [3, 960, "2.5", 384],
-    [4, 1120, "2.5", 448],
-  ]}
-/>
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
+
+## 等级数据
+
+自动射击的单发基础伤害与《未来测评》“陷阱数据”一致。以下数值不含科技、词缀及目标减伤。
+
+<LevelTable headers={["等级", "单发伤害", "间隔（秒）", "基础 DPS"]} data={[
+  [1, 560, 2.5, 224],
+  [2, 800, 2.5, 320],
+  [3, 960, 2.5, 384],
+  [4, 1120, 2.5, 448],
+]} />
+
+## 水弹攻击
+
+- 伤害结算为当前等级攻击力的 **1 倍**。自动射击冷却配置与表格间隔均为 **2.5 秒**，DPS 按单发伤害除以 2.5 计算。
+- 索敌球形半径 **2048 游戏单位**，对应 **8 格**；伤害爆炸半径配置为 **400 游戏单位**。索敌射程、伤害范围和清污范围需分开看。
+- DPS 假定持续自动射击且全部命中，不包含转向、弹道飞行与目标移动造成的空档，也不代表手动操作的输出。
+
+## 清除污染
+
+按《未来测评》「陷阱数据」的记录，水弹可清除约 **2 格**污染，单次清除量约 **13**（表内污染值以100为基准）。
+
+表格同时注明清除效果会受到白线位置影响，后续清除量和污染伤害并不固定。因此13是该次测试的参考值，不代表任何污染状态下都固定清除13，也不据此计算固定清场次数。
+
+{/* 口径更新：以指定工作表 R17:R24 的清污实测为正文依据；refs清污事件50不覆盖表内观察值13。 */}
+
+{/* 来源：TD_WaterCannon_340 → Tower_WaterCannon → BP_AIChar_17733031_WaterCannon TowerKey=TD_WaterCannon → TowerDefenseTowerLevelConfig *_101/201/301/401。GA_WaterCannon_AutoShoot CoolDownLevel2.5；BP_Proj_WaterCannon_AutoShootProj NamedThrowableSettlementConfig1773303101 → numerical_config_monsterskill 1773303101_1 HpCalScale1 HpCalBase0；ApplyEffectsRadially ValidRadius400；ApplyRadiallyClearPollution LevelClearAmounts=[50,50,50,50]。表格陷阱数据 M17:O24、R17:Y24，仅自动射击已验证。 */}

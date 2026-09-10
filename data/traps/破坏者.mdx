@@ -8,18 +8,30 @@ price: 2500
 area: 2x2
 description: 架设在地面的大型火炮，可以锁定单个敌人发射强力火炮，并造成范围伤害。
 ---
-<LevelTable
-  headers={["等级", "技能攻击力", "游戏内估测伤害", "冷却"]}
-  data={[
-    [1, 500, 1000, "5.5秒"],
-    [2, 600, 1200, "2.5秒"],
-    [3, 700, 1400, "2.5秒"],
-    [4, 900, 1800, "2.5秒"],
-  ]}
-/>
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
 
-- 瞄准保持时间： **4 秒**
+## 等级数据
 
-<Callout>技能攻击力是从游戏配置文件中查得的，游戏内估测伤害来自 冷风影_ UP</Callout>
+<LevelTable headers={["等级", "伤害合计", "间隔 / 秒", "DPS（推算）"]} data={[
+  [1, 1000, 3.75, 266.67],
+  [2, 1200, 2.5, 480],
+  [3, 1400, 2.5, 560],
+  [4, 1800, 2.5, 720],
+]} />
+
+耐久各等级均为 **400**，表格记录射程约 **6 格**。两次结算合计与「陷阱数据」工作表的实测伤害一致，攻击间隔取自该表。
+
+## 火炮攻击
+
+锁定地面目标后，在同一目标位置顺序触发 **两次范围伤害结算**，每次爆炸半径均为 **256 游戏单位**。目标移动或脱离覆盖区会影响实际命中。
+
+## 计算口径
+
+伤害链为 **技能攻击力 × 单次结算倍率 1 × 两次范围结算**，四档合计为 **1000 / 1200 / 1400 / 1800**。两次调用已由技能执行字节码确认；单次结算本身没有改成二倍倍率。
+
+按表格伤害除以实测间隔计算 DPS。例如四级 `1800 ÷ 2.5 = 720`，适用于两次范围伤害均命中且持续攻击的情况。
+
+{/* refs: TowerDefenseTowerLevelConfig TD_Moratr_101/201/301/401; 17708031_DestroyerTurret/Ability/GA_DestoryerTurrent_Shoot Damage.SkillId=1770903101, CoolDownLevel=[3.25,2,2,2], SphereRadius=256; numerical_config_monsterskill 1770903101_1 HpCalScale=1/HpCalBase=0. Sheet K3:M7. */}
+{/* Bytecode audit: GA_DestoryerTurrent_Shoot ExecuteUbergraph @446 PushExecutionFlow(942), @483 DoNZAOEAction, @905 Activate, @941 PopExecutionFlow, @974 second identical DoNZAOEAction, @1396 Activate. Both use TargetLoc, AOEId=1770803101 (NZAOEGlobalConfigTable AOERadius=256), GetCurLevelNumericalID. Fresh installed-game export CDO matches refs exactly. +.5s remains observational. */}
 
 <Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1EAzCBmExu" title="BV1EAzCBmExu" />

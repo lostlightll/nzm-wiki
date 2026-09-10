@@ -1,26 +1,40 @@
 ---
 title: 火墙
-range: 4
+range: 4.5
 position: 墙壁
 attack: ''
 hp: ''
 price: 800
 area: 1x1
-description: 部署在墙壁上的火焰发射器，可以周期性向前方喷射火焰，对敌人造成持续伤害并附带灼烧效果。
+description: 墙壁上的火焰发射器，连续喷火并附加持续灼烧；直接命中与灼烧需分开计伤。
 ---
-<LevelTable
-  headers={["等级", "技能攻击力", "减速效果"]}
-  data={[
-    [1, 200, "50%"],
-    [2, 240, "40%"],
-    [3, 290, "50%"],
-    [4, 350, "55%"],
-  ]}
-/>
 
-- 攻击冷却： **8 秒**
-- 攻击持续时间： **2 秒**
-- 伤害触发间隔： **0.4 秒**
-- 火焰伤害 + 附加 **TrapFire** 灼烧 BUFF
+<Callout color="yellow">本页面数值并非解包得来，仅供参考</Callout>
 
-<Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1Y7zFBEEc6" title="BV1Y7zFBEEc6" />
+## 等级数据
+
+采用《未来测评》「陷阱数据」的伤害记录；每次灼烧相当于单段直伤的20%。
+
+<LevelTable headers={["等级", "每段直伤", "每次灼烧", "直伤与一次灼烧合计"]} data={[
+  [1, 200, 40, 240],
+  [2, 240, 48, 288],
+  [3, 290, 58, 348],
+  [4, 350, 70, 420],
+]} />
+
+## 攻击与灼烧
+
+喷火持续 **2秒**，完整覆盖可造成 **五段直伤**，射程约 **4.5格**。灼烧每秒结算一次，持续时间从最后一次刷新起计。
+
+部分跳字为 `直伤 + 一次灼烧`，各级分别为 **240、288、348、420**。目标已经处于灼烧状态时，表格记录后续火墙攻击期间的灼烧伤害会翻倍；这是连续喷火时的表现，不额外计入下方单轮基础模型。
+
+## 整轮伤害与冷却
+
+表格的整轮模型为 **五段直伤加四次灼烧**：`5 × 单段直伤 + 4 × 每次灼烧`，各级合计 **1160、1392、1682、2030**。四级为 `350 × 5 + 70 × 4 = 2030`。敌人离开喷火区、灼烧被刷新时，实际结算次数会变化。
+
+表格CD栏为 **6秒**，后续DPS公式采用 **8秒** 作分母。本页按后者计算整轮平均输出，各级约为 **145、174、210.25、253.75 DPS**，不以CD栏6秒替代公式分母。四级叠加表格全体攻击8%与墙壁攻击9%后，为 `2030 × 1.17 ÷ 8 ≈ 296.89 DPS`。
+
+
+{/* 字节码：NZM/Content/AIBehavior/ZhanQiBehavior/17710031_FlameTurret/Ability/GA_FlameTurret ExecuteUbergraph@1129直伤、@1177 AddBuffByName(TargetActor,CurLevelBuff,1,2.0,...)明确覆盖Duration=2。 */}
+
+{/* 证据：TD_Flamethrower 等级 SpellPower；GA_FlameTurret CD=8、AttackDuration=2、TickInterval=.4、BuffConfig=TrapFire；BuffConfigDatatableNew TrapFire Duration=4、Period=1、bExecOnApplied=true、刷新时不重置周期；numerical_config_monsterskill 1771003101_1 HpCalScale=.2、1771003102_1=1，ElementType均Normal。工作表 D11:I16、P35:P38；F10标题第235段疑为笔误，未按字面重复第5段。 */}
