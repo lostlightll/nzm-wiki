@@ -11,15 +11,8 @@ export interface SavedS3TalentBuild {
   passiveId: string | null;
 }
 
-export function getDefaultS3TalentLevels(
-  nodes: readonly S3TalentStateNode[],
-  rootNodeId: string,
-) {
-  return Object.fromEntries(
-    nodes
-      .filter((node) => node.id !== rootNodeId && node.column <= 3)
-      .map((node) => [node.id, node.maxLevel]),
-  ) as Record<string, number>;
+export function getDefaultS3TalentLevels(): Record<string, number> {
+  return {};
 }
 
 export function getS3SpentTalentPoints(levels: Record<string, number>) {
@@ -113,7 +106,7 @@ export function restoreS3TalentBuild(
   validPassiveIds: ReadonlySet<string>,
   pointLimit = 40,
 ): SavedS3TalentBuild {
-  const defaultLevels = getDefaultS3TalentLevels(nodes, rootNodeId);
+  const defaultLevels = getDefaultS3TalentLevels();
   const empty: SavedS3TalentBuild = {
     version: 1,
     levels: defaultLevels,

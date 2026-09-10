@@ -63,8 +63,8 @@ export function s2UnlockReason(tree: S2TalentTree, node: S2TalentNode, levels: R
   const groups = s2PrerequisiteGroups(node.prerequisite);
   if (groups.length && !groups.some((group) => group.every((id) => {
     const before = tree.nodes.find((candidate) => candidate.id === id);
-    return before && (before.isRoot || (levels[id] ?? 0) >= before.maxLevel);
-  }))) return `需点满前置天赋${node.prerequisite.includes("&") ? "（全部）" : ""}`;
+    return before && (before.isRoot || (levels[id] ?? 0) >= (node.column < 5 ? 1 : before.maxLevel));
+  }))) return `前置天赋需${node.column < 5 ? "至少 1 级" : "点满"}${node.prerequisite.includes("&") ? "（全部）" : ""}`;
   return null;
 }
 
@@ -90,10 +90,14 @@ export function setS2Level(tree: S2TalentTree, build: S2TalentBuild, id: string,
   const levels = { ...build.levels };
   if (requested) {
     // Mutual groups are table identities, not a visual-column convention.
+    let inheritedLevel = 0;
     for (const peer of tree.nodes) {
-      if (peer.id !== id && (node.mutualGroups.includes(peer.group) || peer.mutualGroups.includes(node.group))) delete levels[peer.id];
+      if (peer.id !== id && (node.mutualGroups.includes(peer.group) || peer.mutualGroups.includes(node.group))) {
+        inheritedLevel = Math.max(inheritedLevel, levels[peer.id] ?? 0);
+        delete levels[peer.id];
+      }
     }
-    levels[id] = requested;
+    levels[id] = build.levels[id] ? requested : Math.min(node.maxLevel, Math.max(requested, inheritedLevel));
   } else delete levels[id];
   const valid = pruneS2Levels(tree, levels);
   if (s2SpentPoints(tree, valid) > tree.pointLimit) return build;

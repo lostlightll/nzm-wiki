@@ -1,15 +1,16 @@
 "use client";
 
 import { ArrowDown, HelpCircle, Info } from "lucide-react";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import type { LegacyTalentNode, LegacyTalentTree } from "@/lib/s0s1-season-talents";
 import { legacyDescriptionParts } from "@/lib/s0s1-talent-description";
 import { LEGACY_TALENT_CATALOG, legacyAsset, legacyPresentation } from "@/lib/s0s1-talent-presentation";
 import { isLegacyExclusiveNode, legacyNodePosition, legacyViewStorageKey, restoreLegacyTalentView, type LegacyTalentView } from "@/lib/s0s1-talent-view";
 import { getAssetPath } from "@/lib/path";
 import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
-import { TalentDraftNotice } from "@/components/season-talents/TalentDraftNotice";
-import { TalentConnectorLines, TalentDetails, TalentHeader, TalentNode, TalentWorkspace } from "@/components/season-talents/TalentEditor";
+import { legacySimulationNodes } from "@/lib/s0s1-season-talent-builder";
+import { getS3SpentTalentPoints, isS3TalentNodeUnlocked, restoreS3TalentBuild, setS3TalentNodeLevel } from "@/lib/s3-season-talent-builder";
+import { TalentConnectorLines, TalentDetails, TalentHeader, TalentLevelActions, TalentNode, TalentWorkspace } from "@/components/season-talents/TalentEditor";
 import { LegacyTalentScene } from "./LegacyTalentScene";
 import styles from "./legacy-talents.module.css";
 
@@ -24,12 +25,18 @@ function LegacyGlyph({ node, availableIcons, large = false }: { node: LegacyTale
 export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTalentTree; availableIcons: string[] }) {
   const presentation = legacyPresentation(tree.season, tree.id)!;
   const [view, setView] = useState<LegacyTalentView>(() => restoreLegacyTalentView(tree.nodes, null));
+  const simulationNodes = useMemo(() => legacySimulationNodes(tree), [tree]);
+  const [levels, setLevels] = useState<Record<string, number>>({});
+  const [ready, setReady] = useState(false);
   const detailRef = useRef<HTMLElement>(null);
   const treeRef = useRef<HTMLDivElement>(null);
   const storageKey = legacyViewStorageKey(tree.season, tree.id);
+  const buildKey = `nzm-wiki:season-talents:${tree.season}:${tree.id}:build:v1`;
   const node = tree.nodes.find(n => n.id === view.nodeId) ?? tree.nodes[0];
   const level = node.levels.find(l => l.level === view.level) ?? node.levels[0];
-  const displayFacts = level.facts.filter(fact => fact.displayValue);
+  const current = node.isRoot ? 1 : levels[node.id] ?? 0;
+  const simulationNode = simulationNodes.find(n => n.id === node.id);
+  const unlocked = !simulationNode || isS3TalentNodeUnlocked(simulationNode, simulationNodes, levels);
   const descriptionParts = legacyDescriptionParts(level);
   const branchLinks = LEGACY_TALENT_CATALOG.filter(t => t.season === tree.season && (t.confirmed || t.id === tree.id)).map(t => ({ id: t.id, name: t.confirmed ? t.name : `${t.name} · 存档` }));
   const treeNodes = tree.nodes.filter(n => !n.isRoot);
@@ -40,12 +47,28 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
       try { saved = JSON.parse(window.localStorage.getItem(storageKey) ?? "null"); } catch { /* Storage is optional. */ }
       const requested = new URLSearchParams(window.location.search).get("node");
       const restored = restoreLegacyTalentView(tree.nodes, saved);
+      let build: unknown = null;
+      try { build = JSON.parse(window.localStorage.getItem(buildKey) ?? "null"); } catch { /* Storage is optional. */ }
+      setLevels(restoreS3TalentBuild(simulationNodes, "", build, new Set()).levels);
+      setReady(true);
       setView(requested && requested !== restored.nodeId && tree.nodes.some(n => n.id === requested) ? restoreLegacyTalentView(tree.nodes, { version: 1, nodeId: requested, level: 1 }) : restored);
     }
     sync();
     window.addEventListener("popstate", sync);
     return () => window.removeEventListener("popstate", sync);
-  }, [storageKey, tree.nodes]);
+  }, [storageKey, buildKey, tree.nodes, simulationNodes]);
+
+  useEffect(() => {
+    if (!ready) return;
+    try { window.localStorage.setItem(buildKey, JSON.stringify({ version: 1, levels, passiveId: null })); } catch { /* Simulation works without persistence. */ }
+  }, [buildKey, levels, ready]);
+
+  function change(id: string, requested: number) {
+    if (!ready) return;
+    const next = setS3TalentNodeLevel(simulationNodes, levels, id, requested);
+    setLevels(next);
+    update({ version: 1, nodeId: id, level: Math.max(1, next[id] ?? 0) });
+  }
 
   function update(next: LegacyTalentView, focusDetail = false) {
     const normalized = restoreLegacyTalentView(tree.nodes, next);
@@ -68,53 +91,27 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
       const target = nodes.find(n => n.id === id);
       if (!target) return [];
       const a = position(source), b = position(target);
-      return [{ id: `${source.id}-${id}`, active: false, d: `M ${a.x} ${a.y + 4} V ${(a.y + b.y) / 2} H ${b.x} V ${b.y - 4}` }];
+      return [{ id: `${source.id}-${id}`, active: !!levels[source.id] && !!levels[id], d: `M ${a.x} ${a.y + 4} V ${(a.y + b.y) / 2} H ${b.x} V ${b.y - 4}` }];
     }));
     return { exclusive, nodes, position, paths };
   });
 
   return <section className={styles.builder} style={{ "--talent-accent": presentation.color, "--talent-accent-soft": `${presentation.color}26`, "--talent-glow": `${presentation.color}55` } as CSSProperties}>
     <div className={styles.builderScene}><LegacyTalentScene season={tree.season} /></div>
-    <TalentDraftNotice />
     <TalentHeader season={tree.season} links={branchLinks} activeId={tree.id} activeSkillId={tree.nodes.find(n => n.isRoot)?.id} name={tree.name} icon={legacyAsset(presentation.icon)} weapons={tree.applicableWeapons ? `适配武器：${tree.applicableWeapons}` : tree.subtitle} onInspect={() => update(restoreLegacyTalentView(tree.nodes, null), true)} />
     <TalentWorkspace details={
-      <TalentDetails season={tree.season} name={node.name} icon={node.icon} level={level.level} maxLevel={node.maxLevel} panelRef={detailRef} id="talent-detail" onReset={() => update(restoreLegacyTalentView(tree.nodes, null))} resetLabel="重置浏览状态"
+      <TalentDetails season={tree.season} name={node.name} icon={node.icon} level={current} maxLevel={node.isRoot ? undefined : node.maxLevel} panelRef={detailRef} id="talent-detail" onReset={() => { setLevels({}); update(restoreLegacyTalentView(tree.nodes, null)); }}
         imageContent={node.isRoot ? undefined : <LegacyGlyph node={node} availableIcons={availableIcons} large />}
         headingActions={<button className={styles.mobileReturn} title="返回天赋树" aria-label="返回天赋树" onClick={() => treeRef.current?.scrollIntoView({ block: "start", behavior: "instant" })}><ArrowDown size={18} /></button>}
-        actions={<p className={styles.ruleNotice}>前置解锁与退点规则未核实，暂不开放模拟加点。</p>}>
+        actions={!node.isRoot && <TalentLevelActions name={node.name} level={current} maxLevel={node.maxLevel} canDecrease={ready && current > 0} canIncrease={ready && unlocked && current < node.maxLevel && getS3SpentTalentPoints(levels) < 40} onChange={value => change(node.id, value)} />}>
         {!node.isRoot && <label className={styles.levelControl}>效果等级<select aria-label="效果等级" value={level.level} onChange={e => update({ ...view, level: Number(e.target.value) })}>{node.levels.map(l => <option key={l.level} value={l.level}>等级 {l.level} / {node.maxLevel}</option>)}</select></label>}
         <p className={styles.description}>{descriptionParts.map((part, index) => part.reference
-          ? <span key={index} title="原描述参考值，尚未核验配置，不用于乘区索引。">{part.text}</span>
+          ? <span key={index}>{part.text}</span>
           : <span key={index}>{part.text.split(/([+-]?\d+(?:\.\d+)?%?)/g).map((text, i) => /^[-+]?\d/.test(text) ? <strong className={styles.value} key={i}>{text}</strong> : text)}</span>)}</p>
         <div id={`multiplier-provider-node-${node.id}`} className="mt-3" data-multiplier-provider-target={`node-${node.id}`}>
           <MultiplierSourceBadges source={{ type: "season-talent", season: tree.season, tree: tree.id, nodeId: node.id }} />
         </div>
-        {!level.valueReview && level.semanticConflicts?.length ? <p className={styles.warning}>当前参数与该节点描述存在冲突，不能据此确认历史效果。</p>
-          : descriptionParts.some(part => part.reference) ? <p className={styles.configurationNotice}>{level.valueReview?.executionConflict ? "虫群配置关联异常；部分数值仅为原描述参考值。" : "含尚未核验配置的原描述参考值，详见核验记录。"}</p>
-          : level.description.includes("〔数值待核实〕") || level.description.includes("缺少该等级描述") ? <p className={styles.warning}>部分效果仍缺少可解析的描述或数值来源。</p> : null}
-        {(level.videoReview || level.reportedReview) && <p className={styles.configurationNotice}>含录像或用户补充的展示值，详见核验记录。</p>}
-        {!availableIcons.includes(node.icon) && <p className={styles.warning}>节点图标尚未完成定位，暂以问号标记。</p>}
-        <details className={styles.evidence}><summary>来源与核验记录</summary>
-          <p>数值按已核验配置展示，不等同于历史版本实测。</p>
-          {level.valueReview?.executionConflict && <p>{level.valueReview.executionConflict.message}</p>}
-          {level.descriptionReferences?.map((reference, index) => <p key={`description-${index}`}>原描述参考：{reference.text}。{reference.reason}<br />{reference.source}</p>)}
-          {level.reportedReview && <p>含 {level.reportedReview.count} 处用户补充的展示值，尚未核实执行配置。</p>}
-          {level.valueReview && <p>配置核验沿 Basic → Passive 等级 → MGEConfig / 描述行进行；录像补充不属于配置依据。下方旧同 ID 直连事实仅供排错，不用于正文数值或乘区。</p>}
-          {level.videoReview && <>
-            <p>录像补充：{level.videoReview.timestamp} · {level.videoReview.levelEvidence}。仅限本节点、本等级，不用于乘区索引。</p>
-            {level.videoReview.values.map(value => <p key={`video-${value.slot}`}>{value.context.replace("〔数值待核实〕", `【${value.value}】`)}（录像展示值）</p>)}
-            {level.videoReview.notes.map(note => <p key={note}>{note}</p>)}
-          </>}
-          {level.valueReview?.sources.map(source => <p key={source}>{source}</p>)}
-          {level.reportedReview && <><p>{level.reportedReview.source}</p>{level.reportedReview.notes.map(note => <p key={note}>{note}</p>)}</>}
-          {[...new Set(level.valueReview?.notes ?? [])].map(note => <p key={note}>{note}</p>)}
-          {displayFacts.length > 0 && <section className={styles.facts}><h3>当前同 ID 配置 · 非历史效果确认</h3><dl>{displayFacts.map((fact, i) => <div key={i}><dt>{fact.label}</dt><dd>{fact.displayValue}</dd></div>)}</dl></section>}
-          <p>节点 ID：{node.id} · 技能 ID：{node.skillIds.join("、") || "未定位"}</p>
-          {level.modifierRows.map(row => <p key={row}>{row}</p>)}
-          {level.facts.map((fact, i) => <p key={`source-${i}`}>{fact.label}：{fact.value}<br />{fact.source}</p>)}
-          {level.warnings.map((warning, i) => <p key={`warning-${i}`}>{warning}</p>)}
-          {tree.evidenceNotes.map(note => <p key={note}>{note}</p>)}
-        </details>
+        {!node.isRoot && !unlocked && <p className={styles.ruleNotice}>需先解锁前置天赋</p>}
       </TalentDetails>
     }>
       <div className={styles.treeSection}>
@@ -124,12 +121,15 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
             <TalentConnectorLines paths={region.paths} />
             {region.nodes.map(n => {
               const position = region.position(n);
-              return <TalentNode key={n.id} node={n} preview selected={node.id === n.id} level={0} unlocked onSelect={() => update({ version: 1, nodeId: n.id, level: 1 }, true)} className={styles.positionedNode}
+              const stateNode = simulationNodes.find(candidate => candidate.id === n.id)!;
+              return <TalentNode key={n.id} node={n} selected={node.id === n.id} level={levels[n.id] ?? 0} unlocked={isS3TalentNodeUnlocked(stateNode, simulationNodes, levels)}
+                mutuallyExcluded={!region.exclusive && !levels[n.id] && region.nodes.some(peer => peer.phase === n.phase && !!levels[peer.id])}
+                onSelect={() => update({ version: 1, nodeId: n.id, level: Math.max(1, levels[n.id] ?? 0) }, true)} onIncrease={() => change(n.id, (levels[n.id] ?? 0) + 1)} className={styles.positionedNode}
                 style={{ left: `${position.x}%`, top: `${position.y}%`, color: region.exclusive ? presentation.color : "#b3b8bb" }} iconContent={<LegacyGlyph node={n} availableIcons={availableIcons} />} />;
             })}
           </section>)}
         </div>
-        <div className={styles.treeFoot}><Info size={14} aria-hidden="true" /><span>{tree.nodeCount} 个节点 · {tree.historicalStatus === "unconfirmed" ? "入口锁定的历史配置，录像未收录" : "当前配置参考，历史解锁条件待核实"}</span></div>
+        <div className={styles.treeFoot}><Info size={14} aria-hidden="true" /><span>{getS3SpentTalentPoints(levels)}/40 点 · 双击节点加点</span></div>
       </div>
     </TalentWorkspace>
   </section>;

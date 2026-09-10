@@ -15,7 +15,7 @@ import {
 const zeroNodes = zeroData.nodes as S3TalentStateNode[];
 const generalNodes = zeroNodes.filter((node) => node.column >= 5);
 
-test("S3 三棵树默认 15 点且最大均为 40 点", () => {
+test("S3 三棵树初始与重置左右均为空且最大均为 40 点", () => {
   for (const data of [ironFistData, zeroData, grapplingHookData]) {
     const exclusiveNodes = (data.nodes as S3TalentStateNode[]).filter(
       (node, index) => index > 0 && node.column <= 3,
@@ -39,12 +39,16 @@ test("S3 三棵树默认 15 点且最大均为 40 点", () => {
     assert.equal(exclusiveMaximum + generalMaximum, 40, data.id);
   }
 
-  const defaults = getDefaultS3TalentLevels(zeroNodes, zeroNodes[0].id);
-  assert.equal(getS3SpentTalentPoints(defaults), 15);
+  const defaults = getDefaultS3TalentLevels();
+  assert.deepEqual(defaults, {});
+  assert.equal(getS3SpentTalentPoints(defaults), 0);
 });
 
 test("S3 通用天赋同阶段互斥并限制等级与总点数", () => {
-  const defaults = getDefaultS3TalentLevels(zeroNodes, zeroNodes[0].id);
+  const defaults = getDefaultS3TalentLevels();
+  for (const node of zeroNodes.filter((node, index) => index > 0 && node.column <= 3)) {
+    Object.assign(defaults, setS3TalentNodeLevel(zeroNodes, defaults, node.id, node.maxLevel));
+  }
   const phaseTwo = generalNodes.filter((node) => node.phase === 2);
   let levels = setS3TalentNodeLevel(
     zeroNodes,
@@ -80,7 +84,7 @@ test("S3 通用天赋同阶段互斥并限制等级与总点数", () => {
 });
 
 test("S3 通用天赋遵循前置解锁并在清空前置后级联清理", () => {
-  const defaults = getDefaultS3TalentLevels(zeroNodes, zeroNodes[0].id);
+  const defaults = getDefaultS3TalentLevels();
   const phaseTwo = generalNodes.find((node) => node.phase === 2);
   const phaseThree = generalNodes.find((node) => node.phase === 3);
   assert.ok(phaseTwo);
@@ -105,7 +109,7 @@ test("S3 通用天赋遵循前置解锁并在清空前置后级联清理", () =>
 });
 
 test("S3 同阶段通用天赋切换时继承已有等级", () => {
-  const defaults = getDefaultS3TalentLevels(zeroNodes, zeroNodes[0].id);
+  const defaults = getDefaultS3TalentLevels();
   const phaseTwo = generalNodes.filter((node) => node.phase === 2);
   let levels = setS3TalentNodeLevel(
     zeroNodes,
@@ -152,6 +156,6 @@ test("S3 v1 存档恢复保留显式零级、首个同阶段通用天赋和有�
     { version: 2, levels: {}, passiveId: "invalid" },
     new Set(["2030103"]),
   );
-  assert.equal(getS3SpentTalentPoints(malformed.levels), 15);
+  assert.deepEqual(malformed.levels, {});
   assert.equal(malformed.passiveId, null);
 });

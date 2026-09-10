@@ -302,7 +302,7 @@ function NodeDetail({ node, level, unlocked, spentPoints, pointLimit, onChangeLe
   node: SeasonTalentNodeData; level: number; unlocked: boolean; spentPoints: number; pointLimit: number;
   onChangeLevel: (level: number) => void; onReset: () => void;
 }) {
-  return <TalentDetails season="s4" name={node.name} icon={node.icon} level={level} maxLevel={node.isRoot ? undefined : node.maxLevel} onReset={onReset} resetLabel="清空方案"
+  return <TalentDetails season="s4" name={node.name} icon={node.icon} level={level} maxLevel={node.isRoot ? undefined : node.maxLevel} onReset={onReset}
     actions={!node.isRoot && <TalentLevelActions name={node.name} level={level} maxLevel={node.maxLevel} canDecrease={level > 0}
       canIncrease={unlocked && level < node.maxLevel && spentPoints < pointLimit} onChange={onChangeLevel} />}>
     {node.unlockLevel > 0 && <p className="mb-2 text-xs text-[#e8ca6a]">赛季等级 {node.unlockLevel} 解锁</p>}

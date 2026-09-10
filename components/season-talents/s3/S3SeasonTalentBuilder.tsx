@@ -363,14 +363,8 @@ export function S3SeasonTalentBuilder({ talentId }: { talentId: S3TalentId }) {
   const DATA = TALENT_DATA[talentId];
   const ROOT_NODE_ID = DATA.nodes[0].id;
   const TALENT_BUILD_STORAGE_KEY = `nzm-wiki:season-talents:s3:${talentId}:v1`;
-  const DEFAULT_EXCLUSIVE_LEVELS = useMemo(
-    () => getDefaultS3TalentLevels(DATA.nodes, ROOT_NODE_ID),
-    [DATA.nodes, ROOT_NODE_ID],
-  );
   const [selectedNodeId, setSelectedNodeId] = useState(ROOT_NODE_ID);
-  const [talentLevels, setTalentLevels] = useState<Record<string, number>>(() => ({
-    ...DEFAULT_EXCLUSIVE_LEVELS,
-  }));
+  const [talentLevels, setTalentLevels] = useState(getDefaultS3TalentLevels);
   const [selectedPassiveId, setSelectedPassiveId] = useState<string | null>(null);
   const [previewPassiveId, setPreviewPassiveId] = useState(PASSIVE_DATA.passives[0].id);
   const [passiveSelectorOpen, setPassiveSelectorOpen] = useState(false);
@@ -457,7 +451,7 @@ export function S3SeasonTalentBuilder({ talentId }: { talentId: S3TalentId }) {
   };
 
   const resetBuild = () => {
-    setTalentLevels({ ...DEFAULT_EXCLUSIVE_LEVELS });
+    setTalentLevels(getDefaultS3TalentLevels());
     setSelectedPassiveId(null);
     setSelectedNodeId(ROOT_NODE_ID);
     updateDeepLink({});
@@ -490,7 +484,7 @@ export function S3SeasonTalentBuilder({ talentId }: { talentId: S3TalentId }) {
     } finally {
       setStorageReady(true);
     }
-  }, [DATA.nodes, DEFAULT_EXCLUSIVE_LEVELS, ROOT_NODE_ID, TALENT_BUILD_STORAGE_KEY]);
+  }, [DATA.nodes, ROOT_NODE_ID, TALENT_BUILD_STORAGE_KEY]);
 
   useEffect(() => {
     let frame = 0;

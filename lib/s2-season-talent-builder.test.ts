@@ -31,13 +31,17 @@ test("free root does not consume points and reset is empty", () => {
   assert.deepEqual(restoreS2Build(tree, emptyS2Build()), build);
 });
 
-test("OR prerequisites require one fully allocated predecessor and phase points", () => {
-  const partial = allocate([["2003201", 4]]);
-  assert.ok(s2UnlockReason(tree, node("2003301"), partial.levels));
+test("common OR prerequisites require one level while phase point gates remain", () => {
+  assert.ok(s2UnlockReason(tree, node("2003301"), {}));
+  const partial = allocate([["2003201", 1]]);
+  assert.match(s2UnlockReason(tree, node("2003301"), partial.levels)!, /前置阶段需投入/);
+  assert.equal(s2UnlockReason(tree, { ...node("2003301"), unlockPoints: 0 }, partial.levels), null);
   const full = allocate([["2003201", 5]]);
   assert.equal(s2UnlockReason(tree, node("2003301"), full.levels), null);
   assert.equal(s2UnlockReason(tree, node("2003302"), full.levels), null);
   assert.ok(s2UnlockReason(tree, node("2003501"), full.levels));
+  const partialWithPhasePoints = allocate([["2003201", 4], ["2003206", 1]]);
+  assert.equal(s2UnlockReason(tree, node("2003301"), partialWithPhasePoints.levels), null);
 });
 
 test("AND junction requires both specialist predecessors", () => {
@@ -47,19 +51,22 @@ test("AND junction requires both specialist predecessors", () => {
   assert.equal(s2UnlockReason(tree, node("2003406"), both.levels), null);
 });
 
-test("switching a mutual group removes previous node and invalid descendants", () => {
+test("switching a mutual group inherits levels and preserves valid descendants", () => {
   const build = allocate([["2003201", 5], ["2003301", 5]]);
   const switched = setS2Level(tree, build, "2003202", 1);
   assert.equal(switched.levels["2003201"], undefined);
-  assert.equal(switched.levels["2003301"], undefined);
-  assert.equal(switched.levels["2003202"], 1);
+  assert.equal(switched.levels["2003301"], 5);
+  assert.equal(switched.levels["2003202"], 5);
 });
 
-test("subtracting a prerequisite cascades and preserves selected passive", () => {
+test("common descendants survive partial refunds and cascade when the prerequisite is cleared", () => {
   const build = { ...allocate([["2003201", 5], ["2003301", 5]]), passiveId: tree.passives[0].id };
   const reduced = setS2Level(tree, build, "2003201", 4);
-  assert.equal(reduced.levels["2003301"], undefined);
+  assert.equal(reduced.levels["2003301"], 5);
   assert.equal(reduced.passiveId, build.passiveId);
+  const cleared = setS2Level(tree, reduced, "2003201", 0);
+  assert.equal(cleared.levels["2003301"], undefined);
+  assert.equal(cleared.passiveId, build.passiveId);
 });
 
 test("budget blocks overspending without corrupting state", () => {

@@ -10,7 +10,6 @@ import { emptyS2Build, restoreS2Build, s2PrerequisiteGroups, s2SpentPoints, s2Un
 import styles from "./s2.module.css";
 import editor from "./s2-editor.module.css";
 import { TalentPassiveSelector } from "@/components/season-talents/TalentPassiveSelector";
-import { TalentDraftNotice } from "@/components/season-talents/TalentDraftNotice";
 import { TalentHeader, TalentPassiveSlot, TalentNode, TalentDetails, TalentLevelActions, TalentWorkspace, TalentTreeSections, TalentConnectorLines } from "@/components/season-talents/TalentEditor";
 
 function column(node: S2TalentNode) { return node.column >= 5 ? node.column - 4 : node.column + 3; }
@@ -169,12 +168,10 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
       <MultiplierSourceBadges source={{ type: "season-talent", season: "s2", tree: tree.id, nodeId: node.id }} />
     </div>}
     {node && !node.isRoot && <p className={styles.requirement}>{reason ?? (current === node.maxLevel ? "已满级" : `升级消耗 ${node.costs[current]} 点`)}</p>}
-    {node?.auditNote && <details className={styles.audit}><summary>资料核验</summary><p>{node.auditNote}</p></details>}
   </TalentDetails>;
 
   return <section className={editor.editor} style={theme} aria-label={`${tree.name}天赋树`}>
     <div className={editor.background}><Image src={getAssetPath(catalog.background)} alt="" fill priority sizes="100vw" /></div>
-    <TalentDraftNotice />
     <TalentHeader season="s2" links={catalog.trees} activeId={tree.id} activeSkillId={root.id} name={tree.name} icon={tree.icon} points={points} limit={tree.pointLimit}
       weapons={tree.applicableWeapons} onInspect={() => inspect(root.id)}>
       <TalentPassiveSlot icon={activePassive?.icon} name={activePassive?.name} expanded={modal === "passives"} controls="s2-passive-talent-selector" onClick={() => {
