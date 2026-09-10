@@ -13,6 +13,7 @@
 
 | 任务范围 | Required | Optional | 状态 |
 | :--- | :--- | :--- | :---: |
+| 塔防陷阱详情、伤害及实测对照维护 | [`workflows/trap-content-audit.md`](workflows/trap-content-audit.md) | 无 | active |
 | 猎场 Buff 数据导入、图标或图鉴维护 | [`workflows/status-effect-import.md`](workflows/status-effect-import.md) | [`standards/weapon-numerical-v2.md`](standards/weapon-numerical-v2.md) | active |
 | 召唤物篇章、伤害、射速或关联索引维护 | [`workflows/summon-compendium.md`](workflows/summon-compendium.md) | [`architecture/multiplier-index.md`](architecture/multiplier-index.md)、[`workflows/status-effect-import.md`](workflows/status-effect-import.md) | active |
 | 武器 MDX 新增、修改或审计 | [`standards/weapon-mdx.md`](standards/weapon-mdx.md)、[`standards/weapon-numerical-v2.md`](standards/weapon-numerical-v2.md) | [`architecture/weapon-resolver.md`](architecture/weapon-resolver.md) | active |
