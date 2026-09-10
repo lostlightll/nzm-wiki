@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, HelpCircle, Info } from "lucide-react";
+import { ArrowDown, HelpCircle } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import type { LegacyTalentNode, LegacyTalentTree } from "@/lib/s0s1-season-talents";
 import { legacyDescriptionParts } from "@/lib/s0s1-talent-description";
@@ -98,7 +98,7 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
 
   return <section className={styles.builder} style={{ "--talent-accent": presentation.color, "--talent-accent-soft": `${presentation.color}26`, "--talent-glow": `${presentation.color}55` } as CSSProperties}>
     <div className={styles.builderScene}><LegacyTalentScene season={tree.season} /></div>
-    <TalentHeader season={tree.season} links={branchLinks} activeId={tree.id} activeSkillId={tree.nodes.find(n => n.isRoot)?.id} name={tree.name} icon={legacyAsset(presentation.icon)} weapons={tree.applicableWeapons ? `适配武器：${tree.applicableWeapons}` : tree.subtitle} onInspect={() => update(restoreLegacyTalentView(tree.nodes, null), true)} />
+    <TalentHeader season={tree.season} links={branchLinks} activeId={tree.id} activeSkillId={tree.nodes.find(n => n.isRoot)?.id} name={tree.name} icon={legacyAsset(presentation.icon)} points={getS3SpentTalentPoints(levels)} limit={40} weapons={tree.applicableWeapons ? `适配武器：${tree.applicableWeapons}` : tree.subtitle} onInspect={() => update(restoreLegacyTalentView(tree.nodes, null), true)} />
     <TalentWorkspace details={
       <TalentDetails season={tree.season} name={node.name} icon={node.icon} level={current} maxLevel={node.isRoot ? undefined : node.maxLevel} panelRef={detailRef} id="talent-detail" onReset={() => { setLevels({}); update(restoreLegacyTalentView(tree.nodes, null)); }}
         imageContent={node.isRoot ? undefined : <LegacyGlyph node={node} availableIcons={availableIcons} large />}
@@ -128,7 +128,6 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
             })}
           </section>)}
         </div>
-        <div className={styles.treeFoot}><Info size={14} aria-hidden="true" /><span>{getS3SpentTalentPoints(levels)}/40 点 · 双击节点加点</span></div>
       </div>
     </TalentWorkspace>
   </section>;
