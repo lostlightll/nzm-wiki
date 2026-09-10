@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { TalentHeader, TalentPassiveSlot, TalentNode, TalentDetails, TalentLevelActions, TalentTreeSections, TalentWorkspace, TalentConnectorLines } from "@/components/season-talents/TalentEditor";
+import { TalentHeader, TalentPassiveSlot, TalentNode, TalentDetails, TalentLevelActions, TalentLevelPreview, useTalentPreviewLevel, TalentTreeSections, TalentWorkspace, TalentConnectorLines } from "@/components/season-talents/TalentEditor";
 import { TalentPassiveSelector } from "@/components/season-talents/TalentPassiveSelector";
 import {
   useCallback,
@@ -238,13 +238,14 @@ function DetailCard({ node, talentId, rootNodeId, level, unlocked, spentPoints, 
   onLevelChange: (level: number) => void; onReset: () => void;
 }) {
   const isRoot = node.id === rootNodeId;
+  const [previewLevel, setPreviewLevel] = useTalentPreviewLevel(node.id, level);
   const providerSource: MultiplierSource = { type: "season-talent", season: "s3",
     tree: node.column >= 5 ? "zero" : talentId, nodeId: node.canonicalId ?? node.id };
   return <TalentDetails season="s3" name={node.name} icon={node.icon} level={level} maxLevel={isRoot ? undefined : node.maxLevel} onReset={onReset}
     actions={!isRoot && <TalentLevelActions name={node.name} level={level} maxLevel={node.maxLevel}
       canDecrease={level > 0} canIncrease={unlocked && level < node.maxLevel && spentPoints < POINT_LIMIT} onChange={onLevelChange} />}>
-    {!unlocked && <p className="mb-2 text-xs font-medium text-rose-300">需将任一前置天赋升至所需等级</p>}
-    <TalentDescription value={node.descriptions[Math.max(1, level) - 1]} />
+    {!isRoot && <TalentLevelPreview level={previewLevel} maxLevel={node.maxLevel} onChange={setPreviewLevel} />}
+    <TalentDescription value={node.descriptions[previewLevel - 1]} />
     <div data-multiplier-provider-target={`node-${node.id}`} className="mt-3"><MultiplierSourceBadges source={providerSource} /></div>
   </TalentDetails>;
 }
@@ -594,6 +595,7 @@ export function S3SeasonTalentBuilder({ talentId }: { talentId: S3TalentId }) {
 
       <TalentWorkspace details={
           <DetailCard
+            key={selectedNode.id}
             node={selectedNode}
             talentId={talentId}
             rootNodeId={ROOT_NODE_ID}

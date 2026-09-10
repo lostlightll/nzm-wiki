@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ChevronRight, Minus, Plus, RotateCcw } from "lucide-react";
-import { useRef, type CSSProperties, type ReactNode, type Ref } from "react";
+import { useRef, useState, type CSSProperties, type ReactNode, type Ref } from "react";
 import { getAssetPath } from "@/lib/path";
 import styles from "./talent-editor.module.css";
 
@@ -68,6 +68,23 @@ export function TalentDetails({ season, name, icon, level, maxLevel, children, a
     <div className={styles.detailBody}>{children}</div>
     <footer>{actions}<button type="button" className={styles.reset} onClick={onReset}><RotateCcw size={16} />{resetLabel}</button></footer>
   </aside>;
+}
+
+export function useTalentPreviewLevel(nodeId: string, allocatedLevel: number) {
+  const [preview, setPreview] = useState({ nodeId, allocatedLevel, level: Math.max(1, allocatedLevel) });
+  if (preview.nodeId !== nodeId || preview.allocatedLevel !== allocatedLevel) {
+    setPreview({ nodeId, allocatedLevel, level: Math.max(1, allocatedLevel) });
+  }
+  return [preview.level, (next: number) => setPreview({ nodeId, allocatedLevel, level: next })] as const;
+}
+
+export function TalentLevelPreview({ level, maxLevel, onChange }: {
+  level: number; maxLevel: number; onChange: (level: number) => void;
+}) {
+  return <div className={styles.levelPreview} role="group" aria-label="等级预览">
+    {Array.from({ length: maxLevel }, (_, i) => <button type="button" key={i} aria-label={`预览 ${i + 1} 级`}
+      aria-pressed={level === i + 1} onClick={() => onChange(i + 1)}>{i + 1} 级</button>)}
+  </div>;
 }
 
 export function TalentLevelActions({ name, level, maxLevel, canDecrease, canIncrease, onChange }: {

@@ -21,3 +21,6 @@
 .theme button:focus, .theme a:focus { outline: none; }.theme button:focus-visible, .theme a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }.node:focus-visible .nodeName { text-decoration: underline; }
 @media (max-width: 1200px) { .header { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }.slots { grid-column: 1/-1; }.treePanel { padding-inline: 12px; } }
 @media (max-width: 1023px) { .header { grid-template-columns: 1fr; padding: 12px; }.slots { grid-column: auto; justify-content: center; }.navigation { justify-content: center; }.navigation nav a { font-size: 12px; padding-inline: 8px; }.summary { justify-content: center; }.title h1 { font-size: 20px; }.workspace { display: flex; flex-direction: column; }.detailColumn { order: 0; }.treePanel { padding: 20px 12px; }.details { height: auto; }.detailBody { overflow: visible; }.detailImage { max-height: 190px; }.node { width: 64px; height: 68px; }.nodeName { width: 80px; } }
+.levelPreview { display: flex; gap: 4px; margin-top: 20px; border-bottom: 1px solid #ffffff20; }
+.levelPreview button { flex: 1; min-width: 0; min-height: 44px; border: 0; border-bottom: 2px solid transparent; background: none; color: #92999e; font-size: 12px; cursor: pointer; }
+.levelPreview button[aria-pressed="true"] { border-bottom-color: #e6c77e; color: #e6c77e; }

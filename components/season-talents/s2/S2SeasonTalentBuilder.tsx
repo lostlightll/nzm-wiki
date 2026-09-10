@@ -10,7 +10,7 @@ import { emptyS2Build, restoreS2Build, s2PrerequisiteGroups, s2SpentPoints, s2Un
 import styles from "./s2.module.css";
 import editor from "./s2-editor.module.css";
 import { TalentPassiveSelector } from "@/components/season-talents/TalentPassiveSelector";
-import { TalentHeader, TalentPassiveSlot, TalentNode, TalentDetails, TalentLevelActions, TalentWorkspace, TalentTreeSections, TalentConnectorLines } from "@/components/season-talents/TalentEditor";
+import { TalentHeader, TalentPassiveSlot, TalentNode, TalentDetails, TalentLevelActions, TalentLevelPreview, TalentWorkspace, TalentTreeSections, TalentConnectorLines } from "@/components/season-talents/TalentEditor";
 
 function column(node: S2TalentNode) { return node.column >= 5 ? node.column - 4 : node.column + 3; }
 
@@ -162,12 +162,11 @@ export function S2SeasonTalentBuilder({ tree }: { tree: S2TalentTree }) {
       }} />}
       <div className={editor.actions}><button type="button" className={editor.share} title="复制配点链接" aria-label="复制配点链接" disabled={!ready} onClick={share}><Copy size={18} /></button></div>
     </>}>
-    {node && !node.isRoot && <div className={styles.levelPreview} aria-label="等级预览">{Array.from({ length: node.maxLevel }, (_, i) => <button type="button" key={i} aria-label={`预览 ${i + 1} 级`} aria-pressed={level === i + 1} onClick={() => setPreviewLevel(i + 1)}>{i + 1} 级</button>)}</div>}
+    {node && !node.isRoot && <TalentLevelPreview level={level} maxLevel={node.maxLevel} onChange={setPreviewLevel} />}
     <Description text={node?.descriptions[level - 1] ?? ""} />
     {node && <div data-multiplier-provider-target={`node-${node.id}`} className="mt-3">
       <MultiplierSourceBadges source={{ type: "season-talent", season: "s2", tree: tree.id, nodeId: node.id }} />
     </div>}
-    {node && !node.isRoot && <p className={styles.requirement}>{reason ?? (current === node.maxLevel ? "已满级" : `升级消耗 ${node.costs[current]} 点`)}</p>}
   </TalentDetails>;
 
   return <section className={editor.editor} style={theme} aria-label={`${tree.name}天赋树`}>

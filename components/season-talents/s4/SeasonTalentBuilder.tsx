@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { TalentHeader, TalentPassiveSlot, TalentNode, TalentDetails, TalentLevelActions, TalentTreeSections, TalentWorkspace, TalentConnectorLines } from "@/components/season-talents/TalentEditor";
+import { TalentHeader, TalentPassiveSlot, TalentNode, TalentDetails, TalentLevelActions, TalentLevelPreview, useTalentPreviewLevel, TalentTreeSections, TalentWorkspace, TalentConnectorLines } from "@/components/season-talents/TalentEditor";
 import { ArrowLeftRight } from "lucide-react";
 import {
   useCallback,
@@ -302,12 +302,12 @@ function NodeDetail({ node, level, unlocked, spentPoints, pointLimit, onChangeLe
   node: SeasonTalentNodeData; level: number; unlocked: boolean; spentPoints: number; pointLimit: number;
   onChangeLevel: (level: number) => void; onReset: () => void;
 }) {
+  const [previewLevel, setPreviewLevel] = useTalentPreviewLevel(node.id, level);
   return <TalentDetails season="s4" name={node.name} icon={node.icon} level={level} maxLevel={node.isRoot ? undefined : node.maxLevel} onReset={onReset}
     actions={!node.isRoot && <TalentLevelActions name={node.name} level={level} maxLevel={node.maxLevel} canDecrease={level > 0}
       canIncrease={unlocked && level < node.maxLevel && spentPoints < pointLimit} onChange={onChangeLevel} />}>
-    {node.unlockLevel > 0 && <p className="mb-2 text-xs text-[#e8ca6a]">赛季等级 {node.unlockLevel} 解锁</p>}
-    {!unlocked && <p className="mb-2 text-xs font-medium text-rose-300">需将任一前置天赋升至满级</p>}
-    <p className="whitespace-pre-line"><RichText>{node.descriptions[Math.max(0, Math.min(node.descriptions.length - 1, level - 1))] ?? "暂无技能说明"}</RichText></p>
+    {!node.isRoot && <TalentLevelPreview level={previewLevel} maxLevel={node.maxLevel} onChange={setPreviewLevel} />}
+    <p className="whitespace-pre-line"><RichText>{node.descriptions[previewLevel - 1] ?? "暂无技能说明"}</RichText></p>
   </TalentDetails>;
 }
 
@@ -502,6 +502,7 @@ export function S4SeasonTalentBuilder({
 
       <TalentWorkspace details={
             <NodeDetail
+              key={selectedNode.id}
               node={selectedNode}
               level={selectedLevel}
               unlocked={isTalentNodeUnlocked(selectedNode, tree.nodes, levels)}

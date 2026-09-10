@@ -10,7 +10,7 @@ import { getAssetPath } from "@/lib/path";
 import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import { legacySimulationNodes } from "@/lib/s0s1-season-talent-builder";
 import { getS3SpentTalentPoints, isS3TalentNodeUnlocked, restoreS3TalentBuild, setS3TalentNodeLevel } from "@/lib/s3-season-talent-builder";
-import { TalentConnectorLines, TalentDetails, TalentHeader, TalentLevelActions, TalentNode, TalentWorkspace } from "@/components/season-talents/TalentEditor";
+import { TalentConnectorLines, TalentDetails, TalentHeader, TalentLevelActions, TalentLevelPreview, TalentNode, TalentWorkspace } from "@/components/season-talents/TalentEditor";
 import { LegacyTalentScene } from "./LegacyTalentScene";
 import styles from "./legacy-talents.module.css";
 
@@ -104,14 +104,13 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
         imageContent={node.isRoot ? undefined : <LegacyGlyph node={node} availableIcons={availableIcons} large />}
         headingActions={<button className={styles.mobileReturn} title="返回天赋树" aria-label="返回天赋树" onClick={() => treeRef.current?.scrollIntoView({ block: "start", behavior: "instant" })}><ArrowDown size={18} /></button>}
         actions={!node.isRoot && <TalentLevelActions name={node.name} level={current} maxLevel={node.maxLevel} canDecrease={ready && current > 0} canIncrease={ready && unlocked && current < node.maxLevel && getS3SpentTalentPoints(levels) < 40} onChange={value => change(node.id, value)} />}>
-        {!node.isRoot && <label className={styles.levelControl}>效果等级<select aria-label="效果等级" value={level.level} onChange={e => update({ ...view, level: Number(e.target.value) })}>{node.levels.map(l => <option key={l.level} value={l.level}>等级 {l.level} / {node.maxLevel}</option>)}</select></label>}
+        {!node.isRoot && <TalentLevelPreview level={level.level} maxLevel={node.maxLevel} onChange={level => update({ ...view, level })} />}
         <p className={styles.description}>{descriptionParts.map((part, index) => part.reference
           ? <span key={index}>{part.text}</span>
           : <span key={index}>{part.text.split(/([+-]?\d+(?:\.\d+)?%?)/g).map((text, i) => /^[-+]?\d/.test(text) ? <strong className={styles.value} key={i}>{text}</strong> : text)}</span>)}</p>
         <div id={`multiplier-provider-node-${node.id}`} className="mt-3" data-multiplier-provider-target={`node-${node.id}`}>
           <MultiplierSourceBadges source={{ type: "season-talent", season: tree.season, tree: tree.id, nodeId: node.id }} />
         </div>
-        {!node.isRoot && !unlocked && <p className={styles.ruleNotice}>需先解锁前置天赋</p>}
       </TalentDetails>
     }>
       <div className={styles.treeSection}>

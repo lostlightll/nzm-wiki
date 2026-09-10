@@ -43,10 +43,6 @@
 .description { font-size: 14px; line-height: 1.9; color: #cdd0d2; margin: 24px 0; overflow-wrap: anywhere; }
 .description p + p { margin-top: 14px; }
 .description strong { color: #edcf89; font-weight: 600; }
-.levelPreview { display: flex; gap: 4px; margin-top: 20px; border-bottom: 1px solid #ffffff20; }
-.levelPreview button { flex: 1; min-height: 36px; border: 0; border-bottom: 2px solid transparent; background: none; color: #92999e; font-size: 12px; cursor: pointer; }
-.levelPreview button[aria-pressed="true"] { border-bottom-color: #e6c77e; color: #e6c77e; }
-.requirement { color: #b5b6b3; font-size: 12px; margin-bottom: 12px; }
 .equip { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; width: 100%; border: 1px solid #b8a071; border-radius: 4px; background: #b8a07120; color: #edd4a4; cursor: pointer; }
 .audit { margin-top: 24px; font-size: 11px; color: #9fa4a7; line-height: 1.8; }.audit summary { cursor: pointer; }.audit p { margin-top: 8px; }
 .notice { position: absolute; bottom: 8px; left: 18px; font-size: 12px; color: #f0d99f; background: #17191a; z-index: 2; }.notice:empty { display: none; }
