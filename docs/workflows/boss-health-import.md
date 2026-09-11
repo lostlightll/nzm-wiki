@@ -117,6 +117,22 @@ Boss 的 `MonsterType` 不全是 `7`，例如大都会金牌打手为 `6`。因�
 
 超限没有入口或 Boss 不在超限计划属于明确的“不适用”状态，不作为阻塞错误。
 
+## 猎场普通怪物导入
+
+`scripts/import-hunter-monsters.ts` 使用同一乘算链路，按怪物身份、地图、区域与难度写入 `data/enemies/lc/monsters/`。当前审核清单为大都会；`import-sources.json` 维护身份与排除原因，`evidence.json` 保存入口和每个数值的来源因子。
+
+```text
+pnpm exec tsx scripts/import-hunter-monsters.ts
+pnpm exec tsx scripts/import-hunter-monsters.ts --write
+pnpm exec tsx scripts/import-hunter-monsters.ts --check
+```
+
+先审阅默认 dry-run，再执行写入；`--check` 会重新读取正式服参考表，发现数据差异时失败。站点运行时只读取已提交的 MDX，不读取参考表。
+
+普通怪物缺少专属计划行时不能套用 Boss 的“不适用”策略，也不能假定倍率为 1 或借用父蓝图的怪物 ID：保留该难度血量为空，页面显示“待核实”。已覆盖全部审核范围内的计划行，不等于已证明实际波次的完整出怪名单。骇影等特殊首领的排除原因单独记录。
+
+数值沿用现有 `Math.round(base * plan * maxHealth)` 的 JavaScript 计算口径，并非实测值。半整数边界可能受浮点误差影响，例如 `0.7 * 0.75 * 860` 得到 `451.49999999999994`，当前展示为 `451`；实际游戏取整行为仍需实测确认。
+
 ## 样例
 
 英雄大都会金牌打手：

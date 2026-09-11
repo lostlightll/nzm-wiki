@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "大都会；仅已核对的直接计划行，未记录不代表不出现",
+  "scope": "大都会；直接计划行及有独立地图证据的怪物，未记录不代表不出现；实际波次完整性尚未确认",
   "formula": "Math.round(base_health * plan_health * max_health)",
   "sources": {
     "identity": "MonsterUniqueIDTable",
@@ -11,22 +11,132 @@
     "area": "HunterIntraquestTable"
   },
   "entrances": {
-    "heroic": { "id": 2004013, "quest_id": 4013, "attribute_type": 250, "monster_level": 3 },
-    "inferno": { "id": 2004014, "quest_id": 4014, "attribute_type": 250, "monster_level": 4 },
-    "torment": { "id": 2004015, "quest_id": 4014, "attribute_type": 250, "monster_level": 5 },
-    "overlimit": { "id": 2006011, "quest_id": 4017, "attribute_type": 250, "monster_level": 4 }
+    "overlimit": {
+      "id": 2006011,
+      "quest_id": 4017,
+      "attribute_type": 250,
+      "monster_level": 4
+    },
+    "torment": {
+      "id": 2004015,
+      "quest_id": 4014,
+      "attribute_type": 250,
+      "monster_level": 5
+    },
+    "inferno": {
+      "id": 2004014,
+      "quest_id": 4014,
+      "attribute_type": 250,
+      "monster_level": 4
+    },
+    "heroic": {
+      "id": 2004013,
+      "quest_id": 4013,
+      "attribute_type": 250,
+      "monster_level": 3
+    }
   },
+  "exclusions": [
+    {
+      "id": 18000017,
+      "reason": "身份表名称为空且 bShouldCook=false；用途未确认，不当作通用小怪模板"
+    },
+    {
+      "id": 18301061,
+      "reason": "金牌打手，已在 Boss 首领图鉴收录"
+    },
+    {
+      "id": 18401071,
+      "reason": "Z博士，已在 Boss 首领图鉴收录"
+    },
+    {
+      "id": 18402071,
+      "reason": "变异Z博士，已在 Boss 首领图鉴收录"
+    },
+    {
+      "id": 16000001,
+      "reason": "骇影，MonsterType=7；特殊首领身份，不混入普通/队长/精英分类，出场条件待核实"
+    }
+  ],
   "monsters": [
     {
       "monster_id": 18104031,
-      "title": "丧尸",
+      "title": "丧尸（男性）",
       "monster_type": 3,
       "base_health": 0.7,
       "records": [
-        { "difficulty": "overlimit", "area": "下水道", "plan_id": 40171, "plan_health": 1, "max_health": 860, "health": 602 },
-        { "difficulty": "overlimit", "area": "博物馆", "plan_id": 40172, "plan_health": 1, "max_health": 860, "health": 602 },
-        { "difficulty": "overlimit", "area": "工厂", "plan_id": 40173, "plan_health": 1, "max_health": 860, "health": 602 },
-        { "difficulty": "overlimit", "area": "Z博士", "plan_id": 40174, "plan_health": 1, "max_health": 860, "health": 602 }
+        {
+          "difficulty": "overlimit",
+          "area": "下水道",
+          "plan_id": 40171,
+          "plan_health": 1,
+          "max_health": 860,
+          "health": 602
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 1,
+          "max_health": 860,
+          "health": 602
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 1,
+          "max_health": 860,
+          "health": 602
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 860,
+          "health": 602
+        }
+      ]
+    },
+    {
+      "monster_id": 18162031,
+      "title": "丧尸（女性）",
+      "monster_type": 3,
+      "base_health": 0.7,
+      "records": [
+        {
+          "difficulty": "overlimit",
+          "area": "下水道",
+          "plan_id": 40171,
+          "plan_health": 0.75,
+          "max_health": 860,
+          "health": 451
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.75,
+          "max_health": 860,
+          "health": 451
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 1,
+          "max_health": 860,
+          "health": 602
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 860,
+          "health": 602
+        }
       ]
     },
     {
@@ -35,10 +145,150 @@
       "monster_type": 3,
       "base_health": 2.4,
       "records": [
-        { "difficulty": "overlimit", "area": "下水道", "plan_id": 40171, "plan_health": 0.75, "max_health": 860, "health": 1548 },
-        { "difficulty": "overlimit", "area": "博物馆", "plan_id": 40172, "plan_health": 0.75, "max_health": 860, "health": 1548 },
-        { "difficulty": "overlimit", "area": "工厂", "plan_id": 40173, "plan_health": 1, "max_health": 860, "health": 2064 },
-        { "difficulty": "overlimit", "area": "Z博士", "plan_id": 40174, "plan_health": 1, "max_health": 860, "health": 2064 }
+        {
+          "difficulty": "overlimit",
+          "area": "下水道",
+          "plan_id": 40171,
+          "plan_health": 0.75,
+          "max_health": 860,
+          "health": 1548
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.75,
+          "max_health": 860,
+          "health": 1548
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 1,
+          "max_health": 860,
+          "health": 2064
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 860,
+          "health": 2064
+        }
+      ]
+    },
+    {
+      "monster_id": 18163031,
+      "title": "职员丧尸",
+      "monster_type": 3,
+      "base_health": 3,
+      "records": [
+        {
+          "difficulty": "overlimit",
+          "area": "下水道",
+          "plan_id": 40171,
+          "plan_health": 0.75,
+          "max_health": 860,
+          "health": 1935
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.75,
+          "max_health": 860,
+          "health": 1935
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 1,
+          "max_health": 860,
+          "health": 2580
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 860,
+          "health": 2580
+        }
+      ]
+    },
+    {
+      "monster_id": 18101031,
+      "title": "狂犬",
+      "monster_type": 3,
+      "base_health": 4,
+      "records": [
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.64,
+          "max_health": 860,
+          "health": 2202
+        }
+      ]
+    },
+    {
+      "monster_id": 18102031,
+      "title": "自爆丧尸",
+      "monster_type": 3,
+      "base_health": 0.5,
+      "appearance_source": "DungeonMonsterTipsTable:2004013/2004014/2004015 monster_ids；仅确认地图归属，未确认区域和血量",
+      "records": []
+    },
+    {
+      "monster_id": 18104032,
+      "title": "丧尸（越狱变体）",
+      "monster_type": 3,
+      "base_health": 2,
+      "appearance_source": "Quests_Metropoils:ChildQuest_Sewer AISpawnPropertyArray -> RMZombie_PrisonBreak -> BP_AIChar_18104032_RMZombie_PrisonBreak.NPCAttributeID=18104032；难度分支及血量待核实",
+      "records": []
+    },
+    {
+      "monster_id": 18107041,
+      "title": "护士",
+      "monster_type": 4,
+      "base_health": 1,
+      "records": [
+        {
+          "difficulty": "overlimit",
+          "area": "下水道",
+          "plan_id": 40171,
+          "plan_health": 0.75,
+          "max_health": 1190,
+          "health": 893
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.75,
+          "max_health": 1190,
+          "health": 893
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 1,
+          "max_health": 1190,
+          "health": 1190
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 1190,
+          "health": 1190
+        }
       ]
     },
     {
@@ -47,10 +297,110 @@
       "monster_type": 4,
       "base_health": 5,
       "records": [
-        { "difficulty": "overlimit", "area": "下水道", "plan_id": 40171, "plan_health": 0.5, "max_health": 1190, "health": 2975 },
-        { "difficulty": "overlimit", "area": "博物馆", "plan_id": 40172, "plan_health": 0.5, "max_health": 1190, "health": 2975 },
-        { "difficulty": "overlimit", "area": "工厂", "plan_id": 40173, "plan_health": 0.7, "max_health": 1190, "health": 4165 },
-        { "difficulty": "overlimit", "area": "Z博士", "plan_id": 40174, "plan_health": 1, "max_health": 1190, "health": 5950 }
+        {
+          "difficulty": "overlimit",
+          "area": "下水道",
+          "plan_id": 40171,
+          "plan_health": 0.5,
+          "max_health": 1190,
+          "health": 2975
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.5,
+          "max_health": 1190,
+          "health": 2975
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 0.7,
+          "max_health": 1190,
+          "health": 4165
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 1190,
+          "health": 5950
+        }
+      ]
+    },
+    {
+      "monster_id": 18103041,
+      "title": "巨型丧尸",
+      "monster_type": 4,
+      "base_health": 12,
+      "records": [
+        {
+          "difficulty": "overlimit",
+          "area": "下水道",
+          "plan_id": 40171,
+          "plan_health": 0.4,
+          "max_health": 1190,
+          "health": 5712
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.4,
+          "max_health": 1190,
+          "health": 5712
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 0.7,
+          "max_health": 1190,
+          "health": 9996
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 1190,
+          "health": 14280
+        }
+      ]
+    },
+    {
+      "monster_id": 18108041,
+      "title": "钢拳",
+      "monster_type": 4,
+      "base_health": 10,
+      "records": [
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.5,
+          "max_health": 1190,
+          "health": 5950
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 0.7,
+          "max_health": 1190,
+          "health": 8330
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 1190,
+          "health": 11900
+        }
       ]
     },
     {
@@ -59,15 +409,238 @@
       "monster_type": 5,
       "base_health": 17,
       "records": [
-        { "difficulty": "heroic", "area": "工厂", "plan_id": 40133, "plan_health": 1.5, "max_health": 750, "health": 19125 },
-        { "difficulty": "heroic", "area": "Z博士", "plan_id": 40134, "plan_health": 2, "max_health": 750, "health": 25500 },
-        { "difficulty": "inferno", "area": "工厂", "plan_id": 40143, "plan_health": 1.5, "max_health": 1190, "health": 30345 },
-        { "difficulty": "inferno", "area": "Z博士", "plan_id": 40144, "plan_health": 2, "max_health": 1190, "health": 40460 },
-        { "difficulty": "torment", "area": "工厂", "plan_id": 40143, "plan_health": 1.5, "max_health": 1500, "health": 38250 },
-        { "difficulty": "torment", "area": "Z博士", "plan_id": 40144, "plan_health": 2, "max_health": 1500, "health": 51000 },
-        { "difficulty": "overlimit", "area": "博物馆", "plan_id": 40172, "plan_health": 0.45, "max_health": 1190, "health": 9104 },
-        { "difficulty": "overlimit", "area": "工厂", "plan_id": 40173, "plan_health": 0.7, "max_health": 1190, "health": 14161 },
-        { "difficulty": "overlimit", "area": "Z博士", "plan_id": 40174, "plan_health": 1, "max_health": 1190, "health": 20230 }
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.45,
+          "max_health": 1190,
+          "health": 9104
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 0.7,
+          "max_health": 1190,
+          "health": 14161
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 1190,
+          "health": 20230
+        },
+        {
+          "difficulty": "torment",
+          "area": "工厂",
+          "plan_id": 40143,
+          "plan_health": 1.5,
+          "max_health": 1500,
+          "health": 38250
+        },
+        {
+          "difficulty": "torment",
+          "area": "Z博士",
+          "plan_id": 40144,
+          "plan_health": 2,
+          "max_health": 1500,
+          "health": 51000
+        },
+        {
+          "difficulty": "inferno",
+          "area": "工厂",
+          "plan_id": 40143,
+          "plan_health": 1.5,
+          "max_health": 1190,
+          "health": 30345
+        },
+        {
+          "difficulty": "inferno",
+          "area": "Z博士",
+          "plan_id": 40144,
+          "plan_health": 2,
+          "max_health": 1190,
+          "health": 40460
+        },
+        {
+          "difficulty": "heroic",
+          "area": "工厂",
+          "plan_id": 40133,
+          "plan_health": 1.5,
+          "max_health": 750,
+          "health": 19125
+        },
+        {
+          "difficulty": "heroic",
+          "area": "Z博士",
+          "plan_id": 40134,
+          "plan_health": 2,
+          "max_health": 750,
+          "health": 25500
+        }
+      ]
+    },
+    {
+      "monster_id": 11203051,
+      "title": "暴走狂尸",
+      "monster_type": 5,
+      "base_health": 14,
+      "records": [
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.45,
+          "max_health": 1190,
+          "health": 7497
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 0.7,
+          "max_health": 1190,
+          "health": 11662
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 1190,
+          "health": 16660
+        },
+        {
+          "difficulty": "torment",
+          "area": "工厂",
+          "plan_id": 40143,
+          "plan_health": 1.5,
+          "max_health": 1500,
+          "health": 31500
+        },
+        {
+          "difficulty": "torment",
+          "area": "Z博士",
+          "plan_id": 40144,
+          "plan_health": 2,
+          "max_health": 1500,
+          "health": 42000
+        },
+        {
+          "difficulty": "inferno",
+          "area": "工厂",
+          "plan_id": 40143,
+          "plan_health": 1.5,
+          "max_health": 1190,
+          "health": 24990
+        },
+        {
+          "difficulty": "inferno",
+          "area": "Z博士",
+          "plan_id": 40144,
+          "plan_health": 2,
+          "max_health": 1190,
+          "health": 33320
+        },
+        {
+          "difficulty": "heroic",
+          "area": "工厂",
+          "plan_id": 40133,
+          "plan_health": 1.5,
+          "max_health": 750,
+          "health": 15750
+        },
+        {
+          "difficulty": "heroic",
+          "area": "Z博士",
+          "plan_id": 40134,
+          "plan_health": 2,
+          "max_health": 750,
+          "health": 21000
+        }
+      ]
+    },
+    {
+      "monster_id": 11202051,
+      "title": "巨人狂尸",
+      "monster_type": 5,
+      "base_health": 25,
+      "records": [
+        {
+          "difficulty": "overlimit",
+          "area": "博物馆",
+          "plan_id": 40172,
+          "plan_health": 0.36,
+          "max_health": 1190,
+          "health": 10710
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "工厂",
+          "plan_id": 40173,
+          "plan_health": 0.7,
+          "max_health": 1190,
+          "health": 20825
+        },
+        {
+          "difficulty": "overlimit",
+          "area": "Z博士",
+          "plan_id": 40174,
+          "plan_health": 1,
+          "max_health": 1190,
+          "health": 29750
+        },
+        {
+          "difficulty": "torment",
+          "area": "工厂",
+          "plan_id": 40143,
+          "plan_health": 1.5,
+          "max_health": 1500,
+          "health": 56250
+        },
+        {
+          "difficulty": "torment",
+          "area": "Z博士",
+          "plan_id": 40144,
+          "plan_health": 2,
+          "max_health": 1500,
+          "health": 75000
+        },
+        {
+          "difficulty": "inferno",
+          "area": "工厂",
+          "plan_id": 40143,
+          "plan_health": 1.5,
+          "max_health": 1190,
+          "health": 44625
+        },
+        {
+          "difficulty": "inferno",
+          "area": "Z博士",
+          "plan_id": 40144,
+          "plan_health": 2,
+          "max_health": 1190,
+          "health": 59500
+        },
+        {
+          "difficulty": "heroic",
+          "area": "工厂",
+          "plan_id": 40133,
+          "plan_health": 1.5,
+          "max_health": 750,
+          "health": 28125
+        },
+        {
+          "difficulty": "heroic",
+          "area": "Z博士",
+          "plan_id": 40134,
+          "plan_health": 2,
+          "max_health": 750,
+          "health": 37500
+        }
       ]
     }
   ]

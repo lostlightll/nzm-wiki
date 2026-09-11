@@ -24,7 +24,7 @@ test("发布血量匹配已审核证据，怪物身份和区域不能重复", ()
   let checked = 0;
   for (const monster of monsters) {
     assert.equal(new Set(monster.appearances.map(r => `${r.map}/${r.area}`)).size, monster.appearances.length);
-    assert.ok(monster.image && fs.existsSync(path.join(process.cwd(), "public", monster.image)));
+    if (monster.image) assert.ok(fs.existsSync(path.join(process.cwd(), "public", monster.image)));
     const source = evidence.monsters.find(m => m.monster_id === monster.monster_id);
     assert.ok(source);
     for (const row of monster.appearances) {
@@ -39,4 +39,15 @@ test("发布血量匹配已审核证据，怪物身份和区域不能重复", ()
     }
   }
   assert.equal(checked, evidence.monsters.reduce((count, m) => count + m.records.length, 0));
+});
+
+test("地图提示与脚本确认的怪物不会因缺少血量计划而漏收", () => {
+  const monsters = getHunterMonsters();
+  const bomber = monsters.find(m => m.monster_id === 18102031);
+  const special = monsters.find(m => m.monster_id === 18104032);
+  assert.ok(bomber);
+  assert.ok(special);
+  assert.deepEqual(bomber.appearances, [{ map: "大都会", area: "区域待核实", health: {}, source_plans: {} }]);
+  assert.deepEqual(special.appearances, [{ map: "大都会", area: "下水道", health: {}, source_plans: {} }]);
+  assert.equal(summarizeMonsterHealth(bomber.appearances, "overlimit").label, "待核实");
 });

@@ -1,0 +1,27 @@
+{
+  "map": "大都会",
+  "areas": ["下水道", "博物馆", "工厂", "Z博士"],
+  "monsters": [
+    { "id": 18104031, "slug": "丧尸", "title": "丧尸（男性）" },
+    { "id": 18162031, "slug": "丧尸（女性）", "title": "丧尸（女性）" },
+    { "id": 18105031, "slug": "喷毒丧尸", "title": "喷毒丧尸" },
+    { "id": 18163031, "slug": "职员丧尸", "title": "职员丧尸" },
+    { "id": 18101031, "slug": "狂犬", "title": "狂犬" },
+    { "id": 18102031, "slug": "自爆丧尸", "title": "自爆丧尸", "unknown_area": "区域待核实", "appearance_source": "DungeonMonsterTipsTable:2004013/2004014/2004015 monster_ids；仅确认地图归属，未确认区域和血量" },
+    { "id": 18104032, "slug": "丧尸（越狱变体）", "title": "丧尸（越狱变体）", "unknown_area": "下水道", "appearance_source": "Quests_Metropoils:ChildQuest_Sewer AISpawnPropertyArray -> RMZombie_PrisonBreak -> BP_AIChar_18104032_RMZombie_PrisonBreak.NPCAttributeID=18104032；难度分支及血量待核实", "allow_missing_image": true },
+    { "id": 18107041, "slug": "护士", "title": "护士" },
+    { "id": 18164031, "slug": "安保丧尸", "title": "安保丧尸" },
+    { "id": 18103041, "slug": "巨型丧尸", "title": "巨型丧尸" },
+    { "id": 18108041, "slug": "钢拳", "title": "钢拳" },
+    { "id": 11201051, "slug": "强袭狂尸", "title": "强袭狂尸" },
+    { "id": 11203051, "slug": "暴走狂尸", "title": "暴走狂尸" },
+    { "id": 11202051, "slug": "巨人狂尸", "title": "巨人狂尸" }
+  ],
+  "exclusions": [
+    { "id": 18000017, "reason": "身份表名称为空且 bShouldCook=false；用途未确认，不当作通用小怪模板" },
+    { "id": 18301061, "reason": "金牌打手，已在 Boss 首领图鉴收录" },
+    { "id": 18401071, "reason": "Z博士，已在 Boss 首领图鉴收录" },
+    { "id": 18402071, "reason": "变异Z博士，已在 Boss 首领图鉴收录" },
+    { "id": 16000001, "reason": "骇影，MonsterType=7；特殊首领身份，不混入普通/队长/精英分类，出场条件待核实" }
+  ]
+}
