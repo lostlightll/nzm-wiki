@@ -33,7 +33,31 @@ export function buildS2ProviderEvidence() {
   const attributes = rows(attrPath);
   const confirmed = new Map<number, { ids: number[]; basis: string[]; recipient: "damage-event" | "unknown" }>();
   const missingChains = new Map<number, string[]>();
-  for (const id of [1319031007, 1319031008, 1319031011, 1379020160, 1319032002]) {
+  const configs = rows("DataTables/MGE/MGEConfig_Season");
+  const mainConfigs = rows("DataTables/MGE/DT_MGEParamConfig_Main");
+  for (const id of [1319033001, 1319033002, 1319033007, 1319033004, 1379020070, 1379020090, 1379020120, 1379020200, 1379020170]) {
+    const p = passive[`${id}_1`];
+    const configId = (p.MGEConfig as { Id: string }).Id;
+    const mgeId = (p.MGE as { Id: string }).Id;
+    const mgeClass = (mges[mgeId].MGEClass as { AssetPathName: string }).AssetPathName;
+    const basis = [`${root}DataTables/MGE/MGEPassive_Season.json:${id}_1.MGE.Id=${mgeId}; MGEConfig.Id=${configId}`, `${root}DataTables/MGE/GPModularGameplayEffectTable.json:${mgeId}.MGEClass=${mgeClass}`];
+    for (const [file, table] of [["MGEConfig_Season", configs], ["DT_MGEParamConfig_Main", mainConfigs]] as const) {
+      const config = table[configId];
+      if (config) {
+        for (const key of ["Parameters", "MGEPassiveParameters", "MGEIdParameters", "MGEParamIdParameters", "MGCIdParameters", "MGEClassParameters", "MGEObjectParameters"]) assert.deepEqual(config[key], []);
+        basis.push(`${root}DataTables/MGE/${file}.json:${configId} 的全部参数数组为空，缺少 Modifier/Buff 绑定。`);
+      } else basis.push(`${root}DataTables/MGE/${file}.json:缺少 ConfigId=${configId} 行。`);
+    }
+    if (mgeClass.startsWith("/Game/")) {
+      const file = mgeClass.split(".")[0].replace(/^\/Game\//, "");
+      const properties = asset(file).find(item => item.Name.startsWith("Default__"))!.Properties!;
+      assert.equal(properties.ModifierID, undefined);
+      assert.equal(properties.BuffName, undefined);
+      basis.push(`${root}${file}.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。`);
+    }
+    missingChains.set(id, basis);
+  }
+  for (const id of [1319031007, 1319031008, 1319031011, 1379020160, 1319032002, 1319032005, 1319032008]) {
     const p = passive[`${id}_1`];
     const mgeId = (p.MGE as { Id: string }).Id;
     const file = (mges[mgeId].MGEClass as { AssetPathName: string }).AssetPathName.split(".")[0].replace(/^\/Game\//, "");
@@ -44,6 +68,17 @@ export function buildS2ProviderEvidence() {
     if (typeof properties.ModifierID === "number") {
       ids = [properties.ModifierID];
       basis.push(`Default__.ModifierID=${properties.ModifierID}`);
+    } else if (id === 1319032005 || id === 1319032008) {
+      const skillFile = "Abilities/Skills/Season/S3/YHFS/SKT_S3_YHFS2";
+      const skillProperties = asset(skillFile).find(item => item.Name.startsWith("Default__"))!.Properties!;
+      const [skillKey, buffKey] = id === 1319032005
+        ? ["side1-DamageUp", "side1-DamageUpBuffName"]
+        : ["side4-Phase2DamageUp", "side4-DamageUpBuffName"];
+      assert.equal(skillProperties[skillKey], id);
+      const buffName = skillProperties[buffKey] as string;
+      assert.ok(buffName && buffs[buffName]);
+      ids = buffs[buffName].GPModifyIDs as number[];
+      basis.push(`${root}${skillFile}.json:Default__.${skillKey}=${id}`, `${root}${skillFile}.json:Default__.${buffKey}=${buffName}`, `${root}DataTables/Buff/BuffConfigDatatableNew.json:${buffName}.GPModifyIDs=${ids.join(",")}`);
     } else {
       const key = id === 1319032002 ? "OverclockBuffName" : "BuffName";
       const buffName = properties[key] as string;
@@ -57,9 +92,10 @@ export function buildS2ProviderEvidence() {
       assert.ok(JSON.stringify(blueprint).includes(`"Name":"${signature}"`));
       basis.push(`${root}${file}.json:ChildProperties.${signature}（限定技能/命中结算的函数签名；非完整执行字节码）`);
     }
-    if ([1379020160, 1319032002].includes(id)) {
-      missingChains.set(id, [...basis, "Buff 默认属性引用已确认，但历史 JSON 未导出执行连线，无法确认实际加载、接收者及动态等级，暂不发布。"]);
-    } else confirmed.set(id, { ids, basis, recipient: [1319031007, 1319031008].includes(id) ? "damage-event" : "unknown" });
+    if ([1379020160, 1319032002, 1319032005, 1319032008].includes(id)) {
+      basis.push("默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。");
+    }
+    confirmed.set(id, { ids, basis, recipient: [1319031007, 1319031008].includes(id) ? "damage-event" : "unknown" });
   }
   const ids = new Set([...confirmed.values()].flatMap(item => item.ids));
   const selected = Object.fromEntries(Object.entries(numerical).filter(([, row]) => ids.has(row.ID as number)).map(([key, raw]) => [key, { row_name: key, raw }]));
