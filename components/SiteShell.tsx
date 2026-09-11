@@ -30,6 +30,10 @@ function clampSidebarWidth(width: number) {
 }
 
 function getMobileBackLink(pathname: string) {
+  if (pathname.startsWith("/enemies/lc/monsters/")) {
+    return { href: "/enemies/lc/monsters", label: "返回猎场怪物" };
+  }
+  if (pathname === "/enemies/lc/monsters") return null;
   if (pathname.startsWith("/perks/")) {
     return { href: "/perks", label: "返回插件图鉴" };
   }
@@ -362,7 +366,7 @@ function SiteHeader({
           {mobileBackLink && (
             <Link
               href={
-                mobileBackLink.href === "/bosses"
+                mobileBackLink.href === "/bosses" || mobileBackLink.href === "/enemies/lc/monsters"
                   ? withDifficulty(mobileBackLink.href)
                   : mobileBackLink.href
               }

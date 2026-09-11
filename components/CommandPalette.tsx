@@ -13,6 +13,7 @@ const PATH_TO_DATA_MAP: Record<string, string> = {
   "/perks": "data/perks",
   "/traps": "data/traps",
   "/bosses": "data/enemies/lc/boss",
+  "/enemies/lc/monsters": "data/enemies/lc/monsters",
   "/enemies/lc": "data/enemies/lc/boss",
   "/enemies/td": "data/enemies/td",
   "/cards": "data/cards",
@@ -33,6 +34,8 @@ function resolveDataPath(): { dataPath: string; slug: string } | null {
   const relativePath = pathname.startsWith(basePath)
     ? pathname.slice(basePath.length)
     : pathname;
+
+  if (relativePath.replace(/\/$/, "") === "/enemies/lc/monsters") return null;
 
   for (const [urlPrefix, dataPath] of Object.entries(PATH_TO_DATA_MAP)) {
     if (relativePath.startsWith(urlPrefix + "/")) {

@@ -7,6 +7,7 @@ import { BossDifficultyControl } from "@/components/BossDifficultyControl";
 import { BossCardHealth } from "@/components/BossHealth";
 import { useBossDifficulty } from "@/components/BossDifficultyProvider";
 import { CatalogLink } from "@/components/CatalogLink";
+import { EnemyCatalogNav } from "@/components/EnemyCatalogNav";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import { getAssetPath } from "@/lib/path";
 import { LC_MAPS } from "@/lib/lc-maps";
@@ -196,15 +197,7 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
     <div>
       <h1 className="mb-6 text-3xl font-bold text-white">敌人图鉴</h1>
 
-      <nav aria-label="敌人图鉴模块" className="mb-6 flex items-center gap-2">
-        <button
-          type="button"
-          aria-pressed="true"
-          className="min-h-11 cursor-default rounded border border-zinc-400 bg-zinc-600 px-4 py-2 text-base font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300"
-        >
-          Boss 首领
-        </button>
-      </nav>
+      <EnemyCatalogNav active="bosses" />
 
       <section
         aria-label="首领检索、地图筛选与血量难度"

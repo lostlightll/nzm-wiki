@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "scope": "大都会；仅已核对的直接计划行，未记录不代表不出现",
+  "formula": "Math.round(base_health * plan_health * max_health)",
+  "sources": {
+    "identity": "MonsterUniqueIDTable",
+    "base_health": "HunterBaseMonsterTable",
+    "plan_health": "HunterIntraMonsterTable",
+    "max_health": "MonsterAttrTypeConfig",
+    "entrance": "NewEntranceInfoTable",
+    "area": "HunterIntraquestTable"
+  },
+  "entrances": {
+    "heroic": { "id": 2004013, "quest_id": 4013, "attribute_type": 250, "monster_level": 3 },
+    "inferno": { "id": 2004014, "quest_id": 4014, "attribute_type": 250, "monster_level": 4 },
+    "torment": { "id": 2004015, "quest_id": 4014, "attribute_type": 250, "monster_level": 5 },
+    "overlimit": { "id": 2006011, "quest_id": 4017, "attribute_type": 250, "monster_level": 4 }
+  },
+  "monsters": [
+    {
+      "monster_id": 18104031,
+      "title": "丧尸",
+      "monster_type": 3,
+      "base_health": 0.7,
+      "records": [
+        { "difficulty": "overlimit", "area": "下水道", "plan_id": 40171, "plan_health": 1, "max_health": 860, "health": 602 },
+        { "difficulty": "overlimit", "area": "博物馆", "plan_id": 40172, "plan_health": 1, "max_health": 860, "health": 602 },
+        { "difficulty": "overlimit", "area": "工厂", "plan_id": 40173, "plan_health": 1, "max_health": 860, "health": 602 },
+        { "difficulty": "overlimit", "area": "Z博士", "plan_id": 40174, "plan_health": 1, "max_health": 860, "health": 602 }
+      ]
+    },
+    {
+      "monster_id": 18105031,
+      "title": "喷毒丧尸",
+      "monster_type": 3,
+      "base_health": 2.4,
+      "records": [
+        { "difficulty": "overlimit", "area": "下水道", "plan_id": 40171, "plan_health": 0.75, "max_health": 860, "health": 1548 },
+        { "difficulty": "overlimit", "area": "博物馆", "plan_id": 40172, "plan_health": 0.75, "max_health": 860, "health": 1548 },
+        { "difficulty": "overlimit", "area": "工厂", "plan_id": 40173, "plan_health": 1, "max_health": 860, "health": 2064 },
+        { "difficulty": "overlimit", "area": "Z博士", "plan_id": 40174, "plan_health": 1, "max_health": 860, "health": 2064 }
+      ]
+    },
+    {
+      "monster_id": 18164031,
+      "title": "安保丧尸",
+      "monster_type": 4,
+      "base_health": 5,
+      "records": [
+        { "difficulty": "overlimit", "area": "下水道", "plan_id": 40171, "plan_health": 0.5, "max_health": 1190, "health": 2975 },
+        { "difficulty": "overlimit", "area": "博物馆", "plan_id": 40172, "plan_health": 0.5, "max_health": 1190, "health": 2975 },
+        { "difficulty": "overlimit", "area": "工厂", "plan_id": 40173, "plan_health": 0.7, "max_health": 1190, "health": 4165 },
+        { "difficulty": "overlimit", "area": "Z博士", "plan_id": 40174, "plan_health": 1, "max_health": 1190, "health": 5950 }
+      ]
+    },
+    {
+      "monster_id": 11201051,
+      "title": "强袭狂尸",
+      "monster_type": 5,
+      "base_health": 17,
+      "records": [
+        { "difficulty": "heroic", "area": "工厂", "plan_id": 40133, "plan_health": 1.5, "max_health": 750, "health": 19125 },
+        { "difficulty": "heroic", "area": "Z博士", "plan_id": 40134, "plan_health": 2, "max_health": 750, "health": 25500 },
+        { "difficulty": "inferno", "area": "工厂", "plan_id": 40143, "plan_health": 1.5, "max_health": 1190, "health": 30345 },
+        { "difficulty": "inferno", "area": "Z博士", "plan_id": 40144, "plan_health": 2, "max_health": 1190, "health": 40460 },
+        { "difficulty": "torment", "area": "工厂", "plan_id": 40143, "plan_health": 1.5, "max_health": 1500, "health": 38250 },
+        { "difficulty": "torment", "area": "Z博士", "plan_id": 40144, "plan_health": 2, "max_health": 1500, "health": 51000 },
+        { "difficulty": "overlimit", "area": "博物馆", "plan_id": 40172, "plan_health": 0.45, "max_health": 1190, "health": 9104 },
+        { "difficulty": "overlimit", "area": "工厂", "plan_id": 40173, "plan_health": 0.7, "max_health": 1190, "health": 14161 },
+        { "difficulty": "overlimit", "area": "Z博士", "plan_id": 40174, "plan_health": 1, "max_health": 1190, "health": 20230 }
+      ]
+    }
+  ]
+}

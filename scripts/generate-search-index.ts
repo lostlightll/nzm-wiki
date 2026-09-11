@@ -34,6 +34,7 @@ const categoryMap: Record<string, string> = {
   perks: "特性",
   traps: "陷阱",
   "enemies/lc/boss": "首领",
+  "enemies/lc/monsters": "猎场怪物",
   "enemies/td": "塔防敌人",
   cards: "卡牌",
   posts: "文章",
@@ -46,6 +47,7 @@ const pathMap: Record<string, string> = {
   perks: "/perks",
   traps: "/traps",
   "enemies/lc/boss": "/bosses",
+  "enemies/lc/monsters": "/enemies/lc/monsters",
   "enemies/td": "/enemies/td",
   cards: "/cards",
   posts: "/posts",
@@ -172,6 +174,14 @@ export function scanDirectory(dirPath: string, relativePath: string = ""): Searc
 
       // 收集关键词
       const keywords: string[] = [];
+
+      if (relativePath === "enemies/lc/monsters") {
+        const kinds: Record<string, string> = { normal: "普通", captain: "队长", elite: "精英" };
+        keywords.push(kinds[data.kind] ?? "", "猎场怪物");
+        for (const appearance of data.appearances ?? []) {
+          keywords.push(appearance.map, appearance.area);
+        }
+      }
 
       // 添加文件名作为关键词
       keywords.push(fileName);

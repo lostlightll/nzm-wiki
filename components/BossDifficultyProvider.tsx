@@ -28,6 +28,10 @@ const BossDifficultyContext = createContext<BossDifficultyContextValue | null>(
 );
 
 function isBossRoute(pathname: string): boolean {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  if (basePath && pathname.startsWith(`${basePath}/`)) {
+    pathname = pathname.slice(basePath.length);
+  }
   return (
     pathname === "/bosses" ||
     pathname.startsWith("/bosses/") ||
