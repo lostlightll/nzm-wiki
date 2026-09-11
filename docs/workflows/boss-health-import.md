@@ -119,7 +119,13 @@ Boss 的 `MonsterType` 不全是 `7`，例如大都会金牌打手为 `6`。因�
 
 ## 猎场普通怪物导入
 
-`scripts/import-hunter-monsters.ts` 使用同一乘算链路，按怪物身份、地图、区域与难度写入 `data/enemies/lc/monsters/`。当前审核清单为大都会；`import-sources.json` 维护身份与排除原因，`evidence.json` 保存入口和每个数值的来源因子。
+`scripts/import-hunter-monsters.ts` 使用同一乘算链路，按怪物身份、地图、区域与难度写入 `data/enemies/lc/monsters/`。范围为 `LC_MAPS` 中的九张经典猎场地图，覆盖英雄、炼狱、折磨及有入口的超限。`import-sources.json` 保留人工标题、稳定 slug、排除原因与大都会特殊脚本补充；其他身份从各地图专属计划和入口提示表联合发现。`evidence.json` 保存地图、入口、区域证据、每个数值的来源因子及排除项。
+
+同一个怪物 ID 跨地图只维护一个 MDX。不同 ID 即使同名也不合并，新档案使用“名称-ID”slug，标题保持配置名称，不凭描述猜测变体机制。缺少身份、未启用烹饪、空名称或类型不属于 3/4/5 的记录不发布；配置类型中包含可破坏对象，不等同于实际波次敌人清单。
+
+只有入口提示而没有区域计划的地图归属写为“区域待核实”，不把其他地图的血量或区域复制过来。区域名前后空格会被去除，不同难度的区域拆分仍按配置保留。没有超限入口的地图不生成超限血量。
+
+头像沿身份表的 `MonsterIcon` 真实引用查找正式服 PNG，转换为站点 WebP；不能根据 ID 相近借图。缺图使用页面占位符，并记录到证据的 `gaps`。导入器在全部解析、校验及序列化通过后才写入文件。
 
 ```text
 pnpm exec tsx scripts/import-hunter-monsters.ts

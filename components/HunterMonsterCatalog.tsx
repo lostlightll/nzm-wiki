@@ -12,7 +12,7 @@ import { BOSS_DIFFICULTIES } from "@/lib/boss-health";
 import { MONSTER_KINDS, summarizeMonsterHealth } from "@/lib/hunter-monster-health";
 import type { HunterMonster, MonsterAppearance } from "@/lib/hunter-monster-health";
 import { getAssetPath } from "@/lib/path";
-import { getLcMapMeta } from "@/lib/lc-maps";
+import { getLcMapMeta, LC_MAPS } from "@/lib/lc-maps";
 import type { BossDifficulty } from "@/types";
 
 const focus = "focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4";
@@ -44,7 +44,7 @@ function FilterButton({ selected, children, onClick }: { selected: boolean; chil
 
 function useMonsterFilters(monsters: HunterMonster[]) {
   const params = useSearchParams();
-  const maps = [...new Set(monsters.flatMap(monster => monster.appearances.map(row => row.map)))];
+  const maps = [...new Set(monsters.flatMap(monster => monster.appearances.map(row => row.map)))].sort((a, b) => LC_MAPS.findIndex(m => m.name === a) - LC_MAPS.findIndex(m => m.name === b));
   const mapValue = params.get("map") ?? "";
   const map = maps.includes(mapValue) ? mapValue : "";
   const kindValue = params.get("kind") ?? "";
@@ -123,7 +123,7 @@ export function HunterMonsterCatalog({ monsters }: { monsters: HunterMonster[] }
       <Image src={getAssetPath(mapMeta.image)} alt="" fill sizes="1200px" className="object-cover object-center" />
       <div className="relative flex min-h-24 items-center justify-between gap-3 bg-linear-to-r from-zinc-950/95 to-zinc-950/45 px-5 py-5"><h2 className="text-2xl font-semibold text-white">{map}</h2><span className="text-sm text-zinc-300">{area || "全部区域"}</span></div>
     </div>}
-    <div className="mb-4 flex flex-wrap items-center justify-between gap-2"><p role="status" className="text-sm text-zinc-400">{visible.length} 种怪物<span className="mx-2 text-zinc-700">/</span>按怪物收录，区域血量分别展示</p><span className="text-xs text-zinc-500">首批收录 · 大都会</span></div>
+    <div className="mb-4 flex flex-wrap items-center justify-between gap-2"><p role="status" className="text-sm text-zinc-400">{visible.length} 种怪物<span className="mx-2 text-zinc-700">/</span>按怪物收录，区域血量分别展示</p><span className="text-xs text-zinc-500">已收录 · {maps.length} 张地图</span></div>
     <div className="grid items-start gap-4 lg:grid-cols-2">
       {visible.map(({ monster, rows }) => {
         const summary = summarizeMonsterHealth(rows, difficulty);

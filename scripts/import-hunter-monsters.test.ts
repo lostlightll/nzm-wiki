@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { explicitHealth } from "./import-hunter-monsters";
+import { appearanceKey, explicitHealth } from "./import-hunter-monsters";
+
+test("同名区域按地图隔离，避免跨图覆盖血量", () => {
+  assert.notEqual(appearanceKey("大都会", "区域待核实"), appearanceKey("冰点源起", "区域待核实"));
+});
 
 test("缺少怪物专属计划时不得猜测默认倍率", () => {
   assert.equal(explicitHealth(0.7, [], 750), undefined);
