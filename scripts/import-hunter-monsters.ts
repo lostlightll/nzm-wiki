@@ -156,15 +156,19 @@ function collect() {
     entries.push({ file, data, body });
     evidence.monsters.push({ monster_id: id, title, monster_type: identity.MonsterType, base_health: baseHealth ?? null, appearances: appearances.map(r => ({ map: r.map, area: r.area, source: appearanceSources.get(appearanceKey(r.map, r.area))! })), records });
   }
-  return { entries, evidence, images };
+  const layout = scopes.map(s => ({ map: s.map, difficulty: s.difficulty, areas: s.tasks.map(q => localized(q.AreaDisplayName).trim()), orders: s.tasks.map(q => q.OrderID) }));
+  return { entries, evidence, images, layout };
 }
 
 async function main() {
   const mode = process.argv[2] ?? "--dry-run";
   if (!["--dry-run", "--check", "--write"].includes(mode)) throw new Error("Use --dry-run, --check or --write");
-  const { entries, evidence, images } = collect();
+  const { entries, evidence, images, layout } = collect();
   // Serialize everything before writing, so validation/serialization errors cannot leave partial MDX.
   const writes: { file: string; content: string }[] = [];
+  const layoutFile = path.join(output, "map-layout.json");
+  const layoutContent = `${JSON.stringify(layout, null, 2)}\n`;
+  if (!fs.existsSync(layoutFile) || fs.readFileSync(layoutFile, "utf8") !== layoutContent) writes.push({ file: layoutFile, content: layoutContent });
   for (const entry of entries) {
     const previous = fs.existsSync(entry.file) ? matter(fs.readFileSync(entry.file, "utf8")).data : null;
     const data: Partial<HunterMonster> = { ...entry.data };

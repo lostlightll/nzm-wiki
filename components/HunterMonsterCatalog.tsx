@@ -3,24 +3,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ChevronDown, Search, ScanFace, ArrowLeft, ArrowUpRight, X } from "lucide-react";
+import { ChevronDown, Search, ScanFace, ArrowLeft, X } from "lucide-react";
 import { BossDifficultyControl } from "@/components/BossDifficultyControl";
 import { useBossDifficulty } from "@/components/BossDifficultyProvider";
 import { EnemyCatalogNav } from "@/components/EnemyCatalogNav";
 import { CatalogLink } from "@/components/CatalogLink";
 import { BOSS_DIFFICULTIES } from "@/lib/boss-health";
-import { MONSTER_KINDS, summarizeMonsterHealth } from "@/lib/hunter-monster-health";
+import { MONSTER_KINDS } from "@/lib/hunter-monster-health";
+import { groupMonstersByStage } from "@/lib/hunter-monster-stages";
 import type { HunterMonster, MonsterAppearance } from "@/lib/hunter-monster-health";
 import { getAssetPath } from "@/lib/path";
-import { getLcMapMeta, LC_MAPS } from "@/lib/lc-maps";
+import { LC_MAPS } from "@/lib/lc-maps";
 import type { BossDifficulty } from "@/types";
 
 const focus = "focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4";
 const kindColor = { normal: "text-zinc-300 border-zinc-600", captain: "text-amber-200 border-amber-300/30", elite: "text-purple-200 border-purple-300/30" };
 
 function MonsterPortrait({ monster, large = false }: { monster: HunterMonster; large?: boolean }) {
-  return <div className={`relative shrink-0 overflow-hidden rounded-lg border border-zinc-800 bg-[radial-gradient(ellipse_at_center,rgba(209,172,105,0.12),transparent_75%)] ${large ? "h-32 w-32 sm:h-44 sm:w-44" : "h-24 w-24 sm:h-28 sm:w-28"}`}>
-    {monster.image ? <Image src={getAssetPath(monster.image)} alt={monster.title} fill sizes={large ? "176px" : "112px"} className="object-contain p-1" /> : <ScanFace className="m-auto h-full w-10 text-zinc-600" aria-hidden="true" />}
+  return <div className={`relative shrink-0 overflow-hidden rounded-lg border border-zinc-800 bg-[radial-gradient(ellipse_at_center,rgba(209,172,105,0.12),transparent_75%)] ${large ? "h-32 w-32 sm:h-44 sm:w-44" : "h-16 w-16"}`}>
+    {monster.image ? <Image src={getAssetPath(monster.image)} alt={monster.title} fill sizes={large ? "176px" : "64px"} className="object-contain p-1" /> : <ScanFace className="m-auto h-full w-8 text-zinc-600" aria-hidden="true" />}
   </div>;
 }
 
@@ -66,13 +67,13 @@ function useMonsterFilters(monsters: HunterMonster[]) {
 export function HunterMonsterCatalog({ monsters }: { monsters: HunterMonster[] }) {
   const { maps, map, kind, query, areas, area, update } = useMonsterFilters(monsters);
   const { difficulty, ready, withDifficulty } = useBossDifficulty();
-  const mapMeta = getLcMapMeta(map);
+  const groups = groupMonstersByStage(monsters, difficulty, { map, area, kind, query });
   const scoped = monsters.map(monster => ({ monster, rows: monster.appearances.filter(row => (!map || row.map === map) && (!area || row.area === area)) }));
   const visible = scoped.filter(({ monster, rows }) => rows.length && (!kind || monster.kind === kind) && `${monster.title} ${monster.description} ${rows.map(row => `${row.map} ${row.area}`).join(" ")}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
-  const detailHref = (slug: string) => {
+  const detailHref = (slug: string, selectedMap: string, selectedArea: string) => {
     const params = new URLSearchParams();
-    if (map) params.set("map", map);
-    if (area) params.set("area", area);
+    params.set("map", selectedMap);
+    if (area) params.set("area", selectedArea);
     if (kind) params.set("kind", kind);
     if (query) params.set("q", query);
     return withDifficulty(`/enemies/lc/monsters/${encodeURIComponent(slug)}?${params}`);
@@ -119,30 +120,36 @@ export function HunterMonsterCatalog({ monsters }: { monsters: HunterMonster[] }
         </div>
       )}
     </section>
-    {mapMeta && <div className="relative mb-5 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900">
-      <Image src={getAssetPath(mapMeta.image)} alt="" fill sizes="1200px" className="object-cover object-center" />
-      <div className="relative flex min-h-24 items-center justify-between gap-3 bg-linear-to-r from-zinc-950/95 to-zinc-950/45 px-5 py-5"><h2 className="text-2xl font-semibold text-white">{map}</h2><span className="text-sm text-zinc-300">{area || "全部区域"}</span></div>
-    </div>}
-    <div className="mb-4 flex flex-wrap items-center justify-between gap-2"><p role="status" className="text-sm text-zinc-400">{visible.length} 种怪物<span className="mx-2 text-zinc-700">/</span>按怪物收录，区域血量分别展示</p><span className="text-xs text-zinc-500">已收录 · {maps.length} 张地图</span></div>
-    <div className="grid items-start gap-4 lg:grid-cols-2">
-      {visible.map(({ monster, rows }) => {
-        const summary = summarizeMonsterHealth(rows, difficulty);
-        return <article key={monster.slug} className="min-w-0 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/70 transition-colors hover:border-zinc-500">
-          <div className="flex gap-3 p-4 sm:gap-4">
-            <CatalogLink href={detailHref(monster.slug)} className={`shrink-0 rounded-lg ${focus}`} aria-label={`查看${monster.title}详情`}><MonsterPortrait monster={monster} /></CatalogLink>
-            <div className="min-w-0 flex-1"><div className="flex flex-wrap items-center justify-between gap-2"><h2 className="text-lg font-semibold text-white"><CatalogLink href={detailHref(monster.slug)} className={`hover:text-[#efd59f] ${focus}`}>{monster.title}</CatalogLink></h2><span className={`rounded border px-1.5 py-0.5 text-xs ${kindColor[monster.kind]}`}>{MONSTER_KINDS[monster.kind]}</span></div>
-              <p className="mt-2 text-xs leading-5 text-zinc-500">{map ? `${map} · ${BOSS_DIFFICULTIES.find(d => d.value === difficulty)?.label}` : `收录地图 · ${[...new Set(rows.map(row => row.map))].join("、")}`}</p>
-              <div className="mt-3"><span className="mr-2 text-xs text-zinc-400">{map ? "血量" : "区域记录"}</span><span className="text-lg font-medium tabular-nums text-[#efd59f]">{map ? ready ? summary.label : "加载中" : `${rows.length} 个区域`}</span>{map && summary.partial && <span className="ml-2 text-xs text-zinc-500">部分待核实</span>}</div>
+    <p role="status" className="mb-4 text-sm text-zinc-400">按地图查看各关卡怪物血量<span className="mx-2 text-zinc-700">/</span>{ready ? BOSS_DIFFICULTIES.find(d => d.value === difficulty)?.label : "加载中"}</p>
+    <div className="space-y-6">
+      {ready && groups.map((group, index) => <details key={`${group.name}/${map}/${difficulty}/${query}/${kind}/${area}`} open={!!map || index === 0 || !!query} className="group/map overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/60">
+        <summary className={`relative flex min-h-28 cursor-pointer list-none items-center justify-between gap-4 overflow-hidden px-5 py-6 [&::-webkit-details-marker]:hidden ${focus}`}>
+          <Image src={getAssetPath(group.image)} alt="" fill sizes="1200px" className="object-cover object-center" />
+          <span className="absolute inset-0 bg-linear-to-r from-zinc-950/95 via-zinc-950/65 to-zinc-950/40" />
+          <span className="relative"><h2 className="text-2xl font-semibold text-white">{group.name}</h2><span className="mt-2 block text-sm text-zinc-300">{BOSS_DIFFICULTIES.find(d => d.value === difficulty)?.label}{group.supported && ` · ${group.sections.filter(s => s.number !== null).length} 个关卡`}</span></span>
+          <ChevronDown aria-hidden="true" className="relative h-5 w-5 shrink-0 text-zinc-300 transition-transform group-open/map:rotate-180 motion-reduce:transition-none" />
+        </summary>
+        <div className="divide-y divide-zinc-800 border-t border-zinc-700">
+          {!group.supported && <p className="px-5 py-8 text-sm text-zinc-400">该地图暂无{BOSS_DIFFICULTIES.find(d => d.value === difficulty)?.label}难度。</p>}
+          {group.sections.map(section => <section key={section.area} className="p-4 sm:p-5" aria-label={`${group.name} · ${section.area}`}>
+            <div className="mb-4 flex flex-wrap items-center gap-3">
+              {section.number !== null && <span className="text-xs font-medium tracking-wider text-[#d1ac69]">关卡 {String(section.number).padStart(2, "0")}</span>}
+              <h3 className="text-base font-semibold text-zinc-100">{section.number === null ? "关卡待核实" : section.area === "Z博士" ? "Z 博士" : section.area}</h3>
+              <span className="text-xs text-zinc-500">{section.entries.length} 种怪物</span>
             </div>
-          </div>
-          <details className="group border-t border-zinc-800">
-            <summary className={`flex min-h-11 cursor-pointer list-none items-center justify-between px-4 py-3 text-sm text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200 [&::-webkit-details-marker]:hidden ${focus}`}><span>区域血量<span className="ml-2 text-xs text-zinc-600">{rows.length} 个区域</span></span><ChevronDown aria-hidden="true" className="h-4 w-4 transition-transform group-open:rotate-180 motion-reduce:transition-none" /></summary>
-            <div className="border-t border-zinc-800 bg-zinc-950/25 px-4 pb-4 pt-3"><RegionHealth rows={rows} difficulty={difficulty} ready={ready} /><CatalogLink href={detailHref(monster.slug)} className={`mt-3 inline-flex min-h-11 items-center gap-1 text-sm text-zinc-400 hover:text-white ${focus}`}>查看完整档案<ArrowUpRight aria-hidden="true" className="h-3.5 w-3.5" /></CatalogLink></div>
-          </details>
-        </article>;
-      })}
+            {section.number === null && <p className="mb-4 text-xs leading-5 text-zinc-500">已确认属于该地图，具体出现关卡尚待核实。</p>}
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+              {section.entries.map(({ monster, row }) => <CatalogLink key={monster.monster_id} href={detailHref(monster.slug, group.name, section.area)} className={`flex min-w-0 items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950/30 p-3 transition-colors hover:border-zinc-600 hover:bg-zinc-800/60 ${focus}`}>
+                <MonsterPortrait monster={monster} />
+                <span className="min-w-0 flex-1"><span className="block text-sm font-medium text-zinc-100">{monster.title}</span><span className="mt-1 block text-xs text-zinc-500">{MONSTER_KINDS[monster.kind]}</span><span className={`mt-2 block text-base font-semibold tabular-nums ${row.health[difficulty] === undefined ? "text-zinc-500" : "text-[#efd59f]"}`}><span className="mr-2 text-xs font-normal text-zinc-500">血量</span>{row.health[difficulty]?.toLocaleString("zh-CN") ?? "待核实"}</span></span>
+              </CatalogLink>)}
+            </div>
+            {!section.entries.length && <p className="py-3 text-sm text-zinc-500">该关卡的怪物资料待补充。</p>}
+          </section>)}
+        </div>
+      </details>)}
     </div>
-    {!visible.length && <p className="rounded-lg border border-dashed border-zinc-700 py-14 text-center text-zinc-400">没有匹配的怪物，请调整搜索或筛选条件。</p>}
+    {ready && !groups.length && <p className="rounded-lg border border-dashed border-zinc-700 py-14 text-center text-zinc-400">没有匹配的怪物，请调整搜索或筛选条件。</p>}
     <p className="mt-6 text-xs leading-6 text-zinc-500">血量为当前收录配置的推算值，不含额外战斗效果。「待核实」表示该难度的数值尚未确认，不代表怪物不出现。</p>
   </div>;
 }

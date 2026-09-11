@@ -127,6 +127,8 @@ Boss 的 `MonsterType` 不全是 `7`，例如大都会金牌打手为 `6`。因�
 
 头像沿身份表的 `MonsterIcon` 真实引用查找正式服 PNG，转换为站点 WebP；不能根据 ID 相近借图。缺图使用页面占位符，并记录到证据的 `gaps`。导入器在全部解析、校验及序列化通过后才写入文件。
 
+`map-layout.json` 由同一导入器生成，保存各地图与难度的区域名称及任务 `OrderID`。列表按“地图 → 关卡 → 怪物血量”展示，关卡顺序不从怪物名称或血量反推。缺少该难度入口的地图显示暂无该难度，不能将全部怪物误标为血量待核实。
+
 ```text
 pnpm exec tsx scripts/import-hunter-monsters.ts
 pnpm exec tsx scripts/import-hunter-monsters.ts --write
