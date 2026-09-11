@@ -23,12 +23,43 @@ test("all 143 nodes of the five released branches have a source or explicit excl
   }
 });
 
-test("unreviewed raw Modifier facts never become historical source badges", () => {
+test("unreviewed raw Modifier facts cannot replace the independently audited supplement", () => {
   const input = trees();
   for (const tree of input) for (const node of tree.nodes) for (const level of node.levels) delete level.valueReview;
+  input[0].nodes[0].levels[0].facts.push({
+    label: "Injected raw damage reference",
+    value: "999%",
+    source: "test:unreviewed-raw-reference",
+    modifierRow: "lc:160101001_1_0",
+    evidenceKind: "current-description-token",
+    historicalEffectStatus: "unverified",
+  });
   const result = buildLegacyProviders(input);
+  assert.deepEqual(result.providers.map(provider => provider.id), ["season:s0:mechanical-dance:1003206"]);
+  assert.deepEqual(result.providers[0].applications?.map(application => application.expression.row), [
+    "lc:160101001_1_0", "lc:160101002_1_0", "lc:160101003_1_0",
+  ]);
+  assert.equal(result.exclusions.length, 142);
+});
+
+test("an execution conflict blocks the mechanical supplement and injected applications", () => {
+  const input = trees();
+  const tree = input.find(tree => tree.season === "s0" && tree.id === "mechanical-dance")!;
+  const node = tree.nodes.find(node => node.id === "1003206")!;
+  assert.ok(node.levels[0].valueReview);
+  node.levels[0].valueReview.executionConflict = {
+    code: "TEST_EXECUTION_CONFLICT",
+    message: "Injected conflict must quarantine supplemental evidence.",
+    sources: ["test:mechanical-execution-conflict"],
+  };
+  node.levels[0].valueReview.applications = [{
+    expression: { row: "lc:160101001_1_0", field: "base" }, context: { recipient: "self" },
+  }];
+  const result = buildLegacyProviders([{ ...tree, nodes: [node] }]);
   assert.equal(result.providers.length, 0);
-  assert.equal(result.exclusions.length, 143);
+  assert.equal(result.exclusions.length, 1);
+  assert.equal(result.exclusions[0].reasonCode, "unverified-evidence");
+  assert.match(result.exclusions[0].reason, /Injected conflict/);
 });
 
 test("registered Num applications must retain structured provenance", () => {
