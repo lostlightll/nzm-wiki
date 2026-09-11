@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "73aeedad41a259193bde220a9ba78a252070d029192cb3ce6dfb3ff70c3779cd",
-    "s2EvidenceSha256": "d322077caef4f8d66c9f3c20d9294cd85dd0879e3b9f8e5013bb0c1fe173450b",
+    "registrySha256": "041a7a1c410dd337bd78327481fd3ea3fb44fb614d0c1e7bc5620cb5a10ebf07",
+    "s2EvidenceSha256": "4cdcd674b532706a2408fbb3675b62f294733b10dfdae5f3875c096967b7702f",
     "semanticsSha256": "01e29692da9822af39c1db1d5d769c47dca216e290b96eced061a2d33d4ef627",
     "modifierSourceSha256": "aa30e3902d54f8802c87c76ed1b17c4506e27a5a4f61260f44cb569915be521e",
     "attributeDescriptionSourceSha256": "f4c7bae3871af545fdf4ecc4ceea2df7f498c5a5bfb24ec42a1e29c8703adc95"
@@ -6033,6 +6033,55 @@
       "reviewedOverride": false
     },
     {
+      "id": "season:s0:mechanical-dance:1003206",
+      "label": "S0 机械之舞·机械威能",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003206"
+      },
+      "facetIds": [
+        "all-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:160101001_1_0",
+          "attributeTypeId": "all-damage",
+          "attributeLabel": "全伤害（可用，和其他增伤连加）",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "all-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:160101002_1_0",
+          "attributeTypeId": "all-damage",
+          "attributeLabel": "全伤害（可用，和其他增伤连加）",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "all-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:160101003_1_0",
+          "attributeTypeId": "all-damage",
+          "attributeLabel": "全伤害（可用，和其他增伤连加）",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "all-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
       "id": "season:s0:mechanical-dance:1003402",
       "label": "S0 机械之舞·远距伤害",
       "source": {
@@ -6482,6 +6531,123 @@
           "recipient": "damage-event",
           "facetIds": [
             "skill-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "season:s2:holographic-sync:2003206",
+      "label": "S2 全息同调·谐波共振",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003206"
+      },
+      "facetIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111031043_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111031043_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "season:s2:holographic-sync:2003305",
+      "label": "S2 全息同调·效能增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003305"
+      },
+      "facetIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111031044_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111031044_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "season:s2:holographic-sync:2003507",
+      "label": "S2 全息同调·群集算法",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003507"
+      },
+      "facetIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111031045_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111031045_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "weapon-explode-damage"
           ],
           "reviewed": false
         }
@@ -10985,18 +11151,6 @@
       "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
-      "id": "season:s0:mechanical-dance:1003206",
-      "label": "S0 机械之舞·机械威能",
-      "source": {
-        "type": "season-talent",
-        "season": "s0",
-        "tree": "mechanical-dance",
-        "nodeId": "1003206"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
-    },
-    {
       "id": "season:s0:mechanical-dance:1003301",
       "label": "S0 机械之舞·元素洞悉",
       "source": {
@@ -11102,7 +11256,7 @@
         "nodeId": "1003408"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "武器之歌：精确 Passive 指向 1318123001，但 Main Config.Parameters 为空，注册的 MGE Blueprint 在当前资源中缺失，尚未找到其施加的 Modifier。"
     },
     {
       "id": "season:s0:mechanical-dance:1003502",
@@ -11474,7 +11628,7 @@
         "nodeId": "1011507"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "增幅协议：精确 Passive 指向 Config 1319023010/1319023110/1319023210，但 Main 缺少对应配置；描述 Token 不能建立增伤执行链。"
     },
     {
       "id": "season:s1:kunlun-wood:1011509",
@@ -11750,7 +11904,7 @@
         "nodeId": "1012407"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "技能连击：精确 Passive 指向 Config 1319021019，参数为空；GeneralMGE_SkillParametersModify 未提供下游 Modifier 身份，不能用描述百分比补链。"
     },
     {
       "id": "season:s1:phantom-form:1012502",
@@ -11894,7 +12048,7 @@
         "nodeId": "1012709"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "侵蚀加深：精确 Passive 指向 Config 1319021029/1319021030，参数为空；160201007 只有描述 Token 连接，未确认执行链。"
     },
     {
       "id": "season:s1:forbidden-eye:1013107",
@@ -11906,7 +12060,7 @@
         "nodeId": "1013107"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "禁忌之瞳：基础 Blueprint 的 scoped Modifier 调用已识别 160202003，但 GPActiveSkillDataTable 指向的 DA_S2_TabooEyes2 当前缺失，尚不能闭合主动技能资产到该 Blueprint 的身份链。"
     },
     {
       "id": "season:s1:forbidden-eye:1013201",
@@ -12050,7 +12204,7 @@
         "nodeId": "1013407"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "无我之境I：已确认 S2_TE_Resonance 经基础 MGE 施加 160202007，但该天赋自身的 MGE Blueprint 缺失，尚未连通天赋到共振 Buff 的施加链。"
     },
     {
       "id": "season:s1:forbidden-eye:1013409",
@@ -12158,7 +12312,7 @@
         "nodeId": "1013605"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "无我之境II：配置仅有 StackCount，尚未连通该天赋到 S2_TE_Resonance Buff 的施加链，不能因描述提及共振继承 160202007。"
     },
     {
       "id": "season:s1:forbidden-eye:1013609",
@@ -12182,7 +12336,7 @@
         "nodeId": "1013705"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "无我之境III：配置仅有 StackCount，尚未连通该天赋到 S2_TE_Resonance Buff 的施加链，不能因描述提及共振继承 160202007。"
     },
     {
       "id": "season:s1:forbidden-eye:1013707",
@@ -12206,7 +12360,7 @@
         "nodeId": "1013709"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
+      "reason": "无我之境IV：配置仅有 Possibility，尚未连通该天赋到 S2_TE_Resonance Buff 的施加链，不能因描述提及共振继承 160202007。"
     },
     {
       "id": "season:s2:invisibility:2001106",
@@ -12470,7 +12624,7 @@
         "nodeId": "2001603"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
+      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。"
     },
     {
       "id": "season:s2:invisibility:2001606",
@@ -12794,7 +12948,7 @@
         "nodeId": "2002603"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
+      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。"
     },
     {
       "id": "season:s2:inferno-arm:2002606",
@@ -12929,18 +13083,6 @@
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
     },
     {
-      "id": "season:s2:holographic-sync:2003206",
-      "label": "S2 全息同调·谐波共振",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003206"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
       "id": "season:s2:holographic-sync:2003301",
       "label": "S2 全息同调·续航协议",
       "source": {
@@ -12972,18 +13114,6 @@
         "season": "s2",
         "tree": "holographic-sync",
         "nodeId": "2003303"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:holographic-sync:2003305",
-      "label": "S2 全息同调·效能增幅",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003305"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -13097,18 +13227,6 @@
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
     },
     {
-      "id": "season:s2:holographic-sync:2003507",
-      "label": "S2 全息同调·群集算法",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003507"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
       "id": "season:s2:holographic-sync:2003601",
       "label": "S2 全息同调·登峰造极",
       "source": {
@@ -13142,7 +13260,7 @@
         "nodeId": "2003603"
       },
       "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
+      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。"
     },
     {
       "id": "season:s2:holographic-sync:2003606",
