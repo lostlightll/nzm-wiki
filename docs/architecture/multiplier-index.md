@@ -19,10 +19,11 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - 猎场竞速卡片以 CardID 为稳定身份，页面来源使用卡片 slug；只有 `CardID → Card_Function → MGE/Buff → GPModifier → Numerical AttributeName` 完整连通时才登记。
 - 攻击等级覆写型卡片必须额外保存来源 MGE、覆写等级、攻击等级被动与下游 MGE；审计需确认该等级最终命中同等级 Numerical 行，不能把 `SetAttackLevelOverride` 当作证据链终点。
 - `refs/` 只用于人工核验证据，构建和页面运行时不得读取。
-- S0/S1 五条已确认分支按 Basic → 对应等级的 Passive → MGEConfig/MGE → Numerical 审核，不能直接以技能 ID 查同名 Config。`scripts/s0s1-season-talents/providers.ts` 仅从 `valueReview.applications` 生成来源；未连通的节点登记 `unverified-evidence`，不据名称或描述 Token 推断乘区。离线证据随 `audit.json.valueEvidence` 保存，当前数值不等同于历史实测值。
+- S0/S1 五条已确认分支按 Basic → 对应等级的 Passive → MGEConfig/MGE → Numerical 审核，不能直接以技能 ID 查同名 Config。`scripts/s0s1-season-talents/providers.ts` 从 `valueReview.applications` 和独立审计的 `provider-supplements.ts` 生成来源；后者核验 `audit.json.valueEvidence` 中机械威能三级各自的 Config 与 Modifier 身份，以 `unknown` 接收者登记全伤害属性，不推断运行时范围。未连通的节点登记 `unverified-evidence`，不据名称或描述 Token 推断乘区。当前数值不等同于历史实测值。
 - S2 使用 `data/season-talents/s2/provider-evidence.json` 的历史证据快照，来源为 `refs/Exports/NZM/Content_S2`。三棵树的节点和被动逐项注册或明确排除；仅 Basic/Passive → MGE → Modifier 的结构化链确认后发布。描述模板的 Numerical 引用不能代替执行链。各树使用自己的节点和被动身份，来源深链无需跨树归一。
 - S2 来源的 `lc:` 仍表示猎场模式，但由来源的 `season: s2` 选择历史 Lock；投影、离线检查和审计统一通过 `scripts/num-modifier/provider-resolver.ts` 解析，缺失行报错，不回退当前 Lock。属性分类复用公共语义目录，历史证据内容哈希纳入投影新鲜度检查。
-- S2 已连通 ModifierID 但缺少动态等级执行证据时，仅引用历史 Level 1 基准行识别增伤分面，不据天赋等级推定传入的 Numerical.Level，也不由索引发布实际增伤数值。当前纳入「火焰赋能」「技能强化」；火异常伤害属性尚未索引，其他缺链节点保留具体限制。
+- S2 已连通 ModifierID 但缺少动态等级执行证据时，仅引用历史 Level 1 基准行识别增伤分面，不据天赋等级推定传入的 Numerical.Level，也不由索引发布实际增伤数值。蓝图默认属性的显式 Buff 引用、或成对的技能 ID 与 Buff 配置可以证明属性身份，接收者保持 `unknown`，不宣称实际加载对象与叠层已验证。当前纳入「火焰赋能」「技能强化」「谐波共振」「效能增幅」「群集算法」。
+- S2「炽焰倍增」「游龙」已连通元素异常伤害属性，但这些属性的公开乘区归属尚未核实；匿踪的「遁形」「暗影之刺I/II/III」仍缺 Modifier/Buff 绑定，历史 Config 参数为空，不能从描述 Token 登记乘区。上述限制保存在证据快照与排除项中，不放进玩家页面提示。
 
 ## 数据所有权
 
