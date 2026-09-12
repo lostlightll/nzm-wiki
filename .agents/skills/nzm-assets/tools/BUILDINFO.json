@@ -1,0 +1,17 @@
+{
+  "sourceRepository": "lostlightll/FModel",
+  "sourceCommit": "543bf6f83659784474f5166f92c2731c3dabb5ba",
+  "sourceDirty": false,
+  "targetFramework": "net10.0",
+  "runtimeIdentifier": "win-x64",
+  "selfContained": true,
+  "singleFile": true,
+  "configuration": "Release",
+  "includeNativeLibrariesForSelfExtract": true,
+  "publishTrimmed": false,
+  "debugType": "None",
+  "debugSymbols": false,
+  "dotnetSdk": "10.0.301",
+  "builtAt": "2026-09-12",
+  "sha256": "B56EECB172242C64BDB665EB3693E63F8CFD6A48EE7AFC5A5E9D3460720D0D56"
+}
