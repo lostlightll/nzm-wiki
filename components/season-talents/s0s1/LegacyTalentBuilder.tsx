@@ -106,7 +106,7 @@ export function LegacyTalentBuilder({ tree, availableIcons }: { tree: LegacyTale
         actions={!node.isRoot && <TalentLevelActions name={node.name} level={current} maxLevel={node.maxLevel} canDecrease={ready && current > 0} canIncrease={ready && unlocked && current < node.maxLevel && getS3SpentTalentPoints(levels) < 40} onChange={value => change(node.id, value)} />}>
         {!node.isRoot && <TalentLevelPreview level={level.level} maxLevel={node.maxLevel} onChange={level => update({ ...view, level })} />}
         <p className={styles.description}>{descriptionParts.map((part, index) => part.reference
-          ? <span key={index}>{part.text}</span>
+          ? <strong className={styles.value} key={index}>{part.text}</strong>
           : <span key={index}>{part.text.split(/([+-]?\d+(?:\.\d+)?%?)/g).map((text, i) => /^[-+]?\d/.test(text) ? <strong className={styles.value} key={i}>{text}</strong> : text)}</span>)}</p>
         <div id={`multiplier-provider-node-${node.id}`} className="mt-3" data-multiplier-provider-target={`node-${node.id}`}>
           <MultiplierSourceBadges source={{ type: "season-talent", season: tree.season, tree: tree.id, nodeId: node.id }} />
