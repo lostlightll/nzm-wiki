@@ -57,6 +57,11 @@ virtual asset path, exported file path, and specific object/field used as eviden
 `extract` writes the original decrypted/decompressed asset and associated payloads
 such as .uexp/.ubulk. It does not convert assets to PNG, WAV, FBX, or glTF.
 
+For interpretation of exported properties, asset reference chains, or Blueprint
+Kismet behavior, continue with [nzm-uasset](../nzm-uasset/SKILL.md). Raw extraction
+alone does not decode bytecode; that skill documents the current analysis inputs
+and bytecode tooling limitations.
+
 ## Evidence and boundaries
 
 - Follow this project's AGENTS.md and relevant docs before importing findings.

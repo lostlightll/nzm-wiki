@@ -42,7 +42,7 @@ python scripts/audit-trap-sources.py --output MD/_local/trap-audit/refs-identiti
 python scripts/summarize-nzm-bytecode.py '<返回的 JSON 路径>' --function ExecuteUbergraph
 ```
 
-该脚本需要兼容现有 .NET 程序集的 PowerShell 环境和本地 FModel 游戏配置，支持 `-AssemblyPath`、`-ProfilePath`。不构建或修改 FModel，不打印或保存凭据，输出固定进入被忽略的 `MD/_local/nzm-bytecode/`。
+该脚本需要兼容现有 .NET 程序集的 PowerShell 环境和本地 FModel 游戏配置，支持 `-AssemblyPath`、`-ProfilePath`。不构建或修改 FModel，不打印或保存凭据，输出进入被忽略的 `kismet/<环境>/<快照>/`。环境用 `-Dataset` 声明，默认 `unknown`，详见[字节码参考库规范](kismet-evidence.md)。
 
 新增导出必须核对相关默认值与 refs 是否一致，再用于补足原有证据。字节码摘要保留语句偏移，但不是完整反编译器；分支跳转、回调入口和函数参数需结合原始 JSON 确认。原生 C++ 函数没有蓝图实现时，明确记录该函数边界，不能把“已读字节码”等同于“所有机制已还原”。
 

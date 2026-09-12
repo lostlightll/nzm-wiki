@@ -44,6 +44,7 @@ next-env.d.ts
 # for qiekn
 /refs
 /refs-test
+/kismet/
 /CLAUDE.md
 /log.txt
 /MD
