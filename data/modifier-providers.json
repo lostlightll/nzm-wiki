@@ -5794,6 +5794,61 @@
       }
     },
     {
+      "id": "season:s0:mechanical-dance:1003408",
+      "label": "S0 机械之舞·武器之歌",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003408"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:119124001_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318123001_1.MGEDescription",
+          "NZM/Content/DataTables/AlwaysCook/GPFuncQueryDataTable.json#MGE.Tables[0].ObjectPath",
+          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGETable.DataTablePath.AssetPathName",
+          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGETable.LoadNetMode",
+          "NZM/Content/DataTables/AlwaysCook/GPFuncQueryDataTable.json#MGEConfig.Tables[0].ObjectPath",
+          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGEConfigTable.DataTablePath.AssetPathName",
+          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGEConfigTable.LoadNetMode",
+          "NZM/Content/DataTables/AlwaysCook/GPFuncQueryDataTable.json#MGEPassive.Tables[0].ObjectPath",
+          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGEPassiveTable.DataTablePath.AssetPathName",
+          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGEPassiveTable.LoadNetMode",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentStructure3Table.json#1004.TalentColumn8",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034081.TalentILevel",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034081.TalentSkillsID",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_1.MGE.Id",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_1.MGEConfig.Id",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_1.MGEDescriptionId",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318123001.MGEClass.AssetPathName",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318123001.Parameters",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318123001_2.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034082.TalentILevel",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034082.TalentSkillsID",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_2.MGE.Id",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_2.MGEConfig.Id",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_2.MGEDescriptionId",
+          "data/season-talents/s0/audit.json#valueEvidence.s0.tables.basic.10034081 -> passive.1318123001_1.MGE.Id=1318123001",
+          "2026-09-12 人工核对武器之歌与 BD_Common_1318123001 Buff 的对应关系，维护者确认用于索引。",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json:BD_Common_1318123001.GPModifyIDs=[119124001]；_2 至 _5 行也引用同一 ModifierID。",
+          "data/num-modifier-lock.json#rows.lc.119124001_1_0；仅以基准行识别武器增伤属性，不把119124002至119124005推定为天赋后续等级，不发布运行时叠层或接收者结论。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
       "id": "season:s0:mechanical-dance:1003501",
       "label": "S0 机械之舞·弱点伤害",
       "source": {
@@ -5892,6 +5947,45 @@
       }
     },
     {
+      "id": "season:s1:kunlun-wood:1011402",
+      "label": "S1 昆仑神木·裂解易伤",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011402"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111010161_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "enemy"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables.basic.10114021.TalentSkillsID=1319024003",
+          "2026-09-12 维护者提供并确认天赋到 Modifier 的映射：裂解易伤（虫群易伤）=111010161；数值及属性读取 data/num-modifier-lock.json#lc:111010161_1_0。",
+          "直接来源的维护者审定映射。",
+          "此人工映射独立于已隔离的 unrelated-charge-config 充能链；不使用160202005，不推广至未审定的其他虫群节点。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
       "id": "season:s1:kunlun-wood:1011501",
       "label": "S1 昆仑神木·弱点伤害",
       "source": {
@@ -5923,6 +6017,66 @@
           "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters[0]",
           "data/num-modifier-lock.json#lc:1701000103_1_0",
           "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115011.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10115011.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1701000103_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000103.Parameters[0] -> data/num-modifier-lock.json#lc:1701000103_1_0",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011507",
+      "label": "S1 昆仑神木·增幅协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011507"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111010122_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables.basic.10115071.TalentSkillsID=1319023010",
+          "2026-09-12 维护者提供并确认天赋到 Modifier 的映射：增幅协议=111010122；数值及属性读取 data/num-modifier-lock.json#lc:111010122_1_0。",
+          "直接来源的维护者审定映射。",
+          "昆仑神木 Buff SeasonTalent_S2_KLSM_002 至007及其_1变体引用111010122；仅登记基准属性，等级数值仍由Numerical读取。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011509",
+      "label": "S1 昆仑神木·线路强化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011509"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111010170_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "2026-09-12 维护者确认线路强化使用已找到的111010170，仅补充乘区属性索引。",
+          "data/num-modifier-lock.json#lc:111010170_1_0：AllDamageRatio；使用基准行识别全伤害分面，不推导治疗效果或运行时应用范围。",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -5962,6 +6116,123 @@
           "NZM/Content/Numerical/Systems/BP_NumericalConfigSystem.json#Default__BP_NumericalConfigSystem_C.Properties.SettlementConstantConfigTablePath",
           "NZM/Content/DataTables/NumericalSettlementConstantConfig.json#CloseRangeDamageThreshold",
           "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116011.TalentSkillsID -> NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116011.TalentILevel -> NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1701000105_1 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000105.Parameters -> NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#2001004001 -> NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1701000105.Parameters[0] -> data/num-modifier-lock.json#lc:1701000105_1_0",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011602",
+      "label": "S1 昆仑神木·蚀甲追猎",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011602"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111010161_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "enemy"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables.basic.10116021.TalentSkillsID=1319024005",
+          "2026-09-12 维护者提供并确认天赋到 Modifier 的映射：裂解易伤（虫群易伤）=111010161；数值及属性读取 data/num-modifier-lock.json#lc:111010161_1_0。",
+          "蚀甲追猎作为虫群易伤的传播来源，人工语义关联到裂解易伤的同一111010161；未确认完整运行时施加链，不将传播概率或冲击数量计为额外易伤。",
+          "此人工映射独立于已隔离的 unrelated-charge-config 充能链；不使用160202005，不推广至未审定的其他虫群节点。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:phantom-form:1012402",
+      "label": "S1 行境幻化·裂解易伤",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012402"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111010161_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "enemy"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables.basic.10124021.TalentSkillsID=1319024003",
+          "2026-09-12 维护者提供并确认天赋到 Modifier 的映射：裂解易伤（虫群易伤）=111010161；数值及属性读取 data/num-modifier-lock.json#lc:111010161_1_0。",
+          "直接来源的维护者审定映射。",
+          "此人工映射独立于已隔离的 unrelated-charge-config 充能链；不使用160202005，不推广至未审定的其他虫群节点。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:phantom-form:1012407",
+      "label": "S1 行境幻化·技能连击",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012407"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160201005_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021008_1.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124071.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124071.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021008_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021019.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021008",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021008_1.MGEDescription#token",
+          "data/num-modifier-lock.json#lc:160201005_1_0",
+          "NumModifierResolver.describeAttribute(GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio).quantity",
+          "data/season-talents/s1/trees.json#1012407: skill=1319021008; level=1.descriptionBindings -> lc:160201005_1_0.base",
+          "2026-09-12 人工复核精确技能 Token 与 Numerical 属性对应关系，按维护者要求补入属性索引；不从描述百分比、天赋等级或叠层文案推算数值。",
+          "该映射仅发布属性分面，不证明历史运行时施加链、接收者或动态叠层；ExecutionCtx 仅标记伤害事件上下文。",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -6112,6 +6383,118 @@
       }
     },
     {
+      "id": "season:s1:phantom-form:1012602",
+      "label": "S1 行境幻化·蚀甲追猎",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012602"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111010161_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "enemy"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables.basic.10126021.TalentSkillsID=1319024005",
+          "2026-09-12 维护者提供并确认天赋到 Modifier 的映射：裂解易伤（虫群易伤）=111010161；数值及属性读取 data/num-modifier-lock.json#lc:111010161_1_0。",
+          "蚀甲追猎作为虫群易伤的传播来源，人工语义关联到裂解易伤的同一111010161；未确认完整运行时施加链，不将传播概率或冲击数量计为额外易伤。",
+          "此人工映射独立于已隔离的 unrelated-charge-config 充能链；不使用160202005，不推广至未审定的其他虫群节点。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:phantom-form:1012709",
+      "label": "S1 行境幻化·侵蚀加深",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012709"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160201007_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021015_1.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10127091.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10127091.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021015_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021029.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021015",
+          "data/num-modifier-lock.json#lc:160201007_1_0",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021015_2.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10127092.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10127092.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021015_2",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021030.Parameters",
+          "data/num-modifier-lock.json#lc:160201007_2_1",
+          "data/season-talents/s1/trees.json#1012709: skill=1319021015; level=1.descriptionBindings -> lc:160201007_1_0.coefficient",
+          "2026-09-12 人工复核精确技能 Token 与 Numerical 属性对应关系，按维护者要求补入属性索引；不从描述百分比、天赋等级或叠层文案推算数值。",
+          "该映射仅发布属性分面，不证明历史运行时施加链、接收者或动态叠层；ExecutionCtx 仅标记伤害事件上下文。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013107",
+      "label": "S1 禁忌之瞳·禁忌之瞳",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013107"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160202003_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "人工核对禁忌之瞳赤瞳属性：data/num-modifier-lock.json#lc:160202003_1_0.coefficient。",
+          "NZM/Content/Abilities/Skills/Season/S2/TabooEyes/MGE/MGE_1319022001.uasset: ExecuteUbergraph offset810 SelectInt 默认选择160202003，offset883传入CreateAsyncAddScopedModifier，并使用GetCareerEnergyFromTarget返回值。",
+          "2026-09-12 使用 scripts/inspect-nzm-bytecode.ps1 重新核验。仅发布基础赤瞳弱点分面，不将可选ModifyID_XTHX覆盖、能量公式或缺失DA入口视为已核实。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
       "id": "season:s1:forbidden-eye:1013207",
       "label": "S1 禁忌之瞳·血曈回响",
       "source": {
@@ -6230,6 +6613,84 @@
       }
     },
     {
+      "id": "season:s1:forbidden-eye:1013402",
+      "label": "S1 禁忌之瞳·裂解易伤",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013402"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111010161_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "enemy"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables.basic.10134021.TalentSkillsID=1319024003",
+          "2026-09-12 维护者提供并确认天赋到 Modifier 的映射：裂解易伤（虫群易伤）=111010161；数值及属性读取 data/num-modifier-lock.json#lc:111010161_1_0。",
+          "直接来源的维护者审定映射。",
+          "此人工映射独立于已隔离的 unrelated-charge-config 充能链；不使用160202005，不推广至未审定的其他虫群节点。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013407",
+      "label": "S1 禁忌之瞳·无我之境I",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013407"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160202007_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022008_1.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134071.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134071.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022008_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022012.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022008",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022008_1.MGEDescription#token",
+          "data/num-modifier-lock.json#lc:160202007_1_0",
+          "NumModifierResolver.describeAttribute(GPAttributeSetGiveDamageRatio.WeaknessDamageRatio).quantity",
+          "data/season-talents/s1/trees.json#1013407: skill=1319022008; level=1.descriptionBindings -> lc:160202007_1_0.coefficient",
+          "2026-09-12 人工复核精确技能 Token 与 Numerical 属性对应关系，按维护者要求补入属性索引；不从描述百分比、天赋等级或叠层文案推算数值。",
+          "该映射仅发布属性分面，不证明历史运行时施加链、接收者或动态叠层；ExecutionCtx 仅标记伤害事件上下文。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
       "id": "season:s1:forbidden-eye:1013501",
       "label": "S1 禁忌之瞳·弱点伤害",
       "source": {
@@ -6305,6 +6766,781 @@
       }
     },
     {
+      "id": "season:s1:forbidden-eye:1013602",
+      "label": "S1 禁忌之瞳·蚀甲追猎",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013602"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111010161_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "enemy"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136021.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136021.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
+          "data/num-modifier-lock.json#lc:160202005_1_0",
+          "data/num-modifier-lock.json#lc:160202005_2_1",
+          "data/num-modifier-lock.json#lc:160202005_3_2",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables.basic.10136021.TalentSkillsID=1319024005",
+          "2026-09-12 维护者提供并确认天赋到 Modifier 的映射：裂解易伤（虫群易伤）=111010161；数值及属性读取 data/num-modifier-lock.json#lc:111010161_1_0。",
+          "蚀甲追猎作为虫群易伤的传播来源，人工语义关联到裂解易伤的同一111010161；未确认完整运行时施加链，不将传播概率或冲击数量计为额外易伤。",
+          "此人工映射独立于已隔离的 unrelated-charge-config 充能链；不使用160202005，不推广至未审定的其他虫群节点。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013605",
+      "label": "S1 禁忌之瞳·无我之境II",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013605"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160202007_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022014_1.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136051.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136051.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022014_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022023.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022014",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022023.Parameters[0]",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022014_2.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136052.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136052.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022014_2",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022024.Parameters",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022024.Parameters[0]",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022014_3.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136053.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136053.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022014_3",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022025.Parameters",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022025.Parameters[0]",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables: basic.10136051 -> passive.1319022014_1 -> params.1319022023.StackCount=1",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables: basic.10136052 -> passive.1319022014_2 -> params.1319022024.StackCount=2",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables: basic.10136053 -> passive.1319022014_3 -> params.1319022025.StackCount=3",
+          "data/season-talents/s1/trees.json#1013407: skill=1319022008; level=1.descriptionBindings -> lc:160202007_1_0.coefficient",
+          "2026-09-12 人工复核精确技能 Token 与 Numerical 属性对应关系，按维护者要求补入属性索引；不从描述百分比、天赋等级或叠层文案推算数值。",
+          "该映射仅发布属性分面，不证明历史运行时施加链、接收者或动态叠层；ExecutionCtx 仅标记伤害事件上下文。",
+          "人工语义关联：无我之境II/III/IV 为共振获取来源，共用无我之境I已审定的弱点增伤属性；不是三份额外独立增伤，也不将层数/概率解释成增伤数值。",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#S2_TE_Resonance：ChineseName=禁忌之瞳-共振；Desc=提升弱点伤害。Buff 自身 GPModifyIDs 为空，不将该表记为直接引用160202007的证据。",
+          "本地资源未找到三个天赋的MGE Blueprint，完整运行时施加链未确认；仅登记共享状态的获取来源，recipient保留unknown。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013705",
+      "label": "S1 禁忌之瞳·无我之境III",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013705"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160202007_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022012_1.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137051.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137051.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022012_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022019.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022012",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022019.Parameters[0]",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022012_2.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137052.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137052.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022012_2",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022020.Parameters",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022020.Parameters[0]",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022012_3.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137053.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137053.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022012_3",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022021.Parameters",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022021.Parameters[0]",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables: basic.10137051 -> passive.1319022012_1 -> params.1319022019.StackCount=1",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables: basic.10137052 -> passive.1319022012_2 -> params.1319022020.StackCount=2",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables: basic.10137053 -> passive.1319022012_3 -> params.1319022021.StackCount=3",
+          "data/season-talents/s1/trees.json#1013407: skill=1319022008; level=1.descriptionBindings -> lc:160202007_1_0.coefficient",
+          "2026-09-12 人工复核精确技能 Token 与 Numerical 属性对应关系，按维护者要求补入属性索引；不从描述百分比、天赋等级或叠层文案推算数值。",
+          "该映射仅发布属性分面，不证明历史运行时施加链、接收者或动态叠层；ExecutionCtx 仅标记伤害事件上下文。",
+          "人工语义关联：无我之境II/III/IV 为共振获取来源，共用无我之境I已审定的弱点增伤属性；不是三份额外独立增伤，也不将层数/概率解释成增伤数值。",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#S2_TE_Resonance：ChineseName=禁忌之瞳-共振；Desc=提升弱点伤害。Buff 自身 GPModifyIDs 为空，不将该表记为直接引用160202007的证据。",
+          "本地资源未找到三个天赋的MGE Blueprint，完整运行时施加链未确认；仅登记共享状态的获取来源，recipient保留unknown。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013707",
+      "label": "S1 禁忌之瞳·灼眼天罚",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013707"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160202009_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022003_1.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137071.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137071.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022003_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022001.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022003",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022001.Parameters[0]",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022001.Parameters[0].Value[SkillID=6002201,Name=DamageCountThreshold].Value",
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022003_1.MGEDescription#token",
+          "data/num-modifier-lock.json#lc:160202009_1_0",
+          "NumModifierResolver.describeAttribute(Numerical.ExecutionCtx.ExecutionRatio).quantity",
+          "data/season-talents/s1/trees.json#1013707: skill=1319022003; level=1.descriptionBindings -> lc:160202009_1_0.base",
+          "2026-09-12 人工复核精确技能 Token 与 Numerical 属性对应关系，按维护者要求补入属性索引；不从描述百分比、天赋等级或叠层文案推算数值。",
+          "该映射仅发布属性分面，不证明历史运行时施加链、接收者或动态叠层；ExecutionCtx 仅标记伤害事件上下文。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013709",
+      "label": "S1 禁忌之瞳·无我之境IV",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013709"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160202007_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022016_1.MGEDescription",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137091.TalentSkillsID",
+          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137091.TalentILevel",
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022016_1",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022027.Parameters",
+          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022016",
+          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022027.Parameters[0]",
+          "data/season-talents/s1/audit.json#valueEvidence.s1.tables: basic.10137091 -> passive.1319022016_1 -> params.1319022027.Possibility=0.25",
+          "data/season-talents/s1/trees.json#1013407: skill=1319022008; level=1.descriptionBindings -> lc:160202007_1_0.coefficient",
+          "2026-09-12 人工复核精确技能 Token 与 Numerical 属性对应关系，按维护者要求补入属性索引；不从描述百分比、天赋等级或叠层文案推算数值。",
+          "该映射仅发布属性分面，不证明历史运行时施加链、接收者或动态叠层；ExecutionCtx 仅标记伤害事件上下文。",
+          "人工语义关联：无我之境II/III/IV 为共振获取来源，共用无我之境I已审定的弱点增伤属性；不是三份额外独立增伤，也不将层数/概率解释成增伤数值。",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#S2_TE_Resonance：ChineseName=禁忌之瞳-共振；Desc=提升弱点伤害。Buff 自身 GPModifyIDs 为空，不将该表记为直接引用160202007的证据。",
+          "本地资源未找到三个天赋的MGE Blueprint，完整运行时施加链未确认；仅登记共享状态的获取来源，recipient保留unknown。",
+          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001206",
+      "label": "S2 匿踪·遁形",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001206"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160303001_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:160303001_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319033001",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001206 -> 1319033001",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033001_1",
+          "2026-09-12 维护者明确确认匿踪天赋 PassiveSkill=1319033001 -> ModifierID=160303001，用于乘区索引；不是按描述文本自动匹配。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303001_1_0，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303001_1_1，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "该映射不声称历史蓝图调用链已补全；触发、运行时接收者与叠层仍不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001303",
+      "label": "S2 匿踪·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001303"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030002_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020070",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001303 -> 1379020070",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020070 -> ModifierID=111030002，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020070_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030002_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001402",
+      "label": "S2 匿踪·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001402"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030003_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020090",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001402 -> 1379020090",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020090 -> ModifierID=111030003，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020090_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030003_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001406",
+      "label": "S2 匿踪·暗影之刺I",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001406"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160303005_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319033002",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001406 -> 1319033002",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033002_1",
+          "2026-09-12 维护者明确确认匿踪天赋 PassiveSkill=1319033002 -> ModifierID=160303005，用于乘区索引；不是按描述文本自动匹配。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303005_1_0，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "该映射不声称历史蓝图调用链已补全；触发、运行时接收者与叠层仍不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001502",
+      "label": "S2 匿踪·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001502"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030006_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_2",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_3",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020120",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001502 -> 1379020120",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020120 -> ModifierID=111030006，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020120_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030006_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001505",
+      "label": "S2 匿踪·暗影之刺III",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001505"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160303004_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319033007",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001505 -> 1319033007",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033007_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033007_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033007_3",
+          "2026-09-12 维护者明确确认匿踪天赋 PassiveSkill=1319033007 -> ModifierID=160303004，用于乘区索引；不是按描述文本自动匹配。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303004_1_0，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "该映射不声称历史蓝图调用链已补全；触发、运行时接收者与叠层仍不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001603",
+      "label": "S2 匿踪·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001603"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030009_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020160",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001603 -> 1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
+          "Default__.BuffName=SeasonTalent_S3_Normal_002",
+          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
+          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001606",
+      "label": "S2 匿踪·暗影之刺II",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001606"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160303006_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:160303006_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319033004",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001606 -> 1319033004",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033004_1",
+          "2026-09-12 维护者明确确认匿踪天赋 PassiveSkill=1319033004 -> ModifierID=160303006，用于乘区索引；不是按描述文本自动匹配。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303006_1_0，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303006_1_1，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "该映射不声称历史蓝图调用链已补全；触发、运行时接收者与叠层仍不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:passive:2020305",
+      "label": "S2 匿踪·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "passiveId": "2020305"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030011_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020200",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020305 -> 1379020200",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1",
+          "2026-09-12 人工核对强化射击 PassiveSkill=1379020200 -> ModifierID=111030011；登记属性索引，不宣称蓝图执行链已补全。",
+          "data/season-talents/s2/evidence.json#1379020200_1.rows=s2:111030011_1_0，核对既有天赋数值引用。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030011_1_0：WeaponDamageRatio，B1，使用 CoefValue 识别每层增伤；BaseValue 为零，不用于判断该效果方向。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002206",
+      "label": "S2 炼狱炎臂·炽焰倍增",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002206"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030019_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319031011",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002206 -> 1319031011",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031011_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031011_1.MGE.Id=1319031011",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319031011.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_FireBuffDmgEnhance.json:Default__",
+          "Default__.ModifierID=111030019",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002303",
+      "label": "S2 炼狱炎臂·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002303"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030002_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020070",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002303 -> 1379020070",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020070 -> ModifierID=111030002，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020070_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030002_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
       "id": "season:s2:inferno-arm:2002307",
       "label": "S2 炼狱炎臂·火焰赋能",
       "source": {
@@ -6351,6 +7587,134 @@
       }
     },
     {
+      "id": "season:s2:inferno-arm:2002402",
+      "label": "S2 炼狱炎臂·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002402"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030003_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020090",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002402 -> 1379020090",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020090 -> ModifierID=111030003，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020090_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030003_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002502",
+      "label": "S2 炼狱炎臂·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002502"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030006_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_2",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_3",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020120",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002502 -> 1379020120",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020120 -> ModifierID=111030006，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020120_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030006_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
       "id": "season:s2:inferno-arm:2002505",
       "label": "S2 炼狱炎臂·技能强化",
       "source": {
@@ -6383,6 +7747,106 @@
           "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_LianYuEnhance.json:Default__",
           "Default__.ModifierID=111030016",
           "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_LianYuEnhance.json:ChildProperties.CallFunc_AddScopedModifierForActivatedSkill_ReturnValue（限定技能/命中结算的函数签名；非完整执行字节码）",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002603",
+      "label": "S2 炼狱炎臂·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002603"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030009_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020160",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002603 -> 1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
+          "Default__.BuffName=SeasonTalent_S3_Normal_002",
+          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
+          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:passive:2020105",
+      "label": "S2 炼狱炎臂·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "passiveId": "2020105"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030011_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020200",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020105 -> 1379020200",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1",
+          "2026-09-12 人工核对强化射击 PassiveSkill=1379020200 -> ModifierID=111030011；登记属性索引，不宣称蓝图执行链已补全。",
+          "data/season-talents/s2/evidence.json#1379020200_1.rows=s2:111030011_1_0，核对既有天赋数值引用。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030011_1_0：WeaponDamageRatio，B1，使用 CoefValue 识别每层增伤；BaseValue 为零，不用于判断该效果方向。",
           "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
         ]
       }
@@ -6428,6 +7892,70 @@
           "Default__.OverclockBuffName=SeasonTalent_S3_YHFS_001",
           "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_YHFS_001.GPModifyIDs=111031043",
           "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003303",
+      "label": "S2 全息同调·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003303"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030002_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020070",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003303 -> 1379020070",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020070 -> ModifierID=111030002，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020070_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030002_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
           "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
         ]
       }
@@ -6481,6 +8009,134 @@
       }
     },
     {
+      "id": "season:s2:holographic-sync:2003402",
+      "label": "S2 全息同调·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003402"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030003_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020090",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003402 -> 1379020090",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020090 -> ModifierID=111030003，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020090_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030003_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003502",
+      "label": "S2 全息同调·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003502"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030006_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_2",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_3",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020120",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003502 -> 1379020120",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020120 -> ModifierID=111030006，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020120_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030006_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
       "id": "season:s2:holographic-sync:2003507",
       "label": "S2 全息同调·群集算法",
       "source": {
@@ -6524,6 +8180,106 @@
           "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/YHFS/SKT_S3_YHFS2.json:Default__.side4-DamageUpBuffName=SeasonTalent_S3_YHFS_003",
           "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_YHFS_003.GPModifyIDs=111031045",
           "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003603",
+      "label": "S2 全息同调·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003603"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030009_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020160",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003603 -> 1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
+          "Default__.BuffName=SeasonTalent_S3_Normal_002",
+          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
+          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:passive:2020205",
+      "label": "S2 全息同调·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "passiveId": "2020205"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030011_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020200",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020205 -> 1379020200",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1",
+          "2026-09-12 人工核对强化射击 PassiveSkill=1379020200 -> ModifierID=111030011；登记属性索引，不宣称蓝图执行链已补全。",
+          "data/season-talents/s2/evidence.json#1379020200_1.rows=s2:111030011_1_0，核对既有天赋数值引用。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030011_1_0：WeaponDamageRatio，B1，使用 CoefValue 识别每层增伤；BaseValue 为零，不用于判断该效果方向。",
           "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
         ]
       }
@@ -13591,57 +15347,6 @@
       }
     },
     {
-      "id": "season:s0:mechanical-dance:1003408",
-      "label": "S0 机械之舞·武器之歌",
-      "source": {
-        "type": "season-talent",
-        "season": "s0",
-        "tree": "mechanical-dance",
-        "nodeId": "1003408"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "武器之歌：精确 Passive 指向 1318123001，但 Main Config.Parameters 为空，注册的 MGE Blueprint 在当前资源中缺失，尚未找到其施加的 Modifier。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318123001_1.MGEDescription",
-          "NZM/Content/DataTables/AlwaysCook/GPFuncQueryDataTable.json#MGE.Tables[0].ObjectPath",
-          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGETable.DataTablePath.AssetPathName",
-          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGETable.LoadNetMode",
-          "NZM/Content/DataTables/AlwaysCook/GPFuncQueryDataTable.json#MGEConfig.Tables[0].ObjectPath",
-          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGEConfigTable.DataTablePath.AssetPathName",
-          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGEConfigTable.LoadNetMode",
-          "NZM/Content/DataTables/AlwaysCook/GPFuncQueryDataTable.json#MGEPassive.Tables[0].ObjectPath",
-          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGEPassiveTable.DataTablePath.AssetPathName",
-          "NZM/Content/DataTables/MainDataTablesLoadConfig.json#GlobalMGEPassiveTable.LoadNetMode",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentStructure3Table.json#1004.TalentColumn8",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034081.TalentILevel",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034081.TalentSkillsID",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_1.MGE.Id",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_1.MGEConfig.Id",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_1.MGEDescriptionId",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1318123001.MGEClass.AssetPathName",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1318123001.Parameters",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1318123001_2.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034082.TalentILevel",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10034082.TalentSkillsID",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_2.MGE.Id",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_2.MGEConfig.Id",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1318123001_2.MGEDescriptionId",
-          "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
-          "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
-          "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
-          "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-          "一级 Config 参数为空，二级 Config 缺失，MGE_1318123001 蓝图导出缺失；增伤、层数和持续时间均未绑定。",
-          "当前 Main 的选择有 GPFuncQueryDataTable 与 MainDataTablesLoadConfig 结构证据；不是依据旧 extract 的同 ID 查找。",
-          "所有绑定仅确认当前配置字段与所审原文数量的关系，不证明录像时期的效果；未确认数字继续遮蔽。",
-          "近/远距离阈值经对应 Modifier 属性身份与 PVE Numerical 系统常量链确认；未推断边界等号。",
-          "applications 仅纳入 GeneralPropertyInit -> CharacterModifierList -> 主 Num Lock 的伤害属性。",
-          "一级 Config 参数为空，二级 Config 缺失，MGE_1318123001 蓝图导出缺失；增伤、层数和持续时间均未绑定。",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
       "id": "season:s0:mechanical-dance:1003502",
       "label": "S0 机械之舞·紧急治疗",
       "source": {
@@ -14427,43 +16132,6 @@
       }
     },
     {
-      "id": "season:s1:kunlun-wood:1011402",
-      "label": "S1 昆仑神木·裂解易伤",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "kunlun-wood",
-        "nodeId": "1011402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10114021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319024003/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-          "RESOLVED=0; REMAINING=2",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
       "id": "season:s1:kunlun-wood:1011404",
       "label": "S1 昆仑神木·愈疗疾速",
       "source": {
@@ -14669,92 +16337,6 @@
         "basis": [
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "Passive 指向 Config=1319023009，Main 中缺行；不回退同 ID/旧表。",
-          "RESOLVED=0; REMAINING=2",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:kunlun-wood:1011507",
-      "label": "S1 昆仑神木·增幅协议",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "kunlun-wood",
-        "nodeId": "1011507"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "增幅协议：精确 Passive 指向 Config 1319023010/1319023110/1319023210，但 Main 缺少对应配置；描述 Token 不能建立增伤执行链。",
-      "evidence": {
-        "basis": [
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "Passive 指向 Config=1319023010，Main 中缺行；不回退同 ID/旧表。",
-          "RESOLVED=0; REMAINING=1",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "Passive 指向 Config=1319023010，Main 中缺行；不回退同 ID/旧表。",
-          "RESOLVED=0; REMAINING=1",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "Passive 指向 Config=1319023010，Main 中缺行；不回退同 ID/旧表。",
-          "RESOLVED=0; REMAINING=1",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:kunlun-wood:1011509",
-      "label": "S1 昆仑神木·线路强化",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "kunlun-wood",
-        "nodeId": "1011509"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。",
-      "evidence": {
-        "basis": [
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "Passive 指向 Config=1319023011，Main 中缺行；不回退同 ID/旧表。",
-          "RESOLVED=0; REMAINING=1",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "Passive 指向 Config=1319023011，Main 中缺行；不回退同 ID/旧表。",
-          "RESOLVED=0; REMAINING=1",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:kunlun-wood:1011602",
-      "label": "S1 昆仑神木·蚀甲追猎",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "kunlun-wood",
-        "nodeId": "1011602"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10116021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319024005/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
@@ -15307,43 +16889,6 @@
       }
     },
     {
-      "id": "season:s1:phantom-form:1012402",
-      "label": "S1 行境幻化·裂解易伤",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "phantom-form",
-        "nodeId": "1012402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319024003/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-          "RESOLVED=0; REMAINING=2",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
       "id": "season:s1:phantom-form:1012404",
       "label": "S1 行境幻化·愈疗疾速",
       "source": {
@@ -15430,38 +16975,6 @@
           "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
           "仅按原 Token 格式码 13 展示充能速度参数百分比；保留 B2，不推导实际充能时间或乘区。",
           "RESOLVED=1; REMAINING=0",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:phantom-form:1012407",
-      "label": "S1 行境幻化·技能连击",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "phantom-form",
-        "nodeId": "1012407"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "技能连击：精确 Passive 指向 Config 1319021019，参数为空；GeneralMGE_SkillParametersModify 未提供下游 Modifier 身份，不能用描述百分比补链。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021008_1.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124071.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10124071.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021008_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021019.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021008",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021008_1.MGEDescription#token",
-          "data/num-modifier-lock.json#lc:160201005_1_0",
-          "NumModifierResolver.describeAttribute(GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio).quantity",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319021008/1 -> 1319021019; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-          "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
-          "Passive 精确指向的 Main Config 参数为空；缺少 MGE/技能执行资产中的目标字段。",
-          "RESOLVED=1; REMAINING=1",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -15669,43 +17182,6 @@
       }
     },
     {
-      "id": "season:s1:phantom-form:1012602",
-      "label": "S1 行境幻化·蚀甲追猎",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "phantom-form",
-        "nodeId": "1012602"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10126021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319024005/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-          "RESOLVED=0; REMAINING=2",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
       "id": "season:s1:phantom-form:1012604",
       "label": "S1 行境幻化·愈疗储能",
       "source": {
@@ -15860,66 +17336,6 @@
           "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
           "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
           "RESOLVED=2; REMAINING=2",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:phantom-form:1012709",
-      "label": "S1 行境幻化·侵蚀加深",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "phantom-form",
-        "nodeId": "1012709"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "侵蚀加深：精确 Passive 指向 Config 1319021029/1319021030，参数为空；160201007 只有描述 Token 连接，未确认执行链。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021015_1.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10127091.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10127091.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021015_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021029.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319021015",
-          "data/num-modifier-lock.json#lc:160201007_1_0",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319021015_2.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10127092.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10127092.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319021015_2",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319021030.Parameters",
-          "data/num-modifier-lock.json#lc:160201007_2_1",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319021015/1 -> 1319021029; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "逐级 Passive/描述中的 Modifier 身份与主表同等级精确行匹配；仅作分级参数展示，空 Config 不证明执行链，不进入乘区。",
-          "Passive 精确指向的 Main Config 参数为空；缺少 MGE/技能执行资产中的目标字段。",
-          "RESOLVED=1; REMAINING=2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319021015/2 -> 1319021030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "逐级 Passive/描述中的 Modifier 身份与主表同等级精确行匹配；仅作分级参数展示，空 Config 不证明执行链，不进入乘区。",
-          "Passive 精确指向的 Main Config 参数为空；缺少 MGE/技能执行资产中的目标字段。",
-          "RESOLVED=1; REMAINING=2",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013107",
-      "label": "S1 禁忌之瞳·禁忌之瞳",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013107"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "禁忌之瞳：基础 Blueprint 的 scoped Modifier 调用已识别 160202003，但 GPActiveSkillDataTable 指向的 DA_S2_TabooEyes2 当前缺失，尚不能闭合主动技能资产到该 Blueprint 的身份链。",
-      "evidence": {
-        "basis": [
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "主动技能 Duration=0 不证明区域/射线/治疗时长；效果参数资产未导出，不能采用其他描述。",
-          "RESOLVED=0; REMAINING=6",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -16184,43 +17600,6 @@
       }
     },
     {
-      "id": "season:s1:forbidden-eye:1013402",
-      "label": "S1 禁忌之瞳·裂解易伤",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024003_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024003",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319024003/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-          "RESOLVED=0; REMAINING=2",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
       "id": "season:s1:forbidden-eye:1013404",
       "label": "S1 禁忌之瞳·愈疗疾速",
       "source": {
@@ -16291,39 +17670,6 @@
           "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
           "当前 Kismet 的 HasSeasonTalent -> SetBool -> 已装载组件条件及结构字段；不从描述取值，不证明历史版本。 射程增幅按 MaxTraceDistance 10000/6666-1 推导；不按描述四舍五入为整数百分比。",
           "RESOLVED=1; REMAINING=0",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013407",
-      "label": "S1 禁忌之瞳·无我之境I",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013407"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "无我之境I：已确认 S2_TE_Resonance 经基础 MGE 施加 160202007，但该天赋自身的 MGE Blueprint 缺失，尚未连通天赋到共振 Buff 的施加链。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022008_1.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134071.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10134071.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022008_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022012.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022008",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022008_1.MGEDescription#token",
-          "data/num-modifier-lock.json#lc:160202007_1_0",
-          "NumModifierResolver.describeAttribute(GPAttributeSetGiveDamageRatio.WeaknessDamageRatio).quantity",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022008/1 -> 1319022012; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-          "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
-          "只展示 coefficient；作用变量与叠层公式不由此推导。",
-          "Passive 精确指向的 Main Config 参数为空；缺少 MGE/技能执行资产中的目标字段。",
-          "RESOLVED=1; REMAINING=5",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -16579,43 +17925,6 @@
       }
     },
     {
-      "id": "season:s1:forbidden-eye:1013602",
-      "label": "S1 禁忌之瞳·蚀甲追猎",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013602"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136021.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136021.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319024005_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022030.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319024005",
-          "data/num-modifier-lock.json#lc:160202005_1_0",
-          "data/num-modifier-lock.json#lc:160202005_2_1",
-          "data/num-modifier-lock.json#lc:160202005_3_2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319024005/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
-          "RESOLVED=0; REMAINING=2",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
       "id": "season:s1:forbidden-eye:1013604",
       "label": "S1 禁忌之瞳·愈疗储能",
       "source": {
@@ -16648,54 +17957,6 @@
           "PASSIVE_CONFIG_SELECTION: 1319024009/1 -> 1319022030; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
           "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。",
           "RESOLVED=0; REMAINING=1",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013605",
-      "label": "S1 禁忌之瞳·无我之境II",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013605"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "无我之境II：配置仅有 StackCount，尚未连通该天赋到 S2_TE_Resonance Buff 的施加链，不能因描述提及共振继承 160202007。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022014_1.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136051.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136051.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022014_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022023.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022014",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022023.Parameters[0]",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022014_2.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136052.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136052.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022014_2",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022024.Parameters",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022024.Parameters[0]",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022014_3.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136053.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10136053.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022014_3",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022025.Parameters",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022025.Parameters[0]",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022014/1 -> 1319022023; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-          "RESOLVED=1; REMAINING=3",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022014/2 -> 1319022024; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-          "RESOLVED=1; REMAINING=3",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022014/3 -> 1319022025; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-          "RESOLVED=1; REMAINING=3",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -16750,115 +18011,6 @@
           "逐级 Passive Config + 精确 Num 行；不通过描述值选择行。",
           "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
           "RESOLVED=1; REMAINING=3",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013705",
-      "label": "S1 禁忌之瞳·无我之境III",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013705"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "无我之境III：配置仅有 StackCount，尚未连通该天赋到 S2_TE_Resonance Buff 的施加链，不能因描述提及共振继承 160202007。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022012_1.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137051.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137051.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022012_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022019.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022012",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022019.Parameters[0]",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022012_2.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137052.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137052.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022012_2",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022020.Parameters",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022020.Parameters[0]",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022012_3.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137053.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137053.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022012_3",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022021.Parameters",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022021.Parameters[0]",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022012/1 -> 1319022019; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-          "RESOLVED=1; REMAINING=2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022012/2 -> 1319022020; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-          "RESOLVED=1; REMAINING=2",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022012/3 -> 1319022021; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-          "RESOLVED=1; REMAINING=2",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013707",
-      "label": "S1 禁忌之瞳·灼眼天罚",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013707"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022003_1.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137071.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137071.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022003_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022001.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022003",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022001.Parameters[0]",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022001.Parameters[0].Value[SkillID=6002201,Name=DamageCountThreshold].Value",
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022003_1.MGEDescription#token",
-          "data/num-modifier-lock.json#lc:160202009_1_0",
-          "NumModifierResolver.describeAttribute(Numerical.ExecutionCtx.ExecutionRatio).quantity",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022003/1 -> 1319022001; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "仅确认 Token 指向当前 Num；未证明 MGE 执行链，不进入索引。",
-          "Token 未声明 Level，精确采用默认 Level=1；不替换为天赋等级。",
-          "RESOLVED=2; REMAINING=0",
-          "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
-        ]
-      }
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013709",
-      "label": "S1 禁忌之瞳·无我之境IV",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013709"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "无我之境IV：配置仅有 Possibility，尚未连通该天赋到 S2_TE_Resonance Buff 的施加链，不能因描述提及共振继承 160202007。",
-      "evidence": {
-        "basis": [
-          "NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json#1319022016_1.MGEDescription",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137091.TalentSkillsID",
-          "NZM/Content/DataTables/SeasonTalent/SeasonTalentBasicTable.json#10137091.TalentILevel",
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1319022016_1",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022027.Parameters",
-          "NZM/Content/DataTables/MGE/GPModularGameplayEffectTable.json#1319022016",
-          "NZM/Content/DataTables/MGE/DT_MGEParamConfig_Main.json#1319022027.Parameters[0]",
-          "CURRENT_MAIN_NOT_HISTORICAL: 完整当前链与描述 Token 均不证明历史效果；索引项仍需集成方历史来源策略。",
-          "PASSIVE_CONFIG_SELECTION: 1319022016/1 -> 1319022027; 旧提取器直接查同 ID Config 的路径已纠正，不能把旧路径的冲突套到此链；此映射本身仍不确认历史效果或目标语义。",
-          "已沿 Passive 的 MGEConfig.Id 检查参数，但未审定目标语义/单位或缺少执行公式。",
-          "RESOLVED=1; REMAINING=2",
           "当前结构化配置和最新主 Lock 的来源映射；不宣称数值与历史赛季实测一致。"
         ]
       }
@@ -16932,28 +18084,6 @@
       }
     },
     {
-      "id": "season:s2:invisibility:2001206",
-      "label": "S2 匿踪·遁形",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001206"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001206 -> 1319033001",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033001_1.MGE.Id=1319033001; MGEConfig.Id=1319033001",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319033001.MGEClass=/Game/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033001.MGE_1319033001_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:1319033001 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:1319033001 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033001.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
-        ]
-      }
-    },
-    {
       "id": "season:s2:invisibility:2001301",
       "label": "S2 匿踪·续航协议",
       "source": {
@@ -16984,28 +18114,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001302 -> 1379020060"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:2001303",
-      "label": "S2 匿踪·爆发程序",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001303"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001303 -> 1379020070",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1.MGE.Id=1379020070; MGEConfig.Id=1379020071",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020070.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.MGE_1379020070_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -17061,28 +18169,6 @@
       }
     },
     {
-      "id": "season:s2:invisibility:2001402",
-      "label": "S2 匿踪·伤害增幅",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001402 -> 1379020090",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1.MGE.Id=1379020090; MGEConfig.Id=1379020091",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020090.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.MGE_1379020090_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
-        ]
-      }
-    },
-    {
       "id": "season:s2:invisibility:2001403",
       "label": "S2 匿踪·频率加速",
       "source": {
@@ -17096,28 +18182,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001403 -> 1379020100"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:2001406",
-      "label": "S2 匿踪·暗影之刺I",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001406"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001406 -> 1319033002",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033002_1.MGE.Id=1319033002; MGEConfig.Id=1319033002",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319033002.MGEClass=/Game/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033002.MGE_1319033002_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:1319033002 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:1319033002 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033002.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -17139,28 +18203,6 @@
       }
     },
     {
-      "id": "season:s2:invisibility:2001502",
-      "label": "S2 匿踪·协同共鸣",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001502"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001502 -> 1379020120",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1.MGE.Id=1379020120; MGEConfig.Id=1379020121",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020120.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.MGE_1379020120_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
-        ]
-      }
-    },
-    {
       "id": "season:s2:invisibility:2001503",
       "label": "S2 匿踪·速充精简",
       "source": {
@@ -17174,28 +18216,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001503 -> 1379020130"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:2001505",
-      "label": "S2 匿踪·暗影之刺III",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001505"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001505 -> 1319033007",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033007_1.MGE.Id=1319033007; MGEConfig.Id=1319033011",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319033007.MGEClass=/Game/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033007.MGE_1319033007_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:1319033011 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:1319033011 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033007.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -17247,55 +18267,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001602 -> 1379020150"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:2001603",
-      "label": "S2 匿踪·游龙",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001603"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001603 -> 1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
-          "Default__.BuffName=SeasonTalent_S3_Normal_002",
-          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
-          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:2001606",
-      "label": "S2 匿踪·暗影之刺II",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001606"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001606 -> 1319033004",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033004_1.MGE.Id=1319033004; MGEConfig.Id=1319033004",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319033004.MGEClass=/Script/GameFramework.GeneralMGE_SkillParametersModify",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:1319033004 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:1319033004 的全部参数数组为空，缺少 Modifier/Buff 绑定。"
         ]
       }
     },
@@ -17369,28 +18340,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020304 -> 1379020220"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:passive:2020305",
-      "label": "S2 匿踪·强化射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "passiveId": "2020305"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020305 -> 1379020200",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1.MGE.Id=1379020200; MGEConfig.Id=1379020201",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020200.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.MGE_1379020200_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -17480,28 +18429,6 @@
       }
     },
     {
-      "id": "season:s2:inferno-arm:2002206",
-      "label": "S2 炼狱炎臂·炽焰倍增",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002206"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002206 -> 1319031011",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031011_1",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031011_1.MGE.Id=1319031011",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319031011.MGEClass",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_FireBuffDmgEnhance.json:Default__",
-          "Default__.ModifierID=111030019"
-        ]
-      }
-    },
-    {
       "id": "season:s2:inferno-arm:2002301",
       "label": "S2 炼狱炎臂·续航协议",
       "source": {
@@ -17536,28 +18463,6 @@
       }
     },
     {
-      "id": "season:s2:inferno-arm:2002303",
-      "label": "S2 炼狱炎臂·爆发程序",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002303"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002303 -> 1379020070",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1.MGE.Id=1379020070; MGEConfig.Id=1379020071",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020070.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.MGE_1379020070_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
-        ]
-      }
-    },
-    {
       "id": "season:s2:inferno-arm:2002305",
       "label": "S2 炼狱炎臂·炎核扩容",
       "source": {
@@ -17588,28 +18493,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002401 -> 1379020080"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:inferno-arm:2002402",
-      "label": "S2 炼狱炎臂·伤害增幅",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002402 -> 1379020090",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1.MGE.Id=1379020090; MGEConfig.Id=1379020091",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020090.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.MGE_1379020090_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -17661,28 +18544,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002501 -> 1379020110"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:inferno-arm:2002502",
-      "label": "S2 炼狱炎臂·协同共鸣",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002502"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002502 -> 1379020120",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1.MGE.Id=1379020120; MGEConfig.Id=1379020121",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020120.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.MGE_1379020120_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -17751,34 +18612,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002602 -> 1379020150"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:inferno-arm:2002603",
-      "label": "S2 炼狱炎臂·游龙",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002603"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002603 -> 1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
-          "Default__.BuffName=SeasonTalent_S3_Normal_002",
-          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
-          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。"
         ]
       }
     },
@@ -17869,28 +18702,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020104 -> 1379020220"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:inferno-arm:passive:2020105",
-      "label": "S2 炼狱炎臂·强化射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "passiveId": "2020105"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020105 -> 1379020200",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1.MGE.Id=1379020200; MGEConfig.Id=1379020201",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020200.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.MGE_1379020200_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -18014,28 +18825,6 @@
       }
     },
     {
-      "id": "season:s2:holographic-sync:2003303",
-      "label": "S2 全息同调·爆发程序",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003303"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003303 -> 1379020070",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1.MGE.Id=1379020070; MGEConfig.Id=1379020071",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020070.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.MGE_1379020070_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
-        ]
-      }
-    },
-    {
       "id": "season:s2:holographic-sync:2003307",
       "label": "S2 全息同调·时域扩展",
       "source": {
@@ -18066,28 +18855,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003401 -> 1379020080"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:holographic-sync:2003402",
-      "label": "S2 全息同调·伤害增幅",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003402 -> 1379020090",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1.MGE.Id=1379020090; MGEConfig.Id=1379020091",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020090.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.MGE_1379020090_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -18139,28 +18906,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003501 -> 1379020110"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:holographic-sync:2003502",
-      "label": "S2 全息同调·协同共鸣",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003502"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003502 -> 1379020120",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1.MGE.Id=1379020120; MGEConfig.Id=1379020121",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020120.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.MGE_1379020120_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -18229,34 +18974,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003602 -> 1379020150"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:holographic-sync:2003603",
-      "label": "S2 全息同调·游龙",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003603"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003603 -> 1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
-          "Default__.BuffName=SeasonTalent_S3_Normal_002",
-          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
-          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。"
         ]
       }
     },
@@ -18347,28 +19064,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020204 -> 1379020220"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:holographic-sync:passive:2020205",
-      "label": "S2 全息同调·强化射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "passiveId": "2020205"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020205 -> 1379020200",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1.MGE.Id=1379020200; MGEConfig.Id=1379020201",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020200.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.MGE_1379020200_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },

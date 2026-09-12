@@ -3,13 +3,31 @@ import test from "node:test";
 import historical from "../../data/season-talents/s2/provider-evidence.json";
 import { NUM_MODIFIER_RESOLVER } from "../../lib/num-modifier-data";
 import { getProviderResolver } from "../num-modifier/provider-resolver";
-import { getProviderRelationsForSource, resolveMultiplierSourceHref } from "../../lib/multiplier-data";
+import { getApplicableModifierTypes, getProviderRelationsForSource, resolveMultiplierSourceHref } from "../../lib/multiplier-data";
 import { parseModifierProviderRegistry } from "../../lib/modifier-provider-registry";
 import registryJson from "../../data/modifier-providers.json";
 import { getS2TalentTree, S2_TALENT_IDS } from "../../lib/s2-season-talents";
 
 const registry = parseModifierProviderRegistry(registryJson);
 const providers = registry.providers.filter(p => p.source.type === "season-talent" && p.source.season === "s2");
+
+test("fire amplification indexes damage in dilution without indexing tick frequency", () => {
+  const provider = providers.find(p => p.source.type === "season-talent" && p.source.nodeId === "2002206");
+  assert.ok(provider);
+  assert.deepEqual(provider.applications?.map(a => a.expression.row), ["lc:111030019_1_1"]);
+  const relations = getProviderRelationsForSource(provider.source);
+  assert.equal(relations.length, 1);
+  assert.equal(relations[0].factorId, "dilution");
+  assert.equal(relations[0].modifierTypeId, "fire-debuff-damage");
+  for (const [element, settlement, expected] of [
+    ["火焰", "DebuffDamage", true],
+    ["寒冷", "DebuffDamage", false],
+    ["火焰", "WeaponDamage", false],
+  ] as const) {
+    const targets = getApplicableModifierTypes({ element, settlements: [`Numerical.SettlementType.Health.${settlement}`] });
+    assert.equal(targets.some(r => r.modifierTypeId === "fire-debuff-damage"), expected);
+  }
+});
 
 test("S2 clone buffs identify both shot damage facets without claiming a runtime recipient or talent level", () => {
   for (const [nodeId, modifierId] of [["2003206", "111031043"], ["2003305", "111031044"], ["2003507", "111031045"]]) {
@@ -27,13 +45,45 @@ test("S2 clone buffs identify both shot damage facets without claiming a runtime
   }
 });
 
-test("S2 description tokens cannot substitute for missing invisibility and common damage bindings", () => {
-  for (const nodeId of ["2001206", "2001406", "2001505", "2001606", "2001303", "2001402", "2001502"]) {
-    assert.equal(historical.providers.some(p => p.source.nodeId === nodeId), false, nodeId);
-    const exclusion = historical.exclusions.find(p => p.source.nodeId === nodeId);
-    assert.ok(exclusion, nodeId);
-    assert.ok(exclusion.evidence.basis.some(line => line.includes("MGEConfig.Id=")));
-    assert.ok(exclusion.evidence.basis.some(line => line.includes("参数数组为空") || line.includes("缺少 ConfigId=")));
+test("reviewed invisibility identities index damage attributes, not trigger wording or critical chance", () => {
+  for (const [nodeId, rows, factor] of [
+    ["2001206", ["lc:160303001_1_0", "lc:160303001_1_1"], "dilution"],
+    ["2001406", ["lc:160303005_1_0"], "critical"],
+    ["2001505", ["lc:160303004_1_0"], "critical"],
+    ["2001606", ["lc:160303006_1_0", "lc:160303006_1_1"], "dilution"],
+  ] as const) {
+    const provider = providers.find(p => p.source.type === "season-talent" && p.source.nodeId === nodeId);
+    assert.ok(provider, nodeId);
+    assert.deepEqual(provider.applications?.map(a => a.expression.row).sort(), [...rows].sort());
+    const relations = getProviderRelationsForSource(provider.source);
+    assert.equal(relations.length, rows.length);
+    assert.ok(relations.every(r => r.factorId === factor));
+    assert.ok(provider.evidence.basis?.some(line => line.includes("维护者明确确认")));
+  }
+});
+
+test("common elemental damage talents expose four dilution channels in every tree", () => {
+  for (const prefix of ["2001", "2002", "2003"]) for (const [suffix, modifier, field] of [["303", "111030002", "base"], ["402", "111030003", "base"], ["502", "111030006", "coefficient"]]) {
+    const nodeId = prefix + suffix;
+    const provider = providers.find(p => p.source.type === "season-talent" && p.source.nodeId === nodeId);
+    assert.ok(provider, nodeId);
+    assert.deepEqual(provider.applications?.map(a => a.expression), [0, 1, 2, 3].map(index => ({ row: `lc:${modifier}_1_${index}`, field })));
+    const relations = getProviderRelationsForSource(provider.source);
+    assert.equal(relations.length, 4);
+    assert.ok(relations.every(r => r.factorId === "dilution"));
+  }
+});
+
+test("enhanced shooting indexes its positive per-stack coefficient in all three passive placements", () => {
+  for (const [tree, passiveId] of [["invisibility", "2020305"], ["inferno-arm", "2020105"], ["holographic-sync", "2020205"]]) {
+    const provider = providers.find(p => p.source.type === "season-talent" && p.source.tree === tree && p.source.passiveId === passiveId);
+    assert.ok(provider, tree);
+    assert.deepEqual(provider.applications?.map(a => a.expression), [{ row: "lc:111030011_1_0", field: "coefficient" }]);
+    const relations = getProviderRelationsForSource(provider.source);
+    assert.equal(relations.length, 1);
+    assert.equal(relations[0].factorId, "dilution");
+    assert.equal(relations[0].modifierTypeId, "weapon-damage");
+    assert.ok(relations[0].sourceHref.includes(`passive=${passiveId}`));
   }
 });
 

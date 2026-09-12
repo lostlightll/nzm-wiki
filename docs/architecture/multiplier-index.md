@@ -20,12 +20,18 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - 攻击等级覆写型卡片必须额外保存来源 MGE、覆写等级、攻击等级被动与下游 MGE；审计需确认该等级最终命中同等级 Numerical 行，不能把 `SetAttackLevelOverride` 当作证据链终点。
 - `refs/` 只用于人工核验证据，构建和页面运行时不得读取。
 - S0/S1 五条已确认分支按 Basic → 对应等级的 Passive → MGEConfig/MGE → Numerical 审核，不能直接以技能 ID 查同名 Config。`scripts/s0s1-season-talents/providers.ts` 从 `valueReview.applications` 和独立审计的 `provider-supplements.ts` 生成来源；后者核验 `audit.json.valueEvidence` 中机械威能三级各自的 Config 与 Modifier 身份，以 `unknown` 接收者登记全伤害属性，不推断运行时范围。未连通的节点登记 `unverified-evidence`，不据名称或描述 Token 推断乘区。当前数值不等同于历史实测值。
-- S2 使用 `data/season-talents/s2/provider-evidence.json` 的历史证据快照，来源为 `refs/Exports/NZM/Content_S2`。三棵树的节点和被动逐项注册或明确排除；仅 Basic/Passive → MGE → Modifier 的结构化链确认后发布。描述模板的 Numerical 引用不能代替执行链。各树使用自己的节点和被动身份，来源深链无需跨树归一。
+- S2 使用 `data/season-talents/s2/provider-evidence.json` 的历史证据快照，来源为 `refs/Exports/NZM/Content_S2`。三棵树的节点和被动逐项注册或明确排除；通过 Basic/Passive → MGE → Modifier 的结构化链，或维护者明确审核的天赋到 Modifier 映射登记来源。人工映射须记录审核依据，不能自动由描述模板推定，也不表示蓝图执行链已验证。各树使用自己的节点和被动身份，来源深链无需跨树归一。
 - S2 来源的 `lc:` 仍表示猎场模式，但由来源的 `season: s2` 选择历史 Lock；投影、离线检查和审计统一通过 `scripts/num-modifier/provider-resolver.ts` 解析，缺失行报错，不回退当前 Lock。属性分类复用公共语义目录，历史证据内容哈希纳入投影新鲜度检查。
 - S2 已连通 ModifierID 但缺少动态等级执行证据时，仅引用历史 Level 1 基准行识别增伤分面，不据天赋等级推定传入的 Numerical.Level，也不由索引发布实际增伤数值。蓝图默认属性的显式 Buff 引用、或成对的技能 ID 与 Buff 配置可以证明属性身份，接收者保持 `unknown`，不宣称实际加载对象与叠层已验证。当前纳入「火焰赋能」「技能强化」「谐波共振」「效能增幅」「群集算法」。
-- S2「炽焰倍增」「游龙」已连通元素异常伤害属性，但这些属性的公开乘区归属尚未核实；匿踪的「遁形」「暗影之刺I/II/III」仍缺 Modifier/Buff 绑定，历史 Config 参数为空，不能从描述 Token 登记乘区。上述限制保存在证据快照与排除项中，不放进玩家页面提示。
+- S2 匿踪按维护者于 2026-09-12 确认的 Numerical 映射登记：「遁形」160303001、「暗影之刺I」160303005、「暗影之刺III」160303004、「暗影之刺II」160303006。前后两项由射击/爆炸伤害属性归入大稀释乘区，中间两项由暴击伤害属性归入暴伤乘区；命中弱点的触发条件不改变暗影之刺II的属性归属。数值仍读取历史 Numerical，接收者保持 `unknown`，不声称蓝图执行或叠层已验证。
+- S2「强化射击」在三棵树分别登记被动入口，引用历史 `lc:111030011_1_0.coefficient`。该行 `BaseValue=0`、`CoefValue=0.003`，按每层系数识别正向武器增伤，归入大稀释乘区；不能用零基础值漏掉来源，也不因触发条件涉及元素异常归入元素乘区。
+- 维护者确认元素异常增伤归入大稀释乘区，火焰、腐蚀、寒冷、电弧分别登记属性通道。S2「炽焰倍增」引用 `lc:111030019_1_1.base`，`FireBuffPeriod` 不进入增伤索引。「爆发程序」「伤害增幅」「协同共鸣」分别使用 Modifier 111030002、111030003、111030006，前两者读取 base，协同共鸣读取 coefficient；持续时间和异常施加概率不作为增伤。「游龙」同步获得四种异常增伤分面。目标匹配仅在对应元素的异常结算下列为条件适用。
 
 ## 数据所有权
+
+S0「武器之歌」按维护者确认的 Buff 对应关系登记：`BD_Common_1318123001.GPModifyIDs=[119124001]`，以 `lc:119124001_1_0.base` 识别大稀释乘区的武器伤害分面。Buff 的 `_2` 至 `_5` 配置仍引用 119124001；不将 119124002～119124005 自动视为天赋后续等级。
+
+S1 人工复核的精确技能 Token 映射由 `s1ReviewedApplications()` 登记：技能连击使用 `160201005_1_0.base`，侵蚀加深使用 `160201007_1_0.coefficient`，无我之境 I 使用 `160202007_1_0.coefficient`，灼眼天罚使用 `160202009_1_0.base`。仅以属性识别乘区，不推导叠层、历史等级或运行时接收者；灼眼天罚的 ExecutionCtx 使用伤害事件上下文。原始审计中的执行链缺口继续保留，不阻止上述人工审定的属性索引。
 
 `data/guides/multiplier.json` 保存乘区和通道定义：
 
@@ -112,6 +118,14 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 ```
 
 通用节点只在 `zero` 注册一个规范来源；另外两棵树将页面节点 ID 归一为该来源后反查徽标。
+
+无我之境 II、III、IV 通过 `s1ResonanceApplications()` 人工关联为共振获取来源，复用 I 的 `160202007_1_0.coefficient` 弱点分面，不增加独立增伤项。逐级核对实际 Passive 选择的 Config（II/III 的 StackCount、IV 的 Possibility），不使用同 ID 旧配置。共振 Buff 自身没有 GPModifyIDs；三项到共振的完整运行时施加链仍缺失，因此这属于共享状态的语义关联，接收者保持 unknown。
+
+维护者明确提供的增幅协议 `111010122` 与裂解易伤 `111010161` 映射由 `s1MaintainerApplications()` 维护，分别归入全伤害与易伤。裂解易伤同步登记三棵 S1 树；仅对这三个节点允许独立人工映射绕过 `unrelated-charge-config` 的旧充能链排除，其他冲突仍阻止发布，旧链中的160202005不会进入索引。
+
+蚀甲追猎（三棵 S1 树的1011602/1012602/1013602）作为虫群易伤的传播来源，语义关联到同一 `111010161_1_0.base`；不叠加另一份易伤、不把触发概率视作增伤。完整传播执行链仍未确认。
+
+禁忌之瞳本体按重新核验的 MGE_1319022001 字节码登记 `160202003_1_0.coefficient` 弱点分面（offset810选择ID，offset883 scoped Modifier调用）；缺失DA入口及可选覆盖仍不作完整运行时结论。线路强化经维护者确认，使用 `111010170_1_0.base` 登记大稀释全伤害分面，仅补属性索引，不推导治疗或运行时范围。
 
 ## 校验
 

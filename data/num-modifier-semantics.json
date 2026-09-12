@@ -150,6 +150,40 @@
         }
       }
     },
+    "fire-debuff-damage": {
+      "label": "火元素异常伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "fire-debuff-damage",
+          "label": "火元素异常伤害",
+          "consumer": "damage"
+        }
+      }
+    },
+    "corossive-debuff-damage": {
+      "label": "腐蚀元素异常伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": { "increase": { "id": "corossive-debuff-damage", "label": "腐蚀元素异常伤害", "consumer": "damage" } }
+    },
+    "cryo-debuff-damage": {
+      "label": "寒冷元素异常伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": { "increase": { "id": "cryo-debuff-damage", "label": "寒冷元素异常伤害", "consumer": "damage" } }
+    },
+    "shock-debuff-damage": {
+      "label": "电弧元素异常伤害",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": { "increase": { "id": "shock-debuff-damage", "label": "电弧元素异常伤害", "consumer": "damage" } }
+    },
     "weapon-damage": {
       "label": "武器伤害",
       "family": "offense",
@@ -746,9 +780,9 @@
       }
     },
     "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio": {
-      "status": "known-unindexed",
-      "label": "毒debuff伤害增加",
-      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+      "status": "indexed",
+      "attribute_type": "corossive-debuff-damage",
+      "scope": "persistent-stat"
     },
     "GPAttributeSetGiveDamageRatio.CryoDamageRatio": {
       "status": "indexed",
@@ -762,9 +796,9 @@
       }
     },
     "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio": {
-      "status": "known-unindexed",
-      "label": "冰debuff伤害增加",
-      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+      "status": "indexed",
+      "attribute_type": "cryo-debuff-damage",
+      "scope": "persistent-stat"
     },
     "GPAttributeSetGiveDamageRatio.DamageRatio": {
       "status": "indexed",
@@ -823,9 +857,9 @@
       }
     },
     "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio": {
-      "status": "known-unindexed",
-      "label": "火debuff伤害增加",
-      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+      "status": "indexed",
+      "attribute_type": "fire-debuff-damage",
+      "scope": "persistent-stat"
     },
     "GPAttributeSetGiveDamageRatio.KineticDamageRatio": {
       "status": "indexed",
@@ -855,9 +889,9 @@
       }
     },
     "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio": {
-      "status": "known-unindexed",
-      "label": "电debuff伤害增加",
-      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+      "status": "indexed",
+      "attribute_type": "shock-debuff-damage",
+      "scope": "persistent-stat"
     },
     "GPAttributeSetGiveDamageRatio.SkillDamageRatio": {
       "status": "indexed",

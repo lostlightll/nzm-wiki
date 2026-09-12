@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "9d657f642557822cfbdccb4eef8fde7aa440304a51736921316855db34c2a86f",
+    "modifierIndexSha256": "a69c53a8f1a79dc0ced1e4659695d63811bf6ebdff574d75c5144ca5e988163e",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -2763,6 +2763,19 @@
       ]
     },
     {
+      "id": "season:s0:mechanical-dance:1003408",
+      "label": "S0 机械之舞·武器之歌",
+      "source": {
+        "type": "season-talent",
+        "season": "s0",
+        "tree": "mechanical-dance",
+        "nodeId": "1003408"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
       "id": "season:s0:mechanical-dance:1003501",
       "label": "S0 机械之舞·弱点伤害",
       "source": {
@@ -2789,6 +2802,19 @@
       ]
     },
     {
+      "id": "season:s1:kunlun-wood:1011402",
+      "label": "S1 昆仑神木·裂解易伤",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011402"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
       "id": "season:s1:kunlun-wood:1011501",
       "label": "S1 昆仑神木·弱点伤害",
       "source": {
@@ -2802,6 +2828,32 @@
       ]
     },
     {
+      "id": "season:s1:kunlun-wood:1011507",
+      "label": "S1 昆仑神木·增幅协议",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011507"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011509",
+      "label": "S1 昆仑神木·线路强化",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011509"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
       "id": "season:s1:kunlun-wood:1011601",
       "label": "S1 昆仑神木·近距伤害",
       "source": {
@@ -2812,6 +2864,45 @@
       },
       "modifierTypeIds": [
         "close-range-damage"
+      ]
+    },
+    {
+      "id": "season:s1:kunlun-wood:1011602",
+      "label": "S1 昆仑神木·蚀甲追猎",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "kunlun-wood",
+        "nodeId": "1011602"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "season:s1:phantom-form:1012402",
+      "label": "S1 行境幻化·裂解易伤",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012402"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "season:s1:phantom-form:1012407",
+      "label": "S1 行境幻化·技能连击",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012407"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
       ]
     },
     {
@@ -2854,6 +2945,45 @@
       ]
     },
     {
+      "id": "season:s1:phantom-form:1012602",
+      "label": "S1 行境幻化·蚀甲追猎",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012602"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "season:s1:phantom-form:1012709",
+      "label": "S1 行境幻化·侵蚀加深",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "phantom-form",
+        "nodeId": "1012709"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013107",
+      "label": "S1 禁忌之瞳·禁忌之瞳",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013107"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
       "id": "season:s1:forbidden-eye:1013207",
       "label": "S1 禁忌之瞳·血曈回响",
       "source": {
@@ -2874,6 +3004,32 @@
         "season": "s1",
         "tree": "forbidden-eye",
         "nodeId": "1013309"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013402",
+      "label": "S1 禁忌之瞳·裂解易伤",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013402"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013407",
+      "label": "S1 禁忌之瞳·无我之境I",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013407"
       },
       "modifierTypeIds": [
         "weakness"
@@ -2906,6 +3062,231 @@
       ]
     },
     {
+      "id": "season:s1:forbidden-eye:1013602",
+      "label": "S1 禁忌之瞳·蚀甲追猎",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013602"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013605",
+      "label": "S1 禁忌之瞳·无我之境II",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013605"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013705",
+      "label": "S1 禁忌之瞳·无我之境III",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013705"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013707",
+      "label": "S1 禁忌之瞳·灼眼天罚",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013707"
+      },
+      "modifierTypeIds": [
+        "correction"
+      ]
+    },
+    {
+      "id": "season:s1:forbidden-eye:1013709",
+      "label": "S1 禁忌之瞳·无我之境IV",
+      "source": {
+        "type": "season-talent",
+        "season": "s1",
+        "tree": "forbidden-eye",
+        "nodeId": "1013709"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "season:s2:invisibility:2001206",
+      "label": "S2 匿踪·遁形",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001206"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "season:s2:invisibility:2001303",
+      "label": "S2 匿踪·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001303"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
+      "id": "season:s2:invisibility:2001402",
+      "label": "S2 匿踪·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001402"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
+      "id": "season:s2:invisibility:2001406",
+      "label": "S2 匿踪·暗影之刺I",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001406"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "season:s2:invisibility:2001502",
+      "label": "S2 匿踪·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001502"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
+      "id": "season:s2:invisibility:2001505",
+      "label": "S2 匿踪·暗影之刺III",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001505"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "season:s2:invisibility:2001603",
+      "label": "S2 匿踪·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001603"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
+      "id": "season:s2:invisibility:2001606",
+      "label": "S2 匿踪·暗影之刺II",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001606"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "season:s2:invisibility:passive:2020305",
+      "label": "S2 匿踪·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "passiveId": "2020305"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "season:s2:inferno-arm:2002206",
+      "label": "S2 炼狱炎臂·炽焰倍增",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002206"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage"
+      ]
+    },
+    {
+      "id": "season:s2:inferno-arm:2002303",
+      "label": "S2 炼狱炎臂·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002303"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
       "id": "season:s2:inferno-arm:2002307",
       "label": "S2 炼狱炎臂·火焰赋能",
       "source": {
@@ -2920,6 +3301,38 @@
       ]
     },
     {
+      "id": "season:s2:inferno-arm:2002402",
+      "label": "S2 炼狱炎臂·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002402"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
+      "id": "season:s2:inferno-arm:2002502",
+      "label": "S2 炼狱炎臂·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002502"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
       "id": "season:s2:inferno-arm:2002505",
       "label": "S2 炼狱炎臂·技能强化",
       "source": {
@@ -2930,6 +3343,35 @@
       },
       "modifierTypeIds": [
         "skill-damage"
+      ]
+    },
+    {
+      "id": "season:s2:inferno-arm:2002603",
+      "label": "S2 炼狱炎臂·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002603"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
+      "id": "season:s2:inferno-arm:passive:2020105",
+      "label": "S2 炼狱炎臂·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "passiveId": "2020105"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
       ]
     },
     {
@@ -2947,6 +3389,22 @@
       ]
     },
     {
+      "id": "season:s2:holographic-sync:2003303",
+      "label": "S2 全息同调·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003303"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
       "id": "season:s2:holographic-sync:2003305",
       "label": "S2 全息同调·效能增幅",
       "source": {
@@ -2961,6 +3419,38 @@
       ]
     },
     {
+      "id": "season:s2:holographic-sync:2003402",
+      "label": "S2 全息同调·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003402"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
+      "id": "season:s2:holographic-sync:2003502",
+      "label": "S2 全息同调·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003502"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
       "id": "season:s2:holographic-sync:2003507",
       "label": "S2 全息同调·群集算法",
       "source": {
@@ -2972,6 +3462,35 @@
       "modifierTypeIds": [
         "weapon-hit-damage",
         "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "season:s2:holographic-sync:2003603",
+      "label": "S2 全息同调·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003603"
+      },
+      "modifierTypeIds": [
+        "fire-debuff-damage",
+        "corossive-debuff-damage",
+        "cryo-debuff-damage",
+        "shock-debuff-damage"
+      ]
+    },
+    {
+      "id": "season:s2:holographic-sync:passive:2020205",
+      "label": "S2 全息同调·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "passiveId": "2020205"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
       ]
     }
   ],
@@ -7567,18 +8086,6 @@
       "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
     },
     {
-      "id": "season:s0:mechanical-dance:1003408",
-      "label": "S0 机械之舞·武器之歌",
-      "source": {
-        "type": "season-talent",
-        "season": "s0",
-        "tree": "mechanical-dance",
-        "nodeId": "1003408"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "武器之歌：精确 Passive 指向 1318123001，但 Main Config.Parameters 为空，注册的 MGE Blueprint 在当前资源中缺失，尚未找到其施加的 Modifier。"
-    },
-    {
       "id": "season:s0:mechanical-dance:1003502",
       "label": "S0 机械之舞·紧急治疗",
       "source": {
@@ -7831,18 +8338,6 @@
       "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
-      "id": "season:s1:kunlun-wood:1011402",
-      "label": "S1 昆仑神木·裂解易伤",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "kunlun-wood",
-        "nodeId": "1011402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
-    },
-    {
       "id": "season:s1:kunlun-wood:1011404",
       "label": "S1 昆仑神木·愈疗疾速",
       "source": {
@@ -7937,42 +8432,6 @@
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
-    },
-    {
-      "id": "season:s1:kunlun-wood:1011507",
-      "label": "S1 昆仑神木·增幅协议",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "kunlun-wood",
-        "nodeId": "1011507"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "增幅协议：精确 Passive 指向 Config 1319023010/1319023110/1319023210，但 Main 缺少对应配置；描述 Token 不能建立增伤执行链。"
-    },
-    {
-      "id": "season:s1:kunlun-wood:1011509",
-      "label": "S1 昆仑神木·线路强化",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "kunlun-wood",
-        "nodeId": "1011509"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
-    },
-    {
-      "id": "season:s1:kunlun-wood:1011602",
-      "label": "S1 昆仑神木·蚀甲追猎",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "kunlun-wood",
-        "nodeId": "1011602"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
       "id": "season:s1:kunlun-wood:1011604",
@@ -8179,18 +8638,6 @@
       "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
-      "id": "season:s1:phantom-form:1012402",
-      "label": "S1 行境幻化·裂解易伤",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "phantom-form",
-        "nodeId": "1012402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
-    },
-    {
       "id": "season:s1:phantom-form:1012404",
       "label": "S1 行境幻化·愈疗疾速",
       "source": {
@@ -8213,18 +8660,6 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
-    },
-    {
-      "id": "season:s1:phantom-form:1012407",
-      "label": "S1 行境幻化·技能连击",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "phantom-form",
-        "nodeId": "1012407"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "技能连击：精确 Passive 指向 Config 1319021019，参数为空；GeneralMGE_SkillParametersModify 未提供下游 Modifier 身份，不能用描述百分比补链。"
     },
     {
       "id": "season:s1:phantom-form:1012502",
@@ -8287,18 +8722,6 @@
       "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
-      "id": "season:s1:phantom-form:1012602",
-      "label": "S1 行境幻化·蚀甲追猎",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "phantom-form",
-        "nodeId": "1012602"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
-    },
-    {
       "id": "season:s1:phantom-form:1012604",
       "label": "S1 行境幻化·愈疗储能",
       "source": {
@@ -8357,30 +8780,6 @@
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
-    },
-    {
-      "id": "season:s1:phantom-form:1012709",
-      "label": "S1 行境幻化·侵蚀加深",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "phantom-form",
-        "nodeId": "1012709"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "侵蚀加深：精确 Passive 指向 Config 1319021029/1319021030，参数为空；160201007 只有描述 Token 连接，未确认执行链。"
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013107",
-      "label": "S1 禁忌之瞳·禁忌之瞳",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013107"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "禁忌之瞳：基础 Blueprint 的 scoped Modifier 调用已识别 160202003，但 GPActiveSkillDataTable 指向的 DA_S2_TabooEyes2 当前缺失，尚不能闭合主动技能资产到该 Blueprint 的身份链。"
     },
     {
       "id": "season:s1:forbidden-eye:1013201",
@@ -8479,18 +8878,6 @@
       "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
-      "id": "season:s1:forbidden-eye:1013402",
-      "label": "S1 禁忌之瞳·裂解易伤",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
-    },
-    {
       "id": "season:s1:forbidden-eye:1013404",
       "label": "S1 禁忌之瞳·愈疗疾速",
       "source": {
@@ -8513,18 +8900,6 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013407",
-      "label": "S1 禁忌之瞳·无我之境I",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013407"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "无我之境I：已确认 S2_TE_Resonance 经基础 MGE 施加 160202007，但该天赋自身的 MGE Blueprint 缺失，尚未连通天赋到共振 Buff 的施加链。"
     },
     {
       "id": "season:s1:forbidden-eye:1013409",
@@ -8599,18 +8974,6 @@
       "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
     },
     {
-      "id": "season:s1:forbidden-eye:1013602",
-      "label": "S1 禁忌之瞳·蚀甲追猎",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013602"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
-    },
-    {
       "id": "season:s1:forbidden-eye:1013604",
       "label": "S1 禁忌之瞳·愈疗储能",
       "source": {
@@ -8623,18 +8986,6 @@
       "reason": "虫群天赋的精确 Passive 指向赛季充能配置，且对应 MGE 未注册；该充能链已隔离，不能用作虫群数值或乘区。已发现的搬山填海飞虫资产尚未连接到这些天赋入口。"
     },
     {
-      "id": "season:s1:forbidden-eye:1013605",
-      "label": "S1 禁忌之瞳·无我之境II",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013605"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "无我之境II：配置仅有 StackCount，尚未连通该天赋到 S2_TE_Resonance Buff 的施加链，不能因描述提及共振继承 160202007。"
-    },
-    {
       "id": "season:s1:forbidden-eye:1013609",
       "label": "S1 禁忌之瞳·快枪手",
       "source": {
@@ -8645,42 +8996,6 @@
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未确认该节点的增伤来源链；缺失或冲突证据不按名称推定乘区。"
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013705",
-      "label": "S1 禁忌之瞳·无我之境III",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013705"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "无我之境III：配置仅有 StackCount，尚未连通该天赋到 S2_TE_Resonance Buff 的施加链，不能因描述提及共振继承 160202007。"
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013707",
-      "label": "S1 禁忌之瞳·灼眼天罚",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013707"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "已核验效果没有可发布的增伤分面，不因治疗、充能或独立伤害效果推定乘区。"
-    },
-    {
-      "id": "season:s1:forbidden-eye:1013709",
-      "label": "S1 禁忌之瞳·无我之境IV",
-      "source": {
-        "type": "season-talent",
-        "season": "s1",
-        "tree": "forbidden-eye",
-        "nodeId": "1013709"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "无我之境IV：配置仅有 Possibility，尚未连通该天赋到 S2_TE_Resonance Buff 的施加链，不能因描述提及共振继承 160202007。"
     },
     {
       "id": "season:s2:invisibility:2001106",
@@ -8731,18 +9046,6 @@
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
     },
     {
-      "id": "season:s2:invisibility:2001206",
-      "label": "S2 匿踪·遁形",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001206"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
       "id": "season:s2:invisibility:2001301",
       "label": "S2 匿踪·续航协议",
       "source": {
@@ -8762,18 +9065,6 @@
         "season": "s2",
         "tree": "invisibility",
         "nodeId": "2001302"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:invisibility:2001303",
-      "label": "S2 匿踪·爆发程序",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001303"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -8815,18 +9106,6 @@
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
     },
     {
-      "id": "season:s2:invisibility:2001402",
-      "label": "S2 匿踪·伤害增幅",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
       "id": "season:s2:invisibility:2001403",
       "label": "S2 匿踪·频率加速",
       "source": {
@@ -8834,18 +9113,6 @@
         "season": "s2",
         "tree": "invisibility",
         "nodeId": "2001403"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:invisibility:2001406",
-      "label": "S2 匿踪·暗影之刺I",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001406"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -8863,18 +9130,6 @@
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
     },
     {
-      "id": "season:s2:invisibility:2001502",
-      "label": "S2 匿踪·协同共鸣",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001502"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
       "id": "season:s2:invisibility:2001503",
       "label": "S2 匿踪·速充精简",
       "source": {
@@ -8882,18 +9137,6 @@
         "season": "s2",
         "tree": "invisibility",
         "nodeId": "2001503"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:invisibility:2001505",
-      "label": "S2 匿踪·暗影之刺III",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001505"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -8930,30 +9173,6 @@
         "season": "s2",
         "tree": "invisibility",
         "nodeId": "2001602"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:invisibility:2001603",
-      "label": "S2 匿踪·游龙",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001603"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。"
-    },
-    {
-      "id": "season:s2:invisibility:2001606",
-      "label": "S2 匿踪·暗影之刺II",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001606"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -9002,18 +9221,6 @@
         "season": "s2",
         "tree": "invisibility",
         "passiveId": "2020304"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:invisibility:passive:2020305",
-      "label": "S2 匿踪·强化射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "passiveId": "2020305"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -9079,18 +9286,6 @@
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
     },
     {
-      "id": "season:s2:inferno-arm:2002206",
-      "label": "S2 炼狱炎臂·炽焰倍增",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002206"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。"
-    },
-    {
       "id": "season:s2:inferno-arm:2002301",
       "label": "S2 炼狱炎臂·续航协议",
       "source": {
@@ -9115,18 +9310,6 @@
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
     },
     {
-      "id": "season:s2:inferno-arm:2002303",
-      "label": "S2 炼狱炎臂·爆发程序",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002303"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
       "id": "season:s2:inferno-arm:2002305",
       "label": "S2 炼狱炎臂·炎核扩容",
       "source": {
@@ -9146,18 +9329,6 @@
         "season": "s2",
         "tree": "inferno-arm",
         "nodeId": "2002401"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:inferno-arm:2002402",
-      "label": "S2 炼狱炎臂·伤害增幅",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002402"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -9194,18 +9365,6 @@
         "season": "s2",
         "tree": "inferno-arm",
         "nodeId": "2002501"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:inferno-arm:2002502",
-      "label": "S2 炼狱炎臂·协同共鸣",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002502"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -9257,18 +9416,6 @@
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:inferno-arm:2002603",
-      "label": "S2 炼狱炎臂·游龙",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002603"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。"
     },
     {
       "id": "season:s2:inferno-arm:2002606",
@@ -9326,18 +9473,6 @@
         "season": "s2",
         "tree": "inferno-arm",
         "passiveId": "2020104"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:inferno-arm:passive:2020105",
-      "label": "S2 炼狱炎臂·强化射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "passiveId": "2020105"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -9427,18 +9562,6 @@
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
     },
     {
-      "id": "season:s2:holographic-sync:2003303",
-      "label": "S2 全息同调·爆发程序",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003303"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
       "id": "season:s2:holographic-sync:2003307",
       "label": "S2 全息同调·时域扩展",
       "source": {
@@ -9458,18 +9581,6 @@
         "season": "s2",
         "tree": "holographic-sync",
         "nodeId": "2003401"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:holographic-sync:2003402",
-      "label": "S2 全息同调·伤害增幅",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003402"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -9506,18 +9617,6 @@
         "season": "s2",
         "tree": "holographic-sync",
         "nodeId": "2003501"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:holographic-sync:2003502",
-      "label": "S2 全息同调·协同共鸣",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003502"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
@@ -9569,18 +9668,6 @@
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:holographic-sync:2003603",
-      "label": "S2 全息同调·游龙",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003603"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。"
     },
     {
       "id": "season:s2:holographic-sync:2003606",
@@ -9638,18 +9725,6 @@
         "season": "s2",
         "tree": "holographic-sync",
         "passiveId": "2020204"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
-    },
-    {
-      "id": "season:s2:holographic-sync:passive:2020205",
-      "label": "S2 全息同调·强化射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "passiveId": "2020205"
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"

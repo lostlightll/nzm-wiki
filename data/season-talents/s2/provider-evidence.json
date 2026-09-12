@@ -47,6 +47,1150 @@
     },
     "rows": {
       "lc": {
+        "160303001_1_0": {
+          "row_name": "160303001_1_0",
+          "raw": {
+            "ID": 160303001,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+            "Description": "S3_匿踪_遁形_增伤",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.5,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "160303001_1_1": {
+          "row_name": "160303001_1_1",
+          "raw": {
+            "ID": 160303001,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+            "Description": "S3_匿踪_遁形_增伤",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.5,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "160303004_1_0": {
+          "row_name": "160303004_1_0",
+          "raw": {
+            "ID": 160303004,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetCritical.CriticalDamageRatio",
+            "Description": "S3_匿踪_暗影之刺III_爆伤",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.02,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "160303004_2_1": {
+          "row_name": "160303004_2_1",
+          "raw": {
+            "ID": 160303004,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetCritical.CriticalDamageRatio",
+            "Description": "S3_匿踪_暗影之刺III_爆伤",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.04,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "160303004_3_2": {
+          "row_name": "160303004_3_2",
+          "raw": {
+            "ID": 160303004,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetCritical.CriticalDamageRatio",
+            "Description": "S3_匿踪_暗影之刺III_爆伤",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.06,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "160303005_1_0": {
+          "row_name": "160303005_1_0",
+          "raw": {
+            "ID": 160303005,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetCritical.CriticalDamageRatio",
+            "Description": "S3_匿踪_暗影之刺I_爆伤",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "160303006_1_0": {
+          "row_name": "160303006_1_0",
+          "raw": {
+            "ID": 160303006,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+            "Description": "S3_匿踪_暗影之刺II_增伤",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.7,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "160303006_1_1": {
+          "row_name": "160303006_1_1",
+          "raw": {
+            "ID": 160303006,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+            "Description": "S3_匿踪_暗影之刺II_增伤",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.7,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_1_0": {
+          "row_name": "111030002_1_0",
+          "raw": {
+            "ID": 111030002,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.16,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_1_1": {
+          "row_name": "111030002_1_1",
+          "raw": {
+            "ID": 111030002,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.16,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_1_2": {
+          "row_name": "111030002_1_2",
+          "raw": {
+            "ID": 111030002,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.16,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_1_3": {
+          "row_name": "111030002_1_3",
+          "raw": {
+            "ID": 111030002,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.16,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_1_4": {
+          "row_name": "111030002_1_4",
+          "raw": {
+            "ID": 111030002,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_1_5": {
+          "row_name": "111030002_1_5",
+          "raw": {
+            "ID": 111030002,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetElement.FireBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_1_6": {
+          "row_name": "111030002_1_6",
+          "raw": {
+            "ID": 111030002,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetElement.CryoBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_1_7": {
+          "row_name": "111030002_1_7",
+          "raw": {
+            "ID": 111030002,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetElement.ShockBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_2_0": {
+          "row_name": "111030002_2_0",
+          "raw": {
+            "ID": 111030002,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_2_1": {
+          "row_name": "111030002_2_1",
+          "raw": {
+            "ID": 111030002,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_2_2": {
+          "row_name": "111030002_2_2",
+          "raw": {
+            "ID": 111030002,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_2_3": {
+          "row_name": "111030002_2_3",
+          "raw": {
+            "ID": 111030002,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_2_4": {
+          "row_name": "111030002_2_4",
+          "raw": {
+            "ID": 111030002,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_2_5": {
+          "row_name": "111030002_2_5",
+          "raw": {
+            "ID": 111030002,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetElement.FireBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_2_6": {
+          "row_name": "111030002_2_6",
+          "raw": {
+            "ID": 111030002,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetElement.CryoBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_2_7": {
+          "row_name": "111030002_2_7",
+          "raw": {
+            "ID": 111030002,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetElement.ShockBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_3_0": {
+          "row_name": "111030002_3_0",
+          "raw": {
+            "ID": 111030002,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.24,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_3_1": {
+          "row_name": "111030002_3_1",
+          "raw": {
+            "ID": 111030002,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.24,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_3_2": {
+          "row_name": "111030002_3_2",
+          "raw": {
+            "ID": 111030002,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.24,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_3_3": {
+          "row_name": "111030002_3_3",
+          "raw": {
+            "ID": 111030002,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.24,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_3_4": {
+          "row_name": "111030002_3_4",
+          "raw": {
+            "ID": 111030002,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_3_5": {
+          "row_name": "111030002_3_5",
+          "raw": {
+            "ID": 111030002,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetElement.FireBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_3_6": {
+          "row_name": "111030002_3_6",
+          "raw": {
+            "ID": 111030002,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetElement.CryoBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_3_7": {
+          "row_name": "111030002_3_7",
+          "raw": {
+            "ID": 111030002,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetElement.ShockBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_4_0": {
+          "row_name": "111030002_4_0",
+          "raw": {
+            "ID": 111030002,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.28,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_4_1": {
+          "row_name": "111030002_4_1",
+          "raw": {
+            "ID": 111030002,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.28,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_4_2": {
+          "row_name": "111030002_4_2",
+          "raw": {
+            "ID": 111030002,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.28,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_4_3": {
+          "row_name": "111030002_4_3",
+          "raw": {
+            "ID": 111030002,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.28,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_4_4": {
+          "row_name": "111030002_4_4",
+          "raw": {
+            "ID": 111030002,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_4_5": {
+          "row_name": "111030002_4_5",
+          "raw": {
+            "ID": 111030002,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetElement.FireBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_4_6": {
+          "row_name": "111030002_4_6",
+          "raw": {
+            "ID": 111030002,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetElement.CryoBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_4_7": {
+          "row_name": "111030002_4_7",
+          "raw": {
+            "ID": 111030002,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetElement.ShockBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_5_0": {
+          "row_name": "111030002_5_0",
+          "raw": {
+            "ID": 111030002,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.32,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_5_1": {
+          "row_name": "111030002_5_1",
+          "raw": {
+            "ID": 111030002,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.32,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_5_2": {
+          "row_name": "111030002_5_2",
+          "raw": {
+            "ID": 111030002,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.32,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_5_3": {
+          "row_name": "111030002_5_3",
+          "raw": {
+            "ID": 111030002,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.32,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_5_4": {
+          "row_name": "111030002_5_4",
+          "raw": {
+            "ID": 111030002,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_5_5": {
+          "row_name": "111030002_5_5",
+          "raw": {
+            "ID": 111030002,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetElement.FireBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_5_6": {
+          "row_name": "111030002_5_6",
+          "raw": {
+            "ID": 111030002,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetElement.CryoBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030002_5_7": {
+          "row_name": "111030002_5_7",
+          "raw": {
+            "ID": 111030002,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetElement.ShockBuffDurationRatio",
+            "Description": "元素异常伤害增加x%，但持续时间减少k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": -0.2,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_1_0": {
+          "row_name": "111030003_1_0",
+          "raw": {
+            "ID": 111030003,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.17,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_1_1": {
+          "row_name": "111030003_1_1",
+          "raw": {
+            "ID": 111030003,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.17,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_1_2": {
+          "row_name": "111030003_1_2",
+          "raw": {
+            "ID": 111030003,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.17,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_1_3": {
+          "row_name": "111030003_1_3",
+          "raw": {
+            "ID": 111030003,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.17,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_2_0": {
+          "row_name": "111030003_2_0",
+          "raw": {
+            "ID": 111030003,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.24,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_2_1": {
+          "row_name": "111030003_2_1",
+          "raw": {
+            "ID": 111030003,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.24,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_2_2": {
+          "row_name": "111030003_2_2",
+          "raw": {
+            "ID": 111030003,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.24,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_2_3": {
+          "row_name": "111030003_2_3",
+          "raw": {
+            "ID": 111030003,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.24,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_3_0": {
+          "row_name": "111030003_3_0",
+          "raw": {
+            "ID": 111030003,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.31,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_3_1": {
+          "row_name": "111030003_3_1",
+          "raw": {
+            "ID": 111030003,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.31,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_3_2": {
+          "row_name": "111030003_3_2",
+          "raw": {
+            "ID": 111030003,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.31,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_3_3": {
+          "row_name": "111030003_3_3",
+          "raw": {
+            "ID": 111030003,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.31,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_4_0": {
+          "row_name": "111030003_4_0",
+          "raw": {
+            "ID": 111030003,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.38,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_4_1": {
+          "row_name": "111030003_4_1",
+          "raw": {
+            "ID": 111030003,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.38,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_4_2": {
+          "row_name": "111030003_4_2",
+          "raw": {
+            "ID": 111030003,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.38,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_4_3": {
+          "row_name": "111030003_4_3",
+          "raw": {
+            "ID": 111030003,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.38,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_5_0": {
+          "row_name": "111030003_5_0",
+          "raw": {
+            "ID": 111030003,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.45,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_5_1": {
+          "row_name": "111030003_5_1",
+          "raw": {
+            "ID": 111030003,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.45,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_5_2": {
+          "row_name": "111030003_5_2",
+          "raw": {
+            "ID": 111030003,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.45,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030003_5_3": {
+          "row_name": "111030003_5_3",
+          "raw": {
+            "ID": 111030003,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "元素异常伤害增加x%",
+            "GPModifierOp": "B1",
+            "BaseValue": 0.45,
+            "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_1_0": {
+          "row_name": "111030006_1_0",
+          "raw": {
+            "ID": 111030006,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.01,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_1_1": {
+          "row_name": "111030006_1_1",
+          "raw": {
+            "ID": 111030006,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.01,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_1_2": {
+          "row_name": "111030006_1_2",
+          "raw": {
+            "ID": 111030006,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.01,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_1_3": {
+          "row_name": "111030006_1_3",
+          "raw": {
+            "ID": 111030006,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.01,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_2_0": {
+          "row_name": "111030006_2_0",
+          "raw": {
+            "ID": 111030006,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.02,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_2_1": {
+          "row_name": "111030006_2_1",
+          "raw": {
+            "ID": 111030006,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.02,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_2_2": {
+          "row_name": "111030006_2_2",
+          "raw": {
+            "ID": 111030006,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.02,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_2_3": {
+          "row_name": "111030006_2_3",
+          "raw": {
+            "ID": 111030006,
+            "Level": 2,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.02,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_3_0": {
+          "row_name": "111030006_3_0",
+          "raw": {
+            "ID": 111030006,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.03,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_3_1": {
+          "row_name": "111030006_3_1",
+          "raw": {
+            "ID": 111030006,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.03,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_3_2": {
+          "row_name": "111030006_3_2",
+          "raw": {
+            "ID": 111030006,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.03,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_3_3": {
+          "row_name": "111030006_3_3",
+          "raw": {
+            "ID": 111030006,
+            "Level": 3,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.03,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_4_0": {
+          "row_name": "111030006_4_0",
+          "raw": {
+            "ID": 111030006,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.04,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_4_1": {
+          "row_name": "111030006_4_1",
+          "raw": {
+            "ID": 111030006,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.04,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_4_2": {
+          "row_name": "111030006_4_2",
+          "raw": {
+            "ID": 111030006,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.04,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_4_3": {
+          "row_name": "111030006_4_3",
+          "raw": {
+            "ID": 111030006,
+            "Level": 4,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.04,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_5_0": {
+          "row_name": "111030006_5_0",
+          "raw": {
+            "ID": 111030006,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.FireDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.05,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_5_1": {
+          "row_name": "111030006_5_1",
+          "raw": {
+            "ID": 111030006,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CorossiveDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.05,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_5_2": {
+          "row_name": "111030006_5_2",
+          "raw": {
+            "ID": 111030006,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.CryoDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.05,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030006_5_3": {
+          "row_name": "111030006_5_3",
+          "raw": {
+            "ID": 111030006,
+            "Level": 5,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.ShockDebuffDamageRatio",
+            "Description": "距离敌人越近，异常添加概率越高，15米内，每米提升x%。\n周围队友越多，元素异常伤害越高，15米内，每有一个队友，元素异常伤害提高k%。",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.05,
+            "IFBeAttackOnceModifier": false
+          }
+        },
         "111030009_1_0": {
           "row_name": "111030009_1_0",
           "raw": {
@@ -304,6 +1448,19 @@
             "GPModifierOp": "B1",
             "BaseValue": 0.015,
             "CoefValue": 0,
+            "IFBeAttackOnceModifier": false
+          }
+        },
+        "111030011_1_0": {
+          "row_name": "111030011_1_0",
+          "raw": {
+            "ID": 111030011,
+            "Level": 1,
+            "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "Description": "命中敌人时，敌人每有一层元素异常，伤害增加n%，敌人每有一种元素异常，本次攻击增加k%暴击率",
+            "GPModifierOp": "B1",
+            "BaseValue": 0,
+            "CoefValue": 0.003,
             "IFBeAttackOnceModifier": false
           }
         },
@@ -682,6 +1839,49 @@
             "NumericalID": 8
           }
         },
+        "1013": {
+          "row_name": "1013",
+          "raw": {
+            "id": 1013,
+            "attr_str": "",
+            "attr_realname": "GPAttributeSetCritical.CriticalDamageRatio",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "1013_attr_name",
+              "SourceString": "暴击伤害",
+              "LocalizedString": "暴击伤害"
+            },
+            "description": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "1013_description",
+              "SourceString": "暴击伤害",
+              "LocalizedString": "暴击伤害"
+            },
+            "value_format": "%.0f",
+            "value_rate": 1,
+            "NumericalID": 9
+          }
+        },
+        "2159": {
+          "row_name": "2159",
+          "raw": {
+            "id": 2159,
+            "attr_str": "",
+            "attr_realname": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "2159_attr_name",
+              "SourceString": "武器伤害增加",
+              "LocalizedString": "武器伤害增加"
+            },
+            "description": {
+              "CultureInvariantString": null
+            },
+            "value_format": "%.0f",
+            "value_rate": 1,
+            "NumericalID": 8
+          }
+        },
         "2160": {
           "row_name": "2160",
           "raw": {
@@ -733,6 +1933,86 @@
               "Key": "2282_attr_name",
               "SourceString": "火Buff频率增加",
               "LocalizedString": "火Buff频率增加"
+            },
+            "description": {
+              "CultureInvariantString": null
+            },
+            "value_format": "",
+            "value_rate": 0,
+            "NumericalID": 0
+          }
+        },
+        "2314": {
+          "row_name": "2314",
+          "raw": {
+            "id": 2314,
+            "attr_str": "",
+            "attr_realname": "GPAttributeSetElement.CorossiveBuffDurationRatio",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "2314_attr_name",
+              "SourceString": "毒Buff持续时间倍率",
+              "LocalizedString": "毒Buff持续时间倍率"
+            },
+            "description": {
+              "CultureInvariantString": null
+            },
+            "value_format": "",
+            "value_rate": 0,
+            "NumericalID": 0
+          }
+        },
+        "2315": {
+          "row_name": "2315",
+          "raw": {
+            "id": 2315,
+            "attr_str": "",
+            "attr_realname": "GPAttributeSetElement.FireBuffDurationRatio",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "2315_attr_name",
+              "SourceString": "火Buff持续时间倍率",
+              "LocalizedString": "火Buff持续时间倍率"
+            },
+            "description": {
+              "CultureInvariantString": null
+            },
+            "value_format": "",
+            "value_rate": 0,
+            "NumericalID": 0
+          }
+        },
+        "2316": {
+          "row_name": "2316",
+          "raw": {
+            "id": 2316,
+            "attr_str": "",
+            "attr_realname": "GPAttributeSetElement.CryoBuffDurationRatio",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "2316_attr_name",
+              "SourceString": "冰Buff持续时间倍率",
+              "LocalizedString": "冰Buff持续时间倍率"
+            },
+            "description": {
+              "CultureInvariantString": null
+            },
+            "value_format": "",
+            "value_rate": 0,
+            "NumericalID": 0
+          }
+        },
+        "2317": {
+          "row_name": "2317",
+          "raw": {
+            "id": 2317,
+            "attr_str": "",
+            "attr_realname": "GPAttributeSetElement.ShockBuffDurationRatio",
+            "attr_name": {
+              "Namespace": "AttributeDescMapTable",
+              "Key": "2317_attr_name",
+              "SourceString": "电Buff持续时间倍率",
+              "LocalizedString": "电Buff持续时间倍率"
             },
             "description": {
               "CultureInvariantString": null
@@ -807,6 +2087,550 @@
   },
   "providers": [
     {
+      "id": "season:s2:invisibility:2001206",
+      "label": "S2 匿踪·遁形",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001206"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160303001_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:160303001_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319033001",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001206 -> 1319033001",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033001_1",
+          "2026-09-12 维护者明确确认匿踪天赋 PassiveSkill=1319033001 -> ModifierID=160303001，用于乘区索引；不是按描述文本自动匹配。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303001_1_0，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303001_1_1，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "该映射不声称历史蓝图调用链已补全；触发、运行时接收者与叠层仍不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001303",
+      "label": "S2 匿踪·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001303"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030002_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020070",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001303 -> 1379020070",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020070 -> ModifierID=111030002，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020070_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030002_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001402",
+      "label": "S2 匿踪·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001402"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030003_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020090",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001402 -> 1379020090",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020090 -> ModifierID=111030003，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020090_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030003_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001406",
+      "label": "S2 匿踪·暗影之刺I",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001406"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160303005_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319033002",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001406 -> 1319033002",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033002_1",
+          "2026-09-12 维护者明确确认匿踪天赋 PassiveSkill=1319033002 -> ModifierID=160303005，用于乘区索引；不是按描述文本自动匹配。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303005_1_0，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "该映射不声称历史蓝图调用链已补全；触发、运行时接收者与叠层仍不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001502",
+      "label": "S2 匿踪·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001502"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030006_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_2",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_3",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020120",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001502 -> 1379020120",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020120 -> ModifierID=111030006，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020120_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030006_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001505",
+      "label": "S2 匿踪·暗影之刺III",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001505"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160303004_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319033007",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001505 -> 1319033007",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033007_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033007_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033007_3",
+          "2026-09-12 维护者明确确认匿踪天赋 PassiveSkill=1319033007 -> ModifierID=160303004，用于乘区索引；不是按描述文本自动匹配。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303004_1_0，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "该映射不声称历史蓝图调用链已补全；触发、运行时接收者与叠层仍不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001603",
+      "label": "S2 匿踪·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001603"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030009_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020160",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001603 -> 1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
+          "Default__.BuffName=SeasonTalent_S3_Normal_002",
+          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
+          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:2001606",
+      "label": "S2 匿踪·暗影之刺II",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "nodeId": "2001606"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:160303006_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:160303006_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319033004",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001606 -> 1319033004",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033004_1",
+          "2026-09-12 维护者明确确认匿踪天赋 PassiveSkill=1319033004 -> ModifierID=160303006，用于乘区索引；不是按描述文本自动匹配。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303006_1_0，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.160303006_1_1，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。",
+          "该映射不声称历史蓝图调用链已补全；触发、运行时接收者与叠层仍不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:invisibility:passive:2020305",
+      "label": "S2 匿踪·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "invisibility",
+        "passiveId": "2020305"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030011_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020200",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020305 -> 1379020200",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1",
+          "2026-09-12 人工核对强化射击 PassiveSkill=1379020200 -> ModifierID=111030011；登记属性索引，不宣称蓝图执行链已补全。",
+          "data/season-talents/s2/evidence.json#1379020200_1.rows=s2:111030011_1_0，核对既有天赋数值引用。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030011_1_0：WeaponDamageRatio，B1，使用 CoefValue 识别每层增伤；BaseValue 为零，不用于判断该效果方向。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002206",
+      "label": "S2 炼狱炎臂·炽焰倍增",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002206"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030019_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1319031011",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002206 -> 1319031011",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031011_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031011_1.MGE.Id=1319031011",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319031011.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_FireBuffDmgEnhance.json:Default__",
+          "Default__.ModifierID=111030019",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002303",
+      "label": "S2 炼狱炎臂·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002303"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030002_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020070",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002303 -> 1379020070",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020070 -> ModifierID=111030002，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020070_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030002_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
       "id": "season:s2:inferno-arm:2002307",
       "label": "S2 炼狱炎臂·火焰赋能",
       "source": {
@@ -853,6 +2677,134 @@
       }
     },
     {
+      "id": "season:s2:inferno-arm:2002402",
+      "label": "S2 炼狱炎臂·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002402"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030003_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020090",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002402 -> 1379020090",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020090 -> ModifierID=111030003，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020090_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030003_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002502",
+      "label": "S2 炼狱炎臂·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002502"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030006_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_2",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_3",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020120",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002502 -> 1379020120",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020120 -> ModifierID=111030006，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020120_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030006_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
       "id": "season:s2:inferno-arm:2002505",
       "label": "S2 炼狱炎臂·技能强化",
       "source": {
@@ -885,6 +2837,106 @@
           "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_LianYuEnhance.json:Default__",
           "Default__.ModifierID=111030016",
           "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_LianYuEnhance.json:ChildProperties.CallFunc_AddScopedModifierForActivatedSkill_ReturnValue（限定技能/命中结算的函数签名；非完整执行字节码）",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:2002603",
+      "label": "S2 炼狱炎臂·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "nodeId": "2002603"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030009_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020160",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002603 -> 1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
+          "Default__.BuffName=SeasonTalent_S3_Normal_002",
+          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
+          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:inferno-arm:passive:2020105",
+      "label": "S2 炼狱炎臂·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "inferno-arm",
+        "passiveId": "2020105"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030011_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020200",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020105 -> 1379020200",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1",
+          "2026-09-12 人工核对强化射击 PassiveSkill=1379020200 -> ModifierID=111030011；登记属性索引，不宣称蓝图执行链已补全。",
+          "data/season-talents/s2/evidence.json#1379020200_1.rows=s2:111030011_1_0，核对既有天赋数值引用。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030011_1_0：WeaponDamageRatio，B1，使用 CoefValue 识别每层增伤；BaseValue 为零，不用于判断该效果方向。",
           "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
         ]
       }
@@ -930,6 +2982,70 @@
           "Default__.OverclockBuffName=SeasonTalent_S3_YHFS_001",
           "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_YHFS_001.GPModifyIDs=111031043",
           "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003303",
+      "label": "S2 全息同调·爆发程序",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003303"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030002_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030002_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020070",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003303 -> 1379020070",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020070 -> ModifierID=111030002，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020070_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030002_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
           "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
         ]
       }
@@ -983,6 +3099,134 @@
       }
     },
     {
+      "id": "season:s2:holographic-sync:2003402",
+      "label": "S2 全息同调·伤害增幅",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003402"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030003_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030003_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020090",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003402 -> 1379020090",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020090 -> ModifierID=111030003，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020090_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030003_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003502",
+      "label": "S2 全息同调·协同共鸣",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003502"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030006_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_2",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030006_1_3",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020120",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003502 -> 1379020120",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_5",
+          "2026-09-12 人工核对天赋数值引用 PassiveSkill=1379020120 -> ModifierID=111030006，按元素异常增伤归入大稀释乘区。",
+          "data/season-talents/s2/evidence.json#1379020120_1.rows；data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030006_1_0",
+          "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
       "id": "season:s2:holographic-sync:2003507",
       "label": "S2 全息同调·群集算法",
       "source": {
@@ -1026,6 +3270,106 @@
           "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/YHFS/SKT_S3_YHFS2.json:Default__.side4-DamageUpBuffName=SeasonTalent_S3_YHFS_003",
           "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_YHFS_003.GPModifyIDs=111031045",
           "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:2003603",
+      "label": "S2 全息同调·游龙",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "nodeId": "2003603"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030009_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111030009_1_3",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020160",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003603 -> 1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
+          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
+          "Default__.BuffName=SeasonTalent_S3_Normal_002",
+          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
+          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。",
+          "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
+        ]
+      }
+    },
+    {
+      "id": "season:s2:holographic-sync:passive:2020205",
+      "label": "S2 全息同调·强化射击",
+      "source": {
+        "type": "season-talent",
+        "season": "s2",
+        "tree": "holographic-sync",
+        "passiveId": "2020205"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111030011_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1379020200",
+        "basis": [
+          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020205 -> 1379020200",
+          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1",
+          "2026-09-12 人工核对强化射击 PassiveSkill=1379020200 -> ModifierID=111030011；登记属性索引，不宣称蓝图执行链已补全。",
+          "data/season-talents/s2/evidence.json#1379020200_1.rows=s2:111030011_1_0，核对既有天赋数值引用。",
+          "data/season-talents/s2/provider-evidence.json#lock.rows.lc.111030011_1_0：WeaponDamageRatio，B1，使用 CoefValue 识别每层增伤；BaseValue 为零，不用于判断该效果方向。",
           "Level=1 历史基准行仅用于识别属性分面；JSON 未提供 ModifierLevel 执行参数，动态等级、实际增伤数值与叠层尚未证实。unknown 接收者表示导出属性未证实执行对象，不据描述推断。"
         ]
       }
@@ -1101,28 +3445,6 @@
       }
     },
     {
-      "id": "season:s2:invisibility:2001206",
-      "label": "S2 匿踪·遁形",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001206"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001206 -> 1319033001",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033001_1.MGE.Id=1319033001; MGEConfig.Id=1319033001",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319033001.MGEClass=/Game/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033001.MGE_1319033001_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:1319033001 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:1319033001 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033001.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
-        ]
-      }
-    },
-    {
       "id": "season:s2:invisibility:2001301",
       "label": "S2 匿踪·续航协议",
       "source": {
@@ -1153,28 +3475,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001302 -> 1379020060"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:2001303",
-      "label": "S2 匿踪·爆发程序",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001303"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001303 -> 1379020070",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1.MGE.Id=1379020070; MGEConfig.Id=1379020071",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020070.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.MGE_1379020070_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -1230,28 +3530,6 @@
       }
     },
     {
-      "id": "season:s2:invisibility:2001402",
-      "label": "S2 匿踪·伤害增幅",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001402 -> 1379020090",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1.MGE.Id=1379020090; MGEConfig.Id=1379020091",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020090.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.MGE_1379020090_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
-        ]
-      }
-    },
-    {
       "id": "season:s2:invisibility:2001403",
       "label": "S2 匿踪·频率加速",
       "source": {
@@ -1265,28 +3543,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001403 -> 1379020100"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:2001406",
-      "label": "S2 匿踪·暗影之刺I",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001406"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001406 -> 1319033002",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033002_1.MGE.Id=1319033002; MGEConfig.Id=1319033002",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319033002.MGEClass=/Game/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033002.MGE_1319033002_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:1319033002 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:1319033002 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033002.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -1308,28 +3564,6 @@
       }
     },
     {
-      "id": "season:s2:invisibility:2001502",
-      "label": "S2 匿踪·协同共鸣",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001502"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001502 -> 1379020120",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1.MGE.Id=1379020120; MGEConfig.Id=1379020121",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020120.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.MGE_1379020120_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
-        ]
-      }
-    },
-    {
       "id": "season:s2:invisibility:2001503",
       "label": "S2 匿踪·速充精简",
       "source": {
@@ -1343,28 +3577,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001503 -> 1379020130"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:2001505",
-      "label": "S2 匿踪·暗影之刺III",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001505"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001505 -> 1319033007",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033007_1.MGE.Id=1319033007; MGEConfig.Id=1319033011",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319033007.MGEClass=/Game/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033007.MGE_1319033007_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:1319033011 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:1319033011 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Invisible/MGE/MGE_1319033007.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -1416,55 +3628,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001602 -> 1379020150"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:2001603",
-      "label": "S2 匿踪·游龙",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001603"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001603 -> 1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
-          "Default__.BuffName=SeasonTalent_S3_Normal_002",
-          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
-          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:2001606",
-      "label": "S2 匿踪·暗影之刺II",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "nodeId": "2001606"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2001606 -> 1319033004",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319033004_1.MGE.Id=1319033004; MGEConfig.Id=1319033004",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319033004.MGEClass=/Script/GameFramework.GeneralMGE_SkillParametersModify",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:1319033004 的全部参数数组为空，缺少 Modifier/Buff 绑定。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:1319033004 的全部参数数组为空，缺少 Modifier/Buff 绑定。"
         ]
       }
     },
@@ -1538,28 +3701,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020304 -> 1379020220"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:invisibility:passive:2020305",
-      "label": "S2 匿踪·强化射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "invisibility",
-        "passiveId": "2020305"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020305 -> 1379020200",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1.MGE.Id=1379020200; MGEConfig.Id=1379020201",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020200.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.MGE_1379020200_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -1649,28 +3790,6 @@
       }
     },
     {
-      "id": "season:s2:inferno-arm:2002206",
-      "label": "S2 炼狱炎臂·炽焰倍增",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002206"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002206 -> 1319031011",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031011_1",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1319031011_1.MGE.Id=1319031011",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1319031011.MGEClass",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/NinjaShooting/MGE/MGE_YHRS_FireBuffDmgEnhance.json:Default__",
-          "Default__.ModifierID=111030019"
-        ]
-      }
-    },
-    {
       "id": "season:s2:inferno-arm:2002301",
       "label": "S2 炼狱炎臂·续航协议",
       "source": {
@@ -1705,28 +3824,6 @@
       }
     },
     {
-      "id": "season:s2:inferno-arm:2002303",
-      "label": "S2 炼狱炎臂·爆发程序",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002303"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002303 -> 1379020070",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1.MGE.Id=1379020070; MGEConfig.Id=1379020071",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020070.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.MGE_1379020070_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
-        ]
-      }
-    },
-    {
       "id": "season:s2:inferno-arm:2002305",
       "label": "S2 炼狱炎臂·炎核扩容",
       "source": {
@@ -1757,28 +3854,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002401 -> 1379020080"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:inferno-arm:2002402",
-      "label": "S2 炼狱炎臂·伤害增幅",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002402 -> 1379020090",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1.MGE.Id=1379020090; MGEConfig.Id=1379020091",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020090.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.MGE_1379020090_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -1830,28 +3905,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002501 -> 1379020110"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:inferno-arm:2002502",
-      "label": "S2 炼狱炎臂·协同共鸣",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002502"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002502 -> 1379020120",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1.MGE.Id=1379020120; MGEConfig.Id=1379020121",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020120.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.MGE_1379020120_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -1920,34 +3973,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002602 -> 1379020150"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:inferno-arm:2002603",
-      "label": "S2 炼狱炎臂·游龙",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "nodeId": "2002603"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2002603 -> 1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
-          "Default__.BuffName=SeasonTalent_S3_Normal_002",
-          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
-          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。"
         ]
       }
     },
@@ -2038,28 +4063,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020104 -> 1379020220"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:inferno-arm:passive:2020105",
-      "label": "S2 炼狱炎臂·强化射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "inferno-arm",
-        "passiveId": "2020105"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020105 -> 1379020200",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1.MGE.Id=1379020200; MGEConfig.Id=1379020201",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020200.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.MGE_1379020200_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -2183,28 +4186,6 @@
       }
     },
     {
-      "id": "season:s2:holographic-sync:2003303",
-      "label": "S2 全息同调·爆发程序",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003303"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003303 -> 1379020070",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020070_1.MGE.Id=1379020070; MGEConfig.Id=1379020071",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020070.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.MGE_1379020070_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020071 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020070.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
-        ]
-      }
-    },
-    {
       "id": "season:s2:holographic-sync:2003307",
       "label": "S2 全息同调·时域扩展",
       "source": {
@@ -2235,28 +4216,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003401 -> 1379020080"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:holographic-sync:2003402",
-      "label": "S2 全息同调·伤害增幅",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003402"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003402 -> 1379020090",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020090_1.MGE.Id=1379020090; MGEConfig.Id=1379020091",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020090.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.MGE_1379020090_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020091 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020090.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -2308,28 +4267,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003501 -> 1379020110"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:holographic-sync:2003502",
-      "label": "S2 全息同调·协同共鸣",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003502"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003502 -> 1379020120",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020120_1.MGE.Id=1379020120; MGEConfig.Id=1379020121",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020120.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.MGE_1379020120_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020121 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020120.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },
@@ -2398,34 +4335,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003602 -> 1379020150"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:holographic-sync:2003603",
-      "label": "S2 全息同调·游龙",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "nodeId": "2003603"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "已连通历史 ModifierID，但当前语义未提供可发布的伤害分面；保留证据等待语义核验，不等同于没有增伤。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentBasicTable.json:2003603 -> 1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_2",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_3",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_4",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_5",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020160_1.MGE.Id=1379020160",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020160.MGEClass",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020160.json:Default__",
-          "Default__.BuffName=SeasonTalent_S3_Normal_002",
-          "refs/Exports/NZM/Content_S2/DataTables/Buff/BuffConfigDatatableNew.json:SeasonTalent_S3_Normal_002.GPModifyIDs=111030009",
-          "默认属性中的技能/Buff 引用仅确认配置身份；历史 JSON 未导出执行连线，不确认实际加载对象、接收者、动态等级或叠层。仅用 Level=1 基准行识别属性分面。"
         ]
       }
     },
@@ -2516,28 +4425,6 @@
       "evidence": {
         "basis": [
           "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020204 -> 1379020220"
-        ]
-      }
-    },
-    {
-      "id": "season:s2:holographic-sync:passive:2020205",
-      "label": "S2 全息同调·强化射击",
-      "source": {
-        "type": "season-talent",
-        "season": "s2",
-        "tree": "holographic-sync",
-        "passiveId": "2020205"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。",
-      "evidence": {
-        "basis": [
-          "refs/Exports/NZM/Content_S2/DataTables/SeasonTalent/SeasonTalentPassiveConfigTable.json:2020205 -> 1379020200",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEPassive_Season.json:1379020200_1.MGE.Id=1379020200; MGEConfig.Id=1379020201",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/GPModularGameplayEffectTable.json:1379020200.MGEClass=/Game/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.MGE_1379020200_C",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/MGEConfig_Season.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/DataTables/MGE/DT_MGEParamConfig_Main.json:缺少 ConfigId=1379020201 行。",
-          "refs/Exports/NZM/Content_S2/Abilities/Skills/Season/S3/Normal/MGE/MGE_1379020200.json:Default__ 未保存 ModifierID/BuffName，且 JSON 未导出执行连线；描述 Token 和函数变量名不能补足属性身份。"
         ]
       }
     },

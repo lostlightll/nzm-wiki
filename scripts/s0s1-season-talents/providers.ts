@@ -5,7 +5,7 @@ import { getLegacyTalentCatalog, type LegacyTalentTree } from "../../lib/s0s1-se
 import { NUM_MODIFIER_RESOLVER } from "../../lib/num-modifier-data";
 import { MODIFIER_TYPES } from "../../lib/multiplier-data";
 import { parseModifierProviderRegistry, type ModifierProviderRegistry } from "../../lib/modifier-provider-registry";
-import { LEGACY_PROVIDER_GAPS, mechanicalPowerApplications } from "./provider-supplements";
+import { LEGACY_PROVIDER_GAPS, mechanicalPowerApplications, weaponSongApplications, s1ReviewedApplications, s1MaintainerApplications } from "./provider-supplements";
 
 const registryPath = "data/modifier-providers.json";
 const damageFacets = new Set(MODIFIER_TYPES.map(type => type.id));
@@ -21,7 +21,11 @@ export function buildLegacyProviders(trees: readonly LegacyTalentTree[]) {
       source: { type: "season-talent" as const, season: tree.season, tree: tree.id, nodeId: node.id },
     };
     const conflicts = node.levels.flatMap(level => level.valueReview?.executionConflict ? [level.valueReview.executionConflict] : []);
-    const supplement = !conflicts.length && tree.season === "s0" && node.id === "1003206" ? mechanicalPowerApplications() : undefined;
+    const maintainer = tree.season === "s1" && conflicts.every(conflict => conflict.code === "unrelated-charge-config")
+      ? s1MaintainerApplications(node.id) : undefined;
+    const supplement = maintainer ?? (conflicts.length ? undefined : tree.season === "s0"
+      ? node.id === "1003206" ? mechanicalPowerApplications() : node.id === "1003408" ? weaponSongApplications() : undefined
+      : s1ReviewedApplications(node.id));
     const reviewed = [...node.levels.flatMap(level => level.valueReview?.executionConflict ? [] : level.valueReview?.applications ?? []), ...supplement?.applications ?? []];
     const applications = [...new Map(reviewed.map(application => [JSON.stringify(application), application])).values()];
     const damageApplications = applications.filter(application => NUM_MODIFIER_RESOLVER.resolveEffect(application.expression, application.context, identity.id).facets.some(facet => damageFacets.has(facet.id)));

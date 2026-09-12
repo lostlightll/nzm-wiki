@@ -35,11 +35,22 @@ test("unreviewed raw Modifier facts cannot replace the independently audited sup
     historicalEffectStatus: "unverified",
   });
   const result = buildLegacyProviders(input);
-  assert.deepEqual(result.providers.map(provider => provider.id), ["season:s0:mechanical-dance:1003206"]);
+  assert.deepEqual(result.providers.map(provider => provider.id), ["season:s0:mechanical-dance:1003206", "season:s0:mechanical-dance:1003408", "season:s1:kunlun-wood:1011402", "season:s1:kunlun-wood:1011507", "season:s1:kunlun-wood:1011509", "season:s1:kunlun-wood:1011602", "season:s1:phantom-form:1012402", "season:s1:phantom-form:1012407", "season:s1:phantom-form:1012602", "season:s1:phantom-form:1012709", "season:s1:forbidden-eye:1013107", "season:s1:forbidden-eye:1013402", "season:s1:forbidden-eye:1013407", "season:s1:forbidden-eye:1013602", "season:s1:forbidden-eye:1013605", "season:s1:forbidden-eye:1013705", "season:s1:forbidden-eye:1013707", "season:s1:forbidden-eye:1013709"]);
   assert.deepEqual(result.providers[0].applications?.map(application => application.expression.row), [
     "lc:160101001_1_0", "lc:160101002_1_0", "lc:160101003_1_0",
   ]);
-  assert.equal(result.exclusions.length, 142);
+  assert.equal(result.exclusions.length, 125);
+});
+
+test("weapon song exposes the reviewed Buff modifier as weapon damage in dilution", () => {
+  const source = { type: "season-talent" as const, season: "s0", tree: "mechanical-dance", nodeId: "1003408" };
+  const provider = buildLegacyProviders(trees()).providers.find(p => p.id === "season:s0:mechanical-dance:1003408");
+  assert.deepEqual(provider?.applications?.map(a => a.expression.row), ["lc:119124001_1_0"]);
+  const relations = getProviderRelationsForSource(source);
+  assert.equal(relations.length, 1);
+  assert.equal(relations[0].factorId, "dilution");
+  assert.equal(relations[0].modifierTypeId, "weapon-damage");
+  assert.ok(relations[0].sourceHref?.includes("node=1003408"));
 });
 
 test("an execution conflict blocks the mechanical supplement and injected applications", () => {
@@ -81,4 +92,16 @@ test("a quarantined swarm chain cannot enter the index even if an application is
   const before = buildLegacyProviders(input);
   for (const level of node.levels) level.valueReview!.applications = [application];
   assert.deepEqual(buildLegacyProviders(input), before);
+});
+
+test("reviewed swarm vulnerability bypasses only the unrelated charge chain", () => {
+  const tree = trees().find(tree => tree.id === "kunlun-wood")!;
+  const node = tree.nodes.find(node => node.id === "1011402")!;
+  const input = [{ ...tree, nodes: [node] }];
+  const result = buildLegacyProviders(input);
+  assert.deepEqual(result.providers[0].applications?.map(value => value.expression.row), ["lc:111010161_1_0"]);
+  const relations = getProviderRelationsForSource(result.providers[0].source);
+  assert.equal(relations[0].factorId, "vulnerability");
+  node.levels[0].valueReview!.executionConflict!.code = "different-conflict";
+  assert.equal(buildLegacyProviders(input).providers.length, 0);
 });

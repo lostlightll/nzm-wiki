@@ -383,6 +383,66 @@
         "facetId": "all-damage"
       },
       {
+        "id": "fire-debuff-damage",
+        "label": "火元素异常伤害",
+        "group": "dilution",
+        "summary": "大稀释乘区中的火元素异常增伤；仅作用于启用 FireDebuffDamageRatio 的异常结算，不等同于普通火元素伤害或结算频率。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "none" },
+          { "damageTypeId": "explosion-damage", "status": "none" },
+          { "damageTypeId": "weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "element-dot-damage", "status": "conditional", "label": "火元素异常结算" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ],
+        "facetId": "fire-debuff-damage"
+      },
+      {
+        "id": "corossive-debuff-damage",
+        "label": "腐蚀元素异常伤害",
+        "group": "dilution",
+        "summary": "大稀释乘区中的腐蚀元素异常增伤，仅作用于启用 CorossiveDebuffDamageRatio 的异常结算。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "none" },
+          { "damageTypeId": "explosion-damage", "status": "none" },
+          { "damageTypeId": "weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "element-dot-damage", "status": "conditional", "label": "腐蚀元素异常结算" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ],
+        "facetId": "corossive-debuff-damage"
+      },
+      {
+        "id": "cryo-debuff-damage",
+        "label": "寒冷元素异常伤害",
+        "group": "dilution",
+        "summary": "大稀释乘区中的寒冷元素异常增伤，仅作用于启用 CryoDebuffDamageRatio 的异常结算。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "none" },
+          { "damageTypeId": "explosion-damage", "status": "none" },
+          { "damageTypeId": "weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "element-dot-damage", "status": "conditional", "label": "寒冷元素异常结算" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ],
+        "facetId": "cryo-debuff-damage"
+      },
+      {
+        "id": "shock-debuff-damage",
+        "label": "电弧元素异常伤害",
+        "group": "dilution",
+        "summary": "大稀释乘区中的电弧元素异常增伤，仅作用于启用 ShockDebuffDamageRatio 的异常结算。",
+        "effects": [
+          { "damageTypeId": "hit-damage", "status": "none" },
+          { "damageTypeId": "explosion-damage", "status": "none" },
+          { "damageTypeId": "weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "non-weapon-skill-damage", "status": "none" },
+          { "damageTypeId": "element-dot-damage", "status": "conditional", "label": "电弧元素异常结算" },
+          { "damageTypeId": "extra-trigger-damage", "status": "none" }
+        ],
+        "facetId": "shock-debuff-damage"
+      },
+      {
         "id": "weapon-damage",
         "label": "武器伤害",
         "group": "dilution",

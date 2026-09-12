@@ -31,7 +31,7 @@ export function buildS2ProviderEvidence() {
   const attrPath = "DataTables/AttributeDescMapTable";
   const numerical = rows(numPath);
   const attributes = rows(attrPath);
-  const confirmed = new Map<number, { ids: number[]; basis: string[]; recipient: "damage-event" | "unknown" }>();
+  const confirmed = new Map<number, { ids: number[]; basis: string[]; recipient: "damage-event" | "unknown"; field?: "base" | "coefficient" }>();
   const missingChains = new Map<number, string[]>();
   const configs = rows("DataTables/MGE/MGEConfig_Season");
   const mainConfigs = rows("DataTables/MGE/DT_MGEParamConfig_Main");
@@ -97,6 +97,54 @@ export function buildS2ProviderEvidence() {
     }
     confirmed.set(id, { ids, basis, recipient: [1319031007, 1319031008].includes(id) ? "damage-event" : "unknown" });
   }
+  // Explicitly reviewed talent-to-Modifier identities supplied by the maintainer.
+  // These publish attribute facets, not proof of Blueprint execution or stacking.
+  for (const [skill, modifier, attributeNames] of [
+    [1319033001, 160303001, ["GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio", "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio"]],
+    [1319033002, 160303005, ["GPAttributeSetCritical.CriticalDamageRatio"]],
+    [1319033007, 160303004, ["GPAttributeSetCritical.CriticalDamageRatio"]],
+    [1319033004, 160303006, ["GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio", "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio"]],
+  ] as const) {
+    const modifierRows = Object.entries(numerical).filter(([, row]) => row.ID === modifier && row.Level === 1);
+    assert.deepEqual(modifierRows.map(([, row]) => row.AttributeName).sort(), [...attributeNames].sort());
+    assert.ok(modifierRows.every(([, row]) => row.GPModifierOp === "B1"));
+    confirmed.set(skill, {
+      ids: [modifier], recipient: "unknown",
+      basis: [
+        `2026-09-12 维护者明确确认匿踪天赋 PassiveSkill=${skill} -> ModifierID=${modifier}，用于乘区索引；不是按描述文本自动匹配。`,
+        ...modifierRows.map(([name]) => `${snapshotPath}#lock.rows.lc.${name}，以历史 Numerical 的 AttributeName 和 GPModifierOp 识别增伤分面。`),
+        "该映射不声称历史蓝图调用链已补全；触发、运行时接收者与叠层仍不由索引推断。",
+      ],
+    });
+  }
+  for (const [skill, modifier, field] of [
+    [1379020070, 111030002, "base"],
+    [1379020090, 111030003, "base"],
+    [1379020120, 111030006, "coefficient"],
+  ] as const) {
+    const damageRows = Object.entries(numerical).filter(([, row]) => row.ID === modifier && row.Level === 1 && String(row.AttributeName).startsWith("GPAttributeSetGiveDamageRatio."));
+    assert.deepEqual(damageRows.map(([, row]) => row.AttributeName).sort(), ["Fire", "Corossive", "Cryo", "Shock"].map(element => `GPAttributeSetGiveDamageRatio.${element}DebuffDamageRatio`).sort());
+    confirmed.set(skill, {
+      ids: [modifier], recipient: "unknown", field,
+      basis: [
+        `2026-09-12 人工核对天赋数值引用 PassiveSkill=${skill} -> ModifierID=${modifier}，按元素异常增伤归入大稀释乘区。`,
+        `data/season-talents/s2/evidence.json#${skill}_1.rows；${snapshotPath}#lock.rows.lc.${modifier}_1_0`,
+        "索引仅登记增伤属性；持续时间、异常施加概率不作为乘区，动态接收者与叠层不由索引推断。",
+      ],
+    });
+  }
+  const enhancedShot = numerical["111030011_1_0"];
+  assert.equal(enhancedShot.ID, 111030011);
+  assert.equal(enhancedShot.AttributeName, "GPAttributeSetGiveDamageRatio.WeaponDamageRatio");
+  assert.equal(enhancedShot.GPModifierOp, "B1");
+  confirmed.set(1379020200, {
+    ids: [111030011], recipient: "unknown", field: "coefficient",
+    basis: [
+      "2026-09-12 人工核对强化射击 PassiveSkill=1379020200 -> ModifierID=111030011；登记属性索引，不宣称蓝图执行链已补全。",
+      "data/season-talents/s2/evidence.json#1379020200_1.rows=s2:111030011_1_0，核对既有天赋数值引用。",
+      `${snapshotPath}#lock.rows.lc.111030011_1_0：WeaponDamageRatio，B1，使用 CoefValue 识别每层增伤；BaseValue 为零，不用于判断该效果方向。`,
+    ],
+  });
   const ids = new Set([...confirmed.values()].flatMap(item => item.ids));
   const selected = Object.fromEntries(Object.entries(numerical).filter(([, row]) => ids.has(row.ID as number)).map(([key, raw]) => [key, { row_name: key, raw }]));
   const usedAttributes = new Set(Object.values(selected).map(row => row.raw.AttributeName));
@@ -128,7 +176,7 @@ export function buildS2ProviderEvidence() {
         // A baseline row identifies its facet without claiming dynamic values.
         if (level !== 1) continue;
         for (const [name, row] of Object.entries(selected)) if (review.ids.includes(Number(row.raw.ID)) && row.raw.Level === 1) {
-          const application = { expression: { row: `lc:${name}` as const, field: "base" as const }, context: { recipient: review.recipient } };
+          const application = { expression: { row: `lc:${name}` as const, field: review.field ?? "base" as const }, context: { recipient: review.recipient } };
           if (resolver.resolveEffect(application.expression, application.context, identity.id).facets.some(facet => damageFacets.has(facet.id))) applications.push(application);
         }
       }

@@ -805,6 +805,11 @@ export function getApplicableModifierTypes(
     // ExecutionRatio belongs to a concrete event context and cannot be inferred
     // from a weapon Settlement profile alone.
     if (modifier.id === "correction") continue;
+    const debuffElement: Partial<Record<string, ElementType>> = {
+      "fire-debuff-damage": "火焰", "corossive-debuff-damage": "腐蚀",
+      "cryo-debuff-damage": "寒冷", "shock-debuff-damage": "电弧",
+    };
+    if (debuffElement[modifier.id] && profile.element !== debuffElement[modifier.id]) continue;
     if (modifier.id === "critical" && !profile.enableCritical) continue;
     if (modifier.id === "weakness" && !profile.enableWeakness) continue;
     if (
