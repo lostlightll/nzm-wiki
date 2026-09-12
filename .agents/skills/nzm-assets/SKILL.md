@@ -10,6 +10,24 @@ It reads the shared private game profile without displaying its AES key and writ
 new exports under this project's ignored `MD/_local/nzm-assets/<run-id>/exports/`.
 It needs the local FModel installation, not the .NET SDK.
 
+## Local setup
+
+The portable project-local defaults are Git-ignored:
+
+```text
+MD/_local/nzm-assets/tools/FModel.Cli.exe
+MD/_local/nzm-assets/nzm.json
+```
+
+Paths passed through `-CliPath` and `-Profile` may be absolute or relative to the
+project root. For installations stored elsewhere, set `NZM_FMODEL_CLI` and
+`NZM_FMODEL_PROFILE`, or pass the two parameters explicitly. Precedence is:
+explicit parameter, environment variable, then project-local default.
+
+The game `Directory` and optional `Mappings` paths belong in the private profile.
+Relative paths in that profile are resolved from the profile's directory. Never
+commit the profile, game files, mappings, or FModel binaries.
+
 ## Run
 
 From the project root, use PowerShell (not Bash):
@@ -59,8 +77,9 @@ such as .uexp/.ubulk. It does not convert assets to PNG, WAV, FBX, or glTF.
   The helper's temporary private profile is removed in a finally block; forced
   process termination may leave it in ignored local output.
 - Missing EXE/profile: report the missing prerequisite; use `-CliPath` and
-  `-Profile` for explicit alternate local installations. Do not download or build
-  tools automatically. Defaults are listed at the top of the helper.
+  `-Profile` or the corresponding environment variables for alternate local
+  installations. Do not download or build tools automatically. Project-local
+  defaults are documented under Local setup.
 - On parser/mount failure, check the returned stage and stderr. Unknown-format
   warnings for launcher Chromium .pak files are distinct from Unreal parse errors.
   Mount success is not a guarantee that every asset parses. Stop repeated retries

@@ -6,20 +6,47 @@ param(
     [ValidateRange(0, 2147483647)][int]$Offset = 0,
     [ValidateRange(1, 200)][int]$Limit = 50,
     [string]$Asset,
-    [string]$CliPath = 'D:/Claude/FModel/artifacts/FModel-CLI-NZM-win-x64-20260907-135108/FModel.Cli.exe',
-    [string]$Profile = 'D:/Claude/FModel/.local/nzm.json'
+    [string]$CliPath,
+    [string]$Profile
 )
 
 $ErrorActionPreference = 'Stop'
-if (!(Test-Path -LiteralPath $CliPath -PathType Leaf)) { throw 'FModel EXE not found; provide -CliPath.' }
-if (!(Test-Path -LiteralPath $Profile -PathType Leaf)) { throw 'Private game profile not found; provide -Profile.' }
+$project = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../../..'))
+
+function Resolve-ProjectPath([string]$Path) {
+    if ([IO.Path]::IsPathFullyQualified($Path)) { return [IO.Path]::GetFullPath($Path) }
+    return [IO.Path]::GetFullPath((Join-Path $project $Path))
+}
+
+if ([string]::IsNullOrWhiteSpace($CliPath)) {
+    $CliPath = if ([string]::IsNullOrWhiteSpace($env:NZM_FMODEL_CLI)) {
+        'MD/_local/nzm-assets/tools/FModel.Cli.exe'
+    } else {
+        $env:NZM_FMODEL_CLI
+    }
+}
+if ([string]::IsNullOrWhiteSpace($Profile)) {
+    $Profile = if ([string]::IsNullOrWhiteSpace($env:NZM_FMODEL_PROFILE)) {
+        'MD/_local/nzm-assets/nzm.json'
+    } else {
+        $env:NZM_FMODEL_PROFILE
+    }
+}
+$CliPath = Resolve-ProjectPath $CliPath
+$Profile = Resolve-ProjectPath $Profile
+
+if (!(Test-Path -LiteralPath $CliPath -PathType Leaf)) {
+    throw "FModel EXE not found at '$CliPath'; install it at the project-local default, set NZM_FMODEL_CLI, or provide -CliPath."
+}
+if (!(Test-Path -LiteralPath $Profile -PathType Leaf)) {
+    throw "Private game profile not found at '$Profile'; create the project-local profile, set NZM_FMODEL_PROFILE, or provide -Profile."
+}
 if ($Command -in @('inspect', 'extract') -and [string]::IsNullOrWhiteSpace($Asset)) { throw '-Asset is required.' }
 if ($Command -ne 'search' -and ($PSBoundParameters.ContainsKey('Query') -or $PSBoundParameters.ContainsKey('Extension') -or $PSBoundParameters.ContainsKey('Offset') -or $PSBoundParameters.ContainsKey('Limit'))) {
     throw 'Query, Extension, Offset and Limit are search-only options.'
 }
 if ($Command -notin @('inspect', 'extract') -and $PSBoundParameters.ContainsKey('Asset')) { throw 'Asset is inspect/extract-only.' }
 
-$project = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../../..'))
 $run = Join-Path $project ('MD/_local/nzm-assets/' + [guid]::NewGuid().ToString('N'))
 # Keep temporary credentials out of linked directories and tracked locations.
 for ($current = $run; $current; $current = Split-Path -Parent $current) {
