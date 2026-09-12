@@ -26,7 +26,7 @@ kismet/
 & scripts/inspect-nzm-bytecode.ps1 -Assets 'NZM/Content/exact/path.uasset' -Dataset live -SourceLabel '已核实的版本标识'
 ```
 
-使用实际搜索结果替换示例路径；其他安装用 `-AssemblyPath`、`-ProfilePath`。程序集与 PowerShell/.NET 须兼容。赛季入口 `scripts/s0s1-season-talents/export-taboo-script.ps1` 委托同一导出器，保留原有参数和包含 `output` 的 JSON 返回格式。
+使用实际搜索结果替换示例路径。默认程序集为 `MD/_local/nzm-assets/tools/FModel.Cli.dll`，配置为 `MD/_local/nzm-assets/nzm.json`，都相对于项目根目录解析，不依赖启动命令时的当前目录。程序集应来自完整的兼容 CLI 安装，连同依赖保留在工具目录；这些本地文件不提交。其他安装用 `-AssemblyPath`、`-ProfilePath`；显式传入的相对路径也以项目根目录为基准，仍支持绝对路径覆盖。程序集与 PowerShell/.NET 须兼容。赛季入口 `scripts/s0s1-season-talents/export-taboo-script.ps1` 委托同一导出器并复用默认值，保留原有参数和包含 `output` 的 JSON 返回格式。
 
 每次导出写入 `manifest.json`：环境、可选版本标签、时间、请求资产、工具程序集哈希、状态和已导出文件的 SHA-256。只记录必要来源信息，不序列化 profile。`exported` 只表示导出请求完成，不证明所有函数解析完整；失败快照标为 `failed`，未正常结束的快照保留 `in-progress`。读取时仍须检查目标函数的 `ScriptBytecode` 和解析诊断。
 

@@ -7,18 +7,20 @@ FModel, modify refs, or print/write credentials. Exports go to ignored kismet/.
 #>
 param(
     [Parameter(Mandatory=$true)][string[]]$Assets,
-    [string]$AssemblyPath = 'D:/Claude/FModel/FModel.Cli/bin/Release/net10.0/win-x64/FModel.Cli.dll',
-    [string]$ProfilePath = 'D:/Claude/FModel/.local/nzm.json',
+    [string]$AssemblyPath = 'MD/_local/nzm-assets/tools/FModel.Cli.dll',
+    [string]$ProfilePath = 'MD/_local/nzm-assets/nzm.json',
     [ValidateSet('live', 'test', 'unknown')][string]$Dataset = 'unknown',
     [string]$SourceLabel
 )
 $ErrorActionPreference = 'Stop'
+$projectRoot = Split-Path -Parent $PSScriptRoot
+if (![IO.Path]::IsPathFullyQualified($AssemblyPath)) { $AssemblyPath = Join-Path $projectRoot $AssemblyPath }
+if (![IO.Path]::IsPathFullyQualified($ProfilePath)) { $ProfilePath = Join-Path $projectRoot $ProfilePath }
 if (!(Test-Path -LiteralPath $AssemblyPath -PathType Leaf)) { throw 'Existing FModel.Cli.dll required; this script does not build tools.' }
 if (!(Test-Path -LiteralPath $ProfilePath -PathType Leaf)) { throw 'Local game profile required.' }
-# Resolve in PowerShell's location before passing paths to .NET APIs.
+# Resolve filesystem paths before passing them to .NET APIs.
 $AssemblyPath = (Resolve-Path -LiteralPath $AssemblyPath).ProviderPath
 $ProfilePath = (Resolve-Path -LiteralPath $ProfilePath).ProviderPath
-$projectRoot = Split-Path -Parent $PSScriptRoot
 $snapshot = [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssZ') + '-' + [Guid]::NewGuid().ToString('N')
 $outputRoot = Join-Path $projectRoot "kismet/$Dataset/$snapshot"
 & git -C $projectRoot check-ignore -q -- "kismet/$Dataset/$snapshot/manifest.json"

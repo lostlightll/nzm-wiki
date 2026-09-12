@@ -8,6 +8,8 @@
 
 当前项目有两个可复用入口，从项目根目录运行：
 
+导出器默认使用项目内 `MD/_local/nzm-assets/tools/FModel.Cli.dll` 和 `MD/_local/nzm-assets/nzm.json`。显式传入的相对路径同样以项目根目录为基准；默认值由通用导出器维护，赛季入口直接复用。
+
 ```powershell
 # Assets 是 nzm-assets 搜索得到的准确虚拟路径。
 # AssemblyPath 与 ProfilePath 使用已确认存在的本地安装和私有配置。
