@@ -10,6 +10,8 @@
 
 导出器默认使用项目内 `MD/_local/nzm-assets/tools/FModel.Cli.dll` 和 `MD/_local/nzm-assets/nzm.json`。显式传入的相对路径同样以项目根目录为基准；默认值由通用导出器维护，赛季入口直接复用。
 
+`nzm-assets/tools/FModel.Cli.exe` 是资源导出用的自包含单文件程序，不提供这套 DLL 反射入口。内置 EXE 存在不代表 Kismet 所需 DLL 已安装；不能把 EXE 改名或直接作为 `-AssemblyPath`。只有已有兼容 DLL 安装时才使用下面的旧入口。
+
 ```powershell
 # Assets 是 nzm-assets 搜索得到的准确虚拟路径。
 # AssemblyPath 与 ProfilePath 使用已确认存在的本地安装和私有配置。

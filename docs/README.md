@@ -13,6 +13,8 @@
 
 | 任务范围 | Required | Optional | 状态 |
 | :--- | :--- | :--- | :---: |
+| pak 更新概览、容器条目或前版对比 | [按需 pak 分析](../.agents/skills/nzm-assets/references/pak-analysis.md) | [nzm-uasset](../.agents/skills/nzm-uasset/SKILL.md) | active |
+| Lua 脚本行为或函数版本差异 | [Lua 分析流程](../.agents/skills/nzm-assets/references/lua-analysis.md) | [按需 pak 分析](../.agents/skills/nzm-assets/references/pak-analysis.md) | active |
 | Kismet 字节码导出、读取或参考库维护 | [`workflows/kismet-evidence.md`](workflows/kismet-evidence.md) | [nzm-uasset](../.agents/skills/nzm-uasset/SKILL.md) | active |
 | 塔防陷阱详情、伤害及实测对照维护 | [`workflows/trap-content-audit.md`](workflows/trap-content-audit.md) | 无 | active |
 | 猎场 Buff 数据导入、图标或图鉴维护 | [`workflows/status-effect-import.md`](workflows/status-effect-import.md) | [`standards/weapon-numerical-v2.md`](standards/weapon-numerical-v2.md) | active |
