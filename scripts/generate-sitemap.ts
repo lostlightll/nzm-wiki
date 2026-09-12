@@ -57,6 +57,8 @@ function scanDirectory(dirPath: string, relativePath: string = ""): PageEntry[] 
 
       // 猎场精英敌人尚未有公开路由，不写入站点地图。
       if (slug.startsWith("enemies/lc/elite/")) continue;
+      // 猎场怪物血量链路尚未补全，暂时停止公开收录。
+      if (slug.startsWith("enemies/lc/monsters/")) continue;
 
       const stat = fs.statSync(fullPath);
       const lastmod = stat.mtime.toISOString().split("T")[0];
@@ -107,7 +109,6 @@ function generateSitemap() {
     { url: "/traps" },
     { url: "/enemies" },
     { url: "/bosses" },
-    { url: "/enemies/lc/monsters" },
     { url: "/enemies/td" },
     { url: "/guides" },
     { url: "/multiplier" },

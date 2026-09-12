@@ -147,6 +147,8 @@ export function scanDirectory(dirPath: string, relativePath: string = ""): Searc
 
       // 猎场精英敌人尚未有公开路由，不生成失效的旧前缀链接。
       if (slug.startsWith("enemies/lc/elite/")) continue;
+      // 猎场怪物血量链路尚未补全，暂时关闭搜索入口。
+      if (slug.startsWith("enemies/lc/monsters/")) continue;
 
       // 确定分类
       let category = "其他";
