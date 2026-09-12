@@ -610,14 +610,4301 @@
       "reason": "地图没有该难度入口，未生成血量"
     },
     {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "地下实验室B",
+      "difficulty": "heroic",
+      "monster_id": 11107041,
+      "quest_id": 4053,
+      "plan_ids": [
+        40533
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 11108032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 11108032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 11108032,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 11108032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 11108032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 11108032,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 11108032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 11108032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 11108032,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 11108032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 11108032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 11108032,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 11109032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 11109032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 11109032,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 11109032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 11109032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 11109032,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 11109032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 11109032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 11109032,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 11109032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 11109032,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 11109032,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 11201051,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 11201051,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 11201051,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 11202051,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 11202051,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 11202051,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 11203051,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 11203051,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 11203051,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14001031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14001031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14001031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14001031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14001031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14001031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14001031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14001031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14001031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14001031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14001031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14001031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14002031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14002031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14002031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14002031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14002031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14002031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14002031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14002031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14002031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14002031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14002031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14002031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14003031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14003031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14003031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14003031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14003031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14003031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14003031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14003031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14003031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14003031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14003031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14003031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14005031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14005031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14005031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14005031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14005031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14005031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14005031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14005031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14005031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14005031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14005031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14005031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14006031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14006031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14006031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14006031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14006031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14006031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14006031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14006031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14006031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14006031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14006031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14006031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14007041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14007041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14007041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14007041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14007041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14007041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14007041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14007041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14007041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14007041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14007041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14007041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14008041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14008041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14008041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14008041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14008041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14008041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14008041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14008041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14008041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14008041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14008041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14008041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14009041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14009041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14009041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14009041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14009041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14009041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14009041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14009041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14009041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14009041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14009041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14009041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14010051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14010051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14010051,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14010051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14010051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14010051,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14010051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14010051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14010051,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14010051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14010051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14010051,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14013051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14013051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14013051,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14013051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14013051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14013051,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14013051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14013051,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14013051,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14015041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14015041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14015041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14015041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14015041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14015041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14015041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14015041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14015041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14015041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14015041,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14015041,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 14022031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 14022031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 14022031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 14022031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 14022031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 14022031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 14022031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 14022031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 14022031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 14022031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 14022031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 14022031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 14307031,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 14307031,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 14307031,
+      "quest_id": 4103,
+      "plan_ids": [
+        41031,
+        41032,
+        41033,
+        41034
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 14307051,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 14307051,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 14307051,
+      "quest_id": 4103,
+      "plan_ids": [
+        41031,
+        41032,
+        41033,
+        41034
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 14311041,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 14311041,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 14311041,
+      "quest_id": 4103,
+      "plan_ids": [
+        41031,
+        41032,
+        41033,
+        41034
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 14314041,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 14314041,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 14314041,
+      "quest_id": 4103,
+      "plan_ids": [
+        41031,
+        41032,
+        41033,
+        41034
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 14315041,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 14315041,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 14315041,
+      "quest_id": 4103,
+      "plan_ids": [
+        41031,
+        41032,
+        41033,
+        41034
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 14316031,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 14316031,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 14316031,
+      "quest_id": 4103,
+      "plan_ids": [
+        41031,
+        41032,
+        41033,
+        41034
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 14316032,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 14316032,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 14316032,
+      "quest_id": 4103,
+      "plan_ids": [
+        41031,
+        41032,
+        41033,
+        41034
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 14317031,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 14317031,
+      "quest_id": 4104,
+      "plan_ids": [
+        41041,
+        41042,
+        41043,
+        41044
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之渊",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 14317031,
+      "quest_id": 4103,
+      "plan_ids": [
+        41031,
+        41032,
+        41033,
+        41034
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "销金之城",
+      "area": "罪金终章",
+      "difficulty": "overlimit",
+      "monster_id": 14401072,
+      "quest_id": 4097,
+      "plan_ids": [
+        40974
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
       "map": "销金之城",
       "monster_id": 14401072,
       "reason": "缺少已导出头像，使用占位图"
     },
     {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 18101031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 18101031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 18101031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18101031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18101031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18101031,
+      "quest_id": 4023,
+      "plan_ids": [
+        40231,
+        40232,
+        40233,
+        40234,
+        40235
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "区域待核实",
+      "difficulty": "overlimit",
+      "monster_id": 18102031,
+      "quest_id": 4017,
+      "plan_ids": [
+        40171,
+        40172,
+        40173,
+        40174
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18102031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141,
+        40142,
+        40143,
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18102031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141,
+        40142,
+        40143,
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18102031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40131,
+        40132,
+        40133,
+        40134
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "地下实验室B",
+      "difficulty": "heroic",
+      "monster_id": 18102031,
+      "quest_id": 4053,
+      "plan_ids": [
+        40533
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "torment",
+      "monster_id": 18103041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "inferno",
+      "monster_id": 18103041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "heroic",
+      "monster_id": 18103041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40131
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 18103041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 18103041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 18103041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "torment",
+      "monster_id": 18103041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "inferno",
+      "monster_id": 18103041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "heroic",
+      "monster_id": 18103041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40133
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "torment",
+      "monster_id": 18103041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "inferno",
+      "monster_id": 18103041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "heroic",
+      "monster_id": 18103041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40134
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18103041,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18103041,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18103041,
+      "quest_id": 4023,
+      "plan_ids": [
+        40231,
+        40232,
+        40233,
+        40234,
+        40235
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "torment",
+      "monster_id": 18104031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "inferno",
+      "monster_id": 18104031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "heroic",
+      "monster_id": 18104031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40131
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 18104031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 18104031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 18104031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "torment",
+      "monster_id": 18104031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "inferno",
+      "monster_id": 18104031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "heroic",
+      "monster_id": 18104031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40133
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "torment",
+      "monster_id": 18104031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "inferno",
+      "monster_id": 18104031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "heroic",
+      "monster_id": 18104031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40134
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18104031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18104031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18104031,
+      "quest_id": 4023,
+      "plan_ids": [
+        40231,
+        40232,
+        40233,
+        40234,
+        40235
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "overlimit",
+      "monster_id": 18104032,
+      "quest_id": 4017,
+      "plan_ids": [
+        40171
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "torment",
+      "monster_id": 18104032,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "inferno",
+      "monster_id": 18104032,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "heroic",
+      "monster_id": 18104032,
+      "quest_id": 4013,
+      "plan_ids": [
+        40131
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
       "map": "大都会",
       "monster_id": 18104032,
       "reason": "缺少已导出头像，使用占位图"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "torment",
+      "monster_id": 18105031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "inferno",
+      "monster_id": 18105031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "heroic",
+      "monster_id": 18105031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40131
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 18105031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 18105031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 18105031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "torment",
+      "monster_id": 18105031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "inferno",
+      "monster_id": 18105031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "heroic",
+      "monster_id": 18105031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40133
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "torment",
+      "monster_id": 18105031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "inferno",
+      "monster_id": 18105031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "heroic",
+      "monster_id": 18105031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40134
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18105031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18105031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18105031,
+      "quest_id": 4023,
+      "plan_ids": [
+        40231,
+        40232,
+        40233,
+        40234,
+        40235
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18106031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18106031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18106031,
+      "quest_id": 4023,
+      "plan_ids": [
+        40231,
+        40232,
+        40233,
+        40234,
+        40235
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "torment",
+      "monster_id": 18107041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "inferno",
+      "monster_id": 18107041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "heroic",
+      "monster_id": 18107041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40131
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 18107041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 18107041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 18107041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "torment",
+      "monster_id": 18107041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "inferno",
+      "monster_id": 18107041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "heroic",
+      "monster_id": 18107041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40133
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "torment",
+      "monster_id": 18107041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "inferno",
+      "monster_id": 18107041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "heroic",
+      "monster_id": 18107041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40134
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "巴黎2区",
+      "difficulty": "torment",
+      "monster_id": 18107041,
+      "quest_id": 4024,
+      "plan_ids": [
+        40242
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "巴黎2区",
+      "difficulty": "inferno",
+      "monster_id": 18107041,
+      "quest_id": 4024,
+      "plan_ids": [
+        40242
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "巴黎2区",
+      "difficulty": "heroic",
+      "monster_id": 18107041,
+      "quest_id": 4023,
+      "plan_ids": [
+        40232
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 18108041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 18108041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 18108041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "torment",
+      "monster_id": 18108041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "inferno",
+      "monster_id": 18108041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "heroic",
+      "monster_id": 18108041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40133
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "torment",
+      "monster_id": 18108041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "inferno",
+      "monster_id": 18108041,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "heroic",
+      "monster_id": 18108041,
+      "quest_id": 4013,
+      "plan_ids": [
+        40134
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18108041,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18108041,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18108041,
+      "quest_id": 4023,
+      "plan_ids": [
+        40231,
+        40232,
+        40233,
+        40234,
+        40235
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18109031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18109031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18109031,
+      "quest_id": 4023,
+      "plan_ids": [
+        40231,
+        40232,
+        40233,
+        40234,
+        40235
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18110031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18110031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18110031,
+      "quest_id": 4023,
+      "plan_ids": [
+        40231,
+        40232,
+        40233,
+        40234,
+        40235
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18111031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18111031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18111031,
+      "quest_id": 4043,
+      "plan_ids": [
+        40431,
+        40432,
+        40433,
+        40434,
+        40435,
+        40436
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18112031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18112031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18112031,
+      "quest_id": 4043,
+      "plan_ids": [
+        40431,
+        40432,
+        40433,
+        40434,
+        40435,
+        40436
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18113031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18113031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18113031,
+      "quest_id": 4043,
+      "plan_ids": [
+        40431,
+        40432,
+        40433,
+        40434,
+        40435,
+        40436
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18114031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18114031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18114031,
+      "quest_id": 4043,
+      "plan_ids": [
+        40431,
+        40432,
+        40433,
+        40434,
+        40435,
+        40436
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18116031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18116031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18116031,
+      "quest_id": 4043,
+      "plan_ids": [
+        40431,
+        40432,
+        40433,
+        40434,
+        40435,
+        40436
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18117031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18117031,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18117031,
+      "quest_id": 4023,
+      "plan_ids": [
+        40231,
+        40232,
+        40233,
+        40234,
+        40235
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18119031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18119031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18119031,
+      "quest_id": 4043,
+      "plan_ids": [
+        40431,
+        40432,
+        40433,
+        40434,
+        40435,
+        40436
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18121031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18121031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18121031,
+      "quest_id": 4043,
+      "plan_ids": [
+        40431,
+        40432,
+        40433,
+        40434,
+        40435,
+        40436
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18122031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18122031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18122031,
+      "quest_id": 4043,
+      "plan_ids": [
+        40431,
+        40432,
+        40433,
+        40434,
+        40435,
+        40436
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18123031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18123031,
+      "quest_id": 4044,
+      "plan_ids": [
+        40441,
+        40442,
+        40443,
+        40444,
+        40445,
+        40446
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "樱之城",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18123031,
+      "quest_id": 4043,
+      "plan_ids": [
+        40431,
+        40432,
+        40433,
+        40434,
+        40435,
+        40436
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18124041,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18124041,
+      "quest_id": 4024,
+      "plan_ids": [
+        40241,
+        40242,
+        40243,
+        40244,
+        40245
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "黑暗复活节",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18124041,
+      "quest_id": 4023,
+      "plan_ids": [
+        40231,
+        40232,
+        40233,
+        40234,
+        40235
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
     },
     {
       "map": "丛林魅影",
@@ -628,6 +4915,3634 @@
       "map": "丛林魅影",
       "monster_id": 18132032,
       "reason": "缺少已导出头像，使用占位图"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18138031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18138031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18138031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18138031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18138031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18138031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18138031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18139031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18139031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18139031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18139031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18139031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18139031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18139031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18140031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18140031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18140031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18140031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18140031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18140031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18140031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18143031,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18143031,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18143031,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18146041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18146041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18146041,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18148041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18148041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18148041,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "torment",
+      "monster_id": 18148042,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "inferno",
+      "monster_id": 18148042,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "龙顶冰川",
+      "difficulty": "heroic",
+      "monster_id": 18148042,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "torment",
+      "monster_id": 18148042,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "inferno",
+      "monster_id": 18148042,
+      "quest_id": 4074,
+      "plan_ids": [
+        40742
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "九层妖塔",
+      "difficulty": "heroic",
+      "monster_id": 18148042,
+      "quest_id": 4073,
+      "plan_ids": [
+        40732
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "torment",
+      "monster_id": 18148042,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "inferno",
+      "monster_id": 18148042,
+      "quest_id": 4074,
+      "plan_ids": [
+        40743
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 18148042,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "torment",
+      "monster_id": 18148042,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "inferno",
+      "monster_id": 18148042,
+      "quest_id": 4074,
+      "plan_ids": [
+        40744
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "魔国祭坛",
+      "difficulty": "heroic",
+      "monster_id": 18148042,
+      "quest_id": 4073,
+      "plan_ids": [
+        40734
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18150011,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18150011,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18150011,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18151011,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18151011,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18151011,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18151041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18151041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18151041,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18152031,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18152031,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18152031,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18153031,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18153031,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18153031,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18154041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18154041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18154041,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18158031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18158031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18158031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18158031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18158031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18158031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18158031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18159031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18159031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18159031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18159031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18159031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18159031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18159031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18160031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18160031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18160031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18160031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18160031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18160031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18160031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18160041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18160041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18160041,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18161031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18161031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18161031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18161031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18161031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18161031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18161031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18161041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18161041,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18161041,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "torment",
+      "monster_id": 18162031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "inferno",
+      "monster_id": 18162031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "heroic",
+      "monster_id": 18162031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40131
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 18162031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 18162031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 18162031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "torment",
+      "monster_id": 18162031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "inferno",
+      "monster_id": 18162031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "heroic",
+      "monster_id": 18162031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40133
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "torment",
+      "monster_id": 18162031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "inferno",
+      "monster_id": 18162031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "heroic",
+      "monster_id": 18162031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40134
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "torment",
+      "monster_id": 18163031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "inferno",
+      "monster_id": 18163031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "heroic",
+      "monster_id": 18163031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40131
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 18163031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 18163031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 18163031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "torment",
+      "monster_id": 18163031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "inferno",
+      "monster_id": 18163031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "heroic",
+      "monster_id": 18163031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40133
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "torment",
+      "monster_id": 18163031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "inferno",
+      "monster_id": 18163031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "heroic",
+      "monster_id": 18163031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40134
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "torment",
+      "monster_id": 18164031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "inferno",
+      "monster_id": 18164031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40141
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "下水道",
+      "difficulty": "heroic",
+      "monster_id": 18164031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40131
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "torment",
+      "monster_id": 18164031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "inferno",
+      "monster_id": 18164031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40142
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "博物馆",
+      "difficulty": "heroic",
+      "monster_id": 18164031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40132
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "torment",
+      "monster_id": 18164031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "inferno",
+      "monster_id": 18164031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40143
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "工厂",
+      "difficulty": "heroic",
+      "monster_id": 18164031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40133
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "torment",
+      "monster_id": 18164031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "inferno",
+      "monster_id": 18164031,
+      "quest_id": 4014,
+      "plan_ids": [
+        40144
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "大都会",
+      "area": "Z博士",
+      "difficulty": "heroic",
+      "monster_id": 18164031,
+      "quest_id": 4013,
+      "plan_ids": [
+        40134
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18165031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18165031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18165031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18165031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18165031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18165031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18165031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "区域待核实",
+      "difficulty": "overlimit",
+      "monster_id": 18166031,
+      "quest_id": 4077,
+      "plan_ids": [
+        40771,
+        40772,
+        40773,
+        40774,
+        40745
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18166031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741,
+        40742,
+        40743,
+        40744,
+        40745
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18166031,
+      "quest_id": 4074,
+      "plan_ids": [
+        40741,
+        40742,
+        40743,
+        40744,
+        40745
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18166031,
+      "quest_id": 4073,
+      "plan_ids": [
+        40731,
+        40732,
+        40733,
+        40734,
+        40735
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18166031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18166031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18166031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18166031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18166031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18166031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18166031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18167031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18167031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18167031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18167031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18167031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18167031,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18167031,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "torment",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "inferno",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40841
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "蚁后",
+      "difficulty": "heroic",
+      "monster_id": 18168041,
+      "quest_id": 4083,
+      "plan_ids": [
+        40831
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "torment",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "inferno",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40842
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "白骆驼",
+      "difficulty": "heroic",
+      "monster_id": 18168041,
+      "quest_id": 4083,
+      "plan_ids": [
+        40832
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "torment",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "inferno",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40843
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "黑蛇",
+      "difficulty": "heroic",
+      "monster_id": 18168041,
+      "quest_id": 4083,
+      "plan_ids": [
+        40833
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "torment",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "inferno",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40844
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "主教祭司",
+      "difficulty": "heroic",
+      "monster_id": 18168041,
+      "quest_id": 4083,
+      "plan_ids": [
+        40834
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "torment",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "inferno",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40845
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "奴隶主",
+      "difficulty": "heroic",
+      "monster_id": 18168041,
+      "quest_id": 4083,
+      "plan_ids": [
+        40835
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "torment",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "inferno",
+      "monster_id": 18168041,
+      "quest_id": 4084,
+      "plan_ids": [
+        40846
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "精绝古城",
+      "area": "尸香魔芋",
+      "difficulty": "heroic",
+      "monster_id": 18168041,
+      "quest_id": 4083,
+      "plan_ids": [
+        40836
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "torment",
+      "monster_id": 18259051,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "inferno",
+      "monster_id": 18259051,
+      "quest_id": 4054,
+      "plan_ids": [
+        40541,
+        40542,
+        40543,
+        40544,
+        40545,
+        40549
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
+    },
+    {
+      "kind": "missing-health",
+      "map": "冰点源起",
+      "area": "区域待核实",
+      "difficulty": "heroic",
+      "monster_id": 18259051,
+      "quest_id": 4053,
+      "plan_ids": [
+        40531,
+        40532,
+        40533,
+        40534,
+        40535,
+        40539
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
     },
     {
       "map": "丛林魅影",
@@ -658,6 +8573,18 @@
       "map": "黑暗复活节",
       "monster_id": 18804031,
       "reason": "缺少已导出头像，使用占位图"
+    },
+    {
+      "kind": "missing-health",
+      "map": "昆仑神宫",
+      "area": "记忆之城",
+      "difficulty": "heroic",
+      "monster_id": 18808071,
+      "quest_id": 4073,
+      "plan_ids": [
+        40733
+      ],
+      "reason": "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1"
     },
     {
       "map": "昆仑神宫",
@@ -6164,8 +14091,8 @@
         },
         {
           "map": "黑暗复活节",
-          "area": "区域待核实",
-          "source": "DungeonMonsterTipsTable 入口提示，仅证明地图归属"
+          "area": "巴黎2区",
+          "source": "BP_DarkEaster_Paris_2.SurvivalMissionArray 按 GetDungeonDifficultyLevel 选择枚举3/4/5/6的坚守任务；对应 Quest_Paris2_DarkEaster_Hard、Quest_2_Paris2_DarkEaster_Nightmare、Quest_2_Paris2_DarkEaster_NightmarePlus 的 FlexibleWaveConfig[].SpawnTaskSettings[].AIProperties 均引用 RMNurse；RMNurse.AICharacterClass -> BP_AIChar_18107041_RMNurse.NPCAttributeID=18107041。仅证明巴黎2区出生，缺专属计划时的血量处理尚未确认。"
         }
       ],
       "records": [

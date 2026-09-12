@@ -7,6 +7,9 @@ import { summarizeMonsterHealth, type MonsterAppearance } from "./hunter-monster
 import evidence from "../data/enemies/lc/monsters/evidence.json";
 import type { BossDifficulty } from "../types";
 import { LC_MAPS } from "./lc-maps";
+import layout from "../data/enemies/lc/monsters/map-layout.json";
+
+type HealthRecord = (typeof evidence.monsters)[number]["records"][number];
 
 test("血量摘要保留区域差异，不把缺失值当零或不出现", () => {
   const rows: MonsterAppearance[] = [
@@ -31,7 +34,7 @@ test("发布血量匹配已审核证据，怪物身份和区域不能重复", ()
     for (const row of monster.appearances) {
       for (const [key, health] of Object.entries(row.health)) {
         const difficulty = key as BossDifficulty;
-        const record = source.records.find(r => r.map === row.map && r.difficulty === difficulty && r.area === row.area);
+        const record: HealthRecord | undefined = source.records.find(r => r.map === row.map && r.difficulty === difficulty && r.area === row.area);
         assert.ok(record, `${monster.title}/${row.area}/${difficulty} 缺证据`);
         assert.equal(row.source_plans[difficulty], record.plan_id);
         assert.ok(source.base_health !== null);
@@ -41,6 +44,27 @@ test("发布血量匹配已审核证据，怪物身份和区域不能重复", ()
     }
   }
   assert.equal(checked, evidence.monsters.reduce((count, m) => count + m.records.length, 0));
+});
+
+test("可用难度的缺失血量均有明确断链记录，文件一致不代表数值完整", () => {
+  let missing = 0;
+  for (const monster of getHunterMonsters()) {
+    for (const row of monster.appearances) {
+      for (const scope of layout.filter(scope => scope.map === row.map)) {
+        if (row.area !== "区域待核实" && !scope.areas.includes(row.area)) continue;
+        const difficulty = scope.difficulty as BossDifficulty;
+        if (row.health[difficulty] !== undefined) continue;
+        const gap = evidence.gaps.find(gap => gap.kind === "missing-health" && gap.monster_id === monster.monster_id && gap.map === row.map && gap.area === row.area && gap.difficulty === difficulty);
+        assert.ok(gap, `${monster.title}/${row.map}/${row.area}/${difficulty} 缺少断链记录`);
+        assert.ok(gap.plan_ids?.length);
+        assert.ok(gap.quest_id);
+        missing++;
+      }
+    }
+  }
+  assert.equal(missing, evidence.gaps.filter(gap => gap.kind === "missing-health").length);
+  const nurse = getHunterMonsters().find(monster => monster.monster_id === 18107041);
+  assert.deepEqual(nurse?.appearances.filter(row => row.map === "黑暗复活节").map(row => row.area), ["巴黎2区"]);
 });
 
 test("地图提示与脚本确认的怪物不会因缺少血量计划而漏收", () => {

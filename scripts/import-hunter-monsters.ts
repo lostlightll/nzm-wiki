@@ -19,6 +19,7 @@ type Identity = { Name: string; MonsterType: number; NarrativeContent: string; b
 type Attribute = { AttributeType: number; MonsterType: number; MonsterLevel: number; MaxHealth: number };
 type RecordEvidence = { map: string; difficulty: BossDifficulty; area: string; plan_id: number; plan_health: number; max_health: number; health: number };
 type Scope = { map: string; difficulty: BossDifficulty; entranceId: number; entrance: Entrance; tasks: Quest[]; tipIds: number[] };
+type Gap = { map: string; difficulty?: BossDifficulty; monster_id?: number; reason: string; kind?: "missing-health"; area?: string; quest_id?: number; plan_ids?: number[] };
 const root = process.cwd();
 const output = path.join(root, "data/enemies/lc/monsters");
 const contentDir = path.join(root, "refs/Exports/NZM/Content");
@@ -41,7 +42,7 @@ export function explicitHealth(base: number, matches: Plan[], maxHealth: number)
 /** Region names may repeat across maps. Never merge them without the map identity. */
 export function appearanceKey(map: string, area: string) { return JSON.stringify([map, area]); }
 
-function collect() {
+export function collect() {
   const modes = Object.values(readRows<Mode>("LuaDataTable/HunterModeinfoTable"));
   const entrances = readRows<Entrance>("System/Dungeon/NewEntranceInfoTable");
   const tips = readRows<{ monster_ids: string; elite_ids: string }>("System/Dungeon/DungeonMonsterTipsTable");
@@ -51,7 +52,7 @@ function collect() {
   const base = readRows<{ Health: number }>("HunterBaseMonsterTable");
   const attrs = Object.values(readRows<Attribute>("MonsterAttrTypeConfig"));
   const scopes: Scope[] = [];
-  const gaps: { map: string; difficulty?: BossDifficulty; monster_id?: number; reason: string }[] = [];
+  const gaps: Gap[] = [];
   const knownMaps = new Set(LC_MAPS.map(m => m.name));
   for (const mode of modes) if (!knownMaps.has(localized(mode.map_name))) throw new Error(`Unreviewed hunter map: ${localized(mode.map_name)}`);
   for (const { name: map } of LC_MAPS) {
@@ -131,12 +132,35 @@ function collect() {
         records.push({ map: scope.map, difficulty: scope.difficulty, area, plan_id: q.MonsterPlanID, plan_health: matches[0].Health, max_health: multipliers[0].MaxHealth, health });
       }
     }
+    if (item && "appearances" in item) {
+      for (const appearance of item.appearances ?? []) {
+        if (!knownMaps.has(appearance.map) || !appearance.area || !appearance.source) throw new Error(`Invalid reviewed appearance ${id}`);
+        addArea(appearance.map, appearance.area, appearance.source);
+      }
+    }
     for (const scope of scopes) {
       if (scope.tipIds.includes(id) && ![...byArea.values()].some(r => r.map === scope.map)) addArea(scope.map, "区域待核实", "DungeonMonsterTipsTable 入口提示，仅证明地图归属");
     }
     if (item && "unknown_area" in item && item.unknown_area && ![...byArea.values()].some(r => r.map === manifest.map)) addArea(manifest.map, item.unknown_area, item.appearance_source!);
     const appearances = [...byArea.values()].sort((a, b) => LC_MAPS.findIndex(m => m.name === a.map) - LC_MAPS.findIndex(m => m.name === b.map));
     if (!appearances.length) throw new Error(`No evidenced appearances ${id}`);
+    for (const row of appearances) {
+      for (const scope of scopes.filter(scope => scope.map === row.map)) {
+        if (row.health[scope.difficulty] !== undefined) continue;
+        const tasks = scope.tasks.filter(q => row.area === "区域待核实" || (localized(q.AreaDisplayName).trim() || `未命名区域（${q.OrderID}）`) === row.area);
+        // An area absent from this difficulty is not a missing health calculation.
+        if (!tasks.length) continue;
+        const planIds = [...new Set(tasks.map(q => q.MonsterPlanID))];
+        const hasPlan = plans.some(plan => planIds.includes(plan.MonsterPlanID) && plan.UniqueMonsterID === id);
+        gaps.push({
+          kind: "missing-health", map: row.map, area: row.area, difficulty: scope.difficulty,
+          monster_id: id, quest_id: scope.entrance.quest_id, plan_ids: planIds,
+          reason: hasPlan
+            ? "已找到专属计划，但基础血量、属性倍率或区域关联未完整解析"
+            : "缺少怪物专属计划行；尚未确认原生难度系统的缺行处理，不能假定计划倍率为1",
+        });
+      }
+    }
     let image: string | undefined = `/webp/icons/enemies/npc-${id}.webp`;
     if (!fs.existsSync(path.join(root, "public", image))) {
       const assetPath = identity.MonsterIcon?.AssetPathName?.split(".")[0];
@@ -162,7 +186,7 @@ function collect() {
 
 async function main() {
   const mode = process.argv[2] ?? "--dry-run";
-  if (!["--dry-run", "--check", "--write"].includes(mode)) throw new Error("Use --dry-run, --check or --write");
+  if (!["--dry-run", "--check", "--audit", "--write"].includes(mode)) throw new Error("Use --dry-run, --check, --audit or --write");
   const { entries, evidence, images, layout } = collect();
   // Serialize everything before writing, so validation/serialization errors cannot leave partial MDX.
   const writes: { file: string; content: string }[] = [];
@@ -180,12 +204,15 @@ async function main() {
   if (JSON.stringify(previous) !== JSON.stringify(evidence)) writes.push({ file: evidenceFile, content: `${JSON.stringify(evidence, null, 2)}\n` });
   for (const map of LC_MAPS) console.log(`${map.name}: ${entries.filter(e => e.data.appearances.some(a => a.map === map.name)).length} monsters; ${evidence.monsters.reduce((n, m) => n + m.records.filter(r => r.map === map.name).length, 0)} health values`);
   console.log(`Exclusions: ${JSON.stringify(evidence.exclusions)}`);
-  console.log(`Gaps: ${JSON.stringify(evidence.gaps)}`);
+  console.log(`Gaps: ${JSON.stringify(evidence.gaps.filter(gap => gap.kind !== "missing-health"))}`);
+  const missingHealth = evidence.gaps.filter(gap => gap.kind === "missing-health");
+  console.log(`Missing health: ${missingHealth.length}; ${entries.filter(entry => !entry.data.appearances.some(row => Object.keys(row.health).length)).length} monsters have no health values. Details: data/enemies/lc/monsters/evidence.json (after --write).`);
   console.log(`${mode}: ${entries.length} unique monsters; ${writes.length} changed files; ${images.length} new portraits; ${evidence.monsters.reduce((n, m) => n + m.records.length, 0)} health values.`);
   if (mode === "--write") {
     const converted = await Promise.all(images.map(async img => ({ file: img.target, content: await sharp(img.source).webp({ quality: 85 }).toBuffer() })));
     for (const item of [...converted, ...writes]) fs.writeFileSync(item.file, item.content);
   }
   if (mode === "--check" && (writes.length || images.length)) process.exitCode = 1;
+  if (mode === "--audit" && (missingHealth.length || writes.length || images.length)) process.exitCode = 1;
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) main().catch(error => { console.error(error); process.exitCode = 1; });

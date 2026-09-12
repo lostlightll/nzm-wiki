@@ -9,7 +9,9 @@
     { "id": 18101031, "slug": "狂犬", "title": "狂犬" },
     { "id": 18102031, "slug": "自爆丧尸", "title": "自爆丧尸", "unknown_area": "区域待核实", "appearance_source": "DungeonMonsterTipsTable:2004013/2004014/2004015 monster_ids；仅确认地图归属，未确认区域和血量" },
     { "id": 18104032, "slug": "丧尸（越狱变体）", "title": "丧尸（越狱变体）", "unknown_area": "下水道", "appearance_source": "Quests_Metropoils:ChildQuest_Sewer AISpawnPropertyArray -> RMZombie_PrisonBreak -> BP_AIChar_18104032_RMZombie_PrisonBreak.NPCAttributeID=18104032；难度分支及血量待核实", "allow_missing_image": true },
-    { "id": 18107041, "slug": "护士", "title": "护士" },
+    { "id": 18107041, "slug": "护士", "title": "护士", "appearances": [
+      { "map": "黑暗复活节", "area": "巴黎2区", "source": "BP_DarkEaster_Paris_2.SurvivalMissionArray 按 GetDungeonDifficultyLevel 选择枚举3/4/5/6的坚守任务；对应 Quest_Paris2_DarkEaster_Hard、Quest_2_Paris2_DarkEaster_Nightmare、Quest_2_Paris2_DarkEaster_NightmarePlus 的 FlexibleWaveConfig[].SpawnTaskSettings[].AIProperties 均引用 RMNurse；RMNurse.AICharacterClass -> BP_AIChar_18107041_RMNurse.NPCAttributeID=18107041。仅证明巴黎2区出生，缺专属计划时的血量处理尚未确认。" }
+    ] },
     { "id": 18164031, "slug": "安保丧尸", "title": "安保丧尸" },
     { "id": 18103041, "slug": "巨型丧尸", "title": "巨型丧尸" },
     { "id": 18108041, "slug": "钢拳", "title": "钢拳" },
