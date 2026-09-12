@@ -22,25 +22,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - name: Setup pnpm and Node.js
+        uses: pnpm/setup@v2
         with:
-          version: latest
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: "pnpm"
+          runtime: node@22
+          cache: true
+          require-lockfile: true
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
         with:
           static_site_generator: next
-
-      - name: Install dependencies
-        run: pnpm install
 
       - name: Build with Next.js
         run: pnpm build
