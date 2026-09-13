@@ -3,7 +3,8 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test, { type TestContext } from "node:test";
-import { scanWeaponSlugs } from "./weapons";
+import { getResolvedFieldValue } from "./weapon-consumers";
+import { getResolvedWeaponBySlug, scanWeaponSlugs } from "./weapons";
 
 function temporaryDirectory(context: TestContext): string {
   const root = mkdtempSync(path.join(tmpdir(), "weapon-slugs-"));
@@ -48,4 +49,22 @@ test("slug scan filters undeclared modes and tolerates a missing directory", (co
   assert.deepEqual(scanWeaponSlugs(weapons, "lc", false), ["lc-only"]);
   assert.deepEqual(scanWeaponSlugs(weapons, "td", false), ["td-only"]);
   assert.deepEqual(scanWeaponSlugs(path.join(root, "missing"), "lc", false), []);
+});
+
+test("振弦 resolves the arrow damage row in both modes", async () => {
+  for (const table of ["lc", "td"] as const) {
+    const weapon = await getResolvedWeaponBySlug("振弦", table);
+    assert.ok(weapon);
+    const source = weapon.damageSources.find(
+      (candidate) => candidate.id === "pu-tong-she-ji",
+    );
+    assert.ok(source);
+    assert.equal(getResolvedFieldValue(source.weaknessMultiplier), 1.5, table);
+    assert.equal(
+      source.weaknessMultiplier.provenance[0]?.sourceKey,
+      `${table}:121200020_1`,
+      table,
+    );
+    assert.equal(source.weaknessMultiplier.overrideHistory.length, 0, table);
+  }
 });

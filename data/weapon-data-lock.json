@@ -34366,7 +34366,7 @@
         },
         "row_name": "121200010_1"
       },
-      "lc:121200021_1": {
+      "lc:121200020_1": {
         "raw": {
           "CameraHitFeedBackTag": {
             "TagName": "Weapon.HitType.Light"
@@ -34376,7 +34376,7 @@
           "DamageAttenuationStart": 0,
           "DamageSourceType": 1,
           "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
-          "Description": "振弦武器结算ID（武器栏显示属性用，不参与结算）",
+          "Description": "振弦箭头伤害",
           "ElementAddRate": 0,
           "ElementDebuffTypeID": 0,
           "ElementType": "EElementEffectType::EDamageType_Kinetic",
@@ -34423,13 +34423,13 @@
           "ToughnessBase": 21.3,
           "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
           "ToughnessScale": 0,
-          "WeaknessDamageAddScale": 0,
+          "WeaknessDamageAddScale": 0.5,
           "bDamageIgnoreShield": false,
           "bEnableCriticalDamage": true,
           "bEnableParry": false,
-          "id": 121200021
+          "id": 121200020
         },
-        "row_name": "121200021_1"
+        "row_name": "121200020_1"
       },
       "lc:121300010_1": {
         "raw": {
@@ -53258,7 +53258,7 @@
         },
         "row_name": "121200010_1"
       },
-      "td:121200021_1": {
+      "td:121200020_1": {
         "raw": {
           "CameraHitFeedBackTag": {
             "TagName": "Weapon.HitType.Light"
@@ -53268,7 +53268,7 @@
           "DamageAttenuationStart": 0,
           "DamageSourceType": 0,
           "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
-          "Description": "振弦武器结算ID（武器栏显示属性用，不参与结算）",
+          "Description": "振弦箭头伤害",
           "ElementAddRate": 0,
           "ElementDebuffTypeID": 0,
           "ElementType": "EElementEffectType::EDamageType_Kinetic",
@@ -53315,13 +53315,13 @@
           "ToughnessBase": 21.3,
           "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
           "ToughnessScale": 0,
-          "WeaknessDamageAddScale": 0,
+          "WeaknessDamageAddScale": 0.5,
           "bDamageIgnoreShield": false,
           "bEnableCriticalDamage": true,
           "bEnableParry": false,
-          "id": 121200021
+          "id": 121200020
         },
-        "row_name": "121200021_1"
+        "row_name": "121200020_1"
       },
       "td:121300010_1": {
         "raw": {
