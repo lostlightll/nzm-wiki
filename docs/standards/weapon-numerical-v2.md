@@ -67,7 +67,9 @@ explosion_range:
 | `inherits` | 可选，同一武器内父来源 ID |
 | `label` | 可选形态分组标签，不改变 Settlement，禁止用作伤害或恢复类型名称 |
 | `burst_limit` | 可选，弹匣或技能状态限制的连发上限；连发间隔仍由 ASC 提供 |
-| `cadence_display` | 可选，`burst_timing_only` 仅展示连发间隔、连发冷却和连发周期，不展示继承的伤害属性，也不参与模式伤害差异比较 |
+| `cadence_display` | 可选，`burst_timing_only` 仅展示连发间隔、连发冷却和连发周期，不展示继承的伤害属性，不参与模式伤害差异比较或基础伤害索引 |
+
+`cadence_display` 属于当前来源，不从父来源继承。它控制消费者的展示与收录范围，不清空 Resolver 中继承的 Numerical 伤害字段，也不改变主来源选择规则；基础伤害索引必须显式排除 `burst_timing_only` 来源，不能仅凭存在 `damage.base` 将其作为独立伤害条目收录。
 
 连发间隔指同一轮内相邻两发的间隔；连发冷却指本轮最后一发后到下一轮可射击的等待时间（秘法榴弹单发按一轮一发理解，释放后的等待也使用此名称）；连发周期指本轮第一发到下一轮第一发的总耗时，即 `(连发数量 - 1) × 连发间隔 + 连发冷却`，与飓风之龙连发效果的定义一致。普通非连发射击仍使用「射击间隔」。
 
@@ -218,6 +220,8 @@ sources:
 ```
 
 开放的修正范围为 Numerical 伤害、生命结算 `health.scale/base`、元素、弱点、暴击、破韧，以及 ASC 距离衰减、射击间隔、连发数量与连发间隔。连发修正分别使用 `overrides.asc.sub_fire_count` 和 `overrides.asc.sub_fire_interval`。恢复值修正使用 `overrides.numerical.health`；`health.scale` 与旧的 `damage.base` 都对应 `HpCalScale`，禁止在同一 override 中同时声明。存在 `overrides` 必须提供非空 `override_reason`，反之亦然。修正不得给 Settlement 不适用字段造值。
+
+`overrides.asc.sub_fire_count` 必须为正安全整数；`overrides.asc.sub_fire_interval` 以秒为单位，必须为有限非负数。两者均按继承链应用，并保留各自的覆盖历史。
 
 pending 只允许发布前草稿：
 

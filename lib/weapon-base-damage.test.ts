@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { getAllResolvedWeapons } from "./weapons";
+import { getAllResolvedWeapons, getResolvedWeaponBySlug } from "./weapons";
 import { getResolvedFieldValue } from "./weapon-consumers";
 import { buildWeaponBaseDamageIndex } from "./weapon-base-damage";
 import { filterWeaponBaseDamageEntries } from "./weapon-base-damage";
@@ -40,12 +40,20 @@ test("weapon base damage index includes every non-melee-weapon source", async ()
   ]);
   const entries = buildWeaponBaseDamageIndex({ lc: lcWeapons, td: tdWeapons });
 
-  assert.equal(attackSourceCount(lcWeapons), 287);
-  assert.equal(attackSourceCount(tdWeapons), 287);
-  assert.equal(meleeWeaponAttackSourceCount(lcWeapons), 158);
-  assert.equal(meleeWeaponAttackSourceCount(tdWeapons), 158);
-  assert.equal(entries.filter((entry) => entry.modes.lc).length, 129);
-  assert.equal(entries.filter((entry) => entry.modes.td).length, 129);
+  for (const [mode, weapons] of [["lc", lcWeapons], ["td", tdWeapons]] as const) {
+    const timingOnlyCount = weapons
+      .filter((weapon) => weapon.useType !== "近战武器")
+      .flatMap((weapon) => weapon.damageSources)
+      .filter((source) =>
+        source.cadenceDisplay === "burst_timing_only" &&
+        getResolvedFieldValue(source.damage.base) !== undefined,
+      ).length;
+    assert.equal(
+      entries.filter((entry) => entry.modes[mode]).length,
+      attackSourceCount(weapons) - meleeWeaponAttackSourceCount(weapons) - timingOnlyCount,
+      `${mode}: every damage source is indexed or explicitly excluded`,
+    );
+  }
   assert.equal(new Set(entries.map((entry) => entry.id)).size, entries.length);
   assert.deepEqual(
     new Set(
@@ -148,6 +156,29 @@ test("weapon base damage index uses MDX names and mode-specific values", async (
   assert.equal(floatingMode.modes.lc?.coefficient, 0.7);
   assert.equal(floatingMode.modes.lc?.baseDamage, 350);
   assert.ok(entries.every((entry) => !entry.displayName.includes("主动技后台")));
+});
+
+test("weapon base damage index excludes timing-only variants but keeps their parent", async () => {
+  const lc = await getResolvedWeaponBySlug("精绝兽神", "lc");
+  const td = await getResolvedWeaponBySlug("精绝兽神", "td");
+  assert.ok(lc);
+  assert.ok(td);
+  for (const weapon of [lc, td]) {
+    const timing = weapon.damageSources.find(
+      (source) => source.id === "mi-fa-liu-dan-shou-qu-shuang-yan",
+    );
+    assert.ok(timing);
+    assert.equal(timing.cadenceDisplay, "burst_timing_only");
+    assert.notEqual(getResolvedFieldValue(timing.damage.base), undefined);
+  }
+
+  const entries = buildWeaponBaseDamageIndex({ lc: [lc], td: [td] });
+  assert.ok(!entries.some(
+    (entry) => entry.id === "精绝兽神:mi-fa-liu-dan-shou-qu-shuang-yan",
+  ));
+  const parent = entries.find((entry) => entry.id === "精绝兽神:mi-fa-liu-dan");
+  assert.equal(parent?.modes.lc?.baseDamage, 750);
+  assert.equal(parent?.modes.td?.baseDamage, 420);
 });
 
 test("weapon base damage index keeps sources that exist in only one mode", async () => {

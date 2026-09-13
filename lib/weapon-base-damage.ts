@@ -116,6 +116,7 @@ export function buildWeaponBaseDamageIndex(
     for (const weapon of weaponsByMode[table]) {
       if (weapon.useType === "近战武器") continue;
       for (const source of weapon.damageSources) {
+        if (source.cadenceDisplay === "burst_timing_only") continue;
         const coefficient = getResolvedFieldValue(source.damage.base);
         if (coefficient === undefined) continue;
 

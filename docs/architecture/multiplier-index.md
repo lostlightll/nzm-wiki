@@ -62,6 +62,8 @@ S1 人工复核的精确技能 Token 映射由 `s1ReviewedApplications()` 登记
 
 武器白值索引同样不维护静态副本。`lib/weapon-base-damage.ts` 接收 LC/TD 的 `ResolvedWeapon[]`，只收录非近战武器中 `damage.base` 已解析的 MDX `damage_sources[]`；刺隐、夜影之逝等其他武器上的 `MeleeWeaponDamage` 来源继续保留。名称固定使用 `weapon.title + source.name`，白值和结算身份来自对应模式的 Resolver 投影，不读取 Lock `Description`。
 
+`cadenceDisplay: "burst_timing_only"` 的来源只用于连发参数展示，不进入白值索引。即使 Resolver 保留了它继承的 `damage.base`，也不能据此生成独立伤害条目；其父伤害来源仍正常收录。
+
 ## 术语
 
 徽标只显示规范乘区名，例如：
