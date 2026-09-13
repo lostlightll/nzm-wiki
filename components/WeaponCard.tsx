@@ -748,7 +748,7 @@ export function ModeStats({
             value={interval === undefined ? "-" : formatSeconds(interval)}
           />
           <Stat
-            label="完整循环"
+            label="连发周期"
             value={formatBurstCycleDuration(
               subFireCount,
               interval,
@@ -809,7 +809,7 @@ export function ModeStats({
       <>
         <Stat label="射速" value={formatFireRate(rpm, interval, undefined, undefined)} />
         <Stat
-          label="射击间隔"
+          label={mode.id === "mi-fa-liu-dan" ? "连发冷却" : "射击间隔"}
           value={interval ? formatSeconds(interval) : "-"}
         />
         <div className="hidden sm:block">

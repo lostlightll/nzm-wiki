@@ -66,7 +66,7 @@ test("burst timing only source renders cadence without inherited damage", async 
   assert.match(markup, />0\.35s</);
   assert.match(markup, />连发冷却</);
   assert.match(markup, />0\.5s</);
-  assert.match(markup, />完整循环</);
+  assert.match(markup, />连发周期</);
   assert.match(markup, />0\.85s</);
   assert.doesNotMatch(markup, /伤害|破韧|弱点|暴击|元素/);
 });
