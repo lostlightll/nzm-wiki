@@ -151,7 +151,13 @@ test("继承按模式展开并保留覆盖顺序", () => {
           source: {
             numerical: { id: 1, level: 1 },
             asc_type_id: "10",
-            overrides: { asc: { fire_interval: 0.2 } },
+            overrides: {
+              asc: {
+                fire_interval: 0.2,
+                sub_fire_count: 2,
+                sub_fire_interval: 0.35,
+              },
+            },
             override_reason: "父项修正",
           },
         },
@@ -160,6 +166,7 @@ test("继承按模式展开并保留覆盖顺序", () => {
           name: "变体",
           section: "variant",
           inherits: "primary",
+          cadence_display: "burst_timing_only",
           source: {
             asc_type_id: "11",
             overrides: { asc: { attenuation: { status: "not_applicable" } } },
@@ -173,10 +180,16 @@ test("继承按模式展开并保留覆盖顺序", () => {
   assert.equal(variant?.source?.numerical?.table, "td");
   assert.equal(variant?.source?.asc_type_id, "11");
   assert.equal(variant?.source?.feel_param_id, "11");
+  assert.equal(
+    projectWeaponSourceV2(parsed, "td").damage_sources[1].cadence_display,
+    "burst_timing_only",
+  );
   assert.deepEqual(
     variant?.overrideChain.map((step) => step.reason),
     ["父项修正", "子项修正"],
   );
+  assert.equal(variant?.overrideChain[0].overrides.asc?.sub_fire_count, 2);
+  assert.equal(variant?.overrideChain[0].overrides.asc?.sub_fire_interval, 0.35);
 });
 
 test("子来源存在而父来源在该模式缺失时失败", () => {

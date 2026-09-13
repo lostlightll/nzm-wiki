@@ -121,6 +121,8 @@ export const ascOverridesSchema = z
   .strictObject({
     attenuation: attenuationOverrideSchema.optional(),
     fire_interval: finiteNonNegativeSchema.optional(),
+    sub_fire_count: positiveSafeIntegerSchema.optional(),
+    sub_fire_interval: finiteNonNegativeSchema.optional(),
   })
   .refine((value) => Object.keys(value).length > 0, {
     message: "asc override must contain at least one field",
@@ -221,6 +223,7 @@ export const damageSourceV2Schema = z
     inherits: z.string().regex(/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/).optional(),
     label: nonEmptyStringSchema.optional(),
     burst_limit: burstLimitSchema.optional(),
+    cadence_display: z.literal("burst_timing_only").optional(),
     source: weaponModeSourceSchema.optional(),
     sources: modeSourcesSchema.optional(),
   })
@@ -242,6 +245,7 @@ export const projectedDamageSourceV2Schema = z.strictObject({
   source: weaponDataSourceRefSchema.optional(),
   label: nonEmptyStringSchema.optional(),
   burst_limit: burstLimitSchema.optional(),
+  cadence_display: z.literal("burst_timing_only").optional(),
   fire_interval: finiteNonNegativeSchema.optional(),
   attack_interval: finiteNonNegativeSchema.optional(),
   attack_count: positiveSafeIntegerSchema.optional(),
@@ -598,6 +602,7 @@ function projectParsedWeaponSourceV2(
       inherits: source.inherits,
       label: source.label,
       burst_limit: source.burst_limit,
+      cadence_display: source.cadence_display,
       source: projectModeSource(modeSource, table),
       fire_interval: modeSource.fire_interval,
       attack_interval: modeSource.attack_interval,

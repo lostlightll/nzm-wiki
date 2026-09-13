@@ -763,6 +763,55 @@ test("ASC fire interval overrides preserve ordered interval and RPM history", ()
   );
 });
 
+test("ASC burst overrides preserve plugin-specific count and interval", () => {
+  const resolved = resolveWeapon(
+    weapon({
+      item_id: undefined,
+      active_skill_id: 0,
+      damage_sources: [
+        {
+          id: "grenade",
+          name: "榴弹",
+          section: "special",
+          source: {
+            numerical: { id: 1, level: 1 },
+            asc_type_id: "10",
+            overrides: { asc: { fire_interval: 0.5 } },
+            override_reason: "技能连段冷却",
+          },
+        },
+        {
+          id: "grenade-burst",
+          name: "榴弹两连发",
+          section: "variant",
+          inherits: "grenade",
+          source: {
+            overrides: {
+              asc: { sub_fire_count: 2, sub_fire_interval: 0.35 },
+            },
+            override_reason: "插件改为两连发",
+          },
+        },
+      ],
+    }),
+    { slug: "grenade-burst", expectedTable: "lc", lock: lock() },
+  );
+  const burst = resolved.damageSources[1];
+
+  assert.equal(burst.fire.interval.value, 0.5);
+  assert.equal(burst.fire.rpm.value, 120);
+  assert.equal(burst.fire.subFireCount.value, 2);
+  assert.equal(burst.fire.subFireInterval.value, 0.35);
+  assert.deepEqual(burst.fire.subFireCount.overrideHistory, [
+    {
+      sourceId: "grenade-burst",
+      reason: "插件改为两连发",
+      before: 1,
+      after: 2,
+    },
+  ]);
+});
+
 test("zero ASC interval makes RPM unavailable and ASC-less overrides fail", () => {
   const zero = resolveWeapon(
     weapon({

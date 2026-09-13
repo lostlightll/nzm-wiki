@@ -67,6 +67,7 @@ explosion_range:
 | `inherits` | 可选，同一武器内父来源 ID |
 | `label` | 可选形态分组标签，不改变 Settlement，禁止用作伤害或恢复类型名称 |
 | `burst_limit` | 可选，弹匣或技能状态限制的连发上限；连发间隔仍由 ASC 提供 |
+| `cadence_display` | 可选，`burst_timing_only` 仅展示连发间隔、连发冷却和完整循环，不展示继承的伤害属性，也不参与模式伤害差异比较 |
 
 每项必须且只能使用 `source` 或 `sources`。
 
@@ -126,7 +127,7 @@ explosion_range:
 | `feel_param_id` | Feel 引用；省略时跟随有效 ASC |
 | `fire_interval` / `pellets` | 无法建立 ASC 时的已确认兼容值 |
 | `attack_interval` / `attack_count` / `attack_interval_source` | 有定位证据的固定频率结算 |
-| `overrides` / `override_reason` | Numerical 或 ASC 人工修正及原因 |
+| `overrides` / `override_reason` | Numerical 或 ASC 人工修正及原因；ASC 可修正射击间隔、连发数量、连发间隔和距离衰减 |
 | `verification` | 草稿 pending 核验状态 |
 
 `attack_interval_source` 使用 `NZM/Content/...#字段`，必须与 `attack_interval` 成对；`attack_count` 只能随攻击间隔存在。有效 ASC 与 `attack_interval` 互斥。
@@ -214,7 +215,7 @@ sources:
     override_reason: 实测确认塔防无距离衰减
 ```
 
-开放的修正范围为 Numerical 伤害、生命结算 `health.scale/base`、元素、弱点、暴击、破韧，以及 ASC 距离衰减与射击间隔。恢复值修正使用 `overrides.numerical.health`；`health.scale` 与旧的 `damage.base` 都对应 `HpCalScale`，禁止在同一 override 中同时声明。存在 `overrides` 必须提供非空 `override_reason`，反之亦然。修正不得给 Settlement 不适用字段造值。
+开放的修正范围为 Numerical 伤害、生命结算 `health.scale/base`、元素、弱点、暴击、破韧，以及 ASC 距离衰减、射击间隔、连发数量与连发间隔。连发修正分别使用 `overrides.asc.sub_fire_count` 和 `overrides.asc.sub_fire_interval`。恢复值修正使用 `overrides.numerical.health`；`health.scale` 与旧的 `damage.base` 都对应 `HpCalScale`，禁止在同一 override 中同时声明。存在 `overrides` 必须提供非空 `override_reason`，反之亦然。修正不得给 Settlement 不适用字段造值。
 
 pending 只允许发布前草稿：
 

@@ -264,6 +264,7 @@ export interface ResolvedDamageSource {
   section: DamageSection;
   label?: string;
   burstLimit?: number;
+  cadenceDisplay?: "burst_timing_only";
   damage: {
     base: ResolvedField<number>;
     impulse: ResolvedField<number>;
@@ -1951,6 +1952,24 @@ function applyFireIntervalOverride(
         };
 }
 
+function applySubFireOverride(
+  fire: ResolvedFireBehavior,
+  field: "subFireCount" | "subFireInterval",
+  value: number,
+  step: DamageSourceOverrideStep,
+  sourceId: string,
+  diagnostics: ResolutionDiagnostic[],
+): void {
+  fire[field] = withOverride(
+    fire[field],
+    value,
+    step,
+    `fire.${field}`,
+    diagnostics,
+    sourcePath(sourceId, `fire/${field}`),
+  );
+}
+
 function parseFeel(
   source: ProjectedDamageSourceV2,
   effective: ResolvedDamageSourceReference,
@@ -2345,6 +2364,26 @@ function parseBehavior(
       applyFireIntervalOverride(
         fire,
         ascOverride.fire_interval,
+        step,
+        source.id,
+        context.diagnostics,
+      );
+    }
+    if (ascOverride.sub_fire_count !== undefined) {
+      applySubFireOverride(
+        fire,
+        "subFireCount",
+        ascOverride.sub_fire_count,
+        step,
+        source.id,
+        context.diagnostics,
+      );
+    }
+    if (ascOverride.sub_fire_interval !== undefined) {
+      applySubFireOverride(
+        fire,
+        "subFireInterval",
+        ascOverride.sub_fire_interval,
         step,
         source.id,
         context.diagnostics,
@@ -2858,6 +2897,7 @@ function assembleDamageSource(
     section: source.section,
     label: effective.label,
     burstLimit: source.burst_limit,
+    cadenceDisplay: source.cadence_display,
     ...numerical.fields,
     fire: behavior.fire,
     attack: behavior.attack,

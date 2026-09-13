@@ -165,6 +165,15 @@ export function formatBurstCycle(
     : `${count} 发 / ${formatSeconds(duration)}`;
 }
 
+export function formatBurstCycleDuration(
+  count: number | undefined,
+  interval: number | undefined,
+  subFireInterval: number | undefined,
+): string {
+  const duration = getBurstCycleDuration(count, interval, subFireInterval);
+  return duration === undefined ? "-" : formatSeconds(duration);
+}
+
 export function formatLimitedBurstDuration(
   limit: number | undefined,
   subFireInterval: number | undefined,
@@ -685,7 +694,7 @@ export function WeaponCard({
 /**
  * 单个模式属性面板（标准 9 字段网格）
  */
-function ModeStats({
+export function ModeStats({
   mode,
   showName,
   compact,
@@ -716,6 +725,40 @@ function ModeStats({
   const healthDefinition = healthType
     ? getHealthSettlementDefinition(healthType)
     : undefined;
+
+  if (mode.cadenceDisplay === "burst_timing_only") {
+    return (
+      <div id={`damage-source-${mode.id}`} className="mb-3 scroll-mt-24">
+        {showName && (
+          <h3 className="mb-1.5 text-sm font-semibold text-zinc-300">
+            {mode.name}
+          </h3>
+        )}
+        <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-sm sm:grid-cols-3">
+          <Stat
+            label="连发间隔"
+            value={
+              subFireInterval === undefined
+                ? "-"
+                : formatSeconds(subFireInterval)
+            }
+          />
+          <Stat
+            label="连发冷却"
+            value={interval === undefined ? "-" : formatSeconds(interval)}
+          />
+          <Stat
+            label="完整循环"
+            value={formatBurstCycleDuration(
+              subFireCount,
+              interval,
+              subFireInterval,
+            )}
+          />
+        </div>
+      </div>
+    );
+  }
 
   if (healthDefinition?.kind === "recovery") {
     return (

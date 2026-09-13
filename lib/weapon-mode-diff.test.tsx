@@ -109,3 +109,14 @@ test("基础伤害字段按 Health Settlement 显示具体伤害类型", async (
     assert.equal(getWeaponModeDiffFieldLabel(row), expected);
   }
 });
+
+test("纯射击循环来源不参与模式伤害差异", async () => {
+  const { lc, td } = await modes("精绝兽神");
+  const rows = buildWeaponModeDiff(lc, td);
+
+  assert.ok(
+    !rows.some(
+      (row) => row.sourceId === "mi-fa-liu-dan-shou-qu-shuang-yan",
+    ),
+  );
+});

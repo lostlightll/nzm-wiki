@@ -159,6 +159,21 @@ test("client projections preserve normalized domains without audit payload", asy
   assert.ok(dawnShot);
   assert.equal(getResolvedFieldValue(dawnShot.fire.subFireCount), 3);
   assert.equal(getResolvedFieldValue(dawnShot.fire.subFireInterval), 0.045);
+
+  const beast = toWeaponDetailData(await requireWeapon("精绝兽神", "lc"));
+  const grenade = beast.damageSources.find(
+    (source) => source.id === "mi-fa-liu-dan",
+  );
+  const doubleGrenade = beast.damageSources.find(
+    (source) => source.id === "mi-fa-liu-dan-shou-qu-shuang-yan",
+  );
+  assert.ok(grenade);
+  assert.ok(doubleGrenade);
+  assert.equal(getResolvedFieldValue(grenade.fire.interval), 0.5);
+  assert.equal(getResolvedFieldValue(grenade.fire.rpm), 120);
+  assert.equal(doubleGrenade.cadenceDisplay, "burst_timing_only");
+  assert.equal(getResolvedFieldValue(doubleGrenade.fire.subFireCount), 2);
+  assert.equal(getResolvedFieldValue(doubleGrenade.fire.subFireInterval), 0.35);
 });
 
 test("dynamic fire-rate variants preserve their confirmed maximum intervals", async () => {

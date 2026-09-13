@@ -57,6 +57,7 @@ export interface ConsumerDamageSource {
   readonly section: DamageSection;
   readonly label?: string;
   readonly burstLimit?: number;
+  readonly cadenceDisplay?: "burst_timing_only";
   readonly damage: {
     readonly base: ConsumerField<number>;
     readonly impulse: ConsumerField<number>;
@@ -319,6 +320,7 @@ export function toConsumerDamageSource(
     section: source.section,
     label: source.label,
     burstLimit: source.burstLimit,
+    cadenceDisplay: source.cadenceDisplay,
     damage: toConsumerFields(source.damage),
     health: toConsumerFields(source.health),
     element: toConsumerField(source.element),

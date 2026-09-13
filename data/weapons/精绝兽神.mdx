@@ -54,7 +54,22 @@ damage_sources:
       numerical:
         id: 120100242
         level: 1
-      asc_type_id: "204"
+      asc_type_id: "205"
+      overrides:
+        asc:
+          fire_interval: 0.5
+      override_reason: 技能释放结束后按 AbilityComboCooldown 进入 0.5 秒连段冷却
+  - id: mi-fa-liu-dan-shou-qu-shuang-yan
+    name: 兽躯双衍
+    section: variant
+    inherits: mi-fa-liu-dan
+    cadence_display: burst_timing_only
+    source:
+      overrides:
+        asc:
+          sub_fire_count: 2
+          sub_fire_interval: 0.35
+      override_reason: 兽躯双衍将秘法榴弹改为间隔 0.35 秒的两连发
   - id: mi-fa-liu-dan-fen-lie-tan
     name: 秘法榴弹分裂弹
     section: special

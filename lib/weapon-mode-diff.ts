@@ -112,11 +112,22 @@ export function buildWeaponModeDiff(
     throw new Error("weapon mode diff requires LC and TD projections");
   }
 
-  const lcById = new Map(lcWeapon.damageSources.map((source) => [source.id, source]));
-  const tdById = new Map(tdWeapon.damageSources.map((source) => [source.id, source]));
+  const excludedSourceIds = new Set(
+    [...lcWeapon.damageSources, ...tdWeapon.damageSources]
+      .filter((source) => source.cadenceDisplay === "burst_timing_only")
+      .map((source) => source.id),
+  );
+  const lcSources = lcWeapon.damageSources.filter(
+    (source) => !excludedSourceIds.has(source.id),
+  );
+  const tdSources = tdWeapon.damageSources.filter(
+    (source) => !excludedSourceIds.has(source.id),
+  );
+  const lcById = new Map(lcSources.map((source) => [source.id, source]));
+  const tdById = new Map(tdSources.map((source) => [source.id, source]));
   const sourceIds = [
-    ...lcWeapon.damageSources.map((source) => source.id),
-    ...tdWeapon.damageSources
+    ...lcSources.map((source) => source.id),
+    ...tdSources
       .map((source) => source.id)
       .filter((id) => !lcById.has(id)),
   ];
