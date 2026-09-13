@@ -74,6 +74,8 @@ ASC 引用存在时，Lock 行是权威来源。required 字段缺失或非法�
 
 合法 ASC 候选可以通过 `overrides.asc.attenuation` 改为适用或不适用。原始厘米值、有效值和覆盖原因同时保留。
 
+已确认实体弹道的来源通过 MDX 的 `not_applicable` override 禁用衰减，Resolver 不按武器名称或类别推断弹道类型。证据与适用边界见 [Numerical V2 的 Overrides 规则](../standards/weapon-numerical-v2.md#5-overrides-与-pending)。
+
 Feel 固定字段与所有 `AccuracyRatio_*` 均为可选；存在时必须是有限非负数。`accuracyRatios` 保留完整原始键名。
 
 ## Item 与技能

@@ -223,6 +223,8 @@ sources:
 
 `overrides.asc.sub_fire_count` 必须为正安全整数；`overrides.asc.sub_fire_interval` 以秒为单位，必须为有限非负数。两者均按继承链应用，并保留各自的覆盖历史。
 
+已确认的实体弹道伤害来源，应通过 `overrides.asc.attenuation.status: not_applicable` 明确覆盖 ASC 中的衰减候选值，并记录原因。该结论不能反推即时弹道必然衰减，也不能从无衰减反推弹道类型；未核验来源不得按武器名称或类别批量处理。
+
 pending 只允许发布前草稿：
 
 ```yaml
