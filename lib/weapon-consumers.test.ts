@@ -27,6 +27,21 @@ import {
 
 const PILOTS = ["星海狂想", "飓风之龙", "幽冥毒皇", "军用手斧", "木葫芦"];
 
+const PRIMARY_PROJECTILE_WEAPONS = [
+  "哈士奇好友",
+  "心有凌兮",
+  "振弦",
+  "收割者",
+  "沙丘之怒",
+  "爆星",
+  "猪猪榴弹发射器",
+  "玄凌飞刃",
+  "生命线",
+  "能源之影",
+  "维和者",
+  "钢铁轰鸣",
+];
+
 async function requireWeapon(
   slug: string,
   table: "lc" | "td",
@@ -310,6 +325,26 @@ test("pilot main source, LC/TD context, attenuation, and element agree", async (
     toWeaponCatalogEntry(night).meleeSources.map((source) => source.id),
     ["you-jian-jin-zhan", "qie-dao-jin-zhan"],
   );
+});
+
+test("primary physical projectiles do not use distance attenuation", async () => {
+  for (const table of ["lc", "td"] as const) {
+    for (const slug of PRIMARY_PROJECTILE_WEAPONS) {
+      const weapon = await requireWeapon(slug, table);
+      const mainSource = getMainDamageSource(weapon);
+      assert.ok(mainSource, `${table}:${slug} must have a main damage source`);
+      assert.equal(
+        mainSource.attenuation.status,
+        "not_applicable",
+        `${table}:${slug} must not use distance attenuation`,
+      );
+      assert.equal(
+        getWeaponAttenuationChartInput(toWeaponDetailData(weapon), mainSource),
+        null,
+        `${table}:${slug} must not expose an attenuation chart`,
+      );
+    }
+  }
 });
 
 test("search and weapon stats use the same normalized LC main source", async () => {
