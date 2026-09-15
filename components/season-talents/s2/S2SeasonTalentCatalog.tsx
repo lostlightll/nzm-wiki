@@ -57,13 +57,13 @@ export function S2SeasonTalentCatalog() {
         <div key={tree.id} className={`${styles.branchGroup} ${styles[tree.id]}`}>
           <div className={styles.branch}>
             <Image src={getAssetPath(catalog.decorations[[1, 2, 0][index]])} alt="" fill sizes="(max-width: 700px) 100vw, 70vw" className={styles.branchArt} />
-          <span className={styles.coreArt}>
+          <Link href={`/guides/season-talents/s2/${tree.id}`} className={styles.coreArt} aria-label={`查看${tree.name}天赋详情`}>
             <Image src={getAssetPath(catalog.markers[index].glow)} alt="" fill sizes="(max-width: 700px) 80px, 150px" className={styles.coreGlow} />
             <Image src={getAssetPath(catalog.markers[index].shell)} alt="" fill sizes="(max-width: 700px) 112px, 250px" />
             {/* Temporarily hide T_SeasonalTalentS2_Selected; keep the asset for restoration.
             <Image src={getAssetPath(catalog.frame)} alt="" fill sizes="(max-width: 700px) 112px, 250px" className={styles.coreFrame} />
             */}
-          </span>
+          </Link>
           </div>
           <Link href={`/guides/season-talents/s2/${tree.id}`} className={styles.core}>
             {/* <span className={styles.markerStatus}>使用中</span> */}
