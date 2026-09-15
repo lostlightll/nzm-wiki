@@ -16,8 +16,17 @@
 .inferno-arm .branch { width: 1000px; aspect-ratio: 2354 / 1112; left: 614px; top: 416px; }
 .holographic-sync .branch { width: 1080px; aspect-ratio: 2180 / 1380; left: 636px; top: -61px; }
 .coreArt { position: absolute; z-index: 1; aspect-ratio: 1; pointer-events: auto; color: inherit; transform: translate(-50%, -50%); }
+.coreArt::before { content: ""; position: absolute; inset: -12%; pointer-events: none; background: radial-gradient(ellipse, currentColor 0%, transparent 68%); opacity: var(--core-preview-opacity, 0); transition: opacity 180ms ease-out; }
 .branchGroup:has(.coreArt:focus-visible) .markerTitle strong { text-decoration: underline; text-underline-offset: 5px; }
-.coreArt img { object-fit: contain; pointer-events: none; }
+.coreArt img { object-fit: contain; pointer-events: none; filter: brightness(var(--core-preview-brightness, 1)); transition: filter 180ms ease-out; }
+.coreArt:focus-visible { --core-preview-opacity: .3; --core-preview-brightness: 1.16; }
+@media (hover: hover) and (pointer: fine) {
+  .coreArt:hover { --core-preview-opacity: .3; --core-preview-brightness: 1.16; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .coreArt img { transition: none; }
+  .coreArt::before { transition: none; }
+}
 .coreArt .coreGlow { object-fit: contain; }
 .coreArt .coreFrame { object-fit: fill; }
 .invisibility .coreArt { left: 72%; top: 47.6%; width: 24%; }
