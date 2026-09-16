@@ -1,6 +1,6 @@
 ---
 name: nzm-uasset
-description: 分析 NZM 的 .uasset 及其导出 JSON：读取属性与默认值、追踪资产引用、判读 Blueprint Kismet 字节码，或检查类型专用结构与二进制解析问题。用于解释资产配置和机制；搜索游戏包与导出文件使用 nzm-assets。
+description: 将本地 NZM .uasset/.uexp 转为 JSON，或分析资产属性、引用、Blueprint Kismet 字节码及二进制解析问题。搜索游戏包与导出包内文件使用 nzm-assets。
 ---
 
 # NZM UAsset 分析
@@ -16,7 +16,7 @@ description: 分析 NZM 的 .uasset 及其导出 JSON：读取属性与默认值
 - 接收本地 `.uasset`、完整导出 JSON 或准确虚拟路径。先确认输入对应的资产和来源版本；来源不明就标为未知，目录名不能证明游戏版本或服务器环境。
 - 原始包与 JSON 是两种输入。已有 JSON 可以直接分析；只有原始包时，先确认现有解析工具支持该包、版本和所需 mappings。保留同批导出的配套文件，按包需求检查 `.uexp`、`.ubulk` 等，不假定只有 `.uasset` 就够，也不假定每个包都有配套文件。
 - 缺属性或关联资产时，读取 [nzm-assets](../nzm-assets/SKILL.md)，优先使用原地读取/对比接口。只有需要保存文件时才使用 `inspect` / `extract`。这些导出命令接收虚拟路径并读取配置的游戏；新导出不能自动视作旧包的解析结果。
-- 当前没有在此 skill 中验证过的本地原始包解析命令。若只有本地包且没有可用解析器，报告缺少的能力；不要虚构命令或用其他版本 JSON 冒充它的内容。字节码的现有获取方式见下方专项参考。
+- 本地原始包转 JSON 使用 [本地转换流程](references/local-json.md)及配套脚本，直接读取用户指定文件；字节码的获取方式见下方专项参考。
 - 分析前读取项目 `docs/README.md`，按问题路由相关规范。`refs/`、`refs-test/` 及 `kismet/` 已有证据只读；字节码导出按[参考库规范](../../../docs/workflows/kismet-evidence.md)新增快照。人工分析记录放 `MD/_local/nzm-uasset/<主题>/`，无需为简单问题建立完整报告目录。
 
 ## 1. 属性解析
