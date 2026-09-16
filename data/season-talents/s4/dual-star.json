@@ -12,7 +12,7 @@
       "id": "4010102",
       "name": "双星",
       "descriptions": [
-        "生成1个伴星，伴星复制当前手持枪械的弹道，造成枪械弹道<qiangdiao>25%</>的伤害。\n持续<qiangdiao>10</>秒，冷却时间<qiangdiao>60</>秒。"
+        "生成1个伴星，伴星复制当前手持枪械的弹道（喷射器除外），造成枪械弹道<qiangdiao>25%</>的伤害（多弹道则合成1个弹道，计算总伤害）。\n持续<qiangdiao>10</>秒，冷却时间<qiangdiao>60</>秒。"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKCD_1.webp",
       "phase": 1,
@@ -28,7 +28,7 @@
       "id": "4010202",
       "name": "空间涟漪",
       "descriptions": [
-        "双星技能未激活时，未命中时会生成<qiangdiao>1个</>临时伴星；在下一次命中目标时，临时伴星朝该目标射击一次后消失，伤害系数为<qiangdiao>50%</>，冷却时间<qiangdiao>4秒</>。临时伴星最长存在<qiangdiao>2秒</>，超时未命中自动消失。"
+        "双星技能未激活时，命中敌人时会生成1个临时伴星，临时伴星最多射击<qiangdiao>3次</>，伤害系数为<qiangdiao>50%</>，冷却时间<qiangdiao>15秒</>。临时伴星最长存在<qiangdiao>3秒</>，超时自动消失。"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKCD_02.webp",
       "phase": 2,
@@ -104,11 +104,11 @@
       "id": "4010208",
       "name": "连射共振",
       "descriptions": [
-        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>12.5秒</>。",
-        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>10.5秒</>。",
-        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>8.5秒</>。",
-        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>6.5秒</>。",
-        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>4.5秒</>。"
+        "累计命中敌人<qiangdiao>15 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>12.5秒</>。",
+        "累计命中敌人<qiangdiao>15 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>10.5秒</>。",
+        "累计命中敌人<qiangdiao>15 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>8.5秒</>。",
+        "累计命中敌人<qiangdiao>15 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>6.5秒</>。",
+        "累计命中敌人<qiangdiao>15 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>4.5秒</>。"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_08.webp",
       "phase": 2,
@@ -283,11 +283,11 @@
       "id": "4010405",
       "name": "光能潮汐",
       "descriptions": [
-        "每<qiangdiao>19秒</>自动获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>17秒</>自动获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>15秒</>自动获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>13秒</>自动获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>11秒</>自动获得<qiangdiao>1层</>光能量。"
+        "每<qiangdiao>19秒</>自动获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>17秒</>自动获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>15秒</>自动获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>13秒</>自动获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>11秒</>自动获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_26.webp",
       "phase": 4,
@@ -308,11 +308,11 @@
       "id": "4010406",
       "name": "无伤蓄光",
       "descriptions": [
-        "每<qiangdiao>15.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>13.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>11.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>9.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>7.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。"
+        "每<qiangdiao>15.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>13.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>11.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>9.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>7.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_27.webp",
       "phase": 4,
@@ -333,11 +333,11 @@
       "id": "4010407",
       "name": "技能萃光",
       "descriptions": [
-        "每次拾取光能量球时，有<qiangdiao>40%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
-        "每次拾取光能量球时，有<qiangdiao>50%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
-        "每次拾取光能量球时，有<qiangdiao>60%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
-        "每次拾取光能量球时，有<qiangdiao>70%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
-        "每次拾取光能量球时，有<qiangdiao>80%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。"
+        "每次拾取光能量球时，有<qiangdiao>40%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每次拾取光能量球时，有<qiangdiao>50%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每次拾取光能量球时，有<qiangdiao>60%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每次拾取光能量球时，有<qiangdiao>70%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每次拾取光能量球时，有<qiangdiao>80%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_28.webp",
       "phase": 4,
@@ -358,11 +358,11 @@
       "id": "4010408",
       "name": "灵光先兆",
       "descriptions": [
-        "在<qiangdiao>4层</>光能量时有<qiangdiao>20%</>概率触发光能爆发，并消耗所有光能量。",
-        "在<qiangdiao>4层</>光能量时有<qiangdiao>40%</>概率触发光能爆发，并消耗所有光能量。",
-        "在<qiangdiao>4层</>光能量时有<qiangdiao>60%</>概率触发光能爆发，并消耗所有光能量。",
-        "在<qiangdiao>4层</>光能量时有<qiangdiao>80%</>概率触发光能爆发，并消耗所有光能量。",
-        "在<qiangdiao>4层</>光能量时有<qiangdiao>100%</>概率触发光能爆发，并消耗所有光能量。"
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>20%</>概率触发光能爆发，并消耗所有光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>40%</>概率触发光能爆发，并消耗所有光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>60%</>概率触发光能爆发，并消耗所有光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>80%</>概率触发光能爆发，并消耗所有光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>100%</>概率触发光能爆发，并消耗所有光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_29.webp",
       "phase": 4,
@@ -383,9 +383,9 @@
       "id": "4010501",
       "name": "空间共振",
       "descriptions": [
-        "临时伴星存在期间，每<qiangdiao>3秒</>为所有伴星叠加<qiangdiao>1层</>「共振增幅」，每层+<qiangdiao>10%</>伤害，最高叠加<qiangdiao>3层</>。",
-        "临时伴星存在期间，每<qiangdiao>3秒</>为所有伴星叠加<qiangdiao>1层</>「共振增幅」，每层+<qiangdiao>15%</>伤害，最高叠加<qiangdiao>3层</>。",
-        "临时伴星存在期间，每<qiangdiao>3秒</>为所有伴星叠加<qiangdiao>1层</>「共振增幅」，每层+<qiangdiao>20%</>伤害，最高叠加<qiangdiao>3层</>。"
+        "临时伴星存在期间，每<qiangdiao>3秒</>为所有伴星叠加<qiangdiao>1层</>增伤效果（「共振增幅」），每层+<qiangdiao>10%</>伤害，最高叠加<qiangdiao>3层</>。",
+        "临时伴星存在期间，每<qiangdiao>3秒</>为所有伴星叠加<qiangdiao>1层</>增伤效果（「共振增幅」），每层+<qiangdiao>15%</>伤害，最高叠加<qiangdiao>3层</>。",
+        "临时伴星存在期间，每<qiangdiao>3秒</>为所有伴星叠加<qiangdiao>1层</>增伤效果（「共振增幅」），每层+<qiangdiao>20%</>伤害，最高叠加<qiangdiao>3层</>。"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKCD_05.webp",
       "phase": 5,
@@ -403,9 +403,9 @@
       "id": "4010503",
       "name": "空间共鸣",
       "descriptions": [
-        "伴星命中敌人时有<qiangdiao>10%</>概率触发「共鸣」，每条弹道独立判定；每层「共鸣」+<qiangdiao>1.5%</>武器伤害，持续<qiangdiao>3秒</>，最高叠加<qiangdiao>3层</>。",
-        "伴星命中敌人时有<qiangdiao>10%</>概率触发「共鸣」，每条弹道独立判定；每层「共鸣」+<qiangdiao>3%</>武器伤害，持续<qiangdiao>3秒</>，最高叠加<qiangdiao>3层</>。",
-        "伴星命中敌人时有<qiangdiao>10%</>概率触发「共鸣」，每条弹道独立判定；每层「共鸣」+<qiangdiao>4.5%</>武器伤害，持续<qiangdiao>3秒</>，最高叠加<qiangdiao>3层</>。"
+        "伴星命中敌人时有<qiangdiao>10%</>概率触发增伤效果（「共鸣」），每条弹道独立判定；每层增伤效果+<qiangdiao>1.5%</>武器伤害，持续<qiangdiao>3秒</>，最高叠加<qiangdiao>3层</>。",
+        "伴星命中敌人时有<qiangdiao>10%</>概率触发增伤效果（「共鸣」），每条弹道独立判定；每层增伤效果+<qiangdiao>3%</>武器伤害，持续<qiangdiao>3秒</>，最高叠加<qiangdiao>3层</>。",
+        "伴星命中敌人时有<qiangdiao>10%</>概率触发增伤效果（「共鸣」），每条弹道独立判定；每层增伤效果+<qiangdiao>4.5%</>武器伤害，持续<qiangdiao>3秒</>，最高叠加<qiangdiao>3层</>。"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKCD_07.webp",
       "phase": 5,

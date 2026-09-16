@@ -12,7 +12,7 @@
       "id": "4020102",
       "name": "矩阵共生",
       "descriptions": [
-        "使用​技能​进入​狂暴​领域​，​持续<qiangdiao>​10</>秒。​在​该​领域​内，自身获得​<qiangdiao>9%​</>射速​加成。"
+        "使用​技能​进入​狂暴​领域​，​持续<qiangdiao>​10</>秒。​在​该​领域​内，自身和自身召唤物获得​<qiangdiao>9%​</>射速​加成。"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_XJHH_1.webp",
       "phase": 1,
@@ -104,11 +104,11 @@
       "id": "4020208",
       "name": "连射共振",
       "descriptions": [
-        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>12.5秒</>。",
-        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>10.5秒</>。",
-        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>8.5秒</>。",
-        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>6.5秒</>。",
-        "单条弹匣/弹链内累计命中 ≥<qiangdiao>15 次</>（换弹清零，1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>4.5秒</>。"
+        "累计命中敌人<qiangdiao>15 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>12.5秒</>。",
+        "累计命中敌人<qiangdiao>15 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>10.5秒</>。",
+        "累计命中敌人<qiangdiao>15 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>8.5秒</>。",
+        "累计命中敌人<qiangdiao>15 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>6.5秒</>。",
+        "累计命中敌人<qiangdiao>15 次</>（1次开火最多计算1次），掉落光能量球（存在<qiangdiao>60秒</>），冷却时间<qiangdiao>4.5秒</>。"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_08.webp",
       "phase": 2,
@@ -264,7 +264,7 @@
       "id": "4020402",
       "name": "静默过载",
       "descriptions": [
-        "在领域内，自身射速和自身召唤物只要保持不受击的状态，每秒可以提升自身武器伤害<qiangdiao>3.5%</>，受击清零，持续<qiangdiao>3</>秒，最多叠加<qiangdiao>6</>层。（多领域不叠加）"
+        "在领域内，自身和自身召唤物只要保持不受击的状态，每秒可以提升自身武器伤害<qiangdiao>7%</>，受击清零，持续<qiangdiao>3</>秒，最多叠加<qiangdiao>6</>层。（多领域不叠加）"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_XJHH_03.webp",
       "phase": 4,
@@ -283,11 +283,11 @@
       "id": "4020405",
       "name": "光能潮汐",
       "descriptions": [
-        "每<qiangdiao>19秒</>自动获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>17秒</>自动获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>15秒</>自动获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>13秒</>自动获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>11秒</>自动获得<qiangdiao>1层</>光能量。"
+        "每<qiangdiao>19秒</>自动获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>17秒</>自动获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>15秒</>自动获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>13秒</>自动获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>11秒</>自动获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_26.webp",
       "phase": 4,
@@ -308,11 +308,11 @@
       "id": "4020406",
       "name": "无伤蓄光",
       "descriptions": [
-        "每<qiangdiao>15.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>13.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>11.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>9.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。",
-        "每<qiangdiao>7.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。"
+        "每<qiangdiao>15.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>13.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>11.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>9.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每<qiangdiao>7.5秒</>没有受到血量伤害获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_27.webp",
       "phase": 4,
@@ -333,11 +333,11 @@
       "id": "4020407",
       "name": "技能萃光",
       "descriptions": [
-        "每次拾取光能量球时，有<qiangdiao>40%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
-        "每次拾取光能量球时，有<qiangdiao>50%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
-        "每次拾取光能量球时，有<qiangdiao>60%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
-        "每次拾取光能量球时，有<qiangdiao>70%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。",
-        "每次拾取光能量球时，有<qiangdiao>80%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。"
+        "每次拾取光能量球时，有<qiangdiao>40%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每次拾取光能量球时，有<qiangdiao>50%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每次拾取光能量球时，有<qiangdiao>60%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每次拾取光能量球时，有<qiangdiao>70%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "每次拾取光能量球时，有<qiangdiao>80%</>概率消耗<qiangdiao>5%</>的主武器技能充能，额外获得<qiangdiao>1层</>光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_28.webp",
       "phase": 4,
@@ -358,11 +358,11 @@
       "id": "4020408",
       "name": "灵光先兆",
       "descriptions": [
-        "在<qiangdiao>4层</>光能量时有<qiangdiao>20%</>概率触发光能爆发，并消耗所有光能量。",
-        "在<qiangdiao>4层</>光能量时有<qiangdiao>40%</>概率触发光能爆发，并消耗所有光能量。",
-        "在<qiangdiao>4层</>光能量时有<qiangdiao>60%</>概率触发光能爆发，并消耗所有光能量。",
-        "在<qiangdiao>4层</>光能量时有<qiangdiao>80%</>概率触发光能爆发，并消耗所有光能量。",
-        "在<qiangdiao>4层</>光能量时有<qiangdiao>100%</>概率触发光能爆发，并消耗所有光能量。"
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>20%</>概率触发光能爆发，并消耗所有光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>40%</>概率触发光能爆发，并消耗所有光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>60%</>概率触发光能爆发，并消耗所有光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>80%</>概率触发光能爆发，并消耗所有光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>",
+        "在<qiangdiao>4层</>光能量时有<qiangdiao>100%</>概率触发光能爆发，并消耗所有光能量。\n\n<C003>激活本层解锁暗能量，释放光能爆发获得1层暗能量。</>"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_TKTY_29.webp",
       "phase": 4,
@@ -523,7 +523,7 @@
       "id": "4020602",
       "name": "巨构投影",
       "descriptions": [
-        "领域范围内自身创建的召唤物获得巨大化<qiangdiao>50%</> 的比例，获得<qiangdiao>40%</> 召唤物伤害和<qiangdiao>20%</> 的召唤物射速加成。（多领域不叠加）"
+        "领域范围内自身创建的召唤物获得巨大化<qiangdiao>50%</> 的比例，获得<qiangdiao>60%</> ​召唤物伤害和<qiangdiao>20%</> 的召唤物射速​加成。（多领域不叠加）"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_XJHH_04.webp",
       "phase": 6,

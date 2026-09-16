@@ -118,27 +118,35 @@ function getThemeStyle(id: S4TalentId): CSSProperties {
 }
 
 function RichText({ children }: { children: string }) {
-  const parts = children.split(/(<qiangdiao>|<\/qiangdiao>|<\/>)/g);
-  let highlighted = false;
+  const parts = children.split(/(<qiangdiao>|<\/qiangdiao>|<span typeface="Bold">|<C003>|<\/>)/g);
+  let style: "highlight" | "heading" | "hint" | null = null;
   const rendered: ReactNode[] = [];
 
   parts.forEach((part, index) => {
     if (part === "<qiangdiao>") {
-      highlighted = true;
+      style = "highlight";
+      return;
+    }
+    if (part === '<span typeface="Bold">') {
+      style = "heading";
+      return;
+    }
+    if (part === "<C003>") {
+      style = "hint";
       return;
     }
     if (part === "</qiangdiao>" || part === "</>") {
-      highlighted = false;
+      style = null;
       return;
     }
     if (!part) return;
     rendered.push(
-      highlighted ? (
-        <strong key={index} className="font-semibold text-[#f1c85d]">
+      style === "highlight" || style === "heading" ? (
+        <strong key={index} className={style === "highlight" ? "font-semibold text-[#f1c85d]" : "font-semibold"}>
           {part}
         </strong>
       ) : (
-        <span key={index}>{part}</span>
+        <span key={index} className={style === "hint" ? "text-zinc-400" : undefined}>{part}</span>
       ),
     );
   });
