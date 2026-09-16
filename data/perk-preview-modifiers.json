@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "source": {
+    "path": "Attributes/AutoGenerate/numerical_modifier_config.json",
+    "sha256": "93584ef436cd4c8d075396c175c6fcd3512134b7fa5a920c89c55d9b69feb2b4"
+  },
+  "rows": {
+    "111051051_1_0": {
+      "ID": 111051051,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "光辉贯穿：单层4.5%射击加成",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.045,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051006_1_0": {
+      "ID": 111051006,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetBearDamageRatio.DamageBearRatio",
+      "Description": "恒辉长存：减伤24%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.24,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051055_1_0": {
+      "ID": 111051055,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetSkill.ChargeSpeedAddRatio",
+      "Description": "弹匣超载：武器充能效率+55%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.55,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051056_1_0": {
+      "ID": 111051056,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetSpeed.SpeedScale",
+      "Description": "流体护盾：减速",
+      "GPModifierOp": "B1",
+      "BaseValue": -0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051059_1_0": {
+      "ID": 111051059,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetSpeed.SpeedScale",
+      "Description": "疾风：移动速度+10%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.1,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051033_1_0": {
+      "ID": 111051033,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetSpeed.SpeedScale",
+      "Description": "近战衔接：移动速度+ 25%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.25,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051080_1_0": {
+      "ID": 111051080,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetCritical.CriticalRatio",
+      "Description": "暴击率+50%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051039_1_0": {
+      "ID": 111051039,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetSpeed.SpeedScale",
+      "Description": "积光成辉：移动速度+ 50%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "121600115_1_0": {
+      "ID": 121600115,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+      "Description": "武器插件_哈士奇鼓舞_召唤物鼓舞附近的玩家_伤害",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "121600114_1_0": {
+      "ID": 121600114,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetCharacterWeaponAdjust.GunRPMRatioAdjust",
+      "Description": "武器插件_哈士奇鼓舞_召唤物鼓舞附近的玩家_射速",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.1,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "120700382_1_0": {
+      "ID": 120700382,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+      "Description": "极地夜曲插件：增加爆炸伤害",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.3,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "120700384_1_0": {
+      "ID": 120700384,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "极地夜曲插件：增加射击伤害",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.8,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "120300171_1_0": {
+      "ID": 120300171,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "极寒冰神激光强化插件增伤",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.1,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "1400090107_1_0": {
+      "ID": 1400090107,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio",
+      "Description": "纯白至上_专插_纯白之光_弱点伤害增加",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.7,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "1206000610_1_0": {
+      "ID": 1206000610,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+      "Description": "武器插件_幽冥毒皇腐蚀飞弹_增加榴弹直击伤害",
+      "GPModifierOp": "B1",
+      "BaseValue": 5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "120600173_1_0": {
+      "ID": 120600173,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaknessDamageRatio",
+      "Description": "武器插件_冥河之矛_光暗冥河_增加弱点伤害倍率",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.25,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "120600174_1_0": {
+      "ID": 120600174,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+      "Description": "武器插件_冥河之矛_致命骨矛_增加伤害倍率",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.4,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "121400044_1_0": {
+      "ID": 121400044,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+      "Description": "武器技能_层流冷焰_光暗冷焰伤害提升",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.7,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "121400041_1_0": {
+      "ID": 121400041,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+      "Description": "武器技能_层流冷焰_强化冰弹伤害提升",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.03,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "121400040_1_0": {
+      "ID": 121400040,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
+      "Description": "武器技能_层流冷焰_冷焰爆发",
+      "GPModifierOp": "B1",
+      "BaseValue": 1,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "120600305_1_0": {
+      "ID": 120600305,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+      "Description": "插件：火力压制插件_过载射击增伤",
+      "GPModifierOp": "B1",
+      "BaseValue": 1.2,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "1410210103_1_0": {
+      "ID": 1410210103,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetFireMode.RPMAdjustRatio",
+      "Description": "武器专插技能_死神猎手光暗死神_射速加快",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.05,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "1410210104_1_0": {
+      "ID": 1410210104,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetWeaponChangeclip.WeaponChangeClipSpeedRatio",
+      "Description": "武器专插技能_死神猎手光暗死神_换弹速度提升",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.05,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "130044411_1_0": {
+      "ID": 130044411,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
+      "Description": "死神猎手_光暗死神专插 - 技能伤害提升",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.55,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "120700121_1_0": {
+      "ID": 120700121,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "雷霆之影插件增加射击伤害",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    }
+  }
+}

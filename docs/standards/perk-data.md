@@ -264,6 +264,22 @@ pnpm exec tsx scripts/import-perks.ts --all-with-icons --json
 
 普通 `--write` 不覆盖已有非空描述。只有空描述或明确占位符才允许 `--sync-descriptions --write` 保守修复。
 
+## S4 预览导入
+
+`season: s4-preview` 的插件使用独立的 **S4 Preview** 筛选，不添加卡片标签，不进入“已上线”或“近期上线”。`CollectMODItem`、`MakeMODItem`、`IsCooked` 仍保留预载表原值，不能把预载开关当作正式上线日期。预览插件不作为正式服乘区索引候选；正式上线时必须重新审计并登记来源。
+
+2026-09-16 预载新增 78 个普通插件；12 个 `MODItemType=1`、通过 `RoutineItemID` 关联旧插件的腐化变体不单独作为普通插件导入。同名“连锁充能”保留两个 ItemID，新版文件使用 `连锁充能-20703040513.mdx`。
+
+维护时先用 `import-perks.ts --content-root <Content目录> --ids <审定ID列表> --season s4-preview --write` 建立草稿，再运行：
+
+```bash
+pnpm exec tsx scripts/prepare-s4-preview-perks.ts --content-root <Content目录> --icon-root <参考图标目录>
+```
+
+`scripts/s4-preview-perks-review.json` 保存审定 ItemID、身份链、文案替换和未确认项；生成器从指定目录原地读取数据，预检通过后生成 MDX、PNG、WebP 和选定 Numerical 行的预览证据。模板引用由独立预览 Resolver 解析，不改正式服 Lock。未能通过执行配置核验的预览文案不转换为 `effect_values`。
+
+初次导入参考 [S4 预览仓库](https://github.com/lostlightll/nzm-wiki-s4-preview) 的 `1e46f2c5dd4296159cf3b268656ae592f0e21dc4` 版本，图标按同 ItemID 的 CommonItem 资源名匹配其 `public/icons/perks/`；描述与数值以本次预载证据为准，不复制参考站旧版字符串 `effect_values`。
+
 ## 版本更新流程
 
 1. 更新 `refs/` 后先运行全量审计，不直接写入。

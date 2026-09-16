@@ -25,6 +25,12 @@ modifier-providers.json ──────────────────�
 - 运行时投影保存客户端查询所需的已解析结果和输入哈希，不导入完整 Lock。
 - `lib/num-modifier-data.ts` 是完整 Lock 与语义目录的唯一业务导入适配器。
 
+### 插件预览隔离
+
+`data/perk-preview-modifiers.json` 只保存预览插件实际引用的 Numerical 行，格式为 `{ schema_version: 1, source: { path, sha256 }, rows: { [rowName]: raw } }`。`source` 记录预载原表路径与 SHA-256，运行时不读取该路径。原始行必须包含有效的 ID、Level、AttributeName、GPModifierOp、BaseValue 和 CoefValue。
+
+`getPerkModifierResolver(season)` 仅对 `season: s4-preview` 将选定行覆盖到正式 Lock 的内存副本；其他插件始终使用正式 Resolver。描述模板、数值绑定、阶段值和效果分面均使用同一个选定 Resolver。正式 `data/num-modifier-lock.json`、武器与其他消费者不受预览行影响，不能通过刷新正式 Lock 发布预载中的旧行改动。
+
 ## Lock 与身份
 
 ```text

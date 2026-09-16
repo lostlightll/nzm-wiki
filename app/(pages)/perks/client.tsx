@@ -24,7 +24,7 @@ import {
   RARITY_OPTIONS,
 } from "@/constants/perks";
 
-type QuickFilter = "online" | "recent" | "offline" | "super";
+type QuickFilter = "online" | "recent" | "offline" | "super" | "s4-preview";
 
 const BASE_QUICK_FILTER_OPTIONS: {
   type: QuickFilter;
@@ -33,6 +33,7 @@ const BASE_QUICK_FILTER_OPTIONS: {
   { type: "online", label: "已上线" },
   { type: "offline", label: "未上线" },
   { type: "super", label: "超级插件" },
+  { type: "s4-preview", label: "S4 Preview" },
 ];
 
 const RECENT_QUICK_FILTER_OPTION = {
@@ -189,6 +190,7 @@ export default function PerksPageClient({
             BASE_QUICK_FILTER_OPTIONS[1],
             RECENT_QUICK_FILTER_OPTION,
             BASE_QUICK_FILTER_OPTIONS[2],
+            BASE_QUICK_FILTER_OPTIONS[3],
           ]
         : BASE_QUICK_FILTER_OPTIONS,
     [recentPerkCount],
@@ -223,11 +225,12 @@ export default function PerksPageClient({
           : perk.rarity;
       const rarityMatch =
         rarityState.selected.size === 0 || rarityState.selected.has(perkRarity);
-      const availability = perk.collectModItem === 1 ? "online" : "offline";
+      const availability = perk.collectModItem === 1 && perk.season !== "s4-preview" ? "online" : "offline";
       const quickFilterMatch =
         effectiveQuickFilter.size === 0 ||
         effectiveQuickFilter.has(availability) ||
         (effectiveQuickFilter.has("recent") && isPerkRecent(perk, todayKey)) ||
+        (effectiveQuickFilter.has("s4-preview") && perk.season === "s4-preview") ||
         (effectiveQuickFilter.has("super") && SUPER_PERK_NAMES.has(perk.name));
       const weaponApplicabilityMatch = matchesWeaponApplicability(
         weaponApplicabilityState.selected,
@@ -305,8 +308,8 @@ export default function PerksPageClient({
           }
           gridClass={
             recentPerkCount > 0
-              ? "grid max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4"
-              : "grid max-w-lg grid-cols-3 gap-2"
+              ? "grid max-w-3xl grid-cols-2 gap-2 sm:grid-cols-5"
+              : "grid max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4"
           }
           centerClass="justify-center"
         />

@@ -36,6 +36,8 @@ function checkStaticBoundaries(): void {
   const rawAttributeDescriptionPath = "DataTables/AttributeDescMapTable.json";
   const rawSourceAllowlist = new Set([
     path.join(root, "data", "num-modifier-lock.json"),
+    // Selected preview evidence records provenance without reading local sources at runtime.
+    path.join(root, "data", "perk-preview-modifiers.json"),
     path.join(root, "scripts", "num-modifier", "lock.ts"),
     // Historical S2 is isolated from the current-season lock; only its offline
     // extractor and evidence ledger may name the archived Numerical source.

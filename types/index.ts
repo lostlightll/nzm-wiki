@@ -179,6 +179,7 @@ export interface Perk {
   itemId: string;
   slug: string;
   name: string;
+  season?: string;
   slot: PerkSlot;
   rarity: Rarity;
   category: PerkCategory;

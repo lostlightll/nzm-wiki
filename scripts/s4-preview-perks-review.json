@@ -1,0 +1,1059 @@
+{
+  "20703040476": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040476].PassiveSkill_ID=1313197001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313197001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313197001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"AddBulletRatio\":0.12,\"CostBulletRatio\":0.05,\"PickupID\":59902001701,\"CooldownDuration\":6,\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040477": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040477].PassiveSkill_ID=1314194001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314194001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314194001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"PickupID\":59902001701,\"CostEngergyRatio\":0.1,\"CooldownDuration\":6,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040478": {
+    "bindings": {
+      "damage-per-stack": {
+        "row": "lc:111051051_1_0",
+        "field": "coefficient"
+      }
+    },
+    "replacements": [
+      {
+        "from": "射击伤害加<strong>4.5%</strong>",
+        "to": "射击伤害加<strong>{{num:damage-per-stack|percent}}</strong>"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040478].PassiveSkill_ID=1315250001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315250001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315250001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"MarkBuff\":\"BD_Common_1315250001\",\"CheckBuffStack\":5,\"NumericalID_VirtualGun\":11010149,\"PenetrateNum\":3,\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315250001]: GPModifyIDs=[111051051]; Duration=5; StackLimitCount=5",
+      "Numerical[111051051_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0; CoefValue=0.045; Level=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040479": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040479].PassiveSkill_ID=1316227001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316227001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316227001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"TriggerBuffs\":[\"SeasonTalent_S5_Normal_003\",\"SeasonTalent_S5_Normal_004\",\"SeasonTalent_S5_Normal_005\",\"SeasonTalent_S5_Normal_006\"],\"BuffAddDurationRatio\":1.6,\"Probability\":0.4,\"PoolSize\":20,\"CooldownDuration\":2,\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_003]: GPModifyIDs=[]; Duration=5; StackLimitCount=1",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_004]: GPModifyIDs=[]; Duration=5; StackLimitCount=1",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_005]: GPModifyIDs=[]; Duration=5; StackLimitCount=1",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_006]: GPModifyIDs=[]; Duration=5; StackLimitCount=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040480": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040480].PassiveSkill_ID=1313198001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313198001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313198001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CheckBulletRatio\":0.15,\"AddBulletRatio\":0.1,\"AddBulletRatio_Plus\":0.2,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。",
+      "光效充填CDO AddBulletRatio=0.1, AddBulletRatio_Plus=0.2，与MGE描述100%/100%冲突；需执行逻辑确认是比例还是条件分支再发布。"
+    ],
+    "description": "触发光能效果时，为当前武器装填子弹；弹匣剩余较少时可额外过量装填。具体回复比例待确认。"
+  },
+  "20703040481": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040481].PassiveSkill_ID=1314195001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314195001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314195001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AddChargeRatio\":30,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040482": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040482].PassiveSkill_ID=1315229001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315229001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315229001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AddDamageBuff\":\"BD_Common_1315229001\",\"TriggerLightBuffHandle\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false},\"KillCount\":264,\"CheckKillNum\":2,\"AddBuffDurationByKill\":1,\"CustomCDKey\":\"MGE_1315229001\",\"CustomCD\":2,\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315229001]: GPModifyIDs=[]; Duration=8; StackLimitCount=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040483": {
+    "bindings": {
+      "damage-reduction": {
+        "row": "lc:111051006_1_0",
+        "field": "base"
+      }
+    },
+    "replacements": [
+      {
+        "from": "减伤<strong>24%</strong>",
+        "to": "减伤<strong>{{num:damage-reduction|percent}}</strong>"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040483].PassiveSkill_ID=1316228001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316228001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316228001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"DamageReduceBuff\":\"BD_Common_1316228001\",\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1316228001]: GPModifyIDs=[111051006]; Duration=5; StackLimitCount=1",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5",
+      "Numerical[111051006_1_0]: AttributeName=GPAttributeSetBearDamageRatio.DamageBearRatio; GPModifierOp=B1; BaseValue=0.24; CoefValue=0; Level=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040484": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040484].PassiveSkill_ID=1313199001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313199001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313199001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040485": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040485].PassiveSkill_ID=1314196001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314196001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314196001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"CheckDarkNum\":3,\"AddChargeValue\":25,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040486": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040486].PassiveSkill_ID=1315230001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315230001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315230001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"BuffName\":\"BD_Common_1315230001\",\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315230001]: GPModifyIDs=[]; Duration=5; StackLimitCount=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040487": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040487].PassiveSkill_ID=1316229001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316229001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316229001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"ChangeBuffDurationHandle\":{},\"MaxAddDuration\":4,\"BannedTags\":[],\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040488": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040488].PassiveSkill_ID=1313200001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313200001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313200001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AddBulletRatio\":0.21,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040489": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040489].PassiveSkill_ID=1314197001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314197001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314197001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BannedTags\":[],\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040490": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040490].PassiveSkill_ID=1315231001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315231001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315231001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040491": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040491].PassiveSkill_ID=1316230001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316230001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316230001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CheckHitNum\":5,\"CooldownDuration\":3,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040492": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040492].PassiveSkill_ID=1313201001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313201001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313201001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CheckTargetNum\":3,\"AddBulletNum\":1,\"AddBulletNum_Extra\":2,\"BannedTags\":[],\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040493": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040493].PassiveSkill_ID=1314198001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314198001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314198001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BannedTags\":[],\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040494": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040494].PassiveSkill_ID=1315232001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315232001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315232001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BuffName\":\"BD_Common_1315232001\",\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315232001]: GPModifyIDs=[]; Duration=5; StackLimitCount=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040495": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040495].PassiveSkill_ID=1316231001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316231001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316231001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CheckKillNum\":10,\"ChargeValue\":9,\"BannedTags\":[],\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040496": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040496].PassiveSkill_ID=1313202001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313202001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313202001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AddAmmoRatio\":0.5,\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040497": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040497].PassiveSkill_ID=1314199001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314199001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314199001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CheckKillNum\":5,\"ChargeValue\":5,\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040498": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040498].PassiveSkill_ID=1315233001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315233001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315233001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CheckNum\":5,\"BannedTags\":[],\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040499": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040499].PassiveSkill_ID=1316232001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316232001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316232001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AOEInterval\":5,\"BannedTags\":[],\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040500": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040500].PassiveSkill_ID=1313203001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313203001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313203001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AddBulletNum\":1,\"AddBulletRatioByKill\":0.15,\"CustomCDKey_Hit\":\"MGE_1313203001_Hit\",\"CustomCD_Hit\":4,\"CustomCDKey_Kill\":\"MGE_1313203001_Kill\",\"CustomCD_Kill\":5,\"BannedTags\":[],\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040501": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040501].PassiveSkill_ID=1314200001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314200001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314200001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"ChargeSpeedRatio\":1.2,\"CheckHitNum\":5,\"AddChargeRatio\":3,\"CustomCDKey\":\"MGE_1314200001\",\"CustomCD\":1,\"BannedTags\":[],\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040502": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040502].PassiveSkill_ID=1315234001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315234001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315234001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"MarkBuff_Player\":\"BD_Common_1315234001\",\"MarkBuff_Summoner\":\"BD_Common_1315234002\",\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315234001]: GPModifyIDs=[]; Duration=3; StackLimitCount=1",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315234002]: GPModifyIDs=[]; Duration=3; StackLimitCount=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040503": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040503].PassiveSkill_ID=1316233001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316233001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316233001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BuffName\":\"BD_Common_1316233001\",\"CooldownDuration\":13,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1316233001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=50"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040504": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040504].PassiveSkill_ID=1313204001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313204001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313204001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AddBulletNum_Hit\":1,\"AddBulletNum_Kill\":1,\"CustomCDKey_Hit\":\"MGE_1313204001_Hit\",\"CustomCDKey_Kill\":\"MGE_1313204001_Kill\",\"CustomCD_Hit\":2,\"CustomCD_Kill\":2,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040505": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040505].PassiveSkill_ID=1314201001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314201001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314201001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CustomCDKey_Kill\":\"MGE_1314201001_Kill\",\"AddChargeValue\":6,\"CustomCD_Kill\":3,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040506": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040506].PassiveSkill_ID=1315235001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315235001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315235001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040507": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040507].PassiveSkill_ID=1316234001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316234001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316234001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"EffectZoneDuration\":5,\"CooldownDuration\":10,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040508": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040508].PassiveSkill_ID=1313205001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313205001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313205001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BuffName\":\"BD_Common_1313205001\",\"AddBulletNum\":1,\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1313205001]: GPModifyIDs=[]; Duration=3; StackLimitCount=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040509": {
+    "bindings": {
+      "charge-speed": {
+        "row": "lc:111051055_1_0",
+        "field": "base"
+      }
+    },
+    "replacements": [
+      {
+        "from": "充能效率<strong>+55%</strong>",
+        "to": "充能效率<strong>{{num:charge-speed|signed-percent}}</strong>"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040509].PassiveSkill_ID=1314202001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314202001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314202001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"MarkBuff\":\"BD_Common_1314202001\",\"ChargeValue\":20,\"ChargeSpeedBuff\":\"BD_Common_1314202002\",\"CooldownDuration\":10,\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1314202001]: GPModifyIDs=[]; Duration=4; StackLimitCount=1",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1314202002]: GPModifyIDs=[111051055]; Duration=4; StackLimitCount=1",
+      "Numerical[111051055_1_0]: AttributeName=GPAttributeSetSkill.ChargeSpeedAddRatio; GPModifierOp=B1; BaseValue=0.55; CoefValue=0; Level=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040510": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040510].PassiveSkill_ID=1315236001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315236001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315236001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"PenetrateNum\":5,\"FireCustomKey\":\"MGE_1315236001_Ready\",\"AddDamageBuff\":\"BD_Common_1315236001\",\"SkillDamageAddBuff\":\"BD_Common_1315236002\",\"BannedTags\":[],\"bNeedPrediction\":true}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315236001]: GPModifyIDs=[]; Duration=5; StackLimitCount=5",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315236002]: GPModifyIDs=[]; Duration=7; StackLimitCount=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040511": {
+    "bindings": {
+      "slow": {
+        "row": "lc:111051056_1_0",
+        "field": "base"
+      }
+    },
+    "replacements": [
+      {
+        "from": "减速<strong>50%</strong>",
+        "to": "移动速度<strong>{{num:slow|signed-percent}}</strong>"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040511].PassiveSkill_ID=1316215001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316215001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316215001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CustomCDKey\":\"MGE_1316215001\",\"CustomCD\":10,\"SlowBuff\":\"BD_Common_1316215001\",\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1316215001]: GPModifyIDs=[111051056]; Duration=5; StackLimitCount=1",
+      "Numerical[111051056_1_0]: AttributeName=GPAttributeSetSpeed.SpeedScale; GPModifierOp=B1; BaseValue=-0.5; CoefValue=0; Level=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040512": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040512].PassiveSkill_ID=1313206001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313206001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313206001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AddBulletNum_Hit\":1,\"CustomCDKey_Hit\":\"MGE_1313206001_Hit\",\"CustomCD_Hit\":4,\"CheckHitNum\":3,\"AddAmmoNum\":1,\"CustomCDKey_HitMulti\":\"MGE_1313206001_HitMulti\",\"CustomCD_HitMulti\":4,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040513": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040513].PassiveSkill_ID=1314203001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314203001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314203001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CustomCDKey\":\"MGE_1314203001\",\"ChargeValue\":7,\"CustomCD\":4,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040514": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040514].PassiveSkill_ID=1315237001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315237001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315237001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CustomCDKey\":\"MGE_1315237001\",\"CustomCD\":1,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040515": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040515].PassiveSkill_ID=1316216001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316216001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316216001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"NumericalID\":11010141,\"CurrentExplodeRangeRatio\":1,\"ExpandRangeRatio\":1.3,\"CooldownDuration\":3,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040516": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040516].PassiveSkill_ID=1313207001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313207001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313207001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AddBulletNum\":1,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040517": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040517].PassiveSkill_ID=1314204001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314204001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314204001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"CooldownDuration\":10,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040518": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040518].PassiveSkill_ID=1315238001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315238001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315238001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BuffName\":\"BD_Common_1315238001\",\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315238001]: GPModifyIDs=[]; Duration=5; StackLimitCount=3"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040519": {
+    "bindings": {
+      "movement-speed": {
+        "row": "lc:111051059_1_0",
+        "field": "base"
+      }
+    },
+    "replacements": [
+      {
+        "from": "移速<strong>+10%</strong>",
+        "to": "移速<strong>{{num:movement-speed|signed-percent}}</strong>"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040519].PassiveSkill_ID=1316217001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316217001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316217001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"EffectZoneDuration\":3,\"CheckTime\":3,\"BuffName\":\"BD_Common_1316217001\",\"SlideDurationRatio\":1.1,\"GenerateEffectZoneInterval\":0.5,\"GenerateEffectZoneNum\":5,\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1316217001]: GPModifyIDs=[111051059]; Duration=4; StackLimitCount=1",
+      "Numerical[111051059_1_0]: AttributeName=GPAttributeSetSpeed.SpeedScale; GPModifierOp=B1; BaseValue=0.1; CoefValue=0; Level=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040520": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040520].PassiveSkill_ID=1313208001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313208001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313208001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"IsReady\":true,\"CD\":10,\"MaxAddBulletNum\":50,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040521": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040521].PassiveSkill_ID=1314205001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314205001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314205001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"IsReady\":true,\"ChargeValuePerPoint\":2,\"CD\":10,\"MaxChargeRatio\":0.6,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040522": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040522].PassiveSkill_ID=1315239001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315239001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315239001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AddBuffInterval\":1,\"MarkBuff\":\"BD_Common_1315239001\",\"AddDamgeBuff\":\"BD_Common_1315239002\",\"CustomCDKey\":\"MGE_1315239001\",\"CustomCD\":5,\"BannedTags\":[\"FSMState.PilotingMecha\",\"Weapon.State.IsUnPossessed\"]}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315239001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315239002]: GPModifyIDs=[]; Duration=5; StackLimitCount=5"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040523": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040523].PassiveSkill_ID=1316218001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316218001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316218001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"SpawnEffectZoneInterval\":2,\"EffectZoneDuration\":2,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040524": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040524].PassiveSkill_ID=1315240001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315240001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315240001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"Buff Name\":\"BD_Common_1315202001\",\"Add Speed Upper Limit\":0.5,\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315202001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。",
+      "CDO Buff Name指向旧BD_Common_1315202001；111051029/030虽Description为驰射淬锋但尚无执行身份链。111051030 Base0/Coef1不可直接解释为描述的每1%移速+2%。"
+    ],
+    "description": "提升暴击率和暴击伤害。移动速度加成可提高射击伤害；暴击命中后短暂提升移动速度，可刷新。具体增益数值待确认。"
+  },
+  "20703040525": {
+    "bindings": {
+      "movement-speed": {
+        "row": "lc:111051033_1_0",
+        "field": "base"
+      }
+    },
+    "replacements": [
+      {
+        "from": "移速<strong>+25%</strong>",
+        "to": "移速<strong>{{num:movement-speed|signed-percent}}</strong>"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040525].PassiveSkill_ID=1315241001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315241001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315241001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"Buff Name\":\"BD_Common_1315241001\",\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315241001]: GPModifyIDs=[111051033]; Duration=4; StackLimitCount=1",
+      "Numerical[111051033_1_0]: AttributeName=GPAttributeSetSpeed.SpeedScale; GPModifierOp=B1; BaseValue=0.25; CoefValue=0; Level=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040526": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040526].PassiveSkill_ID=1313209001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313209001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313209001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"Check Bullet Ratio\":0.5,\"Add Bullet Ratio\":0.5,\"BannedTags\":[]}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040527": {
+    "bindings": {
+      "critical-rate": {
+        "row": "lc:111051080_1_0",
+        "field": "base"
+      }
+    },
+    "replacements": [
+      {
+        "from": "暴击率<strong>+50%</strong>",
+        "to": "暴击率<strong>{{num:critical-rate|signed-percent}}</strong>"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040527].PassiveSkill_ID=1313210001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1313210001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313210001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"Check Num\":100,\"Ammo Percent\":0.5,\"Buff Name\":\"BD_Common_1313210001\",\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1313210001]: GPModifyIDs=[111051080]; Duration=8; StackLimitCount=1",
+      "Numerical[111051080_1_0]: AttributeName=GPAttributeSetCritical.CriticalRatio; GPModifierOp=B1; BaseValue=0.5; CoefValue=0; Level=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040528": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040528].PassiveSkill_ID=1316219001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316219001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316219001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"Buff Name\":\"BD_Common_1316219001\",\"NewVar_0\":{},\"CustomCDKey_Hit\":\"CD\",\"CustomCD_Hit\":3.5,\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1316219001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040529": {
+    "bindings": {
+      "movement-speed": {
+        "row": "lc:111051039_1_0",
+        "field": "base"
+      }
+    },
+    "replacements": [
+      {
+        "from": "移速<strong>+50%</strong>",
+        "to": "移速<strong>{{num:movement-speed|signed-percent}}</strong>"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040529].PassiveSkill_ID=1314206001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1314206001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314206001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"Light Buff\":\"SeasonTalent_S5_Normal_001\",\"Add Charge Value\":45,\"Buff Name\":\"BD_Common_1314206001\",\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1314206001]: GPModifyIDs=[111051039]; Duration=3; StackLimitCount=1",
+      "Numerical[111051039_1_0]: AttributeName=GPAttributeSetSpeed.SpeedScale; GPModifierOp=B1; BaseValue=0.5; CoefValue=0; Level=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040530": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040530].PassiveSkill_ID=1316220001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1316220001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316220001.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"Dark Buff\":\"SeasonTalent_S5_Normal_002\",\"Buff Name\":\"BD_Common_1316220001\",\"BannedTags\":[]}",
+      "CDO -> BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: GPModifyIDs=[]; Duration=-1; StackLimitCount=5",
+      "CDO -> BuffConfigDatatableNew[BD_Common_1316220001]: GPModifyIDs=[]; Duration=8; StackLimitCount=1"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040531": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040531].PassiveSkill_ID=1312032006:1; MGEPassive_BD -> GPModularGameplayEffectTable[1312032006].MGEClass=Weapon/Data/SG/SG_20003000011_WBH_JFZL/MGE/MGE_1312032006_JFZL_DarkGoldPlugin.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"bWantManagerByWeapon\":false,\"bNeedPrediction\":true}"
+    ],
+    "warnings": [
+      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。"
+    ]
+  },
+  "20703040532": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040532].PassiveSkill_ID=1312032007:1; GPModularGameplayEffectTable[1312032007].MGEClass=Weapon/Data/SG/SG_20003000011_WBH_JFZL/MGE/MGE_1312032007_JFZL_DarkGoldPlugin.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"EnergeRadio\":2,\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"AddDamageBuff\":\"JFZLLightAndDark_Duration\",\"BuffHandle\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false},\"BulletNumLight\":2,\"BulletNumDark\":16,\"bWantManagerByWeapon\":false,\"bNeedPrediction\":true}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[JFZLLightAndDark_Duration]: {\"duration\":10,\"max\":1,\"ids\":[]}"
+    ],
+    "warnings": []
+  },
+  "20703040533": {
+    "bindings": {
+      "damage": {
+        "row": "lc:121600115_1_0",
+        "field": "base"
+      },
+      "fire-rate": {
+        "row": "lc:121600114_1_0",
+        "field": "base"
+      }
+    },
+    "replacements": [
+      {
+        "from": "<strong>20%</strong>伤害提升",
+        "to": "<strong>{{num:damage|percent}}</strong>伤害提升"
+      },
+      {
+        "from": "<strong>10%</strong>射速提升",
+        "to": "<strong>{{num:fire-rate|percent}}</strong>射速提升"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040533].PassiveSkill_ID=1312068004:1; GPModularGameplayEffectTable[1312068004].MGEClass=Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068004_HSQHY_DarkGoldPlugin.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"ZoneThreshold\":4,\"HitCountDownTimeBuff\":\"Weapon_121600113_1\",\"ZoneHandle\":{\"ID\":0},\"BuffHandle\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false},\"HSQHY_PowerZone\":{\"Name\":\"EffectZone\",\"Id\":\"HSQHY_PowerZone\"},\"Modifierid\":121600115,\"EffectZoneBuff\":\"Weapon_121600112_1\",\"bWantManagerByWeapon\":false}",
+      "BuffConfigDatatableNew[Weapon_121600113_1]: {\"duration\":5,\"max\":1,\"ids\":[]}",
+      "BuffConfigDatatableNew[Weapon_121600112_1]: {\"duration\":-1,\"max\":4,\"ids\":[121600114,121600115]}"
+    ],
+    "warnings": []
+  },
+  "20703040534": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040534].PassiveSkill_ID=1312068005:1; GPModularGameplayEffectTable[1312068005].MGEClass=Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068005_HSQHY_DarkGoldPlugin.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"ZoneDuration\":1.5,\"AOEID\":1016011004,\"NumericalID\":121600117,\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"DarkBuffThresh\":5,\"ZoneHandle\":{\"ID\":0},\"bWantManagerByWeapon\":false}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: {\"duration\":-1,\"max\":5,\"ids\":[]}"
+    ],
+    "warnings": []
+  },
+  "20703040535": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040535].PassiveSkill_ID=1312079001:1; GPModularGameplayEffectTable[1312079001].MGEClass=Weapon/Data/Pistol/Pistol_20007000038_null_JDYQ/MGE/MGE_1312079001_JDYQ.json",
+      "MGE CDO properties: {\"bNeedPrediction\":true}"
+    ],
+    "warnings": []
+  },
+  "20703040536": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040536].PassiveSkill_ID=1312079002:1; GPModularGameplayEffectTable[1312079002].MGEClass=Weapon/Data/Pistol/Pistol_20007000038_null_JDYQ/MGE/MGE_1312079002_JDYQ.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"MGE_1312079002\":1312079002,\"bNeedPrediction\":true}"
+    ],
+    "warnings": []
+  },
+  "20703040537": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040537].PassiveSkill_ID=1312078003:1; GPModularGameplayEffectTable[1312078003].MGEClass=Weapon/Data/AutoGLauncher/AutoGLauncher_20003000017_null_JHBS/MGE/MGE_1312078003_JHBS.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"ActiveSkill\":{\"Name\":\"ActiveSkill\",\"Id\":\"5104301\"}}"
+    ],
+    "warnings": []
+  },
+  "20703040538": {
+    "bindings": {
+      "damage-per-stack": {
+        "row": "lc:120300171_1_0",
+        "field": "coefficient"
+      },
+      "damage-at-three-stacks": {
+        "row": "lc:120300171_1_0",
+        "field": "coefficient",
+        "scale": 3
+      }
+    },
+    "replacements": [
+      {
+        "from": "针对其伤害提高<strong>10%</strong>",
+        "to": "针对其射击伤害提高<strong>{{num:damage-per-stack|percent}}</strong>"
+      },
+      {
+        "from": "最多<strong>30%</strong>",
+        "to": "最多<strong>{{num:damage-at-three-stacks|percent}}</strong>"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040538].PassiveSkill_ID=1312078004:1; GPModularGameplayEffectTable[1312078004].MGEClass=Weapon/Data/AutoGLauncher/AutoGLauncher_20003000017_null_JHBS/MGE/MGE_1312078004_JHBS.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BuffName\":\"Cryo\",\"ModifierID\":120300171,\"BuffHandle\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false},\"AOEID\":1003017005,\"CustomKey\":\"AOECD\"}",
+      "BuffConfigDatatableNew[Cryo]: {\"duration\":10,\"max\":3,\"ids\":[100200001]}"
+    ],
+    "warnings": []
+  },
+  "20703040539": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040539].PassiveSkill_ID=1312078005:1; GPModularGameplayEffectTable[1312078005].MGEClass=Weapon/Data/AutoGLauncher/AutoGLauncher_20003000017_null_JHBS/MGE/MGE_1312078005_JHBS.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"NewGravity\":1,\"NewSpeed\":6000,\"SpawnLocation\":{\"X\":0,\"Y\":0,\"Z\":0},\"CooldownDuration\":2}"
+    ],
+    "warnings": []
+  },
+  "20703040540": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040540].PassiveSkill_ID=1312080001:1; GPModularGameplayEffectTable[1312080001].MGEClass=Weapon/Data/MG/MG_20006000003_JG_CBZS/MGE/MGE_1312080001_CBZS.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"获得光能量概率\":0.05,\"光能量Buff\":\"SeasonTalent_S5_Normal_001\",\"CooldownDuration\":1,\"bNeedPrediction\":true}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: {\"duration\":-1,\"max\":5,\"ids\":[]}"
+    ],
+    "warnings": []
+  },
+  "20703040541": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040541].PassiveSkill_ID=1312080002:1; GPModularGameplayEffectTable[1312080002].MGEClass=Weapon/Data/MG/MG_20006000003_JG_CBZS/MGE/MGE_1312080002_CBZS.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"bNeedPrediction\":true}"
+    ],
+    "warnings": []
+  },
+  "20703040542": {
+    "bindings": {},
+    "replacements": [
+      {
+        "from": "并在<strong>10秒</strong>内使榴弹直击伤害提升<strong>{GPModifier:120600069:BaseValue:0:2:1}</strong>",
+        "to": "并在<strong>10秒</strong>内强化榴弹直击伤害，具体增伤比例待确认"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040542].PassiveSkill_ID=1312067004:1; GPModularGameplayEffectTable[1312067004].MGEClass=Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312067004_YMDH.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"直击伤害BuffName\":\"Weapon_20106000006_11\",\"毒池BuffName_PVP\":\"Weapon_20106000006_5\",\"毒池BuffName_PVE\":\"Weapon_20106000006_4\",\"补满榴弹概率\":0.1,\"CD\":20,\"CustomCD\":\"MGE_1312053001_MHZM\",\"榴弹直击伤害Modifier\":1206000610,\"CooldownDuration\":10,\"bWantManagerByWeapon\":false}",
+      "BuffConfigDatatableNew[Weapon_20106000006_11]: {\"duration\":10,\"max\":1,\"ids\":[]}",
+      "BuffConfigDatatableNew[Weapon_20106000006_5]: {\"duration\":2,\"max\":1,\"ids\":[120600065,120600063]}",
+      "BuffConfigDatatableNew[Weapon_20106000006_4]: {\"duration\":2,\"max\":1,\"ids\":[120600061,120600063]}"
+    ],
+    "warnings": [
+      "描述Token指向120600069（B1 +260%），CDO榴弹直击伤害Modifier却为1206000610（B1 +500%）；执行链未确认，暂不发布该比例。"
+    ]
+  },
+  "20703040543": {
+    "bindings": {
+      "direct-hit-damage": {
+        "row": "lc:1206000610_1_0",
+        "field": "base"
+      }
+    },
+    "replacements": [
+      {
+        "from": "基础直击伤害修改为原伤害的<strong>400%</strong>",
+        "to": "榴弹直击伤害提升<strong>{{num:direct-hit-damage|percent}}</strong>"
+      }
+    ],
+    "evidence": [
+      "WeaponModItemData[20703040543].PassiveSkill_ID=1312067005:1; GPModularGameplayEffectTable[1312067005].MGEClass=Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312067005_YMDH.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"直击伤害Modifier\":1206000610,\"重力系数减少\":-1,\"飞行速度增加\":6000,\"光能量Buff\":\"SeasonTalent_S5_Normal_001\",\"暗能量Buff\":\"SeasonTalent_S5_Normal_002\",\"极速狂热持续时间\":12,\"Invincible Tag\":{\"TagName\":\"AutoGen.State.Invincible\"},\"BuffForNormal\":\"Weapon_20106000006_2\",\"BuffForBoss\":\"Weapon_20106000006_1\",\"ModifyAOE\":[[\"SkillResources.Weapon.YMDH\"]],\"bWantManagerByWeapon\":false,\"bNeedPrediction\":true}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[Weapon_20106000006_2]: {\"duration\":-1,\"max\":100,\"ids\":[]}",
+      "BuffConfigDatatableNew[Weapon_20106000006_1]: {\"duration\":-1,\"max\":1200,\"ids\":[]}"
+    ],
+    "warnings": [
+      "MGE文案称直击变为400%；CDO直击伤害Modifier=1206000610，Numerical B1 BaseValue=5，应为+500%。"
+    ]
+  },
+  "20703040544": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040544].PassiveSkill_ID=1312054003:1; GPModularGameplayEffectTable[1312054003].MGEClass=Weapon/Data/MG/MG_20006000017_null_MHZM/MGE/MGE_1312054003_MHZM.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BuffHandle\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false},\"暗能量Buff\":\"SeasonTalent_S5_Normal_002\",\"骨矛蓄能Buff\":\"Weapon_20106000017_2\",\"ModifierID\":120600173,\"BuffH\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false},\"bNeedPrediction\":true}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[Weapon_20106000017_2]: {\"duration\":-1,\"max\":3,\"ids\":[]}"
+    ],
+    "warnings": []
+  },
+  "20703040545": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040545].PassiveSkill_ID=1312054004:1; GPModularGameplayEffectTable[1312054004].MGEClass=Weapon/Data/MG/MG_20006000017_null_MHZM/MGE/MGE_1312054004_MHZM.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"AoeCount\":12,\"暗能量Buff\":\"SeasonTalent_S5_Normal_002\",\"1层概率\":0.33,\"2层概率\":0.66,\"3层概率\":1,\"致命骨矛Buff\":\"Weapon_20106000017_3\",\"BuffHandle\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false},\"bNeedPrediction\":true}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[Weapon_20106000017_3]: {\"duration\":-1,\"max\":3,\"ids\":[]}"
+    ],
+    "warnings": []
+  },
+  "20703040546": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040546].PassiveSkill_ID=1312080003:1; GPModularGameplayEffectTable[1312080003].MGEClass=Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080003_CLLY.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"LYZLBuff\":\"Weapon_20014000011_1\",\"BuffHandler\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false},\"TrackBuff\":\"Weapon_20114000001_1\",\"RemainTrackingBullet\":47,\"爆炸增伤\":121400043,\"命中增伤\":121400044,\"追踪弹Buff\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false}}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[Weapon_20014000011_1]: {\"duration\":-1,\"max\":255,\"ids\":[]}",
+      "BuffConfigDatatableNew[Weapon_20114000001_1]: {\"duration\":-1,\"max\":47,\"ids\":[]}"
+    ],
+    "warnings": [
+      "拒绝参考站旧版3层/+60%爆炸伤害；预载详情为2层且显式引用121400044(B1 AllDamageRatio +70%)。"
+    ]
+  },
+  "20703040547": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040547].PassiveSkill_ID=1312080004:1; GPModularGameplayEffectTable[1312080004].MGEClass=Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080004_CLLY.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"TrackingBuff\":\"Weapon_20114000001_1\",\"爆炸增伤\":121400041,\"WeaponEffect\":13120801,\"命中增伤\":121400042}",
+      "BuffConfigDatatableNew[Weapon_20114000001_1]: {\"duration\":-1,\"max\":47,\"ids\":[]}"
+    ],
+    "warnings": []
+  },
+  "20703040548": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040548].PassiveSkill_ID=1312080005:1; GPModularGameplayEffectTable[1312080005].MGEClass=Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080005_CLLY.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"BuffName\":\"Weapon_20014000012_1\"}",
+      "BuffConfigDatatableNew[Weapon_20014000012_1]: {\"duration\":5,\"max\":1,\"ids\":[]}"
+    ],
+    "warnings": []
+  },
+  "20703040549": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040549].PassiveSkill_ID=1312074004:1; GPModularGameplayEffectTable[1312074004].MGEClass=Weapon/Data/MG/MG_20006000030_WBH_HSYD/MGE/MGE_1312074004_HSYD.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"压制火力Buff\":\"Weapon_20106000030_6\",\"过载射击Buff\":\"HSYD_2_ActiveSkill_Duration\",\"BuffHandle\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false},\"RapidFeverEffect\":{\"Handle\":0},\"bNeedPrediction\":true}",
+      "BuffConfigDatatableNew[Weapon_20106000030_6]: {\"duration\":-1,\"max\":300,\"ids\":[]}",
+      "BuffConfigDatatableNew[HSYD_2_ActiveSkill_Duration]: {\"duration\":-1,\"max\":1,\"ids\":[]}"
+    ],
+    "warnings": []
+  },
+  "20703040550": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040550].PassiveSkill_ID=1312074005:1; GPModularGameplayEffectTable[1312074005].MGEClass=Weapon/Data/MG/MG_20006000030_WBH_HSYD/MGE/MGE_1312074005_HSYD.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"PickUpId\":59902001701,\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"PickupProbability\":0.1,\"Bright‌Buff\":\"SeasonTalent_S5_Normal_001\",\"BuffTime\":5,\"MarkBuff\":\"Weapon_20106000030_8\",\"FeverHandle\":{\"Handle\":0},\"BuffHandle\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false}}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[Weapon_20106000030_8]: {\"duration\":-1,\"max\":1,\"ids\":[]}"
+    ],
+    "warnings": []
+  },
+  "20703040551": {
+    "bindings": {
+      "fire-rate-per-stack": {
+        "row": "lc:1410210103_1_0",
+        "field": "base"
+      },
+      "reload-per-stack": {
+        "row": "lc:1410210104_1_0",
+        "field": "base"
+      },
+      "skill-per-stack": {
+        "row": "lc:130044411_1_0",
+        "field": "coefficient"
+      },
+      "skill-at-five-stacks": {
+        "row": "lc:130044411_1_0",
+        "field": "coefficient",
+        "scale": 5
+      }
+    },
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040551].PassiveSkill_ID=1312071002:1; GPModularGameplayEffectTable[1312071002].MGEClass=Weapon/Data/DMR/DMR_20014000005_WBH_SSLS/MGE/MGE_1312071002_SSLS.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"光能量Buff\":\"SeasonTalent_S5_Normal_001\",\"射速、换弹速度提升Buff\":\"SSLS_Lightbuff\",\"直击伤害Modifier\":130044411,\"暗能量Buff\":\"SeasonTalent_S5_Normal_002\",\"光能量层数-射速加成映射\":[{\"Key\":\"1\",\"Value\":1},{\"Key\":\"2\",\"Value\":2},{\"Key\":\"3\",\"Value\":3},{\"Key\":\"4\",\"Value\":4},{\"Key\":\"5\",\"Value\":5}],\"Buff时长映射\":[{\"Key\":\"1\",\"Value\":15},{\"Key\":\"2\",\"Value\":15},{\"Key\":\"3\",\"Value\":15},{\"Key\":\"4\",\"Value\":15},{\"Key\":\"5\",\"Value\":15}],\"BuffHandle\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false},\"暗能量层数-死神之光伤害映射\":[{\"Key\":\"1\",\"Value\":1},{\"Key\":\"2\",\"Value\":2},{\"Key\":\"3\",\"Value\":3},{\"Key\":\"4\",\"Value\":4},{\"Key\":\"5\",\"Value\":5}],\"CooldownDuration\":0,\"bWantManagerByWeapon\":false,\"bNeedPrediction\":true}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_001]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "BuffConfigDatatableNew[SSLS_Lightbuff]: {\"duration\":10,\"max\":5,\"ids\":[1410210103,1410210104]}",
+      "BuffConfigDatatableNew[SeasonTalent_S5_Normal_002]: {\"duration\":-1,\"max\":5,\"ids\":[]}",
+      "CDO光能量层数-射速加成映射与暗能量层数-死神之光伤害映射均为1..5；Buff时长映射各层均15秒；直击伤害Modifier=130044411实际属性为WeaponSkillDamageRatio，Base=0, Coef=.55。"
+    ],
+    "warnings": [
+      "MGE详情为空，依据CDO映射、SSLS_Lightbuff.GPModifyIDs及Numerical补充；Buff默认Duration=10，CDO各层传入时长15。"
+    ],
+    "description": "获得光能量时，根据当前光能量层数提升射速和换弹速度：每层分别提升<strong>{{num:fire-rate-per-stack|percent}}</strong>和<strong>{{num:reload-per-stack|percent}}</strong>，最多<strong>5层</strong>，持续<strong>15秒</strong>。持有暗能量时，根据暗能量层数提升死神之光技能伤害，每层提升<strong>{{num:skill-per-stack|percent}}</strong>，最多提升<strong>{{num:skill-at-five-stacks|percent}}</strong>。"
+  },
+  "20703040569": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040569].PassiveSkill_ID=1312082001:1; GPModularGameplayEffectTable[1312082001].MGEClass=Weapon/Data/Pistol/Pistol_20007000012_null_FEDL/MGE/MGE_1312082001_LTZY.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{},\"bWantManagerByWeapon\":false}"
+    ],
+    "warnings": []
+  },
+  "20703040570": {
+    "bindings": {},
+    "replacements": [],
+    "evidence": [
+      "WeaponModItemData[20703040570].PassiveSkill_ID=1312083001:1; GPModularGameplayEffectTable[1312083001].MGEClass=Weapon/Data/Rifle/Rifle_20001000019_WBH_LT999P/MGE/MGE_1312083001_LT999P_DarkGoldPlugin.json",
+      "MGE CDO properties: {\"UberGraphFrame\":{}}"
+    ],
+    "warnings": []
+  }
+}

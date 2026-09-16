@@ -31,7 +31,7 @@ import { isValidDateKey } from "../lib/date-key";
 import { NUM_MODIFIER_RESOLVER } from "../lib/num-modifier-data";
 
 const ROOT_DIR = process.cwd();
-const REFS_DIR = path.join(ROOT_DIR, "refs/Exports/NZM/Content");
+let REFS_DIR = path.join(ROOT_DIR, "refs/Exports/NZM/Content");
 const PERKS_DIR = path.join(ROOT_DIR, "data/perks");
 const ICONS_DIR = path.join(ROOT_DIR, "public/icons/perks");
 const BULK_IMPORT_REPORT = path.join(
@@ -364,6 +364,12 @@ function parseArgs(argv: string[]): Options {
       addList(options.ids, argv[++index] ?? "");
     } else if (arg.startsWith("--ids=") || arg.startsWith("--id=")) {
       addList(options.ids, arg.slice(arg.indexOf("=") + 1));
+    } else if (arg === "--content-root") {
+      const contentRoot = argv[++index];
+      if (!contentRoot || contentRoot.startsWith("--")) {
+        throw new Error("--content-root 必须提供 Content 目录");
+      }
+      REFS_DIR = path.resolve(ROOT_DIR, contentRoot);
     } else if (arg === "--season") {
       options.season = argv[++index] ?? options.season;
     } else if (arg.startsWith("--season=")) {
@@ -422,6 +428,7 @@ function printHelp() {
   --all-with-icons   按 ItemID 导入所有本地缺失且 refs PNG 图标源存在的插件
   --ids <id,...>     按插件 ID 筛选
   --season <value>   新草稿的 season，默认 pending
+  --content-root <path>  原地读取指定 Content 目录，默认 refs/Exports/NZM/Content
   --release-date <YYYY-MM-DD> 新建已上线插件或同步上线转换时写入最近上线日期
   --sync-status      同步已有 MDX 的 CollectMODItem、MakeMODItem、IsCooked（跳过 availability_override）
   --sync-ids         同步已有 MDX 的缺失 id，不修改其它字段
@@ -1575,7 +1582,10 @@ function main() {
           ? []
           : missing) {
         const slotDir = path.join(PERKS_DIR, `slot-${record.slot}`);
-        const filePath = path.join(slotDir, `${safeFileName(record.name)}.mdx`);
+        const preferredPath = path.join(slotDir, `${safeFileName(record.name)}.mdx`);
+        const filePath = fs.existsSync(preferredPath)
+          ? path.join(slotDir, `${safeFileName(record.name)}-${record.id}.mdx`)
+          : preferredPath;
         fs.mkdirSync(slotDir, { recursive: true });
         if (fs.existsSync(filePath)) {
           throw new Error(`拒绝覆盖已有文件: ${filePath}`);

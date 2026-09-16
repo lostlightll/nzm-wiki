@@ -12,6 +12,13 @@ test("上线当天属于近期上新", () => {
   assert.equal(isPerkRecent(ONLINE_PERK, "2026-07-24"), true);
 });
 
+test("预载收集开关和日期不会让 S4 Preview 进入近期上线", () => {
+  assert.equal(
+    isPerkRecent({ ...ONLINE_PERK, season: "s4-preview" }, "2026-07-24"),
+    false,
+  );
+});
+
 test("上线后的第 7 个自然日仍属于近期上新", () => {
   assert.equal(isPerkRecent(ONLINE_PERK, "2026-07-30"), true);
 });

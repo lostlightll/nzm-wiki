@@ -11,10 +11,11 @@ import type {
 } from "@/types";
 import { isValidDateKey } from "@/lib/date-key";
 import {
-  NUM_MODIFIER_RESOLVER,
+  getPerkModifierResolver,
   NUM_MODIFIER_SEMANTICS,
 } from "@/lib/num-modifier-data";
 import type {
+  NumModifierResolver,
   NumModifierRowKey,
   NumModifierValueBindings,
   NumModifierValueExpression,
@@ -47,6 +48,7 @@ function parseEffectValueStages(
   field: string,
   filePath: string,
   bindings: NumModifierValueBindings,
+  resolver: NumModifierResolver,
 ): EffectValueStage[] {
   if (!Array.isArray(value) || value.length === 0) {
     throw new Error(`插件 ${field} 必须包含至少一个阶段: ${filePath}`);
@@ -104,7 +106,7 @@ function parseEffectValueStages(
           `插件 ${field}[${index}].value Num 引用包含未知字段: ${filePath}`,
         );
       }
-      resolvedValue = NUM_MODIFIER_RESOLVER.resolveValue(
+      resolvedValue = resolver.resolveValue(
         expression,
         format,
         `${filePath}#${field}[${index}]`,
@@ -137,6 +139,7 @@ function parseEffectValueStages(
 function parseNumModifierValues(
   value: unknown,
   filePath: string,
+  resolver: NumModifierResolver,
 ): NumModifierValueBindings {
   if (value === undefined) return {};
   if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -189,7 +192,7 @@ function parseNumModifierValues(
       field,
       ...(scale === undefined ? {} : { scale }),
     };
-    NUM_MODIFIER_RESOLVER.resolveValue(
+    resolver.resolveValue(
       expression,
       "number",
       `${filePath}#num_modifier_values.${alias}`,
@@ -203,12 +206,13 @@ function resolveDescription(
   value: unknown,
   filePath: string,
   bindings: NumModifierValueBindings,
+  resolver: NumModifierResolver,
 ): string | undefined {
   if (value === undefined) return undefined;
   if (typeof value !== "string") {
     throw new Error(`插件 description 必须是字符串: ${filePath}`);
   }
-  return NUM_MODIFIER_RESOLVER.resolveTemplate(
+  return resolver.resolveTemplate(
     value,
     bindings,
     `${filePath}#description`,
@@ -219,6 +223,7 @@ function parseEffectValues(
   value: unknown,
   filePath: string,
   bindings: NumModifierValueBindings,
+  resolver: NumModifierResolver,
 ): PerkEffectValue[] | undefined {
   if (value === undefined) return undefined;
   if (!Array.isArray(value) || value.length === 0) {
@@ -245,6 +250,7 @@ function parseEffectValues(
       `effect_values[${index}].stages`,
       filePath,
       bindings,
+      resolver,
     );
     const referencedAliases = (record.stages as unknown[]).flatMap((stage) => {
       if (!stage || typeof stage !== "object" || Array.isArray(stage)) return [];
@@ -274,7 +280,7 @@ function parseEffectValues(
             `插件 effect_values[${index}] 引用了未知 Num 别名 ${alias}: ${filePath}`,
           );
         }
-        const resolvedEffect = NUM_MODIFIER_RESOLVER.resolveEffect(
+        const resolvedEffect = resolver.resolveEffect(
           expression,
           undefined,
           `${filePath}#effect_values[${index}].stages[${stageIndex}]`,
@@ -440,20 +446,24 @@ export function getAllPerks(): Perk[] {
       const filePath = path.join(slotDir, file);
       const content = fs.readFileSync(filePath, "utf-8");
       const { data } = matter(content);
+      const resolver = getPerkModifierResolver(data.season);
       const numModifierValues = parseNumModifierValues(
         data.num_modifier_values,
         filePath,
+        resolver,
       );
       const description = resolveDescription(
         data.description,
         filePath,
         numModifierValues,
+        resolver,
       );
       const perk: Perk = {
         id: file.replace(".mdx", ""),
         itemId: requireNonEmptyString(data.id, "id", filePath),
         slug: `slot-${slot}/${file.replace(".mdx", "")}`,
         name: data.title,
+        season: typeof data.season === "string" ? data.season : undefined,
         slot: data.slot as PerkSlot,
         rarity: data.rarity as Rarity,
         category: data.category || "其他",
@@ -464,6 +474,7 @@ export function getAllPerks(): Perk[] {
           data.effect_values,
           filePath,
           numModifierValues,
+          resolver,
         ),
         independentDamageSources: parseIndependentDamageSources(
           data.independent_damage_sources,
@@ -493,20 +504,24 @@ export function getPerkByName(name: string): Perk | null {
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, "utf-8");
       const { data } = matter(content);
+      const resolver = getPerkModifierResolver(data.season);
       const numModifierValues = parseNumModifierValues(
         data.num_modifier_values,
         filePath,
+        resolver,
       );
       const description = resolveDescription(
         data.description,
         filePath,
         numModifierValues,
+        resolver,
       );
       return {
         id: name,
         itemId: requireNonEmptyString(data.id, "id", filePath),
         slug: `slot-${slot}/${name}`,
         name: data.title,
+        season: typeof data.season === "string" ? data.season : undefined,
         slot: data.slot as PerkSlot,
         rarity: data.rarity as Rarity,
         category: data.category || "其他",
@@ -517,6 +532,7 @@ export function getPerkByName(name: string): Perk | null {
           data.effect_values,
           filePath,
           numModifierValues,
+          resolver,
         ),
         independentDamageSources: parseIndependentDamageSources(
           data.independent_damage_sources,
