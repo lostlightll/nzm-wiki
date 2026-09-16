@@ -62,7 +62,7 @@ export function MultiplierBadges({
         });
         const description = `${factorLabel}：${modifierLabels.join("、")}；点击查看乘区说明`;
         const catalogOverlayClass = isSplitCatalogOverlay
-          ? `${index === 0 ? "rounded-br-md rounded-tl-md" : "rounded-bl-md rounded-tr-md"} min-h-7 min-w-0 max-w-[calc(50%-2px)] justify-center px-1 py-0.5 text-center text-[9px] font-medium leading-4 sm:px-2 sm:text-[11px] after:absolute after:inset-x-0 after:-inset-y-2 after:content-['']`
+          ? `${index === 0 ? "rounded-br-md rounded-tl-md" : "rounded-bl-md rounded-tr-md"} min-h-7 shrink-0 whitespace-nowrap justify-center px-1 py-0.5 text-center text-[9px] font-medium leading-4 after:absolute after:inset-x-0 after:-inset-y-2 after:content-['']`
           : "min-h-7 rounded-bl-md rounded-br-none rounded-tl-none rounded-tr-md px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2 after:content-['']";
 
         return (

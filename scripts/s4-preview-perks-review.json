@@ -735,6 +735,7 @@
     ]
   },
   "20703040531": {
+    "description": "大幅提升龙炎弹射程并减少其散布，并将主动技能替换为急速狂热。急速狂热使射速提升<strong>50%</strong>且不消耗弹药，持续时间<strong>14</strong>秒，冷却时间<strong>30</strong>秒，不阻断自然恢复。",
     "bindings": {},
     "replacements": [],
     "evidence": [
@@ -883,12 +884,7 @@
   },
   "20703040542": {
     "bindings": {},
-    "replacements": [
-      {
-        "from": "并在<strong>10秒</strong>内使榴弹直击伤害提升<strong>{GPModifier:120600069:BaseValue:0:2:1}</strong>",
-        "to": "并在<strong>10秒</strong>内强化榴弹直击伤害，具体增伤比例待确认"
-      }
-    ],
+    "replacements": [],
     "evidence": [
       "WeaponModItemData[20703040542].PassiveSkill_ID=1312067004:1; GPModularGameplayEffectTable[1312067004].MGEClass=Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312067004_YMDH.json",
       "MGE CDO properties: {\"UberGraphFrame\":{},\"直击伤害BuffName\":\"Weapon_20106000006_11\",\"毒池BuffName_PVP\":\"Weapon_20106000006_5\",\"毒池BuffName_PVE\":\"Weapon_20106000006_4\",\"补满榴弹概率\":0.1,\"CD\":20,\"CustomCD\":\"MGE_1312053001_MHZM\",\"榴弹直击伤害Modifier\":1206000610,\"CooldownDuration\":10,\"bWantManagerByWeapon\":false}",
@@ -897,7 +893,7 @@
       "BuffConfigDatatableNew[Weapon_20106000006_4]: {\"duration\":2,\"max\":1,\"ids\":[120600061,120600063]}"
     ],
     "warnings": [
-      "描述Token指向120600069（B1 +260%），CDO榴弹直击伤害Modifier却为1206000610（B1 +500%）；执行链未确认，暂不发布该比例。"
+      "描述Token指向120600069（B1 +260%），CDO榴弹直击伤害Modifier为1206000610（B1 +500%）；维护者明确指定文案采用120600069_1_0.BaseValue=2.6，发布260%。保留CDO差异记录，不宣称执行链已验证。"
     ]
   },
   "20703040543": {
@@ -1048,6 +1044,7 @@
     "warnings": []
   },
   "20703040570": {
+    "description": "雷霆999按弹药消耗比例获得增益：每消耗最大弹药量的<strong>1%</strong>，射击伤害、技能伤害和射速提高<strong>0.3%</strong>，最多计算<strong>70%</strong>的弹药消耗，因此剩余弹药低于<strong>30%</strong>时三项均提高<strong>21%</strong>。主动技能期间，雷霆999开火不消耗弹药。",
     "bindings": {},
     "replacements": [],
     "evidence": [
