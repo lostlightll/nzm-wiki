@@ -960,7 +960,7 @@ function SkillSection({
       </h2>
       {visible.map((m) => {
         const base = getResolvedFieldValue(m.damage.base);
-        const isVariant = primaryModes.some(
+        const isVariant = m.section === "variant" && primaryModes.some(
           (primary) => getResolvedFieldValue(primary.damage.base) === base,
         );
         const healthType = getHealthSettlementType(m);

@@ -100,13 +100,28 @@ export async function getResolvedWeaponBySlug(
   slug: string,
   table: NumericalTable,
 ): Promise<ResolvedWeapon | null> {
-  return (await getResolvedWeaponDocument(slug, table))?.weapon ?? null;
+  return getResolvedWeaponBySlugSync(slug, table);
+}
+
+/** Synchronous consumers use the same resolver and visibility rules as pages. */
+export function getResolvedWeaponBySlugSync(
+  slug: string,
+  table: NumericalTable,
+): ResolvedWeapon | null {
+  return readResolvedWeaponDocument(slug, table)?.weapon ?? null;
 }
 
 export async function getResolvedWeaponDocument(
   slug: string,
   table: NumericalTable,
 ): Promise<ResolvedWeaponDocument | null> {
+  return readResolvedWeaponDocument(slug, table);
+}
+
+function readResolvedWeaponDocument(
+  slug: string,
+  table: NumericalTable,
+): ResolvedWeaponDocument | null {
   const decodedSlug = decodeURIComponent(slug);
   const filePath = path.join(WEAPON_DIRECTORY, `${decodedSlug}.mdx`);
   if (!fs.existsSync(filePath)) return null;

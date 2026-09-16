@@ -1,0 +1,43 @@
+---
+title: 极地夜曲
+schema_version: 2
+game_modes:
+  - lc
+  - td
+keywords:
+  - 冷凝超载
+  - 寒霜侵蚀
+prototype_id: "20007000038"
+item_id: "20107000038"
+use_type: 副武器
+weapon_type: 手枪
+element: 寒冷
+rarity: 传说
+scope: 低倍镜
+damage_sources:
+  - id: normal-shot
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical: { id: 120700380, level: 1 }
+      asc_type_id: "400"
+weapon_type_id: 7
+active_skill_id: 5104201
+---
+<WeaponSkill>
+  <ActiveSkill
+    name="冷凝超载"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20007000038-2.png"
+  >
+    释放技能后，造成寒冷属性的爆炸伤害或技能伤害可获得增益，使下一次武器射击伤害提高 **50%**。增益可储存多层，触发后消耗一层，伤害加成不随层数叠加。后台生效。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="寒霜侵蚀"
+    tag="后台生效"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20007000038-1.png"
+  >
+    给敌人施加冰缓效果时，额外施加 **15%** 减速，持续 **10 秒**。
+  </PassiveSkill>
+</WeaponSkill>

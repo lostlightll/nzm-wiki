@@ -194,11 +194,13 @@ independent_damage_sources:
 
 新增或修改引用后运行 `pnpm test:independent-damage` 与 `pnpm weapon-data:check`。
 
-### 尚无武器条目的预览插件
+### S4 预览插件的武器伤害来源
 
-极寒领域、极寒之触、极寒之痕目前没有可引用的极寒冰神武器 MDX，使用 `data/perk-preview-damage.json` 保存三条选定的完整猎场 Numerical 原始行及原表 SHA-256。维护命令：`pnpm exec tsx scripts/import-preview-perk-damage.ts --source <预载Content>/DataTables/numerical_config_composite.json`。脚本按明确的 ItemID、描述 Token 和 Level 1 身份核验，不导入整表、不刷新正式 Weapon Lock。
+极寒领域、极寒之触、极寒之痕分别引用极寒冰神的 `cold-field`、`cryo-touch`、`ice-orb`。完整原始行和来源 SHA-256 统一保存在 Weapon Lock，不再维护孤立伤害快照。刷新这些数值使用 [Weapon Data Lock 单武器刷新](../architecture/weapon-data-lock.md#单武器局部刷新)，避免混入其他武器的预载变动。
 
-`lib/perk-preview-damage.ts` 仅对登记 ItemID 且 `season: s4-preview` 生效，描述中的 `GPNumericalID:…:HpCalScale:13` 和独立伤害面板共享原始行。猎场基础伤害按 `HpCalScale × 500` 展示，类型取 Health Settlement，暴击与弱点权限取各自布尔字段。当前仅审定这三条冰霜、零破韧、零固定伤害的配置，出现其他结构时校验报错，不能套用默认值。生成器预检拒绝未登记的伤害 Token。新增武器条目后应迁移为上文的武器伤害来源引用。
+`lib/perk-preview-damage.ts` 仅对登记 ItemID 且 `season: s4-preview` 生效。描述中的 `GPNumericalID:…:HpCalScale:13` 必须匹配插件独立引用指向的猎场 Numerical；通过 `lib/weapons.ts` 同步服务入口取得 Resolver 已应用 MDX overrides 的伤害系数，不直接读取武器 frontmatter 或 Lock。独立伤害面板使用同一通用武器 Resolver，类型、破韧、元素、暴击和弱点不再设置预览专用默认值。缺少独立引用、引用不匹配或未登记 Token 均报错。
+
+三份插件 MDX 拥有发布用 `independent_damage_sources`；`scripts/s4-preview-perks-review.json` 保存相同审定引用，供预览生成器重跑时恢复并预检。生成器不刷新 Weapon Lock，需先完成武器导入和 Lock 校验，再生成预览插件。
 
 ## 适用武器
 
@@ -282,7 +284,7 @@ pnpm exec tsx scripts/import-perks.ts --all-with-icons --json
 pnpm exec tsx scripts/prepare-s4-preview-perks.ts --content-root <Content目录> --icon-root <参考图标目录>
 ```
 
-`scripts/s4-preview-perks-review.json` 保存审定 ItemID、身份链、文案替换和未确认项；生成器从指定目录原地读取数据，预检通过后生成 MDX、PNG、WebP 和选定 Numerical 行的预览证据。模板引用由独立预览 Resolver 解析，不改正式服 Lock。未能通过执行配置核验的预览文案不转换为 `effect_values`。
+`scripts/s4-preview-perks-review.json` 保存审定 ItemID、身份链、文案替换、武器独立伤害引用和未确认项；生成器从指定目录原地读取数据，预检通过后生成 MDX、PNG、WebP 和选定 Modifier 行的预览证据。Num 模板由独立预览 Resolver 解析；已导入武器的伤害 Token 使用武器 MDX 引用与 Weapon Lock。生成器不刷新两类 Lock。未能通过执行配置核验的预览文案不转换为 `effect_values`。
 
 初次导入参考 [S4 预览仓库](https://github.com/lostlightll/nzm-wiki-s4-preview) 的 `1e46f2c5dd4296159cf3b268656ae592f0e21dc4` 版本，图标按同 ItemID 的 CommonItem 资源名匹配其 `public/icons/perks/`；描述与数值以本次预载证据为准，不复制参考站旧版字符串 `effect_values`。
 

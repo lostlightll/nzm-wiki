@@ -15,9 +15,12 @@ const EXPECTED_REFERENCES = new Map([
   ["slot-4/蝎刺", ["炼狱蝎王", "xie-ci"]],
   ["slot-4/贯长虹", ["夜影之逝", "guan-chang-hong-jian-qi"]],
   ["slot-4/霜华", ["星海狂想", "frost-ice-spike"]],
+  ["slot-4/极寒领域", ["极寒冰神", "cold-field"]],
+  ["slot-4/极寒之触", ["极寒冰神", "cryo-touch"]],
+  ["slot-4/极寒之痕", ["极寒冰神", "ice-orb"]],
 ]);
 
-test("专属插件显式引用全部八个独立武器伤害来源", () => {
+test("专属插件显式引用全部独立武器伤害来源", () => {
   const actual = new Map(
     getAllPerks().flatMap((perk) =>
       (perk.independentDamageSources ?? []).map(

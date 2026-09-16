@@ -1,0 +1,69 @@
+---
+title: 层流冷焰
+schema_version: 2
+game_modes:
+  - lc
+  - td
+keywords:
+  - 冷焰飞弹
+  - 低温预混
+prototype_id: "20014000001"
+item_id: "20114000001"
+use_type: 主武器
+weapon_type: 射手步枪
+element: 寒冷
+rarity: 传说
+tags:
+  - 双模式
+scope: 高倍镜
+damage_sources:
+  - id: normal-shot
+    name: 普通射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical: { id: 121400010, level: 1 }
+      asc_type_id: "78"
+  - id: homing-hit
+    name: 追踪子弹命中
+    section: fire_mode
+    source:
+      prototype_mode: 1
+      numerical: { id: 121400011, level: 1 }
+      asc_type_id: "235"
+      overrides:
+        asc:
+          attenuation: { status: not_applicable }
+      override_reason: CLLY_Mode2_Config 的 ProjectileSelector 指向 BP_CLLY_CommonWeaponBullet，其 NamedThrowableSettlementConfig.Damage 引用 121400011，为实体追踪弹体命中，不采用 ASC 距离衰减候选。
+  - id: homing-explosion
+    name: 追踪子弹爆炸
+    section: special
+    source:
+      prototype_mode: 1
+      numerical: { id: 121400012, level: 1 }
+  - id: cold-flame-missile
+    name: 冷焰飞弹
+    section: skill
+    source:
+      numerical: { id: 1410140101, level: 1 }
+weapon_type_id: 14
+active_skill_id: 5101401
+---
+<WeaponModeDiff />
+
+<WeaponSkill>
+  <ActiveSkill
+    name="冷焰飞弹"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20014000001-2.png"
+  >
+    释放时召唤 **4 枚**追踪飞弹。接下来的 **8 秒**内，射击命中敌人可继续积累飞弹，积满后自动发射。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="低温预混"
+    tag="双模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20014000001-1.png"
+  >
+    射击命中敌人可积累层数，换弹后进入追踪子弹模式。追踪子弹命中后产生小范围爆炸，并消耗积累的层数；层数耗尽后恢复普通射击。
+  </PassiveSkill>
+</WeaponSkill>

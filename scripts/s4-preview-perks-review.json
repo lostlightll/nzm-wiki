@@ -817,6 +817,14 @@
     "warnings": []
   },
   "20703040537": {
+    "independent_damage_sources": [
+      {
+        "weapon_slug": "极寒冰神",
+        "damage_source_id": "cold-field",
+        "trigger": "主动技能替换为持续12秒的冰霜光环，影响周围9米敌人",
+        "interval": "每1秒"
+      }
+    ],
     "bindings": {},
     "replacements": [],
     "evidence": [
@@ -826,6 +834,14 @@
     "warnings": []
   },
   "20703040538": {
+    "independent_damage_sources": [
+      {
+        "weapon_slug": "极寒冰神",
+        "damage_source_id": "cryo-touch",
+        "trigger": "激光模式攻击冰缓效果超过2层的敌人，触发半径2.5米爆炸",
+        "interval": "1秒"
+      }
+    ],
     "bindings": {
       "damage-per-stack": {
         "row": "lc:120300171_1_0",
@@ -855,6 +871,14 @@
     "warnings": []
   },
   "20703040539": {
+    "independent_damage_sources": [
+      {
+        "weapon_slug": "极寒冰神",
+        "damage_source_id": "ice-orb",
+        "trigger": "冰凌弹直击击杀敌人或命中场景生成冰球，敌人靠近后爆炸",
+        "interval": "每2秒最多生成一枚，最多同时存在3枚"
+      }
+    ],
     "bindings": {},
     "replacements": [],
     "evidence": [

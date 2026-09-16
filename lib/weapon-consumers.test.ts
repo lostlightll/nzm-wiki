@@ -362,6 +362,19 @@ test("primary physical projectiles do not use distance attenuation", async () =>
   }
 });
 
+test("cold homing projectiles keep their own attenuation semantics", async () => {
+  for (const mode of ["lc", "td"] as const) {
+    const weapon = await requireWeapon("层流冷焰", mode);
+    const homing = weapon.damageSources.find(source => source.id === "homing-hit");
+    assert.ok(homing);
+    assert.equal(homing.attenuation.status, "not_applicable");
+    assert.equal(getWeaponAttenuationChartInput(toWeaponDetailData(weapon), homing), null);
+    const normal = getMainDamageSource(weapon);
+    assert.ok(normal);
+    assert.notEqual(getWeaponAttenuationChartInput(toWeaponDetailData(weapon), normal), null);
+  }
+});
+
 test("search and weapon stats use the same normalized LC main source", async () => {
   const allLc = await getAllResolvedWeapons("lc");
   for (const slug of ["星海狂想", "飓风之龙", "幽冥毒皇"]) {

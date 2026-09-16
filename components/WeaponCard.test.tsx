@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
+import matter from "gray-matter";
 import { renderToStaticMarkup } from "react-dom/server";
+import weaponDataLock from "@/data/weapon-data-lock.json";
+import { createWeaponResolver } from "@/lib/weapon-resolver";
+import { WeaponDetailProvider } from "./WeaponDetailContext";
 import { getResolvedFieldValue, toWeaponDetailData } from "@/lib/weapon-consumers";
 import { getResolvedWeaponBySlug } from "@/lib/weapons";
 import {
@@ -9,7 +14,27 @@ import {
   formatFireRate,
   formatLimitedBurstDuration,
   ModeStats,
+  WeaponDetailCard,
 } from "./WeaponCard";
+
+test("independent explosion retains damage stats when its value equals the primary shot", () => {
+  const source = matter(readFileSync("data/weapons/极寒冰神.mdx", "utf8")).data;
+  const weapon = createWeaponResolver(weaponDataLock).resolveWeapon(source, {
+    slug: "极寒冰神", expectedTable: "lc",
+  });
+  const markup = renderToStaticMarkup(
+    <WeaponDetailProvider weapon={toWeaponDetailData(weapon)}>
+      <WeaponDetailCard />
+    </WeaponDetailProvider>,
+  );
+  const explosion = markup.split('id="damage-source-ice-projectile-explosion"')[1]
+    ?.split('id="damage-source-freezing-mist"')[0];
+  assert.ok(explosion);
+  assert.match(explosion, />爆炸伤害</);
+  assert.match(explosion, />150\.0</);
+  assert.match(explosion, />元素异常概率</);
+  assert.match(explosion, />暴击</);
+});
 
 test("formatFireRate averages each burst over its complete firing cycle", () => {
   assert.equal(formatFireRate(400, 0.15, 3, 0.045), "750");

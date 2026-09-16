@@ -168,6 +168,10 @@
       "source": "weapon_pve",
       "source_key": "5101101_1"
     },
+    "5101401_1": {
+      "source": "weapon_pve",
+      "source_key": "5101401_1"
+    },
     "5101501_1": {
       "source": "weapon_pve",
       "source_key": "5101501_1"
@@ -228,6 +232,10 @@
       "source": "weapon_pve",
       "source_key": "5103301_1"
     },
+    "5103401_1": {
+      "source": "weapon_pve",
+      "source_key": "5103401_1"
+    },
     "5103601_1": {
       "source": "gp_fallback",
       "source_key": "5103601"
@@ -239,6 +247,10 @@
     "5104101_1": {
       "source": "weapon_pve",
       "source_key": "5104101_1"
+    },
+    "5104201_1": {
+      "source": "weapon_pve",
+      "source_key": "5104201_1"
     }
   },
   "rows": {
@@ -827,6 +839,49 @@
           "WeaponZoomMovingScaleBase": 1
         },
         "row_name": "73"
+      },
+      "78": {
+        "raw": {
+          "ASCTypeID": "78",
+          "AttenuationMinScale": 0.6,
+          "ChangeClipAmmoCount": 4,
+          "ClipAmmoCountBase": 12,
+          "DistanceBeginAttenuationBase": 7000,
+          "DistanceEndAttenuationBase": 10000,
+          "EquipAnimRate": 0,
+          "EquipTimeBase": 0.4,
+          "FireBoltTimeBase": 0.15,
+          "FireIntervalBase": 0.25,
+          "HaveInfinityAmmo": 0,
+          "KeepPreFireTime": 0,
+          "MaxAmmoCount": 120,
+          "MaxGunRPMRatio": 0.5,
+          "OverchargeActivationTime": 0,
+          "OverchargeDeactivationTime": 0,
+          "ParamLockBitMask": 0,
+          "PreFireTimeBase": 0,
+          "RPMAdjustParamList": "FireInterval;SubFireInterval;FireBoltTimeBase",
+          "SplinterNum": 1,
+          "SubFireCountPerShot": 1,
+          "SubFireIntervalBase": 0,
+          "WeakpointLevel1DamageRatio": 1,
+          "WeakpointLevel2DamageRatio": 1,
+          "WeaponAimingMovingScale": 0.8,
+          "WeaponAmmoCost": 1,
+          "WeaponChargeStrengthOrPreheatMovingScale": 1,
+          "WeaponCrouchingMovingScale": 1,
+          "WeaponFiringMovingScale": 1,
+          "WeaponHitDamageAttenuationCurve": null,
+          "WeaponMovingScaleBase": 0.9,
+          "WeaponReloadMovingScale": 1,
+          "WeaponSprintMovingScaleBase": 0.9,
+          "WeaponZoomMovingScaleBase": 1
+        },
+        "row_name": "78",
+        "source": {
+          "sha256": "d46706240f591b69cb55312c1b12dbdbb9763bfdc3869aa2324cab3aec04d02e",
+          "source_path": "Attributes/AutoGenerate/attr_weapon_asc.json"
+        }
       },
       "86": {
         "raw": {
@@ -2934,6 +2989,49 @@
         },
         "row_name": "225"
       },
+      "235": {
+        "raw": {
+          "ASCTypeID": "235",
+          "AttenuationMinScale": 0.6,
+          "ChangeClipAmmoCount": 4,
+          "ClipAmmoCountBase": 12,
+          "DistanceBeginAttenuationBase": 7000,
+          "DistanceEndAttenuationBase": 10000,
+          "EquipAnimRate": 0,
+          "EquipTimeBase": 0.4,
+          "FireBoltTimeBase": 0.15,
+          "FireIntervalBase": 0.25,
+          "HaveInfinityAmmo": 0,
+          "KeepPreFireTime": 0,
+          "MaxAmmoCount": 120,
+          "MaxGunRPMRatio": 0.5,
+          "OverchargeActivationTime": 0,
+          "OverchargeDeactivationTime": 0,
+          "ParamLockBitMask": 0,
+          "PreFireTimeBase": 0,
+          "RPMAdjustParamList": "FireInterval;SubFireInterval;FireBoltTimeBase",
+          "SplinterNum": 1,
+          "SubFireCountPerShot": 1,
+          "SubFireIntervalBase": 0,
+          "WeakpointLevel1DamageRatio": 1,
+          "WeakpointLevel2DamageRatio": 1,
+          "WeaponAimingMovingScale": 0.8,
+          "WeaponAmmoCost": 0,
+          "WeaponChargeStrengthOrPreheatMovingScale": 1,
+          "WeaponCrouchingMovingScale": 1,
+          "WeaponFiringMovingScale": 1,
+          "WeaponHitDamageAttenuationCurve": null,
+          "WeaponMovingScaleBase": 0.9,
+          "WeaponReloadMovingScale": 1,
+          "WeaponSprintMovingScaleBase": 0.9,
+          "WeaponZoomMovingScaleBase": 1
+        },
+        "row_name": "235",
+        "source": {
+          "sha256": "d46706240f591b69cb55312c1b12dbdbb9763bfdc3869aa2324cab3aec04d02e",
+          "source_path": "Attributes/AutoGenerate/attr_weapon_asc.json"
+        }
+      },
       "236": {
         "raw": {
           "ASCTypeID": "236",
@@ -4806,6 +4904,92 @@
         },
         "row_name": "381"
       },
+      "385": {
+        "raw": {
+          "ASCTypeID": "385",
+          "AttenuationMinScale": 0.6,
+          "ChangeClipAmmoCount": 1,
+          "ClipAmmoCountBase": 30,
+          "DistanceBeginAttenuationBase": 4900,
+          "DistanceEndAttenuationBase": 6000,
+          "EquipAnimRate": 0,
+          "EquipTimeBase": 0.86,
+          "FireBoltTimeBase": 0,
+          "FireIntervalBase": 0.6,
+          "HaveInfinityAmmo": 0,
+          "KeepPreFireTime": 0,
+          "MaxAmmoCount": 150,
+          "MaxGunRPMRatio": 0.5,
+          "OverchargeActivationTime": 0,
+          "OverchargeDeactivationTime": 0,
+          "ParamLockBitMask": 0,
+          "PreFireTimeBase": 0,
+          "RPMAdjustParamList": "FireInterval;SubFireInterval;FireBoltTimeBase",
+          "SplinterNum": 1,
+          "SubFireCountPerShot": 1,
+          "SubFireIntervalBase": 0,
+          "WeakpointLevel1DamageRatio": 1,
+          "WeakpointLevel2DamageRatio": 1,
+          "WeaponAimingMovingScale": 0.8,
+          "WeaponAmmoCost": 1,
+          "WeaponChargeStrengthOrPreheatMovingScale": 1,
+          "WeaponCrouchingMovingScale": 1,
+          "WeaponFiringMovingScale": 1,
+          "WeaponHitDamageAttenuationCurve": null,
+          "WeaponMovingScaleBase": 0.8,
+          "WeaponReloadMovingScale": 1,
+          "WeaponSprintMovingScaleBase": 0.8,
+          "WeaponZoomMovingScaleBase": 1
+        },
+        "row_name": "385",
+        "source": {
+          "sha256": "d46706240f591b69cb55312c1b12dbdbb9763bfdc3869aa2324cab3aec04d02e",
+          "source_path": "Attributes/AutoGenerate/attr_weapon_asc.json"
+        }
+      },
+      "386": {
+        "raw": {
+          "ASCTypeID": "386",
+          "AttenuationMinScale": 0.6,
+          "ChangeClipAmmoCount": 1,
+          "ClipAmmoCountBase": 30,
+          "DistanceBeginAttenuationBase": 6000,
+          "DistanceEndAttenuationBase": 10000,
+          "EquipAnimRate": 0,
+          "EquipTimeBase": 0.5,
+          "FireBoltTimeBase": 0,
+          "FireIntervalBase": 0.15,
+          "HaveInfinityAmmo": 0,
+          "KeepPreFireTime": 0,
+          "MaxAmmoCount": 150,
+          "MaxGunRPMRatio": 0.5,
+          "OverchargeActivationTime": 0,
+          "OverchargeDeactivationTime": 0,
+          "ParamLockBitMask": 0,
+          "PreFireTimeBase": 0,
+          "RPMAdjustParamList": "FireInterval;SubFireInterval",
+          "SplinterNum": 1,
+          "SubFireCountPerShot": 1,
+          "SubFireIntervalBase": 0,
+          "WeakpointLevel1DamageRatio": 1,
+          "WeakpointLevel2DamageRatio": 1,
+          "WeaponAimingMovingScale": 0.8,
+          "WeaponAmmoCost": 1,
+          "WeaponChargeStrengthOrPreheatMovingScale": 1,
+          "WeaponCrouchingMovingScale": 1,
+          "WeaponFiringMovingScale": 1,
+          "WeaponHitDamageAttenuationCurve": null,
+          "WeaponMovingScaleBase": 0.9,
+          "WeaponReloadMovingScale": 1,
+          "WeaponSprintMovingScaleBase": 0.9,
+          "WeaponZoomMovingScaleBase": 1
+        },
+        "row_name": "386",
+        "source": {
+          "sha256": "d46706240f591b69cb55312c1b12dbdbb9763bfdc3869aa2324cab3aec04d02e",
+          "source_path": "Attributes/AutoGenerate/attr_weapon_asc.json"
+        }
+      },
       "388": {
         "raw": {
           "ASCTypeID": "388",
@@ -4961,6 +5145,49 @@
           "WeaponZoomMovingScaleBase": 1
         },
         "row_name": "394"
+      },
+      "400": {
+        "raw": {
+          "ASCTypeID": "400",
+          "AttenuationMinScale": 0.4,
+          "ChangeClipAmmoCount": 1,
+          "ClipAmmoCountBase": 24,
+          "DistanceBeginAttenuationBase": 1800,
+          "DistanceEndAttenuationBase": 4000,
+          "EquipAnimRate": 0,
+          "EquipTimeBase": 0.5,
+          "FireBoltTimeBase": 0,
+          "FireIntervalBase": 0.166,
+          "HaveInfinityAmmo": 0,
+          "KeepPreFireTime": 0,
+          "MaxAmmoCount": 216,
+          "MaxGunRPMRatio": 0.5,
+          "OverchargeActivationTime": 0,
+          "OverchargeDeactivationTime": 0,
+          "ParamLockBitMask": 0,
+          "PreFireTimeBase": 0,
+          "RPMAdjustParamList": "FireInterval;SubFireInterval",
+          "SplinterNum": 1,
+          "SubFireCountPerShot": 1,
+          "SubFireIntervalBase": 0,
+          "WeakpointLevel1DamageRatio": 1,
+          "WeakpointLevel2DamageRatio": 1,
+          "WeaponAimingMovingScale": 0.8,
+          "WeaponAmmoCost": 1,
+          "WeaponChargeStrengthOrPreheatMovingScale": 1,
+          "WeaponCrouchingMovingScale": 1,
+          "WeaponFiringMovingScale": 1,
+          "WeaponHitDamageAttenuationCurve": null,
+          "WeaponMovingScaleBase": 0.9,
+          "WeaponReloadMovingScale": 1,
+          "WeaponSprintMovingScaleBase": 0.9,
+          "WeaponZoomMovingScaleBase": 1
+        },
+        "row_name": "400",
+        "source": {
+          "sha256": "d46706240f591b69cb55312c1b12dbdbb9763bfdc3869aa2324cab3aec04d02e",
+          "source_path": "Attributes/AutoGenerate/attr_weapon_asc.json"
+        }
       }
     },
     "feel": {
@@ -6088,6 +6315,85 @@
           "ZoomingShotSpreadRatio": 0.3
         },
         "row_name": "73"
+      },
+      "78": {
+        "raw": {
+          "AccuracyRatio_Climb": 1.2,
+          "AccuracyRatio_Jump": 1.4,
+          "AccuracyRatio_Stand": 1,
+          "AccuracyRatio_StandWalk": 1.2,
+          "AutoChangeClipAfterFireInterval": 0,
+          "BulletChainDefaultAngle": 0,
+          "BulletChainDefaultExpandOffset": 0,
+          "BulletChainFireModifierInc": 0,
+          "CrossHairJumpMaxAngle": 0.15,
+          "CrossHairJumpSpreadScale": 1,
+          "CrosshairAccuracyRatio_Climb": 1,
+          "CrosshairAccuracyRatio_Jump": 1,
+          "CrosshairAccuracyRatio_Stand": 1,
+          "CrosshairAccuracyRatio_StandWalk": 1,
+          "CrosshairChainMaxDescendSpeed": 2,
+          "CrosshairChainMaxScreenScale": 0.25,
+          "CrosshairChainScale": 2,
+          "CrosshairDefaultExpandOffset": 0,
+          "CrosshairFireModifierInc": 0.02,
+          "CrosshairMaxDescendInterval": 0.1,
+          "CrosshairMaxDescendSpeed": 3,
+          "CrosshairMaxExpandRatio": 1.1,
+          "CrosshairMaxScreenScale": 0.45,
+          "CrouchingShotSpreadRatio": 0.6,
+          "FeelLockBitMask": 0,
+          "FireBeforeBoltCount": 1,
+          "HDCrosshairChainScaleRatio": 1,
+          "HDCrosshairScaleRatio": 1,
+          "HDRecoilScaleRatio": 1,
+          "HDSpreadScaleRatio": 1,
+          "HitFeedbackSpringDamping": 0.75,
+          "HitFeedbackSpringFrequency": 5.5,
+          "HitFeedbackStopPeakThresholdDeg": 0.05,
+          "HitMarkRotationMaxAngle": 5.5,
+          "HitMarkRotationOppositeChance": 1,
+          "LowAmmoPercent": 0.3,
+          "LowCarriedAmmoPercent": 0.2,
+          "NormalShotSpreadRatioBase": 1,
+          "RecoilDropPct_Hori": 1,
+          "RecoilDropPct_Verti": 1,
+          "RecoilRecoverTime": 1,
+          "RecoilReturnTime": 0.1,
+          "RecoilScaleBase_Hori": 0.8,
+          "RecoilScaleBase_Vert": 0.7,
+          "RecoilScale_Jump": 1,
+          "RecoilScale_Stand": 1,
+          "RecoilScale_StandWalk": 1,
+          "RecoilSideRange": 10,
+          "RecoilTime": 0.1,
+          "RecoilUpTotalMax": 15,
+          "RunToFireInterval": 0.16,
+          "ShotCooldownTime": 0.45,
+          "SpecificWeaponCrosshairAlignment": 1.5,
+          "SpreadDecreaseSpeed_Firing": 5,
+          "SpreadMax": 0.75,
+          "SpreadMin": 0.1,
+          "SpreadModifierBase": 0.1,
+          "SpreadModifierInc": 0.15,
+          "SpreadModifierMax": 1,
+          "SpreadReturnTime": 0,
+          "WeaponAfterChangeClipTimeBase": 0.5,
+          "WeaponBeforeChangeClipTimeBase": 0.5,
+          "WeaponChangeClipEndToFireTime": 0.25,
+          "WeaponChangeClipTimeBase": 0.5,
+          "WeaponFeelParamID": "78",
+          "ZoomInChangeLODTimeBase": 0.2,
+          "ZoomOutChangeLODTimeBase": 0.1,
+          "ZoomOutTimeBase": 0.25,
+          "ZoomTimeBase": 0.25,
+          "ZoomingShotSpreadRatio": 0
+        },
+        "row_name": "78",
+        "source": {
+          "sha256": "1a78ee785a52b85ddb16704069bd8764c77d8306ee8063738dde8fb96875c66d",
+          "source_path": "DataTables/WeaponFeelParamTable.json"
+        }
       },
       "86": {
         "raw": {
@@ -10139,6 +10445,85 @@
         },
         "row_name": "225"
       },
+      "235": {
+        "raw": {
+          "AccuracyRatio_Climb": 1.2,
+          "AccuracyRatio_Jump": 1.4,
+          "AccuracyRatio_Stand": 1,
+          "AccuracyRatio_StandWalk": 1.2,
+          "AutoChangeClipAfterFireInterval": 0,
+          "BulletChainDefaultAngle": 0,
+          "BulletChainDefaultExpandOffset": 0,
+          "BulletChainFireModifierInc": 0,
+          "CrossHairJumpMaxAngle": 0.15,
+          "CrossHairJumpSpreadScale": 1,
+          "CrosshairAccuracyRatio_Climb": 1,
+          "CrosshairAccuracyRatio_Jump": 1,
+          "CrosshairAccuracyRatio_Stand": 1,
+          "CrosshairAccuracyRatio_StandWalk": 1,
+          "CrosshairChainMaxDescendSpeed": 2,
+          "CrosshairChainMaxScreenScale": 0.25,
+          "CrosshairChainScale": 2,
+          "CrosshairDefaultExpandOffset": 0,
+          "CrosshairFireModifierInc": 0.02,
+          "CrosshairMaxDescendInterval": 0.1,
+          "CrosshairMaxDescendSpeed": 3,
+          "CrosshairMaxExpandRatio": 1.1,
+          "CrosshairMaxScreenScale": 0.45,
+          "CrouchingShotSpreadRatio": 0.6,
+          "FeelLockBitMask": 0,
+          "FireBeforeBoltCount": 1,
+          "HDCrosshairChainScaleRatio": 1,
+          "HDCrosshairScaleRatio": 1,
+          "HDRecoilScaleRatio": 1,
+          "HDSpreadScaleRatio": 1,
+          "HitFeedbackSpringDamping": 0.75,
+          "HitFeedbackSpringFrequency": 5.5,
+          "HitFeedbackStopPeakThresholdDeg": 0.05,
+          "HitMarkRotationMaxAngle": 5.5,
+          "HitMarkRotationOppositeChance": 1,
+          "LowAmmoPercent": 0.3,
+          "LowCarriedAmmoPercent": 0.2,
+          "NormalShotSpreadRatioBase": 1,
+          "RecoilDropPct_Hori": 1,
+          "RecoilDropPct_Verti": 1,
+          "RecoilRecoverTime": 1,
+          "RecoilReturnTime": 0.1,
+          "RecoilScaleBase_Hori": 0.8,
+          "RecoilScaleBase_Vert": 0.7,
+          "RecoilScale_Jump": 1,
+          "RecoilScale_Stand": 1,
+          "RecoilScale_StandWalk": 1,
+          "RecoilSideRange": 10,
+          "RecoilTime": 0.1,
+          "RecoilUpTotalMax": 15,
+          "RunToFireInterval": 0.16,
+          "ShotCooldownTime": 0.45,
+          "SpecificWeaponCrosshairAlignment": 1.5,
+          "SpreadDecreaseSpeed_Firing": 5,
+          "SpreadMax": 0.75,
+          "SpreadMin": 0.1,
+          "SpreadModifierBase": 0.1,
+          "SpreadModifierInc": 0.15,
+          "SpreadModifierMax": 1,
+          "SpreadReturnTime": 0,
+          "WeaponAfterChangeClipTimeBase": 0.5,
+          "WeaponBeforeChangeClipTimeBase": 0.5,
+          "WeaponChangeClipEndToFireTime": 0.25,
+          "WeaponChangeClipTimeBase": 0.5,
+          "WeaponFeelParamID": "235",
+          "ZoomInChangeLODTimeBase": 0.2,
+          "ZoomOutChangeLODTimeBase": 0.1,
+          "ZoomOutTimeBase": 0.25,
+          "ZoomTimeBase": 0.25,
+          "ZoomingShotSpreadRatio": 0
+        },
+        "row_name": "235",
+        "source": {
+          "sha256": "1a78ee785a52b85ddb16704069bd8764c77d8306ee8063738dde8fb96875c66d",
+          "source_path": "DataTables/WeaponFeelParamTable.json"
+        }
+      },
       "236": {
         "raw": {
           "AccuracyRatio_Climb": 1.2,
@@ -13739,6 +14124,164 @@
         },
         "row_name": "381"
       },
+      "385": {
+        "raw": {
+          "AccuracyRatio_Climb": 1.2,
+          "AccuracyRatio_Jump": 1.2,
+          "AccuracyRatio_Stand": 1,
+          "AccuracyRatio_StandWalk": 1.2,
+          "AutoChangeClipAfterFireInterval": 0,
+          "BulletChainDefaultAngle": 0,
+          "BulletChainDefaultExpandOffset": 0,
+          "BulletChainFireModifierInc": 0,
+          "CrossHairJumpMaxAngle": 0.15,
+          "CrossHairJumpSpreadScale": 1,
+          "CrosshairAccuracyRatio_Climb": 1,
+          "CrosshairAccuracyRatio_Jump": 1,
+          "CrosshairAccuracyRatio_Stand": 1,
+          "CrosshairAccuracyRatio_StandWalk": 1,
+          "CrosshairChainMaxDescendSpeed": 1,
+          "CrosshairChainMaxScreenScale": 0.25,
+          "CrosshairChainScale": 1,
+          "CrosshairDefaultExpandOffset": 0,
+          "CrosshairFireModifierInc": 0.02,
+          "CrosshairMaxDescendInterval": 0.6,
+          "CrosshairMaxDescendSpeed": 1,
+          "CrosshairMaxExpandRatio": 1.1,
+          "CrosshairMaxScreenScale": 1,
+          "CrouchingShotSpreadRatio": 0.6,
+          "FeelLockBitMask": 0,
+          "FireBeforeBoltCount": 0,
+          "HDCrosshairChainScaleRatio": 1,
+          "HDCrosshairScaleRatio": 1,
+          "HDRecoilScaleRatio": 1,
+          "HDSpreadScaleRatio": 1,
+          "HitFeedbackSpringDamping": 0.75,
+          "HitFeedbackSpringFrequency": 5.5,
+          "HitFeedbackStopPeakThresholdDeg": 0.05,
+          "HitMarkRotationMaxAngle": 5.5,
+          "HitMarkRotationOppositeChance": 1,
+          "LowAmmoPercent": 0.3,
+          "LowCarriedAmmoPercent": 0.2,
+          "NormalShotSpreadRatioBase": 1,
+          "RecoilDropPct_Hori": 1,
+          "RecoilDropPct_Verti": 1,
+          "RecoilRecoverTime": 1,
+          "RecoilReturnTime": 0.2,
+          "RecoilScaleBase_Hori": 0.8,
+          "RecoilScaleBase_Vert": 0.7,
+          "RecoilScale_Jump": 1,
+          "RecoilScale_Stand": 1,
+          "RecoilScale_StandWalk": 1,
+          "RecoilSideRange": 10,
+          "RecoilTime": 0.15,
+          "RecoilUpTotalMax": 15,
+          "RunToFireInterval": 0.16,
+          "ShotCooldownTime": 0.15,
+          "SpecificWeaponCrosshairAlignment": 0,
+          "SpreadDecreaseSpeed_Firing": 1,
+          "SpreadMax": 1.2,
+          "SpreadMin": 0.6,
+          "SpreadModifierBase": 0.3,
+          "SpreadModifierInc": 0.3,
+          "SpreadModifierMax": 1,
+          "SpreadReturnTime": 0,
+          "WeaponAfterChangeClipTimeBase": 0.667,
+          "WeaponBeforeChangeClipTimeBase": 0,
+          "WeaponChangeClipEndToFireTime": 0.367508,
+          "WeaponChangeClipTimeBase": 2.6,
+          "WeaponFeelParamID": "385",
+          "ZoomInChangeLODTimeBase": 0.1,
+          "ZoomOutChangeLODTimeBase": 0.1,
+          "ZoomOutTimeBase": 0.5,
+          "ZoomTimeBase": 0.467,
+          "ZoomingShotSpreadRatio": 0
+        },
+        "row_name": "385",
+        "source": {
+          "sha256": "1a78ee785a52b85ddb16704069bd8764c77d8306ee8063738dde8fb96875c66d",
+          "source_path": "DataTables/WeaponFeelParamTable.json"
+        }
+      },
+      "386": {
+        "raw": {
+          "AccuracyRatio_Climb": 1.2,
+          "AccuracyRatio_Jump": 1.4,
+          "AccuracyRatio_Stand": 1,
+          "AccuracyRatio_StandWalk": 1.2,
+          "AutoChangeClipAfterFireInterval": 0,
+          "BulletChainDefaultAngle": 0,
+          "BulletChainDefaultExpandOffset": 0,
+          "BulletChainFireModifierInc": 0,
+          "CrossHairJumpMaxAngle": 0.15,
+          "CrossHairJumpSpreadScale": 1,
+          "CrosshairAccuracyRatio_Climb": 1,
+          "CrosshairAccuracyRatio_Jump": 1.2,
+          "CrosshairAccuracyRatio_Stand": 1,
+          "CrosshairAccuracyRatio_StandWalk": 1.2,
+          "CrosshairChainMaxDescendSpeed": 5,
+          "CrosshairChainMaxScreenScale": 1,
+          "CrosshairChainScale": 0.8,
+          "CrosshairDefaultExpandOffset": 0,
+          "CrosshairFireModifierInc": 0.02,
+          "CrosshairMaxDescendInterval": 0.15,
+          "CrosshairMaxDescendSpeed": 2,
+          "CrosshairMaxExpandRatio": 5,
+          "CrosshairMaxScreenScale": 1,
+          "CrouchingShotSpreadRatio": 0.6,
+          "FeelLockBitMask": 0,
+          "FireBeforeBoltCount": 0,
+          "HDCrosshairChainScaleRatio": 1,
+          "HDCrosshairScaleRatio": 1,
+          "HDRecoilScaleRatio": 1,
+          "HDSpreadScaleRatio": 1,
+          "HitFeedbackSpringDamping": 0.75,
+          "HitFeedbackSpringFrequency": 5.5,
+          "HitFeedbackStopPeakThresholdDeg": 0.05,
+          "HitMarkRotationMaxAngle": 5.5,
+          "HitMarkRotationOppositeChance": 1,
+          "LowAmmoPercent": 0.3,
+          "LowCarriedAmmoPercent": 0.2,
+          "NormalShotSpreadRatioBase": 1,
+          "RecoilDropPct_Hori": 1,
+          "RecoilDropPct_Verti": 1,
+          "RecoilRecoverTime": 1,
+          "RecoilReturnTime": 0.16,
+          "RecoilScaleBase_Hori": 0.8,
+          "RecoilScaleBase_Vert": 0.7,
+          "RecoilScale_Jump": 1,
+          "RecoilScale_Stand": 1,
+          "RecoilScale_StandWalk": 1,
+          "RecoilSideRange": 10,
+          "RecoilTime": 0.06,
+          "RecoilUpTotalMax": 15,
+          "RunToFireInterval": 0.08,
+          "ShotCooldownTime": 0.1,
+          "SpecificWeaponCrosshairAlignment": 4.5,
+          "SpreadDecreaseSpeed_Firing": 4,
+          "SpreadMax": 10,
+          "SpreadMin": 0,
+          "SpreadModifierBase": 0.1,
+          "SpreadModifierInc": 0.18,
+          "SpreadModifierMax": 0.3,
+          "SpreadReturnTime": 0,
+          "WeaponAfterChangeClipTimeBase": 0,
+          "WeaponBeforeChangeClipTimeBase": 0,
+          "WeaponChangeClipEndToFireTime": 1.016,
+          "WeaponChangeClipTimeBase": 2.6,
+          "WeaponFeelParamID": "386",
+          "ZoomInChangeLODTimeBase": 0.1,
+          "ZoomOutChangeLODTimeBase": 0.1,
+          "ZoomOutTimeBase": 0.192,
+          "ZoomTimeBase": 0.192,
+          "ZoomingShotSpreadRatio": 0
+        },
+        "row_name": "386",
+        "source": {
+          "sha256": "1a78ee785a52b85ddb16704069bd8764c77d8306ee8063738dde8fb96875c66d",
+          "source_path": "DataTables/WeaponFeelParamTable.json"
+        }
+      },
       "388": {
         "raw": {
           "AccuracyRatio_Climb": 1.2,
@@ -14038,6 +14581,85 @@
           "ZoomingShotSpreadRatio": 0
         },
         "row_name": "394"
+      },
+      "400": {
+        "raw": {
+          "AccuracyRatio_Climb": 1.2,
+          "AccuracyRatio_Jump": 1.4,
+          "AccuracyRatio_Stand": 1,
+          "AccuracyRatio_StandWalk": 1.2,
+          "AutoChangeClipAfterFireInterval": 0,
+          "BulletChainDefaultAngle": 0,
+          "BulletChainDefaultExpandOffset": 0,
+          "BulletChainFireModifierInc": 0,
+          "CrossHairJumpMaxAngle": 0.15,
+          "CrossHairJumpSpreadScale": 1,
+          "CrosshairAccuracyRatio_Climb": 1,
+          "CrosshairAccuracyRatio_Jump": 1.2,
+          "CrosshairAccuracyRatio_Stand": 1,
+          "CrosshairAccuracyRatio_StandWalk": 1.2,
+          "CrosshairChainMaxDescendSpeed": 5,
+          "CrosshairChainMaxScreenScale": 1,
+          "CrosshairChainScale": 0.8,
+          "CrosshairDefaultExpandOffset": 0,
+          "CrosshairFireModifierInc": 0.02,
+          "CrosshairMaxDescendInterval": 0.1,
+          "CrosshairMaxDescendSpeed": 3,
+          "CrosshairMaxExpandRatio": 5,
+          "CrosshairMaxScreenScale": 1,
+          "CrouchingShotSpreadRatio": 0.6,
+          "FeelLockBitMask": 0,
+          "FireBeforeBoltCount": 0,
+          "HDCrosshairChainScaleRatio": 1,
+          "HDCrosshairScaleRatio": 1,
+          "HDRecoilScaleRatio": 1,
+          "HDSpreadScaleRatio": 1,
+          "HitFeedbackSpringDamping": 0.75,
+          "HitFeedbackSpringFrequency": 5.5,
+          "HitFeedbackStopPeakThresholdDeg": 0.05,
+          "HitMarkRotationMaxAngle": 5.5,
+          "HitMarkRotationOppositeChance": 1,
+          "LowAmmoPercent": 0.3,
+          "LowCarriedAmmoPercent": 0.2,
+          "NormalShotSpreadRatioBase": 1,
+          "RecoilDropPct_Hori": 1,
+          "RecoilDropPct_Verti": 1,
+          "RecoilRecoverTime": 1,
+          "RecoilReturnTime": 0.16,
+          "RecoilScaleBase_Hori": 0.8,
+          "RecoilScaleBase_Vert": 0.7,
+          "RecoilScale_Jump": 1,
+          "RecoilScale_Stand": 1,
+          "RecoilScale_StandWalk": 1,
+          "RecoilSideRange": 10,
+          "RecoilTime": 0.14,
+          "RecoilUpTotalMax": 15,
+          "RunToFireInterval": 0.08,
+          "ShotCooldownTime": 0.8,
+          "SpecificWeaponCrosshairAlignment": 4.5,
+          "SpreadDecreaseSpeed_Firing": 4,
+          "SpreadMax": 10,
+          "SpreadMin": 0.7,
+          "SpreadModifierBase": 0.1,
+          "SpreadModifierInc": 0.18,
+          "SpreadModifierMax": 0.5,
+          "SpreadReturnTime": 0,
+          "WeaponAfterChangeClipTimeBase": 0,
+          "WeaponBeforeChangeClipTimeBase": 0,
+          "WeaponChangeClipEndToFireTime": 0.359419,
+          "WeaponChangeClipTimeBase": 1.2,
+          "WeaponFeelParamID": "400",
+          "ZoomInChangeLODTimeBase": 0.1,
+          "ZoomOutChangeLODTimeBase": 0.1,
+          "ZoomOutTimeBase": 0.192,
+          "ZoomTimeBase": 0.192,
+          "ZoomingShotSpreadRatio": 0
+        },
+        "row_name": "400",
+        "source": {
+          "sha256": "1a78ee785a52b85ddb16704069bd8764c77d8306ee8063738dde8fb96875c66d",
+          "source_path": "DataTables/WeaponFeelParamTable.json"
+        }
       }
     },
     "gp-active-skill": {
@@ -15709,6 +16331,163 @@
           "property_style_id": 0
         },
         "row_name": "20103000012"
+      },
+      "20103000017": {
+        "raw": {
+          "AOEID": 0,
+          "Accuracy": 17,
+          "AccuracyInt": 59,
+          "Active_Skill_Abbreviation": "5103401",
+          "Active_Skill_Detail": "5103401",
+          "Active_Skill_Tag": {
+            "Key": "20103000017_Active_Skill_Tag",
+            "LocalizedString": "主动技能;范围伤害",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "主动技能;范围伤害"
+          },
+          "AdaptNodeOffset": {
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "AttrDisplayList": "18",
+          "ChargeTime": 0,
+          "ColumnChart": "",
+          "Description": {
+            "Key": "20103000017_Description",
+            "LocalizedString": "“极寒冰神”最初是极地哨站为解决热能设备过载而改装的应急冷却装置。工程师发现它的冷却效率远超预期，即使在极端环境下也能让局部温度骤降至零下。联盟评估后确认其定向冷却能力具备战术价值，随即投入批量生产，配发前线作战单位。",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "“极寒冰神”最初是极地哨站为解决热能设备过载而改装的应急冷却装置。工程师发现它的冷却效率远超预期，即使在极端环境下也能让局部温度骤降至零下。联盟评估后确认其定向冷却能力具备战术价值，随即投入批量生产，配发前线作战单位。"
+          },
+          "EnergyObtainType": 0,
+          "EquipAttrList": "",
+          "GetDescription": "",
+          "GoldWeaponBackground": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "InfusionAttrViewList": "",
+          "InfusionMaxLevel": 0,
+          "InfusionPartList": "",
+          "IsFormSwitchable": 0,
+          "ItemID": 20103000017,
+          "ItemInfoDes": {
+            "CultureInvariantString": null
+          },
+          "LaserAmmoAdjust": 1,
+          "MGE_ID_list_1": "1003008501_20",
+          "MGE_ID_list_1_tag": {
+            "Key": "20103000017_MGE_ID_list_1_tag",
+            "LocalizedString": "主动激活;四连发",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "主动激活;四连发"
+          },
+          "MGE_ID_list_2": "",
+          "MGE_ID_list_2_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_3": "",
+          "MGE_ID_list_3_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_4": "1003008001_10",
+          "MGE_ID_list_4_tag": {
+            "Key": "20103000017_MGE_ID_list_4_tag",
+            "LocalizedString": "破盾",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "破盾"
+          },
+          "MGE_ID_list_5": "",
+          "MGE_ID_list_5_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_6": "",
+          "MGE_ID_list_6_tag": {
+            "CultureInvariantString": null
+          },
+          "Manufacturer": "飓风军团",
+          "MaxAmplifierLevel": 0,
+          "MaxGradeLevel": 3,
+          "Mod_Num": 3,
+          "ModelID": 20003000017,
+          "ModelOffset": {
+            "X": -5.951078,
+            "Y": -4.515198,
+            "Z": 0
+          },
+          "ModelRotation": {
+            "Pitch": 0,
+            "Roll": 0,
+            "Yaw": 89.99999
+          },
+          "NotGetAttrDisplayList": "102017:57;202500:182;202559:16;202560:32",
+          "PVEAttr": "",
+          "PVPAttr": "",
+          "Passive_Skill1_Abbreviation": "",
+          "Passive_Skill1_Detail": "1003017001",
+          "Passive_Skill1_Tag": {
+            "Key": "20103000017_Passive_Skill1_Tag",
+            "LocalizedString": "双模式",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "双模式"
+          },
+          "Passive_Skill2_Abbreviation": "",
+          "Passive_Skill2_Detail": "",
+          "Passive_Skill2_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill3_Abbreviation": "",
+          "Passive_Skill3_Detail": "",
+          "Passive_Skill3_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill4_Abbreviation": "",
+          "Passive_Skill4_Detail": "",
+          "Passive_Skill4_Tag": {
+            "CultureInvariantString": null
+          },
+          "Quality": 4,
+          "Radar_Accuracy": 6.8,
+          "Radar_Damage": 9,
+          "Radar_Handling": 3.2,
+          "Radar_Mobility": 6.5,
+          "Radar_Range": 3.6,
+          "Radar_Reload": 3.4,
+          "Scaling_Ratio": 0.9,
+          "Score": 0,
+          "ShowAttr": "",
+          "SpecialFireIntervalAdjust": 1,
+          "Stability": 18,
+          "StabilityInt": 64,
+          "WeaponBaseAttrList": "",
+          "WeaponMODConfigID": 34,
+          "WeaponType": 16,
+          "WeaponUpgradeConfigID": 1,
+          "Weapon_Distance_Des": {
+            "Key": "20103000017_Weapon_Distance_Des",
+            "LocalizedString": "近距离单体",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "近距离单体"
+          },
+          "Weapon_Scenarios_Des": {
+            "Key": "20103000017_Weapon_Scenarios_Des",
+            "LocalizedString": "该武器的射程较近，但拥有巨大的威力，能够对近距离的单体目标进行有效打击。",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "该武器的射程较近，但拥有巨大的威力，能够对近距离的单体目标进行有效打击。"
+          },
+          "Weapon_Scope": {
+            "Key": "20103000017_Weapon_Scope",
+            "LocalizedString": "不可开镜",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "不可开镜"
+          },
+          "property_style_id": 0
+        },
+        "row_name": "20103000017",
+        "source": {
+          "sha256": "de68bb5d676f4e496c883f3f2a68bf70c591dfc709ef37a442deabeb03b728ad",
+          "source_path": "DataTables/LuaDataTable/WeaponItemConfigTable.json"
+        }
       },
       "20103000024": {
         "raw": {
@@ -19014,6 +19793,160 @@
           "property_style_id": 0
         },
         "row_name": "20107000021"
+      },
+      "20107000038": {
+        "raw": {
+          "AOEID": 0,
+          "Accuracy": 17,
+          "AccuracyInt": 72,
+          "Active_Skill_Abbreviation": "5104201",
+          "Active_Skill_Detail": "5104201",
+          "Active_Skill_Tag": {
+            "Key": "20107000038_Active_Skill_Tag",
+            "LocalizedString": "主动技能;增益状态",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "主动技能;增益状态"
+          },
+          "AdaptNodeOffset": {
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "AttrDisplayList": "18",
+          "ChargeTime": 0,
+          "ColumnChart": "",
+          "Description": {
+            "Key": "20107000038_Description",
+            "LocalizedString": "“极地夜曲”专为极寒与高纬度夜战环境研发，其内部机械结构经过特殊的抗低温与防冷凝处理，确保了极端条件下的绝对可靠，是执行隐秘任务的理想装备。",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "“极地夜曲”专为极寒与高纬度夜战环境研发，其内部机械结构经过特殊的抗低温与防冷凝处理，确保了极端条件下的绝对可靠，是执行隐秘任务的理想装备。"
+          },
+          "EnergyObtainType": 0,
+          "EquipAttrList": "",
+          "GetDescription": "",
+          "GoldWeaponBackground": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "InfusionAttrViewList": "",
+          "InfusionMaxLevel": 0,
+          "InfusionPartList": "",
+          "IsFormSwitchable": 0,
+          "ItemID": 20107000038,
+          "ItemInfoDes": {
+            "CultureInvariantString": null
+          },
+          "LaserAmmoAdjust": 1,
+          "MGE_ID_list_1": "1007005501_20",
+          "MGE_ID_list_1_tag": {
+            "Key": "20107000038_MGE_ID_list_1_tag",
+            "LocalizedString": "主动;爆发;操控",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "主动;爆发;操控"
+          },
+          "MGE_ID_list_2": "",
+          "MGE_ID_list_2_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_3": "",
+          "MGE_ID_list_3_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_4": "1007005001_10",
+          "MGE_ID_list_4_tag": {
+            "Key": "20107000038_MGE_ID_list_4_tag",
+            "LocalizedString": "充能",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "充能"
+          },
+          "MGE_ID_list_5": "",
+          "MGE_ID_list_5_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_6": "",
+          "MGE_ID_list_6_tag": {
+            "CultureInvariantString": null
+          },
+          "Manufacturer": "",
+          "MaxAmplifierLevel": 0,
+          "MaxGradeLevel": 3,
+          "Mod_Num": 3,
+          "ModelID": 20007000038,
+          "ModelOffset": {
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "ModelRotation": {
+            "Pitch": 0,
+            "Roll": 0,
+            "Yaw": 0
+          },
+          "NotGetAttrDisplayList": "102017:36;113021:0.01",
+          "PVEAttr": "",
+          "PVPAttr": "",
+          "Passive_Skill1_Abbreviation": "1007012001_101",
+          "Passive_Skill1_Detail": "1007038001",
+          "Passive_Skill1_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill2_Abbreviation": "",
+          "Passive_Skill2_Detail": "",
+          "Passive_Skill2_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill3_Abbreviation": "",
+          "Passive_Skill3_Detail": "",
+          "Passive_Skill3_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill4_Abbreviation": "",
+          "Passive_Skill4_Detail": "",
+          "Passive_Skill4_Tag": {
+            "CultureInvariantString": null
+          },
+          "Quality": 4,
+          "Radar_Accuracy": 6,
+          "Radar_Damage": 10,
+          "Radar_Handling": 7,
+          "Radar_Mobility": 6,
+          "Radar_Range": 10,
+          "Radar_Reload": 9,
+          "Scaling_Ratio": 1,
+          "Score": 0,
+          "ShowAttr": "",
+          "SpecialFireIntervalAdjust": 1,
+          "Stability": 18,
+          "StabilityInt": 55,
+          "WeaponBaseAttrList": "",
+          "WeaponMODConfigID": 75,
+          "WeaponType": 7,
+          "WeaponUpgradeConfigID": 1,
+          "Weapon_Distance_Des": {
+            "Key": "20107000038_Weapon_Distance_Des",
+            "LocalizedString": "近距离单体",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "近距离单体"
+          },
+          "Weapon_Scenarios_Des": {
+            "Key": "20107000038_Weapon_Scenarios_Des",
+            "LocalizedString": "该武器的射程较近，拥有高精准度和较大威力，能够对近距离的单体目标进行精准打击。",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "该武器的射程较近，拥有高精准度和较大威力，能够对近距离的单体目标进行精准打击。"
+          },
+          "Weapon_Scope": {
+            "Key": "20107000038_Weapon_Scope",
+            "LocalizedString": "低倍镜",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "低倍镜"
+          },
+          "property_style_id": 0
+        },
+        "row_name": "20107000038",
+        "source": {
+          "sha256": "de68bb5d676f4e496c883f3f2a68bf70c591dfc709ef37a442deabeb03b728ad",
+          "source_path": "DataTables/LuaDataTable/WeaponItemConfigTable.json"
+        }
       },
       "20108000001": {
         "raw": {
@@ -26979,6 +27912,163 @@
         },
         "row_name": "20113000083"
       },
+      "20114000001": {
+        "raw": {
+          "AOEID": 0,
+          "Accuracy": 17,
+          "AccuracyInt": 88,
+          "Active_Skill_Abbreviation": "5101401",
+          "Active_Skill_Detail": "5101401",
+          "Active_Skill_Tag": {
+            "Key": "20114000001_Active_Skill_Tag",
+            "LocalizedString": "主动技能;追踪弹",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "主动技能;追踪弹"
+          },
+          "AdaptNodeOffset": {
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "AttrDisplayList": "18",
+          "ChargeTime": 0,
+          "ColumnChart": "",
+          "Description": {
+            "Key": "20114000001_Description",
+            "LocalizedString": "“层流冷焰”是联盟以蓝色能源改造旧式武器、探索下一代装备过程中的衍生产品。其原型为一款经典射手步枪，通过换装适配性极高的新式冷核聚变反应装置改造而成。实验表明，改装后的“层流冷焰”在高温、高压及稀薄能源等条件下均表现出色、运行稳定，因此获联盟批准大规模生产并投入使用。",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "“层流冷焰”是联盟以蓝色能源改造旧式武器、探索下一代装备过程中的衍生产品。其原型为一款经典射手步枪，通过换装适配性极高的新式冷核聚变反应装置改造而成。实验表明，改装后的“层流冷焰”在高温、高压及稀薄能源等条件下均表现出色、运行稳定，因此获联盟批准大规模生产并投入使用。"
+          },
+          "EnergyObtainType": 0,
+          "EquipAttrList": "",
+          "GetDescription": "",
+          "GoldWeaponBackground": {
+            "AssetPathName": "None",
+            "SubPathString": ""
+          },
+          "InfusionAttrViewList": "",
+          "InfusionMaxLevel": 0,
+          "InfusionPartList": "",
+          "IsFormSwitchable": 0,
+          "ItemID": 20114000001,
+          "ItemInfoDes": {
+            "CultureInvariantString": null
+          },
+          "LaserAmmoAdjust": 1,
+          "MGE_ID_list_1": "1014001501_20",
+          "MGE_ID_list_1_tag": {
+            "Key": "20114000001_MGE_ID_list_1_tag",
+            "LocalizedString": "主动激活;增伤",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "主动激活;增伤"
+          },
+          "MGE_ID_list_2": "",
+          "MGE_ID_list_2_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_3": "",
+          "MGE_ID_list_3_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_4": "1014001001_10",
+          "MGE_ID_list_4_tag": {
+            "Key": "20114000001_MGE_ID_list_4_tag",
+            "LocalizedString": "穿透",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "穿透"
+          },
+          "MGE_ID_list_5": "",
+          "MGE_ID_list_5_tag": {
+            "CultureInvariantString": null
+          },
+          "MGE_ID_list_6": "",
+          "MGE_ID_list_6_tag": {
+            "CultureInvariantString": null
+          },
+          "Manufacturer": "",
+          "MaxAmplifierLevel": 0,
+          "MaxGradeLevel": 3,
+          "Mod_Num": 3,
+          "ModelID": 20014000001,
+          "ModelOffset": {
+            "X": -2.271675,
+            "Y": -1.52478,
+            "Z": 1.957087
+          },
+          "ModelRotation": {
+            "Pitch": 0,
+            "Roll": 0,
+            "Yaw": 89.99999
+          },
+          "NotGetAttrDisplayList": "102017:224;202500:200;202559:20;202560:60",
+          "PVEAttr": "",
+          "PVPAttr": "",
+          "Passive_Skill1_Abbreviation": "1014001001_10",
+          "Passive_Skill1_Detail": "1014001001_10",
+          "Passive_Skill1_Tag": {
+            "Key": "20114000001_Passive_Skill1_Tag",
+            "LocalizedString": "追踪弹",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "追踪弹"
+          },
+          "Passive_Skill2_Abbreviation": "",
+          "Passive_Skill2_Detail": "",
+          "Passive_Skill2_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill3_Abbreviation": "",
+          "Passive_Skill3_Detail": "",
+          "Passive_Skill3_Tag": {
+            "CultureInvariantString": null
+          },
+          "Passive_Skill4_Abbreviation": "",
+          "Passive_Skill4_Detail": "",
+          "Passive_Skill4_Tag": {
+            "CultureInvariantString": null
+          },
+          "Quality": 4,
+          "Radar_Accuracy": 7.5,
+          "Radar_Damage": 8.7,
+          "Radar_Handling": 5.3,
+          "Radar_Mobility": 7,
+          "Radar_Range": 9.5,
+          "Radar_Reload": 4.4,
+          "Scaling_Ratio": 0.85,
+          "Score": 0,
+          "ShowAttr": "",
+          "SpecialFireIntervalAdjust": 1,
+          "Stability": 18,
+          "StabilityInt": 40,
+          "WeaponBaseAttrList": "",
+          "WeaponMODConfigID": 145,
+          "WeaponType": 14,
+          "WeaponUpgradeConfigID": 1,
+          "Weapon_Distance_Des": {
+            "Key": "20114000001_Weapon_Distance_Des",
+            "LocalizedString": "远距离单体",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "远距离单体"
+          },
+          "Weapon_Scenarios_Des": {
+            "Key": "20114000001_Weapon_Scenarios_Des",
+            "LocalizedString": "该武器拥有极高的射程和精准度，能够对远距离的单体目标进行精准打击",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "该武器拥有极高的射程和精准度，能够对远距离的单体目标进行精准打击"
+          },
+          "Weapon_Scope": {
+            "Key": "20114000001_Weapon_Scope",
+            "LocalizedString": "高倍镜",
+            "Namespace": "WeaponItemConfigTable",
+            "SourceString": "高倍镜"
+          },
+          "property_style_id": 0
+        },
+        "row_name": "20114000001",
+        "source": {
+          "sha256": "de68bb5d676f4e496c883f3f2a68bf70c591dfc709ef37a442deabeb03b728ad",
+          "source_path": "DataTables/LuaDataTable/WeaponItemConfigTable.json"
+        }
+      },
       "20114000002": {
         "raw": {
           "AOEID": 0,
@@ -29925,6 +31015,457 @@
           "id": 120300122
         },
         "row_name": "120300122_1"
+      },
+      "lc:120300170_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "冰凌弹_命中",
+          "ElementAddRate": 0.1815,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 6.8,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.3,
+          "HpFloatCoef": 0,
+          "HurtableBase": 2.04,
+          "ImpulseBase": 3.4,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 3.4,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 1,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120300170
+        },
+        "row_name": "120300170_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
+      "lc:120300171_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "冰凌弹_爆炸",
+          "ElementAddRate": 0.1089,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.3,
+          "HpFloatCoef": 0,
+          "HurtableBase": 2.04,
+          "ImpulseBase": 3.4,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponExplosionDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 3.4,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120300171
+        },
+        "row_name": "120300171_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
+      "lc:120300172_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "冰神激光命中结算",
+          "ElementAddRate": 0.079,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 1.5,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.28,
+          "HpFloatCoef": 0,
+          "HurtableBase": 1.5,
+          "ImpulseBase": 1.9,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 1.9,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.5,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120300172
+        },
+        "row_name": "120300172_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
+      "lc:120300174_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "冰霜光环命中结算",
+          "ElementAddRate": 0.4,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 1.25,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.5,
+          "HpFloatCoef": 0,
+          "HurtableBase": 1.25,
+          "ImpulseBase": 0,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponSkillDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 120300174
+        },
+        "row_name": "120300174_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
+      "lc:120300175_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "激光强化冰爆炸命中结算",
+          "ElementAddRate": 0.1,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.2,
+          "HpFloatCoef": 0,
+          "HurtableBase": 0,
+          "ImpulseBase": 0,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.SkillDamage"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 120300175
+        },
+        "row_name": "120300175_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
+      "lc:120300176_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "插件冰球命中结算",
+          "ElementAddRate": 0.1,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.45,
+          "HpFloatCoef": 0,
+          "HurtableBase": 0,
+          "ImpulseBase": 0,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.SkillDamage"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 120300176
+        },
+        "row_name": "120300176_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
+      "lc:120300177_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "极寒冰神主动技能结算",
+          "ElementAddRate": 0,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 28.2,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.9,
+          "HpFloatCoef": 0,
+          "HurtableBase": 8.46,
+          "ImpulseBase": 0,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponSkillDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 120300177
+        },
+        "row_name": "120300177_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
       },
       "lc:120300240_1": {
         "raw": {
@@ -33596,6 +35137,76 @@
           "id": 120700353
         },
         "row_name": "120700353_1"
+      },
+      "lc:120700380_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "极地夜曲",
+          "ElementAddRate": 0.112,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 2.7,
+          "FriendlyCoefficient": 0,
+          "HpCalBase": 0,
+          "HpCalScale": 0.22,
+          "HpFloatCoef": 0,
+          "HurtableBase": 2.7,
+          "ImpulseBase": 2.6,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 2.6,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.3,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120700380
+        },
+        "row_name": "120700380_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
       },
       "lc:120800010_1": {
         "raw": {
@@ -45320,6 +46931,222 @@
         },
         "row_name": "121300832_1"
       },
+      "lc:121400010_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "层流冷焰",
+          "ElementAddRate": 0.276,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 5.2,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.54,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5.2,
+          "ImpulseBase": 6.5,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 6.5,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.5,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121400010
+        },
+        "row_name": "121400010_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
+      "lc:121400011_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "层流冷焰-追踪弹命中",
+          "ElementAddRate": 0.276,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 5.2,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.54,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5.2,
+          "ImpulseBase": 6.5,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 6.5,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.5,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121400011
+        },
+        "row_name": "121400011_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
+      "lc:121400012_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "层流冷焰-追踪弹爆炸",
+          "ElementAddRate": 0.1,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 2,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.1,
+          "HpFloatCoef": 0,
+          "HurtableBase": 2,
+          "ImpulseBase": 2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponExplosionDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 2,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121400012
+        },
+        "row_name": "121400012_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
       "lc:121400040_1": {
         "raw": {
           "CameraHitFeedBackTag": {
@@ -47081,6 +48908,67 @@
           "id": 1410110101
         },
         "row_name": "1410110101_1"
+      },
+      "lc:1410140101_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "None"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "层流冷焰_冷焰飞弹_伤害",
+          "ElementAddRate": 0.3,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.4,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5,
+          "ImpulseBase": 0,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponSkillDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 1410140101
+        },
+        "row_name": "1410140101_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
       },
       "lc:1410210101_1": {
         "raw": {
@@ -48867,6 +50755,445 @@
           "id": 120300122
         },
         "row_name": "120300122_1"
+      },
+      "td:120300170_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "冰凌弹_命中",
+          "ElementAddRate": 0.1815,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 6.8,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.3,
+          "HpFloatCoef": 0,
+          "HurtableBase": 2.04,
+          "ImpulseBase": 3.4,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 3.4,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 1,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120300170
+        },
+        "row_name": "120300170_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
+      "td:120300171_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "冰凌弹_爆炸",
+          "ElementAddRate": 0.1089,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.12,
+          "HpFloatCoef": 0,
+          "HurtableBase": 2.04,
+          "ImpulseBase": 3.4,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponExplosionDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 3.4,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120300171
+        },
+        "row_name": "120300171_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
+      "td:120300172_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "冰神激光命中结算",
+          "ElementAddRate": 0.079,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 1.5,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.28,
+          "HpFloatCoef": 0,
+          "HurtableBase": 1.5,
+          "ImpulseBase": 1.9,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 1.9,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.5,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120300172
+        },
+        "row_name": "120300172_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
+      "td:120300174_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "冰霜光环命中结算",
+          "ElementAddRate": 0,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.1,
+          "HpFloatCoef": 0,
+          "HurtableBase": 0,
+          "ImpulseBase": 0,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponSkillDamage"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 120300174
+        },
+        "row_name": "120300174_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
+      "td:120300175_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "激光强化冰爆炸命中结算",
+          "ElementAddRate": 0,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.1,
+          "HpFloatCoef": 0,
+          "HurtableBase": 0,
+          "ImpulseBase": 0,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponExplosionDamage"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 120300175
+        },
+        "row_name": "120300175_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
+      "td:120300176_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "插件冰球命中结算",
+          "ElementAddRate": 0,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.45,
+          "HpFloatCoef": 0,
+          "HurtableBase": 0,
+          "ImpulseBase": 0,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponExplosionDamage"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 120300176
+        },
+        "row_name": "120300176_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
+      "td:120300177_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "极寒冰神主动技能结算",
+          "ElementAddRate": 0,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.45,
+          "HpFloatCoef": 0,
+          "HurtableBase": 0,
+          "ImpulseBase": 0,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponSkillDamage"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 120300177
+        },
+        "row_name": "120300177_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
       },
       "td:120300240_1": {
         "raw": {
@@ -52485,6 +54812,76 @@
           "id": 120700353
         },
         "row_name": "120700353_1"
+      },
+      "td:120700380_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "极地夜曲",
+          "ElementAddRate": 0.112,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 2.7,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.22,
+          "HpFloatCoef": 0,
+          "HurtableBase": 2.7,
+          "ImpulseBase": 2.6,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 2.6,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.3,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120700380
+        },
+        "row_name": "120700380_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
       },
       "td:120800010_1": {
         "raw": {
@@ -64093,6 +66490,219 @@
         },
         "row_name": "121300832_1"
       },
+      "td:121400010_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "层流冷焰",
+          "ElementAddRate": 0.307,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 5.8,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.54,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5.8,
+          "ImpulseBase": 7.2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 2,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": true,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.KnockUp.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 7.2,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0.5,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121400010
+        },
+        "row_name": "121400010_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
+      "td:121400011_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "层流冷焰-追踪弹命中",
+          "ElementAddRate": 0.307,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 5.8,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.54,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5.8,
+          "ImpulseBase": 7.2,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 7.2,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121400011
+        },
+        "row_name": "121400011_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
+      "td:121400012_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "层流冷焰-追踪弹爆炸",
+          "ElementAddRate": 0.05,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 1,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.1,
+          "HpFloatCoef": 0,
+          "HurtableBase": 1,
+          "ImpulseBase": 0.05,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponExplosionDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0.05,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 121400012
+        },
+        "row_name": "121400012_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
       "td:121400040_1": {
         "raw": {
           "CameraHitFeedBackTag": {
@@ -65849,6 +68459,70 @@
         },
         "row_name": "1410110101_1"
       },
+      "td:1410140101_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "None"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 0,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "冷焰飞弹_伤害",
+          "ElementAddRate": 0.3,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Cryo",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 0,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.2,
+          "HpFloatCoef": 0,
+          "HurtableBase": 5,
+          "ImpulseBase": 0,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponSkillDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 0,
+          "ToughnessDamageType": "EHardStrightWeaknessType::None",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": false,
+          "bEnableParry": false,
+          "id": 1410140101
+        },
+        "row_name": "1410140101_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
       "td:1410210101_1": {
         "raw": {
           "CameraHitFeedBackTag": {
@@ -67188,6 +69862,44 @@
         },
         "row_name": "5101101_1"
       },
+      "5101401_1": {
+        "raw": {
+          "AssistChargeValue": -1,
+          "AssistChargeValueTags": [
+            "SkillParamConfig.AssistChargeValue"
+          ],
+          "ChargeNeedTime": 35,
+          "ChargeNeedTimeTags": [
+            "SkillParamConfig.ChargeNeedTime"
+          ],
+          "KillChargeValue": -1,
+          "KillChargeValueTags": [
+            "SkillParamConfig.KillChargeValue"
+          ],
+          "Level": 1,
+          "Parameters": [
+            {
+              "Description": "冰弹数量",
+              "Name": "TotalNum",
+              "Tags": [
+                "SkillParamConfig.SpawnNum"
+              ],
+              "Value": "4"
+            }
+          ],
+          "SkillCount": 1,
+          "SkillCountTags": [
+            "SkillParamConfig.SkillCount"
+          ],
+          "SkillID": 5101401,
+          "SkillName": "冷焰飞弹"
+        },
+        "row_name": "5101401_1",
+        "source": {
+          "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631",
+          "source_path": "DataTables/SkillConfigTable_Weapon_PVE.json"
+        }
+      },
       "5101501_1": {
         "raw": {
           "AssistChargeValue": -1,
@@ -67603,6 +70315,35 @@
         },
         "row_name": "5103301_1"
       },
+      "5103401_1": {
+        "raw": {
+          "AssistChargeValue": -1,
+          "AssistChargeValueTags": [
+            "SkillParamConfig.AssistChargeValue"
+          ],
+          "ChargeNeedTime": 30,
+          "ChargeNeedTimeTags": [
+            "SkillParamConfig.ChargeNeedTime"
+          ],
+          "KillChargeValue": -1,
+          "KillChargeValueTags": [
+            "SkillParamConfig.KillChargeValue"
+          ],
+          "Level": 1,
+          "Parameters": [],
+          "SkillCount": 1,
+          "SkillCountTags": [
+            "SkillParamConfig.SkillCount"
+          ],
+          "SkillID": 5103401,
+          "SkillName": "极寒冰神"
+        },
+        "row_name": "5103401_1",
+        "source": {
+          "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631",
+          "source_path": "DataTables/SkillConfigTable_Weapon_PVE.json"
+        }
+      },
       "5103901_1": {
         "raw": {
           "AssistChargeValue": -1,
@@ -67678,6 +70419,44 @@
           "SkillName": "漫游模式"
         },
         "row_name": "5104101_1"
+      },
+      "5104201_1": {
+        "raw": {
+          "AssistChargeValue": -1,
+          "AssistChargeValueTags": [
+            "SkillParamConfig.AssistChargeValue"
+          ],
+          "ChargeNeedTime": 30,
+          "ChargeNeedTimeTags": [
+            "SkillParamConfig.ChargeNeedTime"
+          ],
+          "KillChargeValue": -1,
+          "KillChargeValueTags": [
+            "SkillParamConfig.KillChargeValue"
+          ],
+          "Level": 1,
+          "Parameters": [
+            {
+              "Description": "",
+              "Name": "BuffDuration",
+              "Tags": [
+                "SkillParamConfig.EffectDuration"
+              ],
+              "Value": "12"
+            }
+          ],
+          "SkillCount": 1,
+          "SkillCountTags": [
+            "SkillParamConfig.SkillCount"
+          ],
+          "SkillID": 5104201,
+          "SkillName": "极寒之怒"
+        },
+        "row_name": "5104201_1",
+        "source": {
+          "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631",
+          "source_path": "DataTables/SkillConfigTable_Weapon_PVE.json"
+        }
       }
     }
   },

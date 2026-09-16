@@ -13,6 +13,12 @@ import { resolvePreviewDamageDescription } from "../lib/perk-preview-damage";
 
 type Raw = Record<string, unknown>;
 interface Review {
+  independent_damage_sources?: {
+    weapon_slug: string;
+    damage_source_id: string;
+    trigger: string;
+    interval: string;
+  }[];
   bindings?: Record<string, { row: string; field: "base" | "coefficient"; scale?: number }>;
   replacements?: { from: string; to: string }[];
   description?: string;
@@ -64,7 +70,7 @@ async function main() {
   const selectedRows: Record<string, Raw> = {};
   const registry = JSON.parse(fs.readFileSync("data/modifier-providers.json", "utf8"));
   for (const provider of registry.providers) {
-    if (provider.source.type !== "perk" || provider.source.season !== "s4-preview") continue;
+    if (!["perk", "weapon"].includes(provider.source.type) || provider.source.season !== "s4-preview") continue;
     for (const application of provider.applications ?? []) {
       const key = String(application.expression.row).replace(/^lc:/, "");
       if (!numerical[key]) throw new Error(`Missing preview provider Numerical ${key}`);
@@ -106,8 +112,16 @@ async function main() {
         return `{{num:${alias}|${valueFormat}}}`;
       });
     if (/\{GPModifier:|\?\?|<qiangdiao>/.test(description)) throw new Error(`Unresolved description: ${id}`);
-    // Keep registered damage tokens in MDX; the reader and panel share the raw snapshot.
-    resolvePreviewDamageDescription(description, id, "s4-preview");
+    // Damage tokens and panels share the reviewed weapon source and Weapon Lock.
+    const damageReferences = entry.independent_damage_sources ?? document.data.independent_damage_sources;
+    resolvePreviewDamageDescription(description, id, "s4-preview", damageReferences?.map(
+      (reference: NonNullable<Review["independent_damage_sources"]>[number]) => ({
+        weaponSlug: reference.weapon_slug,
+        damageSourceId: reference.damage_source_id,
+        trigger: reference.trigger,
+        interval: reference.interval,
+      }),
+    ));
     description = description
       .replace(/[（(]\s*CD\s*(\d+(?:\.\d+)?)\s*秒?\s*[)）]/gi, "，冷却时间<strong>$1</strong>秒")
       .replace(/\bCD\s*(\d+(?:\.\d+)?)\s*秒?/gi, "冷却时间<strong>$1</strong>秒");
@@ -127,6 +141,7 @@ async function main() {
     const target = path.join("public/icons/perks", `${icon}.png`);
     if (fs.existsSync(target) && !fs.readFileSync(target).equals(image)) throw new Error(`Icon collision: ${target}`);
     const data: Record<string, unknown> = { ...document.data, icon, season: "s4-preview", description };
+    if (damageReferences) data.independent_damage_sources = damageReferences;
     delete data.draft;
     if (Object.keys(bindings).length) data.num_modifier_values = bindings;
     // gray-matter uses YAML 1.1: unquoted 1312071002_1 becomes a number.

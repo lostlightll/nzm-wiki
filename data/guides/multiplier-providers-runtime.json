@@ -1,10 +1,24 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "e637323f5b58ee3665e60809f1f6233b956e24e9d7e11fe7f370fe8467d47e13",
+    "modifierIndexSha256": "3fd33e24d85244d3eed8aa3b47402db278a0a92653af2d0f580209cb59749a53",
     "multiplierSchemaVersion": 12
   },
   "providers": [
+    {
+      "id": "weapon:极地夜曲:冷凝超载",
+      "label": "极地夜曲·冷凝超载",
+      "source": {
+        "type": "weapon",
+        "slug": "极地夜曲",
+        "skillName": "冷凝超载",
+        "component": "ActiveSkill",
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
     {
       "id": "card:10003",
       "label": "狂战士祝福",
@@ -4048,6 +4062,66 @@
     }
   ],
   "exclusions": [
+    {
+      "id": "weapon:层流冷焰:冷焰飞弹",
+      "label": "层流冷焰·冷焰飞弹",
+      "source": {
+        "type": "weapon",
+        "slug": "层流冷焰",
+        "skillName": "冷焰飞弹",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "生成追踪飞弹的独立伤害事件；Numerical 1410140101由武器伤害来源维护，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:层流冷焰:低温预混",
+      "label": "层流冷焰·低温预混",
+      "source": {
+        "type": "weapon",
+        "slug": "层流冷焰",
+        "skillName": "低温预混",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "积累层数并切换追踪子弹模式；命中与爆炸分别由武器Numerical 121400011、121400012维护，不是增伤倍率。"
+    },
+    {
+      "id": "weapon:极地夜曲:寒霜侵蚀",
+      "label": "极地夜曲·寒霜侵蚀",
+      "source": {
+        "type": "weapon",
+        "slug": "极地夜曲",
+        "skillName": "寒霜侵蚀",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "被动1007038001施加JDYQ_slow；Buff的GPModifyIDs=[120700385]，对应SpeedScale减速，不提供伤害倍率。"
+    },
+    {
+      "id": "weapon:极寒冰神:寒冰真气",
+      "label": "极寒冰神·寒冰真气",
+      "source": {
+        "type": "weapon",
+        "slug": "极寒冰神",
+        "skillName": "寒冰真气",
+        "component": "ActiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "冰雾造成Numerical 120300177独立寒冷伤害并减速；独立伤害由武器来源维护，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:极寒冰神:极寒一击",
+      "label": "极寒冰神·极寒一击",
+      "source": {
+        "type": "weapon",
+        "slug": "极寒冰神",
+        "skillName": "极寒一击",
+        "component": "PassiveSkill"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "切换冰凌弹与极寒射线火力模式；Numerical 120300170、120300171、120300172由武器来源维护，不是增伤倍率。"
+    },
     {
       "id": "perk:20703040002",
       "label": "快速装填",

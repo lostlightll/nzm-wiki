@@ -29,7 +29,7 @@ const perkPreviewSchema = z.strictObject({
   }).catchall(z.json())),
 });
 
-/** Preview overrides are scoped to perk consumers; the official Lock is immutable. */
+/** Preview overrides require an explicit preview consumer; the official Lock is immutable. */
 export function createPerkModifierResolverSelector(previewEvidence: unknown) {
   const preview = perkPreviewSchema.parse(previewEvidence);
   const previewRows = Object.fromEntries(

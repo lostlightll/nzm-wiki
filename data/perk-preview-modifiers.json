@@ -5,6 +5,17 @@
     "sha256": "93584ef436cd4c8d075396c175c6fcd3512134b7fa5a920c89c55d9b69feb2b4"
   },
   "rows": {
+    "120700380_1_0": {
+      "ID": 120700380,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "极地夜曲主动：增加射击伤害",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.5,
+      "CoefValue": 0.0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
     "111051051_1_0": {
       "ID": 111051051,
       "Level": 1,

@@ -23,6 +23,7 @@ const weaponSourceSchema = z.strictObject({
   slug: nonEmptyString,
   skillName: nonEmptyString,
   component: z.enum(["ActiveSkill", "PassiveSkill"]),
+  season: z.literal("s4-preview").optional(),
 });
 const cardSourceSchema = z.strictObject({
   type: z.literal("card"),

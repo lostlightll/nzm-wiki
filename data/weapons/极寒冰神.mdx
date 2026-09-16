@@ -1,0 +1,86 @@
+---
+title: 极寒冰神
+schema_version: 2
+game_modes:
+  - lc
+  - td
+keywords:
+  - 冰神
+  - 冰凌弹
+  - 极寒射线
+  - 寒冰真气
+prototype_id: "20003000017"
+item_id: "20103000017"
+use_type: 主武器
+weapon_type: 连发榴弹
+element: 寒冷
+rarity: 传说
+tags:
+  - 双模式
+scope: 不可开镜
+damage_sources:
+  - id: ice-projectile-hit
+    name: 冰凌弹命中
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical: { id: 120300170, level: 1 }
+      asc_type_id: "385"
+      overrides:
+        asc:
+          attenuation: { status: not_applicable }
+      override_reason: WeaponPrototypeConfig 极寒冰神_0 指向 JHBS 武器；BP_JHBS_CommonWeaponBullet 的 NamedThrowableSettlementConfig.Damage 引用 120300170，为实体弹体命中，不采用 ASC 距离衰减候选。
+  - id: ice-projectile-explosion
+    name: 冰凌弹爆炸
+    section: special
+    source:
+      prototype_mode: 0
+      numerical: { id: 120300171, level: 1 }
+  - id: cryo-ray
+    name: 极寒射线
+    section: fire_mode
+    source:
+      prototype_mode: 1
+      numerical: { id: 120300172, level: 1 }
+      asc_type_id: "386"
+  - id: freezing-mist
+    name: 寒冰真气
+    section: skill
+    source:
+      numerical: { id: 120300177, level: 1 }
+  - id: cold-field
+    name: 极寒领域
+    section: special
+    source:
+      numerical: { id: 120300174, level: 1 }
+  - id: cryo-touch
+    name: 极寒之触
+    section: special
+    source:
+      numerical: { id: 120300175, level: 1 }
+  - id: ice-orb
+    name: 极寒之痕
+    section: special
+    source:
+      numerical: { id: 120300176, level: 1 }
+weapon_type_id: 16
+active_skill_id: 5103401
+---
+<WeaponModeDiff />
+
+<WeaponSkill>
+  <ActiveSkill
+    name="寒冰真气"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000017-2.png"
+  >
+    释放向外扩散的冰雾，对半径 **16 米**内的敌人造成寒冷伤害，并施加减速效果。
+  </ActiveSkill>
+
+  <PassiveSkill
+    name="极寒一击"
+    tag="双模式"
+    icon="/icons/weapons/skills/T_Weapon_Skill_20003000017-1.png"
+  >
+    可在冰凌弹和极寒射线之间切换。冰凌弹命中后造成寒冷范围伤害，极寒射线用于持续攻击单体目标。
+  </PassiveSkill>
+</WeaponSkill>

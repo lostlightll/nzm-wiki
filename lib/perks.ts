@@ -459,6 +459,10 @@ export function getAllPerks(): Perk[] {
         numModifierValues,
         resolver,
       );
+      const independentDamageSources = parseIndependentDamageSources(
+        data.independent_damage_sources,
+        filePath,
+      );
       const perk: Perk = {
         id: file.replace(".mdx", ""),
         itemId: requireNonEmptyString(data.id, "id", filePath),
@@ -470,17 +474,14 @@ export function getAllPerks(): Perk[] {
         category: data.category || "其他",
         icon: data.icon,
         effects: [],
-        description: resolvePreviewDamageDescription(description, String(data.id), data.season),
+        description: resolvePreviewDamageDescription(description, String(data.id), data.season, independentDamageSources),
         effectValues: parseEffectValues(
           data.effect_values,
           filePath,
           numModifierValues,
           resolver,
         ),
-        independentDamageSources: parseIndependentDamageSources(
-          data.independent_damage_sources,
-          filePath,
-        ),
+        independentDamageSources,
         weaponType: parseNumberArray(data.weaponType),
         weaponNames: parseStringArray(data.weaponNames),
         collectModItem: data.CollectMODItem as 0 | 1 | undefined,
@@ -517,6 +518,10 @@ export function getPerkByName(name: string): Perk | null {
         numModifierValues,
         resolver,
       );
+      const independentDamageSources = parseIndependentDamageSources(
+        data.independent_damage_sources,
+        filePath,
+      );
       return {
         id: name,
         itemId: requireNonEmptyString(data.id, "id", filePath),
@@ -528,17 +533,14 @@ export function getPerkByName(name: string): Perk | null {
         category: data.category || "其他",
         icon: data.icon,
         effects: [],
-        description: resolvePreviewDamageDescription(description, String(data.id), data.season),
+        description: resolvePreviewDamageDescription(description, String(data.id), data.season, independentDamageSources),
         effectValues: parseEffectValues(
           data.effect_values,
           filePath,
           numModifierValues,
           resolver,
         ),
-        independentDamageSources: parseIndependentDamageSources(
-          data.independent_damage_sources,
-          filePath,
-        ),
+        independentDamageSources,
         weaponType: parseNumberArray(data.weaponType),
         weaponNames: parseStringArray(data.weaponNames),
         collectModItem: data.CollectMODItem as 0 | 1 | undefined,

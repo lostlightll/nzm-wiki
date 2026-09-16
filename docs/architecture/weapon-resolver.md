@@ -95,6 +95,8 @@ Item 只读取显式 `item_id`。行缺失或身份不一致直接失败；取�
 
 `lib/weapons.ts` 是唯一读取武器 frontmatter 的服务端边界。LC 与 TD 都读取 `data/weapons` 中的同一份 MDX；所有入口必须显式传入 `lc` 或 `td`，并直接返回对应投影的 `ResolvedWeapon`：
 
+同步消费者使用 `getResolvedWeaponBySlugSync()`；它与异步 `getResolvedWeaponBySlug()`、`getResolvedWeaponDocument()` 复用同一读取、Resolver 和草稿可见性规则。插件描述 Token 通过该服务取得应用 overrides 后的数值，不在插件读取层另行读取武器 frontmatter 或原始 Lock 行。
+
 ```text
 frontmatter + committed Lock -> resolveWeapon() -> server consumers
                                           \-> client-safe consumer views

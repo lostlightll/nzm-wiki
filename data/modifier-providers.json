@@ -9,6 +9,32 @@
   ],
   "providers": [
     {
+      "id": "weapon:极地夜曲:冷凝超载",
+      "label": "极地夜曲·冷凝超载",
+      "source": {
+        "type": "weapon",
+        "slug": "极地夜曲",
+        "skillName": "冷凝超载",
+        "component": "ActiveSkill",
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": { "row": "lc:120700380_1_0", "field": "base" },
+          "context": { "recipient": "unknown" }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "descriptionRowKeys": ["skill:5104201"],
+        "basis": [
+          "NZM/Content/DataTables/WeaponPrototypeConfig.json#极地夜曲_.ActiveSkillID=5104201",
+          "NZM/Content/DataTables/Ability/SkillDesConfig_Skill.json#5104201：冷凝超载精确Token指向120700380；仅审定增伤属性映射，不以描述数值替代Numerical，不推断运行时接收者或叠层。",
+          "data/perk-preview-modifiers.json#rows.120700380_1_0：WeaponHitDamageRatio，B1，BaseValue=0.5；来源为2026-09-16预下载选定行，原表路径和哈希由该证据文件记录。"
+        ]
+      }
+    },
+    {
       "id": "card:10003",
       "label": "狂战士祝福",
       "source": {
@@ -9387,6 +9413,41 @@
     }
   ],
   "exclusions": [
+    {
+      "id": "weapon:层流冷焰:冷焰飞弹",
+      "label": "层流冷焰·冷焰飞弹",
+      "source": { "type": "weapon", "slug": "层流冷焰", "skillName": "冷焰飞弹", "component": "ActiveSkill" },
+      "reasonCode": "independent-damage-event",
+      "reason": "生成追踪飞弹的独立伤害事件；Numerical 1410140101由武器伤害来源维护，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:层流冷焰:低温预混",
+      "label": "层流冷焰·低温预混",
+      "source": { "type": "weapon", "slug": "层流冷焰", "skillName": "低温预混", "component": "PassiveSkill" },
+      "reasonCode": "independent-damage-event",
+      "reason": "积累层数并切换追踪子弹模式；命中与爆炸分别由武器Numerical 121400011、121400012维护，不是增伤倍率。"
+    },
+    {
+      "id": "weapon:极地夜曲:寒霜侵蚀",
+      "label": "极地夜曲·寒霜侵蚀",
+      "source": { "type": "weapon", "slug": "极地夜曲", "skillName": "寒霜侵蚀", "component": "PassiveSkill" },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "被动1007038001施加JDYQ_slow；Buff的GPModifyIDs=[120700385]，对应SpeedScale减速，不提供伤害倍率。"
+    },
+    {
+      "id": "weapon:极寒冰神:寒冰真气",
+      "label": "极寒冰神·寒冰真气",
+      "source": { "type": "weapon", "slug": "极寒冰神", "skillName": "寒冰真气", "component": "ActiveSkill" },
+      "reasonCode": "independent-damage-event",
+      "reason": "冰雾造成Numerical 120300177独立寒冷伤害并减速；独立伤害由武器来源维护，不提供角色增伤通道。"
+    },
+    {
+      "id": "weapon:极寒冰神:极寒一击",
+      "label": "极寒冰神·极寒一击",
+      "source": { "type": "weapon", "slug": "极寒冰神", "skillName": "极寒一击", "component": "PassiveSkill" },
+      "reasonCode": "independent-damage-event",
+      "reason": "切换冰凌弹与极寒射线火力模式；Numerical 120300170、120300171、120300172由武器来源维护，不是增伤倍率。"
+    },
     {
       "id": "perk:20703040002",
       "label": "快速装填",

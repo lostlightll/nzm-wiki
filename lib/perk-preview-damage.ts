@@ -1,63 +1,39 @@
-import { z } from "zod";
-import snapshot from "@/data/perk-preview-damage.json";
-import type { TriggerDamageEntry } from "@/lib/trigger-damage";
-import { getHealthSettlementDefinition, isWeaponHealthSettlementType, HEALTH_SETTLEMENT_PREFIX } from "@/lib/weapon-health-settlement";
+import { getResolvedWeaponBySlugSync } from "@/lib/weapons";
+import { getResolvedFieldValue } from "@/lib/weapon-consumers";
+import type { PerkIndependentDamageSourceReference } from "@/types";
 
-const evidenceSchema = z.object({
-  schema_version: z.literal(1),
-  source: z.object({ path: z.literal("DataTables/numerical_config_composite.json"), sha256: z.string().regex(/^[a-f0-9]{64}$/) }),
-  entries: z.array(z.object({
-    itemId: z.string(), name: z.string(), slug: z.string(), trigger: z.string(), interval: z.string(), rowName: z.string(),
-    raw: z.object({
-      id: z.number().int().positive(), Level: z.literal(1),
-      HpCalScale: z.number().finite().nonnegative(), HpCalBase: z.literal(0),
-      ToughnessBase: z.literal(0), ToughnessScale: z.literal(0),
-      ElementType: z.literal("EElementEffectType::EDamageType_Cryo"),
-      bEnableCriticalDamage: z.boolean(), EnableWeaknessDamage: z.boolean(),
-      WeaknessDamageAddScale: z.number().finite(),
-      Settlements: z.array(z.object({ TagName: z.string() })),
-    }).passthrough(),
-  })),
-});
+const registeredSources = new Map([
+  ["20703040537", "cold-field"],
+  ["20703040538", "cryo-touch"],
+  ["20703040539", "ice-orb"],
+]);
 
-const evidence = evidenceSchema.parse(snapshot);
-const entries = new Map(evidence.entries.map(entry => [entry.itemId, entry]));
-if (entries.size !== evidence.entries.length) throw new Error("Duplicate preview damage ItemID");
-for (const entry of entries.values()) {
-  if (entry.rowName !== `${entry.raw.id}_${entry.raw.Level}`) throw new Error(`Preview damage identity mismatch: ${entry.rowName}`);
-}
-
-const number = (value: number) => String(Math.round(value * 10000) / 10000);
-
-/** Only explicitly registered preview perks may consume this isolated snapshot. */
-export function resolvePreviewDamageDescription(description: string | undefined, itemId: string, season?: string): string | undefined {
+/** Preview tokens follow the same MDX source reference as their damage panel. */
+export function resolvePreviewDamageDescription(
+  description: string | undefined,
+  itemId: string,
+  season?: string,
+  references: readonly PerkIndependentDamageSourceReference[] = [],
+): string | undefined {
   if (!description?.includes("{GPNumericalID:")) return description;
-  const entry = season === "s4-preview" ? entries.get(itemId) : undefined;
+  const sourceId = season === "s4-preview" ? registeredSources.get(itemId) : undefined;
+  const reference = sourceId && references.find(
+    entry => entry.weaponSlug === "极寒冰神" && entry.damageSourceId === sourceId,
+  );
+  if (!reference) throw new Error(`Unregistered damage token or missing weapon reference for perk ${itemId}`);
+  const weapon = getResolvedWeaponBySlugSync(reference.weaponSlug, "lc");
+  const source = weapon?.damageSources.find(entry => entry.id === reference.damageSourceId);
+  const sourceKey = source?.provenance.find(entry => entry.kind === "lock-numerical")?.sourceKey;
+  const numericalId = /^lc:(\d+)_\d+$/.exec(sourceKey ?? "")?.[1];
+  if (!source || !numericalId) throw new Error(`Missing Numerical reference for perk ${itemId}: ${reference.damageSourceId}`);
+  const scale = getResolvedFieldValue(source.damage.base);
+  if (typeof scale !== "number" || !Number.isFinite(scale) || scale < 0) {
+    throw new Error(`Invalid damage coefficient for perk ${itemId}: ${sourceKey}`);
+  }
   return description.replace(/\{GPNumericalID:([^}]+)\}/g, (token, fields: string) => {
-    if (!entry || fields !== `${entry.raw.id}:HpCalScale:13`) {
+    if (fields !== `${numericalId}:HpCalScale:13`) {
       throw new Error(`Unregistered damage token for perk ${itemId}: ${token}`);
     }
-    return `${number(entry.raw.HpCalScale * 100)}%`;
+    return `${Math.round(scale * 100 * 10000) / 10000}%`;
   });
-}
-
-export function getPreviewPerkDamage(itemId: string, season?: string): TriggerDamageEntry | undefined {
-  const entry = season === "s4-preview" ? entries.get(itemId) : undefined;
-  if (!entry) return undefined;
-  const health = entry.raw.Settlements.map(tag => tag.TagName).filter(tag => tag.startsWith(HEALTH_SETTLEMENT_PREFIX));
-  const type = health[0]?.slice(HEALTH_SETTLEMENT_PREFIX.length);
-  if (health.length !== 1 || !type || !isWeaponHealthSettlementType(type)) {
-    throw new Error(`Invalid preview damage settlement: ${entry.rowName}`);
-  }
-  const definition = getHealthSettlementDefinition(type);
-  if (definition.kind !== "damage" || definition.valueFormat !== "attack-coefficient") {
-    throw new Error(`Unsupported preview damage settlement: ${type}`);
-  }
-  return {
-    name: entry.name, perkSlug: entry.slug, trigger: entry.trigger, interval: entry.interval,
-    numericalId: String(entry.raw.id), damageType: definition.label,
-    damageValue: number(entry.raw.HpCalScale * 500), toughness: "0", element: "寒冷",
-    critical: entry.raw.bEnableCriticalDamage, weakpoint: entry.raw.EnableWeaknessDamage,
-    weakpointMultiplier: 1 + entry.raw.WeaknessDamageAddScale,
-  };
 }

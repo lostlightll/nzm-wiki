@@ -27,9 +27,11 @@ modifier-providers.json ──────────────────�
 
 ### 插件预览隔离
 
-`data/perk-preview-modifiers.json` 只保存预览插件实际引用的 Numerical 行，格式为 `{ schema_version: 1, source: { path, sha256 }, rows: { [rowName]: raw } }`。`source` 记录预载原表路径与 SHA-256，运行时不读取该路径。原始行必须包含有效的 ID、Level、AttributeName、GPModifierOp、BaseValue 和 CoefValue。
+预下载武器的增伤来源同样可在 `modifier-providers.json` 的武器 `source` 声明 `season: s4-preview`，通过来源 Resolver 选择这份隔离证据。此标记只影响该来源的 Modifier 解析，不修改武器伤害 Lock 或正式 Modifier Lock。预览生成器保留插件与武器来源显式引用的选定行；未标记武器来源仍使用正式 Resolver。
 
-`getPerkModifierResolver(season)` 仅对 `season: s4-preview` 将选定行覆盖到正式 Lock 的内存副本；其他插件始终使用正式 Resolver。描述模板、数值绑定、阶段值和效果分面均使用同一个选定 Resolver。乘区来源投影也通过 `getProviderResolver()` 按来源的预览标记选用该 Resolver，预览证据哈希参与投影新鲜度检查。正式 `data/num-modifier-lock.json`、武器与其他消费者不受预览行影响，不能通过刷新正式 Lock 发布预载中的旧行改动。
+`data/perk-preview-modifiers.json` 只保存预览插件和已登记预览武器增伤来源实际引用的 Numerical 行，格式为 `{ schema_version: 1, source: { path, sha256 }, rows: { [rowName]: raw } }`。`source` 记录预载原表路径与 SHA-256，运行时不读取该路径。原始行必须包含有效的 ID、Level、AttributeName、GPModifierOp、BaseValue 和 CoefValue。
+
+`getPerkModifierResolver(season)` 仅对 `season: s4-preview` 将选定行覆盖到正式 Lock 的内存副本；其他插件始终使用正式 Resolver。描述模板、数值绑定、阶段值和效果分面均使用同一个选定 Resolver。乘区来源投影也通过 `getProviderResolver()` 按来源的预览标记选用该 Resolver，预览证据哈希参与投影新鲜度检查。正式 `data/num-modifier-lock.json` 与未标记的消费者不受预览行影响，不能通过刷新正式 Lock 发布预载中的旧行改动。
 
 ## Lock 与身份
 
