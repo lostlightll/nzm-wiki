@@ -12,7 +12,17 @@ function printList(label: string, values: readonly string[]): void {
 }
 
 function runRefresh(): void {
-  const result = refreshWeaponDataLock();
+  const options: { weaponTitle?: string; contentRoot?: string } = {};
+  const args = process.argv.slice(3);
+  for (let index = 0; index < args.length; index += 2) {
+    const flag = args[index];
+    const value = args[index + 1];
+    if (!value || value.startsWith("--")) throw new Error(`missing value for ${flag}`);
+    if (flag === "--weapon" && options.weaponTitle === undefined) options.weaponTitle = value;
+    else if (flag === "--content-root" && options.contentRoot === undefined) options.contentRoot = value;
+    else throw new Error(`unknown or repeated option ${flag}`);
+  }
+  const result = refreshWeaponDataLock(options);
   printList("Added", result.diff.added);
   printList("Removed / unused", result.diff.removed);
   printList("Changed fields", result.diff.changed);
@@ -37,9 +47,9 @@ function runCheck(): void {
 try {
   const command = process.argv[2];
   if (command === "refresh") runRefresh();
-  else if (command === "check") runCheck();
+  else if (command === "check" && process.argv.length === 3) runCheck();
   else {
-    console.error("Usage: lock-cli.ts <refresh|check>");
+    console.error("Usage: lock-cli.ts refresh [--weapon TITLE] [--content-root PATH] | check");
     process.exitCode = 1;
   }
 } catch (error) {

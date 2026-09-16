@@ -8,7 +8,7 @@ Weapon Data Lock 是 V2 武器显式引用到的游戏原始行快照。MDX 决�
 
 ## 1. 边界
 
-- 刷新器读取 `refs/Exports/NZM/Content`，普通构建和离线检查不读取 `refs/`。
+- 刷新器默认读取 `refs/Exports/NZM/Content`，也可以显式指定其他本地导出根目录；普通构建和离线检查不读取原表。
 - 只扫描 `data/weapons` 中 `schema_version: 2` 的 MDX；每份文档按 `game_modes` 展开为 LC/TD 投影。无版本的 V1 文件忽略，未知显式版本报错。
 - 继承使用 `resolveDamageSourceReferences()` 展开。只收集 MDX 内已经显式声明的有效引用，不从 PrototypeConfig 自动生成 Numerical、ASC、Feel、Item 或技能 ID。
 - PrototypeConfig 只参加刷新期交叉校验，不进入 Lock。
@@ -66,6 +66,8 @@ Lock 使用一个严格、带命名空间的 JSON 文件：
 
 元数据中的哈希是原始物理文件字节的 SHA-256。路径使用 `NZM/Content` 相对路径，不保存本机路径。当前导出没有权威的游戏内容版本，因此 `game_content_version` 省略；不得用刷新时间代替内容版本。
 
+每行允许可选 `source: { source_path, sha256 }`。有行级来源时优先使用它，否则继承 namespace 的 `sources` 元数据。局部导入保留旧全局哈希，只给新建或实际变更的行记录新文件哈希，不能将混合来源伪装为同一版本。逻辑路径仍必须与 namespace 的注册路径一致。完整刷新重新生成单一来源快照，不保留行级覆盖。
+
 ## 3. 收集规则
 
 - Numerical 根据当前模式投影分别进入 LC 或 TD；公共 `source` 会在全部已声明模式中收集，`sources` 只收集对应模式键，禁止跨表回退。
@@ -96,6 +98,16 @@ pnpm weapon-data:lock
 6. 报告新增、删除或未使用行、JSON Pointer 字段变化、Settlement Tag 变化、来源哈希变化和非阻断警告。
 
 Prototype 多候选时只允许 rowName 与武器 `title` 或 `${title}_${mode}` 精确匹配。无法唯一匹配时失败，不做模糊匹配或 first-wins。
+
+### 单武器局部刷新
+
+```bash
+pnpm weapon-data:lock --weapon 极寒冰神 --content-root MD/_local/preload-content-20260916/NZM/Content
+```
+
+`--weapon` 精确匹配唯一 V2 文档的 `title`，包含该文档全部模式、继承来源和主动技能。局部刷新要求已存在 Lock，只从指定原表读取目标武器的引用；其他武器行、主动技能选择与旧全局哈希保持不变。目标行内容相同时保留已有来源记录。与其他武器共享的行或技能选择发生变化时拒绝写入，不静默影响其他武器。
+
+合并后执行全部武器的离线一致性检查，通过后才写入。不会自动清理已有未使用行；删除或改换引用留下旧行时会被全量检查拦截，需使用正确来源执行完整刷新。`--content-root` 也可用于完整刷新，但会更新全部武器，不能用来绕过局部冲突。
 
 ### 离线检查
 

@@ -22,6 +22,7 @@ import {
   checkWeaponDataLock,
   diffWeaponDataLocks,
   generateWeaponDataLock,
+  refreshWeaponDataLock,
   scanWeaponV2References,
   WeaponDataLockOperationError,
   type WeaponRoot,
@@ -233,6 +234,104 @@ function generateMainFixture(context: TestContext): {
 function cloneLock(lock: WeaponDataLock): WeaponDataLock {
   return JSON.parse(JSON.stringify(lock)) as WeaponDataLock;
 }
+
+test("局部导入只增加目标引用，保留旧全局哈希与其他武器技能，并记录新行来源", (context) => {
+  const fixture = createFixture(context);
+  writeMdx(fixture.lcRoot, "塔防枪.mdx", tdWeapon);
+  const previous = generateWeaponDataLock(fixture).lock;
+  const lockPath = path.join(fixture.root, "lock.json");
+  writeFileSync(lockPath, serializeWeaponDataLock(previous));
+  writeMdx(fixture.lcRoot, "测试枪.mdx", lcWeapon);
+  // 其他武器依赖的原表行已从新版本移除，局部导入不应读取或删除它。
+  writeSource(fixture.contentRoot, "gp-active-skill", {});
+  const result = refreshWeaponDataLock({ ...fixture, lockPath, weaponTitle: "测试枪" });
+  assert.deepEqual(result.lock.sources, previous.sources);
+  assert.deepEqual(result.lock.rows["gp-active-skill"], previous.rows["gp-active-skill"]);
+  assert.deepEqual(result.lock.rows["numerical-lc"], previous.rows["numerical-lc"]);
+  assert.equal(result.lock.rows.item["1000"].source?.source_path, WEAPON_DATA_SOURCE_FILES.item);
+  assert.equal(result.lock.rows.item["1000"].source?.sha256.length, 64);
+  assert.equal(checkWeaponDataLock({ ...fixture, lock: result.lock }).ok, true);
+  assert.equal(refreshWeaponDataLock({ ...fixture, lockPath, weaponTitle: "测试枪" }).serialized, result.serialized);
+});
+
+test("局部刷新允许更新独占行，来源哈希使用实际新文件", (context) => {
+  const { fixture, lock } = generateMainFixture(context);
+  const lockPath = path.join(fixture.root, "lock.json");
+  writeFileSync(lockPath, serializeWeaponDataLock(lock));
+  writeSource(fixture.contentRoot, "feel", {
+    ...baseRows.feel,
+    "99": { ...baseRows.feel["99"], Reload: 8 },
+  });
+  const result = refreshWeaponDataLock({ ...fixture, lockPath, weaponTitle: "测试枪" });
+  assert.equal(result.lock.rows.feel["99"].raw.Reload, 8);
+  assert.notEqual(result.lock.rows.feel["99"].source?.sha256, lock.sources.feel.sha256);
+  assert.deepEqual(result.lock.sources, lock.sources);
+  assert.deepEqual(result.lock.rows.feel["10"], lock.rows.feel["10"]);
+});
+
+test("局部刷新拒绝改变共享行，失败不写 Lock", (context) => {
+  const { fixture, lock } = generateMainFixture(context);
+  const lockPath = path.join(fixture.root, "lock.json");
+  const original = serializeWeaponDataLock(lock);
+  writeFileSync(lockPath, original);
+  writeSource(fixture.contentRoot, "numerical-lc", {
+    "120_1": { ...baseRows["numerical-lc"]["120_1"], Changed: true },
+  });
+  assert.throws(
+    () => refreshWeaponDataLock({ ...fixture, lockPath, weaponTitle: "测试枪" }),
+    /row shared with another weapon/,
+  );
+  assert.equal(readFileSync(lockPath, "utf8"), original);
+});
+
+test("局部刷新提交前检查全部武器引用；无匹配标题也拒绝写入", (context) => {
+  const { fixture, lock } = generateMainFixture(context);
+  delete lock.rows["gp-active-skill"]["5002"];
+  const lockPath = path.join(fixture.root, "lock.json");
+  const original = serializeWeaponDataLock(lock);
+  writeFileSync(lockPath, original);
+  assert.throws(
+    () => refreshWeaponDataLock({ ...fixture, lockPath, weaponTitle: "测试枪" }),
+    /MISSING_LOCK_ROW/,
+  );
+  assert.throws(
+    () => refreshWeaponDataLock({ ...fixture, lockPath, weaponTitle: "不存在" }),
+    /match exactly one V2 document/,
+  );
+  assert.equal(readFileSync(lockPath, "utf8"), original);
+});
+
+test("局部刷新拒绝改变其他武器共享的技能来源选择", (context) => {
+  const fixture = createFixture(context, {
+    prototype: {
+      ...baseRows.prototype,
+      "塔防枪_0": { ...baseRows.prototype["塔防枪_0"], ActiveSkillID: 5001 },
+    },
+  });
+  writeMdx(fixture.lcRoot, "测试枪.mdx", lcWeapon);
+  writeMdx(fixture.lcRoot, "塔防枪.mdx", tdWeapon.replace("active_skill_id: 5002", "active_skill_id: 5001"));
+  const lock = generateWeaponDataLock(fixture).lock;
+  const lockPath = path.join(fixture.root, "lock.json");
+  const original = serializeWeaponDataLock(lock);
+  writeFileSync(lockPath, original);
+  writeSource(fixture.contentRoot, "skill-pve", {});
+  writeSource(fixture.contentRoot, "gp-active-skill", {
+    "5001": { AbilityID: 5001, CooldownDuration: 25, MaxChargeStackCount: 2 },
+  });
+  assert.throws(
+    () => refreshWeaponDataLock({ ...fixture, lockPath, weaponTitle: "测试枪" }),
+    /change a shared source selection/,
+  );
+  assert.equal(readFileSync(lockPath, "utf8"), original);
+});
+
+test("离线检查拒绝行级来源逻辑路径错误", (context) => {
+  const { fixture, lock } = generateMainFixture(context);
+  lock.rows.feel["99"].source = { ...lock.sources.feel, source_path: "wrong.json" };
+  const result = checkWeaponDataLock({ ...fixture, lock });
+  assert.equal(result.ok, false);
+  assert.ok(result.issues.some((issue) => issue.includes("row source_path must be")));
+});
 
 function captureOperationError(action: () => unknown): WeaponDataLockOperationError {
   try {

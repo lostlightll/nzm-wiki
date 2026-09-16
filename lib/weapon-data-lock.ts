@@ -20,6 +20,7 @@ const sourceMetadataSchema = z.strictObject({
 const lockRowSchema = z.strictObject({
   row_name: z.string().trim().min(1),
   raw: z.record(z.string(), z.json()),
+  source: sourceMetadataSchema.optional(),
 });
 
 const rowsByKindSchema = z.strictObject({

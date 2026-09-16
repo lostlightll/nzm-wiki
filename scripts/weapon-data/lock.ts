@@ -87,6 +87,7 @@ export interface WeaponReferenceManifest {
 
 export interface ScanWeaponReferencesOptions {
   readonly weaponRoots?: readonly WeaponRoot[];
+  readonly weaponTitle?: string;
 }
 
 export interface GenerateWeaponDataLockOptions
@@ -235,6 +236,8 @@ export function scanWeaponV2References(
         continue;
       }
 
+      if (options.weaponTitle !== undefined && weapon.title !== options.weaponTitle) continue;
+
       for (const table of weapon.game_modes) {
         const projected = projectWeaponSourceV2(weapon, table);
         const resolved = resolveDamageSourceReferences(weapon, table);
@@ -295,6 +298,15 @@ export function scanWeaponV2References(
   }
 
   if (issues.length > 0) throw new WeaponDataLockOperationError(issues);
+
+  if (options.weaponTitle !== undefined) {
+    const documents = new Set(weapons.map(({ mdxPath }) => mdxPath.replace(/\[(lc|td)\]$/, "")));
+    if (documents.size !== 1) {
+      throw new WeaponDataLockOperationError([
+        `weapon title ${options.weaponTitle} must match exactly one V2 document; found ${documents.size}`,
+      ]);
+    }
+  }
 
   return Object.freeze({
     references,
@@ -719,6 +731,10 @@ export function checkWeaponDataLock(
     }
     for (const key of actualKeys) {
       if (!expectedKeys.has(key)) issues.push(`${kind} ${key}: unused Lock row`);
+      const source = lock.rows[kind][key].source;
+      if (source && source.source_path !== WEAPON_DATA_SOURCE_FILES[kind]) {
+        issues.push(`${kind} ${key}: row source_path must be ${WEAPON_DATA_SOURCE_FILES[kind]}`);
+      }
       issues.push(...validateLockedIdentity(kind, key, lock.rows[kind][key]));
     }
   }
@@ -856,7 +872,49 @@ export function refreshWeaponDataLock(
 ): RefreshWeaponDataLockResult {
   const lockPath = path.resolve(options.lockPath ?? DEFAULT_WEAPON_DATA_LOCK_PATH);
   const previous = existsSync(lockPath) ? readWeaponDataLock(lockPath) : undefined;
-  const generated = generateWeaponDataLock(options);
+  let generated = generateWeaponDataLock(options);
+  if (options.weaponTitle !== undefined) {
+    if (!previous) throw new WeaponDataLockOperationError(["scoped refresh requires an existing Lock"]);
+    const manifest = scanWeaponV2References({ weaponRoots: options.weaponRoots });
+    const merged = parseWeaponDataLock(previous);
+    const shared = new Map<WeaponDataLockKind, Set<string>>(
+      LOCK_SOURCE_KINDS.map((kind) => [kind, new Set(
+        [...manifest.references.get(kind)!.values()]
+          .filter((request) => request.origins.some((origin) => origin.title !== options.weaponTitle))
+          .map((request) => request.key),
+      )]),
+    );
+    const issues: string[] = [];
+    for (const [key, origins] of manifest.activeSkills) {
+      if (!origins.some((origin) => origin.title !== options.weaponTitle)) continue;
+      const selection = previous.active_skills[key];
+      if (!selection) continue;
+      shared.get(selection.source === "weapon_pve" ? "skill-pve" : "gp-active-skill")!.add(selection.source_key);
+      const replacement = generated.lock.active_skills[key];
+      if (replacement && collectChangedPaths(selection, replacement).length > 0) {
+        issues.push(`active skill ${key}: scoped refresh would change a shared source selection`);
+      }
+    }
+    for (const kind of LOCK_SOURCE_KINDS) {
+      for (const [key, row] of Object.entries(generated.lock.rows[kind])) {
+        const before = previous.rows[kind][key];
+        const unchanged = before && collectChangedPaths(
+          { row_name: before.row_name, raw: before.raw }, row,
+        ).length === 0;
+        if (unchanged) continue;
+        if (before && shared.get(kind)!.has(key)) {
+          issues.push(`${kind} ${key}: scoped refresh would change a row shared with another weapon`);
+          continue;
+        }
+        merged.rows[kind][key] = { ...row, source: generated.lock.sources[kind] };
+      }
+    }
+    Object.assign(merged.active_skills, generated.lock.active_skills);
+    if (issues.length > 0) throw new WeaponDataLockOperationError(issues);
+    generated = { ...generated, lock: merged };
+  }
+  const checked = checkWeaponDataLock({ weaponRoots: options.weaponRoots, lock: generated.lock });
+  if (!checked.ok) throw new WeaponDataLockOperationError(checked.issues);
   const serialized = serializeWeaponDataLock(generated.lock);
   const diff = diffWeaponDataLocks(previous, generated.lock);
   writeFileSync(lockPath, serialized, "utf8");
