@@ -34,13 +34,6 @@ const CORE_CONTRIBUTORS = [
     githubUser: "qiekn",
   },
   {
-    name: "PinkGame",
-    platform: "douyin" as const,
-    url: "https://www.douyin.com/user/MS4wLjABAAAAOpgmjGpIJfgLikMiBBV2iD8IcS-7DjOmqjpMxmoG5S14MqnBKu5sQK5k72Rpxytd",
-    description: "解包思路与交流",
-    avatarUrl: getAssetPath("/avatars/pinkgame.webp"),
-  },
-  {
     name: "阿秋",
     platform: "douyin" as const,
     url: "https://www.douyin.com/user/MS4wLjABAAAAuR82F-F_U4ywRmTAAMtc5ssvsFdhZn62EF4f7YWJe1M",
