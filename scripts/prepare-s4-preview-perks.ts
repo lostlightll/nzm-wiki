@@ -9,6 +9,7 @@ import matter from "gray-matter";
 import YAML from "yaml";
 import sharp from "sharp";
 import { NUM_MODIFIER_SOURCE_PATH } from "./num-modifier/lock";
+import { resolvePreviewDamageDescription } from "../lib/perk-preview-damage";
 
 type Raw = Record<string, unknown>;
 interface Review {
@@ -105,6 +106,8 @@ async function main() {
         return `{{num:${alias}|${valueFormat}}}`;
       });
     if (/\{GPModifier:|\?\?|<qiangdiao>/.test(description)) throw new Error(`Unresolved description: ${id}`);
+    // Keep registered damage tokens in MDX; the reader and panel share the raw snapshot.
+    resolvePreviewDamageDescription(description, id, "s4-preview");
     description = description
       .replace(/[（(]\s*CD\s*(\d+(?:\.\d+)?)\s*秒?\s*[)）]/gi, "，冷却时间<strong>$1</strong>秒")
       .replace(/\bCD\s*(\d+(?:\.\d+)?)\s*秒?/gi, "冷却时间<strong>$1</strong>秒");

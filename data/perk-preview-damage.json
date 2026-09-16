@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "source": {
+    "path": "DataTables/numerical_config_composite.json",
+    "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40"
+  },
+  "entries": [
+    {
+      "itemId": "20703040537",
+      "name": "极寒领域",
+      "trigger": "主动技能替换为持续12秒的冰霜光环，影响周围9米敌人",
+      "interval": "每1秒",
+      "slug": "slot-4/极寒领域",
+      "rowName": "120300174_1",
+      "raw": {
+        "id": 120300174,
+        "Level": 1,
+        "Settlements": [
+          {
+            "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+          },
+          {
+            "TagName": "Numerical.SettlementType.Health.WeaponSkillDamage"
+          },
+          {
+            "TagName": "Numerical.SettlementType.Flesh.Base"
+          },
+          {
+            "TagName": "Numerical.SettlementType.Hurtable.Base"
+          },
+          {
+            "TagName": "None"
+          }
+        ],
+        "EnableAttributes": [],
+        "CameraHitFeedBackTag": {
+          "TagName": "Weapon.HitType.Light"
+        },
+        "bEnableCriticalDamage": false,
+        "bDamageIgnoreShield": false,
+        "ElementType": "EElementEffectType::EDamageType_Cryo",
+        "DamageSourceType": 1,
+        "ElementDebuffTypeID": 0,
+        "ElementAddRate": 0.4,
+        "HpCalScale": 0.5,
+        "HpCalBase": 0,
+        "HpFloatCoef": 0,
+        "MaxDamageAttackRatio": 0,
+        "FriendlyCoefficient": -1,
+        "FleshDamageBase": 1.25,
+        "ImpulseBase": 0,
+        "ToughnessBase": 0,
+        "ToughnessScale": 0,
+        "EnableWeaknessDamage": false,
+        "WeaknessDamageAddScale": 0,
+        "ToughnessDamageType": "EHardStrightWeaknessType::None",
+        "KnockupLevel": 0,
+        "OnlyKnockUpWhenKill": false,
+        "KnockUpDistance1": 0,
+        "KnockUpDistance2": 0,
+        "KnockUpLevel1": 0,
+        "KnockUpLevel2": 0,
+        "HurtableBase": 1.25,
+        "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+        "Description": "冰霜光环命中结算",
+        "DamageAttenuationStart": 0,
+        "DamageAttenuationEnd": 0,
+        "DamageAttenuationRatio": 0,
+        "bEnableParry": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      }
+    },
+    {
+      "itemId": "20703040538",
+      "name": "极寒之触",
+      "trigger": "激光模式攻击冰缓效果超过2层的敌人，触发半径2.5米爆炸",
+      "interval": "1秒",
+      "slug": "slot-4/极寒之触",
+      "rowName": "120300175_1",
+      "raw": {
+        "id": 120300175,
+        "Level": 1,
+        "Settlements": [
+          {
+            "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+          },
+          {
+            "TagName": "Numerical.SettlementType.Health.SkillDamage"
+          },
+          {
+            "TagName": "None"
+          }
+        ],
+        "EnableAttributes": [],
+        "CameraHitFeedBackTag": {
+          "TagName": "Weapon.HitType.Light"
+        },
+        "bEnableCriticalDamage": false,
+        "bDamageIgnoreShield": false,
+        "ElementType": "EElementEffectType::EDamageType_Cryo",
+        "DamageSourceType": 1,
+        "ElementDebuffTypeID": 0,
+        "ElementAddRate": 0.1,
+        "HpCalScale": 0.2,
+        "HpCalBase": 0,
+        "HpFloatCoef": 0,
+        "MaxDamageAttackRatio": 0,
+        "FriendlyCoefficient": -1,
+        "FleshDamageBase": 0,
+        "ImpulseBase": 0,
+        "ToughnessBase": 0,
+        "ToughnessScale": 0,
+        "EnableWeaknessDamage": false,
+        "WeaknessDamageAddScale": 0,
+        "ToughnessDamageType": "EHardStrightWeaknessType::None",
+        "KnockupLevel": 0,
+        "OnlyKnockUpWhenKill": false,
+        "KnockUpDistance1": 0,
+        "KnockUpDistance2": 0,
+        "KnockUpLevel1": 0,
+        "KnockUpLevel2": 0,
+        "HurtableBase": 0,
+        "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+        "Description": "激光强化冰爆炸命中结算",
+        "DamageAttenuationStart": 0,
+        "DamageAttenuationEnd": 0,
+        "DamageAttenuationRatio": 0,
+        "bEnableParry": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      }
+    },
+    {
+      "itemId": "20703040539",
+      "name": "极寒之痕",
+      "trigger": "冰凌弹直击击杀敌人或命中场景生成冰球，敌人靠近后爆炸",
+      "interval": "每2秒最多生成一枚，最多同时存在3枚",
+      "slug": "slot-4/极寒之痕",
+      "rowName": "120300176_1",
+      "raw": {
+        "id": 120300176,
+        "Level": 1,
+        "Settlements": [
+          {
+            "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+          },
+          {
+            "TagName": "Numerical.SettlementType.Health.SkillDamage"
+          },
+          {
+            "TagName": "None"
+          }
+        ],
+        "EnableAttributes": [],
+        "CameraHitFeedBackTag": {
+          "TagName": "Weapon.HitType.Light"
+        },
+        "bEnableCriticalDamage": false,
+        "bDamageIgnoreShield": false,
+        "ElementType": "EElementEffectType::EDamageType_Cryo",
+        "DamageSourceType": 1,
+        "ElementDebuffTypeID": 0,
+        "ElementAddRate": 0.1,
+        "HpCalScale": 0.45,
+        "HpCalBase": 0,
+        "HpFloatCoef": 0,
+        "MaxDamageAttackRatio": 0,
+        "FriendlyCoefficient": -1,
+        "FleshDamageBase": 0,
+        "ImpulseBase": 0,
+        "ToughnessBase": 0,
+        "ToughnessScale": 0,
+        "EnableWeaknessDamage": false,
+        "WeaknessDamageAddScale": 0,
+        "ToughnessDamageType": "EHardStrightWeaknessType::None",
+        "KnockupLevel": 0,
+        "OnlyKnockUpWhenKill": false,
+        "KnockUpDistance1": 0,
+        "KnockUpDistance2": 0,
+        "KnockUpLevel1": 0,
+        "KnockUpLevel2": 0,
+        "HurtableBase": 0,
+        "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+        "Description": "插件冰球命中结算",
+        "DamageAttenuationStart": 0,
+        "DamageAttenuationEnd": 0,
+        "DamageAttenuationRatio": 0,
+        "bEnableParry": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      }
+    }
+  ]
+}

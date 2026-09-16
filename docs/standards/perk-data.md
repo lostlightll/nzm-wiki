@@ -194,6 +194,12 @@ independent_damage_sources:
 
 新增或修改引用后运行 `pnpm test:independent-damage` 与 `pnpm weapon-data:check`。
 
+### 尚无武器条目的预览插件
+
+极寒领域、极寒之触、极寒之痕目前没有可引用的极寒冰神武器 MDX，使用 `data/perk-preview-damage.json` 保存三条选定的完整猎场 Numerical 原始行及原表 SHA-256。维护命令：`pnpm exec tsx scripts/import-preview-perk-damage.ts --source <预载Content>/DataTables/numerical_config_composite.json`。脚本按明确的 ItemID、描述 Token 和 Level 1 身份核验，不导入整表、不刷新正式 Weapon Lock。
+
+`lib/perk-preview-damage.ts` 仅对登记 ItemID 且 `season: s4-preview` 生效，描述中的 `GPNumericalID:…:HpCalScale:13` 和独立伤害面板共享原始行。猎场基础伤害按 `HpCalScale × 500` 展示，类型取 Health Settlement，暴击与弱点权限取各自布尔字段。当前仅审定这三条冰霜、零破韧、零固定伤害的配置，出现其他结构时校验报错，不能套用默认值。生成器预检拒绝未登记的伤害 Token。新增武器条目后应迁移为上文的武器伤害来源引用。
+
 ## 适用武器
 
 适用范围分为三类：

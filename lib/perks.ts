@@ -10,6 +10,7 @@ import type {
   Rarity,
 } from "@/types";
 import { isValidDateKey } from "@/lib/date-key";
+import { resolvePreviewDamageDescription } from "@/lib/perk-preview-damage";
 import {
   getPerkModifierResolver,
   NUM_MODIFIER_SEMANTICS,
@@ -469,7 +470,7 @@ export function getAllPerks(): Perk[] {
         category: data.category || "其他",
         icon: data.icon,
         effects: [],
-        description,
+        description: resolvePreviewDamageDescription(description, String(data.id), data.season),
         effectValues: parseEffectValues(
           data.effect_values,
           filePath,
@@ -527,7 +528,7 @@ export function getPerkByName(name: string): Perk | null {
         category: data.category || "其他",
         icon: data.icon,
         effects: [],
-        description,
+        description: resolvePreviewDamageDescription(description, String(data.id), data.season),
         effectValues: parseEffectValues(
           data.effect_values,
           filePath,

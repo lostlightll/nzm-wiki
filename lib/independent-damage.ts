@@ -7,6 +7,7 @@ import {
 import { getResolvedFieldValue } from "@/lib/weapon-consumers";
 import { getHealthSettlementDefinition } from "@/lib/weapon-health-settlement";
 import { getResolvedWeaponBySlug } from "@/lib/weapons";
+import { getPreviewPerkDamage } from "@/lib/perk-preview-damage";
 import type {
   Perk,
   PerkIndependentDamageSourceReference,
@@ -74,12 +75,14 @@ async function resolveWeaponDamageSource(
 async function resolvePerkReferences(
   perk: Perk | undefined,
 ): Promise<TriggerDamageEntry[]> {
-  if (!perk?.independentDamageSources?.length) return [];
-  return Promise.all(
-    perk.independentDamageSources.map((reference) =>
+  if (!perk) return [];
+  const preview = getPreviewPerkDamage(perk.itemId, perk.season);
+  const weaponSources = await Promise.all(
+    (perk.independentDamageSources ?? []).map((reference) =>
       resolveWeaponDamageSource(perk.name, reference),
     ),
   );
+  return [...(preview ? [preview] : []), ...weaponSources];
 }
 
 export async function getIndependentDamageByPerkSlug(
