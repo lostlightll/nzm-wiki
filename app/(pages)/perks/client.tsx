@@ -123,7 +123,7 @@ function PerkCard({ perk }: { perk: Perk }) {
           slug: perk.slug.split("/").at(-1) ?? perk.name,
         }}
         variant="catalog-overlay"
-        className="absolute right-0 top-0 z-10 max-w-full justify-end"
+        className="absolute inset-x-0 top-0 z-10 max-w-full"
       />
     </div>
   );

@@ -10,6 +10,14 @@ import { getProviderResolver } from "./num-modifier/provider-resolver";
 type Row = Record<string, unknown>;
 
 const root = process.cwd();
+const previewRootArgument = process.argv.indexOf("--preview-content-root");
+const previewRootValue = previewRootArgument < 0
+  ? undefined
+  : process.argv[previewRootArgument + 1];
+if (previewRootArgument >= 0 && (!previewRootValue || previewRootValue.startsWith("--"))) {
+  throw new Error("--preview-content-root 需要预载 Content 目录。");
+}
+const previewRoot = previewRootValue ? path.resolve(root, previewRootValue) : undefined;
 const refsRoot = path.join(root, "refs", "Exports", "NZM", "Content");
 if (!fs.existsSync(refsRoot)) {
   console.log("未找到 refs/Exports/NZM/Content，跳过完整乘区证据审计。");
@@ -22,6 +30,13 @@ const loadRows = (...parts: string[]): Record<string, Row> =>
 const weaponMods = loadRows("DataTables", "LuaDataTable", "WeaponModItemData.json");
 const passives = loadRows("DataTables", "MGE", "MGEPassive_BD.json");
 const perkDescriptions = loadRows("DataTables", "MGE", "DT_GPMGESkillDesConfig_BD.json");
+const previewTables = previewRoot ? {
+  weaponMods: JSON.parse(fs.readFileSync(path.join(previewRoot, "DataTables", "LuaDataTable", "WeaponModItemData.json"), "utf8"))[0].Rows as Record<string, Row>,
+  passives: JSON.parse(fs.readFileSync(path.join(previewRoot, "DataTables", "MGE", "MGEPassive_BD.json"), "utf8"))[0].Rows as Record<string, Row>,
+  perkDescriptions: JSON.parse(fs.readFileSync(path.join(previewRoot, "DataTables", "MGE", "DT_GPMGESkillDesConfig_BD.json"), "utf8"))[0].Rows as Record<string, Row>,
+} : undefined;
+const currentTables = { weaponMods, passives, perkDescriptions };
+let skippedPreviewEvidence = 0;
 const huntingRankCards = loadRows(
   "DataTables",
   "HunterRank",
@@ -126,13 +141,16 @@ for (const table of weaponDescriptionTables) {
   }
 }
 
-function directPositiveModifiers(description: string): string[] {
+function directPositiveModifiers(
+  description: string,
+  resolver = NUM_MODIFIER_RESOLVER,
+): string[] {
   const modifierIds = [...description.matchAll(/\{GPModifier:(\d+):/g)].map(
     (match) => match[1],
   );
   return modifierIds.filter((modifierId) =>
-    NUM_MODIFIER_RESOLVER.getRowsById("lc", Number(modifierId)).some((row) => {
-      const effect = NUM_MODIFIER_RESOLVER.resolveEffect(
+    resolver.getRowsById("lc", Number(modifierId)).some((row) => {
+      const effect = resolver.resolveEffect(
         { row: row.key, field: row.baseValue !== 0 ? "base" : "coefficient" },
         { recipient: "self" },
       );
@@ -294,7 +312,12 @@ for (const provider of sourceRegistry.providers) {
   }
 
   if (provider.source.type !== "perk") continue;
-  const item = weaponMods[provider.source.itemId];
+  const tables = provider.source.season === "s4-preview" ? previewTables : currentTables;
+  if (!tables) {
+    skippedPreviewEvidence++;
+    continue;
+  }
+  const item = tables.weaponMods[provider.source.itemId];
   if (!item) {
     errors.push(`${provider.id} 的 ItemID 不在 WeaponModItemData`);
     continue;
@@ -307,12 +330,12 @@ for (const provider of sourceRegistry.providers) {
     errors.push(`${provider.id} 的 PassiveSkill_ID 已变化`);
   }
   if (provider.evidence.kind !== "gp-modifier") continue;
-  const passive = passives[`${passiveSkillId}_${level}`];
+  const passive = tables.passives[`${passiveSkillId}_${level}`];
   const descriptionRowKey = passive
     ? `${String((passive.MGEConfig as Row | undefined)?.Id ?? passiveSkillId)}_${String(passive.MGEDescriptionId ?? 1)}`
     : "";
   const description = String(
-    (perkDescriptions[descriptionRowKey]?.MGEDescription as Row | undefined)?.LocalizedString ?? "",
+    (tables.perkDescriptions[descriptionRowKey]?.MGEDescription as Row | undefined)?.LocalizedString ?? "",
   );
   for (const modifierId of new Set(evidenceRows.map((row) => String(row.id)))) {
     if (!description.includes(`{GPModifier:${modifierId}:`)) {
@@ -325,19 +348,31 @@ for (const exclusion of sourceRegistry.exclusions) {
   const source = exclusion.source;
   let description = "";
   if (source.type === "perk") {
-    const item = weaponMods[source.itemId];
+    const tables = source.season === "s4-preview" ? previewTables : currentTables;
+    if (!tables) {
+      skippedPreviewEvidence++;
+      continue;
+    }
+    const item = tables.weaponMods[source.itemId];
+    if (source.season === "s4-preview" && !item) {
+      errors.push(`${exclusion.id} 的 ItemID 不在预载 WeaponModItemData`);
+      continue;
+    }
     const [passiveSkillId, level = "1"] = String(item?.PassiveSkill_ID ?? "").split(":");
-    const passive = passives[`${passiveSkillId}_${level}`];
+    const passive = tables.passives[`${passiveSkillId}_${level}`];
     const descriptionRowKey = passive
       ? `${String((passive.MGEConfig as Row | undefined)?.Id ?? passiveSkillId)}_${String(passive.MGEDescriptionId ?? 1)}`
       : "";
     description = String(
-      (perkDescriptions[descriptionRowKey]?.MGEDescription as Row | undefined)?.LocalizedString ?? "",
+      (tables.perkDescriptions[descriptionRowKey]?.MGEDescription as Row | undefined)?.LocalizedString ?? "",
     );
   } else if (source.type === "weapon") {
     description = (weaponDescriptionsByName.get(source.skillName) ?? []).join("\n");
   }
-  const directModifiers = directPositiveModifiers(description);
+  const directModifiers = directPositiveModifiers(
+    description,
+    getProviderResolver(source, NUM_MODIFIER_RESOLVER),
+  );
   if (directModifiers.length > 0) {
     errors.push(
       `${exclusion.id} 已被排除，但现在出现正向 GPModifier：${directModifiers.join(", ")}`,
@@ -358,7 +393,7 @@ for (const slotDirectory of fs.readdirSync(path.join(root, "data", "perks"), { w
       fs.readFileSync(path.join(root, "data", "perks", slotDirectory.name, file), "utf8"),
     );
     const itemId = String(parsed.data.id);
-    if (Number(parsed.data.CollectMODItem) === 1 || cardIds.has(itemId)) {
+    if (Number(parsed.data.CollectMODItem) === 1 || parsed.data.season === "s4-preview" || cardIds.has(itemId)) {
       candidateIds.add(`perk:${itemId}`);
     }
   }
@@ -373,6 +408,9 @@ if (errors.length > 0) {
   throw new Error(`乘区来源完整证据审计失败：\n${errors.map((error) => `- ${error}`).join("\n")}`);
 }
 
+if (skippedPreviewEvidence > 0) {
+  console.log(`未指定 --preview-content-root，跳过 ${skippedPreviewEvidence} 项预览原表证据审计；预览投影和来源覆盖仍已检查。`);
+}
 console.log(
-  `乘区来源完整证据审计通过：已映射 ${sourceRegistry.providers.length}，明确排除 ${sourceRegistry.exclusions.length}，缺少证据 ${missing.length}。`,
+  `乘区来源${skippedPreviewEvidence > 0 ? "可用" : "完整"}证据审计通过：已映射 ${sourceRegistry.providers.length}，明确排除 ${sourceRegistry.exclusions.length}，缺少证据 ${missing.length}。`,
 );

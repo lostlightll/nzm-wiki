@@ -266,7 +266,7 @@ pnpm exec tsx scripts/import-perks.ts --all-with-icons --json
 
 ## S4 预览导入
 
-`season: s4-preview` 的插件使用独立的 **S4 Preview** 筛选，不添加卡片标签，不进入“已上线”或“近期上线”。`CollectMODItem`、`MakeMODItem`、`IsCooked` 仍保留预载表原值，不能把预载开关当作正式上线日期。预览插件不作为正式服乘区索引候选；正式上线时必须重新审计并登记来源。
+`season: s4-preview` 的插件使用独立的 **S4 Preview** 筛选，不添加卡片标签，不进入“已上线”或“近期上线”。`CollectMODItem`、`MakeMODItem`、`IsCooked` 仍保留预载表原值，不能把预载开关当作正式上线日期。预览插件全部纳入乘区覆盖检查，来源标记 `season: s4-preview`，使用独立预览 Numerical 证据；正式上线时必须重新审计。
 
 2026-09-16 预载新增 78 个普通插件；12 个 `MODItemType=1`、通过 `RoutineItemID` 关联旧插件的腐化变体不单独作为普通插件导入。同名“连锁充能”保留两个 ItemID，新版文件使用 `连锁充能-20703040513.mdx`。
 

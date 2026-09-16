@@ -29,6 +29,16 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 
 ## 数据所有权
 
+### S4 预览验收
+
+`scripts/s4-perk-index-reference.json` 固定用户指定参考仓库 `lostlightll/nzm-wiki-s4-preview` 的 `1e46f2c5dd4296159cf3b268656ae592f0e21dc4`：82 个插件中 35 个增伤来源、47 个明确排除项，包含旧条目冷焰爆破、冷焰续航。`lib/s4-perk-index.test.ts` 按 ItemID 验证全量分类和双向关系，不以名称或参考站的季中标签匹配。
+
+可直连 Numerical 的来源使用预载原表的精确表达式；无直连行的分类保留参考版本的人工审定依据，不复制描述数值。光暗冷焰在保留参考站爆炸伤害通道之外，按当前 MGE 的 `121400044` 引用补充全伤害通道。驰射淬锋显示暴伤和大稀释两个徽标；图鉴中分居左右上角。同乘区的多个通道仍合并成一个徽标。
+
+维护命令：`pnpm exec tsx scripts/project-s4-perk-index.ts --content-root <预载Content目录>`，随后执行 `pnpm num-modifier:project`。预览行只存入 `data/perk-preview-modifiers.json`，不覆盖正式 Lock。导入生成器会保留索引引用的预览行。
+
+原表审计使用 `pnpm multiplier-providers:audit --preview-content-root <预载Content目录>`。维护者后续确认纯白之光（20703040540）归入弱点增伤，覆盖参考站旧排除；引用预载 `1400090107_1_0.base`（WeaknessDamageRatio，B1，+70%）。当前 S4 共 36 个增伤来源、46 个排除项。审计验证其 ItemID、被动和描述 Token 身份链，不再保留排除例外。
+
 S0「武器之歌」按维护者确认的 Buff 对应关系登记：`BD_Common_1318123001.GPModifyIDs=[119124001]`，以 `lc:119124001_1_0.base` 识别大稀释乘区的武器伤害分面。Buff 的 `_2` 至 `_5` 配置仍引用 119124001；不将 119124002～119124005 自动视为天赋后续等级。
 
 S1 人工复核的精确技能 Token 映射由 `s1ReviewedApplications()` 登记：技能连击使用 `160201005_1_0.base`，侵蚀加深使用 `160201007_1_0.coefficient`，无我之境 I 使用 `160202007_1_0.coefficient`，灼眼天罚使用 `160202009_1_0.base`。仅以属性识别乘区，不推导叠层、历史等级或运行时接收者；灼眼天罚的 ExecutionCtx 使用伤害事件上下文。原始审计中的执行链缺口继续保留，不阻止上述人工审定的属性索引。

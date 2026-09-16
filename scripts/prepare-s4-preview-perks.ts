@@ -61,6 +61,15 @@ async function main() {
   const mainDescriptions = rows(contentRoot, "DataTables/MGE/DT_GPMGESkillDesConfigTable_Main.json");
   const numerical = rows(contentRoot, NUM_MODIFIER_SOURCE_PATH);
   const selectedRows: Record<string, Raw> = {};
+  const registry = JSON.parse(fs.readFileSync("data/modifier-providers.json", "utf8"));
+  for (const provider of registry.providers) {
+    if (provider.source.type !== "perk" || provider.source.season !== "s4-preview") continue;
+    for (const application of provider.applications ?? []) {
+      const key = String(application.expression.row).replace(/^lc:/, "");
+      if (!numerical[key]) throw new Error(`Missing preview provider Numerical ${key}`);
+      selectedRows[key] = numerical[key];
+    }
+  }
   const files = [1, 2, 3, 4].flatMap(slot => {
     const directory = `data/perks/slot-${slot}`;
     return fs.readdirSync(directory).filter(file => file.endsWith(".mdx")).map(file => path.join(directory, file));

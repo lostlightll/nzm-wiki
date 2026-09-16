@@ -34,14 +34,20 @@ export function MultiplierBadges({
   const isCatalogCompact = variant === "catalog-compact";
   const isCatalogInline = variant === "catalog-inline";
   const isCompact = isCatalogOverlay || isCatalogCompact || isCatalogInline;
+  const isSplitCatalogOverlay = isCatalogOverlay && groups.length === 2;
   const Root = isCatalogInline ? "span" : "div";
+  const rootLayoutClass = isSplitCatalogOverlay
+    ? "flex-nowrap items-start justify-between gap-1"
+    : isCatalogOverlay
+      ? "flex-wrap items-center justify-end gap-1.5"
+      : "flex-wrap items-center gap-1.5";
 
   return (
     <Root
       id={id}
-      className={`flex flex-wrap items-center gap-1.5 ${isCatalogInline ? "float-right mt-1 mr-0.5 ml-2" : ""} ${className}`}
+      className={`flex ${rootLayoutClass} ${isCatalogInline ? "float-right mt-1 mr-0.5 ml-2" : ""} ${className}`}
     >
-      {groups.map(({ factorId, factorLabel, relations: factorRelations }) => {
+      {groups.map(({ factorId, factorLabel, relations: factorRelations }, index) => {
         const modifierLabels = [...new Set(
           factorRelations.map((relation) => relation.modifierTypeLabel),
         )];
@@ -55,6 +61,9 @@ export function MultiplierBadges({
               : undefined,
         });
         const description = `${factorLabel}：${modifierLabels.join("、")}；点击查看乘区说明`;
+        const catalogOverlayClass = isSplitCatalogOverlay
+          ? `${index === 0 ? "rounded-br-md rounded-tl-md" : "rounded-bl-md rounded-tr-md"} min-h-7 min-w-0 max-w-[calc(50%-2px)] justify-center px-1 py-0.5 text-center text-[9px] font-medium leading-4 sm:px-2 sm:text-[11px] after:absolute after:inset-x-0 after:-inset-y-2 after:content-['']`
+          : "min-h-7 rounded-bl-md rounded-br-none rounded-tl-none rounded-tr-md px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2 after:content-['']";
 
         return (
           <Link
@@ -63,7 +72,7 @@ export function MultiplierBadges({
             prefetch={false}
             title={description}
             aria-label={description}
-            className={`relative inline-flex touch-manipulation items-center border transition-colors duration-200 hover:brightness-125 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${isCatalogOverlay ? "min-h-7 rounded-bl-md rounded-br-none rounded-tl-none rounded-tr-md px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2 after:content-['']" : isCatalogInline ? "min-h-5 rounded px-2 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-3 after:content-['']" : isCatalogCompact ? "min-h-6 rounded px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2.5 after:content-['']" : "min-h-11 gap-1 rounded px-2 py-1 text-xs font-semibold leading-5 sm:min-h-7"} ${getMultiplierFactorStyle(factorId)}`}
+            className={`relative inline-flex touch-manipulation items-center border transition-colors duration-200 hover:brightness-125 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 motion-reduce:transition-none ${isCatalogOverlay ? catalogOverlayClass : isCatalogInline ? "min-h-5 rounded px-2 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-3 after:content-['']" : isCatalogCompact ? "min-h-6 rounded px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2.5 after:content-['']" : "min-h-11 gap-1 rounded px-2 py-1 text-xs font-semibold leading-5 sm:min-h-7"} ${getMultiplierFactorStyle(factorId)}`}
           >
             {!isCompact && (
               <Layers3 aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />

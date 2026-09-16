@@ -16,6 +16,7 @@ const perkSourceSchema = z.strictObject({
   slot: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]),
   slug: nonEmptyString,
   overlimitCard: z.boolean(),
+  season: z.literal("s4-preview").optional(),
 });
 const weaponSourceSchema = z.strictObject({
   type: z.literal("weapon"),

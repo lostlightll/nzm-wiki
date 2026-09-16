@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "a69c53a8f1a79dc0ced1e4659695d63811bf6ebdff574d75c5144ca5e988163e",
+    "modifierIndexSha256": "e637323f5b58ee3665e60809f1f6233b956e24e9d7e11fe7f370fe8467d47e13",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -3491,6 +3491,559 @@
       },
       "modifierTypeIds": [
         "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040030",
+      "label": "狂想曲",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040030",
+        "slot": 3,
+        "slug": "狂想曲",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040083",
+      "label": "冷焰爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040083",
+        "slot": 4,
+        "slug": "冷焰爆破",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040084",
+      "label": "冷焰续航",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040084",
+        "slot": 4,
+        "slug": "冷焰续航",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040530",
+      "label": "余烬积势",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040530",
+        "slot": 3,
+        "slug": "余烬积势",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040522",
+      "label": "动能释放",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040522",
+        "slot": 3,
+        "slug": "动能释放",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040502",
+      "label": "协同轰击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040502",
+        "slot": 3,
+        "slug": "协同轰击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040544",
+      "label": "光暗冥河",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040544",
+        "slot": 4,
+        "slug": "光暗冥河",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:20703040546",
+      "label": "光暗冷焰",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040546",
+        "slot": 4,
+        "slug": "光暗冷焰",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage",
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040551",
+      "label": "光暗死神",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040551",
+        "slot": 4,
+        "slug": "光暗死神",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040532",
+      "label": "光暗龙炎",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040532",
+        "slot": 4,
+        "slug": "光暗龙炎",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040494",
+      "label": "奇点坍缩",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040494",
+        "slot": 3,
+        "slug": "奇点坍缩",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-skill-damage",
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040510",
+      "label": "层叠爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040510",
+        "slot": 3,
+        "slug": "层叠爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage",
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040527",
+      "label": "弹链供给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040527",
+        "slot": 1,
+        "slug": "弹链供给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040526",
+      "label": "战术速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040526",
+        "slot": 1,
+        "slug": "战术速装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040529",
+      "label": "积光成辉",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040529",
+        "slot": 2,
+        "slug": "积光成辉",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040498",
+      "label": "矩阵打击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040498",
+        "slot": 3,
+        "slug": "矩阵打击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage",
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040490",
+      "label": "维度撕裂",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040490",
+        "slot": 3,
+        "slug": "维度撕裂",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040545",
+      "label": "致命骨矛",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040545",
+        "slot": 4,
+        "slug": "致命骨矛",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040525",
+      "label": "近战衔接",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040525",
+        "slot": 3,
+        "slug": "近战衔接",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040524",
+      "label": "驰射淬锋",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040524",
+        "slot": 3,
+        "slug": "驰射淬锋",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "critical",
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040478",
+      "label": "光辉贯穿",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040478",
+        "slot": 3,
+        "slug": "光辉贯穿",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040482",
+      "label": "耀光爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040482",
+        "slot": 3,
+        "slug": "耀光爆破",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040486",
+      "label": "暗蚀打击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040486",
+        "slot": 3,
+        "slug": "暗蚀打击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040506",
+      "label": "神经毒素",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040506",
+        "slot": 3,
+        "slug": "神经毒素",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage",
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040514",
+      "label": "爆破强化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040514",
+        "slot": 3,
+        "slug": "爆破强化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040518",
+      "label": "铲杀冲击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040518",
+        "slot": 3,
+        "slug": "铲杀冲击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040533",
+      "label": "哈士奇鼓舞",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040533",
+        "slot": 4,
+        "slug": "哈士奇鼓舞",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040535",
+      "label": "寒霜之怒",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040535",
+        "slot": 4,
+        "slug": "寒霜之怒",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage",
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040538",
+      "label": "极寒之触",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040538",
+        "slot": 4,
+        "slug": "极寒之触",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040542",
+      "label": "腐蚀补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040542",
+        "slot": 4,
+        "slug": "腐蚀补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040547",
+      "label": "强化冰弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040547",
+        "slot": 4,
+        "slug": "强化冰弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040548",
+      "label": "冷焰爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040548",
+        "slot": 4,
+        "slug": "冷焰爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040549",
+      "label": "火神爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040549",
+        "slot": 4,
+        "slug": "火神爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040569",
+      "label": "雷霆增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040569",
+        "slot": 4,
+        "slug": "雷霆增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040570",
+      "label": "绝境雷霆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040570",
+        "slot": 4,
+        "slug": "绝境雷霆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040540",
+      "label": "纯白之光",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040540",
+        "slot": 4,
+        "slug": "纯白之光",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weakness"
       ]
     }
   ],
@@ -9740,6 +10293,650 @@
       },
       "reasonCode": "unverified-evidence",
       "reason": "尚未连通该 S2 节点的可发布增伤属性身份链；描述数值及函数变量名不替代 ModifierID 证据。"
+    },
+    {
+      "id": "perk:20703040104",
+      "label": "真空回涌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040104",
+        "slot": 2,
+        "slug": "真空回涌",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只在清空弹匣后回复武器技能能量，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040493",
+      "label": "事件视界",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040493",
+        "slot": 2,
+        "slug": "事件视界",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高武器充能速率，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040501",
+      "label": "共生充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040501",
+        "slot": 2,
+        "slug": "共生充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高充能速率或直接回复武器充能，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040520",
+      "label": "动量补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040520",
+        "slot": 1,
+        "slug": "动量补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只按移动速度装填弹药，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040489",
+      "label": "双星回充",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040489",
+        "slot": 2,
+        "slug": "双星回充",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高武器充能速率，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040534",
+      "label": "光暗哈士奇",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040534",
+        "slot": 4,
+        "slug": "光暗哈士奇",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果生成持续伤害区域并在消耗暗能或召唤物销毁时爆炸，属于独立伤害事件。"
+    },
+    {
+      "id": "perk:20703040491",
+      "label": "双星回响",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040491",
+        "slot": 3,
+        "slug": "双星回响",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生造成 180% 攻击力伤害的空间回响，属于独立伤害事件。"
+    },
+    {
+      "id": "perk:20703040550",
+      "label": "光暗炎帝",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040550",
+        "slot": 4,
+        "slug": "光暗炎帝",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果改变光暗能量获取、武器模式与资源消耗，不提供可核验的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040492",
+      "label": "引力弹匣",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040492",
+        "slot": 1,
+        "slug": "引力弹匣",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只按黑洞吸附目标数装填弹药，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040509",
+      "label": "弹匣超载",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040509",
+        "slot": 2,
+        "slug": "弹匣超载",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只直接回复武器充能或提高充能效率，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040503",
+      "label": "战灵余烬",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040503",
+        "slot": 3,
+        "slug": "战灵余烬",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果根据余烬层数释放范围冲击伤害，属于独立伤害事件。"
+    },
+    {
+      "id": "perk:20703040500",
+      "label": "灵伴馈赠",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040500",
+        "slot": 1,
+        "slug": "灵伴馈赠",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只在召唤物造成伤害或击杀时装填弹药，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040521",
+      "label": "疾风充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040521",
+        "slot": 2,
+        "slug": "疾风充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果按移动速度直接回复武器充能，不属于充能效率或伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040497",
+      "label": "矩阵回充",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040497",
+        "slot": 2,
+        "slug": "矩阵回充",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高充能速率或直接回复武器充能，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040496",
+      "label": "矩阵装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040496",
+        "slot": 1,
+        "slug": "矩阵装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只在矩阵展开和消失时装填弹药，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040488",
+      "label": "空间补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040488",
+        "slot": 1,
+        "slug": "空间补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只在双星激活和消失时回复弹药，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040528",
+      "label": "换弹引爆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040528",
+        "slot": 3,
+        "slug": "换弹引爆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果通过灼热标记与主动换弹释放范围冲击，描述中的百分比定义该独立伤害事件而非角色增伤通道。"
+    },
+    {
+      "id": "perk:20703040508",
+      "label": "速装填充",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040508",
+        "slot": 1,
+        "slug": "速装填充",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高换弹速度并在命中时装填弹药，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040539",
+      "label": "极寒之痕",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040539",
+        "slot": 4,
+        "slug": "极寒之痕",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果生成造成 45% 攻击力范围伤害的冰球，属于独立伤害事件。"
+    },
+    {
+      "id": "perk:20703040511",
+      "label": "流体护盾",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040511",
+        "slot": 3,
+        "slug": "流体护盾",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果生成护盾并在破裂时击飞、减速敌人，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040541",
+      "label": "涡轮增压",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040541",
+        "slot": 4,
+        "slug": "涡轮增压",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高持续射击的最高射速并延缓射速衰减，不提供伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040523",
+      "label": "疾风残影",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040523",
+        "slot": 3,
+        "slug": "疾风残影",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果周期生成造成 40% 攻击力伤害的小电弧，属于独立伤害事件。"
+    },
+    {
+      "id": "perk:20703040499",
+      "label": "矩阵湮灭",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040499",
+        "slot": 3,
+        "slug": "矩阵湮灭",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果在矩阵内与矩阵消失时产生范围伤害，属于独立伤害事件。"
+    },
+    {
+      "id": "perk:20703040495",
+      "label": "黑洞吞噬",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040495",
+        "slot": 3,
+        "slug": "黑洞吞噬",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果在黑洞消失时产生范围冲击伤害，并按击杀数返还充能，属于独立伤害事件。"
+    },
+    {
+      "id": "perk:20703040476",
+      "label": "光弹回收",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040476",
+        "slot": 1,
+        "slug": "光弹回收",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只消耗弹药并额外获得光能量，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040477",
+      "label": "光能充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040477",
+        "slot": 2,
+        "slug": "光能充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只消耗武器充能并额外获得光能量，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040479",
+      "label": "能量溢流",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040479",
+        "slot": 3,
+        "slug": "能量溢流",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高光能量获取概率与光能效果持续时间，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040480",
+      "label": "光效充填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040480",
+        "slot": 1,
+        "slug": "光效充填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只回复或过充弹药，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040481",
+      "label": "光谐加速",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040481",
+        "slot": 2,
+        "slug": "光谐加速",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只回复武器充能或提高充能速度，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040483",
+      "label": "恒辉长存",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040483",
+        "slot": 3,
+        "slug": "恒辉长存",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果提供伤害减免并生成光能量球，不提供正向伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040484",
+      "label": "暗影补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040484",
+        "slot": 1,
+        "slug": "暗影补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只回复或过充弹药，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040485",
+      "label": "虚空汲取",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040485",
+        "slot": 2,
+        "slug": "虚空汲取",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高充能速率或回复武器充能，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040487",
+      "label": "暗能余韵",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040487",
+        "slot": 3,
+        "slug": "暗能余韵",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只延长暗终极持续时间，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040504",
+      "label": "迟缓循环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040504",
+        "slot": 1,
+        "slug": "迟缓循环",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只在命中或击杀减速目标时装填弹药，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040505",
+      "label": "腐蚀充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040505",
+        "slot": 2,
+        "slug": "腐蚀充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高充能速率或回复武器充能，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040507",
+      "label": "瘟疫之源",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040507",
+        "slot": 3,
+        "slug": "瘟疫之源",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果生成造成独立伤害的毒池并提供生命回复，不提供角色增伤通道。"
+    },
+    {
+      "id": "perk:20703040512",
+      "label": "弹幕回收",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040512",
+        "slot": 1,
+        "slug": "弹幕回收",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只按命中目标数量回复弹药，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040513",
+      "label": "连锁充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040513",
+        "slot": 2,
+        "slug": "连锁充能-20703040513",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高充能速率或回复武器充能，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040515",
+      "label": "余波扩散",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040515",
+        "slot": 3,
+        "slug": "余波扩散",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果生成造成独立伤害的冲击波并调整其范围，不提供角色增伤通道。"
+    },
+    {
+      "id": "perk:20703040516",
+      "label": "滑铲射击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040516",
+        "slot": 1,
+        "slug": "滑铲射击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只修改精准度、后坐力并装填弹药，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040517",
+      "label": "铲击充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040517",
+        "slot": 2,
+        "slug": "铲击充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高武器充能速率，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040519",
+      "label": "地裂轨迹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040519",
+        "slot": 3,
+        "slug": "地裂轨迹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果生成造成独立伤害和减速的地裂区域，并提供移动能力，不提供角色增伤通道。"
+    },
+    {
+      "id": "perk:20703040531",
+      "label": "狂热龙炎",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040531",
+        "slot": 4,
+        "slug": "狂热龙炎",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果调整弹丸射程和散布并替换主动技能，不提供可注册的角色伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040536",
+      "label": "寒霜协同",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040536",
+        "slot": 4,
+        "slug": "寒霜协同",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只改变主动技能的团队适用范围和持续时间，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:20703040537",
+      "label": "极寒领域",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040537",
+        "slot": 4,
+        "slug": "极寒领域",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果将主动技能替换为造成独立伤害的冰霜光环，不提供角色增伤通道。"
+    },
+    {
+      "id": "perk:20703040543",
+      "label": "腐蚀飞弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040543",
+        "slot": 4,
+        "slug": "腐蚀飞弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果直接改写榴弹基础直击与爆炸伤害、弹道和异常层数，不提供角色增伤通道。"
     }
   ]
 }

@@ -279,6 +279,160 @@
       "CoefValue": 0,
       "IFBeAttackOnceModifier": false,
       "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111010012_1_0": {
+      "ID": 111010012,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+      "Description": "弹匣内前六发子弹武器伤害增加XX%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.37,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "121400043_1_0": {
+      "ID": 121400043,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+      "Description": "武器技能_层流冷焰_光暗冷焰伤害提升",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.6,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051051_1_1": {
+      "ID": 111051051,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+      "Description": "光辉贯穿：单层4.5%爆炸加成",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.045,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051005_1_0": {
+      "ID": 111051005,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
+      "Description": "耀光爆破：武器技能伤害提升 55%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.55,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051007_1_0": {
+      "ID": 111051007,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
+      "Description": "暗蚀打击：武器技能伤害提升 10%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.1,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051019_1_0": {
+      "ID": 111051019,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "神经毒素：武器射击伤害提升 15%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.15,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051019_1_1": {
+      "ID": 111051019,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+      "Description": "神经毒素：武器爆炸伤害提升 15%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.15,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051020_1_0": {
+      "ID": 111051020,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.AllDamageRatio",
+      "Description": "神经毒素：毒伤害+7%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.07,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051025_1_0": {
+      "ID": 111051025,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio",
+      "Description": "爆破强化：武器技能伤害提升 30%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.3,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051027_1_0": {
+      "ID": 111051027,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio",
+      "Description": "铲杀冲击：武器射击伤害提升 10%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.1,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "111051027_1_1": {
+      "ID": 111051027,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+      "Description": "铲杀冲击：武器爆炸伤害提升 10%",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.1,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "120600069_1_0": {
+      "ID": 120600069,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+      "Description": "武器插件_幽冥毒皇腐蚀补给_增加榴弹直击伤害",
+      "GPModifierOp": "B1",
+      "BaseValue": 2.6,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "120700121_1_1": {
+      "ID": 120700121,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio",
+      "Description": "雷霆之影插件增加爆炸伤害",
+      "GPModifierOp": "B1",
+      "BaseValue": 0.5,
+      "CoefValue": 0,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+    },
+    "120600190_1_0": {
+      "ID": 120600190,
+      "Level": 1,
+      "AttributeName": "GPAttributeSetGiveDamageRatio.WeaponDamageRatio",
+      "Description": "武器插件_雷霆999_绝境雷霆_伤害提升",
+      "GPModifierOp": "B1",
+      "BaseValue": 0,
+      "CoefValue": 0.6,
+      "IFBeAttackOnceModifier": false,
+      "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
     }
   }
 }

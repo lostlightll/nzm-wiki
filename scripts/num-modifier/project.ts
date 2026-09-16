@@ -125,6 +125,7 @@ export function generateModifierIndexRuntime(): JsonObject {
     schemaVersion: 1,
     source: {
       registrySha256: sourceHash(MODIFIER_PROVIDER_REGISTRY_PATH),
+      perkPreviewSha256: sourceHash(path.join(root, "data/perk-preview-modifiers.json")),
       s2EvidenceSha256: sourceHash(path.join(root, "data/season-talents/s2/provider-evidence.json")),
       semanticsSha256: sourceHash(SEMANTICS_PATH),
       modifierSourceSha256: lock.sources.lc.modifiers.sha256,

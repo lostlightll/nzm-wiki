@@ -192,9 +192,8 @@ for (const slotDirectory of fs.readdirSync(perkRoot, { withFileTypes: true })) {
       fs.readFileSync(path.join(perkRoot, slotDirectory.name, file), "utf8"),
     );
     const itemId = String(parsed.data.id);
-    // Preload collection flags do not publish preview perks into the live index.
     if (
-      (Number(parsed.data.CollectMODItem) === 1 && parsed.data.season !== "s4-preview") ||
+      Number(parsed.data.CollectMODItem) === 1 || parsed.data.season === "s4-preview" ||
       cardIds.has(itemId)
     ) {
       perkCandidates.set(`perk:${itemId}`, String(parsed.data.title));
