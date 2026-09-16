@@ -10,7 +10,6 @@ import {
 import { SeasonTalentCatalog } from "@/components/SeasonTalentCatalog";
 import { S2SeasonTalentCatalog } from "@/components/season-talents/s2/S2SeasonTalentCatalog";
 import { LegacyTalentCatalog } from "@/components/season-talents/s0s1/LegacyTalentCatalog";
-import { TalentDraftNotice } from "@/components/season-talents/TalentDraftNotice";
 
 const BASE_SEASONS = ["s0", "s1", "s2", "s3"] as const;
 const ALL_SEASONS = [...BASE_SEASONS, "s4"] as const;
@@ -116,7 +115,6 @@ export function SeasonTalentTabs({ s4Panel }: { s4Panel: ReactNode }) {
 
   return (
     <div className="relative flex flex-col lg:h-full">
-      {(activePage === "s0" || activePage === "s1" || activePage === "s2") && <TalentDraftNotice />}
       <div className="relative min-h-0 flex-1">
       <div
         role="tablist"
