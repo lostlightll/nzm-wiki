@@ -110,7 +110,7 @@ function OverlimitCardItem({
         </div>
 
         <div className="relative flex flex-1 flex-col items-center px-3 pb-4 pt-5 sm:px-2">
-          <div className="mb-2 w-full">
+          <div className="pointer-events-none absolute inset-x-2 top-1 z-10">
             <OverlimitEffectValues card={card} variant="catalog" />
           </div>
 

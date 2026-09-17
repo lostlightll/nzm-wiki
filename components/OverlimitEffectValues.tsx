@@ -13,7 +13,10 @@ export function OverlimitEffectValues({
 }) {
   const effects = card.effectValues ?? [];
   if (variant === "catalog") {
-    return <EffectValuesCatalog effects={effects} />;
+    const previewEffects = effects.length > 2
+      ? effects.filter(effect => effect.kind !== "stat" || effect.statId !== "movement-speed")
+      : effects;
+    return <EffectValuesCatalog effects={previewEffects} />;
   }
 
   return (
