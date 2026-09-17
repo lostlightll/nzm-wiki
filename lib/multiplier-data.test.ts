@@ -21,6 +21,53 @@ import {
 import { getOverlimitCatalog, getOverlimitPreviewCatalog } from "./overlimit";
 import { getOverlimitLinksForPerk, hasOverlimitBondStage } from "./overlimit-links";
 
+test("preview audit publishes coefficient units and scoped source links instead of zero bases", () => {
+  const preview = getOverlimitPreviewCatalog()!;
+  const cases = [
+    ["20703040085", "weapon-damage", "+0.4%", "每层"],
+    ["20703040201", "weapon-damage", "+9%", "每层"],
+    ["20703040036", "weapon-skill-damage", "+1%", "每层"],
+    ["20703040072", "weapon-damage", "+5%", "13米"],
+    ["20703040472", "all-damage", "+2%", "冲击波"],
+    ["20703040478", "weapon-hit-damage", "+4.5%", "每层"],
+    ["20703040432", "weapon-damage", "+14%", "第7"],
+  ];
+  for (const [id, facetId, value, condition] of cases) {
+    const card = preview.cards.find(card => card.id === id)!;
+    const effect = card.effectValues?.find(effect => effect.kind === "damage" && effect.modifierTypeId === facetId);
+    assert.ok(effect, `${id}: ${facetId}`);
+    assert.ok(effect.stages.some(stage => stage.value === value && stage.condition?.includes(condition)), id);
+    assert.ok(getProviderRelationsForSource({ type: "overlimit-card", id, season: "s4-preview" })
+      .some(relation => relation.modifierTypeId === facetId && relation.sourceHref?.startsWith("/overlimit/preview/")), id);
+  }
+});
+
+test("unresolved B2 cards expose parameters and correction links without inventing damage percentages", () => {
+  const preview = getOverlimitPreviewCatalog()!;
+  for (const [id, value] of [["1317100001", "1"]]) {
+    const card = preview.cards.find(card => card.id === id)!;
+    const effect = card.effectValues?.find(effect => effect.kind === "stat" && effect.statId === "correction-parameter");
+    assert.equal(effect?.stages[0].value, value);
+    assert.doesNotMatch(card.description, /600%|100%|7倍/);
+    assert.ok(card.verification);
+    assert.ok(getProviderRelationsForSource({ type: "overlimit-card", id, season: "s4-preview" })
+      .some(relation => relation.modifierTypeId === "correction-parameter" && relation.factorId === "correction"));
+  }
+});
+
+test("last shot publishes reviewed 600 percent and bidirectional correction links", () => {
+  const card = getOverlimitPreviewCatalog()!.cards.find(card => card.id === "1317108001")!;
+  const effect = card.effectValues?.find(effect => effect.kind === "damage" && effect.modifierTypeId === "correction");
+  assert.equal(effect?.stages[0].value, "+600%");
+  assert.equal(effect?.label, "增伤");
+  assert.equal(effect?.stages[0].condition, "弹匣最后一发");
+  assert.equal(card.verification, undefined);
+  assert.ok(getProviderRelationsForSource({ type: "overlimit-card", id: card.id, season: "s4-preview" })
+    .some(relation => relation.modifierTypeId === "correction"));
+  assert.ok(getSourcesForModifierType("correction").some(({ source }) =>
+    source?.type === "overlimit-card" && source.id === card.id && source.season === "s4-preview"));
+});
+
 test("super critical indexes reviewed preview providers without treating proc chance as damage or inferring targets", () => {
   const sources = getSourcesForModifierType("super-critical-rate");
   assert.deepEqual(sources.map(source => source.effectId).sort(), [

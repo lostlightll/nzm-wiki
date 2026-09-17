@@ -167,7 +167,9 @@
     {
       "id": "1317100001",
       "perkItemId": null,
-      "damageFacets": []
+      "damageFacets": [
+        "correction-parameter"
+      ]
     },
     {
       "id": "1317101001",
@@ -210,7 +212,9 @@
     {
       "id": "1317108001",
       "perkItemId": null,
-      "damageFacets": []
+      "damageFacets": [
+        "correction"
+      ]
     },
     {
       "id": "1317109001",
@@ -501,7 +505,9 @@
     {
       "id": "20703040215",
       "perkItemId": "20703040215",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-skill-damage"
+      ]
     },
     {
       "id": "20703040254",
@@ -523,12 +529,16 @@
     {
       "id": "20703040071",
       "perkItemId": "20703040071",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-damage"
+      ]
     },
     {
       "id": "20703040085",
       "perkItemId": "20703040085",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-damage"
+      ]
     },
     {
       "id": "20703040115",
@@ -590,7 +600,9 @@
     {
       "id": "20703040432",
       "perkItemId": "20703040432",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-damage"
+      ]
     },
     {
       "id": "20703040407",
@@ -609,7 +621,9 @@
     {
       "id": "20703040406",
       "perkItemId": "20703040406",
-      "damageFacets": []
+      "damageFacets": [
+        "critical"
+      ]
     },
     {
       "id": "20703040408",
@@ -640,7 +654,9 @@
     {
       "id": "20703040116",
       "perkItemId": "20703040116",
-      "damageFacets": []
+      "damageFacets": [
+        "critical"
+      ]
     },
     {
       "id": "20703040184",
@@ -652,7 +668,9 @@
     {
       "id": "20703040201",
       "perkItemId": "20703040201",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-damage"
+      ]
     },
     {
       "id": "20703040256",
@@ -779,7 +797,9 @@
     {
       "id": "20703040424",
       "perkItemId": "20703040424",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-hit-damage"
+      ]
     },
     {
       "id": "20703040093",
@@ -813,7 +833,9 @@
     {
       "id": "20703040346",
       "perkItemId": "20703040346",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-damage"
+      ]
     },
     {
       "id": "20703040393",
@@ -865,12 +887,16 @@
     {
       "id": "20703040036",
       "perkItemId": "20703040036",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-skill-damage"
+      ]
     },
     {
       "id": "20703040072",
       "perkItemId": "20703040072",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-damage"
+      ]
     },
     {
       "id": "20703040081",
@@ -928,7 +954,9 @@
     {
       "id": "20703040257",
       "perkItemId": "20703040257",
-      "damageFacets": []
+      "damageFacets": [
+        "all-damage"
+      ]
     },
     {
       "id": "20703040471",
@@ -938,7 +966,9 @@
     {
       "id": "20703040472",
       "perkItemId": "20703040472",
-      "damageFacets": []
+      "damageFacets": [
+        "all-damage"
+      ]
     },
     {
       "id": "20703040473",
@@ -953,17 +983,26 @@
     {
       "id": "20703040475",
       "perkItemId": "20703040475",
-      "damageFacets": []
+      "damageFacets": [
+        "all-damage"
+      ]
     },
     {
       "id": "20703040524",
       "perkItemId": "20703040524",
-      "damageFacets": []
+      "damageFacets": [
+        "critical",
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
     },
     {
       "id": "20703040525",
       "perkItemId": "20703040525",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
     },
     {
       "id": "20703040526",
@@ -984,6 +1023,8 @@
       "id": "20703040528",
       "perkItemId": "20703040528",
       "damageFacets": [
+        "skill-damage",
+        "correction",
         "weapon-explode-damage"
       ]
     },
@@ -1010,7 +1051,11 @@
     {
       "id": "20703040522",
       "perkItemId": "20703040522",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage",
+        "weapon-skill-damage"
+      ]
     },
     {
       "id": "20703040519",
@@ -1020,22 +1065,32 @@
     {
       "id": "20703040518",
       "perkItemId": "20703040518",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
     },
     {
       "id": "20703040514",
       "perkItemId": "20703040514",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-skill-damage"
+      ]
     },
     {
       "id": "20703040478",
       "perkItemId": "20703040478",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
     },
     {
       "id": "20703040482",
       "perkItemId": "20703040482",
-      "damageFacets": []
+      "damageFacets": [
+        "weapon-skill-damage"
+      ]
     }
   ],
   "bonds": [

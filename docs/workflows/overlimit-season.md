@@ -53,6 +53,8 @@ pnpm overlimit prepare --season s4 --content-root refs/Exports/NZM/Content --aga
 - 尚未审定的规则模块使用 `null`，页面与搜索不显示该模块，不能继承旧赛季规则。
 - 羁绊档位以 `RequiredCount` 为准，保留 `mergeType` 和 `overrides`（原始阶段序号），不能默认累加。
 - 更新同一卡片的描述、结构化效果与独立伤害时，使用同一证据版本。
+- 数值审定状态由原生或普通卡审定记录共同决定，不按卡片来源类别统一标记待核实。已审定记录且无未解析效果、无 `partial` 具体缺口时移除 `verification`；剩余独立伤害、回复量等缺口在该卡审定记录的 `partial` 中逐项说明。全零 B1 行无效果，不作为未知运算；适用武器未知继续由 `applicabilityKnown` 单独表示。
+- 预览的原生卡审定清单是 Modifier 选择的完整集合；存在清单时不再自动合并 CDO 中可能停用的旧 ID。普通卡的动态调用、系数单位和触发范围记录在 `preview-ordinary-review.json`，生成器按显式 `field: coefficient` 取值，禁止把 `BaseValue=0` 当成无效果，或未审定单位就直接展示 CoefValue。
 - 原生独立卡片的增伤必须按通用 Modifier 来源协议登记后才能通过全量检查；不能为了发布跳过孤立数值校验。候选身份已支持此类卡片，但身份确证不代表其全部效果已审定。
 - 独立卡片来源使用 `source: { type: "overlimit-card", id: "<卡片ID>" }`、来源 ID `overlimit-card:<卡片ID>`，并保存 `applications` 或有依据的排除项。羁绊名称为数据，阶段为正整数，不因下个赛季改名或增加档位而增加运行时分支。
 

@@ -74,6 +74,7 @@ async function main() {
     const hasMultiplierSource = applications.some(item => {
       const effect = resolver.resolveEffect(item.expression, item.context);
       return effect.facets.some(facet => facet.consumer === "damage" ||
+        (facet.consumer === "index" && indexedFacets.has(facet.id)) ||
         (effect.direction === "increase" && indexedFacets.has(facet.id)));
     });
     if (hasMultiplierSource) registry.providers.push({ id, label, source, evidence: { kind: "reviewed-chain", ...evidence }, applications });

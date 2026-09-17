@@ -4207,13 +4207,13 @@
     {
       "id": "1317100001",
       "name": "多弹强化",
-      "description": "单次开火每多1个弹道，伤害提升100%。",
+      "description": "单次开火每多1个弹道，增加单次伤害修正参数。",
       "icon": "/icons/overlimit/preview/06b3be8ccd40a5eef478.webp",
       "quality": 5,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "面板显示每个额外弹道对应的配置参数，最终伤害倍率仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -4230,6 +4230,19 @@
           "name": "壁垒",
           "icon": "",
           "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "correction-parameter",
+          "label": "单次修正参数",
+          "stages": [
+            {
+              "condition": "单次开火每多1个弹道",
+              "value": "1"
+            }
+          ]
         }
       ]
     },
@@ -4459,14 +4472,10 @@
     {
       "id": "1317108001",
       "name": "最后一枪",
-      "description": "弹匣最后一颗子弹伤害提升600%。",
+      "description": "弹匣最后一发伤害提升600%。",
       "icon": "/icons/overlimit/preview/6efbd4619923ae5fb43a.webp",
       "quality": 5,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -4482,6 +4491,19 @@
           "name": "狙击",
           "icon": "",
           "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "correction",
+          "label": "增伤",
+          "stages": [
+            {
+              "condition": "弹匣最后一发",
+              "value": "+600%"
+            }
+          ]
         }
       ]
     },
@@ -4938,10 +4960,6 @@
       "icon": "/icons/overlimit/preview/7819530bd900683951de.webp",
       "quality": 5,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -4958,6 +4976,18 @@
           "icon": "",
           "tone": "E015"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "accuracy-adjustment",
+          "label": "准确度调整",
+          "stages": [
+            {
+              "value": "-0.2"
+            }
+          ]
+        }
       ]
     },
     {
@@ -4967,10 +4997,6 @@
       "icon": "/icons/overlimit/preview/a32bfe95d56a90e2b28e.webp",
       "quality": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -4986,6 +5012,18 @@
           "name": "狩猎",
           "icon": "",
           "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "accuracy-adjustment",
+          "label": "准确度调整",
+          "stages": [
+            {
+              "value": "-0.2"
+            }
+          ]
         }
       ]
     },
@@ -5682,10 +5720,6 @@
       "quality": 5,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -5726,10 +5760,6 @@
       "quality": 5,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -5770,10 +5800,6 @@
       "quality": 4,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -5790,6 +5816,19 @@
           "icon": "",
           "tone": "E007"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "pellet-count",
+          "label": "单发弹片数",
+          "stages": [
+            {
+              "condition": "每层卡片效果",
+              "value": "+2"
+            }
+          ]
+        }
       ]
     },
     {
@@ -5803,7 +5842,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -5827,15 +5866,11 @@
       "id": "20703040405",
       "perkItemId": "20703040405",
       "name": "弹道过载",
-      "description": "提升换弹速度，换弹后短时间增加弹道。",
+      "description": "换弹后短时间增加弹道。",
       "icon": "/icons/overlimit/preview/82f1625c6670cb7be804.webp",
       "quality": 5,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -5852,6 +5887,18 @@
           "icon": "",
           "tone": "E016"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "pellet-count",
+          "label": "单发弹片数",
+          "stages": [
+            {
+              "value": "+2"
+            }
+          ]
+        }
       ]
     },
     {
@@ -5865,7 +5912,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -5896,7 +5943,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -5927,7 +5974,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -5958,7 +6005,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -5989,7 +6036,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6020,7 +6067,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6051,7 +6098,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6080,10 +6127,6 @@
       "quality": 4,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -6135,7 +6178,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6166,7 +6209,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6190,14 +6233,14 @@
       "id": "20703040215",
       "perkItemId": "20703040215",
       "name": "兽躯双衍",
-      "description": "增加每次开火连续发射的榴弹数量。",
+      "description": "增加每次开火连续发射的榴弹数量；技能仅命中1个目标时提升技能伤害。",
       "icon": "/icons/overlimit/preview/c3179f1f2165e45d055b.webp",
       "quality": 4,
       "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "单目标技能增伤已核实；额外连续发射的榴弹数量仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6215,6 +6258,19 @@
           "icon": "",
           "tone": "E009"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "condition": "技能仅命中1个目标时",
+              "value": "+100%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -6226,10 +6282,6 @@
       "quality": 5,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -6277,6 +6329,16 @@
               "value": "+600%"
             }
           ]
+        },
+        {
+          "kind": "stat",
+          "statId": "element-debuff-chance",
+          "label": "元素异常概率加成",
+          "stages": [
+            {
+              "value": "+600%"
+            }
+          ]
         }
       ]
     },
@@ -6291,7 +6353,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6322,7 +6384,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6346,15 +6408,11 @@
       "id": "20703040071",
       "perkItemId": "20703040071",
       "name": "协频共振",
-      "description": "同时命中的敌人越多，伤害越高。",
+      "description": "单次同时命中至少2个敌人时，每多命中1个提升武器射击伤害，命中6个及以上达到上限。",
       "icon": "/icons/overlimit/preview/042add2d5e27803c2fdd.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -6371,21 +6429,30 @@
           "icon": "",
           "tone": "E011"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "第2至第6个目标，每多命中1个",
+              "value": "+7%"
+            }
+          ]
+        }
       ]
     },
     {
       "id": "20703040085",
       "perkItemId": "20703040085",
       "name": "致命节拍",
-      "description": "持续开火时，每次射击叠加武器伤害。",
+      "description": "持续开火时，每次射击叠加1层武器伤害，最多80层；增益持续1秒。",
       "icon": "/icons/overlimit/preview/1910b9e9d6bd59d93b1d.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -6402,6 +6469,19 @@
           "icon": "",
           "tone": "E016"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "每层（最多80层）",
+              "value": "+0.4%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -6413,10 +6493,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -6459,7 +6535,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6490,7 +6566,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6521,7 +6597,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6552,7 +6628,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6607,7 +6683,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6638,7 +6714,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6669,7 +6745,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6700,7 +6776,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6731,7 +6807,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6762,7 +6838,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6786,15 +6862,11 @@
       "id": "20703040432",
       "perkItemId": "20703040432",
       "name": "肾上腺素",
-      "description": "单次开火命中目标的子弹越多，伤害越高。",
+      "description": "单次开火命中目标的子弹超过6颗时，每多命中1颗提升武器射击伤害，12颗及以上达到上限。",
       "icon": "/icons/overlimit/preview/a6e84322ac8e47a03cf2.webp",
       "quality": 4,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -6811,6 +6883,19 @@
           "icon": "",
           "tone": "E015"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "第7至第12颗命中子弹，每多1颗",
+              "value": "+14%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -6822,10 +6907,6 @@
       "quality": 5,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -6867,7 +6948,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "近战攻速与增伤已核实；命中恢复的生命值仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6887,6 +6968,16 @@
         }
       ],
       "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "melee-attack-speed",
+          "label": "近战攻击速度",
+          "stages": [
+            {
+              "value": "+50%"
+            }
+          ]
+        },
         {
           "kind": "damage",
           "modifierTypeId": "weapon-damage",
@@ -6910,7 +7001,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "暴击率、暴击伤害、移速与恢复冷却已核实；每次恢复的生命值仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -6928,6 +7019,38 @@
           "icon": "",
           "tone": "E009"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "value": "+50%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "movement-speed",
+          "label": "移动速度",
+          "stages": [
+            {
+              "value": "+25%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "critical",
+          "label": "暴击伤害",
+          "stages": [
+            {
+              "value": "+200%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -6939,10 +7062,6 @@
       "quality": 5,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -6983,10 +7102,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7028,7 +7143,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7069,10 +7184,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7108,15 +7219,11 @@
       "id": "20703040116",
       "perkItemId": "20703040116",
       "name": "裁决充能",
-      "description": "周期叠加暴击率与暴击伤害，开火命中或切枪后清除。叠层间隔0.15秒。",
+      "description": "周期叠加暴击率与暴击伤害，最多50层，开火命中或切枪后清除。叠层间隔0.15秒。",
       "icon": "/icons/overlimit/preview/80b981fd4a60a6078f4c.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7133,6 +7240,30 @@
           "icon": "",
           "tone": "E007"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "condition": "每层（最多50层）",
+              "value": "+2%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "critical",
+          "label": "暴击伤害",
+          "stages": [
+            {
+              "condition": "每层（最多50层）",
+              "value": "+8%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -7144,10 +7275,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7182,15 +7309,11 @@
       "id": "20703040201",
       "perkItemId": "20703040201",
       "name": "重峦叠势",
-      "description": "累计造成伤害后，叠加武器射击伤害。累计伤害阈值10000。",
+      "description": "累计造成伤害后，叠加1层武器射击伤害，最多3层；增益持续10秒。累计伤害阈值10000。",
       "icon": "/icons/overlimit/preview/c2e1db65c0cd69319438.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7207,6 +7330,19 @@
           "icon": "",
           "tone": "E014"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "每层（最多3层）",
+              "value": "+9%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -7218,10 +7354,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7261,10 +7393,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7304,10 +7432,6 @@
       "quality": 4,
       "slot": 2,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7350,7 +7474,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7379,10 +7503,6 @@
       "quality": 4,
       "slot": 2,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7424,7 +7544,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7455,7 +7575,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "充能效率已核实；命中与击败目标直接回复的技能能量仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7473,6 +7593,18 @@
           "icon": "",
           "tone": "E008"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "charge-efficiency",
+          "label": "充能效率",
+          "stages": [
+            {
+              "value": "+250%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -7486,7 +7618,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7517,7 +7649,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7548,7 +7680,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7577,10 +7709,6 @@
       "quality": 4,
       "slot": 1,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7597,6 +7725,18 @@
           "icon": "",
           "tone": "E016"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "reload-speed",
+          "label": "换弹速度",
+          "stages": [
+            {
+              "value": "+35%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -7610,7 +7750,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7641,7 +7781,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7670,10 +7810,6 @@
       "quality": 4,
       "slot": 1,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7713,10 +7849,6 @@
       "quality": 4,
       "slot": 1,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7758,7 +7890,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7789,7 +7921,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7820,7 +7952,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7851,7 +7983,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7882,7 +8014,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7913,7 +8045,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -7942,10 +8074,6 @@
       "quality": 4,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -7973,6 +8101,16 @@
               "value": "-5%"
             }
           ]
+        },
+        {
+          "kind": "stat",
+          "statId": "reload-speed",
+          "label": "换弹速度",
+          "stages": [
+            {
+              "value": "+36%"
+            }
+          ]
         }
       ]
     },
@@ -7987,7 +8125,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8018,7 +8156,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8042,15 +8180,11 @@
       "id": "20703040424",
       "perkItemId": "20703040424",
       "name": "哈士奇支援",
-      "description": "命中时叠加榴弹直击伤害和射速。",
+      "description": "召唤物命中时叠加武器命中伤害和射速，最多7层，持续5秒。",
       "icon": "/icons/overlimit/preview/3ec7f650f6d4347640f6.webp",
       "quality": 4,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -8079,6 +8213,17 @@
               "value": "+7%"
             }
           ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "召唤物命中增益每层（最多7层、每层卡片）",
+              "value": "+5%"
+            }
+          ]
         }
       ]
     },
@@ -8091,10 +8236,6 @@
       "quality": 4,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -8136,7 +8277,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8165,10 +8306,6 @@
       "quality": 4,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -8194,6 +8331,10 @@
           "stages": [
             {
               "value": "+100%"
+            },
+            {
+              "condition": "武器技能期间首个命中目标",
+              "value": "+200%"
             }
           ]
         }
@@ -8210,7 +8351,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8241,7 +8382,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8265,14 +8406,14 @@
       "id": "20703040346",
       "perkItemId": "20703040346",
       "name": "贯长虹",
-      "description": "切出近战武器时，劈出剑气造成伤害。冷却10秒。",
+      "description": "提升近战攻击伤害；切出近战武器时，劈出剑气造成伤害。冷却10秒。",
       "icon": "/icons/overlimit/preview/38fd489f2cfdf387adcb.webp",
       "quality": 4,
       "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "近战增伤与冷却已核实；切出武器时剑气的独立伤害仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8290,6 +8431,19 @@
           "icon": "",
           "tone": "E011"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "近战攻击",
+              "value": "+50%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -8303,7 +8457,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8334,7 +8488,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8363,10 +8517,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -8408,7 +8558,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8439,7 +8589,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8470,7 +8620,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8501,7 +8651,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8532,7 +8682,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8563,7 +8713,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8587,15 +8737,11 @@
       "id": "20703040036",
       "perkItemId": "20703040036",
       "name": "正中红心",
-      "description": "命中弱点积攒能量；使用技能时消耗能量，提升技能伤害。",
+      "description": "每次命中弱点积攒1层能量，最多100层；使用技能时消耗全部能量，按层数提升本次技能伤害。",
       "icon": "/icons/overlimit/preview/a68ffe8ad9464cebd28e.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -8612,21 +8758,30 @@
           "icon": "",
           "tone": "E016"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "condition": "每层能量（最多100层）",
+              "value": "+1%"
+            }
+          ]
+        }
       ]
     },
     {
       "id": "20703040072",
       "perkItemId": "20703040072",
       "name": "近距增幅",
-      "description": "与敌人距离越近，伤害越高。",
+      "description": "敌人在13米内时，每靠近1米提升武器射击伤害；6米及以内达到上限。",
       "icon": "/icons/overlimit/preview/3595db0c5f0aa3d35edf.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -8643,6 +8798,19 @@
           "icon": "",
           "tone": "E013"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "13米内每靠近1米（最多7米）",
+              "value": "+5%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -8656,7 +8824,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8697,10 +8865,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -8743,7 +8907,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8774,7 +8938,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8805,7 +8969,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8836,7 +9000,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -8865,10 +9029,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -8908,10 +9068,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -8951,10 +9107,6 @@
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -8989,15 +9141,11 @@
       "id": "20703040257",
       "perkItemId": "20703040257",
       "name": "远距增伤",
-      "description": "与命中敌人距离越远，伤害越高。",
+      "description": "伤害随与命中敌人的距离线性提升，50米及以上达到上限。",
       "icon": "/icons/overlimit/preview/22d9ba707801cffc55ef.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -9014,6 +9162,19 @@
           "icon": "",
           "tone": "E012"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "condition": "50米及以上",
+              "value": "+40%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -9027,7 +9188,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -9051,14 +9212,14 @@
       "id": "20703040472",
       "perkItemId": "20703040472",
       "name": "换弹冲击",
-      "description": "弹匣打空后周期释放冲击波；换弹速度加成提升冲击波伤害。冲击波间隔1秒；持续5秒。",
+      "description": "弹匣打空后周期释放冲击波；每1%换弹速度加成提升该冲击波伤害。冲击波间隔1秒；持续5秒。",
       "icon": "/icons/overlimit/preview/b0625efe1dc11cd50bdd.webp",
       "quality": 5,
       "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "换弹速度转换增伤、冲击波间隔与持续时间已核实；冲击波基础伤害仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -9076,6 +9237,19 @@
           "icon": "",
           "tone": "E010"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "condition": "冲击波每1%换弹速度加成",
+              "value": "+2%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -9089,7 +9263,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -9120,7 +9294,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -9149,10 +9323,6 @@
       "quality": 5,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -9181,6 +9351,17 @@
               "value": "+2%"
             }
           ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "condition": "每1%移动速度加成",
+              "value": "+4%"
+            }
+          ]
         }
       ]
     },
@@ -9188,15 +9369,11 @@
       "id": "20703040524",
       "perkItemId": "20703040524",
       "name": "驰射淬锋",
-      "description": "提升暴击率与暴击伤害，移速可转化为射击伤害。",
+      "description": "提升暴击率与暴击伤害；移速加成转化为命中和爆炸伤害，加成达到50%时转化量封顶。",
       "icon": "/icons/overlimit/preview/4a26ebde6cadf5d7cb6d.webp",
       "quality": 5,
       "slot": 4,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -9217,6 +9394,48 @@
       "effectValues": [
         {
           "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "value": "+50%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "critical",
+          "label": "暴击伤害",
+          "stages": [
+            {
+              "value": "+180%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "移动速度加成达到50%时",
+              "value": "+100%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-explode-damage",
+          "label": "爆炸伤害",
+          "stages": [
+            {
+              "condition": "移动速度加成达到50%时",
+              "value": "+100%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
           "statId": "movement-speed",
           "label": "移动速度",
           "stages": [
@@ -9231,15 +9450,11 @@
       "id": "20703040525",
       "perkItemId": "20703040525",
       "name": "近战衔接",
-      "description": "近战命中后，切枪的前几发子弹获得增伤；近战击杀可进一步强化。",
+      "description": "近战命中后，切枪的前6发子弹按近战增益层数提升命中和爆炸伤害；近战击杀可进一步强化。",
       "icon": "/icons/overlimit/preview/4cdf44e9a0cfbc53a26f.webp",
       "quality": 5,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -9267,6 +9482,28 @@
               "value": "+25%"
             }
           ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "切枪后前6发，每层近战增益",
+              "value": "+170%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-explode-damage",
+          "label": "爆炸伤害",
+          "stages": [
+            {
+              "condition": "切枪后前6发，每层近战增益",
+              "value": "+170%"
+            }
+          ]
         }
       ]
     },
@@ -9279,10 +9516,6 @@
       "quality": 5,
       "slot": 1,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -9342,10 +9575,6 @@
       "quality": 5,
       "slot": 1,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -9375,6 +9604,16 @@
           ]
         },
         {
+          "kind": "stat",
+          "statId": "magazine-capacity",
+          "label": "弹匣容量",
+          "stages": [
+            {
+              "value": "+100%"
+            }
+          ]
+        },
+        {
           "kind": "damage",
           "modifierTypeId": "weapon-hit-damage",
           "label": "射击伤害",
@@ -9390,14 +9629,14 @@
       "id": "20703040528",
       "perkItemId": "20703040528",
       "name": "换弹引爆",
-      "description": "提升爆炸伤害；开火施加灼热标记，换弹时根据标记数量产生冲击波。",
+      "description": "提升爆炸伤害；开火施加灼热标记，换弹时产生冲击波，伤害随标记目标数量提升，最多计入5个目标。",
       "icon": "/icons/overlimit/preview/a32bfe95d56a90e2b28e.webp",
       "quality": 5,
       "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "爆炸增伤、标记目标和额外卡层加成已核实；冲击波基础伤害仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -9419,6 +9658,28 @@
       "effectValues": [
         {
           "kind": "damage",
+          "modifierTypeId": "skill-damage",
+          "label": "非武器技能伤害",
+          "stages": [
+            {
+              "condition": "冲击波每个灼热标记目标（最多5个）",
+              "value": "+20%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "correction",
+          "label": "单次修正",
+          "stages": [
+            {
+              "condition": "冲击波每额外一层卡片（首张不生效）",
+              "value": "+100%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
           "modifierTypeId": "weapon-explode-damage",
           "label": "爆炸伤害",
           "stages": [
@@ -9438,10 +9699,6 @@
       "quality": 5,
       "slot": 2,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -9493,7 +9750,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "武器增伤已核实；余烬冲击环的独立伤害仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -9546,7 +9803,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "卡片执行参数尚未完成审定。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -9570,15 +9827,11 @@
       "id": "20703040522",
       "perkItemId": "20703040522",
       "name": "动能释放",
-      "description": "移动时积攒动能，满层后转化为临时伤害加成。动能积攒间隔1秒；冷却5秒。",
+      "description": "移动时积攒动能，满层后转化为命中、爆炸与武器技能伤害加成，持续5秒。动能积攒间隔1秒；冷却5秒。",
       "icon": "/icons/overlimit/preview/1e1ed7698744a67d8a33.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -9595,6 +9848,41 @@
           "icon": "",
           "tone": "E012"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "动能转化后",
+              "value": "+35%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-explode-damage",
+          "label": "爆炸伤害",
+          "stages": [
+            {
+              "condition": "动能转化后",
+              "value": "+35%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "condition": "动能转化后",
+              "value": "+35%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -9608,7 +9896,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "疾风状态的移速加成已核实；地裂的独立伤害仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -9644,15 +9932,11 @@
       "id": "20703040518",
       "perkItemId": "20703040518",
       "name": "铲杀冲击",
-      "description": "滑铲后叠加临时射击伤害增益。",
+      "description": "滑铲后叠加命中与爆炸伤害增益，最多3层，持续5秒。",
       "icon": "/icons/overlimit/preview/c71032136c5f684d1215.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -9669,6 +9953,30 @@
           "icon": "",
           "tone": "E016"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "每层（最多3层）",
+              "value": "+10%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-explode-damage",
+          "label": "爆炸伤害",
+          "stages": [
+            {
+              "condition": "每层（最多3层）",
+              "value": "+10%"
+            }
+          ]
+        }
       ]
     },
     {
@@ -9682,7 +9990,7 @@
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "武器技能增伤与冷却已核实；击杀触发的二次伤害仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -9700,20 +10008,33 @@
           "icon": "",
           "tone": "E010"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "condition": "武器技能",
+              "value": "+30%"
+            }
+          ]
+        }
       ]
     },
     {
       "id": "20703040478",
       "perkItemId": "20703040478",
       "name": "光辉贯穿",
-      "description": "获得光能后叠加临时射击伤害；满层后，下次射击附带光能贯穿伤害。贯穿触发层数5。",
+      "description": "每次获得光能叠加1层命中与爆炸伤害，最多5层，持续5秒；满层后，下次射击附带光能贯穿伤害。贯穿触发层数5。",
       "icon": "/icons/overlimit/preview/805f67bce15f585c579e.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
+        "note": "每层增伤与层数上限已核实；光能贯穿的独立伤害仍待核实。"
       },
       "weaponType": [],
       "weaponItems": [],
@@ -9731,21 +10052,41 @@
           "icon": "",
           "tone": "E016"
         }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "每层光能（最多5层）",
+              "value": "+4.5%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-explode-damage",
+          "label": "爆炸伤害",
+          "stages": [
+            {
+              "condition": "每层光能（最多5层）",
+              "value": "+4.5%"
+            }
+          ]
+        }
       ]
     },
     {
       "id": "20703040482",
       "perkItemId": "20703040482",
       "name": "耀光爆破",
-      "description": "触发光能效果后提升武器技能伤害，期间击杀目标可延长增益。延时所需击杀2；延长持续1秒。",
+      "description": "触发光能效果后提升武器技能伤害，持续8秒，期间击杀目标可延长增益。延时所需击杀2；延长持续1秒。",
       "icon": "/icons/overlimit/preview/5ab800c915d4b67578cf.webp",
       "quality": 4,
       "slot": 3,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -9761,6 +10102,19 @@
           "name": "狩猎",
           "icon": "",
           "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "condition": "光能增益期间",
+              "value": "+55%"
+            }
+          ]
         }
       ]
     }

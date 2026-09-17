@@ -1,4 +1,141 @@
 {
+  "20703040215": {
+    "partial": "单目标技能增伤已核实；额外连续发射的榴弹数量仍待核实。",
+    "rows": [{ "row": "lc:120100240_1_0", "recipient": "damage-event", "field": "base", "condition": "技能仅命中1个目标时" }],
+    "evidence": ["Weapon/Data/Rifle/Rifle_20001000024_WBH_JJSSZS/MGE/MGE_1312040001_JJSS.uasset#ExecuteUbergraph_MGE_1312040001_JJSS@219 BeforeMultiTargetsSettlement(flags=260); @797 TargetCount==1 -> @850 AddScopeModiferForSettlement(120100240); Numerical WeaponSkillDamageRatio B1 BaseValue=1, scoped to the single-target skill settlement"],
+    "sourceSha256": "7a6b425b52d30d0cb5c4d9a05fc8fe02f91b95ff7c3e3dafae4ce7de859e8b8a"
+  },
+  "20703040440": {
+    "rows": [{ "row": "lc:1316203001_1_0", "recipient": "self", "field": "coefficient", "condition": "每层卡片效果" }],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1316203001.uasset#ExecuteUbergraph_MGE_1316203001@331 ModularGameplayEffect.GetStackCount -> @359 Multiply_IntFloat(-1) reduces bounce count; @698 ModularGameplayEffect.GetStackCount -> @726 Conv_IntToFloat -> @763 ApplyModifierIDByCurve.ApplyModifiers(1316203001, stackCount)", "Numerical GPAttributeSetFireMode.ShotBulletsNumAddPoint B1 BaseValue=0, CoefValue=2: two added projectiles per MGE stack, not buff stacks. Numerical Description says +4 but structured coefficient=2 is authoritative"],
+    "sourceSha256": "4f911d8339df52c122cc1c54b4e20d7830fb86660eba4cdc08ca4bb6e1aba654"
+  },
+  "20703040346": {
+    "partial": "近战增伤与冷却已核实；切出武器时剑气的独立伤害仍待核实。",
+    "rows": [{ "row": "lc:120300243_1_0", "recipient": "damage-event", "field": "base", "condition": "近战攻击" }],
+    "evidence": ["Weapon/Data/SG/SG_20003000024_null_YYZS/MGE/MGE_1312062001_YYZS.uasset#ExecuteUbergraph_MGE_1312062001_YYZS@2068 MGEOwnerHitEventV3.WaitForWeaponEventV3(self,null,2,4,10) -> FireHitServer entry @1412 -> @1721 AddScopeModiferForSettlement(120300243); same row is reviewed as melee damage in ordinary perk MDX; Numerical WeaponDamageRatio B1 BaseValue=0.5"],
+    "sourceSha256": "ce830a6b3e27fdd269c889aafd3c7e2f5a189f1c86b5e47329b530f4ce0d35bd"
+  },
+  "20703040406": {
+    "partial": "暴击率、暴击伤害、移速与恢复冷却已核实；每次恢复的生命值仍待核实。",
+    "rows": [
+      { "row": "lc:111041022_1_0", "recipient": "self", "field": "base" },
+      { "row": "lc:111041022_1_1", "recipient": "self", "field": "base" },
+      { "row": "lc:111041022_1_2", "recipient": "self", "field": "base" }
+    ],
+    "evidence": ["Abilities/Build/CBT3/Perk03/MGE_1315202001.uasset#ExecuteUbergraph_MGE_1315202001@235 ApplyModifiers(111041022); Numerical B1 base values: CriticalRatio=0.5, SpeedScale=0.25, CriticalDamageRatio=2"],
+    "sourceSha256": "f208dc1400a8d76b48af919f56cdd1f083ba050c596a96b42372b029ee07797c"
+  },
+  "20703040404": {
+    "partial": "充能效率已核实；命中与击败目标直接回复的技能能量仍待核实。",
+    "rows": [{ "row": "lc:111041019_1_0", "recipient": "self", "field": "base" }],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1314193001.uasset#ExecuteUbergraph_MGE_1314193001@232 ApplyModifiers(111041019); Numerical ChargeSpeedAddRatio B1 BaseValue=2.5, distinct from direct charge events"],
+    "sourceSha256": "6937c1fa1412ecac52c0450391ffadacb94f7175ea748b5ebb60732ab74ecf99"
+  },
+  "20703040514": {
+    "partial": "武器技能增伤与冷却已核实；击杀触发的二次伤害仍待核实。",
+    "rows": [{ "row": "lc:111051025_1_0", "recipient": "damage-event", "field": "base", "condition": "武器技能" }],
+    "evidence": ["Abilities/Build/CBT3/Perk03/MGE_1315237001.uasset#ExecuteUbergraph_MGE_1315237001@145 AddScopedModifierForActivatedSkill(111051025); Numerical WeaponSkillDamageRatio B1 BaseValue=0.3"],
+    "sourceSha256": "ac23f349df6de49b22c3dbe4c395701a042191aa0b2950da099f5e5b457def3b"
+  },
+  "20703040482": {
+    "rows": [{ "row": "lc:111051005_1_0", "recipient": "damage-event", "field": "base", "condition": "光能增益期间" }],
+    "evidence": ["Abilities/Build/CBT3/Perk03/MGE_1315229001.uasset#ExecuteUbergraph_MGE_1315229001@988 AddScopedModifierForActivatedSkill(111051005), gated by AddDamageBuff; DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315229001 Duration=8; Numerical WeaponSkillDamageRatio B1 BaseValue=0.55"],
+    "sourceSha256": "43bfc1a4911cfa2bb5afc7d0e281970cbc14780c67140ed56ba7681cc683b02d"
+  },
+  "20703040116": {
+    "rows": [
+      { "row": "lc:111010076_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "每层（最多50层）" },
+      { "row": "lc:111010076_1_1", "recipient": "damage-event", "field": "coefficient", "condition": "每层（最多50层）" }
+    ],
+    "evidence": ["Abilities/Build/CBT3/Perk03/MGE_1315136001.uasset#ExecuteUbergraph_MGE_1315136001@1307 GetBuffStackCountByName -> @1455 CreateAsyncAddScopedModifier(111010076, stackCount); DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315136001 StackLimitCount=50; Numerical B1 coefficient CriticalRatio=0.02, CriticalDamageRatio=0.08"],
+    "sourceSha256": "2adda68e8003b1c7d7f906654d275704d9afaa2490fb53d7e43a7fb9fd7802a2"
+  },
+  "20703040518": {
+    "rows": [
+      { "row": "lc:111051027_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "每层（最多3层）" },
+      { "row": "lc:111051027_1_1", "recipient": "damage-event", "field": "coefficient", "condition": "每层（最多3层）" }
+    ],
+    "evidence": ["Abilities/Build/CBT3/Perk03/MGE_1315238001.uasset#ExecuteUbergraph_MGE_1315238001@940 GetBuffStackCountByName -> @1030 ApplyModifiersToFireContext(111051027, stackCount); DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315238001 StackLimitCount=3, Duration=5; Numerical WeaponHitDamageRatio and WeaponExplodeDamageRatio both B1 coefficient=0.1"],
+    "sourceSha256": "7fbb0960705b3a9dd19ff375caac1d90cf6625acdb06bd1493f4e4d7eb98cd47"
+  },
+  "20703040522": {
+    "rows": [
+      { "row": "lc:111051028_1_0", "recipient": "damage-event", "field": "coefficient", "scale": 5, "condition": "动能转化后" },
+      { "row": "lc:111051028_1_1", "recipient": "damage-event", "field": "coefficient", "scale": 5, "condition": "动能转化后" },
+      { "row": "lc:111051028_1_2", "recipient": "damage-event", "field": "coefficient", "scale": 5, "condition": "动能转化后" }
+    ],
+    "evidence": ["Abilities/Build/CBT3/Perk03/MGE_1315239001.uasset#ExecuteUbergraph_MGE_1315239001@1536 MGEAddBuff(AddDamgeBuff, 5 stacks); @2334 GetBuffStackCountByName -> @2424 ApplyModifiersToFireContext(111051028, stackCount); @3170 GetBuffStackCountByName -> @3260 AddScopedModifierForActivatedSkill(111051028, stackCount)", "DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315239002 StackLimitCount=5, Duration=5; Numerical WeaponHitDamageRatio, WeaponExplodeDamageRatio and WeaponSkillDamageRatio each B1 coefficient=0.07. Explicit five-stack grant justifies scale=5; not inferred from description"],
+    "sourceSha256": "37156d997d993bdc764f9f4e49540bce8ecdb3f2b2cfa41466349f21a740263e"
+  },
+  "20703040071": {
+    "rows": [{ "row": "lc:111010055_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "第2至第6个目标，每多命中1个" }],
+    "evidence": ["Abilities/Build/CBT3/Perk03/MGE_1315119001.uasset#ExecuteUbergraph_MGE_1315119001@125 count>=2 -> @182 Clamp(count,1,6) -> @238 subtract 1 -> @317 AddScopedModifierForNEAE(111010055, countMinusOne); Numerical WeaponDamageRatio B1 coefficient=0.07; maximum five increments"],
+    "sourceSha256": "bb7051007affa694f0437f2265b0a74a893017a5fa143c1e67ad99514a7752ef"
+  },
+  "20703040257": {
+    "rows": [{ "row": "lc:111031018_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "50米及以上" }],
+    "evidence": ["Abilities/Build/CBT3/Perk03/MGE_1315171001.uasset#ExecuteUbergraph_MGE_1315171001@540 MapRangeClamped(distance,0,MaxDistance=5000,0,1) -> @601 AddScopeModiferForSettlement(111031018, mappedDistance); Numerical AllDamageRatio B1 coefficient=0.4; full coefficient is reached at 5000cm and above, shorter distance scales linearly"],
+    "sourceSha256": "138a6ecd15d2507639e1a03906574f22ad09e2c12a951ed18f85cb173f0dc73c"
+  },
+  "20703040432": {
+    "rows": [{ "row": "lc:120300310_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "第7至第12颗命中子弹，每多1颗" }],
+    "evidence": ["Weapon/Data/SG/SG_20003000031_null_HCP/MGE/MGE_1313031004_HCP.uasset#ExecuteUbergraph_MGE_1313031004_HCP@264 count>6 -> @321 subtract 6 -> @372 Clamp(result,0,6) -> @456 CreateAsyncAddScopedModifier(120300310, extraCount)", "S4 preload Numerical 120300310_1_0 WeaponDamageRatio B1 BaseValue=0, CoefValue=0.14; maximum six increments. S3 published 21% per pellet / 126% maximum is not inherited; this S4 coefficient gives 14% per extra pellet / 84% maximum"],
+    "sourceSha256": "bdd9a710fa0b2b07ed23343c9367e68c7fdfd5422855e3aa47ca225a8bafece4"
+  },
+  "20703040085": {
+    "rows": [{ "row": "lc:111010062_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "每层（最多80层）" }],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315125001.uasset#ExecuteUbergraph_MGE_1315125001@245 AddBuffByName adds one stack on DuringFireServer; @989 GetBuffStackCountByName -> @1042 Conv_IntToFloat -> @1079 CreateAsyncAddScopedModifier(111010062, stackCount)",
+      "DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315125001: StackLimitCount=80, Duration=1; Numerical 111010062_1_0 BaseValue=0, CoefValue=0.004, B1; publish coefficient per stack rather than zero base"
+    ],
+    "sourceSha256": "c30ac795587db4a7e31ca2327ee00ddcfbdbc6d690324c23c2a6f8d5ba028827"
+  },
+  "20703040201": {
+    "rows": [{ "row": "lc:111010138_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "每层（最多3层）" }],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315157001.uasset#ExecuteUbergraph_MGE_1315157001@1312 WaitForAccumulateDamage(DmgTrigger=10000); @174 MGEAddBuff; @683 GetBuffStackCountByName -> @736 Conv_IntToFloat -> @773 CreateAsyncAddScopedModifier(ModifierID=111010138, stackCount)",
+      "DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315157001: StackLimitCount=3, Duration=10; Numerical 111010138_1_0 BaseValue=0, CoefValue=0.09, B1"
+    ],
+    "sourceSha256": "1fc040195ea38c58a413e83f68503dcb7db283330895629a9ccf48ba4f09ff1f"
+  },
+  "20703040036": {
+    "rows": [{ "row": "lc:111010016_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "每层能量（最多100层）" }],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315111001.uasset#ExecuteUbergraph_MGE_1315111001@188 bIsWeakPointHit -> @227 MGEAddBuff(one stack); skill-start @1096 GetBuffStackCountByName -> @1149 Conv_IntToFloat -> @1186 AddScopedModifierForActivatedSkill(111010016, stackCount); @1307 jumps to @15-35 MGERemoveBuff",
+      "DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315111001: StackLimitCount=100, Duration=-1; Numerical 111010016_1_0 BaseValue=0, CoefValue=0.01, B1"
+    ],
+    "sourceSha256": "c7076c1f87e3e18b416ef59bff8ab3a1d3b8cecb62ddfc195321f495d7b64798"
+  },
+  "20703040072": {
+    "rows": [{ "row": "lc:111010056_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "13米内每靠近1米（最多7米）" }],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315120001.uasset#ExecuteUbergraph_MGE_1315120001@708 distance/100 -> @750 distanceMetres<13; @1066 FClamp(distanceMetres,1,13) -> @1113 13-clampedDistance -> @1155 FMin(result,7) -> @1197 AddScopedModifierForNEAE(ModifierId=111010056, result)",
+      "Numerical 111010056_1_0 BaseValue=0, CoefValue=0.05, B1; coefficient applies per metre below 13m, capped at seven units, reached at distance<=6m"
+    ],
+    "sourceSha256": "a2da6c00f09505382853708e5c1536d8a3abe6d32d46f4d6dd69d89f01528848"
+  },
+  "20703040472": {
+    "partial": "换弹速度转换增伤、冲击波间隔与持续时间已核实；冲击波基础伤害仍待核实。",
+    "rows": [{ "row": "lc:111051004_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "冲击波每1%换弹速度加成" }],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk02/MGE_1316211001.uasset#GetDamageValue@40 WeaponChangeClipSpeedRatio + @195 ChangeClipTimeAdjust -> @343 Add_FloatFloat -> @389 Multiply_FloatFloat(100); ExecuteUbergraph_MGE_1316211001@1192 writes result to NZMGEModifierStruct.X_Value, @1156 ModifierID=modifier=111051004, @1268 DoNZAOEAction receives the modifier array",
+      "Numerical 111051004_1_0 BaseValue=0, CoefValue=0.02, B1; applies only to this shockwave, not all weapon damage. Older copy referring to critical chance or 1% scaling is rejected: GetDamageValue reads reload attributes only and Numerical coefficient is 0.02"
+    ],
+    "sourceSha256": "840bdda2077b419be580eadb510ce59637668be917ce192e876d2adbf80c5c8f"
+  },
+  "20703040478": {
+    "partial": "每层增伤与层数上限已核实；光能贯穿的独立伤害仍待核实。",
+    "rows": [
+      { "row": "lc:111051051_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "每层光能（最多5层）" },
+      { "row": "lc:111051051_1_1", "recipient": "damage-event", "field": "coefficient", "condition": "每层光能（最多5层）" }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315250001.uasset#ExecuteUbergraph_MGE_1315250001@300 MGEAddBuff(MarkBuff); @1125 GetBuffStackCountByName(MarkBuff) -> @1178 Conv_IntToFloat -> @1215 ApplyModifiersToFireContext(111051051, stackCount)",
+      "DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315250001: StackLimitCount=5, Duration=5; Numerical 111051051_1_0 WeaponHitDamageRatio and 111051051_1_1 WeaponExplodeDamageRatio both BaseValue=0, CoefValue=0.045, B1; use explicit fire-context multiplier, not the buff's false bMagnitudesFactorInStackCount"
+    ],
+    "sourceSha256": "22d87964beea636be782b9f7bfe5564a78d89bf6e80af070f194464304ee00a0"
+  },
   "20703040435": {
     "rows": [
       {
@@ -117,14 +254,17 @@
     "sourceSha256": "47e1dbcadd9dd7ecd656cd5feed8e21429356349aded260cc258695f36bb33d2"
   },
   "20703040409": {
+    "partial": "近战攻速与增伤已核实；命中恢复的生命值仍待核实。",
     "rows": [
+      { "row": "lc:111041025_1_0", "recipient": "self", "field": "base" },
       {
         "row": "lc:111041027_1_0",
         "field": "base"
       }
     ],
     "evidence": [
-      "Abilities/Build/CBT3/Perk04/MGE_1316196001.uasset#ExecuteUbergraph_MGE_1316196001@919/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+      "Abilities/Build/CBT3/Perk04/MGE_1316196001.uasset#ExecuteUbergraph_MGE_1316196001@919/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'",
+      "ExecuteUbergraph_MGE_1316196001@107 NZMGEModifierStruct.ModifierID=111041025, @139 X_Value=0 -> @191 array -> @231 ApplyModifiers(self); Numerical MeleeAttackIntervalRatio B1 BaseValue=0.5. Preserve raw attribute; do not infer an attack-speed formula"
     ],
     "sourceSha256": "a4eda405b13693b29f3f8ff66b3e514f931bb934a3e822956499081441c68898"
   },
@@ -285,6 +425,7 @@
   },
   "20703040424": {
     "rows": [
+      { "row": "lc:121600113_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "召唤物命中增益每层（最多7层、每层卡片）" },
       {
         "row": "lc:121600110_1_0",
         "field": "base",
@@ -292,7 +433,8 @@
       }
     ],
     "evidence": [
-      "Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068002_HSQHY_DarkGoldPlugin.uasset#ExecuteUbergraph_MGE_1312068002_HSQHY_DarkGoldPlugin@1215/Function'NZBuffManagerLibrary:AddBuffToWeapon'"
+      "Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068002_HSQHY_DarkGoldPlugin.uasset#ExecuteUbergraph_MGE_1312068002_HSQHY_DarkGoldPlugin@1215/Function'NZBuffManagerLibrary:AddBuffToWeapon'",
+      "ExecuteUbergraph_MGE_1312068002_HSQHY_DarkGoldPlugin@1743 GetBuffStackCount(BuffName=Weapon_121600110_1) -> @1824 multiply ModularGameplayEffect.GetStackCount -> @1907 CreateAsyncAddScopedModifier(121600113, buffStacks*cardStacks); Numerical WeaponHitDamageRatio B1 coefficient=0.05. Buff StackLimitCount=7, Duration=5; applied to the player's current weapon hit event, not summon damage"
     ],
     "sourceSha256": "41431f6101e8f58f30b61b54407acd7ad40b3d14fc3ec67fda5e15e39d5447d4"
   },
@@ -310,13 +452,15 @@
   },
   "20703040334": {
     "rows": [
+      { "row": "lc:121900101_1_0", "recipient": "damage-event", "field": "base", "condition": "武器技能期间首个命中目标" },
       {
         "row": "lc:121900100_1_0",
         "field": "base"
       }
     ],
     "evidence": [
-      "Weapon/Data/Hidden/Hidden_20019000001_null_KUWU/MGE/MGE_1312057003_KUWU.uasset#ExecuteUbergraph_MGE_1312057003_KUWU@1360/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+      "Weapon/Data/Hidden/Hidden_20019000001_null_KUWU/MGE/MGE_1312057003_KUWU.uasset#ExecuteUbergraph_MGE_1312057003_KUWU@1360/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'",
+      "ExecuteUbergraph_MGE_1312057003_KUWU@180 skill-start DamageModifier=121900101; @368 skill-end resets DamageModifier=121900100; @1360 CreateAsyncAddScopedModifier uses current DamageModifier. Numerical 121900101_1_0 WeaponDamageRatio B1 BaseValue=2; first-hit condition retained from the existing trigger audit"
     ],
     "sourceSha256": "34cf66f653177b25fe1cfa7e6d17b0ba45de300319aea750f201de1becb58f00"
   },
@@ -383,6 +527,7 @@
   },
   "20703040475": {
     "rows": [
+      { "row": "lc:111051002_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "每1%移动速度加成" },
       {
         "row": "lc:111051003_1_0",
         "field": "base",
@@ -390,31 +535,41 @@
       }
     ],
     "evidence": [
-      "Abilities/Build/CBT3/Perk02/MGE_1316214001.uasset#ExecuteUbergraph_MGE_1316214001@165/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+      "Abilities/Build/CBT3/Perk02/MGE_1316214001.uasset#ExecuteUbergraph_MGE_1316214001@165/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+      "ExecuteUbergraph_MGE_1316214001@591 SpeedScale -> @710 subtract 1 -> @752 divide 1 -> @794 multiply 100 -> @836 CreateAsyncAddScopedModifier(111051002, extraSpeedPercent); Numerical AllDamageRatio B1 coefficient=0.04, so each 1% speed grants 4% damage; reject old 1% description"
     ],
     "sourceSha256": "23d82667c5322caf5e0f2e2979b668487b425dbc3c2076c3bf10792d31f9992b"
   },
   "20703040524": {
     "rows": [
+      { "row": "lc:111051029_1_0", "recipient": "self", "field": "base" },
+      { "row": "lc:111051029_1_1", "recipient": "self", "field": "base" },
+      { "row": "lc:111051030_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "移动速度加成达到50%时" },
+      { "row": "lc:111051030_1_1", "recipient": "damage-event", "field": "coefficient", "condition": "移动速度加成达到50%时" },
       {
         "row": "lc:111051031_1_0",
         "field": "base"
       }
     ],
     "evidence": [
-      "Abilities/Build/CBT3/Perk03/MGE_1315240001.uasset#ExecuteUbergraph_MGE_1315240001@35/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+      "Abilities/Build/CBT3/Perk03/MGE_1315240001.uasset#ExecuteUbergraph_MGE_1315240001@35/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+      "ExecuteUbergraph_MGE_1315240001@202 MakeStruct.ModifierID=111051029, @234 X_Value=0 -> @286 array -> @326 ApplyModifiers(self); Numerical CriticalRatio base=0.5 and CriticalDamageRatio base=1.8, B1",
+      "Get XValue by Speed computes Max(SpeedScale*(RunSpeedScale+1)-1,0); ExecuteUbergraph_MGE_1315240001@1014 MapRangeClamped(speedBonus,0,Add Speed Upper Limit=0.5,0,1) -> @1075 ApplyModifiersToFireContext(111051030, mappedBonus); WeaponHitDamageRatio and WeaponExplodeDamageRatio B1 coefficient=1 each, reached at +50% combined speed"
     ],
     "sourceSha256": "02475c5c4f29c3e95592fb103ed8a0b6ca4b08f88ca7ed7d62a9e49d84d16e3b"
   },
   "20703040525": {
     "rows": [
+      { "row": "lc:111051032_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "切枪后前6发，每层近战增益" },
+      { "row": "lc:111051032_1_1", "recipient": "damage-event", "field": "coefficient", "condition": "切枪后前6发，每层近战增益" },
       {
         "row": "lc:111051033_1_0",
         "field": "base"
       }
     ],
     "evidence": [
-      "Abilities/Build/CBT3/Perk03/MGE_1315241001.uasset#ExecuteUbergraph_MGE_1315241001@1467/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+      "Abilities/Build/CBT3/Perk03/MGE_1315241001.uasset#ExecuteUbergraph_MGE_1315241001@1467/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+      "ExecuteUbergraph_MGE_1315241001@303 GetBuffStackCount(BD_Common_1315241001) -> @383 count>0; @523 ShootCounter<=6; @668 SelectFloat(2,1,Effect Plus) -> @715 multiply buffCount -> @826 multiply MGE.GetStackCount -> @872 ApplyModifiersToFireContext(111051032, product). Both damage coefficients=1.7, B1; published per buff stack for one card, without the conditional doubled Effect Plus multiplier"
     ],
     "sourceSha256": "a1aff4e62fe3c68308fd782099c1fb7608454e361488357f4e96ce8082cba14f"
   },
@@ -462,14 +617,19 @@
     "sourceSha256": "cc7105b14a4c86b832298ff6de90b07ffd039fc04448172fa6c28965686103f4"
   },
   "20703040528": {
+    "partial": "爆炸增伤、标记目标和额外卡层加成已核实；冲击波基础伤害仍待核实。",
     "rows": [
+      { "row": "lc:111051058_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "冲击波每个灼热标记目标（最多5个）" },
+      { "row": "lc:111051081_1_0", "recipient": "damage-event", "field": "coefficient", "condition": "冲击波每额外一层卡片（首张不生效）" },
       {
         "row": "lc:111051037_1_0",
         "field": "base"
       }
     ],
     "evidence": [
-      "Abilities/Build/CBT3/Perk04/MGE_1316219001.uasset#ExecuteUbergraph_MGE_1316219001@238/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+      "Abilities/Build/CBT3/Perk04/MGE_1316219001.uasset#ExecuteUbergraph_MGE_1316219001@238/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'",
+      "ExecuteUbergraph_MGE_1316219001@4107 Target Array.Length -> @4166 Min(count,5) -> @4245 ScopedModifier(111051058, count), scoped to current AOE SettlementBefore; SkillDamageRatio B1 coefficient=0.2",
+      "ExecuteUbergraph_MGE_1316219001@2523 MGE.GetStackCount-1 -> @2602 MakeStruct.ModifierID=111051081, @2634 X_Value=extraCardStacks -> @2690 array -> @2710 DoNZAOEAction(NumericalID=1302101021, ModifierArray). ExecutionRatio B1 coefficient=1, only per extra card stack; first card contributes zero, never an unconditional +100%"
     ],
     "sourceSha256": "d546f2b4dd250b8962dc5c816136b7d82aaf747f8c22f7b93c4aa0c18c73d5ad"
   },
@@ -491,6 +651,7 @@
     "sourceSha256": "f315bff84d7a68e5eb5793c3f8967be1ffa25f3340f8b05326cc8799ff8992dd"
   },
   "20703040530": {
+    "partial": "武器增伤已核实；余烬冲击环的独立伤害仍待核实。",
     "rows": [
       {
         "row": "lc:111051040_1_0",
@@ -507,6 +668,7 @@
     "sourceSha256": "de06b4f2a0de3d3429817e030acc4919d1920a6ba8e9070450a57552bfaac894"
   },
   "20703040519": {
+    "partial": "疾风状态的移速加成已核实；地裂的独立伤害仍待核实。",
     "rows": [
       {
         "row": "lc:111051059_1_0",

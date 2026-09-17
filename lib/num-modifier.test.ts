@@ -3,12 +3,38 @@ import test from "node:test";
 import {
   NUM_MODIFIER_LOCK,
   NUM_MODIFIER_RESOLVER,
+  getPerkModifierResolver,
 } from "@/lib/num-modifier-data";
 import {
   NumModifierError,
   createNumModifierResolver,
 } from "@/lib/num-modifier";
 import type { NumModifierDataLock } from "@/lib/num-modifier-data-lock";
+
+test("preview execution parameters retain unknown B2 semantics while exposing their source channel", () => {
+  const resolver = getPerkModifierResolver("s4-preview");
+  for (const [row, field, expected] of [
+    ["lc:130000001_1_0", "coefficient", 1],
+  ] as const) {
+    const effect = resolver.resolveEffect({ row, field }, { recipient: "damage-event" });
+    assert.equal(effect.value.value, expected);
+    assert.equal(effect.operation.model, "unknown");
+    assert.equal(effect.direction, "unknown");
+    assert.equal(effect.factor, undefined);
+    assert.deepEqual(effect.facets.map(facet => [facet.id, facet.consumer]), [["correction-parameter", "index"]]);
+    assert.deepEqual(resolver.resolveEffect({ row, field }, { recipient: "self" }).facets, []);
+  }
+});
+
+test("last shot uses its explicit reviewed correction rule", () => {
+  const effect = getPerkModifierResolver("s4-preview").resolveEffect(
+    { row: "lc:130008001_1_0", field: "base" }, { recipient: "damage-event" },
+  );
+  assert.equal(effect.value.value, 6);
+  assert.equal(effect.reviewed, true);
+  assert.equal(effect.factor, 7);
+  assert.deepEqual(effect.facets.map(facet => facet.id), ["correction"]);
+});
 
 test("locks the complete LC modifier table", () => {
   assert.equal(NUM_MODIFIER_LOCK.sources.lc.modifiers.row_count, 3044);

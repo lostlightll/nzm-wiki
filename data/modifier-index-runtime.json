@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "62a419d613b01e9348ff840b79e9df3f6818e2929eb2e3e1d94c95d429bfa292",
-    "perkPreviewSha256": "ccf27ffdf5fc27da611359d2287c9d2bc1c9a33258ccfdf60a22b34daa8f7592",
+    "registrySha256": "a1972afe03f06bfefddee1865bd186f864f57ad7a73fd3b4af68aba4db5c592f",
+    "perkPreviewSha256": "dce3d1637f741b05c4fa07f6ec9d6a54cc92b6e86f7bd71abb2bc8d527ee4773",
     "s2EvidenceSha256": "a3f16097b34fc589f1322faa4f798b74bc82066dbd02bdcaad4fa0e4c240a0b2",
-    "semanticsSha256": "c9e7adfd22e1ad2597e4912b7cb2d6878091986db4ea5c43f9e96ee04a9ff349",
+    "semanticsSha256": "6ebaa7cf7eaa55f6d7f32d91bd40b1815cecfd2647cb9c626fddc47273684c9d",
     "modifierSourceSha256": "aa30e3902d54f8802c87c76ed1b17c4506e27a5a4f61260f44cb569915be521e",
     "attributeDescriptionSourceSha256": "f4c7bae3871af545fdf4ecc4ceea2df7f498c5a5bfb24ec42a1e29c8703adc95"
   },
@@ -301,6 +301,11 @@
           "id": "correction",
           "label": "单次修正",
           "consumer": "damage"
+        },
+        "unknown": {
+          "id": "correction-parameter",
+          "label": "单次修正参数",
+          "consumer": "index"
         }
       }
     },
@@ -447,6 +452,82 @@
         "decrease": {
           "id": "critical-damage-cap",
           "label": "暴击伤害上限增量",
+          "consumer": "stat"
+        }
+      }
+    },
+    {
+      "id": "accuracy-adjustment",
+      "label": "准确度调整",
+      "family": "weapon-handling",
+      "quantity": "opaque",
+      "default_format": "signed-number",
+      "facets": {
+        "increase": {
+          "id": "accuracy-adjustment",
+          "label": "准确度调整",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "accuracy-adjustment",
+          "label": "准确度调整",
+          "consumer": "stat"
+        }
+      }
+    },
+    {
+      "id": "magazine-capacity",
+      "label": "弹匣容量",
+      "family": "resource",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "magazine-capacity",
+          "label": "弹匣容量",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "magazine-capacity",
+          "label": "弹匣容量",
+          "consumer": "stat"
+        }
+      }
+    },
+    {
+      "id": "pellet-count",
+      "label": "单发弹片数",
+      "family": "weapon-handling",
+      "quantity": "count",
+      "default_format": "signed-number",
+      "facets": {
+        "increase": {
+          "id": "pellet-count",
+          "label": "单发弹片数",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "pellet-count",
+          "label": "单发弹片数",
+          "consumer": "stat"
+        }
+      }
+    },
+    {
+      "id": "element-debuff-chance",
+      "label": "元素异常概率加成",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": {
+          "id": "element-debuff-chance",
+          "label": "元素异常概率加成",
+          "consumer": "stat"
+        },
+        "decrease": {
+          "id": "element-debuff-chance",
+          "label": "元素异常概率加成",
           "consumer": "stat"
         }
       }
@@ -639,6 +720,11 @@
       "scope": "weapon-stat"
     },
     {
+      "attributeName": "GPAttributeSetCharacterWeaponAdjust.SpreadAdjust",
+      "attributeTypeId": "accuracy-adjustment",
+      "scope": "persistent-stat"
+    },
+    {
       "attributeName": "GPAttributeSetCharacterWeaponAdjust.WeaponExplosionRadiusRatio",
       "attributeTypeId": "explosion-radius",
       "scope": "weapon-stat"
@@ -664,6 +750,11 @@
       "scope": "persistent-stat"
     },
     {
+      "attributeName": "GPAttributeSetElement.ElementDebuffChanceAddRatio",
+      "attributeTypeId": "element-debuff-chance",
+      "scope": "weapon-stat"
+    },
+    {
       "attributeName": "GPAttributeSetExplosion.WeaponExplosionRadiusRatio",
       "attributeTypeId": "explosion-radius",
       "scope": "weapon-stat"
@@ -671,6 +762,11 @@
     {
       "attributeName": "GPAttributeSetFireMode.RPMAdjustRatio",
       "attributeTypeId": "fire-rate",
+      "scope": "weapon-stat"
+    },
+    {
+      "attributeName": "GPAttributeSetFireMode.ShotBulletsNumAddPoint",
+      "attributeTypeId": "pellet-count",
       "scope": "weapon-stat"
     },
     {
@@ -829,7 +925,17 @@
       "scope": "persistent-stat"
     },
     {
+      "attributeName": "GPAttributeSetTrajectory.SpreadAdjust",
+      "attributeTypeId": "accuracy-adjustment",
+      "scope": "weapon-stat"
+    },
+    {
       "attributeName": "GPAttributeSetWeaponChangeClip.WeaponChangeClipSpeedRatio",
+      "attributeTypeId": "reload-speed",
+      "scope": "weapon-stat"
+    },
+    {
+      "attributeName": "GPAttributeSetWeaponChangeclip.WeaponChangeClipSpeedRatio",
       "attributeTypeId": "reload-speed",
       "scope": "weapon-stat"
     },
@@ -841,6 +947,11 @@
     {
       "attributeName": "GPAttributeSetWeaponDamage.DistanceEndAddRatio",
       "attributeTypeId": "effective-range",
+      "scope": "weapon-stat"
+    },
+    {
+      "attributeName": "GPAttributeSetWeaponNormalAmmo.ClipAmmoAddRatio",
+      "attributeTypeId": "magazine-capacity",
       "scope": "weapon-stat"
     },
     {
@@ -9798,6 +9909,32 @@
       "reviewedOverride": false
     },
     {
+      "id": "overlimit-card:s4-preview:1317100001",
+      "label": "多弹强化（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317100001"
+      },
+      "facetIds": [
+        "correction-parameter"
+      ],
+      "effects": [
+        {
+          "row": "lc:130000001_1_0",
+          "attributeTypeId": "damage-correction",
+          "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
+          "direction": "unknown",
+          "recipient": "damage-event",
+          "facetIds": [
+            "correction-parameter"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
       "id": "overlimit-card:s4-preview:1317101001",
       "label": "弱点连击（S4 Preview超限）",
       "source": {
@@ -9959,6 +10096,32 @@
             "game-mode"
           ],
           "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317108001",
+      "label": "最后一枪（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317108001"
+      },
+      "facetIds": [
+        "correction"
+      ],
+      "effects": [
+        {
+          "row": "lc:130008001_1_0",
+          "attributeTypeId": "damage-correction",
+          "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "correction"
+          ],
+          "reviewed": true
         }
       ],
       "reviewedOverride": false
@@ -10646,6 +10809,32 @@
       "reviewedOverride": false
     },
     {
+      "id": "overlimit-card:s4-preview:20703040215",
+      "label": "兽躯双衍（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040215"
+      },
+      "facetIds": [
+        "weapon-skill-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:120100240_1_0",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-skill-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
       "id": "overlimit-card:s4-preview:20703040254",
       "label": "独弹强化（S4 Preview超限）",
       "source": {
@@ -10656,7 +10845,8 @@
       "facetIds": [
         "effective-range",
         "correction",
-        "toughness-efficiency"
+        "toughness-efficiency",
+        "element-debuff-chance"
       ],
       "effects": [
         {
@@ -10704,6 +10894,17 @@
           "reviewed": false
         },
         {
+          "row": "lc:111031014_1_2",
+          "attributeTypeId": "element-debuff-chance",
+          "attributeLabel": "元素debuff施加概率",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "element-debuff-chance"
+          ],
+          "reviewed": false
+        },
+        {
           "row": "lc:111031014_1_3",
           "attributeTypeId": "effective-range",
           "attributeLabel": "有效射程增加",
@@ -10722,6 +10923,58 @@
           "recipient": "unknown",
           "facetIds": [
             "effective-range"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040071",
+      "label": "协频共振（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040071"
+      },
+      "facetIds": [
+        "weapon-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111010055_1_0",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040085",
+      "label": "致命节拍（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040085"
+      },
+      "facetIds": [
+        "weapon-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111010062_1_0",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-damage"
           ],
           "reviewed": false
         }
@@ -10767,6 +11020,32 @@
       "reviewedOverride": false
     },
     {
+      "id": "overlimit-card:s4-preview:20703040432",
+      "label": "肾上腺素（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040432"
+      },
+      "facetIds": [
+        "weapon-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:120300310_1_0",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
       "id": "overlimit-card:s4-preview:20703040407",
       "label": "狂轰乱炸（S4 Preview超限）",
       "source": {
@@ -10801,9 +11080,21 @@
         "id": "20703040409"
       },
       "facetIds": [
+        "melee-attack-speed",
         "weapon-damage"
       ],
       "effects": [
+        {
+          "row": "lc:111041025_1_0",
+          "attributeTypeId": "melee-attack-speed",
+          "attributeLabel": "角色近战武器攻击速度",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "melee-attack-speed"
+          ],
+          "reviewed": false
+        },
         {
           "row": "lc:111041027_1_0",
           "attributeTypeId": "weapon-damage",
@@ -10812,6 +11103,56 @@
           "recipient": "unknown",
           "facetIds": [
             "weapon-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040406",
+      "label": "暴走永动（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040406"
+      },
+      "facetIds": [
+        "critical-rate",
+        "movement-speed",
+        "critical"
+      ],
+      "effects": [
+        {
+          "row": "lc:111041022_1_0",
+          "attributeTypeId": "critical-rate",
+          "attributeLabel": "暴击率",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "critical-rate"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111041022_1_1",
+          "attributeTypeId": "movement-speed",
+          "attributeLabel": "移动速度",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "movement-speed"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111041022_1_2",
+          "attributeTypeId": "critical-damage",
+          "attributeLabel": "暴击伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "critical"
           ],
           "reviewed": false
         }
@@ -10897,6 +11238,44 @@
       "reviewedOverride": false
     },
     {
+      "id": "overlimit-card:s4-preview:20703040116",
+      "label": "裁决充能（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040116"
+      },
+      "facetIds": [
+        "critical-rate",
+        "critical"
+      ],
+      "effects": [
+        {
+          "row": "lc:111010076_1_0",
+          "attributeTypeId": "critical-rate",
+          "attributeLabel": "暴击率",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "critical-rate"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111010076_1_1",
+          "attributeTypeId": "critical-damage",
+          "attributeLabel": "暴击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "critical"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
       "id": "overlimit-card:s4-preview:20703040184",
       "label": "技能增涌（S4 Preview超限）",
       "source": {
@@ -10923,6 +11302,32 @@
       "reviewedOverride": false
     },
     {
+      "id": "overlimit-card:s4-preview:20703040201",
+      "label": "重峦叠势（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040201"
+      },
+      "facetIds": [
+        "weapon-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111010138_1_0",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
       "id": "overlimit-card:s4-preview:20703040302",
       "label": "模式增幅（S4 Preview超限）",
       "source": {
@@ -10942,6 +11347,44 @@
           "recipient": "unknown",
           "facetIds": [
             "weapon-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040424",
+      "label": "哈士奇支援（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040424"
+      },
+      "facetIds": [
+        "fire-rate",
+        "weapon-hit-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:121600110_1_0",
+          "attributeTypeId": "fire-rate",
+          "attributeLabel": "武器射速提升",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "fire-rate"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:121600113_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
           ],
           "reviewed": false
         }
@@ -10996,6 +11439,43 @@
             "weapon-hit-damage"
           ],
           "reviewed": false
+        },
+        {
+          "row": "lc:121900101_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040346",
+      "label": "贯长虹（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040346"
+      },
+      "facetIds": [
+        "weapon-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:120300243_1_0",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-damage"
+          ],
+          "reviewed": false
         }
       ],
       "reviewedOverride": false
@@ -11018,6 +11498,58 @@
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
           "recipient": "unknown",
+          "facetIds": [
+            "weapon-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040036",
+      "label": "正中红心（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040036"
+      },
+      "facetIds": [
+        "weapon-skill-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111010016_1_0",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-skill-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040072",
+      "label": "近距增幅（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040072"
+      },
+      "facetIds": [
+        "weapon-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111010056_1_0",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-damage"
           ],
@@ -11131,6 +11663,220 @@
       "reviewedOverride": false
     },
     {
+      "id": "overlimit-card:s4-preview:20703040257",
+      "label": "远距增伤（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040257"
+      },
+      "facetIds": [
+        "all-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111031018_1_0",
+          "attributeTypeId": "all-damage",
+          "attributeLabel": "全伤害（可用，和其他增伤连加）",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "all-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040472",
+      "label": "换弹冲击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040472"
+      },
+      "facetIds": [
+        "all-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051004_1_0",
+          "attributeTypeId": "all-damage",
+          "attributeLabel": "全伤害（可用，和其他增伤连加）",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "all-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040475",
+      "label": "飞毛腿（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040475"
+      },
+      "facetIds": [
+        "movement-speed",
+        "all-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051003_1_0",
+          "attributeTypeId": "movement-speed",
+          "attributeLabel": "移动速度",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "movement-speed"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051002_1_0",
+          "attributeTypeId": "all-damage",
+          "attributeLabel": "全伤害（可用，和其他增伤连加）",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "all-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040524",
+      "label": "驰射淬锋（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040524"
+      },
+      "facetIds": [
+        "critical-rate",
+        "critical",
+        "weapon-hit-damage",
+        "weapon-explode-damage",
+        "movement-speed"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051029_1_0",
+          "attributeTypeId": "critical-rate",
+          "attributeLabel": "暴击率",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "critical-rate"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051029_1_1",
+          "attributeTypeId": "critical-damage",
+          "attributeLabel": "暴击伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "critical"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051030_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051030_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051031_1_0",
+          "attributeTypeId": "movement-speed",
+          "attributeLabel": "移动速度",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "movement-speed"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040525",
+      "label": "近战衔接（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040525"
+      },
+      "facetIds": [
+        "movement-speed",
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051033_1_0",
+          "attributeTypeId": "movement-speed",
+          "attributeLabel": "移动速度",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "movement-speed"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051032_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051032_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
       "id": "overlimit-card:s4-preview:20703040526",
       "label": "战术速装（S4 Preview超限）",
       "source": {
@@ -11190,6 +11936,7 @@
       },
       "facetIds": [
         "critical-rate",
+        "magazine-capacity",
         "weapon-hit-damage"
       ],
       "effects": [
@@ -11201,6 +11948,17 @@
           "recipient": "unknown",
           "facetIds": [
             "critical-rate"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051036_1_0",
+          "attributeTypeId": "magazine-capacity",
+          "attributeLabel": "主弹夹弹量上限加成系数",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "magazine-capacity"
           ],
           "reviewed": false
         },
@@ -11227,9 +11985,33 @@
         "id": "20703040528"
       },
       "facetIds": [
+        "skill-damage",
+        "correction",
         "weapon-explode-damage"
       ],
       "effects": [
+        {
+          "row": "lc:111051058_1_0",
+          "attributeTypeId": "skill-damage",
+          "attributeLabel": "非武器技能伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "skill-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051081_1_0",
+          "attributeTypeId": "damage-correction",
+          "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "correction"
+          ],
+          "reviewed": false
+        },
         {
           "row": "lc:111051037_1_0",
           "attributeTypeId": "weapon-explode-damage",
@@ -11314,6 +12096,184 @@
           "recipient": "unknown",
           "facetIds": [
             "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040522",
+      "label": "动能释放（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040522"
+      },
+      "facetIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage",
+        "weapon-skill-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051028_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051028_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051028_1_2",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-skill-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040518",
+      "label": "铲杀冲击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040518"
+      },
+      "facetIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051027_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051027_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040514",
+      "label": "爆破强化（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040514"
+      },
+      "facetIds": [
+        "weapon-skill-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051025_1_0",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-skill-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040478",
+      "label": "光辉贯穿（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040478"
+      },
+      "facetIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051051_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051051_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040482",
+      "label": "耀光爆破（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040482"
+      },
+      "facetIds": [
+        "weapon-skill-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051005_1_0",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-skill-damage"
           ],
           "reviewed": false
         }
@@ -18846,28 +19806,6 @@
       "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
     },
     {
-      "id": "overlimit-card:s4-preview:1317100001",
-      "label": "多弹强化（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "1317100001"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:1317108001",
-      "label": "最后一枪（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "1317108001"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
       "id": "overlimit-card:s4-preview:1317112001",
       "label": "换弹无感（S4 Preview超限）",
       "source": {
@@ -18908,8 +19846,8 @@
         "season": "s4-preview",
         "id": "1317120001"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
     },
     {
       "id": "overlimit-card:s4-preview:1317121001",
@@ -18919,8 +19857,8 @@
         "season": "s4-preview",
         "id": "1317121001"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
     },
     {
       "id": "overlimit-card:s4-preview:1317128001",
@@ -19007,8 +19945,8 @@
         "season": "s4-preview",
         "id": "20703040440"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
     },
     {
       "id": "overlimit-card:s4-preview:20703040090",
@@ -19029,8 +19967,8 @@
         "season": "s4-preview",
         "id": "20703040405"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
     },
     {
       "id": "overlimit-card:s4-preview:20703040437",
@@ -19132,17 +20070,6 @@
       "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
     },
     {
-      "id": "overlimit-card:s4-preview:20703040215",
-      "label": "兽躯双衍（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040215"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
       "id": "overlimit-card:s4-preview:20703040088",
       "label": "百万伏特（S4 Preview超限）",
       "source": {
@@ -19160,28 +20087,6 @@
         "type": "overlimit-card",
         "season": "s4-preview",
         "id": "20703040284"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040071",
-      "label": "协频共振（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040071"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040085",
-      "label": "致命节拍（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040085"
       },
       "reasonCode": "unverified-evidence",
       "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
@@ -19297,28 +20202,6 @@
       "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
     },
     {
-      "id": "overlimit-card:s4-preview:20703040432",
-      "label": "肾上腺素（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040432"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040406",
-      "label": "暴走永动（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040406"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
       "id": "overlimit-card:s4-preview:20703040028",
       "label": "联动提升（S4 Preview超限）",
       "source": {
@@ -19328,28 +20211,6 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040116",
-      "label": "裁决充能（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040116"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040201",
-      "label": "重峦叠势（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040201"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
     },
     {
       "id": "overlimit-card:s4-preview:20703040256",
@@ -19414,8 +20275,8 @@
         "season": "s4-preview",
         "id": "20703040404"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
     },
     {
       "id": "overlimit-card:s4-preview:20703040385",
@@ -19458,8 +20319,8 @@
         "season": "s4-preview",
         "id": "20703040008"
       },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
     },
     {
       "id": "overlimit-card:s4-preview:20703040012",
@@ -19605,17 +20466,6 @@
       "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
     },
     {
-      "id": "overlimit-card:s4-preview:20703040424",
-      "label": "哈士奇支援（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040424"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
       "id": "overlimit-card:s4-preview:20703040331",
       "label": "蝎刺（S4 Preview超限）",
       "source": {
@@ -19644,17 +20494,6 @@
         "type": "overlimit-card",
         "season": "s4-preview",
         "id": "20703040339"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040346",
-      "label": "贯长虹（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040346"
       },
       "reasonCode": "unverified-evidence",
       "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
@@ -19748,28 +20587,6 @@
       "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
     },
     {
-      "id": "overlimit-card:s4-preview:20703040036",
-      "label": "正中红心（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040036"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040072",
-      "label": "近距增幅（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040072"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
       "id": "overlimit-card:s4-preview:20703040103",
       "label": "共鸣射击（S4 Preview超限）",
       "source": {
@@ -19825,34 +20642,12 @@
       "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
     },
     {
-      "id": "overlimit-card:s4-preview:20703040257",
-      "label": "远距增伤（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040257"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
       "id": "overlimit-card:s4-preview:20703040471",
       "label": "导弹轰炸（S4 Preview超限）",
       "source": {
         "type": "overlimit-card",
         "season": "s4-preview",
         "id": "20703040471"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040472",
-      "label": "换弹冲击（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040472"
       },
       "reasonCode": "unverified-evidence",
       "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
@@ -19880,56 +20675,12 @@
       "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
     },
     {
-      "id": "overlimit-card:s4-preview:20703040475",
-      "label": "飞毛腿（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040475"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040524",
-      "label": "驰射淬锋（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040524"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040525",
-      "label": "近战衔接（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040525"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
       "id": "overlimit-card:s4-preview:20703040523",
       "label": "疾风残影（S4 Preview超限）",
       "source": {
         "type": "overlimit-card",
         "season": "s4-preview",
         "id": "20703040523"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040522",
-      "label": "动能释放（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040522"
       },
       "reasonCode": "unverified-evidence",
       "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
@@ -19944,50 +20695,6 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040518",
-      "label": "铲杀冲击（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040518"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040514",
-      "label": "爆破强化（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040514"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040478",
-      "label": "光辉贯穿（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040478"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:20703040482",
-      "label": "耀光爆破（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "20703040482"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
     },
     {
       "id": "overlimit-bond:s4-preview:游击:2",

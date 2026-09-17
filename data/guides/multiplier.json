@@ -686,6 +686,14 @@
         "facetId": "weapon-explode-damage"
       },
       {
+        "id": "correction-parameter",
+        "label": "单次修正参数",
+        "group": "correction",
+        "summary": "已确认作用于单次伤害，但最终倍率公式尚未核验。卡片显示的是配置参数，不是伤害增幅百分比；不据此推定受益武器。",
+        "effects": [],
+        "facetId": "correction-parameter"
+      },
+      {
         "id": "correction",
         "label": "单次修正",
         "group": "correction",

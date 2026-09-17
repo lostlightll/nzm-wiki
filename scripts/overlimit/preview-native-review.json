@@ -54,7 +54,8 @@
     "partial": "触发概率、距离检查和冷却已核验；冲击波独立伤害待核验。"
   },
   "1317100001": {
-    "description": "单次开火每多1个弹道，伤害提升100%。",
+    "description": "单次开火每多1个弹道，增加单次伤害修正参数。",
+    "partial": "面板显示每个额外弹道对应的配置参数，最终伤害倍率仍待核实。",
     "rows": [{"row":"lc:130000001_1_0","field":"coefficient","condition":"单次开火每多1个弹道"}],
     "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317100001.uasset: ExecuteUbergraph 544 GetWeaponShotBulletsNumFromBeforeSettlement,654 Subtract_IntInt(ShotBulletsNum,1),696 Multiply_IntFloat(...,1),738 AddScopedModifier(130000001,extra); numerical_modifier_config 130000001_1_0 B2 BaseValue=0 CoefValue=1"]
   },
@@ -84,8 +85,8 @@
     "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317107001.uasset: CDO AddDamageBuff=Buff_Rogue_1317107001; ExecuteUbergraph 559 MGEAddBuff(AddDamageBuff)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317107001 Duration=-1 StackLimitCount=999 GPModifyIDs=[130044211]; numerical_modifier_config 130044211_1_0 B1 BaseValue=0.005"]
   },
   "1317108001": {
-    "description": "弹匣最后一颗子弹伤害提升600%。",
-    "rows": [{"row":"lc:130008001_1_0","field":"base","condition":"弹匣最后一发"}],
+    "description": "弹匣最后一发伤害提升600%。",
+    "rows": [{"row":"lc:130008001_1_0","field":"base","condition":"弹匣最后一发","label":"增伤"}],
     "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317108001.uasset: ExecuteUbergraph 416 remaining ammo<=1,528 ApplyModifiersToFireContext(130008001); numerical_modifier_config 130008001_1_0 ExecutionRatio B2 BaseValue=6"]
   },
   "1317109001": {
@@ -184,7 +185,7 @@
   },
   "1317127001": {
     "description": "滑铲停止后，对周围5米怪物施加持续2秒的减抗效果，伤害抗性降低60%。",
-    "rows": [{"row":"lc:130027001_1_0","field":"base","condition":"滑铲停止，附近目标"}],
+    "rows": [{"row":"lc:130027001_1_0","field":"base","condition":"滑铲停止，附近目标","recipient":"enemy"}],
     "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317127001.uasset: ExecuteUbergraph 249/550 MGEGetNearbyTargets(radius=500);673 MGEAddBuff(Buff_Rogue_1317127001);934 MovementModeChange(8,true)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317127001 Duration=2 GPModifyIDs=[130027001]; numerical_modifier_config 130027001_1_0 DamageBearRatio B1 BaseValue=-0.6; semantic type damage-resistance"]
   },
   "1317128001": {

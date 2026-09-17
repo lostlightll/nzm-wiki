@@ -6,16 +6,19 @@ import { createNumModifierResolver, type NumModifierValueExpression } from "../.
 import { NUM_MODIFIER_LOCK, NUM_MODIFIER_SEMANTICS } from "../../lib/num-modifier-data";
 import type { OverlimitCard, PerkEffectValue, PerkSlot } from "../../types";
 import { PREVIEW_CARD_MECHANICS } from "./preview-card-mechanics";
+import multiplierData from "../../data/guides/multiplier.json";
+import type { ModifierRecipient } from "../../lib/num-modifier-semantics";
 
 type Row = Record<string, unknown>;
 type Rows = Record<string, Row>;
-type ReviewedNative = { description: string; rows?: (NumModifierValueExpression & { condition?: string })[]; evidence: string[]; partial?: string };
+type ReviewedNative = { description: string; rows?: (NumModifierValueExpression & { condition?: string; recipient?: ModifierRecipient; label?: string })[]; evidence: string[]; partial?: string };
 const object = (value: unknown): Row => value && typeof value === "object" && !Array.isArray(value) ? value as Row : {};
 const localized = (value: unknown): string => typeof value === "string" ? value : String(object(value).LocalizedString ?? object(value).SourceString ?? "");
 const clean = (text: string) => text.replace(/[\u200b\ufeff]/g, "").replace(/<[^>]*>/g, "").trim();
 const asArray = (value: unknown): unknown[] => Array.isArray(value) ? value : [];
 const digest = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 const number = (value: number) => String(Number(value.toFixed(6)));
+const indexedFacets = new Set(multiplierData.damageChannelMatrix.channels.map(channel => channel.facetId));
 
 /** Structured CDO properties whose player-facing meanings were individually checked. */
 const CDO_DETAILS: Record<string, [string, string, number?][]> = {
@@ -130,7 +133,7 @@ export async function generatePreviewCards(contentRoot: string, options: { publi
     if (generic) for (const parameter of asArray(configs[configId]?.Parameters).map(object)) {
       if (parameter.Name === "CharacterModifierList") for (const modifier of String(parameter.Value).match(/\d+/g) ?? []) selectModifier(modifier, `MGEConfig_Season#${configId}.Parameters.CharacterModifierList`);
     }
-    for (const [key, value] of Object.entries(cdo)) {
+    for (const [key, value] of Object.entries(native[id] ? {} : cdo)) {
       if (/^(?:ModifierID(?:_\d+)?|ModiferID|ModifierId|DamageModifier|HitModifierID|modifier)$/.test(key) && typeof value === "number") selectModifier(value, `${classFile}#Default__.Properties.${key}`);
       if (typeof value === "string" && buffs[value]) {
         const buff = buffs[value];
@@ -153,18 +156,21 @@ export async function generatePreviewCards(contentRoot: string, options: { publi
       const reviewExpression = reviewed?.rows?.find(item => item.row === `lc:${key}`);
       const expression: NumModifierValueExpression = { row: `lc:${key}`, field, ...(reviewExpression?.scale ? { scale: reviewExpression.scale } : {}) };
       auditedRows.push({ expression, via: source.via, raw: row });
+      // A zero B1 modifier has no effect; it is not an unresolved formula.
+      if (row.GPModifierOp === "B1" && row.BaseValue === 0 && row.CoefValue === 0) continue;
       if (!reviewExpression && row.BaseValue === 0 && row.CoefValue !== 0) { unresolved.push(`${key}: coefficient requires runtime multiplier audit; not published as zero`); continue; }
       try {
         const scope = resolver.describeAttribute(String(row.AttributeName)).scope;
-        const resolved = resolver.resolveEffect(expression, { recipient: scope === "damage-event" ? "damage-event" : id === "1317127001" ? "enemy" : "unknown" });
-        const facet = resolved.facets.find(item => item.consumer === "damage" || item.consumer === "stat");
+        const resolved = resolver.resolveEffect(expression, { recipient: reviewExpression?.recipient ?? (scope === "damage-event" ? "damage-event" : "unknown") });
+        const facet = resolved.facets.find(item => item.consumer === "damage" || item.consumer === "stat" || indexedFacets.has(item.id));
         if (!facet || !["B1", "B2"].includes(String(row.GPModifierOp))) { unresolved.push(`${key}: 属性/运算尚无审定展示语义`); continue; }
-        const value = resolver.resolveValue(expression, resolved.attribute.quantity === "ratio" ? "signed-percent" : "signed-number").text;
+        const parameterOnly = facet.consumer === "index";
+        const value = resolver.resolveValue(expression, parameterOnly ? "number" : resolved.attribute.quantity === "ratio" ? "signed-percent" : "signed-number").text;
         const stage = { ...(source.condition ? { condition: source.condition } : {}), value };
         const existing = effects.get(facet.id);
         if (existing) { if (!existing.stages.some(item => item.value === value && item.condition === stage.condition)) existing.stages.push(stage); }
-        else if (facet.consumer === "damage") effects.set(facet.id, { kind: "damage", modifierTypeId: facet.id, label: facet.label, stages: [stage] });
-        else if (facet.consumer === "stat") effects.set(facet.id, { kind: "stat", statId: facet.id, label: facet.label, stages: [stage] });
+        else if (facet.consumer === "damage") effects.set(facet.id, { kind: "damage", modifierTypeId: facet.id, label: reviewExpression?.label ?? facet.label, stages: [stage] });
+        else effects.set(facet.id, { kind: "stat", statId: facet.id, label: facet.label, stages: [stage] });
         selected.push({ expression, recipient: resolved.context.recipient, via: source.via, raw: row });
       } catch (error) { unresolved.push(`${key}: ${error instanceof Error ? error.message : String(error)}`); }
     }
@@ -195,7 +201,12 @@ export async function generatePreviewCards(contentRoot: string, options: { publi
       const relative = iconFile.replace(/\.png$/, `.${extension}`); const bytes = fs.readFileSync(path.join(root, relative));
       provenanceFiles.set(relative, { path: relative, sha256: digest(bytes) });
     }
-    const partial = (!generic && (!native[id] || Boolean(native[id].partial))) || unresolved.length > 0;
+    const pendingReasons = [
+      ...unresolved,
+      ...(reviewed?.partial ? [reviewed.partial] : []),
+      ...(!generic && !reviewed ? ["卡片执行参数尚未完成审定。"] : []),
+    ];
+    const partial = pendingReasons.length > 0;
     const perkSlots = asArray(object(mod?.MODSlotIndex).Values);
     const perkSlot = perkSlots.length === 1 && [1, 2, 3, 4].includes(Number(perkSlots[0])) && typeof perkSlots[0] === "number"
       ? perkSlots[0] as PerkSlot : undefined;
@@ -213,11 +224,11 @@ export async function generatePreviewCards(contentRoot: string, options: { publi
       applicabilityKnown: false, weaponType: [], weaponItems: [], weaponNames: [],
       tags: asArray(object(raw.ModSetIdList).Values).map(tagId => { const tag = sets[String(tagId)]; if (!tag) throw new Error(`Unknown tag ${tagId}`); return { id: String(tagId), name: localized(tag.SetName), icon: "", tone: String(tag.SetColor ?? "") }; }),
       ...(effects.size ? { effectValues: [...effects.values()] } : {}),
-      ...(partial ? { verification: { status: "partial" as const, note: native[id]?.partial ?? "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。" } } : {}),
+      ...(partial ? { verification: { status: "partial" as const, note: reviewed?.partial ?? (unresolved.length ? "仍有属性或运算尚未完成数值审定。" : "卡片执行参数尚未完成审定。") } } : {}),
     };
     cards.push(card);
     if (slotEvidence) verifiedDetails.push({ slotSource: slotEvidence });
-    evidence.push({ id, passiveKey, mgeId, configId, classFile, sourceDescription: clean(localized(raw.OverrideDesc)), publicationDescription: description, selected, auditedRows, verifiedDetails, iconSource: iconProvenance, iconFallback: iconSource === iconCandidates[2], chain: [...chain, ...(reviewed?.evidence ?? [])], numericAudit: partial ? "partial" : "verified", unresolved: [...unresolved, ...(native[id]?.partial ? [native[id].partial] : !generic && !native[id] ? [`${classFile ?? "MGE class missing"}: remaining numeric literals in OverrideDesc require execution-chain audit; not published`, "Independent damage projection requires S4 Numerical settlement and trigger audit; S3 values not inherited"] : [])] });
+    evidence.push({ id, passiveKey, mgeId, configId, classFile, sourceDescription: clean(localized(raw.OverrideDesc)), publicationDescription: description, selected, auditedRows, verifiedDetails, iconSource: iconProvenance, iconFallback: iconSource === iconCandidates[2], chain: [...chain, ...(reviewed?.evidence ?? [])], numericAudit: partial ? "partial" : "verified", unresolved: pendingReasons });
   }
   return { cards, independentDamage: {}, provenanceFiles: [...provenanceFiles.values()], evidence };
 }

@@ -4,7 +4,7 @@ import fs from "node:fs";
 import rawCatalog from "@/data/overlimit/current.json";
 import links from "@/data/overlimit/links.json";
 import { parseOverlimitCatalog } from "./overlimit-catalog";
-import { getOverlimitCatalog, parseOverlimitPreview } from "./overlimit";
+import { getOverlimitCatalog, getOverlimitPreviewCatalog, parseOverlimitPreview } from "./overlimit";
 import { getAllOverlimitCards, getOverlimitCardById } from "./overlimit-cards";
 import { projectOverlimitLinks } from "./overlimit-links";
 import { modifierProviderSourceSchema } from "./modifier-provider-registry";
@@ -16,6 +16,19 @@ const minimal = () => ({
   cards: [{ id: "1315204001", name: "独立卡", description: "审定的卡片说明", icon: "/icons/card.png", quality: 4,
     applicabilityKnown: false, weaponType: [], weaponItems: [], weaponNames: [], tags: [] }],
   independentDamage: {}, bonds: null, levels: null, mapRotation: null,
+});
+
+test("reviewed ordinary cards drop stale warnings while real formula and independent damage gaps remain", () => {
+  const cards = getOverlimitPreviewCatalog()!.cards;
+  for (const id of ["20703040524", "20703040085", "20703040405", "20703040522"]) {
+    const card = cards.find(card => card.id === id)!;
+    assert.ok(card.effectValues?.length, id);
+    assert.equal(card.verification, undefined, id);
+    assert.equal(card.applicabilityKnown, false, "numeric verification does not imply known weapon applicability");
+  }
+  assert.match(cards.find(card => card.id === "20703040472")!.verification!.note, /冲击波基础伤害/);
+  assert.match(cards.find(card => card.id === "1317100001")!.verification!.note, /最终伤害倍率/);
+  assert.match(cards.find(card => card.id === "20703040406")!.verification!.note, /恢复的生命值/);
 });
 
 test("published cards and damage are complete projections, not current perk joins", () => {
