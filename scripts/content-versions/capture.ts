@@ -7,6 +7,7 @@ import type { TriggerDamageEntry } from "../../lib/trigger-damage";
 import type { MultiplierRelation } from "../../lib/multiplier-data";
 import { parseOverlimitCatalog } from "../../lib/overlimit-catalog";
 import { catalogAssets, CURRENT_FILE } from "../overlimit/catalog";
+import { isPreviewSeason } from "../../lib/content-preview";
 
 export interface CaptureOptions { includePreview?: boolean }
 export interface CaptureInput {
@@ -16,7 +17,7 @@ export interface CaptureInput {
 }
 
 const json = (value: unknown) => Buffer.from(JSON.stringify(value, null, 2) + "\n");
-const isPreview = (perk: Perk) => Boolean(perk.season?.endsWith("-preview"));
+const isPreview = (perk: Perk) => isPreviewSeason(perk.season);
 
 /** Assemble selected site files; references are preserved as evidence, never activation input. */
 export function assembleCapture(root: string, input: CaptureInput, options: CaptureOptions = {}) {
@@ -68,7 +69,7 @@ export function assembleCapture(root: string, input: CaptureInput, options: Capt
   }));
   // Exact shared locks are archival evidence only. Weapons remain outside this version domain.
   const evidence = ["data/num-modifier-lock.json", "data/num-modifier-semantics.json"];
-  if (perks.some(isPreview)) evidence.push("data/perk-preview-modifiers.json", "scripts/s4-preview-perks-review.json");
+  if (perks.some(isPreview)) evidence.push("data/perk-preview-modifiers.json");
   for (const relative of evidence) files[`evidence/${relative}`] = read(relative);
   return {
     files,

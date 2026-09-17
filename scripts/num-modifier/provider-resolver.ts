@@ -5,6 +5,7 @@ import { parseNumModifierDataLock } from "../../lib/num-modifier-data-lock";
 import { parseNumModifierSemantics } from "../../lib/num-modifier-semantics";
 import type { ModifierProviderRegistrySource } from "../../lib/modifier-provider-registry";
 import { getPerkModifierResolver } from "../../lib/num-modifier-data";
+import { isPreviewSeason } from "../../lib/content-preview";
 
 let s2Resolver: ReturnType<typeof createNumModifierResolver> | undefined;
 
@@ -14,7 +15,7 @@ export function getProviderResolver(
   source: ModifierProviderRegistrySource,
   current: ReturnType<typeof createNumModifierResolver>,
 ) {
-  if ((source.type === "perk" || source.type === "weapon") && source.season === "s4-preview") {
+  if ((source.type === "perk" || source.type === "weapon") && isPreviewSeason(source.season)) {
     return getPerkModifierResolver(source.season);
   }
   if (source.type !== "season-talent" || source.season !== "s2") return current;

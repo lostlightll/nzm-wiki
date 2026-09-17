@@ -43,9 +43,23 @@ test("preview damage cannot leak into official perks or resolve unrelated tokens
   const references = getPerkByName("极寒领域")!.independentDamageSources;
   assert.equal(resolvePreviewDamageDescription(token, "20703040537", "s4-preview", references), "50%");
   assert.throws(() => resolvePreviewDamageDescription(token, "20703040537", "s3", references));
-  assert.throws(() => resolvePreviewDamageDescription(token, "20703040538", "s4-preview", references));
+  const unrelatedReferences = getPerkByName("极寒之触")!.independentDamageSources;
+  assert.throws(() => resolvePreviewDamageDescription(token, "20703040538", "s4-preview", unrelatedReferences));
   assert.throws(() => resolvePreviewDamageDescription(token, "20703040537", "s4-preview"));
   assert.throws(() => resolvePreviewDamageDescription("{GPNumericalID:120300174:HpCalBase:13}", "20703040537", "s4-preview", references));
+});
+
+test("future preview tokens use reviewed references without an ItemID or weapon allowlist", async () => {
+  const references = [{ weaponSlug: "夜影之逝", damageSourceId: "guan-chang-hong-jian-qi", trigger: "审定触发", interval: "每次触发" }];
+  const token = "{GPNumericalID:120300245:HpCalScale:13}";
+  const preview = { season: "s5", version: "s5-preview", label: "S5 Preview" };
+  const weapon = await getResolvedWeaponBySlug("夜影之逝", "lc");
+  const source = weapon!.damageSources.find(entry => entry.id === "guan-chang-hong-jian-qi")!;
+  const expected = `${Math.round(getResolvedFieldValue(source.damage.base)! * 100 * 10000) / 10000}%`;
+  assert.equal(resolvePreviewDamageDescription(token, "future-item", "s5-preview", references, preview), expected);
+  assert.throws(() => resolvePreviewDamageDescription(token, "future-item", "s4-preview", references, preview));
+  assert.throws(() => resolvePreviewDamageDescription(token, "future-item", "s5-preview", references, null));
+  assert.throws(() => resolvePreviewDamageDescription(token, "future-item", "s5-preview", [...references, ...references], preview), /ambiguous/);
 });
 
 test("preview regeneration retains the reviewed weapon references", () => {

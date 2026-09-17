@@ -203,7 +203,7 @@ type ProviderRegistrySource =
       slot: 1 | 2 | 3 | 4;
       slug: string;
       overlimitCard: boolean;
-      season?: "s4-preview";
+      season?: string;
     }
   | {
       type: "weapon";

@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { isPreviewSeason } from "@/lib/content-preview";
 import { getOverlimitCatalog } from "@/lib/overlimit";
 import { getOverlimitLink, getOverlimitLinksForPerk, hasOverlimitBondStage } from "@/lib/overlimit-links";
 import passives from "@/data/season-talents/s3/passives.json";
@@ -194,7 +195,7 @@ for (const slotDirectory of fs.readdirSync(perkRoot, { withFileTypes: true })) {
     );
     const itemId = String(parsed.data.id);
     if (
-      Number(parsed.data.CollectMODItem) === 1 || parsed.data.season === "s4-preview" ||
+      Number(parsed.data.CollectMODItem) === 1 || isPreviewSeason(parsed.data.season) ||
       linkedPerkIds.has(itemId)
     ) {
       perkCandidates.set(`perk:${itemId}`, String(parsed.data.title));

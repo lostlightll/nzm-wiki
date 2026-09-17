@@ -11,13 +11,16 @@ test("release blocks old overlimit data and same-season unreviewed perks", () =>
   assert.throws(() => assertReleaseReady(release, { season: { id: "s4", status: "preload" } }, []));
   assert.throws(() => assertReleaseReady(release, { season: { id: "s4", status: "current" } }, [{ season: "s4-preview" }]));
   assert.doesNotThrow(() => assertReleaseReady(release, { season: { id: "s4", status: "current" } }, [{ season: "s5-preview" }]));
+  assert.throws(() => assertReleaseReady({ ...release, preview: { season: "s4", version: "s4-preview", label: "S4 Preview" } },
+    { season: { id: "s4", status: "current" } }, []), /Remove the released season/);
 });
 
 test("candidate worktree preserves current files and refuses dirty or duplicate preparations", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "content-release-"));
   try {
     fs.mkdirSync(path.join(root, "config"));
-    fs.writeFileSync(path.join(root, "config/content-version.json"), JSON.stringify({ schemaVersion: 1, season: "s3", version: "s3.2", phase: "current" }));
+    const preview = { season: "s4", version: "s4-preview", label: "S4 Preview" };
+    fs.writeFileSync(path.join(root, "config/content-version.json"), JSON.stringify({ schemaVersion: 1, season: "s3", version: "s3.2", phase: "current", preview }));
     fs.writeFileSync(path.join(root, ".gitignore"), "MD/\n");
     fs.writeFileSync(path.join(root, "content.txt"), "current");
     git(root, ["init"]);
@@ -30,6 +33,7 @@ test("candidate worktree preserves current files and refuses dirty or duplicate 
     assert.equal(readRelease(root).version, "s3.2");
     assert.equal(readRelease(target).phase, "candidate");
     assert.equal(readRelease(target).basedOn, "s3.2");
+    assert.deepEqual(readRelease(target).preview, preview);
     fs.writeFileSync(path.join(target, "content.txt"), "next");
     assert.equal(fs.readFileSync(path.join(root, "content.txt"), "utf8"), "current");
     assert.throws(() => prepareRelease(root, "s4", "s4"), /already exists/);

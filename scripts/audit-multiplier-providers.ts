@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { isPreviewSeason } from "@/lib/content-preview";
 import { MULTIPLIER_PROVIDERS } from "@/lib/multiplier-data";
 import { HUNTING_SPEEDRUN_CARDS } from "@/lib/hunting-speedrun";
 import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
@@ -312,7 +313,7 @@ for (const provider of sourceRegistry.providers) {
   }
 
   if (provider.source.type !== "perk") continue;
-  const tables = provider.source.season === "s4-preview" ? previewTables : currentTables;
+  const tables = isPreviewSeason(provider.source.season) ? previewTables : currentTables;
   if (!tables) {
     skippedPreviewEvidence++;
     continue;
@@ -348,13 +349,13 @@ for (const exclusion of sourceRegistry.exclusions) {
   const source = exclusion.source;
   let description = "";
   if (source.type === "perk") {
-    const tables = source.season === "s4-preview" ? previewTables : currentTables;
+    const tables = isPreviewSeason(source.season) ? previewTables : currentTables;
     if (!tables) {
       skippedPreviewEvidence++;
       continue;
     }
     const item = tables.weaponMods[source.itemId];
-    if (source.season === "s4-preview" && !item) {
+    if (isPreviewSeason(source.season) && !item) {
       errors.push(`${exclusion.id} 的 ItemID 不在预载 WeaponModItemData`);
       continue;
     }
@@ -393,7 +394,7 @@ for (const slotDirectory of fs.readdirSync(path.join(root, "data", "perks"), { w
       fs.readFileSync(path.join(root, "data", "perks", slotDirectory.name, file), "utf8"),
     );
     const itemId = String(parsed.data.id);
-    if (Number(parsed.data.CollectMODItem) === 1 || parsed.data.season === "s4-preview" || cardIds.has(itemId)) {
+    if (Number(parsed.data.CollectMODItem) === 1 || isPreviewSeason(parsed.data.season) || cardIds.has(itemId)) {
       candidateIds.add(`perk:${itemId}`);
     }
   }

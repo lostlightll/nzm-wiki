@@ -4,7 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { getAssetPath } from "@/lib/path";
 import { getShanghaiDateKey } from "@/lib/date-key";
-import { isPerkRecent } from "@/lib/perk-release";
+import { getPerkAvailability, isPerkRecent } from "@/lib/perk-release";
+import { getActivePreview, getPreviewSeasonKey, isPreviewSeason } from "@/lib/content-preview";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import type { Perk, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
@@ -24,7 +25,27 @@ import {
   RARITY_OPTIONS,
 } from "@/constants/perks";
 
-type QuickFilter = "online" | "recent" | "offline" | "super" | "s4-preview";
+type QuickFilter = "online" | "recent" | "offline" | "super" | "preview";
+
+const ACTIVE_PREVIEW = getActivePreview();
+const ACTIVE_PREVIEW_SEASON = ACTIVE_PREVIEW
+  ? getPreviewSeasonKey(ACTIVE_PREVIEW)
+  : undefined;
+
+function parseQuickFilter(value: string): QuickFilter {
+  // Keep saved preview selections valid across season changes.
+  if (isPreviewSeason(value)) return "preview";
+  switch (value) {
+    case "online":
+    case "recent":
+    case "offline":
+    case "super":
+    case "preview":
+      return value;
+    default:
+      return "online";
+  }
+}
 
 const BASE_QUICK_FILTER_OPTIONS: {
   type: QuickFilter;
@@ -33,7 +54,6 @@ const BASE_QUICK_FILTER_OPTIONS: {
   { type: "online", label: "已上线" },
   { type: "offline", label: "未上线" },
   { type: "super", label: "超级插件" },
-  { type: "s4-preview", label: "S4 Preview" },
 ];
 
 const RECENT_QUICK_FILTER_OPTION = {
@@ -171,6 +191,7 @@ export default function PerksPageClient({
   const quickFilterState = useSelection<QuickFilter>(
     FILTER_STORAGE_KEYS.quickFilter,
     DEFAULT_QUICK_FILTER,
+    parseQuickFilter,
   );
   const quickFilterSelected = quickFilterState.selected;
   const selectQuickFilterOnly = quickFilterState.selectOnly;
@@ -182,40 +203,43 @@ export default function PerksPageClient({
     () => initialPerks.filter((perk) => isPerkRecent(perk, todayKey)).length,
     [initialPerks, todayKey],
   );
-  const quickFilterOptions = useMemo(
-    () =>
-      recentPerkCount > 0
-        ? [
-            BASE_QUICK_FILTER_OPTIONS[0],
-            BASE_QUICK_FILTER_OPTIONS[1],
-            RECENT_QUICK_FILTER_OPTION,
-            BASE_QUICK_FILTER_OPTIONS[2],
-            BASE_QUICK_FILTER_OPTIONS[3],
-          ]
-        : BASE_QUICK_FILTER_OPTIONS,
-    [recentPerkCount],
+  const hasPreviewPerks = Boolean(
+    ACTIVE_PREVIEW && initialPerks.some((perk) => perk.season === ACTIVE_PREVIEW_SEASON),
   );
+  const quickFilterOptions = useMemo(
+    () => [
+      BASE_QUICK_FILTER_OPTIONS[0],
+      BASE_QUICK_FILTER_OPTIONS[1],
+      ...(recentPerkCount > 0 ? [RECENT_QUICK_FILTER_OPTION] : []),
+      BASE_QUICK_FILTER_OPTIONS[2],
+      ...(hasPreviewPerks && ACTIVE_PREVIEW
+        ? [{ type: "preview" as const, label: ACTIVE_PREVIEW.label }]
+        : []),
+    ],
+    [recentPerkCount, hasPreviewPerks],
+  );
+  const hasUnavailableSelection =
+    (recentPerkCount === 0 && quickFilterSelected.has("recent")) ||
+    (!hasPreviewPerks && quickFilterSelected.has("preview"));
   const effectiveQuickFilter = useMemo(() => {
-    if (
-      recentPerkCount === 0 &&
-      quickFilterSelected.has("recent")
-    ) {
+    if (hasUnavailableSelection) {
       return new Set<QuickFilter>(["online"]);
     }
     return quickFilterSelected;
-  }, [quickFilterSelected, recentPerkCount]);
+  }, [quickFilterSelected, hasUnavailableSelection]);
 
   useEffect(() => {
-    if (
-      recentPerkCount === 0 &&
-      quickFilterSelected.has("recent")
-    ) {
+    if (hasUnavailableSelection) {
       selectQuickFilterOnly("online");
     }
-  }, [quickFilterSelected, recentPerkCount, selectQuickFilterOnly]);
+  }, [hasUnavailableSelection, selectQuickFilterOnly]);
 
   const filteredPerks = useMemo(() => {
     return initialPerks.filter((perk) => {
+      const availability = getPerkAvailability(perk);
+      if (availability === "preview" && perk.season !== ACTIVE_PREVIEW_SEASON) {
+        return false;
+      }
       const slotMatch =
         slotState.selected.size === 0 || slotState.selected.has(perk.slot);
       // 处理数字或字符串格式的稀有度
@@ -225,12 +249,10 @@ export default function PerksPageClient({
           : perk.rarity;
       const rarityMatch =
         rarityState.selected.size === 0 || rarityState.selected.has(perkRarity);
-      const availability = perk.collectModItem === 1 && perk.season !== "s4-preview" ? "online" : "offline";
       const quickFilterMatch =
         effectiveQuickFilter.size === 0 ||
         effectiveQuickFilter.has(availability) ||
         (effectiveQuickFilter.has("recent") && isPerkRecent(perk, todayKey)) ||
-        (effectiveQuickFilter.has("s4-preview") && perk.season === "s4-preview") ||
         (effectiveQuickFilter.has("super") && SUPER_PERK_NAMES.has(perk.name));
       const weaponApplicabilityMatch = matchesWeaponApplicability(
         weaponApplicabilityState.selected,
@@ -298,7 +320,7 @@ export default function PerksPageClient({
         <FilterSection
           title="快速筛选"
           items={quickFilterOptions}
-          selected={quickFilterSelected}
+          selected={effectiveQuickFilter}
           onToggle={(quickFilter) =>
             selectQuickFilterOnly(
               quickFilterSelected.has(quickFilter)
@@ -307,9 +329,11 @@ export default function PerksPageClient({
             )
           }
           gridClass={
-            recentPerkCount > 0
+            quickFilterOptions.length === 5
               ? "grid max-w-3xl grid-cols-2 gap-2 sm:grid-cols-5"
-              : "grid max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4"
+              : quickFilterOptions.length === 4
+                ? "grid max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4"
+                : "grid max-w-xl grid-cols-2 gap-2 sm:grid-cols-3"
           }
           centerClass="justify-center"
         />

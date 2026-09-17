@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { getShanghaiDateKey, isValidDateKey } from "./date-key";
-import { isPerkRecent } from "./perk-release";
+import { getPerkAvailability, isPerkRecent } from "./perk-release";
 
 const ONLINE_PERK = {
   collectModItem: 1 as const,
@@ -12,11 +12,23 @@ test("上线当天属于近期上新", () => {
   assert.equal(isPerkRecent(ONLINE_PERK, "2026-07-24"), true);
 });
 
-test("预载收集开关和日期不会让 S4 Preview 进入近期上线", () => {
+test("各赛季预览与正式上线、未上线状态独立，不受收集开关和日期影响", () => {
+  for (const season of ["s4-preview", "s5-preview"]) {
+    for (const collectModItem of [0, 1] as const) {
+      const perk = { ...ONLINE_PERK, season, collectModItem };
+      assert.equal(getPerkAvailability(perk), "preview");
+      assert.equal(isPerkRecent(perk, "2026-07-24"), false);
+    }
+  }
+});
+
+test("正式赛季插件按实际投放状态分类，正式上线后可进入近期上线", () => {
+  assert.equal(getPerkAvailability({ ...ONLINE_PERK, season: "s5" }), "online");
   assert.equal(
-    isPerkRecent({ ...ONLINE_PERK, season: "s4-preview" }, "2026-07-24"),
-    false,
+    getPerkAvailability({ collectModItem: 0, season: "s5" }),
+    "offline",
   );
+  assert.equal(isPerkRecent({ ...ONLINE_PERK, season: "s5" }, "2026-07-24"), true);
 });
 
 test("上线后的第 7 个自然日仍属于近期上新", () => {

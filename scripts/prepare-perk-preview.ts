@@ -1,6 +1,6 @@
-/** Finalize the reviewed S4 import without changing the official Numerical lock.
+/** Prepare the registered next-season import without changing the official Numerical lock.
  * Run import-perks.ts with the reviewed ItemIDs first, then this command with
- * --content-root <preload Content> --icon-root <reference-site/public/icons/perks>.
+ * --content-root <preload Content> --icon-root <reference-site/public/icons/perks> --review <review.json>.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -10,6 +10,7 @@ import YAML from "yaml";
 import sharp from "sharp";
 import { NUM_MODIFIER_SOURCE_PATH } from "./num-modifier/lock";
 import { resolvePreviewDamageDescription } from "../lib/perk-preview-damage";
+import { getActivePreview, getPreviewSeasonKey } from "../lib/content-preview";
 
 type Raw = Record<string, unknown>;
 interface Review {
@@ -61,7 +62,10 @@ function normalize(text: string): string {
 async function main() {
   const contentRoot = argument("--content-root");
   const iconRoot = argument("--icon-root");
-  const review = JSON.parse(fs.readFileSync("scripts/s4-preview-perks-review.json", "utf8")) as Record<string, Review>;
+  const preview = getActivePreview();
+  if (!preview) throw new Error("Register the next-season preview in config/content-version.json first");
+  const previewKey = getPreviewSeasonKey(preview);
+  const review = JSON.parse(fs.readFileSync(argument("--review"), "utf8")) as Record<string, Review>;
   const mods = rows(contentRoot, "DataTables/LuaDataTable/WeaponModItemData.json");
   const items = rows(contentRoot, "DataTables/System/Items/CommonItemDataTable.json");
   const descriptions = rows(contentRoot, "DataTables/MGE/DT_GPMGESkillDesConfig_BD.json");
@@ -70,7 +74,7 @@ async function main() {
   const selectedRows: Record<string, Raw> = {};
   const registry = JSON.parse(fs.readFileSync("data/modifier-providers.json", "utf8"));
   for (const provider of registry.providers) {
-    if (!["perk", "weapon"].includes(provider.source.type) || provider.source.season !== "s4-preview") continue;
+    if (!["perk", "weapon"].includes(provider.source.type) || provider.source.season !== previewKey) continue;
     for (const application of provider.applications ?? []) {
       const key = String(application.expression.row).replace(/^lc:/, "");
       if (!numerical[key]) throw new Error(`Missing preview provider Numerical ${key}`);
@@ -114,7 +118,7 @@ async function main() {
     if (/\{GPModifier:|\?\?|<qiangdiao>/.test(description)) throw new Error(`Unresolved description: ${id}`);
     // Damage tokens and panels share the reviewed weapon source and Weapon Lock.
     const damageReferences = entry.independent_damage_sources ?? document.data.independent_damage_sources;
-    resolvePreviewDamageDescription(description, id, "s4-preview", damageReferences?.map(
+    resolvePreviewDamageDescription(description, id, previewKey, damageReferences?.map(
       (reference: NonNullable<Review["independent_damage_sources"]>[number]) => ({
         weaponSlug: reference.weapon_slug,
         damageSourceId: reference.damage_source_id,
@@ -140,7 +144,7 @@ async function main() {
     if (fs.existsSync(existing) && !fs.readFileSync(existing).equals(image)) icon = `${icon}-${id}`;
     const target = path.join("public/icons/perks", `${icon}.png`);
     if (fs.existsSync(target) && !fs.readFileSync(target).equals(image)) throw new Error(`Icon collision: ${target}`);
-    const data: Record<string, unknown> = { ...document.data, icon, season: "s4-preview", description };
+    const data: Record<string, unknown> = { ...document.data, icon, season: previewKey, description };
     if (damageReferences) data.independent_damage_sources = damageReferences;
     delete data.draft;
     if (Object.keys(bindings).length) data.num_modifier_values = bindings;
@@ -153,6 +157,7 @@ async function main() {
   // Complete all identity, text and image preflight checks before publishing.
   fs.writeFileSync("data/perk-preview-modifiers.json", JSON.stringify({
     schema_version: 1,
+    season: preview.season,
     source: { path: NUM_MODIFIER_SOURCE_PATH, sha256: createHash("sha256").update(fs.readFileSync(path.join(contentRoot, NUM_MODIFIER_SOURCE_PATH))).digest("hex") },
     rows: selectedRows,
   }, null, 2) + "\n");
@@ -161,7 +166,7 @@ async function main() {
     fs.writeFileSync(path.join("public/icons/perks", `${plan.icon}.png`), plan.image);
     await sharp(plan.image).webp({ quality: 85 }).toFile(path.join("public/webp/icons/perks", `${plan.icon}.webp`));
   }
-  console.log(`Published ${plans.length} S4 preview perks, ${Object.keys(selectedRows).length} Numerical evidence rows, PNG and WebP icons.`);
+  console.log(`Prepared ${plans.length} ${preview.label} perks, ${Object.keys(selectedRows).length} Numerical evidence rows, PNG and WebP icons.`);
 }
 
 main().catch(error => { console.error(error); process.exitCode = 1; });

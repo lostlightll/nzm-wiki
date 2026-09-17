@@ -12,6 +12,11 @@ export const releaseSchema = z.strictObject({
   version: identifier,
   phase: z.enum(["current", "candidate"]),
   basedOn: identifier.optional(),
+  preview: z.strictObject({
+    season: identifier,
+    version: identifier,
+    label: z.string().trim().min(1),
+  }).optional(),
 });
 export type ContentRelease = z.infer<typeof releaseSchema>;
 
@@ -31,7 +36,7 @@ export function git(root: string, args: string[]): string {
 /** A candidate gets ordinary project files in a Git worktree, never runtime season branches. */
 export function prepareRelease(root: string, season: string, version: string): string {
   const current = readRelease(root);
-  const next = releaseSchema.parse({ schemaVersion: 1, season, version, phase: "candidate", basedOn: current.version });
+  const next = releaseSchema.parse({ schemaVersion: 1, season, version, phase: "candidate", basedOn: current.version, preview: current.preview });
   if (current.phase !== "current") throw new Error("Prepare from the current release, not another candidate");
   if (current.version === version) throw new Error("Choose a new version identifier");
   if (git(root, ["status", "--porcelain"])) throw new Error("Commit current work before preparing a candidate worktree");
@@ -55,5 +60,8 @@ export function assertReleaseReady(
   // A future preview may remain during ordinary maintenance; the season being released may not.
   if (perks.some(perk => perk.season === `${release.season}-preview`)) {
     throw new Error(`Review and promote ${release.season}-preview perks before finalizing`);
+  }
+  if (release.preview?.season === release.season) {
+    throw new Error("Remove the released season's preview entry after migrating its content and evidence");
   }
 }

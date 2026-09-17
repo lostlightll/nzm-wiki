@@ -14,6 +14,7 @@ const expression = { row: `lc:${rowName}` as const, field: "base" as const };
 function previewEvidence() {
   return {
     schema_version: 1,
+    season: "s4",
     source: { path: "preview/selected-table.json", sha256: "a".repeat(64) },
     rows: {
       [rowName]: {
@@ -46,6 +47,18 @@ test("preview season overrides selected rows without changing official consumers
     preview.getRow("lc:111010076_1_0").baseValue,
     official.getRow("lc:111010076_1_0").baseValue,
   );
+});
+
+test("future previews require matching configured evidence and never fall back to official rows", () => {
+  const evidence = { ...previewEvidence(), season: "s5" };
+  const select = createPerkModifierResolverSelector(evidence, { season: "s5", version: "s5-preview", label: "S5 Preview" });
+  assert.equal(select("s5-preview").resolveValue(expression, "percent").text, "50%");
+  assert.equal(select("s4"), NUM_MODIFIER_RESOLVER);
+  assert.throws(() => select("s4-preview"), /matching preview/);
+  assert.throws(() => createPerkModifierResolverSelector(evidence)("s4-preview"), /matching preview/);
+  const disabled = createPerkModifierResolverSelector(evidence, null);
+  assert.throws(() => disabled("s5-preview"), /matching preview/);
+  assert.equal(disabled("s5"), NUM_MODIFIER_RESOLVER);
 });
 
 test("preview evidence rejects malformed Numerical fields and provenance", () => {

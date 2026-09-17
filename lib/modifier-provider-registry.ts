@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { numModifierModeSchema } from "@/lib/num-modifier-data-lock";
 import { modifierRecipientSchema } from "@/lib/num-modifier-semantics";
+import { isPreviewSeason } from "@/lib/content-preview";
 
 const nonEmptyString = z.string().trim().min(1);
 const rowKeySchema = z.templateLiteral([
@@ -16,14 +17,14 @@ const perkSourceSchema = z.strictObject({
   slot: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]),
   slug: nonEmptyString,
   overlimitCard: z.boolean(),
-  season: z.literal("s4-preview").optional(),
+  season: z.string().refine(isPreviewSeason).optional(),
 });
 const weaponSourceSchema = z.strictObject({
   type: z.literal("weapon"),
   slug: nonEmptyString,
   skillName: nonEmptyString,
   component: z.enum(["ActiveSkill", "PassiveSkill"]),
-  season: z.literal("s4-preview").optional(),
+  season: z.string().refine(isPreviewSeason).optional(),
 });
 const cardSourceSchema = z.strictObject({
   type: z.literal("card"),

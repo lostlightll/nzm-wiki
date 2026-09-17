@@ -5,6 +5,7 @@ import { parseArgs } from "node:util";
 import { captureCurrent } from "./capture";
 import { diffVersions, exportVersion, listVersions, saveVersion, verifyVersion } from "./store";
 import { assertReleaseReady, git, prepareRelease, readRelease, RELEASE_FILE, writeRelease } from "./release";
+import { getPreviewSeasonKey, isPreviewSeason } from "../../lib/content-preview";
 
 const { values, positionals } = parseArgs({ allowPositionals: true, options: {
   season: { type: "string" }, version: { type: "string" }, archive: { type: "string" },
@@ -17,21 +18,30 @@ function required(key: keyof typeof values): string {
   return value;
 }
 
-async function archiveCurrent() {
+async function archiveCurrent(includePreview = false) {
   const release = readRelease(root);
   if (release.phase !== "current") throw new Error("Finalize a candidate before archiving it as a release");
   const [{ getAllPerks }, { getOverlimitCatalog }] = await Promise.all([
     import("../../lib/perks"), import("../../lib/overlimit"),
   ]);
   assertReleaseReady(release, getOverlimitCatalog(), getAllPerks());
-  const snapshot = await captureCurrent(root);
+  const preview = release.preview;
+  if (includePreview && !preview) throw new Error("No active preview is registered");
+  if (includePreview && getAllPerks().some(perk => isPreviewSeason(perk.season) && perk.season !== getPreviewSeasonKey(preview!))) {
+    throw new Error("Preview content does not match the registered transition");
+  }
+  const snapshot = await captureCurrent(root, { includePreview });
   snapshot.files[RELEASE_FILE] = fs.readFileSync(path.join(root, RELEASE_FILE));
   snapshot.files["evidence/git.json"] = Buffer.from(JSON.stringify({
     commit: git(root, ["rev-parse", "HEAD"]),
     dirty: Boolean(git(root, ["status", "--porcelain", "--", "data", "lib", "components", "app", "public", "config"])),
     note: "The archived file bytes and resolved results are authoritative; commit records code provenance.",
   }, null, 2) + "\n");
-  return saveVersion(root, { season: release.season, version: release.version }, snapshot);
+  return saveVersion(root, includePreview ? { season: preview!.season, version: preview!.version } : { season: release.season, version: release.version }, {
+    ...snapshot,
+    summary: { ...snapshot.summary, channel: includePreview ? "preview" : "current",
+      ...(includePreview ? { preview, baseRelease: { season: release.season, version: release.version } } : {}) },
+  });
 }
 
 async function main() {
@@ -43,6 +53,9 @@ async function main() {
       break;
     case "archive":
       console.log(`Archived perks and all overlimit modules: ${await archiveCurrent()}`);
+      break;
+    case "archive-preview":
+      console.log(`Archived transition snapshot (current base plus preview): ${await archiveCurrent(true)}`);
       break;
     case "verify":
       console.log(`Verified ${verifyVersion(required("archive")).files.length} archived files.`);
@@ -82,7 +95,7 @@ async function main() {
       break;
     }
     default:
-      throw new Error("Usage: pnpm content-version <status|archive|verify|diff|export|prepare|finalize> [--season s4 --version s4 --archive PATH --left PATH --right PATH --output PATH]");
+      throw new Error("Usage: pnpm content-version <status|archive|archive-preview|verify|diff|export|prepare|finalize> [--season s4 --version s4 --archive PATH --left PATH --right PATH --output PATH]");
   }
 }
 main().catch(error => { console.error(error instanceof Error ? error.message : error); process.exitCode = 1; });

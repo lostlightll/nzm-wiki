@@ -1,5 +1,6 @@
 {
   "schema_version": 1,
+  "season": "s4",
   "source": {
     "path": "Attributes/AutoGenerate/numerical_modifier_config.json",
     "sha256": "93584ef436cd4c8d075396c175c6fcd3512134b7fa5a920c89c55d9b69feb2b4"
