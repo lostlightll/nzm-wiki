@@ -123,3 +123,5 @@ pnpm build
 羁绊按实际档位组合分组，2/5/8 与 2/4/6 分开展示，保留档位替换关系。S4 地图排期由 `RogueAffixesTable` 经入口表的 `RogueAffixesId` 关联，预载起点为 2026-09-21 02:00，不能擅自改为开季日期。原始时间和完整行保存在预览证据中。缺失的服务端等级概率模块保持 `null`。
 
 截图仅作布局参考。例如瞬暴8档 Numerical 为50%超暴概率，结算配置为2倍；截图25%及描述3倍均不能覆盖结构化证据。
+
+地图轮换背景沿入口表 `NewEntranceInfoTable.background_images` 的精确纹理引用查找，优先 `refs`，缺少已解码图片时可按用户授权从 `refs-test` 获取同名图片。2026-09-17 补入朔望计划（入口 `2006121`，`T_Bg_Loading_72`）和禁魔岛（入口 `2006131`，`T_Bg_Loading_73`）：身份来自 `refs`，PNG 来自 `refs-test/Exports/NZM/Content/UI/UI_Textures/Background/Loading/`。转为最大宽度1280、质量85的 WebP，放入 `public/webp/images/overlimit/maps/`；映射由 `lib/overlimit-map-images.ts` 维护，不为图片补全扩充敌人图鉴的地图清单。
