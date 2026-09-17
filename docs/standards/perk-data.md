@@ -290,6 +290,8 @@ pnpm exec tsx scripts/prepare-s4-preview-perks.ts --content-root <Content目录>
 
 ## 版本更新流程
 
+跨赛季发布、历史保存和恢复统一使用 [插件与超限版本管理](../workflows/content-versions.md)。普通插件与超限共同归档，但不共享身份、投放状态或运行时数值。候选在独立工作区维护；归档不进入网站构建。
+
 1. 更新 `refs/` 后先运行全量审计，不直接写入。
 2. 身份、图标、适用武器和上线状态分别检查；确认真实上线日期后，在状态同步时显式传入 `--release-date`，避免一次批量同步混合多个风险面。
 3. 描述差异按四类规则分类。

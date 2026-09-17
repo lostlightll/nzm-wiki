@@ -11,6 +11,8 @@
     "test:perk-release": "tsx --test lib/perk-release.test.ts",
     "test:multiplier-data": "tsx --test lib/multiplier-data.test.ts lib/s4-perk-index.test.ts",
     "overlimit": "tsx scripts/overlimit/cli.ts",
+    "content-version": "tsx scripts/content-versions/cli.ts",
+    "test:content-version": "tsx --test scripts/content-versions/*.test.ts",
     "test:overlimit-cards": "tsx --test lib/overlimit-catalog.test.ts scripts/overlimit/*.test.ts",
     "overlimit-effects:audit": "tsx scripts/audit-overlimit-effect-values.ts",
     "test:independent-damage": "tsx --test lib/independent-damage.test.ts lib/trigger-damage.test.ts lib/perk-preview-damage.test.ts",
