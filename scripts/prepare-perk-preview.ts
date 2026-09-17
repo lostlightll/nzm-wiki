@@ -149,7 +149,7 @@ async function main() {
     delete data.draft;
     if (Object.keys(bindings).length) data.num_modifier_values = bindings;
     // gray-matter uses YAML 1.1: unquoted 1312071002_1 becomes a number.
-    const text = `---\n${YAML.stringify(data, { lineWidth: 0, defaultStringType: "QUOTE_DOUBLE" })}---\n`;
+    const text = `---\n${YAML.stringify(data, { lineWidth: 0, defaultStringType: "QUOTE_DOUBLE" })}---\n${document.content}`;
     const roundTrip = matter(text).data;
     if (roundTrip.icon !== icon || roundTrip.id !== id) throw new Error(`Frontmatter identity changed: ${id}`);
     plans.push({ file, text, icon, image });
