@@ -48,6 +48,8 @@ interface OverlimitPageClientProps {
   season: { id: string; label: string; status: "current" | "preload"; updatedAt: string };
   basePath?: string;
   sourceSeason?: string;
+  /** Current-release IDs for preview comparison; bond/effect changes do not create a new card. */
+  existingCardIds?: string[];
   versions?: { href: string; label: string }[];
 }
 
@@ -150,6 +152,7 @@ export default function OverlimitPageClient({
   season,
   basePath = "/overlimit",
   sourceSeason,
+  existingCardIds,
   versions = [],
 }: OverlimitPageClientProps) {
   useEffect(() => {
@@ -159,6 +162,9 @@ export default function OverlimitPageClient({
   const [activeModule, setActiveModule] =
     useState<OverlimitModule>("cards");
   const [query, setQuery] = useState("");
+  const [cardOrigin, setCardOrigin] = useState<"all" | "new" | "existing">("all");
+  const existingIds = useMemo(() => existingCardIds ? new Set(existingCardIds) : null, [existingCardIds]);
+  const newCardCount = existingIds ? initialCards.filter(card => !existingIds.has(card.id)).length : 0;
   const [selectedQualities, setSelectedQualities] = useState<Set<number>>(
     new Set(),
   );
@@ -241,6 +247,7 @@ export default function OverlimitPageClient({
   const filteredCards = useMemo(() => {
     return initialCards
       .filter((card) => {
+        if (existingIds && cardOrigin !== "all" && existingIds.has(card.id) !== (cardOrigin === "existing")) return false;
         const matchesQuality =
           selectedQualities.size === 0 || selectedQualities.has(card.quality);
         if (!matchesQuality) return false;
@@ -287,6 +294,8 @@ export default function OverlimitPageClient({
   }, [
     deferredQuery,
     initialCards,
+    existingIds,
+    cardOrigin,
     selectedQualities,
     selectedSlots,
     selectedWeights,
@@ -301,6 +310,7 @@ export default function OverlimitPageClient({
   );
 
   const hasFilters =
+    cardOrigin !== "all" ||
     query.length > 0 ||
     selectedQualities.size > 0 ||
     selectedSlots.size > 0 ||
@@ -357,6 +367,7 @@ export default function OverlimitPageClient({
   };
 
   const resetFilters = () => {
+    setCardOrigin("all");
     setQuery("");
     setSelectedQualities(new Set());
     setSelectedSlots(new Set());
@@ -470,6 +481,24 @@ export default function OverlimitPageClient({
           </div>
 
           <div className="mb-5 grid gap-x-6 gap-y-4 lg:grid-cols-3">
+          {existingIds && <fieldset>
+            <legend className="mb-3 text-lg font-semibold text-zinc-300">卡片来源</legend>
+            <div className="grid max-w-md grid-cols-3 gap-2">
+              {([
+                { id: "all", label: "全部", count: initialCards.length },
+                { id: "new", label: "新卡", count: newCardCount },
+                { id: "existing", label: "老卡", count: initialCards.length - newCardCount },
+              ] as const).map(option => (
+                <button key={option.id} type="button" aria-pressed={cardOrigin === option.id}
+                  onClick={() => setCardOrigin(option.id)}
+                  className={`flex min-h-11 touch-manipulation items-center justify-center gap-1.5 rounded border px-2 py-2 text-sm font-medium transition-colors outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${cardOrigin === option.id
+                    ? "border-zinc-400 bg-zinc-600 text-white"
+                    : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700/70 hover:text-white"}`}>
+                  {option.label}<span className="text-xs tabular-nums opacity-70">{option.count}</span>
+                </button>
+              ))}
+            </div>
+          </fieldset>}
           <fieldset>
             <legend className="mb-3 text-lg font-semibold text-zinc-300">
               卡片品质

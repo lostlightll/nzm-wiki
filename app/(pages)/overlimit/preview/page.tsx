@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getOverlimitPreviewCatalog, getOverlimitVersions } from "@/lib/overlimit";
+import { getOverlimitCatalog, getOverlimitPreviewCatalog, getOverlimitVersions } from "@/lib/overlimit";
 import { getActivePreview, getPreviewSeasonKey } from "@/lib/content-preview";
 import OverlimitPageClient from "../client";
 
@@ -18,6 +18,7 @@ export default function OverlimitPreviewPage() {
   const preview = getActivePreview();
   if (!catalog || !preview) notFound();
   return <OverlimitPageClient basePath="/overlimit/preview" versions={getOverlimitVersions()}
+    existingCardIds={getOverlimitCatalog().cards.map(card => card.id)}
     sourceSeason={getPreviewSeasonKey(preview)}
     season={catalog.season} initialCards={catalog.cards} bondCatalog={catalog.bonds}
     levelCatalog={catalog.levels} mapRotation={catalog.mapRotation} />;
