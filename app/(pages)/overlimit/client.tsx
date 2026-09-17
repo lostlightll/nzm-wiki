@@ -159,7 +159,6 @@ function OverlimitCardItem({
           <p className="mt-2 whitespace-pre-line break-words text-center text-[13px] leading-5 text-zinc-300">
             {renderInlineDescription(card.description)}
           </p>
-          {card.verification && <p className="mt-2 text-center text-xs text-amber-200/80">部分数值待核实</p>}
         </div>
         </article>
       </OverlimitHoverPreview>
