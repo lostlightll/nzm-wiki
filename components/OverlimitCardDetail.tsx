@@ -56,6 +56,7 @@ export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
         <p className="whitespace-pre-line text-base leading-7 text-zinc-200">
           {renderInlineDescription(card.description)}
         </p>
+        {card.verification && <p className="mt-3 text-sm leading-6 text-amber-200/80">{card.verification.note}</p>}
       </section>
 
       <OverlimitEffectValues card={card} variant="detail" />

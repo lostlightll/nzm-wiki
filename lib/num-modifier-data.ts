@@ -46,7 +46,7 @@ export function createPerkModifierResolverSelector(
   const previewResolver = createNumModifierResolver(
     {
       ...NUM_MODIFIER_LOCK,
-      rows: { lc: { ...NUM_MODIFIER_LOCK.rows.lc, ...previewRows } },
+      rows: { lc: previewRows },
     },
     NUM_MODIFIER_SEMANTICS,
   );

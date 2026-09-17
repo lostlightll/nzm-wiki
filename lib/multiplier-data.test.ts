@@ -17,7 +17,7 @@ import {
   resolveMultiplierExampleImage,
   resolveMultiplierSourceHref,
 } from "./multiplier-data";
-import { getOverlimitCatalog } from "./overlimit";
+import { getOverlimitCatalog, getOverlimitPreviewCatalog } from "./overlimit";
 import { getOverlimitLinksForPerk, hasOverlimitBondStage } from "./overlimit-links";
 
 test("typical examples use site artwork except for the hunting shop fallback", () => {
@@ -112,9 +112,10 @@ test("current publication controls card placements without removing ordinary per
       [...new Set(provider.modifierTypeIds)].sort(), provider.id);
     assert.ok(perkRelations.every(relation => relation.sourceHref?.startsWith("/perks/")));
 
-    const links = getOverlimitLinksForPerk(source.itemId);
+    const sourceCatalog = source.season ? getOverlimitPreviewCatalog() : catalog;
+    const links = getOverlimitLinksForPerk(source.itemId, source.season);
     assert.deepEqual(links.map(card => card.id).sort(),
-      catalog.cards.filter(card => card.perkItemId === source.itemId).map(card => card.id).sort(),
+      (sourceCatalog?.cards ?? []).filter(card => card.perkItemId === source.itemId).map(card => card.id).sort(),
       `published links for ${provider.id}`);
     const expected = links.flatMap(card => card.damageFacets
       .filter(facet => provider.modifierTypeIds.includes(facet))
@@ -124,15 +125,20 @@ test("current publication controls card placements without removing ordinary per
     assert.deepEqual(actual.map(relation => {
       assert.equal(relation.source?.type, "overlimit-card");
       if (relation.source?.type !== "overlimit-card") throw new Error("Unexpected placement");
-      assert.ok(cardsById.has(relation.source.id), "removed cards must not retain links");
-      assert.equal(relation.sourceHref, `/overlimit/${relation.source.id}#multiplier-provider`);
+      const placement = relation.source;
+      assert.ok(sourceCatalog?.cards.some(card => card.id === placement.id), "removed cards must not retain links");
+      assert.equal(relation.source.season, source.season);
+      assert.equal(relation.sourceHref, `/overlimit/${source.season ? "preview/" : ""}${relation.source.id}#multiplier-provider`);
       return `${relation.source.id}:${relation.modifierTypeId}`;
     }).sort(), expected, provider.id);
   }
   for (const relation of PROVIDER_RELATIONS) {
     if (relation.source?.type === "overlimit-card") {
-      assert.ok(cardsById.has(relation.source.id), relation.sourceHref);
-      const card = cardsById.get(relation.source.id)!;
+      const source = relation.source;
+      const card = source.season
+        ? getOverlimitPreviewCatalog()?.cards.find(card => card.id === source.id)
+        : cardsById.get(source.id);
+      assert.ok(card, relation.sourceHref);
       assert.ok(card.effectValues?.some(effect => effect.kind === "damage" &&
         effect.modifierTypeId === relation.modifierTypeId), relation.sourceHref);
     }
@@ -334,21 +340,22 @@ test("only published bond stages retain multiplier placements", () => {
   for (const provider of MULTIPLIER_PROVIDERS) {
     const source = provider.source;
     if (source.type !== "overlimit-bond") continue;
-    const published = (catalog.bonds ?? []).some(bond =>
+    const edition = source.season ? getOverlimitPreviewCatalog() : catalog;
+    const published = (edition?.bonds ?? []).some(bond =>
       bond.name === source.name && bond.effects.some(effect => effect.count === source.count));
-    assert.equal(hasOverlimitBondStage(source.name, source.count), published);
+    assert.equal(hasOverlimitBondStage(source.name, source.count, source.season), published);
     const relations = getProviderRelationsForSource(source)
       .filter(relation => relation.effectId === provider.id);
     assert.deepEqual(relations.map(relation => relation.modifierTypeId).sort(),
       published ? [...new Set(provider.modifierTypeIds)].sort() : [], provider.id);
     for (const relation of relations) {
       assert.equal(relation.sourceHref,
-        `/overlimit?module=bonds#bond-${encodeURIComponent(source.name)}-${source.count}`);
+        `/overlimit${source.season ? "/preview" : ""}?module=bonds#bond-${encodeURIComponent(source.name)}-${source.count}`);
     }
   }
   for (const relation of PROVIDER_RELATIONS) {
     if (relation.source?.type === "overlimit-bond") {
-      assert.ok(hasOverlimitBondStage(relation.source.name, relation.source.count),
+      assert.ok(hasOverlimitBondStage(relation.source.name, relation.source.count, relation.source.season),
         relation.sourceHref);
     }
   }

@@ -4,7 +4,7 @@ import fs from "node:fs";
 import rawCatalog from "@/data/overlimit/current.json";
 import links from "@/data/overlimit/links.json";
 import { parseOverlimitCatalog } from "./overlimit-catalog";
-import { getOverlimitCatalog } from "./overlimit";
+import { getOverlimitCatalog, parseOverlimitPreview } from "./overlimit";
 import { getAllOverlimitCards, getOverlimitCardById } from "./overlimit-cards";
 import { projectOverlimitLinks } from "./overlimit-links";
 import { modifierProviderSourceSchema } from "./modifier-provider-registry";
@@ -27,8 +27,23 @@ test("published cards and damage are complete projections, not current perk join
   assert.equal(getOverlimitCardById("missing"), undefined);
   for (const file of ["lib/overlimit.ts", "lib/overlimit-cards.ts", "app/(pages)/overlimit/[id]/page.tsx"]) {
     const source = fs.readFileSync(file, "utf8");
-    assert.doesNotMatch(source, /from ["'][^"']*(?:\/perks|preview|\/independent-damage)["']/);
+    assert.doesNotMatch(source, /from ["'][^"']*(?:\/perks|perk-preview-damage|\/num-modifier-data|\/independent-damage)["']/);
   }
+});
+
+test("preview requires registered identity and never replaces current same-ID data", () => {
+  const current = getOverlimitCatalog();
+  const value = minimal();
+  value.season.id = "s5-preview";
+  value.cards[0].id = current.cards[0].id;
+  const active = { season: "s5", version: "s5-preview", label: "S5 Preview" };
+  assert.equal(parseOverlimitPreview(value, active)?.cards[0].description, "审定的卡片说明");
+  assert.equal(getOverlimitCatalog(), current);
+  assert.deepEqual(current, rawCatalog);
+  assert.throws(() => parseOverlimitPreview(value, undefined));
+  assert.throws(() => parseOverlimitPreview(value, { ...active, version: "s6-preview" }));
+  assert.throws(() => parseOverlimitPreview({ ...value, season: { ...value.season, status: "current" } }, active));
+  assert.equal(parseOverlimitPreview(null, active), null);
 });
 
 test("next season can contain independent cards without fabricated slot, weight, or rules", () => {

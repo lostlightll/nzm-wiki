@@ -3,6 +3,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { parseOverlimitCatalog, type OverlimitCatalog } from "../../lib/overlimit-catalog";
 import { getOverlimitMapImagePath } from "../../lib/overlimit-map-images";
+import { OVERLIMIT_BOND_ICON_PATHS } from "../../constants/overlimit-bond-icons";
 
 export const CURRENT_FILE = "data/overlimit/current.json";
 export const sha256 = (bytes: string | Buffer) => createHash("sha256").update(bytes).digest("hex");
@@ -14,15 +15,24 @@ export function readCatalog(file: string) {
 /** Resolve only project-owned image paths, never containers or reference directories. */
 export function catalogAssets(catalog: OverlimitCatalog): string[] {
   const urls = new Set<string>();
+  const bondNames = new Set(catalog.bonds?.map(bond => bond.name));
   for (const card of catalog.cards) {
     urls.add(card.icon);
-    for (const tag of card.tags) if (tag.icon) urls.add(tag.icon);
+    for (const tag of card.tags) {
+      if (tag.icon) urls.add(tag.icon);
+      bondNames.add(tag.name);
+    }
   }
   for (const period of catalog.mapRotation?.periods ?? []) {
     for (const map of period.maps) {
+      for (const name of map.activeBonds) bondNames.add(name);
       const url = getOverlimitMapImagePath(map.name);
       if (url) urls.add(url);
     }
+  }
+  for (const name of bondNames) {
+    const icon = OVERLIMIT_BOND_ICON_PATHS[name];
+    if (icon) urls.add(icon);
   }
   return [...urls].sort().flatMap(url => {
     if (!/^\/(?!\/)[^?#]+\.(png|webp|jpe?g|svg)$/i.test(url) || url.includes("..") || url.includes("\\")) {

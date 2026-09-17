@@ -17,6 +17,7 @@ const cardSchema = z.strictObject({
   weight: z.number().positive().optional(),
   slot: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]).optional(),
   applicabilityKnown: z.boolean().optional(),
+  verification: z.strictObject({ status: z.literal("partial"), note: text }).optional(),
   weaponType: z.array(z.number().int()), weaponItems: z.array(z.number().int()), weaponNames: z.array(text),
   tags: z.array(z.strictObject({ id, name: text, icon: z.union([asset, z.literal("")]), tone: z.string() })),
   effectValues: z.array(effect).min(1).optional(),

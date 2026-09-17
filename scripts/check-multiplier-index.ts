@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { isPreviewSeason } from "@/lib/content-preview";
-import { getOverlimitCatalog } from "@/lib/overlimit";
+import { getOverlimitCatalog, getOverlimitPreviewCatalog } from "@/lib/overlimit";
+import { getActivePreview, getPreviewSeasonKey } from "@/lib/content-preview";
 import { getOverlimitLink, getOverlimitLinksForPerk, hasOverlimitBondStage } from "@/lib/overlimit-links";
 import passives from "@/data/season-talents/s3/passives.json";
 import grapplingHook from "@/data/season-talents/s3/grappling-hook.json";
@@ -54,7 +55,7 @@ const overlimitProviderByItemId = new Map(
   overlimitProviders.map((provider) => [provider.source.itemId, provider]),
 );
 const standaloneProviders = new Map(MULTIPLIER_PROVIDERS.flatMap(provider =>
-  provider.source.type === "overlimit-card" ? [[provider.source.id, provider] as const] : []));
+  provider.source.type === "overlimit-card" && !provider.source.season ? [[provider.source.id, provider] as const] : []));
 const overlimitStatSourceCount = hydratedOverlimitCards.filter((card) =>
   card.effectValues?.some((effect) => effect.kind === "stat"),
 ).length;
@@ -71,8 +72,8 @@ function runtimeSourcesForProvider(provider: (typeof MULTIPLIER_PROVIDERS)[numbe
   switch (source.type) {
     case "perk":
       result.push({ type: "perk", slot: source.slot, slug: source.slug });
-      for (const card of getOverlimitLinksForPerk(source.itemId)) {
-        result.push({ type: "overlimit-card", id: card.id });
+      for (const card of getOverlimitLinksForPerk(source.itemId, source.season)) {
+        result.push({ type: "overlimit-card", id: card.id, ...(source.season ? { season: source.season } : {}) });
       }
       break;
     case "weapon":
@@ -82,10 +83,10 @@ function runtimeSourcesForProvider(provider: (typeof MULTIPLIER_PROVIDERS)[numbe
       result.push({ type: "card", slug: source.slug });
       break;
     case "overlimit-bond":
-      if (hasOverlimitBondStage(source.name, source.count)) result.push(source);
+      if (hasOverlimitBondStage(source.name, source.count, source.season)) result.push(source);
       break;
     case "overlimit-card":
-      if (getOverlimitLink(source.id)) result.push(source);
+      if (getOverlimitLink(source.id, source.season)) result.push(source);
       break;
     case "season-talent":
     case "post":
@@ -138,7 +139,7 @@ for (const provider of MULTIPLIER_PROVIDERS) {
       // Old provider evidence may remain; only published stages receive links.
       break;
     case "overlimit-card":
-      if (provider.id !== `overlimit-card:${source.id}`) errors.push(`${provider.id} 的超限来源身份不匹配`);
+      if (provider.id !== `overlimit-card:${source.season ? `${source.season}:` : ""}${source.id}`) errors.push(`${provider.id} 的超限来源身份不匹配`);
       break;
     case "post":
       requireFile(`data/posts/${source.slug}.mdx`, provider.id);
@@ -157,7 +158,7 @@ for (const provider of MULTIPLIER_PROVIDERS) {
 
   const expectedRelations = runtimeSourcesForProvider(provider).reduce((sum, placement) => sum +
     provider.modifierTypeIds.filter(facet => placement.type !== "overlimit-card" ||
-      getOverlimitLink(placement.id)?.damageFacets.includes(facet)).length, 0);
+      getOverlimitLink(placement.id, placement.season)?.damageFacets.includes(facet)).length, 0);
   const actualRelations = PROVIDER_RELATIONS.filter(
     (relation) => relation.effectId === provider.id,
   );
@@ -235,6 +236,19 @@ for (const card of hydratedOverlimitCards) {
 }
 
 const weaponCandidates = new Map<string, string>();
+const previewCatalog = getOverlimitPreviewCatalog();
+const previewRelease = getActivePreview();
+if (previewCatalog && previewRelease) {
+  const season = getPreviewSeasonKey(previewRelease);
+  for (const card of previewCatalog.cards) {
+    const id = `overlimit-card:${season}:${card.id}`;
+    if (!coveredIds.has(id)) errors.push(`预览超限卡片缺少独立版本的来源审计：${id} ${card.name}`);
+    const provider = MULTIPLIER_PROVIDERS.find(entry => entry.id === id);
+    const expected = [...new Set(provider?.modifierTypeIds ?? [])].sort();
+    const actual = (card.effectValues ?? []).flatMap(effect => effect.kind === "damage" ? [effect.modifierTypeId] : []).sort();
+    if (JSON.stringify(expected) !== JSON.stringify(actual)) errors.push(`预览超限卡片增伤分面不一致：${id}`);
+  }
+}
 for (const file of fs.readdirSync(path.join(root, "data", "weapons"))) {
   if (!file.endsWith(".mdx")) continue;
   const slug = file.slice(0, -4);

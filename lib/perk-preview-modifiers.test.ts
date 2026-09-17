@@ -43,10 +43,8 @@ test("preview season overrides selected rows without changing official consumers
   assert.equal(selectResolver(undefined), NUM_MODIFIER_RESOLVER);
   assert.equal(selectResolver("pending"), NUM_MODIFIER_RESOLVER);
   assert.equal(selectResolver("s4"), NUM_MODIFIER_RESOLVER);
-  assert.equal(
-    preview.getRow("lc:111010076_1_0").baseValue,
-    official.getRow("lc:111010076_1_0").baseValue,
-  );
+  assert.ok(official.getRow("lc:111010076_1_0"));
+  assert.throws(() => preview.getRow("lc:111010076_1_0"), /MISSING_ROW/);
 });
 
 test("future previews require matching configured evidence and never fall back to official rows", () => {
@@ -59,6 +57,8 @@ test("future previews require matching configured evidence and never fall back t
   const disabled = createPerkModifierResolverSelector(evidence, null);
   assert.throws(() => disabled("s5-preview"), /matching preview/);
   assert.equal(disabled("s5"), NUM_MODIFIER_RESOLVER);
+  const missing = Object.keys(NUM_MODIFIER_LOCK.rows.lc).find(key => !(key in evidence.rows))!;
+  assert.throws(() => select("s5-preview").resolveValue({ row: `lc:${missing}`, field: "base" }, "number"), /MISSING_ROW/);
 });
 
 test("preview evidence rejects malformed Numerical fields and provenance", () => {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getOverlimitCatalog } from "@/lib/overlimit";
+import { getOverlimitCatalog, getOverlimitVersions } from "@/lib/overlimit";
 import OverlimitPageClient from "./client";
 
 const catalog = getOverlimitCatalog();
@@ -16,6 +16,7 @@ export default function OverlimitPage() {
   return (
     <OverlimitPageClient
       season={catalog.season}
+      versions={getOverlimitVersions()}
       initialCards={catalog.cards}
       bondCatalog={catalog.bonds}
       levelCatalog={catalog.levels}

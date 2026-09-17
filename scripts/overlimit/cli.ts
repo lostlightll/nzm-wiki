@@ -4,6 +4,7 @@ import { parseArgs } from "node:util";
 import { archiveCatalog, activateCatalog, checkCatalog, CURRENT_FILE, readCatalog, sha256, verifyArchive } from "./catalog";
 import { inspectOverlimit } from "./inspect";
 import { projectOverlimitLinks } from "../../lib/overlimit-links";
+import { getActivePreview, getPreviewSeasonKey } from "../../lib/content-preview";
 
 const { values, positionals } = parseArgs({ allowPositionals: true, options: {
   "content-root": { type: "string" }, against: { type: "string" }, output: { type: "string" },
@@ -18,6 +19,15 @@ const required = (key: keyof typeof values) => {
   return value;
 };
 
+async function previewLinks() {
+  const { getOverlimitPreviewCatalog } = await import("../../lib/overlimit");
+  const preview = getOverlimitPreviewCatalog();
+  const active = getActivePreview();
+  return preview && active
+    ? { season: getPreviewSeasonKey(active), ...projectOverlimitLinks(preview) }
+    : { season: null, cards: [], bonds: [] };
+}
+
 async function main() {
   if (command === "check") {
     const file = path.resolve(values.catalog ?? CURRENT_FILE);
@@ -27,9 +37,21 @@ async function main() {
       throw new Error("Published links are stale; run pnpm overlimit project");
     }
     console.log(`${catalog.season.label}: ${catalog.cards.length} cards; catalog and assets valid; SHA-256 ${sha256(fs.readFileSync(file))}`);
+    if (!values.catalog) {
+      const { getOverlimitPreviewCatalog } = await import("../../lib/overlimit");
+      const preview = getOverlimitPreviewCatalog();
+      if (JSON.stringify(JSON.parse(fs.readFileSync("data/overlimit/preview-links.json", "utf8"))) !== JSON.stringify(await previewLinks())) {
+        throw new Error("Published preview links are stale; run pnpm overlimit project");
+      }
+      if (preview) {
+        checkCatalog(preview, root);
+        console.log(`${preview.season.label}: ${preview.cards.length} preview cards; separate catalog and assets valid.`);
+      }
+    }
   } else if (command === "project") {
     const catalog = readCatalog(CURRENT_FILE);
     fs.writeFileSync("data/overlimit/links.json", JSON.stringify(projectOverlimitLinks(catalog), null, 2) + "\n");
+    fs.writeFileSync("data/overlimit/preview-links.json", JSON.stringify(await previewLinks(), null, 2) + "\n");
     console.log("Updated the cross-page links from the current catalog.");
   } else if (command === "archive") {
     const catalog = readCatalog(CURRENT_FILE);

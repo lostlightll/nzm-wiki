@@ -15,7 +15,7 @@ export function getProviderResolver(
   source: ModifierProviderRegistrySource,
   current: ReturnType<typeof createNumModifierResolver>,
 ) {
-  if ((source.type === "perk" || source.type === "weapon") && isPreviewSeason(source.season)) {
+  if ((source.type === "perk" || source.type === "weapon" || source.type === "overlimit-card" || source.type === "overlimit-bond") && isPreviewSeason(source.season)) {
     return getPerkModifierResolver(source.season);
   }
   if (source.type !== "season-talent" || source.season !== "s2") return current;

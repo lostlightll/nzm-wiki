@@ -1,0 +1,521 @@
+{
+  "20703040435": {
+    "rows": [
+      {
+        "row": "lc:1316198001_1_0",
+        "field": "base",
+        "condition": "每层"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk02/MGE_1316198001.uasset#ExecuteUbergraph_MGE_1316198001@1441/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "79ccda1207c65215a4fd5cfec171adc01c3da3cec36b9ed2366940a8f53b1ed0"
+  },
+  "20703040436": {
+    "rows": [
+      {
+        "row": "lc:1316199001_1_0",
+        "field": "base",
+        "condition": "每层"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk02/MGE_1316199001.uasset#ExecuteUbergraph_MGE_1316199001@981/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "b8eb19de888a38471dd39b94bd2e9856ed5a5fde00c483706a690bd30712ec75"
+  },
+  "20703040405": {
+    "rows": [
+      {
+        "row": "lc:111041021_1_1",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk04/MGE_1316194001.uasset#ExecuteUbergraph_MGE_1316194001@1180/Function'NZBuffManagerLibrary:AddBuffToWeapon'"
+    ],
+    "sourceSha256": "d24c12e578aa49fe354ecc5caffa8fd2ecfa6a2f6727e313dfef9ec833ebcd5c"
+  },
+  "20703040043": {
+    "rows": [
+      {
+        "row": "lc:111010033_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111010022_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk04/MGE_1316107001.uasset#ExecuteUbergraph_MGE_1316107001@126/Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'",
+      "Abilities/Build/CBT3/Perk04/MGE_1316107001.uasset#ExecuteUbergraph_MGE_1316107001@510/Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'"
+    ],
+    "sourceSha256": "5c7016f573498a6d721b27a02f35662c2801fb0b88c52a81632ce329c024b84d"
+  },
+  "20703040254": {
+    "rows": [
+      {
+        "row": "lc:111031050_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111031050_1_1",
+        "field": "base"
+      },
+      {
+        "row": "lc:111031014_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111031014_1_1",
+        "field": "base"
+      },
+      {
+        "row": "lc:111031014_1_2",
+        "field": "base"
+      },
+      {
+        "row": "lc:111031014_1_3",
+        "field": "base"
+      },
+      {
+        "row": "lc:111031014_1_4",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk04/MGE_1316167001.uasset#ExecuteUbergraph_MGE_1316167001@583/Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'",
+      "Abilities/Build/CBT3/Perk04/MGE_1316167001.uasset#ExecuteUbergraph_MGE_1316167001@1143/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "291b01badfa9d42b4618261119c28e6dfc00334c7a6a9dde53b085030ceb17a8"
+  },
+  "20703040115": {
+    "rows": [
+      {
+        "row": "lc:111010075_1_0",
+        "field": "base",
+        "condition": "每层"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315135001.uasset#ExecuteUbergraph_MGE_1315135001@1025/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "afae7d05ed28507c4df74461d75732d7861e80890e54a5f6c1bae90a748c7827"
+  },
+  "20703040407": {
+    "rows": [
+      {
+        "row": "lc:111041026_1_1",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk04/MGE_1316195001.uasset#ExecuteUbergraph_MGE_1316195001@1067/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "47e1dbcadd9dd7ecd656cd5feed8e21429356349aded260cc258695f36bb33d2"
+  },
+  "20703040409": {
+    "rows": [
+      {
+        "row": "lc:111041027_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk04/MGE_1316196001.uasset#ExecuteUbergraph_MGE_1316196001@919/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "a4eda405b13693b29f3f8ff66b3e514f931bb934a3e822956499081441c68898"
+  },
+  "20703040408": {
+    "rows": [
+      {
+        "row": "lc:111041024_1_0",
+        "field": "base",
+        "condition": "每层"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315203001.uasset#ExecuteUbergraph_MGE_1315203001@331/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "ea5c43a203318af644ee26af6d89682dfe3255b2c7f8e1f89cbc4fa42f3b70c5"
+  },
+  "20703040390": {
+    "rows": [
+      {
+        "row": "lc:111041016_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315200001.uasset#ExecuteUbergraph_MGE_1315200001@182/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "7de7aae5d7866bb7b74f6a0bdc99eb9f9d0521cdaef401f79487b9a29125f39f"
+  },
+  "20703040112": {
+    "rows": [
+      {
+        "row": "lc:111010073_1_0",
+        "field": "base",
+        "condition": "每层"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315132001.uasset#ExecuteUbergraph_MGE_1315132001@377/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "61f05f40429109000959c733f31db6ecff8721f719607d41ce4784cfcf809fd4"
+  },
+  "20703040184": {
+    "rows": [
+      {
+        "row": "lc:111010129_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315153001.uasset#ExecuteUbergraph_MGE_1315153001@397/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "dbeaee364bbd897ef52bee185af672d8167868c60228302d4397218575b5e9ed"
+  },
+  "20703040256": {
+    "rows": [
+      {
+        "row": "lc:111031017_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111031017_1_1",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315170001.uasset#ExecuteUbergraph_MGE_1315170001@126/Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'"
+    ],
+    "sourceSha256": "66d932adba6702e2cf595689581db97eeb39af16df93859795e7c4c9e387fcd4"
+  },
+  "20703040302": {
+    "rows": [
+      {
+        "row": "lc:111031029_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315181001.uasset#ExecuteUbergraph_MGE_1315181001@1431/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "8147ed272802efe39263b185056b530dcbbb3b35ed14c98e769adc82ea3ad824"
+  },
+  "20703040102": {
+    "rows": [
+      {
+        "row": "lc:111010090_1_0",
+        "field": "base",
+        "condition": "每层"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk02/MGE_1314126001.uasset#ExecuteUbergraph_MGE_1314126001@1680/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "cea2413a0e84b79fa1c3e08f2bebaf0cbd5c1df6466065c64e5b63564caf9a40"
+  },
+  "20703040182": {
+    "rows": [
+      {
+        "row": "lc:111010128_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk02/MGE_1314145001.uasset#ExecuteUbergraph_MGE_1314145001@183/Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'"
+    ],
+    "sourceSha256": "b810640d50f4bb65f282e0ef9c4a0e95b46b9c84156065afa55463db59ab149a"
+  },
+  "20703040008": {
+    "rows": [
+      {
+        "row": "lc:111010037_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk01/MGE_1313110001.uasset#ExecuteUbergraph_MGE_1313110001@335/Function'NZBuffManagerLibrary:AddBuffToWeapon'"
+    ],
+    "sourceSha256": "25631e5b11ef5d994865fdfcf4f2b52d204ec4e4a484f6f3965a25762d31b664"
+  },
+  "20703040384": {
+    "rows": [
+      {
+        "row": "lc:111041012_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk01/MGE_1313194001.uasset#ExecuteUbergraph_MGE_1313194001@479/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "928348325a26200d56352f28af73f77410b9ea0ce9932a18e745ad21c9602b65"
+  },
+  "20703040152": {
+    "rows": [
+      {
+        "row": "lc:111010089_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk01/MGE_1313144001.uasset#ExecuteUbergraph_MGE_1313144001@408/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "1d9b5106acdd75c363e96185b507f554427874f79a182f6225fa75a2464a8b64"
+  },
+  "20703040044": {
+    "rows": [
+      {
+        "row": "lc:111010023_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111010023_1_1",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk04/MGE_1316108001.uasset#ExecuteUbergraph_MGE_1316108001@126/Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'"
+    ],
+    "sourceSha256": "ce3bd1ece190e491e2d4b48a71ff578849c085f2c3a3938de349da3e8bcb4b32"
+  },
+  "20703040424": {
+    "rows": [
+      {
+        "row": "lc:121600110_1_0",
+        "field": "base",
+        "condition": "每层"
+      }
+    ],
+    "evidence": [
+      "Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068002_HSQHY_DarkGoldPlugin.uasset#ExecuteUbergraph_MGE_1312068002_HSQHY_DarkGoldPlugin@1215/Function'NZBuffManagerLibrary:AddBuffToWeapon'"
+    ],
+    "sourceSha256": "41431f6101e8f58f30b61b54407acd7ad40b3d14fc3ec67fda5e15e39d5447d4"
+  },
+  "20703040093": {
+    "rows": [
+      {
+        "row": "lc:120600064_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312038001_YMDH.uasset#ExecuteUbergraph_MGE_1312038001_YMDH@574/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "bd434a4d9f5a83d7ab8329342add2da0f3773104c3649f771b95459928788e1b"
+  },
+  "20703040334": {
+    "rows": [
+      {
+        "row": "lc:121900100_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Weapon/Data/Hidden/Hidden_20019000001_null_KUWU/MGE/MGE_1312057003_KUWU.uasset#ExecuteUbergraph_MGE_1312057003_KUWU@1360/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "34cf66f653177b25fe1cfa7e6d17b0ba45de300319aea750f201de1becb58f00"
+  },
+  "20703040001": {
+    "rows": [
+      {
+        "row": "lc:111010001_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk01/MGE_1313101001.uasset#ExecuteUbergraph_MGE_1313101001@90/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "94e1695c0203b70fbdcf276a086e190a64c76a96f0abdab49e935655889363f0"
+  },
+  "20703040082": {
+    "rows": [
+      {
+        "row": "lc:111010061_1_0",
+        "field": "base",
+        "condition": "每层"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315127001.uasset#ExecuteUbergraph_MGE_1315127001@1063/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "cc5973aa8b21db22e197fdf9ecbedcb34dfe3a2f5ffc050e4ccca9301a271740"
+  },
+  "20703040136": {
+    "rows": [
+      {
+        "row": "lc:111010082_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315139001.uasset#ExecuteUbergraph_MGE_1315139001@642/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "0e0017961645569bebf4d22abd0d548f150821beafe02514a54f97660e419dfc"
+  },
+  "20703040140": {
+    "rows": [
+      {
+        "row": "lc:111010084_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315143001.uasset#ExecuteUbergraph_MGE_1315143001@1407/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "a413011db9d08c058b493909d21df9c2449caaa3761e7511df09d25d978441b8"
+  },
+  "20703040150": {
+    "rows": [
+      {
+        "row": "lc:111010087_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315144001.uasset#ExecuteUbergraph_MGE_1315144001@483/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "51e9328a94535f20b6149fe13ef97b5233d77d0e7d80ecf990a8da06edea0a6d"
+  },
+  "20703040475": {
+    "rows": [
+      {
+        "row": "lc:111051003_1_0",
+        "field": "base",
+        "condition": "每层"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk02/MGE_1316214001.uasset#ExecuteUbergraph_MGE_1316214001@165/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "23d82667c5322caf5e0f2e2979b668487b425dbc3c2076c3bf10792d31f9992b"
+  },
+  "20703040524": {
+    "rows": [
+      {
+        "row": "lc:111051031_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315240001.uasset#ExecuteUbergraph_MGE_1315240001@35/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "02475c5c4f29c3e95592fb103ed8a0b6ca4b08f88ca7ed7d62a9e49d84d16e3b"
+  },
+  "20703040525": {
+    "rows": [
+      {
+        "row": "lc:111051033_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk03/MGE_1315241001.uasset#ExecuteUbergraph_MGE_1315241001@1467/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "a1aff4e62fe3c68308fd782099c1fb7608454e361488357f4e96ce8082cba14f"
+  },
+  "20703040526": {
+    "rows": [
+      {
+        "row": "lc:111051034_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111051035_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111051035_1_1",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk01/MGE_1313209001.uasset#ExecuteUbergraph_MGE_1313209001@127/Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'",
+      "Abilities/Build/CBT3/Perk01/MGE_1313209001.uasset#ExecuteUbergraph_MGE_1313209001@2378/Function'MGEAction_ApplyModifiersToFireContext:ApplyModifiers'"
+    ],
+    "sourceSha256": "d650bb1676f9905c290bf7d3ebe20fd78c92d7e2dde770b915617109fd1b5a6b"
+  },
+  "20703040527": {
+    "rows": [
+      {
+        "row": "lc:111051036_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111051080_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111051057_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk01/MGE_1313210001.uasset#ExecuteUbergraph_MGE_1313210001@99/Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'",
+      "Abilities/Build/CBT3/Perk01/MGE_1313210001.uasset#ExecuteUbergraph_MGE_1313210001@1179/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+      "Abilities/Build/CBT3/Perk01/MGE_1313210001.uasset#ExecuteUbergraph_MGE_1313210001@1716/Function'MGEAction_ApplyModifiersToFireContext:ApplyModifiers'"
+    ],
+    "sourceSha256": "cc7105b14a4c86b832298ff6de90b07ffd039fc04448172fa6c28965686103f4"
+  },
+  "20703040528": {
+    "rows": [
+      {
+        "row": "lc:111051037_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk04/MGE_1316219001.uasset#ExecuteUbergraph_MGE_1316219001@238/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "d546f2b4dd250b8962dc5c816136b7d82aaf747f8c22f7b93c4aa0c18c73d5ad"
+  },
+  "20703040529": {
+    "rows": [
+      {
+        "row": "lc:111051039_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111051038_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk02/MGE_1314206001.uasset#ExecuteUbergraph_MGE_1314206001@566/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+      "Abilities/Build/CBT3/Perk02/MGE_1314206001.uasset#ExecuteUbergraph_MGE_1314206001@1176/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "f315bff84d7a68e5eb5793c3f8967be1ffa25f3340f8b05326cc8799ff8992dd"
+  },
+  "20703040530": {
+    "rows": [
+      {
+        "row": "lc:111051040_1_0",
+        "field": "base"
+      },
+      {
+        "row": "lc:111051040_1_1",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk04/MGE_1316220001.uasset#ExecuteUbergraph_MGE_1316220001@1604/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'"
+    ],
+    "sourceSha256": "de06b4f2a0de3d3429817e030acc4919d1920a6ba8e9070450a57552bfaac894"
+  },
+  "20703040519": {
+    "rows": [
+      {
+        "row": "lc:111051059_1_0",
+        "field": "base"
+      }
+    ],
+    "evidence": [
+      "Abilities/Build/CBT3/Perk04/MGE_1316217001.uasset#ExecuteUbergraph_MGE_1316217001@909/Function'NZModularGameplayEffectLibrary:MGEAddBuff'"
+    ],
+    "sourceSha256": "e75ba702f213e986edf0181bd5789961067ac2400ea66044543dbe15f855b797"
+  }
+}

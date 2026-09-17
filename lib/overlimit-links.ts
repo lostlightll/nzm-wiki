@@ -1,4 +1,6 @@
 import links from "@/data/overlimit/links.json";
+import previewLinks from "@/data/overlimit/preview-links.json";
+import { getActivePreview, getPreviewSeasonKey, type PreviewRelease } from "@/lib/content-preview";
 import type { OverlimitCatalog } from "@/lib/overlimit-catalog";
 
 /** Small generated cross-page projection; the full catalog stays out of shared client bundles. */
@@ -13,6 +15,21 @@ export function projectOverlimitLinks(catalog: OverlimitCatalog) {
 }
 
 const published = links as ReturnType<typeof projectOverlimitLinks>;
-export const getOverlimitLink = (id: string) => published.cards.find(card => card.id === id);
-export const getOverlimitLinksForPerk = (itemId: string) => published.cards.filter(card => card.perkItemId === itemId);
-export const hasOverlimitBondStage = (name: string, count: number) => published.bonds.some(bond => bond.name === name && bond.count === count);
+const publishedPreview = previewLinks as { season: string | null } & ReturnType<typeof projectOverlimitLinks>;
+type LinkProjection = ReturnType<typeof projectOverlimitLinks>;
+
+export function selectOverlimitLinkProjection(
+  season: string | undefined,
+  current: LinkProjection,
+  preview: LinkProjection & { season: string | null },
+  active: PreviewRelease | undefined,
+): LinkProjection {
+  if (season === undefined) return current;
+  if (active && season === getPreviewSeasonKey(active) && season === preview.season) return preview;
+  return { cards: [], bonds: [] };
+}
+
+const forSeason = (season?: string) => selectOverlimitLinkProjection(season, published, publishedPreview, getActivePreview());
+export const getOverlimitLink = (id: string, season?: string) => forSeason(season).cards.find(card => card.id === id);
+export const getOverlimitLinksForPerk = (itemId: string, season?: string) => forSeason(season).cards.filter(card => card.perkItemId === itemId);
+export const hasOverlimitBondStage = (name: string, count: number, season?: string) => forSeason(season).bonds.some(bond => bond.name === name && bond.count === count);

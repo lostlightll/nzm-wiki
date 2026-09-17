@@ -5,6 +5,11 @@ import matter from "gray-matter";
 
 const NEXT_CACHE_DIR = path.join(process.cwd(), ".next");
 
+function hasOverlimitPreview(): boolean {
+  const previewFile = path.join(process.cwd(), "data", "overlimit", "preview.json");
+  return fs.existsSync(previewFile) && JSON.parse(fs.readFileSync(previewFile, "utf8")) !== null;
+}
+
 const S4_TALENT_DATA_FILES = [
   "black-hole.json",
   "dual-star.json",
@@ -39,6 +44,9 @@ function hasPublishedBuildGuides(): boolean {
 const PATHS_TO_HIDE = [
   path.join("app", "api"),
   path.join("app", "editor"),
+  ...(!hasOverlimitPreview()
+    ? [path.join("app", "(pages)", "overlimit", "preview")]
+    : []),
   ...(!hasPublishedBuildGuides()
     ? [path.join("app", "(pages)", "builds", "[slug]")]
     : []),

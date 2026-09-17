@@ -126,7 +126,9 @@ description_override: true
 
 ## 超限短摘要维护
 
-超限短摘要发布在 `data/overlimit/current.json`，版本更新先用 `pnpm overlimit prepare` 生成独立候选，再审定数值和文案。`OverrideDesc` 仅作为展示证据，不能覆盖 Numerical 真值。旧 `import-overlimit-cards.ts` 及其中审定映射已经退役，S3.2 审定结果已保存在发布投影与本地归档。
+超限正式短摘要发布在 `data/overlimit/current.json`，过渡期下一版使用独立的 `data/overlimit/preview.json`；同 ID 的两版数据不能互相覆盖。版本更新先用 `pnpm overlimit prepare` 生成独立候选，再审定数值和文案。`OverrideDesc` 仅作为展示证据，不能覆盖 Numerical 真值。旧 `import-overlimit-cards.ts` 及其中审定映射已经退役，S3.2 审定结果已保存在发布投影与本地归档。
+
+超限预览卡片和羁绊的 Modifier 来源须携带显式预览 `season`，并使用该季选定 Numerical 证据。数值未核验完的预览卡片声明 `verification: { status: "partial", note: "具体缺口" }`，不得展示推测数值或沿用 S3 数值。羁绊按真实档位组合分组，不在组件中硬编码某季名称；羁绊与地图轮换随超限投影一同归档。操作见 [超限维护](../workflows/overlimit-season.md#重建已审定的超限预览)。
 
 新增或修改审定短摘要时按以下顺序维护：
 

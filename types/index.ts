@@ -218,6 +218,7 @@ export interface OverlimitCard {
   weight?: number;
   slot?: PerkSlot;
   applicabilityKnown?: boolean;
+  verification?: { status: "partial"; note: string };
   weaponType: number[];
   weaponItems: number[];
   weaponNames: string[];

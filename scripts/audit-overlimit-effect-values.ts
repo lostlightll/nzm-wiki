@@ -38,12 +38,13 @@ const sourceRegistry = loadModifierProviderRegistry();
 
 const providers = new Map(
   sourceRegistry.providers
+    .filter(provider => !("season" in provider.source) || !provider.source.season)
     .flatMap((provider) => provider.source.type === "perk"
       ? [[provider.source.itemId, provider] as const]
       : provider.source.type === "overlimit-card" ? [[provider.source.id, provider] as const] : []),
 );
 const runtimeProviders = new Map(
-  MULTIPLIER_PROVIDERS.flatMap(provider => provider.source.type === "perk"
+  MULTIPLIER_PROVIDERS.filter(provider => !("season" in provider.source) || !provider.source.season).flatMap(provider => provider.source.type === "perk"
     ? [[provider.source.itemId, provider] as const]
     : provider.source.type === "overlimit-card" ? [[provider.source.id, provider] as const] : []),
 );
@@ -52,6 +53,7 @@ for (const entry of [
   ...sourceRegistry.providers,
   ...sourceRegistry.exclusions,
 ]) {
+  if ("season" in entry.source && entry.source.season) continue;
   if ((entry.source.type === "perk" || entry.source.type === "overlimit-card") && entry.evidence) {
     effectEvidenceByItem.set(entry.source.type === "perk" ? entry.source.itemId : entry.source.id, {
       applications:

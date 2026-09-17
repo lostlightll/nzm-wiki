@@ -78,3 +78,25 @@ test("runtime capture refuses a different root before loading project-bound reso
   try { await assert.rejects(captureCurrent(f.root), /project's root/); }
   finally { f.dispose(); }
 });
+
+test("preview archive preserves separate same-ID cards, bonds, rotation and evidence without leaking into official archive", () => {
+  const f = setup();
+  try {
+    const preview = parseOverlimitCatalog(JSON.parse(f.original));
+    preview.season = { id: "s5-preview.1", label: "S5 Preview", status: "preload", updatedAt: "2026-09-17" };
+    preview.cards[0].description = "Next season effect";
+    preview.bonds![0].effects[0].description = "Next season bond";
+    preview.mapRotation!.periods[0].startDate = "2026-10-01";
+    fs.writeFileSync(path.join(f.root, "data/overlimit/preview.json"), JSON.stringify(preview));
+    fs.writeFileSync(path.join(f.root, "data/overlimit/preview-links.json"), JSON.stringify({ season: "s5-preview" }));
+    fs.writeFileSync(path.join(f.root, "data/overlimit/preview-evidence.json"), "{}");
+    const official = assembleCapture(f.root, f.input);
+    assert.equal(official.files["data/overlimit/preview.json"], undefined);
+    const result = assembleCapture(f.root, { ...f.input, perks: [] }, { includePreview: true });
+    assert.equal(result.files["data/overlimit/current.json"].toString(), f.original);
+    assert.deepEqual(JSON.parse(result.files["data/overlimit/preview.json"].toString()), preview);
+    assert.deepEqual(result.summary.overlimitPreview, { version: "s5-preview.1", cards: 1, bonds: 1, mapPeriods: 1 });
+    assert.ok(result.files["evidence/data/perk-preview-modifiers.json"]);
+    assert.ok(result.files["evidence/data/overlimit/preview-evidence.json"]);
+  } finally { f.dispose(); }
+});

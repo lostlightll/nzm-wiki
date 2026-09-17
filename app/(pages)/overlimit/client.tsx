@@ -11,6 +11,7 @@ import {
 import { OverlimitMapRotation } from "@/components/OverlimitMapRotation";
 import { OverlimitLevelCatalog } from "@/components/OverlimitLevelCatalog";
 import { OverlimitBondCatalog } from "@/components/OverlimitBondCatalog";
+import { OverlimitVersionNavigation } from "@/components/OverlimitVersionNavigation";
 import {
   matchesWeaponApplicability,
   WeaponApplicabilityFilterSection,
@@ -45,6 +46,8 @@ interface OverlimitPageClientProps {
   levelCatalog: OverlimitLevelCatalogData | null;
   mapRotation: OverlimitMapRotationSchedule | null;
   season: { id: string; label: string; status: "current" | "preload"; updatedAt: string };
+  basePath?: string;
+  versions?: { href: string; label: string }[];
 }
 
 type OverlimitModule = "cards" | "bonds" | "levels" | "map-rotation";
@@ -78,16 +81,18 @@ const QUALITY_OPTIONS = [5, 4, 3] as const;
 function OverlimitCardItem({
   card,
   eager,
+  basePath,
 }: {
   card: OverlimitCard;
   eager?: boolean;
+  basePath: string;
 }) {
   const qualityStyle =
     OVERLIMIT_QUALITY_STYLES[card.quality] ?? OVERLIMIT_QUALITY_STYLES[4];
 
   return (
     <div className="relative min-w-0 transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-      <OverlimitHoverPreview card={card} href={`/overlimit/${card.id}`}>
+      <OverlimitHoverPreview card={card} href={`${basePath}/${card.id}`}>
         <article
           className={`relative flex min-h-[290px] flex-col overflow-hidden rounded-lg border-2 ${qualityStyle.border} ${qualityStyle.bg} sm:min-h-[328px]`}
         >
@@ -128,6 +133,7 @@ function OverlimitCardItem({
           <p className="mt-2 whitespace-pre-line break-words text-center text-[13px] leading-5 text-zinc-300">
             {renderInlineDescription(card.description)}
           </p>
+          {card.verification && <p className="mt-2 text-center text-xs text-amber-200/80">部分数值待核实</p>}
         </div>
         </article>
       </OverlimitHoverPreview>
@@ -141,6 +147,8 @@ export default function OverlimitPageClient({
   levelCatalog,
   mapRotation,
   season,
+  basePath = "/overlimit",
+  versions = [],
 }: OverlimitPageClientProps) {
   useEffect(() => {
     restoreCatalogNavigation();
@@ -387,6 +395,7 @@ export default function OverlimitPageClient({
 
   return (
     <>
+      <OverlimitVersionNavigation versions={versions} activePath={basePath} />
       <header className="mb-6 flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-3xl font-bold text-white">超限图鉴</h1>
@@ -610,6 +619,7 @@ export default function OverlimitPageClient({
               <OverlimitCardItem
                 key={card.id}
                 card={card}
+                basePath={basePath}
                 eager={eagerIcons.has(card.icon)}
               />
             ))}

@@ -3,11 +3,25 @@ import test from "node:test";
 import { getOverlimitCardById } from "../lib/overlimit-cards";
 import {
   createOverlimitCardSearchItem,
+  createOverlimitPreviewSearchItems,
   createSeasonTalentSearchItem,
   createStatusEffectSearchItem,
   createSummonSearchItem,
   getBuildGuideSearchKeywords,
 } from "./generate-search-index";
+import { getOverlimitCatalog } from "../lib/overlimit";
+
+test("preview search scopes identical IDs and available modules to the preview route", () => {
+  const catalog = structuredClone(getOverlimitCatalog());
+  catalog.season = { id: "s5-preview", label: "S5 Preview", status: "preload", updatedAt: "2027-01-01" };
+  catalog.levels = null;
+  const items = createOverlimitPreviewSearchItems(catalog);
+  assert.ok(items.every(item => item.path.startsWith("/overlimit/preview") && item.title.includes("S5 Preview")));
+  assert.ok(items.some(item => item.path.endsWith(`#bonds`)));
+  assert.ok(items.some(item => item.path.endsWith(`#map-rotation`)));
+  assert.ok(!items.some(item => item.path.endsWith(`#levels`)));
+  assert.notEqual(items[0].path, createOverlimitCardSearchItem(catalog.cards[0]).path);
+});
 
 test("overlimit search keeps the card summary and structured values", () => {
   const card = getOverlimitCardById("20703040082");

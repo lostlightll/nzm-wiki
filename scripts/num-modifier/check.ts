@@ -38,6 +38,11 @@ function checkStaticBoundaries(): void {
     path.join(root, "data", "num-modifier-lock.json"),
     // Selected preview evidence records provenance without reading local sources at runtime.
     path.join(root, "data", "perk-preview-modifiers.json"),
+    // Offline overlimit import/review ledgers; runtime consumes only frozen projections.
+    ...["preview-cards.ts", "preview-cards.test.ts", "preview-card-source-lock.json", "preview-native-review.json", "preview-rules.ts", "preview-rules.test.ts", "preview-rules-review.json"]
+      .map(file => path.join(root, "scripts", "overlimit", file)),
+    ...["preview.json", "preview-evidence.json"].map(file => path.join(root, "data", "overlimit", file)),
+    path.join(root, "data", "modifier-providers.json"),
     path.join(root, "scripts", "num-modifier", "lock.ts"),
     // Historical S2 is isolated from the current-season lock; only its offline
     // extractor and evidence ledger may name the archived Numerical source.

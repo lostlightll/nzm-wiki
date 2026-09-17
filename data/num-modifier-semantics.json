@@ -319,6 +319,16 @@
         }
       }
     },
+    "super-critical-rate": {
+      "label": "超暴率",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": { "id": "super-critical-rate", "label": "超暴率", "consumer": "stat" },
+        "decrease": { "id": "super-critical-rate", "label": "超暴率", "consumer": "stat" }
+      }
+    },
     "movement-speed": {
       "label": "移动速度",
       "family": "mobility",
@@ -371,6 +381,26 @@
           "label": "射速",
           "consumer": "stat"
         }
+      }
+    },
+    "active-healing": {
+      "label": "主动治疗效果",
+      "family": "survivability",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": { "id": "active-healing", "label": "主动治疗效果", "consumer": "stat" },
+        "decrease": { "id": "active-healing", "label": "主动治疗效果", "consumer": "stat" }
+      }
+    },
+    "critical-damage-cap": {
+      "label": "暴击伤害上限增量",
+      "family": "offense",
+      "quantity": "ratio",
+      "default_format": "signed-percent",
+      "facets": {
+        "increase": { "id": "critical-damage-cap", "label": "暴击伤害上限增量", "consumer": "stat" },
+        "decrease": { "id": "critical-damage-cap", "label": "暴击伤害上限增量", "consumer": "stat" }
       }
     },
     "reload-speed": {
@@ -564,9 +594,9 @@
       "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
     },
     "GPAttributeSetCharacterWeaponAdjust.ChangeClipTimeAdjust": {
-      "status": "known-unindexed",
-      "label": "角色全武器换弹速度提高",
-      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+      "status": "indexed",
+      "attribute_type": "reload-speed",
+      "scope": "weapon-stat"
     },
     "GPAttributeSetCharacterWeaponAdjust.ChargeSpeedAddRatio": {
       "status": "indexed",
@@ -626,6 +656,16 @@
     "GPAttributeSetCritical.CriticalDamageRatio": {
       "status": "indexed",
       "attribute_type": "critical-damage",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetCritical.CriticalDamageRatioMaxAdd": {
+      "status": "indexed",
+      "attribute_type": "critical-damage-cap",
+      "scope": "persistent-stat"
+    },
+    "GPAttributeSetCritical.SuperCriticalRatio": {
+      "status": "indexed",
+      "attribute_type": "super-critical-rate",
       "scope": "persistent-stat"
     },
     "GPAttributeSetCritical.CriticalRatio": {
@@ -749,9 +789,9 @@
       "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
     },
     "GPAttributeSetGiveDamageRatio.ActiveHealRatio": {
-      "status": "known-unindexed",
-      "label": "主动治疗效果增加",
-      "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
+      "status": "indexed",
+      "attribute_type": "active-healing",
+      "scope": "persistent-stat"
     },
     "GPAttributeSetGiveDamageRatio.AllDamageRatio": {
       "status": "indexed",

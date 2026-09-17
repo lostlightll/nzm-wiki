@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { LEGACY_TALENT_CATALOG, legacyTalentHref } from "../lib/s0s1-talent-presentation";
-import { getOverlimitCatalog } from "../lib/overlimit";
+import { getOverlimitCatalog, getOverlimitPreviewCatalog } from "../lib/overlimit";
 
 const SITE_URL = "https://nzm-wiki.pages.dev";
 const baseDir = path.join(process.cwd(), "data");
@@ -100,6 +100,7 @@ function generateSitemap() {
 
   const pages = scanDirectory(baseDir);
   const overlimit = getOverlimitCatalog();
+  const overlimitPreview = getOverlimitPreviewCatalog();
 
   // 添加静态页面
   const staticPages: PageEntry[] = [
@@ -107,6 +108,7 @@ function generateSitemap() {
     { url: "/weapons" },
     { url: "/perks" },
     { url: "/overlimit", lastmod: overlimit.season.updatedAt },
+    ...(overlimitPreview ? [{ url: "/overlimit/preview", lastmod: overlimitPreview.season.updatedAt }] : []),
     { url: "/tower-defense" },
     { url: "/traps" },
     { url: "/enemies" },
@@ -128,10 +130,12 @@ function generateSitemap() {
     { url: "/credits" },
   ];
 
-  const overlimitPages: PageEntry[] = overlimit.cards.map((card) => ({
+  const overlimitPages: PageEntry[] = [...overlimit.cards.map((card) => ({
     url: `/overlimit/${card.id}`,
     lastmod: overlimit.season.updatedAt,
-  }));
+  })), ...(overlimitPreview?.cards.map(card => ({
+    url: `/overlimit/preview/${card.id}`, lastmod: overlimitPreview.season.updatedAt,
+  })) ?? [])];
 
   const s4SeasonTalentPages: PageEntry[] = [
     "dual-star",

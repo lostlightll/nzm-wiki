@@ -74,7 +74,7 @@ async function main() {
   const selectedRows: Record<string, Raw> = {};
   const registry = JSON.parse(fs.readFileSync("data/modifier-providers.json", "utf8"));
   for (const provider of registry.providers) {
-    if (!["perk", "weapon"].includes(provider.source.type) || provider.source.season !== previewKey) continue;
+    if (!["perk", "weapon", "overlimit-card", "overlimit-bond"].includes(provider.source.type) || provider.source.season !== previewKey) continue;
     for (const application of provider.applications ?? []) {
       const key = String(application.expression.row).replace(/^lc:/, "");
       if (!numerical[key]) throw new Error(`Missing preview provider Numerical ${key}`);

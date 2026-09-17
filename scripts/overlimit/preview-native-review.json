@@ -1,0 +1,206 @@
+{
+  "1317232001": {
+    "description": "使用武器开火并造成伤害10次，发射2发跟踪导弹（CD1秒）。",
+    "rows": [],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1317232001.uasset: ExecuteUbergraph 676 Count>=10; 258 LaunchNum*StackCount; 357 LaunchProjectile_ISM; CDO LaunchNum=2, CooldownDuration=1"],
+    "partial": "触发次数、弹数及冷却已核验；导弹独立伤害待核验。"
+  },
+  "1317233001": {
+    "description": "武器技能伤害和技能伤害提升750%。",
+    "rows": [{"row":"lc:130044412_1_0","field":"base"},{"row":"lc:130044412_1_1","field":"base"}],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1317233001.uasset: ExecuteUbergraph 365 CreateAsyncAddScopedModifier(130044412); numerical_modifier_config 130044412_1_0/1 B1 BaseValue=7.5"]
+  },
+  "1317234001": {
+    "description": "暴击时发射1发跟踪导弹（CD0.5秒）。",
+    "rows": [],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1317234001.uasset: ExecuteUbergraph 383 LaunchProjectile_ISM(1); CDO CooldownDuration=0.5"],
+    "partial": "弹数和冷却已核验；导弹独立伤害待核验。"
+  },
+  "1317231001": {
+    "description": "爆炸弹直击伤害提升600%，爆炸范围缩减50%。",
+    "rows": [{"row":"lc:1317231001_1_0","field":"base","condition":"爆炸弹直击"}],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1317231001.uasset: CDO HitModifierID=1317231001; ExecuteUbergraph 543 AddScopedModifier(HitModifierID), 1363 ModifyAOERatio(-0.5); numerical_modifier_config 1317231001_1_0 B1 BaseValue=6"]
+  },
+  "1317235001": {
+    "description": "切换武器模式后，武器伤害提升300%，持续12秒。",
+    "rows": [{"row":"lc:130044311_1_0","field":"base","condition":"切换武器模式后"}],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1317235001.uasset: ExecuteUbergraph 441 MGEWeaponFireModeChangedEvent, 30 MGEAddBuff(Buff_Rogue_1378044311)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1378044311 Duration=12 GPModifyIDs=[130044311]; numerical_modifier_config 130044311_1_0 B1 BaseValue=3"]
+  },
+  "1317236001": {
+    "description": "每20秒进入隐身，破隐后全伤害提升300%，持续3秒。",
+    "rows": [{"row":"lc:130044030_1_0","field":"base","condition":"破隐后"}],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1317236001.uasset: ExecuteUbergraph 56 MGEAddMGEContextForTarget(1317237001)","DataTables/MGE/GPModularGameplayEffectTable.json: 1317237001 MGEClass=/Game/Abilities/Build/CBT3/Perk02/MGE_1315237001", "Abilities/Build/CBT3/Perk02/MGE_1315237001.uasset: CDO CheckDuration=20; ExecuteUbergraph 296 TriggerPeriodically(CheckDuration), 999 MGEOnRemoveBuffEvent(Stealth), 35 MGEAddBuff(Buff_Rogue_1378044030)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1378044030 Duration=3 GPModifyIDs=[130044030]; numerical_modifier_config 130044030_1_0 B1 BaseValue=3"]
+  },
+  "1317238001": {
+    "description": "爆炸弹暴击伤害提升600%。",
+    "rows": [{"row":"lc:130044413_1_0","field":"base","condition":"爆炸弹"}],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1317238001.uasset: CDO WeaponTypes=[GLauncher,AutoGLauncher,Launcher]; ExecuteUbergraph 545 AddScopedModifier(130044413); numerical_modifier_config 130044413_1_0 B1 BaseValue=6"]
+  },
+  "1317229001": {
+    "description": "每移动10米，发射2发跟踪导弹。",
+    "rows": [],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1317229001.uasset: CDO MoveDistance=1000; ExecuteUbergraph 1361 WaitForDisplaceCertainDistanceEvent(MoveDistance), 466 loop start=1 through GetStackCount, 15/20 PushExecutionFlow and 25/355 LaunchSinglePrljectile twice per stack"],
+    "partial": "移动距离和发射次数已核验；导弹独立伤害待核验。"
+  },
+  "1317230001": {
+    "description": "命中弱点时，暴击率增加100个百分点。",
+    "rows": [{"row":"lc:130042450_1_0","field":"base","condition":"命中弱点"}],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1317230001.uasset: ExecuteUbergraph 388 AddScopedModifier(130042450); numerical_modifier_config 130042450_1_0 CriticalRatio B1 BaseValue=1, additive rather than assign 100%"]
+  },
+  "1317240001": {
+    "description": "近战命中有50%概率触发冲击波（CD0.5秒）。",
+    "rows": [],
+    "evidence": ["Abilities/Build/CBT3/Perk02/MGE_1317240001.uasset: ExecuteUbergraph 56 MGEAddMGEContextForTarget(1317042221)","Abilities/Build/CBT3/Perk02/MGE_1317042221.uasset: ExecuteUbergraph 323 ProbabilityCheck(0.5), CDO CooldownDuration=0.5; additional target distance check<=1000 at289"],
+    "partial": "触发概率、距离检查和冷却已核验；冲击波独立伤害待核验。"
+  },
+  "1317100001": {
+    "description": "单次开火每多1个弹道，伤害提升100%。",
+    "rows": [{"row":"lc:130000001_1_0","field":"coefficient","condition":"单次开火每多1个弹道"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317100001.uasset: ExecuteUbergraph 544 GetWeaponShotBulletsNumFromBeforeSettlement,654 Subtract_IntInt(ShotBulletsNum,1),696 Multiply_IntFloat(...,1),738 AddScopedModifier(130000001,extra); numerical_modifier_config 130000001_1_0 B2 BaseValue=0 CoefValue=1"]
+  },
+  "1317101001": {
+    "description": "每次命中弱点，武器射击和爆炸伤害提升2%，最多叠加999层；命中非弱点清除层数。",
+    "rows": [{"row":"lc:130001001_1_0","field":"base","condition":"每层"},{"row":"lc:130001001_1_1","field":"base","condition":"每层"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317101001.uasset: ExecuteUbergraph 587 MGEAddBuff(Buff_Rogue_1317101001),713 RemoveBuffByHandle", "DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317101001 StackLimitCount=999 GPModifyIDs=[130001001]; numerical_modifier_config 130001001_1_0/1 B1 BaseValue=0.02"]
+  },
+  "1317104001": {
+    "description": "切换武器后，下一把武器前6发弹药伤害提升600%（CD5秒）。",
+    "rows": [{"row":"lc:130003001_1_0","field":"base","condition":"切枪后前6发"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317104001.uasset: CDO BulletLimit=6 CooldownDuration=5; ExecuteUbergraph 917 BulletCount<BulletLimit,1143 ApplyModifiersToFireContext(130003001); numerical_modifier_config 130003001_1_0 B1 BaseValue=6"]
+  },
+  "1317105001": {
+    "description": "射击叠加武器技能伤害，每层提升10%，最多60层，持续8秒；武器技能命中叠加射击和爆炸伤害，每层提升20%，最多15层，持续10秒。",
+    "rows": [{"row":"lc:130005001_1_0","field":"base","condition":"射击叠加，每层"},{"row":"lc:130005002_1_0","field":"base","condition":"武器技能命中叠加，每层"},{"row":"lc:130005002_1_1","field":"base","condition":"武器技能命中叠加，每层"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317105001.uasset: ExecuteUbergraph MGEAddBuff(Buff_Rogue_1317105001/2)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317105001 Duration=8 StackLimitCount=60 GPModifyIDs=[130005001]; Buff_Rogue_1317105002 Duration=10 StackLimitCount=15 GPModifyIDs=[130005002]; Numerical BaseValue=0.1/0.2"]
+  },
+  "1317106001": {
+    "description": "目标生命值不低于75%时，弱点伤害提升100%。",
+    "rows": [{"row":"lc:130006001_1_0","field":"base","condition":"目标生命值≥75%"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317106001.uasset: ExecuteUbergraph 592 GreaterEqual_FloatFloat(HealthPercent,0.75),640 AddScopedModifier(130006001); numerical_modifier_config 130006001_1_0 B1 BaseValue=1"]
+  },
+  "1317107001": {
+    "description": "一枪击杀怪物，永久获得0.5%伤害提升，最多叠加999层。",
+    "rows": [{"row":"lc:130044211_1_0","field":"base","condition":"每层"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317107001.uasset: CDO AddDamageBuff=Buff_Rogue_1317107001; ExecuteUbergraph 559 MGEAddBuff(AddDamageBuff)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317107001 Duration=-1 StackLimitCount=999 GPModifyIDs=[130044211]; numerical_modifier_config 130044211_1_0 B1 BaseValue=0.005"]
+  },
+  "1317108001": {
+    "description": "弹匣最后一颗子弹伤害提升600%。",
+    "rows": [{"row":"lc:130008001_1_0","field":"base","condition":"弹匣最后一发"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317108001.uasset: ExecuteUbergraph 416 remaining ammo<=1,528 ApplyModifiersToFireContext(130008001); numerical_modifier_config 130008001_1_0 ExecutionRatio B2 BaseValue=6"]
+  },
+  "1317109001": {
+    "description": "大幅缩减弹匣容量，造成的伤害提升100%。",
+    "rows": [{"row":"lc:130045113_1_0","field":"base"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317109001.uasset: ExecuteUbergraph 200 ApplyModifiers(130045113),445 MGEAddBuff(CDO BuffName=Buff_Rogue_1317109001)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317109001 GPModifyIDs=[130045112]; numerical_modifier_config 130045112_1_0/1 ClipAmmoAddPoint=-999999; 130045113_1_0 DamageRatio B1 BaseValue=1"],
+    "partial": "已确认容量大幅减值和增伤；弹匣下限钳制为1的底层实现尚未核验。"
+  },
+  "1317110001": {
+    "description": "近战重击击杀目标，释放机械之舞，持续2秒；每拥有1%暴击率，机械之舞伤害提升1%。",
+    "rows": [{"row":"lc:130044010_1_0","field":"coefficient","scale":0.1,"condition":"每1%暴击率，机械之舞"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317110001.uasset: ExecuteUbergraph 577 NumericalID==112044020;641 GetAttributeFromCharacter(CriticalRatio),769 CriticalRatio/0.1,811 AddScopedModifier(130044010,extra);1543 SetFloatProperty(BaseDuration,2),1702 ActivateAbility(23010303)","Attributes/AutoGenerate/numerical_modifier_config.json: 130044010_1_0 BaseValue=0 CoefValue=0.1; 0.01 CriticalRatio /0.1 *0.1 =0.01 damage (1%), contrary to description 10%"],
+    "partial": "持续时间和暴击率转换已核验；机械之舞独立基础伤害待核验。"
+  },
+  "1317111001": {
+    "description": "完成换弹后，全伤害提升100%，持续3秒。",
+    "rows": [{"row":"lc:130045121_1_0","field":"base","condition":"完成换弹后"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317111001.uasset: ExecuteUbergraph 773 MGEFinishChangeClipEvent;837 binds FinishChangeClipServer;30 MGEAddBuff(Buff_Rogue_1317111001)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317111001 Duration=3 GPModifyIDs=[130045121]; numerical_modifier_config 130045121_1_0 B1 BaseValue=1"]
+  },
+  "1317112001": {
+    "description": "大幅缩短换弹时间。",
+    "rows": [{"row":"lc:130045261_1_0","field":"base"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317112001.uasset: ExecuteUbergraph 163 ApplyModifiers(130045261); numerical_modifier_config 130045261_1_0 ChangeClipTimeAdjust B1 BaseValue=19"],
+    "partial": "已确认换弹调整值；实际换弹时间的换算公式待核验，不直接采用描述中的95%。"
+  },
+  "1317113001": {
+    "description": "不开火、不释放技能时，每秒积累1层增益，每层全伤害提升24%、暴击伤害提升12%，最多10层；开火或释放技能后清层。",
+    "rows": [{"row":"lc:130044381_1_0","field":"coefficient","condition":"每层"},{"row":"lc:130044381_1_1","field":"coefficient","condition":"每层"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317113001.uasset: CDO TriggerInterval=1 BuffName=Buff_Rogue_1317113001; ExecuteUbergraph 389 AddScopedModifierForActivatedSkill(130044381,BuffLayer),1385 ApplyModifiersToFireContext(130044381,BuffLayer),530 MGERemoveBuff", "DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317113001 StackLimitCount=10; numerical_modifier_config 130044381_1_0/1 BaseValue=0 CoefValue=0.24/0.12"]
+  },
+  "1317114001": {
+    "description": "每1000金币提升3%全伤害；每2000金币提升6%弱点伤害；每5000金币提升30%暴击伤害，分别按整份金币计算。",
+    "rows": [{"row":"lc:130014001_1_0","field":"coefficient","condition":"每1000金币"},{"row":"lc:130014002_1_0","field":"coefficient","condition":"每2000金币"},{"row":"lc:130014003_1_0","field":"coefficient","condition":"每5000金币"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317114001.uasset: ExecuteUbergraph 409/1115/1821 Divide_IntInt(CoinAmount,1000/2000/5000);488/1194/1900 AddScopedModifier(130014001/2/3,integer quotient); Numerical coefficient=0.03/0.06/0.3"]
+  },
+  "1317115001": {
+    "description": "会心概率增加10个百分点。",
+    "rows": [{"row":"lc:130015001_1_0","field":"base"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317115001.uasset: ExecuteUbergraph 163 ApplyModifiers(130015001); numerical_modifier_config 130015001_1_0 SuperCriticalRatio B1 BaseValue=0.1"]
+  },
+  "1317116001": {
+    "description": "会心概率增加20个百分点。",
+    "rows": [{"row":"lc:130016001_1_0","field":"base"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317116001.uasset: ExecuteUbergraph 163 ApplyModifiers(130016001); numerical_modifier_config 130016001_1_0 SuperCriticalRatio B1 BaseValue=0.2"]
+  },
+  "1317117001": {
+    "description": "暴击率和会心概率各增加50个百分点。",
+    "rows": [{"row":"lc:130017001_1_0","field":"base"},{"row":"lc:130017001_1_1","field":"base"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317117001.uasset: ExecuteUbergraph 163 ApplyModifiers(130017001); numerical_modifier_config 130017001_1_0/1 SuperCriticalRatio/CriticalRatio B1 BaseValue=0.5"]
+  },
+  "1317118001": {
+    "description": "连续命中弱点10次，过充10%弹药；连续命中弱点100次，过充200%弹药。",
+    "rows": [],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317118001.uasset: ExecuteUbergraph 219 Count==10,428 MaxAmmo*0.1,470 MGEAddWeaponAmmo;728 Count_0==100,937 MaxAmmo*2,979 MGEAddWeaponAmmo"]
+  },
+  "1317119001": {
+    "description": "使用技能有10%概率大幅过充武器弹药。",
+    "rows": [],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317119001.uasset: ExecuteUbergraph 145 ProbabilityCheck(0.1);206/748 ModifyWeaponAmmoAttribute(999);542/1084 MGEAddWeaponAmmo(999);1269 MGEOnSkillStartEvent"],
+    "partial": "10%概率及过充调用已核验；999参数与最终弹容上限的关系尚需底层接口核验。"
+  },
+  "1317120001": {
+    "description": "散布增加，弹道数增加2。",
+    "rows": [{"row":"lc:130040351_1_0","field":"base"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317120001.uasset: ExecuteUbergraph 244 WeaponFireModifyParam(...,1,0,2);830 ApplyModifiers(130040351); numerical_modifier_config 130040351_1_0 SpreadAdjust B1 BaseValue=-0.2"]
+  },
+  "1317121001": {
+    "description": "散布增加，弹道数增加1。",
+    "rows": [{"row":"lc:130040342_1_0","field":"base"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317121001.uasset: ExecuteUbergraph 244 WeaponFireModifyParam(...,1,0,1);830 ApplyModifiers(130040342); numerical_modifier_config 130040342_1_0 SpreadAdjust B1 BaseValue=-0.2"]
+  },
+  "1317122001": {
+    "description": "切换武器后，全伤害提升50%，持续10秒。",
+    "rows": [{"row":"lc:130022001_1_0","field":"base","condition":"切换武器后"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317122001.uasset: ExecuteUbergraph 371 MGESwitchWeaponEvent,30 MGEAddBuff(Buff_Rogue_1317122001)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317122001 Duration=10 GPModifyIDs=[130022001]; numerical_modifier_config 130022001_1_0 B1 BaseValue=0.5"]
+  },
+  "1317123001": {
+    "description": "主武器命中弱点，副武器暴击伤害每层提升6%，最多100层，持续5秒；副武器暴击命中，主武器全伤害每层提升30%，最多10层，持续10秒。",
+    "rows": [{"row":"lc:130023001_1_0","field":"coefficient","condition":"副武器，每层"},{"row":"lc:130023002_1_0","field":"coefficient","condition":"主武器，每层"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317123001.uasset: ExecuteUbergraph 78 slot==1 ->189 AddBuff(1317123001);2050 slot==2 ->2161 AddBuff(1317123002);386/1510 GetBuffStackCount ->480/1604 AddScopedModifier(130023002/130023001)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317123001 Duration=5 StackLimitCount=100; Buff_Rogue_1317123002 Duration=10 StackLimitCount=10; Numerical 130023001/2 CoefValue=0.06/0.3"]
+  },
+  "1317124001": {
+    "description": "使用近战武器期间，全伤害提升600%。",
+    "rows": [{"row":"lc:130024001_1_0","field":"base","condition":"使用近战武器期间"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317124001.uasset: ExecuteUbergraph 527 AddScopedModifier(130024001); numerical_modifier_config 130024001_1_0 AllDamageRatio B1 BaseValue=6"]
+  },
+  "1317125001": {
+    "description": "近战重击击杀目标，永久获得1%全伤害提升，最多叠加999层。",
+    "rows": [{"row":"lc:130025001_1_0","field":"base","condition":"每层"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317125001.uasset: ExecuteUbergraph 125 MeleeAttackType==2;274 MGEAddBuff(Buff_Rogue_1317125001)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317125001 Duration=-1 StackLimitCount=999 GPModifyIDs=[130025001]; numerical_modifier_config 130025001_1_0 B1 BaseValue=0.01"]
+  },
+  "1317126001": {
+    "description": "对生命值不低于60%的目标，全伤害提升600%。",
+    "rows": [{"row":"lc:130026001_1_0","field":"base","condition":"目标生命值≥60%"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317126001.uasset: ExecuteUbergraph 592 GreaterEqual_FloatFloat(HealthPercent,0.6),640 AddScopedModifier(130026001); numerical_modifier_config 130026001_1_0 B1 BaseValue=6"]
+  },
+  "1317127001": {
+    "description": "滑铲停止后，对周围5米怪物施加持续2秒的减抗效果，伤害抗性降低60%。",
+    "rows": [{"row":"lc:130027001_1_0","field":"base","condition":"滑铲停止，附近目标"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317127001.uasset: ExecuteUbergraph 249/550 MGEGetNearbyTargets(radius=500);673 MGEAddBuff(Buff_Rogue_1317127001);934 MovementModeChange(8,true)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317127001 Duration=2 GPModifyIDs=[130027001]; numerical_modifier_config 130027001_1_0 DamageBearRatio B1 BaseValue=-0.6; semantic type damage-resistance"]
+  },
+  "1317128001": {
+    "description": "滑铲后，下次射击额外增加相当于基础弹道数的弹道（CD2秒）。",
+    "rows": [],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317128001.uasset: CDO CooldownDuration=2; ExecuteUbergraph 948 GetWeaponParamBaseValue(GPWeaponParam.FireMode.ShotBulletsNum);1012 WeaponFireModifyParam(...,1,0,base);1076 removes Buff_Rogue_1317128001"]
+  },
+  "1317129001": {
+    "description": "单次攻击伤害达到目标最大生命值的10%时，触发额外伤害结算（CD5秒）。",
+    "rows": [],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317129001.uasset: CDO CooldownDuration=5; ExecuteUbergraph 847 health attribute*0.1,889 GreaterEqual(settlement damage,threshold);188 MGEMakeSettlement(112029001,original settlement damage)"],
+    "partial": "触发阈值、传入原伤害和冷却已核验；额外Numerical结算的最终倍率待核验。"
+  },
+  "1317130001": {
+    "description": "当前弹药超出最大弹容时，每多1发子弹，全伤害提升1%，最多按999发计算。",
+    "rows": [{"row":"lc:130030001_1_0","field":"coefficient","condition":"每超出最大弹容1发"}],
+    "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317130001.uasset: ExecuteUbergraph 443 CurrentNumber-CurrentMaxNumber;489 extra>0;689 extra*StackCount;735 FMin(extra,999);777 AddScopedModifier(130030001,extra); numerical_modifier_config 130030001_1_0 BaseValue=0 CoefValue=0.01"]
+  }
+}

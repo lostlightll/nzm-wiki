@@ -10,7 +10,8 @@ import {
 } from "../lib/weapon-consumers";
 import type { ResolvedWeapon } from "../lib/weapon-resolver";
 import { getAllOverlimitCards } from "../lib/overlimit-cards";
-import { getOverlimitCatalog } from "../lib/overlimit";
+import { getOverlimitCatalog, getOverlimitPreviewCatalog } from "../lib/overlimit";
+import type { OverlimitCatalog } from "../lib/overlimit-catalog";
 import { getStatusEffectSearchDocuments } from "../lib/status-effects";
 import { getSummonSearchDocuments } from "../lib/summons";
 import { getAllResolvedWeapons } from "../lib/weapons";
@@ -286,7 +287,7 @@ function cleanSearchText(value: string): string {
   return value.replace(/<[^>]+>/g, "").replace(/\*\*/g, "");
 }
 
-export function createOverlimitCardSearchItem(card: OverlimitCard): SearchItem {
+export function createOverlimitCardSearchItem(card: OverlimitCard, edition?: { basePath: string; label: string }): SearchItem {
   const keywords = [
     card.id,
     cleanSearchText(card.description),
@@ -304,13 +305,32 @@ export function createOverlimitCardSearchItem(card: OverlimitCard): SearchItem {
     ]),
   ];
   return {
-    title: card.name,
-    slug: `overlimit/${card.id}`,
-    path: `/overlimit/${card.id}`,
+    title: edition ? `${card.name} · ${edition.label}` : card.name,
+    slug: `${edition?.basePath.slice(1) ?? "overlimit"}/${card.id}`,
+    path: `${edition?.basePath ?? "/overlimit"}/${card.id}`,
     category: "超限卡片",
     keywords: [...new Set(keywords)],
     pinyin: buildPinyin([card.name, ...keywords]),
   };
+}
+
+export function createOverlimitPreviewSearchItems(catalog: OverlimitCatalog): SearchItem[] {
+  const basePath = "/overlimit/preview";
+  const label = catalog.season.label;
+  const cards = catalog.cards.map(card => createOverlimitCardSearchItem(card, { basePath, label }));
+  const modules = [
+    { id: "cards", title: "超限图鉴", values: catalog.cards.map(card => card.name) },
+    ...(catalog.bonds ? [{ id: "bonds", title: "羁绊效果", values: catalog.bonds.flatMap(bond =>
+      [bond.name, ...bond.effects.flatMap(effect => [`x${effect.count}`, effect.description])]) }] : []),
+    ...(catalog.mapRotation ? [{ id: "map-rotation", title: "地图轮换", values: catalog.mapRotation.periods.flatMap(period =>
+      [period.startDate, ...period.maps.flatMap(map => [map.name, ...map.activeBonds])]) }] : []),
+    ...(catalog.levels ? [{ id: "levels", title: "等级图鉴", values: ["重抽费用", "升级概率"] }] : []),
+  ];
+  return [...cards, ...modules.map(module => ({
+    title: `${label} ${module.title}`, slug: `overlimit/preview/${module.id}`,
+    path: `${basePath}#${module.id}`, category: "超限图鉴",
+    keywords: [label, "预览", ...module.values], pinyin: buildPinyin([label, module.title, ...module.values]),
+  }))];
 }
 
 type StatusEffectSearchDocument = ReturnType<
@@ -671,7 +691,9 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
       ),
     );
   }
-  items.push(...getAllOverlimitCards().map(createOverlimitCardSearchItem));
+  items.push(...getAllOverlimitCards().map(card => createOverlimitCardSearchItem(card)));
+  const overlimitPreview = getOverlimitPreviewCatalog();
+  if (overlimitPreview) items.push(...createOverlimitPreviewSearchItems(overlimitPreview));
 
   const overlimit = getOverlimitCatalog();
   if (overlimit.levels) {

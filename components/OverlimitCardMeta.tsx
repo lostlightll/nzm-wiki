@@ -5,6 +5,7 @@ import {
 import type { CSSProperties } from "react";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
+import { OVERLIMIT_BOND_ICON_PATHS } from "@/constants/overlimit-bond-icons";
 import { getPerkWeaponApplicability } from "@/lib/perk-applicability";
 import { getAssetPath } from "@/lib/path";
 import type { OverlimitBondName, OverlimitCardTag, PerkSlot } from "@/types";
@@ -19,6 +20,10 @@ export const OVERLIMIT_BOND_COLORS: Partial<Record<OverlimitBondName, { active: 
   爆韧: { active: "#FF4F25", inactive: "#0E0502" },
   共振: { active: "#3D69FF", inactive: "#05091B" },
   狂战: { active: "#FA2929", inactive: "#140404" },
+  力场: { active: "#38B989", inactive: "#06130E" },
+  瞬暴: { active: "#38BDF8", inactive: "#061019" },
+  狩猎: { active: "#C071EF", inactive: "#13091B" },
+  叠叠乐: { active: "#EB7189", inactive: "#190A0E" },
 };
 
 const FALLBACK_BOND_COLORS = { active: "#a1a1aa", inactive: "#18181b" };
@@ -53,17 +58,7 @@ export function getOverlimitBondInactiveSurfaceStyle(
   return { backgroundColor: colors.inactive };
 }
 
-export const OVERLIMIT_BOND_ICON_PATHS: Partial<Record<OverlimitBondName, string>> = {
-  弹药: "/icons/overlimit/sets/T_Icons_Rogue_Munition.png",
-  技战: "/icons/overlimit/sets/T_Icons_Rogue_Skill.png",
-  异化: "/icons/overlimit/sets/T_Icons_Rogue_Anomaly.png",
-  游击: "/icons/overlimit/sets/T_Icons_Rogue_Guerrilla.png",
-  壁垒: "/icons/overlimit/sets/T_Icons_Rogue_Survival.png",
-  狙击: "/icons/overlimit/sets/T_Icons_Rogue_Precision.png",
-  爆韧: "/icons/overlimit/sets/T_Icons_Rogue_Demolition.png",
-  共振: "/icons/overlimit/sets/T_Icons_Rogue_Support.png",
-  狂战: "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
-};
+export { OVERLIMIT_BOND_ICON_PATHS } from "@/constants/overlimit-bond-icons";
 
 export function OverlimitBondIcon({
   name,
@@ -79,7 +74,15 @@ export function OverlimitBondIcon({
   const colors = OVERLIMIT_BOND_COLORS[bondName];
 
   if (!iconPath || !colors) {
-    return <CircleDot aria-hidden="true" className={className} />;
+    return (
+      <CircleDot
+        aria-hidden="true"
+        className={className}
+        style={{
+          color: active ? getOverlimitBondForegroundColor(name) : "currentColor",
+        }}
+      />
+    );
   }
 
   const maskImage = `url("${getAssetPath(iconPath)}")`;

@@ -1,19 +1,21 @@
 # 超限赛季维护
 
-> 状态：active。超限使用一个当前发布目录，不建立每赛季页面或运行时历史库。
+> 状态：active。超限使用当前正式版与可选下一版预览两个通道，不建立每赛季页面或运行时历史库。
 
 跨赛季正式版本统一使用 [插件与超限版本管理](content-versions.md)，将普通插件及超限的羁绊效果、地图轮换等全部模块归档到 Git 可保存的 `archives/content-versions/`。本文的本地归档命令保留为超限单次操作备份；不替代长期版本归档。
 
 ## 数据入口
 
 - `data/overlimit/current.json` 是当前发布投影，包含版本、来源清单、卡片、已解析效果、独立伤害、羁绊、等级规则和地图轮换。
+- `data/overlimit/preview.json` 是独立的下一版预览投影，无预览时为 `null`；身份必须匹配 `config/content-version.json` 登记版本，状态必须为 `preload`。同 ID 的两版卡片互不覆盖。
 - `lib/overlimit.ts` 提供统一入口；页面、搜索、站点地图读取同一版本。`lib/overlimit-cards.ts` 保留卡片查询接口。
 - `lib/overlimit-catalog.ts` 校验协议。卡片 ID 独立；`perkItemId` 仅表示人工确认的普通插件关联。没有插件实体的技能卡合法。
 - `data/overlimit/links.json` 是自动生成的跨页面轻量关联投影，由 `pnpm overlimit project` 重建，不手工维护。普通插件及 Buff 的超限链接只指向当前卡池；旧来源记录可以保留，不继续产生旧卡链接。
+- `preview-links.json` 保存显式预览来源的关联，普通插件入口不会因此切换到下一季。两版搜索、详情、羁绊反查均从自己的投影读取。
 - 卡片 `effectValues` 和 `independentDamage` 是已审定来源的解析结果，不是新的数值真值。卡片页面不在运行时读取当前插件、武器 Lock 或预览 Resolver。同 ID 插件更新不能隐式改动超限。
 - `provenance.files` 保留生成时证据文件及 SHA-256。原始事实仍以 Numerical V2、Ability、Buff 或其他可重复执行证据为准；不能从描述抄数值、手工制造已解析效果，或用声明“已审定”代替审计。
 
-`season.id` 是版本身份，`season.status` 为 `current` 或 `preload`。状态不选择数值 Resolver，不创建 `s4-preview`、`s5-preview` 分支，不按系统日期自动换季。候选默认不进入运行时或搜索。
+`season.id` 是版本身份，`season.status` 为 `current` 或 `preload`。页面只读解析后的投影，不按状态重新解析数值，不创建 S4/S5 专用页面，不按系统日期自动换季。候选默认不进入运行时或搜索；只有显式写入预览通道才发布。
 
 ## 每次迭代的固定顺序
 
@@ -85,7 +87,7 @@ pnpm build
 - 当前投影独立于普通插件动态解析；统一页面、搜索、站图入口；旧的四份超限 JSON 与直接覆盖导入器已退役。
 - S4 候选：`MD/_local/overlimit/candidates/s4-20260917.json`。177 张卡中 114 张为插件身份、63 张直接关联 `MGEPassive_BD[ModId_1]`；相对 S3.2 新增 77 ID、退出 47 ID，共有 100 ID。
 
-下一阶段按上述流程审定 S4，9 月 22 日正式服上线后复核，再替换当前投影。当前仍发布 S3.2，未把预下载当成正式上线。剩余审定包括 63 张技能卡的执行链、新羁绊、沿用卡效果变动和图标；不能把候选报告视为已完成的 S4 数值导入。
+S4 预览通过独立通道展示，正式通道仍为 S3.2。9 月 22 日正式服上线后复核，再按上述流程替换当前投影。各卡片证据缺口以 `verification` 和 `preview-evidence.json` 为准；预览导入不代表所有独立伤害结算已审定。
 
 已确认的 S4 配置变化：
 
@@ -93,4 +95,28 @@ pnpm build
 - 重抽费用表仍可读取，100 行与 S3.2 一致；费用事实可以独立审定，但不能据此推断抽卡概率。
 - 力场、瞬暴、狩猎、叠叠乐使用 2/5/8 档，部分档位替代前档。
 
-既有普通插件 S4 预览仍属于插件维护域。本次超限不复用其展示状态或运行时特判，也不顺便重构全站插件/武器数值系统。
+槽位补充核对（2026-09-17）：`refs-test/Exports/NZM/Content` 的体验服导出同样缺少 `HuntingGroundRoguelikeWeaponModServerTable`；客户端卡表包含预载全部 177 个 ID，但只提供 `bSlot4`，其中 33 个 ID 的标记与正式预载不同，不能用来补齐 1/2/3 插或覆盖预载。正式预载中 114 张卡关联普通插件，`WeaponModItemData.MODSlotIndex` 的 1/2/3/4 插数量分别为 16/16/41/41，但不等于超限槽位：弱肉强食、换弹冲击、万伤掷弹、飞毛腿、驰射淬锋、疾风残影的普通插件均为 3 插，超限均明确标记四插。保留预载确认的 33 张四插，其余槽位待服务端配置或实际游戏证据核验；普通插件槽位只能作为明确标注的参考，不直接当作超限槽位。
+
+## 重建已审定的超限预览
+
+本地导出未含图标 PNG 时，先仅解码卡池实际引用的纹理（需要本地 CUE4Parse 库与 Python Pillow；库路径可通过 `-LibraryDirectory` 指定）：
+
+```powershell
+pwsh -NoProfile -File scripts/overlimit/export-preview-icons.ps1 -ContentRoot refs/Exports/NZM/Content
+python scripts/overlimit/decode-preview-icons.py
+```
+
+输出位于 `MD/_local/overlimit/preview-icons`，不写回 `refs`。底包缺失的纹理仅按完全相同的引用名沿用已有站点图标，并在逐卡证据标记 `iconFallback`，不能拿同名卡片的不同图标代替。
+
+```powershell
+pnpm exec tsx scripts/overlimit/prepare-preview.ts --content-root refs/Exports/NZM/Content --updated-at 2026-09-17
+pnpm num-modifier:project
+pnpm overlimit check
+pnpm build
+```
+
+导入器只写预览投影、预览关联、审计证据和显式预览来源，不写正式超限或正式 Numerical Lock。卡片按 ID 审计；羁绊审定清单绑定底包文件哈希，来源变化必须重新审定，不能只改赛季标签。以后换季复用导入器和规则协议，替换审定清单，不复制赛季代码。生成图标使用内容哈希，避免覆盖 S3 图标。
+
+羁绊按实际档位组合分组，2/5/8 与 2/4/6 分开展示，保留档位替换关系。S4 地图排期由 `RogueAffixesTable` 经入口表的 `RogueAffixesId` 关联，预载起点为 2026-09-21 02:00，不能擅自改为开季日期。原始时间和完整行保存在预览证据中。缺失的服务端等级概率模块保持 `null`。
+
+截图仅作布局参考。例如瞬暴8档 Numerical 为50%超暴概率，结算配置为2倍；截图25%及描述3倍均不能覆盖结构化证据。

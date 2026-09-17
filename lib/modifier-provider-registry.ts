@@ -33,11 +33,13 @@ const cardSourceSchema = z.strictObject({
 });
 const overlimitBondSourceSchema = z.strictObject({
   type: z.literal("overlimit-bond"),
+  season: z.string().refine(isPreviewSeason).optional(),
   name: nonEmptyString,
   count: z.number().int().positive(),
 });
 const overlimitCardSourceSchema = z.strictObject({
   type: z.literal("overlimit-card"),
+  season: z.string().refine(isPreviewSeason).optional(),
   id: nonEmptyString,
 });
 const postSourceSchema = z.strictObject({

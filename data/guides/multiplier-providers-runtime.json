@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "990ba4949af6e346367990b34b5e68aa22d57b214633d27be2ec75ce5b5534b8",
+    "modifierIndexSha256": "cb8f1db7dae8b7f189b2ba9197249fddc5234d08f39811b3e512d1b793ba2b01",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -4058,6 +4058,999 @@
       },
       "modifierTypeIds": [
         "weakness"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315204001",
+      "label": "射击碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315204001"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315205001",
+      "label": "技能碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315205001"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315208001",
+      "label": "暴伤碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315208001"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315210001",
+      "label": "弱点碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315210001"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315211001",
+      "label": "爆炸碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315211001"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315212001",
+      "label": "射击碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315212001"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315213001",
+      "label": "技能碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315213001"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315214001",
+      "label": "伤害碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315214001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315215001",
+      "label": "伤害碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315215001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315216001",
+      "label": "射击碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315216001"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315217001",
+      "label": "技能碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315217001"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315220001",
+      "label": "暴伤碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315220001"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315222001",
+      "label": "弱点碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315222001"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315223001",
+      "label": "爆炸碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315223001"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315224001",
+      "label": "射击碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315224001"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315225001",
+      "label": "技能碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315225001"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315226001",
+      "label": "伤害碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315226001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315227001",
+      "label": "伤害碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315227001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317101001",
+      "label": "弱点连击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317101001"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317104001",
+      "label": "切枪速攻（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317104001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317105001",
+      "label": "物法互博（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317105001"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317106001",
+      "label": "碾压之势（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317106001"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317107001",
+      "label": "秒杀（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317107001"
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317109001",
+      "label": "迷你弹夹（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317109001"
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317110001",
+      "label": "死神时刻（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317110001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317111001",
+      "label": "换弹增强（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317111001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317113001",
+      "label": "不喜欢动粗（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317113001"
+      },
+      "modifierTypeIds": [
+        "all-damage",
+        "critical"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317114001",
+      "label": "大富翁（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317114001"
+      },
+      "modifierTypeIds": [
+        "all-damage",
+        "weakness",
+        "critical"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317122001",
+      "label": "换武增伤（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317122001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317123001",
+      "label": "主副增幅（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317123001"
+      },
+      "modifierTypeIds": [
+        "critical",
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317124001",
+      "label": "近战增伤（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317124001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317125001",
+      "label": "近战叠伤（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317125001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317126001",
+      "label": "巨人杀手（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317126001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317127001",
+      "label": "滑铲易伤（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317127001"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317130001",
+      "label": "弹容增伤（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317130001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317231001",
+      "label": "爆炸直击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317231001"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317233001",
+      "label": "超强技能（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317233001"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317235001",
+      "label": "暴力切换（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317235001"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317236001",
+      "label": "隐匿出击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317236001"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317238001",
+      "label": "爆发（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317238001"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040435",
+      "label": "我只射击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040435"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040436",
+      "label": "哑枪（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040436"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040043",
+      "label": "聚能弹药（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040043"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040254",
+      "label": "独弹强化（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040254"
+      },
+      "modifierTypeIds": [
+        "correction"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040329",
+      "label": "协同（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040329"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040407",
+      "label": "狂轰乱炸（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040407"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040409",
+      "label": "狂暴连击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040409"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040408",
+      "label": "弱肉强食（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040408"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040390",
+      "label": "独爆增伤（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040390"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040112",
+      "label": "过载膛压（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040112"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040184",
+      "label": "技能增涌（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040184"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040302",
+      "label": "模式增幅（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040302"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040093",
+      "label": "腐蚀榴弹（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040093"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040334",
+      "label": "炎刃（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040334"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040001",
+      "label": "幸运装填（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040001"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040081",
+      "label": "钝化增伤（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040081"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040082",
+      "label": "精密追击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040082"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040140",
+      "label": "解构增幅（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040140"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040150",
+      "label": "终焉序列（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040150"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040526",
+      "label": "战术速装（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040526"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040527",
+      "label": "弹链供给（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040527"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040528",
+      "label": "换弹引爆（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040528"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040529",
+      "label": "积光成辉（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040529"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040530",
+      "label": "余烬积势（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040530"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:游击:4",
+      "label": "游击 4件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "游击",
+        "count": 4
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:游击:6",
+      "label": "游击 6件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "游击",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:壁垒:4",
+      "label": "壁垒 4件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "壁垒",
+        "count": 4
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:狙击:2",
+      "label": "狙击 2件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "狙击",
+        "count": 2
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:狙击:6",
+      "label": "狙击 6件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "狙击",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:爆韧:6",
+      "label": "爆韧 6件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "爆韧",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:共振:6",
+      "label": "共振 6件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "共振",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:狂战:2",
+      "label": "狂战 2件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "狂战",
+        "count": 2
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:狂战:6",
+      "label": "狂战 6件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "狂战",
+        "count": 6
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:力场:2",
+      "label": "力场 2件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "力场",
+        "count": 2
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:力场:5",
+      "label": "力场 5件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "力场",
+        "count": 5
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:力场:8",
+      "label": "力场 8件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "力场",
+        "count": 8
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:瞬暴:5",
+      "label": "瞬暴 5件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "瞬暴",
+        "count": 5
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:狩猎:2",
+      "label": "狩猎 2件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "狩猎",
+        "count": 2
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:狩猎:5",
+      "label": "狩猎 5件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "狩猎",
+        "count": 5
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:狩猎:8",
+      "label": "狩猎 8件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "狩猎",
+        "count": 8
+      },
+      "modifierTypeIds": [
+        "game-mode"
       ]
     }
   ],
@@ -11011,6 +12004,1417 @@
       },
       "reasonCode": "independent-damage-event",
       "reason": "效果直接改写榴弹基础直击与爆炸伤害、弹道和异常层数，不提供角色增伤通道。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315206001",
+      "label": "充能碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315206001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315207001",
+      "label": "暴击碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315207001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315209001",
+      "label": "减免碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315209001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315218001",
+      "label": "充能碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315218001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315219001",
+      "label": "暴击碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315219001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1315221001",
+      "label": "减免碎片（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1315221001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317100001",
+      "label": "多弹强化（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317100001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317108001",
+      "label": "最后一枪（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317108001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317112001",
+      "label": "换弹无感（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317112001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317115001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317115001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317116001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317116001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317117001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317117001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317118001",
+      "label": "爆射弱点（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317118001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317119001",
+      "label": "最大弹容（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317119001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317120001",
+      "label": "霰化改装（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317120001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317121001",
+      "label": "扩弹道散布（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317121001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317128001",
+      "label": "滑铲弹道（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317128001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317129001",
+      "label": "二重高伤（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317129001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317229001",
+      "label": "游击飞弹（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317229001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317230001",
+      "label": "弱点必爆（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317230001"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317232001",
+      "label": "飞弹狂射（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317232001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317234001",
+      "label": "暴击飞弹（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317234001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317240001",
+      "label": "近战冲击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317240001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040440",
+      "label": "反弹转化（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040440"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040090",
+      "label": "闪电轰击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040090"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040405",
+      "label": "弹道过载（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040405"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040437",
+      "label": "致命爆炸（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040437"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040438",
+      "label": "武器穿透（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040438"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040439",
+      "label": "技能魔术（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040439"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040441",
+      "label": "狂战（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040441"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040442",
+      "label": "切换手法（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040442"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040443",
+      "label": "连发（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040443"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040444",
+      "label": "物加法（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040444"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040051",
+      "label": "穿针引线（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040051"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040214",
+      "label": "五方兽临（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040214"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040215",
+      "label": "兽躯双衍（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040215"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040088",
+      "label": "百万伏特（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040088"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040284",
+      "label": "狙盾生成（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040284"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040071",
+      "label": "协频共振（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040071"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040085",
+      "label": "致命节拍（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040085"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040115",
+      "label": "概率坍缩（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040115"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040092",
+      "label": "反哺（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040092"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040202",
+      "label": "地龙惊破（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040202"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040263",
+      "label": "伤害回血（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040263"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040330",
+      "label": "腾焰（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040330"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040332",
+      "label": "折射（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040332"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040333",
+      "label": "蔓延（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040333"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040341",
+      "label": "狂热兽魂（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040341"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040469",
+      "label": "模式特化（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040469"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040391",
+      "label": "独爆产暴（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040391"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040432",
+      "label": "肾上腺素（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040432"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040406",
+      "label": "暴走永动（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040406"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040028",
+      "label": "联动提升（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040028"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040116",
+      "label": "裁决充能（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040116"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040201",
+      "label": "重峦叠势（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040201"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040256",
+      "label": "无衰射程（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040256"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040102",
+      "label": "川流不息（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040102"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040107",
+      "label": "暴击涌流（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040107"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040182",
+      "label": "超频蓄能（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040182"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040200",
+      "label": "梯山架壑（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040200"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040404",
+      "label": "永动核心（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040404"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040385",
+      "label": "速充增效（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040385"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040003",
+      "label": "战术装填（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040003"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040252",
+      "label": "殒命补给（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040252"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040008",
+      "label": "充能弹药（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040008"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040012",
+      "label": "狂暴装填（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040012"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040199",
+      "label": "万钧过载（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040199"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040384",
+      "label": "越射越快（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040384"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040152",
+      "label": "余震速装（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040152"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040078",
+      "label": "弱点续弹（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040078"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040021",
+      "label": "精确能量（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040021"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040395",
+      "label": "击杀掉货（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040395"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040351",
+      "label": "合圈震荡（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040351"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040355",
+      "label": "定时震波（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040355"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040470",
+      "label": "不稳定弹道（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040470"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040044",
+      "label": "聚能速度（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040044"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040033",
+      "label": "烈焰冲击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040033"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040416",
+      "label": "火力阵线（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040416"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040424",
+      "label": "哈士奇支援（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040424"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040331",
+      "label": "蝎刺（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040331"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040338",
+      "label": "霜华（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040338"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040339",
+      "label": "索命龙炎（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040339"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040346",
+      "label": "贯长虹（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040346"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040393",
+      "label": "捡货充能（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040393"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040388",
+      "label": "独爆回弹（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040388"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040004",
+      "label": "危机装填（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040004"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040005",
+      "label": "猎杀装填（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040005"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040025",
+      "label": "猎杀充能（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040025"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040066",
+      "label": "备弹返流（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040066"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040068",
+      "label": "多重激返（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040068"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040080",
+      "label": "钝化充能（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040080"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040036",
+      "label": "正中红心（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040036"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040072",
+      "label": "近距增幅（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040072"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040103",
+      "label": "共鸣射击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040103"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040127",
+      "label": "解构装填（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040127"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040129",
+      "label": "层积涌流（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040129"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040132",
+      "label": "崩解回涌（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040132"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040136",
+      "label": "重装弹头（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040136"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040257",
+      "label": "远距增伤（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040257"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040471",
+      "label": "导弹轰炸（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040471"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040472",
+      "label": "换弹冲击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040472"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040473",
+      "label": "万伤掷弹（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040473"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040474",
+      "label": "爆毒蚀域（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040474"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040475",
+      "label": "飞毛腿（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040475"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040524",
+      "label": "驰射淬锋（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040524"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040525",
+      "label": "近战衔接（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040525"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040523",
+      "label": "疾风残影（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040523"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040522",
+      "label": "动能释放（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040522"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040519",
+      "label": "地裂轨迹（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040519"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040518",
+      "label": "铲杀冲击（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040518"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040514",
+      "label": "爆破强化（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040514"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040478",
+      "label": "光辉贯穿（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040478"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-card:s4-preview:20703040482",
+      "label": "耀光爆破（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "20703040482"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "本版尚无可发布的 Numerical 属性引用；机制与直接执行参数单独保存在预览证据，不借用正式版来源。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:游击:2",
+      "label": "游击 2件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "游击",
+        "count": 2
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:壁垒:2",
+      "label": "壁垒 2件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "壁垒",
+        "count": 2
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:壁垒:6",
+      "label": "壁垒 6件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "壁垒",
+        "count": 6
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "生存与治疗/护盾机制；不新增伤害乘区。免死Buff与MaxShield覆写由独立执行链管理。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:狙击:4",
+      "label": "狙击 4件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "狙击",
+        "count": 4
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "新增独立爆炸结算Numerical130103010，不是既有伤害的Modifier。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:爆韧:2",
+      "label": "爆韧 2件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "爆韧",
+        "count": 2
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:爆韧:4",
+      "label": "爆韧 4件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "爆韧",
+        "count": 4
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "新增按破韧贡献结算的Numerical130103011，不是既有伤害的Modifier。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:共振:2",
+      "label": "共振 2件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "共振",
+        "count": 2
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "生成可受击弱点Actor；未发现此入口直接施加增伤Modifier，不从弱点语义伪造易伤来源。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:共振:4",
+      "label": "共振 4件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "共振",
+        "count": 4
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "队友非致死伤害转移/减伤机制，不发布为攻击增伤。112031029与130103012负责承伤及转移结算。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:狂战:4",
+      "label": "狂战 4件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "狂战",
+        "count": 4
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "低血量斩杀独立结算Numerical130103013，不是增伤Modifier。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:瞬暴:2",
+      "label": "瞬暴 2件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "瞬暴",
+        "count": 2
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:瞬暴:8",
+      "label": "瞬暴 8件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "瞬暴",
+        "count": 8
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:叠叠乐:2",
+      "label": "叠叠乐 2件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "叠叠乐",
+        "count": 2
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "叠层事件额外增加Buff层数，目标Buff取运行时事件；没有固定属性或固定增伤Modifier。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:叠叠乐:5",
+      "label": "叠叠乐 5件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "叠叠乐",
+        "count": 5
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "叠层事件额外增加Buff层数，目标Buff取运行时事件；没有固定属性或固定增伤Modifier。"
+    },
+    {
+      "id": "overlimit-bond:s4-preview:叠叠乐:8",
+      "label": "叠叠乐 8件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "叠叠乐",
+        "count": 8
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "叠层事件额外增加Buff层数，目标Buff取运行时事件；没有固定属性或固定增伤Modifier。"
     }
   ]
 }

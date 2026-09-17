@@ -25,13 +25,13 @@ modifier-providers.json ──────────────────�
 - 运行时投影保存客户端查询所需的已解析结果和输入哈希，不导入完整 Lock。
 - `lib/num-modifier-data.ts` 是完整 Lock 与语义目录的唯一业务导入适配器。
 
-### 插件预览隔离
+### 内容预览隔离
 
 版本配置 `config/content-version.json.preview` 登记唯一的下一季预览，`<season>-preview` 表示其数据通道（当前为 `s4-preview`）。预下载武器的增伤来源同样可在 `modifier-providers.json` 的武器 `source` 声明此标记，通过来源 Resolver 选择隔离证据。此标记只影响该来源的 Modifier 解析，不修改武器伤害 Lock 或正式 Modifier Lock。预览生成器保留插件与武器来源显式引用的选定行；未标记武器来源仍使用正式 Resolver。
 
-`data/perk-preview-modifiers.json` 只保存预览插件和已登记预览武器增伤来源实际引用的 Numerical 行，格式为 `{ schema_version: 1, season: "s4", source: { path, sha256 }, rows: { [rowName]: raw } }`。`season` 显式绑定证据赛季，`source` 记录预载原表路径与 SHA-256，运行时不读取该路径。原始行必须包含有效的 ID、Level、AttributeName、GPModifierOp、BaseValue 和 CoefValue。
+`data/perk-preview-modifiers.json` 保存预览插件、预览武器增伤来源及预览超限卡片/羁绊实际引用的 Numerical 行，格式为 `{ schema_version: 1, season: "s4", source: { path, sha256 }, rows: { [rowName]: raw } }`。`season` 显式绑定证据赛季，`source` 记录预载原表路径与 SHA-256，运行时不读取该路径。原始行必须包含有效的 ID、Level、AttributeName、GPModifierOp、BaseValue 和 CoefValue。
 
-`getPerkModifierResolver(season)` 仅对与登记目标及证据一致的预览标记，将选定行覆盖到正式 Lock 的内存副本；普通插件使用正式 Resolver。未登记、跨赛季或证据缺失的预览请求报错，不能静默用正式数值或上一季预览证据代替。描述模板、数值绑定、阶段值和效果分面均使用同一个选定 Resolver。乘区来源投影也通过 `getProviderResolver()` 按来源的预览标记选用该 Resolver，预览证据哈希参与投影新鲜度检查。正式 `data/num-modifier-lock.json` 与未标记的消费者不受预览行影响，不能通过刷新正式 Lock 发布预载中的旧行改动。
+`getPerkModifierResolver(season)` 仅对与登记目标及证据一致的预览标记使用选定行；缺行不回退正式 Lock，普通插件使用正式 Resolver。未登记、跨赛季或证据缺失的预览请求报错，不能静默用正式数值或上一季预览证据代替。描述模板、数值绑定、阶段值和效果分面均使用同一个选定 Resolver。乘区来源投影也通过 `getProviderResolver()` 按来源的预览标记选用该 Resolver，预览证据哈希参与投影新鲜度检查。正式 `data/num-modifier-lock.json` 与未标记的消费者不受预览行影响，不能通过刷新正式 Lock 发布预载中的旧行改动。
 
 ## Lock 与身份
 

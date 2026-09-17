@@ -39,6 +39,25 @@ export function assembleCapture(root: string, input: CaptureInput, options: Capt
   const perks = input.perks.filter(perk => options.includePreview || !isPreview(perk));
   const selectedSlugs = new Set(perks.map(perk => perk.slug));
   const assets = new Set(catalogAssets(catalog));
+  let previewSummary: { version: string; cards: number; bonds: number; mapPeriods: number } | undefined;
+  let previewCatalog: ReturnType<typeof parseOverlimitCatalog> | undefined;
+  let previewSeason: string | undefined;
+  const previewFile = "data/overlimit/preview.json";
+  if (options.includePreview && fs.existsSync(path.join(root, previewFile))) {
+    const rawPreview: unknown = JSON.parse(read(previewFile).toString("utf8"));
+    if (rawPreview !== null) {
+      const preview = parseOverlimitCatalog(rawPreview);
+      previewCatalog = preview;
+      files[previewFile] = read(previewFile);
+      const previewLinksFile = "data/overlimit/preview-links.json";
+      files[previewLinksFile] = read(previewLinksFile);
+      previewSeason = JSON.parse(files[previewLinksFile].toString("utf8")).season;
+      if (!isPreviewSeason(previewSeason)) throw new Error("Preview links require an explicit preview season");
+      for (const asset of catalogAssets(preview)) assets.add(asset);
+      previewSummary = { version: preview.season.id, cards: preview.cards.length,
+        bonds: preview.bonds?.length ?? 0, mapPeriods: preview.mapRotation?.periods.length ?? 0 };
+    }
+  }
   for (const perk of perks) {
     const relative = `data/perks/${perk.slug}.mdx`;
     files[relative] = read(relative);
@@ -62,14 +81,20 @@ export function assembleCapture(root: string, input: CaptureInput, options: Capt
   const cardIds = new Set(catalog.cards.map(card => card.id));
   files["frozen/relations.json"] = json(input.relations.filter(({ source }) => {
     if (source?.type === "perk") return selectedSlugs.has(`slot-${source.slot}/${source.slug}`);
-    if (source?.type === "overlimit-card") return cardIds.has(source.id);
-    if (source?.type === "overlimit-bond") return catalog.bonds?.some(bond =>
+    if (source?.type === "overlimit-card") return source.season
+      ? source.season === previewSeason && previewCatalog?.cards.some(card => card.id === source.id) : cardIds.has(source.id);
+    if (source?.type === "overlimit-bond") return (source.season
+      ? source.season === previewSeason ? previewCatalog?.bonds : undefined
+      : catalog.bonds)?.some(bond =>
       bond.name === source.name && bond.effects.some(effect => effect.count === source.count));
     return false;
   }));
   // Exact shared locks are archival evidence only. Weapons remain outside this version domain.
   const evidence = ["data/num-modifier-lock.json", "data/num-modifier-semantics.json"];
-  if (perks.some(isPreview)) evidence.push("data/perk-preview-modifiers.json");
+  if (perks.some(isPreview) || previewCatalog) evidence.push("data/perk-preview-modifiers.json");
+  if (previewCatalog && fs.existsSync(path.join(root, "data/overlimit/preview-evidence.json"))) {
+    evidence.push("data/overlimit/preview-evidence.json");
+  }
   for (const relative of evidence) files[`evidence/${relative}`] = read(relative);
   return {
     files,
@@ -81,6 +106,7 @@ export function assembleCapture(root: string, input: CaptureInput, options: Capt
         bonds: catalog.bonds?.length ?? 0, mapPeriods: catalog.mapRotation?.periods.length ?? 0,
         hasLevels: catalog.levels !== null },
       assets: assets.size,
+      ...(previewSummary ? { overlimitPreview: previewSummary } : {}),
     },
   };
 }

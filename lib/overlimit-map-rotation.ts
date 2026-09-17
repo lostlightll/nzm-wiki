@@ -21,12 +21,8 @@ export function resolveRotationTiming(
   const firstPeriod = schedule.periods[0] ?? null;
   if (!firstPeriod) return { phase: "ended", featuredPeriod: null };
 
-  const todayYear = Number(today.slice(0, 4));
-  if (todayYear < schedule.season || today < firstPeriod.startDate) {
+  if (today < firstPeriod.startDate) {
     return { phase: "upcoming", featuredPeriod: firstPeriod };
-  }
-  if (todayYear > schedule.season) {
-    return { phase: "ended", featuredPeriod: null };
   }
 
   for (const period of schedule.periods) {
@@ -50,10 +46,9 @@ export function getRotationPeriodState(
 ): RotationPeriodState {
   if (!today || today < period.startDate) return "upcoming";
 
-  const todayYear = Number(today.slice(0, 4));
   const effectiveEndDate = period.endDate ?? `${schedule.season}-12-31`;
 
-  if (todayYear > schedule.season || today > effectiveEndDate) return "past";
+  if (today > effectiveEndDate) return "past";
   return "current";
 }
 

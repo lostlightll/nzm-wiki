@@ -7,7 +7,8 @@ import {
   getAllOverlimitCards,
   getOverlimitCardById,
 } from "@/lib/overlimit-cards";
-import { getOverlimitCatalog } from "@/lib/overlimit";
+import { getOverlimitCatalog, getOverlimitVersions } from "@/lib/overlimit";
+import { OverlimitVersionNavigation } from "@/components/OverlimitVersionNavigation";
 
 const cards = getAllOverlimitCards();
 
@@ -43,6 +44,7 @@ export default async function OverlimitCardPage({
 
   return (
     <div className="mx-auto max-w-4xl py-6">
+      <OverlimitVersionNavigation versions={getOverlimitVersions()} activePath="/overlimit" />
       <OverlimitCardDetail card={card} />
       {independentDamage.map((entry) => (
         <IndependentDamagePanel
