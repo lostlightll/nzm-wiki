@@ -34034,6 +34034,146 @@
         },
         "row_name": "120600063_1"
       },
+      "lc:120600064_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "幽冥毒皇S4插件-腐蚀飞弹-榴弹命中",
+          "ElementAddRate": 0.3,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Corossive",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 3,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 1.8,
+          "HpFloatCoef": 0,
+          "HurtableBase": 3,
+          "ImpulseBase": 3,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 3,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120600064
+        },
+        "row_name": "120600064_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
+      "lc:120600065_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "幽冥毒皇S4插件-腐蚀飞弹-榴弹爆炸",
+          "ElementAddRate": 0.15,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Corossive",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 3,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.03,
+          "HpFloatCoef": 0,
+          "HurtableBase": 3,
+          "ImpulseBase": 3,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponExplosionDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 3,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120600065
+        },
+        "row_name": "120600065_1",
+        "source": {
+          "sha256": "9ebdaf0cbc35d28b85078bdf89043eb145ebbbe703ad457c75e0b28097d29b40",
+          "source_path": "DataTables/numerical_config_composite.json"
+        }
+      },
       "lc:120600170_1": {
         "raw": {
           "CameraHitFeedBackTag": {
@@ -53711,6 +53851,146 @@
           "id": 120600063
         },
         "row_name": "120600063_1"
+      },
+      "td:120600064_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "幽冥毒皇S4插件-榴弹命中",
+          "ElementAddRate": 0.3,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Corossive",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": true,
+          "FleshDamageBase": 3,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.48,
+          "HpFloatCoef": 0,
+          "HurtableBase": 3,
+          "ImpulseBase": 3,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 3,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120600064
+        },
+        "row_name": "120600064_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
+      },
+      "td:120600065_1": {
+        "raw": {
+          "CameraHitFeedBackTag": {
+            "TagName": "Weapon.HitType.Light"
+          },
+          "DamageAttenuationEnd": 0,
+          "DamageAttenuationRatio": 0,
+          "DamageAttenuationStart": 0,
+          "DamageSourceType": 1,
+          "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+          "Description": "幽冥毒皇S4插件-榴弹爆炸",
+          "ElementAddRate": 0.15,
+          "ElementDebuffTypeID": 0,
+          "ElementType": "EElementEffectType::EDamageType_Corossive",
+          "EnableAttributes": [],
+          "EnableWeaknessDamage": false,
+          "FleshDamageBase": 3,
+          "FriendlyCoefficient": -1,
+          "HpCalBase": 0,
+          "HpCalScale": 0.012,
+          "HpFloatCoef": 0,
+          "HurtableBase": 3,
+          "ImpulseBase": 3,
+          "KnockUpDistance1": 0,
+          "KnockUpDistance2": 0,
+          "KnockUpLevel1": 0,
+          "KnockUpLevel2": 0,
+          "KnockupLevel": 0,
+          "Level": 1,
+          "MaxDamageAttackRatio": 0,
+          "OnlyKnockUpWhenKill": false,
+          "Settlements": [
+            {
+              "TagName": "Numerical.SettlementType.Impulse.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Element.ElementPointAdd"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Health.WeaponExplosionDamage"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Flesh.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Hurtable.Base"
+            },
+            {
+              "TagName": "Numerical.SettlementType.Toughness.Base"
+            },
+            {
+              "TagName": "None"
+            }
+          ],
+          "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default",
+          "ToughnessBase": 3,
+          "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+          "ToughnessScale": 0,
+          "WeaknessDamageAddScale": 0,
+          "bDamageIgnoreShield": false,
+          "bEnableCriticalDamage": true,
+          "bEnableParry": false,
+          "id": 120600065
+        },
+        "row_name": "120600065_1",
+        "source": {
+          "sha256": "43c8cfe26265e2534d604815ef4bb81a122a242edc87a82e6954a5ef5fd0e55a",
+          "source_path": "DataTables/TD_numerical_config_composite.json"
+        }
       },
       "td:120600170_1": {
         "raw": {

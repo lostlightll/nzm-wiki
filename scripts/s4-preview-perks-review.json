@@ -927,6 +927,20 @@
         "field": "base"
       }
     },
+    "independent_damage_sources": [
+      {
+        "weapon_slug": "幽冥毒皇",
+        "damage_source_id": "corrosive-missile-hit",
+        "trigger": "装备腐蚀飞弹后，榴弹直接命中目标",
+        "interval": "随榴弹命中触发"
+      },
+      {
+        "weapon_slug": "幽冥毒皇",
+        "damage_source_id": "corrosive-missile-explosion",
+        "trigger": "装备腐蚀飞弹后，榴弹命中产生爆炸",
+        "interval": "随榴弹爆炸触发"
+      }
+    ],
     "replacements": [
       {
         "from": "基础直击伤害修改为原伤害的<strong>400%</strong>",
@@ -942,7 +956,10 @@
       "BuffConfigDatatableNew[Weapon_20106000006_1]: {\"duration\":-1,\"max\":1200,\"ids\":[]}"
     ],
     "warnings": [
-      "MGE文案称直击变为400%；CDO直击伤害Modifier=1206000610，Numerical B1 BaseValue=5，应为+500%。"
+      "维护者要求保留原有+500%描述，在MDX正文单独说明描述疑似错误；此绑定仅用于还原描述，不作为已生效增伤或白值计算依据。",
+      "2026-09-17 按S4预载refs复核：BP_YMDH_CommonWeaponBullet.K2_OnProjectileHit进入Ubergraph 327；装备1312067005时经258/278/312/322转180，203切换Damage_MGE_1312067005，226切换AOEDamage_MGE_1312067005，分别引用120600064和120600065，Modifiers均为空。猎场HpCalScale为1.8/0.03，塔防为0.48/0.012。",
+      "MGE_1312067005_YMDH的直击伤害Modifier=1206000610仅见属性声明和CDO值，插件与弹体字节码未见读取或施加调用；不得把B1 BaseValue=5作为额外+500%叠加。以上为静态执行链证据，未做运行时实测。",
+      "refs-test同样切换独立Numerical且未发现该Modifier调用，但猎场直击HpCalScale=2.025；本站采用S4预载refs的1.8，不混用体验服数值。"
     ]
   },
   "20703040544": {

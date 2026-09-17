@@ -22,18 +22,34 @@ const EXPECTED_REFERENCES = new Map([
 ]);
 
 test("专属插件显式引用全部独立武器伤害来源", () => {
-  const actual = new Map(
-    getAllPerks().flatMap((perk) =>
-      (perk.independentDamageSources ?? []).map(
-        (reference) =>
-          [
-            perk.slug,
-            [reference.weaponSlug, reference.damageSourceId],
-          ] as const,
-      ),
+  const actual = getAllPerks().flatMap((perk) =>
+    (perk.independentDamageSources ?? []).map(
+      (reference) =>
+        [
+          perk.slug,
+          [reference.weaponSlug, reference.damageSourceId],
+        ] as const,
     ),
   );
-  assert.deepEqual(actual, EXPECTED_REFERENCES);
+  const expected = [
+    ...EXPECTED_REFERENCES,
+    ["slot-4/腐蚀飞弹", ["幽冥毒皇", "corrosive-missile-hit"]],
+    ["slot-4/腐蚀飞弹", ["幽冥毒皇", "corrosive-missile-explosion"]],
+  ];
+  const byReference = (a: unknown, b: unknown) =>
+    JSON.stringify(a).localeCompare(JSON.stringify(b));
+  assert.deepEqual(actual.sort(byReference), expected.sort(byReference));
+});
+
+test("腐蚀飞弹替换白值，不能把未调用的500% Modifier叠入伤害", async () => {
+  const damage = await getIndependentDamageByPerkSlug("slot-4/腐蚀飞弹");
+  assert.deepEqual(damage.map(entry => [entry.numericalId, entry.damageValue]), [
+    ["120600064", "900"],
+    ["120600065", "15"],
+  ]);
+  const perk = getAllPerks().find(entry => entry.slug === "slot-4/腐蚀飞弹")!;
+  assert.match(perk.description!, /500%/);
+  assert.doesNotMatch(perk.description!, /\{GPNumericalID:|\{\{num:/);
 });
 
 test("武器来源解析为插件详情页独立伤害表格", async () => {
