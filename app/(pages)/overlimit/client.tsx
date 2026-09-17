@@ -47,6 +47,7 @@ interface OverlimitPageClientProps {
   mapRotation: OverlimitMapRotationSchedule | null;
   season: { id: string; label: string; status: "current" | "preload"; updatedAt: string };
   basePath?: string;
+  sourceSeason?: string;
   versions?: { href: string; label: string }[];
 }
 
@@ -148,6 +149,7 @@ export default function OverlimitPageClient({
   mapRotation,
   season,
   basePath = "/overlimit",
+  sourceSeason,
   versions = [],
 }: OverlimitPageClientProps) {
   useEffect(() => {
@@ -635,6 +637,7 @@ export default function OverlimitPageClient({
       {activeModule === "bonds" && bondCatalog && (
             <OverlimitBondCatalog
               catalog={bondCatalog}
+              sourceSeason={sourceSeason}
               onSearchBond={searchCardsByBond}
             />
       )}

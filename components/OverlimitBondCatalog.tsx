@@ -1,4 +1,5 @@
 import { ArrowRight, Layers3 } from "lucide-react";
+import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import {
   getOverlimitBondSurfaceStyle,
   OverlimitBondIcon,
@@ -7,11 +8,13 @@ import type { OverlimitBondCatalog as OverlimitBondCatalogData } from "@/types";
 
 interface OverlimitBondCatalogProps {
   catalog: OverlimitBondCatalogData;
+  sourceSeason?: string;
   onSearchBond: (bondName: OverlimitBondCatalogData[number]["name"]) => void;
 }
 
 export function OverlimitBondCatalog({
   catalog,
+  sourceSeason,
   onSearchBond,
 }: OverlimitBondCatalogProps) {
   const groupedBonds = new Map<
@@ -109,7 +112,13 @@ export function OverlimitBondCatalog({
                           x{effect.count}
                         </div>
                         <div className="flex min-h-0 flex-col justify-center-safe overflow-y-auto px-4 py-2 text-sm leading-5 text-zinc-200">
-                          <p>{effect.description}</p>
+                          <p className="flow-root">
+                            <MultiplierSourceBadges
+                              source={{ type: "overlimit-bond", name: bond.name, count: effect.count, ...(sourceSeason ? { season: sourceSeason } : {}) }}
+                              variant="catalog-inline"
+                            />
+                            {effect.description}
+                          </p>
                           {effect.overrides && effect.overrides.length > 0 && (
                             <p className="mt-2 text-xs text-zinc-400">
                               替代第 {effect.overrides.join("、")} 档效果
