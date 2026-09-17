@@ -5680,6 +5680,7 @@
       "description": "不释放武器技能时周期叠加伤害；释放技能清除增益。叠层间隔5秒。",
       "icon": "/icons/overlimit/preview/6efbd4619923ae5fb43a.webp",
       "quality": 5,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -5723,6 +5724,7 @@
       "description": "停止射击时周期叠加伤害；开枪命中清除增益。叠层间隔1秒。",
       "icon": "/icons/overlimit/preview/5a53fe07425f12e544fa.webp",
       "quality": 5,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -5797,6 +5799,7 @@
       "description": "累计命中敌人后，对其造成电弧伤害。触发命中次数5；冷却5秒。",
       "icon": "/icons/overlimit/preview/b4865de7313b42454cf9.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -5827,6 +5830,7 @@
       "description": "提升换弹速度，换弹后短时间增加弹道。",
       "icon": "/icons/overlimit/preview/82f1625c6670cb7be804.webp",
       "quality": 5,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -5857,6 +5861,7 @@
       "description": "武器命中有概率产生爆炸伤害。触发概率5%；配置冷却0.1秒。",
       "icon": "/icons/overlimit/preview/b0625efe1dc11cd50bdd.webp",
       "quality": 5,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -5887,6 +5892,7 @@
       "description": "增加子弹穿透能力。穿透增加3。",
       "icon": "/icons/overlimit/preview/682a1e12e1e0d38f1978.webp",
       "quality": 5,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -5917,6 +5923,7 @@
       "description": "释放武器技能有概率刷新技能使用次数。刷新概率30%。",
       "icon": "/icons/overlimit/preview/6efbd4619923ae5fb43a.webp",
       "quality": 5,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -5947,6 +5954,7 @@
       "description": "攻击有概率恢复生命；生命越低，触发概率越高。",
       "icon": "/icons/overlimit/preview/5a53fe07425f12e544fa.webp",
       "quality": 5,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -5977,6 +5985,7 @@
       "description": "切换武器模式时过量装填子弹。过充弹药15；冷却10秒。",
       "icon": "/icons/overlimit/preview/1910b9e9d6bd59d93b1d.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6007,6 +6016,7 @@
       "description": "射击有概率增加弹道。触发概率50%；额外弹道2；冷却1秒。",
       "icon": "/icons/overlimit/preview/82f1625c6670cb7be804.webp",
       "quality": 5,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6037,6 +6047,7 @@
       "description": "释放武器技能后，普攻附带部分技能伤害。",
       "icon": "/icons/overlimit/preview/b0625efe1dc11cd50bdd.webp",
       "quality": 5,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6067,6 +6078,7 @@
       "description": "缩小爆炸范围，提升爆炸伤害。",
       "icon": "/icons/overlimit/preview/a656a324565130b19d1f.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6275,6 +6287,7 @@
       "description": "累计造成多次伤害后，触发大范围电属性伤害。触发伤害次数100。",
       "icon": "/icons/overlimit/preview/9e09c98503a628d9dc84.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6305,6 +6318,7 @@
       "description": "累计命中弱点后，获得临时护盾。触发弱点命中次数5；冷却2秒。",
       "icon": "/icons/overlimit/preview/0377778c84e535957bb3.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6335,6 +6349,7 @@
       "description": "同时命中的敌人越多，伤害越高。",
       "icon": "/icons/overlimit/preview/042add2d5e27803c2fdd.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6365,6 +6380,7 @@
       "description": "持续开火时，每次射击叠加武器伤害。",
       "icon": "/icons/overlimit/preview/1910b9e9d6bd59d93b1d.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6395,6 +6411,7 @@
       "description": "射击未暴击时叠加暴击率，暴击后清除。",
       "icon": "/icons/overlimit/preview/81f3600e2b22c121d614.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6469,6 +6486,7 @@
       "description": "累计造成伤害后，对周围目标连续造成爆炸伤害。累计伤害阈值10000；爆炸次数5；冷却8秒。",
       "icon": "/icons/overlimit/preview/4383ca30f063e2ebf91d.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6499,6 +6517,7 @@
       "description": "武器射击造成伤害时，有概率恢复生命。触发概率10%；冷却4秒。",
       "icon": "/icons/overlimit/preview/aed35928313e35697b4f.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6739,6 +6758,7 @@
       "description": "武器爆炸仅命中单个目标时，可掉落暴击能量球。冷却6秒。",
       "icon": "/icons/overlimit/preview/249472a2ffdc101980e9.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6886,6 +6906,7 @@
       "description": "提升暴击率、暴击伤害和移速；暴击时恢复生命。恢复生命冷却2秒。",
       "icon": "/icons/overlimit/preview/6efbd4619923ae5fb43a.webp",
       "quality": 5,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -6960,6 +6981,7 @@
       "description": "爆炸仅命中单个目标时，提升伤害。",
       "icon": "/icons/overlimit/preview/6640357ab019b9a6de31.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7002,6 +7024,7 @@
       "description": "使用武器技能后，短时间提升暴击率。",
       "icon": "/icons/overlimit/preview/0642e6fd65273854ed8c.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7044,6 +7067,7 @@
       "description": "连续射击达到阈值后，叠加武器伤害。连续射击阈值30。",
       "icon": "/icons/overlimit/preview/51691c57e51e828cf61e.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7087,6 +7111,7 @@
       "description": "周期叠加暴击率与暴击伤害，开火命中或切枪后清除。叠层间隔0.15秒。",
       "icon": "/icons/overlimit/preview/80b981fd4a60a6078f4c.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7117,6 +7142,7 @@
       "description": "提升武器技能伤害。",
       "icon": "/icons/overlimit/preview/81f3600e2b22c121d614.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7159,6 +7185,7 @@
       "description": "累计造成伤害后，叠加武器射击伤害。累计伤害阈值10000。",
       "icon": "/icons/overlimit/preview/c2e1db65c0cd69319438.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7189,6 +7216,7 @@
       "description": "大幅减轻武器伤害的射程衰减。",
       "icon": "/icons/overlimit/preview/e65303c0d7e93ab36c16.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7231,6 +7259,7 @@
       "description": "主动切换开火模式后，提升武器射击伤害。冷却20秒。",
       "icon": "/icons/overlimit/preview/7d77d93173f9a9a17ee5.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7273,6 +7302,7 @@
       "description": "持续开火时叠加武器技能充能效率。",
       "icon": "/icons/overlimit/preview/3cf4e3f220c5ea174585.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7316,6 +7346,7 @@
       "description": "暴击时为武器技能充能。直接充能2.8%；冷却0.5秒。",
       "icon": "/icons/overlimit/preview/80b981fd4a60a6078f4c.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7346,6 +7377,7 @@
       "description": "提升武器技能充能效率。",
       "icon": "/icons/overlimit/preview/9cd2c3a26172ec94d5aa.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7388,6 +7420,7 @@
       "description": "累计造成伤害后，为武器技能充能。累计伤害阈值10000；冷却5秒。",
       "icon": "/icons/overlimit/preview/8189983aedb19d54e8c2.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7418,6 +7451,7 @@
       "description": "提升技能充能效率；命中与击败目标也可直接充能。",
       "icon": "/icons/overlimit/preview/98b7d76c17996a8bbdd3.webp",
       "quality": 5,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7448,6 +7482,7 @@
       "description": "移速加成越高，武器技能充能效率越高。",
       "icon": "/icons/overlimit/preview/bcedfeab8cdd8778feab.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7478,6 +7513,7 @@
       "description": "击杀目标时，有概率填充弹药。触发概率40%；填充弹药1；冷却2秒。",
       "icon": "/icons/overlimit/preview/5b37163a42dc04b3327e.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7508,6 +7544,7 @@
       "description": "击杀目标时，有概率填充弹药。触发概率50%；填充弹药2。",
       "icon": "/icons/overlimit/preview/05941e3b5e782ba17922.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7538,6 +7575,7 @@
       "description": "使用技能时装填全部子弹，并提升换弹速度。",
       "icon": "/icons/overlimit/preview/12bb1a676efad2854c87.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7568,6 +7606,7 @@
       "description": "累计暴击后，填充弹药。暴击次数8；填充弹药6。",
       "icon": "/icons/overlimit/preview/3a6764eb59bf8153bdac.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7598,6 +7637,7 @@
       "description": "累计造成伤害后，下一次装填可过量填装。累计伤害阈值10000；过充比例140%；冷却15秒。",
       "icon": "/icons/overlimit/preview/ac4b01323ff36b41a5ec.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7628,6 +7668,7 @@
       "description": "持续开火达到阈值后，获得移速加成。连续开火阈值30。",
       "icon": "/icons/overlimit/preview/47b90d9a04b80bd7aacf.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7670,6 +7711,7 @@
       "description": "使用技能后提升换弹速度。",
       "icon": "/icons/overlimit/preview/c154e0484d84b40cf3b7.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7712,6 +7754,7 @@
       "description": "累计命中弱点后，填充弹药。弱点命中次数2；填充弹药1。",
       "icon": "/icons/overlimit/preview/dca9234d1994a81e781d.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7742,6 +7785,7 @@
       "description": "命中弱点时，为武器技能充能。直接充能2.5%；冷却1秒。",
       "icon": "/icons/overlimit/preview/2717ee6ee2be04abcd5c.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7772,6 +7816,7 @@
       "description": "拾取敌人死亡掉落的能量球时，形成伤害冲击环。",
       "icon": "/icons/overlimit/preview/d7559928286646b05526.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7802,6 +7847,7 @@
       "description": "召唤物造成伤害时，在玩家和召唤物周围产生伤害冲击环。冷却3秒。",
       "icon": "/icons/overlimit/preview/e6a844e957f2bce34534.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7832,6 +7878,7 @@
       "description": "召唤物存在时，周期在玩家周围产生伤害冲击环。冲击环间隔5秒。",
       "icon": "/icons/overlimit/preview/ba41cac89a7d624643df.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -7862,6 +7909,7 @@
       "description": "不同开火模式均有概率增加弹道。模式一概率20%；模式一额外弹道1；模式二概率20%；模式二额外弹道2。",
       "icon": "/icons/overlimit/preview/1910b9e9d6bd59d93b1d.webp",
       "quality": 4,
+      "slot": 4,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8251,6 +8299,7 @@
       "description": "拾取能量球时，为武器技能充能。直接充能7.5%；冷却1秒。",
       "icon": "/icons/overlimit/preview/df4bd9573185b3e70dab.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8281,6 +8330,7 @@
       "description": "武器爆炸仅命中单个目标时，有概率填充弹药。触发概率50%。",
       "icon": "/icons/overlimit/preview/ee502dc9d7a801b64717.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8311,6 +8361,7 @@
       "description": "换弹有概率不消耗备弹，并提升伤害。不消耗备弹概率33%。",
       "icon": "/icons/overlimit/preview/61ae5ef699a5ef06e5bf.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8353,6 +8404,7 @@
       "description": "击败近处敌人时，填充弹药。填充弹药3；冷却2秒。",
       "icon": "/icons/overlimit/preview/39628709a00eb4ed2c29.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8383,6 +8435,7 @@
       "description": "击败远处敌人时，填充弹药。填充弹药4；冷却2秒。",
       "icon": "/icons/overlimit/preview/a845531ec5f7ec8fd02d.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8413,6 +8466,7 @@
       "description": "击败远处敌人时，为武器技能充能。配置冷却7秒。",
       "icon": "/icons/overlimit/preview/cc99089273c2daa07b43.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8443,6 +8497,7 @@
       "description": "换弹时为武器技能充能。直接充能6%；冷却1秒。",
       "icon": "/icons/overlimit/preview/26012278600ec4f2f0c0.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8473,6 +8528,7 @@
       "description": "单次开火触发多次伤害时，为武器技能充能。直接充能3%；冷却1秒。",
       "icon": "/icons/overlimit/preview/37f25836af92c4b37734.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8503,6 +8559,7 @@
       "description": "命中减速敌人时，为武器技能充能。直接充能5%；冷却2秒。",
       "icon": "/icons/overlimit/preview/1910b9e9d6bd59d93b1d.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8533,6 +8590,7 @@
       "description": "命中弱点积攒能量；使用技能时消耗能量，提升技能伤害。",
       "icon": "/icons/overlimit/preview/a68ffe8ad9464cebd28e.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8563,6 +8621,7 @@
       "description": "与敌人距离越近，伤害越高。",
       "icon": "/icons/overlimit/preview/3595db0c5f0aa3d35edf.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8593,6 +8652,7 @@
       "description": "对减速敌人造成额外伤害。",
       "icon": "/icons/overlimit/preview/382cfa4c59eff62e7963.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8635,6 +8695,7 @@
       "description": "命中弱点时，叠加伤害增益。",
       "icon": "/icons/overlimit/preview/9d627b8f43e495e03b0e.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8678,6 +8739,7 @@
       "description": "累计命中后，消耗弹药为武器技能充能。触发命中次数5；直接充能1.6%。",
       "icon": "/icons/overlimit/preview/7ea4dfb97206b5409687.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8708,6 +8770,7 @@
       "description": "破盾后为武器过量装填弹药。",
       "icon": "/icons/overlimit/preview/02d8545675038609a164.webp",
       "quality": 4,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8738,6 +8801,7 @@
       "description": "添加元素异常时，为武器技能充能。直接充能3%；冷却1秒。",
       "icon": "/icons/overlimit/preview/f47cb51bbc5a1147e316.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8768,6 +8832,7 @@
       "description": "破盾后为武器技能充能。直接充能25%；冷却5秒。",
       "icon": "/icons/overlimit/preview/3102dbea36ca8058f7a6.webp",
       "quality": 4,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8798,6 +8863,7 @@
       "description": "提升弹丸破韧能力。",
       "icon": "/icons/overlimit/preview/3dec72f03d18789ca261.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8840,6 +8906,7 @@
       "description": "破盾后提升武器伤害。",
       "icon": "/icons/overlimit/preview/8cbea639efa80be569d9.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8882,6 +8949,7 @@
       "description": "弹匣剩余弹药较少时，提升伤害。末尾弹药阈值10。",
       "icon": "/icons/overlimit/preview/8f120f0ab7f5b74e66a9.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8924,6 +8992,7 @@
       "description": "与命中敌人距离越远，伤害越高。",
       "icon": "/icons/overlimit/preview/22d9ba707801cffc55ef.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -8954,6 +9023,7 @@
       "description": "爆炸命中发射跟踪导弹；仅命中单个单位时，发射更多导弹。通常导弹数2；单目标导弹数5；冷却2秒。",
       "icon": "/icons/overlimit/preview/82f1625c6670cb7be804.webp",
       "quality": 5,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9164,6 +9234,7 @@
       "description": "近战命中后，切枪的前几发子弹获得增伤；近战击杀可进一步强化。",
       "icon": "/icons/overlimit/preview/4cdf44e9a0cfbc53a26f.webp",
       "quality": 5,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9206,6 +9277,7 @@
       "description": "提升换弹速度，主动换弹后过量装填，并强化弹匣前段子弹伤害。过充比例50%；强化弹药比例50%。",
       "icon": "/icons/overlimit/preview/14328bd712a5dba1da12.webp",
       "quality": 5,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9268,6 +9340,7 @@
       "description": "提升基础弹匣容量；累计命中后装填弹药，并短时间提升武器伤害与暴击率。触发命中次数100；装填比例50%。",
       "icon": "/icons/overlimit/preview/7819530bd900683951de.webp",
       "quality": 5,
+      "slot": 1,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9320,6 +9393,7 @@
       "description": "提升爆炸伤害；开火施加灼热标记，换弹时根据标记数量产生冲击波。",
       "icon": "/icons/overlimit/preview/a32bfe95d56a90e2b28e.webp",
       "quality": 5,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9362,6 +9436,7 @@
       "description": "获得光能时，为武器技能充能，并短时间提升武器伤害与移速。直接充能45%。",
       "icon": "/icons/overlimit/preview/06b3be8ccd40a5eef478.webp",
       "quality": 5,
+      "slot": 2,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9414,6 +9489,7 @@
       "description": "获得暗能时，产生余烬冲击环，并短时间提升武器伤害。",
       "icon": "/icons/overlimit/preview/3cf1f7a7949fd07d73a9.webp",
       "quality": 5,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9497,6 +9573,7 @@
       "description": "移动时积攒动能，满层后转化为临时伤害加成。动能积攒间隔1秒；冷却5秒。",
       "icon": "/icons/overlimit/preview/1e1ed7698744a67d8a33.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9527,6 +9604,7 @@
       "description": "滑铲时留下地裂，连续滑铲可进入提升移速的疾风状态。",
       "icon": "/icons/overlimit/preview/c8f6b0f8918645e5d45d.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9569,6 +9647,7 @@
       "description": "滑铲后叠加临时射击伤害增益。",
       "icon": "/icons/overlimit/preview/c71032136c5f684d1215.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9599,6 +9678,7 @@
       "description": "提升武器技能伤害，击杀敌人时触发二次伤害。二次伤害冷却1秒。",
       "icon": "/icons/overlimit/preview/805f67bce15f585c579e.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9629,6 +9709,7 @@
       "description": "获得光能后叠加临时射击伤害；满层后，下次射击附带光能贯穿伤害。贯穿触发层数5。",
       "icon": "/icons/overlimit/preview/805f67bce15f585c579e.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",
@@ -9659,6 +9740,7 @@
       "description": "触发光能效果后提升武器技能伤害，期间击杀目标可延长增益。延时所需击杀2；延长持续1秒。",
       "icon": "/icons/overlimit/preview/5ab800c915d4b67578cf.webp",
       "quality": 4,
+      "slot": 3,
       "applicabilityKnown": false,
       "verification": {
         "status": "partial",

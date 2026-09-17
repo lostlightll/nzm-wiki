@@ -907,7 +907,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#1315216001.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312062001.png",
       "iconFallback": false,
       "chain": [
@@ -4136,6 +4144,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316198001.json#Default__.Properties.TriggerInterval",
           "value": 5,
           "text": "5秒"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040435.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315202001.png",
@@ -4206,6 +4221,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316199001.json#Default__.Properties.TriggerInterval",
           "value": 1,
           "text": "1秒"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040436.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315203001.png",
@@ -4232,7 +4254,15 @@
       "publicationDescription": "减少弹射次数，增加弹道。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040440.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315126001.png",
       "iconFallback": false,
       "chain": [
@@ -4265,6 +4295,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315114001.json#Default__.Properties.CooldownDuration",
           "value": 5,
           "text": "5秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040090.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315114001.png",
@@ -4326,7 +4363,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040405.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
       "iconFallback": true,
       "chain": [
@@ -4363,6 +4408,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316200001.json#Default__.Properties.CooldownDuration",
           "value": 0.1,
           "text": "0.1秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040437.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
@@ -4392,6 +4444,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316201001.json#Default__.Properties.AddNum",
           "value": 3,
           "text": "3"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040438.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1316197001.png",
@@ -4421,6 +4480,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316202001.json#Default__.Properties.Probability",
           "value": 0.3,
           "text": "30%"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040439.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315202001.png",
@@ -4445,7 +4511,15 @@
       "publicationDescription": "攻击有概率恢复生命；生命越低，触发概率越高。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040441.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315203001.png",
       "iconFallback": false,
       "chain": [
@@ -4478,6 +4552,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316205001.json#Default__.Properties.CooldownDuration",
           "value": 10,
           "text": "10秒"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040442.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314124001.png",
@@ -4517,6 +4598,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316206001.json#Default__.Properties.CooldownDuration",
           "value": 1,
           "text": "1秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040443.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
@@ -4541,7 +4629,15 @@
       "publicationDescription": "释放武器技能后，普攻附带部分技能伤害。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040444.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
       "iconFallback": true,
       "chain": [
@@ -4641,7 +4737,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040043.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1316107001.png",
       "iconFallback": false,
       "chain": [
@@ -4666,7 +4770,15 @@
       "publicationDescription": "单次攻击命中多个目标时，为武器技能充能。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040051.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1316115001.png",
       "iconFallback": false,
       "chain": [
@@ -4689,7 +4801,15 @@
       "publicationDescription": "增加分裂小榴弹数量，并提升小榴弹爆炸伤害。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040214.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312039001.png",
       "iconFallback": false,
       "chain": [
@@ -4712,7 +4832,15 @@
       "publicationDescription": "增加每次开火连续发射的榴弹数量。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040215.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312040001.png",
       "iconFallback": false,
       "chain": [
@@ -4977,7 +5105,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040254.bSlot4"
+          }
+        }
+      ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316167001.png",
       "iconFallback": true,
       "chain": [
@@ -5008,6 +5144,13 @@
           "path": "Abilities/Build/CBT3/Perk04/MGE_1316103001.json#Default__.Properties.CheckHitNum",
           "value": 100,
           "text": "100"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040088.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1316103001.png",
@@ -5042,6 +5185,13 @@
           "path": "Abilities/Build/CBT3/Perk04/MGE_1316174001.json#Default__.Properties.CooldownDuration",
           "value": 2,
           "text": "2秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040284.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316174001.png",
@@ -5066,7 +5216,15 @@
       "publicationDescription": "同时命中的敌人越多，伤害越高。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040071.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315119001.png",
       "iconFallback": false,
       "chain": [
@@ -5108,7 +5266,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040085.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314124001.png",
       "iconFallback": false,
       "chain": [
@@ -5172,7 +5338,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040115.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315135001.png",
       "iconFallback": false,
       "chain": [
@@ -5212,6 +5386,13 @@
           "path": "Weapon/Data/DMR/DMR_20014000005_WBH_SSLS/MGE/MGE_FanBu_SSLS.json#Default__.Properties.CDSecond",
           "value": 15,
           "text": "15秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040092.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312046001.png",
@@ -5251,6 +5432,13 @@
           "path": "Abilities/Build/CBT3/Perk04/MGE_1316155001.json#Default__.Properties.CooldownDuration",
           "value": 8,
           "text": "8秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040202.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316155001.png",
@@ -5285,6 +5473,13 @@
           "path": "Abilities/Build/CBT3/Perk04/MGE_1316168001.json#Default__.Properties.CooldownDuration",
           "value": 4,
           "text": "4秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040263.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316168001.png",
@@ -5385,7 +5580,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040329.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312056001.png",
       "iconFallback": false,
       "chain": [
@@ -5414,6 +5617,13 @@
           "path": "Weapon/Data/SMG/SMG_20005000034_null_LYXW/MGE/MGE_1312056004_LYXW.json#Default__.Properties.TriggerTime",
           "value": 5,
           "text": "5秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040330.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312056004.png",
@@ -5443,6 +5653,13 @@
           "path": "Weapon/Data/Hidden/Hidden_20019000001_null_KUWU/MGE/MGE_1312057001_KUWU.json#Default__.Properties.AddReboundNum",
           "value": 3,
           "text": "3"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040332.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312057001.png",
@@ -5467,7 +5684,15 @@
       "publicationDescription": "增加致命链接的最大数量。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040333.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312057002.png",
       "iconFallback": false,
       "chain": [
@@ -5495,6 +5720,13 @@
           "path": "Weapon/Data/Rifle/Rifle_20001000024_WBH_JJSSZS/MGE/MGE_1312063001_JJSS.json#Default__.Properties.TriggerNum",
           "value": 100,
           "text": "100"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040341.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312063001.png",
@@ -5524,6 +5756,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316208001.json#Default__.Properties.Probability",
           "value": 0.2,
           "text": "20%"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040469.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314124001.png",
@@ -5553,6 +5792,13 @@
           "path": "Abilities/Build/CBT3/Perk04/MGE_1316192001.json#Default__.Properties.CooldownDuration",
           "value": 6,
           "text": "6秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040391.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316192001.png",
@@ -5577,7 +5823,15 @@
       "publicationDescription": "单次开火命中目标的子弹越多，伤害越高。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040432.bSlot4"
+          }
+        }
+      ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313031004.png",
       "iconFallback": true,
       "chain": [
@@ -5644,6 +5898,13 @@
           "path": "Abilities/Build/CBT3/Perk04/MGE_1316195001.json#Default__.Properties.CustomCD",
           "value": 13,
           "text": "13秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040407.bSlot4"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
@@ -5709,7 +5970,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040409.bSlot4"
+          }
+        }
+      ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
       "iconFallback": true,
       "chain": [
@@ -5738,6 +6007,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315202001.json#Default__.Properties.CD",
           "value": 2,
           "text": "2秒"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040406.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315202001.png",
@@ -5802,7 +6078,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040408.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315203001.png",
       "iconFallback": false,
       "chain": [
@@ -5865,7 +6149,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040390.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315200001.png",
       "iconFallback": false,
       "chain": [
@@ -5928,7 +6220,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040028.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315103001.png",
       "iconFallback": false,
       "chain": [
@@ -5996,6 +6296,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315132001.json#Default__.Properties.ShootThreshold",
           "value": 30,
           "text": "30"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040112.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315132001.png",
@@ -6028,6 +6335,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315136001.json#Default__.Properties.TriggerPeriod",
           "value": 0.15,
           "text": "0.15秒"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040116.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315136001.png",
@@ -6092,7 +6406,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040184.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315135001.png",
       "iconFallback": false,
       "chain": [
@@ -6140,6 +6462,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315157001.json#Default__.Properties.DmgTrigger",
           "value": 10000,
           "text": "10000"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040201.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315157001.png",
@@ -6242,7 +6571,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040256.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315170001.png",
       "iconFallback": false,
       "chain": [
@@ -6310,6 +6647,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315181001.json#Default__.Properties.CoolDuration",
           "value": 20,
           "text": "20秒"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040302.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315181001.png",
@@ -6374,7 +6718,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040102.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314126001.png",
       "iconFallback": false,
       "chain": [
@@ -6409,6 +6761,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314131001.json#Default__.Properties.CooldownDuration",
           "value": 0.5,
           "text": "0.5秒"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040107.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315136001.png",
@@ -6472,7 +6831,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040182.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314130001.png",
       "iconFallback": false,
       "chain": [
@@ -6506,6 +6873,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314149001.json#Default__.Properties.CooldownDuration",
           "value": 5,
           "text": "5秒"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040200.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314149001.png",
@@ -6530,7 +6904,15 @@
       "publicationDescription": "提升技能充能效率；命中与击败目标也可直接充能。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040404.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314193001.png",
       "iconFallback": false,
       "chain": [
@@ -6554,7 +6936,15 @@
       "publicationDescription": "移速加成越高，武器技能充能效率越高。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040385.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314190001.png",
       "iconFallback": false,
       "chain": [
@@ -6592,6 +6982,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313105001.json#Default__.Properties.CooldownDuration",
           "value": 2,
           "text": "2秒"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040003.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313105001.png",
@@ -6626,6 +7023,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313166001.json#Default__.Properties.AmmoCount",
           "value": 2,
           "text": "2"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040252.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313166001.png",
@@ -6669,7 +7073,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040008.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313110001.png",
       "iconFallback": true,
       "chain": [
@@ -6705,6 +7117,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313114001.json#Default__.Properties.AmmoCount",
           "value": 6,
           "text": "6"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040012.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313114001.png",
@@ -6744,6 +7163,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313155001.json#Default__.Properties.CooldownDuration",
           "value": 15,
           "text": "15秒"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040199.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313155001.png",
@@ -6813,6 +7239,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313194001.json#Default__.Properties.CheckFireNum",
           "value": 30,
           "text": "30"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040384.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1313194001.png",
@@ -6879,7 +7312,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040152.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313144001.png",
       "iconFallback": true,
       "chain": [
@@ -6914,6 +7355,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313126001.json#Default__.Properties.AmmoCount",
           "value": 1,
           "text": "1"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040078.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313126001.png",
@@ -6948,6 +7396,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314108001.json#Default__.Properties.CooldownDuration",
           "value": 1,
           "text": "1秒"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040021.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314108001.png",
@@ -6972,7 +7427,15 @@
       "publicationDescription": "拾取敌人死亡掉落的能量球时，形成伤害冲击环。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040395.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316193001.png",
       "iconFallback": true,
       "chain": [
@@ -7000,6 +7463,13 @@
           "path": "Abilities/Build/CBT3/Perk04/MGE_1316182001.json#Default__.Properties.CooldownDuration",
           "value": 3,
           "text": "3秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040351.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316182001.png",
@@ -7029,6 +7499,13 @@
           "path": "Abilities/Build/CBT3/Perk04/MGE_1316183001.json#Default__.Properties.AOEInterval",
           "value": 5,
           "text": "5秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040355.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316183001.png",
@@ -7073,6 +7550,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316209001.json#Default__.Properties.AddBullet_Mode2",
           "value": 2,
           "text": "2"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040470.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314124001.png",
@@ -7154,7 +7638,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040044.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1316108001.png",
       "iconFallback": false,
       "chain": [
@@ -7179,7 +7671,15 @@
       "publicationDescription": "使用主动技能后，短时间内周期向四周释放伤害火环。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040033.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315108001.png",
       "iconFallback": false,
       "chain": [
@@ -7203,7 +7703,15 @@
       "publicationDescription": "炮台模式下，火神炎帝开火有概率增加额外弹线。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040416.bSlot4"
+          }
+        }
+      ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312074003.png",
       "iconFallback": true,
       "chain": [
@@ -7268,7 +7776,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040424.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312068002.png",
       "iconFallback": false,
       "chain": [
@@ -7332,7 +7848,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040093.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312038001.png",
       "iconFallback": false,
       "chain": [
@@ -7358,7 +7882,15 @@
       "publicationDescription": "施加火属性异常时，造成额外单体伤害。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040331.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312056005.png",
       "iconFallback": false,
       "chain": [
@@ -7420,7 +7952,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040334.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312057003.png",
       "iconFallback": false,
       "chain": [
@@ -7454,6 +7994,13 @@
           "path": "Weapon/Data/Rifle/Rifle_20001000004_JG_XHKX/MGE/MGE_1312066001_XHKX.json#Default__.Properties.CooldownDuration",
           "value": 5,
           "text": "5秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040338.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312066001.png",
@@ -7483,6 +8030,13 @@
           "path": "Weapon/Data/SG/SG_20003000011_WBH_JFZL/MGE/MGE_1312032003_JFZL.json#Default__.Properties.BulletNumAdd",
           "value": 1,
           "text": "1"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040339.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312032003.png",
@@ -7512,6 +8066,13 @@
           "path": "Weapon/Data/SG/SG_20003000024_null_YYZS/MGE/MGE_1312062001_YYZS.json#Default__.Properties.cd",
           "value": 10,
           "text": "10秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040346.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1312062001.png",
@@ -7546,6 +8107,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314192001.json#Default__.Properties.CooldownDuration",
           "value": 1,
           "text": "1秒"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040393.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314192001.png",
@@ -7575,6 +8143,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313195001.json#Default__.Properties.Probability",
           "value": 0.5,
           "text": "50%"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040388.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1313195001.png",
@@ -7643,6 +8218,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313101001.json#Default__.Properties.Probability",
           "value": 0.33,
           "text": "33%"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040001.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313101001.png",
@@ -7679,6 +8261,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313106001.json#Default__.Properties.CooldownDuration",
           "value": 2,
           "text": "2秒"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040004.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313106001.png",
@@ -7713,6 +8302,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313107001.json#Default__.Properties.CooldownDuration",
           "value": 2,
           "text": "2秒"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040005.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313107001.png",
@@ -7742,6 +8338,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314112001.json#Default__.Properties.CooldownDuration",
           "value": 7,
           "text": "7秒"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040025.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314112001.png",
@@ -7776,6 +8379,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314116001.json#Default__.Properties.CooldownDuration",
           "value": 1,
           "text": "1秒"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040066.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314116001.png",
@@ -7810,6 +8420,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314118001.json#Default__.Properties.CooldownDuration",
           "value": 1,
           "text": "1秒"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040068.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314118001.png",
@@ -7844,6 +8461,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314124001.json#Default__.Properties.CooldownDuration",
           "value": 2,
           "text": "2秒"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040080.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314124001.png",
@@ -7887,7 +8511,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040036.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315111001.png",
       "iconFallback": false,
       "chain": [
@@ -7931,7 +8563,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040072.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315120001.png",
       "iconFallback": false,
       "chain": [
@@ -7994,7 +8634,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040081.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315126001.png",
       "iconFallback": false,
       "chain": [
@@ -8056,7 +8704,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040082.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315127001.png",
       "iconFallback": false,
       "chain": [
@@ -8091,6 +8747,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314127001.json#Default__.Properties.ChargeValue",
           "value": 1.6,
           "text": "1.6%"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040103.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314127001.png",
@@ -8115,7 +8778,15 @@
       "publicationDescription": "破盾后为武器过量装填弹药。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040127.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313140001.png",
       "iconFallback": true,
       "chain": [
@@ -8148,6 +8819,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314132001.json#Default__.Properties.CooldownDuration",
           "value": 1,
           "text": "1秒"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040129.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314132001.png",
@@ -8182,6 +8860,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314135001.json#Default__.Properties.CooldownDuration",
           "value": 5,
           "text": "5秒"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040132.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314135001.png",
@@ -8245,7 +8930,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040136.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315139001.png",
       "iconFallback": false,
       "chain": [
@@ -8308,7 +9001,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040140.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315143001.png",
       "iconFallback": false,
       "chain": [
@@ -8377,6 +9078,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315144001.json#Default__.Properties.TriggerValue",
           "value": 10,
           "text": "10"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040150.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315144001.png",
@@ -8402,7 +9110,15 @@
       "publicationDescription": "与命中敌人距离越远，伤害越高。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040257.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315171001.png",
       "iconFallback": false,
       "chain": [
@@ -8440,6 +9156,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316210001.json#Default__.Properties.CooldownDuration",
           "value": 2,
           "text": "2秒"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040471.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
@@ -8493,6 +9216,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316211001.json#Default__.Properties.AOEDuration",
           "value": 5,
           "text": "5秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040472.bSlot4"
+          }
         }
       ],
       "iconSource": "public/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
@@ -8523,6 +9253,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316212001.json#Default__.Properties.DamageThreshold",
           "value": 10000,
           "text": "10000"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040473.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1316197001.png",
@@ -8552,6 +9289,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1316213001.json#Default__.Properties.CooldownDuration",
           "value": 20,
           "text": "20秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040474.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314124001.png",
@@ -8615,7 +9359,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040475.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1316197001.png",
       "iconFallback": false,
       "chain": [
@@ -8679,7 +9431,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040524.bSlot4"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315240001.png",
       "iconFallback": false,
       "chain": [
@@ -8743,7 +9503,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040525.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315241001.png",
       "iconFallback": false,
       "chain": [
@@ -8891,6 +9659,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313209001.json#Default__.Properties.Check Bullet Ratio",
           "value": 0.5,
           "text": "50%"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040526.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1313209001.png",
@@ -9021,6 +9796,13 @@
           "path": "Abilities/Build/CBT3/Perk01/MGE_1313210001.json#Default__.Properties.Ammo Percent",
           "value": 0.5,
           "text": "50%"
+        },
+        {
+          "slotSource": {
+            "slot": 1,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040527.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1313210001.png",
@@ -9089,7 +9871,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040528.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1316219001.png",
       "iconFallback": false,
       "chain": [
@@ -9195,6 +9985,13 @@
           "path": "Abilities/Build/CBT3/Perk02/MGE_1314206001.json#Default__.Properties.Add Charge Value",
           "value": 45,
           "text": "45%"
+        },
+        {
+          "slotSource": {
+            "slot": 2,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040529.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1314206001.png",
@@ -9299,7 +10096,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040530.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1316220001.png",
       "iconFallback": false,
       "chain": [
@@ -9330,6 +10135,13 @@
           "path": "Abilities/Build/CBT3/Perk04/MGE_1316218001.json#Default__.Properties.SpawnEffectZoneInterval",
           "value": 2,
           "text": "2秒"
+        },
+        {
+          "slotSource": {
+            "slot": 4,
+            "fallback": false,
+            "via": "HuntingGroundRoguelikeWeaponModTable#20703040523.bSlot4"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315239001.png",
@@ -9364,6 +10176,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315239001.json#Default__.Properties.CustomCD",
           "value": 5,
           "text": "5秒"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040522.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315239001.png",
@@ -9429,7 +10248,15 @@
           }
         }
       ],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040519.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1316217001.png",
       "iconFallback": false,
       "chain": [
@@ -9454,7 +10281,15 @@
       "publicationDescription": "滑铲后叠加临时射击伤害增益。",
       "selected": [],
       "auditedRows": [],
-      "verifiedDetails": [],
+      "verifiedDetails": [
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040518.MODSlotIndex.Values"
+          }
+        }
+      ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315238001.png",
       "iconFallback": false,
       "chain": [
@@ -9483,6 +10318,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315237001.json#Default__.Properties.CustomCD",
           "value": 1,
           "text": "1秒"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040514.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315237001.png",
@@ -9549,6 +10391,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315250001.json#Default__.Properties.CheckBuffStack",
           "value": 5,
           "text": "5"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040478.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315237001.png",
@@ -9587,6 +10436,13 @@
           "path": "Abilities/Build/CBT3/Perk03/MGE_1315229001.json#Default__.Properties.AddBuffDurationByKill",
           "value": 1,
           "text": "1秒"
+        },
+        {
+          "slotSource": {
+            "slot": 3,
+            "fallback": true,
+            "via": "WeaponModItemData#MODItemID=20703040482.MODSlotIndex.Values"
+          }
         }
       ],
       "iconSource": "MD/_local/overlimit/preview-icons/UI/UI_Textures/Icons/Rogue/RoguePlugins/T_Icons_Plugins_MGE_Rogue_1315229001.png",

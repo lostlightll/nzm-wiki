@@ -40,5 +40,31 @@ test("preview uses its own structured Numerical values, excludes hidden rows, an
     assert.deepEqual(readFileSync(path.join(root, source)), before);
     assert.equal(result.evidence[0].numericAudit, "verified");
     assert.ok(result.provenanceFiles.some(file => file.path === "UI/icon.png"));
+    assert.equal(result.cards[0].slot, undefined);
+
+    // Same-ID perk slots are a fallback; the preview card's explicit fourth slot wins.
+    for (const slot of [1, 2, 3, 4]) {
+      table("DataTables/LuaDataTable/WeaponModItemData.json", {
+        differentRowKey: { MODItemID: 1315204001, PassiveSkill_ID: "1315204001:1", MODSlotIndex: { Values: [slot] } },
+      });
+      const fallback = await generatePreviewCards(root, { publicRoot: path.join(dir, "public") });
+      assert.equal(fallback.cards[0].slot, slot);
+      assert.ok(JSON.stringify(fallback.evidence[0].verifiedDetails).includes('"fallback":true'));
+    }
+    for (const slots of [[], [1, 2], [5], ["3"]]) {
+      table("DataTables/LuaDataTable/WeaponModItemData.json", {
+        differentRowKey: { MODItemID: 1315204001, PassiveSkill_ID: "1315204001:1", MODSlotIndex: { Values: slots } },
+      });
+      assert.equal((await generatePreviewCards(root, { publicRoot: path.join(dir, "public") })).cards[0].slot, undefined);
+    }
+    table("DataTables/LuaDataTable/WeaponModItemData.json", {
+      differentRowKey: { MODItemID: 1315204001, PassiveSkill_ID: "1315204001:1", MODSlotIndex: { Values: [3] } },
+    });
+    const originalTable = JSON.parse(before.toString());
+    originalTable[0].Rows["1315204001"].bSlot4 = true;
+    table(source, originalTable[0].Rows);
+    const explicit = await generatePreviewCards(root, { publicRoot: path.join(dir, "public") });
+    assert.equal(explicit.cards[0].slot, 4);
+    assert.ok(JSON.stringify(explicit.evidence[0].verifiedDetails).includes('"fallback":false'));
   } finally { rmSync(dir, { recursive: true, force: true }); }
 });

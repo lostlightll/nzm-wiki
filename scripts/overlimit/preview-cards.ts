@@ -4,7 +4,7 @@ import path from "node:path";
 import sharp from "sharp";
 import { createNumModifierResolver, type NumModifierValueExpression } from "../../lib/num-modifier";
 import { NUM_MODIFIER_LOCK, NUM_MODIFIER_SEMANTICS } from "../../lib/num-modifier-data";
-import type { OverlimitCard, PerkEffectValue } from "../../types";
+import type { OverlimitCard, PerkEffectValue, PerkSlot } from "../../types";
 import { PREVIEW_CARD_MECHANICS } from "./preview-card-mechanics";
 
 type Row = Record<string, unknown>;
@@ -196,15 +196,27 @@ export async function generatePreviewCards(contentRoot: string, options: { publi
       provenanceFiles.set(relative, { path: relative, sha256: digest(bytes) });
     }
     const partial = (!generic && (!native[id] || Boolean(native[id].partial))) || unresolved.length > 0;
+    const perkSlots = asArray(object(mod?.MODSlotIndex).Values);
+    const perkSlot = perkSlots.length === 1 && [1, 2, 3, 4].includes(Number(perkSlots[0])) && typeof perkSlots[0] === "number"
+      ? perkSlots[0] as PerkSlot : undefined;
+    const slot = raw.bSlot4 === true ? 4 : perkSlot;
+    const slotEvidence = slot === undefined ? undefined : {
+      slot,
+      fallback: raw.bSlot4 !== true,
+      via: raw.bSlot4 === true
+        ? `HuntingGroundRoguelikeWeaponModTable#${id}.bSlot4`
+        : `WeaponModItemData#MODItemID=${id}.MODSlotIndex.Values`,
+    };
     const card: OverlimitCard = {
       id, ...(mod ? { perkItemId: id } : {}), name: clean(localized(raw.Name)), description, icon,
-      quality: raw.Quality as 3 | 4 | 5, ...(raw.bSlot4 === true ? { slot: 4 as const } : {}),
+      quality: raw.Quality as 3 | 4 | 5, ...(slot === undefined ? {} : { slot }),
       applicabilityKnown: false, weaponType: [], weaponItems: [], weaponNames: [],
       tags: asArray(object(raw.ModSetIdList).Values).map(tagId => { const tag = sets[String(tagId)]; if (!tag) throw new Error(`Unknown tag ${tagId}`); return { id: String(tagId), name: localized(tag.SetName), icon: "", tone: String(tag.SetColor ?? "") }; }),
       ...(effects.size ? { effectValues: [...effects.values()] } : {}),
       ...(partial ? { verification: { status: "partial" as const, note: native[id]?.partial ?? "已收录机制与可核对配置；部分触发阈值、倍率或独立伤害仍待核验。" } } : {}),
     };
     cards.push(card);
+    if (slotEvidence) verifiedDetails.push({ slotSource: slotEvidence });
     evidence.push({ id, passiveKey, mgeId, configId, classFile, sourceDescription: clean(localized(raw.OverrideDesc)), publicationDescription: description, selected, auditedRows, verifiedDetails, iconSource: iconProvenance, iconFallback: iconSource === iconCandidates[2], chain: [...chain, ...(reviewed?.evidence ?? [])], numericAudit: partial ? "partial" : "verified", unresolved: [...unresolved, ...(native[id]?.partial ? [native[id].partial] : !generic && !native[id] ? [`${classFile ?? "MGE class missing"}: remaining numeric literals in OverrideDesc require execution-chain audit; not published`, "Independent damage projection requires S4 Numerical settlement and trigger audit; S3 values not inherited"] : [])] });
   }
   return { cards, independentDamage: {}, provenanceFiles: [...provenanceFiles.values()], evidence };
