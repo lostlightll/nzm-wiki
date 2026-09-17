@@ -16,7 +16,7 @@ test("preview bond rows show matching multiplier links and keep replacement stag
   assert.ok(fieldRow);
   assert.match(fieldRow, /游戏模式乘区/);
   assert.match(fieldRow, /href="\/multiplier\?[^\"]*view=providers/);
-  assert.match(fieldRow, /替代第 2 档效果/);
+  assert.doesNotMatch(fieldRow, /替代第/);
   const criticalRow = markup.split('id="bond-瞬暴-5"')[1]?.split("</li>")[0];
   assert.match(criticalRow ?? "", /暴伤乘区/);
   const stackingRow = markup.split('id="bond-叠叠乐-8"')[1]?.split("</li>")[0];
