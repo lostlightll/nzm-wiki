@@ -5,7 +5,8 @@ param(
     [string]$OutputPath,
     [string]$LibraryDirectory,
     [string]$MappingsPath,
-    [string]$Game = 'GAME_AssaultFireFuture'
+    [string]$Game = 'GAME_AssaultFireFuture',
+    [switch]$ReadScriptData
 )
 
 $ErrorActionPreference = 'Stop'
@@ -75,6 +76,7 @@ try {
         $provider.MappingsContainer = [CUE4Parse.MappingsProvider.Usmap.FileUsmapTypeMappingsProvider]::new($MappingsPath)
     }
     # Loose-file indexing only; do not mount containers or submit game keys.
+    $provider.ReadScriptData = [bool]$ReadScriptData
     $provider.Initialize()
     $package = $provider.LoadPackage([IO.Path]::GetFileName($inputPath))
     if (!$package.CanDeserialize) { throw 'Package cannot deserialize; check matching mappings and game version.' }

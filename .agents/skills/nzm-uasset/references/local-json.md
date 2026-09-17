@@ -13,6 +13,8 @@ pwsh -NoProfile -File .agents/skills/nzm-uasset/scripts/Convert-LocalAsset.ps1 `
 
 默认输出为同目录同名 `.json`，已有文件会报错且保持原样。需要另存时加 `-OutputPath 'D:/path/result.json'`。输入在 `refs/`、`refs-test/` 或 `kismet/` 时，明确将输出指定到 `MD/_local/<主题>/`。
 
+需要核验所选 Blueprint 的硬编码参数时，可加 `-ReadScriptData` 读取该本地资产的 Kismet。默认不读取字节码；开关不挂载游戏、不扩大资产范围。检查输出中目标函数的 `ScriptBytecode`，按 [Kismet 规范](kismet.md) 追踪入口、参数与控制流，不能把函数签名视为实现。
+
 依赖为现有 FModel 构建目录中的 `CUE4Parse.dll` 及配套 DLL，默认寻找仓库同级 `FModel/FModel.Cli/bin/Release/net10.0`。可用 `-LibraryDirectory` 或环境变量 `NZM_CUE4PARSE_LIB` 指定其他安装。当前已验证 PowerShell 7.6 / .NET 10 与支持 `GAME_AssaultFireFuture` 的 CUE4Parse；脚本不下载或构建工具。单文件 `FModel.Cli.exe` 不能作为 DLL 目录。
 
 需要 unversioned mappings 时加 `-MappingsPath 'D:/path/game.usmap'`，必须与输入来源匹配。默认 `-Game GAME_AssaultFireFuture`；其他游戏配置尚未验证。普通 NZM Numerical DataTable 的本次验证不需要 mappings。
