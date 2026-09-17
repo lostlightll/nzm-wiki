@@ -35,6 +35,10 @@
       "label": "暴伤乘区"
     },
     {
+      "id": "super-critical",
+      "label": "会心乘区"
+    },
+    {
       "id": "correction",
       "label": "特殊修正"
     },
@@ -233,6 +237,14 @@
           }
         ],
         "facetId": "element-vulnerability"
+      },
+      {
+        "id": "super-critical-rate",
+        "label": "会心概率",
+        "group": "factor",
+        "summary": "会心概率控制暴击后触发会心的机会，不是伤害增幅百分比。当前超限预载配置的会心倍率为2倍。此处收录已核验的会心来源；受益伤害范围仍待确认，不按可暴击标记推定。",
+        "effects": [],
+        "facetId": "super-critical-rate"
       },
       {
         "id": "critical",

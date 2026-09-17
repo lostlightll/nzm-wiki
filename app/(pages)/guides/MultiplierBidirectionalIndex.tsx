@@ -319,6 +319,12 @@ export function MultiplierBidirectionalIndex({ targets }: {
         </div>
       </fieldset>
 
+      {modifierOptions.filter(modifier => modifier.effects.length === 0).map(modifier => (
+        <p key={modifier.id} className="mb-3 text-sm leading-6 text-zinc-400">
+          {modifier.summary}
+        </p>
+      ))}
+
       <p aria-live="polite" className="mb-2 text-xs tabular-nums text-zinc-500">
         {resultCount} 个结果
       </p>

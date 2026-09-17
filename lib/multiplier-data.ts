@@ -14,6 +14,7 @@ const MULTIPLIER_FACTOR_IDS = [
   "element",
   "weakness",
   "critical",
+  "super-critical",
   "correction",
   "vulnerability",
   "element-vulnerability",
@@ -494,6 +495,7 @@ function factorIdForModifier(channel: DamageChannel): MultiplierFactorId {
   if (channel.id === "element") return "element";
   if (channel.id === "element-vulnerability") return "element-vulnerability";
   if (channel.id === "critical") return "critical";
+  if (channel.id === "super-critical-rate") return "super-critical";
   if (channel.id === "weakness") return "weakness";
   if (channel.id === "vulnerability") return "vulnerability";
   return "correction";

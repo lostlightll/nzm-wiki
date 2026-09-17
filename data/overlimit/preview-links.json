@@ -258,17 +258,23 @@
     {
       "id": "1317115001",
       "perkItemId": null,
-      "damageFacets": []
+      "damageFacets": [
+        "super-critical-rate"
+      ]
     },
     {
       "id": "1317116001",
       "perkItemId": null,
-      "damageFacets": []
+      "damageFacets": [
+        "super-critical-rate"
+      ]
     },
     {
       "id": "1317117001",
       "perkItemId": null,
-      "damageFacets": []
+      "damageFacets": [
+        "super-critical-rate"
+      ]
     },
     {
       "id": "1317118001",

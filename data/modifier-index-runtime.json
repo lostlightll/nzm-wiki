@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "6f7131fb63ee30d85e3766e73b8bf49e09209443b8203aa2b66b5e4af0adfcbf",
+    "registrySha256": "62a419d613b01e9348ff840b79e9df3f6818e2929eb2e3e1d94c95d429bfa292",
     "perkPreviewSha256": "ccf27ffdf5fc27da611359d2287c9d2bc1c9a33258ccfdf60a22b34daa8f7592",
     "s2EvidenceSha256": "a3f16097b34fc589f1322faa4f798b74bc82066dbd02bdcaad4fa0e4c240a0b2",
-    "semanticsSha256": "c12f1c18857676c34ac782d9dd29e20fccebaa348da04b8e123bb034d46ce186",
+    "semanticsSha256": "c9e7adfd22e1ad2597e4912b7cb2d6878091986db4ea5c43f9e96ee04a9ff349",
     "modifierSourceSha256": "aa30e3902d54f8802c87c76ed1b17c4506e27a5a4f61260f44cb569915be521e",
     "attributeDescriptionSourceSha256": "f4c7bae3871af545fdf4ecc4ceea2df7f498c5a5bfb24ec42a1e29c8703adc95"
   },
@@ -339,19 +339,19 @@
     },
     {
       "id": "super-critical-rate",
-      "label": "超暴率",
+      "label": "会心概率",
       "family": "offense",
       "quantity": "ratio",
       "default_format": "signed-percent",
       "facets": {
         "increase": {
           "id": "super-critical-rate",
-          "label": "超暴率",
+          "label": "会心概率",
           "consumer": "stat"
         },
         "decrease": {
           "id": "super-critical-rate",
-          "label": "超暴率",
+          "label": "会心概率",
           "consumer": "stat"
         }
       }
@@ -10130,6 +10130,96 @@
       "reviewedOverride": false
     },
     {
+      "id": "overlimit-card:s4-preview:1317115001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317115001"
+      },
+      "facetIds": [
+        "super-critical-rate"
+      ],
+      "effects": [
+        {
+          "row": "lc:130015001_1_0",
+          "attributeTypeId": "super-critical-rate",
+          "attributeLabel": "会心概率",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "super-critical-rate"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317116001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317116001"
+      },
+      "facetIds": [
+        "super-critical-rate"
+      ],
+      "effects": [
+        {
+          "row": "lc:130016001_1_0",
+          "attributeTypeId": "super-critical-rate",
+          "attributeLabel": "会心概率",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "super-critical-rate"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317117001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317117001"
+      },
+      "facetIds": [
+        "super-critical-rate",
+        "critical-rate"
+      ],
+      "effects": [
+        {
+          "row": "lc:130017001_1_0",
+          "attributeTypeId": "super-critical-rate",
+          "attributeLabel": "会心概率",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "super-critical-rate"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:130017001_1_1",
+          "attributeTypeId": "critical-rate",
+          "attributeLabel": "暴击率",
+          "direction": "increase",
+          "recipient": "unknown",
+          "facetIds": [
+            "critical-rate"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
       "id": "overlimit-card:s4-preview:1317122001",
       "label": "换武增伤（S4 Preview超限）",
       "source": {
@@ -11623,6 +11713,33 @@
           "recipient": "self",
           "facetIds": [
             "critical"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "overlimit-bond:s4-preview:瞬暴:8",
+      "label": "瞬暴 8件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "瞬暴",
+        "count": 8
+      },
+      "facetIds": [
+        "super-critical-rate"
+      ],
+      "effects": [
+        {
+          "row": "lc:112041060_1_0",
+          "attributeTypeId": "super-critical-rate",
+          "attributeLabel": "会心概率",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "super-critical-rate"
           ],
           "reviewed": false
         }
@@ -18762,39 +18879,6 @@
       "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
     },
     {
-      "id": "overlimit-card:s4-preview:1317115001",
-      "label": "会心属性（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "1317115001"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:1317116001",
-      "label": "会心属性（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "1317116001"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:1317117001",
-      "label": "会心属性（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "1317117001"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
       "id": "overlimit-card:s4-preview:1317118001",
       "label": "爆射弱点（S4 Preview超限）",
       "source": {
@@ -20021,18 +20105,6 @@
         "season": "s4-preview",
         "name": "瞬暴",
         "count": 2
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
-      "id": "overlimit-bond:s4-preview:瞬暴:8",
-      "label": "瞬暴 8件（S4 Preview）",
-      "source": {
-        "type": "overlimit-bond",
-        "season": "s4-preview",
-        "name": "瞬暴",
-        "count": 8
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"

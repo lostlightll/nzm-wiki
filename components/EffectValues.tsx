@@ -42,12 +42,8 @@ function DetailEffect({
   effect: PerkEffectValue;
   relations: readonly MultiplierRelation[];
 }) {
-  const matchingRelations =
-    effect.kind === "damage"
-      ? relations.filter(
-          (relation) => relation.modifierTypeId === effect.modifierTypeId,
-        )
-      : [];
+  const facetId = effect.kind === "damage" ? effect.modifierTypeId : effect.statId;
+  const matchingRelations = relations.filter(relation => relation.modifierTypeId === facetId);
 
   return (
     <div className="grid gap-3 rounded border border-white/10 bg-black/10 px-3 py-3 sm:grid-cols-[9rem_minmax(0,1fr)_auto] sm:items-center">
@@ -105,7 +101,7 @@ export function EffectValuesPanel({
   const damageEffects = effects.filter((effect) => effect.kind === "damage");
   const statEffects = effects.filter((effect) => effect.kind === "stat");
   const representedModifierTypes = new Set(
-    damageEffects.map((effect) => effect.modifierTypeId),
+    effects.map(effect => effect.kind === "damage" ? effect.modifierTypeId : effect.statId),
   );
   const unmatchedRelations = relations.filter(
     (relation) => !representedModifierTypes.has(relation.modifierTypeId),

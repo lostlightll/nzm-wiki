@@ -42,6 +42,7 @@ const SELECTED_FACTOR_CHANGE_EVENT = "nzm-wiki:multiplier-factor-change";
 const FORMULA_MULTIPLIER_FACTORS = MULTIPLIER_FACTORS.filter(
   (factor) =>
     factor.id !== "element-vulnerability" &&
+    factor.id !== "super-critical" &&
     factor.id !== "independent-amplification",
 );
 

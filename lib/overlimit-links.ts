@@ -1,14 +1,24 @@
 import links from "@/data/overlimit/links.json";
 import previewLinks from "@/data/overlimit/preview-links.json";
+import multiplierData from "@/data/guides/multiplier.json";
 import { getActivePreview, getPreviewSeasonKey, type PreviewRelease } from "@/lib/content-preview";
 import type { OverlimitCatalog } from "@/lib/overlimit-catalog";
+
+const multiplierFacets = new Set(multiplierData.damageChannelMatrix.channels.map(channel => channel.facetId));
+
+/** Include explicitly indexed trigger stats without presenting their probability as damage. */
+export function getOverlimitMultiplierFacets(card: OverlimitCatalog["cards"][number]): string[] {
+  return (card.effectValues ?? []).flatMap(effect => effect.kind === "damage"
+    ? [effect.modifierTypeId]
+    : multiplierFacets.has(effect.statId) ? [effect.statId] : []);
+}
 
 /** Small generated cross-page projection; the full catalog stays out of shared client bundles. */
 export function projectOverlimitLinks(catalog: OverlimitCatalog) {
   return {
     cards: catalog.cards.map(card => ({
       id: card.id, perkItemId: card.perkItemId ?? null,
-      damageFacets: (card.effectValues ?? []).flatMap(effect => effect.kind === "damage" ? [effect.modifierTypeId] : []),
+      damageFacets: getOverlimitMultiplierFacets(card),
     })),
     bonds: (catalog.bonds ?? []).flatMap(bond => bond.effects.map(effect => ({ name: bond.name, count: effect.count }))),
   };

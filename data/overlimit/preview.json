@@ -4784,7 +4784,7 @@
         {
           "kind": "stat",
           "statId": "super-critical-rate",
-          "label": "超暴率",
+          "label": "会心概率",
           "stages": [
             {
               "value": "+10%"
@@ -4821,7 +4821,7 @@
         {
           "kind": "stat",
           "statId": "super-critical-rate",
-          "label": "超暴率",
+          "label": "会心概率",
           "stages": [
             {
               "value": "+20%"
@@ -4858,7 +4858,7 @@
         {
           "kind": "stat",
           "statId": "super-critical-rate",
-          "label": "超暴率",
+          "label": "会心概率",
           "stages": [
             {
               "value": "+50%"

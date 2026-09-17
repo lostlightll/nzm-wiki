@@ -12,6 +12,7 @@ import {
   buildDamageProfile,
   getApplicableModifierTypes,
   getProviderRelationsForSource,
+  getSourcesForModifierType,
   getRelationsByFactor,
   resolveMultiplierFactorHref,
   resolveMultiplierExampleImage,
@@ -19,6 +20,29 @@ import {
 } from "./multiplier-data";
 import { getOverlimitCatalog, getOverlimitPreviewCatalog } from "./overlimit";
 import { getOverlimitLinksForPerk, hasOverlimitBondStage } from "./overlimit-links";
+
+test("super critical indexes reviewed preview providers without treating proc chance as damage or inferring targets", () => {
+  const sources = getSourcesForModifierType("super-critical-rate");
+  assert.deepEqual(sources.map(source => source.effectId).sort(), [
+    "overlimit-card:s4-preview:1317115001", "overlimit-card:s4-preview:1317116001",
+    "overlimit-card:s4-preview:1317117001", "overlimit-bond:s4-preview:瞬暴:8",
+  ].sort());
+  for (const source of sources) {
+    assert.equal(source.factorId, "super-critical");
+    assert.equal(source.factorLabel, "会心乘区");
+    assert.ok(source.sourceHref?.startsWith("/overlimit/preview"));
+    assert.ok(getProviderRelationsForSource(source.source!).includes(source));
+  }
+  for (const id of ["1317115001", "1317116001", "1317117001"]) {
+    assert.equal(getProviderRelationsForSource({ type: "overlimit-card", id }).length, 0);
+    const card = getOverlimitPreviewCatalog()!.cards.find(card => card.id === id)!;
+    assert.ok(card.effectValues?.some(effect => effect.kind === "stat" && effect.statId === "super-critical-rate"));
+    assert.ok(!card.effectValues?.some(effect => effect.kind === "damage"));
+  }
+  assert.ok(!getApplicableModifierTypes({
+    settlements: ["Numerical.SettlementType.Health.WeaponDamage"], enableCritical: true,
+  }).some(relation => relation.factorId === "super-critical"));
+});
 
 test("typical examples use site artwork except for the hunting shop fallback", () => {
   const examples = [
@@ -139,8 +163,8 @@ test("current publication controls card placements without removing ordinary per
         ? getOverlimitPreviewCatalog()?.cards.find(card => card.id === source.id)
         : cardsById.get(source.id);
       assert.ok(card, relation.sourceHref);
-      assert.ok(card.effectValues?.some(effect => effect.kind === "damage" &&
-        effect.modifierTypeId === relation.modifierTypeId), relation.sourceHref);
+      assert.ok(card.effectValues?.some(effect =>
+        (effect.kind === "damage" ? effect.modifierTypeId : effect.statId) === relation.modifierTypeId), relation.sourceHref);
     }
   }
 });

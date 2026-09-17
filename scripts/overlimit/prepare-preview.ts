@@ -12,6 +12,7 @@ import { NUM_MODIFIER_LOCK, NUM_MODIFIER_SEMANTICS } from "../../lib/num-modifie
 import { generatePreviewCards } from "./preview-cards";
 import { buildPreviewRules } from "./preview-rules";
 import { checkCatalog } from "./catalog";
+import multiplierData from "../../data/guides/multiplier.json";
 
 const selectedSchema = z.object({
   expression: z.object({ row: z.string().startsWith("lc:"), field: z.enum(["base", "coefficient"]), scale: z.number().optional() }),
@@ -69,8 +70,13 @@ async function main() {
       const key = item.expression.row.slice(3);
       return [key, { row_name: key, raw: item.raw as (typeof NUM_MODIFIER_LOCK.rows.lc)[string]["raw"] }];
     })) } }, NUM_MODIFIER_SEMANTICS);
-    const hasDamage = applications.some(item => resolver.resolveEffect(item.expression, item.context).facets.some(facet => facet.consumer === "damage"));
-    if (hasDamage) registry.providers.push({ id, label, source, evidence: { kind: "reviewed-chain", ...evidence }, applications });
+    const indexedFacets = new Set(multiplierData.damageChannelMatrix.channels.map(channel => channel.facetId));
+    const hasMultiplierSource = applications.some(item => {
+      const effect = resolver.resolveEffect(item.expression, item.context);
+      return effect.facets.some(facet => facet.consumer === "damage" ||
+        (effect.direction === "increase" && indexedFacets.has(facet.id)));
+    });
+    if (hasMultiplierSource) registry.providers.push({ id, label, source, evidence: { kind: "reviewed-chain", ...evidence }, applications });
     else registry.exclusions.push({ id, label, source, reasonCode: "not-damage-multiplier",
       reason: "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。", evidence: { ...evidence, applications } });
   }

@@ -10342,6 +10342,102 @@
       ]
     },
     {
+      "id": "overlimit-card:s4-preview:1317115001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "id": "1317115001",
+        "season": "s4-preview"
+      },
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "DataTables/MGE/MGEPassive_BD.json#1317115001_1",
+          "DataTables/MGE/GPModularGameplayEffectTable.json#1317115001",
+          "Abilities/Build/CBT3/Perk04/MGE_1317115001.uasset: ExecuteUbergraph 163 ApplyModifiers(130015001); numerical_modifier_config 130015001_1_0 SuperCriticalRatio B1 BaseValue=0.1"
+        ],
+        "passiveSkillId": "1317115001_1"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130015001_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317116001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "id": "1317116001",
+        "season": "s4-preview"
+      },
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "DataTables/MGE/MGEPassive_BD.json#1317116001_1",
+          "DataTables/MGE/GPModularGameplayEffectTable.json#1317116001",
+          "Abilities/Build/CBT3/Perk04/MGE_1317116001.uasset: ExecuteUbergraph 163 ApplyModifiers(130016001); numerical_modifier_config 130016001_1_0 SuperCriticalRatio B1 BaseValue=0.2"
+        ],
+        "passiveSkillId": "1317116001_1"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130016001_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317117001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "id": "1317117001",
+        "season": "s4-preview"
+      },
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "DataTables/MGE/MGEPassive_BD.json#1317117001_1",
+          "DataTables/MGE/GPModularGameplayEffectTable.json#1317117001",
+          "Abilities/Build/CBT3/Perk04/MGE_1317117001.uasset: ExecuteUbergraph 163 ApplyModifiers(130017001); numerical_modifier_config 130017001_1_0/1 SuperCriticalRatio/CriticalRatio B1 BaseValue=0.5"
+        ],
+        "passiveSkillId": "1317117001_1"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130017001_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130017001_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "unknown"
+          }
+        }
+      ]
+    },
+    {
       "id": "overlimit-card:s4-preview:1317122001",
       "label": "换武增伤（S4 Preview超限）",
       "source": {
@@ -11958,6 +12054,35 @@
         {
           "expression": {
             "row": "lc:112041051_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:瞬暴:8",
+      "label": "瞬暴 8件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "name": "瞬暴",
+        "count": 8,
+        "season": "s4-preview"
+      },
+      "evidence": {
+        "kind": "reviewed-chain",
+        "basis": [
+          "DataTables/NumericalSettlementConstantConfig_SuperRogue.json#Rows.SuperCriticalDamageRatio.Constant=2",
+          "Abilities/Build/RoguePerk/S4/MGE_1378030420.json#Default__MGE_1378030420_C.Properties.会心一击Modifier={\"ModifierID\":112041060,\"X_Value\":0,\"Curve\":null}",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112041060_1_0.BaseValue=0.5; GPModifierOp=B1; scale=1"
+        ]
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112041060_1_0",
             "field": "base"
           },
           "context": {
@@ -24075,105 +24200,6 @@
       }
     },
     {
-      "id": "overlimit-card:s4-preview:1317115001",
-      "label": "会心属性（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "id": "1317115001",
-        "season": "s4-preview"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。",
-      "evidence": {
-        "basis": [
-          "DataTables/MGE/MGEPassive_BD.json#1317115001_1",
-          "DataTables/MGE/GPModularGameplayEffectTable.json#1317115001",
-          "Abilities/Build/CBT3/Perk04/MGE_1317115001.uasset: ExecuteUbergraph 163 ApplyModifiers(130015001); numerical_modifier_config 130015001_1_0 SuperCriticalRatio B1 BaseValue=0.1"
-        ],
-        "passiveSkillId": "1317115001_1",
-        "applications": [
-          {
-            "expression": {
-              "row": "lc:130015001_1_0",
-              "field": "base"
-            },
-            "context": {
-              "recipient": "unknown"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "id": "overlimit-card:s4-preview:1317116001",
-      "label": "会心属性（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "id": "1317116001",
-        "season": "s4-preview"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。",
-      "evidence": {
-        "basis": [
-          "DataTables/MGE/MGEPassive_BD.json#1317116001_1",
-          "DataTables/MGE/GPModularGameplayEffectTable.json#1317116001",
-          "Abilities/Build/CBT3/Perk04/MGE_1317116001.uasset: ExecuteUbergraph 163 ApplyModifiers(130016001); numerical_modifier_config 130016001_1_0 SuperCriticalRatio B1 BaseValue=0.2"
-        ],
-        "passiveSkillId": "1317116001_1",
-        "applications": [
-          {
-            "expression": {
-              "row": "lc:130016001_1_0",
-              "field": "base"
-            },
-            "context": {
-              "recipient": "unknown"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "id": "overlimit-card:s4-preview:1317117001",
-      "label": "会心属性（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "id": "1317117001",
-        "season": "s4-preview"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。",
-      "evidence": {
-        "basis": [
-          "DataTables/MGE/MGEPassive_BD.json#1317117001_1",
-          "DataTables/MGE/GPModularGameplayEffectTable.json#1317117001",
-          "Abilities/Build/CBT3/Perk04/MGE_1317117001.uasset: ExecuteUbergraph 163 ApplyModifiers(130017001); numerical_modifier_config 130017001_1_0/1 SuperCriticalRatio/CriticalRatio B1 BaseValue=0.5"
-        ],
-        "passiveSkillId": "1317117001_1",
-        "applications": [
-          {
-            "expression": {
-              "row": "lc:130017001_1_0",
-              "field": "base"
-            },
-            "context": {
-              "recipient": "unknown"
-            }
-          },
-          {
-            "expression": {
-              "row": "lc:130017001_1_1",
-              "field": "base"
-            },
-            "context": {
-              "recipient": "unknown"
-            }
-          }
-        ]
-      }
-    },
-    {
       "id": "overlimit-card:s4-preview:1317118001",
       "label": "爆射弱点（S4 Preview超限）",
       "source": {
@@ -26450,36 +26476,6 @@
           {
             "expression": {
               "row": "lc:112041040_1_0",
-              "field": "base"
-            },
-            "context": {
-              "recipient": "self"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "id": "overlimit-bond:s4-preview:瞬暴:8",
-      "label": "瞬暴 8件（S4 Preview）",
-      "source": {
-        "type": "overlimit-bond",
-        "name": "瞬暴",
-        "count": 8,
-        "season": "s4-preview"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。",
-      "evidence": {
-        "basis": [
-          "DataTables/NumericalSettlementConstantConfig_SuperRogue.json#Rows.SuperCriticalDamageRatio.Constant=2",
-          "Abilities/Build/RoguePerk/S4/MGE_1378030420.json#Default__MGE_1378030420_C.Properties.会心一击Modifier={\"ModifierID\":112041060,\"X_Value\":0,\"Curve\":null}",
-          "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112041060_1_0.BaseValue=0.5; GPModifierOp=B1; scale=1"
-        ],
-        "applications": [
-          {
-            "expression": {
-              "row": "lc:112041060_1_0",
               "field": "base"
             },
             "context": {

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import { OverlimitBondCatalog } from "./OverlimitBondCatalog";
+import { OverlimitEffectValues } from "./OverlimitEffectValues";
 import { getOverlimitCatalog, getOverlimitPreviewCatalog } from "@/lib/overlimit";
 import { getActivePreview, getPreviewSeasonKey } from "@/lib/content-preview";
 import { getProviderRelationsForSource, PROVIDER_RELATIONS } from "@/lib/multiplier-data";
@@ -19,6 +20,8 @@ test("preview bond rows show matching multiplier links and keep replacement stag
   assert.doesNotMatch(fieldRow, /替代第/);
   const criticalRow = markup.split('id="bond-瞬暴-5"')[1]?.split("</li>")[0];
   assert.match(criticalRow ?? "", /暴伤乘区/);
+  const superCriticalRow = markup.split('id="bond-瞬暴-8"')[1]?.split("</li>")[0];
+  assert.match(superCriticalRow ?? "", /会心乘区/);
   const stackingRow = markup.split('id="bond-叠叠乐-8"')[1]?.split("</li>")[0];
   assert.ok(stackingRow);
   assert.doesNotMatch(stackingRow, /href="\/multiplier/);
@@ -31,6 +34,20 @@ test("preview bond rows show matching multiplier links and keep replacement stag
     assert.ok(PROVIDER_RELATIONS.includes(relations[0]));
   }
   assert.equal(getProviderRelationsForSource({ type: "overlimit-bond", name: "力场", count: 8 }).length, 0);
+});
+
+test("super critical card detail links its probability stat to the preview index once", () => {
+  const catalog = getOverlimitPreviewCatalog()!;
+  const sourceSeason = getPreviewSeasonKey(getActivePreview()!);
+  for (const id of ["1317115001", "1317116001", "1317117001"]) {
+    const card = catalog.cards.find(card => card.id === id)!;
+    const markup = renderToStaticMarkup(<OverlimitEffectValues card={card} variant="detail" sourceSeason={sourceSeason} />);
+    assert.match(markup, /会心概率/);
+    assert.match(markup, /factor=super-critical/);
+    assert.equal((markup.match(/<span>会心乘区<\/span>/g) ?? []).length, 1);
+    const current = renderToStaticMarkup(<OverlimitEffectValues card={card} variant="detail" />);
+    assert.doesNotMatch(current, /factor=super-critical/);
+  }
 });
 
 test("current bond rows retain official reverse links and cannot borrow next-season identities", () => {

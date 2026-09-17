@@ -89,6 +89,14 @@ S1 人工复核的精确技能 Token 映射由 `s1ReviewedApplications()` 登记
 
 `GPAttributeSetAttack.Attack` 归入“独立增幅”，只用于来源索引和来源徽标，不进入 Part 1 公式或伤害来源适用矩阵。
 
+### 会心乘区
+
+`super-critical` 显示为“会心乘区”，当前用于来源双向索引与徽标，不进入普通伤害公式。其来源通道 `super-critical-rate` 对应 `GPAttributeSetCritical.SuperCriticalRatio`，仍保留 `stat` 属性语义和“会心概率”名称；概率增量不能显示成伤害增幅，也不自动换算期望增伤。乘区矩阵显式登记该属性分面，预览生成器和超限关联投影据此纳入来源；其他暴击率、移动速度等未登记属性不因本次变更进入乘区索引。
+
+S4 预览已核验四个来源：原生会心属性卡 `1317115001 / 1317116001 / 1317117001` 分别引用 `130015001_1_0 / 130016001_1_0 / 130017001_1_0`，以及瞬暴 8 件引用 `112041060_1_0`。四行均为 B1，会心概率分别增加 10/20/50/50 个百分点。金卡另有普通暴击率行，不能合并成会心概率。来源、数值与深链均按预览赛季隔离。
+
+超限模式 28/29 经 `PlayerGameModeConfig.NumericalSettlementConstant=2`、`PlayerGameModeConstant.NumericalSettlementConstant_2` 选择 `NumericalSettlementConstantConfig_SuperRogue`，其 `SuperCriticalDamageRatio.Constant=2`。模式 26/27 的 Rogue 表同样为 2，不能声明会心机制只存在于超限。通用结算入口是 Native `NZNumericalStandardHitExecution`，现有导出未证明所有可暴击结算均允许会心；通道 `effects` 暂为空，不按 `enableCritical` 自动登记受益武器、召唤物或独立伤害。
+
 `独弹强化` 当前使用精确行 `lc:111031014_1_0` 的临时实测语义：`BaseValue=6` 表示该次独头弹伤害按 `1 + 6 = 7` 倍独立结算，页面显示增量 `+600%`。它继续归入 `correction`“单次修正”，不归入上述 `independent-amplification`“独立增幅”；该结论不得推广到其他 `GPModifierOp=B2` 行。临时规则和失效条件见 [`../standards/num-modifier-semantics.md`](../standards/num-modifier-semantics.md#独弹强化-b2-临时规则)。
 
 `DamageBearRatio` 的负值效果统一归入 `vulnerability`，显示名固定为“易伤乘区”；各单元素 `*DamageBearRatio` 与 `ElementDamageBearRatio` 的负值效果归入 `element-vulnerability`，显示名固定为“元素易伤乘区”。对应字段的正值是伤害减免，不进入增伤来源索引。旧 `factor=damage-reduction` 查询会兼容读取为 `vulnerability`。

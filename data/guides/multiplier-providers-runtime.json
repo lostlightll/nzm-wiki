@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "cb8f1db7dae8b7f189b2ba9197249fddc5234d08f39811b3e512d1b793ba2b01",
+    "modifierIndexSha256": "54c767c556f4e448bb4db58d6a830e8e493d22e8ca8480ff71c8d7b20b47fc23",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -4410,6 +4410,42 @@
       ]
     },
     {
+      "id": "overlimit-card:s4-preview:1317115001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317115001"
+      },
+      "modifierTypeIds": [
+        "super-critical-rate"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317116001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317116001"
+      },
+      "modifierTypeIds": [
+        "super-critical-rate"
+      ]
+    },
+    {
+      "id": "overlimit-card:s4-preview:1317117001",
+      "label": "会心属性（S4 Preview超限）",
+      "source": {
+        "type": "overlimit-card",
+        "season": "s4-preview",
+        "id": "1317117001"
+      },
+      "modifierTypeIds": [
+        "super-critical-rate"
+      ]
+    },
+    {
       "id": "overlimit-card:s4-preview:1317122001",
       "label": "换武增伤（S4 Preview超限）",
       "source": {
@@ -5012,6 +5048,19 @@
       },
       "modifierTypeIds": [
         "critical"
+      ]
+    },
+    {
+      "id": "overlimit-bond:s4-preview:瞬暴:8",
+      "label": "瞬暴 8件（S4 Preview）",
+      "source": {
+        "type": "overlimit-bond",
+        "season": "s4-preview",
+        "name": "瞬暴",
+        "count": 8
+      },
+      "modifierTypeIds": [
+        "super-critical-rate"
       ]
     },
     {
@@ -12105,39 +12154,6 @@
       "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
     },
     {
-      "id": "overlimit-card:s4-preview:1317115001",
-      "label": "会心属性（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "1317115001"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:1317116001",
-      "label": "会心属性（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "1317116001"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
-      "id": "overlimit-card:s4-preview:1317117001",
-      "label": "会心属性（S4 Preview超限）",
-      "source": {
-        "type": "overlimit-card",
-        "season": "s4-preview",
-        "id": "1317117001"
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
       "id": "overlimit-card:s4-preview:1317118001",
       "label": "爆射弱点（S4 Preview超限）",
       "source": {
@@ -13364,18 +13380,6 @@
         "season": "s4-preview",
         "name": "瞬暴",
         "count": 2
-      },
-      "reasonCode": "not-damage-multiplier",
-      "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"
-    },
-    {
-      "id": "overlimit-bond:s4-preview:瞬暴:8",
-      "label": "瞬暴 8件（S4 Preview）",
-      "source": {
-        "type": "overlimit-bond",
-        "season": "s4-preview",
-        "name": "瞬暴",
-        "count": 8
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "审定 Numerical 行仅提供属性效果，不产生增伤乘区；表达式保留供属性审计。"

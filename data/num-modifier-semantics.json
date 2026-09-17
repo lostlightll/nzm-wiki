@@ -320,13 +320,13 @@
       }
     },
     "super-critical-rate": {
-      "label": "超暴率",
+      "label": "会心概率",
       "family": "offense",
       "quantity": "ratio",
       "default_format": "signed-percent",
       "facets": {
-        "increase": { "id": "super-critical-rate", "label": "超暴率", "consumer": "stat" },
-        "decrease": { "id": "super-critical-rate", "label": "超暴率", "consumer": "stat" }
+        "increase": { "id": "super-critical-rate", "label": "会心概率", "consumer": "stat" },
+        "decrease": { "id": "super-critical-rate", "label": "会心概率", "consumer": "stat" }
       }
     },
     "movement-speed": {

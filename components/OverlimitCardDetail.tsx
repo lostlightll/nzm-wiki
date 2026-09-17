@@ -11,7 +11,7 @@ import { renderInlineDescription } from "@/components/InlineDescription";
 import { getAssetPath } from "@/lib/path";
 import type { OverlimitCard } from "@/types";
 
-export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
+export function OverlimitCardDetail({ card, sourceSeason }: { card: OverlimitCard; sourceSeason?: string }) {
   const qualityStyle =
     OVERLIMIT_QUALITY_STYLES[card.quality] ?? OVERLIMIT_QUALITY_STYLES[4];
 
@@ -59,7 +59,7 @@ export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
         {card.verification && <p className="mt-3 text-sm leading-6 text-amber-200/80">{card.verification.note}</p>}
       </section>
 
-      <OverlimitEffectValues card={card} variant="detail" />
+      <OverlimitEffectValues card={card} variant="detail" sourceSeason={sourceSeason} />
 
       <div className="flex flex-wrap border-t border-white/10">
         <section className="min-w-0 flex-1 px-4 py-5 sm:px-6">

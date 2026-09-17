@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { isPreviewSeason } from "@/lib/content-preview";
 import { getOverlimitCatalog, getOverlimitPreviewCatalog } from "@/lib/overlimit";
 import { getActivePreview, getPreviewSeasonKey } from "@/lib/content-preview";
-import { getOverlimitLink, getOverlimitLinksForPerk, hasOverlimitBondStage } from "@/lib/overlimit-links";
+import { getOverlimitLink, getOverlimitLinksForPerk, getOverlimitMultiplierFacets, hasOverlimitBondStage } from "@/lib/overlimit-links";
 import passives from "@/data/season-talents/s3/passives.json";
 import grapplingHook from "@/data/season-talents/s3/grappling-hook.json";
 import ironFist from "@/data/season-talents/s3/iron-fist.json";
@@ -217,8 +217,7 @@ for (const card of hydratedOverlimitCards) {
   if (!card.perkItemId && !coveredIds.has(`overlimit-card:${card.id}`)) {
     errors.push(`独立超限卡片缺少来源审计或有依据的排除项：${card.id} ${card.name}`);
   }
-  const damageEffects =
-    card.effectValues?.filter((effect) => effect.kind === "damage") ?? [];
+  const damageEffects = getOverlimitMultiplierFacets(card);
 
   if (!provider && damageEffects.length > 0) {
     errors.push(`超限卡片 ${card.id} ${card.name} 存在孤立 effect_values`);
@@ -227,7 +226,7 @@ for (const card of hydratedOverlimitCards) {
   if (!provider) continue;
 
   const expected = [...new Set(provider.modifierTypeIds)].sort();
-  const actual = damageEffects.map((effect) => effect.modifierTypeId).sort();
+  const actual = damageEffects.sort();
   if (JSON.stringify(actual) !== JSON.stringify(expected)) {
     errors.push(
       `超限卡片 ${card.id} ${card.name} 的 effect_values 类型不匹配：期望 ${expected.join(", ")}，实际 ${actual.join(", ") || "无"}`,
@@ -245,7 +244,7 @@ if (previewCatalog && previewRelease) {
     if (!coveredIds.has(id)) errors.push(`预览超限卡片缺少独立版本的来源审计：${id} ${card.name}`);
     const provider = MULTIPLIER_PROVIDERS.find(entry => entry.id === id);
     const expected = [...new Set(provider?.modifierTypeIds ?? [])].sort();
-    const actual = (card.effectValues ?? []).flatMap(effect => effect.kind === "damage" ? [effect.modifierTypeId] : []).sort();
+    const actual = getOverlimitMultiplierFacets(card).sort();
     if (JSON.stringify(expected) !== JSON.stringify(actual)) errors.push(`预览超限卡片增伤分面不一致：${id}`);
   }
 }

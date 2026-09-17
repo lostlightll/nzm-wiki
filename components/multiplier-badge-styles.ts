@@ -10,6 +10,7 @@ const FACTOR_STYLES = {
   "element-vulnerability": "border-blue-400/50 bg-blue-400/10 text-blue-200",
   weakness: "border-red-400/50 bg-red-400/10 text-red-200",
   critical: "border-orange-400/50 bg-orange-400/10 text-orange-200",
+  "super-critical": "border-fuchsia-400/50 bg-fuchsia-400/10 text-fuchsia-200",
   correction: "border-emerald-400/50 bg-emerald-400/10 text-emerald-200",
   vulnerability: "border-teal-400/50 bg-teal-400/10 text-teal-200",
 } satisfies Record<MultiplierFactorId, string>;
