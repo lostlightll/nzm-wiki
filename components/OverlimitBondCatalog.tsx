@@ -46,7 +46,6 @@ export function OverlimitBondCatalog({
     return 0;
   });
   const hasMultipleGroups = groups.length > 1;
-  const BondHeading = hasMultipleGroups ? "h4" : "h3";
 
   return (
     <section aria-labelledby="overlimit-bond-catalog-title">
@@ -68,19 +67,13 @@ export function OverlimitBondCatalog({
             <BondThresholds counts={groups[0][1].counts} />
           )}
         </div>
-        <p className="mt-3 max-w-3xl text-sm leading-6 text-zinc-400">
-          同一羁绊的卡片达到对应数量后，即可激活该阶段效果。
-        </p>
       </header>
 
       <div className="space-y-8">
         {groups.map(([signature, group]) => (
           <div key={signature}>
             {hasMultipleGroups && (
-              <header className="mb-3 flex min-h-9 flex-wrap items-center justify-between gap-3">
-                <h3 className="text-sm font-semibold text-zinc-300">
-                  {group.counts.join(" / ")} 件羁绊
-                </h3>
+              <header className="mb-3 flex min-h-9 items-center justify-end">
                 <BondThresholds counts={group.counts} />
               </header>
             )}
@@ -94,10 +87,10 @@ export function OverlimitBondCatalog({
                     className="flex min-h-16 items-center justify-between gap-3 border-b border-zinc-700 px-4 py-3"
                     style={getOverlimitBondSurfaceStyle(bond.name)}
                   >
-                    <BondHeading className="flex items-center gap-2 text-lg font-bold">
+                    <h3 className="flex items-center gap-2 text-lg font-bold">
                       <OverlimitBondIcon name={bond.name} className="h-6 w-6" />
                       {bond.name}
-                    </BondHeading>
+                    </h3>
                     <span className="text-xs font-medium opacity-80">羁绊</span>
                   </header>
 
