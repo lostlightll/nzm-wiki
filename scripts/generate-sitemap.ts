@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { LEGACY_TALENT_CATALOG, legacyTalentHref } from "../lib/s0s1-talent-presentation";
+import { getOverlimitCatalog } from "../lib/overlimit";
 
 const SITE_URL = "https://nzm-wiki.pages.dev";
 const baseDir = path.join(process.cwd(), "data");
@@ -98,13 +99,14 @@ function generateSitemap() {
   console.log("Generating sitemap...");
 
   const pages = scanDirectory(baseDir);
+  const overlimit = getOverlimitCatalog();
 
   // 添加静态页面
   const staticPages: PageEntry[] = [
     { url: "/" },
     { url: "/weapons" },
     { url: "/perks" },
-    { url: "/overlimit" },
+    { url: "/overlimit", lastmod: overlimit.season.updatedAt },
     { url: "/tower-defense" },
     { url: "/traps" },
     { url: "/enemies" },
@@ -126,18 +128,10 @@ function generateSitemap() {
     { url: "/credits" },
   ];
 
-  const overlimitFile = path.join(baseDir, "overlimit-cards.json");
-  const overlimitLastmod = fs.existsSync(overlimitFile)
-    ? fs.statSync(overlimitFile).mtime.toISOString().split("T")[0]
-    : undefined;
-  const overlimitPages: PageEntry[] = fs.existsSync(overlimitFile)
-    ? (JSON.parse(fs.readFileSync(overlimitFile, "utf-8")) as Array<{
-        id: string;
-      }>).map((card) => ({
-        url: `/overlimit/${card.id}`,
-        lastmod: overlimitLastmod,
-      }))
-    : [];
+  const overlimitPages: PageEntry[] = overlimit.cards.map((card) => ({
+    url: `/overlimit/${card.id}`,
+    lastmod: overlimit.season.updatedAt,
+  }));
 
   const s4SeasonTalentPages: PageEntry[] = [
     "dual-star",

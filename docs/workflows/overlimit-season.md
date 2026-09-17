@@ -1,0 +1,94 @@
+# 超限赛季维护
+
+> 状态：active。超限使用一个当前发布目录，不建立每赛季页面或运行时历史库。
+
+## 数据入口
+
+- `data/overlimit/current.json` 是当前发布投影，包含版本、来源清单、卡片、已解析效果、独立伤害、羁绊、等级规则和地图轮换。
+- `lib/overlimit.ts` 提供统一入口；页面、搜索、站点地图读取同一版本。`lib/overlimit-cards.ts` 保留卡片查询接口。
+- `lib/overlimit-catalog.ts` 校验协议。卡片 ID 独立；`perkItemId` 仅表示人工确认的普通插件关联。没有插件实体的技能卡合法。
+- `data/overlimit/links.json` 是自动生成的跨页面轻量关联投影，由 `pnpm overlimit project` 重建，不手工维护。普通插件及 Buff 的超限链接只指向当前卡池；旧来源记录可以保留，不继续产生旧卡链接。
+- 卡片 `effectValues` 和 `independentDamage` 是已审定来源的解析结果，不是新的数值真值。卡片页面不在运行时读取当前插件、武器 Lock 或预览 Resolver。同 ID 插件更新不能隐式改动超限。
+- `provenance.files` 保留生成时证据文件及 SHA-256。原始事实仍以 Numerical V2、Ability、Buff 或其他可重复执行证据为准；不能从描述抄数值、手工制造已解析效果，或用声明“已审定”代替审计。
+
+`season.id` 是版本身份，`season.status` 为 `current` 或 `preload`。状态不选择数值 Resolver，不创建 `s4-preview`、`s5-preview` 分支，不按系统日期自动换季。候选默认不进入运行时或搜索。
+
+## 每次迭代的固定顺序
+
+### 1. 冻结当前版本
+
+```powershell
+pnpm overlimit archive
+```
+
+命令把当前完整投影、关联证据和所引用的站点原图/WebP 保存到新的 `MD/_local/overlimit/archives/<版本>-<时间>/`。`manifest.json` 记录逐文件字节数与 SHA-256；已存在的目录拒绝覆盖。只复制选定站点资源，不复制游戏容器，也不改动 `refs`。
+
+```powershell
+pnpm overlimit verify-archive --output MD/_local/overlimit/archives/<目录>
+```
+
+归档仅供本地核查，无站内历史入口；不需要长期维护历史代码。`refs` 原始版本归档与这份站点展示快照分开保存。
+
+### 2. 原地生成下一版候选
+
+```powershell
+pnpm overlimit prepare --season s4 --content-root refs/Exports/NZM/Content --against refs/Exports/NZM/Content_S3.2
+```
+
+输入路径必须显式指定，避免默认 `Content` 已切到下一版却误覆盖当前页面。结果保存到 `MD/_local/overlimit/candidates/`，包含输入哈希、按 ID 的增删改、身份链、原卡片字段、羁绊结构及服务端配置缺口。
+
+输出中的 `rawDescription` 只是展示文案证据。候选不是发布协议，不能直接交给 `activate`；本命令不导入插件、不刷新全站 Lock、不改站点图标。
+
+### 3. 审定并生成完整投影
+
+先核对身份与投放状态，再沿技能/MGE/Modifier 审计 Numerical；非 Numerical 数值沿 Ability/Buff 执行配置核验。复用现有 Num Modifier V2 和武器解析器，保存精确引用及来源哈希，导出已解析结果到独立候选文件。此步包含人工机制判断，`prepare` 不代替审定，也不自动把原描述变成数值。
+
+- 保持 ID 稳定，同名多卡不能按名称合并；替代旧卡必须有身份证据。
+- `weight`、`slot` 缺少配置时省略。适用范围未核实时设 `applicabilityKnown: false`，三个武器范围数组保持为空，不能解释成“全部武器”。
+- 尚未审定的规则模块使用 `null`，页面与搜索不显示该模块，不能继承旧赛季规则。
+- 羁绊档位以 `RequiredCount` 为准，保留 `mergeType` 和 `overrides`（原始阶段序号），不能默认累加。
+- 更新同一卡片的描述、结构化效果与独立伤害时，使用同一证据版本。
+- 原生独立卡片的增伤必须按通用 Modifier 来源协议登记后才能通过全量检查；不能为了发布跳过孤立数值校验。候选身份已支持此类卡片，但身份确证不代表其全部效果已审定。
+- 独立卡片来源使用 `source: { type: "overlimit-card", id: "<卡片ID>" }`、来源 ID `overlimit-card:<卡片ID>`，并保存 `applications` 或有依据的排除项。羁绊名称为数据，阶段为正整数，不因下个赛季改名或增加档位而增加运行时分支。
+
+新图标只生成选定资源，并使用稳定文件名；同路径已有图像不得覆盖成不同内容。发布目录与候选目录分离，旧页面继续可用。数值审定和投影生成逻辑应按真实配置结构复用，不能按赛季复制导入器。
+
+### 4. 核验并替换本地当前投影
+
+```powershell
+pnpm overlimit check --catalog MD/_local/overlimit/<已审定投影>.json
+```
+
+检查输出投影的 SHA-256。审定记录是一个本地 JSON，包含 `status: "approved"`、`catalogSha256` 和说明 Numerical/执行配置审计依据的 `basis`。它绑定具体文件字节，文件再变动就要重新核验，不能只批准“某个赛季”。
+
+```powershell
+pnpm overlimit activate --catalog MD/_local/overlimit/<已审定投影>.json --review MD/_local/overlimit/<审定记录>.json
+pnpm test:overlimit-cards
+pnpm build
+```
+
+`activate` 只替换本地数据：先校验协议、资源及审定摘要，自动归档并核验旧投影，再原子替换 `current.json`、重建链接投影。它不部署、不提交、不推送。构建还会执行投影检查、乘区检查、搜索与站点地图生成。
+
+涉及数值、独立伤害或通用来源目录时，追加相关 Numerical/武器/乘区检查。超限 Numerical 审计使用当前投影的 `provenance.contentRoot`，不盲读已经换版的默认目录。
+
+### 5. 发布后收尾
+
+按项目发布流程部署核验通过的当前投影。退出卡池的卡片不再生成详情和搜索记录；不因此删除普通插件。清理仅服务于旧超限的活动引用，不运行无差别资源删除。归档和候选继续在被忽略的本地目录，正常项目构建不读取它们。
+
+## 2026-09-17：S3.2 → S4
+
+已完成：
+
+- S3.2 展示归档：`MD/_local/overlimit/archives/s3.2-20260917/`，147 张卡、22 组独立伤害及引用图像。
+- 当前投影独立于普通插件动态解析；统一页面、搜索、站图入口；旧的四份超限 JSON 与直接覆盖导入器已退役。
+- S4 候选：`MD/_local/overlimit/candidates/s4-20260917.json`。177 张卡中 114 张为插件身份、63 张直接关联 `MGEPassive_BD[ModId_1]`；相对 S3.2 新增 77 ID、退出 47 ID，共有 100 ID。
+
+下一阶段按上述流程审定 S4，9 月 22 日正式服上线后复核，再替换当前投影。当前仍发布 S3.2，未把预下载当成正式上线。剩余审定包括 63 张技能卡的执行链、新羁绊、沿用卡效果变动和图标；不能把候选报告视为已完成的 S4 数值导入。
+
+已确认的 S4 配置变化：
+
+- `MainDataTablesLoadConfig` 将 `HuntingGroundRoguelikeConstantsTable`、`HuntingGroundRoguelikeModSelectTable`、`HuntingGroundRoguelikeQualityWeightTable`、`HuntingGroundRoguelikeWeaponModServerTable` 标为 `OnlyServer`，当前客户端无这些表。旧概率和限制规则不迁入 S4。
+- 重抽费用表仍可读取，100 行与 S3.2 一致；费用事实可以独立审定，但不能据此推断抽卡概率。
+- 力场、瞬暴、狩猎、叠叠乐使用 2/5/8 档，部分档位替代前档。
+
+既有普通插件 S4 预览仍属于插件维护域。本次超限不复用其展示状态或运行时特判，也不顺便重构全站插件/武器数值系统。

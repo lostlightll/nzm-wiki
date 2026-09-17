@@ -10,6 +10,7 @@ import {
 } from "../lib/weapon-consumers";
 import type { ResolvedWeapon } from "../lib/weapon-resolver";
 import { getAllOverlimitCards } from "../lib/overlimit-cards";
+import { getOverlimitCatalog } from "../lib/overlimit";
 import { getStatusEffectSearchDocuments } from "../lib/status-effects";
 import { getSummonSearchDocuments } from "../lib/summons";
 import { getAllResolvedWeapons } from "../lib/weapons";
@@ -290,8 +291,8 @@ export function createOverlimitCardSearchItem(card: OverlimitCard): SearchItem {
     card.id,
     cleanSearchText(card.description),
     `${card.quality}品质`,
-    `权重${card.weight}`,
-    `${card.slot}号槽位`,
+    ...(card.weight !== undefined ? [`权重${card.weight}`] : []),
+    ...(card.slot !== undefined ? [`${card.slot}号槽位`] : []),
     ...card.weaponNames,
     ...card.tags.map((tag) => tag.name),
     ...(card.effectValues ?? []).flatMap((effect) => [
@@ -672,8 +673,8 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
   }
   items.push(...getAllOverlimitCards().map(createOverlimitCardSearchItem));
 
-  const overlimitLevelsFile = path.join(baseDir, "overlimit-levels.json");
-  if (fs.existsSync(overlimitLevelsFile)) {
+  const overlimit = getOverlimitCatalog();
+  if (overlimit.levels) {
     const keywords = [
       "超限猎场",
       "升级概率",
@@ -713,19 +714,13 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
     });
   }
 
-  const overlimitBondsFile = path.join(baseDir, "overlimit-bonds.json");
-  if (fs.existsSync(overlimitBondsFile)) {
-    const bonds = JSON.parse(fs.readFileSync(overlimitBondsFile, "utf-8")) as Array<{
-      name: string;
-      effects: Array<{ count: number; description: string }>;
-    }>;
+  if (overlimit.bonds) {
+    const bonds = overlimit.bonds;
     const keywords = [
       "超限猎场",
       "羁绊效果",
       "套装词条",
-      "x2",
-      "x4",
-      "x6",
+      ...new Set(bonds.flatMap((bond) => bond.effects.map((effect) => `x${effect.count}`))),
       ...bonds.flatMap((bond) => [
         bond.name,
         ...bond.effects.map((effect) => effect.description),
@@ -756,19 +751,8 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
     });
   }
 
-  const mapRotationFile = path.join(
-    baseDir,
-    "overlimit-map-rotation.json",
-  );
-  if (fs.existsSync(mapRotationFile)) {
-    const schedule = JSON.parse(
-      fs.readFileSync(mapRotationFile, "utf-8"),
-    ) as {
-      season: number;
-      periods: Array<{
-        maps: Array<{ name: string; activeBonds: string[] }>;
-      }>;
-    };
+  if (overlimit.mapRotation) {
+    const schedule = overlimit.mapRotation;
     const mapNames = new Set<string>();
     const bondNames = new Set<string>();
 

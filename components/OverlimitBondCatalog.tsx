@@ -3,7 +3,6 @@ import {
   getOverlimitBondSurfaceStyle,
   OverlimitBondIcon,
 } from "@/components/OverlimitCardMeta";
-import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import type { OverlimitBondCatalog as OverlimitBondCatalogData } from "@/types";
 
 interface OverlimitBondCatalogProps {
@@ -22,7 +21,7 @@ export function OverlimitBondCatalog({
           <div>
             <p className="mb-2 flex items-center gap-2 text-sm font-medium text-zinc-400">
               <Layers3 aria-hidden="true" className="h-4 w-4" />
-              9 种正式羁绊
+              {catalog.length} 种羁绊
             </p>
             <h2
               id="overlimit-bond-catalog-title"
@@ -32,7 +31,7 @@ export function OverlimitBondCatalog({
             </h2>
           </div>
           <div className="flex items-center gap-1.5 text-sm tabular-nums text-zinc-400">
-            {[2, 4, 6].map((count) => (
+            {[...new Set(catalog.flatMap(bond => bond.effects.map(effect => effect.count)))].sort((a, b) => a - b).map((count) => (
               <span
                 key={count}
                 className="rounded border border-zinc-700 bg-zinc-900 px-2 py-1 font-semibold text-zinc-200"
@@ -51,7 +50,7 @@ export function OverlimitBondCatalog({
         {catalog.map((bond) => (
           <article
             key={bond.name}
-            className="grid grid-rows-[4rem_auto_3.5rem] overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/60"
+            className="flex flex-col overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/60"
           >
             <header
               className="flex min-h-16 items-center justify-between gap-3 border-b border-zinc-700 px-4 py-3"
@@ -64,12 +63,12 @@ export function OverlimitBondCatalog({
               <span className="text-xs font-medium opacity-80">羁绊</span>
             </header>
 
-            <ol className="grid min-h-0 grid-rows-[5.5rem_8rem_8.75rem] divide-y divide-zinc-800 xl:grid-rows-[5rem_7rem_8.75rem]">
+            <ol className="flex-1 divide-y divide-zinc-800">
               {bond.effects.map((effect) => (
                 <li
                   key={effect.count}
                   id={`bond-${bond.name}-${effect.count}`}
-                  className="grid min-h-0 grid-cols-[3.25rem_1fr]"
+                  className="grid min-h-24 grid-cols-[3.25rem_1fr]"
                 >
                   <div className="flex items-center justify-center border-r border-zinc-800 bg-zinc-950/35 px-2 text-sm font-bold tabular-nums text-zinc-300">
                     x{effect.count}
@@ -77,15 +76,8 @@ export function OverlimitBondCatalog({
                   <div className="flex min-h-0 flex-col justify-center-safe overflow-y-auto px-4 py-2 text-sm leading-5 text-zinc-200">
                     <p className="flow-root">
                       {effect.description}
-                      <MultiplierSourceBadges
-                        source={{
-                          type: "overlimit-bond",
-                          name: bond.name,
-                          count: effect.count,
-                        }}
-                        variant="catalog-inline"
-                      />
                     </p>
+                    {effect.overrides && effect.overrides.length > 0 && <p className="mt-2 text-xs text-zinc-400">替代第 {effect.overrides.join("、")} 档效果</p>}
                   </div>
                 </li>
               ))}
@@ -96,7 +88,7 @@ export function OverlimitBondCatalog({
                 type="button"
                 onClick={() => onSearchBond(bond.name)}
                 aria-label={`检索${bond.name}羁绊对应卡片`}
-                className="flex min-h-10 w-full items-center justify-center gap-1.5 rounded px-3 text-sm font-medium text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+                className="flex min-h-10 w-full items-center justify-center gap-1.5 rounded px-3 text-sm font-medium text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
               >
                 检索对应卡片
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />

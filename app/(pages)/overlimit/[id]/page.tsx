@@ -7,7 +7,7 @@ import {
   getAllOverlimitCards,
   getOverlimitCardById,
 } from "@/lib/overlimit-cards";
-import { getIndependentDamageByOverlimitId } from "@/lib/independent-damage";
+import { getOverlimitCatalog } from "@/lib/overlimit";
 
 const cards = getAllOverlimitCards();
 
@@ -39,7 +39,7 @@ export default async function OverlimitCardPage({
   const { id } = await params;
   const card = getOverlimitCardById(id);
   if (!card) notFound();
-  const independentDamage = await getIndependentDamageByOverlimitId(id);
+  const independentDamage = getOverlimitCatalog().independentDamage[id] ?? [];
 
   return (
     <div className="mx-auto max-w-4xl py-6">

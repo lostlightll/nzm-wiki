@@ -89,6 +89,8 @@ function moveDirectory(src: string, dest: string): void {
 try {
   console.log("[START] Preparing for static build...");
 
+  execSync("pnpm overlimit check", { stdio: "inherit" });
+
   console.log("[CHECK] Validating Num Modifier V2 data...");
   execSync("pnpm num-modifier:check", { stdio: "inherit" });
 

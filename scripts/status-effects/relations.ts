@@ -217,11 +217,11 @@ export function readStatusEffectRelationSourceTables(
   const mgeRows = readRows(path.join(root, SOURCE_PATHS.mgeTable));
   const buffRows = readRows(path.join(root, SOURCE_PATHS.buffTable));
   const perks = readPerks(root);
-  const overlimitCards = JSON.parse(
-    fs.readFileSync(path.join(root, "data", "overlimit-cards.json"), "utf8"),
-  ) as { id?: unknown }[];
+  const overlimitCatalog = JSON.parse(
+    fs.readFileSync(path.join(root, "data", "overlimit", "current.json"), "utf8"),
+  ) as { cards: { id?: unknown; perkItemId?: unknown }[] };
   const overlimitCardIds = new Set(
-    overlimitCards.map((card) => asString(card.id)).filter(Boolean),
+    overlimitCatalog.cards.map((card) => asString(card.perkItemId)).filter(Boolean),
   );
   const mgeAssets: Record<string, unknown> = {};
 

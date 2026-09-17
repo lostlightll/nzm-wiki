@@ -2,7 +2,6 @@ import {
   EffectValuesCatalog,
   EffectValuesPanel,
 } from "@/components/EffectValues";
-import { getProviderRelationsForSource } from "@/lib/multiplier-data";
 import type { OverlimitCard } from "@/types";
 
 export function OverlimitEffectValues({
@@ -21,10 +20,6 @@ export function OverlimitEffectValues({
     <EffectValuesPanel
       id="multiplier-provider"
       effects={effects}
-      relations={getProviderRelationsForSource({
-        type: "overlimit-card",
-        id: card.id,
-      })}
       flush
     />
   );

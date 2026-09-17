@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { getAllOverlimitCards } from "@/lib/overlimit-cards";
+import { getOverlimitCatalog } from "@/lib/overlimit";
 import { MULTIPLIER_PROVIDERS } from "@/lib/multiplier-data";
 import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
 import type { ResolvedNumModifierRow } from "@/lib/num-modifier";
@@ -17,10 +18,9 @@ type EffectEvidence = {
 };
 
 const root = process.cwd();
-const refsRoot = path.join(root, "refs", "Exports", "NZM", "Content");
+const refsRoot = path.resolve(root, getOverlimitCatalog().provenance.contentRoot);
 if (!fs.existsSync(refsRoot)) {
-  console.log("未找到 refs/Exports/NZM/Content，跳过超限卡片 Numerical 审计。");
-  process.exit(0);
+  throw new Error(`当前超限版本的参考目录不存在：${refsRoot}`);
 }
 
 const loadRows = (...parts: string[]): Record<string, Row> =>
@@ -38,21 +38,22 @@ const sourceRegistry = loadModifierProviderRegistry();
 
 const providers = new Map(
   sourceRegistry.providers
-    .filter((provider) => provider.source.type === "perk")
-    .map((provider) => [provider.source.itemId, provider] as const),
+    .flatMap((provider) => provider.source.type === "perk"
+      ? [[provider.source.itemId, provider] as const]
+      : provider.source.type === "overlimit-card" ? [[provider.source.id, provider] as const] : []),
 );
 const runtimeProviders = new Map(
-  MULTIPLIER_PROVIDERS.filter((provider) => provider.source.type === "perk").map(
-    (provider) => [provider.source.itemId, provider] as const,
-  ),
+  MULTIPLIER_PROVIDERS.flatMap(provider => provider.source.type === "perk"
+    ? [[provider.source.itemId, provider] as const]
+    : provider.source.type === "overlimit-card" ? [[provider.source.id, provider] as const] : []),
 );
 const effectEvidenceByItem = new Map<string, EffectEvidence>();
 for (const entry of [
   ...sourceRegistry.providers,
   ...sourceRegistry.exclusions,
 ]) {
-  if (entry.source.type === "perk" && entry.evidence) {
-    effectEvidenceByItem.set(entry.source.itemId, {
+  if ((entry.source.type === "perk" || entry.source.type === "overlimit-card") && entry.evidence) {
+    effectEvidenceByItem.set(entry.source.type === "perk" ? entry.source.itemId : entry.source.id, {
       applications:
         "applications" in entry
           ? entry.applications
@@ -109,8 +110,8 @@ let verifiedEffects = 0;
 const unverifiedEffects: string[] = [];
 
 for (const card of getAllOverlimitCards()) {
-  const item = weaponMods[card.id];
-  const [passiveSkillId, level = "1"] = String(item?.PassiveSkill_ID ?? "").split(":");
+  const item = card.perkItemId ? weaponMods[card.perkItemId] : undefined;
+  const [passiveSkillId, level = "1"] = String(item?.PassiveSkill_ID ?? card.id).split(":");
   const passive = passives[`${passiveSkillId}_${level}`];
   const configId = String(
     (passive?.MGEConfig as Row | undefined)?.Id ?? passiveSkillId,

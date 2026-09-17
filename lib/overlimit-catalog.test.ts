@@ -1,0 +1,71 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import fs from "node:fs";
+import rawCatalog from "@/data/overlimit/current.json";
+import links from "@/data/overlimit/links.json";
+import { parseOverlimitCatalog } from "./overlimit-catalog";
+import { getOverlimitCatalog } from "./overlimit";
+import { getAllOverlimitCards, getOverlimitCardById } from "./overlimit-cards";
+import { projectOverlimitLinks } from "./overlimit-links";
+import { modifierProviderSourceSchema } from "./modifier-provider-registry";
+
+const minimal = () => ({
+  schemaVersion: 1,
+  season: { id: "s5", label: "S5", status: "preload", updatedAt: "2027-01-01" },
+  provenance: { contentRoot: "fixture/Content", note: "Synthetic evidence", files: [{ path: "fixture.json", sha256: "a".repeat(64) }] },
+  cards: [{ id: "1315204001", name: "独立卡", description: "审定的卡片说明", icon: "/icons/card.png", quality: 4,
+    applicabilityKnown: false, weaponType: [], weaponItems: [], weaponNames: [], tags: [] }],
+  independentDamage: {}, bonds: null, levels: null, mapRotation: null,
+});
+
+test("published cards and damage are complete projections, not current perk joins", () => {
+  const catalog = getOverlimitCatalog();
+  assert.deepEqual(catalog, rawCatalog);
+  assert.deepEqual(getAllOverlimitCards(), rawCatalog.cards);
+  assert.deepEqual(links, projectOverlimitLinks(catalog));
+  for (const card of catalog.cards) assert.equal(getOverlimitCardById(card.id), card);
+  assert.equal(getOverlimitCardById("missing"), undefined);
+  for (const file of ["lib/overlimit.ts", "lib/overlimit-cards.ts", "app/(pages)/overlimit/[id]/page.tsx"]) {
+    const source = fs.readFileSync(file, "utf8");
+    assert.doesNotMatch(source, /from ["'][^"']*(?:\/perks|preview|\/independent-damage)["']/);
+  }
+});
+
+test("next season can contain independent cards without fabricated slot, weight, or rules", () => {
+  const catalog = parseOverlimitCatalog(minimal());
+  assert.equal(catalog.cards[0].perkItemId, undefined);
+  assert.equal(catalog.cards[0].weight, undefined);
+  assert.equal(catalog.cards[0].slot, undefined);
+  assert.equal(catalog.cards[0].applicabilityKnown, false);
+  assert.equal(catalog.levels, null);
+  assert.equal(catalog.mapRotation, null);
+  assert.equal(projectOverlimitLinks(catalog).cards[0].perkItemId, null);
+});
+
+test("identity collisions, dangling damage, and contradictory applicability fail", () => {
+  const duplicate = minimal();
+  duplicate.cards.push({ ...duplicate.cards[0] });
+  assert.throws(() => parseOverlimitCatalog(duplicate), /重复卡片/);
+  const unknown = minimal();
+  Object.assign(unknown.cards[0], { weaponNames: ["未知限制"] });
+  assert.throws(() => parseOverlimitCatalog(unknown), /未确认适用范围/);
+  const wrongDamage = structuredClone(rawCatalog);
+  const entry = Object.values(rawCatalog.independentDamage)[0];
+  Object.assign(wrongDamage.independentDamage, { "999999999": entry });
+  assert.throws(() => parseOverlimitCatalog(wrongDamage), /非当前卡片/);
+});
+
+test("new bond thresholds and replacement semantics survive parsing", () => {
+  const candidate = { ...minimal(), bonds: [{ name: "未来赛季的新羁绊", effects: [
+    { count: 2, description: "基础效果" },
+    { count: 5, description: "替代效果", mergeType: "Override", overrides: [1] },
+    { count: 8, description: "最高效果", mergeType: "Override", overrides: [1, 2] },
+  ] }] };
+  assert.deepEqual(parseOverlimitCatalog(candidate).bonds, candidate.bonds);
+  assert.equal(modifierProviderSourceSchema.safeParse({ type: "overlimit-bond", name: "未来赛季的新羁绊", count: 5 }).success, true);
+  assert.equal(modifierProviderSourceSchema.safeParse({ type: "overlimit-card", id: "1315204001" }).success, true);
+});
+
+test("unreviewed inspection output cannot be activated as published data", () => {
+  assert.throws(() => parseOverlimitCatalog({ ...minimal(), publicationStatus: "unreviewed", rawDescription: "增伤999%" }));
+});

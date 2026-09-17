@@ -6,7 +6,7 @@
 
 ## 核心结论
 
-- `data/perks/slot-*/*.mdx` 拥有普通插件详情和结构化效果；`data/overlimit-cards.json` 拥有猎场超限卡片短摘要。两者通过 ItemID 合并，但互不覆盖描述。
+- `data/perks/slot-*/*.mdx` 拥有普通插件详情和结构化效果；`data/overlimit/current.json` 拥有已审定的超限发布投影。超限可通过 `perkItemId` 显式关联插件，但不在运行时合并插件描述、数值或独立伤害。赛季流程见 [超限维护](../workflows/overlimit-season.md)。
 - 插件身份只通过 ItemID 连接，不能根据相似编号、图标编号或相邻行猜测。
 - 普通插件详情优先使用 `MGEDescription`；猎场 `OverrideDesc` 通常是玩法卡片简写，不能覆盖完整详情。
 - 游戏内截图、`MGEDescription`、`OverrideDesc` 和各表 `Description` 都是自然语言展示证据，不是配置数值真值；它们只能确定玩家可见文案、触发条件和语义。
@@ -126,18 +126,18 @@ description_override: true
 
 ## 超限短摘要维护
 
-`data/overlimit-cards.json` 是提交并供运行时读取的导入产物。默认短摘要来自 `HuntingGroundRoguelikeWeaponModTable.OverrideDesc`；当该文案会恢复已确认的旧数值或错误机制时，在 `scripts/import-overlimit-cards.ts` 的 `REVIEWED_DESCRIPTION_OVERRIDES` 中保存审定短摘要。该映射只用于重新导入防回退，结构化数值真值仍来自 Num Modifier V2、Ability、Buff、DataTable 或可复核的运行时证据。
+超限短摘要发布在 `data/overlimit/current.json`，版本更新先用 `pnpm overlimit prepare` 生成独立候选，再审定数值和文案。`OverrideDesc` 仅作为展示证据，不能覆盖 Numerical 真值。旧 `import-overlimit-cards.ts` 及其中审定映射已经退役，S3.2 审定结果已保存在发布投影与本地归档。
 
 新增或修改审定短摘要时按以下顺序维护：
 
 1. 先记录身份链、结构化数值或运行时证据，并确认原 `OverrideDesc` 的具体问题。
 2. 能进入 `effect_values` 的 Numerical 数值先维护 MDX V2 引用；概率、冷却、范围和弹数等使用对应结构化执行配置。
-3. 更新 `REVIEWED_DESCRIPTION_OVERRIDES`，再运行 `pnpm exec tsx scripts/import-overlimit-cards.ts` 重建 `data/overlimit-cards.json`，禁止只手改生成结果。
+3. 将审定来源的已解析效果和短摘要生成到候选发布投影，按超限维护流程检查与激活。不得直接把预下载原文抄入当前投影，或用插件更新隐式刷新超限。
 4. 检查卡片短摘要与插件详情各自保持合适粒度，随后运行 `pnpm test:overlimit-cards`、`pnpm overlimit-effects:audit` 和 `pnpm num-modifier:check`。
 
 ## 结构化效果数值
 
-超限卡片需要展示玩家可读的具体数值时，在同 ItemID 插件 MDX 的 frontmatter 中维护 `effect_values`。`data/overlimit-cards.json` 保存猎场短摘要；页面运行时通过 ItemID 只合并 MDX 数值，不得用普通插件的完整 `description` 覆盖短摘要。超限卡片导入器不得生成或覆盖 `effect_values`。
+普通插件需要展示具体数值时，在 MDX frontmatter 中维护 `effect_values`。关联超限卡可以在审定阶段复用同版本解析结果，但超限发布投影自行保存已解析效果和短摘要，运行时不读取当前插件。独立技能卡不能伪造普通插件实体；其数值同样必须经过 Numerical 身份链和来源登记审计。
 
 ```yaml
 num_modifier_values:
@@ -165,7 +165,7 @@ effect_values:
 
 - 禁止手写 `kind`、`statId` 或 `modifierTypeId`。Num stages 的属性类型、方向、增伤/属性分组和索引分面统一由 `resolveEffect()` 派生。
 - `num_modifier_values` 的别名使用 kebab-case；`row` 必须是 `lc:` 引用，`field` 只允许 `base` 或 `coefficient`，`scale` 默认 `1`。
-- 描述中的 Num 数值使用 `{{num:<alias>|<format>}}`，格式只允许 `number`、`percent`、`signed-number`、`signed-percent`。插件详情、插件悬浮预览、召唤物摘要和攻略编辑器消费 `lib/perks.ts` 的已解析描述；超限卡只消费其中的 `effect_values`，描述固定使用卡片短摘要。
+- 描述中的 Num 数值使用 `{{num:<alias>|<format>}}`，格式只允许 `number`、`percent`、`signed-number`、`signed-percent`。插件详情、插件悬浮预览、召唤物摘要和攻略编辑器消费 `lib/perks.ts` 的已解析描述；超限可在审定阶段复用同版本 `effect_values` 解析结果，运行时只读自己的发布投影和短摘要。
 - `value` 和每个阶段均不能为空；`condition` 可省略，`label` 可用于覆盖上下文展示名。Num 派生值使用 `{ ref, format }`；无法直连 Num 的值使用 `{ literal, reason }`，并在 effect 上声明 `semantic.facetId`。旧字符串 `value` 禁止使用。
 - 数值必须遵守“数值证据规则”。可定位 Numerical 行时必须引用 Num Modifier V2 表达式；MDX `description` 与 `description_override: true` 均不能覆盖结构化数值。属性通道和索引分面同样不得由描述覆盖。
 - 同一插件不能重复解析为同一个分面。没有登记为 Modifier 来源的超限卡片不得孤立添加增伤数值。
@@ -187,7 +187,7 @@ independent_damage_sources:
 ```
 
 - `weapon_slug` 使用 `data/weapons/` 下不含扩展名的文件名；`damage_source_id` 使用该武器内稳定的伤害来源 ID。
-- 插件和同 ItemID 超限卡详情页共同使用该引用。NumericalID、伤害类型、伤害数值、破韧、元素、暴击和弱点均由猎场武器 Resolver 生成，不在插件或超限数据中复制。
+- 插件详情直接解析该引用。超限在审定阶段使用相同武器 Resolver 生成 NumericalID、伤害类型、伤害数值、破韧、元素、暴击和弱点，保存到当前版本的独立伤害投影；不能在页面运行时借用已更新的插件或武器数值。
 - `trigger` 与 `interval` 是插件自身的触发语义，必须依据最终描述或执行配置人工维护；没有独立冷却时明确写触发方式，不猜测冷却值。
 - 只有插件新增或切换到独立 Numerical 伤害时才登记。修改原武器伤害倍率、弹丸数量、范围、射速，或让原有武器伤害来源覆盖更多攻击，不属于独立伤害来源。
 - `effect_values` 仍只记录增伤和属性提升，不能用它承载新伤害实例。

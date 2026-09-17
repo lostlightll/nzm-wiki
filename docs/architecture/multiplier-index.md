@@ -61,11 +61,11 @@ S1 人工复核的精确技能 Token 映射由 `s1ReviewedApplications()` 登记
 - 竞速卡片禁止使用 `reviewed-override`；无法解析出伤害分面的表达式不进入乘区投影。
 - `data/modifier-index-runtime.json` 是通用轻量投影；`data/guides/multiplier-providers-runtime.json` 从其中筛选伤害分面生成。客户端不导入完整 Lock。
 
-超限卡片的具体增伤值不写入来源注册表，而由同 ItemID 插件 MDX 的 `effect_values` 维护。两类数据职责如下：
+超限卡片的具体增伤值不写入来源注册表。审定阶段可复用显式关联插件的 V2 `effect_values`，独立技能卡则登记自己的来源；最终结果保存到超限发布投影。两类数据职责如下：
 
 - `modifier-providers.json` 决定“来源是谁、施加哪些表达式”，分类由语义 Resolver 派生。
 - `effect_values` 决定“向玩家显示什么条件和数值”。条件语义可参考审定文案；凡能直连 Numerical 的值必须引用 Num Modifier V2 表达式，描述和人工文案覆盖不能覆盖结构化值。
-- `lib/overlimit-cards.ts` 保留 `overlimit-cards.json` 的卡片短摘要，并用稳定 ItemID 合并 MDX 的 V2 `effect_values`；完整插件描述不覆盖卡片摘要。
+- `lib/overlimit-cards.ts` 读取 `data/overlimit/current.json` 的已审定卡片投影，不再运行时合并插件 MDX。`data/overlimit/links.json` 是当前投影生成的轻量关联，退出卡池的卡片和未发布羁绊不生成超限链接；普通插件链接独立保留。原生技能卡可用 `source.type: overlimit-card` 登记自己的 Numerical 来源。
 - 校验要求每个超限增伤来源与派生伤害分面精确匹配；未知分面、空阶段、重复语义和孤立效果都会报错。
 
 武器目标关系不写回 MDX。`lib/multiplier-data.ts` 直接消费 Weapon Resolver 已有的 `settlements`、`element`、`enableCritical` 和 `enableWeakness`，为每个 `damageSources[]` 条目建立伤害画像。

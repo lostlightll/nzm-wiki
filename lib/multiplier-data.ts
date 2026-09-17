@@ -2,6 +2,7 @@ import rawMultiplierData from "@/data/guides/multiplier.json";
 import rawProviderRuntime from "@/data/guides/multiplier-providers-runtime.json";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import { getModifierAttributesForFacet } from "@/lib/modifier-index";
+import { getOverlimitLink, getOverlimitLinksForPerk, hasOverlimitBondStage } from "@/lib/overlimit-links";
 import type { ElementType, WeaponType } from "@/types";
 
 const MULTIPLIER_FACTOR_IDS = [
@@ -41,7 +42,7 @@ export type MultiplierSource =
   | {
       type: "overlimit-bond";
       name: string;
-      count: 2 | 4 | 6;
+      count: number;
       anchor?: string;
     }
   | { type: "post"; slug: string; anchor?: string }
@@ -215,7 +216,7 @@ type ProviderRegistrySource =
       cardId: number;
       slug: string;
     }
-  | Extract<MultiplierSource, { type: "overlimit-bond" | "post" | "season-talent" }>;
+  | Extract<MultiplierSource, { type: "overlimit-card" | "overlimit-bond" | "post" | "season-talent" }>;
 
 export type MultiplierProviderExclusion = {
   id: string;
@@ -662,10 +663,10 @@ function buildProviderRelations(): MultiplierRelation[] {
           slug: source.slug,
           anchor: "multiplier-provider",
         });
-        if (source.overlimitCard) {
+        for (const card of getOverlimitLinksForPerk(source.itemId)) {
           placements.push({
             type: "overlimit-card",
-            id: source.itemId,
+            id: card.id,
             anchor: "multiplier-provider",
           });
         }
@@ -685,10 +686,14 @@ function buildProviderRelations(): MultiplierRelation[] {
         });
         break;
       case "overlimit-bond":
+        if (!hasOverlimitBondStage(source.name, source.count)) break;
         placements.push({
           ...source,
           anchor: `bond-${source.name}-${source.count}`,
         });
+        break;
+      case "overlimit-card":
+        if (getOverlimitLink(source.id)) placements.push({ ...source, anchor: "multiplier-provider" });
         break;
       case "season-talent":
         placements.push({
@@ -705,6 +710,8 @@ function buildProviderRelations(): MultiplierRelation[] {
 
     for (const placement of placements) {
       for (const modifierTypeId of provider.modifierTypeIds) {
+        if (placement.type === "overlimit-card" &&
+          !getOverlimitLink(placement.id)?.damageFacets.includes(modifierTypeId)) continue;
         const relation = relationFor(modifierTypeId, {
           kind: "provider",
           effectId: provider.id,

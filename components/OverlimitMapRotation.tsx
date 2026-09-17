@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { CalendarDays, Clock3, MapPinned, Search } from "lucide-react";
-import { useState, useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore, type CSSProperties } from "react";
 import {
   getOverlimitBondInactiveSurfaceStyle,
   getOverlimitBondSurfaceStyle,
@@ -12,7 +12,6 @@ import {
   formatRotationPeriod,
   getRotationPeriodState,
   getShanghaiDateKey,
-  OVERLIMIT_BOND_NAMES,
   resolveRotationTiming,
   type RotationPeriodState,
 } from "@/lib/overlimit-map-rotation";
@@ -97,9 +96,11 @@ function getServerDateSnapshot() {
 
 function BondDisplay({
   activeBonds,
+  bondNames,
   detailed,
 }: {
   activeBonds: OverlimitBondName[];
+  bondNames: OverlimitBondName[];
   detailed: boolean;
 }) {
   const activeBondSet = new Set(activeBonds);
@@ -143,8 +144,8 @@ function BondDisplay({
         }`}
       >
         <div className="min-h-0 overflow-hidden">
-          <div className="grid grid-cols-3 gap-1.5 lg:grid-cols-9">
-            {OVERLIMIT_BOND_NAMES.map((bond, index) => {
+          <div className="grid grid-cols-3 gap-1.5 lg:grid-cols-[repeat(var(--bond-columns),minmax(0,1fr))]" style={{ "--bond-columns": Math.min(9, Math.max(1, bondNames.length)) } as CSSProperties}>
+            {bondNames.map((bond, index) => {
               const active = activeBondSet.has(bond);
 
               return (
@@ -166,9 +167,9 @@ function BondDisplay({
                     transitionDelay: detailed ? `${60 + index * 12}ms` : "0ms",
                   }}
                 >
-                  <span className="flex items-center gap-1 text-xs font-medium">
+                  <span className="flex min-w-0 flex-wrap items-center justify-center gap-1 text-xs font-medium">
                     <OverlimitBondIcon name={bond} active={active} />
-                    <span>{bond}</span>
+                    <span className="min-w-0 break-words">{bond}</span>
                   </span>
                   <span
                     className={`text-xs font-semibold ${
@@ -202,7 +203,7 @@ function BondSearchButton({
       onClick={() => onSearchBonds(map.activeBonds)}
       aria-label={`检索${map.name}的上架羁绊`}
       title={`检索${map.name}的上架羁绊`}
-      className={`z-20 flex h-7 min-w-16 shrink-0 cursor-pointer touch-manipulation items-center justify-center gap-1 rounded border border-zinc-600 bg-zinc-950/80 px-2 text-zinc-200 shadow-sm backdrop-blur-sm transition-colors before:absolute before:-inset-y-2 before:inset-x-0 before:content-[''] hover:border-zinc-400 hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
+      className={`z-20 flex h-7 min-w-16 shrink-0 cursor-pointer touch-manipulation items-center justify-center gap-1 rounded border border-zinc-600 bg-zinc-950/80 px-2 text-zinc-200 shadow-sm backdrop-blur-sm transition-colors before:absolute before:-inset-y-2 before:inset-x-0 before:content-[''] hover:border-zinc-400 hover:bg-zinc-800 hover:text-white outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
         variant === "schedule"
           ? "absolute right-2 top-4 md:right-[calc(50%+0.5rem)]"
           : "absolute right-2 top-2"
@@ -216,10 +217,12 @@ function BondSearchButton({
 
 function CurrentMapCard({
   map,
+  bondNames,
   detailed,
   onSearchBonds,
 }: {
   map: OverlimitMapRotationMap;
+  bondNames: OverlimitBondName[];
   detailed: boolean;
   onSearchBonds: (activeBonds: OverlimitBondName[]) => void;
 }) {
@@ -237,7 +240,7 @@ function CurrentMapCard({
         {map.name}
       </h3>
       <div className="relative z-10">
-        <BondDisplay activeBonds={map.activeBonds} detailed={detailed} />
+        <BondDisplay activeBonds={map.activeBonds} bondNames={bondNames} detailed={detailed} />
       </div>
     </article>
   );
@@ -261,12 +264,14 @@ function PeriodStatus({ state }: { state: RotationPeriodState }) {
 
 function SchedulePeriod({
   period,
+  bondNames,
   state,
   detailed,
   index,
   onSearchBonds,
 }: {
   period: OverlimitMapRotationPeriod;
+  bondNames: OverlimitBondName[];
   state: RotationPeriodState;
   detailed: boolean;
   index: number;
@@ -318,7 +323,7 @@ function SchedulePeriod({
               {map.name}
             </h4>
             <div className="relative z-10">
-              <BondDisplay activeBonds={map.activeBonds} detailed={detailed} />
+              <BondDisplay activeBonds={map.activeBonds} bondNames={bondNames} detailed={detailed} />
             </div>
           </article>
         ))}
@@ -338,6 +343,7 @@ export function OverlimitMapRotation({
     getServerDateSnapshot,
   );
   const timing = resolveRotationTiming(schedule, today);
+  const bondNames = [...new Set(schedule.periods.flatMap(period => period.maps.flatMap(map => map.activeBonds)))];
 
   return (
     <section aria-labelledby="map-rotation-title">
@@ -383,6 +389,7 @@ export function OverlimitMapRotation({
               <CurrentMapCard
                 key={map.name}
                 map={map}
+                bondNames={bondNames}
                 detailed={showDetails}
                 onSearchBonds={onSearchBonds}
               />
@@ -409,7 +416,7 @@ export function OverlimitMapRotation({
             aria-checked={showDetails}
             aria-expanded={showDetails}
             onClick={() => setShowDetails((visible) => !visible)}
-            className="group flex min-h-11 cursor-pointer touch-manipulation items-center gap-3 rounded-lg px-2.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-800/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+            className="group flex min-h-11 cursor-pointer touch-manipulation items-center gap-3 rounded-lg px-2.5 text-sm text-zinc-300 transition-colors hover:bg-zinc-800/70 hover:text-white outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4"
           >
             <span>显示详细轮换</span>
             <span
@@ -434,6 +441,7 @@ export function OverlimitMapRotation({
             <SchedulePeriod
               key={period.startDate}
               period={period}
+              bondNames={bondNames}
               state={getRotationPeriodState(period, schedule, today)}
               detailed={showDetails}
               index={index}

@@ -1,6 +1,6 @@
-import { getPerkByItemId, getPerkBySlug } from "@/lib/perks";
+import { getPerkBySlug } from "@/lib/perks";
+import { getOverlimitCatalog } from "@/lib/overlimit";
 import {
-  getTriggerDamageByOverlimitId,
   getTriggerDamageByPerkSlug,
   type TriggerDamageEntry,
 } from "@/lib/trigger-damage";
@@ -97,12 +97,5 @@ export async function getIndependentDamageByPerkSlug(
 export async function getIndependentDamageByOverlimitId(
   id: string,
 ): Promise<TriggerDamageEntry[]> {
-  const perk = getPerkByItemId(id);
-  const overlimitDamage = getTriggerDamageByOverlimitId(id);
-  const perkDamage =
-    !overlimitDamage && perk ? getTriggerDamageByPerkSlug(perk.slug) : undefined;
-  return [
-    ...(overlimitDamage ? [overlimitDamage] : perkDamage ? [perkDamage] : []),
-    ...(await resolvePerkReferences(perk)),
-  ];
+  return getOverlimitCatalog().independentDamage[id] ?? [];
 }

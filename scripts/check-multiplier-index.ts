@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import overlimitBonds from "@/data/overlimit-bonds.json";
-import overlimitCards from "@/data/overlimit-cards.json";
+import { getOverlimitCatalog } from "@/lib/overlimit";
+import { getOverlimitLink, getOverlimitLinksForPerk, hasOverlimitBondStage } from "@/lib/overlimit-links";
 import passives from "@/data/season-talents/s3/passives.json";
 import grapplingHook from "@/data/season-talents/s3/grappling-hook.json";
 import ironFist from "@/data/season-talents/s3/iron-fist.json";
@@ -26,6 +26,7 @@ import { syncS2Providers } from "./s2-season-talents/providers";
 import { getS2TalentTree, S2_TALENT_IDS } from "../lib/s2-season-talents";
 
 const root = process.cwd();
+const { cards: overlimitCards } = getOverlimitCatalog();
 const errors: string[] = [];
 const sourceRegistry = loadModifierProviderRegistry();
 syncLegacyProviders();
@@ -33,29 +34,26 @@ syncS2Providers();
 const sourceProvidersById = new Map(
   sourceRegistry.providers.map((provider) => [provider.id, provider]),
 );
-const cardIds = new Set(overlimitCards.map((card) => String(card.id)));
+const linkedPerkIds = new Set(overlimitCards.flatMap(card => card.perkItemId ? [card.perkItemId] : []));
 const modifierTypeIds = new Set(MODIFIER_TYPES.map((modifier) => modifier.id));
 const factorIds = new Set(MULTIPLIER_FACTORS.map((factor) => factor.id));
 const coveredIds = new Set([
   ...MULTIPLIER_PROVIDERS.map((provider) => provider.id),
   ...MULTIPLIER_PROVIDER_EXCLUSIONS.map((exclusion) => exclusion.id),
 ]);
-const bondStages = new Set(
-  overlimitBonds.flatMap((bond) =>
-    bond.effects.map((effect) => `${bond.name}:${effect.count}`),
-  ),
-);
 const speedrunCardsById = new Map(
   huntingSpeedrun.cards.map((card) => [card.cardId, card]),
 );
 const hydratedOverlimitCards = getAllOverlimitCards();
 const overlimitProviders = MULTIPLIER_PROVIDERS.filter(
   (provider) =>
-    provider.source.type === "perk" && provider.source.overlimitCard,
+    provider.source.type === "perk" && linkedPerkIds.has(provider.source.itemId),
 );
 const overlimitProviderByItemId = new Map(
   overlimitProviders.map((provider) => [provider.source.itemId, provider]),
 );
+const standaloneProviders = new Map(MULTIPLIER_PROVIDERS.flatMap(provider =>
+  provider.source.type === "overlimit-card" ? [[provider.source.id, provider] as const] : []));
 const overlimitStatSourceCount = hydratedOverlimitCards.filter((card) =>
   card.effectValues?.some((effect) => effect.kind === "stat"),
 ).length;
@@ -72,8 +70,8 @@ function runtimeSourcesForProvider(provider: (typeof MULTIPLIER_PROVIDERS)[numbe
   switch (source.type) {
     case "perk":
       result.push({ type: "perk", slot: source.slot, slug: source.slug });
-      if (source.overlimitCard) {
-        result.push({ type: "overlimit-card", id: source.itemId });
+      for (const card of getOverlimitLinksForPerk(source.itemId)) {
+        result.push({ type: "overlimit-card", id: card.id });
       }
       break;
     case "weapon":
@@ -83,7 +81,10 @@ function runtimeSourcesForProvider(provider: (typeof MULTIPLIER_PROVIDERS)[numbe
       result.push({ type: "card", slug: source.slug });
       break;
     case "overlimit-bond":
-      result.push(source);
+      if (hasOverlimitBondStage(source.name, source.count)) result.push(source);
+      break;
+    case "overlimit-card":
+      if (getOverlimitLink(source.id)) result.push(source);
       break;
     case "season-talent":
     case "post":
@@ -113,9 +114,6 @@ for (const provider of MULTIPLIER_PROVIDERS) {
   switch (source.type) {
     case "perk":
       requireFile(`data/perks/slot-${source.slot}/${source.slug}.mdx`, provider.id);
-      if (source.overlimitCard !== cardIds.has(source.itemId)) {
-        errors.push(`${provider.id} 的超限卡片镜像状态与 overlimit-cards.json 不一致`);
-      }
       break;
     case "weapon":
       requireFile(`data/weapons/${source.slug}.mdx`, provider.id);
@@ -136,9 +134,10 @@ for (const provider of MULTIPLIER_PROVIDERS) {
       break;
     }
     case "overlimit-bond":
-      if (!bondStages.has(`${source.name}:${source.count}`)) {
-        errors.push(`${provider.id} 指向不存在的羁绊阶段`);
-      }
+      // Old provider evidence may remain; only published stages receive links.
+      break;
+    case "overlimit-card":
+      if (provider.id !== `overlimit-card:${source.id}`) errors.push(`${provider.id} 的超限来源身份不匹配`);
       break;
     case "post":
       requireFile(`data/posts/${source.slug}.mdx`, provider.id);
@@ -155,7 +154,9 @@ for (const provider of MULTIPLIER_PROVIDERS) {
     }
   }
 
-  const expectedRelations = provider.modifierTypeIds.length * runtimeSourcesForProvider(provider).length;
+  const expectedRelations = runtimeSourcesForProvider(provider).reduce((sum, placement) => sum +
+    provider.modifierTypeIds.filter(facet => placement.type !== "overlimit-card" ||
+      getOverlimitLink(placement.id)?.damageFacets.includes(facet)).length, 0);
   const actualRelations = PROVIDER_RELATIONS.filter(
     (relation) => relation.effectId === provider.id,
   );
@@ -194,7 +195,7 @@ for (const slotDirectory of fs.readdirSync(perkRoot, { withFileTypes: true })) {
     const itemId = String(parsed.data.id);
     if (
       Number(parsed.data.CollectMODItem) === 1 || parsed.data.season === "s4-preview" ||
-      cardIds.has(itemId)
+      linkedPerkIds.has(itemId)
     ) {
       perkCandidates.set(`perk:${itemId}`, String(parsed.data.title));
     }
@@ -203,14 +204,17 @@ for (const slotDirectory of fs.readdirSync(perkRoot, { withFileTypes: true })) {
 for (const [id, label] of perkCandidates) {
   if (!coveredIds.has(id)) errors.push(`插件/卡片候选未处理：${id} ${label}`);
 }
-for (const cardId of cardIds) {
-  if (!perkCandidates.has(`perk:${cardId}`)) {
-    errors.push(`超限卡片没有同 ItemID 插件实体：${cardId}`);
+for (const itemId of linkedPerkIds) {
+  if (!perkCandidates.has(`perk:${itemId}`)) {
+    errors.push(`超限卡片显式关联了不存在的插件实体：${itemId}`);
   }
 }
 
 for (const card of hydratedOverlimitCards) {
-  const provider = overlimitProviderByItemId.get(card.id);
+  const provider = standaloneProviders.get(card.id) ?? (card.perkItemId ? overlimitProviderByItemId.get(card.perkItemId) : undefined);
+  if (!card.perkItemId && !coveredIds.has(`overlimit-card:${card.id}`)) {
+    errors.push(`独立超限卡片缺少来源审计或有依据的排除项：${card.id} ${card.name}`);
+  }
   const damageEffects =
     card.effectValues?.filter((effect) => effect.kind === "damage") ?? [];
 
@@ -227,10 +231,6 @@ for (const card of hydratedOverlimitCards) {
       `超限卡片 ${card.id} ${card.name} 的 effect_values 类型不匹配：期望 ${expected.join(", ")}，实际 ${actual.join(", ") || "无"}`,
     );
   }
-}
-
-if (overlimitProviders.length !== 58) {
-  errors.push(`超限增伤来源数量异常：期望 58，实际 ${overlimitProviders.length}`);
 }
 
 const weaponCandidates = new Map<string, string>();

@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
-import overlimitCards from "@/data/overlimit-cards.json";
 import {
   getTriggerDamageByOverlimitId,
   getTriggerDamageByPerkSlug,
@@ -33,13 +32,11 @@ test("普通插件映射唯一且全部指向现有详情页", () => {
   }
 });
 
-test("十张触发伤害超限卡均可按卡片 ID 查询", () => {
-  const cardIds = new Set(overlimitCards.map((card) => card.id));
+test("旧版触发伤害参考记录可按原卡片 ID 查询，不约束当前卡池", () => {
   const entries = TRIGGER_DAMAGE_GROUPS.overlimit;
 
   assert.equal(new Set(entries.map((entry) => entry.overlimitId)).size, 10);
   for (const entry of entries) {
-    assert.equal(cardIds.has(entry.overlimitId), true);
     assert.equal(
       getTriggerDamageByOverlimitId(entry.overlimitId)?.numericalId,
       entry.numericalId,

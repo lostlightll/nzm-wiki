@@ -6,7 +6,6 @@ import {
   OverlimitTagBadge,
   OverlimitWeaponApplicability,
 } from "@/components/OverlimitCardMeta";
-import { MultiplierProviderPanel } from "@/components/MultiplierBadges";
 import { OverlimitEffectValues } from "@/components/OverlimitEffectValues";
 import { renderInlineDescription } from "@/components/InlineDescription";
 import { getAssetPath } from "@/lib/path";
@@ -39,10 +38,10 @@ export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
             >
               {qualityStyle.label}
             </span>
-            <span className="inline-flex min-h-8 items-center gap-1.5 rounded border border-white/10 bg-black/15 px-2.5 py-1 text-sm text-zinc-300">
+            {card.slot !== undefined && <span className="inline-flex min-h-8 items-center gap-1.5 rounded border border-white/10 bg-black/15 px-2.5 py-1 text-sm text-zinc-300">
               <Layers3 aria-hidden="true" className="h-4 w-4 text-zinc-500" />
               {OVERLIMIT_SLOT_LABELS[card.slot]}
-            </span>
+            </span>}
             {card.tags.map((tag) => (
               <OverlimitTagBadge key={tag.id} tag={tag} />
             ))}
@@ -59,26 +58,20 @@ export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
         </p>
       </section>
 
-      {card.effectValues?.length ? (
-        <OverlimitEffectValues card={card} variant="detail" />
-      ) : (
-        <MultiplierProviderPanel
-          source={{ type: "overlimit-card", id: card.id }}
-        />
-      )}
+      <OverlimitEffectValues card={card} variant="detail" />
 
-      <div className="grid border-t border-white/10 md:grid-cols-[minmax(0,1fr)_14rem]">
-        <section className="px-4 py-5 sm:px-6 md:border-r md:border-white/10">
+      <div className="flex flex-wrap border-t border-white/10">
+        <section className="min-w-0 flex-1 px-4 py-5 sm:px-6">
           <h2 className="mb-3 text-sm font-medium text-zinc-400">
             适用武器
           </h2>
-          <OverlimitWeaponApplicability
+          {card.applicabilityKnown === false ? <p className="text-sm text-zinc-400">适用范围待核实</p> : <OverlimitWeaponApplicability
             weaponType={card.weaponType}
             weaponNames={card.weaponNames}
-          />
+          />}
         </section>
 
-        <section className="border-t border-white/10 px-4 py-5 sm:px-6 md:border-t-0">
+        {card.weight !== undefined && <section className="w-full border-t border-white/10 px-4 py-5 sm:w-56 sm:border-l sm:border-t-0 sm:px-6">
           <h2 className="mb-3 text-sm font-medium text-zinc-400">
             抽取权重
           </h2>
@@ -88,7 +81,7 @@ export function OverlimitCardDetail({ card }: { card: OverlimitCard }) {
           <p className="mt-2 text-xs leading-5 text-zinc-500">
             随机池内的相对权重；实际概率还受品质、等级和候选池影响。
           </p>
-        </section>
+        </section>}
       </div>
     </article>
   );

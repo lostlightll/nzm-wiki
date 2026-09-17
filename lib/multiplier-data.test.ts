@@ -6,6 +6,8 @@ import {
   BASE_DAMAGE_DATA,
   DILUTION_CATEGORIES,
   MULTIPLIER_FACTOR_DETAILS,
+  MULTIPLIER_PROVIDERS,
+  PROVIDER_RELATIONS,
   WEAKPOINT_MULTIPLIER_DATA,
   buildDamageProfile,
   getApplicableModifierTypes,
@@ -15,6 +17,8 @@ import {
   resolveMultiplierExampleImage,
   resolveMultiplierSourceHref,
 } from "./multiplier-data";
+import { getOverlimitCatalog } from "./overlimit";
+import { getOverlimitLinksForPerk, hasOverlimitBondStage } from "./overlimit-links";
 
 test("typical examples use site artwork except for the hunting shop fallback", () => {
   const examples = [
@@ -93,49 +97,60 @@ test("base damage modes keep their authoritative attack values", () => {
   });
 });
 
-test("shared effects keep perk and overlimit placements separate", () => {
-  const perk = getProviderRelationsForSource({
-    type: "perk",
-    slot: 3,
-    slug: "哑枪",
-  });
-  const card = getProviderRelationsForSource({
-    type: "overlimit-card",
-    id: "20703040436",
-  });
+test("current publication controls card placements without removing ordinary perks", () => {
+  const catalog = getOverlimitCatalog();
+  const cardsById = new Map(catalog.cards.map(card => [card.id, card]));
+  const perkProviders = MULTIPLIER_PROVIDERS.filter(provider => provider.source.type === "perk");
+  assert.ok(perkProviders.length > 0);
+  for (const provider of perkProviders) {
+    const source = provider.source;
+    if (source.type !== "perk") continue;
+    const perkRelations = getProviderRelationsForSource({
+      type: "perk", slot: source.slot, slug: source.slug,
+    }).filter(relation => relation.effectId === provider.id);
+    assert.deepEqual(perkRelations.map(relation => relation.modifierTypeId).sort(),
+      [...new Set(provider.modifierTypeIds)].sort(), provider.id);
+    assert.ok(perkRelations.every(relation => relation.sourceHref?.startsWith("/perks/")));
 
-  assert.equal(perk.length, 1);
-  assert.equal(card.length, 1);
-  assert.equal(perk[0].effectId, "perk:20703040436");
-  assert.equal(card[0].effectId, "perk:20703040436");
-  assert.notEqual(perk[0].sourceHref, card[0].sourceHref);
+    const links = getOverlimitLinksForPerk(source.itemId);
+    assert.deepEqual(links.map(card => card.id).sort(),
+      catalog.cards.filter(card => card.perkItemId === source.itemId).map(card => card.id).sort(),
+      `published links for ${provider.id}`);
+    const expected = links.flatMap(card => card.damageFacets
+      .filter(facet => provider.modifierTypeIds.includes(facet))
+      .map(facet => `${card.id}:${facet}`)).sort();
+    const actual = PROVIDER_RELATIONS.filter(relation =>
+      relation.effectId === provider.id && relation.source?.type === "overlimit-card");
+    assert.deepEqual(actual.map(relation => {
+      assert.equal(relation.source?.type, "overlimit-card");
+      if (relation.source?.type !== "overlimit-card") throw new Error("Unexpected placement");
+      assert.ok(cardsById.has(relation.source.id), "removed cards must not retain links");
+      assert.equal(relation.sourceHref, `/overlimit/${relation.source.id}#multiplier-provider`);
+      return `${relation.source.id}:${relation.modifierTypeId}`;
+    }).sort(), expected, provider.id);
+  }
+  for (const relation of PROVIDER_RELATIONS) {
+    if (relation.source?.type === "overlimit-card") {
+      assert.ok(cardsById.has(relation.source.id), relation.sourceHref);
+      const card = cardsById.get(relation.source.id)!;
+      assert.ok(card.effectValues?.some(effect => effect.kind === "damage" &&
+        effect.modifierTypeId === relation.modifierTypeId), relation.sourceHref);
+    }
+  }
 });
 
-test("midseason super perks mirror multiplier channels to overlimit cards", () => {
+test("midseason super perks retain their audited multiplier channels", () => {
   const cases = [
-    ["20704040478", "爆炸直击", ["weapon-hit-damage"]],
-    ["20704040480", "超强技能", ["weapon-skill-damage", "skill-damage"]],
-    ["20704040482", "暴力切换", ["weapon-damage"]],
-    ["20704040483", "隐匿出击", ["all-damage"]],
-    ["20704040484", "爆发", ["critical"]],
+    ["爆炸直击", ["weapon-hit-damage"]],
+    ["超强技能", ["weapon-skill-damage", "skill-damage"]],
+    ["暴力切换", ["weapon-damage"]],
+    ["隐匿出击", ["all-damage"]],
+    ["爆发", ["critical"]],
   ] as const;
-
-  for (const [id, slug, expectedModifierTypes] of cases) {
+  for (const [slug, expectedModifierTypes] of cases) {
     const perk = getProviderRelationsForSource({ type: "perk", slot: 4, slug });
-    const card = getProviderRelationsForSource({ type: "overlimit-card", id });
-
-    assert.deepEqual(
-      perk.map((relation) => relation.modifierTypeId),
-      [...expectedModifierTypes],
-    );
-    assert.deepEqual(
-      card.map((relation) => relation.modifierTypeId),
-      [...expectedModifierTypes],
-    );
-    assert.ok(perk.every((relation) => relation.sourceHref?.startsWith("/perks/")));
-    assert.ok(
-      card.every((relation) => relation.sourceHref === `/overlimit/${id}#multiplier-provider`),
-    );
+    assert.deepEqual(perk.map(relation => relation.modifierTypeId), [...expectedModifierTypes]);
+    assert.ok(perk.every(relation => relation.sourceHref?.startsWith("/perks/")));
   }
 });
 
@@ -314,24 +329,28 @@ test("numerical damage-ratio providers stay in the dilution channels", () => {
   }
 });
 
-test("overlimit bond providers follow their numerical attribute channels", () => {
-  const cases = [
-    ["弹药", 6, "game-mode", "game-mode"],
-    ["狙击", 2, "game-mode", "game-mode"],
-    ["狂战", 2, "game-mode", "game-mode"],
-    ["技战", 4, "weapon-damage", "dilution"],
-  ] as const;
-
-  for (const [name, count, modifierTypeId, factorId] of cases) {
-    const relations = getProviderRelationsForSource({
-      type: "overlimit-bond",
-      name,
-      count,
-    });
-    assert.deepEqual(
-      relations.map((relation) => [relation.modifierTypeId, relation.factorId]),
-      [[modifierTypeId, factorId]],
-    );
+test("only published bond stages retain multiplier placements", () => {
+  const catalog = getOverlimitCatalog();
+  for (const provider of MULTIPLIER_PROVIDERS) {
+    const source = provider.source;
+    if (source.type !== "overlimit-bond") continue;
+    const published = (catalog.bonds ?? []).some(bond =>
+      bond.name === source.name && bond.effects.some(effect => effect.count === source.count));
+    assert.equal(hasOverlimitBondStage(source.name, source.count), published);
+    const relations = getProviderRelationsForSource(source)
+      .filter(relation => relation.effectId === provider.id);
+    assert.deepEqual(relations.map(relation => relation.modifierTypeId).sort(),
+      published ? [...new Set(provider.modifierTypeIds)].sort() : [], provider.id);
+    for (const relation of relations) {
+      assert.equal(relation.sourceHref,
+        `/overlimit?module=bonds#bond-${encodeURIComponent(source.name)}-${source.count}`);
+    }
+  }
+  for (const relation of PROVIDER_RELATIONS) {
+    if (relation.source?.type === "overlimit-bond") {
+      assert.ok(hasOverlimitBondStage(relation.source.name, relation.source.count),
+        relation.sourceHref);
+    }
   }
 });
 

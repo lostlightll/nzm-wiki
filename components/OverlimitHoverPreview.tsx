@@ -34,7 +34,7 @@ export function OverlimitHoverPreview({
   const [position, setPosition] = useState<PreviewPosition | null>(null);
 
   useLayoutEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || (card.weight === undefined && card.applicabilityKnown === false)) return;
 
     const updatePosition = () => {
       const anchor = anchorRef.current;
@@ -79,7 +79,7 @@ export function OverlimitHoverPreview({
       window.removeEventListener("resize", updatePosition);
       window.removeEventListener("scroll", updatePosition, true);
     };
-  }, [isOpen]);
+  }, [isOpen, card.weight, card.applicabilityKnown]);
 
   const showPreview = () => {
     setPosition(null);
@@ -92,7 +92,7 @@ export function OverlimitHoverPreview({
       <CatalogLink
         ref={anchorRef}
         href={href}
-        className="group block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d1ac69]"
+        className="group block h-full rounded-lg outline-none focus-visible:[&_h3]:underline focus-visible:[&_h3]:decoration-2 focus-visible:[&_h3]:underline-offset-4"
         aria-describedby={isOpen ? tooltipId : undefined}
         onMouseEnter={() => {
           if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
@@ -100,7 +100,7 @@ export function OverlimitHoverPreview({
           }
         }}
         onMouseLeave={hidePreview}
-        onFocus={showPreview}
+        onFocus={(event) => { if (event.currentTarget.matches(":focus-visible")) showPreview(); }}
         onBlur={hidePreview}
         onKeyDown={(event) => {
           if (event.key === "Escape") hidePreview();
@@ -109,7 +109,7 @@ export function OverlimitHoverPreview({
         {children}
       </CatalogLink>
 
-      {isOpen &&
+      {isOpen && (card.weight !== undefined || card.applicabilityKnown !== false) &&
         createPortal(
           <div
             ref={previewRef}
@@ -123,15 +123,15 @@ export function OverlimitHoverPreview({
               visibility: position ? "visible" : "hidden",
             }}
           >
-            <div className="flex items-center justify-between gap-3 px-2 py-3">
+            {card.weight !== undefined && <div className="flex items-center justify-between gap-3 px-2 py-3">
               <div className="text-xs font-medium text-zinc-400">
                 抽取权重
               </div>
               <strong className="text-sm font-semibold tabular-nums text-[#e2c38b]">
                 {card.weight}
               </strong>
-            </div>
-            <div className="border-t border-white/10 px-2 py-3">
+            </div>}
+            {card.applicabilityKnown !== false && <div className="border-t border-white/10 px-2 py-3">
               <div className="mb-2.5 text-xs font-medium text-zinc-400">
                 适用武器
               </div>
@@ -140,7 +140,7 @@ export function OverlimitHoverPreview({
                 weaponNames={card.weaponNames}
                 compact
               />
-            </div>
+            </div>}
           </div>,
           document.body,
         )}

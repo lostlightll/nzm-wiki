@@ -209,12 +209,15 @@ export interface OverlimitCardTag {
 
 export interface OverlimitCard {
   id: string;
+  /** Optional, explicit association; independent skill cards are not ordinary perks. */
+  perkItemId?: string;
   name: string;
   description: string;
   icon: string;
   quality: number;
-  weight: number;
-  slot: PerkSlot;
+  weight?: number;
+  slot?: PerkSlot;
+  applicabilityKnown?: boolean;
   weaponType: number[];
   weaponItems: number[];
   weaponNames: string[];
@@ -249,20 +252,13 @@ export interface OverlimitLevelCatalog {
   rerollCosts: OverlimitRerollCost[];
 }
 
-export type OverlimitBondName =
-  | "弹药"
-  | "技战"
-  | "异化"
-  | "游击"
-  | "壁垒"
-  | "狙击"
-  | "爆韧"
-  | "共振"
-  | "狂战";
+export type OverlimitBondName = string;
 
 export interface OverlimitBondStageEffect {
-  count: 2 | 4 | 6;
+  count: number;
   description: string;
+  mergeType?: string;
+  overrides?: number[];
 }
 
 export interface OverlimitBondEffect {

@@ -33,7 +33,11 @@ const cardSourceSchema = z.strictObject({
 const overlimitBondSourceSchema = z.strictObject({
   type: z.literal("overlimit-bond"),
   name: nonEmptyString,
-  count: z.union([z.literal(2), z.literal(4), z.literal(6)]),
+  count: z.number().int().positive(),
+});
+const overlimitCardSourceSchema = z.strictObject({
+  type: z.literal("overlimit-card"),
+  id: nonEmptyString,
 });
 const postSourceSchema = z.strictObject({
   type: z.literal("post"),
@@ -56,6 +60,7 @@ export const modifierProviderSourceSchema = z.discriminatedUnion("type", [
   weaponSourceSchema,
   cardSourceSchema,
   overlimitBondSourceSchema,
+  overlimitCardSourceSchema,
   postSourceSchema,
   seasonTalentSourceSchema,
 ]);

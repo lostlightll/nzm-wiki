@@ -103,7 +103,7 @@ applications:
 - 插件 `effect_values` 不再手写 `kind`、`statId` 或 `modifierTypeId`；Num stages 从 `resolveEffect()` 派生分类和默认标签。
 - 无 Num 行的 literal stage 继续要求 `{ literal, reason }`，并在 effect 上显式声明 `semantic.facetId`。
 - 描述模板继续使用 `{{num:alias|format}}`；插件详情、预览、召唤物和攻略编辑器消费 `lib/perks.ts` 的解析结果。
-- 超限卡保留 `overlimit-cards.json` 的卡片短摘要，并通过稳定 ItemID 合并插件 V2 `effect_values`；搜索索引统一消费 `getAllOverlimitCards()`，不直接读取两份来源。导入器中的 `REVIEWED_DESCRIPTION_OVERRIDES` 只防止已审定短摘要在重新导入时回退，不是独立数值来源。
+- 超限在维护阶段使用 V2 解析审定效果，发布投影保存在 `data/overlimit/current.json`；运行时不再通过 ItemID 合并当前插件。页面、搜索和站图使用统一目录入口，缺失模块不继承旧赛季。归档及切换见 [`../workflows/overlimit-season.md`](../workflows/overlimit-season.md)。
 - 状态效果保留 `modifierIds` 身份，由 Resolver 生成规范技术详情、减速、易伤、减伤和乘区关系；关键词只在没有结构化 Modifier 效果时回退。
 - 原始 `{GPModifier:...}` Token、乘区审计和超限审计统一通过 Resolver 读取 Lock。
 

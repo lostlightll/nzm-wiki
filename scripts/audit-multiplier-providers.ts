@@ -382,8 +382,8 @@ for (const exclusion of sourceRegistry.exclusions) {
 
 const candidateIds = new Set<string>();
 const cardIds = new Set(
-  (JSON.parse(fs.readFileSync(path.join(root, "data", "overlimit-cards.json"), "utf8")) as { id: string }[])
-    .map((card) => String(card.id)),
+  (JSON.parse(fs.readFileSync(path.join(root, "data", "overlimit", "current.json"), "utf8")) as { cards: { id: string; perkItemId?: string }[] })
+    .cards.map((card) => String(card.perkItemId ?? card.id)),
 );
 for (const slotDirectory of fs.readdirSync(path.join(root, "data", "perks"), { withFileTypes: true })) {
   if (!slotDirectory.isDirectory()) continue;

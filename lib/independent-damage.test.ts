@@ -5,6 +5,7 @@ import {
   getIndependentDamageByPerkSlug,
 } from "./independent-damage";
 import { getAllPerks } from "./perks";
+import { getOverlimitCatalog } from "./overlimit";
 
 const EXPECTED_REFERENCES = new Map([
   ["slot-4/强袭", ["能源之影", "qiang-xi-ji-guang"]],
@@ -62,25 +63,37 @@ test("武器来源解析为插件详情页独立伤害表格", async () => {
   assert.equal(seeking[0]?.damageValue, "90");
 });
 
-test("同 ItemID 超限卡复用专属插件伤害来源", async () => {
-  const rainbow = await getIndependentDamageByOverlimitId("20703040346");
-  assert.equal(rainbow[0]?.numericalId, "120300245");
-
-  const seeking = await getIndependentDamageByOverlimitId("20703040339");
-  assert.equal(seeking[0]?.numericalId, "120300113");
+test("超限独立伤害完全服从当前发布快照", async () => {
+  const catalog = getOverlimitCatalog();
+  const cardIds = new Set(catalog.cards.map(card => card.id));
+  for (const [id, entries] of Object.entries(catalog.independentDamage)) {
+    assert.ok(cardIds.has(id), `孤立独立伤害条目 ${id}`);
+    const actual = await getIndependentDamageByOverlimitId(id);
+    assert.deepEqual(actual, entries, id);
+    for (const entry of actual) {
+      assert.ok(entry.numericalId && entry.damageValue && entry.trigger, id);
+    }
+  }
+  for (const card of catalog.cards) {
+    if (!Object.hasOwn(catalog.independentDamage, card.id)) {
+      assert.deepEqual(await getIndependentDamageByOverlimitId(card.id), [],
+        `未发布独立伤害的卡片不能从普通插件回填：${card.id}`);
+    }
+  }
 });
 
-test("超限专属执行数据优先于普通插件映射", async () => {
-  const fatalExplosion = await getIndependentDamageByOverlimitId("20703040437");
-  assert.equal(fatalExplosion.length, 1);
-  assert.match(fatalExplosion[0]?.trigger ?? "", /5%/);
-  assert.equal(fatalExplosion[0]?.interval, "2 秒");
-  assert.equal(fatalExplosion[0]?.numericalId, "130103014");
-  assert.equal(fatalExplosion[0]?.damageValue, "5000");
-
-  const hybridDamage = await getIndependentDamageByOverlimitId("20703040444");
-  assert.equal(hybridDamage[0]?.interval, "触发 5 秒；追加 0.25 秒");
-
-  const toxicZone = await getIndependentDamageByOverlimitId("20703040474");
-  assert.equal(toxicZone[0]?.interval, "5 秒");
+test("退出卡池的插件与未知ID不能泄漏到超限独立伤害", async () => {
+  const catalog = getOverlimitCatalog();
+  const cardIds = new Set(catalog.cards.map(card => card.id));
+  const absentPerks = getAllPerks().filter(perk =>
+    !cardIds.has(perk.itemId) && perk.independentDamageSources?.length);
+  for (const perk of absentPerks) {
+    assert.ok((await getIndependentDamageByPerkSlug(perk.slug)).length > 0,
+      `普通插件仍有独立伤害：${perk.slug}`);
+    assert.deepEqual(await getIndependentDamageByOverlimitId(perk.itemId), [],
+      `超限不继承未发布的普通插件：${perk.slug}`);
+  }
+  const missingId = "unpublished-overlimit-card";
+  assert.equal(cardIds.has(missingId), false);
+  assert.deepEqual(await getIndependentDamageByOverlimitId(missingId), []);
 });

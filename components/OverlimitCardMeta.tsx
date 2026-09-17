@@ -9,7 +9,7 @@ import { getPerkWeaponApplicability } from "@/lib/perk-applicability";
 import { getAssetPath } from "@/lib/path";
 import type { OverlimitBondName, OverlimitCardTag, PerkSlot } from "@/types";
 
-export const OVERLIMIT_BOND_COLORS = {
+export const OVERLIMIT_BOND_COLORS: Partial<Record<OverlimitBondName, { active: string; inactive: string }>> = {
   弹药: { active: "#1CAD69", inactive: "#030E09" },
   技战: { active: "#2DBCFF", inactive: "#040F14" },
   异化: { active: "#B53CFF", inactive: "#0F0614" },
@@ -19,15 +19,14 @@ export const OVERLIMIT_BOND_COLORS = {
   爆韧: { active: "#FF4F25", inactive: "#0E0502" },
   共振: { active: "#3D69FF", inactive: "#05091B" },
   狂战: { active: "#FA2929", inactive: "#140404" },
-} as const satisfies Record<
-  OverlimitBondName,
-  { active: string; inactive: string }
->;
+};
+
+const FALLBACK_BOND_COLORS = { active: "#a1a1aa", inactive: "#18181b" };
 
 export function getOverlimitBondForegroundColor(name: string): string {
   const colors =
     OVERLIMIT_BOND_COLORS[name as OverlimitBondName] ??
-    OVERLIMIT_BOND_COLORS.壁垒;
+    FALLBACK_BOND_COLORS;
 
   return `color-mix(in srgb, ${colors.active} 45%, white)`;
 }
@@ -35,7 +34,7 @@ export function getOverlimitBondForegroundColor(name: string): string {
 export function getOverlimitBondSurfaceStyle(name: string): CSSProperties {
   const colors =
     OVERLIMIT_BOND_COLORS[name as OverlimitBondName] ??
-    OVERLIMIT_BOND_COLORS.壁垒;
+    FALLBACK_BOND_COLORS;
 
   return {
     backgroundColor: `color-mix(in srgb, ${colors.active} 14%, #18181b)`,
@@ -49,12 +48,12 @@ export function getOverlimitBondInactiveSurfaceStyle(
 ): CSSProperties {
   const colors =
     OVERLIMIT_BOND_COLORS[name as OverlimitBondName] ??
-    OVERLIMIT_BOND_COLORS.壁垒;
+    FALLBACK_BOND_COLORS;
 
   return { backgroundColor: colors.inactive };
 }
 
-export const OVERLIMIT_BOND_ICON_PATHS = {
+export const OVERLIMIT_BOND_ICON_PATHS: Partial<Record<OverlimitBondName, string>> = {
   弹药: "/icons/overlimit/sets/T_Icons_Rogue_Munition.png",
   技战: "/icons/overlimit/sets/T_Icons_Rogue_Skill.png",
   异化: "/icons/overlimit/sets/T_Icons_Rogue_Anomaly.png",
@@ -64,7 +63,7 @@ export const OVERLIMIT_BOND_ICON_PATHS = {
   爆韧: "/icons/overlimit/sets/T_Icons_Rogue_Demolition.png",
   共振: "/icons/overlimit/sets/T_Icons_Rogue_Support.png",
   狂战: "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
-} as const satisfies Record<OverlimitBondName, string>;
+};
 
 export function OverlimitBondIcon({
   name,

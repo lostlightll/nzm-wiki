@@ -1,5 +1,6 @@
 import statusEffectRelations from "@/data/status-effect-relations.json";
 import statusEffectData from "@/data/status-effects.json";
+import { getOverlimitLinksForPerk } from "@/lib/overlimit-links";
 import {
   MULTIPLIER_FACTORS,
   MODIFIER_TYPES,
@@ -340,18 +341,17 @@ function confirmedRelatedContent(
       href: `/perks/slot-${relation.slot}/${relation.slug}`,
       note: "已沿插件被动技能与 MGE 的 AddBuff 调用确认到此 Buff。",
     };
-    if (!relation.overlimitCard) return [perk];
     return [
       perk,
-      {
+      ...getOverlimitLinksForPerk(relation.itemId).map(card => ({
         ...shared,
-        id: `overlimit-card:${relation.itemId}`,
-        type: "overlimit-card",
+        id: `overlimit-card:${card.id}`,
+        type: "overlimit-card" as const,
         typeLabel: "超限卡片",
         title: relation.title,
-        href: `/overlimit/${relation.itemId}`,
+        href: `/overlimit/${card.id}`,
         note: "与该插件共享来源身份；具体卡片数值以卡片详情页为准。",
-      },
+      })),
     ];
   });
 }

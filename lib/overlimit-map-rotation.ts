@@ -1,22 +1,9 @@
 import type {
-  OverlimitBondName,
   OverlimitMapRotationPeriod,
   OverlimitMapRotationSchedule,
 } from "@/types";
 
 export { getShanghaiDateKey } from "@/lib/date-key";
-
-export const OVERLIMIT_BOND_NAMES = [
-  "弹药",
-  "技战",
-  "异化",
-  "游击",
-  "壁垒",
-  "狙击",
-  "爆韧",
-  "共振",
-  "狂战",
-] as const satisfies readonly OverlimitBondName[];
 
 export type RotationPeriodState = "past" | "current" | "upcoming";
 
