@@ -5,6 +5,13 @@ import {
 import type { OverlimitCard } from "@/types";
 import { getProviderRelationsForSource } from "@/lib/multiplier-data";
 
+export function getOverlimitCatalogEffects(card: OverlimitCard) {
+  const effects = card.effectValues ?? [];
+  return effects.length > 2
+    ? effects.filter(effect => effect.kind !== "stat" || effect.statId !== "movement-speed")
+    : effects;
+}
+
 export function OverlimitEffectValues({
   card,
   variant,
@@ -16,10 +23,12 @@ export function OverlimitEffectValues({
 }) {
   const effects = card.effectValues ?? [];
   if (variant === "catalog") {
-    const previewEffects = effects.length > 2
-      ? effects.filter(effect => effect.kind !== "stat" || effect.statId !== "movement-speed")
-      : effects;
-    return <EffectValuesCatalog effects={previewEffects} />;
+    const catalogEffects = getOverlimitCatalogEffects(card).map(effect =>
+      effect.kind === "stat" && effect.statId === "element-debuff-chance"
+        ? { ...effect, label: "元素概率" }
+        : effect,
+    );
+    return <EffectValuesCatalog effects={catalogEffects} columns={catalogEffects.length >= 4 ? 2 : 1} />;
   }
 
   return (

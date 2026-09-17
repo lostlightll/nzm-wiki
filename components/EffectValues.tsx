@@ -70,12 +70,14 @@ function DetailEffect({
 
 export function EffectValuesCatalog({
   effects,
+  columns = 1,
 }: {
   effects: readonly PerkEffectValue[];
+  columns?: 1 | 2;
 }) {
   if (effects.length === 0) return null;
   return (
-    <div className="w-full" aria-label="效果数值">
+    <div className={`w-full ${columns === 2 ? "grid grid-cols-2 gap-x-2 gap-y-0.5" : ""}`} aria-label="效果数值">
       {effects.map((effect) => (
         <CatalogEffect key={effectKey(effect)} effect={effect} />
       ))}

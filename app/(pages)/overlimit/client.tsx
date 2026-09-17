@@ -25,7 +25,9 @@ import {
   OverlimitTagBadge,
 } from "@/components/OverlimitCardMeta";
 import { OverlimitHoverPreview } from "@/components/OverlimitHoverPreview";
-import { OverlimitEffectValues } from "@/components/OverlimitEffectValues";
+import { getOverlimitCatalogEffects, OverlimitEffectValues } from "@/components/OverlimitEffectValues";
+import { MultiplierBadges } from "@/components/MultiplierBadges";
+import { getProviderRelationsForSource } from "@/lib/multiplier-data";
 import { renderInlineDescription } from "@/components/InlineDescription";
 import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
@@ -85,13 +87,21 @@ function OverlimitCardItem({
   card,
   eager,
   basePath,
+  sourceSeason,
 }: {
   card: OverlimitCard;
   eager?: boolean;
   basePath: string;
+  sourceSeason?: string;
 }) {
   const qualityStyle =
     OVERLIMIT_QUALITY_STYLES[card.quality] ?? OVERLIMIT_QUALITY_STYLES[4];
+  const hasThreeEffectRows = getOverlimitCatalogEffects(card).length >= 3;
+  const relations = getProviderRelationsForSource({ type: "overlimit-card", id: card.id,
+    ...(sourceSeason ? { season: sourceSeason } : {}) });
+  const factorLabels = [
+    ...new Map(relations.map(relation => [relation.factorId, relation.factorLabel])).values(),
+  ];
 
   return (
     <div className="relative min-w-0 transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
@@ -102,17 +112,30 @@ function OverlimitCardItem({
         <span className="sr-only">品质：{qualityStyle.label}</span>
         <div aria-hidden="true" className={`h-1 w-full ${qualityStyle.bar}`} />
         <div
-          className="flex min-h-11 flex-wrap content-center gap-1 border-b border-zinc-700/80 px-2 py-2"
+          className="flow-root min-h-11 border-b border-zinc-700/80 px-2 py-2"
         >
-          {card.tags.map((tag) => (
-            <OverlimitTagBadge
-              key={tag.id}
-              tag={tag}
-            />
-          ))}
+          {/* Reserve the badges' intrinsic size without nesting links inside the card link. */}
+          {factorLabels.length > 0 && (
+            <div aria-hidden="true" className="invisible float-right ml-1 flex flex-col gap-1.5">
+              {factorLabels.map(label => (
+                <span key={label} className="min-h-6 whitespace-nowrap rounded border px-2 py-0.5 text-[11px] font-medium leading-4">
+                  {label}
+                </span>
+              ))}
+            </div>
+          )}
+          <div className="flex min-h-6 flex-wrap content-start gap-1">
+            {card.tags.map((tag) => (
+              <OverlimitTagBadge
+                key={tag.id}
+                tag={tag}
+                compactOnMobile={relations.length > 0}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="relative flex flex-1 flex-col items-center px-3 pb-4 pt-5 sm:px-2">
+        <div className={`relative flex flex-1 flex-col items-center px-3 pb-4 sm:px-2 ${hasThreeEffectRows ? "pt-9" : "pt-5"}`}>
           <div className="pointer-events-none absolute inset-x-2 top-1 z-10">
             <OverlimitEffectValues card={card} variant="catalog" />
           </div>
@@ -140,6 +163,8 @@ function OverlimitCardItem({
         </div>
         </article>
       </OverlimitHoverPreview>
+      {relations.length > 0 && <MultiplierBadges relations={relations} variant="catalog-compact"
+        className="absolute right-2 top-4 z-10 max-w-[6rem] justify-end" />}
     </div>
   );
 }
@@ -651,6 +676,7 @@ export default function OverlimitPageClient({
                 key={card.id}
                 card={card}
                 basePath={basePath}
+                sourceSeason={sourceSeason}
                 eager={eagerIcons.has(card.icon)}
               />
             ))}
