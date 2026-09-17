@@ -500,24 +500,6 @@ export default function OverlimitPageClient({
           </div>
 
           <div className="mb-5 grid gap-x-6 gap-y-4 lg:grid-cols-3">
-          {existingIds && <fieldset>
-            <legend className="mb-3 text-lg font-semibold text-zinc-300">卡片来源</legend>
-            <div className="grid max-w-md grid-cols-3 gap-2">
-              {([
-                { id: "all", label: "全部", count: initialCards.length },
-                { id: "new", label: "新卡", count: newCardCount },
-                { id: "existing", label: "老卡", count: initialCards.length - newCardCount },
-              ] as const).map(option => (
-                <button key={option.id} type="button" aria-pressed={cardOrigin === option.id}
-                  onClick={() => setCardOrigin(option.id)}
-                  className={`flex min-h-11 touch-manipulation items-center justify-center gap-1.5 rounded border px-2 py-2 text-sm font-medium transition-colors outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${cardOrigin === option.id
-                    ? "border-zinc-400 bg-zinc-600 text-white"
-                    : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700/70 hover:text-white"}`}>
-                  {option.label}<span className="text-xs tabular-nums opacity-70">{option.count}</span>
-                </button>
-              ))}
-            </div>
-          </fieldset>}
           <fieldset>
             <legend className="mb-3 text-lg font-semibold text-zinc-300">
               卡片品质
@@ -572,6 +554,25 @@ export default function OverlimitPageClient({
                   </button>
                 );
               })}
+            </div>
+          </fieldset>}
+
+          {existingIds && <fieldset>
+            <legend className="mb-3 text-lg font-semibold text-zinc-300">卡片来源</legend>
+            <div className="grid max-w-md grid-cols-3 gap-2">
+              {([
+                { id: "all", label: "全部", count: initialCards.length },
+                { id: "new", label: "新卡", count: newCardCount },
+                { id: "existing", label: "老卡", count: initialCards.length - newCardCount },
+              ] as const).map(option => (
+                <button key={option.id} type="button" aria-pressed={cardOrigin === option.id}
+                  onClick={() => setCardOrigin(option.id)}
+                  className={`flex min-h-11 touch-manipulation items-center justify-center gap-1.5 rounded border px-2 py-2 text-sm font-medium transition-colors outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${cardOrigin === option.id
+                    ? "border-zinc-400 bg-zinc-600 text-white"
+                    : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700/70 hover:text-white"}`}>
+                  {option.label}<span className="text-xs tabular-nums opacity-70">{option.count}</span>
+                </button>
+              ))}
             </div>
           </fieldset>}
 
