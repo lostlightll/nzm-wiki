@@ -173,7 +173,6 @@ export default function OverlimitPageClient({
   bondCatalog,
   levelCatalog,
   mapRotation,
-  season,
   basePath = "/overlimit",
   sourceSeason,
   existingCardIds,
@@ -433,12 +432,8 @@ export default function OverlimitPageClient({
   return (
     <>
       <OverlimitVersionNavigation versions={versions} activePath={basePath} />
-      <header className="mb-6 flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-3xl font-bold text-white">超限图鉴</h1>
-          <p className="mt-2 text-sm text-zinc-400">{season.label} · {season.status === "preload" ? "预下载内容，以正式上线为准" : "当前赛季"}</p>
-        </div>
-        <p className="text-xs text-zinc-500">更新于 <time dateTime={season.updatedAt}>{season.updatedAt.slice(0, 10)}</time></p>
+      <header className="mb-6">
+        <h1 className="text-3xl font-bold text-white">超限图鉴</h1>
       </header>
 
       <nav
