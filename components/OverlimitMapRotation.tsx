@@ -98,10 +98,14 @@ function BondDisplay({
   activeBonds,
   bondNames,
   detailed,
+  desktopColumns = 9,
+  compact = false,
 }: {
   activeBonds: OverlimitBondName[];
   bondNames: OverlimitBondName[];
   detailed: boolean;
+  desktopColumns?: number;
+  compact?: boolean;
 }) {
   const activeBondSet = new Set(activeBonds);
 
@@ -144,14 +148,14 @@ function BondDisplay({
         }`}
       >
         <div className="min-h-0 overflow-hidden">
-          <div className="grid grid-cols-3 gap-1.5 lg:grid-cols-[repeat(var(--bond-columns),minmax(0,1fr))]" style={{ "--bond-columns": Math.min(9, Math.max(1, bondNames.length)) } as CSSProperties}>
+          <div className={`grid grid-cols-3 gap-1.5 lg:grid-cols-[repeat(var(--bond-columns),minmax(0,1fr))] ${compact ? "lg:gap-1" : ""}`} style={{ "--bond-columns": Math.min(desktopColumns, Math.max(1, bondNames.length)) } as CSSProperties}>
             {bondNames.map((bond, index) => {
               const active = activeBondSet.has(bond);
 
               return (
                 <div
                   key={bond}
-                  className={`flex min-h-[68px] min-w-0 flex-col items-center justify-center gap-1 rounded border px-1.5 py-2 text-center transition-[opacity,transform] duration-200 motion-reduce:transition-none ${
+                  className={`flex min-h-[68px] min-w-0 flex-col items-center justify-center gap-1 rounded border px-1.5 py-2 text-center transition-[opacity,transform] duration-200 motion-reduce:transition-none ${compact ? "lg:px-0.5" : ""} ${
                     active
                       ? "shadow-sm"
                       : "border-zinc-800 text-zinc-500"
@@ -167,7 +171,7 @@ function BondDisplay({
                     transitionDelay: detailed ? `${60 + index * 12}ms` : "0ms",
                   }}
                 >
-                  <span className="flex min-w-0 flex-wrap items-center justify-center gap-1 text-xs font-medium">
+                  <span className={`flex min-w-0 flex-wrap items-center justify-center gap-1 text-xs font-medium ${compact ? "lg:flex-col lg:gap-0.5 lg:text-[10px] xl:text-[11px]" : ""}`}>
                     <OverlimitBondIcon name={bond} active={active} />
                     <span className="min-w-0 break-words">{bond}</span>
                   </span>
@@ -203,7 +207,7 @@ function BondSearchButton({
       onClick={() => onSearchBonds(map.activeBonds)}
       aria-label={`检索${map.name}的上架羁绊`}
       title={`检索${map.name}的上架羁绊`}
-      className={`z-20 flex h-7 min-w-16 shrink-0 cursor-pointer touch-manipulation items-center justify-center gap-1 rounded border border-zinc-600 bg-zinc-950/80 px-2 text-zinc-200 shadow-sm backdrop-blur-sm transition-colors before:absolute before:-inset-y-2 before:inset-x-0 before:content-[''] hover:border-zinc-400 hover:bg-zinc-800 hover:text-white outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
+      className={`z-20 flex h-7 min-w-16 shrink-0 cursor-pointer touch-manipulation items-center justify-center gap-1 rounded border border-zinc-600 bg-zinc-950/80 px-2 text-zinc-200 shadow-sm backdrop-blur-sm transition-[right,color,background-color,border-color] duration-300 ease-out motion-reduce:transition-none before:absolute before:-inset-y-2 before:inset-x-0 before:content-[''] hover:border-zinc-400 hover:bg-zinc-800 hover:text-white outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
         variant === "schedule"
           ? "absolute right-2 top-4 md:right-[calc(50%+0.5rem)]"
           : "absolute right-2 top-2"
@@ -240,7 +244,7 @@ function CurrentMapCard({
         {map.name}
       </h3>
       <div className="relative z-10">
-        <BondDisplay activeBonds={map.activeBonds} bondNames={bondNames} detailed={detailed} />
+        <BondDisplay activeBonds={map.activeBonds} bondNames={bondNames} detailed={detailed} desktopColumns={10} compact />
       </div>
     </article>
   );
@@ -323,7 +327,7 @@ function SchedulePeriod({
               {map.name}
             </h4>
             <div className="relative z-10">
-              <BondDisplay activeBonds={map.activeBonds} bondNames={bondNames} detailed={detailed} />
+              <BondDisplay activeBonds={map.activeBonds} bondNames={bondNames} detailed={detailed} desktopColumns={10} compact />
             </div>
           </article>
         ))}
