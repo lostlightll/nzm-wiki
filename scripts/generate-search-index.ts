@@ -15,9 +15,12 @@ import type { OverlimitCatalog } from "../lib/overlimit-catalog";
 import { getStatusEffectSearchDocuments } from "../lib/status-effects";
 import { getSummonSearchDocuments } from "../lib/summons";
 import { getAllResolvedWeapons } from "../lib/weapons";
+import { getAllPublishedPerks, getPerkDocument } from "../lib/perks";
+import { getPerkPreviewCatalog } from "../lib/perk-preview";
+import { getActivePreview, isPreviewSeason } from "../lib/content-preview";
 import { getS2TalentTree, S2_TALENT_IDS } from "../lib/s2-season-talents";
 import { getLegacyTalentCatalog } from "../lib/s0s1-season-talents";
-import type { OverlimitCard } from "../types";
+import type { OverlimitCard, Perk } from "../types";
 
 export interface SearchItem {
   title: string;
@@ -126,8 +129,8 @@ export function scanDirectory(dirPath: string, relativePath: string = ""): Searc
     const fullPath = path.join(dirPath, entry.name);
 
     if (entry.isDirectory()) {
-      // 武器条目由 Resolver 单独注入；TD 沿用现有规则，不单独索引。
-      if (entry.name === "weapons") continue;
+      // 武器及插件从发布服务注入，预览编辑草稿不生成路由。
+      if (["weapons", "perks", "perk-preview"].includes(entry.name)) continue;
       // 路由组目录（以括号开头）不包含在 slug 中
       if (entry.name.startsWith("(")) {
         results.push(...scanDirectory(fullPath, relativePath));
@@ -285,6 +288,36 @@ function buildPinyin(texts: readonly string[]): string[] {
 
 function cleanSearchText(value: string): string {
   return value.replace(/<[^>]+>/g, "").replace(/\*\*/g, "");
+}
+
+export function createPerkSearchItem(
+  perk: Perk,
+  metadata: Record<string, unknown> = {},
+): SearchItem {
+  const label = isPreviewSeason(perk.season)
+    ? getActivePreview()?.label ?? perk.season
+    : undefined;
+  const extraKeywords = [metadata.keywords, metadata.tag, metadata.tags]
+    .flatMap((value) => Array.isArray(value) ? value : [value])
+    .filter((value): value is string => typeof value === "string");
+  const keywords = [...new Set([
+    perk.name,
+    perk.id,
+    perk.itemId,
+    `${perk.slot}号槽位`,
+    String(perk.rarity),
+    ...(perk.weaponNames ?? []),
+    ...extraKeywords,
+    ...(label ? [label, "预览"] : []),
+  ])];
+  return {
+    title: label ? `${perk.name} · ${label}` : perk.name,
+    slug: `perks/${perk.slug}`,
+    path: `/perks/${perk.slug}`,
+    category: "特性",
+    keywords,
+    pinyin: buildPinyin([perk.name, ...keywords]),
+  };
 }
 
 export function createOverlimitCardSearchItem(card: OverlimitCard, edition?: { basePath: string; label: string }): SearchItem {
@@ -456,6 +489,14 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
   console.log("Generating search index...");
 
   const items = scanDirectory(baseDir);
+  items.push(...getAllPublishedPerks().map((perk) =>
+    createPerkSearchItem(perk, getPerkDocument(perk.slug).metadata)));
+  const perkPreview = getPerkPreviewCatalog();
+  if (perkPreview) {
+    const title = `${perkPreview.season.label} 插件图鉴`;
+    const keywords = [perkPreview.season.label, "插件", "特性", "预览"];
+    items.push({ title, slug: "perks/preview", path: "/perks/preview", category: "特性", keywords, pinyin: buildPinyin([title, ...keywords]) });
+  }
   const damageSourceKeywords = [
     "伤害来源",
     "射击伤害",

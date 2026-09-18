@@ -21,13 +21,13 @@ function required(key: keyof typeof values): string {
 async function archiveCurrent(includePreview = false) {
   const release = readRelease(root);
   if (release.phase !== "current") throw new Error("Finalize a candidate before archiving it as a release");
-  const [{ getAllPerks }, { getOverlimitCatalog }] = await Promise.all([
+  const [{ getAllPublishedPerks }, { getOverlimitCatalog }] = await Promise.all([
     import("../../lib/perks"), import("../../lib/overlimit"),
   ]);
-  assertReleaseReady(release, getOverlimitCatalog(), getAllPerks());
+  assertReleaseReady(release, getOverlimitCatalog(), getAllPublishedPerks());
   const preview = release.preview;
   if (includePreview && !preview) throw new Error("No active preview is registered");
-  if (includePreview && getAllPerks().some(perk => isPreviewSeason(perk.season) && perk.season !== getPreviewSeasonKey(preview!))) {
+  if (includePreview && getAllPublishedPerks().some(perk => isPreviewSeason(perk.season) && perk.season !== getPreviewSeasonKey(preview!))) {
     throw new Error("Preview content does not match the registered transition");
   }
   const snapshot = await captureCurrent(root, { includePreview });
@@ -76,10 +76,10 @@ async function main() {
     case "finalize": {
       const release = readRelease(root);
       if (release.phase !== "candidate") throw new Error("Only a candidate can be finalized");
-      const [{ getAllPerks }, { getOverlimitCatalog }] = await Promise.all([
+      const [{ getAllPublishedPerks }, { getOverlimitCatalog }] = await Promise.all([
         import("../../lib/perks"), import("../../lib/overlimit"),
       ]);
-      assertReleaseReady(release, getOverlimitCatalog(), getAllPerks());
+      assertReleaseReady(release, getOverlimitCatalog(), getAllPublishedPerks());
       // Explicit fixed command only; no shell interpolation of user-provided identifiers.
       execFileSync(process.platform === "win32" ? "cmd.exe" : "pnpm", process.platform === "win32"
         ? ["/d", "/s", "/c", "pnpm build"] : ["build"], { cwd: root, stdio: "inherit", windowsHide: true });

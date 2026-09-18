@@ -7,7 +7,7 @@ const id = z.string().regex(/^\d+$/);
 const date = z.iso.date();
 const asset = z.string().regex(/^\/(?!\/)(?!.*\.\.)[^?#]+$/);
 const effectStage = z.strictObject({ condition: text.optional(), value: text });
-const effect = z.discriminatedUnion("kind", [
+export const resolvedPerkEffectSchema = z.discriminatedUnion("kind", [
   z.strictObject({ kind: z.literal("damage"), modifierTypeId: text, label: text, stages: z.array(effectStage).min(1) }),
   z.strictObject({ kind: z.literal("stat"), statId: text, label: text, stages: z.array(effectStage).min(1) }),
 ]);
@@ -20,10 +20,10 @@ const cardSchema = z.strictObject({
   verification: z.strictObject({ status: z.literal("partial"), note: text }).optional(),
   weaponType: z.array(z.number().int()), weaponItems: z.array(z.number().int()), weaponNames: z.array(text),
   tags: z.array(z.strictObject({ id, name: text, icon: z.union([asset, z.literal("")]), tone: z.string() })),
-  effectValues: z.array(effect).min(1).optional(),
+  effectValues: z.array(resolvedPerkEffectSchema).min(1).optional(),
 }) satisfies z.ZodType<OverlimitCard>;
 const permission = z.union([z.boolean(), z.literal("不适用"), z.null()]);
-const damage = z.strictObject({
+export const independentDamageEntrySchema = z.strictObject({
   name: text, href: text.optional(), perkSlug: text.optional(), overlimitId: id.optional(),
   trigger: text, interval: text, numericalId: text, damageType: text, damageValue: text,
   toughness: z.union([z.number(), text]), element: text,
@@ -57,7 +57,7 @@ export const overlimitCatalogSchema = z.strictObject({
   provenance: z.strictObject({ contentRoot: text, note: text,
     files: z.array(z.strictObject({ path: text, sha256: z.string().regex(/^[a-f0-9]{64}$/) })).min(1) }),
   cards: z.array(cardSchema).min(1),
-  independentDamage: z.record(id, z.array(damage).min(1)),
+  independentDamage: z.record(id, z.array(independentDamageEntrySchema).min(1)),
   bonds: bonds.nullable(), levels: levels.nullable(), mapRotation: rotation.nullable(),
 }).superRefine((catalog, ctx) => {
   const ids = new Set<string>();

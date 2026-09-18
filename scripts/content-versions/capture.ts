@@ -8,6 +8,8 @@ import type { MultiplierRelation } from "../../lib/multiplier-data";
 import { parseOverlimitCatalog } from "../../lib/overlimit-catalog";
 import { catalogAssets, CURRENT_FILE } from "../overlimit/catalog";
 import { isPreviewSeason } from "../../lib/content-preview";
+import { parsePerkPreviewCatalog, type PerkPreviewEntry } from "../../lib/perk-preview-catalog";
+import { isDeepStrictEqual } from "node:util";
 
 export interface CaptureOptions { includePreview?: boolean }
 export interface CaptureInput {
@@ -29,14 +31,26 @@ export function assembleCapture(root: string, input: CaptureInput, options: Capt
   const identities = new Set<string>();
   const slugs = new Set<string>();
   for (const perk of input.perks) {
-    if (!perk.itemId || identities.has(perk.itemId)) throw new Error(`Duplicate or missing perk ItemID: ${perk.itemId}`);
-    if (!/^slot-[1-4]\/[^/\\]+$/.test(perk.slug) || perk.slug.includes("..") || slugs.has(perk.slug)) {
+    const identity = `${isPreview(perk) ? "preview" : "current"}:${perk.itemId}`;
+    if (!perk.itemId || identities.has(identity)) throw new Error(`Duplicate or missing perk ItemID: ${identity}`);
+    const slugPattern = isPreview(perk) ? /^preview\/slot-[1-4]\/[^/\\]+$/ : /^slot-[1-4]\/[^/\\]+$/;
+    if (!slugPattern.test(perk.slug) || perk.slug.includes("..") || slugs.has(perk.slug)) {
       throw new Error(`Invalid or duplicate perk slug: ${perk.slug}`);
     }
-    identities.add(perk.itemId);
+    identities.add(identity);
     slugs.add(perk.slug);
   }
   const perks = input.perks.filter(perk => options.includePreview || !isPreview(perk));
+  const publishedPreview = new Map<string, PerkPreviewEntry>();
+  if (perks.some(isPreview)) {
+    const file = "data/perk-preview/preview.json";
+    files[file] = read(file);
+    const snapshot = parsePerkPreviewCatalog(JSON.parse(files[file].toString("utf8")));
+    for (const entry of snapshot.entries) publishedPreview.set(entry.perk.slug, entry);
+    if (snapshot.entries.length !== perks.filter(isPreview).length) {
+      throw new Error("Published perk preview changed during capture");
+    }
+  }
   const selectedSlugs = new Set(perks.map(perk => perk.slug));
   const assets = new Set(catalogAssets(catalog));
   let previewSummary: { version: string; cards: number; bonds: number; mapPeriods: number } | undefined;
@@ -59,8 +73,18 @@ export function assembleCapture(root: string, input: CaptureInput, options: Capt
     }
   }
   for (const perk of perks) {
-    const relative = `data/perks/${perk.slug}.mdx`;
-    files[relative] = read(relative);
+    const relative = isPreview(perk)
+      ? `data/perk-preview/${perk.slug.slice("preview/".length)}.mdx`
+      : `data/perks/${perk.slug}.mdx`;
+    if (isPreview(perk)) {
+      const entry = publishedPreview.get(perk.slug);
+      if (!entry || !isDeepStrictEqual(entry.perk, perk)) {
+        throw new Error(`Published perk preview changed during capture: ${perk.slug}`);
+      }
+      files[relative] = Buffer.from(entry.source);
+    } else {
+      files[relative] = read(relative);
+    }
     const raw = matter(files[relative].toString("utf8")).data;
     if (String(raw.id) !== perk.itemId || raw.season !== perk.season) {
       throw new Error(`Perk source changed during capture: ${relative}`);
@@ -80,7 +104,7 @@ export function assembleCapture(root: string, input: CaptureInput, options: Capt
   });
   const cardIds = new Set(catalog.cards.map(card => card.id));
   files["frozen/relations.json"] = json(input.relations.filter(({ source }) => {
-    if (source?.type === "perk") return selectedSlugs.has(`slot-${source.slot}/${source.slug}`);
+    if (source?.type === "perk") return selectedSlugs.has(`${isPreviewSeason(source.season) ? "preview/" : ""}slot-${source.slot}/${source.slug}`);
     if (source?.type === "overlimit-card") return source.season
       ? source.season === previewSeason && previewCatalog?.cards.some(card => card.id === source.id) : cardIds.has(source.id);
     if (source?.type === "overlimit-bond") return (source.season
@@ -118,16 +142,18 @@ export async function captureCurrent(root: string, options: CaptureOptions = {})
       fs.realpathSync(root) !== fs.realpathSync(projectRoot)) {
     throw new Error("Capture must run from this project's root; runtime readers are bound to cwd and imported project data");
   }
-  const [{ getAllPerks }, { getIndependentDamageByPerkSlug }, { getTriggerDamageByPerkSlug }, { PROVIDER_RELATIONS }] = await Promise.all([
+  const [{ getAllPublishedPerks }, { getIndependentDamageByPerkSlug }, { getTriggerDamageByPerkSlug }, { PROVIDER_RELATIONS }, { getPerkPreviewEntry }] = await Promise.all([
     import("../../lib/perks"), import("../../lib/independent-damage"),
-    import("../../lib/trigger-damage"), import("../../lib/multiplier-data"),
+    import("../../lib/trigger-damage"), import("../../lib/multiplier-data"), import("../../lib/perk-preview"),
   ]);
-  const perks = getAllPerks();
+  const perks = getAllPublishedPerks();
   const independentDamage: Record<string, TriggerDamageEntry[]> = {};
   for (const perk of perks) {
     if (!options.includePreview && isPreview(perk)) continue;
     // The common API rereads all MDX. Use it only for actual weapon references.
-    if (perk.independentDamageSources?.length) {
+    if (isPreview(perk)) {
+      independentDamage[perk.slug] = getPerkPreviewEntry(perk.slug)?.independentDamage ?? [];
+    } else if (perk.independentDamageSources?.length) {
       independentDamage[perk.slug] = await getIndependentDamageByPerkSlug(perk.slug);
     } else {
       const trigger = getTriggerDamageByPerkSlug(perk.slug);

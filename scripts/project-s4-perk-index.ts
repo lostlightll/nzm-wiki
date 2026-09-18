@@ -17,8 +17,9 @@ const preview = read("data/perk-preview-modifiers.json");
 const registry = read("data/modifier-providers.json");
 const local = new Map<string, { file: string; slug: string; data: Record<string, unknown> }>();
 for (const slot of [1, 2, 3, 4]) {
-  for (const file of fs.readdirSync(`data/perks/slot-${slot}`).filter(file => file.endsWith(".mdx"))) {
-    const filePath = `data/perks/slot-${slot}/${file}`;
+  const directory = `data/perk-preview/slot-${slot}`;
+  for (const file of (fs.existsSync(directory) ? fs.readdirSync(directory) : []).filter(file => file.endsWith(".mdx"))) {
+    const filePath = `${directory}/${file}`;
     const { data } = matter.read(filePath);
     local.set(String(data.id), { file: filePath, slug: file.slice(0, -4), data });
   }
@@ -79,13 +80,21 @@ const exclusions = reference.exclusions.filter(entry => entry.id !== pureLight.i
   reason: entry.reason,
   evidence: { basis: [provenance, entry.reason] },
 }));
-const ids = new Set([...providers, ...exclusions].map(entry => entry.id));
-registry.providers = [...registry.providers.filter((entry: { id: string }) => !ids.has(entry.id)), ...providers];
-registry.exclusions = [...registry.exclusions.filter((entry: { id: string }) => !ids.has(entry.id)), ...exclusions];
+for (const entry of [...providers, ...exclusions]) {
+  const existing = [...registry.providers, ...registry.exclusions].find((candidate: {
+    source: { type: string; season?: string; itemId?: string };
+  }) => candidate.source.type === "perk" && candidate.source.season === "s4-preview" && candidate.source.itemId === entry.source.itemId);
+  entry.id = existing?.id ?? `perk:s4-preview:${entry.source.itemId}`;
+}
+const itemIds = new Set([...providers, ...exclusions].map(entry => entry.source.itemId));
+const isReplaced = (entry: { source: { type: string; season?: string; itemId?: string } }) =>
+  entry.source.type === "perk" && entry.source.season === "s4-preview" && itemIds.has(entry.source.itemId ?? "");
+registry.providers = [...registry.providers.filter((entry: Parameters<typeof isReplaced>[0]) => !isReplaced(entry)), ...providers];
+registry.exclusions = [...registry.exclusions.filter((entry: Parameters<typeof isReplaced>[0]) => !isReplaced(entry)), ...exclusions];
 parseModifierProviderRegistry(registry);
 preview.source.sha256 = createHash("sha256").update(numericalBytes).digest("hex");
-for (const id of ids) {
-  const item = local.get(id.slice("perk:".length))!;
+for (const id of itemIds) {
+  const item = local.get(id)!;
   if (item.data.season === "s4-preview") continue;
   const original = fs.readFileSync(item.file, "utf8");
   if (!/^season: .+$/m.test(original)) throw new Error(`Missing season: ${item.file}`);

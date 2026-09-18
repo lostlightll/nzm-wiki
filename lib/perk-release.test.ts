@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { getShanghaiDateKey, isValidDateKey } from "./date-key";
-import { getPerkAvailability, isPerkRecent } from "./perk-release";
+import { getPerkAvailability, getPerkConfiguredAvailability, isPerkRecent } from "./perk-release";
 
 const ONLINE_PERK = {
   collectModItem: 1 as const,
@@ -17,9 +17,16 @@ test("各赛季预览与正式上线、未上线状态独立，不受收集开�
     for (const collectModItem of [0, 1] as const) {
       const perk = { ...ONLINE_PERK, season, collectModItem };
       assert.equal(getPerkAvailability(perk), "preview");
+      assert.equal(getPerkConfiguredAvailability(perk), collectModItem === 1 ? "online" : "offline");
       assert.equal(isPerkRecent(perk, "2026-07-24"), false);
     }
   }
+});
+
+test("configured availability only treats CollectMODItem=1 as online", () => {
+  assert.equal(getPerkConfiguredAvailability({ collectModItem: 1 }), "online");
+  assert.equal(getPerkConfiguredAvailability({ collectModItem: 0 }), "offline");
+  assert.equal(getPerkConfiguredAvailability({}), "offline");
 });
 
 test("正式赛季插件按实际投放状态分类，正式上线后可进入近期上线", () => {

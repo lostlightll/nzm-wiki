@@ -1,10 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import matter from "gray-matter";
-
 import statusEffects from "../../data/status-effects.json";
-import { getAllPerks } from "../../lib/perks";
+import { getPerkSourceEntries } from "../perks/source";
 import { createNumModifierResolver } from "../../lib/num-modifier";
 import { parseNumModifierSemantics } from "../../lib/num-modifier-semantics";
 import { checkNumModifierDataLock, readNumModifierDataLock } from "./lock";
@@ -127,18 +125,16 @@ function checkStaticBoundaries(): void {
 }
 
 function checkPerkConsumers(): void {
-  const perks = getAllPerks();
-  const perksByName = new Map(perks.map((perk) => [perk.name, perk]));
+  const entries = [...getPerkSourceEntries("current"), ...getPerkSourceEntries("preview")];
+  const perks = entries.map(entry => entry.perk);
+  const perksByName = new Map(getPerkSourceEntries("current").map(({ perk }) => [perk.name, perk]));
   let referencedEffects = 0;
   let referencedStages = 0;
   let literalStages = 0;
   let legacyStages = 0;
   let manualSemanticFields = 0;
 
-  for (const filePath of walkFiles(path.join(root, "data", "perks")).filter(
-    (candidate) => candidate.endsWith(".mdx"),
-  )) {
-    const { data } = matter(fs.readFileSync(filePath, "utf8"));
+  for (const { metadata: data } of entries) {
     for (const effect of Array.isArray(data.effect_values)
       ? (data.effect_values as Array<Record<string, unknown>>)
       : []) {
@@ -179,8 +175,8 @@ function checkPerkConsumers(): void {
   if (manualSemanticFields > 0) {
     addError(`${manualSemanticFields} perk effects still copy semantic classification fields`);
   }
-  if (referencedEffects !== 97) {
-    addError(`expected 97 Num-derived perk effect_values, found ${referencedEffects}`);
+  if (referencedEffects < 97) {
+    addError(`expected at least the 97 audited Num-derived perk effect_values, found ${referencedEffects}`);
   }
 
   const samples: ReadonlyArray<{

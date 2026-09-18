@@ -49,7 +49,7 @@ const speedrunCardsById = new Map(
 const hydratedOverlimitCards = getAllOverlimitCards();
 const overlimitProviders = MULTIPLIER_PROVIDERS.filter(
   (provider) =>
-    provider.source.type === "perk" && linkedPerkIds.has(provider.source.itemId),
+    provider.source.type === "perk" && !isPreviewSeason(provider.source.season) && linkedPerkIds.has(provider.source.itemId),
 );
 const overlimitProviderByItemId = new Map(
   overlimitProviders.map((provider) => [provider.source.itemId, provider]),
@@ -71,7 +71,7 @@ function runtimeSourcesForProvider(provider: (typeof MULTIPLIER_PROVIDERS)[numbe
   const result: MultiplierSource[] = [];
   switch (source.type) {
     case "perk":
-      result.push({ type: "perk", slot: source.slot, slug: source.slug });
+      result.push({ type: "perk", slot: source.slot, slug: source.slug, season: source.season });
       for (const card of getOverlimitLinksForPerk(source.itemId, source.season)) {
         result.push({ type: "overlimit-card", id: card.id, ...(source.season ? { season: source.season } : {}) });
       }
@@ -115,7 +115,7 @@ for (const provider of MULTIPLIER_PROVIDERS) {
   const source = provider.source;
   switch (source.type) {
     case "perk":
-      requireFile(`data/perks/slot-${source.slot}/${source.slug}.mdx`, provider.id);
+      requireFile(`data/${isPreviewSeason(source.season) ? "perk-preview" : "perks"}/slot-${source.slot}/${source.slug}.mdx`, provider.id);
       break;
     case "weapon":
       requireFile(`data/weapons/${source.slug}.mdx`, provider.id);
@@ -185,26 +185,31 @@ for (const exclusion of MULTIPLIER_PROVIDER_EXCLUSIONS) {
   if (!exclusion.reason.trim()) errors.push(`${exclusion.id} 缺少排除理由`);
 }
 
-const perkRoot = path.join(root, "data", "perks");
 const perkCandidates = new Map<string, string>();
-for (const slotDirectory of fs.readdirSync(perkRoot, { withFileTypes: true })) {
-  if (!slotDirectory.isDirectory()) continue;
-  for (const file of fs.readdirSync(path.join(perkRoot, slotDirectory.name))) {
-    if (!file.endsWith(".mdx")) continue;
-    const parsed = matter(
-      fs.readFileSync(path.join(perkRoot, slotDirectory.name, file), "utf8"),
-    );
-    const itemId = String(parsed.data.id);
-    if (
-      Number(parsed.data.CollectMODItem) === 1 || isPreviewSeason(parsed.data.season) ||
-      linkedPerkIds.has(itemId)
-    ) {
-      perkCandidates.set(`perk:${itemId}`, String(parsed.data.title));
+const coveredPerks = new Set([...sourceRegistry.providers, ...sourceRegistry.exclusions].flatMap(({ source }) =>
+  source.type === "perk" ? [`perk:${isPreviewSeason(source.season) ? `${source.season}:` : ""}${source.itemId}`] : []));
+for (const directory of ["perks", "perk-preview"]) {
+  const perkRoot = path.join(root, "data", directory);
+  if (!fs.existsSync(perkRoot)) continue;
+  for (const slotDirectory of fs.readdirSync(perkRoot, { withFileTypes: true })) {
+    if (!slotDirectory.isDirectory()) continue;
+    for (const file of fs.readdirSync(path.join(perkRoot, slotDirectory.name))) {
+      if (!file.endsWith(".mdx")) continue;
+      const parsed = matter(
+        fs.readFileSync(path.join(perkRoot, slotDirectory.name, file), "utf8"),
+      );
+      const itemId = String(parsed.data.id);
+      if (
+        Number(parsed.data.CollectMODItem) === 1 || isPreviewSeason(parsed.data.season) ||
+        linkedPerkIds.has(itemId)
+      ) {
+        perkCandidates.set(`perk:${isPreviewSeason(parsed.data.season) ? `${parsed.data.season}:` : ""}${itemId}`, String(parsed.data.title));
+      }
     }
   }
 }
 for (const [id, label] of perkCandidates) {
-  if (!coveredIds.has(id)) errors.push(`插件/卡片候选未处理：${id} ${label}`);
+  if (!coveredPerks.has(id)) errors.push(`插件/卡片候选未处理：${id} ${label}`);
 }
 for (const itemId of linkedPerkIds) {
   if (!perkCandidates.has(`perk:${itemId}`)) {

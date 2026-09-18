@@ -3,6 +3,8 @@ import path from "path";
 import matter from "gray-matter";
 import { LEGACY_TALENT_CATALOG, legacyTalentHref } from "../lib/s0s1-talent-presentation";
 import { getOverlimitCatalog, getOverlimitPreviewCatalog } from "../lib/overlimit";
+import { getAllPublishedPerks } from "../lib/perks";
+import { getPerkPreviewCatalog } from "../lib/perk-preview";
 
 const SITE_URL = "https://nzm-wiki.pages.dev";
 const baseDir = path.join(process.cwd(), "data");
@@ -38,6 +40,8 @@ function scanDirectory(dirPath: string, relativePath: string = ""): PageEntry[] 
     const fullPath = path.join(dirPath, entry.name);
 
     if (entry.isDirectory()) {
+      // 插件只从正式发布服务和预览投影收录，不扫描预览编辑草稿。
+      if (["perks", "perk-preview"].includes(entry.name)) continue;
       if (entry.name.startsWith("(")) {
         results.push(...scanDirectory(fullPath, relativePath));
       } else {
@@ -99,6 +103,7 @@ function generateSitemap() {
   console.log("Generating sitemap...");
 
   const pages = scanDirectory(baseDir);
+  pages.push(...getAllPublishedPerks().map((perk) => ({ url: `/perks/${perk.slug}` })));
   const overlimit = getOverlimitCatalog();
   const overlimitPreview = getOverlimitPreviewCatalog();
 
@@ -107,6 +112,7 @@ function generateSitemap() {
     { url: "/" },
     { url: "/weapons" },
     { url: "/perks" },
+    ...(getPerkPreviewCatalog() ? [{ url: "/perks/preview" }] : []),
     { url: "/overlimit", lastmod: overlimit.season.updatedAt },
     ...(overlimitPreview ? [{ url: "/overlimit/preview", lastmod: overlimitPreview.season.updatedAt }] : []),
     { url: "/tower-defense" },

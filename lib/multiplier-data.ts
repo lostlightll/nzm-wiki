@@ -1,6 +1,7 @@
 import rawMultiplierData from "@/data/guides/multiplier.json";
 import rawProviderRuntime from "@/data/guides/multiplier-providers-runtime.json";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
+import { isPreviewSeason } from "@/lib/content-preview";
 import { getModifierAttributesForFacet } from "@/lib/modifier-index";
 import { getOverlimitLink, getOverlimitLinksForPerk, hasOverlimitBondStage } from "@/lib/overlimit-links";
 import type { ElementType, WeaponType } from "@/types";
@@ -37,7 +38,7 @@ export type DamageChannelStatus = (typeof DAMAGE_CHANNEL_STATUSES)[number];
 
 export type MultiplierSource =
   | { type: "weapon"; slug: string; anchor?: string }
-  | { type: "perk"; slot: 1 | 2 | 3 | 4; slug: string; anchor?: string }
+  | { type: "perk"; slot: 1 | 2 | 3 | 4; slug: string; season?: string; anchor?: string }
   | { type: "card"; slug: string; anchor?: string }
   | { type: "overlimit-card"; id: string; season?: string; anchor?: string }
   | {
@@ -578,7 +579,7 @@ export function resolveMultiplierSourceHref(source: MultiplierSource): string {
       return withAnchor(`/weapons/${encodeURIComponent(source.slug)}`, source.anchor);
     case "perk":
       return withAnchor(
-        `/perks/slot-${source.slot}/${encodeURIComponent(source.slug)}`,
+        `/perks/${isPreviewSeason(source.season) ? "preview/" : ""}slot-${source.slot}/${encodeURIComponent(source.slug)}`,
         source.anchor,
       );
     case "card":
@@ -618,7 +619,7 @@ function sourceIndexKey(source: MultiplierSource): string {
     case "weapon":
       return `weapon:${source.slug}`;
     case "perk":
-      return `perk:${source.slot}:${source.slug}`;
+      return `perk:${isPreviewSeason(source.season) ? `${source.season}:` : ""}${source.slot}:${source.slug}`;
     case "card":
       return `card:${source.slug}`;
     case "overlimit-card":
@@ -664,6 +665,7 @@ function buildProviderRelations(): MultiplierRelation[] {
           type: "perk",
           slot: source.slot,
           slug: source.slug,
+          ...(source.season ? { season: source.season } : {}),
           anchor: "multiplier-provider",
         });
         for (const card of getOverlimitLinksForPerk(source.itemId, source.season)) {

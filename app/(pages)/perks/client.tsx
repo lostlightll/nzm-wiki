@@ -4,10 +4,12 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { getAssetPath } from "@/lib/path";
 import { getShanghaiDateKey } from "@/lib/date-key";
-import { getPerkAvailability, isPerkRecent } from "@/lib/perk-release";
-import { getActivePreview, getPreviewSeasonKey, isPreviewSeason } from "@/lib/content-preview";
+import { getPerkAvailability, getPerkConfiguredAvailability, isPerkRecent } from "@/lib/perk-release";
+import { isPreviewSeason } from "@/lib/content-preview";
+import contentVersion from "@/config/content-version.json";
+import { OverlimitVersionNavigation } from "@/components/OverlimitVersionNavigation";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
-import type { Perk, PerkSlot, Rarity } from "@/types";
+import type { Perk, PerkPreviewChange, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
 import { PerkHoverPreview } from "@/components/PerkHoverPreview";
@@ -25,22 +27,20 @@ import {
   RARITY_OPTIONS,
 } from "@/constants/perks";
 
-type QuickFilter = "online" | "recent" | "offline" | "super" | "preview";
+type QuickFilter = "online" | "recent" | "offline" | "super";
 
-const ACTIVE_PREVIEW = getActivePreview();
-const ACTIVE_PREVIEW_SEASON = ACTIVE_PREVIEW
-  ? getPreviewSeasonKey(ACTIVE_PREVIEW)
-  : undefined;
+const PREVIEW_CHANGE_OPTIONS: { type: PerkPreviewChange; label: string }[] = [
+  { type: "new", label: "新插件" },
+  { type: "changed", label: "改动插件" },
+  { type: "existing", label: "老插件" },
+];
 
 function parseQuickFilter(value: string): QuickFilter {
-  // Keep saved preview selections valid across season changes.
-  if (isPreviewSeason(value)) return "preview";
   switch (value) {
     case "online":
     case "recent":
     case "offline":
     case "super":
-    case "preview":
       return value;
     default:
       return "online";
@@ -92,14 +92,32 @@ const SUPER_PERK_NAMES = new Set([
   "近战冲击",
 ]);
 
+const PREVIEW_SUPER_PERK_NAMES = new Set([
+  ...SUPER_PERK_NAMES,
+  "弹链供给",
+  "战术速装",
+  "积光成辉",
+  "余烬积势",
+  "换弹引爆",
+  "驰射淬锋",
+  "近战衔接",
+]);
+
 const DEFAULT_RARITIES: Rarity[] = ["传说"];
 const DEFAULT_QUICK_FILTER: QuickFilter[] = ["online"];
+const DEFAULT_PREVIEW_CHANGE: PerkPreviewChange[] = ["new"];
+const PREVIEW_AVAILABILITY_OPTIONS: { type: "online" | "offline"; label: string }[] = [
+  { type: "online", label: "已上线" },
+  { type: "offline", label: "已下线" },
+];
 
 const FILTER_STORAGE_KEYS = {
   slot: "perk-slot",
   rarity: "perk-rarity",
   quickFilter: "perk-availability",
   weaponApplicability: "perk-weapon-applicability",
+  previewChange: "perk-preview-change",
+  previewAvailability: "perk-preview-availability",
 } as const;
 
 function PerkCard({ perk }: { perk: Perk }) {
@@ -141,6 +159,7 @@ function PerkCard({ perk }: { perk: Perk }) {
           type: "perk",
           slot: perk.slot,
           slug: perk.slug.split("/").at(-1) ?? perk.name,
+          ...(isPreviewSeason(perk.season) ? { season: perk.season } : {}),
         }}
         variant="catalog-overlay"
         className="absolute inset-x-0 top-0 z-10 max-w-full"
@@ -152,6 +171,8 @@ function PerkCard({ perk }: { perk: Perk }) {
 interface PerksPageClientProps {
   initialPerks: Perk[];
   initialDateKey: string;
+  channel?: "current" | "preview";
+  previewLabel?: string;
 }
 
 function useShanghaiDateKey(initialDateKey: string) {
@@ -173,7 +194,17 @@ function useShanghaiDateKey(initialDateKey: string) {
 export default function PerksPageClient({
   initialPerks,
   initialDateKey,
+  channel = "current",
+  previewLabel,
 }: PerksPageClientProps) {
+  const isPreview = channel === "preview";
+  const previewChangeState = useSelection<PerkPreviewChange>(
+    FILTER_STORAGE_KEYS.previewChange,
+    isPreview ? DEFAULT_PREVIEW_CHANGE : undefined,
+  );
+  const previewAvailabilityState = useSelection<"online" | "offline">(
+    FILTER_STORAGE_KEYS.previewAvailability,
+  );
   useEffect(() => {
     restoreCatalogNavigation();
   }, []);
@@ -190,7 +221,7 @@ export default function PerksPageClient({
   );
   const quickFilterState = useSelection<QuickFilter>(
     FILTER_STORAGE_KEYS.quickFilter,
-    DEFAULT_QUICK_FILTER,
+    isPreview ? undefined : DEFAULT_QUICK_FILTER,
     parseQuickFilter,
   );
   const quickFilterSelected = quickFilterState.selected;
@@ -203,43 +234,34 @@ export default function PerksPageClient({
     () => initialPerks.filter((perk) => isPerkRecent(perk, todayKey)).length,
     [initialPerks, todayKey],
   );
-  const hasPreviewPerks = Boolean(
-    ACTIVE_PREVIEW && initialPerks.some((perk) => perk.season === ACTIVE_PREVIEW_SEASON),
-  );
   const quickFilterOptions = useMemo(
-    () => [
+    () => isPreview ? [...PREVIEW_CHANGE_OPTIONS, BASE_QUICK_FILTER_OPTIONS[2]] : [
       BASE_QUICK_FILTER_OPTIONS[0],
       BASE_QUICK_FILTER_OPTIONS[1],
       ...(recentPerkCount > 0 ? [RECENT_QUICK_FILTER_OPTION] : []),
       BASE_QUICK_FILTER_OPTIONS[2],
-      ...(hasPreviewPerks && ACTIVE_PREVIEW
-        ? [{ type: "preview" as const, label: ACTIVE_PREVIEW.label }]
-        : []),
     ],
-    [recentPerkCount, hasPreviewPerks],
+    [recentPerkCount, isPreview],
   );
   const hasUnavailableSelection =
     (recentPerkCount === 0 && quickFilterSelected.has("recent")) ||
-    (!hasPreviewPerks && quickFilterSelected.has("preview"));
+    (isPreview && [...quickFilterSelected].some(filter => filter !== "super"));
   const effectiveQuickFilter = useMemo(() => {
     if (hasUnavailableSelection) {
-      return new Set<QuickFilter>(["online"]);
+      return new Set<QuickFilter>(isPreview ? [] : ["online"]);
     }
     return quickFilterSelected;
-  }, [quickFilterSelected, hasUnavailableSelection]);
+  }, [quickFilterSelected, hasUnavailableSelection, isPreview]);
 
   useEffect(() => {
     if (hasUnavailableSelection) {
-      selectQuickFilterOnly("online");
+      selectQuickFilterOnly(isPreview ? undefined : "online");
     }
-  }, [hasUnavailableSelection, selectQuickFilterOnly]);
+  }, [hasUnavailableSelection, selectQuickFilterOnly, isPreview]);
 
   const filteredPerks = useMemo(() => {
     return initialPerks.filter((perk) => {
       const availability = getPerkAvailability(perk);
-      if (availability === "preview" && perk.season !== ACTIVE_PREVIEW_SEASON) {
-        return false;
-      }
       const slotMatch =
         slotState.selected.size === 0 || slotState.selected.has(perk.slot);
       // 处理数字或字符串格式的稀有度
@@ -251,15 +273,20 @@ export default function PerksPageClient({
         rarityState.selected.size === 0 || rarityState.selected.has(perkRarity);
       const quickFilterMatch =
         effectiveQuickFilter.size === 0 ||
-        effectiveQuickFilter.has(availability) ||
+        (availability !== "preview" && effectiveQuickFilter.has(availability)) ||
         (effectiveQuickFilter.has("recent") && isPerkRecent(perk, todayKey)) ||
-        (effectiveQuickFilter.has("super") && SUPER_PERK_NAMES.has(perk.name));
+        (effectiveQuickFilter.has("super") &&
+          (isPreview ? PREVIEW_SUPER_PERK_NAMES : SUPER_PERK_NAMES).has(perk.name));
       const weaponApplicabilityMatch = matchesWeaponApplicability(
         weaponApplicabilityState.selected,
         perk.weaponType,
         (perk.weaponNames?.length ?? 0) > 0,
       );
       return (
+        (!isPreview || previewAvailabilityState.selected.size === 0 ||
+          previewAvailabilityState.selected.has(getPerkConfiguredAvailability(perk))) &&
+        (!isPreview || previewChangeState.selected.size === 0 ||
+          (perk.previewChange !== undefined && previewChangeState.selected.has(perk.previewChange))) &&
         slotMatch &&
         rarityMatch &&
         quickFilterMatch &&
@@ -269,6 +296,9 @@ export default function PerksPageClient({
   }, [
     effectiveQuickFilter,
     initialPerks,
+    isPreview,
+    previewChangeState.selected,
+    previewAvailabilityState.selected,
     rarityState.selected,
     slotState.selected,
     todayKey,
@@ -287,6 +317,14 @@ export default function PerksPageClient({
 
   return (
     <>
+      <OverlimitVersionNavigation
+        ariaLabel="插件赛季版本"
+        activePath={isPreview ? "/perks/preview" : "/perks"}
+        versions={[
+          { href: "/perks", label: contentVersion.version.toUpperCase() },
+          ...(previewLabel ? [{ href: "/perks/preview", label: previewLabel }] : []),
+        ]}
+      />
       <h1 className="mb-8 text-3xl font-bold text-white">插件图鉴</h1>
 
       {/* Filter section */}
@@ -317,19 +355,42 @@ export default function PerksPageClient({
           onToggle={weaponApplicabilityState.toggle}
         />
 
+        {isPreview && <h2 className="mb-3 text-lg font-semibold text-zinc-300">快速筛选</h2>}
+        <div className={isPreview ? "grid min-w-0 gap-x-6 sm:grid-cols-[minmax(0,2fr)_minmax(0,4fr)]" : undefined}>
+        {isPreview && (
+          <FilterSection
+            title="上线状态"
+            items={PREVIEW_AVAILABILITY_OPTIONS}
+            selected={previewAvailabilityState.selected}
+            onToggle={(availability) => previewAvailabilityState.selectOnly(
+              previewAvailabilityState.selected.has(availability) ? undefined : availability,
+            )}
+            gridClass="grid grid-cols-2 gap-2"
+            centerClass="justify-center"
+          />
+        )}
         <FilterSection
-          title="快速筛选"
+          title={isPreview ? "插件分类" : "快速筛选"}
           items={quickFilterOptions}
-          selected={effectiveQuickFilter}
-          onToggle={(quickFilter) =>
+          selected={new Set<QuickFilter | PerkPreviewChange>([
+            ...effectiveQuickFilter,
+            ...(isPreview ? previewChangeState.selected : []),
+          ])}
+          onToggle={(quickFilter) => {
+            if (quickFilter === "new" || quickFilter === "changed" || quickFilter === "existing") {
+              previewChangeState.toggle(quickFilter);
+              return;
+            }
             selectQuickFilterOnly(
               quickFilterSelected.has(quickFilter)
                 ? undefined
                 : quickFilter,
-            )
-          }
+            );
+          }}
           gridClass={
-            quickFilterOptions.length === 5
+            isPreview
+              ? "grid grid-cols-2 gap-2 lg:grid-cols-4"
+              : quickFilterOptions.length === 5
               ? "grid max-w-3xl grid-cols-2 gap-2 sm:grid-cols-5"
               : quickFilterOptions.length === 4
                 ? "grid max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4"
@@ -337,6 +398,7 @@ export default function PerksPageClient({
           }
           centerClass="justify-center"
         />
+        </div>
       </div>
 
       <p className="mb-4 text-sm text-zinc-500">
@@ -359,9 +421,9 @@ export default function PerksPageClient({
                 </span>
               </div>
               <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
-                {slotPerks.map((perk, index) => (
+                {slotPerks.map((perk) => (
                   <PerkCard
-                    key={perk.id || `${perk.name}-${index}`}
+                    key={perk.slug}
                     perk={perk}
                   />
                 ))}
@@ -372,8 +434,8 @@ export default function PerksPageClient({
       ) : (
         <section>
           <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
-            {filteredPerks.map((perk, index) => (
-              <PerkCard key={perk.id || `${perk.name}-${index}`} perk={perk} />
+            {filteredPerks.map((perk) => (
+              <PerkCard key={perk.slug} perk={perk} />
             ))}
           </div>
         </section>

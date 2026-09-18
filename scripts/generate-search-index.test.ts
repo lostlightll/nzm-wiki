@@ -4,12 +4,32 @@ import { getOverlimitCardById } from "../lib/overlimit-cards";
 import {
   createOverlimitCardSearchItem,
   createOverlimitPreviewSearchItems,
+  createPerkSearchItem,
   createSeasonTalentSearchItem,
   createStatusEffectSearchItem,
   createSummonSearchItem,
   getBuildGuideSearchKeywords,
 } from "./generate-search-index";
 import { getOverlimitCatalog } from "../lib/overlimit";
+import { getPerkByItemId } from "../lib/perks";
+
+test("perk search separates same-item current and preview editions", () => {
+  const perk = getPerkByItemId("20703040082");
+  assert.ok(perk);
+  const current = createPerkSearchItem(perk, { keywords: ["自定义别名"] });
+  const preview = createPerkSearchItem({
+    ...perk,
+    slug: `preview/${perk.slug}`,
+    season: "s4-preview",
+  });
+  assert.equal(current.title, perk.name);
+  assert.ok(current.keywords.includes("自定义别名"));
+  assert.equal(preview.title, `${perk.name} · S4 Preview`);
+  assert.equal(preview.path, `/perks/preview/${perk.slug}`);
+  assert.notEqual(current.path, preview.path);
+  assert.ok(preview.keywords.includes("预览"));
+  assert.ok(preview.pinyin.length > 0);
+});
 
 test("preview search scopes identical IDs and available modules to the preview route", () => {
   const catalog = structuredClone(getOverlimitCatalog());

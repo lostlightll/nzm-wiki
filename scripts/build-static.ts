@@ -10,6 +10,14 @@ function hasOverlimitPreview(): boolean {
   return fs.existsSync(previewFile) && JSON.parse(fs.readFileSync(previewFile, "utf8")) !== null;
 }
 
+function hasPerkPreview(): boolean {
+  const previewFile = path.join(process.cwd(), "data", "perk-preview", "preview.json");
+  const configFile = path.join(process.cwd(), "config", "content-version.json");
+  const config = JSON.parse(fs.readFileSync(configFile, "utf8"));
+  return Boolean(config.preview) && fs.existsSync(previewFile)
+    && JSON.parse(fs.readFileSync(previewFile, "utf8")) !== null;
+}
+
 const S4_TALENT_DATA_FILES = [
   "black-hole.json",
   "dual-star.json",
@@ -46,6 +54,9 @@ const PATHS_TO_HIDE = [
   path.join("app", "editor"),
   ...(!hasOverlimitPreview()
     ? [path.join("app", "(pages)", "overlimit", "preview")]
+    : []),
+  ...(!hasPerkPreview()
+    ? [path.join("app", "(pages)", "perks", "preview")]
     : []),
   ...(!hasPublishedBuildGuides()
     ? [path.join("app", "(pages)", "builds", "[slug]")]
@@ -98,6 +109,7 @@ try {
   console.log("[START] Preparing for static build...");
 
   execSync("pnpm overlimit check", { stdio: "inherit" });
+  execSync("pnpm perks:check", { stdio: "inherit" });
 
   console.log("[CHECK] Validating Num Modifier V2 data...");
   execSync("pnpm num-modifier:check", { stdio: "inherit" });

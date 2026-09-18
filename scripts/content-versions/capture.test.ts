@@ -32,13 +32,19 @@ function setup() {
   for (const asset of catalogAssets(catalog)) write(asset, "fixture image");
   const perks: Perk[] = [
     { id: "old", itemId: "1", slug: "slot-1/old", name: "Old", slot: 1, rarity: "史诗", category: "其他", icon: "old", effects: [] },
-    { id: "new", itemId: "2", slug: "slot-1/new", name: "New", season: "s5-preview", slot: 1, rarity: "史诗", category: "其他", icon: "new", effects: [] },
+    { id: "new", itemId: "1", slug: "preview/slot-1/old", name: "New", season: "s5-preview", slot: 1, rarity: "史诗", category: "其他", icon: "new", effects: [] },
   ];
   for (const perk of perks) {
-    write(`data/perks/${perk.slug}.mdx`, `---\nid: "${perk.itemId}"\n${perk.season ? `season: ${perk.season}\n` : ""}---\nRaw body`);
+    const source = perk.slug.startsWith("preview/") ? `data/perk-preview/${perk.slug.slice(8)}` : `data/perks/${perk.slug}`;
+    write(`${source}.mdx`, `---\nid: "${perk.itemId}"\n${perk.season ? `season: ${perk.season}\n` : ""}---\nRaw body`);
     write(`public/icons/perks/${perk.icon}.png`, "original");
     write(`public/webp/icons/perks/${perk.icon}.webp`, "optimized");
   }
+  write("data/perk-preview/preview.json", JSON.stringify({ schemaVersion: 1,
+    season: { id: "s5-preview", key: "s5-preview", label: "S5 Preview", status: "preload" },
+    provenance: { files: [{ path: "data/perk-preview/slot-1/old.mdx", sha256: "a".repeat(64) }] },
+    entries: [{ perk: perks[1], content: "Raw body", source: fs.readFileSync(path.join(root, "data/perk-preview/slot-1/old.mdx"), "utf8"),
+      metadata: { title: "New", id: "1", season: "s5-preview", slot: 1, rarity: "史诗" }, independentDamage: [] }] }));
   for (const file of ["data/num-modifier-lock.json", "data/num-modifier-semantics.json", "data/perk-preview-modifiers.json", "scripts/s4-preview-perks-review.json"]) write(file, "{}");
   const input: CaptureInput = { perks, independentDamage: {}, relations: [] };
   return { root, input, original, dispose: () => fs.rmSync(root, { recursive: true, force: true }) };
@@ -51,7 +57,8 @@ test("capture keeps exact complete overlimit catalog, bond replacement and map a
     assert.equal(result.files["data/overlimit/current.json"].toString(), f.original);
     assert.ok(result.files["public/webp/images/overlimit/maps/T_Bg_Loading_07.webp"]);
     assert.ok(result.files["data/perks/slot-1/old.mdx"]);
-    assert.equal(result.files["data/perks/slot-1/new.mdx"], undefined);
+    assert.equal(result.files["data/perk-preview/slot-1/old.mdx"], undefined);
+    assert.equal(result.files["data/perk-preview/preview.json"], undefined);
     assert.equal(result.files["public/icons/perks/new.png"], undefined);
     assert.equal(result.files["evidence/data/perk-preview-modifiers.json"], undefined);
     assert.equal(result.summary.excludedPreviewPerks, 1);
@@ -59,7 +66,9 @@ test("capture keeps exact complete overlimit catalog, bond replacement and map a
     assert.ok(Object.keys(result.files).every(file => !file.startsWith("refs/") && !file.includes("data/weapons/")));
     const preview = assembleCapture(f.root, f.input, { includePreview: true });
     assert.equal(preview.summary.previewPerks, 1);
-    assert.ok(preview.files["data/perks/slot-1/new.mdx"]);
+    assert.ok(preview.files["data/perk-preview/slot-1/old.mdx"]);
+    assert.ok(preview.files["data/perk-preview/preview.json"]);
+    assert.equal(JSON.parse(preview.files["frozen/perks.json"].toString()).perks.length, 2);
     assert.ok(preview.files["evidence/data/perk-preview-modifiers.json"]);
   } finally { f.dispose(); }
 });
@@ -70,6 +79,28 @@ test("capture refuses duplicate identities and missing optimized assets before r
     assert.throws(() => assembleCapture(f.root, { ...f.input, perks: [...f.input.perks, f.input.perks[0]] }), /Duplicate.*ItemID/);
     fs.unlinkSync(path.join(f.root, "public/webp/icons/perks/old.webp"));
     assert.throws(() => assembleCapture(f.root, f.input), /ENOENT/);
+  } finally { f.dispose(); }
+});
+
+test("preview capture preserves published source after draft edits or deletion and rejects snapshot identity drift", () => {
+  const f = setup();
+  try {
+    const relative = "data/perk-preview/slot-1/old.mdx";
+    const draft = path.join(f.root, relative);
+    const published = fs.readFileSync(draft, "utf8");
+    fs.writeFileSync(draft, "Unpublished draft");
+    assert.equal(assembleCapture(f.root, f.input, { includePreview: true }).files[relative].toString(), published);
+    fs.unlinkSync(draft);
+    assert.equal(assembleCapture(f.root, f.input, { includePreview: true }).files[relative].toString(), published);
+    const snapshotPath = path.join(f.root, "data/perk-preview/preview.json");
+    const snapshot = JSON.parse(fs.readFileSync(snapshotPath, "utf8"));
+    snapshot.entries[0].source = published.replace('id: "1"', 'id: "2"');
+    fs.writeFileSync(snapshotPath, JSON.stringify(snapshot));
+    assert.throws(() => assembleCapture(f.root, f.input, { includePreview: true }), /Perk source changed/);
+    snapshot.entries[0].source = published;
+    snapshot.entries[0].perk.description = "Changed after resolver load";
+    fs.writeFileSync(snapshotPath, JSON.stringify(snapshot));
+    assert.throws(() => assembleCapture(f.root, f.input, { includePreview: true }), /Published perk preview changed/);
   } finally { f.dispose(); }
 });
 

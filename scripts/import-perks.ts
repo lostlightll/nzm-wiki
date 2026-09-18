@@ -28,11 +28,12 @@ import path from "path";
 import crypto from "crypto";
 import matter from "gray-matter";
 import { isValidDateKey } from "../lib/date-key";
+import { getActivePreview, getPreviewSeasonKey, isPreviewSeason } from "../lib/content-preview";
 import { NUM_MODIFIER_RESOLVER } from "../lib/num-modifier-data";
 
 const ROOT_DIR = process.cwd();
 let REFS_DIR = path.join(ROOT_DIR, "refs/Exports/NZM/Content");
-const PERKS_DIR = path.join(ROOT_DIR, "data/perks");
+let PERKS_DIR = path.join(ROOT_DIR, "data/perks");
 const ICONS_DIR = path.join(ROOT_DIR, "public/icons/perks");
 const BULK_IMPORT_REPORT = path.join(
   ROOT_DIR,
@@ -1161,6 +1162,16 @@ function copyIcon(
 
 function main() {
   const options = parseArgs(process.argv.slice(2));
+  if (isPreviewSeason(options.season)) {
+    PERKS_DIR = path.join(ROOT_DIR, "data/perk-preview");
+    const preview = getActivePreview();
+    if (options.write && (!preview || options.season !== getPreviewSeasonKey(preview))) {
+      throw new Error("Preview imports must match config/content-version.json");
+    }
+    if (options.write && options.syncIcons) {
+      throw new Error("Use prepare-perk-preview.ts for preview icons; shared current icons must not be overwritten");
+    }
+  }
   if (options.help) {
     printHelp();
     return;
@@ -1527,7 +1538,7 @@ function main() {
       for (const plan of bulkImportPlans) {
         fs.mkdirSync(path.dirname(plan.filePath), { recursive: true });
         const record = { ...plan.record, icon: plan.icon };
-        fs.writeFileSync(plan.filePath, createMdx(record, "pending"), {
+        fs.writeFileSync(plan.filePath, createMdx(record, options.season), {
           encoding: "utf8",
           flag: "wx",
         });

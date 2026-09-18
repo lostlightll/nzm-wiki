@@ -85,7 +85,8 @@ test("preview icons retain numeric suffix separators through frontmatter and the
     ["光暗死神", "1312071002_1"],
     ["火神爆发", "1312074004_2"],
   ]) {
-    const perk = getPerkByName(name);
+    const perk = getPerkByName(name, "preview");
+    assert.equal(getPerkByName(name), null);
     assert.equal(perk?.icon, icon);
     assert.ok(existsSync(`public/icons/perks/${icon}.png`));
     assert.ok(existsSync(`public/webp/icons/perks/${icon}.webp`));

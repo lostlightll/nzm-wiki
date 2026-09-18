@@ -21,6 +21,23 @@ import {
 import { getOverlimitCatalog, getOverlimitPreviewCatalog } from "./overlimit";
 import { getOverlimitLinksForPerk, hasOverlimitBondStage } from "./overlimit-links";
 
+test("perk links and relations isolate preview while ordinary season labels retain current identity", () => {
+  const current = MULTIPLIER_PROVIDERS.find(provider => provider.source.type === "perk" && !provider.source.season)!;
+  assert.equal(current.source.type, "perk");
+  if (current.source.type !== "perk") return;
+  const source = current.source;
+  const currentRelations = getProviderRelationsForSource(source);
+  assert.ok(currentRelations.length > 0);
+  assert.deepEqual(getProviderRelationsForSource({ ...source, season: "s3" }), currentRelations);
+  assert.equal(resolveMultiplierSourceHref({ ...source, season: "s3" }), resolveMultiplierSourceHref(source));
+  const previewSource = { ...source, season: "s4-preview" };
+  assert.ok(resolveMultiplierSourceHref(previewSource).startsWith("/perks/preview/slot-"));
+  assert.ok(getProviderRelationsForSource(previewSource).every(relation => relation.effectId !== current.id));
+
+  const preview = MULTIPLIER_PROVIDERS.find(provider => provider.source.type === "perk" && provider.source.season === "s4-preview")!;
+  assert.ok(getProviderRelationsForSource(preview.source).every(relation => relation.sourceHref?.startsWith("/perks/preview/")));
+});
+
 test("preview audit publishes coefficient units and scoped source links instead of zero bases", () => {
   const preview = getOverlimitPreviewCatalog()!;
   const cases = [
@@ -177,7 +194,7 @@ test("current publication controls card placements without removing ordinary per
     const source = provider.source;
     if (source.type !== "perk") continue;
     const perkRelations = getProviderRelationsForSource({
-      type: "perk", slot: source.slot, slug: source.slug,
+      type: "perk", slot: source.slot, slug: source.slug, season: source.season,
     }).filter(relation => relation.effectId === provider.id);
     assert.deepEqual(perkRelations.map(relation => relation.modifierTypeId).sort(),
       [...new Set(provider.modifierTypeIds)].sort(), provider.id);

@@ -174,12 +174,15 @@ export interface PerkIndependentDamageSourceReference {
   interval: string;
 }
 
+export type PerkPreviewChange = "new" | "changed" | "existing";
+
 export interface Perk {
   id: string;
   itemId: string;
   slug: string;
   name: string;
   season?: string;
+  previewChange?: PerkPreviewChange;
   slot: PerkSlot;
   rarity: Rarity;
   category: PerkCategory;

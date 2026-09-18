@@ -56,12 +56,6 @@ const sourceRegistry = loadModifierProviderRegistry();
 const runtimeProvidersById = new Map(
   MULTIPLIER_PROVIDERS.map((provider) => [provider.id, provider]),
 );
-const providersById = new Map(
-  sourceRegistry.providers.map((provider) => [provider.id, provider]),
-);
-const exclusionsById = new Map(
-  sourceRegistry.exclusions.map((exclusion) => [exclusion.id, exclusion]),
-);
 const speedrunCardsById = new Map(
   HUNTING_SPEEDRUN_CARDS.map((card) => [card.cardId, card]),
 );
@@ -386,22 +380,28 @@ const cardIds = new Set(
   (JSON.parse(fs.readFileSync(path.join(root, "data", "overlimit", "current.json"), "utf8")) as { cards: { id: string; perkItemId?: string }[] })
     .cards.map((card) => String(card.perkItemId ?? card.id)),
 );
-for (const slotDirectory of fs.readdirSync(path.join(root, "data", "perks"), { withFileTypes: true })) {
-  if (!slotDirectory.isDirectory()) continue;
-  for (const file of fs.readdirSync(path.join(root, "data", "perks", slotDirectory.name))) {
-    if (!file.endsWith(".mdx")) continue;
-    const parsed = matter(
-      fs.readFileSync(path.join(root, "data", "perks", slotDirectory.name, file), "utf8"),
-    );
-    const itemId = String(parsed.data.id);
-    if (Number(parsed.data.CollectMODItem) === 1 || isPreviewSeason(parsed.data.season) || cardIds.has(itemId)) {
-      candidateIds.add(`perk:${itemId}`);
+for (const directory of ["perks", "perk-preview"]) {
+  const perkRoot = path.join(root, "data", directory);
+  if (!fs.existsSync(perkRoot)) continue;
+  for (const slotDirectory of fs.readdirSync(perkRoot, { withFileTypes: true })) {
+    if (!slotDirectory.isDirectory()) continue;
+    for (const file of fs.readdirSync(path.join(perkRoot, slotDirectory.name))) {
+      if (!file.endsWith(".mdx")) continue;
+      const parsed = matter(
+        fs.readFileSync(path.join(perkRoot, slotDirectory.name, file), "utf8"),
+      );
+      const itemId = String(parsed.data.id);
+      if (Number(parsed.data.CollectMODItem) === 1 || isPreviewSeason(parsed.data.season) || cardIds.has(itemId)) {
+        candidateIds.add(`perk:${isPreviewSeason(parsed.data.season) ? `${parsed.data.season}:` : ""}${itemId}`);
+      }
     }
   }
 }
 
+const coveredPerkIds = new Set([...sourceRegistry.providers, ...sourceRegistry.exclusions].flatMap(({ source }) =>
+  source.type === "perk" ? [`perk:${isPreviewSeason(source.season) ? `${source.season}:` : ""}${source.itemId}`] : []));
 const missing = [...candidateIds].filter(
-  (id) => !providersById.has(id) && !exclusionsById.has(id),
+  (id) => !coveredPerkIds.has(id),
 );
 for (const id of missing) errors.push(`缺少证据或处理决定：${id}`);
 

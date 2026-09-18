@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "8af0bc681dcc46dc3b481b3f020eebf9c85d606f793ab82a7457919ee31bb87e",
+    "modifierIndexSha256": "bedf7fa9740e91b32b2cd4de19daf90c2756bcd16ab959ebd13f008f8babaec8",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -1014,6 +1014,21 @@
         "slot": 4,
         "slug": "贯长虹",
         "overlimitCard": true
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040346",
+      "label": "贯长虹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040346",
+        "slot": 4,
+        "slug": "贯长虹",
+        "overlimitCard": false,
+        "season": "s4-preview"
       },
       "modifierTypeIds": [
         "weapon-damage"
@@ -5385,6 +5400,1558 @@
       },
       "modifierTypeIds": [
         "game-mode"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040455",
+      "label": "伤害属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040455",
+        "slot": 3,
+        "slug": "伤害属性-20703040455",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040456",
+      "label": "伤害属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040456",
+        "slot": 3,
+        "slug": "伤害属性-20703040456",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040467",
+      "label": "伤害属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040467",
+        "slot": 3,
+        "slug": "伤害属性-20703040467",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040468",
+      "label": "伤害属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040468",
+        "slot": 3,
+        "slug": "伤害属性-20703040468",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040319",
+      "label": "危险膛压",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040319",
+        "slot": 3,
+        "slug": "危险膛压",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040167",
+      "label": "叠浪效应",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040167",
+        "slot": 3,
+        "slug": "叠浪效应",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040436",
+      "label": "哑枪",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040436",
+        "slot": 3,
+        "slug": "哑枪",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040453",
+      "label": "射击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040453",
+        "slot": 3,
+        "slug": "射击属性-20703040453",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040457",
+      "label": "射击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040457",
+        "slot": 3,
+        "slug": "射击属性-20703040457",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040465",
+      "label": "射击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040465",
+        "slot": 3,
+        "slug": "射击属性-20703040465",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040451",
+      "label": "弱点属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040451",
+        "slot": 3,
+        "slug": "弱点属性-20703040451",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040463",
+      "label": "弱点属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040463",
+        "slot": 3,
+        "slug": "弱点属性-20703040463",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040408",
+      "label": "弱肉强食",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040408",
+        "slot": 3,
+        "slug": "弱肉强食",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040175",
+      "label": "强袭子弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040175",
+        "slot": 3,
+        "slug": "强袭子弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040435",
+      "label": "我只射击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040435",
+        "slot": 3,
+        "slug": "我只射击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040163",
+      "label": "技能增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040163",
+        "slot": 3,
+        "slug": "技能增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040184",
+      "label": "技能增涌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040184",
+        "slot": 3,
+        "slug": "技能增涌",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040446",
+      "label": "技能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040446",
+        "slot": 3,
+        "slug": "技能属性-20703040446",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040454",
+      "label": "技能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040454",
+        "slot": 3,
+        "slug": "技能属性-20703040454",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040458",
+      "label": "技能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040458",
+        "slot": 3,
+        "slug": "技能属性-20703040458",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040466",
+      "label": "技能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040466",
+        "slot": 3,
+        "slug": "技能属性-20703040466",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040087",
+      "label": "攻守自如",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040087",
+        "slot": 3,
+        "slug": "攻守自如",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040449",
+      "label": "暴伤属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040449",
+        "slot": 3,
+        "slug": "暴伤属性-20703040449",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040461",
+      "label": "暴伤属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040461",
+        "slot": 3,
+        "slug": "暴伤属性-20703040461",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040406",
+      "label": "暴走永动",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040406",
+        "slot": 3,
+        "slug": "暴走永动",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040302",
+      "label": "模式增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040302",
+        "slot": 3,
+        "slug": "模式增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040258",
+      "label": "武器强化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040258",
+        "slot": 3,
+        "slug": "武器强化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040366",
+      "label": "滑铲增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040366",
+        "slot": 3,
+        "slug": "滑铲增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040452",
+      "label": "爆炸属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040452",
+        "slot": 3,
+        "slug": "爆炸属性-20703040452",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040464",
+      "label": "爆炸属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040464",
+        "slot": 3,
+        "slug": "爆炸属性-20703040464",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040151",
+      "label": "相位强袭",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040151",
+        "slot": 3,
+        "slug": "相位强袭",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040082",
+      "label": "精密追击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040082",
+        "slot": 3,
+        "slug": "精密追击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040155",
+      "label": "致命射击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040155",
+        "slot": 3,
+        "slug": "致命射击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040171",
+      "label": "致命节奏",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040171",
+        "slot": 3,
+        "slug": "致命节奏",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040085",
+      "label": "致命节拍",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040085",
+        "slot": 3,
+        "slug": "致命节拍",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040193",
+      "label": "观山窥骨",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040193",
+        "slot": 3,
+        "slug": "观山窥骨",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040140",
+      "label": "解构增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040140",
+        "slot": 3,
+        "slug": "解构增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040354",
+      "label": "跟班增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040354",
+        "slot": 3,
+        "slug": "跟班增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040072",
+      "label": "近距增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040072",
+        "slot": 3,
+        "slug": "近距增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040323",
+      "label": "近距增效",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040323",
+        "slot": 3,
+        "slug": "近距增效",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040159",
+      "label": "连锁增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040159",
+        "slot": 3,
+        "slug": "连锁增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040386",
+      "label": "速伤提升",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040386",
+        "slot": 3,
+        "slug": "速伤提升",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040201",
+      "label": "重峦叠势",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040201",
+        "slot": 3,
+        "slug": "重峦叠势",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040081",
+      "label": "钝化增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040081",
+        "slot": 3,
+        "slug": "钝化增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040315",
+      "label": "钝化增效",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040315",
+        "slot": 3,
+        "slug": "钝化增效",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040296",
+      "label": "霰弹增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040296",
+        "slot": 3,
+        "slug": "霰弹增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040475",
+      "label": "飞毛腿",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040475",
+        "slot": 3,
+        "slug": "飞毛腿",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040214",
+      "label": "五方兽临",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040214",
+        "slot": 4,
+        "slug": "五方兽临",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040342",
+      "label": "兽瞳独睐",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040342",
+        "slot": 4,
+        "slug": "兽瞳独睐",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040215",
+      "label": "兽躯双衍",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040215",
+        "slot": 4,
+        "slug": "兽躯双衍",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040212",
+      "label": "冥河送葬",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040212",
+        "slot": 4,
+        "slug": "冥河送葬",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040423",
+      "label": "哈士奇寻敌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040423",
+        "slot": 4,
+        "slug": "哈士奇寻敌",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040424",
+      "label": "哈士奇支援",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040424",
+        "slot": 4,
+        "slug": "哈士奇支援",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040059",
+      "label": "弹跳风暴",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040059",
+        "slot": 4,
+        "slug": "弹跳风暴",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage",
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040420",
+      "label": "往日弹痕",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040420",
+        "slot": 4,
+        "slug": "往日弹痕",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040216",
+      "label": "恶鬼眷顾",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040216",
+        "slot": 4,
+        "slug": "恶鬼眷顾",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040050",
+      "label": "无限烟花",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040050",
+        "slot": 4,
+        "slug": "无限烟花",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20704040482",
+      "label": "暴力切换",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040482",
+        "slot": 4,
+        "slug": "暴力切换",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040334",
+      "label": "炎刃",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040334",
+        "slot": 4,
+        "slug": "炎刃",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20704040484",
+      "label": "爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040484",
+        "slot": 4,
+        "slug": "爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20704040478",
+      "label": "爆炸直击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040478",
+        "slot": 4,
+        "slug": "爆炸直击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040409",
+      "label": "狂暴连击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040409",
+        "slot": 4,
+        "slug": "狂暴连击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040407",
+      "label": "狂轰乱炸",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040407",
+        "slot": 4,
+        "slug": "狂轰乱炸",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040254",
+      "label": "独弹强化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040254",
+        "slot": 4,
+        "slug": "独弹强化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "correction"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040213",
+      "label": "白骨电容器",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040213",
+        "slot": 4,
+        "slug": "白骨电容器",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040432",
+      "label": "肾上腺素",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040432",
+        "slot": 4,
+        "slug": "肾上腺素",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040412",
+      "label": "腐蚀强击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040412",
+        "slot": 4,
+        "slug": "腐蚀强击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040093",
+      "label": "腐蚀榴弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040093",
+        "slot": 4,
+        "slug": "腐蚀榴弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040340",
+      "label": "腐蚀狂热",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040340",
+        "slot": 4,
+        "slug": "腐蚀狂热",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040414",
+      "label": "自追踪炮塔",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040414",
+        "slot": 4,
+        "slug": "自追踪炮塔",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20704040480",
+      "label": "超强技能",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040480",
+        "slot": 4,
+        "slug": "超强技能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040421",
+      "label": "追踪榴弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040421",
+        "slot": 4,
+        "slug": "追踪榴弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20704040483",
+      "label": "隐匿出击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040483",
+        "slot": 4,
+        "slug": "隐匿出击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040037",
+      "label": "伏击弹药",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040037",
+        "slot": 3,
+        "slug": "伏击弹药",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040071",
+      "label": "协频共振",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040071",
+        "slot": 3,
+        "slug": "协频共振",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040293",
+      "label": "叠伤系统",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040293",
+        "slot": 3,
+        "slug": "叠伤系统",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040134",
+      "label": "层积强袭",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040134",
+        "slot": 3,
+        "slug": "层积强袭",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040001",
+      "label": "幸运装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040001",
+        "slot": 3,
+        "slug": "幸运装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040135",
+      "label": "异态共鸣",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040135",
+        "slot": 3,
+        "slug": "异态共鸣",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040350",
+      "label": "打标增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040350",
+        "slot": 3,
+        "slug": "打标增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040378",
+      "label": "抽奖增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040378",
+        "slot": 3,
+        "slug": "抽奖增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040394",
+      "label": "捡货增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040394",
+        "slot": 3,
+        "slug": "捡货增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040036",
+      "label": "正中红心",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040036",
+        "slot": 3,
+        "slug": "正中红心",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040358",
+      "label": "泡爆增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040358",
+        "slot": 3,
+        "slug": "泡爆增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040309",
+      "label": "满盾增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040309",
+        "slot": 3,
+        "slug": "满盾增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040390",
+      "label": "独爆增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040390",
+        "slot": 3,
+        "slug": "独爆增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040150",
+      "label": "终焉序列",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040150",
+        "slot": 3,
+        "slug": "终焉序列",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040116",
+      "label": "裁决充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040116",
+        "slot": 3,
+        "slug": "裁决充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040112",
+      "label": "过载膛压",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040112",
+        "slot": 3,
+        "slug": "过载膛压",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040305",
+      "label": "近战易伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040305",
+        "slot": 3,
+        "slug": "近战易伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040312",
+      "label": "近远联动",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040312",
+        "slot": 3,
+        "slug": "近远联动",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040257",
+      "label": "远距增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040257",
+        "slot": 3,
+        "slug": "远距增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040069",
+      "label": "递进膛压",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040069",
+        "slot": 3,
+        "slug": "递进膛压",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040362",
+      "label": "钩出痛打",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040362",
+        "slot": 3,
+        "slug": "钩出痛打",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040370",
+      "label": "铲中叠伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040370",
+        "slot": 3,
+        "slug": "铲中叠伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040290",
+      "label": "切换易伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040290",
+        "slot": 4,
+        "slug": "切换易伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040060",
+      "label": "剧毒速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040060",
+        "slot": 4,
+        "slug": "剧毒速装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040413",
+      "label": "幸运毒皇",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040413",
+        "slot": 4,
+        "slug": "幸运毒皇",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040415",
+      "label": "幸运炎帝",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040415",
+        "slot": 4,
+        "slug": "幸运炎帝",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040429",
+      "label": "幸运龙炎",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040429",
+        "slot": 4,
+        "slug": "幸运龙炎",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040217",
+      "label": "恶鬼腐朽",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040217",
+        "slot": 4,
+        "slug": "恶鬼腐朽",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040306",
+      "label": "易伤扩散",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040306",
+        "slot": 4,
+        "slug": "易伤扩散",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "perk:s4-preview:20703040043",
+      "label": "聚能弹药",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040043",
+        "slot": 4,
+        "slug": "聚能弹药",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
       ]
     }
   ],
@@ -13451,6 +15018,5088 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "叠层事件额外增加Buff层数，目标Buff取运行时事件；没有固定属性或固定增伤Modifier。"
+    },
+    {
+      "id": "perk:s4-preview:20703040199",
+      "label": "万钧过载",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040199",
+        "slot": 1,
+        "slug": "万钧过载",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040348",
+      "label": "使唤回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040348",
+        "slot": 1,
+        "slug": "使唤回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040220",
+      "label": "元素速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040220",
+        "slot": 1,
+        "slug": "元素速装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040313",
+      "label": "充能弹丸",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040313",
+        "slot": 1,
+        "slug": "充能弹丸",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040008",
+      "label": "充能弹药",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040008",
+        "slot": 1,
+        "slug": "充能弹药",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040317",
+      "label": "充能连线",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040317",
+        "slot": 1,
+        "slug": "充能连线",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040097",
+      "label": "充能链路",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040097",
+        "slot": 1,
+        "slug": "充能链路",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040099",
+      "label": "光隙装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040099",
+        "slot": 1,
+        "slug": "光隙装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040244",
+      "label": "全息速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040244",
+        "slot": 1,
+        "slug": "全息速装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040187",
+      "label": "分甲化生",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040187",
+        "slot": 1,
+        "slug": "分甲化生",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040442",
+      "label": "切换手法",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040442",
+        "slot": 1,
+        "slug": "切换手法",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040157",
+      "label": "加速装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040157",
+        "slot": 1,
+        "slug": "加速装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040240",
+      "label": "匿踪填弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040240",
+        "slot": 1,
+        "slug": "匿踪填弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040147",
+      "label": "协同供弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040147",
+        "slot": 1,
+        "slug": "协同供弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040297",
+      "label": "单体回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040297",
+        "slot": 1,
+        "slug": "单体回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040191",
+      "label": "印照泉涌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040191",
+        "slot": 1,
+        "slug": "印照泉涌",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040321",
+      "label": "危险循环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040321",
+        "slot": 1,
+        "slug": "危险循环",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040228",
+      "label": "叠层强化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040228",
+        "slot": 1,
+        "slug": "叠层强化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040224",
+      "label": "同属回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040224",
+        "slot": 1,
+        "slug": "同属回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040177",
+      "label": "导弹装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040177",
+        "slot": 1,
+        "slug": "导弹装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040078",
+      "label": "弱点续弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040078",
+        "slot": 1,
+        "slug": "弱点续弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703020002",
+      "label": "弹夹扩容",
+      "source": {
+        "type": "perk",
+        "itemId": "20703020002",
+        "slot": 1,
+        "slug": "弹夹扩容",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040262",
+      "label": "弹速提升",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040262",
+        "slot": 1,
+        "slug": "弹速提升",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040009",
+      "label": "待机调节",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040009",
+        "slot": 1,
+        "slug": "待机调节",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703020001",
+      "label": "快速换弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703020001",
+        "slot": 1,
+        "slug": "快速换弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040002",
+      "label": "快速装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040002",
+        "slot": 1,
+        "slug": "快速装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040165",
+      "label": "急速装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040165",
+        "slot": 1,
+        "slug": "急速装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040153",
+      "label": "惯性制退",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040153",
+        "slot": 1,
+        "slug": "惯性制退",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040236",
+      "label": "感染回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040236",
+        "slot": 1,
+        "slug": "感染回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040161",
+      "label": "扩容核心",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040161",
+        "slot": 1,
+        "slug": "扩容核心",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040439",
+      "label": "技能魔术",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040439",
+        "slot": 1,
+        "slug": "技能魔术",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040076",
+      "label": "极限载弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040076",
+        "slot": 1,
+        "slug": "极限载弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040098",
+      "label": "棱镜聚焦",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040098",
+        "slot": 1,
+        "slug": "棱镜聚焦",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040300",
+      "label": "模式填装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040300",
+        "slot": 1,
+        "slug": "模式填装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040064",
+      "label": "歼灭速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040064",
+        "slot": 1,
+        "slug": "歼灭速装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040252",
+      "label": "殒命补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040252",
+        "slot": 1,
+        "slug": "殒命补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040125",
+      "label": "溃敌补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040125",
+        "slot": 1,
+        "slug": "溃敌补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040248",
+      "label": "灰烬填弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040248",
+        "slot": 1,
+        "slug": "灰烬填弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040232",
+      "label": "爆发续航",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040232",
+        "slot": 1,
+        "slug": "爆发续航",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040325",
+      "label": "狂暴装弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040325",
+        "slot": 1,
+        "slug": "狂暴装弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040173",
+      "label": "矢量制退",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040173",
+        "slot": 1,
+        "slug": "矢量制退",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040195",
+      "label": "符动千金",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040195",
+        "slot": 1,
+        "slug": "符动千金",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040077",
+      "label": "续装增量",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040077",
+        "slot": 1,
+        "slug": "续装增量",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040253",
+      "label": "聚能弹道",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040253",
+        "slot": 1,
+        "slug": "聚能弹道",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040208",
+      "label": "虚数汲取",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040208",
+        "slot": 1,
+        "slug": "虚数汲取",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040122",
+      "label": "蚀烬装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040122",
+        "slot": 1,
+        "slug": "蚀烬装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040127",
+      "label": "解构装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040127",
+        "slot": 1,
+        "slug": "解构装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040169",
+      "label": "负压弹匣",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040169",
+        "slot": 1,
+        "slug": "负压弹匣",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040010",
+      "label": "负载调节",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040010",
+        "slot": 1,
+        "slug": "负载调节",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040096",
+      "label": "超导补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040096",
+        "slot": 1,
+        "slug": "超导补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040089",
+      "label": "超载弹匣",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040089",
+        "slot": 1,
+        "slug": "超载弹匣",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040384",
+      "label": "越射越快",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040384",
+        "slot": 1,
+        "slug": "越射越快",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040268",
+      "label": "跳跃省弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040268",
+        "slot": 1,
+        "slug": "跳跃省弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040352",
+      "label": "蹭枪子弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040352",
+        "slot": 1,
+        "slug": "蹭枪子弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040264",
+      "label": "蹲伏优化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040264",
+        "slot": 1,
+        "slug": "蹲伏优化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040364",
+      "label": "铲射回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040364",
+        "slot": 1,
+        "slug": "铲射回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040007",
+      "label": "长跑冠军",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040007",
+        "slot": 1,
+        "slug": "长跑冠军",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040148",
+      "label": "闪回装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040148",
+        "slot": 1,
+        "slug": "闪回装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040203",
+      "label": "魔芋滋髓",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040203",
+        "slot": 1,
+        "slug": "魔芋滋髓",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040221",
+      "label": "元素充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040221",
+        "slot": 2,
+        "slug": "元素充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040245",
+      "label": "全息充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040245",
+        "slot": 2,
+        "slug": "全息充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040204",
+      "label": "凤胆交感",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040204",
+        "slot": 2,
+        "slug": "凤胆交感",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040158",
+      "label": "加速蓄能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040158",
+        "slot": 2,
+        "slug": "加速蓄能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040241",
+      "label": "匿踪回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040241",
+        "slot": 2,
+        "slug": "匿踪回能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040298",
+      "label": "单体充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040298",
+        "slot": 2,
+        "slug": "单体充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040024",
+      "label": "危机充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040024",
+        "slot": 2,
+        "slug": "危机充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040277",
+      "label": "后台支援",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040277",
+        "slot": 2,
+        "slug": "后台支援",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040259",
+      "label": "命中储能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040259",
+        "slot": 2,
+        "slug": "命中储能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040154",
+      "label": "命中返能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040154",
+        "slot": 2,
+        "slug": "命中返能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040188",
+      "label": "哨令鹊起",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040188",
+        "slot": 2,
+        "slug": "哨令鹊起",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040130",
+      "label": "噬能转化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040130",
+        "slot": 2,
+        "slug": "噬能转化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040162",
+      "label": "回响充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040162",
+        "slot": 2,
+        "slug": "回响充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040170",
+      "label": "多重回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040170",
+        "slot": 2,
+        "slug": "多重回能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040322",
+      "label": "多重回返",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040322",
+        "slot": 2,
+        "slug": "多重回返",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040068",
+      "label": "多重激返",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040068",
+        "slot": 2,
+        "slug": "多重激返",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040020",
+      "label": "子弹能量",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040020",
+        "slot": 2,
+        "slug": "子弹能量",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040192",
+      "label": "定星聚元",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040192",
+        "slot": 2,
+        "slug": "定星聚元",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040178",
+      "label": "导弹供能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040178",
+        "slot": 2,
+        "slug": "导弹供能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040349",
+      "label": "小弟充电",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040349",
+        "slot": 2,
+        "slug": "小弟充电",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040225",
+      "label": "属性回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040225",
+        "slot": 2,
+        "slug": "属性回能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040132",
+      "label": "崩解回涌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040132",
+        "slot": 2,
+        "slug": "崩解回涌",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040102",
+      "label": "川流不息",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040102",
+        "slot": 2,
+        "slug": "川流不息",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040318",
+      "label": "川流不止",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040318",
+        "slot": 2,
+        "slug": "川流不止",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040353",
+      "label": "带携充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040353",
+        "slot": 2,
+        "slug": "带携充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040067",
+      "label": "并发充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040067",
+        "slot": 2,
+        "slug": "并发充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040079",
+      "label": "弱点供能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040079",
+        "slot": 2,
+        "slug": "弱点供能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703020003",
+      "label": "快速充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703020003",
+        "slot": 2,
+        "slug": "快速充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040174",
+      "label": "急速蓄能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040174",
+        "slot": 2,
+        "slug": "急速蓄能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040237",
+      "label": "感染充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040237",
+        "slot": 2,
+        "slug": "感染充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040013",
+      "label": "扩容",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040013",
+        "slot": 2,
+        "slug": "扩容",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703030003",
+      "label": "技能增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703030003",
+        "slot": 2,
+        "slug": "技能增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703020004",
+      "label": "技能爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703020004",
+        "slot": 2,
+        "slug": "技能爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703030004",
+      "label": "技能超载",
+      "source": {
+        "type": "perk",
+        "itemId": "20703030004",
+        "slot": 2,
+        "slug": "技能超载",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040261",
+      "label": "敌数减CD",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040261",
+        "slot": 2,
+        "slug": "敌数减CD",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040326",
+      "label": "暴击余波",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040326",
+        "slot": 2,
+        "slug": "暴击余波",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040107",
+      "label": "暴击涌流",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040107",
+        "slot": 2,
+        "slug": "暴击涌流",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040301",
+      "label": "模式回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040301",
+        "slot": 2,
+        "slug": "模式回能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040287",
+      "label": "武器续能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040287",
+        "slot": 2,
+        "slug": "武器续能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040404",
+      "label": "永动核心",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040404",
+        "slot": 2,
+        "slug": "永动核心",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040131",
+      "label": "溃能结晶",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040131",
+        "slot": 2,
+        "slug": "溃能结晶",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040022",
+      "label": "火力回转",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040022",
+        "slot": 2,
+        "slug": "火力回转",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040249",
+      "label": "灰烬充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040249",
+        "slot": 2,
+        "slug": "灰烬充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040196",
+      "label": "烛影摇红",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040196",
+        "slot": 2,
+        "slug": "烛影摇红",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040233",
+      "label": "爆发回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040233",
+        "slot": 2,
+        "slug": "爆发回能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040105",
+      "label": "盈能弹幕",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040105",
+        "slot": 2,
+        "slug": "盈能弹幕",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040021",
+      "label": "精确能量",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040021",
+        "slot": 2,
+        "slug": "精确能量",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040260",
+      "label": "群伤回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040260",
+        "slot": 2,
+        "slug": "群伤回能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040106",
+      "label": "聚焦回路",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040106",
+        "slot": 2,
+        "slug": "聚焦回路",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040133",
+      "label": "虹吸充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040133",
+        "slot": 2,
+        "slug": "虹吸充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040209",
+      "label": "蚀影充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040209",
+        "slot": 2,
+        "slug": "蚀影充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040182",
+      "label": "超频蓄能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040182",
+        "slot": 2,
+        "slug": "超频蓄能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040286",
+      "label": "跨武充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040286",
+        "slot": 2,
+        "slug": "跨武充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040269",
+      "label": "跳跃回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040269",
+        "slot": 2,
+        "slug": "跳跃回能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040265",
+      "label": "蹲伏充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040265",
+        "slot": 2,
+        "slug": "蹲伏充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040149",
+      "label": "迁跃回路",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040149",
+        "slot": 2,
+        "slug": "迁跃回路",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040166",
+      "label": "连锁充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040166",
+        "slot": 2,
+        "slug": "连锁充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040385",
+      "label": "速充增效",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040385",
+        "slot": 2,
+        "slug": "速充增效",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040314",
+      "label": "钝化储能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040314",
+        "slot": 2,
+        "slug": "钝化储能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040080",
+      "label": "钝化充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040080",
+        "slot": 2,
+        "slug": "钝化充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040365",
+      "label": "铲射减冷",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040365",
+        "slot": 2,
+        "slug": "铲射减冷",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040015",
+      "label": "闪身",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040015",
+        "slot": 2,
+        "slug": "闪身",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040026",
+      "label": "随时待命",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040026",
+        "slot": 2,
+        "slug": "随时待命",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040229",
+      "label": "高频脉冲",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040229",
+        "slot": 2,
+        "slug": "高频脉冲",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040473",
+      "label": "万伤掷弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040473",
+        "slot": 3,
+        "slug": "万伤掷弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040288",
+      "label": "主武反馈",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040288",
+        "slot": 3,
+        "slug": "主武反馈",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040234",
+      "label": "伤害加深",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040234",
+        "slot": 3,
+        "slug": "伤害加深",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040230",
+      "label": "元素增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040230",
+        "slot": 3,
+        "slug": "元素增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040447",
+      "label": "充能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040447",
+        "slot": 3,
+        "slug": "充能属性-20703040447",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040459",
+      "label": "充能属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040459",
+        "slot": 3,
+        "slug": "充能属性-20703040459",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040210",
+      "label": "先知箴言",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040210",
+        "slot": 3,
+        "slug": "先知箴言",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040114",
+      "label": "凝神一击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040114",
+        "slot": 3,
+        "slug": "凝神一击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040053",
+      "label": "切枪速攻",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040053",
+        "slot": 3,
+        "slug": "切枪速攻",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040242",
+      "label": "匿踪增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040242",
+        "slot": 3,
+        "slug": "匿踪增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040110",
+      "label": "协防阵列",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040110",
+        "slot": 3,
+        "slug": "协防阵列",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040299",
+      "label": "单体爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040299",
+        "slot": 3,
+        "slug": "单体爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040113",
+      "label": "压制火力",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040113",
+        "slot": 3,
+        "slug": "压制火力",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040222",
+      "label": "叠层增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040222",
+        "slot": 3,
+        "slug": "叠层增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040278",
+      "label": "后台增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040278",
+        "slot": 3,
+        "slug": "后台增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040108",
+      "label": "填弹增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040108",
+        "slot": 3,
+        "slug": "填弹增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040471",
+      "label": "导弹轰炸",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040471",
+        "slot": 3,
+        "slug": "导弹轰炸",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040445",
+      "label": "射击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040445",
+        "slot": 3,
+        "slug": "射击属性-20703040445",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前源已移除原引用 131522800_1_0，预览移除对应数值，待重新核实来源链。"
+    },
+    {
+      "id": "perk:s4-preview:20703040138",
+      "label": "崩解协议",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040138",
+        "slot": 3,
+        "slug": "崩解协议",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040255",
+      "label": "开镜增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040255",
+        "slot": 3,
+        "slug": "开镜增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040289",
+      "label": "弱点反馈",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040289",
+        "slot": 3,
+        "slug": "弱点反馈",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703020006",
+      "label": "弱点增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703020006",
+        "slot": 3,
+        "slug": "弱点增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040111",
+      "label": "弹容共振",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040111",
+        "slot": 3,
+        "slug": "弹容共振",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040205",
+      "label": "彼岸寄生",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040205",
+        "slot": 3,
+        "slug": "彼岸寄生",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040238",
+      "label": "感染加重",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040238",
+        "slot": 3,
+        "slug": "感染加重",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040046",
+      "label": "战术强击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040046",
+        "slot": 3,
+        "slug": "战术强击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040396",
+      "label": "捡货炸环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040396",
+        "slot": 3,
+        "slug": "捡货炸环",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040472",
+      "label": "换弹冲击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040472",
+        "slot": 3,
+        "slug": "换弹冲击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040448",
+      "label": "暴击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040448",
+        "slot": 3,
+        "slug": "暴击属性-20703040448",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040460",
+      "label": "暴击属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040460",
+        "slot": 3,
+        "slug": "暴击属性-20703040460",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040438",
+      "label": "武器穿透",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040438",
+        "slot": 3,
+        "slug": "武器穿透",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040397",
+      "label": "武器驱动装置",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040397",
+        "slot": 3,
+        "slug": "武器驱动装置-20703040397",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040398",
+      "label": "武器驱动装置",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040398",
+        "slot": 3,
+        "slug": "武器驱动装置-20703040398",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040399",
+      "label": "武器驱动装置",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040399",
+        "slot": 3,
+        "slug": "武器驱动装置-20703040399",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040400",
+      "label": "武器驱动装置",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040400",
+        "slot": 3,
+        "slug": "武器驱动装置-20703040400",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040401",
+      "label": "武器驱动装置",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040401",
+        "slot": 3,
+        "slug": "武器驱动装置-20703040401",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040402",
+      "label": "武器驱动装置",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040402",
+        "slot": 3,
+        "slug": "武器驱动装置-20703040402",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040403",
+      "label": "武器驱动装置",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040403",
+        "slot": 3,
+        "slug": "武器驱动装置-20703040403",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040032",
+      "label": "流星雨",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040032",
+        "slot": 3,
+        "slug": "流星雨",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040250",
+      "label": "灰烬增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040250",
+        "slot": 3,
+        "slug": "灰烬增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040206",
+      "label": "灵根贯髓",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040206",
+        "slot": 3,
+        "slug": "灵根贯髓",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040197",
+      "label": "点金秘术",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040197",
+        "slot": 3,
+        "slug": "点金秘术",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040444",
+      "label": "物法兼得",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040444",
+        "slot": 3,
+        "slug": "物法兼得",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040189",
+      "label": "生克造化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040189",
+        "slot": 3,
+        "slug": "生克造化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040139",
+      "label": "破障聚焦",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040139",
+        "slot": 3,
+        "slug": "破障聚焦",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040328",
+      "label": "移速增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040328",
+        "slot": 3,
+        "slug": "移速增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040327",
+      "label": "精密追踪",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040327",
+        "slot": 3,
+        "slug": "精密追踪",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040028",
+      "label": "联动提升",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040028",
+        "slot": 3,
+        "slug": "联动提升",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040179",
+      "label": "致命导弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040179",
+        "slot": 3,
+        "slug": "致命导弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703030006",
+      "label": "蚀速弹夹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703030006",
+        "slot": 3,
+        "slug": "蚀速弹夹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040226",
+      "label": "超限爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040226",
+        "slot": 3,
+        "slug": "超限爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703030005",
+      "label": "超频震爆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703030005",
+        "slot": 3,
+        "slug": "超频震爆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040270",
+      "label": "跳跃爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040270",
+        "slot": 3,
+        "slug": "跳跃爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040266",
+      "label": "蹲伏增伤",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040266",
+        "slot": 3,
+        "slug": "蹲伏增伤",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040070",
+      "label": "载弹盈能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040070",
+        "slot": 3,
+        "slug": "载弹盈能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040109",
+      "label": "链式反应",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040109",
+        "slot": 3,
+        "slug": "链式反应",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040034",
+      "label": "锚定攻击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040034",
+        "slot": 3,
+        "slug": "锚定攻击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703020005",
+      "label": "闪电命中",
+      "source": {
+        "type": "perk",
+        "itemId": "20703020005",
+        "slot": 3,
+        "slug": "闪电命中",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040450",
+      "label": "防御属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040450",
+        "slot": 3,
+        "slug": "防御属性-20703040450",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040462",
+      "label": "防御属性",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040462",
+        "slot": 3,
+        "slug": "防御属性-20703040462",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040246",
+      "label": "韧性齐射",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040246",
+        "slot": 3,
+        "slug": "韧性齐射",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040410",
+      "label": "不死狂热",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040410",
+        "slot": 4,
+        "slug": "不死狂热",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040470",
+      "label": "不稳定弹道",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040470",
+        "slot": 4,
+        "slug": "不稳定弹道",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703030008",
+      "label": "临界射界",
+      "source": {
+        "type": "perk",
+        "itemId": "20703030008",
+        "slot": 4,
+        "slug": "临界射界",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703020008",
+      "label": "乘胜追击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703020008",
+        "slot": 4,
+        "slug": "乘胜追击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040324",
+      "label": "亲密间距",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040324",
+        "slot": 4,
+        "slug": "亲密间距",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040223",
+      "label": "元素叠加",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040223",
+        "slot": 4,
+        "slug": "元素叠加",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040231",
+      "label": "元素延长",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040231",
+        "slot": 4,
+        "slug": "元素延长",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040337",
+      "label": "元素狂想",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040337",
+        "slot": 4,
+        "slug": "元素狂想",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040247",
+      "label": "全息协作",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040247",
+        "slot": 4,
+        "slug": "全息协作",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040280",
+      "label": "冰火引爆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040280",
+        "slot": 4,
+        "slug": "冰火引爆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040117",
+      "label": "制导增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040117",
+        "slot": 4,
+        "slug": "制导增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040344",
+      "label": "剑摧魂",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040344",
+        "slot": 4,
+        "slug": "剑摧魂",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703030007",
+      "label": "十万伏特",
+      "source": {
+        "type": "perk",
+        "itemId": "20703030007",
+        "slot": 4,
+        "slug": "十万伏特",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040092",
+      "label": "反哺",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040092",
+        "slot": 4,
+        "slug": "反哺",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040440",
+      "label": "反弹转化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040440",
+        "slot": 4,
+        "slug": "反弹转化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040351",
+      "label": "合圈震荡",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040351",
+        "slot": 4,
+        "slug": "合圈震荡",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040146",
+      "label": "同调震荡",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040146",
+        "slot": 4,
+        "slug": "同调震荡",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040075",
+      "label": "壁垒续航",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040075",
+        "slot": 4,
+        "slug": "壁垒续航",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040194",
+      "label": "天官破煞",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040194",
+        "slot": 4,
+        "slug": "天官破煞",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040219",
+      "label": "定频加压",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040219",
+        "slot": 4,
+        "slug": "定频加压",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040144",
+      "label": "层积裂变",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040144",
+        "slot": 4,
+        "slug": "层积裂变",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040207",
+      "label": "年轮纹波",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040207",
+        "slot": 4,
+        "slug": "年轮纹波",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040143",
+      "label": "幻影力场",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040143",
+        "slot": 4,
+        "slug": "幻影力场",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20704040477",
+      "label": "弱点必暴",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040477",
+        "slot": 4,
+        "slug": "弱点必暴",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果修改暴击概率，不提供可注册的伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040405",
+      "label": "弹道过载",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040405",
+        "slot": 4,
+        "slug": "弹道过载",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040091",
+      "label": "归途",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040091",
+        "slot": 4,
+        "slug": "归途",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040239",
+      "label": "感染残留",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040239",
+        "slot": 4,
+        "slug": "感染残留",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040276",
+      "label": "技能震荡",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040276",
+        "slot": 4,
+        "slug": "技能震荡",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040332",
+      "label": "折射",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040332",
+        "slot": 4,
+        "slug": "折射",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040243",
+      "label": "持续压制",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040243",
+        "slot": 4,
+        "slug": "持续压制",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040190",
+      "label": "星锤百击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040190",
+        "slot": 4,
+        "slug": "星锤百击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20704040481",
+      "label": "暴击飞弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040481",
+        "slot": 4,
+        "slug": "暴击飞弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立跟踪导弹，不提供可注册的角色伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040316",
+      "label": "杀戮连击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040316",
+        "slot": 4,
+        "slug": "杀戮连击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040041",
+      "label": "杀戮连锁",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040041",
+        "slot": 4,
+        "slug": "杀戮连锁",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040433",
+      "label": "极寒冰神插件1",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040433",
+        "slot": 4,
+        "slug": "极寒冰神插件1",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040434",
+      "label": "极寒冰神插件2",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040434",
+        "slot": 4,
+        "slug": "极寒冰神插件2",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040235",
+      "label": "核爆层留",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040235",
+        "slot": 4,
+        "slug": "核爆层留",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040469",
+      "label": "模式特化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040469",
+        "slot": 4,
+        "slug": "模式特化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040320",
+      "label": "毒属爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040320",
+        "slot": 4,
+        "slug": "毒属爆破",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040345",
+      "label": "泪纵横",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040345",
+        "slot": 4,
+        "slug": "泪纵横",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20704040476",
+      "label": "游击飞弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040476",
+        "slot": 4,
+        "slug": "游击飞弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立跟踪导弹，不提供可注册的角色伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040074",
+      "label": "火力聚焦",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040074",
+        "slot": 4,
+        "slug": "火力聚焦",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040416",
+      "label": "火力阵线",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040416",
+        "slot": 4,
+        "slug": "火力阵线",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040251",
+      "label": "灰烬元爆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040251",
+        "slot": 4,
+        "slug": "灰烬元爆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040033",
+      "label": "烈焰冲击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040033",
+        "slot": 4,
+        "slug": "烈焰冲击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040474",
+      "label": "爆毒蚀域",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040474",
+        "slot": 4,
+        "slug": "爆毒蚀域",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040049",
+      "label": "爆炸烟花",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040049",
+        "slot": 4,
+        "slug": "爆炸烟花",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040045",
+      "label": "爆破校调",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040045",
+        "slot": 4,
+        "slug": "爆破校调",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040441",
+      "label": "狂战",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040441",
+        "slot": 4,
+        "slug": "狂战",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040341",
+      "label": "狂热兽魂",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040341",
+        "slot": 4,
+        "slug": "狂热兽魂",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040347",
+      "label": "狼狩",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040347",
+        "slot": 4,
+        "slug": "狼狩",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040227",
+      "label": "环震冲击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040227",
+        "slot": 4,
+        "slug": "环震冲击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040035",
+      "label": "电环疾驰",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040035",
+        "slot": 4,
+        "slug": "电环疾驰",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040120",
+      "label": "神经脉冲",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040120",
+        "slot": 4,
+        "slug": "神经脉冲",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040422",
+      "label": "空中补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040422",
+        "slot": 4,
+        "slug": "空中补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040271",
+      "label": "空杀叠加",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040271",
+        "slot": 4,
+        "slug": "空杀叠加",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040052",
+      "label": "穿甲引爆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040052",
+        "slot": 4,
+        "slug": "穿甲引爆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040058",
+      "label": "穿甲扩散",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040058",
+        "slot": 4,
+        "slug": "穿甲扩散",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040198",
+      "label": "符通万贯",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040198",
+        "slot": 4,
+        "slug": "符通万贯",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040176",
+      "label": "精确导弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040176",
+        "slot": 4,
+        "slug": "精确导弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040339",
+      "label": "索命龙炎",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040339",
+        "slot": 4,
+        "slug": "索命龙炎",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040330",
+      "label": "腾焰",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040330",
+        "slot": 4,
+        "slug": "腾焰",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040428",
+      "label": "自动龙炎",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040428",
+        "slot": 4,
+        "slug": "自动龙炎",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040437",
+      "label": "致命爆炸",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040437",
+        "slot": 4,
+        "slug": "致命爆炸",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040333",
+      "label": "蔓延",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040333",
+        "slot": 4,
+        "slug": "蔓延",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040180",
+      "label": "蜂鸣指令",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040180",
+        "slot": 4,
+        "slug": "蜂鸣指令",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040331",
+      "label": "蝎刺",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040331",
+        "slot": 4,
+        "slug": "蝎刺",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040142",
+      "label": "衰变连锁",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040142",
+        "slot": 4,
+        "slug": "衰变连锁",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040185",
+      "label": "超频",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040185",
+        "slot": 4,
+        "slug": "超频",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040267",
+      "label": "蹲伏多弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040267",
+        "slot": 4,
+        "slug": "蹲伏多弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040283",
+      "label": "轻武速移",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040283",
+        "slot": 4,
+        "slug": "轻武速移",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20704040485",
+      "label": "近战冲击",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040485",
+        "slot": 4,
+        "slug": "近战冲击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立冲击波，不提供可注册的角色伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703020007",
+      "label": "近战强化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703020007",
+        "slot": 4,
+        "slug": "近战强化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040443",
+      "label": "连发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040443",
+        "slot": 4,
+        "slug": "连发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040156",
+      "label": "追身导弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040156",
+        "slot": 4,
+        "slug": "追身导弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040367",
+      "label": "长滑不衰",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040367",
+        "slot": 4,
+        "slug": "长滑不衰",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040172",
+      "label": "闪电协议",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040172",
+        "slot": 4,
+        "slug": "闪电协议",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040279",
+      "label": "随机元素",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040279",
+        "slot": 4,
+        "slug": "随机元素",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040338",
+      "label": "霜华",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040338",
+        "slot": 4,
+        "slug": "霜华",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040168",
+      "label": "霜滞协议",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040168",
+        "slot": 4,
+        "slug": "霜滞协议",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20704040479",
+      "label": "飞弹狂射",
+      "source": {
+        "type": "perk",
+        "itemId": "20704040479",
+        "slot": 4,
+        "slug": "飞弹狂射",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立跟踪导弹，不提供可注册的角色伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040218",
+      "label": "高频触电",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040218",
+        "slot": 4,
+        "slug": "高频触电",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040211",
+      "label": "鬼洞凝视",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040211",
+        "slot": 4,
+        "slug": "鬼洞凝视",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040999",
+      "label": "黑金仲裁者插件1",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040999",
+        "slot": 4,
+        "slug": "黑金仲裁者插件1",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040998",
+      "label": "黑金仲裁者插件2",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040998",
+        "slot": 4,
+        "slug": "黑金仲裁者插件2",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "存量插件尚无已审定的 Modifier 来源链；保留预览条目，不凭展示描述推断增伤分面。"
+    },
+    {
+      "id": "perk:s4-preview:20703040427",
+      "label": "黑金军火",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040427",
+        "slot": 4,
+        "slug": "黑金军火",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040426",
+      "label": "黑金遗产",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040426",
+        "slot": 4,
+        "slug": "黑金遗产",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040042",
+      "label": "龙炎推进",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040042",
+        "slot": 4,
+        "slug": "龙炎推进",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040152",
+      "label": "余震速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040152",
+        "slot": 1,
+        "slug": "余震速装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040124",
+      "label": "元素析出",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040124",
+        "slot": 1,
+        "slug": "元素析出",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040372",
+      "label": "加弹抽奖",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040372",
+        "slot": 1,
+        "slug": "加弹抽奖",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040004",
+      "label": "危机装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040004",
+        "slot": 1,
+        "slug": "危机装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040128",
+      "label": "同调稳持",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040128",
+        "slot": 1,
+        "slug": "同调稳持",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040126",
+      "label": "同调装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040126",
+        "slot": 1,
+        "slug": "同调装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040121",
+      "label": "同频装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040121",
+        "slot": 1,
+        "slug": "同频装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040273",
+      "label": "后台回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040273",
+        "slot": 1,
+        "slug": "后台回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040272",
+      "label": "后台补弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040272",
+        "slot": 1,
+        "slug": "后台补弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040281",
+      "label": "团队填装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040281",
+        "slot": 1,
+        "slug": "团队填装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040095",
+      "label": "帽子戏法",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040095",
+        "slot": 1,
+        "slug": "帽子戏法",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040380",
+      "label": "弹药续杯",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040380",
+        "slot": 1,
+        "slug": "弹药续杯",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040094",
+      "label": "弹雨协奏",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040094",
+        "slot": 1,
+        "slug": "弹雨协奏",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040003",
+      "label": "战术装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040003",
+        "slot": 1,
+        "slug": "战术装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040376",
+      "label": "抽奖回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040376",
+        "slot": 1,
+        "slug": "抽奖回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040392",
+      "label": "捡货回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040392",
+        "slot": 1,
+        "slug": "捡货回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040303",
+      "label": "易伤回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040303",
+        "slot": 1,
+        "slug": "易伤回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040356",
+      "label": "泡碎回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040356",
+        "slot": 1,
+        "slug": "泡碎回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040063",
+      "label": "渐稳连击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040063",
+        "slot": 1,
+        "slug": "渐稳连击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040360",
+      "label": "满弹转充",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040360",
+        "slot": 1,
+        "slug": "满弹转充",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040307",
+      "label": "满盾速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040307",
+        "slot": 1,
+        "slug": "满盾速装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040012",
+      "label": "狂暴装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040012",
+        "slot": 1,
+        "slug": "狂暴装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040388",
+      "label": "独爆回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040388",
+        "slot": 1,
+        "slug": "独爆回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040005",
+      "label": "猎杀装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040005",
+        "slot": 1,
+        "slug": "猎杀装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040100",
+      "label": "致命循环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040100",
+        "slot": 1,
+        "slug": "致命循环",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040123",
+      "label": "蚀化速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040123",
+        "slot": 1,
+        "slug": "蚀化速装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040311",
+      "label": "近战回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040311",
+        "slot": 1,
+        "slug": "近战回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040368",
+      "label": "连击回弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040368",
+        "slot": 1,
+        "slug": "连击回弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040291",
+      "label": "霰弹回补",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040291",
+        "slot": 1,
+        "slug": "霰弹回补",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040294",
+      "label": "霰弹满中",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040294",
+        "slot": 1,
+        "slug": "霰弹满中",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040103",
+      "label": "共鸣射击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040103",
+        "slot": 2,
+        "slug": "共鸣射击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040086",
+      "label": "出其不意",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040086",
+        "slot": 2,
+        "slug": "出其不意",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040274",
+      "label": "后台充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040274",
+        "slot": 2,
+        "slug": "后台充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040275",
+      "label": "后台续能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040275",
+        "slot": 2,
+        "slug": "后台续能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040101",
+      "label": "回响续装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040101",
+        "slot": 2,
+        "slug": "回响续装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040066",
+      "label": "备弹返流",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040066",
+        "slot": 2,
+        "slug": "备弹返流",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040129",
+      "label": "层积涌流",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040129",
+        "slot": 2,
+        "slug": "层积涌流",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040282",
+      "label": "弱点充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040282",
+        "slot": 2,
+        "slug": "弱点充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040373",
+      "label": "技能抽奖",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040373",
+        "slot": 2,
+        "slug": "技能抽奖",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040377",
+      "label": "抽奖充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040377",
+        "slot": 2,
+        "slug": "抽奖充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040393",
+      "label": "捡货充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040393",
+        "slot": 2,
+        "slug": "捡货充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040304",
+      "label": "易伤回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040304",
+        "slot": 2,
+        "slug": "易伤回能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040200",
+      "label": "梯山架壑",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040200",
+        "slot": 2,
+        "slug": "梯山架壑",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040357",
+      "label": "泡能续充",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040357",
+        "slot": 2,
+        "slug": "泡能续充",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040308",
+      "label": "满盾充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040308",
+        "slot": 2,
+        "slug": "满盾充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040389",
+      "label": "独爆充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040389",
+        "slot": 2,
+        "slug": "独爆充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040025",
+      "label": "猎杀充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040025",
+        "slot": 2,
+        "slug": "猎杀充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040381",
+      "label": "能量续抽",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040381",
+        "slot": 2,
+        "slug": "能量续抽",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040369",
+      "label": "连击充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040369",
+        "slot": 2,
+        "slug": "连击充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040361",
+      "label": "钩中充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040361",
+        "slot": 2,
+        "slug": "钩中充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040292",
+      "label": "霰弹充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040292",
+        "slot": 2,
+        "slug": "霰弹充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040295",
+      "label": "霰弹回能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040295",
+        "slot": 2,
+        "slug": "霰弹回能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040137",
+      "label": "强击火力",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040137",
+        "slot": 3,
+        "slug": "强击火力",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040256",
+      "label": "无衰射程",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040256",
+        "slot": 3,
+        "slug": "无衰射程",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040115",
+      "label": "概率坍缩",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040115",
+        "slot": 3,
+        "slug": "概率坍缩",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040382",
+      "label": "紫奖掉物",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040382",
+        "slot": 3,
+        "slug": "紫奖掉物",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040374",
+      "label": "连射抽奖",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040374",
+        "slot": 3,
+        "slug": "连射抽奖",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040136",
+      "label": "重装弹头",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040136",
+        "slot": 3,
+        "slug": "重装弹头",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040040",
+      "label": "亲密距离",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040040",
+        "slot": 4,
+        "slug": "亲密距离",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040263",
+      "label": "伤害回血",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040263",
+        "slot": 4,
+        "slug": "伤害回血",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040387",
+      "label": "冲刺得速",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040387",
+        "slot": 4,
+        "slug": "冲刺得速",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040395",
+      "label": "击杀掉货",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040395",
+        "slot": 4,
+        "slug": "击杀掉货",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040329",
+      "label": "协同",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040329",
+        "slot": 4,
+        "slug": "协同",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040431",
+      "label": "厄运传导",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040431",
+        "slot": 4,
+        "slug": "厄运传导",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040202",
+      "label": "地龙惊破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040202",
+        "slot": 4,
+        "slug": "地龙惊破",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040141",
+      "label": "坍缩奇点",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040141",
+        "slot": 4,
+        "slug": "坍缩奇点",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040118",
+      "label": "威慑环爆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040118",
+        "slot": 4,
+        "slug": "威慑环爆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040355",
+      "label": "定时震波",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040355",
+        "slot": 4,
+        "slug": "定时震波",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040425",
+      "label": "幸运哈士奇",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040425",
+        "slot": 4,
+        "slug": "幸运哈士奇",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040379",
+      "label": "幸运补偿",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040379",
+        "slot": 4,
+        "slug": "幸运补偿",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040119",
+      "label": "弹容爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040119",
+        "slot": 4,
+        "slug": "弹容爆破",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040186",
+      "label": "强袭",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040186",
+        "slot": 4,
+        "slug": "强袭",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040055",
+      "label": "技能扩散",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040055",
+        "slot": 4,
+        "slug": "技能扩散",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040359",
+      "label": "泡出暴击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040359",
+        "slot": 4,
+        "slug": "泡出暴击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040310",
+      "label": "满盾爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040310",
+        "slot": 4,
+        "slug": "满盾爆破",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040284",
+      "label": "狙盾生成",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040284",
+        "slot": 4,
+        "slug": "狙盾生成",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040391",
+      "label": "独爆产暴",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040391",
+        "slot": 4,
+        "slug": "独爆产暴",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040383",
+      "label": "白送重抽",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040383",
+        "slot": 4,
+        "slug": "白送重抽",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040088",
+      "label": "百万伏特",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040088",
+        "slot": 4,
+        "slug": "百万伏特",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040051",
+      "label": "穿针引线",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040051",
+        "slot": 4,
+        "slug": "穿针引线",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040044",
+      "label": "聚能速度",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040044",
+        "slot": 4,
+        "slug": "聚能速度",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040430",
+      "label": "迅积蓄能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040430",
+        "slot": 4,
+        "slug": "迅积蓄能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040375",
+      "label": "连抽循环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040375",
+        "slot": 4,
+        "slug": "连抽循环",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040363",
+      "label": "连环震波",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040363",
+        "slot": 4,
+        "slug": "连环震波",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040145",
+      "label": "追猎齐射",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040145",
+        "slot": 4,
+        "slug": "追猎齐射",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040285",
+      "label": "重武护盾",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040285",
+        "slot": 4,
+        "slug": "重武护盾",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040371",
+      "label": "铲杀得速",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040371",
+        "slot": 4,
+        "slug": "铲杀得速",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040181",
+      "label": "闪切霜环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040181",
+        "slot": 4,
+        "slug": "闪切霜环",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040090",
+      "label": "闪电轰击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040090",
+        "slot": 4,
+        "slug": "闪电轰击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生独立伤害事件或改变攻击形态，不提供已知伤害倍率通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040343",
+      "label": "魂狩火网",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040343",
+        "slot": 4,
+        "slug": "魂狩火网",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:s4-preview:20703040183",
+      "label": "龙息奔涌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040183",
+        "slot": 4,
+        "slug": "龙息奔涌",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
     }
   ]
 }

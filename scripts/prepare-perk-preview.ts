@@ -82,14 +82,24 @@ async function main() {
     }
   }
   const files = [1, 2, 3, 4].flatMap(slot => {
-    const directory = `data/perks/slot-${slot}`;
-    return fs.readdirSync(directory).filter(file => file.endsWith(".mdx")).map(file => path.join(directory, file));
+    const directory = `data/perk-preview/slot-${slot}`;
+    return fs.existsSync(directory) ? fs.readdirSync(directory).filter(file => file.endsWith(".mdx")).map(file => path.join(directory, file)) : [];
   });
   const local = new Map(files.map(file => [String(matter.read(file).data.id), file]));
+  // A partial review must retain the evidence used by other preview drafts.
+  for (const file of files) {
+    const data = matter.read(file).data;
+    if (data.season !== previewKey) throw new Error(`Preview draft season mismatch: ${file}`);
+    for (const binding of Object.values(data.num_modifier_values ?? {}) as { row: string }[]) {
+      const key = binding.row.replace(/^lc:/, "");
+      if (!numerical[key]) throw new Error(`Missing preview draft Numerical ${binding.row}: ${file}`);
+      selectedRows[key] = numerical[key];
+    }
+  }
   const plans: { file: string; text: string; icon: string; image: Buffer }[] = [];
   for (const [id, entry] of Object.entries(review)) {
     const file = local.get(id);
-    if (!file) throw new Error(`Import ItemID ${id} with import-perks.ts first`);
+    if (!file) throw new Error(`Import ItemID ${id} with import-perks.ts --season ${previewKey} first`);
     const document = matter.read(file);
     const mod = Object.values(mods).find(row => String(row.MODItemID) === id);
     const item = items[id];
@@ -97,7 +107,7 @@ async function main() {
     const skill = String(mod.PassiveSkill_ID).replace(":", "_");
     let description = normalize(entry.description ?? localized((descriptions[skill] ?? mainDescriptions[skill])?.MGEDescription));
     if (!description) throw new Error(`No reviewed description: ${id}`);
-    const bindings = { ...entry.bindings };
+    const bindings: NonNullable<Review["bindings"]> = { ...document.data.num_modifier_values, ...entry.bindings };
     for (const replacement of entry.replacements ?? []) {
       if (!description.includes(replacement.from)) throw new Error(`Description drift ${id}: ${replacement.from}`);
       description = description.replaceAll(replacement.from, replacement.to);
@@ -166,7 +176,7 @@ async function main() {
     fs.writeFileSync(path.join("public/icons/perks", `${plan.icon}.png`), plan.image);
     await sharp(plan.image).webp({ quality: 85 }).toFile(path.join("public/webp/icons/perks", `${plan.icon}.webp`));
   }
-  console.log(`Prepared ${plans.length} ${preview.label} perks, ${Object.keys(selectedRows).length} Numerical evidence rows, PNG and WebP icons.`);
+  console.log(`Prepared ${plans.length} ${preview.label} perks, ${Object.keys(selectedRows).length} Numerical evidence rows, PNG and WebP icons. Review and run pnpm perks:project --channel preview to publish.`);
 }
 
 main().catch(error => { console.error(error); process.exitCode = 1; });

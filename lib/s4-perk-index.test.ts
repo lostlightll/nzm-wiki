@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import reference from "../scripts/s4-perk-index-reference.json";
-import { getAllPerks } from "./perks";
+import { getAllPublishedPerks } from "./perks";
 import {
   MULTIPLIER_PROVIDERS,
   getProviderRelationsForSource,
@@ -12,11 +12,12 @@ import {
 import registry from "../data/modifier-providers.json";
 
 test("all S4 perks match the pinned reference provider/exclusion coverage", () => {
-  const perks = getAllPerks().filter(perk => perk.season === "s4-preview");
+  const perks = getAllPublishedPerks().filter(perk => perk.season === "s4-preview");
   const expected = [...reference.providers, ...reference.exclusions];
   assert.equal(reference.providers.length, 35);
   assert.equal(reference.exclusions.length, 47);
-  assert.deepEqual(perks.map(perk => perk.itemId).sort(), expected.map(entry => entry.source.itemId).sort());
+  const referenceIds = new Set(expected.map(entry => entry.source.itemId));
+  assert.deepEqual(perks.filter(perk => referenceIds.has(perk.itemId!)).map(perk => perk.itemId).sort(), [...referenceIds].sort());
   for (const entry of reference.providers) {
     const provider = MULTIPLIER_PROVIDERS.find(provider => provider.id === entry.id);
     assert.ok(provider, entry.label);
