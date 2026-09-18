@@ -13,6 +13,7 @@ import type { Perk, PerkPreviewChange, PerkSlot, Rarity } from "@/types";
 import { useSelection } from "@/hooks/useSelection";
 import { FilterSection } from "@/components/Filter";
 import { PerkHoverPreview } from "@/components/PerkHoverPreview";
+import { PerkGuideDialog } from "@/components/PerkGuideDialog";
 import { MultiplierSourceBadges } from "@/components/MultiplierBadges";
 import {
   matchesWeaponApplicability,
@@ -317,6 +318,7 @@ export default function PerksPageClient({
 
   return (
     <>
+      {previewLabel && <PerkGuideDialog key={channel} version={isPreview ? "s4" : "s3.2"} currentLabel={contentVersion.version.toUpperCase()} previewLabel={previewLabel} />}
       <OverlimitVersionNavigation
         ariaLabel="插件赛季版本"
         activePath={isPreview ? "/perks/preview" : "/perks"}
