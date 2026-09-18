@@ -5,7 +5,7 @@ import type { BossDifficulty } from "@/types";
 
 export function groupMonstersByStage(monsters: HunterMonster[], difficulty: BossDifficulty, filters: { map?: string; area?: string; kind?: string; query?: string } = {}) {
   const query = filters.query?.trim().toLocaleLowerCase() ?? "";
-  return LC_MAPS.filter(map => !filters.map || map.name === filters.map).map(map => {
+  return LC_MAPS.filter(map => layout.some(row => row.map === map.name)).filter(map => !filters.map || map.name === filters.map).map(map => {
     const stages = layout.find(row => row.map === map.name && row.difficulty === difficulty);
     const sections = [...(stages?.areas ?? []), "区域待核实"].map((area, index) => ({
       area,

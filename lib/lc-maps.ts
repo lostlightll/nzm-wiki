@@ -50,6 +50,16 @@ export const LC_MAPS: readonly LcMapMeta[] = [
     name: "丛林魅影",
     image: "/webp/images/overlimit/maps/T_Bg_Loading_29.webp",
   },
+  {
+    id: "forbidden-island",
+    name: "禁魔岛",
+    image: "/webp/images/overlimit/maps/T_Bg_Loading_73.webp",
+  },
+  {
+    id: "syzygy-project",
+    name: "朔望计划",
+    image: "/webp/images/overlimit/maps/T_Bg_Loading_72.webp",
+  },
 ] as const;
 
 const LC_MAP_BY_NAME = new Map(LC_MAPS.map((map) => [map.name, map]));

@@ -6,7 +6,6 @@ import { getHunterMonsters } from "./hunter-monsters";
 import { summarizeMonsterHealth, type MonsterAppearance } from "./hunter-monster-health";
 import evidence from "../data/enemies/lc/monsters/evidence.json";
 import type { BossDifficulty } from "../types";
-import { LC_MAPS } from "./lc-maps";
 import layout from "../data/enemies/lc/monsters/map-layout.json";
 
 type HealthRecord = (typeof evidence.monsters)[number]["records"][number];
@@ -83,7 +82,8 @@ test("九图审核覆盖保持完整，同一身份跨地图复用且不借用�
   const monsters = getHunterMonsters();
   assert.equal(monsters.length, 144);
   assert.equal(evidence.monsters.reduce((n, m) => n + m.records.length, 0), 874);
-  assert.deepEqual(new Set(monsters.flatMap(m => m.appearances.map(r => r.map))), new Set(LC_MAPS.map(m => m.name)));
+  assert.deepEqual(new Set(monsters.flatMap(m => m.appearances.map(r => r.map))), new Set(layout.map(row => row.map)));
+  assert.equal(new Set(layout.map(row => row.map)).size, 9);
   const bomber = monsters.filter(m => m.monster_id === 18102031);
   assert.equal(bomber.length, 1);
   assert.ok(bomber[0].appearances.some(r => r.map === "冰点源起" && r.health.heroic !== undefined));

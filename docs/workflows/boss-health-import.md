@@ -29,7 +29,7 @@ pnpm exec tsx scripts/import-boss-health.ts --map all --difficulty all --write
 
 | 参数 | 可选值 | 默认值 |
 | --- | --- | --- |
-| `--map` | 九张经典地图正式名称或 `all` | `all` |
+| `--map` | `LC_MAPS` 中的地图正式名称或 `all` | `all` |
 | `--difficulty` | `heroic`、`inferno`、`torment`、`overlimit`、`all` | `all` |
 | `--write` | 执行结构化 frontmatter 写入 | 不写入 |
 
@@ -96,6 +96,25 @@ Boss 的 `MonsterType` 不全是 `7`，例如大都会金牌打手为 `6`。因�
 数组顺序就是页面阶段顺序。同一个来源 ID 可以在同一 Boss 中重复，终焉之樱的两个阶段即共用同一计算值。稳定 slug 负责区分同名条目和标题别名，包括两个金牌打手、`兰斯D博士` / `兰斯·D博士`、`终蔫之樱` / `终焉之樱`。
 
 昆仑神宫第三形态“真蛇神”的资源目录编号与实际属性 ID 不同，清单使用可贯通基础表和计划表的属性 ID `14020071`。
+
+### 禁魔岛与朔望计划
+
+两图使用正式服 `refs/Exports/NZM/Content/DataTables/` 的相同计算链。禁魔岛的英雄、炼狱/折磨、超限任务分别为 `4133`、`4134`、`4137`；朔望计划分别为 `4123`、`4124`、`4127`。这些 ID 仅作此次核对记录，导入器仍动态查询入口。
+
+| 地图 | Boss | 来源 ID |
+| --- | --- | --- |
+| 禁魔岛 | 破邪金 | `18419171` |
+| 禁魔岛 | 磁电双娇 | `18421171` |
+| 禁魔岛 | 典狱长杰斯 | `18422171`、`18422172`，按形态顺序 |
+| 朔望计划 | 宙之虹 | `14502071` |
+| 朔望计划 | 衣之枢 | `14503071` |
+| 朔望计划 | 引渡者 | `10405071` |
+
+磁电双娇的 `18421171_RMBossTwinsBlackDP` 与 `18421172_RMBossTwinsWhiteDP` 角色蓝图均装配 `NZBossSharedHealthComponent`（`NZBossSharedHealth_GEN_VARIABLE`，`bShareDebuff: true`）。`System/Dungeon/DungeonMonsterTipsTable.json` 的 `2004133/2004134.boss_ids` 也仅列 `18421171`。因此图鉴保留单条配置血量，不将另一角色拆成第二阶段或相加。此处不推定原生共享组件的其他运行时倍率。
+
+杰斯两形态由 `AIBehavior/DungeonAI/EnemyData/Common-RM/RMBossJessDPP1.json`、`RMBossJessDPP2.json` 的 `AISpawnProperty.AICharacterClass` 分别指向 `18422171`、`18422172` 角色；保留两项血量。骇影沿用特殊首领排除规则，不因出现在计划中而自动加入图鉴。衣之枢 `14503072` 只出现在普通难度计划，不加入英雄及以上难度的阶段清单。
+
+新 Boss 图标取身份表 `MonsterIcon` 的真实引用。缺 PNG 但已有原始纹理时，使用 `scripts/export-boss-icons.ps1 -Slug <slug列表> -OutputRoot MD/_local/boss-icons/<批次>` 原地读取选定资产，再用 `python scripts/overlimit/decode-preview-icons.py <OutputRoot>` 解码。将审核后的 PNG 和 WebP 分别放入既有 `public/icons/enemies/lc/boss/`、`public/webp/icons/enemies/lc/boss/` 目录，不修改参考库。
 
 ## 写入规则
 
