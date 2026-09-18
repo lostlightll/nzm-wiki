@@ -6,7 +6,7 @@
 
 ## 核心结论
 
-- `data/perks/slot-*/*.mdx` 拥有普通插件详情和结构化效果；`data/overlimit/current.json` 拥有已审定的超限发布投影。超限可通过 `perkItemId` 显式关联插件，但不在运行时合并插件描述、数值或独立伤害。赛季流程见 [超限维护](../workflows/overlimit-season.md)。
+- `data/perks/slot-*/*.mdx` 拥有正式普通插件详情和结构化效果。预览编辑源独立放在 `data/perk-preview/slot-*/*.mdx`，`data/perk-preview/preview.json` 拥有已审定的预览发布投影。`data/overlimit/current.json` 拥有已审定的超限发布投影。超限可通过 `perkItemId` 显式关联同通道插件，但不在运行时合并插件描述、数值或独立伤害。赛季流程见 [超限维护](../workflows/overlimit-season.md)。
 - 插件身份只通过 ItemID 连接，不能根据相似编号、图标编号或相邻行猜测。
 - 普通插件详情优先使用 `MGEDescription`；猎场 `OverrideDesc` 通常是玩法卡片简写，不能覆盖完整详情。
 - 游戏内截图、`MGEDescription`、`OverrideDesc` 和各表 `Description` 都是自然语言展示证据，不是配置数值真值；它们只能确定玩家可见文案、触发条件和语义。
@@ -198,11 +198,11 @@ independent_damage_sources:
 
 ### 预览插件的武器伤害来源
 
-极寒领域、极寒之触、极寒之痕分别引用极寒冰神的 `cold-field`、`cryo-touch`、`ice-orb`。完整原始行和来源 SHA-256 统一保存在 Weapon Lock，不再维护孤立伤害快照。刷新这些数值使用 [Weapon Data Lock 单武器刷新](../architecture/weapon-data-lock.md#单武器局部刷新)，避免混入其他武器的预载变动。
+极寒领域、极寒之触、极寒之痕分别引用极寒冰神的 `cold-field`、`cryo-touch`、`ice-orb`。完整原始行和来源 SHA-256 统一保存在 Weapon Lock，预览发布投影保存当次解析的独立伤害结果和依赖文件哈希。刷新武器来源使用 [Weapon Data Lock 单武器刷新](../architecture/weapon-data-lock.md#单武器局部刷新)，避免混入其他武器的预载变动。
 
-`lib/perk-preview-damage.ts` 对预览条目沿其审定的 `independent_damage_sources` 解析，不硬编码赛季、三个 ItemID 或武器名。描述中的 `GPNumericalID:…:HpCalScale:13` 必须唯一匹配插件独立引用指向的猎场 Numerical；通过 `lib/weapons.ts` 同步服务入口取得 Resolver 已应用 MDX overrides 的伤害系数，不直接读取武器 frontmatter 或 Lock。独立伤害面板使用同一通用武器 Resolver，类型、破韧、元素、暴击和弱点不设置预览专用默认值。缺少独立引用、引用不匹配、歧义或不支持的 Token 均报错。
+发布阶段由 `lib/perk-preview-damage.ts` 沿预览条目审定的 `independent_damage_sources` 解析，不硬编码赛季、ItemID 或武器名。描述中的 `GPNumericalID:…:HpCalScale:13` 必须唯一匹配插件独立引用指向的猎场 Numerical；通过 `lib/weapons.ts` 同步服务入口取得 Resolver 已应用 MDX overrides 的伤害系数，不直接读取武器 frontmatter 或 Lock。独立伤害同样使用通用武器 Resolver，类型、破韧、元素、暴击和弱点不设置预览专用默认值。缺少独立引用、引用不匹配、歧义或不支持的 Token 均报错。发布后页面只读取冻结结果，不随共享武器数值变化刷新。
 
-三份插件 MDX 拥有发布用 `independent_damage_sources`；`scripts/s4-preview-perks-review.json` 保存相同审定引用，供预览生成器重跑时恢复并预检。生成器不刷新 Weapon Lock，需先完成武器导入和 Lock 校验，再生成预览插件。
+预览编辑 MDX 拥有发布用 `independent_damage_sources`；`scripts/s4-preview-perks-review.json` 保存已登记条目的审定引用，供预览生成器重跑时恢复并预检。生成器不刷新 Weapon Lock，需先完成武器导入和 Lock 校验，再生成预览插件。每次运行 `pnpm perks:project --channel preview` 前，重新核对引用武器及 Lock 是否符合目标版本；来源哈希用于追溯，不能证明后来更新的武器仍适用于旧预览。
 
 ## 适用武器
 
@@ -276,7 +276,7 @@ pnpm exec tsx scripts/import-perks.ts --all-with-icons --json
 
 ## 下一赛季预览导入
 
-预览是 SN 未结束、SN+1 选定内容已经完成编辑和核验的过渡阶段，遵循 [跨赛季版本管理](../workflows/content-versions.md#过渡期当前正式版与下一版预览并存)。先在版本配置登记预览赛季、版本号和显示名称，再用 `<season>-preview` 标记条目与 Modifier 来源。图鉴使用通用预览筛选，当前标签为 **S4 Preview**，不添加卡片标签，不进入“已上线”“未上线”或“近期上线”。`CollectMODItem`、`MakeMODItem`、`IsCooked` 保留预载表原值，不能把预载开关当作正式上线日期。预览插件全部纳入乘区覆盖检查，使用显式绑定赛季的独立 Numerical 证据；正式上线时必须重新审计。
+预览是 SN 未结束、SN+1 选定内容已经完成编辑和核验的过渡阶段，遵循 [跨赛季版本管理](../workflows/content-versions.md#过渡期当前正式版与下一版预览并存)。先在版本配置登记预览赛季、版本号和显示名称，再用 `<season>-preview` 标记条目与 Modifier 来源。图鉴 `/perks` 展示正式插件，`/perks/preview` 展示已发布预览，标题上方使用 **S3.2 / S4 Preview** 两个版本按钮切换；快速筛选中不再设置 Preview，也不增加卡片预览标签。`CollectMODItem`、`MakeMODItem`、`IsCooked` 保留预载表原值，不能把预载开关当作正式上线日期。预览插件全部纳入乘区覆盖检查，使用显式绑定赛季的独立 Numerical 证据；正式上线时必须重新审计。
 
 2026-09-16 预载新增 78 个普通插件；12 个 `MODItemType=1`、通过 `RoutineItemID` 关联旧插件的腐化变体不单独作为普通插件导入。同名“连锁充能”保留两个 ItemID，新版文件使用 `连锁充能-20703040513.mdx`。
 
@@ -284,9 +284,15 @@ pnpm exec tsx scripts/import-perks.ts --all-with-icons --json
 
 ```bash
 pnpm exec tsx scripts/prepare-perk-preview.ts --content-root <Content目录> --icon-root <参考图标目录> --review scripts/s4-preview-perks-review.json
+pnpm perks:project --channel preview
+pnpm perks:check
 ```
 
-`--review` 指向本次审定清单，S4 使用 `scripts/s4-preview-perks-review.json` 保存 ItemID、身份链、文案替换、武器独立伤害引用和未确认项。生成器从版本配置读取预览目标，从指定目录原地读取数据，预检通过后生成 MDX、PNG、WebP 和绑定该赛季的选定 Modifier 行。Num 模板由独立预览 Resolver 解析；已导入武器的伤害 Token 使用武器 MDX 引用与 Weapon Lock。生成器不刷新两类正式 Lock。未能通过执行配置核验的预览文案不转换为 `effect_values`。下一赛季替换配置和审定清单，复用同一生成器。
+`--review` 指向本次审定清单，S4 使用 `scripts/s4-preview-perks-review.json` 保存 ItemID、身份链、文案替换、武器独立伤害引用和未确认项。导入器在 `--season *-preview` 时仅写入 `data/perk-preview/slot-*`；准备器也只修改此目录。它从版本配置读取预览目标，从指定目录原地读取数据，预检通过后生成编辑 MDX、PNG、WebP 和 `data/perk-preview-modifiers.json` 中绑定该赛季的选定 Modifier 行。Num 模板由独立预览 Resolver 解析；已导入武器的伤害 Token 使用审定的武器引用与 Weapon Lock。生成器不刷新两类正式 Lock。未能通过执行配置核验的预览文案不转换为 `effect_values`。下一赛季替换配置和审定清单，复用同一生成器。
+
+编辑完成后，`perks:project --channel preview` 才将解析后的插件、正文、metadata 和独立伤害写入 `data/perk-preview/preview.json`，并记录来源哈希；修改编辑 MDX 不会自动更新页面。`perks:check` 检查 Schema、预览配置和资源，构建也执行此检查。预览运行时不重新解析编辑 MDX 或读取共享武器数值。
+
+同 ItemID 可在正式和预览通道各有一版，预览详情 slug 使用 `preview/slot-N/<名称>`。默认列表、名称和 ItemID 查询保持正式通道；发布列表可合并两版，显式指定 `preview` 才按名称或 ItemID 读取预览。S4 初次迁移了原有 82 个预览条目，随后加入贯长虹预览；这个集合只代表已审定预览，不表示所有正式插件已复制到 S4。撤下或转正须按[版本管理流程](../workflows/content-versions.md#过渡期当前正式版与下一版预览并存)逐项处理两版差异，不能靠修改 `season` 或整体覆盖共享 Lock 完成。
 
 初次导入参考 [S4 预览仓库](https://github.com/lostlightll/nzm-wiki-s4-preview) 的 `1e46f2c5dd4296159cf3b268656ae592f0e21dc4` 版本，图标按同 ItemID 的 CommonItem 资源名匹配其 `public/icons/perks/`；描述与数值以本次预载证据为准，不复制参考站旧版字符串 `effect_values`。
 
