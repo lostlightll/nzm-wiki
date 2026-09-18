@@ -361,6 +361,6 @@ body:has(.home-page) {
   background: var(--background);
 }
 
-::backdrop {
+:fullscreen::backdrop {
   background: var(--background);
 }
