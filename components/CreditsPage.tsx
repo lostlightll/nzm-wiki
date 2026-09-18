@@ -15,6 +15,7 @@ interface CoreContributor {
   fallbackAvatarUrl?: string | null;
   extraLink?: string;
   extraLabel?: string;
+  golden?: boolean;
 }
 
 interface ContentContributor {
@@ -89,7 +90,13 @@ function CoreCard({ person }: { person: CoreContributor }) {
   const hasExtra = !!(person.extraLink && person.extraLabel);
 
   return (
-    <div className="group flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-800/40 hover:bg-zinc-800/70 hover:border-zinc-700 transition-colors p-4">
+    <div
+      className={`group flex items-center gap-4 rounded-xl border transition-colors p-4 ${
+        person.golden
+          ? "border-amber-400/40 bg-linear-to-br from-amber-500/15 via-yellow-500/5 to-zinc-900 hover:border-amber-300/60 hover:from-amber-500/20"
+          : "border-zinc-800 bg-zinc-800/40 hover:bg-zinc-800/70 hover:border-zinc-700"
+      }`}
+    >
       <Avatar
         src={person.avatarUrl}
         fallbackSrc={person.fallbackAvatarUrl}
@@ -103,11 +110,11 @@ function CoreCard({ person }: { person: CoreContributor }) {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 hover:text-white transition-colors"
         >
-          <span className="font-semibold text-zinc-200 group-hover:text-white transition-colors truncate">
+          <span className={`font-semibold transition-colors truncate ${person.golden ? "text-amber-200 group-hover:text-amber-100" : "text-zinc-200 group-hover:text-white"}`}>
             {person.name}
           </span>
           <svg
-            className="h-4 w-4 flex-shrink-0 text-zinc-500 group-hover:text-zinc-300 transition-colors"
+            className={`h-4 w-4 flex-shrink-0 transition-colors ${person.golden ? "text-amber-400/60 group-hover:text-amber-200" : "text-zinc-500 group-hover:text-zinc-300"}`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -121,7 +128,7 @@ function CoreCard({ person }: { person: CoreContributor }) {
           </svg>
         </a>
         {hasDesc && (
-          <p className="text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors mt-0.5">
+          <p className={`text-sm transition-colors mt-0.5 ${person.golden ? "text-amber-300/80 group-hover:text-amber-200" : "text-zinc-400 group-hover:text-zinc-300"}`}>
             {person.description}
           </p>
         )}

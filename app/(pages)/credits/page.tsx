@@ -11,6 +11,14 @@ export const metadata: Metadata = {
 // Tier 1 核心致谢数据（不含头像 URL，由服务端 fetch）
 const CORE_CONTRIBUTORS = [
   {
+    name: "长夜白",
+    platform: "bilibili" as const,
+    url: "https://space.bilibili.com/37696843",
+    description: "黄金格调",
+    avatarUrl: getAssetPath("/avatars/changyebai.webp"),
+    golden: true,
+  },
+  {
     name: "幻想延续",
     platform: "github" as const,
     url: "https://github.com/lostlightll",
@@ -88,13 +96,6 @@ const CORE_CONTRIBUTORS = [
     url: "https://space.bilibili.com/85306978",
     description: "铁砧教主",
     avatarUrl: getAssetPath("/avatars/zhaiddr.webp"),
-  },
-  {
-    name: "长夜白",
-    platform: "bilibili" as const,
-    url: "https://space.bilibili.com/37696843",
-    description: "只剩格调",
-    avatarUrl: getAssetPath("/avatars/changyebai.webp"),
   },
   {
     name: "诺梦",
