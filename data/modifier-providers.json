@@ -8864,19 +8864,72 @@
         "overlimitCard": false,
         "season": "s4-preview"
       },
-      "reviewedFacetIds": [
-        "critical",
-        "weapon-hit-damage"
-      ],
       "evidence": {
-        "kind": "reviewed-override",
-        "passiveSkillId": "1315240001",
-        "descriptionRowKey": "1315240001_1",
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315240001_1",
         "basis": [
-          "用户指定 https://github.com/lostlightll/nzm-wiki-s4-preview@1e46f2c5dd4296159cf3b268656ae592f0e21dc4 为 S4 乘区覆盖验收标准；无直连行的分类采用该版本人工审定，不将描述数值作为配置真值。",
-          "体验服 MGE 描述明确写明暴击伤害提升 180%，并按移动速度提供最高 100% 射击伤害；暴击率作为属性数值单独展示。"
-        ]
-      }
+          "WeaponModItemData[20703040524].PassiveSkill_ID=1315240001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315240001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315240001.json",
+          "MGE CDO properties: {\"UberGraphFrame\":{},\"Buff Name\":\"BD_Common_1315202001\",\"Add Speed Upper Limit\":0.5,\"BannedTags\":[]}",
+          "CDO -> BuffConfigDatatableNew[BD_Common_1315202001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=1",
+          "Abilities/Build/CBT3/Perk03/MGE_1315240001.uasset#ExecuteUbergraph_MGE_1315240001@35/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "ExecuteUbergraph_MGE_1315240001@202 MakeStruct.ModifierID=111051029, @234 X_Value=0 -> @286 array -> @326 ApplyModifiers(self); Numerical CriticalRatio base=0.5 and CriticalDamageRatio base=1.8, B1",
+          "Get XValue by Speed computes Max(SpeedScale*(RunSpeedScale+1)-1,0); ExecuteUbergraph_MGE_1315240001@1014 MapRangeClamped(speedBonus,0,Add Speed Upper Limit=0.5,0,1) -> @1075 ApplyModifiersToFireContext(111051030, mappedBonus); WeaponHitDamageRatio and WeaponExplodeDamageRatio B1 coefficient=1 each, reached at +50% combined speed",
+          "用户补充的五条 Numerical 与 data/perk-preview-modifiers.json 一致；移速提升引用 111051031_1_0.BaseValue=0.3。",
+          "详细描述：refs/Exports/NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfig_BD.json#1315240001_1.MGEDescription，包含每1%移速提供2%射击伤害、上限100%、暴击后移速30%持续2秒并可刷新；数值独立核对配置。",
+          "复核字节码：MD/_local/overlimit/ordinary-1315240001.bytecode.json，SHA256=06f63352c5b76db78d6d5fb8f5cd1e6a7e9c5ad3d46a6f10cf5ab45728c73c17；复用既有预览审计快照，不代表实机测试。",
+          "Get XValue by Speed@20/139读取SpeedScale与RunSpeedScale，@264/306/352/394计算Max(SpeedScale*(RunSpeedScale+1)-1,0)。ExecuteUbergraph@1014把0至CDO Add Speed Upper Limit=0.5映射为0至1，@1075传入ModifierID=111051030；两行BaseValue=0、CoefValue=1、B1，因此每1%移速对应0.01/0.5*1=0.02，最大1，即2%与100%。无整层取整或先扣除1%门槛。",
+          "OnMakeDamage_FECA3D7E4C1687CE44AB199FCF5C21B1@18进入ExecuteUbergraph@1483，@1594检查bIsCritical，@1613跳到@15 TryGetCharacter，@35 MGEAddBuff显式使用BD_Common_1315240001并以自身角色为目标；CDO Buff Name=BD_Common_1315202001不用于这次加速调用。",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315240001：Duration=2、StackLimitCount=1、StackDuration=RefreshOnSuccessfulApplication、bDenyOverflow=false、GPModifyIDs=[111051031]；Numerical 111051031_1_0为SpeedScale、B1、BaseValue=0.3。"
+        ],
+        "descriptionRowKey": "1315240001_1"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051029_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051029_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051030_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051030_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051031_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
     },
     {
       "id": "perk:20703040478",

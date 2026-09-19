@@ -637,18 +637,57 @@
     ]
   },
   "20703040524": {
-    "bindings": {},
+    "bindings": {
+      "critical-rate": {
+        "row": "lc:111051029_1_0",
+        "field": "base"
+      },
+      "critical-damage": {
+        "row": "lc:111051029_1_1",
+        "field": "base"
+      },
+      "weapon-hit-damage": {
+        "row": "lc:111051030_1_0",
+        "field": "coefficient"
+      },
+      "weapon-explode-damage": {
+        "row": "lc:111051030_1_1",
+        "field": "coefficient"
+      },
+      "weapon-hit-per-speed": {
+        "row": "lc:111051030_1_0",
+        "field": "coefficient",
+        "scale": 0.02
+      },
+      "weapon-explode-per-speed": {
+        "row": "lc:111051030_1_1",
+        "field": "coefficient",
+        "scale": 0.02
+      },
+      "movement-speed": {
+        "row": "lc:111051031_1_0",
+        "field": "base"
+      }
+    },
     "replacements": [],
     "evidence": [
       "WeaponModItemData[20703040524].PassiveSkill_ID=1315240001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315240001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315240001.json",
       "MGE CDO properties: {\"UberGraphFrame\":{},\"Buff Name\":\"BD_Common_1315202001\",\"Add Speed Upper Limit\":0.5,\"BannedTags\":[]}",
-      "CDO -> BuffConfigDatatableNew[BD_Common_1315202001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=1"
+      "CDO -> BuffConfigDatatableNew[BD_Common_1315202001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=1",
+      "Abilities/Build/CBT3/Perk03/MGE_1315240001.uasset#ExecuteUbergraph_MGE_1315240001@35/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+      "ExecuteUbergraph_MGE_1315240001@202 MakeStruct.ModifierID=111051029, @234 X_Value=0 -> @286 array -> @326 ApplyModifiers(self); Numerical CriticalRatio base=0.5 and CriticalDamageRatio base=1.8, B1",
+      "Get XValue by Speed computes Max(SpeedScale*(RunSpeedScale+1)-1,0); ExecuteUbergraph_MGE_1315240001@1014 MapRangeClamped(speedBonus,0,Add Speed Upper Limit=0.5,0,1) -> @1075 ApplyModifiersToFireContext(111051030, mappedBonus); WeaponHitDamageRatio and WeaponExplodeDamageRatio B1 coefficient=1 each, reached at +50% combined speed",
+      "用户补充的五条 Numerical 与 data/perk-preview-modifiers.json 一致；移速提升引用 111051031_1_0.BaseValue=0.3。",
+      "详细描述：refs/Exports/NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfig_BD.json#1315240001_1.MGEDescription，包含每1%移速提供2%射击伤害、上限100%、暴击后移速30%持续2秒并可刷新；数值独立核对配置。",
+      "复核字节码：MD/_local/overlimit/ordinary-1315240001.bytecode.json，SHA256=06f63352c5b76db78d6d5fb8f5cd1e6a7e9c5ad3d46a6f10cf5ab45728c73c17；复用既有预览审计快照，不代表实机测试。",
+      "Get XValue by Speed@20/139读取SpeedScale与RunSpeedScale，@264/306/352/394计算Max(SpeedScale*(RunSpeedScale+1)-1,0)。ExecuteUbergraph@1014把0至CDO Add Speed Upper Limit=0.5映射为0至1，@1075传入ModifierID=111051030；两行BaseValue=0、CoefValue=1、B1，因此每1%移速对应0.01/0.5*1=0.02，最大1，即2%与100%。无整层取整或先扣除1%门槛。",
+      "OnMakeDamage_FECA3D7E4C1687CE44AB199FCF5C21B1@18进入ExecuteUbergraph@1483，@1594检查bIsCritical，@1613跳到@15 TryGetCharacter，@35 MGEAddBuff显式使用BD_Common_1315240001并以自身角色为目标；CDO Buff Name=BD_Common_1315202001不用于这次加速调用。",
+      "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315240001：Duration=2、StackLimitCount=1、StackDuration=RefreshOnSuccessfulApplication、bDenyOverflow=false、GPModifyIDs=[111051031]；Numerical 111051031_1_0为SpeedScale、B1、BaseValue=0.3。"
     ],
     "warnings": [
-      "仅完成可从现有JSON默认属性直连Buff.GPModifyIDs的数值审核；其余MGE执行逻辑可能含硬编码ModifierID，需要目标字节码验证。不得按数值相同、名字相同或相邻编号绑定。",
-      "CDO Buff Name指向旧BD_Common_1315202001；111051029/030虽Description为驰射淬锋但尚无执行身份链。111051030 Base0/Coef1不可直接解释为描述的每1%移速+2%。"
+      "游戏详细描述统称射击伤害；111051030同时修改WeaponHitDamageRatio与WeaponExplodeDamageRatio，详情按实际两条属性展开。Description的每层2%由连续移速换算解释，不采用固定层数。"
     ],
-    "description": "提升暴击率和暴击伤害。移动速度加成可提高射击伤害；暴击命中后短暂提升移动速度，可刷新。具体增益数值待确认。"
+    "description": "暴击率提升<strong>{{num:critical-rate|percent}}</strong>，暴击伤害提升<strong>{{num:critical-damage|percent}}</strong>。每有<strong>1%</strong>移动速度加成，武器射击和爆炸伤害分别提升<strong>{{num:weapon-hit-per-speed|percent}}</strong>和<strong>{{num:weapon-explode-per-speed|percent}}</strong>，最多分别提升<strong>{{num:weapon-hit-damage|percent}}</strong>和<strong>{{num:weapon-explode-damage|percent}}</strong>。暴击命中后，自身移动速度提升<strong>{{num:movement-speed|percent}}</strong>，持续<strong>2</strong>秒，可刷新。"
   },
   "20703040525": {
     "bindings": {

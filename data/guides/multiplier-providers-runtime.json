@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "bedf7fa9740e91b32b2cd4de19daf90c2756bcd16ab959ebd13f008f8babaec8",
+    "modifierIndexSha256": "c2718da3f4cdd8f8c37f742fb76216fd6daf6240357c735c46af4cbe36cede22",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -3826,7 +3826,8 @@
       },
       "modifierTypeIds": [
         "critical",
-        "weapon-hit-damage"
+        "weapon-hit-damage",
+        "weapon-explode-damage"
       ]
     },
     {

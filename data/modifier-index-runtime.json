@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "60250143e61b68b8e903f927059a13899c39ab5538a2e9f1504b174e2284f37d",
+    "registrySha256": "1d8e9050ad86b79c222e4f02ba32af473b2cbfb16fac19672af6c6531eae8487",
     "perkPreviewSha256": "9fc2a4005f05244f47fe36924f55f50bffa1e115ee09d8c1501ecbc78c5f0c45",
     "s2EvidenceSha256": "a3f16097b34fc589f1322faa4f798b74bc82066dbd02bdcaad4fa0e4c240a0b2",
     "semanticsSha256": "6ebaa7cf7eaa55f6d7f32d91bd40b1815cecfd2647cb9c626fddc47273684c9d",
@@ -8843,11 +8843,70 @@
         "season": "s4-preview"
       },
       "facetIds": [
+        "critical-rate",
         "critical",
-        "weapon-hit-damage"
+        "weapon-hit-damage",
+        "weapon-explode-damage",
+        "movement-speed"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051029_1_0",
+          "attributeTypeId": "critical-rate",
+          "attributeLabel": "暴击率",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "critical-rate"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051029_1_1",
+          "attributeTypeId": "critical-damage",
+          "attributeLabel": "暴击伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "critical"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051030_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051030_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051031_1_0",
+          "attributeTypeId": "movement-speed",
+          "attributeLabel": "移动速度",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "movement-speed"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040478",
