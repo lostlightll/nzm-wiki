@@ -50,17 +50,22 @@ export function resolvePerkSkillVariants(value: unknown, season?: string): Resol
   const seen = new Set<string>();
   return value.map(input => {
     const reference = skillVariantReferenceSchema.parse(input);
-    if (/[/\\]|^\.{1,2}$/.test(reference.weapon_slug)) throw new Error("Invalid weapon slug");
-    const key = `${reference.weapon_slug}/${reference.base_skill}`;
+    if ("weapon_slug" in reference && /[/\\]|^\.{1,2}$/.test(reference.weapon_slug)) throw new Error("Invalid weapon slug");
+    const key = "scope" in reference ? reference.scope : `${reference.weapon_slug}/${reference.base_skill}`;
     if (seen.has(key)) throw new Error(`Duplicate skill replacement: ${key}`);
     seen.add(key);
     const variant = NUM_SKILL_VARIANTS.variants.find(entry => entry.key === reference.variant && entry.channel === channel);
     if (!variant) throw new Error(`Missing ${channel} variant: ${reference.variant}`);
+    if (reference.operation !== (variant.operation ?? "replace") || ("scope" in reference) !== ("scope" in variant)) throw new Error(`Skill variant scope or operation mismatch: ${reference.variant}`);
+    const skill = resolveNumSkill(variant.skill, { channel, lock: NUM_SKILL_LOCK });
+    if ("scope" in reference) {
+      return { reference, original: { scope: reference.scope, name: "武器主动技能" }, skill };
+    }
+    if ("scope" in variant) throw new Error(`Skill variant scope mismatch: ${reference.variant}`);
     const weaponSource = matter(fs.readFileSync(path.join(process.cwd(), "data/weapons", `${reference.weapon_slug}.mdx`), "utf8")).data;
     const base = resolveWeaponSkills(weaponSource, reference.weapon_slug, "lc").find(skill => skill.id === reference.base_skill);
     if (!base || base.kind !== "active" || base.gameSkillId !== variant.base_game_skill_id) throw new Error(`Skill replacement base identity mismatch: ${key}`);
-    const skill = resolveNumSkill(variant.skill, { channel, lock: NUM_SKILL_LOCK });
-    if (skill.kind !== "active" || skill.gameSkillId === base.gameSkillId) throw new Error(`Invalid replacement variant: ${reference.variant}`);
+    if (skill.kind !== "active" || (reference.operation === "modify") !== (skill.gameSkillId === base.gameSkillId)) throw new Error(`Invalid replacement variant: ${reference.variant}`);
     return { reference, original: { id: base.gameSkillId, name: base.name }, skill };
   });
 }

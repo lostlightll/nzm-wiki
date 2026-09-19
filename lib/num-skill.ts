@@ -20,6 +20,7 @@ export const numSkillDefinitionSchema = z.strictObject({
   id, kind: z.enum(["active", "passive"]), name: text, icon: text.optional(), tag: text.optional(),
   game_skill_id: z.number().int().positive().optional(),
   display: z.boolean().optional(),
+  duration_is_base: z.boolean().optional(),
   parameters: skillParametersSchema.optional(),
   modifier_sources: z.array(text).optional(),
 }).superRefine((skill, ctx) => {
@@ -38,19 +39,29 @@ export const numSkillLockSchema = z.strictObject({
     pve_absence: z.strictObject({ row_name: text, source_path: text, sha256: z.string().regex(/^[a-f0-9]{64}$/) }).optional(),
   })),
 });
-export const skillVariantReferenceSchema = z.strictObject({
+const specificSkillVariantReferenceSchema = z.strictObject({
   weapon_slug: text, base_skill: id, variant: text,
-  operation: z.literal("replace"),
+  operation: z.enum(["replace", "modify"]),
 });
+export const skillVariantReferenceSchema = z.union([
+  specificSkillVariantReferenceSchema,
+  z.strictObject({ scope: z.literal("all-weapons-active"), variant: text, operation: z.literal("replace") }),
+]);
+const variantCatalogFields = { key: text, channel: text, skill: numSkillDefinitionSchema, evidence: z.array(text).min(1) };
 export const skillVariantCatalogSchema = z.strictObject({
   schema_version: z.literal(1),
-  variants: z.array(z.strictObject({
-    key: text, channel: text, base_game_skill_id: z.number().int().positive(),
-    skill: numSkillDefinitionSchema,
-    evidence: z.array(text).min(1),
-  })),
+  variants: z.array(z.union([
+    z.strictObject({ ...variantCatalogFields, base_game_skill_id: z.number().int().positive(), operation: z.enum(["replace", "modify"]).optional() }),
+    z.strictObject({ ...variantCatalogFields, scope: z.literal("all-weapons-active"), operation: z.literal("replace") }),
+  ])),
 }).superRefine((catalog, ctx) => {
   if (new Set(catalog.variants.map(variant => variant.key)).size !== catalog.variants.length) ctx.addIssue({ code: "custom", message: "Duplicate variant identity" });
+  for (const variant of catalog.variants) {
+    if (variant.skill.kind !== "active" || !variant.skill.game_skill_id ||
+        (!("scope" in variant) && ((variant.operation ?? "replace") === "modify") !== (variant.base_game_skill_id === variant.skill.game_skill_id))) {
+      ctx.addIssue({ code: "custom", message: "Variant operation and game skill identity mismatch" });
+    }
+  }
 });
 
 export type NumSkillDefinition = z.infer<typeof numSkillDefinitionSchema>;
@@ -60,6 +71,7 @@ export type SkillParameterName = keyof z.infer<typeof skillParametersSchema>;
 export interface ResolvedNumSkill {
   id: string; kind: "active" | "passive"; name: string; icon?: string; tag?: string;
   gameSkillId?: number; display: boolean;
+  durationIsBase?: boolean;
   parameters: { cooldown?: number; duration?: number; count?: number; blocking?: boolean; panel_duration?: number };
   modifierSources: string[];
   provenance: Partial<Record<SkillParameterName, z.infer<typeof skillParameterSchema>>>;
@@ -68,6 +80,7 @@ export interface ResolvedNumSkill {
 export const resolvedNumSkillSchema = z.strictObject({
   id, kind: z.enum(["active", "passive"]), name: text, icon: text.optional(), tag: text.optional(),
   gameSkillId: z.number().int().positive().optional(), display: z.boolean(),
+  durationIsBase: z.boolean().optional(),
   parameters: z.strictObject({
     cooldown: z.number().finite().nonnegative().optional(), duration: z.number().finite().optional(),
     count: z.number().int().positive().optional(), blocking: z.boolean().optional(), panel_duration: z.number().finite().optional(),
@@ -88,8 +101,17 @@ export const resolvedNumSkillSchema = z.strictObject({
 });
 export const resolvedSkillVariantSchema = z.strictObject({
   reference: skillVariantReferenceSchema,
-  original: z.strictObject({ id: z.number().int().positive(), name: text }),
+  original: z.union([
+    z.strictObject({ id: z.number().int().positive(), name: text }),
+    z.strictObject({ scope: z.literal("all-weapons-active"), name: text }),
+  ]),
   skill: resolvedNumSkillSchema,
+}).superRefine((variant, ctx) => {
+  const generic = "scope" in variant.reference;
+  if (generic !== ("scope" in variant.original) || variant.skill.kind !== "active" || !variant.skill.gameSkillId ||
+      (!generic && "id" in variant.original && (variant.reference.operation === "modify") !== (variant.original.id === variant.skill.gameSkillId))) {
+    ctx.addIssue({ code: "custom", message: "Resolved variant operation or scope identity mismatch" });
+  }
 });
 export type ResolvedSkillVariant = z.infer<typeof resolvedSkillVariantSchema>;
 
@@ -143,6 +165,7 @@ export function resolveNumSkill(
   return {
     id: skill.id, kind: skill.kind, name: skill.name, icon: skill.icon, tag: skill.tag,
     gameSkillId: skill.game_skill_id, display: skill.display !== false,
+    ...(skill.duration_is_base === undefined ? {} : { durationIsBase: skill.duration_is_base }),
     parameters, modifierSources: skill.modifier_sources ?? [], provenance: skill.parameters ?? {},
   };
 }

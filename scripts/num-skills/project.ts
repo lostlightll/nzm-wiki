@@ -73,18 +73,24 @@ export function projectSkillVariants(
   const seen = new Set<string>();
   return input.map(variant => {
     const reference = skillVariantReferenceSchema.parse(variant.reference);
-    const baseKey = `${reference.weapon_slug}/${reference.base_skill}`;
+    const baseKey = "scope" in reference ? reference.scope : `${reference.weapon_slug}/${reference.base_skill}`;
     if (seen.has(baseKey)) throw new Error(`Duplicate perk replacement: ${context.perkSlug}/${baseKey}`);
     seen.add(baseKey);
-    const bases = skills.filter(skill => skill.weaponSlug === reference.weapon_slug && skill.id === reference.base_skill);
-    if (!bases.length || bases.some(base => base.kind !== "active" || base.gameSkillId !== variant.original.id) ||
-        variant.skill.kind !== "active" || !variant.skill.gameSkillId || variant.skill.gameSkillId === variant.original.id) throw new Error(`Invalid perk replacement base: ${context.perkSlug}/${baseKey}`);
+    const original = variant.original;
+    if (variant.skill.kind !== "active" || !variant.skill.gameSkillId || ("scope" in reference) !== ("scope" in original)) throw new Error(`Invalid perk replacement base: ${context.perkSlug}/${baseKey}`);
+    if (!("scope" in reference)) {
+      const bases = skills.filter(skill => skill.weaponSlug === reference.weapon_slug && skill.id === reference.base_skill);
+      if (!("id" in original) || !bases.length || bases.some(base => base.kind !== "active" || base.gameSkillId !== original.id) ||
+          (reference.operation === "modify") !== (variant.skill.gameSkillId === original.id)) throw new Error(`Invalid perk replacement base: ${context.perkSlug}/${baseKey}`);
+    }
     for (const expression of Object.values(variant.skill.provenance)) {
       if (expression && (("row" in expression && expression.row.split(":")[0] !== context.channel) || ("runtime" in expression && expression.runtime.split(":")[0] !== context.channel))) throw new Error(`Cross-channel published skill: ${context.perkSlug}`);
     }
+    if ("scope" in reference) return { ...variant.skill, ...context, scope: reference.scope, variantKey: reference.variant, operation: reference.operation };
+    if (!("id" in original)) throw new Error(`Invalid perk replacement base: ${context.perkSlug}/${baseKey}`);
     return {
       ...variant.skill, ...context, weaponSlug: reference.weapon_slug,
-      baseSkillId: reference.base_skill, originalId: variant.original.id, variantKey: reference.variant, operation: reference.operation,
+      baseSkillId: reference.base_skill, originalId: original.id, variantKey: reference.variant, operation: reference.operation,
     };
   });
 }

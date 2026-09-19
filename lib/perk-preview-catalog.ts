@@ -54,9 +54,10 @@ const schema = z.strictObject({
         ctx.addIssue({ code: "custom", message: "Published skill variant references mismatch", path: ["entries", index] });
       }
       for (const variant of perk.skillVariants ?? []) {
-        if (variant.skill.kind !== "active" || !variant.skill.gameSkillId || variant.skill.gameSkillId === variant.original.id ||
+        if (variant.skill.kind !== "active" || !variant.skill.gameSkillId ||
             Object.values(variant.skill.provenance).some(expression => {
               if (!expression) return false;
+              if ("literal" in expression) return false;
               const key = "row" in expression ? expression.row : "runtime" in expression ? expression.runtime : undefined;
               return !key || key.split(":")[0] !== perk.season;
             })) {

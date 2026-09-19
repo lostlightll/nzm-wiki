@@ -7,16 +7,16 @@ export interface IndexedWeaponSkill extends ResolvedNumSkill {
   draft: boolean;
 }
 
-export interface IndexedSkillVariant extends ResolvedNumSkill {
+interface IndexedSkillVariantBase extends ResolvedNumSkill {
   perkItemId: string;
   perkSlug: string;
   channel: string;
-  weaponSlug: string;
-  baseSkillId: string;
-  originalId: number;
   variantKey: string;
-  operation: "replace";
 }
+export type IndexedSkillVariant = IndexedSkillVariantBase & (
+  { weaponSlug: string; baseSkillId: string; originalId: number; operation: "replace" | "modify" } |
+  { scope: "all-weapons-active"; operation: "replace" }
+);
 
 export interface NumSkillIndex {
   schema_version: 1;
@@ -44,12 +44,18 @@ export function createSkillIndexQueries(index: NumSkillIndex) {
   }
   const variantKeys = new Set<string>();
   for (const variant of index.variants) {
-    const key = `${variant.channel}/${variant.perkItemId}/${variant.weaponSlug}/${variant.baseSkillId}`;
+    const target = "scope" in variant ? variant.scope : `${variant.weaponSlug}/${variant.baseSkillId}`;
+    const key = `${variant.channel}/${variant.perkItemId}/${target}`;
     if (variantKeys.has(key)) throw new Error(`Duplicate indexed replacement: ${key}`);
     variantKeys.add(key);
+    if ("scope" in variant) {
+      if (variant.scope !== "all-weapons-active" || variant.operation !== "replace" || variant.kind !== "active" || !variant.gameSkillId ||
+          "weaponSlug" in variant || "baseSkillId" in variant || "originalId" in variant) throw new Error(`Invalid indexed replacement scope: ${key}`);
+      continue;
+    }
     const bases = index.skills.filter(skill => skill.weaponSlug === variant.weaponSlug && skill.id === variant.baseSkillId);
-    if (variant.operation !== "replace" || variant.kind !== "active" || !bases.length ||
-        bases.some(base => base.kind !== "active" || base.gameSkillId !== variant.originalId || base.gameSkillId === variant.gameSkillId)) {
+    if (!["replace", "modify"].includes(variant.operation) || variant.kind !== "active" || !variant.gameSkillId || !bases.length ||
+        bases.some(base => base.kind !== "active" || base.gameSkillId !== variant.originalId || (variant.operation === "modify") !== (base.gameSkillId === variant.gameSkillId))) {
       throw new Error(`Invalid indexed replacement base: ${key}`);
     }
   }
@@ -58,7 +64,10 @@ export function createSkillIndexQueries(index: NumSkillIndex) {
       return byIdentity.get(`${slug}/${mode}/${id}`);
     },
     getSkillVariantsForWeapon(slug: string, mode?: "lc" | "td", skillId?: string, channel?: string) {
-      return index.variants.filter(variant => variant.weaponSlug === slug &&
+      return index.variants.filter(variant => "scope" in variant
+        ? (channel === undefined || variant.channel === channel) && index.skills.some(skill => skill.weaponSlug === slug && skill.kind === "active" &&
+          (mode === undefined || skill.mode === mode) && (skillId === undefined || skill.id === skillId))
+        : variant.weaponSlug === slug &&
         (skillId === undefined || variant.baseSkillId === skillId) &&
         (channel === undefined || variant.channel === channel) &&
         (mode === undefined || byIdentity.has(`${slug}/${mode}/${variant.baseSkillId}`)));

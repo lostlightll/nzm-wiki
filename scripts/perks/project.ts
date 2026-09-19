@@ -35,7 +35,7 @@ export async function projectPerkPreview() {
     ...sources.flatMap(entry => (entry.perk.independentDamageSources ?? []).map(ref => `data/weapons/${ref.weaponSlug}.mdx`)),
     ...sources.flatMap(entry => entry.perk.skillVariants?.length ? [
       "data/num-skill-lock.json", "data/num-skill-variants.json",
-      ...entry.perk.skillVariants.map(variant => `data/weapons/${variant.reference.weapon_slug}.mdx`),
+      ...entry.perk.skillVariants.flatMap(variant => "weapon_slug" in variant.reference ? [`data/weapons/${variant.reference.weapon_slug}.mdx`] : []),
     ] : []),
   ]);
   const catalog = parsePerkPreviewCatalog({

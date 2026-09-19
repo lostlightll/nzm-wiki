@@ -79,3 +79,31 @@ test("reverse queries retain both modes and diagnose broken index relationships"
   assert.throws(() => createSkillIndexQueries({ ...index, skills: [] }), /replacement base/);
   assert.throws(() => createSkillIndexQueries({ ...index, variants: [...index.variants, ...index.variants] }), /Duplicate/);
 });
+
+test("generic replacement stays one edge and only applies to real active skills", () => {
+  const generic: ResolvedSkillVariant = {
+    ...replacement,
+    reference: { scope: "all-weapons-active", variant: "s4-generic", operation: "replace" },
+    original: { scope: "all-weapons-active", name: "武器主动技能" },
+  };
+  const projected = projectSkillVariants([generic], context, [base]);
+  assert.equal(projected.length, 1);
+  assert.ok("scope" in projected[0]);
+  assert.equal("weaponSlug" in projected[0], false);
+  const query = createSkillIndexQueries({ schema_version: 1, provenance: { files: [] }, skills: [base, { ...base, id: "passive", kind: "passive" }], variants: projected });
+  assert.equal(query.getSkillVariantsForWeapon("test", "lc", "active", "s4-preview").length, 1);
+  for (const args of [["missing"], ["test", "td"], ["test", "lc", "passive"], ["test", "lc", "active", "current"]] as const) {
+    assert.equal(query.getSkillVariantsForWeapon(...args).length, 0);
+  }
+  assert.throws(() => projectSkillVariants([generic, generic], context, [base]), /Duplicate/);
+  assert.throws(() => projectSkillVariants([{ ...generic, original: { id: 1001, name: "力场" } }], context, [base]), /base/);
+});
+
+test("modify keeps skill identity and replace must change it", () => {
+  const modified: ResolvedSkillVariant = { ...replacement, reference: { weapon_slug: "test", base_skill: "active", variant: "modified", operation: "modify" }, skill: { ...replacement.skill, gameSkillId: 1001, provenance: {} } };
+  const variants = projectSkillVariants([modified], context, [base]);
+  const index: NumSkillIndex = { schema_version: 1, provenance: { files: [] }, skills: [base], variants };
+  assert.equal(createSkillIndexQueries(index).getSkillVariantsForWeapon("test").length, 1);
+  assert.throws(() => projectSkillVariants([{ ...modified, skill: replacement.skill }], context, [base]), /base/);
+  assert.throws(() => createSkillIndexQueries({ ...index, variants: [{ ...variants[0], operation: "replace" }] }), /base/);
+});
