@@ -1,9 +1,32 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import fs from "node:fs";
 import { createSkillIndexQueries, type IndexedWeaponSkill, type NumSkillIndex } from "../../lib/num-skill-index";
 import type { NumSkillDefinition, ResolvedSkillVariant } from "../../lib/num-skill";
 import { parseModifierProviderRegistry } from "../../lib/modifier-provider-registry";
-import { projectSkillVariants, validateSkillMarkup, validateSkillProviders } from "./project";
+import { checkSkillIndex, createSkillIndex, projectSkillVariants, validateSkillMarkup, validateSkillProviders } from "./project";
+
+test("skill index is identical for LF and CRLF checkouts and still detects content changes", (t) => {
+  const readFile = fs.readFileSync;
+  function project(lineEnding: string, changeContent = false) {
+    const read = t.mock.method(fs, "readFileSync", (...args: Parameters<typeof fs.readFileSync>) => {
+      const content = readFile(...args);
+      if (typeof args[0] !== "string" || !/\.(mdx|json)$/.test(args[0])) return content;
+      let text = content.toString().replace(/\r\n/g, "\n").replace(/\n/g, lineEnding);
+      if (changeContent && args[0].endsWith("Bully.mdx")) text += `${lineEnding}<!-- changed -->${lineEnding}`;
+      return typeof content === "string" ? text : Buffer.from(text);
+    });
+    try {
+      if (changeContent) assert.throws(() => checkSkillIndex(), /index is stale/);
+      else checkSkillIndex();
+      return createSkillIndex();
+    }
+    finally { read.mock.restore(); }
+  }
+  const lf = project("\n");
+  assert.deepEqual(project("\r\n"), lf);
+  assert.notDeepEqual(project("\n", true).provenance, lf.provenance);
+});
 
 const active: NumSkillDefinition = { id: "active", kind: "active", name: "力场", icon: "/icon.png", game_skill_id: 1001 };
 const passive: NumSkillDefinition = { id: "passive", kind: "passive", name: "充能", icon: "/icon.png" };

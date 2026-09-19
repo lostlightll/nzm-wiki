@@ -28,11 +28,11 @@
       },
       {
         "path": "data/perks/slot-2/出其不意.mdx",
-        "sha256": "68dffdd4041850af0dc3c970e55c0f2aaacb6ce129e5a1c8ba16f6cb4dce79cd"
+        "sha256": "da942775fa7c7e0eddd967d104979e2785c3d795f810b635fdb57ba278af440d"
       },
       {
         "path": "data/perks/slot-2/闪身.mdx",
-        "sha256": "ca8ec11bb0c42d2102bf2f8150f402cad522960d1ab27750177fe387dd011033"
+        "sha256": "fc42b07f58b0a3b54784873cd209b3dbc531f30cdcc0ff691abfeebef23f7364"
       },
       {
         "path": "data/weapon-data-lock.json",
@@ -40,7 +40,7 @@
       },
       {
         "path": "data/weapons/Bully.mdx",
-        "sha256": "456b495940f16efcd4fc2d063e1723dde774b1c1c477aa73ef5fb1200b665f64"
+        "sha256": "2710211e1225a9b7a735dce46eba10924f30c974507ae88356d5edd849ffe6ea"
       },
       {
         "path": "data/weapons/Z型步枪.mdx",
@@ -64,7 +64,7 @@
       },
       {
         "path": "data/weapons/再生冷却.mdx",
-        "sha256": "f63ff609144761d70f9913f4359f90ceec7782edc6724618cdad2afc925f1541"
+        "sha256": "d88668b761103bf13102db8e624997d15d0936cafdcef4820121166a6f5b74b3"
       },
       {
         "path": "data/weapons/军用手斧.mdx",
@@ -72,7 +72,7 @@
       },
       {
         "path": "data/weapons/冥河之矛.mdx",
-        "sha256": "8ee4eb98590c887dfc68edde17473184ed542a525c07b6b13042250b7cecb261"
+        "sha256": "34e2c2ffeff3217728f8c378eb14823dfbfc77c906d4e4f57cfa019fe511f55a"
       },
       {
         "path": "data/weapons/冰川尼泊尔.mdx",
@@ -104,7 +104,7 @@
       },
       {
         "path": "data/weapons/哈士奇好友.mdx",
-        "sha256": "614f88169e3a55a0ef2597afdbd1e169fafc559eaa9ce10304ba98b0a598a92b"
+        "sha256": "1d048a702aab1fa62bb8eb5e72c7fc9ea8b5a0d587f0897ef74e80e5f68db892"
       },
       {
         "path": "data/weapons/圣诞雪镐.mdx",
@@ -112,7 +112,7 @@
       },
       {
         "path": "data/weapons/夜影之逝.mdx",
-        "sha256": "2483163176fa86f9fd1f4da66bed62631c0e3cfdc98a3ae1900736f977dcf88f"
+        "sha256": "2c4efbd54f5e006571c6e61de8e8b82284ddeee10754726043e394216399d1c4"
       },
       {
         "path": "data/weapons/天鹅之舞.mdx",
@@ -120,7 +120,7 @@
       },
       {
         "path": "data/weapons/密林杀机.mdx",
-        "sha256": "1c494659c820c83cad479b1a2dd7ff21591e7e7b6ea57a20c5e9992e429992f7"
+        "sha256": "d7000a7d6844a427b42038f02d3c796ffcaa791243fe8eef4156701d2d4215f6"
       },
       {
         "path": "data/weapons/封刃.mdx",
@@ -136,11 +136,11 @@
       },
       {
         "path": "data/weapons/幽冥毒王.mdx",
-        "sha256": "f4c8d033f3fa093ab621bfdb4462e9cdcb4ec70d6689a1e0e99cb82c736e8aeb"
+        "sha256": "48797f99eaa924e0004c5dd3df4a75d23f78cf1759242bd72c6bc9e7f4218936"
       },
       {
         "path": "data/weapons/幽冥毒皇.mdx",
-        "sha256": "dbb0cdba16c8b9243f85a569bc284521ef0a81c28f030cd1fbe6ec13dd367ea1"
+        "sha256": "f973f6f479d1abd78d30cd196a049f469dc7ea59283bd86226140bf15ebfe712"
       },
       {
         "path": "data/weapons/往日速递.mdx",
@@ -148,7 +148,7 @@
       },
       {
         "path": "data/weapons/心有凌兮.mdx",
-        "sha256": "2e2693fd893c576fabf7cc435de47e71ed2db1c1461864c510f6557d3c6e219c"
+        "sha256": "6e3a41d2dabf4cc4f82ba206cf3bf6eec4b0e6f38d7c7495afc540ea80cfb54c"
       },
       {
         "path": "data/weapons/怒目锤.mdx",
@@ -168,7 +168,7 @@
       },
       {
         "path": "data/weapons/振弦.mdx",
-        "sha256": "486e109350c41328bcc688338db08c8414f5c46c4b01f98fa1cf207808a03dca"
+        "sha256": "f5389bc4eccdbaea54a7439315ca55db7640c7eef9409538a847466be9bccc42"
       },
       {
         "path": "data/weapons/撬棍.mdx",
@@ -176,19 +176,19 @@
       },
       {
         "path": "data/weapons/收割者.mdx",
-        "sha256": "8b4e1e72cf6dcf8515bf57c2359536e9b615fa4c3d31d869fd9eea9413d185ce"
+        "sha256": "fb4c691ed619928cfcb074eea69d108136cef6b47c96232c9beb05a1f7d01dd6"
       },
       {
         "path": "data/weapons/星海狂想.mdx",
-        "sha256": "1634b52dc70aa6bde215a779b7469e2a85483c258f53a1bc92b9f7ff0f7bcd0b"
+        "sha256": "a474d39535928de0ac58b55adf56851f63374d47f00b11b9ef32ce1241ba6512"
       },
       {
         "path": "data/weapons/春雷震.mdx",
-        "sha256": "a3853ac07282bef3d8fc128305b0f985ea94d21aa3f2e95773eb01f0f578dcfb"
+        "sha256": "3ed73d5060ac5fc203b5a5db6fd033a9dddbe59423101f5ecc6b9e3c367bdc1c"
       },
       {
         "path": "data/weapons/暗夜之殇.mdx",
-        "sha256": "6e181de7dd7b5dc2f2ccd7252ec3e5f2c664d23f3dfc04c5a2638d2dcfd9bc43"
+        "sha256": "db3eafe9421b720b17f2033c76d6490c68bb26a5f64f3e947417cc06d4bee62f"
       },
       {
         "path": "data/weapons/木葫芦.mdx",
@@ -208,7 +208,7 @@
       },
       {
         "path": "data/weapons/梦魇.mdx",
-        "sha256": "bce4d14ab34959829bc0379fe91ae7e309f117aeec9d17252aa95ff0a6d10e25"
+        "sha256": "0bdbb6e1ffd5c18c131721ee91977a68cf97b316d663ea4279b0c062cff96e9f"
       },
       {
         "path": "data/weapons/棒球棍.mdx",
@@ -220,7 +220,7 @@
       },
       {
         "path": "data/weapons/樱之誓.mdx",
-        "sha256": "ffcff51f005db20df72b83b65fbd35ca0805c014f9539f4aae57db5226f68945"
+        "sha256": "9d02dfd356851ebfa0d1995fb2c08851f6437c91f800663f45e2385724442068"
       },
       {
         "path": "data/weapons/武装斧头.mdx",
@@ -228,7 +228,7 @@
       },
       {
         "path": "data/weapons/死亡之拥.mdx",
-        "sha256": "beb94d9bd7e83a2de9f8fa4a9d4a680b64899a57a69a83d6baa396dfb86bb501"
+        "sha256": "c2a0e23fc4a29a59a6e6ced0c559494cb2601533ce0099efa1ad8b9e4fa92d2b"
       },
       {
         "path": "data/weapons/死亡猎手.mdx",
@@ -236,15 +236,15 @@
       },
       {
         "path": "data/weapons/死神猎手.mdx",
-        "sha256": "cad261b7b3cb86659e3ad5855e44eba8ee3a983228fc8d9fd5df5a10f7380014"
+        "sha256": "35327561a98f8e50c0cf6320ea196eda015eba2af1e1313cea6fb46830f10e0b"
       },
       {
         "path": "data/weapons/死神镰刀.mdx",
-        "sha256": "c91bf93f6e3b0c7aac4942098d5ce30cf7686d711467661c5a3942e1c8ea92cc"
+        "sha256": "5ee61411b903db3795a7ea12406fd7cfcf1d7acfb7aaf298e4bf66bb64983ac9"
       },
       {
         "path": "data/weapons/沙丘之怒.mdx",
-        "sha256": "ae8a40759aba71cdc665b069c06b8864c02554857509363c79e98c00b99f29d1"
+        "sha256": "cbb84435b57ff1f5d2e004e50d3c126329d5fc4c40f9320e3e9b3702c5f25d40"
       },
       {
         "path": "data/weapons/沙暴冷锋.mdx",
@@ -268,7 +268,7 @@
       },
       {
         "path": "data/weapons/火山口.mdx",
-        "sha256": "a740d1e19d3a19252f154af67748f9e9c4583fa2a8deb31ac07f3cf83d33dd6d"
+        "sha256": "39c25e803ef871a704b1c1cfa1e14b45cdfc17f188694857946a445345aeca5b"
       },
       {
         "path": "data/weapons/火炬.mdx",
@@ -280,15 +280,15 @@
       },
       {
         "path": "data/weapons/炼狱双蝎.mdx",
-        "sha256": "a35eae667984fb0a40c2fdfa68bdb99381f54f99d7e0d1357bbe3713abc54acb"
+        "sha256": "196c65989f05e2095536ebcfb5949647d051a7a39f51c14bd6b28bc9d0821e1e"
       },
       {
         "path": "data/weapons/炼狱蝎王.mdx",
-        "sha256": "8f664cdda201b8228560eb040c8354c3efcc083df94f18b4a249b309ed795f53"
+        "sha256": "5d05f3a2faab02a10dd7646b9101361149f5a75d0b7ac60e89efffb96bda3462"
       },
       {
         "path": "data/weapons/爆星.mdx",
-        "sha256": "cf950f3ecd95ab5083b80ccf7f0b793683fb18c709e0fbc839a59b3bf4a01a1f"
+        "sha256": "cad9f333d02362ac6388917da4e9577b00d869769444c345d1a4ca942d9315b9"
       },
       {
         "path": "data/weapons/狂人电锯.mdx",
@@ -304,7 +304,7 @@
       },
       {
         "path": "data/weapons/猪猪榴弹发射器.mdx",
-        "sha256": "4af417c888aaf41606d55b62dcfe63f95303daa72e4f902add188bc6757e0984"
+        "sha256": "1971779c058c32e71b90f5dfaa70de5fbfd911a0b7cdfe16b33cd1c837d2c66d"
       },
       {
         "path": "data/weapons/玄凌飞刃.mdx",
@@ -316,7 +316,7 @@
       },
       {
         "path": "data/weapons/生命线.mdx",
-        "sha256": "affd669017561f9c67ed997ed04b79fb9d3c464bfb20601b2a8d925c28560fe8"
+        "sha256": "548938e4ba5618c97a4a12ace23edf038932b3524cc976c44b2df67e6fa8ced1"
       },
       {
         "path": "data/weapons/甩棍.mdx",
@@ -344,23 +344,23 @@
       },
       {
         "path": "data/weapons/精绝兽神.mdx",
-        "sha256": "2a2fbc05381208d243c9a057f64c4689604a3ec74775015d8e1d50a71c0f9b95"
+        "sha256": "33430dce2b4850f65c4b627da8cc6e51e5ffb29dfb83992d48a3248d8c13a62d"
       },
       {
         "path": "data/weapons/纯白至上.mdx",
-        "sha256": "9b5e82a0ee8fed6595c1d28e1f8ae5bab573d37e2c79b97278a65aae4e508085"
+        "sha256": "a1b3935050ea5475d086aa99fac0d3f0fa76f74e3c119ed7f03c06d8e3644a0a"
       },
       {
         "path": "data/weapons/维和者.mdx",
-        "sha256": "1e8deb27aa19c30a5835ae8a4bb6885cf1047889e42710550c30bee14654df6e"
+        "sha256": "6ef16c8e8f6ba054941d6eb2e10753d9ac55b64ebc98ff413ae8beda165c4d61"
       },
       {
         "path": "data/weapons/胜利誓约.mdx",
-        "sha256": "8ed52ce440da3e2b1c9b27bc5a89758be7e04a8d06d986575029d450ecc5e60a"
+        "sha256": "feb3872331bb4ccfe53f4a7bb2e90637e377ea3dff7a322b81632176a329fa0a"
       },
       {
         "path": "data/weapons/能源之影.mdx",
-        "sha256": "ff55f1df6abb6ea6c7e62d3fd05692d877b1a7440f2fc4f7ec78d6c876405312"
+        "sha256": "0be2e7098c5fb66236ce967130a73e97006e85c9506f0d26913d88149c05ce60"
       },
       {
         "path": "data/weapons/苔色暴风.mdx",
@@ -388,7 +388,7 @@
       },
       {
         "path": "data/weapons/血怨.mdx",
-        "sha256": "ee525d67ec0defdb26d95c4876a0ab4c43e5c4c9808dd7b5e2bea22103b80720"
+        "sha256": "1914ff2083b05ff1782d839a8b85e41add98b635976d26993ec954024669f0ad"
       },
       {
         "path": "data/weapons/裁决之眼.mdx",
@@ -404,7 +404,7 @@
       },
       {
         "path": "data/weapons/逆光之刃.mdx",
-        "sha256": "4387090ca0eac194a5ae428defe551746be25f1a431c6a982f5a54247467092a"
+        "sha256": "2ef05411996a324827aa4b69b7a135a1d6b61c66dbd48f45023cb284b43a5e5c"
       },
       {
         "path": "data/weapons/钢脊.mdx",
@@ -420,7 +420,7 @@
       },
       {
         "path": "data/weapons/钢铁轰鸣.mdx",
-        "sha256": "d12c428a06401bc0c2bed9d937409aee545fcb2924aacb6ab7d43f6e4b13507d"
+        "sha256": "7f554ea03ed9356ff879a100dfb3479c43c56ccfb18f39e16da5da86d7026867"
       },
       {
         "path": "data/weapons/钢铁骑士.mdx",
@@ -468,7 +468,7 @@
       },
       {
         "path": "data/weapons/飓风之龙.mdx",
-        "sha256": "e1070f0dfddf364afeab67e2949cdbd273f09be3114d640cd193d135c264c0b2"
+        "sha256": "e8760a9782b0c86f335b6dfa0d0046846160b1e277ee8b271657332a50830d04"
       },
       {
         "path": "data/weapons/马来剑.mdx",
@@ -476,7 +476,7 @@
       },
       {
         "path": "data/weapons/骑士双刃.mdx",
-        "sha256": "ad0307f5acb717f9a6b839db57ef6c1a5a1e288fcf360d14dd54b1b933f80bee"
+        "sha256": "3311fa5ce7c18da15dfcb7585c612587333df2e6bed6a119b06b1c51ee6a4c5f"
       },
       {
         "path": "data/weapons/鬼影长枪.mdx",
@@ -484,7 +484,7 @@
       },
       {
         "path": "data/weapons/鬼铜蚀.mdx",
-        "sha256": "2bccd0657a9364b77b9096c7661f027563e55ba960c09a994a631fe7c6c00972"
+        "sha256": "e8df5ae3a699e76262dc4fa0f6341618ef7e14e13e68b9ac08c0754850a763c5"
       },
       {
         "path": "data/weapons/魂杵.mdx",
@@ -508,7 +508,7 @@
       },
       {
         "path": "data/weapons/黑金仲裁者.mdx",
-        "sha256": "de4e52e6f82976289e6509d5b8314b35c33f8909f79cad9a98f1fb1cd5162a99"
+        "sha256": "803d535bd7e52fe60a75d945bae0fef90aae228054f801bf63c2fd92a625636b"
       }
     ]
   },

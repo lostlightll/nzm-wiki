@@ -63,7 +63,7 @@ Num Skill Lock 的 row key 为 `weapons|current|<season>-preview:gp|pve:<rowName
 
 ## 双向索引
 
-`data/num-skill-index.json` 是带输入哈希的轻量投影，按武器、LC/TD、技能身份索引，保存插件替换边与 Modifier provider 关系。查询入口：
+`data/num-skill-index.json` 是带输入哈希的轻量投影，按武器、LC/TD、技能身份索引，保存插件替换边与 Modifier provider 关系。输入文本先将 CRLF 统一为 LF 再计算 SHA-256，避免 Windows 与 Linux 检出换行符造成误报；其他内容变化仍使索引失效。原始游戏资产证据哈希不做此归一化。查询入口：
 
 - `getWeaponSkill(slug, mode, skillId)`；
 - `getSkillVariantsForWeapon(slug, mode?, skillId?, channel?)`；

@@ -149,7 +149,8 @@ export function createSkillIndex(): NumSkillIndex {
     schema_version: 1,
     provenance: { files: [...files].sort().map(file => ({
       path: file,
-      sha256: createHash("sha256").update(fs.readFileSync(path.join(root, file))).digest("hex"),
+      // Git checkouts may use CRLF on Windows and LF in CI; hash the same text.
+      sha256: createHash("sha256").update(fs.readFileSync(path.join(root, file), "utf8").replace(/\r\n/g, "\n")).digest("hex"),
     })) },
     skills,
     variants,
