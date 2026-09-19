@@ -1,6 +1,7 @@
 {
   "sourceRepository": "lostlightll/FModel",
-  "sourceCommit": "543bf6f83659784474f5166f92c2731c3dabb5ba",
+  "sourceCommit": "ad4d8b77c7f02a2666301369cd1d0dadc84482ed",
+  "cue4ParseCommit": "5156fa2c17721fca4fbc4a04285abde3f1901e93",
   "sourceDirty": false,
   "targetFramework": "net10.0",
   "runtimeIdentifier": "win-x64",
@@ -12,6 +13,6 @@
   "debugType": "None",
   "debugSymbols": false,
   "dotnetSdk": "10.0.301",
-  "builtAt": "2026-09-12",
-  "sha256": "B56EECB172242C64BDB665EB3693E63F8CFD6A48EE7AFC5A5E9D3460720D0D56"
+  "builtAt": "2026-09-19",
+  "sha256": "C8422A1505CBD775CDE06A7B37DEC81DECDA59AFBB8E3E9D707FB71136BE43D8"
 }
