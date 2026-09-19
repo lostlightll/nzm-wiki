@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { numSkillDefinitionsSchema } from "@/lib/num-skill";
 
 const nonEmptyStringSchema = z.string().trim().min(1);
 const positiveIdStringSchema = z.string().regex(/^[1-9]\d*$/);
@@ -306,6 +307,7 @@ const weaponSourceV2BaseSchema = z.strictObject({
   scope: nonEmptyStringSchema.optional(),
 
   damage_sources: z.array(damageSourceV2Schema),
+  skills: numSkillDefinitionsSchema.optional(),
 
   magazine: z.number().int().nonnegative().optional(),
   total_ammo: z.number().int().nonnegative().optional(),

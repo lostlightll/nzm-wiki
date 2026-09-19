@@ -53,25 +53,43 @@ damage_sources:
         asc:
           fire_interval: 0
       override_reason: 人工确认该模式使用独立射击间隔
+skills:
+  - id: active-1
+    kind: active
+    name: 狂热射击
+    icon: /icons/weapons/skills/T_Weapon_Skill_20016000002_2.png
+    game_skill_id: 5000101
+    parameters:
+      duration:
+        literal: 8
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#维和者.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 8
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#维和者.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/维和者.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 爆弹供养
+    icon: /icons/weapons/skills/T_Weapon_Skill_20016000002_1.png
+    tag: 弹匣回复
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="狂热射击"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20016000002_2.png"
-    duration={8}
-    cooldown={40}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     进入狂热射击状态，期间使用武器射击会直接消耗备弹，且射速提高<Yellow>30%</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="爆弹供养"
-    tag="弹匣回复"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20016000002_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     每次开火造成的爆炸同时炸到<Yellow>2个</Yellow>以上敌人时，将<Yellow>1颗</Yellow>备弹填装到主弹匣。
   </PassiveSkill>
 </WeaponSkill>

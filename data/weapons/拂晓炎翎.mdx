@@ -52,12 +52,16 @@ attenuation_scale: 1
 changeClip:
   timeBase: 0.9
   reloadRecovery: 0
+skills:
+  - id: passive-1
+    kind: passive
+    name: 超载闪电
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000067.png
+    modifier_sources:
+      - weapon:拂晓炎翎:超载闪电
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="超载闪电"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000067.png"
-  >
+  <PassiveSkill skill="passive-1">
     所有电属性伤害提升<Yellow>5%</Yellow>，近距离武器伤害提升<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

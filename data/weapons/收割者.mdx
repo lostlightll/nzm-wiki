@@ -48,25 +48,43 @@ damage_sources:
       numerical:
         id: 120800010
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 扩充装填
+    icon: /icons/weapons/skills/T_Weapon_Skill_1000601.png
+    game_skill_id: 5000701
+    parameters:
+      duration:
+        literal: 10
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#收割者.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 10
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#收割者.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/收割者.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 收割时分
+    icon: /icons/weapons/skills/T_Weapon_Skill_20108000001.png
+    tag: 命中爆炸
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="扩充装填"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1000601.png"
-    duration={10}
-    cooldown={40}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     技能持续期间内，增加武器自身的主弹匣容量至<Yellow>3</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="收割时分"
-    tag="命中爆炸"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20108000001.png"
-  >
+  <PassiveSkill skill="passive-1">
     对目标造成伤害时，使其进入火元素异常状态。
   </PassiveSkill>
 </WeaponSkill>

@@ -62,22 +62,40 @@ damage_sources:
               min_scale: 0.1
               status: applicable
         override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
+skills:
+  - id: active-1
+    kind: active
+    name: 连环冻结
+    icon: /icons/weapons/skills/T_Weapon_Skill_20005000007_2.png
+    game_skill_id: 5001801
+    parameters:
+      duration:
+        literal: 15
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#共晶点.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 15
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#共晶点.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/共晶点.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 低温界面
+    icon: /icons/weapons/skills/T_Weapon_Skill_20005000007_3.png
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="连环冻结"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000007_2.png"
-    duration={15}
-    cooldown={35}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     玩家击杀被<Blue>冻结</Blue>的目标时，离该敌人最近的一个随机敌人被<Blue>冻结</Blue>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="低温界面"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000007_3.png"
-  >
+  <PassiveSkill skill="passive-1">
     使用共晶点给怪物重复附加冰元素异常效果时，会触发<Blue>冻结</Blue>。
   </PassiveSkill>
 </WeaponSkill>

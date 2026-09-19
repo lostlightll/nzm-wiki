@@ -65,22 +65,31 @@ damage_sources:
       numerical: { id: 120300176, level: 1 }
 weapon_type_id: 16
 active_skill_id: 5103401
+skills:
+  - id: active-1
+    kind: active
+    name: 寒冰真气
+    icon: /icons/weapons/skills/T_Weapon_Skill_20003000017-2.png
+    game_skill_id: 5103401
+    parameters:
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 极寒一击
+    icon: /icons/weapons/skills/T_Weapon_Skill_20003000017-1.png
+    tag: 双模式
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="寒冰真气"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20003000017-2.png"
-  >
+  <ActiveSkill skill="active-1">
     释放向外扩散的冰雾，对半径 **16 米**内的敌人造成寒冷伤害，并施加减速效果。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="极寒一击"
-    tag="双模式"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20003000017-1.png"
-  >
+  <PassiveSkill skill="passive-1">
     可在冰凌弹和极寒射线之间切换。冰凌弹命中后造成寒冷范围伤害，极寒射线用于持续攻击单体目标。
   </PassiveSkill>
 </WeaponSkill>

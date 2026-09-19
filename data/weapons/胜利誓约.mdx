@@ -44,25 +44,35 @@ damage_sources:
       numerical:
         id: 1400110101
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 酸液手雷
+    icon: /icons/weapons/skills/T_Weapon_Skill_1001301.png
+    game_skill_id: 5001101
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/胜利誓约.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 分裂弹药
+    icon: /icons/weapons/skills/T_Weapon_Skill_20101000011_02.png
+    tag: 弹射
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="酸液手雷"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1001301.png"
-    duration={-1}
-    cooldown={20}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     扔出一颗酸液手雷，造成一次半径为<Yellow>6米</Yellow>的 **50%** 攻击力的范围腐蚀伤害，**100%** 添加元素异常。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="分裂弹药"
-    tag="弹射"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20101000011_02.png"
-  >
+  <PassiveSkill skill="passive-1">
     命中目标时有<Yellow>50%</Yellow>概率分裂出一颗子弹，该子弹从命中点<Blue>弹射</Blue>至附近<Yellow>15米</Yellow>内随机敌人并造成伤害。
   </PassiveSkill>
 </WeaponSkill>

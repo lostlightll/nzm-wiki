@@ -39,22 +39,42 @@ damage_sources:
         id: 120100220
         level: 1
       asc_type_id: "155"
+skills:
+  - id: active-1
+    kind: active
+    name: 战术聚焦
+    icon: /icons/weapons/skills/T_Weapon_Skill_20106000002_1.png
+    game_skill_id: 5001601
+    parameters:
+      duration:
+        literal: 10
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#Z型步枪.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 10
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#Z型步枪.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/Z型步枪.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 神射心流
+    icon: /icons/weapons/skills/T_Weapon_Skill_effect_13.png
+    tag: 自瞄
+    modifier_sources:
+      - weapon:Z型步枪:神射心流
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="战术聚焦"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20106000002_1.png"
-    duration={10}
-    cooldown={45}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     开启战术聚焦后，屏幕上出现小范围的锁定区域，该区域内的目标将被<Blue>自动瞄准</Blue>。
   </ActiveSkill>
-  <PassiveSkill
-    name="神射心流"
-    tag="自瞄"
-    icon="/icons/weapons/skills/T_Weapon_Skill_effect_13.png"
-  >
+  <PassiveSkill skill="passive-1">
     持续命中时，每<Yellow>0.5秒</Yellow>该武器获得一层增伤，停止射击后，每<Yellow>0.5秒</Yellow>损失一层增伤。
   </PassiveSkill>
 </WeaponSkill>

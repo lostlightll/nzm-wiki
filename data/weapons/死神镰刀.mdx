@@ -57,12 +57,16 @@ damage_sources:
       numerical:
         id: 121300044
         level: 1
+skills:
+  - id: passive-1
+    kind: passive
+    name: 生命虹吸
+    icon: /icons/weapons/skills/T_Weapon_Skill_20113000004.png
+    modifier_sources:
+      - weapon:死神镰刀:生命虹吸
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="生命虹吸"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20113000004.png"
-  >
+  <PassiveSkill skill="passive-1">
     所有毒属性伤害提升<Yellow>5%</Yellow>，且使用死神镰刀命中敌人后可以吸血。
   </PassiveSkill>
 </WeaponSkill>

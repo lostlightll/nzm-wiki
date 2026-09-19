@@ -50,12 +50,16 @@ damage_sources:
         id: 121300450
         level: 1
       asc_type_id: "328"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 蛇神之刺
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000045.png
+    modifier_sources:
+      - weapon:蛇神之剑:蛇神之刺
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="蛇神之刺"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000045.png"
-  >
+  <PassiveSkill skill="passive-1">
     毒属性伤害提升<Yellow>5%</Yellow>。对处于<Blue>减速</Blue>、<Blue>毒皇减速</Blue>状态的敌人额外造成<Yellow>5%</Yellow>的武器伤害。
   </PassiveSkill>
 </WeaponSkill>

@@ -49,24 +49,42 @@ damage_sources:
       numerical:
         id: 121900102
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 铁索连环
+    icon: /icons/weapons/skills/T_Weapon_Skill_20019000001_2.png
+    game_skill_id: 5102801
+    parameters:
+      duration:
+        literal: 10
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#玄凌飞刃.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 10
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#玄凌飞刃.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/玄凌飞刃.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 弹射
+    icon: /icons/weapons/skills/T_Weapon_Skill_20019000001_1.png
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="铁索连环"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20019000001_2.png"
-    duration={10}
-    cooldown={30}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     技能持续期间，<Blue>玄凌飞刃</Blue>命中敌人后，附加<Blue>链接</Blue>异常状态。当处于<Blue>链接</Blue>状态的敌人受到直接伤害时，该伤害的<Yellow>15%</Yellow>会传导至周围最多<Blue>4名</Blue>具有相同异常状态的敌人。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="弹射"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20019000001_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     玄凌飞刃可以在敌人之间弹射<Yellow>3</Yellow>次。该效果在火力乱斗和机甲战中不生效。
   </PassiveSkill>
 </WeaponSkill>

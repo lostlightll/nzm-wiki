@@ -61,22 +61,32 @@ damage_sources:
       numerical:
         id: 120300121
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 冷却飞弹
+    icon: /icons/weapons/skills/T_Weapon_Skill_20003000012_2.png
+    game_skill_id: 5002901
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/再生冷却.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 强力破冰
+    icon: /icons/weapons/skills/T_Weapon_Skill_20003000012_1.png
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="冷却飞弹"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20003000012_2.png"
-    duration={-1}
-    cooldown={30}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     发射一枚冷却飞弹，贯穿并冻结被命中的敌人，最大飞行时间可随发射前蓄力时长增加。同一目标 <Yellow>20</Yellow> 秒内不会被反复冻结
   </ActiveSkill>
 
-  <PassiveSkill
-    name="强力破冰"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20003000012_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     开火命中被冻结的敌人时，敌人解冻并且造成 **60%** 攻击力 <Grey>(僵尸猎场为 350)</Grey>的范围碎冰爆炸伤害。
   </PassiveSkill>
 </WeaponSkill>

@@ -44,24 +44,34 @@ damage_sources:
       numerical:
         id: 120500101
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 狱火冲击
+    icon: /icons/weapons/skills/T_Weapon_Skill_20005000010_2.png
+    game_skill_id: 5004101
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/炼狱双蝎.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 余烬
+    icon: /icons/weapons/skills/T_Weapon_Skill_20005000010_1.png
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="狱火冲击"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000010_2.png"
-    duration={-1}
-    cooldown={20}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     从自身释放一个快速向外扩散的火焰圆环，对自身周围<Yellow>8米</Yellow>范围内敌人造成<Yellow>176.0%</Yellow>攻击力伤害并施加<Yellow>3层</Yellow>燃烧异常状态。燃烧异常效果在火力乱斗模式中不生效。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="余烬"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000010_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     用该武器命中燃烧的敌人后，下次射击子弹具有穿透效果，最多穿透<Yellow>3</Yellow>人。
   </PassiveSkill>
 </WeaponSkill>

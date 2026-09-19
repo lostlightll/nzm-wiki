@@ -56,25 +56,42 @@ damage_sources:
         level: 1
 explosion_range:
   td: 2.5
+skills:
+  - id: active-1
+    kind: active
+    name: 严寒之触
+    icon: /icons/weapons/skills/T_Weapon_Skill_20108000002_02.png
+    game_skill_id: 5100801
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/生命线.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 10
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/生命线.mdx#active-1.skill_duration
+      blocking:
+        row: weapons:gp:5100801
+        field: bPauseChargeDuringActivation
+  - id: passive-1
+    kind: passive
+    name: 如履薄冰
+    icon: /icons/weapons/skills/T_Weapon_Skill_20108000002_01.png
+    tag: 命中爆炸
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="严寒之触"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20108000002_02.png"
-    duration={-1}
-    cooldown={35}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     丢出一颗冰冻核心，碰撞或一定时间后爆炸，爆炸后会在原地留下一颗冰壶，冰壶每<Yellow>3秒</Yellow>喷发一次冰雾，共喷发<Yellow>3次</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="如履薄冰"
-    tag="命中爆炸"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20108000002_01.png"
-  >
+  <PassiveSkill skill="passive-1">
     生命线射出的榴弹，爆炸时将在地面上造成半径为<Yellow>4米</Yellow>的冰池，进入冰池的敌人将持续受到伤害。
   </PassiveSkill>
 </WeaponSkill>

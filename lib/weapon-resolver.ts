@@ -1,4 +1,6 @@
 import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
+import { resolveNumSkill, type ResolvedNumSkill } from "./num-skill";
+import { NUM_SKILL_LOCK } from "./num-skill-lock";
 import type {
   DamageMode,
   ElementType,
@@ -355,6 +357,7 @@ export interface ResolvedWeapon {
   damageSources: readonly ResolvedDamageSource[];
   mainSourceId?: string;
   activeSkill?: ResolvedActiveSkill;
+  skills?: ResolvedNumSkill[];
   diagnostics: readonly ResolutionDiagnostic[];
   provenance: readonly FieldProvenance[];
   raw: {
@@ -3084,6 +3087,15 @@ function resolveV2(
   addLegacyProjectionDiagnostics(weapon, damageSources, context.diagnostics, changeClip);
   const numberMdx = (value: number | undefined, field: string) =>
     value === undefined ? missing<number>() : resolved(value, directMdx(2, field));
+  const activeSkill = parseActiveSkill(weapon, lock, context);
+  const skills = weapon.skills?.map(skill => resolveNumSkill(skill, {
+    channel: "weapons", lock: NUM_SKILL_LOCK,
+    gameSkillId: weapon.active_skill_id,
+    charge: activeSkill ? { cooldown: fieldValue(activeSkill.chargeTime), count: fieldValue(activeSkill.chargeCount) } : undefined,
+    pveParameters: lock.rows["skill-pve"][`${weapon.active_skill_id}_1`]?.raw.Parameters,
+    pveSourceHash: lock.rows["skill-pve"][`${weapon.active_skill_id}_1`]?.source?.sha256 ?? lock.sources["skill-pve"].sha256,
+  }));
+  const primarySkill = skills?.find(skill => skill.kind === "active" && skill.gameSkillId === weapon.active_skill_id);
   const result: ResolvedWeapon = {
     slug: context.slug,
     title: weapon.title,
@@ -3105,8 +3117,8 @@ function resolveV2(
     magazine,
     totalAmmo,
     explosionRange: numberMdx(weapon.explosion_range, "explosion_range"),
-    skillDuration: numberMdx(weapon.skill_duration, "skill_duration"),
-    skillBlocking: resolved(Boolean(weapon.skill_blocking), directMdx(2, "skill_blocking")),
+    skillDuration: numberMdx(primarySkill?.parameters.panel_duration ?? weapon.skill_duration, primarySkill?.parameters.panel_duration !== undefined ? `skills.${primarySkill.id}.parameters.panel_duration` : "skill_duration"),
+    skillBlocking: resolved(primarySkill?.parameters.blocking ?? Boolean(weapon.skill_blocking), directMdx(2, primarySkill?.parameters.blocking !== undefined ? `skills.${primarySkill.id}.parameters.blocking` : "skill_blocking")),
     showDuration: resolved(Boolean(weapon.show_duration), directMdx(2, "show_duration")),
     shootingEnergy: resolved(
       Boolean(weapon.shooting_energy),
@@ -3121,7 +3133,8 @@ function resolveV2(
     melee: { light: missing(), heavy: missing() },
     damageSources,
     mainSourceId,
-    activeSkill: parseActiveSkill(weapon, lock, context),
+    activeSkill,
+    skills,
     diagnostics: context.diagnostics,
     provenance: [
       { kind: "mdx-v2", rawField: "schema_version", note: "schema" },

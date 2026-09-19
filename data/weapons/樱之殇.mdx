@@ -58,14 +58,18 @@ damage_sources:
         id: 121300470
         level: 1
       asc_type_id: "343"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 樱雷回响
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000047.png
+    modifier_sources:
+      - weapon:樱之殇:樱雷回响
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <PassiveSkill
-    name="樱雷回响"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000047.png"
-  >
+  <PassiveSkill skill="passive-1">
     所有电属性伤害提升<Yellow>5%</Yellow>，近距离武器伤害提升<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

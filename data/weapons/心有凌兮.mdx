@@ -42,23 +42,37 @@ damage_sources:
       numerical:
         id: 120801202
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 一起来跳舞
+    icon: /icons/weapons/skills/T_Weapon_Skill_5103901.png
+    game_skill_id: 5103901
+    parameters:
+      duration:
+        literal: 40
+        reason: 跳舞结束路径实际添加XYLX_PassiveBuff_1，Buff配置Duration=40；Native应用内部未展开，不采用无读取证据的PVE BuffDuration=27。
+        evidence: docs/architecture/weapon-skill-duration-evidence.md#心有凌兮
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+    modifier_sources:
+      - weapon:心有凌兮:一起来跳舞
+  - id: passive-1
+    kind: passive
+    name: 爆炸疗愈
+    icon: /icons/weapons/skills/T_Weapon_Skill_20008000012_1.png
+    tag: 爆炸
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="一起来跳舞"
-    icon="/icons/weapons/skills/T_Weapon_Skill_5103901.png"
-    duration={40}
-  >
-    让我们忘掉那些不开心的事，一起来跳舞！跳舞后，提升武器伤害<Yellow>10%</Yellow>，持续<Yellow>40秒</Yellow>。
+  <ActiveSkill skill="active-1">
+    让我们忘掉那些不开心的事，一起来跳舞！跳舞后，提升武器伤害<Yellow>10%</Yellow>，持续<Yellow><SkillValue skill="active-1" field="duration" />秒</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="爆炸疗愈"
-    tag="爆炸"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20008000012_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     爆炸既可伤害敌人，也可为命中的友方恢复<Yellow>10%</Yellow>总生命值。
   </PassiveSkill>
 </WeaponSkill>

@@ -40,24 +40,34 @@ damage_sources:
       numerical:
         id: 1400100102
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 多重燃烧手雷
+    icon: /icons/weapons/skills/T_Weapon_Skill_1000901.png
+    game_skill_id: 5001002
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/火山口.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 熔岩充能
+    icon: /icons/weapons/skills/T_Weapon_Skill_20101000001_1.png
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="多重燃烧手雷"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1000901.png"
-    duration={-1}
-    cooldown={15}
-    count={3}
-  >
+  <ActiveSkill skill="active-1">
     扔出一颗手雷，可造成 **160%** 攻击力的伤害， **100%** 添加元素异常，半径<Yellow>3米</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="熔岩充能"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20101000001_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     释放火山口主动技能时，为副武器主动技能充能<Yellow>15%</Yellow>。释放副武器主动技能时，为火山口主动技能充能<Yellow>45%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

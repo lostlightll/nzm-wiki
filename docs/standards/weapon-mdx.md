@@ -84,6 +84,7 @@ damage_sources:
 - 优先复用 `lib/mdx-components.tsx` 已注册组件。
 - 图片和视频使用站点资源路径；组件内部或 React 代码中的资源必须经过 `getAssetPath()`。
 - `<ActiveSkill>` 等正文组件不得重新写入已经由统一武器数据提供的数值。
+- 全部武器使用 [Num 技能协议](weapon-skills.md) 的 `skills` 声明；正文以 `skill` 引用主动/被动技能，名称、图标与参数统一解析。原 `active_skill_id` 继续承担 Weapon Lock 身份审计，旧顶层展示字段仅作兼容，已迁移的技能参数优先。
 
 ## 录入与验证
 

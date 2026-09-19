@@ -50,14 +50,18 @@ damage_sources:
         id: 121300560
         level: 1
       asc_type_id: "347"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 弒强之力
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000056.png
+    modifier_sources:
+      - weapon:封刃:弒强之力
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <PassiveSkill
-    name="弒强之力"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000056.png"
-  >
+  <PassiveSkill skill="passive-1">
     携带此武器时，角色对精英敌人造成的伤害增加<Yellow>7%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

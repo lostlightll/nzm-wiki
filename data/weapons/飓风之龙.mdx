@@ -92,25 +92,35 @@ weapon_type_id: 3
 active_skill_id: 5101501
 shooting_energy: true
 shooting_energy_count: 16
+skills:
+  - id: active-1
+    kind: active
+    name: 飓龙连击
+    icon: /icons/weapons/skills/T_Weapon_Skill_20003000011_2.png
+    game_skill_id: 5101501
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/飓风之龙.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 炙热龙炎
+    icon: /icons/weapons/skills/T_Weapon_Skill_20003000011_1.png
+    tag: 快速连发
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="飓龙连击"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20003000011_2.png"
-    duration={-1}
-    cooldown={25}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     飓风之龙立即充满能量，射击时将会消耗武器子弹和武器能量打出四连发。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="炙热龙炎"
-    tag="快速连发"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20003000011_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     切换至龙炎弹模式时，武器迸发龙炎之力，造成范围伤害。龙炎弹距离 **16** 米。
   </PassiveSkill>
 </WeaponSkill>

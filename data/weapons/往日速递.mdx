@@ -33,23 +33,33 @@ damage_sources:
         id: 120500050
         level: 1
       asc_type_id: "110"
+skills:
+  - id: active-1
+    kind: active
+    name: 加速时刻
+    icon: /icons/weapons/skills/T_Weapon_Skill_20005000005.png
+    game_skill_id: 5005001
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/往日速递.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 使命必达
+    icon: /icons/weapons/skills/T_Weapon_Skill_20005000005_2.png
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="加速时刻"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000005.png"
-    duration={-1}
-    cooldown={30}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     技能持续期间，每次射击产生跳弹的概率提升至<Yellow>100%</Yellow>。
     在机甲战和火力乱斗模式下无法释放该技能。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="使命必达"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000005_2.png"
-  >
+  <PassiveSkill skill="passive-1">
     命中敌人时，有<Yellow>35%</Yellow>概率产生<Yellow>3枚</Yellow>跳弹攻击周围的敌人，命中弱点时跳弹产生概率提高<Yellow>15%</Yellow>。
     在机甲战和火力乱斗模式下无法产生跳弹。
   </PassiveSkill>

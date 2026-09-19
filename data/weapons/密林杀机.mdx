@@ -46,23 +46,42 @@ damage_sources:
       numerical:
         id: 120200091
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 威能力场
+    icon: /icons/weapons/skills/T_Weapon_Skill_1000201.png
+    game_skill_id: 5000201
+    parameters:
+      duration:
+        literal: 12
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#密林杀机.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 12
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#密林杀机.active-1.panel_duration
+      blocking:
+        row: weapons:gp:5000201
+        field: bPauseChargeDuringActivation
+    modifier_sources:
+      - weapon:密林杀机:威能力场
+  - id: passive-1
+    kind: passive
+    name: 快枪手
+    icon: /icons/weapons/skills/T_Weapon_Skill_20002000009.png
+    tag: 正面效果
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="威能力场"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1000201.png"
-    duration={12}
-    cooldown={45}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     原地释放一个威能力场，增加范围内我方角色造成的伤害<Yellow>30%</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="快枪手"
-    tag="正面效果"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20002000009.png"
-  >
+  <PassiveSkill skill="passive-1">
     开镜后迅速开火可锁定目标且必定暴击，并触发一次爆炸。
   </PassiveSkill>
 </WeaponSkill>

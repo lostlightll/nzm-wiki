@@ -9,6 +9,7 @@ import { checkNumModifierDataLock, readNumModifierDataLock } from "./lock";
 import { checkModifierRuntimeProjections } from "./project";
 import { loadModifierProviderRegistry } from "./provider-registry";
 import { getProviderResolver } from "./provider-resolver";
+import { checkSkillIndex } from "../num-skills/project";
 
 const root = process.cwd();
 const errors: string[] = [];
@@ -327,6 +328,7 @@ function run(): void {
   checkPerkConsumers();
   checkStatusEffects();
   checkStaticBoundaries();
+  checkSkillIndex();
 
   if (errors.length > 0) {
     throw new Error(

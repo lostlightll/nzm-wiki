@@ -51,24 +51,41 @@ damage_sources:
       numerical:
         id: 1410110101
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 零度之刺
+    icon: /icons/weapons/skills/T_Weapon_Skill_20115000001.png
+    game_skill_id: 5101101
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/杜瓦瓶.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 15
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/杜瓦瓶.mdx#active-1.skill_duration
+      blocking:
+        row: weapons:gp:5101101
+        field: bPauseChargeDuringActivation
+  - id: passive-1
+    kind: passive
+    name: 过量装填
+    icon: /icons/weapons/skills/T_Weapon_Skill_20115000001.png
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="零度之刺"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20115000001.png"
-    duration={-1}
-    cooldown={30}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     掷出一支冰矛，对单体目标造成 **480%** 角色攻击力 <Grey>(僵尸猎场中为 2400)</Grey> 的急冻伤害， **100%** 添加冰属性异常，并在目标脚下生成一片冰冻区域，降低区域内敌人<Yellow>50%</Yellow>移动速度，减速区域存在<Yellow>15</Yellow>秒。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="过量装填"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20115000001.png"
-  >
+  <PassiveSkill skill="passive-1">
     使用杜瓦瓶攻击冰缓或者击杀敌人时，会有<Yellow>5%</Yellow>几率给角色赋予一层持续<Yellow>10</Yellow>秒的过量装填增益效果，最高累计<Yellow>5</Yellow>层；杜瓦瓶下次换弹时将会消耗所有的过量装填增益效果，每消耗一层，换弹成功后主弹匣将额外装填<Yellow>10%</Yellow>弹药。
   </PassiveSkill>
 </WeaponSkill>

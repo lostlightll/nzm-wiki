@@ -66,25 +66,39 @@ damage_sources:
       numerical:
         id: 120700153
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 浮游模式
+    icon: /icons/weapons/skills/T_Weapon_Skill_20007000015_2.png
+    game_skill_id: 5102001
+    parameters:
+      duration:
+        runtime: weapons:5102001:duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        runtime: weapons:5102001:duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/能源之影.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 能源之息
+    icon: /icons/weapons/skills/T_Weapon_Skill_20007000015_1.png
+    tag: 掷枪
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="浮游模式"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20007000015_2.png"
-    duration={20}
-    cooldown={45}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     技能开启后，能源之影变形为浮游炮，自动瞄准敌人并开火。浮游炮激活期间，可以正常使用其他武器。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="能源之息"
-    tag="掷枪"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20007000015_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     换弹时，将枪械扔出，命中敌人时造成半径<Yellow>2米</Yellow>的范围闪电伤害。
   </PassiveSkill>
 </WeaponSkill>
@@ -97,6 +111,6 @@ damage_sources:
 | 插件激光 | 350  | 0        | 0                |
 
 
-主动技能伤害为 **350**, 持续时间 **20** 秒，冷却时间 **45** 秒。期间射击 **30**次，射速约为 **90** 每分钟，折合 **1.5** 发每秒 <Grey>浮游炮伤害计算为 **角色攻击力 500 × 模式系数 × 0.7**，所有增加角色攻击力的增益均对能源之影浮游炮生效</Grey>
+主动技能伤害为 **350**，持续时间 <SkillValue skill="active-1" field="duration" /> 秒，冷却时间 <SkillValue skill="active-1" field="cooldown" /> 秒。射速约为 **90** 每分钟，折合 **1.5** 发每秒 <Grey>浮游炮伤害计算为 **角色攻击力 500 × 模式系数 × 0.7**，所有增加角色攻击力的增益均对能源之影浮游炮生效</Grey>
 
-使用 <Yellow>超频</Yellow> 插件，浮游模式持续时间增加 **50%** 后，总持续时间为 **30** 秒，射击次数 **46** 次
+使用 <Yellow>超频</Yellow> 插件，浮游模式持续时间增加 **50%** 后，总持续时间为 <SkillValue skill="active-1" field="duration" mge={1312049001} /> 秒。

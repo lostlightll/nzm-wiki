@@ -58,12 +58,16 @@ damage_sources:
         id: 121300080
         level: 1
       asc_type_id: "194"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 火焰之力
+    icon: /icons/weapons/skills/T_Weapon_Skill_effect_14.png
+    modifier_sources:
+      - weapon:沙蚀重刃:火焰之力
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="火焰之力"
-    icon="/icons/weapons/skills/T_Weapon_Skill_effect_14.png"
-  >
+  <PassiveSkill skill="passive-1">
     携带此武器时，角色造成的火焰伤害增加<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

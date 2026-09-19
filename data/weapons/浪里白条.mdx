@@ -43,22 +43,42 @@ damage_sources:
       numerical:
         id: 120900012
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 高能光束
+    icon: /icons/weapons/skills/T_Icon_Skill_ElectromagneticSoldier_Talents_27400204.png
+    game_skill_id: 5003901
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/浪里白条.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 10
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/浪里白条.mdx#active-1.skill_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/浪里白条.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 感电反应
+    icon: /icons/weapons/skills/T_Weapon_Skill_20109000001_01.png
+    modifier_sources:
+      - weapon:浪里白条:感电反应
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="高能光束"
-    icon="/icons/weapons/skills/T_Icon_Skill_ElectromagneticSoldier_Talents_27400204.png"
-    duration={-1}
-    cooldown={40}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     浪里白条进入增幅状态，命中敌人时可以获得<Yellow>2层</Yellow><Blue>命中层数</Blue>，命中弱点或暴击时可以获得<Yellow>3层</Yellow><Blue>命中层数</Blue>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="感电反应"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20109000001_01.png"
-  >
+  <PassiveSkill skill="passive-1">
     浪里白条开火时会在持续射击一段时间后打出一次爆发伤害。持续射击时，每次命中目标会给自身增加一层<Blue>命中层数</Blue>，打出爆发伤害时会根据<Blue>命中层数</Blue>增加伤害，每层<Blue>命中层数</Blue>能够增加<Yellow>6%</Yellow>伤害。
     命中弱点或暴击时，<Blue>额外</Blue>增加一层<Blue>命中层数</Blue>。
   </PassiveSkill>

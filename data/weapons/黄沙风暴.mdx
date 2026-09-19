@@ -39,22 +39,40 @@ damage_sources:
         id: 121400040
         level: 1
       asc_type_id: "156"
+skills:
+  - id: active-1
+    kind: active
+    name: 狂热射击
+    icon: /icons/weapons/skills/T_Weapon_Skill_1000101.png
+    game_skill_id: 5000103
+    parameters:
+      duration:
+        literal: 8
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#黄沙风暴.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 8
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#黄沙风暴.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/黄沙风暴.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 发散射击
+    icon: /icons/weapons/skills/T_Weapon_Skill_20014000004_1.png
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="狂热射击"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1000101.png"
-    duration={8}
-    cooldown={40}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     进入狂热射击状态，期间使用武器射击会直接消耗备弹，且射速提高<Yellow>30%</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="发散射击"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20014000004_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     随着弹夹内弹药量的降低，开火时发射的子弹数量逐渐增加，且不会额外消耗弹药。
   </PassiveSkill>
 </WeaponSkill>

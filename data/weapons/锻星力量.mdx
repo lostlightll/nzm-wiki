@@ -50,12 +50,16 @@ damage_sources:
         id: 121300570
         level: 1
       asc_type_id: "358"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 锻星之力
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000057.png
+    modifier_sources:
+      - weapon:锻星力量:锻星之力
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="锻星之力"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000057.png"
-  >
+  <PassiveSkill skill="passive-1">
     携带此武器时，角色造成的电属性伤害增加<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

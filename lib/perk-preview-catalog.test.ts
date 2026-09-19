@@ -8,6 +8,16 @@ import { getProviderRelationsForSource, resolveMultiplierSourceHref } from "./mu
 
 const active = { season: "s4", version: "s4-preview", label: "S4 Preview" };
 
+test("frozen runtime skill provenance accepts its season and rejects channel leakage", () => {
+  const catalog = parsePerkPreviewCatalog(structuredClone(rawPreview));
+  const variant = catalog.entries.flatMap(entry => entry.perk.skillVariants ?? [])[0];
+  assert.ok(variant);
+  variant.skill.provenance.duration = { runtime: `s4-preview:${variant.skill.gameSkillId}:duration` };
+  assert.doesNotThrow(() => parsePerkPreviewCatalog(catalog));
+  variant.skill.provenance.duration = { runtime: `weapons:${variant.skill.gameSkillId}:duration` };
+  assert.throws(() => parsePerkPreviewCatalog(catalog), /cross-channel/);
+});
+
 test("same ItemID has isolated current and preview descriptions, documents and relations", () => {
   const current = getPerkByItemId("20703040346")!;
   const preview = getPerkByItemId("20703040346", "preview")!;

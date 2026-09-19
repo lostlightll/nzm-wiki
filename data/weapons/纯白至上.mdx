@@ -48,23 +48,43 @@ damage_sources:
         asc:
           fire_interval: 0.0909
       override_reason: 人工确认该模式使用独立射击间隔
+skills:
+  - id: active-1
+    kind: active
+    name: 磐石身躯
+    icon: /icons/weapons/skills/T_Weapon_Skill_1000801.png
+    game_skill_id: 5000902
+    parameters:
+      duration:
+        literal: 15
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#纯白至上.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 15
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#纯白至上.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/纯白至上.mdx#frontmatter.skill_blocking
+    modifier_sources:
+      - weapon:纯白至上:磐石身躯
+  - id: passive-1
+    kind: passive
+    name: 强力冲击
+    icon: /icons/weapons/skills/T_Weapon_Skill_effect_11.png
+    tag: 动态射速
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="磐石身躯"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1000801.png"
-    duration={15}
-    cooldown={15}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     展开拒止力场，持续<Yellow>15秒</Yellow>，期间获得<Yellow>30%</Yellow>伤害减免，且持续射击命中每<Yellow>0.5秒</Yellow>获得<Yellow>6%</Yellow>增伤，最多叠加<Yellow>12层</Yellow>。停止射击后增伤效果逐渐降低至无。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="强力冲击"
-    tag="动态射速"
-    icon="/icons/weapons/skills/T_Weapon_Skill_effect_11.png"
-  >
+  <PassiveSkill skill="passive-1">
     持续射击时，射速逐渐提升，最高提升至<Yellow>2.2倍</Yellow>初始射速。
   </PassiveSkill>
 </WeaponSkill>

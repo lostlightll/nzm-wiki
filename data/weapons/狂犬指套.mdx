@@ -49,14 +49,18 @@ damage_sources:
         id: 121300420
         level: 1
       asc_type_id: "354"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 破韧狂噬
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000042.png
+    modifier_sources:
+      - weapon:狂犬指套:破韧狂噬
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <PassiveSkill
-    name="破韧狂噬"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000042.png"
-  >
+  <PassiveSkill skill="passive-1">
     携带此武器时，角色对破韧敌人造成的伤害增加<Yellow>20%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

@@ -177,6 +177,7 @@ export interface PerkIndependentDamageSourceReference {
 export type PerkPreviewChange = "new" | "changed" | "existing";
 
 export interface Perk {
+  skillVariants?: import("@/lib/num-skill").ResolvedSkillVariant[];
   id: string;
   itemId: string;
   slug: string;

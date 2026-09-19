@@ -50,12 +50,16 @@ damage_sources:
         id: 121300440
         level: 1
       asc_type_id: "327"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 时空之力
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000044.png
+    modifier_sources:
+      - weapon:蛇神之矛:时空之力
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="时空之力"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000044.png"
-  >
+  <PassiveSkill skill="passive-1">
     电属性伤害增加<Yellow>5%</Yellow>。武器技能充能速度提升<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

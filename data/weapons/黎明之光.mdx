@@ -44,24 +44,42 @@ damage_sources:
       numerical:
         id: 120500011
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 双重奏
+    icon: /icons/weapons/skills/T_Weapon_Skill_1100701.png
+    game_skill_id: 5003001
+    parameters:
+      duration:
+        literal: 15
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#黎明之光.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 15
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#黎明之光.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/黎明之光.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 武器大师
+    icon: /icons/weapons/skills/T_Weapon_Skill_20108000001.png
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="双重奏"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1100701.png"
-    duration={15}
-    cooldown={30}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     技能激活期间，开火时<Yellow>100%</Yellow>概率额外增加<Yellow>1条</Yellow>弹道且额外消耗<Yellow>1发</Yellow>弹药。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="武器大师"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20108000001.png"
-  >
+  <PassiveSkill skill="passive-1">
     换弹时将枪械抛出，命中敌人造成半径<Yellow>2</Yellow>m的闪电范围伤害并补满弹夹。
   </PassiveSkill>
 </WeaponSkill>

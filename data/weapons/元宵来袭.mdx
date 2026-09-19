@@ -51,21 +51,39 @@ damage_sources:
     source:
       prototype_mode: 1
       asc_type_id: "337"
+skills:
+  - id: active-1
+    kind: active
+    name: 汤圆发射器
+    icon: /icons/weapons/skills/T_Weapon_Skill_20005000018_2.png
+    game_skill_id: 5002801
+    parameters:
+      duration:
+        literal: 20
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#元宵来袭.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 20
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#元宵来袭.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/元宵来袭.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 吃汤圆咯
+    icon: /icons/weapons/skills/T_Weapon_Skill_20005000018_1.png
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="汤圆发射器"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_2.png"
-    duration={20}
-    cooldown={35}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     发射美味汤圆！命中敌人时，有<Yellow>10%</Yellow>概率掉落一颗随机汤圆
   </ActiveSkill>
-  <PassiveSkill
-    name="吃汤圆咯"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000018_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     拾取汤圆时，获得特殊效果。
 
     金汤圆：拾取后增加金币，僵尸猎场中为<Yellow>100</Yellow>金币，塔防模式为<Yellow>35</Yellow>金币；  

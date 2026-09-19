@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "variants": [
+    {
+      "key": "s4-preview:5104901",
+      "channel": "s4-preview",
+      "base_game_skill_id": 5000901,
+      "skill": {
+        "id": "thunder-amplification",
+        "kind": "active",
+        "name": "雷霆增幅",
+        "game_skill_id": 5104901,
+        "display": false,
+        "parameters": {
+          "cooldown": {"row":"s4-preview:pve:5104901_1","field":"ChargeNeedTime"},
+          "count": {"row":"s4-preview:pve:5104901_1","field":"SkillCount"},
+          "duration": {"row":"s4-preview:gp:5104901","field":"Duration"},
+          "blocking": {"row":"s4-preview:gp:5104901","field":"bPauseChargeDuringActivation"}
+        }
+      },
+      "evidence": [
+        "DataTables/LuaDataTable/WeaponModItemData.json#20703040569.PassiveSkill_ID=1312082001:1",
+        "DataTables/SkillConfigTable_Weapon_PVE.json#5104901_1.SkillName=雷霆增幅",
+        "DataTables/GPActiveSkillDataTable.json#5104901.SkillOverview=雷霆之怒-雷霆之影MGE替换"
+      ]
+    }
+  ]
+}

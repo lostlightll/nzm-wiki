@@ -66,25 +66,44 @@ damage_sources:
       numerical:
         id: 120600043
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 剧毒力场
+    icon: /icons/weapons/skills/T_Weapon_Skill_20106000004_02.png
+    game_skill_id: 5001301
+    parameters:
+      duration:
+        literal: 12
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#幽冥毒王.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 12
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#幽冥毒王.active-1.panel_duration
+      blocking:
+        row: weapons:gp:5001301
+        field: bPauseChargeDuringActivation
+    modifier_sources:
+      - weapon:幽冥毒王:剧毒力场
+  - id: passive-1
+    kind: passive
+    name: 阴晴不定
+    icon: /icons/weapons/skills/T_Weapon_Skill_20106000004_02.png
+    tag: 多模式
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="剧毒力场"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20106000004_02.png"
-    duration={12}
-    cooldown={45}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     原地释放一个能量力场，立即回复幽冥毒王全部榴弹，并使<Yellow>6米</Yellow>范围内我方角色腐蚀属性武器的伤害增加。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="阴晴不定"
-    tag="多模式"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20106000004_02.png"
-  >
+  <PassiveSkill skill="passive-1">
     幽冥毒王可以在<Blue>机枪</Blue>和<Blue>榴弹枪</Blue>之间切换。幽冥毒王至多可存储<Yellow>4枚</Yellow>榴弹。榴弹命中敌人后，将在爆炸点的地面上留下毒池，进入毒池的敌人将受到少量伤害并降低移动速度。机枪模式下，命中敌人<Yellow>50次</Yellow>可以恢复<Yellow>1枚</Yellow>榴弹。
   </PassiveSkill>
 </WeaponSkill>

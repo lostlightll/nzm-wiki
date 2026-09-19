@@ -34,23 +34,33 @@ damage_sources:
         id: 120300310
         level: 1
       asc_type_id: "381"
+skills:
+  - id: active-1
+    kind: active
+    name: 滑铲时刻
+    icon: /icons/weapons/skills/T_Icon_Skill_Snow_Talents_27400104.png
+    game_skill_id: 5103301
+    parameters:
+      duration:
+        literal: 12
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#疾影逐风.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 强化射击
+    icon: /icons/weapons/skills/T_Weapon_Skill_20003000031_1.png
+    tag: 快速连发
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="滑铲时刻"
-    icon="/icons/weapons/skills/T_Icon_Skill_Snow_Talents_27400104.png"
-    duration={12}
-    cooldown={30}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     技能激活期间，每次触发滑铲补充满弹夹。触发滑铲后，接下来的<Yellow>18次</Yellow>射击，弹丸数量额外加<Yellow>3颗</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="强化射击"
-    tag="快速连发"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20003000031_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     触发滑铲后，接下来的<Yellow>18次</Yellow>射击，弹丸数量增加<Yellow>3颗</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

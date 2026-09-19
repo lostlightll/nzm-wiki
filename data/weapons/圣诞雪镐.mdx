@@ -50,12 +50,14 @@ damage_sources:
         id: 121300390
         level: 1
       asc_type_id: "240"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 快速脱战
+    icon: /icons/weapons/skills/T_Weapon_Skill_20103000005.png
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="快速脱战"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20103000005.png"
-  >
+  <PassiveSkill skill="passive-1">
     携带圣诞雪镐时，角色不再受到攻击后，开始回复护盾需等待的时间变为<Yellow>4秒</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

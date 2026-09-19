@@ -49,12 +49,16 @@ damage_sources:
         id: 121300540
         level: 1
       asc_type_id: "356"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 怒目业火
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000054.png
+    modifier_sources:
+      - weapon:怒目锤:怒目业火
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="怒目业火"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000054.png"
-  >
+  <PassiveSkill skill="passive-1">
     携带此武器时，角色造成的火属性伤害增加<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

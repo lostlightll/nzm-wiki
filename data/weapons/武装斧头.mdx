@@ -50,12 +50,16 @@ damage_sources:
         id: 121300280
         level: 1
       asc_type_id: "207"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 炙热武装
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000028.png
+    modifier_sources:
+      - weapon:武装斧头:炙热武装
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="炙热武装"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000028.png"
-  >
+  <PassiveSkill skill="passive-1">
     火属性伤害提升<Yellow>5%</Yellow>，武器爆炸伤害提升<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

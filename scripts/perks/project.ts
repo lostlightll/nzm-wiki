@@ -33,6 +33,10 @@ export async function projectPerkPreview() {
     "data/perk-preview-modifiers.json", "data/num-modifier-semantics.json",
     "data/weapon-data-lock.json",
     ...sources.flatMap(entry => (entry.perk.independentDamageSources ?? []).map(ref => `data/weapons/${ref.weaponSlug}.mdx`)),
+    ...sources.flatMap(entry => entry.perk.skillVariants?.length ? [
+      "data/num-skill-lock.json", "data/num-skill-variants.json",
+      ...entry.perk.skillVariants.map(variant => `data/weapons/${variant.reference.weapon_slug}.mdx`),
+    ] : []),
   ]);
   const catalog = parsePerkPreviewCatalog({
     schemaVersion: 1,

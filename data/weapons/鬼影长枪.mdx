@@ -50,12 +50,16 @@ damage_sources:
         id: 121300530
         level: 1
       asc_type_id: "345"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 鬼术枪击
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000053.png
+    modifier_sources:
+      - weapon:鬼影长枪:鬼术枪击
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="鬼术枪击"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000053.png"
-  >
+  <PassiveSkill skill="passive-1">
     所有物理伤害提升<Yellow>5%</Yellow>，换弹速度提升<Yellow>8%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

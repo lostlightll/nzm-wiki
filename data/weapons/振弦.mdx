@@ -43,22 +43,42 @@ damage_sources:
           attenuation:
             status: not_applicable
       override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
+skills:
+  - id: active-1
+    kind: active
+    name: 狂暴模式
+    icon: /icons/weapons/skills/T_Weapon_Skill_20012000002_3.png
+    game_skill_id: 5004901
+    parameters:
+      duration:
+        literal: 15
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/振弦.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 15
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/振弦.mdx#active-1.skill_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/振弦.mdx#frontmatter.skill_blocking
+    modifier_sources:
+      - weapon:振弦:狂暴模式
+  - id: passive-1
+    kind: passive
+    name: 急速杀戮
+    icon: /icons/weapons/skills/T_Weapon_Skill_20109000001_2.png
+    tag: 蓄力
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="狂暴模式"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20012000002_3.png"
-    duration={15}
-    cooldown={30}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     进入狂暴模式，持续<Yellow>15秒</Yellow>，期间暴击率提升<Yellow>25%</Yellow>，暴击伤害增加<Yellow>50%</Yellow>。
     </ActiveSkill>
-  <PassiveSkill
-    name="急速杀戮"
-    tag="蓄力"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20109000001_2.png"
-  >
+  <PassiveSkill skill="passive-1">
     当前背包中有该武器时，每次击杀敌人将获得<Yellow>1层</Yellow>开火速度、换弹速度、切枪速度的加成效果，每层提高<Yellow>3%</Yellow>，最高叠加<Yellow>5层</Yellow>。持续<Yellow>5秒</Yellow>没有击杀将移除全部层数。
   </PassiveSkill>
 </WeaponSkill>

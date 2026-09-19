@@ -54,24 +54,34 @@ damage_sources:
       numerical:
         id: 121600012
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 连环爆炸
+    icon: /icons/weapons/skills/T_Weapon_Skill_20116000001_02.png
+    game_skill_id: 5101601
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/钢铁轰鸣.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 劫掠时刻
+    icon: /icons/weapons/skills/T_Weapon_Skill_20116000001_01.png
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="连环爆炸"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20116000001_02.png"
-    duration={-1}
-    cooldown={50}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     发射的榴弹能够额外<Blue>反弹</Blue><Yellow>2次</Yellow>，每次<Blue>反弹</Blue>均能产生爆炸
   </ActiveSkill>
 
-  <PassiveSkill
-    name="劫掠时刻"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20116000001_01.png"
-  >发射的榴弹能够<Blue>穿透</Blue>敌人并造成伤害，第一次<Blue>穿透</Blue>敌人时将额外造成一次爆炸。</PassiveSkill>
+  <PassiveSkill skill="passive-1">发射的榴弹能够<Blue>穿透</Blue>敌人并造成伤害，第一次<Blue>穿透</Blue>敌人时将额外造成一次爆炸。</PassiveSkill>
 </WeaponSkill>
 
 命中伤害 **74.5**， 添加元素异常概率为 **39.25%**， 破韧伤害为 **4.92**  

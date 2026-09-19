@@ -38,23 +38,36 @@ damage_sources:
         id: 121000010
         level: 1
       asc_type_id: "73"
+skills:
+  - id: active-1
+    kind: active
+    name: 战术力场
+    icon: /icons/weapons/skills/T_Weapon_Skill_20110000001_02.png
+    game_skill_id: 5001401
+    parameters:
+      duration:
+        runtime: weapons:5001401:duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        runtime: weapons:5001401:duration
+      blocking:
+        row: weapons:gp:5001401
+        field: bPauseChargeDuringActivation
+  - id: passive-1
+    kind: passive
+    name: 猎手
+    icon: /icons/weapons/skills/T_Weapon_Skill_20110000001_01.png
+    tag: 快速连发
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="战术力场"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20110000001_02.png"
-    duration={12}
-    cooldown={45}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     原地释放一个半径<Yellow>6米</Yellow>的战术力场，提高范围内我方角色暴击率<Yellow>36%</Yellow>，并且产生暴击时会治疗自己。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="猎手"
-    tag="快速连发"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20110000001_01.png"
-  >
+  <PassiveSkill skill="passive-1">
     三连发射击的第三发子弹<Yellow>100%</Yellow>造成暴击，并且可穿透<Yellow>3层</Yellow>目标，伤害无衰减。
   </PassiveSkill>
 </WeaponSkill>

@@ -50,14 +50,18 @@ damage_sources:
         id: 121300500
         level: 1
       asc_type_id: "344"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 火力全开
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000050.png
+    modifier_sources:
+      - weapon:猪猪捏捏乐:火力全开
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <PassiveSkill
-    name="火力全开"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000050.png"
-  >
+  <PassiveSkill skill="passive-1">
     火属性伤害提升<Yellow>5%</Yellow>，武器开火造成的爆炸伤害提升<Yellow>5%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

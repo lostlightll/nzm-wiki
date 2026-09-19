@@ -13,6 +13,14 @@
         "sha256": "e684f93ce4847e69cf2770a0634c2373537091566c013589977ab6911491dce3"
       },
       {
+        "path": "data/num-skill-lock.json",
+        "sha256": "fad1e3912d3f9cdb31e5f8d54efbfea78fef41c5f8450f83bd458db10201fa0d"
+      },
+      {
+        "path": "data/num-skill-variants.json",
+        "sha256": "cab7d0803320fba958ea9f2c715ba12e47fd80642097e5f203d4741e6f9fb4d7"
+      },
+      {
         "path": "data/perk-preview-modifiers.json",
         "sha256": "5d6576ab82efa2ca7b3c6fdc8fa5eca49005e99db518ec11b3c37687e37dc41d"
       },
@@ -2162,7 +2170,7 @@
       },
       {
         "path": "data/perk-preview/slot-4/雷霆增幅.mdx",
-        "sha256": "bb832c6f47ffd1af592295a4bc7d999fd88feafa4d139f99f061595811f3048d"
+        "sha256": "c3b01161671536c389dcbbfe662c6ced8117cc064e306f9d140b7d80f127a997"
       },
       {
         "path": "data/perk-preview/slot-4/霜华.mdx",
@@ -2218,35 +2226,39 @@
       },
       {
         "path": "data/weapons/夜影之逝.mdx",
-        "sha256": "74422032147be4da8fee2f2bb3763b0e317e053fda55e28a9e673e671605e96d"
+        "sha256": "2483163176fa86f9fd1f4da66bed62631c0e3cfdc98a3ae1900736f977dcf88f"
       },
       {
         "path": "data/weapons/幽冥毒皇.mdx",
-        "sha256": "dea3ae031d03bdfe48e29363913b6dfa863172bbe6bc7a6940d317e51cec94c5"
+        "sha256": "dbb0cdba16c8b9243f85a569bc284521ef0a81c28f030cd1fbe6ec13dd367ea1"
       },
       {
         "path": "data/weapons/星海狂想.mdx",
-        "sha256": "ea6729e8cb65024c09365b074bfa667028453430f7c32137b1934f57334e000f"
+        "sha256": "1634b52dc70aa6bde215a779b7469e2a85483c258f53a1bc92b9f7ff0f7bcd0b"
       },
       {
         "path": "data/weapons/极寒冰神.mdx",
-        "sha256": "da39eb227df63e793e333fddb13c34fdcfa105407c2715f739531f909b7423fc"
+        "sha256": "de42b381684a04d3ef26ccc1612a9c4e28c4026da4c2589488305fe2c6d3de66"
       },
       {
         "path": "data/weapons/炼狱蝎王.mdx",
-        "sha256": "035d3e079c6adfcdb57935c7b0d4499005b13cfc28938465ce2b68618f3520f8"
+        "sha256": "7059f2e7de949f41338c1aa48214bf7b802bed2910a46032cbee1c9fe46c5f1f"
       },
       {
         "path": "data/weapons/能源之影.mdx",
-        "sha256": "12d595b650b12ec957ef11e92fe0e09d0635aa53bd6903e41615bd8e47ac3c37"
+        "sha256": "d179be88cfefbe557959df4370002f5c87523655258d469470a5792af84b62f4"
+      },
+      {
+        "path": "data/weapons/雷霆之影.mdx",
+        "sha256": "2c52e666d931d85ddcd3f091cb6ca271b0461ae6c651713923ed23ac5b55ba4f"
       },
       {
         "path": "data/weapons/飓风之龙.mdx",
-        "sha256": "8886dfa1fe692e48ba0cac37b0b1747cdb0cc3f6a583f5c7ae6414409e5c9217"
+        "sha256": "e1070f0dfddf364afeab67e2949cdbd273f09be3114d640cd193d135c264c0b2"
       },
       {
         "path": "data/weapons/鬼铜蚀.mdx",
-        "sha256": "1dfd3d16ea20e3a8ea7c6cf424f1aa8b6c0ffd2c50a29400afbd97f553641b90"
+        "sha256": "2bccd0657a9364b77b9096c7661f027563e55ba960c09a994a631fe7c6c00972"
       }
     ]
   },
@@ -29368,6 +29380,52 @@
     },
     {
       "perk": {
+        "skillVariants": [
+          {
+            "reference": {
+              "weapon_slug": "雷霆之影",
+              "base_skill": "active-1",
+              "variant": "s4-preview:5104901",
+              "operation": "replace"
+            },
+            "original": {
+              "id": 5000901,
+              "name": "拒止力场"
+            },
+            "skill": {
+              "id": "thunder-amplification",
+              "kind": "active",
+              "name": "雷霆增幅",
+              "gameSkillId": 5104901,
+              "display": false,
+              "parameters": {
+                "cooldown": 40,
+                "duration": 10,
+                "count": 1,
+                "blocking": false
+              },
+              "modifierSources": [],
+              "provenance": {
+                "cooldown": {
+                  "row": "s4-preview:pve:5104901_1",
+                  "field": "ChargeNeedTime"
+                },
+                "duration": {
+                  "row": "s4-preview:gp:5104901",
+                  "field": "Duration"
+                },
+                "count": {
+                  "row": "s4-preview:pve:5104901_1",
+                  "field": "SkillCount"
+                },
+                "blocking": {
+                  "row": "s4-preview:gp:5104901",
+                  "field": "bPauseChargeDuringActivation"
+                }
+              }
+            }
+          }
+        ],
         "id": "雷霆增幅",
         "itemId": "20703040569",
         "slug": "preview/slot-4/雷霆增幅",
@@ -29389,7 +29447,7 @@
         "isCooked": true
       },
       "content": "",
-      "source": "---\n\"title\": \"雷霆增幅\"\n\"id\": \"20703040569\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1007012003\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"雷霆之影\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\n\"description\": \"将主动技能替换为<strong>雷霆增幅</strong>。\n\n  <strong>雷霆增幅</strong>：<strong>10秒</strong>内主手、副手<strong>电弧元素</strong>武器开火时会额外消耗<strong>1发</strong>弹药，并使伤害提升<strong>{{num:modifier-120700121-0-base|percent}}</strong>，命中敌人时有<strong>10%</strong>概率造成<strong>电弧元素</strong>属性连锁伤害。\"\n\"num_modifier_values\":\n  \"modifier-120700121-0-base\":\n    \"row\": \"lc:120700121_1_0\"\n    \"field\": \"base\"\n\"preview_change\": \"new\"\n---",
+      "source": "---\n\"title\": \"雷霆增幅\"\n\"id\": \"20703040569\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1007012003\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"雷霆之影\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\n\"description\": \"将主动技能替换为<strong>雷霆增幅</strong>。\n\n  <strong>雷霆增幅</strong>：<strong>10秒</strong>内主手、副手<strong>电弧元素</strong>武器开火时会额外消耗<strong>1发</strong>弹药，并使伤害提升<strong>{{num:modifier-120700121-0-base|percent}}</strong>，命中敌人时有<strong>10%</strong>概率造成<strong>电弧元素</strong>属性连锁伤害。\"\n\"num_modifier_values\":\n  \"modifier-120700121-0-base\":\n    \"row\": \"lc:120700121_1_0\"\n    \"field\": \"base\"\n\"preview_change\": \"new\"\nskill_variants:\n  - weapon_slug: 雷霆之影\n    base_skill: active-1\n    variant: s4-preview:5104901\n    operation: replace\n---",
       "metadata": {
         "title": "雷霆增幅",
         "id": "20703040569",
@@ -29411,7 +29469,15 @@
             "row": "lc:120700121_1_0",
             "field": "base"
           }
-        }
+        },
+        "skill_variants": [
+          {
+            "weapon_slug": "雷霆之影",
+            "base_skill": "active-1",
+            "variant": "s4-preview:5104901",
+            "operation": "replace"
+          }
+        ]
       },
       "independentDamage": []
     },

@@ -50,12 +50,16 @@ damage_sources:
         id: 121300620
         level: 1
       asc_type_id: "393"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 狂怒撕裂
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000062.png
+    modifier_sources:
+      - weapon:狂人电锯:狂怒撕裂
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="狂怒撕裂"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000062.png"
-  >
+  <PassiveSkill skill="passive-1">
     携带此武器时，近距离武器伤害增加<Yellow>7%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

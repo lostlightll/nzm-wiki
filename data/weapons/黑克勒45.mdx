@@ -37,23 +37,33 @@ damage_sources:
         id: 120500020
         level: 1
       asc_type_id: "33"
+skills:
+  - id: active-1
+    kind: active
+    name: 燃烧手雷
+    icon: /icons/weapons/skills/T_Weapon_Skill_1000901.png
+    game_skill_id: 5001001
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/黑克勒45.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 击杀充能
+    icon: /icons/weapons/skills/T_Weapon_Skill_effect_14.png
+    tag: 元素异常
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="燃烧手雷"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1000901.png"
-    duration={-1}
-    cooldown={50}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     扔出一颗燃烧手雷，造成一次半径为<Yellow>6米</Yellow>的范围燃烧伤害。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="击杀充能"
-    tag="元素异常"
-    icon="/icons/weapons/skills/T_Weapon_Skill_effect_14.png"
-  >
+  <PassiveSkill skill="passive-1">
     黑克勒45比其他火元素武器更容易造成灼热异常，且能造成更高的灼热异常伤害。该武器开火造成击杀时，减少其主动技能<Yellow>8秒</Yellow>充能时间。
   </PassiveSkill>
 </WeaponSkill>

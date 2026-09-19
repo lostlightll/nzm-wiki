@@ -59,24 +59,43 @@ damage_sources:
       numerical:
         id: 120300251
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 刺隐之袭
+    icon: /icons/weapons/skills/T_Weapon_Skill_20003000025_2.png
+    game_skill_id: 5004801
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/刺隐.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 10
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/刺隐.mdx#active-1.skill_duration
+      blocking:
+        row: weapons:gp:5004801
+        field: bPauseChargeDuringActivation
+    modifier_sources:
+      - weapon:刺隐:刺隐之袭
+  - id: passive-1
+    kind: passive
+    name: 百川归海
+    icon: /icons/weapons/skills/T_Weapon_Skill_20003000025_1.png
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="刺隐之袭"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20003000025_2.png"
-    duration={-1}
-    cooldown={30}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     激活技能后，角色隐身<Yellow>10秒</Yellow>，下次刺隐开火伤害增加<Yellow>200%</Yellow>，且必暴击。一旦开火，立刻退出隐身。
     如果这次特殊开火的所有弹丸都命中同一个敌人，则立即缩短<Yellow>22秒</Yellow>主动技能冷却时间。
     刺隐在角色隐身期间，准心收窄。火力乱斗模式中，无法触发暴击效果。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="百川归海"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20003000025_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     当一次开火所有弹丸命中同一个目标时，必定产生暴击。
     火力乱斗模式中，无法触发暴击效果。
   </PassiveSkill>

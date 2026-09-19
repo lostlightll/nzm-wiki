@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import {
   existsSync,
   mkdirSync,
@@ -12,6 +13,9 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import test, { type TestContext } from "node:test";
 import matter from "gray-matter";
+import { parseWeaponDataLock } from "../../lib/weapon-data-lock";
+import { createWeaponResolver } from "../../lib/weapon-resolver";
+import { getActiveSkillDisplay, toWeaponDetailData } from "../../lib/weapon-consumers";
 import {
   createWeaponDataSourceReader,
   WEAPON_DATA_SOURCE_FILES,
@@ -290,11 +294,34 @@ const realContentRoot = path.join(
   "Content",
 );
 const weaponDirectory = path.join(process.cwd(), "data", "weapons");
+const activeWeapons = readdirSync(weaponDirectory)
+  .filter((fileName) => fileName.endsWith(".mdx"))
+  .map((fileName) => ({ fileName, data: matter(readFileSync(path.join(weaponDirectory, fileName), "utf8")).data }))
+  .filter(({ data }) => typeof data.active_skill_id === "number" && data.active_skill_id > 0);
+const committedLock = parseWeaponDataLock(JSON.parse(readFileSync(path.join(process.cwd(), "data/weapon-data-lock.json"), "utf8")));
+
+test("全部63把主动技能武器的LC/TD充能只由已提交Lock决定：59 PVE、4 GP", () => {
+  const resolver = createWeaponResolver(committedLock);
+  const counts = { weapon_pve: 0, gp_fallback: 0 };
+  assert.equal(activeWeapons.length, 63);
+  for (const { fileName, data } of activeWeapons) {
+    const reference = committedLock.active_skills[`${data.active_skill_id}_1`];
+    assert.ok(reference, fileName);
+    counts[reference.source]++;
+    const pve = reference.source === "weapon_pve";
+    const row = committedLock.rows[pve ? "skill-pve" : "gp-active-skill"][reference.source_key].raw;
+    for (const mode of ["lc", "td"] as const) {
+      const weapon = toWeaponDetailData(resolver.resolveWeapon(data, { slug: fileName.slice(0, -4), expectedTable: mode }));
+      assert.deepEqual(getActiveSkillDisplay(weapon.activeSkill), { cooldown: row[pve ? "ChargeNeedTime" : "CooldownDuration"], count: row[pve ? "SkillCount" : "MaxChargeStackCount"] }, `${fileName}/${mode}`);
+    }
+  }
+  assert.deepEqual(counts, { weapon_pve: 59, gp_fallback: 4 });
+});
 
 test(
-  "当前 59 把 LC 武器稳定解析为 55 PVE 和 4 GP，MDX 技能引用已对齐",
+  "本地原表核验全部主动技能身份；仅同版本来源进行充能数值等价对比",
   { skip: !existsSync(realContentRoot) },
-  () => {
+  (t) => {
     const reader = createWeaponDataSourceReader({ contentRoot: realContentRoot });
     const weapons = readdirSync(weaponDirectory)
       .filter((fileName) => fileName.endsWith(".mdx"))
@@ -304,11 +331,12 @@ test(
           readFileSync(path.join(weaponDirectory, fileName), "utf8"),
         ).data,
       }))
-      .filter(({ data }) => typeof data.skill_cooldown === "number");
+      .filter(({ data }) => typeof data.active_skill_id === "number" && data.active_skill_id > 0);
 
     const sourceCounts = { weapon_pve: 0, gp_fallback: 0 };
     const fallbackWeapons: Array<[string, number, number]> = [];
-    const cooldownDifferences: Array<[string, number, number]> = [];
+    const changedSources = new Set<string>();
+    const liveHashes = new Map<string, string>();
     const referenceDifferences: Array<[string, number, number]> = [];
 
     for (const { fileName, data } of weapons) {
@@ -329,13 +357,16 @@ test(
           resolved.chargeTime,
         ]);
       }
-      if (resolved.chargeTime !== data.skill_cooldown) {
-        cooldownDifferences.push([
-          fileName,
-          data.skill_cooldown as number,
-          resolved.chargeTime,
-        ]);
-      }
+      const reference = committedLock.active_skills[`${data.active_skill_id}_1`];
+      const kind = reference.source === "weapon_pve" ? "skill-pve" : "gp-active-skill";
+      const lockedRow = committedLock.rows[kind][reference.source_key];
+      const metadata = lockedRow.source ?? committedLock.sources[kind];
+      const sourcePath = path.join(realContentRoot, WEAPON_DATA_SOURCE_FILES[kind]);
+      if (!liveHashes.has(sourcePath)) liveHashes.set(sourcePath, createHash("sha256").update(readFileSync(sourcePath)).digest("hex"));
+      if (liveHashes.get(sourcePath) === metadata.sha256) {
+        assert.equal(resolved.chargeTime, lockedRow.raw[kind === "skill-pve" ? "ChargeNeedTime" : "CooldownDuration"], fileName);
+        assert.equal(resolved.chargeCount, lockedRow.raw[kind === "skill-pve" ? "SkillCount" : "MaxChargeStackCount"], fileName);
+      } else changedSources.add(metadata.source_path);
 
       const audit = auditActiveSkillReference(reader, {
         prototypeId,
@@ -353,15 +384,15 @@ test(
       }
     }
 
-    assert.equal(weapons.length, 59);
-    assert.deepEqual(sourceCounts, { weapon_pve: 55, gp_fallback: 4 });
+    assert.equal(weapons.length, 63);
+    assert.deepEqual(sourceCounts, { weapon_pve: 59, gp_fallback: 4 });
     assert.deepEqual(fallbackWeapons.sort(), [
       ["振弦.mdx", 5004901, 30],
       ["春雷震.mdx", 5003101, 0],
       ["火神炎帝.mdx", 5103601, 0],
       ["鬼铜蚀.mdx", 5102501, 0],
     ].sort());
-    assert.deepEqual(cooldownDifferences, []);
+    for (const source of changedSources) t.diagnostic(`本地来源已偏离提交Lock，未进行跨版本数值等价断言：${source}`);
     assert.deepEqual(referenceDifferences, []);
 
     const steel = auditActiveSkillReference(reader, {

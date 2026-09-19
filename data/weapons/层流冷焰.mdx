@@ -48,22 +48,31 @@ damage_sources:
       numerical: { id: 1410140101, level: 1 }
 weapon_type_id: 14
 active_skill_id: 5101401
+skills:
+  - id: active-1
+    kind: active
+    name: 冷焰飞弹
+    icon: /icons/weapons/skills/T_Weapon_Skill_20014000001-2.png
+    game_skill_id: 5101401
+    parameters:
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 低温预混
+    icon: /icons/weapons/skills/T_Weapon_Skill_20014000001-1.png
+    tag: 双模式
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="冷焰飞弹"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20014000001-2.png"
-  >
+  <ActiveSkill skill="active-1">
     释放时召唤 **4 枚**追踪飞弹。接下来的 **8 秒**内，射击命中敌人可继续积累飞弹，积满后自动发射。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="低温预混"
-    tag="双模式"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20014000001-1.png"
-  >
+  <PassiveSkill skill="passive-1">
     射击命中敌人可积累层数，换弹后进入追踪子弹模式。追踪子弹命中后产生小范围爆炸，并消耗积累的层数；层数耗尽后恢复普通射击。
   </PassiveSkill>
 </WeaponSkill>

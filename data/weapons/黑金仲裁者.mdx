@@ -37,24 +37,36 @@ damage_sources:
       numerical:
         id: 120700331
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 点金弹
+    icon: /icons/weapons/skills/T_Weapon_Skill_20007000033_1.png
+    game_skill_id: 5103201
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/黑金仲裁者.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 点金破绽
+    icon: /icons/weapons/skills/T_Weapon_Skill_20007000033_2.png
+    modifier_sources:
+      - weapon:黑金仲裁者:点金破绽
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="点金弹"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20007000033_1.png"
-    duration={-1}
-    cooldown={25}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     蓄力发射一枚点金弹，爆炸范围内敌人被转化为<Yellow>黄金敌人</Yellow>，并施加减速效果。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="点金破绽"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20007000033_2.png"
-  >
+  <PassiveSkill skill="passive-1">
     使用任何武器命中<Yellow>黄金敌人</Yellow>时，武器伤害增加<Yellow>30%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

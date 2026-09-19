@@ -57,24 +57,44 @@ damage_sources:
         numerical:
           id: 11010053
           level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 漫游模式
+    icon: /icons/weapons/skills/T_Weapon_Skill_20005000034_2.png
+    game_skill_id: 5104101
+    parameters:
+      duration:
+        literal: 12
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#炼狱蝎王.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 12
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#炼狱蝎王.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/炼狱蝎王.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 燃魂
+    icon: /icons/weapons/skills/T_Weapon_Skill_20005000034_1.png
+    modifier_sources:
+      - weapon:炼狱蝎王:燃魂
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="漫游模式"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000034_2.png"
-    duration={12}
-    cooldown={30}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     技能开启后，移动速度增加<Yellow>15%</Yellow>，且子弹伤害无距离衰减。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="燃魂"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20005000034_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     手持该武器时，自身造成的火焰伤害增加<Yellow>33%</Yellow>。队友造成的火焰伤害增加<Yellow>6%</Yellow>，该效果无法叠加。
   </PassiveSkill>
 </WeaponSkill>

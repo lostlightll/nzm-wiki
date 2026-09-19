@@ -176,6 +176,22 @@ effect_values:
 
 维护时先确认 ItemID 和结构化数值链，再录入阶段数值；描述只用于补充条件语义。随后运行 `pnpm num-modifier:check`、`pnpm test:overlimit-cards`、`pnpm overlimit-effects:audit` 与 `pnpm multiplier-index:check`。超限卡片导入后重复执行校验，确认 Numerical 审定值没有被描述覆盖。
 
+## 替换主动技能
+
+插件使用 `skill_variants` 引用 [Num 技能协议](weapon-skills.md) 的显式变体，不再手填技能参数快照：
+
+```yaml
+skill_variants:
+  - weapon_slug: 雷霆之影
+    base_skill: active-1
+    variant: s4-preview:5104901
+    operation: replace
+```
+
+武器内技能 ID、原游戏技能 ID、变体游戏技能 ID、发布通道必须分别吻合。变体目录 `data/num-skill-variants.json` 声明原技能身份和参数引用，`data/num-skill-lock.json` 保存选定原表行及哈希；`replacement_skill` 已退役并在导入时拒绝。
+
+充能和层数遵循武器技能充能来源优先级，持续时间与暂停充能单独核验执行配置，不能从描述推断。预览通过 `pnpm perks:project --channel preview` 冻结同版 `skillVariants`，运行时不回落到正式技能、不重算编辑源。随后运行 `pnpm num-skills:project` 更新双向索引。详情在效果数值区域仅显示 CD、持续时间、阻回三项；列表和悬停预览不增加标签或技能参数。
+
 ## 独立伤害来源
 
 插件额外创建或替换为独立 Numerical 结算时，在插件 MDX 中使用 `independent_damage_sources` 引用已经审定的武器 `damage_sources`：

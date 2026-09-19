@@ -258,6 +258,13 @@ for (const file of fs.readdirSync(path.join(root, "data", "weapons"))) {
   const slug = file.slice(0, -4);
   const parsed = matter(fs.readFileSync(path.join(root, "data", "weapons", file), "utf8"));
   if (parsed.data.draft === true) continue;
+  if (Array.isArray(parsed.data.skills)) {
+    for (const skill of parsed.data.skills) {
+      if (skill.display === false) continue;
+      weaponCandidates.set(`weapon:${slug}:${skill.name}`, `${slug}·${skill.name}`);
+    }
+    continue;
+  }
   const pattern = /<(ActiveSkill|PassiveSkill)\b([^>]*?)(?:\/>|>([\s\S]*?)<\/\1>)/g;
   let match: RegExpExecArray | null;
   while ((match = pattern.exec(parsed.content)) !== null) {

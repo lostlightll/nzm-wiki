@@ -46,23 +46,43 @@ damage_sources:
       numerical:
         id: 120600011
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 拒止力场
+    icon: /icons/weapons/skills/T_Weapon_Skill_20016000001.png
+    game_skill_id: 5000903
+    parameters:
+      duration:
+        literal: 30
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#梦魇.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 30
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#梦魇.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/梦魇.mdx#frontmatter.skill_blocking
+    modifier_sources:
+      - weapon:梦魇:拒止力场
+  - id: passive-1
+    kind: passive
+    name: 巡航飞弹
+    icon: /icons/weapons/skills/T_Weapon_Skill_20016000001.png
+    tag: 额外爆炸
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="拒止力场"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20016000001.png"
-    duration={30}
-    cooldown={40}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     展开拒止力场，期间获得伤害减免，且持续射击命中每<Yellow>1秒</Yellow>获得增伤，停止射击后，增伤效果逐渐清零。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="巡航飞弹"
-    tag="额外爆炸"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20016000001.png"
-  >
+  <PassiveSkill skill="passive-1">
     命中<Yellow>20次</Yellow>时会自动射出一颗飞弹。
   </PassiveSkill>
 </WeaponSkill>

@@ -64,23 +64,40 @@ active_skill_id: 5100501
 skill_duration: 8
 skill_blocking: true
 show_duration: true
+skills:
+  - id: active-1
+    kind: active
+    name: 深寒冲击
+    icon: /icons/weapons/skills/T_Weapon_Skill_1100101.png
+    game_skill_id: 5100501
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/星海狂想.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 8
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/星海狂想.mdx#active-1.skill_duration
+      blocking:
+        row: weapons:gp:5100501
+        field: bPauseChargeDuringActivation
+  - id: passive-1
+    kind: passive
+    name: 涡轮增压
+    icon: /icons/weapons/skills/T_Weapon_Skill_effect_11.png
+    tag: 动态射速
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="深寒冲击"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1100101.png"
-    duration={-1}
-    cooldown={25}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     抽取水汽凝结生成大型冰锥，对<Yellow>3米</Yellow>范围内敌人造成伤害。接下来的<Yellow>8秒</Yellow>获得<Yellow>50%</Yellow>射速加成，且射击不消耗弹药。该加成作用于当前基础射速；涡轮增压达到满速时，组合结果约为初始射速的<Yellow>3.3倍</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="涡轮增压"
-    tag="动态射速"
-    icon="/icons/weapons/skills/T_Weapon_Skill_effect_11.png"
-  >
+  <PassiveSkill skill="passive-1">
     星海狂想在持续开火过程中，射速会逐渐提升，最高达到<Yellow>2.2</Yellow>倍初始射速，停火后射速恢复初始值。星海狂想在命中敌人时有<Yellow>50%</Yellow>概率恢复<Yellow>1发</Yellow>子弹至弹夹。
   </PassiveSkill>
 </WeaponSkill>

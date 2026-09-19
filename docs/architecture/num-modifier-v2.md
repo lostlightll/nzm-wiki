@@ -100,6 +100,8 @@ applications:
 
 ## 消费者
 
+Num 技能扩展见 [`../standards/weapon-skills.md`](../standards/weapon-skills.md)：全部武器以稳定技能身份关联参数与 Modifier 来源；插件以显式替换边指向版本隔离的技能变体。它复用已有充能 Lock 与 Modifier Resolver，不改变 Modifier operation 的含义。`num-modifier:check` 同时校验技能覆盖和双向索引。
+
 - 插件 `effect_values` 不再手写 `kind`、`statId` 或 `modifierTypeId`；Num stages 从 `resolveEffect()` 派生分类和默认标签。
 - 无 Num 行的 literal stage 继续要求 `{ literal, reason }`，并在 effect 上显式声明 `semantic.facetId`。
 - 描述模板继续使用 `{{num:alias|format}}`；插件详情、预览、召唤物和攻略编辑器消费 `lib/perks.ts` 的解析结果。

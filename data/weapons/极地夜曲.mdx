@@ -24,20 +24,31 @@ damage_sources:
       asc_type_id: "400"
 weapon_type_id: 7
 active_skill_id: 5104201
+skills:
+  - id: active-1
+    kind: active
+    name: 冷凝超载
+    icon: /icons/weapons/skills/T_Weapon_Skill_20007000038-2.png
+    game_skill_id: 5104201
+    parameters:
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+    modifier_sources:
+      - weapon:极地夜曲:冷凝超载
+  - id: passive-1
+    kind: passive
+    name: 寒霜侵蚀
+    icon: /icons/weapons/skills/T_Weapon_Skill_20007000038-1.png
+    tag: 后台生效
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="冷凝超载"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20007000038-2.png"
-  >
+  <ActiveSkill skill="active-1">
     释放技能后，造成寒冷属性的爆炸伤害或技能伤害可获得增益，使下一次武器射击伤害提高 **50%**。增益可储存多层，触发后消耗一层，伤害加成不随层数叠加。后台生效。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="寒霜侵蚀"
-    tag="后台生效"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20007000038-1.png"
-  >
+  <PassiveSkill skill="passive-1">
     给敌人施加冰缓效果时，额外施加 **15%** 减速，持续 **10 秒**。
   </PassiveSkill>
 </WeaponSkill>

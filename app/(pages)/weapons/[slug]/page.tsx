@@ -7,12 +7,10 @@ import { WeaponDetailProvider } from "@/components/WeaponDetailContext";
 import { WeaponModeDiff as WeaponModeDiffTable } from "@/components/WeaponModeDiff";
 import { WeaponEffectValuesPanel } from "@/components/FireRateCatalog";
 import {
-  ActiveSkill,
   WeaponSkill,
-  type ActiveSkillProps,
 } from "@/components/WeaponSkill";
+import { createNumWeaponSkillComponents } from "@/components/NumWeaponSkill";
 import {
-  getActiveSkillDisplay,
   toWeaponDetailData,
 } from "@/lib/weapon-consumers";
 import { mdxComponents, TableOfContents } from "@/lib/mdx-components";
@@ -88,16 +86,6 @@ export default async function WeaponDetailPage({
       : "max-w-3xl";
   const customStyle = customWidth ? { maxWidth: pageWidth } : undefined;
 
-  const ActiveSkillForWeapon = (props: ActiveSkillProps) => {
-    const display = getActiveSkillDisplay(weapon.activeSkill, props.count);
-    return (
-      <ActiveSkill
-        {...props}
-        cooldown={display.cooldown}
-        count={display.count}
-      />
-    );
-  };
   const WeaponSkillForWeapon = ({ children }: { children: ReactNode }) => (
     <>
       <WeaponSkill>{children}</WeaponSkill>
@@ -121,7 +109,7 @@ export default async function WeaponDetailPage({
     ) : null;
   const weaponMdxComponents = {
     ...mdxComponents,
-    ActiveSkill: ActiveSkillForWeapon,
+    ...createNumWeaponSkillComponents(document.weapon.skills ?? []),
     AttenuationChart: WeaponAttenuationChart,
     WeaponAttenuationChart,
     WeaponSkill: WeaponSkillForWeapon,

@@ -44,14 +44,26 @@ damage_sources:
       numerical:
         id: 121600060
         level: 1
+skills:
+  - id: passive-1
+    kind: passive
+    name: 爆竹声声
+    icon: /icons/weapons/skills/T_Weapon_Skill_20016000006_1.png
+  - id: active-1
+    kind: active
+    name: 多发榴弹
+    game_skill_id: 5003101
+    display: false
+    parameters:
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <PassiveSkill
-    name="爆竹声声"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20016000006_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     春雷震开火射出的所有榴弹不会立即引爆，而是经过<Yellow>5秒</Yellow>后自动爆炸，也可以通过主动技能按钮提前引爆。猎场模式和塔防模式中，使用春雷震击杀敌人时，将额外获得<Yellow>35</Yellow>金币。
   </PassiveSkill>
 </WeaponSkill>

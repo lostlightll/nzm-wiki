@@ -28,22 +28,32 @@ damage_sources:
         id: 120600020
         level: 1
       asc_type_id: "67"
+skills:
+  - id: active-1
+    kind: active
+    name: 战术领域
+    icon: /icons/weapons/skills/T_Weapon_Skill_20106000002_2.png
+    game_skill_id: 5101801
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/生命公司.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 生命注入
+    icon: /icons/weapons/skills/T_Weapon_Skill_20106000002_2.png
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="战术领域"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20106000002_2.png"
-    duration={-1}
-    cooldown={45}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     在面前放置一道能量壁垒，阻挡所有敌方射弹。壁垒存在时，生命公司拥有自瞄效果，且角色在壁垒附近能获得临时护盾。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="生命注入"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20106000002_2.png"
-  >
+  <PassiveSkill skill="passive-1">
     造成击杀时，有<Yellow>33%</Yellow>概率将<Yellow>6</Yellow>发备弹填充至主弹匣内。
   </PassiveSkill>
 </WeaponSkill>

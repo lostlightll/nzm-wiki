@@ -57,12 +57,16 @@ damage_sources:
       numerical:
         id: 121300373
         level: 1
+skills:
+  - id: passive-1
+    kind: passive
+    name: 蛇神之佑
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000037.png
+    modifier_sources:
+      - weapon:血怨:蛇神之佑
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="蛇神之佑"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000037.png"
-  >
+  <PassiveSkill skill="passive-1">
     物理伤害提升<Yellow>5%</Yellow>。手持血怨时，每秒钟获得临时护盾，最多<Yellow>20%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

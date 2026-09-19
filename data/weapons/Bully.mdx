@@ -44,25 +44,35 @@ damage_sources:
       numerical:
         id: 120700353
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 无人机
+    icon: /icons/weapons/skills/T_Weapon_Skill_20007000035_2.png
+    game_skill_id: 5004301
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/Bully.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 枪盾
+    icon: /icons/weapons/skills/T_Weapon_Skill_20007000035_1.png
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="无人机"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20007000035_2.png"
-    duration={-1}
-    cooldown={20}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     召唤一台无人机，无人机会自动攻击附近的敌人。
     在机甲战和火力乱斗模式下无法释放该技能。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="枪盾"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20007000035_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     开镜时获得临时护盾，<Yellow>5秒</Yellow>内未受到伤害时，临时护盾开始回复。
   </PassiveSkill>
 </WeaponSkill>

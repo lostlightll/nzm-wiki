@@ -39,23 +39,43 @@ damage_sources:
         id: 120200120
         level: 1
       asc_type_id: "13"
+skills:
+  - id: active-1
+    kind: active
+    name: 狂暴模式
+    icon: /icons/weapons/skills/T_Weapon_Skill_20102000012.png
+    game_skill_id: 5002101
+    parameters:
+      duration:
+        literal: 15
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#裁决之眼.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 15
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#裁决之眼.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/裁决之眼.mdx#frontmatter.skill_blocking
+    modifier_sources:
+      - weapon:裁决之眼:狂暴模式
+  - id: passive-1
+    kind: passive
+    name: 过载暴击
+    icon: /icons/weapons/skills/T_Weapon_Skill_20102000012_2.png
+    tag: 正面效果
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="狂暴模式"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20102000012.png"
-    duration={15}
-    cooldown={25}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     进入狂暴模式，持续<Yellow>15秒</Yellow>，期间暴击率提升<Yellow>25%</Yellow>，暴击伤害增加<Yellow>50%</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="过载暴击"
-    tag="正面效果"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20102000012_2.png"
-  >
+  <PassiveSkill skill="passive-1">
     武器基础暴击率增加<Yellow>15%</Yellow>，每次造成暴击后，武器射速提升<Yellow>30%</Yellow>，持续<Yellow>2.0秒</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

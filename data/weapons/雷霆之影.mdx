@@ -36,23 +36,45 @@ damage_sources:
         id: 120700120
         level: 1
       asc_type_id: "179"
+skills:
+  - id: active-1
+    kind: active
+    name: 拒止力场
+    icon: /icons/weapons/skills/T_Weapon_Skill_1000801.png
+    game_skill_id: 5000901
+    parameters:
+      duration:
+        literal: 10
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#雷霆之影.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 10
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#雷霆之影.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/雷霆之影.mdx#frontmatter.skill_blocking
+    modifier_sources:
+      - weapon:雷霆之影:拒止力场
+  - id: passive-1
+    kind: passive
+    name: 雷电掌控
+    icon: /icons/weapons/skills/T_Weapon_Skill_effect_17.png
+    tag: 正面效果
+    modifier_sources:
+      - weapon:雷霆之影:雷电掌控
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="拒止力场"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1000801.png"
-    duration={10}
-    cooldown={40}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     展开拒止力场，持续<Yellow>10秒</Yellow>，期间获得<Yellow>10%</Yellow>伤害减免，且持续射击命中每<Yellow>1秒</Yellow>获得<Yellow>2%</Yellow>增伤，最多叠加<Yellow>12层</Yellow>.停止射击后，增伤效果逐渐清零。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="雷电掌控"
-    tag="正面效果"
-    icon="/icons/weapons/skills/T_Weapon_Skill_effect_17.png"
-  >
+  <PassiveSkill skill="passive-1">
   使用电属性武器命中目标后，能够提升自身电弧伤害<Yellow>0.2%</Yellow>，最多叠加<Yellow>100层</Yellow>，持续<Yellow>10秒</Yellow>，换弹后层数清零。
   </PassiveSkill>
 </WeaponSkill>

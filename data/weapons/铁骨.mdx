@@ -50,12 +50,16 @@ damage_sources:
         id: 121300290
         level: 1
       asc_type_id: "213"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 暴击增伤
+    icon: /icons/weapons/skills/T_Weapon_Skill_Beheaded.png
+    modifier_sources:
+      - weapon:铁骨:暴击增伤
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="暴击增伤"
-    icon="/icons/weapons/skills/T_Weapon_Skill_Beheaded.png"
-  >
+  <PassiveSkill skill="passive-1">
     携带此武器时，角色造成的暴击伤害增加<Yellow>15%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

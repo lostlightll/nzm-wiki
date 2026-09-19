@@ -25,6 +25,7 @@
 | Weapon Data Lock | [`architecture/weapon-data-lock.md`](architecture/weapon-data-lock.md) | [`architecture/weapon-source-reader.md`](architecture/weapon-source-reader.md) | active |
 | Weapon Resolver 或消费者 | [`architecture/weapon-resolver.md`](architecture/weapon-resolver.md)、[`standards/weapon-numerical-v2.md`](standards/weapon-numerical-v2.md) | [`architecture/weapon-data-lock.md`](architecture/weapon-data-lock.md) | active |
 | 主动技能基础充能 | [`architecture/weapon-skill-charge.md`](architecture/weapon-skill-charge.md) | [`architecture/weapon-source-reader.md`](architecture/weapon-source-reader.md) | active |
+| 武器技能目录、参数、插件替换变体及双向索引 | [`standards/weapon-skills.md`](standards/weapon-skills.md)、[`architecture/weapon-skill-charge.md`](architecture/weapon-skill-charge.md) | [`architecture/num-modifier-v2.md`](architecture/num-modifier-v2.md)、[`architecture/weapon-skill-duration-evidence.md`](architecture/weapon-skill-duration-evidence.md) | active |
 | 插件数据导入或维护 | [`standards/perk-data.md`](standards/perk-data.md) | [`.claude/commands/import-perks.md`](../.claude/commands/import-perks.md) | active |
 | 超限卡片短摘要、导入或 `effect_values` | [`standards/perk-data.md`](standards/perk-data.md)、[`architecture/num-modifier-v2.md`](architecture/num-modifier-v2.md) | [`architecture/multiplier-index.md`](architecture/multiplier-index.md) | active |
 | 超限板块、赛季切换、归档与候选审计 | [`workflows/overlimit-season.md`](workflows/overlimit-season.md)、[`standards/perk-data.md`](standards/perk-data.md) | [`architecture/num-modifier-v2.md`](architecture/num-modifier-v2.md) | active |

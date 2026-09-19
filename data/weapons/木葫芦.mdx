@@ -23,14 +23,16 @@ changeClip:
   reloadRecovery: 0
 weapon_type_id: 13
 active_skill_id: 0
+skills:
+  - id: passive-1
+    kind: passive
+    name: 多喝水
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000079.png
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <PassiveSkill
-    name="多喝水"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000079.png"
-  >
+  <PassiveSkill skill="passive-1">
     此武器无法攻击。角色武器技能充能速度提升<Yellow>5%</Yellow>。喝水时回复少量生命值。
   </PassiveSkill>
 </WeaponSkill>

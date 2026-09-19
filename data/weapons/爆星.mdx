@@ -54,24 +54,44 @@ damage_sources:
       numerical:
         id: 121900402
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 齐射爆星
+    icon: /icons/weapons/skills/T_Weapon_Skill_20019000004_2.png
+    game_skill_id: 5004501
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/爆星.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 10
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/爆星.mdx#active-1.skill_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/爆星.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 扩散爆星
+    icon: /icons/weapons/skills/T_Weapon_Skill_20019000004_1.png
+    modifier_sources:
+      - weapon:爆星:扩散爆星
 ---
 <WeaponModeDiff />
 
 <WeaponSkill>
-  <ActiveSkill
-    name="齐射爆星"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20019000004_2.png"
-    duration={-1}
-    cooldown={50}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     <Blue>爆星</Blue>的散射角度大幅减小，并且射速提升<Yellow>30%</Yellow>，同时<Blue>爆星</Blue>的挂载上限提升至<Yellow>9枚</Yellow>。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="扩散爆星"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20019000004_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     向前方扇形范围投掷出三枚<Blue>爆星</Blue>，<Blue>爆星</Blue>会挂载在目标身上延时<Yellow>1.15秒</Yellow>后爆炸。爆炸时，目标身上每有一枚<Blue>爆星</Blue>伤害额外提高<Yellow>8%</Yellow>。每个目标最多挂载<Yellow>6枚</Yellow><Blue>爆星</Blue>，挂载数量达到上限时会立即引爆全部<Blue>爆星</Blue>。
   </PassiveSkill>
 </WeaponSkill>

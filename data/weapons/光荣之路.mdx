@@ -46,22 +46,40 @@ damage_sources:
       numerical:
         id: 120500031
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 光荣之路
+    icon: /icons/weapons/skills/T_Weapon_Skill_20108000002_01.png
+    game_skill_id: 5002501
+    parameters:
+      duration:
+        literal: 10
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#光荣之路.active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 10
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#光荣之路.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/光荣之路.mdx#frontmatter.skill_blocking
+  - id: passive-1
+    kind: passive
+    name: 疾速追能
+    icon: /icons/weapons/skills/T_Weapon_Skill_1000701.png
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="光荣之路"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20108000002_01.png"
-    duration={10}
-    cooldown={20}
-    count={1}
-  >
+  <ActiveSkill skill="active-1">
     技能激活期间，每隔<Yellow>2.5秒</Yellow>在角色位置生成一个半径为<Yellow>5米</Yellow>的冰属性区域。该区域持续<Yellow>5秒</Yellow>。敌人置于其上时将受到伤害和冰异常效果。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="疾速追能"
-    icon="/icons/weapons/skills/T_Weapon_Skill_1000701.png"
-  >
+  <PassiveSkill skill="passive-1">
     角色处于<Blue>疾跑</Blue>状态时，光荣之路的主动技能充能速度加倍。
   </PassiveSkill>
 </WeaponSkill>

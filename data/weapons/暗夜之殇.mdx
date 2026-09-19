@@ -52,22 +52,34 @@ damage_sources:
     burst_limit: 6
     source:
       prototype_mode: 0
+skills:
+  - id: active-1
+    kind: active
+    name: 牛仔居合
+    icon: /icons/weapons/skills/T_Weapon_Skill_20107000001_2.png
+    game_skill_id: 5100101
+    parameters:
+      duration:
+        literal: -1
+        reason: 保留原MDX展示持续时间；其与GP生命周期可能不同，尚未核验，不根据同名字段猜测。
+        evidence: data/weapons/暗夜之殇.mdx#active-1.duration
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 黑火药
+    icon: /icons/weapons/skills/T_Weapon_Skill_20107000001_1.png
+    modifier_sources:
+      - weapon:暗夜之殇:黑火药
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="牛仔居合"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20107000001_2.png"
-    duration={-1}
-    cooldown={-1}
-    count={-1}
-  >
+  <ActiveSkill skill="active-1">
     进入牛仔居合状态并装填弹药，该状态下武器射击时将会消耗弹匣所有子弹打出最高六连发且能够更轻易地命中敌人。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="黑火药"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20107000001_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     弹仓内的第一发子弹为爆炸弹，造成 <Yellow>70%</Yellow> 攻击力伤害，并且让敌人受到的豁然伤害提升 <Yellow>5%</Yellow>，持续 <Yellow>6s</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

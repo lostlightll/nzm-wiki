@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { resolvePerkSkillVariants } from "@/lib/num-skill-data";
 import type {
   EffectValueStage,
   Perk,
@@ -466,6 +467,7 @@ export function getPerkSourceEntries(channel: PerkChannel = "current"): PerkSour
       const filePath = path.join(slotDir, file);
       const content = fs.readFileSync(filePath, "utf-8");
       const { data, content: body } = matter(content);
+      if (data.replacement_skill !== undefined) throw new Error(`replacement_skill is retired; use skill_variants: ${filePath}`);
       if (data.draft && process.env.NODE_ENV !== "development") continue;
       if (data.independent_damage_snapshot !== undefined) {
         if (channel !== "preview") throw new Error(`independent_damage_snapshot is preview-only: ${filePath}`);
@@ -492,6 +494,7 @@ export function getPerkSourceEntries(channel: PerkChannel = "current"): PerkSour
         filePath,
       );
       const perk: Perk = {
+        ...(data.skill_variants === undefined ? {} : { skillVariants: resolvePerkSkillVariants(data.skill_variants, data.season) }),
         id: file.replace(".mdx", ""),
         itemId: requireNonEmptyString(data.id, "id", filePath),
         slug: `${channel === "preview" ? "preview/" : ""}slot-${slot}/${file.replace(".mdx", "")}`,

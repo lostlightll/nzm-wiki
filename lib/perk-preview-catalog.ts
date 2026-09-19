@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { resolvedSkillVariantSchema, skillVariantReferenceSchema } from "@/lib/num-skill";
 import type { Perk } from "@/types";
 import type { TriggerDamageEntry } from "@/lib/trigger-damage";
 import { independentDamageEntrySchema, resolvedPerkEffectSchema } from "@/lib/overlimit-catalog";
@@ -14,6 +15,7 @@ export function parsePerkIndependentDamageSnapshot(value: unknown): TriggerDamag
   return value === undefined ? [] : perkIndependentDamageSnapshotSchema.parse(value);
 }
 const perkSchema = z.strictObject({
+  skillVariants: z.array(resolvedSkillVariantSchema).min(1).optional(),
   id: text, itemId: z.string().regex(/^\d+$/),
   slug: z.string().regex(/^preview\/slot-[1-4]\/[^/\\]+$/).refine(value => !value.includes("..")),
   name: text, season: text, slot, rarity, category: text,
@@ -44,6 +46,24 @@ const schema = z.strictObject({
   const slugs = new Set<string>();
   for (const [index, entry] of catalog.entries.entries()) {
     const perk = entry.perk;
+    const variantReferences = entry.metadata.skill_variants;
+    if (perk.skillVariants || variantReferences !== undefined) {
+      const references = z.array(skillVariantReferenceSchema).min(1).safeParse(variantReferences);
+      if (!references.success || references.data.length !== perk.skillVariants?.length ||
+          references.data.some((reference, index) => JSON.stringify(reference) !== JSON.stringify(perk.skillVariants![index].reference))) {
+        ctx.addIssue({ code: "custom", message: "Published skill variant references mismatch", path: ["entries", index] });
+      }
+      for (const variant of perk.skillVariants ?? []) {
+        if (variant.skill.kind !== "active" || !variant.skill.gameSkillId || variant.skill.gameSkillId === variant.original.id ||
+            Object.values(variant.skill.provenance).some(expression => {
+              if (!expression) return false;
+              const key = "row" in expression ? expression.row : "runtime" in expression ? expression.runtime : undefined;
+              return !key || key.split(":")[0] !== perk.season;
+            })) {
+          ctx.addIssue({ code: "custom", message: "Invalid or cross-channel published skill variant", path: ["entries", index] });
+        }
+      }
+    }
     if (ids.has(perk.itemId) || slugs.has(perk.slug)) {
       ctx.addIssue({ code: "custom", message: `Duplicate preview identity: ${perk.itemId}`, path: ["entries", index] });
     }

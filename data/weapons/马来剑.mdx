@@ -50,12 +50,16 @@ damage_sources:
         id: 121300600
         level: 1
       asc_type_id: "369"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 滑步强袭
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000060.png
+    modifier_sources:
+      - weapon:马来剑:滑步强袭
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="滑步强袭"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000060.png"
-  >
+  <PassiveSkill skill="passive-1">
     携带此武器时，角色滑铲过程中武器射击伤害提升<Yellow>10%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

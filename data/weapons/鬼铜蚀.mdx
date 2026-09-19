@@ -68,19 +68,28 @@ damage_sources:
       numerical:
         id: 121500064
         level: 1
+skills:
+  - id: active-1
+    kind: active
+    name: 变压毒气
+    icon: /icons/weapons/skills/T_Weapon_Skill_20015000006_2.png
+    game_skill_id: 5102501
+    parameters:
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+  - id: passive-1
+    kind: passive
+    name: 罐装毒液
+    icon: /icons/weapons/skills/T_Weapon_Skill_20015000006_1.png
 ---
 <WeaponSkill>
-  <ActiveSkill
-    name="变压毒气"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20015000006_2.png"
-  >
+  <ActiveSkill skill="active-1">
     使用鼠标滚轮调整喷射压力，喷射范围的角度和距离随压力变化。
   </ActiveSkill>
 
-  <PassiveSkill
-    name="罐装毒液"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20015000006_1.png"
-  >
+  <PassiveSkill skill="passive-1">
     换弹时将毒液罐丢出，造成爆炸伤害，并留下一个持续造成毒属性伤害的区域。
   </PassiveSkill>
 </WeaponSkill>

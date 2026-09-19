@@ -50,12 +50,16 @@ damage_sources:
         id: 121300830
         level: 1
       asc_type_id: "391"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 雷暴激流
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000083.png
+    modifier_sources:
+      - weapon:深渊之触:雷暴激流
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="雷暴激流"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20013000083.png"
-  >
+  <PassiveSkill skill="passive-1">
     携带此武器时，角色暴击率增加<Yellow>3%</Yellow>，角色造成的暴击伤害增加<Yellow>8%</Yellow>。
   </PassiveSkill>
 </WeaponSkill>

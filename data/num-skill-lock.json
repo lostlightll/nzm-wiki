@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "weapons:5102001:duration": {
+      "game_skill_id": 5102001,
+      "dataset": "unknown",
+      "source": {
+        "kind": "blueprint_default",
+        "asset": "NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset",
+        "sha256": "57c1059049bfb9d547a1d68ac5d616ce157952fe74e10de92709d70fcd05f3bb",
+        "object": "Default__SKT_FloatingMode_C",
+        "field": "Duration",
+        "value": 20
+      },
+      "flow": {
+        "asset": "NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset",
+        "sha256": "57c1059049bfb9d547a1d68ac5d616ce157952fe74e10de92709d70fcd05f3bb",
+        "read": { "function": "GetDuration", "statement": 162 },
+        "apply": { "function": "ExecuteUbergraph_SKT_FloatingMode", "statement": 957 },
+        "boundary": "native-call",
+        "evidence": "docs/architecture/weapon-skill-duration-evidence.md#能源之影"
+      },
+      "modifiers": [{
+        "mge_id": 1312049001,
+        "operation": "add_fraction",
+        "value": 0.5,
+        "coefficient": { "function": "GetDuration", "statement": 42 },
+        "flow": {
+          "asset": "NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset",
+          "sha256": "57c1059049bfb9d547a1d68ac5d616ce157952fe74e10de92709d70fcd05f3bb",
+          "read": { "function": "GetDuration", "statement": 0 },
+          "apply": { "function": "GetDuration", "statement": 84 },
+          "boundary": "blueprint",
+          "evidence": "docs/architecture/weapon-skill-duration-evidence.md#能源之影"
+        }
+      }]
+    },
+    "weapons:5001401:duration": {
+      "game_skill_id": 5001401,
+      "dataset": "unknown",
+      "source": {
+        "kind": "blueprint_default",
+        "asset": "NZM/Content/Abilities/WeaponSkill/Purple/CriticalArray/SKT_CriticalArray.uasset",
+        "sha256": "e758f7888bbce0e13a625e3badfe698e9fa8549dc2ab7f09fe16d71e4846d84f",
+        "object": "Default__SKT_CriticalArray_C",
+        "field": "FieldDuration",
+        "value": 12
+      },
+      "flow": {
+        "asset": "NZM/Content/Abilities/WeaponSkill/Purple/CriticalArray/BP_CriticalArray.uasset",
+        "sha256": "780418a17117c0e8e3316e52fcd1fc24c79a90ac311faa8ce6f881169296251c",
+        "read": { "function": "ExecuteUbergraph_BP_CriticalArray", "statement": 85 },
+        "apply": { "function": "ExecuteUbergraph_BP_CriticalArray", "statement": 85 },
+        "boundary": "native-call",
+        "evidence": "docs/architecture/weapon-skill-duration-evidence.md#天鹅之舞"
+      },
+      "modifiers": []
+    }
+  },
+  "rows": {
+    "s4-preview:gp:5104901": {
+      "row_name": "5104901",
+      "raw": {
+        "AbilityID": 5104901,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "None"
+        },
+        "AbilityName": "雷霆之怒",
+        "SkillOverview": "雷霆之怒-雷霆之影MGE替换",
+        "Description": "雷霆之怒-雷霆之影MGE替换",
+        "Duration": 10,
+        "CooldownDuration": 40,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Purple/LTZYActivate/DA_LTZYActivate.DA_LTZYActivate",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "None",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Destroyer",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": false,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "s4-preview:pve:5104901_1": {
+      "row_name": "5104901_1",
+      "raw": {
+        "SkillID": 5104901,
+        "Level": 1,
+        "SkillName": "雷霆增幅",
+        "ChargeNeedTime": 40,
+        "ChargeNeedTimeTags": [
+          "SkillParamConfig.ChargeNeedTime"
+        ],
+        "KillChargeValue": -1,
+        "KillChargeValueTags": [
+          "SkillParamConfig.KillChargeValue"
+        ],
+        "AssistChargeValue": -1,
+        "AssistChargeValueTags": [
+          "SkillParamConfig.AssistChargeValue"
+        ],
+        "SkillCount": 1,
+        "SkillCountTags": [
+          "SkillParamConfig.SkillCount"
+        ],
+        "Parameters": []
+      },
+      "source": {
+        "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
+        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+      }
+    },
+    "weapons:gp:5000201": {
+      "row_name": "5000201",
+      "raw": {
+        "AbilityID": 5000201,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.EnergyCracks"
+        },
+        "AbilityName": "威能力场",
+        "SkillOverview": "增加我方伤害",
+        "Description": "原地释放一个威能力场，增加范围内我方角色造成的伤害。",
+        "Duration": 0,
+        "CooldownDuration": 45,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Purple/EnergyCracks/DA_EnergyCracks.DA_EnergyCracks",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": false,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "weapons:gp:5001301": {
+      "row_name": "5001301",
+      "raw": {
+        "AbilityID": 5001301,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.ChargingArray"
+        },
+        "AbilityName": "能量力场",
+        "SkillOverview": "回复武器能量",
+        "Description": "原地释放一个能量力场，回复范围内我方角色当前所持武器的武器能量。",
+        "Duration": 0,
+        "CooldownDuration": 45,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Purple/ChargingArray/DA_ChargingArray.DA_ChargingArray",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": true,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "weapons:gp:5001401": {
+      "row_name": "5001401",
+      "raw": {
+        "AbilityID": 5001401,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.CriticalArray"
+        },
+        "AbilityName": "战术力场",
+        "SkillOverview": "暴击率增加，暴击治疗自身",
+        "Description": "原地释放一个战术力场，提高范围内我方角色暴击率，产生暴击时会根据伤害强度治疗自己。",
+        "Duration": 0,
+        "CooldownDuration": 45,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Purple/CriticalArray/DA_CriticalArray.DA_CriticalArray",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": false,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "weapons:gp:5004801": {
+      "row_name": "5004801",
+      "raw": {
+        "AbilityID": 5004801,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.SteahlthAttack"
+        },
+        "AbilityName": "刺隐之袭",
+        "SkillOverview": "隐身并伺机暴起攻击",
+        "Description": "隐身并伺机暴起攻击",
+        "Duration": 0,
+        "CooldownDuration": 45,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Purple/SteahlthAttack/DA_SteahlthAttack.DA_SteahlthAttack",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": true,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "weapons:gp:5100501": {
+      "row_name": "5100501",
+      "raw": {
+        "AbilityID": 5100501,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.IceCone"
+        },
+        "AbilityName": "深寒冲击",
+        "SkillOverview": "生成大型冰锥",
+        "Description": "抽取水汽凝结生成大型冰锥，命中目标后造成大量削韧伤害。",
+        "Duration": 0,
+        "CooldownDuration": 35,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": true,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Gold/IceCone/DA_IceCone.DA_IceCone",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": true,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "weapons:gp:5100801": {
+      "row_name": "5100801",
+      "raw": {
+        "AbilityID": 5100801,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.TouchOfCold"
+        },
+        "AbilityName": "严寒之触",
+        "SkillOverview": "丢出冰冻核心，爆炸后喷发冰雾",
+        "Description": "丢出一颗冰冻核心，碰撞或一定时间后爆炸，爆炸后会继续残留，并在2s后喷发一次冰雾。",
+        "Duration": 0,
+        "CooldownDuration": 35,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Gold/TouchOfCold/DA_TouchOfCold.DA_TouchOfCold",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": false,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "weapons:gp:5101101": {
+      "row_name": "5101101",
+      "raw": {
+        "AbilityID": 5101101,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.ZeroDegreeThorn"
+        },
+        "AbilityName": "零度之刺",
+        "SkillOverview": "掷出冰矛，可触发碎冰效果",
+        "Description": "掷出一支冰矛，对单体目标造成中量急冻伤害，若目标处于冻结状态，可直接触发碎冰效果。",
+        "Duration": 0,
+        "CooldownDuration": 50,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Gold/ZeroDegreeThorn/DA_ZeroDegreeThorn_1P.DA_ZeroDegreeThorn_1P",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": false,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "weapons:gp:5102101": {
+      "row_name": "5102101",
+      "raw": {
+        "AbilityID": 5102101,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.LightOfDeath"
+        },
+        "AbilityName": "死神之光",
+        "SkillOverview": "",
+        "Description": "",
+        "Duration": 0,
+        "CooldownDuration": 150,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Gold/LightOfDeath/DA_LightOfDeath.DA_LightOfDeath",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "None",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": true,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "weapons:gp:5102601": {
+      "row_name": "5102601",
+      "raw": {
+        "AbilityID": 5102601,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.ZZJZActiveSkill"
+        },
+        "AbilityName": "战争矩阵主动",
+        "SkillOverview": "战争矩阵主动",
+        "Description": "战争矩阵主动",
+        "Duration": 0,
+        "CooldownDuration": 0,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Gold/ZZJZActiveSkill/DA_ZZJZActiveSkill.DA_ZZJZActiveSkill",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "None",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": true,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    }
+  }
+}

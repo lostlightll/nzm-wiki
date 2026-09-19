@@ -44,13 +44,33 @@ damage_sources:
           attenuation:
             status: not_applicable
       override_reason: 人工确认该伤害来源沿用页面核验后的距离衰减适用状态
+skills:
+  - id: passive-1
+    kind: passive
+    name: 复合战术
+    icon: /icons/weapons/skills/T_Weapon_Skill_20112000001_01.png
+    tag: 元素切换
+  - id: active-1
+    kind: active
+    name: 狂热射击-复合弓
+    game_skill_id: 5000102
+    display: false
+    parameters:
+      cooldown:
+        weapon_charge: time
+      count:
+        weapon_charge: count
+      panel_duration:
+        literal: 8
+        reason: 保留迁移前展示值；同名PVE参数尚未核验生效链，不能视为已验证来源。
+        evidence: data/weapon-skill-migration-baseline.json#超级复合弓.active-1.panel_duration
+      blocking:
+        literal: true
+        reason: 保留原MDX展示值；未建立可直接替代的配置引用。
+        evidence: data/weapons/超级复合弓.mdx#frontmatter.skill_blocking
 ---
 <WeaponSkill>
-  <PassiveSkill
-    name="复合战术"
-    tag="元素切换"
-    icon="/icons/weapons/skills/T_Weapon_Skill_20112000001_01.png"
-  >
+  <PassiveSkill skill="passive-1">
     超级复合弓可以切换多种箭头，包括爆炸箭、贯穿箭、燃烧箭、急冻箭和腐蚀箭，每种箭头具有不同的战斗效果。<Blue>部分箭头需获得相应道具后，方可在局内使用。</Blue>
   </PassiveSkill>
 </WeaponSkill>
