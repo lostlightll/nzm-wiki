@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "c2718da3f4cdd8f8c37f742fb76216fd6daf6240357c735c46af4cbe36cede22",
+    "modifierIndexSha256": "d4b5a95832d2e7ed9273431c4825581963a30912b91ba6e1a399efc8628e50a7",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -3538,36 +3538,6 @@
       ]
     },
     {
-      "id": "perk:20703040083",
-      "label": "冷焰爆破",
-      "source": {
-        "type": "perk",
-        "itemId": "20703040083",
-        "slot": 4,
-        "slug": "冷焰爆破",
-        "overlimitCard": false,
-        "season": "s4-preview"
-      },
-      "modifierTypeIds": [
-        "weapon-explode-damage"
-      ]
-    },
-    {
-      "id": "perk:20703040084",
-      "label": "冷焰续航",
-      "source": {
-        "type": "perk",
-        "itemId": "20703040084",
-        "slot": 4,
-        "slug": "冷焰续航",
-        "overlimitCard": false,
-        "season": "s4-preview"
-      },
-      "modifierTypeIds": [
-        "weapon-hit-damage"
-      ]
-    },
-    {
       "id": "perk:20703040530",
       "label": "余烬积势",
       "source": {
@@ -3579,7 +3549,8 @@
         "season": "s4-preview"
       },
       "modifierTypeIds": [
-        "weapon-damage"
+        "weapon-hit-damage",
+        "weapon-explode-damage"
       ]
     },
     {
@@ -3595,6 +3566,7 @@
       },
       "modifierTypeIds": [
         "weapon-hit-damage",
+        "weapon-explode-damage",
         "weapon-skill-damage"
       ]
     },
@@ -3671,7 +3643,7 @@
         "season": "s4-preview"
       },
       "modifierTypeIds": [
-        "all-damage"
+        "weapon-damage"
       ]
     },
     {
@@ -3688,7 +3660,7 @@
       "modifierTypeIds": [
         "weapon-hit-damage",
         "weapon-skill-damage",
-        "all-damage"
+        "weapon-damage"
       ]
     },
     {
@@ -3719,7 +3691,7 @@
         "season": "s4-preview"
       },
       "modifierTypeIds": [
-        "weapon-damage"
+        "weapon-hit-damage"
       ]
     },
     {
@@ -3734,7 +3706,8 @@
         "season": "s4-preview"
       },
       "modifierTypeIds": [
-        "weapon-hit-damage"
+        "weapon-hit-damage",
+        "weapon-explode-damage"
       ]
     },
     {
@@ -3764,7 +3737,8 @@
         "season": "s4-preview"
       },
       "modifierTypeIds": [
-        "weapon-damage",
+        "weapon-hit-damage",
+        "weapon-explode-damage",
         "weapon-skill-damage"
       ]
     },
@@ -3780,7 +3754,8 @@
         "season": "s4-preview"
       },
       "modifierTypeIds": [
-        "weapon-hit-damage"
+        "weapon-hit-damage",
+        "weapon-explode-damage"
       ]
     },
     {
@@ -3810,7 +3785,8 @@
         "season": "s4-preview"
       },
       "modifierTypeIds": [
-        "weapon-hit-damage"
+        "weapon-hit-damage",
+        "weapon-explode-damage"
       ]
     },
     {
@@ -3952,6 +3928,7 @@
       },
       "modifierTypeIds": [
         "weapon-explode-damage",
+        "weapon-skill-damage",
         "weapon-hit-damage"
       ]
     },
@@ -3997,7 +3974,8 @@
         "season": "s4-preview"
       },
       "modifierTypeIds": [
-        "all-damage"
+        "all-damage",
+        "weapon-hit-damage"
       ]
     },
     {
@@ -6953,6 +6931,53 @@
       },
       "modifierTypeIds": [
         "weapon-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040503",
+      "label": "战灵余烬",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040503",
+        "slot": 3,
+        "slug": "战灵余烬",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040528",
+      "label": "换弹引爆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040528",
+        "slot": 3,
+        "slug": "换弹引爆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "skill-damage",
+        "correction",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "perk:20703040499",
+      "label": "矩阵湮灭",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040499",
+        "slot": 3,
+        "slug": "矩阵湮灭",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "modifierTypeIds": [
+        "all-damage"
       ]
     }
   ],
@@ -13359,7 +13384,7 @@
         "season": "s4-preview"
       },
       "reasonCode": "independent-damage-event",
-      "reason": "效果产生造成 180% 攻击力伤害的空间回响，属于独立伤害事件。"
+      "reason": "效果产生造成独立伤害的空间回响，属于独立伤害事件。"
     },
     {
       "id": "perk:20703040550",
@@ -13402,20 +13427,6 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "效果只直接回复武器充能或提高充能效率，不提供伤害倍率通道。"
-    },
-    {
-      "id": "perk:20703040503",
-      "label": "战灵余烬",
-      "source": {
-        "type": "perk",
-        "itemId": "20703040503",
-        "slot": 3,
-        "slug": "战灵余烬",
-        "overlimitCard": false,
-        "season": "s4-preview"
-      },
-      "reasonCode": "independent-damage-event",
-      "reason": "效果根据余烬层数释放范围冲击伤害，属于独立伤害事件。"
     },
     {
       "id": "perk:20703040500",
@@ -13488,20 +13499,6 @@
       "reason": "效果只在双星激活和消失时回复弹药，不提供伤害倍率通道。"
     },
     {
-      "id": "perk:20703040528",
-      "label": "换弹引爆",
-      "source": {
-        "type": "perk",
-        "itemId": "20703040528",
-        "slot": 3,
-        "slug": "换弹引爆",
-        "overlimitCard": false,
-        "season": "s4-preview"
-      },
-      "reasonCode": "independent-damage-event",
-      "reason": "效果通过灼热标记与主动换弹释放范围冲击，描述中的百分比定义该独立伤害事件而非角色增伤通道。"
-    },
-    {
       "id": "perk:20703040508",
       "label": "速装填充",
       "source": {
@@ -13527,7 +13524,7 @@
         "season": "s4-preview"
       },
       "reasonCode": "independent-damage-event",
-      "reason": "效果生成造成 45% 攻击力范围伤害的冰球，属于独立伤害事件。"
+      "reason": "效果生成造成独立范围伤害的冰球，属于独立伤害事件。"
     },
     {
       "id": "perk:20703040511",
@@ -13569,21 +13566,7 @@
         "season": "s4-preview"
       },
       "reasonCode": "independent-damage-event",
-      "reason": "效果周期生成造成 40% 攻击力伤害的小电弧，属于独立伤害事件。"
-    },
-    {
-      "id": "perk:20703040499",
-      "label": "矩阵湮灭",
-      "source": {
-        "type": "perk",
-        "itemId": "20703040499",
-        "slot": 3,
-        "slug": "矩阵湮灭",
-        "overlimitCard": false,
-        "season": "s4-preview"
-      },
-      "reasonCode": "independent-damage-event",
-      "reason": "效果在矩阵内与矩阵消失时产生范围伤害，属于独立伤害事件。"
+      "reason": "效果周期生成造成独立伤害的小电弧，属于独立伤害事件。"
     },
     {
       "id": "perk:20703040495",
@@ -20101,6 +20084,34 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040083",
+      "label": "冷焰爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040083",
+        "slot": 4,
+        "slug": "冷焰爆破",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "The selected local numerical_modifier_config contains no ID=121400016 row. The observer write proves identity only, not an attribute/facet or numeric value; omit external reviewed facets until a matching structured row is available."
+    },
+    {
+      "id": "perk:20703040084",
+      "label": "冷焰续航",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040084",
+        "slot": 4,
+        "slug": "冷焰续航",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "The selected local numerical_modifier_config contains no ID=121400017 row. The observer write proves identity only, not an attribute/facet or numeric value; omit external reviewed facets until a matching structured row is available."
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "1d8e9050ad86b79c222e4f02ba32af473b2cbfb16fac19672af6c6531eae8487",
-    "perkPreviewSha256": "9fc2a4005f05244f47fe36924f55f50bffa1e115ee09d8c1501ecbc78c5f0c45",
+    "registrySha256": "1f9abbbab39ab1c0b7e8fb168af1f5ba01c0191d56a8c69f4425a04caf3602df",
+    "perkPreviewSha256": "2ea47ef5ff27b25970a168b43cfdf0e484a63dbb648051bf883f35bf61ddcf04",
     "s2EvidenceSha256": "a3f16097b34fc589f1322faa4f798b74bc82066dbd02bdcaad4fa0e4c240a0b2",
-    "semanticsSha256": "6ebaa7cf7eaa55f6d7f32d91bd40b1815cecfd2647cb9c626fddc47273684c9d",
+    "semanticsSha256": "968c4c804124de97b6148f271896b87dd3a8db8a70ef295e7bfdbec37a6221ac",
     "modifierSourceSha256": "aa30e3902d54f8802c87c76ed1b17c4506e27a5a4f61260f44cb569915be521e",
     "attributeDescriptionSourceSha256": "f4c7bae3871af545fdf4ecc4ceea2df7f498c5a5bfb24ec42a1e29c8703adc95"
   },
@@ -8461,40 +8461,6 @@
       "reviewedOverride": false
     },
     {
-      "id": "perk:20703040083",
-      "label": "冷焰爆破",
-      "source": {
-        "type": "perk",
-        "itemId": "20703040083",
-        "slot": 4,
-        "slug": "冷焰爆破",
-        "overlimitCard": false,
-        "season": "s4-preview"
-      },
-      "facetIds": [
-        "weapon-explode-damage"
-      ],
-      "effects": [],
-      "reviewedOverride": true
-    },
-    {
-      "id": "perk:20703040084",
-      "label": "冷焰续航",
-      "source": {
-        "type": "perk",
-        "itemId": "20703040084",
-        "slot": 4,
-        "slug": "冷焰续航",
-        "overlimitCard": false,
-        "season": "s4-preview"
-      },
-      "facetIds": [
-        "weapon-hit-damage"
-      ],
-      "effects": [],
-      "reviewedOverride": true
-    },
-    {
       "id": "perk:20703040530",
       "label": "余烬积势",
       "source": {
@@ -8506,10 +8472,34 @@
         "season": "s4-preview"
       },
       "facetIds": [
-        "weapon-damage"
+        "weapon-hit-damage",
+        "weapon-explode-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051040_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051040_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040522",
@@ -8524,10 +8514,45 @@
       },
       "facetIds": [
         "weapon-hit-damage",
+        "weapon-explode-damage",
         "weapon-skill-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051028_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051028_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051028_1_2",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-skill-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040502",
@@ -8543,8 +8568,31 @@
       "facetIds": [
         "all-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051053_1_0",
+          "attributeTypeId": "all-damage",
+          "attributeLabel": "全伤害（可用，和其他增伤连加）",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "all-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051054_1_0",
+          "attributeTypeId": "all-damage",
+          "attributeLabel": "全伤害（可用，和其他增伤连加）",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "all-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040544",
@@ -8657,10 +8705,22 @@
         "season": "s4-preview"
       },
       "facetIds": [
-        "all-damage"
+        "weapon-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:120300119_1_0",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040494",
@@ -8676,10 +8736,44 @@
       "facetIds": [
         "weapon-hit-damage",
         "weapon-skill-damage",
-        "all-damage"
+        "weapon-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051010_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051011_1_0",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-skill-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051012_1_0",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040510",
@@ -8696,8 +8790,31 @@
         "weapon-damage",
         "weapon-skill-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051023_1_0",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051024_1_0",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-skill-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040527",
@@ -8711,10 +8828,46 @@
         "season": "s4-preview"
       },
       "facetIds": [
-        "weapon-damage"
+        "magazine-capacity",
+        "critical-rate",
+        "weapon-hit-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051036_1_0",
+          "attributeTypeId": "magazine-capacity",
+          "attributeLabel": "主弹夹弹量上限加成系数",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "magazine-capacity"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051080_1_0",
+          "attributeTypeId": "critical-rate",
+          "attributeLabel": "暴击率",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "critical-rate"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051057_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040526",
@@ -8728,10 +8881,46 @@
         "season": "s4-preview"
       },
       "facetIds": [
-        "weapon-hit-damage"
+        "reload-speed",
+        "weapon-hit-damage",
+        "weapon-explode-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051034_1_0",
+          "attributeTypeId": "reload-speed",
+          "attributeLabel": "换弹速度",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "reload-speed"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051035_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051035_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040529",
@@ -8745,10 +8934,34 @@
         "season": "s4-preview"
       },
       "facetIds": [
+        "movement-speed",
         "weapon-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051039_1_0",
+          "attributeTypeId": "movement-speed",
+          "attributeLabel": "移动速度",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "movement-speed"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051038_1_0",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040498",
@@ -8762,11 +8975,79 @@
         "season": "s4-preview"
       },
       "facetIds": [
-        "weapon-damage",
+        "weapon-hit-damage",
+        "weapon-explode-damage",
         "weapon-skill-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051013_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051013_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051014_1_0",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-skill-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051015_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051015_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051016_1_0",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-skill-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040490",
@@ -8780,10 +9061,56 @@
         "season": "s4-preview"
       },
       "facetIds": [
-        "weapon-hit-damage"
+        "weapon-hit-damage",
+        "weapon-explode-damage"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051008_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051008_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051009_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051009_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040545",
@@ -8805,7 +9132,7 @@
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-damage"
           ],
@@ -8826,10 +9153,46 @@
         "season": "s4-preview"
       },
       "facetIds": [
-        "weapon-hit-damage"
+        "weapon-hit-damage",
+        "weapon-explode-damage",
+        "movement-speed"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:111051032_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-hit-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051032_1_1",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051033_1_0",
+          "attributeTypeId": "movement-speed",
+          "attributeLabel": "移动速度",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "movement-speed"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "perk:20703040524",
@@ -8929,7 +9292,7 @@
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-hit-damage"
           ],
@@ -8940,7 +9303,7 @@
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-explode-damage"
           ],
@@ -8969,7 +9332,7 @@
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-skill-damage"
           ],
@@ -8998,7 +9361,7 @@
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-skill-damage"
           ],
@@ -9029,7 +9392,7 @@
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-hit-damage"
           ],
@@ -9040,7 +9403,7 @@
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-explode-damage"
           ],
@@ -9051,7 +9414,7 @@
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "all-damage"
           ],
@@ -9080,7 +9443,7 @@
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-skill-damage"
           ],
@@ -9110,7 +9473,7 @@
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-hit-damage"
           ],
@@ -9121,7 +9484,7 @@
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-explode-damage"
           ],
@@ -9172,6 +9535,7 @@
       },
       "facetIds": [
         "weapon-explode-damage",
+        "weapon-skill-damage",
         "weapon-hit-damage"
       ],
       "effects": [
@@ -9187,11 +9551,22 @@
           "reviewed": false
         },
         {
+          "row": "lc:120700383_1_0",
+          "attributeTypeId": "weapon-skill-damage",
+          "attributeLabel": "武器技能伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "weapon-skill-damage"
+          ],
+          "reviewed": false
+        },
+        {
           "row": "lc:120700384_1_0",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-hit-damage"
           ],
@@ -9249,7 +9624,7 @@
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-damage"
           ],
@@ -9270,7 +9645,8 @@
         "season": "s4-preview"
       },
       "facetIds": [
-        "all-damage"
+        "all-damage",
+        "weapon-hit-damage"
       ],
       "effects": [
         {
@@ -9281,6 +9657,17 @@
           "recipient": "self",
           "facetIds": [
             "all-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:121400042_1_0",
+          "attributeTypeId": "weapon-hit-damage",
+          "attributeLabel": "射击伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "weapon-hit-damage"
           ],
           "reviewed": false
         }
@@ -9307,7 +9694,7 @@
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-skill-damage"
           ],
@@ -9336,7 +9723,7 @@
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-damage"
           ],
@@ -9398,7 +9785,8 @@
         "season": "s4-preview"
       },
       "facetIds": [
-        "weapon-damage"
+        "weapon-damage",
+        "fire-rate"
       ],
       "effects": [
         {
@@ -9406,9 +9794,20 @@
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weapon-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:120600191_1_0",
+          "attributeTypeId": "fire-rate",
+          "attributeLabel": "武器射速提升",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "fire-rate"
           ],
           "reviewed": false
         }
@@ -9435,7 +9834,7 @@
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
-          "recipient": "self",
+          "recipient": "damage-event",
           "facetIds": [
             "weakness"
           ],
@@ -15859,6 +16258,117 @@
         }
       ],
       "reviewedOverride": false
+    },
+    {
+      "id": "perk:20703040503",
+      "label": "战灵余烬",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040503",
+        "slot": 3,
+        "slug": "战灵余烬",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "facetIds": [
+        "all-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051018_1_0",
+          "attributeTypeId": "all-damage",
+          "attributeLabel": "全伤害（可用，和其他增伤连加）",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "all-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "perk:20703040528",
+      "label": "换弹引爆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040528",
+        "slot": 3,
+        "slug": "换弹引爆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "facetIds": [
+        "skill-damage",
+        "correction",
+        "weapon-explode-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051058_1_0",
+          "attributeTypeId": "skill-damage",
+          "attributeLabel": "非武器技能伤害增加",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "skill-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051081_1_0",
+          "attributeTypeId": "damage-correction",
+          "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "correction"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:111051037_1_0",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
+      "id": "perk:20703040499",
+      "label": "矩阵湮灭",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040499",
+        "slot": 3,
+        "slug": "矩阵湮灭",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "facetIds": [
+        "all-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:111051017_1_0",
+          "attributeTypeId": "all-damage",
+          "attributeLabel": "全伤害（可用，和其他增伤连加）",
+          "direction": "increase",
+          "recipient": "damage-event",
+          "facetIds": [
+            "all-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     }
   ],
   "exclusions": [
@@ -22264,7 +22774,7 @@
         "season": "s4-preview"
       },
       "reasonCode": "independent-damage-event",
-      "reason": "效果产生造成 180% 攻击力伤害的空间回响，属于独立伤害事件。"
+      "reason": "效果产生造成独立伤害的空间回响，属于独立伤害事件。"
     },
     {
       "id": "perk:20703040550",
@@ -22307,20 +22817,6 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "效果只直接回复武器充能或提高充能效率，不提供伤害倍率通道。"
-    },
-    {
-      "id": "perk:20703040503",
-      "label": "战灵余烬",
-      "source": {
-        "type": "perk",
-        "itemId": "20703040503",
-        "slot": 3,
-        "slug": "战灵余烬",
-        "overlimitCard": false,
-        "season": "s4-preview"
-      },
-      "reasonCode": "independent-damage-event",
-      "reason": "效果根据余烬层数释放范围冲击伤害，属于独立伤害事件。"
     },
     {
       "id": "perk:20703040500",
@@ -22393,20 +22889,6 @@
       "reason": "效果只在双星激活和消失时回复弹药，不提供伤害倍率通道。"
     },
     {
-      "id": "perk:20703040528",
-      "label": "换弹引爆",
-      "source": {
-        "type": "perk",
-        "itemId": "20703040528",
-        "slot": 3,
-        "slug": "换弹引爆",
-        "overlimitCard": false,
-        "season": "s4-preview"
-      },
-      "reasonCode": "independent-damage-event",
-      "reason": "效果通过灼热标记与主动换弹释放范围冲击，描述中的百分比定义该独立伤害事件而非角色增伤通道。"
-    },
-    {
       "id": "perk:20703040508",
       "label": "速装填充",
       "source": {
@@ -22432,7 +22914,7 @@
         "season": "s4-preview"
       },
       "reasonCode": "independent-damage-event",
-      "reason": "效果生成造成 45% 攻击力范围伤害的冰球，属于独立伤害事件。"
+      "reason": "效果生成造成独立范围伤害的冰球，属于独立伤害事件。"
     },
     {
       "id": "perk:20703040511",
@@ -22474,21 +22956,7 @@
         "season": "s4-preview"
       },
       "reasonCode": "independent-damage-event",
-      "reason": "效果周期生成造成 40% 攻击力伤害的小电弧，属于独立伤害事件。"
-    },
-    {
-      "id": "perk:20703040499",
-      "label": "矩阵湮灭",
-      "source": {
-        "type": "perk",
-        "itemId": "20703040499",
-        "slot": 3,
-        "slug": "矩阵湮灭",
-        "overlimitCard": false,
-        "season": "s4-preview"
-      },
-      "reasonCode": "independent-damage-event",
-      "reason": "效果在矩阵内与矩阵消失时产生范围伤害，属于独立伤害事件。"
+      "reason": "效果周期生成造成独立伤害的小电弧，属于独立伤害事件。"
     },
     {
       "id": "perk:20703040495",
@@ -29006,6 +29474,34 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "完整身份链与 MGE 描述中未发现可注册的伤害倍率、暴伤或负值易伤通道。"
+    },
+    {
+      "id": "perk:20703040083",
+      "label": "冷焰爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040083",
+        "slot": 4,
+        "slug": "冷焰爆破",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "The selected local numerical_modifier_config contains no ID=121400016 row. The observer write proves identity only, not an attribute/facet or numeric value; omit external reviewed facets until a matching structured row is available."
+    },
+    {
+      "id": "perk:20703040084",
+      "label": "冷焰续航",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040084",
+        "slot": 4,
+        "slug": "冷焰续航",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "The selected local numerical_modifier_config contains no ID=121400017 row. The observer write proves identity only, not an attribute/facet or numeric value; omit external reviewed facets until a matching structured row is available."
     }
   ]
 }

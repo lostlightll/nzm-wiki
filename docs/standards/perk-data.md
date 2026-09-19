@@ -294,7 +294,7 @@ pnpm perks:check
 
 同 ItemID 可在正式和预览通道各有一版，预览详情 slug 使用 `preview/slot-N/<名称>`。默认列表、名称和 ItemID 查询保持正式通道；发布列表可合并两版，显式指定 `preview` 才按名称或 ItemID 读取预览。S4 初次迁移了原有 82 个预览条目，随后加入贯长虹预览；这个集合只代表已审定预览，不表示所有正式插件已复制到 S4。撤下或转正须按[版本管理流程](../workflows/content-versions.md#过渡期当前正式版与下一版预览并存)逐项处理两版差异，不能靠修改 `season` 或整体覆盖共享 Lock 完成。
 
-初次导入参考 [S4 预览仓库](https://github.com/lostlightll/nzm-wiki-s4-preview) 的 `1e46f2c5dd4296159cf3b268656ae592f0e21dc4` 版本，图标按同 ItemID 的 CommonItem 资源名匹配其 `public/icons/perks/`；描述与数值以本次预载证据为准，不复制参考站旧版字符串 `effect_values`。
+图标按本地同 ItemID 的 CommonItem 资源名匹配 `public/icons/perks/` 与 `public/webp/icons/perks/`；详情和数值以本项目预载证据、MDX 引用和预览 Numerical 行为准。S4 初始插件的索引审定维护在 `scripts/s4-perk-index-review.json`，每项记录本地身份链与精确 Numerical 引用，或明确的排除理由和证据缺口。其他项目只能作为实现参考，不能作为数值或乘区分类的验收依据。
 
 ## 版本更新流程
 

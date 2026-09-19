@@ -1388,6 +1388,11 @@
       "label": "开火扣弹数修正加成系数",
       "reason": "属性已由 AttributeDescMapTable 识别，但尚未审定为公开索引。"
     },
+    "GPAttributeSetWeaponSpecialAmmo.MaxSpecialAmmoCountAddRatio": {
+      "status": "known-unindexed",
+      "label": "特殊弹药最大总弹量修正系数",
+      "reason": "AttributeDescMapTable 已确认属性身份；S4 光暗龙炎通过 120300120 施加。属于弹药容量，暂不建立公开索引分面，不作为伤害增益。"
+    },
     "GPAttributeSetWeaponSpecialAmmo.WeaponSpecialAmmoCostAddRatio": {
       "status": "known-unindexed",
       "label": "特殊弹药开火扣弹数增加百分比",

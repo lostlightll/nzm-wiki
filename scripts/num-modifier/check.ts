@@ -41,6 +41,8 @@ function checkStaticBoundaries(): void {
       .map(file => path.join(root, "scripts", "overlimit", file)),
     ...["preview.json", "preview-evidence.json"].map(file => path.join(root, "data", "overlimit", file)),
     path.join(root, "data", "modifier-providers.json"),
+    // Maintenance-only local review records provenance; no runtime raw-table reads.
+    path.join(root, "scripts", "s4-perk-index-review.json"),
     path.join(root, "scripts", "num-modifier", "lock.ts"),
     // Historical S2 is isolated from the current-season lock; only its offline
     // extractor and evidence ledger may name the archived Numerical source.

@@ -1,0 +1,2989 @@
+{
+  "schemaVersion": 1,
+  "evidencePriority": [
+    "本地 ItemID → Passive → MGE/Buff/选定字节码 → Numerical 精确行；数值与分面由预览 Resolver 派生。",
+    "描述仅辅助语义；缺少 Numerical 行或执行链时保留明确缺口，不使用外部分类补全。"
+  ],
+  "providers": [
+    {
+      "id": "perk:20703040030",
+      "label": "狂想曲",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040030",
+        "slot": 3,
+        "slug": "狂想曲",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111010012_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315105001",
+        "descriptionRowKey": "1315105001_1",
+        "basis": [
+          "WeaponModItemData[20703040030].PassiveSkill_ID=1315105001:1 -> MGEPassive_BD[1315105001_1].MGE.Id=1315105001 -> GPModularGameplayEffectTable[1315105001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315105001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315105001.json#CDO.ModifierID=111010012; configured Modifier identity; dynamic parameter semantics require the execution graph when publishing scaled values",
+          "numerical_modifier_config[111010012_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponDamageRatio; GPModifierOp=B1; BaseValue=0.37; CoefValue=0.0; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040530",
+      "label": "余烬积势",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040530",
+        "slot": 3,
+        "slug": "余烬积势",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051040_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051040_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1316220001",
+        "descriptionRowKey": "1316220001_1",
+        "basis": [
+          "WeaponModItemData[20703040530].PassiveSkill_ID=1316220001:1 -> MGEPassive_BD[1316220001_1].MGE.Id=1316220001 -> GPModularGameplayEffectTable[1316220001].MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316220001.json",
+          "Abilities/Build/CBT3/Perk04/MGE_1316220001.uasset#ExecuteUbergraph_MGE_1316220001@1604/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'",
+          "numerical_modifier_config[111051040_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=2.5; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051040_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=2.5; CoefValue=0.0; Level=1",
+          "核验边界：武器增伤已核实；余烬冲击环的独立伤害仍待核实。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040522",
+      "label": "动能释放",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040522",
+        "slot": 3,
+        "slug": "动能释放",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051028_1_0",
+            "field": "coefficient",
+            "scale": 5
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051028_1_1",
+            "field": "coefficient",
+            "scale": 5
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051028_1_2",
+            "field": "coefficient",
+            "scale": 5
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315239001",
+        "descriptionRowKey": "1315239001_1",
+        "basis": [
+          "WeaponModItemData[20703040522].PassiveSkill_ID=1315239001:1 -> MGEPassive_BD[1315239001_1].MGE.Id=1315239001 -> GPModularGameplayEffectTable[1315239001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315239001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315239001.uasset#ExecuteUbergraph_MGE_1315239001@1536 MGEAddBuff(AddDamgeBuff, 5 stacks); @2334 GetBuffStackCountByName -> @2424 ApplyModifiersToFireContext(111051028, stackCount); @3170 GetBuffStackCountByName -> @3260 AddScopedModifierForActivatedSkill(111051028, stackCount)",
+          "DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315239002 StackLimitCount=5, Duration=5; Numerical WeaponHitDamageRatio, WeaponExplodeDamageRatio and WeaponSkillDamageRatio each B1 coefficient=0.07. Explicit five-stack grant justifies scale=5; not inferred from description",
+          "numerical_modifier_config[111051028_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.07; Level=1",
+          "numerical_modifier_config[111051028_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.07; Level=1",
+          "numerical_modifier_config[111051028_1_2]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.07; Level=1",
+          "lc:111051028_1_0 作用条件：动能转化后；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "lc:111051028_1_1 作用条件：动能转化后；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "lc:111051028_1_2 作用条件：动能转化后；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040502",
+      "label": "协同轰击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040502",
+        "slot": 3,
+        "slug": "协同轰击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051053_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051054_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315234001",
+        "descriptionRowKey": "1315234001_1",
+        "basis": [
+          "WeaponModItemData[20703040502].PassiveSkill_ID=1315234001:1 -> MGEPassive_BD[1315234001_1].MGE.Id=1315234001 -> GPModularGameplayEffectTable[1315234001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315234001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315234001.json#ExecuteUbergraph_MGE_1315234001@441: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": -195956294}, {\"Token\": \"EX_IntConst\", \"Value\": 1170186277}, {\"Token\": \"EX_IntConst\", \"Value\": 1217878662}, {\"Token\": \"EX_IntConst\", \"Value\": 268285228}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_1\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051053}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Abilities/Build/CBT3/Perk03/MGE_1315234001.json#ExecuteUbergraph_MGE_1315234001@1255: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": 1326687852}, {\"Token\": \"EX_IntConst\", \"Value\": 1163854082}, {\"Token\": \"EX_IntConst\", \"Value\": -1186777717}, {\"Token\": \"EX_IntConst\", \"Value\": -1668795694}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_4\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051054}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "numerical_modifier_config[111051053_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.AllDamageRatio; GPModifierOp=B1; BaseValue=0.15; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051054_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.AllDamageRatio; GPModifierOp=B1; BaseValue=0.2; CoefValue=0.0; Level=1",
+          "核验边界：Modifier identity and call arguments verified; applications use unscaled base/coefficient references. Do not interpret coefficient as a maximum without reviewing its runtime input."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040544",
+      "label": "光暗冥河",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040544",
+        "slot": 4,
+        "slug": "光暗冥河",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:120600173_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312054003",
+        "descriptionRowKey": "1312054003_1",
+        "basis": [
+          "WeaponModItemData[20703040544].PassiveSkill_ID=1312054003:1 -> MGEPassive_BD[1312054003_1].MGE.Id=1312054003 -> GPModularGameplayEffectTable[1312054003].MGEClass=Weapon/Data/MG/MG_20006000017_null_MHZM/MGE/MGE_1312054003_MHZM.json",
+          "Weapon/Data/MG/MG_20006000017_null_MHZM/MGE/MGE_1312054003_MHZM.json#CDO.ModifierID=120600173; configured Modifier identity; dynamic parameter semantics require the execution graph when publishing scaled values",
+          "numerical_modifier_config[120600173_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaknessDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.25; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040546",
+      "label": "光暗冷焰",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040546",
+        "slot": 4,
+        "slug": "光暗冷焰",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:121400043_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:121400044_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312080003",
+        "descriptionRowKey": "1312080003_1",
+        "basis": [
+          "WeaponModItemData[20703040546].PassiveSkill_ID=1312080003:1 -> MGEPassive_BD[1312080003_1].MGE.Id=1312080003 -> GPModularGameplayEffectTable[1312080003].MGEClass=Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080003_CLLY.json",
+          "Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080003_CLLY.json#CDO.爆炸增伤=121400043; configured Modifier identity; dynamic parameter semantics require the execution graph when publishing scaled values",
+          "Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080003_CLLY.json#CDO.命中增伤=121400044; configured Modifier identity; dynamic parameter semantics require the execution graph when publishing scaled values",
+          "numerical_modifier_config[121400043_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.6; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[121400044_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.AllDamageRatio; GPModifierOp=B1; BaseValue=0.7; CoefValue=0.0; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040551",
+      "label": "光暗死神",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040551",
+        "slot": 4,
+        "slug": "光暗死神",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044411_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312071002",
+        "descriptionRowKey": "1312071002_1",
+        "basis": [
+          "WeaponModItemData[20703040551].PassiveSkill_ID=1312071002:1 -> MGEPassive_BD[1312071002_1].MGE.Id=1312071002 -> GPModularGameplayEffectTable[1312071002].MGEClass=Weapon/Data/DMR/DMR_20014000005_WBH_SSLS/MGE/MGE_1312071002_SSLS.json",
+          "Weapon/Data/DMR/DMR_20014000005_WBH_SSLS/MGE/MGE_1312071002_SSLS.json#CDO.直击伤害Modifier=130044411; configured Modifier identity; dynamic parameter semantics require the execution graph when publishing scaled values",
+          "numerical_modifier_config[130044411_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.55; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040532",
+      "label": "光暗龙炎",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040532",
+        "slot": 4,
+        "slug": "光暗龙炎",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:120300119_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312032007",
+        "descriptionRowKey": "1312032007_1",
+        "basis": [
+          "WeaponModItemData[20703040532].PassiveSkill_ID=1312032007:1 -> MGEPassive_BD[1312032007_1].MGE.Id=1312032007 -> GPModularGameplayEffectTable[1312032007].MGEClass=Weapon/Data/SG/SG_20003000011_WBH_JFZL/MGE/MGE_1312032007_JFZL_DarkGoldPlugin.json",
+          "Weapon/Data/SG/SG_20003000011_WBH_JFZL/MGE/MGE_1312032007_JFZL_DarkGoldPlugin.json#ExecuteUbergraph_MGE_1312032007_JFZL_DarkGoldPlugin@608: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": -2136642706}, {\"Token\": \"EX_IntConst\", \"Value\": 1336068453}, {\"Token\": \"EX_IntConst\", \"Value\": -1092907900}, {\"Token\": \"EX_IntConst\", \"Value\": 1277774116}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_2\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 120300119}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Weapon/Data/SG/SG_20003000011_WBH_JFZL/MGE/MGE_1312032007_JFZL_DarkGoldPlugin.json#ExecuteUbergraph_MGE_1312032007_JFZL_DarkGoldPlugin@4183: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'\", \"Parameters\": [{\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_CreateMGENodeByGuid_ReturnValue_2\"}, {\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_TryGetOwningWeapon_ReturnValue_4\"}, {\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_TryGetOwningWeapon_ReturnValue_4\"}, {\"Token\": \"EX_IntConst\", \"Value\": 120300120}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_NoObject\"}, {\"Token\": \"EX_False\"}, {\"Token\": \"EX_True\"}, {\"Token\": \"EX_False\"}]}",
+          "numerical_modifier_config[120300119_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponDamageRatio; GPModifierOp=B1; BaseValue=0.1; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[120300120_1_0]: AttributeName=GPAttributeSetWeaponSpecialAmmo.MaxSpecialAmmoCountAddRatio; GPModifierOp=B1; BaseValue=1.0; CoefValue=0.0; Level=1",
+          "核验边界：Modifier identity and call arguments verified; applications use unscaled base/coefficient references. Do not interpret coefficient as a maximum without reviewing its runtime input."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040494",
+      "label": "奇点坍缩",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040494",
+        "slot": 3,
+        "slug": "奇点坍缩",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051010_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051011_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051012_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315232001",
+        "descriptionRowKey": "1315232001_1",
+        "basis": [
+          "WeaponModItemData[20703040494].PassiveSkill_ID=1315232001:1 -> MGEPassive_BD[1315232001_1].MGE.Id=1315232001 -> GPModularGameplayEffectTable[1315232001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315232001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315232001.json#ExecuteUbergraph_MGE_1315232001@262: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": 588956626}, {\"Token\": \"EX_IntConst\", \"Value\": 1147231742}, {\"Token\": \"EX_IntConst\", \"Value\": -1130392654}, {\"Token\": \"EX_IntConst\", \"Value\": -1184209314}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_1\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051010}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Abilities/Build/CBT3/Perk03/MGE_1315232001.json#ExecuteUbergraph_MGE_1315232001@990: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": 833372496}, {\"Token\": \"EX_IntConst\", \"Value\": 1261378796}, {\"Token\": \"EX_IntConst\", \"Value\": -1472536130}, {\"Token\": \"EX_IntConst\", \"Value\": -420023389}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_4\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051011}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Abilities/Build/CBT3/Perk03/MGE_1315232001.json#ExecuteUbergraph_MGE_1315232001@2330: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": 129419052}, {\"Token\": \"EX_IntConst\", \"Value\": 1140484213}, {\"Token\": \"EX_IntConst\", \"Value\": -1750837581}, {\"Token\": \"EX_IntConst\", \"Value\": -1259085247}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_8\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051012}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "numerical_modifier_config[111051010_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.08; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051011_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=0.2; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051012_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponDamageRatio; GPModifierOp=B1; BaseValue=0.1; CoefValue=0.0; Level=1",
+          "核验边界：Modifier identity and call arguments verified; applications use unscaled base/coefficient references. Do not interpret coefficient as a maximum without reviewing its runtime input."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040510",
+      "label": "层叠爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040510",
+        "slot": 3,
+        "slug": "层叠爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051023_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051024_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315236001",
+        "descriptionRowKey": "1315236001_1",
+        "basis": [
+          "WeaponModItemData[20703040510].PassiveSkill_ID=1315236001:1 -> MGEPassive_BD[1315236001_1].MGE.Id=1315236001 -> GPModularGameplayEffectTable[1315236001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315236001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315236001.json#ExecuteUbergraph_MGE_1315236001@3258: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": 294105836}, {\"Token\": \"EX_IntConst\", \"Value\": 1137989782}, {\"Token\": \"EX_IntConst\", \"Value\": 1714601607}, {\"Token\": \"EX_IntConst\", \"Value\": -1410520007}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_4\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051023}, {\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_Conv_IntToFloat_ReturnValue\"}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Abilities/Build/CBT3/Perk03/MGE_1315236001.json#ExecuteUbergraph_MGE_1315236001@3728: {\"Token\": \"EX_FinalFunction\", \"Function\": \"Function'GPSkillAbilityBase:AddScopedModifierForActivatedSkill'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_IntConst\", \"Value\": 111051024}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_NoObject\"}, {\"Token\": \"EX_IntConst\", \"Value\": 15}, {\"Token\": \"EX_ArrayConst\", \"InnerProperty\": \"TagRequired.TagRequired\", \"Values\": [{\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'GameplayTagContainer'\", \"Properties\": [{\"Token\": \"EX_ArrayConst\", \"InnerProperty\": \"GameplayTags.GameplayTags\", \"Values\": []}]}]}, {\"Token\": \"EX_True\"}, {\"Token\": \"EX_StringConst\", \"Value\": \"\"}]}",
+          "numerical_modifier_config[111051023_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.03; Level=1",
+          "numerical_modifier_config[111051024_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=0.5; CoefValue=0.0; Level=1",
+          "核验边界：Modifier identity and call arguments verified; applications use unscaled base/coefficient references. Do not interpret coefficient as a maximum without reviewing its runtime input."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040527",
+      "label": "弹链供给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040527",
+        "slot": 1,
+        "slug": "弹链供给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051036_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051080_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051057_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1313210001",
+        "descriptionRowKey": "1313210001_1",
+        "basis": [
+          "WeaponModItemData[20703040527].PassiveSkill_ID=1313210001:1 -> MGEPassive_BD[1313210001_1].MGE.Id=1313210001 -> GPModularGameplayEffectTable[1313210001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313210001.json",
+          "Abilities/Build/CBT3/Perk01/MGE_1313210001.uasset#ExecuteUbergraph_MGE_1313210001@99/Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'",
+          "Abilities/Build/CBT3/Perk01/MGE_1313210001.uasset#ExecuteUbergraph_MGE_1313210001@1179/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "Abilities/Build/CBT3/Perk01/MGE_1313210001.uasset#ExecuteUbergraph_MGE_1313210001@1716/Function'MGEAction_ApplyModifiersToFireContext:ApplyModifiers'",
+          "numerical_modifier_config[111051036_1_0]: AttributeName=GPAttributeSetWeaponNormalAmmo.ClipAmmoAddRatio; GPModifierOp=B1; BaseValue=1.0; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051080_1_0]: AttributeName=GPAttributeSetCritical.CriticalRatio; GPModifierOp=B1; BaseValue=0.5; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051057_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=1.0; CoefValue=0.0; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040526",
+      "label": "战术速装",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040526",
+        "slot": 1,
+        "slug": "战术速装",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051034_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051035_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051035_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1313209001",
+        "descriptionRowKey": "1313209001_1",
+        "basis": [
+          "WeaponModItemData[20703040526].PassiveSkill_ID=1313209001:1 -> MGEPassive_BD[1313209001_1].MGE.Id=1313209001 -> GPModularGameplayEffectTable[1313209001].MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313209001.json",
+          "Abilities/Build/CBT3/Perk01/MGE_1313209001.uasset#ExecuteUbergraph_MGE_1313209001@127/Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'",
+          "Abilities/Build/CBT3/Perk01/MGE_1313209001.uasset#ExecuteUbergraph_MGE_1313209001@2378/Function'MGEAction_ApplyModifiersToFireContext:ApplyModifiers'",
+          "numerical_modifier_config[111051034_1_0]: AttributeName=GPAttributeSetWeaponChangeClip.WeaponChangeClipSpeedRatio; GPModifierOp=B1; BaseValue=0.45; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051035_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=2.5; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051035_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=2.5; CoefValue=0.0; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040529",
+      "label": "积光成辉",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040529",
+        "slot": 2,
+        "slug": "积光成辉",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051039_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051038_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1314206001",
+        "descriptionRowKey": "1314206001_1",
+        "basis": [
+          "WeaponModItemData[20703040529].PassiveSkill_ID=1314206001:1 -> MGEPassive_BD[1314206001_1].MGE.Id=1314206001 -> GPModularGameplayEffectTable[1314206001].MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314206001.json",
+          "Abilities/Build/CBT3/Perk02/MGE_1314206001.uasset#ExecuteUbergraph_MGE_1314206001@566/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "Abilities/Build/CBT3/Perk02/MGE_1314206001.uasset#ExecuteUbergraph_MGE_1314206001@1176/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'",
+          "numerical_modifier_config[111051039_1_0]: AttributeName=GPAttributeSetSpeed.SpeedScale; GPModifierOp=B1; BaseValue=0.5; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051038_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponDamageRatio; GPModifierOp=B1; BaseValue=1.0; CoefValue=0.0; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040498",
+      "label": "矩阵打击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040498",
+        "slot": 3,
+        "slug": "矩阵打击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051013_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051013_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051014_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051015_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051015_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051016_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315233001",
+        "descriptionRowKey": "1315233001_1",
+        "basis": [
+          "WeaponModItemData[20703040498].PassiveSkill_ID=1315233001:1 -> MGEPassive_BD[1315233001_1].MGE.Id=1315233001 -> GPModularGameplayEffectTable[1315233001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315233001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315233001.json#ExecuteUbergraph_MGE_1315233001@355: {\"Token\": \"EX_FinalFunction\", \"Function\": \"Function'GPSkillAbilityBase:AddScopedModifierForActivatedSkill'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_IntConst\", \"Value\": 111051014}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_NoObject\"}, {\"Token\": \"EX_IntConst\", \"Value\": 15}, {\"Token\": \"EX_ArrayConst\", \"InnerProperty\": \"TagRequired.TagRequired\", \"Values\": [{\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'GameplayTagContainer'\", \"Properties\": [{\"Token\": \"EX_ArrayConst\", \"InnerProperty\": \"GameplayTags.GameplayTags\", \"Values\": []}]}]}, {\"Token\": \"EX_True\"}, {\"Token\": \"EX_StringConst\", \"Value\": \"\"}]}",
+          "Abilities/Build/CBT3/Perk03/MGE_1315233001.json#ExecuteUbergraph_MGE_1315233001@1549: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": -1221046149}, {\"Token\": \"EX_IntConst\", \"Value\": 1089356300}, {\"Token\": \"EX_IntConst\", \"Value\": 2125784458}, {\"Token\": \"EX_IntConst\", \"Value\": 295130833}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_5\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051016}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Abilities/Build/CBT3/Perk03/MGE_1315233001.json#ExecuteUbergraph_MGE_1315233001@2641: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": -647260878}, {\"Token\": \"EX_IntConst\", \"Value\": 1176992342}, {\"Token\": \"EX_IntConst\", \"Value\": -1956390987}, {\"Token\": \"EX_IntConst\", \"Value\": 1446606253}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_8\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051015}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Abilities/Build/CBT3/Perk03/MGE_1315233001.json#ExecuteUbergraph_MGE_1315233001@4082: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": -979727050}, {\"Token\": \"EX_IntConst\", \"Value\": 1291514299}, {\"Token\": \"EX_IntConst\", \"Value\": 1113180344}, {\"Token\": \"EX_IntConst\", \"Value\": 1918533950}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_9\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051013}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "numerical_modifier_config[111051013_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.06; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051013_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.06; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051014_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=0.16; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051015_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.03; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051015_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.03; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051016_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=0.08; CoefValue=0.0; Level=1",
+          "核验边界：Modifier identity and call arguments verified; applications use unscaled base/coefficient references. Do not interpret coefficient as a maximum without reviewing its runtime input."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040490",
+      "label": "维度撕裂",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040490",
+        "slot": 3,
+        "slug": "维度撕裂",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051008_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051008_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051009_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051009_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315231001",
+        "descriptionRowKey": "1315231001_1",
+        "basis": [
+          "WeaponModItemData[20703040490].PassiveSkill_ID=1315231001:1 -> MGEPassive_BD[1315231001_1].MGE.Id=1315231001 -> GPModularGameplayEffectTable[1315231001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315231001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315231001.json#ExecuteUbergraph_MGE_1315231001@73: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": -1944448373}, {\"Token\": \"EX_IntConst\", \"Value\": 1261999489}, {\"Token\": \"EX_IntConst\", \"Value\": 75291266}, {\"Token\": \"EX_IntConst\", \"Value\": 660676124}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_1\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051008}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Abilities/Build/CBT3/Perk03/MGE_1315231001.json#ExecuteUbergraph_MGE_1315231001@708: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": -433973585}, {\"Token\": \"EX_IntConst\", \"Value\": 1179300390}, {\"Token\": \"EX_IntConst\", \"Value\": 2031896717}, {\"Token\": \"EX_IntConst\", \"Value\": 1001171283}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_1\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051009}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "numerical_modifier_config[111051008_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.7; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051008_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.7; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051009_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.2; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051009_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.2; CoefValue=0.0; Level=1",
+          "核验边界：Modifier identity and call arguments verified; applications use unscaled base/coefficient references. Do not interpret coefficient as a maximum without reviewing its runtime input."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040545",
+      "label": "致命骨矛",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040545",
+        "slot": 4,
+        "slug": "致命骨矛",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:120600174_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312054004",
+        "descriptionRowKey": "1312054004_1",
+        "basis": [
+          "WeaponModItemData[20703040545].PassiveSkill_ID=1312054004:1 -> MGEPassive_BD[1312054004_1].MGE.Id=1312054004 -> GPModularGameplayEffectTable[1312054004].MGEClass=Weapon/Data/MG/MG_20006000017_null_MHZM/MGE/MGE_1312054004_MHZM.json",
+          "Weapon/Data/MG/MG_20006000017_null_MHZM/MGE/MGE_1312054004_MHZM.json#ExecuteUbergraph_MGE_1312054004_MHZM@1204: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": -92106372}, {\"Token\": \"EX_IntConst\", \"Value\": 1077953568}, {\"Token\": \"EX_IntConst\", \"Value\": -1788352596}, {\"Token\": \"EX_IntConst\", \"Value\": 1778320849}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_1\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 120600174}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "numerical_modifier_config[120600174_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponDamageRatio; GPModifierOp=B1; BaseValue=0.4; CoefValue=0.0; Level=1",
+          "核验边界：Modifier identity and call arguments verified; applications use unscaled base/coefficient references. Do not interpret coefficient as a maximum without reviewing its runtime input."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040525",
+      "label": "近战衔接",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040525",
+        "slot": 3,
+        "slug": "近战衔接",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051032_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051032_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051033_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315241001",
+        "descriptionRowKey": "1315241001_1",
+        "basis": [
+          "WeaponModItemData[20703040525].PassiveSkill_ID=1315241001:1 -> MGEPassive_BD[1315241001_1].MGE.Id=1315241001 -> GPModularGameplayEffectTable[1315241001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315241001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315241001.uasset#ExecuteUbergraph_MGE_1315241001@1467/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "ExecuteUbergraph_MGE_1315241001@303 GetBuffStackCount(BD_Common_1315241001) -> @383 count>0; @523 ShootCounter<=6; @668 SelectFloat(2,1,Effect Plus) -> @715 multiply buffCount -> @826 multiply MGE.GetStackCount -> @872 ApplyModifiersToFireContext(111051032, product). Both damage coefficients=1.7, B1; published per buff stack for one card, without the conditional doubled Effect Plus multiplier",
+          "numerical_modifier_config[111051032_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=1.7; Level=1",
+          "numerical_modifier_config[111051032_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=1.7; Level=1",
+          "numerical_modifier_config[111051033_1_0]: AttributeName=GPAttributeSetSpeed.SpeedScale; GPModifierOp=B1; BaseValue=0.25; CoefValue=0.0; Level=1",
+          "lc:111051032_1_0 作用条件：切枪后前6发，每层近战增益；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "lc:111051032_1_1 作用条件：切枪后前6发，每层近战增益；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040478",
+      "label": "光辉贯穿",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040478",
+        "slot": 3,
+        "slug": "光辉贯穿",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051051_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051051_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315250001",
+        "descriptionRowKey": "1315250001_1",
+        "basis": [
+          "WeaponModItemData[20703040478].PassiveSkill_ID=1315250001:1 -> MGEPassive_BD[1315250001_1].MGE.Id=1315250001 -> GPModularGameplayEffectTable[1315250001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315250001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315250001.uasset#ExecuteUbergraph_MGE_1315250001@300 MGEAddBuff(MarkBuff); @1125 GetBuffStackCountByName(MarkBuff) -> @1178 Conv_IntToFloat -> @1215 ApplyModifiersToFireContext(111051051, stackCount)",
+          "DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315250001: StackLimitCount=5, Duration=5; Numerical 111051051_1_0 WeaponHitDamageRatio and 111051051_1_1 WeaponExplodeDamageRatio both BaseValue=0, CoefValue=0.045, B1; use explicit fire-context multiplier, not the buff's false bMagnitudesFactorInStackCount",
+          "numerical_modifier_config[111051051_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.045; Level=1",
+          "numerical_modifier_config[111051051_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.045; Level=1",
+          "lc:111051051_1_0 作用条件：每层光能（最多5层）；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "lc:111051051_1_1 作用条件：每层光能（最多5层）；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "核验边界：每层增伤与层数上限已核实；光能贯穿的独立伤害仍待核实。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040482",
+      "label": "耀光爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040482",
+        "slot": 3,
+        "slug": "耀光爆破",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051005_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315229001",
+        "descriptionRowKey": "1315229001_1",
+        "basis": [
+          "WeaponModItemData[20703040482].PassiveSkill_ID=1315229001:1 -> MGEPassive_BD[1315229001_1].MGE.Id=1315229001 -> GPModularGameplayEffectTable[1315229001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315229001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315229001.uasset#ExecuteUbergraph_MGE_1315229001@988 AddScopedModifierForActivatedSkill(111051005), gated by AddDamageBuff; DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315229001 Duration=8; Numerical WeaponSkillDamageRatio B1 BaseValue=0.55",
+          "numerical_modifier_config[111051005_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=0.55; CoefValue=0.0; Level=1",
+          "lc:111051005_1_0 作用条件：光能增益期间；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040486",
+      "label": "暗蚀打击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040486",
+        "slot": 3,
+        "slug": "暗蚀打击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051007_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315230001",
+        "descriptionRowKey": "1315230001_1",
+        "basis": [
+          "WeaponModItemData[20703040486].PassiveSkill_ID=1315230001:1 -> MGEPassive_BD[1315230001_1].MGE.Id=1315230001 -> GPModularGameplayEffectTable[1315230001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315230001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315230001.json#ExecuteUbergraph_MGE_1315230001@937: {\"Token\": \"EX_FinalFunction\", \"Function\": \"Function'GPSkillAbilityBase:AddScopedModifierForActivatedSkill'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_IntConst\", \"Value\": 111051007}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_NoObject\"}, {\"Token\": \"EX_IntConst\", \"Value\": 15}, {\"Token\": \"EX_ArrayConst\", \"InnerProperty\": \"TagRequired.TagRequired\", \"Values\": [{\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'GameplayTagContainer'\", \"Properties\": [{\"Token\": \"EX_ArrayConst\", \"InnerProperty\": \"GameplayTags.GameplayTags\", \"Values\": []}]}]}, {\"Token\": \"EX_True\"}, {\"Token\": \"EX_StringConst\", \"Value\": \"\"}]}",
+          "numerical_modifier_config[111051007_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=0.1; CoefValue=0.0; Level=1",
+          "核验边界：Modifier identity and call arguments verified; applications use unscaled base/coefficient references. Do not interpret coefficient as a maximum without reviewing its runtime input."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040506",
+      "label": "神经毒素",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040506",
+        "slot": 3,
+        "slug": "神经毒素",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051019_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051019_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051020_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315235001",
+        "descriptionRowKey": "1315235001_1",
+        "basis": [
+          "WeaponModItemData[20703040506].PassiveSkill_ID=1315235001:1 -> MGEPassive_BD[1315235001_1].MGE.Id=1315235001 -> GPModularGameplayEffectTable[1315235001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315235001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315235001.json#ExecuteUbergraph_MGE_1315235001@640: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": -303477476}, {\"Token\": \"EX_IntConst\", \"Value\": 1212716905}, {\"Token\": \"EX_IntConst\", \"Value\": 229931425}, {\"Token\": \"EX_IntConst\", \"Value\": -1555619829}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_2\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051019}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Abilities/Build/CBT3/Perk03/MGE_1315235001.json#ExecuteUbergraph_MGE_1315235001@1070: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": -1621436597}, {\"Token\": \"EX_IntConst\", \"Value\": 1080411061}, {\"Token\": \"EX_IntConst\", \"Value\": -1105329262}, {\"Token\": \"EX_IntConst\", \"Value\": 1642589839}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_2\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051020}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Abilities/Build/CBT3/Perk03/MGE_1315235001.json#ExecuteUbergraph_MGE_1315235001@1860: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": 1439150087}, {\"Token\": \"EX_IntConst\", \"Value\": 1298948289}, {\"Token\": \"EX_IntConst\", \"Value\": -307633749}, {\"Token\": \"EX_IntConst\", \"Value\": 2132903727}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_5\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 111051020}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "numerical_modifier_config[111051019_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.15; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051019_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.15; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[111051020_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.AllDamageRatio; GPModifierOp=B1; BaseValue=0.07; CoefValue=0.0; Level=1",
+          "核验边界：Modifier identity and call arguments verified; applications use unscaled base/coefficient references. Do not interpret coefficient as a maximum without reviewing its runtime input."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040514",
+      "label": "爆破强化",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040514",
+        "slot": 3,
+        "slug": "爆破强化",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051025_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315237001",
+        "descriptionRowKey": "1315237001_1",
+        "basis": [
+          "WeaponModItemData[20703040514].PassiveSkill_ID=1315237001:1 -> MGEPassive_BD[1315237001_1].MGE.Id=1315237001 -> GPModularGameplayEffectTable[1315237001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315237001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315237001.uasset#ExecuteUbergraph_MGE_1315237001@145 AddScopedModifierForActivatedSkill(111051025); Numerical WeaponSkillDamageRatio B1 BaseValue=0.3",
+          "numerical_modifier_config[111051025_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=0.3; CoefValue=0.0; Level=1",
+          "lc:111051025_1_0 作用条件：武器技能；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "核验边界：武器技能增伤与冷却已核实；击杀触发的二次伤害仍待核实。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040518",
+      "label": "铲杀冲击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040518",
+        "slot": 3,
+        "slug": "铲杀冲击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051027_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051027_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315238001",
+        "descriptionRowKey": "1315238001_1",
+        "basis": [
+          "WeaponModItemData[20703040518].PassiveSkill_ID=1315238001:1 -> MGEPassive_BD[1315238001_1].MGE.Id=1315238001 -> GPModularGameplayEffectTable[1315238001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315238001.json",
+          "Abilities/Build/CBT3/Perk03/MGE_1315238001.uasset#ExecuteUbergraph_MGE_1315238001@940 GetBuffStackCountByName -> @1030 ApplyModifiersToFireContext(111051027, stackCount); DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315238001 StackLimitCount=3, Duration=5; Numerical WeaponHitDamageRatio and WeaponExplodeDamageRatio both B1 coefficient=0.1",
+          "numerical_modifier_config[111051027_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.1; Level=1",
+          "numerical_modifier_config[111051027_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.1; Level=1",
+          "lc:111051027_1_0 作用条件：每层（最多3层）；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "lc:111051027_1_1 作用条件：每层（最多3层）；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040533",
+      "label": "哈士奇鼓舞",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040533",
+        "slot": 4,
+        "slug": "哈士奇鼓舞",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:121600115_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "ally"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312068004",
+        "descriptionRowKey": "1312068004_1",
+        "basis": [
+          "WeaponModItemData[20703040533].PassiveSkill_ID=1312068004:1 -> MGEPassive_BD[1312068004_1].MGE.Id=1312068004 -> GPModularGameplayEffectTable[1312068004].MGEClass=Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068004_HSQHY_DarkGoldPlugin.json",
+          "Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068004_HSQHY_DarkGoldPlugin.json#CDO.Modifierid=121600115; configured Modifier identity; dynamic parameter semantics require the execution graph when publishing scaled values",
+          "numerical_modifier_config[121600115_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.AllDamageRatio; GPModifierOp=B1; BaseValue=0.2; CoefValue=0.0; Level=1",
+          "MGE_1312068004_HSQHY_DarkGoldPlugin#OnEnterEffectZone@36 dispatches @4008; @4111 stores event Target, @4130 IsPlayerCharacter guards @4169 MGEAddBuff(EffectZoneBuff=Weapon_121600112_1, event Target). BuffConfigDatatableNew[Weapon_121600112_1].GPModifyIDs=[121600114,121600115]. Ally recipient includes players entering the zone; not a self-only modifier."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040535",
+      "label": "寒霜之怒",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040535",
+        "slot": 4,
+        "slug": "寒霜之怒",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:120700382_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:120700383_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:120700384_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312079001",
+        "descriptionRowKey": "1312079001_1",
+        "basis": [
+          "WeaponModItemData[20703040535].PassiveSkill_ID=1312079001:1 -> MGEPassive_BD[1312079001_1].MGE.Id=1312079001 -> GPModularGameplayEffectTable[1312079001].MGEClass=Weapon/Data/Pistol/Pistol_20007000038_null_JDYQ/MGE/MGE_1312079001_JDYQ.json",
+          "Abilities/WeaponSkill/Gold/ColdFury/MGE_510410101.json#ExecuteUbergraph_MGE_510410101: K2_Initialize enters @4030; @4055 GetWeaponBySlotID(2), @4087 HasModularGameplayEffectOnTarget(MGE_1312079001=1312079001), @4125 false exits branch; true @4155 adds Weapon_20107000038_7 and @4249 MGEAddMGEContextForTarget(1312079003) on character.",
+          "Weapon/Data/Pistol/Pistol_20007000038_null_JDYQ/MGE/MGE_1312079003_JDYQ.json#ExecuteUbergraph: @385 ApplyModifiers(AddSkillDamage=120700383, TryGetCharacter); @673 ApplyModifiers(AddExpodeDamage=120700382, TryGetCharacter); @1623 CreateAsyncAddScopedModifier(AddShootDamage=120700384, current NumericalEffectAppliedEvent). CDO provides each referenced ModifierID; not inferred from adjacent IDs.",
+          "numerical_modifier_config[120700382_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.3; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[120700383_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=0.3; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[120700384_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.8; CoefValue=0.0; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040538",
+      "label": "极寒之触",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040538",
+        "slot": 4,
+        "slug": "极寒之触",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:120300171_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312078004",
+        "descriptionRowKey": "1312078004_1",
+        "basis": [
+          "WeaponModItemData[20703040538].PassiveSkill_ID=1312078004:1 -> MGEPassive_BD[1312078004_1].MGE.Id=1312078004 -> GPModularGameplayEffectTable[1312078004].MGEClass=Weapon/Data/AutoGLauncher/AutoGLauncher_20003000017_null_JHBS/MGE/MGE_1312078004_JHBS.json",
+          "Weapon/Data/AutoGLauncher/AutoGLauncher_20003000017_null_JHBS/MGE/MGE_1312078004_JHBS.json#CDO.ModifierID=120300171; configured Modifier identity; dynamic parameter semantics require the execution graph when publishing scaled values",
+          "numerical_modifier_config[120300171_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.1; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040542",
+      "label": "腐蚀补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040542",
+        "slot": 4,
+        "slug": "腐蚀补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:120600069_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312067004",
+        "descriptionRowKey": "1312067004_1",
+        "basis": [
+          "WeaponModItemData[20703040542].PassiveSkill_ID=1312067004:1 -> MGEPassive_BD[1312067004_1].MGE.Id=1312067004 -> GPModularGameplayEffectTable[1312067004].MGEClass=Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312067004_YMDH.json",
+          "Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312067004_YMDH.json#CDO.直击伤害BuffName=Weapon_20106000006_11 -> BuffConfigDatatableNew[Weapon_20106000006_11].OnceModifierList=[{\"OnceModifierType\": \"ENZBuffModifierSourceType::NumericalID\", \"OnceModifierSubType\": 1, \"TypeParam\": [\"120600061\"], \"ModifierID\": 120600069, \"IFAssociatedWithLevel\": false}]",
+          "numerical_modifier_config[120600069_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponDamageRatio; GPModifierOp=B1; BaseValue=2.6; CoefValue=0.0; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040547",
+      "label": "强化冰弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040547",
+        "slot": 4,
+        "slug": "强化冰弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:121400041_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:121400042_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312080004",
+        "descriptionRowKey": "1312080004_1",
+        "basis": [
+          "WeaponModItemData[20703040547].PassiveSkill_ID=1312080004:1 -> MGEPassive_BD[1312080004_1].MGE.Id=1312080004 -> GPModularGameplayEffectTable[1312080004].MGEClass=Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080004_CLLY.json",
+          "Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080004_CLLY.json#CDO.爆炸增伤=121400041; configured Modifier identity; dynamic parameter semantics require the execution graph when publishing scaled values",
+          "Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080004_CLLY.json#CDO.命中增伤=121400042; configured Modifier identity; dynamic parameter semantics require the execution graph when publishing scaled values",
+          "numerical_modifier_config[121400041_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.AllDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.03; Level=1",
+          "numerical_modifier_config[121400042_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.03; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040548",
+      "label": "冷焰爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040548",
+        "slot": 4,
+        "slug": "冷焰爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:121400040_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312080005",
+        "descriptionRowKey": "1312080005_1",
+        "basis": [
+          "WeaponModItemData[20703040548].PassiveSkill_ID=1312080005:1 -> MGEPassive_BD[1312080005_1].MGE.Id=1312080005 -> GPModularGameplayEffectTable[1312080005].MGEClass=Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080005_CLLY.json",
+          "Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312080005_CLLY.json#CDO.BuffName=Weapon_20014000012_1 -> BuffConfigDatatableNew[Weapon_20014000012_1].OnceModifierList=[{\"OnceModifierType\": \"ENZBuffModifierSourceType::NumericalID\", \"OnceModifierSubType\": 1, \"TypeParam\": [\"1410140101\"], \"ModifierID\": 121400040, \"IFAssociatedWithLevel\": true}]",
+          "numerical_modifier_config[121400040_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponSkillDamageRatio; GPModifierOp=B1; BaseValue=1.0; CoefValue=0.0; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040549",
+      "label": "火神爆发",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040549",
+        "slot": 4,
+        "slug": "火神爆发",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:120600305_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312074004",
+        "descriptionRowKey": "1312074004_1",
+        "basis": [
+          "WeaponModItemData[20703040549].PassiveSkill_ID=1312074004:1 -> MGEPassive_BD[1312074004_1].MGE.Id=1312074004 -> GPModularGameplayEffectTable[1312074004].MGEClass=Weapon/Data/MG/MG_20006000030_WBH_HSYD/MGE/MGE_1312074004_HSYD.json",
+          "Weapon/Data/MG/MG_20006000030_WBH_HSYD/MGE/MGE_1312074004_HSYD.json#CDO.过载射击Buff=HSYD_2_ActiveSkill_Duration -> BuffConfigDatatableNew[HSYD_2_ActiveSkill_Duration].OnceModifierList=[{\"OnceModifierType\": \"ENZBuffModifierSourceType::NumericalID\", \"OnceModifierSubType\": 1, \"TypeParam\": [\"120600300\"], \"ModifierID\": 120600305, \"IFAssociatedWithLevel\": false}]",
+          "numerical_modifier_config[120600305_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponDamageRatio; GPModifierOp=B1; BaseValue=1.2; CoefValue=0.0; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040569",
+      "label": "雷霆增幅",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040569",
+        "slot": 4,
+        "slug": "雷霆增幅",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:120700121_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:120700121_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312082001",
+        "descriptionRowKey": "1312082001_1",
+        "basis": [
+          "WeaponModItemData[20703040569].PassiveSkill_ID=1312082001:1 -> MGEPassive_BD[1312082001_1].MGE.Id=1312082001 -> GPModularGameplayEffectTable[1312082001].MGEClass=Weapon/Data/Pistol/Pistol_20007000012_null_FEDL/MGE/MGE_1312082001_LTZY.json",
+          "MGE_1312082001_LTZY#ExecuteUbergraph@126 ChangeWeaponSkill(ActiveSkill:5104901); @311 StartAction.",
+          "GPActiveSkillDataTable[5104901].AbilityAssetSoftPath -> Abilities/WeaponSkill/Purple/LTZYActivate/DA_LTZYActivate.json.AbilityBlueprint -> SK_LTZYActivate.json#CDO: SkillID=5104901; BuffName=Weapon_20007000012_0; BuffDuration=10. BuffConfigDatatableNew[Weapon_20007000012_0].GPModifyIDs=[120700121].",
+          "numerical_modifier_config[120700121_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponHitDamageRatio; GPModifierOp=B1; BaseValue=0.5; CoefValue=0.0; Level=1",
+          "numerical_modifier_config[120700121_1_1]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponExplodeDamageRatio; GPModifierOp=B1; BaseValue=0.5; CoefValue=0.0; Level=1"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040570",
+      "label": "绝境雷霆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040570",
+        "slot": 4,
+        "slug": "绝境雷霆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:120600190_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:120600191_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312083001",
+        "descriptionRowKey": "1312083001_1",
+        "basis": [
+          "WeaponModItemData[20703040570].PassiveSkill_ID=1312083001:1 -> MGEPassive_BD[1312083001_1].MGE.Id=1312083001 -> GPModularGameplayEffectTable[1312083001].MGEClass=Weapon/Data/Rifle/Rifle_20001000019_WBH_LT999P/MGE/MGE_1312083001_LT999P_DarkGoldPlugin.json",
+          "Weapon/Data/Rifle/Rifle_20001000019_WBH_LT999P/MGE/MGE_1312083001_LT999P_DarkGoldPlugin.json#ExecuteUbergraph_MGE_1312083001_LT999P_DarkGoldPlugin@780: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'\", \"Parameters\": [{\"Token\": \"EX_Self\"}, {\"Token\": \"EX_StructConst\", \"Struct\": \"ScriptStruct'Guid'\", \"Properties\": [{\"Token\": \"EX_IntConst\", \"Value\": 1037001512}, {\"Token\": \"EX_IntConst\", \"Value\": 1190707405}, {\"Token\": \"EX_IntConst\", \"Value\": -1434447217}, {\"Token\": \"EX_IntConst\", \"Value\": 967875505}]}, {\"Token\": \"EX_StructMemberContext\", \"Property\": \"NumericalEffectAppliedEvent\", \"StructExpression\": {\"Token\": \"EX_LocalVariable\", \"Variable\": \"Temp_struct_Variable_4\"}}, {\"Token\": \"EX_IntConst\", \"Value\": 120600190}, {\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_FClamp_ReturnValue_1\"}, {\"Token\": \"EX_IntConst\", \"Value\": -1}, {\"Token\": \"EX_NoObject\"}]}",
+          "Weapon/Data/Rifle/Rifle_20001000019_WBH_LT999P/MGE/MGE_1312083001_LT999P_DarkGoldPlugin.json#ExecuteUbergraph_MGE_1312083001_LT999P_DarkGoldPlugin@1665: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'\", \"Parameters\": [{\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_CreateMGENodeByGuid_ReturnValue\"}, {\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_TryGetOwningWeapon_ReturnValue_2\"}, {\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_TryGetOwningWeapon_ReturnValue_2\"}, {\"Token\": \"EX_IntConst\", \"Value\": 120600191}, {\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_FClamp_ReturnValue\"}, {\"Token\": \"EX_NoObject\"}, {\"Token\": \"EX_False\"}, {\"Token\": \"EX_True\"}, {\"Token\": \"EX_False\"}]}",
+          "Weapon/Data/Rifle/Rifle_20001000019_WBH_LT999P/MGE/MGE_1312083001_LT999P_DarkGoldPlugin.json#ExecuteUbergraph_MGE_1312083001_LT999P_DarkGoldPlugin@2151: {\"Token\": \"EX_CallMath\", \"Function\": \"Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'\", \"Parameters\": [{\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_CreateMGENodeByGuid_ReturnValue_1\"}, {\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_TryGetOwningWeapon_ReturnValue_3\"}, {\"Token\": \"EX_LocalVariable\", \"Variable\": \"CallFunc_TryGetOwningWeapon_ReturnValue_3\"}, {\"Token\": \"EX_IntConst\", \"Value\": 120600192}, {\"Token\": \"EX_FloatConst\", \"Value\": 0.0}, {\"Token\": \"EX_NoObject\"}, {\"Token\": \"EX_False\"}, {\"Token\": \"EX_True\"}, {\"Token\": \"EX_False\"}]}",
+          "numerical_modifier_config[120600190_1_0]: AttributeName=GPAttributeSetGiveDamageRatio.WeaponDamageRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.6; Level=1",
+          "numerical_modifier_config[120600191_1_0]: AttributeName=GPAttributeSetFireMode.RPMAdjustRatio; GPModifierOp=B1; BaseValue=0.0; CoefValue=0.6; Level=1",
+          "numerical_modifier_config[120600192_1_0]: AttributeName=GPAttributeSetWeaponNormalAmmo.WeaponAmmoCostAddRatio; GPModifierOp=O; BaseValue=-1.0; CoefValue=0.0; Level=1",
+          "核验边界：Modifier identity and call arguments verified; applications use unscaled base/coefficient references. Do not interpret coefficient as a maximum without reviewing its runtime input."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040503",
+      "label": "战灵余烬",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040503",
+        "slot": 3,
+        "slug": "战灵余烬",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051018_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1316233001",
+        "descriptionRowKey": "1316233001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040503.PassiveSkill_ID=1316233001:1 -> DataTables/MGE/MGEPassive_BD.json#1316233001_1.MGE.Id=1316233001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316233001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316233001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316233001.json#Default__MGE_1316233001_C: {\"UberGraphFrame\":{},\"BuffName\":\"BD_Common_1316233001\",\"CooldownDuration\":13,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1316233001 (BuffName): GPModifyIDs=[], Duration=-1, StackLimitCount=50",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1316233001.json SHA-256=9910b40718a7b486f59d7213e6a2b99048f55df72f00ed66f08aba686cf357db; ExecuteUbergraph_MGE_1316233001@165 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1316233001@1038 Function'NZAOEBlueprintAsyncAction:DoNZAOEAction'",
+          "ExecuteUbergraph_MGE_1316233001@583 CurrentBuffStack=GetBuffStackCountByName(BuffName); @610 requires CurrentBuffStack>0; @893 converts count; @930 NZMGEModifierStruct.ModifierID=111051018, @962 X_Value=count, @1018 ModifierArray -> @1038 DoNZAOEAction(AOE=1302101021, Numerical=11010135, ModifierArray). BuffName=BD_Common_1316233001, StackLimitCount=50. Numerical AllDamageRatio B1 BaseValue=0 CoefValue=0.01. Scoped to this independent AOE, not global damage.",
+          "lc:111051018_1_0 作用条件：余烬冲击每层余烬（最多50层）；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "核验边界：已核实当前独立伤害事件的Modifier链；未将独立伤害基础攻击力系数视作角色增伤。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040528",
+      "label": "换弹引爆",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040528",
+        "slot": 3,
+        "slug": "换弹引爆",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051058_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051081_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051037_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1316219001",
+        "descriptionRowKey": "1316219001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040528.PassiveSkill_ID=1316219001:1 -> DataTables/MGE/MGEPassive_BD.json#1316219001_1.MGE.Id=1316219001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316219001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316219001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316219001.json#Default__MGE_1316219001_C: {\"UberGraphFrame\":{},\"Buff Name\":\"BD_Common_1316219001\",\"NewVar_0\":{},\"CustomCDKey_Hit\":\"CD\",\"CustomCD_Hit\":3.5,\"BannedTags\":[]}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1316219001 (Buff Name): GPModifyIDs=[], Duration=-1, StackLimitCount=1",
+          "scripts/overlimit/preview-ordinary-review.json#20703040528: Abilities/Build/CBT3/Perk04/MGE_1316219001.uasset#ExecuteUbergraph_MGE_1316219001@238/Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'",
+          "scripts/overlimit/preview-ordinary-review.json#20703040528: ExecuteUbergraph_MGE_1316219001@4107 Target Array.Length -> @4166 Min(count,5) -> @4245 ScopedModifier(111051058, count), scoped to current AOE SettlementBefore; SkillDamageRatio B1 coefficient=0.2",
+          "scripts/overlimit/preview-ordinary-review.json#20703040528: ExecuteUbergraph_MGE_1316219001@2523 MGE.GetStackCount-1 -> @2602 MakeStruct.ModifierID=111051081, @2634 X_Value=extraCardStacks -> @2690 array -> @2710 DoNZAOEAction(NumericalID=1302101021, ModifierArray). ExecutionRatio B1 coefficient=1, only per extra card stack; first card contributes zero, never an unconditional +100%",
+          "Reviewed source SHA-256=d546f2b4dd250b8962dc5c816136b7d82aaf747f8c22f7b93c4aa0c18c73d5ad",
+          "Local bytecode MD/_local/overlimit/ordinary-1316219001.bytecode.json SHA-256=a167867d98746b8da710fb312711c87dc6e46254ddc83fb7b9b49e2b6d82a1a4; ExecuteUbergraph_MGE_1316219001@238 Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'; ExecuteUbergraph_MGE_1316219001@1144 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1316219001@2710 Function'NZAOEBlueprintAsyncAction:DoNZAOEAction'; ExecuteUbergraph_MGE_1316219001@4245 Function'MGEAsyncAction_AddScopedModifier:CreateAsyncAddScopedModifier'",
+          "lc:111051058_1_0 作用条件：冲击波每个灼热标记目标（最多5个）；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "lc:111051081_1_0 作用条件：冲击波每额外一层卡片（首张不生效）；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "核验边界：爆炸增伤、标记目标和额外卡层加成已核实；冲击波基础伤害仍待核实。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040499",
+      "label": "矩阵湮灭",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040499",
+        "slot": 3,
+        "slug": "矩阵湮灭",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051017_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1316232001",
+        "descriptionRowKey": "1316232001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040499.PassiveSkill_ID=1316232001:1 -> DataTables/MGE/MGEPassive_BD.json#1316232001_1.MGE.Id=1316232001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316232001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316232001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316232001.json#Default__MGE_1316232001_C: {\"UberGraphFrame\":{},\"AOEInterval\":5,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1316232001.json SHA-256=c4df90fc7904ae0ba768c141a9188e47e36b0b3cb7007e7113d2da13553400bc; ExecuteUbergraph_MGE_1316232001@1005 Function'NZAOEBlueprintAsyncAction:DoNZAOEAction'; ExecuteUbergraph_MGE_1316232001@2624 Function'NZAOEBlueprintAsyncAction:DoNZAOEAction'",
+          "ExecuteUbergraph_MGE_1316232001@2130 Temp_object_Variable_3=K2Node_CustomEvent_AllTeammates; @2212 Array_Length -> @2271 float -> @2308 NZMGEModifierStruct.ModifierID=111051017, @2340 X_Value=count, @2396 ModifierArray -> @2624 DoNZAOEAction(AOE=1302101022, Numerical=11010134, ModifierArray). Numerical AllDamageRatio B1 BaseValue=0 CoefValue=0.5. Scoped to disappearance AOE, not periodic AOE and not global damage.",
+          "lc:111051017_1_0 作用条件：矩阵消失冲击每个友方单位；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "核验边界：已核实当前独立伤害事件的Modifier链；未将独立伤害基础攻击力系数视作角色增伤。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040524",
+      "label": "驰射淬锋",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040524",
+        "slot": 3,
+        "slug": "驰射淬锋",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:111051029_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051029_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051030_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051030_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:111051031_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1315240001_1",
+        "descriptionRowKey": "1315240001_1",
+        "basis": [
+          "WeaponModItemData[20703040524].PassiveSkill_ID=1315240001:1; MGEPassive_BD -> GPModularGameplayEffectTable[1315240001].MGEClass=Abilities/Build/CBT3/Perk03/MGE_1315240001.json",
+          "MGE CDO properties: {\"UberGraphFrame\":{},\"Buff Name\":\"BD_Common_1315202001\",\"Add Speed Upper Limit\":0.5,\"BannedTags\":[]}",
+          "CDO -> BuffConfigDatatableNew[BD_Common_1315202001]: GPModifyIDs=[]; Duration=-1; StackLimitCount=1",
+          "Abilities/Build/CBT3/Perk03/MGE_1315240001.uasset#ExecuteUbergraph_MGE_1315240001@35/Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "ExecuteUbergraph_MGE_1315240001@202 MakeStruct.ModifierID=111051029, @234 X_Value=0 -> @286 array -> @326 ApplyModifiers(self); Numerical CriticalRatio base=0.5 and CriticalDamageRatio base=1.8, B1",
+          "Get XValue by Speed computes Max(SpeedScale*(RunSpeedScale+1)-1,0); ExecuteUbergraph_MGE_1315240001@1014 MapRangeClamped(speedBonus,0,Add Speed Upper Limit=0.5,0,1) -> @1075 ApplyModifiersToFireContext(111051030, mappedBonus); WeaponHitDamageRatio and WeaponExplodeDamageRatio B1 coefficient=1 each, reached at +50% combined speed",
+          "用户补充的五条 Numerical 与 data/perk-preview-modifiers.json 一致；移速提升引用 111051031_1_0.BaseValue=0.3。",
+          "详细描述：refs/Exports/NZM/Content/DataTables/MGE/DT_GPMGESkillDesConfig_BD.json#1315240001_1.MGEDescription，包含每1%移速提供2%射击伤害、上限100%、暴击后移速30%持续2秒并可刷新；数值独立核对配置。",
+          "复核字节码：MD/_local/overlimit/ordinary-1315240001.bytecode.json，SHA256=06f63352c5b76db78d6d5fb8f5cd1e6a7e9c5ad3d46a6f10cf5ab45728c73c17；复用既有预览审计快照，不代表实机测试。",
+          "Get XValue by Speed@20/139读取SpeedScale与RunSpeedScale，@264/306/352/394计算Max(SpeedScale*(RunSpeedScale+1)-1,0)。ExecuteUbergraph@1014把0至CDO Add Speed Upper Limit=0.5映射为0至1，@1075传入ModifierID=111051030；两行BaseValue=0、CoefValue=1、B1，因此每1%移速对应0.01/0.5*1=0.02，最大1，即2%与100%。无整层取整或先扣除1%门槛。",
+          "OnMakeDamage_FECA3D7E4C1687CE44AB199FCF5C21B1@18进入ExecuteUbergraph@1483，@1594检查bIsCritical，@1613跳到@15 TryGetCharacter，@35 MGEAddBuff显式使用BD_Common_1315240001并以自身角色为目标；CDO Buff Name=BD_Common_1315202001不用于这次加速调用。",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1315240001：Duration=2、StackLimitCount=1、StackDuration=RefreshOnSuccessfulApplication、bDenyOverflow=false、GPModifyIDs=[111051031]；Numerical 111051031_1_0为SpeedScale、B1、BaseValue=0.3。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040540",
+      "label": "纯白之光",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040540",
+        "slot": 4,
+        "slug": "纯白之光",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1400090107_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1312080001",
+        "descriptionRowKey": "1312080001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040540.PassiveSkill_ID=1312080001:1 → MGEPassive_BD[1312080001_1].MGE.Id=1312080001 → GPModularGameplayEffectTable[1312080001].MGEClass=Weapon/Data/MG/MG_20006000003_JG_CBZS/MGE/MGE_1312080001_CBZS.json。",
+          "同版本地uasset字节码：MD/_local/s4-local-links/bytecode/MGE_1312080001_CBZS.json，SHA256=4e4787052aa2836e437c325194f1bb84d531393b01238942c5e6e7f30b01c13b。ExecuteUbergraph_MGE_1312080001_CBZS@1002读取SettlementContext，@1029检查bIsWeakPointHit，@1048 CreateAsyncAddScopedModifier(NumericalEffectAppliedEvent,1400090107,X=0)。只作用于当前弱点命中结算。",
+          "numerical_modifier_config[1400090107_1_0]：WeaknessDamageRatio，B1，BaseValue=0.7，CoefValue=0；详情Token仅交叉确认身份，数值取结构化字段。"
+        ]
+      }
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "perk:20703040083",
+      "label": "冷焰爆破",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040083",
+        "slot": 4,
+        "slug": "冷焰爆破",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "The selected local numerical_modifier_config contains no ID=121400016 row. The observer write proves identity only, not an attribute/facet or numeric value; omit external reviewed facets until a matching structured row is available.",
+      "evidence": {
+        "passiveSkillId": "1312041001",
+        "descriptionRowKey": "1312041001_1",
+        "basis": [
+          "WeaponModItemData[20703040083].PassiveSkill_ID=1312041001:1 -> MGEPassive_BD[1312041001_1].MGE.Id=1312041001 -> GPModularGameplayEffectTable[1312041001].MGEClass=Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312041001_CLLY.json",
+          "Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312041001_CLLY.json#ExecuteUbergraph@162 DynamicDataObserverBlueprintLibrary.SetInt32(Weapon.CLLY.AoeDamageModifierID, CDO ModifierID=121400016).",
+          "核验边界：The selected local numerical_modifier_config contains no ID=121400016 row. The observer write proves identity only, not an attribute/facet or numeric value; omit external reviewed facets until a matching structured row is available."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040084",
+      "label": "冷焰续航",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040084",
+        "slot": 4,
+        "slug": "冷焰续航",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "The selected local numerical_modifier_config contains no ID=121400017 row. The observer write proves identity only, not an attribute/facet or numeric value; omit external reviewed facets until a matching structured row is available.",
+      "evidence": {
+        "passiveSkillId": "1312042001",
+        "descriptionRowKey": "1312042001_1",
+        "basis": [
+          "WeaponModItemData[20703040084].PassiveSkill_ID=1312042001:1 -> MGEPassive_BD[1312042001_1].MGE.Id=1312042001 -> GPModularGameplayEffectTable[1312042001].MGEClass=Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312042001_CLLY.json",
+          "Weapon/Data/DMR/DMR_20014000001_XF_CLLY/MGE/MGE_1312042001_CLLY.json#ExecuteUbergraph@162 DynamicDataObserverBlueprintLibrary.SetInt32(Weapon.CLLY.HitDamageModifierID, CDO ModifierID=121400017).",
+          "核验边界：The selected local numerical_modifier_config contains no ID=121400017 row. The observer write proves identity only, not an attribute/facet or numeric value; omit external reviewed facets until a matching structured row is available."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040104",
+      "label": "真空回涌",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040104",
+        "slot": 2,
+        "slug": "真空回涌",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只在清空弹匣后回复武器技能能量，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314128001",
+        "descriptionRowKey": "1314128001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040104.PassiveSkill_ID=1314128001:1 -> DataTables/MGE/MGEPassive_BD.json#1314128001_1.MGE.Id=1314128001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314128001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314128001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314128001.json#Default__MGE_1314128001_C: {\"UberGraphFrame\":{},\"ChargeRatio\":0.45,\"CooldownDuration\":5}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314128001.json SHA-256=65db2c6e004c30e300c66d4da08bcfc23202f0a0e8639f4adca348ef0345cc60; ExecuteUbergraph_MGE_1314128001@827 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040493",
+      "label": "事件视界",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040493",
+        "slot": 2,
+        "slug": "事件视界",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高武器充能速率，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314198001",
+        "descriptionRowKey": "1314198001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040493.PassiveSkill_ID=1314198001:1 -> DataTables/MGE/MGEPassive_BD.json#1314198001_1.MGE.Id=1314198001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314198001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314198001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314198001.json#Default__MGE_1314198001_C: {\"UberGraphFrame\":{},\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314198001.json SHA-256=059cdacc6461ce35267ad1b486a0cc11696aa4fd9a4b1e62a2ef4d02cc14fcba; ExecuteUbergraph_MGE_1314198001@222 Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314198001.uasset#ExecuteUbergraph@222: ApplyModifiers(111051045, X=0), target is owning weapon; numerical base value therefore used.",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051045_1_0: {\"ID\":111051045,\"Level\":1,\"AttributeName\":\"GPAttributeSetSkill.ChargeSpeedAddRatio\",\"Description\":\"事件视界：充能速率提升360%\",\"GPModifierOp\":\"B1\",\"BaseValue\":3.6,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "lc:111051045_1_0 作用条件：黑洞存在期间；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051045_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040501",
+      "label": "共生充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040501",
+        "slot": 2,
+        "slug": "共生充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高充能速率或直接回复武器充能，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314200001",
+        "descriptionRowKey": "1314200001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040501.PassiveSkill_ID=1314200001:1 -> DataTables/MGE/MGEPassive_BD.json#1314200001_1.MGE.Id=1314200001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314200001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314200001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314200001.json#Default__MGE_1314200001_C: {\"UberGraphFrame\":{},\"ChargeSpeedRatio\":1.2,\"CheckHitNum\":5,\"AddChargeRatio\":3,\"CustomCDKey\":\"MGE_1314200001\",\"CustomCD\":1,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314200001.json SHA-256=fbe6fb165de26feb6537904736cbc286a79b6f02512d5fa6b153d7856d5bfe60; ExecuteUbergraph_MGE_1314200001@264 Function'MGEAction_ModifyChargeSpeed:ModifyChargeSpeedBySlotType'; ExecuteUbergraph_MGE_1314200001@1426 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'",
+          "ExecuteUbergraph@149 GetSummonActorsBySummoner; @264 ModifyChargeSpeedBySlotType(CurrentWeaonSkillSlot, ChargeSpeedRatio, false), CDO ChargeSpeedRatio=1.2; @448 In_Reset. Uses native charge-speed action, not a Numerical ModifierID. @1426 MGEActionChargeForSkill is direct resource restoration."
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040520",
+      "label": "动量补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040520",
+        "slot": 1,
+        "slug": "动量补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只按移动速度装填弹药，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313208001",
+        "descriptionRowKey": "1313208001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040520.PassiveSkill_ID=1313208001:1 -> DataTables/MGE/MGEPassive_BD.json#1313208001_1.MGE.Id=1313208001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313208001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313208001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313208001.json#Default__MGE_1313208001_C: {\"UberGraphFrame\":{},\"IsReady\":true,\"CD\":10,\"MaxAddBulletNum\":50,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313208001.json SHA-256=4a8a061988aa83db3bbc77cc1bffeec6aba0ae1f8b44c4ed20a4291c1f29e409; ExecuteUbergraph_MGE_1313208001@1474 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040489",
+      "label": "双星回充",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040489",
+        "slot": 2,
+        "slug": "双星回充",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高武器充能速率，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314197001",
+        "descriptionRowKey": "1314197001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040489.PassiveSkill_ID=1314197001:1 -> DataTables/MGE/MGEPassive_BD.json#1314197001_1.MGE.Id=1314197001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314197001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314197001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314197001.json#Default__MGE_1314197001_C: {\"UberGraphFrame\":{},\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314197001.json SHA-256=5003b2c814d2c9f9de7d3963dc364d5f7f01644a0445c2fcdece7f70c85ac100; ExecuteUbergraph_MGE_1314197001@798 Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314197001.uasset#ExecuteUbergraph@798: ApplyModifiers(111051044, X=0), target is owning weapon; numerical base value therefore used.",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051044_1_0: {\"ID\":111051044,\"Level\":1,\"AttributeName\":\"GPAttributeSetSkill.ChargeSpeedAddRatio\",\"Description\":\"虫洞回充：充能速率提升150%\",\"GPModifierOp\":\"B1\",\"BaseValue\":1.5,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "lc:111051044_1_0 作用条件：双星存在期间；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051044_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040534",
+      "label": "光暗哈士奇",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040534",
+        "slot": 4,
+        "slug": "光暗哈士奇",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果生成持续伤害区域并在消耗暗能或召唤物销毁时爆炸，属于独立伤害事件。",
+      "evidence": {
+        "passiveSkillId": "1312068005",
+        "descriptionRowKey": "1312068005_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040534.PassiveSkill_ID=1312068005:1 -> DataTables/MGE/MGEPassive_BD.json#1312068005_1.MGE.Id=1312068005 -> DataTables/MGE/GPModularGameplayEffectTable.json#1312068005.MGEClass=Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068005_HSQHY_DarkGoldPlugin.json",
+          "refs/Exports/NZM/Content/Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068005_HSQHY_DarkGoldPlugin.json#Default__MGE_1312068005_HSQHY_DarkGoldPlugin_C: {\"UberGraphFrame\":{},\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"ZoneDuration\":1.5,\"AOEID\":1016011004,\"NumericalID\":121600117,\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"DarkBuffThresh\":5,\"ZoneHandle\":{\"ID\":0},\"bWantManagerByWeapon\":false}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_001 (LightBuff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_002 (DarkBuff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1312068005.json SHA-256=d40a65b058ecb4a75113e90bb14faaa3512b7019ecca1e8e70009db5a92695ef; ExecuteUbergraph_MGE_1312068005_HSQHY_DarkGoldPlugin@198 Function'NZAOEBlueprintAsyncAction:DoNZAOEAction'; ExecuteUbergraph_MGE_1312068005_HSQHY_DarkGoldPlugin@1749 Function'AIEffectZoneSystem:GenerateEffectZoneV2'; ExecuteUbergraph_MGE_1312068005_HSQHY_DarkGoldPlugin@2093 Function'NZAOEBlueprintAsyncAction:DoNZAOEAction'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040491",
+      "label": "双星回响",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040491",
+        "slot": 3,
+        "slug": "双星回响",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果产生造成独立伤害的空间回响，属于独立伤害事件。",
+      "evidence": {
+        "passiveSkillId": "1316230001",
+        "descriptionRowKey": "1316230001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040491.PassiveSkill_ID=1316230001:1 -> DataTables/MGE/MGEPassive_BD.json#1316230001_1.MGE.Id=1316230001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316230001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316230001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316230001.json#Default__MGE_1316230001_C: {\"UberGraphFrame\":{},\"CheckHitNum\":5,\"CooldownDuration\":3,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1316230001.json SHA-256=c84f2213f7cbc5909a68b1e599bc420420082d86d3f9427615a562117941e7f1; ExecuteUbergraph_MGE_1316230001@663 Function'NZAOEBlueprintAsyncAction:DoNZAOEAction'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040550",
+      "label": "光暗炎帝",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040550",
+        "slot": 4,
+        "slug": "光暗炎帝",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果改变光暗能量获取、武器模式与资源消耗，不提供可核验的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1312074005",
+        "descriptionRowKey": "1312074005_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040550.PassiveSkill_ID=1312074005:1 -> DataTables/MGE/MGEPassive_BD.json#1312074005_1.MGE.Id=1312074005 -> DataTables/MGE/GPModularGameplayEffectTable.json#1312074005.MGEClass=Weapon/Data/MG/MG_20006000030_WBH_HSYD/MGE/MGE_1312074005_HSYD.json",
+          "refs/Exports/NZM/Content/Weapon/Data/MG/MG_20006000030_WBH_HSYD/MGE/MGE_1312074005_HSYD.json#Default__MGE_1312074005_HSYD_C: {\"UberGraphFrame\":{},\"PickUpId\":59902001701,\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"PickupProbability\":0.1,\"Bright‌Buff\":\"SeasonTalent_S5_Normal_001\",\"BuffTime\":5,\"MarkBuff\":\"Weapon_20106000030_8\",\"FeverHandle\":{\"Handle\":0},\"BuffHandle\":{\"Handle\":-1,\"bPassedFiltersAndWasExecuted\":false}}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_002 (DarkBuff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_001 (Bright‌Buff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#Weapon_20106000030_8 (MarkBuff): GPModifyIDs=[], Duration=-1, StackLimitCount=1",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1312074005.json SHA-256=91b390f9af922507bcbedcf2762c25a90810d6654eb315597fac6429935d47cf; ExecuteUbergraph_MGE_1312074005_HSYD@894 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1312074005_HSYD@2968 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1312074005_HSYD@3193 Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040492",
+      "label": "引力弹匣",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040492",
+        "slot": 1,
+        "slug": "引力弹匣",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只按黑洞吸附目标数装填弹药，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313201001",
+        "descriptionRowKey": "1313201001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040492.PassiveSkill_ID=1313201001:1 -> DataTables/MGE/MGEPassive_BD.json#1313201001_1.MGE.Id=1313201001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313201001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313201001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313201001.json#Default__MGE_1313201001_C: {\"UberGraphFrame\":{},\"CheckTargetNum\":3,\"AddBulletNum\":1,\"AddBulletNum_Extra\":2,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313201001.json SHA-256=dd9035a6c48d6f2e1ae74c31c9683ff8fc9321c4931ce5e03cc5ef21482f95f0; ExecuteUbergraph_MGE_1313201001@153 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'; ExecuteUbergraph_MGE_1313201001@661 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040509",
+      "label": "弹匣超载",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040509",
+        "slot": 2,
+        "slug": "弹匣超载",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只直接回复武器充能或提高充能效率，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314202001",
+        "descriptionRowKey": "1314202001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040509.PassiveSkill_ID=1314202001:1 -> DataTables/MGE/MGEPassive_BD.json#1314202001_1.MGE.Id=1314202001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314202001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314202001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314202001.json#Default__MGE_1314202001_C: {\"UberGraphFrame\":{},\"MarkBuff\":\"BD_Common_1314202001\",\"ChargeValue\":20,\"ChargeSpeedBuff\":\"BD_Common_1314202002\",\"CooldownDuration\":10,\"BannedTags\":[]}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1314202001 (MarkBuff): GPModifyIDs=[], Duration=4, StackLimitCount=1",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1314202002 (ChargeSpeedBuff): GPModifyIDs=[111051055], Duration=4, StackLimitCount=1",
+          "refs/Exports/NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#111051055_1_0: {\"ID\":111051055,\"Level\":1,\"AttributeName\":\"GPAttributeSetSkill.ChargeSpeedAddRatio\",\"Description\":\"弹匣超载：武器充能效率+55%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.55,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314202001.json SHA-256=17c358d349f8773f6e4dafe01b1382590acdd59f441bd18e31011cf804f7c4b6; ExecuteUbergraph_MGE_1314202001@165 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1314202001@1236 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'; ExecuteUbergraph_MGE_1314202001@1293 Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "lc:111051055_1_0 作用条件：充能加速期间；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051055_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040500",
+      "label": "灵伴馈赠",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040500",
+        "slot": 1,
+        "slug": "灵伴馈赠",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只在召唤物造成伤害或击杀时装填弹药，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313203001",
+        "descriptionRowKey": "1313203001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040500.PassiveSkill_ID=1313203001:1 -> DataTables/MGE/MGEPassive_BD.json#1313203001_1.MGE.Id=1313203001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313203001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313203001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313203001.json#Default__MGE_1313203001_C: {\"UberGraphFrame\":{},\"AddBulletNum\":1,\"AddBulletRatioByKill\":0.15,\"CustomCDKey_Hit\":\"MGE_1313203001_Hit\",\"CustomCD_Hit\":4,\"CustomCDKey_Kill\":\"MGE_1313203001_Kill\",\"CustomCD_Kill\":5,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313203001.json SHA-256=043f0b8175782f7c1cca5914ecfc682bdd3c0ff34aacc44ed7a3235cef5e796d; ExecuteUbergraph_MGE_1313203001@278 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'; ExecuteUbergraph_MGE_1313203001@1019 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040521",
+      "label": "疾风充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040521",
+        "slot": 2,
+        "slug": "疾风充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果按移动速度直接回复武器充能，不属于充能效率或伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314205001",
+        "descriptionRowKey": "1314205001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040521.PassiveSkill_ID=1314205001:1 -> DataTables/MGE/MGEPassive_BD.json#1314205001_1.MGE.Id=1314205001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314205001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314205001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314205001.json#Default__MGE_1314205001_C: {\"UberGraphFrame\":{},\"IsReady\":true,\"ChargeValuePerPoint\":2,\"CD\":10,\"MaxChargeRatio\":0.6,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314205001.json SHA-256=fb4d68239eb5720debc58066b92fb76cd0a21168abc5364c3074c26e0ba32a30; ExecuteUbergraph_MGE_1314205001@1643 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040497",
+      "label": "矩阵回充",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040497",
+        "slot": 2,
+        "slug": "矩阵回充",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高充能速率或直接回复武器充能，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314199001",
+        "descriptionRowKey": "1314199001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040497.PassiveSkill_ID=1314199001:1 -> DataTables/MGE/MGEPassive_BD.json#1314199001_1.MGE.Id=1314199001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314199001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314199001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314199001.json#Default__MGE_1314199001_C: {\"UberGraphFrame\":{},\"CheckKillNum\":5,\"ChargeValue\":5,\"bWantManagerByWeapon\":false}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314199001.json SHA-256=450bbbb70994c04f098dcc54de852fd4ab0e7f6db03ca070b242b638ed19ca62; ExecuteUbergraph_MGE_1314199001@131 Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'; ExecuteUbergraph_MGE_1314199001@1730 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314199001.uasset#ExecuteUbergraph@131: ApplyModifiers(111051046, X=0), target is owning weapon; numerical base value therefore used.",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051046_1_0: {\"ID\":111051046,\"Level\":1,\"AttributeName\":\"GPAttributeSetSkill.ChargeSpeedAddRatio\",\"Description\":\"虚数回充：充能速率提升40%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.4,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "lc:111051046_1_0 作用条件：矩阵效果生效期间；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051046_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040496",
+      "label": "矩阵装填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040496",
+        "slot": 1,
+        "slug": "矩阵装填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只在矩阵展开和消失时装填弹药，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313202001",
+        "descriptionRowKey": "1313202001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040496.PassiveSkill_ID=1313202001:1 -> DataTables/MGE/MGEPassive_BD.json#1313202001_1.MGE.Id=1313202001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313202001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313202001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313202001.json#Default__MGE_1313202001_C: {\"UberGraphFrame\":{},\"AddAmmoRatio\":0.5,\"bWantManagerByWeapon\":false}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313202001.json SHA-256=15eed750e7acdad96f0a33ab55648a0677451cf383b61c7de47111234ec5236e; ExecuteUbergraph_MGE_1313202001@374 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040488",
+      "label": "空间补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040488",
+        "slot": 1,
+        "slug": "空间补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只在双星激活和消失时回复弹药，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313200001",
+        "descriptionRowKey": "1313200001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040488.PassiveSkill_ID=1313200001:1 -> DataTables/MGE/MGEPassive_BD.json#1313200001_1.MGE.Id=1313200001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313200001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313200001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313200001.json#Default__MGE_1313200001_C: {\"UberGraphFrame\":{},\"AddBulletRatio\":0.21,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313200001.json SHA-256=6a91cbde071bb7b0605f390ebf449bb155122f824f1f7132f219d2a2f01d34d4; ExecuteUbergraph_MGE_1313200001@361 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040508",
+      "label": "速装填充",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040508",
+        "slot": 1,
+        "slug": "速装填充",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高换弹速度并在命中时装填弹药，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313205001",
+        "descriptionRowKey": "1313205001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040508.PassiveSkill_ID=1313205001:1 -> DataTables/MGE/MGEPassive_BD.json#1313205001_1.MGE.Id=1313205001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313205001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313205001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313205001.json#Default__MGE_1313205001_C: {\"UberGraphFrame\":{},\"BuffName\":\"BD_Common_1313205001\",\"AddBulletNum\":1,\"BannedTags\":[]}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1313205001 (BuffName): GPModifyIDs=[], Duration=3, StackLimitCount=1",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313205001.json SHA-256=fafcd9f762a2c4b9f61097f183559cbfe6a6e4d26ac105a21659de72615015bf; ExecuteUbergraph_MGE_1313205001@127 Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'; ExecuteUbergraph_MGE_1313205001@975 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1313205001@1637 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313205001.uasset#ExecuteUbergraph@127: ApplyModifiers(111051022, X=0), target is owning weapon; numerical base value therefore used.",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051022_1_0: {\"ID\":111051022,\"Level\":1,\"AttributeName\":\"GPAttributeSetWeaponChangeClip.WeaponChangeClipSpeedRatio\",\"Description\":\"速装填充：换弹速度提升 18%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.18,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "lc:111051022_1_0 作用条件：插件生效期间；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051022_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040539",
+      "label": "极寒之痕",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040539",
+        "slot": 4,
+        "slug": "极寒之痕",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果生成造成独立范围伤害的冰球，属于独立伤害事件。",
+      "evidence": {
+        "passiveSkillId": "1312078005",
+        "descriptionRowKey": "1312078005_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040539.PassiveSkill_ID=1312078005:1 -> DataTables/MGE/MGEPassive_BD.json#1312078005_1.MGE.Id=1312078005 -> DataTables/MGE/GPModularGameplayEffectTable.json#1312078005.MGEClass=Weapon/Data/AutoGLauncher/AutoGLauncher_20003000017_null_JHBS/MGE/MGE_1312078005_JHBS.json",
+          "refs/Exports/NZM/Content/Weapon/Data/AutoGLauncher/AutoGLauncher_20003000017_null_JHBS/MGE/MGE_1312078005_JHBS.json#Default__MGE_1312078005_JHBS_C: {\"UberGraphFrame\":{},\"NewGravity\":1,\"NewSpeed\":6000,\"SpawnLocation\":{\"X\":0,\"Y\":0,\"Z\":0},\"CooldownDuration\":2}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1312078005.json SHA-256=c32d831c1c9e3b0dc88000aac206a655735a23bb54f043d4fd5a2ab798e8dc8a; ExecuteUbergraph_MGE_1312078005_JHBS@594 Function'NZMGEModifyWeaponProjectileParams:MGEModifyWeaponProjectileParams'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040511",
+      "label": "流体护盾",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040511",
+        "slot": 3,
+        "slug": "流体护盾",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果生成护盾并在破裂时击飞、减速敌人，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1316215001",
+        "descriptionRowKey": "1316215001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040511.PassiveSkill_ID=1316215001:1 -> DataTables/MGE/MGEPassive_BD.json#1316215001_1.MGE.Id=1316215001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316215001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316215001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316215001.json#Default__MGE_1316215001_C: {\"UberGraphFrame\":{},\"CustomCDKey\":\"MGE_1316215001\",\"CustomCD\":10,\"SlowBuff\":\"BD_Common_1316215001\",\"BannedTags\":[]}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1316215001 (SlowBuff): GPModifyIDs=[111051056], Duration=5, StackLimitCount=1",
+          "refs/Exports/NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#111051056_1_0: {\"ID\":111051056,\"Level\":1,\"AttributeName\":\"GPAttributeSetSpeed.SpeedScale\",\"Description\":\"流体护盾：减速\",\"GPModifierOp\":\"B1\",\"BaseValue\":-0.5,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1316215001.json SHA-256=e53857ca3669abce2c65550d2f9682910cc3b2a95376e8b47fb8e65abb9a0e9a; ExecuteUbergraph_MGE_1316215001@1420 Function'NZAOEBlueprintAsyncAction:DoNZAOEAction'; ExecuteUbergraph_MGE_1316215001@2331 Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "lc:111051056_1_0 作用条件：护盾破裂命中敌人后；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051056_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "enemy"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040541",
+      "label": "涡轮增压",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040541",
+        "slot": 4,
+        "slug": "涡轮增压",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高持续射击的最高射速并延缓射速衰减，不提供伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1312080002",
+        "descriptionRowKey": "1312080002_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040541.PassiveSkill_ID=1312080002:1 -> DataTables/MGE/MGEPassive_BD.json#1312080002_1.MGE.Id=1312080002 -> DataTables/MGE/GPModularGameplayEffectTable.json#1312080002.MGEClass=Weapon/Data/MG/MG_20006000003_JG_CBZS/MGE/MGE_1312080002_CBZS.json",
+          "refs/Exports/NZM/Content/Weapon/Data/MG/MG_20006000003_JG_CBZS/MGE/MGE_1312080002_CBZS.json#Default__MGE_1312080002_CBZS_C: {\"UberGraphFrame\":{},\"bNeedPrediction\":true}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1312080002.json SHA-256=a9b1df80526fa83c61704477b65d8c0902b0e6c24b161e589fabdbf1c62f77ab; ",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040523",
+      "label": "疾风残影",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040523",
+        "slot": 3,
+        "slug": "疾风残影",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果周期生成造成独立伤害的小电弧，属于独立伤害事件。",
+      "evidence": {
+        "passiveSkillId": "1316218001",
+        "descriptionRowKey": "1316218001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040523.PassiveSkill_ID=1316218001:1 -> DataTables/MGE/MGEPassive_BD.json#1316218001_1.MGE.Id=1316218001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316218001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316218001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316218001.json#Default__MGE_1316218001_C: {\"UberGraphFrame\":{},\"SpawnEffectZoneInterval\":2,\"EffectZoneDuration\":2,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/overlimit/ordinary-1316218001.bytecode.json SHA-256=24a44f3681d8f8bebf7654a7f513caa6c7ffa529530ad0671d24d208c6f0a677; ExecuteUbergraph_MGE_1316218001@2492 Function'AIEffectZoneSystem:GenerateEffectZoneV2'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040495",
+      "label": "黑洞吞噬",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040495",
+        "slot": 3,
+        "slug": "黑洞吞噬",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果在黑洞消失时产生范围冲击伤害，并按击杀数返还充能，属于独立伤害事件。",
+      "evidence": {
+        "passiveSkillId": "1316231001",
+        "descriptionRowKey": "1316231001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040495.PassiveSkill_ID=1316231001:1 -> DataTables/MGE/MGEPassive_BD.json#1316231001_1.MGE.Id=1316231001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316231001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316231001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316231001.json#Default__MGE_1316231001_C: {\"UberGraphFrame\":{},\"CheckKillNum\":10,\"ChargeValue\":9,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1316231001.json SHA-256=d76e89c36b97f1ee2ac7a9868f1cea7bd48efbe0528edcff9dbe4aaa7285e32b; ExecuteUbergraph_MGE_1316231001@355 Function'NZAOEBlueprintAsyncAction:DoNZAOEAction'; ExecuteUbergraph_MGE_1316231001@1494 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040476",
+      "label": "光弹回收",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040476",
+        "slot": 1,
+        "slug": "光弹回收",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只消耗弹药并额外获得光能量，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313197001",
+        "descriptionRowKey": "1313197001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040476.PassiveSkill_ID=1313197001:1 -> DataTables/MGE/MGEPassive_BD.json#1313197001_1.MGE.Id=1313197001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313197001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313197001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313197001.json#Default__MGE_1313197001_C: {\"UberGraphFrame\":{},\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"AddBulletRatio\":0.12,\"CostBulletRatio\":0.05,\"PickupID\":59902001701,\"CooldownDuration\":6,\"BannedTags\":[]}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_001 (LightBuff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313197001.json SHA-256=8f52142d3c6c9c2ad786b6379014bd29b8a94c73d3f59c582f0f56c58d73a4a2; ExecuteUbergraph_MGE_1313197001@241 Function'BPAsync_ModifyWeaponAmmoAttribute:ModifyWeaponAmmoAttribute'; ExecuteUbergraph_MGE_1313197001@516 Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040477",
+      "label": "光能充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040477",
+        "slot": 2,
+        "slug": "光能充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只消耗武器充能并额外获得光能量，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314194001",
+        "descriptionRowKey": "1314194001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040477.PassiveSkill_ID=1314194001:1 -> DataTables/MGE/MGEPassive_BD.json#1314194001_1.MGE.Id=1314194001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314194001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314194001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314194001.json#Default__MGE_1314194001_C: {\"UberGraphFrame\":{},\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"PickupID\":59902001701,\"CostEngergyRatio\":0.1,\"CooldownDuration\":6,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_001 (LightBuff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314194001.json SHA-256=8c68f8bd0ebd58b20b257c3eaf8ae237056255c96b82004bc42e667fac550d73; ExecuteUbergraph_MGE_1314194001@298 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'; ExecuteUbergraph_MGE_1314194001@355 Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040479",
+      "label": "能量溢流",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040479",
+        "slot": 3,
+        "slug": "能量溢流",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高光能量获取概率与光能效果持续时间，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1316227001",
+        "descriptionRowKey": "1316227001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040479.PassiveSkill_ID=1316227001:1 -> DataTables/MGE/MGEPassive_BD.json#1316227001_1.MGE.Id=1316227001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316227001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316227001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316227001.json#Default__MGE_1316227001_C: {\"UberGraphFrame\":{},\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"TriggerBuffs\":[\"SeasonTalent_S5_Normal_003\",\"SeasonTalent_S5_Normal_004\",\"SeasonTalent_S5_Normal_005\",\"SeasonTalent_S5_Normal_006\"],\"BuffAddDurationRatio\":1.6,\"Probability\":0.4,\"PoolSize\":20,\"CooldownDuration\":2,\"BannedTags\":[]}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_001 (LightBuff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_003 (TriggerBuffs[0]): GPModifyIDs=[], Duration=5, StackLimitCount=1",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_004 (TriggerBuffs[1]): GPModifyIDs=[], Duration=5, StackLimitCount=1",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_005 (TriggerBuffs[2]): GPModifyIDs=[], Duration=5, StackLimitCount=1",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_006 (TriggerBuffs[3]): GPModifyIDs=[], Duration=5, StackLimitCount=1",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1316227001.json SHA-256=22b4c2d8768560720153b579349acc8739aecbf59b14c7bf8ff84efd5bf1e8b2; ExecuteUbergraph_MGE_1316227001@1114 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1316227001@1494 Function'MGEAction_ModifyBuffDuration:ModifyBuffDuration'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040480",
+      "label": "光效充填",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040480",
+        "slot": 1,
+        "slug": "光效充填",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只回复或过充弹药，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313198001",
+        "descriptionRowKey": "1313198001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040480.PassiveSkill_ID=1313198001:1 -> DataTables/MGE/MGEPassive_BD.json#1313198001_1.MGE.Id=1313198001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313198001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313198001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313198001.json#Default__MGE_1313198001_C: {\"UberGraphFrame\":{},\"CheckBulletRatio\":0.15,\"AddBulletRatio\":0.1,\"AddBulletRatio_Plus\":0.2,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313198001.json SHA-256=9a150e951db51de6c2e52b12a58285270f6e3f0d6408cbdd1f3a7e6df8ba5fb4; ExecuteUbergraph_MGE_1313198001@265 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'; ExecuteUbergraph_MGE_1313198001@546 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'; ExecuteUbergraph_MGE_1313198001@882 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040481",
+      "label": "光谐加速",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040481",
+        "slot": 2,
+        "slug": "光谐加速",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只回复武器充能或提高充能速度，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314195001",
+        "descriptionRowKey": "1314195001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040481.PassiveSkill_ID=1314195001:1 -> DataTables/MGE/MGEPassive_BD.json#1314195001_1.MGE.Id=1314195001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314195001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314195001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314195001.json#Default__MGE_1314195001_C: {\"UberGraphFrame\":{},\"AddChargeRatio\":30,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314195001.json SHA-256=3575795d6dbcc7d0d397871826e7316345a34927970a438c84472ce0b7a115de; ExecuteUbergraph_MGE_1314195001@188 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'; ExecuteUbergraph_MGE_1314195001@465 Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314195001.uasset#ExecuteUbergraph@465: MGEAddBuff(BD_Common_1314195001) to owning weapon -> BuffConfigDatatableNew.BD_Common_1314195001 GPModifyIDs=[111051042], Duration=5, StackLimitCount=1, bMagnitudesFactorInStackCount=true",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051042_1_0: {\"ID\":111051042,\"Level\":1,\"AttributeName\":\"GPAttributeSetSkill.ChargeSpeedAddRatio\",\"Description\":\"光谐加速：充能速率提升20%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.2,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "lc:111051042_1_0 作用条件：光能效果触发后；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051042_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040483",
+      "label": "恒辉长存",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040483",
+        "slot": 3,
+        "slug": "恒辉长存",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果提供伤害减免并生成光能量球，不提供正向伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1316228001",
+        "descriptionRowKey": "1316228001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040483.PassiveSkill_ID=1316228001:1 -> DataTables/MGE/MGEPassive_BD.json#1316228001_1.MGE.Id=1316228001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316228001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316228001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316228001.json#Default__MGE_1316228001_C: {\"UberGraphFrame\":{},\"DamageReduceBuff\":\"BD_Common_1316228001\",\"LightBuff\":\"SeasonTalent_S5_Normal_001\",\"BannedTags\":[]}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1316228001 (DamageReduceBuff): GPModifyIDs=[111051006], Duration=5, StackLimitCount=1",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_001 (LightBuff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "refs/Exports/NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#111051006_1_0: {\"ID\":111051006,\"Level\":1,\"AttributeName\":\"GPAttributeSetBearDamageRatio.DamageBearRatio\",\"Description\":\"恒辉长存：减伤24%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.24,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1316228001.json SHA-256=d1f0dd597a1061c482f2c3c608847185a1b6c6a95bf036859be0d509cd4c4bda; ExecuteUbergraph_MGE_1316228001@595 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1316228001@1001 Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "lc:111051006_1_0 作用条件：光能增益期间；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051006_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040484",
+      "label": "暗影补给",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040484",
+        "slot": 1,
+        "slug": "暗影补给",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只回复或过充弹药，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313199001",
+        "descriptionRowKey": "1313199001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040484.PassiveSkill_ID=1313199001:1 -> DataTables/MGE/MGEPassive_BD.json#1313199001_1.MGE.Id=1313199001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313199001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313199001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313199001.json#Default__MGE_1313199001_C: {\"UberGraphFrame\":{},\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_002 (DarkBuff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313199001.json SHA-256=817945498032acc22f7b7874279a94dc460bf93bba8eaea342134ccc618d3377; ExecuteUbergraph_MGE_1313199001@637 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'; ExecuteUbergraph_MGE_1313199001@1299 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040485",
+      "label": "虚空汲取",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040485",
+        "slot": 2,
+        "slug": "虚空汲取",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高充能速率或回复武器充能，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314196001",
+        "descriptionRowKey": "1314196001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040485.PassiveSkill_ID=1314196001:1 -> DataTables/MGE/MGEPassive_BD.json#1314196001_1.MGE.Id=1314196001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314196001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314196001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314196001.json#Default__MGE_1314196001_C: {\"UberGraphFrame\":{},\"DarkBuff\":\"SeasonTalent_S5_Normal_002\",\"CheckDarkNum\":3,\"AddChargeValue\":25,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_002 (DarkBuff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314196001.json SHA-256=bcf81e306fd0a58cb7541000a713a7a88bed93d9fb30c1007fc5978505533a65; ExecuteUbergraph_MGE_1314196001@131 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'; ExecuteUbergraph_MGE_1314196001@736 Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314196001.uasset#ExecuteUbergraph@736: MGEAddBuff(BD_Common_1314196001) to owning weapon -> BuffConfigDatatableNew.BD_Common_1314196001 GPModifyIDs=[111051043], Duration=3, StackLimitCount=1, bMagnitudesFactorInStackCount=false",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051043_1_0: {\"ID\":111051043,\"Level\":1,\"AttributeName\":\"GPAttributeSetSkill.ChargeSpeedAddRatio\",\"Description\":\"虚空汲取：充能速率提升25%\",\"GPModifierOp\":\"B1\",\"BaseValue\":1,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "Conflict: Numerical Description says +25%, but GPModifierOp=B1 BaseValue=1 means +100%; structured value is authoritative.",
+          "lc:111051043_1_0 作用条件：暗能量触发后；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051043_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040487",
+      "label": "暗能余韵",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040487",
+        "slot": 3,
+        "slug": "暗能余韵",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只延长暗终极持续时间，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1316229001",
+        "descriptionRowKey": "1316229001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040487.PassiveSkill_ID=1316229001:1 -> DataTables/MGE/MGEPassive_BD.json#1316229001_1.MGE.Id=1316229001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316229001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316229001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316229001.json#Default__MGE_1316229001_C: {\"UberGraphFrame\":{},\"ChangeBuffDurationHandle\":{},\"MaxAddDuration\":4,\"BannedTags\":[],\"bWantManagerByWeapon\":false}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1316229001.json SHA-256=6e961b34b84a1f0bfc4d29f49461ac8332fc0814c50e0ac9a109881701bb7bb6; ExecuteUbergraph_MGE_1316229001@666 Function'MGEAction_ModifyBuffDuration:ModifyBuffDuration'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040504",
+      "label": "迟缓循环",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040504",
+        "slot": 1,
+        "slug": "迟缓循环",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只在命中或击杀减速目标时装填弹药，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313204001",
+        "descriptionRowKey": "1313204001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040504.PassiveSkill_ID=1313204001:1 -> DataTables/MGE/MGEPassive_BD.json#1313204001_1.MGE.Id=1313204001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313204001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313204001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313204001.json#Default__MGE_1313204001_C: {\"UberGraphFrame\":{},\"AddBulletNum_Hit\":1,\"AddBulletNum_Kill\":1,\"CustomCDKey_Hit\":\"MGE_1313204001_Hit\",\"CustomCDKey_Kill\":\"MGE_1313204001_Kill\",\"CustomCD_Hit\":2,\"CustomCD_Kill\":2,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313204001.json SHA-256=d62721581bd6cfbd62892829c311aaa62e37b53f28e5190785389bb82df42eb2; ExecuteUbergraph_MGE_1313204001@374 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'; ExecuteUbergraph_MGE_1313204001@714 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040505",
+      "label": "腐蚀充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040505",
+        "slot": 2,
+        "slug": "腐蚀充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高充能速率或回复武器充能，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314201001",
+        "descriptionRowKey": "1314201001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040505.PassiveSkill_ID=1314201001:1 -> DataTables/MGE/MGEPassive_BD.json#1314201001_1.MGE.Id=1314201001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314201001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314201001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314201001.json#Default__MGE_1314201001_C: {\"UberGraphFrame\":{},\"CustomCDKey_Kill\":\"MGE_1314201001_Kill\",\"AddChargeValue\":6,\"CustomCD_Kill\":3,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314201001.json SHA-256=8157f9a5c81a7618bdbc27bfd0b1598b164faea179b3617e4a61fb008ee6f753; ExecuteUbergraph_MGE_1314201001@262 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1314201001@464 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314201001.uasset#ExecuteUbergraph@262: MGEAddBuff(BD_Common_1314201001) to owning weapon -> BuffConfigDatatableNew.BD_Common_1314201001 GPModifyIDs=[111051048], Duration=3, StackLimitCount=3, bMagnitudesFactorInStackCount=true",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051048_1_0: {\"ID\":111051048,\"Level\":1,\"AttributeName\":\"GPAttributeSetSkill.ChargeSpeedAddRatio\",\"Description\":\"腐蚀充能：充能速率提升8%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.08,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "lc:111051048_1_0 作用条件：每层充能增益；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051048_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040507",
+      "label": "瘟疫之源",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040507",
+        "slot": 3,
+        "slug": "瘟疫之源",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果生成造成独立伤害的毒池并提供生命回复，不提供角色增伤通道。",
+      "evidence": {
+        "passiveSkillId": "1316234001",
+        "descriptionRowKey": "1316234001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040507.PassiveSkill_ID=1316234001:1 -> DataTables/MGE/MGEPassive_BD.json#1316234001_1.MGE.Id=1316234001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316234001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316234001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316234001.json#Default__MGE_1316234001_C: {\"UberGraphFrame\":{},\"EffectZoneDuration\":5,\"CooldownDuration\":10,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1316234001.json SHA-256=5f7a7ccde1618aea7d91c4c9fbe6415c1ae2610df93c43b65b2badc42c0e7481; ExecuteUbergraph_MGE_1316234001@1683 Function'AIEffectZoneSystem:GenerateEffectZoneV2'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040512",
+      "label": "弹幕回收",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040512",
+        "slot": 1,
+        "slug": "弹幕回收",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只按命中目标数量回复弹药，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313206001",
+        "descriptionRowKey": "1313206001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040512.PassiveSkill_ID=1313206001:1 -> DataTables/MGE/MGEPassive_BD.json#1313206001_1.MGE.Id=1313206001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313206001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313206001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313206001.json#Default__MGE_1313206001_C: {\"UberGraphFrame\":{},\"AddBulletNum_Hit\":1,\"CustomCDKey_Hit\":\"MGE_1313206001_Hit\",\"CustomCD_Hit\":4,\"CheckHitNum\":3,\"AddAmmoNum\":1,\"CustomCDKey_HitMulti\":\"MGE_1313206001_HitMulti\",\"CustomCD_HitMulti\":4,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313206001.json SHA-256=430b3d6052e0c921bc4f2658fc889aeda41001aecafcee97df501f8ca51b5731; ExecuteUbergraph_MGE_1313206001@376 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'; ExecuteUbergraph_MGE_1313206001@690 Function'BPAsync_ModifyWeaponAmmoAttribute:ModifyWeaponAmmoAttribute'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040513",
+      "label": "连锁充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040513",
+        "slot": 2,
+        "slug": "连锁充能-20703040513",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高充能速率或回复武器充能，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314203001",
+        "descriptionRowKey": "1314203001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040513.PassiveSkill_ID=1314203001:1 -> DataTables/MGE/MGEPassive_BD.json#1314203001_1.MGE.Id=1314203001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314203001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314203001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314203001.json#Default__MGE_1314203001_C: {\"UberGraphFrame\":{},\"CustomCDKey\":\"MGE_1314203001\",\"ChargeValue\":7,\"CustomCD\":4,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314203001.json SHA-256=0909c21f0032c6a91d0a38a2bbd826dc1bddb15d6919dd3f57cbc7283117ac65; ExecuteUbergraph_MGE_1314203001@295 Function'NZModularGameplayEffectLibrary:MGEActionChargeForSkill'; ExecuteUbergraph_MGE_1314203001@494 Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314203001.uasset#ExecuteUbergraph@494: MGEAddBuff(BD_Common_1314203001) to owning weapon -> BuffConfigDatatableNew.BD_Common_1314203001 GPModifyIDs=[111051049], Duration=5, StackLimitCount=1, bMagnitudesFactorInStackCount=false",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051049_1_0: {\"ID\":111051049,\"Level\":1,\"AttributeName\":\"GPAttributeSetSkill.ChargeSpeedAddRatio\",\"Description\":\"连锁充能：充能速率提升40%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.4,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "lc:111051049_1_0 作用条件：充能增益期间；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051049_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040515",
+      "label": "余波扩散",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040515",
+        "slot": 3,
+        "slug": "余波扩散",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果生成造成独立伤害的冲击波并调整其范围，不提供角色增伤通道。",
+      "evidence": {
+        "passiveSkillId": "1316216001",
+        "descriptionRowKey": "1316216001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040515.PassiveSkill_ID=1316216001:1 -> DataTables/MGE/MGEPassive_BD.json#1316216001_1.MGE.Id=1316216001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316216001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316216001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316216001.json#Default__MGE_1316216001_C: {\"UberGraphFrame\":{},\"NumericalID\":11010141,\"CurrentExplodeRangeRatio\":1,\"ExpandRangeRatio\":1.3,\"CooldownDuration\":3,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1316216001.json SHA-256=93591d0acc080d06cc100bc1567735f8305b989545839836652a440e3c9346be; ExecuteUbergraph_MGE_1316216001@539 Function'NZAOEBlueprintAsyncAction:DoNZAOEAction'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040516",
+      "label": "滑铲射击",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040516",
+        "slot": 1,
+        "slug": "滑铲射击",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只修改精准度、后坐力并装填弹药，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1313207001",
+        "descriptionRowKey": "1313207001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040516.PassiveSkill_ID=1313207001:1 -> DataTables/MGE/MGEPassive_BD.json#1313207001_1.MGE.Id=1313207001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1313207001.MGEClass=Abilities/Build/CBT3/Perk01/MGE_1313207001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313207001.json#Default__MGE_1313207001_C: {\"UberGraphFrame\":{},\"AddBulletNum\":1,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1313207001.json SHA-256=50d8798b86fc036eb170d64845952734e2731c093de1e7663edba9fd25d6c839; ExecuteUbergraph_MGE_1313207001@320 Function'MGEAction_ApplyModifierIDByCurve:ApplyModifiers'; ExecuteUbergraph_MGE_1313207001@1029 Function'NZModularGameplayEffectAddWeaponAmmoAction:MGEAddWeaponAmmo'",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk01/MGE_1313207001.uasset#ExecuteUbergraph@320: ApplyModifiers(111051026, X=0), target is owning weapon; numerical base value therefore used.",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051026_1_0: {\"ID\":111051026,\"Level\":1,\"AttributeName\":\"GPAttributeSetTrajectory.SpreadAdjust\",\"Description\":\"滑铲射击：武器准确度+20%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.2,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051026_1_1: {\"ID\":111051026,\"Level\":1,\"AttributeName\":\"GPAttributeSetTrajectory.RecoilScale_HoriAddRatio\",\"Description\":\"滑铲射击：武器水平稳定性+30%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.3,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051026_1_2: {\"ID\":111051026,\"Level\":1,\"AttributeName\":\"GPAttributeSetTrajectory.RecoilScale_VertiAddRatio\",\"Description\":\"滑铲射击：武器垂直稳定性+30%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.3,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "lc:111051026_1_0 作用条件：滑铲期间；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "lc:111051026_1_1 作用条件：滑铲期间；仅登记属性身份，不把 coefficient 当作最终增益。",
+          "lc:111051026_1_2 作用条件：滑铲期间；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051026_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          },
+          {
+            "expression": {
+              "row": "lc:111051026_1_1",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          },
+          {
+            "expression": {
+              "row": "lc:111051026_1_2",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040517",
+      "label": "铲击充能",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040517",
+        "slot": 2,
+        "slug": "铲击充能",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只提高武器充能速率，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1314204001",
+        "descriptionRowKey": "1314204001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040517.PassiveSkill_ID=1314204001:1 -> DataTables/MGE/MGEPassive_BD.json#1314204001_1.MGE.Id=1314204001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1314204001.MGEClass=Abilities/Build/CBT3/Perk02/MGE_1314204001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314204001.json#Default__MGE_1314204001_C: {\"UberGraphFrame\":{},\"CooldownDuration\":10,\"BannedTags\":[]}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1314204001.json SHA-256=6b1747db4d55773360b9e20232a28978873ee33eed682a3ba53b740ce272602a; ExecuteUbergraph_MGE_1314204001@30 Function'NZModularGameplayEffectLibrary:MGEAddBuff'",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1314204001.uasset#ExecuteUbergraph@30: MGEAddBuff(BD_Common_1314204001) to owning weapon -> BuffConfigDatatableNew.BD_Common_1314204001 GPModifyIDs=[111051050], Duration=5, StackLimitCount=1, bMagnitudesFactorInStackCount=false",
+          "Attributes/AutoGenerate/numerical_modifier_config.json#111051050_1_0: {\"ID\":111051050,\"Level\":1,\"AttributeName\":\"GPAttributeSetSkill.ChargeSpeedAddRatio\",\"Description\":\"铲击充能：充能速率提升110%\",\"GPModifierOp\":\"B1\",\"BaseValue\":1.1,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "lc:111051050_1_0 作用条件：滑铲触发充能增益后；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051050_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040519",
+      "label": "地裂轨迹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040519",
+        "slot": 3,
+        "slug": "地裂轨迹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果生成造成独立伤害和减速的地裂区域，并提供移动能力，不提供角色增伤通道。",
+      "evidence": {
+        "passiveSkillId": "1316217001",
+        "descriptionRowKey": "1316217001_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040519.PassiveSkill_ID=1316217001:1 -> DataTables/MGE/MGEPassive_BD.json#1316217001_1.MGE.Id=1316217001 -> DataTables/MGE/GPModularGameplayEffectTable.json#1316217001.MGEClass=Abilities/Build/CBT3/Perk04/MGE_1316217001.json",
+          "refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk04/MGE_1316217001.json#Default__MGE_1316217001_C: {\"UberGraphFrame\":{},\"EffectZoneDuration\":3,\"CheckTime\":3,\"BuffName\":\"BD_Common_1316217001\",\"SlideDurationRatio\":1.1,\"GenerateEffectZoneInterval\":0.5,\"GenerateEffectZoneNum\":5,\"BannedTags\":[]}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#BD_Common_1316217001 (BuffName): GPModifyIDs=[111051059], Duration=4, StackLimitCount=1",
+          "refs/Exports/NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#111051059_1_0: {\"ID\":111051059,\"Level\":1,\"AttributeName\":\"GPAttributeSetSpeed.SpeedScale\",\"Description\":\"疾风：移动速度+10%\",\"GPModifierOp\":\"B1\",\"BaseValue\":0.1,\"CoefValue\":0,\"IFBeAttackOnceModifier\":false,\"TableRowPlatformCookRule\":\"EUEDataTableRowCookRule::Default\"}",
+          "Local bytecode MD/_local/overlimit/ordinary-1316217001.bytecode.json SHA-256=a8aee732295de43ee5d50a74b74f0f764e9567db9b5816ee2833bf3015827af1; ExecuteUbergraph_MGE_1316217001@909 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1316217001@2078 Function'AIEffectZoneSystem:GenerateEffectZoneV2'",
+          "lc:111051059_1_0 作用条件：疾风状态期间；仅登记属性身份，不把 coefficient 当作最终增益。"
+        ],
+        "applications": [
+          {
+            "expression": {
+              "row": "lc:111051059_1_0",
+              "field": "base"
+            },
+            "context": {
+              "recipient": "self"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040531",
+      "label": "狂热龙炎",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040531",
+        "slot": 4,
+        "slug": "狂热龙炎",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果调整弹丸射程和散布并替换主动技能，不提供可注册的角色伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1312032006",
+        "descriptionRowKey": "1312032006_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040531.PassiveSkill_ID=1312032006:1 -> DataTables/MGE/MGEPassive_BD.json#1312032006_1.MGE.Id=1312032006 -> DataTables/MGE/GPModularGameplayEffectTable.json#1312032006.MGEClass=Weapon/Data/SG/SG_20003000011_WBH_JFZL/MGE/MGE_1312032006_JFZL_DarkGoldPlugin.json",
+          "refs/Exports/NZM/Content/Weapon/Data/SG/SG_20003000011_WBH_JFZL/MGE/MGE_1312032006_JFZL_DarkGoldPlugin.json#Default__MGE_1312032006_JFZL_DarkGoldPlugin_C: {\"UberGraphFrame\":{},\"bWantManagerByWeapon\":false,\"bNeedPrediction\":true}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1312032006.json SHA-256=9e9d4aab37b1c301a410d700f1ee25b29f88b3bca6c220922f4c63d05f9bdf0b; ExecuteUbergraph_MGE_1312032006_JFZL_DarkGoldPlugin@239 Function'MGEAction_ModifyBulletParam:ApplyModifyBulletParam'; ExecuteUbergraph_MGE_1312032006_JFZL_DarkGoldPlugin@657 Function'NZMGEModifyWeaponProjectileParams:MGEModifyWeaponProjectileParams'; ExecuteUbergraph_MGE_1312032006_JFZL_DarkGoldPlugin@1200 Function'MGEAction_ChangeWeaponSkill:ChangeWeaponSkill'; ExecuteUbergraph_MGE_1312032006_JFZL_DarkGoldPlugin@1561 Function'GPSkillSlotHelper:ModifyChargeDurationBySlot'; ExecuteUbergraph_MGE_1312032006_JFZL_DarkGoldPlugin@1631 Function'GPSkillSlotHelper:AddSkillDurationModifyBySlotType'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040536",
+      "label": "寒霜协同",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040536",
+        "slot": 4,
+        "slug": "寒霜协同",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "效果只改变主动技能的团队适用范围和持续时间，不提供可注册的伤害倍率通道。",
+      "evidence": {
+        "passiveSkillId": "1312079002",
+        "descriptionRowKey": "1312079002_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040536.PassiveSkill_ID=1312079002:1 -> DataTables/MGE/MGEPassive_BD.json#1312079002_1.MGE.Id=1312079002 -> DataTables/MGE/GPModularGameplayEffectTable.json#1312079002.MGEClass=Weapon/Data/Pistol/Pistol_20007000038_null_JDYQ/MGE/MGE_1312079002_JDYQ.json",
+          "refs/Exports/NZM/Content/Weapon/Data/Pistol/Pistol_20007000038_null_JDYQ/MGE/MGE_1312079002_JDYQ.json#Default__MGE_1312079002_JDYQ_C: {\"UberGraphFrame\":{},\"MGE_1312079002\":1312079002,\"bNeedPrediction\":true}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1312079002.json SHA-256=f1c649a47c75df123f2aa96a383dbcace8be6be139cfaae5561eef74302e8c12; ",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040537",
+      "label": "极寒领域",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040537",
+        "slot": 4,
+        "slug": "极寒领域",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果将主动技能替换为造成独立伤害的冰霜光环，不提供角色增伤通道。",
+      "evidence": {
+        "passiveSkillId": "1312078003",
+        "descriptionRowKey": "1312078003_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040537.PassiveSkill_ID=1312078003:1 -> DataTables/MGE/MGEPassive_BD.json#1312078003_1.MGE.Id=1312078003 -> DataTables/MGE/GPModularGameplayEffectTable.json#1312078003.MGEClass=Weapon/Data/AutoGLauncher/AutoGLauncher_20003000017_null_JHBS/MGE/MGE_1312078003_JHBS.json",
+          "refs/Exports/NZM/Content/Weapon/Data/AutoGLauncher/AutoGLauncher_20003000017_null_JHBS/MGE/MGE_1312078003_JHBS.json#Default__MGE_1312078003_JHBS_C: {\"UberGraphFrame\":{},\"ActiveSkill\":{\"Name\":\"ActiveSkill\",\"Id\":\"5104301\"}}",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1312078003.json SHA-256=552155f451d71e28b08f64bd45cbe280127e6dd1adace9e864dc7dbc2bfc5704; ExecuteUbergraph_MGE_1312078003_JHBS@126 Function'MGEAction_ChangeWeaponSkill:ChangeWeaponSkill'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    },
+    {
+      "id": "perk:20703040543",
+      "label": "腐蚀飞弹",
+      "source": {
+        "type": "perk",
+        "itemId": "20703040543",
+        "slot": 4,
+        "slug": "腐蚀飞弹",
+        "overlimitCard": false,
+        "season": "s4-preview"
+      },
+      "reasonCode": "independent-damage-event",
+      "reason": "效果直接改写榴弹基础直击与爆炸伤害、弹道和异常层数，不提供角色增伤通道。",
+      "evidence": {
+        "passiveSkillId": "1312067005",
+        "descriptionRowKey": "1312067005_1",
+        "basis": [
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/WeaponModItemData.json#20703040543.PassiveSkill_ID=1312067005:1 -> DataTables/MGE/MGEPassive_BD.json#1312067005_1.MGE.Id=1312067005 -> DataTables/MGE/GPModularGameplayEffectTable.json#1312067005.MGEClass=Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312067005_YMDH.json",
+          "refs/Exports/NZM/Content/Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312067005_YMDH.json#Default__MGE_1312067005_YMDH_C: {\"UberGraphFrame\":{},\"直击伤害Modifier\":1206000610,\"重力系数减少\":-1,\"飞行速度增加\":6000,\"光能量Buff\":\"SeasonTalent_S5_Normal_001\",\"暗能量Buff\":\"SeasonTalent_S5_Normal_002\",\"极速狂热持续时间\":12,\"Invincible Tag\":{\"TagName\":\"AutoGen.State.Invincible\"},\"BuffForNormal\":\"Weapon_20106000006_2\",\"BuffForBoss\":\"Weapon_20106000006_1\",\"ModifyAOE\":[[\"SkillResources.Weapon.YMDH\"]],\"bWantManagerByWeapon\":false,\"bNeedPrediction\":true}",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_001 (光能量Buff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#SeasonTalent_S5_Normal_002 (暗能量Buff): GPModifyIDs=[], Duration=-1, StackLimitCount=5",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#Weapon_20106000006_2 (BuffForNormal): GPModifyIDs=[], Duration=-1, StackLimitCount=100",
+          "refs/Exports/NZM/Content/DataTables/Buff/BuffConfigDatatableNew.json#Weapon_20106000006_1 (BuffForBoss): GPModifyIDs=[], Duration=-1, StackLimitCount=1200",
+          "MGE_1312067005_YMDH的直击伤害Modifier=1206000610仅见属性声明和CDO值，插件与弹体字节码未见读取或施加调用；不得把B1 BaseValue=5作为额外+500%叠加。以上为静态执行链证据，未做运行时实测。",
+          "Local bytecode MD/_local/s4-local-links/bytecode/1312067005.json SHA-256=8bd73267530a50ee684ee7d83353dc357e2e6319dcb384cdab61ca285afba718; ExecuteUbergraph_MGE_1312067005_YMDH@442 Function'NZMGEModifyWeaponProjectileParams:MGEModifyWeaponProjectileParams'; ExecuteUbergraph_MGE_1312067005_YMDH@1496 Function'NZModularGameplayEffectLibrary:MGEAddBuff'; ExecuteUbergraph_MGE_1312067005_YMDH@2310 Function'BPAsync_ModifyWeaponAmmoAttribute:ModifyWeaponAmmoAttribute'",
+          "核验边界：已读取本地目标MGE的完整ScriptBytecode；本条列出的直接操作为排除依据。未将生成区域、替换技能或Native被调实现的内部行为扩展为已核实的角色Modifier数值。"
+        ]
+      }
+    }
+  ]
+}

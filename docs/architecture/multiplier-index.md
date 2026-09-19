@@ -31,13 +31,15 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 
 ### S4 预览验收
 
-`scripts/s4-perk-index-reference.json` 固定用户指定参考仓库 `lostlightll/nzm-wiki-s4-preview` 的 `1e46f2c5dd4296159cf3b268656ae592f0e21dc4`：82 个插件中 35 个增伤来源、47 个明确排除项，包含旧条目冷焰爆破、冷焰续航。`lib/s4-perk-index.test.ts` 按 ItemID 验证全量分类和双向关系，不以名称或参考站的季中标签匹配。
+`scripts/s4-perk-index-review.json` 保存初始 82 个 S4 插件的本地审定清单，包含旧条目冷焰爆破、冷焰续航。每项以 ItemID 连接本地 Passive、MGE、Buff 或字节码调用，来源使用精确 Numerical 表达式，排除项保留本地依据与未验证边界。`lib/s4-perk-index.test.ts` 校验注册表与清单一致，再通过预览 Resolver 验证派生分类和双向关系。
 
-可直连 Numerical 的来源使用预载原表的精确表达式；无直连行的分类保留参考版本的人工审定依据，不复制描述数值。光暗冷焰在保留参考站爆炸伤害通道之外，按当前 MGE 的 `121400044` 引用补充全伤害通道。驰射淬锋显示暴伤和大稀释两个徽标；图鉴中分居左右上角。同乘区的多个通道仍合并成一个徽标。
+增伤来源必须直连本地预览 Numerical，不能用其他仓库的分类或描述维持 `reviewed-override`。无法核实的链路明确登记为 `unverified-evidence`，不能伪装成已验证的无增伤。纯属性的直连行保存在排除项的 `evidence.applications`，不作为伤害乘区来源。光暗冷焰按当前 MGE 的 `121400043`、`121400044` 分别登记爆炸和全伤害通道。驰射淬锋显示暴伤和大稀释两个徽标；图鉴中分居左右上角。同乘区的多个通道仍合并成一个徽标。
 
-维护命令：`pnpm exec tsx scripts/project-s4-perk-index.ts --content-root <预载Content目录>`，随后执行 `pnpm num-modifier:project`。预览行只存入 `data/perk-preview-modifiers.json`，不覆盖正式 Lock。导入生成器会保留索引引用的预览行。
+维护命令：`pnpm exec tsx scripts/project-s4-perk-index.ts --content-root <预载Content目录>` 默认只校验本地身份与已审定 Numerical 行；加 `--write` 才更新这 82 项注册，不覆盖其他插件、通道、MDX 或正式 Lock。数值漂移或缺行会报错，先复核并维护 `data/perk-preview-modifiers.json`，再重新运行。完成后执行 `pnpm num-modifier:project`；若技能索引已启用，再执行 `pnpm num-skills:project`。导入生成器会保留索引引用的预览行。
 
-原表审计使用 `pnpm multiplier-providers:audit --preview-content-root <预载Content目录>`。维护者后续确认纯白之光（20703040540）归入弱点增伤，覆盖参考站旧排除；引用预载 `1400090107_1_0.base`（WeaknessDamageRatio，B1，+70%）。当前 S4 共 36 个增伤来源、46 个排除项。审计验证其 ItemID、被动和描述 Token 身份链，不再保留排除例外。
+纯白之光（20703040540）使用本地 `1400090107_1_0.base`（WeaknessDamageRatio，B1，+70%），与其他来源一起在本地清单维护，不再使用测试或生成器中的 ItemID 分类例外。证据记录区分默认属性、实际调用、配置数值与描述语义；已解析行只证明对应属性，不自动证明作用对象、动态系数或全部执行分支。
+
+本地复核后，这 82 项包含 37 个增伤来源和 45 个排除项。战灵余烬、矩阵湮灭、换弹引爆补入对应伤害事件的 Modifier，不视为全局增伤；寒霜之怒补入技能伤害通道。冷焰爆破、冷焰续航虽有蓝图写入的 ModifierID `121400016`、`121400017`，当前选定原表缺少对应行，因此保留 `unverified-evidence`，不能沿用旧分类或描述百分比。
 
 S0「武器之歌」按维护者确认的 Buff 对应关系登记：`BD_Common_1318123001.GPModifyIDs=[119124001]`，以 `lc:119124001_1_0.base` 识别大稀释乘区的武器伤害分面。Buff 的 `_2` 至 `_5` 配置仍引用 119124001；不将 119124002～119124005 自动视为天赋后续等级。
 
