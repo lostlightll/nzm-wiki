@@ -1918,7 +1918,7 @@
       },
       {
         "path": "data/perk-preview/slot-4/狂热龙炎.mdx",
-        "sha256": "65abc71db7e6021e9d91b811b385f2a4d2a5d40ef59557775c6aabee8d17e38f"
+        "sha256": "bd8c68f15ca4aa82b478bfc86985b1fd21c127a6ad7f33e71adbd5cde744c2d3"
       },
       {
         "path": "data/perk-preview/slot-4/狂轰乱炸.mdx",
@@ -25751,13 +25751,13 @@
           "飓风之龙"
         ],
         "effects": [],
-        "description": "大幅提升龙炎弹射程并减少其散布，并将主动技能替换为急速狂热。急速狂热使射速提升<strong>50%</strong>且不消耗弹药，持续时间<strong>14</strong>秒，冷却时间<strong>30</strong>秒，不阻断自然恢复。",
+        "description": "大幅提升龙炎弹射程并减少其散布，并将主动技能替换为急速狂热。急速狂热使射速提升<strong>50%</strong>且不消耗弹药，持续时间<strong>14</strong>秒，冷却时间<strong>30</strong>秒。",
         "collectModItem": 1,
         "makeModItem": 1,
         "isCooked": true
       },
       "content": "",
-      "source": "---\n\"title\": \"狂热龙炎\"\n\"id\": \"20703040531\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1312032006\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"飓风之龙\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\n\"description\": \"大幅提升龙炎弹射程并减少其散布，并将主动技能替换为急速狂热。急速狂热使射速提升<strong>50%</strong>且不消耗弹药，持续时间<strong>14</strong>秒，冷却时间<strong>30</strong>秒，不阻断自然恢复。\"\n\"preview_change\": \"new\"\n---",
+      "source": "---\n\"title\": \"狂热龙炎\"\n\"id\": \"20703040531\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1312032006\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"飓风之龙\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\n\"description\": \"大幅提升龙炎弹射程并减少其散布，并将主动技能替换为急速狂热。急速狂热使射速提升<strong>50%</strong>且不消耗弹药，持续时间<strong>14</strong>秒，冷却时间<strong>30</strong>秒。\"\n\"preview_change\": \"new\"\n---",
       "metadata": {
         "title": "狂热龙炎",
         "id": "20703040531",
@@ -25773,7 +25773,7 @@
         "CollectMODItem": 1,
         "MakeMODItem": 1,
         "IsCooked": true,
-        "description": "大幅提升龙炎弹射程并减少其散布，并将主动技能替换为急速狂热。急速狂热使射速提升<strong>50%</strong>且不消耗弹药，持续时间<strong>14</strong>秒，冷却时间<strong>30</strong>秒，不阻断自然恢复。"
+        "description": "大幅提升龙炎弹射程并减少其散布，并将主动技能替换为急速狂热。急速狂热使射速提升<strong>50%</strong>且不消耗弹药，持续时间<strong>14</strong>秒，冷却时间<strong>30</strong>秒。"
       },
       "independentDamage": []
     },
