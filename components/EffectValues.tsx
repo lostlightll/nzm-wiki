@@ -4,6 +4,7 @@ import {
 } from "@/components/MultiplierBadges";
 import type { MultiplierRelation } from "@/lib/multiplier-data";
 import type { EffectValueStage, PerkEffectValue } from "@/types";
+import type { ResolvedSkillVariant } from "@/lib/num-skill";
 
 function effectKey(effect: PerkEffectValue): string {
   return effect.kind === "damage"
@@ -87,6 +88,7 @@ export function EffectValuesCatalog({
 
 export function EffectValuesPanel({
   effects,
+  skillVariants,
   relations = [],
   title = "效果数值",
   id,
@@ -94,6 +96,7 @@ export function EffectValuesPanel({
   className = "",
 }: {
   effects: readonly PerkEffectValue[];
+  skillVariants?: readonly ResolvedSkillVariant[];
   relations?: readonly MultiplierRelation[];
   title?: string;
   id?: string;
@@ -108,7 +111,7 @@ export function EffectValuesPanel({
   const unmatchedRelations = relations.filter(
     (relation) => !representedModifierTypes.has(relation.modifierTypeId),
   );
-  if (effects.length === 0 && unmatchedRelations.length === 0) return null;
+  if (effects.length === 0 && unmatchedRelations.length === 0 && !skillVariants?.length) return null;
 
   const layoutClass = flush
     ? "border-t border-white/10 px-4 py-5 sm:px-6"
@@ -122,6 +125,20 @@ export function EffectValuesPanel({
     >
       <h2 className="mb-3 text-sm font-medium text-zinc-400">{title}</h2>
       <div className="space-y-2">
+        {skillVariants?.map(({ reference, skill }) => (
+          <dl key={reference.variant} aria-label={skill.name} className="grid grid-cols-3 gap-2 text-sm">
+            {[
+              ["CD", skill.parameters.cooldown === undefined ? "未核验" : `${skill.parameters.cooldown}S`],
+              ["持续时间", skill.parameters.duration === undefined ? "未核验" : skill.parameters.duration === 0 ? "瞬时" : `${skill.parameters.duration}S${skill.durationIsBase ? "起" : ""}`],
+              ["阻回", skill.parameters.blocking === undefined ? "未核验" : skill.parameters.blocking ? "是" : "否"],
+            ].map(([label, value]) => (
+              <div key={label} className="flex min-w-0 items-center justify-between gap-1 whitespace-nowrap rounded border border-white/10 bg-black/10 px-2 py-2 text-xs sm:px-3 sm:text-sm">
+                <dt className="text-zinc-400">{label}</dt>
+                <dd className="text-zinc-100 tabular-nums">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        ))}
         {damageEffects.map((effect) => (
           <DetailEffect
             key={effectKey(effect)}

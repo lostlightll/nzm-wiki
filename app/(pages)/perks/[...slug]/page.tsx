@@ -142,10 +142,11 @@ export default async function PerkDetailPage({
             entry={entry}
           />
         ))}
-        {perk?.effectValues?.length ? (
+        {perk.effectValues?.length || perk.skillVariants?.length ? (
           <EffectValuesPanel
             id="multiplier-provider"
-            effects={perk.effectValues}
+            effects={perk.effectValues ?? []}
+            skillVariants={perk.skillVariants}
             relations={getProviderRelationsForSource(multiplierSource)}
             className="mt-4"
           />
