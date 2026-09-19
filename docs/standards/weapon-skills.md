@@ -53,6 +53,10 @@ GP `Duration` 是技能生命周期，不能一律代替效果持续时间。旧
 
 `data/num-skill-variants.json` 拥有稳定变体 key、channel、原游戏技能 ID、变体技能定义与证据。插件 `skill_variants` 声明 `weapon_slug`、`base_skill`、`variant`、`operation: replace`，插件不复制数值。拒绝原技能不存在、被动当主动、重复替换、同 ID 自替换和跨通道引用。
 
+同技能 ID 的效果修改使用 `operation: modify`，目录和引用都须显式声明，不能伪造新技能ID。闪身、出其不意等通用替换使用 `{ scope: "all-weapons-active", variant, operation: "replace" }`，目录同样声明scope且不填原技能ID；索引保存一条通用边，按实际武器主动技能查询，不展开重复武器清单。普通伤害或射速强化不自动建成技能变体。
+
+动态技能只展示基础持续时间时声明 `duration_is_base: true`，解析/冻结字段为 `durationIsBase`，详情数值加“起”。持续时间0表示无持续状态，详情显示“瞬时”，不代表动作动画耗时0。具体参数及动态覆写依据见[插件变体证据](../architecture/perk-skill-variant-evidence.md)。
+
 Num Skill Lock 的 row key 为 `weapons|current|<season>-preview:gp|pve:<rowName>`。`weapons` 是现有武器目录的选定证据空间，不代表从最新游戏全表刷新正式数值。`current` 和预览通道互不回退。充能依旧引用原 Weapon Lock，不复制成第二份技能 CD 数据库。
 
 预览插件发布时冻结解析结果及参数来源。运行时与索引读取已发布 `preview.json`，不读取尚未发布的预览 MDX，也不随当前武器或技能原表更新重算变体值。

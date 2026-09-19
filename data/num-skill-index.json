@@ -16,15 +16,23 @@
       },
       {
         "path": "data/num-skill-lock.json",
-        "sha256": "ff2bd2d9341d9486507bd6cf2251a3e63a8310f637dcab83b4e8e08df7d788cb"
+        "sha256": "f93f400538703d173bffe60f49fb1e30099d9f4a80b94ef53984f10b30970d62"
       },
       {
         "path": "data/num-skill-variants.json",
-        "sha256": "cab7d0803320fba958ea9f2c715ba12e47fd80642097e5f203d4741e6f9fb4d7"
+        "sha256": "61bf366ab3f15b7f55c7ed9733ca28228b9a7b22c9946354786cb91bad304ee3"
       },
       {
         "path": "data/perk-preview/preview.json",
-        "sha256": "237a477f2a8f50a80e35e05932c73ca0c6ff7a15683d5d02eead9b29407421c1"
+        "sha256": "eb00307cf7734607cf5f470e2fdc2362ff9b12a8d20497fc4a611969a4c409b7"
+      },
+      {
+        "path": "data/perks/slot-2/出其不意.mdx",
+        "sha256": "68dffdd4041850af0dc3c970e55c0f2aaacb6ce129e5a1c8ba16f6cb4dce79cd"
+      },
+      {
+        "path": "data/perks/slot-2/闪身.mdx",
+        "sha256": "ca8ec11bb0c42d2102bf2f8150f402cad522960d1ab27750177fe387dd011033"
       },
       {
         "path": "data/weapon-data-lock.json",
@@ -8053,6 +8061,324 @@
     }
   ],
   "variants": [
+    {
+      "id": "throw-gun",
+      "kind": "active",
+      "name": "出其不意",
+      "gameSkillId": 5101901,
+      "display": false,
+      "parameters": {
+        "cooldown": 25,
+        "duration": 0,
+        "count": 1,
+        "blocking": false
+      },
+      "modifierSources": [],
+      "provenance": {
+        "cooldown": {
+          "row": "current:pve:5101901_1",
+          "field": "ChargeNeedTime"
+        },
+        "duration": {
+          "row": "current:gp:5101901",
+          "field": "Duration"
+        },
+        "count": {
+          "row": "current:pve:5101901_1",
+          "field": "SkillCount"
+        },
+        "blocking": {
+          "row": "current:gp:5101901",
+          "field": "bPauseChargeDuringActivation"
+        }
+      },
+      "perkItemId": "20703040086",
+      "perkSlug": "slot-2/出其不意",
+      "channel": "current",
+      "scope": "all-weapons-active",
+      "variantKey": "current:5101901",
+      "operation": "replace"
+    },
+    {
+      "id": "flash-away",
+      "kind": "active",
+      "name": "闪身",
+      "gameSkillId": 5000801,
+      "display": false,
+      "parameters": {
+        "cooldown": 15,
+        "duration": 0,
+        "count": 1,
+        "blocking": false
+      },
+      "modifierSources": [],
+      "provenance": {
+        "cooldown": {
+          "literal": 15,
+          "reason": "MGE_1314102001.ExecuteUbergraph@1122 调用ModifyChargeDurationBySlot，显式参数15/0覆盖插槽充能；不能直接采用PVE基础8秒。",
+          "evidence": "docs/architecture/perk-skill-variant-evidence.md"
+        },
+        "duration": {
+          "row": "current:gp:5000801",
+          "field": "Duration"
+        },
+        "count": {
+          "row": "current:pve:5000801_1",
+          "field": "SkillCount"
+        },
+        "blocking": {
+          "row": "current:gp:5000801",
+          "field": "bPauseChargeDuringActivation"
+        }
+      },
+      "perkItemId": "20703040015",
+      "perkSlug": "slot-2/闪身",
+      "channel": "current",
+      "scope": "all-weapons-active",
+      "variantKey": "current:5000801",
+      "operation": "replace"
+    },
+    {
+      "id": "throw-gun",
+      "kind": "active",
+      "name": "出其不意",
+      "gameSkillId": 5101901,
+      "display": false,
+      "parameters": {
+        "cooldown": 25,
+        "duration": 0,
+        "count": 1,
+        "blocking": false
+      },
+      "modifierSources": [],
+      "provenance": {
+        "cooldown": {
+          "row": "s4-preview:pve:5101901_1",
+          "field": "ChargeNeedTime"
+        },
+        "duration": {
+          "row": "s4-preview:gp:5101901",
+          "field": "Duration"
+        },
+        "count": {
+          "row": "s4-preview:pve:5101901_1",
+          "field": "SkillCount"
+        },
+        "blocking": {
+          "row": "s4-preview:gp:5101901",
+          "field": "bPauseChargeDuringActivation"
+        }
+      },
+      "perkItemId": "20703040086",
+      "perkSlug": "preview/slot-2/出其不意",
+      "channel": "s4-preview",
+      "scope": "all-weapons-active",
+      "variantKey": "s4-preview:5101901",
+      "operation": "replace"
+    },
+    {
+      "id": "flash-away",
+      "kind": "active",
+      "name": "闪身",
+      "gameSkillId": 5000801,
+      "display": false,
+      "parameters": {
+        "cooldown": 15,
+        "duration": 0,
+        "count": 1,
+        "blocking": false
+      },
+      "modifierSources": [],
+      "provenance": {
+        "cooldown": {
+          "literal": 15,
+          "reason": "MGE_1314102001.ExecuteUbergraph@1122 调用ModifyChargeDurationBySlot，显式参数15/0覆盖插槽充能；不能直接采用PVE基础8秒。",
+          "evidence": "docs/architecture/perk-skill-variant-evidence.md"
+        },
+        "duration": {
+          "row": "s4-preview:gp:5000801",
+          "field": "Duration"
+        },
+        "count": {
+          "row": "s4-preview:pve:5000801_1",
+          "field": "SkillCount"
+        },
+        "blocking": {
+          "row": "s4-preview:gp:5000801",
+          "field": "bPauseChargeDuringActivation"
+        }
+      },
+      "perkItemId": "20703040015",
+      "perkSlug": "preview/slot-2/闪身",
+      "channel": "s4-preview",
+      "scope": "all-weapons-active",
+      "variantKey": "s4-preview:5000801",
+      "operation": "replace"
+    },
+    {
+      "id": "cold-fury",
+      "kind": "active",
+      "name": "寒霜之怒",
+      "gameSkillId": 5104201,
+      "display": false,
+      "parameters": {
+        "cooldown": 30,
+        "duration": 12,
+        "count": 1,
+        "blocking": false
+      },
+      "modifierSources": [],
+      "provenance": {
+        "cooldown": {
+          "row": "s4-preview:pve:5104201_1",
+          "field": "ChargeNeedTime"
+        },
+        "duration": {
+          "literal": 12,
+          "reason": "SK_ColdFury.BuffDuration=12 经父类写入AbilityDuration并调用DoDurationForEnd；MGE_510410101添加12秒增益Weapon_20107000038_7。",
+          "evidence": "docs/architecture/perk-skill-variant-evidence.md"
+        },
+        "count": {
+          "row": "s4-preview:pve:5104201_1",
+          "field": "SkillCount"
+        },
+        "blocking": {
+          "row": "s4-preview:gp:5104201",
+          "field": "bPauseChargeDuringActivation"
+        }
+      },
+      "perkItemId": "20703040535",
+      "perkSlug": "preview/slot-4/寒霜之怒",
+      "channel": "s4-preview",
+      "weaponSlug": "极地夜曲",
+      "baseSkillId": "active-1",
+      "originalId": 5104201,
+      "variantKey": "s4-preview:5104201:1312079001",
+      "operation": "modify"
+    },
+    {
+      "id": "cold-cooperation",
+      "kind": "active",
+      "name": "寒霜协同",
+      "gameSkillId": 5104201,
+      "display": false,
+      "parameters": {
+        "cooldown": 30,
+        "duration": 6,
+        "count": 1,
+        "blocking": false
+      },
+      "modifierSources": [],
+      "provenance": {
+        "cooldown": {
+          "row": "s4-preview:pve:5104201_1",
+          "field": "ChargeNeedTime"
+        },
+        "duration": {
+          "literal": 6,
+          "reason": "SK_ColdFury 检查1312079002并添加1312079004，将BuffDuration覆写为6；自身与队友Timer均引用6秒Weapon_20107000038_5，消失时清理效果。",
+          "evidence": "docs/architecture/perk-skill-variant-evidence.md"
+        },
+        "count": {
+          "row": "s4-preview:pve:5104201_1",
+          "field": "SkillCount"
+        },
+        "blocking": {
+          "row": "s4-preview:gp:5104201",
+          "field": "bPauseChargeDuringActivation"
+        }
+      },
+      "perkItemId": "20703040536",
+      "perkSlug": "preview/slot-4/寒霜协同",
+      "channel": "s4-preview",
+      "weaponSlug": "极地夜曲",
+      "baseSkillId": "active-1",
+      "originalId": 5104201,
+      "variantKey": "s4-preview:5104201:1312079002",
+      "operation": "modify"
+    },
+    {
+      "id": "cold-field",
+      "kind": "active",
+      "name": "极寒领域",
+      "gameSkillId": 5104301,
+      "display": false,
+      "parameters": {
+        "cooldown": 30,
+        "duration": 12,
+        "count": 1,
+        "blocking": true
+      },
+      "modifierSources": [],
+      "provenance": {
+        "cooldown": {
+          "row": "s4-preview:pve:5104301_1",
+          "field": "ChargeNeedTime"
+        },
+        "duration": {
+          "row": "s4-preview:gp:5104301",
+          "field": "Duration"
+        },
+        "count": {
+          "row": "s4-preview:pve:5104301_1",
+          "field": "SkillCount"
+        },
+        "blocking": {
+          "row": "s4-preview:gp:5104301",
+          "field": "bPauseChargeDuringActivation"
+        }
+      },
+      "perkItemId": "20703040537",
+      "perkSlug": "preview/slot-4/极寒领域",
+      "channel": "s4-preview",
+      "weaponSlug": "极寒冰神",
+      "baseSkillId": "active-1",
+      "originalId": 5103401,
+      "variantKey": "s4-preview:5104301",
+      "operation": "replace"
+    },
+    {
+      "id": "fire-burst",
+      "kind": "active",
+      "name": "火神爆发",
+      "gameSkillId": 5104401,
+      "display": false,
+      "durationIsBase": true,
+      "parameters": {
+        "cooldown": 30,
+        "duration": 7,
+        "count": 1,
+        "blocking": true
+      },
+      "modifierSources": [],
+      "provenance": {
+        "cooldown": {
+          "row": "s4-preview:pve:5104401_1",
+          "field": "ChargeNeedTime"
+        },
+        "duration": {
+          "literal": 7,
+          "reason": "基础持续时间；SK_HSYDActiveSkill_2.GetSkillDuration 动态计算7+floor(层数/50)，覆盖GP Duration=6。效果MGE另用ceil，非整50层分支不合并推断。",
+          "evidence": "docs/architecture/perk-skill-variant-evidence.md"
+        },
+        "count": {
+          "row": "s4-preview:pve:5104401_1",
+          "field": "SkillCount"
+        },
+        "blocking": {
+          "row": "s4-preview:gp:5104401",
+          "field": "bPauseChargeDuringActivation"
+        }
+      },
+      "perkItemId": "20703040549",
+      "perkSlug": "preview/slot-4/火神爆发",
+      "channel": "s4-preview",
+      "weaponSlug": "火神炎帝",
+      "baseSkillId": "active-1",
+      "originalId": 5103601,
+      "variantKey": "s4-preview:5104401",
+      "operation": "replace"
+    },
     {
       "id": "thunder-amplification",
       "kind": "active",

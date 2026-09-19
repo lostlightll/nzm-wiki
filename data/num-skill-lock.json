@@ -3,7 +3,6 @@
   "runtime": {
     "weapons:5102001:duration": {
       "game_skill_id": 5102001,
-      "dataset": "unknown",
       "source": {
         "kind": "blueprint_default",
         "asset": "NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset",
@@ -15,29 +14,46 @@
       "flow": {
         "asset": "NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset",
         "sha256": "57c1059049bfb9d547a1d68ac5d616ce157952fe74e10de92709d70fcd05f3bb",
-        "read": { "function": "GetDuration", "statement": 162 },
-        "apply": { "function": "ExecuteUbergraph_SKT_FloatingMode", "statement": 957 },
+        "read": {
+          "function": "GetDuration",
+          "statement": 162
+        },
+        "apply": {
+          "function": "ExecuteUbergraph_SKT_FloatingMode",
+          "statement": 957
+        },
         "boundary": "native-call",
         "evidence": "docs/architecture/weapon-skill-duration-evidence.md#能源之影"
       },
-      "modifiers": [{
-        "mge_id": 1312049001,
-        "operation": "add_fraction",
-        "value": 0.5,
-        "coefficient": { "function": "GetDuration", "statement": 42 },
-        "flow": {
-          "asset": "NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset",
-          "sha256": "57c1059049bfb9d547a1d68ac5d616ce157952fe74e10de92709d70fcd05f3bb",
-          "read": { "function": "GetDuration", "statement": 0 },
-          "apply": { "function": "GetDuration", "statement": 84 },
-          "boundary": "blueprint",
-          "evidence": "docs/architecture/weapon-skill-duration-evidence.md#能源之影"
+      "dataset": "unknown",
+      "modifiers": [
+        {
+          "mge_id": 1312049001,
+          "operation": "add_fraction",
+          "value": 0.5,
+          "coefficient": {
+            "function": "GetDuration",
+            "statement": 42
+          },
+          "flow": {
+            "asset": "NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset",
+            "sha256": "57c1059049bfb9d547a1d68ac5d616ce157952fe74e10de92709d70fcd05f3bb",
+            "read": {
+              "function": "GetDuration",
+              "statement": 0
+            },
+            "apply": {
+              "function": "GetDuration",
+              "statement": 84
+            },
+            "boundary": "blueprint",
+            "evidence": "docs/architecture/weapon-skill-duration-evidence.md#能源之影"
+          }
         }
-      }]
+      ]
     },
     "weapons:5001401:duration": {
       "game_skill_id": 5001401,
-      "dataset": "unknown",
       "source": {
         "kind": "blueprint_default",
         "asset": "NZM/Content/Abilities/WeaponSkill/Purple/CriticalArray/SKT_CriticalArray.uasset",
@@ -49,15 +65,432 @@
       "flow": {
         "asset": "NZM/Content/Abilities/WeaponSkill/Purple/CriticalArray/BP_CriticalArray.uasset",
         "sha256": "780418a17117c0e8e3316e52fcd1fc24c79a90ac311faa8ce6f881169296251c",
-        "read": { "function": "ExecuteUbergraph_BP_CriticalArray", "statement": 85 },
-        "apply": { "function": "ExecuteUbergraph_BP_CriticalArray", "statement": 85 },
+        "read": {
+          "function": "ExecuteUbergraph_BP_CriticalArray",
+          "statement": 85
+        },
+        "apply": {
+          "function": "ExecuteUbergraph_BP_CriticalArray",
+          "statement": 85
+        },
         "boundary": "native-call",
         "evidence": "docs/architecture/weapon-skill-duration-evidence.md#天鹅之舞"
       },
+      "dataset": "unknown",
       "modifiers": []
     }
   },
   "rows": {
+    "current:gp:5000801": {
+      "row_name": "5000801",
+      "raw": {
+        "AbilityID": 5000801,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.FlashAway"
+        },
+        "AbilityName": "闪身",
+        "SkillOverview": "快速移动",
+        "Description": "朝输入方向进行一次快速移动。",
+        "Duration": 0,
+        "CooldownDuration": 5,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Purple/FlashAway/DA_FlashAway.DA_FlashAway",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": false,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "current:gp:5101901": {
+      "row_name": "5101901",
+      "raw": {
+        "AbilityID": 5101901,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "None"
+        },
+        "AbilityName": "出其不意",
+        "SkillOverview": "扔枪爆炸",
+        "Description": "将枪械扔出去，命中敌人后爆炸，并将弹夹填满",
+        "Duration": 0,
+        "CooldownDuration": 25,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Gold/ThrowGunExplosion/DA_ThrowGunExplosion.DA_ThrowGunExplosion",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": false,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "current:pve:5000801_1": {
+      "row_name": "5000801_1",
+      "raw": {
+        "SkillID": 5000801,
+        "Level": 1,
+        "SkillName": "闪身",
+        "ChargeNeedTime": 8,
+        "ChargeNeedTimeTags": [
+          "SkillParamConfig.ChargeNeedTime"
+        ],
+        "KillChargeValue": -1,
+        "KillChargeValueTags": [
+          "SkillParamConfig.KillChargeValue"
+        ],
+        "AssistChargeValue": -1,
+        "AssistChargeValueTags": [
+          "SkillParamConfig.AssistChargeValue"
+        ],
+        "SkillCount": 1,
+        "SkillCountTags": [
+          "SkillParamConfig.SkillCount"
+        ],
+        "Parameters": [
+          {
+            "Name": "DodgeDistance",
+            "Value": "600",
+            "Tags": [
+              "SkillParamConfig.MoveDistance"
+            ],
+            "Description": "位移距离"
+          }
+        ]
+      },
+      "source": {
+        "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
+        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+      }
+    },
+    "current:pve:5101901_1": {
+      "row_name": "5101901_1",
+      "raw": {
+        "SkillID": 5101901,
+        "Level": 1,
+        "SkillName": "出奇不易",
+        "ChargeNeedTime": 25,
+        "ChargeNeedTimeTags": [
+          "SkillParamConfig.ChargeNeedTime"
+        ],
+        "KillChargeValue": -1,
+        "KillChargeValueTags": [
+          "SkillParamConfig.KillChargeValue"
+        ],
+        "AssistChargeValue": -1,
+        "AssistChargeValueTags": [
+          "SkillParamConfig.AssistChargeValue"
+        ],
+        "SkillCount": 1,
+        "SkillCountTags": [
+          "SkillParamConfig.SkillCount"
+        ],
+        "Parameters": []
+      },
+      "source": {
+        "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
+        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+      }
+    },
+    "s4-preview:gp:5000801": {
+      "row_name": "5000801",
+      "raw": {
+        "AbilityID": 5000801,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.FlashAway"
+        },
+        "AbilityName": "闪身",
+        "SkillOverview": "快速移动",
+        "Description": "朝输入方向进行一次快速移动。",
+        "Duration": 0,
+        "CooldownDuration": 5,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Purple/FlashAway/DA_FlashAway.DA_FlashAway",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": false,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "s4-preview:gp:5101901": {
+      "row_name": "5101901",
+      "raw": {
+        "AbilityID": 5101901,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "None"
+        },
+        "AbilityName": "出其不意",
+        "SkillOverview": "扔枪爆炸",
+        "Description": "将枪械扔出去，命中敌人后爆炸，并将弹夹填满",
+        "Duration": 0,
+        "CooldownDuration": 25,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Gold/ThrowGunExplosion/DA_ThrowGunExplosion.DA_ThrowGunExplosion",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "GPSkillCrossHair",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": false,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "s4-preview:gp:5104201": {
+      "row_name": "5104201",
+      "raw": {
+        "AbilityID": 5104201,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "None"
+        },
+        "AbilityName": "极寒之怒",
+        "SkillOverview": "极地夜曲主动技能",
+        "Description": "",
+        "Duration": 0,
+        "CooldownDuration": 0,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": false,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Gold/ColdFury/DA_ColdFury.DA_ColdFury",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "None",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": false,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "s4-preview:gp:5104301": {
+      "row_name": "5104301",
+      "raw": {
+        "AbilityID": 5104301,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "None"
+        },
+        "AbilityName": "极寒领域",
+        "SkillOverview": "极地夜曲插件技能",
+        "Description": "",
+        "Duration": 12,
+        "CooldownDuration": 0,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": true,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Gold/ColdField/DA_Coldfield.DA_Coldfield",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "None",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": true,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "s4-preview:gp:5104401": {
+      "row_name": "5104401",
+      "raw": {
+        "AbilityID": 5104401,
+        "DerivativeSkillId": -1,
+        "AbilityTag": {
+          "TagName": "AbilityType.Activated.HSYDActiveSkill2"
+        },
+        "AbilityName": "火神爆发",
+        "SkillOverview": "火神炎帝插件技能",
+        "Description": "",
+        "Duration": 6,
+        "CooldownDuration": 30,
+        "KillChargeValue": 0,
+        "AssistChargeValue": 0,
+        "CostRatio": 1,
+        "bPauseChargeDuringActivation": true,
+        "MaxChargeStackCount": 1,
+        "MaxStrengthLevel": 0,
+        "DefaultStrengthLevelConditionCount": 0,
+        "AbilityAssetSoftPath": {
+          "AssetPathName": "/Game/Abilities/WeaponSkill/Purple/HSYDActiveskill/DA_HSYDActiveSkill_2.DA_HSYDActiveSkill_2",
+          "SubPathString": ""
+        },
+        "SkillCrossHair": "None",
+        "ElementIcon": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "SkillType": "EGPSkillType::Normal",
+        "SkillPosition": "EGPSkillPositioningType::Guardian",
+        "bCanRotateCamera": true,
+        "bShowActiveWidgetWhenSkillAvailable": true,
+        "bAutoActiveSkill": true,
+        "BranchAbilities": [],
+        "SkillSlotLogic": {
+          "AssetPathName": "None",
+          "SubPathString": ""
+        },
+        "bAutoSwitchWeapon": true,
+        "bAutoSwitchToPrevWeapon": false,
+        "bShowCountDownText": false,
+        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+      },
+      "source": {
+        "path": "DataTables/GPActiveSkillDataTable.json",
+        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
     "s4-preview:gp:5104901": {
       "row_name": "5104901",
       "raw": {
@@ -105,6 +538,178 @@
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
         "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+      }
+    },
+    "s4-preview:pve:5000801_1": {
+      "row_name": "5000801_1",
+      "raw": {
+        "SkillID": 5000801,
+        "Level": 1,
+        "SkillName": "闪身",
+        "ChargeNeedTime": 8,
+        "ChargeNeedTimeTags": [
+          "SkillParamConfig.ChargeNeedTime"
+        ],
+        "KillChargeValue": -1,
+        "KillChargeValueTags": [
+          "SkillParamConfig.KillChargeValue"
+        ],
+        "AssistChargeValue": -1,
+        "AssistChargeValueTags": [
+          "SkillParamConfig.AssistChargeValue"
+        ],
+        "SkillCount": 1,
+        "SkillCountTags": [
+          "SkillParamConfig.SkillCount"
+        ],
+        "Parameters": [
+          {
+            "Name": "DodgeDistance",
+            "Value": "600",
+            "Tags": [
+              "SkillParamConfig.MoveDistance"
+            ],
+            "Description": "位移距离"
+          }
+        ]
+      },
+      "source": {
+        "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
+        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+      }
+    },
+    "s4-preview:pve:5101901_1": {
+      "row_name": "5101901_1",
+      "raw": {
+        "SkillID": 5101901,
+        "Level": 1,
+        "SkillName": "出奇不易",
+        "ChargeNeedTime": 25,
+        "ChargeNeedTimeTags": [
+          "SkillParamConfig.ChargeNeedTime"
+        ],
+        "KillChargeValue": -1,
+        "KillChargeValueTags": [
+          "SkillParamConfig.KillChargeValue"
+        ],
+        "AssistChargeValue": -1,
+        "AssistChargeValueTags": [
+          "SkillParamConfig.AssistChargeValue"
+        ],
+        "SkillCount": 1,
+        "SkillCountTags": [
+          "SkillParamConfig.SkillCount"
+        ],
+        "Parameters": []
+      },
+      "source": {
+        "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
+        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+      }
+    },
+    "s4-preview:pve:5104201_1": {
+      "row_name": "5104201_1",
+      "raw": {
+        "SkillID": 5104201,
+        "Level": 1,
+        "SkillName": "极寒之怒",
+        "ChargeNeedTime": 30,
+        "ChargeNeedTimeTags": [
+          "SkillParamConfig.ChargeNeedTime"
+        ],
+        "KillChargeValue": -1,
+        "KillChargeValueTags": [
+          "SkillParamConfig.KillChargeValue"
+        ],
+        "AssistChargeValue": -1,
+        "AssistChargeValueTags": [
+          "SkillParamConfig.AssistChargeValue"
+        ],
+        "SkillCount": 1,
+        "SkillCountTags": [
+          "SkillParamConfig.SkillCount"
+        ],
+        "Parameters": [
+          {
+            "Name": "BuffDuration",
+            "Value": "12",
+            "Tags": [
+              "SkillParamConfig.EffectDuration"
+            ],
+            "Description": ""
+          }
+        ]
+      },
+      "source": {
+        "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
+        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+      }
+    },
+    "s4-preview:pve:5104301_1": {
+      "row_name": "5104301_1",
+      "raw": {
+        "SkillID": 5104301,
+        "Level": 1,
+        "SkillName": "极寒领域",
+        "ChargeNeedTime": 30,
+        "ChargeNeedTimeTags": [
+          "SkillParamConfig.ChargeNeedTime"
+        ],
+        "KillChargeValue": -1,
+        "KillChargeValueTags": [
+          "SkillParamConfig.KillChargeValue"
+        ],
+        "AssistChargeValue": -1,
+        "AssistChargeValueTags": [
+          "SkillParamConfig.AssistChargeValue"
+        ],
+        "SkillCount": 1,
+        "SkillCountTags": [
+          "SkillParamConfig.SkillCount"
+        ],
+        "Parameters": [
+          {
+            "Name": "BuffDuration",
+            "Value": "12",
+            "Tags": [
+              "SkillParamConfig.EffectDuration"
+            ],
+            "Description": ""
+          }
+        ]
+      },
+      "source": {
+        "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
+        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+      }
+    },
+    "s4-preview:pve:5104401_1": {
+      "row_name": "5104401_1",
+      "raw": {
+        "SkillID": 5104401,
+        "Level": 1,
+        "SkillName": "火力爆发",
+        "ChargeNeedTime": 30,
+        "ChargeNeedTimeTags": [
+          "SkillParamConfig.ChargeNeedTime"
+        ],
+        "KillChargeValue": -1,
+        "KillChargeValueTags": [
+          "SkillParamConfig.KillChargeValue"
+        ],
+        "AssistChargeValue": -1,
+        "AssistChargeValueTags": [
+          "SkillParamConfig.AssistChargeValue"
+        ],
+        "SkillCount": 1,
+        "SkillCountTags": [
+          "SkillParamConfig.SkillCount"
+        ],
+        "Parameters": []
+      },
+      "source": {
+        "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
+        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
       }
     },
     "s4-preview:pve:5104901_1": {

@@ -188,7 +188,7 @@ skill_variants:
     operation: replace
 ```
 
-武器内技能 ID、原游戏技能 ID、变体游戏技能 ID、发布通道必须分别吻合。变体目录 `data/num-skill-variants.json` 声明原技能身份和参数引用，`data/num-skill-lock.json` 保存选定原表行及哈希；`replacement_skill` 已退役并在导入时拒绝。
+武器内技能 ID、原游戏技能 ID、变体游戏技能 ID、发布通道必须分别吻合。变体目录 `data/num-skill-variants.json` 声明原技能身份和参数引用，`data/num-skill-lock.json` 保存选定原表行及哈希；`replacement_skill` 已退役并在导入时拒绝。同ID修改主动效果使用 `operation: modify`；通用武器主动替换使用 `scope: all-weapons-active` 并省略 `weapon_slug`、`base_skill`，不伪造武器身份。参数链路见[插件变体证据](../architecture/perk-skill-variant-evidence.md)。
 
 充能和层数遵循武器技能充能来源优先级，持续时间与暂停充能单独核验执行配置，不能从描述推断。预览通过 `pnpm perks:project --channel preview` 冻结同版 `skillVariants`，运行时不回落到正式技能、不重算编辑源。随后运行 `pnpm num-skills:project` 更新双向索引。详情在效果数值区域仅显示 CD、持续时间、阻回三项；列表和悬停预览不增加标签或技能参数。
 

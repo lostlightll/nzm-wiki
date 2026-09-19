@@ -10,19 +10,19 @@
     "files": [
       {
         "path": "data/num-modifier-semantics.json",
-        "sha256": "e684f93ce4847e69cf2770a0634c2373537091566c013589977ab6911491dce3"
+        "sha256": "c4d8b687e74ca77465bc6b67a39493cf4b14ddd10f252132fa603c113410ed5d"
       },
       {
         "path": "data/num-skill-lock.json",
-        "sha256": "fad1e3912d3f9cdb31e5f8d54efbfea78fef41c5f8450f83bd458db10201fa0d"
+        "sha256": "f93f400538703d173bffe60f49fb1e30099d9f4a80b94ef53984f10b30970d62"
       },
       {
         "path": "data/num-skill-variants.json",
-        "sha256": "cab7d0803320fba958ea9f2c715ba12e47fd80642097e5f203d4741e6f9fb4d7"
+        "sha256": "61bf366ab3f15b7f55c7ed9733ca28228b9a7b22c9946354786cb91bad304ee3"
       },
       {
         "path": "data/perk-preview-modifiers.json",
-        "sha256": "5d6576ab82efa2ca7b3c6fdc8fa5eca49005e99db518ec11b3c37687e37dc41d"
+        "sha256": "a79450315336444f91890667339e27da652142d056d8c3b0a1f49617b784a63a"
       },
       {
         "path": "data/perk-preview/slot-1/万钧过载.mdx",
@@ -470,7 +470,7 @@
       },
       {
         "path": "data/perk-preview/slot-2/出其不意.mdx",
-        "sha256": "b54e0a8a9a5e0415cfd4c60aac6f9df50b278ec60e7842b482e0dc53773459d4"
+        "sha256": "4d16efa16cf5f2416ec6c9f7aa4f6665c8796cf38f4e4f0f12a2607ae3e44b39"
       },
       {
         "path": "data/perk-preview/slot-2/加速蓄能.mdx",
@@ -818,7 +818,7 @@
       },
       {
         "path": "data/perk-preview/slot-2/闪身.mdx",
-        "sha256": "a88b39a6ca3c65eb352b56f92dbfb70ffbfd4c086bc31538395c1915c0f1db2b"
+        "sha256": "c7a6e087758249bc622e28be3db1d78214ce8a4a39024b5e7a696feada8f211c"
       },
       {
         "path": "data/perk-preview/slot-2/随时待命.mdx",
@@ -1158,7 +1158,7 @@
       },
       {
         "path": "data/perk-preview/slot-3/概率坍缩.mdx",
-        "sha256": "6f0022726419fa4c6fd5563d49d5876697bc03aba342a5b279c920971b9001a4"
+        "sha256": "d7a47a86159f7f8115e383d41343fb1ea87dd40c2a103663023f310cc64ab986"
       },
       {
         "path": "data/perk-preview/slot-3/模式增幅.mdx",
@@ -1690,11 +1690,11 @@
       },
       {
         "path": "data/perk-preview/slot-4/寒霜之怒.mdx",
-        "sha256": "dacbd43351dfc61cdbe757123c36830cdae0d39ca2d1ea641c6ec16c4f5317ba"
+        "sha256": "fd2362a99efca391deea9e89f0760318b03c483f75c17b5106a31e0e80010079"
       },
       {
         "path": "data/perk-preview/slot-4/寒霜协同.mdx",
-        "sha256": "b0a3adcddb6e8d5ff26355f8ef2874b566b1d9b189d43660fd3ea4fb15aae815"
+        "sha256": "0bbbd9065a68f5024cfa6ddbb47b53b4447435998eef23ea9946f1459ec7777e"
       },
       {
         "path": "data/perk-preview/slot-4/层积裂变.mdx",
@@ -1834,7 +1834,7 @@
       },
       {
         "path": "data/perk-preview/slot-4/极寒领域.mdx",
-        "sha256": "5fb4326cea25ccd4212108ab7f70cd971561b8a55d54f85c027e72f4deb2e4b7"
+        "sha256": "3ec1b966bdf90406eb246604e82dcc33f978af65adced86254b40bd689f95ee2"
       },
       {
         "path": "data/perk-preview/slot-4/核爆层留.mdx",
@@ -1878,7 +1878,7 @@
       },
       {
         "path": "data/perk-preview/slot-4/火神爆发.mdx",
-        "sha256": "0b4d0ae43fb426532fdded042a6fe6c40a0551b0718f7be1416d2d2fcece3db6"
+        "sha256": "3f8e03981660efc8983d9947cd5fb8d7870be57e2c10dd2191f25c59ff28de1d"
       },
       {
         "path": "data/perk-preview/slot-4/灰烬元爆.mdx",
@@ -2237,20 +2237,28 @@
         "sha256": "1634b52dc70aa6bde215a779b7469e2a85483c258f53a1bc92b9f7ff0f7bcd0b"
       },
       {
+        "path": "data/weapons/极地夜曲.mdx",
+        "sha256": "e0e0e3f82cc449b88bb1ee52e373d7a54c605134c56ed3993ef7d9a738eefc9c"
+      },
+      {
         "path": "data/weapons/极寒冰神.mdx",
         "sha256": "de42b381684a04d3ef26ccc1612a9c4e28c4026da4c2589488305fe2c6d3de66"
       },
       {
+        "path": "data/weapons/火神炎帝.mdx",
+        "sha256": "2da9ff2c46c581dad4bbb3e0c67798691c52bb6a4c36d9ffb3e891ff2589f049"
+      },
+      {
         "path": "data/weapons/炼狱蝎王.mdx",
-        "sha256": "7059f2e7de949f41338c1aa48214bf7b802bed2910a46032cbee1c9fe46c5f1f"
+        "sha256": "8f664cdda201b8228560eb040c8354c3efcc083df94f18b4a249b309ed795f53"
       },
       {
         "path": "data/weapons/能源之影.mdx",
-        "sha256": "d179be88cfefbe557959df4370002f5c87523655258d469470a5792af84b62f4"
+        "sha256": "ff55f1df6abb6ea6c7e62d3fd05692d877b1a7440f2fc4f7ec78d6c876405312"
       },
       {
         "path": "data/weapons/雷霆之影.mdx",
-        "sha256": "2c52e666d931d85ddcd3f091cb6ca271b0461ae6c651713923ed23ac5b55ba4f"
+        "sha256": "fb3832cabef6b3f6dc86903393ce0656d8437d0f7b0c35ad543efcd533c3f105"
       },
       {
         "path": "data/weapons/飓风之龙.mdx",
@@ -6810,6 +6818,51 @@
     },
     {
       "perk": {
+        "skillVariants": [
+          {
+            "reference": {
+              "scope": "all-weapons-active",
+              "variant": "s4-preview:5101901",
+              "operation": "replace"
+            },
+            "original": {
+              "scope": "all-weapons-active",
+              "name": "武器主动技能"
+            },
+            "skill": {
+              "id": "throw-gun",
+              "kind": "active",
+              "name": "出其不意",
+              "gameSkillId": 5101901,
+              "display": false,
+              "parameters": {
+                "cooldown": 25,
+                "duration": 0,
+                "count": 1,
+                "blocking": false
+              },
+              "modifierSources": [],
+              "provenance": {
+                "cooldown": {
+                  "row": "s4-preview:pve:5101901_1",
+                  "field": "ChargeNeedTime"
+                },
+                "duration": {
+                  "row": "s4-preview:gp:5101901",
+                  "field": "Duration"
+                },
+                "count": {
+                  "row": "s4-preview:pve:5101901_1",
+                  "field": "SkillCount"
+                },
+                "blocking": {
+                  "row": "s4-preview:gp:5101901",
+                  "field": "bPauseChargeDuringActivation"
+                }
+              }
+            }
+          }
+        ],
         "id": "出其不意",
         "itemId": "20703040086",
         "slug": "preview/slot-2/出其不意",
@@ -6828,7 +6881,7 @@
         "isCooked": true
       },
       "content": "",
-      "source": "---\n\"title\": \"出其不意\"\n\"id\": \"20703040086\"\n\"slot\": 2\n\"rarity\": 3\n\"icon\": \"1316132001\"\n\"weaponType\": []\n\"season\": \"s4-preview\"\n\"description\": \"将枪械投掷出去，命中敌人时造成爆炸伤害。扔枪动作完成后，自动将弹夹填满。\"\n\"CollectMODItem\": 0\n\"MakeMODItem\": 0\n\"IsCooked\": true\n\"independent_damage_snapshot\":\n  - \"name\": \"出其不意\"\n    \"href\": \"/perks/preview/slot-2/出其不意\"\n    \"perkSlug\": \"preview/slot-2/出其不意\"\n    \"trigger\": \"扔出的枪体命中敌人\"\n    \"interval\": \"主动技能充能\"\n    \"numericalId\": \"1400110101\"\n    \"damageType\": \"武器技能伤害\"\n    \"damageValue\": \"250\"\n    \"toughness\": 0.05\n    \"element\": \"腐蚀\"\n    \"critical\": false\n    \"weakpoint\": false\n    \"weakpointMultiplier\": 1\n\"preview_change\": \"existing\"\n---",
+      "source": "---\n\"title\": \"出其不意\"\n\"id\": \"20703040086\"\n\"slot\": 2\n\"rarity\": 3\n\"icon\": \"1316132001\"\n\"weaponType\": []\n\"season\": \"s4-preview\"\nskill_variants:\n  - scope: all-weapons-active\n    variant: s4-preview:5101901\n    operation: replace\n\"description\": \"将枪械投掷出去，命中敌人时造成爆炸伤害。扔枪动作完成后，自动将弹夹填满。\"\n\"CollectMODItem\": 0\n\"MakeMODItem\": 0\n\"IsCooked\": true\n\"independent_damage_snapshot\":\n  - \"name\": \"出其不意\"\n    \"href\": \"/perks/preview/slot-2/出其不意\"\n    \"perkSlug\": \"preview/slot-2/出其不意\"\n    \"trigger\": \"扔出的枪体命中敌人\"\n    \"interval\": \"主动技能充能\"\n    \"numericalId\": \"1400110101\"\n    \"damageType\": \"武器技能伤害\"\n    \"damageValue\": \"250\"\n    \"toughness\": 0.05\n    \"element\": \"腐蚀\"\n    \"critical\": false\n    \"weakpoint\": false\n    \"weakpointMultiplier\": 1\n\"preview_change\": \"existing\"\n---",
       "metadata": {
         "title": "出其不意",
         "id": "20703040086",
@@ -6855,6 +6908,13 @@
         ],
         "icon": "1316132001",
         "weaponType": [],
+        "skill_variants": [
+          {
+            "scope": "all-weapons-active",
+            "variant": "s4-preview:5101901",
+            "operation": "replace"
+          }
+        ],
         "description": "将枪械投掷出去，命中敌人时造成爆炸伤害。扔枪动作完成后，自动将弹夹填满。",
         "CollectMODItem": 0,
         "MakeMODItem": 0,
@@ -10436,6 +10496,52 @@
     },
     {
       "perk": {
+        "skillVariants": [
+          {
+            "reference": {
+              "scope": "all-weapons-active",
+              "variant": "s4-preview:5000801",
+              "operation": "replace"
+            },
+            "original": {
+              "scope": "all-weapons-active",
+              "name": "武器主动技能"
+            },
+            "skill": {
+              "id": "flash-away",
+              "kind": "active",
+              "name": "闪身",
+              "gameSkillId": 5000801,
+              "display": false,
+              "parameters": {
+                "cooldown": 15,
+                "duration": 0,
+                "count": 1,
+                "blocking": false
+              },
+              "modifierSources": [],
+              "provenance": {
+                "cooldown": {
+                  "literal": 15,
+                  "reason": "MGE_1314102001.ExecuteUbergraph@1122 调用ModifyChargeDurationBySlot，显式参数15/0覆盖插槽充能；不能直接采用PVE基础8秒。",
+                  "evidence": "docs/architecture/perk-skill-variant-evidence.md"
+                },
+                "duration": {
+                  "row": "s4-preview:gp:5000801",
+                  "field": "Duration"
+                },
+                "count": {
+                  "row": "s4-preview:pve:5000801_1",
+                  "field": "SkillCount"
+                },
+                "blocking": {
+                  "row": "s4-preview:gp:5000801",
+                  "field": "bPauseChargeDuringActivation"
+                }
+              }
+            }
+          }
+        ],
         "id": "闪身",
         "itemId": "20703040015",
         "slug": "preview/slot-2/闪身",
@@ -10454,7 +10560,7 @@
         "isCooked": true
       },
       "content": "",
-      "source": "---\n\"title\": \"闪身\"\n\"id\": \"20703040015\"\n\"slot\": 2\n\"rarity\": 3\n\"icon\": \"1314102001\"\n\"weaponType\": []\n\"season\": \"s4-preview\"\n\"description\": \"当前武器的主动技能替换为冲刺，冷却15秒。\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"preview_change\": \"existing\"\n---",
+      "source": "---\n\"title\": \"闪身\"\n\"id\": \"20703040015\"\n\"slot\": 2\n\"rarity\": 3\n\"icon\": \"1314102001\"\n\"weaponType\": []\n\"season\": \"s4-preview\"\nskill_variants:\n  - scope: all-weapons-active\n    variant: s4-preview:5000801\n    operation: replace\n\"description\": \"当前武器的主动技能替换为冲刺，冷却15秒。\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"preview_change\": \"existing\"\n---",
       "metadata": {
         "title": "闪身",
         "id": "20703040015",
@@ -10464,6 +10570,13 @@
         "preview_change": "existing",
         "icon": "1314102001",
         "weaponType": [],
+        "skill_variants": [
+          {
+            "scope": "all-weapons-active",
+            "variant": "s4-preview:5000801",
+            "operation": "replace"
+          }
+        ],
         "description": "当前武器的主动技能替换为冲刺，冷却15秒。",
         "CollectMODItem": 1,
         "MakeMODItem": 1,
@@ -14926,8 +15039,8 @@
         "makeModItem": 0,
         "isCooked": true
       },
-      "content": "\r\n<CritCalculator bonusPerStack={6} />\r\n\r\n## 机制说明\r\n\r\n每次射击未触发暴击时，下一发的暴击率增加 **6%**。暴击触发后暴击率加成清零，重新开始累积。\r\n假设基础暴击率为 $c$，每层加成为 $\\delta$，则第 $k$ 发的暴击率为：\r\n\r\n$$\r\np_k = \\min(c + (k-1) \\cdot \\delta, \\; 1)\r\n$$\r\n\r\n以基础暴击率 5%、每层 6% 为例：\r\n\r\n| 射击次数 $k$ | 暴击率 $p_k$ |\r\n| :---: | :---: |\r\n| 1 | 5% |\r\n| 2 | 11% |\r\n| 3 | 17% |\r\n| 4 | 23% |\r\n| 5 | 29% |\r\n| 6 | 35% |\r\n| ... | ... |\r\n| 16 | 95% |\r\n| 17 | 100% |\r\n\r\n## 数学模型\r\n\r\n设 $X$ 为触发一次暴击所需的射击次数。第 $k$ 发**恰好**暴击的概率为：\r\n\r\n$$\r\nP(X=k) = p_k \\cdot \\prod_{i=1}^{k-1}(1 - p_i)\r\n$$\r\n\r\n暴击的期望射击次数：\r\n\r\n$$\r\nE(X) = \\sum_{k=1}^{\\infty} k \\cdot P(X=k)\r\n$$\r\n\r\n由此可得**等效暴击率**\r\n\r\n$$\r\nC_{\\text{eff}} = \\frac{1}{E(X)}\r\n$$\r\n\r\n**插件净增伤**的计算需要对比有/无插件的期望 DPS。设暴击伤害倍率为 $m$（如 150% 表示 $m = 1.5$）：\r\n\r\n$$\r\n\\Delta_{\\text{dmg}} = \\frac{1 + C_{\\text{eff}} \\cdot (m - 1)}{1 + c \\cdot (m - 1)} - 1\r\n$$\r\n\r\n",
-      "source": "---\n\"title\": \"概率坍缩\"\n\"id\": \"20703040115\"\n\"num_modifier_values\":\n  \"critical-rate\":\n    \"row\": \"lc:111010075_1_0\"\n    \"field\": \"base\"\n\"effect_values\":\n  - \"label\": \"暴击率\"\n    \"stages\":\n      - \"condition\": \"每次未暴击\"\n        \"value\":\n          \"ref\": \"critical-rate\"\n          \"format\": \"signed-percent\"\n\"slot\": 3\n\"rarity\": 3\n\"icon\": \"1315134001\"\n\"weaponType\":\n  - 14\n  - 2\n  - 3\n  - 7\n\"season\": \"s4-preview\"\n\"description\": \"每次未暴击的射击获得**{{num:critical-rate|percent}}**暴击率加成，暴击后清空所有层数。\"\n\"keywords\":\n  - \"暴击\"\n  - \"crit\"\n  - \"概率\"\n  - \"暴击率\"\n\"CollectMODItem\": 0\n\"MakeMODItem\": 0\n\"IsCooked\": true\n\"preview_change\": \"existing\"\n---\n\r\n<CritCalculator bonusPerStack={6} />\r\n\r\n## 机制说明\r\n\r\n每次射击未触发暴击时，下一发的暴击率增加 **6%**。暴击触发后暴击率加成清零，重新开始累积。\r\n假设基础暴击率为 $c$，每层加成为 $\\delta$，则第 $k$ 发的暴击率为：\r\n\r\n$$\r\np_k = \\min(c + (k-1) \\cdot \\delta, \\; 1)\r\n$$\r\n\r\n以基础暴击率 5%、每层 6% 为例：\r\n\r\n| 射击次数 $k$ | 暴击率 $p_k$ |\r\n| :---: | :---: |\r\n| 1 | 5% |\r\n| 2 | 11% |\r\n| 3 | 17% |\r\n| 4 | 23% |\r\n| 5 | 29% |\r\n| 6 | 35% |\r\n| ... | ... |\r\n| 16 | 95% |\r\n| 17 | 100% |\r\n\r\n## 数学模型\r\n\r\n设 $X$ 为触发一次暴击所需的射击次数。第 $k$ 发**恰好**暴击的概率为：\r\n\r\n$$\r\nP(X=k) = p_k \\cdot \\prod_{i=1}^{k-1}(1 - p_i)\r\n$$\r\n\r\n暴击的期望射击次数：\r\n\r\n$$\r\nE(X) = \\sum_{k=1}^{\\infty} k \\cdot P(X=k)\r\n$$\r\n\r\n由此可得**等效暴击率**\r\n\r\n$$\r\nC_{\\text{eff}} = \\frac{1}{E(X)}\r\n$$\r\n\r\n**插件净增伤**的计算需要对比有/无插件的期望 DPS。设暴击伤害倍率为 $m$（如 150% 表示 $m = 1.5$）：\r\n\r\n$$\r\n\\Delta_{\\text{dmg}} = \\frac{1 + C_{\\text{eff}} \\cdot (m - 1)}{1 + c \\cdot (m - 1)} - 1\r\n$$",
+      "content": "\r\n<CritCalculator bonusPerStack={6} />\r\n\r\n## 机制说明\r\n\r\n每次射击未触发暴击时，下一发的暴击率增加 **6%**。暴击触发后暴击率加成清零，重新开始累积。\r\n假设基础暴击率为 $c$，每层加成为 $\\delta$，则第 $k$ 发的暴击率为：\r\n\r\n$$\r\np_k = \\min(c + (k-1) \\cdot \\delta, \\; 1)\r\n$$\r\n\r\n以基础暴击率 5%、每层 6% 为例：\r\n\r\n| 射击次数 $k$ | 暴击率 $p_k$ |\r\n| :---: | :---: |\r\n| 1 | 5% |\r\n| 2 | 11% |\r\n| 3 | 17% |\r\n| 4 | 23% |\r\n| 5 | 29% |\r\n| 6 | 35% |\r\n| ... | ... |\r\n| 16 | 95% |\r\n| 17 | 100% |\r\n\r\n## 数学模型\r\n\r\n设 $X$ 为触发一次暴击所需的射击次数。第 $k$ 发**恰好**暴击的概率为：\r\n\r\n$$\r\nP(X=k) = p_k \\cdot \\prod_{i=1}^{k-1}(1 - p_i)\r\n$$\r\n\r\n暴击的期望射击次数：\r\n\r\n$$\r\nE(X) = \\sum_{k=1}^{\\infty} k \\cdot P(X=k)\r\n$$\r\n\r\n由此可得**等效暴击率**\r\n\r\n$$\r\nC_{\\text{eff}} = \\frac{1}{E(X)}\r\n$$\r\n\r\n**插件净增伤**的计算需要对比有/无插件的期望 DPS。设暴击伤害倍率为 $m$（如 150% 表示 $m = 1.5$）：\r\n\r\n$$\r\n\\Delta_{\\text{dmg}} = \\frac{1 + C_{\\text{eff}} \\cdot (m - 1)}{1 + c \\cdot (m - 1)} - 1\n$$\n",
+      "source": "---\n\"title\": \"概率坍缩\"\n\"id\": \"20703040115\"\n\"num_modifier_values\":\n  \"critical-rate\":\n    \"row\": \"lc:111010075_1_0\"\n    \"field\": \"base\"\n\"effect_values\":\n  - \"label\": \"暴击率\"\n    \"stages\":\n      - \"condition\": \"每次未暴击\"\n        \"value\":\n          \"ref\": \"critical-rate\"\n          \"format\": \"signed-percent\"\n\"slot\": 3\n\"rarity\": 3\n\"icon\": \"1315134001\"\n\"weaponType\":\n  - 14\n  - 2\n  - 3\n  - 7\n\"season\": \"s4-preview\"\n\"description\": \"每次未暴击的射击获得**{{num:critical-rate|percent}}**暴击率加成，暴击后清空所有层数。\"\n\"keywords\":\n  - \"暴击\"\n  - \"crit\"\n  - \"概率\"\n  - \"暴击率\"\n\"CollectMODItem\": 0\n\"MakeMODItem\": 0\n\"IsCooked\": true\n\"preview_change\": \"existing\"\n---\n\r\n<CritCalculator bonusPerStack={6} />\r\n\r\n## 机制说明\r\n\r\n每次射击未触发暴击时，下一发的暴击率增加 **6%**。暴击触发后暴击率加成清零，重新开始累积。\r\n假设基础暴击率为 $c$，每层加成为 $\\delta$，则第 $k$ 发的暴击率为：\r\n\r\n$$\r\np_k = \\min(c + (k-1) \\cdot \\delta, \\; 1)\r\n$$\r\n\r\n以基础暴击率 5%、每层 6% 为例：\r\n\r\n| 射击次数 $k$ | 暴击率 $p_k$ |\r\n| :---: | :---: |\r\n| 1 | 5% |\r\n| 2 | 11% |\r\n| 3 | 17% |\r\n| 4 | 23% |\r\n| 5 | 29% |\r\n| 6 | 35% |\r\n| ... | ... |\r\n| 16 | 95% |\r\n| 17 | 100% |\r\n\r\n## 数学模型\r\n\r\n设 $X$ 为触发一次暴击所需的射击次数。第 $k$ 发**恰好**暴击的概率为：\r\n\r\n$$\r\nP(X=k) = p_k \\cdot \\prod_{i=1}^{k-1}(1 - p_i)\r\n$$\r\n\r\n暴击的期望射击次数：\r\n\r\n$$\r\nE(X) = \\sum_{k=1}^{\\infty} k \\cdot P(X=k)\r\n$$\r\n\r\n由此可得**等效暴击率**\r\n\r\n$$\r\nC_{\\text{eff}} = \\frac{1}{E(X)}\r\n$$\r\n\r\n**插件净增伤**的计算需要对比有/无插件的期望 DPS。设暴击伤害倍率为 $m$（如 150% 表示 $m = 1.5$）：\r\n\r\n$$\r\n\\Delta_{\\text{dmg}} = \\frac{1 + C_{\\text{eff}} \\cdot (m - 1)}{1 + c \\cdot (m - 1)} - 1\n$$",
       "metadata": {
         "title": "概率坍缩",
         "id": "20703040115",
@@ -19363,11 +19476,12 @@
         "slug": "preview/slot-3/驰射淬锋",
         "name": "驰射淬锋",
         "season": "s4-preview",
-        "previewChange": "new",
         "slot": 3,
         "rarity": 3,
         "category": "其他",
+        "previewChange": "new",
         "icon": "1315240001",
+        "weaponType": [],
         "effects": [],
         "description": "暴击率提升<strong>50%</strong>，暴击伤害提升<strong>180%</strong>。每有<strong>1%</strong>移动速度加成，武器射击和爆炸伤害分别提升<strong>2%</strong>和<strong>2%</strong>，最多分别提升<strong>100%</strong>和<strong>100%</strong>。暴击命中后，自身移动速度提升<strong>30%</strong>，持续<strong>2</strong>秒，可刷新。",
         "effectValues": [
@@ -19433,27 +19547,26 @@
             ]
           }
         ],
-        "weaponType": [],
         "collectModItem": 0,
         "makeModItem": 0,
         "isCooked": true
       },
       "content": "",
-      "source": "---\n\"title\": \"驰射淬锋\"\n\"id\": \"20703040524\"\n\"slot\": 3\n\"rarity\": 3\n\"icon\": \"1315240001\"\n\"weaponType\": []\n\"CollectMODItem\": 0\n\"MakeMODItem\": 0\n\"IsCooked\": true\n\"season\": \"s4-preview\"\n\"description\": \"暴击率提升<strong>{{num:critical-rate|percent}}</strong>，暴击伤害提升<strong>{{num:critical-damage|percent}}</strong>。每有<strong>1%</strong>移动速度加成，武器射击和爆炸伤害分别提升<strong>{{num:weapon-hit-per-speed|percent}}</strong>和<strong>{{num:weapon-explode-per-speed|percent}}</strong>，最多分别提升<strong>{{num:weapon-hit-damage|percent}}</strong>和<strong>{{num:weapon-explode-damage|percent}}</strong>。暴击命中后，自身移动速度提升<strong>{{num:movement-speed|percent}}</strong>，持续<strong>2</strong>秒，可刷新。\"\n\"description_override\": true\n\"preview_change\": \"new\"\nnum_modifier_values:\n  critical-rate: { row: \"lc:111051029_1_0\", field: base }\n  critical-damage: { row: \"lc:111051029_1_1\", field: base }\n  weapon-hit-damage: { row: \"lc:111051030_1_0\", field: coefficient }\n  weapon-explode-damage: { row: \"lc:111051030_1_1\", field: coefficient }\n  weapon-hit-per-speed: { row: \"lc:111051030_1_0\", field: coefficient, scale: 0.02 }\n  weapon-explode-per-speed: { row: \"lc:111051030_1_1\", field: coefficient, scale: 0.02 }\n  movement-speed: { row: \"lc:111051031_1_0\", field: base }\neffect_values:\n  - label: \"暴击率\"\n    stages:\n      - value: { ref: critical-rate, format: signed-percent }\n  - label: \"暴击伤害\"\n    stages:\n      - value: { ref: critical-damage, format: signed-percent }\n  - label: \"武器射击伤害\"\n    stages:\n      - condition: \"每1%移动速度加成\"\n        value: { ref: weapon-hit-per-speed, format: signed-percent }\n      - condition: \"移动速度加成达到50%时\"\n        value: { ref: weapon-hit-damage, format: signed-percent }\n  - label: \"武器爆炸伤害\"\n    stages:\n      - condition: \"每1%移动速度加成\"\n        value: { ref: weapon-explode-per-speed, format: signed-percent }\n      - condition: \"移动速度加成达到50%时\"\n        value: { ref: weapon-explode-damage, format: signed-percent }\n  - label: \"移动速度\"\n    stages:\n      - condition: \"暴击命中后持续2秒，可刷新\"\n        value: { ref: movement-speed, format: signed-percent }\n---\n",
+      "source": "---\n\"title\": \"驰射淬锋\"\n\"id\": \"20703040524\"\n\"slot\": 3\n\"rarity\": 3\n\"icon\": \"1315240001\"\n\"weaponType\": []\n\"CollectMODItem\": 0\n\"MakeMODItem\": 0\n\"IsCooked\": true\n\"season\": \"s4-preview\"\n\"description\": \"暴击率提升<strong>{{num:critical-rate|percent}}</strong>，暴击伤害提升<strong>{{num:critical-damage|percent}}</strong>。每有<strong>1%</strong>移动速度加成，武器射击和爆炸伤害分别提升<strong>{{num:weapon-hit-per-speed|percent}}</strong>和<strong>{{num:weapon-explode-per-speed|percent}}</strong>，最多分别提升<strong>{{num:weapon-hit-damage|percent}}</strong>和<strong>{{num:weapon-explode-damage|percent}}</strong>。暴击命中后，自身移动速度提升<strong>{{num:movement-speed|percent}}</strong>，持续<strong>2</strong>秒，可刷新。\"\n\"description_override\": true\n\"preview_change\": \"new\"\nnum_modifier_values:\n  critical-rate: { row: \"lc:111051029_1_0\", field: base }\n  critical-damage: { row: \"lc:111051029_1_1\", field: base }\n  weapon-hit-damage: { row: \"lc:111051030_1_0\", field: coefficient }\n  weapon-explode-damage: { row: \"lc:111051030_1_1\", field: coefficient }\n  weapon-hit-per-speed: { row: \"lc:111051030_1_0\", field: coefficient, scale: 0.02 }\n  weapon-explode-per-speed: { row: \"lc:111051030_1_1\", field: coefficient, scale: 0.02 }\n  movement-speed: { row: \"lc:111051031_1_0\", field: base }\neffect_values:\n  - label: \"暴击率\"\n    stages:\n      - value: { ref: critical-rate, format: signed-percent }\n  - label: \"暴击伤害\"\n    stages:\n      - value: { ref: critical-damage, format: signed-percent }\n  - label: \"武器射击伤害\"\n    stages:\n      - condition: \"每1%移动速度加成\"\n        value: { ref: weapon-hit-per-speed, format: signed-percent }\n      - condition: \"移动速度加成达到50%时\"\n        value: { ref: weapon-hit-damage, format: signed-percent }\n  - label: \"武器爆炸伤害\"\n    stages:\n      - condition: \"每1%移动速度加成\"\n        value: { ref: weapon-explode-per-speed, format: signed-percent }\n      - condition: \"移动速度加成达到50%时\"\n        value: { ref: weapon-explode-damage, format: signed-percent }\n  - label: \"移动速度\"\n    stages:\n      - condition: \"暴击命中后持续2秒，可刷新\"\n        value: { ref: movement-speed, format: signed-percent }\n---",
       "metadata": {
         "title": "驰射淬锋",
         "id": "20703040524",
+        "season": "s4-preview",
         "slot": 3,
         "rarity": 3,
+        "preview_change": "new",
         "icon": "1315240001",
         "weaponType": [],
         "CollectMODItem": 0,
         "MakeMODItem": 0,
         "IsCooked": true,
-        "season": "s4-preview",
         "description": "暴击率提升<strong>{{num:critical-rate|percent}}</strong>，暴击伤害提升<strong>{{num:critical-damage|percent}}</strong>。每有<strong>1%</strong>移动速度加成，武器射击和爆炸伤害分别提升<strong>{{num:weapon-hit-per-speed|percent}}</strong>和<strong>{{num:weapon-explode-per-speed|percent}}</strong>，最多分别提升<strong>{{num:weapon-hit-damage|percent}}</strong>和<strong>{{num:weapon-explode-damage|percent}}</strong>。暴击命中后，自身移动速度提升<strong>{{num:movement-speed|percent}}</strong>，持续<strong>2</strong>秒，可刷新。",
         "description_override": true,
-        "preview_change": "new",
         "num_modifier_values": {
           "critical-rate": {
             "row": "lc:111051029_1_0",
@@ -22289,6 +22402,53 @@
     },
     {
       "perk": {
+        "skillVariants": [
+          {
+            "reference": {
+              "weapon_slug": "极地夜曲",
+              "base_skill": "active-1",
+              "variant": "s4-preview:5104201:1312079001",
+              "operation": "modify"
+            },
+            "original": {
+              "id": 5104201,
+              "name": "冷凝超载"
+            },
+            "skill": {
+              "id": "cold-fury",
+              "kind": "active",
+              "name": "寒霜之怒",
+              "gameSkillId": 5104201,
+              "display": false,
+              "parameters": {
+                "cooldown": 30,
+                "duration": 12,
+                "count": 1,
+                "blocking": false
+              },
+              "modifierSources": [],
+              "provenance": {
+                "cooldown": {
+                  "row": "s4-preview:pve:5104201_1",
+                  "field": "ChargeNeedTime"
+                },
+                "duration": {
+                  "literal": 12,
+                  "reason": "SK_ColdFury.BuffDuration=12 经父类写入AbilityDuration并调用DoDurationForEnd；MGE_510410101添加12秒增益Weapon_20107000038_7。",
+                  "evidence": "docs/architecture/perk-skill-variant-evidence.md"
+                },
+                "count": {
+                  "row": "s4-preview:pve:5104201_1",
+                  "field": "SkillCount"
+                },
+                "blocking": {
+                  "row": "s4-preview:gp:5104201",
+                  "field": "bPauseChargeDuringActivation"
+                }
+              }
+            }
+          }
+        ],
         "id": "寒霜之怒",
         "itemId": "20703040535",
         "slug": "preview/slot-4/寒霜之怒",
@@ -22310,7 +22470,7 @@
         "isCooked": true
       },
       "content": "",
-      "source": "---\n\"title\": \"寒霜之怒\"\n\"id\": \"20703040535\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1312079001\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"极地夜曲\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\n\"description\": \"主动技能效果变为技能激活期间，造成冰属性射击伤害时，下一次爆炸伤害或技能伤害增加<strong>{{num:modifier-120700382-0-base|percent}}</strong>，该效果不可叠加。造成冰属性爆炸伤害或技能伤害时，使下一次射击伤害增加<strong>{{num:modifier-120700384-0-base|percent}}</strong>，该效果不可叠加。\"\n\"num_modifier_values\":\n  \"modifier-120700382-0-base\":\n    \"row\": \"lc:120700382_1_0\"\n    \"field\": \"base\"\n  \"modifier-120700384-0-base\":\n    \"row\": \"lc:120700384_1_0\"\n    \"field\": \"base\"\n\"preview_change\": \"new\"\n---",
+      "source": "---\n\"title\": \"寒霜之怒\"\n\"id\": \"20703040535\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1312079001\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"极地夜曲\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\nskill_variants:\n  - weapon_slug: 极地夜曲\n    base_skill: active-1\n    variant: s4-preview:5104201:1312079001\n    operation: modify\n\"description\": \"主动技能效果变为技能激活期间，造成冰属性射击伤害时，下一次爆炸伤害或技能伤害增加<strong>{{num:modifier-120700382-0-base|percent}}</strong>，该效果不可叠加。造成冰属性爆炸伤害或技能伤害时，使下一次射击伤害增加<strong>{{num:modifier-120700384-0-base|percent}}</strong>，该效果不可叠加。\"\n\"num_modifier_values\":\n  \"modifier-120700382-0-base\":\n    \"row\": \"lc:120700382_1_0\"\n    \"field\": \"base\"\n  \"modifier-120700384-0-base\":\n    \"row\": \"lc:120700384_1_0\"\n    \"field\": \"base\"\n\"preview_change\": \"new\"\n---",
       "metadata": {
         "title": "寒霜之怒",
         "id": "20703040535",
@@ -22326,6 +22486,14 @@
         "CollectMODItem": 1,
         "MakeMODItem": 1,
         "IsCooked": true,
+        "skill_variants": [
+          {
+            "weapon_slug": "极地夜曲",
+            "base_skill": "active-1",
+            "variant": "s4-preview:5104201:1312079001",
+            "operation": "modify"
+          }
+        ],
         "description": "主动技能效果变为技能激活期间，造成冰属性射击伤害时，下一次爆炸伤害或技能伤害增加<strong>{{num:modifier-120700382-0-base|percent}}</strong>，该效果不可叠加。造成冰属性爆炸伤害或技能伤害时，使下一次射击伤害增加<strong>{{num:modifier-120700384-0-base|percent}}</strong>，该效果不可叠加。",
         "num_modifier_values": {
           "modifier-120700382-0-base": {
@@ -22342,6 +22510,53 @@
     },
     {
       "perk": {
+        "skillVariants": [
+          {
+            "reference": {
+              "weapon_slug": "极地夜曲",
+              "base_skill": "active-1",
+              "variant": "s4-preview:5104201:1312079002",
+              "operation": "modify"
+            },
+            "original": {
+              "id": 5104201,
+              "name": "冷凝超载"
+            },
+            "skill": {
+              "id": "cold-cooperation",
+              "kind": "active",
+              "name": "寒霜协同",
+              "gameSkillId": 5104201,
+              "display": false,
+              "parameters": {
+                "cooldown": 30,
+                "duration": 6,
+                "count": 1,
+                "blocking": false
+              },
+              "modifierSources": [],
+              "provenance": {
+                "cooldown": {
+                  "row": "s4-preview:pve:5104201_1",
+                  "field": "ChargeNeedTime"
+                },
+                "duration": {
+                  "literal": 6,
+                  "reason": "SK_ColdFury 检查1312079002并添加1312079004，将BuffDuration覆写为6；自身与队友Timer均引用6秒Weapon_20107000038_5，消失时清理效果。",
+                  "evidence": "docs/architecture/perk-skill-variant-evidence.md"
+                },
+                "count": {
+                  "row": "s4-preview:pve:5104201_1",
+                  "field": "SkillCount"
+                },
+                "blocking": {
+                  "row": "s4-preview:gp:5104201",
+                  "field": "bPauseChargeDuringActivation"
+                }
+              }
+            }
+          }
+        ],
         "id": "寒霜协同",
         "itemId": "20703040536",
         "slug": "preview/slot-4/寒霜协同",
@@ -22363,7 +22578,7 @@
         "isCooked": true
       },
       "content": "",
-      "source": "---\n\"title\": \"寒霜协同\"\n\"id\": \"20703040536\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1312079002\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"极地夜曲\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\n\"description\": \"主动技能效果可作用于全队，但持续时间缩短<strong>50%</strong>。\"\n\"preview_change\": \"new\"\n---",
+      "source": "---\n\"title\": \"寒霜协同\"\n\"id\": \"20703040536\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1312079002\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"极地夜曲\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\nskill_variants:\n  - weapon_slug: 极地夜曲\n    base_skill: active-1\n    variant: s4-preview:5104201:1312079002\n    operation: modify\n\"description\": \"主动技能效果可作用于全队，但持续时间缩短<strong>50%</strong>。\"\n\"preview_change\": \"new\"\n---",
       "metadata": {
         "title": "寒霜协同",
         "id": "20703040536",
@@ -22379,6 +22594,14 @@
         "CollectMODItem": 1,
         "MakeMODItem": 1,
         "IsCooked": true,
+        "skill_variants": [
+          {
+            "weapon_slug": "极地夜曲",
+            "base_skill": "active-1",
+            "variant": "s4-preview:5104201:1312079002",
+            "operation": "modify"
+          }
+        ],
         "description": "主动技能效果可作用于全队，但持续时间缩短<strong>50%</strong>。"
       },
       "independentDamage": []
@@ -24387,6 +24610,52 @@
     },
     {
       "perk": {
+        "skillVariants": [
+          {
+            "reference": {
+              "weapon_slug": "极寒冰神",
+              "base_skill": "active-1",
+              "variant": "s4-preview:5104301",
+              "operation": "replace"
+            },
+            "original": {
+              "id": 5103401,
+              "name": "寒冰真气"
+            },
+            "skill": {
+              "id": "cold-field",
+              "kind": "active",
+              "name": "极寒领域",
+              "gameSkillId": 5104301,
+              "display": false,
+              "parameters": {
+                "cooldown": 30,
+                "duration": 12,
+                "count": 1,
+                "blocking": true
+              },
+              "modifierSources": [],
+              "provenance": {
+                "cooldown": {
+                  "row": "s4-preview:pve:5104301_1",
+                  "field": "ChargeNeedTime"
+                },
+                "duration": {
+                  "row": "s4-preview:gp:5104301",
+                  "field": "Duration"
+                },
+                "count": {
+                  "row": "s4-preview:pve:5104301_1",
+                  "field": "SkillCount"
+                },
+                "blocking": {
+                  "row": "s4-preview:gp:5104301",
+                  "field": "bPauseChargeDuringActivation"
+                }
+              }
+            }
+          }
+        ],
         "id": "极寒领域",
         "itemId": "20703040537",
         "slug": "preview/slot-4/极寒领域",
@@ -24416,7 +24685,7 @@
         "isCooked": true
       },
       "content": "",
-      "source": "---\n\"title\": \"极寒领域\"\n\"id\": \"20703040537\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1312078003\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"极寒冰神\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\n\"independent_damage_sources\":\n  - \"weapon_slug\": \"极寒冰神\"\n    \"damage_source_id\": \"cold-field\"\n    \"trigger\": \"主动技能替换为持续12秒的冰霜光环，影响周围9米敌人\"\n    \"interval\": \"每1秒\"\n\"description\": \"主动技能变为一个跟随玩家的冰霜光环，每<strong>1秒</strong>对周围<strong>9米</strong>敌人造成<strong>{GPNumericalID:120300174:HpCalScale:13}攻击力</strong>伤害，持续<strong>12秒</strong>。\"\n\"preview_change\": \"new\"\n---",
+      "source": "---\n\"title\": \"极寒领域\"\n\"id\": \"20703040537\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1312078003\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"极寒冰神\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\nskill_variants:\n  - weapon_slug: 极寒冰神\n    base_skill: active-1\n    variant: s4-preview:5104301\n    operation: replace\n\"independent_damage_sources\":\n  - \"weapon_slug\": \"极寒冰神\"\n    \"damage_source_id\": \"cold-field\"\n    \"trigger\": \"主动技能替换为持续12秒的冰霜光环，影响周围9米敌人\"\n    \"interval\": \"每1秒\"\n\"description\": \"主动技能变为一个跟随玩家的冰霜光环，每<strong>1秒</strong>对周围<strong>9米</strong>敌人造成<strong>{GPNumericalID:120300174:HpCalScale:13}攻击力</strong>伤害，持续<strong>12秒</strong>。\"\n\"preview_change\": \"new\"\n---",
       "metadata": {
         "title": "极寒领域",
         "id": "20703040537",
@@ -24432,6 +24701,14 @@
         "CollectMODItem": 1,
         "MakeMODItem": 1,
         "IsCooked": true,
+        "skill_variants": [
+          {
+            "weapon_slug": "极寒冰神",
+            "base_skill": "active-1",
+            "variant": "s4-preview:5104301",
+            "operation": "replace"
+          }
+        ],
         "independent_damage_sources": [
           {
             "weapon_slug": "极寒冰神",
@@ -24961,6 +25238,54 @@
     },
     {
       "perk": {
+        "skillVariants": [
+          {
+            "reference": {
+              "weapon_slug": "火神炎帝",
+              "base_skill": "active-1",
+              "variant": "s4-preview:5104401",
+              "operation": "replace"
+            },
+            "original": {
+              "id": 5103601,
+              "name": "架设模式"
+            },
+            "skill": {
+              "id": "fire-burst",
+              "kind": "active",
+              "name": "火神爆发",
+              "gameSkillId": 5104401,
+              "display": false,
+              "durationIsBase": true,
+              "parameters": {
+                "cooldown": 30,
+                "duration": 7,
+                "count": 1,
+                "blocking": true
+              },
+              "modifierSources": [],
+              "provenance": {
+                "cooldown": {
+                  "row": "s4-preview:pve:5104401_1",
+                  "field": "ChargeNeedTime"
+                },
+                "duration": {
+                  "literal": 7,
+                  "reason": "基础持续时间；SK_HSYDActiveSkill_2.GetSkillDuration 动态计算7+floor(层数/50)，覆盖GP Duration=6。效果MGE另用ceil，非整50层分支不合并推断。",
+                  "evidence": "docs/architecture/perk-skill-variant-evidence.md"
+                },
+                "count": {
+                  "row": "s4-preview:pve:5104401_1",
+                  "field": "SkillCount"
+                },
+                "blocking": {
+                  "row": "s4-preview:gp:5104401",
+                  "field": "bPauseChargeDuringActivation"
+                }
+              }
+            }
+          }
+        ],
         "id": "火神爆发",
         "itemId": "20703040549",
         "slug": "preview/slot-4/火神爆发",
@@ -24982,7 +25307,7 @@
         "isCooked": true
       },
       "content": "",
-      "source": "---\n\"title\": \"火神爆发\"\n\"id\": \"20703040549\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1312074004_2\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"火神炎帝\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\n\"description\": \"将主动技能替换为<strong>火神爆发</strong>。<strong>火神爆发</strong>：命中目标<strong>10次</strong>后会获得<strong>10层</strong><strong>火力压制</strong>效果，该效果最多可叠加<strong>300层</strong>。当有<strong>火力压制</strong>效果时释放<strong>火神爆发</strong>可以消耗全部<strong>火力压制</strong>效果使火神炎帝进入<strong>过载射击</strong>状态<strong>7秒</strong>，每<strong>50层</strong><strong>火力压制</strong>可以使<strong>过载射击</strong>持续时间延长<strong>1秒</strong>。<strong>火神爆发</strong>冷却时间<strong>30秒</strong>。\n\n  <strong>过载射击</strong>：使火神炎帝伤害提高<strong>{{num:modifier-120600305-0-base|percent}}</strong>，并获得<strong>极速狂热</strong>效果。\"\n\"num_modifier_values\":\n  \"modifier-120600305-0-base\":\n    \"row\": \"lc:120600305_1_0\"\n    \"field\": \"base\"\n\"preview_change\": \"new\"\n---",
+      "source": "---\n\"title\": \"火神爆发\"\n\"id\": \"20703040549\"\n\"slot\": 4\n\"rarity\": 3\n\"icon\": \"1312074004_2\"\n\"weaponType\": []\n\"weaponNames\":\n  - \"火神炎帝\"\n\"CollectMODItem\": 1\n\"MakeMODItem\": 1\n\"IsCooked\": true\n\"season\": \"s4-preview\"\nskill_variants:\n  - weapon_slug: 火神炎帝\n    base_skill: active-1\n    variant: s4-preview:5104401\n    operation: replace\n\"description\": \"将主动技能替换为<strong>火神爆发</strong>。<strong>火神爆发</strong>：命中目标<strong>10次</strong>后会获得<strong>10层</strong><strong>火力压制</strong>效果，该效果最多可叠加<strong>300层</strong>。当有<strong>火力压制</strong>效果时释放<strong>火神爆发</strong>可以消耗全部<strong>火力压制</strong>效果使火神炎帝进入<strong>过载射击</strong>状态<strong>7秒</strong>，每<strong>50层</strong><strong>火力压制</strong>可以使<strong>过载射击</strong>持续时间延长<strong>1秒</strong>。<strong>火神爆发</strong>冷却时间<strong>30秒</strong>。\n\n  <strong>过载射击</strong>：使火神炎帝伤害提高<strong>{{num:modifier-120600305-0-base|percent}}</strong>，并获得<strong>极速狂热</strong>效果。\"\n\"num_modifier_values\":\n  \"modifier-120600305-0-base\":\n    \"row\": \"lc:120600305_1_0\"\n    \"field\": \"base\"\n\"preview_change\": \"new\"\n---",
       "metadata": {
         "title": "火神爆发",
         "id": "20703040549",
@@ -24998,6 +25323,14 @@
         "CollectMODItem": 1,
         "MakeMODItem": 1,
         "IsCooked": true,
+        "skill_variants": [
+          {
+            "weapon_slug": "火神炎帝",
+            "base_skill": "active-1",
+            "variant": "s4-preview:5104401",
+            "operation": "replace"
+          }
+        ],
         "description": "将主动技能替换为<strong>火神爆发</strong>。<strong>火神爆发</strong>：命中目标<strong>10次</strong>后会获得<strong>10层</strong><strong>火力压制</strong>效果，该效果最多可叠加<strong>300层</strong>。当有<strong>火力压制</strong>效果时释放<strong>火神爆发</strong>可以消耗全部<strong>火力压制</strong>效果使火神炎帝进入<strong>过载射击</strong>状态<strong>7秒</strong>，每<strong>50层</strong><strong>火力压制</strong>可以使<strong>过载射击</strong>持续时间延长<strong>1秒</strong>。<strong>火神爆发</strong>冷却时间<strong>30秒</strong>。\n<strong>过载射击</strong>：使火神炎帝伤害提高<strong>{{num:modifier-120600305-0-base|percent}}</strong>，并获得<strong>极速狂热</strong>效果。",
         "num_modifier_values": {
           "modifier-120600305-0-base": {

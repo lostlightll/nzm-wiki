@@ -8,6 +8,27 @@ import { getProviderRelationsForSource, resolveMultiplierSourceHref } from "./mu
 
 const active = { season: "s4", version: "s4-preview", label: "S4 Preview" };
 
+test("published active variants keep audited effective parameters and exclude 狂热龙炎", () => {
+  const catalog = parsePerkPreviewCatalog(rawPreview);
+  const expected: [string, number, number, boolean][] = [
+    ["雷霆增幅", 40, 10, false], ["极寒领域", 30, 12, true],
+    ["火神爆发", 30, 7, true], ["寒霜之怒", 30, 12, false],
+    ["寒霜协同", 30, 6, false], ["闪身", 15, 0, false], ["出其不意", 25, 0, false],
+  ];
+  for (const [name, cooldown, duration, blocking] of expected) {
+    const variants = catalog.entries.find(entry => entry.perk.name === name)?.perk.skillVariants;
+    assert.equal(variants?.length, 1, name);
+    const skill = variants![0].skill;
+    assert.deepEqual(skill.parameters, { cooldown, count: 1, duration, blocking }, name);
+    assert.equal(skill.durationIsBase, name === "火神爆发" ? true : undefined);
+  }
+  assert.equal(catalog.entries.find(entry => entry.perk.name === "狂热龙炎")?.perk.skillVariants, undefined);
+  for (const itemId of ["20703040015", "20703040086"]) {
+    assert.deepEqual(getPerkByItemId(itemId)?.skillVariants?.[0].skill.parameters,
+      getPerkByItemId(itemId, "preview")?.skillVariants?.[0].skill.parameters);
+  }
+});
+
 test("frozen runtime skill provenance accepts its season and rejects channel leakage", () => {
   const catalog = parsePerkPreviewCatalog(structuredClone(rawPreview));
   const variant = catalog.entries.flatMap(entry => entry.perk.skillVariants ?? [])[0];
