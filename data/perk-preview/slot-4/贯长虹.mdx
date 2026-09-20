@@ -26,10 +26,8 @@
 "CollectMODItem": 1
 "MakeMODItem": 1
 "IsCooked": true
-"description": "近战攻击伤害增加<strong>{{num:weapon-damage|percent}}</strong>。切出本武器时向前发射一道剑气，造成<strong>{GPNumericalID:120300245:HpCalScale:13}攻击力</strong>的贯穿伤害并填满弹匣，冷却<strong>10秒</strong>。S4 预载新增剑气命中敌人后伤害衰减的说明，实际衰减次数与下限待核实。"
+"description": "近战攻击伤害增加<strong>{{num:weapon-damage|percent}}</strong>。切出本武器时向前发射一道剑气，造成<strong>{GPNumericalID:120300245:HpCalScale:13}攻击力</strong>的贯穿伤害并填满弹匣，冷却<strong>10秒</strong>。剑气每穿透一个敌人，造成的伤害降低<strong>50%</strong>，衰减效果最多叠加<strong>3次</strong>，叠满后不再衰减。"
 "preview_change": "changed"
 ---
 
-S4 预载插件文案新增“剑气每命中 1 名敌人，造成的伤害降低 50%，3 次后不再降低”。对应修正器 `120300244` 的说明却写“最低衰减到 25%”，两处文字不能确定相同的衰减序列。
-
-目前可确认新增了衰减修正器配置；其 `B5 / BaseValue=0 / CoefValue=1` 本身不直接给出逐次衰减比例。实际比例、次数和下限仍需执行逻辑或伤害实测确认。
+根据官方更新公告，S4 新增剑气穿透衰减：每穿透一个敌人，造成的伤害降低 **50%**，衰减效果最多叠加 **3 次**，叠满后不再衰减。

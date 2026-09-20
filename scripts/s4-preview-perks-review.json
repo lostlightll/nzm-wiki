@@ -11,14 +11,15 @@
         "interval": "10秒"
       }
     ],
-    "description": "近战攻击伤害增加<strong>{{num:weapon-damage|percent}}</strong>。切出本武器时向前发射一道剑气，造成<strong>{GPNumericalID:120300245:HpCalScale:13}攻击力</strong>的贯穿伤害并填满弹匣，冷却<strong>10秒</strong>。S4 预载新增剑气命中敌人后伤害衰减的说明，实际衰减次数与下限待核实。",
+    "description": "近战攻击伤害增加<strong>{{num:weapon-damage|percent}}</strong>。切出本武器时向前发射一道剑气，造成<strong>{GPNumericalID:120300245:HpCalScale:13}攻击力</strong>的贯穿伤害并填满弹匣，冷却<strong>10秒</strong>。剑气每穿透一个敌人，造成的伤害降低<strong>50%</strong>，衰减效果最多叠加<strong>3次</strong>，叠满后不再衰减。",
     "evidence": [
       "WeaponModItemData[20703040346] -> PassiveSkill_ID 1312062001:1 -> DT_GPMGESkillDesConfigTable_Main[1312062001_1].",
       "S3.2 and current numerical_config_composite[120300245_1] retain all existing fields including HpCalScale=13; current additionally has MaxDamageAttackRatio=0. Independent damage uses the reviewed guan-chang-hong-jian-qi weapon reference.",
-      "Current numerical_modifier_config[120300243_1_0] remains B1, BaseValue=0.5; current adds 120300244_1_0, which is absent from Content_S3.2."
+      "Current numerical_modifier_config[120300243_1_0] remains B1, BaseValue=0.5; current adds 120300244_1_0, which is absent from Content_S3.2.",
+      "用户提供的官方更新公告截图（2026-09-20 核对）：贯长虹生成的剑气每穿透一个敌人，造成的伤害降低50%，衰减效果最多叠加3次，叠满后不再衰减。描述采用公告原意，不推导最低伤害比例。"
     ],
     "warnings": [
-      "MGEDescription says damage halves per target and stops after three times; Modifier 120300244 Description says a 25% floor. B5/BaseValue=0/CoefValue=1 does not establish the attenuation sequence. Do not publish either text as a verified numerical result."
+      "Modifier 120300244 Description says a 25% floor, but B5/BaseValue=0/CoefValue=1 does not encode the per-target attenuation ratio or stack limit directly. The published attenuation wording follows the official announcement supplied by the user; do not derive a damage floor or structured numerical effect from either description. Runtime attenuation remains unverified."
     ]
   },
   "20703040476": {
