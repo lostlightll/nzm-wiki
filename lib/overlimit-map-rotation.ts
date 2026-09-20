@@ -27,7 +27,7 @@ export function resolveRotationTiming(
 
   for (const period of schedule.periods) {
     const effectiveEndDate =
-      period.endDate ?? `${schedule.season}-12-31`;
+      period.endDate ?? "9999-12-31";
     if (today >= period.startDate && today <= effectiveEndDate) {
       return { phase: "current", featuredPeriod: period };
     }
@@ -41,12 +41,12 @@ export function resolveRotationTiming(
 
 export function getRotationPeriodState(
   period: OverlimitMapRotationPeriod,
-  schedule: OverlimitMapRotationSchedule,
+  _schedule: OverlimitMapRotationSchedule,
   today: string,
 ): RotationPeriodState {
   if (!today || today < period.startDate) return "upcoming";
 
-  const effectiveEndDate = period.endDate ?? `${schedule.season}-12-31`;
+  const effectiveEndDate = period.endDate ?? "9999-12-31";
 
   if (today > effectiveEndDate) return "past";
   return "current";

@@ -14,3 +14,11 @@ test("explicit rotation periods remain active across the year boundary", () => {
   assert.equal(getRotationPeriodState(schedule.periods[0], schedule, "2027-01-04"), "past");
   assert.equal(resolveRotationTiming(schedule, "2027-01-11").phase, "ended");
 });
+
+test("season-end periods remain current after the schedule's starting year", () => {
+  const schedule: OverlimitMapRotationSchedule = { season: 2026, timezone: "Asia/Shanghai", periods: [
+    { startDate: "2027-01-11", endDate: null, endLabel: "赛季结束", maps: [] },
+  ] };
+  assert.equal(resolveRotationTiming(schedule, "2027-01-11").phase, "current");
+  assert.equal(getRotationPeriodState(schedule.periods[0], schedule, "2027-01-21"), "current");
+});
