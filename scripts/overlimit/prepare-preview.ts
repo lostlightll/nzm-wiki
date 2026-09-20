@@ -11,6 +11,7 @@ import { createNumModifierResolver } from "../../lib/num-modifier";
 import { NUM_MODIFIER_LOCK, NUM_MODIFIER_SEMANTICS } from "../../lib/num-modifier-data";
 import { generatePreviewCards } from "./preview-cards";
 import { buildPreviewRules } from "./preview-rules";
+import { applyPreviewAnnouncement } from "./preview-announcement";
 import { checkCatalog } from "./catalog";
 import multiplierData from "../../data/guides/multiplier.json";
 
@@ -33,13 +34,13 @@ async function main() {
   const cards = await generatePreviewCards(values["content-root"]);
   const rules = buildPreviewRules(values["content-root"]);
   const provenance = [...new Map([...cards.provenanceFiles, ...rules.provenanceFiles].map(file => [file.path, file])).values()].sort((a, b) => a.path.localeCompare(b.path));
-  const catalog = parseOverlimitCatalog({
+  const catalog = applyPreviewAnnouncement(parseOverlimitCatalog({
     schemaVersion: 1,
     season: { id: active.version, label: active.label, status: "preload", updatedAt: values["updated-at"] },
     provenance: { contentRoot: path.relative(process.cwd(), path.resolve(values["content-root"])).replaceAll("\\", "/"),
       note: "预下载客户端审定投影。服务端卡池概率和适用限制未提供；未完成的卡片数值审计逐卡标注。地图排期来自预载配置，非正式上线日期承诺。", files: provenance },
     cards: cards.cards, independentDamage: cards.independentDamage, bonds: rules.bonds, mapRotation: rules.mapRotation, levels: null,
-  });
+  }));
   checkCatalog(catalog, process.cwd());
   const registry: ModifierProviderRegistry = read("data/modifier-providers.json");
   parseModifierProviderRegistry(registry);

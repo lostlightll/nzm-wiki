@@ -120,8 +120,10 @@ pnpm build
 
 导入器只写预览投影、预览关联、审计证据和显式预览来源，不写正式超限或正式 Numerical Lock。卡片按 ID 审计；羁绊审定清单绑定底包文件哈希，来源变化必须重新审定，不能只改赛季标签。以后换季复用导入器和规则协议，替换审定清单，不复制赛季代码。生成图标使用内容哈希，避免覆盖 S3 图标。
 
-羁绊按实际档位组合分组，2/5/8 与 2/4/6 分开展示，保留档位替换关系。S4 地图排期由 `RogueAffixesTable` 经入口表的 `RogueAffixesId` 关联，预载起点为 2026-09-21 02:00，不能擅自改为开季日期。原始时间和完整行保存在预览证据中。缺失的服务端等级概率模块保持 `null`。
+羁绊按实际档位组合分组，2/5/8 与 2/4/6 分开展示，保留档位替换关系。`RogueAffixesTable` 经入口表的 `RogueAffixesId` 提供地图羁绊轮换，不能单独证明副本开放。2026-09-20 核对官方公告后，S4 开放排期以 `scripts/overlimit/preview-announcement.json` 的 17 段日期和地图名单为准：9 月 22 日开始，2027 年 1 月 11 日起五图开放至赛季结束，不推测赛季结束日期。每段地图羁绊保留同周预载配置，公告未确认的后续羁绊变化需继续复核。原始时间和完整行仍保存在预览证据中。缺失的服务端等级概率模块保持 `null`。
 
-截图仅作布局参考。例如瞬暴8档 Numerical 为50%超暴概率，结算配置为2倍；截图25%及描述3倍均不能覆盖结构化证据。
+公告审定文件另记录独头弹获取限制调整、卡池统计口径和瞬暴公告与预载结算冲突。`prepare-preview.ts` 在生成预览后自动应用匹配版本的公告；仅更新公告时运行 `pnpm exec tsx scripts/overlimit/preview-announcement.ts`，再运行 `pnpm overlimit check`。该步骤不覆盖 Numerical、独立伤害或正式版，也不把公告“新增29张”当作按 ID 比较的新卡数。
+
+瞬暴8档 Numerical 为50%超暴概率，预载结算配置为2倍；最新公告写会心伤害提升3倍。预览描述并列说明这处差异，待正式服复核，不用公告文字覆盖结构化证据，也不沿用旧截图的25%概率。
 
 地图轮换背景沿入口表 `NewEntranceInfoTable.background_images` 的精确纹理引用查找，优先 `refs`，缺少已解码图片时可按用户授权从 `refs-test` 获取同名图片。2026-09-17 补入朔望计划（入口 `2006121`，`T_Bg_Loading_72`）和禁魔岛（入口 `2006131`，`T_Bg_Loading_73`）：身份来自 `refs`，PNG 来自 `refs-test/Exports/NZM/Content/UI/UI_Textures/Background/Loading/`。转为最大宽度1280、质量85的 WebP，放入 `public/webp/images/overlimit/maps/`；映射由 `lib/overlimit-map-images.ts` 维护，不为图片补全扩充敌人图鉴的地图清单。
