@@ -49,6 +49,15 @@
 
 ## 校验
 
+切换包体后，用显式 Content 路径刷新既有召唤伤害引用：
+
+```bash
+pnpm exec tsx scripts/summons/refresh-damage-lock.ts --content-root refs/Exports/NZM/Content
+pnpm exec tsx --test scripts/summons/refresh-damage-lock.test.ts
+```
+
+刷新器读取每项 `sourceTable` 中的 `id/level`，更新系数、元素、暴击、弱点及 Health 结算。`attackStat` 是已审计的 Actor 语义，保留人工结论；不会从 `SkillDamage` 推断技能攻击力。缺行、未知枚举、非零固定伤害或多段结算字段冲突会中止写入，需重新审计条目。
+
 ```bash
 pnpm test:summons
 pnpm index

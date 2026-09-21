@@ -97,7 +97,7 @@ pnpm weapon-data:lock
 5. 在内存中构造并验证完整候选 Lock，成功后才覆盖原文件。
 6. 报告新增、删除或未使用行、JSON Pointer 字段变化、Settlement Tag 变化、来源哈希变化和非阻断警告。
 
-Prototype 多候选时只允许 rowName 与武器 `title` 或 `${title}_${mode}` 精确匹配。无法唯一匹配时失败，不做模糊匹配或 first-wins。
+Prototype 显式声明 `prototype_rows` 时，按 Prototype Mode 取原始 rowName，并验证该行属于指定 `PrototypeID:Mode` 候选集；Numerical、ASC 和主动技能关系仍照常核验。未声明时，多候选只允许 rowName 与武器 `title` 或 `${title}_${mode}` 精确匹配。无法唯一匹配时失败，不做模糊匹配或 first-wins。
 
 ### 单武器局部刷新
 

@@ -43,6 +43,8 @@ damage_sources:
 
 标题、Prototype、用途、武器类型、元素、稀有度、标签和正文属于武器共享身份，不按模式复制。
 
+当原始 Prototype 行名与页面标题不同且 `PrototypeID:Mode` 存在多个候选时，可使用 `prototype_rows` 显式选择原始行名，例如 `prototype_rows: { "0": 猪猪侠捏捏乐 }`。键是 Prototype 的非负整数 Mode（不是 LC/TD），值必须是该 Prototype ID 与 Mode 候选集内的精确 Unreal rowName。此字段只用于刷新期消歧，不改变页面名称、不绕过 Numerical/ASC/主动技能身份校验；未填写的 Mode 保持原有精确选择规则。
+
 `item_id` 与 `explosion_range` 允许公共标量或模式映射：
 
 ```yaml

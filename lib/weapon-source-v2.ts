@@ -298,6 +298,15 @@ const weaponSourceV2BaseSchema = z.strictObject({
 
   game_modes: z.array(numericalTableSchema).min(1).max(2),
   prototype_id: positiveIdStringSchema,
+  prototype_rows: z
+    .record(
+      z.string().regex(/^(0|[1-9]\d*)$/).refine((mode) => Number.isSafeInteger(Number(mode))),
+      nonEmptyStringSchema,
+    )
+    .refine((rows) => Object.keys(rows).length > 0, {
+      message: "prototype_rows must contain at least one Prototype Mode",
+    })
+    .optional(),
   item_id: itemIdModeValueSchema.optional(),
   use_type: nonEmptyStringSchema,
   weapon_type: nonEmptyStringSchema.optional(),

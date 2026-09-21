@@ -406,7 +406,11 @@ export function selectWeaponPrototypeRowName(
   prototypeId: string,
   mode: number,
   title: string,
+  explicitRowName?: string,
 ): string | undefined {
+  if (explicitRowName !== undefined) {
+    return reader.getPrototype({ prototypeId, mode, rowName: explicitRowName }).rowName;
+  }
   const candidates = reader.getPrototypeCandidates(prototypeId, mode);
   if (candidates.length <= 1) return undefined;
   const allowed = new Set([title, `${title}_${mode}`]);
@@ -447,6 +451,7 @@ function auditPrototypeLinks(
           weapon.prototype_id,
           mode,
           weapon.title,
+          weapon.prototype_rows?.[String(mode)],
         );
         reader.validatePrototypeLink({
           prototypeId: weapon.prototype_id,
@@ -489,6 +494,7 @@ function auditPrototypeLinks(
           weapon.prototype_id,
           0,
           weapon.title,
+          weapon.prototype_rows?.["0"],
         );
         const audit = auditActiveSkillReference(reader, {
           prototypeId: weapon.prototype_id,

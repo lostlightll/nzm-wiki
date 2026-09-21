@@ -33,6 +33,14 @@ function weapon(extra: Record<string, unknown> = {}): Record<string, unknown> {
   };
 }
 
+test("Prototype 原始行名显式按 Mode 选择并保留投影", () => {
+  const parsed = validateWeaponSourceV2(weapon({ prototype_rows: { "0": "原始行名" } }));
+  assert.deepEqual(projectWeaponSourceV2(parsed, "lc").prototype_rows, { "0": "原始行名" });
+  for (const rows of [{}, { lc: "行名" }, { "-1": "行名" }, { "01": "行名" }, { "0": "" }, { "9007199254740992": "行名" }]) {
+    assert.throws(() => validateWeaponSourceV2(weapon({ prototype_rows: rows })));
+  }
+});
+
 test("公共 source 分别投影为 LC/TD 引用", () => {
   const parsed = validateWeaponSourceV2(weapon());
   const lc = projectWeaponSourceV2(parsed, "lc");

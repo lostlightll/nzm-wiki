@@ -58,6 +58,9 @@ const GAME_TOKEN_SOURCE_PATHS = [
 ] as const;
 const KNOWN_UNRESOLVED_GAME_TOKENS = new Set([
   "{GPModifier:111041026:BaseValue:0:2:1}",
+  // S4 formal MGE 1013039001_1 contains this token, but the Modifier table
+  // has no 121300390 row. Its Numerical damage row is not a Modifier fallback.
+  "{GPModifier:121300390:BaseValue:0:13}",
 ]);
 export const DEFAULT_NUM_MODIFIER_LOCK_PATH = path.join(
   process.cwd(),

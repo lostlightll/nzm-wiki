@@ -599,6 +599,48 @@ damage_sources:
   assert.ok(mismatch.issues.some((issue) => issue.includes("PROTOTYPE_LINK_MISMATCH")));
 });
 
+test("显式 Prototype rowName 消歧仍检查候选身份、ASC 与主动技能", (context) => {
+  const fixture = createFixture(context, {
+    prototype: {
+      ...baseRows.prototype,
+      目标原始行: { PrototypeID: "600", Mode: 0, ASCTypeID: "10", NumericalID: 120, ActiveSkillID: 0 },
+      其他候选: { PrototypeID: "600", Mode: 0, ASCTypeID: "11", NumericalID: 120, ActiveSkillID: 5001 },
+      不同身份行: { PrototypeID: "601", Mode: 0, ASCTypeID: "10", NumericalID: 120, ActiveSkillID: 0 },
+    },
+  });
+  const document = `
+schema_version: 2
+title: 页面名称
+game_modes: [lc, td]
+prototype_id: "600"
+prototype_rows: { "0": 目标原始行 }
+active_skill_id: 0
+use_type: 主武器
+element: 物理
+rarity: 稀有
+damage_sources:
+  - id: primary
+    name: 主射击
+    section: fire_mode
+    source:
+      prototype_mode: 0
+      numerical: { id: 120, level: 1 }
+      asc_type_id: "10"
+`;
+  const generate = () => generateWeaponDataLock({ contentRoot: fixture.contentRoot, weaponRoots: fixture.weaponRoots });
+  writeMdx(fixture.lcRoot, "页面名称.mdx", document);
+  assert.doesNotThrow(generate);
+  for (const rowName of ["不存在", "不同身份行", "其他候选"]) {
+    writeMdx(fixture.lcRoot, "页面名称.mdx", document.replace("0\": 目标原始行", `0": ${rowName}`));
+    const error = captureOperationError(generate);
+    assert.ok(error.issues.length > 0);
+    if (rowName === "其他候选") {
+      assert.ok(error.issues.some((issue) => issue.includes("PROTOTYPE_LINK_MISMATCH")));
+      assert.ok(error.issues.some((issue) => issue.includes("MDX_PROTOTYPE_SKILL_MISMATCH")));
+    }
+  }
+});
+
 test("差异报告区分增删、字段、Settlement Tag 和来源哈希", (context) => {
   const { lock } = generateMainFixture(context);
   const next = cloneLock(lock);
