@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "season": {
+    "id": "s4",
+    "label": "S4（待更新）",
+    "status": "current",
+    "updatedAt": "2026-09-21"
+  },
+  "provenance": {
+    "contentRoot": "archives/content-versions",
+    "note": "上一赛季已归档并撤下；正式版内容尚未发布，预览不自动转正。",
+    "files": [
+      {
+        "path": "archives/content-versions/s3/s3.2-final-20260922/manifest.json",
+        "sha256": "0ee39e3adc647d967220779c8743b4aa3ac23a08386be341a7f6c83fed97134f"
+      }
+    ]
+  },
+  "withdrawn": true,
+  "cards": [],
+  "independentDamage": {},
+  "bonds": null,
+  "levels": null,
+  "mapRotation": null
+}

@@ -1,0 +1,29 @@
+---
+"title": "极寒之触"
+"id": "20703040538"
+"slot": 4
+"rarity": 3
+"icon": "1312078004"
+"weaponType": []
+"weaponNames":
+  - "极寒冰神"
+"CollectMODItem": 1
+"MakeMODItem": 1
+"IsCooked": true
+"season": "s4-preview"
+"independent_damage_sources":
+  - "weapon_slug": "极寒冰神"
+    "damage_source_id": "cryo-touch"
+    "trigger": "激光模式攻击冰缓效果超过2层的敌人，触发半径2.5米爆炸"
+    "interval": "1秒"
+"description": "激光模式下攻击敌人，给敌人施加冰缓异常效果的概率提高。敌人每有一层冰缓效果，针对其射击伤害提高<strong>{{num:damage-per-stack|percent}}</strong>，最多<strong>{{num:damage-at-three-stacks|percent}}</strong>。激光模式攻击冰缓效果超过<strong>2层</strong>的敌人时，可触发范围<strong>2.5米</strong>的爆炸，造成<strong>{GPNumericalID:120300175:HpCalScale:13}攻击力</strong>范围伤害，该效果冷却时间<strong>1秒</strong>。"
+"num_modifier_values":
+  "damage-per-stack":
+    "row": "lc:120300171_1_0"
+    "field": "coefficient"
+  "damage-at-three-stacks":
+    "row": "lc:120300171_1_0"
+    "field": "coefficient"
+    "scale": 3
+"preview_change": "new"
+---

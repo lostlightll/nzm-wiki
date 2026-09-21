@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "season": "s4",
+  "version": "s4",
+  "phase": "candidate",
+  "basedOn": "s3.2",
+  "preview": {
+    "season": "s4",
+    "version": "s4-preview",
+    "label": "S4 Preview"
+  }
+}
