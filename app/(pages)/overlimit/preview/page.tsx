@@ -18,7 +18,7 @@ export default function OverlimitPreviewPage() {
   const preview = getActivePreview();
   if (!catalog || !preview) notFound();
   return <OverlimitPageClient basePath="/overlimit/preview" versions={getOverlimitVersions()}
-    existingCardIds={getOverlimitCatalog().cards.map(card => card.id)}
+    existingCardIds={getOverlimitCatalog().withdrawn ? undefined : getOverlimitCatalog().cards.map(card => card.id)}
     sourceSeason={getPreviewSeasonKey(preview)}
     season={catalog.season} initialCards={catalog.cards} bondCatalog={catalog.bonds}
     levelCatalog={catalog.levels} mapRotation={catalog.mapRotation} />;

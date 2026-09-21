@@ -6,6 +6,7 @@ import grapplingHookData from "@/data/season-talents/s3/grappling-hook.json";
 import ironFistData from "@/data/season-talents/s3/iron-fist.json";
 import passiveData from "@/data/season-talents/s3/passives.json";
 import zeroData from "@/data/season-talents/s3/zero.json";
+import contentVersion from "@/config/content-version.json";
 import { getResolvedFieldValue } from "@/lib/weapon-consumers";
 import { getAllResolvedWeapons } from "@/lib/weapons";
 import { getAllPerks } from "@/lib/perks";
@@ -425,7 +426,9 @@ export async function getAllBuildGuides(options?: {
       ...document,
       source: parseBuildGuideSource(document.metadata, document.slug),
     }))
-    .filter((document) => includeDrafts || !document.source.draft);
+    // Retired-season drafts retain their source but cannot resolve against a new season's catalog.
+    .filter((document) => !document.source.draft ||
+      (includeDrafts && document.source.season === contentVersion.season));
   const context = await createResolutionContext();
   return Promise.all(
     documents.map((document) =>

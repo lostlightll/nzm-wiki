@@ -100,6 +100,20 @@ S4 预览通过独立通道展示，正式通道仍为 S3.2。9 月 22 日正式
 
 槽位补充核对（2026-09-17）：`refs-test/Exports/NZM/Content` 的体验服导出同样缺少 `HuntingGroundRoguelikeWeaponModServerTable`；客户端卡表包含预载全部 177 个 ID，但只提供 `bSlot4`，其中 33 个 ID 的标记与正式预载不同，不采用体验服回填。按维护者确认的优先级，保留 S4 预载超限明确标记的四插，其余使用同包同 ID 插件槽位作为回退。弱肉强食、换弹冲击、万伤掷弹、飞毛腿、驰射淬锋、疾风残影虽为普通三插插件，在超限中仍使用明确标记的四插。每次重建都保留槽位来源，正式服上线后复核回退项。
 
+## 2026-09-22：S4 正式客户端复核
+
+正式投影已切换为 S4，包含 177 张卡、10 组羁绊与 17 段公告开放排期；本季预览已撤下。完整预览保存在 `archives/content-versions/s4/s4-preview-final-20260922/`。
+
+正式源对比记录见 `scripts/overlimit/current-source-review.json`：187 个已审执行资产的 374 份 `.uasset/.uexp` 与预载审定哈希相同，189 条已审 Numerical 行保持一致；重新读取正式表后，11 张原生卡改为明确四插，力场和叠叠乐由 2/5/8 档改为 2/4/6 档。疾风残影关联 Buff `BD_Common_1316217002` 持续时间由 2 秒变为 3 秒。瞬暴正式客户端结算仍为 2 倍，与公告 3 倍的差异保留在页面说明中；服务端概率和未审定独立伤害不作推断。
+
+同一生成器可通过 `--channel current` 生成独立正式候选，必须显式指定正式来源锁、规则审定、公告与输出目录；不会改写正式投影、共享来源表或 Lock。审计完成后仍使用上文 `activate` 流程发布，单独合并候选 `providers.json` 的超限来源：
+
+```powershell
+pnpm exec tsx scripts/overlimit/prepare-preview.ts --channel current --content-root refs/Exports/NZM/Content --updated-at 2026-09-22 --source-lock scripts/overlimit/current-card-source-lock.json --rules-review scripts/overlimit/current-rules-review.json --announcement scripts/overlimit/current-announcement.json --source-review scripts/overlimit/current-source-review.json --output-directory MD/_local/overlimit/candidates/s4-reviewed
+```
+
+`data/overlimit/current-evidence.json` 保存当前逐卡和规则审计证据。下一次重建须重新核对来源变化，不能直接刷新审定哈希或把旧预览改名发布。
+
 ## 重建已审定的超限预览
 
 本地导出未含图标 PNG 时，先仅解码卡池实际引用的纹理（需要本地 CUE4Parse 库与 Python Pillow；库路径可通过 `-LibraryDirectory` 指定）：

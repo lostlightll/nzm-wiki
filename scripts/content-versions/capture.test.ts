@@ -32,7 +32,7 @@ function setup() {
   for (const asset of catalogAssets(catalog)) write(asset, "fixture image");
   const perks: Perk[] = [
     { id: "old", itemId: "1", slug: "slot-1/old", name: "Old", slot: 1, rarity: "史诗", category: "其他", icon: "old", effects: [] },
-    { id: "new", itemId: "1", slug: "preview/slot-1/old", name: "New", season: "s5-preview", slot: 1, rarity: "史诗", category: "其他", icon: "new", effects: [] },
+    { id: "new", itemId: "1", slug: "preview/slot-1/old", name: "New", season: "s5-preview", previewChange: "new", slot: 1, rarity: "史诗", category: "其他", icon: "new", effects: [] },
   ];
   for (const perk of perks) {
     const source = perk.slug.startsWith("preview/") ? `data/perk-preview/${perk.slug.slice(8)}` : `data/perks/${perk.slug}`;
@@ -44,7 +44,7 @@ function setup() {
     season: { id: "s5-preview", key: "s5-preview", label: "S5 Preview", status: "preload" },
     provenance: { files: [{ path: "data/perk-preview/slot-1/old.mdx", sha256: "a".repeat(64) }] },
     entries: [{ perk: perks[1], content: "Raw body", source: fs.readFileSync(path.join(root, "data/perk-preview/slot-1/old.mdx"), "utf8"),
-      metadata: { title: "New", id: "1", season: "s5-preview", slot: 1, rarity: "史诗" }, independentDamage: [] }] }));
+      metadata: { title: "New", id: "1", season: "s5-preview", preview_change: "new", slot: 1, rarity: "史诗" }, independentDamage: [] }] }));
   for (const file of ["data/num-modifier-lock.json", "data/num-modifier-semantics.json", "data/perk-preview-modifiers.json", "scripts/s4-preview-perks-review.json"]) write(file, "{}");
   const input: CaptureInput = { perks, independentDamage: {}, relations: [] };
   return { root, input, original, dispose: () => fs.rmSync(root, { recursive: true, force: true }) };

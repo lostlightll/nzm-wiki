@@ -32,6 +32,17 @@ pnpm content-version verify --archive archives/content-versions/s3/s3.2
 
 ## 下一赛季准备与当前版维护
 
+正式服换季时，若新正式内容尚未审定，可在完整归档后显式撤下旧版：
+
+```powershell
+pnpm content-version withdraw --archive archives/content-versions/s3/s3.2-final-20260922 --season s4 --version s4
+pnpm overlimit project
+pnpm num-modifier:project
+pnpm num-skills:project
+```
+
+撤下前逐文件比对归档哈希；只移除已归档的正式插件 MDX、正式插件及超限来源，并把超限正式投影标记为 `withdrawn: true`。空投影不得保留卡片、独立伤害、羁绊、等级或地图轮换。正式页面显示待更新，旧详情及搜索条目不再生成；现有预览保持独立。版本进入 `candidate`，不是已核验的新季发布。后续审定正式投影时移除撤下标记。
+
 先归档并提交当前版本，再建立下一版工作区：
 
 ```powershell
@@ -99,6 +110,16 @@ pnpm content-version archive-preview
 4. 确认超限及其他消费者也已处理本季预览后，移除配置中的本季 `preview`，重建 `pnpm num-modifier:project` 并运行发布检查。历史预览 Numerical 证据可保留供追溯，但不能再有本季活跃消费者。
 
 共享的 Preview 代码保留供下一次过渡使用；日期到达或字符串替换不能代替数值审计。
+
+### S4 正式服转正维护
+
+2026-09-22 的 S4 正式源位于 `refs/Exports/NZM/Content`，预载另存为 `Content_S4_Preload`。转正前快照为 `archives/content-versions/s4/s4-preview-final-20260922`；其底座是撤下 S3 后的候选状态，不是 S4 正式发布。
+
+已审定插件可以用 `scripts/perks/promote-release.ts` 显式迁移。它要求正式 Content、已校验的预览归档和上一版归档；先检查身份、插槽和每条引用与正式 Lock 一致，再写入尚不存在的正式文件。保留既有插件的引入赛季，新插件使用正式赛季；移除 `preview_change`、预览快照和预览变体通道，原编辑副本仅在全部正式文件写入后移除。此命令不负责审定描述、触发伤害或新出现的属性链，必须先完成对应复核。
+
+`scripts/content-versions/promote-shared.ts` 在超限正式投影已经激活后，合并经审定的超限/插件来源候选、迁移技能变体通道并移除本季 Preview 配置。随后必须重新执行当前通道技能锁定及两类索引生成；不要把预览行重命名后当作正式源。图标使用 `scripts/sync-perk-icons.ts` 按 ItemID 与正式 CommonItem 的 NormalIcon 同步 PNG/WebP，并为冲突图标分配 ItemID 后缀。
+
+正式超限的 `current-evidence.json` 随版本归档保留；历史 Preview 证据可以留存，正式消费者不能依赖它。
 
 超限转正前先归档当前正式版，再按超限 `activate` 流程将复核后的投影写入 `current.json`，同时迁移对应来源登记。将 `preview.json` 置为 `null`，撤下本季预览来源，运行 `pnpm overlimit project` 和 `pnpm num-modifier:project`，最后移除本季预览配置。空预览不进入静态导出、搜索或站点地图；不要删除通用组件。
 

@@ -119,6 +119,8 @@ export function assembleCapture(root: string, input: CaptureInput, options: Capt
   if (previewCatalog && fs.existsSync(path.join(root, "data/overlimit/preview-evidence.json"))) {
     evidence.push("data/overlimit/preview-evidence.json");
   }
+  const currentEvidence = "data/overlimit/current-evidence.json";
+  if (fs.existsSync(path.join(root, currentEvidence))) evidence.push(currentEvidence);
   for (const relative of evidence) files[`evidence/${relative}`] = read(relative);
   return {
     files,

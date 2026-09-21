@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { getAllOverlimitCards } from "@/lib/overlimit-cards";
 import { getOverlimitCatalog } from "@/lib/overlimit";
 import { MULTIPLIER_PROVIDERS } from "@/lib/multiplier-data";
@@ -7,6 +8,7 @@ import { NUM_MODIFIER_RESOLVER } from "@/lib/num-modifier-data";
 import type { ResolvedNumModifierRow } from "@/lib/num-modifier";
 import type { PerkEffectValue } from "@/types";
 import { loadModifierProviderRegistry } from "./num-modifier/provider-registry";
+import { auditReviewedEffects } from "./overlimit/audit-effects";
 
 type Row = Record<string, unknown>;
 type EffectRecipient = "self" | "ally" | "enemy" | "damage-event" | "unknown";
@@ -18,6 +20,10 @@ type EffectEvidence = {
 };
 
 const root = process.cwd();
+if (getOverlimitCatalog().withdrawn) {
+  console.log("当前正式超限已归档撤下，无活跃卡片需要数值审计。");
+  process.exit(0);
+}
 const refsRoot = path.resolve(root, getOverlimitCatalog().provenance.contentRoot);
 if (!fs.existsSync(refsRoot)) {
   throw new Error(`当前超限版本的参考目录不存在：${refsRoot}`);
@@ -62,6 +68,26 @@ for (const entry of [
           : entry.evidence.applications,
     });
   }
+}
+
+const reviewedEvidencePath = path.join(root, "data/overlimit/current-evidence.json");
+if (fs.existsSync(reviewedEvidencePath)) {
+  const catalog = getOverlimitCatalog();
+  for (const source of catalog.provenance.files) {
+    const sourcePath = path.resolve(/^(scripts|public|MD)\//.test(source.path) ? root : refsRoot, source.path);
+    const actual = createHash("sha256").update(fs.readFileSync(sourcePath)).digest("hex");
+    if (actual !== source.sha256) throw new Error(`Current overlimit evidence changed: ${source.path}`);
+  }
+  const announcement = catalog.provenance.files.find(file => /^scripts\/overlimit\/[^/]*announcement\.json$/.test(file.path));
+  const descriptionOverrides = announcement
+    ? JSON.parse(fs.readFileSync(path.join(root, announcement.path), "utf8")).cardDescriptions
+    : {};
+  const runtimeCardIds = new Set(MULTIPLIER_PROVIDERS.flatMap(provider =>
+    provider.source.type === "overlimit-card" && !provider.source.season ? [provider.source.id] : []));
+  const result = auditReviewedEffects(catalog, JSON.parse(fs.readFileSync(reviewedEvidencePath, "utf8")),
+    NUM_MODIFIER_RESOLVER, loadModifierProviderRegistry(), runtimeCardIds, descriptionOverrides);
+  console.log(`超限卡片 Numerical 效果审计通过：${result.cards} 张卡，${result.verifiedEffects} 项效果；逐项核对审定表达式、field、scale、单位和正式来源。`);
+  process.exit(0);
 }
 
 function localized(value: unknown): string {

@@ -52,6 +52,9 @@ function hasPublishedBuildGuides(): boolean {
 const PATHS_TO_HIDE = [
   path.join("app", "api"),
   path.join("app", "editor"),
+  ...(JSON.parse(fs.readFileSync(path.join(process.cwd(), "data/overlimit/current.json"), "utf8")).withdrawn === true
+    ? [path.join("app", "(pages)", "overlimit", "[id]")]
+    : []),
   ...(!hasOverlimitPreview()
     ? [path.join("app", "(pages)", "overlimit", "preview")]
     : []),
@@ -129,7 +132,7 @@ try {
   // 2. 删除 .next 缓存 (必须步骤)
   if (fs.existsSync(NEXT_CACHE_DIR)) {
     console.log("[CLEAN] Removing .next cache to prevent stale type errors...");
-    fs.rmSync(NEXT_CACHE_DIR, { recursive: true, force: true });
+    fs.rmSync(NEXT_CACHE_DIR, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 });
   }
 
   // 3. 隐藏文件夹
@@ -152,8 +155,9 @@ try {
   execSync("pnpm exec next build", { stdio: "inherit" });
 
   console.log("[SUCCESS] Build completed successfully.");
-} catch {
+} catch (error) {
   console.error("\n[ERROR] Build failed.");
+  console.error(error);
   process.exitCode = 1;
 } finally {
   // 5. 还原文件夹

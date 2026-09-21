@@ -6,6 +6,7 @@ import { captureCurrent } from "./capture";
 import { diffVersions, exportVersion, listVersions, saveVersion, verifyVersion } from "./store";
 import { assertReleaseReady, git, prepareRelease, readRelease, RELEASE_FILE, writeRelease } from "./release";
 import { getPreviewSeasonKey, isPreviewSeason } from "../../lib/content-preview";
+import { withdrawCurrent } from "./withdraw";
 
 const { values, positionals } = parseArgs({ allowPositionals: true, options: {
   season: { type: "string" }, version: { type: "string" }, archive: { type: "string" },
@@ -46,6 +47,9 @@ async function archiveCurrent(includePreview = false) {
 
 async function main() {
   switch (positionals[0]) {
+    case "withdraw":
+      withdrawCurrent(root, path.resolve(required("archive")), required("season"), required("version"));
+      break;
     case "status":
       console.log(JSON.stringify({ current: readRelease(root), archives: listVersions(root).map(({ directory, manifest }) => ({
         directory, ...manifest.identity, createdAt: manifest.createdAt, summary: manifest.summary,
@@ -95,7 +99,7 @@ async function main() {
       break;
     }
     default:
-      throw new Error("Usage: pnpm content-version <status|archive|archive-preview|verify|diff|export|prepare|finalize> [--season s4 --version s4 --archive PATH --left PATH --right PATH --output PATH]");
+      throw new Error("Usage: pnpm content-version <status|archive|archive-preview|verify|diff|export|prepare|withdraw|finalize> [--season s4 --version s4 --archive PATH --left PATH --right PATH --output PATH]");
   }
 }
 main().catch(error => { console.error(error instanceof Error ? error.message : error); process.exitCode = 1; });

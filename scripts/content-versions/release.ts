@@ -51,9 +51,10 @@ export function prepareRelease(root: string, season: string, version: string): s
 
 export function assertReleaseReady(
   release: ContentRelease,
-  overlimit: { season: { id: string; status: string } },
+  overlimit: { season: { id: string; status: string }; withdrawn?: boolean },
   perks: readonly { season?: string }[],
 ): void {
+  if (overlimit.withdrawn) throw new Error("Publish a reviewed overlimit catalog before finalizing");
   if (overlimit.season.id !== release.version || overlimit.season.status !== "current") {
     throw new Error(`Overlimit must be reviewed and current for version ${release.version}`);
   }

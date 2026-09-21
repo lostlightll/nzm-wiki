@@ -66,7 +66,10 @@ const CDO_DETAILS: Record<string, [string, string, number?][]> = {
   "1317113001": [["TriggerInterval", "叠层间隔", 1]], "1317128001": [["CooldownDuration", "冷却", 1]], "1317129001": [["CooldownDuration", "冷却", 1]],
 };
 
-export async function generatePreviewCards(contentRoot: string, options: { publicRoot?: string; iconRoot?: string } = {}) {
+export async function generatePreviewCards(contentRoot: string, options: {
+  publicRoot?: string; iconRoot?: string; nativeReviewPath?: string; ordinaryReviewPath?: string;
+  sourceLockPath?: string; iconNamespace?: string;
+} = {}) {
   const root = path.resolve(contentRoot);
   const provenanceFiles = new Map<string, { path: string; sha256: string }>();
   function read(relative: string): unknown {
@@ -88,12 +91,15 @@ export async function generatePreviewCards(contentRoot: string, options: { publi
   const numerical = rows("Attributes/AutoGenerate/numerical_modifier_config.json");
   const sets = rows("DataTables/LuaDataTable/WeaponModSetTable.json");
   const resolver = createNumModifierResolver({ ...NUM_MODIFIER_LOCK, rows: { lc: Object.fromEntries(Object.entries(numerical).map(([key, raw]) => [key, { row_name: key, raw }])) } }, NUM_MODIFIER_SEMANTICS);
-  const nativePath = "scripts/overlimit/preview-native-review.json";
+  const nativePath = options.nativeReviewPath ?? "scripts/overlimit/preview-native-review.json";
   const native: Record<string, ReviewedNative> = fs.existsSync(nativePath) ? JSON.parse(fs.readFileSync(nativePath, "utf8")) : {};
-  const ordinaryPath = "scripts/overlimit/preview-ordinary-review.json";
+  const ordinaryPath = options.ordinaryReviewPath ?? "scripts/overlimit/preview-ordinary-review.json";
   const ordinary: Record<string, Omit<ReviewedNative, "description">> = fs.existsSync(ordinaryPath) ? JSON.parse(fs.readFileSync(ordinaryPath, "utf8")) : {};
-  const sourceLockPath = "scripts/overlimit/preview-card-source-lock.json";
+  const sourceLockPath = options.sourceLockPath ?? "scripts/overlimit/preview-card-source-lock.json";
   const sourceLock: { commonFiles: { path: string; sha256: string }[]; cards: Record<string, { path: string; sha256: string }[]> } = JSON.parse(fs.readFileSync(sourceLockPath, "utf8"));
+  for (const reviewPath of [nativePath, ordinaryPath, sourceLockPath]) {
+    if (fs.existsSync(reviewPath)) provenanceFiles.set(reviewPath, { path: reviewPath, sha256: digest(fs.readFileSync(reviewPath)) });
+  }
   const checkedSources = new Set<string>();
   function verifySource(source: { path: string; sha256: string }) {
     if (checkedSources.has(source.path)) return;
@@ -192,7 +198,7 @@ export async function generatePreviewCards(contentRoot: string, options: { publi
     const iconSource = iconCandidates.find(candidate => fs.existsSync(candidate));
     if (!iconSource) throw new Error(`Missing selected icon ${id}: ${iconFile}; run export-preview-icons.ps1 then decode-preview-icons.py`);
     const iconBytes = fs.readFileSync(iconSource);
-    const icon = `/icons/overlimit/preview/${digest(iconBytes).slice(0, 20)}.webp`;
+    const icon = `/icons/overlimit/${options.iconNamespace ?? "preview"}/${digest(iconBytes).slice(0, 20)}.webp`;
     const destination = path.join(options.publicRoot ?? path.join(process.cwd(), "public"), icon);
     if (!fs.existsSync(destination)) { fs.mkdirSync(path.dirname(destination), { recursive: true }); await sharp(iconBytes).webp({ lossless: true }).toFile(destination); }
     const iconProvenance = iconSource === iconCandidates[0] ? iconFile : path.relative(process.cwd(), iconSource).replaceAll("\\", "/");

@@ -56,10 +56,18 @@ export const overlimitCatalogSchema = z.strictObject({
     status: z.enum(["current", "preload"]), updatedAt: date }),
   provenance: z.strictObject({ contentRoot: text, note: text,
     files: z.array(z.strictObject({ path: text, sha256: z.string().regex(/^[a-f0-9]{64}$/) })).min(1) }),
-  cards: z.array(cardSchema).min(1),
+  withdrawn: z.literal(true).optional(),
+  cards: z.array(cardSchema),
   independentDamage: z.record(id, z.array(independentDamageEntrySchema).min(1)),
   bonds: bonds.nullable(), levels: levels.nullable(), mapRotation: rotation.nullable(),
 }).superRefine((catalog, ctx) => {
+  if (!catalog.withdrawn && catalog.cards.length === 0) {
+    ctx.addIssue({ code: "custom", message: "已发布卡池不能为空", path: ["cards"] });
+  }
+  if (catalog.withdrawn && (catalog.season.status !== "current" || catalog.cards.length ||
+      Object.keys(catalog.independentDamage).length || catalog.bonds || catalog.levels || catalog.mapRotation)) {
+    ctx.addIssue({ code: "custom", message: "撤下的正式版不得保留展示内容", path: ["withdrawn"] });
+  }
   const ids = new Set<string>();
   for (const [index, card] of catalog.cards.entries()) {
     if (ids.has(card.id)) ctx.addIssue({ code: "custom", message: `重复卡片 ID: ${card.id}`, path: ["cards", index, "id"] });
