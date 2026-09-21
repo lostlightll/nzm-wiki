@@ -1,9 +1,21 @@
 ---
 name: nzm-assets
-description: Read NZM / AssaultFireFuture pak files in place, compare asset versions, inspect Lua bytecode and function changes, or explicitly export selected assets with the bundled FModel CLI. Use for patch changes and game-data evidence; not general Wiki editing or media conversion.
+description: Read NZM / AssaultFireFuture pak files in place, compare asset versions, inspect Lua bytecode, or export selected assets with the bundled FModel CLI. If existing refs exports, templates and import scripts cover the task, use that lightweight workflow without loading or invoking this skill. Not for general Wiki editing or media conversion.
 ---
 
 # NZM Assets
+
+## Scope gate
+
+For content imports, first use existing `refs/` exports, site templates and
+import scripts, with the required numerical checks. If that workflow covers
+the requested content, complete the import there and stop reading this skill.
+Reading exported JSON or checking Numerical values alone does not require it.
+
+Use this skill only for a specific gap requiring pak access, asset-version
+comparison, Lua bytecode inspection or a selected export. Read only the relevant
+references, resolve that gap, then return to the import workflow. A missing
+field or image does not justify a full asset audit or toolchain development.
 
 Use the bundled Windows x64 CLI through [scripts/Invoke-Nzm.ps1](scripts/Invoke-Nzm.ps1).
 It reads the existing private game profile without displaying its AES key.
@@ -121,8 +133,9 @@ virtual asset path, exported file path, and specific object/field used as eviden
 `extract` writes the original decrypted/decompressed asset and associated payloads
 such as .uexp/.ubulk. It does not convert assets to PNG, WAV, FBX, or glTF.
 
-For interpretation of exported properties, asset reference chains, or Blueprint
-Kismet behavior, continue with [nzm-uasset](../nzm-uasset/SKILL.md). Raw extraction
+When a specific unresolved question requires binary asset parsing or Blueprint
+Kismet analysis, continue with [nzm-uasset](../nzm-uasset/SKILL.md). Reading
+existing JSON fields and references alone does not require that skill. Raw extraction
 alone does not decode Blueprint Kismet; that skill documents its analysis inputs
 and tooling limitations. Lua bytecode uses this skill's native Lua commands.
 
