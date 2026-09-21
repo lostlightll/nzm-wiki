@@ -4281,6 +4281,105 @@
       "originalHeader": "---\r\ntitle: 星海狂想\r\ngame_modes:\r\n  - lc\r\n  - td\r\nschema_version: 2\r\nprototype_id: \"20001000004\"\r\nitem_id: \"20101000004\"\r\nuse_type: 主武器\r\nweapon_type: 突击步枪\r\nelement: 寒冷\r\nrarity: 传说\r\ntags:\r\n  - 动态射速\r\nscope: 低倍镜\r\ndamage_sources:\r\n  - id: primary-fire\r\n    name: 普通射击\r\n    section: fire_mode\r\n    source:\r\n      prototype_mode: 0\r\n      numerical:\r\n        id: 120100040\r\n        level: 1\r\n      asc_type_id: \"5\"\r\n  - id: passive-max-rate\r\n    name: 被动最大射速\r\n    section: variant\r\n    inherits: primary-fire\r\n    source:\r\n      prototype_mode: 1\r\n      asc_type_id: \"364\"\r\n      overrides:\r\n        asc:\r\n          fire_interval: 0.0727\r\n      override_reason: 实测确认持续开火的最大射速间隔\r\n  - id: large-ice-spike\r\n    name: 大型冰锥\r\n    section: skill\r\n    source:\r\n      numerical:\r\n        id: 1410050101\r\n        level: 1\r\n  - id: frost-ice-spike\r\n    name: 霜华冰锥\r\n    section: skill\r\n    source:\r\n      numerical:\r\n        id: 120100041\r\n        level: 1\r\nmagazine: 46\r\ntotal_ammo: 506\r\naccuracy: 77\r\nstability: 55\r\nchangeClip:\r\n  timeBase: 1.4\r\n  reloadRecovery: 0.437\r\nattenuation_begin: 38\r\nattenuation_end: 60\r\nattenuation_scale: 0.5\r\nskill_cooldown: 25\r\nweapon_type_id: 1\r\nactive_skill_id: 5100501\r\nskill_duration: 8\r\nskill_blocking: true\r\nshow_duration: true\r\n---\r\n"
     },
     {
+      "slug": "星铩",
+      "sha256": "0644f3cc4d5fb106c85f24bb556dbd2947e3affdd0ed42a47f64d4af64b13448",
+      "originalHeader": "---\ntitle: 星铩\ngame_modes:\n  - lc\n  - td\nuse_type: 近战武器\nweapon_type: 近战武器\nelement: 寒冷\nrarity: 传说\nweapon_type_id: 13\nprototype_id: \"20013000075\"\nactive_skill_id: 0\nmagazine: 30\ntotal_ammo: 5030\naccuracy: 0\nstability: 0\nscope: 不可开镜\nattenuation_begin: 0\nattenuation_end: 0\nattenuation_scale: 1\nchangeClip:\n  timeBase: 0.9\n  reloadRecovery: 0\nschema_version: 2\nitem_id: \"20113000075\"\ndamage_sources:\n  - id: light-attack-1\n    name: 轻击 1\n    section: melee\n    source:\n      prototype_mode: 0\n      numerical:\n        id: 121300751\n        level: 1\n      asc_type_id: \"403\"\n  - id: light-attack-2\n    name: 轻击 2\n    section: melee\n    source:\n      numerical:\n        id: 121300752\n        level: 1\n      asc_type_id: \"403\"\n  - id: heavy-attack\n    name: 重击\n    section: melee\n    source:\n      prototype_mode: 0\n      numerical:\n        id: 121300750\n        level: 1\n      asc_type_id: \"403\"\n---\n",
+      "body": "<WeaponSkill>\n  <PassiveSkill\n    name=\"星空急寒\"\n    icon=\"/icons/weapons/skills/T_Weapon_Skill_20013000075.png\"\n  >\n    角色造成的冰属性伤害提升<Yellow>5%</Yellow>，换弹速度提升<Yellow>8%</Yellow>。\n  </PassiveSkill>\n</WeaponSkill>\n",
+      "frontmatter": {
+        "title": "星铩",
+        "game_modes": [
+          "lc",
+          "td"
+        ],
+        "use_type": "近战武器",
+        "weapon_type": "近战武器",
+        "element": "寒冷",
+        "rarity": "传说",
+        "weapon_type_id": 13,
+        "prototype_id": "20013000075",
+        "active_skill_id": 0,
+        "magazine": 30,
+        "total_ammo": 5030,
+        "accuracy": 0,
+        "stability": 0,
+        "scope": "不可开镜",
+        "attenuation_begin": 0,
+        "attenuation_end": 0,
+        "attenuation_scale": 1,
+        "changeClip": {
+          "timeBase": 0.9,
+          "reloadRecovery": 0
+        },
+        "schema_version": 2,
+        "item_id": "20113000075",
+        "damage_sources": [
+          {
+            "id": "light-attack-1",
+            "name": "轻击 1",
+            "section": "melee",
+            "source": {
+              "prototype_mode": 0,
+              "numerical": {
+                "id": 121300751,
+                "level": 1
+              },
+              "asc_type_id": "403"
+            }
+          },
+          {
+            "id": "light-attack-2",
+            "name": "轻击 2",
+            "section": "melee",
+            "source": {
+              "numerical": {
+                "id": 121300752,
+                "level": 1
+              },
+              "asc_type_id": "403"
+            }
+          },
+          {
+            "id": "heavy-attack",
+            "name": "重击",
+            "section": "melee",
+            "source": {
+              "prototype_mode": 0,
+              "numerical": {
+                "id": 121300750,
+                "level": 1
+              },
+              "asc_type_id": "403"
+            }
+          }
+        ]
+      },
+      "activeSkillByMode": {
+        "lc": {},
+        "td": {}
+      },
+      "skills": [
+        {
+          "id": "passive-1",
+          "kind": "passive",
+          "opening": "<PassiveSkill\n    name=\"星空急寒\"\n    icon=\"/icons/weapons/skills/T_Weapon_Skill_20013000075.png\"\n  >",
+          "props": {
+            "name": "星空急寒",
+            "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000075.png"
+          },
+          "expectedByMode": {
+            "lc": {
+              "name": "星空急寒",
+              "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000075.png"
+            },
+            "td": {
+              "name": "星空急寒",
+              "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000075.png"
+            }
+          }
+        }
+      ]
+    },
+    {
       "slug": "春雷震",
       "sha256": "df24e3a4ff6a5af1e2e1ea1007d63bbffaaaa7e012fb34c7554a1c78f1549ca7",
       "body": "<WeaponModeDiff />\r\n\r\n<WeaponSkill>\r\n  <PassiveSkill\r\n    name=\"爆竹声声\"\r\n    icon=\"/icons/weapons/skills/T_Weapon_Skill_20016000006_1.png\"\r\n  >\r\n    春雷震开火射出的所有榴弹不会立即引爆，而是经过<Yellow>5秒</Yellow>后自动爆炸，也可以通过主动技能按钮提前引爆。猎场模式和塔防模式中，使用春雷震击杀敌人时，将额外获得<Yellow>35</Yellow>金币。\r\n  </PassiveSkill>\r\n</WeaponSkill>\r\n",
@@ -4576,6 +4675,105 @@
       "originalHeader": "---\ntitle: 木葫芦\ngame_modes:\n  - lc\n  - td\nschema_version: 2\nuse_type: 近战武器\nelement: 物理\nrarity: 传说\nprototype_id: \"20013000079\"\nitem_id: \"20113000079\"\ndamage_sources:\n  - id: he-shui-hui-xue\n    name: 喝水回血\n    section: special\n    sources:\n      lc:\n        numerical:\n          id: 121300790\n          level: 1\nchangeClip:\n  timeBase: 0.9\n  reloadRecovery: 0\nweapon_type_id: 13\nactive_skill_id: 0\n---\n"
     },
     {
+      "slug": "未名之刃",
+      "sha256": "933f93298840408e931df7196e41a53581b1e2519af0e34cb2970f959c4d2454",
+      "originalHeader": "---\ntitle: 未名之刃\ngame_modes:\n  - lc\n  - td\nuse_type: 近战武器\nweapon_type: 近战武器\nelement: 腐蚀\nrarity: 传说\nweapon_type_id: 13\nprototype_id: \"20013000088\"\nactive_skill_id: 0\nmagazine: 30\ntotal_ammo: 5030\naccuracy: 0\nstability: 0\nscope: 不可开镜\nattenuation_begin: 0\nattenuation_end: 0\nattenuation_scale: 1\nchangeClip:\n  timeBase: 0.9\n  reloadRecovery: 0\nschema_version: 2\nitem_id: \"20113000088\"\ndamage_sources:\n  - id: light-attack-1\n    name: 轻击 1\n    section: melee\n    source:\n      prototype_mode: 0\n      numerical:\n        id: 121300881\n        level: 1\n      asc_type_id: \"402\"\n  - id: light-attack-2\n    name: 轻击 2\n    section: melee\n    source:\n      numerical:\n        id: 121300882\n        level: 1\n      asc_type_id: \"402\"\n  - id: heavy-attack\n    name: 重击\n    section: melee\n    source:\n      prototype_mode: 0\n      numerical:\n        id: 121300880\n        level: 1\n      asc_type_id: \"402\"\n---\n",
+      "body": "<WeaponSkill>\n  <PassiveSkill\n    name=\"湮灭回响\"\n    icon=\"/icons/weapons/skills/T_Weapon_Skill_20013000088.png\"\n  >\n    角色造成的腐蚀伤害提升<Yellow>5%</Yellow>，武器爆炸伤害提升<Yellow>5%</Yellow>。\n  </PassiveSkill>\n</WeaponSkill>\n",
+      "frontmatter": {
+        "title": "未名之刃",
+        "game_modes": [
+          "lc",
+          "td"
+        ],
+        "use_type": "近战武器",
+        "weapon_type": "近战武器",
+        "element": "腐蚀",
+        "rarity": "传说",
+        "weapon_type_id": 13,
+        "prototype_id": "20013000088",
+        "active_skill_id": 0,
+        "magazine": 30,
+        "total_ammo": 5030,
+        "accuracy": 0,
+        "stability": 0,
+        "scope": "不可开镜",
+        "attenuation_begin": 0,
+        "attenuation_end": 0,
+        "attenuation_scale": 1,
+        "changeClip": {
+          "timeBase": 0.9,
+          "reloadRecovery": 0
+        },
+        "schema_version": 2,
+        "item_id": "20113000088",
+        "damage_sources": [
+          {
+            "id": "light-attack-1",
+            "name": "轻击 1",
+            "section": "melee",
+            "source": {
+              "prototype_mode": 0,
+              "numerical": {
+                "id": 121300881,
+                "level": 1
+              },
+              "asc_type_id": "402"
+            }
+          },
+          {
+            "id": "light-attack-2",
+            "name": "轻击 2",
+            "section": "melee",
+            "source": {
+              "numerical": {
+                "id": 121300882,
+                "level": 1
+              },
+              "asc_type_id": "402"
+            }
+          },
+          {
+            "id": "heavy-attack",
+            "name": "重击",
+            "section": "melee",
+            "source": {
+              "prototype_mode": 0,
+              "numerical": {
+                "id": 121300880,
+                "level": 1
+              },
+              "asc_type_id": "402"
+            }
+          }
+        ]
+      },
+      "activeSkillByMode": {
+        "lc": {},
+        "td": {}
+      },
+      "skills": [
+        {
+          "id": "passive-1",
+          "kind": "passive",
+          "opening": "<PassiveSkill\n    name=\"湮灭回响\"\n    icon=\"/icons/weapons/skills/T_Weapon_Skill_20013000088.png\"\n  >",
+          "props": {
+            "name": "湮灭回响",
+            "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000088.png"
+          },
+          "expectedByMode": {
+            "lc": {
+              "name": "湮灭回响",
+              "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000088.png"
+            },
+            "td": {
+              "name": "湮灭回响",
+              "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000088.png"
+            }
+          }
+        }
+      ]
+    },
+    {
       "slug": "杜瓦瓶",
       "sha256": "220f41eb4576cd30051f06822e75b3ca24cf7b32709c4323819bfcb97aeaeda0",
       "body": "<WeaponModeDiff />\n\n<WeaponSkill>\n  <ActiveSkill\n    name=\"零度之刺\"\n    icon=\"/icons/weapons/skills/T_Weapon_Skill_20115000001.png\"\n    duration={-1}\n    cooldown={30}\n    count={1}\n  >\n    掷出一支冰矛，对单体目标造成 **480%** 角色攻击力 <Grey>(僵尸猎场中为 2400)</Grey> 的急冻伤害， **100%** 添加冰属性异常，并在目标脚下生成一片冰冻区域，降低区域内敌人<Yellow>50%</Yellow>移动速度，减速区域存在<Yellow>15</Yellow>秒。\n  </ActiveSkill>\n\n  <PassiveSkill\n    name=\"过量装填\"\n    icon=\"/icons/weapons/skills/T_Weapon_Skill_20115000001.png\"\n  >\n    使用杜瓦瓶攻击冰缓或者击杀敌人时，会有<Yellow>5%</Yellow>几率给角色赋予一层持续<Yellow>10</Yellow>秒的过量装填增益效果，最高累计<Yellow>5</Yellow>层；杜瓦瓶下次换弹时将会消耗所有的过量装填增益效果，每消耗一层，换弹成功后主弹匣将额外装填<Yellow>10%</Yellow>弹药。\n  </PassiveSkill>\n</WeaponSkill>\n",
@@ -4708,6 +4906,105 @@
         }
       ],
       "originalHeader": "---\ntitle: 杜瓦瓶\ngame_modes:\n  - lc\n  - td\nprototype_id: \"20015000001\"\nuse_type: 主武器\nweapon_type: 喷射器\nelement: 寒冷\nrarity: 史诗\ntags:\n  - 弹夹容量\nscope: 不可开镜\nmagazine: 200\ntotal_ammo: 1400\naccuracy: 34\nstability: 63\nchangeClip:\n  timeBase: 3.2\n  reloadRecovery: 0.6786\nattenuation_begin: 200\nattenuation_end: 200\nattenuation_scale: 0\nskill_cooldown: 30\nweapon_type_id: 15\nactive_skill_id: 5101101\nskill_duration: 15\nskill_blocking: false\nshow_duration: true\nschema_version: 2\nitem_id: \"20115000001\"\ndamage_sources:\n  - id: pu-tong-she-ji\n    name: 普通射击\n    section: fire_mode\n    source:\n      prototype_mode: 0\n      numerical:\n        id: 121500010\n        level: 1\n      asc_type_id: \"122\"\n      overrides:\n        asc:\n          attenuation:\n            status: not_applicable\n      override_reason: 实测确认该武器不适用距离衰减，忽略 ASC 中的非法衰减区间\n  - id: ling-du-zhi-ci\n    name: 零度之刺\n    section: skill\n    source:\n      numerical:\n        id: 1410110101\n        level: 1\n---\n"
+    },
+    {
+      "slug": "杰斯拳套",
+      "sha256": "c98a9379c08b2bb0d0656c0a627c7460c9529b54b983168ed898d7340dc5437e",
+      "originalHeader": "---\ntitle: 杰斯拳套\ngame_modes:\n  - lc\n  - td\nuse_type: 近战武器\nweapon_type: 近战武器\nelement: 腐蚀\nrarity: 传说\nweapon_type_id: 13\nprototype_id: \"20013000078\"\nactive_skill_id: 0\nmagazine: 30\ntotal_ammo: 5030\naccuracy: 0\nstability: 0\nscope: 不可开镜\nattenuation_begin: 0\nattenuation_end: 0\nattenuation_scale: 1\nchangeClip:\n  timeBase: 0.9\n  reloadRecovery: 0\nschema_version: 2\nitem_id: \"20113000078\"\ndamage_sources:\n  - id: light-attack-1\n    name: 轻击 1\n    section: melee\n    source:\n      prototype_mode: 0\n      numerical:\n        id: 121300781\n        level: 1\n      asc_type_id: \"430\"\n  - id: light-attack-2\n    name: 轻击 2\n    section: melee\n    source:\n      numerical:\n        id: 121300782\n        level: 1\n      asc_type_id: \"430\"\n  - id: heavy-attack\n    name: 重击\n    section: melee\n    source:\n      prototype_mode: 0\n      numerical:\n        id: 121300780\n        level: 1\n      asc_type_id: \"430\"\n---\n",
+      "body": "<WeaponSkill>\n  <PassiveSkill\n    name=\"腐蚀冲拳\"\n    icon=\"/icons/weapons/skills/T_Weapon_Skill_20013000078.png\"\n  >\n    角色造成的腐蚀伤害提升<Yellow>5%</Yellow>，近距离武器伤害提升<Yellow>5%</Yellow>。\n  </PassiveSkill>\n</WeaponSkill>\n",
+      "frontmatter": {
+        "title": "杰斯拳套",
+        "game_modes": [
+          "lc",
+          "td"
+        ],
+        "use_type": "近战武器",
+        "weapon_type": "近战武器",
+        "element": "腐蚀",
+        "rarity": "传说",
+        "weapon_type_id": 13,
+        "prototype_id": "20013000078",
+        "active_skill_id": 0,
+        "magazine": 30,
+        "total_ammo": 5030,
+        "accuracy": 0,
+        "stability": 0,
+        "scope": "不可开镜",
+        "attenuation_begin": 0,
+        "attenuation_end": 0,
+        "attenuation_scale": 1,
+        "changeClip": {
+          "timeBase": 0.9,
+          "reloadRecovery": 0
+        },
+        "schema_version": 2,
+        "item_id": "20113000078",
+        "damage_sources": [
+          {
+            "id": "light-attack-1",
+            "name": "轻击 1",
+            "section": "melee",
+            "source": {
+              "prototype_mode": 0,
+              "numerical": {
+                "id": 121300781,
+                "level": 1
+              },
+              "asc_type_id": "430"
+            }
+          },
+          {
+            "id": "light-attack-2",
+            "name": "轻击 2",
+            "section": "melee",
+            "source": {
+              "numerical": {
+                "id": 121300782,
+                "level": 1
+              },
+              "asc_type_id": "430"
+            }
+          },
+          {
+            "id": "heavy-attack",
+            "name": "重击",
+            "section": "melee",
+            "source": {
+              "prototype_mode": 0,
+              "numerical": {
+                "id": 121300780,
+                "level": 1
+              },
+              "asc_type_id": "430"
+            }
+          }
+        ]
+      },
+      "activeSkillByMode": {
+        "lc": {},
+        "td": {}
+      },
+      "skills": [
+        {
+          "id": "passive-1",
+          "kind": "passive",
+          "opening": "<PassiveSkill\n    name=\"腐蚀冲拳\"\n    icon=\"/icons/weapons/skills/T_Weapon_Skill_20013000078.png\"\n  >",
+          "props": {
+            "name": "腐蚀冲拳",
+            "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000078.png"
+          },
+          "expectedByMode": {
+            "lc": {
+              "name": "腐蚀冲拳",
+              "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000078.png"
+            },
+            "td": {
+              "name": "腐蚀冲拳",
+              "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000078.png"
+            }
+          }
+        }
+      ]
     },
     {
       "slug": "极地夜曲",

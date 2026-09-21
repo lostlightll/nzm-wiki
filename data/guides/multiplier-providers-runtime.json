@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "d4b5a95832d2e7ed9273431c4825581963a30912b91ba6e1a399efc8628e50a7",
+    "modifierIndexSha256": "3d2e067cf4e89729ed064713026494d664b74e29a49613709c9b58b38d79cdec",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -2092,6 +2092,20 @@
       ]
     },
     {
+      "id": "weapon:杰斯拳套:腐蚀冲拳",
+      "label": "杰斯拳套·腐蚀冲拳",
+      "source": {
+        "type": "weapon",
+        "slug": "杰斯拳套",
+        "skillName": "腐蚀冲拳",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "close-range-damage"
+      ]
+    },
+    {
       "id": "weapon:精绝兽神:秘法榴弹",
       "label": "精绝兽神·秘法榴弹",
       "source": {
@@ -2418,6 +2432,20 @@
       ]
     },
     {
+      "id": "weapon:未名之刃:湮灭回响",
+      "label": "未名之刃·湮灭回响",
+      "source": {
+        "type": "weapon",
+        "slug": "未名之刃",
+        "skillName": "湮灭回响",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element",
+        "weapon-explode-damage"
+      ]
+    },
+    {
       "id": "weapon:稳赢之手:复仇之握",
       "label": "稳赢之手·复仇之握",
       "source": {
@@ -2456,6 +2484,19 @@
       },
       "modifierTypeIds": [
         "weapon-damage"
+      ]
+    },
+    {
+      "id": "weapon:星铩:星空急寒",
+      "label": "星铩·星空急寒",
+      "source": {
+        "type": "weapon",
+        "slug": "星铩",
+        "skillName": "星空急寒",
+        "component": "PassiveSkill"
+      },
+      "modifierTypeIds": [
+        "element"
       ]
     },
     {

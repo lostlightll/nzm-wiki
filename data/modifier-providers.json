@@ -4165,6 +4165,42 @@
       }
     },
     {
+      "id": "weapon:杰斯拳套:腐蚀冲拳",
+      "label": "杰斯拳套·腐蚀冲拳",
+      "source": {
+        "type": "weapon",
+        "slug": "杰斯拳套",
+        "skillName": "腐蚀冲拳",
+        "component": "PassiveSkill"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:121300780_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:121300781_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "descriptionRowKeys": [
+          "weapon:1013078001_1"
+        ]
+      }
+    },
+    {
       "id": "weapon:精绝兽神:秘法榴弹",
       "label": "精绝兽神·秘法榴弹",
       "source": {
@@ -4870,6 +4906,42 @@
       }
     },
     {
+      "id": "weapon:未名之刃:湮灭回响",
+      "label": "未名之刃·湮灭回响",
+      "source": {
+        "type": "weapon",
+        "slug": "未名之刃",
+        "skillName": "湮灭回响",
+        "component": "PassiveSkill"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:121300880_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:121300881_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "descriptionRowKeys": [
+          "weapon:1013088001_1"
+        ]
+      }
+    },
+    {
       "id": "weapon:稳赢之手:复仇之握",
       "label": "稳赢之手·复仇之握",
       "source": {
@@ -4957,6 +5029,42 @@
         "kind": "reviewed-override",
         "basis": [
           "页面描述明确写明跳舞后提升武器伤害 10%。"
+        ]
+      }
+    },
+    {
+      "id": "weapon:星铩:星空急寒",
+      "label": "星铩·星空急寒",
+      "source": {
+        "type": "weapon",
+        "slug": "星铩",
+        "skillName": "星空急寒",
+        "component": "PassiveSkill"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:121300750_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:121300751_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "gp-modifier",
+        "descriptionRowKeys": [
+          "weapon:1013075001_1"
         ]
       }
     },

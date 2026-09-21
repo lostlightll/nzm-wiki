@@ -6,7 +6,7 @@
 
 ## 武器技能
 
-118 份武器 MDX 显式声明 `skills`，无技能时为 `[]`。每项的 `id` 是武器内稳定身份，`kind`、`name`、`icon`、`tag` 是展示语义，`game_skill_id` 只在游戏身份已核实时填写。没有查明游戏 ID 的被动技能仍有本地身份，不按图标、名称或相邻编号猜 ID。
+121 份武器 MDX 显式声明 `skills`，无技能时为 `[]`。每项的 `id` 是武器内稳定身份，`kind`、`name`、`icon`、`tag` 是展示语义，`game_skill_id` 只在游戏身份已核实时填写。没有查明游戏 ID 的被动技能仍有本地身份，不按图标、名称或相邻编号猜 ID。
 
 ```yaml
 skills:
@@ -83,7 +83,7 @@ pnpm test:num-skills
 
 `num-modifier:check`（dev/build 使用）包含技能索引校验。它检查全量技能声明、每个可见技能的唯一正文引用、Num 关系完整性和投影新鲜度。
 
-首次迁移基线为 `data/weapon-skill-migration-baseline.json`，保存 118 份旧 header/body、SHA、两种模式有效参数。`scripts/num-skills/migration.test.ts` 对所有武器比较姓名、图标、标签、正文、充能、层数、持续与阻回，只有显式修正账本允许差异。**全部原 CD 必须保持，能源之影固定验收 45 秒；任何 CD 变化均失败。** 新增武器或主动改变既有内容后，应独立审查并更新迁移回归策略，不能重新生成基线掩盖差异。
+首次迁移基线为 `data/weapon-skill-migration-baseline.json`，保存 121 份旧 header/body、SHA、两种模式有效参数。`scripts/num-skills/migration.test.ts` 对所有武器比较姓名、图标、标签、正文、充能、层数、持续与阻回，只有显式修正账本允许差异。**全部原 CD 必须保持，能源之影固定验收 45 秒；任何 CD 变化均失败。** 新增武器或主动改变既有内容后，应独立审查并更新迁移回归策略，不能重新生成基线掩盖差异。
 
 持续时间同样必须保持迁移前展示值，不允许把 PVE 同名参数与旧值的差异自动加入迁移白名单。字段名和 Tag 只能证明参数类型，不能证明技能逻辑实际消费它。新数值需要独立审计生效链路，不能以“存在于 Lock”代替验证。
 

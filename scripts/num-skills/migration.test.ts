@@ -16,7 +16,7 @@ const directory = path.join(root, "data/weapons");
 test("migration baseline covers every weapon, including empty skill inventories", () => {
   assert.equal(baseline.version, 1);
   const files = readdirSync(directory).filter((file) => file.endsWith(".mdx")).map((file) => file.slice(0, -4)).sort();
-  assert.equal(files.length, 118);
+  assert.equal(files.length, 121);
   assert.deepEqual(baseline.weapons.map((weapon) => weapon.slug).sort(), files);
   assert.equal(new Set(baseline.weapons.map((weapon) => weapon.slug)).size, files.length);
   assert.deepEqual(baseline.expectedBodyChanges, reviewedBodyChanges);

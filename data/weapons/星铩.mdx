@@ -1,0 +1,65 @@
+---
+title: 星铩
+game_modes:
+  - lc
+  - td
+use_type: 近战武器
+weapon_type: 近战武器
+element: 寒冷
+rarity: 传说
+weapon_type_id: 13
+prototype_id: "20013000075"
+active_skill_id: 0
+magazine: 30
+total_ammo: 5030
+accuracy: 0
+stability: 0
+scope: 不可开镜
+attenuation_begin: 0
+attenuation_end: 0
+attenuation_scale: 1
+changeClip:
+  timeBase: 0.9
+  reloadRecovery: 0
+schema_version: 2
+item_id: "20113000075"
+damage_sources:
+  - id: light-attack-1
+    name: 轻击 1
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300751
+        level: 1
+      asc_type_id: "403"
+  - id: light-attack-2
+    name: 轻击 2
+    section: melee
+    source:
+      numerical:
+        id: 121300752
+        level: 1
+      asc_type_id: "403"
+  - id: heavy-attack
+    name: 重击
+    section: melee
+    source:
+      prototype_mode: 0
+      numerical:
+        id: 121300750
+        level: 1
+      asc_type_id: "403"
+skills:
+  - id: passive-1
+    kind: passive
+    name: 星空急寒
+    icon: /icons/weapons/skills/T_Weapon_Skill_20013000075.png
+    modifier_sources:
+      - weapon:星铩:星空急寒
+---
+<WeaponSkill>
+  <PassiveSkill skill="passive-1">
+    角色造成的冰属性伤害提升<Yellow>5%</Yellow>，换弹速度提升<Yellow>8%</Yellow>。
+  </PassiveSkill>
+</WeaponSkill>

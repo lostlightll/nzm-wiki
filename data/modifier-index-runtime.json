@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "1f9abbbab39ab1c0b7e8fb168af1f5ba01c0191d56a8c69f4425a04caf3602df",
+    "registrySha256": "e417541de63a049327169727b5b089a1e918c083bea68588bf8d3ceeb29c16cc",
     "perkPreviewSha256": "2ea47ef5ff27b25970a168b43cfdf0e484a63dbb648051bf883f35bf61ddcf04",
     "s2EvidenceSha256": "a3f16097b34fc589f1322faa4f798b74bc82066dbd02bdcaad4fa0e4c240a0b2",
     "semanticsSha256": "968c4c804124de97b6148f271896b87dd3a8db8a70ef295e7bfdbec37a6221ac",
@@ -4941,6 +4941,45 @@
       "reviewedOverride": false
     },
     {
+      "id": "weapon:杰斯拳套:腐蚀冲拳",
+      "label": "杰斯拳套·腐蚀冲拳",
+      "source": {
+        "type": "weapon",
+        "slug": "杰斯拳套",
+        "skillName": "腐蚀冲拳",
+        "component": "PassiveSkill"
+      },
+      "facetIds": [
+        "element",
+        "close-range-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:121300780_1_0",
+          "attributeTypeId": "element-damage",
+          "attributeLabel": "腐蚀伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "element"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:121300781_1_0",
+          "attributeTypeId": "close-range-damage",
+          "attributeLabel": "近距离武器伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "close-range-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
       "id": "weapon:精绝兽神:秘法榴弹",
       "label": "精绝兽神·秘法榴弹",
       "source": {
@@ -5636,6 +5675,45 @@
       "reviewedOverride": false
     },
     {
+      "id": "weapon:未名之刃:湮灭回响",
+      "label": "未名之刃·湮灭回响",
+      "source": {
+        "type": "weapon",
+        "slug": "未名之刃",
+        "skillName": "湮灭回响",
+        "component": "PassiveSkill"
+      },
+      "facetIds": [
+        "element",
+        "weapon-explode-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:121300880_1_0",
+          "attributeTypeId": "element-damage",
+          "attributeLabel": "腐蚀伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "element"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:121300881_1_0",
+          "attributeTypeId": "weapon-explode-damage",
+          "attributeLabel": "爆炸伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "weapon-explode-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
+    },
+    {
       "id": "weapon:稳赢之手:复仇之握",
       "label": "稳赢之手·复仇之握",
       "source": {
@@ -5727,6 +5805,45 @@
       ],
       "effects": [],
       "reviewedOverride": true
+    },
+    {
+      "id": "weapon:星铩:星空急寒",
+      "label": "星铩·星空急寒",
+      "source": {
+        "type": "weapon",
+        "slug": "星铩",
+        "skillName": "星空急寒",
+        "component": "PassiveSkill"
+      },
+      "facetIds": [
+        "element",
+        "reload-speed"
+      ],
+      "effects": [
+        {
+          "row": "lc:121300750_1_0",
+          "attributeTypeId": "element-damage",
+          "attributeLabel": "急冻伤害",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "element"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:121300751_1_0",
+          "attributeTypeId": "reload-speed",
+          "attributeLabel": "角色全武器换弹速度提高",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "reload-speed"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "weapon:血怨:蛇神之佑",

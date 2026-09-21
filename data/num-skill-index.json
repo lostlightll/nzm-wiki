@@ -8,11 +8,11 @@
       },
       {
         "path": "data/modifier-index-runtime.json",
-        "sha256": "d4b5a95832d2e7ed9273431c4825581963a30912b91ba6e1a399efc8628e50a7"
+        "sha256": "3d2e067cf4e89729ed064713026494d664b74e29a49613709c9b58b38d79cdec"
       },
       {
         "path": "data/modifier-providers.json",
-        "sha256": "971692a9c613f1c0c0ec3edb27db81bb5fe7a4898e24e1e7f6df12f1a777b30c"
+        "sha256": "c2311c885a251575f7b2a043338285346d21ea5d1e0a9b873bba696df3b9aa93"
       },
       {
         "path": "data/num-skill-lock.json",
@@ -36,7 +36,7 @@
       },
       {
         "path": "data/weapon-data-lock.json",
-        "sha256": "2f2271092af4606c74b7da2a1b43f73822b4208b4186a3b472cca11e475b5e04"
+        "sha256": "5c1a083acfa1d96676d99712acbfb7dbea6de585f6364f2e4fd3ffbcbe18c7e6"
       },
       {
         "path": "data/weapons/Bully.mdx",
@@ -183,6 +183,10 @@
         "sha256": "a474d39535928de0ac58b55adf56851f63374d47f00b11b9ef32ce1241ba6512"
       },
       {
+        "path": "data/weapons/星铩.mdx",
+        "sha256": "efe85844b76996a319ba427edee0dd6d8db8130a93ae2600dffd137f88e90850"
+      },
+      {
         "path": "data/weapons/春雷震.mdx",
         "sha256": "3ed73d5060ac5fc203b5a5db6fd033a9dddbe59423101f5ecc6b9e3c367bdc1c"
       },
@@ -195,8 +199,16 @@
         "sha256": "0efd11a10a1fe0c50e8d7af2ff7349bbc9e570498a226e86007355375f39be59"
       },
       {
+        "path": "data/weapons/未名之刃.mdx",
+        "sha256": "73e0c5d160bb19adfb95d8a40deeb7393b2100c9fd327981267eace7c3c2849f"
+      },
+      {
         "path": "data/weapons/杜瓦瓶.mdx",
         "sha256": "11bd1a36bfef09cc9b1d245f8a681794495cc7b330cd8205c014637483aebf73"
+      },
+      {
+        "path": "data/weapons/杰斯拳套.mdx",
+        "sha256": "f16d9653aff3eaa0a7feabce8b43b5bced34eaf73deec71100446220e2f2121e"
       },
       {
         "path": "data/weapons/极地夜曲.mdx",
@@ -3036,6 +3048,36 @@
     {
       "id": "passive-1",
       "kind": "passive",
+      "name": "星空急寒",
+      "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000075.png",
+      "display": true,
+      "parameters": {},
+      "modifierSources": [
+        "weapon:星铩:星空急寒"
+      ],
+      "provenance": {},
+      "weaponSlug": "星铩",
+      "mode": "lc",
+      "draft": false
+    },
+    {
+      "id": "passive-1",
+      "kind": "passive",
+      "name": "星空急寒",
+      "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000075.png",
+      "display": true,
+      "parameters": {},
+      "modifierSources": [
+        "weapon:星铩:星空急寒"
+      ],
+      "provenance": {},
+      "weaponSlug": "星铩",
+      "mode": "td",
+      "draft": false
+    },
+    {
+      "id": "passive-1",
+      "kind": "passive",
       "name": "爆竹声声",
       "icon": "/icons/weapons/skills/T_Weapon_Skill_20016000006_1.png",
       "display": true,
@@ -3222,6 +3264,36 @@
       "draft": false
     },
     {
+      "id": "passive-1",
+      "kind": "passive",
+      "name": "湮灭回响",
+      "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000088.png",
+      "display": true,
+      "parameters": {},
+      "modifierSources": [
+        "weapon:未名之刃:湮灭回响"
+      ],
+      "provenance": {},
+      "weaponSlug": "未名之刃",
+      "mode": "lc",
+      "draft": false
+    },
+    {
+      "id": "passive-1",
+      "kind": "passive",
+      "name": "湮灭回响",
+      "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000088.png",
+      "display": true,
+      "parameters": {},
+      "modifierSources": [
+        "weapon:未名之刃:湮灭回响"
+      ],
+      "provenance": {},
+      "weaponSlug": "未名之刃",
+      "mode": "td",
+      "draft": false
+    },
+    {
       "id": "active-1",
       "kind": "active",
       "name": "零度之刺",
@@ -3326,6 +3398,36 @@
       "modifierSources": [],
       "provenance": {},
       "weaponSlug": "杜瓦瓶",
+      "mode": "td",
+      "draft": false
+    },
+    {
+      "id": "passive-1",
+      "kind": "passive",
+      "name": "腐蚀冲拳",
+      "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000078.png",
+      "display": true,
+      "parameters": {},
+      "modifierSources": [
+        "weapon:杰斯拳套:腐蚀冲拳"
+      ],
+      "provenance": {},
+      "weaponSlug": "杰斯拳套",
+      "mode": "lc",
+      "draft": false
+    },
+    {
+      "id": "passive-1",
+      "kind": "passive",
+      "name": "腐蚀冲拳",
+      "icon": "/icons/weapons/skills/T_Weapon_Skill_20013000078.png",
+      "display": true,
+      "parameters": {},
+      "modifierSources": [
+        "weapon:杰斯拳套:腐蚀冲拳"
+      ],
+      "provenance": {},
+      "weaponSlug": "杰斯拳套",
       "mode": "td",
       "draft": false
     },
