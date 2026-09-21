@@ -121,6 +121,8 @@ pnpm content-version archive-preview
 
 正式超限的 `current-evidence.json` 随版本归档保留；历史 Preview 证据可以留存，正式消费者不能依赖它。
 
+本轮最终正式快照为 `archives/content-versions/s4/s4-final-20260922`，对应正式内容提交 `c8691c1f`。早先的 `s4/s4` 快照保留原样；最终快照补入正式来源文案修正，恢复的召唤物关联由该提交追溯。极寒领域新增 Modifier `120300175` 尚无已证实的执行消费链，未计入发布增伤，完整来源审计仍保留这一项未通过结果。
+
 超限转正前先归档当前正式版，再按超限 `activate` 流程将复核后的投影写入 `current.json`，同时迁移对应来源登记。将 `preview.json` 置为 `null`，撤下本季预览来源，运行 `pnpm overlimit project` 和 `pnpm num-modifier:project`，最后移除本季预览配置。空预览不进入静态导出、搜索或站点地图；不要删除通用组件。
 
 ## 核验、发布与归档

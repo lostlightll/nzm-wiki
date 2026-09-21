@@ -1,0 +1,1217 @@
+{
+  "cards": [
+    {
+      "id": "1315204001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "1315205001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "1315206001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1315207001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1315208001",
+      "perkItemId": null,
+      "damageFacets": [
+        "critical"
+      ]
+    },
+    {
+      "id": "1315209001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1315210001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "1315211001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "1315212001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "1315213001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "1315214001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1315215001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1315216001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "1315217001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "1315218001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1315219001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1315220001",
+      "perkItemId": null,
+      "damageFacets": [
+        "critical"
+      ]
+    },
+    {
+      "id": "1315221001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1315222001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "1315223001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "1315224001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "1315225001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "1315226001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1315227001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317100001",
+      "perkItemId": null,
+      "damageFacets": [
+        "correction-parameter"
+      ]
+    },
+    {
+      "id": "1317101001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "1317104001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317105001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-skill-damage",
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "1317106001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "1317107001",
+      "perkItemId": null,
+      "damageFacets": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "1317108001",
+      "perkItemId": null,
+      "damageFacets": [
+        "correction"
+      ]
+    },
+    {
+      "id": "1317109001",
+      "perkItemId": null,
+      "damageFacets": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "1317110001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317111001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317112001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317113001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage",
+        "critical"
+      ]
+    },
+    {
+      "id": "1317114001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage",
+        "weakness",
+        "critical"
+      ]
+    },
+    {
+      "id": "1317115001",
+      "perkItemId": null,
+      "damageFacets": [
+        "super-critical-rate"
+      ]
+    },
+    {
+      "id": "1317116001",
+      "perkItemId": null,
+      "damageFacets": [
+        "super-critical-rate"
+      ]
+    },
+    {
+      "id": "1317117001",
+      "perkItemId": null,
+      "damageFacets": [
+        "super-critical-rate"
+      ]
+    },
+    {
+      "id": "1317118001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317119001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317120001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317121001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317122001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317123001",
+      "perkItemId": null,
+      "damageFacets": [
+        "critical",
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317124001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317125001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317126001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317127001",
+      "perkItemId": null,
+      "damageFacets": [
+        "vulnerability"
+      ]
+    },
+    {
+      "id": "1317128001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317129001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317130001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317229001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317230001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317231001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "1317232001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317233001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "1317234001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "1317235001",
+      "perkItemId": null,
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "1317236001",
+      "perkItemId": null,
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "1317238001",
+      "perkItemId": null,
+      "damageFacets": [
+        "critical"
+      ]
+    },
+    {
+      "id": "1317240001",
+      "perkItemId": null,
+      "damageFacets": []
+    },
+    {
+      "id": "20703040435",
+      "perkItemId": "20703040435",
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "20703040436",
+      "perkItemId": "20703040436",
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "20703040440",
+      "perkItemId": "20703040440",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040090",
+      "perkItemId": "20703040090",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040405",
+      "perkItemId": "20703040405",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040437",
+      "perkItemId": "20703040437",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040438",
+      "perkItemId": "20703040438",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040439",
+      "perkItemId": "20703040439",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040441",
+      "perkItemId": "20703040441",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040442",
+      "perkItemId": "20703040442",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040443",
+      "perkItemId": "20703040443",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040444",
+      "perkItemId": "20703040444",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040043",
+      "perkItemId": "20703040043",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040051",
+      "perkItemId": "20703040051",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040214",
+      "perkItemId": "20703040214",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040215",
+      "perkItemId": "20703040215",
+      "damageFacets": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "20703040254",
+      "perkItemId": "20703040254",
+      "damageFacets": [
+        "correction"
+      ]
+    },
+    {
+      "id": "20703040088",
+      "perkItemId": "20703040088",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040284",
+      "perkItemId": "20703040284",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040071",
+      "perkItemId": "20703040071",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040085",
+      "perkItemId": "20703040085",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040115",
+      "perkItemId": "20703040115",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040092",
+      "perkItemId": "20703040092",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040202",
+      "perkItemId": "20703040202",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040263",
+      "perkItemId": "20703040263",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040329",
+      "perkItemId": "20703040329",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040330",
+      "perkItemId": "20703040330",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040332",
+      "perkItemId": "20703040332",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040333",
+      "perkItemId": "20703040333",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040341",
+      "perkItemId": "20703040341",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040469",
+      "perkItemId": "20703040469",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040391",
+      "perkItemId": "20703040391",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040432",
+      "perkItemId": "20703040432",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040407",
+      "perkItemId": "20703040407",
+      "damageFacets": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "20703040409",
+      "perkItemId": "20703040409",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040406",
+      "perkItemId": "20703040406",
+      "damageFacets": [
+        "critical"
+      ]
+    },
+    {
+      "id": "20703040408",
+      "perkItemId": "20703040408",
+      "damageFacets": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "20703040390",
+      "perkItemId": "20703040390",
+      "damageFacets": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "20703040028",
+      "perkItemId": "20703040028",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040112",
+      "perkItemId": "20703040112",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040116",
+      "perkItemId": "20703040116",
+      "damageFacets": [
+        "critical"
+      ]
+    },
+    {
+      "id": "20703040184",
+      "perkItemId": "20703040184",
+      "damageFacets": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "20703040201",
+      "perkItemId": "20703040201",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040256",
+      "perkItemId": "20703040256",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040302",
+      "perkItemId": "20703040302",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040102",
+      "perkItemId": "20703040102",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040107",
+      "perkItemId": "20703040107",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040182",
+      "perkItemId": "20703040182",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040200",
+      "perkItemId": "20703040200",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040404",
+      "perkItemId": "20703040404",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040385",
+      "perkItemId": "20703040385",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040003",
+      "perkItemId": "20703040003",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040252",
+      "perkItemId": "20703040252",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040008",
+      "perkItemId": "20703040008",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040012",
+      "perkItemId": "20703040012",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040199",
+      "perkItemId": "20703040199",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040384",
+      "perkItemId": "20703040384",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040152",
+      "perkItemId": "20703040152",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040078",
+      "perkItemId": "20703040078",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040021",
+      "perkItemId": "20703040021",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040395",
+      "perkItemId": "20703040395",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040351",
+      "perkItemId": "20703040351",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040355",
+      "perkItemId": "20703040355",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040470",
+      "perkItemId": "20703040470",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040044",
+      "perkItemId": "20703040044",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040033",
+      "perkItemId": "20703040033",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040416",
+      "perkItemId": "20703040416",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040424",
+      "perkItemId": "20703040424",
+      "damageFacets": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "20703040093",
+      "perkItemId": "20703040093",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040331",
+      "perkItemId": "20703040331",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040334",
+      "perkItemId": "20703040334",
+      "damageFacets": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "20703040338",
+      "perkItemId": "20703040338",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040339",
+      "perkItemId": "20703040339",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040346",
+      "perkItemId": "20703040346",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040393",
+      "perkItemId": "20703040393",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040388",
+      "perkItemId": "20703040388",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040001",
+      "perkItemId": "20703040001",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040004",
+      "perkItemId": "20703040004",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040005",
+      "perkItemId": "20703040005",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040025",
+      "perkItemId": "20703040025",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040066",
+      "perkItemId": "20703040066",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040068",
+      "perkItemId": "20703040068",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040080",
+      "perkItemId": "20703040080",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040036",
+      "perkItemId": "20703040036",
+      "damageFacets": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "20703040072",
+      "perkItemId": "20703040072",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040081",
+      "perkItemId": "20703040081",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040082",
+      "perkItemId": "20703040082",
+      "damageFacets": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "20703040103",
+      "perkItemId": "20703040103",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040127",
+      "perkItemId": "20703040127",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040129",
+      "perkItemId": "20703040129",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040132",
+      "perkItemId": "20703040132",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040136",
+      "perkItemId": "20703040136",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040140",
+      "perkItemId": "20703040140",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040150",
+      "perkItemId": "20703040150",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040257",
+      "perkItemId": "20703040257",
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "20703040471",
+      "perkItemId": "20703040471",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040472",
+      "perkItemId": "20703040472",
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "20703040473",
+      "perkItemId": "20703040473",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040474",
+      "perkItemId": "20703040474",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040475",
+      "perkItemId": "20703040475",
+      "damageFacets": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "20703040524",
+      "perkItemId": "20703040524",
+      "damageFacets": [
+        "critical",
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "20703040525",
+      "perkItemId": "20703040525",
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "20703040526",
+      "perkItemId": "20703040526",
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "20703040527",
+      "perkItemId": "20703040527",
+      "damageFacets": [
+        "weapon-hit-damage"
+      ]
+    },
+    {
+      "id": "20703040528",
+      "perkItemId": "20703040528",
+      "damageFacets": [
+        "skill-damage",
+        "correction",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "20703040529",
+      "perkItemId": "20703040529",
+      "damageFacets": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "20703040530",
+      "perkItemId": "20703040530",
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "20703040523",
+      "perkItemId": "20703040523",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040522",
+      "perkItemId": "20703040522",
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage",
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "20703040519",
+      "perkItemId": "20703040519",
+      "damageFacets": []
+    },
+    {
+      "id": "20703040518",
+      "perkItemId": "20703040518",
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "20703040514",
+      "perkItemId": "20703040514",
+      "damageFacets": [
+        "weapon-skill-damage"
+      ]
+    },
+    {
+      "id": "20703040478",
+      "perkItemId": "20703040478",
+      "damageFacets": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "20703040482",
+      "perkItemId": "20703040482",
+      "damageFacets": [
+        "weapon-skill-damage"
+      ]
+    }
+  ],
+  "bonds": [
+    {
+      "name": "游击",
+      "count": 2
+    },
+    {
+      "name": "游击",
+      "count": 4
+    },
+    {
+      "name": "游击",
+      "count": 6
+    },
+    {
+      "name": "壁垒",
+      "count": 2
+    },
+    {
+      "name": "壁垒",
+      "count": 4
+    },
+    {
+      "name": "壁垒",
+      "count": 6
+    },
+    {
+      "name": "狙击",
+      "count": 2
+    },
+    {
+      "name": "狙击",
+      "count": 4
+    },
+    {
+      "name": "狙击",
+      "count": 6
+    },
+    {
+      "name": "爆韧",
+      "count": 2
+    },
+    {
+      "name": "爆韧",
+      "count": 4
+    },
+    {
+      "name": "爆韧",
+      "count": 6
+    },
+    {
+      "name": "共振",
+      "count": 2
+    },
+    {
+      "name": "共振",
+      "count": 4
+    },
+    {
+      "name": "共振",
+      "count": 6
+    },
+    {
+      "name": "狂战",
+      "count": 2
+    },
+    {
+      "name": "狂战",
+      "count": 4
+    },
+    {
+      "name": "狂战",
+      "count": 6
+    },
+    {
+      "name": "力场",
+      "count": 2
+    },
+    {
+      "name": "力场",
+      "count": 4
+    },
+    {
+      "name": "力场",
+      "count": 6
+    },
+    {
+      "name": "瞬暴",
+      "count": 2
+    },
+    {
+      "name": "瞬暴",
+      "count": 5
+    },
+    {
+      "name": "瞬暴",
+      "count": 8
+    },
+    {
+      "name": "狩猎",
+      "count": 2
+    },
+    {
+      "name": "狩猎",
+      "count": 5
+    },
+    {
+      "name": "狩猎",
+      "count": 8
+    },
+    {
+      "name": "叠叠乐",
+      "count": 2
+    },
+    {
+      "name": "叠叠乐",
+      "count": 4
+    },
+    {
+      "name": "叠叠乐",
+      "count": 6
+    }
+  ]
+}

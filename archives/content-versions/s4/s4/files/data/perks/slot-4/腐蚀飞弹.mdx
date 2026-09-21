@@ -1,0 +1,32 @@
+---
+title: 腐蚀飞弹
+id: "20703040543"
+slot: 4
+rarity: 3
+icon: "1312067005"
+weaponType: []
+weaponNames:
+  - 幽冥毒皇
+CollectMODItem: 1
+MakeMODItem: 1
+IsCooked: true
+season: s4
+description: 幽冥毒皇榴弹的基础爆炸伤害修改为原伤害的<strong>10%</strong>，爆炸范围缩小<strong>50%</strong>，榴弹直击伤害提升<strong>{{num:direct-hit-damage|percent}}</strong>，榴弹直击命中目标后可以额外施加<strong>12层</strong><strong>腐蚀之力</strong>，但是幽冥毒皇不再产生毒池。榴弹将<strong>大幅</strong>增加飞行速度，并减少下坠。获得光能量时恢复<strong>1发</strong>榴弹，消耗暗能量时获得<strong>极速狂热</strong>效果，持续<strong>12秒</strong>。
+num_modifier_values:
+  direct-hit-damage:
+    row: lc:1206000610_1_0
+    field: base
+independent_damage_sources:
+  - weapon_slug: 幽冥毒皇
+    damage_source_id: corrosive-missile-hit
+    trigger: 装备腐蚀飞弹后，榴弹直接命中目标
+    interval: 随榴弹命中触发
+  - weapon_slug: 幽冥毒皇
+    damage_source_id: corrosive-missile-explosion
+    trigger: 装备腐蚀飞弹后，榴弹命中产生爆炸
+    interval: 随榴弹爆炸触发
+---
+
+上方“直击伤害提升500%”的描述大概率有误。当前预载资源的效果执行链会直接切换榴弹的基础伤害配置；虽然保留了 +500% 的 Modifier 参数，但在插件与弹体字节码中未发现施加调用，因此不将其额外计入伤害。
+
+白值以独立伤害面板为准：猎场按500攻击力计算，直击为 **900**，爆炸为 **15**。以上依据配置与静态执行链，尚未经过游戏内实测。

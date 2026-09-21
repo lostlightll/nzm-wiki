@@ -1,0 +1,32 @@
+---
+title: 贯长虹
+id: "20703040346"
+season: pending
+num_modifier_values:
+  weapon-damage:
+    row: lc:120300243_1_0
+    field: base
+independent_damage_sources:
+  - weapon_slug: 夜影之逝
+    damage_source_id: guan-chang-hong-jian-qi
+    trigger: 切出本武器时向前发射剑气
+    interval: 10秒
+effect_values:
+  - label: 近战攻击伤害
+    stages:
+      - value:
+          ref: weapon-damage
+          format: signed-percent
+slot: 4
+rarity: 3
+icon: "1312070001"
+weaponType: []
+weaponNames:
+  - 夜影之逝
+CollectMODItem: 1
+MakeMODItem: 1
+IsCooked: true
+description: 近战攻击伤害增加<strong>{{num:weapon-damage|percent}}</strong>。切出本武器时向前发射一道剑气，造成<strong>{GPNumericalID:120300245:HpCalScale:13}攻击力</strong>的贯穿伤害并填满弹匣，冷却<strong>10秒</strong>。剑气每穿透一个敌人，造成的伤害降低<strong>50%</strong>，衰减效果最多叠加<strong>3次</strong>，叠满后不再衰减。
+---
+
+根据官方更新公告，S4 新增剑气穿透衰减：每穿透一个敌人，造成的伤害降低 **50%**，衰减效果最多叠加 **3 次**，叠满后不再衰减。
