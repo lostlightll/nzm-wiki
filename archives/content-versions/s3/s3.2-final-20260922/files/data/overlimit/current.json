@@ -1,0 +1,7453 @@
+{
+  "schemaVersion": 1,
+  "season": {
+    "id": "s3.2",
+    "label": "S3.2",
+    "status": "current",
+    "updatedAt": "2026-09-17"
+  },
+  "provenance": {
+    "contentRoot": "refs/Exports/NZM/Content_S3.2",
+    "note": "从切换前已发布的超限数据及其已解析效果迁移；不是重新采用S4预下载配置。",
+    "files": [
+      {
+        "path": "data/overlimit-cards.json",
+        "sha256": "5a135b0d84c93b34ef72c7217c263d2cbb6156d73ddf619427d645eed2d07a7c"
+      },
+      {
+        "path": "data/overlimit-bonds.json",
+        "sha256": "75cfe9cbcdf938a2b4235db0cbb8b63fd63c330f14a2780e3ccd80512762a9ec"
+      },
+      {
+        "path": "data/overlimit-levels.json",
+        "sha256": "d4804be4ad87f1da410378b62aa3df6044460eca22b666aec4eb9dfdd330970e"
+      },
+      {
+        "path": "data/overlimit-map-rotation.json",
+        "sha256": "8a474dd55cb0a8d50029e54c588224db1cf2c3923bf0d7352ce1bb4fde1b5795"
+      },
+      {
+        "path": "data/num-modifier-lock.json",
+        "sha256": "3c05e959c69ba3293dce6d62ee76a52f3639ac34268ab2328afd429d58673b25"
+      },
+      {
+        "path": "data/weapon-data-lock.json",
+        "sha256": "141273d9327d22cc723c8601691522a361e0dd011ba19c92a0b756f459c93f06"
+      },
+      {
+        "path": "data/modifier-providers.json",
+        "sha256": "75f2a362074e99c7a3de3dd8d3eba5eac715d092ea0ac821146518241e552db8"
+      }
+    ]
+  },
+  "cards": [
+    {
+      "id": "20703040445",
+      "name": "射击属性",
+      "description": "武器射击伤害+36%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "value": "+36%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040445"
+    },
+    {
+      "id": "20703040446",
+      "name": "技能属性",
+      "description": "全技能伤害+60%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "value": "+60%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "skill-damage",
+          "label": "非武器技能伤害",
+          "stages": [
+            {
+              "value": "+60%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040446"
+    },
+    {
+      "id": "20703040447",
+      "name": "充能属性",
+      "description": "武器技能充能效率+50%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314130001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "charge-efficiency",
+          "label": "充能效率",
+          "stages": [
+            {
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040447"
+    },
+    {
+      "id": "20703040448",
+      "name": "暴击属性",
+      "description": "暴击率+20%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "value": "+20%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040448"
+    },
+    {
+      "id": "20703040449",
+      "name": "暴伤属性",
+      "description": "暴伤+40%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "critical",
+          "label": "暴击伤害",
+          "stages": [
+            {
+              "value": "+40%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040449"
+    },
+    {
+      "id": "20703040450",
+      "name": "防御属性",
+      "description": "伤害减免+20%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "damage-reduction",
+          "label": "伤害减免",
+          "stages": [
+            {
+              "value": "+20%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040450"
+    },
+    {
+      "id": "20703040451",
+      "name": "弱点属性",
+      "description": "弱点伤害增伤+20%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weakness",
+          "label": "弱点伤害",
+          "stages": [
+            {
+              "value": "+20%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040451"
+    },
+    {
+      "id": "20703040452",
+      "name": "爆炸属性",
+      "description": "爆炸伤害+45%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-explode-damage",
+          "label": "爆炸伤害",
+          "stages": [
+            {
+              "value": "+45%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040452"
+    },
+    {
+      "id": "20703040453",
+      "name": "射击属性",
+      "description": "武器射击伤害+36%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "value": "+36%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040453"
+    },
+    {
+      "id": "20703040454",
+      "name": "技能属性",
+      "description": "全技能伤害+60%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "value": "+60%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "skill-damage",
+          "label": "非武器技能伤害",
+          "stages": [
+            {
+              "value": "+60%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040454"
+    },
+    {
+      "id": "20703040455",
+      "name": "伤害属性",
+      "description": "全伤害提升+24%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "value": "+24%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040455"
+    },
+    {
+      "id": "20703040456",
+      "name": "伤害属性",
+      "description": "全伤害提升+24%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "value": "+24%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040456"
+    },
+    {
+      "id": "20703040435",
+      "name": "我只射击",
+      "description": "保持不释放武器技能，每5秒增加30%伤害，最多10层，释放技能清零。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "condition": "每层",
+              "value": "+30%"
+            },
+            {
+              "condition": "10层",
+              "value": "+300%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040435"
+    },
+    {
+      "id": "20703040436",
+      "name": "哑枪",
+      "description": "保持不射击，每秒增加30%伤害，最多10层，开枪命中清零。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "condition": "每层",
+              "value": "+30%"
+            },
+            {
+              "condition": "10层",
+              "value": "+300%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040436"
+    },
+    {
+      "id": "20703040440",
+      "name": "反弹转化",
+      "description": "弹射-1，弹道+2",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315126001.png",
+      "quality": 4,
+      "weight": 3,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20119000001
+      ],
+      "weaponNames": [
+        "玄凌飞刃"
+      ],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "perkItemId": "20703040440"
+    },
+    {
+      "id": "20703040090",
+      "name": "闪电轰击",
+      "description": "命中敌人5次，对其造成1次电弧伤害（CD5秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315114001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "perkItemId": "20703040090"
+    },
+    {
+      "id": "20703040405",
+      "name": "弹道过载",
+      "description": "换弹速度+18%，换弹后，10秒内弹道+2。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "reload-speed",
+          "label": "换弹速度",
+          "stages": [
+            {
+              "value": "+18%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040405"
+    },
+    {
+      "id": "20703040437",
+      "name": "致命爆炸",
+      "description": "武器命中有 5% 概率产生爆炸伤害（CD2秒）",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        }
+      ],
+      "perkItemId": "20703040437"
+    },
+    {
+      "id": "20703040438",
+      "name": "武器穿透",
+      "description": "子弹穿透+3。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        }
+      ],
+      "perkItemId": "20703040438"
+    },
+    {
+      "id": "20703040439",
+      "name": "技能魔术",
+      "description": "释放武器技能30%概率刷新技能使用次数。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20703040439"
+    },
+    {
+      "id": "20703040441",
+      "name": "狂战",
+      "description": "攻击概率恢复10%生命值，生命越低概率越高。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20703040441"
+    },
+    {
+      "id": "20703040442",
+      "name": "切换手法",
+      "description": "模式切换过充15发子弹（CD10秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [
+        20005000018,
+        20006000004,
+        20006000006,
+        20001000024
+      ],
+      "weaponNames": [
+        "元宵来袭",
+        "幽冥毒王",
+        "幽冥毒皇",
+        "精绝兽神"
+      ],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040442"
+    },
+    {
+      "id": "20703040443",
+      "name": "连发",
+      "description": "每次射击50%概率弹道+2（CD1秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "perkItemId": "20703040443"
+    },
+    {
+      "id": "20703040444",
+      "name": "物法兼得",
+      "description": "释放武器技能后普攻附带技能伤害的35%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "perkItemId": "20703040444"
+    },
+    {
+      "id": "20703040043",
+      "name": "聚能弹药",
+      "description": "爆炸范围减少5%，伤害增加30%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316107001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "value": "+30%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "explosion-radius",
+          "label": "爆炸范围",
+          "stages": [
+            {
+              "value": "-5%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040043"
+    },
+    {
+      "id": "20703040051",
+      "name": "穿针引线",
+      "description": "单次攻击命中多个目标可以为武器技能充能3%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316115001.png",
+      "quality": 4,
+      "weight": 3,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "perkItemId": "20703040051"
+    },
+    {
+      "id": "20703040214",
+      "name": "五方兽临",
+      "description": "可分裂炮弹分裂出的小榴弹个数增加2，且每枚小榴弹爆炸伤害提高。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312039001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20101000024
+      ],
+      "weaponNames": [
+        "精绝兽神"
+      ],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "小型榴弹爆炸伤害",
+          "stages": [
+            {
+              "value": "+20%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040214"
+    },
+    {
+      "id": "20703040215",
+      "name": "兽躯双衍",
+      "description": "每次开火连续发射榴弹数量+1。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312040001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20101000024
+      ],
+      "weaponNames": [
+        "精绝兽神"
+      ],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "秘法榴弹伤害",
+          "stages": [
+            {
+              "condition": "仅命中1名敌人",
+              "value": "+100%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040215"
+    },
+    {
+      "id": "20703040254",
+      "name": "独弹强化",
+      "description": "武器变为独头弹，但伤害提升600%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316167001.png",
+      "quality": 4,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [
+        3
+      ],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "correction",
+          "label": "独头弹伤害",
+          "stages": [
+            {
+              "value": "+600%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "effective-range",
+          "label": "有效射程",
+          "stages": [
+            {
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040254"
+    },
+    {
+      "id": "20703040088",
+      "name": "百万伏特",
+      "description": "武器累积造成100次伤害后，造成大范围电伤害。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316103001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040088"
+    },
+    {
+      "id": "20703040284",
+      "name": "狙盾生成",
+      "description": "命中弱点5次，获得5%总血量的临时护盾（CD2秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316174001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040284"
+    },
+    {
+      "id": "20703040071",
+      "name": "协频共振",
+      "description": "同时命中的敌人数量越多，伤害越高（7%/人）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315119001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "每多命中1名敌人",
+              "value": "+7%"
+            },
+            {
+              "condition": "同时命中5名敌人",
+              "value": "+35%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040071"
+    },
+    {
+      "id": "20703040085",
+      "name": "致命节拍",
+      "description": "持续开火每射出一发子弹，武器伤害增加0.4%，最多叠加80层。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "每发",
+              "value": "+0.4%"
+            },
+            {
+              "condition": "80层",
+              "value": "+32%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040085"
+    },
+    {
+      "id": "20703040115",
+      "name": "概率坍缩",
+      "description": "每有一次未暴击的射击，获得6%暴击率加成，暴击后清除。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "condition": "每次未暴击",
+              "value": "+6%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040115"
+    },
+    {
+      "id": "20703040092",
+      "name": "反哺",
+      "description": "连续命中弱点3次，进入8s的急速狂热状态（CD15秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312046001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "fire-rate",
+          "label": "射速",
+          "stages": [
+            {
+              "condition": "急速狂热期间",
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040092"
+    },
+    {
+      "id": "20703040202",
+      "name": "地龙惊破",
+      "description": "造成10000伤害后，对周围的目标造成5次爆炸伤害（CD8秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316155001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "perkItemId": "20703040202"
+    },
+    {
+      "id": "20703040263",
+      "name": "伤害回血",
+      "description": "武器射击造成伤害10%概率回复10%生命值（CD4秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316168001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040263"
+    },
+    {
+      "id": "20703040329",
+      "name": "协同",
+      "description": "使用武器技能获得移速和子弹伤害无衰减效果。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20703040329"
+    },
+    {
+      "id": "20703040330",
+      "name": "腾焰",
+      "description": "每移动5秒，对最近单位造成360%攻击力伤害，最大移速加成越高，伤害越高",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056004.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "perkItemId": "20703040330"
+    },
+    {
+      "id": "20703040346",
+      "name": "贯长虹",
+      "description": "切刀时，会辟出一道剑气造成伤害。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312062001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20103000024
+      ],
+      "weaponNames": [
+        "夜影之逝"
+      ],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "近战攻击伤害",
+          "stages": [
+            {
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040346"
+    },
+    {
+      "id": "20703040430",
+      "name": "迅积蓄能",
+      "description": "移动30m获得一个抽奖效果（CD8秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056006.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040430"
+    },
+    {
+      "id": "20703040332",
+      "name": "折射",
+      "description": "命中弱点或暴击，弹射次数+3。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312057001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20119000001
+      ],
+      "weaponNames": [
+        "玄凌飞刃"
+      ],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20703040332"
+    },
+    {
+      "id": "20703040333",
+      "name": "蔓延",
+      "description": "致命链接最大数量+3。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312057002.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20119000001
+      ],
+      "weaponNames": [
+        "玄凌飞刃"
+      ],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "perkItemId": "20703040333"
+    },
+    {
+      "id": "20703040341",
+      "name": "狂热兽魂",
+      "description": "模式1命中100次后切换模式2获得急速狂热效果。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312063001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20005000018,
+        20006000004,
+        20006000006,
+        20001000024,
+        20103000010
+      ],
+      "weaponNames": [
+        "元宵来袭",
+        "幽冥毒王",
+        "幽冥毒皇",
+        "精绝兽神",
+        "飓风之龙"
+      ],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "fire-rate",
+          "label": "射速",
+          "stages": [
+            {
+              "condition": "急速狂热期间",
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040341"
+    },
+    {
+      "id": "20703040469",
+      "name": "模式特化",
+      "description": "模式2射击有概率弹道+2。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20005000018,
+        20006000004,
+        20006000006,
+        20001000024,
+        20103000010
+      ],
+      "weaponNames": [
+        "元宵来袭",
+        "幽冥毒王",
+        "幽冥毒皇",
+        "精绝兽神",
+        "飓风之龙"
+      ],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "perkItemId": "20703040469"
+    },
+    {
+      "id": "20703040391",
+      "name": "独爆产暴",
+      "description": "武器爆炸命中一个目标时，可掉落暴击能量球。（CD6秒）",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316192001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [
+        4,
+        8,
+        12,
+        16
+      ],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "condition": "拾取狂暴能量球",
+              "value": "+16%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040391"
+    },
+    {
+      "id": "20703040432",
+      "name": "肾上腺素",
+      "description": "单次开火命中目标的子弹数量越多，伤害越高。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313031004.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "每多命中1颗弹丸",
+              "value": "+21%"
+            },
+            {
+              "condition": "多命中6颗弹丸",
+              "value": "+126%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040432"
+    },
+    {
+      "id": "20703040407",
+      "name": "狂轰乱炸",
+      "description": "爆炸伤害增加400%，造成多次伤害后可获得急速狂热（CD13秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [
+        4,
+        8,
+        12,
+        16
+      ],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-explode-damage",
+          "label": "爆炸伤害",
+          "stages": [
+            {
+              "value": "+400%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "fire-rate",
+          "label": "射速",
+          "stages": [
+            {
+              "condition": "急速狂热期间",
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040407"
+    },
+    {
+      "id": "20703040409",
+      "name": "狂暴连击",
+      "description": "近战武器攻速伤害提升50%，伤害提升250%，且命中回复10点生命。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "近战攻击伤害",
+          "stages": [
+            {
+              "value": "+250%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "melee-attack-speed",
+          "label": "近战攻击速度",
+          "stages": [
+            {
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040409"
+    },
+    {
+      "id": "20703040410",
+      "name": "不死狂热",
+      "description": "加入1个红扭蛋和4个金扭蛋，红扭蛋效果：急速狂热一直存在，死亡后清空。每11秒抽1个扭蛋。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "fire-rate",
+          "label": "射速",
+          "stages": [
+            {
+              "condition": "红扭蛋效果存在时",
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040410"
+    },
+    {
+      "id": "20703040406",
+      "name": "暴走永动",
+      "description": "增加暴击、暴伤和移速，每次暴击恢复30点生命（CD2秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "critical",
+          "label": "暴击伤害",
+          "stages": [
+            {
+              "value": "+200%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "value": "+50%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "movement-speed",
+          "label": "移动速度",
+          "stages": [
+            {
+              "value": "+25%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040406"
+    },
+    {
+      "id": "20703040408",
+      "name": "弱肉强食",
+      "description": "弱点伤害增加30%，命中弱点最高叠加10层。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weakness",
+          "label": "弱点伤害",
+          "stages": [
+            {
+              "condition": "每层",
+              "value": "+30%"
+            },
+            {
+              "condition": "10层",
+              "value": "+300%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040408"
+    },
+    {
+      "id": "20703040390",
+      "name": "独爆增伤",
+      "description": "爆炸仅命中一人，伤害提升50%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315200001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 3,
+      "weaponType": [
+        4,
+        8,
+        12,
+        16
+      ],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-explode-damage",
+          "label": "爆炸伤害",
+          "stages": [
+            {
+              "condition": "仅命中1名敌人",
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040390"
+    },
+    {
+      "id": "20703040028",
+      "name": "联动提升",
+      "description": "使用武器技能，暴击率+38%，持续10秒。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315103001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "condition": "激活武器技能后",
+              "value": "+38%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040028"
+    },
+    {
+      "id": "20703040112",
+      "name": "过载膛压",
+      "description": "每连续射击30发后，武器伤害增加10%，可叠加3层。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315132001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "每层",
+              "value": "+10%"
+            },
+            {
+              "condition": "3层",
+              "value": "+30%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040112"
+    },
+    {
+      "id": "20703040116",
+      "name": "裁决充能",
+      "description": "每0.15秒获得暴击率与暴击伤害，开火后清除。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315136001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "critical",
+          "label": "暴击伤害",
+          "stages": [
+            {
+              "condition": "每0.15秒",
+              "value": "+8%"
+            },
+            {
+              "condition": "50层",
+              "value": "+400%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "condition": "每0.15秒",
+              "value": "+2%"
+            },
+            {
+              "condition": "上限",
+              "value": "+100%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040116"
+    },
+    {
+      "id": "20703040184",
+      "name": "技能增涌",
+      "description": "武器技能伤害提升60%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "value": "+60%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040184"
+    },
+    {
+      "id": "20703040201",
+      "name": "重峦叠势",
+      "description": "武器造成10000伤害后，武器射击伤害增加9%，最高3层。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315157001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "每层",
+              "value": "+9%"
+            },
+            {
+              "condition": "3层",
+              "value": "+27%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040201"
+    },
+    {
+      "id": "20703040256",
+      "name": "无衰射程",
+      "description": "武器伤害受到射程衰减大幅减小。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315170001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "perkItemId": "20703040256"
+    },
+    {
+      "id": "20703040302",
+      "name": "模式增幅",
+      "description": "主动切换开火模式时，提升该武器射击伤害40%（CD20秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315181001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [
+        20005000018,
+        20006000004,
+        20006000006,
+        20001000024,
+        20103000010
+      ],
+      "weaponNames": [
+        "元宵来袭",
+        "幽冥毒王",
+        "幽冥毒皇",
+        "精绝兽神",
+        "飓风之龙"
+      ],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "主动切换开火模式",
+              "value": "+40%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040302"
+    },
+    {
+      "id": "20703040374",
+      "name": "连射抽奖",
+      "description": "累计开火30次，进行一次抽奖（CD20秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315196001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040374"
+    },
+    {
+      "id": "20703040382",
+      "name": "紫奖掉物",
+      "description": "抽扭蛋掉落能够增加移速和暴击的能量球。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315198001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "condition": "拾取狂暴能量球",
+              "value": "+16%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "movement-speed",
+          "label": "移动速度",
+          "stages": [
+            {
+              "condition": "拾取亢奋能量球",
+              "value": "+18%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040382"
+    },
+    {
+      "id": "20703040102",
+      "name": "川流不息",
+      "description": "武器持续开火能叠加0.8%技能充能速度，最多100层。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314126001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "charge-efficiency",
+          "label": "充能速度",
+          "stages": [
+            {
+              "condition": "每发",
+              "value": "+0.8%"
+            },
+            {
+              "condition": "100层",
+              "value": "+80%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040102"
+    },
+    {
+      "id": "20703040107",
+      "name": "暴击涌流",
+      "description": "暴击获得武器技能充能2.8%（CD0.5秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315136001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "perkItemId": "20703040107"
+    },
+    {
+      "id": "20703040182",
+      "name": "超频蓄能",
+      "description": "武器技能充能速度提升50%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314130001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "charge-efficiency",
+          "label": "充能速度",
+          "stages": [
+            {
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040182"
+    },
+    {
+      "id": "20703040200",
+      "name": "梯山架壑",
+      "description": "武器造成10000伤害后，技能充能10%（CD5秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314149001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "perkItemId": "20703040200"
+    },
+    {
+      "id": "20703040404",
+      "name": "永动核心",
+      "description": "技能充能效率提升250%，命中和击败目标也能直接充能。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314193001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "charge-efficiency",
+          "label": "自然充能效率",
+          "stages": [
+            {
+              "value": "+250%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040404"
+    },
+    {
+      "id": "20703040385",
+      "name": "速充增效",
+      "description": "移速加成越高，武器充能效率越高（最多70%）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314190001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "charge-efficiency",
+          "label": "充能效率",
+          "stages": [
+            {
+              "condition": "最高",
+              "value": "+70%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040385"
+    },
+    {
+      "id": "20703040003",
+      "name": "战术装填",
+      "description": "击杀目标40%概率填充1弹药。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313105001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20703040003"
+    },
+    {
+      "id": "20703040376",
+      "name": "抽奖回弹",
+      "description": "每次抽奖恢复50%弹药（CD3秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313192001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "perkItemId": "20703040376"
+    },
+    {
+      "id": "20703040252",
+      "name": "殒命补给",
+      "description": "击杀目标50%概率填充2发弹药。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313166001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "perkItemId": "20703040252"
+    },
+    {
+      "id": "20703040008",
+      "name": "充能弹药",
+      "description": "使用技能装填全部子弹，换弹速度提升35%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313110001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "perkItemId": "20703040008"
+    },
+    {
+      "id": "20703040012",
+      "name": "狂暴装填",
+      "description": "暴击8次装填6发子弹。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313114001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040012"
+    },
+    {
+      "id": "20703040199",
+      "name": "万钧过载",
+      "description": "武器造成10000伤害后，下一次装填，过量填装140%（CD15秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313155001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20703040199"
+    },
+    {
+      "id": "20703040384",
+      "name": "越射越快",
+      "description": "连续开火30次以上获得18%移速加成。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313194001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "movement-speed",
+          "label": "移动速度",
+          "stages": [
+            {
+              "condition": "连续开火30次以上",
+              "value": "+18%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040384"
+    },
+    {
+      "id": "20703040152",
+      "name": "余震速装",
+      "description": "使用技能后换弹速度提升45%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313144001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "reload-speed",
+          "label": "换弹速度",
+          "stages": [
+            {
+              "condition": "使用武器技能后",
+              "value": "+45%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040152"
+    },
+    {
+      "id": "20703040078",
+      "name": "弱点续弹",
+      "description": "命中弱点2次装填1发子弹。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313126001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "perkItemId": "20703040078"
+    },
+    {
+      "id": "20703040021",
+      "name": "精确能量",
+      "description": "命中弱点可为武器技能充能2.5%（CD1秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314108001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040021"
+    },
+    {
+      "id": "20703040395",
+      "name": "击杀掉货",
+      "description": "拾取敌人死亡掉落的能量球，会形成冲击环造成伤害（CD10秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316193001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20703040395"
+    },
+    {
+      "id": "20703040351",
+      "name": "合圈震荡",
+      "description": "召唤物造成伤害时，在玩家和召唤物周围产生冲击环造成伤害（CD3秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316182001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20106000030,
+        20116000011,
+        20107000035
+      ],
+      "weaponNames": [
+        "火神炎帝",
+        "哈士奇好友",
+        "Bully"
+      ],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "perkItemId": "20703040351"
+    },
+    {
+      "id": "20703040355",
+      "name": "定时震波",
+      "description": "召唤物存在时，每5秒在玩家周围产生冲击环造成伤害。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316183001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20106000030,
+        20116000011,
+        20107000035
+      ],
+      "weaponNames": [
+        "火神炎帝",
+        "哈士奇好友",
+        "Bully"
+      ],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "perkItemId": "20703040355"
+    },
+    {
+      "id": "20703040470",
+      "name": "不稳定弹道",
+      "description": "模式1开火20%概率弹道+1，模式2开火20%概率弹道+2。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 3,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        }
+      ],
+      "perkItemId": "20703040470"
+    },
+    {
+      "id": "20703040044",
+      "name": "聚能速度",
+      "description": "换弹速度提升36%，爆炸范围减少。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316108001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 4,
+      "weaponType": [
+        4,
+        8,
+        12,
+        16
+      ],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "perkItemId": "20703040044"
+    },
+    {
+      "id": "20703040033",
+      "name": "烈焰冲击",
+      "description": "使用主动技能6s内，每2s周期向四周释放一道火环造成伤害。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315108001.png",
+      "quality": 4,
+      "weight": 4,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20703040033"
+    },
+    {
+      "id": "20703040416",
+      "name": "火力阵线",
+      "description": "炮台模式下，火神炎帝开火时有概率增加1条额外弹线。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312074003.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20106000030
+      ],
+      "weaponNames": [
+        "火神炎帝"
+      ],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "perkItemId": "20703040416"
+    },
+    {
+      "id": "20703040415",
+      "name": "幸运炎帝",
+      "description": "卡组额外添加红色扭蛋和白色扭蛋，抽取红色扭蛋后“火力宣泄”置为满层，机枪模式射击不消耗“火力宣泄”。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312074002.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20106000030
+      ],
+      "weaponNames": [
+        "火神炎帝"
+      ],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "火力宣泄增伤",
+          "stages": [
+            {
+              "condition": "强化状态",
+              "value": "+270%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040415"
+    },
+    {
+      "id": "20703040424",
+      "name": "哈士奇支援",
+      "description": "榴弹直接命中伤害提高5%，射速提高7%，最高叠加7层。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312068002.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [
+        4,
+        8,
+        12,
+        16
+      ],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击直击伤害",
+          "stages": [
+            {
+              "condition": "每层",
+              "value": "+5%"
+            },
+            {
+              "condition": "7层",
+              "value": "+35%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "fire-rate",
+          "label": "射速",
+          "stages": [
+            {
+              "condition": "每层",
+              "value": "+7%"
+            },
+            {
+              "condition": "7层",
+              "value": "+49%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040424"
+    },
+    {
+      "id": "20703040093",
+      "name": "腐蚀榴弹",
+      "description": "榴弹的直击伤害+250%，命中目标后可叠加35层腐蚀之力。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312038001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20106000007
+      ],
+      "weaponNames": [
+        "幽冥毒皇"
+      ],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "榴弹直击伤害",
+          "stages": [
+            {
+              "value": "+250%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040093"
+    },
+    {
+      "id": "20703040429",
+      "name": "幸运龙炎",
+      "description": "加入4张红扭蛋，抽到红扭蛋后且获得极速狂热效果。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312032005.png",
+      "quality": 4,
+      "weight": 3,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "抽到红扭蛋后20秒内",
+              "value": "+50%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "fire-rate",
+          "label": "射速",
+          "stages": [
+            {
+              "condition": "抽到红扭蛋后20秒内",
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040429"
+    },
+    {
+      "id": "20703040331",
+      "name": "蝎刺",
+      "description": "添加火异常时造成额外的单体伤害。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312056005.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "perkItemId": "20703040331"
+    },
+    {
+      "id": "20703040334",
+      "name": "炎刃",
+      "description": "使用技能后，射击命中可叠加多层火异常。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312057003.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "命中首个敌人",
+              "value": "+100%"
+            },
+            {
+              "condition": "主动技能期间",
+              "value": "+200%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040334"
+    },
+    {
+      "id": "20703040338",
+      "name": "霜华",
+      "description": "累积命中200次可释放冰锥，并获得3秒急速狂热。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312066001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "fire-rate",
+          "label": "射速",
+          "stages": [
+            {
+              "condition": "急速狂热期间",
+              "value": "+50%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040338"
+    },
+    {
+      "id": "20703040339",
+      "name": "索命龙炎",
+      "description": "龙炎弹抛体数量+1并追踪。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312032003.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20103000010
+      ],
+      "weaponNames": [
+        "飓风之龙"
+      ],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20703040339"
+    },
+    {
+      "id": "20703040344",
+      "name": "剑摧魂",
+      "description": "拔刀斩的攻击范围变大。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1312060001.png",
+      "quality": 4,
+      "weight": 2,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [
+        20103000024
+      ],
+      "weaponNames": [
+        "夜影之逝"
+      ],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "skill-range",
+          "label": "主动技能攻击范围半径",
+          "stages": [
+            {
+              "value": "+125%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040344"
+    },
+    {
+      "id": "20703040457",
+      "name": "射击属性",
+      "description": "武器射击伤害+12%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "value": "+12%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040457"
+    },
+    {
+      "id": "20703040458",
+      "name": "技能属性",
+      "description": "武器技能伤害+24%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "value": "+24%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040458"
+    },
+    {
+      "id": "20703040459",
+      "name": "充能属性",
+      "description": "武器技能充能效率+10%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314130001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "charge-efficiency",
+          "label": "充能效率",
+          "stages": [
+            {
+              "value": "+10%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040459"
+    },
+    {
+      "id": "20703040460",
+      "name": "暴击属性",
+      "description": "暴击率+10%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "value": "+10%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040460"
+    },
+    {
+      "id": "20703040461",
+      "name": "暴伤属性",
+      "description": "暴伤+20%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "critical",
+          "label": "暴击伤害",
+          "stages": [
+            {
+              "value": "+20%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040461"
+    },
+    {
+      "id": "20703040462",
+      "name": "防御属性",
+      "description": "伤害减免+10%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "damage-reduction",
+          "label": "伤害减免",
+          "stages": [
+            {
+              "value": "+10%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040462"
+    },
+    {
+      "id": "20703040463",
+      "name": "弱点属性",
+      "description": "弱点伤害增伤+8%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weakness",
+          "label": "弱点伤害",
+          "stages": [
+            {
+              "value": "+8%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040463"
+    },
+    {
+      "id": "20703040464",
+      "name": "爆炸属性",
+      "description": "爆炸伤害+30%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-explode-damage",
+          "label": "爆炸伤害",
+          "stages": [
+            {
+              "value": "+30%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040464"
+    },
+    {
+      "id": "20703040465",
+      "name": "射击属性",
+      "description": "武器射击伤害+12%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "value": "+12%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040465"
+    },
+    {
+      "id": "20703040466",
+      "name": "技能属性",
+      "description": "武器技能伤害+24%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315135001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "value": "+24%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040466"
+    },
+    {
+      "id": "20703040467",
+      "name": "伤害属性",
+      "description": "全伤害提升+8%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "value": "+8%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040467"
+    },
+    {
+      "id": "20703040468",
+      "name": "伤害属性",
+      "description": "全伤害提升+8%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 3,
+      "weight": 8,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "value": "+8%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040468"
+    },
+    {
+      "id": "20703040393",
+      "name": "捡货充能",
+      "description": "拾取能量球为武器技能充能7.5%（CD1秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314192001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "perkItemId": "20703040393"
+    },
+    {
+      "id": "20703040388",
+      "name": "独爆回弹",
+      "description": "武器造成爆炸仅命中1人，50%概率填充1发弹药。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313195001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [
+        4,
+        8,
+        12,
+        16
+      ],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "perkItemId": "20703040388"
+    },
+    {
+      "id": "20703040380",
+      "name": "弹药续杯",
+      "description": "消耗5%弹药再抽1次奖（CD15秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313193001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040380"
+    },
+    {
+      "id": "20703040372",
+      "name": "加弹抽奖",
+      "description": "子弹增加时触发1次抽奖（CD20秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313191001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "perkItemId": "20703040372"
+    },
+    {
+      "id": "20703040373",
+      "name": "技能抽奖",
+      "description": "释放武器技能时触发1次抽奖（CD20）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314187001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        }
+      ],
+      "perkItemId": "20703040373"
+    },
+    {
+      "id": "20703040377",
+      "name": "抽奖充能",
+      "description": "抽奖时为武器技能充能35%（CD3秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314188001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "perkItemId": "20703040377"
+    },
+    {
+      "id": "20703040378",
+      "name": "抽奖增伤",
+      "description": "触发抽奖，武器伤害提升33%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315197001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "发动抽奖后16秒内",
+              "value": "+33%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040378"
+    },
+    {
+      "id": "20703040001",
+      "name": "幸运装填",
+      "description": "换弹33%不消耗备弹，伤害提升25%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313101001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "装填触发后",
+              "value": "+25%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040001"
+    },
+    {
+      "id": "20703040004",
+      "name": "危机装填",
+      "description": "击败10m内敌人填充3发弹药（CD2秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313106001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        }
+      ],
+      "perkItemId": "20703040004"
+    },
+    {
+      "id": "20703040005",
+      "name": "猎杀装填",
+      "description": "击败10m外敌人填充4发弹药（CD2秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313107001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "perkItemId": "20703040005"
+    },
+    {
+      "id": "20703040025",
+      "name": "猎杀充能",
+      "description": "击败10m外敌人为武器技能充能7.5%（CD3秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314112001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "perkItemId": "20703040025"
+    },
+    {
+      "id": "20703040066",
+      "name": "备弹返流",
+      "description": "换弹时为武器技能充能6%（CD1秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314116001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040066"
+    },
+    {
+      "id": "20703040068",
+      "name": "多重激返",
+      "description": "一次开火触发多次伤害为武器技能充能3%（CD1秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314118001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [
+        3
+      ],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        }
+      ],
+      "perkItemId": "20703040068"
+    },
+    {
+      "id": "20703040080",
+      "name": "钝化充能",
+      "description": "命中减速的敌人为武器技能充能5%（CD2秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "perkItemId": "20703040080"
+    },
+    {
+      "id": "20703040036",
+      "name": "正中红心",
+      "description": "命中弱点积攒1能量，使用技能消耗全部能量提升技能伤害。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315111001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "condition": "每消耗1点能量",
+              "value": "+1%"
+            },
+            {
+              "condition": "消耗100点能量",
+              "value": "+100%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040036"
+    },
+    {
+      "id": "20703040072",
+      "name": "近距增幅",
+      "description": "距离13米内，每接近1米武器伤害提高5%，距离6米内达到最高35%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315120001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "13米内每接近1米",
+              "value": "+5%"
+            },
+            {
+              "condition": "距离6米内",
+              "value": "+35%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040072"
+    },
+    {
+      "id": "20703040081",
+      "name": "钝化增伤",
+      "description": "命中减速的敌人造成额外27%伤害。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315126001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "命中减速敌人",
+              "value": "+27%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040081"
+    },
+    {
+      "id": "20703040082",
+      "name": "精密追击",
+      "description": "命中弱点可提升7%伤害，叠加6层。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315127001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weakness",
+          "label": "弱点伤害",
+          "stages": [
+            {
+              "condition": "每层",
+              "value": "+7%"
+            },
+            {
+              "condition": "6层",
+              "value": "+42%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040082"
+    },
+    {
+      "id": "20703040103",
+      "name": "共鸣射击",
+      "description": "每5次命中消耗1发弹药为武器技能充能1.6%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314127001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040103"
+    },
+    {
+      "id": "20703040127",
+      "name": "解构装填",
+      "description": "破盾后为武器过充100%弹药。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1313140001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 1,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        }
+      ],
+      "perkItemId": "20703040127"
+    },
+    {
+      "id": "20703040129",
+      "name": "层积涌流",
+      "description": "添加元素异常时为武器技能充能3%（CD1秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314132001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "perkItemId": "20703040129"
+    },
+    {
+      "id": "20703040132",
+      "name": "崩解回涌",
+      "description": "破盾为武器技能充能25%（CD5秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314135001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 2,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "perkItemId": "20703040132"
+    },
+    {
+      "id": "20703040136",
+      "name": "重装弹头",
+      "description": "每发弹丸获得20%破韧加成。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315139001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "toughness-efficiency",
+          "label": "破韧效率",
+          "stages": [
+            {
+              "condition": "每发弹丸",
+              "value": "+20%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040136"
+    },
+    {
+      "id": "20703040140",
+      "name": "解构增幅",
+      "description": "破盾后武器伤害增加37.5%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315143001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "武器伤害",
+          "stages": [
+            {
+              "condition": "敌人破盾后8秒内",
+              "value": "+37.5%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040140"
+    },
+    {
+      "id": "20703040150",
+      "name": "终焉序列",
+      "description": "最后10发子弹伤害提升100%",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315144001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "弹匣最后10发",
+              "value": "+100%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040150"
+    },
+    {
+      "id": "20703040257",
+      "name": "远距增伤",
+      "description": "距离命中敌人越远，造成伤害越高（最高40%）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315171001.png",
+      "quality": 4,
+      "weight": 6,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "condition": "每增加1米",
+              "value": "+0.8%"
+            },
+            {
+              "condition": "最大",
+              "value": "+40%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040257"
+    },
+    {
+      "id": "20703040471",
+      "name": "导弹轰炸",
+      "description": "爆炸命中可以发射2发跟踪导弹，如果仅命中1个单位，则发射5发跟踪弹（CD2秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 3,
+      "weaponType": [
+        4,
+        8,
+        12,
+        16
+      ],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "perkItemId": "20703040471"
+    },
+    {
+      "id": "20703040472",
+      "name": "换弹冲击",
+      "description": "子弹为0时，每秒释放冲击波，持续5秒。每1%换弹速度提升提升冲击波2%伤害。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "perkItemId": "20703040472"
+    },
+    {
+      "id": "20703040473",
+      "name": "万伤掷弹",
+      "description": "每造成10000点伤害，会在命中的目标位置生成2枚兽神榴弹。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20703040473"
+    },
+    {
+      "id": "20703040474",
+      "name": "爆毒蚀域",
+      "description": "暴击时，向身前投射一个毒液罐，爆炸留下毒属性伤害区域并且减速敌人（CD5秒）。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314124001.png",
+      "quality": 4,
+      "weight": 3,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20703040474"
+    },
+    {
+      "id": "20703040475",
+      "name": "飞毛腿",
+      "description": "暴击获得2%移速，持续10秒，可叠50层，损失血量清空增益。每1%移速转化4%伤害加成。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 3,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "condition": "每1%移动速度",
+              "value": "+4%"
+            },
+            {
+              "condition": "100%移动速度",
+              "value": "+400%"
+            }
+          ]
+        },
+        {
+          "kind": "stat",
+          "statId": "movement-speed",
+          "label": "移动速度",
+          "stages": [
+            {
+              "condition": "每次暴击",
+              "value": "+2%"
+            },
+            {
+              "condition": "50层",
+              "value": "+100%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20703040475"
+    },
+    {
+      "id": "20704040476",
+      "name": "游击飞弹",
+      "description": "每移动10m可以发射2发跟踪导弹。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "perkItemId": "20704040476"
+    },
+    {
+      "id": "20704040477",
+      "name": "弱点必暴",
+      "description": "命中弱点的暴击概率提升至100%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
+      "quality": 4,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "stat",
+          "statId": "critical-rate",
+          "label": "暴击率",
+          "stages": [
+            {
+              "condition": "命中弱点",
+              "value": "+100%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20704040477"
+    },
+    {
+      "id": "20704040478",
+      "name": "爆炸直击",
+      "description": "全部爆炸弹的直击伤害提升300%，爆炸范围缩减50%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        },
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-hit-damage",
+          "label": "爆炸弹直击伤害",
+          "stages": [
+            {
+              "value": "+300%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20704040478"
+    },
+    {
+      "id": "20704040479",
+      "name": "飞弹狂射",
+      "description": "每造成10次武器伤害可以发射2发跟踪导弹(CD1秒)。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1005",
+          "name": "狙击",
+          "icon": "",
+          "tone": "E008"
+        },
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        }
+      ],
+      "perkItemId": "20704040479"
+    },
+    {
+      "id": "20704040480",
+      "name": "超强技能",
+      "description": "全技能伤害+400%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316195001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-skill-damage",
+          "label": "武器技能伤害",
+          "stages": [
+            {
+              "value": "+400%"
+            }
+          ]
+        },
+        {
+          "kind": "damage",
+          "modifierTypeId": "skill-damage",
+          "label": "非武器技能伤害",
+          "stages": [
+            {
+              "value": "+400%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20704040480"
+    },
+    {
+      "id": "20704040481",
+      "name": "暴击飞弹",
+      "description": "每次暴击可以发射1发跟踪导弹(CD0.5秒)。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316196001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1007",
+          "name": "共振",
+          "icon": "",
+          "tone": "E015"
+        },
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        }
+      ],
+      "perkItemId": "20704040481"
+    },
+    {
+      "id": "20704040482",
+      "name": "暴力切换",
+      "description": "每次切换开火模式，获得250%武器射击伤害提升，持续6秒。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1316197001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1004",
+          "name": "壁垒",
+          "icon": "",
+          "tone": "E014"
+        },
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "weapon-damage",
+          "label": "射击伤害",
+          "stages": [
+            {
+              "condition": "切换开火模式后6秒内",
+              "value": "+250%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20704040482"
+    },
+    {
+      "id": "20704040483",
+      "name": "隐匿出击",
+      "description": "每隔20秒，进入隐身。破隐后，3秒内伤害提升300%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315202001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1001",
+          "name": "技战",
+          "icon": "",
+          "tone": "E009"
+        },
+        {
+          "id": "1003",
+          "name": "游击",
+          "icon": "",
+          "tone": "E012"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "all-damage",
+          "label": "全伤害",
+          "stages": [
+            {
+              "condition": "破隐后3秒内",
+              "value": "+300%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20704040483"
+    },
+    {
+      "id": "20704040484",
+      "name": "爆发",
+      "description": "爆炸弹的暴击伤害提升+400%。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1315203001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1002",
+          "name": "异化",
+          "icon": "",
+          "tone": "E010"
+        },
+        {
+          "id": "1006",
+          "name": "爆韧",
+          "icon": "",
+          "tone": "E013"
+        }
+      ],
+      "effectValues": [
+        {
+          "kind": "damage",
+          "modifierTypeId": "critical",
+          "label": "爆炸弹暴击伤害",
+          "stages": [
+            {
+              "value": "+400%"
+            }
+          ]
+        }
+      ],
+      "perkItemId": "20704040484"
+    },
+    {
+      "id": "20704040485",
+      "name": "近战冲击",
+      "description": "近战命中目标50%概率产生冲击波(CD1秒)。",
+      "icon": "/icons/overlimit/cards/T_Icons_Plugins_MGE_Rogue_1314193001.png",
+      "quality": 5,
+      "weight": 1,
+      "slot": 4,
+      "weaponType": [],
+      "weaponItems": [],
+      "weaponNames": [],
+      "tags": [
+        {
+          "id": "1000",
+          "name": "弹药",
+          "icon": "",
+          "tone": "E011"
+        },
+        {
+          "id": "1008",
+          "name": "狂战",
+          "icon": "/icons/overlimit/sets/T_Icons_Rogue_Frenzy.png",
+          "tone": "E007"
+        }
+      ],
+      "perkItemId": "20704040485"
+    }
+  ],
+  "independentDamage": {
+    "20703040090": [
+      {
+        "name": "闪电轰击",
+        "href": "/perks/slot-4/闪电轰击",
+        "perkSlug": "slot-4/闪电轰击",
+        "trigger": "累计命中 5 次",
+        "interval": "5 秒",
+        "numericalId": "11010063",
+        "damageType": "技能伤害",
+        "damageValue": "750",
+        "toughness": 0,
+        "element": "电弧",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040437": [
+      {
+        "name": "致命爆炸",
+        "href": "/overlimit/20703040437",
+        "perkSlug": "slot-4/致命爆炸",
+        "overlimitId": "20703040437",
+        "trigger": "武器命中有 5% 概率产生 10 米爆炸",
+        "interval": "2 秒",
+        "numericalId": "130103014",
+        "damageType": "技能伤害",
+        "damageValue": "5000",
+        "toughness": 10,
+        "element": "物理",
+        "critical": true,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040444": [
+      {
+        "name": "物法兼得",
+        "href": "/overlimit/20703040444",
+        "perkSlug": "slot-3/物法兼得",
+        "overlimitId": "20703040444",
+        "trigger": "技能伤害后 5 秒内，射击追加伤害",
+        "interval": "触发 5 秒；追加 0.25 秒",
+        "numericalId": "130103016",
+        "damageType": "间接伤害",
+        "damageValue": "上次技能伤害 × 35%",
+        "toughness": 0.35,
+        "element": "物理",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040088": [
+      {
+        "name": "百万伏特",
+        "href": "/perks/slot-4/百万伏特",
+        "perkSlug": "slot-4/百万伏特",
+        "trigger": "累计造成 100 次伤害，影响 10 米范围",
+        "interval": "未见独立冷却",
+        "numericalId": "11010045",
+        "damageType": "技能伤害",
+        "damageValue": "250",
+        "toughness": 0,
+        "element": "电弧",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040202": [
+      {
+        "name": "地龙惊破",
+        "href": "/perks/slot-4/地龙惊破",
+        "perkSlug": "slot-4/地龙惊破",
+        "trigger": "累计造成 10000 点伤害后连续结算 5 次",
+        "interval": "8 秒",
+        "numericalId": "11010097",
+        "damageType": "技能伤害",
+        "damageValue": "300/次 × 5",
+        "toughness": 0,
+        "element": "火焰",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040330": [
+      {
+        "name": "腾焰",
+        "trigger": "行走或疾跑累计5秒后攻击最近的敌人",
+        "interval": "每5秒",
+        "numericalId": "120500341",
+        "damageType": "技能伤害",
+        "damageValue": "1800",
+        "toughness": "0.36",
+        "element": "火焰",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040346": [
+      {
+        "name": "贯长虹",
+        "trigger": "切出本武器时向前发射剑气",
+        "interval": "10秒",
+        "numericalId": "120300245",
+        "damageType": "近战伤害",
+        "damageValue": "6500",
+        "toughness": "56.5",
+        "element": "电弧",
+        "critical": true,
+        "weakpoint": true,
+        "weakpointMultiplier": 1.2
+      }
+    ],
+    "20703040395": [
+      {
+        "name": "击杀掉货",
+        "href": "/perks/slot-4/击杀掉货",
+        "perkSlug": "slot-4/击杀掉货",
+        "trigger": "拾取任意本赛季能量球",
+        "interval": "伤害环 2 秒",
+        "numericalId": "11010126",
+        "damageType": "技能伤害",
+        "damageValue": "100",
+        "toughness": 0,
+        "element": "物理",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040351": [
+      {
+        "name": "合圈震荡",
+        "href": "/perks/slot-4/合圈震荡",
+        "perkSlug": "slot-4/合圈震荡",
+        "trigger": "召唤物造成伤害时触发冲击环",
+        "interval": "3 秒",
+        "numericalId": "11010122",
+        "damageType": "技能伤害",
+        "damageValue": "90/环",
+        "toughness": 0,
+        "element": "物理",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040355": [
+      {
+        "name": "定时震波",
+        "href": "/perks/slot-4/定时震波",
+        "perkSlug": "slot-4/定时震波",
+        "trigger": "召唤物存在时在玩家周围触发",
+        "interval": "每 5 秒",
+        "numericalId": "11010123",
+        "damageType": "技能伤害",
+        "damageValue": "190",
+        "toughness": 0,
+        "element": "物理",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040033": [
+      {
+        "name": "烈焰冲击",
+        "href": "/perks/slot-4/烈焰冲击",
+        "perkSlug": "slot-4/烈焰冲击",
+        "trigger": "使用主动技能后持续 6 秒",
+        "interval": "每 2 秒",
+        "numericalId": "11010041",
+        "damageType": "技能伤害",
+        "damageValue": "187.5",
+        "toughness": 0,
+        "element": "火焰",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040331": [
+      {
+        "name": "蝎刺",
+        "trigger": "施加火元素异常时攻击命中目标",
+        "interval": "按异常施加触发",
+        "numericalId": "120500342",
+        "damageType": "技能伤害",
+        "damageValue": "150",
+        "toughness": "0.058",
+        "element": "火焰",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040338": [
+      {
+        "name": "霜华",
+        "trigger": "累计命中200次后自动释放小型冰锥",
+        "interval": "按命中计数触发",
+        "numericalId": "120100041",
+        "damageType": "武器技能伤害",
+        "damageValue": "750",
+        "toughness": "0.15",
+        "element": "寒冷",
+        "critical": false,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040339": [
+      {
+        "name": "索命龙炎",
+        "trigger": "龙炎弹飞行0.3秒后进入追踪状态",
+        "interval": "随龙炎弹发射",
+        "numericalId": "120300113",
+        "damageType": "命中伤害",
+        "damageValue": "90",
+        "toughness": "1.8",
+        "element": "火焰",
+        "critical": true,
+        "weakpoint": true,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040471": [
+      {
+        "name": "导弹轰炸",
+        "href": "/overlimit/20703040471",
+        "perkSlug": "slot-3/导弹轰炸",
+        "overlimitId": "20703040471",
+        "trigger": "爆炸命中发 2 枚；仅命中 1 个单位时发 5 枚",
+        "interval": "2 秒",
+        "numericalId": "121800050",
+        "damageType": "技能伤害",
+        "damageValue": "2100/枚",
+        "toughness": 4.2,
+        "element": "物理",
+        "critical": true,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040472": [
+      {
+        "name": "换弹冲击",
+        "href": "/overlimit/20703040472",
+        "perkSlug": "slot-3/换弹冲击",
+        "overlimitId": "20703040472",
+        "trigger": "弹匣耗尽后每秒释放冲击波，持续 5 秒",
+        "interval": "1 秒周期",
+        "numericalId": "121800060",
+        "damageType": "技能伤害",
+        "damageValue": "基础 1800/次",
+        "toughness": 3.6,
+        "element": "物理",
+        "critical": true,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040473": [
+      {
+        "name": "万伤掷弹",
+        "href": "/overlimit/20703040473",
+        "perkSlug": "slot-3/万伤掷弹",
+        "overlimitId": "20703040473",
+        "trigger": "累计造成 10000 点伤害后生成 2 枚榴弹",
+        "interval": "未见独立冷却",
+        "numericalId": "121800070",
+        "damageType": "技能伤害",
+        "damageValue": "2100/枚 × 2",
+        "toughness": 4.2,
+        "element": "物理",
+        "critical": true,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20703040474": [
+      {
+        "name": "爆毒蚀域",
+        "href": "/overlimit/20703040474",
+        "perkSlug": "slot-4/爆毒蚀域",
+        "overlimitId": "20703040474",
+        "trigger": "暴击时投出毒液罐并留下毒池",
+        "interval": "5 秒",
+        "numericalId": "121500071",
+        "damageType": "持续伤害",
+        "damageValue": "50/秒",
+        "toughness": 0,
+        "element": "腐蚀",
+        "critical": true,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20704040476": [
+      {
+        "name": "游击飞弹",
+        "href": "/overlimit/20704040476",
+        "perkSlug": "slot-4/游击飞弹",
+        "overlimitId": "20704040476",
+        "trigger": "每移动 10 米发射 2 枚跟踪弹",
+        "interval": "未见独立冷却",
+        "numericalId": "121800070",
+        "damageType": "技能伤害",
+        "damageValue": "2100/枚 × 2",
+        "toughness": 4.2,
+        "element": "物理",
+        "critical": true,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20704040479": [
+      {
+        "name": "飞弹狂射",
+        "href": "/overlimit/20704040479",
+        "perkSlug": "slot-4/飞弹狂射",
+        "overlimitId": "20704040479",
+        "trigger": "累计造成 10 次武器伤害后发射 2 枚",
+        "interval": "1 秒",
+        "numericalId": "121800070",
+        "damageType": "技能伤害",
+        "damageValue": "2100/枚 × 2",
+        "toughness": 4.2,
+        "element": "物理",
+        "critical": true,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20704040481": [
+      {
+        "name": "暴击飞弹",
+        "href": "/overlimit/20704040481",
+        "perkSlug": "slot-4/暴击飞弹",
+        "overlimitId": "20704040481",
+        "trigger": "每次暴击发射 1 枚跟踪弹",
+        "interval": "0.5 秒",
+        "numericalId": "121800070",
+        "damageType": "技能伤害",
+        "damageValue": "2100",
+        "toughness": 4.2,
+        "element": "物理",
+        "critical": true,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ],
+    "20704040485": [
+      {
+        "name": "近战冲击",
+        "href": "/overlimit/20704040485",
+        "perkSlug": "slot-4/近战冲击",
+        "overlimitId": "20704040485",
+        "trigger": "近战命中有 50% 概率产生 5 米冲击波",
+        "interval": "1 秒",
+        "numericalId": "112042220",
+        "damageType": "技能伤害",
+        "damageValue": "5250",
+        "toughness": 10.5,
+        "element": "物理",
+        "critical": true,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ]
+  },
+  "bonds": [
+    {
+      "name": "弹药",
+      "effects": [
+        {
+          "count": 2,
+          "description": "弹匣容量提升 20%，换弹速度提升 12%。"
+        },
+        {
+          "count": 4,
+          "description": "换弹后，弹匣内前 50% 的弹药在射击时有 23% 概率不消耗子弹；换弹溢出的子弹会转化为过充弹药（最多 60%）。"
+        },
+        {
+          "count": 6,
+          "description": "射击时有 10% 概率从备弹中补充 1 发过充子弹并提升 100% 伤害，持续 5 秒。触发换弹时，过充 200%。"
+        }
+      ]
+    },
+    {
+      "name": "技战",
+      "effects": [
+        {
+          "count": 2,
+          "description": "武器主动技能充能速度提升 25%，技能伤害提升 40%。"
+        },
+        {
+          "count": 4,
+          "description": "释放主动技能后，5 秒内武器射击伤害提升 80%，且武器开火时附带技能造成伤害 20% 的额外伤害（冷却 0.25 秒）。"
+        },
+        {
+          "count": 6,
+          "description": "主动技能上限充能次数 +1。每次释放主动技能时，使自身和附近队友获得 80% 充能速度加快，持续 5 秒。"
+        }
+      ]
+    },
+    {
+      "name": "异化",
+      "effects": [
+        {
+          "count": 2,
+          "description": "施加元素异常的概率提升 60%。"
+        },
+        {
+          "count": 4,
+          "description": "攻击附带元素异常的敌人时，目标每有一种不同属性的元素异常，受到的所有伤害额外增加 20%（最高 80%）。"
+        },
+        {
+          "count": 6,
+          "description": "当敌人身上同时存在 3 层或以上元素异常时，每次受到伤害有 8% 概率引发“混沌核爆”，造成 500% 攻击力的范围伤害，并向周围 8 米传染所有异常状态。"
+        }
+      ]
+    },
+    {
+      "name": "游击",
+      "effects": [
+        {
+          "count": 2,
+          "description": "移动速度提升 25%。"
+        },
+        {
+          "count": 4,
+          "description": "人物持续移动每满 1 秒，获得一层“动能”（最高 5 层），每层提供 3.5% 的换弹速度与 10% 的伤害加成，持续 2 秒。"
+        },
+        {
+          "count": 6,
+          "description": "移动、下蹲或切枪时，每两秒叠加一层 Buff，Buff 最大层数 5 层。每次开枪消耗一层 Buff，伤害提升 120% 且必定暴击。"
+        }
+      ]
+    },
+    {
+      "name": "壁垒",
+      "effects": [
+        {
+          "count": 2,
+          "description": "生命值上限提升 20%，治疗效果提升 20%。"
+        },
+        {
+          "count": 4,
+          "description": "拥有护盾时，武器伤害提升 60%，且免疫一切减速效果；护盾被打破时，释放一道冲击波击退周围小怪，并造成 500% 攻击力的伤害（冷却 2 秒）。"
+        },
+        {
+          "count": 6,
+          "description": "受到致命伤害时免疫死亡，立即恢复 50% 生命值与满额护盾，并进入“不灭”状态，持续 5 秒，期间无敌（该效果每局 / 每 120 秒冷却）。此外，平时溢出的生命回复会自动转化为“充能护盾”，护盾值最高可叠加至最大生命值的 150%。"
+        }
+      ]
+    },
+    {
+      "name": "狙击",
+      "effects": [
+        {
+          "count": 2,
+          "description": "攻击目标时，距离越远伤害越高，最高提升 20%（大于 20 米增伤，30 米满）。"
+        },
+        {
+          "count": 4,
+          "description": "每次受到伤害或者近身超过 5 个怪物的情况下，会产生一个 1000% 攻击力的范围爆炸伤害并击飞，内置冷却 10 秒。"
+        },
+        {
+          "count": 6,
+          "description": "保持不掉血的情况下，每造成 5000 的伤害后，能够叠加一层 6% 伤害加成，最多叠加 20 层；掉血时清零。"
+        }
+      ]
+    },
+    {
+      "name": "爆韧",
+      "effects": [
+        {
+          "count": 2,
+          "description": "破韧效率提升 25%。"
+        },
+        {
+          "count": 4,
+          "description": "对怪物破韧后，会结算玩家对于该怪物的破韧比例 × 30 攻击力的物理伤害。"
+        },
+        {
+          "count": 6,
+          "description": "破韧时可以填充满当前弹夹和技能冷却以及技能充能数，并获得 50% 伤害加成，持续 5 秒。"
+        }
+      ]
+    },
+    {
+      "name": "共振",
+      "effects": [
+        {
+          "count": 2,
+          "description": "命中目标弱点时有 50% 的概率给目标添加撕裂伤口，持续 5 秒，内置冷却 20 秒。"
+        },
+        {
+          "count": 4,
+          "description": "如果范围内 20 米存在同伴，可以分摊 50% 同伴受到的非致死伤害。"
+        },
+        {
+          "count": 6,
+          "description": "释放任何技能会向最近的 20 米范围内目标产生一条连线；如果超过 30 米则断开链接。链接的双方能享受彼此 100% 伤害加成，持续 10 秒，内置冷却 30 秒。"
+        }
+      ]
+    },
+    {
+      "name": "狂战",
+      "effects": [
+        {
+          "count": 2,
+          "description": "攻击目标时，距离越近伤害越高，最高提升 20%（小于 10 米增伤，5 米满）。"
+        },
+        {
+          "count": 4,
+          "description": "斩杀 11% 血量以下的非 Boss 单位，同时命中目标最大生效单位数量为 3（冷却 1 秒）。"
+        },
+        {
+          "count": 6,
+          "description": "如果玩家已损生命值越多，伤害越高；每累积损失 5% 血量，提升 5% 的伤害，最高提升 200%。死亡复活时清零增益。"
+        }
+      ]
+    }
+  ],
+  "levels": {
+    "levels": [
+      {
+        "level": 1,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0
+        }
+      },
+      {
+        "level": 2,
+        "qualityWeights": {
+          "3": 1,
+          "4": 1,
+          "5": 0
+        }
+      },
+      {
+        "level": 3,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0
+        }
+      },
+      {
+        "level": 4,
+        "qualityWeights": {
+          "3": 1,
+          "4": 1,
+          "5": 0
+        }
+      },
+      {
+        "level": 5,
+        "qualityWeights": {
+          "3": 1,
+          "4": 1,
+          "5": 0.01
+        }
+      },
+      {
+        "level": 6,
+        "qualityWeights": {
+          "3": 1,
+          "4": 1,
+          "5": 0.02
+        }
+      },
+      {
+        "level": 7,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 8,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.03
+        }
+      },
+      {
+        "level": 9,
+        "qualityWeights": {
+          "3": 0,
+          "4": 0.2,
+          "5": 1
+        }
+      },
+      {
+        "level": 10,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.05
+        }
+      },
+      {
+        "level": 11,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.05
+        }
+      },
+      {
+        "level": 12,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.2
+        }
+      },
+      {
+        "level": 13,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.05
+        }
+      },
+      {
+        "level": 14,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 15,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 16,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.05
+        }
+      },
+      {
+        "level": 17,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.05
+        }
+      },
+      {
+        "level": 18,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.05
+        }
+      },
+      {
+        "level": 19,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 1
+        }
+      },
+      {
+        "level": 20,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 21,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 22,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 23,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 24,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 25,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 26,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 27,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 28,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 29,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 30,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 31,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 32,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 33,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 34,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 35,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 36,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 37,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 38,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 39,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 40,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.2
+        }
+      },
+      {
+        "level": 41,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 42,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.2
+        }
+      },
+      {
+        "level": 43,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 44,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 45,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 46,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 47,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 48,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 49,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 50,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 51,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 52,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 53,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 54,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 55,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 56,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 57,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 58,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 59,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 60,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 61,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 62,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 63,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 64,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 65,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 66,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 67,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 68,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 69,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 70,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 71,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 72,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 73,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 74,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 75,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 76,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 77,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 78,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 79,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 80,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 81,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 82,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 83,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 84,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 85,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 86,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 87,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 88,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 89,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 90,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 91,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 92,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 93,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 94,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 95,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 96,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 97,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      },
+      {
+        "level": 98,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 99,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.1
+        }
+      },
+      {
+        "level": 100,
+        "qualityWeights": {
+          "3": 0,
+          "4": 1,
+          "5": 0.3
+        }
+      }
+    ],
+    "slot4": {
+      "baseProbability": 0.1,
+      "guaranteedLevels": [
+        3,
+        8,
+        13,
+        18,
+        23,
+        28,
+        33
+      ],
+      "bonusPerObtainedSlot4": 0.08,
+      "mixedPoolWeights": {
+        "nonSlot4": 8,
+        "slot4": 4
+      }
+    },
+    "criticalProbability": 0.03,
+    "rerollCosts": [
+      {
+        "time": 1,
+        "cost": 0
+      },
+      {
+        "time": 2,
+        "cost": 1000
+      },
+      {
+        "time": 3,
+        "cost": 2000
+      },
+      {
+        "time": 4,
+        "cost": 4000
+      },
+      {
+        "time": 5,
+        "cost": 6000
+      },
+      {
+        "time": 6,
+        "cost": 7000
+      },
+      {
+        "time": 7,
+        "cost": 8000
+      },
+      {
+        "time": 8,
+        "cost": 9000
+      },
+      {
+        "time": 9,
+        "cost": 10000
+      },
+      {
+        "time": 10,
+        "cost": 10000
+      },
+      {
+        "time": 11,
+        "cost": 10000
+      },
+      {
+        "time": 12,
+        "cost": 10000
+      },
+      {
+        "time": 13,
+        "cost": 10000
+      },
+      {
+        "time": 14,
+        "cost": 10000
+      },
+      {
+        "time": 15,
+        "cost": 10000
+      },
+      {
+        "time": 16,
+        "cost": 12500
+      },
+      {
+        "time": 17,
+        "cost": 12500
+      },
+      {
+        "time": 18,
+        "cost": 12500
+      },
+      {
+        "time": 19,
+        "cost": 12500
+      },
+      {
+        "time": 20,
+        "cost": 12500
+      },
+      {
+        "time": 21,
+        "cost": 15000
+      },
+      {
+        "time": 22,
+        "cost": 15000
+      },
+      {
+        "time": 23,
+        "cost": 15000
+      },
+      {
+        "time": 24,
+        "cost": 15000
+      },
+      {
+        "time": 25,
+        "cost": 15000
+      },
+      {
+        "time": 26,
+        "cost": 15000
+      },
+      {
+        "time": 27,
+        "cost": 15000
+      },
+      {
+        "time": 28,
+        "cost": 15000
+      },
+      {
+        "time": 29,
+        "cost": 15000
+      },
+      {
+        "time": 30,
+        "cost": 15000
+      },
+      {
+        "time": 31,
+        "cost": 15000
+      },
+      {
+        "time": 32,
+        "cost": 15000
+      },
+      {
+        "time": 33,
+        "cost": 15000
+      },
+      {
+        "time": 34,
+        "cost": 15000
+      },
+      {
+        "time": 35,
+        "cost": 15000
+      },
+      {
+        "time": 36,
+        "cost": 15000
+      },
+      {
+        "time": 37,
+        "cost": 15000
+      },
+      {
+        "time": 38,
+        "cost": 15000
+      },
+      {
+        "time": 39,
+        "cost": 15000
+      },
+      {
+        "time": 40,
+        "cost": 15000
+      },
+      {
+        "time": 41,
+        "cost": 15000
+      },
+      {
+        "time": 42,
+        "cost": 15000
+      },
+      {
+        "time": 43,
+        "cost": 15000
+      },
+      {
+        "time": 44,
+        "cost": 15000
+      },
+      {
+        "time": 45,
+        "cost": 15000
+      },
+      {
+        "time": 46,
+        "cost": 15000
+      },
+      {
+        "time": 47,
+        "cost": 15000
+      },
+      {
+        "time": 48,
+        "cost": 15000
+      },
+      {
+        "time": 49,
+        "cost": 15000
+      },
+      {
+        "time": 50,
+        "cost": 15000
+      },
+      {
+        "time": 51,
+        "cost": 15000
+      },
+      {
+        "time": 52,
+        "cost": 15000
+      },
+      {
+        "time": 53,
+        "cost": 15000
+      },
+      {
+        "time": 54,
+        "cost": 15000
+      },
+      {
+        "time": 55,
+        "cost": 15000
+      },
+      {
+        "time": 56,
+        "cost": 15000
+      },
+      {
+        "time": 57,
+        "cost": 15000
+      },
+      {
+        "time": 58,
+        "cost": 15000
+      },
+      {
+        "time": 59,
+        "cost": 15000
+      },
+      {
+        "time": 60,
+        "cost": 15000
+      },
+      {
+        "time": 61,
+        "cost": 15000
+      },
+      {
+        "time": 62,
+        "cost": 15000
+      },
+      {
+        "time": 63,
+        "cost": 15000
+      },
+      {
+        "time": 64,
+        "cost": 15000
+      },
+      {
+        "time": 65,
+        "cost": 15000
+      },
+      {
+        "time": 66,
+        "cost": 15000
+      },
+      {
+        "time": 67,
+        "cost": 15000
+      },
+      {
+        "time": 68,
+        "cost": 15000
+      },
+      {
+        "time": 69,
+        "cost": 15000
+      },
+      {
+        "time": 70,
+        "cost": 15000
+      },
+      {
+        "time": 71,
+        "cost": 15000
+      },
+      {
+        "time": 72,
+        "cost": 15000
+      },
+      {
+        "time": 73,
+        "cost": 15000
+      },
+      {
+        "time": 74,
+        "cost": 15000
+      },
+      {
+        "time": 75,
+        "cost": 15000
+      },
+      {
+        "time": 76,
+        "cost": 15000
+      },
+      {
+        "time": 77,
+        "cost": 15000
+      },
+      {
+        "time": 78,
+        "cost": 15000
+      },
+      {
+        "time": 79,
+        "cost": 15000
+      },
+      {
+        "time": 80,
+        "cost": 15000
+      },
+      {
+        "time": 81,
+        "cost": 15000
+      },
+      {
+        "time": 82,
+        "cost": 15000
+      },
+      {
+        "time": 83,
+        "cost": 15000
+      },
+      {
+        "time": 84,
+        "cost": 15000
+      },
+      {
+        "time": 85,
+        "cost": 15000
+      },
+      {
+        "time": 86,
+        "cost": 15000
+      },
+      {
+        "time": 87,
+        "cost": 15000
+      },
+      {
+        "time": 88,
+        "cost": 15000
+      },
+      {
+        "time": 89,
+        "cost": 15000
+      },
+      {
+        "time": 90,
+        "cost": 15000
+      },
+      {
+        "time": 91,
+        "cost": 15000
+      },
+      {
+        "time": 92,
+        "cost": 15000
+      },
+      {
+        "time": 93,
+        "cost": 15000
+      },
+      {
+        "time": 94,
+        "cost": 15000
+      },
+      {
+        "time": 95,
+        "cost": 15000
+      },
+      {
+        "time": 96,
+        "cost": 15000
+      },
+      {
+        "time": 97,
+        "cost": 15000
+      },
+      {
+        "time": 98,
+        "cost": 15000
+      },
+      {
+        "time": 99,
+        "cost": 15000
+      },
+      {
+        "time": 100,
+        "cost": 15000
+      }
+    ]
+  },
+  "mapRotation": {
+    "season": 2026,
+    "timezone": "Asia/Shanghai",
+    "periods": [
+      {
+        "startDate": "2026-07-10",
+        "endDate": "2026-07-16",
+        "maps": [
+          {
+            "name": "大都会",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "异化",
+              "壁垒",
+              "狂战"
+            ]
+          },
+          {
+            "name": "销金之城",
+            "activeBonds": [
+              "异化",
+              "游击",
+              "狙击",
+              "爆韧",
+              "共振"
+            ]
+          }
+        ]
+      },
+      {
+        "startDate": "2026-07-17",
+        "endDate": "2026-07-23",
+        "maps": [
+          {
+            "name": "大都会",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "壁垒",
+              "共振",
+              "狂战"
+            ]
+          },
+          {
+            "name": "昆仑神宫",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "壁垒",
+              "狙击",
+              "爆韧"
+            ]
+          }
+        ]
+      },
+      {
+        "startDate": "2026-07-24",
+        "endDate": "2026-07-30",
+        "maps": [
+          {
+            "name": "大都会",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "壁垒",
+              "爆韧",
+              "共振"
+            ]
+          },
+          {
+            "name": "丛林魅影",
+            "activeBonds": [
+              "游击",
+              "壁垒",
+              "爆韧",
+              "共振",
+              "狂战"
+            ]
+          }
+        ]
+      },
+      {
+        "startDate": "2026-07-31",
+        "endDate": "2026-08-06",
+        "maps": [
+          {
+            "name": "大都会",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "异化",
+              "壁垒",
+              "狂战"
+            ]
+          },
+          {
+            "name": "精绝古城",
+            "activeBonds": [
+              "异化",
+              "游击",
+              "壁垒",
+              "狙击",
+              "狂战"
+            ]
+          }
+        ]
+      },
+      {
+        "startDate": "2026-08-07",
+        "endDate": "2026-08-13",
+        "maps": [
+          {
+            "name": "大都会",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "壁垒",
+              "共振",
+              "狂战"
+            ]
+          },
+          {
+            "name": "销金之城",
+            "activeBonds": [
+              "弹药",
+              "异化",
+              "游击",
+              "爆韧",
+              "共振"
+            ]
+          }
+        ]
+      },
+      {
+        "startDate": "2026-08-14",
+        "endDate": "2026-08-20",
+        "maps": [
+          {
+            "name": "大都会",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "壁垒",
+              "爆韧",
+              "共振"
+            ]
+          },
+          {
+            "name": "昆仑神宫",
+            "activeBonds": [
+              "弹药",
+              "游击",
+              "壁垒",
+              "狙击",
+              "爆韧"
+            ]
+          }
+        ]
+      },
+      {
+        "startDate": "2026-08-21",
+        "endDate": "2026-08-27",
+        "maps": [
+          {
+            "name": "大都会",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "异化",
+              "壁垒",
+              "狂战"
+            ]
+          },
+          {
+            "name": "丛林魅影",
+            "activeBonds": [
+              "技战",
+              "游击",
+              "壁垒",
+              "爆韧",
+              "狂战"
+            ]
+          }
+        ]
+      },
+      {
+        "startDate": "2026-08-28",
+        "endDate": "2026-09-03",
+        "maps": [
+          {
+            "name": "大都会",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "壁垒",
+              "共振",
+              "狂战"
+            ]
+          },
+          {
+            "name": "精绝古城",
+            "activeBonds": [
+              "弹药",
+              "异化",
+              "壁垒",
+              "狙击",
+              "爆韧"
+            ]
+          }
+        ]
+      },
+      {
+        "startDate": "2026-09-04",
+        "endDate": "2026-09-10",
+        "maps": [
+          {
+            "name": "大都会",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "壁垒",
+              "爆韧",
+              "共振"
+            ]
+          },
+          {
+            "name": "昆仑神宫",
+            "activeBonds": [
+              "弹药",
+              "壁垒",
+              "狙击",
+              "爆韧",
+              "共振"
+            ]
+          },
+          {
+            "name": "丛林魅影",
+            "activeBonds": [
+              "弹药",
+              "游击",
+              "壁垒",
+              "共振",
+              "狂战"
+            ]
+          }
+        ]
+      },
+      {
+        "startDate": "2026-09-11",
+        "endDate": null,
+        "endLabel": "赛季结束",
+        "maps": [
+          {
+            "name": "大都会",
+            "activeBonds": [
+              "弹药",
+              "技战",
+              "异化",
+              "壁垒",
+              "狂战"
+            ]
+          },
+          {
+            "name": "销金之城",
+            "activeBonds": [
+              "异化",
+              "游击",
+              "壁垒",
+              "狙击",
+              "爆韧"
+            ]
+          },
+          {
+            "name": "精绝古城",
+            "activeBonds": [
+              "技战",
+              "异化",
+              "壁垒",
+              "狙击",
+              "爆韧"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,2917 @@
+[
+  {
+    "kind": "provider",
+    "factorId": "game-mode",
+    "factorLabel": "游戏模式乘区",
+    "modifierTypeId": "game-mode",
+    "modifierTypeLabel": "游戏模式乘区",
+    "effectId": "bond:ammo:6",
+    "effectLabel": "弹药羁绊 x6",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "弹药",
+      "count": 6,
+      "anchor": "bond-弹药-6"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E5%BC%B9%E8%8D%AF-6"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "bond:barrier:4",
+    "effectLabel": "壁垒羁绊 x4",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "壁垒",
+      "count": 4,
+      "anchor": "bond-壁垒-4"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E5%A3%81%E5%9E%92-4"
+  },
+  {
+    "kind": "provider",
+    "factorId": "game-mode",
+    "factorLabel": "游戏模式乘区",
+    "modifierTypeId": "game-mode",
+    "modifierTypeLabel": "游戏模式乘区",
+    "effectId": "bond:frenzy:2",
+    "effectLabel": "狂战羁绊 x2",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "狂战",
+      "count": 2,
+      "anchor": "bond-狂战-2"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E7%8B%82%E6%88%98-2"
+  },
+  {
+    "kind": "provider",
+    "factorId": "game-mode",
+    "factorLabel": "游戏模式乘区",
+    "modifierTypeId": "game-mode",
+    "modifierTypeLabel": "游戏模式乘区",
+    "effectId": "bond:game-mode:爆韧:6",
+    "effectLabel": "爆韧羁绊 x6",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "爆韧",
+      "count": 6,
+      "anchor": "bond-爆韧-6"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E7%88%86%E9%9F%A7-6"
+  },
+  {
+    "kind": "provider",
+    "factorId": "game-mode",
+    "factorLabel": "游戏模式乘区",
+    "modifierTypeId": "game-mode",
+    "modifierTypeLabel": "游戏模式乘区",
+    "effectId": "bond:game-mode:共振:6",
+    "effectLabel": "共振羁绊 x6",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "共振",
+      "count": 6,
+      "anchor": "bond-共振-6"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E5%85%B1%E6%8C%AF-6"
+  },
+  {
+    "kind": "provider",
+    "factorId": "game-mode",
+    "factorLabel": "游戏模式乘区",
+    "modifierTypeId": "game-mode",
+    "modifierTypeLabel": "游戏模式乘区",
+    "effectId": "bond:game-mode:狙击:6",
+    "effectLabel": "狙击羁绊 x6",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "狙击",
+      "count": 6,
+      "anchor": "bond-狙击-6"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E7%8B%99%E5%87%BB-6"
+  },
+  {
+    "kind": "provider",
+    "factorId": "game-mode",
+    "factorLabel": "游戏模式乘区",
+    "modifierTypeId": "game-mode",
+    "modifierTypeLabel": "游戏模式乘区",
+    "effectId": "bond:game-mode:狂战:6",
+    "effectLabel": "狂战羁绊 x6",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "狂战",
+      "count": 6,
+      "anchor": "bond-狂战-6"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E7%8B%82%E6%88%98-6"
+  },
+  {
+    "kind": "provider",
+    "factorId": "game-mode",
+    "factorLabel": "游戏模式乘区",
+    "modifierTypeId": "game-mode",
+    "modifierTypeLabel": "游戏模式乘区",
+    "effectId": "bond:game-mode:异化:4",
+    "effectLabel": "异化羁绊 x4",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "异化",
+      "count": 4,
+      "anchor": "bond-异化-4"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E5%BC%82%E5%8C%96-4"
+  },
+  {
+    "kind": "provider",
+    "factorId": "game-mode",
+    "factorLabel": "游戏模式乘区",
+    "modifierTypeId": "game-mode",
+    "modifierTypeLabel": "游戏模式乘区",
+    "effectId": "bond:game-mode:游击:4",
+    "effectLabel": "游击羁绊 x4",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "游击",
+      "count": 4,
+      "anchor": "bond-游击-4"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E6%B8%B8%E5%87%BB-4"
+  },
+  {
+    "kind": "provider",
+    "factorId": "game-mode",
+    "factorLabel": "游戏模式乘区",
+    "modifierTypeId": "game-mode",
+    "modifierTypeLabel": "游戏模式乘区",
+    "effectId": "bond:game-mode:游击:6",
+    "effectLabel": "游击羁绊 x6",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "游击",
+      "count": 6,
+      "anchor": "bond-游击-6"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E6%B8%B8%E5%87%BB-6"
+  },
+  {
+    "kind": "provider",
+    "factorId": "game-mode",
+    "factorLabel": "游戏模式乘区",
+    "modifierTypeId": "game-mode",
+    "modifierTypeLabel": "游戏模式乘区",
+    "effectId": "bond:sniper:2",
+    "effectLabel": "狙击羁绊 x2",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "狙击",
+      "count": 2,
+      "anchor": "bond-狙击-2"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E7%8B%99%E5%87%BB-2"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "bond:tech:2",
+    "effectLabel": "技战羁绊 x2",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "技战",
+      "count": 2,
+      "anchor": "bond-技战-2"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E6%8A%80%E6%88%98-2"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "bond:tech:4",
+    "effectLabel": "技战羁绊 x4",
+    "source": {
+      "type": "overlimit-bond",
+      "name": "技战",
+      "count": 4,
+      "anchor": "bond-技战-4"
+    },
+    "sourceHref": "/overlimit?module=bonds#bond-%E6%8A%80%E6%88%98-4"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040001",
+    "effectLabel": "幸运装填",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "幸运装填",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%B9%B8%E8%BF%90%E8%A3%85%E5%A1%AB#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040001",
+    "effectLabel": "幸运装填",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040001",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040001#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040036",
+    "effectLabel": "正中红心",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "正中红心",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%AD%A3%E4%B8%AD%E7%BA%A2%E5%BF%83#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040036",
+    "effectLabel": "正中红心",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040036",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040036#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040037",
+    "effectLabel": "伏击弹药",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "伏击弹药",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E4%BC%8F%E5%87%BB%E5%BC%B9%E8%8D%AF#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040043",
+    "effectLabel": "聚能弹药",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "聚能弹药",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E8%81%9A%E8%83%BD%E5%BC%B9%E8%8D%AF#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040043",
+    "effectLabel": "聚能弹药",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040043",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040043#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040050",
+    "effectLabel": "无限烟花",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "无限烟花",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E6%97%A0%E9%99%90%E7%83%9F%E8%8A%B1#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040059",
+    "effectLabel": "弹跳风暴",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "弹跳风暴",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%BC%B9%E8%B7%B3%E9%A3%8E%E6%9A%B4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040059",
+    "effectLabel": "弹跳风暴",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "弹跳风暴",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%BC%B9%E8%B7%B3%E9%A3%8E%E6%9A%B4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040060",
+    "effectLabel": "剧毒速装",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "剧毒速装",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%89%A7%E6%AF%92%E9%80%9F%E8%A3%85#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040069",
+    "effectLabel": "递进膛压",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "递进膛压",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E9%80%92%E8%BF%9B%E8%86%9B%E5%8E%8B#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040071",
+    "effectLabel": "协频共振",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "协频共振",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%8D%8F%E9%A2%91%E5%85%B1%E6%8C%AF#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040071",
+    "effectLabel": "协频共振",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040071",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040071#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040072",
+    "effectLabel": "近距增幅",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "近距增幅",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%BF%91%E8%B7%9D%E5%A2%9E%E5%B9%85#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040072",
+    "effectLabel": "近距增幅",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040072",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040072#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040081",
+    "effectLabel": "钝化增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "钝化增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E9%92%9D%E5%8C%96%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040081",
+    "effectLabel": "钝化增伤",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040081",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040081#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "weakness",
+    "factorLabel": "弱点增伤",
+    "modifierTypeId": "weakness",
+    "modifierTypeLabel": "弱点增伤",
+    "effectId": "perk:20703040082",
+    "effectLabel": "精密追击",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "精密追击",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E7%B2%BE%E5%AF%86%E8%BF%BD%E5%87%BB#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "weakness",
+    "factorLabel": "弱点增伤",
+    "modifierTypeId": "weakness",
+    "modifierTypeLabel": "弱点增伤",
+    "effectId": "perk:20703040082",
+    "effectLabel": "精密追击",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040082",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040082#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040085",
+    "effectLabel": "致命节拍",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "致命节拍",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%87%B4%E5%91%BD%E8%8A%82%E6%8B%8D#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040085",
+    "effectLabel": "致命节拍",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040085",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040085#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040087",
+    "effectLabel": "攻守自如",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "攻守自如",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%94%BB%E5%AE%88%E8%87%AA%E5%A6%82#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040093",
+    "effectLabel": "腐蚀榴弹",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "腐蚀榴弹",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E8%85%90%E8%9A%80%E6%A6%B4%E5%BC%B9#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040093",
+    "effectLabel": "腐蚀榴弹",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040093",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040093#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040112",
+    "effectLabel": "过载膛压",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "过载膛压",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%BF%87%E8%BD%BD%E8%86%9B%E5%8E%8B#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040112",
+    "effectLabel": "过载膛压",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040112",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040112#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "critical",
+    "factorLabel": "暴伤乘区",
+    "modifierTypeId": "critical",
+    "modifierTypeLabel": "暴伤乘区",
+    "effectId": "perk:20703040116",
+    "effectLabel": "裁决充能",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "裁决充能",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%A3%81%E5%86%B3%E5%85%85%E8%83%BD#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "critical",
+    "factorLabel": "暴伤乘区",
+    "modifierTypeId": "critical",
+    "modifierTypeLabel": "暴伤乘区",
+    "effectId": "perk:20703040116",
+    "effectLabel": "裁决充能",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040116",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040116#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040134",
+    "effectLabel": "层积强袭",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "层积强袭",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%B1%82%E7%A7%AF%E5%BC%BA%E8%A2%AD#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040135",
+    "effectLabel": "异态共鸣",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "异态共鸣",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%BC%82%E6%80%81%E5%85%B1%E9%B8%A3#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040140",
+    "effectLabel": "解构增幅",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "解构增幅",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%A7%A3%E6%9E%84%E5%A2%9E%E5%B9%85#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040140",
+    "effectLabel": "解构增幅",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040140",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040140#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040150",
+    "effectLabel": "终焉序列",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "终焉序列",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E7%BB%88%E7%84%89%E5%BA%8F%E5%88%97#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040150",
+    "effectLabel": "终焉序列",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040150",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040150#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040151",
+    "effectLabel": "相位强袭",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "相位强袭",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E7%9B%B8%E4%BD%8D%E5%BC%BA%E8%A2%AD#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "weakness",
+    "factorLabel": "弱点增伤",
+    "modifierTypeId": "weakness",
+    "modifierTypeLabel": "弱点增伤",
+    "effectId": "perk:20703040155",
+    "effectLabel": "致命射击",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "致命射击",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%87%B4%E5%91%BD%E5%B0%84%E5%87%BB#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040159",
+    "effectLabel": "连锁增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "连锁增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%BF%9E%E9%94%81%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040163",
+    "effectLabel": "技能增幅",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "技能增幅",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%8A%80%E8%83%BD%E5%A2%9E%E5%B9%85#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040167",
+    "effectLabel": "叠浪效应",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "叠浪效应",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%8F%A0%E6%B5%AA%E6%95%88%E5%BA%94#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040171",
+    "effectLabel": "致命节奏",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "致命节奏",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%87%B4%E5%91%BD%E8%8A%82%E5%A5%8F#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040175",
+    "effectLabel": "强袭子弹",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "强袭子弹",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%BC%BA%E8%A2%AD%E5%AD%90%E5%BC%B9#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040184",
+    "effectLabel": "技能增涌",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "技能增涌",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%8A%80%E8%83%BD%E5%A2%9E%E6%B6%8C#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040184",
+    "effectLabel": "技能增涌",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040184",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040184#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040193",
+    "effectLabel": "观山窥骨",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "观山窥骨",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%A7%82%E5%B1%B1%E7%AA%A5%E9%AA%A8#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040201",
+    "effectLabel": "重峦叠势",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "重峦叠势",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E9%87%8D%E5%B3%A6%E5%8F%A0%E5%8A%BF#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040201",
+    "effectLabel": "重峦叠势",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040201",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040201#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040212",
+    "effectLabel": "冥河送葬",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "冥河送葬",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%86%A5%E6%B2%B3%E9%80%81%E8%91%AC#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040213",
+    "effectLabel": "白骨电容器",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "白骨电容器",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E7%99%BD%E9%AA%A8%E7%94%B5%E5%AE%B9%E5%99%A8#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040214",
+    "effectLabel": "五方兽临",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "五方兽临",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E4%BA%94%E6%96%B9%E5%85%BD%E4%B8%B4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040214",
+    "effectLabel": "五方兽临",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040214",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040214#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040215",
+    "effectLabel": "兽躯双衍",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "兽躯双衍",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%85%BD%E8%BA%AF%E5%8F%8C%E8%A1%8D#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040215",
+    "effectLabel": "兽躯双衍",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040215",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040215#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040216",
+    "effectLabel": "恶鬼眷顾",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "恶鬼眷顾",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E6%81%B6%E9%AC%BC%E7%9C%B7%E9%A1%BE#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "vulnerability",
+    "factorLabel": "易伤乘区",
+    "modifierTypeId": "vulnerability",
+    "modifierTypeLabel": "易伤",
+    "effectId": "perk:20703040217",
+    "effectLabel": "恶鬼腐朽",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "恶鬼腐朽",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E6%81%B6%E9%AC%BC%E8%85%90%E6%9C%BD#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "correction",
+    "factorLabel": "特殊修正",
+    "modifierTypeId": "correction",
+    "modifierTypeLabel": "单次修正",
+    "effectId": "perk:20703040254",
+    "effectLabel": "独弹强化",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "独弹强化",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E7%8B%AC%E5%BC%B9%E5%BC%BA%E5%8C%96#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "correction",
+    "factorLabel": "特殊修正",
+    "modifierTypeId": "correction",
+    "modifierTypeLabel": "单次修正",
+    "effectId": "perk:20703040254",
+    "effectLabel": "独弹强化",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040254",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040254#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040257",
+    "effectLabel": "远距增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "远距增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%BF%9C%E8%B7%9D%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040257",
+    "effectLabel": "远距增伤",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040257",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040257#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040258",
+    "effectLabel": "武器强化",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "武器强化",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%AD%A6%E5%99%A8%E5%BC%BA%E5%8C%96#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040258",
+    "effectLabel": "武器强化",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "武器强化",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%AD%A6%E5%99%A8%E5%BC%BA%E5%8C%96#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "vulnerability",
+    "factorLabel": "易伤乘区",
+    "modifierTypeId": "vulnerability",
+    "modifierTypeLabel": "易伤",
+    "effectId": "perk:20703040290",
+    "effectLabel": "切换易伤",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "切换易伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%88%87%E6%8D%A2%E6%98%93%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040293",
+    "effectLabel": "叠伤系统",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "叠伤系统",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%8F%A0%E4%BC%A4%E7%B3%BB%E7%BB%9F#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040296",
+    "effectLabel": "霰弹增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "霰弹增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E9%9C%B0%E5%BC%B9%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040302",
+    "effectLabel": "模式增幅",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "模式增幅",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%A8%A1%E5%BC%8F%E5%A2%9E%E5%B9%85#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040302",
+    "effectLabel": "模式增幅",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040302",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040302#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "vulnerability",
+    "factorLabel": "易伤乘区",
+    "modifierTypeId": "vulnerability",
+    "modifierTypeLabel": "易伤",
+    "effectId": "perk:20703040305",
+    "effectLabel": "近战易伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "近战易伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%BF%91%E6%88%98%E6%98%93%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "vulnerability",
+    "factorLabel": "易伤乘区",
+    "modifierTypeId": "vulnerability",
+    "modifierTypeLabel": "易伤",
+    "effectId": "perk:20703040306",
+    "effectLabel": "易伤扩散",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "易伤扩散",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E6%98%93%E4%BC%A4%E6%89%A9%E6%95%A3#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040309",
+    "effectLabel": "满盾增幅",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "满盾增幅",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%BB%A1%E7%9B%BE%E5%A2%9E%E5%B9%85#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040312",
+    "effectLabel": "近远联动",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "近远联动",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%BF%91%E8%BF%9C%E8%81%94%E5%8A%A8#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040315",
+    "effectLabel": "钝化增效",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "钝化增效",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E9%92%9D%E5%8C%96%E5%A2%9E%E6%95%88#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040319",
+    "effectLabel": "危险膛压",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "危险膛压",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%8D%B1%E9%99%A9%E8%86%9B%E5%8E%8B#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040323",
+    "effectLabel": "近距增效",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "近距增效",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%BF%91%E8%B7%9D%E5%A2%9E%E6%95%88#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040334",
+    "effectLabel": "炎刃",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "炎刃",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E7%82%8E%E5%88%83#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040334",
+    "effectLabel": "炎刃",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040334",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040334#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040340",
+    "effectLabel": "腐蚀狂热",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "腐蚀狂热",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E8%85%90%E8%9A%80%E7%8B%82%E7%83%AD#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040342",
+    "effectLabel": "兽瞳独睐",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "兽瞳独睐",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%85%BD%E7%9E%B3%E7%8B%AC%E7%9D%90#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040346",
+    "effectLabel": "贯长虹",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "贯长虹",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E8%B4%AF%E9%95%BF%E8%99%B9#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040346",
+    "effectLabel": "贯长虹",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040346",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040346#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040350",
+    "effectLabel": "打标增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "打标增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%89%93%E6%A0%87%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040354",
+    "effectLabel": "跟班增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "跟班增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%B7%9F%E7%8F%AD%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040354",
+    "effectLabel": "跟班增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "跟班增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E8%B7%9F%E7%8F%AD%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040358",
+    "effectLabel": "泡爆增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "泡爆增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%B3%A1%E7%88%86%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040362",
+    "effectLabel": "钩出痛打",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "钩出痛打",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E9%92%A9%E5%87%BA%E7%97%9B%E6%89%93#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040366",
+    "effectLabel": "滑铲增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "滑铲增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%BB%91%E9%93%B2%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040370",
+    "effectLabel": "铲中叠伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "铲中叠伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E9%93%B2%E4%B8%AD%E5%8F%A0%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040378",
+    "effectLabel": "抽奖增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "抽奖增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%8A%BD%E5%A5%96%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040378",
+    "effectLabel": "抽奖增伤",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040378",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040378#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040386",
+    "effectLabel": "速伤提升",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "速伤提升",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E9%80%9F%E4%BC%A4%E6%8F%90%E5%8D%87#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040386",
+    "effectLabel": "速伤提升",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "速伤提升",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E9%80%9F%E4%BC%A4%E6%8F%90%E5%8D%87#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040390",
+    "effectLabel": "独爆增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "独爆增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E7%8B%AC%E7%88%86%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040390",
+    "effectLabel": "独爆增伤",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040390",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040390#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040394",
+    "effectLabel": "捡货增伤",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "捡货增伤",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%8D%A1%E8%B4%A7%E5%A2%9E%E4%BC%A4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "critical",
+    "factorLabel": "暴伤乘区",
+    "modifierTypeId": "critical",
+    "modifierTypeLabel": "暴伤乘区",
+    "effectId": "perk:20703040406",
+    "effectLabel": "暴走永动",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "暴走永动",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%9A%B4%E8%B5%B0%E6%B0%B8%E5%8A%A8#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "critical",
+    "factorLabel": "暴伤乘区",
+    "modifierTypeId": "critical",
+    "modifierTypeLabel": "暴伤乘区",
+    "effectId": "perk:20703040406",
+    "effectLabel": "暴走永动",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040406",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040406#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040407",
+    "effectLabel": "狂轰乱炸",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "狂轰乱炸",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E7%8B%82%E8%BD%B0%E4%B9%B1%E7%82%B8#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040407",
+    "effectLabel": "狂轰乱炸",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040407",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040407#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "weakness",
+    "factorLabel": "弱点增伤",
+    "modifierTypeId": "weakness",
+    "modifierTypeLabel": "弱点增伤",
+    "effectId": "perk:20703040408",
+    "effectLabel": "弱肉强食",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "弱肉强食",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%BC%B1%E8%82%89%E5%BC%BA%E9%A3%9F#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "weakness",
+    "factorLabel": "弱点增伤",
+    "modifierTypeId": "weakness",
+    "modifierTypeLabel": "弱点增伤",
+    "effectId": "perk:20703040408",
+    "effectLabel": "弱肉强食",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040408",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040408#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040409",
+    "effectLabel": "狂暴连击",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "狂暴连击",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E7%8B%82%E6%9A%B4%E8%BF%9E%E5%87%BB#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040409",
+    "effectLabel": "狂暴连击",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040409",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040409#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040412",
+    "effectLabel": "腐蚀强击",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "腐蚀强击",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E8%85%90%E8%9A%80%E5%BC%BA%E5%87%BB#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040413",
+    "effectLabel": "幸运毒皇",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "幸运毒皇",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%B9%B8%E8%BF%90%E6%AF%92%E7%9A%87#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040414",
+    "effectLabel": "自追踪炮塔",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "自追踪炮塔",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E8%87%AA%E8%BF%BD%E8%B8%AA%E7%82%AE%E5%A1%94#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040415",
+    "effectLabel": "幸运炎帝",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "幸运炎帝",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%B9%B8%E8%BF%90%E7%82%8E%E5%B8%9D#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040415",
+    "effectLabel": "幸运炎帝",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040415",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040415#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040420",
+    "effectLabel": "往日弹痕",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "往日弹痕",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%BE%80%E6%97%A5%E5%BC%B9%E7%97%95#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040421",
+    "effectLabel": "追踪榴弹",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "追踪榴弹",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E8%BF%BD%E8%B8%AA%E6%A6%B4%E5%BC%B9#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040423",
+    "effectLabel": "哈士奇寻敌",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "哈士奇寻敌",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%93%88%E5%A3%AB%E5%A5%87%E5%AF%BB%E6%95%8C#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040424",
+    "effectLabel": "哈士奇支援",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "哈士奇支援",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%93%88%E5%A3%AB%E5%A5%87%E6%94%AF%E6%8F%B4#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040424",
+    "effectLabel": "哈士奇支援",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040424",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040424#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040429",
+    "effectLabel": "幸运龙炎",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "幸运龙炎",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E5%B9%B8%E8%BF%90%E9%BE%99%E7%82%8E#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040429",
+    "effectLabel": "幸运龙炎",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040429",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040429#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040432",
+    "effectLabel": "肾上腺素",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "肾上腺素",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E8%82%BE%E4%B8%8A%E8%85%BA%E7%B4%A0#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20703040432",
+    "effectLabel": "肾上腺素",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040432",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040432#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040435",
+    "effectLabel": "我只射击",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "我只射击",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%88%91%E5%8F%AA%E5%B0%84%E5%87%BB#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040435",
+    "effectLabel": "我只射击",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040435",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040435#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040436",
+    "effectLabel": "哑枪",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "哑枪",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%93%91%E6%9E%AA#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040436",
+    "effectLabel": "哑枪",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040436",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040436#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040445",
+    "effectLabel": "射击属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "射击属性-20703040445",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%B0%84%E5%87%BB%E5%B1%9E%E6%80%A7-20703040445#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040445",
+    "effectLabel": "射击属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040445",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040445#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040446",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "技能属性-20703040446",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%8A%80%E8%83%BD%E5%B1%9E%E6%80%A7-20703040446#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "skill-damage",
+    "modifierTypeLabel": "非武器技能伤害",
+    "effectId": "perk:20703040446",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "技能属性-20703040446",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%8A%80%E8%83%BD%E5%B1%9E%E6%80%A7-20703040446#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040446",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040446",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040446#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "skill-damage",
+    "modifierTypeLabel": "非武器技能伤害",
+    "effectId": "perk:20703040446",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040446",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040446#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "critical",
+    "factorLabel": "暴伤乘区",
+    "modifierTypeId": "critical",
+    "modifierTypeLabel": "暴伤乘区",
+    "effectId": "perk:20703040449",
+    "effectLabel": "暴伤属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "暴伤属性-20703040449",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%9A%B4%E4%BC%A4%E5%B1%9E%E6%80%A7-20703040449#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "critical",
+    "factorLabel": "暴伤乘区",
+    "modifierTypeId": "critical",
+    "modifierTypeLabel": "暴伤乘区",
+    "effectId": "perk:20703040449",
+    "effectLabel": "暴伤属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040449",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040449#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "weakness",
+    "factorLabel": "弱点增伤",
+    "modifierTypeId": "weakness",
+    "modifierTypeLabel": "弱点增伤",
+    "effectId": "perk:20703040451",
+    "effectLabel": "弱点属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "弱点属性-20703040451",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%BC%B1%E7%82%B9%E5%B1%9E%E6%80%A7-20703040451#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "weakness",
+    "factorLabel": "弱点增伤",
+    "modifierTypeId": "weakness",
+    "modifierTypeLabel": "弱点增伤",
+    "effectId": "perk:20703040451",
+    "effectLabel": "弱点属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040451",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040451#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040452",
+    "effectLabel": "爆炸属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "爆炸属性-20703040452",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E7%88%86%E7%82%B8%E5%B1%9E%E6%80%A7-20703040452#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040452",
+    "effectLabel": "爆炸属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040452",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040452#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040453",
+    "effectLabel": "射击属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "射击属性-20703040453",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%B0%84%E5%87%BB%E5%B1%9E%E6%80%A7-20703040453#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040453",
+    "effectLabel": "射击属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040453",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040453#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040454",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "技能属性-20703040454",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%8A%80%E8%83%BD%E5%B1%9E%E6%80%A7-20703040454#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "skill-damage",
+    "modifierTypeLabel": "非武器技能伤害",
+    "effectId": "perk:20703040454",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "技能属性-20703040454",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%8A%80%E8%83%BD%E5%B1%9E%E6%80%A7-20703040454#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040454",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040454",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040454#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "skill-damage",
+    "modifierTypeLabel": "非武器技能伤害",
+    "effectId": "perk:20703040454",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040454",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040454#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040455",
+    "effectLabel": "伤害属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "伤害属性-20703040455",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E4%BC%A4%E5%AE%B3%E5%B1%9E%E6%80%A7-20703040455#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040455",
+    "effectLabel": "伤害属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040455",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040455#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040456",
+    "effectLabel": "伤害属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "伤害属性-20703040456",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E4%BC%A4%E5%AE%B3%E5%B1%9E%E6%80%A7-20703040456#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040456",
+    "effectLabel": "伤害属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040456",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040456#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040457",
+    "effectLabel": "射击属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "射击属性-20703040457",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%B0%84%E5%87%BB%E5%B1%9E%E6%80%A7-20703040457#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040457",
+    "effectLabel": "射击属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040457",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040457#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040458",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "技能属性-20703040458",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%8A%80%E8%83%BD%E5%B1%9E%E6%80%A7-20703040458#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040458",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040458",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040458#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "critical",
+    "factorLabel": "暴伤乘区",
+    "modifierTypeId": "critical",
+    "modifierTypeLabel": "暴伤乘区",
+    "effectId": "perk:20703040461",
+    "effectLabel": "暴伤属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "暴伤属性-20703040461",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%9A%B4%E4%BC%A4%E5%B1%9E%E6%80%A7-20703040461#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "critical",
+    "factorLabel": "暴伤乘区",
+    "modifierTypeId": "critical",
+    "modifierTypeLabel": "暴伤乘区",
+    "effectId": "perk:20703040461",
+    "effectLabel": "暴伤属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040461",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040461#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "weakness",
+    "factorLabel": "弱点增伤",
+    "modifierTypeId": "weakness",
+    "modifierTypeLabel": "弱点增伤",
+    "effectId": "perk:20703040463",
+    "effectLabel": "弱点属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "弱点属性-20703040463",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%BC%B1%E7%82%B9%E5%B1%9E%E6%80%A7-20703040463#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "weakness",
+    "factorLabel": "弱点增伤",
+    "modifierTypeId": "weakness",
+    "modifierTypeLabel": "弱点增伤",
+    "effectId": "perk:20703040463",
+    "effectLabel": "弱点属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040463",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040463#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040464",
+    "effectLabel": "爆炸属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "爆炸属性-20703040464",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E7%88%86%E7%82%B8%E5%B1%9E%E6%80%A7-20703040464#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-explode-damage",
+    "modifierTypeLabel": "爆炸伤害",
+    "effectId": "perk:20703040464",
+    "effectLabel": "爆炸属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040464",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040464#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040465",
+    "effectLabel": "射击属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "射击属性-20703040465",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E5%B0%84%E5%87%BB%E5%B1%9E%E6%80%A7-20703040465#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20703040465",
+    "effectLabel": "射击属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040465",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040465#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040466",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "技能属性-20703040466",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E6%8A%80%E8%83%BD%E5%B1%9E%E6%80%A7-20703040466#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20703040466",
+    "effectLabel": "技能属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040466",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040466#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040467",
+    "effectLabel": "伤害属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "伤害属性-20703040467",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E4%BC%A4%E5%AE%B3%E5%B1%9E%E6%80%A7-20703040467#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040467",
+    "effectLabel": "伤害属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040467",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040467#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040468",
+    "effectLabel": "伤害属性",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "伤害属性-20703040468",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E4%BC%A4%E5%AE%B3%E5%B1%9E%E6%80%A7-20703040468#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040468",
+    "effectLabel": "伤害属性",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040468",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040468#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040475",
+    "effectLabel": "飞毛腿",
+    "source": {
+      "type": "perk",
+      "slot": 3,
+      "slug": "飞毛腿",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-3/%E9%A3%9E%E6%AF%9B%E8%85%BF#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20703040475",
+    "effectLabel": "飞毛腿",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20703040475",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20703040475#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20704040478",
+    "effectLabel": "爆炸直击",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "爆炸直击",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E7%88%86%E7%82%B8%E7%9B%B4%E5%87%BB#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-hit-damage",
+    "modifierTypeLabel": "射击伤害",
+    "effectId": "perk:20704040478",
+    "effectLabel": "爆炸直击",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20704040478",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20704040478#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20704040480",
+    "effectLabel": "超强技能",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "超强技能",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E8%B6%85%E5%BC%BA%E6%8A%80%E8%83%BD#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "skill-damage",
+    "modifierTypeLabel": "非武器技能伤害",
+    "effectId": "perk:20704040480",
+    "effectLabel": "超强技能",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "超强技能",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E8%B6%85%E5%BC%BA%E6%8A%80%E8%83%BD#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-skill-damage",
+    "modifierTypeLabel": "武器技能伤害",
+    "effectId": "perk:20704040480",
+    "effectLabel": "超强技能",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20704040480",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20704040480#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "skill-damage",
+    "modifierTypeLabel": "非武器技能伤害",
+    "effectId": "perk:20704040480",
+    "effectLabel": "超强技能",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20704040480",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20704040480#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20704040482",
+    "effectLabel": "暴力切换",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "暴力切换",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E6%9A%B4%E5%8A%9B%E5%88%87%E6%8D%A2#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "weapon-damage",
+    "modifierTypeLabel": "武器伤害",
+    "effectId": "perk:20704040482",
+    "effectLabel": "暴力切换",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20704040482",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20704040482#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20704040483",
+    "effectLabel": "隐匿出击",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "隐匿出击",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E9%9A%90%E5%8C%BF%E5%87%BA%E5%87%BB#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "dilution",
+    "factorLabel": "大稀释乘区",
+    "modifierTypeId": "all-damage",
+    "modifierTypeLabel": "全伤害",
+    "effectId": "perk:20704040483",
+    "effectLabel": "隐匿出击",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20704040483",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20704040483#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "critical",
+    "factorLabel": "暴伤乘区",
+    "modifierTypeId": "critical",
+    "modifierTypeLabel": "暴伤乘区",
+    "effectId": "perk:20704040484",
+    "effectLabel": "爆发",
+    "source": {
+      "type": "perk",
+      "slot": 4,
+      "slug": "爆发",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/perks/slot-4/%E7%88%86%E5%8F%91#multiplier-provider"
+  },
+  {
+    "kind": "provider",
+    "factorId": "critical",
+    "factorLabel": "暴伤乘区",
+    "modifierTypeId": "critical",
+    "modifierTypeLabel": "暴伤乘区",
+    "effectId": "perk:20704040484",
+    "effectLabel": "爆发",
+    "source": {
+      "type": "overlimit-card",
+      "id": "20704040484",
+      "anchor": "multiplier-provider"
+    },
+    "sourceHref": "/overlimit/20704040484#multiplier-provider"
+  }
+]
