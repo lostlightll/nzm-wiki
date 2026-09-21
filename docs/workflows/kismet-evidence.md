@@ -30,6 +30,8 @@ kismet/
 
 每次导出写入 `manifest.json`：环境、可选版本标签、时间、请求资产、工具程序集哈希、状态和已导出文件的 SHA-256。只记录必要来源信息，不序列化 profile。`exported` 只表示导出请求完成，不证明所有函数解析完整；失败快照标为 `failed`，未正常结束的快照保留 `in-progress`。读取时仍须检查目标函数的 `ScriptBytecode` 和解析诊断。
 
+需要排除已确认的残留旧容器时，可传 `-ExcludeContainer <精确容器名或绝对路径>`；必须使用支持该参数的 CLI 程序集，旧程序集会明确拒绝，不能静默退回混合来源。排除在原地挂载阶段生效，不复制或移动包体；manifest 的 `excludedContainers` 只保存容器文件名，不保存私有 profile 或安装路径。
+
 ## 使用与历史资料
 
 - 定位文件可用 `rg --files --no-ignore kismet`，再按目标资产名筛选；内容搜索也须显式包含忽略文件。
