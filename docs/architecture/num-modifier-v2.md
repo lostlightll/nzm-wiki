@@ -48,7 +48,9 @@ attribute_descriptions.lc[row_name] = { row_name, raw }
 - `Description` 只作诊断。数值读取 `BaseValue`、`CoefValue`、`GPModifierOp` 和 `Level`。
 - 对象键递归排序，数组顺序保持；两张源表分别记录 SHA、行数和刷新差异。
 
-当前 Lock 有 3,044 条 Modifier、180 条属性描述和 154 个非空 `AttributeName`。其中 138 个可连接描述表，16 个缺少描述；另有 `lc:191201003_1_0` 的空属性异常。`lc:111970001` 的非标准 row name 和 `lc:111010094_1_1` 的身份不一致同样作为诊断保留。
+S4 正式服 Lock 有 3,675 条 Modifier、188 条属性描述和 171 个非空 `AttributeName`。其中 153 个可连接描述表，18 个缺少描述；另有 `lc:191201003_1_0` 的空属性异常。`lc:111970001` 的非标准 row name 和 `lc:111010094_1_1` 的身份不一致同样作为诊断保留。新增属性先按属性描述表登记为已识别但未索引，缺少描述的塔防属性保留 `unmapped`，不因换季刷新推断 operation 或伤害分面。
+
+S4 原表 `DT_GPMGESkillDesConfigTable_Main` 的 `1013039001_1.MGEDescription` 含 `{GPModifier:121300390:BaseValue:0:13}`，Modifier 表没有该 ID；同 ID 的 `numerical_config_equip` 伤害行不能作为替代。原表审计对这个精确 Token 报已知缺失警告，不推断或发布数值；今后 Token 得以解析时必须移除例外。
 
 ## 属性语义目录
 

@@ -6,26 +6,26 @@
       "source": {
         "kind": "blueprint_default",
         "asset": "NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset",
-        "sha256": "57c1059049bfb9d547a1d68ac5d616ce157952fe74e10de92709d70fcd05f3bb",
+        "sha256": "9caedf56e3289c8366b436060fceeee4c97d44227fba9f6dbc4c1ecd69fb6d2e",
         "object": "Default__SKT_FloatingMode_C",
         "field": "Duration",
         "value": 20
       },
       "flow": {
         "asset": "NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset",
-        "sha256": "57c1059049bfb9d547a1d68ac5d616ce157952fe74e10de92709d70fcd05f3bb",
+        "sha256": "9caedf56e3289c8366b436060fceeee4c97d44227fba9f6dbc4c1ecd69fb6d2e",
         "read": {
           "function": "GetDuration",
           "statement": 162
         },
         "apply": {
           "function": "ExecuteUbergraph_SKT_FloatingMode",
-          "statement": 957
+          "statement": 951
         },
         "boundary": "native-call",
         "evidence": "docs/architecture/weapon-skill-duration-evidence.md#能源之影"
       },
-      "dataset": "unknown",
+      "dataset": "live",
       "modifiers": [
         {
           "mge_id": 1312049001,
@@ -37,7 +37,7 @@
           },
           "flow": {
             "asset": "NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset",
-            "sha256": "57c1059049bfb9d547a1d68ac5d616ce157952fe74e10de92709d70fcd05f3bb",
+            "sha256": "9caedf56e3289c8366b436060fceeee4c97d44227fba9f6dbc4c1ecd69fb6d2e",
             "read": {
               "function": "GetDuration",
               "statement": 0
@@ -57,7 +57,7 @@
       "source": {
         "kind": "blueprint_default",
         "asset": "NZM/Content/Abilities/WeaponSkill/Purple/CriticalArray/SKT_CriticalArray.uasset",
-        "sha256": "e758f7888bbce0e13a625e3badfe698e9fa8549dc2ab7f09fe16d71e4846d84f",
+        "sha256": "48073bcb0e95ae496c11b6a5865081c70e4d95df15d1e15268ef8a078113b269",
         "object": "Default__SKT_CriticalArray_C",
         "field": "FieldDuration",
         "value": 12
@@ -76,7 +76,7 @@
         "boundary": "native-call",
         "evidence": "docs/architecture/weapon-skill-duration-evidence.md#天鹅之舞"
       },
-      "dataset": "unknown",
+      "dataset": "live",
       "modifiers": []
     }
   },
@@ -127,7 +127,7 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
     "current:gp:5101901": {
@@ -176,175 +176,10 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
-    "current:pve:5000801_1": {
-      "row_name": "5000801_1",
-      "raw": {
-        "SkillID": 5000801,
-        "Level": 1,
-        "SkillName": "闪身",
-        "ChargeNeedTime": 8,
-        "ChargeNeedTimeTags": [
-          "SkillParamConfig.ChargeNeedTime"
-        ],
-        "KillChargeValue": -1,
-        "KillChargeValueTags": [
-          "SkillParamConfig.KillChargeValue"
-        ],
-        "AssistChargeValue": -1,
-        "AssistChargeValueTags": [
-          "SkillParamConfig.AssistChargeValue"
-        ],
-        "SkillCount": 1,
-        "SkillCountTags": [
-          "SkillParamConfig.SkillCount"
-        ],
-        "Parameters": [
-          {
-            "Name": "DodgeDistance",
-            "Value": "600",
-            "Tags": [
-              "SkillParamConfig.MoveDistance"
-            ],
-            "Description": "位移距离"
-          }
-        ]
-      },
-      "source": {
-        "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
-        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
-      }
-    },
-    "current:pve:5101901_1": {
-      "row_name": "5101901_1",
-      "raw": {
-        "SkillID": 5101901,
-        "Level": 1,
-        "SkillName": "出奇不易",
-        "ChargeNeedTime": 25,
-        "ChargeNeedTimeTags": [
-          "SkillParamConfig.ChargeNeedTime"
-        ],
-        "KillChargeValue": -1,
-        "KillChargeValueTags": [
-          "SkillParamConfig.KillChargeValue"
-        ],
-        "AssistChargeValue": -1,
-        "AssistChargeValueTags": [
-          "SkillParamConfig.AssistChargeValue"
-        ],
-        "SkillCount": 1,
-        "SkillCountTags": [
-          "SkillParamConfig.SkillCount"
-        ],
-        "Parameters": []
-      },
-      "source": {
-        "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
-        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
-      }
-    },
-    "s4-preview:gp:5000801": {
-      "row_name": "5000801",
-      "raw": {
-        "AbilityID": 5000801,
-        "DerivativeSkillId": -1,
-        "AbilityTag": {
-          "TagName": "AbilityType.Activated.FlashAway"
-        },
-        "AbilityName": "闪身",
-        "SkillOverview": "快速移动",
-        "Description": "朝输入方向进行一次快速移动。",
-        "Duration": 0,
-        "CooldownDuration": 5,
-        "KillChargeValue": 0,
-        "AssistChargeValue": 0,
-        "CostRatio": 1,
-        "bPauseChargeDuringActivation": false,
-        "MaxChargeStackCount": 1,
-        "MaxStrengthLevel": 0,
-        "DefaultStrengthLevelConditionCount": 0,
-        "AbilityAssetSoftPath": {
-          "AssetPathName": "/Game/Abilities/WeaponSkill/Purple/FlashAway/DA_FlashAway.DA_FlashAway",
-          "SubPathString": ""
-        },
-        "SkillCrossHair": "GPSkillCrossHair",
-        "ElementIcon": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "SkillType": "EGPSkillType::Normal",
-        "SkillPosition": "EGPSkillPositioningType::Guardian",
-        "bCanRotateCamera": true,
-        "bShowActiveWidgetWhenSkillAvailable": true,
-        "bAutoActiveSkill": true,
-        "BranchAbilities": [],
-        "SkillSlotLogic": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "bAutoSwitchWeapon": false,
-        "bAutoSwitchToPrevWeapon": false,
-        "bShowCountDownText": false,
-        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
-      },
-      "source": {
-        "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
-      }
-    },
-    "s4-preview:gp:5101901": {
-      "row_name": "5101901",
-      "raw": {
-        "AbilityID": 5101901,
-        "DerivativeSkillId": -1,
-        "AbilityTag": {
-          "TagName": "None"
-        },
-        "AbilityName": "出其不意",
-        "SkillOverview": "扔枪爆炸",
-        "Description": "将枪械扔出去，命中敌人后爆炸，并将弹夹填满",
-        "Duration": 0,
-        "CooldownDuration": 25,
-        "KillChargeValue": 0,
-        "AssistChargeValue": 0,
-        "CostRatio": 1,
-        "bPauseChargeDuringActivation": false,
-        "MaxChargeStackCount": 1,
-        "MaxStrengthLevel": 0,
-        "DefaultStrengthLevelConditionCount": 0,
-        "AbilityAssetSoftPath": {
-          "AssetPathName": "/Game/Abilities/WeaponSkill/Gold/ThrowGunExplosion/DA_ThrowGunExplosion.DA_ThrowGunExplosion",
-          "SubPathString": ""
-        },
-        "SkillCrossHair": "GPSkillCrossHair",
-        "ElementIcon": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "SkillType": "EGPSkillType::Normal",
-        "SkillPosition": "EGPSkillPositioningType::Guardian",
-        "bCanRotateCamera": true,
-        "bShowActiveWidgetWhenSkillAvailable": true,
-        "bAutoActiveSkill": true,
-        "BranchAbilities": [],
-        "SkillSlotLogic": {
-          "AssetPathName": "None",
-          "SubPathString": ""
-        },
-        "bAutoSwitchWeapon": false,
-        "bAutoSwitchToPrevWeapon": false,
-        "bShowCountDownText": false,
-        "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
-      },
-      "source": {
-        "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
-      }
-    },
-    "s4-preview:gp:5104201": {
+    "current:gp:5104201": {
       "row_name": "5104201",
       "raw": {
         "AbilityID": 5104201,
@@ -390,10 +225,10 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
-    "s4-preview:gp:5104301": {
+    "current:gp:5104301": {
       "row_name": "5104301",
       "raw": {
         "AbilityID": 5104301,
@@ -439,10 +274,10 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
-    "s4-preview:gp:5104401": {
+    "current:gp:5104401": {
       "row_name": "5104401",
       "raw": {
         "AbilityID": 5104401,
@@ -488,10 +323,10 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
-    "s4-preview:gp:5104901": {
+    "current:gp:5104901": {
       "row_name": "5104901",
       "raw": {
         "AbilityID": 5104901,
@@ -537,10 +372,10 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
-    "s4-preview:pve:5000801_1": {
+    "current:pve:5000801_1": {
       "row_name": "5000801_1",
       "raw": {
         "SkillID": 5000801,
@@ -575,10 +410,10 @@
       },
       "source": {
         "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
-        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+        "sha256": "768172e2f162503982fb7ac1d79c663a3085145ad9c8b268231078d841b6b747"
       }
     },
-    "s4-preview:pve:5101901_1": {
+    "current:pve:5101901_1": {
       "row_name": "5101901_1",
       "raw": {
         "SkillID": 5101901,
@@ -604,10 +439,10 @@
       },
       "source": {
         "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
-        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+        "sha256": "768172e2f162503982fb7ac1d79c663a3085145ad9c8b268231078d841b6b747"
       }
     },
-    "s4-preview:pve:5104201_1": {
+    "current:pve:5104201_1": {
       "row_name": "5104201_1",
       "raw": {
         "SkillID": 5104201,
@@ -642,10 +477,10 @@
       },
       "source": {
         "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
-        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+        "sha256": "768172e2f162503982fb7ac1d79c663a3085145ad9c8b268231078d841b6b747"
       }
     },
-    "s4-preview:pve:5104301_1": {
+    "current:pve:5104301_1": {
       "row_name": "5104301_1",
       "raw": {
         "SkillID": 5104301,
@@ -680,10 +515,10 @@
       },
       "source": {
         "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
-        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+        "sha256": "768172e2f162503982fb7ac1d79c663a3085145ad9c8b268231078d841b6b747"
       }
     },
-    "s4-preview:pve:5104401_1": {
+    "current:pve:5104401_1": {
       "row_name": "5104401_1",
       "raw": {
         "SkillID": 5104401,
@@ -709,10 +544,10 @@
       },
       "source": {
         "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
-        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+        "sha256": "768172e2f162503982fb7ac1d79c663a3085145ad9c8b268231078d841b6b747"
       }
     },
-    "s4-preview:pve:5104901_1": {
+    "current:pve:5104901_1": {
       "row_name": "5104901_1",
       "raw": {
         "SkillID": 5104901,
@@ -738,7 +573,7 @@
       },
       "source": {
         "path": "DataTables/SkillConfigTable_Weapon_PVE.json",
-        "sha256": "3fb355f2ee1a1dc7d12f9584c031b6d99285b5493d6cdad8e74d4c7c9e1ef631"
+        "sha256": "768172e2f162503982fb7ac1d79c663a3085145ad9c8b268231078d841b6b747"
       }
     },
     "weapons:gp:5000201": {
@@ -787,7 +622,7 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
     "weapons:gp:5001301": {
@@ -836,7 +671,7 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
     "weapons:gp:5001401": {
@@ -885,7 +720,7 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
     "weapons:gp:5004801": {
@@ -934,7 +769,7 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
     "weapons:gp:5100501": {
@@ -983,7 +818,7 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
     "weapons:gp:5100801": {
@@ -1032,7 +867,7 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
     "weapons:gp:5101101": {
@@ -1081,7 +916,7 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
     "weapons:gp:5102101": {
@@ -1130,7 +965,7 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     },
     "weapons:gp:5102601": {
@@ -1179,7 +1014,7 @@
       },
       "source": {
         "path": "DataTables/GPActiveSkillDataTable.json",
-        "sha256": "2e199170b01e32a43d1b11e7a5eb87c30de99996fec62ba8c5af08f6a1552bcc"
+        "sha256": "11ebf9a96fa16d40e9f7897e355821e7380043774ceb5af0ec3d786e28fa3fe6"
       }
     }
   }

@@ -12,23 +12,37 @@ import {
   resolveMultiplierSourceHref,
 } from "./multiplier-data";
 import registry from "../data/modifier-providers.json";
+import type { ModifierProviderRegistrySource } from "./modifier-provider-registry";
+import { getOverlimitCatalog } from "./overlimit";
+
+function officialEntry<T extends { source: ModifierProviderRegistrySource }>(entry: T) {
+  const result = structuredClone(entry);
+  if (result.source.type === "perk") {
+    delete result.source.season;
+    const itemId = result.source.itemId;
+    result.source.overlimitCard = getOverlimitCatalog().cards.some((card) => card.perkItemId === itemId);
+  }
+  return result;
+}
 
 test("S4 coverage follows local reviewed Numerical chains and explicit exclusions", () => {
   const local = validateS4Review(review);
-  const perks = getAllPublishedPerks().filter(perk => perk.season === "s4-preview");
+  const perks = getAllPublishedPerks();
   const expected = [...local.providers, ...local.exclusions];
   assert.equal(expected.length, 82);
   const itemIds = new Set(expected.map(entry => entry.source.type === "perk" ? entry.source.itemId : ""));
   assert.deepEqual(perks.filter(perk => itemIds.has(perk.itemId!)).map(perk => perk.itemId).sort(), [...itemIds].sort());
-  const resolver = getPerkModifierResolver("s4-preview");
+  const resolver = getPerkModifierResolver("s4");
   for (const entry of local.providers) {
     const registered = registry.providers.find(provider => provider.id === entry.id);
-    assert.deepEqual(registered, entry, entry.label);
+    assert.ok(registered, entry.label);
+    assert.ok(entry.evidence?.basis?.every((basis) => registered.evidence?.basis?.includes(basis)), entry.label);
+    assert.deepEqual({ ...registered, evidence: { ...registered.evidence, basis: entry.evidence?.basis } }, officialEntry(entry), entry.label);
     const provider = MULTIPLIER_PROVIDERS.find(provider => provider.id === entry.id);
     assert.ok(provider, entry.label);
     assert.equal(provider.source.type, "perk");
     if (provider.source.type !== "perk") continue;
-    assert.equal(provider.source.season, "s4-preview");
+    assert.equal(provider.source.season, undefined);
     const expectedTypes = [...new Set(entry.applications!.flatMap(application =>
       resolver.resolveEffect(application.expression, application.context).facets
         .filter(facet => facet.consumer === "damage").map(facet => facet.id),
@@ -44,7 +58,18 @@ test("S4 coverage follows local reviewed Numerical chains and explicit exclusion
   }
   for (const entry of local.exclusions) {
     assert.ok(!MULTIPLIER_PROVIDERS.some(provider => provider.id === entry.id), entry.label);
-    assert.deepEqual(registry.exclusions.find(exclusion => exclusion.id === entry.id), entry, entry.label);
+    const registered = registry.exclusions.find(exclusion => exclusion.id === entry.id);
+    assert.ok(registered, entry.label);
+    if (entry.id === "perk:20703040537") {
+      // Live text gained a real Numerical token, but no reviewed execution path consumes it.
+      assert.equal(registered.reasonCode, "unverified-evidence");
+      assert.match(JSON.stringify(registered.evidence), /120300175/);
+      assert.match(JSON.stringify(registered.evidence), /[a-f0-9]{64}/);
+      assert.equal(resolver.getRow("lc:120300175_1_0").baseValue, 0.5);
+      continue;
+    }
+    assert.ok(entry.evidence?.basis?.every((basis) => registered.evidence?.basis?.includes(basis)), entry.label);
+    assert.deepEqual({ ...registered, evidence: { ...registered.evidence, basis: entry.evidence?.basis } }, officialEntry(entry), entry.label);
     for (const application of entry.evidence?.applications ?? []) {
       assert.ok(!resolver.resolveEffect(application.expression, application.context).facets
         .some(facet => facet.consumer === "damage"), entry.label);
@@ -67,7 +92,7 @@ test("local S4 review rejects overrides, missing identity evidence and duplicate
   assert.throws(() => validateS4Review(duplicate), /Duplicate ItemID/);
 });
 
-test("pure light uses its preview Numerical weakness damage and is no longer excluded", () => {
+test("pure light uses its formal Numerical weakness damage and is no longer excluded", () => {
   const provider = MULTIPLIER_PROVIDERS.find(provider => provider.id === "perk:20703040540")!;
   assert.ok(provider);
   assert.deepEqual(provider.modifierTypeIds, ["weakness"]);
@@ -95,7 +120,7 @@ test("local execution evidence restores scoped damage and keeps missing cold-fla
     const entry = review.exclusions.find(exclusion => exclusion.source.itemId === id);
     assert.equal(entry?.reasonCode, "unverified-evidence", id);
     assert.ok(!MULTIPLIER_PROVIDERS.some(provider => provider.source.type === "perk" &&
-      provider.source.season === "s4-preview" && provider.source.itemId === id), id);
+      provider.source.season === undefined && provider.source.itemId === id), id);
   }
 });
 

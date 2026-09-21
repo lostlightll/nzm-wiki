@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { getOverlimitCardById } from "../lib/overlimit-cards";
+import fs from "node:fs";
+import path from "node:path";
+import type { Perk } from "../types";
+import { parseOverlimitCatalog } from "../lib/overlimit-catalog";
 import {
   createOverlimitCardSearchItem,
   createOverlimitPreviewSearchItems,
@@ -9,12 +12,18 @@ import {
   createStatusEffectSearchItem,
   createSummonSearchItem,
   getBuildGuideSearchKeywords,
+  generateSearchIndex,
+  type SearchItem,
 } from "./generate-search-index";
 import { getOverlimitCatalog } from "../lib/overlimit";
-import { getPerkByItemId } from "../lib/perks";
+
+// Historical S3 examples remain fixed even after the active release is withdrawn.
+const archiveRoot = path.resolve("archives/content-versions/s3/s3.2-final-20260922/files");
+const archivedPerks: { perks: Perk[] } = JSON.parse(fs.readFileSync(path.join(archiveRoot, "frozen/perks.json"), "utf8"));
+const archivedOverlimit = parseOverlimitCatalog(JSON.parse(fs.readFileSync(path.join(archiveRoot, "data/overlimit/current.json"), "utf8")));
 
 test("perk search separates same-item current and preview editions", () => {
-  const perk = getPerkByItemId("20703040082");
+  const perk = archivedPerks.perks.find(perk => perk.itemId === "20703040082");
   assert.ok(perk);
   const current = createPerkSearchItem(perk, { keywords: ["自定义别名"] });
   const preview = createPerkSearchItem({
@@ -24,7 +33,7 @@ test("perk search separates same-item current and preview editions", () => {
   });
   assert.equal(current.title, perk.name);
   assert.ok(current.keywords.includes("自定义别名"));
-  assert.equal(preview.title, `${perk.name} · S4 Preview`);
+  assert.equal(preview.title, `${perk.name} · s4-preview`);
   assert.equal(preview.path, `/perks/preview/${perk.slug}`);
   assert.notEqual(current.path, preview.path);
   assert.ok(preview.keywords.includes("预览"));
@@ -32,7 +41,7 @@ test("perk search separates same-item current and preview editions", () => {
 });
 
 test("preview search scopes identical IDs and available modules to the preview route", () => {
-  const catalog = structuredClone(getOverlimitCatalog());
+  const catalog = structuredClone(archivedOverlimit);
   catalog.season = { id: "s5-preview", label: "S5 Preview", status: "preload", updatedAt: "2027-01-01" };
   catalog.levels = null;
   const items = createOverlimitPreviewSearchItems(catalog);
@@ -44,7 +53,7 @@ test("preview search scopes identical IDs and available modules to the preview r
 });
 
 test("overlimit search keeps the card summary and structured values", () => {
-  const card = getOverlimitCardById("20703040082");
+  const card = archivedOverlimit.cards.find(card => card.id === "20703040082");
   assert.ok(card);
   const item = createOverlimitCardSearchItem(card);
 
@@ -53,7 +62,7 @@ test("overlimit search keeps the card summary and structured values", () => {
   assert.ok(item.keywords.includes("+42%"));
   assert.ok(!item.keywords.some((keyword) => keyword.includes("**")));
 
-  const fatalExplosion = getOverlimitCardById("20703040437");
+  const fatalExplosion = archivedOverlimit.cards.find(card => card.id === "20703040437");
   assert.ok(fatalExplosion);
   const fatalExplosionItem = createOverlimitCardSearchItem(fatalExplosion);
   assert.ok(
@@ -62,6 +71,28 @@ test("overlimit search keeps the card summary and structured values", () => {
     ),
   );
   assert.ok(!fatalExplosionItem.keywords.some((keyword) => keyword.includes("8%")));
+});
+
+test("S4 official content replaces archived S3 and removes preview search routes", (t) => {
+  const catalog = getOverlimitCatalog();
+  assert.equal(catalog.season.id, "s4");
+  assert.equal(catalog.withdrawn, undefined);
+  let captured: SearchItem[] | undefined;
+  t.mock.method(fs, "writeFileSync", (file: fs.PathOrFileDescriptor, data: string | NodeJS.ArrayBufferView) => {
+    assert.equal(file, path.resolve("public/search-index.json"));
+    captured = JSON.parse(String(data));
+  });
+  generateSearchIndex([]);
+  assert.ok(captured);
+  const paths = new Set(captured.map(item => item.path));
+  const currentIds = new Set(catalog.cards.map(card => card.id));
+  for (const card of archivedOverlimit.cards) if (!currentIds.has(card.id)) {
+    assert.ok(!paths.has(`/overlimit/${card.id}`), card.id);
+  }
+  assert.ok(paths.has("/perks/slot-4/极寒领域"));
+  assert.ok(paths.has("/overlimit#bonds"));
+  assert.ok(!captured.some(item => item.path.startsWith("/perks/preview") || item.path.startsWith("/overlimit/preview")));
+  assert.ok(!captured.some(item => item.path.includes("archives/content-versions")));
 });
 
 test("collects structured S3 build guide keywords", () => {

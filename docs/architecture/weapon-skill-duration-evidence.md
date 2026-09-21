@@ -1,35 +1,39 @@
 # 武器技能持续时间证据
 
-核验于2026-09-19。本页记录静态配置、蓝图执行链与Native边界，不是新增游戏内实测。新导出来自本地游戏合并视图，具体环境与构建号未独立确认，来源登记为unknown；不得把导出日期当游戏版本。
+能源之影、天鹅之舞于2026-09-22重新核验为S4正式服来源（`live`）；原地挂载时排除已确认的旧赛季残留容器 `P_1.0.50.485.0_Patch_Season_4261608_P.pak`。本页记录静态配置、蓝图执行链与Native边界，不是新增游戏内实测。此次快照为 `kismet/live/20260921T220434Z-0d41954469724f20b2d4aa3e4e864659/manifest.json`，包含两项绑定涉及的3个资产及2个必要父类；时间只代表导出时间，不代表游戏构建号。心有凌兮仍保留2026-09-19的unknown来源历史证据，未作为此次runtime绑定重新发布。
 
 ## 能源之影
 
 身份：Prototype20007000015 → Skill5102001 → DA_FloatingMode → SKT_FloatingMode_C。超频Item20703040185 → PassiveSkill1312049001:1 → MGE1312049001。
 
-资产 `NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset`，导出JSON SHA-256 `57c1059049bfb9d547a1d68ac5d616ce157952fe74e10de92709d70fcd05f3bb`。
+资产 `NZM/Content/Abilities/WeaponSkill/Gold/FloatingMode/SKT_FloatingMode.uasset`，导出JSON SHA-256 `9caedf56e3289c8366b436060fceeee4c97d44227fba9f6dbc4c1ecd69fb6d2e`。
 
 - CDO `Default__SKT_FloatingMode_C.Properties.Duration=20`。
 - `IsWeaponHasMGE`在43查询CurrentWeapon，89判断数量大于0。
 - `GetDuration`在0检查1312049001；28无MGE跳162，直接返回Duration；有MGE时42计算Duration×0.5，84加回Duration，130输出，157跳189返回。
-- `K2_ActivateAbility`调用主图2215；武器检查通过后2585设置0.9秒单次定时器调用ShowHangItem（准备时间不计入有效持续时间）。ShowHangItem进入2825，执行流栈2830安排3037：GetDuration →3060写入原生GPSkillAbilityBase.AbilityDuration →3087跳788。
-- 主图788创建WaitDelay(AbilityDuration)，957调用DoDurationForEnd(true,false,true)。WaitDelay回调只跳787并PopExecutionFlow，不能误称它直接结束技能。
-- K2_OnEndAbility进入3671；3725跳133清理计时与挂件，444调用EndFire。
+- `K2_ActivateAbility`调用主图2209；武器检查通过后2579设置0.9秒单次定时器调用ShowHangItem（准备时间不计入有效持续时间）。ShowHangItem进入2819，执行流栈2824安排3031：GetDuration →3054写入原生GPSkillAbilityBase.AbilityDuration →3081跳782。
+- 主图782创建WaitDelay(AbilityDuration)，951调用DoDurationForEnd(true,false,true)。WaitDelay回调只跳781并PopExecutionFlow，不能误称它直接结束技能。
+- K2_OnEndAbility进入3661；3715跳131清理计时与挂件，442调用EndFire。
 
-55个蓝图函数均有字节码；没有写入自身Duration的指令，唯一AbilityDuration写入为3060，没有BuffDuration引用。父类BP_ChargeableSkillBase蓝图也未发现相关覆写；原生内部未展开，不排除未知版本或原生动态覆写。PVE的BuffDuration25不能替代已确认的蓝图输入20。
+55个蓝图函数均有字节码；没有写入自身Duration的指令，唯一AbilityDuration写入为3054，没有BuffDuration引用。父类BP_ChargeableSkillBase蓝图也未发现相关覆写，其42个函数字节码与旧证据完全相同（JSON SHA-256 `cc30d4add3d2ba6528a8cc628f292985c86cabcf7441ed97c0e46c88a7e83741`）。原生内部未展开，不排除未知版本或原生动态覆写。PVE的BuffDuration25不能替代已确认的蓝图输入20。
+
+S4重核时，GetDuration与IsWeaponHasMGE完整函数未变化；主图316条指令的分支、执行流栈目标及事件包装入口逐一按目标指令身份对齐，持续时间的读取、赋值与结束调用保持相同数据流。其他差异包括DynamicDataObserver调用参数数量、属性变更通知结构及AbilityTags改为FloatingMode；这些差异使偏移变化，不能把旧957位置直接沿用，也不能据此宣称整项技能行为完全未变。
 
 ## 天鹅之舞
 
 身份：Skill5001401 → DA_CriticalArray → SKT_CriticalArray_C。资产均位于 `NZM/Content/Abilities/WeaponSkill/` 下。
 
-- `Purple/CriticalArray/SKT_CriticalArray.uasset`：CDO FieldDuration=12；主图2088生成BP_CriticalArray，2202设置OwningAbility=self，2666完成生成。
+- `Purple/CriticalArray/SKT_CriticalArray.uasset`：CDO FieldDuration=12；主图2093生成BP_CriticalArray，2207设置OwningAbility=self，2671完成生成。
 - `Purple/CriticalArray/BP_CriticalArray.uasset`：ReceiveBeginPlay进入276、286跳10；20把OwningAbility转为SKT_CriticalArray_C，85读取FieldDuration并写入原生GPSkillSpawnableActor.ProjectileLifeSpan；248把同值传给ActivateFX。
 - `BaseBP/BP_MagicArrayBase.uasset`：ActivateFX仅证明视觉时间；另有实际生命周期回调K2_OnProjectileLifeTimeOut→747调用Native父函数，757清理MGE。
 
 已核验到原生存活时间字段及超时清理回调，因此采用蓝图12秒修正面板15秒；未证明PVE参数动态装载，不引用PVE同名字段。Native计时内部仍是边界。
 
+S4重核时，SKT主图89条指令的分支目标与事件入口保持对应；Montage调用新增一个0.0参数使后续偏移增加5，生成、OwningAbility赋值与完成生成链不变。BP_CriticalArray（2个函数）和BP_MagicArrayBase（6个函数）的完整JSON与旧证据相同，默认值12及超时清理链继续成立。
+
 | 资产 | 导出JSON SHA-256 |
 | --- | --- |
-| SKT_CriticalArray | e758f7888bbce0e13a625e3badfe698e9fa8549dc2ab7f09fe16d71e4846d84f |
+| SKT_CriticalArray | 48073bcb0e95ae496c11b6a5865081c70e4d95df15d1e15268ef8a078113b269 |
 | BP_CriticalArray | 780418a17117c0e8e3316e52fcd1fc24c79a90ac311faa8ce6f881169296251c |
 | BP_MagicArrayBase | 405a0217ab7c378f515cd5eee312fca2e055a7eebceda13ceb2fba3baf5fda0b |
 

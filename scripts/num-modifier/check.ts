@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import statusEffects from "../../data/status-effects.json";
+import contentVersion from "../../config/content-version.json";
 import { getPerkSourceEntries } from "../perks/source";
 import { createNumModifierResolver } from "../../lib/num-modifier";
 import { parseNumModifierSemantics } from "../../lib/num-modifier-semantics";
@@ -38,9 +39,10 @@ function checkStaticBoundaries(): void {
     // Selected preview evidence records provenance without reading local sources at runtime.
     path.join(root, "data", "perk-preview-modifiers.json"),
     // Offline overlimit import/review ledgers; runtime consumes only frozen projections.
-    ...["preview-cards.ts", "preview-cards.test.ts", "preview-card-source-lock.json", "preview-native-review.json", "preview-rules.ts", "preview-rules.test.ts", "preview-rules-review.json"]
+    ...["preview-cards.ts", "preview-cards.test.ts", "preview-card-source-lock.json", "preview-native-review.json", "preview-rules.ts", "preview-rules.test.ts", "preview-rules-review.json", "current-card-source-lock.json", "current-rules-review.json", "current-source-review.json"]
       .map(file => path.join(root, "scripts", "overlimit", file)),
-    ...["preview.json", "preview-evidence.json"].map(file => path.join(root, "data", "overlimit", file)),
+    ...["preview.json", "preview-evidence.json", "current.json", "current-evidence.json"].map(file => path.join(root, "data", "overlimit", file)),
+    path.join(root, "scripts", "perks", "promote-release.ts"),
     path.join(root, "data", "modifier-providers.json"),
     // Maintenance-only local review records provenance; no runtime raw-table reads.
     path.join(root, "scripts", "s4-perk-index-review.json"),
@@ -195,7 +197,8 @@ function checkPerkConsumers(): void {
     { name: "裁决充能", values: ["2%", "8%", "100%", "400%"] },
     { name: "紫奖掉物", values: ["16%", "18%"] },
   ];
-  for (const sample of samples) {
+  // Frozen S3 samples are historical assertions once the official catalog is retired.
+  for (const sample of contentVersion.season === "s3" ? samples : []) {
     const description = perksByName.get(sample.name)?.description;
     if (description === undefined) {
       addError(`${sample.name} is missing from the resolved perk catalog`);
@@ -266,7 +269,8 @@ function run(): void {
   const missing = [...lockedAttributeNames].filter(
     (attributeName) => attributeName && !descriptorNames.has(attributeName),
   ).length;
-  if (lockedAttributeNames.size !== 155 || joined !== 138 || missing !== 16) {
+  // S4 formal snapshot: 171 nonempty attributes plus the preserved empty source anomaly.
+  if (lockedAttributeNames.size !== 172 || joined !== 153 || missing !== 18) {
     addError(
       `attribute connection baseline changed: total=${lockedAttributeNames.size}, joined=${joined}, missing=${missing}`,
     );

@@ -31,6 +31,11 @@ test("专属插件显式引用全部独立武器伤害来源", () => {
   );
   const expected = [
     ...EXPECTED_REFERENCES,
+    ["slot-4/腐蚀飞弹", ["幽冥毒皇", "corrosive-missile-explosion"]],
+    ["slot-4/腐蚀飞弹", ["幽冥毒皇", "corrosive-missile-hit"]],
+    ["slot-4/极寒领域", ["极寒冰神", "cold-field"]],
+    ["slot-4/极寒之触", ["极寒冰神", "cryo-touch"]],
+    ["slot-4/极寒之痕", ["极寒冰神", "ice-orb"]],
   ];
   const byReference = (a: unknown, b: unknown) =>
     JSON.stringify(a).localeCompare(JSON.stringify(b));
@@ -38,35 +43,31 @@ test("专属插件显式引用全部独立武器伤害来源", () => {
 });
 
 test("腐蚀飞弹替换白值，不能把未调用的500% Modifier叠入伤害", async () => {
-  const damage = await getIndependentDamageByPerkSlug("preview/slot-4/腐蚀飞弹");
+  const damage = await getIndependentDamageByPerkSlug("slot-4/腐蚀飞弹");
   assert.deepEqual(damage.map(entry => [entry.numericalId, entry.damageValue]), [
     ["120600064", "900"],
     ["120600065", "15"],
   ]);
-  const perk = getPerkBySlug("preview/slot-4/腐蚀飞弹")!;
-  assert.equal(getPerkBySlug("slot-4/腐蚀飞弹"), undefined);
-  assert.deepEqual(await getIndependentDamageByPerkSlug("slot-4/腐蚀飞弹"), []);
+  const perk = getPerkBySlug("slot-4/腐蚀飞弹")!;
+  assert.equal(getPerkBySlug("preview/slot-4/腐蚀飞弹"), undefined);
+  assert.deepEqual(await getIndependentDamageByPerkSlug("preview/slot-4/腐蚀飞弹"), []);
   assert.match(perk.description!, /500%/);
   assert.doesNotMatch(perk.description!, /\{GPNumericalID:|\{\{num:/);
 });
 
-test("预览插件独立伤害只读同通道发布快照", async () => {
+test("S4正式独立伤害使用明确武器引用，旧预览入口不再返回数据", async () => {
   const catalog = getPerkPreviewCatalog();
-  assert.ok(catalog);
-  for (const entry of catalog.entries) {
-    assert.ok(entry.perk.slug.startsWith("preview/"));
-    assert.deepEqual(await getIndependentDamageByPerkSlug(entry.perk.slug), entry.independentDamage);
-  }
+  assert.equal(catalog, null);
   for (const [name, sourceId] of [
     ["极寒领域", "cold-field"],
     ["极寒之触", "cryo-touch"],
     ["极寒之痕", "ice-orb"],
   ]) {
-    const perk = getPerkBySlug(`preview/slot-4/${name}`);
+    const perk = getPerkBySlug(`slot-4/${name}`);
     assert.ok(perk);
     assert.deepEqual(perk.independentDamageSources?.map(reference => [reference.weaponSlug, reference.damageSourceId]), [["极寒冰神", sourceId]]);
-    assert.equal(getPerkBySlug(`slot-4/${name}`), undefined);
-    assert.deepEqual(await getIndependentDamageByPerkSlug(`slot-4/${name}`), []);
+    assert.equal(getPerkBySlug(`preview/slot-4/${name}`), undefined);
+    assert.deepEqual(await getIndependentDamageByPerkSlug(`preview/slot-4/${name}`), []);
   }
 });
 

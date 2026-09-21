@@ -1,113 +1,122 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import rawPreview from "../data/perk-preview/preview.json";
-import { getAllPerks, getAllPublishedPerks, getPerkByItemId, getPerkDocument } from "./perks";
-import { parseRegisteredPerkPreview } from "./perk-preview";
-import { parsePerkPreviewCatalog } from "./perk-preview-catalog";
-import { getProviderRelationsForSource, resolveMultiplierSourceHref } from "./multiplier-data";
+import { getAllPerks, getAllPublishedPerks, getPerkByItemId, getPerkByName } from "./perks";
+import { getPerkPreviewCatalog, parseRegisteredPerkPreview } from "./perk-preview";
+import { parsePerkPreviewCatalog, type PerkPreviewCatalog } from "./perk-preview-catalog";
+import { resolveMultiplierSourceHref } from "./multiplier-data";
+import s3Archive from "../archives/content-versions/s3/s3.2-final-20260922/files/frozen/perks.json";
+import s4PreviewArchive from "../archives/content-versions/s4/s4-preview-final-20260922/files/frozen/perks.json";
 
 const active = { season: "s4", version: "s4-preview", label: "S4 Preview" };
 
-test("published active variants keep audited effective parameters and exclude 狂热龙炎", () => {
-  const catalog = parsePerkPreviewCatalog(rawPreview);
-  const expected: [string, number, number, boolean][] = [
+// Frozen protocol evidence does not depend on whether a live preview is registered.
+function previewFixture(): PerkPreviewCatalog {
+  const reference = { scope: "all-weapons-active" as const, variant: "fixture", operation: "replace" as const };
+  return {
+    schemaVersion: 1,
+    season: { id: active.version, key: active.version, label: active.label, status: "preload" },
+    provenance: { files: [{ path: "fixture/perk.mdx", sha256: "a".repeat(64) }] },
+    entries: [{
+      perk: {
+        id: "2001", itemId: "2001", slug: "preview/slot-4/通道样例", name: "通道样例",
+        season: active.version, slot: 4, rarity: "传说", category: "辅助类", previewChange: "changed",
+        effects: [{ slot: 4, description: "提升50%" }], description: "提升50%",
+        skillVariants: [{
+          reference, original: { scope: "all-weapons-active", name: "武器主动技能" },
+          skill: { id: "active", kind: "active", name: "样例技能", gameSkillId: 1002,
+            display: true, parameters: { duration: 7 },
+            modifierSources: [], provenance: { duration: { runtime: "s4-preview:1002:duration" } } },
+        }],
+      },
+      content: "预览独立正文", source: "fixture/perk.mdx", independentDamage: [],
+      metadata: { title: "通道样例", id: "2001", season: active.version, slot: 4, rarity: "传说", preview_change: "changed", skill_variants: [reference] },
+    }],
+  };
+}
+
+test("released active variants retain audited effective parameters", () => {
+  for (const [name, cooldown, duration, blocking] of [
     ["雷霆增幅", 40, 10, false], ["极寒领域", 30, 12, true],
     ["火神爆发", 30, 7, true], ["寒霜之怒", 30, 12, false],
     ["寒霜协同", 30, 6, false], ["闪身", 15, 0, false], ["出其不意", 25, 0, false],
-  ];
-  for (const [name, cooldown, duration, blocking] of expected) {
-    const variants = catalog.entries.find(entry => entry.perk.name === name)?.perk.skillVariants;
+  ] as const) {
+    const variants = getPerkByName(name)?.skillVariants;
     assert.equal(variants?.length, 1, name);
-    const skill = variants![0].skill;
-    assert.deepEqual(skill.parameters, { cooldown, count: 1, duration, blocking }, name);
-    assert.equal(skill.durationIsBase, name === "火神爆发" ? true : undefined);
+    assert.deepEqual(variants![0].skill.parameters, { cooldown, count: 1, duration, blocking }, name);
+    assert.equal(variants![0].skill.durationIsBase, name === "火神爆发" ? true : undefined);
   }
-  assert.equal(catalog.entries.find(entry => entry.perk.name === "狂热龙炎")?.perk.skillVariants, undefined);
-  for (const itemId of ["20703040015", "20703040086"]) {
-    assert.deepEqual(getPerkByItemId(itemId)?.skillVariants?.[0].skill.parameters,
-      getPerkByItemId(itemId, "preview")?.skillVariants?.[0].skill.parameters);
-  }
+  assert.equal(getPerkByName("狂热龙炎")?.skillVariants, undefined);
 });
 
-test("frozen runtime skill provenance accepts its season and rejects channel leakage", () => {
-  const catalog = parsePerkPreviewCatalog(structuredClone(rawPreview));
-  const variant = catalog.entries.flatMap(entry => entry.perk.skillVariants ?? [])[0];
-  assert.ok(variant);
-  variant.skill.provenance.duration = { runtime: `s4-preview:${variant.skill.gameSkillId}:duration` };
+test("frozen preview provenance rejects official runtime channel leakage", () => {
+  const catalog = previewFixture();
   assert.doesNotThrow(() => parsePerkPreviewCatalog(catalog));
-  variant.skill.provenance.duration = { runtime: `weapons:${variant.skill.gameSkillId}:duration` };
+  catalog.entries[0].perk.skillVariants![0].skill.provenance.duration = { runtime: "current:1002:duration" };
   assert.throws(() => parsePerkPreviewCatalog(catalog), /cross-channel/);
 });
 
-test("same ItemID has isolated current and preview descriptions, documents and relations", () => {
-  const current = getPerkByItemId("20703040346")!;
-  const preview = getPerkByItemId("20703040346", "preview")!;
-  assert.ok(current && preview);
-  assert.equal(current.slug, "slot-4/贯长虹");
-  assert.equal(preview.slug, "preview/slot-4/贯长虹");
-  assert.ok(!current.description!.includes("衰减"));
-  assert.ok(preview.description!.includes("衰减"));
-  assert.ok(getPerkDocument(preview.slug).content.includes("待") || getPerkDocument(preview.slug).content.includes("确认"));
-  assert.ok(!getPerkDocument(current.slug).content.includes("衰减"));
-  assert.equal(getAllPerks().filter(perk => perk.itemId === current.itemId).length, 1);
-  assert.equal(getAllPublishedPerks().filter(perk => perk.itemId === current.itemId).length, 2);
-  const currentSource = { type: "perk" as const, slot: 4 as const, slug: "贯长虹" };
-  const previewSource = { ...currentSource, season: "s4-preview" };
-  const currentRelations = getProviderRelationsForSource(currentSource);
-  const previewRelations = getProviderRelationsForSource(previewSource);
-  assert.ok(currentRelations.length && previewRelations.length);
-  assert.ok(currentRelations.every(relation => !previewRelations.includes(relation)));
-  assert.notEqual(resolveMultiplierSourceHref(currentSource), resolveMultiplierSourceHref(previewSource));
+test("inactive preview has no duplicate published identities or official fallback", () => {
+  assert.equal(getPerkPreviewCatalog(), null);
+  const current = getAllPerks();
+  assert.deepEqual(getAllPublishedPerks(), current);
+  assert.equal(new Set(current.map((perk) => perk.itemId)).size, current.length);
+  assert.ok(getPerkByItemId("20703040346"));
+  assert.equal(getPerkByItemId("20703040346", "preview"), undefined);
+  const source = { type: "perk" as const, slot: 4 as const, slug: "贯长虹" };
+  assert.notEqual(resolveMultiplierSourceHref(source), resolveMultiplierSourceHref({ ...source, season: "s4-preview" }));
 });
 
-test("preview rejects duplicate identities, cross-season data and unresolved numerical tokens", () => {
-  const duplicate = structuredClone(rawPreview);
+test("preview rejects duplicates, cross-season identities and unresolved tokens", () => {
+  const duplicate = previewFixture();
   duplicate.entries.push(duplicate.entries[0]);
   assert.throws(() => parsePerkPreviewCatalog(duplicate), /Duplicate preview identity/);
-  const mismatch = structuredClone(rawPreview);
+  const mismatch = previewFixture();
   mismatch.entries[0].perk.season = "s5-preview";
   assert.throws(() => parsePerkPreviewCatalog(mismatch), /channel mismatch/);
-  const unresolved = structuredClone(rawPreview);
+  const unresolved = previewFixture();
   unresolved.entries[0].perk.description = "{{num:unknown|percent}}";
   assert.throws(() => parsePerkPreviewCatalog(unresolved), /unresolved numbers/);
-  assert.throws(() => parseRegisteredPerkPreview(rawPreview, undefined), /registered/);
-  assert.throws(() => parseRegisteredPerkPreview(rawPreview, { ...active, version: "s4-preview.1" }), /registered/);
+  assert.throws(() => parseRegisteredPerkPreview(previewFixture(), undefined), /registered/);
+  assert.throws(() => parseRegisteredPerkPreview(previewFixture(), { ...active, version: "s4-preview.1" }), /registered/);
   assert.equal(parseRegisteredPerkPreview(null, undefined), null);
+  assert.ok(parseRegisteredPerkPreview(previewFixture(), active));
 });
 
-test("published preview validation preserves stored values without recalculating from source metadata", () => {
-  const value = structuredClone(rawPreview);
-  const entry = value.entries.find(item => item.perk.itemId === "20703040346")!;
-  entry.metadata.description = "未发布的下一次改动";
-  const catalog = parsePerkPreviewCatalog(value);
-  assert.equal(catalog.entries.find(item => item.perk.itemId === entry.perk.itemId)!.perk.description, entry.perk.description);
+test("frozen published values ignore metadata changes and validate classification", () => {
+  const value = previewFixture();
+  value.entries[0].metadata.description = "未发布的下一次改动";
+  assert.equal(parsePerkPreviewCatalog(value).entries[0].perk.description, "提升50%");
+  value.entries[0].metadata.preview_change = "new";
+  assert.throws(() => parsePerkPreviewCatalog(value), /classification mismatch/);
 });
 
-test("S4 retains old perks with target availability and separates change classes", () => {
-  const entries = rawPreview.entries;
-  const ids = new Set(entries.map(entry => entry.perk.itemId));
-  const current = getAllPerks();
-  assert.equal(current.filter(perk => !ids.has(perk.itemId)).length, 0);
-  assert.equal(current.filter(perk => perk.collectModItem === 1 &&
-    getPerkByItemId(perk.itemId, "preview")?.collectModItem === 0).length, 121);
-  assert.equal(entries.filter(entry => entry.perk.previewChange === "new").length, 81);
-  assert.equal(getPerkByItemId("20703040104", "preview")?.previewChange, "changed");
-  assert.ok(entries.filter(entry => entry.perk.previewChange === "new").every(entry => !current.some(perk => perk.itemId === entry.perk.itemId)));
+test("S4 formal catalog retains reviewed unavailable identities and descriptions", () => {
   for (const id of ["20703040217", "20703040425"]) {
-    assert.ok(ids.has(id));
-    assert.equal(getPerkByItemId(id, "preview")?.collectModItem, 0);
-    assert.equal(getPerkByItemId(id, "preview")?.makeModItem, 0);
-    assert.equal(getPerkByItemId(id)?.collectModItem, 1);
+    const perk = getPerkByItemId(id);
+    assert.ok(perk, id);
+    assert.equal(perk.collectModItem, 0);
+    assert.equal(perk.makeModItem, 0);
   }
-  for (const id of ["20703040432", "20703040354", "20703040333", "20704040480", "20703040423"]) {
-    assert.equal(getPerkByItemId(id, "preview")?.previewChange, "changed");
-  }
-  assert.ok(getPerkByItemId("20703040432", "preview")?.description?.includes("84%"));
-  assert.ok(getPerkByItemId("20703040432")?.description?.includes("126%"));
-  assert.ok(getPerkByItemId("20703040354", "preview")?.description?.includes("全伤害"));
-  assert.ok(getPerkByItemId("20703040354")?.description?.includes("射击伤害"));
-  assert.ok(getPerkByItemId("20703040423", "preview")?.weaponNames?.includes("最佳拍档"));
-  const invalid = structuredClone(rawPreview);
-  invalid.entries[0].metadata.preview_change = invalid.entries[0].perk.previewChange === "new" ? "existing" : "new";
-  assert.throws(() => parsePerkPreviewCatalog(invalid), /classification mismatch/);
+  assert.ok(getPerkByItemId("20703040432")?.description?.includes("84%"));
+  assert.ok(getPerkByItemId("20703040354")?.description?.includes("全伤害"));
+  assert.ok(getPerkByItemId("20703040423")?.weaponNames?.includes("最佳拍档"));
+});
+
+test("archived S3 and S4 preview keep independent identities, changes and availability", () => {
+  const old = s3Archive.perks;
+  const preview = s4PreviewArchive.perks;
+  assert.equal(old.length, 467);
+  assert.equal(preview.length, 549);
+  assert.equal(preview.filter((perk) => perk.previewChange === "new").length, 81);
+  assert.equal(old.filter((perk) => perk.collectModItem === 1 &&
+    preview.find((candidate) => candidate.itemId === perk.itemId)?.collectModItem === 0).length, 121);
+  assert.ok(preview.filter((perk) => perk.previewChange === "new").every((perk) => !old.some((candidate) => candidate.itemId === perk.itemId)));
+  const before = old.find((perk) => perk.itemId === "20703040346")!;
+  const after = preview.find((perk) => perk.itemId === before.itemId)!;
+  assert.equal(before.slug, "slot-4/贯长虹");
+  assert.equal(after.slug, "preview/slot-4/贯长虹");
+  assert.ok(!before.description?.includes("衰减"));
+  assert.ok(after.description?.includes("衰减"));
+  assert.ok(old.find((perk) => perk.itemId === "20703040432")?.description?.includes("126%"));
+  assert.ok(preview.find((perk) => perk.itemId === "20703040432")?.description?.includes("84%"));
 });

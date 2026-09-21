@@ -4,39 +4,59 @@
     "files": [
       {
         "path": "config/content-version.json",
-        "sha256": "7320fb33d077b14ee4d3ba66877bed6e9fd6e9cd4e4dde54fb6c74bfdb4689fd"
+        "sha256": "6fbd9fec285f7cea53300261fbe571248465c2a3588e09de65cd44c851464725"
       },
       {
         "path": "data/modifier-index-runtime.json",
-        "sha256": "3d2e067cf4e89729ed064713026494d664b74e29a49613709c9b58b38d79cdec"
+        "sha256": "d9377604488a6f27506480a7622ea93a8d27190d0980e2478bd64c00d0f67ca0"
       },
       {
         "path": "data/modifier-providers.json",
-        "sha256": "c2311c885a251575f7b2a043338285346d21ea5d1e0a9b873bba696df3b9aa93"
+        "sha256": "8c937d266f61d3a43047ef43031f76e47131a5862ef6fe70f033dee5dae899ed"
       },
       {
         "path": "data/num-skill-lock.json",
-        "sha256": "f93f400538703d173bffe60f49fb1e30099d9f4a80b94ef53984f10b30970d62"
+        "sha256": "c751734d7a233f555ca095c356afb27ac3bfc39a9c60378f1b567f1ada76da6d"
       },
       {
         "path": "data/num-skill-variants.json",
-        "sha256": "61bf366ab3f15b7f55c7ed9733ca28228b9a7b22c9946354786cb91bad304ee3"
+        "sha256": "db325eac2847247511ea7f5294fe3a30d4beca09171688c4ff23f6a362a3147c"
       },
       {
         "path": "data/perk-preview/preview.json",
-        "sha256": "4be3027a53607c65613755347ca9b37cb8bae676d651679b22f3b8ee1396eb25"
+        "sha256": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed"
       },
       {
         "path": "data/perks/slot-2/出其不意.mdx",
-        "sha256": "da942775fa7c7e0eddd967d104979e2785c3d795f810b635fdb57ba278af440d"
+        "sha256": "33d682d4f6caf5d037dc09b16c1447878f0fe3d53918584cf27fbe986b25f1a2"
       },
       {
         "path": "data/perks/slot-2/闪身.mdx",
-        "sha256": "fc42b07f58b0a3b54784873cd209b3dbc531f30cdcc0ff691abfeebef23f7364"
+        "sha256": "c5d9ba5d6c16bbfce435ce44589e0939a494525bf1b4497026b241476cf0879f"
+      },
+      {
+        "path": "data/perks/slot-4/寒霜之怒.mdx",
+        "sha256": "b2548bbd90e7c677f175d8a99b7b45e6dd6205b8cf62303ddc1818fafba6659f"
+      },
+      {
+        "path": "data/perks/slot-4/寒霜协同.mdx",
+        "sha256": "be6dbe6d4fa1b3ae0cf925201819d281610533baa2c54d23754862d2ae83f539"
+      },
+      {
+        "path": "data/perks/slot-4/极寒领域.mdx",
+        "sha256": "6cf26a400bc4e021579fdd1f250aaf50937be65d45e2065b5c91a1f691ab1e09"
+      },
+      {
+        "path": "data/perks/slot-4/火神爆发.mdx",
+        "sha256": "d9103c90c17ecdec10bbaec3794d1bae1e561fdf9b637959ba357876d7bad684"
+      },
+      {
+        "path": "data/perks/slot-4/雷霆增幅.mdx",
+        "sha256": "7b656c1f9e2a2152ad1fe50cb3658c3f78d396b1e6d48112c68fdb497bfa07ad"
       },
       {
         "path": "data/weapon-data-lock.json",
-        "sha256": "5c1a083acfa1d96676d99712acbfb7dbea6de585f6364f2e4fd3ffbcbe18c7e6"
+        "sha256": "61b39e2ac908fdcbf3a319cf280856507dc68ac02689c913192d702abe6e8464"
       },
       {
         "path": "data/weapons/Bully.mdx",
@@ -228,7 +248,7 @@
       },
       {
         "path": "data/weapons/樱之殇.mdx",
-        "sha256": "6b42a58ed4d84b99cb2a760a71d6fc6e701c5c850feb66006c442843406a2aa3"
+        "sha256": "1241ed1a96d4cfcb39f0d09421c324112a63dda2735f46e413c56acc12c08f8a"
       },
       {
         "path": "data/weapons/樱之誓.mdx",
@@ -312,7 +332,7 @@
       },
       {
         "path": "data/weapons/猪猪捏捏乐.mdx",
-        "sha256": "62b783b8161aeb9dc141398eedacd9b93bd6fbc0f4533a196bcf90c2de8f72fd"
+        "sha256": "8997eec0331e77f6325ecec6f3d06db030371bdb3edeffe204ee2a73d2a8c0c1"
       },
       {
         "path": "data/weapons/猪猪榴弹发射器.mdx",
@@ -4677,7 +4697,7 @@
       "gameSkillId": 5104101,
       "display": true,
       "parameters": {
-        "cooldown": 30,
+        "cooldown": 40,
         "duration": 12,
         "count": 1,
         "blocking": true,
@@ -4734,7 +4754,7 @@
       "gameSkillId": 5104101,
       "display": true,
       "parameters": {
-        "cooldown": 30,
+        "cooldown": 40,
         "duration": 12,
         "count": 1,
         "blocking": true,
@@ -8241,83 +8261,6 @@
       "operation": "replace"
     },
     {
-      "id": "throw-gun",
-      "kind": "active",
-      "name": "出其不意",
-      "gameSkillId": 5101901,
-      "display": false,
-      "parameters": {
-        "cooldown": 25,
-        "duration": 0,
-        "count": 1,
-        "blocking": false
-      },
-      "modifierSources": [],
-      "provenance": {
-        "cooldown": {
-          "row": "s4-preview:pve:5101901_1",
-          "field": "ChargeNeedTime"
-        },
-        "duration": {
-          "row": "s4-preview:gp:5101901",
-          "field": "Duration"
-        },
-        "count": {
-          "row": "s4-preview:pve:5101901_1",
-          "field": "SkillCount"
-        },
-        "blocking": {
-          "row": "s4-preview:gp:5101901",
-          "field": "bPauseChargeDuringActivation"
-        }
-      },
-      "perkItemId": "20703040086",
-      "perkSlug": "preview/slot-2/出其不意",
-      "channel": "s4-preview",
-      "scope": "all-weapons-active",
-      "variantKey": "s4-preview:5101901",
-      "operation": "replace"
-    },
-    {
-      "id": "flash-away",
-      "kind": "active",
-      "name": "闪身",
-      "gameSkillId": 5000801,
-      "display": false,
-      "parameters": {
-        "cooldown": 15,
-        "duration": 0,
-        "count": 1,
-        "blocking": false
-      },
-      "modifierSources": [],
-      "provenance": {
-        "cooldown": {
-          "literal": 15,
-          "reason": "MGE_1314102001.ExecuteUbergraph@1122 调用ModifyChargeDurationBySlot，显式参数15/0覆盖插槽充能；不能直接采用PVE基础8秒。",
-          "evidence": "docs/architecture/perk-skill-variant-evidence.md"
-        },
-        "duration": {
-          "row": "s4-preview:gp:5000801",
-          "field": "Duration"
-        },
-        "count": {
-          "row": "s4-preview:pve:5000801_1",
-          "field": "SkillCount"
-        },
-        "blocking": {
-          "row": "s4-preview:gp:5000801",
-          "field": "bPauseChargeDuringActivation"
-        }
-      },
-      "perkItemId": "20703040015",
-      "perkSlug": "preview/slot-2/闪身",
-      "channel": "s4-preview",
-      "scope": "all-weapons-active",
-      "variantKey": "s4-preview:5000801",
-      "operation": "replace"
-    },
-    {
       "id": "cold-fury",
       "kind": "active",
       "name": "寒霜之怒",
@@ -8332,7 +8275,7 @@
       "modifierSources": [],
       "provenance": {
         "cooldown": {
-          "row": "s4-preview:pve:5104201_1",
+          "row": "current:pve:5104201_1",
           "field": "ChargeNeedTime"
         },
         "duration": {
@@ -8341,21 +8284,21 @@
           "evidence": "docs/architecture/perk-skill-variant-evidence.md"
         },
         "count": {
-          "row": "s4-preview:pve:5104201_1",
+          "row": "current:pve:5104201_1",
           "field": "SkillCount"
         },
         "blocking": {
-          "row": "s4-preview:gp:5104201",
+          "row": "current:gp:5104201",
           "field": "bPauseChargeDuringActivation"
         }
       },
       "perkItemId": "20703040535",
-      "perkSlug": "preview/slot-4/寒霜之怒",
-      "channel": "s4-preview",
+      "perkSlug": "slot-4/寒霜之怒",
+      "channel": "current",
       "weaponSlug": "极地夜曲",
       "baseSkillId": "active-1",
       "originalId": 5104201,
-      "variantKey": "s4-preview:5104201:1312079001",
+      "variantKey": "current:5104201:1312079001",
       "operation": "modify"
     },
     {
@@ -8373,7 +8316,7 @@
       "modifierSources": [],
       "provenance": {
         "cooldown": {
-          "row": "s4-preview:pve:5104201_1",
+          "row": "current:pve:5104201_1",
           "field": "ChargeNeedTime"
         },
         "duration": {
@@ -8382,21 +8325,21 @@
           "evidence": "docs/architecture/perk-skill-variant-evidence.md"
         },
         "count": {
-          "row": "s4-preview:pve:5104201_1",
+          "row": "current:pve:5104201_1",
           "field": "SkillCount"
         },
         "blocking": {
-          "row": "s4-preview:gp:5104201",
+          "row": "current:gp:5104201",
           "field": "bPauseChargeDuringActivation"
         }
       },
       "perkItemId": "20703040536",
-      "perkSlug": "preview/slot-4/寒霜协同",
-      "channel": "s4-preview",
+      "perkSlug": "slot-4/寒霜协同",
+      "channel": "current",
       "weaponSlug": "极地夜曲",
       "baseSkillId": "active-1",
       "originalId": 5104201,
-      "variantKey": "s4-preview:5104201:1312079002",
+      "variantKey": "current:5104201:1312079002",
       "operation": "modify"
     },
     {
@@ -8414,29 +8357,29 @@
       "modifierSources": [],
       "provenance": {
         "cooldown": {
-          "row": "s4-preview:pve:5104301_1",
+          "row": "current:pve:5104301_1",
           "field": "ChargeNeedTime"
         },
         "duration": {
-          "row": "s4-preview:gp:5104301",
+          "row": "current:gp:5104301",
           "field": "Duration"
         },
         "count": {
-          "row": "s4-preview:pve:5104301_1",
+          "row": "current:pve:5104301_1",
           "field": "SkillCount"
         },
         "blocking": {
-          "row": "s4-preview:gp:5104301",
+          "row": "current:gp:5104301",
           "field": "bPauseChargeDuringActivation"
         }
       },
       "perkItemId": "20703040537",
-      "perkSlug": "preview/slot-4/极寒领域",
-      "channel": "s4-preview",
+      "perkSlug": "slot-4/极寒领域",
+      "channel": "current",
       "weaponSlug": "极寒冰神",
       "baseSkillId": "active-1",
       "originalId": 5103401,
-      "variantKey": "s4-preview:5104301",
+      "variantKey": "current:5104301",
       "operation": "replace"
     },
     {
@@ -8455,7 +8398,7 @@
       "modifierSources": [],
       "provenance": {
         "cooldown": {
-          "row": "s4-preview:pve:5104401_1",
+          "row": "current:pve:5104401_1",
           "field": "ChargeNeedTime"
         },
         "duration": {
@@ -8464,21 +8407,21 @@
           "evidence": "docs/architecture/perk-skill-variant-evidence.md"
         },
         "count": {
-          "row": "s4-preview:pve:5104401_1",
+          "row": "current:pve:5104401_1",
           "field": "SkillCount"
         },
         "blocking": {
-          "row": "s4-preview:gp:5104401",
+          "row": "current:gp:5104401",
           "field": "bPauseChargeDuringActivation"
         }
       },
       "perkItemId": "20703040549",
-      "perkSlug": "preview/slot-4/火神爆发",
-      "channel": "s4-preview",
+      "perkSlug": "slot-4/火神爆发",
+      "channel": "current",
       "weaponSlug": "火神炎帝",
       "baseSkillId": "active-1",
       "originalId": 5103601,
-      "variantKey": "s4-preview:5104401",
+      "variantKey": "current:5104401",
       "operation": "replace"
     },
     {
@@ -8496,29 +8439,29 @@
       "modifierSources": [],
       "provenance": {
         "cooldown": {
-          "row": "s4-preview:pve:5104901_1",
+          "row": "current:pve:5104901_1",
           "field": "ChargeNeedTime"
         },
         "duration": {
-          "row": "s4-preview:gp:5104901",
+          "row": "current:gp:5104901",
           "field": "Duration"
         },
         "count": {
-          "row": "s4-preview:pve:5104901_1",
+          "row": "current:pve:5104901_1",
           "field": "SkillCount"
         },
         "blocking": {
-          "row": "s4-preview:gp:5104901",
+          "row": "current:gp:5104901",
           "field": "bPauseChargeDuringActivation"
         }
       },
       "perkItemId": "20703040569",
-      "perkSlug": "preview/slot-4/雷霆增幅",
-      "channel": "s4-preview",
+      "perkSlug": "slot-4/雷霆增幅",
+      "channel": "current",
       "weaponSlug": "雷霆之影",
       "baseSkillId": "active-1",
       "originalId": 5000901,
-      "variantKey": "s4-preview:5104901",
+      "variantKey": "current:5104901",
       "operation": "replace"
     }
   ]

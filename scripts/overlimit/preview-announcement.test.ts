@@ -1,12 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import published from "../../data/overlimit/preview.json";
+import published from "../../data/overlimit/current.json";
+import announcement from "./current-announcement.json";
 import { parseOverlimitCatalog } from "../../lib/overlimit-catalog";
 import { applyPreviewAnnouncement } from "./preview-announcement";
 
 test("official availability preserves card effects and map affixes and survives republishing", () => {
   const original = parseOverlimitCatalog(structuredClone(published));
-  const result = applyPreviewAnnouncement(structuredClone(original));
+  const result = applyPreviewAnnouncement(structuredClone(original), announcement, "scripts/overlimit/current-announcement.json");
   const periods = result.mapRotation!.periods;
   assert.equal(periods.length, 17);
   assert.equal(periods[0].startDate, "2026-09-22");
@@ -23,5 +24,5 @@ test("official availability preserves card effects and map affixes and survives 
     const source = original.mapRotation!.periods.find(entry => entry.startDate <= period.startDate && (!entry.endDate || entry.endDate >= period.startDate));
     assert.deepEqual(map.activeBonds, source!.maps.find(entry => entry.name === map.name)!.activeBonds);
   }
-  assert.deepEqual(applyPreviewAnnouncement(structuredClone(result)), result);
+  assert.deepEqual(applyPreviewAnnouncement(structuredClone(result), announcement, "scripts/overlimit/current-announcement.json"), result);
 });

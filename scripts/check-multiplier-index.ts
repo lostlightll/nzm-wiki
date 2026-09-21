@@ -218,7 +218,11 @@ for (const itemId of linkedPerkIds) {
 }
 
 for (const card of hydratedOverlimitCards) {
-  const provider = standaloneProviders.get(card.id) ?? (card.perkItemId ? overlimitProviderByItemId.get(card.perkItemId) : undefined);
+  // An explicit card exclusion is also a reviewed result; a same-ID perk must not override it.
+  const hasCardReview = coveredIds.has(`overlimit-card:${card.id}`);
+  const provider = hasCardReview
+    ? standaloneProviders.get(card.id)
+    : card.perkItemId ? overlimitProviderByItemId.get(card.perkItemId) : undefined;
   if (!card.perkItemId && !coveredIds.has(`overlimit-card:${card.id}`)) {
     errors.push(`独立超限卡片缺少来源审计或有依据的排除项：${card.id} ${card.name}`);
   }

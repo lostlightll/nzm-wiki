@@ -1,11 +1,7 @@
 {
   "schemaVersion": 1,
-  "season": "s3",
-  "version": "s3.2",
+  "season": "s4",
+  "version": "s4",
   "phase": "current",
-  "preview": {
-    "season": "s4",
-    "version": "s4-preview",
-    "label": "S4 Preview"
-  }
+  "basedOn": "s3.2"
 }

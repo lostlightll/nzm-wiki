@@ -43,3 +43,17 @@ test("旧版触发伤害参考记录可按原卡片 ID 查询，不约束当前�
     );
   }
 });
+
+test("S4正式触发伤害采用已核验的配置，普通插件能按正式slug读取", () => {
+  const poison = getTriggerDamageByPerkSlug("slot-4/爆毒蚀域")!;
+  assert.equal(poison.damageValue, "350/秒");
+  assert.equal(poison.toughness, 0.7);
+  const impact = getTriggerDamageByPerkSlug("slot-4/近战冲击")!;
+  assert.equal(impact.damageValue, "375");
+  assert.equal(impact.toughness, 0.75);
+  const electric = getTriggerDamageByPerkSlug("slot-4/连锁电环")!;
+  assert.equal(electric.numericalId, "11010085");
+  assert.equal(electric.damageValue, "50");
+  assert.equal(electric.interval, "5 秒");
+  assert.equal(getTriggerDamageByPerkSlug("slot-4/释能火环")?.damageValue, "170");
+});

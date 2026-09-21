@@ -1,26 +1,30 @@
 ---
-title: "独爆增伤"
+title: 独爆增伤
 id: "20703040390"
 num_modifier_values:
   weapon-explode-damage:
-    row: "lc:111041016_1_0"
+    row: lc:111041016_1_0
     field: base
 effect_values:
-  - label: "爆炸伤害"
+  - label: 爆炸伤害
     stages:
-      - condition: "仅命中1名敌人"
+      - condition: 仅命中1名敌人
         value:
           ref: weapon-explode-damage
           format: signed-percent
 slot: 3
 rarity: 3
 icon: "1315200001"
-weaponType: [4,8,12,16]
-CollectMODItem: 1
-MakeMODItem: 1
+weaponType:
+  - 4
+  - 8
+  - 12
+  - 16
+CollectMODItem: 0
+MakeMODItem: 0
 IsCooked: true
-season: "pending"
-description: "爆炸仅命中一名敌人时，伤害提高<strong>{{num:weapon-explode-damage|percent}}</strong>。"
+season: pending
+description: 爆炸仅命中一名敌人时，伤害提高<strong>{{num:weapon-explode-damage|percent}}</strong>。
 keywords:
-  - "独爆流"
+  - 独爆流
 ---

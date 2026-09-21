@@ -1,0 +1,1565 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-22",
+  "contentRoot": "refs/Exports/NZM/Content",
+  "baselineRoot": "refs/Exports/NZM/Content_S4_Preload",
+  "executionBinaryFiles": 374,
+  "allExecutionBytesUnchanged": true,
+  "auditedNumericalRows": 189,
+  "allAuditedNumericalRowsUnchanged": true,
+  "cards": 177,
+  "fourthSlotChanges": [
+    "1317101001",
+    "1317106001",
+    "1317107001",
+    "1317109001",
+    "1317111001",
+    "1317121001",
+    "1317122001",
+    "1317125001",
+    "1317127001",
+    "1317129001",
+    "1317130001"
+  ],
+  "bondThresholdChanges": [
+    {
+      "id": "1009",
+      "name": "力场",
+      "before": [
+        2,
+        5,
+        8
+      ],
+      "after": [
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "id": "1012",
+      "name": "叠叠乐",
+      "before": [
+        2,
+        5,
+        8
+      ],
+      "after": [
+        2,
+        4,
+        6
+      ]
+    }
+  ],
+  "buffChange": {
+    "row": "BD_Common_1316217002",
+    "field": "Duration",
+    "before": 2,
+    "after": 3,
+    "cardId": "20703040519"
+  },
+  "unrelatedNumericalChanges": [
+    "120300175_1_0 added; not selected by this card/bond review",
+    "19010013_4_0 BaseValue .5→0; not selected by this card/bond review"
+  ],
+  "settlementConflict": "SuperCriticalDamageRatio=2 in unchanged formal NumericalSettlementConstantConfig_SuperRogue; announcement says 3; publish structured 2 and explicitly preserve conflict.",
+  "serverOnlyRules": "Levels/probability remain null; current client does not provide the server tables.",
+  "sourceHashes": [
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313101001.uasset",
+      "sha256": "94e1695c0203b70fbdcf276a086e190a64c76a96f0abdab49e935655889363f0"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313101001.uexp",
+      "sha256": "e3fce7885162a3cef62539388d9ee849b20249b8c217e23628558df8af8a9ce6"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313105001.uasset",
+      "sha256": "69a9e191f2e865a62cc28aa399b9b6f03d3abfc54557907d376d19a1613cf21d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313105001.uexp",
+      "sha256": "ffe6c6cbd35eb429eda82baf9c96dcbad339340d9a7813b7199b3830e09c2a17"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313106001.uasset",
+      "sha256": "d6f0ecb1891d59dc1becf3938dd794cef4ccd1430fc6ff0e02aa0f6607e8f093"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313106001.uexp",
+      "sha256": "3f7118a79f95d1bafd0ae1808bc2129c979ac0632d7a69852359cad946cf0c03"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313107001.uasset",
+      "sha256": "fbe61cc9f074f425ac560bb751c816c171364507608097122d2bff6d5273d2d0"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313107001.uexp",
+      "sha256": "15f9aaefc9170b529ed932dc509d687c51224a1f62e265a3e721ceb79f0d76b5"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313110001.uasset",
+      "sha256": "25631e5b11ef5d994865fdfcf4f2b52d204ec4e4a484f6f3965a25762d31b664"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313110001.uexp",
+      "sha256": "629d94c03bda5a22d822a026dc6e7f261b028e6b216e5e314a93802d8e9a5df8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313114001.uasset",
+      "sha256": "b1213a1ac99a43e4c0b44af9e51fa96a203e658fc356fa72ee6e144bb4ad966d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313114001.uexp",
+      "sha256": "3aaaf0ec0d5bb80a4caca26e784e475415d7f9c5758cd47fa720ca354d1b4960"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313126001.uasset",
+      "sha256": "348a872ce56792d441e300ef76f73b4b04ee3a55ee7b6d2965eae453a7e70221"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313126001.uexp",
+      "sha256": "6916777b0279aff6757fb57caeb10767d2f134309f58e00ae9ec01bf93107e90"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313140001.uasset",
+      "sha256": "c7fb71c25178fd805ba840a20ed6e3de63b48406ddfe75cc7f0c47d9e0dff4f0"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313140001.uexp",
+      "sha256": "cdffac1328c08285baaa4a05fbdbe42ebc8fe274e19e06f1441f277b2f3672b1"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313144001.uasset",
+      "sha256": "1d9b5106acdd75c363e96185b507f554427874f79a182f6225fa75a2464a8b64"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313144001.uexp",
+      "sha256": "9a29b338b0e37b14d09d5fe02d051f4fb8484def7f9ac267aca0639340146914"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313155001.uasset",
+      "sha256": "59616e97b0511fd1a849b37daa742852d3f8dc6655d24ecac39696aa1ffc4ddc"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313155001.uexp",
+      "sha256": "6d7c59791404fe9ee1bc87d33af70c8a10fec58472aba13f3c611274507aa0fc"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313166001.uasset",
+      "sha256": "5448ec01de86ba6594309ec2cd89b2969241c8da232a92934696730a17727549"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313166001.uexp",
+      "sha256": "fea8def5cb3c0283dc9b4bcc8f0f07f0115c02ad332f2d6226b3cc4b1402bd4d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313194001.uasset",
+      "sha256": "928348325a26200d56352f28af73f77410b9ea0ce9932a18e745ad21c9602b65"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313194001.uexp",
+      "sha256": "0d09a9d5fd7c6561fad5756202e20e3992b04a2c4c3df2e88c2b8ee3c9a2b603"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313195001.uasset",
+      "sha256": "22395a7e9cd45212b8c7bb22f40e5d68db0802e1a62c82b1fdc2c05c49fb56c4"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313195001.uexp",
+      "sha256": "fac3791cf3fa5c5e4a600a9c58949789d1b25f3370670807b4dba70aafa2b360"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313209001.uasset",
+      "sha256": "d650bb1676f9905c290bf7d3ebe20fd78c92d7e2dde770b915617109fd1b5a6b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313209001.uexp",
+      "sha256": "bcda14f6caf9e229673d56a56e6f7bbe3acc9650c0e8fff67164ec23dc76e634"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313210001.uasset",
+      "sha256": "cc7105b14a4c86b832298ff6de90b07ffd039fc04448172fa6c28965686103f4"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk01/MGE_1313210001.uexp",
+      "sha256": "70c4f14bce7c23fa97cfc0dd67d5fdda47f356c024eaa7b1634e79e041f90efa"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314108001.uasset",
+      "sha256": "ca0ed3a8563477c224a0711786f21273e48328c6fdda7e636ed68e91cf1f741c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314108001.uexp",
+      "sha256": "95310604bf13f1f37e2074c2f6301fa50ed34553fe966cc0a034258142a1c4d6"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314112001.uasset",
+      "sha256": "038970740250165cdc50aeeea566286bfa7bcff8144e2333a2e49a82dce67aae"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314112001.uexp",
+      "sha256": "ce5f046d88f75217f85e5a1cbcc7747f31d20ee26c7463e7320b481dd189aea9"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314116001.uasset",
+      "sha256": "5ef9c2677f39b82fd0f2f7ac7b70abce2737786d1c478915b89bb0d4c27b00f4"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314116001.uexp",
+      "sha256": "66df5b8881edc71bbf97f05f0a2c11d018fcbe082dea2a36bd4f765023d2eb1c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314118001.uasset",
+      "sha256": "d54b430d1136a7db9ee976abc81d0753ae0c0de2f5161640d71b248cd34d6935"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314118001.uexp",
+      "sha256": "fc056ab53b2e394999f161e726753c46cee8a17c014910e445ff13a9ce7abe08"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314124001.uasset",
+      "sha256": "73995d71ac175be05a48248b3eaf4e480b18c5bfc7a2dc7240fe8e9035bb9d69"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314124001.uexp",
+      "sha256": "f7dc4f8d45bcacb5944017a0648e7a99b88db0a51497aed1ef8a872673f1bba1"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314126001.uasset",
+      "sha256": "cea2413a0e84b79fa1c3e08f2bebaf0cbd5c1df6466065c64e5b63564caf9a40"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314126001.uexp",
+      "sha256": "145f87e4f506c141b07c9dc120140ee2ccc78e623d441f77936aa4966ba3bdd8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314127001.uasset",
+      "sha256": "ee677958dfe27eb27f1b4f26eddaeebeb4c6de21eb13d46b7930a23e2819f464"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314127001.uexp",
+      "sha256": "4981d3676efe55de519877716d4510d5c936bc186a377558d25d69ae5f216f99"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314131001.uasset",
+      "sha256": "7276b76c9a10045b3476a02ba18fa4144154ad9ba1c8f7878c50a73696af3531"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314131001.uexp",
+      "sha256": "e455b27482e0d8085746e740f545943a5c0ac04bce942ec15f7d031ab6472077"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314132001.uasset",
+      "sha256": "877322adb4a43651d705138707044898919bfaf5b7b5e3540daead8391fe2b1b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314132001.uexp",
+      "sha256": "e7e9d62a0d49f356bbe80250bdef2301366dd10cd293182332cef4b5335ec7b7"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314135001.uasset",
+      "sha256": "7cde8253b72c2f836c8af8bf87596337de50eda9881643b6a66a09649f6b7e42"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314135001.uexp",
+      "sha256": "567370f6d819082f42a552a81f04064188a4d80debc594629e4c356742d46fd1"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314145001.uasset",
+      "sha256": "b810640d50f4bb65f282e0ef9c4a0e95b46b9c84156065afa55463db59ab149a"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314145001.uexp",
+      "sha256": "966f547f12a175f2af393a6e50f3e44439fe54ac63c0b581a16cabdb3d4ed438"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314149001.uasset",
+      "sha256": "d07cb83afb675d1722f7dbd48c4d9963168dfb746bfb4a630990881b6af6792b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314149001.uexp",
+      "sha256": "2f0f9b6745d96f9f060175022d54c57e4e64a1916881ecb403a1cd5dff3ceb9f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314190001.uasset",
+      "sha256": "f368018fe9d924227f9bd5164ed7598ff4f6ec7a95545087ec1a28e9ac5fd296"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314190001.uexp",
+      "sha256": "a15f6c000b32b3fbb3c5a2782b0fc472625684377a60a35f9fc0941dd12b11ff"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314192001.uasset",
+      "sha256": "8222eeb825a71d3df5fbe7b1061d5bd9d1a5a8d90ff0f21891180356f801f05f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314192001.uexp",
+      "sha256": "ddb2a26bdbb0c3f2915541667b1eb7b28ea339bd82c57554fa26113ab2f56261"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314193001.uasset",
+      "sha256": "6937c1fa1412ecac52c0450391ffadacb94f7175ea748b5ebb60732ab74ecf99"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314193001.uexp",
+      "sha256": "3c6e4e0cb912a68c074bf31a7c36d2b0a23dd8da522f7027512369ae17251826"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314206001.uasset",
+      "sha256": "f315bff84d7a68e5eb5793c3f8967be1ffa25f3340f8b05326cc8799ff8992dd"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1314206001.uexp",
+      "sha256": "c96d19ecd2c97ca05acee1260253cf63487e8c4343095bad54302f9aa0d6cce4"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1315237001.uasset",
+      "sha256": "40363c147ae794b34b6c427b700acd915946e2e9d78b7f40e1a5e72aacdcb85e"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1315237001.uexp",
+      "sha256": "1db2716309c84fcb231868c01c23ab158fcdc575aab74a4276f2546a260939e5"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316198001.uasset",
+      "sha256": "79ccda1207c65215a4fd5cfec171adc01c3da3cec36b9ed2366940a8f53b1ed0"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316198001.uexp",
+      "sha256": "55005ddba1ee42bb6261ef17af01f64b047da4d55942dcf8751477bd15159fe4"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316199001.uasset",
+      "sha256": "b8eb19de888a38471dd39b94bd2e9856ed5a5fde00c483706a690bd30712ec75"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316199001.uexp",
+      "sha256": "3a50607f08746a6c58d218af3d62e5895f1b899f139f86c63a44e441bf61dc4f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316200001.uasset",
+      "sha256": "f0ea496ddd1860832a609d2cba7e2e6702fed30e45c023b560cbca22a30a259b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316200001.uexp",
+      "sha256": "4db29fd8589322e9003973040fc9e416d6d6ecc4e753a84cb824b14d03126375"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316201001.uasset",
+      "sha256": "eeff8c04cdd64e5de35b2b0812431d1b127bc22c74c528b1425675a59267ade7"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316201001.uexp",
+      "sha256": "c7f50673b0f3ae1bf3ac9a7746b46107479da2525c2839847aba2f7fc27c7024"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316202001.uasset",
+      "sha256": "bdd8f35afea8475199a62a20a1bf771efb25fa3dfa0d07386d94e5d27cbb40fa"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316202001.uexp",
+      "sha256": "115e7419ce3e1e0c1e7f6a6ebd6022e0f490a617c2962acaf2af4f3775d03a4b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316203001.uasset",
+      "sha256": "4f911d8339df52c122cc1c54b4e20d7830fb86660eba4cdc08ca4bb6e1aba654"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316203001.uexp",
+      "sha256": "7d66f7cf4f6903acc38a55feb7698cd815e0f4f2da697d4ab1f0e48620917e77"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316204001.uasset",
+      "sha256": "c3f29e3a1ad12a23ddb41130b81e78bd9bf8a5f47ba0b8f86a9472f55ffd96aa"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316204001.uexp",
+      "sha256": "a8f0f408c05128f7c4f47d9b5337b3c1853337cbd0e2fb2e221352f3321f92db"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316205001.uasset",
+      "sha256": "af1b56979c3c9f8ef5faae143a9ae99d79bbf6b1811c159a31fc3bcc7a415cca"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316205001.uexp",
+      "sha256": "a53455d68a776b5ad5596e0de1492e6eaf3c2a44dadcf83f8efcb8640ad874b9"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316206001.uasset",
+      "sha256": "e296d58b463fab8f63b8461cb64a256b8c7a9bccfd7cdd54bc2157fb9269acf5"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316206001.uexp",
+      "sha256": "06f79fd59332169046fb5055491ed2d4e8c367018c676a043c1db51a17b3424a"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316207001.uasset",
+      "sha256": "740ff8e01f9e3409ba1407981acf871ddfef9ff30a08dc4ad5db9f0975bcc12a"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316207001.uexp",
+      "sha256": "390df961c4ff22ffd328540061c7f3b298cdc38c36862920f34dd146894185bf"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316208001.uasset",
+      "sha256": "fc41e40c0bec07253be08c148c7fe80ffadbb7395de6ee1d27cb1d4eccbd5147"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316208001.uexp",
+      "sha256": "161326e0528ab9f059a883124c8ec1eef767cec2051d750b153e72a325087f4f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316209001.uasset",
+      "sha256": "d06e8b1f055616d38c7f01aa50029918d135c54407d9da5a083083094ccf6acb"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316209001.uexp",
+      "sha256": "57232d3156513687d66d373c1ff5d4bf30abc970601e214e8428cc1d279149e8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316210001.uasset",
+      "sha256": "8a3c55652538693d835ddb2ace525649b2cb6ed689861db44e25e95484fc4ca2"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316210001.uexp",
+      "sha256": "d79cb4974106cc4e5f03ce8c9fccd6578a6616aa7a4187d6b0bc819bf21adea5"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316211001.uasset",
+      "sha256": "840bdda2077b419be580eadb510ce59637668be917ce192e876d2adbf80c5c8f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316211001.uexp",
+      "sha256": "f48f460e1cb9878489983c420d6cb49cfa889398a920903a04aace1450674eed"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316212001.uasset",
+      "sha256": "885aad1e5432802cd09031c43d3ec65812b04e424f1a114493e4963aa0f07faf"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316212001.uexp",
+      "sha256": "ae2c8a1743c978293120af64b89003a9db91c667f6b3fe5402afcc9f6b900cbf"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316213001.uasset",
+      "sha256": "c75b524af22ca611ae3070ec8fc794e31bd5150546c0e87280bd0912a355ed54"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316213001.uexp",
+      "sha256": "2e012ae3ef5fd8aca725df396833aeddf2b4751bdfcb3d3366582acbb6be53a4"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316214001.uasset",
+      "sha256": "23d82667c5322caf5e0f2e2979b668487b425dbc3c2076c3bf10792d31f9992b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316214001.uexp",
+      "sha256": "d93db4f13ff73282a7d5b97e22c8261c42785ec8722af55e3678d1b09ece3e04"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317042221.uasset",
+      "sha256": "3bc9e9bc5d4b72f91f47a78e61e57e9cefc97c8a5f6c3b5e7680532217188849"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317042221.uexp",
+      "sha256": "32f90c830387bd74c124f40989d7b48e2ec332c20c2e76ba82edd7b87a69f487"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317229001.uasset",
+      "sha256": "cd398cb92a7de4cadbe9aa5e57eaf559e539094b2ee2b2dfec13c0631ef9b14d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317229001.uexp",
+      "sha256": "5fde3745a52cd4f6265d84bc6e7645da391e5754c2a229ea537e7745b2834d9d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317230001.uasset",
+      "sha256": "f2abe68a729a5b9cf0c3d5866f7a7e4e44a0d04683cdcdae7a22b837606b65f8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317230001.uexp",
+      "sha256": "ea23d60da7d1b8398df5319a20cae20035a12ed6386ffba87fff9d253039894a"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317231001.uasset",
+      "sha256": "d008b1e88583e0075e04bd720ebe99103f7044ed2e8a1471f534b15816c3bb49"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317231001.uexp",
+      "sha256": "484ec46be44bfaffeb0ab91790ea96f19a0784a2a1383e9e28ef82041239d9bd"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317232001.uasset",
+      "sha256": "31781d0c69c5e155dae92ce38f0415473e44e183ce6ae2e69ec59cd9d248cc2a"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317232001.uexp",
+      "sha256": "b36e1a63b0b4e5c65f60d6322cb74d664c25110bcfda627db5b0c84b12149ea5"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317233001.uasset",
+      "sha256": "7db1ad895ca2026818a0cca21b383ecddacad7bb0fcf152d5c193df831274b0d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317233001.uexp",
+      "sha256": "b73f5e602c3667b3f2c0f68fb9dddeb37a7fe425d5dfc9247df55024a9100750"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317234001.uasset",
+      "sha256": "9bc9c032f1a20bdc4c48a75fa2caf67b1ee58dbd06adf3372c2531033de29eb1"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317234001.uexp",
+      "sha256": "4823e0132f8d5fcfc66bd4f4566e63974eb63c69584471c247223605c28d065c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317235001.uasset",
+      "sha256": "4c8ff5791bbb42b4b255490bcef9a13591839de397c34a3cee4ea8d35d434e54"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317235001.uexp",
+      "sha256": "d9d5172536724aa26c50a26fb9226ea2a09f8de896e2b458a1ac49e7cdc3f7d0"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317236001.uasset",
+      "sha256": "285221b08b0f052f68cf20cd6405f4763916faf6dc4dd8b3899e774bcf5f28a4"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317236001.uexp",
+      "sha256": "84f85e8482140ad0cdf76f60ffd8f14373180347f55a1518e7f9d0e260f70c9e"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317238001.uasset",
+      "sha256": "cea356e80e4578034d4d8bdb60f19c491182c93d4f5cea1684bbfe03dcd9ffde"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317238001.uexp",
+      "sha256": "b64089424bb0bf6f67bc0788c25e6696d48d6d6fd83b396c705c2106f272f63e"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317240001.uasset",
+      "sha256": "3de5024888345d8d066b2b30da98f81e2ed71566ac23853238a092d45f7ba72c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1317240001.uexp",
+      "sha256": "d5bbc3ad558422d329b7d43e19b17237ad7a19a48a7a538e8ee3b42b0a2af367"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315103001.uasset",
+      "sha256": "2a1452e950f140db0bf3d696a4ac3a1624fb6e3b19846b615b68fbb8d6a1b40d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315103001.uexp",
+      "sha256": "964e29734c83caa23f7450827bc50df69ee5771f05a8a8efe6fed726f09df3d1"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315108001.uasset",
+      "sha256": "9252a1efbaefa716dda80c41883b835d78139a53d6cb48ed26cf0e81f142a3d3"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315108001.uexp",
+      "sha256": "a1d8fe09ba387a2228ea17b77ab422c2f3d45b3ed2bb69f2e0f90623ce2fc357"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315111001.uasset",
+      "sha256": "c7076c1f87e3e18b416ef59bff8ab3a1d3b8cecb62ddfc195321f495d7b64798"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315111001.uexp",
+      "sha256": "36136184638d93bd14c038f7edd3f496ca31dfc2f3d38a9fa8e275020ba4b090"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315114001.uasset",
+      "sha256": "2d03194b7543cb3939f37b8f80a6202e36f0287a2221ed0983d3de17ff9f31f4"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315114001.uexp",
+      "sha256": "97c897c1b5e8318d063343e3bcb92ff1da7ebaed01a71fe62815c6b94805bb89"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315119001.uasset",
+      "sha256": "bb7051007affa694f0437f2265b0a74a893017a5fa143c1e67ad99514a7752ef"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315119001.uexp",
+      "sha256": "d7d12d8212881472e0e8cc3b6032e115048c85772dc6daf741825cd8b8e3bedf"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315120001.uasset",
+      "sha256": "a2da6c00f09505382853708e5c1536d8a3abe6d32d46f4d6dd69d89f01528848"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315120001.uexp",
+      "sha256": "fd211ea3296fb7ca4c2fda77d6373f9872de7dc374f3ad38b9f266a9993e012a"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315125001.uasset",
+      "sha256": "c30ac795587db4a7e31ca2327ee00ddcfbdbc6d690324c23c2a6f8d5ba028827"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315125001.uexp",
+      "sha256": "f9dc869053b4a51b783a267f26988a8f3af379a7dfa266facb351ff1f7a445d2"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315126001.uasset",
+      "sha256": "b047f019a57915dc69edc047025ea282d66f510f070ea36799a1db429d9e74eb"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315126001.uexp",
+      "sha256": "822d2385e900a629c3eefe81c001b4f079398eb52e7a2ff710fd8f2c07716658"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315127001.uasset",
+      "sha256": "cc5973aa8b21db22e197fdf9ecbedcb34dfe3a2f5ffc050e4ccca9301a271740"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315127001.uexp",
+      "sha256": "ad44b16863f30e01c4b219ce6453f6f1e4be06cea2146ff032d8b39a912928c8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315132001.uasset",
+      "sha256": "61f05f40429109000959c733f31db6ecff8721f719607d41ce4784cfcf809fd4"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315132001.uexp",
+      "sha256": "90344fd95aace18b1de175b46867fce8bf572f4622396a1b75216d8bed455f71"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315135001.uasset",
+      "sha256": "afae7d05ed28507c4df74461d75732d7861e80890e54a5f6c1bae90a748c7827"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315135001.uexp",
+      "sha256": "00eb48937a296b79007e24248a1ef6818eefa316c4be724064cc1c70dc4d1f54"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315136001.uasset",
+      "sha256": "2adda68e8003b1c7d7f906654d275704d9afaa2490fb53d7e43a7fb9fd7802a2"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315136001.uexp",
+      "sha256": "a1b4ddccfebe596cfd89174401e1563ad733557892470f311ae9ed85b78e6616"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315139001.uasset",
+      "sha256": "0e0017961645569bebf4d22abd0d548f150821beafe02514a54f97660e419dfc"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315139001.uexp",
+      "sha256": "a5c1a38e8919e0232225b61b391af8e697ce7f9d8b3862c76be55fb7cd246901"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315143001.uasset",
+      "sha256": "a413011db9d08c058b493909d21df9c2449caaa3761e7511df09d25d978441b8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315143001.uexp",
+      "sha256": "e29b5b144c261ca02605920d57a44bfaffcae3cd7a9597b47d973a55f013f5a2"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315144001.uasset",
+      "sha256": "51e9328a94535f20b6149fe13ef97b5233d77d0e7d80ecf990a8da06edea0a6d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315144001.uexp",
+      "sha256": "cdb09ad8f472a92fc6ed2a00e74adf71160cb914a24f9d920371414932d7693d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315153001.uasset",
+      "sha256": "dbeaee364bbd897ef52bee185af672d8167868c60228302d4397218575b5e9ed"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315153001.uexp",
+      "sha256": "fa63bfec0d09a5b6bc53ba7fff3d3df1a19c365c957d8142821788d199799006"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315157001.uasset",
+      "sha256": "1fc040195ea38c58a413e83f68503dcb7db283330895629a9ccf48ba4f09ff1f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315157001.uexp",
+      "sha256": "7b42c0eecbd831af02e331a7033f74ad9ff5d051cd1bbbbbba007931403d2377"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315170001.uasset",
+      "sha256": "66d932adba6702e2cf595689581db97eeb39af16df93859795e7c4c9e387fcd4"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315170001.uexp",
+      "sha256": "e930cb4406ae9026733090d10824587e96ba8964871486a513c9f049610b67e2"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315171001.uasset",
+      "sha256": "138a6ecd15d2507639e1a03906574f22ad09e2c12a951ed18f85cb173f0dc73c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315171001.uexp",
+      "sha256": "485262d107e275cdc11b5e153c2fd1fae5a67e11852376270f65153944d83b6c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315181001.uasset",
+      "sha256": "8147ed272802efe39263b185056b530dcbbb3b35ed14c98e769adc82ea3ad824"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315181001.uexp",
+      "sha256": "e45390580888c5c7f68277689b60117cf342bdce899d6fd3ca204aa311d4d380"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315200001.uasset",
+      "sha256": "7de7aae5d7866bb7b74f6a0bdc99eb9f9d0521cdaef401f79487b9a29125f39f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315200001.uexp",
+      "sha256": "2ba1e570d4a33f0b38d235da5745d85bcc6d8ef24e47be588d13614360c98665"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315202001.uasset",
+      "sha256": "f208dc1400a8d76b48af919f56cdd1f083ba050c596a96b42372b029ee07797c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315202001.uexp",
+      "sha256": "357e29632566830964fe32ffcb2349f1da21241b79ad5e1bc06147b642386ebd"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315203001.uasset",
+      "sha256": "ea5c43a203318af644ee26af6d89682dfe3255b2c7f8e1f89cbc4fa42f3b70c5"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315203001.uexp",
+      "sha256": "6c15acd5a76889304a8f247decc1fd330030bdf644a5c5a14be6d665eb2f1df1"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315229001.uasset",
+      "sha256": "43bfc1a4911cfa2bb5afc7d0e281970cbc14780c67140ed56ba7681cc683b02d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315229001.uexp",
+      "sha256": "a7d94c31b5fae92273c582ccd16c59c27057b1d13b4a62617e3531e41b278b4e"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315237001.uasset",
+      "sha256": "ac23f349df6de49b22c3dbe4c395701a042191aa0b2950da099f5e5b457def3b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315237001.uexp",
+      "sha256": "8bb40264fd2989fe6c5df2c518123bc9f9858b2aac078a037436b77216bd4bc0"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315238001.uasset",
+      "sha256": "7fbb0960705b3a9dd19ff375caac1d90cf6625acdb06bd1493f4e4d7eb98cd47"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315238001.uexp",
+      "sha256": "e7a1845aaed088b9157bf304605e4c4619570f9d1b0410aede20485697bee82c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315239001.uasset",
+      "sha256": "37156d997d993bdc764f9f4e49540bce8ecdb3f2b2cfa41466349f21a740263e"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315239001.uexp",
+      "sha256": "5521941a664e8c52601c010767aa35f4d088bf6e2e8deb01f087728374b0ba6f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315240001.uasset",
+      "sha256": "02475c5c4f29c3e95592fb103ed8a0b6ca4b08f88ca7ed7d62a9e49d84d16e3b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315240001.uexp",
+      "sha256": "bc0e074c68bb0df415d34822ccd007cf583eae4998effc211c19e0babfd38dea"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315241001.uasset",
+      "sha256": "a1aff4e62fe3c68308fd782099c1fb7608454e361488357f4e96ce8082cba14f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315241001.uexp",
+      "sha256": "2e527e4a797635c1796169a1a2733c86f3e53506492ceb74ce7aa9f07bdbe7a6"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315250001.uasset",
+      "sha256": "22d87964beea636be782b9f7bfe5564a78d89bf6e80af070f194464304ee00a0"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk03/MGE_1315250001.uexp",
+      "sha256": "5f3068539dc55262827e3a4597bf96f5c740d717f58df70b095be5107d636f83"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316103001.uasset",
+      "sha256": "c95145b89cc2c5ba6b9792236a4cfef712eb2f9b2af91a5c432b39aea1922401"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316103001.uexp",
+      "sha256": "cc80ef36840b2c99e5f8993f9bfd964a481dad739798ebf41b6c00e73afc601f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316107001.uasset",
+      "sha256": "5c7016f573498a6d721b27a02f35662c2801fb0b88c52a81632ce329c024b84d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316107001.uexp",
+      "sha256": "6724bef93674dced1674e55b575835d3d57a0b616cac938e1a25c860e45cfc0f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316108001.uasset",
+      "sha256": "ce3bd1ece190e491e2d4b48a71ff578849c085f2c3a3938de349da3e8bcb4b32"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316108001.uexp",
+      "sha256": "6f6ddcc08a1437996b7ae72ffa7033e91e76ce9624f48fb1919e49140ef8087c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316155001.uasset",
+      "sha256": "da6f0aa72c1ad26ef153733abfb4b6c3a6f07bb745ae25b1720f59b160cd8e58"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316155001.uexp",
+      "sha256": "ce14a8026a1312616a048cdcec9d606403872236a621058001b4627d5feea7ec"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316167001.uasset",
+      "sha256": "291b01badfa9d42b4618261119c28e6dfc00334c7a6a9dde53b085030ceb17a8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316167001.uexp",
+      "sha256": "c247fb2310a089ab9342cc50421b85ba0e9cf9088f9f2ec769b0a93afe1b8601"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316168001.uasset",
+      "sha256": "cd3b2ccf04e7df9e96842d78d93e1538a442395df8019cdf9e36867d25a98fdf"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316168001.uexp",
+      "sha256": "f42c8f9b8aa01124e2354bdc3c90a99921e231e2159eaaaf40eed3176341552c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316174001.uasset",
+      "sha256": "0f9a6c4827a0e99e7478f5a076938d4c4a5e43d015ba516868349d765b500564"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316174001.uexp",
+      "sha256": "f1fc9f0aa8f4b27811ecc70d28276a129a94336bd81bc5be4bff497706b6f739"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316182001.uasset",
+      "sha256": "a1178a90087c84bea2eb47cfa384085486a22087986c488271f170c418093414"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316182001.uexp",
+      "sha256": "512570aac647c353fdf643e1c741b1d74204746934e1870f3338c72fd691acb1"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316183001.uasset",
+      "sha256": "d56adcdff02464ce2998f4bdbf7b643b9ffe2115c98fa3985be6bec900794995"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316183001.uexp",
+      "sha256": "9f6e2cfe4d86c8669d35e8a4ff4c1dc17e4c32b5d29eaf4126a29d7a62d3c702"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316192001.uasset",
+      "sha256": "ea8827ff3ba7e8bc371157c4b97d3419ef7e919c66336095aa2c34e60edd63cb"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316192001.uexp",
+      "sha256": "a8ec3b13d0153cea4aa6cf6e35cf1b5c038c194d846cf80c105efb9f311c1ab8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316193001.uasset",
+      "sha256": "fd0541c4def9e365365ef3637bafd6f65ec67645756f7daf775c0ea10d176ba8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316193001.uexp",
+      "sha256": "cd18f8d197af6220f5960fe41abf311d701196b0899464449861cc06a04fde80"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316194001.uasset",
+      "sha256": "d24c12e578aa49fe354ecc5caffa8fd2ecfa6a2f6727e313dfef9ec833ebcd5c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316194001.uexp",
+      "sha256": "9d0ae84cfd2b1f213ba2f03eecabe940f12346244106f3a99719ee6872eb6a7f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316195001.uasset",
+      "sha256": "47e1dbcadd9dd7ecd656cd5feed8e21429356349aded260cc258695f36bb33d2"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316195001.uexp",
+      "sha256": "dd52f91bf106b983465034e91490b2f0fcf8c9025f8293832b8ef68176640ea9"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316196001.uasset",
+      "sha256": "a4eda405b13693b29f3f8ff66b3e514f931bb934a3e822956499081441c68898"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316196001.uexp",
+      "sha256": "61d79a92cdd21393c4ac934d717ec745b7f9dfcb6c71013c914ab2e58b974d40"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316217001.uasset",
+      "sha256": "e75ba702f213e986edf0181bd5789961067ac2400ea66044543dbe15f855b797"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316217001.uexp",
+      "sha256": "3d328fdc5fd4d2c4cc7a339a64900075fa219b31fe8b92d6a23613476169d471"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316218001.uasset",
+      "sha256": "23b6e2c947b33f2eb9387f7802bd337848524c071e7fc87e0966b8f753772ecd"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316218001.uexp",
+      "sha256": "9d95f2ac090beadf7b42e40893e449e4ac0f12b7124dee35c8fbeaad61d84770"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316219001.uasset",
+      "sha256": "d546f2b4dd250b8962dc5c816136b7d82aaf747f8c22f7b93c4aa0c18c73d5ad"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316219001.uexp",
+      "sha256": "0ba5124707dd1aeed0b96c97410e20c8768a0f11c9dc99d8e4444abf211dbd41"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316220001.uasset",
+      "sha256": "de06b4f2a0de3d3429817e030acc4919d1920a6ba8e9070450a57552bfaac894"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1316220001.uexp",
+      "sha256": "be9229368c21ef9b8b293c04d5d881ce6a2d4cbe6ad4755d0c1fa67141f0ce69"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317100001.uasset",
+      "sha256": "ba653ecc3e2de423c37c2aa161a196127e5db721c4dece802f5230f0dfbeba95"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317100001.uexp",
+      "sha256": "54be81352d5067fff73308eb603e31885ede5d0b605ee4f0adad0e9da03ab92f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317101001.uasset",
+      "sha256": "69a8d28e321189f3e84cfb7ab12845beacc010e1e0b93929599c21abb332b74f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317101001.uexp",
+      "sha256": "7c8540bd8f725f6371b7dca083a8b9d8cfb26b098de030f47ab6d81fe173e70b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317104001.uasset",
+      "sha256": "f7bbcf9133d7fc69f89b942fef3ae5c53f2c3823d2e2527a45a369ad171d3efc"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317104001.uexp",
+      "sha256": "f3054542d789e4fbe60917b1ddd19290ae89cb6db3576ac282b72e8465be737a"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317105001.uasset",
+      "sha256": "72f4bda21240f0a981abf9753a67825ea84abb927f95c97c63d6f0844f063b10"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317105001.uexp",
+      "sha256": "12b90d58e12ccc8967d44eeba9090f0e78eaba32c6d0be33f0f0318d435feb68"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317106001.uasset",
+      "sha256": "96b5d177d14e7ca22fc6ada76a0bff077e1914a907306ed2c0d598f289c3475c"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317106001.uexp",
+      "sha256": "08795e70ed008e3e7bfb0c464ee7904d202eefd9f97085d0a5c9c993793684c2"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317107001.uasset",
+      "sha256": "2ebd87523d57cc029e4083ed0d54e5fe2784b2820ddaa40ee9597d7b3dbca9ee"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317107001.uexp",
+      "sha256": "b1688313ae368353d6ce1f095680b3a62edb2b837ed8d38b3584d0d0a36d8f2b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317108001.uasset",
+      "sha256": "2db44f9ed0f1fdf34c4d5580ad579db6e24a9b2e1ce253310a75a490e3aaf02b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317108001.uexp",
+      "sha256": "3ae2bcaba4d5c5d80c0d432fdeecc192ec87e7ad79e7d555791ee8e73fe5e49a"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317109001.uasset",
+      "sha256": "43aeec60fd511bc885bb33651e2c6977bf16a5dda3af3179ff87f36de9930db0"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317109001.uexp",
+      "sha256": "bb4b2ea894af7625a041549494de4fc7f6537df433be57d764c13db05d464002"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317110001.uasset",
+      "sha256": "2b34a863a1a1f6c0c7cfef4d0183bad8931492c176fb1d322029422fd45d1016"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317110001.uexp",
+      "sha256": "e6d8d16d80ea5b580255c25dfbe50943f7f88fbc92882c4b08e46846bc9a6929"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317111001.uasset",
+      "sha256": "22a32827cc8339fcf6eac4f49c339adb53093c85b18bd3681d6cccf71d5b5e2b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317111001.uexp",
+      "sha256": "9a6eaf7868db0433e31effd3604dbc930c46b8848c2e99703d129f0af674f59e"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317112001.uasset",
+      "sha256": "f019b8f28498ed41f8002f33a4912f60bf34c1293492ca2f7961e546e94b0ab7"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317112001.uexp",
+      "sha256": "6e4b56bd24cd7d413107774189c833de1ed2b4f054e76678c251ccade67448ad"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317113001.uasset",
+      "sha256": "bdd033617b1e4c6a679bd2f3dc774138a2135424d4870d0f1f710d145d32204d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317113001.uexp",
+      "sha256": "64aa06b663097cfb88fb11e93165c140168ae8933cadc3759f9ceb4d8588f8cf"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317114001.uasset",
+      "sha256": "b21be7814484944ccfa6f331526fcaa87548a96f4f7fad576d3cf651a04a7b87"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317114001.uexp",
+      "sha256": "316cbf59fafc5781dd7065bc7a2b705ca060acda93bc61eda37f114c20508b50"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317115001.uasset",
+      "sha256": "4ce8ca00b71841d89243de6187cddbf02b2a0f1996ee09219a0bdc92a715ce70"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317115001.uexp",
+      "sha256": "ec414a5f48bba079a25857b0073813995b2da7ca98325e8e5665019a04f21afe"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317116001.uasset",
+      "sha256": "1aa140c86ce778e2f38006010744bd0ffe993721836a79d1fbf9d4fd27440d50"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317116001.uexp",
+      "sha256": "36c9ae443999941c8c8b54d666a1cdaa06eb1954d2674e8107f5fd60f79b8114"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317117001.uasset",
+      "sha256": "ecc452e54383a2e57784a2545355cfd478d425a5fbc5fd73a19621ed25ae68b8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317117001.uexp",
+      "sha256": "181a8a96b0b8028cea0345e561be9150edd2f6c5f4db5f455e47e94c433aa508"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317118001.uasset",
+      "sha256": "88d39ff67c275f41eead3cb084e86e65aa053d6f63ff66fbfcb5904073685ea3"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317118001.uexp",
+      "sha256": "bdbd7ba854835b1b3d01ed22770b8cf3cd16b068e7af9d22b560beb75a99db81"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317119001.uasset",
+      "sha256": "29390a5f7e41b2baf5ce8923c69f3caea159c647f466488f15a8d43015b88ba6"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317119001.uexp",
+      "sha256": "4dc5524e79cad1e556718c6a6e0dcc3082e245e51b66a6ebee47f0a3f0c0b1d7"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317120001.uasset",
+      "sha256": "fa5dee9227e05710c3043f438b462dcb550428df0baa53bea6467837070f3285"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317120001.uexp",
+      "sha256": "145fcfe9f7e11ffdc90bf54b11df5578a4f723940a5a2ae1189db786b45ea87a"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317121001.uasset",
+      "sha256": "e2517665c4065b0d25385aaf8a22d6ed9d0223a0b732b84119e145cc2f616185"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317121001.uexp",
+      "sha256": "f29216b9ea7e55a1de83a22b546c05c386137d59cbb8328d4686039c8221efb7"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317122001.uasset",
+      "sha256": "ffbd37988b3a2c9817e76310178e57db265e075e0c8f416bd39e29114d8f6ee5"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317122001.uexp",
+      "sha256": "da440f3e4371138cb37bbd8dd568177d246505d2ea2fe068086b50a1840e0fdb"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317123001.uasset",
+      "sha256": "e650304549760189e477586476ffc0cbd48ed487db2d5131507b9a562d133bd8"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317123001.uexp",
+      "sha256": "bc11f6c6c6f046ebdada89f5b7e0cf784a0273ed974559c58008a91244561e9f"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317124001.uasset",
+      "sha256": "3c6e529c575e39a68e944f5fed54875e98e8c6182a3f15d0f565ce6ac2fa3517"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317124001.uexp",
+      "sha256": "a636c0864eee2f385c8f3374cbc0d2ea9b17779fc0b929ba1a4a80731867b6d1"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317125001.uasset",
+      "sha256": "941c709132848e7ea8ea532fc5563a81c83077ca35fe0676fce57e4cbcab5124"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317125001.uexp",
+      "sha256": "86a368ff0c7a92e6f50918a8a984b7cd6f7d1bb034e259d25e80152c2c959dd7"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317126001.uasset",
+      "sha256": "5705686e3c463d864722c79c5737aa220eae46642bd409f243e59106fd2a4b77"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317126001.uexp",
+      "sha256": "0ac4377f430d2bd23ab4b65b2826895eeef204d2c786c11581b48b9d41b10383"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317127001.uasset",
+      "sha256": "6362d7edb6f8f7b41b78224110be2eb03963cfd6031e289b2d3833b75e2d3a8d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317127001.uexp",
+      "sha256": "7e493e4f47044c4db6351908b354de6ea92273b8845bc01fe39867c5fe201bb9"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317128001.uasset",
+      "sha256": "0dca4db87f8f04e32cdb50307b8d5218dbf4eacb519110bbf99936a9e9c1c7ad"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317128001.uexp",
+      "sha256": "3444ab0ca0988612a483f45c4c2e2814222114b9c97533122af96b68bbb2876d"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317129001.uasset",
+      "sha256": "3687e4c30ae7886fefbfdfcd7b1694c5dedb120fd19e580380daa0566aca6644"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317129001.uexp",
+      "sha256": "1d5bf05f9f88549c06517785a1349df48e96a6cdb94b71188977fca1be7993ab"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317130001.uasset",
+      "sha256": "2fdfacde8f0d1e18e829307212e4e70399d73d381e055408612191e4ed7961c2"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk04/MGE_1317130001.uexp",
+      "sha256": "3ba0caa3a02036e01b03f49856fdf68ce98463623e83559b21ff1803bd89d78c"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030130.uasset",
+      "sha256": "ec129d166d459bea530acc4137b8092948fba37c16d734341107992b4afda309"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030130.uexp",
+      "sha256": "316b61da1103de43e609ad8407c5e9e283ab8c71606ade795463e13cea7a86ca"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030140.uasset",
+      "sha256": "8044ec6cdbce7722e37eea8a02897abbaabbc5dd5c726d6f64804633482684c8"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030140.uexp",
+      "sha256": "2f4004d9bca00029b897e19374421d555456f949d6923987405d9df75b0a33b1"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030150.uasset",
+      "sha256": "0a9f0ae244578d78656d73b66019404a6ce6377a21b1d425a4b79e16814d4184"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030150.uexp",
+      "sha256": "666a8c9cae568f008447aa5c514648e60a5614b413f88f4475f5b259e219cab2"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030220.uasset",
+      "sha256": "9fe9c55e5a58f00f35807bf2da54408ce804ac2aad890f4e1b6f8fc4b63c024e"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030220.uexp",
+      "sha256": "43ecf2ef9687815ee6f1f49e6e52f7196899f7016407c5a9b980237079806dde"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030230.uasset",
+      "sha256": "d27555d05311ff1068b1f87a60890eb128b3457c936b53d0865b8cac4d7396f8"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030230.uexp",
+      "sha256": "867facce3199340c4c3162e637da300a37338cf5daca9469a0df05178e22d2af"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030240.uasset",
+      "sha256": "f27ed1152d234223f93fd184700c4451730a1b0bc1f5b6f9edb1d8db303e7aca"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030240.uexp",
+      "sha256": "dccaf92b993c49a3a5ac917eeaaef5cd7507fd5b560e9d52ef91dbc126806d49"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030250.uasset",
+      "sha256": "8f13561532d9b1a23d579dc3dbf3c012b2d9df2888cfa8dc57dc01f90648c8ef"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030250.uexp",
+      "sha256": "abdf1342a026c51f45f560ec716e5a0bfc0d1198df04f27e920b9cf32876ed4a"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030260.uasset",
+      "sha256": "88f8046c9f381ee4c0f10f1e618af74c6a040737c63f16c74cb2f1d8823836b2"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030260.uexp",
+      "sha256": "19d416f265c446ae2833cfab68ced22d49fe85aae670bd4a875c5b4682ba7e08"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030270.uasset",
+      "sha256": "787ca92a79ad712cb8e512bf4ae210e70e857b47865748a19f6b882706d01f09"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030270.uexp",
+      "sha256": "5e917b9247742bf3f074b7437ebe90a995b9a9113ef807a1fa3219e742d7b6d2"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030280.uasset",
+      "sha256": "32ffc4a790edd8a0aaf3ede10a394a148ab1ff74806823cdf4960b22098d5d47"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030280.uexp",
+      "sha256": "da1cd49b32edc7810ce8ceedff33f943e838da15c93de0701934d31b2697fc7a"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030290.uasset",
+      "sha256": "c9743633779c6693fe8c315357b5853854e7a15ec8d2a10efa0fb1dc383bf145"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030290.uexp",
+      "sha256": "8549afb90ee29463026210c613c589334e0a531a47010f65164719504c7175dc"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030300.uasset",
+      "sha256": "abf2c85fca97755e826e7f834d2063961c74894143c91b4478ad637a6c9a60ee"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030300.uexp",
+      "sha256": "1bd0382906e46208fc16094aac42ee82c9f16fb8c1e4e14fa8d2b38b1307780e"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030310.uasset",
+      "sha256": "5023c5be2e5a4a46b2a2b8b3bf0bed6d066ed0a70130334e4cef1a6e963eb5fa"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030310.uexp",
+      "sha256": "ad4bdc1cf79fdf755989625a5722c8103c89e0e40f008c719fce819ff7a31307"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030320_ForTeammate.uasset",
+      "sha256": "96922ddab3b1b7f479eb87a6329ac23d48b354d8ec940c916f8ea17115b12ac3"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030320_ForTeammate.uexp",
+      "sha256": "8e87373bdc7a31b80c325e0fe7bfeb442fc97667aef0363bdecc647015341d48"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030320.uasset",
+      "sha256": "102ec5b7a9571896aaf1ee5cd930ebd28434f9e03a74c092b598eb49a6be61d0"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030320.uexp",
+      "sha256": "388c724948b17740260800a5dedbc0eb42a8bcd6964d46e908a98e4fd48f5051"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030330_AddDamage.uasset",
+      "sha256": "4a0649fe90126ee4772a96d3404f224a3d2b06f10f34ec337ce704232899aa97"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030330_AddDamage.uexp",
+      "sha256": "519bbb8d4cd15d8641c6cdc509ef60d893f04d9b087d64c2046d9991b76598d1"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030330.uasset",
+      "sha256": "aa2d036d7c24f00a60e9f6a02b6c08d6cad319284e44c15091889f1934422256"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030330.uexp",
+      "sha256": "6b0c96391205733755a622218d493573a7c1e4a7f283830ff81e5e6b0a2e0ba1"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030340.uasset",
+      "sha256": "47115a13bc9a74616be7475f86e1ad7265e5737c3502ce880434f27f7ab786df"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030340.uexp",
+      "sha256": "db5c7fd2d9c98ce0472b9121b3bede4ae0fec2e615032d9a095899960200f642"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030350.uasset",
+      "sha256": "f6b17ed8c1954a534e65ae0a3cd733790113645b98b49bda78e0c5e090c269fe"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030350.uexp",
+      "sha256": "79955a9920a79f169af51d179acacd22251197f26118bff323021b4300295d82"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030360.uasset",
+      "sha256": "0664d5f86b036abbf981e5c177672fc7228eb3876dbc705686acb41028c77e93"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030360.uexp",
+      "sha256": "07fd989c62a9992460cb5dc7818bb581f0baa3109722a59ca46a76df0e24dfba"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030370.uasset",
+      "sha256": "342028c069e8a54c640f4d82717920d17a3584246eea356154e66a3c246e9aa4"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030370.uexp",
+      "sha256": "a80be12d52bb55840861313a10e3e80e37f163e1deec64ee2756a80fb5421d3c"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030380.uasset",
+      "sha256": "5c6f00eb576cd2ac985b3d962b36a4715bea9bc23b3ad76de4ce4f49f530d763"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030380.uexp",
+      "sha256": "f6de5e8333d5c1d502b38ae56d5b0fb285f2ab61a8890730a907bb8966f69bc0"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030390.uasset",
+      "sha256": "058994018ddef8f80ac8c2d2b2417e7ffe1e7e986043196eb533b8e1cb08c97a"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030390.uexp",
+      "sha256": "84046773125ba22a1c51b285fd07aa68e2949504c6e7bfac3e59235788db8329"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030400.uasset",
+      "sha256": "2893d246cf07ce6f24bafd859df1b01ddd0767244a04badbfd05085e03ebfdbd"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030400.uexp",
+      "sha256": "39ac5245d7ec74574d9aac300395e598bed5adf0c0c2764546266276f1d7d0bd"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030410.uasset",
+      "sha256": "0fb8fcff477f8ed0b775edc147548f2a3ece5a12419c26dd2a143a02996ec85d"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030410.uexp",
+      "sha256": "12fde1cf22eb190153cb21701fcca985aa1446366c0f36404f8b692959990fe7"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030420.uasset",
+      "sha256": "afa89431a00b10274d0c738b94109c6f71fc7b1ed269da2be64f72afb9fd99ee"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030420.uexp",
+      "sha256": "88d60b4a3f34b2c18566dda3221e0dd2f15ffedf3ffb3a23368231ff11e7b1cf"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030430.uasset",
+      "sha256": "69df9e1ac3ac6d135c2d5beb950a7545e1c8c7314ec1482e5e8f294670f3ab77"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030430.uexp",
+      "sha256": "f731bd3621a41dedd2a7a5258f576f8e0d78ac4e6c26da8f4b7af3c9038cb931"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030440.uasset",
+      "sha256": "87a320c4612125fd2ec6c232adfcb05de1295f7d3765dc003350b681d927b9ef"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030440.uexp",
+      "sha256": "ad0684ff478e99fc1b38b4170fa1ea1a0af295eefccec77cbfe10076dc0685dd"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030450.uasset",
+      "sha256": "cbe6eba1e9e793b5657d1e32fedc4557d0aa0c2eb2b437f65bcc2bf44dcbcc8a"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030450.uexp",
+      "sha256": "fe89b0ce670f8614983271ca878fede6ce3b911288a740dac8c67e0d4ffb0939"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030460.uasset",
+      "sha256": "923b2724b0f8163e8f50e54748530044debd48069d4062a6a497adc179281efe"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030460.uexp",
+      "sha256": "62a62e6522177ba5cb089ddd182ce2da34ddf2976939469245c2b77e98cd51a5"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030470.uasset",
+      "sha256": "ef3ceac1f761252dce7380df5cfd956519419c8719ff96fbe9d510c8dd83fae9"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030470.uexp",
+      "sha256": "2dc2016260a262665670199cd2077a8c7f0a0f04d244b7878ce029b72444c80c"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030480.uasset",
+      "sha256": "f8b943e20091b9374f5b59cb2910c0d39560a7c0130294c32f8915c97ee3caf7"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030480.uexp",
+      "sha256": "68463e0028f9742a040ec85a9b9d9c1209058d691280f5de5d83b9cab65bf5ab"
+    },
+    {
+      "path": "Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068002_HSQHY_DarkGoldPlugin.uasset",
+      "sha256": "41431f6101e8f58f30b61b54407acd7ad40b3d14fc3ec67fda5e15e39d5447d4"
+    },
+    {
+      "path": "Weapon/Data/AutoGLauncher/AutoGLauncher_20016000011_null_HSQHY/MGE/MGE_1312068002_HSQHY_DarkGoldPlugin.uexp",
+      "sha256": "65be4b69ea9c7fe07aeab8404ff94f3d04a01107965d57c764c5ac1907668073"
+    },
+    {
+      "path": "Weapon/Data/DMR/DMR_20014000005_WBH_SSLS/MGE/MGE_FanBu_SSLS.uasset",
+      "sha256": "cc3ff3f04ef444d9276ab015980d0e0363156801ca492e54aab16839dc42e8fa"
+    },
+    {
+      "path": "Weapon/Data/DMR/DMR_20014000005_WBH_SSLS/MGE/MGE_FanBu_SSLS.uexp",
+      "sha256": "6c0a4bc43b443cdeb229ca045b33c4ad71fb6cc7af173bcb915240a65810c6d7"
+    },
+    {
+      "path": "Weapon/Data/Hidden/Hidden_20019000001_null_KUWU/MGE/MGE_1312057001_KUWU.uasset",
+      "sha256": "5cef271e2dcb4aadf0c1a5531063a24560ea1ad8054e9e353297d58c842cc206"
+    },
+    {
+      "path": "Weapon/Data/Hidden/Hidden_20019000001_null_KUWU/MGE/MGE_1312057001_KUWU.uexp",
+      "sha256": "1952bd725a9d653cf9757418a2842268ca789da61b358efd406015b2468f3e19"
+    },
+    {
+      "path": "Weapon/Data/Hidden/Hidden_20019000001_null_KUWU/MGE/MGE_1312057002_KUWU.uasset",
+      "sha256": "ccee7b2798ee42015e371c8d7eca932971e067bca182637975317c335f4300cb"
+    },
+    {
+      "path": "Weapon/Data/Hidden/Hidden_20019000001_null_KUWU/MGE/MGE_1312057002_KUWU.uexp",
+      "sha256": "aff19861eb3e62e860e53aeb9996391e7b7b6e00e6c076f9fb60e900b040055d"
+    },
+    {
+      "path": "Weapon/Data/Hidden/Hidden_20019000001_null_KUWU/MGE/MGE_1312057003_KUWU.uasset",
+      "sha256": "34cf66f653177b25fe1cfa7e6d17b0ba45de300319aea750f201de1becb58f00"
+    },
+    {
+      "path": "Weapon/Data/Hidden/Hidden_20019000001_null_KUWU/MGE/MGE_1312057003_KUWU.uexp",
+      "sha256": "efea1a29604c113f159ac39389c8012d584af8010a828923d1e53e5ff9896dbd"
+    },
+    {
+      "path": "Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312038001_YMDH.uasset",
+      "sha256": "bd434a4d9f5a83d7ab8329342add2da0f3773104c3649f771b95459928788e1b"
+    },
+    {
+      "path": "Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312038001_YMDH.uexp",
+      "sha256": "f1a743ec8bf658df3bf0401257bbb03e22a73d0bf079c91bd31e07a5b842e4a7"
+    },
+    {
+      "path": "Weapon/Data/MG/MG_20006000030_WBH_HSYD/MGE/MGE_1312074003_HSYD.uasset",
+      "sha256": "7d105cb5b2bd4a6981fec21bda5d04ee4f5a9c5170758fca317b0da38c7625f5"
+    },
+    {
+      "path": "Weapon/Data/MG/MG_20006000030_WBH_HSYD/MGE/MGE_1312074003_HSYD.uexp",
+      "sha256": "c51a784f3dc30d0f3871622dbb5f063d14799653dd925f40998f1532f649dee9"
+    },
+    {
+      "path": "Weapon/Data/Rifle/Rifle_20001000004_JG_XHKX/MGE/MGE_1312066001_XHKX.uasset",
+      "sha256": "04d18dcce40bf093e946867b0e53671fd4afa30491f245dc5ca3e131541cebf9"
+    },
+    {
+      "path": "Weapon/Data/Rifle/Rifle_20001000004_JG_XHKX/MGE/MGE_1312066001_XHKX.uexp",
+      "sha256": "b34415b8b44d2383980b52d41fad04ce86724ffd551bb5a537ad1a7ed5054c6f"
+    },
+    {
+      "path": "Weapon/Data/Rifle/Rifle_20001000024_WBH_JJSSZS/MGE/MGE_1312039001_JJSS.uasset",
+      "sha256": "497e7074059da37b45154e971466cd9c34403863d290af534d4f75cea622a49e"
+    },
+    {
+      "path": "Weapon/Data/Rifle/Rifle_20001000024_WBH_JJSSZS/MGE/MGE_1312039001_JJSS.uexp",
+      "sha256": "b8182daa57d5980fffa412d86dde392724863e65bf4d056e3ff815db3c9e054e"
+    },
+    {
+      "path": "Weapon/Data/Rifle/Rifle_20001000024_WBH_JJSSZS/MGE/MGE_1312040001_JJSS.uasset",
+      "sha256": "7a6b425b52d30d0cb5c4d9a05fc8fe02f91b95ff7c3e3dafae4ce7de859e8b8a"
+    },
+    {
+      "path": "Weapon/Data/Rifle/Rifle_20001000024_WBH_JJSSZS/MGE/MGE_1312040001_JJSS.uexp",
+      "sha256": "97801b5cda8e26bdd015e9b26b1d95b3485cfc03bf5cde527bf61dfb64873bd9"
+    },
+    {
+      "path": "Weapon/Data/Rifle/Rifle_20001000024_WBH_JJSSZS/MGE/MGE_1312063001_JJSS.uasset",
+      "sha256": "0609fe321856776f3d0fc1a9a77e1224f2cb2220e1b391ee341f0b83855e15be"
+    },
+    {
+      "path": "Weapon/Data/Rifle/Rifle_20001000024_WBH_JJSSZS/MGE/MGE_1312063001_JJSS.uexp",
+      "sha256": "deaa65e4c70a6d318feade3a4b3007572bb2048bcf59c0bddda6fa2cf21caac6"
+    },
+    {
+      "path": "Weapon/Data/SG/SG_20003000011_WBH_JFZL/MGE/MGE_1312032003_JFZL.uasset",
+      "sha256": "b1b447f41f4ac58ab45c32dfafba6edacee1dbda22de93d5edfec1858a4186de"
+    },
+    {
+      "path": "Weapon/Data/SG/SG_20003000011_WBH_JFZL/MGE/MGE_1312032003_JFZL.uexp",
+      "sha256": "05c47065372c3587553428f1ddcb2a8245a7e5885dbd94250dc50dd8824f121d"
+    },
+    {
+      "path": "Weapon/Data/SG/SG_20003000024_null_YYZS/MGE/MGE_1312062001_YYZS.uasset",
+      "sha256": "ce830a6b3e27fdd269c889aafd3c7e2f5a189f1c86b5e47329b530f4ce0d35bd"
+    },
+    {
+      "path": "Weapon/Data/SG/SG_20003000024_null_YYZS/MGE/MGE_1312062001_YYZS.uexp",
+      "sha256": "832314e76d63a208770be815afdb3c5bcbd808ebc289a869d5403d82df33a65e"
+    },
+    {
+      "path": "Weapon/Data/SG/SG_20003000031_null_HCP/MGE/MGE_1313031004_HCP.uasset",
+      "sha256": "bdd9a710fa0b2b07ed23343c9367e68c7fdfd5422855e3aa47ca225a8bafece4"
+    },
+    {
+      "path": "Weapon/Data/SG/SG_20003000031_null_HCP/MGE/MGE_1313031004_HCP.uexp",
+      "sha256": "9396ab9663c47aa29f2c63bade0954a8a9c745ea414ca62ea5b799860a3a76ef"
+    },
+    {
+      "path": "Weapon/Data/SMG/SMG_20005000034_null_LYXW/MGE/MGE_1312056001_LYXW.uasset",
+      "sha256": "c4765f6ae13346ce7b0fe020a13d60c09c277bee1626244cf0ad132b9c0aae1c"
+    },
+    {
+      "path": "Weapon/Data/SMG/SMG_20005000034_null_LYXW/MGE/MGE_1312056001_LYXW.uexp",
+      "sha256": "6edf24c6c108d982e8cec97a461e101f2d18d14dab606d057e80c7f05d35d2cb"
+    },
+    {
+      "path": "Weapon/Data/SMG/SMG_20005000034_null_LYXW/MGE/MGE_1312056004_LYXW.uasset",
+      "sha256": "55194299ed7d1f6f52bd33c1f9d9a21ee84630099f738824ce94b50595c8a465"
+    },
+    {
+      "path": "Weapon/Data/SMG/SMG_20005000034_null_LYXW/MGE/MGE_1312056004_LYXW.uexp",
+      "sha256": "b6b8034cf4c9e04f84186df24b31b1cf190dd975c575b8c45e9844d91fd2dfd1"
+    },
+    {
+      "path": "Weapon/Data/SMG/SMG_20005000034_null_LYXW/MGE/MGE_1312056005_LYXW.uasset",
+      "sha256": "d87558803e4d7676e7eb0ff2eaead8d45464a1d866354e3141cab8582ce7c037"
+    },
+    {
+      "path": "Weapon/Data/SMG/SMG_20005000034_null_LYXW/MGE/MGE_1312056005_LYXW.uexp",
+      "sha256": "4a69ca842193f618ad85abc1ea6d5f74f973c0e2ed7dfc70d8f4c0ef48b93869"
+    },
+    {
+      "path": "Weapon/Data/Sniper/Sniper_20002000012_WBH_SWLS/MGE/MGE_1316115001_SWLS_DarkGoldPlugin.uasset",
+      "sha256": "c4c47fd4b4d33147b922c40abdbf6a3a249e31fcea547ce4643b0ab2f9301149"
+    },
+    {
+      "path": "Weapon/Data/Sniper/Sniper_20002000012_WBH_SWLS/MGE/MGE_1316115001_SWLS_DarkGoldPlugin.uexp",
+      "sha256": "bfbecd6a13e239e2b2bae1a7a2dabc074d2d7480037e9f992cd699e7d0d5649b"
+    }
+  ]
+}

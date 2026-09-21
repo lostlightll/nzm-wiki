@@ -4,7 +4,7 @@ import fs from "node:fs";
 import rawCatalog from "@/data/overlimit/current.json";
 import links from "@/data/overlimit/links.json";
 import { parseOverlimitCatalog } from "./overlimit-catalog";
-import { getOverlimitCatalog, getOverlimitPreviewCatalog, parseOverlimitPreview } from "./overlimit";
+import { getOverlimitCatalog, parseOverlimitPreview } from "./overlimit";
 import { getAllOverlimitCards, getOverlimitCardById } from "./overlimit-cards";
 import { projectOverlimitLinks } from "./overlimit-links";
 import { modifierProviderSourceSchema } from "./modifier-provider-registry";
@@ -19,7 +19,7 @@ const minimal = () => ({
 });
 
 test("reviewed ordinary cards drop stale warnings while real formula and independent damage gaps remain", () => {
-  const cards = getOverlimitPreviewCatalog()!.cards;
+  const cards = getOverlimitCatalog().cards;
   for (const id of ["20703040524", "20703040085", "20703040405", "20703040522"]) {
     const card = cards.find(card => card.id === id)!;
     assert.ok(card.effectValues?.length, id);
@@ -33,10 +33,10 @@ test("reviewed ordinary cards drop stale warnings while real formula and indepen
 
 test("published cards and damage are complete projections, not current perk joins", () => {
   const catalog = getOverlimitCatalog();
+  for (const card of catalog.cards) assert.equal(getOverlimitCardById(card.id), card);
   assert.deepEqual(catalog, rawCatalog);
   assert.deepEqual(getAllOverlimitCards(), rawCatalog.cards);
   assert.deepEqual(links, projectOverlimitLinks(catalog));
-  for (const card of catalog.cards) assert.equal(getOverlimitCardById(card.id), card);
   assert.equal(getOverlimitCardById("missing"), undefined);
   for (const file of ["lib/overlimit.ts", "lib/overlimit-cards.ts", "app/(pages)/overlimit/[id]/page.tsx"]) {
     const source = fs.readFileSync(file, "utf8");
@@ -48,7 +48,7 @@ test("preview requires registered identity and never replaces current same-ID da
   const current = getOverlimitCatalog();
   const value = minimal();
   value.season.id = "s5-preview";
-  value.cards[0].id = current.cards[0].id;
+  value.cards[0].id = current.cards[0]?.id ?? value.cards[0].id;
   const active = { season: "s5", version: "s5-preview", label: "S5 Preview" };
   assert.equal(parseOverlimitPreview(value, active)?.cards[0].description, "审定的卡片说明");
   assert.equal(getOverlimitCatalog(), current);
@@ -77,10 +77,19 @@ test("identity collisions, dangling damage, and contradictory applicability fail
   const unknown = minimal();
   Object.assign(unknown.cards[0], { weaponNames: ["未知限制"] });
   assert.throws(() => parseOverlimitCatalog(unknown), /未确认适用范围/);
-  const wrongDamage = structuredClone(rawCatalog);
-  const entry = Object.values(rawCatalog.independentDamage)[0];
+  const wrongDamage = minimal();
+  const entry = [{ name: "测试", trigger: "测试", interval: "无", numericalId: "1", damageType: "测试", damageValue: "1", toughness: 0, element: "无", critical: false, weakpoint: false }];
   Object.assign(wrongDamage.independentDamage, { "999999999": entry });
   assert.throws(() => parseOverlimitCatalog(wrongDamage), /非当前卡片/);
+});
+
+test("withdrawal allows only an empty current catalog, never an empty published or preview pool", () => {
+  const candidate = { ...minimal(), cards: [] };
+  assert.throws(() => parseOverlimitCatalog(candidate), /已发布卡池不能为空/);
+  assert.throws(() => parseOverlimitCatalog({ ...candidate, withdrawn: true }), /撤下的正式版/);
+  const withdrawn = { ...candidate, withdrawn: true, season: { ...candidate.season, status: "current" } };
+  assert.equal(parseOverlimitCatalog(withdrawn).cards.length, 0);
+  assert.throws(() => parseOverlimitCatalog({ ...withdrawn, cards: minimal().cards }), /撤下的正式版/);
 });
 
 test("new bond thresholds and replacement semantics survive parsing", () => {

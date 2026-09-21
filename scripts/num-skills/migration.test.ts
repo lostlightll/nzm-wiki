@@ -6,12 +6,36 @@ import { test } from "node:test";
 import matter from "gray-matter";
 import { getNumSkillValue, resolveWeaponSkills } from "../../lib/num-skill-data";
 import { parseWeaponDataLock } from "../../lib/weapon-data-lock";
+import { createWeaponResolver } from "../../lib/weapon-resolver";
+import historicalRows from "./fixtures/pre-s4-migration-rows.json";
+import { s4HeaderChanges, s4SkillChanges } from "./s4-migration-review";
 import { inventoryLegacyWeapon, migrateWeaponSource, reviewedBodyChanges, type MigrationBaseline } from "./migrate";
 
 const root = process.cwd();
 const baseline: MigrationBaseline = JSON.parse(readFileSync(path.join(root, "data/weapon-skill-migration-baseline.json"), "utf8"));
-const lock = parseWeaponDataLock(JSON.parse(readFileSync(path.join(root, "data/weapon-data-lock.json"), "utf8")));
+const currentLock = parseWeaponDataLock(JSON.parse(readFileSync(path.join(root, "data/weapon-data-lock.json"), "utf8")));
+// Only the rows that affect historical skill replay are restored. This is not
+// a reconstruction of the entire old damage dataset, nor a new baseline.
+const lock = structuredClone(currentLock);
+Object.assign(lock.rows["skill-pve"], historicalRows.rows["skill-pve"]);
+Object.assign(lock.rows["numerical-lc"], historicalRows.rows["numerical-lc"]);
+const historicalResolver = createWeaponResolver(lock);
+const historicalSkills = (data: unknown, slug: string, mode: "lc" | "td") =>
+  historicalResolver.resolveWeapon(data, { slug, expectedTable: mode }).skills ?? [];
 const directory = path.join(root, "data/weapons");
+
+test("S4 changes retain historical row evidence and explicitly verify the new charge value", () => {
+  assert.equal(historicalRows.sourceCommit, "7ee79b59b0193ee9c80c616e3ea2fc05acb84558");
+  assert.equal(historicalRows.sourceSha256, "5c1a083acfa1d96676d99712acbfb7dbea6de585f6364f2e4fd3ffbcbe18c7e6");
+  for (const change of s4SkillChanges) {
+    assert.equal(lock.rows[change.sourceKind][change.sourceKey].raw[change.sourceField], change.before);
+    assert.equal(currentLock.rows[change.sourceKind][change.sourceKey].raw[change.sourceField], change.after);
+    assert.equal(currentLock.active_skills[change.sourceKey].source, "weapon_pve");
+    assert.equal(currentLock.active_skills[change.sourceKey].source_key, change.sourceKey);
+  }
+  assert.ok(lock.rows["numerical-lc"]["lc:121300473_1"]);
+  assert.equal(currentLock.rows["numerical-lc"]["lc:121300473_1"], undefined);
+});
 
 test("migration baseline covers every weapon, including empty skill inventories", () => {
   assert.equal(baseline.version, 1);
@@ -47,7 +71,7 @@ test("重新迁移时PVE同名持续参数冲突不能改变原值", () => {
     assert.deepEqual(migrated.expectedChanges, []);
     const { data } = matter(migrated.source);
     for (const mode of ["lc", "td"] as const) {
-      const skill = resolveWeaponSkills(data, slug, mode).find((entry) => entry.id === "active-1")!;
+      const skill = historicalSkills(data, slug, mode).find((entry) => entry.id === "active-1")!;
       assert.equal(skill.parameters.duration, previous.skills.find((entry) => entry.id === "active-1")!.expectedByMode[mode]!.duration);
       assert.equal(skill.parameters.panel_duration, previous.frontmatter.skill_duration);
     }
@@ -56,7 +80,13 @@ test("重新迁移时PVE同名持续参数冲突不能改变原值", () => {
 
 for (const previous of baseline.weapons) {
   test(`${previous.slug}: LC/TD all skill properties and full prose match recorded baseline`, () => {
-    const source = readFileSync(path.join(directory, `${previous.slug}.mdx`), "utf8");
+    const currentSource = readFileSync(path.join(directory, `${previous.slug}.mdx`), "utf8");
+    const currentData = matter(currentSource).data;
+    let source = currentSource.replace(/\r\n/g, "\n");
+    for (const change of s4HeaderChanges.filter((entry) => entry.slug === previous.slug)) {
+      assert.equal(source.split(change.after).length, 2, change.reason);
+      source = source.replace(change.after, change.before);
+    }
     const { data, content } = matter(source);
     const { skills, ...retained } = data;
     assert.ok(Array.isArray(skills));
@@ -84,7 +114,15 @@ for (const previous of baseline.weapons) {
     assert.equal(migrateWeaponSource(source, previous.slug, lock, {}, []).source, source, "migration is idempotent without refs");
 
     for (const mode of previous.frontmatter.game_modes as Array<"lc" | "td">) {
-      const resolved = resolveWeaponSkills(data, previous.slug, mode);
+      const resolved = historicalSkills(data, previous.slug, mode);
+      const currentResolved = resolveWeaponSkills(currentData, previous.slug, mode);
+      const expectedCurrent = structuredClone(resolved);
+      for (const change of s4SkillChanges.filter((entry) => entry.slug === previous.slug)) {
+        const skill = expectedCurrent.find((entry) => entry.id === change.skillId)!;
+        assert.equal(skill.parameters[change.parameter], change.before);
+        skill.parameters[change.parameter] = change.after;
+      }
+      assert.deepEqual(currentResolved, expectedCurrent, "only separately reviewed S4 changes may alter current skill output");
       const visible = resolved.filter((skill) => skill.display);
       assert.deepEqual(visible.map((skill) => skill.id), previous.skills.map((skill) => skill.id));
       for (const legacy of previous.skills) {

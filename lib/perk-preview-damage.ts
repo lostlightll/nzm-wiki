@@ -3,7 +3,7 @@ import { getResolvedFieldValue } from "@/lib/weapon-consumers";
 import type { PerkIndependentDamageSourceReference } from "@/types";
 import { getActivePreview, getPreviewSeasonKey, isPreviewSeason } from "@/lib/content-preview";
 
-/** Preview tokens follow the same MDX source reference as their damage panel. */
+/** Damage tokens follow the same reviewed MDX reference as their damage panel. */
 export function resolvePreviewDamageDescription(
   description: string | undefined,
   itemId: string,
@@ -12,7 +12,7 @@ export function resolvePreviewDamageDescription(
   activePreview: ReturnType<typeof getActivePreview> | null = getActivePreview(),
 ): string | undefined {
   if (!description?.includes("{GPNumericalID:")) return description;
-  if (!isPreviewSeason(season) || !activePreview || season !== getPreviewSeasonKey(activePreview)) {
+  if (isPreviewSeason(season) && (!activePreview || season !== getPreviewSeasonKey(activePreview))) {
     throw new Error(`Unconfigured preview damage token for perk ${itemId}: ${season}`);
   }
   const sources = references.map(reference => {

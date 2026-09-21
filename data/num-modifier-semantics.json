@@ -540,6 +540,76 @@
     }
   },
   "attributes": {
+    "GPAttributeSetQuestGold.PersonalGoldEfficiencyExtraBonus": {
+      "status": "known-unindexed",
+      "label": "金币全产出加成（肉鸽）",
+      "reason": "S4 正式服 AttributeDescMapTable 2330 确认属性身份；尚未审定公开索引与操作语义。"
+    },
+    "GPAttributeSetBearDamageRatio.BeHealRatio": {
+      "status": "known-unindexed",
+      "label": "受治疗效果增加",
+      "reason": "S4 正式服 AttributeDescMapTable 2158 确认属性身份；尚未审定公开索引与操作语义。"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.GunRPMRatioAdjustMaxAdd": {
+      "status": "known-unindexed",
+      "label": "射速上限",
+      "reason": "S4 正式服 AttributeDescMapTable 2327 确认属性身份；尚未审定公开索引与操作语义。"
+    },
+    "GPAttributeSetWeaponSpecialAmmo.WeaponSpecialAmmoCostAddPoint": {
+      "status": "known-unindexed",
+      "label": "特殊弹药开火扣弹数加成值",
+      "reason": "S4 正式服 AttributeDescMapTable 2233 确认属性身份；尚未审定公开索引与操作语义。"
+    },
+    "GPAttributeSetWeaponSpecialAmmo.ClipSpecialAmmoAddRatio": {
+      "status": "known-unindexed",
+      "label": "特殊弹药主弹夹弹量上限加成系数",
+      "reason": "S4 正式服 AttributeDescMapTable 2230 确认属性身份；尚未审定公开索引与操作语义。"
+    },
+    "GPAttributeSetQuestGold.ClearStageGoldInterestRate ": {
+      "status": "known-unindexed",
+      "label": "通关金币利息比例",
+      "reason": "S4 正式服 AttributeDescMapTable 2331 确认属性身份，原始属性名保留末尾空格；尚未审定公开索引与操作语义。"
+    },
+    "GPAttributeSetWeaponSpecialAmmo.ClipSpecialAmmoAddPoint": {
+      "status": "known-unindexed",
+      "label": "特殊弹药主弹夹弹量上限加成值",
+      "reason": "S4 正式服 AttributeDescMapTable 2229 确认属性身份；尚未审定公开索引与操作语义。"
+    },
+    "GPAttributeSetMelee.MeleeAttackIntervalRatio": {
+      "status": "known-unindexed",
+      "label": "近战武器攻击速度",
+      "reason": "S4 正式服 AttributeDescMapTable 2276 确认属性身份；尚未审定公开索引与操作语义。"
+    },
+    "GPAttributeSetToughness.FallDownRecoveryCDTime": {
+      "status": "known-unindexed",
+      "label": "机甲韧性脱战恢复时间",
+      "reason": "S4 正式服 AttributeDescMapTable 2324 确认属性身份；尚未审定公开索引与操作语义。"
+    },
+    "GPAttributeSetToughness.FallDownRecoverySpeed": {
+      "status": "known-unindexed",
+      "label": "机甲韧性恢复速率",
+      "reason": "S4 正式服 AttributeDescMapTable 2325 确认属性身份；尚未审定公开索引与操作语义。"
+    },
+    "GPAttributeSetTower.SilenceDurationRatio": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTower.SilenceDurationRatio",
+      "reason": "S4 正式服 Numerical 存在该属性，但 AttributeDescMapTable 未承载对应行；不从属性名猜测语义。"
+    },
+    "GPAttributeSetTower.AttackDurationRatio": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTower.AttackDurationRatio",
+      "reason": "S4 正式服 Numerical 存在该属性，但 AttributeDescMapTable 未承载对应行；不从属性名猜测语义。"
+    },
+    "GPAttributeSetTower::ReduceAbilityCDPercent": {
+      "status": "unmapped",
+      "label": "GPAttributeSetTower::ReduceAbilityCDPercent",
+      "reason": "S4 正式服 Numerical 保留双冒号属性名，AttributeDescMapTable 未承载对应行；不归一化或猜测语义。"
+    },
+    "GPAttributeSetCharacterWeaponAdjust.MaxAmmoCountAddRatio": {
+      "status": "known-unindexed",
+      "label": "角色武器总弹量增加",
+      "reason": "S4 正式服 AttributeDescMapTable 2228 确认属性身份；尚未审定公开索引与操作语义。"
+    },
     "": {
       "status": "invalid",
       "label": "空 AttributeName",

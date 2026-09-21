@@ -51,13 +51,14 @@ test("snapshot audit rejects a same-valued foreign skill and unrelated valid rea
       { StatementIndex: 162, Token: "EX_InstanceVariable", Variable: { Owner: { ObjectName: "SMBlueprintGeneratedClass'SKT_FloatingMode_C'" }, Property: { Name: "Duration" } } },
       { StatementIndex: 189, Token: "EX_Return" },
     ] },
-    { Name: "ExecuteUbergraph_SKT_FloatingMode", ScriptBytecode: [{ StatementIndex: 957, Token: "EX_FinalFunction" }] },
+    { Name: "ExecuteUbergraph_SKT_FloatingMode", ScriptBytecode: [{ StatementIndex: 951, Token: "EX_FinalFunction" }] },
   ];
   const evidence = new Map([[source.asset, { sha256: source.sha256, exports }]]);
   const input = { ...binding, modifiers: [] };
   auditRuntimeBinding(input, evidence);
   assert.throws(() => auditRuntimeBinding({ ...input, game_skill_id: 5001401 }, evidence), /identity/);
   assert.throws(() => auditRuntimeBinding({ ...input, flow: { ...input.flow, read: { function: "GetDuration", statement: 189 } } }, evidence), /consume/);
+  assert.throws(() => auditRuntimeBinding({ ...input, flow: { ...input.flow, apply: { function: "ExecuteUbergraph_SKT_FloatingMode", statement: 957 } } }, evidence), /execution location/);
 });
 
 test("天鹅之舞面板与正文12秒；心有凌兮增益保留40秒，不采用PVE27", () => {

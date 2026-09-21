@@ -7,19 +7,20 @@ import { getPerkByName } from "./perks";
 import { getIndependentDamageByPerkSlug, resolvePerkReferences } from "./independent-damage";
 import { getPerkSourceEntries } from "./perk-source";
 import { resolvePreviewDamageDescription } from "./perk-preview-damage";
+import { parsePerkIndependentDamageSnapshot } from "./perk-preview-catalog";
 import { getResolvedWeaponBySlug } from "./weapons";
 import { getResolvedFieldValue } from "./weapon-consumers";
 import review from "../scripts/s4-preview-perks-review.json";
 
-test("preview cryo perks share Numerical coefficients between descriptions and damage panels", async () => {
+test("released cryo perks share Numerical coefficients between descriptions and damage panels", async () => {
   for (const [name, id, percent, damage, type] of [
     ["极寒领域", "120300174", "50%", "250", "武器技能伤害"],
     ["极寒之触", "120300175", "20%", "100", "技能伤害"],
     ["极寒之痕", "120300176", "45%", "225", "技能伤害"],
   ]) {
-    const perk = getPerkByName(name, "preview")!;
-    assert.equal(getPerkByName(name), null, "预览插件不能进入默认正式查询");
-    assert.ok(perk.slug.startsWith("preview/"));
+    const perk = getPerkByName(name)!;
+    assert.equal(getPerkByName(name, "preview"), null);
+    assert.ok(!perk.slug.startsWith("preview/"));
     assert.ok(perk.description?.includes(`${percent}攻击力`), name);
     assert.doesNotMatch(perk.description!, /\{GPNumericalID:/);
     const sources = await getIndependentDamageByPerkSlug(perk.slug);
@@ -41,15 +42,16 @@ test("preview cryo perks share Numerical coefficients between descriptions and d
   }
 });
 
-test("preview damage cannot leak into official perks or resolve unrelated tokens", () => {
+test("formal damage requires exact reviewed references and inactive preview tokens fail", () => {
   const token = "{GPNumericalID:120300174:HpCalScale:13}";
-  const references = getPerkByName("极寒领域", "preview")!.independentDamageSources;
-  assert.equal(resolvePreviewDamageDescription(token, "20703040537", "s4-preview", references), "50%");
-  assert.throws(() => resolvePreviewDamageDescription(token, "20703040537", "s3", references));
-  const unrelatedReferences = getPerkByName("极寒之触", "preview")!.independentDamageSources;
-  assert.throws(() => resolvePreviewDamageDescription(token, "20703040538", "s4-preview", unrelatedReferences));
-  assert.throws(() => resolvePreviewDamageDescription(token, "20703040537", "s4-preview"));
-  assert.throws(() => resolvePreviewDamageDescription("{GPNumericalID:120300174:HpCalBase:13}", "20703040537", "s4-preview", references));
+  const references = getPerkByName("极寒领域")!.independentDamageSources;
+  assert.equal(resolvePreviewDamageDescription(token, "20703040537", "s4", references), "50%");
+  assert.equal(resolvePreviewDamageDescription(token, "20703040537", undefined, references), "50%");
+  assert.throws(() => resolvePreviewDamageDescription(token, "20703040537", "s4-preview", references, null), /Unconfigured/);
+  const unrelatedReferences = getPerkByName("极寒之触")!.independentDamageSources;
+  assert.throws(() => resolvePreviewDamageDescription(token, "20703040538", "s4", unrelatedReferences));
+  assert.throws(() => resolvePreviewDamageDescription(token, "20703040537", "s4"));
+  assert.throws(() => resolvePreviewDamageDescription("{GPNumericalID:120300174:HpCalBase:13}", "20703040537", "s4", references));
 });
 
 test("future preview tokens use reviewed references without an ItemID or weapon allowlist", async () => {
@@ -65,7 +67,7 @@ test("future preview tokens use reviewed references without an ItemID or weapon 
   assert.throws(() => resolvePreviewDamageDescription(token, "future-item", "s5-preview", [...references, ...references], preview), /ambiguous/);
 });
 
-test("preview regeneration retains the reviewed weapon references", () => {
+test("formal publication retains the reviewed weapon references", () => {
   for (const [id, name] of [
     ["20703040537", "极寒领域"],
     ["20703040538", "极寒之触"],
@@ -77,11 +79,14 @@ test("preview regeneration retains the reviewed weapon references", () => {
       trigger: reference.trigger,
       interval: reference.interval,
     }));
-    assert.deepEqual(getPerkByName(name, "preview")!.independentDamageSources, references);
+    assert.deepEqual(getPerkByName(name)!.independentDamageSources, references);
   }
 });
 
-test("published preview stays frozen while offline rebuild respects weapon Numerical overrides", async (context) => {
+test("explicit frozen snapshot remains stable while formal rebuild respects Numerical overrides", async (context) => {
+  const perk = getPerkByName("极寒领域")!;
+  const frozenDescription = perk.description;
+  const frozenSnapshot = structuredClone(await getIndependentDamageByPerkSlug(perk.slug));
   const weaponPath = path.join(process.cwd(), "data/weapons/极寒冰神.mdx");
   const originalRead = fs.readFileSync;
   const document = matter(originalRead(weaponPath, "utf8"));
@@ -102,11 +107,10 @@ test("published preview stays frozen while offline rebuild respects weapon Numer
     String(args[0]) === weaponPath ? overridden : originalRead(...args),
   );
 
-  const perk = getPerkByName("极寒领域", "preview")!;
-  assert.match(perk.description!, /50%攻击力/);
-  const sources = await getIndependentDamageByPerkSlug(perk.slug);
+  assert.match(frozenDescription!, /50%攻击力/);
+  const sources = parsePerkIndependentDamageSnapshot(frozenSnapshot);
   assert.equal(sources[0].damageValue, "250");
-  const candidate = getPerkSourceEntries("preview").find(entry => entry.perk.itemId === perk.itemId)!.perk;
+  const candidate = getPerkSourceEntries("current").find(entry => entry.perk.itemId === perk.itemId)!.perk;
   assert.match(candidate.description!, /75%攻击力/);
   assert.equal((await resolvePerkReferences(candidate))[0].damageValue, "375");
   const weapon = await getResolvedWeaponBySlug("极寒冰神", "lc");

@@ -170,16 +170,14 @@ for (const provider of sourceRegistry.providers) {
   const evidenceRows = evidenceEffects.map((effect) => effect.value.row);
   for (const effect of evidenceEffects) {
     const row = effect.value.row;
-    const actualModifierTypeIds = effect.facets
-      .filter((facet) => facet.consumer === "damage")
-      .map((facet) => facet.id);
     if (
       provider.evidence.kind !== "reviewed-override" &&
-      actualModifierTypeIds.length === 0 &&
+      effect.facets.length === 0 &&
+      effect.attribute.disposition !== "known-unindexed" &&
       effect.direction !== "decrease"
     ) {
       errors.push(
-        `${provider.id} 的 Numerical 效果无法反查乘区：${row.key}`,
+        `${provider.id} 的 Numerical 效果没有已审定的索引分面：${row.key}`,
       );
     }
     if (
@@ -320,7 +318,8 @@ for (const provider of sourceRegistry.providers) {
   const [passiveSkillId, level = "1"] = String(item.PassiveSkill_ID ?? "").split(":");
   if (
     provider.evidence.passiveSkillId &&
-    provider.evidence.passiveSkillId !== passiveSkillId
+    provider.evidence.passiveSkillId !== passiveSkillId &&
+    provider.evidence.passiveSkillId !== `${passiveSkillId}_${level}`
   ) {
     errors.push(`${provider.id} 的 PassiveSkill_ID 已变化`);
   }

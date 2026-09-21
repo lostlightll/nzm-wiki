@@ -26,7 +26,7 @@ function previewEvidence() {
 }
 
 test("preview season overrides selected rows without changing official consumers", () => {
-  const selectResolver = createPerkModifierResolverSelector(previewEvidence());
+  const selectResolver = createPerkModifierResolverSelector(previewEvidence(), { season: "s4", version: "s4-preview", label: "S4 Preview" });
   const official = selectResolver("s3");
   const preview = selectResolver("s4-preview");
   const bindings = { toughness: expression };
@@ -80,13 +80,13 @@ test("preview evidence rejects malformed Numerical fields and provenance", () =>
   assert.throws(() => createPerkModifierResolverSelector(evidence));
 });
 
-test("preview icons retain numeric suffix separators through frontmatter and the perk reader", () => {
+test("released S4 icons retain numeric suffix separators without an active preview", () => {
   for (const [name, icon] of [
     ["光暗死神", "1312071002_1"],
     ["火神爆发", "1312074004_2"],
   ]) {
-    const perk = getPerkByName(name, "preview");
-    assert.equal(getPerkByName(name), null);
+    const perk = getPerkByName(name);
+    assert.equal(getPerkByName(name, "preview"), null);
     assert.equal(perk?.icon, icon);
     assert.ok(existsSync(`public/icons/perks/${icon}.png`));
     assert.ok(existsSync(`public/webp/icons/perks/${icon}.webp`));

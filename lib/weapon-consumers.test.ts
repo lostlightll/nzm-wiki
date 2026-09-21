@@ -286,6 +286,12 @@ test("pilot main source, LC/TD context, attenuation, and element agree", async (
     toWeaponCatalogEntry(await requireWeapon("樱之殇", "lc")).meleeSources.map(
       (source) => source.id,
     ),
+    ["light-attack-1", "light-attack-2", "heavy-attack"],
+  );
+  assert.deepEqual(
+    toWeaponCatalogEntry(await requireWeapon("樱之殇", "td")).meleeSources.map(
+      (source) => source.id,
+    ),
     ["light-attack-1", "light-attack-2", "light-attack-3", "heavy-attack"],
   );
   assert.deepEqual(

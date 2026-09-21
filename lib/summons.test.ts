@@ -57,7 +57,8 @@ test("catalog resolves locked damage, configured rates, Buffs and published perk
   assert.equal(bully.damageSources.find((item) => item.id === "drone-shot")?.coefficient, 0.08);
   assert.equal(bully.damageSources.find((item) => item.id === "drone-shot")?.roundsPerMinute, 300);
   assert.equal(husky.damageSources.find((item) => item.id === "husky-hit")?.baseDamage, 125);
-  assert.equal(turrets.damageSources.find((item) => item.id === "judicator-shell")?.baseDamage, 450);
+  // S4 formal Numerical 19032001_1: HpCalScale=0.6.
+  assert.equal(turrets.damageSources.find((item) => item.id === "judicator-shell")?.baseDamage, 300);
   assert.ok(
     catalog.entries
       .flatMap((entry) => entry.damageSources)
@@ -88,6 +89,14 @@ test("catalog resolves locked damage, configured rates, Buffs and published perk
   );
   assert.ok(ironFist.buffs.some((buff) => buff.buffId === 160403101));
   assert.ok(catalog.sharedBuffs.some((buff) => buff.buffId === 160400005));
+  assert.equal(catalog.sharedPerks.length, 6);
+  assert.ok(catalog.sharedPerks.some((perk) => perk.slug === "slot-3/跟班增伤"));
+  assert.deepEqual(bully.perks.map((perk) => perk.slug), ["slot-4/空中补给"]);
+  assert.deepEqual(husky.perks.map((perk) => perk.slug), ["slot-4/哈士奇寻敌", "slot-4/哈士奇支援"]);
+  assert.deepEqual(
+    catalog.entries.find((entry) => entry.id === "vulcan-emperor-emplacement")?.perks.map((perk) => perk.slug),
+    ["slot-4/火力阵线", "slot-4/自追踪炮塔"],
+  );
   assert.ok(catalog.sharedPerks.every((perk) => perk.href.startsWith("/perks/")));
 });
 

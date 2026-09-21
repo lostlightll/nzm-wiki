@@ -1,0 +1,971 @@
+{
+  "schemaVersion": 1,
+  "season": 2026,
+  "scheduleStart": "2026-09-21",
+  "files": [
+    {
+      "path": "Abilities/Build/RoguePerk/S3/1378030310/BP_1378030310_Weakness.json",
+      "sha256": "5f82eec4131d4c43eea43b4786d3dc8b22d5e4541952539495799b9d9ee785d4"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030130.json",
+      "sha256": "9161b945f28b22a73b120f844110d5590c123d21dcace782dedd778b4bdbf596"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030130.uasset",
+      "sha256": "ec129d166d459bea530acc4137b8092948fba37c16d734341107992b4afda309"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030130.uexp",
+      "sha256": "316b61da1103de43e609ad8407c5e9e283ab8c71606ade795463e13cea7a86ca"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030140.json",
+      "sha256": "167f8914fbaf9dd9d7c106c5d2112d5ccf3a95e1d121c75b7eae26aa46c8577b"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030140.uasset",
+      "sha256": "8044ec6cdbce7722e37eea8a02897abbaabbc5dd5c726d6f64804633482684c8"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030140.uexp",
+      "sha256": "2f4004d9bca00029b897e19374421d555456f949d6923987405d9df75b0a33b1"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030150.json",
+      "sha256": "18e1e7ef598fa5cc5ff7b97048013cc4a3f445dbc34b6791d8d8c7dae2566c8d"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030150.uasset",
+      "sha256": "0a9f0ae244578d78656d73b66019404a6ce6377a21b1d425a4b79e16814d4184"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030150.uexp",
+      "sha256": "666a8c9cae568f008447aa5c514648e60a5614b413f88f4475f5b259e219cab2"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030220.json",
+      "sha256": "4fdbddac84aaadb8e5e7b83b582fad98a414f278368325193dc0bdd00745e53a"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030220.uasset",
+      "sha256": "9fe9c55e5a58f00f35807bf2da54408ce804ac2aad890f4e1b6f8fc4b63c024e"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030220.uexp",
+      "sha256": "43ecf2ef9687815ee6f1f49e6e52f7196899f7016407c5a9b980237079806dde"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030230.json",
+      "sha256": "82b723aaa9b5a5b8953ef4071958975f89f6f4828cb7bea932e431ad02d2f443"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030230.uasset",
+      "sha256": "d27555d05311ff1068b1f87a60890eb128b3457c936b53d0865b8cac4d7396f8"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030230.uexp",
+      "sha256": "867facce3199340c4c3162e637da300a37338cf5daca9469a0df05178e22d2af"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030240.json",
+      "sha256": "f852d7d08a86aa65bb239e287edbd08d93a6342e978eda0edc6e225f798b3c8e"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030240.uasset",
+      "sha256": "f27ed1152d234223f93fd184700c4451730a1b0bc1f5b6f9edb1d8db303e7aca"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030240.uexp",
+      "sha256": "dccaf92b993c49a3a5ac917eeaaef5cd7507fd5b560e9d52ef91dbc126806d49"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030250.json",
+      "sha256": "b234a5a25346e5caea4c5602a7edf3b6825bd67e5f65b1f9f13411b712f8e1d4"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030250.uasset",
+      "sha256": "8f13561532d9b1a23d579dc3dbf3c012b2d9df2888cfa8dc57dc01f90648c8ef"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030250.uexp",
+      "sha256": "abdf1342a026c51f45f560ec716e5a0bfc0d1198df04f27e920b9cf32876ed4a"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030260.json",
+      "sha256": "88fdbcad4c26bee4bdac317e45e2c792ddf118397be22ec2f138498f1cfb23bf"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030260.uasset",
+      "sha256": "88f8046c9f381ee4c0f10f1e618af74c6a040737c63f16c74cb2f1d8823836b2"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030260.uexp",
+      "sha256": "19d416f265c446ae2833cfab68ced22d49fe85aae670bd4a875c5b4682ba7e08"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030270.json",
+      "sha256": "f36246d01267dab913fcf246e515dc1e3de772877424a04b45b8f90e33cc5b84"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030270.uasset",
+      "sha256": "787ca92a79ad712cb8e512bf4ae210e70e857b47865748a19f6b882706d01f09"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030270.uexp",
+      "sha256": "5e917b9247742bf3f074b7437ebe90a995b9a9113ef807a1fa3219e742d7b6d2"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030280.json",
+      "sha256": "decb4868163a2cfc963d0d3593394bea376b3c7d3ddbfbc92687e14172ca4784"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030280.uasset",
+      "sha256": "32ffc4a790edd8a0aaf3ede10a394a148ab1ff74806823cdf4960b22098d5d47"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030280.uexp",
+      "sha256": "da1cd49b32edc7810ce8ceedff33f943e838da15c93de0701934d31b2697fc7a"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030290.json",
+      "sha256": "11cfdf458d5650494a02cf78b6a06c31e48ff6d63eb0d2023016082fe1240349"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030290.uasset",
+      "sha256": "c9743633779c6693fe8c315357b5853854e7a15ec8d2a10efa0fb1dc383bf145"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030290.uexp",
+      "sha256": "8549afb90ee29463026210c613c589334e0a531a47010f65164719504c7175dc"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030300.json",
+      "sha256": "1a787a927a9d7fd93cbf4dcdee33ee25e1a31028225a528b7e641412713fc6e7"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030300.uasset",
+      "sha256": "abf2c85fca97755e826e7f834d2063961c74894143c91b4478ad637a6c9a60ee"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030300.uexp",
+      "sha256": "1bd0382906e46208fc16094aac42ee82c9f16fb8c1e4e14fa8d2b38b1307780e"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030310.json",
+      "sha256": "1d567a9065a871a6093171574acc901561c644bbfa861e75ba6cc6d43f3e967a"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030310.uasset",
+      "sha256": "5023c5be2e5a4a46b2a2b8b3bf0bed6d066ed0a70130334e4cef1a6e963eb5fa"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030310.uexp",
+      "sha256": "ad4bdc1cf79fdf755989625a5722c8103c89e0e40f008c719fce819ff7a31307"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030320.json",
+      "sha256": "d74f27ea03e39483261d36d95c0fb7c2bb44f84fcfe8f7ba734e9cfde135b542"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030320.uasset",
+      "sha256": "102ec5b7a9571896aaf1ee5cd930ebd28434f9e03a74c092b598eb49a6be61d0"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030320.uexp",
+      "sha256": "388c724948b17740260800a5dedbc0eb42a8bcd6964d46e908a98e4fd48f5051"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030320_ForTeammate.json",
+      "sha256": "4226bc3862b6e86b37e3abd191e38ad5212d0917de4bd4b5c74449555b2317f2"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030320_ForTeammate.uasset",
+      "sha256": "96922ddab3b1b7f479eb87a6329ac23d48b354d8ec940c916f8ea17115b12ac3"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030320_ForTeammate.uexp",
+      "sha256": "8e87373bdc7a31b80c325e0fe7bfeb442fc97667aef0363bdecc647015341d48"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030330.json",
+      "sha256": "c34e0494d25d1137c793734b6df76eb1e8df5f4ecd4fc8f2abeab07839582f30"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030330.uasset",
+      "sha256": "aa2d036d7c24f00a60e9f6a02b6c08d6cad319284e44c15091889f1934422256"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030330.uexp",
+      "sha256": "6b0c96391205733755a622218d493573a7c1e4a7f283830ff81e5e6b0a2e0ba1"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030330_AddDamage.json",
+      "sha256": "b15013eb0b73ca2245a86599940374ed706e7e72a9acfe9e62b9108ad9b83d4c"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030330_AddDamage.uasset",
+      "sha256": "4a0649fe90126ee4772a96d3404f224a3d2b06f10f34ec337ce704232899aa97"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030330_AddDamage.uexp",
+      "sha256": "519bbb8d4cd15d8641c6cdc509ef60d893f04d9b087d64c2046d9991b76598d1"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030340.json",
+      "sha256": "b280c0528b177ff54740749423894028ff9263dcfe87fae25bb515b2254bfb50"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030340.uasset",
+      "sha256": "47115a13bc9a74616be7475f86e1ad7265e5737c3502ce880434f27f7ab786df"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030340.uexp",
+      "sha256": "db5c7fd2d9c98ce0472b9121b3bede4ae0fec2e615032d9a095899960200f642"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030350.json",
+      "sha256": "67ed62a83e47b99ff9f767bfb51dbd7f26fd1e4ab12f25d5caaef202b43464b2"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030350.uasset",
+      "sha256": "f6b17ed8c1954a534e65ae0a3cd733790113645b98b49bda78e0c5e090c269fe"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030350.uexp",
+      "sha256": "79955a9920a79f169af51d179acacd22251197f26118bff323021b4300295d82"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030360.json",
+      "sha256": "23428ab5e0b643445abaaf348d29c52ce97bd794055631ec8dddae8f160f0ec2"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030360.uasset",
+      "sha256": "0664d5f86b036abbf981e5c177672fc7228eb3876dbc705686acb41028c77e93"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S3/MGE_1378030360.uexp",
+      "sha256": "07fd989c62a9992460cb5dc7818bb581f0baa3109722a59ca46a76df0e24dfba"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030370.json",
+      "sha256": "424272475c498b31412ddaa1fde07144fd5f378d7eee940707f6f387f905b5f2"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030370.uasset",
+      "sha256": "342028c069e8a54c640f4d82717920d17a3584246eea356154e66a3c246e9aa4"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030370.uexp",
+      "sha256": "a80be12d52bb55840861313a10e3e80e37f163e1deec64ee2756a80fb5421d3c"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030371.json",
+      "sha256": "8bab4ad575e62a99872879a17a622ce42201231cc14567091146dad1f0306b28"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030380.json",
+      "sha256": "503a5284cdb5046354c3865a24a168662aa770d071d8e3d6c6cf8daaf37c1137"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030380.uasset",
+      "sha256": "5c6f00eb576cd2ac985b3d962b36a4715bea9bc23b3ad76de4ce4f49f530d763"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030380.uexp",
+      "sha256": "f6de5e8333d5c1d502b38ae56d5b0fb285f2ab61a8890730a907bb8966f69bc0"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030390.json",
+      "sha256": "c3913359d2ffb3c73b5d920d5831cd6ebf0c9672b20bd55db68182ad71577fcd"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030390.uasset",
+      "sha256": "058994018ddef8f80ac8c2d2b2417e7ffe1e7e986043196eb533b8e1cb08c97a"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030390.uexp",
+      "sha256": "84046773125ba22a1c51b285fd07aa68e2949504c6e7bfac3e59235788db8329"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030400.json",
+      "sha256": "8e61cfcc2833d75e0b2ccecdd18cb7166fddac342fc9a35c15f5814cd9b2bfd7"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030400.uasset",
+      "sha256": "2893d246cf07ce6f24bafd859df1b01ddd0767244a04badbfd05085e03ebfdbd"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030400.uexp",
+      "sha256": "39ac5245d7ec74574d9aac300395e598bed5adf0c0c2764546266276f1d7d0bd"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030410.json",
+      "sha256": "7f347e88bba45d886ac58adc85b4e123ba235951d292b9d62281fef9a2935a4c"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030410.uasset",
+      "sha256": "0fb8fcff477f8ed0b775edc147548f2a3ece5a12419c26dd2a143a02996ec85d"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030410.uexp",
+      "sha256": "12fde1cf22eb190153cb21701fcca985aa1446366c0f36404f8b692959990fe7"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030420.json",
+      "sha256": "c9dbd1f51943ade4d63038e53d80d474f8ea97d6f506b1399a0e7c1c3aeb808f"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030420.uasset",
+      "sha256": "afa89431a00b10274d0c738b94109c6f71fc7b1ed269da2be64f72afb9fd99ee"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030420.uexp",
+      "sha256": "88d60b4a3f34b2c18566dda3221e0dd2f15ffedf3ffb3a23368231ff11e7b1cf"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030430.json",
+      "sha256": "e01151e43ed36d85906d34e63da90e20f6ddb1715035e2de7cdce79e8b120f28"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030430.uasset",
+      "sha256": "69df9e1ac3ac6d135c2d5beb950a7545e1c8c7314ec1482e5e8f294670f3ab77"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030430.uexp",
+      "sha256": "f731bd3621a41dedd2a7a5258f576f8e0d78ac4e6c26da8f4b7af3c9038cb931"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030440.json",
+      "sha256": "1948ecc39031a9473a2e88eee8642d74b658479c9ec3501c258fb0d920810aef"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030440.uasset",
+      "sha256": "87a320c4612125fd2ec6c232adfcb05de1295f7d3765dc003350b681d927b9ef"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030440.uexp",
+      "sha256": "ad0684ff478e99fc1b38b4170fa1ea1a0af295eefccec77cbfe10076dc0685dd"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030450.json",
+      "sha256": "74fbfea8d1224b7d44c897d24ab455713c2be6167926f7fb1da13d22c4441e36"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030450.uasset",
+      "sha256": "cbe6eba1e9e793b5657d1e32fedc4557d0aa0c2eb2b437f65bcc2bf44dcbcc8a"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030450.uexp",
+      "sha256": "fe89b0ce670f8614983271ca878fede6ce3b911288a740dac8c67e0d4ffb0939"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030460.json",
+      "sha256": "9a5b4b212c6ddf7f7a7cf4fe15adb5b79b1284b3ed7f991a3561b4b8e77e0886"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030460.uasset",
+      "sha256": "923b2724b0f8163e8f50e54748530044debd48069d4062a6a497adc179281efe"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030460.uexp",
+      "sha256": "62a62e6522177ba5cb089ddd182ce2da34ddf2976939469245c2b77e98cd51a5"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030470.json",
+      "sha256": "ae040dd7d59b02eec6ba79a79a3461ca23949a133a40e44da409d507b6b1ef21"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030470.uasset",
+      "sha256": "ef3ceac1f761252dce7380df5cfd956519419c8719ff96fbe9d510c8dd83fae9"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030470.uexp",
+      "sha256": "2dc2016260a262665670199cd2077a8c7f0a0f04d244b7878ce029b72444c80c"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030480.json",
+      "sha256": "3c64cbedd80faad9adad09304f46f06a0dd842524c01713d0826fb42c041b61f"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030480.uasset",
+      "sha256": "f8b943e20091b9374f5b59cb2910c0d39560a7c0130294c32f8915c97ee3caf7"
+    },
+    {
+      "path": "Abilities/Build/RoguePerk/S4/MGE_1378030480.uexp",
+      "sha256": "68463e0028f9742a040ec85a9b9d9c1209058d691280f5de5d83b9cab65bf5ab"
+    },
+    {
+      "path": "Attributes/AutoGenerate/numerical_modifier_config.json",
+      "sha256": "5d4ee1f7f051aa6181d8c74d5e34e8bfdeb393a5b301dc05eb12efbf04da0492"
+    },
+    {
+      "path": "DataTables/Buff/BuffConfigDatatableNew.json",
+      "sha256": "d1944d1fd18050e34007f8ded30e5bf9e4ea98f36a069e7016b46dd3db3dba65"
+    },
+    {
+      "path": "DataTables/LuaDataTable/WeaponModSetTable.json",
+      "sha256": "e4d2106bb6914e7b877a0734cdbdbf1e8154aed25e3d60b22facfc17c6a0f7b5"
+    },
+    {
+      "path": "DataTables/MGE/GPModularGameplayEffectTable.json",
+      "sha256": "6ffe985668574ef868c4f4637ff01e3bcdb6357c425f46de961fa46fe22c29c3"
+    },
+    {
+      "path": "DataTables/MGE/MGEPassive_BD.json",
+      "sha256": "5abc9732987c2e1542c12ddd861fe6089a7bc3109b6fb15158d7f2c3f62f4a76"
+    },
+    {
+      "path": "DataTables/NumericalSettlementConstantConfig_SuperRogue.json",
+      "sha256": "b2fa5b1ce8ac9e73e2a8a5beb0ba220715545978905ab4b9f6ba7131970b4e21"
+    },
+    {
+      "path": "DataTables/System/Dungeon/NewEntranceInfoTable.json",
+      "sha256": "2965deae657f3f4efc0bd02648e3893f45ff059abf3642ad6e7b3ce18ec07719"
+    },
+    {
+      "path": "DataTables/System/Dungeon/RogueAffixesTable.json",
+      "sha256": "d6a41b2ed245b394eb338fc72dad0a65003ea0643b1713e17aa48665aebb380c"
+    },
+    {
+      "path": "DataTables/numerical_config_playerskill.json",
+      "sha256": "456c835132f08c45ab53a68e66da5aa6b31ac227c86d7a8c380af711ef36c0e2"
+    }
+  ],
+  "effects": {
+    "1378030130_1": {
+      "description": "移动速度提升 25%。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030130.uasset+uexp#ExecuteUbergraph@126 ApplyModifiers ID112031012",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031012_1_0.BaseValue=0.25; GPModifierOp=B1; scale=1"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031012_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030140_1": {
+      "description": "持续移动每满 1 秒获得一层动能，每层提升 3.5% 换弹速度和 10% 伤害，最多 5 层，持续 2 秒。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030140.uasset+uexp#ExecuteUbergraph@440 TriggerPeriodically interval=1; @3189 MGEAddBuff stack=1",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031013_1_0.BaseValue=0.035; GPModifierOp=B1; scale=1",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031013_1_1.BaseValue=0.1; GPModifierOp=B1; scale=1",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030140.StackLimitCount=5",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030140.Duration=2"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031013_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:112031013_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030150_1": {
+      "description": "移动、下蹲或切枪时，每 2 秒获得一层增益，最多 5 层；射击消耗一层，使该次射击伤害提升 120%、暴击率提升 100%。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030150.uasset+uexp#ExecuteUbergraph@776 periodic interval=2; @3016 fire-context Modifier112031014; @3265 firing event consumes buff",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030150.StackLimitCount=5",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031014_1_0.BaseValue=1.2; GPModifierOp=B1; scale=1",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031014_1_1.BaseValue=1; GPModifierOp=B1; scale=1"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031014_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:112031014_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030220_1": {
+      "description": "调整生命值上限；主动治疗效果提升 20%。生命上限的具体增幅待核验。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030220.uasset+uexp#ExecuteUbergraph@126 ApplyModifiers ID112031019",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031019_1_0.BaseValue=0.2; GPModifierOp=B2; scale=1",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031019_1_1.BaseValue=0.2; GPModifierOp=B1; scale=1",
+        "MaxHealth 行使用 B2；当前协议未确认该行的 B2 公式，不能把 BaseValue=0.2 直接解释为生命上限+20%。原始行保留在 auditedRows，不进入属性索引。"
+      ],
+      "auditedRows": [
+        {
+          "row": "lc:112031019_1_0",
+          "reason": "MaxHealth/B2 的方向与公式未确认，保留原始审计事实，不发布百分比或套用独弹强化的专属B2例外。"
+        }
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031019_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030230_1": {
+      "description": "拥有护盾时，武器伤害提升 60%；护盾被打破时释放冲击波，造成 500% 攻击力伤害（冷却 2 秒）。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030230.json#Default__MGE_1378030230_C.Properties.武器伤害提升修正ID=112031020",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031020_1_0.BaseValue=0.6; GPModifierOp=B1; scale=1",
+        "Abilities/Build/RoguePerk/S3/MGE_1378030230.json#Default__MGE_1378030230_C.Properties.爆炸X5伤害=130103006",
+        "DataTables/numerical_config_playerskill.json#Rows.130103006_1.HpCalScale=5",
+        "Abilities/Build/RoguePerk/S3/MGE_1378030230.json#Default__MGE_1378030230_C.Properties.Cooldown=2"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031020_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030240_1": {
+      "description": "受到致命伤害时免疫死亡，恢复 50% 生命值与满额护盾，并获得 5 秒不灭状态（冷却 120 秒）。溢出的生命回复转化为护盾，护盾上限为最大生命值的 150%。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030240.uasset+uexp#ExecuteUbergraph@3415 MaxHealth*0.5; @3816 MaxShield*1; @4031 buff duration override5; @4122 cooldown Buff_Rogue_1378030181; @1889 shield limit X=MaxHealth",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030181.Duration=120",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031034_1_0.CoefValue=1.5; GPModifierOp=O; scale=1"
+      ],
+      "exclusion": "生存与治疗/护盾机制；不新增伤害乘区。免死Buff与MaxShield覆写由独立执行链管理。"
+    },
+    "1378030250_1": {
+      "description": "攻击距离超过 20 米时，距离越远伤害越高；30 米达到最高 20% 加成。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030250.uasset+uexp#ExecuteUbergraph@989 min(distance,3000); @1031 subtract2000; @1073 divide100; @1115 ceil; @1189 Modifier112031022 coefficient X",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031022_1_0.CoefValue=0.02; GPModifierOp=B1; scale=10"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031022_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030260_1": {
+      "description": "受到伤害或 5 米内有至少 5 个怪物时，触发范围爆炸并击飞，造成 1000% 攻击力伤害（冷却 20 秒）。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030260.uasset+uexp#ExecuteUbergraph@670 AOE Numerical130103010; @1680 query radius500; @2101 monster count>=5; damage-received event@1134",
+        "DataTables/numerical_config_playerskill.json#Rows.130103010_1.HpCalScale=10",
+        "Abilities/Build/RoguePerk/S3/MGE_1378030260.json#Default__MGE_1378030260_C.Properties.CooldownDuration=20"
+      ],
+      "exclusion": "新增独立爆炸结算Numerical130103010，不是既有伤害的Modifier。"
+    },
+    "1378030270_1": {
+      "description": "保持不掉血时，每造成 5000 伤害获得一层 6% 伤害加成，最多 20 层；掉血时清空。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030270.json#Default__MGE_1378030270_C.Properties.Threshold=5000",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031024_1_0.BaseValue=0.06; GPModifierOp=B1; scale=1",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030210.StackLimitCount=20"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031024_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030280_1": {
+      "description": "破韧效率提升 25%。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030280.uasset+uexp#ExecuteUbergraph@126 ApplyModifiers ID112031025",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031025_1_0.BaseValue=0.25; GPModifierOp=B1; scale=1"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031025_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030290_1": {
+      "description": "使怪物破韧后，按自身破韧贡献比例造成 3000% 攻击力的物理伤害。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030290.uasset+uexp#ExecuteUbergraph@558 own toughness contribution/HardStraightThresholdMin; @745 multiply by Attack; @791 settlement NumericalID",
+        "Abilities/Build/RoguePerk/S3/MGE_1378030290.json#Default__MGE_1378030290_C.Properties.NumericalID=130103011",
+        "DataTables/numerical_config_playerskill.json#Rows.130103011_1.HpCalScale=30"
+      ],
+      "exclusion": "新增按破韧贡献结算的Numerical130103011，不是既有伤害的Modifier。"
+    },
+    "1378030300_1": {
+      "description": "破韧效率额外提升 50%。破韧时填满当前弹匣和武器技能充能，并获得 50% 伤害加成，持续 5 秒。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030300.uasset+uexp#ExecuteUbergraph@346 refill weapon ammo; @554 Buff_Rogue_1378030240; @707 FullOfChargeForSlotType; @1048 Modifier112031026",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031026_1_0.BaseValue=0.5; GPModifierOp=B1; scale=1",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031027_1_0.BaseValue=0.5; GPModifierOp=B1; scale=1",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030240.Duration=5"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031026_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:112031027_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030310_1": {
+      "description": "命中目标弱点时，有 50% 概率生成撕裂伤口（冷却 20 秒）。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030310.uasset+uexp#ExecuteUbergraph@250 ProbabilityCheck=.5; @406 SpawnWeaponSpawnableActor_Roguelike BP_1378030310_Weakness",
+        "Abilities/Build/RoguePerk/S3/1378030310/BP_1378030310_Weakness.json#CDO.InitialLifeSpan=5.2; lifespan is actor lifetime, not rounded gameplay duration",
+        "Abilities/Build/RoguePerk/S3/MGE_1378030310.json#Default__MGE_1378030310_C.Properties.CooldownDuration=20"
+      ],
+      "exclusion": "生成可受击弱点Actor；未发现此入口直接施加增伤Modifier，不从弱点语义伪造易伤来源。"
+    },
+    "1378030320_1": {
+      "description": "附近 20 米内存在同伴时，为同伴分摊 50% 非致死伤害。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030320.uasset+uexp#ExecuteUbergraph@662 teammate distance range0..2000; @1546 applies CDO减伤ModifierID; teammate transfer uses settlement130103012",
+        "DataTables/numerical_config_playerskill.json#Rows.130103012_1.HpCalScale=0.5"
+      ],
+      "exclusion": "队友非致死伤害转移/减伤机制，不发布为攻击增伤。112031029与130103012负责承伤及转移结算。"
+    },
+    "1378030330_1": {
+      "description": "释放技能时连接 20 米内最近的同伴，共享双方的伤害加成，持续 10 秒；距离超过 30 米时断开（冷却 30 秒）。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030330.uasset+uexp#ExecuteUbergraph@3060/3242 reads self/target DamageRatio, stored as AdditionalDamage and TargetDamage; @4022 Buff_Rogue_1378030330",
+        "Abilities/Build/RoguePerk/S3/MGE_1378030330.json#Default__MGE_1378030330_C.Properties.TargetDistance=2000",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030330.Duration=10",
+        "Abilities/Build/RoguePerk/S3/MGE_1378030330.json#Default__MGE_1378030330_C.Properties.MaxConnectDist=3000",
+        "Abilities/Build/RoguePerk/S3/MGE_1378030330.json#Default__MGE_1378030330_C.Properties.CooldownDuration=30",
+        "Abilities/Build/RoguePerk/S3/MGE_1378030330_AddDamage.uasset+uexp#ExecuteUbergraph@206 ApplyModifiers112031030, X=GetFloatFromGEContextHandle AdditionalDamage; receiver self (both paired actors instantiate effect)."
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031030_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030340_1": {
+      "description": "攻击距离小于 10 米时，距离越近伤害越高；5 米以内达到最高 20% 加成。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030340.uasset+uexp#ExecuteUbergraph@385 distance0..1000; @777 max(distance,500); @819 1000-distance; @865 /100; @907 ceil; @981 Modifier112031031",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031031_1_0.CoefValue=0.04; GPModifierOp=B1; scale=5"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031031_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030350_1": {
+      "description": "斩杀生命值低于 11% 的非 Boss 单位，一次最多影响 3 个目标（冷却 1 秒）。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030350.uasset+uexp#ExecuteUbergraph@1523 FilterTargetsByUnderHealthThreshold threshold=.11,max targets3",
+        "Abilities/Build/RoguePerk/S3/MGE_1378030350.json#Default__MGE_1378030350_C.Properties.CooldownDuration=1"
+      ],
+      "exclusion": "低血量斩杀独立结算Numerical130103013，不是增伤Modifier。"
+    },
+    "1378030360_1": {
+      "description": "每累计损失 5% 生命值或护盾，获得 5% 伤害加成，最多 40 层（200%）；死亡复活后清空。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S3/MGE_1378030360.uasset+uexp#ExecuteUbergraph@507 HandleAccumulatedHealthAndShieldLoss threshold=.05; @293 MGEAddBuff",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031033_1_0.BaseValue=0.05; GPModifierOp=B1; scale=1",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030360.StackLimitCount=40",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030360.StackLimitCount=40",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112031033_1_0.BaseValue=0.05; GPModifierOp=B1; scale=40"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112031033_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030370_1": {
+      "description": "造成伤害时，有 10% 概率在脚下生成持续 5 秒的力场；力场内伤害提升 20%（冷却 5 秒）。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030370.uasset+uexp#ExecuteUbergraph@125 ProbabilityCheck uses CDO生成增益区域概率; spawned zone applies MGE1378030371 -> Buff_Rogue_1378030370",
+        "Abilities/Build/RoguePerk/S4/MGE_1378030370.json#Default__MGE_1378030370_C.Properties.生成增益区域概率=0.1",
+        "Abilities/Build/RoguePerk/S4/MGE_1378030370.json#Default__MGE_1378030370_C.Properties.光环持续时间=5",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112041010_1_0.BaseValue=0.2; GPModifierOp=B1; scale=1",
+        "Abilities/Build/RoguePerk/S4/MGE_1378030370.json#Default__MGE_1378030370_C.Properties.CooldownDuration=5"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112041010_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030380_1": {
+      "description": "站立不动时，每 1 秒获得一层 10% 伤害增益，最多 6 层；发生位移时清空。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030380.json#Default__MGE_1378030380_C.Properties.增伤间隔=1",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112041020_1_0.BaseValue=0.1; GPModifierOp=B1; scale=1",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030380.StackLimitCount=6"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112041020_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030390_1": {
+      "description": "站立不动时继续每秒叠加伤害增益，上限提升至 18 层；移动后移除当前层数的一半（向上取整）。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030390.uasset+uexp#ExecuteUbergraph@1536 ModifyBuffStack target Buff_Rogue_1378030380, additive limit +12; @152/810 stack/2; @194/852 ceil; @231/889 removes that many layers; replaces previous stage",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030380.StackLimitCount=6"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112041020_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030400_1": {
+      "description": "暴击率提升 20%。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030400.json#Default__MGE_1378030400_C.Properties.暴击率modifier={\"ModifierID\":112041040,\"X_Value\":0,\"Curve\":null}",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112041040_1_0.BaseValue=0.2; GPModifierOp=B1; scale=1"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112041040_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030410_1": {
+      "description": "暴击伤害上限额外提高 500%；每次命中弱点获得一层 1% 暴击伤害加成，最多 200 层，持续 3 秒。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030410.json#Default__MGE_1378030410_C.Properties.暴伤上限增加Modifier={\"ModifierID\":112041050,\"X_Value\":0,\"Curve\":null}",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112041050_1_0.BaseValue=5; GPModifierOp=B1; scale=1",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112041051_1_0.BaseValue=0.01; GPModifierOp=B1; scale=1",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030410.StackLimitCount=200",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030410.Duration=3"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112041050_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:112041051_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030420_1": {
+      "description": "每次暴击有 50% 概率触发会心一击，该次暴击伤害变为 2 倍。",
+      "evidence": [
+        "DataTables/NumericalSettlementConstantConfig_SuperRogue.json#Rows.SuperCriticalDamageRatio.Constant=2",
+        "Abilities/Build/RoguePerk/S4/MGE_1378030420.json#Default__MGE_1378030420_C.Properties.会心一击Modifier={\"ModifierID\":112041060,\"X_Value\":0,\"Curve\":null}",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112041060_1_0.BaseValue=0.5; GPModifierOp=B1; scale=1"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112041060_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030430_1": {
+      "description": "每击杀一个怪物获得 1 层狩猎印记，每层提升 0.15% 伤害，最多 400 层。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030430.uasset+uexp#ExecuteUbergraph@276 MGEAddBuff stack=1 on killed-monster branch",
+        "Attributes/AutoGenerate/numerical_modifier_config.json#Rows.112041070_1_0.BaseValue=0.0015; GPModifierOp=B1; scale=1",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030430.StackLimitCount=400"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112041070_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030440_1": {
+      "description": "击杀精英额外获得 9 层、击杀 Boss 额外获得 49 层狩猎印记；计入基础击杀层数后分别为 10 层和 50 层。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030440.uasset+uexp#ExecuteUbergraph@362 MGEAddBuff stack=AddStack; CDO additional elite9/boss49, adds to stage1 normal kill1",
+        "Abilities/Build/RoguePerk/S4/MGE_1378030440.json#Default__MGE_1378030440_C.Properties.击杀精英获取的Buff层数=9",
+        "Abilities/Build/RoguePerk/S4/MGE_1378030440.json#Default__MGE_1378030440_C.Properties.击杀Boss获取的Buff层数=49"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112041070_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030450_1": {
+      "description": "狩猎印记上限提升至 1200 层。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030450.uasset+uexp#ExecuteUbergraph@126 ModifyBuffStack target Buff_Rogue_1378030430, additive limit +800",
+        "DataTables/Buff/BuffConfigDatatableNew.json#Rows.Buff_Rogue_1378030430.StackLimitCount=400"
+      ],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:112041070_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ]
+    },
+    "1378030460_1": {
+      "description": "自身获得可叠层的增益 Buff 时，有 50% 概率额外获得 1 层。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030460.uasset+uexp#ExecuteUbergraph@15/705 ProbabilityCheck CDO probability; @65/775 MGEAddBuff stack1; bToggle prevents recursion",
+        "Abilities/Build/RoguePerk/S4/MGE_1378030460.json#Default__MGE_1378030460_C.Properties.额外添加一层的添加概率=0.5"
+      ],
+      "exclusion": "叠层事件额外增加Buff层数，目标Buff取运行时事件；没有固定属性或固定增伤Modifier。"
+    },
+    "1378030470_1": {
+      "description": "自身获得可叠层的增益 Buff 时，额外获得 1 层。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030470.uasset+uexp#ExecuteUbergraph@558 recursion guard bToggle; @604/1512 MGEAddBuff stack1 on received positive buff paths; no probability branch"
+      ],
+      "exclusion": "叠层事件额外增加Buff层数，目标Buff取运行时事件；没有固定属性或固定增伤Modifier。"
+    },
+    "1378030480_1": {
+      "description": "自身获得可叠层的增益 Buff 时，额外获得 2 层。",
+      "evidence": [
+        "Abilities/Build/RoguePerk/S4/MGE_1378030480.uasset+uexp#ExecuteUbergraph@558 recursion guard bToggle; @604/1512 MGEAddBuff stack2 on received positive buff paths; no probability branch"
+      ],
+      "exclusion": "叠层事件额外增加Buff层数，目标Buff取运行时事件；没有固定属性或固定增伤Modifier。"
+    }
+  },
+  "notes": [
+    "Reviewed against the supplied 2026-09-16 S4 preload export. These are preview rules, not a claim of live rollout. Numerical values come from explicit rows/Ability CDO/Buff fields and the selected local Blueprint execution evidence.",
+    "Rotation begins at the first upcoming source change boundary 2026-09-21 02:00 Asia/Shanghai, not an inferred September 22 release timestamp. Baseline rows begin August 1; evidence retains original times. The final configured boundary is January 21, 2027; no perpetual schedule inferred.",
+    "NewEntranceInfoTable.RogueAffixesId is the relation key, not dungeon_id: 禁魔岛 dungeon2006131 uses RogueAffixesId2006111.",
+    "瞬暴8档正式客户端复核: Numerical112041060 BaseValue=.5 means50%; settlement SuperCriticalDamageRatio=2. Reject screenshot25% and skill description3x. 瞬暴5 displays the verified CriticalDamageRatioMaxAdd +500%, not an inferred absolute cap.",
+    "狙击4: CDO cooldown20s overrides obsolete description10s. Trigger query uses >=5 monsters. 共振2 wound actor lifetime5.2s is not asserted as a rounded 5s effect duration.",
+    "力场8 replaces stage2; 叠叠乐5 replaces stage1 and8 replaces stages1+2. Preserve raw OverrideEffectLevels (stage indices, not piece counts).",
+    "Blueprint evidence exported directly from the selected loose uasset/uexp files with Convert-LocalAsset.ps1 -ReadScriptData under MD/_local/overlimit/s4-rules-bytecode. Review pins original pair hashes; no game directory was remounted.",
+    "2026-09-22正式客户端复核：374份执行uasset/uexp与预载审定字节完全相同；力场、叠叠乐档位改为2/4/6；所有已审定Numerical行保持一致。"
+  ]
+}

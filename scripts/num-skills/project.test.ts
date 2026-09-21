@@ -85,6 +85,21 @@ test("published replacement projection rejects channel leakage, missing bases an
   assert.throws(() => projectSkillVariants([{ ...replacement, original: { id: 999, name: "错绑" } }], context, [base]), /base/);
 });
 
+test("explicit current and preview fixtures stay isolated without configured preview", () => {
+  const current: ResolvedSkillVariant = {
+    ...replacement,
+    skill: { ...replacement.skill, provenance: { cooldown: { row: "current:pve:1002_1", field: "ChargeNeedTime" } } },
+  };
+  const currentContext = { ...context, perkSlug: "slot-4/强化", channel: "current" };
+  const query = createSkillIndexQueries({
+    schema_version: 1, provenance: { files: [] }, skills: [base],
+    variants: [...projectSkillVariants([current], currentContext, [base]), ...projectSkillVariants([replacement], context, [base])],
+  });
+  assert.equal(query.getSkillVariantsForWeapon("test", "lc", "active", "current").length, 1);
+  assert.equal(query.getSkillVariantsForWeapon("test", "lc", "active", "s4-preview").length, 1);
+  assert.throws(() => projectSkillVariants([current], context, [base]), /Cross-channel/);
+});
+
 test("reverse queries retain both modes and diagnose broken index relationships", () => {
   const index: NumSkillIndex = {
     schema_version: 1, provenance: { files: [] },

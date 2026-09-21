@@ -38,10 +38,8 @@
     "slot-1/蹭枪子弹",
     "slot-2/小弟充电",
     "slot-2/带携充能",
-    "slot-3/打标增伤",
     "slot-3/跟班增伤",
-    "slot-4/合圈震荡",
-    "slot-4/定时震波"
+    "slot-4/合圈震荡"
   ],
   "sharedTalentRefs": [
     { "season": "s3", "tree": "zero", "id": "3002308", "kind": "node", "relation": "enhances" }
@@ -107,7 +105,7 @@
         { "buffId": 120600301, "target": "player", "relation": "grants", "note": "火力宣泄叠层" },
         { "buffId": 120600302, "target": "player", "relation": "enhances", "note": "幸运炎帝插件状态" }
       ],
-      "perkSlugs": ["slot-4/火力阵线", "slot-4/自追踪炮塔", "slot-4/幸运炎帝"],
+      "perkSlugs": ["slot-4/火力阵线", "slot-4/自追踪炮塔"],
       "talentRefs": [],
       "evidenceNotes": [
         "炮台由专用原型 20006000037、ASC 392 与专用伤害行结算；当前武器页尚未收录这条伤害行。"
@@ -236,7 +234,7 @@
       "buffRefs": [
         { "buffId": 121600110, "target": "player", "relation": "enhances", "note": "哈士奇支援插件的玩家射速/直击增益" }
       ],
-      "perkSlugs": ["slot-4/哈士奇寻敌", "slot-4/哈士奇支援", "slot-4/幸运哈士奇"],
+      "perkSlugs": ["slot-4/哈士奇寻敌", "slot-4/哈士奇支援"],
       "talentRefs": [],
       "evidenceNotes": [
         "武器自带射速层持续 3 秒，哈士奇支援插件层持续 5 秒，两者是不同效果。"

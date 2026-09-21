@@ -11,8 +11,8 @@ import {
 } from "@/lib/num-modifier";
 import type { NumModifierDataLock } from "@/lib/num-modifier-data-lock";
 
-test("preview execution parameters retain unknown B2 semantics while exposing their source channel", () => {
-  const resolver = getPerkModifierResolver("s4-preview");
+test("live execution parameters retain unknown B2 semantics while exposing their source channel", () => {
+  const resolver = getPerkModifierResolver("s4");
   for (const [row, field, expected] of [
     ["lc:130000001_1_0", "coefficient", 1],
   ] as const) {
@@ -27,7 +27,7 @@ test("preview execution parameters retain unknown B2 semantics while exposing th
 });
 
 test("last shot uses its explicit reviewed correction rule", () => {
-  const effect = getPerkModifierResolver("s4-preview").resolveEffect(
+  const effect = getPerkModifierResolver("s4").resolveEffect(
     { row: "lc:130008001_1_0", field: "base" }, { recipient: "damage-event" },
   );
   assert.equal(effect.value.value, 6);
@@ -37,12 +37,12 @@ test("last shot uses its explicit reviewed correction rule", () => {
 });
 
 test("locks the complete LC modifier table", () => {
-  assert.equal(NUM_MODIFIER_LOCK.sources.lc.modifiers.row_count, 3044);
+  assert.equal(NUM_MODIFIER_LOCK.sources.lc.modifiers.row_count, 3675);
   assert.equal(
     NUM_MODIFIER_LOCK.sources.lc.attribute_descriptions.row_count,
-    180,
+    188,
   );
-  assert.equal(Object.keys(NUM_MODIFIER_LOCK.rows.lc).length, 3044);
+  assert.equal(Object.keys(NUM_MODIFIER_LOCK.rows.lc).length, 3675);
   assert.deepEqual(
     NUM_MODIFIER_RESOLVER.diagnostics.map((item) => item.code).sort(),
     ["EMPTY_ATTRIBUTE_NAME", "NON_STANDARD_ROW_NAME", "ROW_IDENTITY_MISMATCH"],
