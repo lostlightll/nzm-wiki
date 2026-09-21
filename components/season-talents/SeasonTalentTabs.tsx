@@ -54,7 +54,7 @@ function rememberSeason(page: SeasonPage) {
 export function SeasonTalentTabs({ s4Panel }: { s4Panel: ReactNode }) {
   const showS4 = s4Panel !== null;
   const seasonPages: readonly SeasonPage[] = showS4 ? ALL_SEASONS : BASE_SEASONS;
-  const defaultPage: SeasonPage = "s3";
+  const defaultPage: SeasonPage = showS4 ? "s4" : "s3";
   const [activePage, setActivePage] = useState<SeasonPage>(defaultPage);
 
   useEffect(() => {

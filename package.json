@@ -43,7 +43,7 @@
     "test:weapon-data-reader": "tsx --test scripts/weapon-data/source-reader.test.ts",
     "test:weapon-skill-charge": "tsx --test scripts/weapon-data/skill-charge.test.ts",
     "test:weapon-data-lock": "tsx --test scripts/weapon-data/lock.test.ts",
-    "test:season-talents": "tsx --test lib/season-talent-builder.test.ts lib/s3-season-talent-builder.test.ts",
+    "test:season-talents": "tsx --test lib/season-talent-builder.test.ts lib/s3-season-talent-builder.test.ts lib/s4-season-talents.test.ts",
     "test:s2-talents": "tsx --test lib/s2-season-talent-builder.test.ts scripts/s2-season-talents/providers.test.ts",
     "project:s2-talents": "tsx scripts/s2-season-talents/providers.ts --write && pnpm num-modifier:project",
     "test:s0s1-talents": "tsx --test lib/s0s1-season-talents.test.ts lib/s0s1-season-talent-builder.test.ts lib/s0s1-talent-view.test.ts lib/s0s1-talent-description.test.ts lib/s0s1-multiplier.test.ts scripts/s0s1-talent-search.test.ts scripts/s0s1-season-talents/atlas-crops.test.ts scripts/s0s1-season-talents/range-values.test.ts scripts/s0s1-season-talents/s0-reviewed-values.test.ts scripts/s0s1-season-talents/s1-reviewed-values.test.ts scripts/s0s1-season-talents/video-values.test.ts scripts/s0s1-season-talents/cli.test.ts scripts/s0s1-season-talents/adapt-weapons.test.ts scripts/s0s1-season-talents/swarm-evidence.test.ts",

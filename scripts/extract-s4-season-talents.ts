@@ -81,7 +81,9 @@ type StructureRow = {
 };
 
 const repoRoot = process.cwd();
-const contentRoot = path.join(repoRoot, "refs-test", "Exports", "NZM", "Content");
+const contentRoot = path.join(repoRoot, "refs", "Exports", "NZM", "Content");
+// Refresh configuration by default; --images also requires the selected HUD PNGs.
+const dataOnly = !process.argv.includes("--images");
 const tableRoot = path.join(contentRoot, "DataTables", "SeasonTalent");
 const dataOutput = path.join(repoRoot, "data", "season-talents", "s4");
 const imageOutput = path.join(
@@ -165,8 +167,6 @@ async function main() {
     ),
   );
 
-  fs.rmSync(dataOutput, { recursive: true, force: true });
-  fs.rmSync(imageOutput, { recursive: true, force: true });
   fs.mkdirSync(dataOutput, { recursive: true });
   fs.mkdirSync(imageOutput, { recursive: true });
 
@@ -257,7 +257,7 @@ async function main() {
     assets.set(sourceImagePath(typeRow.TypeIcon), typeRow.TypeIcon);
     const applicable = adaptWeaponRows.find((row) => row.TextID === root.AdaptWeapon);
     const tree = {
-      draft: true,
+      draft: false,
       id: slug,
       talentType: typeRow.TalentType,
       name: text(typeRow.TypeName),
@@ -297,9 +297,11 @@ async function main() {
 
   fs.writeFileSync(
     path.join(dataOutput, "passives.json"),
-    `${JSON.stringify({ draft: true, trees: passivesByTree }, null, 2)}\n`,
+    `${JSON.stringify({ draft: false, trees: passivesByTree }, null, 2)}\n`,
   );
 
+  console.log(`Generated ${typeRows.length} S4 trees and ${passiveRows.length} passives from the live content root.`);
+  if (dataOnly) return;
   await Promise.all([...assets.keys()].map((source) => convertImage(source)));
   const hudRoot = path.join(
     contentRoot,
@@ -317,7 +319,6 @@ async function main() {
     convertImage(path.join(hudRoot, "T_TalentS4_02_SP.png"), "hud-frame"),
   ]);
 
-  console.log(`Generated ${typeRows.length} S4 trees and ${passiveRows.length} passives.`);
   console.log(`Converted ${assets.size + 5} S4 detail images.`);
 }
 

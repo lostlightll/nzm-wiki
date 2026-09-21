@@ -19,8 +19,8 @@ export default async function SeasonTalentsPage() {
     );
   const s4Panel = showS4
     ? await import(
-        "@/components/season-talents/s4/S4SeasonTalentPreview"
-      ).then(({ S4SeasonTalentPreview }) => <S4SeasonTalentPreview />)
+        "@/components/season-talents/s4/S4SeasonTalentCatalog"
+      ).then(({ S4SeasonTalentCatalog }) => <S4SeasonTalentCatalog />)
     : null;
 
   return (

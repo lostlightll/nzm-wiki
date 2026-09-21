@@ -146,11 +146,11 @@ function MobileTalentButton({ talent }: { talent: S4Talent }) {
   );
 }
 
-export function S4SeasonTalentPreview() {
+export function S4SeasonTalentCatalog() {
   return (
     <section aria-labelledby="s4-season-talents-heading" className="lg:h-full">
       <h2 id="s4-season-talents-heading" className="sr-only">
-        S4 赛季天赋预览
+        S4 赛季天赋
       </h2>
 
       <div className="relative hidden h-full w-full overflow-hidden bg-[#03121b] lg:block">
@@ -180,7 +180,7 @@ export function S4SeasonTalentPreview() {
 
         <div className="absolute right-6 top-5 z-10 flex items-center gap-2 font-mono text-[0.62rem] text-cyan-50/75">
           <span className="h-1.5 w-1.5 bg-cyan-300" />
-          S4 // TEST SERVER PREVIEW
+          S4 // 新星计划
         </div>
 
         {S4_TALENTS.map((talent) => (
@@ -192,7 +192,7 @@ export function S4SeasonTalentPreview() {
         <div className="flex min-h-28 items-center justify-center pb-3">
           <Image
             src={getAssetPath("/webp/images/season-talents/s4/logo.webp")}
-            alt="S4 朔望计划"
+            alt="S4 新星计划"
             width={644}
             height={264}
             priority
