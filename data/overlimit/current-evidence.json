@@ -12542,7 +12542,7 @@
           },
           "MGEDescriptionId": 1
         },
-        "description": "每次暴击有 50% 概率触发会心一击，该次暴击伤害变为 2 倍。",
+        "description": "每次暴击有 50% 概率触发会心一击，该次暴击伤害变为 3 倍。",
         "evidence": [
           "DataTables/NumericalSettlementConstantConfig_SuperRogue.json#Rows.SuperCriticalDamageRatio.Constant=2",
           "Abilities/Build/RoguePerk/S4/MGE_1378030420.json#Default__MGE_1378030420_C.Properties.会心一击Modifier={\"ModifierID\":112041060,\"X_Value\":0,\"Curve\":null}",
@@ -13241,7 +13241,7 @@
       "Reviewed against the supplied 2026-09-16 S4 preload export. These are preview rules, not a claim of live rollout. Numerical values come from explicit rows/Ability CDO/Buff fields and the selected local Blueprint execution evidence.",
       "Rotation begins at the first upcoming source change boundary 2026-09-21 02:00 Asia/Shanghai, not an inferred September 22 release timestamp. Baseline rows begin August 1; evidence retains original times. The final configured boundary is January 21, 2027; no perpetual schedule inferred.",
       "NewEntranceInfoTable.RogueAffixesId is the relation key, not dungeon_id: 禁魔岛 dungeon2006131 uses RogueAffixesId2006111.",
-      "瞬暴8档正式客户端复核: Numerical112041060 BaseValue=.5 means50%; settlement SuperCriticalDamageRatio=2. Reject screenshot25% and skill description3x. 瞬暴5 displays the verified CriticalDamageRatioMaxAdd +500%, not an inferred absolute cap.",
+      "瞬暴8档：Numerical112041060 BaseValue=.5 对应50%概率；用户确认会心伤害为3倍并要求以游戏内描述为准，发布文案采用3倍。旧导出SuperCriticalDamageRatio=2仅保留为来源记录，不再作为展示倍率；未声称已完成运行时实测。瞬暴5按CriticalDamageRatioMaxAdd展示上限额外+500%。",
       "狙击4: CDO cooldown20s overrides obsolete description10s. Trigger query uses >=5 monsters. 共振2 wound actor lifetime5.2s is not asserted as a rounded 5s effect duration.",
       "力场8 replaces stage2; 叠叠乐5 replaces stage1 and8 replaces stages1+2. Preserve raw OverrideEffectLevels (stage indices, not piece counts).",
       "Blueprint evidence exported directly from the selected loose uasset/uexp files with Convert-LocalAsset.ps1 -ReadScriptData under MD/_local/overlimit/s4-rules-bytecode. Review pins original pair hashes; no game directory was remounted.",

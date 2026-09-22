@@ -2095,16 +2095,12 @@
         "sha256": "d6a41b2ed245b394eb338fc72dad0a65003ea0643b1713e17aa48665aebb380c"
       },
       {
-        "path": "scripts/overlimit/current-announcement.json",
-        "sha256": "5919d151158a08553fef3401f03483d3531124d923e415d70bdcee05e553d618"
-      },
-      {
         "path": "scripts/overlimit/current-card-source-lock.json",
         "sha256": "bc83ae5218c3ef5375cf6c881dcc36197015af87512171c01267f4eb1bc545a3"
       },
       {
         "path": "scripts/overlimit/current-rules-review.json",
-        "sha256": "9eb29766acaeaf1a2c2316859e8073a5bcc77ee23d1d717b41cc81a94b3adb25"
+        "sha256": "266dc87d72c6b4edb93a720e3db13f6d888737b9bf5783603d083b37fa41c2a9"
       },
       {
         "path": "scripts/overlimit/current-source-review.json",
@@ -2705,6 +2701,10 @@
       {
         "path": "Weapon/Data/Sniper/Sniper_20002000012_WBH_SWLS/MGE/MGE_1316115001_SWLS_DarkGoldPlugin.uexp",
         "sha256": "bfbecd6a13e239e2b2bae1a7a2dabc074d2d7480037e9f992cd699e7d0d5649b"
+      },
+      {
+        "path": "scripts/overlimit/current-announcement.json",
+        "sha256": "35effbadfecd33cb893e81693ad6963e6d502c42d0d65063ca4a498f6897d03c"
       }
     ]
   },
@@ -9776,7 +9776,7 @@
         },
         {
           "count": 8,
-          "description": "每次暴击有 50% 概率触发会心一击，该次暴击伤害变为 2 倍。正式客户端结算配置为 2 倍，与官方公告所述 3 倍不一致。",
+          "description": "每次暴击有 50% 概率触发会心一击，该次暴击伤害变为 3 倍。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         }
