@@ -178,11 +178,6 @@ export function S4SeasonTalentCatalog() {
           className="absolute left-[5.5%] top-[27%] z-10 h-auto w-[23%] drop-shadow-[0_5px_12px_rgba(0,0,0,0.35)]"
         />
 
-        <div className="absolute right-6 top-5 z-10 flex items-center gap-2 font-mono text-[0.62rem] text-cyan-50/75">
-          <span className="h-1.5 w-1.5 bg-cyan-300" />
-          S4 // 新星计划
-        </div>
-
         {S4_TALENTS.map((talent) => (
           <S4TalentMarker key={talent.id} talent={talent} />
         ))}
