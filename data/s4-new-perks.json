@@ -1,5 +1,14 @@
 {
   "season": "s4",
+  "superItemIds": [
+    "20703040524",
+    "20703040525",
+    "20703040526",
+    "20703040527",
+    "20703040528",
+    "20703040529",
+    "20703040530"
+  ],
   "source": "archives/content-versions/s4/s4-preview-final-20260922/files/data/perk-preview/preview.json",
   "itemIds": [
     "20703040030",

@@ -20,9 +20,16 @@ test("S4 上新名单精确对应已归档的新插件，按正式服状态分�
     .map(entry => entry.perk.itemId).sort());
   const perks = getAllPerks();
   const grouped = perks.filter(perk => getS4PerkLaunchGroup(perk) !== undefined);
-  assert.equal(grouped.length, 81);
+  assert.equal(grouped.length, 74);
   assert.equal(grouped.filter(perk => getS4PerkLaunchGroup(perk) === "season-new").length, 38);
-  assert.equal(grouped.filter(perk => getS4PerkLaunchGroup(perk) === "midseason-new").length, 43);
+  assert.equal(grouped.filter(perk => getS4PerkLaunchGroup(perk) === "midseason-new").length, 36);
+  for (const id of s4NewPerks.superItemIds) {
+    const perk = perks.find(perk => perk.itemId === id)!;
+    assert.ok(perk, id);
+    assert.ok(s4NewPerks.itemIds.includes(id));
+    assert.equal(getS4PerkLaunchGroup({ ...perk, collectModItem: 0 }), undefined);
+    assert.equal(getS4PerkLaunchGroup({ ...perk, collectModItem: 1 }), "season-new");
+  }
   for (const id of ["20703040160", "20703040164"]) {
     const perk = perks.find(perk => perk.itemId === id)!;
     assert.ok(perk);
