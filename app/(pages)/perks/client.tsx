@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { getAssetPath } from "@/lib/path";
 import { getShanghaiDateKey } from "@/lib/date-key";
-import { getPerkAvailability, getPerkConfiguredAvailability, isPerkRecent } from "@/lib/perk-release";
+import { getPerkAvailability, getPerkConfiguredAvailability, getS4PerkLaunchGroup, isPerkRecent } from "@/lib/perk-release";
 import { isPreviewSeason } from "@/lib/content-preview";
 import contentVersion from "@/config/content-version.json";
 import { OverlimitVersionNavigation } from "@/components/OverlimitVersionNavigation";
@@ -28,7 +28,7 @@ import {
   RARITY_OPTIONS,
 } from "@/constants/perks";
 
-type QuickFilter = "online" | "recent" | "offline" | "super";
+type QuickFilter = "online" | "recent" | "offline" | "super" | "season-new" | "midseason-new";
 
 const PREVIEW_CHANGE_OPTIONS: { type: PerkPreviewChange; label: string }[] = [
   { type: "new", label: "新插件" },
@@ -42,6 +42,8 @@ function parseQuickFilter(value: string): QuickFilter {
     case "recent":
     case "offline":
     case "super":
+    case "season-new":
+    case "midseason-new":
       return value;
     default:
       return "online";
@@ -241,6 +243,10 @@ export default function PerksPageClient({
       BASE_QUICK_FILTER_OPTIONS[1],
       ...(recentPerkCount > 0 ? [RECENT_QUICK_FILTER_OPTION] : []),
       BASE_QUICK_FILTER_OPTIONS[2],
+      ...(contentVersion.season === "s4" ? [
+        { type: "season-new" as const, label: "赛季上新" },
+        { type: "midseason-new" as const, label: "季中上新" },
+      ] : []),
     ],
     [recentPerkCount, isPreview],
   );
@@ -263,6 +269,7 @@ export default function PerksPageClient({
   const filteredPerks = useMemo(() => {
     return initialPerks.filter((perk) => {
       const availability = getPerkAvailability(perk);
+      const launchGroup = !isPreview ? getS4PerkLaunchGroup(perk) : undefined;
       const slotMatch =
         slotState.selected.size === 0 || slotState.selected.has(perk.slot);
       // 处理数字或字符串格式的稀有度
@@ -276,6 +283,7 @@ export default function PerksPageClient({
         effectiveQuickFilter.size === 0 ||
         (availability !== "preview" && effectiveQuickFilter.has(availability)) ||
         (effectiveQuickFilter.has("recent") && isPerkRecent(perk, todayKey)) ||
+        (launchGroup !== undefined && effectiveQuickFilter.has(launchGroup)) ||
         (effectiveQuickFilter.has("super") &&
           (isPreview ? PREVIEW_SUPER_PERK_NAMES : SUPER_PERK_NAMES).has(perk.name));
       const weaponApplicabilityMatch = matchesWeaponApplicability(
@@ -392,6 +400,8 @@ export default function PerksPageClient({
           gridClass={
             isPreview
               ? "grid grid-cols-2 gap-2 lg:grid-cols-4"
+              : quickFilterOptions.length === 6
+              ? "grid max-w-4xl grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6"
               : quickFilterOptions.length === 5
               ? "grid max-w-3xl grid-cols-2 gap-2 sm:grid-cols-5"
               : quickFilterOptions.length === 4

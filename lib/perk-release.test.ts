@@ -1,12 +1,46 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import fs from "node:fs";
 import { getShanghaiDateKey, isValidDateKey } from "./date-key";
-import { getPerkAvailability, getPerkConfiguredAvailability, isPerkRecent } from "./perk-release";
+import { getPerkAvailability, getPerkConfiguredAvailability, getS4PerkLaunchGroup, isPerkRecent } from "./perk-release";
+import { getAllPerks } from "./perks";
+import s4NewPerks from "../data/s4-new-perks.json";
 
 const ONLINE_PERK = {
   collectModItem: 1 as const,
   releaseDate: "2026-07-24",
 };
+
+test("S4 上新名单精确对应已归档的新插件，按正式服状态分组", () => {
+  const archived = JSON.parse(fs.readFileSync(s4NewPerks.source, "utf8")) as {
+    entries: { perk: { itemId: string; previewChange: string } }[];
+  };
+  assert.deepEqual(s4NewPerks.itemIds, archived.entries
+    .filter(entry => entry.perk.previewChange === "new")
+    .map(entry => entry.perk.itemId).sort());
+  const perks = getAllPerks();
+  const grouped = perks.filter(perk => getS4PerkLaunchGroup(perk) !== undefined);
+  assert.equal(grouped.length, 81);
+  assert.equal(grouped.filter(perk => getS4PerkLaunchGroup(perk) === "season-new").length, 38);
+  assert.equal(grouped.filter(perk => getS4PerkLaunchGroup(perk) === "midseason-new").length, 43);
+  for (const id of ["20703040160", "20703040164"]) {
+    const perk = perks.find(perk => perk.itemId === id)!;
+    assert.ok(perk);
+    assert.notEqual(perk.season, "s4");
+    assert.equal(getS4PerkLaunchGroup(perk), undefined);
+  }
+});
+
+test("S4 上新只认新插件身份，正式服状态更新覆盖历史分组", () => {
+  const perk = { itemId: s4NewPerks.itemIds[0], season: "s4", collectModItem: 1 as const };
+  assert.equal(getS4PerkLaunchGroup(perk), "season-new");
+  assert.equal(getS4PerkLaunchGroup({ ...perk, collectModItem: 0 }), "midseason-new");
+  assert.equal(getS4PerkLaunchGroup({ ...perk, season: "s3" }), undefined);
+  assert.equal(getS4PerkLaunchGroup({ ...perk, season: "s4-preview" }), undefined);
+  assert.equal(getS4PerkLaunchGroup({ ...perk, itemId: "20703040160" }), undefined);
+  assert.equal(getS4PerkLaunchGroup({ ...perk, itemId: "20703040164" }), undefined);
+  assert.equal(getS4PerkLaunchGroup({ ...perk, itemId: "" }), undefined);
+});
 
 test("上线当天属于近期上新", () => {
   assert.equal(isPerkRecent(ONLINE_PERK, "2026-07-24"), true);
