@@ -16,22 +16,24 @@ import {
   resolveMultiplierFactorHref,
 } from "@/lib/multiplier-data";
 import {
+  getWeeklyBuffFactors,
   getWeeklyBuffRotationWindow,
   getWeeklyBuffsForRotation,
   WEEKLY_BUFF_DAMAGE_INDEX,
   WEEKLY_BUFF_POOLS,
   type WeeklyBuff,
-  type WeeklyBuffIndexKind,
+  type WeeklyBuffDifficulty,
   type WeeklyBuffPool,
   type WeeklyBuffRotationWindow,
 } from "@/lib/weekly-buffs";
 
 type PoolId = WeeklyBuffPool["id"];
-type IndexFilter = "all" | Exclude<WeeklyBuffIndexKind, "utility">;
+type IndexFilter = "all" | "dilution" | "weakness" | "critical" | "extra";
 
 const INDEX_FILTERS: readonly { id: IndexFilter; label: string }[] = [
   { id: "all", label: "全部" },
-  { id: "direct", label: "乘区增伤" },
+  { id: "dilution", label: "大稀释乘区" },
+  { id: "weakness", label: "弱点增伤" },
   { id: "critical", label: "暴击收益" },
   { id: "extra", label: "额外伤害" },
 ];
@@ -115,45 +117,46 @@ function formatRotationRange(windowInfo: WeeklyBuffRotationWindow) {
   return `${DATE_FORMATTER.format(windowInfo.startsAt)} - ${DATE_FORMATTER.format(windowInfo.endsAt)}`;
 }
 
-function getMultiplierHref(buff: WeeklyBuff) {
-  if (buff.indexKind === "extra") {
-    return "/multiplier?part=damage-sources";
-  }
-  if (!buff.factorId) return undefined;
-  return resolveMultiplierFactorHref(buff.factorId, { view: "providers" });
-}
-
-function IndexBadge({ buff }: { buff: WeeklyBuff }) {
+function IndexBadges({ buff, stacked = false }: { buff: WeeklyBuff; stacked?: boolean }) {
   if (buff.indexKind === "utility") return null;
-  const label = buff.factorId
-    ? FACTOR_LABELS.get(buff.factorId)
-    : buff.indexLabel;
-  if (!label) return null;
-  const href = getMultiplierHref(buff);
-  const specialStyle =
-    buff.indexKind === "critical" || buff.indexKind === "extra"
-      ? INDEX_KIND_STYLES[buff.indexKind]
-      : "";
-  const className = `inline-flex min-h-7 items-center gap-1 rounded border px-2 py-1 text-xs font-semibold ${
-    buff.factorId
-      ? getMultiplierFactorStyle(buff.factorId)
-      : specialStyle
-  }`;
-
-  if (!href) return <span className={className}>{label}</span>;
+  const factors = getWeeklyBuffFactors(buff);
   return (
-    <Link
-      href={href}
-      prefetch={false}
-      className={`${className} touch-manipulation transition-[filter] hover:brightness-125 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4`}
-    >
-      {label}
-      <ArrowUpRight aria-hidden="true" className="h-3 w-3" />
-    </Link>
+    <div className={`flex gap-1.5 ${stacked ? "shrink-0 flex-col items-end" : "flex-wrap items-center"}`}>
+      {factors.map(({ factorId }) => (
+        <Link
+          key={factorId}
+          href={resolveMultiplierFactorHref(factorId, { view: "providers" })}
+          prefetch={false}
+          className={`inline-flex min-h-7 touch-manipulation items-center gap-1 rounded border px-2 py-1 text-xs font-semibold transition-[filter] hover:brightness-125 focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${getMultiplierFactorStyle(factorId)}`}
+        >
+          {FACTOR_LABELS.get(factorId)}
+          <ArrowUpRight aria-hidden="true" className="h-3 w-3" />
+        </Link>
+      ))}
+      {buff.indexLabel && (
+        buff.indexKind === "extra" ? (
+          <Link
+            href="/multiplier?part=damage-sources"
+            prefetch={false}
+            className={`inline-flex min-h-7 touch-manipulation items-center gap-1 rounded border px-2 py-1 text-xs font-semibold hover:brightness-125 focus-visible:outline-none focus-visible:underline ${INDEX_KIND_STYLES.extra}`}
+          >
+            {buff.indexLabel}
+            <ArrowUpRight aria-hidden="true" className="h-3 w-3" />
+          </Link>
+        ) : (
+          <span className={`inline-flex min-h-7 items-center rounded border px-2 py-1 text-xs font-semibold ${INDEX_KIND_STYLES.critical}`}>
+            {buff.indexLabel}
+          </span>
+        )
+      )}
+    </div>
   );
 }
 
 function BuffCard({ buff }: { buff: WeeklyBuff }) {
+  const hasMultipleBadges =
+    getWeeklyBuffFactors(buff).length + Number(Boolean(buff.indexLabel)) > 1;
+
   return (
     <article
       id={`buff-${buff.id}`}
@@ -170,9 +173,9 @@ function BuffCard({ buff }: { buff: WeeklyBuff }) {
           />
         </div>
         <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-start justify-between gap-2">
-            <h3 className="text-base font-semibold text-zinc-100 sm:text-lg">{buff.name}</h3>
-            <IndexBadge buff={buff} />
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="min-w-0 text-base font-semibold text-zinc-100 sm:text-lg">{buff.name}</h3>
+            <IndexBadges buff={buff} stacked={hasMultipleBadges} />
           </div>
           <p className="mt-3 text-sm leading-6 text-zinc-300">{buff.description}</p>
         </div>
@@ -209,7 +212,11 @@ function RotationButton({
   );
 }
 
-export function WeeklyBuffGuide() {
+export function WeeklyBuffGuide({
+  difficulty = "torment",
+}: {
+  difficulty?: WeeklyBuffDifficulty;
+}) {
   const stateSnapshot = useSyncExternalStore(
     subscribeToWeeklyBuffState,
     getWeeklyBuffStateSnapshot,
@@ -224,6 +231,9 @@ export function WeeklyBuffGuide() {
         indexFilter: "all" as IndexFilter,
       };
   const { poolId, rotationIndex, indexFilter } = queryState;
+  const selectionQuery = stateSnapshot
+    ? new URLSearchParams({ pool: poolId, rotation: String(rotationIndex) }).toString()
+    : "";
 
   const selectedPool =
     WEEKLY_BUFF_POOLS.find((pool) => pool.id === poolId) ?? WEEKLY_BUFF_POOLS[0];
@@ -232,7 +242,8 @@ export function WeeklyBuffGuide() {
     ? getWeeklyBuffsForRotation(selectedPool, rotationWindow.nextRotationIndex)
     : [];
   const indexedBuffs = WEEKLY_BUFF_DAMAGE_INDEX.filter(
-    (buff) => indexFilter === "all" || buff.indexKind === indexFilter,
+    (buff) => indexFilter === "all" || buff.indexKind === indexFilter ||
+      getWeeklyBuffFactors(buff).some(({ factorId }) => factorId === indexFilter),
   );
 
   const selectPool = (nextPoolId: PoolId) => {
@@ -268,6 +279,24 @@ export function WeeklyBuffGuide() {
 
   return (
     <div className="not-prose mx-auto max-w-6xl pb-12 [--weekly-accent:#e4b457]">
+      <nav aria-label="周 Buff 难度" className="mb-5 flex gap-5 border-b border-zinc-700">
+        {([
+          { id: "torment", label: "折磨", href: "/posts/weekly-buffs" },
+          { id: "inferno", label: "炼狱", href: "/posts/inferno-weekly-buffs" },
+        ] as const).map((item) => (
+          <Link
+            key={item.id}
+            href={selectionQuery ? item.href + "?" + selectionQuery : item.href}
+            aria-current={difficulty === item.id ? "page" : undefined}
+            className={"min-h-11 touch-manipulation border-b-2 px-2 py-3 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4 " +
+              (difficulty === item.id
+                ? "border-amber-400 text-amber-100"
+                : "border-transparent text-zinc-400 hover:text-zinc-100")}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </nav>
       <section className="grid overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900/45 lg:grid-cols-[minmax(0,1.2fr)_minmax(19rem,0.8fr)]">
         <div className="p-4 lg:border-r lg:border-zinc-700">
           <div className="flex items-start gap-3">
@@ -334,10 +363,10 @@ export function WeeklyBuffGuide() {
 
         <p className="mb-4 text-sm leading-6 text-zinc-500">
           <span className="font-medium text-zinc-300">适用地图：</span>
-          {selectedPool.maps.join("、")}
+          {selectedPool.maps[difficulty].join("、")}
         </p>
 
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-4 lg:grid-cols-2 2xl:grid-cols-3">
           {selectedBuffs.map((buff) => (
             <BuffCard key={buff.id} buff={buff} />
           ))}
@@ -351,7 +380,7 @@ export function WeeklyBuffGuide() {
         <summary className="flex min-h-12 cursor-pointer select-none items-center justify-between gap-3 px-4 text-sm font-semibold text-zinc-200 hover:text-white focus-visible:outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4">
           <span className="flex items-center gap-2">
             <Crosshair aria-hidden="true" className="h-4 w-4 text-rose-300" />
-            增伤 Buff 索引
+            乘区与伤害事件索引
           </span>
           <span className="text-xs font-normal text-zinc-500">
             {WEEKLY_BUFF_DAMAGE_INDEX.length} 项
@@ -362,7 +391,7 @@ export function WeeklyBuffGuide() {
           <div
             role="group"
             aria-label="筛选增伤索引"
-            className="mb-4 grid grid-cols-2 rounded-lg border border-zinc-700 bg-zinc-900 p-1 sm:grid-cols-4"
+            className="mb-4 grid grid-cols-2 rounded-lg border border-zinc-700 bg-zinc-900 p-1 sm:grid-cols-5"
           >
             {INDEX_FILTERS.map((filter) => (
               <button
@@ -415,7 +444,7 @@ export function WeeklyBuffGuide() {
                   </div>
                 </div>
                 <div>
-                  <IndexBadge buff={buff} />
+                  <IndexBadges buff={buff} />
                 </div>
                 <p className="text-sm leading-6 text-zinc-400">{buff.description}</p>
                 <button

@@ -1,120 +1,93 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "rotationAnchor": "2025-10-20T05:00:00+08:00",
   "rotationDays": 7,
   "pools": [
     {
       "id": "a",
       "label": "地图池 A",
-      "maps": [
-        "大都会",
-        "冰点源起",
-        "禁魔岛",
-        "昆仑神宫",
-        "太空幻想",
-        "销金之城",
-        "雪域迷踪",
-        "樱之渊"
-      ],
+      "maps": {
+        "torment": [
+          "大都会",
+          "冰点源起",
+          "昆仑神宫",
+          "销金之城",
+          "樱之渊",
+          "朔望计划",
+          "都市怪谈",
+          "LC01",
+          "LC02"
+        ],
+        "inferno": [
+          "大都会",
+          "冰点源起",
+          "L04",
+          "昆仑神宫",
+          "销金之城",
+          "樱之渊",
+          "朔望计划",
+          "都市怪谈",
+          "LC01",
+          "LC02"
+        ]
+      },
       "rotations": [
-        [1398001430, 1398001440, 1398001450],
-        [1398001400, 1398001410, 1398001420],
-        [1398001460, 1398001470, 1398001480]
+        [
+          1398001490,
+          1398001500,
+          1398001510
+        ],
+        [
+          1398001550,
+          1398001560,
+          1398001570
+        ],
+        [
+          1398001580,
+          1398001590,
+          1398001600
+        ]
       ]
     },
     {
       "id": "b",
       "label": "地图池 B",
-      "maps": ["黑暗复活节", "樱之城", "丛林魅影", "精绝古城"],
+      "maps": {
+        "torment": [
+          "黑暗复活节",
+          "樱之城",
+          "丛林魅影",
+          "精绝古城",
+          "禁魔岛"
+        ],
+        "inferno": [
+          "黑暗复活节",
+          "樱之城",
+          "丛林魅影",
+          "精绝古城",
+          "禁魔岛"
+        ]
+      },
       "rotations": [
-        [1398001520, 1398001530, 1398001540],
-        [1398001490, 1398001500, 1398001510],
-        [1398001260, 1398001270, 1398001290]
+        [
+          1398001640,
+          1398001650,
+          1398001660
+        ],
+        [
+          1398001520,
+          1398001530,
+          1398001540
+        ],
+        [
+          1398001610,
+          1398001620,
+          1398001630
+        ]
       ]
     }
   ],
   "buffs": {
-    "1398001260": {
-      "name": "梯云纵月",
-      "description": "释放武器技能后，武器下一次换弹速度提升 21%。该效果最高可叠加 2 层。",
-      "icon": "/images/weekly-buffs/1398001260.webp",
-      "indexKind": "utility"
-    },
-    "1398001270": {
-      "name": "万壑奔流",
-      "description": "武器技能充能速度提高 24%。",
-      "icon": "/images/weekly-buffs/1398001270.webp",
-      "indexKind": "utility"
-    },
-    "1398001290": {
-      "name": "地煞伏吟",
-      "description": "累计释放 3 次武器技能后，下一次开火命中敌人时，将在命中点附近半径 5 米范围内引发 5 次爆炸。",
-      "icon": "/images/weekly-buffs/1398001290.webp",
-      "indexKind": "extra",
-      "indexLabel": "额外爆炸事件"
-    },
-    "1398001400": {
-      "name": "猎杀标记",
-      "description": "每次射击命中非 Boss 目标时会对其施加 6% 仅对自身生效的易伤，最高叠加 3 层。",
-      "icon": "/images/weekly-buffs/1398001400.webp",
-      "indexKind": "direct",
-      "factorId": "dilution"
-    },
-    "1398001410": {
-      "name": "蝶影翩跹",
-      "description": "一次开火命中 3 个敌人时，17% 概率产生蝴蝶；拾取后装填 6 发子弹，冷却 1 秒。",
-      "icon": "/images/weekly-buffs/1398001410.webp",
-      "indexKind": "utility"
-    },
-    "1398001420": {
-      "name": "精确强化",
-      "description": "暗器、射手步枪、狙击枪伤害增加 12%。",
-      "icon": "/images/weekly-buffs/1398001420.webp",
-      "indexKind": "direct",
-      "factorId": "dilution"
-    },
-    "1398001430": {
-      "name": "层叠锋芒",
-      "description": "每开火 10 次获得 1 层增益，持续 3 秒，最高 12 层；每层增加 2% 武器伤害。",
-      "icon": "/images/weekly-buffs/1398001430.webp",
-      "indexKind": "direct",
-      "factorId": "dilution"
-    },
-    "1398001440": {
-      "name": "连发精要",
-      "description": "机枪、突击步枪、冲锋枪的射击伤害增加 12%。",
-      "icon": "/images/weekly-buffs/1398001440.webp",
-      "indexKind": "direct",
-      "factorId": "dilution"
-    },
-    "1398001450": {
-      "name": "连击遗珍",
-      "description": "持续冲刺 3 秒后，在自身周围掉落狂暴能量球；拾取后暴击率提升 16%，持续 8 秒，冷却 15 秒。",
-      "icon": "/images/weekly-buffs/1398001450.webp",
-      "indexKind": "critical",
-      "indexLabel": "暴击率收益"
-    },
-    "1398001460": {
-      "name": "刚劲加持",
-      "description": "物理武器伤害增加 12%。",
-      "icon": "/images/weekly-buffs/1398001460.webp",
-      "indexKind": "direct",
-      "factorId": "dilution"
-    },
-    "1398001470": {
-      "name": "孤爆凝威",
-      "description": "榴弹爆炸连续 5 次以上只命中单个目标时，获得“蓄能引爆”；爆炸伤害增加 15%，持续 10 秒。",
-      "icon": "/images/weekly-buffs/1398001470.webp",
-      "indexKind": "direct",
-      "factorId": "dilution"
-    },
-    "1398001480": {
-      "name": "唤仆献宝",
-      "description": "武器召唤物造成伤害时，25% 概率生成狂暴能量球；拾取后暴击率提升 16%，持续 8 秒，冷却 15 秒。",
-      "icon": "/images/weekly-buffs/1398001480.webp",
-      "indexKind": "critical",
-      "indexLabel": "暴击率收益"
-    },
     "1398001490": {
       "name": "速装叠势",
       "description": "单次开火造成 5 次以上伤害时，下次换弹速度提高 15%，最高叠加 3 层，持续 10 秒。",
@@ -126,7 +99,7 @@
       "description": "霰弹枪、多发榴弹、单发榴弹、火箭发射器伤害增加 12%。",
       "icon": "/images/weekly-buffs/1398001500.webp",
       "indexKind": "direct",
-      "factorId": "dilution"
+      "damageChannels": [{ "row": "lc:111042008_1_0", "modifierTypeId": "weapon-damage" }]
     },
     "1398001510": {
       "name": "百击生辉",
@@ -140,7 +113,7 @@
       "description": "火属性枪械基础伤害增加 12%。",
       "icon": "/images/weekly-buffs/1398001520.webp",
       "indexKind": "direct",
-      "factorId": "dilution"
+      "damageChannels": [{ "row": "lc:111042010_1_0", "modifierTypeId": "weapon-damage" }]
     },
     "1398001530": {
       "name": "掠影增爆",
@@ -154,7 +127,104 @@
       "description": "移动时开火 40 次后，枪械伤害增加 15%，持续 2 秒。",
       "icon": "/images/weekly-buffs/1398001540.webp",
       "indexKind": "direct",
-      "factorId": "dilution"
+      "damageChannels": [
+        { "row": "lc:111042011_1_0", "modifierTypeId": "weapon-hit-damage" },
+        { "row": "lc:111042011_1_1", "modifierTypeId": "weapon-explode-damage" }
+      ]
+    },
+    "1398001550": {
+      "name": "前哨阵地",
+      "description": "召唤时，在召唤物周围 8 米生成支援区域；区域内自身造成伤害增加 25%，持续 8 秒，冷却 15 秒。",
+      "icon": "/images/weekly-buffs/1398001550.webp",
+      "indexKind": "direct",
+      "damageChannels": [{ "row": "lc:111052001_1_0", "modifierTypeId": "weapon-damage" }]
+    },
+    "1398001560": {
+      "name": "万千齐鸣",
+      "description": "召唤物存在期间，自身和召唤物造成的伤害均增加 18%。",
+      "icon": "/images/weekly-buffs/1398001560.webp",
+      "indexKind": "direct",
+      "damageChannels": [{ "row": "lc:111052002_1_0", "modifierTypeId": "weapon-damage" }]
+    },
+    "1398001570": {
+      "name": "装填强袭",
+      "description": "换弹时间缩短 10%，且换弹后 5 秒内造成伤害增加 20%；期间若触发扔枪换弹，改为换弹时间缩短 20%、换弹后伤害增加 30%，冷却 15 秒。",
+      "icon": "/images/weekly-buffs/1398001570.webp",
+      "indexKind": "direct",
+      "damageChannels": [
+        { "row": "lc:111052003_1_0", "modifierTypeId": "weapon-damage" },
+        { "row": "lc:111052005_1_0", "modifierTypeId": "weapon-damage" }
+      ]
+    },
+    "1398001580": {
+      "name": "制导风暴",
+      "description": "累计命中目标 5 次后，下次换弹额外填充 20% 弹药，且前 5 发对冰冻目标的伤害提升 30%，冷却 8 秒。",
+      "icon": "/images/weekly-buffs/1398001580.webp",
+      "indexKind": "direct",
+      "damageChannels": [{ "row": "lc:111052007_1_0", "modifierTypeId": "weapon-damage" }]
+    },
+    "1398001590": {
+      "name": "聚焦斩首",
+      "description": "对同一目标连续命中可叠加增伤，每层 2%，最多 10 层；命中弱点时额外增加 8% 弱点伤害，切换目标清空层数。",
+      "icon": "/images/weekly-buffs/1398001590.webp",
+      "indexKind": "direct",
+      "damageChannels": [
+        { "row": "lc:111052008_1_0", "modifierTypeId": "weapon-damage" },
+        { "row": "lc:111052009_1_0", "modifierTypeId": "weakness" }
+      ]
+    },
+    "1398001600": {
+      "name": "异常蔓延",
+      "description": "对减速目标造成的伤害增加 12%；击杀由自身施加减速的目标时，减速状态蔓延至周围 3 米内敌人。",
+      "icon": "/images/weekly-buffs/1398001600.webp",
+      "indexKind": "direct",
+      "damageChannels": [{ "row": "lc:111052010_1_0", "modifierTypeId": "weapon-damage" }]
+    },
+    "1398001610": {
+      "name": "缓速易伤",
+      "description": "对被减速的敌人造成伤害增加 15%。",
+      "icon": "/images/weekly-buffs/1398001610.webp",
+      "indexKind": "direct",
+      "damageChannels": [{ "row": "lc:111052011_1_0", "modifierTypeId": "weapon-damage" }]
+    },
+    "1398001620": {
+      "name": "链式殉爆",
+      "description": "爆炸伤害增加 15%；被范围伤害击杀的敌人触发二次殉爆，造成玩家攻击力 18% 的伤害，冷却 5 秒。",
+      "icon": "/images/weekly-buffs/1398001620.webp",
+      "indexKind": "extra",
+      "indexLabel": "额外殉爆事件",
+      "damageChannels": [{ "row": "lc:111052012_1_0", "modifierTypeId": "weapon-explode-damage" }]
+    },
+    "1398001630": {
+      "name": "双频共振",
+      "description": "切换开火模式后 5 秒内，新形态造成的伤害增加 20%。",
+      "icon": "/images/weekly-buffs/1398001630.webp",
+      "indexKind": "direct",
+      "damageChannels": [{ "row": "lc:111052013_1_0", "modifierTypeId": "weapon-damage" }]
+    },
+    "1398001640": {
+      "name": "双相协同",
+      "description": "切换到主模式时自动装填 25% 弹药，冷却 8 秒；切换到副模式后 3 秒内，角色所有武器与武器技能伤害均增加 25%。",
+      "icon": "/images/weekly-buffs/1398001640.webp",
+      "indexKind": "direct",
+      "damageChannels": [
+        { "row": "lc:111052014_1_0", "modifierTypeId": "weapon-damage" },
+        { "row": "lc:111052015_1_0", "modifierTypeId": "weapon-skill-damage" }
+      ]
+    },
+    "1398001650": {
+      "name": "腐蚀共鸣",
+      "description": "对腐蚀或减速目标造成的武器伤害增加 12%；击杀这类目标时，为手持武器返还 4% 武器充能，冷却 3 秒。",
+      "icon": "/images/weekly-buffs/1398001650.webp",
+      "indexKind": "direct",
+      "damageChannels": [{ "row": "lc:111052016_1_0", "modifierTypeId": "weapon-damage" }]
+    },
+    "1398001660": {
+      "name": "腐蚀淬毒",
+      "description": "毒属性枪械基础伤害增加 12%。",
+      "icon": "/images/weekly-buffs/1398001660.webp",
+      "indexKind": "direct",
+      "damageChannels": [{ "row": "lc:111052017_1_0", "modifierTypeId": "weapon-damage" }]
     }
   }
 }
