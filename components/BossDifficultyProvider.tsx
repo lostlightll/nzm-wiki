@@ -17,7 +17,7 @@ import {
 import type { BossDifficulty } from "@/types";
 import { getOriginRooms, type OriginDifficulty } from "@/lib/origin-boss-health";
 
-export type BossMode = "classic" | "origin";
+export type BossMode = "classic" | "overlimit" | "origin";
 
 interface BossDifficultyContextValue {
   difficulty: BossDifficulty;
@@ -47,12 +47,22 @@ function isBossRoute(pathname: string): boolean {
   );
 }
 
+function isBossPage(pathname: string): boolean {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  if (basePath && pathname.startsWith(`${basePath}/`)) {
+    pathname = pathname.slice(basePath.length);
+  }
+  return pathname === "/bosses" || pathname.startsWith("/bosses/") ||
+    pathname === "/enemies/lc" ||
+    (pathname.startsWith("/enemies/lc/") && !pathname.startsWith("/enemies/lc/monsters"));
+}
+
 function replaceSelectionInUrl(difficulty: BossDifficulty, mode: BossMode, roomIndex: number | null): void {
   const url = new URL(window.location.href);
   url.searchParams.set("difficulty", difficulty);
-  if (mode === "origin") {
+  if (mode !== "classic") {
     url.searchParams.set("mode", mode);
-    if (roomIndex !== null) url.searchParams.set("room", String(roomIndex));
+    if (mode === "origin" && roomIndex !== null) url.searchParams.set("room", String(roomIndex));
     else url.searchParams.delete("room");
   } else {
     url.searchParams.delete("mode");
@@ -103,9 +113,13 @@ export function BossDifficultyProvider({
         ? saved
         : DEFAULT_BOSS_DIFFICULTY;
     const params = new URL(window.location.href).searchParams;
-    const nextMode: BossMode = isBossRoute(window.location.pathname) &&
-      window.location.pathname.includes("/bosses") && params.get("mode") === "origin" ? "origin" : "classic";
-    if (nextMode === "origin" && nextDifficulty === "overlimit") nextDifficulty = "torment";
+    const bossPage = isBossPage(window.location.pathname);
+    const modeParam = params.get("mode");
+    const nextMode: BossMode = bossPage && modeParam === "origin" ? "origin" :
+      bossPage && (modeParam === "overlimit" || (modeParam === null && nextDifficulty === "overlimit"))
+        ? "overlimit" : "classic";
+    if (nextMode === "overlimit") nextDifficulty = "overlimit";
+    else if (bossPage && nextDifficulty === "overlimit") nextDifficulty = DEFAULT_BOSS_DIFFICULTY;
     const parsedRoom = Number(params.get("room"));
     const nextRoom = nextMode === "origin" && params.has("room") &&
       Number.isInteger(parsedRoom) && parsedRoom >= 0 &&
@@ -160,7 +174,8 @@ export function BossDifficultyProvider({
   }, [mode]);
 
   const setMode = useCallback((nextMode: BossMode) => {
-    const nextDifficulty = nextMode === "origin" && difficulty === "overlimit" ? "torment" : difficulty;
+    const nextDifficulty = nextMode === "overlimit" ? "overlimit" :
+      difficulty === "overlimit" ? DEFAULT_BOSS_DIFFICULTY : difficulty;
     setModeState(nextMode);
     setDifficultyState(nextDifficulty);
     setRoomIndexState(null);
@@ -178,9 +193,9 @@ export function BossDifficultyProvider({
       const [targetPath, query = ""] = pathAndQuery.split("?", 2);
       const params = new URLSearchParams(query);
       params.set("difficulty", difficulty);
-      if (targetPath.startsWith("/bosses") && mode === "origin") {
-        params.set("mode", "origin");
-        if (roomIndex !== null) params.set("room", String(roomIndex));
+      if (isBossPage(targetPath) && mode !== "classic") {
+        params.set("mode", mode);
+        if (mode === "origin" && roomIndex !== null) params.set("room", String(roomIndex));
       }
       return `${targetPath}?${params.toString()}${hash ? `#${hash}` : ""}`;
     },

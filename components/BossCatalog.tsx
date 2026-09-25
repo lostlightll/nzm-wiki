@@ -145,10 +145,12 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
       id: map.id,
       name: map.name,
       image: map.image,
-      bosses: bosses.filter((boss) => getBossMaps(boss).includes(map.name)),
+      bosses: bosses.filter((boss) => getBossMaps(boss).includes(map.name) &&
+        (mode !== "overlimit" || Array.isArray(boss.health?.overlimit))),
     }));
     const otherBosses = bosses.filter((boss) =>
-      getBossMaps(boss).some((map) => !knownMaps.has(map)),
+      getBossMaps(boss).some((map) => !knownMaps.has(map)) &&
+      (mode !== "overlimit" || Array.isArray(boss.health?.overlimit)),
     );
 
     if (otherBosses.length > 0) {
@@ -160,7 +162,7 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
       });
     }
 
-    return groups;
+    return mode === "overlimit" ? groups.filter((group) => group.bosses.length > 0) : groups;
   }, [bosses, mode, difficulty]);
 
   const searchedGroups = useMemo(() => {
@@ -185,19 +187,20 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
       .filter((group) => group.bosses.length > 0);
   }, [allGroups, deferredQuery]);
 
+  const mapOptions = allGroups.filter((group) => group.bosses.length > 0);
+  const activeMapId = mapOptions.some((group) => group.id === selectedMapId) ? selectedMapId : null;
   const visibleGroups = useMemo(
     () =>
-      selectedMapId && mode === "classic"
-        ? searchedGroups.filter((group) => group.id === selectedMapId)
+      activeMapId && mode !== "origin"
+        ? searchedGroups.filter((group) => group.id === activeMapId)
         : searchedGroups,
-    [searchedGroups, selectedMapId, mode],
+    [searchedGroups, activeMapId, mode],
   );
 
   const resultCount = visibleGroups.reduce(
     (total, group) => total + group.bosses.length,
     0,
   );
-  const mapOptions = allGroups.filter((group) => group.bosses.length > 0);
 
   const resetFilters = () => {
     setQuery("");
@@ -245,14 +248,14 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
 
         <div className="mt-5 flex flex-wrap items-start gap-x-8 gap-y-5 border-t border-zinc-700/80 pt-5">
           <BossModeControl />
-          <BossDifficultyControl />
+          {mode !== "overlimit" && <BossDifficultyControl bossOnly />}
         </div>
 
         {mode === "origin" && <div className="mt-5 border-t border-zinc-700/80 pt-5">
           <BossRoomControl />
         </div>}
 
-        {mode === "classic" && <div className="mt-5 border-t border-zinc-700/80 pt-5">
+        {mode !== "origin" && <div className="mt-5 border-t border-zinc-700/80 pt-5">
           <div className="mb-3 flex min-h-8 flex-wrap items-center justify-between gap-2">
             <h2 className="text-base font-semibold text-zinc-300">地图筛选</h2>
             <p aria-live="polite" className="text-sm text-zinc-500">
@@ -262,10 +265,10 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
           <div aria-label="按地图筛选" className="flex flex-wrap gap-2">
             <button
               type="button"
-              aria-pressed={selectedMapId === null}
+              aria-pressed={activeMapId === null}
               onClick={() => setSelectedMapId(null)}
               className={`min-h-11 touch-manipulation rounded border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
-                selectedMapId === null
+                activeMapId === null
                   ? "border-[#d1ac69]/70 bg-[#d1ac69]/15 text-[#e1c58f]"
                   : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700 hover:text-white"
               }`}
@@ -273,7 +276,7 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
               全部地图
             </button>
             {mapOptions.map((map) => {
-              const selected = selectedMapId === map.id;
+              const selected = activeMapId === map.id;
               return (
                 <button
                   key={map.id}

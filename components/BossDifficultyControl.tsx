@@ -6,12 +6,14 @@ import { useBossDifficulty } from "@/components/BossDifficultyProvider";
 export function BossDifficultyControl({
   className = "",
   label = "选择首领血量难度",
+  bossOnly = false,
 }: {
   className?: string;
   label?: string;
+  bossOnly?: boolean;
 }) {
-  const { difficulty, ready, setDifficulty, mode } = useBossDifficulty();
-  const options = mode === "origin"
+  const { difficulty, ready, setDifficulty } = useBossDifficulty();
+  const options = bossOnly
     ? BOSS_DIFFICULTIES.filter((option) => option.value !== "overlimit")
     : BOSS_DIFFICULTIES;
 
@@ -21,7 +23,7 @@ export function BossDifficultyControl({
       <div
         aria-label={label}
         aria-busy={!ready}
-        className={`inline-grid min-h-11 max-w-full ${mode === "origin" ? "grid-cols-3" : "grid-cols-4"} rounded border border-zinc-700 bg-zinc-900/75 p-1`}
+        className={`inline-grid min-h-11 max-w-full ${bossOnly ? "grid-cols-3" : "grid-cols-4"} rounded border border-zinc-700 bg-zinc-900/75 p-1`}
       >
         {options.map((option) => {
           const selected = ready && difficulty === option.value;

@@ -9,8 +9,8 @@ export function BossModeControl({ className = "" }: { className?: string }) {
   return (
     <div className={className}>
       <h2 className="mb-3 text-base font-semibold text-zinc-300">猎场模式</h2>
-      <div aria-label="选择猎场模式" className="inline-grid grid-cols-2 rounded border border-zinc-700 bg-zinc-900/75 p-1">
-        {(["classic", "origin"] as const).map((option) => (
+      <div aria-label="选择猎场模式" className="inline-grid grid-cols-3 rounded border border-zinc-700 bg-zinc-900/75 p-1">
+        {(["classic", "overlimit", "origin"] as const).map((option) => (
           <button
             key={option}
             type="button"
@@ -18,7 +18,7 @@ export function BossModeControl({ className = "" }: { className?: string }) {
             onClick={() => setMode(option)}
             className={`min-h-11 touch-manipulation rounded px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:underline focus-visible:underline-offset-4 ${mode === option ? "bg-[#d1ac69]/20 text-[#efd59f]" : "text-zinc-400 hover:bg-zinc-800 hover:text-white"}`}
           >
-            {option === "classic" ? "常规猎场" : "原点猎场"}
+            {option === "classic" ? "常规猎场" : option === "overlimit" ? "超限猎场" : "原点猎场"}
           </button>
         ))}
       </div>

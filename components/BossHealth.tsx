@@ -1,7 +1,7 @@
 "use client";
 
 import { BossDifficultyControl } from "@/components/BossDifficultyControl";
-import { BossModeControl } from "@/components/BossModeControl";
+import { BossModeControl, BossRoomControl } from "@/components/BossModeControl";
 import { useBossDifficulty } from "@/components/BossDifficultyProvider";
 import {
   formatBossHealthSummary,
@@ -30,7 +30,7 @@ export function BossCardHealth({ boss }: { boss: Boss }) {
     >
       {ready ? mode === "origin"
         ? originHealth?.map(formatBossHealthValue).join(" / ") ?? "原点未收录"
-        : formatBossHealthSummary(boss, difficulty) : null}
+        : formatBossHealthSummary(boss, mode === "overlimit" ? "overlimit" : difficulty) : null}
     </span>
   );
 }
@@ -39,15 +39,18 @@ export function BossDetailHealth({ boss }: { boss: Boss }) {
   const { difficulty, ready, mode, roomIndex } = useBossDifficulty();
   const health = mode === "origin"
     ? getOriginBossHealth(boss.slug, difficulty as OriginDifficulty, roomIndex)
-    : getBossHealth(boss, difficulty);
+    : getBossHealth(boss, mode === "overlimit" ? "overlimit" : difficulty);
   const phaseCount = mode === "origin" && Array.isArray(health) ? health.length : getBossPhaseCount(boss);
 
   return (
     <div className="mt-6 max-w-lg">
       <div className="flex flex-wrap items-start gap-x-6 gap-y-4">
         <BossModeControl />
-        <BossDifficultyControl />
+        {mode !== "overlimit" && <BossDifficultyControl bossOnly />}
       </div>
+      {mode === "origin" && <div className="mt-4 border-t border-zinc-700/80 pt-4">
+        <BossRoomControl />
+      </div>}
       <dl
         aria-busy={!ready}
         className={`mt-3 grid min-h-20 grid-cols-1 gap-3 ${
