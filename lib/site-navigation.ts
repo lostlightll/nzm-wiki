@@ -4,6 +4,7 @@ export type SiteNavItemId =
   | "enemies"
   | "tower-defense"
   | "overlimit"
+  | "origin"
   | "season-talents"
   | "builds"
   | "multiplier"
@@ -56,6 +57,7 @@ export const SITE_NAV_SECTIONS: readonly SiteNavSection[] = [
         href: "/tower-defense",
       },
       { id: "overlimit", label: "超限图鉴", href: "/overlimit" },
+      { id: "origin", label: "原点图鉴", href: "/origin" },
     ],
   },
   {
@@ -184,6 +186,10 @@ export function resolveSiteNavigation({
 
   if (isPath(normalizedPathname, "/overlimit")) {
     return resolveItem("overlimit");
+  }
+
+  if (isPath(normalizedPathname, "/origin")) {
+    return resolveItem("origin");
   }
 
   if (normalizedPathname === "/credits") {

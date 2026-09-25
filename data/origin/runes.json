@@ -1,0 +1,2037 @@
+{
+  "schemaVersion": 2,
+  "tags": [
+    {
+      "id": 1,
+      "name": "弱点"
+    },
+    {
+      "id": 2,
+      "name": "大弹仓"
+    },
+    {
+      "id": 3,
+      "name": "爆发"
+    },
+    {
+      "id": 4,
+      "name": "冲击环"
+    },
+    {
+      "id": 5,
+      "name": "通用"
+    },
+    {
+      "id": 6,
+      "name": "金币"
+    },
+    {
+      "id": 7,
+      "name": "导弹"
+    },
+    {
+      "id": 8,
+      "name": "近战"
+    },
+    {
+      "id": 9,
+      "name": "卖血"
+    },
+    {
+      "id": 10,
+      "name": "元素"
+    },
+    {
+      "id": 11,
+      "name": "暴击"
+    },
+    {
+      "id": 12,
+      "name": "护盾"
+    },
+    {
+      "id": 13,
+      "name": "跑酷"
+    },
+    {
+      "id": 14,
+      "name": "生存"
+    },
+    {
+      "id": 15,
+      "name": "技能"
+    },
+    {
+      "id": 16,
+      "name": "换弹"
+    },
+    {
+      "id": 17,
+      "name": "爆炸"
+    },
+    {
+      "id": 18,
+      "name": "叠层"
+    },
+    {
+      "id": 19,
+      "name": "召唤物"
+    },
+    {
+      "id": 20,
+      "name": "落雷"
+    }
+  ],
+  "runes": [
+    {
+      "id": "1378042010",
+      "name": "迅射叠伤",
+      "description": "射击命中叠加攻击力；命中弱点叠加更多。换弹或切枪后清除。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        1
+      ]
+    },
+    {
+      "id": "1378042020",
+      "name": "高耗迅射",
+      "description": "每次开火消耗更多弹药，换取攻击力提升，并额外叠加攻击力。换弹或切枪后清除叠层。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes01_03.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378042030",
+      "name": "爆弹迅射",
+      "description": "开火时有概率消耗当前弹匣中的弹药，换取大量可叠加的攻击力。换弹或切枪后清除叠层。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes01_01.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378042040",
+      "name": "弹缩迅射",
+      "description": "缩小弹匣容量，换取攻击力提升。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes01_02.webp",
+      "tagIds": [
+        3
+      ]
+    },
+    {
+      "id": "1378042050",
+      "name": "扩容迅射",
+      "description": "增加弹匣容量与攻击力。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_08.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378042080",
+      "name": "精准迅射",
+      "description": "命中弱点叠加攻击力，命中非弱点会损失已有层数。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        1
+      ]
+    },
+    {
+      "id": "1378042090",
+      "name": "命中迅射",
+      "description": "命中目标叠加攻击力，射击未命中会损失已有层数。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378042100",
+      "name": "聚金增伤",
+      "description": "持有的金币越多，获得的攻击力加成越高。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_02.webp",
+      "tagIds": [
+        6
+      ]
+    },
+    {
+      "id": "1378042140",
+      "name": "聚金利息",
+      "description": "通关时按当前持有金币获得额外利息。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_03.webp",
+      "tagIds": [
+        6
+      ]
+    },
+    {
+      "id": "1378042150",
+      "name": "耗金聚伤",
+      "description": "消耗金币时，将消耗量转化为攻击力加成。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_01.webp",
+      "tagIds": [
+        6
+      ]
+    },
+    {
+      "id": "1378042160",
+      "name": "免耗聚金",
+      "description": "消耗金币时有概率不扣除金币。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_02.webp",
+      "tagIds": [
+        6
+      ]
+    },
+    {
+      "id": "1378042170",
+      "name": "聚金环波",
+      "description": "金币减少时储存冲击环次数；后续战斗中造成伤害可释放储存的冲击环。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_03.webp",
+      "tagIds": [
+        6,
+        4
+      ]
+    },
+    {
+      "id": "1378042190",
+      "name": "怒战近回",
+      "description": "提高近距离的近战攻击力；击败近距离敌人时回复生命。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_01.webp",
+      "tagIds": [
+        8
+      ]
+    },
+    {
+      "id": "1378042200",
+      "name": "怒战残增",
+      "description": "生命值越低，攻击力提升越高。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_02.webp",
+      "tagIds": [
+        9
+      ]
+    },
+    {
+      "id": "1378042210",
+      "name": "怒战耗血",
+      "description": "使用武器技能会损失生命，并暂时提高攻击力。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_03.webp",
+      "tagIds": [
+        9
+      ]
+    },
+    {
+      "id": "1378042230",
+      "name": "怒战残斩",
+      "description": "攻击低生命值目标时提高攻击力。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378042240",
+      "name": "怒战狂暴",
+      "description": "受到生命伤害时叠加狂暴，提高攻击速度和移动速度。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_01.webp",
+      "tagIds": [
+        9
+      ]
+    },
+    {
+      "id": "1378042250",
+      "name": "怒战濒死",
+      "description": "受到致命伤害时暂时免疫死亡，并提高攻击力；该效果有冷却时间。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_02.webp",
+      "tagIds": [
+        9
+      ]
+    },
+    {
+      "id": "1378042260",
+      "name": "怒战血怒",
+      "description": "生命值较低时进入血怒，攻击可处决濒死目标。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_03.webp",
+      "tagIds": [
+        9
+      ]
+    },
+    {
+      "id": "1378042270",
+      "name": "怒战血叠",
+      "description": "受到生命伤害时叠加攻击力；死亡后失去部分层数。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_01.webp",
+      "tagIds": [
+        9
+      ]
+    },
+    {
+      "id": "1378042370",
+      "name": "暴击根基",
+      "description": "提高暴击伤害，命中弱点时额外提高暴击率。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_03.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378042380",
+      "name": "暴击狩猎",
+      "description": "暴击叠加狩猎层数，提高暴击伤害；长时间未暴击会清除层数。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_01.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378042430",
+      "name": "暴击会心",
+      "description": "暴击时有概率触发会心一击，进一步提高该次伤害。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_02.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378042480",
+      "name": "坚盾增伤",
+      "description": "护盾满值时大幅提高攻击力；护盾未满时仍有较低的攻击力加成。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_03.webp",
+      "tagIds": [
+        12
+      ]
+    },
+    {
+      "id": "1378042490",
+      "name": "坚盾缩爆",
+      "description": "降低护盾上限；护盾被打破时释放冲击环。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_02.webp",
+      "tagIds": [
+        12
+      ]
+    },
+    {
+      "id": "1378042530",
+      "name": "坚盾狂热",
+      "description": "护盾叠满时消耗护盾，进入急速狂热并持续产生冲击环。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_01.webp",
+      "tagIds": [
+        12,
+        4
+      ]
+    },
+    {
+      "id": "1378042550",
+      "name": "游击导弹",
+      "description": "移动一定距离后自动发射跟踪导弹。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_03.webp",
+      "tagIds": [
+        13,
+        7
+      ]
+    },
+    {
+      "id": "1378042560",
+      "name": "游击动能",
+      "description": "保持移动且不射击时积累动能；造成伤害消耗动能，提高该次攻击力。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_02.webp",
+      "tagIds": [
+        13,
+        3
+      ]
+    },
+    {
+      "id": "1378042570",
+      "name": "游击叠伤",
+      "description": "保持移动并射击可持续叠加攻击力；停止移动或换弹后清零。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes01_02.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378042590",
+      "name": "游击斩半",
+      "description": "移动速度加成达到条件后，对低生命值目标造成更高伤害。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_01.webp",
+      "tagIds": [
+        13
+      ]
+    },
+    {
+      "id": "1378042600",
+      "name": "游击斩满",
+      "description": "移动速度加成达到条件后，对高生命值目标造成更高伤害。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_03.webp",
+      "tagIds": [
+        13
+      ]
+    },
+    {
+      "id": "1378042620",
+      "name": "游击转伤",
+      "description": "将移动速度加成转化为攻击力加成。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_02.webp",
+      "tagIds": [
+        13
+      ]
+    },
+    {
+      "id": "1378042640",
+      "name": "秘技返还",
+      "description": "释放武器技能时有概率返还当前技能充能。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_02.webp",
+      "tagIds": [
+        15
+      ]
+    },
+    {
+      "id": "1378042680",
+      "name": "叠伤秘技",
+      "description": "每次释放武器技能可暂时叠加攻击力。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_03.webp",
+      "tagIds": [
+        15
+      ]
+    },
+    {
+      "id": "1378042690",
+      "name": "强伤秘技",
+      "description": "释放武器技能后暂时提高攻击力；效果不可叠加，且有冷却时间。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_01.webp",
+      "tagIds": [
+        15
+      ]
+    },
+    {
+      "id": "1378042720",
+      "name": "普攻秘技",
+      "description": "武器技能造成伤害后，后续射击会附带基于该次技能伤害的额外伤害。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_02.webp",
+      "tagIds": [
+        15
+      ]
+    },
+    {
+      "id": "1378044210",
+      "name": "一击秒杀",
+      "description": "单发射击击杀敌人时，永久叠加攻击力。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_01.webp",
+      "tagIds": [
+        3
+      ]
+    },
+    {
+      "id": "1378044290",
+      "name": "玻璃大炮",
+      "description": "关卡开始时损失部分生命，换取一段时间的攻击力提升。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_02.webp",
+      "tagIds": [
+        9
+      ]
+    },
+    {
+      "id": "1378044320",
+      "name": "双重导弹",
+      "description": "发射导弹时有概率额外增加导弹数量。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
+      "tagIds": [
+        7
+      ]
+    },
+    {
+      "id": "1378044370",
+      "name": "击杀冲击环",
+      "description": "击杀目标有概率产生冲击环；使用近战武器击杀时触发概率更高。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_02.webp",
+      "tagIds": [
+        8,
+        4
+      ]
+    },
+    {
+      "id": "1378044830",
+      "name": "射击雷击",
+      "description": "射击命中时有概率产生落雷。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_04.webp",
+      "tagIds": [
+        20
+      ]
+    },
+    {
+      "id": "1378044840",
+      "name": "双重雷击",
+      "description": "落雷时可再次触发落雷。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
+      "tagIds": [
+        20
+      ]
+    },
+    {
+      "id": "1378044850",
+      "name": "超级落雷",
+      "description": "提高所有落雷的伤害。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
+      "tagIds": [
+        20
+      ]
+    },
+    {
+      "id": "1378044860",
+      "name": "致命爆炸",
+      "description": "武器命中时有概率产生冲击环，并受冷却时间限制。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_04.webp",
+      "tagIds": [
+        4
+      ]
+    },
+    {
+      "id": "1378045110",
+      "name": "极限单发",
+      "description": "将弹匣容量限制为单发，大幅提高换弹速度和攻击力。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes10_03.webp",
+      "tagIds": [
+        16
+      ]
+    },
+    {
+      "id": "1378045260",
+      "name": "快速换弹",
+      "description": "大幅缩短换弹时间。",
+      "category": "special",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes10_01.webp",
+      "tagIds": [
+        16
+      ]
+    },
+    {
+      "id": "1378042070",
+      "name": "环爆迅射",
+      "description": "命中弱点时在目标处产生冲击环，并受冷却时间限制。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_03.webp",
+      "tagIds": [
+        4,
+        1
+      ]
+    },
+    {
+      "id": "1378042110",
+      "name": "聚金掉落",
+      "description": "攻击目标时有概率获得金币，并受冷却时间限制。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_01.webp",
+      "tagIds": [
+        6
+      ]
+    },
+    {
+      "id": "1378042130",
+      "name": "聚金增效",
+      "description": "提高个人获得金币的效率。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_02.webp",
+      "tagIds": [
+        6
+      ]
+    },
+    {
+      "id": "1378042180",
+      "name": "飞弹聚金",
+      "description": "武器射击时有概率发射跟踪导弹；持有更多金币可提高触发概率。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_03.webp",
+      "tagIds": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": "1378042220",
+      "name": "怒战近波",
+      "description": "近距离武器命中时产生冲击环，并受冷却时间限制。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_02.webp",
+      "tagIds": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "1378042300",
+      "name": "元素击杀",
+      "description": "击杀带有元素异常的敌人时，永久提高全元素伤害。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_07.webp",
+      "tagIds": [
+        10
+      ]
+    },
+    {
+      "id": "1378042360",
+      "name": "混合元素",
+      "description": "使敌人同时受到所有元素异常后，清除异常并叠加自身全伤害。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_06.webp",
+      "tagIds": [
+        10
+      ]
+    },
+    {
+      "id": "1378042390",
+      "name": "暴击回弹",
+      "description": "暴击命中时回复弹药。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_03.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378042400",
+      "name": "暴击蓄力",
+      "description": "随时间积累暴击加成；暴击后清空加成。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_01.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378042410",
+      "name": "暴击环爆",
+      "description": "暴击时扩散冲击环，其伤害基于该次暴击伤害，并受冷却时间限制。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_02.webp",
+      "tagIds": [
+        11,
+        4
+      ]
+    },
+    {
+      "id": "1378042420",
+      "name": "暴击满溢",
+      "description": "暴击率超过上限时，将溢出部分转化为暴击伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_03.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378042440",
+      "name": "暴击破限",
+      "description": "提高暴击伤害，并提高暴击伤害上限。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_01.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378042450",
+      "name": "暴击弱点",
+      "description": "命中弱点时提高暴击概率。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_02.webp",
+      "tagIds": [
+        11,
+        1
+      ]
+    },
+    {
+      "id": "1378042460",
+      "name": "坚盾回复",
+      "description": "受到伤害后护盾立即开始恢复，但自身生命值降低。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_01.webp",
+      "tagIds": [
+        12
+      ]
+    },
+    {
+      "id": "1378042500",
+      "name": "坚盾化盾",
+      "description": "提高护盾上限；溢出的生命回复可转化为护盾。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_02.webp",
+      "tagIds": [
+        12
+      ]
+    },
+    {
+      "id": "1378042510",
+      "name": "坚盾技回",
+      "description": "护盾耗尽时，使用技能可恢复护盾。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_03.webp",
+      "tagIds": [
+        12
+      ]
+    },
+    {
+      "id": "1378042520",
+      "name": "坚盾附伤",
+      "description": "当前护盾越高，武器伤害加成越高。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_03.webp",
+      "tagIds": [
+        12
+      ]
+    },
+    {
+      "id": "1378042540",
+      "name": "坚盾环波",
+      "description": "持有护盾时周期性释放冲击环；护盾被打破后暂时无法触发。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_01.webp",
+      "tagIds": [
+        12,
+        4
+      ]
+    },
+    {
+      "id": "1378042610",
+      "name": "游击自愈",
+      "description": "移动一定距离后回复生命。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_01.webp",
+      "tagIds": [
+        13,
+        14
+      ]
+    },
+    {
+      "id": "1378042631",
+      "name": "游击弹道",
+      "description": "移动一定距离后额外发射跟踪弹道。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_03.webp",
+      "tagIds": [
+        13,
+        7
+      ]
+    },
+    {
+      "id": "1378042650",
+      "name": "五连秘技",
+      "description": "多次使用武器技能后，重置下一次技能的冷却。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_02.webp",
+      "tagIds": [
+        15
+      ]
+    },
+    {
+      "id": "1378042660",
+      "name": "秘技冲击",
+      "description": "使用武器技能后若未造成技能伤害，在自身位置生成冲击环。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_03.webp",
+      "tagIds": [
+        15,
+        4
+      ]
+    },
+    {
+      "id": "1378042670",
+      "name": "秘技互通",
+      "description": "释放技能时为其他技能补充充能。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_01.webp",
+      "tagIds": [
+        15
+      ]
+    },
+    {
+      "id": "1378044040",
+      "name": "机枪导弹",
+      "description": "累计造成武器伤害后发射导弹。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
+      "tagIds": [
+        7
+      ]
+    },
+    {
+      "id": "1378044090",
+      "name": "血转环伤",
+      "description": "最大生命值越高，冲击环伤害加成越高。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
+      "tagIds": [
+        4,
+        14
+      ]
+    },
+    {
+      "id": "1378044100",
+      "name": "混沌元素",
+      "description": "施加元素效果时，额外随机施加元素效果；该效果有冷却时间。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_07.webp",
+      "tagIds": [
+        10
+      ]
+    },
+    {
+      "id": "1378044150",
+      "name": "大弹容伤",
+      "description": "增加每次射击的弹药消耗，同时提高弹匣容量和伤害。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes01_01.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378044160",
+      "name": "迷你弹夹",
+      "description": "缩小主弹匣容量，换取伤害提升。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes01_02.webp",
+      "tagIds": [
+        16
+      ]
+    },
+    {
+      "id": "1378044170",
+      "name": "双倍计数",
+      "description": "提高每次开火的弹药消耗，同时提高射击伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes01_02.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378044180",
+      "name": "碾压之势",
+      "description": "攻击高生命值目标时，提高弱点伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_03.webp",
+      "tagIds": [
+        3
+      ]
+    },
+    {
+      "id": "1378044190",
+      "name": "强力爆弹",
+      "description": "射击造成高额伤害时，在目标处产生基于本次射击伤害的爆弹；该效果有冷却时间。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_02.webp",
+      "tagIds": [
+        3
+      ]
+    },
+    {
+      "id": "1378044200",
+      "name": "势如破局",
+      "description": "攻击低生命值目标时，提高弱点伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_01.webp",
+      "tagIds": [
+        3
+      ]
+    },
+    {
+      "id": "1378044240",
+      "name": "跑步充能",
+      "description": "移动一定距离后恢复技能充能。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_02.webp",
+      "tagIds": [
+        13,
+        15
+      ]
+    },
+    {
+      "id": "1378044250",
+      "name": "狂战之力",
+      "description": "降低生命上限，换取全伤害、射击速度和近战攻击速度提升。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_03.webp",
+      "tagIds": [
+        8
+      ]
+    },
+    {
+      "id": "1378044260",
+      "name": "击杀护盾",
+      "description": "近距离击杀目标时获得护盾，并提高护盾上限。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_01.webp",
+      "tagIds": [
+        8,
+        12
+      ]
+    },
+    {
+      "id": "1378044270",
+      "name": "不灭之躯",
+      "description": "受到致命伤害时暂时免疫死亡并提高伤害；该效果有冷却时间。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_03.webp",
+      "tagIds": [
+        9
+      ]
+    },
+    {
+      "id": "1378044280",
+      "name": "血偿增伤",
+      "description": "使用武器技能时损失生命，换取短时间的伤害提升。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_01.webp",
+      "tagIds": [
+        9
+      ]
+    },
+    {
+      "id": "1378044300",
+      "name": "罪恶快感",
+      "description": "累计击杀普通敌人或击杀精英敌人后，暂时提高攻速和伤害；期间造成伤害可治疗自身。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044310",
+      "name": "暴击飞弹",
+      "description": "累计暴击后发射导弹。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
+      "tagIds": [
+        7
+      ]
+    },
+    {
+      "id": "1378044340",
+      "name": "近战大师",
+      "description": "近战武器击杀普通敌人或精英敌人后，暂时叠加近战范围和攻击速度。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_02.webp",
+      "tagIds": [
+        8
+      ]
+    },
+    {
+      "id": "1378044350",
+      "name": "重拳暴击",
+      "description": "提高近战武器的重击伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_03.webp",
+      "tagIds": [
+        8
+      ]
+    },
+    {
+      "id": "1378044360",
+      "name": "低血猎杀",
+      "description": "攻击低生命值目标时提高伤害；使用近战武器时加成更高。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_03.webp",
+      "tagIds": [
+        3,
+        8
+      ]
+    },
+    {
+      "id": "1378044380",
+      "name": "蓄势待发",
+      "description": "保持不射击且不释放技能时，持续叠加伤害和暴击伤害；攻击或释放技能后清除层数。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_02.webp",
+      "tagIds": [
+        3
+      ]
+    },
+    {
+      "id": "1378044390",
+      "name": "不稳定射",
+      "description": "射击会降低精准度，换取近距离战斗伤害提升。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_01.webp",
+      "tagIds": [
+        8
+      ]
+    },
+    {
+      "id": "1378044400",
+      "name": "多重爆炸",
+      "description": "武器射击触发爆炸时，有概率在爆炸位置复制一次爆炸，并受冷却时间限制。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
+      "tagIds": [
+        17
+      ]
+    },
+    {
+      "id": "1378044410",
+      "name": "直击榴弹",
+      "description": "提高榴弹直击伤害，但缩小爆炸范围。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
+      "tagIds": [
+        17
+      ]
+    },
+    {
+      "id": "1378044420",
+      "name": "独爆增伤",
+      "description": "爆炸仅命中单个目标时，提高该次伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
+      "tagIds": [
+        17
+      ]
+    },
+    {
+      "id": "1378044480",
+      "name": "暴击护盾",
+      "description": "降低护盾上限；暴击时恢复护盾。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_02.webp",
+      "tagIds": [
+        12,
+        11
+      ]
+    },
+    {
+      "id": "1378044490",
+      "name": "奔跑治愈",
+      "description": "连续移动一定距离后回复生命。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_01.webp",
+      "tagIds": [
+        13,
+        14
+      ]
+    },
+    {
+      "id": "1378044500",
+      "name": "精准命中",
+      "description": "不再享受射速增益，并将射速加成转化为攻击力。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_01.webp",
+      "tagIds": [
+        3
+      ]
+    },
+    {
+      "id": "1378044510",
+      "name": "弱点飞奔",
+      "description": "命中弱点时叠加移动速度；受到伤害并损失生命后清除增益。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_03.webp",
+      "tagIds": [
+        1,
+        13
+      ]
+    },
+    {
+      "id": "1378044520",
+      "name": "暴击飞奔",
+      "description": "暴击时叠加移动速度；受到伤害并损失生命后清除增益。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_03.webp",
+      "tagIds": [
+        11,
+        13
+      ]
+    },
+    {
+      "id": "1378044530",
+      "name": "越跑越猛",
+      "description": "移动积累动能，提高下一次射击伤害；射击后清除动能。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_03.webp",
+      "tagIds": [
+        13
+      ]
+    },
+    {
+      "id": "1378044540",
+      "name": "治愈光环",
+      "description": "提高自身治疗效果；自身获得治疗时也会治疗队友。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_05.webp",
+      "tagIds": [
+        14
+      ]
+    },
+    {
+      "id": "1378044550",
+      "name": "收割灵魂",
+      "description": "累计击杀敌人时，叠加伤害提升。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044560",
+      "name": "叠叠叠",
+      "description": "自身获得增益状态时，叠加更多层数。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_10.webp",
+      "tagIds": [
+        18
+      ]
+    },
+    {
+      "id": "1378044570",
+      "name": "逃跑计划",
+      "description": "生命值较低时立即回满护盾，并暂时提高移动速度；该效果有冷却时间。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_01.webp",
+      "tagIds": [
+        14
+      ]
+    },
+    {
+      "id": "1378044580",
+      "name": "连绵不断",
+      "description": "造成伤害时持续叠加伤害提升；增益持续一段时间。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044600",
+      "name": "不动明王",
+      "description": "保持静止时叠加石化减伤；受击时释放冲击环并消耗石化层数。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044610",
+      "name": "冰弹减速",
+      "description": "爆炸伤害为敌人施加减速。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_04.webp",
+      "tagIds": [
+        17
+      ]
+    },
+    {
+      "id": "1378044620",
+      "name": "暴击吸血",
+      "description": "造成伤害时获得持续治疗；暴击时治疗效果更强，触发受冷却限制。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_05.webp",
+      "tagIds": [
+        14
+      ]
+    },
+    {
+      "id": "1378044630",
+      "name": "减速增伤",
+      "description": "对减速中的敌人造成更高伤害。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044640",
+      "name": "移速增伤",
+      "description": "移动速度越高，全伤害加成越高。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_02.webp",
+      "tagIds": [
+        13
+      ]
+    },
+    {
+      "id": "1378044650",
+      "name": "移动冲击",
+      "description": "移动一定距离后，在自身位置产生冲击环。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_01.webp",
+      "tagIds": [
+        13,
+        4
+      ]
+    },
+    {
+      "id": "1378044660",
+      "name": "电弧连锁",
+      "description": "造成伤害时有概率触发闪电链，并使被命中的敌人减速。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044670",
+      "name": "召唤治愈",
+      "description": "召唤物周期性产生治愈光环，治疗友方并伤害敌人。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_02.webp",
+      "tagIds": [
+        19
+      ]
+    },
+    {
+      "id": "1378044700",
+      "name": "弹容附魔",
+      "description": "主弹匣容量越高，全伤害加成越高。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes01_02.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378044710",
+      "name": "技能魔术",
+      "description": "释放武器技能时有概率充满技能能量。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_02.webp",
+      "tagIds": [
+        15
+      ]
+    },
+    {
+      "id": "1378044720",
+      "name": "技能弹容",
+      "description": "使用技能时有概率过充弹药。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes01_03.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378044730",
+      "name": "暴击充弹",
+      "description": "累计暴击后过充弹药。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_01.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378044740",
+      "name": "暴击过充",
+      "description": "暴击时有概率过充弹药。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_02.webp",
+      "tagIds": [
+        11,
+        2
+      ]
+    },
+    {
+      "id": "1378044750",
+      "name": "换弹冲击",
+      "description": "空仓换弹后暂时自动释放冲击环；暴击率和换弹速度加成可提高冲击环伤害。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes10_01.webp",
+      "tagIds": [
+        16,
+        4
+      ]
+    },
+    {
+      "id": "1378044760",
+      "name": "超级环",
+      "description": "提高所有冲击环的作用半径和伤害。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_07.webp",
+      "tagIds": [
+        4
+      ]
+    },
+    {
+      "id": "1378044770",
+      "name": "超级导弹",
+      "description": "提高所有导弹的爆炸范围和伤害。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
+      "tagIds": [
+        7
+      ]
+    },
+    {
+      "id": "1378044780",
+      "name": "爆炸导弹",
+      "description": "爆炸命中时发射跟踪导弹；仅命中单个目标时发射更多，并受冷却限制。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
+      "tagIds": [
+        17,
+        7
+      ]
+    },
+    {
+      "id": "1378044790",
+      "name": "独弹爆炸",
+      "description": "武器直击命中后，使目标短时间内受到更多爆炸伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
+      "tagIds": [
+        17
+      ]
+    },
+    {
+      "id": "1378044800",
+      "name": "冲击导弹",
+      "description": "冲击环命中怪物时有概率发射导弹。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
+      "tagIds": [
+        4,
+        7
+      ]
+    },
+    {
+      "id": "1378044810",
+      "name": "雷击冲击",
+      "description": "落雷命中时有概率在角色位置产生冲击环。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_07.webp",
+      "tagIds": [
+        20,
+        4
+      ]
+    },
+    {
+      "id": "1378044820",
+      "name": "导弹雷击",
+      "description": "导弹命中时有概率在目标位置产生落雷。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
+      "tagIds": [
+        7,
+        20
+      ]
+    },
+    {
+      "id": "1378044870",
+      "name": "狂暴连击",
+      "description": "提高近战攻击速度和伤害；近战命中时回复生命。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_02.webp",
+      "tagIds": [
+        8
+      ]
+    },
+    {
+      "id": "1378044880",
+      "name": "暴击碎片",
+      "description": "提高暴击率。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044890",
+      "name": "暴伤碎片",
+      "description": "提高暴击伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044900",
+      "name": "全伤碎片",
+      "description": "提高全伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044910",
+      "name": "武器碎片",
+      "description": "提高武器伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044920",
+      "name": "技能碎片",
+      "description": "提高技能伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044930",
+      "name": "移速碎片",
+      "description": "提高移动速度。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044940",
+      "name": "生命碎片",
+      "description": "提高最大生命值。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044950",
+      "name": "护盾碎片",
+      "description": "提高最大护盾值。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044960",
+      "name": "换弹碎片",
+      "description": "提高换弹速度。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044970",
+      "name": "充能碎片",
+      "description": "提高技能充能速度。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044980",
+      "name": "弱点碎片",
+      "description": "提高弱点伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378044990",
+      "name": "暴击碎片",
+      "description": "提高暴击率。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045000",
+      "name": "暴伤碎片",
+      "description": "提高暴击伤害。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045010",
+      "name": "全伤碎片",
+      "description": "提高全伤害。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045020",
+      "name": "武器碎片",
+      "description": "提高武器伤害。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045030",
+      "name": "技能碎片",
+      "description": "提高技能伤害。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045040",
+      "name": "移速碎片",
+      "description": "提高移动速度。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045050",
+      "name": "生命碎片",
+      "description": "提高最大生命值。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045060",
+      "name": "护盾碎片",
+      "description": "提高最大护盾值。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045070",
+      "name": "弹夹碎片",
+      "description": "提高换弹速度。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045080",
+      "name": "充能碎片",
+      "description": "提高技能充能速度。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_03.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045090",
+      "name": "弱点碎片",
+      "description": "提高弱点伤害。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045100",
+      "name": "近战赋能",
+      "description": "近战武器获得元素赋能，不同元素可附加伤害、控制或治疗效果。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_03.webp",
+      "tagIds": [
+        8
+      ]
+    },
+    {
+      "id": "1378045120",
+      "name": "换弹增强",
+      "description": "进入换弹时，暂时提高全伤害。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes10_02.webp",
+      "tagIds": [
+        16
+      ]
+    },
+    {
+      "id": "1378045130",
+      "name": "弱点打击",
+      "description": "提高弱点伤害；连续命中精英或首领弱点时，额外造成基于目标生命上限的伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_02.webp",
+      "tagIds": [
+        1
+      ]
+    },
+    {
+      "id": "1378045140",
+      "name": "雷暴连锁",
+      "description": "提高雷元素伤害；暴击时有概率召唤落雷。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_06.webp",
+      "tagIds": [
+        10
+      ]
+    },
+    {
+      "id": "1378045150",
+      "name": "燃油弹匣",
+      "description": "击杀燃烧目标时产生小型爆炸，并受冷却时间限制。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
+      "tagIds": [
+        10
+      ]
+    },
+    {
+      "id": "1378045160",
+      "name": "金币弹头",
+      "description": "暴击时有概率消耗金币，大幅提高暴击伤害；金币不足时不触发。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_03.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378045170",
+      "name": "血量燃烧",
+      "description": "降低最大生命值并提高火元素伤害；击杀燃烧敌人时回复生命。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_06.webp",
+      "tagIds": [
+        10,
+        14
+      ]
+    },
+    {
+      "id": "1378045180",
+      "name": "精准冷却",
+      "description": "命中弱点时为技能充能，并受冷却时间限制。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_02.webp",
+      "tagIds": [
+        1,
+        15
+      ]
+    },
+    {
+      "id": "1378045200",
+      "name": "生机弹仓",
+      "description": "最大生命值越高，弹匣容量和换弹速度加成越高。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_08.webp",
+      "tagIds": [
+        14,
+        2
+      ]
+    },
+    {
+      "id": "1378045210",
+      "name": "生命保险",
+      "description": "满血时获得治疗，且金币不足时，可额外获得金币。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_01.webp",
+      "tagIds": [
+        6,
+        14
+      ]
+    },
+    {
+      "id": "1378045220",
+      "name": "冰冷代谢",
+      "description": "受到治疗时，对附近敌人施加冰缓异常。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_03.webp",
+      "tagIds": [
+        14
+      ]
+    },
+    {
+      "id": "1378045230",
+      "name": "心跳瞄准",
+      "description": "低生命值时增加武器弹道；生命值较高时提高武器精准度。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_01.webp",
+      "tagIds": [
+        5
+      ]
+    },
+    {
+      "id": "1378045240",
+      "name": "富者护身",
+      "description": "持有的金币越多，最大生命值加成越高。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_05.webp",
+      "tagIds": [
+        14
+      ]
+    },
+    {
+      "id": "1378045270",
+      "name": "心之钢核",
+      "description": "击杀普通、精英或首领敌人时，永久提高最大生命值；高级敌人的收益更高。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_05.webp",
+      "tagIds": [
+        14
+      ]
+    },
+    {
+      "id": "1378045280",
+      "name": "猎杀记忆",
+      "description": "暴击时永久叠加暴击伤害。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_01.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378045290",
+      "name": "涟漪步伐",
+      "description": "冲击环命中敌人时暂时叠加移动速度。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_02.webp",
+      "tagIds": [
+        4,
+        13
+      ]
+    },
+    {
+      "id": "1378045300",
+      "name": "脉冲铸血",
+      "description": "冲击环命中敌人时永久增加最大生命值。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_05.webp",
+      "tagIds": [
+        4,
+        14
+      ]
+    },
+    {
+      "id": "1378045310",
+      "name": "混沌枪膛",
+      "description": "武器不再暴击；原本触发暴击时改为增加弹道。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_02.webp",
+      "tagIds": [
+        11
+      ]
+    },
+    {
+      "id": "1378045320",
+      "name": "治疗冲击",
+      "description": "获得治疗或护盾回复时，在自身位置产生冲击环。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_02.webp",
+      "tagIds": [
+        14,
+        4
+      ]
+    },
+    {
+      "id": "1378045330",
+      "name": "蓄力一击",
+      "description": "停止射击时积累下一次射击的伤害加成；开火后清除。",
+      "category": "normal",
+      "quality": 5,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_03.webp",
+      "tagIds": [
+        3
+      ]
+    },
+    {
+      "id": "1378045340",
+      "name": "换弹过充",
+      "description": "换弹时有概率过充弹药。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_08.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378045370",
+      "name": "弱点补弹",
+      "description": "命中弱点时有概率补充弹药，且可过充。",
+      "category": "normal",
+      "quality": 3,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
+      "tagIds": [
+        1
+      ]
+    },
+    {
+      "id": "1378045390",
+      "name": "充能弹药",
+      "description": "使用技能后补满弹药。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_08.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378045400",
+      "name": "射击补弹",
+      "description": "射击命中时有概率补充弹药。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes01_02.webp",
+      "tagIds": [
+        2
+      ]
+    },
+    {
+      "id": "1378045410",
+      "name": "技能反哺",
+      "description": "使用技能时有概率返还技能能量。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_03.webp",
+      "tagIds": [
+        15
+      ]
+    },
+    {
+      "id": "1378045420",
+      "name": "技能反哺Ⅱ",
+      "description": "使用技能时有概率返还大量技能能量；短时间内有触发次数限制。",
+      "category": "normal",
+      "quality": 4,
+      "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_01.webp",
+      "tagIds": [
+        15
+      ]
+    }
+  ]
+}

@@ -114,6 +114,7 @@ function generateSitemap() {
     { url: "/perks" },
     ...(getPerkPreviewCatalog() ? [{ url: "/perks/preview" }] : []),
     { url: "/overlimit", lastmod: overlimit.season.updatedAt },
+    { url: "/origin" },
     ...(overlimitPreview ? [{ url: "/overlimit/preview", lastmod: overlimitPreview.season.updatedAt }] : []),
     { url: "/tower-defense" },
     { url: "/traps" },

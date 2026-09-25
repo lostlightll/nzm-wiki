@@ -91,6 +91,8 @@ test("S4 official content replaces archived S3 and removes preview search routes
   }
   assert.ok(paths.has("/perks/slot-4/极寒领域"));
   assert.ok(paths.has("/overlimit#bonds"));
+  assert.ok(paths.has("/origin#runes"));
+  assert.ok(captured.some(item => item.path === "/origin#runes" && item.keywords.includes("原点猎场") && item.pinyin.includes("qhtj")));
   assert.ok(!captured.some(item => item.path.startsWith("/perks/preview") || item.path.startsWith("/overlimit/preview")));
   assert.ok(!captured.some(item => item.path.includes("archives/content-versions")));
 });
