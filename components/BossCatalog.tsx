@@ -12,7 +12,7 @@ import { EnemyCatalogNav } from "@/components/EnemyCatalogNav";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import { getAssetPath } from "@/lib/path";
 import { LC_MAPS } from "@/lib/lc-maps";
-import { getOriginBossHealth, type OriginDifficulty } from "@/lib/origin-boss-health";
+import { getOriginBossRoomIndices, ORIGIN_ROUTES, type OriginDifficulty } from "@/lib/origin-boss-health";
 import type { Boss } from "@/types";
 
 interface BossGroup {
@@ -27,7 +27,7 @@ function getBossMaps(boss: Boss): string[] {
 }
 
 function BossCard({ boss, eager = false }: { boss: Boss; eager?: boolean }) {
-  const { withDifficulty, mode, roomIndex } = useBossDifficulty();
+  const { withDifficulty, mode, difficulty, roomIndex } = useBossDifficulty();
 
   return (
     <CatalogLink
@@ -64,7 +64,7 @@ function BossCard({ boss, eager = false }: { boss: Boss; eager?: boolean }) {
             </p>
           )}
           <div className="mt-auto flex min-h-14 flex-col items-start gap-1 border-t border-zinc-800 pt-3 text-sm">
-            <span className="text-zinc-500">{mode === "origin" && roomIndex === null ? "基础血量" : "血量"}</span>
+            <span className="text-zinc-500">{mode === "origin" && roomIndex === null && getOriginBossRoomIndices(boss.slug, difficulty as OriginDifficulty) === null ? "基础血量" : "血量"}</span>
             <BossCardHealth boss={boss} />
           </div>
         </div>
@@ -133,12 +133,19 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
 
   const allGroups = useMemo<BossGroup[]>(() => {
     if (mode === "origin") {
-      return [{
-        id: "origin",
-        name: "原点猎场",
-        image: null,
-        bosses: bosses.filter((boss) => getOriginBossHealth(boss.slug, difficulty as OriginDifficulty, null)),
-      }];
+      const bySlug = new Map(bosses.map((boss) => [boss.slug, boss]));
+      return ORIGIN_ROUTES.map((route) => {
+        const originEntries = route.difficulties[difficulty as OriginDifficulty] ?? [];
+        return {
+          id: route.id,
+          name: route.name,
+          image: null,
+          bosses: originEntries.flatMap((entry) => {
+            const boss = bySlug.get(entry.slug);
+            return boss ? [boss] : [];
+          }),
+        };
+      });
     }
     const knownMaps = new Set(LC_MAPS.map((map) => map.name));
     const groups: BossGroup[] = LC_MAPS.map((map) => ({
@@ -176,6 +183,7 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
             boss.title,
             boss.nickname,
             boss.description,
+            group.name,
             ...getBossMaps(boss),
           ]
             .filter(Boolean)
@@ -187,14 +195,13 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
       .filter((group) => group.bosses.length > 0);
   }, [allGroups, deferredQuery]);
 
-  const mapOptions = allGroups.filter((group) => group.bosses.length > 0);
+  const mapOptions = mode === "origin" ? allGroups : allGroups.filter((group) => group.bosses.length > 0);
   const activeMapId = mapOptions.some((group) => group.id === selectedMapId) ? selectedMapId : null;
   const visibleGroups = useMemo(
     () =>
-      activeMapId && mode !== "origin"
-        ? searchedGroups.filter((group) => group.id === activeMapId)
-        : searchedGroups,
-    [searchedGroups, activeMapId, mode],
+      (activeMapId ? searchedGroups.filter((group) => group.id === activeMapId) : searchedGroups)
+        .filter((group) => group.bosses.length > 0),
+    [searchedGroups, activeMapId],
   );
 
   const resultCount = visibleGroups.reduce(
@@ -251,50 +258,54 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
           {mode !== "overlimit" && <BossDifficultyControl bossOnly />}
         </div>
 
-        {mode === "origin" && <div className="mt-5 border-t border-zinc-700/80 pt-5">
-          <BossRoomControl />
-        </div>}
-
-        {mode !== "origin" && <div className="mt-5 border-t border-zinc-700/80 pt-5">
-          <div className="mb-3 flex min-h-8 flex-wrap items-center justify-between gap-2">
-            <h2 className="text-base font-semibold text-zinc-300">地图筛选</h2>
-            <p aria-live="polite" className="text-sm text-zinc-500">
-              共 {resultCount} 位首领
-            </p>
+        <div className="relative mt-5 flex flex-wrap items-start gap-x-4 gap-y-5 border-t border-zinc-700/80 pt-5">
+          {mode === "origin" && <p aria-live="polite" className="absolute right-0 top-5 text-sm text-zinc-500">
+            共 {resultCount} 位首领
+          </p>}
+          <div className={mode === "origin" ? "min-w-0 max-w-full" : "min-w-0 flex-1"}>
+            <div className="mb-3 flex min-h-8 flex-wrap items-center justify-between gap-2">
+              <h2 className="text-base font-semibold text-zinc-300">地图筛选</h2>
+              {mode !== "origin" && <p aria-live="polite" className="text-sm text-zinc-500">
+                共 {resultCount} 位首领
+              </p>}
+            </div>
+            <div aria-label="按地图筛选" className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                aria-pressed={activeMapId === null}
+                onClick={() => setSelectedMapId(null)}
+                className={`min-h-11 touch-manipulation rounded border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
+                  activeMapId === null
+                    ? "border-[#d1ac69]/70 bg-[#d1ac69]/15 text-[#e1c58f]"
+                    : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700 hover:text-white"
+                }`}
+              >
+                {mode === "origin" ? "全部线路" : "全部地图"}
+              </button>
+              {mapOptions.map((map) => {
+                const selected = activeMapId === map.id;
+                return (
+                  <button
+                    key={map.id}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => setSelectedMapId(map.id)}
+                    className={`min-h-11 touch-manipulation rounded border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
+                      selected
+                        ? "border-[#d1ac69]/70 bg-[#d1ac69]/15 text-[#e1c58f]"
+                        : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700 hover:text-white"
+                    }`}
+                  >
+                    {map.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <div aria-label="按地图筛选" className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              aria-pressed={activeMapId === null}
-              onClick={() => setSelectedMapId(null)}
-              className={`min-h-11 touch-manipulation rounded border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
-                activeMapId === null
-                  ? "border-[#d1ac69]/70 bg-[#d1ac69]/15 text-[#e1c58f]"
-                  : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700 hover:text-white"
-              }`}
-            >
-              全部地图
-            </button>
-            {mapOptions.map((map) => {
-              const selected = activeMapId === map.id;
-              return (
-                <button
-                  key={map.id}
-                  type="button"
-                  aria-pressed={selected}
-                  onClick={() => setSelectedMapId(map.id)}
-                  className={`min-h-11 touch-manipulation rounded border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-300 ${
-                    selected
-                      ? "border-[#d1ac69]/70 bg-[#d1ac69]/15 text-[#e1c58f]"
-                      : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-500 hover:bg-zinc-700 hover:text-white"
-                  }`}
-                >
-                  {map.name}
-                </button>
-              );
-            })}
-          </div>
-        </div>}
+          {mode === "origin" && <div className="min-w-0 flex-[1_1_240px]">
+            <BossRoomControl />
+          </div>}
+        </div>
       </section>
 
       {visibleGroups.length > 0 ? (

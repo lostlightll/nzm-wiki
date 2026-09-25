@@ -138,7 +138,7 @@ Boss 的 `MonsterType` 不全是 `7`，例如大都会金牌打手为 `6`。因�
 
 ## 原点猎场 Boss
 
-原点猎场使用独立入口（`mode_type=原点猎场`）和 `Roguelike/` 数值表，不能套用常规猎场的任务计划。已核对来源 ID 维护在 `data/enemies/lc/boss/origin-health-sources.json`，导出站点数据为 `origin-health.json`：
+原点猎场使用独立入口（`mode_type=原点猎场`）和 `Roguelike/` 数值表，不能套用常规猎场的任务计划。已核对来源 ID 维护在 `data/enemies/lc/boss/origin-health-sources.json`，线路名称与已审阅房间索引维护在 `origin-route-sources.json`；导出站点数据为 `origin-health.json` 和 `origin-routes.json`：
 
 ```text
 pnpm exec tsx scripts/import-origin-boss-health.ts
@@ -146,7 +146,7 @@ pnpm exec tsx scripts/import-origin-boss-health.ts --write
 pnpm exec tsx scripts/import-origin-boss-health.ts --check
 ```
 
-导入器以 `RoguelikeMonsterBaseTable` 的 `2001201` 基础行、对应入口的 `RoguelikeMonsterIntraTable.Health` 与 `MonsterAttrTypeConfig.MaxHealth` 相乘并取整，另保存 `RoguelikeRoomMonsterNumericalTable` 按入口、房间序号排列的 `Health` 倍率。页面未选房间时显示配置基础值；选房间时再乘房间倍率并取整。这是配置推算，尚未经运行时血量验证，不含战斗内额外效果。不同房间不能共用一个固定 Boss 血量。
+导入器以 `RoguelikeMonsterBaseTable` 的 `2001201` 基础行、对应入口的 `RoguelikeMonsterIntraTable.Health` 与 `MonsterAttrTypeConfig.MaxHealth` 相乘并取整，另保存 `RoguelikeRoomMonsterNumericalTable` 按入口、房间序号排列的 `Health` 倍率。线路按入口 `map_id`（601 骑士、602 女王、603 引渡者）与该入口的怪物来源 ID 自动归属，按怪物表 `ID` 排序，要求每个已收录 Boss 的每个难度恰好归属一条线路。线路名称及炼狱 Boss 的倍率索引 `3、7、10/11` 来自人工整理的房间记录，不由小数位自动判定；导入器检查 Boss 数、最终 Boss、阶段数、索引存在性。炼狱页面默认以各阶段基础血量乘对应倍率并取整，手动选房间时改为该房间的试算值。英雄、折磨尚无同等审阅的阶段索引，页面只显示配置基础值，不套用炼狱映射。这是配置推算，尚未经运行时血量验证，不含战斗内额外效果。
 
 当前来源收录 9 位 Boss。兰斯D博士、尸龙-弗莱皮、宙之虹虽有原点数值行，但按线路记录未出现，暂不收录；数值行不单独证明实际出场。`18407071` 鬼舞樱变体与精绝女王 `18501073/74` 未作为图鉴额外阶段；原点入口仅列出杰斯第一形态，页面不借用常规第二形态的血量。英雄入口只有鬼舞樱与白毛狼王；折磨入口只覆盖第一组首领。缺失难度不沿用常规猎场值。
 

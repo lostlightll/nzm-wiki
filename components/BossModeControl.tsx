@@ -32,17 +32,17 @@ export function BossRoomControl() {
 
   return (
     <div>
-      <label htmlFor="origin-room" className="mb-3 block text-base font-semibold text-zinc-300">房间序号</label>
+      <label htmlFor="origin-room" className="mb-3 block text-base font-semibold text-zinc-300">房间难度</label>
       <select
         id="origin-room"
         value={roomIndex ?? ""}
         onChange={(event) => setRoomIndex(event.target.value === "" ? null : Number(event.target.value))}
         className="min-h-11 max-w-full rounded border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100 focus-visible:border-[#d1ac69] focus-visible:outline-none"
       >
-        <option value="">无倍率</option>
+        <option value="">{difficulty === "inferno" ? "按线路阶段" : "基础血量"}</option>
         {rooms.map((factor, index) => <option key={index} value={index}>房间 {index} · ×{Math.round(factor * 10) / 10}</option>)}
       </select>
-      <p className="mt-2 max-w-sm text-xs leading-5 text-zinc-500">原点血量随房间序号变化，选择实际房间后显示配置推算值</p>
+      <p className="mt-2 text-xs leading-5 text-zinc-500">手动选取倍率索引会覆盖线路阶段，如果你不知道这意味着什么请不要使用此选项</p>
     </div>
   );
 }

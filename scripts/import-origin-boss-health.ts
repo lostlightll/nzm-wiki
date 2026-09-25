@@ -2,6 +2,7 @@
 import fs from "fs";
 import path from "path";
 import sources from "@/data/enemies/lc/boss/origin-health-sources.json";
+import routeSources from "@/data/enemies/lc/boss/origin-route-sources.json";
 
 type Difficulty = "heroic" | "inferno" | "torment";
 type Row = Record<string, unknown>;
@@ -10,6 +11,7 @@ type Named = { SourceString?: string; LocalizedString?: string };
 const root = process.cwd();
 const tableDir = path.join(root, "refs/Exports/NZM/Content/DataTables");
 const outputPath = path.join(root, "data/enemies/lc/boss/origin-health.json");
+const routeOutputPath = path.join(root, "data/enemies/lc/boss/origin-routes.json");
 const labels: Record<Difficulty, string> = {
   heroic: "英雄",
   inferno: "炼狱",
@@ -107,17 +109,66 @@ for (const difficulty of Object.keys(labels) as Difficulty[]) {
   result.rooms[difficulty] = roomSets[0];
 }
 
+const routes = routeSources.map((route) => {
+  const difficulties: Partial<Record<Difficulty, { slug: string; roomIndices: number[] | null }[]>> = {};
+  for (const difficulty of Object.keys(labels) as Difficulty[]) {
+    const matchingEntrances = entrances.filter((row) =>
+      row.map_id === route.mapId && name(row.dungeon_difficulty_des) === labels[difficulty]
+    );
+    if (!matchingEntrances.length) continue;
+    const entrance = single(matchingEntrances, `${route.name}/${difficulty} entrance`);
+    const dungeonRows = intra.filter((row) => row.DungeonID === entrance.dungeon_id);
+    const bosses = Object.entries(sources).flatMap(([slug, ids]) => {
+      const stageRows = ids.map((id) => dungeonRows.filter((row) => row.UniqueMonsterID === id));
+      if (stageRows.every((matches) => matches.length === 0)) return [];
+      if (stageRows.some((matches) => matches.length !== 1)) {
+        throw new Error(`${route.name}/${difficulty}/${slug}: incomplete or duplicate stages`);
+      }
+      if (!result.bosses[slug]?.[difficulty]) throw new Error(`${route.name}/${difficulty}/${slug}: missing health`);
+      return [{ slug, order: Math.min(...stageRows.map((matches) => Number(matches[0].ID))) }];
+    }).sort((a, b) => a.order - b.order);
+    if (!bosses.length || (difficulty === "inferno" && bosses.at(-1)?.slug !== route.finalBoss)) {
+      throw new Error(`${route.name}/${difficulty}: missing final boss`);
+    }
+    if (difficulty === "inferno" && bosses.length !== route.infernoRoomIndices.length) {
+      throw new Error(`${route.name}: boss count does not match reviewed room slots`);
+    }
+    difficulties[difficulty] = bosses.map(({ slug }, index) => {
+      const roomIndices = difficulty === "inferno" ? route.infernoRoomIndices[index] : null;
+      if (roomIndices && (roomIndices.length !== result.bosses[slug][difficulty]?.length ||
+        roomIndices.some((roomIndex) => !Number.isInteger(roomIndex) || result.rooms[difficulty]?.[roomIndex] === undefined))) {
+        throw new Error(`${route.name}/${slug}: invalid room indices`);
+      }
+      return { slug, roomIndices };
+    });
+  }
+  if (!difficulties.inferno) throw new Error(`${route.name}: missing inferno route`);
+  return { id: String(route.mapId), name: route.name, difficulties };
+});
+
+for (const [slug, health] of Object.entries(result.bosses)) {
+  for (const difficulty of Object.keys(health) as Difficulty[]) {
+    if (routes.filter((route) => route.difficulties[difficulty]?.some((boss) => boss.slug === slug)).length !== 1) {
+      throw new Error(`${slug}/${difficulty}: expected exactly one route`);
+    }
+  }
+}
+
 const output = `${JSON.stringify(result, null, 2)}\n`;
+const routeOutput = `${JSON.stringify(routes, null, 2)}\n`;
 if (process.argv.slice(2).some((arg) => arg !== "--write" && arg !== "--check") ||
   (process.argv.includes("--write") && process.argv.includes("--check"))) {
   throw new Error("Usage: tsx scripts/import-origin-boss-health.ts [--write|--check]");
 }
 const current = fs.existsSync(outputPath) && fs.readFileSync(outputPath, "utf8") === output;
+const routesCurrent = fs.existsSync(routeOutputPath) && fs.readFileSync(routeOutputPath, "utf8") === routeOutput;
 if (process.argv.includes("--write")) {
   fs.writeFileSync(outputPath, output);
+  fs.writeFileSync(routeOutputPath, routeOutput);
   console.log(`Wrote ${outputPath}`);
+  console.log(`Wrote ${routeOutputPath}`);
 } else {
   console.log(`Validated ${Object.keys(result.bosses).length} bosses.`);
-  console.log(current ? "Data is current." : "Data differs; pass --write to update.");
-  if (!current && process.argv.includes("--check")) process.exitCode = 1;
+  console.log(current && routesCurrent ? "Data is current." : "Data differs; pass --write to update.");
+  if ((!current || !routesCurrent) && process.argv.includes("--check")) process.exitCode = 1;
 }
