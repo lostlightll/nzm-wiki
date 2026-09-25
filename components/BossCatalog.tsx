@@ -4,7 +4,7 @@ import Image from "next/image";
 import { MapPinned, RotateCcw, Search, Skull, X } from "lucide-react";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { BossDifficultyControl } from "@/components/BossDifficultyControl";
-import { BossModeControl } from "@/components/BossModeControl";
+import { BossModeControl, BossRoomControl } from "@/components/BossModeControl";
 import { BossCardHealth } from "@/components/BossHealth";
 import { useBossDifficulty } from "@/components/BossDifficultyProvider";
 import { CatalogLink } from "@/components/CatalogLink";
@@ -243,6 +243,15 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
           )}
         </div>
 
+        <div className="mt-5 flex flex-wrap items-start gap-x-8 gap-y-5 border-t border-zinc-700/80 pt-5">
+          <BossModeControl />
+          <BossDifficultyControl />
+        </div>
+
+        {mode === "origin" && <div className="mt-5 border-t border-zinc-700/80 pt-5">
+          <BossRoomControl />
+        </div>}
+
         {mode === "classic" && <div className="mt-5 border-t border-zinc-700/80 pt-5">
           <div className="mb-3 flex min-h-8 flex-wrap items-center justify-between gap-2">
             <h2 className="text-base font-semibold text-zinc-300">地图筛选</h2>
@@ -283,10 +292,6 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
             })}
           </div>
         </div>}
-        <div className="mt-5 flex flex-wrap items-start gap-x-8 gap-y-5 border-t border-zinc-700/80 pt-5">
-          <BossModeControl />
-          <BossDifficultyControl />
-        </div>
       </section>
 
       {visibleGroups.length > 0 ? (
