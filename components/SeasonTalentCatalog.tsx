@@ -5,12 +5,11 @@ import Link from "next/link";
 import { Crosshair } from "lucide-react";
 import {
   useId,
-  useLayoutEffect,
   useRef,
   useState,
   type ReactNode,
 } from "react";
-import { createPortal } from "react-dom";
+import { HoverPreviewPanel } from "@/components/HoverPreviewPanel";
 import { SpriteIcon } from "@/components/SpriteIcon";
 import { FullscreenTalentStage } from "@/components/season-talents/FullscreenTalentStage";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
@@ -26,12 +25,6 @@ interface SeasonTalentCard {
   href: string;
   applicableWeapons: readonly string[];
   description: ReactNode;
-}
-
-interface PreviewPosition {
-  left: number;
-  top: number;
-  placement: "above" | "below";
 }
 
 const TALENTS: readonly SeasonTalentCard[] = [
@@ -95,65 +88,9 @@ function isWeaponType(value: string): value is WeaponType {
 
 function TalentInfo({ talent }: { talent: SeasonTalentCard }) {
   const anchorRef = useRef<HTMLButtonElement>(null);
-  const previewRef = useRef<HTMLDivElement>(null);
   const tooltipId = useId();
   const [isOpen, setIsOpen] = useState(false);
-  const [position, setPosition] = useState<PreviewPosition | null>(null);
-
-  useLayoutEffect(() => {
-    if (!isOpen) return;
-
-    const updatePosition = () => {
-      const anchor = anchorRef.current;
-      const preview = previewRef.current;
-      if (!anchor || !preview) return;
-
-      const anchorRect = anchor.getBoundingClientRect();
-      const previewRect = preview.getBoundingClientRect();
-      const viewportPadding = 16;
-      const gap = 12;
-      const spaceAbove = anchorRect.top - viewportPadding;
-      const spaceBelow =
-        window.innerHeight - anchorRect.bottom - viewportPadding;
-      const placement =
-        spaceBelow < previewRect.height + gap && spaceAbove > spaceBelow
-          ? "above"
-          : "below";
-      const desiredTop =
-        placement === "below"
-          ? anchorRect.bottom + gap
-          : anchorRect.top - previewRect.height - gap;
-      const desiredLeft =
-        anchorRect.left + anchorRect.width / 2 - previewRect.width / 2;
-      const maxTop = Math.max(
-        viewportPadding,
-        window.innerHeight - previewRect.height - viewportPadding,
-      );
-
-      setPosition({
-        placement,
-        top: Math.min(Math.max(viewportPadding, desiredTop), maxTop),
-        left: Math.min(
-          Math.max(viewportPadding, desiredLeft),
-          window.innerWidth - previewRect.width - viewportPadding,
-        ),
-      });
-    };
-
-    updatePosition();
-    window.addEventListener("resize", updatePosition);
-    window.addEventListener("scroll", updatePosition, true);
-
-    return () => {
-      window.removeEventListener("resize", updatePosition);
-      window.removeEventListener("scroll", updatePosition, true);
-    };
-  }, [isOpen]);
-
-  const showPreview = () => {
-    setPosition(null);
-    setIsOpen(true);
-  };
+  const showPreview = () => setIsOpen(true);
 
   const supportsHover = () =>
     window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -176,7 +113,6 @@ function TalentInfo({ talent }: { talent: SeasonTalentCard }) {
           event.preventDefault();
           event.stopPropagation();
           if (!supportsHover()) {
-            setPosition(null);
             setIsOpen((current) => !current);
           }
         }}
@@ -203,19 +139,7 @@ function TalentInfo({ talent }: { talent: SeasonTalentCard }) {
       </button>
 
       {isOpen &&
-        createPortal(
-          <div
-            ref={previewRef}
-            id={tooltipId}
-            role="tooltip"
-            data-placement={position?.placement}
-            className="perk-hover-preview pointer-events-none fixed z-[100] max-h-[calc(100dvh-2rem)] w-[min(24rem,calc(100vw-2rem))] overflow-hidden rounded-lg border border-[#d1ac69]/40 bg-[#15171b]/98 shadow-[0_18px_48px_rgba(0,0,0,0.55)] backdrop-blur-sm"
-            style={{
-              left: position?.left ?? 0,
-              top: position?.top ?? 0,
-              visibility: position ? "visible" : "hidden",
-            }}
-          >
+        <HoverPreviewPanel anchorRef={anchorRef} id={tooltipId}>
             <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3">
               <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded border border-[#d1ac69]/30 bg-black/30">
                 <Image
@@ -275,9 +199,7 @@ function TalentInfo({ talent }: { talent: SeasonTalentCard }) {
                 )}
               </div>
             </div>
-          </div>,
-          document.body,
-        )}
+        </HoverPreviewPanel>}
     </>
   );
 }
