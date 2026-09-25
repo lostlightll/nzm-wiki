@@ -6,7 +6,7 @@ import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { BossDifficultyControl } from "@/components/BossDifficultyControl";
 import { BossModeControl, BossRoomControl } from "@/components/BossModeControl";
 import { BossCardHealth } from "@/components/BossHealth";
-import { useBossDifficulty } from "@/components/BossDifficultyProvider";
+import { useBossDifficulty, type BossMode } from "@/components/BossDifficultyProvider";
 import { CatalogLink } from "@/components/CatalogLink";
 import { EnemyCatalogNav } from "@/components/EnemyCatalogNav";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
@@ -122,7 +122,11 @@ function MapBanner({
 export function BossCatalog({ bosses }: { bosses: Boss[] }) {
   const { mode, difficulty } = useBossDifficulty();
   const [query, setQuery] = useState("");
-  const [selectedMapId, setSelectedMapId] = useState<string | null>(null);
+  const [selectedMapByMode, setSelectedMapByMode] = useState<Partial<Record<BossMode, string | null>>>({});
+  const selectedMapId = selectedMapByMode[mode] ?? null;
+  const setSelectedMapId = (id: string | null) => {
+    setSelectedMapByMode((previous) => ({ ...previous, [mode]: id }));
+  };
   const deferredQuery = useDeferredValue(
     query.trim().toLocaleLowerCase("zh-CN"),
   );
