@@ -60,7 +60,10 @@
     "weapon-data:static-check": "tsx scripts/weapon-data/static-boundary.ts",
     "webp": "pnpm exec tsx ./scripts/optimize-images.ts public/",
     "extract:s4-talents": "tsx scripts/extract-s4-season-talents.ts",
-    "index": "tsx scripts/generate-search-index.ts"
+    "index": "tsx scripts/generate-search-index.ts",
+    "origin-runes:project": "tsx scripts/origin/project-runes.ts",
+    "origin-runes:check": "tsx scripts/origin/project-runes.ts --check",
+    "test:origin-runes": "tsx --test lib/origin-runes.test.ts scripts/origin/project-runes.test.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

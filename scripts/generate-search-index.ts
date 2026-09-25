@@ -732,6 +732,17 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
       ),
     );
   }
+  const originKeywords = ["原点猎场", "原点图鉴", "强化", "强化图鉴", "特殊强化", "普通强化"];
+  const originPinyin = new Set<string>();
+  for (const text of originKeywords) {
+    for (const pattern of ["pinyin", "first"] as const) {
+      const value = pinyin(text, { pattern, toneType: "none", type: "array" }).join("").toLowerCase();
+      if (value) originPinyin.add(value);
+    }
+  }
+  items.push({ title: "强化图鉴", slug: "origin/runes", path: "/origin#runes",
+    category: "原点图鉴", keywords: originKeywords, pinyin: [...originPinyin] });
+
   items.push(...getAllOverlimitCards().map(card => createOverlimitCardSearchItem(card)));
   const overlimitPreview = getOverlimitPreviewCatalog();
   if (overlimitPreview) items.push(...createOverlimitPreviewSearchItems(overlimitPreview));
