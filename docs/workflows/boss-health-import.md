@@ -37,6 +37,8 @@ Agent Command 为 `/import-boss-health [地图名|all]`，定义同步保存在 
 
 本链路只读取 `refs/Exports/NZM/Content/DataTables/` 下的 JSON 数据表，不读取或依赖本地 XLSX。
 
+销金之城已从当前入口表移除。图鉴和既有血量保留，但全量或单图导入均跳过该地图，不将缺失入口解释为血量不适用；来源清单与页面阶段数仍参与校验。
+
 ## 入口发现
 
 导入器按下列关系动态查询，不固化入口 ID、任务 ID、怪物等级或难度倍率：
@@ -119,7 +121,7 @@ Boss 的 `MonsterType` 不全是 `7`，例如大都会金牌打手为 `6`。因�
 ## 写入规则
 
 - `health.heroic`、`health.inferno`、`health.torment` 和 `health.overlimit` 使用有序整数数组。
-- 地图不存在超限入口，或 Boss 不在对应超限计划中时，写入 `unsupported`。
+- 当前表没有该地图的超限入口时保留已有图鉴值，不从入口缺席推断历史血量失效；Boss 不在已有超限入口的对应计划中时写入 `unsupported`。
 - 写入新的 `health` 后删除旧 `hp`、`hp2`，正文和其他 frontmatter 字段顺序保持不变。
 - 重复执行相同范围必须不再产生文件变化。
 - 超限任务中的额外怪物没有图鉴 slug 时只报告，不自动创建图鉴条目。
@@ -134,7 +136,7 @@ Boss 的 `MonsterType` 不全是 `7`，例如大都会金牌打手为 `6`。因�
 - 基础 Health、计划 Health、MonsterType 或 MaxHealth 缺失；
 - `AttributeType + MonsterType + MonsterLevel` 无法唯一命中倍率。
 
-超限没有入口或 Boss 不在超限计划属于明确的“不适用”状态，不作为阻塞错误。
+超限没有当前入口时跳过该难度，保留既有值；有入口但 Boss 不在超限计划时写入 `unsupported`，两者均不作为阻塞错误。
 
 ## 原点猎场 Boss
 
