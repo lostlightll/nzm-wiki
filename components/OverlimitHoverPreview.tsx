@@ -2,21 +2,14 @@
 
 import {
   useId,
-  useLayoutEffect,
   useRef,
   useState,
   type ReactNode,
 } from "react";
-import { createPortal } from "react-dom";
 import { CatalogLink } from "@/components/CatalogLink";
+import { HoverPreviewPanel } from "@/components/HoverPreviewPanel";
 import { OverlimitWeaponApplicability } from "@/components/OverlimitCardMeta";
 import type { OverlimitCard } from "@/types";
-
-interface PreviewPosition {
-  left: number;
-  top: number;
-  placement: "above" | "below";
-}
 
 export function OverlimitHoverPreview({
   card,
@@ -28,63 +21,9 @@ export function OverlimitHoverPreview({
   children: ReactNode;
 }) {
   const anchorRef = useRef<HTMLAnchorElement>(null);
-  const previewRef = useRef<HTMLDivElement>(null);
   const tooltipId = useId();
   const [isOpen, setIsOpen] = useState(false);
-  const [position, setPosition] = useState<PreviewPosition | null>(null);
-
-  useLayoutEffect(() => {
-    if (!isOpen || (card.weight === undefined && card.applicabilityKnown === false)) return;
-
-    const updatePosition = () => {
-      const anchor = anchorRef.current;
-      const preview = previewRef.current;
-      if (!anchor || !preview) return;
-
-      const anchorRect = anchor.getBoundingClientRect();
-      const previewRect = preview.getBoundingClientRect();
-      const viewportPadding = 16;
-      const gap = 12;
-      const spaceAbove = anchorRect.top - viewportPadding;
-      const spaceBelow = window.innerHeight - anchorRect.bottom - viewportPadding;
-      const placement =
-        spaceBelow < previewRect.height + gap && spaceAbove > spaceBelow
-          ? "above"
-          : "below";
-      const desiredTop =
-        placement === "below"
-          ? anchorRect.bottom + gap
-          : anchorRect.top - previewRect.height - gap;
-      const desiredLeft =
-        anchorRect.left + anchorRect.width / 2 - previewRect.width / 2;
-      const maxTop = Math.max(
-        viewportPadding,
-        window.innerHeight - previewRect.height - viewportPadding,
-      );
-
-      setPosition({
-        placement,
-        top: Math.min(Math.max(viewportPadding, desiredTop), maxTop),
-        left: Math.min(
-          Math.max(viewportPadding, desiredLeft),
-          window.innerWidth - previewRect.width - viewportPadding,
-        ),
-      });
-    };
-
-    updatePosition();
-    window.addEventListener("resize", updatePosition);
-    window.addEventListener("scroll", updatePosition, true);
-    return () => {
-      window.removeEventListener("resize", updatePosition);
-      window.removeEventListener("scroll", updatePosition, true);
-    };
-  }, [isOpen, card.weight, card.applicabilityKnown]);
-
-  const showPreview = () => {
-    setPosition(null);
-    setIsOpen(true);
-  };
+  const showPreview = () => setIsOpen(true);
   const hidePreview = () => setIsOpen(false);
 
   return (
@@ -110,19 +49,7 @@ export function OverlimitHoverPreview({
       </CatalogLink>
 
       {isOpen && (card.weight !== undefined || card.applicabilityKnown !== false) &&
-        createPortal(
-          <div
-            ref={previewRef}
-            id={tooltipId}
-            role="tooltip"
-            data-placement={position?.placement}
-            className="perk-hover-preview pointer-events-none fixed z-[100] max-h-[calc(100vh-2rem)] w-[min(13rem,calc(100vw-2rem))] overflow-hidden rounded-lg border border-[#d1ac69]/40 bg-[#15171b]/98 shadow-[0_18px_48px_rgba(0,0,0,0.55)] backdrop-blur-sm"
-            style={{
-              left: position?.left ?? 0,
-              top: position?.top ?? 0,
-              visibility: position ? "visible" : "hidden",
-            }}
-          >
+        <HoverPreviewPanel anchorRef={anchorRef} id={tooltipId} widthClassName="w-[min(13rem,calc(100vw-2rem))]">
             {card.weight !== undefined && <div className="flex items-center justify-between gap-3 px-2 py-3">
               <div className="text-xs font-medium text-zinc-400">
                 抽取权重
@@ -141,9 +68,7 @@ export function OverlimitHoverPreview({
                 compact
               />
             </div>}
-          </div>,
-          document.body,
-        )}
+        </HoverPreviewPanel>}
     </>
   );
 }

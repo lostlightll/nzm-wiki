@@ -144,7 +144,7 @@ body {
   display: var(--card-effect-display);
 }
 
-@keyframes perk-preview-in {
+@keyframes catalog-preview-in {
   from {
     opacity: 0;
     transform: translateY(var(--preview-entry-offset, 8px)) scale(0.97);
@@ -155,13 +155,13 @@ body {
   }
 }
 
-.perk-hover-preview {
+.catalog-hover-preview {
   --preview-entry-offset: 8px;
-  animation: perk-preview-in 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: catalog-preview-in 180ms cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: center bottom;
 }
 
-.perk-hover-preview[data-placement="below"] {
+.catalog-hover-preview[data-placement="below"] {
   --preview-entry-offset: -8px;
   transform-origin: center top;
 }
@@ -319,7 +319,7 @@ body:has(.home-page) {
     transition: none;
   }
 
-  .perk-hover-preview {
+  .catalog-hover-preview {
     animation: none;
   }
 }
