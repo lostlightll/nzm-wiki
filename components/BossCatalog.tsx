@@ -4,6 +4,7 @@ import Image from "next/image";
 import { MapPinned, RotateCcw, Search, Skull, X } from "lucide-react";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import { BossDifficultyControl } from "@/components/BossDifficultyControl";
+import { BossModeControl } from "@/components/BossModeControl";
 import { BossCardHealth } from "@/components/BossHealth";
 import { useBossDifficulty } from "@/components/BossDifficultyProvider";
 import { CatalogLink } from "@/components/CatalogLink";
@@ -11,6 +12,7 @@ import { EnemyCatalogNav } from "@/components/EnemyCatalogNav";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import { getAssetPath } from "@/lib/path";
 import { LC_MAPS } from "@/lib/lc-maps";
+import { getOriginBossHealth, type OriginDifficulty } from "@/lib/origin-boss-health";
 import type { Boss } from "@/types";
 
 interface BossGroup {
@@ -25,7 +27,7 @@ function getBossMaps(boss: Boss): string[] {
 }
 
 function BossCard({ boss, eager = false }: { boss: Boss; eager?: boolean }) {
-  const { withDifficulty } = useBossDifficulty();
+  const { withDifficulty, mode, roomIndex } = useBossDifficulty();
 
   return (
     <CatalogLink
@@ -61,8 +63,8 @@ function BossCard({ boss, eager = false }: { boss: Boss; eager?: boolean }) {
               {boss.nickname}
             </p>
           )}
-          <div className="mt-auto flex h-14 flex-col items-start gap-1 border-t border-zinc-800 pt-3 text-sm">
-            <span className="text-zinc-500">血量</span>
+          <div className="mt-auto flex min-h-14 flex-col items-start gap-1 border-t border-zinc-800 pt-3 text-sm">
+            <span className="text-zinc-500">{mode === "origin" && roomIndex === null ? "基础血量" : "血量"}</span>
             <BossCardHealth boss={boss} />
           </div>
         </div>
@@ -118,6 +120,7 @@ function MapBanner({
 }
 
 export function BossCatalog({ bosses }: { bosses: Boss[] }) {
+  const { mode, difficulty } = useBossDifficulty();
   const [query, setQuery] = useState("");
   const [selectedMapId, setSelectedMapId] = useState<string | null>(null);
   const deferredQuery = useDeferredValue(
@@ -129,6 +132,14 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
   }, []);
 
   const allGroups = useMemo<BossGroup[]>(() => {
+    if (mode === "origin") {
+      return [{
+        id: "origin",
+        name: "原点猎场",
+        image: null,
+        bosses: bosses.filter((boss) => getOriginBossHealth(boss.slug, difficulty as OriginDifficulty, null)),
+      }];
+    }
     const knownMaps = new Set(LC_MAPS.map((map) => map.name));
     const groups: BossGroup[] = LC_MAPS.map((map) => ({
       id: map.id,
@@ -150,7 +161,7 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
     }
 
     return groups;
-  }, [bosses]);
+  }, [bosses, mode, difficulty]);
 
   const searchedGroups = useMemo(() => {
     if (!deferredQuery) return allGroups;
@@ -176,10 +187,10 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
 
   const visibleGroups = useMemo(
     () =>
-      selectedMapId
+      selectedMapId && mode === "classic"
         ? searchedGroups.filter((group) => group.id === selectedMapId)
         : searchedGroups,
-    [searchedGroups, selectedMapId],
+    [searchedGroups, selectedMapId, mode],
   );
 
   const resultCount = visibleGroups.reduce(
@@ -200,7 +211,7 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
       <EnemyCatalogNav active="bosses" />
 
       <section
-        aria-label="首领检索、地图筛选与血量难度"
+        aria-label="首领检索、地图筛选与血量设置"
         className="mb-8 rounded-lg border border-zinc-700 bg-zinc-800/50 p-4"
       >
         <div role="search" className="relative max-w-xl">
@@ -232,7 +243,7 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
           )}
         </div>
 
-        <div className="mt-5 border-t border-zinc-700/80 pt-5">
+        {mode === "classic" && <div className="mt-5 border-t border-zinc-700/80 pt-5">
           <div className="mb-3 flex min-h-8 flex-wrap items-center justify-between gap-2">
             <h2 className="text-base font-semibold text-zinc-300">地图筛选</h2>
             <p aria-live="polite" className="text-sm text-zinc-500">
@@ -271,8 +282,11 @@ export function BossCatalog({ bosses }: { bosses: Boss[] }) {
               );
             })}
           </div>
+        </div>}
+        <div className="mt-5 flex flex-wrap items-start gap-x-8 gap-y-5 border-t border-zinc-700/80 pt-5">
+          <BossModeControl />
+          <BossDifficultyControl />
         </div>
-        <BossDifficultyControl className="mt-5 border-t border-zinc-700/80 pt-5" />
       </section>
 
       {visibleGroups.length > 0 ? (

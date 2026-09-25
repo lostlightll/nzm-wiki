@@ -1,6 +1,7 @@
 "use client";
 
 import { BossDifficultyControl } from "@/components/BossDifficultyControl";
+import { BossModeControl } from "@/components/BossModeControl";
 import { useBossDifficulty } from "@/components/BossDifficultyProvider";
 import {
   formatBossHealthSummary,
@@ -9,15 +10,17 @@ import {
   getBossPhaseCount,
 } from "@/lib/boss-health";
 import type { Boss } from "@/types";
+import { getOriginBossHealth, type OriginDifficulty } from "@/lib/origin-boss-health";
 
 export function BossCardHealth({ boss }: { boss: Boss }) {
-  const { difficulty, ready } = useBossDifficulty();
-  const compact = getBossPhaseCount(boss) === 2;
+  const { difficulty, ready, mode, roomIndex } = useBossDifficulty();
+  const originHealth = mode === "origin" ? getOriginBossHealth(boss.slug, difficulty as OriginDifficulty, roomIndex) : undefined;
+  const compact = (originHealth?.length ?? getBossPhaseCount(boss)) > 1;
 
   return (
     <span
       aria-busy={!ready}
-      className={`block max-w-full whitespace-nowrap text-left leading-5 tabular-nums ${
+      className={`block max-w-full break-words text-left leading-5 tabular-nums ${
         compact ? "text-xs" : "text-sm"
       } ${
         ready
@@ -25,19 +28,26 @@ export function BossCardHealth({ boss }: { boss: Boss }) {
           : "h-5 w-20 animate-pulse rounded bg-zinc-700"
       }`}
     >
-      {ready ? formatBossHealthSummary(boss, difficulty) : null}
+      {ready ? mode === "origin"
+        ? originHealth?.map(formatBossHealthValue).join(" / ") ?? "原点未收录"
+        : formatBossHealthSummary(boss, difficulty) : null}
     </span>
   );
 }
 
 export function BossDetailHealth({ boss }: { boss: Boss }) {
-  const { difficulty, ready } = useBossDifficulty();
-  const health = getBossHealth(boss, difficulty);
-  const phaseCount = getBossPhaseCount(boss);
+  const { difficulty, ready, mode, roomIndex } = useBossDifficulty();
+  const health = mode === "origin"
+    ? getOriginBossHealth(boss.slug, difficulty as OriginDifficulty, roomIndex)
+    : getBossHealth(boss, difficulty);
+  const phaseCount = mode === "origin" && Array.isArray(health) ? health.length : getBossPhaseCount(boss);
 
   return (
     <div className="mt-6 max-w-lg">
-      <BossDifficultyControl />
+      <div className="flex flex-wrap items-start gap-x-6 gap-y-4">
+        <BossModeControl />
+        <BossDifficultyControl />
+      </div>
       <dl
         aria-busy={!ready}
         className={`mt-3 grid min-h-20 grid-cols-1 gap-3 ${
@@ -46,6 +56,8 @@ export function BossDetailHealth({ boss }: { boss: Boss }) {
       >
         {!ready ? (
           <div className="min-h-20 animate-pulse rounded border border-zinc-600/80 bg-zinc-950/65 px-4 py-3" />
+        ) : mode === "origin" && !health ? (
+          <div className="min-h-20 rounded border border-zinc-600/80 bg-zinc-950/65 px-4 py-3 text-zinc-300">该难度原点猎场未收录此首领</div>
         ) : health === "unsupported" ? (
           <div className="min-h-20 rounded border border-zinc-600/80 bg-zinc-950/65 px-4 py-3 backdrop-blur-sm">
             <dt className="text-sm text-zinc-400">血量</dt>
@@ -65,8 +77,8 @@ export function BossDetailHealth({ boss }: { boss: Boss }) {
                       boss.phaseNames?.[index]
                         ? ` · ${boss.phaseNames[index]}`
                         : ""
-                    }血量`
-                  : "血量"}
+                    }${mode === "origin" && roomIndex === null ? "配置基础血量" : "血量"}`
+                  : mode === "origin" && roomIndex === null ? "配置基础血量" : "血量"}
               </dt>
               <dd className="mt-1 break-words font-mono text-lg font-semibold tabular-nums text-[#e1c58f]">
                 {formatBossHealthValue(health?.[index])}

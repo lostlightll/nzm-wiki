@@ -136,6 +136,20 @@ Boss 的 `MonsterType` 不全是 `7`，例如大都会金牌打手为 `6`。因�
 
 超限没有入口或 Boss 不在超限计划属于明确的“不适用”状态，不作为阻塞错误。
 
+## 原点猎场 Boss
+
+原点猎场使用独立入口（`mode_type=原点猎场`）和 `Roguelike/` 数值表，不能套用常规猎场的任务计划。已核对来源 ID 维护在 `data/enemies/lc/boss/origin-health-sources.json`，导出站点数据为 `origin-health.json`：
+
+```text
+pnpm exec tsx scripts/import-origin-boss-health.ts
+pnpm exec tsx scripts/import-origin-boss-health.ts --write
+pnpm exec tsx scripts/import-origin-boss-health.ts --check
+```
+
+导入器以 `RoguelikeMonsterBaseTable` 的 `2001201` 基础行、对应入口的 `RoguelikeMonsterIntraTable.Health` 与 `MonsterAttrTypeConfig.MaxHealth` 相乘并取整，另保存 `RoguelikeRoomMonsterNumericalTable` 按入口、房间序号排列的 `Health` 倍率。页面未选房间时显示配置基础值；选房间时再乘房间倍率并取整。这是配置推算，尚未经运行时血量验证，不含战斗内额外效果。不同房间不能共用一个固定 Boss 血量。
+
+当前来源仅覆盖能与图鉴 slug 和原点入口唯一匹配的 12 位 Boss。`18407071` 鬼舞樱变体与精绝女王 `18501073/74` 未作为图鉴额外阶段；原点入口仅列出杰斯第一形态，页面不借用常规第二形态的血量。英雄入口只有鬼舞樱与白毛狼王；折磨入口只覆盖第一组首领。缺失难度不沿用常规猎场值。
+
 ## 猎场普通怪物导入
 
 `scripts/import-hunter-monsters.ts` 使用同一乘算链路，按怪物身份、地图、区域与难度写入 `data/enemies/lc/monsters/`。范围为 `LC_MAPS` 中的九张经典猎场地图，覆盖英雄、炼狱、折磨及有入口的超限。`import-sources.json` 保留人工标题、稳定 slug、排除原因与大都会特殊脚本补充；其他身份从各地图专属计划和入口提示表联合发现。`evidence.json` 保存地图、入口、区域证据、每个数值的来源因子及排除项。
