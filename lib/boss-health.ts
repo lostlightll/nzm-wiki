@@ -14,7 +14,7 @@ export const BOSS_DIFFICULTIES: readonly {
   { value: "heroic", label: "英雄" },
 ];
 
-export const DEFAULT_BOSS_DIFFICULTY: BossDifficulty = "torment";
+export const DEFAULT_BOSS_DIFFICULTY: Exclude<BossDifficulty, "overlimit"> = "torment";
 export const BOSS_DIFFICULTY_STORAGE_KEY = "nzm-wiki:boss-difficulty";
 
 export function isBossDifficulty(value: unknown): value is BossDifficulty {

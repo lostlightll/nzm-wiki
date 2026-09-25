@@ -6,6 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { usePathname } from "next/navigation";
@@ -83,6 +84,7 @@ export function BossDifficultyProvider({
   const [ready, setReady] = useState(false);
   const [mode, setModeState] = useState<BossMode>("classic");
   const [roomIndex, setRoomIndexState] = useState<number | null>(null);
+  const classicDifficultyRef = useRef<OriginDifficulty>(DEFAULT_BOSS_DIFFICULTY);
   const difficulty = (() => {
     if (!ready || typeof window === "undefined") return storedDifficulty;
     if (!isBossRoute(window.location.pathname)) return storedDifficulty;
@@ -118,21 +120,30 @@ export function BossDifficultyProvider({
     const nextMode: BossMode = bossPage && modeParam === "origin" ? "origin" :
       bossPage && (modeParam === "overlimit" || (modeParam === null && nextDifficulty === "overlimit"))
         ? "overlimit" : "classic";
+    if (isBossDifficulty(saved) && saved !== "overlimit") {
+      classicDifficultyRef.current = saved;
+    }
     if (nextMode === "overlimit") nextDifficulty = "overlimit";
-    else if (bossPage && nextDifficulty === "overlimit") nextDifficulty = DEFAULT_BOSS_DIFFICULTY;
+    else if (nextMode === "origin" && (!isBossDifficulty(urlValue) || urlValue === "overlimit")) {
+      nextDifficulty = "inferno";
+    } else if (bossPage && nextDifficulty === "overlimit") {
+      nextDifficulty = classicDifficultyRef.current;
+    }
+    if (nextMode === "classic" && nextDifficulty !== "overlimit") {
+      classicDifficultyRef.current = nextDifficulty;
+    }
     const parsedRoom = Number(params.get("room"));
     const nextRoom = nextMode === "origin" && params.has("room") &&
       Number.isInteger(parsedRoom) && parsedRoom >= 0 &&
       parsedRoom < getOriginRooms(nextDifficulty as OriginDifficulty).length
       ? parsedRoom : null;
 
-    try {
-      window.localStorage.setItem(
-        BOSS_DIFFICULTY_STORAGE_KEY,
-        nextDifficulty,
-      );
-    } catch {
-      // URL persistence still works when localStorage is unavailable.
+    if (nextMode === "classic") {
+      try {
+        window.localStorage.setItem(BOSS_DIFFICULTY_STORAGE_KEY, nextDifficulty);
+      } catch {
+        // URL persistence still works when localStorage is unavailable.
+      }
     }
 
     setDifficultyState(nextDifficulty);
@@ -160,13 +171,15 @@ export function BossDifficultyProvider({
     setDifficultyState(nextDifficulty);
     setRoomIndexState(null);
     setReady(true);
-    try {
-      window.localStorage.setItem(
-        BOSS_DIFFICULTY_STORAGE_KEY,
-        nextDifficulty,
-      );
-    } catch {
-      // URL persistence still works when localStorage is unavailable.
+    if (mode === "classic" && nextDifficulty !== "overlimit") {
+      classicDifficultyRef.current = nextDifficulty;
+    }
+    if (mode === "classic") {
+      try {
+        window.localStorage.setItem(BOSS_DIFFICULTY_STORAGE_KEY, nextDifficulty);
+      } catch {
+        // URL persistence still works when localStorage is unavailable.
+      }
     }
     if (isBossRoute(window.location.pathname)) {
       replaceSelectionInUrl(nextDifficulty, mode, null);
@@ -174,13 +187,21 @@ export function BossDifficultyProvider({
   }, [mode]);
 
   const setMode = useCallback((nextMode: BossMode) => {
+    if (nextMode === mode) return;
     const nextDifficulty = nextMode === "overlimit" ? "overlimit" :
-      difficulty === "overlimit" ? DEFAULT_BOSS_DIFFICULTY : difficulty;
+      nextMode === "origin" ? "inferno" : classicDifficultyRef.current;
     setModeState(nextMode);
     setDifficultyState(nextDifficulty);
     setRoomIndexState(null);
+    if (nextMode === "classic") {
+      try {
+        window.localStorage.setItem(BOSS_DIFFICULTY_STORAGE_KEY, nextDifficulty);
+      } catch {
+        // URL persistence still works when localStorage is unavailable.
+      }
+    }
     replaceSelectionInUrl(nextDifficulty, nextMode, null);
-  }, [difficulty]);
+  }, [mode]);
 
   const setRoomIndex = useCallback((index: number | null) => {
     setRoomIndexState(index);
