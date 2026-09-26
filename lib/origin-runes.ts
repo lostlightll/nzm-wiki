@@ -31,7 +31,11 @@ export function filterOriginRunes(runes: readonly OriginRune[], filters: OriginR
     (!filters.categories.size || filters.categories.has(rune.category)) &&
     (!filters.qualities.size || filters.qualities.has(rune.quality)) &&
     (!filters.tagIds.size || rune.tagIds.some((id) => filters.tagIds.has(id))),
-  );
+  ).sort((a, b) => {
+    if (a.category !== b.category) return a.category === "special" ? -1 : 1;
+    if (a.category === "special") return 0;
+    return b.quality - a.quality || Number(a.id) - Number(b.id);
+  });
 }
 
 export function resolveOriginRuneSelection(runes: readonly OriginRune[], selectedId: string | null): string | null {
