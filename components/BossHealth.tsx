@@ -10,11 +10,11 @@ import {
   getBossPhaseCount,
 } from "@/lib/boss-health";
 import type { Boss } from "@/types";
-import { getOriginBossHealth, type OriginDifficulty } from "@/lib/origin-boss-health";
+import { getOriginBossDisplayHealth, getOriginBossRoomIndices, type OriginDifficulty } from "@/lib/origin-boss-health";
 
 export function BossCardHealth({ boss }: { boss: Boss }) {
   const { difficulty, ready, mode, roomIndex } = useBossDifficulty();
-  const originHealth = mode === "origin" ? getOriginBossHealth(boss.slug, difficulty as OriginDifficulty, roomIndex) : undefined;
+  const originHealth = mode === "origin" ? getOriginBossDisplayHealth(boss.slug, difficulty as OriginDifficulty, roomIndex) : undefined;
   const compact = (originHealth?.length ?? getBossPhaseCount(boss)) > 1;
 
   return (
@@ -38,9 +38,10 @@ export function BossCardHealth({ boss }: { boss: Boss }) {
 export function BossDetailHealth({ boss }: { boss: Boss }) {
   const { difficulty, ready, mode, roomIndex } = useBossDifficulty();
   const health = mode === "origin"
-    ? getOriginBossHealth(boss.slug, difficulty as OriginDifficulty, roomIndex)
+    ? getOriginBossDisplayHealth(boss.slug, difficulty as OriginDifficulty, roomIndex)
     : getBossHealth(boss, mode === "overlimit" ? "overlimit" : difficulty);
   const phaseCount = mode === "origin" && Array.isArray(health) ? health.length : getBossPhaseCount(boss);
+  const hasOriginRoom = mode === "origin" && (roomIndex !== null || getOriginBossRoomIndices(boss.slug, difficulty as OriginDifficulty) !== null);
 
   return (
     <div className="mt-6 max-w-lg">
@@ -80,8 +81,8 @@ export function BossDetailHealth({ boss }: { boss: Boss }) {
                       boss.phaseNames?.[index]
                         ? ` · ${boss.phaseNames[index]}`
                         : ""
-                    }${mode === "origin" && roomIndex === null ? "配置基础血量" : "血量"}`
-                  : mode === "origin" && roomIndex === null ? "配置基础血量" : "血量"}
+                    }${mode === "origin" && !hasOriginRoom ? "配置基础血量" : "血量"}`
+                  : mode === "origin" && !hasOriginRoom ? "配置基础血量" : "血量"}
               </dt>
               <dd className="mt-1 break-words font-mono text-lg font-semibold tabular-nums text-[#e1c58f]">
                 {formatBossHealthValue(health?.[index])}

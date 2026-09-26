@@ -90,12 +90,14 @@ interface ScopeResult {
   calculations: Calculation[];
   extras: string[];
   blockers: string[];
+  skippedNoEntrance: boolean;
 }
 
 const ROOT = process.cwd();
 const TABLE_DIR = path.join(ROOT, "refs", "Exports", "NZM", "Content", "DataTables");
 const BOSS_DIR = path.join(ROOT, "data", "enemies", "lc", "boss");
 const HEALTH_SOURCES = healthSourcesData as Record<string, HealthSource>;
+const RETIRED_MAPS = new Set(["销金之城"]);
 const DIFFICULTY_LABELS: Record<ImportDifficulty, string> = {
   heroic: "英雄",
   inferno: "炼狱",
@@ -119,6 +121,7 @@ function localized(value: LocalizedText | undefined): string | undefined {
 
 function parseArgs(): {
   maps: string[];
+  skippedMaps: string[];
   difficulties: ImportDifficulty[];
   write: boolean;
 } {
@@ -141,10 +144,12 @@ function parseArgs(): {
   }
 
   const allMaps = LC_MAPS.map((map) => map.name);
-  const maps = mapArg === "all" ? allMaps : [mapArg];
-  for (const map of maps) {
+  const selectedMaps = mapArg === "all" ? allMaps : [mapArg];
+  for (const map of selectedMaps) {
     if (!allMaps.includes(map)) throw new Error(`Unknown map: ${map}`);
   }
+  const maps = selectedMaps.filter((map) => !RETIRED_MAPS.has(map));
+  const skippedMaps = selectedMaps.filter((map) => RETIRED_MAPS.has(map));
 
   const difficulties: ImportDifficulty[] =
     difficultyArg === "all"
@@ -158,7 +163,7 @@ function parseArgs(): {
             throw new Error(`Unknown difficulty: ${difficultyArg}`);
           })();
 
-  return { maps, difficulties, write };
+  return { maps, skippedMaps, difficulties, write };
 }
 
 function validateManifest(): string[] {
@@ -213,6 +218,7 @@ function calculateScope(
     calculations: [],
     extras: [],
     blockers: [],
+    skippedNoEntrance: false,
   };
   const sources = Object.entries(HEALTH_SOURCES).filter(
     ([, source]) => source.map === map,
@@ -229,7 +235,7 @@ function calculateScope(
     );
 
   if (difficulty === "overlimit" && entrances.length === 0) {
-    for (const [slug] of sources) result.values.set(slug, "unsupported");
+    result.skippedNoEntrance = true;
     return result;
   }
   if (entrances.length !== 1) {
@@ -418,6 +424,14 @@ function writeResults(results: ScopeResult[]): number {
     const filePath = path.join(BOSS_DIR, `${slug}.mdx`);
     const original = fs.readFileSync(filePath, "utf8");
     const parsed = matter(original);
+    const previous = parsed.data.health as Partial<Record<BossDifficulty, BossHealthValue>> | undefined;
+    const unchanged = Object.entries(updates).every(([difficulty, value]) => {
+      const old = previous?.[difficulty as BossDifficulty];
+      return Array.isArray(old) && Array.isArray(value)
+        ? old.length === value.length && old.every((item, index) => item === value[index])
+        : old === value;
+    });
+    if (unchanged && !("hp" in parsed.data) && !("hp2" in parsed.data)) continue;
     const data = mergeHealthField(parsed.data, updates);
     const output = stringifyMdx(parsed.content, data);
     if (output !== original) {
@@ -447,8 +461,14 @@ function main(): void {
   );
 
   console.log(options.write ? "Boss health import" : "Boss health dry-run");
+  for (const map of options.skippedMaps) {
+    console.log(`Skipped retired map: ${map} (existing catalog values preserved).`);
+  }
   for (const result of results) {
     console.log(`\n[${result.map} / ${DIFFICULTY_LABELS[result.difficulty]}]`);
+    if (result.skippedNoEntrance) {
+      console.log("No current overlimit entrance; existing catalog values preserved.");
+    }
     for (const calculation of result.calculations) {
       console.log(
         `${calculation.slug} | stage=${calculation.stage} | source=${calculation.sourceId} | ` +

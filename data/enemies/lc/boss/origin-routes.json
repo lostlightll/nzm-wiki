@@ -1,0 +1,106 @@
+[
+  {
+    "id": "602",
+    "name": "精绝女王线",
+    "difficulties": {
+      "inferno": [
+        {
+          "slug": "白胡子鱼王",
+          "roomIndices": [
+            3
+          ]
+        },
+        {
+          "slug": "精绝奴隶主",
+          "roomIndices": [
+            7
+          ]
+        },
+        {
+          "slug": "精绝女王",
+          "roomIndices": [
+            10,
+            11
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "601",
+    "name": "幽魂骑士线",
+    "difficulties": {
+      "heroic": [
+        {
+          "slug": "鬼舞樱",
+          "roomIndices": null
+        },
+        {
+          "slug": "白毛狼王",
+          "roomIndices": null
+        }
+      ],
+      "inferno": [
+        {
+          "slug": "鬼舞樱",
+          "roomIndices": [
+            3
+          ]
+        },
+        {
+          "slug": "白毛狼王",
+          "roomIndices": [
+            7
+          ]
+        },
+        {
+          "slug": "幽魂骑士",
+          "roomIndices": [
+            10,
+            11
+          ]
+        }
+      ],
+      "torment": [
+        {
+          "slug": "鬼舞樱",
+          "roomIndices": null
+        },
+        {
+          "slug": "白毛狼王",
+          "roomIndices": null
+        },
+        {
+          "slug": "幽魂骑士",
+          "roomIndices": null
+        }
+      ]
+    }
+  },
+  {
+    "id": "603",
+    "name": "引渡者线",
+    "difficulties": {
+      "inferno": [
+        {
+          "slug": "鬼面将军",
+          "roomIndices": [
+            3
+          ]
+        },
+        {
+          "slug": "典狱长杰斯",
+          "roomIndices": [
+            7
+          ]
+        },
+        {
+          "slug": "引渡者",
+          "roomIndices": [
+            10
+          ]
+        }
+      ]
+    }
+  }
+]
