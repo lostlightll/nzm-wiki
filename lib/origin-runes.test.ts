@@ -38,3 +38,20 @@ test("selection stays visible or falls back to the first result", () => {
   assert.equal(resolveOriginRuneSelection(filtered, first), filtered[0].id);
   assert.equal(filterOriginRunes(data.runes, empty).length, 174);
 });
+
+test("normal runes sort by quality then numeric ID without reordering special runes or mutating input", () => {
+  const base = data.runes[0];
+  const input = [
+    { ...base, id: "10", category: "normal" as const, quality: 4 as const },
+    { ...base, id: "30", category: "special" as const },
+    { ...base, id: "2", category: "normal" as const, quality: 4 as const },
+    { ...base, id: "1", category: "normal" as const, quality: 3 as const },
+    { ...base, id: "20", category: "special" as const },
+    { ...base, id: "40", category: "normal" as const, quality: 5 as const },
+  ];
+  const original = structuredClone(input);
+  assert.deepEqual(filterOriginRunes(input, empty).map((rune) => rune.id), ["30", "20", "40", "2", "10", "1"]);
+  assert.deepEqual(filterOriginRunes(input, { ...empty, categories: new Set(["normal"]) }).map((rune) => rune.id),
+    ["40", "2", "10", "1"]);
+  assert.deepEqual(input, original);
+});
