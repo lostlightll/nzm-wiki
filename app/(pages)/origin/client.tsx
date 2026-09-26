@@ -102,8 +102,14 @@ function RuneCard({ rune, tagNames, onOpenMobile }: {
         if (window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1024px)").matches) showPreview();
         else { setIsOpen(false); onOpenMobile(rune, event.currentTarget); }
       }}
-      className={`group flex h-full w-full min-w-0 touch-manipulation flex-col items-center overflow-hidden rounded-lg border-2 p-3 pb-4 text-left transition-colors duration-200 outline-none hover:brightness-110 focus-visible:[&_h3]:underline focus-visible:[&_h3]:decoration-2 focus-visible:[&_h3]:underline-offset-4 ${quality.border} ${quality.bg}`}>
+      className={`group relative flex h-full w-full min-w-0 touch-manipulation flex-col items-center overflow-hidden rounded-lg border-2 p-3 pb-4 text-left transition-colors duration-200 outline-none hover:brightness-110 focus-visible:[&_h3]:underline focus-visible:[&_h3]:decoration-2 focus-visible:[&_h3]:underline-offset-4 ${quality.border} ${quality.bg}`}>
       <span className="sr-only">{quality.label}品质，{rune.category === "special" ? "特殊强化" : "普通强化"}</span>
+      <span className="pointer-events-none absolute inset-x-0.5 top-0.5 flex flex-wrap gap-0.5">
+        {rune.tagIds.map((id) => <span key={id}
+          className="rounded border border-white/30 bg-zinc-700 px-[3px] py-px text-[10px] font-medium leading-3 text-zinc-200">
+          {tagNames.get(id)}
+        </span>)}
+      </span>
       <RuneIcon path={rune.icon} quality={rune.quality} />
       <h3 className="mt-2 w-full break-words text-center text-sm font-medium leading-tight text-white">{rune.name}</h3>
     </button>
