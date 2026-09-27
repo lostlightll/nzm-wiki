@@ -15013,15 +15013,6 @@
           "context": {
             "recipient": "self"
           }
-        },
-        {
-          "expression": {
-            "row": "lc:130044211_1_0",
-            "field": "base"
-          },
-          "context": {
-            "recipient": "self"
-          }
         }
       ],
       "evidence": {
@@ -15029,7 +15020,7 @@
         "passiveSkillId": "1378044210",
         "basis": [
           "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044210_1: MGE=1378044210, MGEConfig=1378044210",
-          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044210_1_0, 130044211_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044210_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
         ]
       }
     },
@@ -15103,15 +15094,6 @@
           "context": {
             "recipient": "self"
           }
-        },
-        {
-          "expression": {
-            "row": "lc:130045113_1_0",
-            "field": "base"
-          },
-          "context": {
-            "recipient": "self"
-          }
         }
       ],
       "evidence": {
@@ -15119,7 +15101,7 @@
         "passiveSkillId": "1378045110",
         "basis": [
           "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045110_1: MGE=1378045110, MGEConfig=1378045110",
-          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045111_1_1, 130045113_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045111_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
         ]
       }
     },
@@ -15547,33 +15529,6 @@
       }
     },
     {
-      "id": "origin-rune:1378044310",
-      "label": "暴击飞弹",
-      "source": {
-        "type": "origin-rune",
-        "id": "1378044310"
-      },
-      "applications": [
-        {
-          "expression": {
-            "row": "lc:130044311_1_0",
-            "field": "base"
-          },
-          "context": {
-            "recipient": "self"
-          }
-        }
-      ],
-      "evidence": {
-        "kind": "reviewed-chain",
-        "passiveSkillId": "1378044310",
-        "basis": [
-          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044310_1: MGE=1378044310, MGEConfig=1378044310",
-          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044311_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
-        ]
-      }
-    },
-    {
       "id": "origin-rune:1378044350",
       "label": "重拳暴击",
       "source": {
@@ -15661,24 +15616,6 @@
           "context": {
             "recipient": "self"
           }
-        },
-        {
-          "expression": {
-            "row": "lc:130044381_1_0",
-            "field": "coefficient"
-          },
-          "context": {
-            "recipient": "self"
-          }
-        },
-        {
-          "expression": {
-            "row": "lc:130044381_1_1",
-            "field": "coefficient"
-          },
-          "context": {
-            "recipient": "self"
-          }
         }
       ],
       "evidence": {
@@ -15686,7 +15623,7 @@
         "passiveSkillId": "1378044380",
         "basis": [
           "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044380_1: MGE=1378044380, MGEConfig=1378044380",
-          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044380_1_0, 130044380_1_1, 130044381_1_0, 130044381_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044380_1_0, 130044380_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
         ]
       }
     },
@@ -15733,42 +15670,6 @@
           "context": {
             "recipient": "self"
           }
-        },
-        {
-          "expression": {
-            "row": "lc:130044411_1_0",
-            "field": "coefficient"
-          },
-          "context": {
-            "recipient": "self"
-          }
-        },
-        {
-          "expression": {
-            "row": "lc:130044412_1_0",
-            "field": "base"
-          },
-          "context": {
-            "recipient": "self"
-          }
-        },
-        {
-          "expression": {
-            "row": "lc:130044412_1_1",
-            "field": "base"
-          },
-          "context": {
-            "recipient": "self"
-          }
-        },
-        {
-          "expression": {
-            "row": "lc:130044413_1_0",
-            "field": "base"
-          },
-          "context": {
-            "recipient": "self"
-          }
         }
       ],
       "evidence": {
@@ -15776,7 +15677,7 @@
         "passiveSkillId": "1378044410",
         "basis": [
           "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044410_1: MGE=1378044410, MGEConfig=1378044410",
-          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044410_1_0, 130044411_1_0, 130044412_1_0, 130044412_1_1, 130044413_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044410_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
         ]
       }
     },
@@ -16471,15 +16372,6 @@
           "context": {
             "recipient": "self"
           }
-        },
-        {
-          "expression": {
-            "row": "lc:130045121_1_0",
-            "field": "base"
-          },
-          "context": {
-            "recipient": "self"
-          }
         }
       ],
       "evidence": {
@@ -16487,7 +16379,7 @@
         "passiveSkillId": "1378045120",
         "basis": [
           "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045120_1: MGE=1378045120, MGEConfig=1378045120",
-          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045120_1_0, 130045121_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045120_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
         ]
       }
     },
@@ -35319,6 +35211,23 @@
         "basis": [
           "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044260_1",
           "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044260_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044310",
+      "label": "暴击飞弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044310"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044310",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044310_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
         ]
       }
     },
