@@ -1,0 +1,7 @@
+{
+  "40091": {
+    "icon": "/icons/origin/talents/ultimate-screenshot.webp",
+    "source": "User-provided in-game Origin talent screenshot, 1920x1080, crop [179,891,253,965]",
+    "reason": "Configured HuntingRou_De_28 resolves to an orange background texture instead of the diamond shown in-game. Use the screenshot until the matching asset is located."
+  }
+}

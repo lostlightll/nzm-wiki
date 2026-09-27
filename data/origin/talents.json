@@ -1,0 +1,1010 @@
+{
+  "schemaVersion": 1,
+  "branches": [
+    {
+      "id": 1,
+      "name": "战斗"
+    },
+    {
+      "id": 2,
+      "name": "幸运"
+    },
+    {
+      "id": 3,
+      "name": "技巧"
+    }
+  ],
+  "talents": [
+    {
+      "id": "10011",
+      "name": "火力全开",
+      "description": "伤害提升15%",
+      "branchId": 1,
+      "row": 1,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_01.webp",
+      "maxLevel": 3,
+      "prerequisites": [],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "伤害提升15%",
+          "cost": 1,
+          "sourceRow": "1",
+          "affixId": 29001
+        },
+        {
+          "level": 2,
+          "description": "伤害提升30%",
+          "cost": 2,
+          "sourceRow": "2",
+          "affixId": 29002
+        },
+        {
+          "level": 3,
+          "description": "伤害提升45%",
+          "cost": 3,
+          "sourceRow": "3",
+          "affixId": 29003
+        }
+      ]
+    },
+    {
+      "id": "10021",
+      "name": "初级战斗",
+      "description": "解锁限定强化:雷击冲击 、导弹雷击",
+      "branchId": 1,
+      "row": 2,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_09.webp",
+      "maxLevel": 1,
+      "prerequisites": [
+        {
+          "id": "10011",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "解锁限定强化:雷击冲击 、导弹雷击",
+          "cost": 0,
+          "sourceRow": "4",
+          "affixId": 29062
+        }
+      ]
+    },
+    {
+      "id": "10031",
+      "name": "暴击本能",
+      "description": "暴击率提升7.5%",
+      "branchId": 1,
+      "row": 3,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_02.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "10021",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "暴击率提升7.5%",
+          "cost": 4,
+          "sourceRow": "5",
+          "affixId": 29004
+        },
+        {
+          "level": 2,
+          "description": "暴击率提升15%",
+          "cost": 5,
+          "sourceRow": "6",
+          "affixId": 29005
+        },
+        {
+          "level": 3,
+          "description": "暴击率提升22.5%",
+          "cost": 6,
+          "sourceRow": "7",
+          "affixId": 29006
+        }
+      ]
+    },
+    {
+      "id": "10032",
+      "name": "最终强化",
+      "description": "最终伤害提升4.5%",
+      "branchId": 1,
+      "row": 3,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_03.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "10021",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "最终伤害提升4.5%",
+          "cost": 4,
+          "sourceRow": "8",
+          "affixId": 29007
+        },
+        {
+          "level": 2,
+          "description": "最终伤害提升9%",
+          "cost": 5,
+          "sourceRow": "9",
+          "affixId": 29008
+        },
+        {
+          "level": 3,
+          "description": "最终伤害提升13.5%",
+          "cost": 6,
+          "sourceRow": "10",
+          "affixId": 29009
+        }
+      ]
+    },
+    {
+      "id": "10041",
+      "name": "暴击伤害",
+      "description": "暴击伤害提升30%",
+      "branchId": 1,
+      "row": 4,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_04.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "10031",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "暴击伤害提升30%",
+          "cost": 8,
+          "sourceRow": "11",
+          "affixId": 29010
+        },
+        {
+          "level": 2,
+          "description": "暴击伤害提升60%",
+          "cost": 10,
+          "sourceRow": "12",
+          "affixId": 29011
+        },
+        {
+          "level": 3,
+          "description": "暴击伤害提升90%",
+          "cost": 12,
+          "sourceRow": "13",
+          "affixId": 29012
+        }
+      ]
+    },
+    {
+      "id": "10042",
+      "name": "元素失控",
+      "description": "元素伤害提升4.5%",
+      "branchId": 1,
+      "row": 4,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_05.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "10032",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "元素伤害提升4.5%",
+          "cost": 8,
+          "sourceRow": "14",
+          "affixId": 29013
+        },
+        {
+          "level": 2,
+          "description": "元素伤害提升9%",
+          "cost": 10,
+          "sourceRow": "15",
+          "affixId": 29014
+        },
+        {
+          "level": 3,
+          "description": "元素伤害提升13.5%",
+          "cost": 12,
+          "sourceRow": "16",
+          "affixId": 29015
+        }
+      ]
+    },
+    {
+      "id": "10051",
+      "name": "精准打击",
+      "description": "弱点伤害提升15%",
+      "branchId": 1,
+      "row": 5,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_06.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "10041",
+          "level": 1
+        },
+        {
+          "id": "10042",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "弱点伤害提升15%",
+          "cost": 13,
+          "sourceRow": "17",
+          "affixId": 29016
+        },
+        {
+          "level": 2,
+          "description": "弱点伤害提升30%",
+          "cost": 15,
+          "sourceRow": "18",
+          "affixId": 29017
+        },
+        {
+          "level": 3,
+          "description": "弱点伤害提升45%",
+          "cost": 17,
+          "sourceRow": "19",
+          "affixId": 29018
+        }
+      ]
+    },
+    {
+      "id": "10061",
+      "name": "中级战斗",
+      "description": "解锁限定强化:近战赋能 、强力爆弹",
+      "branchId": 1,
+      "row": 6,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_09.webp",
+      "maxLevel": 1,
+      "prerequisites": [
+        {
+          "id": "10051",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "解锁限定强化:近战赋能 、强力爆弹",
+          "cost": 0,
+          "sourceRow": "20",
+          "affixId": 29065
+        }
+      ]
+    },
+    {
+      "id": "10071",
+      "name": "机动强化",
+      "description": "移速提升5%",
+      "branchId": 1,
+      "row": 7,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_07.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "10061",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "移速提升5%",
+          "cost": 13,
+          "sourceRow": "21",
+          "affixId": 29019
+        },
+        {
+          "level": 2,
+          "description": "移速提升10%",
+          "cost": 15,
+          "sourceRow": "22",
+          "affixId": 29020
+        },
+        {
+          "level": 3,
+          "description": "移速提升15%",
+          "cost": 17,
+          "sourceRow": "23",
+          "affixId": 29021
+        }
+      ]
+    },
+    {
+      "id": "10072",
+      "name": "濒死爆发",
+      "description": "生命低于45%时伤害提升45%",
+      "branchId": 1,
+      "row": 7,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_08.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "10061",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "生命低于45%时伤害提升45%",
+          "cost": 13,
+          "sourceRow": "24",
+          "affixId": 29022
+        },
+        {
+          "level": 2,
+          "description": "生命低于45%时伤害提升60%",
+          "cost": 15,
+          "sourceRow": "25",
+          "affixId": 29023
+        },
+        {
+          "level": 3,
+          "description": "生命低于45%时伤害提升90%",
+          "cost": 17,
+          "sourceRow": "26",
+          "affixId": 29024
+        }
+      ]
+    },
+    {
+      "id": "10081",
+      "name": "隐藏强化",
+      "description": "解锁限定强化:元素击杀、一击秒杀、超级环、超级导弹、极限单发",
+      "branchId": 1,
+      "row": 8,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_09.webp",
+      "maxLevel": 1,
+      "prerequisites": [
+        {
+          "id": "10071",
+          "level": 1
+        },
+        {
+          "id": "10072",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "解锁限定强化:元素击杀、一击秒杀、超级环、超级导弹、极限单发",
+          "cost": 15,
+          "sourceRow": "27",
+          "affixId": 29066
+        }
+      ]
+    },
+    {
+      "id": "20011",
+      "name": "启动战备",
+      "description": "初始金币提升1500",
+      "branchId": 2,
+      "row": 1,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_L_01.webp",
+      "maxLevel": 3,
+      "prerequisites": [],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "初始金币提升1500",
+          "cost": 1,
+          "sourceRow": "28",
+          "affixId": 29026
+        },
+        {
+          "level": 2,
+          "description": "初始金币提升3000",
+          "cost": 2,
+          "sourceRow": "29",
+          "affixId": 29027
+        },
+        {
+          "level": 3,
+          "description": "初始金币提升4500",
+          "cost": 3,
+          "sourceRow": "30",
+          "affixId": 29028
+        }
+      ]
+    },
+    {
+      "id": "20021",
+      "name": "初级幸运",
+      "description": "解锁限定强化:聚金掉落、聚金增效",
+      "branchId": 2,
+      "row": 2,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_09.webp",
+      "maxLevel": 1,
+      "prerequisites": [
+        {
+          "id": "20011",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "解锁限定强化:聚金掉落、聚金增效",
+          "cost": 0,
+          "sourceRow": "31",
+          "affixId": 29060
+        }
+      ]
+    },
+    {
+      "id": "20031",
+      "name": "强化刷新",
+      "description": "获得1次刷新强化次数",
+      "branchId": 2,
+      "row": 3,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_L_02.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "20021",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "获得1次刷新强化次数",
+          "cost": 4,
+          "sourceRow": "32",
+          "affixId": 29029
+        },
+        {
+          "level": 2,
+          "description": "获得2次刷新强化次数",
+          "cost": 5,
+          "sourceRow": "33",
+          "affixId": 29067
+        },
+        {
+          "level": 3,
+          "description": "获得3次刷新强化次数",
+          "cost": 6,
+          "sourceRow": "34",
+          "affixId": 29068
+        }
+      ]
+    },
+    {
+      "id": "20032",
+      "name": "讨价还价",
+      "description": "商店物品售价降低10%",
+      "branchId": 2,
+      "row": 3,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_L_04.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "20021",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "商店物品售价降低10%",
+          "cost": 4,
+          "sourceRow": "35",
+          "affixId": 29033
+        },
+        {
+          "level": 2,
+          "description": "商店物品售价降低15%",
+          "cost": 5,
+          "sourceRow": "36",
+          "affixId": 29034
+        },
+        {
+          "level": 3,
+          "description": "商店物品售价降低20%",
+          "cost": 6,
+          "sourceRow": "37",
+          "affixId": 29035
+        }
+      ]
+    },
+    {
+      "id": "20041",
+      "name": "战备强化",
+      "description": "获得金币效率提升10%",
+      "branchId": 2,
+      "row": 4,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_L_03.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "20031",
+          "level": 1
+        },
+        {
+          "id": "20032",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "获得金币效率提升10%",
+          "cost": 8,
+          "sourceRow": "38",
+          "affixId": 29030
+        },
+        {
+          "level": 2,
+          "description": "获得金币效率提升20%",
+          "cost": 10,
+          "sourceRow": "39",
+          "affixId": 29031
+        },
+        {
+          "level": 3,
+          "description": "获得金币效率提升30%",
+          "cost": 12,
+          "sourceRow": "40",
+          "affixId": 29032
+        }
+      ]
+    },
+    {
+      "id": "20061",
+      "name": "中级幸运",
+      "description": "解锁限定强化:聚金利息、免耗聚金",
+      "branchId": 2,
+      "row": 6,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_09.webp",
+      "maxLevel": 1,
+      "prerequisites": [
+        {
+          "id": "20041",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "解锁限定强化:聚金利息、免耗聚金",
+          "cost": 0,
+          "sourceRow": "41",
+          "affixId": 29063
+        }
+      ]
+    },
+    {
+      "id": "20071",
+      "name": "传说强化",
+      "description": "传说强化出现概率提升10%",
+      "branchId": 2,
+      "row": 7,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_L_05.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "20061",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "传说强化出现概率提升10%",
+          "cost": 13,
+          "sourceRow": "42",
+          "affixId": 29036
+        },
+        {
+          "level": 2,
+          "description": "传说强化出现概率提升20%",
+          "cost": 15,
+          "sourceRow": "43",
+          "affixId": 29037
+        },
+        {
+          "level": 3,
+          "description": "传说强化出现概率提升30%",
+          "cost": 17,
+          "sourceRow": "44",
+          "affixId": 29038
+        }
+      ]
+    },
+    {
+      "id": "20072",
+      "name": "传说词条",
+      "description": "传说武器词条出现概率提升10%",
+      "branchId": 2,
+      "row": 7,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_L_06.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "20061",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "传说武器词条出现概率提升10%",
+          "cost": 13,
+          "sourceRow": "45",
+          "affixId": 29039
+        },
+        {
+          "level": 2,
+          "description": "传说武器词条出现概率提升20%",
+          "cost": 15,
+          "sourceRow": "46",
+          "affixId": 29040
+        },
+        {
+          "level": 3,
+          "description": "传说武器词条出现概率提升30%",
+          "cost": 17,
+          "sourceRow": "47",
+          "affixId": 29041
+        }
+      ]
+    },
+    {
+      "id": "20081",
+      "name": "神秘人脉",
+      "description": "获得遇到神秘商人的机缘",
+      "branchId": 2,
+      "row": 8,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_L_07.webp",
+      "maxLevel": 1,
+      "prerequisites": [
+        {
+          "id": "20071",
+          "level": 1
+        },
+        {
+          "id": "20072",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "获得遇到神秘商人的机缘",
+          "cost": 15,
+          "sourceRow": "48",
+          "affixId": 29042
+        }
+      ]
+    },
+    {
+      "id": "30011",
+      "name": "生命核心",
+      "description": "初始生命上限提升15%",
+      "branchId": 3,
+      "row": 1,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_K_01.webp",
+      "maxLevel": 3,
+      "prerequisites": [],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "初始生命上限提升15%",
+          "cost": 1,
+          "sourceRow": "49",
+          "affixId": 29043
+        },
+        {
+          "level": 2,
+          "description": "初始生命上限提升30%",
+          "cost": 2,
+          "sourceRow": "50",
+          "affixId": 29044
+        },
+        {
+          "level": 3,
+          "description": "初始生命上限提升45%",
+          "cost": 3,
+          "sourceRow": "51",
+          "affixId": 29045
+        }
+      ]
+    },
+    {
+      "id": "30021",
+      "name": "初级技巧",
+      "description": "解锁限定强化:血转环伤、冲击导弹",
+      "branchId": 3,
+      "row": 2,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_09.webp",
+      "maxLevel": 1,
+      "prerequisites": [
+        {
+          "id": "30011",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "解锁限定强化:血转环伤、冲击导弹",
+          "cost": 0,
+          "sourceRow": "52",
+          "affixId": 29061
+        }
+      ]
+    },
+    {
+      "id": "30031",
+      "name": "易疗体质",
+      "description": "受治疗效果提升10%",
+      "branchId": 3,
+      "row": 3,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_K_02.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "30021",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "受治疗效果提升10%",
+          "cost": 4,
+          "sourceRow": "53",
+          "affixId": 29046
+        },
+        {
+          "level": 2,
+          "description": "受治疗效果提升20%",
+          "cost": 5,
+          "sourceRow": "54",
+          "affixId": 29047
+        },
+        {
+          "level": 3,
+          "description": "受治疗效果提升30%",
+          "cost": 6,
+          "sourceRow": "55",
+          "affixId": 29048
+        }
+      ]
+    },
+    {
+      "id": "30041",
+      "name": "防御矩阵",
+      "description": "受到伤害降低5%",
+      "branchId": 3,
+      "row": 4,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_K_03.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "30031",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "受到伤害降低5%",
+          "cost": 8,
+          "sourceRow": "56",
+          "affixId": 29049
+        },
+        {
+          "level": 2,
+          "description": "受到伤害降低10%",
+          "cost": 10,
+          "sourceRow": "57",
+          "affixId": 29050
+        },
+        {
+          "level": 3,
+          "description": "受到伤害降低15%",
+          "cost": 12,
+          "sourceRow": "58",
+          "affixId": 29051
+        }
+      ]
+    },
+    {
+      "id": "30042",
+      "name": "护盾超载",
+      "description": "护盾上限提升15%",
+      "branchId": 3,
+      "row": 4,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_K_04.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "30031",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "护盾上限提升15%",
+          "cost": 13,
+          "sourceRow": "59",
+          "affixId": 29052
+        },
+        {
+          "level": 2,
+          "description": "护盾上限提升30%",
+          "cost": 15,
+          "sourceRow": "60",
+          "affixId": 29053
+        },
+        {
+          "level": 3,
+          "description": "护盾上限提升45%",
+          "cost": 17,
+          "sourceRow": "61",
+          "affixId": 29054
+        }
+      ]
+    },
+    {
+      "id": "30051",
+      "name": "快速复活",
+      "description": "复活冷却时间降低2秒",
+      "branchId": 3,
+      "row": 5,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_K_05.webp",
+      "maxLevel": 3,
+      "prerequisites": [
+        {
+          "id": "30041",
+          "level": 1
+        },
+        {
+          "id": "30042",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "复活冷却时间降低2秒",
+          "cost": 13,
+          "sourceRow": "62",
+          "affixId": 29055
+        },
+        {
+          "level": 2,
+          "description": "复活冷却时间降低4秒",
+          "cost": 15,
+          "sourceRow": "63",
+          "affixId": 29056
+        },
+        {
+          "level": 3,
+          "description": "复活冷却时间降低5秒",
+          "cost": 17,
+          "sourceRow": "64",
+          "affixId": 29057
+        }
+      ]
+    },
+    {
+      "id": "30061",
+      "name": "中级技巧",
+      "description": "解锁限定强化:叠叠叠、快速换弹",
+      "branchId": 3,
+      "row": 6,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_C_09.webp",
+      "maxLevel": 1,
+      "prerequisites": [
+        {
+          "id": "30051",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "解锁限定强化:叠叠叠、快速换弹",
+          "cost": 0,
+          "sourceRow": "65",
+          "affixId": 29064
+        }
+      ]
+    },
+    {
+      "id": "30081",
+      "name": "绝地重启",
+      "description": "获得一次额外的团灭复活次数",
+      "branchId": 3,
+      "row": 8,
+      "icon": "/icons/origin/talents/T_HunRou_Icon_K_06.webp",
+      "maxLevel": 1,
+      "prerequisites": [
+        {
+          "id": "30061",
+          "level": 1
+        }
+      ],
+      "requiredTotalLevels": 0,
+      "levels": [
+        {
+          "level": 1,
+          "description": "获得一次额外的团灭复活次数",
+          "cost": 30,
+          "sourceRow": "66",
+          "affixId": 29058
+        }
+      ]
+    },
+    {
+      "id": "40091",
+      "name": "强化预载",
+      "description": "开局额外获得一次强化",
+      "branchId": 4,
+      "row": 9,
+      "icon": "/icons/origin/talents/ultimate-screenshot.webp",
+      "maxLevel": 1,
+      "prerequisites": [],
+      "requiredTotalLevels": 66,
+      "levels": [
+        {
+          "level": 1,
+          "description": "开局额外获得一次强化",
+          "cost": 15,
+          "sourceRow": "67",
+          "affixId": 29059
+        }
+      ]
+    }
+  ]
+}

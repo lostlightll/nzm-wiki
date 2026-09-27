@@ -63,7 +63,10 @@
     "index": "tsx scripts/generate-search-index.ts",
     "origin-runes:project": "tsx scripts/origin/project-runes.ts",
     "origin-runes:check": "tsx scripts/origin/project-runes.ts --check",
-    "test:origin-runes": "tsx --test lib/origin-runes.test.ts scripts/origin/project-runes.test.ts"
+    "test:origin-runes": "tsx --test lib/origin-runes.test.ts scripts/origin/project-runes.test.ts",
+    "origin-talents:project": "tsx scripts/origin/project-talents.ts",
+    "origin-talents:check": "tsx scripts/origin/project-talents.ts --check",
+    "test:origin-talents": "tsx --test scripts/origin/project-talents.test.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
