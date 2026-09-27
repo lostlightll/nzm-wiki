@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import sharp from "sharp";
+import highlightedDescriptions from "../../data/origin/rune-descriptions.json";
 import type { OriginRune, OriginRuneCatalog, OriginRuneCategory, OriginRuneQuality } from "../../lib/origin-runes";
 
 const ROOT = process.cwd();
@@ -54,6 +55,7 @@ export function projectOriginRunes(
     return { id: row.Tag, name: text(row.DisplayName, `tag ${key}`) };
   });
   const tagIds = new Set(tags.map((tag) => tag.id));
+  const descriptions: Record<string, string> = highlightedDescriptions;
   const ids = new Set<string>();
   const runes: OriginRune[] = [];
   for (const [category, rows] of [["special", special], ["normal", normal]] as const) {
@@ -64,8 +66,14 @@ export function projectOriginRunes(
       if (![3, 4, 5].includes(row.Quality)) throw new Error(`Invalid quality: ${id}`);
       if (!Array.isArray(row.Tag?.Values) || !row.Tag.Values.length ||
         row.Tag.Values.some((tagId) => !tagIds.has(tagId))) throw new Error(`Invalid tags: ${id}`);
-      // Preserve in-game display text; these numbers are not verified numerical effects.
-      const description = text(row.Description, `rune description ${id}`);
+      // Highlight display text only; these numbers are not verified numerical effects.
+      const sourceDescription = text(row.Description, `rune description ${id}`);
+      const description = descriptions[id];
+      if (!description) throw new Error(`Missing highlighted rune description: ${id}`);
+      const plainDescription = description.replace(/\*\*([^*\n。]+)\*\*/g, "$1");
+      if (plainDescription === description || plainDescription !== sourceDescription) {
+        throw new Error(`Rune highlights must preserve the source description: ${id}`);
+      }
       const icon = iconName(row.Icon.AssetPathName);
       runes.push({ id, name: text(row.DisplayName, `rune ${id}`), description,
         category: category as OriginRuneCategory, quality: row.Quality as OriginRuneQuality,
@@ -73,6 +81,9 @@ export function projectOriginRunes(
     }
   }
   if (runes.length !== 174 || tags.length !== 20) throw new Error(`Unexpected catalog size: ${runes.length} runes, ${tags.length} tags`);
+  if (Object.keys(descriptions).length !== ids.size || Object.keys(descriptions).some((id) => !ids.has(id))) {
+    throw new Error("Highlighted rune descriptions do not match the source IDs");
+  }
   return { schemaVersion: 2, tags, runes };
 }
 
