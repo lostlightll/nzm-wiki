@@ -25,7 +25,7 @@ const rows: Record<string, RawTalent> = Object.fromEntries(catalog.talents.flatM
 
 test("talents preserve configured topology, levels, costs and terminal requirement", () => {
   const projected = projectOriginTalents(rows);
-  assert.deepEqual(projected, { ...catalog, talents: catalog.talents.map((talent) => ({ ...talent, icon: talent.id === "40091" ? talent.icon : "" })) });
+  assert.deepEqual(projected, { ...catalog, talents: catalog.talents.map((talent) => ({ ...talent, icon: "" })) });
   assert.deepEqual(projected.talents.find((talent) => talent.id === "10051")?.prerequisites,
     [{ id: "10041", level: 1 }, { id: "10042", level: 1 }]);
   assert.deepEqual(projected.talents.find((talent) => talent.id === "30042")?.levels.map((level) => level.cost), [13, 15, 17]);
