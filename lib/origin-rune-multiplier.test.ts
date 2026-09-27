@@ -20,8 +20,11 @@ test("every origin rune has one indexed source or an explicit exclusion", () => 
 test("origin rune factors preserve distinct Numerical attributes and reverse links", () => {
   const cases = [
     ["1378042010", ["independent-amplification"]],
-    ["1378044210", ["independent-amplification", "game-mode"]],
+    ["1378044210", ["independent-amplification"]],
+    ["1378045110", ["independent-amplification"]],
     ["1378044380", ["critical", "dilution"]],
+    ["1378044410", ["dilution"]],
+    ["1378045120", ["dilution"]],
     ["1378042430", ["super-critical"]],
     ["1378044920", ["dilution"]],
   ] as const;
@@ -35,4 +38,9 @@ test("origin rune factors preserve distinct Numerical attributes and reverse lin
     }
   }
   assert.deepEqual(getProviderRelationsForSource({ type: "origin-rune", id: "1378042160" }), []);
+  assert.deepEqual(getProviderRelationsForSource({ type: "origin-rune", id: "1378044310" }), []);
+  assert.deepEqual([...new Set(getProviderRelationsForSource({ type: "overlimit-card", id: "1317107001" })
+    .map((relation) => relation.factorId))], ["game-mode"]);
+  assert.deepEqual([...new Set(getProviderRelationsForSource({ type: "overlimit-card", id: "1317109001" })
+    .map((relation) => relation.factorId))], ["game-mode"]);
 });

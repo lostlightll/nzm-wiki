@@ -10,6 +10,20 @@ const root = process.cwd();
 const content = path.join(root, "refs/Exports/NZM/Content");
 const passivePath = path.join(content, "DataTables/MGE/MGEPassiveMainTable.json");
 const registryPath = path.join(root, "data/modifier-providers.json");
+const reviewedModifierIds: Record<string, readonly number[]> = {
+  // The adjacent 130044211 belongs to the separate S4 overlimit card's buff.
+  "1378044210": [130044210],
+  // 130044311 is applied by the separate S4 overlimit card's buff.
+  "1378044310": [],
+  // 130044381 belongs to S4 overlimit card 1317113001.
+  "1378044380": [130044380],
+  // 130044411-130044413 are used by separate perk and overlimit effects.
+  "1378044410": [130044410],
+  // The adjacent 130045113 is applied by S4 overlimit card 1317109001.
+  "1378045110": [130045111],
+  // 130045121 belongs to S4 overlimit card 1317111001.
+  "1378045120": [130045120],
+};
 
 type RawRow = { ID: number; Level: number; AttributeName: string; GPModifierOp: string; BaseValue: number; CoefValue: number };
 type PassiveRow = { PassiveSkillID: number; MGE: { Id: string }; MGEConfig: { Id: string } };
@@ -33,8 +47,11 @@ export function projectOriginRuneSources(
     const passive = passiveRows[`${rune.id}_1`];
     if (passive?.PassiveSkillID !== Number(rune.id)) throw new Error(`Missing passive identity: ${rune.id}`);
     const prefix = `1300${rune.id.slice(-5, -1)}`;
+    const reviewedIds = reviewedModifierIds[rune.id];
     const candidates = Object.entries(numericalRows).filter(([, row]) =>
-      row.Level === 1 && (String(row.ID) === rune.id || (String(row.ID).length === 9 && String(row.ID).startsWith(prefix))));
+      row.Level === 1 && (reviewedIds
+        ? reviewedIds.includes(row.ID)
+        : String(row.ID) === rune.id || (String(row.ID).length === 9 && String(row.ID).startsWith(prefix))));
     const applications: NonNullable<ModifierProviderRegistry["providers"][number]["applications"]> = [];
     for (const [key, row] of candidates) {
       if (NUM_MODIFIER_SEMANTICS.attributes[row.AttributeName]?.status !== "indexed") continue;

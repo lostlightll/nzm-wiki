@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "a5f28019298779d71475e43d8edddeb875eb71f0baae0b3cfb79e9e5c162a41d",
+    "registrySha256": "99eada11f2e596b5fd59318703a536ec5ebc2a4197eaa287f43c77f6916cd510",
     "perkPreviewSha256": "2ea47ef5ff27b25970a168b43cfdf0e484a63dbb648051bf883f35bf61ddcf04",
     "s2EvidenceSha256": "a3f16097b34fc589f1322faa4f798b74bc82066dbd02bdcaad4fa0e4c240a0b2",
     "semanticsSha256": "579272d691b428b18d7f792ec6cbaeee54bd23c0d860b4710df03ed73f5c67ba",
@@ -14271,8 +14271,7 @@
         "id": "1378044210"
       },
       "facetIds": [
-        "independent-amplification",
-        "game-mode"
+        "independent-amplification"
       ],
       "effects": [
         {
@@ -14283,17 +14282,6 @@
           "recipient": "self",
           "facetIds": [
             "independent-amplification"
-          ],
-          "reviewed": false
-        },
-        {
-          "row": "lc:130044211_1_0",
-          "attributeTypeId": "game-mode-damage",
-          "attributeLabel": "全伤害（尽量别用，连乘）",
-          "direction": "increase",
-          "recipient": "self",
-          "facetIds": [
-            "game-mode"
           ],
           "reviewed": false
         }
@@ -14358,8 +14346,7 @@
         "id": "1378045110"
       },
       "facetIds": [
-        "independent-amplification",
-        "game-mode"
+        "independent-amplification"
       ],
       "effects": [
         {
@@ -14370,17 +14357,6 @@
           "recipient": "self",
           "facetIds": [
             "independent-amplification"
-          ],
-          "reviewed": false
-        },
-        {
-          "row": "lc:130045113_1_0",
-          "attributeTypeId": "game-mode-damage",
-          "attributeLabel": "全伤害（尽量别用，连乘）",
-          "direction": "increase",
-          "recipient": "self",
-          "facetIds": [
-            "game-mode"
           ],
           "reviewed": false
         }
@@ -14786,31 +14762,6 @@
       "reviewedOverride": false
     },
     {
-      "id": "origin-rune:1378044310",
-      "label": "暴击飞弹",
-      "source": {
-        "type": "origin-rune",
-        "id": "1378044310"
-      },
-      "facetIds": [
-        "weapon-damage"
-      ],
-      "effects": [
-        {
-          "row": "lc:130044311_1_0",
-          "attributeTypeId": "weapon-damage",
-          "attributeLabel": "武器伤害增加",
-          "direction": "increase",
-          "recipient": "self",
-          "facetIds": [
-            "weapon-damage"
-          ],
-          "reviewed": false
-        }
-      ],
-      "reviewedOverride": false
-    },
-    {
       "id": "origin-rune:1378044350",
       "label": "重拳暴击",
       "source": {
@@ -14904,28 +14855,6 @@
             "critical"
           ],
           "reviewed": false
-        },
-        {
-          "row": "lc:130044381_1_0",
-          "attributeTypeId": "all-damage",
-          "attributeLabel": "全伤害（可用，和其他增伤连加）",
-          "direction": "increase",
-          "recipient": "self",
-          "facetIds": [
-            "all-damage"
-          ],
-          "reviewed": false
-        },
-        {
-          "row": "lc:130044381_1_1",
-          "attributeTypeId": "critical-damage",
-          "attributeLabel": "暴击伤害",
-          "direction": "increase",
-          "recipient": "self",
-          "facetIds": [
-            "critical"
-          ],
-          "reviewed": false
         }
       ],
       "reviewedOverride": false
@@ -14963,10 +14892,7 @@
         "id": "1378044410"
       },
       "facetIds": [
-        "weapon-hit-damage",
-        "weapon-skill-damage",
-        "skill-damage",
-        "critical"
+        "weapon-hit-damage"
       ],
       "effects": [
         {
@@ -14977,50 +14903,6 @@
           "recipient": "self",
           "facetIds": [
             "weapon-hit-damage"
-          ],
-          "reviewed": false
-        },
-        {
-          "row": "lc:130044411_1_0",
-          "attributeTypeId": "weapon-skill-damage",
-          "attributeLabel": "武器技能伤害",
-          "direction": "increase",
-          "recipient": "self",
-          "facetIds": [
-            "weapon-skill-damage"
-          ],
-          "reviewed": false
-        },
-        {
-          "row": "lc:130044412_1_0",
-          "attributeTypeId": "weapon-skill-damage",
-          "attributeLabel": "武器技能伤害",
-          "direction": "increase",
-          "recipient": "self",
-          "facetIds": [
-            "weapon-skill-damage"
-          ],
-          "reviewed": false
-        },
-        {
-          "row": "lc:130044412_1_1",
-          "attributeTypeId": "skill-damage",
-          "attributeLabel": "非武器技能伤害增加",
-          "direction": "increase",
-          "recipient": "self",
-          "facetIds": [
-            "skill-damage"
-          ],
-          "reviewed": false
-        },
-        {
-          "row": "lc:130044413_1_0",
-          "attributeTypeId": "critical-damage",
-          "attributeLabel": "暴击伤害",
-          "direction": "increase",
-          "recipient": "self",
-          "facetIds": [
-            "critical"
           ],
           "reviewed": false
         }
@@ -15676,17 +15558,6 @@
       "effects": [
         {
           "row": "lc:130045120_1_0",
-          "attributeTypeId": "all-damage",
-          "attributeLabel": "全伤害（可用，和其他增伤连加）",
-          "direction": "increase",
-          "recipient": "self",
-          "facetIds": [
-            "all-damage"
-          ],
-          "reviewed": false
-        },
-        {
-          "row": "lc:130045121_1_0",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -26080,6 +25951,16 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044310",
+      "label": "暴击飞弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044310"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
     },
     {
       "id": "origin-rune:1378044340",

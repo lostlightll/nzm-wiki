@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "a8b0af094be63dc1757d8443da09a9d8293efcbe690db37efa91b2aefa8fe291",
+    "modifierIndexSha256": "11a239f68ef9c1dea3d50d68e67e86150b7d989435e022232b40af5af7457292",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -5699,8 +5699,7 @@
         "id": "1378044210"
       },
       "modifierTypeIds": [
-        "independent-amplification",
-        "game-mode"
+        "independent-amplification"
       ]
     },
     {
@@ -5733,8 +5732,7 @@
         "id": "1378045110"
       },
       "modifierTypeIds": [
-        "independent-amplification",
-        "game-mode"
+        "independent-amplification"
       ]
     },
     {
@@ -5904,17 +5902,6 @@
       ]
     },
     {
-      "id": "origin-rune:1378044310",
-      "label": "暴击飞弹",
-      "source": {
-        "type": "origin-rune",
-        "id": "1378044310"
-      },
-      "modifierTypeIds": [
-        "weapon-damage"
-      ]
-    },
-    {
       "id": "origin-rune:1378044350",
       "label": "重拳暴击",
       "source": {
@@ -5967,10 +5954,7 @@
         "id": "1378044410"
       },
       "modifierTypeIds": [
-        "weapon-hit-damage",
-        "weapon-skill-damage",
-        "skill-damage",
-        "critical"
+        "weapon-hit-damage"
       ]
     },
     {
@@ -16537,6 +16521,16 @@
       },
       "reasonCode": "not-damage-multiplier",
       "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044310",
+      "label": "暴击飞弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044310"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
     },
     {
       "id": "origin-rune:1378044340",
