@@ -97,6 +97,7 @@ function RuneCard({ rune, tagNames, onOpenMobile }: {
   const [isOpen, setIsOpen] = useState(false);
   const quality = qualityStyles[rune.quality];
   const relations = getProviderRelationsForSource({ type: "origin-rune", id: rune.id });
+  const hasMultipleFactors = new Set(relations.map((relation) => relation.factorId)).size > 1;
 
   const showPreview = () => setIsOpen(true);
   return <div id={`rune-${rune.id}`} className="relative min-w-0 scroll-mt-24 transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
@@ -110,19 +111,21 @@ function RuneCard({ rune, tagNames, onOpenMobile }: {
         if (window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1024px)").matches) showPreview();
         else { setIsOpen(false); onOpenMobile(rune, event.currentTarget); }
       }}
-      className={`group relative flex h-full w-full min-w-0 touch-manipulation flex-col items-center overflow-hidden rounded-lg border-2 px-2 pb-3 pt-16 text-left transition-colors duration-200 outline-none hover:brightness-110 focus-visible:[&_h3]:underline focus-visible:[&_h3]:decoration-2 focus-visible:[&_h3]:underline-offset-4 ${quality.border} ${quality.bg}`}>
+      className={`group relative flex h-full w-full min-w-0 touch-manipulation flex-col items-center overflow-hidden rounded-lg border-2 p-3 pb-4 text-left transition-colors duration-200 outline-none hover:brightness-110 focus-visible:[&_h3]:underline focus-visible:[&_h3]:decoration-2 focus-visible:[&_h3]:underline-offset-4 ${quality.border} ${quality.bg}`}>
       <span className="sr-only">{quality.label}品质，{rune.category === "special" ? "特殊强化" : "普通强化"}</span>
-      <RuneIcon path={rune.icon} quality={rune.quality} />
-      <h3 className="mt-2 w-full break-words text-center text-sm font-medium leading-tight text-white">{rune.name}</h3>
-      <span className="mt-2 flex flex-wrap justify-center gap-0.5">
+      <span className={`pointer-events-none absolute inset-x-0.5 top-0.5 flex-wrap gap-0.5 ${relations.length ? (hasMultipleFactors || rune.tagIds.length > 1 ? "hidden" : "hidden sm:flex") : "flex"}`}>
         {rune.tagIds.map((id) => <span key={id}
           className="rounded border border-white/30 bg-zinc-700 px-[3px] py-px text-[10px] font-medium leading-3 text-zinc-200">
           {tagNames.get(id)}
         </span>)}
       </span>
+      <RuneIcon path={rune.icon} quality={rune.quality} />
+      <h3 className="mt-2 w-full break-words text-center text-sm font-medium leading-tight text-white">{rune.name}</h3>
     </button>
     {relations.length > 0 && <MultiplierBadges relations={relations} variant="catalog-compact"
-      className="absolute right-1 top-1 z-10 max-w-[calc(100%-0.5rem)] justify-end [&_a]:px-1 [&_a]:text-[10px] sm:[&_a]:px-2 sm:[&_a]:text-[11px]" />}
+      className={`absolute top-1 z-10 [&_a]:min-h-5 [&_a]:min-w-0 [&_a]:justify-center [&_a]:py-0 [&_a]:text-center [&_a]:leading-3 [&_a_span]:break-all ${hasMultipleFactors
+        ? "inset-x-1 flex-nowrap gap-0.5 [&_a]:flex-1 [&_a]:px-0.5 [&_a]:text-[9px]"
+        : "right-1 max-w-[calc(100%-0.5rem)] justify-end [&_a]:px-1 [&_a]:text-[9px] sm:[&_a]:text-[10px]"}`} />}
     {isOpen && <HoverPreviewPanel anchorRef={buttonRef} id={tooltipId}>
       <RuneDetails rune={rune} tagNames={tagNames} />
     </HoverPreviewPanel>}
