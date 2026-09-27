@@ -16,7 +16,7 @@
     },
     {
       "id": "independent-amplification",
-      "label": "独立增幅"
+      "label": "攻击力增幅"
     },
     {
       "id": "dilution",
@@ -135,7 +135,7 @@
       },
       {
         "id": "independent-amplification",
-        "label": "独立增幅",
+        "label": "攻击力增幅",
         "group": "factor",
         "summary": "通过攻击属性倍率独立参与伤害结算。",
         "effects": [

@@ -4,7 +4,7 @@
     "registrySha256": "8dda5b3c900151df0d1f35c81f5c2f6aab219e73dad1b98f3a56de97f05eeb00",
     "perkPreviewSha256": "2ea47ef5ff27b25970a168b43cfdf0e484a63dbb648051bf883f35bf61ddcf04",
     "s2EvidenceSha256": "a3f16097b34fc589f1322faa4f798b74bc82066dbd02bdcaad4fa0e4c240a0b2",
-    "semanticsSha256": "0ba1b4ff1cc42f2fd333e4c54b012b00b1ff3b5ae91de38d4b6f1f3510dc1de5",
+    "semanticsSha256": "579272d691b428b18d7f792ec6cbaeee54bd23c0d860b4710df03ed73f5c67ba",
     "modifierSourceSha256": "5d4ee1f7f051aa6181d8c74d5e34e8bfdeb393a5b301dc05eb12efbf04da0492",
     "attributeDescriptionSourceSha256": "8226fb6193a641eb5fce4f6ff09bf78862c3fab31ff432ae315246b27a440ff7"
   },
@@ -32,12 +32,12 @@
       "facets": {
         "increase": {
           "id": "independent-amplification",
-          "label": "独立增幅",
+          "label": "攻击力增幅",
           "consumer": "damage"
         },
         "unknown": {
           "id": "independent-amplification",
-          "label": "独立增幅",
+          "label": "攻击力增幅",
           "consumer": "damage"
         }
       }

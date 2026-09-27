@@ -52,12 +52,12 @@
       "facets": {
         "increase": {
           "id": "independent-amplification",
-          "label": "独立增幅",
+          "label": "攻击力增幅",
           "consumer": "damage"
         },
         "unknown": {
           "id": "independent-amplification",
-          "label": "独立增幅",
+          "label": "攻击力增幅",
           "consumer": "damage"
         }
       }
