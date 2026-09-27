@@ -22,10 +22,10 @@ export default function OriginCatalogClient({ runes, talents }: {
   return <>
     <nav aria-label="原点图鉴模块" className="mb-6 flex flex-wrap items-center gap-2">
       {([
-        { id: "talents", label: "原点天赋" },
+        { id: "runes", label: "强化图鉴" },
         { id: "weapons", label: "武器图鉴", disabled: true },
         { id: "affixes", label: "词条图鉴", disabled: true },
-        { id: "runes", label: "强化图鉴" },
+        { id: "talents", label: "原点天赋" },
       ] as const).map((item) => "disabled" in item ?
         <button key={item.id} type="button" disabled title="暂未开放"
           className="min-h-11 cursor-not-allowed rounded border border-zinc-700 bg-zinc-800 px-4 py-2 text-base font-semibold text-zinc-500">
