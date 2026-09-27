@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "741a4b1b55d446bc2ec88dd19ac79ce525d7c5d2c2c81a35bedc5748cc4ff491",
+    "modifierIndexSha256": "a8b0af094be63dc1757d8443da09a9d8293efcbe690db37efa91b2aefa8fe291",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -5403,6 +5403,919 @@
       },
       "modifierTypeIds": [
         "vulnerability"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042010",
+      "label": "迅射叠伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042010"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042020",
+      "label": "高耗迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042020"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042030",
+      "label": "爆弹迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042030"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042040",
+      "label": "弹缩迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042040"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042050",
+      "label": "扩容迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042050"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042080",
+      "label": "精准迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042080"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042090",
+      "label": "命中迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042090"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042100",
+      "label": "聚金增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042100"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042150",
+      "label": "耗金聚伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042150"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042190",
+      "label": "怒战近回",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042190"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042200",
+      "label": "怒战残增",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042200"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042210",
+      "label": "怒战耗血",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042210"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042230",
+      "label": "怒战残斩",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042230"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042250",
+      "label": "怒战濒死",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042250"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042270",
+      "label": "怒战血叠",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042270"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042370",
+      "label": "暴击根基",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042370"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042380",
+      "label": "暴击狩猎",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042380"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042430",
+      "label": "暴击会心",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042430"
+      },
+      "modifierTypeIds": [
+        "super-critical-rate"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042480",
+      "label": "坚盾增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042480"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042560",
+      "label": "游击动能",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042560"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042570",
+      "label": "游击叠伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042570"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042590",
+      "label": "游击斩半",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042590"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042600",
+      "label": "游击斩满",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042600"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042620",
+      "label": "游击转伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042620"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042680",
+      "label": "叠伤秘技",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042680"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042690",
+      "label": "强伤秘技",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042690"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044210",
+      "label": "一击秒杀",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044210"
+      },
+      "modifierTypeIds": [
+        "independent-amplification",
+        "game-mode"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044290",
+      "label": "玻璃大炮",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044290"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044850",
+      "label": "超级落雷",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044850"
+      },
+      "modifierTypeIds": [
+        "correction-parameter"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045110",
+      "label": "极限单发",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045110"
+      },
+      "modifierTypeIds": [
+        "independent-amplification",
+        "game-mode"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042300",
+      "label": "元素击杀",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042300"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042360",
+      "label": "混合元素",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042360"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042400",
+      "label": "暴击蓄力",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042400"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042420",
+      "label": "暴击满溢",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042420"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042440",
+      "label": "暴击破限",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042440"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044090",
+      "label": "血转环伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044090"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044150",
+      "label": "大弹容伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044150"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044160",
+      "label": "迷你弹夹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044160"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044170",
+      "label": "双倍计数",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044170"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044180",
+      "label": "碾压之势",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044180"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044200",
+      "label": "势如破局",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044200"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044250",
+      "label": "狂战之力",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044250"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044270",
+      "label": "不灭之躯",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044270"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044280",
+      "label": "血偿增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044280"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044300",
+      "label": "罪恶快感",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044300"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044310",
+      "label": "暴击飞弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044310"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044350",
+      "label": "重拳暴击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044350"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044360",
+      "label": "低血猎杀",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044360"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044380",
+      "label": "蓄势待发",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044380"
+      },
+      "modifierTypeIds": [
+        "all-damage",
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044390",
+      "label": "不稳定射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044390"
+      },
+      "modifierTypeIds": [
+        "close-range-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044410",
+      "label": "直击榴弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044410"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-skill-damage",
+        "skill-damage",
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044420",
+      "label": "独爆增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044420"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044500",
+      "label": "精准命中",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044500"
+      },
+      "modifierTypeIds": [
+        "independent-amplification"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044530",
+      "label": "越跑越猛",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044530"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044550",
+      "label": "收割灵魂",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044550"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044580",
+      "label": "连绵不断",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044580"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044630",
+      "label": "减速增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044630"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044640",
+      "label": "移速增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044640"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044700",
+      "label": "弹容附魔",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044700"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044750",
+      "label": "换弹冲击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044750"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044760",
+      "label": "超级环",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044760"
+      },
+      "modifierTypeIds": [
+        "correction-parameter"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044770",
+      "label": "超级导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044770"
+      },
+      "modifierTypeIds": [
+        "correction-parameter"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044790",
+      "label": "独弹爆炸",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044790"
+      },
+      "modifierTypeIds": [
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044870",
+      "label": "狂暴连击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044870"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044890",
+      "label": "暴伤碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044890"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044900",
+      "label": "全伤碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044900"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044910",
+      "label": "武器碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044910"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044920",
+      "label": "技能碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044920"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378044980",
+      "label": "弱点碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044980"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045000",
+      "label": "暴伤碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045000"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045010",
+      "label": "全伤碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045010"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045020",
+      "label": "武器碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045020"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045030",
+      "label": "技能碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045030"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045090",
+      "label": "弱点碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045090"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045100",
+      "label": "近战赋能",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045100"
+      },
+      "modifierTypeIds": [
+        "super-critical-rate",
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045120",
+      "label": "换弹增强",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045120"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045130",
+      "label": "弱点打击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045130"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045140",
+      "label": "雷暴连锁",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045140"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045160",
+      "label": "金币弹头",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045160"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045170",
+      "label": "血量燃烧",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045170"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045280",
+      "label": "猎杀记忆",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045280"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-rune:1378045330",
+      "label": "蓄力一击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045330"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
       ]
     }
   ],
@@ -15234,6 +16147,926 @@
       },
       "reasonCode": "independent-damage-event",
       "reason": "技能释放事件触发独立火环伤害，不提供角色Modifier增伤通道。"
+    },
+    {
+      "id": "origin-rune:1378042140",
+      "label": "聚金利息",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042140"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378042160",
+      "label": "免耗聚金",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042160"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042170",
+      "label": "聚金环波",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042170"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042240",
+      "label": "怒战狂暴",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042240"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378042260",
+      "label": "怒战血怒",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042260"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042490",
+      "label": "坚盾缩爆",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042490"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378042530",
+      "label": "坚盾狂热",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042530"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042550",
+      "label": "游击导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042550"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042640",
+      "label": "秘技返还",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042640"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042720",
+      "label": "普攻秘技",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042720"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044320",
+      "label": "双重导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044320"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044370",
+      "label": "击杀冲击环",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044370"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044830",
+      "label": "射击雷击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044830"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044840",
+      "label": "双重雷击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044840"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044860",
+      "label": "致命爆炸",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044860"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378045260",
+      "label": "快速换弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045260"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378042070",
+      "label": "环爆迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042070"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042110",
+      "label": "聚金掉落",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042110"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042130",
+      "label": "聚金增效",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042130"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378042180",
+      "label": "飞弹聚金",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042180"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042220",
+      "label": "怒战近波",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042220"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042390",
+      "label": "暴击回弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042390"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042410",
+      "label": "暴击环爆",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042410"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042450",
+      "label": "暴击弱点",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042450"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378042460",
+      "label": "坚盾回复",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042460"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378042500",
+      "label": "坚盾化盾",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042500"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378042510",
+      "label": "坚盾技回",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042510"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042520",
+      "label": "坚盾附伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042520"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042540",
+      "label": "坚盾环波",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042540"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042610",
+      "label": "游击自愈",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042610"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042631",
+      "label": "游击弹道",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042631"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042650",
+      "label": "五连秘技",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042650"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042660",
+      "label": "秘技冲击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042660"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378042670",
+      "label": "秘技互通",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042670"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044040",
+      "label": "机枪导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044040"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044100",
+      "label": "混沌元素",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044100"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044190",
+      "label": "强力爆弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044190"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044240",
+      "label": "跑步充能",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044240"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044260",
+      "label": "击杀护盾",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044260"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044340",
+      "label": "近战大师",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044340"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044400",
+      "label": "多重爆炸",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044400"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044480",
+      "label": "暴击护盾",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044480"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044490",
+      "label": "奔跑治愈",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044490"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044510",
+      "label": "弱点飞奔",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044510"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044520",
+      "label": "暴击飞奔",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044520"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044540",
+      "label": "治愈光环",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044540"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044560",
+      "label": "叠叠叠",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044560"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044570",
+      "label": "逃跑计划",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044570"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044600",
+      "label": "不动明王",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044600"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044610",
+      "label": "冰弹减速",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044610"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044620",
+      "label": "暴击吸血",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044620"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044650",
+      "label": "移动冲击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044650"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044660",
+      "label": "电弧连锁",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044660"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044670",
+      "label": "召唤治愈",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044670"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044710",
+      "label": "技能魔术",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044710"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044720",
+      "label": "技能弹容",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044720"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044730",
+      "label": "暴击充弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044730"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044740",
+      "label": "暴击过充",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044740"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044780",
+      "label": "爆炸导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044780"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044800",
+      "label": "冲击导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044800"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044810",
+      "label": "雷击冲击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044810"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044820",
+      "label": "导弹雷击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044820"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378044880",
+      "label": "暴击碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044880"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044930",
+      "label": "移速碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044930"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044940",
+      "label": "生命碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044940"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044950",
+      "label": "护盾碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044950"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044960",
+      "label": "换弹碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044960"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044970",
+      "label": "充能碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044970"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378044990",
+      "label": "暴击碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044990"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045040",
+      "label": "移速碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045040"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045050",
+      "label": "生命碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045050"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045060",
+      "label": "护盾碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045060"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045070",
+      "label": "弹夹碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045070"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045080",
+      "label": "充能碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045080"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045150",
+      "label": "燃油弹匣",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045150"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045180",
+      "label": "精准冷却",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045180"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378045200",
+      "label": "生机弹仓",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045200"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045210",
+      "label": "生命保险",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045210"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378045220",
+      "label": "冰冷代谢",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045220"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378045230",
+      "label": "心跳瞄准",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045230"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045240",
+      "label": "富者护身",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045240"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045270",
+      "label": "心之钢核",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045270"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045290",
+      "label": "涟漪步伐",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045290"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045300",
+      "label": "脉冲铸血",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045300"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045310",
+      "label": "混沌枪膛",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045310"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-rune:1378045320",
+      "label": "治疗冲击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045320"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378045340",
+      "label": "换弹过充",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045340"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378045370",
+      "label": "弱点补弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045370"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378045390",
+      "label": "充能弹药",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045390"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378045400",
+      "label": "射击补弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045400"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378045410",
+      "label": "技能反哺",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045410"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-rune:1378045420",
+      "label": "技能反哺Ⅱ",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045420"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
     }
   ]
 }

@@ -42,6 +42,10 @@ const overlimitCardSourceSchema = z.strictObject({
   season: z.string().refine(isPreviewSeason).optional(),
   id: nonEmptyString,
 });
+const originRuneSourceSchema = z.strictObject({
+  type: z.literal("origin-rune"),
+  id: nonEmptyString,
+});
 const postSourceSchema = z.strictObject({
   type: z.literal("post"),
   slug: nonEmptyString,
@@ -64,6 +68,7 @@ export const modifierProviderSourceSchema = z.discriminatedUnion("type", [
   cardSourceSchema,
   overlimitBondSourceSchema,
   overlimitCardSourceSchema,
+  originRuneSourceSchema,
   postSourceSchema,
   seasonTalentSourceSchema,
 ]);

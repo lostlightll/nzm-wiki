@@ -14285,6 +14285,2382 @@
           "numerical_modifier_config#111010160_1_0：GPAttributeSetBearDamageRatio.DamageBearRatio，B1，base=-0.1。"
         ]
       }
+    },
+    {
+      "id": "origin-rune:1378042010",
+      "label": "迅射叠伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042010"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042010_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042010",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042010_1: MGE=1378042010, MGEConfig=1378042010",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042010_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042020",
+      "label": "高耗迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042020"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042021_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042020",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042020_1: MGE=1378042020, MGEConfig=1378042020",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042021_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042030",
+      "label": "爆弹迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042030"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042030_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042030",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042030_1: MGE=1378042030, MGEConfig=1378042030",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042030_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042040",
+      "label": "弹缩迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042040"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042041_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042040",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042040_1: MGE=1378042040, MGEConfig=1378042040",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042041_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042050",
+      "label": "扩容迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042050"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042051_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042050",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042050_1: MGE=1378042050, MGEConfig=1378042050",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042051_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042080",
+      "label": "精准迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042080"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042080_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042080",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042080_1: MGE=1378042080, MGEConfig=1378042080",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042080_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042090",
+      "label": "命中迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042090"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042090_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042090",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042090_1: MGE=1378042090, MGEConfig=1378042090",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042090_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042100",
+      "label": "聚金增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042100"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042100_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042100",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042100_1: MGE=1378042100, MGEConfig=1378042100",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042100_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042150",
+      "label": "耗金聚伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042150"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042150_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042150",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042150_1: MGE=1378042150, MGEConfig=1378042150",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042150_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042190",
+      "label": "怒战近回",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042190"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042190_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042190",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042190_1: MGE=1378042190, MGEConfig=1378042190",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042190_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042200",
+      "label": "怒战残增",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042200"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042200_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042200",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042200_1: MGE=1378042200, MGEConfig=1378042200",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042200_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042210",
+      "label": "怒战耗血",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042210"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042210_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042210",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042210_1: MGE=1378042210, MGEConfig=1378042210",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042210_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042230",
+      "label": "怒战残斩",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042230"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042230_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042230",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042230_1: MGE=1378042230, MGEConfig=1378042230",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042230_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042250",
+      "label": "怒战濒死",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042250"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042250_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042250",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042250_1: MGE=1378042250, MGEConfig=1378042250",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042250_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042270",
+      "label": "怒战血叠",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042270"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042270_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042270",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042270_1: MGE=1378042270, MGEConfig=1378042270",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042270_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042370",
+      "label": "暴击根基",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042370"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042370_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042370",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042370_1: MGE=1378042370, MGEConfig=1378042370",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042370_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042380",
+      "label": "暴击狩猎",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042380"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042380_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042380",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042380_1: MGE=1378042380, MGEConfig=1378042380",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042380_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042430",
+      "label": "暴击会心",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042430"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042430_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042430",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042430_1: MGE=1378042430, MGEConfig=1378042430",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042430_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042480",
+      "label": "坚盾增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042480"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042480_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130042481_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042480",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042480_1: MGE=1378042480, MGEConfig=1378042480",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042480_1_0, 130042481_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042560",
+      "label": "游击动能",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042560"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042560_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042560",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042560_1: MGE=1378042560, MGEConfig=1378042560",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042560_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042570",
+      "label": "游击叠伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042570"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042570_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042570",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042570_1: MGE=1378042570, MGEConfig=1378042570",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042570_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042590",
+      "label": "游击斩半",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042590"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042590_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042590",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042590_1: MGE=1378042590, MGEConfig=1378042590",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042590_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042600",
+      "label": "游击斩满",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042600"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042600_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042600",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042600_1: MGE=1378042600, MGEConfig=1378042600",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042600_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042620",
+      "label": "游击转伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042620"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042620_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042620",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042620_1: MGE=1378042620, MGEConfig=1378042620",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042620_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042680",
+      "label": "叠伤秘技",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042680"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042680_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042680",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042680_1: MGE=1378042680, MGEConfig=1378042680",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042680_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042690",
+      "label": "强伤秘技",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042690"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042690_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042690",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042690_1: MGE=1378042690, MGEConfig=1378042690",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042690_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044210",
+      "label": "一击秒杀",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044210"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044210_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130044211_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044210",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044210_1: MGE=1378044210, MGEConfig=1378044210",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044210_1_0, 130044211_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044290",
+      "label": "玻璃大炮",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044290"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044290_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044290",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044290_1: MGE=1378044290, MGEConfig=1378044290",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044290_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044850",
+      "label": "超级落雷",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044850"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044850_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044850",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044850_1: MGE=1378044850, MGEConfig=1378044850",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044850_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045110",
+      "label": "极限单发",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045110"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130045111_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130045113_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045110",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045110_1: MGE=1378045110, MGEConfig=1378045110",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045111_1_1, 130045113_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042300",
+      "label": "元素击杀",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042300"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042300_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042300",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042300_1: MGE=1378042300, MGEConfig=1378042300",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042300_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042360",
+      "label": "混合元素",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042360"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042360_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042360",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042360_1: MGE=1378042360, MGEConfig=1378042360",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042360_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042400",
+      "label": "暴击蓄力",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042400"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042401_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042400",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042400_1: MGE=1378042400, MGEConfig=1378042400",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042401_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042420",
+      "label": "暴击满溢",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042420"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042420_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042420",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042420_1: MGE=1378042420, MGEConfig=1378042420",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042420_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042440",
+      "label": "暴击破限",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042440"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130042440_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378042440",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042440_1: MGE=1378042440, MGEConfig=1378042440",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042440_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044090",
+      "label": "血转环伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044090"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044090_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044090",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044090_1: MGE=1378044090, MGEConfig=1378044090",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044090_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044150",
+      "label": "大弹容伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044150"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044150_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044150",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044150_1: MGE=1378044150, MGEConfig=1378044150",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044150_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044160",
+      "label": "迷你弹夹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044160"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044160_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044160",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044160_1: MGE=1378044160, MGEConfig=1378044160",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044160_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044170",
+      "label": "双倍计数",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044170"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044170_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130044170_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044170",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044170_1: MGE=1378044170, MGEConfig=1378044170",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044170_1_0, 130044170_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044180",
+      "label": "碾压之势",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044180"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044180_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044180",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044180_1: MGE=1378044180, MGEConfig=1378044180",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044180_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044200",
+      "label": "势如破局",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044200"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044200_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:1378044200_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044200",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044200_1: MGE=1378044200, MGEConfig=1378044200",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044200_1_0, 1378044200_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044250",
+      "label": "狂战之力",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044250"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044250_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044250",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044250_1: MGE=1378044250, MGEConfig=1378044250",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044250_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044270",
+      "label": "不灭之躯",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044270"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044271_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044270",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044270_1: MGE=1378044270, MGEConfig=1378044270",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044271_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044280",
+      "label": "血偿增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044280"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044280_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044280",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044280_1: MGE=1378044280, MGEConfig=1378044280",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044280_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044300",
+      "label": "罪恶快感",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044300"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044300_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044300",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044300_1: MGE=1378044300, MGEConfig=1378044300",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044300_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044310",
+      "label": "暴击飞弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044310"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044311_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044310",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044310_1: MGE=1378044310, MGEConfig=1378044310",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044311_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044350",
+      "label": "重拳暴击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044350"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044350_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044350",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044350_1: MGE=1378044350, MGEConfig=1378044350",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044350_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044360",
+      "label": "低血猎杀",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044360"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044360_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130044361_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044360",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044360_1: MGE=1378044360, MGEConfig=1378044360",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044360_1_0, 130044361_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044380",
+      "label": "蓄势待发",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044380"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044380_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130044380_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130044381_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130044381_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044380",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044380_1: MGE=1378044380, MGEConfig=1378044380",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044380_1_0, 130044380_1_1, 130044381_1_0, 130044381_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044390",
+      "label": "不稳定射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044390"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044390_1_2",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044390",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044390_1: MGE=1378044390, MGEConfig=1378044390",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044390_1_2; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044410",
+      "label": "直击榴弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044410"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044410_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130044411_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130044412_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130044412_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130044413_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044410",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044410_1: MGE=1378044410, MGEConfig=1378044410",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044410_1_0, 130044411_1_0, 130044412_1_0, 130044412_1_1, 130044413_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044420",
+      "label": "独爆增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044420"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044420_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044420",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044420_1: MGE=1378044420, MGEConfig=1378044420",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044420_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044500",
+      "label": "精准命中",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044500"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044500_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044500",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044500_1: MGE=1378044500, MGEConfig=1378044500",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044500_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044530",
+      "label": "越跑越猛",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044530"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044530_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044530",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044530_1: MGE=1378044530, MGEConfig=1378044530",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044530_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044550",
+      "label": "收割灵魂",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044550"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044550_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044550",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044550_1: MGE=1378044550, MGEConfig=1378044550",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044550_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044580",
+      "label": "连绵不断",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044580"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044580_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044580",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044580_1: MGE=1378044580, MGEConfig=1378044580",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044580_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044630",
+      "label": "减速增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044630"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044630_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044630",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044630_1: MGE=1378044630, MGEConfig=1378044630",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044630_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044640",
+      "label": "移速增伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044640"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044640_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044640",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044640_1: MGE=1378044640, MGEConfig=1378044640",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044640_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044700",
+      "label": "弹容附魔",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044700"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044700_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044700",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044700_1: MGE=1378044700, MGEConfig=1378044700",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044700_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044750",
+      "label": "换弹冲击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044750"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044750_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044750",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044750_1: MGE=1378044750, MGEConfig=1378044750",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044750_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044760",
+      "label": "超级环",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044760"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044760_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044760",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044760_1: MGE=1378044760, MGEConfig=1378044760",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044760_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044770",
+      "label": "超级导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044770"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044770_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "damage-event"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044770",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044770_1: MGE=1378044770, MGEConfig=1378044770",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044770_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044790",
+      "label": "独弹爆炸",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044790"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044790_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044790",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044790_1: MGE=1378044790, MGEConfig=1378044790",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044790_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044870",
+      "label": "狂暴连击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044870"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130044871_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044870",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044870_1: MGE=1378044870, MGEConfig=1378044870",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044871_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044890",
+      "label": "暴伤碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044890"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1378044890_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044890",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044890_1: MGE=2001004001, MGEConfig=1378044890",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044890_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044900",
+      "label": "全伤碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044900"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1378044900_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044900",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044900_1: MGE=2001004001, MGEConfig=1378044900",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044900_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044910",
+      "label": "武器碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044910"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1378044910_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044910",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044910_1: MGE=2001004001, MGEConfig=1378044910",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044910_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044920",
+      "label": "技能碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044920"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1378044920_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:1378044920_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044920",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044920_1: MGE=2001004001, MGEConfig=1378044920",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044920_1_0, 1378044920_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044980",
+      "label": "弱点碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044980"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1378044980_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378044980",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044980_1: MGE=2001004001, MGEConfig=1378044980",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044980_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045000",
+      "label": "暴伤碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045000"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1378045000_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045000",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045000_1: MGE=2001004001, MGEConfig=1378045000",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378045000_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045010",
+      "label": "全伤碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045010"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1378045010_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045010",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045010_1: MGE=2001004001, MGEConfig=1378045010",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378045010_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045020",
+      "label": "武器碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045020"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1378045020_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045020",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045020_1: MGE=2001004001, MGEConfig=1378045020",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378045020_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045030",
+      "label": "技能碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045030"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1378045030_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:1378045030_1_1",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045030",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045030_1: MGE=2001004001, MGEConfig=1378045030",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378045030_1_0, 1378045030_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045090",
+      "label": "弱点碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045090"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:1378045090_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045090",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045090_1: MGE=2001004001, MGEConfig=1378045090",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378045090_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045100",
+      "label": "近战赋能",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045100"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130045100_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130045101_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045100",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045100_1: MGE=1378045100, MGEConfig=1378045100",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045100_1_0, 130045101_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045120",
+      "label": "换弹增强",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045120"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130045120_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130045121_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045120",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045120_1: MGE=1378045120, MGEConfig=1378045120",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045120_1_0, 130045121_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045130",
+      "label": "弱点打击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045130"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130045130_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045130",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045130_1: MGE=1378045130, MGEConfig=1378045130",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045130_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045140",
+      "label": "雷暴连锁",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045140"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130045140_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045140",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045140_1: MGE=1378045140, MGEConfig=1378045140",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045140_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045160",
+      "label": "金币弹头",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045160"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130045160_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045160",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045160_1: MGE=1378045160, MGEConfig=1378045160",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045160_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045170",
+      "label": "血量燃烧",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045170"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130045171_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045170",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045170_1: MGE=1378045170, MGEConfig=1378045170",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045171_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045280",
+      "label": "猎杀记忆",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045280"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130045280_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045280",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045280_1: MGE=1378045280, MGEConfig=1378045280",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045280_1_0; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045330",
+      "label": "蓄力一击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045330"
+      },
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:130045330_1_0",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:130045330_1_1",
+            "field": "coefficient"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
+      "evidence": {
+        "kind": "reviewed-chain",
+        "passiveSkillId": "1378045330",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045330_1: MGE=1378045330, MGEConfig=1378045330",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045330_1_0, 130045330_1_1; 此处仅索引属性，不推断施加时机与受益对象。"
+        ]
+      }
     }
   ],
   "exclusions": [
@@ -32280,6 +34656,1570 @@
           "kismet/live/20260921T223801Z-edb50a069f6e4596a7b482893efb29e7/manifest.json；Default__MGE_1316146001_C.NumericalID=11010086, AOEID=1316119007, CooldownDuration=3。",
           "ExecuteUbergraph_MGE_1316146001@795 WaitForSkillStart(self,24)注册技能事件；回调检查MGE冷却并创建AOE，NumericalID取CDO。Native事件筛选与冷却内部未展开。",
           "正式numerical_config_composite[11010086_1] HpCalScale=.34、HpCalBase=0，SkillDamage、火焰、不可暴击或弱点。伤害按34%攻击力，500基准为170。"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042140",
+      "label": "聚金利息",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042140"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378042140",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042140_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042140_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042160",
+      "label": "免耗聚金",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042160"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042160",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042160_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042170",
+      "label": "聚金环波",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042170"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042170",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042170_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042240",
+      "label": "怒战狂暴",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042240"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378042240",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042240_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042240_1_0, 130042240_1_1"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042260",
+      "label": "怒战血怒",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042260"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042260",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042260_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042490",
+      "label": "坚盾缩爆",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042490"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378042490",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042490_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042490_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042530",
+      "label": "坚盾狂热",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042530"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042530",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042530_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042550",
+      "label": "游击导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042550"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042550",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042550_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042640",
+      "label": "秘技返还",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042640"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042640",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042640_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042720",
+      "label": "普攻秘技",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042720"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042720",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042720_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044320",
+      "label": "双重导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044320"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044320",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044320_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044370",
+      "label": "击杀冲击环",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044370"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044370",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044370_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044830",
+      "label": "射击雷击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044830"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044830",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044830_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044840",
+      "label": "双重雷击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044840"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044840",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044840_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044860",
+      "label": "致命爆炸",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044860"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044860",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044860_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045260",
+      "label": "快速换弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045260"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045260",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045260_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045260_1_0, 130045261_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042070",
+      "label": "环爆迅射",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042070"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042070",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042070_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042110",
+      "label": "聚金掉落",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042110"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042110",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042110_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042130",
+      "label": "聚金增效",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042130"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378042130",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042130_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042130_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042180",
+      "label": "飞弹聚金",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042180"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042180",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042180_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042220",
+      "label": "怒战近波",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042220"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042220",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042220_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042390",
+      "label": "暴击回弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042390"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042390",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042390_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042410",
+      "label": "暴击环爆",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042410"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042410",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042410_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042450",
+      "label": "暴击弱点",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042450"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378042450",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042450_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042450_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042460",
+      "label": "坚盾回复",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042460"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378042460",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042460_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042460_1_0, 130042461_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042500",
+      "label": "坚盾化盾",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042500"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378042500",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042500_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130042500_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042510",
+      "label": "坚盾技回",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042510"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042510",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042510_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042520",
+      "label": "坚盾附伤",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042520"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042520",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042520_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042540",
+      "label": "坚盾环波",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042540"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042540",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042540_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042610",
+      "label": "游击自愈",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042610"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042610",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042610_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042631",
+      "label": "游击弹道",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042631"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042631",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042631_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042650",
+      "label": "五连秘技",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042650"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042650",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042650_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042660",
+      "label": "秘技冲击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042660"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042660",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042660_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378042670",
+      "label": "秘技互通",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042670"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378042670",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378042670_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044040",
+      "label": "机枪导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044040"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044040",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044040_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044100",
+      "label": "混沌元素",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044100"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044100",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044100_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044190",
+      "label": "强力爆弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044190"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044190",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044190_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044240",
+      "label": "跑步充能",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044240"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044240",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044240_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044260",
+      "label": "击杀护盾",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044260"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044260",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044260_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044260_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044340",
+      "label": "近战大师",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044340"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044340",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044340_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044340_1_0, 130044341_1_1"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044400",
+      "label": "多重爆炸",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044400"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044400",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044400_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044480",
+      "label": "暴击护盾",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044480"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044480",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044480_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044480_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044490",
+      "label": "奔跑治愈",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044490"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044490",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044490_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044510",
+      "label": "弱点飞奔",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044510"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044510",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044510_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044510_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044520",
+      "label": "暴击飞奔",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044520"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044520",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044520_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044520_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044540",
+      "label": "治愈光环",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044540"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044540",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044540_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044540_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044560",
+      "label": "叠叠叠",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044560"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044560",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044560_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044570",
+      "label": "逃跑计划",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044570"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044570",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044570_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044570_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044600",
+      "label": "不动明王",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044600"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044600",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044600_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044600_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044610",
+      "label": "冰弹减速",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044610"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044610",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044610_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044610_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044620",
+      "label": "暴击吸血",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044620"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044620",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044620_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044650",
+      "label": "移动冲击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044650"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044650",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044650_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044660",
+      "label": "电弧连锁",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044660"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044660",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044660_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130044660_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044670",
+      "label": "召唤治愈",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044670"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044670",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044670_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044710",
+      "label": "技能魔术",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044710"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044710",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044710_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044720",
+      "label": "技能弹容",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044720"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044720",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044720_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044730",
+      "label": "暴击充弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044730"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044730",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044730_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044740",
+      "label": "暴击过充",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044740"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044740",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044740_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044780",
+      "label": "爆炸导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044780"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044780",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044780_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044800",
+      "label": "冲击导弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044800"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044800",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044800_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044810",
+      "label": "雷击冲击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044810"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044810",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044810_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044820",
+      "label": "导弹雷击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044820"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378044820",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044820_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044880",
+      "label": "暴击碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044880"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044880",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044880_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044880_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044930",
+      "label": "移速碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044930"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044930",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044930_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044930_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044940",
+      "label": "生命碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044940"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044940",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044940_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044940_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044950",
+      "label": "护盾碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044950"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044950",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044950_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044950_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044960",
+      "label": "换弹碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044960"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044960",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044960_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044960_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044970",
+      "label": "充能碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044970"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044970",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044970_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044970_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378044990",
+      "label": "暴击碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378044990"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378044990",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378044990_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378044990_1_1"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045040",
+      "label": "移速碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045040"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045040",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045040_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378045040_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045050",
+      "label": "生命碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045050"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045050",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045050_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378045050_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045060",
+      "label": "护盾碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045060"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045060",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045060_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378045060_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045070",
+      "label": "弹夹碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045070"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045070",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045070_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378045070_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045080",
+      "label": "充能碎片",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045080"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045080",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045080_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#1378045080_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045150",
+      "label": "燃油弹匣",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045150"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045150",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045150_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045150_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045180",
+      "label": "精准冷却",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045180"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378045180",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045180_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045200",
+      "label": "生机弹仓",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045200"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045200",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045200_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045200_1_0, 130045200_1_1, 130045201_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045210",
+      "label": "生命保险",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045210"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378045210",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045210_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045220",
+      "label": "冰冷代谢",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045220"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378045220",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045220_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045230",
+      "label": "心跳瞄准",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045230"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045230",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045230_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045230_1_0, 130045231_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045240",
+      "label": "富者护身",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045240"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045240",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045240_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045240_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045270",
+      "label": "心之钢核",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045270"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045270",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045270_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045270_1_0, 130045271_1_0, 130045272_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045290",
+      "label": "涟漪步伐",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045290"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045290",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045290_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045290_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045300",
+      "label": "脉冲铸血",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045300"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045300",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045300_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045300_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045310",
+      "label": "混沌枪膛",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045310"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。",
+      "evidence": {
+        "passiveSkillId": "1378045310",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045310_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#130045311_1_0"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045320",
+      "label": "治疗冲击",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045320"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378045320",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045320_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045340",
+      "label": "换弹过充",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045340"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378045340",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045340_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045370",
+      "label": "弱点补弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045370"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378045370",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045370_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045390",
+      "label": "充能弹药",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045390"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378045390",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045390_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045400",
+      "label": "射击补弹",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045400"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378045400",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045400_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045410",
+      "label": "技能反哺",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045410"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378045410",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045410_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
+        ]
+      }
+    },
+    {
+      "id": "origin-rune:1378045420",
+      "label": "技能反哺Ⅱ",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378045420"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。",
+      "evidence": {
+        "passiveSkillId": "1378045420",
+        "basis": [
+          "NZM/Content/DataTables/MGE/MGEPassiveMainTable.json#1378045420_1",
+          "NZM/Content/Attributes/AutoGenerate/numerical_modifier_config.json#无同身份行"
         ]
       }
     }

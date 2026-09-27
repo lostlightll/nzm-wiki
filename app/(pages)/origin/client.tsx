@@ -4,6 +4,8 @@ import { ChevronDown, RotateCcw, Search, X } from "lucide-react";
 import { useDeferredValue, useEffect, useId, useMemo, useRef, useState } from "react";
 import { HoverPreviewPanel } from "@/components/HoverPreviewPanel";
 import { renderInlineDescription } from "@/components/InlineDescription";
+import { MultiplierBadges } from "@/components/MultiplierBadges";
+import { getProviderRelationsForSource } from "@/lib/multiplier-data";
 import { filterOriginRunes, resolveOriginRuneSelection,
   type OriginRune, type OriginRuneCatalog, type OriginRuneCategory,
   type OriginRuneQuality } from "@/lib/origin-runes";
@@ -55,6 +57,7 @@ function RuneDetails({ rune, tagNames, onClose }: {
   onClose?: () => void;
 }) {
   const quality = qualityStyles[rune.quality];
+  const relations = getProviderRelationsForSource({ type: "origin-rune", id: rune.id });
   return (
     <div className="min-w-0 bg-[#15171b]">
       <div className="flex min-h-12 items-center justify-between gap-2 border-b border-white/10 px-4 py-2">
@@ -77,6 +80,9 @@ function RuneDetails({ rune, tagNames, onClose }: {
           <RuneDescription description={rune.description} />
         </div>
       </div>
+      {relations.length > 0 && <div className="border-t border-white/10 px-4 py-3">
+        <MultiplierBadges relations={relations} variant="catalog-compact" />
+      </div>}
     </div>
   );
 }
@@ -90,9 +96,10 @@ function RuneCard({ rune, tagNames, onOpenMobile }: {
   const tooltipId = useId();
   const [isOpen, setIsOpen] = useState(false);
   const quality = qualityStyles[rune.quality];
+  const relations = getProviderRelationsForSource({ type: "origin-rune", id: rune.id });
 
   const showPreview = () => setIsOpen(true);
-  return <div className="min-w-0 transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+  return <div id={`rune-${rune.id}`} className="relative min-w-0 scroll-mt-24 transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
     <button ref={buttonRef} type="button" aria-describedby={isOpen ? tooltipId : undefined}
       onMouseEnter={() => { if (window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1024px)").matches) showPreview(); }}
       onMouseLeave={() => setIsOpen(false)}
@@ -103,17 +110,19 @@ function RuneCard({ rune, tagNames, onOpenMobile }: {
         if (window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1024px)").matches) showPreview();
         else { setIsOpen(false); onOpenMobile(rune, event.currentTarget); }
       }}
-      className={`group relative flex h-full w-full min-w-0 touch-manipulation flex-col items-center overflow-hidden rounded-lg border-2 p-3 pb-4 text-left transition-colors duration-200 outline-none hover:brightness-110 focus-visible:[&_h3]:underline focus-visible:[&_h3]:decoration-2 focus-visible:[&_h3]:underline-offset-4 ${quality.border} ${quality.bg}`}>
+      className={`group relative flex h-full w-full min-w-0 touch-manipulation flex-col items-center overflow-hidden rounded-lg border-2 px-2 pb-3 pt-16 text-left transition-colors duration-200 outline-none hover:brightness-110 focus-visible:[&_h3]:underline focus-visible:[&_h3]:decoration-2 focus-visible:[&_h3]:underline-offset-4 ${quality.border} ${quality.bg}`}>
       <span className="sr-only">{quality.label}品质，{rune.category === "special" ? "特殊强化" : "普通强化"}</span>
-      <span className="pointer-events-none absolute inset-x-0.5 top-0.5 flex flex-wrap gap-0.5">
+      <RuneIcon path={rune.icon} quality={rune.quality} />
+      <h3 className="mt-2 w-full break-words text-center text-sm font-medium leading-tight text-white">{rune.name}</h3>
+      <span className="mt-2 flex flex-wrap justify-center gap-0.5">
         {rune.tagIds.map((id) => <span key={id}
           className="rounded border border-white/30 bg-zinc-700 px-[3px] py-px text-[10px] font-medium leading-3 text-zinc-200">
           {tagNames.get(id)}
         </span>)}
       </span>
-      <RuneIcon path={rune.icon} quality={rune.quality} />
-      <h3 className="mt-2 w-full break-words text-center text-sm font-medium leading-tight text-white">{rune.name}</h3>
     </button>
+    {relations.length > 0 && <MultiplierBadges relations={relations} variant="catalog-compact"
+      className="absolute right-1 top-1 z-10 max-w-[calc(100%-0.5rem)] justify-end [&_a]:px-1 [&_a]:text-[10px] sm:[&_a]:px-2 sm:[&_a]:text-[11px]" />}
     {isOpen && <HoverPreviewPanel anchorRef={buttonRef} id={tooltipId}>
       <RuneDetails rune={rune} tagNames={tagNames} />
     </HoverPreviewPanel>}
@@ -145,6 +154,18 @@ export default function OriginRunesClient({ catalog }: { catalog: OriginRuneCata
     else if (dialog?.open) dialog.close();
     return () => { if (dialog?.open) dialog.close(); };
   }, [dialogOpen]);
+
+  useEffect(() => {
+    const focusLinkedRune = () => {
+      const id = window.location.hash.match(/^#rune-(\d+)$/)?.[1];
+      if (!id || !catalog.runes.some((rune) => rune.id === id)) return;
+      setSelectedId(id);
+      window.requestAnimationFrame(() => document.getElementById(`rune-${id}`)?.scrollIntoView({ block: "center" }));
+    };
+    focusLinkedRune();
+    window.addEventListener("hashchange", focusLinkedRune);
+    return () => window.removeEventListener("hashchange", focusLinkedRune);
+  }, [catalog.runes]);
 
   const resetFilters = () => {
     setQuery(""); setCategories(new Set()); setQualities(new Set()); setTagIds(new Set());

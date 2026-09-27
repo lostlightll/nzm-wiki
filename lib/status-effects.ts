@@ -304,6 +304,8 @@ function sourceTypeLabel(type: StatusEffectRelatedContentType): string {
       return "插件";
     case "overlimit-card":
       return "超限卡片";
+    case "origin-rune":
+      return "原点强化";
     case "season-talent":
       return "赛季天赋";
     case "weapon":
@@ -405,6 +407,7 @@ function pickSameMultiplierContent(
   const typeOrder: readonly StatusEffectRelatedContentType[] = [
     "perk",
     "overlimit-card",
+    "origin-rune",
     "season-talent",
     "weapon",
     "overlimit-bond",
