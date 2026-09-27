@@ -743,6 +743,13 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
   items.push({ title: "强化图鉴", slug: "origin/runes", path: "/origin#runes",
     category: "原点图鉴", keywords: originKeywords, pinyin: [...originPinyin] });
 
+  const talentKeywords = ["原点猎场", "原点天赋", "天赋树", "战斗", "幸运", "技巧", "终极天赋", "强化预载"];
+  items.push({ title: "原点天赋", slug: "origin/talents", path: "/origin#talents",
+    category: "原点图鉴", keywords: talentKeywords,
+    pinyin: [...new Set(talentKeywords.flatMap((text) =>
+      (["pinyin", "first"] as const).map((pattern) =>
+        pinyin(text, { pattern, toneType: "none", type: "array" }).join("").toLowerCase())))] });
+
   items.push(...getAllOverlimitCards().map(card => createOverlimitCardSearchItem(card)));
   const overlimitPreview = getOverlimitPreviewCatalog();
   if (overlimitPreview) items.push(...createOverlimitPreviewSearchItems(overlimitPreview));
