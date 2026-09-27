@@ -20,14 +20,22 @@ test("the committed rune projection preserves in-game descriptions for every sou
   assert.equal(new Set(projected.runes.map((rune) => rune.icon)).size, 37);
   for (const rune of projected.runes) {
     const source = (rune.category === "special" ? special : normal)[rune.id].Description;
-    assert.equal(rune.description, (source.LocalizedString || source.SourceString).trim());
+    assert.match(rune.description, /\*\*[^*\n]+\*\*/);
+    assert.equal(rune.description.replace(/\*\*([^*\n]+)\*\*/g, "$1"), (source.LocalizedString || source.SourceString).trim());
   }
   assert.ok(projected.runes.every((rune) => rune.tagIds.every((id) => projected.tags.some((tag) => tag.id === id))));
   assert.ok(projected.runes.every((rune) => fs.existsSync(path.join(process.cwd(), "public", rune.icon))));
-  assert.equal(projected.runes.find((rune) => rune.name === "聚金增伤")?.description,
+  assert.equal(projected.runes.find((rune) => rune.name === "聚金增伤")?.description.replace(/\*\*/g, ""),
     "攻击力受拥有的金币影响，每拥有200金币提升2.5%攻击力。");
   assert.throws(() => projectOriginRunes(special, { ...normal, "1378042010": special["1378042010"] }, tags), /collision/);
   const invalid = structuredClone(special);
   invalid["1378042010"].Tag.Values = [999];
   assert.throws(() => projectOriginRunes(invalid, normal, tags), /Invalid tags/);
+});
+
+test("source description changes require a manual highlight review", () => {
+  const special = rows("RoguelikeSpecialRuneTable");
+  special["1378042010"].Description.LocalizedString += "已更新";
+  assert.throws(() => projectOriginRunes(special, rows("RoguelikeRuneTable"), rows("RoguelikeRuneTagTable")),
+    /Rune highlights must preserve the source description: 1378042010/);
 });

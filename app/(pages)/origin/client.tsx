@@ -3,6 +3,7 @@
 import { ChevronDown, RotateCcw, Search, X } from "lucide-react";
 import { useDeferredValue, useEffect, useId, useMemo, useRef, useState } from "react";
 import { HoverPreviewPanel } from "@/components/HoverPreviewPanel";
+import { renderInlineDescription } from "@/components/InlineDescription";
 import { filterOriginRunes, resolveOriginRuneSelection,
   type OriginRune, type OriginRuneCatalog, type OriginRuneCategory,
   type OriginRuneQuality } from "@/lib/origin-runes";
@@ -26,9 +27,9 @@ function RuneIcon({ path, quality }: { path: string; quality: OriginRuneQuality 
 }
 
 function RuneDescription({ description }: { description: string }) {
-  return <span className="block space-y-1.5">
+  return <span className="block space-y-1.5 [&_strong]:font-semibold [&_strong]:text-[#e2bd75]">
     {description.match(/[^。]+。?|。/g)?.map((sentence, index) =>
-      <span key={index} className="block whitespace-pre-line">{sentence}</span>)}
+      <span key={index} className="block whitespace-pre-line">{renderInlineDescription(sentence)}</span>)}
   </span>;
 }
 
