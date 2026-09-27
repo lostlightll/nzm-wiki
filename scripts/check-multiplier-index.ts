@@ -10,6 +10,7 @@ import grapplingHook from "@/data/season-talents/s3/grappling-hook.json";
 import ironFist from "@/data/season-talents/s3/iron-fist.json";
 import zero from "@/data/season-talents/s3/zero.json";
 import huntingSpeedrun from "@/data/guides/hunting-speedrun.json";
+import originRunes from "@/data/origin/runes.json";
 import { getAllOverlimitCards } from "@/lib/overlimit-cards";
 import {
   MODIFIER_TYPES,
@@ -88,6 +89,9 @@ function runtimeSourcesForProvider(provider: (typeof MULTIPLIER_PROVIDERS)[numbe
     case "overlimit-card":
       if (getOverlimitLink(source.id, source.season)) result.push(source);
       break;
+    case "origin-rune":
+      result.push(source);
+      break;
     case "season-talent":
     case "post":
       result.push(source);
@@ -141,6 +145,12 @@ for (const provider of MULTIPLIER_PROVIDERS) {
     case "overlimit-card":
       if (provider.id !== `overlimit-card:${source.season ? `${source.season}:` : ""}${source.id}`) errors.push(`${provider.id} 的超限来源身份不匹配`);
       break;
+    case "origin-rune":
+      if (provider.id !== `origin-rune:${source.id}` ||
+        !originRunes.runes.some((rune) => rune.id === source.id)) {
+        errors.push(`${provider.id} 的原点强化来源身份不匹配`);
+      }
+      break;
     case "post":
       requireFile(`data/posts/${source.slug}.mdx`, provider.id);
       break;
@@ -183,6 +193,12 @@ for (const provider of MULTIPLIER_PROVIDERS) {
 
 for (const exclusion of MULTIPLIER_PROVIDER_EXCLUSIONS) {
   if (!exclusion.reason.trim()) errors.push(`${exclusion.id} 缺少排除理由`);
+}
+
+for (const rune of originRunes.runes) {
+  if (!coveredIds.has(`origin-rune:${rune.id}`)) {
+    errors.push(`原点强化缺少来源审计：${rune.id} ${rune.name}`);
+  }
 }
 
 const perkCandidates = new Map<string, string>();

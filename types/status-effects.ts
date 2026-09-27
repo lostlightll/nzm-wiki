@@ -90,6 +90,7 @@ export interface StatusEffectMultiplierRelation {
 export type StatusEffectRelatedContentType =
   | "perk"
   | "overlimit-card"
+  | "origin-rune"
   | "season-talent"
   | "weapon"
   | "overlimit-bond"
