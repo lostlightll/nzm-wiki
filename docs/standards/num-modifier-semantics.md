@@ -64,7 +64,7 @@ level: 1
 - 页面数值：`+600%`；
 - 公式因子：`×7`。
 
-这里的“独立相乘”描述结算方式，不等于项目中名为 `independent-amplification` 的“独立增幅”。后者当前专指 `GPAttributeSetAttack.Attack`，两者不得合并。
+这里的“独立相乘”描述结算方式，不等于项目中名为 `independent-amplification` 的“攻击力增幅”。后者当前专指 `GPAttributeSetAttack.Attack`，两者不得合并。
 
 ## 消费规则
 

@@ -81,7 +81,7 @@ S1 人工复核的精确技能 Token 映射由 `s1ReviewedApplications()` 登记
 徽标只显示规范乘区名，例如：
 
 - 游戏模式乘区
-- 独立增幅
+- 攻击力增幅
 - 大稀释乘区
 - 元素乘区
 - 易伤乘区
@@ -89,7 +89,7 @@ S1 人工复核的精确技能 Token 映射由 `s1ReviewedApplications()` 登记
 
 `WeaponDamageRatio`、`WeaponHitDamageRatio`、`CloseRangeDamageRatio` 等只是大稀释乘区内的增伤类型，不得展示成“武器乘区”“武器通道乘区”或“近距离乘区”。同一伤害来源命中多个同乘区通道时，界面合并为一个乘区徽标，通道名只放在提示和精确筛选中。
 
-`GPAttributeSetAttack.Attack` 归入“独立增幅”，只用于来源索引和来源徽标，不进入 Part 1 公式或伤害来源适用矩阵。
+`GPAttributeSetAttack.Attack` 的规范乘区名为“攻击力增幅”（内部 ID 保留 `independent-amplification`），只用于来源索引和来源徽标，不进入 Part 1 公式或伤害来源适用矩阵。普通商店的猎场攻击力归入“游戏模式乘区”，不得仅凭文案中的“攻击力”将其归入此项。
 
 ### 会心乘区
 
@@ -99,7 +99,7 @@ S4 预览已核验四个来源：原生会心属性卡 `1317115001 / 1317116001 
 
 超限模式 28/29 经 `PlayerGameModeConfig.NumericalSettlementConstant=2`、`PlayerGameModeConstant.NumericalSettlementConstant_2` 选择 `NumericalSettlementConstantConfig_SuperRogue`，其 `SuperCriticalDamageRatio.Constant=2`。模式 26/27 的 Rogue 表同样为 2，不能声明会心机制只存在于超限。通用结算入口是 Native `NZNumericalStandardHitExecution`，现有导出未证明所有可暴击结算均允许会心；通道 `effects` 暂为空，不按 `enableCritical` 自动登记受益武器、召唤物或独立伤害。
 
-`独弹强化` 当前使用精确行 `lc:111031014_1_0` 的临时实测语义：`BaseValue=6` 表示该次独头弹伤害按 `1 + 6 = 7` 倍独立结算，页面显示增量 `+600%`。它继续归入 `correction`“单次修正”，不归入上述 `independent-amplification`“独立增幅”；该结论不得推广到其他 `GPModifierOp=B2` 行。临时规则和失效条件见 [`../standards/num-modifier-semantics.md`](../standards/num-modifier-semantics.md#独弹强化-b2-临时规则)。
+`独弹强化` 当前使用精确行 `lc:111031014_1_0` 的临时实测语义：`BaseValue=6` 表示该次独头弹伤害按 `1 + 6 = 7` 倍独立结算，页面显示增量 `+600%`。它继续归入 `correction`“单次修正”，不归入上述 `independent-amplification`“攻击力增幅”；该结论不得推广到其他 `GPModifierOp=B2` 行。临时规则和失效条件见 [`../standards/num-modifier-semantics.md`](../standards/num-modifier-semantics.md#独弹强化-b2-临时规则)。
 
 `DamageBearRatio` 的负值效果统一归入 `vulnerability`，显示名固定为“易伤乘区”；各单元素 `*DamageBearRatio` 与 `ElementDamageBearRatio` 的负值效果归入 `element-vulnerability`，显示名固定为“元素易伤乘区”。对应字段的正值是伤害减免，不进入增伤来源索引。旧 `factor=damage-reduction` 查询会兼容读取为 `vulnerability`。
 
