@@ -46,6 +46,10 @@ const originRuneSourceSchema = z.strictObject({
   type: z.literal("origin-rune"),
   id: nonEmptyString,
 });
+const originTalentSourceSchema = z.strictObject({
+  type: z.literal("origin-talent"),
+  id: nonEmptyString,
+});
 const postSourceSchema = z.strictObject({
   type: z.literal("post"),
   slug: nonEmptyString,
@@ -69,6 +73,7 @@ export const modifierProviderSourceSchema = z.discriminatedUnion("type", [
   overlimitBondSourceSchema,
   overlimitCardSourceSchema,
   originRuneSourceSchema,
+  originTalentSourceSchema,
   postSourceSchema,
   seasonTalentSourceSchema,
 ]);

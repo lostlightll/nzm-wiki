@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { MultiplierBadges } from "@/components/MultiplierBadges";
+import { getProviderRelationsForSource } from "@/lib/multiplier-data";
 import type { OriginTalent, OriginTalentCatalog, OriginTalentBranchId } from "@/lib/origin-talents";
 import { getAssetPath } from "@/lib/path";
 
@@ -53,19 +55,21 @@ function TalentTree({ talents, selectedId, onSelect }: {
     {talents.map((talent) => {
       const position = positions.get(talent.id)!;
       const selected = selectedId === talent.id;
-      return <button key={talent.id} type="button" aria-pressed={selected}
-        aria-label={`${talent.name}，最高 ${talent.maxLevel} 级，查看详情`}
-        onClick={() => onSelect(talent)}
-        style={{ left: `${position.x}%`, top: position.y }}
-        className={`group absolute flex w-[46%] -translate-x-1/2 touch-manipulation flex-col items-center text-center ${focusStyle}`}>
-        <span className="rounded-full bg-zinc-900 transition-colors group-hover:bg-zinc-800">
-          <TalentIcon talent={talent} selected={selected} />
-        </span>
-        <span className={`mt-1 max-w-full rounded bg-zinc-900 px-1 text-sm font-medium leading-5 ${selected ? branchStyles[talent.branchId].text : "text-zinc-200 group-hover:text-white"}`}>
-          {talent.name}
-        </span>
-        <span className="mt-1 rounded bg-zinc-900 px-1 text-xs leading-4 text-zinc-400">{talent.maxLevel} 级</span>
-      </button>;
+      return <div id={`talent-${talent.id}`} key={talent.id} style={{ left: `${position.x}%`, top: position.y }}
+        className="group absolute flex w-[46%] -translate-x-1/2 flex-col items-center text-center">
+        <button type="button" aria-pressed={selected}
+          aria-label={`${talent.name}，最高 ${talent.maxLevel} 级，查看详情`}
+          onClick={() => onSelect(talent)}
+          className={`flex w-full touch-manipulation flex-col items-center ${focusStyle}`}>
+          <span className="rounded-full bg-zinc-900 transition-colors group-hover:bg-zinc-800">
+            <TalentIcon talent={talent} selected={selected} />
+          </span>
+          <span className={`mt-1 max-w-full rounded bg-zinc-900 px-1 text-sm font-medium leading-5 ${selected ? branchStyles[talent.branchId].text : "text-zinc-200 group-hover:text-white"}`}>
+            {talent.name}
+          </span>
+          <span className="mt-1 rounded bg-zinc-900 px-1 text-xs leading-4 text-zinc-400">{talent.maxLevel} 级</span>
+        </button>
+      </div>;
     })}
   </div>;
 }
@@ -78,6 +82,8 @@ function TalentDetails({ talent, catalog }: {
   const selectedLevel = talent.levels.find((item) => item.level === level) ?? talent.levels[0];
   const style = branchStyles[talent.branchId];
   const branchName = catalog.branches.find((branch) => branch.id === talent.branchId)?.name ?? "终极";
+  const source = { type: "origin-talent" as const, id: talent.id };
+  const relations = getProviderRelationsForSource(source);
   return <div className={`rounded-lg border bg-zinc-900 p-4 sm:p-5 ${style.border}`}>
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.65fr)]">
       <div className="min-w-0">
@@ -87,6 +93,7 @@ function TalentDetails({ talent, catalog }: {
             <p className={`mb-1 text-xs ${style.text}`}>{branchName}天赋</p>
             <h3 className="break-words text-lg font-semibold text-white">{talent.name}</h3>
             <p className="mt-1 text-xs text-zinc-400">最高 {talent.maxLevel} 级</p>
+            <MultiplierBadges relations={relations} variant="catalog-inline" className="float-none mt-2 ml-0 justify-start" />
           </div>
         </div>
         <p className="mt-3 whitespace-pre-line break-words text-sm leading-7 text-zinc-200">{selectedLevel?.description ?? talent.description}</p>
@@ -149,14 +156,14 @@ export default function OriginTalentsClient({ catalog }: { catalog: OriginTalent
           </div>)}
         </div>
       </div>
-      {ultimate && <button type="button" onClick={() => selectTalent(ultimate)} aria-pressed={selectedId === ultimate.id}
+      {ultimate && <button id={`talent-${ultimate.id}`} type="button" onClick={() => selectTalent(ultimate)} aria-pressed={selectedId === ultimate.id}
         className={`flex min-h-24 w-full items-center gap-4 border-t border-zinc-700 px-4 py-3 text-left transition-colors sm:px-6 ${focusStyle} ${selectedId === ultimate.id ? "bg-orange-400/10" : "bg-zinc-800/40 hover:bg-zinc-800"}`}>
-        <TalentIcon talent={ultimate} selected={selectedId === ultimate.id} />
-        <span className="min-w-0 flex-1">
-          <span className="block text-xs text-orange-300">终极天赋</span>
-          <span className="mt-1 block break-words text-base font-semibold text-white">{ultimate.name}</span>
-        </span>
-        <span aria-hidden="true" className="text-xl text-zinc-400">›</span>
+          <TalentIcon talent={ultimate} selected={selectedId === ultimate.id} />
+          <span className="min-w-0 flex-1">
+            <span className="block text-xs text-orange-300">终极天赋</span>
+            <span className="mt-1 block break-words text-base font-semibold text-white">{ultimate.name}</span>
+          </span>
+          <span aria-hidden="true" className="text-xl text-zinc-400">›</span>
       </button>}
     </div>
     {selected && <TalentDetails key={selected.id} talent={selected} catalog={catalog} />}

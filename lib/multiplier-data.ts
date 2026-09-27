@@ -42,6 +42,7 @@ export type MultiplierSource =
   | { type: "card"; slug: string; anchor?: string }
   | { type: "overlimit-card"; id: string; season?: string; anchor?: string }
   | { type: "origin-rune"; id: string; anchor?: string }
+  | { type: "origin-talent"; id: string; anchor?: string }
   | {
       type: "overlimit-bond";
       season?: string;
@@ -220,7 +221,7 @@ type ProviderRegistrySource =
       cardId: number;
       slug: string;
     }
-  | Extract<MultiplierSource, { type: "overlimit-card" | "overlimit-bond" | "origin-rune" | "post" | "season-talent" }>;
+  | Extract<MultiplierSource, { type: "overlimit-card" | "overlimit-bond" | "origin-rune" | "origin-talent" | "post" | "season-talent" }>;
 
 export type MultiplierProviderExclusion = {
   id: string;
@@ -589,6 +590,8 @@ export function resolveMultiplierSourceHref(source: MultiplierSource): string {
       return withAnchor(`/overlimit/${source.season ? "preview/" : ""}${encodeURIComponent(source.id)}`, source.anchor);
     case "origin-rune":
       return `/origin#rune-${encodeURIComponent(source.id)}`;
+    case "origin-talent":
+      return `/origin#talent-${encodeURIComponent(source.id)}`;
     case "overlimit-bond":
       return withAnchor(`/overlimit${source.season ? "/preview" : ""}?module=bonds`, source.anchor);
     case "post":
@@ -629,6 +632,8 @@ function sourceIndexKey(source: MultiplierSource): string {
       return `overlimit-card:${source.season ? `${source.season}:` : ""}${source.id}`;
     case "origin-rune":
       return `origin-rune:${source.id}`;
+    case "origin-talent":
+      return `origin-talent:${source.id}`;
     case "overlimit-bond":
       return `overlimit-bond:${source.season ? `${source.season}:` : ""}${source.name}:${source.count}`;
     case "post":
@@ -707,6 +712,9 @@ function buildProviderRelations(): MultiplierRelation[] {
         if (getOverlimitLink(source.id, source.season)) placements.push({ ...source, anchor: "multiplier-provider" });
         break;
       case "origin-rune":
+        placements.push(source);
+        break;
+      case "origin-talent":
         placements.push(source);
         break;
       case "season-talent":

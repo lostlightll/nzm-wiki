@@ -9,6 +9,90 @@
   ],
   "providers": [
     {
+      "id": "origin-talent:10011",
+      "label": "火力全开",
+      "source": { "type": "origin-talent", "id": "10011" },
+      "reviewedFacetIds": ["all-damage"],
+      "evidence": {
+        "kind": "reviewed-override",
+        "basis": [
+          "data/origin/talents.json#talents.10011",
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/RoguelikeTechEffectConfig.json#TechSkill_Id=10011 -> AffixID=29001..29003",
+          "维护者审定：该天赋提供全伤害增幅，归入全伤害乘区；不从展示描述发布数值。"
+        ]
+      }
+    },
+    {
+      "id": "origin-talent:10032",
+      "label": "最终强化",
+      "source": { "type": "origin-talent", "id": "10032" },
+      "reviewedFacetIds": ["all-damage"],
+      "evidence": {
+        "kind": "reviewed-override",
+        "basis": [
+          "data/origin/talents.json#talents.10032",
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/RoguelikeTechEffectConfig.json#TechSkill_Id=10032 -> AffixID=29007..29009",
+          "维护者审定：该天赋提供全伤害增幅，归入全伤害乘区；不从展示描述发布数值。"
+        ]
+      }
+    },
+    {
+      "id": "origin-talent:10041",
+      "label": "暴击伤害",
+      "source": { "type": "origin-talent", "id": "10041" },
+      "reviewedFacetIds": ["critical"],
+      "evidence": {
+        "kind": "reviewed-override",
+        "basis": [
+          "data/origin/talents.json#talents.10041",
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/RoguelikeTechEffectConfig.json#TechSkill_Id=10041 -> AffixID=29010..29012",
+          "维护者审定：该天赋提供暴击伤害增幅，归入暴伤乘区；不从展示描述发布数值。"
+        ]
+      }
+    },
+    {
+      "id": "origin-talent:10042",
+      "label": "元素失控",
+      "source": { "type": "origin-talent", "id": "10042" },
+      "reviewedFacetIds": ["element"],
+      "evidence": {
+        "kind": "reviewed-override",
+        "basis": [
+          "data/origin/talents.json#talents.10042",
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/RoguelikeTechEffectConfig.json#TechSkill_Id=10042 -> AffixID=29013..29015",
+          "维护者审定：该天赋提供元素伤害增幅，归入元素乘区；不从展示描述发布数值。"
+        ]
+      }
+    },
+    {
+      "id": "origin-talent:10051",
+      "label": "精准打击",
+      "source": { "type": "origin-talent", "id": "10051" },
+      "reviewedFacetIds": ["weakness"],
+      "evidence": {
+        "kind": "reviewed-override",
+        "basis": [
+          "data/origin/talents.json#talents.10051",
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/RoguelikeTechEffectConfig.json#TechSkill_Id=10051 -> AffixID=29016..29018",
+          "维护者审定：该天赋提供弱点伤害增幅，归入弱点增伤乘区；不从展示描述发布数值。"
+        ]
+      }
+    },
+    {
+      "id": "origin-talent:10072",
+      "label": "濒死爆发",
+      "source": { "type": "origin-talent", "id": "10072" },
+      "reviewedFacetIds": ["all-damage"],
+      "evidence": {
+        "kind": "reviewed-override",
+        "basis": [
+          "data/origin/talents.json#talents.10072",
+          "refs/Exports/NZM/Content/DataTables/LuaDataTable/RoguelikeTechEffectConfig.json#TechSkill_Id=10072 -> AffixID=29022..29024",
+          "维护者审定：该天赋在低生命条件下提供全伤害增幅，归入全伤害乘区；不从展示描述发布数值。"
+        ]
+      }
+    },
+    {
       "id": "weapon:极地夜曲:冷凝超载",
       "label": "极地夜曲·冷凝超载",
       "source": {

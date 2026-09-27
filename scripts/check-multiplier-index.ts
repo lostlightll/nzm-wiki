@@ -11,6 +11,7 @@ import ironFist from "@/data/season-talents/s3/iron-fist.json";
 import zero from "@/data/season-talents/s3/zero.json";
 import huntingSpeedrun from "@/data/guides/hunting-speedrun.json";
 import originRunes from "@/data/origin/runes.json";
+import originTalents from "@/data/origin/talents.json";
 import { getAllOverlimitCards } from "@/lib/overlimit-cards";
 import {
   MODIFIER_TYPES,
@@ -92,6 +93,9 @@ function runtimeSourcesForProvider(provider: (typeof MULTIPLIER_PROVIDERS)[numbe
     case "origin-rune":
       result.push(source);
       break;
+    case "origin-talent":
+      result.push(source);
+      break;
     case "season-talent":
     case "post":
       result.push(source);
@@ -149,6 +153,12 @@ for (const provider of MULTIPLIER_PROVIDERS) {
       if (provider.id !== `origin-rune:${source.id}` ||
         !originRunes.runes.some((rune) => rune.id === source.id)) {
         errors.push(`${provider.id} 的原点强化来源身份不匹配`);
+      }
+      break;
+    case "origin-talent":
+      if (provider.id !== `origin-talent:${source.id}` ||
+        !originTalents.talents.some((talent) => talent.id === source.id)) {
+        errors.push(`${provider.id} 的原点天赋来源身份不匹配`);
       }
       break;
     case "post":

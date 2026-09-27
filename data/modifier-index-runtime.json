@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "99eada11f2e596b5fd59318703a536ec5ebc2a4197eaa287f43c77f6916cd510",
+    "registrySha256": "8eab7db0ac2cc391cc96355b63fd7458af3f0e75f735333fcb87e82c39729857",
     "perkPreviewSha256": "2ea47ef5ff27b25970a168b43cfdf0e484a63dbb648051bf883f35bf61ddcf04",
     "s2EvidenceSha256": "a3f16097b34fc589f1322faa4f798b74bc82066dbd02bdcaad4fa0e4c240a0b2",
     "semanticsSha256": "579272d691b428b18d7f792ec6cbaeee54bd23c0d860b4710df03ed73f5c67ba",
@@ -966,6 +966,84 @@
     }
   ],
   "providers": [
+    {
+      "id": "origin-talent:10011",
+      "label": "火力全开",
+      "source": {
+        "type": "origin-talent",
+        "id": "10011"
+      },
+      "facetIds": [
+        "all-damage"
+      ],
+      "effects": [],
+      "reviewedOverride": true
+    },
+    {
+      "id": "origin-talent:10032",
+      "label": "最终强化",
+      "source": {
+        "type": "origin-talent",
+        "id": "10032"
+      },
+      "facetIds": [
+        "all-damage"
+      ],
+      "effects": [],
+      "reviewedOverride": true
+    },
+    {
+      "id": "origin-talent:10041",
+      "label": "暴击伤害",
+      "source": {
+        "type": "origin-talent",
+        "id": "10041"
+      },
+      "facetIds": [
+        "critical"
+      ],
+      "effects": [],
+      "reviewedOverride": true
+    },
+    {
+      "id": "origin-talent:10042",
+      "label": "元素失控",
+      "source": {
+        "type": "origin-talent",
+        "id": "10042"
+      },
+      "facetIds": [
+        "element"
+      ],
+      "effects": [],
+      "reviewedOverride": true
+    },
+    {
+      "id": "origin-talent:10051",
+      "label": "精准打击",
+      "source": {
+        "type": "origin-talent",
+        "id": "10051"
+      },
+      "facetIds": [
+        "weakness"
+      ],
+      "effects": [],
+      "reviewedOverride": true
+    },
+    {
+      "id": "origin-talent:10072",
+      "label": "濒死爆发",
+      "source": {
+        "type": "origin-talent",
+        "id": "10072"
+      },
+      "facetIds": [
+        "all-damage"
+      ],
+      "effects": [],
+      "reviewedOverride": true
+    },
     {
       "id": "weapon:极地夜曲:冷凝超载",
       "label": "极地夜曲·冷凝超载",

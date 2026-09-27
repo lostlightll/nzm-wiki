@@ -1,10 +1,76 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "11a239f68ef9c1dea3d50d68e67e86150b7d989435e022232b40af5af7457292",
+    "modifierIndexSha256": "031c80d82ce22bbffaf021396f3cc1472ce73fc184688477a6a4cc1ca03b53fa",
     "multiplierSchemaVersion": 12
   },
   "providers": [
+    {
+      "id": "origin-talent:10011",
+      "label": "火力全开",
+      "source": {
+        "type": "origin-talent",
+        "id": "10011"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-talent:10032",
+      "label": "最终强化",
+      "source": {
+        "type": "origin-talent",
+        "id": "10032"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-talent:10041",
+      "label": "暴击伤害",
+      "source": {
+        "type": "origin-talent",
+        "id": "10041"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-talent:10042",
+      "label": "元素失控",
+      "source": {
+        "type": "origin-talent",
+        "id": "10042"
+      },
+      "modifierTypeIds": [
+        "element"
+      ]
+    },
+    {
+      "id": "origin-talent:10051",
+      "label": "精准打击",
+      "source": {
+        "type": "origin-talent",
+        "id": "10051"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "origin-talent:10072",
+      "label": "濒死爆发",
+      "source": {
+        "type": "origin-talent",
+        "id": "10072"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
     {
       "id": "weapon:极地夜曲:冷凝超载",
       "label": "极地夜曲·冷凝超载",
