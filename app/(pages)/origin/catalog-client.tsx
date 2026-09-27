@@ -16,8 +16,8 @@ export default function OriginCatalogClient({ runes, talents }: {
   talents: OriginTalentCatalog;
 }) {
   const active = useSyncExternalStore(subscribe,
-    () => window.location.hash.startsWith("#rune") ? "runes" : "talents",
-    () => "talents");
+    () => window.location.hash.startsWith("#rune") ? "runes" : window.location.hash.startsWith("#talent") ? "talents" : "runes",
+    () => "runes");
 
   return <>
     <nav aria-label="原点图鉴模块" className="mb-6 flex flex-wrap items-center gap-2">
