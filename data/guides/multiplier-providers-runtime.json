@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "031c80d82ce22bbffaf021396f3cc1472ce73fc184688477a6a4cc1ca03b53fa",
+    "modifierIndexSha256": "5abbdb6a2fa1e8e6bb42d29f0bc46e6762730644b20df2b3bc0e60cd48bae6a2",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -24,7 +24,7 @@
         "id": "10032"
       },
       "modifierTypeIds": [
-        "all-damage"
+        "game-mode"
       ]
     },
     {

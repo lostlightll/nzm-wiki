@@ -26,13 +26,41 @@
       "id": "origin-talent:10032",
       "label": "最终强化",
       "source": { "type": "origin-talent", "id": "10032" },
-      "reviewedFacetIds": ["all-damage"],
+      "applications": [
+        {
+          "expression": {
+            "row": "lc:116000030_1_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:116000030_2_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        },
+        {
+          "expression": {
+            "row": "lc:116000030_3_0",
+            "field": "base"
+          },
+          "context": {
+            "recipient": "self"
+          }
+        }
+      ],
       "evidence": {
-        "kind": "reviewed-override",
+        "kind": "reviewed-chain",
         "basis": [
           "data/origin/talents.json#talents.10032",
           "refs/Exports/NZM/Content/DataTables/LuaDataTable/RoguelikeTechEffectConfig.json#TechSkill_Id=10032 -> AffixID=29007..29009",
-          "维护者审定：该天赋提供全伤害增幅，归入全伤害乘区；不从展示描述发布数值。"
+          "data/num-modifier-lock.json#rows.lc.116000030_1_0,116000030_2_0,116000030_3_0.raw：GPAttributeSetGiveDamageRatio.DamageRatio，B1，BaseValue=0.045/0.09/0.135。"
         ]
       }
     },

@@ -10,7 +10,7 @@ import {
 test("indexed origin talents have stable deep links and reverse relations", () => {
   const expected = new Map([
     ["10011", "all-damage"],
-    ["10032", "all-damage"],
+    ["10032", "game-mode"],
     ["10041", "critical"],
     ["10042", "element"],
     ["10051", "weakness"],

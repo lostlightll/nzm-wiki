@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "8eab7db0ac2cc391cc96355b63fd7458af3f0e75f735333fcb87e82c39729857",
+    "registrySha256": "07989cf9b502f998b86c468135f5392bd14298041c3be81e3a03b9d6e183f800",
     "perkPreviewSha256": "2ea47ef5ff27b25970a168b43cfdf0e484a63dbb648051bf883f35bf61ddcf04",
     "s2EvidenceSha256": "a3f16097b34fc589f1322faa4f798b74bc82066dbd02bdcaad4fa0e4c240a0b2",
     "semanticsSha256": "579272d691b428b18d7f792ec6cbaeee54bd23c0d860b4710df03ed73f5c67ba",
@@ -987,10 +987,44 @@
         "id": "10032"
       },
       "facetIds": [
-        "all-damage"
+        "game-mode"
       ],
-      "effects": [],
-      "reviewedOverride": true
+      "effects": [
+        {
+          "row": "lc:116000030_1_0",
+          "attributeTypeId": "game-mode-damage",
+          "attributeLabel": "全伤害（尽量别用，连乘）",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "game-mode"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:116000030_2_0",
+          "attributeTypeId": "game-mode-damage",
+          "attributeLabel": "全伤害（尽量别用，连乘）",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "game-mode"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:116000030_3_0",
+          "attributeTypeId": "game-mode-damage",
+          "attributeLabel": "全伤害（尽量别用，连乘）",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "game-mode"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     },
     {
       "id": "origin-talent:10041",
