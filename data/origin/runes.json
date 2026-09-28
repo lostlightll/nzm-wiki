@@ -196,7 +196,7 @@
     {
       "id": "1378042160",
       "name": "免耗聚金",
-      "description": "每次消耗金币的时候，**25%**概率不扣除金币。",
+      "description": "每次消耗金币的时候，**50%**概率不扣除金币。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_02.webp",
