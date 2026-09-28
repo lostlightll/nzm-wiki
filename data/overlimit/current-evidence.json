@@ -5015,7 +5015,7 @@
       "configId": "1316167001",
       "classFile": "Abilities/Build/CBT3/Perk04/MGE_1316167001.json",
       "sourceDescription": "武器变为独头弹，但伤害提升600%。",
-      "publicationDescription": "将武器改为独头弹，提升伤害。",
+      "publicationDescription": "武器变为独头弹，但伤害提高600%，且射程增加50%。",
       "selected": [
         {
           "expression": {

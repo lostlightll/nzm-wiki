@@ -5752,7 +5752,7 @@
       "id": "20703040254",
       "perkItemId": "20703040254",
       "name": "独弹强化",
-      "description": "将武器改为独头弹，提升伤害。官方公告：升级为橙卡，移除仅霰弹枪可刷到的限制，抽取权重不变。",
+      "description": "武器变为独头弹，但伤害提高600%，且射程增加50%。",
       "icon": "/icons/overlimit/cards/87fa4e7416ab6f7eeafa.webp",
       "quality": 5,
       "slot": 4,
