@@ -42,6 +42,7 @@ export type MultiplierSource =
   | { type: "card"; slug: string; anchor?: string }
   | { type: "overlimit-card"; id: string; season?: string; anchor?: string }
   | { type: "origin-rune"; id: string; anchor?: string }
+  | { type: "origin-affix"; id: string; anchor?: string }
   | { type: "origin-talent"; id: string; anchor?: string }
   | {
       type: "overlimit-bond";
@@ -221,7 +222,7 @@ type ProviderRegistrySource =
       cardId: number;
       slug: string;
     }
-  | Extract<MultiplierSource, { type: "overlimit-card" | "overlimit-bond" | "origin-rune" | "origin-talent" | "post" | "season-talent" }>;
+  | Extract<MultiplierSource, { type: "overlimit-card" | "overlimit-bond" | "origin-rune" | "origin-affix" | "origin-talent" | "post" | "season-talent" }>;
 
 export type MultiplierProviderExclusion = {
   id: string;
@@ -590,6 +591,8 @@ export function resolveMultiplierSourceHref(source: MultiplierSource): string {
       return withAnchor(`/overlimit/${source.season ? "preview/" : ""}${encodeURIComponent(source.id)}`, source.anchor);
     case "origin-rune":
       return `/origin#rune-${encodeURIComponent(source.id)}`;
+    case "origin-affix":
+      return `/origin#affix-${encodeURIComponent(source.id)}`;
     case "origin-talent":
       return `/origin#talent-${encodeURIComponent(source.id)}`;
     case "overlimit-bond":
@@ -632,6 +635,8 @@ function sourceIndexKey(source: MultiplierSource): string {
       return `overlimit-card:${source.season ? `${source.season}:` : ""}${source.id}`;
     case "origin-rune":
       return `origin-rune:${source.id}`;
+    case "origin-affix":
+      return `origin-affix:${source.id}`;
     case "origin-talent":
       return `origin-talent:${source.id}`;
     case "overlimit-bond":
@@ -712,6 +717,7 @@ function buildProviderRelations(): MultiplierRelation[] {
         if (getOverlimitLink(source.id, source.season)) placements.push({ ...source, anchor: "multiplier-provider" });
         break;
       case "origin-rune":
+      case "origin-affix":
         placements.push(source);
         break;
       case "origin-talent":

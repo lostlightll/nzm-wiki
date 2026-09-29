@@ -18,6 +18,7 @@ Settlement / 元素 / 许可标记 -> 伤害画像 -> 可用增伤类型 -> 乘�
 - 插件以 ItemID 为稳定身份；同 ID 超限卡片由运行时自动展开第二个页面落点。
 - 猎场竞速卡片以 CardID 为稳定身份，页面来源使用卡片 slug；只有 `CardID → Card_Function → MGE/Buff → GPModifier → Numerical AttributeName` 完整连通时才登记。
 - 原点猎场强化以 RuneId 为稳定身份，索引来源为 `origin-rune:<RuneId>`；一级 Numerical 属性行按 RuneId 同编号段或直接 RuneId 查找，已核实的跨来源编号冲突使用精确 ModifierID 约束，再由语义 Resolver 派生分面。页面只展示有已索引分面的卡片，其余卡片登记排除项。此索引只确认属性归类，不推断蓝图的实际触发分支、叠层公式或受益对象。
+- 原点武器词条以 AffixID 为稳定身份，索引来源为 `origin-affix:<AffixID>`。正式服没有 AffixID 到被动的映射表，`scripts/origin/project-affix-multipliers.ts` 按 `AffixWeaponAffixDisplayConfig` 与 `1378040xxx` 被动段的序列及名称审定映射，缺口逐项列明；其后与原点强化共用 `scripts/origin/passive-multiplier.ts` 的一级 Numerical 查找规则。无唯一被动的「元素附魔」与武器专属词条（10094 起）登记 `unverified-evidence`。
 - 攻击等级覆写型卡片必须额外保存来源 MGE、覆写等级、攻击等级被动与下游 MGE；审计需确认该等级最终命中同等级 Numerical 行，不能把 `SetAttackLevelOverride` 当作证据链终点。
 - `refs/` 只用于人工核验证据，构建和页面运行时不得读取。
 - S0/S1 五条已确认分支按 Basic → 对应等级的 Passive → MGEConfig/MGE → Numerical 审核，不能直接以技能 ID 查同名 Config。`scripts/s0s1-season-talents/providers.ts` 从 `valueReview.applications` 和独立审计的 `provider-supplements.ts` 生成来源；后者核验 `audit.json.valueEvidence` 中机械威能三级各自的 Config 与 Modifier 身份，以 `unknown` 接收者登记全伤害属性，不推断运行时范围。未连通的节点登记 `unverified-evidence`，不据名称或描述 Token 推断乘区。当前数值不等同于历史实测值。
@@ -65,6 +66,8 @@ S1 人工复核的精确技能 Token 映射由 `s1ReviewedApplications()` 登记
 - `data/modifier-index-runtime.json` 是通用轻量投影；`data/guides/multiplier-providers-runtime.json` 从其中筛选伤害分面生成。客户端不导入完整 Lock。
 
 原点强化的来源条目由 `pnpm origin-runes:multiplier:project` 从当前 `runes.json`、正式服 `MGEPassiveMainTable` 和已提交的 Num Lock 重建；原始 Numerical 表与 Lock 的一致性用 `pnpm num-modifier:audit` 核对。已核实的跨来源编号冲突使用精确 ModifierID 约束：「一击秒杀」保留 `130044210`，「极限单发」保留 `130045111`；「蓄势待发」保留 `130044380`，「直击榴弹」保留 `130044410`，「换弹增强」保留 `130045120`。「暴击飞弹」同编号段的 `130044311` 属于超限「暴力切换」，不登记增伤来源。`pnpm origin-runes:multiplier:check` 只审计，不写入。站点运行时与常规构建仍只读取已提交的来源及投影，不访问 `refs/`。来源数据更新后依次运行 `pnpm num-modifier:project` 和 `pnpm num-skills:project`。无同身份增伤行的卡片保留 `unverified-evidence`，不得按描述推定乘区。
+
+原点词条的来源条目由 `pnpm origin-affixes:multiplier:project` 重建，`pnpm origin-affixes:multiplier:check` 只审计。两个脚本都读取 `MGEPassiveMainTable`，worktree 中用 `NZM_REFS` 指向主仓库的 `refs/`。同编号段的跨来源行用精确 ModifierID 约束：「毒皇·腐蚀」只保留 `130040030`（`130040031`～`130040039` 属 S5 返厂），「火神炎帝」只保留 `130040040`，霰化改装Ⅰ/Ⅱ 只保留 `130040340`、`130040350`。「攻击加成」四档的 `WeaponHit/ExplodeDamageRatio` 使用 B2，语义未建模，因此只由 B1 `DamageRatio` 归入游戏模式乘区。
 
 超限卡片的具体增伤值不写入来源注册表。审定阶段可复用显式关联插件的 V2 `effect_values`，独立技能卡则登记自己的来源；最终结果保存到超限发布投影。两类数据职责如下：
 

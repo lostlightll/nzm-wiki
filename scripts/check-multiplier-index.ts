@@ -11,6 +11,7 @@ import ironFist from "@/data/season-talents/s3/iron-fist.json";
 import zero from "@/data/season-talents/s3/zero.json";
 import huntingSpeedrun from "@/data/guides/hunting-speedrun.json";
 import originRunes from "@/data/origin/runes.json";
+import originAffixes from "@/data/origin/affixes.json";
 import originTalents from "@/data/origin/talents.json";
 import { getAllOverlimitCards } from "@/lib/overlimit-cards";
 import {
@@ -91,6 +92,7 @@ function runtimeSourcesForProvider(provider: (typeof MULTIPLIER_PROVIDERS)[numbe
       if (getOverlimitLink(source.id, source.season)) result.push(source);
       break;
     case "origin-rune":
+    case "origin-affix":
       result.push(source);
       break;
     case "origin-talent":
@@ -155,6 +157,12 @@ for (const provider of MULTIPLIER_PROVIDERS) {
         errors.push(`${provider.id} 的原点强化来源身份不匹配`);
       }
       break;
+    case "origin-affix":
+      if (provider.id !== `origin-affix:${source.id}` ||
+        !originAffixes.affixes.some((affix) => affix.id === source.id)) {
+        errors.push(`${provider.id} 的原点词条来源身份不匹配`);
+      }
+      break;
     case "origin-talent":
       if (provider.id !== `origin-talent:${source.id}` ||
         !originTalents.talents.some((talent) => talent.id === source.id)) {
@@ -208,6 +216,12 @@ for (const exclusion of MULTIPLIER_PROVIDER_EXCLUSIONS) {
 for (const rune of originRunes.runes) {
   if (!coveredIds.has(`origin-rune:${rune.id}`)) {
     errors.push(`原点强化缺少来源审计：${rune.id} ${rune.name}`);
+  }
+}
+
+for (const affix of originAffixes.affixes) {
+  if (!coveredIds.has(`origin-affix:${affix.id}`)) {
+    errors.push(`原点词条缺少来源审计：${affix.id} ${affix.name}`);
   }
 }
 

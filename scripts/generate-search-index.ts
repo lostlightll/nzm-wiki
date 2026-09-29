@@ -743,6 +743,13 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
   items.push({ title: "强化图鉴", slug: "origin/runes", path: "/origin#runes",
     category: "原点图鉴", keywords: originKeywords, pinyin: [...originPinyin] });
 
+  const affixKeywords = ["原点猎场", "原点图鉴", "词条", "词条图鉴", "武器词条", "特殊词条", "普通词条"];
+  items.push({ title: "词条图鉴", slug: "origin/affixes", path: "/origin#affixes",
+    category: "原点图鉴", keywords: affixKeywords,
+    pinyin: [...new Set(affixKeywords.flatMap((text) =>
+      (["pinyin", "first"] as const).map((pattern) =>
+        pinyin(text, { pattern, toneType: "none", type: "array" }).join("").toLowerCase())))] });
+
   const talentKeywords = ["原点猎场", "原点天赋", "天赋树", "战斗", "幸运", "技巧", "终极天赋", "强化预载"];
   items.push({ title: "原点天赋", slug: "origin/talents", path: "/origin#talents",
     category: "原点图鉴", keywords: talentKeywords,

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "5abbdb6a2fa1e8e6bb42d29f0bc46e6762730644b20df2b3bc0e60cd48bae6a2",
+    "modifierIndexSha256": "8f5b7afb159c87ef816cd18dbabbc355df6c296dabe72851505d5538b321ebb6",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -6366,6 +6366,408 @@
       "modifierTypeIds": [
         "weapon-hit-damage",
         "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10003",
+      "label": "毒皇·腐蚀",
+      "source": {
+        "type": "origin-affix",
+        "id": "10003"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10004",
+      "label": "火神炎帝",
+      "source": {
+        "type": "origin-affix",
+        "id": "10004"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10019",
+      "label": "振弦·双暴",
+      "source": {
+        "type": "origin-affix",
+        "id": "10019"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-affix:10024",
+      "label": "刺影·隐身",
+      "source": {
+        "type": "origin-affix",
+        "id": "10024"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10035",
+      "label": "射程改造",
+      "source": {
+        "type": "origin-affix",
+        "id": "10035"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10036",
+      "label": "变长魔术",
+      "source": {
+        "type": "origin-affix",
+        "id": "10036"
+      },
+      "modifierTypeIds": [
+        "long-range-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10037",
+      "label": "贴身压制",
+      "source": {
+        "type": "origin-affix",
+        "id": "10037"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10038",
+      "label": "远端狙杀",
+      "source": {
+        "type": "origin-affix",
+        "id": "10038"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10039",
+      "label": "弹尽全力",
+      "source": {
+        "type": "origin-affix",
+        "id": "10039"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10040",
+      "label": "先发制人",
+      "source": {
+        "type": "origin-affix",
+        "id": "10040"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10041",
+      "label": "空仓爆发",
+      "source": {
+        "type": "origin-affix",
+        "id": "10041"
+      },
+      "modifierTypeIds": [
+        "weapon-hit-damage",
+        "weapon-explode-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10042",
+      "label": "越射越痛",
+      "source": {
+        "type": "origin-affix",
+        "id": "10042"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10043",
+      "label": "过热增幅",
+      "source": {
+        "type": "origin-affix",
+        "id": "10043"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10044",
+      "label": "弹链增幅",
+      "source": {
+        "type": "origin-affix",
+        "id": "10044"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10045",
+      "label": "游击射击",
+      "source": {
+        "type": "origin-affix",
+        "id": "10045"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10046",
+      "label": "架枪稳压",
+      "source": {
+        "type": "origin-affix",
+        "id": "10046"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10051",
+      "label": "标记猎杀",
+      "source": {
+        "type": "origin-affix",
+        "id": "10051"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10058",
+      "label": "暴伤碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10058"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-affix:10059",
+      "label": "技战碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10059"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10060",
+      "label": "全伤碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10060"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10061",
+      "label": "武器碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10061"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10067",
+      "label": "弱点碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10067"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "origin-affix:10069",
+      "label": "暴伤碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10069"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-affix:10070",
+      "label": "技战碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10070"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10071",
+      "label": "全伤碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10071"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10072",
+      "label": "武器碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10072"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10078",
+      "label": "弱点碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10078"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "origin-affix:10080",
+      "label": "暴伤碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10080"
+      },
+      "modifierTypeIds": [
+        "critical"
+      ]
+    },
+    {
+      "id": "origin-affix:10081",
+      "label": "技战碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10081"
+      },
+      "modifierTypeIds": [
+        "weapon-skill-damage",
+        "skill-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10082",
+      "label": "全伤碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10082"
+      },
+      "modifierTypeIds": [
+        "all-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10083",
+      "label": "武器碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10083"
+      },
+      "modifierTypeIds": [
+        "weapon-damage"
+      ]
+    },
+    {
+      "id": "origin-affix:10089",
+      "label": "弱点碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10089"
+      },
+      "modifierTypeIds": [
+        "weakness"
+      ]
+    },
+    {
+      "id": "origin-affix:10090",
+      "label": "攻击加成",
+      "source": {
+        "type": "origin-affix",
+        "id": "10090"
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "origin-affix:10091",
+      "label": "攻击加成Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10091"
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "origin-affix:10092",
+      "label": "攻击加成Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10092"
+      },
+      "modifierTypeIds": [
+        "game-mode"
+      ]
+    },
+    {
+      "id": "origin-affix:10093",
+      "label": "攻击加成Ⅳ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10093"
+      },
+      "modifierTypeIds": [
+        "game-mode"
       ]
     }
   ],
@@ -17127,6 +17529,726 @@
       },
       "reasonCode": "unverified-evidence",
       "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10001",
+      "label": "毒皇·毒池",
+      "source": {
+        "type": "origin-affix",
+        "id": "10001"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10002",
+      "label": "龙神·连发",
+      "source": {
+        "type": "origin-affix",
+        "id": "10002"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10005",
+      "label": "冥河·制导",
+      "source": {
+        "type": "origin-affix",
+        "id": "10005"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10006",
+      "label": "纯白·狂热",
+      "source": {
+        "type": "origin-affix",
+        "id": "10006"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10007",
+      "label": "雷霆999·电链",
+      "source": {
+        "type": "origin-affix",
+        "id": "10007"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10008",
+      "label": "雷霆999·弹夹",
+      "source": {
+        "type": "origin-affix",
+        "id": "10008"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10009",
+      "label": "蝎王·无衰",
+      "source": {
+        "type": "origin-affix",
+        "id": "10009"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10010",
+      "label": "胜利誓约·弹射",
+      "source": {
+        "type": "origin-affix",
+        "id": "10010"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10011",
+      "label": "Z型步枪·瞄准",
+      "source": {
+        "type": "origin-affix",
+        "id": "10011"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10012",
+      "label": "死神猎手·穿透",
+      "source": {
+        "type": "origin-affix",
+        "id": "10012"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10013",
+      "label": "死神猎手·反弹",
+      "source": {
+        "type": "origin-affix",
+        "id": "10013"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10014",
+      "label": "黄沙风暴·弹丸",
+      "source": {
+        "type": "origin-affix",
+        "id": "10014"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10015",
+      "label": "复合弓·备弹",
+      "source": {
+        "type": "origin-affix",
+        "id": "10015"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10016",
+      "label": "精绝兽神·榴弹",
+      "source": {
+        "type": "origin-affix",
+        "id": "10016"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10017",
+      "label": "秘法5连",
+      "source": {
+        "type": "origin-affix",
+        "id": "10017"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10018",
+      "label": "往日速递·跳弹",
+      "source": {
+        "type": "origin-affix",
+        "id": "10018"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10020",
+      "label": "飞刃·链接",
+      "source": {
+        "type": "origin-affix",
+        "id": "10020"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10021",
+      "label": "弹射飞刃",
+      "source": {
+        "type": "origin-affix",
+        "id": "10021"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10022",
+      "label": "鬼铜蚀·毒罐",
+      "source": {
+        "type": "origin-affix",
+        "id": "10022"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10023",
+      "label": "刺影·暴击",
+      "source": {
+        "type": "origin-affix",
+        "id": "10023"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10026",
+      "label": "星海狂想·无耗",
+      "source": {
+        "type": "origin-affix",
+        "id": "10026"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10027",
+      "label": "滑铲装填",
+      "source": {
+        "type": "origin-affix",
+        "id": "10027"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10028",
+      "label": "黑金仲裁",
+      "source": {
+        "type": "origin-affix",
+        "id": "10028"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10029",
+      "label": "夜影·刀波",
+      "source": {
+        "type": "origin-affix",
+        "id": "10029"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10030",
+      "label": "毒皇·爆炸",
+      "source": {
+        "type": "origin-affix",
+        "id": "10030"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10031",
+      "label": "霰化改装Ⅰ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10031"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10032",
+      "label": "霰化改装Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10032"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10033",
+      "label": "双生弹道Ⅰ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10033"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10034",
+      "label": "双生弹道Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10034"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10047",
+      "label": "元素附魔",
+      "source": {
+        "type": "origin-affix",
+        "id": "10047"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "元素附魔在正式服无唯一被动映射：候选 1378040500/040510/040530 为分元素附魔，1378042280 属原点强化「元素流」段，均无可索引的增伤行。"
+    },
+    {
+      "id": "origin-affix:10048",
+      "label": "反弹转化",
+      "source": {
+        "type": "origin-affix",
+        "id": "10048"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10049",
+      "label": "幸运一击",
+      "source": {
+        "type": "origin-affix",
+        "id": "10049"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10050",
+      "label": "猎首专精",
+      "source": {
+        "type": "origin-affix",
+        "id": "10050"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10052",
+      "label": "切换手法",
+      "source": {
+        "type": "origin-affix",
+        "id": "10052"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10053",
+      "label": "模式2强化",
+      "source": {
+        "type": "origin-affix",
+        "id": "10053"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10054",
+      "label": "模式弹道",
+      "source": {
+        "type": "origin-affix",
+        "id": "10054"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10055",
+      "label": "暴击弹药",
+      "source": {
+        "type": "origin-affix",
+        "id": "10055"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10056",
+      "label": "暴击弹药Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10056"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
+    },
+    {
+      "id": "origin-affix:10057",
+      "label": "暴击碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10057"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10062",
+      "label": "移速碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10062"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10063",
+      "label": "生命值碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10063"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10064",
+      "label": "护盾碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10064"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10065",
+      "label": "弹夹碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10065"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10066",
+      "label": "充能碎片",
+      "source": {
+        "type": "origin-affix",
+        "id": "10066"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10068",
+      "label": "暴击碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10068"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10073",
+      "label": "移速碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10073"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10074",
+      "label": "生命值碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10074"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10075",
+      "label": "护盾碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10075"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10076",
+      "label": "弹夹碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10076"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10077",
+      "label": "充能碎片Ⅱ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10077"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10079",
+      "label": "暴击碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10079"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10084",
+      "label": "移速碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10084"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10085",
+      "label": "生命值碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10085"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10086",
+      "label": "护盾碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10086"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10087",
+      "label": "弹夹碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10087"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10088",
+      "label": "充能碎片Ⅲ",
+      "source": {
+        "type": "origin-affix",
+        "id": "10088"
+      },
+      "reasonCode": "not-damage-multiplier",
+      "reason": "关联的一级 Numerical 行未解析出可索引的增伤分面。"
+    },
+    {
+      "id": "origin-affix:10094",
+      "label": "反哺",
+      "source": {
+        "type": "origin-affix",
+        "id": "10094"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10095",
+      "label": "霜华",
+      "source": {
+        "type": "origin-affix",
+        "id": "10095"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10096",
+      "label": "兽瞳独睐",
+      "source": {
+        "type": "origin-affix",
+        "id": "10096"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10097",
+      "label": "贯长虹",
+      "source": {
+        "type": "origin-affix",
+        "id": "10097"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10098",
+      "label": "狂热龙炎",
+      "source": {
+        "type": "origin-affix",
+        "id": "10098"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10099",
+      "label": "极寒之触",
+      "source": {
+        "type": "origin-affix",
+        "id": "10099"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10100",
+      "label": "极寒领域",
+      "source": {
+        "type": "origin-affix",
+        "id": "10100"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10101",
+      "label": "腐蚀狂热",
+      "source": {
+        "type": "origin-affix",
+        "id": "10101"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10102",
+      "label": "冥河送葬",
+      "source": {
+        "type": "origin-affix",
+        "id": "10102"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10103",
+      "label": "白骨电容器",
+      "source": {
+        "type": "origin-affix",
+        "id": "10103"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10104",
+      "label": "自追踪炮塔",
+      "source": {
+        "type": "origin-affix",
+        "id": "10104"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10105",
+      "label": "火神爆发",
+      "source": {
+        "type": "origin-affix",
+        "id": "10105"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10106",
+      "label": "爆炸烟花",
+      "source": {
+        "type": "origin-affix",
+        "id": "10106"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10107",
+      "label": "哈士奇寻敌",
+      "source": {
+        "type": "origin-affix",
+        "id": "10107"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10108",
+      "label": "强化冰弹",
+      "source": {
+        "type": "origin-affix",
+        "id": "10108"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
+    },
+    {
+      "id": "origin-affix:10109",
+      "label": "冷焰爆发",
+      "source": {
+        "type": "origin-affix",
+        "id": "10109"
+      },
+      "reasonCode": "unverified-evidence",
+      "reason": "武器专属词条在正式服没有 AffixID 到被动技能的映射表，被动身份未核定，不按描述推定乘区。"
     }
   ]
 }

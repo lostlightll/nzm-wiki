@@ -8,11 +8,11 @@
       },
       {
         "path": "data/modifier-index-runtime.json",
-        "sha256": "5abbdb6a2fa1e8e6bb42d29f0bc46e6762730644b20df2b3bc0e60cd48bae6a2"
+        "sha256": "8f5b7afb159c87ef816cd18dbabbc355df6c296dabe72851505d5538b321ebb6"
       },
       {
         "path": "data/modifier-providers.json",
-        "sha256": "9ebc599b68b0f6df057ebf048bf4afb1b14b6717eb1ffd46d23d73639488f0e5"
+        "sha256": "0656070d09b0aa1852c7b09576327ac2f4e86fc9f6bc70f96a95b43e58014846"
       },
       {
         "path": "data/num-skill-lock.json",

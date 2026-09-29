@@ -93,6 +93,7 @@ test("S4 official content replaces archived S3 and removes preview search routes
   assert.ok(paths.has("/overlimit#bonds"));
   assert.ok(paths.has("/origin#runes"));
   assert.ok(paths.has("/origin#talents"));
+  assert.ok(captured.some(item => item.path === "/origin#affixes" && item.keywords.includes("武器词条") && item.pinyin.includes("cttj")));
   assert.ok(captured.some(item => item.path === "/origin#talents" && item.keywords.includes("天赋树") && item.pinyin.includes("ydtf")));
   assert.ok(captured.some(item => item.path === "/origin#runes" && item.keywords.includes("原点猎场") && item.pinyin.includes("qhtj")));
   assert.ok(!captured.some(item => item.path.startsWith("/perks/preview") || item.path.startsWith("/overlimit/preview")));

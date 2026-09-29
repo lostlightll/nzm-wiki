@@ -306,6 +306,8 @@ function sourceTypeLabel(type: StatusEffectRelatedContentType): string {
       return "超限卡片";
     case "origin-rune":
       return "原点强化";
+    case "origin-affix":
+      return "原点词条";
     case "origin-talent":
       return "原点天赋";
     case "season-talent":
@@ -410,6 +412,7 @@ function pickSameMultiplierContent(
     "perk",
     "overlimit-card",
     "origin-rune",
+    "origin-affix",
     "origin-talent",
     "season-talent",
     "weapon",

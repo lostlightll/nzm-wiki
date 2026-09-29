@@ -1,0 +1,653 @@
+{
+  "schemaVersion": 1,
+  "affixes": [
+    {
+      "id": "10001",
+      "name": "毒皇·毒池",
+      "description": "武器射击命中5%概率生成毒池，冷却40秒，每拥有5%暴击伤害，减少冷却时间1秒。",
+      "category": "special"
+    },
+    {
+      "id": "10002",
+      "name": "龙神·连发",
+      "description": "每次释放技能50%概率获得20秒“四连爆发”，每拥有2%暴击转化1%概率。",
+      "category": "special"
+    },
+    {
+      "id": "10003",
+      "name": "毒皇·腐蚀",
+      "description": "武器射击命中给自己添加“腐蚀之力”1层：伤害提升0.07%，最多1200层，持续15秒。",
+      "category": "special"
+    },
+    {
+      "id": "10004",
+      "name": "火神炎帝",
+      "description": "全部召唤物命中获得火神增益buff，开火能够消耗3层增益buff提升（120%+1%移速加成）伤害。",
+      "category": "special"
+    },
+    {
+      "id": "10005",
+      "name": "冥河·制导",
+      "description": "武器射击2%概率或者技能命中25%概率在击中单位生成制导的冥河之矛，使全部有飞行弹道的子弹射出变成跟踪。",
+      "category": "special"
+    },
+    {
+      "id": "10006",
+      "name": "纯白·狂热",
+      "description": "降低武器初始射击速度20%，随着射击每秒不断增加20%射速，最高提升至60%，换弹清除。（提升30%射速上限）",
+      "category": "special"
+    },
+    {
+      "id": "10007",
+      "name": "雷霆999·电链",
+      "description": "每次使用技能后，接下来5秒射击命中50%概率产生电链。（CD1秒）",
+      "category": "special"
+    },
+    {
+      "id": "10008",
+      "name": "雷霆999·弹夹",
+      "description": "每次挑战开始主弹夹过充扩容至弹匣最高值，数量最高不超过999。",
+      "category": "special"
+    },
+    {
+      "id": "10009",
+      "name": "蝎王·无衰",
+      "description": "使用武器技能后12秒内，移速提升15%，子弹无距离衰减。",
+      "category": "special"
+    },
+    {
+      "id": "10010",
+      "name": "胜利誓约·弹射",
+      "description": "武器命中时30%概率分裂出1颗子弹弹射至15m内敌人，每拥有20%移速加成，增加1颗子弹。",
+      "category": "special"
+    },
+    {
+      "id": "10011",
+      "name": "Z型步枪·瞄准",
+      "description": "主动技能给武器射击加上小范围自瞄，持续10秒。",
+      "category": "special"
+    },
+    {
+      "id": "10012",
+      "name": "死神猎手·穿透",
+      "description": "子弹获得 +3 穿透，每穿透1个目标为主动技能充能0.4%。",
+      "category": "special"
+    },
+    {
+      "id": "10013",
+      "name": "死神猎手·反弹",
+      "description": "射线武器子弹命中障碍/掩体反弹 1 次。",
+      "category": "special"
+    },
+    {
+      "id": "10014",
+      "name": "黄沙风暴·弹丸",
+      "description": "武器当前弹夹剩余比例越低，每发弹丸数递增（1→4）。",
+      "category": "special"
+    },
+    {
+      "id": "10015",
+      "name": "复合弓·备弹",
+      "description": "使用武器技能额外获得8秒增益，直接消耗备弹且射速提升30%。",
+      "category": "special"
+    },
+    {
+      "id": "10016",
+      "name": "精绝兽神·榴弹",
+      "description": "武器射击命中后分裂出 3 颗小型榴弹（2秒CD）。",
+      "category": "special"
+    },
+    {
+      "id": "10017",
+      "name": "秘法5连",
+      "description": "武器主动技能可累积 5 次充能。",
+      "category": "special"
+    },
+    {
+      "id": "10018",
+      "name": "往日速递·跳弹",
+      "description": "每次使用技能后，接下来5秒射击30%概率产生3个跳弹。每拥有5%移速加成，持续时间增加0.25秒。",
+      "category": "special"
+    },
+    {
+      "id": "10019",
+      "name": "振弦·双暴",
+      "description": "武器命中弱点有10%概率增加25%暴击率 50%暴击伤害，持续10秒。",
+      "category": "special"
+    },
+    {
+      "id": "10020",
+      "name": "飞刃·链接",
+      "description": "武器暴击有10%概率增加致命链接,持续4秒，链接上限4，伤害15%。",
+      "category": "special"
+    },
+    {
+      "id": "10021",
+      "name": "弹射飞刃",
+      "description": "武器命中时20%几率产生飞刃弹射至附近敌人（0.5秒CD）。",
+      "category": "special"
+    },
+    {
+      "id": "10022",
+      "name": "鬼铜蚀·毒罐",
+      "description": "空仓换弹时投掷毒液罐，爆炸留下毒属性伤害区域并且减速敌人，持续7秒，每秒伤害70%。",
+      "category": "special"
+    },
+    {
+      "id": "10023",
+      "name": "刺影·暴击",
+      "description": "当一次开火所有弹丸命中一个目标时，必定暴击（CD0.2秒）。",
+      "category": "special"
+    },
+    {
+      "id": "10024",
+      "name": "刺影·隐身",
+      "description": "每5秒，自动进入隐身，下次开火枪械伤害增加400%。",
+      "category": "special"
+    },
+    {
+      "id": "10026",
+      "name": "星海狂想·无耗",
+      "description": "使用技能额外获得8秒不消耗弹药效果。",
+      "category": "special"
+    },
+    {
+      "id": "10027",
+      "name": "滑铲装填",
+      "description": "滑铲时，立即填满当前弹夹（CD6秒）。常规滑铲的速度会提升25%。",
+      "category": "special"
+    },
+    {
+      "id": "10028",
+      "name": "黑金仲裁",
+      "description": "技能命中使目标变成金色的（CD3秒），这些目标死亡掉落金币额外获得150金币。",
+      "category": "special"
+    },
+    {
+      "id": "10029",
+      "name": "夜影·刀波",
+      "description": "每次击杀目标都有10%概率释放刀波，近战武器击杀概率为100%（CD1秒）。",
+      "category": "special"
+    },
+    {
+      "id": "10030",
+      "name": "毒皇·爆炸",
+      "description": "武器射击命中5%概率添加毒元素1层，叠加满10层能产生毒爆并清层，毒爆可给范围添加1层毒元素。",
+      "category": "special"
+    },
+    {
+      "id": "10031",
+      "name": "霰化改装Ⅰ",
+      "description": "准确度降低20%但弹道数+1 。",
+      "category": "special"
+    },
+    {
+      "id": "10032",
+      "name": "霰化改装Ⅱ",
+      "description": "准确度降低20%但弹道数+2 。",
+      "category": "special"
+    },
+    {
+      "id": "10033",
+      "name": "双生弹道Ⅰ",
+      "description": "每隔0.4秒，下次武器开火弹道数+1。",
+      "category": "special"
+    },
+    {
+      "id": "10034",
+      "name": "双生弹道Ⅱ",
+      "description": "每隔0.2秒，下次武器开火弹道数+1。",
+      "category": "special"
+    },
+    {
+      "id": "10035",
+      "name": "射程改造",
+      "description": "有效射程-20%，伤害+100%。",
+      "category": "special"
+    },
+    {
+      "id": "10036",
+      "name": "变长魔术",
+      "description": "射程+100%，远程伤害+20%。",
+      "category": "special"
+    },
+    {
+      "id": "10037",
+      "name": "贴身压制",
+      "description": "越近伤害越高（10~5m），最高+90%",
+      "category": "special"
+    },
+    {
+      "id": "10038",
+      "name": "远端狙杀",
+      "description": "越远伤害越高（20~50m），最高+90%",
+      "category": "special"
+    },
+    {
+      "id": "10039",
+      "name": "弹尽全力",
+      "description": "弹夹最后10发子弹伤害+160%。",
+      "category": "special"
+    },
+    {
+      "id": "10040",
+      "name": "先发制人",
+      "description": "弹夹前50%子弹伤害+120%。",
+      "category": "special"
+    },
+    {
+      "id": "10041",
+      "name": "空仓爆发",
+      "description": "空仓换弹后，接下里2秒射击必暴击且伤害100%。",
+      "category": "special"
+    },
+    {
+      "id": "10042",
+      "name": "越射越痛",
+      "description": "持续射击每秒+10%伤害，最高+90%，换弹清零。",
+      "category": "special"
+    },
+    {
+      "id": "10043",
+      "name": "过热增幅",
+      "description": "连续命中同目标每5发+1%伤害，可叠加999层，脱靶降低10层。",
+      "category": "special"
+    },
+    {
+      "id": "10044",
+      "name": "弹链增幅",
+      "description": "弹夹每超50发，伤害+20%，可叠加999层。",
+      "category": "special"
+    },
+    {
+      "id": "10045",
+      "name": "游击射击",
+      "description": "移动中伤害+40%。",
+      "category": "special"
+    },
+    {
+      "id": "10046",
+      "name": "架枪稳压",
+      "description": "静止时伤害+40%。",
+      "category": "special"
+    },
+    {
+      "id": "10047",
+      "name": "元素附魔",
+      "description": "武器命中10%概率获得随机1层元素（火/毒/雷/冰）。",
+      "category": "special"
+    },
+    {
+      "id": "10048",
+      "name": "反弹转化",
+      "description": "弹射-1，弹道+2。",
+      "category": "special"
+    },
+    {
+      "id": "10049",
+      "name": "幸运一击",
+      "description": "非弱点射击命中也有40%概率结算弱点命中，享受弱点增益和触发条件。",
+      "category": "special"
+    },
+    {
+      "id": "10050",
+      "name": "猎首专精",
+      "description": "对精英和Boss伤害+80%。",
+      "category": "special"
+    },
+    {
+      "id": "10051",
+      "name": "标记猎杀",
+      "description": "对被减速/异常的敌人伤害+80%。",
+      "category": "special"
+    },
+    {
+      "id": "10052",
+      "name": "切换手法",
+      "description": "模式切换时，为模式2恢复并过充100%子弹，冷却10秒。",
+      "category": "special"
+    },
+    {
+      "id": "10053",
+      "name": "模式2强化",
+      "description": "模式2开火有60%概率额外增加1条弹道，射击准确度降低20%。",
+      "category": "special"
+    },
+    {
+      "id": "10054",
+      "name": "模式弹道",
+      "description": "模式1开火有20%概率增加1条弹道，模式2开火有20%概率增加2条弹道。射击准确度降低20%。",
+      "category": "special"
+    },
+    {
+      "id": "10055",
+      "name": "暴击弹药",
+      "description": "每次暴击过充3发弹药。",
+      "category": "special"
+    },
+    {
+      "id": "10056",
+      "name": "暴击弹药Ⅱ",
+      "description": "每次暴击都有10%概率过充30%弹药。",
+      "category": "special"
+    },
+    {
+      "id": "10057",
+      "name": "暴击碎片",
+      "description": "暴击率+5%。",
+      "category": "normal"
+    },
+    {
+      "id": "10058",
+      "name": "暴伤碎片",
+      "description": "暴伤+20%。",
+      "category": "normal"
+    },
+    {
+      "id": "10059",
+      "name": "技战碎片",
+      "description": "全技能伤害+25%。",
+      "category": "normal"
+    },
+    {
+      "id": "10060",
+      "name": "全伤碎片",
+      "description": "全伤害+10%。",
+      "category": "normal"
+    },
+    {
+      "id": "10061",
+      "name": "武器碎片",
+      "description": "武器伤害+10%。",
+      "category": "normal"
+    },
+    {
+      "id": "10062",
+      "name": "移速碎片",
+      "description": "移速+10%。",
+      "category": "normal"
+    },
+    {
+      "id": "10063",
+      "name": "生命值碎片",
+      "description": "最大生命值+20%。",
+      "category": "normal"
+    },
+    {
+      "id": "10064",
+      "name": "护盾碎片",
+      "description": "最大护盾值+20%。",
+      "category": "normal"
+    },
+    {
+      "id": "10065",
+      "name": "弹夹碎片",
+      "description": "最大弹夹+20%。",
+      "category": "normal"
+    },
+    {
+      "id": "10066",
+      "name": "充能碎片",
+      "description": "技能充能速度+20%。",
+      "category": "normal"
+    },
+    {
+      "id": "10067",
+      "name": "弱点碎片",
+      "description": "弱点伤害+10%。",
+      "category": "normal"
+    },
+    {
+      "id": "10068",
+      "name": "暴击碎片Ⅱ",
+      "description": "暴击率+10%。",
+      "category": "normal"
+    },
+    {
+      "id": "10069",
+      "name": "暴伤碎片Ⅱ",
+      "description": "暴伤+40%。",
+      "category": "normal"
+    },
+    {
+      "id": "10070",
+      "name": "技战碎片Ⅱ",
+      "description": "全技能伤害+50%。",
+      "category": "normal"
+    },
+    {
+      "id": "10071",
+      "name": "全伤碎片Ⅱ",
+      "description": "全伤害+20%。",
+      "category": "normal"
+    },
+    {
+      "id": "10072",
+      "name": "武器碎片Ⅱ",
+      "description": "武器伤害+20%。",
+      "category": "normal"
+    },
+    {
+      "id": "10073",
+      "name": "移速碎片Ⅱ",
+      "description": "移速+20%。",
+      "category": "normal"
+    },
+    {
+      "id": "10074",
+      "name": "生命值碎片Ⅱ",
+      "description": "最大生命值+40%。",
+      "category": "normal"
+    },
+    {
+      "id": "10075",
+      "name": "护盾碎片Ⅱ",
+      "description": "最大护盾值+40%。",
+      "category": "normal"
+    },
+    {
+      "id": "10076",
+      "name": "弹夹碎片Ⅱ",
+      "description": "最大弹夹+40%。",
+      "category": "normal"
+    },
+    {
+      "id": "10077",
+      "name": "充能碎片Ⅱ",
+      "description": "技能充能速度+40%。",
+      "category": "normal"
+    },
+    {
+      "id": "10078",
+      "name": "弱点碎片Ⅱ",
+      "description": "弱点伤害+20%。",
+      "category": "normal"
+    },
+    {
+      "id": "10079",
+      "name": "暴击碎片Ⅲ",
+      "description": "暴击率+25%。",
+      "category": "normal"
+    },
+    {
+      "id": "10080",
+      "name": "暴伤碎片Ⅲ",
+      "description": "暴伤+100%。",
+      "category": "normal"
+    },
+    {
+      "id": "10081",
+      "name": "技战碎片Ⅲ",
+      "description": "全技能伤害+125%。",
+      "category": "normal"
+    },
+    {
+      "id": "10082",
+      "name": "全伤碎片Ⅲ",
+      "description": "全伤害+50%。",
+      "category": "normal"
+    },
+    {
+      "id": "10083",
+      "name": "武器碎片Ⅲ",
+      "description": "武器伤害+50%。",
+      "category": "normal"
+    },
+    {
+      "id": "10084",
+      "name": "移速碎片Ⅲ",
+      "description": "移速+50%。",
+      "category": "normal"
+    },
+    {
+      "id": "10085",
+      "name": "生命值碎片Ⅲ",
+      "description": "最大生命值+80%。",
+      "category": "normal"
+    },
+    {
+      "id": "10086",
+      "name": "护盾碎片Ⅲ",
+      "description": "最大护盾值+80%。",
+      "category": "normal"
+    },
+    {
+      "id": "10087",
+      "name": "弹夹碎片Ⅲ",
+      "description": "最大弹夹+80%。",
+      "category": "normal"
+    },
+    {
+      "id": "10088",
+      "name": "充能碎片Ⅲ",
+      "description": "技能充能速度+100%。",
+      "category": "normal"
+    },
+    {
+      "id": "10089",
+      "name": "弱点碎片Ⅲ",
+      "description": "弱点伤害+50%。",
+      "category": "normal"
+    },
+    {
+      "id": "10090",
+      "name": "攻击加成",
+      "description": "武器攻击力*1.3",
+      "category": "normal"
+    },
+    {
+      "id": "10091",
+      "name": "攻击加成Ⅱ",
+      "description": "武器攻击力*1.6",
+      "category": "normal"
+    },
+    {
+      "id": "10092",
+      "name": "攻击加成Ⅲ",
+      "description": "武器攻击力*2",
+      "category": "normal"
+    },
+    {
+      "id": "10093",
+      "name": "攻击加成Ⅳ",
+      "description": "武器攻击力*2.5",
+      "category": "normal"
+    },
+    {
+      "id": "10094",
+      "name": "反哺",
+      "description": "连续命中弱点3次，使武器进入8秒的急速狂热状态。触发后进入冷却，冷却时间15秒。",
+      "category": "special"
+    },
+    {
+      "id": "10095",
+      "name": "霜华",
+      "description": "累计命中200次之后，则自动释放小型冰锥造成150%攻击力伤害，并获得3秒急速狂热状态。",
+      "category": "special"
+    },
+    {
+      "id": "10096",
+      "name": "兽瞳独睐",
+      "description": "秘法榴弹不再分裂，也不再有下坠，且仅命中1个敌人时，伤害效果增加320%。",
+      "category": "special"
+    },
+    {
+      "id": "10097",
+      "name": "贯长虹",
+      "description": "近战攻击伤害增加50%。切出本武器时向前发射一道剑气，向前方造成贯穿伤害，并填满弹夹（CD10s）。",
+      "category": "special"
+    },
+    {
+      "id": "10098",
+      "name": "狂热龙炎",
+      "description": "大幅提升龙炎弹射程并减少其散布，并将主动技能替换为急速狂热。",
+      "category": "special"
+    },
+    {
+      "id": "10099",
+      "name": "极寒之触",
+      "description": "敌人每有一层冰缓效果，伤害提高10%，最多30%。激光模式攻击冰缓效果超过2层的敌人时，可触发范围2.5米的爆炸（CD1秒）。",
+      "category": "special"
+    },
+    {
+      "id": "10100",
+      "name": "极寒领域",
+      "description": "主动技能变为一个跟随玩家的冰霜光环，每1秒对周围9米敌人造成50%攻击力伤害，持续12秒。",
+      "category": "special"
+    },
+    {
+      "id": "10101",
+      "name": "腐蚀狂热",
+      "description": "装配腐蚀狂热后自身幽冥毒皇主动技能生效期间，射击不消耗弹药，且榴弹的直接命中伤害增加300%。",
+      "category": "special"
+    },
+    {
+      "id": "10102",
+      "name": "冥河送葬",
+      "description": "使用锁魂骨矛命中首领或精英后，会装填满弹匣，并使冥河之矛造成的伤害提升120%持续20秒（CD40秒）。",
+      "category": "special"
+    },
+    {
+      "id": "10103",
+      "name": "白骨电容器",
+      "description": "装配白骨电容器后可以使冥河之矛更快的进入电流射击状态，并且使冥河之矛的电流伤害提高40%。",
+      "category": "special"
+    },
+    {
+      "id": "10104",
+      "name": "自追踪炮塔",
+      "description": "武器造成的伤害增加30%，手枪指示器命中敌人时，架设模式下的火神炎帝会自动追踪敌人射击敌人30秒。",
+      "category": "special"
+    },
+    {
+      "id": "10105",
+      "name": "火神爆发",
+      "description": "将主动技能替换为火神爆发。",
+      "category": "special"
+    },
+    {
+      "id": "10106",
+      "name": "爆炸烟花",
+      "description": "牛仔居合状态下，每一发都会打出爆炸弹。",
+      "category": "special"
+    },
+    {
+      "id": "10107",
+      "name": "哈士奇寻敌",
+      "description": "哈士奇好友和哈士奇的射击伤害提高30%，在飞行0.8秒后进入追踪状态。",
+      "category": "special"
+    },
+    {
+      "id": "10108",
+      "name": "强化冰弹",
+      "description": "命中目标后，额外获得23层命中层数，并清空弹匣，每清空1发子弹，追踪弹伤害增加3%。",
+      "category": "special"
+    },
+    {
+      "id": "10109",
+      "name": "冷焰爆发",
+      "description": "技能伤害提升100%，释放主动技能后，未命中目标弱点也可以召唤2枚冷焰飞弹。",
+      "category": "special"
+    }
+  ]
+}

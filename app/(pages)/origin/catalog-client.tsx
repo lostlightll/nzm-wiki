@@ -1,30 +1,37 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import type { OriginAffixCatalog } from "@/lib/origin-affixes";
 import type { OriginRuneCatalog } from "@/lib/origin-runes";
 import type { OriginTalentCatalog } from "@/lib/origin-talents";
+import OriginAffixesClient from "./affixes-client";
 import OriginRunesClient from "./client";
 import OriginTalentsClient from "./talents-client";
+
+function activeModule(hash: string) {
+  if (hash.startsWith("#talent")) return "talents";
+  if (hash.startsWith("#affix")) return "affixes";
+  return "runes";
+}
 
 function subscribe(callback: () => void) {
   window.addEventListener("hashchange", callback);
   return () => window.removeEventListener("hashchange", callback);
 }
 
-export default function OriginCatalogClient({ runes, talents }: {
+export default function OriginCatalogClient({ runes, affixes, talents }: {
   runes: OriginRuneCatalog;
+  affixes: OriginAffixCatalog;
   talents: OriginTalentCatalog;
 }) {
-  const active = useSyncExternalStore(subscribe,
-    () => window.location.hash.startsWith("#rune") ? "runes" : window.location.hash.startsWith("#talent") ? "talents" : "runes",
-    () => "runes");
+  const active = useSyncExternalStore(subscribe, () => activeModule(window.location.hash), () => "runes");
 
   return <>
     <nav aria-label="原点图鉴模块" className="mb-6 flex flex-wrap items-center gap-2">
       {([
         { id: "runes", label: "强化图鉴" },
         { id: "weapons", label: "武器图鉴", disabled: true },
-        { id: "affixes", label: "词条图鉴", disabled: true },
+        { id: "affixes", label: "词条图鉴" },
         { id: "talents", label: "原点天赋" },
       ] as const).map((item) => "disabled" in item ?
         <button key={item.id} type="button" disabled title="暂未开放"
@@ -38,6 +45,7 @@ export default function OriginCatalogClient({ runes, talents }: {
           {item.label}
         </a>)}
     </nav>
-    {active === "talents" ? <OriginTalentsClient catalog={talents} /> : <OriginRunesClient catalog={runes} />}
+    {active === "talents" ? <OriginTalentsClient catalog={talents} /> :
+      active === "affixes" ? <OriginAffixesClient catalog={affixes} /> : <OriginRunesClient catalog={runes} />}
   </>;
 }
