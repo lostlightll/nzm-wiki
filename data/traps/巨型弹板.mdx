@@ -20,16 +20,16 @@ description: 占地较大的弹板，可将重型及以下敌人弹向指定方�
   [4, 600, 8, 1, 1],
 ]} />
 
-伤害和冷却与《未来测评》“陷阱数据”一致。力度为击飞配置系数，不能解读为伤害倍率或精确的落地距离。
+力度为击飞配置系数，不能解读为伤害倍率或精确的落地距离。
 
 ## 触发与控制
 
 - 配置允许击飞 **轻型、中型和重型**敌人。重型敌人的击飞力度随等级提升最明显。
-- 表格记录触发区域在中间 **4 格**。占地面积与触发面积不是同一个概念，敌人经过外缘不一定触发。
-- 超重型目标配置了眩晕分支。表格记录无法弹飞时眩晕 **1 秒**，该时长为实测记录，控制免疫目标不保证生效。
+- 触发区域在中间 **4 格**。占地面积与触发面积不是同一个概念，敌人经过外缘不一定触发。
+- 超重型目标配置了眩晕分支，无法弹飞时眩晕 **1 秒**；控制免疫目标不保证生效。
 
 ## 计算口径
 
 直接伤害等于等级攻击力乘 **1 倍结算系数**。弹板的主要价值还包括改变敌人路线和利用地形；这些效果不能用单次伤害除以冷却来概括，因此不列稳定对单 DPS。
 
-{/* 来源：TowerDefenseTrapParamTable TD_Springboard_150 → Tower_SpringBoardBig → BP_AIChar_17720031_SpringboardBig TowerKey=TD_Springboard_150 → TowerDefenseTowerLevelConfig *_101/201/301/401。仅 GA_SpringBoardBig（排除GA_SpringBoardBig_JTD）：LevelConfigs CD=9/9/9/8，轻中力度.8/.9/1/1，重型.2/.4/.8/1，DelayKnockTIme=.5。映射1771003102_1 HpCalScale=1 HpCalBase=0。表格陷阱数据 AA9:AB16。 */}
+{/* 来源：TowerDefenseTrapParamTable TD_Springboard_150 → Tower_SpringBoardBig → BP_AIChar_17720031_SpringboardBig TowerKey=TD_Springboard_150 → TowerDefenseTowerLevelConfig *_101/201/301/401。仅 GA_SpringBoardBig（排除GA_SpringBoardBig_JTD）：LevelConfigs CD=9/9/9/8，轻中力度.8/.9/1/1，重型.2/.4/.8/1，DelayKnockTIme=.5。映射1771003102_1 HpCalScale=1 HpCalBase=0。 */}

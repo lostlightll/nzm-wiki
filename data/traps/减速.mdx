@@ -11,7 +11,7 @@ description: 地面控制陷阱，周期性向范围内敌人施加减速，离�
 
 ## 等级数据
 
-减速采用《未来测评》「陷阱数据」的记录。剩余移速按未受其他速度效果影响时推算。
+剩余移速按未受其他速度效果影响时推算。
 
 <LevelTable headers={["等级", "减速", "剩余移速（推算）"]} data={[
   [1, "30%", "70%"],
@@ -30,6 +30,6 @@ description: 地面控制陷阱，周期性向范围内敌人施加减速，离�
 
 不考虑其他控制时，四级目标移速为 `原移速 × (1 − 55%) = 原移速 × 45%`。敌人在整个路段始终受该减速时，通过时间约为原来的 `1 ÷ 0.45 ≈ 2.22倍`；这不是固定增加2.22倍伤害，攻击空窗、控制免疫和目标脱离都会影响收益。
 
-表格没有记录离场后的逐帧持续时间，3秒采用配置基础值。天赋或其他效果延长持续时间时，应另行计算。
+离场后的逐帧持续时间未单独计算，本页采用配置基础值3秒。天赋或其他效果延长持续时间时，应另行计算。
 
-{/* 证据：TD_Decelerate SpellPower=0；GA_TrapSlowDown TickInterval=.25、Buffs=TrapSlowDown；BuffConfigDatatableNew TrapSlowDown/_2/_3/_4 Duration=3、StackLimitCount=1、RefreshOnSuccessfulApplication；GPModifyIDs 170000001/2/3/4 -> numerical_modifier_config 170000001_1_0、170000002_2_0、170000003_3_0、170000004_4_0：SpeedScale B4=-.3/-.4/-.5/-.55，CoefValue=0。工作表 R11:R14。 */}
+{/* 证据：TD_Decelerate SpellPower=0；GA_TrapSlowDown TickInterval=.25、Buffs=TrapSlowDown；BuffConfigDatatableNew TrapSlowDown/_2/_3/_4 Duration=3、StackLimitCount=1、RefreshOnSuccessfulApplication；GPModifyIDs 170000001/2/3/4 -> numerical_modifier_config 170000001_1_0、170000002_2_0、170000003_3_0、170000004_4_0：SpeedScale B4=-.3/-.4/-.5/-.55，CoefValue=0。 */}

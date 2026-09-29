@@ -13,7 +13,7 @@ description: 部署在天花板上的蓄力炮，瞄准地面敌人后发射能�
 
 ## 等级数据
 
-伤害与CD采用《未来测评》「陷阱数据」，不计科技、词缀及其他增幅。DPS沿用表格后续公式的6秒分母推算。
+伤害与CD不计科技、词缀及其他增幅。DPS按完整周期的6秒分母推算。
 
 <LevelTable headers={["等级", "单发伤害", "CD（秒）", "DPS（推算）"]} data={[
   [1, 700, 4.5, 116.67],
@@ -30,11 +30,11 @@ description: 部署在天花板上的蓄力炮，瞄准地面敌人后发射能�
 
 ## 攻击周期与 DPS
 
-表格CD栏为 **4.5秒**，后续DPS公式采用 **6秒**作分母。本页分别保留，计算平均输出时使用6秒，不把差值直接解释为额外后摇。
+配置冷却为 **4.5秒**，完整周期按 **6秒**作分母计算；不把差值直接解释为额外后摇。
 
-四级对单为 `1050 ÷ 6 = 175 DPS`。按表格全体攻击8%与天花板攻击24%相加，单发为 `1050 × 1.32 = 1386`，平均为 **231 DPS**。若一次爆炸命中多个目标，对群总量按实际命中数累计；这不提高单个目标承受的伤害。
+四级对单为 `1050 ÷ 6 = 175 DPS`。叠加实际全体攻击和天花板攻击增益后再重新计算。若一次爆炸命中多个目标，对群总量按实际命中数累计；这不提高单个目标承受的伤害。
 
-{/* 来源：TowerDefenseTrapParamTable TD_Plasm_100 → Tower_Plasma → BP_AIChar_17715031_Plasma TowerKey=TD_Plasm → TowerDefenseTowerLevelConfig *_101/201/301/401。GA_PlasmaShoot ChargeTime=1.5 CoolDownLevel=[4,4,4,4]；BP_Proj_Plasma Enemy_SettleConfig_0 → numerical_config_monsterskill 1770503101_1 HpCalScale=1 HpCalBase=0；ApplyEffectsRadially ValidRadius=200。对照《未来测评.xlsx》陷阱数据 AD1:AE8、V30/V32。 */}
+{/* 来源：TowerDefenseTrapParamTable TD_Plasm_100 → Tower_Plasma → BP_AIChar_17715031_Plasma TowerKey=TD_Plasm → TowerDefenseTowerLevelConfig *_101/201/301/401。GA_PlasmaShoot ChargeTime=1.5 CoolDownLevel=[4,4,4,4]；BP_Proj_Plasma Enemy_SettleConfig_0 → numerical_config_monsterskill 1770503101_1 HpCalScale=1 HpCalBase=0；ApplyEffectsRadially ValidRadius=200。 */}
 
-{/* 字节码补证：GA_PlasmaShoot ExecuteUbergraph@995 WaitDelay(ChargeTime)、完成回调进入发射点数组循环、@644 DoSpawnProjectile；蓝图未展示父类GPAbility_TowerMissileBase的全部冷却计时，故6秒仍为表格公式模型。新导出CDO与refs一致。 */}
+{/* 字节码补证：GA_PlasmaShoot ExecuteUbergraph@995 WaitDelay(ChargeTime)、完成回调进入发射点数组循环、@644 DoSpawnProjectile；蓝图未展示父类GPAbility_TowerMissileBase的全部冷却计时。 */}
 

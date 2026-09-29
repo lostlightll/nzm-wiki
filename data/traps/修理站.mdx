@@ -13,14 +13,14 @@ description: 部署在地面的修理站，可部署在输出陷阱旁边，自�
 
 ## 等级数据
 
-<LevelTable headers={["等级", "耐久", "实测维修量 / 秒"]} data={[
+<LevelTable headers={["等级", "耐久", "维修量 / 秒"]} data={[
   [1, 90, 10],
   [2, 110, 12],
   [3, 130, 15],
   [4, 150, 20],
 ]} />
 
-耐久与每秒维修量采用《未来测评》「陷阱数据」工作表。升级同时提升修理站耐久和维修速度。
+升级同时提升修理站耐久和维修速度。
 
 ## 维修机制
 
@@ -30,10 +30,10 @@ description: 部署在地面的修理站，可部署在输出陷阱旁边，自�
 
 ## 计算口径
 
-按实测速度，持续维修 `t` 秒的理论恢复量为 **每秒维修量 × t**，实际恢复受目标缺失耐久和是否在范围内限制。例如四级持续维修5秒，最多恢复100耐久。
+持续维修 `t` 秒的理论恢复量为 **每秒维修量 × t**，实际恢复受目标缺失耐久和是否在范围内限制。例如四级持续维修5秒，最多恢复100耐久。
 
 技能还配置了各等级相同的每秒金币参数 **1**；不应在缺少触发条件证据时当作无条件被动收入。
 
-{/* refs: TowerDefenseTowerLevelConfig TD_RepairStation_101/201/301/401; GA_TrapRepair LevelRepairValues=[10,12,15,20], LevelAddCoinEverySeconds=[1,1,1,1]; BP_AIChar_17712031_TrapRepair RepairRange_GEN_VARIABLE.BoxExtent=(380,380,200). Sheet F3:G7. */}
+{/* refs: TowerDefenseTowerLevelConfig TD_RepairStation_101/201/301/401; GA_TrapRepair LevelRepairValues=[10,12,15,20], LevelAddCoinEverySeconds=[1,1,1,1]; BP_AIChar_17712031_TrapRepair RepairRange_GEN_VARIABLE.BoxExtent=(380,380,200). */}
 
 <Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1p8zTBWEKR" title="BV1p8zTBWEKR" />

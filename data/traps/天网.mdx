@@ -13,7 +13,7 @@ description: 墙壁激光陷阱，可通过两个或四个陷阱联动生成范�
 
 ## 等级数据
 
-以下采用《未来测评》「陷阱数据」，不计外部增伤。小球、大球伤害分别为表中单次射线伤害的8倍和20倍。
+以下数值不计外部增伤。小球、大球伤害分别为单次射线伤害的8倍和20倍。
 
 <LevelTable headers={["等级", "单次射线", "小球爆炸", "大球爆炸"]} data={[
   [1, 40, 320, 800],
@@ -24,14 +24,14 @@ description: 墙壁激光陷阱，可通过两个或四个陷阱联动生成范�
 
 ## 射线与联动
 
-射线攻击间隔按表格记录为 **0.5秒**，射程约 **5格**。原表对「射线伤害、间隔」标注存疑，因此射线数值作为测评参考。
+射线攻击间隔为 **0.5秒**，射程约 **5格**。射线数值存在不确定性，仅作为参考。
 
 | 联动 | 爆炸倍率 | 爆炸范围 | 爆炸CD |
 | --- | --- | --- | --- |
 | 两个天网 | 8倍 | 1.5格 | 10秒 |
 | 四个天网 | 20倍 | 3格 | 10秒 |
 
-表格记录：已经参与生成爆炸球的天网，不能同时再与另一组天网生成球。规划位置时应按独立组合计算，不能把同一台陷阱重复计入多组收益。
+已经参与生成爆炸球的天网，不能同时再与另一组天网生成球。规划位置时应按独立组合计算，不能把同一台陷阱重复计入多组收益。
 
 ## 计算口径
 
@@ -42,4 +42,4 @@ description: 墙壁激光陷阱，可通过两个或四个陷阱联动生成范�
 
 {/* 字节码：NZM/Content/AIBehavior/ZhanQiBehavior/17723031_TrapSkyNet/Ability/GA_SkyNetAttack ExecuteUbergraph@289 GetConnectAttackRatio(2.0)，@391 ApplyNumericalSettlementWithHitResultAndModifier，ModifierID191110106、系数=查询结果；numerical_modifier_config 191110106_1_0 DamageRatio B1 BaseValue0 CoefValue1。 */}
 
-{/* 证据：TD_SkyNet 四等级；GA_SkyNetAttack TickInterval=.65、CD=.5、AttackDuration=2；GA_SkyNetAttackAOE_Pair AOEDamageRatio=8、CDTime=10；Quad=20、10；1772303101_1 HpCalScale=1。工作表 J11:N16、Q35:Q37。 */}
+{/* 证据：TD_SkyNet 四等级；GA_SkyNetAttack TickInterval=.65、CD=.5、AttackDuration=2；GA_SkyNetAttackAOE_Pair AOEDamageRatio=8、CDTime=10；Quad=20、10；1772303101_1 HpCalScale=1。 */}

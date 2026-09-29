@@ -13,7 +13,7 @@ description: 周期性生成泡泡的地面陷阱，泡泡破裂时造成范围�
 
 ## 等级数据
 
-以下采用《未来测评》「陷阱数据」工作表的实测记录，DPS 按单次伤害除以攻击间隔计算。
+DPS 按单次伤害除以攻击间隔计算。
 
 <LevelTable headers={["等级", "单次伤害", "间隔（秒）", "DPS（推算）"]} data={[
   [1, 450, 7, 64.29],
@@ -26,15 +26,13 @@ description: 周期性生成泡泡的地面陷阱，泡泡破裂时造成范围�
 
 ## 泡泡与污染
 
-- 触发范围的球形半径为 **130 游戏单位**，接近表格记录的 **0.5 格**。破裂伤害半径为 **256 游戏单位**，不要与触发范围混用。
-- 按表格实测，可清理周围约 **1 格**污染，清除量记录为 **8**（表内污染值以100为基准）。
-- 表格建议不要将泡泡陷阱放在污染区域正中，因为实测覆盖会受摆放影响。这是摆放经验，不表示固定清污半径会在中心位置减半。
-- 表格在污染测试中还记录了 **30% 减伤**；其作用对象和持续时间未注明，不将它外推为全队常驻减伤。
+- 触发范围的球形半径为 **130 游戏单位**，约 **0.5 格**。破裂伤害半径为 **256 游戏单位**，不要与触发范围混用。
+- 可清理周围约 **1 格**污染，单次清除量约为 **8**（污染值以100为基准）。
+- 不建议将泡泡陷阱放在污染区域正中，清污覆盖会受摆放影响，不表示固定清污半径会在中心位置减半。
+- 污染状态下可能出现 **30% 减伤**；其作用对象和持续时间未明确，不将它外推为全队常驻减伤。
 
 ## 周期与计算口径
 
-四级按 `450 ÷ 4 = 112.5` 计算 DPS，适用于持续触发且每次命中同一目标的情况。清污效果还受摆放与污染状态影响，不能用单次清除记录推算固定清场次数。
+四级按 `450 ÷ 4 = 112.5` 计算 DPS，适用于持续触发且每次命中同一目标的情况。清污效果还受摆放与污染状态影响，不能用单次清除量推算固定清场次数。
 
-{/* 口径更新：按用户要求以陷阱数据 P17:Q24、R17:S24 为准。refs 的价格500、清污事件40仅保留为历史对照，不覆盖表内400与8；表内未说明减伤对象。 */}
-
-{/* 来源：TD_TrapBubble_330 → Tower_TrapBubble → BP_AIChar_17734031_TrapBubble TowerKey=TD_TrapBubble → TowerDefenseTowerLevelConfig *_101/201/301/401。GA_TrapBubble ChargeTimes5.3/4.4/3.7/3 AttackDuration.2；BP_Proj_Bubble NamedThrowableSettlementConfig1770503101 → numerical_config_monsterskill 1770503101_1 HpCalScale1 HpCalBase0；ApplyEffectsRadiallyExtraCheck ValidRadius256；ApplyRadiallyClearPollution LevelClearAmounts40。表格陷阱数据 P17:Q24、R17:S24。 */}
+{/* 来源：TD_TrapBubble_330 → Tower_TrapBubble → BP_AIChar_17734031_TrapBubble TowerKey=TD_TrapBubble → TowerDefenseTowerLevelConfig *_101/201/301/401。GA_TrapBubble ChargeTimes5.3/4.4/3.7/3 AttackDuration.2；BP_Proj_Bubble NamedThrowableSettlementConfig1770503101 → numerical_config_monsterskill 1770503101_1 HpCalScale1 HpCalBase0；ApplyEffectsRadiallyExtraCheck ValidRadius256；ApplyRadiallyClearPollution LevelClearAmounts40。 */}

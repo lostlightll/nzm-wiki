@@ -19,7 +19,7 @@ description: 在地面部署的大型陷阱，向锁定敌人方向发射三枚�
   [4, 2160, 3, 720],
 ]} />
 
-耐久各等级均为 **400**，实测射程约 **8 格**。三段合计与「陷阱数据」工作表一致。
+耐久各等级均为 **400**，射程约 **8 格**。
 
 ## 火炮覆盖
 
@@ -29,11 +29,9 @@ description: 在地面部署的大型陷阱，向锁定敌人方向发射三枚�
 
 ## 计算口径
 
-三段全中伤害为 **单段 × 3**。二至四级按表格的3秒间隔计算，三段全中时 DPS 分别为 **480 / 600 / 720**。
+三段全中伤害为 **单段 × 3**。二至四级按3秒间隔计算，三段全中时 DPS 分别为 **480 / 600 / 720**；一级缺少有效间隔，因此不列 DPS。
 
-表格一级间隔未提供有效秒数，因此一级不列 DPS。
-
-{/* refs: TowerDefenseTowerLevelConfig TD_MoratrTurret_101/201/301/401; GA_Mortar_Shoot Damage.SkillId=1770903101, CoolDownLevel=[4,2.5,2.5,2.5], IntervalDistance=245, SphereRadius=256; numerical_config_monsterskill 1770903101_1 HpCalScale=1/HpCalBase=0. Sheet N3:P7; P3='w' invalid. */}
+{/* refs: TowerDefenseTowerLevelConfig TD_MoratrTurret_101/201/301/401; GA_Mortar_Shoot Damage.SkillId=1770903101, CoolDownLevel=[4,2.5,2.5,2.5], IntervalDistance=245, SphereRadius=256; numerical_config_monsterskill 1770903101_1 HpCalScale=1/HpCalBase=0. */}
 {/* Bytecode audit: GA_Mortar_Shoot ExecuteUbergraph @990 i=-1, @1013 i<=1, @1062 i*IntervalDistance, @1108 Direction*offset, @1154 TargetLoc+offset, @1250 SpawnLoc assignment, @1486 Jump15 (AOE @90, Activate @512), @1491 increment, @1560 Jump1013. AOEId=1770803101 in NZAOEGlobalConfigTable has AOERadius=256. Fresh installed-game export CDO matches refs exactly. */}
 
 <Credit platform="bilibili" author="冷风影_" url="https://www.bilibili.com/video/BV1z9rrBQE1a" title="BV1z9rrBQE1a" />
