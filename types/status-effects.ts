@@ -91,6 +91,7 @@ export type StatusEffectRelatedContentType =
   | "perk"
   | "overlimit-card"
   | "origin-rune"
+  | "origin-affix"
   | "origin-talent"
   | "season-talent"
   | "weapon"
