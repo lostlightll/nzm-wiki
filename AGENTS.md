@@ -61,10 +61,10 @@
 项目位于 Windows 原生文件系统。命令按当前工具实际使用的 shell 编写；文件引用使用 Windows 可识别的绝对路径，例如：
 
 ```text
-D:\Claude\nzm-wiki
+D:\Workspace\nzm-wiki
 ```
 
-不要假设 MSYS2 的 `/home/...` 等虚拟路径可用。需要跨工具传递路径时，优先使用 `D:\Claude\nzm-wiki` 或 `D:/Claude/nzm-wiki` 形式。
+不要假设 MSYS2 的 `/home/...` 等虚拟路径可用。需要跨工具传递路径时，优先使用 `D:\Workspace\nzm-wiki` 或 `D:/Workspace\nzm-wiki` 形式。
 
 本地游戏资源导出按环境区分：
 
@@ -170,7 +170,7 @@ import { getAssetPath } from "@/lib/path";
 3. 新动态详情页需要导出 `generateMetadata()`，包含 `title`、`description` 和 `alternates.canonical`。
 4. 新静态列表页需要加入站点地图的 `staticPages`。
 
-SEO 主域名是 `https://nzm-wiki.pages.dev`，canonical URL 以此为基准。
+SEO 主域名是 `https://lostlightll.github.io/nzm-wiki/`，canonical URL 以此为基准。
 
 ## 完成标准
 
