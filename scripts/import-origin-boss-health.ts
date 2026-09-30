@@ -7,6 +7,15 @@ import routeSources from "@/data/enemies/lc/boss/origin-route-sources.json";
 type Difficulty = "heroic" | "inferno" | "torment";
 type Row = Record<string, unknown>;
 type Named = { SourceString?: string; LocalizedString?: string };
+type BossSource = number[] | { ids: number[]; difficulties: Difficulty[] };
+type ReviewedRoomIndices = Array<number[] | null>;
+type RouteSource = {
+  mapId: number;
+  name: string;
+  finalBoss: string;
+  infernoRoomIndices: ReviewedRoomIndices;
+  tormentRoomIndices?: ReviewedRoomIndices;
+};
 
 const root = process.cwd();
 const tableDir = path.join(root, "refs/Exports/NZM/Content/DataTables");
@@ -47,12 +56,16 @@ const result: {
   bosses: Record<string, Partial<Record<Difficulty, number[]>>>;
 } = { rooms: {}, bosses: {} };
 
-for (const [slug, ids] of Object.entries(sources)) {
+for (const [slug, source] of Object.entries(sources)) {
   if (!fs.existsSync(path.join(root, "data/enemies/lc/boss", `${slug}.mdx`))) {
     throw new Error(`Missing boss page: ${slug}`);
   }
+  const bossSource = source as BossSource;
+  const ids = Array.isArray(bossSource) ? bossSource : bossSource.ids;
+  const sourceDifficulties = Array.isArray(bossSource) ? undefined : bossSource.difficulties;
   result.bosses[slug] = {};
   for (const difficulty of Object.keys(labels) as Difficulty[]) {
+    if (sourceDifficulties && !sourceDifficulties.includes(difficulty)) continue;
     const matchingEntrances = entrances.filter(
       (row) => name(row.dungeon_difficulty_des) === labels[difficulty],
     );
@@ -109,7 +122,7 @@ for (const difficulty of Object.keys(labels) as Difficulty[]) {
   result.rooms[difficulty] = roomSets[0];
 }
 
-const routes = routeSources.map((route) => {
+const routes = (routeSources as RouteSource[]).map((route) => {
   const difficulties: Partial<Record<Difficulty, { slug: string; roomIndices: number[] | null }[]>> = {};
   for (const difficulty of Object.keys(labels) as Difficulty[]) {
     const matchingEntrances = entrances.filter((row) =>
@@ -118,7 +131,11 @@ const routes = routeSources.map((route) => {
     if (!matchingEntrances.length) continue;
     const entrance = single(matchingEntrances, `${route.name}/${difficulty} entrance`);
     const dungeonRows = intra.filter((row) => row.DungeonID === entrance.dungeon_id);
-    const bosses = Object.entries(sources).flatMap(([slug, ids]) => {
+    const bosses = Object.entries(sources).flatMap(([slug, source]) => {
+      const bossSource = source as BossSource;
+      const ids = Array.isArray(bossSource) ? bossSource : bossSource.ids;
+      const sourceDifficulties = Array.isArray(bossSource) ? undefined : bossSource.difficulties;
+      if (sourceDifficulties && !sourceDifficulties.includes(difficulty)) return [];
       const stageRows = ids.map((id) => dungeonRows.filter((row) => row.UniqueMonsterID === id));
       if (stageRows.every((matches) => matches.length === 0)) return [];
       if (stageRows.some((matches) => matches.length !== 1)) {
@@ -127,14 +144,19 @@ const routes = routeSources.map((route) => {
       if (!result.bosses[slug]?.[difficulty]) throw new Error(`${route.name}/${difficulty}/${slug}: missing health`);
       return [{ slug, order: Math.min(...stageRows.map((matches) => Number(matches[0].ID))) }];
     }).sort((a, b) => a.order - b.order);
-    if (!bosses.length || (difficulty === "inferno" && bosses.at(-1)?.slug !== route.finalBoss)) {
+    if (!bosses.length || (["inferno", "torment"].includes(difficulty) && bosses.at(-1)?.slug !== route.finalBoss)) {
       throw new Error(`${route.name}/${difficulty}: missing final boss`);
     }
-    if (difficulty === "inferno" && bosses.length !== route.infernoRoomIndices.length) {
-      throw new Error(`${route.name}: boss count does not match reviewed room slots`);
+    const reviewedRoomIndices = difficulty === "inferno"
+      ? route.infernoRoomIndices
+      : difficulty === "torment"
+        ? route.tormentRoomIndices
+        : undefined;
+    if (reviewedRoomIndices && bosses.length !== reviewedRoomIndices.length) {
+      throw new Error(`${route.name}/${difficulty}: boss count does not match reviewed room slots`);
     }
     difficulties[difficulty] = bosses.map(({ slug }, index) => {
-      const roomIndices = difficulty === "inferno" ? route.infernoRoomIndices[index] : null;
+      const roomIndices = reviewedRoomIndices?.[index] ?? null;
       if (roomIndices && (roomIndices.length !== result.bosses[slug][difficulty]?.length ||
         roomIndices.some((roomIndex) => !Number.isInteger(roomIndex) || result.rooms[difficulty]?.[roomIndex] === undefined))) {
         throw new Error(`${route.name}/${slug}: invalid room indices`);

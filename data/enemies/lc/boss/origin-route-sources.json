@@ -9,7 +9,8 @@
     "mapId": 601,
     "name": "幽魂骑士线",
     "finalBoss": "幽魂骑士",
-    "infernoRoomIndices": [[3], [7], [10, 11]]
+    "infernoRoomIndices": [[3], [7], [10, 11]],
+    "tormentRoomIndices": [[3], [7], [10], [13, 14]]
   },
   {
     "mapId": 603,

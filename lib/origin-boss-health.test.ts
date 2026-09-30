@@ -15,6 +15,7 @@ test("unavailable bosses and difficulties do not inherit classic health", () => 
   assert.equal(getOriginBossHealth("白胡子鱼王", "heroic", null), undefined);
   assert.equal(getOriginBossHealth("典狱长杰斯", "torment", null), undefined);
   assert.deepEqual(getOriginBossHealth("典狱长杰斯", "inferno", null), [144000]);
+  assert.equal(getOriginBossHealth("尸龙-弗莱皮", "inferno", null), undefined);
 });
 
 test("inferno routes follow reviewed boss order and room indices", () => {
@@ -36,9 +37,16 @@ test("inferno stage health matches reviewed calculation", () => {
   assert.deepEqual(getOriginBossDisplayHealth("幽魂骑士", "inferno", 7), [2555539, 3833309]);
 });
 
-test("unreviewed difficulties retain base health", () => {
-  assert.equal(getOriginBossRoomIndices("幽魂骑士", "torment"), null);
-  assert.deepEqual(getOriginBossDisplayHealth("幽魂骑士", "torment", null), [115200, 172800]);
+test("torment routes use reviewed stage factors", () => {
+  assert.deepEqual(ORIGIN_ROUTES[1].difficulties.torment?.map((boss) => boss.slug), [
+    "鬼舞樱", "白毛狼王", "尸龙-弗莱皮", "幽魂骑士",
+  ]);
+  assert.deepEqual(ORIGIN_ROUTES[1].difficulties.torment?.map((boss) => boss.roomIndices), [[3], [7], [10], [13, 14]]);
+  assert.deepEqual(getOriginBossRoomIndices("尸龙-弗莱皮", "torment"), [10]);
+  assert.deepEqual(getOriginBossDisplayHealth("尸龙-弗莱皮", "torment", null), [Math.round(144000 * 68.19345)]);
+  assert.deepEqual(getOriginBossDisplayHealth("幽魂骑士", "torment", null), [
+    Math.round(115200 * 242.01855), Math.round(172800 * 242.01855),
+  ]);
   assert.deepEqual(getOriginBossDisplayHealth("鬼舞樱", "heroic", null), [57600]);
   assert.equal(getOriginBossDisplayHealth("精绝女王", "torment", null), undefined);
 });

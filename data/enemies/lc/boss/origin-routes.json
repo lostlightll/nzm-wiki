@@ -64,15 +64,28 @@
       "torment": [
         {
           "slug": "鬼舞樱",
-          "roomIndices": null
+          "roomIndices": [
+            3
+          ]
         },
         {
           "slug": "白毛狼王",
-          "roomIndices": null
+          "roomIndices": [
+            7
+          ]
+        },
+        {
+          "slug": "尸龙-弗莱皮",
+          "roomIndices": [
+            10
+          ]
         },
         {
           "slug": "幽魂骑士",
-          "roomIndices": null
+          "roomIndices": [
+            13,
+            14
+          ]
         }
       ]
     }
