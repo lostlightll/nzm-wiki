@@ -520,6 +520,8 @@ export function generateSearchIndex(weapons: readonly ResolvedWeapon[]) {
     ...getStatusEffectSearchDocuments().map(createStatusEffectSearchItem),
   );
   items.push(...getSummonSearchDocuments().map(createSummonSearchItem));
+  const shootingRangeKeywords = ["靶场", "敌人图鉴", "生命", "护盾", "变异丧尸男", "冲锋工程师", "衣之枢"];
+  items.push({ title: "靶场", slug: "enemies/lc/shooting-range", path: "/enemies/lc/shooting-range", category: "敌人图鉴", keywords: shootingRangeKeywords, pinyin: buildPinyin(["靶场", ...shootingRangeKeywords]) });
   const s3TalentSlugs = ["iron-fist", "zero", "grappling-hook"];
   for (const season of ["s0", "s1"] as const) {
     for (const tree of getLegacyTalentCatalog(season)) {

@@ -44,7 +44,7 @@ function isBossRoute(pathname: string): boolean {
     pathname === "/bosses" ||
     pathname.startsWith("/bosses/") ||
     pathname === "/enemies/lc" ||
-    pathname.startsWith("/enemies/lc/")
+    (pathname.startsWith("/enemies/lc/") && !pathname.startsWith("/enemies/lc/shooting-range"))
   );
 }
 
@@ -55,7 +55,7 @@ function isBossPage(pathname: string): boolean {
   }
   return pathname === "/bosses" || pathname.startsWith("/bosses/") ||
     pathname === "/enemies/lc" ||
-    (pathname.startsWith("/enemies/lc/") && !pathname.startsWith("/enemies/lc/monsters"));
+    (pathname.startsWith("/enemies/lc/") && !pathname.startsWith("/enemies/lc/monsters") && !pathname.startsWith("/enemies/lc/shooting-range"));
 }
 
 function replaceSelectionInUrl(difficulty: BossDifficulty, mode: BossMode, roomIndex: number | null): void {

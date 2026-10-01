@@ -120,6 +120,7 @@ function generateSitemap() {
     { url: "/traps" },
     { url: "/enemies" },
     { url: "/bosses" },
+    { url: "/enemies/lc/shooting-range" },
     { url: "/enemies/td" },
     { url: "/guides" },
     { url: "/multiplier" },
