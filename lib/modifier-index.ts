@@ -31,6 +31,7 @@ export type RuntimeModifierAttribute = {
 
 export type RuntimeModifierEffect = {
   row: string;
+  operation: string;
   attributeTypeId: string;
   attributeLabel: string;
   direction: "increase" | "decrease" | "neutral" | "unknown";

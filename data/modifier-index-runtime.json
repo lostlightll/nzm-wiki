@@ -992,6 +992,7 @@
       "effects": [
         {
           "row": "lc:116000030_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -1003,6 +1004,7 @@
         },
         {
           "row": "lc:116000030_2_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -1014,6 +1016,7 @@
         },
         {
           "row": "lc:116000030_3_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -1093,6 +1096,7 @@
       "effects": [
         {
           "row": "lc:120700380_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -1119,6 +1123,7 @@
       "effects": [
         {
           "row": "lc:190100007_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -1145,6 +1150,7 @@
       "effects": [
         {
           "row": "lc:191201007_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -1171,6 +1177,7 @@
       "effects": [
         {
           "row": "lc:191201010_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -1197,6 +1204,7 @@
       "effects": [
         {
           "row": "lc:111010120_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -1208,6 +1216,7 @@
         },
         {
           "row": "lc:111010121_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "decrease",
@@ -1232,6 +1241,7 @@
       "effects": [
         {
           "row": "lc:191201015_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -1258,6 +1268,7 @@
       "effects": [
         {
           "row": "lc:190100006_27_9",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -1286,6 +1297,7 @@
       "effects": [
         {
           "row": "lc:120300243_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -1512,6 +1524,7 @@
       "effects": [
         {
           "row": "lc:130700401_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-resistance",
           "attributeLabel": "受到燃烧伤害降低",
           "direction": "decrease",
@@ -1539,6 +1552,7 @@
       "effects": [
         {
           "row": "lc:121300011_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "电击伤害",
           "direction": "increase",
@@ -1566,6 +1580,7 @@
       "effects": [
         {
           "row": "lc:121900040_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -1594,6 +1609,7 @@
       "effects": [
         {
           "row": "lc:121300301_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -1605,6 +1621,7 @@
         },
         {
           "row": "lc:121300302_1_0",
+          "operation": "B1",
           "attributeTypeId": "close-range-damage",
           "attributeLabel": "近距离武器伤害",
           "direction": "increase",
@@ -1632,6 +1649,7 @@
       "effects": [
         {
           "row": "lc:120200130_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -1659,6 +1677,7 @@
       "effects": [
         {
           "row": "lc:1400090104_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -1686,6 +1705,7 @@
       "effects": [
         {
           "row": "lc:120300250_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -1713,6 +1733,7 @@
       "effects": [
         {
           "row": "lc:121300410_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "腐蚀伤害",
           "direction": "increase",
@@ -1740,6 +1761,7 @@
       "effects": [
         {
           "row": "lc:121300551_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "物理伤害",
           "direction": "increase",
@@ -1783,6 +1805,7 @@
       "effects": [
         {
           "row": "lc:121300670_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "电击伤害",
           "direction": "increase",
@@ -1794,6 +1817,7 @@
         },
         {
           "row": "lc:121300671_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -1821,6 +1845,7 @@
       "effects": [
         {
           "row": "lc:121300221_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "腐蚀伤害",
           "direction": "increase",
@@ -1848,6 +1873,7 @@
       "effects": [
         {
           "row": "lc:120500060_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -1876,6 +1902,7 @@
       "effects": [
         {
           "row": "lc:121302701_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "电击伤害",
           "direction": "increase",
@@ -1887,6 +1914,7 @@
         },
         {
           "row": "lc:121302702_1_0",
+          "operation": "B1",
           "attributeTypeId": "long-range-damage",
           "attributeLabel": "远距离武器伤害",
           "direction": "increase",
@@ -1914,6 +1942,7 @@
       "effects": [
         {
           "row": "lc:121300531_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "物理伤害",
           "direction": "increase",
@@ -1941,6 +1970,7 @@
       "effects": [
         {
           "row": "lc:120700330_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -1968,6 +1998,7 @@
       "effects": [
         {
           "row": "lc:121300661_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -1995,6 +2026,7 @@
       "effects": [
         {
           "row": "lc:121300431_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -2022,6 +2054,7 @@
       "effects": [
         {
           "row": "lc:120600300_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -2050,6 +2083,7 @@
       "effects": [
         {
           "row": "lc:121300780_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "腐蚀伤害",
           "direction": "increase",
@@ -2061,6 +2095,7 @@
         },
         {
           "row": "lc:121300781_1_0",
+          "operation": "B1",
           "attributeTypeId": "close-range-damage",
           "attributeLabel": "近距离武器伤害",
           "direction": "increase",
@@ -2103,6 +2138,7 @@
       "effects": [
         {
           "row": "lc:121300420_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -2130,6 +2166,7 @@
       "effects": [
         {
           "row": "lc:121300620_1_0",
+          "operation": "B1",
           "attributeTypeId": "close-range-damage",
           "attributeLabel": "近距离武器伤害",
           "direction": "increase",
@@ -2157,6 +2194,7 @@
       "effects": [
         {
           "row": "lc:120900010_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -2184,6 +2222,7 @@
       "effects": [
         {
           "row": "lc:1400090102_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -2195,6 +2234,7 @@
         },
         {
           "row": "lc:1400090106_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -2222,6 +2262,7 @@
       "effects": [
         {
           "row": "lc:120700120_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -2249,6 +2290,7 @@
       "effects": [
         {
           "row": "lc:120500342_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -2260,6 +2302,7 @@
         },
         {
           "row": "lc:120500340_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -2287,6 +2330,7 @@
       "effects": [
         {
           "row": "lc:121300600_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -2314,6 +2358,7 @@
       "effects": [
         {
           "row": "lc:1400090102_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -2325,6 +2370,7 @@
         },
         {
           "row": "lc:1400090106_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -2352,6 +2398,7 @@
       "effects": [
         {
           "row": "lc:121300401_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "物理伤害",
           "direction": "increase",
@@ -2394,6 +2441,7 @@
       "effects": [
         {
           "row": "lc:120600170_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -2421,6 +2469,7 @@
       "effects": [
         {
           "row": "lc:121300540_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -2448,6 +2497,7 @@
       "effects": [
         {
           "row": "lc:121300481_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -2475,6 +2525,7 @@
       "effects": [
         {
           "row": "lc:121300081_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -2502,6 +2553,7 @@
       "effects": [
         {
           "row": "lc:120900040_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -2545,6 +2597,7 @@
       "effects": [
         {
           "row": "lc:121300451_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "腐蚀伤害",
           "direction": "increase",
@@ -2556,6 +2609,7 @@
         },
         {
           "row": "lc:121300452_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -2583,6 +2637,7 @@
       "effects": [
         {
           "row": "lc:121300441_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "电击伤害",
           "direction": "increase",
@@ -2610,6 +2665,7 @@
       "effects": [
         {
           "row": "lc:121300831_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -2637,6 +2693,7 @@
       "effects": [
         {
           "row": "lc:121300231_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "急冻伤害",
           "direction": "increase",
@@ -2664,6 +2721,7 @@
       "effects": [
         {
           "row": "lc:121300551_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "物理伤害",
           "direction": "increase",
@@ -2691,6 +2749,7 @@
       "effects": [
         {
           "row": "lc:121300630_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "急冻伤害",
           "direction": "increase",
@@ -2718,6 +2777,7 @@
       "effects": [
         {
           "row": "lc:121300041_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "腐蚀伤害",
           "direction": "increase",
@@ -2729,6 +2789,7 @@
         },
         {
           "row": "lc:121300340_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "腐蚀伤害",
           "direction": "increase",
@@ -2756,6 +2817,7 @@
       "effects": [
         {
           "row": "lc:121300291_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -2784,6 +2846,7 @@
       "effects": [
         {
           "row": "lc:121300880_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "腐蚀伤害",
           "direction": "increase",
@@ -2795,6 +2858,7 @@
         },
         {
           "row": "lc:121300881_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -2823,6 +2887,7 @@
       "effects": [
         {
           "row": "lc:121300590_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "物理伤害",
           "direction": "increase",
@@ -2834,6 +2899,7 @@
         },
         {
           "row": "lc:121300591_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -2862,6 +2928,7 @@
       "effects": [
         {
           "row": "lc:121300281_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -2873,6 +2940,7 @@
         },
         {
           "row": "lc:121300282_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -2916,6 +2984,7 @@
       "effects": [
         {
           "row": "lc:121300750_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "急冻伤害",
           "direction": "increase",
@@ -2927,6 +2996,7 @@
         },
         {
           "row": "lc:121300751_1_0",
+          "operation": "B1",
           "attributeTypeId": "reload-speed",
           "attributeLabel": "角色全武器换弹速度提高",
           "direction": "increase",
@@ -2954,6 +3024,7 @@
       "effects": [
         {
           "row": "lc:121300371_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "物理伤害",
           "direction": "increase",
@@ -2981,6 +3052,7 @@
       "effects": [
         {
           "row": "lc:120300242_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -3024,6 +3096,7 @@
       "effects": [
         {
           "row": "lc:121300471_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "电击伤害",
           "direction": "increase",
@@ -3035,6 +3108,7 @@
         },
         {
           "row": "lc:121300472_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -3062,6 +3136,7 @@
       "effects": [
         {
           "row": "lc:121300710_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "物理伤害",
           "direction": "increase",
@@ -3104,6 +3179,7 @@
       "effects": [
         {
           "row": "lc:120600042_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "腐蚀伤害",
           "direction": "increase",
@@ -3131,6 +3207,7 @@
       "effects": [
         {
           "row": "lc:120200130_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -3158,6 +3235,7 @@
       "effects": [
         {
           "row": "lc:121300321_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "物理伤害",
           "direction": "increase",
@@ -3185,6 +3263,7 @@
       "effects": [
         {
           "row": "lc:121300520_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -3228,6 +3307,7 @@
       "effects": [
         {
           "row": "lc:121300501_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -3239,6 +3319,7 @@
         },
         {
           "row": "lc:121300502_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -3266,6 +3347,7 @@
       "effects": [
         {
           "row": "lc:130100221_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -3293,6 +3375,7 @@
       "effects": [
         {
           "row": "lc:1701000102_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -3320,6 +3403,7 @@
       "effects": [
         {
           "row": "lc:1701000106_1_0",
+          "operation": "B1",
           "attributeTypeId": "long-range-damage",
           "attributeLabel": "远距离武器伤害",
           "direction": "increase",
@@ -3347,6 +3431,7 @@
       "effects": [
         {
           "row": "lc:1701000103_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -3374,6 +3459,7 @@
       "effects": [
         {
           "row": "lc:1701000105_1_0",
+          "operation": "B1",
           "attributeTypeId": "close-range-damage",
           "attributeLabel": "近距离武器伤害",
           "direction": "increase",
@@ -3401,6 +3487,7 @@
       "effects": [
         {
           "row": "lc:1701000102_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -3428,6 +3515,7 @@
       "effects": [
         {
           "row": "lc:160101001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -3439,6 +3527,7 @@
         },
         {
           "row": "lc:160101002_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -3450,6 +3539,7 @@
         },
         {
           "row": "lc:160101003_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -3477,6 +3567,7 @@
       "effects": [
         {
           "row": "lc:1701000106_1_0",
+          "operation": "B1",
           "attributeTypeId": "long-range-damage",
           "attributeLabel": "远距离武器伤害",
           "direction": "increase",
@@ -3504,6 +3595,7 @@
       "effects": [
         {
           "row": "lc:119124001_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -3531,6 +3623,7 @@
       "effects": [
         {
           "row": "lc:1701000103_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -3558,6 +3651,7 @@
       "effects": [
         {
           "row": "lc:1701000105_1_0",
+          "operation": "B1",
           "attributeTypeId": "close-range-damage",
           "attributeLabel": "近距离武器伤害",
           "direction": "increase",
@@ -3585,6 +3679,7 @@
       "effects": [
         {
           "row": "lc:111010161_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-resistance",
           "attributeLabel": "伤害减免",
           "direction": "decrease",
@@ -3612,6 +3707,7 @@
       "effects": [
         {
           "row": "lc:1701000103_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -3639,6 +3735,7 @@
       "effects": [
         {
           "row": "lc:111010122_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -3666,6 +3763,7 @@
       "effects": [
         {
           "row": "lc:111010170_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -3693,6 +3791,7 @@
       "effects": [
         {
           "row": "lc:1701000105_1_0",
+          "operation": "B1",
           "attributeTypeId": "close-range-damage",
           "attributeLabel": "近距离武器伤害",
           "direction": "increase",
@@ -3720,6 +3819,7 @@
       "effects": [
         {
           "row": "lc:111010161_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-resistance",
           "attributeLabel": "伤害减免",
           "direction": "decrease",
@@ -3747,6 +3847,7 @@
       "effects": [
         {
           "row": "lc:111010161_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-resistance",
           "attributeLabel": "伤害减免",
           "direction": "decrease",
@@ -3774,6 +3875,7 @@
       "effects": [
         {
           "row": "lc:160201005_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -3801,6 +3903,7 @@
       "effects": [
         {
           "row": "lc:160201008_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -3812,6 +3915,7 @@
         },
         {
           "row": "lc:160201008_2_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -3823,6 +3927,7 @@
         },
         {
           "row": "lc:160201008_3_2",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -3850,6 +3955,7 @@
       "effects": [
         {
           "row": "lc:1701000103_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -3877,6 +3983,7 @@
       "effects": [
         {
           "row": "lc:1701000105_1_0",
+          "operation": "B1",
           "attributeTypeId": "close-range-damage",
           "attributeLabel": "近距离武器伤害",
           "direction": "increase",
@@ -3904,6 +4011,7 @@
       "effects": [
         {
           "row": "lc:111010161_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-resistance",
           "attributeLabel": "伤害减免",
           "direction": "decrease",
@@ -3931,6 +4039,7 @@
       "effects": [
         {
           "row": "lc:160201007_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -3958,6 +4067,7 @@
       "effects": [
         {
           "row": "lc:160202003_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -3985,6 +4095,7 @@
       "effects": [
         {
           "row": "lc:160202008_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -3996,6 +4107,7 @@
         },
         {
           "row": "lc:160202008_2_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -4007,6 +4119,7 @@
         },
         {
           "row": "lc:160202008_3_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -4034,6 +4147,7 @@
       "effects": [
         {
           "row": "lc:160202004_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -4045,6 +4159,7 @@
         },
         {
           "row": "lc:160202004_2_1",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -4056,6 +4171,7 @@
         },
         {
           "row": "lc:160202004_3_2",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -4083,6 +4199,7 @@
       "effects": [
         {
           "row": "lc:111010161_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-resistance",
           "attributeLabel": "伤害减免",
           "direction": "decrease",
@@ -4110,6 +4227,7 @@
       "effects": [
         {
           "row": "lc:160202007_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -4137,6 +4255,7 @@
       "effects": [
         {
           "row": "lc:1701000103_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -4164,6 +4283,7 @@
       "effects": [
         {
           "row": "lc:1701000105_1_0",
+          "operation": "B1",
           "attributeTypeId": "close-range-damage",
           "attributeLabel": "近距离武器伤害",
           "direction": "increase",
@@ -4191,6 +4311,7 @@
       "effects": [
         {
           "row": "lc:111010161_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-resistance",
           "attributeLabel": "伤害减免",
           "direction": "decrease",
@@ -4218,6 +4339,7 @@
       "effects": [
         {
           "row": "lc:160202007_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -4245,6 +4367,7 @@
       "effects": [
         {
           "row": "lc:160202007_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -4272,6 +4395,7 @@
       "effects": [
         {
           "row": "lc:160202009_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-correction",
           "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
           "direction": "increase",
@@ -4299,6 +4423,7 @@
       "effects": [
         {
           "row": "lc:160202007_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -4327,6 +4452,7 @@
       "effects": [
         {
           "row": "lc:160303001_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -4338,6 +4464,7 @@
         },
         {
           "row": "lc:160303001_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -4368,6 +4495,7 @@
       "effects": [
         {
           "row": "lc:111030002_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -4379,6 +4507,7 @@
         },
         {
           "row": "lc:111030002_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -4390,6 +4519,7 @@
         },
         {
           "row": "lc:111030002_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -4401,6 +4531,7 @@
         },
         {
           "row": "lc:111030002_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -4431,6 +4562,7 @@
       "effects": [
         {
           "row": "lc:111030003_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -4442,6 +4574,7 @@
         },
         {
           "row": "lc:111030003_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -4453,6 +4586,7 @@
         },
         {
           "row": "lc:111030003_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -4464,6 +4598,7 @@
         },
         {
           "row": "lc:111030003_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -4491,6 +4626,7 @@
       "effects": [
         {
           "row": "lc:160303005_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -4521,6 +4657,7 @@
       "effects": [
         {
           "row": "lc:111030006_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -4532,6 +4669,7 @@
         },
         {
           "row": "lc:111030006_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -4543,6 +4681,7 @@
         },
         {
           "row": "lc:111030006_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -4554,6 +4693,7 @@
         },
         {
           "row": "lc:111030006_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -4581,6 +4721,7 @@
       "effects": [
         {
           "row": "lc:160303004_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -4611,6 +4752,7 @@
       "effects": [
         {
           "row": "lc:111030009_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -4622,6 +4764,7 @@
         },
         {
           "row": "lc:111030009_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -4633,6 +4776,7 @@
         },
         {
           "row": "lc:111030009_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -4644,6 +4788,7 @@
         },
         {
           "row": "lc:111030009_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -4672,6 +4817,7 @@
       "effects": [
         {
           "row": "lc:160303006_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -4683,6 +4829,7 @@
         },
         {
           "row": "lc:160303006_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -4710,6 +4857,7 @@
       "effects": [
         {
           "row": "lc:111030011_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -4737,6 +4885,7 @@
       "effects": [
         {
           "row": "lc:111030019_1_1",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -4767,6 +4916,7 @@
       "effects": [
         {
           "row": "lc:111030002_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -4778,6 +4928,7 @@
         },
         {
           "row": "lc:111030002_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -4789,6 +4940,7 @@
         },
         {
           "row": "lc:111030002_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -4800,6 +4952,7 @@
         },
         {
           "row": "lc:111030002_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -4828,6 +4981,7 @@
       "effects": [
         {
           "row": "lc:111030017_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -4839,6 +4993,7 @@
         },
         {
           "row": "lc:111030017_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -4869,6 +5024,7 @@
       "effects": [
         {
           "row": "lc:111030003_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -4880,6 +5036,7 @@
         },
         {
           "row": "lc:111030003_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -4891,6 +5048,7 @@
         },
         {
           "row": "lc:111030003_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -4902,6 +5060,7 @@
         },
         {
           "row": "lc:111030003_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -4932,6 +5091,7 @@
       "effects": [
         {
           "row": "lc:111030006_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -4943,6 +5103,7 @@
         },
         {
           "row": "lc:111030006_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -4954,6 +5115,7 @@
         },
         {
           "row": "lc:111030006_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -4965,6 +5127,7 @@
         },
         {
           "row": "lc:111030006_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -4992,6 +5155,7 @@
       "effects": [
         {
           "row": "lc:111030016_1_0",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -5022,6 +5186,7 @@
       "effects": [
         {
           "row": "lc:111030009_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -5033,6 +5198,7 @@
         },
         {
           "row": "lc:111030009_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -5044,6 +5210,7 @@
         },
         {
           "row": "lc:111030009_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -5055,6 +5222,7 @@
         },
         {
           "row": "lc:111030009_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -5082,6 +5250,7 @@
       "effects": [
         {
           "row": "lc:111030011_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -5110,6 +5279,7 @@
       "effects": [
         {
           "row": "lc:111031043_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -5121,6 +5291,7 @@
         },
         {
           "row": "lc:111031043_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -5151,6 +5322,7 @@
       "effects": [
         {
           "row": "lc:111030002_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -5162,6 +5334,7 @@
         },
         {
           "row": "lc:111030002_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -5173,6 +5346,7 @@
         },
         {
           "row": "lc:111030002_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -5184,6 +5358,7 @@
         },
         {
           "row": "lc:111030002_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -5212,6 +5387,7 @@
       "effects": [
         {
           "row": "lc:111031044_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -5223,6 +5399,7 @@
         },
         {
           "row": "lc:111031044_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -5253,6 +5430,7 @@
       "effects": [
         {
           "row": "lc:111030003_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -5264,6 +5442,7 @@
         },
         {
           "row": "lc:111030003_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -5275,6 +5454,7 @@
         },
         {
           "row": "lc:111030003_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -5286,6 +5466,7 @@
         },
         {
           "row": "lc:111030003_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -5316,6 +5497,7 @@
       "effects": [
         {
           "row": "lc:111030006_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -5327,6 +5509,7 @@
         },
         {
           "row": "lc:111030006_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -5338,6 +5521,7 @@
         },
         {
           "row": "lc:111030006_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -5349,6 +5533,7 @@
         },
         {
           "row": "lc:111030006_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -5377,6 +5562,7 @@
       "effects": [
         {
           "row": "lc:111031045_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -5388,6 +5574,7 @@
         },
         {
           "row": "lc:111031045_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -5418,6 +5605,7 @@
       "effects": [
         {
           "row": "lc:111030009_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-debuff-damage",
           "attributeLabel": "火debuff伤害增加",
           "direction": "increase",
@@ -5429,6 +5617,7 @@
         },
         {
           "row": "lc:111030009_1_1",
+          "operation": "B1",
           "attributeTypeId": "corossive-debuff-damage",
           "attributeLabel": "毒debuff伤害增加",
           "direction": "increase",
@@ -5440,6 +5629,7 @@
         },
         {
           "row": "lc:111030009_1_2",
+          "operation": "B1",
           "attributeTypeId": "cryo-debuff-damage",
           "attributeLabel": "冰debuff伤害增加",
           "direction": "increase",
@@ -5451,6 +5641,7 @@
         },
         {
           "row": "lc:111030009_1_3",
+          "operation": "B1",
           "attributeTypeId": "shock-debuff-damage",
           "attributeLabel": "电debuff伤害增加",
           "direction": "increase",
@@ -5478,6 +5669,7 @@
       "effects": [
         {
           "row": "lc:111030011_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -5506,6 +5698,7 @@
       "effects": [
         {
           "row": "lc:111010012_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -5535,6 +5728,7 @@
       "effects": [
         {
           "row": "lc:111051040_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -5546,6 +5740,7 @@
         },
         {
           "row": "lc:111051040_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -5576,6 +5771,7 @@
       "effects": [
         {
           "row": "lc:111051028_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -5587,6 +5783,7 @@
         },
         {
           "row": "lc:111051028_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -5598,6 +5795,7 @@
         },
         {
           "row": "lc:111051028_1_2",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -5626,6 +5824,7 @@
       "effects": [
         {
           "row": "lc:111051053_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -5637,6 +5836,7 @@
         },
         {
           "row": "lc:111051054_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -5665,6 +5865,7 @@
       "effects": [
         {
           "row": "lc:120600173_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -5694,6 +5895,7 @@
       "effects": [
         {
           "row": "lc:121400043_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -5705,6 +5907,7 @@
         },
         {
           "row": "lc:121400044_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -5733,6 +5936,7 @@
       "effects": [
         {
           "row": "lc:130044411_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -5761,6 +5965,7 @@
       "effects": [
         {
           "row": "lc:120300119_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -5791,6 +5996,7 @@
       "effects": [
         {
           "row": "lc:111051010_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -5802,6 +6008,7 @@
         },
         {
           "row": "lc:111051011_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -5813,6 +6020,7 @@
         },
         {
           "row": "lc:111051012_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -5842,6 +6050,7 @@
       "effects": [
         {
           "row": "lc:111051023_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -5853,6 +6062,7 @@
         },
         {
           "row": "lc:111051024_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -5883,6 +6093,7 @@
       "effects": [
         {
           "row": "lc:111051036_1_0",
+          "operation": "B1",
           "attributeTypeId": "magazine-capacity",
           "attributeLabel": "主弹夹弹量上限加成系数",
           "direction": "increase",
@@ -5894,6 +6105,7 @@
         },
         {
           "row": "lc:111051080_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-rate",
           "attributeLabel": "暴击率",
           "direction": "increase",
@@ -5905,6 +6117,7 @@
         },
         {
           "row": "lc:111051057_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -5935,6 +6148,7 @@
       "effects": [
         {
           "row": "lc:111051034_1_0",
+          "operation": "B1",
           "attributeTypeId": "reload-speed",
           "attributeLabel": "武器换弹速度提高",
           "direction": "increase",
@@ -5946,6 +6160,7 @@
         },
         {
           "row": "lc:111051035_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -5957,6 +6172,7 @@
         },
         {
           "row": "lc:111051035_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -5986,6 +6202,7 @@
       "effects": [
         {
           "row": "lc:111051039_1_0",
+          "operation": "B1",
           "attributeTypeId": "movement-speed",
           "attributeLabel": "移动速度",
           "direction": "increase",
@@ -5997,6 +6214,7 @@
         },
         {
           "row": "lc:111051038_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -6027,6 +6245,7 @@
       "effects": [
         {
           "row": "lc:111051013_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6038,6 +6257,7 @@
         },
         {
           "row": "lc:111051013_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6049,6 +6269,7 @@
         },
         {
           "row": "lc:111051014_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -6060,6 +6281,7 @@
         },
         {
           "row": "lc:111051015_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6071,6 +6293,7 @@
         },
         {
           "row": "lc:111051015_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6082,6 +6305,7 @@
         },
         {
           "row": "lc:111051016_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -6111,6 +6335,7 @@
       "effects": [
         {
           "row": "lc:111051008_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6122,6 +6347,7 @@
         },
         {
           "row": "lc:111051008_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6133,6 +6359,7 @@
         },
         {
           "row": "lc:111051009_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6144,6 +6371,7 @@
         },
         {
           "row": "lc:111051009_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6172,6 +6400,7 @@
       "effects": [
         {
           "row": "lc:120600174_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -6202,6 +6431,7 @@
       "effects": [
         {
           "row": "lc:111051032_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6213,6 +6443,7 @@
         },
         {
           "row": "lc:111051032_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6224,6 +6455,7 @@
         },
         {
           "row": "lc:111051033_1_0",
+          "operation": "B1",
           "attributeTypeId": "movement-speed",
           "attributeLabel": "移动速度",
           "direction": "increase",
@@ -6256,6 +6488,7 @@
       "effects": [
         {
           "row": "lc:111051029_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-rate",
           "attributeLabel": "暴击率",
           "direction": "increase",
@@ -6267,6 +6500,7 @@
         },
         {
           "row": "lc:111051029_1_1",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -6278,6 +6512,7 @@
         },
         {
           "row": "lc:111051030_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6289,6 +6524,7 @@
         },
         {
           "row": "lc:111051030_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6300,6 +6536,7 @@
         },
         {
           "row": "lc:111051031_1_0",
+          "operation": "B1",
           "attributeTypeId": "movement-speed",
           "attributeLabel": "移动速度",
           "direction": "increase",
@@ -6329,6 +6566,7 @@
       "effects": [
         {
           "row": "lc:111051051_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6340,6 +6578,7 @@
         },
         {
           "row": "lc:111051051_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6368,6 +6607,7 @@
       "effects": [
         {
           "row": "lc:111051005_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -6396,6 +6636,7 @@
       "effects": [
         {
           "row": "lc:111051007_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -6426,6 +6667,7 @@
       "effects": [
         {
           "row": "lc:111051019_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6437,6 +6679,7 @@
         },
         {
           "row": "lc:111051019_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6448,6 +6691,7 @@
         },
         {
           "row": "lc:111051020_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -6476,6 +6720,7 @@
       "effects": [
         {
           "row": "lc:111051025_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -6505,6 +6750,7 @@
       "effects": [
         {
           "row": "lc:111051027_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6516,6 +6762,7 @@
         },
         {
           "row": "lc:111051027_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6544,6 +6791,7 @@
       "effects": [
         {
           "row": "lc:121600115_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -6574,6 +6822,7 @@
       "effects": [
         {
           "row": "lc:120700382_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6585,6 +6834,7 @@
         },
         {
           "row": "lc:120700383_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -6596,6 +6846,7 @@
         },
         {
           "row": "lc:120700384_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6624,6 +6875,7 @@
       "effects": [
         {
           "row": "lc:120300171_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6652,6 +6904,7 @@
       "effects": [
         {
           "row": "lc:120600069_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -6681,6 +6934,7 @@
       "effects": [
         {
           "row": "lc:121400041_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -6692,6 +6946,7 @@
         },
         {
           "row": "lc:121400042_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6720,6 +6975,7 @@
       "effects": [
         {
           "row": "lc:121400040_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -6748,6 +7004,7 @@
       "effects": [
         {
           "row": "lc:120600305_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -6777,6 +7034,7 @@
       "effects": [
         {
           "row": "lc:120700121_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -6788,6 +7046,7 @@
         },
         {
           "row": "lc:120700121_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -6817,6 +7076,7 @@
       "effects": [
         {
           "row": "lc:120600190_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -6828,6 +7088,7 @@
         },
         {
           "row": "lc:120600191_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-rate",
           "attributeLabel": "武器射速提升",
           "direction": "increase",
@@ -6856,6 +7117,7 @@
       "effects": [
         {
           "row": "lc:1400090107_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -6884,6 +7146,7 @@
       "effects": [
         {
           "row": "lc:131521400_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -6912,6 +7175,7 @@
       "effects": [
         {
           "row": "lc:131521500_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -6940,6 +7204,7 @@
       "effects": [
         {
           "row": "lc:131522600_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -6968,6 +7233,7 @@
       "effects": [
         {
           "row": "lc:131522700_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -6996,6 +7262,7 @@
       "effects": [
         {
           "row": "lc:111031038_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -7024,6 +7291,7 @@
       "effects": [
         {
           "row": "lc:111010107_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -7052,6 +7320,7 @@
       "effects": [
         {
           "row": "lc:1316199001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -7080,6 +7349,7 @@
       "effects": [
         {
           "row": "lc:131521200_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -7108,6 +7378,7 @@
       "effects": [
         {
           "row": "lc:131521600_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -7136,6 +7407,7 @@
       "effects": [
         {
           "row": "lc:131522400_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -7164,6 +7436,7 @@
       "effects": [
         {
           "row": "lc:131521000_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -7192,6 +7465,7 @@
       "effects": [
         {
           "row": "lc:131522200_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -7220,6 +7494,7 @@
       "effects": [
         {
           "row": "lc:111041024_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -7248,6 +7523,7 @@
       "effects": [
         {
           "row": "lc:111010112_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -7276,6 +7552,7 @@
       "effects": [
         {
           "row": "lc:1316198001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -7304,6 +7581,7 @@
       "effects": [
         {
           "row": "lc:111010105_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -7332,6 +7610,7 @@
       "effects": [
         {
           "row": "lc:111010129_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -7361,6 +7640,7 @@
       "effects": [
         {
           "row": "lc:131520500_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -7372,6 +7652,7 @@
         },
         {
           "row": "lc:131520500_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -7401,6 +7682,7 @@
       "effects": [
         {
           "row": "lc:131521300_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -7412,6 +7694,7 @@
         },
         {
           "row": "lc:131521300_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -7440,6 +7723,7 @@
       "effects": [
         {
           "row": "lc:131521700_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -7468,6 +7752,7 @@
       "effects": [
         {
           "row": "lc:131522500_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -7512,6 +7797,7 @@
       "effects": [
         {
           "row": "lc:131520800_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -7540,6 +7826,7 @@
       "effects": [
         {
           "row": "lc:131522000_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -7568,6 +7855,7 @@
       "effects": [
         {
           "row": "lc:111041022_1_2",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -7596,6 +7884,7 @@
       "effects": [
         {
           "row": "lc:111031029_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -7625,6 +7914,7 @@
       "effects": [
         {
           "row": "lc:111031019_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -7636,6 +7926,7 @@
         },
         {
           "row": "lc:111031019_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -7664,6 +7955,7 @@
       "effects": [
         {
           "row": "lc:111041007_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -7692,6 +7984,7 @@
       "effects": [
         {
           "row": "lc:131521100_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -7720,6 +8013,7 @@
       "effects": [
         {
           "row": "lc:131522300_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -7748,6 +8042,7 @@
       "effects": [
         {
           "row": "lc:111010088_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -7776,6 +8071,7 @@
       "effects": [
         {
           "row": "lc:111010061_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -7804,6 +8100,7 @@
       "effects": [
         {
           "row": "lc:111010099_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -7832,6 +8129,7 @@
       "effects": [
         {
           "row": "lc:111010109_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -7860,6 +8158,7 @@
       "effects": [
         {
           "row": "lc:111010062_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -7888,6 +8187,7 @@
       "effects": [
         {
           "row": "lc:111010136_1_1",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -7916,6 +8216,7 @@
       "effects": [
         {
           "row": "lc:111010084_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -7945,6 +8246,7 @@
       "effects": [
         {
           "row": "lc:111041003_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -7956,6 +8258,7 @@
         },
         {
           "row": "lc:111041003_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -7984,6 +8287,7 @@
       "effects": [
         {
           "row": "lc:111010056_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8028,6 +8332,7 @@
       "effects": [
         {
           "row": "lc:111010102_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8057,6 +8362,7 @@
       "effects": [
         {
           "row": "lc:111041014_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -8068,6 +8374,7 @@
         },
         {
           "row": "lc:111041014_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -8096,6 +8403,7 @@
       "effects": [
         {
           "row": "lc:111010138_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8124,6 +8432,7 @@
       "effects": [
         {
           "row": "lc:111010060_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8152,6 +8461,7 @@
       "effects": [
         {
           "row": "lc:111031036_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8180,6 +8490,7 @@
       "effects": [
         {
           "row": "lc:111031028_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8208,6 +8519,7 @@
       "effects": [
         {
           "row": "lc:111051002_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -8236,6 +8548,7 @@
       "effects": [
         {
           "row": "lc:120100242_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -8264,6 +8577,7 @@
       "effects": [
         {
           "row": "lc:130100241_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -8292,6 +8606,7 @@
       "effects": [
         {
           "row": "lc:120100240_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -8320,6 +8635,7 @@
       "effects": [
         {
           "row": "lc:120600171_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8364,6 +8680,7 @@
       "effects": [
         {
           "row": "lc:121600113_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -8393,6 +8710,7 @@
       "effects": [
         {
           "row": "lc:121600010_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -8404,6 +8722,7 @@
         },
         {
           "row": "lc:121600010_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -8432,6 +8751,7 @@
       "effects": [
         {
           "row": "lc:120500052_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8443,6 +8763,7 @@
         },
         {
           "row": "lc:120500053_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8471,6 +8792,7 @@
       "effects": [
         {
           "row": "lc:121500065_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -8515,6 +8837,7 @@
       "effects": [
         {
           "row": "lc:130044311_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8543,6 +8866,7 @@
       "effects": [
         {
           "row": "lc:121900100_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -8571,6 +8895,7 @@
       "effects": [
         {
           "row": "lc:130044413_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -8599,6 +8924,7 @@
       "effects": [
         {
           "row": "lc:130044410_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -8627,6 +8953,7 @@
       "effects": [
         {
           "row": "lc:111041027_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8655,6 +8982,7 @@
       "effects": [
         {
           "row": "lc:111041026_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -8683,6 +9011,7 @@
       "effects": [
         {
           "row": "lc:111031014_1_0",
+          "operation": "B2",
           "attributeTypeId": "damage-correction",
           "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
           "direction": "increase",
@@ -8711,6 +9040,7 @@
       "effects": [
         {
           "row": "lc:120600172_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8739,6 +9069,7 @@
       "effects": [
         {
           "row": "lc:120300310_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8767,6 +9098,7 @@
       "effects": [
         {
           "row": "lc:120600068_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8795,6 +9127,7 @@
       "effects": [
         {
           "row": "lc:120600064_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8823,6 +9156,7 @@
       "effects": [
         {
           "row": "lc:120600066_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8851,6 +9185,7 @@
       "effects": [
         {
           "row": "lc:120600304_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8880,6 +9215,7 @@
       "effects": [
         {
           "row": "lc:130044412_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -8891,6 +9227,7 @@
         },
         {
           "row": "lc:130044412_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -8919,6 +9256,7 @@
       "effects": [
         {
           "row": "lc:121600011_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -8947,6 +9285,7 @@
       "effects": [
         {
           "row": "lc:130044030_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -8975,6 +9314,7 @@
       "effects": [
         {
           "row": "lc:111010017_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9003,6 +9343,7 @@
       "effects": [
         {
           "row": "lc:111010055_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9031,6 +9372,7 @@
       "effects": [
         {
           "row": "lc:111031027_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -9059,6 +9401,7 @@
       "effects": [
         {
           "row": "lc:111010080_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9087,6 +9430,7 @@
       "effects": [
         {
           "row": "lc:111010001_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9115,6 +9459,7 @@
       "effects": [
         {
           "row": "lc:111010081_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9143,6 +9488,7 @@
       "effects": [
         {
           "row": "lc:111041001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -9171,6 +9517,7 @@
       "effects": [
         {
           "row": "lc:111041010_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9199,6 +9546,7 @@
       "effects": [
         {
           "row": "lc:111041018_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -9227,6 +9575,7 @@
       "effects": [
         {
           "row": "lc:111010016_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -9255,6 +9604,7 @@
       "effects": [
         {
           "row": "lc:111041004_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -9283,6 +9633,7 @@
       "effects": [
         {
           "row": "lc:111031032_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9311,6 +9662,7 @@
       "effects": [
         {
           "row": "lc:111041016_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -9339,6 +9691,7 @@
       "effects": [
         {
           "row": "lc:111010087_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9367,6 +9720,7 @@
       "effects": [
         {
           "row": "lc:111010076_1_1",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -9395,6 +9749,7 @@
       "effects": [
         {
           "row": "lc:111010073_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9439,6 +9794,7 @@
       "effects": [
         {
           "row": "lc:111031033_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9450,6 +9806,7 @@
         },
         {
           "row": "lc:111031034_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9478,6 +9835,7 @@
       "effects": [
         {
           "row": "lc:111031018_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -9506,6 +9864,7 @@
       "effects": [
         {
           "row": "lc:111010054_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9534,6 +9893,7 @@
       "effects": [
         {
           "row": "lc:111041006_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -9562,6 +9922,7 @@
       "effects": [
         {
           "row": "lc:111041008_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9622,6 +9983,7 @@
       "effects": [
         {
           "row": "lc:120600067_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9650,6 +10012,7 @@
       "effects": [
         {
           "row": "lc:120600301_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9678,6 +10041,7 @@
       "effects": [
         {
           "row": "lc:120300118_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9738,6 +10102,7 @@
       "effects": [
         {
           "row": "lc:111010022_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -9766,6 +10131,7 @@
       "effects": [
         {
           "row": "lc:111051018_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -9796,6 +10162,7 @@
       "effects": [
         {
           "row": "lc:111051058_1_0",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -9807,6 +10174,7 @@
         },
         {
           "row": "lc:111051081_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-correction",
           "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
           "direction": "increase",
@@ -9818,6 +10186,7 @@
         },
         {
           "row": "lc:111051037_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -9846,6 +10215,7 @@
       "effects": [
         {
           "row": "lc:111051017_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -9872,6 +10242,7 @@
       "effects": [
         {
           "row": "lc:131520400_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -9883,6 +10254,7 @@
         },
         {
           "row": "lc:131520400_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -9909,6 +10281,7 @@
       "effects": [
         {
           "row": "lc:131520500_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -9920,6 +10293,7 @@
         },
         {
           "row": "lc:131520500_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -9945,6 +10319,7 @@
       "effects": [
         {
           "row": "lc:131520800_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -9970,6 +10345,7 @@
       "effects": [
         {
           "row": "lc:131521000_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -9995,6 +10371,7 @@
       "effects": [
         {
           "row": "lc:131521100_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -10020,6 +10397,7 @@
       "effects": [
         {
           "row": "lc:131521200_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -10046,6 +10424,7 @@
       "effects": [
         {
           "row": "lc:131521300_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -10057,6 +10436,7 @@
         },
         {
           "row": "lc:131521300_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -10082,6 +10462,7 @@
       "effects": [
         {
           "row": "lc:131521400_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10107,6 +10488,7 @@
       "effects": [
         {
           "row": "lc:131521500_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10133,6 +10515,7 @@
       "effects": [
         {
           "row": "lc:131521600_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -10144,6 +10527,7 @@
         },
         {
           "row": "lc:131521600_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -10170,6 +10554,7 @@
       "effects": [
         {
           "row": "lc:131521700_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -10181,6 +10566,7 @@
         },
         {
           "row": "lc:131521700_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -10206,6 +10592,7 @@
       "effects": [
         {
           "row": "lc:131522000_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -10231,6 +10618,7 @@
       "effects": [
         {
           "row": "lc:131522200_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -10256,6 +10644,7 @@
       "effects": [
         {
           "row": "lc:131522300_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -10282,6 +10671,7 @@
       "effects": [
         {
           "row": "lc:131522400_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -10293,6 +10683,7 @@
         },
         {
           "row": "lc:131522400_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -10319,6 +10710,7 @@
       "effects": [
         {
           "row": "lc:131522500_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -10330,6 +10722,7 @@
         },
         {
           "row": "lc:131522500_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -10355,6 +10748,7 @@
       "effects": [
         {
           "row": "lc:131522600_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10380,6 +10774,7 @@
       "effects": [
         {
           "row": "lc:131522700_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10405,6 +10800,7 @@
       "effects": [
         {
           "row": "lc:130000001_1_0",
+          "operation": "B2",
           "attributeTypeId": "damage-correction",
           "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
           "direction": "unknown",
@@ -10431,6 +10827,7 @@
       "effects": [
         {
           "row": "lc:130001001_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -10442,6 +10839,7 @@
         },
         {
           "row": "lc:130001001_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -10467,6 +10865,7 @@
       "effects": [
         {
           "row": "lc:130003001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10494,6 +10893,7 @@
       "effects": [
         {
           "row": "lc:130005001_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -10505,6 +10905,7 @@
         },
         {
           "row": "lc:130005002_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -10516,6 +10917,7 @@
         },
         {
           "row": "lc:130005002_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -10541,6 +10943,7 @@
       "effects": [
         {
           "row": "lc:130006001_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -10566,6 +10969,7 @@
       "effects": [
         {
           "row": "lc:130044211_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -10591,6 +10995,7 @@
       "effects": [
         {
           "row": "lc:130008001_1_0",
+          "operation": "B2",
           "attributeTypeId": "damage-correction",
           "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
           "direction": "increase",
@@ -10616,6 +11021,7 @@
       "effects": [
         {
           "row": "lc:130045113_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -10641,6 +11047,7 @@
       "effects": [
         {
           "row": "lc:130044010_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10666,6 +11073,7 @@
       "effects": [
         {
           "row": "lc:130045121_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10692,6 +11100,7 @@
       "effects": [
         {
           "row": "lc:130044381_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10703,6 +11112,7 @@
         },
         {
           "row": "lc:130044381_1_1",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -10730,6 +11140,7 @@
       "effects": [
         {
           "row": "lc:130014001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10741,6 +11152,7 @@
         },
         {
           "row": "lc:130014002_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -10752,6 +11164,7 @@
         },
         {
           "row": "lc:130014003_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -10777,6 +11190,7 @@
       "effects": [
         {
           "row": "lc:130015001_1_0",
+          "operation": "B1",
           "attributeTypeId": "super-critical-rate",
           "attributeLabel": "会心率，暴击后触发会心，伤害*2",
           "direction": "increase",
@@ -10802,6 +11216,7 @@
       "effects": [
         {
           "row": "lc:130016001_1_0",
+          "operation": "B1",
           "attributeTypeId": "super-critical-rate",
           "attributeLabel": "会心率，暴击后触发会心，伤害*2",
           "direction": "increase",
@@ -10828,6 +11243,7 @@
       "effects": [
         {
           "row": "lc:130017001_1_0",
+          "operation": "B1",
           "attributeTypeId": "super-critical-rate",
           "attributeLabel": "会心率，暴击后触发会心，伤害*2",
           "direction": "increase",
@@ -10839,6 +11255,7 @@
         },
         {
           "row": "lc:130017001_1_1",
+          "operation": "B1",
           "attributeTypeId": "critical-rate",
           "attributeLabel": "暴击率",
           "direction": "increase",
@@ -10864,6 +11281,7 @@
       "effects": [
         {
           "row": "lc:130022001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10890,6 +11308,7 @@
       "effects": [
         {
           "row": "lc:130023001_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -10901,6 +11320,7 @@
         },
         {
           "row": "lc:130023002_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10926,6 +11346,7 @@
       "effects": [
         {
           "row": "lc:130024001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10951,6 +11372,7 @@
       "effects": [
         {
           "row": "lc:130025001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -10976,6 +11398,7 @@
       "effects": [
         {
           "row": "lc:130026001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -11001,6 +11424,7 @@
       "effects": [
         {
           "row": "lc:130027001_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-resistance",
           "attributeLabel": "伤害减免",
           "direction": "decrease",
@@ -11026,6 +11450,7 @@
       "effects": [
         {
           "row": "lc:130030001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -11051,6 +11476,7 @@
       "effects": [
         {
           "row": "lc:1317231001_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -11077,6 +11503,7 @@
       "effects": [
         {
           "row": "lc:130044412_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -11088,6 +11515,7 @@
         },
         {
           "row": "lc:130044412_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -11113,6 +11541,7 @@
       "effects": [
         {
           "row": "lc:130044311_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11138,6 +11567,7 @@
       "effects": [
         {
           "row": "lc:130044030_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -11163,6 +11593,7 @@
       "effects": [
         {
           "row": "lc:130044413_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -11188,6 +11619,7 @@
       "effects": [
         {
           "row": "lc:1316198001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -11213,6 +11645,7 @@
       "effects": [
         {
           "row": "lc:1316199001_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -11239,6 +11672,7 @@
       "effects": [
         {
           "row": "lc:111010022_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11250,6 +11684,7 @@
         },
         {
           "row": "lc:111010033_1_0",
+          "operation": "B1",
           "attributeTypeId": "explosion-radius",
           "attributeLabel": "爆炸范围",
           "direction": "decrease",
@@ -11275,6 +11710,7 @@
       "effects": [
         {
           "row": "lc:120100240_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -11303,6 +11739,7 @@
       "effects": [
         {
           "row": "lc:111031050_1_0",
+          "operation": "B1",
           "attributeTypeId": "effective-range",
           "attributeLabel": "有效射程增加",
           "direction": "increase",
@@ -11314,6 +11751,7 @@
         },
         {
           "row": "lc:111031050_1_1",
+          "operation": "B1",
           "attributeTypeId": "effective-range",
           "attributeLabel": "最大射程增加",
           "direction": "increase",
@@ -11325,6 +11763,7 @@
         },
         {
           "row": "lc:111031014_1_0",
+          "operation": "B2",
           "attributeTypeId": "damage-correction",
           "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
           "direction": "increase",
@@ -11336,6 +11775,7 @@
         },
         {
           "row": "lc:111031014_1_1",
+          "operation": "B1",
           "attributeTypeId": "toughness-damage",
           "attributeLabel": "单次韧性伤害修正",
           "direction": "increase",
@@ -11347,6 +11787,7 @@
         },
         {
           "row": "lc:111031014_1_2",
+          "operation": "B1",
           "attributeTypeId": "element-debuff-chance",
           "attributeLabel": "元素debuff施加概率",
           "direction": "increase",
@@ -11358,6 +11799,7 @@
         },
         {
           "row": "lc:111031014_1_3",
+          "operation": "B1",
           "attributeTypeId": "effective-range",
           "attributeLabel": "有效射程增加",
           "direction": "increase",
@@ -11369,6 +11811,7 @@
         },
         {
           "row": "lc:111031014_1_4",
+          "operation": "B1",
           "attributeTypeId": "effective-range",
           "attributeLabel": "最大射程增加",
           "direction": "increase",
@@ -11394,6 +11837,7 @@
       "effects": [
         {
           "row": "lc:111010055_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11419,6 +11863,7 @@
       "effects": [
         {
           "row": "lc:111010062_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11445,6 +11890,7 @@
       "effects": [
         {
           "row": "lc:120500060_1_0",
+          "operation": "B1",
           "attributeTypeId": "charge-efficiency",
           "attributeLabel": "武器主动技能充能速度",
           "direction": "increase",
@@ -11456,6 +11902,7 @@
         },
         {
           "row": "lc:120500060_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11481,6 +11928,7 @@
       "effects": [
         {
           "row": "lc:120300310_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11506,6 +11954,7 @@
       "effects": [
         {
           "row": "lc:111041026_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -11532,6 +11981,7 @@
       "effects": [
         {
           "row": "lc:111041025_1_0",
+          "operation": "B1",
           "attributeTypeId": "melee-attack-speed",
           "attributeLabel": "角色近战武器攻击速度",
           "direction": "increase",
@@ -11543,6 +11993,7 @@
         },
         {
           "row": "lc:111041027_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11570,6 +12021,7 @@
       "effects": [
         {
           "row": "lc:111041022_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-rate",
           "attributeLabel": "暴击率",
           "direction": "increase",
@@ -11581,6 +12033,7 @@
         },
         {
           "row": "lc:111041022_1_1",
+          "operation": "B1",
           "attributeTypeId": "movement-speed",
           "attributeLabel": "移动速度",
           "direction": "increase",
@@ -11592,6 +12045,7 @@
         },
         {
           "row": "lc:111041022_1_2",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -11617,6 +12071,7 @@
       "effects": [
         {
           "row": "lc:111041024_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -11642,6 +12097,7 @@
       "effects": [
         {
           "row": "lc:111041016_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -11667,6 +12123,7 @@
       "effects": [
         {
           "row": "lc:111010073_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11693,6 +12150,7 @@
       "effects": [
         {
           "row": "lc:111010076_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-rate",
           "attributeLabel": "暴击率",
           "direction": "increase",
@@ -11704,6 +12162,7 @@
         },
         {
           "row": "lc:111010076_1_1",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -11729,6 +12188,7 @@
       "effects": [
         {
           "row": "lc:111010129_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -11754,6 +12214,7 @@
       "effects": [
         {
           "row": "lc:111010138_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11779,6 +12240,7 @@
       "effects": [
         {
           "row": "lc:111031029_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11805,6 +12267,7 @@
       "effects": [
         {
           "row": "lc:121600110_1_0",
+          "operation": "B1",
           "attributeTypeId": "fire-rate",
           "attributeLabel": "武器射速提升",
           "direction": "increase",
@@ -11816,6 +12279,7 @@
         },
         {
           "row": "lc:121600113_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -11841,6 +12305,7 @@
       "effects": [
         {
           "row": "lc:120600064_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11866,6 +12331,7 @@
       "effects": [
         {
           "row": "lc:121900100_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -11877,6 +12343,7 @@
         },
         {
           "row": "lc:121900101_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -11902,6 +12369,7 @@
       "effects": [
         {
           "row": "lc:120300243_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11927,6 +12395,7 @@
       "effects": [
         {
           "row": "lc:111010001_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -11952,6 +12421,7 @@
       "effects": [
         {
           "row": "lc:111010016_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -11977,6 +12447,7 @@
       "effects": [
         {
           "row": "lc:111010056_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -12002,6 +12473,7 @@
       "effects": [
         {
           "row": "lc:111010060_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -12027,6 +12499,7 @@
       "effects": [
         {
           "row": "lc:111010061_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -12052,6 +12525,7 @@
       "effects": [
         {
           "row": "lc:111010084_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -12077,6 +12551,7 @@
       "effects": [
         {
           "row": "lc:111010087_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -12102,6 +12577,7 @@
       "effects": [
         {
           "row": "lc:111031018_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -12127,6 +12603,7 @@
       "effects": [
         {
           "row": "lc:111051004_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -12153,6 +12630,7 @@
       "effects": [
         {
           "row": "lc:111051003_1_0",
+          "operation": "B1",
           "attributeTypeId": "movement-speed",
           "attributeLabel": "移动速度",
           "direction": "increase",
@@ -12164,6 +12642,7 @@
         },
         {
           "row": "lc:111051002_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -12193,6 +12672,7 @@
       "effects": [
         {
           "row": "lc:111051029_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-rate",
           "attributeLabel": "暴击率",
           "direction": "increase",
@@ -12204,6 +12684,7 @@
         },
         {
           "row": "lc:111051029_1_1",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -12215,6 +12696,7 @@
         },
         {
           "row": "lc:111051030_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -12226,6 +12708,7 @@
         },
         {
           "row": "lc:111051030_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -12237,6 +12720,7 @@
         },
         {
           "row": "lc:111051031_1_0",
+          "operation": "B1",
           "attributeTypeId": "movement-speed",
           "attributeLabel": "移动速度",
           "direction": "increase",
@@ -12264,6 +12748,7 @@
       "effects": [
         {
           "row": "lc:111051033_1_0",
+          "operation": "B1",
           "attributeTypeId": "movement-speed",
           "attributeLabel": "移动速度",
           "direction": "increase",
@@ -12275,6 +12760,7 @@
         },
         {
           "row": "lc:111051032_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -12286,6 +12772,7 @@
         },
         {
           "row": "lc:111051032_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -12313,6 +12800,7 @@
       "effects": [
         {
           "row": "lc:111051034_1_0",
+          "operation": "B1",
           "attributeTypeId": "reload-speed",
           "attributeLabel": "武器换弹速度提高",
           "direction": "increase",
@@ -12324,6 +12812,7 @@
         },
         {
           "row": "lc:111051035_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -12335,6 +12824,7 @@
         },
         {
           "row": "lc:111051035_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -12362,6 +12852,7 @@
       "effects": [
         {
           "row": "lc:111051080_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-rate",
           "attributeLabel": "暴击率",
           "direction": "increase",
@@ -12373,6 +12864,7 @@
         },
         {
           "row": "lc:111051036_1_0",
+          "operation": "B1",
           "attributeTypeId": "magazine-capacity",
           "attributeLabel": "主弹夹弹量上限加成系数",
           "direction": "increase",
@@ -12384,6 +12876,7 @@
         },
         {
           "row": "lc:111051057_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -12411,6 +12904,7 @@
       "effects": [
         {
           "row": "lc:111051058_1_0",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -12422,6 +12916,7 @@
         },
         {
           "row": "lc:111051081_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-correction",
           "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
           "direction": "increase",
@@ -12433,6 +12928,7 @@
         },
         {
           "row": "lc:111051037_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -12459,6 +12955,7 @@
       "effects": [
         {
           "row": "lc:111051039_1_0",
+          "operation": "B1",
           "attributeTypeId": "movement-speed",
           "attributeLabel": "移动速度",
           "direction": "increase",
@@ -12470,6 +12967,7 @@
         },
         {
           "row": "lc:111051038_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -12496,6 +12994,7 @@
       "effects": [
         {
           "row": "lc:111051040_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -12507,6 +13006,7 @@
         },
         {
           "row": "lc:111051040_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -12534,6 +13034,7 @@
       "effects": [
         {
           "row": "lc:111051028_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -12545,6 +13046,7 @@
         },
         {
           "row": "lc:111051028_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -12556,6 +13058,7 @@
         },
         {
           "row": "lc:111051028_1_2",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -12582,6 +13085,7 @@
       "effects": [
         {
           "row": "lc:111051027_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -12593,6 +13097,7 @@
         },
         {
           "row": "lc:111051027_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -12618,6 +13123,7 @@
       "effects": [
         {
           "row": "lc:111051025_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -12644,6 +13150,7 @@
       "effects": [
         {
           "row": "lc:111051051_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -12655,6 +13162,7 @@
         },
         {
           "row": "lc:111051051_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -12680,6 +13188,7 @@
       "effects": [
         {
           "row": "lc:111051005_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -12707,6 +13216,7 @@
       "effects": [
         {
           "row": "lc:112031013_1_0",
+          "operation": "B1",
           "attributeTypeId": "reload-speed",
           "attributeLabel": "角色全武器换弹速度提高",
           "direction": "increase",
@@ -12718,6 +13228,7 @@
         },
         {
           "row": "lc:112031013_1_1",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -12745,6 +13256,7 @@
       "effects": [
         {
           "row": "lc:112031014_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -12756,6 +13268,7 @@
         },
         {
           "row": "lc:112031014_1_1",
+          "operation": "B1",
           "attributeTypeId": "critical-rate",
           "attributeLabel": "暴击率",
           "direction": "increase",
@@ -12782,6 +13295,7 @@
       "effects": [
         {
           "row": "lc:112031020_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -12808,6 +13322,7 @@
       "effects": [
         {
           "row": "lc:112031022_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -12834,6 +13349,7 @@
       "effects": [
         {
           "row": "lc:112031024_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -12861,6 +13377,7 @@
       "effects": [
         {
           "row": "lc:112031026_1_0",
+          "operation": "B1",
           "attributeTypeId": "toughness-damage",
           "attributeLabel": "韧性伤害增加",
           "direction": "increase",
@@ -12872,6 +13389,7 @@
         },
         {
           "row": "lc:112031027_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -12898,6 +13416,7 @@
       "effects": [
         {
           "row": "lc:112031030_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -12924,6 +13443,7 @@
       "effects": [
         {
           "row": "lc:112031031_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -12950,6 +13470,7 @@
       "effects": [
         {
           "row": "lc:112031033_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -12976,6 +13497,7 @@
       "effects": [
         {
           "row": "lc:112041010_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -13002,6 +13524,7 @@
       "effects": [
         {
           "row": "lc:112041020_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -13028,6 +13551,7 @@
       "effects": [
         {
           "row": "lc:112041020_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -13055,6 +13579,7 @@
       "effects": [
         {
           "row": "lc:112041050_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage-cap",
           "attributeLabel": "暴击伤害上限",
           "direction": "increase",
@@ -13066,6 +13591,7 @@
         },
         {
           "row": "lc:112041051_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -13092,6 +13618,7 @@
       "effects": [
         {
           "row": "lc:112041060_1_0",
+          "operation": "B1",
           "attributeTypeId": "super-critical-rate",
           "attributeLabel": "会心率，暴击后触发会心，伤害*2",
           "direction": "increase",
@@ -13118,6 +13645,7 @@
       "effects": [
         {
           "row": "lc:112041070_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -13144,6 +13672,7 @@
       "effects": [
         {
           "row": "lc:112041070_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -13170,6 +13699,7 @@
       "effects": [
         {
           "row": "lc:112041070_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -13198,6 +13728,7 @@
       "effects": [
         {
           "row": "lc:111031008_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -13226,6 +13757,7 @@
       "effects": [
         {
           "row": "lc:111010030_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -13254,6 +13786,7 @@
       "effects": [
         {
           "row": "lc:111031009_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -13282,6 +13815,7 @@
       "effects": [
         {
           "row": "lc:111010071_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -13310,6 +13844,7 @@
       "effects": [
         {
           "row": "lc:111031002_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -13338,6 +13873,7 @@
       "effects": [
         {
           "row": "lc:111031015_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -13366,6 +13902,7 @@
       "effects": [
         {
           "row": "lc:111010072_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -13394,6 +13931,7 @@
       "effects": [
         {
           "row": "lc:111010139_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -13422,6 +13960,7 @@
       "effects": [
         {
           "row": "lc:111031046_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-resistance",
           "attributeLabel": "伤害减免",
           "direction": "decrease",
@@ -13450,6 +13989,7 @@
       "effects": [
         {
           "row": "lc:111010026_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -13478,6 +14018,7 @@
       "effects": [
         {
           "row": "lc:111010140_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -13506,6 +14047,7 @@
       "effects": [
         {
           "row": "lc:111010135_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -13534,6 +14076,7 @@
       "effects": [
         {
           "row": "lc:111010134_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -13562,6 +14105,7 @@
       "effects": [
         {
           "row": "lc:111031022_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -13590,6 +14134,7 @@
       "effects": [
         {
           "row": "lc:111010053_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -13618,6 +14163,7 @@
       "effects": [
         {
           "row": "lc:111010070_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -13646,6 +14192,7 @@
       "effects": [
         {
           "row": "lc:111010015_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -13674,6 +14221,7 @@
       "effects": [
         {
           "row": "lc:111031012_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -13702,6 +14250,7 @@
       "effects": [
         {
           "row": "lc:111010160_1_0",
+          "operation": "B1",
           "attributeTypeId": "damage-resistance",
           "attributeLabel": "伤害减免",
           "direction": "decrease",
@@ -13727,6 +14276,7 @@
       "effects": [
         {
           "row": "lc:130042010_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -13752,6 +14302,7 @@
       "effects": [
         {
           "row": "lc:130042021_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -13777,6 +14328,7 @@
       "effects": [
         {
           "row": "lc:130042030_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -13802,6 +14354,7 @@
       "effects": [
         {
           "row": "lc:130042041_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -13827,6 +14380,7 @@
       "effects": [
         {
           "row": "lc:130042051_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -13852,6 +14406,7 @@
       "effects": [
         {
           "row": "lc:130042080_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -13877,6 +14432,7 @@
       "effects": [
         {
           "row": "lc:130042090_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -13902,6 +14458,7 @@
       "effects": [
         {
           "row": "lc:130042100_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -13927,6 +14484,7 @@
       "effects": [
         {
           "row": "lc:130042150_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -13952,6 +14510,7 @@
       "effects": [
         {
           "row": "lc:130042190_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -13977,6 +14536,7 @@
       "effects": [
         {
           "row": "lc:130042200_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14002,6 +14562,7 @@
       "effects": [
         {
           "row": "lc:130042210_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14027,6 +14588,7 @@
       "effects": [
         {
           "row": "lc:130042230_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14052,6 +14614,7 @@
       "effects": [
         {
           "row": "lc:130042250_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14077,6 +14640,7 @@
       "effects": [
         {
           "row": "lc:130042270_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14102,6 +14666,7 @@
       "effects": [
         {
           "row": "lc:130042370_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -14127,6 +14692,7 @@
       "effects": [
         {
           "row": "lc:130042380_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -14152,6 +14718,7 @@
       "effects": [
         {
           "row": "lc:130042430_1_0",
+          "operation": "B1",
           "attributeTypeId": "super-critical-rate",
           "attributeLabel": "会心率，暴击后触发会心，伤害*2",
           "direction": "increase",
@@ -14177,6 +14744,7 @@
       "effects": [
         {
           "row": "lc:130042480_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14188,6 +14756,7 @@
         },
         {
           "row": "lc:130042481_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14213,6 +14782,7 @@
       "effects": [
         {
           "row": "lc:130042560_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14238,6 +14808,7 @@
       "effects": [
         {
           "row": "lc:130042570_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14263,6 +14834,7 @@
       "effects": [
         {
           "row": "lc:130042590_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14288,6 +14860,7 @@
       "effects": [
         {
           "row": "lc:130042600_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14313,6 +14886,7 @@
       "effects": [
         {
           "row": "lc:130042620_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14338,6 +14912,7 @@
       "effects": [
         {
           "row": "lc:130042680_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14363,6 +14938,7 @@
       "effects": [
         {
           "row": "lc:130042690_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14388,6 +14964,7 @@
       "effects": [
         {
           "row": "lc:130044210_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14413,6 +14990,7 @@
       "effects": [
         {
           "row": "lc:130044290_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14438,6 +15016,7 @@
       "effects": [
         {
           "row": "lc:130044850_1_1",
+          "operation": "B5",
           "attributeTypeId": "damage-correction",
           "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
           "direction": "unknown",
@@ -14463,6 +15042,7 @@
       "effects": [
         {
           "row": "lc:130045111_1_1",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -14488,6 +15068,7 @@
       "effects": [
         {
           "row": "lc:130042300_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "元素伤害",
           "direction": "increase",
@@ -14513,6 +15094,7 @@
       "effects": [
         {
           "row": "lc:130042360_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14538,6 +15120,7 @@
       "effects": [
         {
           "row": "lc:130042401_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -14563,6 +15146,7 @@
       "effects": [
         {
           "row": "lc:130042420_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -14588,6 +15172,7 @@
       "effects": [
         {
           "row": "lc:130042440_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -14613,6 +15198,7 @@
       "effects": [
         {
           "row": "lc:130044090_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14638,6 +15224,7 @@
       "effects": [
         {
           "row": "lc:130044150_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14663,6 +15250,7 @@
       "effects": [
         {
           "row": "lc:130044160_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14689,6 +15277,7 @@
       "effects": [
         {
           "row": "lc:130044170_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -14700,6 +15289,7 @@
         },
         {
           "row": "lc:130044170_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -14725,6 +15315,7 @@
       "effects": [
         {
           "row": "lc:130044180_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -14750,6 +15341,7 @@
       "effects": [
         {
           "row": "lc:130044200_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -14761,6 +15353,7 @@
         },
         {
           "row": "lc:1378044200_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -14786,6 +15379,7 @@
       "effects": [
         {
           "row": "lc:130044250_1_1",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14811,6 +15405,7 @@
       "effects": [
         {
           "row": "lc:130044271_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14836,6 +15431,7 @@
       "effects": [
         {
           "row": "lc:130044280_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14861,6 +15457,7 @@
       "effects": [
         {
           "row": "lc:130044300_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14886,6 +15483,7 @@
       "effects": [
         {
           "row": "lc:130044350_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -14911,6 +15509,7 @@
       "effects": [
         {
           "row": "lc:130044360_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14922,6 +15521,7 @@
         },
         {
           "row": "lc:130044361_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14948,6 +15548,7 @@
       "effects": [
         {
           "row": "lc:130044380_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -14959,6 +15560,7 @@
         },
         {
           "row": "lc:130044380_1_1",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -14984,6 +15586,7 @@
       "effects": [
         {
           "row": "lc:130044390_1_2",
+          "operation": "B1",
           "attributeTypeId": "close-range-damage",
           "attributeLabel": "近距离武器伤害",
           "direction": "increase",
@@ -15009,6 +15612,7 @@
       "effects": [
         {
           "row": "lc:130044410_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -15034,6 +15638,7 @@
       "effects": [
         {
           "row": "lc:130044420_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15059,6 +15664,7 @@
       "effects": [
         {
           "row": "lc:130044500_1_0",
+          "operation": "B5",
           "attributeTypeId": "attack",
           "attributeLabel": "攻击力",
           "direction": "unknown",
@@ -15084,6 +15690,7 @@
       "effects": [
         {
           "row": "lc:130044530_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -15109,6 +15716,7 @@
       "effects": [
         {
           "row": "lc:130044550_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15134,6 +15742,7 @@
       "effects": [
         {
           "row": "lc:130044580_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15159,6 +15768,7 @@
       "effects": [
         {
           "row": "lc:130044630_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15184,6 +15794,7 @@
       "effects": [
         {
           "row": "lc:130044640_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15209,6 +15820,7 @@
       "effects": [
         {
           "row": "lc:130044700_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15234,6 +15846,7 @@
       "effects": [
         {
           "row": "lc:130044750_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15259,6 +15872,7 @@
       "effects": [
         {
           "row": "lc:130044760_1_0",
+          "operation": "B5",
           "attributeTypeId": "damage-correction",
           "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
           "direction": "unknown",
@@ -15284,6 +15898,7 @@
       "effects": [
         {
           "row": "lc:130044770_1_0",
+          "operation": "B5",
           "attributeTypeId": "damage-correction",
           "attributeLabel": "伤害/治疗/临时护盾单次修正系数",
           "direction": "unknown",
@@ -15309,6 +15924,7 @@
       "effects": [
         {
           "row": "lc:130044790_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -15334,6 +15950,7 @@
       "effects": [
         {
           "row": "lc:130044871_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -15359,6 +15976,7 @@
       "effects": [
         {
           "row": "lc:1378044890_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -15384,6 +16002,7 @@
       "effects": [
         {
           "row": "lc:1378044900_1_1",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15409,6 +16028,7 @@
       "effects": [
         {
           "row": "lc:1378044910_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -15435,6 +16055,7 @@
       "effects": [
         {
           "row": "lc:1378044920_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -15446,6 +16067,7 @@
         },
         {
           "row": "lc:1378044920_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -15471,6 +16093,7 @@
       "effects": [
         {
           "row": "lc:1378044980_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -15496,6 +16119,7 @@
       "effects": [
         {
           "row": "lc:1378045000_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -15521,6 +16145,7 @@
       "effects": [
         {
           "row": "lc:1378045010_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15546,6 +16171,7 @@
       "effects": [
         {
           "row": "lc:1378045020_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -15572,6 +16198,7 @@
       "effects": [
         {
           "row": "lc:1378045030_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -15583,6 +16210,7 @@
         },
         {
           "row": "lc:1378045030_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -15608,6 +16236,7 @@
       "effects": [
         {
           "row": "lc:1378045090_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -15634,6 +16263,7 @@
       "effects": [
         {
           "row": "lc:130045100_1_0",
+          "operation": "B1",
           "attributeTypeId": "super-critical-rate",
           "attributeLabel": "会心率，暴击后触发会心，伤害*2",
           "direction": "increase",
@@ -15645,6 +16275,7 @@
         },
         {
           "row": "lc:130045101_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15670,6 +16301,7 @@
       "effects": [
         {
           "row": "lc:130045120_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15695,6 +16327,7 @@
       "effects": [
         {
           "row": "lc:130045130_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -15720,6 +16353,7 @@
       "effects": [
         {
           "row": "lc:130045140_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "电击伤害",
           "direction": "increase",
@@ -15745,6 +16379,7 @@
       "effects": [
         {
           "row": "lc:130045160_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -15770,6 +16405,7 @@
       "effects": [
         {
           "row": "lc:130045171_1_0",
+          "operation": "B1",
           "attributeTypeId": "element-damage",
           "attributeLabel": "燃烧伤害",
           "direction": "increase",
@@ -15795,6 +16431,7 @@
       "effects": [
         {
           "row": "lc:130045280_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -15821,6 +16458,7 @@
       "effects": [
         {
           "row": "lc:130045330_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -15832,6 +16470,7 @@
         },
         {
           "row": "lc:130045330_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -15857,6 +16496,7 @@
       "effects": [
         {
           "row": "lc:130040030_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15882,6 +16522,7 @@
       "effects": [
         {
           "row": "lc:130040040_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -15907,6 +16548,7 @@
       "effects": [
         {
           "row": "lc:130040191_1_1",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -15932,6 +16574,7 @@
       "effects": [
         {
           "row": "lc:130040250_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -15957,6 +16600,7 @@
       "effects": [
         {
           "row": "lc:130040381_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -15982,6 +16626,7 @@
       "effects": [
         {
           "row": "lc:130040391_1_0",
+          "operation": "B1",
           "attributeTypeId": "long-range-damage",
           "attributeLabel": "远距离武器伤害",
           "direction": "increase",
@@ -16007,6 +16652,7 @@
       "effects": [
         {
           "row": "lc:130040400_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -16032,6 +16678,7 @@
       "effects": [
         {
           "row": "lc:130040410_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -16058,6 +16705,7 @@
       "effects": [
         {
           "row": "lc:130040420_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -16069,6 +16717,7 @@
         },
         {
           "row": "lc:130040420_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -16095,6 +16744,7 @@
       "effects": [
         {
           "row": "lc:130040430_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -16106,6 +16756,7 @@
         },
         {
           "row": "lc:130040430_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -16132,6 +16783,7 @@
       "effects": [
         {
           "row": "lc:130040441_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-hit-damage",
           "attributeLabel": "射击伤害",
           "direction": "increase",
@@ -16143,6 +16795,7 @@
         },
         {
           "row": "lc:130040441_1_1",
+          "operation": "B1",
           "attributeTypeId": "weapon-explode-damage",
           "attributeLabel": "爆炸伤害",
           "direction": "increase",
@@ -16168,6 +16821,7 @@
       "effects": [
         {
           "row": "lc:130040450_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -16193,6 +16847,7 @@
       "effects": [
         {
           "row": "lc:130040460_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -16218,6 +16873,7 @@
       "effects": [
         {
           "row": "lc:130040470_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -16243,6 +16899,7 @@
       "effects": [
         {
           "row": "lc:130040480_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -16268,6 +16925,7 @@
       "effects": [
         {
           "row": "lc:130040490_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -16293,6 +16951,7 @@
       "effects": [
         {
           "row": "lc:130040560_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -16318,6 +16977,7 @@
       "effects": [
         {
           "row": "lc:1378040630_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -16344,6 +17004,7 @@
       "effects": [
         {
           "row": "lc:1378040640_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -16355,6 +17016,7 @@
         },
         {
           "row": "lc:1378040640_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -16380,6 +17042,7 @@
       "effects": [
         {
           "row": "lc:1378040650_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -16405,6 +17068,7 @@
       "effects": [
         {
           "row": "lc:1378040660_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -16430,6 +17094,7 @@
       "effects": [
         {
           "row": "lc:1378040720_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -16455,6 +17120,7 @@
       "effects": [
         {
           "row": "lc:1378040740_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -16481,6 +17147,7 @@
       "effects": [
         {
           "row": "lc:1378040750_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -16492,6 +17159,7 @@
         },
         {
           "row": "lc:1378040750_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -16517,6 +17185,7 @@
       "effects": [
         {
           "row": "lc:1378040760_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -16542,6 +17211,7 @@
       "effects": [
         {
           "row": "lc:1378040770_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -16567,6 +17237,7 @@
       "effects": [
         {
           "row": "lc:1378040830_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -16592,6 +17263,7 @@
       "effects": [
         {
           "row": "lc:1378040850_1_0",
+          "operation": "B1",
           "attributeTypeId": "critical-damage",
           "attributeLabel": "暴击伤害",
           "direction": "increase",
@@ -16618,6 +17290,7 @@
       "effects": [
         {
           "row": "lc:1378040860_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-skill-damage",
           "attributeLabel": "武器技能伤害",
           "direction": "increase",
@@ -16629,6 +17302,7 @@
         },
         {
           "row": "lc:1378040860_1_1",
+          "operation": "B1",
           "attributeTypeId": "skill-damage",
           "attributeLabel": "非武器技能伤害增加",
           "direction": "increase",
@@ -16654,6 +17328,7 @@
       "effects": [
         {
           "row": "lc:1378040870_1_0",
+          "operation": "B1",
           "attributeTypeId": "all-damage",
           "attributeLabel": "全伤害（可用，和其他增伤连加）",
           "direction": "increase",
@@ -16679,6 +17354,7 @@
       "effects": [
         {
           "row": "lc:1378040880_1_0",
+          "operation": "B1",
           "attributeTypeId": "weapon-damage",
           "attributeLabel": "武器伤害增加",
           "direction": "increase",
@@ -16704,6 +17380,7 @@
       "effects": [
         {
           "row": "lc:1378040940_1_0",
+          "operation": "B1",
           "attributeTypeId": "weakpoint-damage",
           "attributeLabel": "武器弱点伤害",
           "direction": "increase",
@@ -16729,6 +17406,7 @@
       "effects": [
         {
           "row": "lc:1378040960_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -16754,6 +17432,7 @@
       "effects": [
         {
           "row": "lc:1378040970_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -16779,6 +17458,7 @@
       "effects": [
         {
           "row": "lc:1378040980_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",
@@ -16804,6 +17484,7 @@
       "effects": [
         {
           "row": "lc:1378040990_1_0",
+          "operation": "B1",
           "attributeTypeId": "game-mode-damage",
           "attributeLabel": "全伤害（尽量别用，连乘）",
           "direction": "increase",

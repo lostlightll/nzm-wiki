@@ -2,7 +2,7 @@ import rawMultiplierData from "@/data/guides/multiplier.json";
 import rawProviderRuntime from "@/data/guides/multiplier-providers-runtime.json";
 import { WEAPON_TYPE_SPRITES } from "@/constants/sprites";
 import { isPreviewSeason } from "@/lib/content-preview";
-import { getModifierAttributesForFacet } from "@/lib/modifier-index";
+import { getModifierAttributesForFacet, getModifierProvider } from "@/lib/modifier-index";
 import { getOverlimitLink, getOverlimitLinksForPerk, hasOverlimitBondStage } from "@/lib/overlimit-links";
 import type { ElementType, WeaponType } from "@/types";
 
@@ -238,6 +238,7 @@ export type MultiplierRelation = {
   factorLabel: string;
   modifierTypeId: string;
   modifierTypeLabel: string;
+  operations?: readonly string[];
   effectId?: string;
   effectLabel?: string;
   source?: MultiplierSource;
@@ -662,11 +663,27 @@ function relationFor(
     factorLabel: factor.label,
     modifierTypeId: modifier.id,
     modifierTypeLabel: modifier.label,
+    operations: values.operations,
     effectId: values.effectId,
     effectLabel: values.effectLabel,
     source: values.source,
     sourceHref: values.sourceHref,
   };
+}
+
+function operationsForProvider(
+  providerId: string,
+  modifierTypeId: string,
+): readonly string[] | undefined {
+  const provider = getModifierProvider(providerId);
+  if (!provider) return undefined;
+
+  const operations = new Set<string>();
+  for (const effect of provider.effects) {
+    if (!effect.facetIds.includes(modifierTypeId)) continue;
+    if (effect.operation) operations.add(effect.operation);
+  }
+  return operations.size > 0 ? [...operations] : undefined;
 }
 
 function buildProviderRelations(): MultiplierRelation[] {
@@ -744,6 +761,7 @@ function buildProviderRelations(): MultiplierRelation[] {
           kind: "provider",
           effectId: provider.id,
           effectLabel: provider.label,
+          operations: operationsForProvider(provider.id, modifierTypeId),
           source: placement,
           sourceHref: resolveMultiplierSourceHref(placement),
         });

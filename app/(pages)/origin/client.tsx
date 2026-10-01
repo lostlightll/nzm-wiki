@@ -51,9 +51,10 @@ function toggleSet<T>(current: ReadonlySet<T>, value: T): Set<T> {
   return next;
 }
 
-function RuneDetails({ rune, tagNames, onClose }: {
+function RuneDetails({ rune, tagNames, showOperation, onClose }: {
   rune: OriginRune;
   tagNames: Map<number, string>;
+  showOperation: boolean;
   onClose?: () => void;
 }) {
   const quality = qualityStyles[rune.quality];
@@ -81,15 +82,16 @@ function RuneDetails({ rune, tagNames, onClose }: {
         </div>
       </div>
       {relations.length > 0 && <div className="border-t border-white/10 px-4 py-3">
-        <MultiplierBadges relations={relations} variant="catalog-compact" />
+        <MultiplierBadges relations={relations} variant="catalog-compact" showOperation={showOperation} />
       </div>}
     </div>
   );
 }
 
-function RuneCard({ rune, tagNames, onOpenMobile }: {
+function RuneCard({ rune, tagNames, showOperation, onOpenMobile }: {
   rune: OriginRune;
   tagNames: Map<number, string>;
+  showOperation: boolean;
   onOpenMobile: (rune: OriginRune, trigger: HTMLButtonElement) => void;
 }) {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -123,16 +125,21 @@ function RuneCard({ rune, tagNames, onOpenMobile }: {
       <h3 className="mt-2 w-full break-words text-center text-sm font-medium leading-tight text-white">{rune.name}</h3>
     </button>
     {relations.length > 0 && <MultiplierBadges relations={relations} variant="catalog-compact"
+      showOperation={showOperation}
       className={`absolute top-1 z-10 [&_a]:min-h-5 [&_a]:min-w-0 [&_a]:justify-center [&_a]:py-0 [&_a]:text-center [&_a]:leading-3 [&_a_span]:break-all ${hasMultipleFactors
         ? "inset-x-1 flex-nowrap gap-0.5 [&_a]:flex-1 [&_a]:px-0.5 [&_a]:text-[9px]"
         : "right-1 max-w-[calc(100%-0.5rem)] justify-end [&_a]:px-1 [&_a]:text-[9px] sm:[&_a]:text-[10px]"}`} />}
     {isOpen && <HoverPreviewPanel anchorRef={buttonRef} id={tooltipId}>
-      <RuneDetails rune={rune} tagNames={tagNames} />
+      <RuneDetails rune={rune} tagNames={tagNames} showOperation={showOperation} />
     </HoverPreviewPanel>}
   </div>;
 }
 
-export default function OriginRunesClient({ catalog }: { catalog: OriginRuneCatalog }) {
+export default function OriginRunesClient({ catalog, showOperation, onShowOperationChange }: {
+  catalog: OriginRuneCatalog;
+  showOperation: boolean;
+  onShowOperationChange: (value: boolean) => void;
+}) {
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const [categories, setCategories] = useState<Set<OriginRuneCategory>>(new Set());
@@ -235,6 +242,13 @@ export default function OriginRunesClient({ catalog }: { catalog: OriginRuneCata
             </button>)}
           </div>
         </fieldset>
+        <fieldset className="mt-5">
+          <legend className="mb-3 text-base font-semibold text-zinc-300">开发者选项</legend>
+          <button type="button" aria-pressed={showOperation} onClick={() => onShowOperationChange(!showOperation)}
+            className={`${filterButton} ${showOperation ? "border-zinc-400 bg-zinc-600 text-white" : inactiveFilter}`}>
+            显示运算符
+          </button>
+        </fieldset>
       </div>
       <div className="mb-4 flex min-h-11 flex-wrap items-center justify-between gap-3">
         <p aria-live="polite" className="text-sm text-zinc-400">共 {filtered.length} 项强化</p>
@@ -244,11 +258,11 @@ export default function OriginRunesClient({ catalog }: { catalog: OriginRuneCata
         </button>}
       </div>
       {filtered.length ? <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8">
-        {filtered.map((rune) => <RuneCard key={rune.id} rune={rune} tagNames={tagNames} onOpenMobile={selectRune} />)}
+        {filtered.map((rune) => <RuneCard key={rune.id} rune={rune} tagNames={tagNames} showOperation={showOperation} onOpenMobile={selectRune} />)}
       </div> : <div className="py-16 text-center text-zinc-400">没有符合条件的强化</div>}
       <dialog ref={dialogRef} onClose={() => { setDialogOpen(false); selectedTrigger.current?.focus(); }}
         aria-label="强化详情" className="m-auto max-h-[85dvh] w-[min(92vw,420px)] max-w-none overflow-y-auto border border-zinc-600 bg-zinc-900 p-0 text-white shadow-2xl backdrop:bg-black/70">
-        {selected && <RuneDetails rune={selected} tagNames={tagNames} onClose={() => dialogRef.current?.close()} />}
+        {selected && <RuneDetails rune={selected} tagNames={tagNames} showOperation={showOperation} onClose={() => dialogRef.current?.close()} />}
       </dialog>
     </section>
   );

@@ -55,6 +55,7 @@ function unique(values: Iterable<string>): string[] {
 
 type RuntimeEffect = {
   row: string;
+  operation: string;
   attributeTypeId: string;
   attributeLabel: string;
   direction: string;
@@ -90,6 +91,7 @@ export function generateModifierIndexRuntime(): JsonObject {
       }
       effects.push({
         row: application.expression.row,
+        operation: resolved.operation.code,
         attributeTypeId: resolved.attribute.typeId,
         attributeLabel: resolved.attribute.label,
         direction: resolved.direction,

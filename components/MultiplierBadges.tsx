@@ -22,11 +22,13 @@ export function MultiplierBadges({
   className = "",
   id,
   variant = "default",
+  showOperation = false,
 }: {
   relations: readonly MultiplierRelation[];
   className?: string;
   id?: string;
   variant?: MultiplierBadgeVariant;
+  showOperation?: boolean;
 }) {
   const groups = getRelationsByFactor(relations);
   if (groups.length === 0) return null;
@@ -51,6 +53,10 @@ export function MultiplierBadges({
         const modifierLabels = [...new Set(
           factorRelations.map((relation) => relation.modifierTypeLabel),
         )];
+        const operations = showOperation
+          ? [...new Set(factorRelations.flatMap((relation) => relation.operations ?? []))]
+          : [];
+        const displayLabel = `${operations.length > 0 ? `${operations.join("/")}` : ""}${factorLabel}`;
         const href = resolveMultiplierFactorHref(factorId, {
           view: factorRelations.some((relation) => relation.kind === "provider")
             ? "providers"
@@ -60,7 +66,7 @@ export function MultiplierBadges({
               ? factorRelations[0].modifierTypeId
               : undefined,
         });
-        const description = `${factorLabel}：${modifierLabels.join("、")}；点击查看乘区说明`;
+        const description = `${displayLabel}：${modifierLabels.join("、")}；点击查看乘区说明`;
         const catalogOverlayClass = isSplitCatalogOverlay
           ? `${index === 0 ? "rounded-br-md rounded-tl-md" : "rounded-bl-md rounded-tr-md"} min-h-7 shrink-0 whitespace-nowrap justify-center px-1 py-0.5 text-center text-[9px] font-medium leading-4 after:absolute after:inset-x-0 after:-inset-y-2 after:content-['']`
           : "min-h-7 rounded-bl-md rounded-br-none rounded-tl-none rounded-tr-md px-2 py-0.5 text-[11px] font-medium leading-4 after:absolute after:-inset-x-1 after:-inset-y-2 after:content-['']";
@@ -77,7 +83,7 @@ export function MultiplierBadges({
             {!isCompact && (
               <Layers3 aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
             )}
-            <span>{factorLabel}</span>
+            <span>{displayLabel}</span>
             {!isCompact && (
               <ArrowUpRight aria-hidden="true" className="h-3 w-3 shrink-0 opacity-70" />
             )}

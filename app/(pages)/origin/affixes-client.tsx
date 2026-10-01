@@ -18,7 +18,7 @@ const categoryStyles = {
 const inactiveFilter = "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700/70 hover:text-white";
 const filterButton = "flex min-h-11 touch-manipulation items-center justify-center rounded border px-3 py-2 text-sm font-medium transition-colors outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4";
 
-function AffixCard({ affix, linked }: { affix: OriginAffix; linked: boolean }) {
+function AffixCard({ affix, linked, showOperation }: { affix: OriginAffix; linked: boolean; showOperation: boolean }) {
   const style = categoryStyles[affix.category];
   const relations = getProviderRelationsForSource({ type: "origin-affix", id: affix.id });
   return <article id={`affix-${affix.id}`} aria-labelledby={`affix-${affix.id}-name`}
@@ -29,6 +29,7 @@ function AffixCard({ affix, linked }: { affix: OriginAffix; linked: boolean }) {
       <div className="flex min-w-0 items-start justify-between gap-2">
         <h3 id={`affix-${affix.id}-name`} className="min-w-0 break-words text-base font-semibold leading-6 text-white">{affix.name}</h3>
         {relations.length > 0 && <MultiplierBadges relations={relations} variant="catalog-compact"
+          showOperation={showOperation}
           className="max-w-[60%] shrink-0 justify-end gap-1 [&_a]:px-1.5 [&_a]:text-[10px] sm:[&_a]:text-[11px]" />}
       </div>
       <p className="mt-1 break-words text-sm leading-6 text-zinc-300">{affix.description}</p>
@@ -36,7 +37,7 @@ function AffixCard({ affix, linked }: { affix: OriginAffix; linked: boolean }) {
   </article>;
 }
 
-export default function OriginAffixesClient({ catalog }: { catalog: OriginAffixCatalog }) {
+export default function OriginAffixesClient({ catalog, showOperation }: { catalog: OriginAffixCatalog; showOperation: boolean }) {
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const [categories, setCategories] = useState<Set<OriginAffixCategory>>(new Set());
@@ -98,7 +99,7 @@ export default function OriginAffixesClient({ catalog }: { catalog: OriginAffixC
         </button>}
       </div>
       {filtered.length ? <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-        {filtered.map((affix) => <AffixCard key={affix.id} affix={affix} linked={affix.id === linkedId} />)}
+        {filtered.map((affix) => <AffixCard key={affix.id} affix={affix} linked={affix.id === linkedId} showOperation={showOperation} />)}
       </div> : <div className="py-16 text-center text-zinc-400">暂无对应词条</div>}
     </section>
   );

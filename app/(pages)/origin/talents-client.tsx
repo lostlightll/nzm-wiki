@@ -74,9 +74,10 @@ function TalentTree({ talents, selectedId, onSelect }: {
   </div>;
 }
 
-function TalentDetails({ talent, catalog }: {
+function TalentDetails({ talent, catalog, showOperation }: {
   talent: OriginTalent;
   catalog: OriginTalentCatalog;
+  showOperation: boolean;
 }) {
   const [level, setLevel] = useState(1);
   const selectedLevel = talent.levels.find((item) => item.level === level) ?? talent.levels[0];
@@ -93,7 +94,7 @@ function TalentDetails({ talent, catalog }: {
             <p className={`mb-1 text-xs ${style.text}`}>{branchName}天赋</p>
             <h3 className="break-words text-lg font-semibold text-white">{talent.name}</h3>
             <p className="mt-1 text-xs text-zinc-400">最高 {talent.maxLevel} 级</p>
-            <MultiplierBadges relations={relations} variant="catalog-inline" className="float-none mt-2 ml-0 justify-start" />
+            <MultiplierBadges relations={relations} variant="catalog-inline" showOperation={showOperation} className="float-none mt-2 ml-0 justify-start" />
           </div>
         </div>
         <p className="mt-3 whitespace-pre-line break-words text-sm leading-7 text-zinc-200">{selectedLevel?.description ?? talent.description}</p>
@@ -115,7 +116,7 @@ function TalentDetails({ talent, catalog }: {
   </div>;
 }
 
-export default function OriginTalentsClient({ catalog }: { catalog: OriginTalentCatalog }) {
+export default function OriginTalentsClient({ catalog, showOperation }: { catalog: OriginTalentCatalog; showOperation: boolean }) {
   const [selectedId, setSelectedId] = useState(catalog.talents[0]?.id ?? "");
   const [activeBranch, setActiveBranch] = useState<OriginTalentBranchId>(1);
   const selected = catalog.talents.find((talent) => talent.id === selectedId) ?? catalog.talents[0];
@@ -166,6 +167,6 @@ export default function OriginTalentsClient({ catalog }: { catalog: OriginTalent
           <span aria-hidden="true" className="text-xl text-zinc-400">›</span>
       </button>}
     </div>
-    {selected && <TalentDetails key={selected.id} talent={selected} catalog={catalog} />}
+    {selected && <TalentDetails key={selected.id} talent={selected} catalog={catalog} showOperation={showOperation} />}
   </section>;
 }

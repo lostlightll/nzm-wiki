@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import type { OriginAffixCatalog } from "@/lib/origin-affixes";
 import type { OriginRuneCatalog } from "@/lib/origin-runes";
 import type { OriginTalentCatalog } from "@/lib/origin-talents";
@@ -25,6 +25,7 @@ export default function OriginCatalogClient({ runes, affixes, talents }: {
   talents: OriginTalentCatalog;
 }) {
   const active = useSyncExternalStore(subscribe, () => activeModule(window.location.hash), () => "runes");
+  const [showOperation, setShowOperation] = useState(false);
 
   return <>
     <nav aria-label="原点图鉴模块" className="mb-6 flex flex-wrap items-center gap-2">
@@ -45,7 +46,8 @@ export default function OriginCatalogClient({ runes, affixes, talents }: {
           {item.label}
         </a>)}
     </nav>
-    {active === "talents" ? <OriginTalentsClient catalog={talents} /> :
-      active === "affixes" ? <OriginAffixesClient catalog={affixes} /> : <OriginRunesClient catalog={runes} />}
+    {active === "talents" ? <OriginTalentsClient catalog={talents} showOperation={showOperation} /> :
+      active === "affixes" ? <OriginAffixesClient catalog={affixes} showOperation={showOperation} /> :
+        <OriginRunesClient catalog={runes} showOperation={showOperation} onShowOperationChange={setShowOperation} />}
   </>;
 }

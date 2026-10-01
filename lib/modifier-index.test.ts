@@ -18,6 +18,7 @@ test("exposes the complete generic provider projection", () => {
   const registry = parseModifierProviderRegistry(JSON.parse(readFileSync("data/modifier-providers.json", "utf8")));
   assert.deepEqual(MODIFIER_INDEX_PROVIDERS.map(provider => provider.id).sort(), registry.providers.map(provider => provider.id).sort());
   assert.equal(getModifierProvider("card:10003")?.label, "狂战士祝福");
+  assert.equal(getModifierProvider("card:10003")?.effects[0]?.operation, "B1");
 });
 
 test("exposes projected attributes by semantic facet", () => {
