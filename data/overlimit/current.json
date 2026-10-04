@@ -2100,7 +2100,7 @@
       },
       {
         "path": "scripts/overlimit/current-rules-review.json",
-        "sha256": "266dc87d72c6b4edb93a720e3db13f6d888737b9bf5783603d083b37fa41c2a9"
+        "sha256": "22ca21a5817bb59b947f9debbf30fb46c531b2482091710a4bd9ecb4cdab3e4f"
       },
       {
         "path": "scripts/overlimit/current-source-review.json",
@@ -2704,7 +2704,7 @@
       },
       {
         "path": "scripts/overlimit/current-announcement.json",
-        "sha256": "35effbadfecd33cb893e81693ad6963e6d502c42d0d65063ca4a498f6897d03c"
+        "sha256": "c26067cdb8198db0c2b9405732cd71f0694b3ce1abd1d27584972d62924d0438"
       }
     ]
   },
@@ -9607,13 +9607,13 @@
         },
         {
           "count": 4,
-          "description": "持续移动每满 1 秒获得一层动能，每层提升 3.5% 换弹速度和 10% 伤害，最多 5 层，持续 2 秒。",
+          "description": "人物持续移动每满 1秒，获得一层“动能”（最高 5层），每层提供 3.5% 的换弹速度与10% 的伤害加成，持续 2秒。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 6,
-          "description": "移动、下蹲或切枪时，每 2 秒获得一层增益，最多 5 层；射击消耗一层，使该次射击伤害提升 120%、暴击率提升 100%。",
+          "description": "移动、下蹲或切枪时，每两秒叠加一层Buff，Buff最大层数5层，每次开枪消耗一层Buff，伤害提升 120% 且必定暴击。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         }
@@ -9624,19 +9624,19 @@
       "effects": [
         {
           "count": 2,
-          "description": "调整生命值上限；主动治疗效果提升 20%。生命上限的具体增幅待核验。",
+          "description": "生命值上限提升 20%，治疗效果提升 20%。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 4,
-          "description": "拥有护盾时，武器伤害提升 60%；护盾被打破时释放冲击波，造成 500% 攻击力伤害（冷却 2 秒）。",
+          "description": "拥有护盾时，武器伤害提升 60%；护盾被打破时，释放一道冲击波击退周围小怪，并造成 500% 攻击力的伤害（冷却 2秒）。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 6,
-          "description": "受到致命伤害时免疫死亡，恢复 50% 生命值与满额护盾，并获得 5 秒不灭状态（冷却 120 秒）。溢出的生命回复转化为护盾，护盾上限为最大生命值的 150%。",
+          "description": "受到致命伤害时免疫死亡，立即恢复 50% 生命值与满额护盾，并进入“不灭”状态，持续 5秒，期间无敌（该效果每局/每 120秒 冷却）。此外，平时溢出的生命回复会自动转化为“充能护盾”，护盾值最高可叠加至最大生命值的 150%。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         }
@@ -9647,19 +9647,19 @@
       "effects": [
         {
           "count": 2,
-          "description": "攻击距离超过 20 米时，距离越远伤害越高；30 米达到最高 20% 加成。",
+          "description": "攻击目标时，距离越远伤害越高，最高提升20%（大于20m增伤，30m满）。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 4,
-          "description": "受到伤害或 5 米内有至少 5 个怪物时，触发范围爆炸并击飞，造成 1000% 攻击力伤害（冷却 20 秒）。",
+          "description": "每次受到伤害或者近身超过5个怪物的情况下，会产生一个 1000% 攻击力的范围爆炸伤害并击飞，内置CD 10秒。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 6,
-          "description": "保持不掉血时，每造成 5000 伤害获得一层 6% 伤害加成，最多 20 层；掉血时清空。",
+          "description": "保持不掉血的情况下，每造成5000的伤害后，能够叠加一层6%伤害加成，最多叠加20层，掉血情况下清零。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         }
@@ -9670,19 +9670,19 @@
       "effects": [
         {
           "count": 2,
-          "description": "破韧效率提升 25%。",
+          "description": "破韧效率提升25%。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 4,
-          "description": "使怪物破韧后，按自身破韧贡献比例造成 3000% 攻击力的物理伤害。",
+          "description": "对怪物破韧后，会结算玩家对于该怪物的破韧比例*30攻击力的物理伤害。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 6,
-          "description": "破韧效率额外提升 50%。破韧时填满当前弹匣和武器技能充能，并获得 50% 伤害加成，持续 5 秒。",
+          "description": "破韧时填充满当前弹夹和技能冷却以及技能充能数，并获得50%伤害加成，持续5秒。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         }
@@ -9693,19 +9693,19 @@
       "effects": [
         {
           "count": 2,
-          "description": "命中目标弱点时，有 50% 概率生成撕裂伤口（冷却 20 秒）。",
+          "description": "命中目标弱点时有50%的概率给目标添加撕裂伤口，持续5秒，内置CD20秒。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 4,
-          "description": "附近 20 米内存在同伴时，为同伴分摊 50% 非致死伤害。",
+          "description": "如果范围内20M存在同伴，可以分摊50%同伴受到的非致死的伤害。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 6,
-          "description": "释放技能时连接 20 米内最近的同伴，共享双方的伤害加成，持续 10 秒；距离超过 30 米时断开（冷却 30 秒）。",
+          "description": "释放任何技能会向最近的20m范围内的目标产生一条连线，如果超过30m则断开链接，链接的双方能享受彼此100%伤害加成，持续10秒，内置CD 30秒。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         }
@@ -9716,19 +9716,19 @@
       "effects": [
         {
           "count": 2,
-          "description": "攻击距离小于 10 米时，距离越近伤害越高；5 米以内达到最高 20% 加成。",
+          "description": "攻击目标时，距离越近伤害越高，最高提升20%（小于10m增伤，5m满）。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 4,
-          "description": "斩杀生命值低于 11% 的非 Boss 单位，一次最多影响 3 个目标（冷却 1 秒）。",
+          "description": "斩杀11%血量以下的非Boss单位，同时命中目标最大生效单位数量为3（冷却1秒）。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 6,
-          "description": "每累计损失 5% 生命值或护盾，获得 5% 伤害加成，最多 40 层（200%）；死亡复活后清空。",
+          "description": "如果玩家已损生命值或护盾值越多，伤害越高，每累积损失5%血量和护盾值，提升5%的伤害，最高提升200%。死亡复活清零增益。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         }
@@ -9739,19 +9739,19 @@
       "effects": [
         {
           "count": 2,
-          "description": "造成伤害时，有 10% 概率在脚下生成持续 5 秒的力场；力场内伤害提升 20%（冷却 5 秒）。",
+          "description": "造成伤害时10%概率在脚底下生成力场，持续5秒，在力场内获得20%伤害提升。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 4,
-          "description": "站立不动时，每 1 秒获得一层 10% 伤害增益，最多 6 层；发生位移时清空。",
+          "description": "站立不动的情况下，每秒提升自身10%伤害，最多叠加6层，一旦发生位移则清空增益。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 6,
-          "description": "站立不动时继续每秒叠加伤害增益，上限提升至 18 层；移动后移除当前层数的一半（向上取整）。",
+          "description": "伤害增益层数提升至18层，移动后只减少50%层数。",
           "mergeType": "EWeaponModSetMergeType::Override",
           "overrides": [
             2
@@ -9764,19 +9764,19 @@
       "effects": [
         {
           "count": 2,
-          "description": "暴击率提升 20%。",
+          "description": "暴击率提升20%。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 5,
-          "description": "暴击伤害上限额外提高 500%；每次命中弱点获得一层 1% 暴击伤害加成，最多 200 层，持续 3 秒。",
+          "description": "暴伤上限突破到1000%，每次命中弱点获得1%暴伤提升，可以叠加200层，持续3秒。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 8,
-          "description": "每次暴击有 50% 概率触发会心一击，该次暴击伤害变为 3 倍。",
+          "description": "每次暴击50%概率触发会心一击，伤害翻3倍。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         }
@@ -9787,19 +9787,19 @@
       "effects": [
         {
           "count": 2,
-          "description": "每击杀一个怪物获得 1 层狩猎印记，每层提升 0.15% 伤害，最多 400 层。",
+          "description": "每次击杀一个怪物，可获得1层狩猎印记：0.15%伤害提升，最多叠加400层。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 5,
-          "description": "击杀精英额外获得 9 层、击杀 Boss 额外获得 49 层狩猎印记；计入基础击杀层数后分别为 10 层和 50 层。",
+          "description": "每次击杀精英获得10层，每次击杀BOSS获得50层。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 8,
-          "description": "狩猎印记上限提升至 1200 层。",
+          "description": "狩猎印记上限突破到1200层。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         }
@@ -9810,13 +9810,13 @@
       "effects": [
         {
           "count": 2,
-          "description": "自身获得可叠层的增益 Buff 时，有 50% 概率额外获得 1 层。",
+          "description": "自身获得增益Buff且可叠层时，50%概率再获得1层。",
           "mergeType": "EWeaponModSetMergeType::Stack",
           "overrides": []
         },
         {
           "count": 4,
-          "description": "自身获得可叠层的增益 Buff 时，额外获得 1 层。",
+          "description": "自身获得增益Buff且可叠层时，100%概率再获得1层。",
           "mergeType": "EWeaponModSetMergeType::Override",
           "overrides": [
             1
@@ -9824,7 +9824,7 @@
         },
         {
           "count": 6,
-          "description": "自身获得可叠层的增益 Buff 时，额外获得 2 层。",
+          "description": "自身获得增益Buff且可叠层时，100%概率再获得2层。",
           "mergeType": "EWeaponModSetMergeType::Override",
           "overrides": [
             1,

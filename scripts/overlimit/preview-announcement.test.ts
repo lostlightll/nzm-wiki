@@ -9,7 +9,7 @@ test("official availability preserves card effects and map affixes and survives 
   const original = parseOverlimitCatalog(structuredClone(published));
   const result = applyPreviewAnnouncement(structuredClone(original), announcement, "scripts/overlimit/current-announcement.json");
   const superCritical = result.bonds!.find(bond => bond.name === "瞬暴")!.effects.find(effect => effect.count === 8)!;
-  assert.equal(superCritical.description, "每次暴击有 50% 概率触发会心一击，该次暴击伤害变为 3 倍。");
+  assert.equal(superCritical.description, "每次暴击50%概率触发会心一击，伤害翻3倍。");
   assert.equal(original.bonds!.find(bond => bond.name === "瞬暴")!.effects.find(effect => effect.count === 8)!.description, superCritical.description);
   const periods = result.mapRotation!.periods;
   assert.equal(periods.length, 17);
