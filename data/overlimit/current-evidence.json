@@ -4179,7 +4179,7 @@
       "configId": "1316198001",
       "classFile": "Abilities/Build/CBT3/Perk02/MGE_1316198001.json",
       "sourceDescription": "保持不释放武器技能，每5秒增加30%伤害，最多10层，释放技能清零。",
-      "publicationDescription": "不释放武器技能时周期叠加伤害；释放技能清除增益。叠层间隔5秒。",
+      "publicationDescription": "保持不释放武器技能，每5秒增加30%伤害，最多10层，释放技能清零。",
       "selected": [
         {
           "expression": {
@@ -4253,7 +4253,7 @@
       "configId": "1316199001",
       "classFile": "Abilities/Build/CBT3/Perk02/MGE_1316199001.json",
       "sourceDescription": "保持不射击，每秒增加30%伤害，最多10层，开枪命中清零。",
-      "publicationDescription": "停止射击时周期叠加伤害；开枪命中清除增益。叠层间隔1秒。",
+      "publicationDescription": "保持不射击，每秒增加30%伤害，最多10层，开枪命中清零。",
       "selected": [
         {
           "expression": {
@@ -4779,7 +4779,7 @@
       "configId": "1316107001",
       "classFile": "Abilities/Build/CBT3/Perk04/MGE_1316107001.json",
       "sourceDescription": "爆炸范围减少5%，伤害增加30%。",
-      "publicationDescription": "缩小爆炸范围，提升爆炸伤害。",
+      "publicationDescription": "爆炸范围减少5%，伤害增加30%。",
       "selected": [
         {
           "expression": {
@@ -5449,7 +5449,7 @@
       "configId": "1315125001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315125001.json",
       "sourceDescription": "持续开火每射出一发子弹，武器伤害增加0.4%，最多叠加80层。",
-      "publicationDescription": "持续开火时，每次射击叠加1层武器伤害，最多80层；增益持续1秒。",
+      "publicationDescription": "持续开火每射出一发子弹，武器伤害增加0.4%，最多叠加80层。",
       "selected": [
         {
           "expression": {
@@ -5519,7 +5519,7 @@
       "configId": "1315135001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315135001.json",
       "sourceDescription": "每有一次未暴击的射击，获得6%暴击率加成，暴击后清除。",
-      "publicationDescription": "射击未暴击时叠加暴击率，暴击后清除。",
+      "publicationDescription": "每有一次未暴击的射击，获得6%暴击率加成，暴击后清除。",
       "selected": [
         {
           "expression": {
@@ -6099,7 +6099,7 @@
       "configId": "1316195001",
       "classFile": "Abilities/Build/CBT3/Perk04/MGE_1316195001.json",
       "sourceDescription": "爆炸伤害增加400%，造成多次伤害后可获得急速狂热（CD13秒）。",
-      "publicationDescription": "提升爆炸伤害，累计造成多次伤害后可获得急速狂热。狂热冷却13秒。",
+      "publicationDescription": "爆炸伤害增加400%，造成多次伤害后可获得急速狂热（CD13秒）。",
       "selected": [
         {
           "expression": {
@@ -6431,7 +6431,7 @@
       "configId": "1315203001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315203001.json",
       "sourceDescription": "弱点伤害增加30%，命中弱点最高叠加10层。",
-      "publicationDescription": "提升弱点伤害，命中弱点可叠加增益。",
+      "publicationDescription": "弱点伤害增加30%，命中弱点最高叠加10层。",
       "selected": [
         {
           "expression": {
@@ -6499,7 +6499,7 @@
       "configId": "1315200001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315200001.json",
       "sourceDescription": "爆炸仅命中一人，伤害提升50%。",
-      "publicationDescription": "爆炸仅命中单个目标时，提升伤害。",
+      "publicationDescription": "爆炸仅命中一人，伤害提升50%。",
       "selected": [
         {
           "expression": {
@@ -6637,7 +6637,7 @@
       "configId": "1315132001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315132001.json",
       "sourceDescription": "每连续射击30发后，武器伤害增加10%，可叠加3层。",
-      "publicationDescription": "连续射击达到阈值后，叠加武器伤害。连续射击阈值30。",
+      "publicationDescription": "每连续射击30发后，武器伤害增加10%，可叠加3层。",
       "selected": [
         {
           "expression": {
@@ -6823,7 +6823,7 @@
       "configId": "1315153001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315153001.json",
       "sourceDescription": "武器技能伤害提升60%。",
-      "publicationDescription": "提升武器技能伤害。",
+      "publicationDescription": "武器技能伤害提升60%。",
       "selected": [
         {
           "expression": {
@@ -7144,7 +7144,7 @@
       "configId": "1314126001",
       "classFile": "Abilities/Build/CBT3/Perk02/MGE_1314126001.json",
       "sourceDescription": "武器持续开火能叠加0.8%技能充能速度，最多100层。",
-      "publicationDescription": "持续开火时叠加武器技能充能效率。",
+      "publicationDescription": "武器持续开火能叠加0.8%技能充能速度，最多100层。",
       "selected": [
         {
           "expression": {
@@ -7253,7 +7253,7 @@
       "configId": "1314145001",
       "classFile": "Abilities/Build/CBT3/Perk02/MGE_1314145001.json",
       "sourceDescription": "武器技能充能速度提升50%。",
-      "publicationDescription": "提升武器技能充能效率。",
+      "publicationDescription": "武器技能充能速度提升50%。",
       "selected": [
         {
           "expression": {
@@ -7547,7 +7547,7 @@
       "configId": "1313110001",
       "classFile": "Abilities/Build/CBT3/Perk01/MGE_1313110001.json",
       "sourceDescription": "使用技能装填全部子弹，换弹速度提升35%。",
-      "publicationDescription": "使用技能时装填全部子弹，并提升换弹速度。",
+      "publicationDescription": "使用技能装填全部子弹，换弹速度提升35%。",
       "selected": [
         {
           "expression": {
@@ -7702,7 +7702,7 @@
       "configId": "1313194001",
       "classFile": "Abilities/Build/CBT3/Perk01/MGE_1313194001.json",
       "sourceDescription": "连续开火30次以上获得18%移速加成。",
-      "publicationDescription": "持续开火达到阈值后，获得移速加成。连续开火阈值30。",
+      "publicationDescription": "连续开火30次以上获得18%移速加成。",
       "selected": [
         {
           "expression": {
@@ -7777,7 +7777,7 @@
       "configId": "1313144001",
       "classFile": "Abilities/Build/CBT3/Perk01/MGE_1313144001.json",
       "sourceDescription": "使用技能后换弹速度提升45%。",
-      "publicationDescription": "使用技能后提升换弹速度。",
+      "publicationDescription": "使用技能后换弹速度提升45%。",
       "selected": [
         {
           "expression": {
@@ -8076,7 +8076,7 @@
       "configId": "1316108001",
       "classFile": "Abilities/Build/CBT3/Perk04/MGE_1316108001.json",
       "sourceDescription": "换弹速度提升36%，爆炸范围减少。",
-      "publicationDescription": "提升换弹速度，缩小爆炸范围。",
+      "publicationDescription": "换弹速度提升36%，爆炸范围减少。",
       "selected": [
         {
           "expression": {
@@ -8352,7 +8352,7 @@
       "configId": "1312038001",
       "classFile": "Weapon/Data/MG/MG_20006000006_WBH_YMDH/MGE/MGE_1312038001_YMDH.json",
       "sourceDescription": "榴弹的直击伤害+250%，命中目标后可叠加35层腐蚀之力。",
-      "publicationDescription": "提升榴弹直击伤害，命中时可叠加腐蚀之力。",
+      "publicationDescription": "榴弹的直击伤害+250%，命中目标后可叠加35层腐蚀之力。",
       "selected": [
         {
           "expression": {
@@ -8783,7 +8783,7 @@
       "configId": "1313101001",
       "classFile": "Abilities/Build/CBT3/Perk01/MGE_1313101001.json",
       "sourceDescription": "换弹33%不消耗备弹，伤害提升25%。",
-      "publicationDescription": "换弹有概率不消耗备弹，并提升伤害。不消耗备弹概率33%。",
+      "publicationDescription": "换弹33%不消耗备弹，伤害提升25%。",
       "selected": [
         {
           "expression": {
@@ -9300,7 +9300,7 @@
       "configId": "1315127001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315127001.json",
       "sourceDescription": "命中弱点可提升7%伤害，叠加6层。",
-      "publicationDescription": "命中弱点时，叠加伤害增益。",
+      "publicationDescription": "命中弱点可提升7%伤害，叠加6层。",
       "selected": [
         {
           "expression": {
@@ -9519,7 +9519,7 @@
       "configId": "1315139001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315139001.json",
       "sourceDescription": "每发弹丸获得20%破韧加成。",
-      "publicationDescription": "提升弹丸破韧能力。",
+      "publicationDescription": "每发弹丸获得20%破韧加成。",
       "selected": [
         {
           "expression": {
@@ -9587,7 +9587,7 @@
       "configId": "1315143001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315143001.json",
       "sourceDescription": "破盾后武器伤害增加37.5%。",
-      "publicationDescription": "破盾后提升武器伤害。",
+      "publicationDescription": "破盾后武器伤害增加37.5%。",
       "selected": [
         {
           "expression": {
@@ -9656,7 +9656,7 @@
       "configId": "1315144001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315144001.json",
       "sourceDescription": "最后10发子弹伤害提升100%",
-      "publicationDescription": "弹匣剩余弹药较少时，提升伤害。末尾弹药阈值10。",
+      "publicationDescription": "最后10发子弹伤害提升100%",
       "selected": [
         {
           "expression": {
@@ -9729,7 +9729,7 @@
       "configId": "1315171001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315171001.json",
       "sourceDescription": "距离命中敌人越远，造成伤害越高（最高40%）。",
-      "publicationDescription": "伤害随与命中敌人的距离线性提升，50米及以上达到上限。",
+      "publicationDescription": "距离命中敌人越远，造成伤害越高（最高40%）。",
       "selected": [
         {
           "expression": {
@@ -10463,7 +10463,7 @@
       "configId": "1313209001",
       "classFile": "Abilities/Build/CBT3/Perk01/MGE_1313209001.json",
       "sourceDescription": "换弹速度提升，触发主动换弹后，下一弹匣过充50%且前50%子弹的伤害增加250%。",
-      "publicationDescription": "提升换弹速度，主动换弹后过量装填，并强化弹匣前段子弹伤害。过充比例50%；强化弹药比例50%。",
+      "publicationDescription": "换弹速度提升，触发主动换弹后，下一弹匣过充50%且前50%子弹的伤害增加250%。",
       "selected": [
         {
           "expression": {
@@ -10616,7 +10616,7 @@
       "configId": "1313210001",
       "classFile": "Abilities/Build/CBT3/Perk01/MGE_1313210001.json",
       "sourceDescription": "基础弹匣容量翻倍，命中100次后装填50%弹量且8秒内武器伤害增加100%，暴击增加50%。",
-      "publicationDescription": "提升基础弹匣容量；累计命中后装填弹药，并短时间提升武器伤害与暴击率。触发命中次数100；装填比例50%。",
+      "publicationDescription": "基础弹匣容量翻倍，命中100次后装填50%弹量且8秒内武器伤害增加100%，暴击增加50%。",
       "selected": [
         {
           "expression": {
@@ -10918,7 +10918,7 @@
       "configId": "1314206001",
       "classFile": "Abilities/Build/CBT3/Perk02/MGE_1314206001.json",
       "sourceDescription": "每获得1点光能，获得45%武器技能充能并在接下来3秒内武器伤害提升100%，移速提升50%。",
-      "publicationDescription": "获得光能时，为武器技能充能，并短时间提升武器伤害与移速。直接充能45%。",
+      "publicationDescription": "每获得1点光能，获得45%武器技能充能并在接下来3秒内武器伤害提升100%，移速提升50%。",
       "selected": [
         {
           "expression": {
@@ -11175,7 +11175,7 @@
       "configId": "1315239001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315239001.json",
       "sourceDescription": "移动时每秒增加动能，最多5层，满层后消耗动能转化为每层7%伤害加成，持续5秒（CD5秒）。",
-      "publicationDescription": "移动时积攒动能，满层后转化为命中、爆炸与武器技能伤害加成，持续5秒。动能积攒间隔1秒；冷却5秒。",
+      "publicationDescription": "移动时每秒增加动能，最多5层，满层后消耗动能转化为每层7%伤害加成，持续5秒（CD5秒）。",
       "selected": [
         {
           "expression": {
@@ -11407,7 +11407,7 @@
       "configId": "1315238001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315238001.json",
       "sourceDescription": "滑铲后射击伤害增加10%，持续5秒，最多叠加3层。",
-      "publicationDescription": "滑铲后叠加命中与爆炸伤害增益，最多3层，持续5秒。",
+      "publicationDescription": "滑铲后射击伤害增加10%，持续5秒，最多叠加3层。",
       "selected": [
         {
           "expression": {
@@ -11703,7 +11703,7 @@
       "configId": "1315229001",
       "classFile": "Abilities/Build/CBT3/Perk03/MGE_1315229001.json",
       "sourceDescription": "触发光能效果后，武器技能伤害提升55%，持续8秒；期间击杀2个目标则加持续时间1秒。",
-      "publicationDescription": "触发光能效果后提升武器技能伤害，持续8秒，期间击杀目标可延长增益。延时所需击杀2；延长持续1秒。",
+      "publicationDescription": "触发光能效果后，武器技能伤害提升55%，持续8秒；期间击杀2个目标则加持续时间1秒。",
       "selected": [
         {
           "expression": {
