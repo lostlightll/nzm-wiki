@@ -30,6 +30,7 @@ import { MultiplierBadges } from "@/components/MultiplierBadges";
 import { getProviderRelationsForSource } from "@/lib/multiplier-data";
 import { renderInlineDescription } from "@/components/InlineDescription";
 import { WEAPON_TYPE_ID_MAP } from "@/constants/weapons";
+import { useSelection, useSessionValue } from "@/hooks/useSelection";
 import { restoreCatalogNavigation } from "@/lib/catalog-navigation";
 import { getAssetPath } from "@/lib/path";
 import type {
@@ -184,21 +185,20 @@ export default function OverlimitPageClient({
 
   const [activeModule, setActiveModule] =
     useState<OverlimitModule>("cards");
-  const [query, setQuery] = useState("");
-  const [cardOrigin, setCardOrigin] = useState<"all" | "new" | "existing">("all");
+  const [query, setQuery] = useSessionValue("query");
+  const [cardOrigin, setCardOrigin] = useSessionValue("card-origin", "all");
   const existingIds = useMemo(() => existingCardIds ? new Set(existingCardIds) : null, [existingCardIds]);
   const newCardCount = existingIds ? initialCards.filter(card => !existingIds.has(card.id)).length : 0;
-  const [selectedQualities, setSelectedQualities] = useState<Set<number>>(
-    new Set(),
-  );
-  const [selectedSlots, setSelectedSlots] = useState<Set<PerkSlot>>(new Set());
-  const [selectedWeights, setSelectedWeights] = useState<Set<number>>(
-    new Set(),
-  );
-  const [selectedWeaponApplicability, setSelectedWeaponApplicability] = useState<
-    Set<WeaponApplicabilityFilter>
-  >(new Set());
-  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const qualityState = useSelection<number>("quality", undefined, Number);
+  const slotState = useSelection<PerkSlot>("slot", undefined, value => Number(value) as PerkSlot);
+  const weightState = useSelection<number>("weight", undefined, Number);
+  const weaponApplicabilityState = useSelection<WeaponApplicabilityFilter>("weapon-applicability");
+  const tagState = useSelection<string>("tag");
+  const selectedQualities = qualityState.selected;
+  const selectedSlots = slotState.selected;
+  const selectedWeights = weightState.selected;
+  const selectedWeaponApplicability = weaponApplicabilityState.selected;
+  const selectedTags = tagState.selected;
   const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase("zh-CN"));
 
   const modules = useMemo(() => OVERLIMIT_MODULES.filter(module =>
@@ -344,59 +344,14 @@ export default function OverlimitPageClient({
     filteredCards.slice(0, 5).map((card) => card.icon),
   );
 
-  const toggleTag = (tagId: string) => {
-    setSelectedTags((current) => {
-      const next = new Set(current);
-      if (next.has(tagId)) next.delete(tagId);
-      else next.add(tagId);
-      return next;
-    });
-  };
-
-  const toggleQuality = (quality: number) => {
-    setSelectedQualities((current) => {
-      const next = new Set(current);
-      if (next.has(quality)) next.delete(quality);
-      else next.add(quality);
-      return next;
-    });
-  };
-
-  const toggleSlot = (slot: PerkSlot) => {
-    setSelectedSlots((current) => {
-      const next = new Set(current);
-      if (next.has(slot)) next.delete(slot);
-      else next.add(slot);
-      return next;
-    });
-  };
-
-  const toggleWeight = (weight: number) => {
-    setSelectedWeights((current) => {
-      const next = new Set(current);
-      if (next.has(weight)) next.delete(weight);
-      else next.add(weight);
-      return next;
-    });
-  };
-
-  const toggleWeaponApplicability = (filter: WeaponApplicabilityFilter) => {
-    setSelectedWeaponApplicability((current) => {
-      const next = new Set(current);
-      if (next.has(filter)) next.delete(filter);
-      else next.add(filter);
-      return next;
-    });
-  };
-
   const resetFilters = () => {
     setCardOrigin("all");
     setQuery("");
-    setSelectedQualities(new Set());
-    setSelectedSlots(new Set());
-    setSelectedWeights(new Set());
-    setSelectedWeaponApplicability(new Set());
-    setSelectedTags(new Set());
+    qualityState.clear();
+    slotState.clear();
+    weightState.clear();
+    weaponApplicabilityState.clear();
+    tagState.clear();
   };
 
   const selectModule = (module: OverlimitModule) => {
@@ -410,7 +365,7 @@ export default function OverlimitPageClient({
   const searchCardsByBonds = (activeBonds: OverlimitBondName[]) => {
     resetFilters();
     const bondNames = new Set<string>(activeBonds);
-    setSelectedTags(
+    tagState.update(
       new Set(
         tagOptions
           .filter((tag) => bondNames.has(tag.name))
@@ -513,7 +468,7 @@ export default function OverlimitPageClient({
                     key={quality}
                     type="button"
                     aria-pressed={selected}
-                    onClick={() => toggleQuality(quality)}
+                    onClick={() => qualityState.toggle(quality)}
                     className={`flex min-h-11 touch-manipulation items-center justify-center gap-2 rounded border px-3 py-2 text-sm font-medium transition-colors outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
                       selected
                         ? style.selected
@@ -543,7 +498,7 @@ export default function OverlimitPageClient({
                     key={slot}
                     type="button"
                     aria-pressed={selected}
-                    onClick={() => toggleSlot(slot)}
+                    onClick={() => slotState.toggle(slot)}
                     className={`flex min-h-11 touch-manipulation items-center justify-center rounded border px-3 py-2 text-sm font-medium tabular-nums transition-colors outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
                       selected
                         ? "border-zinc-400 bg-zinc-600 text-white"
@@ -589,7 +544,7 @@ export default function OverlimitPageClient({
                     type="button"
                     aria-label={`抽取权重 ${weight}`}
                     aria-pressed={selected}
-                    onClick={() => toggleWeight(weight)}
+                    onClick={() => weightState.toggle(weight)}
                     className={`flex min-h-10 touch-manipulation items-center justify-center rounded border px-1 py-1.5 text-xs font-medium tabular-nums transition-colors outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
                       selected
                         ? "border-zinc-400 bg-zinc-600 text-white"
@@ -606,7 +561,7 @@ export default function OverlimitPageClient({
           </div>
           {availableWeaponApplicability.size > 0 && <WeaponApplicabilityFilterSection
             selected={selectedWeaponApplicability}
-            onToggle={toggleWeaponApplicability}
+            onToggle={weaponApplicabilityState.toggle}
             available={availableWeaponApplicability}
           />}
 
@@ -622,7 +577,7 @@ export default function OverlimitPageClient({
                     key={tag.id}
                     type="button"
                     aria-pressed={selected}
-                    onClick={() => toggleTag(tag.id)}
+                    onClick={() => tagState.toggle(tag.id)}
                     style={
                       selected
                         ? getOverlimitBondSurfaceStyle(tag.name)

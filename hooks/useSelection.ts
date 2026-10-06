@@ -17,6 +17,22 @@ function subscribe(listener: () => void) {
   return () => listeners.delete(listener);
 }
 
+export function useSessionValue(key: string, initial = "") {
+  const pathname = usePathname();
+  const storageKey = getStorageKey(pathname, key);
+  const value = useSyncExternalStore(
+    subscribe,
+    () => sessionStorage.getItem(storageKey) ?? initial,
+    () => initial,
+  );
+  const update = useCallback((next: string) => {
+    sessionStorage.setItem(storageKey, next);
+    emitChange();
+  }, [storageKey]);
+
+  return [value, update] as const;
+}
+
 export function useSelection<T extends string | number>(
   key: string,
   initial?: T[],
@@ -73,5 +89,5 @@ export function useSelection<T extends string | number>(
     [update],
   );
 
-  return { selected: parsed, toggle, clear, selectOnly };
+  return { selected: parsed, toggle, clear, selectOnly, update };
 }
