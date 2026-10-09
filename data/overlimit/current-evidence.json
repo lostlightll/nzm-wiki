@@ -1919,7 +1919,7 @@
       "configId": "1317105001",
       "classFile": "Abilities/Build/CBT3/Perk04/MGE_1317105001.json",
       "sourceDescription": "射击可增加武器技能10%伤害；武器技能命中可增加武器射击20%伤害；均可叠多层。",
-      "publicationDescription": "射击叠技能增伤10%/层（上限60层，8秒）；技能命中叠射击/爆炸增伤20%/层（上限15层，10秒）。",
+      "publicationDescription": "射击叠加武器技能伤害，每层提升10%，最多60层，持续8秒；武器技能命中叠加射击和爆炸伤害，每层提升20%，最多15层，持续10秒。",
       "selected": [
         {
           "expression": {

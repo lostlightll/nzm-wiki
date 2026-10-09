@@ -109,7 +109,7 @@ function OverlimitCardItem({
     <div className="relative min-w-0 transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
       <OverlimitHoverPreview card={card} href={`${basePath}/${card.id}`}>
         <article
-          className={`relative flex min-h-[290px] flex-col overflow-hidden rounded-lg border-2 ${qualityStyle.border} ${qualityStyle.bg} sm:min-h-[328px]`}
+          className={`relative flex min-h-[290px] flex-col overflow-hidden rounded-lg border-2 ${qualityStyle.border} ${qualityStyle.bg} sm:min-h-[344px]`}
         >
         <span className="sr-only">品质：{qualityStyle.label}</span>
         <div aria-hidden="true" className={`h-1 w-full ${qualityStyle.bar}`} />
@@ -118,9 +118,9 @@ function OverlimitCardItem({
         >
           {/* Reserve the badges' intrinsic size without nesting links inside the card link. */}
           {factorLabels.length > 0 && (
-            <div aria-hidden="true" className="invisible float-right ml-1 flex flex-col gap-1.5">
+            <div aria-hidden="true" className={`invisible float-right ml-1 grid ${factorLabels.length > 1 ? "pr-2" : ""}`}>
               {factorLabels.map(label => (
-                <span key={label} className="min-h-6 whitespace-nowrap rounded border px-2 py-0.5 text-[11px] font-medium leading-4">
+                <span key={label} className="col-start-1 row-start-1 min-h-6 whitespace-nowrap rounded border px-2 py-0.5 text-[11px] font-medium leading-4">
                   {label}
                 </span>
               ))}
@@ -164,8 +164,8 @@ function OverlimitCardItem({
         </div>
         </article>
       </OverlimitHoverPreview>
-      {relations.length > 0 && <MultiplierBadges relations={relations} variant="catalog-compact"
-        className="absolute right-2 top-4 z-10 max-w-[6rem] justify-end" />}
+      {relations.length > 0 && <MultiplierBadges relations={relations} variant="catalog-stacked"
+        className="absolute right-2 top-4 z-20 justify-end" />}
     </div>
   );
 }

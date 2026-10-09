@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Layers3 } from "lucide-react";
 import { getMultiplierFactorStyle } from "@/components/multiplier-badge-styles";
+import { MultiplierBadgeStack } from "@/components/MultiplierBadgeStack";
 import {
   getApplicableModifierTypes,
   getProviderRelationsForSource,
@@ -15,6 +16,7 @@ type MultiplierBadgeVariant =
   | "default"
   | "catalog-overlay"
   | "catalog-compact"
+  | "catalog-stacked"
   | "catalog-inline";
 
 export function MultiplierBadges({
@@ -32,8 +34,44 @@ export function MultiplierBadges({
 }) {
   const groups = getRelationsByFactor(relations);
   if (groups.length === 0) return null;
+  if (variant === "catalog-stacked" && groups.length > 1) {
+    const front = groups.find(group => group.factorId === "dilution") ?? groups[0];
+    const back = groups.filter(group => group !== front);
+
+    return (
+      <MultiplierBadgeStack id={id} className={className}>
+        <summary
+          aria-label={`展开乘区：${[front, ...back].map(group => group.factorLabel).join("、")}`}
+          className="relative grid h-6 touch-manipulation cursor-pointer list-none pr-2 outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 after:absolute after:inset-x-0 after:-inset-y-2.5 after:content-[''] [&::-webkit-details-marker]:hidden"
+        >
+          {back.map(({ factorId, factorLabel }, index) => (
+            <span
+              key={factorId}
+              aria-hidden="true"
+              className="col-start-1 row-start-1 rounded bg-zinc-900"
+              style={{ transform: `translate(3px, ${index % 2 === 0 ? -4 : 4}px)` }}
+            >
+              <span className={`flex h-6 whitespace-nowrap rounded border px-2 py-0.5 text-[11px] font-medium leading-4 ${getMultiplierFactorStyle(factorId)}`}>
+                <span className="invisible">{factorLabel}</span>
+              </span>
+            </span>
+          ))}
+          <span className="relative col-start-1 row-start-1 rounded bg-zinc-900">
+            <span className={`flex h-6 items-center justify-center whitespace-nowrap rounded border px-2 py-0.5 text-[11px] font-medium leading-4 ${getMultiplierFactorStyle(front.factorId)}`}>
+              {front.factorLabel}
+            </span>
+          </span>
+        </summary>
+        <div className="multiplier-badge-preview absolute right-0 top-full z-20 pt-2">
+          <div className="rounded-md border border-zinc-700 bg-zinc-900 p-2 shadow-lg">
+            <MultiplierBadges relations={relations} showOperation={showOperation} className="w-max flex-col items-stretch" />
+          </div>
+        </div>
+      </MultiplierBadgeStack>
+    );
+  }
   const isCatalogOverlay = variant === "catalog-overlay";
-  const isCatalogCompact = variant === "catalog-compact";
+  const isCatalogCompact = variant === "catalog-compact" || variant === "catalog-stacked";
   const isCatalogInline = variant === "catalog-inline";
   const isCompact = isCatalogOverlay || isCatalogCompact || isCatalogInline;
   const isSplitCatalogOverlay = isCatalogOverlay && groups.length === 2;
