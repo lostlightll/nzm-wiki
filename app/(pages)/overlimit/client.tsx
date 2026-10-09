@@ -523,7 +523,7 @@ export default function OverlimitPageClient({
                   type="button"
                   aria-pressed={selectedSlots.has("unknown")}
                   onClick={() => slotState.toggle("unknown")}
-                  className={`flex min-h-11 touch-manipulation items-center justify-center rounded border px-3 py-2 text-sm font-medium transition-colors outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
+                  className={`flex min-h-11 touch-manipulation items-center justify-center whitespace-nowrap rounded border px-1.5 py-2 text-sm font-medium transition-colors outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
                     selectedSlots.has("unknown")
                       ? "border-zinc-400 bg-zinc-600 text-white"
                       : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700/70 hover:text-white"
