@@ -65,6 +65,26 @@ export function projectOriginRuneSources(
   return { providers, exclusions };
 }
 
+export function mergeOriginRuneSources(
+  registry: ModifierProviderRegistry,
+  projected: ReturnType<typeof projectOriginRuneSources>,
+): ModifierProviderRegistry {
+  function merge<T extends { id: string; source: { type: string } }>(current: T[], next: T[]): T[] {
+    const replacements = new Map(next.map(entry => [entry.id, entry]));
+    const entries = current.flatMap(entry => {
+      if (entry.source.type !== "origin-rune") return [entry];
+      const replacement = replacements.get(entry.id);
+      replacements.delete(entry.id);
+      return replacement ? [replacement] : [];
+    });
+    return [...entries, ...replacements.values()];
+  }
+  return { ...registry,
+    providers: merge(registry.providers, projected.providers),
+    exclusions: merge(registry.exclusions, projected.exclusions),
+  };
+}
+
 function main() {
   const check = process.argv.includes("--check");
   const projected = projectOriginRuneSources(readPassiveRows());
@@ -72,16 +92,13 @@ function main() {
   const originProviders = registry.providers.filter((entry) => entry.source.type === "origin-rune");
   const originExclusions = registry.exclusions.filter((entry) => entry.source.type === "origin-rune");
   if (check) {
-    if (JSON.stringify(originProviders) !== JSON.stringify(projected.providers) ||
-      JSON.stringify(originExclusions) !== JSON.stringify(projected.exclusions)) {
+    const serialize = (entries: { id: string }[]) => JSON.stringify([...entries].sort((a, b) => a.id.localeCompare(b.id)));
+    if (serialize(originProviders) !== serialize(projected.providers) ||
+      serialize(originExclusions) !== serialize(projected.exclusions)) {
       throw new Error("Origin rune multiplier index is stale; run pnpm origin-runes:multiplier:project");
     }
   } else {
-    const updated = {
-      ...registry,
-      providers: [...registry.providers.filter((entry) => entry.source.type !== "origin-rune"), ...projected.providers],
-      exclusions: [...registry.exclusions.filter((entry) => entry.source.type !== "origin-rune"), ...projected.exclusions],
-    };
+    const updated = mergeOriginRuneSources(registry, projected);
     fs.writeFileSync(registryPath, `${JSON.stringify(updated, null, 2)}\n`);
   }
   console.log(`Origin rune multipliers: ${projected.providers.length} providers, ${projected.exclusions.length} exclusions (${check ? "checked" : "projected"})`);

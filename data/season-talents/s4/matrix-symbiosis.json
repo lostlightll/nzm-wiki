@@ -264,7 +264,7 @@
       "id": "4020402",
       "name": "静默过载",
       "descriptions": [
-        "在领域内，自身和自身召唤物只要保持不受击的状态，每秒可以提升自身武器伤害<qiangdiao>7%</>，受击清零，持续<qiangdiao>3</>秒，最多叠加<qiangdiao>6</>层。（多领域不叠加）"
+        "在领域内，自身和自身召唤物只要保持不受击的状态，每秒可以提升自身武器伤害<qiangdiao>9%</>，受击清零，持续<qiangdiao>3</>秒，最多叠加<qiangdiao>6</>层。（多领域不叠加）"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_XJHH_03.webp",
       "phase": 4,
@@ -523,7 +523,7 @@
       "id": "4020602",
       "name": "巨构投影",
       "descriptions": [
-        "领域范围内自身创建的召唤物获得巨大化<qiangdiao>50%</> 的比例，获得<qiangdiao>60%</> ​召唤物伤害和<qiangdiao>20%</> 的召唤物射速​加成。（多领域不叠加）"
+        "领域范围内自身创建的召唤物获得巨大化<qiangdiao>50%</> 的比例，获得<qiangdiao>150%</> ​召唤物伤害和<qiangdiao>20%</> 的召唤物射速​加成。（多领域不叠加）"
       ],
       "icon": "/webp/images/season-talents/s4/details/T_Talent_S4_XJHH_04.webp",
       "phase": 6,

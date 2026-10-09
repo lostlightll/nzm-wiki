@@ -32082,7 +32082,7 @@
           "FleshDamageBase": 1.25,
           "FriendlyCoefficient": -1,
           "HpCalBase": 0,
-          "HpCalScale": 0.5,
+          "HpCalScale": 0.6,
           "HpFloatCoef": 0,
           "HurtableBase": 1.25,
           "ImpulseBase": 0,
@@ -32655,7 +32655,7 @@
           "FleshDamageBase": 46.2,
           "FriendlyCoefficient": -1,
           "HpCalBase": 0,
-          "HpCalScale": 13,
+          "HpCalScale": 9,
           "HpFloatCoef": 0,
           "HurtableBase": 46.2,
           "ImpulseBase": 56.5,
@@ -73290,7 +73290,7 @@
       "source_path": "DataTables/LuaDataTable/WeaponItemConfigTable.json"
     },
     "numerical-lc": {
-      "sha256": "5369b2752432af61bdbd8cdafa8d1b622eb2ce4a4971bfaf6fc724205a271051",
+      "sha256": "e10148a5a6e2c3429f97246745ede8db0d3846baa2a27e9d9ea48de0eb656ccf",
       "source_path": "DataTables/numerical_config_composite.json"
     },
     "numerical-td": {

@@ -80,7 +80,7 @@ test("武器来源解析为插件详情页独立伤害表格", async () => {
       interval: "10秒",
       numericalId: "120300245",
       damageType: "近战伤害",
-      damageValue: "6500",
+      damageValue: "4500",
       toughness: "56.5",
       element: "电弧",
       critical: true,

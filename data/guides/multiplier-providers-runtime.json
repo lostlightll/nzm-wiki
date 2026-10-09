@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": {
-    "modifierIndexSha256": "e2fb64e83f92169d452571149737ad89165c013d3f7dd1b4d7315c60b338d711",
+    "modifierIndexSha256": "e5dc9295490cfe8e099d31820bc44dd30bf39abf4809fc05bcd78017afd9a41c",
     "multiplierSchemaVersion": 12
   },
   "providers": [
@@ -6768,6 +6768,18 @@
       },
       "modifierTypeIds": [
         "game-mode"
+      ]
+    },
+    {
+      "id": "origin-rune:1378042640",
+      "label": "秘技返还",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042640"
+      },
+      "modifierTypeIds": [
+        "weapon-damage",
+        "skill-damage"
       ]
     }
   ],
@@ -16676,16 +16688,6 @@
       "source": {
         "type": "origin-rune",
         "id": "1378042550"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
-    },
-    {
-      "id": "origin-rune:1378042640",
-      "label": "秘技返还",
-      "source": {
-        "type": "origin-rune",
-        "id": "1378042640"
       },
       "reasonCode": "unverified-evidence",
       "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"

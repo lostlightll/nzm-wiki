@@ -1,0 +1,10 @@
+{
+  "1378042250": {
+    "sourceDescription": "受到致命伤害时免疫死亡4秒，期间攻击力+300%（CD120秒）。",
+    "description": "受到致命伤害时免疫死亡4秒，期间攻击力+{{num:attack|percent}}（CD120秒）。",
+    "numModifierValues": {
+      "attack": { "row": "lc:130042250_1_0", "field": "base" }
+    },
+    "basis": "2026-10-09：1378042250_1 -> MGE1378042250；ExecuteUbergraph StatementIndex409 添加 Buff_Rogue_130042250，Buff.GPModifyIDs=[130042250]、Duration=4，Numerical 130042250_1_0 的 BaseValue=2、CoefValue=0、GPModifierOp=B5。公告与原点描述写+300%，与 Numerical 冲突，文案数值按精确引用保留200%，不推导最终伤害因子。可见蓝图以Level1、1层添加Buff，没有找到300%的动态覆写证据；Native内部未展开。CD120沿用展示文案，CDO CooldownDuration=60尚未证明是实际执行冷却，不能直接替换。"
+  }
+}

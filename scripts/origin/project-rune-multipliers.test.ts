@@ -2,11 +2,27 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
-import { projectOriginRuneSources } from "./project-rune-multipliers";
+import { mergeOriginRuneSources, projectOriginRuneSources } from "./project-rune-multipliers";
+import { parseModifierProviderRegistry } from "../../lib/modifier-provider-registry";
 
 const content = path.join(process.cwd(), "refs/Exports/NZM/Content");
 const readJson = (file: string) => JSON.parse(fs.readFileSync(path.join(content, file), "utf8"));
 const rows = (file: string) => readJson(file)[0].Rows;
+
+test("rune refresh preserves other providers and their positions", () => {
+  const registry = parseModifierProviderRegistry(JSON.parse(fs.readFileSync("data/modifier-providers.json", "utf8")));
+  const projected = projectOriginRuneSources(rows("DataTables/MGE/MGEPassiveMainTable.json"));
+  const merged = mergeOriginRuneSources(registry, projected);
+  for (const group of ["providers", "exclusions"] as const) {
+    assert.deepEqual(merged[group].map(entry => entry.id), registry[group].map(entry => entry.id));
+    const unrelated = registry[group].filter(entry => entry.source.type !== "origin-rune");
+    for (const entry of unrelated) assert.equal(merged[group].find(next => next.id === entry.id), entry);
+  }
+  const refund = merged.providers.find(entry => entry.id === "origin-rune:1378042640");
+  assert.deepEqual(refund?.applications?.map(application => application.expression.row),
+    ["lc:130042640_1_0", "lc:130042640_1_1"]);
+  assert.ok(!merged.exclusions.some(entry => entry.id === refund?.id));
+});
 
 test("one-shot rune only indexes its own attack buff", () => {
   const mge = readJson("Abilities/Build/RoguePerk/S4/MGE_1378044210.json");

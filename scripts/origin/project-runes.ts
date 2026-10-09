@@ -3,6 +3,9 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import sharp from "sharp";
 import highlightedDescriptions from "../../data/origin/rune-descriptions.json";
+import descriptionReviews from "../../data/origin/rune-description-reviews.json";
+import { NUM_MODIFIER_RESOLVER } from "../../lib/num-modifier-data";
+import type { NumModifierValueBindings } from "../../lib/num-modifier";
 import type { OriginRune, OriginRuneCatalog, OriginRuneCategory, OriginRuneQuality } from "../../lib/origin-runes";
 
 const ROOT = process.cwd();
@@ -22,6 +25,30 @@ interface RawRune {
   Tag: { Values: number[] };
 }
 interface RawTag { Tag: number; DisplayName: TextValue }
+
+interface DescriptionReview {
+  sourceDescription: string;
+  description: string;
+  numModifierValues: NumModifierValueBindings;
+  basis: string;
+}
+
+export function resolveRuneDescription(id: string, sourceDescription: string, highlighted: string): string {
+  const review = (descriptionReviews as Record<string, DescriptionReview>)[id];
+  if (review && (review.sourceDescription !== sourceDescription || !review.basis.trim())) {
+    throw new Error(`Rune description review is stale: ${id}`);
+  }
+  const resolve = (description: string) => review
+    ? NUM_MODIFIER_RESOLVER.resolveTemplate(description, review.numModifierValues, `origin-rune:${id}`)
+    : description;
+  const description = resolve(highlighted);
+  const expected = review ? resolve(review.description) : sourceDescription;
+  const plainDescription = description.replace(/\*\*([^*\n。]+)\*\*/g, "$1");
+  if (plainDescription === description || plainDescription !== expected) {
+    throw new Error(`Rune highlights must preserve the source description: ${id}`);
+  }
+  return description;
+}
 
 function readRows<T>(name: string): Record<string, T> {
   const table = JSON.parse(fs.readFileSync(path.join(TABLES, `${name}.json`), "utf8")) as
@@ -66,14 +93,11 @@ export function projectOriginRunes(
       if (![3, 4, 5].includes(row.Quality)) throw new Error(`Invalid quality: ${id}`);
       if (!Array.isArray(row.Tag?.Values) || !row.Tag.Values.length ||
         row.Tag.Values.some((tagId) => !tagIds.has(tagId))) throw new Error(`Invalid tags: ${id}`);
-      // Highlight display text only; these numbers are not verified numerical effects.
+      // Preserve display text unless a pinned Numerical review corrects a source conflict.
       const sourceDescription = text(row.Description, `rune description ${id}`);
-      const description = descriptions[id];
-      if (!description) throw new Error(`Missing highlighted rune description: ${id}`);
-      const plainDescription = description.replace(/\*\*([^*\n。]+)\*\*/g, "$1");
-      if (plainDescription === description || plainDescription !== sourceDescription) {
-        throw new Error(`Rune highlights must preserve the source description: ${id}`);
-      }
+      const highlighted = descriptions[id];
+      if (!highlighted) throw new Error(`Missing highlighted rune description: ${id}`);
+      const description = resolveRuneDescription(id, sourceDescription, highlighted);
       const icon = iconName(row.Icon.AssetPathName);
       runes.push({ id, name: text(row.DisplayName, `rune ${id}`), description,
         category: category as OriginRuneCategory, quality: row.Quality as OriginRuneQuality,
@@ -102,8 +126,12 @@ async function main() {
   } else {
     fs.mkdirSync(path.dirname(TARGET), { recursive: true });
     fs.writeFileSync(TARGET, output);
-    fs.mkdirSync(ICONS, { recursive: true });
   }
+  if (process.argv.includes("--data-only")) {
+    console.log(`Origin runes: ${catalog.runes.length} entries, ${catalog.tags.length} tags (${check ? "checked" : "projected"}; data only)`);
+    return;
+  }
+  if (!check) fs.mkdirSync(ICONS, { recursive: true });
   const names = [...new Set(catalog.runes.map((rune) => path.basename(rune.icon, ".webp")))];
   if (names.length !== 37) throw new Error(`Unexpected rune icon count: ${names.length}`);
   for (const name of names) {

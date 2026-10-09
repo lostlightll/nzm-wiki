@@ -207,7 +207,7 @@
     {
       "id": "1378042170",
       "name": "聚金环波",
-      "description": "每次金币减少获得**25**次冲击环，在接下来的战斗中造成伤害时释放1次冲击环（CD1秒）。",
+      "description": "每次金币减少获得**35**次冲击环，在接下来的战斗中造成伤害时释放1次冲击环（CD1秒）。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes02_03.webp",
@@ -230,7 +230,7 @@
     {
       "id": "1378042200",
       "name": "怒战残增",
-      "description": "血量越低攻击力越高，残血最高**+125%**。",
+      "description": "血量越低攻击力越高，满血**+35%**，残血最高**+125%**。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_02.webp",
@@ -241,7 +241,7 @@
     {
       "id": "1378042210",
       "name": "怒战耗血",
-      "description": "使用武器技能损失**10%**生命，接下来3秒**70%**攻击力提升。",
+      "description": "使用武器技能损失**10%**生命，接下来10秒**100%**攻击力提升。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_03.webp",
@@ -274,7 +274,7 @@
     {
       "id": "1378042250",
       "name": "怒战濒死",
-      "description": "受到致命伤害时免疫死亡**3**秒，期间攻击力**+200%**（CD120秒）。",
+      "description": "受到致命伤害时免疫死亡**4**秒，期间攻击力**+200%**（CD120秒）。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_02.webp",
@@ -340,7 +340,7 @@
     {
       "id": "1378042480",
       "name": "坚盾增伤",
-      "description": "护盾处于满值时，攻击力额外**+60%**，非满的情况下**+10%**。",
+      "description": "护盾处于满值时，攻击力额外**+60%**，非满的情况下**+35%**。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_03.webp",
@@ -351,7 +351,7 @@
     {
       "id": "1378042490",
       "name": "坚盾缩爆",
-      "description": "当前护盾上限**-50%**，护盾打破时引发一次冲击环（CD1秒）。",
+      "description": "当前护盾上限**-50%**，最大生命值**+50%**，护盾减少时引发一次冲击环（CD1秒）。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_02.webp",
@@ -362,7 +362,7 @@
     {
       "id": "1378042530",
       "name": "坚盾狂热",
-      "description": "每次叠满护盾的情况下，以减少**100%**护盾作为代价，获得急速狂热并每秒产生冲击环，持续**6**秒。",
+      "description": "每次叠满护盾的情况下，以减少**50%**护盾作为代价，获得急速狂热并产生冲击环，持续**6**秒。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_01.webp",
@@ -374,7 +374,7 @@
     {
       "id": "1378042550",
       "name": "游击导弹",
-      "description": "每移动**8**m自动发射跟踪导弹。",
+      "description": "每移动**6**m自动发射跟踪导弹。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_03.webp",
@@ -386,7 +386,7 @@
     {
       "id": "1378042560",
       "name": "游击动能",
-      "description": "保持移动不射击每秒获得1层动能，每造成1次伤害消耗1层动能并使当次结算的攻击力提升**100%**。",
+      "description": "保持移动每0.5秒获得1层动能，开火或使用技能时消耗1层动能并使当次结算的攻击力提升**100%**。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_02.webp",
@@ -409,7 +409,7 @@
     {
       "id": "1378042590",
       "name": "游击斩半",
-      "description": "当移速加成大于50%时，每次对生命值小于50%血量的单位，造成伤害提升**150%**。",
+      "description": "当移速加成大于30%时，每次对生命值小于50%血量的单位，造成伤害提升**150%**。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_01.webp",
@@ -420,7 +420,7 @@
     {
       "id": "1378042600",
       "name": "游击斩满",
-      "description": "当移速加成大于50%时，每次对生命值大于50%血量的单位，造成伤害提升**110%**。",
+      "description": "当移速加成大于30%时，每次对生命值大于50%血量的单位，造成伤害提升**110%**。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes08_03.webp",
@@ -442,7 +442,7 @@
     {
       "id": "1378042640",
       "name": "秘技返还",
-      "description": "武器技能**66%**概率释放后返回当前武器技能充能。",
+      "description": "全技能伤害**+100%**，武器技能**66%**概率释放后返回当前武器技能充能。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_02.webp",
@@ -453,7 +453,7 @@
     {
       "id": "1378042680",
       "name": "叠伤秘技",
-      "description": "每次释放武器技能获得**12%**攻击力提升，可叠加5层，持续10秒。",
+      "description": "每次释放武器技能获得**12%**攻击力提升，可叠加10层，持续10秒。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_03.webp",
@@ -464,7 +464,7 @@
     {
       "id": "1378042690",
       "name": "强伤秘技",
-      "description": "每次释放武器技能获得**80%**攻击力提升，不可叠加，持续10秒（CD15秒）。",
+      "description": "每次释放武器技能获得**80%**攻击力提升，不可叠加，持续15秒（CD20秒）。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes09_01.webp",
@@ -497,7 +497,7 @@
     {
       "id": "1378044290",
       "name": "玻璃大炮",
-      "description": "每次关卡开始，扣除自身最大生命值**50%**血量，转化为接下来60秒攻击力提升**100%**。",
+      "description": "每次关卡开始，扣除自身最大生命值**25%**血量，转化为接下来60秒攻击力提升**130%**。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes04_02.webp",
@@ -531,7 +531,7 @@
     {
       "id": "1378044830",
       "name": "射击雷击",
-      "description": "每次射击命中**2.5%**概率产生落雷。",
+      "description": "每次射击命中**5%**概率产生落雷。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_04.webp",
@@ -553,7 +553,7 @@
     {
       "id": "1378044850",
       "name": "超级落雷",
-      "description": "全部落雷伤害***2**。",
+      "description": "全部落雷伤害增加**250%**。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
@@ -564,7 +564,7 @@
     {
       "id": "1378044860",
       "name": "致命爆炸",
-      "description": "武器命中有**25%**概率产生冲击环（CD1秒）。",
+      "description": "武器命中有**25%**概率产生冲击环（CD0.7秒）。",
       "category": "special",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_04.webp",
@@ -597,7 +597,7 @@
     {
       "id": "1378042070",
       "name": "环爆迅射",
-      "description": "每次命中弱点有可以在目标处产生冲击环（CD**2**秒）。",
+      "description": "每次命中弱点可以在目标处产生冲击环（CD**2**秒）。",
       "category": "normal",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_03.webp",
@@ -870,7 +870,7 @@
     {
       "id": "1378044090",
       "name": "血转环伤",
-      "description": "每**50**点最大血量，全部冲击环伤害提升**10%**。",
+      "description": "每**50**点最大血量，全部冲击环伤害提升**20%**。",
       "category": "normal",
       "quality": 4,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
@@ -1027,7 +1027,7 @@
     {
       "id": "1378044310",
       "name": "暴击飞弹",
-      "description": "每**10**次暴击都能创建**1**发导弹。",
+      "description": "每**5**次暴击都能创建**1**发导弹。",
       "category": "normal",
       "quality": 4,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
@@ -1094,7 +1094,7 @@
     {
       "id": "1378044400",
       "name": "多重爆炸",
-      "description": "每次武器射击爆炸的时候，**20%**概率在爆炸的位置复制一次额外的爆炸。（CD 0.5秒）",
+      "description": "每次武器射击爆炸的时候，**50%**概率在爆炸的位置复制一次额外的爆炸。（CD 0.5秒）",
       "category": "normal",
       "quality": 4,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
@@ -1116,7 +1116,7 @@
     {
       "id": "1378044420",
       "name": "独爆增伤",
-      "description": "爆炸伤害仅命中一人的情况下，伤害提升**340%**。",
+      "description": "爆炸伤害仅命中一人的情况下，伤害提升**540%**。",
       "category": "normal",
       "quality": 4,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
@@ -1127,7 +1127,7 @@
     {
       "id": "1378044480",
       "name": "暴击护盾",
-      "description": "护盾上限降低**50%**，但是暴击时恢复护盾**2**点。",
+      "description": "护盾上限降低**50%**，最大生命值**+50%**，但是暴击时恢复护盾**5**点。",
       "category": "normal",
       "quality": 3,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes07_02.webp",
@@ -1252,7 +1252,7 @@
     {
       "id": "1378044600",
       "name": "不动明王",
-      "description": "处于原地3秒获得1层石化，最高5层，每层**14%**减伤，期间每次受到攻击时，产生冲击环并减少1层石化。",
+      "description": "处于原地1秒获得1层石化，最高5层，每层**14%**减伤，期间每次受到攻击时，产生冲击环并减少1层石化。",
       "category": "normal",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes05_02.webp",
@@ -1409,7 +1409,7 @@
     {
       "id": "1378044760",
       "name": "超级环",
-      "description": "使所有冲击环半径增加**30%**，伤害增加**50%**。",
+      "description": "使所有冲击环半径增加**30%**，伤害增加**100%**。",
       "category": "normal",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_07.webp",
@@ -1420,7 +1420,7 @@
     {
       "id": "1378044770",
       "name": "超级导弹",
-      "description": "使全部导弹爆炸范围增加**100%**，伤害增加**30%**。",
+      "description": "使全部导弹爆炸范围增加**100%**，伤害增加**60%**。",
       "category": "normal",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
@@ -1443,7 +1443,7 @@
     {
       "id": "1378044790",
       "name": "独弹爆炸",
-      "description": "如果武器的直击命中单位，该单位接下来5秒受到爆炸伤害提升**300%**。",
+      "description": "如果武器的直击命中单位，该单位接下来5秒受到爆炸伤害提升**500%**。",
       "category": "normal",
       "quality": 4,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
@@ -1454,7 +1454,7 @@
     {
       "id": "1378044800",
       "name": "冲击导弹",
-      "description": "每次冲击环命中怪物都有**10%**概率发射导弹。",
+      "description": "每次冲击环命中怪物都有**20%**概率发射导弹。",
       "category": "normal",
       "quality": 4,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_03.webp",
@@ -1466,7 +1466,7 @@
     {
       "id": "1378044810",
       "name": "雷击冲击",
-      "description": "每次雷击命中目标有**20%**概率在角色身上产生冲击环。",
+      "description": "每次雷击命中目标有**30%**概率在角色身上产生冲击环。",
       "category": "normal",
       "quality": 4,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_07.webp",
@@ -1478,7 +1478,7 @@
     {
       "id": "1378044820",
       "name": "导弹雷击",
-      "description": "每次导弹命中都有**10%**额外在目标区域产生落雷。",
+      "description": "每次导弹命中都有**20%**额外在目标区域产生落雷。",
       "category": "normal",
       "quality": 4,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_09.webp",
@@ -1776,7 +1776,7 @@
     {
       "id": "1378045140",
       "name": "雷暴连锁",
-      "description": "雷元素伤害 **+10%**。暴击时有 **4%** 概率召唤一次落雷。",
+      "description": "雷元素伤害 **+10%**。暴击时有 **10%** 概率召唤一次落雷。",
       "category": "normal",
       "quality": 5,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_Runes_06.webp",
@@ -1936,7 +1936,7 @@
     {
       "id": "1378045310",
       "name": "混沌枪膛",
-      "description": "武器不再暴击，每次触发暴击时改为弹道**+1**。",
+      "description": "武器不再暴击，每次触发暴击时改为弹道**+2**。",
       "category": "normal",
       "quality": 4,
       "icon": "/icons/origin/runes/T_Icons_S4_Rouge_SPRunes06_02.webp",

@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "source": {
-    "registrySha256": "b27f47e4abb48e0ac30972f88571d48de68768cf26e20fcf581ccd8e8cec73a3",
+    "registrySha256": "6c0ad8ae544eb578cebd412ca5b9d1fca67fec58ee8eb7fcfc963d47e878920d",
     "perkPreviewSha256": "2ea47ef5ff27b25970a168b43cfdf0e484a63dbb648051bf883f35bf61ddcf04",
     "s2EvidenceSha256": "a3f16097b34fc589f1322faa4f798b74bc82066dbd02bdcaad4fa0e4c240a0b2",
     "semanticsSha256": "579272d691b428b18d7f792ec6cbaeee54bd23c0d860b4710df03ed73f5c67ba",
-    "modifierSourceSha256": "5d4ee1f7f051aa6181d8c74d5e34e8bfdeb393a5b301dc05eb12efbf04da0492",
+    "modifierSourceSha256": "43299261f763e2a66cc82060e84741b980f8f058a4f0cde485ab3021f8752f1a",
     "attributeDescriptionSourceSha256": "8226fb6193a641eb5fce4f6ff09bf78862c3fab31ff432ae315246b27a440ff7"
   },
   "attributeTypes": [
@@ -17496,6 +17496,45 @@
         }
       ],
       "reviewedOverride": false
+    },
+    {
+      "id": "origin-rune:1378042640",
+      "label": "秘技返还",
+      "source": {
+        "type": "origin-rune",
+        "id": "1378042640"
+      },
+      "facetIds": [
+        "weapon-damage",
+        "skill-damage"
+      ],
+      "effects": [
+        {
+          "row": "lc:130042640_1_0",
+          "operation": "B1",
+          "attributeTypeId": "weapon-damage",
+          "attributeLabel": "武器伤害增加",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "weapon-damage"
+          ],
+          "reviewed": false
+        },
+        {
+          "row": "lc:130042640_1_1",
+          "operation": "B1",
+          "attributeTypeId": "skill-damage",
+          "attributeLabel": "非武器技能伤害增加",
+          "direction": "increase",
+          "recipient": "self",
+          "facetIds": [
+            "skill-damage"
+          ],
+          "reviewed": false
+        }
+      ],
+      "reviewedOverride": false
     }
   ],
   "exclusions": [
@@ -27403,16 +27442,6 @@
       "source": {
         "type": "origin-rune",
         "id": "1378042550"
-      },
-      "reasonCode": "unverified-evidence",
-      "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
-    },
-    {
-      "id": "origin-rune:1378042640",
-      "label": "秘技返还",
-      "source": {
-        "type": "origin-rune",
-        "id": "1378042640"
       },
       "reasonCode": "unverified-evidence",
       "reason": "当前 Numerical 表中无同身份的增伤行；独立伤害或动态效果尚无可核定的乘区来源。"
