@@ -14,7 +14,7 @@ import review from "../scripts/s4-preview-perks-review.json";
 
 test("released cryo perks share Numerical coefficients between descriptions and damage panels", async () => {
   for (const [name, id, percent, damage, type] of [
-    ["极寒领域", "120300174", "50%", "250", "武器技能伤害"],
+    ["极寒领域", "120300174", "60%", "300", "武器技能伤害"],
     ["极寒之触", "120300175", "20%", "100", "技能伤害"],
     ["极寒之痕", "120300176", "45%", "225", "技能伤害"],
   ]) {
@@ -45,8 +45,8 @@ test("released cryo perks share Numerical coefficients between descriptions and 
 test("formal damage requires exact reviewed references and inactive preview tokens fail", () => {
   const token = "{GPNumericalID:120300174:HpCalScale:13}";
   const references = getPerkByName("极寒领域")!.independentDamageSources;
-  assert.equal(resolvePreviewDamageDescription(token, "20703040537", "s4", references), "50%");
-  assert.equal(resolvePreviewDamageDescription(token, "20703040537", undefined, references), "50%");
+  assert.equal(resolvePreviewDamageDescription(token, "20703040537", "s4", references), "60%");
+  assert.equal(resolvePreviewDamageDescription(token, "20703040537", undefined, references), "60%");
   assert.throws(() => resolvePreviewDamageDescription(token, "20703040537", "s4-preview", references, null), /Unconfigured/);
   const unrelatedReferences = getPerkByName("极寒之触")!.independentDamageSources;
   assert.throws(() => resolvePreviewDamageDescription(token, "20703040538", "s4", unrelatedReferences));
@@ -107,14 +107,14 @@ test("explicit frozen snapshot remains stable while formal rebuild respects Nume
     String(args[0]) === weaponPath ? overridden : originalRead(...args),
   );
 
-  assert.match(frozenDescription!, /50%攻击力/);
+  assert.match(frozenDescription!, /60%攻击力/);
   const sources = parsePerkIndependentDamageSnapshot(frozenSnapshot);
-  assert.equal(sources[0].damageValue, "250");
+  assert.equal(sources[0].damageValue, "300");
   const candidate = getPerkSourceEntries("current").find(entry => entry.perk.itemId === perk.itemId)!.perk;
   assert.match(candidate.description!, /75%攻击力/);
   assert.equal((await resolvePerkReferences(candidate))[0].damageValue, "375");
   const weapon = await getResolvedWeaponBySlug("极寒冰神", "lc");
   const source = weapon!.damageSources.find(entry => entry.id === "cold-field")!;
-  assert.equal(source.raw.numerical?.HpCalScale, 0.5);
+  assert.equal(source.raw.numerical?.HpCalScale, 0.6);
   assert.equal(getResolvedFieldValue(source.damage.base), 0.75);
 });
