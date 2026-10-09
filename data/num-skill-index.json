@@ -56,7 +56,7 @@
       },
       {
         "path": "data/weapon-data-lock.json",
-        "sha256": "8fdc328447d46bd39e307ae7f2682d0489c67b8909acf1d9f3bb5a4366a8fb92"
+        "sha256": "cd1b773fa958a0ac6379e1c48cbe74390f05671af13e5287c4d7751f3e01c086"
       },
       {
         "path": "data/weapons/Bully.mdx",
@@ -4697,7 +4697,7 @@
       "gameSkillId": 5104101,
       "display": true,
       "parameters": {
-        "cooldown": 40,
+        "cooldown": 30,
         "duration": 12,
         "count": 1,
         "blocking": true,
@@ -4754,7 +4754,7 @@
       "gameSkillId": 5104101,
       "display": true,
       "parameters": {
-        "cooldown": 40,
+        "cooldown": 30,
         "duration": 12,
         "count": 1,
         "blocking": true,

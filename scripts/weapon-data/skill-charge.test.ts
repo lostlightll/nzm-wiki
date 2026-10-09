@@ -16,6 +16,7 @@ import matter from "gray-matter";
 import { parseWeaponDataLock } from "../../lib/weapon-data-lock";
 import { createWeaponResolver } from "../../lib/weapon-resolver";
 import { getActiveSkillDisplay, toWeaponDetailData } from "../../lib/weapon-consumers";
+import { currentSkillCorrections } from "../num-skills/s4-migration-review";
 import {
   createWeaponDataSourceReader,
   WEAPON_DATA_SOURCE_FILES,
@@ -364,7 +365,10 @@ test(
       const sourcePath = path.join(realContentRoot, WEAPON_DATA_SOURCE_FILES[kind]);
       if (!liveHashes.has(sourcePath)) liveHashes.set(sourcePath, createHash("sha256").update(readFileSync(sourcePath)).digest("hex"));
       if (liveHashes.get(sourcePath) === metadata.sha256) {
-        assert.equal(resolved.chargeTime, lockedRow.raw[kind === "skill-pve" ? "ChargeNeedTime" : "CooldownDuration"], fileName);
+        const chargeTimeField = kind === "skill-pve" ? "ChargeNeedTime" : "CooldownDuration";
+        const correction = currentSkillCorrections.find((entry) => entry.sourceKind === kind && entry.sourceKey === reference.source_key && entry.sourceField === chargeTimeField);
+        if (correction) assert.equal(lockedRow.raw[chargeTimeField], correction.after, fileName);
+        else assert.equal(resolved.chargeTime, lockedRow.raw[chargeTimeField], fileName);
         assert.equal(resolved.chargeCount, lockedRow.raw[kind === "skill-pve" ? "SkillCount" : "MaxChargeStackCount"], fileName);
       } else changedSources.add(metadata.source_path);
 

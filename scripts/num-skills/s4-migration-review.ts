@@ -27,3 +27,18 @@ export const s4SkillChanges = [
     evidence: "docs/standards/weapon-skills.md#s4正式服与历史迁移回归",
   },
 ] as const;
+
+/** Current balance correction applied after the historical S4 migration review. */
+export const currentSkillCorrections = [
+  {
+    slug: "炼狱蝎王",
+    skillId: "active-1",
+    parameter: "cooldown",
+    before: 40,
+    after: 30,
+    sourceKind: "skill-pve",
+    sourceKey: "5104101_1",
+    sourceField: "ChargeNeedTime",
+    evidence: "用户确认炼狱蝎王主动技能CD恢复为30秒",
+  },
+] as const;

@@ -73207,7 +73207,7 @@
           "AssistChargeValueTags": [
             "SkillParamConfig.AssistChargeValue"
           ],
-          "ChargeNeedTime": 40,
+          "ChargeNeedTime": 30,
           "ChargeNeedTimeTags": [
             "SkillParamConfig.ChargeNeedTime"
           ],

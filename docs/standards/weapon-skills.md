@@ -91,7 +91,7 @@ pnpm test:num-skills
 
 2026-09-22刷新正式包后，历史迁移与当前赛季分开验收。`scripts/num-skills/fixtures/pre-s4-migration-rows.json` 从提交 `7ee79b59b0193ee9c80c616e3ea2fc05acb84558` 的旧 Weapon Lock 摘录两行：炼狱蝎王 `skill-pve/5104101_1` 与樱之殇 `numerical-lc/lc:121300473_1`，保留原表来源哈希，并记录旧 Lock 完整SHA-256。测试仅在内存克隆中恢复这些行，以回放历史技能输出；这不是完整旧伤害数据集，不作为当前页面输入，也不依赖本地 refs 或运行时 Git。
 
-`scripts/num-skills/s4-migration-review.ts` 独立记录本次变更：炼狱蝎王所选PVE行 `ChargeNeedTime` 从30变为40，当前LC/TD均显示40秒；能源之影仍45秒。樱之殇轻击3的LC行缺失后仅保留TD来源；猪猪捏捏乐显式选择已核对的Prototype行。测试先逐项核对当前MDX与该账本，再仅在测试字符串中逆向恢复这两项header修改，继续执行原始header、正文、SHA及全部旧技能断言；当前技能输出另与历史输出加上已审查变更进行完整比较。原迁移基线不修改，后续未知变化仍失败。
+`scripts/num-skills/s4-migration-review.ts` 独立记录本次变更：炼狱蝎王所选PVE行 `ChargeNeedTime` 曾从30变为40，现由当前修正账本恢复为30秒，LC/TD同步显示30秒；能源之影仍45秒。樱之殇轻击3的LC行缺失后仅保留TD来源；猪猪捏捏乐显式选择已核对的Prototype行。测试先逐项核对历史变更与当前修正，再仅在测试字符串中逆向恢复这两项header修改，继续执行原始header、正文、SHA及全部旧技能断言；当前技能输出另与历史输出叠加已审查变更和当前修正进行完整比较。原迁移基线不修改，后续未知变化仍失败。
 
 ## 持续时间冲突记录
 

@@ -8,7 +8,7 @@ import { getNumSkillValue, resolveWeaponSkills } from "../../lib/num-skill-data"
 import { parseWeaponDataLock } from "../../lib/weapon-data-lock";
 import { createWeaponResolver } from "../../lib/weapon-resolver";
 import historicalRows from "./fixtures/pre-s4-migration-rows.json";
-import { s4HeaderChanges, s4SkillChanges } from "./s4-migration-review";
+import { currentSkillCorrections, s4HeaderChanges, s4SkillChanges } from "./s4-migration-review";
 import { inventoryLegacyWeapon, migrateWeaponSource, reviewedBodyChanges, type MigrationBaseline } from "./migrate";
 
 const root = process.cwd();
@@ -24,14 +24,17 @@ const historicalSkills = (data: unknown, slug: string, mode: "lc" | "td") =>
   historicalResolver.resolveWeapon(data, { slug, expectedTable: mode }).skills ?? [];
 const directory = path.join(root, "data/weapons");
 
-test("S4 changes retain historical row evidence and explicitly verify the new charge value", () => {
+test("S4 changes retain historical row evidence and current corrections are explicit", () => {
   assert.equal(historicalRows.sourceCommit, "7ee79b59b0193ee9c80c616e3ea2fc05acb84558");
   assert.equal(historicalRows.sourceSha256, "5c1a083acfa1d96676d99712acbfb7dbea6de585f6364f2e4fd3ffbcbe18c7e6");
   for (const change of s4SkillChanges) {
     assert.equal(lock.rows[change.sourceKind][change.sourceKey].raw[change.sourceField], change.before);
-    assert.equal(currentLock.rows[change.sourceKind][change.sourceKey].raw[change.sourceField], change.after);
     assert.equal(currentLock.active_skills[change.sourceKey].source, "weapon_pve");
     assert.equal(currentLock.active_skills[change.sourceKey].source_key, change.sourceKey);
+  }
+  for (const correction of currentSkillCorrections) {
+    assert.equal(correction.before, s4SkillChanges.find((change) => change.slug === correction.slug && change.skillId === correction.skillId && change.parameter === correction.parameter)?.after);
+    assert.equal(currentLock.rows[correction.sourceKind][correction.sourceKey].raw[correction.sourceField], correction.after);
   }
   assert.ok(lock.rows["numerical-lc"]["lc:121300473_1"]);
   assert.equal(currentLock.rows["numerical-lc"]["lc:121300473_1"], undefined);
@@ -121,6 +124,11 @@ for (const previous of baseline.weapons) {
         const skill = expectedCurrent.find((entry) => entry.id === change.skillId)!;
         assert.equal(skill.parameters[change.parameter], change.before);
         skill.parameters[change.parameter] = change.after;
+      }
+      for (const correction of currentSkillCorrections.filter((entry) => entry.slug === previous.slug)) {
+        const skill = expectedCurrent.find((entry) => entry.id === correction.skillId)!;
+        assert.equal(skill.parameters[correction.parameter], correction.before);
+        skill.parameters[correction.parameter] = correction.after;
       }
       assert.deepEqual(currentResolved, expectedCurrent, "only separately reviewed S4 changes may alter current skill output");
       const visible = resolved.filter((skill) => skill.display);
