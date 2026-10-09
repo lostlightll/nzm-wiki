@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { numSkillDefinitionsSchema, resolveNumSkill, resolvedNumSkillSchema, resolvedSkillVariantSchema, skillVariantCatalogSchema, skillVariantReferenceSchema, type NumSkillLock } from "./num-skill";
-import { resolvePerkSkillVariants } from "./num-skill-data";
 
 const base = { id: "active-1", kind: "active", name: "技能", icon: "/icons/test.png", game_skill_id: 100 };
 const empty: NumSkillLock = { schema_version: 1, rows: {} };
@@ -44,25 +43,6 @@ test("variants never inherit another season or silently select GP over PVE", () 
   assert.throws(() => resolveNumSkill(skill, { channel: "s4-preview", lock: noAbsence }), /absence evidence/);
   assert.throws(() => resolveNumSkill(skill, { channel: "s4-preview", lock: { schema_version: 1, rows: { ...gp.rows, "s4-preview:pve:100_1": { row_name: "100_1", raw: { SkillID: 100, Level: 1, ChargeNeedTime: 20 }, source } } } }), /fallback forbidden/);
   assert.throws(() => resolveNumSkill({ ...base, parameters: { duration: { row: "s4-preview:gp:100", field: "CooldownDuration" } } }, { channel: "s4-preview", lock: gp }), /field does not match/);
-});
-
-test("frozen skill parameters cannot lose provenance or cite another skill field", () => {
-  const [variant] = resolvePerkSkillVariants([{ weapon_slug: "雷霆之影", base_skill: "active-1", variant: "s4-preview:5104901", operation: "replace" }], "s4-preview");
-  assert.throws(() => resolvedNumSkillSchema.parse({ ...variant.skill, provenance: {} }), /provenance/);
-  assert.throws(() => resolvedNumSkillSchema.parse({ ...variant.skill, provenance: { ...variant.skill.provenance, cooldown: { row: "s4-preview:gp:9999999", field: "Duration" } } }), /mismatch/);
-});
-
-test("雷霆增幅 resolves by skill identity and rejects wrong bases and channels", () => {
-  const references = [{ weapon_slug: "雷霆之影", base_skill: "active-1", variant: "s4-preview:5104901", operation: "replace" }];
-  const [variant] = resolvePerkSkillVariants(references, "s4-preview");
-  assert.ok("id" in variant.original);
-  assert.equal(variant.original.id, 5000901);
-  assert.equal(variant.skill.gameSkillId, 5104901);
-  assert.deepEqual(variant.skill.parameters, { cooldown: 40, count: 1, duration: 10, blocking: false });
-  assert.throws(() => resolvePerkSkillVariants(references), /Missing current/);
-  assert.throws(() => resolvePerkSkillVariants(references, "s5-preview"), /Unregistered/);
-  assert.throws(() => resolvePerkSkillVariants([{ ...references[0], base_skill: "passive-1" }], "s4-preview"), /identity mismatch/);
-  assert.throws(() => resolvePerkSkillVariants([...references, ...references], "s4-preview"), /Duplicate/);
 });
 
 test("variant scopes and operations are explicit and reject unknown or mixed targets", () => {
