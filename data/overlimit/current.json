@@ -2108,7 +2108,7 @@
       },
       {
         "path": "scripts/overlimit/preview-native-review.json",
-        "sha256": "980280d60ff8b9d7b02f15daba1948e28662a4ffdad73aa31ad6894db879764d"
+        "sha256": "ef22e7393c495c970b3aa098b4227dc58308ea835cbc2ae3490d0ea39d1e922c"
       },
       {
         "path": "scripts/overlimit/preview-ordinary-review.json",
@@ -3675,14 +3675,10 @@
     {
       "id": "1317100001",
       "name": "多弹强化",
-      "description": "单次开火每多1个弹道，增加单次伤害修正参数。",
+      "description": "单次开火每多1个弹道，伤害提升100%。",
       "icon": "/icons/overlimit/cards/06b3be8ccd40a5eef478.webp",
       "quality": 5,
       "applicabilityKnown": false,
-      "verification": {
-        "status": "partial",
-        "note": "面板显示每个额外弹道对应的配置参数，最终伤害倍率仍待核实。"
-      },
       "weaponType": [],
       "weaponItems": [],
       "weaponNames": [],
@@ -3702,13 +3698,13 @@
       ],
       "effectValues": [
         {
-          "kind": "stat",
-          "statId": "correction-parameter",
-          "label": "单次修正参数",
+          "kind": "damage",
+          "modifierTypeId": "correction",
+          "label": "伤害增加",
           "stages": [
             {
               "condition": "单次开火每多1个弹道",
-              "value": "1"
+              "value": "+100%"
             }
           ]
         }

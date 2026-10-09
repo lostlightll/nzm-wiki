@@ -26,7 +26,9 @@ Num Modifier 的数值事实由精确 `lc:<row_name>` 行及以下字段共同�
 
 禁止根据单条 Numerical 描述、数值看起来像百分比或某个已知案例，把未知 operation 推广到其他行。
 
-属性身份与公式审定分开：`Numerical.ExecutionCtx.ExecutionRatio` 在 `damage-event` 上下文可以生成 `correction-parameter` 的 `index` 分面，即“单次修正参数”，归入特殊修正，但 operation、方向和最终因子继续保持未知。仅供来源双向索引和原始参数展示，不能因此显示伤害增幅百分比，也不复用已审定 `correction` 伤害分面的身份。S4 预览“多弹强化”使用 `130000001_1_0.coefficient=1`（每额外弹道），通过蓝图确认施加链，未确认 Native B2 公式，继续保留参数展示。
+属性身份与公式审定分开：`Numerical.ExecutionCtx.ExecutionRatio` 在 `damage-event` 上下文可以生成 `correction-parameter` 的 `index` 分面，即“单次修正参数”，归入特殊修正，但 operation、方向和最终因子继续保持未知。仅供来源双向索引和原始参数展示，不能因此显示伤害增幅百分比，也不复用已审定 `correction` 伤害分面的身份。
+
+“多弹强化”的 `lc:130000001_1_0` 在 2026-10-09 按用户指定单独登记人工语义：单次开火每多1个弹道，显示伤害增加 `+100%`，归入 `correction`。数值引用 `CoefValue=1`，蓝图以弹道数减1作为动态系数；精确签名为 ExecutionRatio、B2、等级1、BaseValue=0、CoefValue=1。原行 Description 的50%与结构化系数冲突，不采用。本行展示约定不是新增实测证据，不推广到其他 B2 行；源行变更时必须重新审定。
 
 “最后一枪”的 `lc:130008001_1_0` 在 2026-09-17 按用户指定单独登记人工语义：弹匣最后一发按独弹强化口径显示增伤 `+600%`，归入 `correction`，因子基线为 1。数值仍引用本行 `BaseValue=6`，并校验属性、B2、等级1和系数0。此约定不是新增实测证据，也不推广到其他 B2 行；源行变更时必须重新审定。
 

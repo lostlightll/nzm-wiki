@@ -54,9 +54,8 @@
     "partial": "触发概率、距离检查和冷却已核验；冲击波独立伤害待核验。"
   },
   "1317100001": {
-    "description": "单次开火每多1个弹道，增加单次伤害修正参数。",
-    "partial": "面板显示每个额外弹道对应的配置参数，最终伤害倍率仍待核实。",
-    "rows": [{"row":"lc:130000001_1_0","field":"coefficient","condition":"单次开火每多1个弹道"}],
+    "description": "单次开火每多1个弹道，伤害提升100%。",
+    "rows": [{"row":"lc:130000001_1_0","field":"coefficient","condition":"单次开火每多1个弹道","label":"伤害增加"}],
     "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317100001.uasset: ExecuteUbergraph 544 GetWeaponShotBulletsNumFromBeforeSettlement,654 Subtract_IntInt(ShotBulletsNum,1),696 Multiply_IntFloat(...,1),738 AddScopedModifier(130000001,extra); numerical_modifier_config 130000001_1_0 B2 BaseValue=0 CoefValue=1"]
   },
   "1317101001": {

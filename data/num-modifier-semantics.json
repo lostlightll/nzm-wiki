@@ -1485,6 +1485,21 @@
     }
   },
   "reviewed_semantics": {
+    "lc:130000001_1_0": {
+      "expected": {
+        "attribute_name": "Numerical.ExecutionCtx.ExecutionRatio",
+        "operation": "B2",
+        "level": 1,
+        "base": 0,
+        "coefficient": 1
+      },
+      "model": "execution",
+      "direction": "increase",
+      "facet_ids": ["correction"],
+      "recipient": "damage-event",
+      "factor_base": 1,
+      "reason": "2026-10-09 用户指定多弹强化每个额外弹道显示伤害增加100%；数值引用本行 CoefValue=1，蓝图以弹道数减1作为动态系数。原 Description 的50%与结构化系数冲突，不采用。此为精确行人工语义约定，不作为 B2 通用公式或新增实测证据。"
+    },
     "lc:130008001_1_0": {
       "expected": {
         "attribute_name": "Numerical.ExecutionCtx.ExecutionRatio",

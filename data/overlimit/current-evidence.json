@@ -1692,7 +1692,7 @@
       "configId": "1317100001",
       "classFile": "Abilities/Build/CBT3/Perk04/MGE_1317100001.json",
       "sourceDescription": "单次开火每多1个弹道，伤害提升100%。",
-      "publicationDescription": "单次开火每多1个弹道，增加单次伤害修正参数。",
+      "publicationDescription": "单次开火每多1个弹道，伤害提升100%。",
       "selected": [
         {
           "expression": {
@@ -1740,12 +1740,11 @@
       "chain": [
         "DataTables/MGE/MGEPassive_BD.json#1317100001_1",
         "DataTables/MGE/GPModularGameplayEffectTable.json#1317100001",
-        "Abilities/Build/CBT3/Perk04/MGE_1317100001.uasset: ExecuteUbergraph 544 GetWeaponShotBulletsNumFromBeforeSettlement,654 Subtract_IntInt(ShotBulletsNum,1),696 Multiply_IntFloat(...,1),738 AddScopedModifier(130000001,extra); numerical_modifier_config 130000001_1_0 B2 BaseValue=0 CoefValue=1"
+        "Abilities/Build/CBT3/Perk04/MGE_1317100001.uasset: ExecuteUbergraph 544 GetWeaponShotBulletsNumFromBeforeSettlement,654 Subtract_IntInt(ShotBulletsNum,1),696 Multiply_IntFloat(...,1),738 AddScopedModifier(130000001,extra); numerical_modifier_config 130000001_1_0 B2 BaseValue=0 CoefValue=1",
+        "2026-10-09 用户审定每额外弹道伤害增加100%；引用 lc:130000001_1_0.coefficient=1；原 Description 的50%与系数冲突，不采用；不推广 B2 通用公式。"
       ],
-      "numericAudit": "partial",
-      "unresolved": [
-        "面板显示每个额外弹道对应的配置参数，最终伤害倍率仍待核实。"
-      ]
+      "numericAudit": "verified",
+      "unresolved": []
     },
     {
       "id": "1317101001",

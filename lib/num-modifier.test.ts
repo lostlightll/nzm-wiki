@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import overlimitCatalog from "@/data/overlimit/current.json";
 import {
   NUM_MODIFIER_LOCK,
   NUM_MODIFIER_RESOLVER,
@@ -11,19 +12,21 @@ import {
 } from "@/lib/num-modifier";
 import type { NumModifierDataLock } from "@/lib/num-modifier-data-lock";
 
-test("live execution parameters retain unknown B2 semantics while exposing their source channel", () => {
-  const resolver = getPerkModifierResolver("s4");
-  for (const [row, field, expected] of [
-    ["lc:130000001_1_0", "coefficient", 1],
-  ] as const) {
-    const effect = resolver.resolveEffect({ row, field }, { recipient: "damage-event" });
-    assert.equal(effect.value.value, expected);
-    assert.equal(effect.operation.model, "unknown");
-    assert.equal(effect.direction, "unknown");
-    assert.equal(effect.factor, undefined);
-    assert.deepEqual(effect.facets.map(facet => [facet.id, facet.consumer]), [["correction-parameter", "index"]]);
-    assert.deepEqual(resolver.resolveEffect({ row, field }, { recipient: "self" }).facets, []);
-  }
+test("multi-shot uses its reviewed coefficient as damage per extra projectile", () => {
+  const expression = { row: "lc:130000001_1_0", field: "coefficient" } as const;
+  const effect = NUM_MODIFIER_RESOLVER.resolveEffect(expression, { recipient: "damage-event" });
+  assert.equal(effect.value.value, 1);
+  assert.equal(effect.reviewed, true);
+  assert.equal(effect.factor, 2);
+  assert.equal(effect.direction, "increase");
+  assert.deepEqual(effect.facets.map(facet => [facet.id, facet.consumer]), [["correction", "damage"]]);
+  assert.equal(NUM_MODIFIER_RESOLVER.resolveValue(expression, "signed-percent").text, "+100%");
+  assert.throws(() => NUM_MODIFIER_RESOLVER.resolveEffect(expression, { recipient: "self" }), NumModifierError);
+  const card = overlimitCatalog.cards.find(card => card.id === "1317100001")!;
+  assert.equal(card.description, "单次开火每多1个弹道，伤害提升100%。");
+  assert.deepEqual(card.effectValues, [{ kind: "damage", modifierTypeId: "correction", label: "伤害增加",
+    stages: [{ condition: "单次开火每多1个弹道", value: "+100%" }] }]);
+  assert.equal("verification" in card, false);
 });
 
 test("last shot uses its explicit reviewed correction rule", () => {
