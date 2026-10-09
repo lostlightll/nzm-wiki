@@ -69,7 +69,7 @@
     "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317104001.uasset: CDO BulletLimit=6 CooldownDuration=5; ExecuteUbergraph 917 BulletCount<BulletLimit,1143 ApplyModifiersToFireContext(130003001); numerical_modifier_config 130003001_1_0 B1 BaseValue=6"]
   },
   "1317105001": {
-    "description": "射击叠加武器技能伤害，每层提升10%，最多60层，持续8秒；武器技能命中叠加射击和爆炸伤害，每层提升20%，最多15层，持续10秒。",
+    "description": "射击叠技能增伤10%/层（上限60层，8秒）；技能命中叠射击/爆炸增伤20%/层（上限15层，10秒）。",
     "rows": [{"row":"lc:130005001_1_0","field":"base","condition":"射击叠加，每层"},{"row":"lc:130005002_1_0","field":"base","condition":"武器技能命中叠加，每层"},{"row":"lc:130005002_1_1","field":"base","condition":"武器技能命中叠加，每层"}],
     "evidence": ["Abilities/Build/CBT3/Perk04/MGE_1317105001.uasset: ExecuteUbergraph MGEAddBuff(Buff_Rogue_1317105001/2)","DataTables/Buff/BuffConfigDatatableNew.json: Buff_Rogue_1317105001 Duration=8 StackLimitCount=60 GPModifyIDs=[130005001]; Buff_Rogue_1317105002 Duration=10 StackLimitCount=15 GPModifyIDs=[130005002]; Numerical BaseValue=0.1/0.2"]
   },

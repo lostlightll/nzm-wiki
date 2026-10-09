@@ -155,7 +155,7 @@ function OverlimitCardItem({
             />
           </div>
 
-          <h3 className="mt-4 text-center text-base font-semibold leading-6 text-white sm:text-lg">
+          <h3 className={`text-center text-base font-semibold leading-6 text-white sm:text-lg ${hasThreeEffectRows ? "mt-0" : "mt-4"}`}>
             {card.name}
           </h3>
           <p className="mt-2 whitespace-pre-line break-words text-center text-[13px] leading-5 text-zinc-300">

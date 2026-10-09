@@ -2108,7 +2108,7 @@
       },
       {
         "path": "scripts/overlimit/preview-native-review.json",
-        "sha256": "ef22e7393c495c970b3aa098b4227dc58308ea835cbc2ae3490d0ea39d1e922c"
+        "sha256": "bdd47b9f5fa97380fa8b7f6cb4a75ea69a350d98e1a20767fb568c28de768173"
       },
       {
         "path": "scripts/overlimit/preview-ordinary-review.json",
@@ -3801,7 +3801,7 @@
     {
       "id": "1317105001",
       "name": "物法互博",
-      "description": "射击叠加武器技能伤害，每层提升10%，最多60层，持续8秒；武器技能命中叠加射击和爆炸伤害，每层提升20%，最多15层，持续10秒。",
+      "description": "射击叠技能增伤10%/层（上限60层，8秒）；技能命中叠射击/爆炸增伤20%/层（上限15层，10秒）。",
       "icon": "/icons/overlimit/cards/1e1ed7698744a67d8a33.webp",
       "quality": 5,
       "applicabilityKnown": false,
