@@ -39,7 +39,26 @@ CD120秒暂沿用展示记录；CDO中的CooldownDuration=60尚未证明为实�
 
 本次对当前177张超限卡的所有已审定 `selected` Numerical行逐项比较，未发现行内容变化；保持其独立发布快照。超限原表哈希审计仍因共享表与本地图标文件字节变化失败，不能把离线投影检查通过称为原表审计通过，也不能仅重写来源哈希掩盖证据漂移。后续超限更新应按现有审定与激活流程单独完成。
 
-## 本次验证
+### 致命爆炸独立伤害补充
+
+2026-10-09单独复核Item20703040437→Passive1316200001_1→MGE1316200001。当前CDO为Probability=0.05、CooldownDuration=0.1、AOEInterval=0.2；MGEConfig_Common、MGEConfig_Season及DT_MGEParamConfig_Main未找到该ID的参数覆写行。原表与选定执行资产哈希、单次结算原始行保存在 `scripts/overlimit/fatal-explosion-evidence.json`，不重写其他卡片的来源哈希。
+
+本地 `.uasset/.uexp` 转换得到的 `ExecuteUbergraph_MGE_1316200001`：OnMakeDamage事件进入1115检查冷却，1226读取Probability，概率通过后跳至15，93调用CommitModularGameplayEffectCooldown，560调用DoNZAOEAction并传入AOE1316200001、Numerical130103014。AOE完成回调进入1270，经1324 Delay(AOEInterval)与1100 RetriggerAOE回到按StackCount处理的循环。0.2秒是堆叠爆炸重触发延迟，不能替代0.1秒配置冷却，也不能据此推导总爆炸频率。Native冷却和AOE内部未展开，未进行游戏内实测。
+
+`NZAOEGlobalConfigTable#1316200001.AOERadius=800`，按UE厘米单位为8米。`numerical_config_composite#130103014_1` 为SkillDamage、HpCalScale=10、HpCalBase=0、ToughnessBase=10、Kinetic、允许暴击、禁止弱点，基础攻击力500时单次伤害为5000。纠正普通插件与触发伤害文章中的2秒、10米旧记录，将生成的独立伤害加入当前超限投影；卡片既有摘要与其他卡片内容保持原样。此补充不代表整份超限来源审计已通过。
+
+复核与候选生成：
+
+```powershell
+pwsh -NoProfile -File .agents/skills/nzm-uasset/scripts/Convert-LocalAsset.ps1 -AssetPath refs/Exports/NZM/Content/Abilities/Build/CBT3/Perk02/MGE_1316200001.uasset -OutputPath MD/_local/nzm-uasset/fatal-explosion-20261009/MGE_1316200001.json -ReadScriptData
+pnpm exec tsx scripts/overlimit/project-fatal-explosion.ts --content-root refs/Exports/NZM/Content --bytecode MD/_local/nzm-uasset/fatal-explosion-20261009/MGE_1316200001.json --output-directory MD/_local/overlimit/candidates/fatal-explosion-20261009
+```
+
+转换拒绝覆盖已有证据，复核时可直接使用已保存的JSON。候选先按超限维护流程check，再把生成的独立审定证据写到上述 `scripts/overlimit/` 路径，并用候选的 `review.json` 激活；执行资产或解析快照哈希改变时，生成器要求重新审定。
+
+本项补充验证：独立伤害测试16/16、超限卡测试25/25、改动代码ESLint、TypeScript、超限投影与Weapon/Num Modifier数据检查均通过。测试中极寒领域的正式服旧预期同步为60%/300，保留冻结快照与覆写隔离检查。两次生产构建均在临时重命名 `app/api` 时遇到Windows文件占用（EPERM），尚未进入Next.js编译；路由目录完整保留，本项完整生产构建未验证。
+
+## 平衡补丁同步验证
 
 生产构建通过，生成1357个静态页面，构建临时隐藏的路由均已恢复。25项定向测试、25项超限卡测试、改动代码的ESLint、TypeScript及Numerical/原点/乘区索引投影检查通过。
 

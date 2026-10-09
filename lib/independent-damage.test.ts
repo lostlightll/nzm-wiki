@@ -117,6 +117,20 @@ test("超限独立伤害完全服从当前发布快照", async () => {
   }
 });
 
+test("致命爆炸的正式超限词条与插件、触发伤害记录一致", async () => {
+  const damage = await getIndependentDamageByOverlimitId("20703040437");
+  assert.equal(damage.length, 1);
+  assert.deepEqual(damage, await getIndependentDamageByPerkSlug("slot-4/致命爆炸"));
+  assert.equal(damage[0].interval, "0.1 秒");
+  assert.match(damage[0].trigger, /5%.*8 米/);
+  assert.equal(damage[0].numericalId, "130103014");
+  assert.equal(damage[0].damageValue, "5000");
+  assert.equal(damage[0].toughness, 10);
+  assert.equal(damage[0].critical, true);
+  assert.equal(damage[0].weakpoint, false);
+  assert.match(getPerkBySlug("slot-4/致命爆炸")!.description!, /<strong>0\.1<\/strong>秒/);
+});
+
 test("退出卡池的插件与未知ID不能泄漏到超限独立伤害", async () => {
   const catalog = getOverlimitCatalog();
   const cardIds = new Set(catalog.cards.map(card => card.id));

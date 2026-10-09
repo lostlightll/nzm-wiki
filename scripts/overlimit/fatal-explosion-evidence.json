@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "cardId": "20703040437",
+  "reviewedAt": "2026-10-09",
+  "files": [
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316200001.uasset",
+      "sha256": "f0ea496ddd1860832a609d2cba7e2e6702fed30e45c023b560cbca22a30a259b"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316200001.uexp",
+      "sha256": "4db29fd8589322e9003973040fc9e416d6d6ecc4e753a84cb824b14d03126375"
+    },
+    {
+      "path": "DataTables/LuaDataTable/WeaponModItemData.json",
+      "sha256": "b73282904b524ca767a848693e6e783c90c16a6b6126183767e69c0fb7d76b40"
+    },
+    {
+      "path": "DataTables/MGE/MGEPassive_BD.json",
+      "sha256": "5abc9732987c2e1542c12ddd861fe6089a7bc3109b6fb15158d7f2c3f62f4a76"
+    },
+    {
+      "path": "DataTables/MGE/GPModularGameplayEffectTable.json",
+      "sha256": "6ffe985668574ef868c4f4637ff01e3bcdb6357c425f46de961fa46fe22c29c3"
+    },
+    {
+      "path": "DataTables/MGE/MGEConfig_Common.json",
+      "sha256": "5afbc85d25fe161c541bf99343469a2c9abe97333e106be64ac50a4113b15799"
+    },
+    {
+      "path": "DataTables/MGE/MGEConfig_Season.json",
+      "sha256": "c4fa16fe74ca75db45d022f3d40756910eb09db0e2ffefc4851178e666883572"
+    },
+    {
+      "path": "DataTables/MGE/DT_MGEParamConfig_Main.json",
+      "sha256": "3a4bbe45d754003616a5df49f16f620a2e84e8364cde6419a77fffe68b099ed5"
+    },
+    {
+      "path": "Abilities/Build/CBT3/Perk02/MGE_1316200001.json",
+      "sha256": "1c25e45291795e5697c99a0d1d265802c3d49b486369b297322002e86b698c88"
+    },
+    {
+      "path": "DataTables/NZAOEGlobalConfigTable.json",
+      "sha256": "fcf42d97cf8e70ceacc693a39a6d58f4005d05d349b512cc27b16cf215f7e8a1"
+    },
+    {
+      "path": "DataTables/numerical_config_composite.json",
+      "sha256": "e10148a5a6e2c3429f97246745ede8db0d3846baa2a27e9d9ea48de0eb656ccf"
+    }
+  ],
+  "parsedBytecodeSha256": "d8fde093b242d411db3c24f6ae8f87aaf1534182f435f20f0305b9c4ce8dad5b",
+  "cdo": {
+    "Probability": 0.05,
+    "CooldownDuration": 0.1,
+    "AOEInterval": 0.2
+  },
+  "aoe": {
+    "AOEId": 1316200001,
+    "AOERadius": 800
+  },
+  "numerical": {
+    "id": 130103014,
+    "Level": 1,
+    "Settlements": [
+      {
+        "TagName": "Numerical.SettlementType.Health.SkillDamage"
+      },
+      {
+        "TagName": "Numerical.SettlementType.Toughness.Base"
+      },
+      {
+        "TagName": "None"
+      }
+    ],
+    "EnableAttributes": [],
+    "CameraHitFeedBackTag": {
+      "TagName": "None"
+    },
+    "bEnableCriticalDamage": true,
+    "bDamageIgnoreShield": false,
+    "ElementType": "EElementEffectType::EDamageType_Kinetic",
+    "DamageSourceType": 3,
+    "ElementDebuffTypeID": 0,
+    "ElementAddRate": 0,
+    "HpCalScale": 10,
+    "HpCalBase": 0,
+    "HpFloatCoef": 0,
+    "MaxDamageAttackRatio": 0,
+    "FriendlyCoefficient": -1,
+    "FleshDamageBase": 0,
+    "ImpulseBase": 0,
+    "ToughnessBase": 10,
+    "ToughnessScale": 0,
+    "EnableWeaknessDamage": false,
+    "WeaknessDamageAddScale": 0,
+    "ToughnessDamageType": "EHardStrightWeaknessType::Impulse",
+    "KnockupLevel": 0,
+    "OnlyKnockUpWhenKill": false,
+    "KnockUpDistance1": 0,
+    "KnockUpDistance2": 0,
+    "KnockUpLevel1": 0,
+    "KnockUpLevel2": 0,
+    "HurtableBase": 0,
+    "DamageTextType": "EDamageTextType::EDamageTextType_Normal",
+    "Description": "肉鸽致命爆炸",
+    "DamageAttenuationStart": 0,
+    "DamageAttenuationEnd": 0,
+    "DamageAttenuationRatio": 0,
+    "bEnableParry": false,
+    "TableRowPlatformCookRule": "EUEDataTableRowCookRule::Default"
+  },
+  "entry": {
+    "name": "致命爆炸",
+    "href": "/overlimit/20703040437",
+    "perkSlug": "slot-4/致命爆炸",
+    "overlimitId": "20703040437",
+    "trigger": "武器命中有 5% 概率产生 8 米爆炸",
+    "interval": "0.1 秒",
+    "numericalId": "130103014",
+    "damageType": "技能伤害",
+    "damageValue": "5000",
+    "toughness": 10,
+    "element": "物理",
+    "critical": true,
+    "weakpoint": false,
+    "weakpointMultiplier": 1
+  },
+  "basis": "Item20703040437→Passive1316200001_1→MGE1316200001；OnMakeDamage进入1115检查冷却，1226读取Probability，成功后跳转15，93提交冷却，560以AOE1316200001/Numerical130103014创建爆炸。AOE完成后1324使用AOEInterval，1100→RetriggerAOE→1703→198按StackCount继续，不是CooldownDuration。Native冷却和AOE内部未展开；这里发布配置冷却及单次结算，不宣称实测触发频率。"
+}

@@ -2705,6 +2705,10 @@
       {
         "path": "scripts/overlimit/current-announcement.json",
         "sha256": "c26067cdb8198db0c2b9405732cd71f0694b3ce1abd1d27584972d62924d0438"
+      },
+      {
+        "path": "scripts/overlimit/fatal-explosion-evidence.json",
+        "sha256": "0c1b55462225c71f50cb3cb8c6d7dcacb0a4f6de2ad585283b11b5d536fb651d"
       }
     ]
   },
@@ -9594,7 +9598,26 @@
       ]
     }
   ],
-  "independentDamage": {},
+  "independentDamage": {
+    "20703040437": [
+      {
+        "name": "致命爆炸",
+        "href": "/overlimit/20703040437",
+        "perkSlug": "slot-4/致命爆炸",
+        "overlimitId": "20703040437",
+        "trigger": "武器命中有 5% 概率产生 8 米爆炸",
+        "interval": "0.1 秒",
+        "numericalId": "130103014",
+        "damageType": "技能伤害",
+        "damageValue": "5000",
+        "toughness": 10,
+        "element": "物理",
+        "critical": true,
+        "weakpoint": false,
+        "weakpointMultiplier": 1
+      }
+    ]
+  },
   "bonds": [
     {
       "name": "游击",

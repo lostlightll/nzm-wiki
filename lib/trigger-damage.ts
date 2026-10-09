@@ -52,7 +52,7 @@ const current = [
 ] satisfies readonly TriggerDamageEntry[];
 
 const overlimit = [
-  { name: "致命爆炸", href: "/overlimit/20703040437", perkSlug: "slot-4/致命爆炸", overlimitId: "20703040437", trigger: "武器命中有 5% 概率产生 10 米爆炸", interval: "2 秒", numericalId: "130103014", damageType: "技能伤害", damageValue: "5000", toughness: 10, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
+  { name: "致命爆炸", href: "/overlimit/20703040437", perkSlug: "slot-4/致命爆炸", overlimitId: "20703040437", trigger: "武器命中有 5% 概率产生 8 米爆炸", interval: "0.1 秒", numericalId: "130103014", damageType: "技能伤害", damageValue: "5000", toughness: 10, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
   { name: "物法兼得", href: "/overlimit/20703040444", perkSlug: "slot-3/物法兼得", overlimitId: "20703040444", trigger: "技能伤害后 5 秒内，射击追加伤害", interval: "触发 5 秒；追加 0.25 秒", numericalId: "130103016", damageType: "间接伤害", damageValue: "上次技能伤害 × 35%", toughness: 0.35, element: "物理", critical: false, weakpoint: false, weakpointMultiplier: 1 },
   { name: "导弹轰炸", href: "/overlimit/20703040471", perkSlug: "slot-3/导弹轰炸", overlimitId: "20703040471", trigger: "爆炸命中发 2 枚；仅命中 1 个单位时发 5 枚", interval: "2 秒", numericalId: "121800050", damageType: "技能伤害", damageValue: "2100/枚", toughness: 4.2, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
   { name: "换弹冲击", href: "/overlimit/20703040472", perkSlug: "slot-3/换弹冲击", overlimitId: "20703040472", trigger: "弹匣耗尽后每秒释放冲击波，持续 5 秒", interval: "1 秒周期", numericalId: "121800060", damageType: "技能伤害", damageValue: "基础 1800/次", toughness: 3.6, element: "物理", critical: true, weakpoint: false, weakpointMultiplier: 1 },
