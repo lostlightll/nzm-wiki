@@ -57,6 +57,7 @@ interface OverlimitPageClientProps {
 }
 
 type OverlimitModule = "cards" | "bonds" | "levels" | "map-rotation";
+type OverlimitSlotFilter = PerkSlot | "unknown";
 
 const OVERLIMIT_MODULES: readonly {
   id: OverlimitModule;
@@ -190,7 +191,11 @@ export default function OverlimitPageClient({
   const existingIds = useMemo(() => existingCardIds ? new Set(existingCardIds) : null, [existingCardIds]);
   const newCardCount = existingIds ? initialCards.filter(card => !existingIds.has(card.id)).length : 0;
   const qualityState = useSelection<number>("quality", undefined, Number);
-  const slotState = useSelection<PerkSlot>("slot", undefined, value => Number(value) as PerkSlot);
+  const slotState = useSelection<OverlimitSlotFilter>(
+    "slot",
+    undefined,
+    value => value === "unknown" ? value : Number(value) as PerkSlot,
+  );
   const weightState = useSelection<number>("weight", undefined, Number);
   const weaponApplicabilityState = useSelection<WeaponApplicabilityFilter>("weapon-applicability");
   const tagState = useSelection<string>("tag");
@@ -208,6 +213,7 @@ export default function OverlimitPageClient({
     (module.id === "map-rotation" && mapRotation !== null)
   ), [bondCatalog, levelCatalog, mapRotation]);
   const slotOptions = [...new Set(initialCards.flatMap(card => card.slot === undefined ? [] : [card.slot]))].sort();
+  const hasUnknownSlots = initialCards.some(card => card.slot === undefined);
   const weightOptions = [...new Set(initialCards.flatMap(card => card.weight === undefined ? [] : [card.weight]))].sort((a, b) => a - b);
 
   useEffect(() => {
@@ -276,7 +282,9 @@ export default function OverlimitPageClient({
         if (!matchesQuality) return false;
 
         const matchesSlot =
-          selectedSlots.size === 0 || (card.slot !== undefined && selectedSlots.has(card.slot));
+          selectedSlots.size === 0 ||
+          (card.slot !== undefined && selectedSlots.has(card.slot)) ||
+          (card.slot === undefined && selectedSlots.has("unknown"));
         if (!matchesSlot) return false;
 
         const matchesWeight =
@@ -509,6 +517,21 @@ export default function OverlimitPageClient({
                   </button>
                 );
               })}
+              {hasUnknownSlots && (
+                <button
+                  key="unknown"
+                  type="button"
+                  aria-pressed={selectedSlots.has("unknown")}
+                  onClick={() => slotState.toggle("unknown")}
+                  className={`flex min-h-11 touch-manipulation items-center justify-center rounded border px-3 py-2 text-sm font-medium transition-colors outline-none focus-visible:underline focus-visible:decoration-2 focus-visible:underline-offset-4 ${
+                    selectedSlots.has("unknown")
+                      ? "border-zinc-400 bg-zinc-600 text-white"
+                      : "border-zinc-700 bg-zinc-800 text-zinc-300 hover:border-zinc-600 hover:bg-zinc-700/70 hover:text-white"
+                  }`}
+                >
+                  无法确认
+                </button>
+              )}
             </div>
           </fieldset>}
 
