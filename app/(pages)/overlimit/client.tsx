@@ -498,7 +498,7 @@ export default function OverlimitPageClient({
             <legend className="mb-3 text-lg font-semibold text-zinc-300">
               卡片槽位
             </legend>
-            <div className="grid max-w-lg grid-cols-4 gap-2">
+            <div className="grid max-w-lg grid-cols-5 gap-2">
               {slotOptions.map((slot) => {
                 const selected = selectedSlots.has(slot);
                 return (
